@@ -3,7 +3,7 @@
 'use strict'
 // App Start here
 var angular = require('angular')
-var bulk = ({"controllers":(function () {var f = require("./controllers\\index.js");f["abstractAdd"]=require("./controllers\\abstractAdd.js");f["abstractAdvanceList"]=require("./controllers\\abstractAdvanceList.js");f["abstractList"]=require("./controllers\\abstractList.js");f["adminAccount"]=require("./controllers\\adminAccount.js");f["adminAccountAdd"]=require("./controllers\\adminAccountAdd.js");f["adminAttribute"]=require("./controllers\\adminAttribute.js");f["adminAttributeAdd"]=require("./controllers\\adminAttributeAdd.js");f["adminAttributeSet"]=require("./controllers\\adminAttributeSet.js");f["adminAttributeSetAdd"]=require("./controllers\\adminAttributeSetAdd.js");f["adminBrand"]=require("./controllers\\adminBrand.js");f["adminBrandAdd"]=require("./controllers\\adminBrandAdd.js");f["adminCategory"]=require("./controllers\\adminCategory.js");f["adminGlobalCoupon"]=require("./controllers\\adminGlobalCoupon.js");f["adminGlobalCouponAdd"]=require("./controllers\\adminGlobalCouponAdd.js");f["adminNewsletter"]=require("./controllers\\adminNewsletter.js");f["adminOnTopCreditAdd"]=require("./controllers\\adminOnTopCreditAdd.js");f["adminOnTopCreditList"]=require("./controllers\\adminOnTopCreditList.js");f["adminProductApprovalDetail"]=require("./controllers\\adminProductApprovalDetail.js");f["adminProductApprovalList"]=require("./controllers\\adminProductApprovalList.js");f["adminProductDetail"]=require("./controllers\\adminProductDetail.js");f["adminProductList"]=require("./controllers\\adminProductList.js");f["adminRole"]=require("./controllers\\adminRole.js");f["adminRoleAdd"]=require("./controllers\\adminRoleAdd.js");f["adminSellerCoupon"]=require("./controllers\\adminSellerCoupon.js");f["adminSellerCouponAdd"]=require("./controllers\\adminSellerCouponAdd.js");f["adminShop"]=require("./controllers\\adminShop.js");f["adminShopAdd"]=require("./controllers\\adminShopAdd.js");f["adminShoptype"]=require("./controllers\\adminShoptype.js");f["adminShoptypeAdd"]=require("./controllers\\adminShoptypeAdd.js");f["index"]=require("./controllers\\index.js");f["localCategory"]=require("./controllers\\localCategory.js");f["login"]=require("./controllers\\login.js");f["productAddSelectCategory"]=require("./controllers\\productAddSelectCategory.js");f["productExport"]=require("./controllers\\productExport.js");f["productImageList"]=require("./controllers\\productImageList.js");f["productImageManagement"]=require("./controllers\\productImageManagement.js");f["productImport"]=require("./controllers\\productImport.js");f["productList"]=require("./controllers\\productList.js");f["productListLocalCategory"]=require("./controllers\\productListLocalCategory.js");f["productReview"]=require("./controllers\\productReview.js");f["root"]=require("./controllers\\root.js");f["sellerAccount"]=require("./controllers\\sellerAccount.js");f["sellerAccountAdd"]=require("./controllers\\sellerAccountAdd.js");f["sellerCoupon"]=require("./controllers\\sellerCoupon.js");f["sellerCouponAdd"]=require("./controllers\\sellerCouponAdd.js");f["sellerDashboard"]=require("./controllers\\sellerDashboard.js");f["sellerInventoryList"]=require("./controllers\\sellerInventoryList.js");f["sellerNewsletter"]=require("./controllers\\sellerNewsletter.js");f["sellerOnboarding"]=require("./controllers\\sellerOnboarding.js");f["sellerProductDetail"]=require("./controllers\\sellerProductDetail.js");f["sellerRole"]=require("./controllers\\sellerRole.js");f["sellerRoleAdd"]=require("./controllers\\sellerRoleAdd.js");f["sellerShopAppearance"]=require("./controllers\\sellerShopAppearance.js");f["sellerShopSetting"]=require("./controllers\\sellerShopSetting.js");f["test"]=require("./controllers\\test.js");return f;})(),"services":({"Dashboard":require("./services\\Dashboard.js"),"OnTopCredit":require("./services\\OnTopCredit.js"),"OnTopCreditService":require("./services\\OnTopCreditService.js"),"Onboarding":require("./services\\Onboarding.js"),"adminAccountService":require("./services\\adminAccountService.js"),"adminPermissionService":require("./services\\adminPermissionService.js"),"adminRoleService":require("./services\\adminRoleService.js"),"adminShopService":require("./services\\adminShopService.js"),"adminShoptypeService":require("./services\\adminShoptypeService.js"),"alert":require("./services\\alert.js"),"attribute":require("./services\\attribute.js"),"attributeService":require("./services\\attributeService.js"),"attributeSet":require("./services\\attributeSet.js"),"attributeSetService":require("./services\\attributeSetService.js"),"blocker":require("./services\\blocker.js"),"brand":require("./services\\brand.js"),"brandService":require("./services\\brandService.js"),"category":require("./services\\category.js"),"coupon":require("./services\\coupon.js"),"credential":require("./services\\credential.js"),"exceptionHandler":require("./services\\exceptionHandler.js"),"fileService":require("./services\\fileService.js"),"globalCategory":require("./services\\globalCategory.js"),"globalCategoryService":require("./services\\globalCategoryService.js"),"globalCouponService":require("./services\\globalCouponService.js"),"image":require("./services\\image.js"),"imageService":require("./services\\imageService.js"),"inventoryService":require("./services\\inventoryService.js"),"knownException":require("./services\\knownException.js"),"localCategory":require("./services\\localCategory.js"),"localCategoryService":require("./services\\localCategoryService.js"),"newsletterService":require("./services\\newsletterService.js"),"product":require("./services\\product.js"),"productReviewService":require("./services\\productReviewService.js"),"sellerAccountService":require("./services\\sellerAccountService.js"),"sellerCouponService":require("./services\\sellerCouponService.js"),"sellerPermissionService":require("./services\\sellerPermissionService.js"),"sellerRoleService":require("./services\\sellerRoleService.js"),"shop":require("./services\\shop.js"),"shopAppearanceService":require("./services\\shopAppearanceService.js"),"shopPermissionService":require("./services\\shopPermissionService.js"),"shopProfileService":require("./services\\shopProfileService.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDateBefore":require("./directives\\ngDateBefore.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngMatch":require("./directives\\ngMatch.js"),"ngMaxnumber":require("./directives\\ngMaxnumber.js"),"ngMinnumber":require("./directives\\ngMinnumber.js"),"ngPatternRestrict":require("./directives\\ngPatternRestrict.js"),"ngPermission":require("./directives\\ngPermission.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"exclude":require("./filters\\exclude.js"),"excludeCategory":require("./filters\\excludeCategory.js"),"html":require("./filters\\html.js"),"importGuidelineExample":require("./filters\\importGuidelineExample.js"),"leadingzero":require("./filters\\leadingzero.js"),"ordinal":require("./filters\\ordinal.js"),"slice":require("./filters\\slice.js"),"truncate":require("./filters\\truncate.js"),"truth":require("./filters\\truth.js"),"variantValue":require("./filters\\variantValue.js")}),"template-options":({"PromotionForm":require("./template-options\\PromotionForm.js"),"addBrandForm":require("./template-options\\addBrandForm.js"),"addCategoryForm":require("./template-options\\addCategoryForm.js"),"addNewsletterForm":require("./template-options\\addNewsletterForm.js"),"addProductForm":require("./template-options\\addProductForm.js"),"addShopAccountForm":require("./template-options\\addShopAccountForm.js"),"addShopAppearanceForm":require("./template-options\\addShopAppearanceForm.js"),"adminApproveForm":require("./template-options\\adminApproveForm.js"),"couponForm":require("./template-options\\couponForm.js"),"genericForm":require("./template-options\\genericForm.js"),"productExport":require("./template-options\\productExport.js"),"productImport":require("./template-options\\productImport.js"),"searchForm":require("./template-options\\searchForm.js"),"shopSettingForm":require("./template-options\\shopSettingForm.js")})})
+var bulk = ({"controllers":(function () {var f = require("./controllers/index.js");f["abstractAdd"]=require("./controllers/abstractAdd.js");f["abstractAdvanceList"]=require("./controllers/abstractAdvanceList.js");f["abstractList"]=require("./controllers/abstractList.js");f["adminAccount"]=require("./controllers/adminAccount.js");f["adminAccountAdd"]=require("./controllers/adminAccountAdd.js");f["adminAttribute"]=require("./controllers/adminAttribute.js");f["adminAttributeAdd"]=require("./controllers/adminAttributeAdd.js");f["adminAttributeSet"]=require("./controllers/adminAttributeSet.js");f["adminAttributeSetAdd"]=require("./controllers/adminAttributeSetAdd.js");f["adminBrand"]=require("./controllers/adminBrand.js");f["adminBrandAdd"]=require("./controllers/adminBrandAdd.js");f["adminCategory"]=require("./controllers/adminCategory.js");f["adminGlobalCoupon"]=require("./controllers/adminGlobalCoupon.js");f["adminGlobalCouponAdd"]=require("./controllers/adminGlobalCouponAdd.js");f["adminNewsletter"]=require("./controllers/adminNewsletter.js");f["adminOnTopCreditAdd"]=require("./controllers/adminOnTopCreditAdd.js");f["adminOnTopCreditList"]=require("./controllers/adminOnTopCreditList.js");f["adminProductApprovalDetail"]=require("./controllers/adminProductApprovalDetail.js");f["adminProductApprovalList"]=require("./controllers/adminProductApprovalList.js");f["adminProductDetail"]=require("./controllers/adminProductDetail.js");f["adminProductList"]=require("./controllers/adminProductList.js");f["adminRole"]=require("./controllers/adminRole.js");f["adminRoleAdd"]=require("./controllers/adminRoleAdd.js");f["adminSellerCoupon"]=require("./controllers/adminSellerCoupon.js");f["adminSellerCouponAdd"]=require("./controllers/adminSellerCouponAdd.js");f["adminShop"]=require("./controllers/adminShop.js");f["adminShopAdd"]=require("./controllers/adminShopAdd.js");f["adminShoptype"]=require("./controllers/adminShoptype.js");f["adminShoptypeAdd"]=require("./controllers/adminShoptypeAdd.js");f["index"]=require("./controllers/index.js");f["localCategory"]=require("./controllers/localCategory.js");f["login"]=require("./controllers/login.js");f["productAddSelectCategory"]=require("./controllers/productAddSelectCategory.js");f["productExport"]=require("./controllers/productExport.js");f["productImageList"]=require("./controllers/productImageList.js");f["productImageManagement"]=require("./controllers/productImageManagement.js");f["productImport"]=require("./controllers/productImport.js");f["productList"]=require("./controllers/productList.js");f["productListLocalCategory"]=require("./controllers/productListLocalCategory.js");f["productReview"]=require("./controllers/productReview.js");f["root"]=require("./controllers/root.js");f["sellerAccount"]=require("./controllers/sellerAccount.js");f["sellerAccountAdd"]=require("./controllers/sellerAccountAdd.js");f["sellerCoupon"]=require("./controllers/sellerCoupon.js");f["sellerCouponAdd"]=require("./controllers/sellerCouponAdd.js");f["sellerDashboard"]=require("./controllers/sellerDashboard.js");f["sellerInventoryList"]=require("./controllers/sellerInventoryList.js");f["sellerNewsletter"]=require("./controllers/sellerNewsletter.js");f["sellerOnboarding"]=require("./controllers/sellerOnboarding.js");f["sellerProductDetail"]=require("./controllers/sellerProductDetail.js");f["sellerRole"]=require("./controllers/sellerRole.js");f["sellerRoleAdd"]=require("./controllers/sellerRoleAdd.js");f["sellerShopAppearance"]=require("./controllers/sellerShopAppearance.js");f["sellerShopSetting"]=require("./controllers/sellerShopSetting.js");f["test"]=require("./controllers/test.js");return f;})(),"services":({"Dashboard":require("./services/Dashboard.js"),"OnTopCredit":require("./services/OnTopCredit.js"),"OnTopCreditService":require("./services/OnTopCreditService.js"),"Onboarding":require("./services/Onboarding.js"),"adminAccountService":require("./services/adminAccountService.js"),"adminPermissionService":require("./services/adminPermissionService.js"),"adminRoleService":require("./services/adminRoleService.js"),"adminShopService":require("./services/adminShopService.js"),"adminShoptypeService":require("./services/adminShoptypeService.js"),"alert":require("./services/alert.js"),"attribute":require("./services/attribute.js"),"attributeService":require("./services/attributeService.js"),"attributeSet":require("./services/attributeSet.js"),"attributeSetService":require("./services/attributeSetService.js"),"blocker":require("./services/blocker.js"),"brand":require("./services/brand.js"),"brandService":require("./services/brandService.js"),"category":require("./services/category.js"),"coupon":require("./services/coupon.js"),"credential":require("./services/credential.js"),"exceptionHandler":require("./services/exceptionHandler.js"),"fileService":require("./services/fileService.js"),"globalCategory":require("./services/globalCategory.js"),"globalCategoryService":require("./services/globalCategoryService.js"),"globalCouponService":require("./services/globalCouponService.js"),"image":require("./services/image.js"),"imageService":require("./services/imageService.js"),"inventoryService":require("./services/inventoryService.js"),"knownException":require("./services/knownException.js"),"localCategory":require("./services/localCategory.js"),"localCategoryService":require("./services/localCategoryService.js"),"newsletterService":require("./services/newsletterService.js"),"product":require("./services/product.js"),"productReviewService":require("./services/productReviewService.js"),"sellerAccountService":require("./services/sellerAccountService.js"),"sellerCouponService":require("./services/sellerCouponService.js"),"sellerPermissionService":require("./services/sellerPermissionService.js"),"sellerRoleService":require("./services/sellerRoleService.js"),"shop":require("./services/shop.js"),"shopAppearanceService":require("./services/shopAppearanceService.js"),"shopPermissionService":require("./services/shopPermissionService.js"),"shopProfileService":require("./services/shopProfileService.js")}),"helpers":({"base64":require("./helpers/base64.js"),"common":require("./helpers/common.js"),"storage":require("./helpers/storage.js"),"util":require("./helpers/util.js"),"variantPair":require("./helpers/variantPair.js")}),"directives":({"ncTradableSelect":require("./directives/ncTradableSelect.js"),"ngCkeditor":require("./directives/ngCkeditor.js"),"ngDateBefore":require("./directives/ngDateBefore.js"),"ngDelegate":require("./directives/ngDelegate.js"),"ngMatch":require("./directives/ngMatch.js"),"ngMaxnumber":require("./directives/ngMaxnumber.js"),"ngMinnumber":require("./directives/ngMinnumber.js"),"ngPatternRestrict":require("./directives/ngPatternRestrict.js"),"ngPermission":require("./directives/ngPermission.js"),"ngSlideToggle":require("./directives/ngSlideToggle.js"),"ngTemplate":require("./directives/ngTemplate.js"),"popoverAny":require("./directives/popoverAny.js")}),"filters":({"capitalize":require("./filters/capitalize.js"),"exclude":require("./filters/exclude.js"),"excludeCategory":require("./filters/excludeCategory.js"),"html":require("./filters/html.js"),"importGuidelineExample":require("./filters/importGuidelineExample.js"),"leadingzero":require("./filters/leadingzero.js"),"ordinal":require("./filters/ordinal.js"),"slice":require("./filters/slice.js"),"truncate":require("./filters/truncate.js"),"truth":require("./filters/truth.js"),"variantValue":require("./filters/variantValue.js")}),"template-options":({"PromotionForm":require("./template-options/PromotionForm.js"),"addBrandForm":require("./template-options/addBrandForm.js"),"addCategoryForm":require("./template-options/addCategoryForm.js"),"addNewsletterForm":require("./template-options/addNewsletterForm.js"),"addProductForm":require("./template-options/addProductForm.js"),"addShopAccountForm":require("./template-options/addShopAccountForm.js"),"addShopAppearanceForm":require("./template-options/addShopAppearanceForm.js"),"adminApproveForm":require("./template-options/adminApproveForm.js"),"couponForm":require("./template-options/couponForm.js"),"genericForm":require("./template-options/genericForm.js"),"productExport":require("./template-options/productExport.js"),"productImport":require("./template-options/productImport.js"),"searchForm":require("./template-options/searchForm.js"),"shopSettingForm":require("./template-options/shopSettingForm.js")})})
 var config = require('./config')
 var route = require('./route')
 var template = require('./template')
@@ -210,7 +210,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('TestCtrl', controllers.test)
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\adminAccount.js":6,"./controllers\\adminAccountAdd.js":7,"./controllers\\adminAttribute.js":8,"./controllers\\adminAttributeAdd.js":9,"./controllers\\adminAttributeSet.js":10,"./controllers\\adminAttributeSetAdd.js":11,"./controllers\\adminBrand.js":12,"./controllers\\adminBrandAdd.js":13,"./controllers\\adminCategory.js":14,"./controllers\\adminGlobalCoupon.js":15,"./controllers\\adminGlobalCouponAdd.js":16,"./controllers\\adminNewsletter.js":17,"./controllers\\adminOnTopCreditAdd.js":18,"./controllers\\adminOnTopCreditList.js":19,"./controllers\\adminProductApprovalDetail.js":20,"./controllers\\adminProductApprovalList.js":21,"./controllers\\adminProductDetail.js":22,"./controllers\\adminProductList.js":23,"./controllers\\adminRole.js":24,"./controllers\\adminRoleAdd.js":25,"./controllers\\adminSellerCoupon.js":26,"./controllers\\adminSellerCouponAdd.js":27,"./controllers\\adminShop.js":28,"./controllers\\adminShopAdd.js":29,"./controllers\\adminShoptype.js":30,"./controllers\\adminShoptypeAdd.js":31,"./controllers\\index.js":32,"./controllers\\localCategory.js":33,"./controllers\\login.js":34,"./controllers\\productAddSelectCategory.js":35,"./controllers\\productExport.js":36,"./controllers\\productImageList.js":37,"./controllers\\productImageManagement.js":38,"./controllers\\productImport.js":39,"./controllers\\productList.js":40,"./controllers\\productListLocalCategory.js":41,"./controllers\\productReview.js":42,"./controllers\\root.js":43,"./controllers\\sellerAccount.js":44,"./controllers\\sellerAccountAdd.js":45,"./controllers\\sellerCoupon.js":46,"./controllers\\sellerCouponAdd.js":47,"./controllers\\sellerDashboard.js":48,"./controllers\\sellerInventoryList.js":49,"./controllers\\sellerNewsletter.js":50,"./controllers\\sellerOnboarding.js":51,"./controllers\\sellerProductDetail.js":52,"./controllers\\sellerRole.js":53,"./controllers\\sellerRoleAdd.js":54,"./controllers\\sellerShopAppearance.js":55,"./controllers\\sellerShopSetting.js":56,"./controllers\\test.js":57,"./directives\\ncTradableSelect.js":58,"./directives\\ngCkeditor.js":59,"./directives\\ngDateBefore.js":60,"./directives\\ngDelegate.js":61,"./directives\\ngMatch.js":62,"./directives\\ngMaxnumber.js":63,"./directives\\ngMinnumber.js":64,"./directives\\ngPatternRestrict.js":65,"./directives\\ngPermission.js":66,"./directives\\ngSlideToggle.js":67,"./directives\\ngTemplate.js":68,"./directives\\popoverAny.js":69,"./filters\\capitalize.js":70,"./filters\\exclude.js":71,"./filters\\excludeCategory.js":72,"./filters\\html.js":73,"./filters\\importGuidelineExample.js":74,"./filters\\leadingzero.js":75,"./filters\\ordinal.js":76,"./filters\\slice.js":77,"./filters\\truncate.js":78,"./filters\\truth.js":79,"./filters\\variantValue.js":80,"./helpers\\base64.js":81,"./helpers\\common.js":82,"./helpers\\storage.js":83,"./helpers\\util.js":84,"./helpers\\variantPair.js":85,"./modules/nc":113,"./modules/product-detail":119,"./modules/schematics":121,"./route":130,"./services\\Dashboard.js":131,"./services\\OnTopCredit.js":132,"./services\\OnTopCreditService.js":133,"./services\\Onboarding.js":134,"./services\\adminAccountService.js":135,"./services\\adminPermissionService.js":136,"./services\\adminRoleService.js":137,"./services\\adminShopService.js":138,"./services\\adminShoptypeService.js":139,"./services\\alert.js":140,"./services\\attribute.js":141,"./services\\attributeService.js":142,"./services\\attributeSet.js":143,"./services\\attributeSetService.js":144,"./services\\blocker.js":145,"./services\\brand.js":146,"./services\\brandService.js":147,"./services\\category.js":148,"./services\\coupon.js":149,"./services\\credential.js":150,"./services\\exceptionHandler.js":151,"./services\\fileService.js":152,"./services\\globalCategory.js":153,"./services\\globalCategoryService.js":154,"./services\\globalCouponService.js":155,"./services\\image.js":156,"./services\\imageService.js":157,"./services\\inventoryService.js":158,"./services\\knownException.js":159,"./services\\localCategory.js":160,"./services\\localCategoryService.js":161,"./services\\newsletterService.js":162,"./services\\product.js":163,"./services\\productReviewService.js":164,"./services\\sellerAccountService.js":165,"./services\\sellerCouponService.js":166,"./services\\sellerPermissionService.js":167,"./services\\sellerRoleService.js":168,"./services\\shop.js":169,"./services\\shopAppearanceService.js":170,"./services\\shopPermissionService.js":171,"./services\\shopProfileService.js":172,"./template":187,"./template-options\\PromotionForm.js":173,"./template-options\\addBrandForm.js":174,"./template-options\\addCategoryForm.js":175,"./template-options\\addNewsletterForm.js":176,"./template-options\\addProductForm.js":177,"./template-options\\addShopAccountForm.js":178,"./template-options\\addShopAppearanceForm.js":179,"./template-options\\adminApproveForm.js":180,"./template-options\\couponForm.js":181,"./template-options\\genericForm.js":182,"./template-options\\productExport.js":183,"./template-options\\productImport.js":184,"./template-options\\searchForm.js":185,"./template-options\\shopSettingForm.js":186,"angular":206,"angular-animate":189,"angular-base64":190,"angular-bootstrap-datetimepicker":191,"angular-chart.js":192,"angular-clipboard":193,"angular-cookies":195,"angular-file-upload":196,"angular-sanitize":198,"angular-scroll":200,"angular-ui-bootstrap":202,"angular-ui-tree":204,"lodash":209,"ng-file-upload":212,"skeemas":216,"ui-select/dist/select.js":228}],2:[function(require,module,exports){
+},{"./config":2,"./controllers/abstractAdd.js":3,"./controllers/abstractAdvanceList.js":4,"./controllers/abstractList.js":5,"./controllers/adminAccount.js":6,"./controllers/adminAccountAdd.js":7,"./controllers/adminAttribute.js":8,"./controllers/adminAttributeAdd.js":9,"./controllers/adminAttributeSet.js":10,"./controllers/adminAttributeSetAdd.js":11,"./controllers/adminBrand.js":12,"./controllers/adminBrandAdd.js":13,"./controllers/adminCategory.js":14,"./controllers/adminGlobalCoupon.js":15,"./controllers/adminGlobalCouponAdd.js":16,"./controllers/adminNewsletter.js":17,"./controllers/adminOnTopCreditAdd.js":18,"./controllers/adminOnTopCreditList.js":19,"./controllers/adminProductApprovalDetail.js":20,"./controllers/adminProductApprovalList.js":21,"./controllers/adminProductDetail.js":22,"./controllers/adminProductList.js":23,"./controllers/adminRole.js":24,"./controllers/adminRoleAdd.js":25,"./controllers/adminSellerCoupon.js":26,"./controllers/adminSellerCouponAdd.js":27,"./controllers/adminShop.js":28,"./controllers/adminShopAdd.js":29,"./controllers/adminShoptype.js":30,"./controllers/adminShoptypeAdd.js":31,"./controllers/index.js":32,"./controllers/localCategory.js":33,"./controllers/login.js":34,"./controllers/productAddSelectCategory.js":35,"./controllers/productExport.js":36,"./controllers/productImageList.js":37,"./controllers/productImageManagement.js":38,"./controllers/productImport.js":39,"./controllers/productList.js":40,"./controllers/productListLocalCategory.js":41,"./controllers/productReview.js":42,"./controllers/root.js":43,"./controllers/sellerAccount.js":44,"./controllers/sellerAccountAdd.js":45,"./controllers/sellerCoupon.js":46,"./controllers/sellerCouponAdd.js":47,"./controllers/sellerDashboard.js":48,"./controllers/sellerInventoryList.js":49,"./controllers/sellerNewsletter.js":50,"./controllers/sellerOnboarding.js":51,"./controllers/sellerProductDetail.js":52,"./controllers/sellerRole.js":53,"./controllers/sellerRoleAdd.js":54,"./controllers/sellerShopAppearance.js":55,"./controllers/sellerShopSetting.js":56,"./controllers/test.js":57,"./directives/ncTradableSelect.js":58,"./directives/ngCkeditor.js":59,"./directives/ngDateBefore.js":60,"./directives/ngDelegate.js":61,"./directives/ngMatch.js":62,"./directives/ngMaxnumber.js":63,"./directives/ngMinnumber.js":64,"./directives/ngPatternRestrict.js":65,"./directives/ngPermission.js":66,"./directives/ngSlideToggle.js":67,"./directives/ngTemplate.js":68,"./directives/popoverAny.js":69,"./filters/capitalize.js":70,"./filters/exclude.js":71,"./filters/excludeCategory.js":72,"./filters/html.js":73,"./filters/importGuidelineExample.js":74,"./filters/leadingzero.js":75,"./filters/ordinal.js":76,"./filters/slice.js":77,"./filters/truncate.js":78,"./filters/truth.js":79,"./filters/variantValue.js":80,"./helpers/base64.js":81,"./helpers/common.js":82,"./helpers/storage.js":83,"./helpers/util.js":84,"./helpers/variantPair.js":85,"./modules/nc":113,"./modules/product-detail":119,"./modules/schematics":121,"./route":130,"./services/Dashboard.js":131,"./services/OnTopCredit.js":132,"./services/OnTopCreditService.js":133,"./services/Onboarding.js":134,"./services/adminAccountService.js":135,"./services/adminPermissionService.js":136,"./services/adminRoleService.js":137,"./services/adminShopService.js":138,"./services/adminShoptypeService.js":139,"./services/alert.js":140,"./services/attribute.js":141,"./services/attributeService.js":142,"./services/attributeSet.js":143,"./services/attributeSetService.js":144,"./services/blocker.js":145,"./services/brand.js":146,"./services/brandService.js":147,"./services/category.js":148,"./services/coupon.js":149,"./services/credential.js":150,"./services/exceptionHandler.js":151,"./services/fileService.js":152,"./services/globalCategory.js":153,"./services/globalCategoryService.js":154,"./services/globalCouponService.js":155,"./services/image.js":156,"./services/imageService.js":157,"./services/inventoryService.js":158,"./services/knownException.js":159,"./services/localCategory.js":160,"./services/localCategoryService.js":161,"./services/newsletterService.js":162,"./services/product.js":163,"./services/productReviewService.js":164,"./services/sellerAccountService.js":165,"./services/sellerCouponService.js":166,"./services/sellerPermissionService.js":167,"./services/sellerRoleService.js":168,"./services/shop.js":169,"./services/shopAppearanceService.js":170,"./services/shopPermissionService.js":171,"./services/shopProfileService.js":172,"./template":187,"./template-options/PromotionForm.js":173,"./template-options/addBrandForm.js":174,"./template-options/addCategoryForm.js":175,"./template-options/addNewsletterForm.js":176,"./template-options/addProductForm.js":177,"./template-options/addShopAccountForm.js":178,"./template-options/addShopAppearanceForm.js":179,"./template-options/adminApproveForm.js":180,"./template-options/couponForm.js":181,"./template-options/genericForm.js":182,"./template-options/productExport.js":183,"./template-options/productImport.js":184,"./template-options/searchForm.js":185,"./template-options/shopSettingForm.js":186,"angular":208,"angular-animate":189,"angular-base64":190,"angular-bootstrap-datetimepicker":192,"angular-chart.js":193,"angular-clipboard":195,"angular-cookies":197,"angular-file-upload":198,"angular-sanitize":200,"angular-scroll":202,"angular-ui-bootstrap":204,"angular-ui-tree":206,"lodash":211,"ng-file-upload":213,"skeemas":214,"ui-select/dist/select.js":228}],2:[function(require,module,exports){
 module.exports = {
 	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
@@ -1796,7 +1796,7 @@ module.exports = ["$scope", "$controller", function ($scope, $controller) {
     });
 
 }];
-},{"angular":206}],21:[function(require,module,exports){
+},{"angular":208}],21:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "config", "util", function($scope, $controller, Product, config, util) {
 	'ngInject';
     $scope.asStatus = Product.getStatus;
@@ -1850,7 +1850,7 @@ module.exports = ["$scope", "$controller", function ($scope, $controller) {
     });
 
 }];
-},{"angular":206}],23:[function(require,module,exports){
+},{"angular":208}],23:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "config", function($scope, $controller, Product, config) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
@@ -2514,7 +2514,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	});
 }];
 
-},{"angular":206}],36:[function(require,module,exports){
+},{"angular":208}],36:[function(require,module,exports){
 module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product, AttributeSet) {
 	$scope.ProductList = [];
 	$scope.SELECT_ALL = false;
@@ -4044,7 +4044,7 @@ module.exports = ["$scope", "$controller", "storage", function($scope, $controll
 
 }];
 
-},{"angular":206}],53:[function(require,module,exports){
+},{"angular":208}],53:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerRoleService", "config", function($scope, $controller, SellerRoleService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -4582,7 +4582,7 @@ module.exports = [function() {
 		}
 	};
 }];
-},{"angular":206}],62:[function(require,module,exports){
+},{"angular":208}],62:[function(require,module,exports){
 module.exports = ["$interpolate", function($interpolate) {
 	'ngInject';
 	return {
@@ -5062,7 +5062,7 @@ module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownE
         }
     };
 }];
-},{"angular":206}],69:[function(require,module,exports){
+},{"angular":208}],69:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$document', '$window', function($document, $window) {
 	$window._globalPopoverAny = null;
@@ -5092,7 +5092,7 @@ module.exports = ['$document', '$window', function($document, $window) {
 		}
 	};
 }];
-},{"angular":206}],70:[function(require,module,exports){
+},{"angular":208}],70:[function(require,module,exports){
 module.exports = [function() {
   return function(input, scope) {
     if (input!=null)
@@ -5135,7 +5135,7 @@ module.exports = [function() {
      });
   }
 }];
-},{"angular":206}],72:[function(require,module,exports){
+},{"angular":208}],72:[function(require,module,exports){
 module.exports = [function() {
   
 var search = function(catId, tmp) {
@@ -5265,7 +5265,7 @@ module.exports = [function() {
   	return input;
   }
 }];
-},{"angular":206}],77:[function(require,module,exports){
+},{"angular":208}],77:[function(require,module,exports){
 /*
  * Get slice or subarray of array
  */
@@ -5324,7 +5324,7 @@ module.exports = [function() {
      return i;
   }
 }];
-},{"angular":206}],80:[function(require,module,exports){
+},{"angular":208}],80:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return function(value) {
@@ -6563,7 +6563,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":206}],93:[function(require,module,exports){
+},{"angular":208}],93:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEmpty', ["$templateCache", function($templateCache) {
 		return {
@@ -7063,7 +7063,7 @@ angular.module('nc')
             }
         };
     }]);
-},{"angular":206}],100:[function(require,module,exports){
+},{"angular":208}],100:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncPagination', function() {
 		this.paginationSizes = [10,20,30];
@@ -7317,7 +7317,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":206}],105:[function(require,module,exports){
+},{"angular":208}],105:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncTreeSelect', ["$interpolate", "$templateCache", function($interpolate, $templateCache) {
 		/**
@@ -7709,7 +7709,7 @@ angular.module('nc')
     }
   });
 
-},{"angular":206}],112:[function(require,module,exports){
+},{"angular":208}],112:[function(require,module,exports){
 angular.module('nc')
 	.filter('replace', function() {
 		return function(input, from, to) {
@@ -7736,11 +7736,11 @@ angular.module('nc', ['ngSanitize', 'ui.bootstrap', 'ui.select', 'duScroll', 'an
 		'clickanystart' : 'clickanyend'
 	});
 }]);
-(function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives\\ncAction.js"),"ncAdvanceSearch":require("./directives\\ncAdvanceSearch.js"),"ncAlert":require("./directives\\ncAlert.js"),"ncBindCompile":require("./directives\\ncBindCompile.js"),"ncBreadcrumpSelect":require("./directives\\ncBreadcrumpSelect.js"),"ncBulk":require("./directives\\ncBulk.js"),"ncDateRange":require("./directives\\ncDateRange.js"),"ncEmpty":require("./directives\\ncEmpty.js"),"ncEye":require("./directives\\ncEye.js"),"ncFilter":require("./directives\\ncFilter.js"),"ncImageGallery":require("./directives\\ncImageGallery.js"),"ncImageIntegrity":require("./directives\\ncImageIntegrity.js"),"ncLoading":require("./directives\\ncLoading.js"),"ncPageTitle":require("./directives\\ncPageTitle.js"),"ncPagination":require("./directives\\ncPagination.js"),"ncPermission":require("./directives\\ncPermission.js"),"ncSearch":require("./directives\\ncSearch.js"),"ncTable":require("./directives\\ncTable.js"),"ncTemplate":require("./directives\\ncTemplate.js"),"ncTreeSelect":require("./directives\\ncTreeSelect.js"),"ncUiSelect":require("./directives\\ncUiSelect.js")});f["filters"]=({"compact":require("./filters\\compact.js"),"date":require("./filters\\date.js"),"escapeHtml":require("./filters\\escapeHtml.js"),"map":require("./filters\\map.js"),"ncexclude":require("./filters\\ncexclude.js"),"replace":require("./filters\\replace.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
+(function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives/ncAction.js"),"ncAdvanceSearch":require("./directives/ncAdvanceSearch.js"),"ncAlert":require("./directives/ncAlert.js"),"ncBindCompile":require("./directives/ncBindCompile.js"),"ncBreadcrumpSelect":require("./directives/ncBreadcrumpSelect.js"),"ncBulk":require("./directives/ncBulk.js"),"ncDateRange":require("./directives/ncDateRange.js"),"ncEmpty":require("./directives/ncEmpty.js"),"ncEye":require("./directives/ncEye.js"),"ncFilter":require("./directives/ncFilter.js"),"ncImageGallery":require("./directives/ncImageGallery.js"),"ncImageIntegrity":require("./directives/ncImageIntegrity.js"),"ncLoading":require("./directives/ncLoading.js"),"ncPageTitle":require("./directives/ncPageTitle.js"),"ncPagination":require("./directives/ncPagination.js"),"ncPermission":require("./directives/ncPermission.js"),"ncSearch":require("./directives/ncSearch.js"),"ncTable":require("./directives/ncTable.js"),"ncTemplate":require("./directives/ncTemplate.js"),"ncTreeSelect":require("./directives/ncTreeSelect.js"),"ncUiSelect":require("./directives/ncUiSelect.js")});f["filters"]=({"compact":require("./filters/compact.js"),"date":require("./filters/date.js"),"escapeHtml":require("./filters/escapeHtml.js"),"map":require("./filters/map.js"),"ncexclude":require("./filters/ncexclude.js"),"replace":require("./filters/replace.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./directives\\ncAction.js":86,"./directives\\ncAdvanceSearch.js":87,"./directives\\ncAlert.js":88,"./directives\\ncBindCompile.js":89,"./directives\\ncBreadcrumpSelect.js":90,"./directives\\ncBulk.js":91,"./directives\\ncDateRange.js":92,"./directives\\ncEmpty.js":93,"./directives\\ncEye.js":94,"./directives\\ncFilter.js":95,"./directives\\ncImageGallery.js":96,"./directives\\ncImageIntegrity.js":97,"./directives\\ncLoading.js":98,"./directives\\ncPageTitle.js":99,"./directives\\ncPagination.js":100,"./directives\\ncPermission.js":101,"./directives\\ncSearch.js":102,"./directives\\ncTable.js":103,"./directives\\ncTemplate.js":104,"./directives\\ncTreeSelect.js":105,"./directives\\ncUiSelect.js":106,"./filters\\compact.js":107,"./filters\\date.js":108,"./filters\\escapeHtml.js":109,"./filters\\map.js":110,"./filters\\ncexclude.js":111,"./filters\\replace.js":112,"./index.js":113,"./template.js":114,"angular":206,"angular-file-upload":196,"angular-sanitize":198,"angular-scroll":200,"angular-ui-bootstrap":202,"jquery":208,"lodash":209,"ui-select":229}],114:[function(require,module,exports){
+},{"./directives/ncAction.js":86,"./directives/ncAdvanceSearch.js":87,"./directives/ncAlert.js":88,"./directives/ncBindCompile.js":89,"./directives/ncBreadcrumpSelect.js":90,"./directives/ncBulk.js":91,"./directives/ncDateRange.js":92,"./directives/ncEmpty.js":93,"./directives/ncEye.js":94,"./directives/ncFilter.js":95,"./directives/ncImageGallery.js":96,"./directives/ncImageIntegrity.js":97,"./directives/ncLoading.js":98,"./directives/ncPageTitle.js":99,"./directives/ncPagination.js":100,"./directives/ncPermission.js":101,"./directives/ncSearch.js":102,"./directives/ncTable.js":103,"./directives/ncTemplate.js":104,"./directives/ncTreeSelect.js":105,"./directives/ncUiSelect.js":106,"./filters/compact.js":107,"./filters/date.js":108,"./filters/escapeHtml.js":109,"./filters/map.js":110,"./filters/ncexclude.js":111,"./filters/replace.js":112,"./index.js":113,"./template.js":114,"angular":208,"angular-file-upload":198,"angular-sanitize":200,"angular-scroll":202,"angular-ui-bootstrap":204,"jquery":210,"lodash":211,"ui-select":229}],114:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -7807,8 +7807,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncEye',
-    "<a ng-click=_toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\r" +
-    "\n" +
+    "<a ng-click=_toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\n" +
     "                            'fa fa-eye color-dark-grey eye-icon' : model}\"></i></a>"
   );
 
@@ -7874,12 +7873,9 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncTableSort',
-    "<a class=header-link ng-click=click()><span ng-class=\"{ 'active-underline' : isCurrent() }\" ng-transclude></span></a> <i class=fa ng-class=\"{ \r" +
-    "\n" +
-    "'fa fa-caret-down' : isCurrent() && direction, \r" +
-    "\n" +
-    "'fa fa-caret-up' : isCurrent() && !direction, \r" +
-    "\n" +
+    "<a class=header-link ng-click=click()><span ng-class=\"{ 'active-underline' : isCurrent() }\" ng-transclude></span></a> <i class=fa ng-class=\"{ \n" +
+    "'fa fa-caret-down' : isCurrent() && direction, \n" +
+    "'fa fa-caret-up' : isCurrent() && !direction, \n" +
     "'fa fa-caret-down color-grey' : !isCurrent() }\" ng-click=click()></i>"
   );
 
@@ -8667,7 +8663,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
   }])
 
-},{"angular":206}],116:[function(require,module,exports){
+},{"angular":208}],116:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
 factory('$productAdd', ["Product", "AttributeSet", "ImageService", "GlobalCategory", "$q", "Category", "util", function(Product, AttributeSet, ImageService, GlobalCategory, $q, Category, util) {
@@ -8867,7 +8863,7 @@ factory('$productAdd', ["Product", "AttributeSet", "ImageService", "GlobalCatego
   return $productAdd;
 }]);
 
-},{"angular":206}],117:[function(require,module,exports){
+},{"angular":208}],117:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
     .directive('apComponent', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", "Product", "util", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse, Product, util) {
@@ -8890,7 +8886,7 @@ angular.module('productDetail')
         };
     }]);
 
-},{"angular":206}],118:[function(require,module,exports){
+},{"angular":208}],118:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
     .directive('apVariationOption', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", "Product", "util", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse, Product, util) {
@@ -8911,15 +8907,15 @@ angular.module('productDetail')
         };
     }]);
 
-},{"angular":206}],119:[function(require,module,exports){
+},{"angular":208}],119:[function(require,module,exports){
 var angular = require('angular');
 
 
 angular.module('productDetail', []);
 
-(function () {var f = require("./index.js");f["core"]=({"abstractProductAddCtrl":require("./core\\abstractProductAddCtrl.js"),"productLoader":require("./core\\productLoader.js")});f["directives"]=({"apComponent":require("./directives\\apComponent.js"),"apVariationOption":require("./directives\\apVariationOption.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
+(function () {var f = require("./index.js");f["core"]=({"abstractProductAddCtrl":require("./core/abstractProductAddCtrl.js"),"productLoader":require("./core/productLoader.js")});f["directives"]=({"apComponent":require("./directives/apComponent.js"),"apVariationOption":require("./directives/apVariationOption.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
-},{"./core\\abstractProductAddCtrl.js":115,"./core\\productLoader.js":116,"./directives\\apComponent.js":117,"./directives\\apVariationOption.js":118,"./index.js":119,"./template.js":120,"angular":206}],120:[function(require,module,exports){
+},{"./core/abstractProductAddCtrl.js":115,"./core/productLoader.js":116,"./directives/apComponent.js":117,"./directives/apVariationOption.js":118,"./index.js":119,"./template.js":120,"angular":208}],120:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -8936,14 +8932,10 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-description',
-    "<div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=DescriptionFullEn ng-model=variantPtr.DescriptionFullEn>\r" +
-    "\n" +
-    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=variantPtr.DescriptionFullTh>\r" +
-    "\n" +
-    "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=addProductForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=variantPtr.DescriptionShortEn>\r" +
-    "\n" +
-    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=variantPtr.DescriptionShortTh>\r" +
-    "\n" +
+    "<div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=DescriptionFullEn ng-model=variantPtr.DescriptionFullEn>\n" +
+    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=variantPtr.DescriptionFullTh>\n" +
+    "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=addProductForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=variantPtr.DescriptionShortEn>\n" +
+    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=variantPtr.DescriptionShortTh>\n" +
     "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint1En nc-label=\"Killer Point 1 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint1En ng-model=variantPtr.KillerPoint1En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint1Th nc-label=\"Killer Point 1 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint1Th ng-model=variantPtr.KillerPoint1Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint2En nc-label=\"Killer Point 2 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint2En ng-model=variantPtr.KillerPoint2En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint2Th nc-label=\"Killer Point 2 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint2Th ng-model=variantPtr.KillerPoint2Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint3En nc-label=\"Killer Point 3 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint3En ng-model=variantPtr.KillerPoint3En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint3Th nc-label=\"Killer Point 3 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint3Th ng-model=variantPtr.KillerPoint3Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div></div></div></div>"
   );
 
@@ -9009,105 +9001,58 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/tab-more-option',
-    "<div id=add-product-more-option-tab-content><div ap-component=ap/inner-tab-breadcrumb></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Relationship</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Related Products\" nc-template-form=form.RelatedProducts nc-template-options-path=addProductForm/RelatedProducts><ui-select ng-model=formData.RelatedProducts name=RelatedProducts nc-tag-validator nc-max-tag-count=10 multiple><ui-select-match placeholder=\"Input Product Name\"><span>{{ $item.ProductNameEn }}</span></ui-select-match><ui-select-choices repeat=\"item in (dataset.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' ) track by item.Pid\" refresh=refresher.RelatedProducts($select.search) refresh-delay=1>{{ item.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div></div><div class=row><div class=col-xs-12><div ap-component=ap/section-seo></div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>More Details</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Effective On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" placeholder=\"Select date and time when product will go online\" class=\"input-icon-calendar form-control\" value=\"{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.EffectiveDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'hour' }\"></ul></div><span class=help-block></span></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go online\"></i></div></div><div class=form-group><div class=width-label><label class=control-label>Expire On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white placeholder=\"Select date and time when product will go offline\" class=\"input-icon-calendar form-control\" name=ExpireDate ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" value=\"{{ formData.ExpireDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ExpireDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'hour' }\"></ul></div><div class=width-field-large><span class=\"help-block color-red\" ng-if=\"formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate\"><span>Effective date/time must come before expire date/time</span></span></div></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go offline\"></i></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/TheOneCardEarn nc-template-form=form.TheOneCardEarn nc-label=\"The One Card earn\"><input disabled class=form-control name=TheOneCardEarn ng-model=\"formData.TheOneCardEarn\"></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Nothing nc-template-form=form.GiftWrap nc-label=\"Gift Wrap\"><select class=form-control ng-model=formData.GiftWrap><option value=N>No</option><option value=Y>Yes</option></select></div><div class=form-group><div class=width-label><label class=control-label>Control Flag</label></div><div class=width-field-normal><div class=\"checkbox multiple-checkbox\"><label><input type=checkbox ng-model=formData.ControlFlags.Flag1>Flag 1</label><label><input type=checkbox ng-model=formData.ControlFlags.Flag2>Flag 2</label><label><input type=checkbox ng-model=formData.ControlFlags.Flag3>Flag 3</label></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Remark nc-template-form=form.Remark nc-label=Remark><textarea class=form-control ng-pattern=\"/^[^<>]+$/\" maxlength=2000 name=Remark ng-model=formData.Remark>\r" +
-    "\n" +
+    "<div id=add-product-more-option-tab-content><div ap-component=ap/inner-tab-breadcrumb></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Relationship</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Related Products\" nc-template-form=form.RelatedProducts nc-template-options-path=addProductForm/RelatedProducts><ui-select ng-model=formData.RelatedProducts name=RelatedProducts nc-tag-validator nc-max-tag-count=10 multiple><ui-select-match placeholder=\"Input Product Name\"><span>{{ $item.ProductNameEn }}</span></ui-select-match><ui-select-choices repeat=\"item in (dataset.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' ) track by item.Pid\" refresh=refresher.RelatedProducts($select.search) refresh-delay=1>{{ item.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div></div><div class=row><div class=col-xs-12><div ap-component=ap/section-seo></div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>More Details</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Effective On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" placeholder=\"Select date and time when product will go online\" class=\"input-icon-calendar form-control\" value=\"{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.EffectiveDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'hour' }\"></ul></div><span class=help-block></span></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go online\"></i></div></div><div class=form-group><div class=width-label><label class=control-label>Expire On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white placeholder=\"Select date and time when product will go offline\" class=\"input-icon-calendar form-control\" name=ExpireDate ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" value=\"{{ formData.ExpireDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ExpireDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'hour' }\"></ul></div><div class=width-field-large><span class=\"help-block color-red\" ng-if=\"formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate\"><span>Effective date/time must come before expire date/time</span></span></div></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go offline\"></i></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/TheOneCardEarn nc-template-form=form.TheOneCardEarn nc-label=\"The One Card earn\"><input disabled class=form-control name=TheOneCardEarn ng-model=\"formData.TheOneCardEarn\"></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Nothing nc-template-form=form.GiftWrap nc-label=\"Gift Wrap\"><select class=form-control ng-model=formData.GiftWrap><option value=N>No</option><option value=Y>Yes</option></select></div><div class=form-group><div class=width-label><label class=control-label>Control Flag</label></div><div class=width-field-normal><div class=\"checkbox multiple-checkbox\"><label><input type=checkbox ng-model=formData.ControlFlags.Flag1>Flag 1</label><label><input type=checkbox ng-model=formData.ControlFlags.Flag2>Flag 2</label><label><input type=checkbox ng-model=formData.ControlFlags.Flag3>Flag 3</label></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Remark nc-template-form=form.Remark nc-label=Remark><textarea class=form-control ng-pattern=\"/^[^<>]+$/\" maxlength=2000 name=Remark ng-model=formData.Remark>\n" +
     "\t\t\t\t\t\t</textarea></div></div></div></div></div></div>"
   );
 
 
   $templateCache.put('ap/tab-variations',
-    "<div id=add-product-variation-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row ng-if=\"controlFlags.variation != 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content><div class=form-group><p class=form-control-static>Variation will allow you to create a group of products with different attributes such as size and color. Once you enable variation, information from other tabs will be copied into variants that you will create, and variation cannot be disabled. <strong>Please select attribute set before enabling variation.</strong></p><button class=\"btn btn-width-xxl btn-blue margin-top-20\" ng-disabled=!formData.AttributeSet.AttributeSetId ng-click=enableVariation()>Enable Variation</button></div></div></div></div></div><div class=row ng-show=\"controlFlags.variation == 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content ng-if=\"!(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) && controlFlags.variation == 'enable'\"><div class=form-group ng-repeat=\"jth in variationFactorIndices.iterator\" ng-show=\"(dataset.attributeOptions[0].options.length > 0) || (jth == 0)\"><div class=width-label><select class=form-control ng-disabled=\"formData.ProductId && dataset.attributeOptions[jth].Attribute\" ng-options=\"i as i.Attribute.AttributeNameEn\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\tfor i in formData.AttributeSet.AttributeSetMaps |\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\ttruth: 'Attribute.VariantStatus' |\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\texclude: dataset.attributeOptions[1 - jth].Attribute : 'AttributeId'\r" +
-    "\n" +
-    "\t\t\t\t\t\t\t\ttrack by i.Attribute.AttributeId\" ng-model=dataset.attributeOptions[jth]><option value=\"\" disabled selected>Select an option..</option></select></div><div ng-template=common/input/width-field-large ng-template-options=\"{\r" +
-    "\n" +
-    "                                    'error' : {\r" +
-    "\n" +
-    "                                        'messages': {\r" +
-    "\n" +
-    "                                            'maxtagcount': 'Cannot exceed 20 tags',\r" +
-    "\n" +
-    "                                            'maxtaglength': 'Tag must contain 30 characters or less',\r" +
-    "\n" +
-    "                                            'pattern': 'Only letters and numbers allowed'\r" +
-    "\n" +
-    "                                        },\r" +
-    "\n" +
-    "                                        'show': true,\r" +
-    "\n" +
-    "                                        'conditions' :  addProductForm['attributeOptions' + jth].$error\r" +
-    "\n" +
-    "                                    }\r" +
-    "\n" +
-    "                                    }\"><ui-select ng-if=isListInput(dataset.attributeOptions[jth].Attribute.DataType) multiple ng-model=dataset.attributeOptions[jth].options><ui-select-match ui-lock-choice=$item._locked placeholder=\"Select variant\">{{ $item.AttributeValue.AttributeValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataset.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search\">{{ i.AttributeValue.AttributeValueEn }}</ui-select-choices></ui-select><ui-select ng-if=isFreeTextInput(dataset.attributeOptions[jth].Attribute.DataType) nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ multiple tagging=tagTransform tagging-label=\"\" tagging-tokens=,|ENTER name=attributeOptions{{jth}} ng-model=dataset.attributeOptions[jth].options><ui-select-match ui-lock-choice=$item._locked placeholder=\"Input variant\">{{ $item.ValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search\">{{ i.ValueEn }}</ui-select-choices></ui-select><input ng-if=!dataset.attributeOptions[jth].Attribute.DataType disabled class=\"form-control\"></div><a class=\"like-text form-text\" ng-click=variationFactorIndices.pushSecond() ng-if=\"dataset.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1\"><i class=\"fa fa-plus-circle color-theme\"></i> Add another option</a> <a ng-show=!formData.ProductId class=\"like-text form-text\" ng-click=variationFactorIndices.popSecond() ng-if=\"variationFactorIndices.length() == 2 && jth == 1\"><i class=\"fa fa-trash color-theme icon-size-20\"></i></a></div><div class=form-group ng-show=\"formData.Variants.length > 0\"><div class=width-label><label class=control-label>Default Variant</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-model=formData.DefaultVariant class=form-control ng-options=\"i as i.text for i in formData.Variants track by i.text\" required></select></div></div></div></div></div><div class=form-section ng-if=\"formData.AttributeSet && formData.Variants.length > 0\" ng-show=\"controlFlags.variation == 'enable'\"><div class=form-section-header>Variant ({{ formData.Variants.length }})</div><div class=\"form-section-content padding-left-30 padding-right-30\"><table class=\"table variation-table\"><thead><tr><th class=column-variant>Variant</th><th class=column-pid ng-if=\"formData.Variants.length > 0 && formData.Variants[0].Pid\">PID</th><th class=column-sku>SKU</th><th class=column-sale-price><label class=required>Sale Price</label></th><th class=column-price>Original Price</th><th class=column-inventory>Inventory</th><th class=column-detail>More Detail</th><th class=column-visibility>Visibility</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td ng-if=\"formData.Variants.length > 0 && formData.Variants[0].Pid\">{{pair.Pid }}</td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
-    "\n" +
-    "                                        'error' : {\r" +
-    "\n" +
-    "                                            'messages': {\r" +
-    "\n" +
-    "                                                'pattern': 'Special characters are not allowed'\r" +
-    "\n" +
-    "                                            },\r" +
-    "\n" +
-    "                                            'show': $root.isInvalid(addProductForm['pair_Sku' + $index]),\r" +
-    "\n" +
-    "                                            'conditions' : addProductForm['pair_Sku' + $index].$error\r" +
-    "\n" +
-    "                                        }\r" +
-    "\n" +
-    "                                    }\"><input ng-disabled=!pair.Visibility class=form-control name=\"pair_Sku{{ $index }}\" maxlength=300 ng-pattern=\"/^[^<>]+$/\" ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }\" ng-model=\"pair.Sku\"></td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
-    "\n" +
-    "                                        'error' : {\r" +
-    "\n" +
-    "                                            'messages': {\r" +
-    "\n" +
-    "                                                'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
-    "\n" +
-    "                                            },\r" +
-    "\n" +
-    "                                            'show': $root.isInvalid(addProductForm['pair_SalePrice' + $index]),\r" +
-    "\n" +
-    "                                            'conditions' : addProductForm['pair_SalePrice' + $index].$error\r" +
-    "\n" +
-    "                                        }\r" +
-    "\n" +
-    "                                    }\"><input type=number ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }\" ng-model=pair.SalePrice name=\"pair_SalePrice{{ $index }}\" ng-disabled=!pair.Visibility required class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
-    "\n" +
-    "\t\t\t\t\t\t                                         'error' : {\r" +
-    "\n" +
-    "\t\t\t\t\t\t                                             'messages': {\r" +
-    "\n" +
-    "\t\t\t\t\t\t                                                 'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
-    "\n" +
-    "\t\t\t\t\t\t                                             },\r" +
-    "\n" +
-    "\t\t\t\t\t\t                                             'show': $root.isInvalid(addProductForm['pair_OriginalPrice' + $index]),\r" +
-    "\n" +
-    "\t\t\t\t\t\t                                             'conditions' : addProductForm['pair_OriginalPrice' + $index].$error\r" +
-    "\n" +
-    "\t\t\t\t\t\t                                         }\r" +
-    "\n" +
-    "\t\t\t\t\t\t                                     }\"><input type=number ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }\" name=pair_OriginalPrice{{$index}} ng-model=pair.OriginalPrice ng-disabled=!pair.Visibility class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
-    "\n" +
-    "                                        'error' : {\r" +
-    "\n" +
-    "                                            'messages': {\r" +
-    "\n" +
-    "                                                'pattern': 'Only numbers allowed'\r" +
-    "\n" +
-    "                                            },\r" +
-    "\n" +
-    "                                            'show': $root.isInvalid(addProductForm['pair_Quantity' + $index]),\r" +
-    "\n" +
-    "                                            'conditions' : addProductForm['pair_Quantity' + $index].$error\r" +
-    "\n" +
-    "                                        }\r" +
-    "\n" +
+    "<div id=add-product-variation-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row ng-if=\"controlFlags.variation != 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content><div class=form-group><p class=form-control-static>Variation will allow you to create a group of products with different attributes such as size and color. Once you enable variation, information from other tabs will be copied into variants that you will create, and variation cannot be disabled. <strong>Please select attribute set before enabling variation.</strong></p><button class=\"btn btn-width-xxl btn-blue margin-top-20\" ng-disabled=!formData.AttributeSet.AttributeSetId ng-click=enableVariation()>Enable Variation</button></div></div></div></div></div><div class=row ng-show=\"controlFlags.variation == 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content ng-if=\"!(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) && controlFlags.variation == 'enable'\"><div class=form-group ng-repeat=\"jth in variationFactorIndices.iterator\" ng-show=\"(dataset.attributeOptions[0].options.length > 0) || (jth == 0)\"><div class=width-label><select class=form-control ng-disabled=\"formData.ProductId && dataset.attributeOptions[jth].Attribute\" ng-options=\"i as i.Attribute.AttributeNameEn\n" +
+    "\t\t\t\t\t\t\t\tfor i in formData.AttributeSet.AttributeSetMaps |\n" +
+    "\t\t\t\t\t\t\t\ttruth: 'Attribute.VariantStatus' |\n" +
+    "\t\t\t\t\t\t\t\texclude: dataset.attributeOptions[1 - jth].Attribute : 'AttributeId'\n" +
+    "\t\t\t\t\t\t\t\ttrack by i.Attribute.AttributeId\" ng-model=dataset.attributeOptions[jth]><option value=\"\" disabled selected>Select an option..</option></select></div><div ng-template=common/input/width-field-large ng-template-options=\"{\n" +
+    "                                    'error' : {\n" +
+    "                                        'messages': {\n" +
+    "                                            'maxtagcount': 'Cannot exceed 20 tags',\n" +
+    "                                            'maxtaglength': 'Tag must contain 30 characters or less',\n" +
+    "                                            'pattern': 'Only letters and numbers allowed'\n" +
+    "                                        },\n" +
+    "                                        'show': true,\n" +
+    "                                        'conditions' :  addProductForm['attributeOptions' + jth].$error\n" +
+    "                                    }\n" +
+    "                                    }\"><ui-select ng-if=isListInput(dataset.attributeOptions[jth].Attribute.DataType) multiple ng-model=dataset.attributeOptions[jth].options><ui-select-match ui-lock-choice=$item._locked placeholder=\"Select variant\">{{ $item.AttributeValue.AttributeValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataset.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search\">{{ i.AttributeValue.AttributeValueEn }}</ui-select-choices></ui-select><ui-select ng-if=isFreeTextInput(dataset.attributeOptions[jth].Attribute.DataType) nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ multiple tagging=tagTransform tagging-label=\"\" tagging-tokens=,|ENTER name=attributeOptions{{jth}} ng-model=dataset.attributeOptions[jth].options><ui-select-match ui-lock-choice=$item._locked placeholder=\"Input variant\">{{ $item.ValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search\">{{ i.ValueEn }}</ui-select-choices></ui-select><input ng-if=!dataset.attributeOptions[jth].Attribute.DataType disabled class=\"form-control\"></div><a class=\"like-text form-text\" ng-click=variationFactorIndices.pushSecond() ng-if=\"dataset.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1\"><i class=\"fa fa-plus-circle color-theme\"></i> Add another option</a> <a ng-show=!formData.ProductId class=\"like-text form-text\" ng-click=variationFactorIndices.popSecond() ng-if=\"variationFactorIndices.length() == 2 && jth == 1\"><i class=\"fa fa-trash color-theme icon-size-20\"></i></a></div><div class=form-group ng-show=\"formData.Variants.length > 0\"><div class=width-label><label class=control-label>Default Variant</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-model=formData.DefaultVariant class=form-control ng-options=\"i as i.text for i in formData.Variants track by i.text\" required></select></div></div></div></div></div><div class=form-section ng-if=\"formData.AttributeSet && formData.Variants.length > 0\" ng-show=\"controlFlags.variation == 'enable'\"><div class=form-section-header>Variant ({{ formData.Variants.length }})</div><div class=\"form-section-content padding-left-30 padding-right-30\"><table class=\"table variation-table\"><thead><tr><th class=column-variant>Variant</th><th class=column-pid ng-if=\"formData.Variants.length > 0 && formData.Variants[0].Pid\">PID</th><th class=column-sku>SKU</th><th class=column-sale-price>Sale Price <span class=color-red>*</span></th><th class=column-price>Original Price</th><th class=column-inventory>Inventory</th><th class=column-detail>More Detail</th><th class=column-visibility>Visibility</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td ng-if=\"formData.Variants.length > 0 && formData.Variants[0].Pid\">{{pair.Pid }}</td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
+    "                                        'error' : {\n" +
+    "                                            'messages': {\n" +
+    "                                                'pattern': 'Special characters are not allowed'\n" +
+    "                                            },\n" +
+    "                                            'show': $root.isInvalid(addProductForm['pair_Sku' + $index]),\n" +
+    "                                            'conditions' : addProductForm['pair_Sku' + $index].$error\n" +
+    "                                        }\n" +
+    "                                    }\"><input ng-disabled=!pair.Visibility class=form-control name=\"pair_Sku{{ $index }}\" maxlength=300 ng-pattern=\"/^[^<>]+$/\" ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }\" ng-model=\"pair.Sku\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
+    "                                        'error' : {\n" +
+    "                                            'messages': {\n" +
+    "                                                'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\n" +
+    "                                            },\n" +
+    "                                            'show': $root.isInvalid(addProductForm['pair_SalePrice' + $index]),\n" +
+    "                                            'conditions' : addProductForm['pair_SalePrice' + $index].$error\n" +
+    "                                        }\n" +
+    "                                    }\"><input type=number ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }\" ng-model=pair.SalePrice name=\"pair_SalePrice{{ $index }}\" ng-disabled=!pair.Visibility required class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
+    "\t\t\t\t\t\t                                         'error' : {\n" +
+    "\t\t\t\t\t\t                                             'messages': {\n" +
+    "\t\t\t\t\t\t                                                 'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\n" +
+    "\t\t\t\t\t\t                                             },\n" +
+    "\t\t\t\t\t\t                                             'show': $root.isInvalid(addProductForm['pair_OriginalPrice' + $index]),\n" +
+    "\t\t\t\t\t\t                                             'conditions' : addProductForm['pair_OriginalPrice' + $index].$error\n" +
+    "\t\t\t\t\t\t                                         }\n" +
+    "\t\t\t\t\t\t                                     }\"><input type=number ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }\" name=pair_OriginalPrice{{$index}} ng-model=pair.OriginalPrice ng-disabled=!pair.Visibility class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
+    "                                        'error' : {\n" +
+    "                                            'messages': {\n" +
+    "                                                'pattern': 'Only numbers allowed'\n" +
+    "                                            },\n" +
+    "                                            'show': $root.isInvalid(addProductForm['pair_Quantity' + $index]),\n" +
+    "                                            'conditions' : addProductForm['pair_Quantity' + $index].$error\n" +
+    "                                        }\n" +
     "                                    }\"><input type=number ng-model=pair.Quantity maxlength=5 ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }\" ng-disabled=!pair.Visibility ng-pattern=\"/^[0-9]+$/\" name=pair_Quantity{{$index}} class=\"form-control\"></td><td><a class=\"btn btn-white btn-width-xl\" ng-disabled=!pair.Visibility ng-click=\"openVariantDetail(pair, formData.Variants, $index)\">More Detail</a></td><td><a class=\"btn btn-white\" ng-click=\"pair.Visibility = !pair.Visibility\"><span ng-if=pair.Visibility>Hide</span> <span ng-if=!pair.Visibility>Show</span></a></td></tr></tbody></table></div></div></div></div></div>"
   );
  }]);
@@ -9116,7 +9061,7 @@ var angular = require('angular');
 var bulk = {};
 angular.module('schematics', []).
 run(function(){
-  bulk = ({"schema":({"attribute":require("./schema\\attribute.js"),"attributeSet":require("./schema\\attributeSet.js"),"attributeValue":require("./schema\\attributeValue.js"),"attributeValueMap":require("./schema\\attributeValueMap.js"),"nthAttribute":require("./schema\\nthAttribute.js"),"productStages":require("./schema\\productStages.js"),"seo":require("./schema\\seo.js"),"variant":require("./schema\\variant.js")})});
+  bulk = ({"schema":({"attribute":require("./schema/attribute.js"),"attributeSet":require("./schema/attributeSet.js"),"attributeValue":require("./schema/attributeValue.js"),"attributeValueMap":require("./schema/attributeValueMap.js"),"nthAttribute":require("./schema/nthAttribute.js"),"productStages":require("./schema/productStages.js"),"seo":require("./schema/seo.js"),"variant":require("./schema/variant.js")})});
 
 }).
 factory('JSONCache', function(){
@@ -9127,7 +9072,7 @@ factory('JSONCache', function(){
   }
 });
 
-},{"./schema\\attribute.js":122,"./schema\\attributeSet.js":123,"./schema\\attributeValue.js":124,"./schema\\attributeValueMap.js":125,"./schema\\nthAttribute.js":126,"./schema\\productStages.js":127,"./schema\\seo.js":128,"./schema\\variant.js":129,"angular":206}],122:[function(require,module,exports){
+},{"./schema/attribute.js":122,"./schema/attributeSet.js":123,"./schema/attributeValue.js":124,"./schema/attributeValueMap.js":125,"./schema/nthAttribute.js":126,"./schema/productStages.js":127,"./schema/seo.js":128,"./schema/variant.js":129,"angular":208}],122:[function(require,module,exports){
 module.exports = {
   "title": "Attribute Schema V3 Rev C",
   "type": "object",
@@ -9691,7 +9636,7 @@ module.exports = {
   admin: generateRouteArray(admin)
 }
 
-},{"lodash":209}],131:[function(require,module,exports){
+},{"lodash":211}],131:[function(require,module,exports){
 module.exports = ["common", "config", "util", "$log", "$window", function (common, config, util, $log, $window) {
     'ngInject';
     'use strict';
@@ -10059,7 +10004,7 @@ module.exports = ['common', '$document', '$timeout', function(common, $document,
 		this.message = '';
 	};
 }];
-},{"angular":206}],141:[function(require,module,exports){
+},{"angular":208}],141:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common){
 	'use strict';
@@ -10305,7 +10250,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{"angular":206}],142:[function(require,module,exports){
+},{"angular":208}],142:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/Attributes');
@@ -10738,7 +10683,7 @@ module.exports = ['$q', 'common', function($q, common){
 	};
 	return service;
 }];
-},{"angular":206}],147:[function(require,module,exports){
+},{"angular":208}],147:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	service = common.Rest('/Brands');
@@ -11090,14 +11035,14 @@ module.exports = ['config', function(config) {
     return service;
 }];
 
-},{"angular":206}],149:[function(require,module,exports){
+},{"angular":208}],149:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common) {
 	var service = common.Rest('/Coupons');
 	return service;
 }];
 
-},{"angular":206}],150:[function(require,module,exports){
+},{"angular":208}],150:[function(require,module,exports){
 //TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in poon's local)
 module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(common, $base64, storage, $q, $rootScope) {
     'use strict';
@@ -11187,7 +11132,7 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
     };
 }];
 
-},{"angular":206}],152:[function(require,module,exports){
+},{"angular":208}],152:[function(require,module,exports){
 module.exports = ["config", "storage", "FileUploader", function(config, storage, FileUploader) {
 	'ngInject';
 	var service = {};
@@ -11478,7 +11423,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	return service;
 }];
 
-},{"angular":206}],157:[function(require,module,exports){
+},{"angular":208}],157:[function(require,module,exports){
 //Image Service
 module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", "Upload", function($q, $http, common, storage, config, FileUploader, Upload) {
   'ngInject';
@@ -13322,8 +13267,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/input/label',
-    "<div class=form-group ng-class=\"options.formGroupClass || {}\"><div class=width-label><label class=control-label ng-class=\"options.labelClass || {}\">{{options.label}}</label></div><div ng-class=\"{ 'width-field-normal' : options.fieldSize == 'normal',\r" +
-    "\n" +
+    "<div class=form-group ng-class=\"options.formGroupClass || {}\"><div class=width-label><label class=control-label ng-class=\"options.labelClass || {}\">{{options.label}}</label></div><div ng-class=\"{ 'width-field-normal' : options.fieldSize == 'normal',\n" +
     "    \t\t\t\t 'width-field-xxl' : options.fieldSize != 'normal' }\"><p class=form-control-static><ng-transclude></ng-transclude></p></div></div>"
   );
 
@@ -13409,82 +13353,44 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/modalChangePassword',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><button type=button class=close ng-click=$dismiss() aria-label=Close><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Change Password</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\" name=form novalidate><div class=row><div class=col-xs-12><div class=form-section-content><div ng-if=oldPassword><div ng-template=common/input/password ng-template-options=\"{\r" +
-    "\n" +
-    "              'label': 'Old Password',\r" +
-    "\n" +
-    "              'labelClass': 'required',\r" +
-    "\n" +
-    "              'inputSize': 'small',\r" +
-    "\n" +
-    "              'error' : {\r" +
-    "\n" +
-    "                'messages': {\r" +
-    "\n" +
-    "                'required': 'This is a required field'\r" +
-    "\n" +
-    "              },\r" +
-    "\n" +
-    "              'show': isInvalid(form.Password),\r" +
-    "\n" +
-    "              'conditions' : form.Password.$error\r" +
-    "\n" +
-    "              }\r" +
-    "\n" +
-    "              }\"><input class=form-control type={{$parent.inputType}} name=Password ng-model=formData.Password ng-class=\"{ 'has-error' : isInvalid(form.Password) || (form.$pristine && formData.error) }\" required></div></div><div ng-template=common/input/password ng-template-options=\"{\r" +
-    "\n" +
-    "              'label': 'New Password',\r" +
-    "\n" +
-    "              'labelClass': 'required',\r" +
-    "\n" +
-    "              'inputSize': 'small',\r" +
-    "\n" +
-    "              'formGroupClass': oldPassword ? 'margin-top-30': '',\r" +
-    "\n" +
-    "              'error' : {\r" +
-    "\n" +
-    "              'messages': {\r" +
-    "\n" +
-    "              'required': 'This is a required field',\r" +
-    "\n" +
-    "              'pattern': 'Your password must contain letters and numbers',\r" +
-    "\n" +
-    "              'minlength': 'Your password must be 8-20 characters long',\r" +
-    "\n" +
-    "              'maxlength': 'Your password must be 8-20 characters long'\r" +
-    "\n" +
-    "              },\r" +
-    "\n" +
-    "              'show': isInvalid(form.NewPassword),\r" +
-    "\n" +
-    "              'conditions' : form.NewPassword.$error\r" +
-    "\n" +
-    "              }\r" +
-    "\n" +
-    "              }\"><input class=form-control type={{$parent.inputType}} name=NewPassword ng-model=formData.NewPassword ng-class=\"{ 'has-error' : isInvalid(form.NewPassword) || (form.$pristine && formData.error) }\" ng-pattern=\"/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/\" ng-pattern-restrict=^[0-9a-zA-Z]*$ ng-maxlength=20 ng-minlength=8 required></div><div ng-template=common/input/password ng-template-options=\"{\r" +
-    "\n" +
-    "              'label': 'Confirm Password',\r" +
-    "\n" +
-    "              'labelClass': 'required',\r" +
-    "\n" +
-    "              'inputSize': 'small',\r" +
-    "\n" +
-    "              'error' : {\r" +
-    "\n" +
-    "              'messages': {\r" +
-    "\n" +
-    "                'required': 'This is a required field',\r" +
-    "\n" +
-    "                'match': 'Your password and password confirmation do not match'\r" +
-    "\n" +
-    "              },\r" +
-    "\n" +
-    "              'show': isInvalid(form.ConfirmPassword),\r" +
-    "\n" +
-    "              'conditions' : form.ConfirmPassword.$error\r" +
-    "\n" +
-    "              }\r" +
-    "\n" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><button type=button class=close ng-click=$dismiss() aria-label=Close><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Change Password</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\" name=form novalidate><div class=row><div class=col-xs-12><div class=form-section-content><div ng-if=oldPassword><div ng-template=common/input/password ng-template-options=\"{\n" +
+    "              'label': 'Old Password',\n" +
+    "              'labelClass': 'required',\n" +
+    "              'inputSize': 'small',\n" +
+    "              'error' : {\n" +
+    "                'messages': {\n" +
+    "                'required': 'This is a required field'\n" +
+    "              },\n" +
+    "              'show': isInvalid(form.Password),\n" +
+    "              'conditions' : form.Password.$error\n" +
+    "              }\n" +
+    "              }\"><input class=form-control type={{$parent.inputType}} name=Password ng-model=formData.Password ng-class=\"{ 'has-error' : isInvalid(form.Password) || (form.$pristine && formData.error) }\" required></div></div><div ng-template=common/input/password ng-template-options=\"{\n" +
+    "              'label': 'New Password',\n" +
+    "              'labelClass': 'required',\n" +
+    "              'inputSize': 'small',\n" +
+    "              'formGroupClass': oldPassword ? 'margin-top-30': '',\n" +
+    "              'error' : {\n" +
+    "              'messages': {\n" +
+    "              'required': 'This is a required field',\n" +
+    "              'pattern': 'Your password must contain letters and numbers',\n" +
+    "              'minlength': 'Your password must be 8-20 characters long',\n" +
+    "              'maxlength': 'Your password must be 8-20 characters long'\n" +
+    "              },\n" +
+    "              'show': isInvalid(form.NewPassword),\n" +
+    "              'conditions' : form.NewPassword.$error\n" +
+    "              }\n" +
+    "              }\"><input class=form-control type={{$parent.inputType}} name=NewPassword ng-model=formData.NewPassword ng-class=\"{ 'has-error' : isInvalid(form.NewPassword) || (form.$pristine && formData.error) }\" ng-pattern=\"/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/\" ng-pattern-restrict=^[0-9a-zA-Z]*$ ng-maxlength=20 ng-minlength=8 required></div><div ng-template=common/input/password ng-template-options=\"{\n" +
+    "              'label': 'Confirm Password',\n" +
+    "              'labelClass': 'required',\n" +
+    "              'inputSize': 'small',\n" +
+    "              'error' : {\n" +
+    "              'messages': {\n" +
+    "                'required': 'This is a required field',\n" +
+    "                'match': 'Your password and password confirmation do not match'\n" +
+    "              },\n" +
+    "              'show': isInvalid(form.ConfirmPassword),\n" +
+    "              'conditions' : form.ConfirmPassword.$error\n" +
+    "              }\n" +
     "              }\"><input class=form-control type={{$parent.inputType}} name=ConfirmPassword ng-model=formData.ConfirmPassword ng-class=\"{ 'has-error' : isInvalid(form.ConfirmPassword) || (form.$pristine && formData.error) }\" ng-match={{formData.NewPassword}} required></div></div><div class=\"container-fluid no-padding margin-top-20\"><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()><span class=login-loading ng-cloak ng-show=saving><i class=\"fa fa-spinner fa-spin\"></i></span>Save</button></div></div></div></div></form></div>"
   );
 
@@ -13495,23 +13401,17 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('global_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKeyEn nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL (English)\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" maxlength=\"300\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Commission nc-template-options-path=addCategoryForm/Commission nc-label=\"Commission (%)\"><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ maxlength=20 ng-maxnumber=100 ng-minnumber=0 required></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions column-header=\"Attribute Set in this Category\" search-placeholder=\"Search Attribute Set\" nc-options=\"{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }\"></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\">* Changing attribute set mapping may affect products under this category</p></div></div></div><nc-image-banner name=CategoryBannerEn nc-model=formData.CategoryBannerEn title=\"Banner Upload (English)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh nc-model=formData.CategoryBannerTh title=\"Banner Upload (ไทย)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\r" +
-    "\n" +
-    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\r" +
-    "\n" +
-    "\t\t                          </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=formData.DescriptionShortEn>\r" +
-    "\n" +
-    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\r" +
-    "\n" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKeyEn nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL (English)\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" maxlength=\"300\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Commission nc-template-options-path=addCategoryForm/Commission nc-label=\"Commission (%)\"><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ maxlength=20 ng-maxnumber=100 ng-minnumber=0 required></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions column-header=\"Attribute Set in this Category\" search-placeholder=\"Search Attribute Set\" nc-options=\"{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }\"></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\">* Changing attribute set mapping may affect products under this category</p></div></div></div><nc-image-banner name=CategoryBannerEn nc-model=formData.CategoryBannerEn title=\"Banner Upload (English)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh nc-model=formData.CategoryBannerTh title=\"Banner Upload (ไทย)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\n" +
+    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\n" +
+    "\t\t                          </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=formData.DescriptionShortEn>\n" +
+    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\n" +
     "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Featured Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Featured Products\"><span class=form-text>will be available after adding product into this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"params.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
   $templateCache.put('global_category/nodes',
-    "<div ui-tree-handle class=\"tree-node tree-node-content\"><a class=btn-collapse ng-if=\"node.nodes && node.nodes.length > 0\" data-nodrag ng-click=toggle(this)><span class=glyphicon ng-class=\"{\r" +
-    "\n" +
-    "\t\t'glyphicon-chevron-right': collapsed,\r" +
-    "\n" +
+    "<div ui-tree-handle class=\"tree-node tree-node-content\"><a class=btn-collapse ng-if=\"node.nodes && node.nodes.length > 0\" data-nodrag ng-click=toggle(this)><span class=glyphicon ng-class=\"{\n" +
+    "\t\t'glyphicon-chevron-right': collapsed,\n" +
     "\t\t'glyphicon-chevron-down': !collapsed }\"></span></a> <span ng-if=\"!node.nodes || node.nodes.length == 0\"><span class=\"glyphicon glyphicon-chevron-right color-grey\"></span></span> <a ng-click=open(node) data-nodrag>{{node.NameEn}}</a> <span class=\"pull-right category-column category-action-gear\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span> <span class=\"pull-right category-column\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"pull-right category-column\">{{node.AttributeSetCount}}</span> <span class=\"pull-right category-column\">{{node.ProductCount}}</span> <span class=\"pull-right category-column\">{{node.CategoryId}}</span></div><ol ui-tree-nodes=\"\" ng-model=node.nodes ng-class=\"{hidden: collapsed}\"><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'global_category/nodes'\"></li></ol>"
   );
 
@@ -13522,23 +13422,17 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('local_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKeyEn nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL (English)\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" maxlength=\"300\"></div></div></div><nc-image-banner name=CategoryBannerEn nc-model=formData.CategoryBannerEn title=\"Banner Upload (English)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh nc-model=formData.CategoryBannerTh title=\"Banner Upload (ไทย)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\r" +
-    "\n" +
-    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\r" +
-    "\n" +
-    "\t\t                          </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=formData.DescriptionShortEn>\r" +
-    "\n" +
-    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\r" +
-    "\n" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKeyEn nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL (English)\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" maxlength=\"300\"></div></div></div><nc-image-banner name=CategoryBannerEn nc-model=formData.CategoryBannerEn title=\"Banner Upload (English)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh nc-model=formData.CategoryBannerTh title=\"Banner Upload (ไทย)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\n" +
+    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\n" +
+    "\t\t                          </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=formData.DescriptionShortEn>\n" +
+    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\n" +
     "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Featured Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Featured Products\"><span class=form-text>will be available after adding product into this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"params.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
   $templateCache.put('local_category/nodes',
-    "<div ui-tree-handle class=\"tree-node tree-node-content\"><a class=btn-collapse ng-if=\"node.nodes && node.nodes.length > 0\" data-nodrag ng-click=toggle(this)><span class=glyphicon ng-class=\"{\r" +
-    "\n" +
-    "\t\t'glyphicon-chevron-right': collapsed,\r" +
-    "\n" +
+    "<div ui-tree-handle class=\"tree-node tree-node-content\"><a class=btn-collapse ng-if=\"node.nodes && node.nodes.length > 0\" data-nodrag ng-click=toggle(this)><span class=glyphicon ng-class=\"{\n" +
+    "\t\t'glyphicon-chevron-right': collapsed,\n" +
     "\t\t'glyphicon-chevron-down': !collapsed }\"></span></a> <span ng-if=\"!node.nodes || node.nodes.length == 0\"><span class=\"glyphicon glyphicon-chevron-right color-grey\"></span></span> <a ng-click=open(node) data-nodrag>{{node.NameEn}}</a> <span class=\"pull-right category-column category-action-gear\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span> <span class=\"pull-right category-column\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"pull-right category-column\">{{node.ProductCount}}</span></div><ol ui-tree-nodes ng-model=node.nodes ng-class=\"{hidden: collapsed}\"><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'local_category/nodes'\"></li></ol>"
   );
 
@@ -17712,6 +17606,3613 @@ module.exports = 'ngAnimate';
 })();
 
 },{}],191:[function(require,module,exports){
+//! moment.js
+//! version : 2.11.2
+//! authors : Tim Wood, Iskren Chernev, Moment.js contributors
+//! license : MIT
+//! momentjs.com
+
+;(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+    typeof define === 'function' && define.amd ? define(factory) :
+    global.moment = factory()
+}(this, function () { 'use strict';
+
+    var hookCallback;
+
+    function utils_hooks__hooks () {
+        return hookCallback.apply(null, arguments);
+    }
+
+    // This is done to register the method called with moment()
+    // without creating circular dependencies.
+    function setHookCallback (callback) {
+        hookCallback = callback;
+    }
+
+    function isArray(input) {
+        return Object.prototype.toString.call(input) === '[object Array]';
+    }
+
+    function isDate(input) {
+        return input instanceof Date || Object.prototype.toString.call(input) === '[object Date]';
+    }
+
+    function map(arr, fn) {
+        var res = [], i;
+        for (i = 0; i < arr.length; ++i) {
+            res.push(fn(arr[i], i));
+        }
+        return res;
+    }
+
+    function hasOwnProp(a, b) {
+        return Object.prototype.hasOwnProperty.call(a, b);
+    }
+
+    function extend(a, b) {
+        for (var i in b) {
+            if (hasOwnProp(b, i)) {
+                a[i] = b[i];
+            }
+        }
+
+        if (hasOwnProp(b, 'toString')) {
+            a.toString = b.toString;
+        }
+
+        if (hasOwnProp(b, 'valueOf')) {
+            a.valueOf = b.valueOf;
+        }
+
+        return a;
+    }
+
+    function create_utc__createUTC (input, format, locale, strict) {
+        return createLocalOrUTC(input, format, locale, strict, true).utc();
+    }
+
+    function defaultParsingFlags() {
+        // We need to deep clone this object.
+        return {
+            empty           : false,
+            unusedTokens    : [],
+            unusedInput     : [],
+            overflow        : -2,
+            charsLeftOver   : 0,
+            nullInput       : false,
+            invalidMonth    : null,
+            invalidFormat   : false,
+            userInvalidated : false,
+            iso             : false
+        };
+    }
+
+    function getParsingFlags(m) {
+        if (m._pf == null) {
+            m._pf = defaultParsingFlags();
+        }
+        return m._pf;
+    }
+
+    function valid__isValid(m) {
+        if (m._isValid == null) {
+            var flags = getParsingFlags(m);
+            m._isValid = !isNaN(m._d.getTime()) &&
+                flags.overflow < 0 &&
+                !flags.empty &&
+                !flags.invalidMonth &&
+                !flags.invalidWeekday &&
+                !flags.nullInput &&
+                !flags.invalidFormat &&
+                !flags.userInvalidated;
+
+            if (m._strict) {
+                m._isValid = m._isValid &&
+                    flags.charsLeftOver === 0 &&
+                    flags.unusedTokens.length === 0 &&
+                    flags.bigHour === undefined;
+            }
+        }
+        return m._isValid;
+    }
+
+    function valid__createInvalid (flags) {
+        var m = create_utc__createUTC(NaN);
+        if (flags != null) {
+            extend(getParsingFlags(m), flags);
+        }
+        else {
+            getParsingFlags(m).userInvalidated = true;
+        }
+
+        return m;
+    }
+
+    function isUndefined(input) {
+        return input === void 0;
+    }
+
+    // Plugins that add properties should also add the key here (null value),
+    // so we can properly clone ourselves.
+    var momentProperties = utils_hooks__hooks.momentProperties = [];
+
+    function copyConfig(to, from) {
+        var i, prop, val;
+
+        if (!isUndefined(from._isAMomentObject)) {
+            to._isAMomentObject = from._isAMomentObject;
+        }
+        if (!isUndefined(from._i)) {
+            to._i = from._i;
+        }
+        if (!isUndefined(from._f)) {
+            to._f = from._f;
+        }
+        if (!isUndefined(from._l)) {
+            to._l = from._l;
+        }
+        if (!isUndefined(from._strict)) {
+            to._strict = from._strict;
+        }
+        if (!isUndefined(from._tzm)) {
+            to._tzm = from._tzm;
+        }
+        if (!isUndefined(from._isUTC)) {
+            to._isUTC = from._isUTC;
+        }
+        if (!isUndefined(from._offset)) {
+            to._offset = from._offset;
+        }
+        if (!isUndefined(from._pf)) {
+            to._pf = getParsingFlags(from);
+        }
+        if (!isUndefined(from._locale)) {
+            to._locale = from._locale;
+        }
+
+        if (momentProperties.length > 0) {
+            for (i in momentProperties) {
+                prop = momentProperties[i];
+                val = from[prop];
+                if (!isUndefined(val)) {
+                    to[prop] = val;
+                }
+            }
+        }
+
+        return to;
+    }
+
+    var updateInProgress = false;
+
+    // Moment prototype object
+    function Moment(config) {
+        copyConfig(this, config);
+        this._d = new Date(config._d != null ? config._d.getTime() : NaN);
+        // Prevent infinite loop in case updateOffset creates new moment
+        // objects.
+        if (updateInProgress === false) {
+            updateInProgress = true;
+            utils_hooks__hooks.updateOffset(this);
+            updateInProgress = false;
+        }
+    }
+
+    function isMoment (obj) {
+        return obj instanceof Moment || (obj != null && obj._isAMomentObject != null);
+    }
+
+    function absFloor (number) {
+        if (number < 0) {
+            return Math.ceil(number);
+        } else {
+            return Math.floor(number);
+        }
+    }
+
+    function toInt(argumentForCoercion) {
+        var coercedNumber = +argumentForCoercion,
+            value = 0;
+
+        if (coercedNumber !== 0 && isFinite(coercedNumber)) {
+            value = absFloor(coercedNumber);
+        }
+
+        return value;
+    }
+
+    // compare two arrays, return the number of differences
+    function compareArrays(array1, array2, dontConvert) {
+        var len = Math.min(array1.length, array2.length),
+            lengthDiff = Math.abs(array1.length - array2.length),
+            diffs = 0,
+            i;
+        for (i = 0; i < len; i++) {
+            if ((dontConvert && array1[i] !== array2[i]) ||
+                (!dontConvert && toInt(array1[i]) !== toInt(array2[i]))) {
+                diffs++;
+            }
+        }
+        return diffs + lengthDiff;
+    }
+
+    function Locale() {
+    }
+
+    // internal storage for locale config files
+    var locales = {};
+    var globalLocale;
+
+    function normalizeLocale(key) {
+        return key ? key.toLowerCase().replace('_', '-') : key;
+    }
+
+    // pick the locale from the array
+    // try ['en-au', 'en-gb'] as 'en-au', 'en-gb', 'en', as in move through the list trying each
+    // substring from most specific to least, but move to the next array item if it's a more specific variant than the current root
+    function chooseLocale(names) {
+        var i = 0, j, next, locale, split;
+
+        while (i < names.length) {
+            split = normalizeLocale(names[i]).split('-');
+            j = split.length;
+            next = normalizeLocale(names[i + 1]);
+            next = next ? next.split('-') : null;
+            while (j > 0) {
+                locale = loadLocale(split.slice(0, j).join('-'));
+                if (locale) {
+                    return locale;
+                }
+                if (next && next.length >= j && compareArrays(split, next, true) >= j - 1) {
+                    //the next array item is better than a shallower substring of this one
+                    break;
+                }
+                j--;
+            }
+            i++;
+        }
+        return null;
+    }
+
+    function loadLocale(name) {
+        var oldLocale = null;
+        // TODO: Find a better way to register and load all the locales in Node
+        if (!locales[name] && (typeof module !== 'undefined') &&
+                module && module.exports) {
+            try {
+                oldLocale = globalLocale._abbr;
+                require('./locale/' + name);
+                // because defineLocale currently also sets the global locale, we
+                // want to undo that for lazy loaded locales
+                locale_locales__getSetGlobalLocale(oldLocale);
+            } catch (e) { }
+        }
+        return locales[name];
+    }
+
+    // This function will load locale and then set the global locale.  If
+    // no arguments are passed in, it will simply return the current global
+    // locale key.
+    function locale_locales__getSetGlobalLocale (key, values) {
+        var data;
+        if (key) {
+            if (isUndefined(values)) {
+                data = locale_locales__getLocale(key);
+            }
+            else {
+                data = defineLocale(key, values);
+            }
+
+            if (data) {
+                // moment.duration._locale = moment._locale = data;
+                globalLocale = data;
+            }
+        }
+
+        return globalLocale._abbr;
+    }
+
+    function defineLocale (name, values) {
+        if (values !== null) {
+            values.abbr = name;
+            locales[name] = locales[name] || new Locale();
+            locales[name].set(values);
+
+            // backwards compat for now: also set the locale
+            locale_locales__getSetGlobalLocale(name);
+
+            return locales[name];
+        } else {
+            // useful for testing
+            delete locales[name];
+            return null;
+        }
+    }
+
+    // returns locale data
+    function locale_locales__getLocale (key) {
+        var locale;
+
+        if (key && key._locale && key._locale._abbr) {
+            key = key._locale._abbr;
+        }
+
+        if (!key) {
+            return globalLocale;
+        }
+
+        if (!isArray(key)) {
+            //short-circuit everything else
+            locale = loadLocale(key);
+            if (locale) {
+                return locale;
+            }
+            key = [key];
+        }
+
+        return chooseLocale(key);
+    }
+
+    var aliases = {};
+
+    function addUnitAlias (unit, shorthand) {
+        var lowerCase = unit.toLowerCase();
+        aliases[lowerCase] = aliases[lowerCase + 's'] = aliases[shorthand] = unit;
+    }
+
+    function normalizeUnits(units) {
+        return typeof units === 'string' ? aliases[units] || aliases[units.toLowerCase()] : undefined;
+    }
+
+    function normalizeObjectUnits(inputObject) {
+        var normalizedInput = {},
+            normalizedProp,
+            prop;
+
+        for (prop in inputObject) {
+            if (hasOwnProp(inputObject, prop)) {
+                normalizedProp = normalizeUnits(prop);
+                if (normalizedProp) {
+                    normalizedInput[normalizedProp] = inputObject[prop];
+                }
+            }
+        }
+
+        return normalizedInput;
+    }
+
+    function isFunction(input) {
+        return input instanceof Function || Object.prototype.toString.call(input) === '[object Function]';
+    }
+
+    function makeGetSet (unit, keepTime) {
+        return function (value) {
+            if (value != null) {
+                get_set__set(this, unit, value);
+                utils_hooks__hooks.updateOffset(this, keepTime);
+                return this;
+            } else {
+                return get_set__get(this, unit);
+            }
+        };
+    }
+
+    function get_set__get (mom, unit) {
+        return mom.isValid() ?
+            mom._d['get' + (mom._isUTC ? 'UTC' : '') + unit]() : NaN;
+    }
+
+    function get_set__set (mom, unit, value) {
+        if (mom.isValid()) {
+            mom._d['set' + (mom._isUTC ? 'UTC' : '') + unit](value);
+        }
+    }
+
+    // MOMENTS
+
+    function getSet (units, value) {
+        var unit;
+        if (typeof units === 'object') {
+            for (unit in units) {
+                this.set(unit, units[unit]);
+            }
+        } else {
+            units = normalizeUnits(units);
+            if (isFunction(this[units])) {
+                return this[units](value);
+            }
+        }
+        return this;
+    }
+
+    function zeroFill(number, targetLength, forceSign) {
+        var absNumber = '' + Math.abs(number),
+            zerosToFill = targetLength - absNumber.length,
+            sign = number >= 0;
+        return (sign ? (forceSign ? '+' : '') : '-') +
+            Math.pow(10, Math.max(0, zerosToFill)).toString().substr(1) + absNumber;
+    }
+
+    var formattingTokens = /(\[[^\[]*\])|(\\)?([Hh]mm(ss)?|Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Qo?|YYYYYY|YYYYY|YYYY|YY|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|mm?|ss?|S{1,9}|x|X|zz?|ZZ?|.)/g;
+
+    var localFormattingTokens = /(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g;
+
+    var formatFunctions = {};
+
+    var formatTokenFunctions = {};
+
+    // token:    'M'
+    // padded:   ['MM', 2]
+    // ordinal:  'Mo'
+    // callback: function () { this.month() + 1 }
+    function addFormatToken (token, padded, ordinal, callback) {
+        var func = callback;
+        if (typeof callback === 'string') {
+            func = function () {
+                return this[callback]();
+            };
+        }
+        if (token) {
+            formatTokenFunctions[token] = func;
+        }
+        if (padded) {
+            formatTokenFunctions[padded[0]] = function () {
+                return zeroFill(func.apply(this, arguments), padded[1], padded[2]);
+            };
+        }
+        if (ordinal) {
+            formatTokenFunctions[ordinal] = function () {
+                return this.localeData().ordinal(func.apply(this, arguments), token);
+            };
+        }
+    }
+
+    function removeFormattingTokens(input) {
+        if (input.match(/\[[\s\S]/)) {
+            return input.replace(/^\[|\]$/g, '');
+        }
+        return input.replace(/\\/g, '');
+    }
+
+    function makeFormatFunction(format) {
+        var array = format.match(formattingTokens), i, length;
+
+        for (i = 0, length = array.length; i < length; i++) {
+            if (formatTokenFunctions[array[i]]) {
+                array[i] = formatTokenFunctions[array[i]];
+            } else {
+                array[i] = removeFormattingTokens(array[i]);
+            }
+        }
+
+        return function (mom) {
+            var output = '';
+            for (i = 0; i < length; i++) {
+                output += array[i] instanceof Function ? array[i].call(mom, format) : array[i];
+            }
+            return output;
+        };
+    }
+
+    // format date using native date object
+    function formatMoment(m, format) {
+        if (!m.isValid()) {
+            return m.localeData().invalidDate();
+        }
+
+        format = expandFormat(format, m.localeData());
+        formatFunctions[format] = formatFunctions[format] || makeFormatFunction(format);
+
+        return formatFunctions[format](m);
+    }
+
+    function expandFormat(format, locale) {
+        var i = 5;
+
+        function replaceLongDateFormatTokens(input) {
+            return locale.longDateFormat(input) || input;
+        }
+
+        localFormattingTokens.lastIndex = 0;
+        while (i >= 0 && localFormattingTokens.test(format)) {
+            format = format.replace(localFormattingTokens, replaceLongDateFormatTokens);
+            localFormattingTokens.lastIndex = 0;
+            i -= 1;
+        }
+
+        return format;
+    }
+
+    var match1         = /\d/;            //       0 - 9
+    var match2         = /\d\d/;          //      00 - 99
+    var match3         = /\d{3}/;         //     000 - 999
+    var match4         = /\d{4}/;         //    0000 - 9999
+    var match6         = /[+-]?\d{6}/;    // -999999 - 999999
+    var match1to2      = /\d\d?/;         //       0 - 99
+    var match3to4      = /\d\d\d\d?/;     //     999 - 9999
+    var match5to6      = /\d\d\d\d\d\d?/; //   99999 - 999999
+    var match1to3      = /\d{1,3}/;       //       0 - 999
+    var match1to4      = /\d{1,4}/;       //       0 - 9999
+    var match1to6      = /[+-]?\d{1,6}/;  // -999999 - 999999
+
+    var matchUnsigned  = /\d+/;           //       0 - inf
+    var matchSigned    = /[+-]?\d+/;      //    -inf - inf
+
+    var matchOffset    = /Z|[+-]\d\d:?\d\d/gi; // +00:00 -00:00 +0000 -0000 or Z
+    var matchShortOffset = /Z|[+-]\d\d(?::?\d\d)?/gi; // +00 -00 +00:00 -00:00 +0000 -0000 or Z
+
+    var matchTimestamp = /[+-]?\d+(\.\d{1,3})?/; // 123456789 123456789.123
+
+    // any word (or two) characters or numbers including two/three word month in arabic.
+    // includes scottish gaelic two word and hyphenated months
+    var matchWord = /[0-9]*['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+|[\u0600-\u06FF\/]+(\s*?[\u0600-\u06FF]+){1,2}/i;
+
+
+    var regexes = {};
+
+    function addRegexToken (token, regex, strictRegex) {
+        regexes[token] = isFunction(regex) ? regex : function (isStrict, localeData) {
+            return (isStrict && strictRegex) ? strictRegex : regex;
+        };
+    }
+
+    function getParseRegexForToken (token, config) {
+        if (!hasOwnProp(regexes, token)) {
+            return new RegExp(unescapeFormat(token));
+        }
+
+        return regexes[token](config._strict, config._locale);
+    }
+
+    // Code from http://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
+    function unescapeFormat(s) {
+        return regexEscape(s.replace('\\', '').replace(/\\(\[)|\\(\])|\[([^\]\[]*)\]|\\(.)/g, function (matched, p1, p2, p3, p4) {
+            return p1 || p2 || p3 || p4;
+        }));
+    }
+
+    function regexEscape(s) {
+        return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    }
+
+    var tokens = {};
+
+    function addParseToken (token, callback) {
+        var i, func = callback;
+        if (typeof token === 'string') {
+            token = [token];
+        }
+        if (typeof callback === 'number') {
+            func = function (input, array) {
+                array[callback] = toInt(input);
+            };
+        }
+        for (i = 0; i < token.length; i++) {
+            tokens[token[i]] = func;
+        }
+    }
+
+    function addWeekParseToken (token, callback) {
+        addParseToken(token, function (input, array, config, token) {
+            config._w = config._w || {};
+            callback(input, config._w, config, token);
+        });
+    }
+
+    function addTimeToArrayFromToken(token, input, config) {
+        if (input != null && hasOwnProp(tokens, token)) {
+            tokens[token](input, config._a, config, token);
+        }
+    }
+
+    var YEAR = 0;
+    var MONTH = 1;
+    var DATE = 2;
+    var HOUR = 3;
+    var MINUTE = 4;
+    var SECOND = 5;
+    var MILLISECOND = 6;
+    var WEEK = 7;
+    var WEEKDAY = 8;
+
+    function daysInMonth(year, month) {
+        return new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+    }
+
+    // FORMATTING
+
+    addFormatToken('M', ['MM', 2], 'Mo', function () {
+        return this.month() + 1;
+    });
+
+    addFormatToken('MMM', 0, 0, function (format) {
+        return this.localeData().monthsShort(this, format);
+    });
+
+    addFormatToken('MMMM', 0, 0, function (format) {
+        return this.localeData().months(this, format);
+    });
+
+    // ALIASES
+
+    addUnitAlias('month', 'M');
+
+    // PARSING
+
+    addRegexToken('M',    match1to2);
+    addRegexToken('MM',   match1to2, match2);
+    addRegexToken('MMM',  function (isStrict, locale) {
+        return locale.monthsShortRegex(isStrict);
+    });
+    addRegexToken('MMMM', function (isStrict, locale) {
+        return locale.monthsRegex(isStrict);
+    });
+
+    addParseToken(['M', 'MM'], function (input, array) {
+        array[MONTH] = toInt(input) - 1;
+    });
+
+    addParseToken(['MMM', 'MMMM'], function (input, array, config, token) {
+        var month = config._locale.monthsParse(input, token, config._strict);
+        // if we didn't find a month name, mark the date as invalid.
+        if (month != null) {
+            array[MONTH] = month;
+        } else {
+            getParsingFlags(config).invalidMonth = input;
+        }
+    });
+
+    // LOCALES
+
+    var MONTHS_IN_FORMAT = /D[oD]?(\[[^\[\]]*\]|\s+)+MMMM?/;
+    var defaultLocaleMonths = 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_');
+    function localeMonths (m, format) {
+        return isArray(this._months) ? this._months[m.month()] :
+            this._months[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
+    }
+
+    var defaultLocaleMonthsShort = 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_');
+    function localeMonthsShort (m, format) {
+        return isArray(this._monthsShort) ? this._monthsShort[m.month()] :
+            this._monthsShort[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
+    }
+
+    function localeMonthsParse (monthName, format, strict) {
+        var i, mom, regex;
+
+        if (!this._monthsParse) {
+            this._monthsParse = [];
+            this._longMonthsParse = [];
+            this._shortMonthsParse = [];
+        }
+
+        for (i = 0; i < 12; i++) {
+            // make the regex if we don't have it already
+            mom = create_utc__createUTC([2000, i]);
+            if (strict && !this._longMonthsParse[i]) {
+                this._longMonthsParse[i] = new RegExp('^' + this.months(mom, '').replace('.', '') + '$', 'i');
+                this._shortMonthsParse[i] = new RegExp('^' + this.monthsShort(mom, '').replace('.', '') + '$', 'i');
+            }
+            if (!strict && !this._monthsParse[i]) {
+                regex = '^' + this.months(mom, '') + '|^' + this.monthsShort(mom, '');
+                this._monthsParse[i] = new RegExp(regex.replace('.', ''), 'i');
+            }
+            // test the regex
+            if (strict && format === 'MMMM' && this._longMonthsParse[i].test(monthName)) {
+                return i;
+            } else if (strict && format === 'MMM' && this._shortMonthsParse[i].test(monthName)) {
+                return i;
+            } else if (!strict && this._monthsParse[i].test(monthName)) {
+                return i;
+            }
+        }
+    }
+
+    // MOMENTS
+
+    function setMonth (mom, value) {
+        var dayOfMonth;
+
+        if (!mom.isValid()) {
+            // No op
+            return mom;
+        }
+
+        // TODO: Move this out of here!
+        if (typeof value === 'string') {
+            value = mom.localeData().monthsParse(value);
+            // TODO: Another silent failure?
+            if (typeof value !== 'number') {
+                return mom;
+            }
+        }
+
+        dayOfMonth = Math.min(mom.date(), daysInMonth(mom.year(), value));
+        mom._d['set' + (mom._isUTC ? 'UTC' : '') + 'Month'](value, dayOfMonth);
+        return mom;
+    }
+
+    function getSetMonth (value) {
+        if (value != null) {
+            setMonth(this, value);
+            utils_hooks__hooks.updateOffset(this, true);
+            return this;
+        } else {
+            return get_set__get(this, 'Month');
+        }
+    }
+
+    function getDaysInMonth () {
+        return daysInMonth(this.year(), this.month());
+    }
+
+    var defaultMonthsShortRegex = matchWord;
+    function monthsShortRegex (isStrict) {
+        if (this._monthsParseExact) {
+            if (!hasOwnProp(this, '_monthsRegex')) {
+                computeMonthsParse.call(this);
+            }
+            if (isStrict) {
+                return this._monthsShortStrictRegex;
+            } else {
+                return this._monthsShortRegex;
+            }
+        } else {
+            return this._monthsShortStrictRegex && isStrict ?
+                this._monthsShortStrictRegex : this._monthsShortRegex;
+        }
+    }
+
+    var defaultMonthsRegex = matchWord;
+    function monthsRegex (isStrict) {
+        if (this._monthsParseExact) {
+            if (!hasOwnProp(this, '_monthsRegex')) {
+                computeMonthsParse.call(this);
+            }
+            if (isStrict) {
+                return this._monthsStrictRegex;
+            } else {
+                return this._monthsRegex;
+            }
+        } else {
+            return this._monthsStrictRegex && isStrict ?
+                this._monthsStrictRegex : this._monthsRegex;
+        }
+    }
+
+    function computeMonthsParse () {
+        function cmpLenRev(a, b) {
+            return b.length - a.length;
+        }
+
+        var shortPieces = [], longPieces = [], mixedPieces = [],
+            i, mom;
+        for (i = 0; i < 12; i++) {
+            // make the regex if we don't have it already
+            mom = create_utc__createUTC([2000, i]);
+            shortPieces.push(this.monthsShort(mom, ''));
+            longPieces.push(this.months(mom, ''));
+            mixedPieces.push(this.months(mom, ''));
+            mixedPieces.push(this.monthsShort(mom, ''));
+        }
+        // Sorting makes sure if one month (or abbr) is a prefix of another it
+        // will match the longer piece.
+        shortPieces.sort(cmpLenRev);
+        longPieces.sort(cmpLenRev);
+        mixedPieces.sort(cmpLenRev);
+        for (i = 0; i < 12; i++) {
+            shortPieces[i] = regexEscape(shortPieces[i]);
+            longPieces[i] = regexEscape(longPieces[i]);
+            mixedPieces[i] = regexEscape(mixedPieces[i]);
+        }
+
+        this._monthsRegex = new RegExp('^(' + mixedPieces.join('|') + ')', 'i');
+        this._monthsShortRegex = this._monthsRegex;
+        this._monthsStrictRegex = new RegExp('^(' + longPieces.join('|') + ')$', 'i');
+        this._monthsShortStrictRegex = new RegExp('^(' + shortPieces.join('|') + ')$', 'i');
+    }
+
+    function checkOverflow (m) {
+        var overflow;
+        var a = m._a;
+
+        if (a && getParsingFlags(m).overflow === -2) {
+            overflow =
+                a[MONTH]       < 0 || a[MONTH]       > 11  ? MONTH :
+                a[DATE]        < 1 || a[DATE]        > daysInMonth(a[YEAR], a[MONTH]) ? DATE :
+                a[HOUR]        < 0 || a[HOUR]        > 24 || (a[HOUR] === 24 && (a[MINUTE] !== 0 || a[SECOND] !== 0 || a[MILLISECOND] !== 0)) ? HOUR :
+                a[MINUTE]      < 0 || a[MINUTE]      > 59  ? MINUTE :
+                a[SECOND]      < 0 || a[SECOND]      > 59  ? SECOND :
+                a[MILLISECOND] < 0 || a[MILLISECOND] > 999 ? MILLISECOND :
+                -1;
+
+            if (getParsingFlags(m)._overflowDayOfYear && (overflow < YEAR || overflow > DATE)) {
+                overflow = DATE;
+            }
+            if (getParsingFlags(m)._overflowWeeks && overflow === -1) {
+                overflow = WEEK;
+            }
+            if (getParsingFlags(m)._overflowWeekday && overflow === -1) {
+                overflow = WEEKDAY;
+            }
+
+            getParsingFlags(m).overflow = overflow;
+        }
+
+        return m;
+    }
+
+    function warn(msg) {
+        if (utils_hooks__hooks.suppressDeprecationWarnings === false &&
+                (typeof console !==  'undefined') && console.warn) {
+            console.warn('Deprecation warning: ' + msg);
+        }
+    }
+
+    function deprecate(msg, fn) {
+        var firstTime = true;
+
+        return extend(function () {
+            if (firstTime) {
+                warn(msg + '\nArguments: ' + Array.prototype.slice.call(arguments).join(', ') + '\n' + (new Error()).stack);
+                firstTime = false;
+            }
+            return fn.apply(this, arguments);
+        }, fn);
+    }
+
+    var deprecations = {};
+
+    function deprecateSimple(name, msg) {
+        if (!deprecations[name]) {
+            warn(msg);
+            deprecations[name] = true;
+        }
+    }
+
+    utils_hooks__hooks.suppressDeprecationWarnings = false;
+
+    // iso 8601 regex
+    // 0000-00-00 0000-W00 or 0000-W00-0 + T + 00 or 00:00 or 00:00:00 or 00:00:00.000 + +00:00 or +0000 or +00)
+    var extendedIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})-(?:\d\d-\d\d|W\d\d-\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?::\d\d(?::\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?/;
+    var basicIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})(?:\d\d\d\d|W\d\d\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?:\d\d(?:\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?/;
+
+    var tzRegex = /Z|[+-]\d\d(?::?\d\d)?/;
+
+    var isoDates = [
+        ['YYYYYY-MM-DD', /[+-]\d{6}-\d\d-\d\d/],
+        ['YYYY-MM-DD', /\d{4}-\d\d-\d\d/],
+        ['GGGG-[W]WW-E', /\d{4}-W\d\d-\d/],
+        ['GGGG-[W]WW', /\d{4}-W\d\d/, false],
+        ['YYYY-DDD', /\d{4}-\d{3}/],
+        ['YYYY-MM', /\d{4}-\d\d/, false],
+        ['YYYYYYMMDD', /[+-]\d{10}/],
+        ['YYYYMMDD', /\d{8}/],
+        // YYYYMM is NOT allowed by the standard
+        ['GGGG[W]WWE', /\d{4}W\d{3}/],
+        ['GGGG[W]WW', /\d{4}W\d{2}/, false],
+        ['YYYYDDD', /\d{7}/]
+    ];
+
+    // iso time formats and regexes
+    var isoTimes = [
+        ['HH:mm:ss.SSSS', /\d\d:\d\d:\d\d\.\d+/],
+        ['HH:mm:ss,SSSS', /\d\d:\d\d:\d\d,\d+/],
+        ['HH:mm:ss', /\d\d:\d\d:\d\d/],
+        ['HH:mm', /\d\d:\d\d/],
+        ['HHmmss.SSSS', /\d\d\d\d\d\d\.\d+/],
+        ['HHmmss,SSSS', /\d\d\d\d\d\d,\d+/],
+        ['HHmmss', /\d\d\d\d\d\d/],
+        ['HHmm', /\d\d\d\d/],
+        ['HH', /\d\d/]
+    ];
+
+    var aspNetJsonRegex = /^\/?Date\((\-?\d+)/i;
+
+    // date from iso format
+    function configFromISO(config) {
+        var i, l,
+            string = config._i,
+            match = extendedIsoRegex.exec(string) || basicIsoRegex.exec(string),
+            allowTime, dateFormat, timeFormat, tzFormat;
+
+        if (match) {
+            getParsingFlags(config).iso = true;
+
+            for (i = 0, l = isoDates.length; i < l; i++) {
+                if (isoDates[i][1].exec(match[1])) {
+                    dateFormat = isoDates[i][0];
+                    allowTime = isoDates[i][2] !== false;
+                    break;
+                }
+            }
+            if (dateFormat == null) {
+                config._isValid = false;
+                return;
+            }
+            if (match[3]) {
+                for (i = 0, l = isoTimes.length; i < l; i++) {
+                    if (isoTimes[i][1].exec(match[3])) {
+                        // match[2] should be 'T' or space
+                        timeFormat = (match[2] || ' ') + isoTimes[i][0];
+                        break;
+                    }
+                }
+                if (timeFormat == null) {
+                    config._isValid = false;
+                    return;
+                }
+            }
+            if (!allowTime && timeFormat != null) {
+                config._isValid = false;
+                return;
+            }
+            if (match[4]) {
+                if (tzRegex.exec(match[4])) {
+                    tzFormat = 'Z';
+                } else {
+                    config._isValid = false;
+                    return;
+                }
+            }
+            config._f = dateFormat + (timeFormat || '') + (tzFormat || '');
+            configFromStringAndFormat(config);
+        } else {
+            config._isValid = false;
+        }
+    }
+
+    // date from iso format or fallback
+    function configFromString(config) {
+        var matched = aspNetJsonRegex.exec(config._i);
+
+        if (matched !== null) {
+            config._d = new Date(+matched[1]);
+            return;
+        }
+
+        configFromISO(config);
+        if (config._isValid === false) {
+            delete config._isValid;
+            utils_hooks__hooks.createFromInputFallback(config);
+        }
+    }
+
+    utils_hooks__hooks.createFromInputFallback = deprecate(
+        'moment construction falls back to js Date. This is ' +
+        'discouraged and will be removed in upcoming major ' +
+        'release. Please refer to ' +
+        'https://github.com/moment/moment/issues/1407 for more info.',
+        function (config) {
+            config._d = new Date(config._i + (config._useUTC ? ' UTC' : ''));
+        }
+    );
+
+    function createDate (y, m, d, h, M, s, ms) {
+        //can't just apply() to create a date:
+        //http://stackoverflow.com/questions/181348/instantiating-a-javascript-object-by-calling-prototype-constructor-apply
+        var date = new Date(y, m, d, h, M, s, ms);
+
+        //the date constructor remaps years 0-99 to 1900-1999
+        if (y < 100 && y >= 0 && isFinite(date.getFullYear())) {
+            date.setFullYear(y);
+        }
+        return date;
+    }
+
+    function createUTCDate (y) {
+        var date = new Date(Date.UTC.apply(null, arguments));
+
+        //the Date.UTC function remaps years 0-99 to 1900-1999
+        if (y < 100 && y >= 0 && isFinite(date.getUTCFullYear())) {
+            date.setUTCFullYear(y);
+        }
+        return date;
+    }
+
+    // FORMATTING
+
+    addFormatToken('Y', 0, 0, function () {
+        var y = this.year();
+        return y <= 9999 ? '' + y : '+' + y;
+    });
+
+    addFormatToken(0, ['YY', 2], 0, function () {
+        return this.year() % 100;
+    });
+
+    addFormatToken(0, ['YYYY',   4],       0, 'year');
+    addFormatToken(0, ['YYYYY',  5],       0, 'year');
+    addFormatToken(0, ['YYYYYY', 6, true], 0, 'year');
+
+    // ALIASES
+
+    addUnitAlias('year', 'y');
+
+    // PARSING
+
+    addRegexToken('Y',      matchSigned);
+    addRegexToken('YY',     match1to2, match2);
+    addRegexToken('YYYY',   match1to4, match4);
+    addRegexToken('YYYYY',  match1to6, match6);
+    addRegexToken('YYYYYY', match1to6, match6);
+
+    addParseToken(['YYYYY', 'YYYYYY'], YEAR);
+    addParseToken('YYYY', function (input, array) {
+        array[YEAR] = input.length === 2 ? utils_hooks__hooks.parseTwoDigitYear(input) : toInt(input);
+    });
+    addParseToken('YY', function (input, array) {
+        array[YEAR] = utils_hooks__hooks.parseTwoDigitYear(input);
+    });
+    addParseToken('Y', function (input, array) {
+        array[YEAR] = parseInt(input, 10);
+    });
+
+    // HELPERS
+
+    function daysInYear(year) {
+        return isLeapYear(year) ? 366 : 365;
+    }
+
+    function isLeapYear(year) {
+        return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+    }
+
+    // HOOKS
+
+    utils_hooks__hooks.parseTwoDigitYear = function (input) {
+        return toInt(input) + (toInt(input) > 68 ? 1900 : 2000);
+    };
+
+    // MOMENTS
+
+    var getSetYear = makeGetSet('FullYear', false);
+
+    function getIsLeapYear () {
+        return isLeapYear(this.year());
+    }
+
+    // start-of-first-week - start-of-year
+    function firstWeekOffset(year, dow, doy) {
+        var // first-week day -- which january is always in the first week (4 for iso, 1 for other)
+            fwd = 7 + dow - doy,
+            // first-week day local weekday -- which local weekday is fwd
+            fwdlw = (7 + createUTCDate(year, 0, fwd).getUTCDay() - dow) % 7;
+
+        return -fwdlw + fwd - 1;
+    }
+
+    //http://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_year.2C_week_number_and_weekday
+    function dayOfYearFromWeeks(year, week, weekday, dow, doy) {
+        var localWeekday = (7 + weekday - dow) % 7,
+            weekOffset = firstWeekOffset(year, dow, doy),
+            dayOfYear = 1 + 7 * (week - 1) + localWeekday + weekOffset,
+            resYear, resDayOfYear;
+
+        if (dayOfYear <= 0) {
+            resYear = year - 1;
+            resDayOfYear = daysInYear(resYear) + dayOfYear;
+        } else if (dayOfYear > daysInYear(year)) {
+            resYear = year + 1;
+            resDayOfYear = dayOfYear - daysInYear(year);
+        } else {
+            resYear = year;
+            resDayOfYear = dayOfYear;
+        }
+
+        return {
+            year: resYear,
+            dayOfYear: resDayOfYear
+        };
+    }
+
+    function weekOfYear(mom, dow, doy) {
+        var weekOffset = firstWeekOffset(mom.year(), dow, doy),
+            week = Math.floor((mom.dayOfYear() - weekOffset - 1) / 7) + 1,
+            resWeek, resYear;
+
+        if (week < 1) {
+            resYear = mom.year() - 1;
+            resWeek = week + weeksInYear(resYear, dow, doy);
+        } else if (week > weeksInYear(mom.year(), dow, doy)) {
+            resWeek = week - weeksInYear(mom.year(), dow, doy);
+            resYear = mom.year() + 1;
+        } else {
+            resYear = mom.year();
+            resWeek = week;
+        }
+
+        return {
+            week: resWeek,
+            year: resYear
+        };
+    }
+
+    function weeksInYear(year, dow, doy) {
+        var weekOffset = firstWeekOffset(year, dow, doy),
+            weekOffsetNext = firstWeekOffset(year + 1, dow, doy);
+        return (daysInYear(year) - weekOffset + weekOffsetNext) / 7;
+    }
+
+    // Pick the first defined of two or three arguments.
+    function defaults(a, b, c) {
+        if (a != null) {
+            return a;
+        }
+        if (b != null) {
+            return b;
+        }
+        return c;
+    }
+
+    function currentDateArray(config) {
+        // hooks is actually the exported moment object
+        var nowValue = new Date(utils_hooks__hooks.now());
+        if (config._useUTC) {
+            return [nowValue.getUTCFullYear(), nowValue.getUTCMonth(), nowValue.getUTCDate()];
+        }
+        return [nowValue.getFullYear(), nowValue.getMonth(), nowValue.getDate()];
+    }
+
+    // convert an array to a date.
+    // the array should mirror the parameters below
+    // note: all values past the year are optional and will default to the lowest possible value.
+    // [year, month, day , hour, minute, second, millisecond]
+    function configFromArray (config) {
+        var i, date, input = [], currentDate, yearToUse;
+
+        if (config._d) {
+            return;
+        }
+
+        currentDate = currentDateArray(config);
+
+        //compute day of the year from weeks and weekdays
+        if (config._w && config._a[DATE] == null && config._a[MONTH] == null) {
+            dayOfYearFromWeekInfo(config);
+        }
+
+        //if the day of the year is set, figure out what it is
+        if (config._dayOfYear) {
+            yearToUse = defaults(config._a[YEAR], currentDate[YEAR]);
+
+            if (config._dayOfYear > daysInYear(yearToUse)) {
+                getParsingFlags(config)._overflowDayOfYear = true;
+            }
+
+            date = createUTCDate(yearToUse, 0, config._dayOfYear);
+            config._a[MONTH] = date.getUTCMonth();
+            config._a[DATE] = date.getUTCDate();
+        }
+
+        // Default to current date.
+        // * if no year, month, day of month are given, default to today
+        // * if day of month is given, default month and year
+        // * if month is given, default only year
+        // * if year is given, don't default anything
+        for (i = 0; i < 3 && config._a[i] == null; ++i) {
+            config._a[i] = input[i] = currentDate[i];
+        }
+
+        // Zero out whatever was not defaulted, including time
+        for (; i < 7; i++) {
+            config._a[i] = input[i] = (config._a[i] == null) ? (i === 2 ? 1 : 0) : config._a[i];
+        }
+
+        // Check for 24:00:00.000
+        if (config._a[HOUR] === 24 &&
+                config._a[MINUTE] === 0 &&
+                config._a[SECOND] === 0 &&
+                config._a[MILLISECOND] === 0) {
+            config._nextDay = true;
+            config._a[HOUR] = 0;
+        }
+
+        config._d = (config._useUTC ? createUTCDate : createDate).apply(null, input);
+        // Apply timezone offset from input. The actual utcOffset can be changed
+        // with parseZone.
+        if (config._tzm != null) {
+            config._d.setUTCMinutes(config._d.getUTCMinutes() - config._tzm);
+        }
+
+        if (config._nextDay) {
+            config._a[HOUR] = 24;
+        }
+    }
+
+    function dayOfYearFromWeekInfo(config) {
+        var w, weekYear, week, weekday, dow, doy, temp, weekdayOverflow;
+
+        w = config._w;
+        if (w.GG != null || w.W != null || w.E != null) {
+            dow = 1;
+            doy = 4;
+
+            // TODO: We need to take the current isoWeekYear, but that depends on
+            // how we interpret now (local, utc, fixed offset). So create
+            // a now version of current config (take local/utc/offset flags, and
+            // create now).
+            weekYear = defaults(w.GG, config._a[YEAR], weekOfYear(local__createLocal(), 1, 4).year);
+            week = defaults(w.W, 1);
+            weekday = defaults(w.E, 1);
+            if (weekday < 1 || weekday > 7) {
+                weekdayOverflow = true;
+            }
+        } else {
+            dow = config._locale._week.dow;
+            doy = config._locale._week.doy;
+
+            weekYear = defaults(w.gg, config._a[YEAR], weekOfYear(local__createLocal(), dow, doy).year);
+            week = defaults(w.w, 1);
+
+            if (w.d != null) {
+                // weekday -- low day numbers are considered next week
+                weekday = w.d;
+                if (weekday < 0 || weekday > 6) {
+                    weekdayOverflow = true;
+                }
+            } else if (w.e != null) {
+                // local weekday -- counting starts from begining of week
+                weekday = w.e + dow;
+                if (w.e < 0 || w.e > 6) {
+                    weekdayOverflow = true;
+                }
+            } else {
+                // default to begining of week
+                weekday = dow;
+            }
+        }
+        if (week < 1 || week > weeksInYear(weekYear, dow, doy)) {
+            getParsingFlags(config)._overflowWeeks = true;
+        } else if (weekdayOverflow != null) {
+            getParsingFlags(config)._overflowWeekday = true;
+        } else {
+            temp = dayOfYearFromWeeks(weekYear, week, weekday, dow, doy);
+            config._a[YEAR] = temp.year;
+            config._dayOfYear = temp.dayOfYear;
+        }
+    }
+
+    // constant that refers to the ISO standard
+    utils_hooks__hooks.ISO_8601 = function () {};
+
+    // date from string and format string
+    function configFromStringAndFormat(config) {
+        // TODO: Move this to another part of the creation flow to prevent circular deps
+        if (config._f === utils_hooks__hooks.ISO_8601) {
+            configFromISO(config);
+            return;
+        }
+
+        config._a = [];
+        getParsingFlags(config).empty = true;
+
+        // This array is used to make a Date, either with `new Date` or `Date.UTC`
+        var string = '' + config._i,
+            i, parsedInput, tokens, token, skipped,
+            stringLength = string.length,
+            totalParsedInputLength = 0;
+
+        tokens = expandFormat(config._f, config._locale).match(formattingTokens) || [];
+
+        for (i = 0; i < tokens.length; i++) {
+            token = tokens[i];
+            parsedInput = (string.match(getParseRegexForToken(token, config)) || [])[0];
+            // console.log('token', token, 'parsedInput', parsedInput,
+            //         'regex', getParseRegexForToken(token, config));
+            if (parsedInput) {
+                skipped = string.substr(0, string.indexOf(parsedInput));
+                if (skipped.length > 0) {
+                    getParsingFlags(config).unusedInput.push(skipped);
+                }
+                string = string.slice(string.indexOf(parsedInput) + parsedInput.length);
+                totalParsedInputLength += parsedInput.length;
+            }
+            // don't parse if it's not a known token
+            if (formatTokenFunctions[token]) {
+                if (parsedInput) {
+                    getParsingFlags(config).empty = false;
+                }
+                else {
+                    getParsingFlags(config).unusedTokens.push(token);
+                }
+                addTimeToArrayFromToken(token, parsedInput, config);
+            }
+            else if (config._strict && !parsedInput) {
+                getParsingFlags(config).unusedTokens.push(token);
+            }
+        }
+
+        // add remaining unparsed input length to the string
+        getParsingFlags(config).charsLeftOver = stringLength - totalParsedInputLength;
+        if (string.length > 0) {
+            getParsingFlags(config).unusedInput.push(string);
+        }
+
+        // clear _12h flag if hour is <= 12
+        if (getParsingFlags(config).bigHour === true &&
+                config._a[HOUR] <= 12 &&
+                config._a[HOUR] > 0) {
+            getParsingFlags(config).bigHour = undefined;
+        }
+        // handle meridiem
+        config._a[HOUR] = meridiemFixWrap(config._locale, config._a[HOUR], config._meridiem);
+
+        configFromArray(config);
+        checkOverflow(config);
+    }
+
+
+    function meridiemFixWrap (locale, hour, meridiem) {
+        var isPm;
+
+        if (meridiem == null) {
+            // nothing to do
+            return hour;
+        }
+        if (locale.meridiemHour != null) {
+            return locale.meridiemHour(hour, meridiem);
+        } else if (locale.isPM != null) {
+            // Fallback
+            isPm = locale.isPM(meridiem);
+            if (isPm && hour < 12) {
+                hour += 12;
+            }
+            if (!isPm && hour === 12) {
+                hour = 0;
+            }
+            return hour;
+        } else {
+            // this is not supposed to happen
+            return hour;
+        }
+    }
+
+    // date from string and array of format strings
+    function configFromStringAndArray(config) {
+        var tempConfig,
+            bestMoment,
+
+            scoreToBeat,
+            i,
+            currentScore;
+
+        if (config._f.length === 0) {
+            getParsingFlags(config).invalidFormat = true;
+            config._d = new Date(NaN);
+            return;
+        }
+
+        for (i = 0; i < config._f.length; i++) {
+            currentScore = 0;
+            tempConfig = copyConfig({}, config);
+            if (config._useUTC != null) {
+                tempConfig._useUTC = config._useUTC;
+            }
+            tempConfig._f = config._f[i];
+            configFromStringAndFormat(tempConfig);
+
+            if (!valid__isValid(tempConfig)) {
+                continue;
+            }
+
+            // if there is any input that was not parsed add a penalty for that format
+            currentScore += getParsingFlags(tempConfig).charsLeftOver;
+
+            //or tokens
+            currentScore += getParsingFlags(tempConfig).unusedTokens.length * 10;
+
+            getParsingFlags(tempConfig).score = currentScore;
+
+            if (scoreToBeat == null || currentScore < scoreToBeat) {
+                scoreToBeat = currentScore;
+                bestMoment = tempConfig;
+            }
+        }
+
+        extend(config, bestMoment || tempConfig);
+    }
+
+    function configFromObject(config) {
+        if (config._d) {
+            return;
+        }
+
+        var i = normalizeObjectUnits(config._i);
+        config._a = map([i.year, i.month, i.day || i.date, i.hour, i.minute, i.second, i.millisecond], function (obj) {
+            return obj && parseInt(obj, 10);
+        });
+
+        configFromArray(config);
+    }
+
+    function createFromConfig (config) {
+        var res = new Moment(checkOverflow(prepareConfig(config)));
+        if (res._nextDay) {
+            // Adding is smart enough around DST
+            res.add(1, 'd');
+            res._nextDay = undefined;
+        }
+
+        return res;
+    }
+
+    function prepareConfig (config) {
+        var input = config._i,
+            format = config._f;
+
+        config._locale = config._locale || locale_locales__getLocale(config._l);
+
+        if (input === null || (format === undefined && input === '')) {
+            return valid__createInvalid({nullInput: true});
+        }
+
+        if (typeof input === 'string') {
+            config._i = input = config._locale.preparse(input);
+        }
+
+        if (isMoment(input)) {
+            return new Moment(checkOverflow(input));
+        } else if (isArray(format)) {
+            configFromStringAndArray(config);
+        } else if (format) {
+            configFromStringAndFormat(config);
+        } else if (isDate(input)) {
+            config._d = input;
+        } else {
+            configFromInput(config);
+        }
+
+        if (!valid__isValid(config)) {
+            config._d = null;
+        }
+
+        return config;
+    }
+
+    function configFromInput(config) {
+        var input = config._i;
+        if (input === undefined) {
+            config._d = new Date(utils_hooks__hooks.now());
+        } else if (isDate(input)) {
+            config._d = new Date(+input);
+        } else if (typeof input === 'string') {
+            configFromString(config);
+        } else if (isArray(input)) {
+            config._a = map(input.slice(0), function (obj) {
+                return parseInt(obj, 10);
+            });
+            configFromArray(config);
+        } else if (typeof(input) === 'object') {
+            configFromObject(config);
+        } else if (typeof(input) === 'number') {
+            // from milliseconds
+            config._d = new Date(input);
+        } else {
+            utils_hooks__hooks.createFromInputFallback(config);
+        }
+    }
+
+    function createLocalOrUTC (input, format, locale, strict, isUTC) {
+        var c = {};
+
+        if (typeof(locale) === 'boolean') {
+            strict = locale;
+            locale = undefined;
+        }
+        // object construction must be done this way.
+        // https://github.com/moment/moment/issues/1423
+        c._isAMomentObject = true;
+        c._useUTC = c._isUTC = isUTC;
+        c._l = locale;
+        c._i = input;
+        c._f = format;
+        c._strict = strict;
+
+        return createFromConfig(c);
+    }
+
+    function local__createLocal (input, format, locale, strict) {
+        return createLocalOrUTC(input, format, locale, strict, false);
+    }
+
+    var prototypeMin = deprecate(
+         'moment().min is deprecated, use moment.min instead. https://github.com/moment/moment/issues/1548',
+         function () {
+             var other = local__createLocal.apply(null, arguments);
+             if (this.isValid() && other.isValid()) {
+                 return other < this ? this : other;
+             } else {
+                 return valid__createInvalid();
+             }
+         }
+     );
+
+    var prototypeMax = deprecate(
+        'moment().max is deprecated, use moment.max instead. https://github.com/moment/moment/issues/1548',
+        function () {
+            var other = local__createLocal.apply(null, arguments);
+            if (this.isValid() && other.isValid()) {
+                return other > this ? this : other;
+            } else {
+                return valid__createInvalid();
+            }
+        }
+    );
+
+    // Pick a moment m from moments so that m[fn](other) is true for all
+    // other. This relies on the function fn to be transitive.
+    //
+    // moments should either be an array of moment objects or an array, whose
+    // first element is an array of moment objects.
+    function pickBy(fn, moments) {
+        var res, i;
+        if (moments.length === 1 && isArray(moments[0])) {
+            moments = moments[0];
+        }
+        if (!moments.length) {
+            return local__createLocal();
+        }
+        res = moments[0];
+        for (i = 1; i < moments.length; ++i) {
+            if (!moments[i].isValid() || moments[i][fn](res)) {
+                res = moments[i];
+            }
+        }
+        return res;
+    }
+
+    // TODO: Use [].sort instead?
+    function min () {
+        var args = [].slice.call(arguments, 0);
+
+        return pickBy('isBefore', args);
+    }
+
+    function max () {
+        var args = [].slice.call(arguments, 0);
+
+        return pickBy('isAfter', args);
+    }
+
+    var now = function () {
+        return Date.now ? Date.now() : +(new Date());
+    };
+
+    function Duration (duration) {
+        var normalizedInput = normalizeObjectUnits(duration),
+            years = normalizedInput.year || 0,
+            quarters = normalizedInput.quarter || 0,
+            months = normalizedInput.month || 0,
+            weeks = normalizedInput.week || 0,
+            days = normalizedInput.day || 0,
+            hours = normalizedInput.hour || 0,
+            minutes = normalizedInput.minute || 0,
+            seconds = normalizedInput.second || 0,
+            milliseconds = normalizedInput.millisecond || 0;
+
+        // representation for dateAddRemove
+        this._milliseconds = +milliseconds +
+            seconds * 1e3 + // 1000
+            minutes * 6e4 + // 1000 * 60
+            hours * 36e5; // 1000 * 60 * 60
+        // Because of dateAddRemove treats 24 hours as different from a
+        // day when working around DST, we need to store them separately
+        this._days = +days +
+            weeks * 7;
+        // It is impossible translate months into days without knowing
+        // which months you are are talking about, so we have to store
+        // it separately.
+        this._months = +months +
+            quarters * 3 +
+            years * 12;
+
+        this._data = {};
+
+        this._locale = locale_locales__getLocale();
+
+        this._bubble();
+    }
+
+    function isDuration (obj) {
+        return obj instanceof Duration;
+    }
+
+    // FORMATTING
+
+    function offset (token, separator) {
+        addFormatToken(token, 0, 0, function () {
+            var offset = this.utcOffset();
+            var sign = '+';
+            if (offset < 0) {
+                offset = -offset;
+                sign = '-';
+            }
+            return sign + zeroFill(~~(offset / 60), 2) + separator + zeroFill(~~(offset) % 60, 2);
+        });
+    }
+
+    offset('Z', ':');
+    offset('ZZ', '');
+
+    // PARSING
+
+    addRegexToken('Z',  matchShortOffset);
+    addRegexToken('ZZ', matchShortOffset);
+    addParseToken(['Z', 'ZZ'], function (input, array, config) {
+        config._useUTC = true;
+        config._tzm = offsetFromString(matchShortOffset, input);
+    });
+
+    // HELPERS
+
+    // timezone chunker
+    // '+10:00' > ['10',  '00']
+    // '-1530'  > ['-15', '30']
+    var chunkOffset = /([\+\-]|\d\d)/gi;
+
+    function offsetFromString(matcher, string) {
+        var matches = ((string || '').match(matcher) || []);
+        var chunk   = matches[matches.length - 1] || [];
+        var parts   = (chunk + '').match(chunkOffset) || ['-', 0, 0];
+        var minutes = +(parts[1] * 60) + toInt(parts[2]);
+
+        return parts[0] === '+' ? minutes : -minutes;
+    }
+
+    // Return a moment from input, that is local/utc/zone equivalent to model.
+    function cloneWithOffset(input, model) {
+        var res, diff;
+        if (model._isUTC) {
+            res = model.clone();
+            diff = (isMoment(input) || isDate(input) ? +input : +local__createLocal(input)) - (+res);
+            // Use low-level api, because this fn is low-level api.
+            res._d.setTime(+res._d + diff);
+            utils_hooks__hooks.updateOffset(res, false);
+            return res;
+        } else {
+            return local__createLocal(input).local();
+        }
+    }
+
+    function getDateOffset (m) {
+        // On Firefox.24 Date#getTimezoneOffset returns a floating point.
+        // https://github.com/moment/moment/pull/1871
+        return -Math.round(m._d.getTimezoneOffset() / 15) * 15;
+    }
+
+    // HOOKS
+
+    // This function will be called whenever a moment is mutated.
+    // It is intended to keep the offset in sync with the timezone.
+    utils_hooks__hooks.updateOffset = function () {};
+
+    // MOMENTS
+
+    // keepLocalTime = true means only change the timezone, without
+    // affecting the local hour. So 5:31:26 +0300 --[utcOffset(2, true)]-->
+    // 5:31:26 +0200 It is possible that 5:31:26 doesn't exist with offset
+    // +0200, so we adjust the time as needed, to be valid.
+    //
+    // Keeping the time actually adds/subtracts (one hour)
+    // from the actual represented time. That is why we call updateOffset
+    // a second time. In case it wants us to change the offset again
+    // _changeInProgress == true case, then we have to adjust, because
+    // there is no such time in the given timezone.
+    function getSetOffset (input, keepLocalTime) {
+        var offset = this._offset || 0,
+            localAdjust;
+        if (!this.isValid()) {
+            return input != null ? this : NaN;
+        }
+        if (input != null) {
+            if (typeof input === 'string') {
+                input = offsetFromString(matchShortOffset, input);
+            } else if (Math.abs(input) < 16) {
+                input = input * 60;
+            }
+            if (!this._isUTC && keepLocalTime) {
+                localAdjust = getDateOffset(this);
+            }
+            this._offset = input;
+            this._isUTC = true;
+            if (localAdjust != null) {
+                this.add(localAdjust, 'm');
+            }
+            if (offset !== input) {
+                if (!keepLocalTime || this._changeInProgress) {
+                    add_subtract__addSubtract(this, create__createDuration(input - offset, 'm'), 1, false);
+                } else if (!this._changeInProgress) {
+                    this._changeInProgress = true;
+                    utils_hooks__hooks.updateOffset(this, true);
+                    this._changeInProgress = null;
+                }
+            }
+            return this;
+        } else {
+            return this._isUTC ? offset : getDateOffset(this);
+        }
+    }
+
+    function getSetZone (input, keepLocalTime) {
+        if (input != null) {
+            if (typeof input !== 'string') {
+                input = -input;
+            }
+
+            this.utcOffset(input, keepLocalTime);
+
+            return this;
+        } else {
+            return -this.utcOffset();
+        }
+    }
+
+    function setOffsetToUTC (keepLocalTime) {
+        return this.utcOffset(0, keepLocalTime);
+    }
+
+    function setOffsetToLocal (keepLocalTime) {
+        if (this._isUTC) {
+            this.utcOffset(0, keepLocalTime);
+            this._isUTC = false;
+
+            if (keepLocalTime) {
+                this.subtract(getDateOffset(this), 'm');
+            }
+        }
+        return this;
+    }
+
+    function setOffsetToParsedOffset () {
+        if (this._tzm) {
+            this.utcOffset(this._tzm);
+        } else if (typeof this._i === 'string') {
+            this.utcOffset(offsetFromString(matchOffset, this._i));
+        }
+        return this;
+    }
+
+    function hasAlignedHourOffset (input) {
+        if (!this.isValid()) {
+            return false;
+        }
+        input = input ? local__createLocal(input).utcOffset() : 0;
+
+        return (this.utcOffset() - input) % 60 === 0;
+    }
+
+    function isDaylightSavingTime () {
+        return (
+            this.utcOffset() > this.clone().month(0).utcOffset() ||
+            this.utcOffset() > this.clone().month(5).utcOffset()
+        );
+    }
+
+    function isDaylightSavingTimeShifted () {
+        if (!isUndefined(this._isDSTShifted)) {
+            return this._isDSTShifted;
+        }
+
+        var c = {};
+
+        copyConfig(c, this);
+        c = prepareConfig(c);
+
+        if (c._a) {
+            var other = c._isUTC ? create_utc__createUTC(c._a) : local__createLocal(c._a);
+            this._isDSTShifted = this.isValid() &&
+                compareArrays(c._a, other.toArray()) > 0;
+        } else {
+            this._isDSTShifted = false;
+        }
+
+        return this._isDSTShifted;
+    }
+
+    function isLocal () {
+        return this.isValid() ? !this._isUTC : false;
+    }
+
+    function isUtcOffset () {
+        return this.isValid() ? this._isUTC : false;
+    }
+
+    function isUtc () {
+        return this.isValid() ? this._isUTC && this._offset === 0 : false;
+    }
+
+    // ASP.NET json date format regex
+    var aspNetRegex = /^(\-)?(?:(\d*)[. ])?(\d+)\:(\d+)(?:\:(\d+)\.?(\d{3})?\d*)?$/;
+
+    // from http://docs.closure-library.googlecode.com/git/closure_goog_date_date.js.source.html
+    // somewhat more in line with 4.4.3.2 2004 spec, but allows decimal anywhere
+    var isoRegex = /^(-)?P(?:(?:([0-9,.]*)Y)?(?:([0-9,.]*)M)?(?:([0-9,.]*)D)?(?:T(?:([0-9,.]*)H)?(?:([0-9,.]*)M)?(?:([0-9,.]*)S)?)?|([0-9,.]*)W)$/;
+
+    function create__createDuration (input, key) {
+        var duration = input,
+            // matching against regexp is expensive, do it on demand
+            match = null,
+            sign,
+            ret,
+            diffRes;
+
+        if (isDuration(input)) {
+            duration = {
+                ms : input._milliseconds,
+                d  : input._days,
+                M  : input._months
+            };
+        } else if (typeof input === 'number') {
+            duration = {};
+            if (key) {
+                duration[key] = input;
+            } else {
+                duration.milliseconds = input;
+            }
+        } else if (!!(match = aspNetRegex.exec(input))) {
+            sign = (match[1] === '-') ? -1 : 1;
+            duration = {
+                y  : 0,
+                d  : toInt(match[DATE])        * sign,
+                h  : toInt(match[HOUR])        * sign,
+                m  : toInt(match[MINUTE])      * sign,
+                s  : toInt(match[SECOND])      * sign,
+                ms : toInt(match[MILLISECOND]) * sign
+            };
+        } else if (!!(match = isoRegex.exec(input))) {
+            sign = (match[1] === '-') ? -1 : 1;
+            duration = {
+                y : parseIso(match[2], sign),
+                M : parseIso(match[3], sign),
+                d : parseIso(match[4], sign),
+                h : parseIso(match[5], sign),
+                m : parseIso(match[6], sign),
+                s : parseIso(match[7], sign),
+                w : parseIso(match[8], sign)
+            };
+        } else if (duration == null) {// checks for null or undefined
+            duration = {};
+        } else if (typeof duration === 'object' && ('from' in duration || 'to' in duration)) {
+            diffRes = momentsDifference(local__createLocal(duration.from), local__createLocal(duration.to));
+
+            duration = {};
+            duration.ms = diffRes.milliseconds;
+            duration.M = diffRes.months;
+        }
+
+        ret = new Duration(duration);
+
+        if (isDuration(input) && hasOwnProp(input, '_locale')) {
+            ret._locale = input._locale;
+        }
+
+        return ret;
+    }
+
+    create__createDuration.fn = Duration.prototype;
+
+    function parseIso (inp, sign) {
+        // We'd normally use ~~inp for this, but unfortunately it also
+        // converts floats to ints.
+        // inp may be undefined, so careful calling replace on it.
+        var res = inp && parseFloat(inp.replace(',', '.'));
+        // apply sign while we're at it
+        return (isNaN(res) ? 0 : res) * sign;
+    }
+
+    function positiveMomentsDifference(base, other) {
+        var res = {milliseconds: 0, months: 0};
+
+        res.months = other.month() - base.month() +
+            (other.year() - base.year()) * 12;
+        if (base.clone().add(res.months, 'M').isAfter(other)) {
+            --res.months;
+        }
+
+        res.milliseconds = +other - +(base.clone().add(res.months, 'M'));
+
+        return res;
+    }
+
+    function momentsDifference(base, other) {
+        var res;
+        if (!(base.isValid() && other.isValid())) {
+            return {milliseconds: 0, months: 0};
+        }
+
+        other = cloneWithOffset(other, base);
+        if (base.isBefore(other)) {
+            res = positiveMomentsDifference(base, other);
+        } else {
+            res = positiveMomentsDifference(other, base);
+            res.milliseconds = -res.milliseconds;
+            res.months = -res.months;
+        }
+
+        return res;
+    }
+
+    // TODO: remove 'name' arg after deprecation is removed
+    function createAdder(direction, name) {
+        return function (val, period) {
+            var dur, tmp;
+            //invert the arguments, but complain about it
+            if (period !== null && !isNaN(+period)) {
+                deprecateSimple(name, 'moment().' + name  + '(period, number) is deprecated. Please use moment().' + name + '(number, period).');
+                tmp = val; val = period; period = tmp;
+            }
+
+            val = typeof val === 'string' ? +val : val;
+            dur = create__createDuration(val, period);
+            add_subtract__addSubtract(this, dur, direction);
+            return this;
+        };
+    }
+
+    function add_subtract__addSubtract (mom, duration, isAdding, updateOffset) {
+        var milliseconds = duration._milliseconds,
+            days = duration._days,
+            months = duration._months;
+
+        if (!mom.isValid()) {
+            // No op
+            return;
+        }
+
+        updateOffset = updateOffset == null ? true : updateOffset;
+
+        if (milliseconds) {
+            mom._d.setTime(+mom._d + milliseconds * isAdding);
+        }
+        if (days) {
+            get_set__set(mom, 'Date', get_set__get(mom, 'Date') + days * isAdding);
+        }
+        if (months) {
+            setMonth(mom, get_set__get(mom, 'Month') + months * isAdding);
+        }
+        if (updateOffset) {
+            utils_hooks__hooks.updateOffset(mom, days || months);
+        }
+    }
+
+    var add_subtract__add      = createAdder(1, 'add');
+    var add_subtract__subtract = createAdder(-1, 'subtract');
+
+    function moment_calendar__calendar (time, formats) {
+        // We want to compare the start of today, vs this.
+        // Getting start-of-today depends on whether we're local/utc/offset or not.
+        var now = time || local__createLocal(),
+            sod = cloneWithOffset(now, this).startOf('day'),
+            diff = this.diff(sod, 'days', true),
+            format = diff < -6 ? 'sameElse' :
+                diff < -1 ? 'lastWeek' :
+                diff < 0 ? 'lastDay' :
+                diff < 1 ? 'sameDay' :
+                diff < 2 ? 'nextDay' :
+                diff < 7 ? 'nextWeek' : 'sameElse';
+
+        var output = formats && (isFunction(formats[format]) ? formats[format]() : formats[format]);
+
+        return this.format(output || this.localeData().calendar(format, this, local__createLocal(now)));
+    }
+
+    function clone () {
+        return new Moment(this);
+    }
+
+    function isAfter (input, units) {
+        var localInput = isMoment(input) ? input : local__createLocal(input);
+        if (!(this.isValid() && localInput.isValid())) {
+            return false;
+        }
+        units = normalizeUnits(!isUndefined(units) ? units : 'millisecond');
+        if (units === 'millisecond') {
+            return +this > +localInput;
+        } else {
+            return +localInput < +this.clone().startOf(units);
+        }
+    }
+
+    function isBefore (input, units) {
+        var localInput = isMoment(input) ? input : local__createLocal(input);
+        if (!(this.isValid() && localInput.isValid())) {
+            return false;
+        }
+        units = normalizeUnits(!isUndefined(units) ? units : 'millisecond');
+        if (units === 'millisecond') {
+            return +this < +localInput;
+        } else {
+            return +this.clone().endOf(units) < +localInput;
+        }
+    }
+
+    function isBetween (from, to, units) {
+        return this.isAfter(from, units) && this.isBefore(to, units);
+    }
+
+    function isSame (input, units) {
+        var localInput = isMoment(input) ? input : local__createLocal(input),
+            inputMs;
+        if (!(this.isValid() && localInput.isValid())) {
+            return false;
+        }
+        units = normalizeUnits(units || 'millisecond');
+        if (units === 'millisecond') {
+            return +this === +localInput;
+        } else {
+            inputMs = +localInput;
+            return +(this.clone().startOf(units)) <= inputMs && inputMs <= +(this.clone().endOf(units));
+        }
+    }
+
+    function isSameOrAfter (input, units) {
+        return this.isSame(input, units) || this.isAfter(input,units);
+    }
+
+    function isSameOrBefore (input, units) {
+        return this.isSame(input, units) || this.isBefore(input,units);
+    }
+
+    function diff (input, units, asFloat) {
+        var that,
+            zoneDelta,
+            delta, output;
+
+        if (!this.isValid()) {
+            return NaN;
+        }
+
+        that = cloneWithOffset(input, this);
+
+        if (!that.isValid()) {
+            return NaN;
+        }
+
+        zoneDelta = (that.utcOffset() - this.utcOffset()) * 6e4;
+
+        units = normalizeUnits(units);
+
+        if (units === 'year' || units === 'month' || units === 'quarter') {
+            output = monthDiff(this, that);
+            if (units === 'quarter') {
+                output = output / 3;
+            } else if (units === 'year') {
+                output = output / 12;
+            }
+        } else {
+            delta = this - that;
+            output = units === 'second' ? delta / 1e3 : // 1000
+                units === 'minute' ? delta / 6e4 : // 1000 * 60
+                units === 'hour' ? delta / 36e5 : // 1000 * 60 * 60
+                units === 'day' ? (delta - zoneDelta) / 864e5 : // 1000 * 60 * 60 * 24, negate dst
+                units === 'week' ? (delta - zoneDelta) / 6048e5 : // 1000 * 60 * 60 * 24 * 7, negate dst
+                delta;
+        }
+        return asFloat ? output : absFloor(output);
+    }
+
+    function monthDiff (a, b) {
+        // difference in months
+        var wholeMonthDiff = ((b.year() - a.year()) * 12) + (b.month() - a.month()),
+            // b is in (anchor - 1 month, anchor + 1 month)
+            anchor = a.clone().add(wholeMonthDiff, 'months'),
+            anchor2, adjust;
+
+        if (b - anchor < 0) {
+            anchor2 = a.clone().add(wholeMonthDiff - 1, 'months');
+            // linear across the month
+            adjust = (b - anchor) / (anchor - anchor2);
+        } else {
+            anchor2 = a.clone().add(wholeMonthDiff + 1, 'months');
+            // linear across the month
+            adjust = (b - anchor) / (anchor2 - anchor);
+        }
+
+        return -(wholeMonthDiff + adjust);
+    }
+
+    utils_hooks__hooks.defaultFormat = 'YYYY-MM-DDTHH:mm:ssZ';
+
+    function toString () {
+        return this.clone().locale('en').format('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
+    }
+
+    function moment_format__toISOString () {
+        var m = this.clone().utc();
+        if (0 < m.year() && m.year() <= 9999) {
+            if (isFunction(Date.prototype.toISOString)) {
+                // native implementation is ~50x faster, use it when we can
+                return this.toDate().toISOString();
+            } else {
+                return formatMoment(m, 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
+            }
+        } else {
+            return formatMoment(m, 'YYYYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
+        }
+    }
+
+    function format (inputString) {
+        var output = formatMoment(this, inputString || utils_hooks__hooks.defaultFormat);
+        return this.localeData().postformat(output);
+    }
+
+    function from (time, withoutSuffix) {
+        if (this.isValid() &&
+                ((isMoment(time) && time.isValid()) ||
+                 local__createLocal(time).isValid())) {
+            return create__createDuration({to: this, from: time}).locale(this.locale()).humanize(!withoutSuffix);
+        } else {
+            return this.localeData().invalidDate();
+        }
+    }
+
+    function fromNow (withoutSuffix) {
+        return this.from(local__createLocal(), withoutSuffix);
+    }
+
+    function to (time, withoutSuffix) {
+        if (this.isValid() &&
+                ((isMoment(time) && time.isValid()) ||
+                 local__createLocal(time).isValid())) {
+            return create__createDuration({from: this, to: time}).locale(this.locale()).humanize(!withoutSuffix);
+        } else {
+            return this.localeData().invalidDate();
+        }
+    }
+
+    function toNow (withoutSuffix) {
+        return this.to(local__createLocal(), withoutSuffix);
+    }
+
+    // If passed a locale key, it will set the locale for this
+    // instance.  Otherwise, it will return the locale configuration
+    // variables for this instance.
+    function locale (key) {
+        var newLocaleData;
+
+        if (key === undefined) {
+            return this._locale._abbr;
+        } else {
+            newLocaleData = locale_locales__getLocale(key);
+            if (newLocaleData != null) {
+                this._locale = newLocaleData;
+            }
+            return this;
+        }
+    }
+
+    var lang = deprecate(
+        'moment().lang() is deprecated. Instead, use moment().localeData() to get the language configuration. Use moment().locale() to change languages.',
+        function (key) {
+            if (key === undefined) {
+                return this.localeData();
+            } else {
+                return this.locale(key);
+            }
+        }
+    );
+
+    function localeData () {
+        return this._locale;
+    }
+
+    function startOf (units) {
+        units = normalizeUnits(units);
+        // the following switch intentionally omits break keywords
+        // to utilize falling through the cases.
+        switch (units) {
+        case 'year':
+            this.month(0);
+            /* falls through */
+        case 'quarter':
+        case 'month':
+            this.date(1);
+            /* falls through */
+        case 'week':
+        case 'isoWeek':
+        case 'day':
+            this.hours(0);
+            /* falls through */
+        case 'hour':
+            this.minutes(0);
+            /* falls through */
+        case 'minute':
+            this.seconds(0);
+            /* falls through */
+        case 'second':
+            this.milliseconds(0);
+        }
+
+        // weeks are a special case
+        if (units === 'week') {
+            this.weekday(0);
+        }
+        if (units === 'isoWeek') {
+            this.isoWeekday(1);
+        }
+
+        // quarters are also special
+        if (units === 'quarter') {
+            this.month(Math.floor(this.month() / 3) * 3);
+        }
+
+        return this;
+    }
+
+    function endOf (units) {
+        units = normalizeUnits(units);
+        if (units === undefined || units === 'millisecond') {
+            return this;
+        }
+        return this.startOf(units).add(1, (units === 'isoWeek' ? 'week' : units)).subtract(1, 'ms');
+    }
+
+    function to_type__valueOf () {
+        return +this._d - ((this._offset || 0) * 60000);
+    }
+
+    function unix () {
+        return Math.floor(+this / 1000);
+    }
+
+    function toDate () {
+        return this._offset ? new Date(+this) : this._d;
+    }
+
+    function toArray () {
+        var m = this;
+        return [m.year(), m.month(), m.date(), m.hour(), m.minute(), m.second(), m.millisecond()];
+    }
+
+    function toObject () {
+        var m = this;
+        return {
+            years: m.year(),
+            months: m.month(),
+            date: m.date(),
+            hours: m.hours(),
+            minutes: m.minutes(),
+            seconds: m.seconds(),
+            milliseconds: m.milliseconds()
+        };
+    }
+
+    function toJSON () {
+        // JSON.stringify(new Date(NaN)) === 'null'
+        return this.isValid() ? this.toISOString() : 'null';
+    }
+
+    function moment_valid__isValid () {
+        return valid__isValid(this);
+    }
+
+    function parsingFlags () {
+        return extend({}, getParsingFlags(this));
+    }
+
+    function invalidAt () {
+        return getParsingFlags(this).overflow;
+    }
+
+    function creationData() {
+        return {
+            input: this._i,
+            format: this._f,
+            locale: this._locale,
+            isUTC: this._isUTC,
+            strict: this._strict
+        };
+    }
+
+    // FORMATTING
+
+    addFormatToken(0, ['gg', 2], 0, function () {
+        return this.weekYear() % 100;
+    });
+
+    addFormatToken(0, ['GG', 2], 0, function () {
+        return this.isoWeekYear() % 100;
+    });
+
+    function addWeekYearFormatToken (token, getter) {
+        addFormatToken(0, [token, token.length], 0, getter);
+    }
+
+    addWeekYearFormatToken('gggg',     'weekYear');
+    addWeekYearFormatToken('ggggg',    'weekYear');
+    addWeekYearFormatToken('GGGG',  'isoWeekYear');
+    addWeekYearFormatToken('GGGGG', 'isoWeekYear');
+
+    // ALIASES
+
+    addUnitAlias('weekYear', 'gg');
+    addUnitAlias('isoWeekYear', 'GG');
+
+    // PARSING
+
+    addRegexToken('G',      matchSigned);
+    addRegexToken('g',      matchSigned);
+    addRegexToken('GG',     match1to2, match2);
+    addRegexToken('gg',     match1to2, match2);
+    addRegexToken('GGGG',   match1to4, match4);
+    addRegexToken('gggg',   match1to4, match4);
+    addRegexToken('GGGGG',  match1to6, match6);
+    addRegexToken('ggggg',  match1to6, match6);
+
+    addWeekParseToken(['gggg', 'ggggg', 'GGGG', 'GGGGG'], function (input, week, config, token) {
+        week[token.substr(0, 2)] = toInt(input);
+    });
+
+    addWeekParseToken(['gg', 'GG'], function (input, week, config, token) {
+        week[token] = utils_hooks__hooks.parseTwoDigitYear(input);
+    });
+
+    // MOMENTS
+
+    function getSetWeekYear (input) {
+        return getSetWeekYearHelper.call(this,
+                input,
+                this.week(),
+                this.weekday(),
+                this.localeData()._week.dow,
+                this.localeData()._week.doy);
+    }
+
+    function getSetISOWeekYear (input) {
+        return getSetWeekYearHelper.call(this,
+                input, this.isoWeek(), this.isoWeekday(), 1, 4);
+    }
+
+    function getISOWeeksInYear () {
+        return weeksInYear(this.year(), 1, 4);
+    }
+
+    function getWeeksInYear () {
+        var weekInfo = this.localeData()._week;
+        return weeksInYear(this.year(), weekInfo.dow, weekInfo.doy);
+    }
+
+    function getSetWeekYearHelper(input, week, weekday, dow, doy) {
+        var weeksTarget;
+        if (input == null) {
+            return weekOfYear(this, dow, doy).year;
+        } else {
+            weeksTarget = weeksInYear(input, dow, doy);
+            if (week > weeksTarget) {
+                week = weeksTarget;
+            }
+            return setWeekAll.call(this, input, week, weekday, dow, doy);
+        }
+    }
+
+    function setWeekAll(weekYear, week, weekday, dow, doy) {
+        var dayOfYearData = dayOfYearFromWeeks(weekYear, week, weekday, dow, doy),
+            date = createUTCDate(dayOfYearData.year, 0, dayOfYearData.dayOfYear);
+
+        // console.log("got", weekYear, week, weekday, "set", date.toISOString());
+        this.year(date.getUTCFullYear());
+        this.month(date.getUTCMonth());
+        this.date(date.getUTCDate());
+        return this;
+    }
+
+    // FORMATTING
+
+    addFormatToken('Q', 0, 'Qo', 'quarter');
+
+    // ALIASES
+
+    addUnitAlias('quarter', 'Q');
+
+    // PARSING
+
+    addRegexToken('Q', match1);
+    addParseToken('Q', function (input, array) {
+        array[MONTH] = (toInt(input) - 1) * 3;
+    });
+
+    // MOMENTS
+
+    function getSetQuarter (input) {
+        return input == null ? Math.ceil((this.month() + 1) / 3) : this.month((input - 1) * 3 + this.month() % 3);
+    }
+
+    // FORMATTING
+
+    addFormatToken('w', ['ww', 2], 'wo', 'week');
+    addFormatToken('W', ['WW', 2], 'Wo', 'isoWeek');
+
+    // ALIASES
+
+    addUnitAlias('week', 'w');
+    addUnitAlias('isoWeek', 'W');
+
+    // PARSING
+
+    addRegexToken('w',  match1to2);
+    addRegexToken('ww', match1to2, match2);
+    addRegexToken('W',  match1to2);
+    addRegexToken('WW', match1to2, match2);
+
+    addWeekParseToken(['w', 'ww', 'W', 'WW'], function (input, week, config, token) {
+        week[token.substr(0, 1)] = toInt(input);
+    });
+
+    // HELPERS
+
+    // LOCALES
+
+    function localeWeek (mom) {
+        return weekOfYear(mom, this._week.dow, this._week.doy).week;
+    }
+
+    var defaultLocaleWeek = {
+        dow : 0, // Sunday is the first day of the week.
+        doy : 6  // The week that contains Jan 1st is the first week of the year.
+    };
+
+    function localeFirstDayOfWeek () {
+        return this._week.dow;
+    }
+
+    function localeFirstDayOfYear () {
+        return this._week.doy;
+    }
+
+    // MOMENTS
+
+    function getSetWeek (input) {
+        var week = this.localeData().week(this);
+        return input == null ? week : this.add((input - week) * 7, 'd');
+    }
+
+    function getSetISOWeek (input) {
+        var week = weekOfYear(this, 1, 4).week;
+        return input == null ? week : this.add((input - week) * 7, 'd');
+    }
+
+    // FORMATTING
+
+    addFormatToken('D', ['DD', 2], 'Do', 'date');
+
+    // ALIASES
+
+    addUnitAlias('date', 'D');
+
+    // PARSING
+
+    addRegexToken('D',  match1to2);
+    addRegexToken('DD', match1to2, match2);
+    addRegexToken('Do', function (isStrict, locale) {
+        return isStrict ? locale._ordinalParse : locale._ordinalParseLenient;
+    });
+
+    addParseToken(['D', 'DD'], DATE);
+    addParseToken('Do', function (input, array) {
+        array[DATE] = toInt(input.match(match1to2)[0], 10);
+    });
+
+    // MOMENTS
+
+    var getSetDayOfMonth = makeGetSet('Date', true);
+
+    // FORMATTING
+
+    addFormatToken('d', 0, 'do', 'day');
+
+    addFormatToken('dd', 0, 0, function (format) {
+        return this.localeData().weekdaysMin(this, format);
+    });
+
+    addFormatToken('ddd', 0, 0, function (format) {
+        return this.localeData().weekdaysShort(this, format);
+    });
+
+    addFormatToken('dddd', 0, 0, function (format) {
+        return this.localeData().weekdays(this, format);
+    });
+
+    addFormatToken('e', 0, 0, 'weekday');
+    addFormatToken('E', 0, 0, 'isoWeekday');
+
+    // ALIASES
+
+    addUnitAlias('day', 'd');
+    addUnitAlias('weekday', 'e');
+    addUnitAlias('isoWeekday', 'E');
+
+    // PARSING
+
+    addRegexToken('d',    match1to2);
+    addRegexToken('e',    match1to2);
+    addRegexToken('E',    match1to2);
+    addRegexToken('dd',   matchWord);
+    addRegexToken('ddd',  matchWord);
+    addRegexToken('dddd', matchWord);
+
+    addWeekParseToken(['dd', 'ddd', 'dddd'], function (input, week, config, token) {
+        var weekday = config._locale.weekdaysParse(input, token, config._strict);
+        // if we didn't get a weekday name, mark the date as invalid
+        if (weekday != null) {
+            week.d = weekday;
+        } else {
+            getParsingFlags(config).invalidWeekday = input;
+        }
+    });
+
+    addWeekParseToken(['d', 'e', 'E'], function (input, week, config, token) {
+        week[token] = toInt(input);
+    });
+
+    // HELPERS
+
+    function parseWeekday(input, locale) {
+        if (typeof input !== 'string') {
+            return input;
+        }
+
+        if (!isNaN(input)) {
+            return parseInt(input, 10);
+        }
+
+        input = locale.weekdaysParse(input);
+        if (typeof input === 'number') {
+            return input;
+        }
+
+        return null;
+    }
+
+    // LOCALES
+
+    var defaultLocaleWeekdays = 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_');
+    function localeWeekdays (m, format) {
+        return isArray(this._weekdays) ? this._weekdays[m.day()] :
+            this._weekdays[this._weekdays.isFormat.test(format) ? 'format' : 'standalone'][m.day()];
+    }
+
+    var defaultLocaleWeekdaysShort = 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_');
+    function localeWeekdaysShort (m) {
+        return this._weekdaysShort[m.day()];
+    }
+
+    var defaultLocaleWeekdaysMin = 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_');
+    function localeWeekdaysMin (m) {
+        return this._weekdaysMin[m.day()];
+    }
+
+    function localeWeekdaysParse (weekdayName, format, strict) {
+        var i, mom, regex;
+
+        if (!this._weekdaysParse) {
+            this._weekdaysParse = [];
+            this._minWeekdaysParse = [];
+            this._shortWeekdaysParse = [];
+            this._fullWeekdaysParse = [];
+        }
+
+        for (i = 0; i < 7; i++) {
+            // make the regex if we don't have it already
+
+            mom = local__createLocal([2000, 1]).day(i);
+            if (strict && !this._fullWeekdaysParse[i]) {
+                this._fullWeekdaysParse[i] = new RegExp('^' + this.weekdays(mom, '').replace('.', '\.?') + '$', 'i');
+                this._shortWeekdaysParse[i] = new RegExp('^' + this.weekdaysShort(mom, '').replace('.', '\.?') + '$', 'i');
+                this._minWeekdaysParse[i] = new RegExp('^' + this.weekdaysMin(mom, '').replace('.', '\.?') + '$', 'i');
+            }
+            if (!this._weekdaysParse[i]) {
+                regex = '^' + this.weekdays(mom, '') + '|^' + this.weekdaysShort(mom, '') + '|^' + this.weekdaysMin(mom, '');
+                this._weekdaysParse[i] = new RegExp(regex.replace('.', ''), 'i');
+            }
+            // test the regex
+            if (strict && format === 'dddd' && this._fullWeekdaysParse[i].test(weekdayName)) {
+                return i;
+            } else if (strict && format === 'ddd' && this._shortWeekdaysParse[i].test(weekdayName)) {
+                return i;
+            } else if (strict && format === 'dd' && this._minWeekdaysParse[i].test(weekdayName)) {
+                return i;
+            } else if (!strict && this._weekdaysParse[i].test(weekdayName)) {
+                return i;
+            }
+        }
+    }
+
+    // MOMENTS
+
+    function getSetDayOfWeek (input) {
+        if (!this.isValid()) {
+            return input != null ? this : NaN;
+        }
+        var day = this._isUTC ? this._d.getUTCDay() : this._d.getDay();
+        if (input != null) {
+            input = parseWeekday(input, this.localeData());
+            return this.add(input - day, 'd');
+        } else {
+            return day;
+        }
+    }
+
+    function getSetLocaleDayOfWeek (input) {
+        if (!this.isValid()) {
+            return input != null ? this : NaN;
+        }
+        var weekday = (this.day() + 7 - this.localeData()._week.dow) % 7;
+        return input == null ? weekday : this.add(input - weekday, 'd');
+    }
+
+    function getSetISODayOfWeek (input) {
+        if (!this.isValid()) {
+            return input != null ? this : NaN;
+        }
+        // behaves the same as moment#day except
+        // as a getter, returns 7 instead of 0 (1-7 range instead of 0-6)
+        // as a setter, sunday should belong to the previous week.
+        return input == null ? this.day() || 7 : this.day(this.day() % 7 ? input : input - 7);
+    }
+
+    // FORMATTING
+
+    addFormatToken('DDD', ['DDDD', 3], 'DDDo', 'dayOfYear');
+
+    // ALIASES
+
+    addUnitAlias('dayOfYear', 'DDD');
+
+    // PARSING
+
+    addRegexToken('DDD',  match1to3);
+    addRegexToken('DDDD', match3);
+    addParseToken(['DDD', 'DDDD'], function (input, array, config) {
+        config._dayOfYear = toInt(input);
+    });
+
+    // HELPERS
+
+    // MOMENTS
+
+    function getSetDayOfYear (input) {
+        var dayOfYear = Math.round((this.clone().startOf('day') - this.clone().startOf('year')) / 864e5) + 1;
+        return input == null ? dayOfYear : this.add((input - dayOfYear), 'd');
+    }
+
+    // FORMATTING
+
+    function hFormat() {
+        return this.hours() % 12 || 12;
+    }
+
+    addFormatToken('H', ['HH', 2], 0, 'hour');
+    addFormatToken('h', ['hh', 2], 0, hFormat);
+
+    addFormatToken('hmm', 0, 0, function () {
+        return '' + hFormat.apply(this) + zeroFill(this.minutes(), 2);
+    });
+
+    addFormatToken('hmmss', 0, 0, function () {
+        return '' + hFormat.apply(this) + zeroFill(this.minutes(), 2) +
+            zeroFill(this.seconds(), 2);
+    });
+
+    addFormatToken('Hmm', 0, 0, function () {
+        return '' + this.hours() + zeroFill(this.minutes(), 2);
+    });
+
+    addFormatToken('Hmmss', 0, 0, function () {
+        return '' + this.hours() + zeroFill(this.minutes(), 2) +
+            zeroFill(this.seconds(), 2);
+    });
+
+    function meridiem (token, lowercase) {
+        addFormatToken(token, 0, 0, function () {
+            return this.localeData().meridiem(this.hours(), this.minutes(), lowercase);
+        });
+    }
+
+    meridiem('a', true);
+    meridiem('A', false);
+
+    // ALIASES
+
+    addUnitAlias('hour', 'h');
+
+    // PARSING
+
+    function matchMeridiem (isStrict, locale) {
+        return locale._meridiemParse;
+    }
+
+    addRegexToken('a',  matchMeridiem);
+    addRegexToken('A',  matchMeridiem);
+    addRegexToken('H',  match1to2);
+    addRegexToken('h',  match1to2);
+    addRegexToken('HH', match1to2, match2);
+    addRegexToken('hh', match1to2, match2);
+
+    addRegexToken('hmm', match3to4);
+    addRegexToken('hmmss', match5to6);
+    addRegexToken('Hmm', match3to4);
+    addRegexToken('Hmmss', match5to6);
+
+    addParseToken(['H', 'HH'], HOUR);
+    addParseToken(['a', 'A'], function (input, array, config) {
+        config._isPm = config._locale.isPM(input);
+        config._meridiem = input;
+    });
+    addParseToken(['h', 'hh'], function (input, array, config) {
+        array[HOUR] = toInt(input);
+        getParsingFlags(config).bigHour = true;
+    });
+    addParseToken('hmm', function (input, array, config) {
+        var pos = input.length - 2;
+        array[HOUR] = toInt(input.substr(0, pos));
+        array[MINUTE] = toInt(input.substr(pos));
+        getParsingFlags(config).bigHour = true;
+    });
+    addParseToken('hmmss', function (input, array, config) {
+        var pos1 = input.length - 4;
+        var pos2 = input.length - 2;
+        array[HOUR] = toInt(input.substr(0, pos1));
+        array[MINUTE] = toInt(input.substr(pos1, 2));
+        array[SECOND] = toInt(input.substr(pos2));
+        getParsingFlags(config).bigHour = true;
+    });
+    addParseToken('Hmm', function (input, array, config) {
+        var pos = input.length - 2;
+        array[HOUR] = toInt(input.substr(0, pos));
+        array[MINUTE] = toInt(input.substr(pos));
+    });
+    addParseToken('Hmmss', function (input, array, config) {
+        var pos1 = input.length - 4;
+        var pos2 = input.length - 2;
+        array[HOUR] = toInt(input.substr(0, pos1));
+        array[MINUTE] = toInt(input.substr(pos1, 2));
+        array[SECOND] = toInt(input.substr(pos2));
+    });
+
+    // LOCALES
+
+    function localeIsPM (input) {
+        // IE8 Quirks Mode & IE7 Standards Mode do not allow accessing strings like arrays
+        // Using charAt should be more compatible.
+        return ((input + '').toLowerCase().charAt(0) === 'p');
+    }
+
+    var defaultLocaleMeridiemParse = /[ap]\.?m?\.?/i;
+    function localeMeridiem (hours, minutes, isLower) {
+        if (hours > 11) {
+            return isLower ? 'pm' : 'PM';
+        } else {
+            return isLower ? 'am' : 'AM';
+        }
+    }
+
+
+    // MOMENTS
+
+    // Setting the hour should keep the time, because the user explicitly
+    // specified which hour he wants. So trying to maintain the same hour (in
+    // a new timezone) makes sense. Adding/subtracting hours does not follow
+    // this rule.
+    var getSetHour = makeGetSet('Hours', true);
+
+    // FORMATTING
+
+    addFormatToken('m', ['mm', 2], 0, 'minute');
+
+    // ALIASES
+
+    addUnitAlias('minute', 'm');
+
+    // PARSING
+
+    addRegexToken('m',  match1to2);
+    addRegexToken('mm', match1to2, match2);
+    addParseToken(['m', 'mm'], MINUTE);
+
+    // MOMENTS
+
+    var getSetMinute = makeGetSet('Minutes', false);
+
+    // FORMATTING
+
+    addFormatToken('s', ['ss', 2], 0, 'second');
+
+    // ALIASES
+
+    addUnitAlias('second', 's');
+
+    // PARSING
+
+    addRegexToken('s',  match1to2);
+    addRegexToken('ss', match1to2, match2);
+    addParseToken(['s', 'ss'], SECOND);
+
+    // MOMENTS
+
+    var getSetSecond = makeGetSet('Seconds', false);
+
+    // FORMATTING
+
+    addFormatToken('S', 0, 0, function () {
+        return ~~(this.millisecond() / 100);
+    });
+
+    addFormatToken(0, ['SS', 2], 0, function () {
+        return ~~(this.millisecond() / 10);
+    });
+
+    addFormatToken(0, ['SSS', 3], 0, 'millisecond');
+    addFormatToken(0, ['SSSS', 4], 0, function () {
+        return this.millisecond() * 10;
+    });
+    addFormatToken(0, ['SSSSS', 5], 0, function () {
+        return this.millisecond() * 100;
+    });
+    addFormatToken(0, ['SSSSSS', 6], 0, function () {
+        return this.millisecond() * 1000;
+    });
+    addFormatToken(0, ['SSSSSSS', 7], 0, function () {
+        return this.millisecond() * 10000;
+    });
+    addFormatToken(0, ['SSSSSSSS', 8], 0, function () {
+        return this.millisecond() * 100000;
+    });
+    addFormatToken(0, ['SSSSSSSSS', 9], 0, function () {
+        return this.millisecond() * 1000000;
+    });
+
+
+    // ALIASES
+
+    addUnitAlias('millisecond', 'ms');
+
+    // PARSING
+
+    addRegexToken('S',    match1to3, match1);
+    addRegexToken('SS',   match1to3, match2);
+    addRegexToken('SSS',  match1to3, match3);
+
+    var token;
+    for (token = 'SSSS'; token.length <= 9; token += 'S') {
+        addRegexToken(token, matchUnsigned);
+    }
+
+    function parseMs(input, array) {
+        array[MILLISECOND] = toInt(('0.' + input) * 1000);
+    }
+
+    for (token = 'S'; token.length <= 9; token += 'S') {
+        addParseToken(token, parseMs);
+    }
+    // MOMENTS
+
+    var getSetMillisecond = makeGetSet('Milliseconds', false);
+
+    // FORMATTING
+
+    addFormatToken('z',  0, 0, 'zoneAbbr');
+    addFormatToken('zz', 0, 0, 'zoneName');
+
+    // MOMENTS
+
+    function getZoneAbbr () {
+        return this._isUTC ? 'UTC' : '';
+    }
+
+    function getZoneName () {
+        return this._isUTC ? 'Coordinated Universal Time' : '';
+    }
+
+    var momentPrototype__proto = Moment.prototype;
+
+    momentPrototype__proto.add               = add_subtract__add;
+    momentPrototype__proto.calendar          = moment_calendar__calendar;
+    momentPrototype__proto.clone             = clone;
+    momentPrototype__proto.diff              = diff;
+    momentPrototype__proto.endOf             = endOf;
+    momentPrototype__proto.format            = format;
+    momentPrototype__proto.from              = from;
+    momentPrototype__proto.fromNow           = fromNow;
+    momentPrototype__proto.to                = to;
+    momentPrototype__proto.toNow             = toNow;
+    momentPrototype__proto.get               = getSet;
+    momentPrototype__proto.invalidAt         = invalidAt;
+    momentPrototype__proto.isAfter           = isAfter;
+    momentPrototype__proto.isBefore          = isBefore;
+    momentPrototype__proto.isBetween         = isBetween;
+    momentPrototype__proto.isSame            = isSame;
+    momentPrototype__proto.isSameOrAfter     = isSameOrAfter;
+    momentPrototype__proto.isSameOrBefore    = isSameOrBefore;
+    momentPrototype__proto.isValid           = moment_valid__isValid;
+    momentPrototype__proto.lang              = lang;
+    momentPrototype__proto.locale            = locale;
+    momentPrototype__proto.localeData        = localeData;
+    momentPrototype__proto.max               = prototypeMax;
+    momentPrototype__proto.min               = prototypeMin;
+    momentPrototype__proto.parsingFlags      = parsingFlags;
+    momentPrototype__proto.set               = getSet;
+    momentPrototype__proto.startOf           = startOf;
+    momentPrototype__proto.subtract          = add_subtract__subtract;
+    momentPrototype__proto.toArray           = toArray;
+    momentPrototype__proto.toObject          = toObject;
+    momentPrototype__proto.toDate            = toDate;
+    momentPrototype__proto.toISOString       = moment_format__toISOString;
+    momentPrototype__proto.toJSON            = toJSON;
+    momentPrototype__proto.toString          = toString;
+    momentPrototype__proto.unix              = unix;
+    momentPrototype__proto.valueOf           = to_type__valueOf;
+    momentPrototype__proto.creationData      = creationData;
+
+    // Year
+    momentPrototype__proto.year       = getSetYear;
+    momentPrototype__proto.isLeapYear = getIsLeapYear;
+
+    // Week Year
+    momentPrototype__proto.weekYear    = getSetWeekYear;
+    momentPrototype__proto.isoWeekYear = getSetISOWeekYear;
+
+    // Quarter
+    momentPrototype__proto.quarter = momentPrototype__proto.quarters = getSetQuarter;
+
+    // Month
+    momentPrototype__proto.month       = getSetMonth;
+    momentPrototype__proto.daysInMonth = getDaysInMonth;
+
+    // Week
+    momentPrototype__proto.week           = momentPrototype__proto.weeks        = getSetWeek;
+    momentPrototype__proto.isoWeek        = momentPrototype__proto.isoWeeks     = getSetISOWeek;
+    momentPrototype__proto.weeksInYear    = getWeeksInYear;
+    momentPrototype__proto.isoWeeksInYear = getISOWeeksInYear;
+
+    // Day
+    momentPrototype__proto.date       = getSetDayOfMonth;
+    momentPrototype__proto.day        = momentPrototype__proto.days             = getSetDayOfWeek;
+    momentPrototype__proto.weekday    = getSetLocaleDayOfWeek;
+    momentPrototype__proto.isoWeekday = getSetISODayOfWeek;
+    momentPrototype__proto.dayOfYear  = getSetDayOfYear;
+
+    // Hour
+    momentPrototype__proto.hour = momentPrototype__proto.hours = getSetHour;
+
+    // Minute
+    momentPrototype__proto.minute = momentPrototype__proto.minutes = getSetMinute;
+
+    // Second
+    momentPrototype__proto.second = momentPrototype__proto.seconds = getSetSecond;
+
+    // Millisecond
+    momentPrototype__proto.millisecond = momentPrototype__proto.milliseconds = getSetMillisecond;
+
+    // Offset
+    momentPrototype__proto.utcOffset            = getSetOffset;
+    momentPrototype__proto.utc                  = setOffsetToUTC;
+    momentPrototype__proto.local                = setOffsetToLocal;
+    momentPrototype__proto.parseZone            = setOffsetToParsedOffset;
+    momentPrototype__proto.hasAlignedHourOffset = hasAlignedHourOffset;
+    momentPrototype__proto.isDST                = isDaylightSavingTime;
+    momentPrototype__proto.isDSTShifted         = isDaylightSavingTimeShifted;
+    momentPrototype__proto.isLocal              = isLocal;
+    momentPrototype__proto.isUtcOffset          = isUtcOffset;
+    momentPrototype__proto.isUtc                = isUtc;
+    momentPrototype__proto.isUTC                = isUtc;
+
+    // Timezone
+    momentPrototype__proto.zoneAbbr = getZoneAbbr;
+    momentPrototype__proto.zoneName = getZoneName;
+
+    // Deprecations
+    momentPrototype__proto.dates  = deprecate('dates accessor is deprecated. Use date instead.', getSetDayOfMonth);
+    momentPrototype__proto.months = deprecate('months accessor is deprecated. Use month instead', getSetMonth);
+    momentPrototype__proto.years  = deprecate('years accessor is deprecated. Use year instead', getSetYear);
+    momentPrototype__proto.zone   = deprecate('moment().zone is deprecated, use moment().utcOffset instead. https://github.com/moment/moment/issues/1779', getSetZone);
+
+    var momentPrototype = momentPrototype__proto;
+
+    function moment__createUnix (input) {
+        return local__createLocal(input * 1000);
+    }
+
+    function moment__createInZone () {
+        return local__createLocal.apply(null, arguments).parseZone();
+    }
+
+    var defaultCalendar = {
+        sameDay : '[Today at] LT',
+        nextDay : '[Tomorrow at] LT',
+        nextWeek : 'dddd [at] LT',
+        lastDay : '[Yesterday at] LT',
+        lastWeek : '[Last] dddd [at] LT',
+        sameElse : 'L'
+    };
+
+    function locale_calendar__calendar (key, mom, now) {
+        var output = this._calendar[key];
+        return isFunction(output) ? output.call(mom, now) : output;
+    }
+
+    var defaultLongDateFormat = {
+        LTS  : 'h:mm:ss A',
+        LT   : 'h:mm A',
+        L    : 'MM/DD/YYYY',
+        LL   : 'MMMM D, YYYY',
+        LLL  : 'MMMM D, YYYY h:mm A',
+        LLLL : 'dddd, MMMM D, YYYY h:mm A'
+    };
+
+    function longDateFormat (key) {
+        var format = this._longDateFormat[key],
+            formatUpper = this._longDateFormat[key.toUpperCase()];
+
+        if (format || !formatUpper) {
+            return format;
+        }
+
+        this._longDateFormat[key] = formatUpper.replace(/MMMM|MM|DD|dddd/g, function (val) {
+            return val.slice(1);
+        });
+
+        return this._longDateFormat[key];
+    }
+
+    var defaultInvalidDate = 'Invalid date';
+
+    function invalidDate () {
+        return this._invalidDate;
+    }
+
+    var defaultOrdinal = '%d';
+    var defaultOrdinalParse = /\d{1,2}/;
+
+    function ordinal (number) {
+        return this._ordinal.replace('%d', number);
+    }
+
+    function preParsePostFormat (string) {
+        return string;
+    }
+
+    var defaultRelativeTime = {
+        future : 'in %s',
+        past   : '%s ago',
+        s  : 'a few seconds',
+        m  : 'a minute',
+        mm : '%d minutes',
+        h  : 'an hour',
+        hh : '%d hours',
+        d  : 'a day',
+        dd : '%d days',
+        M  : 'a month',
+        MM : '%d months',
+        y  : 'a year',
+        yy : '%d years'
+    };
+
+    function relative__relativeTime (number, withoutSuffix, string, isFuture) {
+        var output = this._relativeTime[string];
+        return (isFunction(output)) ?
+            output(number, withoutSuffix, string, isFuture) :
+            output.replace(/%d/i, number);
+    }
+
+    function pastFuture (diff, output) {
+        var format = this._relativeTime[diff > 0 ? 'future' : 'past'];
+        return isFunction(format) ? format(output) : format.replace(/%s/i, output);
+    }
+
+    function locale_set__set (config) {
+        var prop, i;
+        for (i in config) {
+            prop = config[i];
+            if (isFunction(prop)) {
+                this[i] = prop;
+            } else {
+                this['_' + i] = prop;
+            }
+        }
+        // Lenient ordinal parsing accepts just a number in addition to
+        // number + (possibly) stuff coming from _ordinalParseLenient.
+        this._ordinalParseLenient = new RegExp(this._ordinalParse.source + '|' + (/\d{1,2}/).source);
+    }
+
+    var prototype__proto = Locale.prototype;
+
+    prototype__proto._calendar       = defaultCalendar;
+    prototype__proto.calendar        = locale_calendar__calendar;
+    prototype__proto._longDateFormat = defaultLongDateFormat;
+    prototype__proto.longDateFormat  = longDateFormat;
+    prototype__proto._invalidDate    = defaultInvalidDate;
+    prototype__proto.invalidDate     = invalidDate;
+    prototype__proto._ordinal        = defaultOrdinal;
+    prototype__proto.ordinal         = ordinal;
+    prototype__proto._ordinalParse   = defaultOrdinalParse;
+    prototype__proto.preparse        = preParsePostFormat;
+    prototype__proto.postformat      = preParsePostFormat;
+    prototype__proto._relativeTime   = defaultRelativeTime;
+    prototype__proto.relativeTime    = relative__relativeTime;
+    prototype__proto.pastFuture      = pastFuture;
+    prototype__proto.set             = locale_set__set;
+
+    // Month
+    prototype__proto.months            =        localeMonths;
+    prototype__proto._months           = defaultLocaleMonths;
+    prototype__proto.monthsShort       =        localeMonthsShort;
+    prototype__proto._monthsShort      = defaultLocaleMonthsShort;
+    prototype__proto.monthsParse       =        localeMonthsParse;
+    prototype__proto._monthsRegex      = defaultMonthsRegex;
+    prototype__proto.monthsRegex       = monthsRegex;
+    prototype__proto._monthsShortRegex = defaultMonthsShortRegex;
+    prototype__proto.monthsShortRegex  = monthsShortRegex;
+
+    // Week
+    prototype__proto.week = localeWeek;
+    prototype__proto._week = defaultLocaleWeek;
+    prototype__proto.firstDayOfYear = localeFirstDayOfYear;
+    prototype__proto.firstDayOfWeek = localeFirstDayOfWeek;
+
+    // Day of Week
+    prototype__proto.weekdays       =        localeWeekdays;
+    prototype__proto._weekdays      = defaultLocaleWeekdays;
+    prototype__proto.weekdaysMin    =        localeWeekdaysMin;
+    prototype__proto._weekdaysMin   = defaultLocaleWeekdaysMin;
+    prototype__proto.weekdaysShort  =        localeWeekdaysShort;
+    prototype__proto._weekdaysShort = defaultLocaleWeekdaysShort;
+    prototype__proto.weekdaysParse  =        localeWeekdaysParse;
+
+    // Hours
+    prototype__proto.isPM = localeIsPM;
+    prototype__proto._meridiemParse = defaultLocaleMeridiemParse;
+    prototype__proto.meridiem = localeMeridiem;
+
+    function lists__get (format, index, field, setter) {
+        var locale = locale_locales__getLocale();
+        var utc = create_utc__createUTC().set(setter, index);
+        return locale[field](utc, format);
+    }
+
+    function list (format, index, field, count, setter) {
+        if (typeof format === 'number') {
+            index = format;
+            format = undefined;
+        }
+
+        format = format || '';
+
+        if (index != null) {
+            return lists__get(format, index, field, setter);
+        }
+
+        var i;
+        var out = [];
+        for (i = 0; i < count; i++) {
+            out[i] = lists__get(format, i, field, setter);
+        }
+        return out;
+    }
+
+    function lists__listMonths (format, index) {
+        return list(format, index, 'months', 12, 'month');
+    }
+
+    function lists__listMonthsShort (format, index) {
+        return list(format, index, 'monthsShort', 12, 'month');
+    }
+
+    function lists__listWeekdays (format, index) {
+        return list(format, index, 'weekdays', 7, 'day');
+    }
+
+    function lists__listWeekdaysShort (format, index) {
+        return list(format, index, 'weekdaysShort', 7, 'day');
+    }
+
+    function lists__listWeekdaysMin (format, index) {
+        return list(format, index, 'weekdaysMin', 7, 'day');
+    }
+
+    locale_locales__getSetGlobalLocale('en', {
+        ordinalParse: /\d{1,2}(th|st|nd|rd)/,
+        ordinal : function (number) {
+            var b = number % 10,
+                output = (toInt(number % 100 / 10) === 1) ? 'th' :
+                (b === 1) ? 'st' :
+                (b === 2) ? 'nd' :
+                (b === 3) ? 'rd' : 'th';
+            return number + output;
+        }
+    });
+
+    // Side effect imports
+    utils_hooks__hooks.lang = deprecate('moment.lang is deprecated. Use moment.locale instead.', locale_locales__getSetGlobalLocale);
+    utils_hooks__hooks.langData = deprecate('moment.langData is deprecated. Use moment.localeData instead.', locale_locales__getLocale);
+
+    var mathAbs = Math.abs;
+
+    function duration_abs__abs () {
+        var data           = this._data;
+
+        this._milliseconds = mathAbs(this._milliseconds);
+        this._days         = mathAbs(this._days);
+        this._months       = mathAbs(this._months);
+
+        data.milliseconds  = mathAbs(data.milliseconds);
+        data.seconds       = mathAbs(data.seconds);
+        data.minutes       = mathAbs(data.minutes);
+        data.hours         = mathAbs(data.hours);
+        data.months        = mathAbs(data.months);
+        data.years         = mathAbs(data.years);
+
+        return this;
+    }
+
+    function duration_add_subtract__addSubtract (duration, input, value, direction) {
+        var other = create__createDuration(input, value);
+
+        duration._milliseconds += direction * other._milliseconds;
+        duration._days         += direction * other._days;
+        duration._months       += direction * other._months;
+
+        return duration._bubble();
+    }
+
+    // supports only 2.0-style add(1, 's') or add(duration)
+    function duration_add_subtract__add (input, value) {
+        return duration_add_subtract__addSubtract(this, input, value, 1);
+    }
+
+    // supports only 2.0-style subtract(1, 's') or subtract(duration)
+    function duration_add_subtract__subtract (input, value) {
+        return duration_add_subtract__addSubtract(this, input, value, -1);
+    }
+
+    function absCeil (number) {
+        if (number < 0) {
+            return Math.floor(number);
+        } else {
+            return Math.ceil(number);
+        }
+    }
+
+    function bubble () {
+        var milliseconds = this._milliseconds;
+        var days         = this._days;
+        var months       = this._months;
+        var data         = this._data;
+        var seconds, minutes, hours, years, monthsFromDays;
+
+        // if we have a mix of positive and negative values, bubble down first
+        // check: https://github.com/moment/moment/issues/2166
+        if (!((milliseconds >= 0 && days >= 0 && months >= 0) ||
+                (milliseconds <= 0 && days <= 0 && months <= 0))) {
+            milliseconds += absCeil(monthsToDays(months) + days) * 864e5;
+            days = 0;
+            months = 0;
+        }
+
+        // The following code bubbles up values, see the tests for
+        // examples of what that means.
+        data.milliseconds = milliseconds % 1000;
+
+        seconds           = absFloor(milliseconds / 1000);
+        data.seconds      = seconds % 60;
+
+        minutes           = absFloor(seconds / 60);
+        data.minutes      = minutes % 60;
+
+        hours             = absFloor(minutes / 60);
+        data.hours        = hours % 24;
+
+        days += absFloor(hours / 24);
+
+        // convert days to months
+        monthsFromDays = absFloor(daysToMonths(days));
+        months += monthsFromDays;
+        days -= absCeil(monthsToDays(monthsFromDays));
+
+        // 12 months -> 1 year
+        years = absFloor(months / 12);
+        months %= 12;
+
+        data.days   = days;
+        data.months = months;
+        data.years  = years;
+
+        return this;
+    }
+
+    function daysToMonths (days) {
+        // 400 years have 146097 days (taking into account leap year rules)
+        // 400 years have 12 months === 4800
+        return days * 4800 / 146097;
+    }
+
+    function monthsToDays (months) {
+        // the reverse of daysToMonths
+        return months * 146097 / 4800;
+    }
+
+    function as (units) {
+        var days;
+        var months;
+        var milliseconds = this._milliseconds;
+
+        units = normalizeUnits(units);
+
+        if (units === 'month' || units === 'year') {
+            days   = this._days   + milliseconds / 864e5;
+            months = this._months + daysToMonths(days);
+            return units === 'month' ? months : months / 12;
+        } else {
+            // handle milliseconds separately because of floating point math errors (issue #1867)
+            days = this._days + Math.round(monthsToDays(this._months));
+            switch (units) {
+                case 'week'   : return days / 7     + milliseconds / 6048e5;
+                case 'day'    : return days         + milliseconds / 864e5;
+                case 'hour'   : return days * 24    + milliseconds / 36e5;
+                case 'minute' : return days * 1440  + milliseconds / 6e4;
+                case 'second' : return days * 86400 + milliseconds / 1000;
+                // Math.floor prevents floating point math errors here
+                case 'millisecond': return Math.floor(days * 864e5) + milliseconds;
+                default: throw new Error('Unknown unit ' + units);
+            }
+        }
+    }
+
+    // TODO: Use this.as('ms')?
+    function duration_as__valueOf () {
+        return (
+            this._milliseconds +
+            this._days * 864e5 +
+            (this._months % 12) * 2592e6 +
+            toInt(this._months / 12) * 31536e6
+        );
+    }
+
+    function makeAs (alias) {
+        return function () {
+            return this.as(alias);
+        };
+    }
+
+    var asMilliseconds = makeAs('ms');
+    var asSeconds      = makeAs('s');
+    var asMinutes      = makeAs('m');
+    var asHours        = makeAs('h');
+    var asDays         = makeAs('d');
+    var asWeeks        = makeAs('w');
+    var asMonths       = makeAs('M');
+    var asYears        = makeAs('y');
+
+    function duration_get__get (units) {
+        units = normalizeUnits(units);
+        return this[units + 's']();
+    }
+
+    function makeGetter(name) {
+        return function () {
+            return this._data[name];
+        };
+    }
+
+    var milliseconds = makeGetter('milliseconds');
+    var seconds      = makeGetter('seconds');
+    var minutes      = makeGetter('minutes');
+    var hours        = makeGetter('hours');
+    var days         = makeGetter('days');
+    var months       = makeGetter('months');
+    var years        = makeGetter('years');
+
+    function weeks () {
+        return absFloor(this.days() / 7);
+    }
+
+    var round = Math.round;
+    var thresholds = {
+        s: 45,  // seconds to minute
+        m: 45,  // minutes to hour
+        h: 22,  // hours to day
+        d: 26,  // days to month
+        M: 11   // months to year
+    };
+
+    // helper function for moment.fn.from, moment.fn.fromNow, and moment.duration.fn.humanize
+    function substituteTimeAgo(string, number, withoutSuffix, isFuture, locale) {
+        return locale.relativeTime(number || 1, !!withoutSuffix, string, isFuture);
+    }
+
+    function duration_humanize__relativeTime (posNegDuration, withoutSuffix, locale) {
+        var duration = create__createDuration(posNegDuration).abs();
+        var seconds  = round(duration.as('s'));
+        var minutes  = round(duration.as('m'));
+        var hours    = round(duration.as('h'));
+        var days     = round(duration.as('d'));
+        var months   = round(duration.as('M'));
+        var years    = round(duration.as('y'));
+
+        var a = seconds < thresholds.s && ['s', seconds]  ||
+                minutes <= 1           && ['m']           ||
+                minutes < thresholds.m && ['mm', minutes] ||
+                hours   <= 1           && ['h']           ||
+                hours   < thresholds.h && ['hh', hours]   ||
+                days    <= 1           && ['d']           ||
+                days    < thresholds.d && ['dd', days]    ||
+                months  <= 1           && ['M']           ||
+                months  < thresholds.M && ['MM', months]  ||
+                years   <= 1           && ['y']           || ['yy', years];
+
+        a[2] = withoutSuffix;
+        a[3] = +posNegDuration > 0;
+        a[4] = locale;
+        return substituteTimeAgo.apply(null, a);
+    }
+
+    // This function allows you to set a threshold for relative time strings
+    function duration_humanize__getSetRelativeTimeThreshold (threshold, limit) {
+        if (thresholds[threshold] === undefined) {
+            return false;
+        }
+        if (limit === undefined) {
+            return thresholds[threshold];
+        }
+        thresholds[threshold] = limit;
+        return true;
+    }
+
+    function humanize (withSuffix) {
+        var locale = this.localeData();
+        var output = duration_humanize__relativeTime(this, !withSuffix, locale);
+
+        if (withSuffix) {
+            output = locale.pastFuture(+this, output);
+        }
+
+        return locale.postformat(output);
+    }
+
+    var iso_string__abs = Math.abs;
+
+    function iso_string__toISOString() {
+        // for ISO strings we do not use the normal bubbling rules:
+        //  * milliseconds bubble up until they become hours
+        //  * days do not bubble at all
+        //  * months bubble up until they become years
+        // This is because there is no context-free conversion between hours and days
+        // (think of clock changes)
+        // and also not between days and months (28-31 days per month)
+        var seconds = iso_string__abs(this._milliseconds) / 1000;
+        var days         = iso_string__abs(this._days);
+        var months       = iso_string__abs(this._months);
+        var minutes, hours, years;
+
+        // 3600 seconds -> 60 minutes -> 1 hour
+        minutes           = absFloor(seconds / 60);
+        hours             = absFloor(minutes / 60);
+        seconds %= 60;
+        minutes %= 60;
+
+        // 12 months -> 1 year
+        years  = absFloor(months / 12);
+        months %= 12;
+
+
+        // inspired by https://github.com/dordille/moment-isoduration/blob/master/moment.isoduration.js
+        var Y = years;
+        var M = months;
+        var D = days;
+        var h = hours;
+        var m = minutes;
+        var s = seconds;
+        var total = this.asSeconds();
+
+        if (!total) {
+            // this is the same as C#'s (Noda) and python (isodate)...
+            // but not other JS (goog.date)
+            return 'P0D';
+        }
+
+        return (total < 0 ? '-' : '') +
+            'P' +
+            (Y ? Y + 'Y' : '') +
+            (M ? M + 'M' : '') +
+            (D ? D + 'D' : '') +
+            ((h || m || s) ? 'T' : '') +
+            (h ? h + 'H' : '') +
+            (m ? m + 'M' : '') +
+            (s ? s + 'S' : '');
+    }
+
+    var duration_prototype__proto = Duration.prototype;
+
+    duration_prototype__proto.abs            = duration_abs__abs;
+    duration_prototype__proto.add            = duration_add_subtract__add;
+    duration_prototype__proto.subtract       = duration_add_subtract__subtract;
+    duration_prototype__proto.as             = as;
+    duration_prototype__proto.asMilliseconds = asMilliseconds;
+    duration_prototype__proto.asSeconds      = asSeconds;
+    duration_prototype__proto.asMinutes      = asMinutes;
+    duration_prototype__proto.asHours        = asHours;
+    duration_prototype__proto.asDays         = asDays;
+    duration_prototype__proto.asWeeks        = asWeeks;
+    duration_prototype__proto.asMonths       = asMonths;
+    duration_prototype__proto.asYears        = asYears;
+    duration_prototype__proto.valueOf        = duration_as__valueOf;
+    duration_prototype__proto._bubble        = bubble;
+    duration_prototype__proto.get            = duration_get__get;
+    duration_prototype__proto.milliseconds   = milliseconds;
+    duration_prototype__proto.seconds        = seconds;
+    duration_prototype__proto.minutes        = minutes;
+    duration_prototype__proto.hours          = hours;
+    duration_prototype__proto.days           = days;
+    duration_prototype__proto.weeks          = weeks;
+    duration_prototype__proto.months         = months;
+    duration_prototype__proto.years          = years;
+    duration_prototype__proto.humanize       = humanize;
+    duration_prototype__proto.toISOString    = iso_string__toISOString;
+    duration_prototype__proto.toString       = iso_string__toISOString;
+    duration_prototype__proto.toJSON         = iso_string__toISOString;
+    duration_prototype__proto.locale         = locale;
+    duration_prototype__proto.localeData     = localeData;
+
+    // Deprecations
+    duration_prototype__proto.toIsoString = deprecate('toIsoString() is deprecated. Please use toISOString() instead (notice the capitals)', iso_string__toISOString);
+    duration_prototype__proto.lang = lang;
+
+    // Side effect imports
+
+    // FORMATTING
+
+    addFormatToken('X', 0, 0, 'unix');
+    addFormatToken('x', 0, 0, 'valueOf');
+
+    // PARSING
+
+    addRegexToken('x', matchSigned);
+    addRegexToken('X', matchTimestamp);
+    addParseToken('X', function (input, array, config) {
+        config._d = new Date(parseFloat(input, 10) * 1000);
+    });
+    addParseToken('x', function (input, array, config) {
+        config._d = new Date(toInt(input));
+    });
+
+    // Side effect imports
+
+
+    utils_hooks__hooks.version = '2.11.2';
+
+    setHookCallback(local__createLocal);
+
+    utils_hooks__hooks.fn                    = momentPrototype;
+    utils_hooks__hooks.min                   = min;
+    utils_hooks__hooks.max                   = max;
+    utils_hooks__hooks.now                   = now;
+    utils_hooks__hooks.utc                   = create_utc__createUTC;
+    utils_hooks__hooks.unix                  = moment__createUnix;
+    utils_hooks__hooks.months                = lists__listMonths;
+    utils_hooks__hooks.isDate                = isDate;
+    utils_hooks__hooks.locale                = locale_locales__getSetGlobalLocale;
+    utils_hooks__hooks.invalid               = valid__createInvalid;
+    utils_hooks__hooks.duration              = create__createDuration;
+    utils_hooks__hooks.isMoment              = isMoment;
+    utils_hooks__hooks.weekdays              = lists__listWeekdays;
+    utils_hooks__hooks.parseZone             = moment__createInZone;
+    utils_hooks__hooks.localeData            = locale_locales__getLocale;
+    utils_hooks__hooks.isDuration            = isDuration;
+    utils_hooks__hooks.monthsShort           = lists__listMonthsShort;
+    utils_hooks__hooks.weekdaysMin           = lists__listWeekdaysMin;
+    utils_hooks__hooks.defineLocale          = defineLocale;
+    utils_hooks__hooks.weekdaysShort         = lists__listWeekdaysShort;
+    utils_hooks__hooks.normalizeUnits        = normalizeUnits;
+    utils_hooks__hooks.relativeTimeThreshold = duration_humanize__getSetRelativeTimeThreshold;
+    utils_hooks__hooks.prototype             = momentPrototype;
+
+    var _moment = utils_hooks__hooks;
+
+    return _moment;
+
+}));
+},{}],192:[function(require,module,exports){
 /*globals define, jQuery, module, require */
 /*jslint vars:true */
 
@@ -18161,7 +21662,7 @@ module.exports = 'ngAnimate';
     }]);
 }));
 
-},{"angular":206,"moment":210}],192:[function(require,module,exports){
+},{"angular":208,"moment":191}],193:[function(require,module,exports){
 (function (factory) {
   'use strict';
   if (typeof exports === 'object') {
@@ -18525,7 +22026,3485 @@ module.exports = 'ngAnimate';
   }
 }));
 
-},{"angular":206,"chart.js":207}],193:[function(require,module,exports){
+},{"angular":208,"chart.js":194}],194:[function(require,module,exports){
+/*!
+ * Chart.js
+ * http://chartjs.org/
+ * Version: 1.0.2
+ *
+ * Copyright 2015 Nick Downie
+ * Released under the MIT license
+ * https://github.com/nnnick/Chart.js/blob/master/LICENSE.md
+ */
+
+
+(function(){
+
+	"use strict";
+
+	//Declare root variable - window in the browser, global on the server
+	var root = this,
+		previous = root.Chart;
+
+	//Occupy the global variable of Chart, and create a simple base class
+	var Chart = function(context){
+		var chart = this;
+		this.canvas = context.canvas;
+
+		this.ctx = context;
+
+		//Variables global to the chart
+		var computeDimension = function(element,dimension)
+		{
+			if (element['offset'+dimension])
+			{
+				return element['offset'+dimension];
+			}
+			else
+			{
+				return document.defaultView.getComputedStyle(element).getPropertyValue(dimension);
+			}
+		}
+
+		var width = this.width = computeDimension(context.canvas,'Width');
+		var height = this.height = computeDimension(context.canvas,'Height');
+
+		// Firefox requires this to work correctly
+		context.canvas.width  = width;
+		context.canvas.height = height;
+
+		var width = this.width = context.canvas.width;
+		var height = this.height = context.canvas.height;
+		this.aspectRatio = this.width / this.height;
+		//High pixel density displays - multiply the size of the canvas height/width by the device pixel ratio, then scale.
+		helpers.retinaScale(this);
+
+		return this;
+	};
+	//Globally expose the defaults to allow for user updating/changing
+	Chart.defaults = {
+		global: {
+			// Boolean - Whether to animate the chart
+			animation: true,
+
+			// Number - Number of animation steps
+			animationSteps: 60,
+
+			// String - Animation easing effect
+			animationEasing: "easeOutQuart",
+
+			// Boolean - If we should show the scale at all
+			showScale: true,
+
+			// Boolean - If we want to override with a hard coded scale
+			scaleOverride: false,
+
+			// ** Required if scaleOverride is true **
+			// Number - The number of steps in a hard coded scale
+			scaleSteps: null,
+			// Number - The value jump in the hard coded scale
+			scaleStepWidth: null,
+			// Number - The scale starting value
+			scaleStartValue: null,
+
+			// String - Colour of the scale line
+			scaleLineColor: "rgba(0,0,0,.1)",
+
+			// Number - Pixel width of the scale line
+			scaleLineWidth: 1,
+
+			// Boolean - Whether to show labels on the scale
+			scaleShowLabels: true,
+
+			// Interpolated JS string - can access value
+			scaleLabel: "<%=value%>",
+
+			// Boolean - Whether the scale should stick to integers, and not show any floats even if drawing space is there
+			scaleIntegersOnly: true,
+
+			// Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+			scaleBeginAtZero: false,
+
+			// String - Scale label font declaration for the scale label
+			scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+			// Number - Scale label font size in pixels
+			scaleFontSize: 12,
+
+			// String - Scale label font weight style
+			scaleFontStyle: "normal",
+
+			// String - Scale label font colour
+			scaleFontColor: "#666",
+
+			// Boolean - whether or not the chart should be responsive and resize when the browser does.
+			responsive: false,
+
+			// Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+			maintainAspectRatio: true,
+
+			// Boolean - Determines whether to draw tooltips on the canvas or not - attaches events to touchmove & mousemove
+			showTooltips: true,
+
+			// Boolean - Determines whether to draw built-in tooltip or call custom tooltip function
+			customTooltips: false,
+
+			// Array - Array of string names to attach tooltip events
+			tooltipEvents: ["mousemove", "touchstart", "touchmove", "mouseout"],
+
+			// String - Tooltip background colour
+			tooltipFillColor: "rgba(0,0,0,0.8)",
+
+			// String - Tooltip label font declaration for the scale label
+			tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+			// Number - Tooltip label font size in pixels
+			tooltipFontSize: 14,
+
+			// String - Tooltip font weight style
+			tooltipFontStyle: "normal",
+
+			// String - Tooltip label font colour
+			tooltipFontColor: "#fff",
+
+			// String - Tooltip title font declaration for the scale label
+			tooltipTitleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+			// Number - Tooltip title font size in pixels
+			tooltipTitleFontSize: 14,
+
+			// String - Tooltip title font weight style
+			tooltipTitleFontStyle: "bold",
+
+			// String - Tooltip title font colour
+			tooltipTitleFontColor: "#fff",
+
+			// Number - pixel width of padding around tooltip text
+			tooltipYPadding: 6,
+
+			// Number - pixel width of padding around tooltip text
+			tooltipXPadding: 6,
+
+			// Number - Size of the caret on the tooltip
+			tooltipCaretSize: 8,
+
+			// Number - Pixel radius of the tooltip border
+			tooltipCornerRadius: 6,
+
+			// Number - Pixel offset from point x to tooltip edge
+			tooltipXOffset: 10,
+
+			// String - Template string for single tooltips
+			tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
+
+			// String - Template string for single tooltips
+			multiTooltipTemplate: "<%= value %>",
+
+			// String - Colour behind the legend colour block
+			multiTooltipKeyBackground: '#fff',
+
+			// Function - Will fire on animation progression.
+			onAnimationProgress: function(){},
+
+			// Function - Will fire on animation completion.
+			onAnimationComplete: function(){}
+
+		}
+	};
+
+	//Create a dictionary of chart types, to allow for extension of existing types
+	Chart.types = {};
+
+	//Global Chart helpers object for utility methods and classes
+	var helpers = Chart.helpers = {};
+
+		//-- Basic js utility methods
+	var each = helpers.each = function(loopable,callback,self){
+			var additionalArgs = Array.prototype.slice.call(arguments, 3);
+			// Check to see if null or undefined firstly.
+			if (loopable){
+				if (loopable.length === +loopable.length){
+					var i;
+					for (i=0; i<loopable.length; i++){
+						callback.apply(self,[loopable[i], i].concat(additionalArgs));
+					}
+				}
+				else{
+					for (var item in loopable){
+						callback.apply(self,[loopable[item],item].concat(additionalArgs));
+					}
+				}
+			}
+		},
+		clone = helpers.clone = function(obj){
+			var objClone = {};
+			each(obj,function(value,key){
+				if (obj.hasOwnProperty(key)) objClone[key] = value;
+			});
+			return objClone;
+		},
+		extend = helpers.extend = function(base){
+			each(Array.prototype.slice.call(arguments,1), function(extensionObject) {
+				each(extensionObject,function(value,key){
+					if (extensionObject.hasOwnProperty(key)) base[key] = value;
+				});
+			});
+			return base;
+		},
+		merge = helpers.merge = function(base,master){
+			//Merge properties in left object over to a shallow clone of object right.
+			var args = Array.prototype.slice.call(arguments,0);
+			args.unshift({});
+			return extend.apply(null, args);
+		},
+		indexOf = helpers.indexOf = function(arrayToSearch, item){
+			if (Array.prototype.indexOf) {
+				return arrayToSearch.indexOf(item);
+			}
+			else{
+				for (var i = 0; i < arrayToSearch.length; i++) {
+					if (arrayToSearch[i] === item) return i;
+				}
+				return -1;
+			}
+		},
+		where = helpers.where = function(collection, filterCallback){
+			var filtered = [];
+
+			helpers.each(collection, function(item){
+				if (filterCallback(item)){
+					filtered.push(item);
+				}
+			});
+
+			return filtered;
+		},
+		findNextWhere = helpers.findNextWhere = function(arrayToSearch, filterCallback, startIndex){
+			// Default to start of the array
+			if (!startIndex){
+				startIndex = -1;
+			}
+			for (var i = startIndex + 1; i < arrayToSearch.length; i++) {
+				var currentItem = arrayToSearch[i];
+				if (filterCallback(currentItem)){
+					return currentItem;
+				}
+			}
+		},
+		findPreviousWhere = helpers.findPreviousWhere = function(arrayToSearch, filterCallback, startIndex){
+			// Default to end of the array
+			if (!startIndex){
+				startIndex = arrayToSearch.length;
+			}
+			for (var i = startIndex - 1; i >= 0; i--) {
+				var currentItem = arrayToSearch[i];
+				if (filterCallback(currentItem)){
+					return currentItem;
+				}
+			}
+		},
+		inherits = helpers.inherits = function(extensions){
+			//Basic javascript inheritance based on the model created in Backbone.js
+			var parent = this;
+			var ChartElement = (extensions && extensions.hasOwnProperty("constructor")) ? extensions.constructor : function(){ return parent.apply(this, arguments); };
+
+			var Surrogate = function(){ this.constructor = ChartElement;};
+			Surrogate.prototype = parent.prototype;
+			ChartElement.prototype = new Surrogate();
+
+			ChartElement.extend = inherits;
+
+			if (extensions) extend(ChartElement.prototype, extensions);
+
+			ChartElement.__super__ = parent.prototype;
+
+			return ChartElement;
+		},
+		noop = helpers.noop = function(){},
+		uid = helpers.uid = (function(){
+			var id=0;
+			return function(){
+				return "chart-" + id++;
+			};
+		})(),
+		warn = helpers.warn = function(str){
+			//Method for warning of errors
+			if (window.console && typeof window.console.warn == "function") console.warn(str);
+		},
+		amd = helpers.amd = (typeof define == 'function' && define.amd),
+		//-- Math methods
+		isNumber = helpers.isNumber = function(n){
+			return !isNaN(parseFloat(n)) && isFinite(n);
+		},
+		max = helpers.max = function(array){
+			return Math.max.apply( Math, array );
+		},
+		min = helpers.min = function(array){
+			return Math.min.apply( Math, array );
+		},
+		cap = helpers.cap = function(valueToCap,maxValue,minValue){
+			if(isNumber(maxValue)) {
+				if( valueToCap > maxValue ) {
+					return maxValue;
+				}
+			}
+			else if(isNumber(minValue)){
+				if ( valueToCap < minValue ){
+					return minValue;
+				}
+			}
+			return valueToCap;
+		},
+		getDecimalPlaces = helpers.getDecimalPlaces = function(num){
+			if (num%1!==0 && isNumber(num)){
+				return num.toString().split(".")[1].length;
+			}
+			else {
+				return 0;
+			}
+		},
+		toRadians = helpers.radians = function(degrees){
+			return degrees * (Math.PI/180);
+		},
+		// Gets the angle from vertical upright to the point about a centre.
+		getAngleFromPoint = helpers.getAngleFromPoint = function(centrePoint, anglePoint){
+			var distanceFromXCenter = anglePoint.x - centrePoint.x,
+				distanceFromYCenter = anglePoint.y - centrePoint.y,
+				radialDistanceFromCenter = Math.sqrt( distanceFromXCenter * distanceFromXCenter + distanceFromYCenter * distanceFromYCenter);
+
+
+			var angle = Math.PI * 2 + Math.atan2(distanceFromYCenter, distanceFromXCenter);
+
+			//If the segment is in the top left quadrant, we need to add another rotation to the angle
+			if (distanceFromXCenter < 0 && distanceFromYCenter < 0){
+				angle += Math.PI*2;
+			}
+
+			return {
+				angle: angle,
+				distance: radialDistanceFromCenter
+			};
+		},
+		aliasPixel = helpers.aliasPixel = function(pixelWidth){
+			return (pixelWidth % 2 === 0) ? 0 : 0.5;
+		},
+		splineCurve = helpers.splineCurve = function(FirstPoint,MiddlePoint,AfterPoint,t){
+			//Props to Rob Spencer at scaled innovation for his post on splining between points
+			//http://scaledinnovation.com/analytics/splines/aboutSplines.html
+			var d01=Math.sqrt(Math.pow(MiddlePoint.x-FirstPoint.x,2)+Math.pow(MiddlePoint.y-FirstPoint.y,2)),
+				d12=Math.sqrt(Math.pow(AfterPoint.x-MiddlePoint.x,2)+Math.pow(AfterPoint.y-MiddlePoint.y,2)),
+				fa=t*d01/(d01+d12),// scaling factor for triangle Ta
+				fb=t*d12/(d01+d12);
+			return {
+				inner : {
+					x : MiddlePoint.x-fa*(AfterPoint.x-FirstPoint.x),
+					y : MiddlePoint.y-fa*(AfterPoint.y-FirstPoint.y)
+				},
+				outer : {
+					x: MiddlePoint.x+fb*(AfterPoint.x-FirstPoint.x),
+					y : MiddlePoint.y+fb*(AfterPoint.y-FirstPoint.y)
+				}
+			};
+		},
+		calculateOrderOfMagnitude = helpers.calculateOrderOfMagnitude = function(val){
+			return Math.floor(Math.log(val) / Math.LN10);
+		},
+		calculateScaleRange = helpers.calculateScaleRange = function(valuesArray, drawingSize, textSize, startFromZero, integersOnly){
+
+			//Set a minimum step of two - a point at the top of the graph, and a point at the base
+			var minSteps = 2,
+				maxSteps = Math.floor(drawingSize/(textSize * 1.5)),
+				skipFitting = (minSteps >= maxSteps);
+
+			var maxValue = max(valuesArray),
+				minValue = min(valuesArray);
+
+			// We need some degree of seperation here to calculate the scales if all the values are the same
+			// Adding/minusing 0.5 will give us a range of 1.
+			if (maxValue === minValue){
+				maxValue += 0.5;
+				// So we don't end up with a graph with a negative start value if we've said always start from zero
+				if (minValue >= 0.5 && !startFromZero){
+					minValue -= 0.5;
+				}
+				else{
+					// Make up a whole number above the values
+					maxValue += 0.5;
+				}
+			}
+
+			var	valueRange = Math.abs(maxValue - minValue),
+				rangeOrderOfMagnitude = calculateOrderOfMagnitude(valueRange),
+				graphMax = Math.ceil(maxValue / (1 * Math.pow(10, rangeOrderOfMagnitude))) * Math.pow(10, rangeOrderOfMagnitude),
+				graphMin = (startFromZero) ? 0 : Math.floor(minValue / (1 * Math.pow(10, rangeOrderOfMagnitude))) * Math.pow(10, rangeOrderOfMagnitude),
+				graphRange = graphMax - graphMin,
+				stepValue = Math.pow(10, rangeOrderOfMagnitude),
+				numberOfSteps = Math.round(graphRange / stepValue);
+
+			//If we have more space on the graph we'll use it to give more definition to the data
+			while((numberOfSteps > maxSteps || (numberOfSteps * 2) < maxSteps) && !skipFitting) {
+				if(numberOfSteps > maxSteps){
+					stepValue *=2;
+					numberOfSteps = Math.round(graphRange/stepValue);
+					// Don't ever deal with a decimal number of steps - cancel fitting and just use the minimum number of steps.
+					if (numberOfSteps % 1 !== 0){
+						skipFitting = true;
+					}
+				}
+				//We can fit in double the amount of scale points on the scale
+				else{
+					//If user has declared ints only, and the step value isn't a decimal
+					if (integersOnly && rangeOrderOfMagnitude >= 0){
+						//If the user has said integers only, we need to check that making the scale more granular wouldn't make it a float
+						if(stepValue/2 % 1 === 0){
+							stepValue /=2;
+							numberOfSteps = Math.round(graphRange/stepValue);
+						}
+						//If it would make it a float break out of the loop
+						else{
+							break;
+						}
+					}
+					//If the scale doesn't have to be an int, make the scale more granular anyway.
+					else{
+						stepValue /=2;
+						numberOfSteps = Math.round(graphRange/stepValue);
+					}
+
+				}
+			}
+
+			if (skipFitting){
+				numberOfSteps = minSteps;
+				stepValue = graphRange / numberOfSteps;
+			}
+
+			return {
+				steps : numberOfSteps,
+				stepValue : stepValue,
+				min : graphMin,
+				max	: graphMin + (numberOfSteps * stepValue)
+			};
+
+		},
+		/* jshint ignore:start */
+		// Blows up jshint errors based on the new Function constructor
+		//Templating methods
+		//Javascript micro templating by John Resig - source at http://ejohn.org/blog/javascript-micro-templating/
+		template = helpers.template = function(templateString, valuesObject){
+
+			// If templateString is function rather than string-template - call the function for valuesObject
+
+			if(templateString instanceof Function){
+			 	return templateString(valuesObject);
+		 	}
+
+			var cache = {};
+			function tmpl(str, data){
+				// Figure out if we're getting a template, or if we need to
+				// load the template - and be sure to cache the result.
+				var fn = !/\W/.test(str) ?
+				cache[str] = cache[str] :
+
+				// Generate a reusable function that will serve as a template
+				// generator (and which will be cached).
+				new Function("obj",
+					"var p=[],print=function(){p.push.apply(p,arguments);};" +
+
+					// Introduce the data as local variables using with(){}
+					"with(obj){p.push('" +
+
+					// Convert the template into pure JavaScript
+					str
+						.replace(/[\r\t\n]/g, " ")
+						.split("<%").join("\t")
+						.replace(/((^|%>)[^\t]*)'/g, "$1\r")
+						.replace(/\t=(.*?)%>/g, "',$1,'")
+						.split("\t").join("');")
+						.split("%>").join("p.push('")
+						.split("\r").join("\\'") +
+					"');}return p.join('');"
+				);
+
+				// Provide some basic currying to the user
+				return data ? fn( data ) : fn;
+			}
+			return tmpl(templateString,valuesObject);
+		},
+		/* jshint ignore:end */
+		generateLabels = helpers.generateLabels = function(templateString,numberOfSteps,graphMin,stepValue){
+			var labelsArray = new Array(numberOfSteps);
+			if (labelTemplateString){
+				each(labelsArray,function(val,index){
+					labelsArray[index] = template(templateString,{value: (graphMin + (stepValue*(index+1)))});
+				});
+			}
+			return labelsArray;
+		},
+		//--Animation methods
+		//Easing functions adapted from Robert Penner's easing equations
+		//http://www.robertpenner.com/easing/
+		easingEffects = helpers.easingEffects = {
+			linear: function (t) {
+				return t;
+			},
+			easeInQuad: function (t) {
+				return t * t;
+			},
+			easeOutQuad: function (t) {
+				return -1 * t * (t - 2);
+			},
+			easeInOutQuad: function (t) {
+				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t;
+				return -1 / 2 * ((--t) * (t - 2) - 1);
+			},
+			easeInCubic: function (t) {
+				return t * t * t;
+			},
+			easeOutCubic: function (t) {
+				return 1 * ((t = t / 1 - 1) * t * t + 1);
+			},
+			easeInOutCubic: function (t) {
+				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t;
+				return 1 / 2 * ((t -= 2) * t * t + 2);
+			},
+			easeInQuart: function (t) {
+				return t * t * t * t;
+			},
+			easeOutQuart: function (t) {
+				return -1 * ((t = t / 1 - 1) * t * t * t - 1);
+			},
+			easeInOutQuart: function (t) {
+				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t * t;
+				return -1 / 2 * ((t -= 2) * t * t * t - 2);
+			},
+			easeInQuint: function (t) {
+				return 1 * (t /= 1) * t * t * t * t;
+			},
+			easeOutQuint: function (t) {
+				return 1 * ((t = t / 1 - 1) * t * t * t * t + 1);
+			},
+			easeInOutQuint: function (t) {
+				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t * t * t;
+				return 1 / 2 * ((t -= 2) * t * t * t * t + 2);
+			},
+			easeInSine: function (t) {
+				return -1 * Math.cos(t / 1 * (Math.PI / 2)) + 1;
+			},
+			easeOutSine: function (t) {
+				return 1 * Math.sin(t / 1 * (Math.PI / 2));
+			},
+			easeInOutSine: function (t) {
+				return -1 / 2 * (Math.cos(Math.PI * t / 1) - 1);
+			},
+			easeInExpo: function (t) {
+				return (t === 0) ? 1 : 1 * Math.pow(2, 10 * (t / 1 - 1));
+			},
+			easeOutExpo: function (t) {
+				return (t === 1) ? 1 : 1 * (-Math.pow(2, -10 * t / 1) + 1);
+			},
+			easeInOutExpo: function (t) {
+				if (t === 0) return 0;
+				if (t === 1) return 1;
+				if ((t /= 1 / 2) < 1) return 1 / 2 * Math.pow(2, 10 * (t - 1));
+				return 1 / 2 * (-Math.pow(2, -10 * --t) + 2);
+			},
+			easeInCirc: function (t) {
+				if (t >= 1) return t;
+				return -1 * (Math.sqrt(1 - (t /= 1) * t) - 1);
+			},
+			easeOutCirc: function (t) {
+				return 1 * Math.sqrt(1 - (t = t / 1 - 1) * t);
+			},
+			easeInOutCirc: function (t) {
+				if ((t /= 1 / 2) < 1) return -1 / 2 * (Math.sqrt(1 - t * t) - 1);
+				return 1 / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1);
+			},
+			easeInElastic: function (t) {
+				var s = 1.70158;
+				var p = 0;
+				var a = 1;
+				if (t === 0) return 0;
+				if ((t /= 1) == 1) return 1;
+				if (!p) p = 1 * 0.3;
+				if (a < Math.abs(1)) {
+					a = 1;
+					s = p / 4;
+				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
+				return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));
+			},
+			easeOutElastic: function (t) {
+				var s = 1.70158;
+				var p = 0;
+				var a = 1;
+				if (t === 0) return 0;
+				if ((t /= 1) == 1) return 1;
+				if (!p) p = 1 * 0.3;
+				if (a < Math.abs(1)) {
+					a = 1;
+					s = p / 4;
+				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
+				return a * Math.pow(2, -10 * t) * Math.sin((t * 1 - s) * (2 * Math.PI) / p) + 1;
+			},
+			easeInOutElastic: function (t) {
+				var s = 1.70158;
+				var p = 0;
+				var a = 1;
+				if (t === 0) return 0;
+				if ((t /= 1 / 2) == 2) return 1;
+				if (!p) p = 1 * (0.3 * 1.5);
+				if (a < Math.abs(1)) {
+					a = 1;
+					s = p / 4;
+				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
+				if (t < 1) return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));
+				return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p) * 0.5 + 1;
+			},
+			easeInBack: function (t) {
+				var s = 1.70158;
+				return 1 * (t /= 1) * t * ((s + 1) * t - s);
+			},
+			easeOutBack: function (t) {
+				var s = 1.70158;
+				return 1 * ((t = t / 1 - 1) * t * ((s + 1) * t + s) + 1);
+			},
+			easeInOutBack: function (t) {
+				var s = 1.70158;
+				if ((t /= 1 / 2) < 1) return 1 / 2 * (t * t * (((s *= (1.525)) + 1) * t - s));
+				return 1 / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2);
+			},
+			easeInBounce: function (t) {
+				return 1 - easingEffects.easeOutBounce(1 - t);
+			},
+			easeOutBounce: function (t) {
+				if ((t /= 1) < (1 / 2.75)) {
+					return 1 * (7.5625 * t * t);
+				} else if (t < (2 / 2.75)) {
+					return 1 * (7.5625 * (t -= (1.5 / 2.75)) * t + 0.75);
+				} else if (t < (2.5 / 2.75)) {
+					return 1 * (7.5625 * (t -= (2.25 / 2.75)) * t + 0.9375);
+				} else {
+					return 1 * (7.5625 * (t -= (2.625 / 2.75)) * t + 0.984375);
+				}
+			},
+			easeInOutBounce: function (t) {
+				if (t < 1 / 2) return easingEffects.easeInBounce(t * 2) * 0.5;
+				return easingEffects.easeOutBounce(t * 2 - 1) * 0.5 + 1 * 0.5;
+			}
+		},
+		//Request animation polyfill - http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
+		requestAnimFrame = helpers.requestAnimFrame = (function(){
+			return window.requestAnimationFrame ||
+				window.webkitRequestAnimationFrame ||
+				window.mozRequestAnimationFrame ||
+				window.oRequestAnimationFrame ||
+				window.msRequestAnimationFrame ||
+				function(callback) {
+					return window.setTimeout(callback, 1000 / 60);
+				};
+		})(),
+		cancelAnimFrame = helpers.cancelAnimFrame = (function(){
+			return window.cancelAnimationFrame ||
+				window.webkitCancelAnimationFrame ||
+				window.mozCancelAnimationFrame ||
+				window.oCancelAnimationFrame ||
+				window.msCancelAnimationFrame ||
+				function(callback) {
+					return window.clearTimeout(callback, 1000 / 60);
+				};
+		})(),
+		animationLoop = helpers.animationLoop = function(callback,totalSteps,easingString,onProgress,onComplete,chartInstance){
+
+			var currentStep = 0,
+				easingFunction = easingEffects[easingString] || easingEffects.linear;
+
+			var animationFrame = function(){
+				currentStep++;
+				var stepDecimal = currentStep/totalSteps;
+				var easeDecimal = easingFunction(stepDecimal);
+
+				callback.call(chartInstance,easeDecimal,stepDecimal, currentStep);
+				onProgress.call(chartInstance,easeDecimal,stepDecimal);
+				if (currentStep < totalSteps){
+					chartInstance.animationFrame = requestAnimFrame(animationFrame);
+				} else{
+					onComplete.apply(chartInstance);
+				}
+			};
+			requestAnimFrame(animationFrame);
+		},
+		//-- DOM methods
+		getRelativePosition = helpers.getRelativePosition = function(evt){
+			var mouseX, mouseY;
+			var e = evt.originalEvent || evt,
+				canvas = evt.currentTarget || evt.srcElement,
+				boundingRect = canvas.getBoundingClientRect();
+
+			if (e.touches){
+				mouseX = e.touches[0].clientX - boundingRect.left;
+				mouseY = e.touches[0].clientY - boundingRect.top;
+
+			}
+			else{
+				mouseX = e.clientX - boundingRect.left;
+				mouseY = e.clientY - boundingRect.top;
+			}
+
+			return {
+				x : mouseX,
+				y : mouseY
+			};
+
+		},
+		addEvent = helpers.addEvent = function(node,eventType,method){
+			if (node.addEventListener){
+				node.addEventListener(eventType,method);
+			} else if (node.attachEvent){
+				node.attachEvent("on"+eventType, method);
+			} else {
+				node["on"+eventType] = method;
+			}
+		},
+		removeEvent = helpers.removeEvent = function(node, eventType, handler){
+			if (node.removeEventListener){
+				node.removeEventListener(eventType, handler, false);
+			} else if (node.detachEvent){
+				node.detachEvent("on"+eventType,handler);
+			} else{
+				node["on" + eventType] = noop;
+			}
+		},
+		bindEvents = helpers.bindEvents = function(chartInstance, arrayOfEvents, handler){
+			// Create the events object if it's not already present
+			if (!chartInstance.events) chartInstance.events = {};
+
+			each(arrayOfEvents,function(eventName){
+				chartInstance.events[eventName] = function(){
+					handler.apply(chartInstance, arguments);
+				};
+				addEvent(chartInstance.chart.canvas,eventName,chartInstance.events[eventName]);
+			});
+		},
+		unbindEvents = helpers.unbindEvents = function (chartInstance, arrayOfEvents) {
+			each(arrayOfEvents, function(handler,eventName){
+				removeEvent(chartInstance.chart.canvas, eventName, handler);
+			});
+		},
+		getMaximumWidth = helpers.getMaximumWidth = function(domNode){
+			var container = domNode.parentNode;
+			// TODO = check cross browser stuff with this.
+			return container.clientWidth;
+		},
+		getMaximumHeight = helpers.getMaximumHeight = function(domNode){
+			var container = domNode.parentNode;
+			// TODO = check cross browser stuff with this.
+			return container.clientHeight;
+		},
+		getMaximumSize = helpers.getMaximumSize = helpers.getMaximumWidth, // legacy support
+		retinaScale = helpers.retinaScale = function(chart){
+			var ctx = chart.ctx,
+				width = chart.canvas.width,
+				height = chart.canvas.height;
+
+			if (window.devicePixelRatio) {
+				ctx.canvas.style.width = width + "px";
+				ctx.canvas.style.height = height + "px";
+				ctx.canvas.height = height * window.devicePixelRatio;
+				ctx.canvas.width = width * window.devicePixelRatio;
+				ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+			}
+		},
+		//-- Canvas methods
+		clear = helpers.clear = function(chart){
+			chart.ctx.clearRect(0,0,chart.width,chart.height);
+		},
+		fontString = helpers.fontString = function(pixelSize,fontStyle,fontFamily){
+			return fontStyle + " " + pixelSize+"px " + fontFamily;
+		},
+		longestText = helpers.longestText = function(ctx,font,arrayOfStrings){
+			ctx.font = font;
+			var longest = 0;
+			each(arrayOfStrings,function(string){
+				var textWidth = ctx.measureText(string).width;
+				longest = (textWidth > longest) ? textWidth : longest;
+			});
+			return longest;
+		},
+		drawRoundedRectangle = helpers.drawRoundedRectangle = function(ctx,x,y,width,height,radius){
+			ctx.beginPath();
+			ctx.moveTo(x + radius, y);
+			ctx.lineTo(x + width - radius, y);
+			ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+			ctx.lineTo(x + width, y + height - radius);
+			ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+			ctx.lineTo(x + radius, y + height);
+			ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+			ctx.lineTo(x, y + radius);
+			ctx.quadraticCurveTo(x, y, x + radius, y);
+			ctx.closePath();
+		};
+
+
+	//Store a reference to each instance - allowing us to globally resize chart instances on window resize.
+	//Destroy method on the chart will remove the instance of the chart from this reference.
+	Chart.instances = {};
+
+	Chart.Type = function(data,options,chart){
+		this.options = options;
+		this.chart = chart;
+		this.id = uid();
+		//Add the chart instance to the global namespace
+		Chart.instances[this.id] = this;
+
+		// Initialize is always called when a chart type is created
+		// By default it is a no op, but it should be extended
+		if (options.responsive){
+			this.resize();
+		}
+		this.initialize.call(this,data);
+	};
+
+	//Core methods that'll be a part of every chart type
+	extend(Chart.Type.prototype,{
+		initialize : function(){return this;},
+		clear : function(){
+			clear(this.chart);
+			return this;
+		},
+		stop : function(){
+			// Stops any current animation loop occuring
+			cancelAnimFrame(this.animationFrame);
+			return this;
+		},
+		resize : function(callback){
+			this.stop();
+			var canvas = this.chart.canvas,
+				newWidth = getMaximumWidth(this.chart.canvas),
+				newHeight = this.options.maintainAspectRatio ? newWidth / this.chart.aspectRatio : getMaximumHeight(this.chart.canvas);
+
+			canvas.width = this.chart.width = newWidth;
+			canvas.height = this.chart.height = newHeight;
+
+			retinaScale(this.chart);
+
+			if (typeof callback === "function"){
+				callback.apply(this, Array.prototype.slice.call(arguments, 1));
+			}
+			return this;
+		},
+		reflow : noop,
+		render : function(reflow){
+			if (reflow){
+				this.reflow();
+			}
+			if (this.options.animation && !reflow){
+				helpers.animationLoop(
+					this.draw,
+					this.options.animationSteps,
+					this.options.animationEasing,
+					this.options.onAnimationProgress,
+					this.options.onAnimationComplete,
+					this
+				);
+			}
+			else{
+				this.draw();
+				this.options.onAnimationComplete.call(this);
+			}
+			return this;
+		},
+		generateLegend : function(){
+			return template(this.options.legendTemplate,this);
+		},
+		destroy : function(){
+			this.clear();
+			unbindEvents(this, this.events);
+			var canvas = this.chart.canvas;
+
+			// Reset canvas height/width attributes starts a fresh with the canvas context
+			canvas.width = this.chart.width;
+			canvas.height = this.chart.height;
+
+			// < IE9 doesn't support removeProperty
+			if (canvas.style.removeProperty) {
+				canvas.style.removeProperty('width');
+				canvas.style.removeProperty('height');
+			} else {
+				canvas.style.removeAttribute('width');
+				canvas.style.removeAttribute('height');
+			}
+
+			delete Chart.instances[this.id];
+		},
+		showTooltip : function(ChartElements, forceRedraw){
+			// Only redraw the chart if we've actually changed what we're hovering on.
+			if (typeof this.activeElements === 'undefined') this.activeElements = [];
+
+			var isChanged = (function(Elements){
+				var changed = false;
+
+				if (Elements.length !== this.activeElements.length){
+					changed = true;
+					return changed;
+				}
+
+				each(Elements, function(element, index){
+					if (element !== this.activeElements[index]){
+						changed = true;
+					}
+				}, this);
+				return changed;
+			}).call(this, ChartElements);
+
+			if (!isChanged && !forceRedraw){
+				return;
+			}
+			else{
+				this.activeElements = ChartElements;
+			}
+			this.draw();
+			if(this.options.customTooltips){
+				this.options.customTooltips(false);
+			}
+			if (ChartElements.length > 0){
+				// If we have multiple datasets, show a MultiTooltip for all of the data points at that index
+				if (this.datasets && this.datasets.length > 1) {
+					var dataArray,
+						dataIndex;
+
+					for (var i = this.datasets.length - 1; i >= 0; i--) {
+						dataArray = this.datasets[i].points || this.datasets[i].bars || this.datasets[i].segments;
+						dataIndex = indexOf(dataArray, ChartElements[0]);
+						if (dataIndex !== -1){
+							break;
+						}
+					}
+					var tooltipLabels = [],
+						tooltipColors = [],
+						medianPosition = (function(index) {
+
+							// Get all the points at that particular index
+							var Elements = [],
+								dataCollection,
+								xPositions = [],
+								yPositions = [],
+								xMax,
+								yMax,
+								xMin,
+								yMin;
+							helpers.each(this.datasets, function(dataset){
+								dataCollection = dataset.points || dataset.bars || dataset.segments;
+								if (dataCollection[dataIndex] && dataCollection[dataIndex].hasValue()){
+									Elements.push(dataCollection[dataIndex]);
+								}
+							});
+
+							helpers.each(Elements, function(element) {
+								xPositions.push(element.x);
+								yPositions.push(element.y);
+
+
+								//Include any colour information about the element
+								tooltipLabels.push(helpers.template(this.options.multiTooltipTemplate, element));
+								tooltipColors.push({
+									fill: element._saved.fillColor || element.fillColor,
+									stroke: element._saved.strokeColor || element.strokeColor
+								});
+
+							}, this);
+
+							yMin = min(yPositions);
+							yMax = max(yPositions);
+
+							xMin = min(xPositions);
+							xMax = max(xPositions);
+
+							return {
+								x: (xMin > this.chart.width/2) ? xMin : xMax,
+								y: (yMin + yMax)/2
+							};
+						}).call(this, dataIndex);
+
+					new Chart.MultiTooltip({
+						x: medianPosition.x,
+						y: medianPosition.y,
+						xPadding: this.options.tooltipXPadding,
+						yPadding: this.options.tooltipYPadding,
+						xOffset: this.options.tooltipXOffset,
+						fillColor: this.options.tooltipFillColor,
+						textColor: this.options.tooltipFontColor,
+						fontFamily: this.options.tooltipFontFamily,
+						fontStyle: this.options.tooltipFontStyle,
+						fontSize: this.options.tooltipFontSize,
+						titleTextColor: this.options.tooltipTitleFontColor,
+						titleFontFamily: this.options.tooltipTitleFontFamily,
+						titleFontStyle: this.options.tooltipTitleFontStyle,
+						titleFontSize: this.options.tooltipTitleFontSize,
+						cornerRadius: this.options.tooltipCornerRadius,
+						labels: tooltipLabels,
+						legendColors: tooltipColors,
+						legendColorBackground : this.options.multiTooltipKeyBackground,
+						title: ChartElements[0].label,
+						chart: this.chart,
+						ctx: this.chart.ctx,
+						custom: this.options.customTooltips
+					}).draw();
+
+				} else {
+					each(ChartElements, function(Element) {
+						var tooltipPosition = Element.tooltipPosition();
+						new Chart.Tooltip({
+							x: Math.round(tooltipPosition.x),
+							y: Math.round(tooltipPosition.y),
+							xPadding: this.options.tooltipXPadding,
+							yPadding: this.options.tooltipYPadding,
+							fillColor: this.options.tooltipFillColor,
+							textColor: this.options.tooltipFontColor,
+							fontFamily: this.options.tooltipFontFamily,
+							fontStyle: this.options.tooltipFontStyle,
+							fontSize: this.options.tooltipFontSize,
+							caretHeight: this.options.tooltipCaretSize,
+							cornerRadius: this.options.tooltipCornerRadius,
+							text: template(this.options.tooltipTemplate, Element),
+							chart: this.chart,
+							custom: this.options.customTooltips
+						}).draw();
+					}, this);
+				}
+			}
+			return this;
+		},
+		toBase64Image : function(){
+			return this.chart.canvas.toDataURL.apply(this.chart.canvas, arguments);
+		}
+	});
+
+	Chart.Type.extend = function(extensions){
+
+		var parent = this;
+
+		var ChartType = function(){
+			return parent.apply(this,arguments);
+		};
+
+		//Copy the prototype object of the this class
+		ChartType.prototype = clone(parent.prototype);
+		//Now overwrite some of the properties in the base class with the new extensions
+		extend(ChartType.prototype, extensions);
+
+		ChartType.extend = Chart.Type.extend;
+
+		if (extensions.name || parent.prototype.name){
+
+			var chartName = extensions.name || parent.prototype.name;
+			//Assign any potential default values of the new chart type
+
+			//If none are defined, we'll use a clone of the chart type this is being extended from.
+			//I.e. if we extend a line chart, we'll use the defaults from the line chart if our new chart
+			//doesn't define some defaults of their own.
+
+			var baseDefaults = (Chart.defaults[parent.prototype.name]) ? clone(Chart.defaults[parent.prototype.name]) : {};
+
+			Chart.defaults[chartName] = extend(baseDefaults,extensions.defaults);
+
+			Chart.types[chartName] = ChartType;
+
+			//Register this new chart type in the Chart prototype
+			Chart.prototype[chartName] = function(data,options){
+				var config = merge(Chart.defaults.global, Chart.defaults[chartName], options || {});
+				return new ChartType(data,config,this);
+			};
+		} else{
+			warn("Name not provided for this chart, so it hasn't been registered");
+		}
+		return parent;
+	};
+
+	Chart.Element = function(configuration){
+		extend(this,configuration);
+		this.initialize.apply(this,arguments);
+		this.save();
+	};
+	extend(Chart.Element.prototype,{
+		initialize : function(){},
+		restore : function(props){
+			if (!props){
+				extend(this,this._saved);
+			} else {
+				each(props,function(key){
+					this[key] = this._saved[key];
+				},this);
+			}
+			return this;
+		},
+		save : function(){
+			this._saved = clone(this);
+			delete this._saved._saved;
+			return this;
+		},
+		update : function(newProps){
+			each(newProps,function(value,key){
+				this._saved[key] = this[key];
+				this[key] = value;
+			},this);
+			return this;
+		},
+		transition : function(props,ease){
+			each(props,function(value,key){
+				this[key] = ((value - this._saved[key]) * ease) + this._saved[key];
+			},this);
+			return this;
+		},
+		tooltipPosition : function(){
+			return {
+				x : this.x,
+				y : this.y
+			};
+		},
+		hasValue: function(){
+			return isNumber(this.value);
+		}
+	});
+
+	Chart.Element.extend = inherits;
+
+
+	Chart.Point = Chart.Element.extend({
+		display: true,
+		inRange: function(chartX,chartY){
+			var hitDetectionRange = this.hitDetectionRadius + this.radius;
+			return ((Math.pow(chartX-this.x, 2)+Math.pow(chartY-this.y, 2)) < Math.pow(hitDetectionRange,2));
+		},
+		draw : function(){
+			if (this.display){
+				var ctx = this.ctx;
+				ctx.beginPath();
+
+				ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+				ctx.closePath();
+
+				ctx.strokeStyle = this.strokeColor;
+				ctx.lineWidth = this.strokeWidth;
+
+				ctx.fillStyle = this.fillColor;
+
+				ctx.fill();
+				ctx.stroke();
+			}
+
+
+			//Quick debug for bezier curve splining
+			//Highlights control points and the line between them.
+			//Handy for dev - stripped in the min version.
+
+			// ctx.save();
+			// ctx.fillStyle = "black";
+			// ctx.strokeStyle = "black"
+			// ctx.beginPath();
+			// ctx.arc(this.controlPoints.inner.x,this.controlPoints.inner.y, 2, 0, Math.PI*2);
+			// ctx.fill();
+
+			// ctx.beginPath();
+			// ctx.arc(this.controlPoints.outer.x,this.controlPoints.outer.y, 2, 0, Math.PI*2);
+			// ctx.fill();
+
+			// ctx.moveTo(this.controlPoints.inner.x,this.controlPoints.inner.y);
+			// ctx.lineTo(this.x, this.y);
+			// ctx.lineTo(this.controlPoints.outer.x,this.controlPoints.outer.y);
+			// ctx.stroke();
+
+			// ctx.restore();
+
+
+
+		}
+	});
+
+	Chart.Arc = Chart.Element.extend({
+		inRange : function(chartX,chartY){
+
+			var pointRelativePosition = helpers.getAngleFromPoint(this, {
+				x: chartX,
+				y: chartY
+			});
+
+			//Check if within the range of the open/close angle
+			var betweenAngles = (pointRelativePosition.angle >= this.startAngle && pointRelativePosition.angle <= this.endAngle),
+				withinRadius = (pointRelativePosition.distance >= this.innerRadius && pointRelativePosition.distance <= this.outerRadius);
+
+			return (betweenAngles && withinRadius);
+			//Ensure within the outside of the arc centre, but inside arc outer
+		},
+		tooltipPosition : function(){
+			var centreAngle = this.startAngle + ((this.endAngle - this.startAngle) / 2),
+				rangeFromCentre = (this.outerRadius - this.innerRadius) / 2 + this.innerRadius;
+			return {
+				x : this.x + (Math.cos(centreAngle) * rangeFromCentre),
+				y : this.y + (Math.sin(centreAngle) * rangeFromCentre)
+			};
+		},
+		draw : function(animationPercent){
+
+			var easingDecimal = animationPercent || 1;
+
+			var ctx = this.ctx;
+
+			ctx.beginPath();
+
+			ctx.arc(this.x, this.y, this.outerRadius, this.startAngle, this.endAngle);
+
+			ctx.arc(this.x, this.y, this.innerRadius, this.endAngle, this.startAngle, true);
+
+			ctx.closePath();
+			ctx.strokeStyle = this.strokeColor;
+			ctx.lineWidth = this.strokeWidth;
+
+			ctx.fillStyle = this.fillColor;
+
+			ctx.fill();
+			ctx.lineJoin = 'bevel';
+
+			if (this.showStroke){
+				ctx.stroke();
+			}
+		}
+	});
+
+	Chart.Rectangle = Chart.Element.extend({
+		draw : function(){
+			var ctx = this.ctx,
+				halfWidth = this.width/2,
+				leftX = this.x - halfWidth,
+				rightX = this.x + halfWidth,
+				top = this.base - (this.base - this.y),
+				halfStroke = this.strokeWidth / 2;
+
+			// Canvas doesn't allow us to stroke inside the width so we can
+			// adjust the sizes to fit if we're setting a stroke on the line
+			if (this.showStroke){
+				leftX += halfStroke;
+				rightX -= halfStroke;
+				top += halfStroke;
+			}
+
+			ctx.beginPath();
+
+			ctx.fillStyle = this.fillColor;
+			ctx.strokeStyle = this.strokeColor;
+			ctx.lineWidth = this.strokeWidth;
+
+			// It'd be nice to keep this class totally generic to any rectangle
+			// and simply specify which border to miss out.
+			ctx.moveTo(leftX, this.base);
+			ctx.lineTo(leftX, top);
+			ctx.lineTo(rightX, top);
+			ctx.lineTo(rightX, this.base);
+			ctx.fill();
+			if (this.showStroke){
+				ctx.stroke();
+			}
+		},
+		height : function(){
+			return this.base - this.y;
+		},
+		inRange : function(chartX,chartY){
+			return (chartX >= this.x - this.width/2 && chartX <= this.x + this.width/2) && (chartY >= this.y && chartY <= this.base);
+		}
+	});
+
+	Chart.Tooltip = Chart.Element.extend({
+		draw : function(){
+
+			var ctx = this.chart.ctx;
+
+			ctx.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
+
+			this.xAlign = "center";
+			this.yAlign = "above";
+
+			//Distance between the actual element.y position and the start of the tooltip caret
+			var caretPadding = this.caretPadding = 2;
+
+			var tooltipWidth = ctx.measureText(this.text).width + 2*this.xPadding,
+				tooltipRectHeight = this.fontSize + 2*this.yPadding,
+				tooltipHeight = tooltipRectHeight + this.caretHeight + caretPadding;
+
+			if (this.x + tooltipWidth/2 >this.chart.width){
+				this.xAlign = "left";
+			} else if (this.x - tooltipWidth/2 < 0){
+				this.xAlign = "right";
+			}
+
+			if (this.y - tooltipHeight < 0){
+				this.yAlign = "below";
+			}
+
+
+			var tooltipX = this.x - tooltipWidth/2,
+				tooltipY = this.y - tooltipHeight;
+
+			ctx.fillStyle = this.fillColor;
+
+			// Custom Tooltips
+			if(this.custom){
+				this.custom(this);
+			}
+			else{
+				switch(this.yAlign)
+				{
+				case "above":
+					//Draw a caret above the x/y
+					ctx.beginPath();
+					ctx.moveTo(this.x,this.y - caretPadding);
+					ctx.lineTo(this.x + this.caretHeight, this.y - (caretPadding + this.caretHeight));
+					ctx.lineTo(this.x - this.caretHeight, this.y - (caretPadding + this.caretHeight));
+					ctx.closePath();
+					ctx.fill();
+					break;
+				case "below":
+					tooltipY = this.y + caretPadding + this.caretHeight;
+					//Draw a caret below the x/y
+					ctx.beginPath();
+					ctx.moveTo(this.x, this.y + caretPadding);
+					ctx.lineTo(this.x + this.caretHeight, this.y + caretPadding + this.caretHeight);
+					ctx.lineTo(this.x - this.caretHeight, this.y + caretPadding + this.caretHeight);
+					ctx.closePath();
+					ctx.fill();
+					break;
+				}
+
+				switch(this.xAlign)
+				{
+				case "left":
+					tooltipX = this.x - tooltipWidth + (this.cornerRadius + this.caretHeight);
+					break;
+				case "right":
+					tooltipX = this.x - (this.cornerRadius + this.caretHeight);
+					break;
+				}
+
+				drawRoundedRectangle(ctx,tooltipX,tooltipY,tooltipWidth,tooltipRectHeight,this.cornerRadius);
+
+				ctx.fill();
+
+				ctx.fillStyle = this.textColor;
+				ctx.textAlign = "center";
+				ctx.textBaseline = "middle";
+				ctx.fillText(this.text, tooltipX + tooltipWidth/2, tooltipY + tooltipRectHeight/2);
+			}
+		}
+	});
+
+	Chart.MultiTooltip = Chart.Element.extend({
+		initialize : function(){
+			this.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
+
+			this.titleFont = fontString(this.titleFontSize,this.titleFontStyle,this.titleFontFamily);
+
+			this.height = (this.labels.length * this.fontSize) + ((this.labels.length-1) * (this.fontSize/2)) + (this.yPadding*2) + this.titleFontSize *1.5;
+
+			this.ctx.font = this.titleFont;
+
+			var titleWidth = this.ctx.measureText(this.title).width,
+				//Label has a legend square as well so account for this.
+				labelWidth = longestText(this.ctx,this.font,this.labels) + this.fontSize + 3,
+				longestTextWidth = max([labelWidth,titleWidth]);
+
+			this.width = longestTextWidth + (this.xPadding*2);
+
+
+			var halfHeight = this.height/2;
+
+			//Check to ensure the height will fit on the canvas
+			if (this.y - halfHeight < 0 ){
+				this.y = halfHeight;
+			} else if (this.y + halfHeight > this.chart.height){
+				this.y = this.chart.height - halfHeight;
+			}
+
+			//Decide whether to align left or right based on position on canvas
+			if (this.x > this.chart.width/2){
+				this.x -= this.xOffset + this.width;
+			} else {
+				this.x += this.xOffset;
+			}
+
+
+		},
+		getLineHeight : function(index){
+			var baseLineHeight = this.y - (this.height/2) + this.yPadding,
+				afterTitleIndex = index-1;
+
+			//If the index is zero, we're getting the title
+			if (index === 0){
+				return baseLineHeight + this.titleFontSize/2;
+			} else{
+				return baseLineHeight + ((this.fontSize*1.5*afterTitleIndex) + this.fontSize/2) + this.titleFontSize * 1.5;
+			}
+
+		},
+		draw : function(){
+			// Custom Tooltips
+			if(this.custom){
+				this.custom(this);
+			}
+			else{
+				drawRoundedRectangle(this.ctx,this.x,this.y - this.height/2,this.width,this.height,this.cornerRadius);
+				var ctx = this.ctx;
+				ctx.fillStyle = this.fillColor;
+				ctx.fill();
+				ctx.closePath();
+
+				ctx.textAlign = "left";
+				ctx.textBaseline = "middle";
+				ctx.fillStyle = this.titleTextColor;
+				ctx.font = this.titleFont;
+
+				ctx.fillText(this.title,this.x + this.xPadding, this.getLineHeight(0));
+
+				ctx.font = this.font;
+				helpers.each(this.labels,function(label,index){
+					ctx.fillStyle = this.textColor;
+					ctx.fillText(label,this.x + this.xPadding + this.fontSize + 3, this.getLineHeight(index + 1));
+
+					//A bit gnarly, but clearing this rectangle breaks when using explorercanvas (clears whole canvas)
+					//ctx.clearRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
+					//Instead we'll make a white filled block to put the legendColour palette over.
+
+					ctx.fillStyle = this.legendColorBackground;
+					ctx.fillRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
+
+					ctx.fillStyle = this.legendColors[index].fill;
+					ctx.fillRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
+
+
+				},this);
+			}
+		}
+	});
+
+	Chart.Scale = Chart.Element.extend({
+		initialize : function(){
+			this.fit();
+		},
+		buildYLabels : function(){
+			this.yLabels = [];
+
+			var stepDecimalPlaces = getDecimalPlaces(this.stepValue);
+
+			for (var i=0; i<=this.steps; i++){
+				this.yLabels.push(template(this.templateString,{value:(this.min + (i * this.stepValue)).toFixed(stepDecimalPlaces)}));
+			}
+			this.yLabelWidth = (this.display && this.showLabels) ? longestText(this.ctx,this.font,this.yLabels) : 0;
+		},
+		addXLabel : function(label){
+			this.xLabels.push(label);
+			this.valuesCount++;
+			this.fit();
+		},
+		removeXLabel : function(){
+			this.xLabels.shift();
+			this.valuesCount--;
+			this.fit();
+		},
+		// Fitting loop to rotate x Labels and figure out what fits there, and also calculate how many Y steps to use
+		fit: function(){
+			// First we need the width of the yLabels, assuming the xLabels aren't rotated
+
+			// To do that we need the base line at the top and base of the chart, assuming there is no x label rotation
+			this.startPoint = (this.display) ? this.fontSize : 0;
+			this.endPoint = (this.display) ? this.height - (this.fontSize * 1.5) - 5 : this.height; // -5 to pad labels
+
+			// Apply padding settings to the start and end point.
+			this.startPoint += this.padding;
+			this.endPoint -= this.padding;
+
+			// Cache the starting height, so can determine if we need to recalculate the scale yAxis
+			var cachedHeight = this.endPoint - this.startPoint,
+				cachedYLabelWidth;
+
+			// Build the current yLabels so we have an idea of what size they'll be to start
+			/*
+			 *	This sets what is returned from calculateScaleRange as static properties of this class:
+			 *
+				this.steps;
+				this.stepValue;
+				this.min;
+				this.max;
+			 *
+			 */
+			this.calculateYRange(cachedHeight);
+
+			// With these properties set we can now build the array of yLabels
+			// and also the width of the largest yLabel
+			this.buildYLabels();
+
+			this.calculateXLabelRotation();
+
+			while((cachedHeight > this.endPoint - this.startPoint)){
+				cachedHeight = this.endPoint - this.startPoint;
+				cachedYLabelWidth = this.yLabelWidth;
+
+				this.calculateYRange(cachedHeight);
+				this.buildYLabels();
+
+				// Only go through the xLabel loop again if the yLabel width has changed
+				if (cachedYLabelWidth < this.yLabelWidth){
+					this.calculateXLabelRotation();
+				}
+			}
+
+		},
+		calculateXLabelRotation : function(){
+			//Get the width of each grid by calculating the difference
+			//between x offsets between 0 and 1.
+
+			this.ctx.font = this.font;
+
+			var firstWidth = this.ctx.measureText(this.xLabels[0]).width,
+				lastWidth = this.ctx.measureText(this.xLabels[this.xLabels.length - 1]).width,
+				firstRotated,
+				lastRotated;
+
+
+			this.xScalePaddingRight = lastWidth/2 + 3;
+			this.xScalePaddingLeft = (firstWidth/2 > this.yLabelWidth + 10) ? firstWidth/2 : this.yLabelWidth + 10;
+
+			this.xLabelRotation = 0;
+			if (this.display){
+				var originalLabelWidth = longestText(this.ctx,this.font,this.xLabels),
+					cosRotation,
+					firstRotatedWidth;
+				this.xLabelWidth = originalLabelWidth;
+				//Allow 3 pixels x2 padding either side for label readability
+				var xGridWidth = Math.floor(this.calculateX(1) - this.calculateX(0)) - 6;
+
+				//Max label rotate should be 90 - also act as a loop counter
+				while ((this.xLabelWidth > xGridWidth && this.xLabelRotation === 0) || (this.xLabelWidth > xGridWidth && this.xLabelRotation <= 90 && this.xLabelRotation > 0)){
+					cosRotation = Math.cos(toRadians(this.xLabelRotation));
+
+					firstRotated = cosRotation * firstWidth;
+					lastRotated = cosRotation * lastWidth;
+
+					// We're right aligning the text now.
+					if (firstRotated + this.fontSize / 2 > this.yLabelWidth + 8){
+						this.xScalePaddingLeft = firstRotated + this.fontSize / 2;
+					}
+					this.xScalePaddingRight = this.fontSize/2;
+
+
+					this.xLabelRotation++;
+					this.xLabelWidth = cosRotation * originalLabelWidth;
+
+				}
+				if (this.xLabelRotation > 0){
+					this.endPoint -= Math.sin(toRadians(this.xLabelRotation))*originalLabelWidth + 3;
+				}
+			}
+			else{
+				this.xLabelWidth = 0;
+				this.xScalePaddingRight = this.padding;
+				this.xScalePaddingLeft = this.padding;
+			}
+
+		},
+		// Needs to be overidden in each Chart type
+		// Otherwise we need to pass all the data into the scale class
+		calculateYRange: noop,
+		drawingArea: function(){
+			return this.startPoint - this.endPoint;
+		},
+		calculateY : function(value){
+			var scalingFactor = this.drawingArea() / (this.min - this.max);
+			return this.endPoint - (scalingFactor * (value - this.min));
+		},
+		calculateX : function(index){
+			var isRotated = (this.xLabelRotation > 0),
+				// innerWidth = (this.offsetGridLines) ? this.width - offsetLeft - this.padding : this.width - (offsetLeft + halfLabelWidth * 2) - this.padding,
+				innerWidth = this.width - (this.xScalePaddingLeft + this.xScalePaddingRight),
+				valueWidth = innerWidth/Math.max((this.valuesCount - ((this.offsetGridLines) ? 0 : 1)), 1),
+				valueOffset = (valueWidth * index) + this.xScalePaddingLeft;
+
+			if (this.offsetGridLines){
+				valueOffset += (valueWidth/2);
+			}
+
+			return Math.round(valueOffset);
+		},
+		update : function(newProps){
+			helpers.extend(this, newProps);
+			this.fit();
+		},
+		draw : function(){
+			var ctx = this.ctx,
+				yLabelGap = (this.endPoint - this.startPoint) / this.steps,
+				xStart = Math.round(this.xScalePaddingLeft);
+			if (this.display){
+				ctx.fillStyle = this.textColor;
+				ctx.font = this.font;
+				each(this.yLabels,function(labelString,index){
+					var yLabelCenter = this.endPoint - (yLabelGap * index),
+						linePositionY = Math.round(yLabelCenter),
+						drawHorizontalLine = this.showHorizontalLines;
+
+					ctx.textAlign = "right";
+					ctx.textBaseline = "middle";
+					if (this.showLabels){
+						ctx.fillText(labelString,xStart - 10,yLabelCenter);
+					}
+
+					// This is X axis, so draw it
+					if (index === 0 && !drawHorizontalLine){
+						drawHorizontalLine = true;
+					}
+
+					if (drawHorizontalLine){
+						ctx.beginPath();
+					}
+
+					if (index > 0){
+						// This is a grid line in the centre, so drop that
+						ctx.lineWidth = this.gridLineWidth;
+						ctx.strokeStyle = this.gridLineColor;
+					} else {
+						// This is the first line on the scale
+						ctx.lineWidth = this.lineWidth;
+						ctx.strokeStyle = this.lineColor;
+					}
+
+					linePositionY += helpers.aliasPixel(ctx.lineWidth);
+
+					if(drawHorizontalLine){
+						ctx.moveTo(xStart, linePositionY);
+						ctx.lineTo(this.width, linePositionY);
+						ctx.stroke();
+						ctx.closePath();
+					}
+
+					ctx.lineWidth = this.lineWidth;
+					ctx.strokeStyle = this.lineColor;
+					ctx.beginPath();
+					ctx.moveTo(xStart - 5, linePositionY);
+					ctx.lineTo(xStart, linePositionY);
+					ctx.stroke();
+					ctx.closePath();
+
+				},this);
+
+				each(this.xLabels,function(label,index){
+					var xPos = this.calculateX(index) + aliasPixel(this.lineWidth),
+						// Check to see if line/bar here and decide where to place the line
+						linePos = this.calculateX(index - (this.offsetGridLines ? 0.5 : 0)) + aliasPixel(this.lineWidth),
+						isRotated = (this.xLabelRotation > 0),
+						drawVerticalLine = this.showVerticalLines;
+
+					// This is Y axis, so draw it
+					if (index === 0 && !drawVerticalLine){
+						drawVerticalLine = true;
+					}
+
+					if (drawVerticalLine){
+						ctx.beginPath();
+					}
+
+					if (index > 0){
+						// This is a grid line in the centre, so drop that
+						ctx.lineWidth = this.gridLineWidth;
+						ctx.strokeStyle = this.gridLineColor;
+					} else {
+						// This is the first line on the scale
+						ctx.lineWidth = this.lineWidth;
+						ctx.strokeStyle = this.lineColor;
+					}
+
+					if (drawVerticalLine){
+						ctx.moveTo(linePos,this.endPoint);
+						ctx.lineTo(linePos,this.startPoint - 3);
+						ctx.stroke();
+						ctx.closePath();
+					}
+
+
+					ctx.lineWidth = this.lineWidth;
+					ctx.strokeStyle = this.lineColor;
+
+
+					// Small lines at the bottom of the base grid line
+					ctx.beginPath();
+					ctx.moveTo(linePos,this.endPoint);
+					ctx.lineTo(linePos,this.endPoint + 5);
+					ctx.stroke();
+					ctx.closePath();
+
+					ctx.save();
+					ctx.translate(xPos,(isRotated) ? this.endPoint + 12 : this.endPoint + 8);
+					ctx.rotate(toRadians(this.xLabelRotation)*-1);
+					ctx.font = this.font;
+					ctx.textAlign = (isRotated) ? "right" : "center";
+					ctx.textBaseline = (isRotated) ? "middle" : "top";
+					ctx.fillText(label, 0, 0);
+					ctx.restore();
+				},this);
+
+			}
+		}
+
+	});
+
+	Chart.RadialScale = Chart.Element.extend({
+		initialize: function(){
+			this.size = min([this.height, this.width]);
+			this.drawingArea = (this.display) ? (this.size/2) - (this.fontSize/2 + this.backdropPaddingY) : (this.size/2);
+		},
+		calculateCenterOffset: function(value){
+			// Take into account half font size + the yPadding of the top value
+			var scalingFactor = this.drawingArea / (this.max - this.min);
+
+			return (value - this.min) * scalingFactor;
+		},
+		update : function(){
+			if (!this.lineArc){
+				this.setScaleSize();
+			} else {
+				this.drawingArea = (this.display) ? (this.size/2) - (this.fontSize/2 + this.backdropPaddingY) : (this.size/2);
+			}
+			this.buildYLabels();
+		},
+		buildYLabels: function(){
+			this.yLabels = [];
+
+			var stepDecimalPlaces = getDecimalPlaces(this.stepValue);
+
+			for (var i=0; i<=this.steps; i++){
+				this.yLabels.push(template(this.templateString,{value:(this.min + (i * this.stepValue)).toFixed(stepDecimalPlaces)}));
+			}
+		},
+		getCircumference : function(){
+			return ((Math.PI*2) / this.valuesCount);
+		},
+		setScaleSize: function(){
+			/*
+			 * Right, this is really confusing and there is a lot of maths going on here
+			 * The gist of the problem is here: https://gist.github.com/nnnick/696cc9c55f4b0beb8fe9
+			 *
+			 * Reaction: https://dl.dropboxusercontent.com/u/34601363/toomuchscience.gif
+			 *
+			 * Solution:
+			 *
+			 * We assume the radius of the polygon is half the size of the canvas at first
+			 * at each index we check if the text overlaps.
+			 *
+			 * Where it does, we store that angle and that index.
+			 *
+			 * After finding the largest index and angle we calculate how much we need to remove
+			 * from the shape radius to move the point inwards by that x.
+			 *
+			 * We average the left and right distances to get the maximum shape radius that can fit in the box
+			 * along with labels.
+			 *
+			 * Once we have that, we can find the centre point for the chart, by taking the x text protrusion
+			 * on each side, removing that from the size, halving it and adding the left x protrusion width.
+			 *
+			 * This will mean we have a shape fitted to the canvas, as large as it can be with the labels
+			 * and position it in the most space efficient manner
+			 *
+			 * https://dl.dropboxusercontent.com/u/34601363/yeahscience.gif
+			 */
+
+
+			// Get maximum radius of the polygon. Either half the height (minus the text width) or half the width.
+			// Use this to calculate the offset + change. - Make sure L/R protrusion is at least 0 to stop issues with centre points
+			var largestPossibleRadius = min([(this.height/2 - this.pointLabelFontSize - 5), this.width/2]),
+				pointPosition,
+				i,
+				textWidth,
+				halfTextWidth,
+				furthestRight = this.width,
+				furthestRightIndex,
+				furthestRightAngle,
+				furthestLeft = 0,
+				furthestLeftIndex,
+				furthestLeftAngle,
+				xProtrusionLeft,
+				xProtrusionRight,
+				radiusReductionRight,
+				radiusReductionLeft,
+				maxWidthRadius;
+			this.ctx.font = fontString(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily);
+			for (i=0;i<this.valuesCount;i++){
+				// 5px to space the text slightly out - similar to what we do in the draw function.
+				pointPosition = this.getPointPosition(i, largestPossibleRadius);
+				textWidth = this.ctx.measureText(template(this.templateString, { value: this.labels[i] })).width + 5;
+				if (i === 0 || i === this.valuesCount/2){
+					// If we're at index zero, or exactly the middle, we're at exactly the top/bottom
+					// of the radar chart, so text will be aligned centrally, so we'll half it and compare
+					// w/left and right text sizes
+					halfTextWidth = textWidth/2;
+					if (pointPosition.x + halfTextWidth > furthestRight) {
+						furthestRight = pointPosition.x + halfTextWidth;
+						furthestRightIndex = i;
+					}
+					if (pointPosition.x - halfTextWidth < furthestLeft) {
+						furthestLeft = pointPosition.x - halfTextWidth;
+						furthestLeftIndex = i;
+					}
+				}
+				else if (i < this.valuesCount/2) {
+					// Less than half the values means we'll left align the text
+					if (pointPosition.x + textWidth > furthestRight) {
+						furthestRight = pointPosition.x + textWidth;
+						furthestRightIndex = i;
+					}
+				}
+				else if (i > this.valuesCount/2){
+					// More than half the values means we'll right align the text
+					if (pointPosition.x - textWidth < furthestLeft) {
+						furthestLeft = pointPosition.x - textWidth;
+						furthestLeftIndex = i;
+					}
+				}
+			}
+
+			xProtrusionLeft = furthestLeft;
+
+			xProtrusionRight = Math.ceil(furthestRight - this.width);
+
+			furthestRightAngle = this.getIndexAngle(furthestRightIndex);
+
+			furthestLeftAngle = this.getIndexAngle(furthestLeftIndex);
+
+			radiusReductionRight = xProtrusionRight / Math.sin(furthestRightAngle + Math.PI/2);
+
+			radiusReductionLeft = xProtrusionLeft / Math.sin(furthestLeftAngle + Math.PI/2);
+
+			// Ensure we actually need to reduce the size of the chart
+			radiusReductionRight = (isNumber(radiusReductionRight)) ? radiusReductionRight : 0;
+			radiusReductionLeft = (isNumber(radiusReductionLeft)) ? radiusReductionLeft : 0;
+
+			this.drawingArea = largestPossibleRadius - (radiusReductionLeft + radiusReductionRight)/2;
+
+			//this.drawingArea = min([maxWidthRadius, (this.height - (2 * (this.pointLabelFontSize + 5)))/2])
+			this.setCenterPoint(radiusReductionLeft, radiusReductionRight);
+
+		},
+		setCenterPoint: function(leftMovement, rightMovement){
+
+			var maxRight = this.width - rightMovement - this.drawingArea,
+				maxLeft = leftMovement + this.drawingArea;
+
+			this.xCenter = (maxLeft + maxRight)/2;
+			// Always vertically in the centre as the text height doesn't change
+			this.yCenter = (this.height/2);
+		},
+
+		getIndexAngle : function(index){
+			var angleMultiplier = (Math.PI * 2) / this.valuesCount;
+			// Start from the top instead of right, so remove a quarter of the circle
+
+			return index * angleMultiplier - (Math.PI/2);
+		},
+		getPointPosition : function(index, distanceFromCenter){
+			var thisAngle = this.getIndexAngle(index);
+			return {
+				x : (Math.cos(thisAngle) * distanceFromCenter) + this.xCenter,
+				y : (Math.sin(thisAngle) * distanceFromCenter) + this.yCenter
+			};
+		},
+		draw: function(){
+			if (this.display){
+				var ctx = this.ctx;
+				each(this.yLabels, function(label, index){
+					// Don't draw a centre value
+					if (index > 0){
+						var yCenterOffset = index * (this.drawingArea/this.steps),
+							yHeight = this.yCenter - yCenterOffset,
+							pointPosition;
+
+						// Draw circular lines around the scale
+						if (this.lineWidth > 0){
+							ctx.strokeStyle = this.lineColor;
+							ctx.lineWidth = this.lineWidth;
+
+							if(this.lineArc){
+								ctx.beginPath();
+								ctx.arc(this.xCenter, this.yCenter, yCenterOffset, 0, Math.PI*2);
+								ctx.closePath();
+								ctx.stroke();
+							} else{
+								ctx.beginPath();
+								for (var i=0;i<this.valuesCount;i++)
+								{
+									pointPosition = this.getPointPosition(i, this.calculateCenterOffset(this.min + (index * this.stepValue)));
+									if (i === 0){
+										ctx.moveTo(pointPosition.x, pointPosition.y);
+									} else {
+										ctx.lineTo(pointPosition.x, pointPosition.y);
+									}
+								}
+								ctx.closePath();
+								ctx.stroke();
+							}
+						}
+						if(this.showLabels){
+							ctx.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
+							if (this.showLabelBackdrop){
+								var labelWidth = ctx.measureText(label).width;
+								ctx.fillStyle = this.backdropColor;
+								ctx.fillRect(
+									this.xCenter - labelWidth/2 - this.backdropPaddingX,
+									yHeight - this.fontSize/2 - this.backdropPaddingY,
+									labelWidth + this.backdropPaddingX*2,
+									this.fontSize + this.backdropPaddingY*2
+								);
+							}
+							ctx.textAlign = 'center';
+							ctx.textBaseline = "middle";
+							ctx.fillStyle = this.fontColor;
+							ctx.fillText(label, this.xCenter, yHeight);
+						}
+					}
+				}, this);
+
+				if (!this.lineArc){
+					ctx.lineWidth = this.angleLineWidth;
+					ctx.strokeStyle = this.angleLineColor;
+					for (var i = this.valuesCount - 1; i >= 0; i--) {
+						if (this.angleLineWidth > 0){
+							var outerPosition = this.getPointPosition(i, this.calculateCenterOffset(this.max));
+							ctx.beginPath();
+							ctx.moveTo(this.xCenter, this.yCenter);
+							ctx.lineTo(outerPosition.x, outerPosition.y);
+							ctx.stroke();
+							ctx.closePath();
+						}
+						// Extra 3px out for some label spacing
+						var pointLabelPosition = this.getPointPosition(i, this.calculateCenterOffset(this.max) + 5);
+						ctx.font = fontString(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily);
+						ctx.fillStyle = this.pointLabelFontColor;
+
+						var labelsCount = this.labels.length,
+							halfLabelsCount = this.labels.length/2,
+							quarterLabelsCount = halfLabelsCount/2,
+							upperHalf = (i < quarterLabelsCount || i > labelsCount - quarterLabelsCount),
+							exactQuarter = (i === quarterLabelsCount || i === labelsCount - quarterLabelsCount);
+						if (i === 0){
+							ctx.textAlign = 'center';
+						} else if(i === halfLabelsCount){
+							ctx.textAlign = 'center';
+						} else if (i < halfLabelsCount){
+							ctx.textAlign = 'left';
+						} else {
+							ctx.textAlign = 'right';
+						}
+
+						// Set the correct text baseline based on outer positioning
+						if (exactQuarter){
+							ctx.textBaseline = 'middle';
+						} else if (upperHalf){
+							ctx.textBaseline = 'bottom';
+						} else {
+							ctx.textBaseline = 'top';
+						}
+
+						ctx.fillText(this.labels[i], pointLabelPosition.x, pointLabelPosition.y);
+					}
+				}
+			}
+		}
+	});
+
+	// Attach global event to resize each chart instance when the browser resizes
+	helpers.addEvent(window, "resize", (function(){
+		// Basic debounce of resize function so it doesn't hurt performance when resizing browser.
+		var timeout;
+		return function(){
+			clearTimeout(timeout);
+			timeout = setTimeout(function(){
+				each(Chart.instances,function(instance){
+					// If the responsive flag is set in the chart instance config
+					// Cascade the resize event down to the chart.
+					if (instance.options.responsive){
+						instance.resize(instance.render, true);
+					}
+				});
+			}, 50);
+		};
+	})());
+
+
+	if (amd) {
+		define(function(){
+			return Chart;
+		});
+	} else if (typeof module === 'object' && module.exports) {
+		module.exports = Chart;
+	}
+
+	root.Chart = Chart;
+
+	Chart.noConflict = function(){
+		root.Chart = previous;
+		return Chart;
+	};
+
+}).call(this);
+
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		helpers = Chart.helpers;
+
+
+	var defaultConfig = {
+		//Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+		scaleBeginAtZero : true,
+
+		//Boolean - Whether grid lines are shown across the chart
+		scaleShowGridLines : true,
+
+		//String - Colour of the grid lines
+		scaleGridLineColor : "rgba(0,0,0,.05)",
+
+		//Number - Width of the grid lines
+		scaleGridLineWidth : 1,
+
+		//Boolean - Whether to show horizontal lines (except X axis)
+		scaleShowHorizontalLines: true,
+
+		//Boolean - Whether to show vertical lines (except Y axis)
+		scaleShowVerticalLines: true,
+
+		//Boolean - If there is a stroke on each bar
+		barShowStroke : true,
+
+		//Number - Pixel width of the bar stroke
+		barStrokeWidth : 2,
+
+		//Number - Spacing between each of the X value sets
+		barValueSpacing : 5,
+
+		//Number - Spacing between data sets within X values
+		barDatasetSpacing : 1,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+	};
+
+
+	Chart.Type.extend({
+		name: "Bar",
+		defaults : defaultConfig,
+		initialize:  function(data){
+
+			//Expose options as a scope variable here so we can access it in the ScaleClass
+			var options = this.options;
+
+			this.ScaleClass = Chart.Scale.extend({
+				offsetGridLines : true,
+				calculateBarX : function(datasetCount, datasetIndex, barIndex){
+					//Reusable method for calculating the xPosition of a given bar based on datasetIndex & width of the bar
+					var xWidth = this.calculateBaseWidth(),
+						xAbsolute = this.calculateX(barIndex) - (xWidth/2),
+						barWidth = this.calculateBarWidth(datasetCount);
+
+					return xAbsolute + (barWidth * datasetIndex) + (datasetIndex * options.barDatasetSpacing) + barWidth/2;
+				},
+				calculateBaseWidth : function(){
+					return (this.calculateX(1) - this.calculateX(0)) - (2*options.barValueSpacing);
+				},
+				calculateBarWidth : function(datasetCount){
+					//The padding between datasets is to the right of each bar, providing that there are more than 1 dataset
+					var baseWidth = this.calculateBaseWidth() - ((datasetCount - 1) * options.barDatasetSpacing);
+
+					return (baseWidth / datasetCount);
+				}
+			});
+
+			this.datasets = [];
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activeBars = (evt.type !== 'mouseout') ? this.getBarsAtEvent(evt) : [];
+
+					this.eachBars(function(bar){
+						bar.restore(['fillColor', 'strokeColor']);
+					});
+					helpers.each(activeBars, function(activeBar){
+						activeBar.fillColor = activeBar.highlightFill;
+						activeBar.strokeColor = activeBar.highlightStroke;
+					});
+					this.showTooltip(activeBars);
+				});
+			}
+
+			//Declare the extension of the default point, to cater for the options passed in to the constructor
+			this.BarClass = Chart.Rectangle.extend({
+				strokeWidth : this.options.barStrokeWidth,
+				showStroke : this.options.barShowStroke,
+				ctx : this.chart.ctx
+			});
+
+			//Iterate through each of the datasets, and build this into a property of the chart
+			helpers.each(data.datasets,function(dataset,datasetIndex){
+
+				var datasetObject = {
+					label : dataset.label || null,
+					fillColor : dataset.fillColor,
+					strokeColor : dataset.strokeColor,
+					bars : []
+				};
+
+				this.datasets.push(datasetObject);
+
+				helpers.each(dataset.data,function(dataPoint,index){
+					//Add a new point for each piece of data, passing any required data to draw.
+					datasetObject.bars.push(new this.BarClass({
+						value : dataPoint,
+						label : data.labels[index],
+						datasetLabel: dataset.label,
+						strokeColor : dataset.strokeColor,
+						fillColor : dataset.fillColor,
+						highlightFill : dataset.highlightFill || dataset.fillColor,
+						highlightStroke : dataset.highlightStroke || dataset.strokeColor
+					}));
+				},this);
+
+			},this);
+
+			this.buildScale(data.labels);
+
+			this.BarClass.prototype.base = this.scale.endPoint;
+
+			this.eachBars(function(bar, index, datasetIndex){
+				helpers.extend(bar, {
+					width : this.scale.calculateBarWidth(this.datasets.length),
+					x: this.scale.calculateBarX(this.datasets.length, datasetIndex, index),
+					y: this.scale.endPoint
+				});
+				bar.save();
+			}, this);
+
+			this.render();
+		},
+		update : function(){
+			this.scale.update();
+			// Reset any highlight colours before updating.
+			helpers.each(this.activeElements, function(activeElement){
+				activeElement.restore(['fillColor', 'strokeColor']);
+			});
+
+			this.eachBars(function(bar){
+				bar.save();
+			});
+			this.render();
+		},
+		eachBars : function(callback){
+			helpers.each(this.datasets,function(dataset, datasetIndex){
+				helpers.each(dataset.bars, callback, this, datasetIndex);
+			},this);
+		},
+		getBarsAtEvent : function(e){
+			var barsArray = [],
+				eventPosition = helpers.getRelativePosition(e),
+				datasetIterator = function(dataset){
+					barsArray.push(dataset.bars[barIndex]);
+				},
+				barIndex;
+
+			for (var datasetIndex = 0; datasetIndex < this.datasets.length; datasetIndex++) {
+				for (barIndex = 0; barIndex < this.datasets[datasetIndex].bars.length; barIndex++) {
+					if (this.datasets[datasetIndex].bars[barIndex].inRange(eventPosition.x,eventPosition.y)){
+						helpers.each(this.datasets, datasetIterator);
+						return barsArray;
+					}
+				}
+			}
+
+			return barsArray;
+		},
+		buildScale : function(labels){
+			var self = this;
+
+			var dataTotal = function(){
+				var values = [];
+				self.eachBars(function(bar){
+					values.push(bar.value);
+				});
+				return values;
+			};
+
+			var scaleOptions = {
+				templateString : this.options.scaleLabel,
+				height : this.chart.height,
+				width : this.chart.width,
+				ctx : this.chart.ctx,
+				textColor : this.options.scaleFontColor,
+				fontSize : this.options.scaleFontSize,
+				fontStyle : this.options.scaleFontStyle,
+				fontFamily : this.options.scaleFontFamily,
+				valuesCount : labels.length,
+				beginAtZero : this.options.scaleBeginAtZero,
+				integersOnly : this.options.scaleIntegersOnly,
+				calculateYRange: function(currentHeight){
+					var updatedRanges = helpers.calculateScaleRange(
+						dataTotal(),
+						currentHeight,
+						this.fontSize,
+						this.beginAtZero,
+						this.integersOnly
+					);
+					helpers.extend(this, updatedRanges);
+				},
+				xLabels : labels,
+				font : helpers.fontString(this.options.scaleFontSize, this.options.scaleFontStyle, this.options.scaleFontFamily),
+				lineWidth : this.options.scaleLineWidth,
+				lineColor : this.options.scaleLineColor,
+				showHorizontalLines : this.options.scaleShowHorizontalLines,
+				showVerticalLines : this.options.scaleShowVerticalLines,
+				gridLineWidth : (this.options.scaleShowGridLines) ? this.options.scaleGridLineWidth : 0,
+				gridLineColor : (this.options.scaleShowGridLines) ? this.options.scaleGridLineColor : "rgba(0,0,0,0)",
+				padding : (this.options.showScale) ? 0 : (this.options.barShowStroke) ? this.options.barStrokeWidth : 0,
+				showLabels : this.options.scaleShowLabels,
+				display : this.options.showScale
+			};
+
+			if (this.options.scaleOverride){
+				helpers.extend(scaleOptions, {
+					calculateYRange: helpers.noop,
+					steps: this.options.scaleSteps,
+					stepValue: this.options.scaleStepWidth,
+					min: this.options.scaleStartValue,
+					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+				});
+			}
+
+			this.scale = new this.ScaleClass(scaleOptions);
+		},
+		addData : function(valuesArray,label){
+			//Map the values array for each of the datasets
+			helpers.each(valuesArray,function(value,datasetIndex){
+				//Add a new point for each piece of data, passing any required data to draw.
+				this.datasets[datasetIndex].bars.push(new this.BarClass({
+					value : value,
+					label : label,
+					x: this.scale.calculateBarX(this.datasets.length, datasetIndex, this.scale.valuesCount+1),
+					y: this.scale.endPoint,
+					width : this.scale.calculateBarWidth(this.datasets.length),
+					base : this.scale.endPoint,
+					strokeColor : this.datasets[datasetIndex].strokeColor,
+					fillColor : this.datasets[datasetIndex].fillColor
+				}));
+			},this);
+
+			this.scale.addXLabel(label);
+			//Then re-render the chart.
+			this.update();
+		},
+		removeData : function(){
+			this.scale.removeXLabel();
+			//Then re-render the chart.
+			helpers.each(this.datasets,function(dataset){
+				dataset.bars.shift();
+			},this);
+			this.update();
+		},
+		reflow : function(){
+			helpers.extend(this.BarClass.prototype,{
+				y: this.scale.endPoint,
+				base : this.scale.endPoint
+			});
+			var newScaleProps = helpers.extend({
+				height : this.chart.height,
+				width : this.chart.width
+			});
+			this.scale.update(newScaleProps);
+		},
+		draw : function(ease){
+			var easingDecimal = ease || 1;
+			this.clear();
+
+			var ctx = this.chart.ctx;
+
+			this.scale.draw(easingDecimal);
+
+			//Draw all the bars for each dataset
+			helpers.each(this.datasets,function(dataset,datasetIndex){
+				helpers.each(dataset.bars,function(bar,index){
+					if (bar.hasValue()){
+						bar.base = this.scale.endPoint;
+						//Transition then draw
+						bar.transition({
+							x : this.scale.calculateBarX(this.datasets.length, datasetIndex, index),
+							y : this.scale.calculateY(bar.value),
+							width : this.scale.calculateBarWidth(this.datasets.length)
+						}, easingDecimal).draw();
+					}
+				},this);
+
+			},this);
+		}
+	});
+
+
+}).call(this);
+
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		//Cache a local reference to Chart.helpers
+		helpers = Chart.helpers;
+
+	var defaultConfig = {
+		//Boolean - Whether we should show a stroke on each segment
+		segmentShowStroke : true,
+
+		//String - The colour of each segment stroke
+		segmentStrokeColor : "#fff",
+
+		//Number - The width of each segment stroke
+		segmentStrokeWidth : 2,
+
+		//The percentage of the chart that we cut out of the middle.
+		percentageInnerCutout : 50,
+
+		//Number - Amount of animation steps
+		animationSteps : 100,
+
+		//String - Animation easing effect
+		animationEasing : "easeOutBounce",
+
+		//Boolean - Whether we animate the rotation of the Doughnut
+		animateRotate : true,
+
+		//Boolean - Whether we animate scaling the Doughnut from the centre
+		animateScale : false,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+
+	};
+
+
+	Chart.Type.extend({
+		//Passing in a name registers this chart in the Chart namespace
+		name: "Doughnut",
+		//Providing a defaults will also register the deafults in the chart namespace
+		defaults : defaultConfig,
+		//Initialize is fired when the chart is initialized - Data is passed in as a parameter
+		//Config is automatically merged by the core of Chart.js, and is available at this.options
+		initialize:  function(data){
+
+			//Declare segments as a static property to prevent inheriting across the Chart type prototype
+			this.segments = [];
+			this.outerRadius = (helpers.min([this.chart.width,this.chart.height]) -	this.options.segmentStrokeWidth/2)/2;
+
+			this.SegmentArc = Chart.Arc.extend({
+				ctx : this.chart.ctx,
+				x : this.chart.width/2,
+				y : this.chart.height/2
+			});
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activeSegments = (evt.type !== 'mouseout') ? this.getSegmentsAtEvent(evt) : [];
+
+					helpers.each(this.segments,function(segment){
+						segment.restore(["fillColor"]);
+					});
+					helpers.each(activeSegments,function(activeSegment){
+						activeSegment.fillColor = activeSegment.highlightColor;
+					});
+					this.showTooltip(activeSegments);
+				});
+			}
+			this.calculateTotal(data);
+
+			helpers.each(data,function(datapoint, index){
+				this.addData(datapoint, index, true);
+			},this);
+
+			this.render();
+		},
+		getSegmentsAtEvent : function(e){
+			var segmentsArray = [];
+
+			var location = helpers.getRelativePosition(e);
+
+			helpers.each(this.segments,function(segment){
+				if (segment.inRange(location.x,location.y)) segmentsArray.push(segment);
+			},this);
+			return segmentsArray;
+		},
+		addData : function(segment, atIndex, silent){
+			var index = atIndex || this.segments.length;
+			this.segments.splice(index, 0, new this.SegmentArc({
+				value : segment.value,
+				outerRadius : (this.options.animateScale) ? 0 : this.outerRadius,
+				innerRadius : (this.options.animateScale) ? 0 : (this.outerRadius/100) * this.options.percentageInnerCutout,
+				fillColor : segment.color,
+				highlightColor : segment.highlight || segment.color,
+				showStroke : this.options.segmentShowStroke,
+				strokeWidth : this.options.segmentStrokeWidth,
+				strokeColor : this.options.segmentStrokeColor,
+				startAngle : Math.PI * 1.5,
+				circumference : (this.options.animateRotate) ? 0 : this.calculateCircumference(segment.value),
+				label : segment.label
+			}));
+			if (!silent){
+				this.reflow();
+				this.update();
+			}
+		},
+		calculateCircumference : function(value){
+			return (Math.PI*2)*(Math.abs(value) / this.total);
+		},
+		calculateTotal : function(data){
+			this.total = 0;
+			helpers.each(data,function(segment){
+				this.total += Math.abs(segment.value);
+			},this);
+		},
+		update : function(){
+			this.calculateTotal(this.segments);
+
+			// Reset any highlight colours before updating.
+			helpers.each(this.activeElements, function(activeElement){
+				activeElement.restore(['fillColor']);
+			});
+
+			helpers.each(this.segments,function(segment){
+				segment.save();
+			});
+			this.render();
+		},
+
+		removeData: function(atIndex){
+			var indexToDelete = (helpers.isNumber(atIndex)) ? atIndex : this.segments.length-1;
+			this.segments.splice(indexToDelete, 1);
+			this.reflow();
+			this.update();
+		},
+
+		reflow : function(){
+			helpers.extend(this.SegmentArc.prototype,{
+				x : this.chart.width/2,
+				y : this.chart.height/2
+			});
+			this.outerRadius = (helpers.min([this.chart.width,this.chart.height]) -	this.options.segmentStrokeWidth/2)/2;
+			helpers.each(this.segments, function(segment){
+				segment.update({
+					outerRadius : this.outerRadius,
+					innerRadius : (this.outerRadius/100) * this.options.percentageInnerCutout
+				});
+			}, this);
+		},
+		draw : function(easeDecimal){
+			var animDecimal = (easeDecimal) ? easeDecimal : 1;
+			this.clear();
+			helpers.each(this.segments,function(segment,index){
+				segment.transition({
+					circumference : this.calculateCircumference(segment.value),
+					outerRadius : this.outerRadius,
+					innerRadius : (this.outerRadius/100) * this.options.percentageInnerCutout
+				},animDecimal);
+
+				segment.endAngle = segment.startAngle + segment.circumference;
+
+				segment.draw();
+				if (index === 0){
+					segment.startAngle = Math.PI * 1.5;
+				}
+				//Check to see if it's the last segment, if not get the next and update the start angle
+				if (index < this.segments.length-1){
+					this.segments[index+1].startAngle = segment.endAngle;
+				}
+			},this);
+
+		}
+	});
+
+	Chart.types.Doughnut.extend({
+		name : "Pie",
+		defaults : helpers.merge(defaultConfig,{percentageInnerCutout : 0})
+	});
+
+}).call(this);
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		helpers = Chart.helpers;
+
+	var defaultConfig = {
+
+		///Boolean - Whether grid lines are shown across the chart
+		scaleShowGridLines : true,
+
+		//String - Colour of the grid lines
+		scaleGridLineColor : "rgba(0,0,0,.05)",
+
+		//Number - Width of the grid lines
+		scaleGridLineWidth : 1,
+
+		//Boolean - Whether to show horizontal lines (except X axis)
+		scaleShowHorizontalLines: true,
+
+		//Boolean - Whether to show vertical lines (except Y axis)
+		scaleShowVerticalLines: true,
+
+		//Boolean - Whether the line is curved between points
+		bezierCurve : true,
+
+		//Number - Tension of the bezier curve between points
+		bezierCurveTension : 0.4,
+
+		//Boolean - Whether to show a dot for each point
+		pointDot : true,
+
+		//Number - Radius of each point dot in pixels
+		pointDotRadius : 4,
+
+		//Number - Pixel width of point dot stroke
+		pointDotStrokeWidth : 1,
+
+		//Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+		pointHitDetectionRadius : 20,
+
+		//Boolean - Whether to show a stroke for datasets
+		datasetStroke : true,
+
+		//Number - Pixel width of dataset stroke
+		datasetStrokeWidth : 2,
+
+		//Boolean - Whether to fill the dataset with a colour
+		datasetFill : true,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+	};
+
+
+	Chart.Type.extend({
+		name: "Line",
+		defaults : defaultConfig,
+		initialize:  function(data){
+			//Declare the extension of the default point, to cater for the options passed in to the constructor
+			this.PointClass = Chart.Point.extend({
+				strokeWidth : this.options.pointDotStrokeWidth,
+				radius : this.options.pointDotRadius,
+				display: this.options.pointDot,
+				hitDetectionRadius : this.options.pointHitDetectionRadius,
+				ctx : this.chart.ctx,
+				inRange : function(mouseX){
+					return (Math.pow(mouseX-this.x, 2) < Math.pow(this.radius + this.hitDetectionRadius,2));
+				}
+			});
+
+			this.datasets = [];
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activePoints = (evt.type !== 'mouseout') ? this.getPointsAtEvent(evt) : [];
+					this.eachPoints(function(point){
+						point.restore(['fillColor', 'strokeColor']);
+					});
+					helpers.each(activePoints, function(activePoint){
+						activePoint.fillColor = activePoint.highlightFill;
+						activePoint.strokeColor = activePoint.highlightStroke;
+					});
+					this.showTooltip(activePoints);
+				});
+			}
+
+			//Iterate through each of the datasets, and build this into a property of the chart
+			helpers.each(data.datasets,function(dataset){
+
+				var datasetObject = {
+					label : dataset.label || null,
+					fillColor : dataset.fillColor,
+					strokeColor : dataset.strokeColor,
+					pointColor : dataset.pointColor,
+					pointStrokeColor : dataset.pointStrokeColor,
+					points : []
+				};
+
+				this.datasets.push(datasetObject);
+
+
+				helpers.each(dataset.data,function(dataPoint,index){
+					//Add a new point for each piece of data, passing any required data to draw.
+					datasetObject.points.push(new this.PointClass({
+						value : dataPoint,
+						label : data.labels[index],
+						datasetLabel: dataset.label,
+						strokeColor : dataset.pointStrokeColor,
+						fillColor : dataset.pointColor,
+						highlightFill : dataset.pointHighlightFill || dataset.pointColor,
+						highlightStroke : dataset.pointHighlightStroke || dataset.pointStrokeColor
+					}));
+				},this);
+
+				this.buildScale(data.labels);
+
+
+				this.eachPoints(function(point, index){
+					helpers.extend(point, {
+						x: this.scale.calculateX(index),
+						y: this.scale.endPoint
+					});
+					point.save();
+				}, this);
+
+			},this);
+
+
+			this.render();
+		},
+		update : function(){
+			this.scale.update();
+			// Reset any highlight colours before updating.
+			helpers.each(this.activeElements, function(activeElement){
+				activeElement.restore(['fillColor', 'strokeColor']);
+			});
+			this.eachPoints(function(point){
+				point.save();
+			});
+			this.render();
+		},
+		eachPoints : function(callback){
+			helpers.each(this.datasets,function(dataset){
+				helpers.each(dataset.points,callback,this);
+			},this);
+		},
+		getPointsAtEvent : function(e){
+			var pointsArray = [],
+				eventPosition = helpers.getRelativePosition(e);
+			helpers.each(this.datasets,function(dataset){
+				helpers.each(dataset.points,function(point){
+					if (point.inRange(eventPosition.x,eventPosition.y)) pointsArray.push(point);
+				});
+			},this);
+			return pointsArray;
+		},
+		buildScale : function(labels){
+			var self = this;
+
+			var dataTotal = function(){
+				var values = [];
+				self.eachPoints(function(point){
+					values.push(point.value);
+				});
+
+				return values;
+			};
+
+			var scaleOptions = {
+				templateString : this.options.scaleLabel,
+				height : this.chart.height,
+				width : this.chart.width,
+				ctx : this.chart.ctx,
+				textColor : this.options.scaleFontColor,
+				fontSize : this.options.scaleFontSize,
+				fontStyle : this.options.scaleFontStyle,
+				fontFamily : this.options.scaleFontFamily,
+				valuesCount : labels.length,
+				beginAtZero : this.options.scaleBeginAtZero,
+				integersOnly : this.options.scaleIntegersOnly,
+				calculateYRange : function(currentHeight){
+					var updatedRanges = helpers.calculateScaleRange(
+						dataTotal(),
+						currentHeight,
+						this.fontSize,
+						this.beginAtZero,
+						this.integersOnly
+					);
+					helpers.extend(this, updatedRanges);
+				},
+				xLabels : labels,
+				font : helpers.fontString(this.options.scaleFontSize, this.options.scaleFontStyle, this.options.scaleFontFamily),
+				lineWidth : this.options.scaleLineWidth,
+				lineColor : this.options.scaleLineColor,
+				showHorizontalLines : this.options.scaleShowHorizontalLines,
+				showVerticalLines : this.options.scaleShowVerticalLines,
+				gridLineWidth : (this.options.scaleShowGridLines) ? this.options.scaleGridLineWidth : 0,
+				gridLineColor : (this.options.scaleShowGridLines) ? this.options.scaleGridLineColor : "rgba(0,0,0,0)",
+				padding: (this.options.showScale) ? 0 : this.options.pointDotRadius + this.options.pointDotStrokeWidth,
+				showLabels : this.options.scaleShowLabels,
+				display : this.options.showScale
+			};
+
+			if (this.options.scaleOverride){
+				helpers.extend(scaleOptions, {
+					calculateYRange: helpers.noop,
+					steps: this.options.scaleSteps,
+					stepValue: this.options.scaleStepWidth,
+					min: this.options.scaleStartValue,
+					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+				});
+			}
+
+
+			this.scale = new Chart.Scale(scaleOptions);
+		},
+		addData : function(valuesArray,label){
+			//Map the values array for each of the datasets
+
+			helpers.each(valuesArray,function(value,datasetIndex){
+				//Add a new point for each piece of data, passing any required data to draw.
+				this.datasets[datasetIndex].points.push(new this.PointClass({
+					value : value,
+					label : label,
+					x: this.scale.calculateX(this.scale.valuesCount+1),
+					y: this.scale.endPoint,
+					strokeColor : this.datasets[datasetIndex].pointStrokeColor,
+					fillColor : this.datasets[datasetIndex].pointColor
+				}));
+			},this);
+
+			this.scale.addXLabel(label);
+			//Then re-render the chart.
+			this.update();
+		},
+		removeData : function(){
+			this.scale.removeXLabel();
+			//Then re-render the chart.
+			helpers.each(this.datasets,function(dataset){
+				dataset.points.shift();
+			},this);
+			this.update();
+		},
+		reflow : function(){
+			var newScaleProps = helpers.extend({
+				height : this.chart.height,
+				width : this.chart.width
+			});
+			this.scale.update(newScaleProps);
+		},
+		draw : function(ease){
+			var easingDecimal = ease || 1;
+			this.clear();
+
+			var ctx = this.chart.ctx;
+
+			// Some helper methods for getting the next/prev points
+			var hasValue = function(item){
+				return item.value !== null;
+			},
+			nextPoint = function(point, collection, index){
+				return helpers.findNextWhere(collection, hasValue, index) || point;
+			},
+			previousPoint = function(point, collection, index){
+				return helpers.findPreviousWhere(collection, hasValue, index) || point;
+			};
+
+			this.scale.draw(easingDecimal);
+
+
+			helpers.each(this.datasets,function(dataset){
+				var pointsWithValues = helpers.where(dataset.points, hasValue);
+
+				//Transition each point first so that the line and point drawing isn't out of sync
+				//We can use this extra loop to calculate the control points of this dataset also in this loop
+
+				helpers.each(dataset.points, function(point, index){
+					if (point.hasValue()){
+						point.transition({
+							y : this.scale.calculateY(point.value),
+							x : this.scale.calculateX(index)
+						}, easingDecimal);
+					}
+				},this);
+
+
+				// Control points need to be calculated in a seperate loop, because we need to know the current x/y of the point
+				// This would cause issues when there is no animation, because the y of the next point would be 0, so beziers would be skewed
+				if (this.options.bezierCurve){
+					helpers.each(pointsWithValues, function(point, index){
+						var tension = (index > 0 && index < pointsWithValues.length - 1) ? this.options.bezierCurveTension : 0;
+						point.controlPoints = helpers.splineCurve(
+							previousPoint(point, pointsWithValues, index),
+							point,
+							nextPoint(point, pointsWithValues, index),
+							tension
+						);
+
+						// Prevent the bezier going outside of the bounds of the graph
+
+						// Cap puter bezier handles to the upper/lower scale bounds
+						if (point.controlPoints.outer.y > this.scale.endPoint){
+							point.controlPoints.outer.y = this.scale.endPoint;
+						}
+						else if (point.controlPoints.outer.y < this.scale.startPoint){
+							point.controlPoints.outer.y = this.scale.startPoint;
+						}
+
+						// Cap inner bezier handles to the upper/lower scale bounds
+						if (point.controlPoints.inner.y > this.scale.endPoint){
+							point.controlPoints.inner.y = this.scale.endPoint;
+						}
+						else if (point.controlPoints.inner.y < this.scale.startPoint){
+							point.controlPoints.inner.y = this.scale.startPoint;
+						}
+					},this);
+				}
+
+
+				//Draw the line between all the points
+				ctx.lineWidth = this.options.datasetStrokeWidth;
+				ctx.strokeStyle = dataset.strokeColor;
+				ctx.beginPath();
+
+				helpers.each(pointsWithValues, function(point, index){
+					if (index === 0){
+						ctx.moveTo(point.x, point.y);
+					}
+					else{
+						if(this.options.bezierCurve){
+							var previous = previousPoint(point, pointsWithValues, index);
+
+							ctx.bezierCurveTo(
+								previous.controlPoints.outer.x,
+								previous.controlPoints.outer.y,
+								point.controlPoints.inner.x,
+								point.controlPoints.inner.y,
+								point.x,
+								point.y
+							);
+						}
+						else{
+							ctx.lineTo(point.x,point.y);
+						}
+					}
+				}, this);
+
+				ctx.stroke();
+
+				if (this.options.datasetFill && pointsWithValues.length > 0){
+					//Round off the line by going to the base of the chart, back to the start, then fill.
+					ctx.lineTo(pointsWithValues[pointsWithValues.length - 1].x, this.scale.endPoint);
+					ctx.lineTo(pointsWithValues[0].x, this.scale.endPoint);
+					ctx.fillStyle = dataset.fillColor;
+					ctx.closePath();
+					ctx.fill();
+				}
+
+				//Now draw the points over the line
+				//A little inefficient double looping, but better than the line
+				//lagging behind the point positions
+				helpers.each(pointsWithValues,function(point){
+					point.draw();
+				});
+			},this);
+		}
+	});
+
+
+}).call(this);
+
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		//Cache a local reference to Chart.helpers
+		helpers = Chart.helpers;
+
+	var defaultConfig = {
+		//Boolean - Show a backdrop to the scale label
+		scaleShowLabelBackdrop : true,
+
+		//String - The colour of the label backdrop
+		scaleBackdropColor : "rgba(255,255,255,0.75)",
+
+		// Boolean - Whether the scale should begin at zero
+		scaleBeginAtZero : true,
+
+		//Number - The backdrop padding above & below the label in pixels
+		scaleBackdropPaddingY : 2,
+
+		//Number - The backdrop padding to the side of the label in pixels
+		scaleBackdropPaddingX : 2,
+
+		//Boolean - Show line for each value in the scale
+		scaleShowLine : true,
+
+		//Boolean - Stroke a line around each segment in the chart
+		segmentShowStroke : true,
+
+		//String - The colour of the stroke on each segement.
+		segmentStrokeColor : "#fff",
+
+		//Number - The width of the stroke value in pixels
+		segmentStrokeWidth : 2,
+
+		//Number - Amount of animation steps
+		animationSteps : 100,
+
+		//String - Animation easing effect.
+		animationEasing : "easeOutBounce",
+
+		//Boolean - Whether to animate the rotation of the chart
+		animateRotate : true,
+
+		//Boolean - Whether to animate scaling the chart from the centre
+		animateScale : false,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+	};
+
+
+	Chart.Type.extend({
+		//Passing in a name registers this chart in the Chart namespace
+		name: "PolarArea",
+		//Providing a defaults will also register the deafults in the chart namespace
+		defaults : defaultConfig,
+		//Initialize is fired when the chart is initialized - Data is passed in as a parameter
+		//Config is automatically merged by the core of Chart.js, and is available at this.options
+		initialize:  function(data){
+			this.segments = [];
+			//Declare segment class as a chart instance specific class, so it can share props for this instance
+			this.SegmentArc = Chart.Arc.extend({
+				showStroke : this.options.segmentShowStroke,
+				strokeWidth : this.options.segmentStrokeWidth,
+				strokeColor : this.options.segmentStrokeColor,
+				ctx : this.chart.ctx,
+				innerRadius : 0,
+				x : this.chart.width/2,
+				y : this.chart.height/2
+			});
+			this.scale = new Chart.RadialScale({
+				display: this.options.showScale,
+				fontStyle: this.options.scaleFontStyle,
+				fontSize: this.options.scaleFontSize,
+				fontFamily: this.options.scaleFontFamily,
+				fontColor: this.options.scaleFontColor,
+				showLabels: this.options.scaleShowLabels,
+				showLabelBackdrop: this.options.scaleShowLabelBackdrop,
+				backdropColor: this.options.scaleBackdropColor,
+				backdropPaddingY : this.options.scaleBackdropPaddingY,
+				backdropPaddingX: this.options.scaleBackdropPaddingX,
+				lineWidth: (this.options.scaleShowLine) ? this.options.scaleLineWidth : 0,
+				lineColor: this.options.scaleLineColor,
+				lineArc: true,
+				width: this.chart.width,
+				height: this.chart.height,
+				xCenter: this.chart.width/2,
+				yCenter: this.chart.height/2,
+				ctx : this.chart.ctx,
+				templateString: this.options.scaleLabel,
+				valuesCount: data.length
+			});
+
+			this.updateScaleRange(data);
+
+			this.scale.update();
+
+			helpers.each(data,function(segment,index){
+				this.addData(segment,index,true);
+			},this);
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activeSegments = (evt.type !== 'mouseout') ? this.getSegmentsAtEvent(evt) : [];
+					helpers.each(this.segments,function(segment){
+						segment.restore(["fillColor"]);
+					});
+					helpers.each(activeSegments,function(activeSegment){
+						activeSegment.fillColor = activeSegment.highlightColor;
+					});
+					this.showTooltip(activeSegments);
+				});
+			}
+
+			this.render();
+		},
+		getSegmentsAtEvent : function(e){
+			var segmentsArray = [];
+
+			var location = helpers.getRelativePosition(e);
+
+			helpers.each(this.segments,function(segment){
+				if (segment.inRange(location.x,location.y)) segmentsArray.push(segment);
+			},this);
+			return segmentsArray;
+		},
+		addData : function(segment, atIndex, silent){
+			var index = atIndex || this.segments.length;
+
+			this.segments.splice(index, 0, new this.SegmentArc({
+				fillColor: segment.color,
+				highlightColor: segment.highlight || segment.color,
+				label: segment.label,
+				value: segment.value,
+				outerRadius: (this.options.animateScale) ? 0 : this.scale.calculateCenterOffset(segment.value),
+				circumference: (this.options.animateRotate) ? 0 : this.scale.getCircumference(),
+				startAngle: Math.PI * 1.5
+			}));
+			if (!silent){
+				this.reflow();
+				this.update();
+			}
+		},
+		removeData: function(atIndex){
+			var indexToDelete = (helpers.isNumber(atIndex)) ? atIndex : this.segments.length-1;
+			this.segments.splice(indexToDelete, 1);
+			this.reflow();
+			this.update();
+		},
+		calculateTotal: function(data){
+			this.total = 0;
+			helpers.each(data,function(segment){
+				this.total += segment.value;
+			},this);
+			this.scale.valuesCount = this.segments.length;
+		},
+		updateScaleRange: function(datapoints){
+			var valuesArray = [];
+			helpers.each(datapoints,function(segment){
+				valuesArray.push(segment.value);
+			});
+
+			var scaleSizes = (this.options.scaleOverride) ?
+				{
+					steps: this.options.scaleSteps,
+					stepValue: this.options.scaleStepWidth,
+					min: this.options.scaleStartValue,
+					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+				} :
+				helpers.calculateScaleRange(
+					valuesArray,
+					helpers.min([this.chart.width, this.chart.height])/2,
+					this.options.scaleFontSize,
+					this.options.scaleBeginAtZero,
+					this.options.scaleIntegersOnly
+				);
+
+			helpers.extend(
+				this.scale,
+				scaleSizes,
+				{
+					size: helpers.min([this.chart.width, this.chart.height]),
+					xCenter: this.chart.width/2,
+					yCenter: this.chart.height/2
+				}
+			);
+
+		},
+		update : function(){
+			this.calculateTotal(this.segments);
+
+			helpers.each(this.segments,function(segment){
+				segment.save();
+			});
+			
+			this.reflow();
+			this.render();
+		},
+		reflow : function(){
+			helpers.extend(this.SegmentArc.prototype,{
+				x : this.chart.width/2,
+				y : this.chart.height/2
+			});
+			this.updateScaleRange(this.segments);
+			this.scale.update();
+
+			helpers.extend(this.scale,{
+				xCenter: this.chart.width/2,
+				yCenter: this.chart.height/2
+			});
+
+			helpers.each(this.segments, function(segment){
+				segment.update({
+					outerRadius : this.scale.calculateCenterOffset(segment.value)
+				});
+			}, this);
+
+		},
+		draw : function(ease){
+			var easingDecimal = ease || 1;
+			//Clear & draw the canvas
+			this.clear();
+			helpers.each(this.segments,function(segment, index){
+				segment.transition({
+					circumference : this.scale.getCircumference(),
+					outerRadius : this.scale.calculateCenterOffset(segment.value)
+				},easingDecimal);
+
+				segment.endAngle = segment.startAngle + segment.circumference;
+
+				// If we've removed the first segment we need to set the first one to
+				// start at the top.
+				if (index === 0){
+					segment.startAngle = Math.PI * 1.5;
+				}
+
+				//Check to see if it's the last segment, if not get the next and update the start angle
+				if (index < this.segments.length - 1){
+					this.segments[index+1].startAngle = segment.endAngle;
+				}
+				segment.draw();
+			}, this);
+			this.scale.draw();
+		}
+	});
+
+}).call(this);
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		helpers = Chart.helpers;
+
+
+
+	Chart.Type.extend({
+		name: "Radar",
+		defaults:{
+			//Boolean - Whether to show lines for each scale point
+			scaleShowLine : true,
+
+			//Boolean - Whether we show the angle lines out of the radar
+			angleShowLineOut : true,
+
+			//Boolean - Whether to show labels on the scale
+			scaleShowLabels : false,
+
+			// Boolean - Whether the scale should begin at zero
+			scaleBeginAtZero : true,
+
+			//String - Colour of the angle line
+			angleLineColor : "rgba(0,0,0,.1)",
+
+			//Number - Pixel width of the angle line
+			angleLineWidth : 1,
+
+			//String - Point label font declaration
+			pointLabelFontFamily : "'Arial'",
+
+			//String - Point label font weight
+			pointLabelFontStyle : "normal",
+
+			//Number - Point label font size in pixels
+			pointLabelFontSize : 10,
+
+			//String - Point label font colour
+			pointLabelFontColor : "#666",
+
+			//Boolean - Whether to show a dot for each point
+			pointDot : true,
+
+			//Number - Radius of each point dot in pixels
+			pointDotRadius : 3,
+
+			//Number - Pixel width of point dot stroke
+			pointDotStrokeWidth : 1,
+
+			//Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+			pointHitDetectionRadius : 20,
+
+			//Boolean - Whether to show a stroke for datasets
+			datasetStroke : true,
+
+			//Number - Pixel width of dataset stroke
+			datasetStrokeWidth : 2,
+
+			//Boolean - Whether to fill the dataset with a colour
+			datasetFill : true,
+
+			//String - A legend template
+			legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+		},
+
+		initialize: function(data){
+			this.PointClass = Chart.Point.extend({
+				strokeWidth : this.options.pointDotStrokeWidth,
+				radius : this.options.pointDotRadius,
+				display: this.options.pointDot,
+				hitDetectionRadius : this.options.pointHitDetectionRadius,
+				ctx : this.chart.ctx
+			});
+
+			this.datasets = [];
+
+			this.buildScale(data);
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activePointsCollection = (evt.type !== 'mouseout') ? this.getPointsAtEvent(evt) : [];
+
+					this.eachPoints(function(point){
+						point.restore(['fillColor', 'strokeColor']);
+					});
+					helpers.each(activePointsCollection, function(activePoint){
+						activePoint.fillColor = activePoint.highlightFill;
+						activePoint.strokeColor = activePoint.highlightStroke;
+					});
+
+					this.showTooltip(activePointsCollection);
+				});
+			}
+
+			//Iterate through each of the datasets, and build this into a property of the chart
+			helpers.each(data.datasets,function(dataset){
+
+				var datasetObject = {
+					label: dataset.label || null,
+					fillColor : dataset.fillColor,
+					strokeColor : dataset.strokeColor,
+					pointColor : dataset.pointColor,
+					pointStrokeColor : dataset.pointStrokeColor,
+					points : []
+				};
+
+				this.datasets.push(datasetObject);
+
+				helpers.each(dataset.data,function(dataPoint,index){
+					//Add a new point for each piece of data, passing any required data to draw.
+					var pointPosition;
+					if (!this.scale.animation){
+						pointPosition = this.scale.getPointPosition(index, this.scale.calculateCenterOffset(dataPoint));
+					}
+					datasetObject.points.push(new this.PointClass({
+						value : dataPoint,
+						label : data.labels[index],
+						datasetLabel: dataset.label,
+						x: (this.options.animation) ? this.scale.xCenter : pointPosition.x,
+						y: (this.options.animation) ? this.scale.yCenter : pointPosition.y,
+						strokeColor : dataset.pointStrokeColor,
+						fillColor : dataset.pointColor,
+						highlightFill : dataset.pointHighlightFill || dataset.pointColor,
+						highlightStroke : dataset.pointHighlightStroke || dataset.pointStrokeColor
+					}));
+				},this);
+
+			},this);
+
+			this.render();
+		},
+		eachPoints : function(callback){
+			helpers.each(this.datasets,function(dataset){
+				helpers.each(dataset.points,callback,this);
+			},this);
+		},
+
+		getPointsAtEvent : function(evt){
+			var mousePosition = helpers.getRelativePosition(evt),
+				fromCenter = helpers.getAngleFromPoint({
+					x: this.scale.xCenter,
+					y: this.scale.yCenter
+				}, mousePosition);
+
+			var anglePerIndex = (Math.PI * 2) /this.scale.valuesCount,
+				pointIndex = Math.round((fromCenter.angle - Math.PI * 1.5) / anglePerIndex),
+				activePointsCollection = [];
+
+			// If we're at the top, make the pointIndex 0 to get the first of the array.
+			if (pointIndex >= this.scale.valuesCount || pointIndex < 0){
+				pointIndex = 0;
+			}
+
+			if (fromCenter.distance <= this.scale.drawingArea){
+				helpers.each(this.datasets, function(dataset){
+					activePointsCollection.push(dataset.points[pointIndex]);
+				});
+			}
+
+			return activePointsCollection;
+		},
+
+		buildScale : function(data){
+			this.scale = new Chart.RadialScale({
+				display: this.options.showScale,
+				fontStyle: this.options.scaleFontStyle,
+				fontSize: this.options.scaleFontSize,
+				fontFamily: this.options.scaleFontFamily,
+				fontColor: this.options.scaleFontColor,
+				showLabels: this.options.scaleShowLabels,
+				showLabelBackdrop: this.options.scaleShowLabelBackdrop,
+				backdropColor: this.options.scaleBackdropColor,
+				backdropPaddingY : this.options.scaleBackdropPaddingY,
+				backdropPaddingX: this.options.scaleBackdropPaddingX,
+				lineWidth: (this.options.scaleShowLine) ? this.options.scaleLineWidth : 0,
+				lineColor: this.options.scaleLineColor,
+				angleLineColor : this.options.angleLineColor,
+				angleLineWidth : (this.options.angleShowLineOut) ? this.options.angleLineWidth : 0,
+				// Point labels at the edge of each line
+				pointLabelFontColor : this.options.pointLabelFontColor,
+				pointLabelFontSize : this.options.pointLabelFontSize,
+				pointLabelFontFamily : this.options.pointLabelFontFamily,
+				pointLabelFontStyle : this.options.pointLabelFontStyle,
+				height : this.chart.height,
+				width: this.chart.width,
+				xCenter: this.chart.width/2,
+				yCenter: this.chart.height/2,
+				ctx : this.chart.ctx,
+				templateString: this.options.scaleLabel,
+				labels: data.labels,
+				valuesCount: data.datasets[0].data.length
+			});
+
+			this.scale.setScaleSize();
+			this.updateScaleRange(data.datasets);
+			this.scale.buildYLabels();
+		},
+		updateScaleRange: function(datasets){
+			var valuesArray = (function(){
+				var totalDataArray = [];
+				helpers.each(datasets,function(dataset){
+					if (dataset.data){
+						totalDataArray = totalDataArray.concat(dataset.data);
+					}
+					else {
+						helpers.each(dataset.points, function(point){
+							totalDataArray.push(point.value);
+						});
+					}
+				});
+				return totalDataArray;
+			})();
+
+
+			var scaleSizes = (this.options.scaleOverride) ?
+				{
+					steps: this.options.scaleSteps,
+					stepValue: this.options.scaleStepWidth,
+					min: this.options.scaleStartValue,
+					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+				} :
+				helpers.calculateScaleRange(
+					valuesArray,
+					helpers.min([this.chart.width, this.chart.height])/2,
+					this.options.scaleFontSize,
+					this.options.scaleBeginAtZero,
+					this.options.scaleIntegersOnly
+				);
+
+			helpers.extend(
+				this.scale,
+				scaleSizes
+			);
+
+		},
+		addData : function(valuesArray,label){
+			//Map the values array for each of the datasets
+			this.scale.valuesCount++;
+			helpers.each(valuesArray,function(value,datasetIndex){
+				var pointPosition = this.scale.getPointPosition(this.scale.valuesCount, this.scale.calculateCenterOffset(value));
+				this.datasets[datasetIndex].points.push(new this.PointClass({
+					value : value,
+					label : label,
+					x: pointPosition.x,
+					y: pointPosition.y,
+					strokeColor : this.datasets[datasetIndex].pointStrokeColor,
+					fillColor : this.datasets[datasetIndex].pointColor
+				}));
+			},this);
+
+			this.scale.labels.push(label);
+
+			this.reflow();
+
+			this.update();
+		},
+		removeData : function(){
+			this.scale.valuesCount--;
+			this.scale.labels.shift();
+			helpers.each(this.datasets,function(dataset){
+				dataset.points.shift();
+			},this);
+			this.reflow();
+			this.update();
+		},
+		update : function(){
+			this.eachPoints(function(point){
+				point.save();
+			});
+			this.reflow();
+			this.render();
+		},
+		reflow: function(){
+			helpers.extend(this.scale, {
+				width : this.chart.width,
+				height: this.chart.height,
+				size : helpers.min([this.chart.width, this.chart.height]),
+				xCenter: this.chart.width/2,
+				yCenter: this.chart.height/2
+			});
+			this.updateScaleRange(this.datasets);
+			this.scale.setScaleSize();
+			this.scale.buildYLabels();
+		},
+		draw : function(ease){
+			var easeDecimal = ease || 1,
+				ctx = this.chart.ctx;
+			this.clear();
+			this.scale.draw();
+
+			helpers.each(this.datasets,function(dataset){
+
+				//Transition each point first so that the line and point drawing isn't out of sync
+				helpers.each(dataset.points,function(point,index){
+					if (point.hasValue()){
+						point.transition(this.scale.getPointPosition(index, this.scale.calculateCenterOffset(point.value)), easeDecimal);
+					}
+				},this);
+
+
+
+				//Draw the line between all the points
+				ctx.lineWidth = this.options.datasetStrokeWidth;
+				ctx.strokeStyle = dataset.strokeColor;
+				ctx.beginPath();
+				helpers.each(dataset.points,function(point,index){
+					if (index === 0){
+						ctx.moveTo(point.x,point.y);
+					}
+					else{
+						ctx.lineTo(point.x,point.y);
+					}
+				},this);
+				ctx.closePath();
+				ctx.stroke();
+
+				ctx.fillStyle = dataset.fillColor;
+				ctx.fill();
+
+				//Now draw the points over the line
+				//A little inefficient double looping, but better than the line
+				//lagging behind the point positions
+				helpers.each(dataset.points,function(point){
+					if (point.hasValue()){
+						point.draw();
+					}
+				});
+
+			},this);
+
+		}
+
+	});
+
+
+
+
+
+}).call(this);
+},{}],195:[function(require,module,exports){
 (function (root, factory) {
     /* istanbul ignore next */
     if (typeof define === 'function' && define.amd) {
@@ -18603,7 +25582,7 @@ return angular.module('angular-clipboard', [])
     }]);
 
 }));
-},{"angular":206}],194:[function(require,module,exports){
+},{"angular":208}],196:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -18927,11 +25906,11 @@ angular.module('ngCookies').provider('$$cookieWriter', function $$CookieWriterPr
 
 })(window, window.angular);
 
-},{}],195:[function(require,module,exports){
+},{}],197:[function(require,module,exports){
 require('./angular-cookies');
 module.exports = 'ngCookies';
 
-},{"./angular-cookies":194}],196:[function(require,module,exports){
+},{"./angular-cookies":196}],198:[function(require,module,exports){
 /*
  angular-file-upload v2.2.0
  https://github.com/nervgh/angular-file-upload
@@ -18939,7 +25918,7 @@ module.exports = 'ngCookies';
 
 !function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["angular-file-upload"]=t():e["angular-file-upload"]=t()}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return e[r].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=r(n(1)),o=r(n(2)),s=r(n(3)),a=r(n(4)),u=r(n(5)),l=r(n(6)),c=r(n(7)),f=r(n(8)),p=r(n(9)),d=r(n(10)),v=r(n(11)),h=r(n(12));angular.module(i.name,[]).value("fileUploaderOptions",o).factory("FileUploader",s).factory("FileLikeObject",a).factory("FileItem",u).factory("FileDirective",l).factory("FileSelect",c).factory("FileDrop",f).factory("FileOver",p).directive("nvFileSelect",d).directive("nvFileDrop",v).directive("nvFileOver",h).run(["FileUploader","FileLikeObject","FileItem","FileDirective","FileSelect","FileDrop","FileOver",function(e,t,n,r,i,o,s){e.FileLikeObject=t,e.FileItem=n,e.FileDirective=r,e.FileSelect=i,e.FileDrop=o,e.FileOver=s}])},function(e,t){e.exports={name:"angularFileUpload"}},function(e,t){"use strict";e.exports={url:"/",alias:"file",headers:{},queue:[],progress:0,autoUpload:!1,removeAfterUpload:!1,method:"POST",filters:[],formData:[],queueLimit:Number.MAX_VALUE,withCredentials:!1}},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.forEach,l=angular.isObject,c=angular.isNumber,f=angular.isDefined,p=angular.isArray,d=angular.element;e.exports=function(e,t,n,r,v,h){var m=r.File,g=r.FormData,_=function(){function r(t){o(this,r);var n=s(e);a(this,n,t,{isUploading:!1,_nextIndex:0,_failFilterIndex:-1,_directives:{select:[],drop:[],over:[]}}),this.filters.unshift({name:"queueLimit",fn:this._queueLimitFilter}),this.filters.unshift({name:"folder",fn:this._folderFilter})}return i(r,{addToQueue:{value:function(e,t,n){var r=this,i=this.isArrayLikeObject(e)?e:[e],o=this._getFilters(n),s=this.queue.length,a=[];u(i,function(e){var n=new v(e);if(r._isValidFile(n,o,t)){var i=new h(r,e,t);a.push(i),r.queue.push(i),r._onAfterAddingFile(i)}else{var s=o[r._failFilterIndex];r._onWhenAddingFileFailed(n,s,t)}}),this.queue.length!==s&&(this._onAfterAddingAll(a),this.progress=this._getTotalProgress()),this._render(),this.autoUpload&&this.uploadAll()}},removeFromQueue:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t];n.isUploading&&n.cancel(),this.queue.splice(t,1),n._destroy(),this.progress=this._getTotalProgress()}},clearQueue:{value:function(){for(;this.queue.length;)this.queue[0].remove();this.progress=0}},uploadItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhrTransport":"_iframeTransport";n._prepareToUploading(),this.isUploading||(this.isUploading=!0,this[r](n))}},cancelItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhr":"_form";n&&n.isUploading&&n[r].abort()}},uploadAll:{value:function(){var e=this.getNotUploadedItems().filter(function(e){return!e.isUploading});e.length&&(u(e,function(e){return e._prepareToUploading()}),e[0].upload())}},cancelAll:{value:function(){var e=this.getNotUploadedItems();u(e,function(e){return e.cancel()})}},isFile:{value:function(e){return this.constructor.isFile(e)}},isFileLikeObject:{value:function(e){return this.constructor.isFileLikeObject(e)}},isArrayLikeObject:{value:function(e){return this.constructor.isArrayLikeObject(e)}},getIndexOfItem:{value:function(e){return c(e)?e:this.queue.indexOf(e)}},getNotUploadedItems:{value:function(){return this.queue.filter(function(e){return!e.isUploaded})}},getReadyItems:{value:function(){return this.queue.filter(function(e){return e.isReady&&!e.isUploading}).sort(function(e,t){return e.index-t.index})}},destroy:{value:function(){var e=this;u(this._directives,function(t){u(e._directives[t],function(e){e.destroy()})})}},onAfterAddingAll:{value:function(e){}},onAfterAddingFile:{value:function(e){}},onWhenAddingFileFailed:{value:function(e,t,n){}},onBeforeUploadItem:{value:function(e){}},onProgressItem:{value:function(e,t){}},onProgressAll:{value:function(e){}},onSuccessItem:{value:function(e,t,n,r){}},onErrorItem:{value:function(e,t,n,r){}},onCancelItem:{value:function(e,t,n,r){}},onCompleteItem:{value:function(e,t,n,r){}},onCompleteAll:{value:function(){}},_getTotalProgress:{value:function(e){if(this.removeAfterUpload)return e||0;var t=this.getNotUploadedItems().length,n=t?this.queue.length-t:this.queue.length,r=100/this.queue.length,i=(e||0)*r/100;return Math.round(n*r+i)}},_getFilters:{value:function(e){if(!e)return this.filters;if(p(e))return e;var t=e.match(/[^\s,]+/g);return this.filters.filter(function(e){return-1!==t.indexOf(e.name)})}},_render:{value:function(){t.$$phase||t.$apply()}},_folderFilter:{value:function(e){return!(!e.size&&!e.type)}},_queueLimitFilter:{value:function(){return this.queue.length<this.queueLimit}},_isValidFile:{value:function(e,t,n){var r=this;return this._failFilterIndex=-1,t.length?t.every(function(t){return r._failFilterIndex++,t.fn.call(r,e,n)}):!0}},_isSuccessCode:{value:function(e){return e>=200&&300>e||304===e}},_transformResponse:{value:function(e,t){var r=this._headersGetter(t);return u(n.defaults.transformResponse,function(t){e=t(e,r)}),e}},_parseHeaders:{value:function(e){var t,n,r,i={};return e?(u(e.split("\n"),function(e){r=e.indexOf(":"),t=e.slice(0,r).trim().toLowerCase(),n=e.slice(r+1).trim(),t&&(i[t]=i[t]?i[t]+", "+n:n)}),i):i}},_headersGetter:{value:function(e){return function(t){return t?e[t.toLowerCase()]||null:e}}},_xhrTransport:{value:function(e){var t=this,n=e._xhr=new XMLHttpRequest,r=new g;if(this._onBeforeUploadItem(e),u(e.formData,function(e){u(e,function(e,t){r.append(t,e)})}),"number"!=typeof e._file.size)throw new TypeError("The file specified is no longer valid");r.append(e.alias,e._file,e.file.name),n.upload.onprogress=function(n){var r=Math.round(n.lengthComputable?100*n.loaded/n.total:0);t._onProgressItem(e,r)},n.onload=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r),o=t._isSuccessCode(n.status)?"Success":"Error",s="_on"+o+"Item";t[s](e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onerror=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onErrorItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onabort=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onCancelItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.open(e.method,e.url,!0),n.withCredentials=e.withCredentials,u(e.headers,function(e,t){n.setRequestHeader(t,e)}),n.send(r),this._render()}},_iframeTransport:{value:function(e){var t=this,n=d('<form style="display: none;" />'),r=d('<iframe name="iframeTransport'+Date.now()+'">'),i=e._input;e._form&&e._form.replaceWith(i),e._form=n,this._onBeforeUploadItem(e),i.prop("name",e.alias),u(e.formData,function(e){u(e,function(e,t){var r=d('<input type="hidden" name="'+t+'" />');r.val(e),n.append(r)})}),n.prop({action:e.url,method:"POST",target:r.prop("name"),enctype:"multipart/form-data",encoding:"multipart/form-data"}),r.bind("load",function(){var n="",i=200;try{n=r[0].contentDocument.body.innerHTML}catch(o){i=500}var s={response:n,status:i,dummy:!0},a={},u=t._transformResponse(s.response,a);t._onSuccessItem(e,u,s.status,a),t._onCompleteItem(e,u,s.status,a)}),n.abort=function(){var o,s={status:0,dummy:!0},a={};r.unbind("load").prop("src","javascript:false;"),n.replaceWith(i),t._onCancelItem(e,o,s.status,a),t._onCompleteItem(e,o,s.status,a)},i.after(n),n.append(i).append(r),n[0].submit(),this._render()}},_onWhenAddingFileFailed:{value:function(e,t,n){this.onWhenAddingFileFailed(e,t,n)}},_onAfterAddingFile:{value:function(e){this.onAfterAddingFile(e)}},_onAfterAddingAll:{value:function(e){this.onAfterAddingAll(e)}},_onBeforeUploadItem:{value:function(e){e._onBeforeUpload(),this.onBeforeUploadItem(e)}},_onProgressItem:{value:function(e,t){var n=this._getTotalProgress(t);this.progress=n,e._onProgress(t),this.onProgressItem(e,t),this.onProgressAll(n),this._render()}},_onSuccessItem:{value:function(e,t,n,r){e._onSuccess(t,n,r),this.onSuccessItem(e,t,n,r)}},_onErrorItem:{value:function(e,t,n,r){e._onError(t,n,r),this.onErrorItem(e,t,n,r)}},_onCancelItem:{value:function(e,t,n,r){e._onCancel(t,n,r),this.onCancelItem(e,t,n,r)}},_onCompleteItem:{value:function(e,t,n,r){e._onComplete(t,n,r),this.onCompleteItem(e,t,n,r);var i=this.getReadyItems()[0];return this.isUploading=!1,f(i)?void i.upload():(this.onCompleteAll(),this.progress=this._getTotalProgress(),void this._render())}}},{isFile:{value:function(e){return m&&e instanceof m}},isFileLikeObject:{value:function(e){return e instanceof v}},isArrayLikeObject:{value:function(e){return l(e)&&"length"in e}},inherit:{value:function(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,e.super_=t}}}),r}();return _.prototype.isHTML5=!(!m||!g),_.isHTML5=_.prototype.isHTML5,_},e.exports.$inject=["fileUploaderOptions","$rootScope","$http","$window","FileLikeObject","FileItem"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.isElement,u=angular.isString;e.exports=function(){var e=function(){function e(t){o(this,e);var n=a(t),r=n?t.value:t,i=u(r)?"FakePath":"Object",s="_createFrom"+i;this[s](r)}return i(e,{_createFromFakePath:{value:function(e){this.lastModifiedDate=null,this.size=null,this.type="like/"+e.slice(e.lastIndexOf(".")+1).toLowerCase(),this.name=e.slice(e.lastIndexOf("/")+e.lastIndexOf("\\")+2)}},_createFromObject:{value:function(e){this.lastModifiedDate=s(e.lastModifiedDate),this.size=e.size,this.type=e.type,this.name=e.name}}}),e}();return e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.element,l=angular.isElement;e.exports=function(e,t){var n=function(){function n(e,r,i){o(this,n);var c=l(r),f=c?u(r):null,p=c?null:r;a(this,{url:e.url,alias:e.alias,headers:s(e.headers),formData:s(e.formData),removeAfterUpload:e.removeAfterUpload,withCredentials:e.withCredentials,method:e.method},i,{uploader:e,file:new t(r),isReady:!1,isUploading:!1,isUploaded:!1,isSuccess:!1,isCancel:!1,isError:!1,progress:0,index:null,_file:p,_input:f}),f&&this._replaceNode(f)}return i(n,{upload:{value:function(){try{this.uploader.uploadItem(this)}catch(e){this.uploader._onCompleteItem(this,"",0,[]),this.uploader._onErrorItem(this,"",0,[])}}},cancel:{value:function(){this.uploader.cancelItem(this)}},remove:{value:function(){this.uploader.removeFromQueue(this)}},onBeforeUpload:{value:function(){}},onProgress:{value:function(e){}},onSuccess:{value:function(e,t,n){}},onError:{value:function(e,t,n){}},onCancel:{value:function(e,t,n){}},onComplete:{value:function(e,t,n){}},_onBeforeUpload:{value:function(){this.isReady=!0,this.isUploading=!0,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!1,this.isError=!1,this.progress=0,this.onBeforeUpload()}},_onProgress:{value:function(e){this.progress=e,this.onProgress(e)}},_onSuccess:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!0,this.isCancel=!1,this.isError=!1,this.progress=100,this.index=null,this.onSuccess(e,t,n)}},_onError:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!1,this.isCancel=!1,this.isError=!0,this.progress=0,this.index=null,this.onError(e,t,n)}},_onCancel:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!0,this.isError=!1,this.progress=0,this.index=null,this.onCancel(e,t,n)}},_onComplete:{value:function(e,t,n){this.onComplete(e,t,n),this.removeAfterUpload&&this.remove()}},_destroy:{value:function(){this._input&&this._input.remove(),this._form&&this._form.remove(),delete this._form,delete this._input}},_prepareToUploading:{value:function(){this.index=this.index||++this.uploader._nextIndex,this.isReady=!0}},_replaceNode:{value:function(t){var n=e(t.clone())(t.scope());n.prop("value",null),t.css("display","none"),t.after(n)}}}),n}();return n},e.exports.$inject=["$compile","FileLikeObject"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.extend);e.exports=function(){var e=function(){function e(t){o(this,e),s(this,t),this.uploader._directives[this.prop].push(this),this._saveLinks(),this.bind()}return i(e,{bind:{value:function(){for(var e in this.events){var t=this.events[e];this.element.bind(e,this[t])}}},unbind:{value:function(){for(var e in this.events)this.element.unbind(e,this.events[e])}},destroy:{value:function(){var e=this.uploader._directives[this.prop].indexOf(this);this.uploader._directives[this.prop].splice(e,1),this.unbind()}},_saveLinks:{value:function(){for(var e in this.events){var t=this.events[e];this[t]=this[t].bind(this)}}}}),e}();return e.prototype.events={},e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",change:"onChange"},prop:"select"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n),this.uploader.isHTML5||this.element.removeAttr("multiple"),this.element.prop("value",null)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},isEmptyAfterSelection:{value:function(){return!!this.element.attr("multiple")}},onChange:{value:function(){var e=this.uploader.isHTML5?this.element[0].files:this.element[0],t=this.getOptions(),n=this.getFilters();this.uploader.isHTML5||this.destroy(),this.uploader.addToQueue(e,t,n),this.isEmptyAfterSelection()&&(this.element.prop("value",null),this.element.replaceWith(this.element=this.element.clone(!0)))}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function c(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:c(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend),l=angular.forEach;e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",drop:"onDrop",dragover:"onDragOver",dragleave:"onDragLeave"},prop:"drop"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},onDrop:{value:function(e){var t=this._getTransfer(e);if(t){var n=this.getOptions(),r=this.getFilters();this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this),this.uploader.addToQueue(t.files,n,r)}}},onDragOver:{value:function(e){var t=this._getTransfer(e);this._haveFiles(t.types)&&(t.dropEffect="copy",this._preventAndStop(e),l(this.uploader._directives.over,this._addOverClass,this))}},onDragLeave:{value:function(e){e.currentTarget!==this.element[0]&&(this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this))}},_getTransfer:{value:function(e){return e.dataTransfer?e.dataTransfer:e.originalEvent.dataTransfer}},_preventAndStop:{value:function(e){e.preventDefault(),e.stopPropagation()}},_haveFiles:{value:function(e){return e?e.indexOf?-1!==e.indexOf("Files"):e.contains?e.contains("Files"):!1:!1}},_addOverClass:{value:function(e){e.addOverClass()}},_removeOverClass:{value:function(e){e.removeOverClass()}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy"},prop:"over",overClass:"nv-file-over"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{addOverClass:{value:function(){this.element.addClass(this.getOverClass())}},removeOverClass:{value:function(){this.element.removeClass(this.getOverClass())}},getOverClass:{value:function(){return this.overClass}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}},e.exports.$inject=["$parse","FileUploader","FileSelect"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');if(s.isHTML5){var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}}},e.exports.$inject=["$parse","FileUploader","FileDrop"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t){return{link:function(n,r,i){var o=n.$eval(i.uploader);if(!(o instanceof e))throw new TypeError('"Uploader" must be an instance of FileUploader');var s=new t({uploader:o,element:r});s.getOverClass=function(){return i.overClass||s.overClass}}}},e.exports.$inject=["FileUploader","FileOver"]}])});
 
-},{}],197:[function(require,module,exports){
+},{}],199:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -19624,11 +26603,11 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],198:[function(require,module,exports){
+},{}],200:[function(require,module,exports){
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":197}],199:[function(require,module,exports){
+},{"./angular-sanitize":199}],201:[function(require,module,exports){
 /**
   * x is a value between 0 and 1, indicating where in the animation you are.
   */
@@ -20257,13 +27236,13 @@ angular.module('duScroll.scrollspy', ['duScroll.spyAPI'])
   };
 }]);
 
-},{}],200:[function(require,module,exports){
+},{}],202:[function(require,module,exports){
 require('angular');
 require('./angular-scroll');
 
 module.exports = 'duScroll';
 
-},{"./angular-scroll":199,"angular":206}],201:[function(require,module,exports){
+},{"./angular-scroll":201,"angular":208}],203:[function(require,module,exports){
 /*
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
@@ -27343,12 +34322,12 @@ angular.module('ui.bootstrap.carousel').run(function() {!angular.$$csp().noInlin
 angular.module('ui.bootstrap.datepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-datepicker-popup.dropdown-menu{display:block;}.uib-button-bar{padding:10px 9px 2px;}</style>'); });
 angular.module('ui.bootstrap.timepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-time input{width:50px;}</style>'); });
 angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); });
-},{}],202:[function(require,module,exports){
+},{}],204:[function(require,module,exports){
 require('./dist/ui-bootstrap-tpls');
 
 module.exports = 'ui.bootstrap';
 
-},{"./dist/ui-bootstrap-tpls":201}],203:[function(require,module,exports){
+},{"./dist/ui-bootstrap-tpls":203}],205:[function(require,module,exports){
 /**
  * @license Angular UI Tree v2.15.0
  * (c) 2010-2016. https://github.com/angular-ui-tree/angular-ui-tree
@@ -28919,11 +35898,11 @@ module.exports = 'ui.bootstrap';
 
 })();
 
-},{}],204:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 require('./dist/angular-ui-tree');
 module.exports = 'ui.tree';
 
-},{"./dist/angular-ui-tree":203}],205:[function(require,module,exports){
+},{"./dist/angular-ui-tree":205}],207:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.9
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -58581,3489 +65560,548 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],206:[function(require,module,exports){
+},{}],208:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":205}],207:[function(require,module,exports){
-/*!
- * Chart.js
- * http://chartjs.org/
- * Version: 1.0.2
- *
- * Copyright 2015 Nick Downie
- * Released under the MIT license
- * https://github.com/nnnick/Chart.js/blob/master/LICENSE.md
- */
-
-
-(function(){
-
-	"use strict";
-
-	//Declare root variable - window in the browser, global on the server
-	var root = this,
-		previous = root.Chart;
-
-	//Occupy the global variable of Chart, and create a simple base class
-	var Chart = function(context){
-		var chart = this;
-		this.canvas = context.canvas;
-
-		this.ctx = context;
-
-		//Variables global to the chart
-		var computeDimension = function(element,dimension)
-		{
-			if (element['offset'+dimension])
-			{
-				return element['offset'+dimension];
-			}
-			else
-			{
-				return document.defaultView.getComputedStyle(element).getPropertyValue(dimension);
-			}
-		}
-
-		var width = this.width = computeDimension(context.canvas,'Width');
-		var height = this.height = computeDimension(context.canvas,'Height');
-
-		// Firefox requires this to work correctly
-		context.canvas.width  = width;
-		context.canvas.height = height;
-
-		var width = this.width = context.canvas.width;
-		var height = this.height = context.canvas.height;
-		this.aspectRatio = this.width / this.height;
-		//High pixel density displays - multiply the size of the canvas height/width by the device pixel ratio, then scale.
-		helpers.retinaScale(this);
-
-		return this;
-	};
-	//Globally expose the defaults to allow for user updating/changing
-	Chart.defaults = {
-		global: {
-			// Boolean - Whether to animate the chart
-			animation: true,
-
-			// Number - Number of animation steps
-			animationSteps: 60,
-
-			// String - Animation easing effect
-			animationEasing: "easeOutQuart",
-
-			// Boolean - If we should show the scale at all
-			showScale: true,
-
-			// Boolean - If we want to override with a hard coded scale
-			scaleOverride: false,
-
-			// ** Required if scaleOverride is true **
-			// Number - The number of steps in a hard coded scale
-			scaleSteps: null,
-			// Number - The value jump in the hard coded scale
-			scaleStepWidth: null,
-			// Number - The scale starting value
-			scaleStartValue: null,
-
-			// String - Colour of the scale line
-			scaleLineColor: "rgba(0,0,0,.1)",
-
-			// Number - Pixel width of the scale line
-			scaleLineWidth: 1,
-
-			// Boolean - Whether to show labels on the scale
-			scaleShowLabels: true,
-
-			// Interpolated JS string - can access value
-			scaleLabel: "<%=value%>",
-
-			// Boolean - Whether the scale should stick to integers, and not show any floats even if drawing space is there
-			scaleIntegersOnly: true,
-
-			// Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-			scaleBeginAtZero: false,
-
-			// String - Scale label font declaration for the scale label
-			scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-
-			// Number - Scale label font size in pixels
-			scaleFontSize: 12,
-
-			// String - Scale label font weight style
-			scaleFontStyle: "normal",
-
-			// String - Scale label font colour
-			scaleFontColor: "#666",
-
-			// Boolean - whether or not the chart should be responsive and resize when the browser does.
-			responsive: false,
-
-			// Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-			maintainAspectRatio: true,
-
-			// Boolean - Determines whether to draw tooltips on the canvas or not - attaches events to touchmove & mousemove
-			showTooltips: true,
-
-			// Boolean - Determines whether to draw built-in tooltip or call custom tooltip function
-			customTooltips: false,
-
-			// Array - Array of string names to attach tooltip events
-			tooltipEvents: ["mousemove", "touchstart", "touchmove", "mouseout"],
-
-			// String - Tooltip background colour
-			tooltipFillColor: "rgba(0,0,0,0.8)",
-
-			// String - Tooltip label font declaration for the scale label
-			tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-
-			// Number - Tooltip label font size in pixels
-			tooltipFontSize: 14,
-
-			// String - Tooltip font weight style
-			tooltipFontStyle: "normal",
-
-			// String - Tooltip label font colour
-			tooltipFontColor: "#fff",
-
-			// String - Tooltip title font declaration for the scale label
-			tooltipTitleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-
-			// Number - Tooltip title font size in pixels
-			tooltipTitleFontSize: 14,
-
-			// String - Tooltip title font weight style
-			tooltipTitleFontStyle: "bold",
-
-			// String - Tooltip title font colour
-			tooltipTitleFontColor: "#fff",
-
-			// Number - pixel width of padding around tooltip text
-			tooltipYPadding: 6,
-
-			// Number - pixel width of padding around tooltip text
-			tooltipXPadding: 6,
-
-			// Number - Size of the caret on the tooltip
-			tooltipCaretSize: 8,
-
-			// Number - Pixel radius of the tooltip border
-			tooltipCornerRadius: 6,
-
-			// Number - Pixel offset from point x to tooltip edge
-			tooltipXOffset: 10,
-
-			// String - Template string for single tooltips
-			tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
-
-			// String - Template string for single tooltips
-			multiTooltipTemplate: "<%= value %>",
-
-			// String - Colour behind the legend colour block
-			multiTooltipKeyBackground: '#fff',
-
-			// Function - Will fire on animation progression.
-			onAnimationProgress: function(){},
-
-			// Function - Will fire on animation completion.
-			onAnimationComplete: function(){}
-
-		}
-	};
-
-	//Create a dictionary of chart types, to allow for extension of existing types
-	Chart.types = {};
-
-	//Global Chart helpers object for utility methods and classes
-	var helpers = Chart.helpers = {};
-
-		//-- Basic js utility methods
-	var each = helpers.each = function(loopable,callback,self){
-			var additionalArgs = Array.prototype.slice.call(arguments, 3);
-			// Check to see if null or undefined firstly.
-			if (loopable){
-				if (loopable.length === +loopable.length){
-					var i;
-					for (i=0; i<loopable.length; i++){
-						callback.apply(self,[loopable[i], i].concat(additionalArgs));
-					}
-				}
-				else{
-					for (var item in loopable){
-						callback.apply(self,[loopable[item],item].concat(additionalArgs));
-					}
-				}
-			}
-		},
-		clone = helpers.clone = function(obj){
-			var objClone = {};
-			each(obj,function(value,key){
-				if (obj.hasOwnProperty(key)) objClone[key] = value;
-			});
-			return objClone;
-		},
-		extend = helpers.extend = function(base){
-			each(Array.prototype.slice.call(arguments,1), function(extensionObject) {
-				each(extensionObject,function(value,key){
-					if (extensionObject.hasOwnProperty(key)) base[key] = value;
-				});
-			});
-			return base;
-		},
-		merge = helpers.merge = function(base,master){
-			//Merge properties in left object over to a shallow clone of object right.
-			var args = Array.prototype.slice.call(arguments,0);
-			args.unshift({});
-			return extend.apply(null, args);
-		},
-		indexOf = helpers.indexOf = function(arrayToSearch, item){
-			if (Array.prototype.indexOf) {
-				return arrayToSearch.indexOf(item);
-			}
-			else{
-				for (var i = 0; i < arrayToSearch.length; i++) {
-					if (arrayToSearch[i] === item) return i;
-				}
-				return -1;
-			}
-		},
-		where = helpers.where = function(collection, filterCallback){
-			var filtered = [];
-
-			helpers.each(collection, function(item){
-				if (filterCallback(item)){
-					filtered.push(item);
-				}
-			});
-
-			return filtered;
-		},
-		findNextWhere = helpers.findNextWhere = function(arrayToSearch, filterCallback, startIndex){
-			// Default to start of the array
-			if (!startIndex){
-				startIndex = -1;
-			}
-			for (var i = startIndex + 1; i < arrayToSearch.length; i++) {
-				var currentItem = arrayToSearch[i];
-				if (filterCallback(currentItem)){
-					return currentItem;
-				}
-			}
-		},
-		findPreviousWhere = helpers.findPreviousWhere = function(arrayToSearch, filterCallback, startIndex){
-			// Default to end of the array
-			if (!startIndex){
-				startIndex = arrayToSearch.length;
-			}
-			for (var i = startIndex - 1; i >= 0; i--) {
-				var currentItem = arrayToSearch[i];
-				if (filterCallback(currentItem)){
-					return currentItem;
-				}
-			}
-		},
-		inherits = helpers.inherits = function(extensions){
-			//Basic javascript inheritance based on the model created in Backbone.js
-			var parent = this;
-			var ChartElement = (extensions && extensions.hasOwnProperty("constructor")) ? extensions.constructor : function(){ return parent.apply(this, arguments); };
-
-			var Surrogate = function(){ this.constructor = ChartElement;};
-			Surrogate.prototype = parent.prototype;
-			ChartElement.prototype = new Surrogate();
-
-			ChartElement.extend = inherits;
-
-			if (extensions) extend(ChartElement.prototype, extensions);
-
-			ChartElement.__super__ = parent.prototype;
-
-			return ChartElement;
-		},
-		noop = helpers.noop = function(){},
-		uid = helpers.uid = (function(){
-			var id=0;
-			return function(){
-				return "chart-" + id++;
-			};
-		})(),
-		warn = helpers.warn = function(str){
-			//Method for warning of errors
-			if (window.console && typeof window.console.warn == "function") console.warn(str);
-		},
-		amd = helpers.amd = (typeof define == 'function' && define.amd),
-		//-- Math methods
-		isNumber = helpers.isNumber = function(n){
-			return !isNaN(parseFloat(n)) && isFinite(n);
-		},
-		max = helpers.max = function(array){
-			return Math.max.apply( Math, array );
-		},
-		min = helpers.min = function(array){
-			return Math.min.apply( Math, array );
-		},
-		cap = helpers.cap = function(valueToCap,maxValue,minValue){
-			if(isNumber(maxValue)) {
-				if( valueToCap > maxValue ) {
-					return maxValue;
-				}
-			}
-			else if(isNumber(minValue)){
-				if ( valueToCap < minValue ){
-					return minValue;
-				}
-			}
-			return valueToCap;
-		},
-		getDecimalPlaces = helpers.getDecimalPlaces = function(num){
-			if (num%1!==0 && isNumber(num)){
-				return num.toString().split(".")[1].length;
-			}
-			else {
-				return 0;
-			}
-		},
-		toRadians = helpers.radians = function(degrees){
-			return degrees * (Math.PI/180);
-		},
-		// Gets the angle from vertical upright to the point about a centre.
-		getAngleFromPoint = helpers.getAngleFromPoint = function(centrePoint, anglePoint){
-			var distanceFromXCenter = anglePoint.x - centrePoint.x,
-				distanceFromYCenter = anglePoint.y - centrePoint.y,
-				radialDistanceFromCenter = Math.sqrt( distanceFromXCenter * distanceFromXCenter + distanceFromYCenter * distanceFromYCenter);
-
-
-			var angle = Math.PI * 2 + Math.atan2(distanceFromYCenter, distanceFromXCenter);
-
-			//If the segment is in the top left quadrant, we need to add another rotation to the angle
-			if (distanceFromXCenter < 0 && distanceFromYCenter < 0){
-				angle += Math.PI*2;
-			}
-
-			return {
-				angle: angle,
-				distance: radialDistanceFromCenter
-			};
-		},
-		aliasPixel = helpers.aliasPixel = function(pixelWidth){
-			return (pixelWidth % 2 === 0) ? 0 : 0.5;
-		},
-		splineCurve = helpers.splineCurve = function(FirstPoint,MiddlePoint,AfterPoint,t){
-			//Props to Rob Spencer at scaled innovation for his post on splining between points
-			//http://scaledinnovation.com/analytics/splines/aboutSplines.html
-			var d01=Math.sqrt(Math.pow(MiddlePoint.x-FirstPoint.x,2)+Math.pow(MiddlePoint.y-FirstPoint.y,2)),
-				d12=Math.sqrt(Math.pow(AfterPoint.x-MiddlePoint.x,2)+Math.pow(AfterPoint.y-MiddlePoint.y,2)),
-				fa=t*d01/(d01+d12),// scaling factor for triangle Ta
-				fb=t*d12/(d01+d12);
-			return {
-				inner : {
-					x : MiddlePoint.x-fa*(AfterPoint.x-FirstPoint.x),
-					y : MiddlePoint.y-fa*(AfterPoint.y-FirstPoint.y)
-				},
-				outer : {
-					x: MiddlePoint.x+fb*(AfterPoint.x-FirstPoint.x),
-					y : MiddlePoint.y+fb*(AfterPoint.y-FirstPoint.y)
-				}
-			};
-		},
-		calculateOrderOfMagnitude = helpers.calculateOrderOfMagnitude = function(val){
-			return Math.floor(Math.log(val) / Math.LN10);
-		},
-		calculateScaleRange = helpers.calculateScaleRange = function(valuesArray, drawingSize, textSize, startFromZero, integersOnly){
-
-			//Set a minimum step of two - a point at the top of the graph, and a point at the base
-			var minSteps = 2,
-				maxSteps = Math.floor(drawingSize/(textSize * 1.5)),
-				skipFitting = (minSteps >= maxSteps);
-
-			var maxValue = max(valuesArray),
-				minValue = min(valuesArray);
-
-			// We need some degree of seperation here to calculate the scales if all the values are the same
-			// Adding/minusing 0.5 will give us a range of 1.
-			if (maxValue === minValue){
-				maxValue += 0.5;
-				// So we don't end up with a graph with a negative start value if we've said always start from zero
-				if (minValue >= 0.5 && !startFromZero){
-					minValue -= 0.5;
-				}
-				else{
-					// Make up a whole number above the values
-					maxValue += 0.5;
-				}
-			}
-
-			var	valueRange = Math.abs(maxValue - minValue),
-				rangeOrderOfMagnitude = calculateOrderOfMagnitude(valueRange),
-				graphMax = Math.ceil(maxValue / (1 * Math.pow(10, rangeOrderOfMagnitude))) * Math.pow(10, rangeOrderOfMagnitude),
-				graphMin = (startFromZero) ? 0 : Math.floor(minValue / (1 * Math.pow(10, rangeOrderOfMagnitude))) * Math.pow(10, rangeOrderOfMagnitude),
-				graphRange = graphMax - graphMin,
-				stepValue = Math.pow(10, rangeOrderOfMagnitude),
-				numberOfSteps = Math.round(graphRange / stepValue);
-
-			//If we have more space on the graph we'll use it to give more definition to the data
-			while((numberOfSteps > maxSteps || (numberOfSteps * 2) < maxSteps) && !skipFitting) {
-				if(numberOfSteps > maxSteps){
-					stepValue *=2;
-					numberOfSteps = Math.round(graphRange/stepValue);
-					// Don't ever deal with a decimal number of steps - cancel fitting and just use the minimum number of steps.
-					if (numberOfSteps % 1 !== 0){
-						skipFitting = true;
-					}
-				}
-				//We can fit in double the amount of scale points on the scale
-				else{
-					//If user has declared ints only, and the step value isn't a decimal
-					if (integersOnly && rangeOrderOfMagnitude >= 0){
-						//If the user has said integers only, we need to check that making the scale more granular wouldn't make it a float
-						if(stepValue/2 % 1 === 0){
-							stepValue /=2;
-							numberOfSteps = Math.round(graphRange/stepValue);
-						}
-						//If it would make it a float break out of the loop
-						else{
-							break;
-						}
-					}
-					//If the scale doesn't have to be an int, make the scale more granular anyway.
-					else{
-						stepValue /=2;
-						numberOfSteps = Math.round(graphRange/stepValue);
-					}
-
-				}
-			}
-
-			if (skipFitting){
-				numberOfSteps = minSteps;
-				stepValue = graphRange / numberOfSteps;
-			}
-
-			return {
-				steps : numberOfSteps,
-				stepValue : stepValue,
-				min : graphMin,
-				max	: graphMin + (numberOfSteps * stepValue)
-			};
-
-		},
-		/* jshint ignore:start */
-		// Blows up jshint errors based on the new Function constructor
-		//Templating methods
-		//Javascript micro templating by John Resig - source at http://ejohn.org/blog/javascript-micro-templating/
-		template = helpers.template = function(templateString, valuesObject){
-
-			// If templateString is function rather than string-template - call the function for valuesObject
-
-			if(templateString instanceof Function){
-			 	return templateString(valuesObject);
-		 	}
-
-			var cache = {};
-			function tmpl(str, data){
-				// Figure out if we're getting a template, or if we need to
-				// load the template - and be sure to cache the result.
-				var fn = !/\W/.test(str) ?
-				cache[str] = cache[str] :
-
-				// Generate a reusable function that will serve as a template
-				// generator (and which will be cached).
-				new Function("obj",
-					"var p=[],print=function(){p.push.apply(p,arguments);};" +
-
-					// Introduce the data as local variables using with(){}
-					"with(obj){p.push('" +
-
-					// Convert the template into pure JavaScript
-					str
-						.replace(/[\r\t\n]/g, " ")
-						.split("<%").join("\t")
-						.replace(/((^|%>)[^\t]*)'/g, "$1\r")
-						.replace(/\t=(.*?)%>/g, "',$1,'")
-						.split("\t").join("');")
-						.split("%>").join("p.push('")
-						.split("\r").join("\\'") +
-					"');}return p.join('');"
-				);
-
-				// Provide some basic currying to the user
-				return data ? fn( data ) : fn;
-			}
-			return tmpl(templateString,valuesObject);
-		},
-		/* jshint ignore:end */
-		generateLabels = helpers.generateLabels = function(templateString,numberOfSteps,graphMin,stepValue){
-			var labelsArray = new Array(numberOfSteps);
-			if (labelTemplateString){
-				each(labelsArray,function(val,index){
-					labelsArray[index] = template(templateString,{value: (graphMin + (stepValue*(index+1)))});
-				});
-			}
-			return labelsArray;
-		},
-		//--Animation methods
-		//Easing functions adapted from Robert Penner's easing equations
-		//http://www.robertpenner.com/easing/
-		easingEffects = helpers.easingEffects = {
-			linear: function (t) {
-				return t;
-			},
-			easeInQuad: function (t) {
-				return t * t;
-			},
-			easeOutQuad: function (t) {
-				return -1 * t * (t - 2);
-			},
-			easeInOutQuad: function (t) {
-				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t;
-				return -1 / 2 * ((--t) * (t - 2) - 1);
-			},
-			easeInCubic: function (t) {
-				return t * t * t;
-			},
-			easeOutCubic: function (t) {
-				return 1 * ((t = t / 1 - 1) * t * t + 1);
-			},
-			easeInOutCubic: function (t) {
-				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t;
-				return 1 / 2 * ((t -= 2) * t * t + 2);
-			},
-			easeInQuart: function (t) {
-				return t * t * t * t;
-			},
-			easeOutQuart: function (t) {
-				return -1 * ((t = t / 1 - 1) * t * t * t - 1);
-			},
-			easeInOutQuart: function (t) {
-				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t * t;
-				return -1 / 2 * ((t -= 2) * t * t * t - 2);
-			},
-			easeInQuint: function (t) {
-				return 1 * (t /= 1) * t * t * t * t;
-			},
-			easeOutQuint: function (t) {
-				return 1 * ((t = t / 1 - 1) * t * t * t * t + 1);
-			},
-			easeInOutQuint: function (t) {
-				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t * t * t;
-				return 1 / 2 * ((t -= 2) * t * t * t * t + 2);
-			},
-			easeInSine: function (t) {
-				return -1 * Math.cos(t / 1 * (Math.PI / 2)) + 1;
-			},
-			easeOutSine: function (t) {
-				return 1 * Math.sin(t / 1 * (Math.PI / 2));
-			},
-			easeInOutSine: function (t) {
-				return -1 / 2 * (Math.cos(Math.PI * t / 1) - 1);
-			},
-			easeInExpo: function (t) {
-				return (t === 0) ? 1 : 1 * Math.pow(2, 10 * (t / 1 - 1));
-			},
-			easeOutExpo: function (t) {
-				return (t === 1) ? 1 : 1 * (-Math.pow(2, -10 * t / 1) + 1);
-			},
-			easeInOutExpo: function (t) {
-				if (t === 0) return 0;
-				if (t === 1) return 1;
-				if ((t /= 1 / 2) < 1) return 1 / 2 * Math.pow(2, 10 * (t - 1));
-				return 1 / 2 * (-Math.pow(2, -10 * --t) + 2);
-			},
-			easeInCirc: function (t) {
-				if (t >= 1) return t;
-				return -1 * (Math.sqrt(1 - (t /= 1) * t) - 1);
-			},
-			easeOutCirc: function (t) {
-				return 1 * Math.sqrt(1 - (t = t / 1 - 1) * t);
-			},
-			easeInOutCirc: function (t) {
-				if ((t /= 1 / 2) < 1) return -1 / 2 * (Math.sqrt(1 - t * t) - 1);
-				return 1 / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1);
-			},
-			easeInElastic: function (t) {
-				var s = 1.70158;
-				var p = 0;
-				var a = 1;
-				if (t === 0) return 0;
-				if ((t /= 1) == 1) return 1;
-				if (!p) p = 1 * 0.3;
-				if (a < Math.abs(1)) {
-					a = 1;
-					s = p / 4;
-				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
-				return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));
-			},
-			easeOutElastic: function (t) {
-				var s = 1.70158;
-				var p = 0;
-				var a = 1;
-				if (t === 0) return 0;
-				if ((t /= 1) == 1) return 1;
-				if (!p) p = 1 * 0.3;
-				if (a < Math.abs(1)) {
-					a = 1;
-					s = p / 4;
-				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
-				return a * Math.pow(2, -10 * t) * Math.sin((t * 1 - s) * (2 * Math.PI) / p) + 1;
-			},
-			easeInOutElastic: function (t) {
-				var s = 1.70158;
-				var p = 0;
-				var a = 1;
-				if (t === 0) return 0;
-				if ((t /= 1 / 2) == 2) return 1;
-				if (!p) p = 1 * (0.3 * 1.5);
-				if (a < Math.abs(1)) {
-					a = 1;
-					s = p / 4;
-				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
-				if (t < 1) return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));
-				return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p) * 0.5 + 1;
-			},
-			easeInBack: function (t) {
-				var s = 1.70158;
-				return 1 * (t /= 1) * t * ((s + 1) * t - s);
-			},
-			easeOutBack: function (t) {
-				var s = 1.70158;
-				return 1 * ((t = t / 1 - 1) * t * ((s + 1) * t + s) + 1);
-			},
-			easeInOutBack: function (t) {
-				var s = 1.70158;
-				if ((t /= 1 / 2) < 1) return 1 / 2 * (t * t * (((s *= (1.525)) + 1) * t - s));
-				return 1 / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2);
-			},
-			easeInBounce: function (t) {
-				return 1 - easingEffects.easeOutBounce(1 - t);
-			},
-			easeOutBounce: function (t) {
-				if ((t /= 1) < (1 / 2.75)) {
-					return 1 * (7.5625 * t * t);
-				} else if (t < (2 / 2.75)) {
-					return 1 * (7.5625 * (t -= (1.5 / 2.75)) * t + 0.75);
-				} else if (t < (2.5 / 2.75)) {
-					return 1 * (7.5625 * (t -= (2.25 / 2.75)) * t + 0.9375);
-				} else {
-					return 1 * (7.5625 * (t -= (2.625 / 2.75)) * t + 0.984375);
-				}
-			},
-			easeInOutBounce: function (t) {
-				if (t < 1 / 2) return easingEffects.easeInBounce(t * 2) * 0.5;
-				return easingEffects.easeOutBounce(t * 2 - 1) * 0.5 + 1 * 0.5;
-			}
-		},
-		//Request animation polyfill - http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
-		requestAnimFrame = helpers.requestAnimFrame = (function(){
-			return window.requestAnimationFrame ||
-				window.webkitRequestAnimationFrame ||
-				window.mozRequestAnimationFrame ||
-				window.oRequestAnimationFrame ||
-				window.msRequestAnimationFrame ||
-				function(callback) {
-					return window.setTimeout(callback, 1000 / 60);
-				};
-		})(),
-		cancelAnimFrame = helpers.cancelAnimFrame = (function(){
-			return window.cancelAnimationFrame ||
-				window.webkitCancelAnimationFrame ||
-				window.mozCancelAnimationFrame ||
-				window.oCancelAnimationFrame ||
-				window.msCancelAnimationFrame ||
-				function(callback) {
-					return window.clearTimeout(callback, 1000 / 60);
-				};
-		})(),
-		animationLoop = helpers.animationLoop = function(callback,totalSteps,easingString,onProgress,onComplete,chartInstance){
-
-			var currentStep = 0,
-				easingFunction = easingEffects[easingString] || easingEffects.linear;
-
-			var animationFrame = function(){
-				currentStep++;
-				var stepDecimal = currentStep/totalSteps;
-				var easeDecimal = easingFunction(stepDecimal);
-
-				callback.call(chartInstance,easeDecimal,stepDecimal, currentStep);
-				onProgress.call(chartInstance,easeDecimal,stepDecimal);
-				if (currentStep < totalSteps){
-					chartInstance.animationFrame = requestAnimFrame(animationFrame);
-				} else{
-					onComplete.apply(chartInstance);
-				}
-			};
-			requestAnimFrame(animationFrame);
-		},
-		//-- DOM methods
-		getRelativePosition = helpers.getRelativePosition = function(evt){
-			var mouseX, mouseY;
-			var e = evt.originalEvent || evt,
-				canvas = evt.currentTarget || evt.srcElement,
-				boundingRect = canvas.getBoundingClientRect();
-
-			if (e.touches){
-				mouseX = e.touches[0].clientX - boundingRect.left;
-				mouseY = e.touches[0].clientY - boundingRect.top;
-
-			}
-			else{
-				mouseX = e.clientX - boundingRect.left;
-				mouseY = e.clientY - boundingRect.top;
-			}
-
-			return {
-				x : mouseX,
-				y : mouseY
-			};
-
-		},
-		addEvent = helpers.addEvent = function(node,eventType,method){
-			if (node.addEventListener){
-				node.addEventListener(eventType,method);
-			} else if (node.attachEvent){
-				node.attachEvent("on"+eventType, method);
-			} else {
-				node["on"+eventType] = method;
-			}
-		},
-		removeEvent = helpers.removeEvent = function(node, eventType, handler){
-			if (node.removeEventListener){
-				node.removeEventListener(eventType, handler, false);
-			} else if (node.detachEvent){
-				node.detachEvent("on"+eventType,handler);
-			} else{
-				node["on" + eventType] = noop;
-			}
-		},
-		bindEvents = helpers.bindEvents = function(chartInstance, arrayOfEvents, handler){
-			// Create the events object if it's not already present
-			if (!chartInstance.events) chartInstance.events = {};
-
-			each(arrayOfEvents,function(eventName){
-				chartInstance.events[eventName] = function(){
-					handler.apply(chartInstance, arguments);
-				};
-				addEvent(chartInstance.chart.canvas,eventName,chartInstance.events[eventName]);
-			});
-		},
-		unbindEvents = helpers.unbindEvents = function (chartInstance, arrayOfEvents) {
-			each(arrayOfEvents, function(handler,eventName){
-				removeEvent(chartInstance.chart.canvas, eventName, handler);
-			});
-		},
-		getMaximumWidth = helpers.getMaximumWidth = function(domNode){
-			var container = domNode.parentNode;
-			// TODO = check cross browser stuff with this.
-			return container.clientWidth;
-		},
-		getMaximumHeight = helpers.getMaximumHeight = function(domNode){
-			var container = domNode.parentNode;
-			// TODO = check cross browser stuff with this.
-			return container.clientHeight;
-		},
-		getMaximumSize = helpers.getMaximumSize = helpers.getMaximumWidth, // legacy support
-		retinaScale = helpers.retinaScale = function(chart){
-			var ctx = chart.ctx,
-				width = chart.canvas.width,
-				height = chart.canvas.height;
-
-			if (window.devicePixelRatio) {
-				ctx.canvas.style.width = width + "px";
-				ctx.canvas.style.height = height + "px";
-				ctx.canvas.height = height * window.devicePixelRatio;
-				ctx.canvas.width = width * window.devicePixelRatio;
-				ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-			}
-		},
-		//-- Canvas methods
-		clear = helpers.clear = function(chart){
-			chart.ctx.clearRect(0,0,chart.width,chart.height);
-		},
-		fontString = helpers.fontString = function(pixelSize,fontStyle,fontFamily){
-			return fontStyle + " " + pixelSize+"px " + fontFamily;
-		},
-		longestText = helpers.longestText = function(ctx,font,arrayOfStrings){
-			ctx.font = font;
-			var longest = 0;
-			each(arrayOfStrings,function(string){
-				var textWidth = ctx.measureText(string).width;
-				longest = (textWidth > longest) ? textWidth : longest;
-			});
-			return longest;
-		},
-		drawRoundedRectangle = helpers.drawRoundedRectangle = function(ctx,x,y,width,height,radius){
-			ctx.beginPath();
-			ctx.moveTo(x + radius, y);
-			ctx.lineTo(x + width - radius, y);
-			ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
-			ctx.lineTo(x + width, y + height - radius);
-			ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
-			ctx.lineTo(x + radius, y + height);
-			ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
-			ctx.lineTo(x, y + radius);
-			ctx.quadraticCurveTo(x, y, x + radius, y);
-			ctx.closePath();
-		};
-
-
-	//Store a reference to each instance - allowing us to globally resize chart instances on window resize.
-	//Destroy method on the chart will remove the instance of the chart from this reference.
-	Chart.instances = {};
-
-	Chart.Type = function(data,options,chart){
-		this.options = options;
-		this.chart = chart;
-		this.id = uid();
-		//Add the chart instance to the global namespace
-		Chart.instances[this.id] = this;
-
-		// Initialize is always called when a chart type is created
-		// By default it is a no op, but it should be extended
-		if (options.responsive){
-			this.resize();
-		}
-		this.initialize.call(this,data);
-	};
-
-	//Core methods that'll be a part of every chart type
-	extend(Chart.Type.prototype,{
-		initialize : function(){return this;},
-		clear : function(){
-			clear(this.chart);
-			return this;
-		},
-		stop : function(){
-			// Stops any current animation loop occuring
-			cancelAnimFrame(this.animationFrame);
-			return this;
-		},
-		resize : function(callback){
-			this.stop();
-			var canvas = this.chart.canvas,
-				newWidth = getMaximumWidth(this.chart.canvas),
-				newHeight = this.options.maintainAspectRatio ? newWidth / this.chart.aspectRatio : getMaximumHeight(this.chart.canvas);
-
-			canvas.width = this.chart.width = newWidth;
-			canvas.height = this.chart.height = newHeight;
-
-			retinaScale(this.chart);
-
-			if (typeof callback === "function"){
-				callback.apply(this, Array.prototype.slice.call(arguments, 1));
-			}
-			return this;
-		},
-		reflow : noop,
-		render : function(reflow){
-			if (reflow){
-				this.reflow();
-			}
-			if (this.options.animation && !reflow){
-				helpers.animationLoop(
-					this.draw,
-					this.options.animationSteps,
-					this.options.animationEasing,
-					this.options.onAnimationProgress,
-					this.options.onAnimationComplete,
-					this
-				);
-			}
-			else{
-				this.draw();
-				this.options.onAnimationComplete.call(this);
-			}
-			return this;
-		},
-		generateLegend : function(){
-			return template(this.options.legendTemplate,this);
-		},
-		destroy : function(){
-			this.clear();
-			unbindEvents(this, this.events);
-			var canvas = this.chart.canvas;
-
-			// Reset canvas height/width attributes starts a fresh with the canvas context
-			canvas.width = this.chart.width;
-			canvas.height = this.chart.height;
-
-			// < IE9 doesn't support removeProperty
-			if (canvas.style.removeProperty) {
-				canvas.style.removeProperty('width');
-				canvas.style.removeProperty('height');
-			} else {
-				canvas.style.removeAttribute('width');
-				canvas.style.removeAttribute('height');
-			}
-
-			delete Chart.instances[this.id];
-		},
-		showTooltip : function(ChartElements, forceRedraw){
-			// Only redraw the chart if we've actually changed what we're hovering on.
-			if (typeof this.activeElements === 'undefined') this.activeElements = [];
-
-			var isChanged = (function(Elements){
-				var changed = false;
-
-				if (Elements.length !== this.activeElements.length){
-					changed = true;
-					return changed;
-				}
-
-				each(Elements, function(element, index){
-					if (element !== this.activeElements[index]){
-						changed = true;
-					}
-				}, this);
-				return changed;
-			}).call(this, ChartElements);
-
-			if (!isChanged && !forceRedraw){
-				return;
-			}
-			else{
-				this.activeElements = ChartElements;
-			}
-			this.draw();
-			if(this.options.customTooltips){
-				this.options.customTooltips(false);
-			}
-			if (ChartElements.length > 0){
-				// If we have multiple datasets, show a MultiTooltip for all of the data points at that index
-				if (this.datasets && this.datasets.length > 1) {
-					var dataArray,
-						dataIndex;
-
-					for (var i = this.datasets.length - 1; i >= 0; i--) {
-						dataArray = this.datasets[i].points || this.datasets[i].bars || this.datasets[i].segments;
-						dataIndex = indexOf(dataArray, ChartElements[0]);
-						if (dataIndex !== -1){
-							break;
-						}
-					}
-					var tooltipLabels = [],
-						tooltipColors = [],
-						medianPosition = (function(index) {
-
-							// Get all the points at that particular index
-							var Elements = [],
-								dataCollection,
-								xPositions = [],
-								yPositions = [],
-								xMax,
-								yMax,
-								xMin,
-								yMin;
-							helpers.each(this.datasets, function(dataset){
-								dataCollection = dataset.points || dataset.bars || dataset.segments;
-								if (dataCollection[dataIndex] && dataCollection[dataIndex].hasValue()){
-									Elements.push(dataCollection[dataIndex]);
-								}
-							});
-
-							helpers.each(Elements, function(element) {
-								xPositions.push(element.x);
-								yPositions.push(element.y);
-
-
-								//Include any colour information about the element
-								tooltipLabels.push(helpers.template(this.options.multiTooltipTemplate, element));
-								tooltipColors.push({
-									fill: element._saved.fillColor || element.fillColor,
-									stroke: element._saved.strokeColor || element.strokeColor
-								});
-
-							}, this);
-
-							yMin = min(yPositions);
-							yMax = max(yPositions);
-
-							xMin = min(xPositions);
-							xMax = max(xPositions);
-
-							return {
-								x: (xMin > this.chart.width/2) ? xMin : xMax,
-								y: (yMin + yMax)/2
-							};
-						}).call(this, dataIndex);
-
-					new Chart.MultiTooltip({
-						x: medianPosition.x,
-						y: medianPosition.y,
-						xPadding: this.options.tooltipXPadding,
-						yPadding: this.options.tooltipYPadding,
-						xOffset: this.options.tooltipXOffset,
-						fillColor: this.options.tooltipFillColor,
-						textColor: this.options.tooltipFontColor,
-						fontFamily: this.options.tooltipFontFamily,
-						fontStyle: this.options.tooltipFontStyle,
-						fontSize: this.options.tooltipFontSize,
-						titleTextColor: this.options.tooltipTitleFontColor,
-						titleFontFamily: this.options.tooltipTitleFontFamily,
-						titleFontStyle: this.options.tooltipTitleFontStyle,
-						titleFontSize: this.options.tooltipTitleFontSize,
-						cornerRadius: this.options.tooltipCornerRadius,
-						labels: tooltipLabels,
-						legendColors: tooltipColors,
-						legendColorBackground : this.options.multiTooltipKeyBackground,
-						title: ChartElements[0].label,
-						chart: this.chart,
-						ctx: this.chart.ctx,
-						custom: this.options.customTooltips
-					}).draw();
-
-				} else {
-					each(ChartElements, function(Element) {
-						var tooltipPosition = Element.tooltipPosition();
-						new Chart.Tooltip({
-							x: Math.round(tooltipPosition.x),
-							y: Math.round(tooltipPosition.y),
-							xPadding: this.options.tooltipXPadding,
-							yPadding: this.options.tooltipYPadding,
-							fillColor: this.options.tooltipFillColor,
-							textColor: this.options.tooltipFontColor,
-							fontFamily: this.options.tooltipFontFamily,
-							fontStyle: this.options.tooltipFontStyle,
-							fontSize: this.options.tooltipFontSize,
-							caretHeight: this.options.tooltipCaretSize,
-							cornerRadius: this.options.tooltipCornerRadius,
-							text: template(this.options.tooltipTemplate, Element),
-							chart: this.chart,
-							custom: this.options.customTooltips
-						}).draw();
-					}, this);
-				}
-			}
-			return this;
-		},
-		toBase64Image : function(){
-			return this.chart.canvas.toDataURL.apply(this.chart.canvas, arguments);
-		}
-	});
-
-	Chart.Type.extend = function(extensions){
-
-		var parent = this;
-
-		var ChartType = function(){
-			return parent.apply(this,arguments);
-		};
-
-		//Copy the prototype object of the this class
-		ChartType.prototype = clone(parent.prototype);
-		//Now overwrite some of the properties in the base class with the new extensions
-		extend(ChartType.prototype, extensions);
-
-		ChartType.extend = Chart.Type.extend;
-
-		if (extensions.name || parent.prototype.name){
-
-			var chartName = extensions.name || parent.prototype.name;
-			//Assign any potential default values of the new chart type
-
-			//If none are defined, we'll use a clone of the chart type this is being extended from.
-			//I.e. if we extend a line chart, we'll use the defaults from the line chart if our new chart
-			//doesn't define some defaults of their own.
-
-			var baseDefaults = (Chart.defaults[parent.prototype.name]) ? clone(Chart.defaults[parent.prototype.name]) : {};
-
-			Chart.defaults[chartName] = extend(baseDefaults,extensions.defaults);
-
-			Chart.types[chartName] = ChartType;
-
-			//Register this new chart type in the Chart prototype
-			Chart.prototype[chartName] = function(data,options){
-				var config = merge(Chart.defaults.global, Chart.defaults[chartName], options || {});
-				return new ChartType(data,config,this);
-			};
-		} else{
-			warn("Name not provided for this chart, so it hasn't been registered");
-		}
-		return parent;
-	};
-
-	Chart.Element = function(configuration){
-		extend(this,configuration);
-		this.initialize.apply(this,arguments);
-		this.save();
-	};
-	extend(Chart.Element.prototype,{
-		initialize : function(){},
-		restore : function(props){
-			if (!props){
-				extend(this,this._saved);
-			} else {
-				each(props,function(key){
-					this[key] = this._saved[key];
-				},this);
-			}
-			return this;
-		},
-		save : function(){
-			this._saved = clone(this);
-			delete this._saved._saved;
-			return this;
-		},
-		update : function(newProps){
-			each(newProps,function(value,key){
-				this._saved[key] = this[key];
-				this[key] = value;
-			},this);
-			return this;
-		},
-		transition : function(props,ease){
-			each(props,function(value,key){
-				this[key] = ((value - this._saved[key]) * ease) + this._saved[key];
-			},this);
-			return this;
-		},
-		tooltipPosition : function(){
-			return {
-				x : this.x,
-				y : this.y
-			};
-		},
-		hasValue: function(){
-			return isNumber(this.value);
-		}
-	});
-
-	Chart.Element.extend = inherits;
-
-
-	Chart.Point = Chart.Element.extend({
-		display: true,
-		inRange: function(chartX,chartY){
-			var hitDetectionRange = this.hitDetectionRadius + this.radius;
-			return ((Math.pow(chartX-this.x, 2)+Math.pow(chartY-this.y, 2)) < Math.pow(hitDetectionRange,2));
-		},
-		draw : function(){
-			if (this.display){
-				var ctx = this.ctx;
-				ctx.beginPath();
-
-				ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
-				ctx.closePath();
-
-				ctx.strokeStyle = this.strokeColor;
-				ctx.lineWidth = this.strokeWidth;
-
-				ctx.fillStyle = this.fillColor;
-
-				ctx.fill();
-				ctx.stroke();
-			}
-
-
-			//Quick debug for bezier curve splining
-			//Highlights control points and the line between them.
-			//Handy for dev - stripped in the min version.
-
-			// ctx.save();
-			// ctx.fillStyle = "black";
-			// ctx.strokeStyle = "black"
-			// ctx.beginPath();
-			// ctx.arc(this.controlPoints.inner.x,this.controlPoints.inner.y, 2, 0, Math.PI*2);
-			// ctx.fill();
-
-			// ctx.beginPath();
-			// ctx.arc(this.controlPoints.outer.x,this.controlPoints.outer.y, 2, 0, Math.PI*2);
-			// ctx.fill();
-
-			// ctx.moveTo(this.controlPoints.inner.x,this.controlPoints.inner.y);
-			// ctx.lineTo(this.x, this.y);
-			// ctx.lineTo(this.controlPoints.outer.x,this.controlPoints.outer.y);
-			// ctx.stroke();
-
-			// ctx.restore();
-
-
-
-		}
-	});
-
-	Chart.Arc = Chart.Element.extend({
-		inRange : function(chartX,chartY){
-
-			var pointRelativePosition = helpers.getAngleFromPoint(this, {
-				x: chartX,
-				y: chartY
-			});
-
-			//Check if within the range of the open/close angle
-			var betweenAngles = (pointRelativePosition.angle >= this.startAngle && pointRelativePosition.angle <= this.endAngle),
-				withinRadius = (pointRelativePosition.distance >= this.innerRadius && pointRelativePosition.distance <= this.outerRadius);
-
-			return (betweenAngles && withinRadius);
-			//Ensure within the outside of the arc centre, but inside arc outer
-		},
-		tooltipPosition : function(){
-			var centreAngle = this.startAngle + ((this.endAngle - this.startAngle) / 2),
-				rangeFromCentre = (this.outerRadius - this.innerRadius) / 2 + this.innerRadius;
-			return {
-				x : this.x + (Math.cos(centreAngle) * rangeFromCentre),
-				y : this.y + (Math.sin(centreAngle) * rangeFromCentre)
-			};
-		},
-		draw : function(animationPercent){
-
-			var easingDecimal = animationPercent || 1;
-
-			var ctx = this.ctx;
-
-			ctx.beginPath();
-
-			ctx.arc(this.x, this.y, this.outerRadius, this.startAngle, this.endAngle);
-
-			ctx.arc(this.x, this.y, this.innerRadius, this.endAngle, this.startAngle, true);
-
-			ctx.closePath();
-			ctx.strokeStyle = this.strokeColor;
-			ctx.lineWidth = this.strokeWidth;
-
-			ctx.fillStyle = this.fillColor;
-
-			ctx.fill();
-			ctx.lineJoin = 'bevel';
-
-			if (this.showStroke){
-				ctx.stroke();
-			}
-		}
-	});
-
-	Chart.Rectangle = Chart.Element.extend({
-		draw : function(){
-			var ctx = this.ctx,
-				halfWidth = this.width/2,
-				leftX = this.x - halfWidth,
-				rightX = this.x + halfWidth,
-				top = this.base - (this.base - this.y),
-				halfStroke = this.strokeWidth / 2;
-
-			// Canvas doesn't allow us to stroke inside the width so we can
-			// adjust the sizes to fit if we're setting a stroke on the line
-			if (this.showStroke){
-				leftX += halfStroke;
-				rightX -= halfStroke;
-				top += halfStroke;
-			}
-
-			ctx.beginPath();
-
-			ctx.fillStyle = this.fillColor;
-			ctx.strokeStyle = this.strokeColor;
-			ctx.lineWidth = this.strokeWidth;
-
-			// It'd be nice to keep this class totally generic to any rectangle
-			// and simply specify which border to miss out.
-			ctx.moveTo(leftX, this.base);
-			ctx.lineTo(leftX, top);
-			ctx.lineTo(rightX, top);
-			ctx.lineTo(rightX, this.base);
-			ctx.fill();
-			if (this.showStroke){
-				ctx.stroke();
-			}
-		},
-		height : function(){
-			return this.base - this.y;
-		},
-		inRange : function(chartX,chartY){
-			return (chartX >= this.x - this.width/2 && chartX <= this.x + this.width/2) && (chartY >= this.y && chartY <= this.base);
-		}
-	});
-
-	Chart.Tooltip = Chart.Element.extend({
-		draw : function(){
-
-			var ctx = this.chart.ctx;
-
-			ctx.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
-
-			this.xAlign = "center";
-			this.yAlign = "above";
-
-			//Distance between the actual element.y position and the start of the tooltip caret
-			var caretPadding = this.caretPadding = 2;
-
-			var tooltipWidth = ctx.measureText(this.text).width + 2*this.xPadding,
-				tooltipRectHeight = this.fontSize + 2*this.yPadding,
-				tooltipHeight = tooltipRectHeight + this.caretHeight + caretPadding;
-
-			if (this.x + tooltipWidth/2 >this.chart.width){
-				this.xAlign = "left";
-			} else if (this.x - tooltipWidth/2 < 0){
-				this.xAlign = "right";
-			}
-
-			if (this.y - tooltipHeight < 0){
-				this.yAlign = "below";
-			}
-
-
-			var tooltipX = this.x - tooltipWidth/2,
-				tooltipY = this.y - tooltipHeight;
-
-			ctx.fillStyle = this.fillColor;
-
-			// Custom Tooltips
-			if(this.custom){
-				this.custom(this);
-			}
-			else{
-				switch(this.yAlign)
-				{
-				case "above":
-					//Draw a caret above the x/y
-					ctx.beginPath();
-					ctx.moveTo(this.x,this.y - caretPadding);
-					ctx.lineTo(this.x + this.caretHeight, this.y - (caretPadding + this.caretHeight));
-					ctx.lineTo(this.x - this.caretHeight, this.y - (caretPadding + this.caretHeight));
-					ctx.closePath();
-					ctx.fill();
-					break;
-				case "below":
-					tooltipY = this.y + caretPadding + this.caretHeight;
-					//Draw a caret below the x/y
-					ctx.beginPath();
-					ctx.moveTo(this.x, this.y + caretPadding);
-					ctx.lineTo(this.x + this.caretHeight, this.y + caretPadding + this.caretHeight);
-					ctx.lineTo(this.x - this.caretHeight, this.y + caretPadding + this.caretHeight);
-					ctx.closePath();
-					ctx.fill();
-					break;
-				}
-
-				switch(this.xAlign)
-				{
-				case "left":
-					tooltipX = this.x - tooltipWidth + (this.cornerRadius + this.caretHeight);
-					break;
-				case "right":
-					tooltipX = this.x - (this.cornerRadius + this.caretHeight);
-					break;
-				}
-
-				drawRoundedRectangle(ctx,tooltipX,tooltipY,tooltipWidth,tooltipRectHeight,this.cornerRadius);
-
-				ctx.fill();
-
-				ctx.fillStyle = this.textColor;
-				ctx.textAlign = "center";
-				ctx.textBaseline = "middle";
-				ctx.fillText(this.text, tooltipX + tooltipWidth/2, tooltipY + tooltipRectHeight/2);
-			}
-		}
-	});
-
-	Chart.MultiTooltip = Chart.Element.extend({
-		initialize : function(){
-			this.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
-
-			this.titleFont = fontString(this.titleFontSize,this.titleFontStyle,this.titleFontFamily);
-
-			this.height = (this.labels.length * this.fontSize) + ((this.labels.length-1) * (this.fontSize/2)) + (this.yPadding*2) + this.titleFontSize *1.5;
-
-			this.ctx.font = this.titleFont;
-
-			var titleWidth = this.ctx.measureText(this.title).width,
-				//Label has a legend square as well so account for this.
-				labelWidth = longestText(this.ctx,this.font,this.labels) + this.fontSize + 3,
-				longestTextWidth = max([labelWidth,titleWidth]);
-
-			this.width = longestTextWidth + (this.xPadding*2);
-
-
-			var halfHeight = this.height/2;
-
-			//Check to ensure the height will fit on the canvas
-			if (this.y - halfHeight < 0 ){
-				this.y = halfHeight;
-			} else if (this.y + halfHeight > this.chart.height){
-				this.y = this.chart.height - halfHeight;
-			}
-
-			//Decide whether to align left or right based on position on canvas
-			if (this.x > this.chart.width/2){
-				this.x -= this.xOffset + this.width;
-			} else {
-				this.x += this.xOffset;
-			}
-
-
-		},
-		getLineHeight : function(index){
-			var baseLineHeight = this.y - (this.height/2) + this.yPadding,
-				afterTitleIndex = index-1;
-
-			//If the index is zero, we're getting the title
-			if (index === 0){
-				return baseLineHeight + this.titleFontSize/2;
-			} else{
-				return baseLineHeight + ((this.fontSize*1.5*afterTitleIndex) + this.fontSize/2) + this.titleFontSize * 1.5;
-			}
-
-		},
-		draw : function(){
-			// Custom Tooltips
-			if(this.custom){
-				this.custom(this);
-			}
-			else{
-				drawRoundedRectangle(this.ctx,this.x,this.y - this.height/2,this.width,this.height,this.cornerRadius);
-				var ctx = this.ctx;
-				ctx.fillStyle = this.fillColor;
-				ctx.fill();
-				ctx.closePath();
-
-				ctx.textAlign = "left";
-				ctx.textBaseline = "middle";
-				ctx.fillStyle = this.titleTextColor;
-				ctx.font = this.titleFont;
-
-				ctx.fillText(this.title,this.x + this.xPadding, this.getLineHeight(0));
-
-				ctx.font = this.font;
-				helpers.each(this.labels,function(label,index){
-					ctx.fillStyle = this.textColor;
-					ctx.fillText(label,this.x + this.xPadding + this.fontSize + 3, this.getLineHeight(index + 1));
-
-					//A bit gnarly, but clearing this rectangle breaks when using explorercanvas (clears whole canvas)
-					//ctx.clearRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
-					//Instead we'll make a white filled block to put the legendColour palette over.
-
-					ctx.fillStyle = this.legendColorBackground;
-					ctx.fillRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
-
-					ctx.fillStyle = this.legendColors[index].fill;
-					ctx.fillRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
-
-
-				},this);
-			}
-		}
-	});
-
-	Chart.Scale = Chart.Element.extend({
-		initialize : function(){
-			this.fit();
-		},
-		buildYLabels : function(){
-			this.yLabels = [];
-
-			var stepDecimalPlaces = getDecimalPlaces(this.stepValue);
-
-			for (var i=0; i<=this.steps; i++){
-				this.yLabels.push(template(this.templateString,{value:(this.min + (i * this.stepValue)).toFixed(stepDecimalPlaces)}));
-			}
-			this.yLabelWidth = (this.display && this.showLabels) ? longestText(this.ctx,this.font,this.yLabels) : 0;
-		},
-		addXLabel : function(label){
-			this.xLabels.push(label);
-			this.valuesCount++;
-			this.fit();
-		},
-		removeXLabel : function(){
-			this.xLabels.shift();
-			this.valuesCount--;
-			this.fit();
-		},
-		// Fitting loop to rotate x Labels and figure out what fits there, and also calculate how many Y steps to use
-		fit: function(){
-			// First we need the width of the yLabels, assuming the xLabels aren't rotated
-
-			// To do that we need the base line at the top and base of the chart, assuming there is no x label rotation
-			this.startPoint = (this.display) ? this.fontSize : 0;
-			this.endPoint = (this.display) ? this.height - (this.fontSize * 1.5) - 5 : this.height; // -5 to pad labels
-
-			// Apply padding settings to the start and end point.
-			this.startPoint += this.padding;
-			this.endPoint -= this.padding;
-
-			// Cache the starting height, so can determine if we need to recalculate the scale yAxis
-			var cachedHeight = this.endPoint - this.startPoint,
-				cachedYLabelWidth;
-
-			// Build the current yLabels so we have an idea of what size they'll be to start
-			/*
-			 *	This sets what is returned from calculateScaleRange as static properties of this class:
-			 *
-				this.steps;
-				this.stepValue;
-				this.min;
-				this.max;
-			 *
-			 */
-			this.calculateYRange(cachedHeight);
-
-			// With these properties set we can now build the array of yLabels
-			// and also the width of the largest yLabel
-			this.buildYLabels();
-
-			this.calculateXLabelRotation();
-
-			while((cachedHeight > this.endPoint - this.startPoint)){
-				cachedHeight = this.endPoint - this.startPoint;
-				cachedYLabelWidth = this.yLabelWidth;
-
-				this.calculateYRange(cachedHeight);
-				this.buildYLabels();
-
-				// Only go through the xLabel loop again if the yLabel width has changed
-				if (cachedYLabelWidth < this.yLabelWidth){
-					this.calculateXLabelRotation();
-				}
-			}
-
-		},
-		calculateXLabelRotation : function(){
-			//Get the width of each grid by calculating the difference
-			//between x offsets between 0 and 1.
-
-			this.ctx.font = this.font;
-
-			var firstWidth = this.ctx.measureText(this.xLabels[0]).width,
-				lastWidth = this.ctx.measureText(this.xLabels[this.xLabels.length - 1]).width,
-				firstRotated,
-				lastRotated;
-
-
-			this.xScalePaddingRight = lastWidth/2 + 3;
-			this.xScalePaddingLeft = (firstWidth/2 > this.yLabelWidth + 10) ? firstWidth/2 : this.yLabelWidth + 10;
-
-			this.xLabelRotation = 0;
-			if (this.display){
-				var originalLabelWidth = longestText(this.ctx,this.font,this.xLabels),
-					cosRotation,
-					firstRotatedWidth;
-				this.xLabelWidth = originalLabelWidth;
-				//Allow 3 pixels x2 padding either side for label readability
-				var xGridWidth = Math.floor(this.calculateX(1) - this.calculateX(0)) - 6;
-
-				//Max label rotate should be 90 - also act as a loop counter
-				while ((this.xLabelWidth > xGridWidth && this.xLabelRotation === 0) || (this.xLabelWidth > xGridWidth && this.xLabelRotation <= 90 && this.xLabelRotation > 0)){
-					cosRotation = Math.cos(toRadians(this.xLabelRotation));
-
-					firstRotated = cosRotation * firstWidth;
-					lastRotated = cosRotation * lastWidth;
-
-					// We're right aligning the text now.
-					if (firstRotated + this.fontSize / 2 > this.yLabelWidth + 8){
-						this.xScalePaddingLeft = firstRotated + this.fontSize / 2;
-					}
-					this.xScalePaddingRight = this.fontSize/2;
-
-
-					this.xLabelRotation++;
-					this.xLabelWidth = cosRotation * originalLabelWidth;
-
-				}
-				if (this.xLabelRotation > 0){
-					this.endPoint -= Math.sin(toRadians(this.xLabelRotation))*originalLabelWidth + 3;
-				}
-			}
-			else{
-				this.xLabelWidth = 0;
-				this.xScalePaddingRight = this.padding;
-				this.xScalePaddingLeft = this.padding;
-			}
-
-		},
-		// Needs to be overidden in each Chart type
-		// Otherwise we need to pass all the data into the scale class
-		calculateYRange: noop,
-		drawingArea: function(){
-			return this.startPoint - this.endPoint;
-		},
-		calculateY : function(value){
-			var scalingFactor = this.drawingArea() / (this.min - this.max);
-			return this.endPoint - (scalingFactor * (value - this.min));
-		},
-		calculateX : function(index){
-			var isRotated = (this.xLabelRotation > 0),
-				// innerWidth = (this.offsetGridLines) ? this.width - offsetLeft - this.padding : this.width - (offsetLeft + halfLabelWidth * 2) - this.padding,
-				innerWidth = this.width - (this.xScalePaddingLeft + this.xScalePaddingRight),
-				valueWidth = innerWidth/Math.max((this.valuesCount - ((this.offsetGridLines) ? 0 : 1)), 1),
-				valueOffset = (valueWidth * index) + this.xScalePaddingLeft;
-
-			if (this.offsetGridLines){
-				valueOffset += (valueWidth/2);
-			}
-
-			return Math.round(valueOffset);
-		},
-		update : function(newProps){
-			helpers.extend(this, newProps);
-			this.fit();
-		},
-		draw : function(){
-			var ctx = this.ctx,
-				yLabelGap = (this.endPoint - this.startPoint) / this.steps,
-				xStart = Math.round(this.xScalePaddingLeft);
-			if (this.display){
-				ctx.fillStyle = this.textColor;
-				ctx.font = this.font;
-				each(this.yLabels,function(labelString,index){
-					var yLabelCenter = this.endPoint - (yLabelGap * index),
-						linePositionY = Math.round(yLabelCenter),
-						drawHorizontalLine = this.showHorizontalLines;
-
-					ctx.textAlign = "right";
-					ctx.textBaseline = "middle";
-					if (this.showLabels){
-						ctx.fillText(labelString,xStart - 10,yLabelCenter);
-					}
-
-					// This is X axis, so draw it
-					if (index === 0 && !drawHorizontalLine){
-						drawHorizontalLine = true;
-					}
-
-					if (drawHorizontalLine){
-						ctx.beginPath();
-					}
-
-					if (index > 0){
-						// This is a grid line in the centre, so drop that
-						ctx.lineWidth = this.gridLineWidth;
-						ctx.strokeStyle = this.gridLineColor;
-					} else {
-						// This is the first line on the scale
-						ctx.lineWidth = this.lineWidth;
-						ctx.strokeStyle = this.lineColor;
-					}
-
-					linePositionY += helpers.aliasPixel(ctx.lineWidth);
-
-					if(drawHorizontalLine){
-						ctx.moveTo(xStart, linePositionY);
-						ctx.lineTo(this.width, linePositionY);
-						ctx.stroke();
-						ctx.closePath();
-					}
-
-					ctx.lineWidth = this.lineWidth;
-					ctx.strokeStyle = this.lineColor;
-					ctx.beginPath();
-					ctx.moveTo(xStart - 5, linePositionY);
-					ctx.lineTo(xStart, linePositionY);
-					ctx.stroke();
-					ctx.closePath();
-
-				},this);
-
-				each(this.xLabels,function(label,index){
-					var xPos = this.calculateX(index) + aliasPixel(this.lineWidth),
-						// Check to see if line/bar here and decide where to place the line
-						linePos = this.calculateX(index - (this.offsetGridLines ? 0.5 : 0)) + aliasPixel(this.lineWidth),
-						isRotated = (this.xLabelRotation > 0),
-						drawVerticalLine = this.showVerticalLines;
-
-					// This is Y axis, so draw it
-					if (index === 0 && !drawVerticalLine){
-						drawVerticalLine = true;
-					}
-
-					if (drawVerticalLine){
-						ctx.beginPath();
-					}
-
-					if (index > 0){
-						// This is a grid line in the centre, so drop that
-						ctx.lineWidth = this.gridLineWidth;
-						ctx.strokeStyle = this.gridLineColor;
-					} else {
-						// This is the first line on the scale
-						ctx.lineWidth = this.lineWidth;
-						ctx.strokeStyle = this.lineColor;
-					}
-
-					if (drawVerticalLine){
-						ctx.moveTo(linePos,this.endPoint);
-						ctx.lineTo(linePos,this.startPoint - 3);
-						ctx.stroke();
-						ctx.closePath();
-					}
-
-
-					ctx.lineWidth = this.lineWidth;
-					ctx.strokeStyle = this.lineColor;
-
-
-					// Small lines at the bottom of the base grid line
-					ctx.beginPath();
-					ctx.moveTo(linePos,this.endPoint);
-					ctx.lineTo(linePos,this.endPoint + 5);
-					ctx.stroke();
-					ctx.closePath();
-
-					ctx.save();
-					ctx.translate(xPos,(isRotated) ? this.endPoint + 12 : this.endPoint + 8);
-					ctx.rotate(toRadians(this.xLabelRotation)*-1);
-					ctx.font = this.font;
-					ctx.textAlign = (isRotated) ? "right" : "center";
-					ctx.textBaseline = (isRotated) ? "middle" : "top";
-					ctx.fillText(label, 0, 0);
-					ctx.restore();
-				},this);
-
-			}
-		}
-
-	});
-
-	Chart.RadialScale = Chart.Element.extend({
-		initialize: function(){
-			this.size = min([this.height, this.width]);
-			this.drawingArea = (this.display) ? (this.size/2) - (this.fontSize/2 + this.backdropPaddingY) : (this.size/2);
-		},
-		calculateCenterOffset: function(value){
-			// Take into account half font size + the yPadding of the top value
-			var scalingFactor = this.drawingArea / (this.max - this.min);
-
-			return (value - this.min) * scalingFactor;
-		},
-		update : function(){
-			if (!this.lineArc){
-				this.setScaleSize();
-			} else {
-				this.drawingArea = (this.display) ? (this.size/2) - (this.fontSize/2 + this.backdropPaddingY) : (this.size/2);
-			}
-			this.buildYLabels();
-		},
-		buildYLabels: function(){
-			this.yLabels = [];
-
-			var stepDecimalPlaces = getDecimalPlaces(this.stepValue);
-
-			for (var i=0; i<=this.steps; i++){
-				this.yLabels.push(template(this.templateString,{value:(this.min + (i * this.stepValue)).toFixed(stepDecimalPlaces)}));
-			}
-		},
-		getCircumference : function(){
-			return ((Math.PI*2) / this.valuesCount);
-		},
-		setScaleSize: function(){
-			/*
-			 * Right, this is really confusing and there is a lot of maths going on here
-			 * The gist of the problem is here: https://gist.github.com/nnnick/696cc9c55f4b0beb8fe9
-			 *
-			 * Reaction: https://dl.dropboxusercontent.com/u/34601363/toomuchscience.gif
-			 *
-			 * Solution:
-			 *
-			 * We assume the radius of the polygon is half the size of the canvas at first
-			 * at each index we check if the text overlaps.
-			 *
-			 * Where it does, we store that angle and that index.
-			 *
-			 * After finding the largest index and angle we calculate how much we need to remove
-			 * from the shape radius to move the point inwards by that x.
-			 *
-			 * We average the left and right distances to get the maximum shape radius that can fit in the box
-			 * along with labels.
-			 *
-			 * Once we have that, we can find the centre point for the chart, by taking the x text protrusion
-			 * on each side, removing that from the size, halving it and adding the left x protrusion width.
-			 *
-			 * This will mean we have a shape fitted to the canvas, as large as it can be with the labels
-			 * and position it in the most space efficient manner
-			 *
-			 * https://dl.dropboxusercontent.com/u/34601363/yeahscience.gif
-			 */
-
-
-			// Get maximum radius of the polygon. Either half the height (minus the text width) or half the width.
-			// Use this to calculate the offset + change. - Make sure L/R protrusion is at least 0 to stop issues with centre points
-			var largestPossibleRadius = min([(this.height/2 - this.pointLabelFontSize - 5), this.width/2]),
-				pointPosition,
-				i,
-				textWidth,
-				halfTextWidth,
-				furthestRight = this.width,
-				furthestRightIndex,
-				furthestRightAngle,
-				furthestLeft = 0,
-				furthestLeftIndex,
-				furthestLeftAngle,
-				xProtrusionLeft,
-				xProtrusionRight,
-				radiusReductionRight,
-				radiusReductionLeft,
-				maxWidthRadius;
-			this.ctx.font = fontString(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily);
-			for (i=0;i<this.valuesCount;i++){
-				// 5px to space the text slightly out - similar to what we do in the draw function.
-				pointPosition = this.getPointPosition(i, largestPossibleRadius);
-				textWidth = this.ctx.measureText(template(this.templateString, { value: this.labels[i] })).width + 5;
-				if (i === 0 || i === this.valuesCount/2){
-					// If we're at index zero, or exactly the middle, we're at exactly the top/bottom
-					// of the radar chart, so text will be aligned centrally, so we'll half it and compare
-					// w/left and right text sizes
-					halfTextWidth = textWidth/2;
-					if (pointPosition.x + halfTextWidth > furthestRight) {
-						furthestRight = pointPosition.x + halfTextWidth;
-						furthestRightIndex = i;
-					}
-					if (pointPosition.x - halfTextWidth < furthestLeft) {
-						furthestLeft = pointPosition.x - halfTextWidth;
-						furthestLeftIndex = i;
-					}
-				}
-				else if (i < this.valuesCount/2) {
-					// Less than half the values means we'll left align the text
-					if (pointPosition.x + textWidth > furthestRight) {
-						furthestRight = pointPosition.x + textWidth;
-						furthestRightIndex = i;
-					}
-				}
-				else if (i > this.valuesCount/2){
-					// More than half the values means we'll right align the text
-					if (pointPosition.x - textWidth < furthestLeft) {
-						furthestLeft = pointPosition.x - textWidth;
-						furthestLeftIndex = i;
-					}
-				}
-			}
-
-			xProtrusionLeft = furthestLeft;
-
-			xProtrusionRight = Math.ceil(furthestRight - this.width);
-
-			furthestRightAngle = this.getIndexAngle(furthestRightIndex);
-
-			furthestLeftAngle = this.getIndexAngle(furthestLeftIndex);
-
-			radiusReductionRight = xProtrusionRight / Math.sin(furthestRightAngle + Math.PI/2);
-
-			radiusReductionLeft = xProtrusionLeft / Math.sin(furthestLeftAngle + Math.PI/2);
-
-			// Ensure we actually need to reduce the size of the chart
-			radiusReductionRight = (isNumber(radiusReductionRight)) ? radiusReductionRight : 0;
-			radiusReductionLeft = (isNumber(radiusReductionLeft)) ? radiusReductionLeft : 0;
-
-			this.drawingArea = largestPossibleRadius - (radiusReductionLeft + radiusReductionRight)/2;
-
-			//this.drawingArea = min([maxWidthRadius, (this.height - (2 * (this.pointLabelFontSize + 5)))/2])
-			this.setCenterPoint(radiusReductionLeft, radiusReductionRight);
-
-		},
-		setCenterPoint: function(leftMovement, rightMovement){
-
-			var maxRight = this.width - rightMovement - this.drawingArea,
-				maxLeft = leftMovement + this.drawingArea;
-
-			this.xCenter = (maxLeft + maxRight)/2;
-			// Always vertically in the centre as the text height doesn't change
-			this.yCenter = (this.height/2);
-		},
-
-		getIndexAngle : function(index){
-			var angleMultiplier = (Math.PI * 2) / this.valuesCount;
-			// Start from the top instead of right, so remove a quarter of the circle
-
-			return index * angleMultiplier - (Math.PI/2);
-		},
-		getPointPosition : function(index, distanceFromCenter){
-			var thisAngle = this.getIndexAngle(index);
-			return {
-				x : (Math.cos(thisAngle) * distanceFromCenter) + this.xCenter,
-				y : (Math.sin(thisAngle) * distanceFromCenter) + this.yCenter
-			};
-		},
-		draw: function(){
-			if (this.display){
-				var ctx = this.ctx;
-				each(this.yLabels, function(label, index){
-					// Don't draw a centre value
-					if (index > 0){
-						var yCenterOffset = index * (this.drawingArea/this.steps),
-							yHeight = this.yCenter - yCenterOffset,
-							pointPosition;
-
-						// Draw circular lines around the scale
-						if (this.lineWidth > 0){
-							ctx.strokeStyle = this.lineColor;
-							ctx.lineWidth = this.lineWidth;
-
-							if(this.lineArc){
-								ctx.beginPath();
-								ctx.arc(this.xCenter, this.yCenter, yCenterOffset, 0, Math.PI*2);
-								ctx.closePath();
-								ctx.stroke();
-							} else{
-								ctx.beginPath();
-								for (var i=0;i<this.valuesCount;i++)
-								{
-									pointPosition = this.getPointPosition(i, this.calculateCenterOffset(this.min + (index * this.stepValue)));
-									if (i === 0){
-										ctx.moveTo(pointPosition.x, pointPosition.y);
-									} else {
-										ctx.lineTo(pointPosition.x, pointPosition.y);
-									}
-								}
-								ctx.closePath();
-								ctx.stroke();
-							}
-						}
-						if(this.showLabels){
-							ctx.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
-							if (this.showLabelBackdrop){
-								var labelWidth = ctx.measureText(label).width;
-								ctx.fillStyle = this.backdropColor;
-								ctx.fillRect(
-									this.xCenter - labelWidth/2 - this.backdropPaddingX,
-									yHeight - this.fontSize/2 - this.backdropPaddingY,
-									labelWidth + this.backdropPaddingX*2,
-									this.fontSize + this.backdropPaddingY*2
-								);
-							}
-							ctx.textAlign = 'center';
-							ctx.textBaseline = "middle";
-							ctx.fillStyle = this.fontColor;
-							ctx.fillText(label, this.xCenter, yHeight);
-						}
-					}
-				}, this);
-
-				if (!this.lineArc){
-					ctx.lineWidth = this.angleLineWidth;
-					ctx.strokeStyle = this.angleLineColor;
-					for (var i = this.valuesCount - 1; i >= 0; i--) {
-						if (this.angleLineWidth > 0){
-							var outerPosition = this.getPointPosition(i, this.calculateCenterOffset(this.max));
-							ctx.beginPath();
-							ctx.moveTo(this.xCenter, this.yCenter);
-							ctx.lineTo(outerPosition.x, outerPosition.y);
-							ctx.stroke();
-							ctx.closePath();
-						}
-						// Extra 3px out for some label spacing
-						var pointLabelPosition = this.getPointPosition(i, this.calculateCenterOffset(this.max) + 5);
-						ctx.font = fontString(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily);
-						ctx.fillStyle = this.pointLabelFontColor;
-
-						var labelsCount = this.labels.length,
-							halfLabelsCount = this.labels.length/2,
-							quarterLabelsCount = halfLabelsCount/2,
-							upperHalf = (i < quarterLabelsCount || i > labelsCount - quarterLabelsCount),
-							exactQuarter = (i === quarterLabelsCount || i === labelsCount - quarterLabelsCount);
-						if (i === 0){
-							ctx.textAlign = 'center';
-						} else if(i === halfLabelsCount){
-							ctx.textAlign = 'center';
-						} else if (i < halfLabelsCount){
-							ctx.textAlign = 'left';
-						} else {
-							ctx.textAlign = 'right';
-						}
-
-						// Set the correct text baseline based on outer positioning
-						if (exactQuarter){
-							ctx.textBaseline = 'middle';
-						} else if (upperHalf){
-							ctx.textBaseline = 'bottom';
-						} else {
-							ctx.textBaseline = 'top';
-						}
-
-						ctx.fillText(this.labels[i], pointLabelPosition.x, pointLabelPosition.y);
-					}
-				}
-			}
-		}
-	});
-
-	// Attach global event to resize each chart instance when the browser resizes
-	helpers.addEvent(window, "resize", (function(){
-		// Basic debounce of resize function so it doesn't hurt performance when resizing browser.
-		var timeout;
-		return function(){
-			clearTimeout(timeout);
-			timeout = setTimeout(function(){
-				each(Chart.instances,function(instance){
-					// If the responsive flag is set in the chart instance config
-					// Cascade the resize event down to the chart.
-					if (instance.options.responsive){
-						instance.resize(instance.render, true);
-					}
-				});
-			}, 50);
-		};
-	})());
-
-
-	if (amd) {
-		define(function(){
-			return Chart;
-		});
-	} else if (typeof module === 'object' && module.exports) {
-		module.exports = Chart;
+},{"./angular":207}],209:[function(require,module,exports){
+(function (global){
+/*! https://mths.be/punycode v1.4.0 by @mathias */
+;(function(root) {
+
+	/** Detect free variables */
+	var freeExports = typeof exports == 'object' && exports &&
+		!exports.nodeType && exports;
+	var freeModule = typeof module == 'object' && module &&
+		!module.nodeType && module;
+	var freeGlobal = typeof global == 'object' && global;
+	if (
+		freeGlobal.global === freeGlobal ||
+		freeGlobal.window === freeGlobal ||
+		freeGlobal.self === freeGlobal
+	) {
+		root = freeGlobal;
 	}
 
-	root.Chart = Chart;
+	/**
+	 * The `punycode` object.
+	 * @name punycode
+	 * @type Object
+	 */
+	var punycode,
 
-	Chart.noConflict = function(){
-		root.Chart = previous;
-		return Chart;
-	};
+	/** Highest positive signed 32-bit float value */
+	maxInt = 2147483647, // aka. 0x7FFFFFFF or 2^31-1
 
-}).call(this);
+	/** Bootstring parameters */
+	base = 36,
+	tMin = 1,
+	tMax = 26,
+	skew = 38,
+	damp = 700,
+	initialBias = 72,
+	initialN = 128, // 0x80
+	delimiter = '-', // '\x2D'
 
-(function(){
-	"use strict";
+	/** Regular expressions */
+	regexPunycode = /^xn--/,
+	regexNonASCII = /[^\x20-\x7E]/, // unprintable ASCII chars + non-ASCII chars
+	regexSeparators = /[\x2E\u3002\uFF0E\uFF61]/g, // RFC 3490 separators
 
-	var root = this,
-		Chart = root.Chart,
-		helpers = Chart.helpers;
+	/** Error messages */
+	errors = {
+		'overflow': 'Overflow: input needs wider integers to process',
+		'not-basic': 'Illegal input >= 0x80 (not a basic code point)',
+		'invalid-input': 'Invalid input'
+	},
 
+	/** Convenience shortcuts */
+	baseMinusTMin = base - tMin,
+	floor = Math.floor,
+	stringFromCharCode = String.fromCharCode,
 
-	var defaultConfig = {
-		//Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-		scaleBeginAtZero : true,
+	/** Temporary variable */
+	key;
 
-		//Boolean - Whether grid lines are shown across the chart
-		scaleShowGridLines : true,
+	/*--------------------------------------------------------------------------*/
 
-		//String - Colour of the grid lines
-		scaleGridLineColor : "rgba(0,0,0,.05)",
+	/**
+	 * A generic error utility function.
+	 * @private
+	 * @param {String} type The error type.
+	 * @returns {Error} Throws a `RangeError` with the applicable error message.
+	 */
+	function error(type) {
+		throw new RangeError(errors[type]);
+	}
 
-		//Number - Width of the grid lines
-		scaleGridLineWidth : 1,
-
-		//Boolean - Whether to show horizontal lines (except X axis)
-		scaleShowHorizontalLines: true,
-
-		//Boolean - Whether to show vertical lines (except Y axis)
-		scaleShowVerticalLines: true,
-
-		//Boolean - If there is a stroke on each bar
-		barShowStroke : true,
-
-		//Number - Pixel width of the bar stroke
-		barStrokeWidth : 2,
-
-		//Number - Spacing between each of the X value sets
-		barValueSpacing : 5,
-
-		//Number - Spacing between data sets within X values
-		barDatasetSpacing : 1,
-
-		//String - A legend template
-		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-
-	};
-
-
-	Chart.Type.extend({
-		name: "Bar",
-		defaults : defaultConfig,
-		initialize:  function(data){
-
-			//Expose options as a scope variable here so we can access it in the ScaleClass
-			var options = this.options;
-
-			this.ScaleClass = Chart.Scale.extend({
-				offsetGridLines : true,
-				calculateBarX : function(datasetCount, datasetIndex, barIndex){
-					//Reusable method for calculating the xPosition of a given bar based on datasetIndex & width of the bar
-					var xWidth = this.calculateBaseWidth(),
-						xAbsolute = this.calculateX(barIndex) - (xWidth/2),
-						barWidth = this.calculateBarWidth(datasetCount);
-
-					return xAbsolute + (barWidth * datasetIndex) + (datasetIndex * options.barDatasetSpacing) + barWidth/2;
-				},
-				calculateBaseWidth : function(){
-					return (this.calculateX(1) - this.calculateX(0)) - (2*options.barValueSpacing);
-				},
-				calculateBarWidth : function(datasetCount){
-					//The padding between datasets is to the right of each bar, providing that there are more than 1 dataset
-					var baseWidth = this.calculateBaseWidth() - ((datasetCount - 1) * options.barDatasetSpacing);
-
-					return (baseWidth / datasetCount);
-				}
-			});
-
-			this.datasets = [];
-
-			//Set up tooltip events on the chart
-			if (this.options.showTooltips){
-				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
-					var activeBars = (evt.type !== 'mouseout') ? this.getBarsAtEvent(evt) : [];
-
-					this.eachBars(function(bar){
-						bar.restore(['fillColor', 'strokeColor']);
-					});
-					helpers.each(activeBars, function(activeBar){
-						activeBar.fillColor = activeBar.highlightFill;
-						activeBar.strokeColor = activeBar.highlightStroke;
-					});
-					this.showTooltip(activeBars);
-				});
-			}
-
-			//Declare the extension of the default point, to cater for the options passed in to the constructor
-			this.BarClass = Chart.Rectangle.extend({
-				strokeWidth : this.options.barStrokeWidth,
-				showStroke : this.options.barShowStroke,
-				ctx : this.chart.ctx
-			});
-
-			//Iterate through each of the datasets, and build this into a property of the chart
-			helpers.each(data.datasets,function(dataset,datasetIndex){
-
-				var datasetObject = {
-					label : dataset.label || null,
-					fillColor : dataset.fillColor,
-					strokeColor : dataset.strokeColor,
-					bars : []
-				};
-
-				this.datasets.push(datasetObject);
-
-				helpers.each(dataset.data,function(dataPoint,index){
-					//Add a new point for each piece of data, passing any required data to draw.
-					datasetObject.bars.push(new this.BarClass({
-						value : dataPoint,
-						label : data.labels[index],
-						datasetLabel: dataset.label,
-						strokeColor : dataset.strokeColor,
-						fillColor : dataset.fillColor,
-						highlightFill : dataset.highlightFill || dataset.fillColor,
-						highlightStroke : dataset.highlightStroke || dataset.strokeColor
-					}));
-				},this);
-
-			},this);
-
-			this.buildScale(data.labels);
-
-			this.BarClass.prototype.base = this.scale.endPoint;
-
-			this.eachBars(function(bar, index, datasetIndex){
-				helpers.extend(bar, {
-					width : this.scale.calculateBarWidth(this.datasets.length),
-					x: this.scale.calculateBarX(this.datasets.length, datasetIndex, index),
-					y: this.scale.endPoint
-				});
-				bar.save();
-			}, this);
-
-			this.render();
-		},
-		update : function(){
-			this.scale.update();
-			// Reset any highlight colours before updating.
-			helpers.each(this.activeElements, function(activeElement){
-				activeElement.restore(['fillColor', 'strokeColor']);
-			});
-
-			this.eachBars(function(bar){
-				bar.save();
-			});
-			this.render();
-		},
-		eachBars : function(callback){
-			helpers.each(this.datasets,function(dataset, datasetIndex){
-				helpers.each(dataset.bars, callback, this, datasetIndex);
-			},this);
-		},
-		getBarsAtEvent : function(e){
-			var barsArray = [],
-				eventPosition = helpers.getRelativePosition(e),
-				datasetIterator = function(dataset){
-					barsArray.push(dataset.bars[barIndex]);
-				},
-				barIndex;
-
-			for (var datasetIndex = 0; datasetIndex < this.datasets.length; datasetIndex++) {
-				for (barIndex = 0; barIndex < this.datasets[datasetIndex].bars.length; barIndex++) {
-					if (this.datasets[datasetIndex].bars[barIndex].inRange(eventPosition.x,eventPosition.y)){
-						helpers.each(this.datasets, datasetIterator);
-						return barsArray;
-					}
-				}
-			}
-
-			return barsArray;
-		},
-		buildScale : function(labels){
-			var self = this;
-
-			var dataTotal = function(){
-				var values = [];
-				self.eachBars(function(bar){
-					values.push(bar.value);
-				});
-				return values;
-			};
-
-			var scaleOptions = {
-				templateString : this.options.scaleLabel,
-				height : this.chart.height,
-				width : this.chart.width,
-				ctx : this.chart.ctx,
-				textColor : this.options.scaleFontColor,
-				fontSize : this.options.scaleFontSize,
-				fontStyle : this.options.scaleFontStyle,
-				fontFamily : this.options.scaleFontFamily,
-				valuesCount : labels.length,
-				beginAtZero : this.options.scaleBeginAtZero,
-				integersOnly : this.options.scaleIntegersOnly,
-				calculateYRange: function(currentHeight){
-					var updatedRanges = helpers.calculateScaleRange(
-						dataTotal(),
-						currentHeight,
-						this.fontSize,
-						this.beginAtZero,
-						this.integersOnly
-					);
-					helpers.extend(this, updatedRanges);
-				},
-				xLabels : labels,
-				font : helpers.fontString(this.options.scaleFontSize, this.options.scaleFontStyle, this.options.scaleFontFamily),
-				lineWidth : this.options.scaleLineWidth,
-				lineColor : this.options.scaleLineColor,
-				showHorizontalLines : this.options.scaleShowHorizontalLines,
-				showVerticalLines : this.options.scaleShowVerticalLines,
-				gridLineWidth : (this.options.scaleShowGridLines) ? this.options.scaleGridLineWidth : 0,
-				gridLineColor : (this.options.scaleShowGridLines) ? this.options.scaleGridLineColor : "rgba(0,0,0,0)",
-				padding : (this.options.showScale) ? 0 : (this.options.barShowStroke) ? this.options.barStrokeWidth : 0,
-				showLabels : this.options.scaleShowLabels,
-				display : this.options.showScale
-			};
-
-			if (this.options.scaleOverride){
-				helpers.extend(scaleOptions, {
-					calculateYRange: helpers.noop,
-					steps: this.options.scaleSteps,
-					stepValue: this.options.scaleStepWidth,
-					min: this.options.scaleStartValue,
-					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
-				});
-			}
-
-			this.scale = new this.ScaleClass(scaleOptions);
-		},
-		addData : function(valuesArray,label){
-			//Map the values array for each of the datasets
-			helpers.each(valuesArray,function(value,datasetIndex){
-				//Add a new point for each piece of data, passing any required data to draw.
-				this.datasets[datasetIndex].bars.push(new this.BarClass({
-					value : value,
-					label : label,
-					x: this.scale.calculateBarX(this.datasets.length, datasetIndex, this.scale.valuesCount+1),
-					y: this.scale.endPoint,
-					width : this.scale.calculateBarWidth(this.datasets.length),
-					base : this.scale.endPoint,
-					strokeColor : this.datasets[datasetIndex].strokeColor,
-					fillColor : this.datasets[datasetIndex].fillColor
-				}));
-			},this);
-
-			this.scale.addXLabel(label);
-			//Then re-render the chart.
-			this.update();
-		},
-		removeData : function(){
-			this.scale.removeXLabel();
-			//Then re-render the chart.
-			helpers.each(this.datasets,function(dataset){
-				dataset.bars.shift();
-			},this);
-			this.update();
-		},
-		reflow : function(){
-			helpers.extend(this.BarClass.prototype,{
-				y: this.scale.endPoint,
-				base : this.scale.endPoint
-			});
-			var newScaleProps = helpers.extend({
-				height : this.chart.height,
-				width : this.chart.width
-			});
-			this.scale.update(newScaleProps);
-		},
-		draw : function(ease){
-			var easingDecimal = ease || 1;
-			this.clear();
-
-			var ctx = this.chart.ctx;
-
-			this.scale.draw(easingDecimal);
-
-			//Draw all the bars for each dataset
-			helpers.each(this.datasets,function(dataset,datasetIndex){
-				helpers.each(dataset.bars,function(bar,index){
-					if (bar.hasValue()){
-						bar.base = this.scale.endPoint;
-						//Transition then draw
-						bar.transition({
-							x : this.scale.calculateBarX(this.datasets.length, datasetIndex, index),
-							y : this.scale.calculateY(bar.value),
-							width : this.scale.calculateBarWidth(this.datasets.length)
-						}, easingDecimal).draw();
-					}
-				},this);
-
-			},this);
+	/**
+	 * A generic `Array#map` utility function.
+	 * @private
+	 * @param {Array} array The array to iterate over.
+	 * @param {Function} callback The function that gets called for every array
+	 * item.
+	 * @returns {Array} A new array of values returned by the callback function.
+	 */
+	function map(array, fn) {
+		var length = array.length;
+		var result = [];
+		while (length--) {
+			result[length] = fn(array[length]);
 		}
-	});
+		return result;
+	}
 
+	/**
+	 * A simple `Array#map`-like wrapper to work with domain name strings or email
+	 * addresses.
+	 * @private
+	 * @param {String} domain The domain name or email address.
+	 * @param {Function} callback The function that gets called for every
+	 * character.
+	 * @returns {Array} A new string of characters returned by the callback
+	 * function.
+	 */
+	function mapDomain(string, fn) {
+		var parts = string.split('@');
+		var result = '';
+		if (parts.length > 1) {
+			// In email addresses, only the domain name should be punycoded. Leave
+			// the local part (i.e. everything up to `@`) intact.
+			result = parts[0] + '@';
+			string = parts[1];
+		}
+		// Avoid `split(regex)` for IE8 compatibility. See #17.
+		string = string.replace(regexSeparators, '\x2E');
+		var labels = string.split('.');
+		var encoded = map(labels, fn).join('.');
+		return result + encoded;
+	}
 
-}).call(this);
-
-(function(){
-	"use strict";
-
-	var root = this,
-		Chart = root.Chart,
-		//Cache a local reference to Chart.helpers
-		helpers = Chart.helpers;
-
-	var defaultConfig = {
-		//Boolean - Whether we should show a stroke on each segment
-		segmentShowStroke : true,
-
-		//String - The colour of each segment stroke
-		segmentStrokeColor : "#fff",
-
-		//Number - The width of each segment stroke
-		segmentStrokeWidth : 2,
-
-		//The percentage of the chart that we cut out of the middle.
-		percentageInnerCutout : 50,
-
-		//Number - Amount of animation steps
-		animationSteps : 100,
-
-		//String - Animation easing effect
-		animationEasing : "easeOutBounce",
-
-		//Boolean - Whether we animate the rotation of the Doughnut
-		animateRotate : true,
-
-		//Boolean - Whether we animate scaling the Doughnut from the centre
-		animateScale : false,
-
-		//String - A legend template
-		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
-
-	};
-
-
-	Chart.Type.extend({
-		//Passing in a name registers this chart in the Chart namespace
-		name: "Doughnut",
-		//Providing a defaults will also register the deafults in the chart namespace
-		defaults : defaultConfig,
-		//Initialize is fired when the chart is initialized - Data is passed in as a parameter
-		//Config is automatically merged by the core of Chart.js, and is available at this.options
-		initialize:  function(data){
-
-			//Declare segments as a static property to prevent inheriting across the Chart type prototype
-			this.segments = [];
-			this.outerRadius = (helpers.min([this.chart.width,this.chart.height]) -	this.options.segmentStrokeWidth/2)/2;
-
-			this.SegmentArc = Chart.Arc.extend({
-				ctx : this.chart.ctx,
-				x : this.chart.width/2,
-				y : this.chart.height/2
-			});
-
-			//Set up tooltip events on the chart
-			if (this.options.showTooltips){
-				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
-					var activeSegments = (evt.type !== 'mouseout') ? this.getSegmentsAtEvent(evt) : [];
-
-					helpers.each(this.segments,function(segment){
-						segment.restore(["fillColor"]);
-					});
-					helpers.each(activeSegments,function(activeSegment){
-						activeSegment.fillColor = activeSegment.highlightColor;
-					});
-					this.showTooltip(activeSegments);
-				});
-			}
-			this.calculateTotal(data);
-
-			helpers.each(data,function(datapoint, index){
-				this.addData(datapoint, index, true);
-			},this);
-
-			this.render();
-		},
-		getSegmentsAtEvent : function(e){
-			var segmentsArray = [];
-
-			var location = helpers.getRelativePosition(e);
-
-			helpers.each(this.segments,function(segment){
-				if (segment.inRange(location.x,location.y)) segmentsArray.push(segment);
-			},this);
-			return segmentsArray;
-		},
-		addData : function(segment, atIndex, silent){
-			var index = atIndex || this.segments.length;
-			this.segments.splice(index, 0, new this.SegmentArc({
-				value : segment.value,
-				outerRadius : (this.options.animateScale) ? 0 : this.outerRadius,
-				innerRadius : (this.options.animateScale) ? 0 : (this.outerRadius/100) * this.options.percentageInnerCutout,
-				fillColor : segment.color,
-				highlightColor : segment.highlight || segment.color,
-				showStroke : this.options.segmentShowStroke,
-				strokeWidth : this.options.segmentStrokeWidth,
-				strokeColor : this.options.segmentStrokeColor,
-				startAngle : Math.PI * 1.5,
-				circumference : (this.options.animateRotate) ? 0 : this.calculateCircumference(segment.value),
-				label : segment.label
-			}));
-			if (!silent){
-				this.reflow();
-				this.update();
-			}
-		},
-		calculateCircumference : function(value){
-			return (Math.PI*2)*(Math.abs(value) / this.total);
-		},
-		calculateTotal : function(data){
-			this.total = 0;
-			helpers.each(data,function(segment){
-				this.total += Math.abs(segment.value);
-			},this);
-		},
-		update : function(){
-			this.calculateTotal(this.segments);
-
-			// Reset any highlight colours before updating.
-			helpers.each(this.activeElements, function(activeElement){
-				activeElement.restore(['fillColor']);
-			});
-
-			helpers.each(this.segments,function(segment){
-				segment.save();
-			});
-			this.render();
-		},
-
-		removeData: function(atIndex){
-			var indexToDelete = (helpers.isNumber(atIndex)) ? atIndex : this.segments.length-1;
-			this.segments.splice(indexToDelete, 1);
-			this.reflow();
-			this.update();
-		},
-
-		reflow : function(){
-			helpers.extend(this.SegmentArc.prototype,{
-				x : this.chart.width/2,
-				y : this.chart.height/2
-			});
-			this.outerRadius = (helpers.min([this.chart.width,this.chart.height]) -	this.options.segmentStrokeWidth/2)/2;
-			helpers.each(this.segments, function(segment){
-				segment.update({
-					outerRadius : this.outerRadius,
-					innerRadius : (this.outerRadius/100) * this.options.percentageInnerCutout
-				});
-			}, this);
-		},
-		draw : function(easeDecimal){
-			var animDecimal = (easeDecimal) ? easeDecimal : 1;
-			this.clear();
-			helpers.each(this.segments,function(segment,index){
-				segment.transition({
-					circumference : this.calculateCircumference(segment.value),
-					outerRadius : this.outerRadius,
-					innerRadius : (this.outerRadius/100) * this.options.percentageInnerCutout
-				},animDecimal);
-
-				segment.endAngle = segment.startAngle + segment.circumference;
-
-				segment.draw();
-				if (index === 0){
-					segment.startAngle = Math.PI * 1.5;
+	/**
+	 * Creates an array containing the numeric code points of each Unicode
+	 * character in the string. While JavaScript uses UCS-2 internally,
+	 * this function will convert a pair of surrogate halves (each of which
+	 * UCS-2 exposes as separate characters) into a single code point,
+	 * matching UTF-16.
+	 * @see `punycode.ucs2.encode`
+	 * @see <https://mathiasbynens.be/notes/javascript-encoding>
+	 * @memberOf punycode.ucs2
+	 * @name decode
+	 * @param {String} string The Unicode input string (UCS-2).
+	 * @returns {Array} The new array of code points.
+	 */
+	function ucs2decode(string) {
+		var output = [],
+		    counter = 0,
+		    length = string.length,
+		    value,
+		    extra;
+		while (counter < length) {
+			value = string.charCodeAt(counter++);
+			if (value >= 0xD800 && value <= 0xDBFF && counter < length) {
+				// high surrogate, and there is a next character
+				extra = string.charCodeAt(counter++);
+				if ((extra & 0xFC00) == 0xDC00) { // low surrogate
+					output.push(((value & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000);
+				} else {
+					// unmatched surrogate; only append this code unit, in case the next
+					// code unit is the high surrogate of a surrogate pair
+					output.push(value);
+					counter--;
 				}
-				//Check to see if it's the last segment, if not get the next and update the start angle
-				if (index < this.segments.length-1){
-					this.segments[index+1].startAngle = segment.endAngle;
+			} else {
+				output.push(value);
+			}
+		}
+		return output;
+	}
+
+	/**
+	 * Creates a string based on an array of numeric code points.
+	 * @see `punycode.ucs2.decode`
+	 * @memberOf punycode.ucs2
+	 * @name encode
+	 * @param {Array} codePoints The array of numeric code points.
+	 * @returns {String} The new Unicode string (UCS-2).
+	 */
+	function ucs2encode(array) {
+		return map(array, function(value) {
+			var output = '';
+			if (value > 0xFFFF) {
+				value -= 0x10000;
+				output += stringFromCharCode(value >>> 10 & 0x3FF | 0xD800);
+				value = 0xDC00 | value & 0x3FF;
+			}
+			output += stringFromCharCode(value);
+			return output;
+		}).join('');
+	}
+
+	/**
+	 * Converts a basic code point into a digit/integer.
+	 * @see `digitToBasic()`
+	 * @private
+	 * @param {Number} codePoint The basic numeric code point value.
+	 * @returns {Number} The numeric value of a basic code point (for use in
+	 * representing integers) in the range `0` to `base - 1`, or `base` if
+	 * the code point does not represent a value.
+	 */
+	function basicToDigit(codePoint) {
+		if (codePoint - 48 < 10) {
+			return codePoint - 22;
+		}
+		if (codePoint - 65 < 26) {
+			return codePoint - 65;
+		}
+		if (codePoint - 97 < 26) {
+			return codePoint - 97;
+		}
+		return base;
+	}
+
+	/**
+	 * Converts a digit/integer into a basic code point.
+	 * @see `basicToDigit()`
+	 * @private
+	 * @param {Number} digit The numeric value of a basic code point.
+	 * @returns {Number} The basic code point whose value (when used for
+	 * representing integers) is `digit`, which needs to be in the range
+	 * `0` to `base - 1`. If `flag` is non-zero, the uppercase form is
+	 * used; else, the lowercase form is used. The behavior is undefined
+	 * if `flag` is non-zero and `digit` has no uppercase form.
+	 */
+	function digitToBasic(digit, flag) {
+		//  0..25 map to ASCII a..z or A..Z
+		// 26..35 map to ASCII 0..9
+		return digit + 22 + 75 * (digit < 26) - ((flag != 0) << 5);
+	}
+
+	/**
+	 * Bias adaptation function as per section 3.4 of RFC 3492.
+	 * https://tools.ietf.org/html/rfc3492#section-3.4
+	 * @private
+	 */
+	function adapt(delta, numPoints, firstTime) {
+		var k = 0;
+		delta = firstTime ? floor(delta / damp) : delta >> 1;
+		delta += floor(delta / numPoints);
+		for (/* no initialization */; delta > baseMinusTMin * tMax >> 1; k += base) {
+			delta = floor(delta / baseMinusTMin);
+		}
+		return floor(k + (baseMinusTMin + 1) * delta / (delta + skew));
+	}
+
+	/**
+	 * Converts a Punycode string of ASCII-only symbols to a string of Unicode
+	 * symbols.
+	 * @memberOf punycode
+	 * @param {String} input The Punycode string of ASCII-only symbols.
+	 * @returns {String} The resulting string of Unicode symbols.
+	 */
+	function decode(input) {
+		// Don't use UCS-2
+		var output = [],
+		    inputLength = input.length,
+		    out,
+		    i = 0,
+		    n = initialN,
+		    bias = initialBias,
+		    basic,
+		    j,
+		    index,
+		    oldi,
+		    w,
+		    k,
+		    digit,
+		    t,
+		    /** Cached calculation results */
+		    baseMinusT;
+
+		// Handle the basic code points: let `basic` be the number of input code
+		// points before the last delimiter, or `0` if there is none, then copy
+		// the first basic code points to the output.
+
+		basic = input.lastIndexOf(delimiter);
+		if (basic < 0) {
+			basic = 0;
+		}
+
+		for (j = 0; j < basic; ++j) {
+			// if it's not a basic code point
+			if (input.charCodeAt(j) >= 0x80) {
+				error('not-basic');
+			}
+			output.push(input.charCodeAt(j));
+		}
+
+		// Main decoding loop: start just after the last delimiter if any basic code
+		// points were copied; start at the beginning otherwise.
+
+		for (index = basic > 0 ? basic + 1 : 0; index < inputLength; /* no final expression */) {
+
+			// `index` is the index of the next character to be consumed.
+			// Decode a generalized variable-length integer into `delta`,
+			// which gets added to `i`. The overflow checking is easier
+			// if we increase `i` as we go, then subtract off its starting
+			// value at the end to obtain `delta`.
+			for (oldi = i, w = 1, k = base; /* no condition */; k += base) {
+
+				if (index >= inputLength) {
+					error('invalid-input');
 				}
-			},this);
+
+				digit = basicToDigit(input.charCodeAt(index++));
+
+				if (digit >= base || digit > floor((maxInt - i) / w)) {
+					error('overflow');
+				}
+
+				i += digit * w;
+				t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
+
+				if (digit < t) {
+					break;
+				}
+
+				baseMinusT = base - t;
+				if (w > floor(maxInt / baseMinusT)) {
+					error('overflow');
+				}
+
+				w *= baseMinusT;
+
+			}
+
+			out = output.length + 1;
+			bias = adapt(i - oldi, out, oldi == 0);
+
+			// `i` was supposed to wrap around from `out` to `0`,
+			// incrementing `n` each time, so we'll fix that now:
+			if (floor(i / out) > maxInt - n) {
+				error('overflow');
+			}
+
+			n += floor(i / out);
+			i %= out;
+
+			// Insert `n` at position `i` of the output
+			output.splice(i++, 0, n);
 
 		}
-	});
 
-	Chart.types.Doughnut.extend({
-		name : "Pie",
-		defaults : helpers.merge(defaultConfig,{percentageInnerCutout : 0})
-	});
+		return ucs2encode(output);
+	}
 
-}).call(this);
-(function(){
-	"use strict";
+	/**
+	 * Converts a string of Unicode symbols (e.g. a domain name label) to a
+	 * Punycode string of ASCII-only symbols.
+	 * @memberOf punycode
+	 * @param {String} input The string of Unicode symbols.
+	 * @returns {String} The resulting Punycode string of ASCII-only symbols.
+	 */
+	function encode(input) {
+		var n,
+		    delta,
+		    handledCPCount,
+		    basicLength,
+		    bias,
+		    j,
+		    m,
+		    q,
+		    k,
+		    t,
+		    currentValue,
+		    output = [],
+		    /** `inputLength` will hold the number of code points in `input`. */
+		    inputLength,
+		    /** Cached calculation results */
+		    handledCPCountPlusOne,
+		    baseMinusT,
+		    qMinusT;
 
-	var root = this,
-		Chart = root.Chart,
-		helpers = Chart.helpers;
+		// Convert the input in UCS-2 to Unicode
+		input = ucs2decode(input);
 
-	var defaultConfig = {
+		// Cache the length
+		inputLength = input.length;
 
-		///Boolean - Whether grid lines are shown across the chart
-		scaleShowGridLines : true,
+		// Initialize the state
+		n = initialN;
+		delta = 0;
+		bias = initialBias;
 
-		//String - Colour of the grid lines
-		scaleGridLineColor : "rgba(0,0,0,.05)",
+		// Handle the basic code points
+		for (j = 0; j < inputLength; ++j) {
+			currentValue = input[j];
+			if (currentValue < 0x80) {
+				output.push(stringFromCharCode(currentValue));
+			}
+		}
 
-		//Number - Width of the grid lines
-		scaleGridLineWidth : 1,
+		handledCPCount = basicLength = output.length;
 
-		//Boolean - Whether to show horizontal lines (except X axis)
-		scaleShowHorizontalLines: true,
+		// `handledCPCount` is the number of code points that have been handled;
+		// `basicLength` is the number of basic code points.
 
-		//Boolean - Whether to show vertical lines (except Y axis)
-		scaleShowVerticalLines: true,
+		// Finish the basic string - if it is not empty - with a delimiter
+		if (basicLength) {
+			output.push(delimiter);
+		}
 
-		//Boolean - Whether the line is curved between points
-		bezierCurve : true,
+		// Main encoding loop:
+		while (handledCPCount < inputLength) {
 
-		//Number - Tension of the bezier curve between points
-		bezierCurveTension : 0.4,
-
-		//Boolean - Whether to show a dot for each point
-		pointDot : true,
-
-		//Number - Radius of each point dot in pixels
-		pointDotRadius : 4,
-
-		//Number - Pixel width of point dot stroke
-		pointDotStrokeWidth : 1,
-
-		//Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-		pointHitDetectionRadius : 20,
-
-		//Boolean - Whether to show a stroke for datasets
-		datasetStroke : true,
-
-		//Number - Pixel width of dataset stroke
-		datasetStrokeWidth : 2,
-
-		//Boolean - Whether to fill the dataset with a colour
-		datasetFill : true,
-
-		//String - A legend template
-		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-
-	};
-
-
-	Chart.Type.extend({
-		name: "Line",
-		defaults : defaultConfig,
-		initialize:  function(data){
-			//Declare the extension of the default point, to cater for the options passed in to the constructor
-			this.PointClass = Chart.Point.extend({
-				strokeWidth : this.options.pointDotStrokeWidth,
-				radius : this.options.pointDotRadius,
-				display: this.options.pointDot,
-				hitDetectionRadius : this.options.pointHitDetectionRadius,
-				ctx : this.chart.ctx,
-				inRange : function(mouseX){
-					return (Math.pow(mouseX-this.x, 2) < Math.pow(this.radius + this.hitDetectionRadius,2));
+			// All non-basic code points < n have been handled already. Find the next
+			// larger one:
+			for (m = maxInt, j = 0; j < inputLength; ++j) {
+				currentValue = input[j];
+				if (currentValue >= n && currentValue < m) {
+					m = currentValue;
 				}
-			});
-
-			this.datasets = [];
-
-			//Set up tooltip events on the chart
-			if (this.options.showTooltips){
-				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
-					var activePoints = (evt.type !== 'mouseout') ? this.getPointsAtEvent(evt) : [];
-					this.eachPoints(function(point){
-						point.restore(['fillColor', 'strokeColor']);
-					});
-					helpers.each(activePoints, function(activePoint){
-						activePoint.fillColor = activePoint.highlightFill;
-						activePoint.strokeColor = activePoint.highlightStroke;
-					});
-					this.showTooltip(activePoints);
-				});
 			}
 
-			//Iterate through each of the datasets, and build this into a property of the chart
-			helpers.each(data.datasets,function(dataset){
-
-				var datasetObject = {
-					label : dataset.label || null,
-					fillColor : dataset.fillColor,
-					strokeColor : dataset.strokeColor,
-					pointColor : dataset.pointColor,
-					pointStrokeColor : dataset.pointStrokeColor,
-					points : []
-				};
-
-				this.datasets.push(datasetObject);
-
-
-				helpers.each(dataset.data,function(dataPoint,index){
-					//Add a new point for each piece of data, passing any required data to draw.
-					datasetObject.points.push(new this.PointClass({
-						value : dataPoint,
-						label : data.labels[index],
-						datasetLabel: dataset.label,
-						strokeColor : dataset.pointStrokeColor,
-						fillColor : dataset.pointColor,
-						highlightFill : dataset.pointHighlightFill || dataset.pointColor,
-						highlightStroke : dataset.pointHighlightStroke || dataset.pointStrokeColor
-					}));
-				},this);
-
-				this.buildScale(data.labels);
-
-
-				this.eachPoints(function(point, index){
-					helpers.extend(point, {
-						x: this.scale.calculateX(index),
-						y: this.scale.endPoint
-					});
-					point.save();
-				}, this);
-
-			},this);
-
-
-			this.render();
-		},
-		update : function(){
-			this.scale.update();
-			// Reset any highlight colours before updating.
-			helpers.each(this.activeElements, function(activeElement){
-				activeElement.restore(['fillColor', 'strokeColor']);
-			});
-			this.eachPoints(function(point){
-				point.save();
-			});
-			this.render();
-		},
-		eachPoints : function(callback){
-			helpers.each(this.datasets,function(dataset){
-				helpers.each(dataset.points,callback,this);
-			},this);
-		},
-		getPointsAtEvent : function(e){
-			var pointsArray = [],
-				eventPosition = helpers.getRelativePosition(e);
-			helpers.each(this.datasets,function(dataset){
-				helpers.each(dataset.points,function(point){
-					if (point.inRange(eventPosition.x,eventPosition.y)) pointsArray.push(point);
-				});
-			},this);
-			return pointsArray;
-		},
-		buildScale : function(labels){
-			var self = this;
-
-			var dataTotal = function(){
-				var values = [];
-				self.eachPoints(function(point){
-					values.push(point.value);
-				});
-
-				return values;
-			};
-
-			var scaleOptions = {
-				templateString : this.options.scaleLabel,
-				height : this.chart.height,
-				width : this.chart.width,
-				ctx : this.chart.ctx,
-				textColor : this.options.scaleFontColor,
-				fontSize : this.options.scaleFontSize,
-				fontStyle : this.options.scaleFontStyle,
-				fontFamily : this.options.scaleFontFamily,
-				valuesCount : labels.length,
-				beginAtZero : this.options.scaleBeginAtZero,
-				integersOnly : this.options.scaleIntegersOnly,
-				calculateYRange : function(currentHeight){
-					var updatedRanges = helpers.calculateScaleRange(
-						dataTotal(),
-						currentHeight,
-						this.fontSize,
-						this.beginAtZero,
-						this.integersOnly
-					);
-					helpers.extend(this, updatedRanges);
-				},
-				xLabels : labels,
-				font : helpers.fontString(this.options.scaleFontSize, this.options.scaleFontStyle, this.options.scaleFontFamily),
-				lineWidth : this.options.scaleLineWidth,
-				lineColor : this.options.scaleLineColor,
-				showHorizontalLines : this.options.scaleShowHorizontalLines,
-				showVerticalLines : this.options.scaleShowVerticalLines,
-				gridLineWidth : (this.options.scaleShowGridLines) ? this.options.scaleGridLineWidth : 0,
-				gridLineColor : (this.options.scaleShowGridLines) ? this.options.scaleGridLineColor : "rgba(0,0,0,0)",
-				padding: (this.options.showScale) ? 0 : this.options.pointDotRadius + this.options.pointDotStrokeWidth,
-				showLabels : this.options.scaleShowLabels,
-				display : this.options.showScale
-			};
-
-			if (this.options.scaleOverride){
-				helpers.extend(scaleOptions, {
-					calculateYRange: helpers.noop,
-					steps: this.options.scaleSteps,
-					stepValue: this.options.scaleStepWidth,
-					min: this.options.scaleStartValue,
-					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
-				});
+			// Increase `delta` enough to advance the decoder's <n,i> state to <m,0>,
+			// but guard against overflow
+			handledCPCountPlusOne = handledCPCount + 1;
+			if (m - n > floor((maxInt - delta) / handledCPCountPlusOne)) {
+				error('overflow');
 			}
 
+			delta += (m - n) * handledCPCountPlusOne;
+			n = m;
 
-			this.scale = new Chart.Scale(scaleOptions);
-		},
-		addData : function(valuesArray,label){
-			//Map the values array for each of the datasets
+			for (j = 0; j < inputLength; ++j) {
+				currentValue = input[j];
 
-			helpers.each(valuesArray,function(value,datasetIndex){
-				//Add a new point for each piece of data, passing any required data to draw.
-				this.datasets[datasetIndex].points.push(new this.PointClass({
-					value : value,
-					label : label,
-					x: this.scale.calculateX(this.scale.valuesCount+1),
-					y: this.scale.endPoint,
-					strokeColor : this.datasets[datasetIndex].pointStrokeColor,
-					fillColor : this.datasets[datasetIndex].pointColor
-				}));
-			},this);
+				if (currentValue < n && ++delta > maxInt) {
+					error('overflow');
+				}
 
-			this.scale.addXLabel(label);
-			//Then re-render the chart.
-			this.update();
-		},
-		removeData : function(){
-			this.scale.removeXLabel();
-			//Then re-render the chart.
-			helpers.each(this.datasets,function(dataset){
-				dataset.points.shift();
-			},this);
-			this.update();
-		},
-		reflow : function(){
-			var newScaleProps = helpers.extend({
-				height : this.chart.height,
-				width : this.chart.width
-			});
-			this.scale.update(newScaleProps);
-		},
-		draw : function(ease){
-			var easingDecimal = ease || 1;
-			this.clear();
-
-			var ctx = this.chart.ctx;
-
-			// Some helper methods for getting the next/prev points
-			var hasValue = function(item){
-				return item.value !== null;
-			},
-			nextPoint = function(point, collection, index){
-				return helpers.findNextWhere(collection, hasValue, index) || point;
-			},
-			previousPoint = function(point, collection, index){
-				return helpers.findPreviousWhere(collection, hasValue, index) || point;
-			};
-
-			this.scale.draw(easingDecimal);
-
-
-			helpers.each(this.datasets,function(dataset){
-				var pointsWithValues = helpers.where(dataset.points, hasValue);
-
-				//Transition each point first so that the line and point drawing isn't out of sync
-				//We can use this extra loop to calculate the control points of this dataset also in this loop
-
-				helpers.each(dataset.points, function(point, index){
-					if (point.hasValue()){
-						point.transition({
-							y : this.scale.calculateY(point.value),
-							x : this.scale.calculateX(index)
-						}, easingDecimal);
-					}
-				},this);
-
-
-				// Control points need to be calculated in a seperate loop, because we need to know the current x/y of the point
-				// This would cause issues when there is no animation, because the y of the next point would be 0, so beziers would be skewed
-				if (this.options.bezierCurve){
-					helpers.each(pointsWithValues, function(point, index){
-						var tension = (index > 0 && index < pointsWithValues.length - 1) ? this.options.bezierCurveTension : 0;
-						point.controlPoints = helpers.splineCurve(
-							previousPoint(point, pointsWithValues, index),
-							point,
-							nextPoint(point, pointsWithValues, index),
-							tension
+				if (currentValue == n) {
+					// Represent delta as a generalized variable-length integer
+					for (q = delta, k = base; /* no condition */; k += base) {
+						t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
+						if (q < t) {
+							break;
+						}
+						qMinusT = q - t;
+						baseMinusT = base - t;
+						output.push(
+							stringFromCharCode(digitToBasic(t + qMinusT % baseMinusT, 0))
 						);
-
-						// Prevent the bezier going outside of the bounds of the graph
-
-						// Cap puter bezier handles to the upper/lower scale bounds
-						if (point.controlPoints.outer.y > this.scale.endPoint){
-							point.controlPoints.outer.y = this.scale.endPoint;
-						}
-						else if (point.controlPoints.outer.y < this.scale.startPoint){
-							point.controlPoints.outer.y = this.scale.startPoint;
-						}
-
-						// Cap inner bezier handles to the upper/lower scale bounds
-						if (point.controlPoints.inner.y > this.scale.endPoint){
-							point.controlPoints.inner.y = this.scale.endPoint;
-						}
-						else if (point.controlPoints.inner.y < this.scale.startPoint){
-							point.controlPoints.inner.y = this.scale.startPoint;
-						}
-					},this);
-				}
-
-
-				//Draw the line between all the points
-				ctx.lineWidth = this.options.datasetStrokeWidth;
-				ctx.strokeStyle = dataset.strokeColor;
-				ctx.beginPath();
-
-				helpers.each(pointsWithValues, function(point, index){
-					if (index === 0){
-						ctx.moveTo(point.x, point.y);
+						q = floor(qMinusT / baseMinusT);
 					}
-					else{
-						if(this.options.bezierCurve){
-							var previous = previousPoint(point, pointsWithValues, index);
 
-							ctx.bezierCurveTo(
-								previous.controlPoints.outer.x,
-								previous.controlPoints.outer.y,
-								point.controlPoints.inner.x,
-								point.controlPoints.inner.y,
-								point.x,
-								point.y
-							);
-						}
-						else{
-							ctx.lineTo(point.x,point.y);
-						}
-					}
-				}, this);
-
-				ctx.stroke();
-
-				if (this.options.datasetFill && pointsWithValues.length > 0){
-					//Round off the line by going to the base of the chart, back to the start, then fill.
-					ctx.lineTo(pointsWithValues[pointsWithValues.length - 1].x, this.scale.endPoint);
-					ctx.lineTo(pointsWithValues[0].x, this.scale.endPoint);
-					ctx.fillStyle = dataset.fillColor;
-					ctx.closePath();
-					ctx.fill();
+					output.push(stringFromCharCode(digitToBasic(q, 0)));
+					bias = adapt(delta, handledCPCountPlusOne, handledCPCount == basicLength);
+					delta = 0;
+					++handledCPCount;
 				}
+			}
 
-				//Now draw the points over the line
-				//A little inefficient double looping, but better than the line
-				//lagging behind the point positions
-				helpers.each(pointsWithValues,function(point){
-					point.draw();
-				});
-			},this);
+			++delta;
+			++n;
+
 		}
-	});
+		return output.join('');
+	}
 
+	/**
+	 * Converts a Punycode string representing a domain name or an email address
+	 * to Unicode. Only the Punycoded parts of the input will be converted, i.e.
+	 * it doesn't matter if you call it on a string that has already been
+	 * converted to Unicode.
+	 * @memberOf punycode
+	 * @param {String} input The Punycoded domain name or email address to
+	 * convert to Unicode.
+	 * @returns {String} The Unicode representation of the given Punycode
+	 * string.
+	 */
+	function toUnicode(input) {
+		return mapDomain(input, function(string) {
+			return regexPunycode.test(string)
+				? decode(string.slice(4).toLowerCase())
+				: string;
+		});
+	}
 
-}).call(this);
+	/**
+	 * Converts a Unicode string representing a domain name or an email address to
+	 * Punycode. Only the non-ASCII parts of the domain name will be converted,
+	 * i.e. it doesn't matter if you call it with a domain that's already in
+	 * ASCII.
+	 * @memberOf punycode
+	 * @param {String} input The domain name or email address to convert, as a
+	 * Unicode string.
+	 * @returns {String} The Punycode representation of the given domain name or
+	 * email address.
+	 */
+	function toASCII(input) {
+		return mapDomain(input, function(string) {
+			return regexNonASCII.test(string)
+				? 'xn--' + encode(string)
+				: string;
+		});
+	}
 
-(function(){
-	"use strict";
+	/*--------------------------------------------------------------------------*/
 
-	var root = this,
-		Chart = root.Chart,
-		//Cache a local reference to Chart.helpers
-		helpers = Chart.helpers;
-
-	var defaultConfig = {
-		//Boolean - Show a backdrop to the scale label
-		scaleShowLabelBackdrop : true,
-
-		//String - The colour of the label backdrop
-		scaleBackdropColor : "rgba(255,255,255,0.75)",
-
-		// Boolean - Whether the scale should begin at zero
-		scaleBeginAtZero : true,
-
-		//Number - The backdrop padding above & below the label in pixels
-		scaleBackdropPaddingY : 2,
-
-		//Number - The backdrop padding to the side of the label in pixels
-		scaleBackdropPaddingX : 2,
-
-		//Boolean - Show line for each value in the scale
-		scaleShowLine : true,
-
-		//Boolean - Stroke a line around each segment in the chart
-		segmentShowStroke : true,
-
-		//String - The colour of the stroke on each segement.
-		segmentStrokeColor : "#fff",
-
-		//Number - The width of the stroke value in pixels
-		segmentStrokeWidth : 2,
-
-		//Number - Amount of animation steps
-		animationSteps : 100,
-
-		//String - Animation easing effect.
-		animationEasing : "easeOutBounce",
-
-		//Boolean - Whether to animate the rotation of the chart
-		animateRotate : true,
-
-		//Boolean - Whether to animate scaling the chart from the centre
-		animateScale : false,
-
-		//String - A legend template
-		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+	/** Define the public API */
+	punycode = {
+		/**
+		 * A string representing the current Punycode.js version number.
+		 * @memberOf punycode
+		 * @type String
+		 */
+		'version': '1.3.2',
+		/**
+		 * An object of methods to convert from JavaScript's internal character
+		 * representation (UCS-2) to Unicode code points, and back.
+		 * @see <https://mathiasbynens.be/notes/javascript-encoding>
+		 * @memberOf punycode
+		 * @type Object
+		 */
+		'ucs2': {
+			'decode': ucs2decode,
+			'encode': ucs2encode
+		},
+		'decode': decode,
+		'encode': encode,
+		'toASCII': toASCII,
+		'toUnicode': toUnicode
 	};
 
-
-	Chart.Type.extend({
-		//Passing in a name registers this chart in the Chart namespace
-		name: "PolarArea",
-		//Providing a defaults will also register the deafults in the chart namespace
-		defaults : defaultConfig,
-		//Initialize is fired when the chart is initialized - Data is passed in as a parameter
-		//Config is automatically merged by the core of Chart.js, and is available at this.options
-		initialize:  function(data){
-			this.segments = [];
-			//Declare segment class as a chart instance specific class, so it can share props for this instance
-			this.SegmentArc = Chart.Arc.extend({
-				showStroke : this.options.segmentShowStroke,
-				strokeWidth : this.options.segmentStrokeWidth,
-				strokeColor : this.options.segmentStrokeColor,
-				ctx : this.chart.ctx,
-				innerRadius : 0,
-				x : this.chart.width/2,
-				y : this.chart.height/2
-			});
-			this.scale = new Chart.RadialScale({
-				display: this.options.showScale,
-				fontStyle: this.options.scaleFontStyle,
-				fontSize: this.options.scaleFontSize,
-				fontFamily: this.options.scaleFontFamily,
-				fontColor: this.options.scaleFontColor,
-				showLabels: this.options.scaleShowLabels,
-				showLabelBackdrop: this.options.scaleShowLabelBackdrop,
-				backdropColor: this.options.scaleBackdropColor,
-				backdropPaddingY : this.options.scaleBackdropPaddingY,
-				backdropPaddingX: this.options.scaleBackdropPaddingX,
-				lineWidth: (this.options.scaleShowLine) ? this.options.scaleLineWidth : 0,
-				lineColor: this.options.scaleLineColor,
-				lineArc: true,
-				width: this.chart.width,
-				height: this.chart.height,
-				xCenter: this.chart.width/2,
-				yCenter: this.chart.height/2,
-				ctx : this.chart.ctx,
-				templateString: this.options.scaleLabel,
-				valuesCount: data.length
-			});
-
-			this.updateScaleRange(data);
-
-			this.scale.update();
-
-			helpers.each(data,function(segment,index){
-				this.addData(segment,index,true);
-			},this);
-
-			//Set up tooltip events on the chart
-			if (this.options.showTooltips){
-				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
-					var activeSegments = (evt.type !== 'mouseout') ? this.getSegmentsAtEvent(evt) : [];
-					helpers.each(this.segments,function(segment){
-						segment.restore(["fillColor"]);
-					});
-					helpers.each(activeSegments,function(activeSegment){
-						activeSegment.fillColor = activeSegment.highlightColor;
-					});
-					this.showTooltip(activeSegments);
-				});
+	/** Expose `punycode` */
+	// Some AMD build optimizers, like r.js, check for specific condition patterns
+	// like the following:
+	if (
+		typeof define == 'function' &&
+		typeof define.amd == 'object' &&
+		define.amd
+	) {
+		define('punycode', function() {
+			return punycode;
+		});
+	} else if (freeExports && freeModule) {
+		if (module.exports == freeExports) {
+			// in Node.js, io.js, or RingoJS v0.8.0+
+			freeModule.exports = punycode;
+		} else {
+			// in Narwhal or RingoJS v0.7.0-
+			for (key in punycode) {
+				punycode.hasOwnProperty(key) && (freeExports[key] = punycode[key]);
 			}
-
-			this.render();
-		},
-		getSegmentsAtEvent : function(e){
-			var segmentsArray = [];
-
-			var location = helpers.getRelativePosition(e);
-
-			helpers.each(this.segments,function(segment){
-				if (segment.inRange(location.x,location.y)) segmentsArray.push(segment);
-			},this);
-			return segmentsArray;
-		},
-		addData : function(segment, atIndex, silent){
-			var index = atIndex || this.segments.length;
-
-			this.segments.splice(index, 0, new this.SegmentArc({
-				fillColor: segment.color,
-				highlightColor: segment.highlight || segment.color,
-				label: segment.label,
-				value: segment.value,
-				outerRadius: (this.options.animateScale) ? 0 : this.scale.calculateCenterOffset(segment.value),
-				circumference: (this.options.animateRotate) ? 0 : this.scale.getCircumference(),
-				startAngle: Math.PI * 1.5
-			}));
-			if (!silent){
-				this.reflow();
-				this.update();
-			}
-		},
-		removeData: function(atIndex){
-			var indexToDelete = (helpers.isNumber(atIndex)) ? atIndex : this.segments.length-1;
-			this.segments.splice(indexToDelete, 1);
-			this.reflow();
-			this.update();
-		},
-		calculateTotal: function(data){
-			this.total = 0;
-			helpers.each(data,function(segment){
-				this.total += segment.value;
-			},this);
-			this.scale.valuesCount = this.segments.length;
-		},
-		updateScaleRange: function(datapoints){
-			var valuesArray = [];
-			helpers.each(datapoints,function(segment){
-				valuesArray.push(segment.value);
-			});
-
-			var scaleSizes = (this.options.scaleOverride) ?
-				{
-					steps: this.options.scaleSteps,
-					stepValue: this.options.scaleStepWidth,
-					min: this.options.scaleStartValue,
-					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
-				} :
-				helpers.calculateScaleRange(
-					valuesArray,
-					helpers.min([this.chart.width, this.chart.height])/2,
-					this.options.scaleFontSize,
-					this.options.scaleBeginAtZero,
-					this.options.scaleIntegersOnly
-				);
-
-			helpers.extend(
-				this.scale,
-				scaleSizes,
-				{
-					size: helpers.min([this.chart.width, this.chart.height]),
-					xCenter: this.chart.width/2,
-					yCenter: this.chart.height/2
-				}
-			);
-
-		},
-		update : function(){
-			this.calculateTotal(this.segments);
-
-			helpers.each(this.segments,function(segment){
-				segment.save();
-			});
-			
-			this.reflow();
-			this.render();
-		},
-		reflow : function(){
-			helpers.extend(this.SegmentArc.prototype,{
-				x : this.chart.width/2,
-				y : this.chart.height/2
-			});
-			this.updateScaleRange(this.segments);
-			this.scale.update();
-
-			helpers.extend(this.scale,{
-				xCenter: this.chart.width/2,
-				yCenter: this.chart.height/2
-			});
-
-			helpers.each(this.segments, function(segment){
-				segment.update({
-					outerRadius : this.scale.calculateCenterOffset(segment.value)
-				});
-			}, this);
-
-		},
-		draw : function(ease){
-			var easingDecimal = ease || 1;
-			//Clear & draw the canvas
-			this.clear();
-			helpers.each(this.segments,function(segment, index){
-				segment.transition({
-					circumference : this.scale.getCircumference(),
-					outerRadius : this.scale.calculateCenterOffset(segment.value)
-				},easingDecimal);
-
-				segment.endAngle = segment.startAngle + segment.circumference;
-
-				// If we've removed the first segment we need to set the first one to
-				// start at the top.
-				if (index === 0){
-					segment.startAngle = Math.PI * 1.5;
-				}
-
-				//Check to see if it's the last segment, if not get the next and update the start angle
-				if (index < this.segments.length - 1){
-					this.segments[index+1].startAngle = segment.endAngle;
-				}
-				segment.draw();
-			}, this);
-			this.scale.draw();
 		}
-	});
-
-}).call(this);
-(function(){
-	"use strict";
-
-	var root = this,
-		Chart = root.Chart,
-		helpers = Chart.helpers;
-
-
-
-	Chart.Type.extend({
-		name: "Radar",
-		defaults:{
-			//Boolean - Whether to show lines for each scale point
-			scaleShowLine : true,
-
-			//Boolean - Whether we show the angle lines out of the radar
-			angleShowLineOut : true,
-
-			//Boolean - Whether to show labels on the scale
-			scaleShowLabels : false,
-
-			// Boolean - Whether the scale should begin at zero
-			scaleBeginAtZero : true,
-
-			//String - Colour of the angle line
-			angleLineColor : "rgba(0,0,0,.1)",
-
-			//Number - Pixel width of the angle line
-			angleLineWidth : 1,
-
-			//String - Point label font declaration
-			pointLabelFontFamily : "'Arial'",
-
-			//String - Point label font weight
-			pointLabelFontStyle : "normal",
-
-			//Number - Point label font size in pixels
-			pointLabelFontSize : 10,
-
-			//String - Point label font colour
-			pointLabelFontColor : "#666",
-
-			//Boolean - Whether to show a dot for each point
-			pointDot : true,
-
-			//Number - Radius of each point dot in pixels
-			pointDotRadius : 3,
-
-			//Number - Pixel width of point dot stroke
-			pointDotStrokeWidth : 1,
-
-			//Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-			pointHitDetectionRadius : 20,
-
-			//Boolean - Whether to show a stroke for datasets
-			datasetStroke : true,
-
-			//Number - Pixel width of dataset stroke
-			datasetStrokeWidth : 2,
-
-			//Boolean - Whether to fill the dataset with a colour
-			datasetFill : true,
-
-			//String - A legend template
-			legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-
-		},
-
-		initialize: function(data){
-			this.PointClass = Chart.Point.extend({
-				strokeWidth : this.options.pointDotStrokeWidth,
-				radius : this.options.pointDotRadius,
-				display: this.options.pointDot,
-				hitDetectionRadius : this.options.pointHitDetectionRadius,
-				ctx : this.chart.ctx
-			});
-
-			this.datasets = [];
-
-			this.buildScale(data);
-
-			//Set up tooltip events on the chart
-			if (this.options.showTooltips){
-				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
-					var activePointsCollection = (evt.type !== 'mouseout') ? this.getPointsAtEvent(evt) : [];
-
-					this.eachPoints(function(point){
-						point.restore(['fillColor', 'strokeColor']);
-					});
-					helpers.each(activePointsCollection, function(activePoint){
-						activePoint.fillColor = activePoint.highlightFill;
-						activePoint.strokeColor = activePoint.highlightStroke;
-					});
-
-					this.showTooltip(activePointsCollection);
-				});
-			}
-
-			//Iterate through each of the datasets, and build this into a property of the chart
-			helpers.each(data.datasets,function(dataset){
-
-				var datasetObject = {
-					label: dataset.label || null,
-					fillColor : dataset.fillColor,
-					strokeColor : dataset.strokeColor,
-					pointColor : dataset.pointColor,
-					pointStrokeColor : dataset.pointStrokeColor,
-					points : []
-				};
-
-				this.datasets.push(datasetObject);
-
-				helpers.each(dataset.data,function(dataPoint,index){
-					//Add a new point for each piece of data, passing any required data to draw.
-					var pointPosition;
-					if (!this.scale.animation){
-						pointPosition = this.scale.getPointPosition(index, this.scale.calculateCenterOffset(dataPoint));
-					}
-					datasetObject.points.push(new this.PointClass({
-						value : dataPoint,
-						label : data.labels[index],
-						datasetLabel: dataset.label,
-						x: (this.options.animation) ? this.scale.xCenter : pointPosition.x,
-						y: (this.options.animation) ? this.scale.yCenter : pointPosition.y,
-						strokeColor : dataset.pointStrokeColor,
-						fillColor : dataset.pointColor,
-						highlightFill : dataset.pointHighlightFill || dataset.pointColor,
-						highlightStroke : dataset.pointHighlightStroke || dataset.pointStrokeColor
-					}));
-				},this);
-
-			},this);
-
-			this.render();
-		},
-		eachPoints : function(callback){
-			helpers.each(this.datasets,function(dataset){
-				helpers.each(dataset.points,callback,this);
-			},this);
-		},
-
-		getPointsAtEvent : function(evt){
-			var mousePosition = helpers.getRelativePosition(evt),
-				fromCenter = helpers.getAngleFromPoint({
-					x: this.scale.xCenter,
-					y: this.scale.yCenter
-				}, mousePosition);
-
-			var anglePerIndex = (Math.PI * 2) /this.scale.valuesCount,
-				pointIndex = Math.round((fromCenter.angle - Math.PI * 1.5) / anglePerIndex),
-				activePointsCollection = [];
-
-			// If we're at the top, make the pointIndex 0 to get the first of the array.
-			if (pointIndex >= this.scale.valuesCount || pointIndex < 0){
-				pointIndex = 0;
-			}
-
-			if (fromCenter.distance <= this.scale.drawingArea){
-				helpers.each(this.datasets, function(dataset){
-					activePointsCollection.push(dataset.points[pointIndex]);
-				});
-			}
-
-			return activePointsCollection;
-		},
-
-		buildScale : function(data){
-			this.scale = new Chart.RadialScale({
-				display: this.options.showScale,
-				fontStyle: this.options.scaleFontStyle,
-				fontSize: this.options.scaleFontSize,
-				fontFamily: this.options.scaleFontFamily,
-				fontColor: this.options.scaleFontColor,
-				showLabels: this.options.scaleShowLabels,
-				showLabelBackdrop: this.options.scaleShowLabelBackdrop,
-				backdropColor: this.options.scaleBackdropColor,
-				backdropPaddingY : this.options.scaleBackdropPaddingY,
-				backdropPaddingX: this.options.scaleBackdropPaddingX,
-				lineWidth: (this.options.scaleShowLine) ? this.options.scaleLineWidth : 0,
-				lineColor: this.options.scaleLineColor,
-				angleLineColor : this.options.angleLineColor,
-				angleLineWidth : (this.options.angleShowLineOut) ? this.options.angleLineWidth : 0,
-				// Point labels at the edge of each line
-				pointLabelFontColor : this.options.pointLabelFontColor,
-				pointLabelFontSize : this.options.pointLabelFontSize,
-				pointLabelFontFamily : this.options.pointLabelFontFamily,
-				pointLabelFontStyle : this.options.pointLabelFontStyle,
-				height : this.chart.height,
-				width: this.chart.width,
-				xCenter: this.chart.width/2,
-				yCenter: this.chart.height/2,
-				ctx : this.chart.ctx,
-				templateString: this.options.scaleLabel,
-				labels: data.labels,
-				valuesCount: data.datasets[0].data.length
-			});
-
-			this.scale.setScaleSize();
-			this.updateScaleRange(data.datasets);
-			this.scale.buildYLabels();
-		},
-		updateScaleRange: function(datasets){
-			var valuesArray = (function(){
-				var totalDataArray = [];
-				helpers.each(datasets,function(dataset){
-					if (dataset.data){
-						totalDataArray = totalDataArray.concat(dataset.data);
-					}
-					else {
-						helpers.each(dataset.points, function(point){
-							totalDataArray.push(point.value);
-						});
-					}
-				});
-				return totalDataArray;
-			})();
-
-
-			var scaleSizes = (this.options.scaleOverride) ?
-				{
-					steps: this.options.scaleSteps,
-					stepValue: this.options.scaleStepWidth,
-					min: this.options.scaleStartValue,
-					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
-				} :
-				helpers.calculateScaleRange(
-					valuesArray,
-					helpers.min([this.chart.width, this.chart.height])/2,
-					this.options.scaleFontSize,
-					this.options.scaleBeginAtZero,
-					this.options.scaleIntegersOnly
-				);
-
-			helpers.extend(
-				this.scale,
-				scaleSizes
-			);
-
-		},
-		addData : function(valuesArray,label){
-			//Map the values array for each of the datasets
-			this.scale.valuesCount++;
-			helpers.each(valuesArray,function(value,datasetIndex){
-				var pointPosition = this.scale.getPointPosition(this.scale.valuesCount, this.scale.calculateCenterOffset(value));
-				this.datasets[datasetIndex].points.push(new this.PointClass({
-					value : value,
-					label : label,
-					x: pointPosition.x,
-					y: pointPosition.y,
-					strokeColor : this.datasets[datasetIndex].pointStrokeColor,
-					fillColor : this.datasets[datasetIndex].pointColor
-				}));
-			},this);
-
-			this.scale.labels.push(label);
-
-			this.reflow();
-
-			this.update();
-		},
-		removeData : function(){
-			this.scale.valuesCount--;
-			this.scale.labels.shift();
-			helpers.each(this.datasets,function(dataset){
-				dataset.points.shift();
-			},this);
-			this.reflow();
-			this.update();
-		},
-		update : function(){
-			this.eachPoints(function(point){
-				point.save();
-			});
-			this.reflow();
-			this.render();
-		},
-		reflow: function(){
-			helpers.extend(this.scale, {
-				width : this.chart.width,
-				height: this.chart.height,
-				size : helpers.min([this.chart.width, this.chart.height]),
-				xCenter: this.chart.width/2,
-				yCenter: this.chart.height/2
-			});
-			this.updateScaleRange(this.datasets);
-			this.scale.setScaleSize();
-			this.scale.buildYLabels();
-		},
-		draw : function(ease){
-			var easeDecimal = ease || 1,
-				ctx = this.chart.ctx;
-			this.clear();
-			this.scale.draw();
-
-			helpers.each(this.datasets,function(dataset){
-
-				//Transition each point first so that the line and point drawing isn't out of sync
-				helpers.each(dataset.points,function(point,index){
-					if (point.hasValue()){
-						point.transition(this.scale.getPointPosition(index, this.scale.calculateCenterOffset(point.value)), easeDecimal);
-					}
-				},this);
-
-
-
-				//Draw the line between all the points
-				ctx.lineWidth = this.options.datasetStrokeWidth;
-				ctx.strokeStyle = dataset.strokeColor;
-				ctx.beginPath();
-				helpers.each(dataset.points,function(point,index){
-					if (index === 0){
-						ctx.moveTo(point.x,point.y);
-					}
-					else{
-						ctx.lineTo(point.x,point.y);
-					}
-				},this);
-				ctx.closePath();
-				ctx.stroke();
-
-				ctx.fillStyle = dataset.fillColor;
-				ctx.fill();
-
-				//Now draw the points over the line
-				//A little inefficient double looping, but better than the line
-				//lagging behind the point positions
-				helpers.each(dataset.points,function(point){
-					if (point.hasValue()){
-						point.draw();
-					}
-				});
-
-			},this);
-
-		}
-
-	});
-
-
-
-
-
-}).call(this);
-},{}],208:[function(require,module,exports){
+	} else {
+		// in Rhino or a web browser
+		root.punycode = punycode;
+	}
+
+}(this));
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],210:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.0
  * http://jquery.com/
@@ -71896,7 +75934,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],209:[function(require,module,exports){
+},{}],211:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -86330,3696 +90368,7 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],210:[function(require,module,exports){
-//! moment.js
-//! version : 2.12.0
-//! authors : Tim Wood, Iskren Chernev, Moment.js contributors
-//! license : MIT
-//! momentjs.com
-
-;(function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-    typeof define === 'function' && define.amd ? define(factory) :
-    global.moment = factory()
-}(this, function () { 'use strict';
-
-    var hookCallback;
-
-    function utils_hooks__hooks () {
-        return hookCallback.apply(null, arguments);
-    }
-
-    // This is done to register the method called with moment()
-    // without creating circular dependencies.
-    function setHookCallback (callback) {
-        hookCallback = callback;
-    }
-
-    function isArray(input) {
-        return input instanceof Array || Object.prototype.toString.call(input) === '[object Array]';
-    }
-
-    function isDate(input) {
-        return input instanceof Date || Object.prototype.toString.call(input) === '[object Date]';
-    }
-
-    function map(arr, fn) {
-        var res = [], i;
-        for (i = 0; i < arr.length; ++i) {
-            res.push(fn(arr[i], i));
-        }
-        return res;
-    }
-
-    function hasOwnProp(a, b) {
-        return Object.prototype.hasOwnProperty.call(a, b);
-    }
-
-    function extend(a, b) {
-        for (var i in b) {
-            if (hasOwnProp(b, i)) {
-                a[i] = b[i];
-            }
-        }
-
-        if (hasOwnProp(b, 'toString')) {
-            a.toString = b.toString;
-        }
-
-        if (hasOwnProp(b, 'valueOf')) {
-            a.valueOf = b.valueOf;
-        }
-
-        return a;
-    }
-
-    function create_utc__createUTC (input, format, locale, strict) {
-        return createLocalOrUTC(input, format, locale, strict, true).utc();
-    }
-
-    function defaultParsingFlags() {
-        // We need to deep clone this object.
-        return {
-            empty           : false,
-            unusedTokens    : [],
-            unusedInput     : [],
-            overflow        : -2,
-            charsLeftOver   : 0,
-            nullInput       : false,
-            invalidMonth    : null,
-            invalidFormat   : false,
-            userInvalidated : false,
-            iso             : false
-        };
-    }
-
-    function getParsingFlags(m) {
-        if (m._pf == null) {
-            m._pf = defaultParsingFlags();
-        }
-        return m._pf;
-    }
-
-    function valid__isValid(m) {
-        if (m._isValid == null) {
-            var flags = getParsingFlags(m);
-            m._isValid = !isNaN(m._d.getTime()) &&
-                flags.overflow < 0 &&
-                !flags.empty &&
-                !flags.invalidMonth &&
-                !flags.invalidWeekday &&
-                !flags.nullInput &&
-                !flags.invalidFormat &&
-                !flags.userInvalidated;
-
-            if (m._strict) {
-                m._isValid = m._isValid &&
-                    flags.charsLeftOver === 0 &&
-                    flags.unusedTokens.length === 0 &&
-                    flags.bigHour === undefined;
-            }
-        }
-        return m._isValid;
-    }
-
-    function valid__createInvalid (flags) {
-        var m = create_utc__createUTC(NaN);
-        if (flags != null) {
-            extend(getParsingFlags(m), flags);
-        }
-        else {
-            getParsingFlags(m).userInvalidated = true;
-        }
-
-        return m;
-    }
-
-    function isUndefined(input) {
-        return input === void 0;
-    }
-
-    // Plugins that add properties should also add the key here (null value),
-    // so we can properly clone ourselves.
-    var momentProperties = utils_hooks__hooks.momentProperties = [];
-
-    function copyConfig(to, from) {
-        var i, prop, val;
-
-        if (!isUndefined(from._isAMomentObject)) {
-            to._isAMomentObject = from._isAMomentObject;
-        }
-        if (!isUndefined(from._i)) {
-            to._i = from._i;
-        }
-        if (!isUndefined(from._f)) {
-            to._f = from._f;
-        }
-        if (!isUndefined(from._l)) {
-            to._l = from._l;
-        }
-        if (!isUndefined(from._strict)) {
-            to._strict = from._strict;
-        }
-        if (!isUndefined(from._tzm)) {
-            to._tzm = from._tzm;
-        }
-        if (!isUndefined(from._isUTC)) {
-            to._isUTC = from._isUTC;
-        }
-        if (!isUndefined(from._offset)) {
-            to._offset = from._offset;
-        }
-        if (!isUndefined(from._pf)) {
-            to._pf = getParsingFlags(from);
-        }
-        if (!isUndefined(from._locale)) {
-            to._locale = from._locale;
-        }
-
-        if (momentProperties.length > 0) {
-            for (i in momentProperties) {
-                prop = momentProperties[i];
-                val = from[prop];
-                if (!isUndefined(val)) {
-                    to[prop] = val;
-                }
-            }
-        }
-
-        return to;
-    }
-
-    var updateInProgress = false;
-
-    // Moment prototype object
-    function Moment(config) {
-        copyConfig(this, config);
-        this._d = new Date(config._d != null ? config._d.getTime() : NaN);
-        // Prevent infinite loop in case updateOffset creates new moment
-        // objects.
-        if (updateInProgress === false) {
-            updateInProgress = true;
-            utils_hooks__hooks.updateOffset(this);
-            updateInProgress = false;
-        }
-    }
-
-    function isMoment (obj) {
-        return obj instanceof Moment || (obj != null && obj._isAMomentObject != null);
-    }
-
-    function absFloor (number) {
-        if (number < 0) {
-            return Math.ceil(number);
-        } else {
-            return Math.floor(number);
-        }
-    }
-
-    function toInt(argumentForCoercion) {
-        var coercedNumber = +argumentForCoercion,
-            value = 0;
-
-        if (coercedNumber !== 0 && isFinite(coercedNumber)) {
-            value = absFloor(coercedNumber);
-        }
-
-        return value;
-    }
-
-    // compare two arrays, return the number of differences
-    function compareArrays(array1, array2, dontConvert) {
-        var len = Math.min(array1.length, array2.length),
-            lengthDiff = Math.abs(array1.length - array2.length),
-            diffs = 0,
-            i;
-        for (i = 0; i < len; i++) {
-            if ((dontConvert && array1[i] !== array2[i]) ||
-                (!dontConvert && toInt(array1[i]) !== toInt(array2[i]))) {
-                diffs++;
-            }
-        }
-        return diffs + lengthDiff;
-    }
-
-    function warn(msg) {
-        if (utils_hooks__hooks.suppressDeprecationWarnings === false &&
-                (typeof console !==  'undefined') && console.warn) {
-            console.warn('Deprecation warning: ' + msg);
-        }
-    }
-
-    function deprecate(msg, fn) {
-        var firstTime = true;
-
-        return extend(function () {
-            if (firstTime) {
-                warn(msg + '\nArguments: ' + Array.prototype.slice.call(arguments).join(', ') + '\n' + (new Error()).stack);
-                firstTime = false;
-            }
-            return fn.apply(this, arguments);
-        }, fn);
-    }
-
-    var deprecations = {};
-
-    function deprecateSimple(name, msg) {
-        if (!deprecations[name]) {
-            warn(msg);
-            deprecations[name] = true;
-        }
-    }
-
-    utils_hooks__hooks.suppressDeprecationWarnings = false;
-
-    function isFunction(input) {
-        return input instanceof Function || Object.prototype.toString.call(input) === '[object Function]';
-    }
-
-    function isObject(input) {
-        return Object.prototype.toString.call(input) === '[object Object]';
-    }
-
-    function locale_set__set (config) {
-        var prop, i;
-        for (i in config) {
-            prop = config[i];
-            if (isFunction(prop)) {
-                this[i] = prop;
-            } else {
-                this['_' + i] = prop;
-            }
-        }
-        this._config = config;
-        // Lenient ordinal parsing accepts just a number in addition to
-        // number + (possibly) stuff coming from _ordinalParseLenient.
-        this._ordinalParseLenient = new RegExp(this._ordinalParse.source + '|' + (/\d{1,2}/).source);
-    }
-
-    function mergeConfigs(parentConfig, childConfig) {
-        var res = extend({}, parentConfig), prop;
-        for (prop in childConfig) {
-            if (hasOwnProp(childConfig, prop)) {
-                if (isObject(parentConfig[prop]) && isObject(childConfig[prop])) {
-                    res[prop] = {};
-                    extend(res[prop], parentConfig[prop]);
-                    extend(res[prop], childConfig[prop]);
-                } else if (childConfig[prop] != null) {
-                    res[prop] = childConfig[prop];
-                } else {
-                    delete res[prop];
-                }
-            }
-        }
-        return res;
-    }
-
-    function Locale(config) {
-        if (config != null) {
-            this.set(config);
-        }
-    }
-
-    // internal storage for locale config files
-    var locales = {};
-    var globalLocale;
-
-    function normalizeLocale(key) {
-        return key ? key.toLowerCase().replace('_', '-') : key;
-    }
-
-    // pick the locale from the array
-    // try ['en-au', 'en-gb'] as 'en-au', 'en-gb', 'en', as in move through the list trying each
-    // substring from most specific to least, but move to the next array item if it's a more specific variant than the current root
-    function chooseLocale(names) {
-        var i = 0, j, next, locale, split;
-
-        while (i < names.length) {
-            split = normalizeLocale(names[i]).split('-');
-            j = split.length;
-            next = normalizeLocale(names[i + 1]);
-            next = next ? next.split('-') : null;
-            while (j > 0) {
-                locale = loadLocale(split.slice(0, j).join('-'));
-                if (locale) {
-                    return locale;
-                }
-                if (next && next.length >= j && compareArrays(split, next, true) >= j - 1) {
-                    //the next array item is better than a shallower substring of this one
-                    break;
-                }
-                j--;
-            }
-            i++;
-        }
-        return null;
-    }
-
-    function loadLocale(name) {
-        var oldLocale = null;
-        // TODO: Find a better way to register and load all the locales in Node
-        if (!locales[name] && (typeof module !== 'undefined') &&
-                module && module.exports) {
-            try {
-                oldLocale = globalLocale._abbr;
-                require('./locale/' + name);
-                // because defineLocale currently also sets the global locale, we
-                // want to undo that for lazy loaded locales
-                locale_locales__getSetGlobalLocale(oldLocale);
-            } catch (e) { }
-        }
-        return locales[name];
-    }
-
-    // This function will load locale and then set the global locale.  If
-    // no arguments are passed in, it will simply return the current global
-    // locale key.
-    function locale_locales__getSetGlobalLocale (key, values) {
-        var data;
-        if (key) {
-            if (isUndefined(values)) {
-                data = locale_locales__getLocale(key);
-            }
-            else {
-                data = defineLocale(key, values);
-            }
-
-            if (data) {
-                // moment.duration._locale = moment._locale = data;
-                globalLocale = data;
-            }
-        }
-
-        return globalLocale._abbr;
-    }
-
-    function defineLocale (name, config) {
-        if (config !== null) {
-            config.abbr = name;
-            if (locales[name] != null) {
-                deprecateSimple('defineLocaleOverride',
-                        'use moment.updateLocale(localeName, config) to change ' +
-                        'an existing locale. moment.defineLocale(localeName, ' +
-                        'config) should only be used for creating a new locale');
-                config = mergeConfigs(locales[name]._config, config);
-            } else if (config.parentLocale != null) {
-                if (locales[config.parentLocale] != null) {
-                    config = mergeConfigs(locales[config.parentLocale]._config, config);
-                } else {
-                    // treat as if there is no base config
-                    deprecateSimple('parentLocaleUndefined',
-                            'specified parentLocale is not defined yet');
-                }
-            }
-            locales[name] = new Locale(config);
-
-            // backwards compat for now: also set the locale
-            locale_locales__getSetGlobalLocale(name);
-
-            return locales[name];
-        } else {
-            // useful for testing
-            delete locales[name];
-            return null;
-        }
-    }
-
-    function updateLocale(name, config) {
-        if (config != null) {
-            var locale;
-            if (locales[name] != null) {
-                config = mergeConfigs(locales[name]._config, config);
-            }
-            locale = new Locale(config);
-            locale.parentLocale = locales[name];
-            locales[name] = locale;
-
-            // backwards compat for now: also set the locale
-            locale_locales__getSetGlobalLocale(name);
-        } else {
-            // pass null for config to unupdate, useful for tests
-            if (locales[name] != null) {
-                if (locales[name].parentLocale != null) {
-                    locales[name] = locales[name].parentLocale;
-                } else if (locales[name] != null) {
-                    delete locales[name];
-                }
-            }
-        }
-        return locales[name];
-    }
-
-    // returns locale data
-    function locale_locales__getLocale (key) {
-        var locale;
-
-        if (key && key._locale && key._locale._abbr) {
-            key = key._locale._abbr;
-        }
-
-        if (!key) {
-            return globalLocale;
-        }
-
-        if (!isArray(key)) {
-            //short-circuit everything else
-            locale = loadLocale(key);
-            if (locale) {
-                return locale;
-            }
-            key = [key];
-        }
-
-        return chooseLocale(key);
-    }
-
-    function locale_locales__listLocales() {
-        return Object.keys(locales);
-    }
-
-    var aliases = {};
-
-    function addUnitAlias (unit, shorthand) {
-        var lowerCase = unit.toLowerCase();
-        aliases[lowerCase] = aliases[lowerCase + 's'] = aliases[shorthand] = unit;
-    }
-
-    function normalizeUnits(units) {
-        return typeof units === 'string' ? aliases[units] || aliases[units.toLowerCase()] : undefined;
-    }
-
-    function normalizeObjectUnits(inputObject) {
-        var normalizedInput = {},
-            normalizedProp,
-            prop;
-
-        for (prop in inputObject) {
-            if (hasOwnProp(inputObject, prop)) {
-                normalizedProp = normalizeUnits(prop);
-                if (normalizedProp) {
-                    normalizedInput[normalizedProp] = inputObject[prop];
-                }
-            }
-        }
-
-        return normalizedInput;
-    }
-
-    function makeGetSet (unit, keepTime) {
-        return function (value) {
-            if (value != null) {
-                get_set__set(this, unit, value);
-                utils_hooks__hooks.updateOffset(this, keepTime);
-                return this;
-            } else {
-                return get_set__get(this, unit);
-            }
-        };
-    }
-
-    function get_set__get (mom, unit) {
-        return mom.isValid() ?
-            mom._d['get' + (mom._isUTC ? 'UTC' : '') + unit]() : NaN;
-    }
-
-    function get_set__set (mom, unit, value) {
-        if (mom.isValid()) {
-            mom._d['set' + (mom._isUTC ? 'UTC' : '') + unit](value);
-        }
-    }
-
-    // MOMENTS
-
-    function getSet (units, value) {
-        var unit;
-        if (typeof units === 'object') {
-            for (unit in units) {
-                this.set(unit, units[unit]);
-            }
-        } else {
-            units = normalizeUnits(units);
-            if (isFunction(this[units])) {
-                return this[units](value);
-            }
-        }
-        return this;
-    }
-
-    function zeroFill(number, targetLength, forceSign) {
-        var absNumber = '' + Math.abs(number),
-            zerosToFill = targetLength - absNumber.length,
-            sign = number >= 0;
-        return (sign ? (forceSign ? '+' : '') : '-') +
-            Math.pow(10, Math.max(0, zerosToFill)).toString().substr(1) + absNumber;
-    }
-
-    var formattingTokens = /(\[[^\[]*\])|(\\)?([Hh]mm(ss)?|Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Qo?|YYYYYY|YYYYY|YYYY|YY|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|mm?|ss?|S{1,9}|x|X|zz?|ZZ?|.)/g;
-
-    var localFormattingTokens = /(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g;
-
-    var formatFunctions = {};
-
-    var formatTokenFunctions = {};
-
-    // token:    'M'
-    // padded:   ['MM', 2]
-    // ordinal:  'Mo'
-    // callback: function () { this.month() + 1 }
-    function addFormatToken (token, padded, ordinal, callback) {
-        var func = callback;
-        if (typeof callback === 'string') {
-            func = function () {
-                return this[callback]();
-            };
-        }
-        if (token) {
-            formatTokenFunctions[token] = func;
-        }
-        if (padded) {
-            formatTokenFunctions[padded[0]] = function () {
-                return zeroFill(func.apply(this, arguments), padded[1], padded[2]);
-            };
-        }
-        if (ordinal) {
-            formatTokenFunctions[ordinal] = function () {
-                return this.localeData().ordinal(func.apply(this, arguments), token);
-            };
-        }
-    }
-
-    function removeFormattingTokens(input) {
-        if (input.match(/\[[\s\S]/)) {
-            return input.replace(/^\[|\]$/g, '');
-        }
-        return input.replace(/\\/g, '');
-    }
-
-    function makeFormatFunction(format) {
-        var array = format.match(formattingTokens), i, length;
-
-        for (i = 0, length = array.length; i < length; i++) {
-            if (formatTokenFunctions[array[i]]) {
-                array[i] = formatTokenFunctions[array[i]];
-            } else {
-                array[i] = removeFormattingTokens(array[i]);
-            }
-        }
-
-        return function (mom) {
-            var output = '';
-            for (i = 0; i < length; i++) {
-                output += array[i] instanceof Function ? array[i].call(mom, format) : array[i];
-            }
-            return output;
-        };
-    }
-
-    // format date using native date object
-    function formatMoment(m, format) {
-        if (!m.isValid()) {
-            return m.localeData().invalidDate();
-        }
-
-        format = expandFormat(format, m.localeData());
-        formatFunctions[format] = formatFunctions[format] || makeFormatFunction(format);
-
-        return formatFunctions[format](m);
-    }
-
-    function expandFormat(format, locale) {
-        var i = 5;
-
-        function replaceLongDateFormatTokens(input) {
-            return locale.longDateFormat(input) || input;
-        }
-
-        localFormattingTokens.lastIndex = 0;
-        while (i >= 0 && localFormattingTokens.test(format)) {
-            format = format.replace(localFormattingTokens, replaceLongDateFormatTokens);
-            localFormattingTokens.lastIndex = 0;
-            i -= 1;
-        }
-
-        return format;
-    }
-
-    var match1         = /\d/;            //       0 - 9
-    var match2         = /\d\d/;          //      00 - 99
-    var match3         = /\d{3}/;         //     000 - 999
-    var match4         = /\d{4}/;         //    0000 - 9999
-    var match6         = /[+-]?\d{6}/;    // -999999 - 999999
-    var match1to2      = /\d\d?/;         //       0 - 99
-    var match3to4      = /\d\d\d\d?/;     //     999 - 9999
-    var match5to6      = /\d\d\d\d\d\d?/; //   99999 - 999999
-    var match1to3      = /\d{1,3}/;       //       0 - 999
-    var match1to4      = /\d{1,4}/;       //       0 - 9999
-    var match1to6      = /[+-]?\d{1,6}/;  // -999999 - 999999
-
-    var matchUnsigned  = /\d+/;           //       0 - inf
-    var matchSigned    = /[+-]?\d+/;      //    -inf - inf
-
-    var matchOffset    = /Z|[+-]\d\d:?\d\d/gi; // +00:00 -00:00 +0000 -0000 or Z
-    var matchShortOffset = /Z|[+-]\d\d(?::?\d\d)?/gi; // +00 -00 +00:00 -00:00 +0000 -0000 or Z
-
-    var matchTimestamp = /[+-]?\d+(\.\d{1,3})?/; // 123456789 123456789.123
-
-    // any word (or two) characters or numbers including two/three word month in arabic.
-    // includes scottish gaelic two word and hyphenated months
-    var matchWord = /[0-9]*['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+|[\u0600-\u06FF\/]+(\s*?[\u0600-\u06FF]+){1,2}/i;
-
-
-    var regexes = {};
-
-    function addRegexToken (token, regex, strictRegex) {
-        regexes[token] = isFunction(regex) ? regex : function (isStrict, localeData) {
-            return (isStrict && strictRegex) ? strictRegex : regex;
-        };
-    }
-
-    function getParseRegexForToken (token, config) {
-        if (!hasOwnProp(regexes, token)) {
-            return new RegExp(unescapeFormat(token));
-        }
-
-        return regexes[token](config._strict, config._locale);
-    }
-
-    // Code from http://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
-    function unescapeFormat(s) {
-        return regexEscape(s.replace('\\', '').replace(/\\(\[)|\\(\])|\[([^\]\[]*)\]|\\(.)/g, function (matched, p1, p2, p3, p4) {
-            return p1 || p2 || p3 || p4;
-        }));
-    }
-
-    function regexEscape(s) {
-        return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-    }
-
-    var tokens = {};
-
-    function addParseToken (token, callback) {
-        var i, func = callback;
-        if (typeof token === 'string') {
-            token = [token];
-        }
-        if (typeof callback === 'number') {
-            func = function (input, array) {
-                array[callback] = toInt(input);
-            };
-        }
-        for (i = 0; i < token.length; i++) {
-            tokens[token[i]] = func;
-        }
-    }
-
-    function addWeekParseToken (token, callback) {
-        addParseToken(token, function (input, array, config, token) {
-            config._w = config._w || {};
-            callback(input, config._w, config, token);
-        });
-    }
-
-    function addTimeToArrayFromToken(token, input, config) {
-        if (input != null && hasOwnProp(tokens, token)) {
-            tokens[token](input, config._a, config, token);
-        }
-    }
-
-    var YEAR = 0;
-    var MONTH = 1;
-    var DATE = 2;
-    var HOUR = 3;
-    var MINUTE = 4;
-    var SECOND = 5;
-    var MILLISECOND = 6;
-    var WEEK = 7;
-    var WEEKDAY = 8;
-
-    function daysInMonth(year, month) {
-        return new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
-    }
-
-    // FORMATTING
-
-    addFormatToken('M', ['MM', 2], 'Mo', function () {
-        return this.month() + 1;
-    });
-
-    addFormatToken('MMM', 0, 0, function (format) {
-        return this.localeData().monthsShort(this, format);
-    });
-
-    addFormatToken('MMMM', 0, 0, function (format) {
-        return this.localeData().months(this, format);
-    });
-
-    // ALIASES
-
-    addUnitAlias('month', 'M');
-
-    // PARSING
-
-    addRegexToken('M',    match1to2);
-    addRegexToken('MM',   match1to2, match2);
-    addRegexToken('MMM',  function (isStrict, locale) {
-        return locale.monthsShortRegex(isStrict);
-    });
-    addRegexToken('MMMM', function (isStrict, locale) {
-        return locale.monthsRegex(isStrict);
-    });
-
-    addParseToken(['M', 'MM'], function (input, array) {
-        array[MONTH] = toInt(input) - 1;
-    });
-
-    addParseToken(['MMM', 'MMMM'], function (input, array, config, token) {
-        var month = config._locale.monthsParse(input, token, config._strict);
-        // if we didn't find a month name, mark the date as invalid.
-        if (month != null) {
-            array[MONTH] = month;
-        } else {
-            getParsingFlags(config).invalidMonth = input;
-        }
-    });
-
-    // LOCALES
-
-    var MONTHS_IN_FORMAT = /D[oD]?(\[[^\[\]]*\]|\s+)+MMMM?/;
-    var defaultLocaleMonths = 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_');
-    function localeMonths (m, format) {
-        return isArray(this._months) ? this._months[m.month()] :
-            this._months[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
-    }
-
-    var defaultLocaleMonthsShort = 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_');
-    function localeMonthsShort (m, format) {
-        return isArray(this._monthsShort) ? this._monthsShort[m.month()] :
-            this._monthsShort[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
-    }
-
-    function localeMonthsParse (monthName, format, strict) {
-        var i, mom, regex;
-
-        if (!this._monthsParse) {
-            this._monthsParse = [];
-            this._longMonthsParse = [];
-            this._shortMonthsParse = [];
-        }
-
-        for (i = 0; i < 12; i++) {
-            // make the regex if we don't have it already
-            mom = create_utc__createUTC([2000, i]);
-            if (strict && !this._longMonthsParse[i]) {
-                this._longMonthsParse[i] = new RegExp('^' + this.months(mom, '').replace('.', '') + '$', 'i');
-                this._shortMonthsParse[i] = new RegExp('^' + this.monthsShort(mom, '').replace('.', '') + '$', 'i');
-            }
-            if (!strict && !this._monthsParse[i]) {
-                regex = '^' + this.months(mom, '') + '|^' + this.monthsShort(mom, '');
-                this._monthsParse[i] = new RegExp(regex.replace('.', ''), 'i');
-            }
-            // test the regex
-            if (strict && format === 'MMMM' && this._longMonthsParse[i].test(monthName)) {
-                return i;
-            } else if (strict && format === 'MMM' && this._shortMonthsParse[i].test(monthName)) {
-                return i;
-            } else if (!strict && this._monthsParse[i].test(monthName)) {
-                return i;
-            }
-        }
-    }
-
-    // MOMENTS
-
-    function setMonth (mom, value) {
-        var dayOfMonth;
-
-        if (!mom.isValid()) {
-            // No op
-            return mom;
-        }
-
-        if (typeof value === 'string') {
-            if (/^\d+$/.test(value)) {
-                value = toInt(value);
-            } else {
-                value = mom.localeData().monthsParse(value);
-                // TODO: Another silent failure?
-                if (typeof value !== 'number') {
-                    return mom;
-                }
-            }
-        }
-
-        dayOfMonth = Math.min(mom.date(), daysInMonth(mom.year(), value));
-        mom._d['set' + (mom._isUTC ? 'UTC' : '') + 'Month'](value, dayOfMonth);
-        return mom;
-    }
-
-    function getSetMonth (value) {
-        if (value != null) {
-            setMonth(this, value);
-            utils_hooks__hooks.updateOffset(this, true);
-            return this;
-        } else {
-            return get_set__get(this, 'Month');
-        }
-    }
-
-    function getDaysInMonth () {
-        return daysInMonth(this.year(), this.month());
-    }
-
-    var defaultMonthsShortRegex = matchWord;
-    function monthsShortRegex (isStrict) {
-        if (this._monthsParseExact) {
-            if (!hasOwnProp(this, '_monthsRegex')) {
-                computeMonthsParse.call(this);
-            }
-            if (isStrict) {
-                return this._monthsShortStrictRegex;
-            } else {
-                return this._monthsShortRegex;
-            }
-        } else {
-            return this._monthsShortStrictRegex && isStrict ?
-                this._monthsShortStrictRegex : this._monthsShortRegex;
-        }
-    }
-
-    var defaultMonthsRegex = matchWord;
-    function monthsRegex (isStrict) {
-        if (this._monthsParseExact) {
-            if (!hasOwnProp(this, '_monthsRegex')) {
-                computeMonthsParse.call(this);
-            }
-            if (isStrict) {
-                return this._monthsStrictRegex;
-            } else {
-                return this._monthsRegex;
-            }
-        } else {
-            return this._monthsStrictRegex && isStrict ?
-                this._monthsStrictRegex : this._monthsRegex;
-        }
-    }
-
-    function computeMonthsParse () {
-        function cmpLenRev(a, b) {
-            return b.length - a.length;
-        }
-
-        var shortPieces = [], longPieces = [], mixedPieces = [],
-            i, mom;
-        for (i = 0; i < 12; i++) {
-            // make the regex if we don't have it already
-            mom = create_utc__createUTC([2000, i]);
-            shortPieces.push(this.monthsShort(mom, ''));
-            longPieces.push(this.months(mom, ''));
-            mixedPieces.push(this.months(mom, ''));
-            mixedPieces.push(this.monthsShort(mom, ''));
-        }
-        // Sorting makes sure if one month (or abbr) is a prefix of another it
-        // will match the longer piece.
-        shortPieces.sort(cmpLenRev);
-        longPieces.sort(cmpLenRev);
-        mixedPieces.sort(cmpLenRev);
-        for (i = 0; i < 12; i++) {
-            shortPieces[i] = regexEscape(shortPieces[i]);
-            longPieces[i] = regexEscape(longPieces[i]);
-            mixedPieces[i] = regexEscape(mixedPieces[i]);
-        }
-
-        this._monthsRegex = new RegExp('^(' + mixedPieces.join('|') + ')', 'i');
-        this._monthsShortRegex = this._monthsRegex;
-        this._monthsStrictRegex = new RegExp('^(' + longPieces.join('|') + ')$', 'i');
-        this._monthsShortStrictRegex = new RegExp('^(' + shortPieces.join('|') + ')$', 'i');
-    }
-
-    function checkOverflow (m) {
-        var overflow;
-        var a = m._a;
-
-        if (a && getParsingFlags(m).overflow === -2) {
-            overflow =
-                a[MONTH]       < 0 || a[MONTH]       > 11  ? MONTH :
-                a[DATE]        < 1 || a[DATE]        > daysInMonth(a[YEAR], a[MONTH]) ? DATE :
-                a[HOUR]        < 0 || a[HOUR]        > 24 || (a[HOUR] === 24 && (a[MINUTE] !== 0 || a[SECOND] !== 0 || a[MILLISECOND] !== 0)) ? HOUR :
-                a[MINUTE]      < 0 || a[MINUTE]      > 59  ? MINUTE :
-                a[SECOND]      < 0 || a[SECOND]      > 59  ? SECOND :
-                a[MILLISECOND] < 0 || a[MILLISECOND] > 999 ? MILLISECOND :
-                -1;
-
-            if (getParsingFlags(m)._overflowDayOfYear && (overflow < YEAR || overflow > DATE)) {
-                overflow = DATE;
-            }
-            if (getParsingFlags(m)._overflowWeeks && overflow === -1) {
-                overflow = WEEK;
-            }
-            if (getParsingFlags(m)._overflowWeekday && overflow === -1) {
-                overflow = WEEKDAY;
-            }
-
-            getParsingFlags(m).overflow = overflow;
-        }
-
-        return m;
-    }
-
-    // iso 8601 regex
-    // 0000-00-00 0000-W00 or 0000-W00-0 + T + 00 or 00:00 or 00:00:00 or 00:00:00.000 + +00:00 or +0000 or +00)
-    var extendedIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})-(?:\d\d-\d\d|W\d\d-\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?::\d\d(?::\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?/;
-    var basicIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})(?:\d\d\d\d|W\d\d\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?:\d\d(?:\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?/;
-
-    var tzRegex = /Z|[+-]\d\d(?::?\d\d)?/;
-
-    var isoDates = [
-        ['YYYYYY-MM-DD', /[+-]\d{6}-\d\d-\d\d/],
-        ['YYYY-MM-DD', /\d{4}-\d\d-\d\d/],
-        ['GGGG-[W]WW-E', /\d{4}-W\d\d-\d/],
-        ['GGGG-[W]WW', /\d{4}-W\d\d/, false],
-        ['YYYY-DDD', /\d{4}-\d{3}/],
-        ['YYYY-MM', /\d{4}-\d\d/, false],
-        ['YYYYYYMMDD', /[+-]\d{10}/],
-        ['YYYYMMDD', /\d{8}/],
-        // YYYYMM is NOT allowed by the standard
-        ['GGGG[W]WWE', /\d{4}W\d{3}/],
-        ['GGGG[W]WW', /\d{4}W\d{2}/, false],
-        ['YYYYDDD', /\d{7}/]
-    ];
-
-    // iso time formats and regexes
-    var isoTimes = [
-        ['HH:mm:ss.SSSS', /\d\d:\d\d:\d\d\.\d+/],
-        ['HH:mm:ss,SSSS', /\d\d:\d\d:\d\d,\d+/],
-        ['HH:mm:ss', /\d\d:\d\d:\d\d/],
-        ['HH:mm', /\d\d:\d\d/],
-        ['HHmmss.SSSS', /\d\d\d\d\d\d\.\d+/],
-        ['HHmmss,SSSS', /\d\d\d\d\d\d,\d+/],
-        ['HHmmss', /\d\d\d\d\d\d/],
-        ['HHmm', /\d\d\d\d/],
-        ['HH', /\d\d/]
-    ];
-
-    var aspNetJsonRegex = /^\/?Date\((\-?\d+)/i;
-
-    // date from iso format
-    function configFromISO(config) {
-        var i, l,
-            string = config._i,
-            match = extendedIsoRegex.exec(string) || basicIsoRegex.exec(string),
-            allowTime, dateFormat, timeFormat, tzFormat;
-
-        if (match) {
-            getParsingFlags(config).iso = true;
-
-            for (i = 0, l = isoDates.length; i < l; i++) {
-                if (isoDates[i][1].exec(match[1])) {
-                    dateFormat = isoDates[i][0];
-                    allowTime = isoDates[i][2] !== false;
-                    break;
-                }
-            }
-            if (dateFormat == null) {
-                config._isValid = false;
-                return;
-            }
-            if (match[3]) {
-                for (i = 0, l = isoTimes.length; i < l; i++) {
-                    if (isoTimes[i][1].exec(match[3])) {
-                        // match[2] should be 'T' or space
-                        timeFormat = (match[2] || ' ') + isoTimes[i][0];
-                        break;
-                    }
-                }
-                if (timeFormat == null) {
-                    config._isValid = false;
-                    return;
-                }
-            }
-            if (!allowTime && timeFormat != null) {
-                config._isValid = false;
-                return;
-            }
-            if (match[4]) {
-                if (tzRegex.exec(match[4])) {
-                    tzFormat = 'Z';
-                } else {
-                    config._isValid = false;
-                    return;
-                }
-            }
-            config._f = dateFormat + (timeFormat || '') + (tzFormat || '');
-            configFromStringAndFormat(config);
-        } else {
-            config._isValid = false;
-        }
-    }
-
-    // date from iso format or fallback
-    function configFromString(config) {
-        var matched = aspNetJsonRegex.exec(config._i);
-
-        if (matched !== null) {
-            config._d = new Date(+matched[1]);
-            return;
-        }
-
-        configFromISO(config);
-        if (config._isValid === false) {
-            delete config._isValid;
-            utils_hooks__hooks.createFromInputFallback(config);
-        }
-    }
-
-    utils_hooks__hooks.createFromInputFallback = deprecate(
-        'moment construction falls back to js Date. This is ' +
-        'discouraged and will be removed in upcoming major ' +
-        'release. Please refer to ' +
-        'https://github.com/moment/moment/issues/1407 for more info.',
-        function (config) {
-            config._d = new Date(config._i + (config._useUTC ? ' UTC' : ''));
-        }
-    );
-
-    function createDate (y, m, d, h, M, s, ms) {
-        //can't just apply() to create a date:
-        //http://stackoverflow.com/questions/181348/instantiating-a-javascript-object-by-calling-prototype-constructor-apply
-        var date = new Date(y, m, d, h, M, s, ms);
-
-        //the date constructor remaps years 0-99 to 1900-1999
-        if (y < 100 && y >= 0 && isFinite(date.getFullYear())) {
-            date.setFullYear(y);
-        }
-        return date;
-    }
-
-    function createUTCDate (y) {
-        var date = new Date(Date.UTC.apply(null, arguments));
-
-        //the Date.UTC function remaps years 0-99 to 1900-1999
-        if (y < 100 && y >= 0 && isFinite(date.getUTCFullYear())) {
-            date.setUTCFullYear(y);
-        }
-        return date;
-    }
-
-    // FORMATTING
-
-    addFormatToken('Y', 0, 0, function () {
-        var y = this.year();
-        return y <= 9999 ? '' + y : '+' + y;
-    });
-
-    addFormatToken(0, ['YY', 2], 0, function () {
-        return this.year() % 100;
-    });
-
-    addFormatToken(0, ['YYYY',   4],       0, 'year');
-    addFormatToken(0, ['YYYYY',  5],       0, 'year');
-    addFormatToken(0, ['YYYYYY', 6, true], 0, 'year');
-
-    // ALIASES
-
-    addUnitAlias('year', 'y');
-
-    // PARSING
-
-    addRegexToken('Y',      matchSigned);
-    addRegexToken('YY',     match1to2, match2);
-    addRegexToken('YYYY',   match1to4, match4);
-    addRegexToken('YYYYY',  match1to6, match6);
-    addRegexToken('YYYYYY', match1to6, match6);
-
-    addParseToken(['YYYYY', 'YYYYYY'], YEAR);
-    addParseToken('YYYY', function (input, array) {
-        array[YEAR] = input.length === 2 ? utils_hooks__hooks.parseTwoDigitYear(input) : toInt(input);
-    });
-    addParseToken('YY', function (input, array) {
-        array[YEAR] = utils_hooks__hooks.parseTwoDigitYear(input);
-    });
-    addParseToken('Y', function (input, array) {
-        array[YEAR] = parseInt(input, 10);
-    });
-
-    // HELPERS
-
-    function daysInYear(year) {
-        return isLeapYear(year) ? 366 : 365;
-    }
-
-    function isLeapYear(year) {
-        return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
-    }
-
-    // HOOKS
-
-    utils_hooks__hooks.parseTwoDigitYear = function (input) {
-        return toInt(input) + (toInt(input) > 68 ? 1900 : 2000);
-    };
-
-    // MOMENTS
-
-    var getSetYear = makeGetSet('FullYear', false);
-
-    function getIsLeapYear () {
-        return isLeapYear(this.year());
-    }
-
-    // start-of-first-week - start-of-year
-    function firstWeekOffset(year, dow, doy) {
-        var // first-week day -- which january is always in the first week (4 for iso, 1 for other)
-            fwd = 7 + dow - doy,
-            // first-week day local weekday -- which local weekday is fwd
-            fwdlw = (7 + createUTCDate(year, 0, fwd).getUTCDay() - dow) % 7;
-
-        return -fwdlw + fwd - 1;
-    }
-
-    //http://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_year.2C_week_number_and_weekday
-    function dayOfYearFromWeeks(year, week, weekday, dow, doy) {
-        var localWeekday = (7 + weekday - dow) % 7,
-            weekOffset = firstWeekOffset(year, dow, doy),
-            dayOfYear = 1 + 7 * (week - 1) + localWeekday + weekOffset,
-            resYear, resDayOfYear;
-
-        if (dayOfYear <= 0) {
-            resYear = year - 1;
-            resDayOfYear = daysInYear(resYear) + dayOfYear;
-        } else if (dayOfYear > daysInYear(year)) {
-            resYear = year + 1;
-            resDayOfYear = dayOfYear - daysInYear(year);
-        } else {
-            resYear = year;
-            resDayOfYear = dayOfYear;
-        }
-
-        return {
-            year: resYear,
-            dayOfYear: resDayOfYear
-        };
-    }
-
-    function weekOfYear(mom, dow, doy) {
-        var weekOffset = firstWeekOffset(mom.year(), dow, doy),
-            week = Math.floor((mom.dayOfYear() - weekOffset - 1) / 7) + 1,
-            resWeek, resYear;
-
-        if (week < 1) {
-            resYear = mom.year() - 1;
-            resWeek = week + weeksInYear(resYear, dow, doy);
-        } else if (week > weeksInYear(mom.year(), dow, doy)) {
-            resWeek = week - weeksInYear(mom.year(), dow, doy);
-            resYear = mom.year() + 1;
-        } else {
-            resYear = mom.year();
-            resWeek = week;
-        }
-
-        return {
-            week: resWeek,
-            year: resYear
-        };
-    }
-
-    function weeksInYear(year, dow, doy) {
-        var weekOffset = firstWeekOffset(year, dow, doy),
-            weekOffsetNext = firstWeekOffset(year + 1, dow, doy);
-        return (daysInYear(year) - weekOffset + weekOffsetNext) / 7;
-    }
-
-    // Pick the first defined of two or three arguments.
-    function defaults(a, b, c) {
-        if (a != null) {
-            return a;
-        }
-        if (b != null) {
-            return b;
-        }
-        return c;
-    }
-
-    function currentDateArray(config) {
-        // hooks is actually the exported moment object
-        var nowValue = new Date(utils_hooks__hooks.now());
-        if (config._useUTC) {
-            return [nowValue.getUTCFullYear(), nowValue.getUTCMonth(), nowValue.getUTCDate()];
-        }
-        return [nowValue.getFullYear(), nowValue.getMonth(), nowValue.getDate()];
-    }
-
-    // convert an array to a date.
-    // the array should mirror the parameters below
-    // note: all values past the year are optional and will default to the lowest possible value.
-    // [year, month, day , hour, minute, second, millisecond]
-    function configFromArray (config) {
-        var i, date, input = [], currentDate, yearToUse;
-
-        if (config._d) {
-            return;
-        }
-
-        currentDate = currentDateArray(config);
-
-        //compute day of the year from weeks and weekdays
-        if (config._w && config._a[DATE] == null && config._a[MONTH] == null) {
-            dayOfYearFromWeekInfo(config);
-        }
-
-        //if the day of the year is set, figure out what it is
-        if (config._dayOfYear) {
-            yearToUse = defaults(config._a[YEAR], currentDate[YEAR]);
-
-            if (config._dayOfYear > daysInYear(yearToUse)) {
-                getParsingFlags(config)._overflowDayOfYear = true;
-            }
-
-            date = createUTCDate(yearToUse, 0, config._dayOfYear);
-            config._a[MONTH] = date.getUTCMonth();
-            config._a[DATE] = date.getUTCDate();
-        }
-
-        // Default to current date.
-        // * if no year, month, day of month are given, default to today
-        // * if day of month is given, default month and year
-        // * if month is given, default only year
-        // * if year is given, don't default anything
-        for (i = 0; i < 3 && config._a[i] == null; ++i) {
-            config._a[i] = input[i] = currentDate[i];
-        }
-
-        // Zero out whatever was not defaulted, including time
-        for (; i < 7; i++) {
-            config._a[i] = input[i] = (config._a[i] == null) ? (i === 2 ? 1 : 0) : config._a[i];
-        }
-
-        // Check for 24:00:00.000
-        if (config._a[HOUR] === 24 &&
-                config._a[MINUTE] === 0 &&
-                config._a[SECOND] === 0 &&
-                config._a[MILLISECOND] === 0) {
-            config._nextDay = true;
-            config._a[HOUR] = 0;
-        }
-
-        config._d = (config._useUTC ? createUTCDate : createDate).apply(null, input);
-        // Apply timezone offset from input. The actual utcOffset can be changed
-        // with parseZone.
-        if (config._tzm != null) {
-            config._d.setUTCMinutes(config._d.getUTCMinutes() - config._tzm);
-        }
-
-        if (config._nextDay) {
-            config._a[HOUR] = 24;
-        }
-    }
-
-    function dayOfYearFromWeekInfo(config) {
-        var w, weekYear, week, weekday, dow, doy, temp, weekdayOverflow;
-
-        w = config._w;
-        if (w.GG != null || w.W != null || w.E != null) {
-            dow = 1;
-            doy = 4;
-
-            // TODO: We need to take the current isoWeekYear, but that depends on
-            // how we interpret now (local, utc, fixed offset). So create
-            // a now version of current config (take local/utc/offset flags, and
-            // create now).
-            weekYear = defaults(w.GG, config._a[YEAR], weekOfYear(local__createLocal(), 1, 4).year);
-            week = defaults(w.W, 1);
-            weekday = defaults(w.E, 1);
-            if (weekday < 1 || weekday > 7) {
-                weekdayOverflow = true;
-            }
-        } else {
-            dow = config._locale._week.dow;
-            doy = config._locale._week.doy;
-
-            weekYear = defaults(w.gg, config._a[YEAR], weekOfYear(local__createLocal(), dow, doy).year);
-            week = defaults(w.w, 1);
-
-            if (w.d != null) {
-                // weekday -- low day numbers are considered next week
-                weekday = w.d;
-                if (weekday < 0 || weekday > 6) {
-                    weekdayOverflow = true;
-                }
-            } else if (w.e != null) {
-                // local weekday -- counting starts from begining of week
-                weekday = w.e + dow;
-                if (w.e < 0 || w.e > 6) {
-                    weekdayOverflow = true;
-                }
-            } else {
-                // default to begining of week
-                weekday = dow;
-            }
-        }
-        if (week < 1 || week > weeksInYear(weekYear, dow, doy)) {
-            getParsingFlags(config)._overflowWeeks = true;
-        } else if (weekdayOverflow != null) {
-            getParsingFlags(config)._overflowWeekday = true;
-        } else {
-            temp = dayOfYearFromWeeks(weekYear, week, weekday, dow, doy);
-            config._a[YEAR] = temp.year;
-            config._dayOfYear = temp.dayOfYear;
-        }
-    }
-
-    // constant that refers to the ISO standard
-    utils_hooks__hooks.ISO_8601 = function () {};
-
-    // date from string and format string
-    function configFromStringAndFormat(config) {
-        // TODO: Move this to another part of the creation flow to prevent circular deps
-        if (config._f === utils_hooks__hooks.ISO_8601) {
-            configFromISO(config);
-            return;
-        }
-
-        config._a = [];
-        getParsingFlags(config).empty = true;
-
-        // This array is used to make a Date, either with `new Date` or `Date.UTC`
-        var string = '' + config._i,
-            i, parsedInput, tokens, token, skipped,
-            stringLength = string.length,
-            totalParsedInputLength = 0;
-
-        tokens = expandFormat(config._f, config._locale).match(formattingTokens) || [];
-
-        for (i = 0; i < tokens.length; i++) {
-            token = tokens[i];
-            parsedInput = (string.match(getParseRegexForToken(token, config)) || [])[0];
-            // console.log('token', token, 'parsedInput', parsedInput,
-            //         'regex', getParseRegexForToken(token, config));
-            if (parsedInput) {
-                skipped = string.substr(0, string.indexOf(parsedInput));
-                if (skipped.length > 0) {
-                    getParsingFlags(config).unusedInput.push(skipped);
-                }
-                string = string.slice(string.indexOf(parsedInput) + parsedInput.length);
-                totalParsedInputLength += parsedInput.length;
-            }
-            // don't parse if it's not a known token
-            if (formatTokenFunctions[token]) {
-                if (parsedInput) {
-                    getParsingFlags(config).empty = false;
-                }
-                else {
-                    getParsingFlags(config).unusedTokens.push(token);
-                }
-                addTimeToArrayFromToken(token, parsedInput, config);
-            }
-            else if (config._strict && !parsedInput) {
-                getParsingFlags(config).unusedTokens.push(token);
-            }
-        }
-
-        // add remaining unparsed input length to the string
-        getParsingFlags(config).charsLeftOver = stringLength - totalParsedInputLength;
-        if (string.length > 0) {
-            getParsingFlags(config).unusedInput.push(string);
-        }
-
-        // clear _12h flag if hour is <= 12
-        if (getParsingFlags(config).bigHour === true &&
-                config._a[HOUR] <= 12 &&
-                config._a[HOUR] > 0) {
-            getParsingFlags(config).bigHour = undefined;
-        }
-        // handle meridiem
-        config._a[HOUR] = meridiemFixWrap(config._locale, config._a[HOUR], config._meridiem);
-
-        configFromArray(config);
-        checkOverflow(config);
-    }
-
-
-    function meridiemFixWrap (locale, hour, meridiem) {
-        var isPm;
-
-        if (meridiem == null) {
-            // nothing to do
-            return hour;
-        }
-        if (locale.meridiemHour != null) {
-            return locale.meridiemHour(hour, meridiem);
-        } else if (locale.isPM != null) {
-            // Fallback
-            isPm = locale.isPM(meridiem);
-            if (isPm && hour < 12) {
-                hour += 12;
-            }
-            if (!isPm && hour === 12) {
-                hour = 0;
-            }
-            return hour;
-        } else {
-            // this is not supposed to happen
-            return hour;
-        }
-    }
-
-    // date from string and array of format strings
-    function configFromStringAndArray(config) {
-        var tempConfig,
-            bestMoment,
-
-            scoreToBeat,
-            i,
-            currentScore;
-
-        if (config._f.length === 0) {
-            getParsingFlags(config).invalidFormat = true;
-            config._d = new Date(NaN);
-            return;
-        }
-
-        for (i = 0; i < config._f.length; i++) {
-            currentScore = 0;
-            tempConfig = copyConfig({}, config);
-            if (config._useUTC != null) {
-                tempConfig._useUTC = config._useUTC;
-            }
-            tempConfig._f = config._f[i];
-            configFromStringAndFormat(tempConfig);
-
-            if (!valid__isValid(tempConfig)) {
-                continue;
-            }
-
-            // if there is any input that was not parsed add a penalty for that format
-            currentScore += getParsingFlags(tempConfig).charsLeftOver;
-
-            //or tokens
-            currentScore += getParsingFlags(tempConfig).unusedTokens.length * 10;
-
-            getParsingFlags(tempConfig).score = currentScore;
-
-            if (scoreToBeat == null || currentScore < scoreToBeat) {
-                scoreToBeat = currentScore;
-                bestMoment = tempConfig;
-            }
-        }
-
-        extend(config, bestMoment || tempConfig);
-    }
-
-    function configFromObject(config) {
-        if (config._d) {
-            return;
-        }
-
-        var i = normalizeObjectUnits(config._i);
-        config._a = map([i.year, i.month, i.day || i.date, i.hour, i.minute, i.second, i.millisecond], function (obj) {
-            return obj && parseInt(obj, 10);
-        });
-
-        configFromArray(config);
-    }
-
-    function createFromConfig (config) {
-        var res = new Moment(checkOverflow(prepareConfig(config)));
-        if (res._nextDay) {
-            // Adding is smart enough around DST
-            res.add(1, 'd');
-            res._nextDay = undefined;
-        }
-
-        return res;
-    }
-
-    function prepareConfig (config) {
-        var input = config._i,
-            format = config._f;
-
-        config._locale = config._locale || locale_locales__getLocale(config._l);
-
-        if (input === null || (format === undefined && input === '')) {
-            return valid__createInvalid({nullInput: true});
-        }
-
-        if (typeof input === 'string') {
-            config._i = input = config._locale.preparse(input);
-        }
-
-        if (isMoment(input)) {
-            return new Moment(checkOverflow(input));
-        } else if (isArray(format)) {
-            configFromStringAndArray(config);
-        } else if (format) {
-            configFromStringAndFormat(config);
-        } else if (isDate(input)) {
-            config._d = input;
-        } else {
-            configFromInput(config);
-        }
-
-        if (!valid__isValid(config)) {
-            config._d = null;
-        }
-
-        return config;
-    }
-
-    function configFromInput(config) {
-        var input = config._i;
-        if (input === undefined) {
-            config._d = new Date(utils_hooks__hooks.now());
-        } else if (isDate(input)) {
-            config._d = new Date(+input);
-        } else if (typeof input === 'string') {
-            configFromString(config);
-        } else if (isArray(input)) {
-            config._a = map(input.slice(0), function (obj) {
-                return parseInt(obj, 10);
-            });
-            configFromArray(config);
-        } else if (typeof(input) === 'object') {
-            configFromObject(config);
-        } else if (typeof(input) === 'number') {
-            // from milliseconds
-            config._d = new Date(input);
-        } else {
-            utils_hooks__hooks.createFromInputFallback(config);
-        }
-    }
-
-    function createLocalOrUTC (input, format, locale, strict, isUTC) {
-        var c = {};
-
-        if (typeof(locale) === 'boolean') {
-            strict = locale;
-            locale = undefined;
-        }
-        // object construction must be done this way.
-        // https://github.com/moment/moment/issues/1423
-        c._isAMomentObject = true;
-        c._useUTC = c._isUTC = isUTC;
-        c._l = locale;
-        c._i = input;
-        c._f = format;
-        c._strict = strict;
-
-        return createFromConfig(c);
-    }
-
-    function local__createLocal (input, format, locale, strict) {
-        return createLocalOrUTC(input, format, locale, strict, false);
-    }
-
-    var prototypeMin = deprecate(
-         'moment().min is deprecated, use moment.max instead. https://github.com/moment/moment/issues/1548',
-         function () {
-             var other = local__createLocal.apply(null, arguments);
-             if (this.isValid() && other.isValid()) {
-                 return other < this ? this : other;
-             } else {
-                 return valid__createInvalid();
-             }
-         }
-     );
-
-    var prototypeMax = deprecate(
-        'moment().max is deprecated, use moment.min instead. https://github.com/moment/moment/issues/1548',
-        function () {
-            var other = local__createLocal.apply(null, arguments);
-            if (this.isValid() && other.isValid()) {
-                return other > this ? this : other;
-            } else {
-                return valid__createInvalid();
-            }
-        }
-    );
-
-    // Pick a moment m from moments so that m[fn](other) is true for all
-    // other. This relies on the function fn to be transitive.
-    //
-    // moments should either be an array of moment objects or an array, whose
-    // first element is an array of moment objects.
-    function pickBy(fn, moments) {
-        var res, i;
-        if (moments.length === 1 && isArray(moments[0])) {
-            moments = moments[0];
-        }
-        if (!moments.length) {
-            return local__createLocal();
-        }
-        res = moments[0];
-        for (i = 1; i < moments.length; ++i) {
-            if (!moments[i].isValid() || moments[i][fn](res)) {
-                res = moments[i];
-            }
-        }
-        return res;
-    }
-
-    // TODO: Use [].sort instead?
-    function min () {
-        var args = [].slice.call(arguments, 0);
-
-        return pickBy('isBefore', args);
-    }
-
-    function max () {
-        var args = [].slice.call(arguments, 0);
-
-        return pickBy('isAfter', args);
-    }
-
-    var now = function () {
-        return Date.now ? Date.now() : +(new Date());
-    };
-
-    function Duration (duration) {
-        var normalizedInput = normalizeObjectUnits(duration),
-            years = normalizedInput.year || 0,
-            quarters = normalizedInput.quarter || 0,
-            months = normalizedInput.month || 0,
-            weeks = normalizedInput.week || 0,
-            days = normalizedInput.day || 0,
-            hours = normalizedInput.hour || 0,
-            minutes = normalizedInput.minute || 0,
-            seconds = normalizedInput.second || 0,
-            milliseconds = normalizedInput.millisecond || 0;
-
-        // representation for dateAddRemove
-        this._milliseconds = +milliseconds +
-            seconds * 1e3 + // 1000
-            minutes * 6e4 + // 1000 * 60
-            hours * 36e5; // 1000 * 60 * 60
-        // Because of dateAddRemove treats 24 hours as different from a
-        // day when working around DST, we need to store them separately
-        this._days = +days +
-            weeks * 7;
-        // It is impossible translate months into days without knowing
-        // which months you are are talking about, so we have to store
-        // it separately.
-        this._months = +months +
-            quarters * 3 +
-            years * 12;
-
-        this._data = {};
-
-        this._locale = locale_locales__getLocale();
-
-        this._bubble();
-    }
-
-    function isDuration (obj) {
-        return obj instanceof Duration;
-    }
-
-    // FORMATTING
-
-    function offset (token, separator) {
-        addFormatToken(token, 0, 0, function () {
-            var offset = this.utcOffset();
-            var sign = '+';
-            if (offset < 0) {
-                offset = -offset;
-                sign = '-';
-            }
-            return sign + zeroFill(~~(offset / 60), 2) + separator + zeroFill(~~(offset) % 60, 2);
-        });
-    }
-
-    offset('Z', ':');
-    offset('ZZ', '');
-
-    // PARSING
-
-    addRegexToken('Z',  matchShortOffset);
-    addRegexToken('ZZ', matchShortOffset);
-    addParseToken(['Z', 'ZZ'], function (input, array, config) {
-        config._useUTC = true;
-        config._tzm = offsetFromString(matchShortOffset, input);
-    });
-
-    // HELPERS
-
-    // timezone chunker
-    // '+10:00' > ['10',  '00']
-    // '-1530'  > ['-15', '30']
-    var chunkOffset = /([\+\-]|\d\d)/gi;
-
-    function offsetFromString(matcher, string) {
-        var matches = ((string || '').match(matcher) || []);
-        var chunk   = matches[matches.length - 1] || [];
-        var parts   = (chunk + '').match(chunkOffset) || ['-', 0, 0];
-        var minutes = +(parts[1] * 60) + toInt(parts[2]);
-
-        return parts[0] === '+' ? minutes : -minutes;
-    }
-
-    // Return a moment from input, that is local/utc/zone equivalent to model.
-    function cloneWithOffset(input, model) {
-        var res, diff;
-        if (model._isUTC) {
-            res = model.clone();
-            diff = (isMoment(input) || isDate(input) ? +input : +local__createLocal(input)) - (+res);
-            // Use low-level api, because this fn is low-level api.
-            res._d.setTime(+res._d + diff);
-            utils_hooks__hooks.updateOffset(res, false);
-            return res;
-        } else {
-            return local__createLocal(input).local();
-        }
-    }
-
-    function getDateOffset (m) {
-        // On Firefox.24 Date#getTimezoneOffset returns a floating point.
-        // https://github.com/moment/moment/pull/1871
-        return -Math.round(m._d.getTimezoneOffset() / 15) * 15;
-    }
-
-    // HOOKS
-
-    // This function will be called whenever a moment is mutated.
-    // It is intended to keep the offset in sync with the timezone.
-    utils_hooks__hooks.updateOffset = function () {};
-
-    // MOMENTS
-
-    // keepLocalTime = true means only change the timezone, without
-    // affecting the local hour. So 5:31:26 +0300 --[utcOffset(2, true)]-->
-    // 5:31:26 +0200 It is possible that 5:31:26 doesn't exist with offset
-    // +0200, so we adjust the time as needed, to be valid.
-    //
-    // Keeping the time actually adds/subtracts (one hour)
-    // from the actual represented time. That is why we call updateOffset
-    // a second time. In case it wants us to change the offset again
-    // _changeInProgress == true case, then we have to adjust, because
-    // there is no such time in the given timezone.
-    function getSetOffset (input, keepLocalTime) {
-        var offset = this._offset || 0,
-            localAdjust;
-        if (!this.isValid()) {
-            return input != null ? this : NaN;
-        }
-        if (input != null) {
-            if (typeof input === 'string') {
-                input = offsetFromString(matchShortOffset, input);
-            } else if (Math.abs(input) < 16) {
-                input = input * 60;
-            }
-            if (!this._isUTC && keepLocalTime) {
-                localAdjust = getDateOffset(this);
-            }
-            this._offset = input;
-            this._isUTC = true;
-            if (localAdjust != null) {
-                this.add(localAdjust, 'm');
-            }
-            if (offset !== input) {
-                if (!keepLocalTime || this._changeInProgress) {
-                    add_subtract__addSubtract(this, create__createDuration(input - offset, 'm'), 1, false);
-                } else if (!this._changeInProgress) {
-                    this._changeInProgress = true;
-                    utils_hooks__hooks.updateOffset(this, true);
-                    this._changeInProgress = null;
-                }
-            }
-            return this;
-        } else {
-            return this._isUTC ? offset : getDateOffset(this);
-        }
-    }
-
-    function getSetZone (input, keepLocalTime) {
-        if (input != null) {
-            if (typeof input !== 'string') {
-                input = -input;
-            }
-
-            this.utcOffset(input, keepLocalTime);
-
-            return this;
-        } else {
-            return -this.utcOffset();
-        }
-    }
-
-    function setOffsetToUTC (keepLocalTime) {
-        return this.utcOffset(0, keepLocalTime);
-    }
-
-    function setOffsetToLocal (keepLocalTime) {
-        if (this._isUTC) {
-            this.utcOffset(0, keepLocalTime);
-            this._isUTC = false;
-
-            if (keepLocalTime) {
-                this.subtract(getDateOffset(this), 'm');
-            }
-        }
-        return this;
-    }
-
-    function setOffsetToParsedOffset () {
-        if (this._tzm) {
-            this.utcOffset(this._tzm);
-        } else if (typeof this._i === 'string') {
-            this.utcOffset(offsetFromString(matchOffset, this._i));
-        }
-        return this;
-    }
-
-    function hasAlignedHourOffset (input) {
-        if (!this.isValid()) {
-            return false;
-        }
-        input = input ? local__createLocal(input).utcOffset() : 0;
-
-        return (this.utcOffset() - input) % 60 === 0;
-    }
-
-    function isDaylightSavingTime () {
-        return (
-            this.utcOffset() > this.clone().month(0).utcOffset() ||
-            this.utcOffset() > this.clone().month(5).utcOffset()
-        );
-    }
-
-    function isDaylightSavingTimeShifted () {
-        if (!isUndefined(this._isDSTShifted)) {
-            return this._isDSTShifted;
-        }
-
-        var c = {};
-
-        copyConfig(c, this);
-        c = prepareConfig(c);
-
-        if (c._a) {
-            var other = c._isUTC ? create_utc__createUTC(c._a) : local__createLocal(c._a);
-            this._isDSTShifted = this.isValid() &&
-                compareArrays(c._a, other.toArray()) > 0;
-        } else {
-            this._isDSTShifted = false;
-        }
-
-        return this._isDSTShifted;
-    }
-
-    function isLocal () {
-        return this.isValid() ? !this._isUTC : false;
-    }
-
-    function isUtcOffset () {
-        return this.isValid() ? this._isUTC : false;
-    }
-
-    function isUtc () {
-        return this.isValid() ? this._isUTC && this._offset === 0 : false;
-    }
-
-    // ASP.NET json date format regex
-    var aspNetRegex = /^(\-)?(?:(\d*)[. ])?(\d+)\:(\d+)(?:\:(\d+)\.?(\d{3})?\d*)?$/;
-
-    // from http://docs.closure-library.googlecode.com/git/closure_goog_date_date.js.source.html
-    // somewhat more in line with 4.4.3.2 2004 spec, but allows decimal anywhere
-    // and further modified to allow for strings containing both week and day
-    var isoRegex = /^(-)?P(?:([0-9,.]*)Y)?(?:([0-9,.]*)M)?(?:([0-9,.]*)W)?(?:([0-9,.]*)D)?(?:T(?:([0-9,.]*)H)?(?:([0-9,.]*)M)?(?:([0-9,.]*)S)?)?$/;
-
-    function create__createDuration (input, key) {
-        var duration = input,
-            // matching against regexp is expensive, do it on demand
-            match = null,
-            sign,
-            ret,
-            diffRes;
-
-        if (isDuration(input)) {
-            duration = {
-                ms : input._milliseconds,
-                d  : input._days,
-                M  : input._months
-            };
-        } else if (typeof input === 'number') {
-            duration = {};
-            if (key) {
-                duration[key] = input;
-            } else {
-                duration.milliseconds = input;
-            }
-        } else if (!!(match = aspNetRegex.exec(input))) {
-            sign = (match[1] === '-') ? -1 : 1;
-            duration = {
-                y  : 0,
-                d  : toInt(match[DATE])        * sign,
-                h  : toInt(match[HOUR])        * sign,
-                m  : toInt(match[MINUTE])      * sign,
-                s  : toInt(match[SECOND])      * sign,
-                ms : toInt(match[MILLISECOND]) * sign
-            };
-        } else if (!!(match = isoRegex.exec(input))) {
-            sign = (match[1] === '-') ? -1 : 1;
-            duration = {
-                y : parseIso(match[2], sign),
-                M : parseIso(match[3], sign),
-                w : parseIso(match[4], sign),
-                d : parseIso(match[5], sign),
-                h : parseIso(match[6], sign),
-                m : parseIso(match[7], sign),
-                s : parseIso(match[8], sign)
-            };
-        } else if (duration == null) {// checks for null or undefined
-            duration = {};
-        } else if (typeof duration === 'object' && ('from' in duration || 'to' in duration)) {
-            diffRes = momentsDifference(local__createLocal(duration.from), local__createLocal(duration.to));
-
-            duration = {};
-            duration.ms = diffRes.milliseconds;
-            duration.M = diffRes.months;
-        }
-
-        ret = new Duration(duration);
-
-        if (isDuration(input) && hasOwnProp(input, '_locale')) {
-            ret._locale = input._locale;
-        }
-
-        return ret;
-    }
-
-    create__createDuration.fn = Duration.prototype;
-
-    function parseIso (inp, sign) {
-        // We'd normally use ~~inp for this, but unfortunately it also
-        // converts floats to ints.
-        // inp may be undefined, so careful calling replace on it.
-        var res = inp && parseFloat(inp.replace(',', '.'));
-        // apply sign while we're at it
-        return (isNaN(res) ? 0 : res) * sign;
-    }
-
-    function positiveMomentsDifference(base, other) {
-        var res = {milliseconds: 0, months: 0};
-
-        res.months = other.month() - base.month() +
-            (other.year() - base.year()) * 12;
-        if (base.clone().add(res.months, 'M').isAfter(other)) {
-            --res.months;
-        }
-
-        res.milliseconds = +other - +(base.clone().add(res.months, 'M'));
-
-        return res;
-    }
-
-    function momentsDifference(base, other) {
-        var res;
-        if (!(base.isValid() && other.isValid())) {
-            return {milliseconds: 0, months: 0};
-        }
-
-        other = cloneWithOffset(other, base);
-        if (base.isBefore(other)) {
-            res = positiveMomentsDifference(base, other);
-        } else {
-            res = positiveMomentsDifference(other, base);
-            res.milliseconds = -res.milliseconds;
-            res.months = -res.months;
-        }
-
-        return res;
-    }
-
-    function absRound (number) {
-        if (number < 0) {
-            return Math.round(-1 * number) * -1;
-        } else {
-            return Math.round(number);
-        }
-    }
-
-    // TODO: remove 'name' arg after deprecation is removed
-    function createAdder(direction, name) {
-        return function (val, period) {
-            var dur, tmp;
-            //invert the arguments, but complain about it
-            if (period !== null && !isNaN(+period)) {
-                deprecateSimple(name, 'moment().' + name  + '(period, number) is deprecated. Please use moment().' + name + '(number, period).');
-                tmp = val; val = period; period = tmp;
-            }
-
-            val = typeof val === 'string' ? +val : val;
-            dur = create__createDuration(val, period);
-            add_subtract__addSubtract(this, dur, direction);
-            return this;
-        };
-    }
-
-    function add_subtract__addSubtract (mom, duration, isAdding, updateOffset) {
-        var milliseconds = duration._milliseconds,
-            days = absRound(duration._days),
-            months = absRound(duration._months);
-
-        if (!mom.isValid()) {
-            // No op
-            return;
-        }
-
-        updateOffset = updateOffset == null ? true : updateOffset;
-
-        if (milliseconds) {
-            mom._d.setTime(+mom._d + milliseconds * isAdding);
-        }
-        if (days) {
-            get_set__set(mom, 'Date', get_set__get(mom, 'Date') + days * isAdding);
-        }
-        if (months) {
-            setMonth(mom, get_set__get(mom, 'Month') + months * isAdding);
-        }
-        if (updateOffset) {
-            utils_hooks__hooks.updateOffset(mom, days || months);
-        }
-    }
-
-    var add_subtract__add      = createAdder(1, 'add');
-    var add_subtract__subtract = createAdder(-1, 'subtract');
-
-    function moment_calendar__calendar (time, formats) {
-        // We want to compare the start of today, vs this.
-        // Getting start-of-today depends on whether we're local/utc/offset or not.
-        var now = time || local__createLocal(),
-            sod = cloneWithOffset(now, this).startOf('day'),
-            diff = this.diff(sod, 'days', true),
-            format = diff < -6 ? 'sameElse' :
-                diff < -1 ? 'lastWeek' :
-                diff < 0 ? 'lastDay' :
-                diff < 1 ? 'sameDay' :
-                diff < 2 ? 'nextDay' :
-                diff < 7 ? 'nextWeek' : 'sameElse';
-
-        var output = formats && (isFunction(formats[format]) ? formats[format]() : formats[format]);
-
-        return this.format(output || this.localeData().calendar(format, this, local__createLocal(now)));
-    }
-
-    function clone () {
-        return new Moment(this);
-    }
-
-    function isAfter (input, units) {
-        var localInput = isMoment(input) ? input : local__createLocal(input);
-        if (!(this.isValid() && localInput.isValid())) {
-            return false;
-        }
-        units = normalizeUnits(!isUndefined(units) ? units : 'millisecond');
-        if (units === 'millisecond') {
-            return +this > +localInput;
-        } else {
-            return +localInput < +this.clone().startOf(units);
-        }
-    }
-
-    function isBefore (input, units) {
-        var localInput = isMoment(input) ? input : local__createLocal(input);
-        if (!(this.isValid() && localInput.isValid())) {
-            return false;
-        }
-        units = normalizeUnits(!isUndefined(units) ? units : 'millisecond');
-        if (units === 'millisecond') {
-            return +this < +localInput;
-        } else {
-            return +this.clone().endOf(units) < +localInput;
-        }
-    }
-
-    function isBetween (from, to, units) {
-        return this.isAfter(from, units) && this.isBefore(to, units);
-    }
-
-    function isSame (input, units) {
-        var localInput = isMoment(input) ? input : local__createLocal(input),
-            inputMs;
-        if (!(this.isValid() && localInput.isValid())) {
-            return false;
-        }
-        units = normalizeUnits(units || 'millisecond');
-        if (units === 'millisecond') {
-            return +this === +localInput;
-        } else {
-            inputMs = +localInput;
-            return +(this.clone().startOf(units)) <= inputMs && inputMs <= +(this.clone().endOf(units));
-        }
-    }
-
-    function isSameOrAfter (input, units) {
-        return this.isSame(input, units) || this.isAfter(input,units);
-    }
-
-    function isSameOrBefore (input, units) {
-        return this.isSame(input, units) || this.isBefore(input,units);
-    }
-
-    function diff (input, units, asFloat) {
-        var that,
-            zoneDelta,
-            delta, output;
-
-        if (!this.isValid()) {
-            return NaN;
-        }
-
-        that = cloneWithOffset(input, this);
-
-        if (!that.isValid()) {
-            return NaN;
-        }
-
-        zoneDelta = (that.utcOffset() - this.utcOffset()) * 6e4;
-
-        units = normalizeUnits(units);
-
-        if (units === 'year' || units === 'month' || units === 'quarter') {
-            output = monthDiff(this, that);
-            if (units === 'quarter') {
-                output = output / 3;
-            } else if (units === 'year') {
-                output = output / 12;
-            }
-        } else {
-            delta = this - that;
-            output = units === 'second' ? delta / 1e3 : // 1000
-                units === 'minute' ? delta / 6e4 : // 1000 * 60
-                units === 'hour' ? delta / 36e5 : // 1000 * 60 * 60
-                units === 'day' ? (delta - zoneDelta) / 864e5 : // 1000 * 60 * 60 * 24, negate dst
-                units === 'week' ? (delta - zoneDelta) / 6048e5 : // 1000 * 60 * 60 * 24 * 7, negate dst
-                delta;
-        }
-        return asFloat ? output : absFloor(output);
-    }
-
-    function monthDiff (a, b) {
-        // difference in months
-        var wholeMonthDiff = ((b.year() - a.year()) * 12) + (b.month() - a.month()),
-            // b is in (anchor - 1 month, anchor + 1 month)
-            anchor = a.clone().add(wholeMonthDiff, 'months'),
-            anchor2, adjust;
-
-        if (b - anchor < 0) {
-            anchor2 = a.clone().add(wholeMonthDiff - 1, 'months');
-            // linear across the month
-            adjust = (b - anchor) / (anchor - anchor2);
-        } else {
-            anchor2 = a.clone().add(wholeMonthDiff + 1, 'months');
-            // linear across the month
-            adjust = (b - anchor) / (anchor2 - anchor);
-        }
-
-        return -(wholeMonthDiff + adjust);
-    }
-
-    utils_hooks__hooks.defaultFormat = 'YYYY-MM-DDTHH:mm:ssZ';
-
-    function toString () {
-        return this.clone().locale('en').format('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
-    }
-
-    function moment_format__toISOString () {
-        var m = this.clone().utc();
-        if (0 < m.year() && m.year() <= 9999) {
-            if (isFunction(Date.prototype.toISOString)) {
-                // native implementation is ~50x faster, use it when we can
-                return this.toDate().toISOString();
-            } else {
-                return formatMoment(m, 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
-            }
-        } else {
-            return formatMoment(m, 'YYYYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
-        }
-    }
-
-    function format (inputString) {
-        var output = formatMoment(this, inputString || utils_hooks__hooks.defaultFormat);
-        return this.localeData().postformat(output);
-    }
-
-    function from (time, withoutSuffix) {
-        if (this.isValid() &&
-                ((isMoment(time) && time.isValid()) ||
-                 local__createLocal(time).isValid())) {
-            return create__createDuration({to: this, from: time}).locale(this.locale()).humanize(!withoutSuffix);
-        } else {
-            return this.localeData().invalidDate();
-        }
-    }
-
-    function fromNow (withoutSuffix) {
-        return this.from(local__createLocal(), withoutSuffix);
-    }
-
-    function to (time, withoutSuffix) {
-        if (this.isValid() &&
-                ((isMoment(time) && time.isValid()) ||
-                 local__createLocal(time).isValid())) {
-            return create__createDuration({from: this, to: time}).locale(this.locale()).humanize(!withoutSuffix);
-        } else {
-            return this.localeData().invalidDate();
-        }
-    }
-
-    function toNow (withoutSuffix) {
-        return this.to(local__createLocal(), withoutSuffix);
-    }
-
-    // If passed a locale key, it will set the locale for this
-    // instance.  Otherwise, it will return the locale configuration
-    // variables for this instance.
-    function locale (key) {
-        var newLocaleData;
-
-        if (key === undefined) {
-            return this._locale._abbr;
-        } else {
-            newLocaleData = locale_locales__getLocale(key);
-            if (newLocaleData != null) {
-                this._locale = newLocaleData;
-            }
-            return this;
-        }
-    }
-
-    var lang = deprecate(
-        'moment().lang() is deprecated. Instead, use moment().localeData() to get the language configuration. Use moment().locale() to change languages.',
-        function (key) {
-            if (key === undefined) {
-                return this.localeData();
-            } else {
-                return this.locale(key);
-            }
-        }
-    );
-
-    function localeData () {
-        return this._locale;
-    }
-
-    function startOf (units) {
-        units = normalizeUnits(units);
-        // the following switch intentionally omits break keywords
-        // to utilize falling through the cases.
-        switch (units) {
-        case 'year':
-            this.month(0);
-            /* falls through */
-        case 'quarter':
-        case 'month':
-            this.date(1);
-            /* falls through */
-        case 'week':
-        case 'isoWeek':
-        case 'day':
-            this.hours(0);
-            /* falls through */
-        case 'hour':
-            this.minutes(0);
-            /* falls through */
-        case 'minute':
-            this.seconds(0);
-            /* falls through */
-        case 'second':
-            this.milliseconds(0);
-        }
-
-        // weeks are a special case
-        if (units === 'week') {
-            this.weekday(0);
-        }
-        if (units === 'isoWeek') {
-            this.isoWeekday(1);
-        }
-
-        // quarters are also special
-        if (units === 'quarter') {
-            this.month(Math.floor(this.month() / 3) * 3);
-        }
-
-        return this;
-    }
-
-    function endOf (units) {
-        units = normalizeUnits(units);
-        if (units === undefined || units === 'millisecond') {
-            return this;
-        }
-        return this.startOf(units).add(1, (units === 'isoWeek' ? 'week' : units)).subtract(1, 'ms');
-    }
-
-    function to_type__valueOf () {
-        return +this._d - ((this._offset || 0) * 60000);
-    }
-
-    function unix () {
-        return Math.floor(+this / 1000);
-    }
-
-    function toDate () {
-        return this._offset ? new Date(+this) : this._d;
-    }
-
-    function toArray () {
-        var m = this;
-        return [m.year(), m.month(), m.date(), m.hour(), m.minute(), m.second(), m.millisecond()];
-    }
-
-    function toObject () {
-        var m = this;
-        return {
-            years: m.year(),
-            months: m.month(),
-            date: m.date(),
-            hours: m.hours(),
-            minutes: m.minutes(),
-            seconds: m.seconds(),
-            milliseconds: m.milliseconds()
-        };
-    }
-
-    function toJSON () {
-        // new Date(NaN).toJSON() === null
-        return this.isValid() ? this.toISOString() : null;
-    }
-
-    function moment_valid__isValid () {
-        return valid__isValid(this);
-    }
-
-    function parsingFlags () {
-        return extend({}, getParsingFlags(this));
-    }
-
-    function invalidAt () {
-        return getParsingFlags(this).overflow;
-    }
-
-    function creationData() {
-        return {
-            input: this._i,
-            format: this._f,
-            locale: this._locale,
-            isUTC: this._isUTC,
-            strict: this._strict
-        };
-    }
-
-    // FORMATTING
-
-    addFormatToken(0, ['gg', 2], 0, function () {
-        return this.weekYear() % 100;
-    });
-
-    addFormatToken(0, ['GG', 2], 0, function () {
-        return this.isoWeekYear() % 100;
-    });
-
-    function addWeekYearFormatToken (token, getter) {
-        addFormatToken(0, [token, token.length], 0, getter);
-    }
-
-    addWeekYearFormatToken('gggg',     'weekYear');
-    addWeekYearFormatToken('ggggg',    'weekYear');
-    addWeekYearFormatToken('GGGG',  'isoWeekYear');
-    addWeekYearFormatToken('GGGGG', 'isoWeekYear');
-
-    // ALIASES
-
-    addUnitAlias('weekYear', 'gg');
-    addUnitAlias('isoWeekYear', 'GG');
-
-    // PARSING
-
-    addRegexToken('G',      matchSigned);
-    addRegexToken('g',      matchSigned);
-    addRegexToken('GG',     match1to2, match2);
-    addRegexToken('gg',     match1to2, match2);
-    addRegexToken('GGGG',   match1to4, match4);
-    addRegexToken('gggg',   match1to4, match4);
-    addRegexToken('GGGGG',  match1to6, match6);
-    addRegexToken('ggggg',  match1to6, match6);
-
-    addWeekParseToken(['gggg', 'ggggg', 'GGGG', 'GGGGG'], function (input, week, config, token) {
-        week[token.substr(0, 2)] = toInt(input);
-    });
-
-    addWeekParseToken(['gg', 'GG'], function (input, week, config, token) {
-        week[token] = utils_hooks__hooks.parseTwoDigitYear(input);
-    });
-
-    // MOMENTS
-
-    function getSetWeekYear (input) {
-        return getSetWeekYearHelper.call(this,
-                input,
-                this.week(),
-                this.weekday(),
-                this.localeData()._week.dow,
-                this.localeData()._week.doy);
-    }
-
-    function getSetISOWeekYear (input) {
-        return getSetWeekYearHelper.call(this,
-                input, this.isoWeek(), this.isoWeekday(), 1, 4);
-    }
-
-    function getISOWeeksInYear () {
-        return weeksInYear(this.year(), 1, 4);
-    }
-
-    function getWeeksInYear () {
-        var weekInfo = this.localeData()._week;
-        return weeksInYear(this.year(), weekInfo.dow, weekInfo.doy);
-    }
-
-    function getSetWeekYearHelper(input, week, weekday, dow, doy) {
-        var weeksTarget;
-        if (input == null) {
-            return weekOfYear(this, dow, doy).year;
-        } else {
-            weeksTarget = weeksInYear(input, dow, doy);
-            if (week > weeksTarget) {
-                week = weeksTarget;
-            }
-            return setWeekAll.call(this, input, week, weekday, dow, doy);
-        }
-    }
-
-    function setWeekAll(weekYear, week, weekday, dow, doy) {
-        var dayOfYearData = dayOfYearFromWeeks(weekYear, week, weekday, dow, doy),
-            date = createUTCDate(dayOfYearData.year, 0, dayOfYearData.dayOfYear);
-
-        this.year(date.getUTCFullYear());
-        this.month(date.getUTCMonth());
-        this.date(date.getUTCDate());
-        return this;
-    }
-
-    // FORMATTING
-
-    addFormatToken('Q', 0, 'Qo', 'quarter');
-
-    // ALIASES
-
-    addUnitAlias('quarter', 'Q');
-
-    // PARSING
-
-    addRegexToken('Q', match1);
-    addParseToken('Q', function (input, array) {
-        array[MONTH] = (toInt(input) - 1) * 3;
-    });
-
-    // MOMENTS
-
-    function getSetQuarter (input) {
-        return input == null ? Math.ceil((this.month() + 1) / 3) : this.month((input - 1) * 3 + this.month() % 3);
-    }
-
-    // FORMATTING
-
-    addFormatToken('w', ['ww', 2], 'wo', 'week');
-    addFormatToken('W', ['WW', 2], 'Wo', 'isoWeek');
-
-    // ALIASES
-
-    addUnitAlias('week', 'w');
-    addUnitAlias('isoWeek', 'W');
-
-    // PARSING
-
-    addRegexToken('w',  match1to2);
-    addRegexToken('ww', match1to2, match2);
-    addRegexToken('W',  match1to2);
-    addRegexToken('WW', match1to2, match2);
-
-    addWeekParseToken(['w', 'ww', 'W', 'WW'], function (input, week, config, token) {
-        week[token.substr(0, 1)] = toInt(input);
-    });
-
-    // HELPERS
-
-    // LOCALES
-
-    function localeWeek (mom) {
-        return weekOfYear(mom, this._week.dow, this._week.doy).week;
-    }
-
-    var defaultLocaleWeek = {
-        dow : 0, // Sunday is the first day of the week.
-        doy : 6  // The week that contains Jan 1st is the first week of the year.
-    };
-
-    function localeFirstDayOfWeek () {
-        return this._week.dow;
-    }
-
-    function localeFirstDayOfYear () {
-        return this._week.doy;
-    }
-
-    // MOMENTS
-
-    function getSetWeek (input) {
-        var week = this.localeData().week(this);
-        return input == null ? week : this.add((input - week) * 7, 'd');
-    }
-
-    function getSetISOWeek (input) {
-        var week = weekOfYear(this, 1, 4).week;
-        return input == null ? week : this.add((input - week) * 7, 'd');
-    }
-
-    // FORMATTING
-
-    addFormatToken('D', ['DD', 2], 'Do', 'date');
-
-    // ALIASES
-
-    addUnitAlias('date', 'D');
-
-    // PARSING
-
-    addRegexToken('D',  match1to2);
-    addRegexToken('DD', match1to2, match2);
-    addRegexToken('Do', function (isStrict, locale) {
-        return isStrict ? locale._ordinalParse : locale._ordinalParseLenient;
-    });
-
-    addParseToken(['D', 'DD'], DATE);
-    addParseToken('Do', function (input, array) {
-        array[DATE] = toInt(input.match(match1to2)[0], 10);
-    });
-
-    // MOMENTS
-
-    var getSetDayOfMonth = makeGetSet('Date', true);
-
-    // FORMATTING
-
-    addFormatToken('d', 0, 'do', 'day');
-
-    addFormatToken('dd', 0, 0, function (format) {
-        return this.localeData().weekdaysMin(this, format);
-    });
-
-    addFormatToken('ddd', 0, 0, function (format) {
-        return this.localeData().weekdaysShort(this, format);
-    });
-
-    addFormatToken('dddd', 0, 0, function (format) {
-        return this.localeData().weekdays(this, format);
-    });
-
-    addFormatToken('e', 0, 0, 'weekday');
-    addFormatToken('E', 0, 0, 'isoWeekday');
-
-    // ALIASES
-
-    addUnitAlias('day', 'd');
-    addUnitAlias('weekday', 'e');
-    addUnitAlias('isoWeekday', 'E');
-
-    // PARSING
-
-    addRegexToken('d',    match1to2);
-    addRegexToken('e',    match1to2);
-    addRegexToken('E',    match1to2);
-    addRegexToken('dd',   matchWord);
-    addRegexToken('ddd',  matchWord);
-    addRegexToken('dddd', matchWord);
-
-    addWeekParseToken(['dd', 'ddd', 'dddd'], function (input, week, config, token) {
-        var weekday = config._locale.weekdaysParse(input, token, config._strict);
-        // if we didn't get a weekday name, mark the date as invalid
-        if (weekday != null) {
-            week.d = weekday;
-        } else {
-            getParsingFlags(config).invalidWeekday = input;
-        }
-    });
-
-    addWeekParseToken(['d', 'e', 'E'], function (input, week, config, token) {
-        week[token] = toInt(input);
-    });
-
-    // HELPERS
-
-    function parseWeekday(input, locale) {
-        if (typeof input !== 'string') {
-            return input;
-        }
-
-        if (!isNaN(input)) {
-            return parseInt(input, 10);
-        }
-
-        input = locale.weekdaysParse(input);
-        if (typeof input === 'number') {
-            return input;
-        }
-
-        return null;
-    }
-
-    // LOCALES
-
-    var defaultLocaleWeekdays = 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_');
-    function localeWeekdays (m, format) {
-        return isArray(this._weekdays) ? this._weekdays[m.day()] :
-            this._weekdays[this._weekdays.isFormat.test(format) ? 'format' : 'standalone'][m.day()];
-    }
-
-    var defaultLocaleWeekdaysShort = 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_');
-    function localeWeekdaysShort (m) {
-        return this._weekdaysShort[m.day()];
-    }
-
-    var defaultLocaleWeekdaysMin = 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_');
-    function localeWeekdaysMin (m) {
-        return this._weekdaysMin[m.day()];
-    }
-
-    function localeWeekdaysParse (weekdayName, format, strict) {
-        var i, mom, regex;
-
-        if (!this._weekdaysParse) {
-            this._weekdaysParse = [];
-            this._minWeekdaysParse = [];
-            this._shortWeekdaysParse = [];
-            this._fullWeekdaysParse = [];
-        }
-
-        for (i = 0; i < 7; i++) {
-            // make the regex if we don't have it already
-
-            mom = local__createLocal([2000, 1]).day(i);
-            if (strict && !this._fullWeekdaysParse[i]) {
-                this._fullWeekdaysParse[i] = new RegExp('^' + this.weekdays(mom, '').replace('.', '\.?') + '$', 'i');
-                this._shortWeekdaysParse[i] = new RegExp('^' + this.weekdaysShort(mom, '').replace('.', '\.?') + '$', 'i');
-                this._minWeekdaysParse[i] = new RegExp('^' + this.weekdaysMin(mom, '').replace('.', '\.?') + '$', 'i');
-            }
-            if (!this._weekdaysParse[i]) {
-                regex = '^' + this.weekdays(mom, '') + '|^' + this.weekdaysShort(mom, '') + '|^' + this.weekdaysMin(mom, '');
-                this._weekdaysParse[i] = new RegExp(regex.replace('.', ''), 'i');
-            }
-            // test the regex
-            if (strict && format === 'dddd' && this._fullWeekdaysParse[i].test(weekdayName)) {
-                return i;
-            } else if (strict && format === 'ddd' && this._shortWeekdaysParse[i].test(weekdayName)) {
-                return i;
-            } else if (strict && format === 'dd' && this._minWeekdaysParse[i].test(weekdayName)) {
-                return i;
-            } else if (!strict && this._weekdaysParse[i].test(weekdayName)) {
-                return i;
-            }
-        }
-    }
-
-    // MOMENTS
-
-    function getSetDayOfWeek (input) {
-        if (!this.isValid()) {
-            return input != null ? this : NaN;
-        }
-        var day = this._isUTC ? this._d.getUTCDay() : this._d.getDay();
-        if (input != null) {
-            input = parseWeekday(input, this.localeData());
-            return this.add(input - day, 'd');
-        } else {
-            return day;
-        }
-    }
-
-    function getSetLocaleDayOfWeek (input) {
-        if (!this.isValid()) {
-            return input != null ? this : NaN;
-        }
-        var weekday = (this.day() + 7 - this.localeData()._week.dow) % 7;
-        return input == null ? weekday : this.add(input - weekday, 'd');
-    }
-
-    function getSetISODayOfWeek (input) {
-        if (!this.isValid()) {
-            return input != null ? this : NaN;
-        }
-        // behaves the same as moment#day except
-        // as a getter, returns 7 instead of 0 (1-7 range instead of 0-6)
-        // as a setter, sunday should belong to the previous week.
-        return input == null ? this.day() || 7 : this.day(this.day() % 7 ? input : input - 7);
-    }
-
-    // FORMATTING
-
-    addFormatToken('DDD', ['DDDD', 3], 'DDDo', 'dayOfYear');
-
-    // ALIASES
-
-    addUnitAlias('dayOfYear', 'DDD');
-
-    // PARSING
-
-    addRegexToken('DDD',  match1to3);
-    addRegexToken('DDDD', match3);
-    addParseToken(['DDD', 'DDDD'], function (input, array, config) {
-        config._dayOfYear = toInt(input);
-    });
-
-    // HELPERS
-
-    // MOMENTS
-
-    function getSetDayOfYear (input) {
-        var dayOfYear = Math.round((this.clone().startOf('day') - this.clone().startOf('year')) / 864e5) + 1;
-        return input == null ? dayOfYear : this.add((input - dayOfYear), 'd');
-    }
-
-    // FORMATTING
-
-    function hFormat() {
-        return this.hours() % 12 || 12;
-    }
-
-    addFormatToken('H', ['HH', 2], 0, 'hour');
-    addFormatToken('h', ['hh', 2], 0, hFormat);
-
-    addFormatToken('hmm', 0, 0, function () {
-        return '' + hFormat.apply(this) + zeroFill(this.minutes(), 2);
-    });
-
-    addFormatToken('hmmss', 0, 0, function () {
-        return '' + hFormat.apply(this) + zeroFill(this.minutes(), 2) +
-            zeroFill(this.seconds(), 2);
-    });
-
-    addFormatToken('Hmm', 0, 0, function () {
-        return '' + this.hours() + zeroFill(this.minutes(), 2);
-    });
-
-    addFormatToken('Hmmss', 0, 0, function () {
-        return '' + this.hours() + zeroFill(this.minutes(), 2) +
-            zeroFill(this.seconds(), 2);
-    });
-
-    function meridiem (token, lowercase) {
-        addFormatToken(token, 0, 0, function () {
-            return this.localeData().meridiem(this.hours(), this.minutes(), lowercase);
-        });
-    }
-
-    meridiem('a', true);
-    meridiem('A', false);
-
-    // ALIASES
-
-    addUnitAlias('hour', 'h');
-
-    // PARSING
-
-    function matchMeridiem (isStrict, locale) {
-        return locale._meridiemParse;
-    }
-
-    addRegexToken('a',  matchMeridiem);
-    addRegexToken('A',  matchMeridiem);
-    addRegexToken('H',  match1to2);
-    addRegexToken('h',  match1to2);
-    addRegexToken('HH', match1to2, match2);
-    addRegexToken('hh', match1to2, match2);
-
-    addRegexToken('hmm', match3to4);
-    addRegexToken('hmmss', match5to6);
-    addRegexToken('Hmm', match3to4);
-    addRegexToken('Hmmss', match5to6);
-
-    addParseToken(['H', 'HH'], HOUR);
-    addParseToken(['a', 'A'], function (input, array, config) {
-        config._isPm = config._locale.isPM(input);
-        config._meridiem = input;
-    });
-    addParseToken(['h', 'hh'], function (input, array, config) {
-        array[HOUR] = toInt(input);
-        getParsingFlags(config).bigHour = true;
-    });
-    addParseToken('hmm', function (input, array, config) {
-        var pos = input.length - 2;
-        array[HOUR] = toInt(input.substr(0, pos));
-        array[MINUTE] = toInt(input.substr(pos));
-        getParsingFlags(config).bigHour = true;
-    });
-    addParseToken('hmmss', function (input, array, config) {
-        var pos1 = input.length - 4;
-        var pos2 = input.length - 2;
-        array[HOUR] = toInt(input.substr(0, pos1));
-        array[MINUTE] = toInt(input.substr(pos1, 2));
-        array[SECOND] = toInt(input.substr(pos2));
-        getParsingFlags(config).bigHour = true;
-    });
-    addParseToken('Hmm', function (input, array, config) {
-        var pos = input.length - 2;
-        array[HOUR] = toInt(input.substr(0, pos));
-        array[MINUTE] = toInt(input.substr(pos));
-    });
-    addParseToken('Hmmss', function (input, array, config) {
-        var pos1 = input.length - 4;
-        var pos2 = input.length - 2;
-        array[HOUR] = toInt(input.substr(0, pos1));
-        array[MINUTE] = toInt(input.substr(pos1, 2));
-        array[SECOND] = toInt(input.substr(pos2));
-    });
-
-    // LOCALES
-
-    function localeIsPM (input) {
-        // IE8 Quirks Mode & IE7 Standards Mode do not allow accessing strings like arrays
-        // Using charAt should be more compatible.
-        return ((input + '').toLowerCase().charAt(0) === 'p');
-    }
-
-    var defaultLocaleMeridiemParse = /[ap]\.?m?\.?/i;
-    function localeMeridiem (hours, minutes, isLower) {
-        if (hours > 11) {
-            return isLower ? 'pm' : 'PM';
-        } else {
-            return isLower ? 'am' : 'AM';
-        }
-    }
-
-
-    // MOMENTS
-
-    // Setting the hour should keep the time, because the user explicitly
-    // specified which hour he wants. So trying to maintain the same hour (in
-    // a new timezone) makes sense. Adding/subtracting hours does not follow
-    // this rule.
-    var getSetHour = makeGetSet('Hours', true);
-
-    // FORMATTING
-
-    addFormatToken('m', ['mm', 2], 0, 'minute');
-
-    // ALIASES
-
-    addUnitAlias('minute', 'm');
-
-    // PARSING
-
-    addRegexToken('m',  match1to2);
-    addRegexToken('mm', match1to2, match2);
-    addParseToken(['m', 'mm'], MINUTE);
-
-    // MOMENTS
-
-    var getSetMinute = makeGetSet('Minutes', false);
-
-    // FORMATTING
-
-    addFormatToken('s', ['ss', 2], 0, 'second');
-
-    // ALIASES
-
-    addUnitAlias('second', 's');
-
-    // PARSING
-
-    addRegexToken('s',  match1to2);
-    addRegexToken('ss', match1to2, match2);
-    addParseToken(['s', 'ss'], SECOND);
-
-    // MOMENTS
-
-    var getSetSecond = makeGetSet('Seconds', false);
-
-    // FORMATTING
-
-    addFormatToken('S', 0, 0, function () {
-        return ~~(this.millisecond() / 100);
-    });
-
-    addFormatToken(0, ['SS', 2], 0, function () {
-        return ~~(this.millisecond() / 10);
-    });
-
-    addFormatToken(0, ['SSS', 3], 0, 'millisecond');
-    addFormatToken(0, ['SSSS', 4], 0, function () {
-        return this.millisecond() * 10;
-    });
-    addFormatToken(0, ['SSSSS', 5], 0, function () {
-        return this.millisecond() * 100;
-    });
-    addFormatToken(0, ['SSSSSS', 6], 0, function () {
-        return this.millisecond() * 1000;
-    });
-    addFormatToken(0, ['SSSSSSS', 7], 0, function () {
-        return this.millisecond() * 10000;
-    });
-    addFormatToken(0, ['SSSSSSSS', 8], 0, function () {
-        return this.millisecond() * 100000;
-    });
-    addFormatToken(0, ['SSSSSSSSS', 9], 0, function () {
-        return this.millisecond() * 1000000;
-    });
-
-
-    // ALIASES
-
-    addUnitAlias('millisecond', 'ms');
-
-    // PARSING
-
-    addRegexToken('S',    match1to3, match1);
-    addRegexToken('SS',   match1to3, match2);
-    addRegexToken('SSS',  match1to3, match3);
-
-    var token;
-    for (token = 'SSSS'; token.length <= 9; token += 'S') {
-        addRegexToken(token, matchUnsigned);
-    }
-
-    function parseMs(input, array) {
-        array[MILLISECOND] = toInt(('0.' + input) * 1000);
-    }
-
-    for (token = 'S'; token.length <= 9; token += 'S') {
-        addParseToken(token, parseMs);
-    }
-    // MOMENTS
-
-    var getSetMillisecond = makeGetSet('Milliseconds', false);
-
-    // FORMATTING
-
-    addFormatToken('z',  0, 0, 'zoneAbbr');
-    addFormatToken('zz', 0, 0, 'zoneName');
-
-    // MOMENTS
-
-    function getZoneAbbr () {
-        return this._isUTC ? 'UTC' : '';
-    }
-
-    function getZoneName () {
-        return this._isUTC ? 'Coordinated Universal Time' : '';
-    }
-
-    var momentPrototype__proto = Moment.prototype;
-
-    momentPrototype__proto.add               = add_subtract__add;
-    momentPrototype__proto.calendar          = moment_calendar__calendar;
-    momentPrototype__proto.clone             = clone;
-    momentPrototype__proto.diff              = diff;
-    momentPrototype__proto.endOf             = endOf;
-    momentPrototype__proto.format            = format;
-    momentPrototype__proto.from              = from;
-    momentPrototype__proto.fromNow           = fromNow;
-    momentPrototype__proto.to                = to;
-    momentPrototype__proto.toNow             = toNow;
-    momentPrototype__proto.get               = getSet;
-    momentPrototype__proto.invalidAt         = invalidAt;
-    momentPrototype__proto.isAfter           = isAfter;
-    momentPrototype__proto.isBefore          = isBefore;
-    momentPrototype__proto.isBetween         = isBetween;
-    momentPrototype__proto.isSame            = isSame;
-    momentPrototype__proto.isSameOrAfter     = isSameOrAfter;
-    momentPrototype__proto.isSameOrBefore    = isSameOrBefore;
-    momentPrototype__proto.isValid           = moment_valid__isValid;
-    momentPrototype__proto.lang              = lang;
-    momentPrototype__proto.locale            = locale;
-    momentPrototype__proto.localeData        = localeData;
-    momentPrototype__proto.max               = prototypeMax;
-    momentPrototype__proto.min               = prototypeMin;
-    momentPrototype__proto.parsingFlags      = parsingFlags;
-    momentPrototype__proto.set               = getSet;
-    momentPrototype__proto.startOf           = startOf;
-    momentPrototype__proto.subtract          = add_subtract__subtract;
-    momentPrototype__proto.toArray           = toArray;
-    momentPrototype__proto.toObject          = toObject;
-    momentPrototype__proto.toDate            = toDate;
-    momentPrototype__proto.toISOString       = moment_format__toISOString;
-    momentPrototype__proto.toJSON            = toJSON;
-    momentPrototype__proto.toString          = toString;
-    momentPrototype__proto.unix              = unix;
-    momentPrototype__proto.valueOf           = to_type__valueOf;
-    momentPrototype__proto.creationData      = creationData;
-
-    // Year
-    momentPrototype__proto.year       = getSetYear;
-    momentPrototype__proto.isLeapYear = getIsLeapYear;
-
-    // Week Year
-    momentPrototype__proto.weekYear    = getSetWeekYear;
-    momentPrototype__proto.isoWeekYear = getSetISOWeekYear;
-
-    // Quarter
-    momentPrototype__proto.quarter = momentPrototype__proto.quarters = getSetQuarter;
-
-    // Month
-    momentPrototype__proto.month       = getSetMonth;
-    momentPrototype__proto.daysInMonth = getDaysInMonth;
-
-    // Week
-    momentPrototype__proto.week           = momentPrototype__proto.weeks        = getSetWeek;
-    momentPrototype__proto.isoWeek        = momentPrototype__proto.isoWeeks     = getSetISOWeek;
-    momentPrototype__proto.weeksInYear    = getWeeksInYear;
-    momentPrototype__proto.isoWeeksInYear = getISOWeeksInYear;
-
-    // Day
-    momentPrototype__proto.date       = getSetDayOfMonth;
-    momentPrototype__proto.day        = momentPrototype__proto.days             = getSetDayOfWeek;
-    momentPrototype__proto.weekday    = getSetLocaleDayOfWeek;
-    momentPrototype__proto.isoWeekday = getSetISODayOfWeek;
-    momentPrototype__proto.dayOfYear  = getSetDayOfYear;
-
-    // Hour
-    momentPrototype__proto.hour = momentPrototype__proto.hours = getSetHour;
-
-    // Minute
-    momentPrototype__proto.minute = momentPrototype__proto.minutes = getSetMinute;
-
-    // Second
-    momentPrototype__proto.second = momentPrototype__proto.seconds = getSetSecond;
-
-    // Millisecond
-    momentPrototype__proto.millisecond = momentPrototype__proto.milliseconds = getSetMillisecond;
-
-    // Offset
-    momentPrototype__proto.utcOffset            = getSetOffset;
-    momentPrototype__proto.utc                  = setOffsetToUTC;
-    momentPrototype__proto.local                = setOffsetToLocal;
-    momentPrototype__proto.parseZone            = setOffsetToParsedOffset;
-    momentPrototype__proto.hasAlignedHourOffset = hasAlignedHourOffset;
-    momentPrototype__proto.isDST                = isDaylightSavingTime;
-    momentPrototype__proto.isDSTShifted         = isDaylightSavingTimeShifted;
-    momentPrototype__proto.isLocal              = isLocal;
-    momentPrototype__proto.isUtcOffset          = isUtcOffset;
-    momentPrototype__proto.isUtc                = isUtc;
-    momentPrototype__proto.isUTC                = isUtc;
-
-    // Timezone
-    momentPrototype__proto.zoneAbbr = getZoneAbbr;
-    momentPrototype__proto.zoneName = getZoneName;
-
-    // Deprecations
-    momentPrototype__proto.dates  = deprecate('dates accessor is deprecated. Use date instead.', getSetDayOfMonth);
-    momentPrototype__proto.months = deprecate('months accessor is deprecated. Use month instead', getSetMonth);
-    momentPrototype__proto.years  = deprecate('years accessor is deprecated. Use year instead', getSetYear);
-    momentPrototype__proto.zone   = deprecate('moment().zone is deprecated, use moment().utcOffset instead. https://github.com/moment/moment/issues/1779', getSetZone);
-
-    var momentPrototype = momentPrototype__proto;
-
-    function moment__createUnix (input) {
-        return local__createLocal(input * 1000);
-    }
-
-    function moment__createInZone () {
-        return local__createLocal.apply(null, arguments).parseZone();
-    }
-
-    var defaultCalendar = {
-        sameDay : '[Today at] LT',
-        nextDay : '[Tomorrow at] LT',
-        nextWeek : 'dddd [at] LT',
-        lastDay : '[Yesterday at] LT',
-        lastWeek : '[Last] dddd [at] LT',
-        sameElse : 'L'
-    };
-
-    function locale_calendar__calendar (key, mom, now) {
-        var output = this._calendar[key];
-        return isFunction(output) ? output.call(mom, now) : output;
-    }
-
-    var defaultLongDateFormat = {
-        LTS  : 'h:mm:ss A',
-        LT   : 'h:mm A',
-        L    : 'MM/DD/YYYY',
-        LL   : 'MMMM D, YYYY',
-        LLL  : 'MMMM D, YYYY h:mm A',
-        LLLL : 'dddd, MMMM D, YYYY h:mm A'
-    };
-
-    function longDateFormat (key) {
-        var format = this._longDateFormat[key],
-            formatUpper = this._longDateFormat[key.toUpperCase()];
-
-        if (format || !formatUpper) {
-            return format;
-        }
-
-        this._longDateFormat[key] = formatUpper.replace(/MMMM|MM|DD|dddd/g, function (val) {
-            return val.slice(1);
-        });
-
-        return this._longDateFormat[key];
-    }
-
-    var defaultInvalidDate = 'Invalid date';
-
-    function invalidDate () {
-        return this._invalidDate;
-    }
-
-    var defaultOrdinal = '%d';
-    var defaultOrdinalParse = /\d{1,2}/;
-
-    function ordinal (number) {
-        return this._ordinal.replace('%d', number);
-    }
-
-    function preParsePostFormat (string) {
-        return string;
-    }
-
-    var defaultRelativeTime = {
-        future : 'in %s',
-        past   : '%s ago',
-        s  : 'a few seconds',
-        m  : 'a minute',
-        mm : '%d minutes',
-        h  : 'an hour',
-        hh : '%d hours',
-        d  : 'a day',
-        dd : '%d days',
-        M  : 'a month',
-        MM : '%d months',
-        y  : 'a year',
-        yy : '%d years'
-    };
-
-    function relative__relativeTime (number, withoutSuffix, string, isFuture) {
-        var output = this._relativeTime[string];
-        return (isFunction(output)) ?
-            output(number, withoutSuffix, string, isFuture) :
-            output.replace(/%d/i, number);
-    }
-
-    function pastFuture (diff, output) {
-        var format = this._relativeTime[diff > 0 ? 'future' : 'past'];
-        return isFunction(format) ? format(output) : format.replace(/%s/i, output);
-    }
-
-    var prototype__proto = Locale.prototype;
-
-    prototype__proto._calendar       = defaultCalendar;
-    prototype__proto.calendar        = locale_calendar__calendar;
-    prototype__proto._longDateFormat = defaultLongDateFormat;
-    prototype__proto.longDateFormat  = longDateFormat;
-    prototype__proto._invalidDate    = defaultInvalidDate;
-    prototype__proto.invalidDate     = invalidDate;
-    prototype__proto._ordinal        = defaultOrdinal;
-    prototype__proto.ordinal         = ordinal;
-    prototype__proto._ordinalParse   = defaultOrdinalParse;
-    prototype__proto.preparse        = preParsePostFormat;
-    prototype__proto.postformat      = preParsePostFormat;
-    prototype__proto._relativeTime   = defaultRelativeTime;
-    prototype__proto.relativeTime    = relative__relativeTime;
-    prototype__proto.pastFuture      = pastFuture;
-    prototype__proto.set             = locale_set__set;
-
-    // Month
-    prototype__proto.months            =        localeMonths;
-    prototype__proto._months           = defaultLocaleMonths;
-    prototype__proto.monthsShort       =        localeMonthsShort;
-    prototype__proto._monthsShort      = defaultLocaleMonthsShort;
-    prototype__proto.monthsParse       =        localeMonthsParse;
-    prototype__proto._monthsRegex      = defaultMonthsRegex;
-    prototype__proto.monthsRegex       = monthsRegex;
-    prototype__proto._monthsShortRegex = defaultMonthsShortRegex;
-    prototype__proto.monthsShortRegex  = monthsShortRegex;
-
-    // Week
-    prototype__proto.week = localeWeek;
-    prototype__proto._week = defaultLocaleWeek;
-    prototype__proto.firstDayOfYear = localeFirstDayOfYear;
-    prototype__proto.firstDayOfWeek = localeFirstDayOfWeek;
-
-    // Day of Week
-    prototype__proto.weekdays       =        localeWeekdays;
-    prototype__proto._weekdays      = defaultLocaleWeekdays;
-    prototype__proto.weekdaysMin    =        localeWeekdaysMin;
-    prototype__proto._weekdaysMin   = defaultLocaleWeekdaysMin;
-    prototype__proto.weekdaysShort  =        localeWeekdaysShort;
-    prototype__proto._weekdaysShort = defaultLocaleWeekdaysShort;
-    prototype__proto.weekdaysParse  =        localeWeekdaysParse;
-
-    // Hours
-    prototype__proto.isPM = localeIsPM;
-    prototype__proto._meridiemParse = defaultLocaleMeridiemParse;
-    prototype__proto.meridiem = localeMeridiem;
-
-    function lists__get (format, index, field, setter) {
-        var locale = locale_locales__getLocale();
-        var utc = create_utc__createUTC().set(setter, index);
-        return locale[field](utc, format);
-    }
-
-    function list (format, index, field, count, setter) {
-        if (typeof format === 'number') {
-            index = format;
-            format = undefined;
-        }
-
-        format = format || '';
-
-        if (index != null) {
-            return lists__get(format, index, field, setter);
-        }
-
-        var i;
-        var out = [];
-        for (i = 0; i < count; i++) {
-            out[i] = lists__get(format, i, field, setter);
-        }
-        return out;
-    }
-
-    function lists__listMonths (format, index) {
-        return list(format, index, 'months', 12, 'month');
-    }
-
-    function lists__listMonthsShort (format, index) {
-        return list(format, index, 'monthsShort', 12, 'month');
-    }
-
-    function lists__listWeekdays (format, index) {
-        return list(format, index, 'weekdays', 7, 'day');
-    }
-
-    function lists__listWeekdaysShort (format, index) {
-        return list(format, index, 'weekdaysShort', 7, 'day');
-    }
-
-    function lists__listWeekdaysMin (format, index) {
-        return list(format, index, 'weekdaysMin', 7, 'day');
-    }
-
-    locale_locales__getSetGlobalLocale('en', {
-        ordinalParse: /\d{1,2}(th|st|nd|rd)/,
-        ordinal : function (number) {
-            var b = number % 10,
-                output = (toInt(number % 100 / 10) === 1) ? 'th' :
-                (b === 1) ? 'st' :
-                (b === 2) ? 'nd' :
-                (b === 3) ? 'rd' : 'th';
-            return number + output;
-        }
-    });
-
-    // Side effect imports
-    utils_hooks__hooks.lang = deprecate('moment.lang is deprecated. Use moment.locale instead.', locale_locales__getSetGlobalLocale);
-    utils_hooks__hooks.langData = deprecate('moment.langData is deprecated. Use moment.localeData instead.', locale_locales__getLocale);
-
-    var mathAbs = Math.abs;
-
-    function duration_abs__abs () {
-        var data           = this._data;
-
-        this._milliseconds = mathAbs(this._milliseconds);
-        this._days         = mathAbs(this._days);
-        this._months       = mathAbs(this._months);
-
-        data.milliseconds  = mathAbs(data.milliseconds);
-        data.seconds       = mathAbs(data.seconds);
-        data.minutes       = mathAbs(data.minutes);
-        data.hours         = mathAbs(data.hours);
-        data.months        = mathAbs(data.months);
-        data.years         = mathAbs(data.years);
-
-        return this;
-    }
-
-    function duration_add_subtract__addSubtract (duration, input, value, direction) {
-        var other = create__createDuration(input, value);
-
-        duration._milliseconds += direction * other._milliseconds;
-        duration._days         += direction * other._days;
-        duration._months       += direction * other._months;
-
-        return duration._bubble();
-    }
-
-    // supports only 2.0-style add(1, 's') or add(duration)
-    function duration_add_subtract__add (input, value) {
-        return duration_add_subtract__addSubtract(this, input, value, 1);
-    }
-
-    // supports only 2.0-style subtract(1, 's') or subtract(duration)
-    function duration_add_subtract__subtract (input, value) {
-        return duration_add_subtract__addSubtract(this, input, value, -1);
-    }
-
-    function absCeil (number) {
-        if (number < 0) {
-            return Math.floor(number);
-        } else {
-            return Math.ceil(number);
-        }
-    }
-
-    function bubble () {
-        var milliseconds = this._milliseconds;
-        var days         = this._days;
-        var months       = this._months;
-        var data         = this._data;
-        var seconds, minutes, hours, years, monthsFromDays;
-
-        // if we have a mix of positive and negative values, bubble down first
-        // check: https://github.com/moment/moment/issues/2166
-        if (!((milliseconds >= 0 && days >= 0 && months >= 0) ||
-                (milliseconds <= 0 && days <= 0 && months <= 0))) {
-            milliseconds += absCeil(monthsToDays(months) + days) * 864e5;
-            days = 0;
-            months = 0;
-        }
-
-        // The following code bubbles up values, see the tests for
-        // examples of what that means.
-        data.milliseconds = milliseconds % 1000;
-
-        seconds           = absFloor(milliseconds / 1000);
-        data.seconds      = seconds % 60;
-
-        minutes           = absFloor(seconds / 60);
-        data.minutes      = minutes % 60;
-
-        hours             = absFloor(minutes / 60);
-        data.hours        = hours % 24;
-
-        days += absFloor(hours / 24);
-
-        // convert days to months
-        monthsFromDays = absFloor(daysToMonths(days));
-        months += monthsFromDays;
-        days -= absCeil(monthsToDays(monthsFromDays));
-
-        // 12 months -> 1 year
-        years = absFloor(months / 12);
-        months %= 12;
-
-        data.days   = days;
-        data.months = months;
-        data.years  = years;
-
-        return this;
-    }
-
-    function daysToMonths (days) {
-        // 400 years have 146097 days (taking into account leap year rules)
-        // 400 years have 12 months === 4800
-        return days * 4800 / 146097;
-    }
-
-    function monthsToDays (months) {
-        // the reverse of daysToMonths
-        return months * 146097 / 4800;
-    }
-
-    function as (units) {
-        var days;
-        var months;
-        var milliseconds = this._milliseconds;
-
-        units = normalizeUnits(units);
-
-        if (units === 'month' || units === 'year') {
-            days   = this._days   + milliseconds / 864e5;
-            months = this._months + daysToMonths(days);
-            return units === 'month' ? months : months / 12;
-        } else {
-            // handle milliseconds separately because of floating point math errors (issue #1867)
-            days = this._days + Math.round(monthsToDays(this._months));
-            switch (units) {
-                case 'week'   : return days / 7     + milliseconds / 6048e5;
-                case 'day'    : return days         + milliseconds / 864e5;
-                case 'hour'   : return days * 24    + milliseconds / 36e5;
-                case 'minute' : return days * 1440  + milliseconds / 6e4;
-                case 'second' : return days * 86400 + milliseconds / 1000;
-                // Math.floor prevents floating point math errors here
-                case 'millisecond': return Math.floor(days * 864e5) + milliseconds;
-                default: throw new Error('Unknown unit ' + units);
-            }
-        }
-    }
-
-    // TODO: Use this.as('ms')?
-    function duration_as__valueOf () {
-        return (
-            this._milliseconds +
-            this._days * 864e5 +
-            (this._months % 12) * 2592e6 +
-            toInt(this._months / 12) * 31536e6
-        );
-    }
-
-    function makeAs (alias) {
-        return function () {
-            return this.as(alias);
-        };
-    }
-
-    var asMilliseconds = makeAs('ms');
-    var asSeconds      = makeAs('s');
-    var asMinutes      = makeAs('m');
-    var asHours        = makeAs('h');
-    var asDays         = makeAs('d');
-    var asWeeks        = makeAs('w');
-    var asMonths       = makeAs('M');
-    var asYears        = makeAs('y');
-
-    function duration_get__get (units) {
-        units = normalizeUnits(units);
-        return this[units + 's']();
-    }
-
-    function makeGetter(name) {
-        return function () {
-            return this._data[name];
-        };
-    }
-
-    var milliseconds = makeGetter('milliseconds');
-    var seconds      = makeGetter('seconds');
-    var minutes      = makeGetter('minutes');
-    var hours        = makeGetter('hours');
-    var days         = makeGetter('days');
-    var months       = makeGetter('months');
-    var years        = makeGetter('years');
-
-    function weeks () {
-        return absFloor(this.days() / 7);
-    }
-
-    var round = Math.round;
-    var thresholds = {
-        s: 45,  // seconds to minute
-        m: 45,  // minutes to hour
-        h: 22,  // hours to day
-        d: 26,  // days to month
-        M: 11   // months to year
-    };
-
-    // helper function for moment.fn.from, moment.fn.fromNow, and moment.duration.fn.humanize
-    function substituteTimeAgo(string, number, withoutSuffix, isFuture, locale) {
-        return locale.relativeTime(number || 1, !!withoutSuffix, string, isFuture);
-    }
-
-    function duration_humanize__relativeTime (posNegDuration, withoutSuffix, locale) {
-        var duration = create__createDuration(posNegDuration).abs();
-        var seconds  = round(duration.as('s'));
-        var minutes  = round(duration.as('m'));
-        var hours    = round(duration.as('h'));
-        var days     = round(duration.as('d'));
-        var months   = round(duration.as('M'));
-        var years    = round(duration.as('y'));
-
-        var a = seconds < thresholds.s && ['s', seconds]  ||
-                minutes <= 1           && ['m']           ||
-                minutes < thresholds.m && ['mm', minutes] ||
-                hours   <= 1           && ['h']           ||
-                hours   < thresholds.h && ['hh', hours]   ||
-                days    <= 1           && ['d']           ||
-                days    < thresholds.d && ['dd', days]    ||
-                months  <= 1           && ['M']           ||
-                months  < thresholds.M && ['MM', months]  ||
-                years   <= 1           && ['y']           || ['yy', years];
-
-        a[2] = withoutSuffix;
-        a[3] = +posNegDuration > 0;
-        a[4] = locale;
-        return substituteTimeAgo.apply(null, a);
-    }
-
-    // This function allows you to set a threshold for relative time strings
-    function duration_humanize__getSetRelativeTimeThreshold (threshold, limit) {
-        if (thresholds[threshold] === undefined) {
-            return false;
-        }
-        if (limit === undefined) {
-            return thresholds[threshold];
-        }
-        thresholds[threshold] = limit;
-        return true;
-    }
-
-    function humanize (withSuffix) {
-        var locale = this.localeData();
-        var output = duration_humanize__relativeTime(this, !withSuffix, locale);
-
-        if (withSuffix) {
-            output = locale.pastFuture(+this, output);
-        }
-
-        return locale.postformat(output);
-    }
-
-    var iso_string__abs = Math.abs;
-
-    function iso_string__toISOString() {
-        // for ISO strings we do not use the normal bubbling rules:
-        //  * milliseconds bubble up until they become hours
-        //  * days do not bubble at all
-        //  * months bubble up until they become years
-        // This is because there is no context-free conversion between hours and days
-        // (think of clock changes)
-        // and also not between days and months (28-31 days per month)
-        var seconds = iso_string__abs(this._milliseconds) / 1000;
-        var days         = iso_string__abs(this._days);
-        var months       = iso_string__abs(this._months);
-        var minutes, hours, years;
-
-        // 3600 seconds -> 60 minutes -> 1 hour
-        minutes           = absFloor(seconds / 60);
-        hours             = absFloor(minutes / 60);
-        seconds %= 60;
-        minutes %= 60;
-
-        // 12 months -> 1 year
-        years  = absFloor(months / 12);
-        months %= 12;
-
-
-        // inspired by https://github.com/dordille/moment-isoduration/blob/master/moment.isoduration.js
-        var Y = years;
-        var M = months;
-        var D = days;
-        var h = hours;
-        var m = minutes;
-        var s = seconds;
-        var total = this.asSeconds();
-
-        if (!total) {
-            // this is the same as C#'s (Noda) and python (isodate)...
-            // but not other JS (goog.date)
-            return 'P0D';
-        }
-
-        return (total < 0 ? '-' : '') +
-            'P' +
-            (Y ? Y + 'Y' : '') +
-            (M ? M + 'M' : '') +
-            (D ? D + 'D' : '') +
-            ((h || m || s) ? 'T' : '') +
-            (h ? h + 'H' : '') +
-            (m ? m + 'M' : '') +
-            (s ? s + 'S' : '');
-    }
-
-    var duration_prototype__proto = Duration.prototype;
-
-    duration_prototype__proto.abs            = duration_abs__abs;
-    duration_prototype__proto.add            = duration_add_subtract__add;
-    duration_prototype__proto.subtract       = duration_add_subtract__subtract;
-    duration_prototype__proto.as             = as;
-    duration_prototype__proto.asMilliseconds = asMilliseconds;
-    duration_prototype__proto.asSeconds      = asSeconds;
-    duration_prototype__proto.asMinutes      = asMinutes;
-    duration_prototype__proto.asHours        = asHours;
-    duration_prototype__proto.asDays         = asDays;
-    duration_prototype__proto.asWeeks        = asWeeks;
-    duration_prototype__proto.asMonths       = asMonths;
-    duration_prototype__proto.asYears        = asYears;
-    duration_prototype__proto.valueOf        = duration_as__valueOf;
-    duration_prototype__proto._bubble        = bubble;
-    duration_prototype__proto.get            = duration_get__get;
-    duration_prototype__proto.milliseconds   = milliseconds;
-    duration_prototype__proto.seconds        = seconds;
-    duration_prototype__proto.minutes        = minutes;
-    duration_prototype__proto.hours          = hours;
-    duration_prototype__proto.days           = days;
-    duration_prototype__proto.weeks          = weeks;
-    duration_prototype__proto.months         = months;
-    duration_prototype__proto.years          = years;
-    duration_prototype__proto.humanize       = humanize;
-    duration_prototype__proto.toISOString    = iso_string__toISOString;
-    duration_prototype__proto.toString       = iso_string__toISOString;
-    duration_prototype__proto.toJSON         = iso_string__toISOString;
-    duration_prototype__proto.locale         = locale;
-    duration_prototype__proto.localeData     = localeData;
-
-    // Deprecations
-    duration_prototype__proto.toIsoString = deprecate('toIsoString() is deprecated. Please use toISOString() instead (notice the capitals)', iso_string__toISOString);
-    duration_prototype__proto.lang = lang;
-
-    // Side effect imports
-
-    // FORMATTING
-
-    addFormatToken('X', 0, 0, 'unix');
-    addFormatToken('x', 0, 0, 'valueOf');
-
-    // PARSING
-
-    addRegexToken('x', matchSigned);
-    addRegexToken('X', matchTimestamp);
-    addParseToken('X', function (input, array, config) {
-        config._d = new Date(parseFloat(input, 10) * 1000);
-    });
-    addParseToken('x', function (input, array, config) {
-        config._d = new Date(toInt(input));
-    });
-
-    // Side effect imports
-
-
-    utils_hooks__hooks.version = '2.12.0';
-
-    setHookCallback(local__createLocal);
-
-    utils_hooks__hooks.fn                    = momentPrototype;
-    utils_hooks__hooks.min                   = min;
-    utils_hooks__hooks.max                   = max;
-    utils_hooks__hooks.now                   = now;
-    utils_hooks__hooks.utc                   = create_utc__createUTC;
-    utils_hooks__hooks.unix                  = moment__createUnix;
-    utils_hooks__hooks.months                = lists__listMonths;
-    utils_hooks__hooks.isDate                = isDate;
-    utils_hooks__hooks.locale                = locale_locales__getSetGlobalLocale;
-    utils_hooks__hooks.invalid               = valid__createInvalid;
-    utils_hooks__hooks.duration              = create__createDuration;
-    utils_hooks__hooks.isMoment              = isMoment;
-    utils_hooks__hooks.weekdays              = lists__listWeekdays;
-    utils_hooks__hooks.parseZone             = moment__createInZone;
-    utils_hooks__hooks.localeData            = locale_locales__getLocale;
-    utils_hooks__hooks.isDuration            = isDuration;
-    utils_hooks__hooks.monthsShort           = lists__listMonthsShort;
-    utils_hooks__hooks.weekdaysMin           = lists__listWeekdaysMin;
-    utils_hooks__hooks.defineLocale          = defineLocale;
-    utils_hooks__hooks.updateLocale          = updateLocale;
-    utils_hooks__hooks.locales               = locale_locales__listLocales;
-    utils_hooks__hooks.weekdaysShort         = lists__listWeekdaysShort;
-    utils_hooks__hooks.normalizeUnits        = normalizeUnits;
-    utils_hooks__hooks.relativeTimeThreshold = duration_humanize__getSetRelativeTimeThreshold;
-    utils_hooks__hooks.prototype             = momentPrototype;
-
-    var _moment = utils_hooks__hooks;
-
-    return _moment;
-
-}));
-},{}],211:[function(require,module,exports){
+},{}],212:[function(require,module,exports){
 /**!
  * AngularJS file upload directives and services. Supoorts: file upload/drop/paste, resume, cancel/abort,
  * progress, resize, thumbnail, preview, validation and CORS
@@ -92798,665 +93147,10 @@ ngFileUpload.service('UploadExif', ['UploadResize', '$q', function (UploadResize
 }]);
 
 
-},{}],212:[function(require,module,exports){
+},{}],213:[function(require,module,exports){
 require('./dist/ng-file-upload-all');
 module.exports = 'ngFileUpload';
-},{"./dist/ng-file-upload-all":211}],213:[function(require,module,exports){
-(function (global){
-/*! https://mths.be/punycode v1.4.0 by @mathias */
-;(function(root) {
-
-	/** Detect free variables */
-	var freeExports = typeof exports == 'object' && exports &&
-		!exports.nodeType && exports;
-	var freeModule = typeof module == 'object' && module &&
-		!module.nodeType && module;
-	var freeGlobal = typeof global == 'object' && global;
-	if (
-		freeGlobal.global === freeGlobal ||
-		freeGlobal.window === freeGlobal ||
-		freeGlobal.self === freeGlobal
-	) {
-		root = freeGlobal;
-	}
-
-	/**
-	 * The `punycode` object.
-	 * @name punycode
-	 * @type Object
-	 */
-	var punycode,
-
-	/** Highest positive signed 32-bit float value */
-	maxInt = 2147483647, // aka. 0x7FFFFFFF or 2^31-1
-
-	/** Bootstring parameters */
-	base = 36,
-	tMin = 1,
-	tMax = 26,
-	skew = 38,
-	damp = 700,
-	initialBias = 72,
-	initialN = 128, // 0x80
-	delimiter = '-', // '\x2D'
-
-	/** Regular expressions */
-	regexPunycode = /^xn--/,
-	regexNonASCII = /[^\x20-\x7E]/, // unprintable ASCII chars + non-ASCII chars
-	regexSeparators = /[\x2E\u3002\uFF0E\uFF61]/g, // RFC 3490 separators
-
-	/** Error messages */
-	errors = {
-		'overflow': 'Overflow: input needs wider integers to process',
-		'not-basic': 'Illegal input >= 0x80 (not a basic code point)',
-		'invalid-input': 'Invalid input'
-	},
-
-	/** Convenience shortcuts */
-	baseMinusTMin = base - tMin,
-	floor = Math.floor,
-	stringFromCharCode = String.fromCharCode,
-
-	/** Temporary variable */
-	key;
-
-	/*--------------------------------------------------------------------------*/
-
-	/**
-	 * A generic error utility function.
-	 * @private
-	 * @param {String} type The error type.
-	 * @returns {Error} Throws a `RangeError` with the applicable error message.
-	 */
-	function error(type) {
-		throw new RangeError(errors[type]);
-	}
-
-	/**
-	 * A generic `Array#map` utility function.
-	 * @private
-	 * @param {Array} array The array to iterate over.
-	 * @param {Function} callback The function that gets called for every array
-	 * item.
-	 * @returns {Array} A new array of values returned by the callback function.
-	 */
-	function map(array, fn) {
-		var length = array.length;
-		var result = [];
-		while (length--) {
-			result[length] = fn(array[length]);
-		}
-		return result;
-	}
-
-	/**
-	 * A simple `Array#map`-like wrapper to work with domain name strings or email
-	 * addresses.
-	 * @private
-	 * @param {String} domain The domain name or email address.
-	 * @param {Function} callback The function that gets called for every
-	 * character.
-	 * @returns {Array} A new string of characters returned by the callback
-	 * function.
-	 */
-	function mapDomain(string, fn) {
-		var parts = string.split('@');
-		var result = '';
-		if (parts.length > 1) {
-			// In email addresses, only the domain name should be punycoded. Leave
-			// the local part (i.e. everything up to `@`) intact.
-			result = parts[0] + '@';
-			string = parts[1];
-		}
-		// Avoid `split(regex)` for IE8 compatibility. See #17.
-		string = string.replace(regexSeparators, '\x2E');
-		var labels = string.split('.');
-		var encoded = map(labels, fn).join('.');
-		return result + encoded;
-	}
-
-	/**
-	 * Creates an array containing the numeric code points of each Unicode
-	 * character in the string. While JavaScript uses UCS-2 internally,
-	 * this function will convert a pair of surrogate halves (each of which
-	 * UCS-2 exposes as separate characters) into a single code point,
-	 * matching UTF-16.
-	 * @see `punycode.ucs2.encode`
-	 * @see <https://mathiasbynens.be/notes/javascript-encoding>
-	 * @memberOf punycode.ucs2
-	 * @name decode
-	 * @param {String} string The Unicode input string (UCS-2).
-	 * @returns {Array} The new array of code points.
-	 */
-	function ucs2decode(string) {
-		var output = [],
-		    counter = 0,
-		    length = string.length,
-		    value,
-		    extra;
-		while (counter < length) {
-			value = string.charCodeAt(counter++);
-			if (value >= 0xD800 && value <= 0xDBFF && counter < length) {
-				// high surrogate, and there is a next character
-				extra = string.charCodeAt(counter++);
-				if ((extra & 0xFC00) == 0xDC00) { // low surrogate
-					output.push(((value & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000);
-				} else {
-					// unmatched surrogate; only append this code unit, in case the next
-					// code unit is the high surrogate of a surrogate pair
-					output.push(value);
-					counter--;
-				}
-			} else {
-				output.push(value);
-			}
-		}
-		return output;
-	}
-
-	/**
-	 * Creates a string based on an array of numeric code points.
-	 * @see `punycode.ucs2.decode`
-	 * @memberOf punycode.ucs2
-	 * @name encode
-	 * @param {Array} codePoints The array of numeric code points.
-	 * @returns {String} The new Unicode string (UCS-2).
-	 */
-	function ucs2encode(array) {
-		return map(array, function(value) {
-			var output = '';
-			if (value > 0xFFFF) {
-				value -= 0x10000;
-				output += stringFromCharCode(value >>> 10 & 0x3FF | 0xD800);
-				value = 0xDC00 | value & 0x3FF;
-			}
-			output += stringFromCharCode(value);
-			return output;
-		}).join('');
-	}
-
-	/**
-	 * Converts a basic code point into a digit/integer.
-	 * @see `digitToBasic()`
-	 * @private
-	 * @param {Number} codePoint The basic numeric code point value.
-	 * @returns {Number} The numeric value of a basic code point (for use in
-	 * representing integers) in the range `0` to `base - 1`, or `base` if
-	 * the code point does not represent a value.
-	 */
-	function basicToDigit(codePoint) {
-		if (codePoint - 48 < 10) {
-			return codePoint - 22;
-		}
-		if (codePoint - 65 < 26) {
-			return codePoint - 65;
-		}
-		if (codePoint - 97 < 26) {
-			return codePoint - 97;
-		}
-		return base;
-	}
-
-	/**
-	 * Converts a digit/integer into a basic code point.
-	 * @see `basicToDigit()`
-	 * @private
-	 * @param {Number} digit The numeric value of a basic code point.
-	 * @returns {Number} The basic code point whose value (when used for
-	 * representing integers) is `digit`, which needs to be in the range
-	 * `0` to `base - 1`. If `flag` is non-zero, the uppercase form is
-	 * used; else, the lowercase form is used. The behavior is undefined
-	 * if `flag` is non-zero and `digit` has no uppercase form.
-	 */
-	function digitToBasic(digit, flag) {
-		//  0..25 map to ASCII a..z or A..Z
-		// 26..35 map to ASCII 0..9
-		return digit + 22 + 75 * (digit < 26) - ((flag != 0) << 5);
-	}
-
-	/**
-	 * Bias adaptation function as per section 3.4 of RFC 3492.
-	 * https://tools.ietf.org/html/rfc3492#section-3.4
-	 * @private
-	 */
-	function adapt(delta, numPoints, firstTime) {
-		var k = 0;
-		delta = firstTime ? floor(delta / damp) : delta >> 1;
-		delta += floor(delta / numPoints);
-		for (/* no initialization */; delta > baseMinusTMin * tMax >> 1; k += base) {
-			delta = floor(delta / baseMinusTMin);
-		}
-		return floor(k + (baseMinusTMin + 1) * delta / (delta + skew));
-	}
-
-	/**
-	 * Converts a Punycode string of ASCII-only symbols to a string of Unicode
-	 * symbols.
-	 * @memberOf punycode
-	 * @param {String} input The Punycode string of ASCII-only symbols.
-	 * @returns {String} The resulting string of Unicode symbols.
-	 */
-	function decode(input) {
-		// Don't use UCS-2
-		var output = [],
-		    inputLength = input.length,
-		    out,
-		    i = 0,
-		    n = initialN,
-		    bias = initialBias,
-		    basic,
-		    j,
-		    index,
-		    oldi,
-		    w,
-		    k,
-		    digit,
-		    t,
-		    /** Cached calculation results */
-		    baseMinusT;
-
-		// Handle the basic code points: let `basic` be the number of input code
-		// points before the last delimiter, or `0` if there is none, then copy
-		// the first basic code points to the output.
-
-		basic = input.lastIndexOf(delimiter);
-		if (basic < 0) {
-			basic = 0;
-		}
-
-		for (j = 0; j < basic; ++j) {
-			// if it's not a basic code point
-			if (input.charCodeAt(j) >= 0x80) {
-				error('not-basic');
-			}
-			output.push(input.charCodeAt(j));
-		}
-
-		// Main decoding loop: start just after the last delimiter if any basic code
-		// points were copied; start at the beginning otherwise.
-
-		for (index = basic > 0 ? basic + 1 : 0; index < inputLength; /* no final expression */) {
-
-			// `index` is the index of the next character to be consumed.
-			// Decode a generalized variable-length integer into `delta`,
-			// which gets added to `i`. The overflow checking is easier
-			// if we increase `i` as we go, then subtract off its starting
-			// value at the end to obtain `delta`.
-			for (oldi = i, w = 1, k = base; /* no condition */; k += base) {
-
-				if (index >= inputLength) {
-					error('invalid-input');
-				}
-
-				digit = basicToDigit(input.charCodeAt(index++));
-
-				if (digit >= base || digit > floor((maxInt - i) / w)) {
-					error('overflow');
-				}
-
-				i += digit * w;
-				t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
-
-				if (digit < t) {
-					break;
-				}
-
-				baseMinusT = base - t;
-				if (w > floor(maxInt / baseMinusT)) {
-					error('overflow');
-				}
-
-				w *= baseMinusT;
-
-			}
-
-			out = output.length + 1;
-			bias = adapt(i - oldi, out, oldi == 0);
-
-			// `i` was supposed to wrap around from `out` to `0`,
-			// incrementing `n` each time, so we'll fix that now:
-			if (floor(i / out) > maxInt - n) {
-				error('overflow');
-			}
-
-			n += floor(i / out);
-			i %= out;
-
-			// Insert `n` at position `i` of the output
-			output.splice(i++, 0, n);
-
-		}
-
-		return ucs2encode(output);
-	}
-
-	/**
-	 * Converts a string of Unicode symbols (e.g. a domain name label) to a
-	 * Punycode string of ASCII-only symbols.
-	 * @memberOf punycode
-	 * @param {String} input The string of Unicode symbols.
-	 * @returns {String} The resulting Punycode string of ASCII-only symbols.
-	 */
-	function encode(input) {
-		var n,
-		    delta,
-		    handledCPCount,
-		    basicLength,
-		    bias,
-		    j,
-		    m,
-		    q,
-		    k,
-		    t,
-		    currentValue,
-		    output = [],
-		    /** `inputLength` will hold the number of code points in `input`. */
-		    inputLength,
-		    /** Cached calculation results */
-		    handledCPCountPlusOne,
-		    baseMinusT,
-		    qMinusT;
-
-		// Convert the input in UCS-2 to Unicode
-		input = ucs2decode(input);
-
-		// Cache the length
-		inputLength = input.length;
-
-		// Initialize the state
-		n = initialN;
-		delta = 0;
-		bias = initialBias;
-
-		// Handle the basic code points
-		for (j = 0; j < inputLength; ++j) {
-			currentValue = input[j];
-			if (currentValue < 0x80) {
-				output.push(stringFromCharCode(currentValue));
-			}
-		}
-
-		handledCPCount = basicLength = output.length;
-
-		// `handledCPCount` is the number of code points that have been handled;
-		// `basicLength` is the number of basic code points.
-
-		// Finish the basic string - if it is not empty - with a delimiter
-		if (basicLength) {
-			output.push(delimiter);
-		}
-
-		// Main encoding loop:
-		while (handledCPCount < inputLength) {
-
-			// All non-basic code points < n have been handled already. Find the next
-			// larger one:
-			for (m = maxInt, j = 0; j < inputLength; ++j) {
-				currentValue = input[j];
-				if (currentValue >= n && currentValue < m) {
-					m = currentValue;
-				}
-			}
-
-			// Increase `delta` enough to advance the decoder's <n,i> state to <m,0>,
-			// but guard against overflow
-			handledCPCountPlusOne = handledCPCount + 1;
-			if (m - n > floor((maxInt - delta) / handledCPCountPlusOne)) {
-				error('overflow');
-			}
-
-			delta += (m - n) * handledCPCountPlusOne;
-			n = m;
-
-			for (j = 0; j < inputLength; ++j) {
-				currentValue = input[j];
-
-				if (currentValue < n && ++delta > maxInt) {
-					error('overflow');
-				}
-
-				if (currentValue == n) {
-					// Represent delta as a generalized variable-length integer
-					for (q = delta, k = base; /* no condition */; k += base) {
-						t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
-						if (q < t) {
-							break;
-						}
-						qMinusT = q - t;
-						baseMinusT = base - t;
-						output.push(
-							stringFromCharCode(digitToBasic(t + qMinusT % baseMinusT, 0))
-						);
-						q = floor(qMinusT / baseMinusT);
-					}
-
-					output.push(stringFromCharCode(digitToBasic(q, 0)));
-					bias = adapt(delta, handledCPCountPlusOne, handledCPCount == basicLength);
-					delta = 0;
-					++handledCPCount;
-				}
-			}
-
-			++delta;
-			++n;
-
-		}
-		return output.join('');
-	}
-
-	/**
-	 * Converts a Punycode string representing a domain name or an email address
-	 * to Unicode. Only the Punycoded parts of the input will be converted, i.e.
-	 * it doesn't matter if you call it on a string that has already been
-	 * converted to Unicode.
-	 * @memberOf punycode
-	 * @param {String} input The Punycoded domain name or email address to
-	 * convert to Unicode.
-	 * @returns {String} The Unicode representation of the given Punycode
-	 * string.
-	 */
-	function toUnicode(input) {
-		return mapDomain(input, function(string) {
-			return regexPunycode.test(string)
-				? decode(string.slice(4).toLowerCase())
-				: string;
-		});
-	}
-
-	/**
-	 * Converts a Unicode string representing a domain name or an email address to
-	 * Punycode. Only the non-ASCII parts of the domain name will be converted,
-	 * i.e. it doesn't matter if you call it with a domain that's already in
-	 * ASCII.
-	 * @memberOf punycode
-	 * @param {String} input The domain name or email address to convert, as a
-	 * Unicode string.
-	 * @returns {String} The Punycode representation of the given domain name or
-	 * email address.
-	 */
-	function toASCII(input) {
-		return mapDomain(input, function(string) {
-			return regexNonASCII.test(string)
-				? 'xn--' + encode(string)
-				: string;
-		});
-	}
-
-	/*--------------------------------------------------------------------------*/
-
-	/** Define the public API */
-	punycode = {
-		/**
-		 * A string representing the current Punycode.js version number.
-		 * @memberOf punycode
-		 * @type String
-		 */
-		'version': '1.3.2',
-		/**
-		 * An object of methods to convert from JavaScript's internal character
-		 * representation (UCS-2) to Unicode code points, and back.
-		 * @see <https://mathiasbynens.be/notes/javascript-encoding>
-		 * @memberOf punycode
-		 * @type Object
-		 */
-		'ucs2': {
-			'decode': ucs2decode,
-			'encode': ucs2encode
-		},
-		'decode': decode,
-		'encode': encode,
-		'toASCII': toASCII,
-		'toUnicode': toUnicode
-	};
-
-	/** Expose `punycode` */
-	// Some AMD build optimizers, like r.js, check for specific condition patterns
-	// like the following:
-	if (
-		typeof define == 'function' &&
-		typeof define.amd == 'object' &&
-		define.amd
-	) {
-		define('punycode', function() {
-			return punycode;
-		});
-	} else if (freeExports && freeModule) {
-		if (module.exports == freeExports) {
-			// in Node.js, io.js, or RingoJS v0.8.0+
-			freeModule.exports = punycode;
-		} else {
-			// in Narwhal or RingoJS v0.7.0-
-			for (key in punycode) {
-				punycode.hasOwnProperty(key) && (freeExports[key] = punycode[key]);
-			}
-		}
-	} else {
-		// in Rhino or a web browser
-		root.punycode = punycode;
-	}
-
-}(this));
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],214:[function(require,module,exports){
-function fastMap(array, fn) {
-	var len = array.length,
-		result = new Array(len);
-
-	for(var i = 0; i < len; i++) result[i] = fn(array[i]);
-
-	return result;
-}
-
-function decodeToken(ref) {
-	return decodeURI(ref.replace(/~1/g, '/').replace(/~0/g, '~'));
-}
-
-function parse(strPointer) {
-	if(typeof strPointer !== 'string')
-		throw new Error('Invalid JSON Pointer: invalid type (' + (typeof strPointer) + ')');
-
-	// Remove the leading hash if it exists
-	var arrPointer = fastMap((strPointer[0] === '#' ? strPointer.substr(1) : strPointer).split('/'), decodeToken);
-
-	if(arrPointer[0] !== '')
-		throw new Error('Invalid JSON Pointer ("' + strPointer + '"): non-empty pointers must begin with "/" or "#/"');
-
-	return arrPointer;
-}
-
-function get(arrPointer, subject) {
-	for(var i = 1, len = arrPointer.length; i < len; i++) {
-		subject = subject && subject[arrPointer[i]];
-		if(subject === undefined) return;
-	}
-	return subject;
-}
-
-function set(arrPointer, subject, value) {
-	for(var i = 1, len = arrPointer.length - 1; i < len; i++) {
-		subject = (subject || undefined) && subject[arrPointer[i]];
-		if(subject === undefined) return false;
-	}
-
-	if(typeof subject !== 'object') return false;
-
-	var key = arrPointer[i];
-	if(key === '-') {
-		if(!Array.isArray(subject)) return false;
-		subject[subject.length] = value;
-		return true;
-	}
-
-	subject[key] = value;
-	return true;
-}
-
-var protoPointer = {
-	get: function(subject) {
-		return get(this.__arrPointer, subject);
-	},
-	set: function(subject, value) {
-		return set(this.__arrPointer, subject, value);
-	}
-};
-
-module.exports = function(sPointer) {
-	return Object.create(protoPointer, {
-		__sPointer: { writable:false, configurable:false, enumerable:false, value: sPointer },
-		__arrPointer: { writable:false, configurable:false, enumerable:false, value: parse(sPointer) }
-	});
-};
-
-},{}],215:[function(require,module,exports){
-var jsonPointer = require('skeemas-json-pointer');
-
-var protoJsonRefs = {
-	add: function(uri, subject) {
-		if(typeof uri !== 'string')
-			throw new Error('Unable to add JSON Ref: uri must be of type "string"');
-
-		if(~uri.indexOf('#'))
-			throw new Error('Unable to add JSON Ref (' + uri + '): uri cannot include a fragment identifier (#)');
-
-		this.__refs[uri] = subject;
-		return this;
-	},
-
-	remove: function(uri) {
-		delete this.__refs[uri];
-		return this;
-	},
-
-	get: function(uri, subject, ignoreFragment) {
-		if(typeof uri !== 'string')
-			throw new Error('Unable to get JSON Ref: uri must be of type "string"');
-
-		var parts = uri.split('#');
-
-		if(parts.length > 2)
-			throw new Error('Unable to get JSON Ref (' + uri + '): uri cannot contain multiple fragment identifiers (#)');
-
-		if(parts[0])
-			subject = this.__refs[parts[0]];
-
-		if(!subject)
-			throw new Error('Unable to locate JSON Ref (' + parts[0] + ')');
-
-		if(parts.length === 1 || ignoreFragment)
-			return subject;
-
-		return jsonPointer(parts[1]).get(subject);
-	}
-};
-
-module.exports = function() {
-	return Object.create(protoJsonRefs, {
-		__refs: { writable:false, configurable:false, enumerable:false, value: {} }
-	});
-};
-
-},{"skeemas-json-pointer":214}],216:[function(require,module,exports){
+},{"./dist/ng-file-upload-all":212}],214:[function(require,module,exports){
 var validators = require('./validators'),
 	validationContext = require('./validation-context'),
 	jsonRefs = require('skeemas-json-refs');
@@ -93526,7 +93220,125 @@ module.exports.use = function(plugin) {
 	return this;
 };
 
-},{"./validation-context":217,"./validators":223,"skeemas-json-refs":215}],217:[function(require,module,exports){
+},{"./validation-context":217,"./validators":223,"skeemas-json-refs":216}],215:[function(require,module,exports){
+function fastMap(array, fn) {
+	var len = array.length,
+		result = new Array(len);
+
+	for(var i = 0; i < len; i++) result[i] = fn(array[i]);
+
+	return result;
+}
+
+function decodeToken(ref) {
+	return decodeURI(ref.replace(/~1/g, '/').replace(/~0/g, '~'));
+}
+
+function parse(strPointer) {
+	if(typeof strPointer !== 'string')
+		throw new Error('Invalid JSON Pointer: invalid type (' + (typeof strPointer) + ')');
+
+	// Remove the leading hash if it exists
+	var arrPointer = fastMap((strPointer[0] === '#' ? strPointer.substr(1) : strPointer).split('/'), decodeToken);
+
+	if(arrPointer[0] !== '')
+		throw new Error('Invalid JSON Pointer ("' + strPointer + '"): non-empty pointers must begin with "/" or "#/"');
+
+	return arrPointer;
+}
+
+function get(arrPointer, subject) {
+	for(var i = 1, len = arrPointer.length; i < len; i++) {
+		subject = subject && subject[arrPointer[i]];
+		if(subject === undefined) return;
+	}
+	return subject;
+}
+
+function set(arrPointer, subject, value) {
+	for(var i = 1, len = arrPointer.length - 1; i < len; i++) {
+		subject = (subject || undefined) && subject[arrPointer[i]];
+		if(subject === undefined) return false;
+	}
+
+	if(typeof subject !== 'object') return false;
+
+	var key = arrPointer[i];
+	if(key === '-') {
+		if(!Array.isArray(subject)) return false;
+		subject[subject.length] = value;
+		return true;
+	}
+
+	subject[key] = value;
+	return true;
+}
+
+var protoPointer = {
+	get: function(subject) {
+		return get(this.__arrPointer, subject);
+	},
+	set: function(subject, value) {
+		return set(this.__arrPointer, subject, value);
+	}
+};
+
+module.exports = function(sPointer) {
+	return Object.create(protoPointer, {
+		__sPointer: { writable:false, configurable:false, enumerable:false, value: sPointer },
+		__arrPointer: { writable:false, configurable:false, enumerable:false, value: parse(sPointer) }
+	});
+};
+
+},{}],216:[function(require,module,exports){
+var jsonPointer = require('skeemas-json-pointer');
+
+var protoJsonRefs = {
+	add: function(uri, subject) {
+		if(typeof uri !== 'string')
+			throw new Error('Unable to add JSON Ref: uri must be of type "string"');
+
+		if(~uri.indexOf('#'))
+			throw new Error('Unable to add JSON Ref (' + uri + '): uri cannot include a fragment identifier (#)');
+
+		this.__refs[uri] = subject;
+		return this;
+	},
+
+	remove: function(uri) {
+		delete this.__refs[uri];
+		return this;
+	},
+
+	get: function(uri, subject, ignoreFragment) {
+		if(typeof uri !== 'string')
+			throw new Error('Unable to get JSON Ref: uri must be of type "string"');
+
+		var parts = uri.split('#');
+
+		if(parts.length > 2)
+			throw new Error('Unable to get JSON Ref (' + uri + '): uri cannot contain multiple fragment identifiers (#)');
+
+		if(parts[0])
+			subject = this.__refs[parts[0]];
+
+		if(!subject)
+			throw new Error('Unable to locate JSON Ref (' + parts[0] + ')');
+
+		if(parts.length === 1 || ignoreFragment)
+			return subject;
+
+		return jsonPointer(parts[1]).get(subject);
+	}
+};
+
+module.exports = function() {
+	return Object.create(protoJsonRefs, {
+		__refs: { writable:false, configurable:false, enumerable:false, value: {} }
+	});
+};
+
+},{"skeemas-json-pointer":215}],217:[function(require,module,exports){
 var validationResult = require('./validation-result'),
 	jsonRefs = require('skeemas-json-refs');
 
@@ -93578,7 +93390,7 @@ var makeContext = module.exports = function(schema, context, forceNewResult) {
 	});
 };
 
-},{"./validation-result":218,"skeemas-json-refs":215}],218:[function(require,module,exports){
+},{"./validation-result":218,"skeemas-json-refs":216}],218:[function(require,module,exports){
 function errorToString() {
 	return this.message + ' (pointer: ' + this.context + ')';
 }
@@ -94418,7 +94230,7 @@ function validateString(context, subject, schema) {
 
 module.exports = validateString;
 
-},{"punycode":213}],228:[function(require,module,exports){
+},{"punycode":209}],228:[function(require,module,exports){
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
