@@ -3,7 +3,7 @@ r<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administrat
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminMasterProductCtrl">
     <nc-page-title nc-title="Master Products">
-      <a class="btn btn-blue btn-width-xl" ng-href="{{url}}/add">Add {{item}}</a>
+      <a class="btn btn-blue btn-width-xxl" ng-href="{{url}}/add">Add {{item}}</a>
     </nc-page-title>
     <div class="row search-section-wrapper">
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Master Product Name'"></nc-search>
@@ -24,11 +24,11 @@ r<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administrat
             <td class="width_100">{{row.Pid}}</td>
             <td class="column-text-ellipsis">
               <div><a href="{{url}}/{{ row.ProductId }}">{{ row.ProductNameEn || '(Untitled Product)' }}</a></div>
-              <div ng-if="row.VariantCount > 0">({{row.VariantCount}} variants)</div>
+              <div class="color-grey">{{row.MasterPid}}</div>
             </td>
-            <td>{{ getChildProducts(row.ChildProducts) }}</td>
-            <td class="width_100"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
+            <td>{{ getChildProducts(row.ChildPids) }}</td>
             <td class="width_100">{{row.UpdatedDt | dateTh}}</td>
+            <td class="width_100"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>
         </tbody>
       </table>

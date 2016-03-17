@@ -32,13 +32,18 @@ module.exports = function($scope, $controller, BrandService, Product, AdminMaste
 		});
 	};
 	$scope.getChildProducts = function(search) {
-		AdminMasterProductService.list({
+		Product.list({
 			searchText: search,
-			_filter: 'ChildProduct',
-			_limit: 8
+			_limit: 8,
 		})
 		.then(function(data) {
 			$scope.childProducts = data.data;
 		});
 	};
+
+	$scope.$watch('formData.MasterProduct', function(newVal) {
+		if(!_.isNil(newVal)) {
+			_.pullAllBy($scope.formData.ChildProducts, [$scope.formData.MasterProduct], 'ProductId');
+		}
+	});
 };

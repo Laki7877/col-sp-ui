@@ -11,6 +11,7 @@ var skeemas = require('skeemas');
 
 // External dependencies
 global._ = require('lodash')
+global.pluralize = require('pluralize');
 require('angular-clipboard')
 require('angular-ui-bootstrap')
 require('angular-animate')

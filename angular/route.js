@@ -97,7 +97,7 @@ var admin = {
 	'Products|fa-tag': {
 		'View All Products': '/admin/products',
 		'Approve Products': '/admin/approve',
-		'Master Products': '/admin/master',
+		'Master Products': '/admin/masters',
 		'Brands': '/admin/brands',
 		'Attributes': '/admin/attributes',
 		'Attribute Sets': '/admin/attributesets',

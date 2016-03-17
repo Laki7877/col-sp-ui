@@ -3,9 +3,14 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminBrandAddCtrl" ng-init="init(<?=$params?>)">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Brands/{{title}}", 'urls' => ['/admin/brands']]) ?>
-    <div ng-show="loading" nc-loading="Loading Brand.."></div>
-    <div ng-show="saving" nc-loading="Saving Brand.."></div>
+    <nc-page-title nc-title="{{title}}" link="{{url}}">
+      <div class="page-header">
+        <a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
+        <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+      </div>
+    </nc-page-title>
+    <div ng-show="loading" nc-loading="{{loadingMessage}}"></div>
+    <div ng-show="saving" nc-loading="{{savingMessage}}"></div>
     <form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
       <div class="row margin-top-30">
         <div class="col-xs-12">

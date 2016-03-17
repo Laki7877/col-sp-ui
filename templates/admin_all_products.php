@@ -55,7 +55,7 @@
 	                  </td>
 	                  <td class="column-text-ellipsis">
 	                    <div><a href="/admin/products/{{ row.ProductId }}">{{ row.ProductNameEn || '(Untitled Product)' }}</a></div>
-	                    <div ng-if="row.VariantCount > 0">({{row.VariantCount}} variants)</div>
+	                    <div class="color-grey" ng-if="row.VariantCount > 0">({{row.VariantCount}} variants)</div>
 	                  </td>
 	                  <td class="column-text-ellipsis">{{getTag(row.Tags)}}</td>
 	                  <td class="price-column">

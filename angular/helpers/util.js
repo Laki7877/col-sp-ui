@@ -374,9 +374,9 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
         scope.content = item;
 
         if (id > 0) {
-            content = $interpolate(config.TITLE.DETAIL)(scope);
+            content = pluralize(item) + '/' + $interpolate(config.TITLE.DETAIL)(scope);
         } else {
-            content = $interpolate(config.TITLE.CREATE)(scope);
+            content = pluralize(item) + '/' + $interpolate(config.TITLE.CREATE)(scope);
         }
         return content;
     }
