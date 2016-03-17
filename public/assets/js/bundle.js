@@ -3629,7 +3629,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$window", "$uibM
 
 			for (var i = $scope.lowStockAlertData.length - 1; i >= 0; i--) {
 				$scope.lowStockAlertData[i].Pid = 'ID: ' + $scope.lowStockAlertData[i].Pid;
-				$scope.lowStockAlertData[i].Quantity = 'Inventory: ' + $scope.lowStockAlertData[i].Quantity;
+				$scope.lowStockAlertData[i].Quantity = 'QTY: ' + $scope.lowStockAlertData[i].Quantity;
 			};
 			return $scope.lowStockAlertData;
 		});
