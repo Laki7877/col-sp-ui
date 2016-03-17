@@ -4211,10 +4211,63 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
 }];
 
 },{}],55:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "config", function($scope, $controller, config) {
+module.exports = ["$scope", "$controller", "config", "$uibModal", "GlobalCategory", "Category", function($scope, $controller, config, $uibModal, GlobalCategory, Category) {
 	'ngInject';
 
 	$scope.formData = {};
+	$scope.GlobalCategoryTree = null;
+
+	GlobalCategory.list().then(function(data) {
+          $scope.GlobalCategoryTree = Category.transformNestedSetToUITree(data);
+          console.log($scope.GlobalCategoryTree);
+    });
+
+	$scope.deleteGlobalCat = function(index){
+
+	}
+	$scope.openCategorySelectorModal = function() {
+
+      var modalInstance = $uibModal.open({
+        size: 'category-section modal-lg column-4',
+        keyboard: false,
+        templateUrl: 'product/modalCategorySelector',
+        controller: ["$scope", "$uibModalInstance", "tree", "model", "disable", "exclude", function($scope, $uibModalInstance, tree, model, disable, exclude) {
+          'ngInject';
+          $scope.model = model;
+          $scope.exclude = exclude;
+          $scope.tree = tree;
+          $scope.title = 'Select Category';
+          $scope.categoryHeaderText = '';
+          $scope.disabledOn = disable;
+
+          $scope.select = function() {
+            $uibModalInstance.close($scope.model);
+          };
+        }],
+        resolve: {
+          model: function() {
+            return $scope.formData.Category;
+          },
+          tree: function() {
+            return $scope.GlobalCategoryTree;
+          },
+          disable: function() {
+            return function(m) {
+              if (m.nodes.length == 0) return false;
+              return true;
+            }
+          },
+          exclude: function() {
+            return [];
+          }
+        }
+      });
+
+      modalInstance.result.then(function(data) {
+        $scope.formData.Category = data;
+      });
+
+    };
 }]
 
 },{}],56:[function(require,module,exports){
@@ -13958,7 +14011,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('pending_products/section-group-information',
-    "<div class=form-section><div class=form-section-header><h2>Group Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.Shop nc-template-options-path=createGroupVariant/Required nc-label=Shop><ui-select ng-model=formData.Shop theme=selectize loading=refresher.BrandLoading><ui-select-match><span ng-bind-html=$select.selected.BrandNameEn></span> <span ng-show=!$select.selected.BrandNameEn><span class=color-grey><i class=\"fa fa-search\"></i> Search Shop</span></span></ui-select-match><ui-select-choices group-by=\"'_group'\" ui-disable-choice=item.disabled refresh-delay=5 refresh=refresher.Shop($select.search) repeat=\"item in (dataset.Brands.length == 0 || $select.search == '' ? dataset.BrandsEmpty : dataset.Brands) | filter: $select.search  track by item.BrandId\"><span ng-bind-html=\"item.BrandNameEn | highlight: $select.search\"></span></ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Category nc-template-options-path=createGroupVariant/Required nc-label=Category><ui-select ng-model=formData.Category theme=selectize loading=refresher.BrandLoading><ui-select-match><span ng-bind-html=$select.selected.BrandNameEn></span> <span ng-show=!$select.selected.BrandNameEn><span class=color-grey><i class=\"fa fa-search\"></i> Search Brand</span></span></ui-select-match><ui-select-choices group-by=\"'_group'\" ui-disable-choice=item.disabled refresh-delay=5 refresh=refresher.Brands($select.search) repeat=\"item in (dataset.Brands.length == 0 || $select.search == '' ? dataset.BrandsEmpty : dataset.Brands) | filter: $select.search  track by item.BrandId\"><span ng-bind-html=\"item.BrandNameEn | highlight: $select.search\"></span></ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.AttributeSet nc-template-options-path=createGroupVariant/Required nc-label=\"Attribute Set\"><ui-select ng-model=formData.AttributeSet theme=selectize loading=refresher.AttributeSetLoading><ui-select-match><span ng-bind-html=$select.selected.BrandNameEn></span> <span ng-show=!$select.selected.BrandNameEn><span class=color-grey><i class=\"fa fa-search\"></i> Search Brand</span></span></ui-select-match><ui-select-choices group-by=\"'_group'\" ui-disable-choice=item.disabled refresh-delay=5 refresh=refresher.Brands($select.search) repeat=\"item in (dataset.Brands.length == 0 || $select.search == '' ? dataset.BrandsEmpty : dataset.Brands) | filter: $select.search  track by item.BrandId\"><span ng-bind-html=\"item.BrandNameEn | highlight: $select.search\"></span></ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><button class=\"btn btn-blue btn-width-xxl\">Create Variation Option</button></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Group Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.Category nc-template-options-path=createGroupVariant/Required nc-label=Category><div class=width-field-normal><a class=form-text ng-click=openCategorySelectorModal()>{{formData.Category.NameEn || 'Select Category'}}</a></div></div><div nc-template=common/input/form-group-with-label nc-template-form=form.AttributeSet nc-template-options-path=createGroupVariant/Required nc-label=\"Attribute Set\"><ui-select ng-model=formData.AttributeSet theme=selectize loading=refresher.AttributeSetLoading><ui-select-match><span ng-bind-html=$select.selected.BrandNameEn></span> <span ng-show=!$select.selected.BrandNameEn><span class=color-grey><i class=\"fa fa-search\"></i> Search Brand</span></span></ui-select-match><ui-select-choices group-by=\"'_group'\" ui-disable-choice=item.disabled refresh-delay=5 refresh=refresher.Brands($select.search) repeat=\"item in (dataset.Brands.length == 0 || $select.search == '' ? dataset.BrandsEmpty : dataset.Brands) | filter: $select.search  track by item.BrandId\"><span ng-bind-html=\"item.BrandNameEn | highlight: $select.search\"></span></ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><button class=\"btn btn-blue btn-width-xxl\">Create Variation Option</button></div></div></div>"
   );
 
 

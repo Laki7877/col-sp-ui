@@ -11,7 +11,7 @@
 	</nc-page-title>
 
 	<form name="form" style="margin-top:30px" class="ah-form sticky-mainform-action" novalidate>
-         <div nc-template="pending_products/section-group-information"></div>
+         <div ng-include="'pending_products/section-group-information'"></div>
 	</form>
 </div>
 <?php $this->stop() ?>
