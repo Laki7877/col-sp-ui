@@ -4224,30 +4224,48 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
 }];
 
 },{}],55:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "config", "$uibModal", "GlobalCategory", "Category", function($scope, $controller, config, $uibModal, GlobalCategory, Category) {
+module.exports = ["$scope", "$controller", "config", "$uibModal", "GlobalCategory", "Category", "AttributeSet", "AttributeSetService", function($scope, $controller, config, $uibModal, GlobalCategory, Category, AttributeSet, AttributeSetService) {
 	'ngInject';
 
 	$scope.formData = {};
+  $scope.dataset = {
+    CombinedAttributeSets: []
+  };
 	$scope.GlobalCategoryTree = null;
+  $scope.refresher = {};
+  $scope.refresher.AttributeSets = function(q) {
+      if (!q) return;
+      $scope.refresher.AttributeSetsLoading = true;
+      return AttributeSetService.list({
+        _order: 'AttributeSetId',
+        _limit: 5,
+        _offset: 0,
+        _direction: 'asc',
+        searchText: q
+      }).then(function(ds) {
+        $scope.refresher.AttributeSetsLoading = false;
+        var searchRes = ds.data.map(function(d) {
+          d._group = 'Search Results';
+          return d;
+        });
+        $scope.dataset.CombinedAttributeSets = _.unionBy(searchRes, $scope.dataset.AttributeSets, 'AttributeSetId');
+      })
+    };
 
 	GlobalCategory.list().then(function(data) {
           $scope.GlobalCategoryTree = Category.transformNestedSetToUITree(data);
           console.log($scope.GlobalCategoryTree);
     });
 
-	$scope.deleteGlobalCat = function(index){
-
-	}
 	$scope.openCategorySelectorModal = function() {
 
       var modalInstance = $uibModal.open({
         size: 'category-section modal-lg column-4',
         keyboard: false,
         templateUrl: 'product/modalCategorySelector',
-        controller: ["$scope", "$uibModalInstance", "tree", "model", "disable", "exclude", function($scope, $uibModalInstance, tree, model, disable, exclude) {
+        controller: ["$scope", "$uibModalInstance", "tree", "model", "disable", function($scope, $uibModalInstance, tree, model, disable) {
           'ngInject';
           $scope.model = model;
-          $scope.exclude = exclude;
           $scope.tree = tree;
           $scope.title = 'Select Category';
           $scope.categoryHeaderText = '';
@@ -4269,15 +4287,23 @@ module.exports = ["$scope", "$controller", "config", "$uibModal", "GlobalCategor
               if (m.nodes.length == 0) return false;
               return true;
             }
-          },
-          exclude: function() {
-            return [];
           }
         }
       });
 
       modalInstance.result.then(function(data) {
+        console.log("Got Result");
         $scope.formData.Category = data;
+        AttributeSet.getByCategory(data.CategoryId)
+        .then(function(data) {
+          console.log(data);
+          $scope.dataset.AttributeSets = data.map(function(aset) {
+            aset._group = "Suggested Attribute Sets";
+            return aset;
+          });
+          $scope.dataset.CombinedAttributeSets = angular.copy($scope.dataset.AttributeSets);
+        });
+
       });
 
     };
@@ -14059,7 +14085,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('pending_products/section-group-information',
-    "<div class=form-section><div class=form-section-header><h2>Group Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.Category nc-template-options-path=createGroupVariant/Required nc-label=Category><div class=width-field-normal><a class=form-text ng-click=openCategorySelectorModal()>{{formData.Category.NameEn || 'Select Category'}}</a></div></div><div nc-template=common/input/form-group-with-label nc-template-form=form.AttributeSet nc-template-options-path=createGroupVariant/Required nc-label=\"Attribute Set\"><ui-select ng-model=formData.AttributeSet theme=selectize loading=refresher.AttributeSetLoading><ui-select-match><span ng-bind-html=$select.selected.BrandNameEn></span> <span ng-show=!$select.selected.BrandNameEn><span class=color-grey><i class=\"fa fa-search\"></i> Search Brand</span></span></ui-select-match><ui-select-choices group-by=\"'_group'\" ui-disable-choice=item.disabled refresh-delay=5 refresh=refresher.Brands($select.search) repeat=\"item in (dataset.Brands.length == 0 || $select.search == '' ? dataset.BrandsEmpty : dataset.Brands) | filter: $select.search  track by item.BrandId\"><span ng-bind-html=\"item.BrandNameEn | highlight: $select.search\"></span></ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><button class=\"btn btn-blue btn-width-xxl\">Create Variation Option</button></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Group Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.Category nc-template-options-path=createGroupVariant/Required nc-label=Category><a class=form-text ng-click=openCategorySelectorModal()>{{ formData.Category.NameEn || 'Select Category' }}</a></div><div nc-template=common/input/form-group-with-label nc-template-form=form.AttributeSet nc-template-options-path=createGroupVariant/Required nc-label=\"Attribute Set\"><ui-select ng-model=formData.AttributeSet theme=selectize loading=refresher.AttributeSetLoading><ui-select-match><span ng-bind-html=$select.selected.AttributeSetNameEn></span> <span ng-show=!$select.selected.AttributeSetNameEn><span class=color-grey><i class=\"fa fa-search\"></i> Search Attribute Set</span></span></ui-select-match><ui-select-choices group-by=\"'_group'\" ui-disable-choice=item.disabled refresh-delay=1000 refresh=refresher.AttributeSets($select.search) repeat=\"item in dataset.CombinedAttributeSets | filter: $select.search  track by item.AttributeSetId\"><span ng-bind-html=\"item.AttributeSetNameEn | highlight: $select.search\"></span></ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><button class=\"btn btn-blue btn-width-xxl\">Create Variation Option</button></div></div></div>"
   );
 
 
