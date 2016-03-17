@@ -113,9 +113,6 @@ var admin = {
 		'Global Coupons': '/admin/coupons/global',
 		'Seller Coupons': '/admin/coupons/seller'
 	},
-	'Reports|fa-line-chart': {
-		'View': '/admin/reports'
-	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'
 	}
