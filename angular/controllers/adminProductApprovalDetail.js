@@ -15,7 +15,7 @@ module.exports = function ($scope, $controller) {
     $scope.canApprove = function(){
     	return $scope.formData.AdminApprove.Information == 'AP' && $scope.formData.AdminApprove.Image == 'AP' &&
     	$scope.formData.AdminApprove.Category == 'AP' && $scope.formData.AdminApprove.Variation == 'AP' &&
-    	$scope.formData.AdminApprove.MoreOptions == 'AP';
+    	$scope.formData.AdminApprove.MoreOption == 'AP';
     }
 
 };

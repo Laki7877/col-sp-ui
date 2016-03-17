@@ -167,6 +167,6 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('partials/page-title',
-    "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title\">{{ title }}</h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
+    "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title ah-breadcrumb\"><span ng-repeat=\"b in breads\" class=ah-breadcrumb><a ng-if=\"$index == 0\" class=ah-breadcrumb-path ng-href={{topLink}}>{{b}}</a> <span ng-if=\"$index > 0\" class=ah-breadcrumb-path>{{b}}</span> <span ng-if=\"$index == 0\" class=ah-breadcrumb-splitter>/</span></span></h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
   );
  });
