@@ -12308,6 +12308,12 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
   border-bottom-width: 1px;
 }
 
+/* line 115, ../../../assets/_override_bootstrap.scss */
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+  background-color: #DEE3E7;
+  color: #7B7F8F;
+}
+
 /* line 1, ../../../assets/_atomic.scss */
 .margin-right-20 {
   margin-right: 20px;

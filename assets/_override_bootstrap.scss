@@ -111,3 +111,8 @@ a.like-text {
 .table > thead > tr > th {
 	border-bottom-width: 1px;
 }
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control{
+	background-color: #DEE3E7;
+	color: $color-dark-grey;
+}
