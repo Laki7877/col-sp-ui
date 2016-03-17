@@ -106,30 +106,30 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
                   <div class="form-section">
                     <div class="form-section-header"><h2>Order Condition</h2></div>
                     <div class="form-section-content">
-                      <div nc-template="common/input/form-group-with-label" nc-label="Criteria">
+                      <div nc-template="common/input/form-group-with-label" nc-label="Condition">
                         <ui-select name="Conditions_Order" ng-model="formData.Conditions.Order[0].Type" search-enabled="false" >
-                            <ui-select-match placeholder="-- Select Criteria --">{{ $select.selected.name }}</ui-select-match>
+                            <ui-select-match placeholder="-- Select Condition --">{{ $select.selected.name }}</ui-select-match>
                             <ui-select-choices repeat="i.value as i in criteria">{{ i.name }}</ui-select-choices>
                         </ui-select>
                       </div>
-                      <div ng-show="formData.Conditions.Order[0].Type != 'No filter'"
-                       nc-template="common/input/form-group-with-label" nc-label="Price" 
+                      <div ng-show="formData.Conditions.Order[0].Type != 'No Condition'"
+                       nc-template="common/input/form-group-with-label" nc-label="Price"
                        nc-template-options-path="couponForm/ConditionValue">
                         <input class="form-control" ng-model="formData.Conditions.Order[0].Value" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"/>
                       </div>
                     </div>
                   </div>
                   <div class="form-section">
-                    <div class="form-section-header"><h2>Filter By...</h2></div>
+                    <div class="form-section-header"><h2>Filter</h2></div>
                     <div class="form-section-content">
-                      <div nc-template="common/input/form-group-with-label" nc-label="Criteria">
+                      <div nc-template="common/input/form-group-with-label" nc-label="Filter by">
                         <ui-select name="Conditions_Criteria" ng-model="formData.Conditions.FilterBy.Type" search-enabled="false" >
                             <ui-select-match placeholder="-- Select Filter --">{{ $select.selected.name }}</ui-select-match>
                             <ui-select-choices repeat="i.value as i in filters">{{ i.name }}</ui-select-choices>
                         </ui-select>
                       </div>
-                      <div ng-show="formData.Conditions.FilterBy.Type == 'GlobalCategory'" 
-                        nc-template="common/input/form-group-with-label" 
+                      <div ng-show="formData.Conditions.FilterBy.Type == 'GlobalCategory'"
+                        nc-template="common/input/form-group-with-label"
                         nc-template-options-path="couponForm/FilterByValue"
                         nc-label="Include">
                         <nc-breadcrumb-select name="GlobalCategories" nc-model="formData.Conditions.FilterBy.GlobalCategories" nc-breadcrumb-select-tree="categories"></nc-breadcrumb-select>

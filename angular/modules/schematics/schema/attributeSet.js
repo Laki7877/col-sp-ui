@@ -1,5 +1,5 @@
 module.exports = {
-  "title": "Attribute Set Schema V3 Rev C",
+  "title": "Attribute Set Schema V4",
   "type": "object",
   "properties": {
     "AttributeSetId": { "type": "integer" },

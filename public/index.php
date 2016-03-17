@@ -89,6 +89,7 @@ Route::add('/admin/shoptypes/:id', 'AdminController::editShoptype');
 Route::add('/admin/products', 'AdminController::allProducts');
 Route::add('/admin/products/:productid', 'AdminController::detail');
 Route::add('/admin/approve', 'AdminController::approve');
+Route::add('/admin/approve/:productId', 'AdminController::approveDetail');
 Route::add('/admin/coupons/seller', 'AdminController::listSellerCoupon');
 Route::add('/admin/coupons/seller/:id', 'AdminController::editSellerCoupon');
 Route::add('/admin/coupons/global', 'AdminController::listGlobalCoupon');

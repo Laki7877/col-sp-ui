@@ -4,7 +4,7 @@
  * Format:
  *
  * '<text title>|<css>' : '<startWith url>'
- * 
+ *
  * This is temporary solution
  */
 var _ = require('lodash');
@@ -37,7 +37,7 @@ function generateRouteArray(obj) {
 					url: url,
 					urls: urls
 				};
-				
+
 				if(token2.length > 1) {
 					submenuItem.css += token2[1];
 				}
@@ -65,7 +65,7 @@ var seller = {
 	},
 	'Product|fa-tag': {
 	  	'View': '/products',
-	  	'Add': ['/products/select', '/products/add'],	
+	  	'Add': ['/products/select', '/products/add'],
 	  	'Import': '/products/import',
 	  	'Export': '/products/export',
 	  	'Local Category|margin-top-30': '/categories',
@@ -86,9 +86,7 @@ var seller = {
 		'Shop Appearance': '/shops/appearance'
 	},
 
-	'Report|fa-line-chart': {
-		
-	},
+
 	'Account|fa-user': {
 		'User Accounts': '/accounts',
 		'User Roles': '/roles'
@@ -115,9 +113,6 @@ var admin = {
 	'Promotion|fa-bookmark': {
 		'Global Coupons': '/admin/coupons/global',
 		'Seller Coupons': '/admin/coupons/seller'
-	},
-	'Reports|fa-line-chart': {
-		'View': '/admin/reports'
 	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'

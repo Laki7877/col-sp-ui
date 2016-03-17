@@ -8,9 +8,8 @@
 					<table class="table">
 						<thead>
 							<th>Product Name</th>
-							<th ng-if="(overview.Variants || []).length == 0">PID</th>
-							<th>Shop ID</th>
-							<th ng-if="(overview.Variants || []).length > 0">Group ID</th>
+							<th>{{ (overview.Variants || []).length == 0 ? 'PID' : 'Group ID' }}</th>
+							<th>Shop Name / Shop ID</th>
 							<th>Price</th>
 							<th>Info</th>
 							<th>Image</th>
@@ -22,7 +21,7 @@
 							<tr>
 								<td>{{ overview.MasterVariant.ProductNameEn }}</td>
 								<td>{{ overview.MasterVariant.Pid }}</td>
-								<td>{{ overview.ShopId }}</td>
+								<td>{{ overview.ShopName }} / {{ overview.ShopId }}</td>
 								<td>{{ overview.MasterVariant.OriginalPrice | number: 2 }}</td>
 								<td>
 									<i ng-if="!overview.InfoFlag" class="fa fa-minus color-grey icon-size-18px"></i>
