@@ -12314,6 +12314,11 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
   color: #7B7F8F;
 }
 
+/* line 120, ../../../assets/_override_bootstrap.scss */
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  background-color: #EDF2F9;
+}
+
 /* line 1, ../../../assets/_atomic.scss */
 .margin-right-20 {
   margin-right: 20px;

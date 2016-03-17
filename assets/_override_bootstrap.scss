@@ -116,3 +116,7 @@ a.like-text {
 	background-color: #DEE3E7;
 	color: $color-dark-grey;
 }
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{
+	background-color: $color-light-grey;
+}
