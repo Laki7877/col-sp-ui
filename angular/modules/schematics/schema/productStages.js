@@ -1,5 +1,5 @@
 module.exports = {
-  "title": "Product Stage Schema V3 Rev C",
+  "title": "Product Stage Schema V4",
   "type": "object",
   "properties": {
     "ProductId": {
@@ -11,7 +11,7 @@ module.exports = {
       "items": require('./variant')
     },
     "Status": {
-      "enum": ["DF", "WA"]
+      "enum": ["DF", "WA", "RJ", "AP"]
     },
     "ShopId": {
       "type": "integer"

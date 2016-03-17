@@ -14,6 +14,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 <div ng-controller="SellerProductDetailCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
    <nc-alert nc-model="devAlert"></nc-alert>
    <nc-alert nc-model="alert"></nc-alert>
+   <nc-alert nc-model="adminAlert"></nc-alert>
 
 		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
             <fieldset ng-disabled="formData.Status == 'WA'">

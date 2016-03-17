@@ -23,7 +23,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products']);
 								
 								<div class="row">
 									<div class="col-xs-12">
-										<div class="form-section form-section-content-grey">
+										<div class="form-section form-section-content-grey" ng-if="!pageState.loading.state">
 											<div class="form-section-header"><h2>Admin Panel</h2></div>
 											<div class="form-section-content">
 
@@ -37,7 +37,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products']);
 								                    	<input type="radio" ng-model="formData.AdminApprove.Information" value="AP" name="AdminApproveInformation"/> Approved
 								                    </label>
 								                    <label class="color-red margin-left-10">
-								                    	<input type="radio" ng-model="formData.AdminApprove.Information" value="NA" name="AdminApproveInformation"/> Not Approved
+								                    	<input type="radio" ng-model="formData.AdminApprove.Information" value="RJ" name="AdminApproveInformation"/> Not Approved
 								                    </label>
 								                </div>
 
@@ -51,7 +51,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products']);
 								                    	<input type="radio" ng-model="formData.AdminApprove.Image" value="AP" name="AdminApproveImage"/> Approved
 								                    </label>
 								                    <label class="color-red margin-left-10">
-								                    	<input type="radio" ng-model="formData.AdminApprove.Image" value="NA" name="AdminApproveImage"/> Not Approved
+								                    	<input type="radio" ng-model="formData.AdminApprove.Image" value="RJ" name="AdminApproveImage"/> Not Approved
 								                    </label>
 								                </div>
 												
@@ -65,7 +65,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products']);
 								                    	<input type="radio" ng-model="formData.AdminApprove.Category" value="AP" name="AdminApproveCategory"/> Approved
 								                    </label>
 								                    <label class="color-red margin-left-10">
-								                    	<input type="radio" ng-model="formData.AdminApprove.Category" value="NA" name="AdminApproveCategory"/> Not Approved
+								                    	<input type="radio" ng-model="formData.AdminApprove.Category" value="RJ" name="AdminApproveCategory"/> Not Approved
 								                    </label>
 								                </div>
 												
@@ -80,7 +80,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products']);
 								                    	<input type="radio" ng-model="formData.AdminApprove.Variation" value="AP" name="AdminApproveVariation"/> Approved
 								                    </label>
 								                    <label class="color-red margin-left-10">
-								                    	<input type="radio" ng-model="formData.AdminApprove.Variation" value="NA" name="AdminApproveVariation"/> Not Approved
+								                    	<input type="radio" ng-model="formData.AdminApprove.Variation" value="RJ" name="AdminApproveVariation"/> Not Approved
 								                    </label>
 								                </div>
 
@@ -95,7 +95,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products']);
 								                    	<input type="radio" ng-model="formData.AdminApprove.MoreOption" value="AP" name="AdminApproveMoreOptions"/> Approved
 								                    </label>
 								                    <label class="color-red margin-left-10">
-								                    	<input type="radio" ng-model="formData.AdminApprove.MoreOption" value="NA" name="AdminApproveMoreOptions"/> Not Approved
+								                    	<input type="radio" ng-model="formData.AdminApprove.MoreOption" value="RJ" name="AdminApproveMoreOptions"/> Not Approved
 								                    </label>
 								                </div>
 
@@ -110,13 +110,14 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products']);
 												<div class="form-group">
 													<div class="width-label"><label class="control-label"></label></div>
 													<div class="button-size-normal">
-														<a class="button-size-normal btn btn-green btn-width-xl" ng-click="publish('AP')">Approve</a>
+														<a ng-disabled="!canApprove()"
+														 class="button-size-normal btn btn-green btn-width-xl" ng-click="publish('AP')">Approve</a>
 													</div>
 													<div class="button-size-normal margin-left-10">
 														<a class="button-size-normal btn btn-green btn-width-xl" ng-click="publish('AP')">Force Approve</a>
 													</div>
 													<div class="button-size-normal margin-left-10">
-														<a class="button-size-normal btn btn-red btn-width-xl" ng-click="publish('NA')">Reject</a>
+														<a class="button-size-normal btn btn-red btn-width-xl" ng-click="publish('RJ')">Reject</a>
 													</div>
 												</div>
 											</div>

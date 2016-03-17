@@ -1795,6 +1795,12 @@ module.exports = ["$scope", "$controller", function ($scope, $controller) {
         }
     });
 
+    $scope.canApprove = function(){
+    	return $scope.formData.AdminApprove.Information == 'AP' && $scope.formData.AdminApprove.Image == 'AP' &&
+    	$scope.formData.AdminApprove.Category == 'AP' && $scope.formData.AdminApprove.Variation == 'AP' &&
+    	$scope.formData.AdminApprove.MoreOptions == 'AP';
+    }
+
 }];
 },{"angular":206}],21:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "config", "util", function($scope, $controller, Product, config, util) {
@@ -7917,13 +7923,26 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 var angular = require('angular')
 
 angular.module('productDetail').controller('AbstractProductAddCtrl',
-  ["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "$rootScope", "KnownException", "NcAlert", "$productAdd", "options", "AttributeSetService", "JSONCache", "skeemas", function($scope, $uibModal, $window, util, config, Product, ImageService,
+  ["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "$rootScope", "KnownException", "NcAlert", "$productAdd", "options", "AttributeSetService", "JSONCache", "skeemas", function($scope, $uibModal, $window, util, config, Product, ImageService, 
     AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
     KnownException, NcAlert, $productAdd, options, AttributeSetService, JSONCache, skeemas) {
     'ngInject';
 
     var MAX_FILESIZE = (options.maxImageUploadSize || 5000000);
     var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
+
+    var loadOverview = function(res){
+      $scope.overview = res;
+      Shop.get(res.ShopId).then(function(x){
+        $scope.overview.ShopName = x.ShopNameEn;
+      })
+    }
+
+    $scope.adminAlert = new NcAlert();
+    $scope.alert = new NcAlert();
+    $scope.devAlert = new NcAlert();
+    $scope.image_alert = new NcAlert();
+
 
     $scope.adminMode = options.adminMode;
     $scope.approveMode = options.approveMode;
@@ -7996,16 +8015,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       $scope.variantPtr.VideoLinks[$index] = { Url : null }
     };
 
-    var checkSchema = function(data, schemaName, code) {
+    var checkSchema = function(data, schemaName) {
       //Perform schema check
       var schema = JSONCache.get(schemaName || 'productStages');
-      if (!code) code = "(RX)";
       var validation = skeemas.validate(data, schema);
       console.log("Schema validation result: ", validation);
       if (!validation.valid) {
-        $scope.devAlert.error('<strong>Warning ' + code + '</strong> Automated API structure pre-check procedure failed. ' +
-          'Format does not comply with the <strong>Ahancer Product Add Exchange Protocol (A-PAEP)</strong> V3 Rev C. ' +
-          'For more detail, look for <i>schema validation result</i> in your js console.');
+        $scope.devAlert.error('<strong>Warning </strong> Automated API structure pre-check procedure failed. ' +
+          'Format does not comply with the <strong>Ahancer Product Add Exchange Protocol (A-PAEP)</strong> V4');
       }
     };
 
@@ -8129,6 +8146,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       },
       reset: function() {
         $scope.alert.close();
+        $scope.devAlert.close();
+        $scope.adminAlert.close();
         $scope.pageState.loading.state = false;
       }
     };
@@ -8312,7 +8331,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       Product.publish(apiRequest, Status).then(function(res) {
         $scope.pageState.reset();
         if (res.ProductId) {
-          $scope.overview = res;
+          
+          loadOverview(res);
           $scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions); // will trigger watchvariantchange
           var catId = Number(res.MainGlobalCategory.CategoryId);
 
@@ -8348,7 +8368,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
         Product.getOne(productId)
           .then(function(inverseFormData) {
-            $scope.overview = angular.copy(inverseFormData);
+            loadOverview(angular.copy(inverseFormData));
             var catId = Number(inverseFormData.MainGlobalCategory.CategoryId);
 
             //Fill the page with data
@@ -8365,6 +8385,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 LocalCategoryService.getAllByShopId($scope.formData.ShopId).then(function(data) {
                   $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data);
                 });
+                
+                $scope.adminAlert.close();
+                if(!$scope.adminMode){
+                  //Show Message from admin
+                  
+                  $scope.adminAlert.error("<strong>Message from Admin</strong><br>" + $scope.formData.AdminApprove.RejectReason);
+                }
 
                 checkSchema(inverseFormData);
               });
@@ -8642,10 +8669,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.isListInput = util.isListDataType;
     $scope.isHtmlInput = util.isHtmlDataType;
     $scope.isCheckboxInput = util.isCheckboxDataType;
-
-    $scope.alert = new NcAlert();
-    $scope.devAlert = new NcAlert();
-    $scope.image_alert = new NcAlert();
 
     // Variation Factor (lhs) Indices are used as index
     // for ng-repeat in variation tab
@@ -8964,12 +8987,12 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-keywords',
-    "<div class=form-section><div class=form-section-header><h2>Keywords</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=Keywords nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><ui-select ng-model=formData.Tags name=Keywords nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ multiple tagging tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match placeholder=\"Input keywords\">{{$item}}</ui-select-match><ui-select-choices repeat=\"item in formData.AttributeSet.AttributeSetTagMaps\">{{item}}</ui-select-choices></ui-select></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags).length > 0\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags\" ng-click=\"(formData.Tags.indexOf(tag) == -1) && formData.Tags.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Search Tags</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Search Tags\" nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><ui-select ng-model=formData.Tags name=Keywords nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ multiple tagging tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match placeholder=\"Input keywords\">{{$item}}</ui-select-match><ui-select-choices repeat=\"item in formData.AttributeSet.AttributeSetTagMaps\">{{item}}</ui-select-choices></ui-select></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags).length > 0\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags\" ng-click=\"(formData.Tags.indexOf(tag) == -1) && formData.Tags.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
   );
 
 
   $templateCache.put('ap/section-overview',
-    "<div class=row ng-if=formData.ProductId><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Overview</h2></div><div class=form-section-content><div class=container-fluid style=\"margin: -15px\"><table class=table><thead><th>Product Name</th><th ng-if=\"(overview.Variants || []).length == 0\">PID</th><th>Shop ID</th><th ng-if=\"(overview.Variants || []).length > 0\">Group ID</th><th>Price</th><th>Info</th><th>Image</th><th>Status</th><th>Live</th><th>Visible</th></thead><tbody><tr><td>{{ overview.MasterVariant.ProductNameEn }}</td><td>{{ overview.MasterVariant.Pid }}</td><td>{{ overview.ShopId }}</td><td>{{ overview.MasterVariant.OriginalPrice | number: 2 }}</td><td><i ng-if=!overview.InfoFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=overview.InfoFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td><i ng-if=!overview.ImageFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=overview.ImageFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td><span class=\"{{ asStatus(overview.Status).color }}\"><i class=\"fa {{ asStatus(overview.Status).icon }}\"></i> {{ asStatus(formData.Status).name }}</span></td><td><i class=\"fa fa-circle color-grey\"></i></td><td><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon font-size-16' : !overview.Visibility, 'fa fa-eye color-dark-grey eye-icon font-size-16' : overview.Visibility}\"></i></td></tr><tbody></tbody></tbody></table></div></div></div></div></div>"
+    "<div class=row ng-if=formData.ProductId><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Overview</h2></div><div class=form-section-content><div class=container-fluid style=\"margin: -15px\"><table class=table><thead><th>Product Name</th><th>{{ (overview.Variants || []).length == 0 ? 'PID' : 'Group ID' }}</th><th>Shop Name / Shop ID</th><th>Price</th><th>Info</th><th>Image</th><th>Status</th><th>Live</th><th>Visible</th></thead><tbody><tr><td>{{ overview.MasterVariant.ProductNameEn }}</td><td>{{ overview.MasterVariant.Pid }}</td><td>{{ overview.ShopName }} / {{ overview.ShopId }}</td><td>{{ overview.MasterVariant.OriginalPrice | number: 2 }}</td><td><i ng-if=!overview.InfoFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=overview.InfoFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td><i ng-if=!overview.ImageFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=overview.ImageFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td><span class=\"{{ asStatus(overview.Status).color }}\"><i class=\"fa {{ asStatus(overview.Status).icon }}\"></i> {{ asStatus(formData.Status).name }}</span></td><td><i class=\"fa fa-circle color-grey\"></i></td><td><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon font-size-16' : !overview.Visibility, 'fa fa-eye color-dark-grey eye-icon font-size-16' : overview.Visibility}\"></i></td></tr><tbody></tbody></tbody></table></div></div></div></div></div>"
   );
 
 
@@ -9129,7 +9152,7 @@ factory('JSONCache', function(){
 
 },{"./schema\\attribute.js":122,"./schema\\attributeSet.js":123,"./schema\\attributeValue.js":124,"./schema\\attributeValueMap.js":125,"./schema\\nthAttribute.js":126,"./schema\\productStages.js":127,"./schema\\seo.js":128,"./schema\\variant.js":129,"angular":206}],122:[function(require,module,exports){
 module.exports = {
-  "title": "Attribute Schema V3 Rev C",
+  "title": "Attribute Schema V4",
   "type": "object",
   "properties": {
     "AttributeValueMaps": {
@@ -9162,7 +9185,7 @@ module.exports = {
 
 },{"./attributeValue":124,"./attributeValueMap":125}],123:[function(require,module,exports){
 module.exports = {
-  "title": "Attribute Set Schema V3 Rev C",
+  "title": "Attribute Set Schema V4",
   "type": "object",
   "properties": {
     "AttributeSetId": { "type": "integer" },
@@ -9210,7 +9233,7 @@ module.exports = {
 
 },{"./attribute":122}],124:[function(require,module,exports){
 module.exports = {
-    "title": "Attribute Value Schema V3 Rev C",
+    "title": "Attribute Value Schema V4",
     "type": "object",
     "properties": {
       "AttributeValueEn": {
@@ -9228,7 +9251,7 @@ module.exports = {
 
 },{}],125:[function(require,module,exports){
 module.exports = {
-  "title": "Attribute Value Map Schema V3 Rev C",
+  "title": "Attribute Value Map Schema V4",
   "type": "object",
   "properties": {
     "AttributeValueId": { "type": "integer" },
@@ -9239,7 +9262,7 @@ module.exports = {
 
 },{"./attributeValue":124}],126:[function(require,module,exports){
 module.exports = {
-  "title": "Nth Attribute Schema V3 Rev C",
+  "title": "Nth Attribute Schema V4",
   "type": "object",
   "properties": {
     "ValueEn": {
@@ -9261,7 +9284,7 @@ module.exports = {
 
 },{"./attributeValue":124}],127:[function(require,module,exports){
 module.exports = {
-  "title": "Product Stage Schema V3 Rev C",
+  "title": "Product Stage Schema V4",
   "type": "object",
   "properties": {
     "ProductId": {
@@ -9273,7 +9296,7 @@ module.exports = {
       "items": require('./variant')
     },
     "Status": {
-      "enum": ["DF", "WA"]
+      "enum": ["DF", "WA", "RJ", "AP"]
     },
     "ShopId": {
       "type": "integer"
@@ -9396,7 +9419,7 @@ module.exports = {
 
 },{"./attribute":122,"./variant":129}],128:[function(require,module,exports){
 module.exports = {
-  "title": "SEO Schema V3 Rev C",
+  "title": "SEO Schema V4",
   "type": "object",
   "properties": {
     "MetaTitleEn": {"type": "string"},
@@ -9419,7 +9442,7 @@ module.exports = {
 
 },{}],129:[function(require,module,exports){
 module.exports =  {
-  "title": "Variant Schema V3 Rev C",
+  "title": "Variant Schema V4",
   "type": "object",
   "properties": {
     "Length": {
