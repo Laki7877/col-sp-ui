@@ -10,6 +10,10 @@ module.exports = function($scope, $controller, storage) {
     }
   });
 
+  /*
+  *  Debugging Features
+  */
+
   $scope._debugLoad = function() {
 
     var checkpoint = "T100";

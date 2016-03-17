@@ -29,7 +29,7 @@
                     <div class="form-group" ng-repeat="jth in variationFactorIndices.iterator" ng-show="(dataset.attributeOptions[0].options.length > 0) || (jth == 0)">
                         <div class="width-label">
                             <select class="form-control"
-                            ng-disabled="formData.ProductId"
+                            ng-disabled="formData.ProductId && dataset.attributeOptions[jth].Attribute"
                             ng-options="i as i.Attribute.AttributeNameEn
 								for i in formData.AttributeSet.AttributeSetMaps |
 								truth: 'Attribute.VariantStatus' |

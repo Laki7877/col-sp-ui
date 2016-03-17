@@ -10,6 +10,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
 
     $scope.adminMode = options.adminMode;
+    $scope.approveMode = options.approveMode;
     $scope.overview = {};
     $scope.formData = {
       Status: 'DF',
@@ -61,8 +62,23 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       Variants: []
     };
 
+    if($scope.approveMode){
+      $scope.formData.AdminApprove = {
+        Information: 'WA',
+        Image: 'WA',
+        Category: 'WA',
+        Variation: 'WA',
+        MoreOption: 'WA',
+        RejectReason: ''
+      }
+    }
+
     //Initialize Pointers
     $scope.variantPtr = $scope.formData.MasterVariant;
+    $scope.initializeVideoLink = function($index){
+      if($scope.variantPtr.VideoLinks[$index]) return;
+      $scope.variantPtr.VideoLinks[$index] = { Url : null }
+    };
 
     var checkSchema = function(data, schemaName, code) {
       //Perform schema check

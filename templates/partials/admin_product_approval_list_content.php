@@ -40,7 +40,7 @@
                         </div>
                     </div>
 
-                    <!--div class="form-group margin-bottom-0">
+                    <div class="form-group margin-bottom-0">
                         <div class="filter-section filter-input">
                             <div class="filter-container-input">
                                 <span>Filters:</span>
@@ -51,8 +51,8 @@
                                 <a class="filter-seperator">More</a>
                                 <a class="filter-seperator">Ready for Action</a>
                             </div>
-                        </div-->
-                        <!--<nc-filter nc-model="params._filter" nc-filter-options="filterOptions"></nc-filter>-->
+                        </div>
+                        <!-- <nc-filter nc-model="params._filter" nc-filter-options="filterOptions"></nc-filter>-->
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                                 <img ng-if='row.ImageUrl' class="logo-img" src="{{ row.ImageUrl }}" />
                             </div>
                         </td>
-                        <td class="column-text-ellipsis" nc-link="/admin/products/{{row.ProductId}}">
+                        <td class="column-text-ellipsis" nc-link="/admin/approve/{{row.ProductId}}">
                             {{row.ProductNameEn}}
                         </td>
                         <td>{{row.Shop.ShopNameEn}}</td>

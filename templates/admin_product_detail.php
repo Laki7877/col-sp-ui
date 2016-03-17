@@ -13,9 +13,6 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Seller Portal - Pr
 
 <div ng-controller="AdminProductDetailCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
 
-        <? $this->insert('components/modal-add-alternative-global-category', ['id' => 'global-category', 'header' => 'Add Alternative Global Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
-        <? $this->insert('components/modal-add-local-category', ['id' => 'local-category', 'header' => 'Add Local Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
-        
         <nc-alert nc-model="alert"></nc-alert>
 
 		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
@@ -25,7 +22,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Seller Portal - Pr
             </div>
             <div class="add-product-body" ng-if="!pageState.loading.state">
 
-                <? $this->insert('components/tab-nav', ["items" => $menus]) ?>
+                    <? $this->insert('components/tab-nav', ["items" => $menus]) ?>
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
                              <div ap-component="ap/tab-information"></div>

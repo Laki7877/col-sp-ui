@@ -68,8 +68,6 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
         </fieldset>
 	</form>
 
-  <?php //$this->insert('components/modal-add-alternative-global-category', ['id' => 'global-category', 'header' => 'Add Alternative Global Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
-  <?php //$this->insert('components/modal-add-local-category', ['id' => 'local-category', 'header' => 'Add Local Category', 'ng_model' => 'viewCategorySelected', 'template' => 'viewCategoryColumns']) ?>
 
 </div>
 
