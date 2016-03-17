@@ -465,9 +465,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 });
                 
                 $scope.adminAlert.close();
-                if(!$scope.adminMode){
-                  //Show Message from admin
-                  
+                if(!$scope.adminMode && $scope.Status == 'RJ'){
+                  //Show rejection from admin
                   $scope.adminAlert.error("<strong>Message from Admin</strong><br>" + $scope.formData.AdminApprove.RejectReason);
                 }
 
