@@ -82,6 +82,16 @@ module.exports = {
 				value: true
 			}
 		],
+		DEFAULT_ATTRIBUTE_VISIBLE_DROPDOWN: [
+			{
+				name: 'All Users',
+				value: 'ME'
+			},
+			{
+				name: 'Admin Only',
+				value: 'AD'
+			}
+		],
 		VISIBLE_DROPDOWN: [
 			{
 				name: 'Visible',
@@ -165,6 +175,18 @@ module.exports = {
 			}
 		]
 	},
+	RETURN_STATUS: [
+		{
+			name: 'Accepted',
+			value: 'AC',
+			color: 'color-green'
+		},
+		{
+			name: 'Waiting',
+			value: 'WA',
+			color: 'color-grey'
+		}
+	],
 	SHOP_STATUS: [
 		{
 			name: 'Inactive',

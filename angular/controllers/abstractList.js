@@ -20,6 +20,9 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 		total: 0,
 		data: []
 	};
+	$scope.item = options.item;
+	$scope.url = options.url;
+	$scope.id = options.id;
 
 	$scope.reload = options.reload || function(newObj, oldObj) {
 		$scope.loading = true;

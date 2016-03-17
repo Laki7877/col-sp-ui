@@ -20,4 +20,13 @@ module.exports = function($scope, $controller, SellerAccountService, SellerRoleS
 			}
 		}
 	});
+	$scope.brands = [];
+	$scope.getBrands = function(search) {
+		BrandService.list({
+			searchText: search
+		})
+		.then(function(data) {
+			$scope.brands = data.data;
+		});
+	};
 }

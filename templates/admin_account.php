@@ -3,9 +3,11 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminAccountCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'Admin Accounts','button' => 'Add Admin Account', 'button_class' => 'btn-width-xxl', 'link' => '/admin/accounts/add']) ?>
+    <nc-page-title nc-title="Admin Accounts">
+      <a class="btn btn-blue btn-width-xl" ng-href="{{url}}/add">Add {{item}}</a>
+    </nc-page-title>
     <div class="row search-section-wrapper">
-      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="UserId"></nc-bulk>
+      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="{{id}}"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Admin Name and Email'"></nc-search>
     </div>
     <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="isSearching()" >

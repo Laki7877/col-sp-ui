@@ -3,7 +3,7 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminGlobalCouponCtrl">
     <nc-page-title nc-title="Global Coupons">
-    	  <a ng-href="/admin/coupons/global/add" class="btn ng-scope btn-blue btn-width-xxl">Add Coupon</a>
+      <a class="btn btn-blue btn-width-xl" ng-href="{{url}}/add">Add {{item}}</a>
     </nc-page-title>
     <div class="row search-section-wrapper">
         <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Coupon Code'"></nc-search>

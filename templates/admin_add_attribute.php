@@ -102,6 +102,38 @@
             <div class="form-section-content">
               <div ng-template="common/input/dropdown"
                 ng-template-options="{
+                  'label' : 'Default Attribute'
+                }">
+                <ui-select ng-model="formData.DefaultAttribute" search-enabled="false">
+                  <ui-select-match placeholder="- Select Default Attribute -">
+                      <span ng-bind="$select.selected.name"></span>
+                  </ui-select-match>
+                  <ui-select-choices repeat="item.value as item in boolOptions">
+                      <span ng-bind="item.name"></span>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+              <div ng-show="formData.DefaultAttribute"
+                ng-template="common/input/dropdown"
+                ng-template-options="{
+                  'label' : 'Visible to'
+                }">
+                <ui-select ng-model="formData.VisibleTo" search-enabled="false">
+                  <ui-select-match placeholder="- Select Visible to -">
+                      <span ng-bind="$select.selected.name"></span>
+                  </ui-select-match>
+                  <ui-select-choices repeat="item.value as item in visibleToOptions">
+                      <span ng-bind="item.name"></span>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+            </div>
+          </div>
+          <div class="form-section">
+            <div class="form-section-header"><h2>Attribute Input</h2></div>
+            <div class="form-section-content">
+              <div ng-template="common/input/dropdown"
+                ng-template-options="{
                   'label' : 'Attribute Input Type'
                 }">
                 <ui-select ng-model="formData.DataType" search-enabled="false">
@@ -286,7 +318,7 @@
               </div>
             </div>
           </div>
-          <div class="form-section" ng-if="formData.DataType != 'CB'">
+          <div class="form-section" ng-if="formData.DataType != 'CB' || !formData.DefaultAttribute">
             <div class="form-section-header"><h2>Variation</h2></div>
             <div class="form-section-content">
               <div

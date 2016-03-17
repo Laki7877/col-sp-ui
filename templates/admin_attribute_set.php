@@ -3,9 +3,11 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminAttributeSetCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'Attribute Sets','button' => 'Add Attribute Set', 'button_class' => 'btn-width-xxl', 'link' => '/admin/attributesets/add']) ?>
+    <nc-page-title nc-title="Attribute Sets">
+      <a class="btn btn-blue btn-width-xl" ng-href="{{url}}/add">Add {{item}}</a>
+    </nc-page-title>
     <div class="row search-section-wrapper">
-      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="AttributeSetId"></nc-bulk>
+      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="{{id}}"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Attribute Set Name'"></nc-search>
     </div>
     <!--nc-filter nc-model="params._filter" nc-filter-options="filterOptions"></nc-filter-->

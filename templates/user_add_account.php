@@ -91,6 +91,16 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 							                  maxlength="20"
 							                  required />
 							              </div>
+							              <!-- Brand -->
+							              <div ng-show="formData.ShopGroup != 'ME'" 
+							              	nc-template="common/input/form-group-with-label"
+							              	nc-label="Brand"
+							              	>
+							              	<ui-select ng-model="formData.Brands" multiple>
+							              		<ui-select-match placeholder="Search Brand">{{$select.selected.BrandNameEn}}</ui-select-match>
+							              		<ui-select-choices repeat="item in brands" refresh="getBrands($select.search)" refresh-delay="1">{{item.BrandNameEn}}</ui-select-choices>
+							              	</ui-select>
+							              </div>
 							              <!-- Password -->
 							              <div ng-template="common/input/password"
 							                ng-template-options="{

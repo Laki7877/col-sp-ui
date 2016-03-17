@@ -54,6 +54,8 @@ Route::add('/roles/:id', 'SellerController::editRole');
 Route::add('/coupons', 'SellerController::listCoupon');
 Route::add('/coupons/add', 'SellerController::addCoupon');
 Route::add('/coupons/:id', 'SellerController::editCoupon');
+Route::add('/returns', 'SellerController::listReturnRequest');
+Route::add('/returns/:id', 'SellerController::editReturnRequest');
 Route::add('/inventory', 'SellerController::listInventory');
 Route::add('/newsletters', 'SellerController::listNewsletter');
 Route::add('/onboarding', 'SellerController::onboarding');
@@ -71,6 +73,7 @@ Route::add('/admin/categories', 'AdminController::category');
 Route::add('/admin/brands', 'AdminController::listBrand');
 Route::add('/admin/brands/add', 'AdminController::addBrand');
 Route::add('/admin/brands/:id', 'AdminController::editBrand');
+Route::add('/admin/sellers', 'AdminController::listSeller');
 Route::add('/admin/accounts', 'AdminController::listAccount');
 Route::add('/admin/accounts/add', 'AdminController::addAccount');
 Route::add('/admin/accounts/:id', 'AdminController::editAccount');
@@ -96,6 +99,10 @@ Route::add('/admin/ontopcredit', 'AdminController::listOntopcredit');
 Route::add('/admin/ontopcredit/create', 'AdminController::addOntopcredit');
 Route::add('/admin/ontopcredit/:id', 'AdminController::editOntopcredit');
 Route::add('/admin/newsletters', 'AdminController::listNewsletter');
+Route::add('/admin/masters', 'AdminController::listMaster');
+Route::add('/admin/masters/add', 'AdminController::addMaster');
+Route::add('/admin/masters/:id', 'AdminController::editMaster');
+
 //test route
 Route::add('/test/:name', 'TestController::any');
 
