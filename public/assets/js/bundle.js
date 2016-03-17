@@ -9567,7 +9567,8 @@ function generateRouteArray(obj) {
 var seller = {
 	'Home|fa-home': {
 		'Onboarding': '/onboarding',
-		'Dashboard': '/dashboard'
+		'Dashboard': '/dashboard',
+		'Newsletters': '/newsletters'
 	},
 	'Orders|fa-inbox': {
 
