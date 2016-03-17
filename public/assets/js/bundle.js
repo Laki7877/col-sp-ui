@@ -1883,7 +1883,7 @@ module.exports = ["$scope", "$controller", function ($scope, $controller) {
     $scope.canApprove = function(){
     	return $scope.formData.AdminApprove.Information == 'AP' && $scope.formData.AdminApprove.Image == 'AP' &&
     	$scope.formData.AdminApprove.Category == 'AP' && $scope.formData.AdminApprove.Variation == 'AP' &&
-    	$scope.formData.AdminApprove.MoreOptions == 'AP';
+    	$scope.formData.AdminApprove.MoreOption == 'AP';
     }
 
 }];
@@ -5882,7 +5882,6 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
     service.variant = {};
 
     service.variant.toString = function (a, b) {
-      console.log(a,b)
         var left = null;
         var right = null;
         left = (a.ValueEn || a.AttributeValueEn || a.AttributeValues.length > 0 && a.AttributeValues[0].AttributeValueEn || '');
@@ -5892,7 +5891,6 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
           right = (b.ValueEn || b.AttributeValueEn || b.AttributeValues.length > 0 && b.AttributeValues[0].AttributeValueEn || '');
         }
 
-        console.log("variant to string", left, right);
         return left + (right ? ", " + right : "");
     };
 
@@ -7327,7 +7325,8 @@ angular.module('nc')
             replace: true,
             priority: 1010,
             scope: {
-                title: '@ncTitle'
+                title: '@ncTitle',
+                topLink: '@link'
             },
             template: function (element, attrs) {
                 var templateHTML = $templateCache.get('partials/page-title');
@@ -7338,6 +7337,7 @@ angular.module('nc')
             },
             link: function (scope, element, attrs, ctrl, transclude) {
             	console.log("nc-page-title"); 
+                scope.breads = scope.title.split('/');
             }
         };
     }]);
@@ -8188,7 +8188,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('partials/page-title',
-    "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title\">{{ title }}</h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
+    "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title ah-breadcrumb\"><span ng-repeat=\"b in breads\" class=ah-breadcrumb><a ng-if=\"$index == 0\" class=ah-breadcrumb-path ng-href={{topLink}}>{{b}}</a> <span ng-if=\"$index > 0\" class=ah-breadcrumb-path>{{b}}</span> <span ng-if=\"$index == 0\" class=ah-breadcrumb-splitter>/</span></span></h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
   );
  }]);
 },{}],119:[function(require,module,exports){
@@ -8509,6 +8509,39 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     };
 
     /**
+     * Edit Product Confirmation
+     * Show dialog to ask if user really want to edit
+     */
+    $scope.preEditProduct = function() {
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'product/modalConfirmEdit',
+        controller: ["$scope", "$uibModalInstance", "$timeout", function($scope, $uibModalInstance, $timeout) {
+          'ngInject'
+          $scope.no = function() {
+            $uibModalInstance.close('no')
+          }
+
+          $scope.yes = function() {
+            $uibModalInstance.close('yes')
+          }
+        }],
+        size: 'size-warning',
+        resolve: {
+
+        }
+      })
+      modalInstance.result.then(function(selectedItem) {
+        if (selectedItem == 'yes') {
+          $scope.publish('DF');
+        }
+      }, function() {
+        console.log('Modal dismissed at: ' + new Date())
+      })
+
+    }
+
+    /**
      * Publish Confirmation
      * Show dialog to ask if user really want to publish
      */
@@ -8595,7 +8628,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         return
       }
 
-      $scope.pageState.load('Saving..');
+      $scope.pageState.load('Applying changes..');
 
       var apiRequest = Product.serialize($scope.formData);
       // checkSchema(apiRequest, 'productStages', '(TX)');
@@ -8659,9 +8692,12 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 });
                 
                 $scope.adminAlert.close();
-                if(!$scope.adminMode && $scope.Status == 'RJ'){
+                console.log('adminMode', $scope.adminMode, $scope.formData.Status);
+                if(!$scope.adminMode && $scope.formData.Status == 'RJ'){
                   //Show rejection from admin
                   $scope.adminAlert.error("<strong>Message from Admin</strong><br>" + $scope.formData.AdminApprove.RejectReason);
+                }else if(!$scope.adminMode && $scope.formData.Status == 'AP'){
+                  $scope.adminAlert.success("This product has been approved. Click 'Edit Product' to make changes.");
                 }
 
                 checkSchema(inverseFormData);
@@ -13916,6 +13952,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('product/modalCategorySelector',
     "<div class=modal-header><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>{{title}}</h3></div><div class=modal-body style=\"padding-top: 15px\"><div class=\"category-section column-4\"><nc-tree-select nc-model=model nc-tree-select-tree=tree nc-exclude=exclude nc-tree-select-title=\"{{categoryHeaderText || 'Global Category'}}\"></nc-tree-select><div class=\"category-footer no-padding\"><span class=float-right><button ng-click=select() class=\"btn btn-blue btn-width-xl\" ng-disabled=\"model == null || (disabledOn || _.noop)(model)\">Select</button></span></div></div></div>"
+  );
+
+
+  $templateCache.put('product/modalConfirmEdit',
+    "<div class=\"modal-header no-border ng-scope\"><button type=button class=close aria-label=Close ng-click=no()><span class=padding-left-15 aria-hidden=true>×</span></button></div><div class=\"modal-body confirmation-modal no-margin ng-scope\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20 ng-binding\">You are about to edit this product</h2><div>You will need to publish your changes and get approved again before your product with the new changes will go live.</div></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white ng-binding\" ng-click=no()>Cancel</button> <button type=button class=\"btn btn-green\" ng-click=yes()>Confirm</button></div></div></div>"
   );
 
 

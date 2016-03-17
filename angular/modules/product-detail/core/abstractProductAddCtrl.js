@@ -315,6 +315,39 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     };
 
     /**
+     * Edit Product Confirmation
+     * Show dialog to ask if user really want to edit
+     */
+    $scope.preEditProduct = function() {
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'product/modalConfirmEdit',
+        controller: function($scope, $uibModalInstance, $timeout) {
+          'ngInject'
+          $scope.no = function() {
+            $uibModalInstance.close('no')
+          }
+
+          $scope.yes = function() {
+            $uibModalInstance.close('yes')
+          }
+        },
+        size: 'size-warning',
+        resolve: {
+
+        }
+      })
+      modalInstance.result.then(function(selectedItem) {
+        if (selectedItem == 'yes') {
+          $scope.publish('DF');
+        }
+      }, function() {
+        console.log('Modal dismissed at: ' + new Date())
+      })
+
+    }
+
+    /**
      * Publish Confirmation
      * Show dialog to ask if user really want to publish
      */
@@ -401,7 +434,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         return
       }
 
-      $scope.pageState.load('Saving..');
+      $scope.pageState.load('Applying changes..');
 
       var apiRequest = Product.serialize($scope.formData);
       // checkSchema(apiRequest, 'productStages', '(TX)');
@@ -465,9 +498,12 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 });
                 
                 $scope.adminAlert.close();
-                if(!$scope.adminMode && $scope.Status == 'RJ'){
+                console.log('adminMode', $scope.adminMode, $scope.formData.Status);
+                if(!$scope.adminMode && $scope.formData.Status == 'RJ'){
                   //Show rejection from admin
                   $scope.adminAlert.error("<strong>Message from Admin</strong><br>" + $scope.formData.AdminApprove.RejectReason);
+                }else if(!$scope.adminMode && $scope.formData.Status == 'AP'){
+                  $scope.adminAlert.success("This product has been approved. Click 'Edit Product' to make changes.");
                 }
 
                 checkSchema(inverseFormData);
