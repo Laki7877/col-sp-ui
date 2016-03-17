@@ -227,7 +227,7 @@ ng-transclude.has-error .form-control{
 
 /* ui-select input fix */
 .ui-select-multiple input.ui-select-search:not(.ng-touched) {
-    width: 100% !important;
+    // width: 100% !important;
 }
 
 .ui-select-dropdown-hide .ui-select-dropdown {
@@ -292,7 +292,7 @@ ng-transclude.has-error .form-control{
 }
 
 .ui-select-multiple.ui-select-bootstrap input.ui-select-search {
-    width: 100% !important;
+    //width: 100% !important;
 }
 
 /* Customize CK Editor */
