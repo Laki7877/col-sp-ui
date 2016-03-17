@@ -3,9 +3,14 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminAttributeAddCtrl" ng-init="init(<?=$params?>)">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attributes/{{title}}", 'urls' => ['/admin/attributes']]) ?>
-    <div ng-show="loading" nc-loading="Loading Attribute.."></div>
-    <div ng-show="saving" nc-loading="Saving Attribute.."></div>
+    <nc-page-title nc-title="{{title}}" link="{{url}}">
+      <div class="page-header">
+        <a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
+        <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+      </div>
+    </nc-page-title>
+    <div ng-show="loading" nc-loading="{{loadingMessage}}"></div>
+    <div ng-show="saving" nc-loading="{{savingMessage}}"></div>
     <form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action margin-top-30" novalidate>
       <div class="row">
         <div class="col-xs-12">

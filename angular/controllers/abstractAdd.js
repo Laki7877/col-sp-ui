@@ -5,6 +5,13 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 	$scope.alert = new NcAlert();
 	$scope.saving = false; //prevent multiple saving
 	$scope.loading = false;
+	
+	//Message
+	$scope.loadingMessage = 'Loading ' + pluralize(options.item);
+	$scope.savingMessage = 'Saving ' + pluralize(options.item);
+
+	//Link
+	$scope.url = options.url;
 
 	//Custom pre-init function
 	(options.preInit || _.noop)($scope);

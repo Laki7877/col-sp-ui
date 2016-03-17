@@ -5,7 +5,6 @@
     <nc-alert nc-model="alert"></nc-alert>
     <nc-page-title nc-title="Return Requests"></nc-page-title>
     <div class="row search-section-wrapper">
-      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="{{id}}"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Return ID, Order ID'"></nc-search>
     </div>
     <nc-filter nc-model="params._filter" nc-filter-options="filterOptions"></nc-filter>
@@ -13,7 +12,6 @@
       <table class="table table-curved">
         <thead>
           <tr class="table-head">
-            <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
             <th nc-sort="ModifiedDt">Date</th>
             <th nc-sort="ReturnId">Return ID</th>
             <th nc-sort="OrderId">Order ID</th>
@@ -27,7 +25,6 @@
         </thead>
         <tbody>
           <tr ng-repeat="row in list.data">
-            <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
             <td>{{row.ModifiedDt | dateTh}}</td>
             <td>{{row.ReturnId}}</td>
             <td>{{row.OrderId }}</td>            
@@ -35,7 +32,7 @@
             <td>{{row.Price | currency: ' ' : 2 }}</td>
             <td>{{row.Carrier}}</td>
             <td><span class="{{row.Status | mapDropdown: statusOptions: 'color'}}">{{row.Status | mapDropdown: statusOptions}}</span></td>
-            <td><button ng-disabled="getDisabled(row)" class="btn {{getDisabled(row)}} btn-white btn-width-xl"></button></td>
+            <td><button ng-click="accept(row)" ng-disabled="getDisabled(row)" class="btn {{getDisabled(row)}} btn-white btn-width-xl">Accept</button></td>
             <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>
         </tbody>

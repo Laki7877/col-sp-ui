@@ -18,8 +18,11 @@ angular.module('nc')
                 return templateHTML;
             },
             link: function (scope, element, attrs, ctrl, transclude) {
-            	console.log("nc-page-title"); 
                 scope.breads = scope.title.split('/');
+                scope.$watch('title', function(newVal) {
+                    if(!_.isNil(newVal))
+                        scope.breads = newVal.split('/');
+                })
             }
         };
     });

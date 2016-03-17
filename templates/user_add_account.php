@@ -5,10 +5,15 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerAccountAddCtrl" ng-init="init(<?=$params?>)">
 		<nc-alert nc-model="alert"></nc-alert>
-		<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "User Accounts/{{title}}", 'urls' => ['/accounts']]) ?>
-		<div ng-show="loading" nc-loading="Loading User Account.."></div>
-		<div ng-show="saving" nc-loading="Saving User Account.."></div>
-		<form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
+	    <nc-page-title nc-title="{{title}}" link="{{url}}">
+	      <div class="page-header">
+	        <a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
+	        <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+	      </div>
+	    </nc-page-title>
+	    <div ng-show="loading" nc-loading="{{loadingMessage}}"></div>
+	    <div ng-show="saving" nc-loading="{{savingMessage}}"></div>
+	    <form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
 					<div id="add-product-more-option-tab-content">

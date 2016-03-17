@@ -6,10 +6,15 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminAccountAddCtrl" ng-init="init(<?=$params?>)">
 		<nc-alert nc-model="alert"></nc-alert>
-		<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Admin Accounts/{{title}}", 'urls' => ['/admin/accounts']]) ?>
-		<div ng-show="loading" nc-loading="Loading Admin Account.."></div>
-		<div ng-show="saving" nc-loading="Saving Admin Account.."></div>
-		<form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
+	    <nc-page-title nc-title="{{title}}" link="{{url}}">
+	      <div class="page-header">
+	        <a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
+	        <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+	      </div>
+	    </nc-page-title>
+	    <div ng-show="loading" nc-loading="{{loadingMessage}}"></div>
+	    <div ng-show="saving" nc-loading="{{savingMessage}}"></div>
+	    <form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
 					<div id="add-product-more-option-tab-content">
