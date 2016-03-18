@@ -4,7 +4,7 @@
   <div ng-controller="AdminAttributeSetCtrl">
     <nc-alert nc-model="alert"></nc-alert>
     <nc-page-title nc-title="Attribute Sets">
-      <a class="btn btn-blue btn-width-xl" ng-href="{{url}}/add">Add {{item}}</a>
+      <a class="btn btn-blue btn-width-xxl" ng-href="{{url}}/add">Add {{item}}</a>
     </nc-page-title>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="{{id}}"></nc-bulk>
