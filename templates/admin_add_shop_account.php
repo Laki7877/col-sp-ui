@@ -6,7 +6,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 <?php $this->start('page-body') ?>
 <div ng-controller="AdminShopAddCtrl" ng-init="init(<?=$params?>)">
 	<nc-alert nc-model="alert"></nc-alert>
-    <nc-page-title nc-title="{{title}}" link="{{url}}">
+    <nc-page-title nc-title="{{title}}" link="{{url}}" icon="fa-user">
       <div class="page-header">
         <a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
         <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
@@ -33,8 +33,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 								<div class="form-section-content">
 				                	<!-- Shop Id -->
 				                    <div ng-show="id != 0"
-					                    nc-template="common/input/form-group-with-label" 
-					                    nc-label="Shop ID" 
+					                    nc-template="common/input/form-group-with-label"
+					                    nc-label="Shop ID"
 					                    nc-template-options-path="shopSettingForm/ShopId">
 				                        <input class="form-control" type="text" ng-model="formData.ShopId" readonly value="DE39222" disabled/>
 				                    </div>
@@ -377,10 +377,10 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 				                    <h2>Shop Information</h2></div>
 				                <div class="form-section-content">
 				                    <!-- Shop Logo -->
-						            <div nc-template="common/input/form-group-with-label" 
+						            <div nc-template="common/input/form-group-with-label"
 						              nc-template-form="form.Logo"
 						              nc-label="Shop Logo File">
-						                <button 
+						                <button
 						                type="button"
 						                name="Logo"
 						                class="btn btn-default"
@@ -390,7 +390,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 						                required>Choose File</button>
 						            </div>
 						            <div ng-show="formData.ShopImage.url"
-						              nc-template="common/input/form-group-with-label" 
+						              nc-template="common/input/form-group-with-label"
 						              nc-label="Shop Logo Preview">
 						                <img
 						                  ng-src="{{formData.ShopImage.url}}"

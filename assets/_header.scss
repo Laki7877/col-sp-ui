@@ -55,6 +55,12 @@
 		font-weight: normal;
 	}
 
+	.page-header-icon{
+		color: $color-dark-grey;
+		font-size: 22px;
+		margin-right: 5px;
+	}
+
 	.page-actions {
 		.btn ~ .btn {
 			margin-left: 10px;

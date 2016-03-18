@@ -5,7 +5,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerInventoryListCtrl">
-       <nc-page-title nc-title="Inventory">
+       <nc-page-title nc-title="Inventory" icon="fa-archive">
             <a ng-href="/products/export" class="btn ng-scope btn-white btn-width-xxl">
 	            <span class="">Export All Products</span>
           	</a>

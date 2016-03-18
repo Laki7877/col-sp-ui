@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminGlobalCouponCtrl">
-    <nc-page-title nc-title="Global Coupons">
+    <nc-page-title nc-title="Global Coupons" icon="fa-bookmark">
       <a class="btn btn-blue btn-width-xl" ng-href="{{url}}/add">Add {{item}}</a>
     </nc-page-title>
     <div class="row search-section-wrapper">

@@ -3,7 +3,7 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="SellerNewsletterCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <nc-page-title nc-title="Newsletters"></nc-page-title>
+    <nc-page-title nc-title="Newsletters" icon="fa-home"></nc-page-title>
     <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="isSearching()" >
       <table class="table table-curved">
         <thead>

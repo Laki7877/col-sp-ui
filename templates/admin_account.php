@@ -3,7 +3,7 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminAccountCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <nc-page-title nc-title="Admin Accounts">
+    <nc-page-title nc-title="Admin Accounts" icon="fa-user">
       <a class="btn btn-blue btn-width-xxl" ng-href="{{url}}/add">Add {{item}}</a>
     </nc-page-title>
     <div class="row search-section-wrapper">

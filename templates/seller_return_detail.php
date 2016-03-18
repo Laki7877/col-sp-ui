@@ -5,12 +5,12 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Return Detail'])
 <?php $this->start('page-body') ?>
   <div ng-controller="SellerReturnRequestCtrl">
     <div>
-      <nc-page-title nc-title="Return Requests/Return Detail" link="{{url}}">
+      <nc-page-title nc-title="Return Requests/Return Detail" link="{{url}}" icon="fa-inbox">
         <div class="page-header">
           <a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
           <button class="btn btn-green btn-width-xl" ng-click="save()">Save</button>
         </div>
-      </nc-page-title>    
+      </nc-page-title>
     </div>
     <div class="margin-top-30 field_seller">
       <div class="col-xs-12 margin-bottom-30 no-padding">

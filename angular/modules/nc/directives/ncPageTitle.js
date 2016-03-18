@@ -23,6 +23,7 @@ angular.module('nc')
                     if(!_.isNil(newVal))
                         scope.breads = newVal.split('/');
                 })
+                scope.icon = attrs.icon;
             }
         };
     });

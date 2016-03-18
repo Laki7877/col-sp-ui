@@ -6,7 +6,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerRoleAddCtrl" ng-init="init(<?=$params?>)">
 		<nc-alert nc-model="alert"></nc-alert>
-	    <nc-page-title nc-title="{{title}}" link="{{url}}">
+	    <nc-page-title nc-title="{{title}}" link="{{url}}" icon="fa-user">
 	      <div class="page-header">
 	        <a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
 	        <button class="btn btn-blue btn-width-xl margin-left-10" ng-click="save()">Save</button>

@@ -4,7 +4,7 @@
 
 <div ng-controller="AdminProductApprovalListCtrl">
    <nc-alert nc-model="alert"></nc-alert>
-   <nc-page-title nc-title="Product Approval List">
+   <nc-page-title nc-title="Product Approval List" icon="fa-tag">
    </nc-page-title>
 <div>
     <div class="row search-section-wrapper">

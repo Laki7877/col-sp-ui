@@ -3,7 +3,7 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="SellerReturnRequestCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <nc-page-title nc-title="Return Requests"></nc-page-title>
+    <nc-page-title nc-title="Return Requests" icon="fa-inbox"></nc-page-title>
     <div class="row search-section-wrapper">
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Return ID, Order ID'"></nc-search>
     </div>
@@ -27,7 +27,7 @@
           <tr ng-repeat="row in list.data">
             <td>{{row.ModifiedDt | dateTh}}</td>
             <td>{{row.ReturnId}}</td>
-            <td>{{row.OrderId }}</td>            
+            <td>{{row.OrderId }}</td>
             <td>{{row.NameEn }}</td>
             <td>{{row.Price | currency: ' ' : 2 }}</td>
             <td>{{row.Carrier}}</td>

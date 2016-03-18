@@ -4,7 +4,7 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminProductListCtrl">
-	       <nc-page-title nc-title="All Products">
+	       <nc-page-title nc-title="All Products" icon="fa-tag">
 	      <form id="exportForm" name="exportForm" action="/admin/products/export" method="post">
 	          <input type="hidden" name="selected_products[]" ng-repeat="item in bulkContainer" value="{{ item.ProductId }}"/>
 	          <div class="btn-group">

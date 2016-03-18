@@ -3,7 +3,7 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminAttributeAddCtrl" ng-init="init(<?=$params?>)">
     <nc-alert nc-model="alert"></nc-alert>
-    <nc-page-title nc-title="{{title}}" link="{{url}}">
+    <nc-page-title nc-title="{{title}}" link="{{url}}" icon="fa-tag">
       <div class="page-header">
         <a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
         <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>

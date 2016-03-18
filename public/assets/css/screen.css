@@ -12699,7 +12699,13 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
   font-size: 24px;
   font-weight: normal;
 }
-/* line 59, ../../../assets/_header.scss */
+/* line 58, ../../../assets/_header.scss */
+.page-header .page-header-icon {
+  color: #7B7F8F;
+  font-size: 22px;
+  margin-right: 5px;
+}
+/* line 65, ../../../assets/_header.scss */
 .page-header .page-actions .btn ~ .btn {
   margin-left: 10px;
 }

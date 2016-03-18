@@ -3,7 +3,7 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminAttributeSetCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <nc-page-title nc-title="Attribute Sets">
+    <nc-page-title nc-title="Attribute Sets" icon="fa-tag">
       <a class="btn btn-blue btn-width-xxl" ng-href="{{url}}/add">Add {{item}}</a>
     </nc-page-title>
     <div class="row search-section-wrapper">

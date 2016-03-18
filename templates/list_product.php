@@ -3,7 +3,7 @@
 <?php $this->start('page-body') ?>
 <div ng-controller="ProductListCtrl">
    <nc-alert nc-model="alert"></nc-alert>
-   <nc-page-title nc-title="Products">
+   <nc-page-title nc-title="Products" icon="fa-tag">
       <form id="exportForm" name="exportForm" action="/products/export" method="post">
           <input type="hidden" name="selected_products[]" ng-repeat="item in bulkContainer" value="{{ item.ProductId }}"/>
 

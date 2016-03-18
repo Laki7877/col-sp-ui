@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
   <div ng-controller="SellerCouponCtrl">
-    <nc-page-title nc-title="Coupons">
+    <nc-page-title nc-title="Coupons" icon="fa-bookmark">
         <a ng-href="/coupons/add" class="btn ng-scope btn-blue btn-width-xxl">Add Coupon</a>
     </nc-page-title>
     <div class="row search-section-wrapper">
