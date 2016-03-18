@@ -14648,43 +14648,50 @@ form h6 {
   text-align: center;
   padding-left: 0;
 }
-/* line 237, ../../../assets/_seller_page.sass */
+/* line 236, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:first-child {
   width: 100px;
 }
-/* line 240, ../../../assets/_seller_page.sass */
+/* line 239, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:nth-child(2) {
   width: 120px;
 }
-/* line 244, ../../../assets/_seller_page.sass */
+/* line 243, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:last-child {
   padding-left: 30px;
   width: 80px;
 }
-/* line 248, ../../../assets/_seller_page.sass */
+/* line 247, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td.empty_data {
   text-align: center;
   padding-left: 0;
 }
-/* line 254, ../../../assets/_seller_page.sass */
+/* line 253, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter td.empty_data {
   text-align: center;
   padding-left: 0;
 }
-/* line 258, ../../../assets/_seller_page.sass */
+/* line 257, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter .newsletter_date {
   font-size: 12px;
   margin-top: 5px;
   color: #7B7F8F;
 }
-/* line 262, ../../../assets/_seller_page.sass */
+/* line 261, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter td:last-child {
   padding-left: 30px;
   width: 80px;
 }
-/* line 267, ../../../assets/_seller_page.sass */
+/* line 266, ../../../assets/_seller_page.sass */
 #dashboard_page .account_health .group_container:last-child {
   padding: 10px 0px 0px 0px;
+}
+/* line 269, ../../../assets/_seller_page.sass */
+#dashboard_page .view_all_row {
+  text-align: center;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: solid 1px #BCC7D5;
 }
 
 /* line 35, ../../../assets/screen.scss */

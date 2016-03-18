@@ -32,5 +32,12 @@ module.exports = function (common, config, util, $log, $window) {
         });
     }
 
+    service.getOutOfStock = function () {
+        return common.makeRequest({
+            url: '/Inventories?_direction=desc&_filter=OutOfStock&_limit=10&_offset=0&_order=Pid',
+            method: 'GET'
+        });
+    }
+
     return service;
 };

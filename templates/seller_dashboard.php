@@ -78,18 +78,18 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           </span>
           <span class="font-size-18 header_name_space">Low Stock Alert</span>
           <span class="float-right group_span_right">
-            <span><a href="#">View All</a></span>
+            <span><a ng-click="linkToLowStock()">View All</a></span>
           </span>
         </div>
         <div class="group_container">
           <table class="table table_dashboard table_lsa">
             <tbody>
-              <tr ng-repeat="product in lowStockAlertData | orderBy: 'Pid':true | limitTo:maxLowStockAlert" ng-show="lowStockAlertData.length != 0">
+              <tr ng-repeat="product in lowStockAlertData | orderBy: 'Quantity' | limitTo:maxLowStockAlert" ng-show="lowStockAlertData.length != 0">
                 <td>
-                  {{product.Quantity}}
+                  {{product.QuantityText}}
                 </td>
                 <td>
-                  {{product.Pid}}
+                  {{product.PidText}}
                 </td>
                 <td class="column-text-ellipsis">
                   {{product.ProductNameEn}}
@@ -98,11 +98,15 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                   <button class="btn btn-white btn-width-default">View</button>
                 </td>
               </tr>
+
               <tr ng-show="lowStockAlertData.length == 0">
                 <td class="empty_data">- No Low Stock Alert -</td>
               </tr>
             </tbody>
           </table>
+          <div class="view_all_row" ng-show="lowStockAlertData.length == 10">
+            <a ng-click="linkToLowStock()">View All</a>
+          </div>
         </div>
       </div>
 

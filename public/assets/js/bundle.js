@@ -3644,10 +3644,41 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$window", "$uibM
 			$scope.lowStockAlertData = query.data;
 
 			for (var i = $scope.lowStockAlertData.length - 1; i >= 0; i--) {
-				$scope.lowStockAlertData[i].Pid = 'ID: ' + $scope.lowStockAlertData[i].Pid;
-				$scope.lowStockAlertData[i].Quantity = 'QTY: ' + $scope.lowStockAlertData[i].Quantity;
+				$scope.lowStockAlertData[i].PidText = 'ID: ' + $scope.lowStockAlertData[i].Pid;
+				$scope.lowStockAlertData[i].QuantityText = 'QTY: ' + $scope.lowStockAlertData[i].Quantity;
 			};
 			return $scope.lowStockAlertData;
+		})
+		.then(function(lowStockAlertData){
+			var promise = Dashboard.getOutOfStock();
+			promise.then(function(outOfStockData) {
+				outOfStockData = outOfStockData.data;
+
+				for (var i = outOfStockData.length - 1; i >= 0; i--) {
+					outOfStockData[i].PidText = 'ID: ' + outOfStockData[i].Pid;
+					outOfStockData[i].QuantityText = 'QTY: ' + outOfStockData[i].Quantity;
+				};
+
+				var object = lowStockAlertData.concat(outOfStockData);
+				console.log(object);
+				return $scope.lowStockAlertData = object;
+
+			}, function(reason) {
+			  alert('Failed: ' + reason);
+			});
+		});
+
+	Dashboard.getOutOfStock()
+		.then(function(query) {
+			$scope.outOfStockData = query.data;
+
+			for (var i = $scope.outOfStockData.length - 1; i >= 0; i--) {
+				$scope.outOfStockData[i].PidText = 'ID: ' + $scope.outOfStockData[i].Pid;
+				$scope.outOfStockData[i].QuantityText = 'QTY: ' + $scope.outOfStockData[i].Quantity;
+			};
+			var ss = ['ss','sq']
+			// console.log($scope.lowStockAlertData);
+			return $scope.outOfStockData;
 		});
 
 	$scope.maxNewOrders = 10;
@@ -3791,6 +3822,11 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$window", "$uibM
 	$scope.linkToAllNewsletters = function(){
 		$window.location.href = '/newsletters';
 	};
+
+	$scope.linkToLowStock = function(){
+		$window.location.href = '/inventory';
+	};
+
 
 }];
 
@@ -9668,6 +9704,13 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
     service.getLowStockAlert = function () {
         return common.makeRequest({
             url: '/Inventories?_direction=desc&_filter=LowStock&_limit=10&_offset=0&_order=Pid',
+            method: 'GET'
+        });
+    }
+
+    service.getOutOfStock = function () {
+        return common.makeRequest({
+            url: '/Inventories?_direction=desc&_filter=OutOfStock&_limit=10&_offset=0&_order=Pid',
             method: 'GET'
         });
     }
