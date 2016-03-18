@@ -31,8 +31,8 @@
       </form>
    </nc-page-title>
   <div class="row search-section-wrapper">
-      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ProductId"></nc-bulk>
-      <nc-search nc-model="params.searchText" nc-search-event="onSearch" nc-search-placeholder="'Search for Product Name, SKU, ...'"></nc-search>
+      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="{{id}}"></nc-bulk>
+      <nc-search nc-model="params.searchText" nc-search-event="onSearch" nc-search-placeholder="'Search for Product Name or Tag'"></nc-search>
       <nc-advance-search-button nc-model="advanceSearch"></nc-advance-search-button>
       <!-- <div class="search-section-item pull-right">
         <div class="filter-checkbox">
@@ -51,6 +51,7 @@
                   <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
                   <th class="display-column"></th>
                   <th nc-sort="ProductNameEn">Product Name</th>
+                  <th>Tag</th>
                   <th class="price-column" nc-sort="SalePrice">Sale Price</th>
                   <th><span>Info</span></th>
                   <th><span>Image</span></th>
@@ -70,11 +71,16 @@
                       <img ng-if='row.ImageUrl' class="logo-img" src="{{ row.ImageUrl }}" />
                     </div>
                   </td>
-                  <td class="column-text-ellipsis"><a href="/products/{{ row.ProductId }}">{{ row.ProductNameEn || '(Untitled Product)' }}</a></td>
+                  <td class="column-text-ellipsis">
+                    <div><a href="/products/{{ row.ProductId }}">{{ row.ProductNameEn || '(Untitled Product)' }}</a></div>
+                    <div class="color-grey" ng-if="row.VariantCount > 0">({{row.VariantCount}} variants)</div>
+                  </td>
+                  <td class="column-text-ellipsis">
+                    {{getTag(row.Tags)}}
+                  </td>
                   <td class="price-column">
                     <div>{{ row.SalePrice | currency: ' ' : 2 }}</div>
-                    <!--div ng-if="row.VariantCount > 0">{{ row.PriceFrom | currency: ' ' : 2 }} - {{ row.PriceTo | currency: ' ' : 2 }}</div-->
-                    <div ng-if="row.VariantCount > 0">({{row.VariantCount}} variants)</div></td>
+                  </td>
                   <td class="info-column">
                     <i ng-if="!row.InfoFlag" class="fa fa-minus color-grey icon-size-18px"></i>
                     <i ng-if="row.InfoFlag" class="fa fa-check color-green icon-size-18px"></i>

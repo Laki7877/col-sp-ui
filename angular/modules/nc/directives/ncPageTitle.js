@@ -7,7 +7,8 @@ angular.module('nc')
             replace: true,
             priority: 1010,
             scope: {
-                title: '@ncTitle'
+                title: '@ncTitle',
+                topLink: '@link'
             },
             template: function (element, attrs) {
                 var templateHTML = $templateCache.get('partials/page-title');
@@ -17,7 +18,11 @@ angular.module('nc')
                 return templateHTML;
             },
             link: function (scope, element, attrs, ctrl, transclude) {
-            	console.log("nc-page-title"); 
+                scope.breads = scope.title.split('/');
+                scope.$watch('title', function(newVal) {
+                    if(!_.isNil(newVal))
+                        scope.breads = newVal.split('/');
+                })
             }
         };
     });

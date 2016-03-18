@@ -62,7 +62,7 @@ var seller = {
 		'Newsletters': '/newsletters'
 	},
 	'Orders|fa-inbox': {
-
+		'Return Requests': '/returns'
 	},
 	'Product|fa-tag': {
 	  	'View': '/products',
@@ -98,13 +98,14 @@ var admin = {
 	'Products|fa-tag': {
 		'View All Products': '/admin/products',
 		'Approve Products': '/admin/approve',
-		'Master Products': '/admin/master',
+		'Master Products': '/admin/masters',
 		'Brands': '/admin/brands',
 		'Attributes': '/admin/attributes',
 		'Attribute Sets': '/admin/attributesets',
 		'Global Category': '/admin/categories'
 	},
 	'Accounts|fa-user': {
+		'Seller Accounts': '/admin/sellers',
 		'Shop Accounts': ['/admin/shops', '/admin/shops/add'],
 		'Shop Types': ['/admin/shoptypes', '/admin/shoptypes/add'],
 		'Admin Accounts': ['/admin/accounts', '/admin/accounts/add'],

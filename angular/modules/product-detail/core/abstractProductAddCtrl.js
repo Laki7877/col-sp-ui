@@ -1,13 +1,31 @@
 var angular = require('angular')
 
 angular.module('productDetail').controller('AbstractProductAddCtrl',
-  function($scope, $uibModal, $window, util, config, Product, ImageService,
+  function($scope, $uibModal, $window, util, config, Product, ImageService,  AttributeService,
     AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
     KnownException, NcAlert, $productAdd, options, AttributeSetService, JSONCache, skeemas) {
     'ngInject';
 
     var MAX_FILESIZE = (options.maxImageUploadSize || 5000000);
     var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
+
+    var loadOverview = function(res){
+      $scope.overview = res;
+      Shop.get(res.ShopId).then(function(x){
+        $scope.overview.ShopName = x.ShopNameEn;
+      })
+    }
+
+    $scope.adminAlert = new NcAlert();
+    $scope.alert = new NcAlert();
+    $scope.devAlert = new NcAlert();
+    $scope.image_alert = new NcAlert();
+
+    $scope.defaultAttributes = [];
+    AttributeService.getDefaultAttributes().then(function(res){
+      $scope.defaultAttributes = res;
+    });
+
 
     $scope.adminMode = options.adminMode;
     $scope.approveMode = options.approveMode;
@@ -80,16 +98,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       $scope.variantPtr.VideoLinks[$index] = { Url : null }
     };
 
-    var checkSchema = function(data, schemaName, code) {
+    var checkSchema = function(data, schemaName) {
       //Perform schema check
       var schema = JSONCache.get(schemaName || 'productStages');
-      if (!code) code = "(RX)";
       var validation = skeemas.validate(data, schema);
       console.log("Schema validation result: ", validation);
       if (!validation.valid) {
-        $scope.devAlert.error('<strong>Warning ' + code + '</strong> Automated API structure pre-check procedure failed. ' +
-          'Format does not comply with the <strong>Ahancer Product Add Exchange Protocol (A-PAEP)</strong> V3 Rev C. ' +
-          'For more detail, look for <i>schema validation result</i> in your js console.');
+        $scope.devAlert.error('<strong>Warning </strong> Automated API structure pre-check procedure failed. ' +
+          'Format does not comply with the <strong>Ahancer Product Add Exchange Protocol (A-PAEP)</strong> V4');
       }
     };
 
@@ -213,6 +229,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       },
       reset: function() {
         $scope.alert.close();
+        $scope.devAlert.close();
+        $scope.adminAlert.close();
         $scope.pageState.loading.state = false;
       }
     };
@@ -302,6 +320,39 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     };
 
     /**
+     * Edit Product Confirmation
+     * Show dialog to ask if user really want to edit
+     */
+    $scope.preEditProduct = function() {
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'product/modalConfirmEdit',
+        controller: function($scope, $uibModalInstance, $timeout) {
+          'ngInject'
+          $scope.no = function() {
+            $uibModalInstance.close('no')
+          }
+
+          $scope.yes = function() {
+            $uibModalInstance.close('yes')
+          }
+        },
+        size: 'size-warning',
+        resolve: {
+
+        }
+      })
+      modalInstance.result.then(function(selectedItem) {
+        if (selectedItem == 'yes') {
+          $scope.publish('DF');
+        }
+      }, function() {
+        console.log('Modal dismissed at: ' + new Date())
+      })
+
+    }
+
+    /**
      * Publish Confirmation
      * Show dialog to ask if user really want to publish
      */
@@ -388,7 +439,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         return
       }
 
-      $scope.pageState.load('Saving..');
+      $scope.pageState.load('Applying changes..');
 
       var apiRequest = Product.serialize($scope.formData);
       // checkSchema(apiRequest, 'productStages', '(TX)');
@@ -396,7 +447,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       Product.publish(apiRequest, Status).then(function(res) {
         $scope.pageState.reset();
         if (res.ProductId) {
-          $scope.overview = res;
+          
+          loadOverview(res);
           $scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions); // will trigger watchvariantchange
           var catId = Number(res.MainGlobalCategory.CategoryId);
 
@@ -432,7 +484,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
         Product.getOne(productId)
           .then(function(inverseFormData) {
-            $scope.overview = angular.copy(inverseFormData);
+            loadOverview(angular.copy(inverseFormData));
             var catId = Number(inverseFormData.MainGlobalCategory.CategoryId);
 
             //Fill the page with data
@@ -449,6 +501,15 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 LocalCategoryService.getAllByShopId($scope.formData.ShopId).then(function(data) {
                   $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data);
                 });
+                
+                $scope.adminAlert.close();
+                console.log('adminMode', $scope.adminMode, $scope.formData.Status);
+                if(!$scope.adminMode && $scope.formData.Status == 'RJ'){
+                  //Show rejection from admin
+                  $scope.adminAlert.error("<strong>Message from Admin</strong><br>" + $scope.formData.AdminApprove.RejectReason);
+                }else if(!$scope.adminMode && $scope.formData.Status == 'AP'){
+                  $scope.adminAlert.success("This product has been approved. Click 'Edit Product' to make changes.");
+                }
 
                 checkSchema(inverseFormData);
               });
@@ -726,10 +787,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.isListInput = util.isListDataType;
     $scope.isHtmlInput = util.isHtmlDataType;
     $scope.isCheckboxInput = util.isCheckboxDataType;
-
-    $scope.alert = new NcAlert();
-    $scope.devAlert = new NcAlert();
-    $scope.image_alert = new NcAlert();
 
     // Variation Factor (lhs) Indices are used as index
     // for ng-repeat in variation tab

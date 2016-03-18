@@ -3,9 +3,14 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminAttributeAddCtrl" ng-init="init(<?=$params?>)">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Attributes/{{title}}", 'urls' => ['/admin/attributes']]) ?>
-    <div ng-show="loading" nc-loading="Loading Attribute.."></div>
-    <div ng-show="saving" nc-loading="Saving Attribute.."></div>
+    <nc-page-title nc-title="{{title}}" link="{{url}}">
+      <div class="page-header">
+        <a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
+        <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+      </div>
+    </nc-page-title>
+    <div ng-show="loading" nc-loading="{{loadingMessage}}"></div>
+    <div ng-show="saving" nc-loading="{{savingMessage}}"></div>
     <form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action margin-top-30" novalidate>
       <div class="row">
         <div class="col-xs-12">
@@ -91,6 +96,38 @@
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>
                   <ui-select-choices repeat="item.value as item in boolOptions">
+                      <span ng-bind="item.name"></span>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+            </div>
+          </div>
+          <div class="form-section">
+            <div class="form-section-header"><h2>Attribute Input</h2></div>
+            <div class="form-section-content">
+              <div ng-template="common/input/dropdown"
+                ng-template-options="{
+                  'label' : 'Default Attribute'
+                }">
+                <ui-select ng-model="formData.DefaultAttribute" search-enabled="false">
+                  <ui-select-match placeholder="- Select Default Attribute -">
+                      <span ng-bind="$select.selected.name"></span>
+                  </ui-select-match>
+                  <ui-select-choices repeat="item.value as item in boolOptions">
+                      <span ng-bind="item.name"></span>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+              <div ng-show="formData.DefaultAttribute"
+                ng-template="common/input/dropdown"
+                ng-template-options="{
+                  'label' : 'Visible to'
+                }">
+                <ui-select ng-model="formData.VisibleTo" search-enabled="false">
+                  <ui-select-match placeholder="- Select Visible to -">
+                      <span ng-bind="$select.selected.name"></span>
+                  </ui-select-match>
+                  <ui-select-choices repeat="item.value as item in visibleToOptions">
                       <span ng-bind="item.name"></span>
                   </ui-select-choices>
                 </ui-select>
@@ -286,7 +323,7 @@
               </div>
             </div>
           </div>
-          <div class="form-section" ng-if="formData.DataType != 'CB'">
+          <div class="form-section" ng-if="formData.DataType != 'CB' || !formData.DefaultAttribute">
             <div class="form-section-header"><h2>Variation</h2></div>
             <div class="form-section-content">
               <div

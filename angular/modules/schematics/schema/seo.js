@@ -1,5 +1,5 @@
 module.exports = {
-  "title": "SEO Schema V3 Rev C",
+  "title": "SEO Schema V4",
   "type": "object",
   "properties": {
     "MetaTitleEn": {"type": "string"},

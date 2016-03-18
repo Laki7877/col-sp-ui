@@ -6,10 +6,15 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 <?php $this->start('page-body') ?>
 <div ng-controller="AdminShopAddCtrl" ng-init="init(<?=$params?>)">
 	<nc-alert nc-model="alert"></nc-alert>
-	<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "Shop Accounts/{{title}}", 'urls' => ['/admin/shops']]) ?>
-	<div ng-show="loading" nc-loading="Loading Shop Account.."></div>
-	<div ng-show="saving" nc-loading="Saving Shop Account.."></div>
-	<form ng-show="!saving && !loading" name="form" class="ah-form margin-top-20 sticky-mainform-action" novalidate>
+    <nc-page-title nc-title="{{title}}" link="{{url}}">
+      <div class="page-header">
+        <a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
+        <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+      </div>
+    </nc-page-title>
+    <div ng-show="loading" nc-loading="{{loadingMessage}}"></div>
+    <div ng-show="saving" nc-loading="{{savingMessage}}"></div>
+    <form ng-show="!saving && !loading" name="form" class="ah-form margin-top-20 sticky-mainform-action" novalidate>
 		<ul class="nav nav-tabs" role="tablist">
 			<li role="presentation" class="required active">
 				<a href="#shop_account" data-id="shop_account" aria-controls="shop_account" role="tab" data-toggle="tab">Vital Information</a>

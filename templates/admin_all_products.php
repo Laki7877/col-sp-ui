@@ -21,7 +21,7 @@
        </nc-page-title>
 	    <div class="row search-section-wrapper">
   			<nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ProductId"></nc-bulk>
-      		<nc-search nc-model="params.searchText" nc-search-event="onSearch" nc-search-placeholder="'Search for Product Name'"></nc-search>
+      		<nc-search nc-model="params.searchText" nc-search-event="onSearch" nc-search-placeholder="'Search for Product Name or Tag'"></nc-search>
 		  	<nc-advance-search-button nc-model="advanceSearch"></nc-advance-search-button>
 		</div>
 		<nc-advance-search nc-model="advanceSearchParams" nc-advance-search-toggle="advanceSearch" nc-advance-search-event="onAdvanceSearch" nc-advance-search-options="advanceSearchOptions"></nc-advance-search>
@@ -30,47 +30,62 @@
 		    <table class="table table-curved">
 		        <thead>
 		            <tr class="table-head">
-            			<th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
-		                <th></th>
-		                <th nc-sort="ProductNameEn">Product Name</th>
-		                <th nc-sort="Shop">Shop</th>
-		                <th nc-sort="SalePrice">Sale Price</th>
-		                <th nc-sort="Status">Status</th>
-		                <th>Live</th>
-		                <th>Visible</th>
-		                <th nc-sort="UpdatedDt" class="modified-column">Modified</th>
-		                <th>Action</th>
+	                  <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
+	                  <th class="display-column"></th>
+	                  <th nc-sort="ProductNameEn">Product Name</th>
+	                  <th>Tag</th>
+	                  <th class="price-column" nc-sort="SalePrice">Sale Price</th>
+	                  <th><span>Info</span></th>
+	                  <th><span>Image</span></th>
+	                  <th class="status-column" nc-sort="Status">Status</th>
+	                  <th class="live-column" ng-if="showOnOffStatus.value">Live</th>
+	                  <th class="visible-column">Visible</th>
+	                  <th class="modified-column" nc-sort="UpdatedDt">Modified</th>
+	                  <th class="action-column">Action</th>
 		            </tr>
 		        </thead>
 		        <tbody>
-		            <tr ng-repeat="row in list.data">
-           				<td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
-		                <td class="display-column">
-		                    <div class="img-holder">
-		                        <img ng-if='!row.ImageUrl' class="logo-img" src="<?= $this->asset('/assets/img/placeholder-no-image.png') ?>" />
-		                        <img ng-if='row.ImageUrl' class="logo-img" src="{{ row.ImageUrl }}" />
-		                    </div>
-		                </td>
-		                <td class="column-text-ellipsis">
-		                    <a ng-href="/admin/products/{{row.ProductId}}">{{row.ProductNameEn}}</a>
-		                </td>
-		                <td>{{row.Shop.ShopNameEn}}</td>
-		                <td>{{row.SalePrice | number: 2 }}</td>
-		                <td>
-		                    <span class="{{ row.Status | mapDropdown: statusDropdown: 'color'}}">
-		                      <i class="fa {{ row.Status | mapDropdown: statusDropdown: 'icon' }}"></i>
-		                      {{ row.Status | mapDropdown: statusDropdown }}
-		                    </span>
-		                </td>
-		                <td><i class="fa fa-circle color-grey"></i></td>
-		                <td>
-		                    <nc-eye nc-model="row.Visibility" nc-eye-on-toggle="toggleEye(row)"></nc-eye>
-		                </td>
-		                <td>{{row.UpdatedDt | dateTh}}</td>
-		                <td>
-		                    <nc-action nc-model="row" nc-action-fn="actions"></nc-action>
-		                </td>
-		            </tr>
+	              <tr ng-repeat="row in list.data">
+	                  <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
+	                  <td class="display-column">
+	                    <div class="img-holder">
+	                      <img ng-if='!row.ImageUrl' class="logo-img" src="<?= $this->asset('/assets/img/placeholder-no-image.png') ?>" />
+	                      <img ng-if='row.ImageUrl' class="logo-img" src="{{ row.ImageUrl }}" />
+	                    </div>
+	                  </td>
+	                  <td class="column-text-ellipsis">
+	                    <div><a href="/admin/products/{{ row.ProductId }}">{{ row.ProductNameEn || '(Untitled Product)' }}</a></div>
+	                    <div class="color-grey" ng-if="row.VariantCount > 0">({{row.VariantCount}} variants)</div>
+	                  </td>
+	                  <td class="column-text-ellipsis">{{getTag(row.Tags)}}</td>
+	                  <td class="price-column">
+	                    <div>{{ row.SalePrice | currency: ' ' : 2 }}</div>
+	                  </td>
+	                  <td class="info-column">
+	                    <i ng-if="!row.InfoFlag" class="fa fa-minus color-grey icon-size-18px"></i>
+	                    <i ng-if="row.InfoFlag" class="fa fa-check color-green icon-size-18px"></i>
+	                  </td>
+	                  <td class="image-column">
+	                    <i ng-if="!row.ImageFlag" class="fa fa-minus color-grey icon-size-18px"></i>
+	                    <i ng-if="row.ImageFlag" class="fa fa-check color-green icon-size-18px"></i>
+	                  </td>
+	                  <td class="status-column">
+	                    <span class="{{ asStatus(row.Status).color }}">
+	                      <i class="fa {{ asStatus(row.Status).icon }}"></i>
+	                      {{ asStatus(row.Status).name }}
+	                    </span>
+	                  </td>
+	                  <td class="live-column" ng-if="showOnOffStatus.value">
+	                    <i class="fa fa-circle color-grey"></i>
+	                  </td>
+	                  <td class="visible-column">
+	                    <nc-eye nc-model="row.Visibility" nc-eye-on-toggle="toggleEye(row)"></nc-eye>
+	                  </td>
+	                  <td class="modified-column">{{ row.UpdatedDt | dateTh }}</td>
+	                  <td class="action-column">
+	                      <nc-action nc-model="row" nc-action-fn="actions"></nc-action>
+	                  </td>
+	              </tr>
 		        </tbody>
 		    </table>
 		</nc-table>

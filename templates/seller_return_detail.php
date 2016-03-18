@@ -3,15 +3,14 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Return Detail'])
 ?>
 
 <?php $this->start('page-body') ?>
-  <div>
+  <div ng-controller="SellerReturnRequestCtrl">
     <div>
-      <? $this->insert('components/page-title-with-buttons', ['text' => 'Return Requests/Return Detail',
-        'buttons' => [
-            ['link' => '#', 'class' => 'btn-white btn-width-xl', 'name' => 'Cancel'],
-            ['link' => '#', 'class' => 'btn-green btn-width-xl', 'name' => 'Accept']
-          ]
-        ]) 
-      ?>    
+      <nc-page-title nc-title="Return Requests/Return Detail" link="{{url}}">
+        <div class="page-header">
+          <a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
+          <button class="btn btn-green btn-width-xl" ng-click="save()">Save</button>
+        </div>
+      </nc-page-title>    
     </div>
     <div class="margin-top-30 field_seller">
       <div class="col-xs-12 margin-bottom-30 no-padding">

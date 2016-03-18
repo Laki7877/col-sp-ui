@@ -239,6 +239,16 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
   );
 
 
+  $templateCache.put('order/modalAcceptReturn',
+    "<div class=\"modal-header no-border\"><button type=button class=close aria-label=Close ng-click=$dismiss()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">Accept Return</h2><input class=form-control ng-model=model placeholder=\"CN Number\"></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white\" ng-click=$dismiss()>Cancel</button> <button type=button class=\"btn btn-blue\" ng-click=close()>Confirm</button></div></div></div>"
+  );
+
+
+  $templateCache.put('pending_products/section-group-information',
+    "<div class=form-section><div class=form-section-header><h2>Group Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.Category nc-template-options-path=createGroupVariant/Required nc-label=Category><a class=form-text ng-click=openCategorySelectorModal()>{{ formData.Category.NameEn || 'Select Category' }}</a></div><div nc-template=common/input/form-group-with-label nc-template-form=form.AttributeSet nc-template-options-path=createGroupVariant/Required nc-label=\"Attribute Set\"><ui-select ng-model=formData.AttributeSet theme=selectize loading=refresher.AttributeSetLoading><ui-select-match><span ng-bind-html=$select.selected.AttributeSetNameEn></span> <span ng-show=!$select.selected.AttributeSetNameEn><span class=color-grey><i class=\"fa fa-search\"></i> Search Attribute Set</span></span></ui-select-match><ui-select-choices group-by=\"'_group'\" ui-disable-choice=item.disabled refresh-delay=1000 refresh=refresher.AttributeSets($select.search) repeat=\"item in dataset.CombinedAttributeSets | filter: $select.search  track by item.AttributeSetId\"><span ng-bind-html=\"item.AttributeSetNameEn | highlight: $select.search\"></span></ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><button class=\"btn btn-blue btn-width-xxl\">Create Variation Option</button></div></div></div>"
+  );
+
+
   $templateCache.put('product/action',
     "<div><a ng-click=\"actions.edit(row, true)\">View / Edit</a></div><div><a ng-click=actions.duplicate(row)>Duplicate</a></div><div><a ng-click=\"actions.delete(row, true)\">Delete</a></div>"
   );
@@ -264,8 +274,18 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
   );
 
 
+  $templateCache.put('product/modalAddTags',
+    "<div class=\"modal-header no-border\"><button type=button class=close aria-label=Close ng-click=$dismiss()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">Add Tag</h2><ui-select ng-model=model.tags tagging-label=\"\" tagging-tokens=,|ENTER multiple tagging><ui-select-match placeholder=\"Separated by a comma\">{{$item}}</ui-select-match><ui-select-choices repeat=\"item in []\">{{item}}</ui-select-choices></ui-select></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white\" ng-click=$dismiss()>Cancel</button> <button type=button class=\"btn btn-blue\" ng-click=close()>Confirm</button></div></div></div>"
+  );
+
+
   $templateCache.put('product/modalCategorySelector',
     "<div class=modal-header><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>{{title}}</h3></div><div class=modal-body style=\"padding-top: 15px\"><div class=\"category-section column-4\"><nc-tree-select nc-model=model nc-tree-select-tree=tree nc-exclude=exclude nc-tree-select-title=\"{{categoryHeaderText || 'Global Category'}}\"></nc-tree-select><div class=\"category-footer no-padding\"><span class=float-right><button ng-click=select() class=\"btn btn-blue btn-width-xl\" ng-disabled=\"model == null || (disabledOn || _.noop)(model)\">Select</button></span></div></div></div>"
+  );
+
+
+  $templateCache.put('product/modalConfirmEdit',
+    "<div class=\"modal-header no-border ng-scope\"><button type=button class=close aria-label=Close ng-click=no()><span class=padding-left-15 aria-hidden=true>×</span></button></div><div class=\"modal-body confirmation-modal no-margin ng-scope\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20 ng-binding\">You are about to edit this product</h2><div>You will need to publish your changes and get approved again before your product with the new changes will go live.</div></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white ng-binding\" ng-click=no()>Cancel</button> <button type=button class=\"btn btn-green\" ng-click=yes()>Confirm</button></div></div></div>"
   );
 
 
@@ -279,7 +299,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
   );
 
 
-  $templateCache.put('product/productReviewModal',
+  $templateCache.put('product/modalReview',
     "<div class=modal-header><button type=button class=close aria-label=Close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Review Detail</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Review Detail</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-label=\"Date & Time :\"><p class=form-control-static>{{UpdatedDt | dateTh}} at {{UpdatedDt | timeTh}}</p></div><div nc-template=common/input/form-group-with-label nc-label=\"Customer :\"><p class=form-control-static>{{Customer}}</p></div><div nc-template=common/input/form-group-with-label nc-label=\"Comment :\"><p class=form-control-static>{{Comment}}</p></div></div></div><div class=form-section><div class=form-section-header><h2>Product Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-label=\"PID :\"><p class=form-control-static>{{Pid}}</p></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (English) :\"><p class=form-control-static>{{ProductNameEn}}</p></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย) :\"><p class=form-control-static>{{ProductNameTh}}</p></div><div nc-template=common/input/form-group-with-label nc-label=\"Brand :\"><p class=form-control-static>{{BrandNameEn}}</p></div></div></div></div></div></form></div>"
   );
 

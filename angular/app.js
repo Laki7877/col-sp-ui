@@ -11,6 +11,7 @@ var skeemas = require('skeemas');
 
 // External dependencies
 global._ = require('lodash')
+global.pluralize = require('pluralize');
 require('angular-clipboard')
 require('angular-ui-bootstrap')
 require('angular-animate')
@@ -62,19 +63,19 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .value('$templateOptionsCache', bulk['template-options'])
 
   // Helpers
-  .factory('skeemas', skeemas)
+  .factory('base64', helpers.base64)
   .factory('common', helpers.common)
+  .factory('skeemas', skeemas)
   .factory('storage', helpers.storage)
   .factory('util', helpers.util)
-  .factory('base64', helpers.base64)
 
   // Services
   .factory('$exceptionHandler', services.exceptionHandler)
   .factory('AdminAccountService', services.adminAccountService)
+  .factory('AdminMasterProductService', services.adminMasterProductService) // newer version
   .factory('AdminPermissionService', services.adminPermissionService)
   .factory('AdminRoleService', services.adminRoleService)
   .factory('AdminShopService', services.adminShopService)
-  .factory('AdminShoptypeService', services.adminShoptypeService)
   .factory('AdminShoptypeService', services.adminShoptypeService)
   .factory('Alert', services.alert)
   .factory('Attribute', services.attribute)
@@ -86,6 +87,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .factory('BrandService', services.brandService) // newer version
   .factory('Category', services.category)
   .factory('Credential', services.credential)
+  .factory('Dashboard', services.Dashboard)
   .factory('FileService', services.fileService)
   .factory('GlobalCategory', services.globalCategory)
   .factory('GlobalCategoryService', services.globalCategoryService) // newer version
@@ -104,33 +106,26 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .factory('SellerAccountService', services.sellerAccountService)
   .factory('SellerCouponService', services.sellerCouponService)
   .factory('SellerPermissionService', services.sellerPermissionService)
+  .factory('SellerReturnRequestService', services.sellerReturnRequestService)
   .factory('SellerRoleService', services.sellerRoleService)
   .factory('Shop', services.shop)
   .factory('ShopAppearanceService', services.shopAppearanceService)
   .factory('ShopPermissionService', services.shopPermissionService)
   .factory('ShopProfileService', services.shopProfileService)
   .factory('VariantPair', helpers.variantPair)
-  .factory('Alert', services.alert)
-  .factory('Blocker', services.blocker)
-  .factory('Credential', services.credential)
-  .factory('$exceptionHandler', services.exceptionHandler)
-  .factory('KnownException', services.knownException)
-  .factory('OnTopCreditService', services.OnTopCreditService)
-  .factory('OnTopCredit', services.OnTopCredit)
-  .factory('Onboarding', services.Onboarding)
-  .factory('Dashboard', services.Dashboard)
+
 
   // Directives
   .directive('ncTradableSelect', directives.ncTradableSelect)
-  .directive('ngPermission', directives.ngPermission)
-  .directive('ngDelegate', directives.ngDelegate)
   .directive('ngCkeditor', directives.ngCkeditor)
+  .directive('ngDateBefore', directives.ngDateBefore)
+  .directive('ngDelegate', directives.ngDelegate)
+  .directive('ngMatch', directives.ngMatch)
+  .directive('ngMaxnumber', directives.ngMaxnumber)
+  .directive('ngMinnumber', directives.ngMinnumber)
+  .directive('ngPermission', directives.ngPermission)
   .directive('ngSlideToggle', directives.ngSlideToggle)
   .directive('ngTemplate', directives.ngTemplate)
-  .directive('ngMatch', directives.ngMatch)
-  .directive('ngMinnumber', directives.ngMinnumber)
-  .directive('ngMaxnumber', directives.ngMaxnumber)
-  .directive('ngDateBefore', directives.ngDateBefore)
 
   // Filters
   .filter('capitalize', filters.capitalize)
@@ -149,7 +144,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('RootCtrl', controllers.root)
   .controller('IndexCtrl', controllers.index)
   .controller('ProductListCtrl', controllers.productList)
-  .controller('SellerProductDetailCtrl', controllers.sellerProductDetail)
   .controller('ProductImageManagementCtrl', controllers.productImageManagement)
   .controller('ProductAddSelectCategoryCtrl', controllers.productAddSelectCategory)
   .controller('ProductListLocalCategoryCtrl', controllers.productListLocalCategory)
@@ -158,6 +152,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('ProductExportCtrl', controllers.productExport)
 
   .controller('LocalCategoryCtrl', controllers.localCategory)
+  .controller('SellerProductDetailCtrl', controllers.sellerProductDetail)
   .controller('SellerShopSettingCtrl', controllers.sellerShopSetting)
   .controller('SellerAccountCtrl', controllers.sellerAccount)
   .controller('SellerAccountAddCtrl', controllers.sellerAccountAdd)
@@ -171,6 +166,9 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('SellerDashboardCtrl', controllers.sellerDashboard)
   .controller('SellerCouponCtrl', controllers.sellerCoupon)
   .controller('SellerCouponAddCtrl', controllers.sellerCouponAdd)
+  .controller('SellerReturnRequestCtrl', controllers.sellerReturnRequest)
+  .controller('SellerReturnRequestAddCtrl', controllers.sellerReturnRequestAdd)
+  .controller('SellerPendingProductsGroupCtrl', controllers.sellerPendingProductsGroup)
 
 
   .controller('AdminAttributeCtrl', controllers.adminAttribute)
@@ -180,6 +178,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('AdminCategoryCtrl', controllers.adminCategory)
   .controller('AdminBrandCtrl', controllers.adminBrand)
   .controller('AdminBrandAddCtrl', controllers.adminBrandAdd)
+  .controller('AdminSellerAccountCtrl', controllers.adminSellerAccount)
   .controller('AdminAccountCtrl', controllers.adminAccount)
   .controller('AdminAccountAddCtrl', controllers.adminAccountAdd)
   .controller('AdminRoleCtrl', controllers.adminRole)
@@ -198,6 +197,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('AdminProductApprovalListCtrl', controllers.adminProductApprovalList)
   .controller('AdminProductListCtrl', controllers.adminProductList)
   .controller('AdminProductDetailCtrl', controllers.adminProductDetail)
+  .controller('AdminMasterProductCtrl', controllers.adminMasterProduct)
+  .controller('AdminMasterProductAddCtrl', controllers.adminMasterProductAdd)
 
   .controller('LoginCtrl', controllers.login)
   .controller('AbstractListCtrl', controllers.abstractList)
