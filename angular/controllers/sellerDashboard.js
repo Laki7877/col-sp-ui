@@ -2,6 +2,14 @@
 module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModal, NewsletterService){
 	'ngInject';
 
+	  $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+	  $scope.data = [
+	    [65, 59, 80, 81, 56, 55, 40]
+	  ];
+	  $scope.onClick = function (points, evt) {
+	    console.log(points, evt);
+	  };
+
 	Dashboard.getNewsLetter()
 		.then(function(query) {
 			return $scope.newsLettersData = query.data;
@@ -29,7 +37,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModa
 				};
 
 				var object = lowStockAlertData.concat(outOfStockData);
-				console.log(object);
+				// console.log(object);
 				return $scope.lowStockAlertData = object;
 
 			}, function(reason) {

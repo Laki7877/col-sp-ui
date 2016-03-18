@@ -21,7 +21,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         </div>
         <div class="dashboard_graph">
           <div>
-            <canvas id="canvas" height="280"></canvas>
+            <!-- <canvas id="canvas" height="280"></canvas> -->
+            <canvas id="line" class="chart chart-line" chart-data="data"
+              chart-labels="labels" chart-legend="false" chart-series="series"
+              chart-click="onClick" >
+            </canvas> 
           </div>
         </div>
         <div class="remark">Remark: The revenue does not count canceled and pending orders.</div>
@@ -251,39 +255,5 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
 
     </div>
   </div>
-
-  <script>
-    var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
-    var lineChartData = {
-      labels : ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
-      datasets : [
-        {
-          label: "My Second dataset",
-          fillColor : "rgba(72,153,221,0.2)",
-          strokeColor : "rgba(72,153,221,1)",
-          pointColor : "rgba(72,153,221,1)",
-          pointStrokeColor : "#fff",
-          pointHighlightFill : "#fff",
-          pointHighlightStroke : "rgba(151,187,205,1)",
-          // data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-          data : [10,40,65,12,8,30,98]
-        }
-      ]
-
-    }
-
-
-  window.onload = function(){
-    var ctx = document.getElementById("canvas").getContext("2d");
-    window.myLine = new Chart(ctx).Line(lineChartData, {
-      bezierCurve : false,
-      scaleShowVerticalLines: false,
-      maintainAspectRatio: false,
-      responsive: true
-    });
-  }
-
-
-  </script>
 
 <?php $this->stop() ?>
