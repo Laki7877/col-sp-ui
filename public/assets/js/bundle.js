@@ -4056,6 +4056,10 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$window", "$uibM
 		$window.location.href = '/inventory';
 	};
 
+	$scope.linkToProduct = function(id) {
+		$window.location.href = '/products/' + id;
+	}
+
 
 }];
 

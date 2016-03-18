@@ -195,5 +195,9 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModa
 		$window.location.href = '/inventory';
 	};
 
+	$scope.linkToProduct = function(id) {
+		$window.location.href = '/products/' + id;
+	}
+
 
 };

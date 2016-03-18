@@ -95,7 +95,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                   {{product.ProductNameEn}}
                 </td>
                 <td>
-                  <button class="btn btn-white btn-width-default">View</button>
+                  <button class="btn btn-white btn-width-default" ng-click="linkToProduct(product.ProductId)">View</button>
                 </td>
               </tr>
 
