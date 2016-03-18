@@ -6,7 +6,7 @@
     <nc-page-title nc-title="{{title}}" link="{{url}}">
       <div class="page-header">
         <a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
-        <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+        <button class="btn btn-blue btn-width-xl margin-left-10" ng-click="save()">Save</button>
       </div>
     </nc-page-title>
     <div ng-show="loading" nc-loading="{{loadingMessage}}"></div>
@@ -40,9 +40,9 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Child Product</h2></div>
             <div class="form-section-content">
-              <div nc-template="common/input/form-group-with-label" 
-                nc-label="Select Child Products" 
-                nc-template-form="form.ChildProducts" 
+              <div nc-template="common/input/form-group-with-label"
+                nc-label="Select Child Products"
+                nc-template-form="form.ChildProducts"
                 nc-template-options-path="addMasterProductForm/ChildProducts">
                 <ui-select ng-model="formData.ChildProducts" name="ChildProducts" multiple>
                   <ui-select-match placeholder="Search Product">
