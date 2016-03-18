@@ -20,7 +20,7 @@
             <th nc-sort="AttributeCount">Attribute In Set</th>
             <th nc-sort="CategoryCount">Mapped Categories</th>
             <th nc-sort="UpdatedDt" class="modified-column">Modified</th>
-            <th>Action</th>
+            <th class="action-column-lg">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -31,8 +31,8 @@
             </td>
             <td class="width_200">{{row.AttributeCount }}</td>
             <td class="width_200" nc-link="/admin/attributesets/{{row.AttributeSetId}}">{{row.CategoryCount }}</td>
-            <td class="width_100">{{row.UpdatedDt | dateTh}}</td>
-            <td class="width_100"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
+            <td class="modified-column">{{row.UpdatedDt | dateTh}}</td>
+            <td class="action-column-lg"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>
         </tbody>
       </table>

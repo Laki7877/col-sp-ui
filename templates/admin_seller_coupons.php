@@ -17,7 +17,7 @@
   		                <th nc-sort="StartDate">Start Date</th>
                       <th nc-sort="ExpireDate">Expire Date</th>
                       <th nc-sort="Status">Status</th>
-                      <th>Action</th>
+                      <th class="action-column-lg">Action</th>
   		            </tr>
   		        </thead>
   		        <tbody>
@@ -34,7 +34,7 @@
   		                <td class="width_100">
   		                    {{ row.Status | mapDropdown: statusDropdown}}
   		                </td>
-                      <td class="width_100"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
+                      <td class="action-column-lg"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
   		            </tr>
   		        </tbody>
   		    </table>

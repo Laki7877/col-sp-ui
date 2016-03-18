@@ -33,9 +33,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
 		                <th nc-sort="ProductNameEn">Product Name</th>
 		                <th nc-sort="Pid">Product ID</th>
 		                <th nc-sort="Sku">SKU</th>
-		                <th nc-sort="AvailableStock" class="text-right">Available</th>
-		                <th nc-sort="Status">Status</th>
-		                <th>Action</th>
+		                <th nc-sort="AvailableStock" class="inventory-column">Available</th>
+		                <th nc-sort="Status"><span class="margin-left-10">Status</span></th>
+		                <th class="action-column-lg">Action</th>
 		            </tr>
 		        </thead>
 		        <tbody>
@@ -46,17 +46,17 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
 		                        <img ng-if='row.ImageUrl' class="logo-img" src="{{ row.ImageUrl }}" />
 		                    </div>
 		                </td>
-		                <td class="column-text-ellipsis">
+		                <td class="width_300 column-text-ellipsis">
 		                    <a href="/products/{{row.ProductId}}">{{row.ProductNameEn}}</a>
            					<div class="color-dark-grey font-size-12" ng-if="row.IsVariant">{{ row.VariantAttribute | variantValue }}</div>
 		                </td>
-		                <td>{{row.Pid}}</td>
+		                <td class="width_150">{{row.Pid}}</td>
 		                <td>{{row.Sku}}</td>
-		                <td class="text-right popover-markup" ng-click="popoverStock(row)" uib-popover-template="'inventory/stockPopover'" popover-placement="right" popover-is-open="row.open" popover-trigger="outsideClick" popover-append-to-body="true">
+		                <td class="inventory-column popover-markup" ng-click="popoverStock(row)" uib-popover-template="'inventory/stockPopover'" popover-placement="right" popover-is-open="row.open" popover-trigger="outsideClick" popover-append-to-body="true">
 		                	<a href="javascript:;" class="color-dark-grey" style='{{ lastEdit == row.Pid ? "font-weight:bold;" : ""}}'>{{getAvailableStock(row)}}</span>
 		                	<span><i class="fa fa-caret-down color-dark-grey"></i></span></td>
-		                <td><span class="margin-left-10 {{getStatus(row).color}}">{{getStatus(row).name}}</span></td>
-		                <td>
+		                <td class="width_150"><span class="margin-left-10 {{getStatus(row).color}}">{{getStatus(row).name}}</span></td>
+		                <td class="action-column-lg">
 		                    <nc-action nc-model="row" nc-action-fn="actions"></nc-action>
 		                </td>
 		            </tr>

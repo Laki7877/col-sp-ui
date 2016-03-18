@@ -15,21 +15,21 @@
         <thead>
           <tr class="table-head">
             <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
-            <th nc-sort="Email">Email</th>
+            <th class="width_200" nc-sort="Email">Email</th>
             <th nc-sort="NameEn">Name</th>
-            <th class="width_100">Shop Owner</th>
+            <th class="width_200">Shop Owner</th>
             <th nc-sort="Shop">Shop</th>
-            <th>Action</th>
+            <th class="action-column-lg">Action</th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="row in list.data">
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
-            <td class="width_200">{{row.Email}}</td>
+            <td>{{row.Email}}</td>
             <td class="width_200">{{row.NameEn}}</td>
             <td class="width_120">{{getShopOwner(row.UserGroup)}}</td>
             <td><span ng-class="{ 'color-red': row.Shops.length == 0 }">{{ getShop(row.Shops) }}</span></td>
-            <td class="width_100"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
+            <td class="action-column-lg"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>
         </tbody>
       </table>
