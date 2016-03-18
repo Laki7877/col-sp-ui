@@ -12703,9 +12703,11 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 .page-header .page-header-icon {
   color: #7B7F8F;
   font-size: 22px;
+  height: 26px;
+  vertical-align: middle;
   margin-right: 5px;
 }
-/* line 65, ../../../assets/_header.scss */
+/* line 67, ../../../assets/_header.scss */
 .page-header .page-actions .btn ~ .btn {
   margin-left: 10px;
 }
