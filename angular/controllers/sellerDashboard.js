@@ -33,7 +33,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModa
 				return $scope.lowStockAlertData = object;
 
 			}, function(reason) {
-			  alert('Failed: ' + reason);
+			  console.log('Failed: ' + reason);
 			});
 		});
 
@@ -45,7 +45,6 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModa
 				$scope.outOfStockData[i].PidText = 'ID: ' + $scope.outOfStockData[i].Pid;
 				$scope.outOfStockData[i].QuantityText = 'QTY: ' + $scope.outOfStockData[i].Quantity;
 			};
-			var ss = ['ss','sq']
 			// console.log($scope.lowStockAlertData);
 			return $scope.outOfStockData;
 		});
@@ -151,7 +150,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModa
 	            return 'color-grey';
 	            break;
 	        case '2':
-	            alert("Selected Case Number is 2");
+	            // alert("Selected Case Number is 2");
 	            break;
 	        default:
         }
@@ -163,7 +162,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModa
 	            return 'fa-check-circle-o';
 	            break;
 	        case '2':
-	            alert("Selected Case Number is 2");
+	            // alert("Selected Case Number is 2");
 	            break;
 	        default:
         }
