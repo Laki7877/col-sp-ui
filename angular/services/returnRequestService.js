@@ -1,4 +1,4 @@
 module.exports = function(common) {
-	var service = common.Rest('/ReturnRequests');
+	var service = common.Rest('/Returns');
 	return service;
 };

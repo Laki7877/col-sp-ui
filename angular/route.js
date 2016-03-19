@@ -61,8 +61,8 @@ var seller = {
 		'Dashboard': '/dashboard',
 		'Newsletters': '/newsletters'
 	},
-	'Orders|fa-inbox': {
-		'Order': '/orders',
+	'Order|fa-inbox': {
+		'View': '/orders',
 		'Return Request': '/returns'
 	},
 	'Product|fa-tag': {

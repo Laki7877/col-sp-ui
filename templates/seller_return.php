@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Renturn Requests']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Return Requests']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="SellerReturnRequestCtrl">
@@ -25,13 +25,13 @@
         </thead>
         <tbody>
           <tr ng-repeat="row in list.data">
-            <td>{{row.ModifiedDt | dateTh}}</td>
-            <td>{{row.ReturnId}}</td>
-            <td>{{row.OrderId }}</td>
-            <td>{{row.NameEn }}</td>
-            <td>{{row.Price | currency: ' ' : 2 }}</td>
-            <td>{{row.Carrier}}</td>
-            <td><span class="{{row.Status | mapDropdown: statusOptions: 'color'}}">{{row.Status | mapDropdown: statusOptions}}</span></td>
+            <td>{{row.ReturnDate | dateTh}}</td>
+            <td nc-link="{{url}}/{{row.ReturnId}}">{{row.ReturnId}}</td>
+            <td>{{row.Order.OrderId }}</td>
+            <td>{{row.Order.CustomerName }}</td>
+            <td>{{row.Order.GrandTotalAmt | currency: ' ' : 2 }}</td>
+            <td>{{row.Order.ShippingType}}</td>
+            <td><span class="{{row.Status | mapDropdown: status: 'color'}}">{{row.Status | mapDropdown: status}}</span></td>
             <td><button ng-click="accept(row)" ng-disabled="getDisabled(row)" class="btn {{getDisabled(row)}} btn-white btn-width-xl">Accept</button></td>
             <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>

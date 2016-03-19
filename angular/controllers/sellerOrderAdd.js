@@ -70,13 +70,6 @@ module.exports = function($scope, $filter, $controller, OrderService, util, conf
   $scope.getTrackingNumber = function() {
     return $scope.formData.TrackingNumber ? $scope.formData.TrackingNumber : 'n/a';
   };
-  //Getter
-  $scope.getSubtotal = function() {
-    return $scope.formData.TotalAmt;
-  };
-  $scope.getTotal = function() {
-    return $scope.formData.TotalAmt - $scope.formData.OrdDiscAmt;
-  }
   $scope.getState = function() {
     return $filter('mapDropdown')($scope.formData.Status, $scope.status, 'state');
   };

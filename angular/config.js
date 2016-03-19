@@ -229,7 +229,7 @@ module.exports = {
 	RETURN_STATUS: [
 		{
 			name: 'Accepted',
-			value: 'AC',
+			value: 'AP',
 			color: 'color-green'
 		},
 		{

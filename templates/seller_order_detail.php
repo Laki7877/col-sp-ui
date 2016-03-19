@@ -109,7 +109,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
             <td></td>
             <td></td>
             <td></td>
-            <td class="text-align-right">{{getSubtotal() | currency:' ':2}}</td>
+            <td class="text-align-right">{{formData.TotalAmt | currency:' ':2}}</td>
           </tr>
           <tr ng-if="formData.OrdDiscAmt > 0" class="color-red">
             <td>Discount</td>
@@ -123,7 +123,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
             <td></td>
             <td></td>
             <td></td>
-            <td class="text-align-right">{{getTotal() | currency:' ':2}}</td>
+            <td class="text-align-right"><strong>{{formData.GrandTotalAmt | currency:' ':2}}</strong></td>
           </tr>
         </tbody>
       </table>

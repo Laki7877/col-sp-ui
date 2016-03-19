@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, SellerReturnRequestService, config) {
+module.exports = function($scope, $controller, ReturnRequestService, config) {
 	'ngInject';
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
@@ -6,7 +6,27 @@ module.exports = function($scope, $controller, SellerReturnRequestService, confi
 			id: 'ReturnId',
 			url: '/returns',
 			item: 'Return Request',
-			service: SellerReturnRequestService
+			service: ReturnRequestService
 		}
 	});
+
+	$scope.save = function() {
+		if($scope.saving) return;
+		$scope.form.$setSubmitted();
+		if($scope.form.$valid) {
+			$scope.saving = true;
+			ReturnRequestService.update($scope.formData.ReturnId, {
+				Status: 'AP',
+				CnNumber: $scope.formData.CnNumber
+			})
+			.then(function(data) {
+				$scope.formData = ReturnRequestService.deserialize(data);
+			}, function(err) {
+				$scope.alert.error(common.getError(err));
+			})
+			.finally(function() {
+				$scope.saving = false;
+			});
+		}
+	}
 };

@@ -107,7 +107,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .factory('SellerAccountService', services.sellerAccountService)
   .factory('SellerCouponService', services.sellerCouponService)
   .factory('SellerPermissionService', services.sellerPermissionService)
-  .factory('SellerReturnRequestService', services.sellerReturnRequestService)
+  .factory('ReturnRequestService', services.returnRequestService)
   .factory('SellerRoleService', services.sellerRoleService)
   .factory('Shop', services.shop)
   .factory('ShopAppearanceService', services.shopAppearanceService)

@@ -3,7 +3,7 @@
 'use strict'
 // App Start here
 var angular = require('angular')
-var bulk = ({"controllers":(function () {var f = require("./controllers\\index.js");f["abstractAdd"]=require("./controllers\\abstractAdd.js");f["abstractAdvanceList"]=require("./controllers\\abstractAdvanceList.js");f["abstractList"]=require("./controllers\\abstractList.js");f["adminAccount"]=require("./controllers\\adminAccount.js");f["adminAccountAdd"]=require("./controllers\\adminAccountAdd.js");f["adminAttribute"]=require("./controllers\\adminAttribute.js");f["adminAttributeAdd"]=require("./controllers\\adminAttributeAdd.js");f["adminAttributeSet"]=require("./controllers\\adminAttributeSet.js");f["adminAttributeSetAdd"]=require("./controllers\\adminAttributeSetAdd.js");f["adminBrand"]=require("./controllers\\adminBrand.js");f["adminBrandAdd"]=require("./controllers\\adminBrandAdd.js");f["adminCategory"]=require("./controllers\\adminCategory.js");f["adminGlobalCoupon"]=require("./controllers\\adminGlobalCoupon.js");f["adminGlobalCouponAdd"]=require("./controllers\\adminGlobalCouponAdd.js");f["adminMasterProduct"]=require("./controllers\\adminMasterProduct.js");f["adminMasterProductAdd"]=require("./controllers\\adminMasterProductAdd.js");f["adminNewsletter"]=require("./controllers\\adminNewsletter.js");f["adminOnTopCreditAdd"]=require("./controllers\\adminOnTopCreditAdd.js");f["adminOnTopCreditList"]=require("./controllers\\adminOnTopCreditList.js");f["adminProductApprovalDetail"]=require("./controllers\\adminProductApprovalDetail.js");f["adminProductApprovalList"]=require("./controllers\\adminProductApprovalList.js");f["adminProductDetail"]=require("./controllers\\adminProductDetail.js");f["adminProductList"]=require("./controllers\\adminProductList.js");f["adminRole"]=require("./controllers\\adminRole.js");f["adminRoleAdd"]=require("./controllers\\adminRoleAdd.js");f["adminSellerAccount"]=require("./controllers\\adminSellerAccount.js");f["adminSellerCoupon"]=require("./controllers\\adminSellerCoupon.js");f["adminSellerCouponAdd"]=require("./controllers\\adminSellerCouponAdd.js");f["adminShop"]=require("./controllers\\adminShop.js");f["adminShopAdd"]=require("./controllers\\adminShopAdd.js");f["adminShoptype"]=require("./controllers\\adminShoptype.js");f["adminShoptypeAdd"]=require("./controllers\\adminShoptypeAdd.js");f["index"]=require("./controllers\\index.js");f["localCategory"]=require("./controllers\\localCategory.js");f["login"]=require("./controllers\\login.js");f["productAddSelectCategory"]=require("./controllers\\productAddSelectCategory.js");f["productExport"]=require("./controllers\\productExport.js");f["productImageList"]=require("./controllers\\productImageList.js");f["productImageManagement"]=require("./controllers\\productImageManagement.js");f["productImport"]=require("./controllers\\productImport.js");f["productList"]=require("./controllers\\productList.js");f["productListLocalCategory"]=require("./controllers\\productListLocalCategory.js");f["productReview"]=require("./controllers\\productReview.js");f["root"]=require("./controllers\\root.js");f["sellerAccount"]=require("./controllers\\sellerAccount.js");f["sellerAccountAdd"]=require("./controllers\\sellerAccountAdd.js");f["sellerCoupon"]=require("./controllers\\sellerCoupon.js");f["sellerCouponAdd"]=require("./controllers\\sellerCouponAdd.js");f["sellerDashboard"]=require("./controllers\\sellerDashboard.js");f["sellerInventoryList"]=require("./controllers\\sellerInventoryList.js");f["sellerNewsletter"]=require("./controllers\\sellerNewsletter.js");f["sellerOnboarding"]=require("./controllers\\sellerOnboarding.js");f["sellerOrder"]=require("./controllers\\sellerOrder.js");f["sellerOrderAdd"]=require("./controllers\\sellerOrderAdd.js");f["sellerPendingProductsGroup"]=require("./controllers\\sellerPendingProductsGroup.js");f["sellerProductDetail"]=require("./controllers\\sellerProductDetail.js");f["sellerReturnRequest"]=require("./controllers\\sellerReturnRequest.js");f["sellerReturnRequestAdd"]=require("./controllers\\sellerReturnRequestAdd.js");f["sellerRole"]=require("./controllers\\sellerRole.js");f["sellerRoleAdd"]=require("./controllers\\sellerRoleAdd.js");f["sellerShopAppearance"]=require("./controllers\\sellerShopAppearance.js");f["sellerShopSetting"]=require("./controllers\\sellerShopSetting.js");f["test"]=require("./controllers\\test.js");return f;})(),"services":({"Dashboard":require("./services\\Dashboard.js"),"OnTopCredit":require("./services\\OnTopCredit.js"),"OnTopCreditService":require("./services\\OnTopCreditService.js"),"Onboarding":require("./services\\Onboarding.js"),"adminAccountService":require("./services\\adminAccountService.js"),"adminMasterProductService":require("./services\\adminMasterProductService.js"),"adminPermissionService":require("./services\\adminPermissionService.js"),"adminRoleService":require("./services\\adminRoleService.js"),"adminShopService":require("./services\\adminShopService.js"),"adminShoptypeService":require("./services\\adminShoptypeService.js"),"alert":require("./services\\alert.js"),"attribute":require("./services\\attribute.js"),"attributeService":require("./services\\attributeService.js"),"attributeSet":require("./services\\attributeSet.js"),"attributeSetService":require("./services\\attributeSetService.js"),"blocker":require("./services\\blocker.js"),"brand":require("./services\\brand.js"),"brandService":require("./services\\brandService.js"),"category":require("./services\\category.js"),"coupon":require("./services\\coupon.js"),"credential":require("./services\\credential.js"),"exceptionHandler":require("./services\\exceptionHandler.js"),"fileService":require("./services\\fileService.js"),"globalCategory":require("./services\\globalCategory.js"),"globalCategoryService":require("./services\\globalCategoryService.js"),"globalCouponService":require("./services\\globalCouponService.js"),"image":require("./services\\image.js"),"imageService":require("./services\\imageService.js"),"inventoryService":require("./services\\inventoryService.js"),"knownException":require("./services\\knownException.js"),"localCategory":require("./services\\localCategory.js"),"localCategoryService":require("./services\\localCategoryService.js"),"newsletterService":require("./services\\newsletterService.js"),"orderService":require("./services\\orderService.js"),"product":require("./services\\product.js"),"productReviewService":require("./services\\productReviewService.js"),"sellerAccountService":require("./services\\sellerAccountService.js"),"sellerCouponService":require("./services\\sellerCouponService.js"),"sellerPermissionService":require("./services\\sellerPermissionService.js"),"sellerReturnRequestService":require("./services\\sellerReturnRequestService.js"),"sellerRoleService":require("./services\\sellerRoleService.js"),"shop":require("./services\\shop.js"),"shopAppearanceService":require("./services\\shopAppearanceService.js"),"shopPermissionService":require("./services\\shopPermissionService.js"),"shopProfileService":require("./services\\shopProfileService.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDateBefore":require("./directives\\ngDateBefore.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngMatch":require("./directives\\ngMatch.js"),"ngMaxnumber":require("./directives\\ngMaxnumber.js"),"ngMinnumber":require("./directives\\ngMinnumber.js"),"ngPatternRestrict":require("./directives\\ngPatternRestrict.js"),"ngPermission":require("./directives\\ngPermission.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"exclude":require("./filters\\exclude.js"),"excludeCategory":require("./filters\\excludeCategory.js"),"html":require("./filters\\html.js"),"importGuidelineExample":require("./filters\\importGuidelineExample.js"),"leadingzero":require("./filters\\leadingzero.js"),"ordinal":require("./filters\\ordinal.js"),"slice":require("./filters\\slice.js"),"truncate":require("./filters\\truncate.js"),"truth":require("./filters\\truth.js"),"variantValue":require("./filters\\variantValue.js")}),"template-options":({"PromotionForm":require("./template-options\\PromotionForm.js"),"addBrandForm":require("./template-options\\addBrandForm.js"),"addCategoryForm":require("./template-options\\addCategoryForm.js"),"addMasterProductForm":require("./template-options\\addMasterProductForm.js"),"addNewsletterForm":require("./template-options\\addNewsletterForm.js"),"addProductForm":require("./template-options\\addProductForm.js"),"addShopAccountForm":require("./template-options\\addShopAccountForm.js"),"addShopAppearanceForm":require("./template-options\\addShopAppearanceForm.js"),"adminApproveForm":require("./template-options\\adminApproveForm.js"),"couponForm":require("./template-options\\couponForm.js"),"createGroupVariant":require("./template-options\\createGroupVariant.js"),"genericForm":require("./template-options\\genericForm.js"),"productExport":require("./template-options\\productExport.js"),"productImport":require("./template-options\\productImport.js"),"searchForm":require("./template-options\\searchForm.js"),"shopSettingForm":require("./template-options\\shopSettingForm.js")})})
+var bulk = ({"controllers":(function () {var f = require("./controllers\\index.js");f["abstractAdd"]=require("./controllers\\abstractAdd.js");f["abstractAdvanceList"]=require("./controllers\\abstractAdvanceList.js");f["abstractList"]=require("./controllers\\abstractList.js");f["adminAccount"]=require("./controllers\\adminAccount.js");f["adminAccountAdd"]=require("./controllers\\adminAccountAdd.js");f["adminAttribute"]=require("./controllers\\adminAttribute.js");f["adminAttributeAdd"]=require("./controllers\\adminAttributeAdd.js");f["adminAttributeSet"]=require("./controllers\\adminAttributeSet.js");f["adminAttributeSetAdd"]=require("./controllers\\adminAttributeSetAdd.js");f["adminBrand"]=require("./controllers\\adminBrand.js");f["adminBrandAdd"]=require("./controllers\\adminBrandAdd.js");f["adminCategory"]=require("./controllers\\adminCategory.js");f["adminGlobalCoupon"]=require("./controllers\\adminGlobalCoupon.js");f["adminGlobalCouponAdd"]=require("./controllers\\adminGlobalCouponAdd.js");f["adminMasterProduct"]=require("./controllers\\adminMasterProduct.js");f["adminMasterProductAdd"]=require("./controllers\\adminMasterProductAdd.js");f["adminNewsletter"]=require("./controllers\\adminNewsletter.js");f["adminOnTopCreditAdd"]=require("./controllers\\adminOnTopCreditAdd.js");f["adminOnTopCreditList"]=require("./controllers\\adminOnTopCreditList.js");f["adminProductApprovalDetail"]=require("./controllers\\adminProductApprovalDetail.js");f["adminProductApprovalList"]=require("./controllers\\adminProductApprovalList.js");f["adminProductDetail"]=require("./controllers\\adminProductDetail.js");f["adminProductList"]=require("./controllers\\adminProductList.js");f["adminRole"]=require("./controllers\\adminRole.js");f["adminRoleAdd"]=require("./controllers\\adminRoleAdd.js");f["adminSellerAccount"]=require("./controllers\\adminSellerAccount.js");f["adminSellerCoupon"]=require("./controllers\\adminSellerCoupon.js");f["adminSellerCouponAdd"]=require("./controllers\\adminSellerCouponAdd.js");f["adminShop"]=require("./controllers\\adminShop.js");f["adminShopAdd"]=require("./controllers\\adminShopAdd.js");f["adminShoptype"]=require("./controllers\\adminShoptype.js");f["adminShoptypeAdd"]=require("./controllers\\adminShoptypeAdd.js");f["index"]=require("./controllers\\index.js");f["localCategory"]=require("./controllers\\localCategory.js");f["login"]=require("./controllers\\login.js");f["productAddSelectCategory"]=require("./controllers\\productAddSelectCategory.js");f["productExport"]=require("./controllers\\productExport.js");f["productImageList"]=require("./controllers\\productImageList.js");f["productImageManagement"]=require("./controllers\\productImageManagement.js");f["productImport"]=require("./controllers\\productImport.js");f["productList"]=require("./controllers\\productList.js");f["productListLocalCategory"]=require("./controllers\\productListLocalCategory.js");f["productReview"]=require("./controllers\\productReview.js");f["root"]=require("./controllers\\root.js");f["sellerAccount"]=require("./controllers\\sellerAccount.js");f["sellerAccountAdd"]=require("./controllers\\sellerAccountAdd.js");f["sellerCoupon"]=require("./controllers\\sellerCoupon.js");f["sellerCouponAdd"]=require("./controllers\\sellerCouponAdd.js");f["sellerDashboard"]=require("./controllers\\sellerDashboard.js");f["sellerInventoryList"]=require("./controllers\\sellerInventoryList.js");f["sellerNewsletter"]=require("./controllers\\sellerNewsletter.js");f["sellerOnboarding"]=require("./controllers\\sellerOnboarding.js");f["sellerOrder"]=require("./controllers\\sellerOrder.js");f["sellerOrderAdd"]=require("./controllers\\sellerOrderAdd.js");f["sellerPendingProductsGroup"]=require("./controllers\\sellerPendingProductsGroup.js");f["sellerProductDetail"]=require("./controllers\\sellerProductDetail.js");f["sellerReturnRequest"]=require("./controllers\\sellerReturnRequest.js");f["sellerReturnRequestAdd"]=require("./controllers\\sellerReturnRequestAdd.js");f["sellerRole"]=require("./controllers\\sellerRole.js");f["sellerRoleAdd"]=require("./controllers\\sellerRoleAdd.js");f["sellerShopAppearance"]=require("./controllers\\sellerShopAppearance.js");f["sellerShopSetting"]=require("./controllers\\sellerShopSetting.js");f["test"]=require("./controllers\\test.js");return f;})(),"services":({"Dashboard":require("./services\\Dashboard.js"),"OnTopCredit":require("./services\\OnTopCredit.js"),"OnTopCreditService":require("./services\\OnTopCreditService.js"),"Onboarding":require("./services\\Onboarding.js"),"adminAccountService":require("./services\\adminAccountService.js"),"adminMasterProductService":require("./services\\adminMasterProductService.js"),"adminPermissionService":require("./services\\adminPermissionService.js"),"adminRoleService":require("./services\\adminRoleService.js"),"adminShopService":require("./services\\adminShopService.js"),"adminShoptypeService":require("./services\\adminShoptypeService.js"),"alert":require("./services\\alert.js"),"attribute":require("./services\\attribute.js"),"attributeService":require("./services\\attributeService.js"),"attributeSet":require("./services\\attributeSet.js"),"attributeSetService":require("./services\\attributeSetService.js"),"blocker":require("./services\\blocker.js"),"brand":require("./services\\brand.js"),"brandService":require("./services\\brandService.js"),"category":require("./services\\category.js"),"coupon":require("./services\\coupon.js"),"credential":require("./services\\credential.js"),"exceptionHandler":require("./services\\exceptionHandler.js"),"fileService":require("./services\\fileService.js"),"globalCategory":require("./services\\globalCategory.js"),"globalCategoryService":require("./services\\globalCategoryService.js"),"globalCouponService":require("./services\\globalCouponService.js"),"image":require("./services\\image.js"),"imageService":require("./services\\imageService.js"),"inventoryService":require("./services\\inventoryService.js"),"knownException":require("./services\\knownException.js"),"localCategory":require("./services\\localCategory.js"),"localCategoryService":require("./services\\localCategoryService.js"),"newsletterService":require("./services\\newsletterService.js"),"orderService":require("./services\\orderService.js"),"product":require("./services\\product.js"),"productReviewService":require("./services\\productReviewService.js"),"returnRequestService":require("./services\\returnRequestService.js"),"sellerAccountService":require("./services\\sellerAccountService.js"),"sellerCouponService":require("./services\\sellerCouponService.js"),"sellerPermissionService":require("./services\\sellerPermissionService.js"),"sellerRoleService":require("./services\\sellerRoleService.js"),"shop":require("./services\\shop.js"),"shopAppearanceService":require("./services\\shopAppearanceService.js"),"shopPermissionService":require("./services\\shopPermissionService.js"),"shopProfileService":require("./services\\shopProfileService.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDateBefore":require("./directives\\ngDateBefore.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngMatch":require("./directives\\ngMatch.js"),"ngMaxnumber":require("./directives\\ngMaxnumber.js"),"ngMinnumber":require("./directives\\ngMinnumber.js"),"ngPatternRestrict":require("./directives\\ngPatternRestrict.js"),"ngPermission":require("./directives\\ngPermission.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"exclude":require("./filters\\exclude.js"),"excludeCategory":require("./filters\\excludeCategory.js"),"html":require("./filters\\html.js"),"importGuidelineExample":require("./filters\\importGuidelineExample.js"),"leadingzero":require("./filters\\leadingzero.js"),"ordinal":require("./filters\\ordinal.js"),"slice":require("./filters\\slice.js"),"truncate":require("./filters\\truncate.js"),"truth":require("./filters\\truth.js"),"variantValue":require("./filters\\variantValue.js")}),"template-options":({"PromotionForm":require("./template-options\\PromotionForm.js"),"addBrandForm":require("./template-options\\addBrandForm.js"),"addCategoryForm":require("./template-options\\addCategoryForm.js"),"addMasterProductForm":require("./template-options\\addMasterProductForm.js"),"addNewsletterForm":require("./template-options\\addNewsletterForm.js"),"addProductForm":require("./template-options\\addProductForm.js"),"addShopAccountForm":require("./template-options\\addShopAccountForm.js"),"addShopAppearanceForm":require("./template-options\\addShopAppearanceForm.js"),"adminApproveForm":require("./template-options\\adminApproveForm.js"),"couponForm":require("./template-options\\couponForm.js"),"createGroupVariant":require("./template-options\\createGroupVariant.js"),"genericForm":require("./template-options\\genericForm.js"),"productExport":require("./template-options\\productExport.js"),"productImport":require("./template-options\\productImport.js"),"searchForm":require("./template-options\\searchForm.js"),"shopSettingForm":require("./template-options\\shopSettingForm.js")})})
 var config = require('./config')
 var route = require('./route')
 var template = require('./template')
@@ -107,7 +107,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .factory('SellerAccountService', services.sellerAccountService)
   .factory('SellerCouponService', services.sellerCouponService)
   .factory('SellerPermissionService', services.sellerPermissionService)
-  .factory('SellerReturnRequestService', services.sellerReturnRequestService)
+  .factory('ReturnRequestService', services.returnRequestService)
   .factory('SellerRoleService', services.sellerRoleService)
   .factory('Shop', services.shop)
   .factory('ShopAppearanceService', services.shopAppearanceService)
@@ -214,7 +214,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('TestCtrl', controllers.test)
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\adminAccount.js":6,"./controllers\\adminAccountAdd.js":7,"./controllers\\adminAttribute.js":8,"./controllers\\adminAttributeAdd.js":9,"./controllers\\adminAttributeSet.js":10,"./controllers\\adminAttributeSetAdd.js":11,"./controllers\\adminBrand.js":12,"./controllers\\adminBrandAdd.js":13,"./controllers\\adminCategory.js":14,"./controllers\\adminGlobalCoupon.js":15,"./controllers\\adminGlobalCouponAdd.js":16,"./controllers\\adminMasterProduct.js":17,"./controllers\\adminMasterProductAdd.js":18,"./controllers\\adminNewsletter.js":19,"./controllers\\adminOnTopCreditAdd.js":20,"./controllers\\adminOnTopCreditList.js":21,"./controllers\\adminProductApprovalDetail.js":22,"./controllers\\adminProductApprovalList.js":23,"./controllers\\adminProductDetail.js":24,"./controllers\\adminProductList.js":25,"./controllers\\adminRole.js":26,"./controllers\\adminRoleAdd.js":27,"./controllers\\adminSellerAccount.js":28,"./controllers\\adminSellerCoupon.js":29,"./controllers\\adminSellerCouponAdd.js":30,"./controllers\\adminShop.js":31,"./controllers\\adminShopAdd.js":32,"./controllers\\adminShoptype.js":33,"./controllers\\adminShoptypeAdd.js":34,"./controllers\\index.js":35,"./controllers\\localCategory.js":36,"./controllers\\login.js":37,"./controllers\\productAddSelectCategory.js":38,"./controllers\\productExport.js":39,"./controllers\\productImageList.js":40,"./controllers\\productImageManagement.js":41,"./controllers\\productImport.js":42,"./controllers\\productList.js":43,"./controllers\\productListLocalCategory.js":44,"./controllers\\productReview.js":45,"./controllers\\root.js":46,"./controllers\\sellerAccount.js":47,"./controllers\\sellerAccountAdd.js":48,"./controllers\\sellerCoupon.js":49,"./controllers\\sellerCouponAdd.js":50,"./controllers\\sellerDashboard.js":51,"./controllers\\sellerInventoryList.js":52,"./controllers\\sellerNewsletter.js":53,"./controllers\\sellerOnboarding.js":54,"./controllers\\sellerOrder.js":55,"./controllers\\sellerOrderAdd.js":56,"./controllers\\sellerPendingProductsGroup.js":57,"./controllers\\sellerProductDetail.js":58,"./controllers\\sellerReturnRequest.js":59,"./controllers\\sellerReturnRequestAdd.js":60,"./controllers\\sellerRole.js":61,"./controllers\\sellerRoleAdd.js":62,"./controllers\\sellerShopAppearance.js":63,"./controllers\\sellerShopSetting.js":64,"./controllers\\test.js":65,"./directives\\ncTradableSelect.js":66,"./directives\\ngCkeditor.js":67,"./directives\\ngDateBefore.js":68,"./directives\\ngDelegate.js":69,"./directives\\ngMatch.js":70,"./directives\\ngMaxnumber.js":71,"./directives\\ngMinnumber.js":72,"./directives\\ngPatternRestrict.js":73,"./directives\\ngPermission.js":74,"./directives\\ngSlideToggle.js":75,"./directives\\ngTemplate.js":76,"./directives\\popoverAny.js":77,"./filters\\capitalize.js":78,"./filters\\exclude.js":79,"./filters\\excludeCategory.js":80,"./filters\\html.js":81,"./filters\\importGuidelineExample.js":82,"./filters\\leadingzero.js":83,"./filters\\ordinal.js":84,"./filters\\slice.js":85,"./filters\\truncate.js":86,"./filters\\truth.js":87,"./filters\\variantValue.js":88,"./helpers\\base64.js":89,"./helpers\\common.js":90,"./helpers\\storage.js":91,"./helpers\\util.js":92,"./helpers\\variantPair.js":93,"./modules/nc":121,"./modules/product-detail":127,"./modules/schematics":129,"./route":138,"./services\\Dashboard.js":139,"./services\\OnTopCredit.js":140,"./services\\OnTopCreditService.js":141,"./services\\Onboarding.js":142,"./services\\adminAccountService.js":143,"./services\\adminMasterProductService.js":144,"./services\\adminPermissionService.js":145,"./services\\adminRoleService.js":146,"./services\\adminShopService.js":147,"./services\\adminShoptypeService.js":148,"./services\\alert.js":149,"./services\\attribute.js":150,"./services\\attributeService.js":151,"./services\\attributeSet.js":152,"./services\\attributeSetService.js":153,"./services\\blocker.js":154,"./services\\brand.js":155,"./services\\brandService.js":156,"./services\\category.js":157,"./services\\coupon.js":158,"./services\\credential.js":159,"./services\\exceptionHandler.js":160,"./services\\fileService.js":161,"./services\\globalCategory.js":162,"./services\\globalCategoryService.js":163,"./services\\globalCouponService.js":164,"./services\\image.js":165,"./services\\imageService.js":166,"./services\\inventoryService.js":167,"./services\\knownException.js":168,"./services\\localCategory.js":169,"./services\\localCategoryService.js":170,"./services\\newsletterService.js":171,"./services\\orderService.js":172,"./services\\product.js":173,"./services\\productReviewService.js":174,"./services\\sellerAccountService.js":175,"./services\\sellerCouponService.js":176,"./services\\sellerPermissionService.js":177,"./services\\sellerReturnRequestService.js":178,"./services\\sellerRoleService.js":179,"./services\\shop.js":180,"./services\\shopAppearanceService.js":181,"./services\\shopPermissionService.js":182,"./services\\shopProfileService.js":183,"./template":200,"./template-options\\PromotionForm.js":184,"./template-options\\addBrandForm.js":185,"./template-options\\addCategoryForm.js":186,"./template-options\\addMasterProductForm.js":187,"./template-options\\addNewsletterForm.js":188,"./template-options\\addProductForm.js":189,"./template-options\\addShopAccountForm.js":190,"./template-options\\addShopAppearanceForm.js":191,"./template-options\\adminApproveForm.js":192,"./template-options\\couponForm.js":193,"./template-options\\createGroupVariant.js":194,"./template-options\\genericForm.js":195,"./template-options\\productExport.js":196,"./template-options\\productImport.js":197,"./template-options\\searchForm.js":198,"./template-options\\shopSettingForm.js":199,"angular":221,"angular-animate":202,"angular-base64":203,"angular-bootstrap-datetimepicker":205,"angular-chart.js":206,"angular-clipboard":208,"angular-cookies":210,"angular-file-upload":211,"angular-sanitize":213,"angular-scroll":215,"angular-ui-bootstrap":217,"angular-ui-tree":219,"lodash":224,"ng-file-upload":226,"pluralize":227,"skeemas":228,"ui-select/dist/select.js":242}],2:[function(require,module,exports){
+},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\adminAccount.js":6,"./controllers\\adminAccountAdd.js":7,"./controllers\\adminAttribute.js":8,"./controllers\\adminAttributeAdd.js":9,"./controllers\\adminAttributeSet.js":10,"./controllers\\adminAttributeSetAdd.js":11,"./controllers\\adminBrand.js":12,"./controllers\\adminBrandAdd.js":13,"./controllers\\adminCategory.js":14,"./controllers\\adminGlobalCoupon.js":15,"./controllers\\adminGlobalCouponAdd.js":16,"./controllers\\adminMasterProduct.js":17,"./controllers\\adminMasterProductAdd.js":18,"./controllers\\adminNewsletter.js":19,"./controllers\\adminOnTopCreditAdd.js":20,"./controllers\\adminOnTopCreditList.js":21,"./controllers\\adminProductApprovalDetail.js":22,"./controllers\\adminProductApprovalList.js":23,"./controllers\\adminProductDetail.js":24,"./controllers\\adminProductList.js":25,"./controllers\\adminRole.js":26,"./controllers\\adminRoleAdd.js":27,"./controllers\\adminSellerAccount.js":28,"./controllers\\adminSellerCoupon.js":29,"./controllers\\adminSellerCouponAdd.js":30,"./controllers\\adminShop.js":31,"./controllers\\adminShopAdd.js":32,"./controllers\\adminShoptype.js":33,"./controllers\\adminShoptypeAdd.js":34,"./controllers\\index.js":35,"./controllers\\localCategory.js":36,"./controllers\\login.js":37,"./controllers\\productAddSelectCategory.js":38,"./controllers\\productExport.js":39,"./controllers\\productImageList.js":40,"./controllers\\productImageManagement.js":41,"./controllers\\productImport.js":42,"./controllers\\productList.js":43,"./controllers\\productListLocalCategory.js":44,"./controllers\\productReview.js":45,"./controllers\\root.js":46,"./controllers\\sellerAccount.js":47,"./controllers\\sellerAccountAdd.js":48,"./controllers\\sellerCoupon.js":49,"./controllers\\sellerCouponAdd.js":50,"./controllers\\sellerDashboard.js":51,"./controllers\\sellerInventoryList.js":52,"./controllers\\sellerNewsletter.js":53,"./controllers\\sellerOnboarding.js":54,"./controllers\\sellerOrder.js":55,"./controllers\\sellerOrderAdd.js":56,"./controllers\\sellerPendingProductsGroup.js":57,"./controllers\\sellerProductDetail.js":58,"./controllers\\sellerReturnRequest.js":59,"./controllers\\sellerReturnRequestAdd.js":60,"./controllers\\sellerRole.js":61,"./controllers\\sellerRoleAdd.js":62,"./controllers\\sellerShopAppearance.js":63,"./controllers\\sellerShopSetting.js":64,"./controllers\\test.js":65,"./directives\\ncTradableSelect.js":66,"./directives\\ngCkeditor.js":67,"./directives\\ngDateBefore.js":68,"./directives\\ngDelegate.js":69,"./directives\\ngMatch.js":70,"./directives\\ngMaxnumber.js":71,"./directives\\ngMinnumber.js":72,"./directives\\ngPatternRestrict.js":73,"./directives\\ngPermission.js":74,"./directives\\ngSlideToggle.js":75,"./directives\\ngTemplate.js":76,"./directives\\popoverAny.js":77,"./filters\\capitalize.js":78,"./filters\\exclude.js":79,"./filters\\excludeCategory.js":80,"./filters\\html.js":81,"./filters\\importGuidelineExample.js":82,"./filters\\leadingzero.js":83,"./filters\\ordinal.js":84,"./filters\\slice.js":85,"./filters\\truncate.js":86,"./filters\\truth.js":87,"./filters\\variantValue.js":88,"./helpers\\base64.js":89,"./helpers\\common.js":90,"./helpers\\storage.js":91,"./helpers\\util.js":92,"./helpers\\variantPair.js":93,"./modules/nc":121,"./modules/product-detail":127,"./modules/schematics":129,"./route":138,"./services\\Dashboard.js":139,"./services\\OnTopCredit.js":140,"./services\\OnTopCreditService.js":141,"./services\\Onboarding.js":142,"./services\\adminAccountService.js":143,"./services\\adminMasterProductService.js":144,"./services\\adminPermissionService.js":145,"./services\\adminRoleService.js":146,"./services\\adminShopService.js":147,"./services\\adminShoptypeService.js":148,"./services\\alert.js":149,"./services\\attribute.js":150,"./services\\attributeService.js":151,"./services\\attributeSet.js":152,"./services\\attributeSetService.js":153,"./services\\blocker.js":154,"./services\\brand.js":155,"./services\\brandService.js":156,"./services\\category.js":157,"./services\\coupon.js":158,"./services\\credential.js":159,"./services\\exceptionHandler.js":160,"./services\\fileService.js":161,"./services\\globalCategory.js":162,"./services\\globalCategoryService.js":163,"./services\\globalCouponService.js":164,"./services\\image.js":165,"./services\\imageService.js":166,"./services\\inventoryService.js":167,"./services\\knownException.js":168,"./services\\localCategory.js":169,"./services\\localCategoryService.js":170,"./services\\newsletterService.js":171,"./services\\orderService.js":172,"./services\\product.js":173,"./services\\productReviewService.js":174,"./services\\returnRequestService.js":175,"./services\\sellerAccountService.js":176,"./services\\sellerCouponService.js":177,"./services\\sellerPermissionService.js":178,"./services\\sellerRoleService.js":179,"./services\\shop.js":180,"./services\\shopAppearanceService.js":181,"./services\\shopPermissionService.js":182,"./services\\shopProfileService.js":183,"./template":200,"./template-options\\PromotionForm.js":184,"./template-options\\addBrandForm.js":185,"./template-options\\addCategoryForm.js":186,"./template-options\\addMasterProductForm.js":187,"./template-options\\addNewsletterForm.js":188,"./template-options\\addProductForm.js":189,"./template-options\\addShopAccountForm.js":190,"./template-options\\addShopAppearanceForm.js":191,"./template-options\\adminApproveForm.js":192,"./template-options\\couponForm.js":193,"./template-options\\createGroupVariant.js":194,"./template-options\\genericForm.js":195,"./template-options\\productExport.js":196,"./template-options\\productImport.js":197,"./template-options\\searchForm.js":198,"./template-options\\shopSettingForm.js":199,"angular":221,"angular-animate":202,"angular-base64":203,"angular-bootstrap-datetimepicker":205,"angular-chart.js":206,"angular-clipboard":208,"angular-cookies":210,"angular-file-upload":211,"angular-sanitize":213,"angular-scroll":215,"angular-ui-bootstrap":217,"angular-ui-tree":219,"lodash":224,"ng-file-upload":226,"pluralize":227,"skeemas":228,"ui-select/dist/select.js":242}],2:[function(require,module,exports){
 module.exports = {
 	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
@@ -446,7 +446,7 @@ module.exports = {
 	RETURN_STATUS: [
 		{
 			name: 'Accepted',
-			value: 'AC',
+			value: 'AP',
 			color: 'color-green'
 		},
 		{
@@ -4346,7 +4346,21 @@ module.exports = ["$scope", "$window", "$controller", "OrderService", "config", 
 			bulks: [{
 				name: 'Acknowledge',
 				fn: function(arr) {
-
+					var result = _.map(arr, function(e) {
+						return {
+							ReturnId: e.ReturnId,
+							Status: 'PE'
+						}
+					})
+					OrderService.updateAll(result)
+						.then(function() {
+							$scope.alert.success('Successfully acknowledged');
+						}, function(err) {
+							$scope.alert.error(common.getError(err));
+						})
+						.finally(function() {
+							$scope.reload();
+						});
 				},
 				confirmation: {
 					title: 'Acknowledge',
@@ -4482,13 +4496,6 @@ module.exports = function($scope, $filter, $controller, OrderService, util, conf
   $scope.getTrackingNumber = function() {
     return $scope.formData.TrackingNumber ? $scope.formData.TrackingNumber : 'n/a';
   };
-  //Getter
-  $scope.getSubtotal = function() {
-    return $scope.formData.TotalAmt;
-  };
-  $scope.getTotal = function() {
-    return $scope.formData.TotalAmt - $scope.formData.OrdDiscAmt;
-  }
   $scope.getState = function() {
     return $filter('mapDropdown')($scope.formData.Status, $scope.status, 'state');
   };
@@ -4631,17 +4638,17 @@ module.exports = ["$scope", "$controller", "storage", function($scope, $controll
 }];
 
 },{"angular":221}],59:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "$uibModal", "SellerReturnRequestService", "config", function($scope, $controller, $uibModal, SellerReturnRequestService, config) {
+module.exports = ["$scope", "$controller", "$uibModal", "ReturnRequestService", "config", function($scope, $controller, $uibModal, ReturnRequestService, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
 		options: {
 			url: '/returns',
-			service: SellerReturnRequestService,
+			service: ReturnRequestService,
 			item: 'Return Request',
 			order: 'UpdatedDt',
 			id: 'ReturnId',
-			actions: ['View'],
+			actions: ['View Only'],
 			filters: [
 				{ name: "All", value: 'All'},
 				{ name: "Accepted", value: 'Accepted'},
@@ -4649,29 +4656,41 @@ module.exports = ["$scope", "$controller", "$uibModal", "SellerReturnRequestServ
 			]
 		}
 	});
-	$scope.statusOptions = config.RETURN_STATUS;
+	$scope.status = config.RETURN_STATUS;
 	$scope.getDisabled = function(row) {
 		return row.Status == 'WA';
 	};
 	$scope.accept = function(row) {
+		//Enter CN Number
 		var modal = $uibModal.open({
+			size: 'size-warning',
 			templateUrl: 'order/modalAcceptReturn',
 			controller: ["$scope", "$uibModalInstance", function($scope, $uibModalInstance) {
 				$scope.model = '';
 				$scope.close = function() {
+					if(_.isEmpty($scope.model)) return;
 					$uibModalInstance.close($scope.model);
 				};
 			}],
 		});
 
 		modal.result.then(function(data) {
-
+			//Data == CN number
+			ReturnRequestService.update(row.ReturnId, {
+				Status: 'AP',
+				CnNumber: data
+			})
+			.then(function(res) {
+				row.Status = res.Status;
+			}, function(err) {
+				$scope.alert.error(common.getError(err));
+			});
 		});
 	};
 }]
 
 },{}],60:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "SellerReturnRequestService", "config", function($scope, $controller, SellerReturnRequestService, config) {
+module.exports = ["$scope", "$controller", "ReturnRequestService", "config", function($scope, $controller, ReturnRequestService, config) {
 	'ngInject';
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
@@ -4679,9 +4698,29 @@ module.exports = ["$scope", "$controller", "SellerReturnRequestService", "config
 			id: 'ReturnId',
 			url: '/returns',
 			item: 'Return Request',
-			service: SellerReturnRequestService
+			service: ReturnRequestService
 		}
 	});
+
+	$scope.save = function() {
+		if($scope.saving) return;
+		$scope.form.$setSubmitted();
+		if($scope.form.$valid) {
+			$scope.saving = true;
+			ReturnRequestService.update($scope.formData.ReturnId, {
+				Status: 'AP',
+				CnNumber: $scope.formData.CnNumber
+			})
+			.then(function(data) {
+				$scope.formData = ReturnRequestService.deserialize(data);
+			}, function(err) {
+				$scope.alert.error(common.getError(err));
+			})
+			.finally(function() {
+				$scope.saving = false;
+			});
+		}
+	}
 }];
 },{}],61:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerRoleService", "config", function($scope, $controller, SellerRoleService, config) {
@@ -6096,7 +6135,10 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
                 return service.makeRequest({
                     method: 'PUT',
                     url: resourceUri,
-                    data: obj
+                    data: obj,
+                    headers: {
+                        'Content-Type': 'application/json;charset=UTF-8'
+                    }
                 });
             };
             //Create
@@ -10390,8 +10432,8 @@ var seller = {
 		'Dashboard': '/dashboard',
 		'Newsletters': '/newsletters'
 	},
-	'Orders|fa-inbox': {
-		'Order': '/orders',
+	'Order|fa-inbox': {
+		'View': '/orders',
 		'Return Request': '/returns'
 	},
 	'Product|fa-tag': {
@@ -13111,6 +13153,11 @@ module.exports = ["common", "util", function(common, util) {
 	return service;
 }];
 },{}],175:[function(require,module,exports){
+module.exports = function(common) {
+	var service = common.Rest('/Returns');
+	return service;
+};
+},{}],176:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Seller');
@@ -13145,7 +13192,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],176:[function(require,module,exports){
+},{}],177:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Coupons');
@@ -13174,18 +13221,13 @@ module.exports = ["common", function(common) {
     };
 	return service;
 }]
-},{}],177:[function(require,module,exports){
+},{}],178:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Seller');
 	
 	return service;
 }]
-},{}],178:[function(require,module,exports){
-module.exports = function(common) {
-	var service = common.Rest('/ReturnRequests');
-	return service;
-};
 },{}],179:[function(require,module,exports){
 module.exports = ["common", "SellerPermissionService", function(common, SellerPermissionService) {
 	'ngInject';
