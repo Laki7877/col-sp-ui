@@ -24,7 +24,8 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 	$scope.init = function(params) {
 		//Fetch GET Params
 		if(!_.isUndefined(params)) {
-			$scope.id = _.isInteger(_.parseInt(params.id)) ? _.parseInt(params.id) : 0;
+			$scope.id = _.isInteger(_.parseInt(params.id)) ? _.parseInt(params.id) : params.id;
+			console.log($scope.id);
 		}
 		//Custom init
 		if(options.init) {
@@ -32,7 +33,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 		}
 
 		//Edit mode
-		if($scope.id > 0) {
+		if(!_.isUndefined($scope.id)) {
 			$scope.loading = true;
 			$scope.title = util.getTitle($scope.id,options.item);
 
@@ -51,7 +52,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 
 				}, function() {
 					//Jump back
-					util.page404();
+					$window.location.href = $scope.url;
 				});
 		} else {
 			//Create mode

@@ -69,5 +69,14 @@ class SellerController extends Controller
     {
         return View::render('seller_dashboard');
     }
+    //Coupons
+    public static function listOrder($params)
+    {
+        return View::render('seller_order');
+    }
+    public static function editOrder($params)
+    {
+        return View::render('seller_order_detail',  ['params' => json_encode_n($params)]);
+    }
 
 }

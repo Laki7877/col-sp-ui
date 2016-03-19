@@ -62,7 +62,8 @@ var seller = {
 		'Newsletters': '/newsletters'
 	},
 	'Orders|fa-inbox': {
-		'Return Requests': '/returns'
+		'Order': '/orders',
+		'Return Request': '/returns'
 	},
 	'Product|fa-tag': {
 	  	'View': '/products',
@@ -122,5 +123,6 @@ var admin = {
 
 module.exports = {
   seller: generateRouteArray(seller),
-  admin: generateRouteArray(admin)
+  admin: generateRouteArray(admin),
+  reserve: ['add', 'select', 'import', 'export', 'reviews', 'images']
 }

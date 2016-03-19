@@ -12276,7 +12276,7 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 /* line 8, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-red hr {
-  border-top-color: #ffa7a7;
+  border-top-color: #ffa6a6;
 }
 /* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-red .alert-link {
@@ -12291,7 +12291,7 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 /* line 8, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-yellow hr {
-  border-top-color: #fffad2;
+  border-top-color: #fffad1;
 }
 /* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-yellow .alert-link {
@@ -12707,7 +12707,11 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
   vertical-align: middle;
   margin-right: 5px;
 }
-/* line 67, ../../../assets/_header.scss */
+/* line 64, ../../../assets/_header.scss */
+.page-header .page-header-icon.color-black {
+  color: #32343C;
+}
+/* line 70, ../../../assets/_header.scss */
 .page-header .page-actions .btn ~ .btn {
   margin-left: 10px;
 }

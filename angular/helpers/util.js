@@ -381,6 +381,27 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
         return content;
     }
 
+    service.confirm = function(title, message, yes, no, cls) {
+        return $uibModal.open({
+            size: 'size-warning',
+            templateUrl: 'common/ncActionModal',
+            controller: function($scope, $uibModalInstance) {
+                'ngInject';
+                $scope.title = title;
+                $scope.message = message;
+                $scope.btnClass = cls;
+                $scope.btnYes = yes;
+                $scope.btnNo = no;
+                $scope.no = function() {
+                    $uibModalInstance.dismiss();
+                };
+                $scope.yes = function() {
+                    $uibModalInstance.close();
+                };
+            }
+        });
+    }
+
     //Open preview image modal
     service.previewImage = function(url) {
         $uibModal.open({

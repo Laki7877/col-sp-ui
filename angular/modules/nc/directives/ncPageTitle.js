@@ -8,7 +8,8 @@ angular.module('nc')
             priority: 1010,
             scope: {
                 title: '@ncTitle',
-                topLink: '@link'
+                topLink: '@link',
+                icon: '@icon'
             },
             template: function (element, attrs) {
                 var templateHTML = $templateCache.get('partials/page-title');

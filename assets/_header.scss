@@ -61,6 +61,9 @@
 		height: 26px;
 		vertical-align: middle;
 		margin-right: 5px;
+		&.color-black {
+			color: $color-black;
+		}
 	}
 
 	.page-actions {

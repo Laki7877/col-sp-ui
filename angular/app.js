@@ -101,6 +101,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .factory('Onboarding', services.Onboarding)
   .factory('OnTopCredit', services.OnTopCredit)
   .factory('OnTopCreditService', services.OnTopCreditService)
+  .factory('OrderService', services.orderService)
   .factory('Product', services.product)
   .factory('ProductReviewService', services.productReviewService)
   .factory('SellerAccountService', services.sellerAccountService)
@@ -168,6 +169,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('SellerCouponAddCtrl', controllers.sellerCouponAdd)
   .controller('SellerReturnRequestCtrl', controllers.sellerReturnRequest)
   .controller('SellerReturnRequestAddCtrl', controllers.sellerReturnRequestAdd)
+  .controller('SellerOrderCtrl', controllers.sellerOrder)
+  .controller('SellerOrderAddCtrl', controllers.sellerOrderAdd)
   .controller('SellerPendingProductsGroupCtrl', controllers.sellerPendingProductsGroup)
 
 
