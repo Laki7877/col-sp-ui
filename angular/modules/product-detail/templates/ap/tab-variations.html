@@ -26,11 +26,12 @@
                 generator="variationFactorIndices" dataset="dataset">
             </ap-variation-option>
 
-            <div ng-show="formData.Variants.length > 0" ng-include="'ap/section-variant'"></div>
+            <ap-multiplied-variants ng-show="formData.Variants.length > 0" >
+                <div ng-include="'ap/section-variant-table-a'"></div>
+            </ap-multiplied-variants>
             <!-- end .form-section -->
         </div>
         <!-- end .col-xs-12 -->
     </div>
     <!-- end .row -->
 </div>
-<!-- end #add-product-variation-tab-content -->

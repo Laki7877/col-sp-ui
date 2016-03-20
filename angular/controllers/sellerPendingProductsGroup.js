@@ -1,5 +1,5 @@
 module.exports = function($scope, $controller,
-  config, $uibModal, GlobalCategory, Category, AttributeSet,
+  config, $uibModal, GlobalCategory, Category, AttributeSet, Product,
   VariationFactorIndices, AttributeSetService, AttributeOptions, $productAdd) {
 	'ngInject';
 
@@ -25,6 +25,15 @@ module.exports = function($scope, $controller,
     console.log("Regenerating variations");
     $productAdd.generateVariants($scope.formData, $scope.dataset);
   }, true);
+
+  $scope.refresher.Products = function(q){
+    return Product.getAll({
+        searchText: q,
+        pageSize: 8
+      }).then(function(ds) {
+        $scope.dataset.Products = ds.data;
+      })
+  };
 
   $scope.refresher.AttributeSets = function(q) {
       if (!q) return;
