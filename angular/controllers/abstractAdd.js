@@ -25,7 +25,6 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 		//Fetch GET Params
 		if(!_.isUndefined(params)) {
 			$scope.id = _.isInteger(_.parseInt(params.id)) ? _.parseInt(params.id) : params.id;
-			console.log($scope.id);
 		}
 		//Custom init
 		if(options.init) {

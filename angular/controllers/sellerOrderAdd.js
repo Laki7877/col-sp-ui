@@ -1,5 +1,6 @@
-module.exports = function($scope, $filter, $controller, OrderService, util, config) {
+module.exports = function($scope, $window, $filter, $controller, OrderService, util, config) {
   $scope.status = config.ORDER_STATUS;
+  $scope.addressIter = [1,2,3,4]; //Amount of AddressX (ie, Address1, Address2)
   //Abstract Add Ctrl
   $controller('AbstractAddCtrl', {
     $scope: $scope,
@@ -10,47 +11,44 @@ module.exports = function($scope, $filter, $controller, OrderService, util, conf
       service: OrderService
     }
   });
-  var validate = function() {
+  //Generic save fn
+  var save = function(form) {
     $scope.form.$setSubmitted();
-    if($scope.saving) return false;
-    if($scope.form.$invalid) return false;
-    return true;
+    if($scope.saving) return;
+    if($scope.form.$valid) {
+      $scope.alert.close();
+      $scope.saving = true;
+      OrderService.update($scope.formData.OrderId, form)
+        .then(function(data) {
+          $scope.formData = OrderService.deserialize(data);
+          $scope.alert.success(util.saveAlertSuccess('Order', $scope.url));
+          $scope.form.$setPristine(true);
+        }, function(err) {
+          $scope.alert(common.getError(err));
+        })
+        .finally(function() {
+          $scope.saving = false;
+        });
+      } else {
+          $scope.alert.error(util.saveAlertError());
+      }
+  };
+  //Override save
+  $scope.save = function() {
+    save({ InvoiceNumber: $scope.formData.InvoiceNumber });
   };
   //Acknowledge
   $scope.acknowledge = function() {
-    if(!validate()) return;
-    $scope.saving = true;
-    OrderService.update($scope.formData.OrderId, {
-     Status: 'PE'
-    })
-      .then(function(data) {
-        $scope.formData = OrderService.deserialize(data);
-      }, function(err) {
-        $scope.alert(common.getError(err));
-      })
-      .finally(function() {
-        $scope.saving = false;
-      });
+    save({Status: 'PE'});
   };
+  //Ready to ship
   $scope.readyShip = function() {
-    if(!validate()) return;
-    $scope.saving = true;
-    OrderService.update($scope.formData.OrderId, {
+    save({
      InvoiceNumber: $scope.formData.InvoiceNumber,
      Status: 'RS'
     })
-      .then(function(data) {
-        $scope.formData = OrderService.deserialize(data);
-      }, function(err) {
-        $scope.alert(common.getError(err));
-      })
-      .finally(function() {
-        $scope.saving = false;
-      });
   };
-  $scope.printLabel = function() {
-    console.log('what!?');
-  };
+  //Cancel order
   $scope.cancelOrder = function() {
     util.confirm('Cancel Order', 'Are you sure you want to cancel this order?', 'Confirm', 'Cancel', 'btn-red').result.then(function() {
         $scope.saving = true;
@@ -67,6 +65,13 @@ module.exports = function($scope, $filter, $controller, OrderService, util, conf
         });
     });
   };
+  //Validate quantity
+  $scope.checkQuantity = function(product) {
+    if(_.isUndefined(product.ShipQuantity)) {
+      product.ShipQuantity = product.Quantity;
+    }
+  };
+  //Getter
   $scope.getTrackingNumber = function() {
     return $scope.formData.TrackingNumber ? $scope.formData.TrackingNumber : 'n/a';
   };

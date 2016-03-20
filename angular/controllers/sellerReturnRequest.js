@@ -18,7 +18,7 @@ module.exports = function($scope, $controller, $uibModal, ReturnRequestService, 
 	});
 	$scope.status = config.RETURN_STATUS;
 	$scope.getDisabled = function(row) {
-		return row.Status == 'WA';
+		return row.Status == 'AP';
 	};
 	$scope.accept = function(row) {
 		//Enter CN Number
@@ -35,12 +35,13 @@ module.exports = function($scope, $controller, $uibModal, ReturnRequestService, 
 		});
 
 		modal.result.then(function(data) {
-			//Data == CN number
+			$scope.alert.close();
 			ReturnRequestService.update(row.ReturnId, {
 				Status: 'AP',
 				CnNumber: data
 			})
 			.then(function(res) {
+				$scope.alert.success('Successfully accepted.');
 				row.Status = res.Status;
 			}, function(err) {
 				$scope.alert.error(common.getError(err));

@@ -28,6 +28,7 @@ require('angular-chart.js')
 
 // Nc package
 require('./modules/nc')
+require('./modules/angular-print')
 require('./modules/product-detail')
 require('./modules/schematics')
 
@@ -43,7 +44,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   'duScroll', 'ngSanitize', 'ngAnimate',
   'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select',
   'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload',
-  'schematics'
+  'schematics', 'AngularPrint'
 ])
 
   // App config

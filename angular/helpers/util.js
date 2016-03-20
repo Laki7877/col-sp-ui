@@ -373,7 +373,7 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
         var content = '';
         scope.content = item;
 
-        if (id > 0) {
+        if (id != 0) {
             content = pluralize(item) + '/' + $interpolate(config.TITLE.DETAIL)(scope);
         } else {
             content = pluralize(item) + '/' + $interpolate(config.TITLE.CREATE)(scope);

@@ -48,5 +48,21 @@
       </table>
     </nc-table>
     <nc-pagination nc-model="params" nc-pagination-total="list.total" ></nc-pagination>
+    <div class="add-product-body">
+      <form class="ah-form sticky-mainform-action">
+        <div class="add-product-form-action main-form-action full-width-row">
+          <div class="container-fluid">
+            <span class="float-right">
+              <input class="form-control" placeholder="Order ID" ng-model="debug.id" />
+              <ui-select ng-model="debug.status" search-enabled="false">
+                <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="i.value as i in status">{{i.name}}</ui-select-choices>
+              </ui-select>
+              <button class="btn btn-blue btn-width-xl float-right" ng-click="debug.change()">Change</button>
+            </span> 
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 <?php $this->stop() ?>

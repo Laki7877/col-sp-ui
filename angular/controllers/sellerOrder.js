@@ -11,16 +11,17 @@ module.exports = function($scope, $window, $controller, OrderService, config) {
 			actions: ['View Only'],
 			bulks: [{
 				name: 'Acknowledge',
-				fn: function(arr) {
+				fn: function(arr, cb) {
 					var result = _.map(arr, function(e) {
 						return {
-							ReturnId: e.ReturnId,
+							OrderId: e.OrderId,
 							Status: 'PE'
 						}
 					})
 					OrderService.updateAll(result)
 						.then(function() {
 							$scope.alert.success('Successfully acknowledged');
+							cb();
 						}, function(err) {
 							$scope.alert.error(common.getError(err));
 						})
@@ -46,6 +47,19 @@ module.exports = function($scope, $window, $controller, OrderService, config) {
 			]
 		}
 	});
+	//For debug only
+	$scope.debug = {
+		id: '',
+		status: 'PE',
+		change: function() {
+			OrderService.update(this.id, {
+				Status: this.status
+			})
+			.finally(function() {
+				$scope.reload();
+			});
+		}
+	}
 	//Acknowledge or ready-to-ship 
 	$scope.getButtonState = function(item) {
 		if(item.Status == 'PC') {
@@ -72,15 +86,17 @@ module.exports = function($scope, $window, $controller, OrderService, config) {
 		};
 	};
 	$scope.onButtonClick = function(item) {
-		if(item.Status == 'PP') {
+		if(item.Status == 'PE') {
 			//Ready to ship
 			$window.location.href = $scope.url + '/' + item.OrderId;
 		} else if(item.Status == 'PC'){
 			//Acknowledge
+			$scope.alert.close();
 			OrderService.update(item.OrderId, {
-				Status: 'PP'
-			}, function(data) {
-				_.extend(item, OrderService.deserialize(data));
+				Status: 'PE'
+			})
+			.then(function(data) {
+				item.Status = data.Status;
 			}, function(err) {
 				$scope.alert(common.getError(err));
 			});

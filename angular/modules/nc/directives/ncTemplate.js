@@ -8,6 +8,7 @@ angular.module('nc')
                 priority: 1010,
                 scope: {
                     optionsPath: '@ncTemplateOptionsPath',
+                    options: '=?ncTemplateOptions',
                     templateField: '&ncTemplateForm',
                     viewBag: '=?ncViewBag',
                     label: '@ncLabel'
@@ -34,6 +35,8 @@ angular.module('nc')
                     if(scope.optionsPath){
                         pathComp = scope.optionsPath.split('/');
                         opt = $templateOptionsCache[pathComp[0]][pathComp[1]];
+                    } else if(scope.options) {
+                        opt = scope.options;
                     }
 
 

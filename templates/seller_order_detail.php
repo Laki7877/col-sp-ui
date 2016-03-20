@@ -4,23 +4,31 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
 
 <?php $this->start('page-body') ?>
   <div ng-controller="SellerOrderAddCtrl" ng-init="init(<?= $params ?>)">
+    <nc-alert nc-model="alert"></nc-alert>
     <nc-page-title nc-title="{{title}}" link="{{url}}" icon="fa-inbox">
       <span class="float-right page-header-action">
         <button class="btn btn-white btn-width-xl" ng-click="cancel()">Close</a>
-        <button ng-if="getState() == 2 || getState() == 3" class="btn-white btn-width-xxl" ng-click="printLabel">Print Shipping Label</button>
-        <button ng-if="getState() == 1" class="btn btn-blue btn-width-xl" ng-click="acknowledge">Acknowledge</button>
+        <button ng-if="getState() == 2 || getState() == 3" class="btn btn-white btn-width-xxl" print-btn>Print Shipping Label</button>
+        <button ng-if="getState() == 1" class="btn btn-blue btn-width-xl" ng-click="acknowledge()">Acknowledge</button>
         <button ng-if="getState() == 2" class="btn btn-blue btn-width-xxl" ng-click="readyShip()">Ready to Ship</button>
         <button ng-if="getState() >= 3" class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
       </span> 
     </nc-page-title>
+    <div>
+    <div ng-show="loading" nc-loading="{{loadingMessage}}"></div>
+    <div ng-show="saving" nc-loading="{{savingMessage}}"></div>
+    <div ng-show="!loading && !saving">
     <!-- Order Info -->
+    <form name="form" class="form-inline noPrintMargin" no-validate print-section>
     <div class="margin-top-30 field_seller">
       <div class="col-xs-12 with_border margin-bottom-30 no-padding">
         <div class="col-xs-6 no-padding">
           <div class="font-size-20">
             <span>Order ID {{formData.OrderId}}</span>
-            <span class="color-dark-grey margin-left-10">
+            <span print-hide>
+            <span class="margin-left-10 {{formData.Status | mapDropdown:status:'color'}}">
               [<i class="fa {{formData.Status | mapDropdown:status:'icon'}}"></i> {{formData.Status | mapDropdown:status}}]
+            </span>
             </span>
           </div>
           <div class="color-dark-grey margin-top-5">
@@ -30,14 +38,12 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
           </div>
         </div>
         <div ng-if="getState() >= 2" class="col-xs-6 no-padding text-align-right ">
-          <form name="form" class="form-inline">
             <div class="form-group">
-              <label class="font-size-20 padding-right-5" for="invoiceInput">Invoice #</label>
-              <span class="width-field-small-input">
-                <input type="text" name="InvoiceNumber" ng-class="{'has-error' : isInvalid(form.InvoiceNumber)" class="form-control width-field-small-input" placeholder="Invoice Number (Required)">
+              <label class="font-size-20 padding-right-5" for="invoiceInput">Invoice #<span print-only>{{formData.InvoiceNumber}}</span></label>
+              <span class="width-field-small-input" print-hide>
+                <input type="text" name="InvoiceNumber" ng-model="formData.InvoiceNumber" ng-class="{'has-error' : isInvalid(form.InvoiceNumber)}" class="form-control width-field-small-input" placeholder="Invoice Number (Required)" required>
               </span>            
             </div>
-          </form>
         </div>
       </div>
     </div>
@@ -50,9 +56,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
           </div>
           <div class="margin-top-5">Shipping Address</div>
           <div class="color-dark-grey margin-top-5">
-            <div>Mr. John Bravo</div>
-            <div>268/23 A450 Riverline</div>
-            <div>Riverview Street, Bangkok, 10234</div>
+            <div>{{formData.ShipContactor}}</div>
+            <div ng-repeat="i in addressIter">{{formData['ShipAddress' + i]}}</div>
           </div>
         </div>
         <div class="col-xs-4 no-padding">
@@ -61,9 +66,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
           </div>
           <div class="margin-top-5">Billing Address</div>
           <div class="color-dark-grey margin-top-5">
-            <div>Mr. John Bravo</div>
-            <div>268/23 A450 Riverline</div>
-            <div>Riverview Street, Bangkok, 10234</div>
+            <div>{{formData.CustomerName}}</div>
+            <div ng-repeat="i in addressIter">{{formData['BillAddress' + i]}}</div>
           </div>
         </div>
         <div class="col-xs-4 no-padding">
@@ -72,16 +76,15 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
           </div>
           <div class="margin-top-5">Invoice Address</div>
           <div class="color-dark-grey margin-top-5">
-            <div>Mr. John Bravo</div>
-            <div>268/23 A450 Riverline</div>
-            <div>Riverview Street, Bangkok, 10234</div>
+            <div>{{formData.CustomerName}}</div>
+            <div ng-repeat="i in addressIter">{{formData['InvoiceAddress' + i]}}</div>
           </div>
         </div>
       </div>
     </div>
     <!-- Order Product List -->
     <div class="table-section table_order">
-      <table class="table table-curved product-list-table">
+      <table class="table table-curved product-list-table" print-table="formData.Products">
         <thead>
           <tr class="table-head">
             <th>Product Name</th>
@@ -93,13 +96,13 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
         </thead>
         <tbody>
           <tr ng-repeat="product in formData.Products track by $index">
-            <td class="column-text-ellipsis"><a ng-href="/products/{{product.ProductId}}">{{product.ProductNameEn}}</a></td>
+            <td class="column-text-ellipsis"><span print-only>{{product.ProductNameEn}}</span><a ng-href="/products/{{product.ProductId}}" print-hide>{{product.ProductNameEn}}</a></td>
             <td class="text-align-center">{{product.UnitPrice | currency:' ':2}}</td>
             <td class="text-align-center">{{product.Quantity}}</td>
             <td class="text-align-center">
               <span ng-if="formData.Status != 'PE'">{{product.ShipQuantity}}</span>
               <span ng-if="formData.Status == 'PE'">
-                <input type="number" ng-model="product.ShipQuantity" min="0" max="{{product.Quantity}}" />
+                <input type="number" class="form-control" ng-model="product.ShipQuantity" min="0" max="{{product.Quantity}}" ng-pattern-restrict="^[0-9]*$" ng-blur="checkQuantity(product)"/>
               </span>
             </td>
             <td class="text-align-right">{{(product.UnitPrice * product.Quantity) | currency:' ':2}}</td>
@@ -128,6 +131,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
         </tbody>
       </table>
     </div>
+    </form>
     <!-- Cancel Order -->
     <div class="add-product-body">
       <form class="ah-form sticky-mainform-action">
@@ -155,14 +159,15 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
           <div class="container-fluid">
             <span class="float-right">
               <button class="btn btn-white btn-width-xl" ng-click="cancel()">Close</a>
-              <button ng-if="getState() == 2 || getState() == 3" class="btn-white btn-width-xxl" ng-click="printLabel">Print Shipping Label</button>
-              <button ng-if="getState() == 1" class="btn btn-blue btn-width-xl" ng-click="acknowledge">Acknowledge</button>
+              <button ng-if="getState() == 2 || getState() == 3" class="btn btn-white btn-width-xxl" print-btn>Print Shipping Label</button>
+              <button ng-if="getState() == 1" class="btn btn-blue btn-width-xl" ng-click="acknowledge()">Acknowledge</button>
               <button ng-if="getState() == 2" class="btn btn-blue btn-width-xxl" ng-click="readyShip()">Ready to Ship</button>
               <button ng-if="getState() >= 3" class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
             </span> 
           </div>
         </div>
       </form>
+    </div>
     </div>
   </div>
 
