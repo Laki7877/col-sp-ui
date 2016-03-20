@@ -20,17 +20,17 @@ module.exports = function($scope, $controller, options, Product, LocalCategorySe
 				.then(function(data) {
 					$scope.list = data;
 				})
-				.finally(function() {
-					$scope.loading = false;
-				});
+			.finally(function() {
+				$scope.loading = false;
+			});
 		} else {
 			options.service.advanceList(_.extend({searchText: ''}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams)))
 				.then(function(data) {
 					$scope.list = data;
 				})
-				.finally(function() {
-					$scope.loading = false;
-				});
+			.finally(function() {
+				$scope.loading = false;
+			});
 		}
 	};
 
