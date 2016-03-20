@@ -1,10 +1,14 @@
 var angular = require('angular');
 angular.module('productDetail')
-    .directive('apVariationOption', function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse, Product, util) {
+    .directive('apVariationOption', function ($rootScope, 
+        $templateCache, $compile, $templateOptionsCache, KnownException, util) {
         return {
-            restrict: 'A',
+            restrict: 'AE',
             scope: {
-                
+                variationFactorIndices: '=generator',
+                formData: '=formData',
+                dataset: '=dataset',
+                controlFlags: '=?controlFlags'
             },
             replace: true,
             priority: 1010,
@@ -12,8 +16,22 @@ angular.module('productDetail')
                 var templateHTML = $templateCache.get("ap/section-variation-option");
                 return templateHTML;
             },
-            link: function (scope, element, attrs, ctrl, transclude) {
+            link: function (scope, element, attrs, ctrl) {
+                if(!scope.controlFlags){
+                    scope.controlFlags = {
+                        variation: 'enable'
+                    }
+                }
 
+                scope.isFreeTextInput = util.isFreeTextDataType;
+                scope.isListInput = util.isListDataType;
+                scope.isHtmlInput = util.isHtmlDataType;
+                scope.isCheckboxInput = util.isCheckboxDataType;
+                scope.tagTransform = function (newTag) {
+                  return {
+                    ValueEn: newTag
+                  }
+                };
             }
         };
     });

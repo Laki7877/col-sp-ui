@@ -3,7 +3,8 @@ var angular = require('angular')
 angular.module('productDetail').controller('AbstractProductAddCtrl',
   function($scope, $uibModal, $window, util, config, Product, ImageService,  AttributeService,
     AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
-    KnownException, NcAlert, $productAdd, options, AttributeSetService, JSONCache, skeemas) {
+    KnownException, NcAlert, $productAdd, options, AttributeSetService, JSONCache, skeemas, 
+    VariationFactorIndices, AttributeOptions) {
     'ngInject';
 
     var MAX_FILESIZE = (options.maxImageUploadSize || 5000000);
@@ -176,12 +177,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       $scope.$watch('dataset.attributeOptions', function() {
         $productAdd.generateVariants($scope.formData, $scope.dataset)
       }, true);
-    };
-
-    $scope.tagTransform = function (newTag) {
-      return {
-        ValueEn: newTag
-      }
     };
 
 
@@ -670,18 +665,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
     }
 
-    $scope.protoAttributeOptions = {
-      0: {
-        Attribute: false,
-        options: [],
-        lockedOptions: []
-      },
-      1: {
-        Attribute: false,
-        options: [],
-        lockedOptions: []
-      }
-    };
+    $scope.protoAttributeOptions = AttributeOptions.proto();
 
     $scope.uploader = ImageService.getUploader('/ProductImages', {
       queueLimit: QUEUE_LIMIT
@@ -790,20 +774,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     // Variation Factor (lhs) Indices are used as index
     // for ng-repeat in variation tab
-    $scope.variationFactorIndices = {
-      iterator: [0],
-      length: function() {
-        return $scope.variationFactorIndices.iterator.length
-      },
-      popSecond: function() {
-        $scope.variationFactorIndices.length() == 2 && $scope.variationFactorIndices.iterator.pop()
-        $scope.dataSet.attributeOptions[1].options = []
-        $scope.dataSet.attributeOptions[1].Attribute = null
-      },
-      pushSecond: function() {
-        $scope.variationFactorIndices.length() < 2 && $scope.variationFactorIndices.iterator.push(1)
-      }
-    };
+    $scope.variationFactorIndices = new VariationFactorIndices($scope.dataset);
 
 
   })

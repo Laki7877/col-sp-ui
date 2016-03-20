@@ -14,7 +14,7 @@ class ProductController extends Controller
       ]);
     }
 
-    public static function pendingGroup($param){
+    public static function groupCreate($param){
       return View::render('seller_pending_products_group', [
           'viewBag' => $_POST['selected_products'],
       ]);
