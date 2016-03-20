@@ -6,7 +6,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminRoleAddCtrl" ng-init="init(<?=$params?>)">
 		<nc-alert nc-model="alert"></nc-alert>
-	    <nc-page-title nc-title="{{title}}" link="{{url}}">
+	    <nc-page-title nc-title="{{title}}" link="{{url}}" icon="fa-user">
 	      <div class="page-header">
 	        <a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
 	        <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
@@ -94,7 +94,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 									</div>
 								</div>
 							</div>
-						</div>	
+						</div>
 						<div class="row">
 							<div class="col-xs-12">
 								<p class="text-align-right"><span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field</p>

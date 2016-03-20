@@ -2,10 +2,17 @@
 module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModal, NewsletterService){
 	'ngInject';
 
+	  $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+	  $scope.data = [
+	    [65, 59, 80, 81, 56, 55, 40]
+	  ];
+	  $scope.onClick = function (points, evt) {
+	    console.log(points, evt);
+	  };
+
 	Dashboard.getNewsLetter()
-		.then(function(data) {
-			$scope.maxNewsLetters =10;
-			return $scope.newsLettersData = data;
+		.then(function(query) {
+			return $scope.newsLettersData = query.data;
 		});
 
 	Dashboard.getLowStockAlert()
@@ -14,10 +21,40 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModa
 			$scope.lowStockAlertData = query.data;
 
 			for (var i = $scope.lowStockAlertData.length - 1; i >= 0; i--) {
-				$scope.lowStockAlertData[i].Pid = 'ID: ' + $scope.lowStockAlertData[i].Pid;
-				$scope.lowStockAlertData[i].Quantity = 'QTY: ' + $scope.lowStockAlertData[i].Quantity;
+				$scope.lowStockAlertData[i].PidText = 'ID: ' + $scope.lowStockAlertData[i].Pid;
+				$scope.lowStockAlertData[i].QuantityText = 'QTY: ' + $scope.lowStockAlertData[i].Quantity;
 			};
 			return $scope.lowStockAlertData;
+		})
+		.then(function(lowStockAlertData){
+			var promise = Dashboard.getOutOfStock();
+			promise.then(function(outOfStockData) {
+				outOfStockData = outOfStockData.data;
+
+				for (var i = outOfStockData.length - 1; i >= 0; i--) {
+					outOfStockData[i].PidText = 'ID: ' + outOfStockData[i].Pid;
+					outOfStockData[i].QuantityText = 'QTY: ' + outOfStockData[i].Quantity;
+				};
+
+				var object = lowStockAlertData.concat(outOfStockData);
+				// console.log(object);
+				return $scope.lowStockAlertData = object;
+
+			}, function(reason) {
+			  console.log('Failed: ' + reason);
+			});
+		});
+
+	Dashboard.getOutOfStock()
+		.then(function(query) {
+			$scope.outOfStockData = query.data;
+
+			for (var i = $scope.outOfStockData.length - 1; i >= 0; i--) {
+				$scope.outOfStockData[i].PidText = 'ID: ' + $scope.outOfStockData[i].Pid;
+				$scope.outOfStockData[i].QuantityText = 'QTY: ' + $scope.outOfStockData[i].Quantity;
+			};
+			// console.log($scope.lowStockAlertData);
+			return $scope.outOfStockData;
 		});
 
 	$scope.maxNewOrders = 10;
@@ -121,7 +158,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModa
 	            return 'color-grey';
 	            break;
 	        case '2':
-	            alert("Selected Case Number is 2");
+	            // alert("Selected Case Number is 2");
 	            break;
 	        default:
         }
@@ -133,7 +170,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModa
 	            return 'fa-check-circle-o';
 	            break;
 	        case '2':
-	            alert("Selected Case Number is 2");
+	            // alert("Selected Case Number is 2");
 	            break;
 	        default:
         }
@@ -157,5 +194,18 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModa
 				});
 			});
 	};
+
+	$scope.linkToAllNewsletters = function(){
+		$window.location.href = '/newsletters';
+	};
+
+	$scope.linkToLowStock = function(){
+		$window.location.href = '/inventory';
+	};
+
+	$scope.linkToProduct = function(id) {
+		$window.location.href = '/products/' + id;
+	}
+
 
 };

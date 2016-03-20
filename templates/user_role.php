@@ -3,7 +3,7 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="SellerRoleCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'User Roles','button' => 'Add Role', 'button_class' => 'btn-width-xxl', 'link' => '/roles/add']) ?>
+    <? $this->insert('components/page-title-with-one-button', ['text' => 'User Roles','button' => 'Add Role', 'button_class' => 'btn-width-xl', 'link' => '/roles/add']) ?>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="GroupId"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Roles'"></nc-search>
@@ -15,17 +15,17 @@
             <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
             <th nc-sort="GroupNameEn">Role Name</th>
             <th># of Users</th>
-            <th>Action</th>
             <th nc-sort="UpdatedDt">Modified</th>
+            <th class="action-column-lg">Action</th>
         </tr>
         </thead>
         <tbody>
           <tr ng-repeat="row in list.data">
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
             <td nc-link="/roles/{{row.GroupId}}">{{row.GroupNameEn}}</td>
-            <td class="width_200">{{row.UserCount}}</td>
-            <td class="width_100"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
-            <td class="width_100">{{row.UpdatedDt | dateTh}}</td>
+            <td class="width_150">{{row.UserCount}}</td>
+            <td class="modified-column">{{row.UpdatedDt | dateTh}}</td>
+            <td class="action-column-lg"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>
         </tbody>
       </table>

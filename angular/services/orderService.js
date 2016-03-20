@@ -1,4 +1,5 @@
 module.exports = function(common) {
-	var service = common.Rest('/ReturnRequests');
+	'ngInject';
+	service = common.Rest('/Orders');
 	return service;
-};
+}

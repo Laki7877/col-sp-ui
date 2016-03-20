@@ -3,8 +3,8 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminAttributeCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <nc-page-title nc-title="Attributes">
-      <a class="btn btn-blue btn-width-xl" ng-href="{{url}}/add">Add {{item}}</a>
+    <nc-page-title nc-title="Attributes" icon="fa-tag">
+      <a class="btn btn-blue btn-width-xxl" ng-href="{{url}}/add">Add {{item}}</a>
     </nc-page-title>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="{{id}}"></nc-bulk>
@@ -23,7 +23,7 @@
             <th>Variation</th>
             <th>Mapped Set</th>
             <th nc-sort="UpdatedDt" class="modified-column">Modified</th>
-            <th>Action</th>
+            <th class="action-column-lg">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -33,12 +33,12 @@
               {{row.AttributeNameEn}}
             </td>
             <td>{{row.DisplayNameEn}}</td>
-            <td>{{row.DataType | mapDropdown:dataTypeDropdown }}</td>            
+            <td>{{row.DataType | mapDropdown:dataTypeDropdown }}</td>
             <td class="width_100">{{row.DefaultAttribute | mapDropdown:yesNoDropdown }}</td>
             <td class="width_100">{{row.VariantStatus | mapDropdown:yesNoDropdown }}</td>
             <td class="width_100">{{row.AttributeSetCount}}</td>
-            <td class="width_100">{{row.UpdatedDt | dateTh}}</td>
-            <td class="width_100"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
+            <td class="modified-column">{{row.UpdatedDt | dateTh}}</td>
+            <td class="action-column-lg"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>
         </tbody>
       </table>

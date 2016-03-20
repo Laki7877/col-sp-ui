@@ -5,7 +5,7 @@
 			  <div ng-show="loading" nc-loading="Loading Shop Settings.."></div>
 				<nc-alert nc-model="alert"></nc-alert>
         <form class="ah-form sticky-mainform-action" name="form" ng-submit="save()" ng-show="!loading">
-            <nc-page-title nc-title="Shop Profile">
+            <nc-page-title nc-title="Shop Profile" icon="fa-sliders">
                 <button type="button" class="btn btn-white btn-width-xl margin-right-10">Preview</button>
                 <button class="btn btn-blue btn-width-xl">Save</button>
             </nc-page-title>
@@ -34,10 +34,10 @@
 												</ui-select>
 											</div>
 						                    <!-- Shop Logo -->
-								            <div nc-template="common/input/form-group-with-label" 
+								            <div nc-template="common/input/form-group-with-label"
 								              nc-template-form="form.Logo"
 								              nc-label="Shop Logo file">
-								                <button 
+								                <button
 								                type="button"
 								                name="Logo"
 								                class="btn btn-default"
@@ -47,14 +47,14 @@
 								                required>Choose File</button>
 								            </div>
 								            <div ng-show="formData.ShopImage.url"
-								              nc-template="common/input/form-group-with-label" 
+								              nc-template="common/input/form-group-with-label"
 								              nc-label="Logo Preview">
 								                <img
 								                  ng-src="{{formData.ShopImage.url}}"
 								                  width="160"
 								                  />
 								                <a style="display:block;" class="margin-top-5" ng-click="formData.Logo=null"><i class="fa-trash fa"></i> Delete this image</a>
-								            </div>	
+								            </div>
 						                    <div nc-template="common/input/form-group-with-label" nc-label="Shop Name" nc-template-options-path="shopSettingForm/ShopNameEn">
 						                        <input class="form-control" type="text" ng-model="formData.ShopNameEn" ng-pattern="/^[^<>]+$/" required/>
 						                    </div>
@@ -142,8 +142,8 @@
 						                    <h2>Shop Configuration</h2></div>
 						                <div class="form-section-content">
 						                	<!-- Shop Id -->
-						                    <div nc-template="common/input/form-group-with-label" 
-							                    nc-label="Shop ID" 
+						                    <div nc-template="common/input/form-group-with-label"
+							                    nc-label="Shop ID"
 							                    nc-template-options-path="shopSettingForm/ShopId">
 						                        <input class="form-control" type="text" ng-model="formData.ShopId" readonly value="DE39222" disabled/>
 						                    </div>
@@ -190,7 +190,7 @@
 												/>
 											</div>
 											<!-- Commission -->
-											<div ng-show="formData.Commissions.length > 0" 
+											<div ng-show="formData.Commissions.length > 0"
 												nc-template="common/input/form-group-with-label"
 												nc-label="Commission by Category">
 						                        <div class="width-field-normal" ng-repeat="item in formData.Commissions track by $index">

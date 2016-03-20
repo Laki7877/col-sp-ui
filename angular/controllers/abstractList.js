@@ -105,7 +105,7 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 					case 'View':
 						return util.actionView(options.url, options.id);
 					case 'View Only':
-						return util.actionView(options.url, options.id, 'View');
+						return util.actionView(options.url, options.id, 'View Detail');
 					case 'Delete':
 						return util.actionDelete(options.service, options.id, options.item, $scope.alert, $scope.reload, function(obj, id) {
 								_.remove($scope.bulkContainer, function(e) {

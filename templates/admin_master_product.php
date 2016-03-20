@@ -2,7 +2,7 @@ r<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administrat
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminMasterProductCtrl">
-    <nc-page-title nc-title="Master Products">
+    <nc-page-title nc-title="Master Products" icon="fa-tag">
       <a class="btn btn-blue btn-width-xxl" ng-href="{{url}}/add">Add {{item}}</a>
     </nc-page-title>
     <div class="row search-section-wrapper">

@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminGlobalCouponCtrl">
-    <nc-page-title nc-title="Global Coupons">
+    <nc-page-title nc-title="Global Coupons" icon="fa-bookmark">
       <a class="btn btn-blue btn-width-xl" ng-href="{{url}}/add">Add {{item}}</a>
     </nc-page-title>
     <div class="row search-section-wrapper">
@@ -19,7 +19,7 @@
   		                <th nc-sort="StartDate">Start Date</th>
                       <th nc-sort="ExpireDate">Expire Date</th>
                       <th nc-sort="Status">Status</th>
-                      <th>Action</th>
+                      <th class="action-column-lg">Action</th>
   		            </tr>
   		        </thead>
   		        <tbody>
@@ -32,7 +32,7 @@
   		                <td class="width_150">{{ row.StartDate | dateTh }}</td>
   		                <td class="width_150">{{ row.ExpireDate | dateTh }}</td>
   		                <td class="width_100"> {{ row.Status | mapDropdown: statusDropdown }}</td>
-                      <td class="width_100"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
+                      <td class="action-column-lg"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
   		            </tr>
   		        </tbody>
   		    </table>

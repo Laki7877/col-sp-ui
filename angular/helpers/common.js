@@ -102,7 +102,10 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
                 return service.makeRequest({
                     method: 'PUT',
                     url: resourceUri,
-                    data: obj
+                    data: obj,
+                    headers: {
+                        'Content-Type': 'application/json;charset=UTF-8'
+                    }
                 });
             };
             //Create

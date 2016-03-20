@@ -20,7 +20,7 @@ module.exports = function (common, config, util, $log, $window) {
 
     service.getNewsLetter = function () {
         return common.makeRequest({
-            url: '/newsletters',
+            url: '/newsletters?_limit=10&_order=PublishedDt&_direction=desc',
             method: 'GET'
         });
     }
@@ -28,6 +28,13 @@ module.exports = function (common, config, util, $log, $window) {
     service.getLowStockAlert = function () {
         return common.makeRequest({
             url: '/Inventories?_direction=desc&_filter=LowStock&_limit=10&_offset=0&_order=Pid',
+            method: 'GET'
+        });
+    }
+
+    service.getOutOfStock = function () {
+        return common.makeRequest({
+            url: '/Inventories?_direction=desc&_filter=OutOfStock&_limit=10&_offset=0&_order=Pid',
             method: 'GET'
         });
     }

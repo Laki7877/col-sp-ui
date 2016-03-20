@@ -78,7 +78,10 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
       if(check.length == 0 || check.charAt(0) === '/' || check.charAt(0) === '?') {
         if(check.charAt(0) === '/') {
           var id = check.replace('/', '');
-          return _.isNaN(_.parseInt(id)) ? '' : 'active';  
+          if(_.findIndex(route.reserve, function(o) { return o == id; }) >= 0) {
+            return '';
+          }
+          return 'active';  
         }
         return 'active';
       } else {

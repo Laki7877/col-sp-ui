@@ -8,7 +8,8 @@ angular.module('nc')
             priority: 1010,
             scope: {
                 title: '@ncTitle',
-                topLink: '@link'
+                topLink: '@link',
+                icon: '@icon'
             },
             template: function (element, attrs) {
                 var templateHTML = $templateCache.get('partials/page-title');
@@ -23,6 +24,7 @@ angular.module('nc')
                     if(!_.isNil(newVal))
                         scope.breads = newVal.split('/');
                 })
+                scope.icon = attrs.icon;
             }
         };
     });

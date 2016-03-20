@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminBrandCtrl">
-    <nc-page-title nc-title="Brands">
+    <nc-page-title nc-title="Brands" icon="fa-tag">
       <a class="btn btn-blue btn-width-xl" ng-href="{{url}}/add">Add {{item}}</a>
     </nc-page-title>
     <div class="row search-section-wrapper">
@@ -17,7 +17,7 @@
             <th nc-sort="BrandId">Brand ID</th>
             <th nc-sort="BrandNameEn">Brand Name</th>
             <th nc-sort="UpdatedDt">Modified</th>
-            <th>Action</th>
+            <th class="action-column-lg">Action</th>
         </tr>
         </thead>
         <tbody>
@@ -25,8 +25,8 @@
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
             <td class="width_100" nc-link="/admin/brands/{{row.BrandId}}">{{row.BrandId}}</td>
             <td nc-link="/admin/brands/{{row.BrandId}}">{{ row.BrandNameEn }}</td>
-            <td class="width_100">{{row.UpdatedDt | dateTh}}</td>
-            <td class="width_100"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
+            <td class="modified-column">{{row.UpdatedDt | dateTh}}</td>
+            <td class="action-column-lg"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>
         </tbody>
       </table>

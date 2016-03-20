@@ -7,8 +7,15 @@
 		width: 40px;
 	}
 
+	.tag-column {
+		width: 220px;
+	}
+
 	.price-column {
-		width: 200px;
+		text-align: right;
+		width: 120px;
+		padding-left: 15px;
+		padding-right: 15px;
 	}
 
 	.info-column {
@@ -22,7 +29,8 @@
 	}
 
 	.status-column {
-		width: 150px;
+		width: 140px;
+		padding-right: 0px;
 	}
 
 	.live-column {
@@ -39,6 +47,11 @@
     text-align: center;
   }
 
+	.action-column-lg {
+    width: 80px;
+    text-align: center;
+  }
+
 	.modified-column {
 		width: 88px;
 	}
@@ -46,6 +59,16 @@
   .submitted-column {
     width: 100px;
   }
+
+	.approve-column {
+		text-align: center;
+		width: 70px;
+	}
+
+	.inventory-column{
+		text-align: right;
+		width: 200px;
+	}
 
   .width_date {
     width: 160px;
@@ -115,7 +138,7 @@
   }
 
   .table > tbody > tr:hover{
-    background: $color-light-grey;
+    background: $color-light-yellow;
   }
 
   .table {
@@ -167,7 +190,7 @@
   a.header-link {
     color: $color-black;
       span.active-underline {
-        border-bottom:  2px solid $color-soft-blue;
+        border-bottom:  3px solid $color-soft-blue;
         padding-bottom: 4px;
       }
     &:focus {

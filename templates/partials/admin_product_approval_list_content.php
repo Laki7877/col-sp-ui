@@ -1,5 +1,5 @@
 <div id="add-product-approval-list-content">
-    <!--	
+    <!--
   <div class="row">
     <div class="col-xs-12">
       <div class="form-section">
@@ -69,14 +69,14 @@
                         <th></th>
                         <th nc-sort="ProductNameEn">Product Name </th>
                         <th nc-sort="Shop">Shop</th>
-                        <th nc-sort="InformationTabStatus">Info.</th>
-                        <th nc-sort="ImageTabStatus">Img.</th>
-                        <th nc-sort="CategoryTabStatus">Cat.</th>
-                        <th nc-sort="VariationTabStatus">Var.</th>
-                        <th nc-sort="MoreOptionTabStatus">More.</th>
-                        <th nc-sort="Status">Status</th>
-                        <th>Action</th>
-                        <th nc-sort="UpdatedDt" >Submitted</th>
+                        <th class="approve-column" nc-sort="InformationTabStatus">Info.</th>
+                        <th class="approve-column" nc-sort="ImageTabStatus">Img.</th>
+                        <th class="approve-column" nc-sort="CategoryTabStatus">Cat.</th>
+                        <th class="approve-column" nc-sort="VariationTabStatus">Var.</th>
+                        <th class="approve-column" nc-sort="MoreOptionTabStatus">More.</th>
+                        <th class="width_200" nc-sort="Status">Status</th>
+                        <th class="width_100" nc-sort="UpdatedDt" >Submitted</th>
+                        <th class="action-column">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -94,20 +94,20 @@
                             {{row.ProductNameEn}}
                         </td>
                         <td>{{row.Shop.ShopNameEn}}</td>
-                        <td> <span class="{{ asStatus(row.InformationTabStatus).color }}"><i class="fa fa-circle"></i></span></td>
-                        <td>
+                        <td class="approve-column"> <span class="{{ asStatus(row.InformationTabStatus).color }}"><i class="fa fa-circle"></i></span></td>
+                        <td class="approve-column">
                             <span class="{{ asStatus(row.ImageTabStatus).color }}"><i class="fa fa-circle"></i></span>
                         </td>
-                        <td> <span class="{{ asStatus(row.CategoryTabStatus).color }}"><i class="fa fa-circle"></i></span> </td>
-                        <td>
+                        <td class="approve-column"> <span class="{{ asStatus(row.CategoryTabStatus).color }}"><i class="fa fa-circle"></i></span> </td>
+                        <td class="approve-column">
                             <span class="{{ asStatus(row.VariantTabStatus).color }}"><i class="fa fa-circle"></i></span>
                         </td>
-                        <td> <span class="{{ asStatus(row.MoreOptionTabStatus).color }}"><i class="fa fa-circle"></i></span> </td>
+                        <td class="approve-column"> <span class="{{ asStatus(row.MoreOptionTabStatus).color }}"><i class="fa fa-circle"></i></span> </td>
                         <td>
                             <span class="{{ asStatus(row.Status).color }}"><i class="fa" ng-class="asStatus(row.Status).icon "></i> {{ asStatus(row.Status).name }} </span>
                         </td>
-                        <td><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
                         <td>{{row.UpdatedDt | dateTh }}</td>
+                        <td class="action-column"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
                     </tr>
                 </tbody>
             </table>

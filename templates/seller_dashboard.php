@@ -21,7 +21,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         </div>
         <div class="dashboard_graph">
           <div>
-            <canvas id="canvas" height="280"></canvas>
+            <!-- <canvas id="canvas" height="280"></canvas> -->
+            <canvas id="line" class="chart chart-line" chart-data="data"
+              chart-labels="labels" chart-legend="false" chart-series="series"
+              chart-click="onClick" >
+            </canvas> 
           </div>
         </div>
         <div class="remark">Remark: The revenue does not count canceled and pending orders.</div>
@@ -78,31 +82,35 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           </span>
           <span class="font-size-18 header_name_space">Low Stock Alert</span>
           <span class="float-right group_span_right">
-            <span><a href="#">View All</a></span>
+            <span><a ng-click="linkToLowStock()">View All</a></span>
           </span>
         </div>
         <div class="group_container">
           <table class="table table_dashboard table_lsa">
             <tbody>
-              <tr ng-repeat="product in lowStockAlertData | orderBy: 'Pid':true | limitTo:maxLowStockAlert" ng-show="lowStockAlertData.length != 0">
+              <tr ng-repeat="product in lowStockAlertData | orderBy: 'Quantity' | limitTo:maxLowStockAlert" ng-show="lowStockAlertData.length != 0">
                 <td>
-                  {{product.Quantity}}
+                  {{product.QuantityText}}
                 </td>
                 <td>
-                  {{product.Pid}}
+                  {{product.PidText}}
                 </td>
                 <td class="column-text-ellipsis">
                   {{product.ProductNameEn}}
                 </td>
                 <td>
-                  <button class="btn btn-white btn-width-default">View</button>
+                  <button class="btn btn-white btn-width-default" ng-click="linkToProduct(product.ProductId)">View</button>
                 </td>
               </tr>
+
               <tr ng-show="lowStockAlertData.length == 0">
                 <td class="empty_data">- No Low Stock Alert -</td>
               </tr>
             </tbody>
           </table>
+          <div class="view_all_row" ng-show="lowStockAlertData.length == 10">
+            <a ng-click="linkToLowStock()">View All</a>
+          </div>
         </div>
       </div>
 
@@ -113,13 +121,13 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           </span>
           <span class="font-size-18 header_name_space">Newsletters</span>
           <span class="float-right group_span_right">
-            <span><a href="?p=seller_newsletters">View All</a></span>
+            <span><a ng-click="linkToAllNewsletters()">View All</a></span>
           </span>
         </div>
         <div class="group_container">
           <table class="table table_dashboard table_newsletter">
             <tbody>
-              <tr ng-repeat="letter in newsLettersData | orderBy: 'PublishedDt':true | limitTo:maxNewsLetters" ng-show="newsLettersData.length != 0">
+              <tr ng-repeat="letter in newsLettersData" ng-show="newsLettersData.length != 0">
                 <td class="column-text-ellipsis">
                   <div>{{letter.Subject}}</div>
                   <div class="newsletter_date">Publish on {{letter.PublishedDt | date:"MM/dd/yyyy 'at' HH:mm"}}</div>
@@ -133,6 +141,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
               </tr>
             </tbody>
           </table>
+          <div class="view_all_row" ng-show="newsLettersData.length == 10">
+            <a ng-click="linkToAllNewsletters()">View All</a>
+          </div>
         </div>
       </div>
 
@@ -244,39 +255,5 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
 
     </div>
   </div>
-
-  <script>
-    var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
-    var lineChartData = {
-      labels : ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
-      datasets : [
-        {
-          label: "My Second dataset",
-          fillColor : "rgba(72,153,221,0.2)",
-          strokeColor : "rgba(72,153,221,1)",
-          pointColor : "rgba(72,153,221,1)",
-          pointStrokeColor : "#fff",
-          pointHighlightFill : "#fff",
-          pointHighlightStroke : "rgba(151,187,205,1)",
-          // data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-          data : [10,40,65,12,8,30,98]
-        }
-      ]
-
-    }
-
-
-  window.onload = function(){
-    var ctx = document.getElementById("canvas").getContext("2d");
-    window.myLine = new Chart(ctx).Line(lineChartData, {
-      bezierCurve : false,
-      scaleShowVerticalLines: false,
-      maintainAspectRatio: false,
-      responsive: true
-    });
-  }
-
-
-  </script>
 
 <?php $this->stop() ?>

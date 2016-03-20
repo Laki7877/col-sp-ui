@@ -58,10 +58,12 @@ function generateRouteArray(obj) {
 var seller = {
 	'Home|fa-home': {
 		'Onboarding': '/onboarding',
-		'Dashboard': '/dashboard'
+		'Dashboard': '/dashboard',
+		'Newsletters': '/newsletters'
 	},
-	'Orders|fa-inbox': {
-		'Return Requests': '/returns'
+	'Order|fa-inbox': {
+		'View': '/orders',
+		'Return Request': '/returns'
 	},
 	'Product|fa-tag': {
 	  	'View': '/products',
@@ -121,5 +123,6 @@ var admin = {
 
 module.exports = {
   seller: generateRouteArray(seller),
-  admin: generateRouteArray(admin)
+  admin: generateRouteArray(admin),
+  reserve: ['add', 'select', 'import', 'export', 'reviews', 'images']
 }

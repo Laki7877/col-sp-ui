@@ -3,7 +3,7 @@
 <?php $this->start('page-body') ?>
 <div ng-controller="ProductListCtrl">
    <nc-alert nc-model="alert"></nc-alert>
-   <nc-page-title nc-title="Products">
+   <nc-page-title nc-title="Products" icon="fa-tag">
       <form id="exportForm" name="exportForm" action="/products/export" method="post">
           <input type="hidden" name="selected_products[]" ng-repeat="item in bulkContainer" value="{{ item.ProductId }}"/>
 
@@ -53,8 +53,8 @@
                   <th nc-sort="ProductNameEn">Product Name</th>
                   <th>Tag</th>
                   <th class="price-column" nc-sort="SalePrice">Sale Price</th>
-                  <th><span>Info</span></th>
-                  <th><span>Image</span></th>
+                  <th class="info-column"><span>Info</span></th>
+                  <th class="image-column"><span>Image</span></th>
                   <th class="status-column" nc-sort="Status">Status</th>
                   <th class="live-column" ng-if="showOnOffStatus.value">Live</th>
                   <th class="visible-column">Visible</th>
@@ -75,7 +75,7 @@
                     <div><a href="/products/{{ row.ProductId }}">{{ row.ProductNameEn || '(Untitled Product)' }}</a></div>
                     <div class="color-grey" ng-if="row.VariantCount > 0">({{row.VariantCount}} variants)</div>
                   </td>
-                  <td class="column-text-ellipsis">
+                  <td class="tag-column column-text-ellipsis">
                     {{getTag(row.Tags)}}
                   </td>
                   <td class="price-column">

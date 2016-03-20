@@ -2,9 +2,6 @@
 require __DIR__ . '/unicorn.php';
 includeAll(__DIR__ . '/../controllers/*.php');
 
-
-//LOL redirect functions
-//LOL?
 class Redirect {
 	public static function index($params) {
         return View::render('main');
@@ -62,6 +59,8 @@ Route::add('/inventory', 'SellerController::listInventory');
 Route::add('/newsletters', 'SellerController::listNewsletter');
 Route::add('/onboarding', 'SellerController::onboarding');
 Route::add('/dashboard', 'SellerController::dashboard');
+Route::add('/orders', 'SellerController::listOrder');
+Route::add('/orders/:id', 'SellerController::editOrder');
 
 
 //admin routing

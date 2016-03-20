@@ -175,10 +175,61 @@ module.exports = {
 			}
 		]
 	},
+	ORDER_STATUS: [
+		{
+			name: 'Payment Pending',
+			value: 'PP',
+			color: 'color-grey',
+			icon: 'fa-clock-o',
+			state: 0
+		},
+		{
+			name: 'Payment Confirmed',
+			value: 'PC',
+			color: 'color-grey',
+			icon: 'fa-check-circle-o',
+			state: 1
+		},
+		{
+			name: 'Preparing',
+			value: 'PE',
+			color: 'color-yellow',
+			icon: 'fa-check-circle-o',
+			state: 2
+		},
+		{
+			name: 'Ready to Ship',
+			value: 'RS',
+			color: 'color-green',
+			icon: 'fa-check-circle-o',
+			state: 3
+		},
+		{
+			name: 'Shipping',
+			value: 'SH',
+			color: 'color-green',
+			icon: 'fa-clock-o',
+			state: 4
+		},
+		{
+			name: 'Delivered',
+			value: 'DE',
+			color: 'color-green',
+			icon: 'fa-check-circle-o',
+			state: 5
+		},
+		{
+			name: 'Canceled',
+			value: 'CA',
+			color: 'color-red',
+			icon: 'fa-ban',
+			state: -1
+		}
+	],
 	RETURN_STATUS: [
 		{
 			name: 'Accepted',
-			value: 'AC',
+			value: 'AP',
 			color: 'color-green'
 		},
 		{
