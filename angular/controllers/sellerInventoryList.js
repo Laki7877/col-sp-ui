@@ -11,14 +11,14 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 			actions: [{
 				name: 'View / Edit',
 				fn: function(item) {
-                	$window.location.href =  '/products/' + item.ProductId;
+					$window.location.href =  '/products/' + item.ProductId;
 				}
 			}],
 			filters: [
-				{ name: "All", value: 'All'},
-				{ name: "Normal Stock", value: 'NormalStock'},
-				{ name: "Low Stock", value: 'LowStock'},
-				{ name: "Out of Stock", value: 'OutOfStock'}
+			{ name: "All", value: 'All'},
+			{ name: "Normal Stock", value: 'NormalStock'},
+			{ name: "Low Stock", value: 'LowStock'},
+			{ name: "Out of Stock", value: 'OutOfStock'}
 			],
 			onReload: function() {
 				$scope.lastEdit = null;
@@ -30,7 +30,7 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 				_.toInteger(item.Defect) +
 				_.toInteger(item.OnHold) +
 				_.toInteger(item.Reserve)
-			);
+				);
 	};
 	$scope.getStatus = function(item) {
 		var measure = $scope.getAvailableStock(item);
@@ -39,7 +39,7 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 		if(measure <= 0) return $scope.statusDropdown[2];
 
 		measure = measure - item.SafetyStockSeller;
-		
+
 		//Low stock
 		if(measure <= 0) return $scope.statusDropdown[1];
 

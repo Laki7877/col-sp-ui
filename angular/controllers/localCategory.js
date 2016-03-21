@@ -18,7 +18,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 		$rootScope.$broadcast('angular-ui-tree:collapse-all');
 	}
 	$scope.expandAll = function() {
-        $rootScope.$broadcast('angular-ui-tree:expand-all');
+		$rootScope.$broadcast('angular-ui-tree:expand-all');
 	}
 
 	//UiTree onchange event
@@ -79,10 +79,10 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 			$timeout.cancel($scope.timerPromise);
 			$scope.timerPromise = null;
 		}
-			$scope.pristine = true;
-			$scope.saving = true;
-			$scope.timerPromise = $timeout(function() {
-				LocalCategoryService.upsert(Category.transformUITreeToNestedSet($scope.categories))
+		$scope.pristine = true;
+		$scope.saving = true;
+		$scope.timerPromise = $timeout(function() {
+			LocalCategoryService.upsert(Category.transformUITreeToNestedSet($scope.categories))
 				.then(function() {
 					$scope.alert.close();
 				}, function(err) {
@@ -90,14 +90,14 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 					$scope.alert.error(common.getError(err));
 					$scope.reload();
 				})
-				.finally(function() {
-					$scope.saving = false;
-					if($scope.dirty) {
-						$scope.dirty = false;
-						$scope.sync();
-					}
-				});
-			}, delay || config.CATEGORY_SYNC_DELAY);
+			.finally(function() {
+				$scope.saving = false;
+				if($scope.dirty) {
+					$scope.dirty = false;
+					$scope.sync();
+				}
+			});
+		}, delay || config.CATEGORY_SYNC_DELAY);
 	};
 
 	//Condition at which tradable select will lock attributeset
@@ -108,7 +108,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 	//Open category modal
 	$scope.open = function(item) {
 		//Open add or edit one category
-	var modal = $uibModal.open({
+		var modal = $uibModal.open({
 			animation: true,
 			size: 'xl',
 			keyboard: false,
@@ -181,7 +181,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 					$scope.saving = true;
 
 					if($scope.form.$valid) {
-					var processed = LocalCategoryService.serialize($scope.formData);
+						var processed = LocalCategoryService.serialize($scope.formData);
 						if(id == 0) {
 							LocalCategoryService.create(processed)
 								.then(function(data) {

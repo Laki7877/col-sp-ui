@@ -113,8 +113,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .factory('ShopAppearanceService', services.shopAppearanceService)
   .factory('ShopPermissionService', services.shopPermissionService)
   .factory('ShopProfileService', services.shopProfileService)
-  .factory('VariantPair', helpers.variantPair)
-
+  .factory('ProductTempService', services.productTempService)
 
   // Directives
   .directive('ncTradableSelect', directives.ncTradableSelect)
