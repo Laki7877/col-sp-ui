@@ -58,10 +58,17 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModa
 		});
 
 	$scope.maxNewOrders = 10;
-	$scope.newOrdersData = [
-		{date:'13/12/2015', id:'ID: 1231499', amount:'226.00', status:'Payment Confirmed' },
-		{date:'10/12/2015', id:'ID: 1231413', amount:'112,226.00', status:'Payment Confirmed' }
-	];
+	Dashboard.getOrders()
+		.then(function(query) {
+			$scope.newOrdersData = query.data;
+
+			for (var i = $scope.newOrdersData.length - 1; i >= 0; i--) {
+				$scope.newOrdersData[i].OrderIdText = 'ID: ' + $scope.newOrdersData[i].OrderId;
+				// $scope.newOrdersData[i].QuantityText = 'QTY: ' + $scope.newOrdersData[i].Quantity;
+			};
+
+			return $scope.newOrdersData;
+		});
 
 	$scope.maxTopSellingItems = 10;
 	$scope.topSellingItemsData = [
@@ -203,9 +210,17 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModa
 		$window.location.href = '/inventory';
 	};
 
+	$scope.linkToOrdersPage = function(){
+		$window.location.href = '/orders';
+	};
+
 	$scope.linkToProduct = function(id) {
 		$window.location.href = '/products/' + id;
-	}
+	};
+
+	$scope.linkToOrder = function(id) {
+		$window.location.href = '/orders/' +id;
+	};
 
 
 };
