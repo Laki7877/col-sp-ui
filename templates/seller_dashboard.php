@@ -72,6 +72,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
               </tr>
             </tbody>
           </table>
+          <div class="view_all_row" ng-show="newOrdersData.length == 10">
+            <a ng-click="linkToOrdersPage()">View All</a>
+          </div>
         </div>
       </div>
 
