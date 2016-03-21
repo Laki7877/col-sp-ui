@@ -31,8 +31,9 @@ module.exports = function($scope, $controller,
 			searchText: q,
 			pageSize: 8
 		}).then(function(ds) {
-			$scope.dataset.Products = ds.data;
-		})
+		  $scope.dataset.Products = ds.data;
+			return ds.data;
+		});
 	};
 
 	$scope.refresher.AttributeSets = function(q) {

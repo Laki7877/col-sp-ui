@@ -15,10 +15,10 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="stylesheet" href="<?=$this->asset('/assets/css/screen.css')?>" />
     <link rel="stylesheet" href="<?=$this->asset('/assets/libs/angular-bootstrap-datetimepicker/datetimepicker.css')?>" />
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
     <script src="<?= $this->asset('/assets/js/jquery.min.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/jquery.rest.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/bundle.js') ?>"></script>
-
     <script src="<?= $this->asset('/assets/js/bootstrap.min.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/bootstrap-fixconflict.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/jquery-ui.js') ?>"></script>

@@ -1,8 +1,8 @@
 <table class="table variation-table">
 	<thead>
 		<tr>
-			<th class="column-variant">Variant</th>
-			<th class="column-mapped-product">Mapped Product</th>
+			<th class="column-variant" style="width:150px">Variant</th>
+			<th class="column-mapped-product" style="width:400px">Mapped Product</th>
 			<th class="column-visibility">Visibility</th>
 		</tr>
 	</thead>
@@ -12,15 +12,17 @@
 				{{ pair.text }}
 			</td>
 			<td>
-				<ui-select ng-model="pair.MappedProduct" name="pair_MappedProduct" 
-				nc-tag-validator tagging tagging-label="" multiple nc-tag-field>
+				<ui-select ng-model="pair.MappedProduct" ng-disabled="!pair.Visibility"
+				name="pair_MappedProduct"
+				nc-tag-validator nc-tag-field>
 				<ui-select-match placeholder="Search Product Name, SKU, or PID">
-					{{$item.ProductNameEn}}
+					{{$select.selected.ProductNameEn}}
 				</ui-select-match>
-				<ui-select-choices refresh="refresher.Products($select.search)" 
-				repeat="item in dataset.Products">
+				<ui-select-choices refresh="refresher.Products($select.search)"
+				repeat="item in dataset.Products | filter: $select.search">
 					{{item.ProductNameEn}}
 				</ui-select-choices>
+
 				</ui-select>
 			</td>
 			<td>
