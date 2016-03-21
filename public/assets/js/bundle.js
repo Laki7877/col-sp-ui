@@ -3923,13 +3923,41 @@ module.exports = function($scope, $controller, SellerCouponService, LocalCategor
 module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$window", "$uibModal", "NewsletterService", function($scope, $rootScope, Dashboard, $log, $window, $uibModal, NewsletterService){
 	'ngInject';
 
-	  $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-	  $scope.data = [
-	    [65, 59, 80, 81, 56, 55, 40]
-	  ];
-	  $scope.onClick = function (points, evt) {
-	    console.log(points, evt);
-	  };
+	  // Begin Week section
+
+	  // $scope.labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+	  // $scope.data = [
+	  //   [65, 59, 80, 81, 56, 55, 40]
+	  // ];
+	  // $scope.onClick = function (points, evt) {
+	  //   console.log(points, evt);
+	  // };
+
+
+	//Begin Day section
+	// return max date of month
+	getMaxDate = function(month, year) {
+		var d = new Date(year, month, 0);
+		var date = d.getDate();
+		return date;
+	};
+
+	var maxDate = getMaxDate(2, 2016);
+	console.log('labels',maxDate);
+
+	var tempLabels = [];
+	var tempData = [];
+
+	for (var i = 0; i < maxDate ; i++) {
+	 	tempLabels[i] = i + 1;
+	 	tempData[i] = Math.floor((Math.random() * 100) + 1);
+	 }; 
+
+	$scope.labels = tempLabels;
+	$scope.data = [tempData];
+
+	// End day graph section
+
 
 	Dashboard.getNewsLetter()
 		.then(function(query) {
