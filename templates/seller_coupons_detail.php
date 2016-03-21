@@ -14,7 +14,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
     <nc-page-title nc-title="{{title}}" link="{{url}}" icon="fa-bookmark">
       <div class="page-header">
         <a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
-        <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+        <button class="btn btn-blue btn-width-xl margin-left-10" ng-click="save()">Save</button>
       </div>
     </nc-page-title>
     <div ng-show="loading" nc-loading="{{loadingMessage}}"></div>
