@@ -8,11 +8,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
     <nc-page-title nc-title="{{title}}" link="{{url}}" icon="fa-inbox">
       <span class="float-right page-header-action">
         <button class="btn btn-white btn-width-xl" ng-click="cancel()">Close</a>
-        <button ng-if="getState() == 2 || getState() == 3" class="btn btn-white btn-width-xxl" print-btn>Print Shipping Label</button>
-        <button ng-if="getState() == 1" class="btn btn-blue btn-width-xl" ng-click="acknowledge()">Acknowledge</button>
-        <button ng-if="getState() == 2" class="btn btn-blue btn-width-xxl" ng-click="readyShip()">Ready to Ship</button>
-        <button ng-if="getState() >= 3" class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
-      </span> 
+        <button ng-if="getState() == 2 || getState() == 3" class="btn btn-white btn-width-xxl  margin-left-10" print-btn>Print Shipping Label</button>
+        <button ng-if="getState() == 1" class="btn btn-blue btn-width-xl margin-left-10" ng-click="acknowledge()">Acknowledge</button>
+        <button ng-if="getState() == 2" class="btn btn-blue btn-width-xxl margin-left-10" ng-click="readyShip()">Ready to Ship</button>
+        <button ng-if="getState() >= 3" class="btn btn-blue btn-width-xl margin-left-10" ng-click="save()">Save</button>
+      </span>
     </nc-page-title>
     <div>
     <div ng-show="loading" nc-loading="{{loadingMessage}}"></div>
@@ -42,7 +42,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
               <label class="font-size-20 padding-right-5" for="invoiceInput">Invoice #<span print-only>{{formData.InvoiceNumber}}</span></label>
               <span class="width-field-small-input" print-hide>
                 <input type="text" name="InvoiceNumber" ng-model="formData.InvoiceNumber" ng-class="{'has-error' : isInvalid(form.InvoiceNumber)}" class="form-control width-field-small-input" placeholder="Invoice Number (Required)" required>
-              </span>            
+              </span>
             </div>
         </div>
       </div>
@@ -163,7 +163,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
               <button ng-if="getState() == 1" class="btn btn-blue btn-width-xl" ng-click="acknowledge()">Acknowledge</button>
               <button ng-if="getState() == 2" class="btn btn-blue btn-width-xxl" ng-click="readyShip()">Ready to Ship</button>
               <button ng-if="getState() >= 3" class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
-            </span> 
+            </span>
           </div>
         </div>
       </form>
