@@ -41,7 +41,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <span class="hide-component header-link" href="#"><a class="active-underline">Today (2)</a></span>
             <span class="hide-component"><a href="#" class="color-grey">Pending (4)</a></span>
             <span class="hide-component"><a href="#" class="color-grey">Complete (230)</a></span>
-            <span><a href="#">View All</a></span>
+            <span><a ng-click="linkToOrdersPage()">View All</a></span>
           </span>
         </div>
         <div class="group_container no-padding">
@@ -49,13 +49,13 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <tbody>
               <tr ng-repeat="order in newOrdersData | orderBy: 'date' | limitTo:maxNewOrders" ng-show="newOrdersData.length != 0">
                 <td>
-                  {{order.date | date:'MM/dd/yyyy'}}
+                  {{order.OrderDate | date:'MM/dd/yyyy'}}
                 </td>
                 <td>
-                  {{order.id}}
+                  {{order.OrderIdText}}
                 </td>
                 <td>
-                  {{order.amount}}
+                  {{order.TotalAmt | currency: ' ': 2}}
                 </td>
                 <td>
                   <span ng-class="getColorClass(order.status)">
@@ -64,7 +64,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                   </span>
                 </td>
                 <td>
-                  <button class="btn btn-white btn-width-default">View</button>
+                  <button class="btn btn-white btn-width-default" ng-click="linkToOrder(order.OrderId)">View</button>
                 </td>
               </tr>
               <tr ng-show="newOrdersData.length == 0">
