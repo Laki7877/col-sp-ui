@@ -1,12 +1,31 @@
-module.exports = function($scope, $controller, config, $uibModal, GlobalCategory, Category, AttributeSet, AttributeSetService) {
+module.exports = function($scope, $controller,
+  config, $uibModal, GlobalCategory, Category, AttributeSet,
+  VariationFactorIndices, AttributeSetService, AttributeOptions, $productAdd) {
 	'ngInject';
 
-	$scope.formData = {};
-  $scope.dataset = {
-    CombinedAttributeSets: []
+	$scope.formData = {
+    MasterVariant: {},
+    Variants: []
   };
-	$scope.GlobalCategoryTree = null;
+  $scope.dataset = {
+    CombinedAttributeSets: [],
+    GlobalCategoryTree: null
+  };
   $scope.refresher = {};
+  $scope.dataset.attributeOptions = AttributeOptions.proto();
+  $scope.variationFactorIndices = new VariationFactorIndices($scope.dataset);
+
+  $scope.groupInfoSelected = false;
+
+  $scope.createVariationOption = function(){
+    $scope.groupInfoSelected = true;
+  }
+
+  $scope.$watch('dataset.attributeOptions', function() {
+    console.log("Regenerating variations");
+    $productAdd.generateVariants($scope.formData, $scope.dataset);
+  }, true);
+
   $scope.refresher.AttributeSets = function(q) {
       if (!q) return;
       $scope.refresher.AttributeSetsLoading = true;
@@ -24,12 +43,11 @@ module.exports = function($scope, $controller, config, $uibModal, GlobalCategory
         });
         $scope.dataset.CombinedAttributeSets = _.unionBy(searchRes, $scope.dataset.AttributeSets, 'AttributeSetId');
       })
-    };
+  };
 
 	GlobalCategory.list().then(function(data) {
-          $scope.GlobalCategoryTree = Category.transformNestedSetToUITree(data);
-          console.log($scope.GlobalCategoryTree);
-    });
+      $scope.dataset.GlobalCategoryTree = Category.transformNestedSetToUITree(data);
+  });
 
 	$scope.openCategorySelectorModal = function() {
 
@@ -37,13 +55,12 @@ module.exports = function($scope, $controller, config, $uibModal, GlobalCategory
         size: 'category-section modal-lg column-4',
         keyboard: false,
         templateUrl: 'product/modalCategorySelector',
-        controller: function($scope, $uibModalInstance, tree, model, disable) {
+        controller: function($scope, $uibModalInstance, tree, model) {
           'ngInject';
           $scope.model = model;
           $scope.tree = tree;
           $scope.title = 'Select Category';
           $scope.categoryHeaderText = '';
-          $scope.disabledOn = disable;
 
           $scope.select = function() {
             $uibModalInstance.close($scope.model);
@@ -54,23 +71,15 @@ module.exports = function($scope, $controller, config, $uibModal, GlobalCategory
             return $scope.formData.Category;
           },
           tree: function() {
-            return $scope.GlobalCategoryTree;
-          },
-          disable: function() {
-            return function(m) {
-              if (m.nodes.length == 0) return false;
-              return true;
-            }
+            return $scope.dataset.GlobalCategoryTree;
           }
         }
       });
 
       modalInstance.result.then(function(data) {
-        console.log("Got Result");
         $scope.formData.Category = data;
         AttributeSet.getByCategory(data.CategoryId)
         .then(function(data) {
-          console.log(data);
           $scope.dataset.AttributeSets = data.map(function(aset) {
             aset._group = "Suggested Attribute Sets";
             return aset;

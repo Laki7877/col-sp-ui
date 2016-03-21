@@ -12,6 +12,13 @@
 
 	<form name="form" style="margin-top:30px" class="ah-form sticky-mainform-action" novalidate>
          <div ng-include="'pending_products/section-group-information'"></div>
+
+         <ap-variation-option ng-show="groupInfoSelected" form-data="formData"
+            generator="variationFactorIndices" dataset="dataset">
+         </ap-variation-option>
+
+         <div ng-show="groupInfoSelected && formData.Variants.length > 0"
+					 ng-include="'ap/section-variant'"></div>
 	</form>
 </div>
 <?php $this->stop() ?>

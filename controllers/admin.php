@@ -11,14 +11,14 @@ class AdminController extends Controller
 	{
 		return View::render('admin_product_detail',  [
             'title' => 'Product Detail',
-            'viewBag' => array( 'productId' => $params['productid']),
+            'viewBag' => array( 'productId' => $params['id']),
         ]);
 	}
 
 	public static function approveDetail($params){
 		return View::render('admin_product_approval_detail',  [
             'title' => 'Product Detail',
-            'viewBag' => array( 'productId' => $params['productid']),
+            'viewBag' => array( 'productId' => $params['id']),
         ]);
 	}
     

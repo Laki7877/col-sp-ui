@@ -8,10 +8,8 @@ var angular = require('angular');
 module.exports = [function() {
   return function(arr, value) {
   	 var i = [];
-
   	 //TODO: use map
      arr.forEach(function(obj){
-          var path = value.split('.');
           var state = _.get(obj, value);
 
           if(state === true){

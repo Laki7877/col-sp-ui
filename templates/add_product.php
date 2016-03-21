@@ -7,8 +7,7 @@ $menus = [
     ['id' => 'variation', 'name' => 'Variation', 'class' => ''],
 ];
 
-$this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'])
-?>
+$this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product']) ?>
 <?php $this->start('page-body') ?>
 
 <div ng-controller="SellerProductDetailCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
@@ -17,7 +16,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
        <nc-alert nc-model="adminAlert"></nc-alert>
 
 		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
-            
+
             <nc-page-title nc-title="Products/Product Detail" link="/products">
                 <div class="float-right" ng-if="!_loading.state && adminMode">
                     <button ng-show="formData.Status != 'WA'" class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
@@ -42,19 +41,19 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
                 <?php $this->insert('components/tab-nav', ['items' => $menus]) ?>
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
-                             <div ap-component="ap/tab-information"></div>
+                             <div ng-include="'ap/tab-information'"></div>
                         </div>
                         <div role="tabpanel" class="tab-pane margin-top-20" id="images">
-                           <div ap-component="ap/tab-images"></div>
+                           <div ng-include="'ap/tab-images'"></div>
                         </div>
                         <div role="tabpanel" class="tab-pane margin-top-20" id="category">
-                            <div ap-component="ap/tab-category"></div>
+                            <div ng-include="'ap/tab-category'"></div>
                         </div>
     					<div role="tabpanel" class="tab-pane margin-top-20" id="more_option">
-                             <div ap-component="ap/tab-more-option"></div>
+                             <div ng-include="'ap/tab-more-option'"></div>
     					</div>
                         <div role="tabpanel" class="tab-pane margin-top-20" id="variation">
-                             <div ap-component="ap/tab-variations"></div>
+                             <div ng-include="'ap/tab-variations'"></div>
                         </div>
                     </div>
                     <!-- tablc-ntent-->

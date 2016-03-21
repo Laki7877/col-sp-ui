@@ -52,6 +52,7 @@
       <form class="ah-form sticky-mainform-action">
         <div class="add-product-form-action main-form-action full-width-row">
           <div class="container-fluid">
+            <span class="float-left"><p class="color-red">Debug Mode</p></span>
             <span class="float-right">
               <input class="form-control" placeholder="Order ID" ng-model="debug.id" />
               <ui-select ng-model="debug.status" search-enabled="false">

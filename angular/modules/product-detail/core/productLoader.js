@@ -4,6 +4,7 @@ factory('$productAdd', function(Product, AttributeSet, ImageService, GlobalCateg
   'ngInject';
   var $productAdd = {};
 
+  //TODO: One day, merge this into some other class that make sense
   /**
    *
    * Rebuild variations array from set of attribute options in dataset
@@ -67,9 +68,9 @@ factory('$productAdd', function(Product, AttributeSet, ImageService, GlobalCateg
       kpair.FirstAttribute = firstAttribute;
       kpair.SecondAttribute = secondAttribute;
       kpair.text = util.variant.toString(firstAttribute, secondAttribute);
-      kpair.Display = dataSet.VariantDisplayOption[0].value;
+      if(dataSet.VariantDisplayOption) kpair.Display = dataSet.VariantDisplayOption[0].value;
       kpair.Visibility = true;
-      kpair.SEO.ProductUrlKeyEn = "";
+      if(kpair.SEO) kpair.SEO.ProductUrlKeyEn = "";
       kpair.Sku = "";
       kpair.Pid = null;
 
