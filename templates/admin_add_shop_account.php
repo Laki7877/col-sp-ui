@@ -16,10 +16,10 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
     <div ng-show="saving" nc-loading="{{savingMessage}}"></div>
     <form ng-show="!saving && !loading" name="form" class="ah-form margin-top-20 sticky-mainform-action" novalidate>
 		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation" class="required active">
+			<li role="presentation" class="require active">
 				<a href="#shop_account" data-id="shop_account" aria-controls="shop_account" role="tab" data-toggle="tab">Vital Information</a>
 			</li>
-			<li role="presentation" class="require">
+			<li role="presentation">
 				<a href="#shop_profile" data-id="shop_profile" aria-controls="shop_profile" role="tab" data-toggle="tab">Shop Profile</a>
 			</li>
 		</ul>
@@ -367,6 +367,11 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 						</div>
 					</div>
 				</div>
+				<div class="row">
+						<div class="col-xs-12">
+								<p class="text-align-right"><span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field</p>
+						</div>
+				</div>
 			</div>
 			<div role="tabpanel" class="tab-pane margin-top-20" id="shop_profile">
 				<div id="shop-setting-content">
@@ -473,11 +478,6 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 
 				                </div>
 				            </div>
-				        </div>
-				    </div>
-				    <div class="row">
-				        <div class="col-xs-12">
-				            <p class="text-align-right"><span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field</p>
 				        </div>
 				    </div>
 				</div>
