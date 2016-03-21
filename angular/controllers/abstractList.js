@@ -42,9 +42,9 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 			.then(function(data) {
 				$scope.list = data;
 			})
-			.finally(function() {
-				$scope.loading = false;
-			});
+		.finally(function() {
+			$scope.loading = false;
+		});
 	};
 	$scope.onLoad = function() {
 		$scope.loading = true;
@@ -108,10 +108,10 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 						return util.actionView(options.url, options.id, 'View Detail');
 					case 'Delete':
 						return util.actionDelete(options.service, options.id, options.item, $scope.alert, $scope.reload, function(obj, id) {
-								_.remove($scope.bulkContainer, function(e) {
-									return e[id] === obj[id];
-								})
-							});
+							_.remove($scope.bulkContainer, function(e) {
+								return e[id] === obj[id];
+							})
+						});
 					case 'Duplicate':
 						return util.actionDuplicate(options.service, options.id, options.item, $scope.alert, $scope.reload);
 				}
