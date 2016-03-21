@@ -33,7 +33,7 @@ Route::add('/products/export', 'ProductController::export');
 Route::add('/products/import/update', 'ProductController::importUpdate');
 Route::add('/products/import', 'ProductController::import');
 Route::add('/products/groups', 'ProductController::group');
-Route::add('/products/groups/create', 'ProductController::groupCreate');
+Route::add('/products/groups/add', 'ProductController::groupCreate');
 Route::add('/products/:productid', 'ProductController::edit');
 
 //category routing

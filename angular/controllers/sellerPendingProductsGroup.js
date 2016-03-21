@@ -1,5 +1,5 @@
 module.exports = function($scope, $controller,
-		config, $uibModal, GlobalCategory, Category, AttributeSet, Product, ProductTemp,
+		config, $uibModal, GlobalCategory, Category, AttributeSet, Product, ProductTempService,
 		VariationFactorIndices, AttributeSetService, AttributeOptions, $productAdd) {
 	'ngInject';
 
