@@ -78,5 +78,4 @@ class SellerController extends Controller
     {
         return View::render('seller_order_detail',  ['params' => json_encode_n($params)]);
     }
-
 }

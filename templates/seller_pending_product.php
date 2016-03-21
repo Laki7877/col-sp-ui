@@ -1,7 +1,7 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Pending Products']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Pending Products']) ?>
 
 <?php $this->start('page-body') ?>
-  <div ng-controller="AdminPendingProductCtrl">
+  <div ng-controller="SellerPendingProductCtrl">
     <nc-page-title nc-title="Pending Products">
       <a class="btn btn-blue btn-width-xxl" ng-href="{{url}}/add">Create Group Variant</a>
     </nc-page-title>

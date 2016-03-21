@@ -72,7 +72,8 @@ var seller = {
 	  	'Export': '/products/export',
 	  	'Local Category|margin-top-30': '/categories',
 	  	'Product Reviews': '/products/reviews',
-	  	'Image Management': '/products/images'
+	  	'Image Management': '/products/images',
+	  	'Pending Products': '/products/groups'
 	},
 
 	'Inventory|fa-archive': {
@@ -99,6 +100,7 @@ var admin = {
 	'Products|fa-tag': {
 		'View All Products': '/admin/products',
 		'Approve Products': '/admin/approve',
+		'Pending Products': '/admin/groups',
 		'Master Products': '/admin/masters',
 		'Brands': '/admin/brands',
 		'Attributes': '/admin/attributes',

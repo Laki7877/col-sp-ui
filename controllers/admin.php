@@ -179,6 +179,11 @@ class AdminController extends Controller
 		return View::render('admin_add_shop_type',  ['params' => json_encode_n($params), 'title' => 'Shop Type Detail']);
 	}
 
+	//Pending product
+	public static function listPendingProduct($params) 
+	{
+		return View::render('admin_pending_product');
+	}
 
 	//On top credit
 	public static function listOntopcredit($params)

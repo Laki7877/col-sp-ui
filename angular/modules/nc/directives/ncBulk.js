@@ -109,14 +109,10 @@ angular.module('nc')
 							}));
 							//Modal
 							modal.result.then(function(data) {
-								var processed = scope.model;
-								if(!_.isNil(data)) {
-									processed = data;
-								}
-								scope.select.fn(processed, function() {
+								scope.select.fn(scope.model, function() {
 									//cb to clear all entries
 									scope.model = [];
-								});
+								}, data);
 							});
 						} else {
 							scope.select.fn(scope.model, function() {

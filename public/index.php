@@ -32,8 +32,8 @@ Route::add('/products/reviews', 'ProductController::reviews');
 Route::add('/products/export', 'ProductController::export');
 Route::add('/products/import/update', 'ProductController::importUpdate');
 Route::add('/products/import', 'ProductController::import');
-Route::add('/products/group', 'ProductController::group');
-Route::add('/products/group/create', 'ProductController::groupCreate');
+Route::add('/products/groups', 'ProductController::group');
+Route::add('/products/groups/create', 'ProductController::groupCreate');
 Route::add('/products/:productid', 'ProductController::edit');
 
 //category routing
@@ -103,6 +103,9 @@ Route::add('/admin/newsletters', 'AdminController::listNewsletter');
 Route::add('/admin/masters', 'AdminController::listMaster');
 Route::add('/admin/masters/add', 'AdminController::addMaster');
 Route::add('/admin/masters/:id', 'AdminController::editMaster');
+Route::add('/admin/groups', 'AdminController::listPendingProduct');
+Route::add('/admin/groups/add', 'AdminController::addPendingProduct');
+Route::add('/admin/groups/:id', 'AdminController::editPendingProduct');
 
 //test route
 Route::add('/test/:name', 'TestController::any');

@@ -13,6 +13,10 @@ class ProductController extends Controller
           'viewBag' => $_POST['selected_products'],
       ]);
     }
+    
+    public static function group($params) {
+        return View::render('seller_pending_product');
+    }
 
     public static function groupCreate($param){
       return View::render('seller_pending_products_group', [
