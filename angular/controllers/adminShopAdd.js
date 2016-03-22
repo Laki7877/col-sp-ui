@@ -24,6 +24,11 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 							item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
 						});
 				});
+			},
+			onAfterSave: function(scope) {			
+				_.forEach(scope.formData.Commissions, function(item) {
+					item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
+				});
 			}
 		}
 	});

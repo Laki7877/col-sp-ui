@@ -109,12 +109,12 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										'labelClass' : 'required'
 										}">
 										<ui-select ng-model="formData.Status" search-enabled="false" required>
-										<ui-select-match placeholder="- Select Shop Status -">
-										<span ng-bind="$select.selected.name"></span>
-										</ui-select-match>
-										<ui-select-choices repeat="item.value as item in statusDropdown">
-										<span ng-bind="item.name"></span>
-										</ui-select-choices>
+											<ui-select-match placeholder="- Select Shop Status -">
+												<span ng-bind="$select.selected.name"></span>
+											</ui-select-match>
+											<ui-select-choices repeat="item.value as item in statusDropdown">
+												<span ng-bind="item.name"></span>
+											</ui-select-choices>
 										</ui-select>
 									</div>
 									<!-- Max local cat -->

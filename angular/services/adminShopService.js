@@ -24,12 +24,12 @@ module.exports = function(common, config, util) {
 	};
 	service.generate = function() {
 		var processed = {
-			Status: config.DROPDOWN.DEFAULT_STATUS_DROPDOWN[0],
+			Status: config.DROPDOWN.DEFAULT_STATUS_DROPDOWN[0].value,
 			ShopOwner: {},
 			Users: [],
 			Commissions: [],
 			GiftWrap: 'N',
-			TaxInvoice: 'N',
+			TaxInvoice: 'Y',
 			StockAlert: 0
 		};
 		return processed;

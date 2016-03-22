@@ -2,6 +2,7 @@ module.exports = function($scope, $controller, GlobalCouponService, GlobalCatego
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
   $scope.filters = config.DROPDOWN.COUPON_GLOBAL_FILTER;
+  $scope.discount = config.DROPDOWN.COUPON_DISCOUNT;
 
   //Abstract Add Ctrl
   $controller('AbstractAddCtrl', {
@@ -9,7 +10,7 @@ module.exports = function($scope, $controller, GlobalCouponService, GlobalCatego
     options: {
       id: 'CouponId',
       url: '/admin/coupons/global',
-      item: 'Coupon',
+      item: 'Global Coupon',
       service: GlobalCouponService,
       dateFields: ['StartDate', 'ExpireDate'],
       onLoad: function() {
