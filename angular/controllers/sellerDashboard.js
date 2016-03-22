@@ -1,5 +1,5 @@
 
-module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModal, NewsletterService){
+module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window, $uibModal, NewsletterService){
 	'ngInject';
 
 	  // Begin Week section
@@ -234,10 +234,12 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModa
 	};
 
 	$scope.linkToLowStock = function(){
+		storage.put('lowstock', true);
 		$window.location.href = '/inventory';
 	};
 
 	$scope.linkToOrdersPage = function(){
+		storage.put('payment_order', true);
 		$window.location.href = '/orders';
 	};
 
