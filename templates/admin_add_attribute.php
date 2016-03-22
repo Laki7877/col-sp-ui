@@ -91,7 +91,7 @@
                 ng-template-options="{
                   'label' : 'Required'
                 }">
-                <ui-select ng-model="formData.Required" search-enabled="false" ng-disabled="formData.DataType == 'HB'">
+                <ui-select ng-model="formData.Required" search-enabled="false">
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>

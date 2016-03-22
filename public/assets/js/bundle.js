@@ -1747,7 +1747,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "Im
 				fn: function(item) {
 					$scope.open(item);
 				}
-			}, 'Delete']
+			}]
 		}
 	});
 
@@ -11860,7 +11860,7 @@ module.exports = ["common", "config", function(common, config) {
 			return _.pick(e, ['TagId', 'TagName']);
 		});
 		processed.Categories = _.join(_.map(data.Category, function(e) {
-			return e.NameEn + ' (' + e.CategoryAbbreviation + ')';
+			return e.NameEn + ' (' + e.CategoryId + ')';
 		}), ', ');
 		if(processed.Categories.length == 0) {
 			processed.Categories = 'None'; 

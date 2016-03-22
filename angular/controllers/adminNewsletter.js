@@ -13,7 +13,7 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService, Ima
 				fn: function(item) {
 					$scope.open(item);
 				}
-			}, 'Delete']
+			}]
 		}
 	});
 
