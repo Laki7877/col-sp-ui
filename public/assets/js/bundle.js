@@ -657,6 +657,7 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 						$scope.formData = options.service.deserialize(result);
 						$scope.alert.success(options.success || util.saveAlertSuccess(options.successItem || options.item, options.url));
 						$scope.form.$setPristine(true);
+						(options.onAfterSave || _.noop)($scope, true);
 					}, function(err) {
 						$scope.alert.error(common.getError(err));
 					})
@@ -677,6 +678,7 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 						$scope.formData = options.service.deserialize(result);
 						$scope.alert.success(options.success || util.saveAlertSuccess(options.successItem || options.item, options.url));
 						$scope.form.$setPristine(true);
+						(options.onAfterSave || _.noop)($scope, false);
 					}, function(err) {
 						$scope.alert.error(common.getError(err));
 					})
@@ -1153,8 +1155,11 @@ module.exports = ["$scope", "$controller", "AttributeService", "ImageService", "
 			onLoad: function(scope, flag) {
 				if(flag) {
 					scope.alreadyDefault = scope.formData.DefaultAttribute;
-					console.log(scope.alreadyDefault);
 				}
+			},
+			onAfterSave: function(scope) {
+				console.log(scope.formData);
+				scope.alreadyDefault = scope.formData.DefaultAttribute;
 			}
 		}
 	});
@@ -11612,7 +11617,7 @@ module.exports = ["common", "config", function(common, config) {
 				AttributeValues: [{}]
 			},
 			DefaultAttribute: false,
-			VisibleTo: visibleToOptions[0],
+			VisibleTo: visibleToOptions[0].value,
 			ShowGlobalSearchFlag: false,
 			ShowLocalSearchFlag: false,
 			VariantDataType: variantOptions[0].value

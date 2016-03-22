@@ -18,8 +18,11 @@ module.exports = function($scope, $controller, AttributeService, ImageService, c
 			onLoad: function(scope, flag) {
 				if(flag) {
 					scope.alreadyDefault = scope.formData.DefaultAttribute;
-					console.log(scope.alreadyDefault);
 				}
+			},
+			onAfterSave: function(scope) {
+				console.log(scope.formData);
+				scope.alreadyDefault = scope.formData.DefaultAttribute;
 			}
 		}
 	});

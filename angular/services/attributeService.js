@@ -41,7 +41,7 @@ module.exports = function(common, config) {
 				AttributeValues: [{}]
 			},
 			DefaultAttribute: false,
-			VisibleTo: visibleToOptions[0],
+			VisibleTo: visibleToOptions[0].value,
 			ShowGlobalSearchFlag: false,
 			ShowLocalSearchFlag: false,
 			VariantDataType: variantOptions[0].value
