@@ -5,6 +5,8 @@
   $scope.events = {};
   $scope.alert = new NcAlert();
   var redir = storage.get('redirect');
+  storage.remove('redirect');
+  
   var profile = storage.getCurrentUserProfile();
   if (profile) {
     $window.location.href = Credential.getRedirPath(profile)
@@ -12,7 +14,6 @@
   
   if(redir && redir != '/') {
     $scope.alert.open(false, 'Your session has timed out', '');
-    storage.remove('redirect');
   }
 
   $scope.doLogin = function () {

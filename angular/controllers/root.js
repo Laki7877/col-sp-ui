@@ -4,8 +4,10 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
 	$rootScope._ = _;
 	$rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
-  if (!$rootScope.Profile && $window.location.pathname != "/login") {
+
+  if (!$rootScope.Profile && $window.location.pathname.indexOf("/login") == -1) {
     storage.put('redirect', $window.location.pathname);
+    //TODO: Redirect accordingly
     $window.location.href = "/login";
   }
 
@@ -34,6 +36,10 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
 
   //Create global logout function
   $rootScope.logout = function() {
+    console.log('Logging out of Profile', JSON.stringify($rootScope.Profile));
+
+    var isAdmin = $rootScope.Profile.User.IsAdmin;
+
     if ($rootScope.Imposter) {
       return Credential.logoutAs().then(function(R) {
         //return to normal flow
@@ -48,7 +54,7 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
     }
 
     Credential.logout();
-    $window.location.href = "/login"
+    $window.location.href = isAdmin ? "/admin/login" : "/login";
   };
 
 

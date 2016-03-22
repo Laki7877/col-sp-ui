@@ -22,6 +22,7 @@ Route::add('/exception', 'Redirect::exception');
 
 //login routing
 Route::add('/login', 'LoginController::index');
+Route::add('/admin/login', 'LoginController::indexAdmin');
 
 //product routing
 Route::add('/products', 'ProductController::index');

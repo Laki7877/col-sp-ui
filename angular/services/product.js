@@ -369,6 +369,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			var MasterAttribute = {};
 			try {
 				invFd.MasterAttribute.forEach(function(ma) {
+					//Hacky AF
 					if(ma.DataType == "CB"){
 						for(var i = 0; i < ma.AttributeValues.length; i++){
 							var item  = ma.AttributeValues[i];

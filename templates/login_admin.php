@@ -1,7 +1,7 @@
 <?php $this->layout('layouts/page-plain', ['title' => 'Login']) ?>
 
 <?php $this->start('page-body') ?>
-<div class="login-page" ng-controller="LoginCtrl">
+<div class="login-page" ng-controller="AdminLoginCtrl">
 
 	<div class="logo-img-wrapper">
 		<img class="logo-img" src="<?= $this->asset('/assets/img/login_logo_admin.png') ?>" />
