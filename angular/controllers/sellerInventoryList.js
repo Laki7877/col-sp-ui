@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, $window, InventoryService, config, common) {
+module.exports = function($scope, $controller, $window, InventoryService, config, common, storage) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
@@ -24,7 +24,11 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 				$scope.lastEdit = null;
 			}
 		}
-	});
+	});	
+	if(storage.has('lowstock')) {
+		$scope.params._filter = 'LowStock';
+		storage.remove('lowstock');
+	}
 	$scope.getAvailableStock = function(item) {
 		return _.toInteger(item.Quantity) - (
 				_.toInteger(item.Defect) +
@@ -66,7 +70,7 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 				$scope.alert.error(common.getError(err));
 			})
 		.finally(function() {
-			item.open = false;
+			$scope.popoverItemOriginal.open = false;
 		});
 	};
 	$scope.popoverItem = {};

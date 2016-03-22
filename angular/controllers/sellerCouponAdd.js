@@ -2,6 +2,7 @@ module.exports = function($scope, $controller, SellerCouponService, LocalCategor
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
   $scope.filters = config.DROPDOWN.COUPON_SELLER_FILTER;
+  $scope.discount = config.DROPDOWN.COUPON_DISCOUNT;
 
   //Abstract Add Ctrl
   $controller('AbstractAddCtrl', {

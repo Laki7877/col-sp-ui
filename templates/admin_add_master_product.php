@@ -21,13 +21,6 @@
             </div>
             <div class="form-section-content">
               <div nc-template="common/input/form-group-with-label"
-                nc-label="Filter by Brand" >
-                <ui-select ng-model="formData.FilterBy">
-                  <ui-select-match placeholder="Search Brand">{{$select.selected.BrandNameEn}}</ui-select-match>
-                  <ui-select-choices repeat="item in brands" refresh="getBrands($select.search)" refresh-date="1">{{ item.BrandNameEn }}</ui-select-choices>
-                </ui-select>
-              </div>
-              <div nc-template="common/input/form-group-with-label"
                 nc-label="Select Master Product" >
                 <ui-select ng-model="formData.MasterProduct">
                   <ui-select-match placeholder="Search Master Product">{{$select.selected.ProductNameEn}}</ui-select-match>

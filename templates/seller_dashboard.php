@@ -20,11 +20,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           </span>
         </div>
         <div class="dashboard_graph">
-          <div>
+          <div class="canvas-holder">
             <!-- <canvas id="canvas" height="280"></canvas> -->
             <canvas id="line" class="chart chart-line" chart-data="data"
-              chart-labels="labels" chart-legend="false" chart-series="series"
-              chart-click="onClick" >
+              chart-labels="labels" chart-legend="false" chart-series="line"
+              chart-click="onClick" chart-options="{bezierCurve : false}">
             </canvas> 
           </div>
         </div>
@@ -58,9 +58,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                   {{order.TotalAmt | currency: ' ': 2}}
                 </td>
                 <td>
-                  <span ng-class="getColorClass(order.status)">
-                    <i class="fa" ng-class="getFaClass(order.status)"></i>
-                    {{order.status}}
+                  <span ng-class="getColorClass(order.Status)">
+                    <i class="fa" ng-class="getFaClass(order.Status)"></i>
+                    <span ng-show="order.Status=='PC'">Payment Confirmed</span>
                   </span>
                 </td>
                 <td>

@@ -1,11 +1,16 @@
 <div class="home_task home_task_space <?=$home_task_container_class?>" <?=$task_display?>>
-  <div class="image-thumbs-img-wrapper">
+  <div class="image-thumbs-img-wrapper" ng-show="!onLoadingFlag">
       <img class="logo-imgx" src="<?= $this->asset('/assets/img/'.$image_name.'.png') ?>" />
   </div>
   <div class="home_task_text">
-    <div class="font-size-18"><?=$field_header?></div>
-    <div class="color-dark-grey"><?=$field_text?></div>
+    <div class="empty-section margin-top-20 margin-bottom-20" ng-show="onLoadingFlag">
+        <i class="fa fa-spinner fa-spin color-theme"></i>
+        
+    </div>
+    <div class="font-size-18" ng-show="!onLoadingFlag"><?=$field_header?></div>
+    <div class="color-dark-grey" ng-show="!onLoadingFlag"><?=$field_text?></div>
   </div>
+  <div class="loading_text" ng-show="onLoadingFlag">Loading...</div>
   <div class="home_task_button">
     <div>
       <? if(!isset($type))

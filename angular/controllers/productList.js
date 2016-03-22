@@ -41,9 +41,9 @@ module.exports = function ($scope, $controller, common, Product, util, Alert, $w
                 },
                 {
                     name: 'Add Tags',
-                    fn: function(add, cb) {
+                    fn: function(add, cb, r) {
                         $scope.alert.close();
-                        Product.addTags(add).then(function() {
+                        Product.addTags(r).then(function() {
                             cb();
                             $scope.alert.success('Successfully add tags for ' + add.length + ' products')
                         }, function(resp) {

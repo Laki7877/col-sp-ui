@@ -1,5 +1,5 @@
 
-module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModal, NewsletterService){
+module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window, $uibModal, NewsletterService){
 	'ngInject';
 
 	  // Begin Week section
@@ -53,24 +53,23 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModa
 				$scope.lowStockAlertData[i].QuantityText = 'QTY: ' + $scope.lowStockAlertData[i].Quantity;
 			};
 			return $scope.lowStockAlertData;
-		})
-		.then(function(lowStockAlertData){
-			var promise = Dashboard.getOutOfStock();
-			promise.then(function(outOfStockData) {
-				outOfStockData = outOfStockData.data;
+		// })
+		// .then(function(lowStockAlertData){
+		// 	var promise = Dashboard.getOutOfStock();
+		// 	promise.then(function(outOfStockData) {
+		// 		outOfStockData = outOfStockData.data;
 
-				for (var i = outOfStockData.length - 1; i >= 0; i--) {
-					outOfStockData[i].PidText = 'ID: ' + outOfStockData[i].Pid;
-					outOfStockData[i].QuantityText = 'QTY: ' + outOfStockData[i].Quantity;
-				};
+		// 		for (var i = outOfStockData.length - 1; i >= 0; i--) {
+		// 			outOfStockData[i].PidText = 'ID: ' + outOfStockData[i].Pid;
+		// 			outOfStockData[i].QuantityText = 'QTY: ' + outOfStockData[i].Quantity;
+		// 		};
 
-				var object = lowStockAlertData.concat(outOfStockData);
-				// console.log(object);
-				return $scope.lowStockAlertData = object;
+		// 		var object = lowStockAlertData.concat(outOfStockData);
+		// 		return $scope.lowStockAlertData = object;
 
-			}, function(reason) {
-			  console.log('Failed: ' + reason);
-			});
+		// 	}, function(reason) {
+		// 	  console.log('Failed: ' + reason);
+		// 	});
 		});
 
 	Dashboard.getOutOfStock()
@@ -189,7 +188,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModa
 
 	$scope.getColorClass = function(status) {
 		switch (status) {
-	        case 'Payment Confirmed':
+	        case 'PC':
 	            return 'color-grey';
 	            break;
 	        case '2':
@@ -201,7 +200,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModa
 
 	$scope.getFaClass = function(status) {
 		switch (status) {
-	        case 'Payment Confirmed':
+	        case 'PC':
 	            return 'fa-check-circle-o';
 	            break;
 	        case '2':
@@ -235,10 +234,12 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModa
 	};
 
 	$scope.linkToLowStock = function(){
+		storage.put('lowstock', true);
 		$window.location.href = '/inventory';
 	};
 
 	$scope.linkToOrdersPage = function(){
+		storage.put('payment_order', true);
 		$window.location.href = '/orders';
 	};
 

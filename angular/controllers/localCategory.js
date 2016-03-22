@@ -131,15 +131,17 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 					$scope.loading = false;
 				} else {
 					//Check product count
-					Product.advanceList({
-						LocalCategories: [{CategoryId: id}],
-						_limit: 1,
-					}).then(function(response) {
-						$scope.availableProducts = response.total;
-					});
 					LocalCategoryService.get(id)
 						.then(function(data) {
 							$scope.formData = LocalCategoryService.deserialize(data);
+							//Check product count
+							Product.advanceList({
+								LocalCategories: [_.pick($scope.formData, ['Lft', 'Rgt'])],
+								_limit: 1,
+							}).then(function(response) {
+								$scope.availableProducts = response.total;
+							});
+
 						}, function(err) {
 							$scope.alert.error(common.getError(err));
 						}).finally(function() {

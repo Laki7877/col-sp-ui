@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, SellerAccountService, SellerRoleService) {
+module.exports = function($scope, $controller, BrandService, SellerAccountService, SellerRoleService) {
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
@@ -21,6 +21,13 @@ module.exports = function($scope, $controller, SellerAccountService, SellerRoleS
 		}
 	});
 	$scope.brands = [];
+	$scope.getShopOwner = function(e) {
+		if(!_.isNil(e)) {
+			return e.GroupNameEn == 'Shop Owner';
+		} else {
+			return false;
+		}
+	};
 	$scope.getBrands = function(search) {
 		BrandService.list({
 			searchText: search

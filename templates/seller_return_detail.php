@@ -95,7 +95,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Return Requests'])
                         <div nc-template="common/input/form-group-with-label" nc-label="Reason for Return" nc-template-options="{ inputSize: 'xxl' }">
                           <p class="form-control-static noPrintMargin">{{formData.ReasonForReturn}}</p>
                         </div>
-                        <div nc-template="common/input/form-group-with-label" nc-template-form="form.CnNumber" nc-label="CN Number">
+                        <div nc-template="common/input/form-group-with-label" nc-template-form="form.CnNumber"nc-template-options="{ labelClass: 'required' }"nc-label="CN Number">
                           <label class="control-label" print-only>{{formData.CnNumber}}</label>
                           <input ng-disabled="formData.Status == 'AP'" name="CnNumber" ng-model="formData.CnNumber" class="form-control" required print-hide/>
                         </div>

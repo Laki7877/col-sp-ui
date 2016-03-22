@@ -25,10 +25,10 @@ module.exports = function(common) {
             Status: 'NA',
             Conditions: {
                 Order: [{
-                    Type: 'No filter'
+                    Type: 'NoFilter'
                 }],
                 FilterBy: {
-                    Type: 'No filter'
+                    Type: 'NoFilter'
                 }
             }
         }
