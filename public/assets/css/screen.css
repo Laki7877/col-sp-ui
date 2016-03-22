@@ -12893,15 +12893,15 @@ ul.sub-sidebar {
 }
 /* line 167, ../../../assets/_sidebar.scss */
 ul.sub-sidebar .item {
-  color: #7b7f8f;
+  color: #FFFFFF;
 }
 /* line 169, ../../../assets/_sidebar.scss */
 ul.sub-sidebar .item.active {
-  color: #FFFFFF;
+  color: #4899DD;
 }
 /* line 172, ../../../assets/_sidebar.scss */
 ul.sub-sidebar .item:hover {
-  color: #FFFFFF;
+  color: #4899DD;
 }
 
 /* line 2, ../../../assets/_breadcrumb.scss */
