@@ -210,6 +210,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('AbstractListCtrl', controllers.abstractList)
   .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
   .controller('AbstractAddCtrl', controllers.abstractAdd)
+  .controller('AbstractPendingProductGroupCtrl', controllers.abstractPendingProductGroup)
 
   .controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
   .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)

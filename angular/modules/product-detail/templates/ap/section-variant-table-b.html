@@ -12,16 +12,17 @@
 				{{ pair.text }}
 			</td>
 			<td>
-				<ui-select ng-model="pair.MappedProduct" ng-disabled="!pair.Visibility"
+				<ui-select ng-model="pair.MappedProduct" theme="selectize" ng-disabled="!pair.Visibility"
 				name="pair_MappedProduct"
 				nc-tag-validator nc-tag-field>
-				<ui-select-match placeholder="Search Product Name, SKU, or PID">
-					{{$select.selected.ProductNameEn}}
-				</ui-select-match>
-				<ui-select-choices refresh="refresher.Products($select.search)"
-				repeat="item in dataset.Products | filter: $select.search">
-					{{item.ProductNameEn}}
-				</ui-select-choices>
+				
+					<ui-select-match placeholder="Search Product Name, SKU, or PID">
+						{{$select.selected.ProductNameEn}}
+					</ui-select-match>
+					<ui-select-choices refresh="refresher.Products($select.search)"
+					repeat="item in dataset.Products | filter: $select.search">
+						{{item.ProductNameEn}}
+					</ui-select-choices>
 
 				</ui-select>
 			</td>
