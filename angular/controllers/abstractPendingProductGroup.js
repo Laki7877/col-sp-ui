@@ -2,7 +2,34 @@ module.exports = function($scope, $rootScope, $controller,
 		config, $uibModal, GlobalCategory, Category, AttributeSet, Product, ProductTempService,
 		VariationFactorIndices, AttributeSetService, AttributeOptions, $productAdd) {
 	'ngInject';
-
+    
+    $scope.create = function(){
+        
+        var fd = angular.copy($scope.formData);
+        
+        //One-way serialize
+        
+        //Find default Varaint
+        var text_defaultVariant = $scope.formData.DefaultVariant.text;
+        var idx_defaultVariant = _.findIndex($scope.formData.Variants, function(o){ return o.text == text_defaultVariant }); 
+        fd.Variants[idx_defaultVariant].DefaultVariant = true;
+        fd.Category = {
+            CategoryId: fd.Category.CategoryId
+        }
+        
+        fd.Variants.map(function(o){
+           o.Pid = o.MappedProduct.Pid;
+           delete o.MappedProduct;
+           return o;
+        });
+        
+        delete fd.MasterVariant;
+        delete fd.DefaultVariant;
+        console.log("fd", fd);
+        //Post to server
+		Product.savePendingProduct(fd);
+	};
+    
 	$scope.formData = {
 		Category: {
 			CategoryId: null
