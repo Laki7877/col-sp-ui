@@ -14501,10 +14501,6 @@ form h6 {
 #dashboard_page .dashboard_column:nth-child(2) {
   padding-right: 0px;
 }
-/* line 85, ../../../assets/_seller_page.sass */
-#dashboard_page .dashboard_graph canvas {
-  height: 280px !important;
-}
 /* line 88, ../../../assets/_seller_page.sass */
 #dashboard_page .with_border {
   border: 1px solid #bcc7d5;
