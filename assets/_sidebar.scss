@@ -165,12 +165,12 @@ ul.sub-sidebar {
   background-color: $sidebar-bg-color-active;
   color: $color-white;
   .item {
-    color: $font-color-grey;
+    color: $color-white;
     &.active {
-      color: $color-white;
+      color: $color-red;
     }
     &:hover {
-      color: $color-white;
+      color: $color-red;
     }
   }
 }
