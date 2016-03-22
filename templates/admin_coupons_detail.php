@@ -72,8 +72,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
                               <div class="ah-select2-dropdown">
                                   <select ng-model="formData.Action" class="form-control"
                                   ng-init="formData.Action = {Type: 'PERCENT'}"
-                                  ng-options="i as i.display for i in [{ display: 'Discount by percent', Type: 'PERCENT'},{ display: 'Discount by amount', Type: 'AMOUNT'}]
-                                  track by i.Type" required>
+                                  ng-options="i as i.display for i in discount track by i.Type" required>
                                   </select>
                               </div>
                           </div>
@@ -81,7 +80,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
                               <input type="text" class="form-control" ng-model="formData.Action.DiscountAmount" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"/>
                           </div>
 
-                          <div nc-template="common/input/form-group-with-label" nc-label="Maximum Amount" nc-template-options-path="couponForm/MaximumAmount">
+                          <div ng-show="formData.Action.Type != 'AMOUNT'" nc-template="common/input/form-group-with-label" nc-label="Maximum Amount" nc-template-options-path="couponForm/MaximumAmount">
                               <input type="text" class="form-control" ng-model="formData.Action.MaximumAmount" ng-pattern-restrict="^[0-9]*$"/>
                           </div>
 

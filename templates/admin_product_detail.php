@@ -7,21 +7,24 @@ $menus = [
 	["id" => "variation", "name" => 'Variation', 'class' => ''],
 ];
 
-$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Seller Portal - Product'])
+$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration'])
 ?>
 <?php $this->start('page-body') ?>
 
 <div ng-controller="AdminProductDetailCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
-
         <nc-alert nc-model="alert"></nc-alert>
-
 		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
             <fieldset> <!-- admin can edit all statuses -->
-            <? $this->insert('components/page-title-breadcrumb', ['text' => "Products/ " . $title, 'urls' => ['/products']]) ?>
+            <nc-page-title nc-title="All Products/<?=$title?>" link="/admin/products">
+                <div class="float-right" ng-if="!_loading.state && adminMode">
+                    <a class="btn btn-white btn-width-xl" ng-href="/admin/products">Cancel</a>
+                    <button ng-show="formData.Status != 'WA'" class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
+                    <button type="submit" class="btn btn-blue btn-width-xl" ng-click="saveAsIs()">Save</button>
+                </div>
+            </nc-page-title>
             <div ng-if="pageState.loading.state" nc-loading="{{ pageState.loading.message }}..">
             </div>
             <div class="add-product-body" ng-if="!pageState.loading.state">
-
                     <? $this->insert('components/tab-nav', ["items" => $menus]) ?>
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane margin-top-20 active" id="information">

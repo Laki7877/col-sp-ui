@@ -207,6 +207,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('AdminMasterProductAddCtrl', controllers.adminMasterProductAdd)
 
   .controller('LoginCtrl', controllers.login)
+  .controller('AdminLoginCtrl', controllers.adminLogin)
+  
   .controller('AbstractListCtrl', controllers.abstractList)
   .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
   .controller('AbstractAddCtrl', controllers.abstractAdd)

@@ -46,7 +46,7 @@
                   }">
                   <textarea class="form-control" ng-model="formData.AttributeSetDescriptionEn" maxlength="500"></textarea>
               </div>
-              <div ng-show="id > 0"
+              <div ng-show="id != 0"
                   ng-template="common/input/label"
                   ng-template-options="{
                     'label' : 'Mapped Categories (ID)',
@@ -58,7 +58,7 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Mapping</h2></div>
             <div class="form-section-content">
-                <nc-tradable-select nc-test="lockAttributeset" nc-model="formData.Attributes" nc-select-options="attributeOptions" column-header="Attribute in this Attribute Set" search-placeholder="Search Attribute" nc-options="{ 'map' : { 'text': 'AttributeNameEn', 'value' : 'AttributeId'} }"></nc-tradable-select>
+                <nc-tradable-select nc-test="lockAttributeset" nc-model="formData.Attributes" on-search="onSearch" nc-select-options="attributeOptions" column-header="Attribute in this Attribute Set" search-placeholder="Search Attribute" nc-options="{ 'map' : { 'text': 'AttributeNameEn', 'value' : 'AttributeId'} }"></nc-tradable-select>
                 <div class="row col-xs-12">
                   <p style="margin-left: 30px; margin-top:15px">* Changing attribute mapping may affect products under this attribute set</p>
                 </div>
@@ -87,7 +87,7 @@
                   on-select="onKeywordAdded($item, $model)"
                   multiple
                   nc-tag-validator
-                  nc-tag-pattern="^[0-9a-zA-Z]+$"
+                  nc-tag-pattern="^[0-9a-zA-Z ]+$"
                   nc-max-tag-count="100"
                   nc-max-tag-length="30"
                   tagging="tagTransform"
@@ -103,15 +103,6 @@
               </div>
             </div>
           </div>
-
-          <!--div class="form-section">
-            <div class="form-section-header"><h2>Visibility</h2></div>
-            <div class="form-section-content">
-              <div ng-template="common/input/multiline-radio" ng-template-options="{ 'label' : 'Attribute Set Visibility' }">
-                <label ng-repeat="choice in visibleOptions"><input type="radio" ng-model="formData.Visibility" ng-value="choice.value"/>{{choice.name}}</label>
-              </div>
-            </div>
-          </div-->
           <div class="col-xs-12">
             <p class="text-align-right"><span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field</p>
           </div>

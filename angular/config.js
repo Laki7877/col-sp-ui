@@ -16,8 +16,8 @@ module.exports = {
 	DROPDOWN: {
 		COUPON_CRITERIA: [
 		{
-			name: 'No filter',
-			value: 'No filter'
+			name: 'No Criteria',
+			value: 'NoFilter'
 		},
 		{
 			name: 'Total price is more than..',
@@ -26,7 +26,7 @@ module.exports = {
 		],
 		COUPON_GLOBAL_FILTER: [
 		{
-			name: 'No Filter',
+			name: 'No Criteria',
 			value: 'NoFilter'
 		},
 		{
@@ -36,13 +36,23 @@ module.exports = {
 		],
 		COUPON_SELLER_FILTER: [
 		{
-			name: 'No Filter',
-			value: 'No filter'
+			name: 'No Criteria',
+			value: 'NoFilter'
 		},
 		{
 			name: 'Local Category',
 			value: 'LocalCategory'
 		}
+		],
+		COUPON_DISCOUNT: [
+			{
+				display: 'Discount Percent',
+				Type: 'PERCENT'
+			},
+			{
+				display: 'Discount by Amount',
+				Type: 'AMOUNT'
+			}
 		],
 		SHOP_GROUP_DROPDOWN: [
 		{

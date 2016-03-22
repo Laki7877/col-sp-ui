@@ -16,19 +16,10 @@ module.exports = function($scope, $controller, BrandService, Product, AdminMaste
 	$scope.getProducts = function(search) {
 		var brands = !_.isEmpty($scope.formData.FilterBy) ? [$scope.formData.FilterBy] : [];
 		Product.advanceList({
-			searchText: search,
-			Brands: brands
-		})
-		.then(function(data) {
-			$scope.products = data.data;
-		});
-	};
-	$scope.getBrands = function(search) {
-		BrandService.list({
 			searchText: search
 		})
 		.then(function(data) {
-			$scope.brands = data.data;
+			$scope.products = data.data;
 		});
 	};
 	$scope.getChildProducts = function(search) {

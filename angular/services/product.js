@@ -3,6 +3,15 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 	function($http, common, util, LocalCategory, Brand, config, KnownException) {
 		'use strict';
 		var service = common.Rest('/ProductStages');
+
+		service.savePendingProduct = function(apgp){
+			return common.makeRequest({
+				method: 'POST',
+				url: '/ProductStages/PendingProduct',
+				data: apgp
+			})
+		}
+
 		service.addTags = function(arr) {
 			return common.makeRequest({
 				method: 'PUT',
@@ -369,6 +378,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			var MasterAttribute = {};
 			try {
 				invFd.MasterAttribute.forEach(function(ma) {
+					//Hacky AF
 					if(ma.DataType == "CB"){
 						for(var i = 0; i < ma.AttributeValues.length; i++){
 							var item  = ma.AttributeValues[i];

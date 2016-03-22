@@ -1,16 +1,31 @@
-module.exports = function($scope, $controller,
+module.exports = function($scope, $rootScope, $controller,
 		config, $uibModal, GlobalCategory, Category, AttributeSet, Product, ProductTempService,
 		VariationFactorIndices, AttributeSetService, AttributeOptions, $productAdd) {
 	'ngInject';
 
 	$scope.formData = {
-		MasterVariant: {},
-		Variants: []
+		Category: {
+			CategoryId: null
+		},
+		AttributeSet: null,
+		MasterVariant: {
+			Pid: null,
+			FirstAttribute: {},
+			SecondAttribute: {},
+			Visibility: true,
+			DefaultVariant: false
+		},
+		Variants: [],
+		Shop: {
+			ShopId: $rootScope.Profile.Shop.ShopId
+		}
 	};
+
 	$scope.dataset = {
 		CombinedAttributeSets: [],
 		GlobalCategoryTree: null
 	};
+
 	$scope.refresher = {};
 	$scope.dataset.attributeOptions = AttributeOptions.proto();
 	$scope.variationFactorIndices = new VariationFactorIndices($scope.dataset);
@@ -27,12 +42,14 @@ module.exports = function($scope, $controller,
 	}, true);
 
 	$scope.refresher.Products = function(q){
-		return Product.getAll({
+		return ProductTempService.list({
 			searchText: q,
-			pageSize: 8
+			_limit: 8,
+			_offset: 0,
+			_direction: 'asc'
 		}).then(function(ds) {
 		  $scope.dataset.Products = ds.data;
-			return ds.data;
+		  return ds.data;
 		});
 	};
 

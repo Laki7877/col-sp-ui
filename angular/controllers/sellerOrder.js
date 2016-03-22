@@ -1,4 +1,4 @@
-module.exports = function($scope, $window, $controller, OrderService, config) {
+module.exports = function($scope, $window, $controller, OrderService, config, storage) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
@@ -12,12 +12,16 @@ module.exports = function($scope, $window, $controller, OrderService, config) {
 			bulks: [{
 				name: 'Acknowledge',
 				fn: function(arr, cb) {
-					var result = _.map(arr, function(e) {
-						return {
-							OrderId: e.OrderId,
-							Status: 'PE'
+					var result = _.compact(_.map(arr, function(e) {
+						if(e.Status == 'PC') {
+							return {
+								OrderId: e.OrderId,
+								Status: 'PE'
+							}
+						} else {
+							return null;
 						}
-					})
+					}));
 					OrderService.updateAll(result)
 						.then(function() {
 							$scope.alert.success('Successfully acknowledged');
@@ -39,6 +43,7 @@ module.exports = function($scope, $window, $controller, OrderService, config) {
 			filters: [
 				{ name: "All", value: 'All'},
 				{ name: "Payment Pending", value: 'PaymentPending'},
+				{ name: "Payment Confirmed", value: 'PaymentConfirmed'},
 				{ name: "Preparing", value: 'Preparing'},
 				{ name: "Ready to Ship", value: 'ReadytoShip'},
 				{ name: "Shipping", value: 'Shipping'},
@@ -46,7 +51,11 @@ module.exports = function($scope, $window, $controller, OrderService, config) {
 				{ name: "Canceled", value: 'Canceled'}
 			]
 		}
-	});
+	});	
+	if(storage.has('payment_order')) {
+		$scope.params._filter = 'PaymentConfirmed';
+		storage.remove('payment_order');
+	}
 	//For debug only
 	$scope.debug = {
 		id: '',
@@ -86,21 +95,7 @@ module.exports = function($scope, $window, $controller, OrderService, config) {
 		};
 	};
 	$scope.onButtonClick = function(item) {
-		if(item.Status == 'PE') {
-			//Ready to ship
-			$window.location.href = $scope.url + '/' + item.OrderId;
-		} else if(item.Status == 'PC'){
-			//Acknowledge
-			$scope.alert.close();
-			OrderService.update(item.OrderId, {
-				Status: 'PE'
-			})
-			.then(function(data) {
-				item.Status = data.Status;
-			}, function(err) {
-				$scope.alert(common.getError(err));
-			});
-		}
+		$window.location.href = $scope.url + '/' + item.OrderId;
 	}
 	$scope.status = config.ORDER_STATUS;
 }

@@ -13,27 +13,27 @@
             <div ng-class="{'width-field-normal': !isHtmlInput(da.DataType), 'width-field-xxl': isHtmlInput(da.DataType)}">
 
                 <select ng-if="isListInput(da.DataType)" ng-required="da.Required && onPublishing" class="form-control"
-                ng-model="formData.DefaultAttributes[da.AttributeId]" ng-class="{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }"
+                ng-model="formData.MasterAttribute[da.AttributeId]" ng-class="{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }"
                 name="DAInput{{$index}}" ng-options="item as item.AttributeValue.AttributeValueEn for item in da.AttributeValueMaps track by item.AttributeValueId">
-                    <option disabled value="" selected>- Select option -</option>
+                    <option disabled value="" selected>- Select option -</option> {{ da.AttributeId }}
                 </select>
 
                 <div ng-if="isHtmlInput(da.DataType)">
                     <textarea ng-required="da.Required && onPublishing" ng-class="{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }"
-                    ng-model="formData.DefaultAttributes[da.AttributeId]" name="DAInput{{$index}}" class="form-control"
+                    ng-model="formData.MasterAttribute[da.AttributeId]" name="DAInput{{$index}}" class="form-control"
                     ng-ckeditor="ckOptions"></textarea>
                 </div>
 
                 <input ng-if="isFreeTextInput(da.DataType)" ng-class="{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }"
                 ng-required="da.Required && onPublishing" type="text" class="form-control" name="DAInput{{$index}}"
-                ng-model="formData.DefaultAttributes[da.AttributeId]" />
+                ng-model="formData.MasterAttribute[da.AttributeId]" />
 
             		<div ng-if="isCheckboxInput(da.DataType)">
             			<div class="checkbox" ng-repeat="vmap in da.AttributeValueMaps">
               			<label>
               				<input type="checkbox"
-                      ng-init="formData.DefaultAttributes[da.AttributeId]._checkbox = true"
-                      ng-model="formData.DefaultAttributes[da.AttributeId][vmap.AttributeValueId]"/>
+                      ng-init="formData.MasterAttribute[da.AttributeId]._checkbox = true"
+                      ng-model="formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId]"/>
               				{{ vmap.AttributeValue.AttributeValueEn }}
               			</label>
             			</div>

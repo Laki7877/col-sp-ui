@@ -22,6 +22,7 @@ Route::add('/exception', 'Redirect::exception');
 
 //login routing
 Route::add('/login', 'LoginController::index');
+Route::add('/admin/login', 'LoginController::indexAdmin');
 
 //product routing
 Route::add('/products', 'ProductController::index');
@@ -94,8 +95,8 @@ Route::add('/admin/approve/:id', 'AdminController::approveDetail');
 Route::add('/admin/coupons/seller', 'AdminController::listSellerCoupon');
 Route::add('/admin/coupons/seller/:id', 'AdminController::editSellerCoupon');
 Route::add('/admin/coupons/global', 'AdminController::listGlobalCoupon');
-Route::add('/admin/coupons/global/:id', 'AdminController::editGlobalCoupon');
 Route::add('/admin/coupons/global/add', 'AdminController::addGlobalCoupon');
+Route::add('/admin/coupons/global/:id', 'AdminController::editGlobalCoupon');
 Route::add('/admin/ontopcredit', 'AdminController::listOntopcredit');
 Route::add('/admin/ontopcredit/create', 'AdminController::addOntopcredit');
 Route::add('/admin/ontopcredit/:id', 'AdminController::editOntopcredit');

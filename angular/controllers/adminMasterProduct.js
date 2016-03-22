@@ -12,6 +12,6 @@ module.exports = function($scope, $controller, AdminMasterProductService, config
 		}
 	});
 	$scope.getChildProducts = function(list) {
-		return _.join(list, ', ');
+		return _.join(_.map(list, function(e) { return e.Pid }), ', ');
 	};
 };

@@ -28,7 +28,9 @@
   		                    {{row.CouponCode}}
   		                </td>
   		                <td>{{row.CouponName}}</td>
-  		                <td class="width_120">{{row.Remaining | number: 2 }}</td>
+  		                <td class="width_120 text-align-center">
+                        <span ng-if="row.Action.Type == 'PERCENT' && row.Action.MaximumUser != 0">No Limit</span>
+                        <span ng-if="!(row.Action.Type == 'PERCENT' && row.Action.MaximumUser != 0)">{{row.Remaining }}</span>
   		                <td class="width_150">{{ row.StartDate | dateTh }}</td>
   		                <td class="width_150">{{ row.ExpireDate | dateTh }}</td>
   		                <td class="width_100"> {{ row.Status | mapDropdown: statusDropdown }}</td>

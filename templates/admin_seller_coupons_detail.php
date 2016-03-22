@@ -67,8 +67,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
                               <div class="ah-select2-dropdown">
                                   <select readonly disabled ng-model="formData.Action" class="form-control"
                                   ng-init="formData.Action = {Type: 'PERCENT'}"
-                                  ng-options="i as i.display for i in [{ display: 'Discount by percent', Type: 'PERCENT'},{ display: 'Discount by amount', Type: 'AMOUNT'}]
-                                  track by i.Type" required>
+                                  ng-options="i as i.display for i in discount track by i.Type" required>
                                   </select>
                               </div>
                           </div>

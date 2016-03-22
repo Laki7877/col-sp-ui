@@ -91,7 +91,7 @@
                 ng-template-options="{
                   'label' : 'Required'
                 }">
-                <ui-select ng-model="formData.Required" search-enabled="false" ng-disabled="formData.DataType == 'HB'">
+                <ui-select ng-model="formData.Required" search-enabled="false">
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>
@@ -109,7 +109,7 @@
                 ng-template-options="{
                   'label' : 'Default Attribute'
                 }">
-                <ui-select ng-model="formData.DefaultAttribute" search-enabled="false">
+                <ui-select ng-model="formData.DefaultAttribute" search-enabled="false" ng-disabled="alreadyDefault">
                   <ui-select-match placeholder="- Select Default Attribute -">
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>
@@ -323,7 +323,7 @@
               </div>
             </div>
           </div>
-          <div class="form-section" ng-if="formData.DataType != 'CB' || !formData.DefaultAttribute">
+          <div class="form-section" ng-if="formData.DataType != 'CB' && !formData.DefaultAttribute">
             <div class="form-section-header"><h2>Variation</h2></div>
             <div class="form-section-content">
               <div

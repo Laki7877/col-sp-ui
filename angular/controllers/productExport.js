@@ -1,4 +1,5 @@
-module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product, AttributeSet) {
+module.exports = function ($scope, Product, AttributeSet) {
+	'ngInject';
 	$scope.ProductList = [];
 	$scope.SELECT_ALL = false;
 	$scope.sumProductAttributeSet = 0;
@@ -138,4 +139,4 @@ module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product
 	$scope.fields = {
 		PID: true
 	};
-}];
+};
