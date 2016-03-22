@@ -36,6 +36,10 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 				$scope.params._offset = 0;
 				$scope.bulkContainer.length = 0;
 			}
+			if(newObj._filter2 !== oldObj._filter2) {
+				$scope.params._offset = 0;
+				$scope.bulkContainer.length = 0;
+			}
 		}
 
 		options.service.list($scope.params)

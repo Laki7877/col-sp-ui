@@ -162,7 +162,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 								</div>
 							</div>
 						</div>
-						<div class="row">
+						<div ng-if="!getShopOwner(formData.UserGroup)" class="row">
 							<div class="col-xs-12">
 								<div class="form-section">
 									<div class="form-section-header"><h2>User Roles</h2></div>

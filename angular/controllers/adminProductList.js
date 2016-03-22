@@ -8,12 +8,15 @@ module.exports = function($scope, $controller, Product, common, config) {
 			item: 'Product',
 			order: 'UpdatedDt',
 			id: 'ProductId',
-			actions: ['View', 'Delete'],
-			bulks: ['Delete', 'Show', 'Hide',
+			actions: ['View'],
+			bulks: ['Show', 'Hide',
             {
 		        name: 'Add Tags',
 		        fn: function(add, cb) {
 		            $scope.alert.close();
+		            add = _.map(add, function(e) {
+		            	return _.pick(e, ['ProductId', 'Pid', 'Tags']);
+		            });
 		            Product.addTags(add).then(function() {
 		                cb();
 		                $scope.alert.success('Successfully add tags for ' + add.length + ' products')

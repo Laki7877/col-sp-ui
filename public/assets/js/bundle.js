@@ -849,6 +849,10 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 				$scope.params._offset = 0;
 				$scope.bulkContainer.length = 0;
 			}
+			if(newObj._filter2 !== oldObj._filter2) {
+				$scope.params._offset = 0;
+				$scope.bulkContainer.length = 0;
+			}
 		}
 
 		options.service.list($scope.params)
@@ -1697,19 +1701,10 @@ module.exports = ["$scope", "$controller", "BrandService", "Product", "AdminMast
 	$scope.getProducts = function(search) {
 		var brands = !_.isEmpty($scope.formData.FilterBy) ? [$scope.formData.FilterBy] : [];
 		Product.advanceList({
-			searchText: search,
-			Brands: brands
-		})
-		.then(function(data) {
-			$scope.products = data.data;
-		});
-	};
-	$scope.getBrands = function(search) {
-		BrandService.list({
 			searchText: search
 		})
 		.then(function(data) {
-			$scope.brands = data.data;
+			$scope.products = data.data;
 		});
 	};
 	$scope.getChildProducts = function(search) {
@@ -2146,8 +2141,34 @@ module.exports = ["$scope", "$controller", "Product", "config", "util", function
 			]
 		}
 	});
-
+	$scope.filter2Options = [
+		{
+			name: 'None',
+			value: 'None'
+		},
+		{
+			name: 'Information',
+			value: 'Information'
+		},
+		{
+			name: 'Image',
+			value: 'Image'
+		},
+		{
+			name: 'Variation',
+			value: 'Variation'
+		},
+		{
+			name: 'More',
+			value: 'More'
+		},
+		{
+			name: 'Ready for Action',
+			value: 'ReadyForAction'
+		}
+	];
 	$scope.params._filter = $scope.filterOptions[4].value;
+	$scope.params._filter2 = 'None';
 }];
 
 },{}],27:[function(require,module,exports){
@@ -2176,12 +2197,15 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", functi
 			item: 'Product',
 			order: 'UpdatedDt',
 			id: 'ProductId',
-			actions: ['View', 'Delete'],
-			bulks: ['Delete', 'Show', 'Hide',
+			actions: ['View'],
+			bulks: ['Show', 'Hide',
             {
 		        name: 'Add Tags',
 		        fn: function(add, cb) {
 		            $scope.alert.close();
+		            add = _.map(add, function(e) {
+		            	return _.pick(e, ['ProductId', 'Pid', 'Tags']);
+		            });
 		            Product.addTags(add).then(function() {
 		                cb();
 		                $scope.alert.success('Successfully add tags for ' + add.length + ' products')
@@ -3995,7 +4019,7 @@ module.exports = ["$scope", "$controller", "SellerAccountService", "config", fun
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
 },{}],51:[function(require,module,exports){
-module.exports = function($scope, $controller, SellerAccountService, SellerRoleService) {
+module.exports = function($scope, $controller, BrandService, SellerAccountService, SellerRoleService) {
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
@@ -4018,6 +4042,13 @@ module.exports = function($scope, $controller, SellerAccountService, SellerRoleS
 		}
 	});
 	$scope.brands = [];
+	$scope.getShopOwner = function(e) {
+		if(!_.isNil(e)) {
+			return e.GroupNameEn == 'Shop Owner';
+		} else {
+			return false;
+		}
+	};
 	$scope.getBrands = function(search) {
 		BrandService.list({
 			searchText: search
@@ -4396,7 +4427,7 @@ module.exports = ["$scope", "$controller", "$window", "InventoryService", "confi
 				$scope.alert.error(common.getError(err));
 			})
 		.finally(function() {
-			item.open = false;
+			$scope.popoverItemOriginal.open = false;
 		});
 	};
 	$scope.popoverItem = {};
@@ -14713,7 +14744,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('inventory/stockPopover',
-    "<div id=inventory-tab-content class=content><span class=\"col-xs-6 padding-left-0 margin-bottom-15 margin-top-10\">In Stock</span> <input class=\"margin-top-10 text-right col-xs-6\" ng-model=popoverItem.Quantity ng-pattern-restrict=\"^[0-9]*$\"> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Defect</span> <span class=\"text-right col-xs-4\">{{popoverItem.Defect || '0'}}</span><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15\">On Hold</span> <span class=\"text-right col-xs-4\">{{popoverItem.OnHold || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15 border_modal\">Reserved</span> <span class=\"text-right col-xs-4 border_modal\">{{popoverItem.Reserve || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 available_inventory\">Available</span><span class=\"text-right col-xs-4 available_inventory\">{{ getAvailableStock(popoverItem) }}</span></div><div class=text-center><button class=\"btn btn-blue btn-width-100 text-center\" ng-click=updateStock(popoverItem)>Save</button></div></div>"
+    "<form ng-submit=updateStock(popoverItem) id=inventory-tab-content class=content><span class=\"col-xs-6 padding-left-0 margin-bottom-15 margin-top-10\">In Stock</span> <input class=\"margin-top-10 text-right col-xs-6\" ng-model=popoverItem.Quantity ng-pattern-restrict=\"^[0-9]*$\"> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Defect</span> <span class=\"text-right col-xs-4\">{{popoverItem.Defect || '0'}}</span><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15\">On Hold</span> <span class=\"text-right col-xs-4\">{{popoverItem.OnHold || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15 border_modal\">Reserved</span> <span class=\"text-right col-xs-4 border_modal\">{{popoverItem.Reserve || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 available_inventory\">Available</span><span class=\"text-right col-xs-4 available_inventory\">{{ getAvailableStock(popoverItem) }}</span></div><div class=text-center><button class=\"btn btn-blue btn-width-100 text-center\">Save</button></div></form>"
   );
 
 
