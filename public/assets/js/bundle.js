@@ -7901,10 +7901,15 @@ angular.module('nc')
 						//Empty
 						return scope.options.emptyImg;
 					} else if(image[scope.options.urlKey] == '') {
-						return scope.options.loaderImg;
+						return null;
 					} else {
 						return image[scope.options.urlKey];
 					}
+				};
+				scope.getProgress = function(image) {
+					if(image == null)
+						return 0;
+					return image.progress || 0;
 				};
 				scope.isDisabled = function(image) {
 					return _.isNull(image) || scope.lock();
@@ -8013,6 +8018,9 @@ angular.module('nc')
 						scope.model.push(obj);
 						item.obj = obj;
 						item.indx = scope.model.length-1;
+						item.onProgress = function(progress) {
+							obj.progress = progress;
+						};
 					}
 				};
 				scope.uploader.onWhenAddingFileFailed = function(item, filter) {
@@ -8896,7 +8904,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncImageGallery',
-    "<div><p class=featured-image-wrapper>Featured Image</p><ul class=image-management-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-src=\"{{ getSrc(image) }}\"></div><div class=actions-wrapper><a class=\"action {{ isDisabled(image) ? 'disabled' : ''}}\" ng-repeat=\"action in options.actions\" style=\"width: {{100 / options.actions.length }}%\" ng-click=\"call(action, image, model)\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div>"
+    "<div><p class=featured-image-wrapper>Featured Image</p><ul class=image-management-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center\" class=color-grey><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\" style=font-size:12px>Processing..</span></h4></div><div class=actions-wrapper><a class=\"action {{ isDisabled(image) ? 'disabled' : ''}}\" ng-repeat=\"action in options.actions\" style=\"width: {{100 / options.actions.length }}%\" ng-click=\"call(action, image, model)\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div>"
   );
 
 
