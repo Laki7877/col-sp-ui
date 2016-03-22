@@ -1,9 +1,11 @@
-module.exports = function($scope, $controller) {
+module.exports = function($scope, $controller, Product) {
 	'ngInject';
 	$controller('AbstractPendingProductGroupCtrl', {
 		$scope: $scope,
-		options: {
-
-		}
+		options: {}
 	});
+
+	$scope.create = function(){
+		Product.savePendingProduct($scope.formData);
+	};
 }

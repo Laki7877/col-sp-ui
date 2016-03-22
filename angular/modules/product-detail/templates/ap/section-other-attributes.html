@@ -30,7 +30,6 @@
 
             		<div ng-if="isCheckboxInput(da.DataType)">
             			<div class="checkbox" ng-repeat="vmap in da.AttributeValueMaps">
-                        {{ da.AttributeId }}
               			<label>
               				<input type="checkbox"
                       ng-init="formData.MasterAttribute[da.AttributeId]._checkbox = true"

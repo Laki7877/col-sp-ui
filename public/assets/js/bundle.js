@@ -958,19 +958,34 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 }];
 
 },{}],6:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "config", "$uibModal", "GlobalCategory", "Category", "AttributeSet", "Product", "ProductTempService", "VariationFactorIndices", "AttributeSetService", "AttributeOptions", "$productAdd", function($scope, $controller,
+module.exports = ["$scope", "$rootScope", "$controller", "config", "$uibModal", "GlobalCategory", "Category", "AttributeSet", "Product", "ProductTempService", "VariationFactorIndices", "AttributeSetService", "AttributeOptions", "$productAdd", function($scope, $rootScope, $controller,
 		config, $uibModal, GlobalCategory, Category, AttributeSet, Product, ProductTempService,
 		VariationFactorIndices, AttributeSetService, AttributeOptions, $productAdd) {
 	'ngInject';
 
 	$scope.formData = {
-		MasterVariant: {},
-		Variants: []
+		Category: {
+			CategoryId: null
+		},
+		AttributeSet: null,
+		MasterVariant: {
+			Pid: null,
+			FirstAttribute: {},
+			SecondAttribute: {},
+			Visibility: true,
+			DefaultVariant: false
+		},
+		Variants: [],
+		Shop: {
+			ShopId: $rootScope.Profile.Shop.ShopId
+		}
 	};
+
 	$scope.dataset = {
 		CombinedAttributeSets: [],
 		GlobalCategoryTree: null
 	};
+
 	$scope.refresher = {};
 	$scope.dataset.attributeOptions = AttributeOptions.proto();
 	$scope.variationFactorIndices = new VariationFactorIndices($scope.dataset);
@@ -987,12 +1002,14 @@ module.exports = ["$scope", "$controller", "config", "$uibModal", "GlobalCategor
 	}, true);
 
 	$scope.refresher.Products = function(q){
-		return Product.getAll({
+		return ProductTempService.list({
 			searchText: q,
-			pageSize: 8
+			_limit: 8,
+			_offset: 0,
+			_direction: 'asc'
 		}).then(function(ds) {
 		  $scope.dataset.Products = ds.data;
-			return ds.data;
+		  return ds.data;
 		});
 	};
 
@@ -4831,14 +4848,16 @@ module.exports = ["$scope", "$controller", "ProductTempService", "config", funct
 	});
 }]
 },{}],62:[function(require,module,exports){
-module.exports = ["$scope", "$controller", function($scope, $controller) {
+module.exports = ["$scope", "$controller", "Product", function($scope, $controller, Product) {
 	'ngInject';
 	$controller('AbstractPendingProductGroupCtrl', {
 		$scope: $scope,
-		options: {
-
-		}
+		options: {}
 	});
+
+	$scope.create = function(){
+		Product.savePendingProduct($scope.formData);
+	};
 }]
 
 },{}],63:[function(require,module,exports){
@@ -10195,7 +10214,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-other-attributes',
-    "<div class=form-section><div class=form-section-header><h2>Other Attributes</h2></div><div class=form-section-content><div class=form-group ng-repeat=\"da in defaultAttributes\"><div class=width-label><label class=control-label ng-class=\"{'required': da.Required}\">{{ da.AttributeNameEn }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(da.DataType), 'width-field-xxl': isHtmlInput(da.DataType)}\"><select ng-if=isListInput(da.DataType) ng-required=\"da.Required && onPublishing\" class=form-control ng-model=formData.MasterAttribute[da.AttributeId] ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" name=DAInput{{$index}} ng-options=\"item as item.AttributeValue.AttributeValueEn for item in da.AttributeValueMaps track by item.AttributeValueId\"><option disabled value=\"\" selected>- Select option -</option>{{ da.AttributeId }}</select><div ng-if=isHtmlInput(da.DataType)><textarea ng-required=\"da.Required && onPublishing\" ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-model=formData.MasterAttribute[da.AttributeId] name=DAInput{{$index}} class=form-control ng-ckeditor=ckOptions></textarea></div><input ng-if=isFreeTextInput(da.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-required=\"da.Required && onPublishing\" class=form-control name=DAInput{{$index}} ng-model=\"formData.MasterAttribute[da.AttributeId]\"><div ng-if=isCheckboxInput(da.DataType)><div class=checkbox ng-repeat=\"vmap in da.AttributeValueMaps\">{{ da.AttributeId }}<label><input type=checkbox ng-init=\"formData.MasterAttribute[da.AttributeId]._checkbox = true\" ng-model=\"formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId]\"> {{ vmap.AttributeValue.AttributeValueEn }}</label></div></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Other Attributes</h2></div><div class=form-section-content><div class=form-group ng-repeat=\"da in defaultAttributes\"><div class=width-label><label class=control-label ng-class=\"{'required': da.Required}\">{{ da.AttributeNameEn }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(da.DataType), 'width-field-xxl': isHtmlInput(da.DataType)}\"><select ng-if=isListInput(da.DataType) ng-required=\"da.Required && onPublishing\" class=form-control ng-model=formData.MasterAttribute[da.AttributeId] ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" name=DAInput{{$index}} ng-options=\"item as item.AttributeValue.AttributeValueEn for item in da.AttributeValueMaps track by item.AttributeValueId\"><option disabled value=\"\" selected>- Select option -</option>{{ da.AttributeId }}</select><div ng-if=isHtmlInput(da.DataType)><textarea ng-required=\"da.Required && onPublishing\" ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-model=formData.MasterAttribute[da.AttributeId] name=DAInput{{$index}} class=form-control ng-ckeditor=ckOptions></textarea></div><input ng-if=isFreeTextInput(da.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-required=\"da.Required && onPublishing\" class=form-control name=DAInput{{$index}} ng-model=\"formData.MasterAttribute[da.AttributeId]\"><div ng-if=isCheckboxInput(da.DataType)><div class=checkbox ng-repeat=\"vmap in da.AttributeValueMaps\"><label><input type=checkbox ng-init=\"formData.MasterAttribute[da.AttributeId]._checkbox = true\" ng-model=\"formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId]\"> {{ vmap.AttributeValue.AttributeValueEn }}</label></div></div></div></div></div></div>"
   );
 
 
@@ -10205,7 +10224,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-price',
-    "<div class=form-section><div class=form-section-header><h2>Price</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SalePrice nc-label=\"Sale Price\" nc-template-options-path=addProductForm/SalePrice><input autocomplete=off type=number class=\"form-control width-field-normal\" maxlength=20 name=SalePrice ng-model=variantPtr.SalePrice required></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.OriginalPrice><input autocomplete=off class=\"form-control width-field-normal\" type=number name=OriginalPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"variantPtr.OriginalPrice\"></div><div nc-template=common/input/form-group-with-label nc-label=Installment nc-template-options-path=addProductForm/Installment nc-template-form=form.Installment><select ng-if=\"(variantPtr.SalePrice || 0) > 5000\" class=form-control ng-model=variantPtr.Installment><option value=Y>Yes</option><option value=N selected>No</option></select><select disabled ng-if=\"(variantPtr.SalePrice || 0) <= 5000\" class=form-control><option value=No selected>Available when price is more than 5,000</option></select></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.UnitPrice><input autocomplete=off class=\"form-control width-field-normal\" type=number name=OriginalPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"variantPtr.OriginalPrice\"></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.OriginalPrice><input autocomplete=off class=\"form-control width-field-normal\" type=number name=OriginalPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"variantPtr.OriginalPrice\"></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Price</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SalePrice nc-label=\"Sale Price\" nc-template-options-path=addProductForm/SalePrice><input autocomplete=off type=number class=\"form-control width-field-normal\" maxlength=20 name=SalePrice ng-model=variantPtr.SalePrice required></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.OriginalPrice><input autocomplete=off class=\"form-control width-field-normal\" type=number name=OriginalPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"variantPtr.OriginalPrice\"></div><div nc-template=common/input/form-group-with-label nc-label=Installment nc-template-options-path=addProductForm/Installment nc-template-form=form.Installment><select ng-if=\"(variantPtr.SalePrice || 0) > 5000\" class=form-control ng-model=variantPtr.Installment><option value=Y>Yes</option><option value=N selected>No</option></select><select disabled ng-if=\"(variantPtr.SalePrice || 0) <= 5000\" class=form-control><option value=No selected>Available when price is more than 5,000</option></select></div><div nc-template=common/input/form-group-with-label nc-label=\"Unit Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.UnitPrice><input autocomplete=off class=\"form-control width-field-normal\" type=number name=UnitPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"variantPtr.UnitPrice\"></div><div nc-template=common/input/form-group-with-label nc-label=\"Purchase Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.PurchasePrice><input autocomplete=off class=\"form-control width-field-normal\" type=number name=PurchasePrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"variantPtr.PurchasePrice\"></div></div></div>"
   );
 
 
@@ -12973,6 +12992,15 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 	function($http, common, util, LocalCategory, Brand, config, KnownException) {
 		'use strict';
 		var service = common.Rest('/ProductStages');
+
+		service.savePendingProduct = function(apgp){
+			return common.makeRequest({
+				method: 'PUT',
+				url: '/ProductStages/PendingProduct',
+				data: apgp
+			})
+		}
+
 		service.addTags = function(arr) {
 			return common.makeRequest({
 				method: 'PUT',
