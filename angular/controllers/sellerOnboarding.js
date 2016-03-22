@@ -7,8 +7,10 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 	})
 
 	$scope.load = function() {
+		$scope.onLoadingFlag = true;
 		Onboarding.getListCompletedTask()
 			.then(function(data) {
+				$scope.onLoadingFlag = false;
 				// console.log(data);
 				// data.AddProduct = false;
 				// data.ProductApprove = true;
