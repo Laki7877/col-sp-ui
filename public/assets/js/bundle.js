@@ -1149,7 +1149,13 @@ module.exports = ["$scope", "$controller", "AttributeService", "ImageService", "
 			url: '/admin/attributes',
 			item: 'Attribute',
 			service: AttributeService,
-			init: function(scope) {	}
+			init: function(scope) {	},
+			onLoad: function(scope, flag) {
+				if(flag) {
+					scope.alreadyDefault = scope.formData.DefaultAttribute;
+					console.log(scope.alreadyDefault);
+				}
+			}
 		}
 	});
 
@@ -1237,8 +1243,10 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeServ
 	$scope.tagTransform = function(newTag) {
 		return {
 			TagName: newTag,
-			match: function(i) {
-				return this.TagName.match(i);
+			ValueEn: {
+					match: function(i) {
+					return newTag.match(i);
+				}
 			}
 		};
 	};

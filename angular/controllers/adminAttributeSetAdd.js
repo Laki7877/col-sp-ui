@@ -30,8 +30,10 @@ module.exports = function($scope, $controller, AttributeSetService, AttributeSer
 	$scope.tagTransform = function(newTag) {
 		return {
 			TagName: newTag,
-			match: function(i) {
-				return this.TagName.match(i);
+			ValueEn: {
+					match: function(i) {
+					return newTag.match(i);
+				}
 			}
 		};
 	};

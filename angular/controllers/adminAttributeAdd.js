@@ -14,7 +14,13 @@ module.exports = function($scope, $controller, AttributeService, ImageService, c
 			url: '/admin/attributes',
 			item: 'Attribute',
 			service: AttributeService,
-			init: function(scope) {	}
+			init: function(scope) {	},
+			onLoad: function(scope, flag) {
+				if(flag) {
+					scope.alreadyDefault = scope.formData.DefaultAttribute;
+					console.log(scope.alreadyDefault);
+				}
+			}
 		}
 	});
 

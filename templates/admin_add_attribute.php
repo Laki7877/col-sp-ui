@@ -109,7 +109,7 @@
                 ng-template-options="{
                   'label' : 'Default Attribute'
                 }">
-                <ui-select ng-model="formData.DefaultAttribute" search-enabled="false">
+                <ui-select ng-model="formData.DefaultAttribute" search-enabled="false" ng-disabled="alreadyDefault">
                   <ui-select-match placeholder="- Select Default Attribute -">
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>
