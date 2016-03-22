@@ -58,9 +58,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                   {{order.TotalAmt | currency: ' ': 2}}
                 </td>
                 <td>
-                  <span ng-class="getColorClass(order.status)">
-                    <i class="fa" ng-class="getFaClass(order.status)"></i>
-                    {{order.status}}
+                  <span ng-class="getColorClass(order.Status)">
+                    <i class="fa" ng-class="getFaClass(order.Status)"></i>
+                    <span ng-show="order.Status=='PC'">Payment Confirmed</span>
                   </span>
                 </td>
                 <td>

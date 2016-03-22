@@ -7,7 +7,9 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 	})
 
 	$scope.load = function() {
+		$scope.ShopInActiveStatus = ($rootScope.Profile.Shop.Status == 'NA');
 		$scope.onLoadingFlag = true;
+		
 		Onboarding.getListCompletedTask()
 			.then(function(data) {
 				$scope.onLoadingFlag = false;

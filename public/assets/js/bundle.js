@@ -4135,7 +4135,7 @@ module.exports = function($scope, $controller, SellerCouponService, LocalCategor
 };
 },{}],54:[function(require,module,exports){
 
-module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$window", "$uibModal", "NewsletterService", function($scope, $rootScope, Dashboard, $log, $window, $uibModal, NewsletterService){
+module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$window", "$uibModal", "NewsletterService", function($scope, $rootScope, Dashboard, $log, storage, $window, $uibModal, NewsletterService){
 	'ngInject';
 
 	  // Begin Week section
@@ -4324,7 +4324,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$window", "$uibM
 
 	$scope.getColorClass = function(status) {
 		switch (status) {
-	        case 'Payment Confirmed':
+	        case 'PC':
 	            return 'color-grey';
 	            break;
 	        case '2':
@@ -4336,7 +4336,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$window", "$uibM
 
 	$scope.getFaClass = function(status) {
 		switch (status) {
-	        case 'Payment Confirmed':
+	        case 'PC':
 	            return 'fa-check-circle-o';
 	            break;
 	        case '2':
@@ -4370,10 +4370,12 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$window", "$uibM
 	};
 
 	$scope.linkToLowStock = function(){
+		storage.put('lowstock', true);
 		$window.location.href = '/inventory';
 	};
 
 	$scope.linkToOrdersPage = function(){
+		storage.put('payment_order', true);
 		$window.location.href = '/orders';
 	};
 
@@ -4510,7 +4512,9 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
 	})
 
 	$scope.load = function() {
+		$scope.ShopInActiveStatus = ($rootScope.Profile.Shop.Status == 'NA');
 		$scope.onLoadingFlag = true;
+		
 		Onboarding.getListCompletedTask()
 			.then(function(data) {
 				$scope.onLoadingFlag = false;

@@ -8,7 +8,6 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
       <div class="text-align-center welcome_text_big">Welcome to Central Seller Portal</div>
       <div class="text-align-center welcome_text_small">Complete these tasks to launch your store</div>
     </div>
-
     <div>
       <div class="onboarding_content">
         <? $this->insert('components/forms/seller_task',
@@ -51,6 +50,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "button_text" => "Launch",
            "image_name" => "icon-onboard-launch",
            "disble_status" => "disabled",
+           "task_display" => "ng-show='ShopInActiveStatus'",
            "type" => "launch"]) ?>
 
         <div class="complete_line home_task_space">
@@ -104,6 +104,16 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "task_display" => "ng-hide='!Completed[3]'",
            "type" => "redirectShopAppearance",
            "home_task_container_class" => "hide-component"]) ?>
+
+        <? $this->insert('components/forms/seller_task',
+          ["field_header" => "Successfully, Review & launch your store",
+           "field_text" => "{{launchTextSubtitle}}",
+           "button_text" => "Launch",
+           "image_name" => "icon-onboard-launch",
+           "home_task_container_class" => "background_blue",
+           "disble_status" => "disabled",
+           "task_display" => "ng-show='!ShopInActiveStatus'",
+           "type" => "launch"]) ?>
       </div>
     </div>
   </div>
