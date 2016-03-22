@@ -4420,6 +4420,7 @@ module.exports = ["$scope", "$controller", "$window", "InventoryService", "confi
 	});	
 	if(storage.has('lowstock')) {
 		$scope.params._filter = 'LowStock';
+		storage.remove('lowstock');
 	}
 	$scope.getAvailableStock = function(item) {
 		return _.toInteger(item.Quantity) - (
@@ -4657,6 +4658,7 @@ module.exports = ["$scope", "$window", "$controller", "OrderService", "config", 
 	});	
 	if(storage.has('payment_order')) {
 		$scope.params._filter = 'PaymentConfirmed';
+		storage.remove('payment_order');
 	}
 	//For debug only
 	$scope.debug = {
@@ -6496,7 +6498,7 @@ module.exports = ["$cookies", function ($cookies) {
     };
 
     service.has = function(key) {
-        return !_.isUndefined(service.get(key));
+        return !_.isNil(service.get(key));
     };
 
     /**

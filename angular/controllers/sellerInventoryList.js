@@ -27,6 +27,7 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 	});	
 	if(storage.has('lowstock')) {
 		$scope.params._filter = 'LowStock';
+		storage.remove('lowstock');
 	}
 	$scope.getAvailableStock = function(item) {
 		return _.toInteger(item.Quantity) - (

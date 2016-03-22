@@ -29,7 +29,7 @@ module.exports = function ($cookies) {
     };
 
     service.has = function(key) {
-        return !_.isUndefined(service.get(key));
+        return !_.isNil(service.get(key));
     };
 
     /**

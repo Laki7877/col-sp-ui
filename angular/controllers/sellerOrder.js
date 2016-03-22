@@ -54,6 +54,7 @@ module.exports = function($scope, $window, $controller, OrderService, config, st
 	});	
 	if(storage.has('payment_order')) {
 		$scope.params._filter = 'PaymentConfirmed';
+		storage.remove('payment_order');
 	}
 	//For debug only
 	$scope.debug = {
