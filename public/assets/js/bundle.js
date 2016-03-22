@@ -1752,7 +1752,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "Im
 				fn: function(item) {
 					$scope.open(item);
 				}
-			}]
+			}, 'Delete']
 		}
 	});
 
