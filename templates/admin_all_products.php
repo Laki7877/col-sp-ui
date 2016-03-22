@@ -4,6 +4,7 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminProductListCtrl">
+		<pre>{{Profile | json}}</pre>
 		<nc-alert nc-model="alert"></nc-alert>
 	       <nc-page-title nc-title="All Products" icon="fa-tag">
 	      <form id="exportForm" name="exportForm" action="/admin/products/export" method="post">

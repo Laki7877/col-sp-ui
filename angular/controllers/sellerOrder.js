@@ -1,4 +1,4 @@
-module.exports = function($scope, $window, $controller, OrderService, config) {
+module.exports = function($scope, $window, $controller, OrderService, config, storage) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
@@ -43,6 +43,7 @@ module.exports = function($scope, $window, $controller, OrderService, config) {
 			filters: [
 				{ name: "All", value: 'All'},
 				{ name: "Payment Pending", value: 'PaymentPending'},
+				{ name: "Payment Confirmed", value: 'PaymentConfirmed'},
 				{ name: "Preparing", value: 'Preparing'},
 				{ name: "Ready to Ship", value: 'ReadytoShip'},
 				{ name: "Shipping", value: 'Shipping'},
@@ -50,7 +51,10 @@ module.exports = function($scope, $window, $controller, OrderService, config) {
 				{ name: "Canceled", value: 'Canceled'}
 			]
 		}
-	});
+	});	
+	if(storage.has('payment_order')) {
+		$scope.params._filter = 'PaymentConfirmed';
+	}
 	//For debug only
 	$scope.debug = {
 		id: '',

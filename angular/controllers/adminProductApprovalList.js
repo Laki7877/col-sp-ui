@@ -4,7 +4,7 @@ module.exports = function($scope, $controller, Product, config, util) {
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
 		options: {
-			url: '/ProductStages',
+			url: '/admin/approve',
 			service: Product,
 			item: 'Product',
 			order: 'UpdatedDt',

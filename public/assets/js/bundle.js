@@ -238,7 +238,7 @@ module.exports = {
 		COUPON_CRITERIA: [
 		{
 			name: 'No Criteria',
-			value: 'No filter'
+			value: 'NoFilter'
 		},
 		{
 			name: 'Total price is more than..',
@@ -257,8 +257,8 @@ module.exports = {
 		],
 		COUPON_SELLER_FILTER: [
 		{
-			name: 'No Filter',
-			value: 'No filter'
+			name: 'No Criteria',
+			value: 'NoFilter'
 		},
 		{
 			name: 'Local Category',
@@ -1410,25 +1410,26 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 
 	//Action gear
 	$scope.actions = [
-	{
-		name: 'View / Edit',
-		fn: function($nodeScope) {
-			$scope.open($nodeScope.$modelValue);
-		}
-	},
-	{
-		name: 'Delete',
-		fn: function($nodeScope) {
-			$nodeScope.remove();
-			$scope.sync();
+		{
+			name: 'View / Edit',
+			fn: function($nodeScope) {
+				$scope.open($nodeScope.$modelValue);
+			}
 		},
-		confirmation: {
-			title: 'Delete',
-			message: 'Are you sure you want to delete this category?',
-			btnClass: 'btn-red',
-			btnConfirm: 'Delete'
+		{
+			name: 'Delete',
+			fn: function($nodeScope) {
+				$nodeScope.remove();
+				$scope.sync();
+			},
+			confirmation: {
+				title: 'Delete',
+				message: 'Are you sure you want to delete this category?',
+				btnClass: 'btn-red',
+				btnConfirm: 'Delete'
+			}
 		}
-	}];
+	];
 
 
 	//Toggle visibility
@@ -1509,17 +1510,17 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 					$scope.formData = GlobalCategoryService.generate();
 					$scope.loading = false;
 				} else {
-					//Check product count
-					Product.advanceList({
-						GlobalCategories: [{CategoryId: id}],
-						_limit: 1,
-					}).then(function(response) {
-						$scope.availableProducts = response.total;
-					});
 					//Load cat
 					GlobalCategoryService.get(id)
 						.then(function(data) {
 							$scope.formData = GlobalCategoryService.deserialize(data);
+							//Check product count
+							Product.advanceList({
+								GlobalCategories: [_.pick($scope.formData, ['Lft', 'Rgt'])],
+								_limit: 1,
+							}).then(function(response) {
+								$scope.availableProducts = response.total;
+							});
 						}, function(err) {
 							$scope.alert.error(common.getError(err));
 						}).finally(function() {
@@ -1607,7 +1608,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 			if(_.isUndefined(item)) {
 				data.nodes = [];
 				data.ProductCount = 0;
-				data.AttributeSetCount = 0;
+				data.AttributeSets = 0;
 				$scope.categories.unshift(data);
 			} else {
 				//existing data
@@ -1615,6 +1616,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				item.CategoryId = data.CategoryId;
 				item.CategoryAbbreviation = data.CategoryAbbreviation;
 				item.Visibility = data.Visibility;
+				data.AttributeSetCount = data.AttributeSets.length;
 				Category.traverseSet(item.nodes, 'Visibility', item.Visibility);
 		}
 		$scope.alert.success(config.DEFAULT_SUCCESS_MESSAGE);
@@ -2137,7 +2139,7 @@ module.exports = ["$scope", "$controller", "Product", "config", "util", function
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
 		options: {
-			url: '/ProductStages',
+			url: '/admin/approve',
 			service: Product,
 			item: 'Product',
 			order: 'UpdatedDt',
@@ -2772,15 +2774,17 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 					$scope.loading = false;
 				} else {
 					//Check product count
-					Product.advanceList({
-						LocalCategories: [{CategoryId: id}],
-						_limit: 1,
-					}).then(function(response) {
-						$scope.availableProducts = response.total;
-					});
 					LocalCategoryService.get(id)
 						.then(function(data) {
 							$scope.formData = LocalCategoryService.deserialize(data);
+							//Check product count
+							Product.advanceList({
+								LocalCategories: [_.pick($scope.formData, ['Lft', 'Rgt'])],
+								_limit: 1,
+							}).then(function(response) {
+								$scope.availableProducts = response.total;
+							});
+
 						}, function(err) {
 							$scope.alert.error(common.getError(err));
 						}).finally(function() {
@@ -4385,7 +4389,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$window", "$uibM
 }];
 
 },{}],55:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "$window", "InventoryService", "config", "common", function($scope, $controller, $window, InventoryService, config, common) {
+module.exports = ["$scope", "$controller", "$window", "InventoryService", "config", "common", "storage", function($scope, $controller, $window, InventoryService, config, common, storage) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
@@ -4411,7 +4415,10 @@ module.exports = ["$scope", "$controller", "$window", "InventoryService", "confi
 				$scope.lastEdit = null;
 			}
 		}
-	});
+	});	
+	if(storage.has('lowstock')) {
+		$scope.params._filter = 'LowStock';
+	}
 	$scope.getAvailableStock = function(item) {
 		return _.toInteger(item.Quantity) - (
 				_.toInteger(item.Defect) +
@@ -4590,7 +4597,7 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
 }];
 
 },{}],58:[function(require,module,exports){
-module.exports = ["$scope", "$window", "$controller", "OrderService", "config", function($scope, $window, $controller, OrderService, config) {
+module.exports = ["$scope", "$window", "$controller", "OrderService", "config", "storage", function($scope, $window, $controller, OrderService, config, storage) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
@@ -4635,6 +4642,7 @@ module.exports = ["$scope", "$window", "$controller", "OrderService", "config", 
 			filters: [
 				{ name: "All", value: 'All'},
 				{ name: "Payment Pending", value: 'PaymentPending'},
+				{ name: "Payment Confirmed", value: 'PaymentConfirmed'},
 				{ name: "Preparing", value: 'Preparing'},
 				{ name: "Ready to Ship", value: 'ReadytoShip'},
 				{ name: "Shipping", value: 'Shipping'},
@@ -4642,7 +4650,10 @@ module.exports = ["$scope", "$window", "$controller", "OrderService", "config", 
 				{ name: "Canceled", value: 'Canceled'}
 			]
 		}
-	});
+	});	
+	if(storage.has('payment_order')) {
+		$scope.params._filter = 'PaymentConfirmed';
+	}
 	//For debug only
 	$scope.debug = {
 		id: '',
@@ -6450,8 +6461,8 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
 }];
 
 },{}],95:[function(require,module,exports){
-module.exports = ['$cookies', function ($cookies) {
-    'use strict';
+module.exports = ["$cookies", function ($cookies) {
+    'ngInject';
     var service = {};
 
     /**
@@ -6481,7 +6492,7 @@ module.exports = ['$cookies', function ($cookies) {
     };
 
     service.has = function(key) {
-        return !_.isUndefined(service.get());
+        return !_.isUndefined(service.get(key));
     };
 
     /**
@@ -13692,10 +13703,10 @@ module.exports = ["common", function(common) {
         	Status: 'NA',
             Conditions: {
                 Order: [{
-                    Type: 'No filter'
+                    Type: 'NoFilter'
                 }],
                 FilterBy: {
-                    Type: 'No filter'
+                    Type: 'NoFilter'
                 }
             }
         }

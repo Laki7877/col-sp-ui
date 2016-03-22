@@ -17,7 +17,7 @@ module.exports = {
 		COUPON_CRITERIA: [
 		{
 			name: 'No Criteria',
-			value: 'No filter'
+			value: 'NoFilter'
 		},
 		{
 			name: 'Total price is more than..',
@@ -36,8 +36,8 @@ module.exports = {
 		],
 		COUPON_SELLER_FILTER: [
 		{
-			name: 'No Filter',
-			value: 'No filter'
+			name: 'No Criteria',
+			value: 'NoFilter'
 		},
 		{
 			name: 'Local Category',

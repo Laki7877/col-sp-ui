@@ -34,25 +34,26 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 
 	//Action gear
 	$scope.actions = [
-	{
-		name: 'View / Edit',
-		fn: function($nodeScope) {
-			$scope.open($nodeScope.$modelValue);
-		}
-	},
-	{
-		name: 'Delete',
-		fn: function($nodeScope) {
-			$nodeScope.remove();
-			$scope.sync();
+		{
+			name: 'View / Edit',
+			fn: function($nodeScope) {
+				$scope.open($nodeScope.$modelValue);
+			}
 		},
-		confirmation: {
-			title: 'Delete',
-			message: 'Are you sure you want to delete this category?',
-			btnClass: 'btn-red',
-			btnConfirm: 'Delete'
+		{
+			name: 'Delete',
+			fn: function($nodeScope) {
+				$nodeScope.remove();
+				$scope.sync();
+			},
+			confirmation: {
+				title: 'Delete',
+				message: 'Are you sure you want to delete this category?',
+				btnClass: 'btn-red',
+				btnConfirm: 'Delete'
+			}
 		}
-	}];
+	];
 
 
 	//Toggle visibility
@@ -133,17 +134,17 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 					$scope.formData = GlobalCategoryService.generate();
 					$scope.loading = false;
 				} else {
-					//Check product count
-					Product.advanceList({
-						GlobalCategories: [{CategoryId: id}],
-						_limit: 1,
-					}).then(function(response) {
-						$scope.availableProducts = response.total;
-					});
 					//Load cat
 					GlobalCategoryService.get(id)
 						.then(function(data) {
 							$scope.formData = GlobalCategoryService.deserialize(data);
+							//Check product count
+							Product.advanceList({
+								GlobalCategories: [_.pick($scope.formData, ['Lft', 'Rgt'])],
+								_limit: 1,
+							}).then(function(response) {
+								$scope.availableProducts = response.total;
+							});
 						}, function(err) {
 							$scope.alert.error(common.getError(err));
 						}).finally(function() {
@@ -231,7 +232,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 			if(_.isUndefined(item)) {
 				data.nodes = [];
 				data.ProductCount = 0;
-				data.AttributeSetCount = 0;
+				data.AttributeSets = 0;
 				$scope.categories.unshift(data);
 			} else {
 				//existing data
@@ -239,6 +240,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				item.CategoryId = data.CategoryId;
 				item.CategoryAbbreviation = data.CategoryAbbreviation;
 				item.Visibility = data.Visibility;
+				data.AttributeSetCount = data.AttributeSets.length;
 				Category.traverseSet(item.nodes, 'Visibility', item.Visibility);
 		}
 		$scope.alert.success(config.DEFAULT_SUCCESS_MESSAGE);

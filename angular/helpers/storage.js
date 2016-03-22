@@ -1,5 +1,5 @@
-module.exports = ['$cookies', function ($cookies) {
-    'use strict';
+module.exports = function ($cookies) {
+    'ngInject';
     var service = {};
 
     /**
@@ -29,7 +29,7 @@ module.exports = ['$cookies', function ($cookies) {
     };
 
     service.has = function(key) {
-        return !_.isUndefined(service.get());
+        return !_.isUndefined(service.get(key));
     };
 
     /**
@@ -112,4 +112,4 @@ module.exports = ['$cookies', function ($cookies) {
     };
 
     return service;
-}];
+};

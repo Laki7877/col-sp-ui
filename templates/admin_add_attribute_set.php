@@ -87,7 +87,7 @@
                   on-select="onKeywordAdded($item, $model)"
                   multiple
                   nc-tag-validator
-                  nc-tag-pattern="^[0-9a-zA-Z]+$"
+                  nc-tag-pattern="^[0-9a-zA-Z ]+$"
                   nc-max-tag-count="100"
                   nc-max-tag-length="30"
                   tagging="tagTransform"
