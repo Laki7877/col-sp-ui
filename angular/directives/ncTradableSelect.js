@@ -8,7 +8,8 @@ module.exports = function($templateCache, $filter) {
 			selectable: '=ncSelectOptions',
 			model: '=ncModel',
 			options: '=ncOptions',
-			test: '=?ncTest'
+			test: '=?ncTest',
+			callback: '=?onSearch'
 		},
 		template: function(element, attrs) {
 			if(attrs.ncTradableSelect) {
@@ -34,10 +35,13 @@ module.exports = function($templateCache, $filter) {
 			scope.header = attrs.columnHeader;
 			//Search Placeholder
 			scope.searchPlaceholder = attrs.searchPlaceholder;
+			scope.$watch('search', function(newObj) {
+				(scope.callback || _.noop)(newObj);
+			});
 		},
 		controller: function($scope) {
 			'ngInject';
-			$scope.search = {};
+			$scope.search = '';
 			$scope.activeRight = -1;
 			$scope.activeLeft = -1;
 			$scope.test = $scope.test || function() { return false; };

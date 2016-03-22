@@ -323,7 +323,7 @@
               </div>
             </div>
           </div>
-          <div class="form-section" ng-if="formData.DataType != 'CB' || !formData.DefaultAttribute">
+          <div class="form-section" ng-if="formData.DataType != 'CB' && !formData.DefaultAttribute">
             <div class="form-section-header"><h2>Variation</h2></div>
             <div class="form-section-content">
               <div

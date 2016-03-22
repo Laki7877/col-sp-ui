@@ -106,7 +106,7 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncLoading',
-    "<div class=\"empty-section margin-top-20 margin-bottom-20\"><span><img class=loading-img src=\"/assets/img/loader.gif\"></span>{{ message }}</div>"
+    "<div class=\"empty-section margin-top-20 margin-bottom-20\"><span></span> <img class=loading-img src=\"/assets/img/loader.gif\">{{ message }}</div>"
   );
 
 
