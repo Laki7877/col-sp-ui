@@ -167,10 +167,10 @@ ul.sub-sidebar {
   .item {
     color: $color-white;
     &.active {
-      color: $color-theme;
+      color: $color-red;
     }
     &:hover {
-      color: $color-theme;
+      color: $color-red;
     }
   }
 }
