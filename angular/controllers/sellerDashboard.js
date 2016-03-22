@@ -53,24 +53,23 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $window, $uibModa
 				$scope.lowStockAlertData[i].QuantityText = 'QTY: ' + $scope.lowStockAlertData[i].Quantity;
 			};
 			return $scope.lowStockAlertData;
-		})
-		.then(function(lowStockAlertData){
-			var promise = Dashboard.getOutOfStock();
-			promise.then(function(outOfStockData) {
-				outOfStockData = outOfStockData.data;
+		// })
+		// .then(function(lowStockAlertData){
+		// 	var promise = Dashboard.getOutOfStock();
+		// 	promise.then(function(outOfStockData) {
+		// 		outOfStockData = outOfStockData.data;
 
-				for (var i = outOfStockData.length - 1; i >= 0; i--) {
-					outOfStockData[i].PidText = 'ID: ' + outOfStockData[i].Pid;
-					outOfStockData[i].QuantityText = 'QTY: ' + outOfStockData[i].Quantity;
-				};
+		// 		for (var i = outOfStockData.length - 1; i >= 0; i--) {
+		// 			outOfStockData[i].PidText = 'ID: ' + outOfStockData[i].Pid;
+		// 			outOfStockData[i].QuantityText = 'QTY: ' + outOfStockData[i].Quantity;
+		// 		};
 
-				var object = lowStockAlertData.concat(outOfStockData);
-				// console.log(object);
-				return $scope.lowStockAlertData = object;
+		// 		var object = lowStockAlertData.concat(outOfStockData);
+		// 		return $scope.lowStockAlertData = object;
 
-			}, function(reason) {
-			  console.log('Failed: ' + reason);
-			});
+		// 	}, function(reason) {
+		// 	  console.log('Failed: ' + reason);
+		// 	});
 		});
 
 	Dashboard.getOutOfStock()
