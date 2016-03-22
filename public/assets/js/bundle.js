@@ -2118,19 +2118,16 @@ module.exports = ["$scope", "$controller", "Product", "config", "util", function
 			item: 'Product',
 			order: 'UpdatedDt',
 			id: 'ProductId',
-			actions: [{
-                name: 'View Detail',
-                fn: function(item) { }
-            }],
+			actions: ['View Only'],
 			bulks: [
-				util.bulkTemplate('Approve', Product.approve, 'ProductId', 'Product', {
+				util.bulkTemplate('Force Approve', Product.approve, 'ProductId', 'Product', {
 					btnConfirm: 'Approve',
 					btnClass: 'btn-green'
 				}),
 				util.bulkTemplate('Reject', Product.reject, 'ProductId', 'Product', {
 					btnConfirm: 'Reject',
 					btnClass: 'btn-red'
-				})
+				}),
 			],
 			filters: [
 				{ name: "All", value: 'All'},
@@ -2201,12 +2198,9 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", functi
 			bulks: ['Show', 'Hide',
             {
 		        name: 'Add Tags',
-		        fn: function(add, cb) {
+		        fn: function(add, cb, model) {
 		            $scope.alert.close();
-		            add = _.map(add, function(e) {
-		            	return _.pick(e, ['ProductId', 'Pid', 'Tags']);
-		            });
-		            Product.addTags(add).then(function() {
+		            Product.addTags(model).then(function() {
 		                cb();
 		                $scope.alert.success('Successfully add tags for ' + add.length + ' products')
 		            }, function(resp) {
@@ -2936,7 +2930,8 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 }];
 
 },{"angular":230}],42:[function(require,module,exports){
-module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product, AttributeSet) {
+module.exports = ["$scope", "Product", "AttributeSet", function ($scope, Product, AttributeSet) {
+	'ngInject';
 	$scope.ProductList = [];
 	$scope.SELECT_ALL = false;
 	$scope.sumProductAttributeSet = 0;
@@ -3572,9 +3567,9 @@ module.exports = ["$scope", "$controller", "common", "Product", "util", "Alert",
                 },
                 {
                     name: 'Add Tags',
-                    fn: function(add, cb) {
+                    fn: function(add, cb, r) {
                         $scope.alert.close();
-                        Product.addTags(add).then(function() {
+                        Product.addTags(r).then(function() {
                             cb();
                             $scope.alert.success('Successfully add tags for ' + add.length + ' products')
                         }, function(resp) {
