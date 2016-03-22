@@ -3995,7 +3995,7 @@ module.exports = ["$scope", "$controller", "SellerAccountService", "config", fun
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
 },{}],51:[function(require,module,exports){
-module.exports = function($scope, $controller, SellerAccountService, SellerRoleService) {
+module.exports = function($scope, $controller, BrandService, SellerAccountService, SellerRoleService) {
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
@@ -4018,6 +4018,13 @@ module.exports = function($scope, $controller, SellerAccountService, SellerRoleS
 		}
 	});
 	$scope.brands = [];
+	$scope.getShopOwner = function(e) {
+		if(!_.isNil(e)) {
+			return e.GroupNameEn == 'Shop Owner';
+		} else {
+			return false;
+		}
+	};
 	$scope.getBrands = function(search) {
 		BrandService.list({
 			searchText: search
@@ -4397,7 +4404,7 @@ module.exports = ["$scope", "$controller", "$window", "InventoryService", "confi
 				$scope.alert.error(common.getError(err));
 			})
 		.finally(function() {
-			item.open = false;
+			$scope.popoverItemOriginal.open = false;
 		});
 	};
 	$scope.popoverItem = {};
@@ -8904,7 +8911,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncImageGallery',
-    "<div><p class=featured-image-wrapper>Featured Image</p><ul class=image-management-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center\" class=color-grey><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\" style=font-size:12px>Processing..</span></h4></div><div class=actions-wrapper><a class=\"action {{ isDisabled(image) ? 'disabled' : ''}}\" ng-repeat=\"action in options.actions\" style=\"width: {{100 / options.actions.length }}%\" ng-click=\"call(action, image, model)\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div>"
+    "<div><p class=featured-image-wrapper>Featured Image</p><ul class=image-management-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center\" class=color-grey><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\" style=font-size:12px>Processing...</span></h4></div><div class=actions-wrapper><a class=\"action {{ isDisabled(image) ? 'disabled' : ''}}\" ng-repeat=\"action in options.actions\" style=\"width: {{100 / options.actions.length }}%\" ng-click=\"call(action, image, model)\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div>"
   );
 
 
@@ -14814,7 +14821,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('inventory/stockPopover',
-    "<div id=inventory-tab-content class=content><span class=\"col-xs-6 padding-left-0 margin-bottom-15 margin-top-10\">In Stock</span> <input class=\"margin-top-10 text-right col-xs-6\" ng-model=popoverItem.Quantity ng-pattern-restrict=\"^[0-9]*$\"> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Defect</span> <span class=\"text-right col-xs-4\">{{popoverItem.Defect || '0'}}</span><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15\">On Hold</span> <span class=\"text-right col-xs-4\">{{popoverItem.OnHold || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15 border_modal\">Reserved</span> <span class=\"text-right col-xs-4 border_modal\">{{popoverItem.Reserve || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 available_inventory\">Available</span><span class=\"text-right col-xs-4 available_inventory\">{{ getAvailableStock(popoverItem) }}</span></div><div class=text-center><button class=\"btn btn-blue btn-width-100 text-center\" ng-click=updateStock(popoverItem)>Save</button></div></div>"
+    "<form ng-submit=updateStock(popoverItem) id=inventory-tab-content class=content><span class=\"col-xs-6 padding-left-0 margin-bottom-15 margin-top-10\">In Stock</span> <input class=\"margin-top-10 text-right col-xs-6\" ng-model=popoverItem.Quantity ng-pattern-restrict=\"^[0-9]*$\"> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Defect</span> <span class=\"text-right col-xs-4\">{{popoverItem.Defect || '0'}}</span><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15\">On Hold</span> <span class=\"text-right col-xs-4\">{{popoverItem.OnHold || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15 border_modal\">Reserved</span> <span class=\"text-right col-xs-4 border_modal\">{{popoverItem.Reserve || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 available_inventory\">Available</span><span class=\"text-right col-xs-4 available_inventory\">{{ getAvailableStock(popoverItem) }}</span></div><div class=text-center><button class=\"btn btn-blue btn-width-100 text-center\">Save</button></div></form>"
   );
 
 
