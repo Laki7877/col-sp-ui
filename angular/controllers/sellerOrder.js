@@ -90,21 +90,7 @@ module.exports = function($scope, $window, $controller, OrderService, config) {
 		};
 	};
 	$scope.onButtonClick = function(item) {
-		if(item.Status == 'PE') {
-			//Ready to ship
-			$window.location.href = $scope.url + '/' + item.OrderId;
-		} else if(item.Status == 'PC'){
-			//Acknowledge
-			$scope.alert.close();
-			OrderService.update(item.OrderId, {
-				Status: 'PE'
-			})
-			.then(function(data) {
-				item.Status = data.Status;
-			}, function(err) {
-				$scope.alert(common.getError(err));
-			});
-		}
+		$window.location.href = $scope.url + '/' + item.OrderId;
 	}
 	$scope.status = config.ORDER_STATUS;
 }
