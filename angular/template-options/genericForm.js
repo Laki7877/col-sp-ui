@@ -21,7 +21,7 @@ module.exports = {
         'formGroupClass': 'margin-top-30',
         'error': {
             'messages': {
-                'pattern': 'Thai and Special characters are not allowed'
+                'pattern': 'Special characters are not allowed'
             }
         }
     },

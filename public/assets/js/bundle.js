@@ -237,7 +237,7 @@ module.exports = {
 	DROPDOWN: {
 		COUPON_CRITERIA: [
 		{
-			name: 'No filter',
+			name: 'No Criteria',
 			value: 'No filter'
 		},
 		{
@@ -247,7 +247,7 @@ module.exports = {
 		],
 		COUPON_GLOBAL_FILTER: [
 		{
-			name: 'No Filter',
+			name: 'No Criteria',
 			value: 'NoFilter'
 		},
 		{
@@ -264,6 +264,16 @@ module.exports = {
 			name: 'Local Category',
 			value: 'LocalCategory'
 		}
+		],
+		COUPON_DISCOUNT: [
+			{
+				display: 'Discount Percent',
+				Type: 'PERCENT'
+			},
+			{
+				display: 'Discount by Amount',
+				Type: 'AMOUNT'
+			}
 		],
 		SHOP_GROUP_DROPDOWN: [
 		{
@@ -1652,6 +1662,7 @@ module.exports = function($scope, $controller, GlobalCouponService, GlobalCatego
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
   $scope.filters = config.DROPDOWN.COUPON_GLOBAL_FILTER;
+  $scope.discount = config.DROPDOWN.COUPON_DISCOUNT;
 
   //Abstract Add Ctrl
   $controller('AbstractAddCtrl', {
@@ -1659,7 +1670,7 @@ module.exports = function($scope, $controller, GlobalCouponService, GlobalCatego
     options: {
       id: 'CouponId',
       url: '/admin/coupons/global',
-      item: 'Coupon',
+      item: 'Global Coupon',
       service: GlobalCouponService,
       dateFields: ['StartDate', 'ExpireDate'],
       onLoad: function() {
@@ -2355,6 +2366,7 @@ module.exports = function($scope, $controller, SellerCouponService, config, Cate
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
   $scope.filters = config.DROPDOWN.COUPON_SELLER_FILTER;
+  $scope.discount = config.DROPDOWN.COUPON_DISCOUNT;
 
   //Abstract Add Ctrl
   $controller('AbstractAddCtrl', {
@@ -2414,6 +2426,11 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 						_.forEach(scope.formData.Commissions, function(item) {
 							item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
 						});
+				});
+			},
+			onAfterSave: function(scope) {			
+				_.forEach(scope.formData.Commissions, function(item) {
+					item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
 				});
 			}
 		}
@@ -4089,6 +4106,7 @@ module.exports = function($scope, $controller, SellerCouponService, LocalCategor
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
   $scope.filters = config.DROPDOWN.COUPON_SELLER_FILTER;
+  $scope.discount = config.DROPDOWN.COUPON_DISCOUNT;
 
   //Abstract Add Ctrl
   $controller('AbstractAddCtrl', {
@@ -4487,6 +4505,7 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
 	$scope.load = function() {
 		$scope.ShopInActiveStatus = ($rootScope.Profile.Shop.Status == 'NA');
 		$scope.onLoadingFlag = true;
+		
 		Onboarding.getListCompletedTask()
 			.then(function(data) {
 				$scope.onLoadingFlag = false;
@@ -11180,12 +11199,12 @@ module.exports = ["common", "config", "util", function(common, config, util) {
 	};
 	service.generate = function() {
 		var processed = {
-			Status: config.DROPDOWN.DEFAULT_STATUS_DROPDOWN[0],
+			Status: config.DROPDOWN.DEFAULT_STATUS_DROPDOWN[0].value,
 			ShopOwner: {},
 			Users: [],
 			Commissions: [],
 			GiftWrap: 'N',
-			TaxInvoice: 'N',
+			TaxInvoice: 'Y',
 			StockAlert: 0
 		};
 		return processed;
@@ -12604,10 +12623,10 @@ module.exports = ["common", function(common) {
             Status: 'NA',
             Conditions: {
                 Order: [{
-                    Type: 'No filter'
+                    Type: 'NoFilter'
                 }],
                 FilterBy: {
-                    Type: 'No filter'
+                    Type: 'NoFilter'
                 }
             }
         }
@@ -14367,7 +14386,7 @@ module.exports = {
         'formGroupClass': 'margin-top-30',
         'error': {
             'messages': {
-                'pattern': 'Thai and Special characters are not allowed'
+                'pattern': 'Special characters are not allowed'
             }
         }
     },
