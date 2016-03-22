@@ -12,12 +12,16 @@ module.exports = function($scope, $window, $controller, OrderService, config) {
 			bulks: [{
 				name: 'Acknowledge',
 				fn: function(arr, cb) {
-					var result = _.map(arr, function(e) {
-						return {
-							OrderId: e.OrderId,
-							Status: 'PE'
+					var result = _.compact(_.map(arr, function(e) {
+						if(e.Status == 'PC') {
+							return {
+								OrderId: e.OrderId,
+								Status: 'PE'
+							}
+						} else {
+							return null;
 						}
-					})
+					}));
 					OrderService.updateAll(result)
 						.then(function() {
 							$scope.alert.success('Successfully acknowledged');

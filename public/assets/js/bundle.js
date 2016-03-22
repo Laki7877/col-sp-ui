@@ -1675,7 +1675,7 @@ module.exports = ["$scope", "$controller", "AdminMasterProductService", "config"
 		}
 	});
 	$scope.getChildProducts = function(list) {
-		return _.join(list, ', ');
+		return _.join(_.map(list, function(e) { return e.Pid }), ', ');
 	};
 }];
 },{}],19:[function(require,module,exports){
@@ -4546,12 +4546,16 @@ module.exports = ["$scope", "$window", "$controller", "OrderService", "config", 
 			bulks: [{
 				name: 'Acknowledge',
 				fn: function(arr, cb) {
-					var result = _.map(arr, function(e) {
-						return {
-							OrderId: e.OrderId,
-							Status: 'PE'
+					var result = _.compact(_.map(arr, function(e) {
+						if(e.Status == 'PC') {
+							return {
+								OrderId: e.OrderId,
+								Status: 'PE'
+							}
+						} else {
+							return null;
 						}
-					})
+					}));
 					OrderService.updateAll(result)
 						.then(function() {
 							$scope.alert.success('Successfully acknowledged');
@@ -4686,10 +4690,18 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   };
   //Ready to ship
   $scope.readyShip = function() {
-    save({
-     InvoiceNumber: $scope.formData.InvoiceNumber,
-     Status: 'RS'
-    })
+    util.confirm(
+      'Are you ready to ship?',
+      'Shipping quantity cannot be changed after this.',
+      'Confirm',
+      'Cancel',
+      'btn-blue'
+    ).result.then(function() {    
+      save({
+       InvoiceNumber: $scope.formData.InvoiceNumber,
+       Status: 'RS'
+      });
+    });
   };
   //Cancel order
   $scope.cancelOrder = function() {

@@ -44,10 +44,18 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   };
   //Ready to ship
   $scope.readyShip = function() {
-    save({
-     InvoiceNumber: $scope.formData.InvoiceNumber,
-     Status: 'RS'
-    })
+    util.confirm(
+      'Are you ready to ship?',
+      'Shipping quantity cannot be changed after this.',
+      'Confirm',
+      'Cancel',
+      'btn-blue'
+    ).result.then(function() {    
+      save({
+       InvoiceNumber: $scope.formData.InvoiceNumber,
+       Status: 'RS'
+      });
+    });
   };
   //Cancel order
   $scope.cancelOrder = function() {
