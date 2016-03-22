@@ -35,13 +35,15 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "task_display" => "ng-hide='Completed[2]'",
            "type" => "redirectProduct"]) ?>
 
+        <!-- NOTED! : this component is hidden -->
         <? $this->insert('components/forms/seller_task',
           ["field_header" => "Decorate your store",
            "field_text" => "Add at least one banner to make your store unique",
            "button_text" => "Set Appearance",
            "image_name" => "icon-onboard-decorate",
            "task_display" => "ng-hide='Completed[3]'",
-           "type" => "redirectShopAppearance"]) ?>
+           "type" => "redirectShopAppearance",
+           "home_task_container_class" => "hide-component"]) ?>
 
         <? $this->insert('components/forms/seller_task',
           ["field_header" => "Review & launch your store",
@@ -92,6 +94,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "task_display" => "ng-hide='!Completed[2]'",
            "type" => "redirectProduct"]) ?>
 
+        <!-- NOTED! : this component is hidden -->
         <? $this->insert('components/forms/seller_task',
           ["field_header" => "Successfully, decorate your store",
            "field_text" => "Add at least one banner to make your store unique",
@@ -99,7 +102,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "image_name" => "icon-onboard-decorate",
            "home_task_container_class" => "background_blue",
            "task_display" => "ng-hide='!Completed[3]'",
-           "type" => "redirectShopAppearance"]) ?>
+           "type" => "redirectShopAppearance",
+           "home_task_container_class" => "hide-component"]) ?>
       </div>
     </div>
   </div>
