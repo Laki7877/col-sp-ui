@@ -84,13 +84,13 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
     </div>
     <!-- Order Product List -->
     <div class="table-section table_order">
-      <table class="table table-curved product-list-table" print-table="formData.Products">
+      <table class="table table-curved product-list-table">
         <thead>
           <tr class="table-head">
             <th>Product Name</th>
             <th class="width_100 ">Price / Unit</th>
             <th class="width_100 text-align-center">Order Qty</th>
-            <th class="width_100 text-align-center">Shipping Qty</th>
+            <th class="width_100 text-align-center" ng-if="getState() >= 2 ">Shipping Qty</th>
             <th class="width_100 text-align-center">Total Price</th>
           </tr>
         </thead>
@@ -99,10 +99,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
             <td class="column-text-ellipsis"><span print-only>{{product.ProductNameEn}}</span><a ng-href="/products/{{product.ProductId}}" print-hide>{{product.ProductNameEn}}</a></td>
             <td class="text-align-center">{{product.UnitPrice | currency:' ':2}}</td>
             <td class="text-align-center">{{product.Quantity}}</td>
-            <td class="text-align-center">
+            <td class="text-align-center" ng-if="getState() >= 2 ">
               <span ng-if="formData.Status != 'PE'">{{product.ShipQuantity}}</span>
               <span ng-if="formData.Status == 'PE'">
-                <input type="number" class="form-control" ng-model="product.ShipQuantity" min="0" max="{{product.Quantity}}" ng-pattern-restrict="^[0-9]*$" ng-blur="checkQuantity(product)"/>
+                <input type="number" class="form-control" ng-model="product.ShipQuantity" min="0" max="{{product.Quantity}}" ng-blur="checkQuantity(product)"/>
               </span>
             </td>
             <td class="text-align-right">{{(product.UnitPrice * product.Quantity) | currency:' ':2}}</td>
@@ -111,21 +111,21 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
             <td>Sub Total</td>
             <td></td>
             <td></td>
-            <td></td>
+            <td  ng-if="getState() >= 2 "></td>
             <td class="text-align-right">{{formData.TotalAmt | currency:' ':2}}</td>
           </tr>
           <tr ng-if="formData.OrdDiscAmt > 0" class="color-red">
             <td>Discount</td>
             <td></td>
             <td></td>
-            <td></td>
+            <td  ng-if="getState() >= 2 "></td>
             <td class="text-align-right">- {{formData.OrdDiscAmt | currency:' ':2}}</td>
           </tr>
           <tr class="background_light_yellow ">
             <td>Total Order Price</td>
             <td></td>
             <td></td>
-            <td></td>
+            <td  ng-if="getState() >= 2 "></td>
             <td class="text-align-right"><strong>{{formData.GrandTotalAmt | currency:' ':2}}</strong></td>
           </tr>
         </tbody>

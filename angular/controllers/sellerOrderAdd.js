@@ -21,6 +21,7 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
       OrderService.update($scope.formData.OrderId, form)
         .then(function(data) {
           $scope.formData = OrderService.deserialize(data);
+          console.log($scope.formData);
           $scope.alert.success(util.saveAlertSuccess('Order', $scope.url));
           $scope.form.$setPristine(true);
         }, function(err) {
