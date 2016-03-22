@@ -4320,7 +4320,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$window", "$uibM
 
 	$scope.getColorClass = function(status) {
 		switch (status) {
-	        case 'Payment Confirmed':
+	        case 'PC':
 	            return 'color-grey';
 	            break;
 	        case '2':
@@ -4332,7 +4332,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$window", "$uibM
 
 	$scope.getFaClass = function(status) {
 		switch (status) {
-	        case 'Payment Confirmed':
+	        case 'PC':
 	            return 'fa-check-circle-o';
 	            break;
 	        case '2':
