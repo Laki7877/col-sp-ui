@@ -657,6 +657,7 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 						$scope.formData = options.service.deserialize(result);
 						$scope.alert.success(options.success || util.saveAlertSuccess(options.successItem || options.item, options.url));
 						$scope.form.$setPristine(true);
+						(options.onAfterSave || _.noop)($scope, true);
 					}, function(err) {
 						$scope.alert.error(common.getError(err));
 					})
@@ -677,6 +678,7 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 						$scope.formData = options.service.deserialize(result);
 						$scope.alert.success(options.success || util.saveAlertSuccess(options.successItem || options.item, options.url));
 						$scope.form.$setPristine(true);
+						(options.onAfterSave || _.noop)($scope, false);
 					}, function(err) {
 						$scope.alert.error(common.getError(err));
 					})
@@ -1149,7 +1151,16 @@ module.exports = ["$scope", "$controller", "AttributeService", "ImageService", "
 			url: '/admin/attributes',
 			item: 'Attribute',
 			service: AttributeService,
-			init: function(scope) {	}
+			init: function(scope) {	},
+			onLoad: function(scope, flag) {
+				if(flag) {
+					scope.alreadyDefault = scope.formData.DefaultAttribute;
+				}
+			},
+			onAfterSave: function(scope) {
+				console.log(scope.formData);
+				scope.alreadyDefault = scope.formData.DefaultAttribute;
+			}
 		}
 	});
 
@@ -1237,8 +1248,10 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeServ
 	$scope.tagTransform = function(newTag) {
 		return {
 			TagName: newTag,
-			match: function(i) {
-				return this.TagName.match(i);
+			ValueEn: {
+					match: function(i) {
+					return newTag.match(i);
+				}
 			}
 		};
 	};
@@ -1249,15 +1262,19 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeServ
 			url: '/admin/attributesets',
 			item: 'Attribute Set',
 			service: AttributeSetService,
-			init: function(scope) {		
-				//Get all available roles
-				AttributeService.listAll()
-					.then(function(data) {
-						scope.attributeOptions = data;
-					});
+			init: function(scope) {
 			}
 		}
 	});
+	$scope.onSearch = function($search) {
+		AttributeService.list({
+			searchText: $search,
+			_limit: 8,
+			_filter: 'NoDefaultAttribute'
+		}).then(function(data) {
+			$scope.attributeOptions = data.data;
+		});
+	}
 }]
 },{}],13:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "BrandService", "config", function($scope, $controller, BrandService, config) {
@@ -1359,7 +1376,6 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 	$scope.saving = false;
 	$scope.dirty = false;
 	$scope.alert = new NcAlert();
-	$scope.attributeSetOptions = [];
 
 	util.warningOnLeave(function() {
 		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
@@ -1452,13 +1468,6 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 			}, delay || config.CATEGORY_SYNC_DELAY);
 	};
 
-	//Load attribute sets for global cat modal selection
-	$scope.loadAttributeSets = function() {
-		AttributeSetService.listAll().then(function(data) {
-			$scope.attributeSetOptions = data;
-		});
-	};
-
 	//Condition at which tradable select will lock attributeset
 	$scope.lockAttributeset = function(i) {
 		return false;
@@ -1472,12 +1481,12 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 			size: 'xl',
 			keyboard: false,
 			templateUrl: 'global_category/modal',
-			controller: ["$scope", "$uibModalInstance", "$timeout", "GlobalCategoryService", "NcAlert", "config", "id", "attributeSetOptions", "Product", "ImageService", function($scope, $uibModalInstance, $timeout, GlobalCategoryService, NcAlert, config, id, attributeSetOptions, Product, ImageService) {
+			controller: ["$scope", "$uibModalInstance", "$timeout", "GlobalCategoryService", "NcAlert", "config", "id", "AttributeSetService", "Product", "ImageService", function($scope, $uibModalInstance, $timeout, GlobalCategoryService, NcAlert, config, id, AttributeSetService, Product, ImageService) {
 				'ngInject';
 				$scope.$parent.modalScope = $scope;
 				$scope.alert = new NcAlert();
 				$scope.statusOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
-				$scope.attributeSetOptions = attributeSetOptions;
+				$scope.attributeSetOptions = [];
 				$scope.bannerUploader = ImageService.getUploaderFn('/GlobalCategoryImages');
 				$scope.formData = {};
 				$scope.saving = false;
@@ -1506,6 +1515,14 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 						}).finally(function() {
 							$scope.loading = false;
 						});
+				};
+				$scope.loadAttributeSets = function($search) {
+					AttributeSetService.list({
+						searchText: $search,
+						_limit: 8
+					}).then(function(data) {
+						$scope.attributeSetOptions = data.data;
+					});
 				};
 				$scope.getFeatureProduct = function(text) {
 					Product.advanceList({
@@ -1571,9 +1588,6 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 			resolve: {
 				id: function() {
 					return _.isUndefined(item) ? 0 : item.CategoryId ;
-				},
-				attributeSetOptions: function() {
-					return $scope.attributeSetOptions;
 				}
 			},
 			scope: $scope
@@ -1600,7 +1614,6 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 	//On init
 	$scope.init = function() {
 		$scope.reload();
-		$scope.loadAttributeSets();
 	};
 
 	//Load category list
@@ -2118,19 +2131,16 @@ module.exports = ["$scope", "$controller", "Product", "config", "util", function
 			item: 'Product',
 			order: 'UpdatedDt',
 			id: 'ProductId',
-			actions: [{
-                name: 'View Detail',
-                fn: function(item) { }
-            }],
+			actions: ['View Only'],
 			bulks: [
-				util.bulkTemplate('Approve', Product.approve, 'ProductId', 'Product', {
+				util.bulkTemplate('Force Approve', Product.approve, 'ProductId', 'Product', {
 					btnConfirm: 'Approve',
 					btnClass: 'btn-green'
 				}),
 				util.bulkTemplate('Reject', Product.reject, 'ProductId', 'Product', {
 					btnConfirm: 'Reject',
 					btnClass: 'btn-red'
-				})
+				}),
 			],
 			filters: [
 				{ name: "All", value: 'All'},
@@ -2201,12 +2211,9 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", functi
 			bulks: ['Show', 'Hide',
             {
 		        name: 'Add Tags',
-		        fn: function(add, cb) {
+		        fn: function(add, cb, model) {
 		            $scope.alert.close();
-		            add = _.map(add, function(e) {
-		            	return _.pick(e, ['ProductId', 'Pid', 'Tags']);
-		            });
-		            Product.addTags(add).then(function() {
+		            Product.addTags(model).then(function() {
 		                cb();
 		                $scope.alert.success('Successfully add tags for ' + add.length + ' products')
 		            }, function(resp) {
@@ -2936,7 +2943,8 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 }];
 
 },{"angular":230}],42:[function(require,module,exports){
-module.exports = ['$scope', 'Product', 'AttributeSet', function ($scope, Product, AttributeSet) {
+module.exports = ["$scope", "Product", "AttributeSet", function ($scope, Product, AttributeSet) {
+	'ngInject';
 	$scope.ProductList = [];
 	$scope.SELECT_ALL = false;
 	$scope.sumProductAttributeSet = 0;
@@ -3572,9 +3580,9 @@ module.exports = ["$scope", "$controller", "common", "Product", "util", "Alert",
                 },
                 {
                     name: 'Add Tags',
-                    fn: function(add, cb) {
+                    fn: function(add, cb, r) {
                         $scope.alert.close();
-                        Product.addTags(add).then(function() {
+                        Product.addTags(r).then(function() {
                             cb();
                             $scope.alert.success('Successfully add tags for ' + add.length + ' products')
                         }, function(resp) {
@@ -5271,7 +5279,8 @@ module.exports = ["$templateCache", "$filter", function($templateCache, $filter)
 			selectable: '=ncSelectOptions',
 			model: '=ncModel',
 			options: '=ncOptions',
-			test: '=?ncTest'
+			test: '=?ncTest',
+			callback: '=?onSearch'
 		},
 		template: function(element, attrs) {
 			if(attrs.ncTradableSelect) {
@@ -5297,10 +5306,13 @@ module.exports = ["$templateCache", "$filter", function($templateCache, $filter)
 			scope.header = attrs.columnHeader;
 			//Search Placeholder
 			scope.searchPlaceholder = attrs.searchPlaceholder;
+			scope.$watch('search', function(newObj) {
+				(scope.callback || _.noop)(newObj);
+			});
 		},
 		controller: ["$scope", function($scope) {
 			'ngInject';
-			$scope.search = {};
+			$scope.search = '';
 			$scope.activeRight = -1;
 			$scope.activeLeft = -1;
 			$scope.test = $scope.test || function() { return false; };
@@ -8940,7 +8952,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncLoading',
-    "<div class=\"empty-section margin-top-20 margin-bottom-20\"><span><img class=loading-img src=\"/assets/img/loader.gif\"></span>{{ message }}</div>"
+    "<div class=\"empty-section margin-top-20 margin-bottom-20\"><span></span> <img class=loading-img src=\"/assets/img/loader.gif\">{{ message }}</div>"
   );
 
 
@@ -11552,7 +11564,7 @@ module.exports = ["common", "config", function(common, config) {
 				AttributeValues: [{}]
 			},
 			DefaultAttribute: false,
-			VisibleTo: visibleToOptions[0],
+			VisibleTo: visibleToOptions[0].value,
 			ShowGlobalSearchFlag: false,
 			ShowLocalSearchFlag: false,
 			VariantDataType: variantOptions[0].value
@@ -11800,7 +11812,7 @@ module.exports = ["common", "config", function(common, config) {
 			return _.pick(e, ['TagId', 'TagName']);
 		});
 		processed.Categories = _.join(_.map(data.Category, function(e) {
-			return e.NameEn + ' (' + e.CategoryAbbreviation + ')';
+			return e.NameEn + ' (' + e.CategoryId + ')';
 		}), ', ');
 		if(processed.Categories.length == 0) {
 			processed.Categories = 'None'; 
@@ -14662,7 +14674,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/input/tradable-select',
-    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><input ng-model=search[options.map.text] class=\"form-control input-search-icon search-box\" placeholder=\"{{ searchPlaceholder }}\" aria-describedby=basic-addon2></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable | filter:search:strict track by $index\" ng-class=\"{ 'active' : activeLeft == selectable.indexOf(item) }\" ng-click=\"select(selectable.indexOf(item), true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=active(false) ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=active(true) ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>{{ header }}</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == model.indexOf(item), 'disabled' : test(item) }\" ng-click=\"select(model.indexOf(item), false)\">{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div></div>"
+    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><input ng-model=search class=\"form-control input-search-icon search-box\" placeholder=\"{{ searchPlaceholder }}\" aria-describedby=basic-addon2></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable track by $index\" ng-class=\"{ 'active' : activeLeft == selectable.indexOf(item) }\" ng-click=\"select(selectable.indexOf(item), true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=active(false) ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=active(true) ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>{{ header }}</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == model.indexOf(item), 'disabled' : test(item) }\" ng-click=\"select(model.indexOf(item), false)\">{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div></div>"
   );
 
 
@@ -14730,7 +14742,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('global_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKeyEn nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL (English)\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" maxlength=\"300\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Commission nc-template-options-path=addCategoryForm/Commission nc-label=\"Commission (%)\"><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ maxlength=20 ng-maxnumber=100 ng-minnumber=0 required></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions column-header=\"Attribute Set in this Category\" search-placeholder=\"Search Attribute Set\" nc-options=\"{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }\"></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\">* Changing attribute set mapping may affect products under this category</p></div></div></div><nc-image-banner name=CategoryBannerEn nc-model=formData.CategoryBannerEn title=\"Banner Upload (English)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh nc-model=formData.CategoryBannerTh title=\"Banner Upload (ไทย)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\n" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKeyEn nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL (English)\"><input class=form-control name=UrlKeyEn ng-model=formData.UrlKeyEn ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" maxlength=\"300\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Commission nc-template-options-path=addCategoryForm/Commission nc-label=\"Commission (%)\"><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ maxlength=20 ng-maxnumber=100 ng-minnumber=0 required></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions column-header=\"Attribute Set in this Category\" search-placeholder=\"Search Attribute Set\" nc-options=\"{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }\" on-search=loadAttributeSets></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\">* Changing attribute set mapping may affect products under this category</p></div></div></div><nc-image-banner name=CategoryBannerEn nc-model=formData.CategoryBannerEn title=\"Banner Upload (English)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh nc-model=formData.CategoryBannerTh title=\"Banner Upload (ไทย)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\n" +
     "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\n" +
     "\t\t                          </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=formData.DescriptionShortEn>\n" +
     "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\n" +

@@ -81,7 +81,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
                               <input type="text" class="form-control" ng-model="formData.Action.DiscountAmount" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"/>
                           </div>
 
-                          <div nc-template="common/input/form-group-with-label" nc-label="Maximum Amount" nc-template-options-path="couponForm/MaximumAmount">
+                          <div ng-show="formData.Action.Type != 'AMOUNT'" nc-template="common/input/form-group-with-label" nc-label="Maximum Amount" nc-template-options-path="couponForm/MaximumAmount">
                               <input type="text" class="form-control" ng-model="formData.Action.MaximumAmount" ng-pattern-restrict="^[0-9]*$"/>
                           </div>
 

@@ -93,6 +93,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 						$scope.formData = options.service.deserialize(result);
 						$scope.alert.success(options.success || util.saveAlertSuccess(options.successItem || options.item, options.url));
 						$scope.form.$setPristine(true);
+						(options.onAfterSave || _.noop)($scope, true);
 					}, function(err) {
 						$scope.alert.error(common.getError(err));
 					})
@@ -113,6 +114,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 						$scope.formData = options.service.deserialize(result);
 						$scope.alert.success(options.success || util.saveAlertSuccess(options.successItem || options.item, options.url));
 						$scope.form.$setPristine(true);
+						(options.onAfterSave || _.noop)($scope, false);
 					}, function(err) {
 						$scope.alert.error(common.getError(err));
 					})

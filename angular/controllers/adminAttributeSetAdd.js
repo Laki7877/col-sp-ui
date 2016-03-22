@@ -30,8 +30,10 @@ module.exports = function($scope, $controller, AttributeSetService, AttributeSer
 	$scope.tagTransform = function(newTag) {
 		return {
 			TagName: newTag,
-			match: function(i) {
-				return this.TagName.match(i);
+			ValueEn: {
+					match: function(i) {
+					return newTag.match(i);
+				}
 			}
 		};
 	};
@@ -42,13 +44,17 @@ module.exports = function($scope, $controller, AttributeSetService, AttributeSer
 			url: '/admin/attributesets',
 			item: 'Attribute Set',
 			service: AttributeSetService,
-			init: function(scope) {		
-				//Get all available roles
-				AttributeService.listAll()
-					.then(function(data) {
-						scope.attributeOptions = data;
-					});
+			init: function(scope) {
 			}
 		}
 	});
+	$scope.onSearch = function($search) {
+		AttributeService.list({
+			searchText: $search,
+			_limit: 8,
+			_filter: 'NoDefaultAttribute'
+		}).then(function(data) {
+			$scope.attributeOptions = data.data;
+		});
+	}
 }

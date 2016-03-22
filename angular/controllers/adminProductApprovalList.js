@@ -9,19 +9,16 @@ module.exports = function($scope, $controller, Product, config, util) {
 			item: 'Product',
 			order: 'UpdatedDt',
 			id: 'ProductId',
-			actions: [{
-                name: 'View Detail',
-                fn: function(item) { }
-            }],
+			actions: ['View Only'],
 			bulks: [
-				util.bulkTemplate('Approve', Product.approve, 'ProductId', 'Product', {
+				util.bulkTemplate('Force Approve', Product.approve, 'ProductId', 'Product', {
 					btnConfirm: 'Approve',
 					btnClass: 'btn-green'
 				}),
 				util.bulkTemplate('Reject', Product.reject, 'ProductId', 'Product', {
 					btnConfirm: 'Reject',
 					btnClass: 'btn-red'
-				})
+				}),
 			],
 			filters: [
 				{ name: "All", value: 'All'},

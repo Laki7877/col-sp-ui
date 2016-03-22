@@ -27,6 +27,5 @@ $newText = implode('<span class="ah-breadcrumb-splitter">/</span>', $extracted);
     <div class="page-actions float-right" ng-if="!_loading.state && !adminMode && formData.Status == 'AP'">
         <button class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
         <button class="btn btn-blue btn-width-xl" ng-click="preEditProduct()">Edit Product</button>
-
     </div>
 </div>
