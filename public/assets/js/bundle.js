@@ -849,6 +849,10 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 				$scope.params._offset = 0;
 				$scope.bulkContainer.length = 0;
 			}
+			if(newObj._filter2 !== oldObj._filter2) {
+				$scope.params._offset = 0;
+				$scope.bulkContainer.length = 0;
+			}
 		}
 
 		options.service.list($scope.params)
@@ -1697,19 +1701,10 @@ module.exports = ["$scope", "$controller", "BrandService", "Product", "AdminMast
 	$scope.getProducts = function(search) {
 		var brands = !_.isEmpty($scope.formData.FilterBy) ? [$scope.formData.FilterBy] : [];
 		Product.advanceList({
-			searchText: search,
-			Brands: brands
-		})
-		.then(function(data) {
-			$scope.products = data.data;
-		});
-	};
-	$scope.getBrands = function(search) {
-		BrandService.list({
 			searchText: search
 		})
 		.then(function(data) {
-			$scope.brands = data.data;
+			$scope.products = data.data;
 		});
 	};
 	$scope.getChildProducts = function(search) {
@@ -2146,8 +2141,34 @@ module.exports = ["$scope", "$controller", "Product", "config", "util", function
 			]
 		}
 	});
-
+	$scope.filter2Options = [
+		{
+			name: 'None',
+			value: 'None'
+		},
+		{
+			name: 'Information',
+			value: 'Information'
+		},
+		{
+			name: 'Image',
+			value: 'Image'
+		},
+		{
+			name: 'Variation',
+			value: 'Variation'
+		},
+		{
+			name: 'More',
+			value: 'More'
+		},
+		{
+			name: 'Ready for Action',
+			value: 'ReadyForAction'
+		}
+	];
 	$scope.params._filter = $scope.filterOptions[4].value;
+	$scope.params._filter2 = 'None';
 }];
 
 },{}],27:[function(require,module,exports){
@@ -2176,12 +2197,15 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", functi
 			item: 'Product',
 			order: 'UpdatedDt',
 			id: 'ProductId',
-			actions: ['View', 'Delete'],
-			bulks: ['Delete', 'Show', 'Hide',
+			actions: ['View'],
+			bulks: ['Show', 'Hide',
             {
 		        name: 'Add Tags',
 		        fn: function(add, cb) {
 		            $scope.alert.close();
+		            add = _.map(add, function(e) {
+		            	return _.pick(e, ['ProductId', 'Pid', 'Tags']);
+		            });
 		            Product.addTags(add).then(function() {
 		                cb();
 		                $scope.alert.success('Successfully add tags for ' + add.length + ' products')

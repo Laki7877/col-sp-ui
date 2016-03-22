@@ -32,6 +32,32 @@ module.exports = function($scope, $controller, Product, config, util) {
 			]
 		}
 	});
-
+	$scope.filter2Options = [
+		{
+			name: 'None',
+			value: 'None'
+		},
+		{
+			name: 'Information',
+			value: 'Information'
+		},
+		{
+			name: 'Image',
+			value: 'Image'
+		},
+		{
+			name: 'Variation',
+			value: 'Variation'
+		},
+		{
+			name: 'More',
+			value: 'More'
+		},
+		{
+			name: 'Ready for Action',
+			value: 'ReadyForAction'
+		}
+	];
 	$scope.params._filter = $scope.filterOptions[4].value;
+	$scope.params._filter2 = 'None';
 };
