@@ -27,7 +27,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       $scope.defaultAttributes = res;
     });
 
-
+    $scope.readOnly = options.readOnly;
     $scope.adminMode = options.adminMode;
     $scope.approveMode = options.approveMode;
     $scope.overview = {};
@@ -386,6 +386,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
      * @param  {String} Status (WA or DF or other enum sent to server)
      */
     $scope.publish = function(Status) {
+      if($scope.readOnly){
+          $scope.alert.error('This view is read-only.')
+      }
+      
       $scope.pageState.reset();
       $scope.pageState.load('Validating..');
 

@@ -15,7 +15,14 @@ angular.module('productDetail')
                 return templateHTML;
             },
             link: function (scope, element, attrs, ctrl, transclude) {
-
+                scope._apNavTabs  = [
+                    {id: 'information' , name: 'Information', class: 'require active'},
+                    {id: 'images', name: 'Images', class: 'require'},
+                    {id: 'category', name: 'Category', class: ''},
+                    {id: 'more_option', name: 'More Options', class: ''},
+                    {id: 'variation', name: 'Variation', class: ''}
+                ];
+                
             }
         };
     });
