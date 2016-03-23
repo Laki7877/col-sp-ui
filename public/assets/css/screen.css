@@ -12319,6 +12319,11 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
   background-color: #EDF2F9;
 }
 
+/* line 124, ../../../assets/_override_bootstrap.scss */
+hr {
+  border-color: #BCC7D5;
+}
+
 /* line 1, ../../../assets/_atomic.scss */
 .margin-right-20 {
   margin-right: 20px;
@@ -12871,35 +12876,40 @@ ul.sub-sidebar .item > a {
 }
 /* line 134, ../../../assets/_sidebar.scss */
 #sidebar-wrapper .sidebar-nav li {
-  padding-left: 19px;
+  line-height: 0px;
+  padding: 0px;
   border-bottom: 1px solid #252d40;
 }
-/* line 137, ../../../assets/_sidebar.scss */
-#sidebar-wrapper .sidebar-nav li a.sidebar-nav-text {
-  display: none;
+/* line 139, ../../../assets/_sidebar.scss */
+#sidebar-wrapper .sidebar-nav li a i {
+  padding: 17px 0px;
+  margin: 0px;
+  width: 60px;
+  text-align: center;
 }
 
-/* line 146, ../../../assets/_sidebar.scss */
+/* line 152, ../../../assets/_sidebar.scss */
 #sidebar-wrapper:hover .logo-img-wrapper-collased {
   display: block;
 }
 
-/* line 162, ../../../assets/_sidebar.scss */
+/* line 168, ../../../assets/_sidebar.scss */
 ul.sub-sidebar {
   left: 60px;
   padding-top: 58px;
   background-color: #1e2534;
   color: #FFFFFF;
 }
-/* line 167, ../../../assets/_sidebar.scss */
+/* line 173, ../../../assets/_sidebar.scss */
 ul.sub-sidebar .item {
   color: #FFFFFF;
 }
-/* line 169, ../../../assets/_sidebar.scss */
+/* line 175, ../../../assets/_sidebar.scss */
 ul.sub-sidebar .item.active {
+  font-weight: normal;
   color: #ec0000;
 }
-/* line 172, ../../../assets/_sidebar.scss */
+/* line 179, ../../../assets/_sidebar.scss */
 ul.sub-sidebar .item:hover {
   color: #ec0000;
 }
@@ -16212,13 +16222,25 @@ ng-transclude.has-error .form-control {
   background-color: #EDF2F9;
 }
 
+/* line 298, ../../../assets/screen.scss */
+.modal .modal-content .newsletter-modal-header {
+  border-bottom: 1px solid #BCC7D5;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+/* line 302, ../../../assets/screen.scss */
+.modal .modal-content .newsletter-modal-header button.close > span {
+  margin-top: -14px;
+  color: #32343C;
+}
+
 /* Customize CK Editor */
-/* line 301, ../../../assets/screen.scss */
+/* line 316, ../../../assets/screen.scss */
 .cke_toolbox .cke_button__cut, .cke_toolbox .cke_button__copy, .cke_toolbox .cke_button__paste, .cke_toolbox .cke_button__anchor {
   display: none !important;
 }
 
-/* line 307, ../../../assets/screen.scss */
+/* line 322, ../../../assets/screen.scss */
 .cke_toolbox .cke_toolbar:nth-child(7) .cke_toolbar_separator {
   display: none;
 }

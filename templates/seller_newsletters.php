@@ -17,7 +17,7 @@
           <tr ng-repeat="row in list.data">
             <td class="modified-column">{{ row.PublishedDt | dateTh }}</td>
             <td><a ng-click="open(row)">{{ row.Subject }}</a></td>
-            <td class="action-column text-align-center"><button class="btn btn-white btn-width-default" ng-click="open(row)">Read</button></td>
+            <td class="width_100 text-align-center"><button class="btn btn-white btn-width-default" ng-click="open(row)">Read</button></td>
           </tr>
         </tbody>
       </table>

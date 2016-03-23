@@ -3,7 +3,9 @@
 <?php $this->start('page-body') ?>
  <div ng-controller="SellerAccountCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'User Accounts','button' => 'Add User', 'button_class' => 'btn-width-xl', 'link' => '/accounts/add']) ?>
+    <nc-page-title nc-title="User Accounts" icon="fa-user">
+      <a class="btn btn-blue btn-width-xxl" ng-href="{{url}}/add">Add {{item}}</a>
+    </nc-page-title>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="UserId"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for User Accounts and Email'"></nc-search>

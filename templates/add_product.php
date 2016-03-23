@@ -17,7 +17,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 
 		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
 
-            <nc-page-title nc-title="Products/Product Detail" link="/products">
+            <nc-page-title nc-title="Products/Product Detail" link="/products" icon="fa-tag">
                 <div class="float-right" ng-if="!_loading.state && adminMode">
                     <button ng-show="formData.Status != 'WA'" class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
                     <button type="submit" class="btn btn-blue btn-width-xl" ng-click="saveAsIs()">Save</button>

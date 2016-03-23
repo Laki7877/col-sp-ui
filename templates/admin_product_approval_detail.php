@@ -11,23 +11,30 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products']);
 <?php $this->start('page-body') ?>
 <div ng-controller="AdminProductApprovalDetailCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
 	<div class="add-product-body">
-		
+
 		<nc-alert nc-model="alert"></nc-alert>
 		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
 			<fieldset> <!-- admin can edit all statuses -->
-			<? $this->insert('components/page-title-breadcrumb', ['text' => "Product Approval List/Product Detail", 'urls' => ['/admin/approve']]) ?>
+			<nc-page-title nc-title="Product Approval List/Product Detail" link="/admin/approve" icon="fa-tag">
+					<div class="float-right" ng-if="!_loading.state && adminMode">
+							<a class="btn btn-white btn-width-xl" ng-href="/admin/approve">Cancel</a>
+							<button ng-show="formData.Status != 'WA'" class="btn btn-white margin-left-10 btn-width-xl" ng-click="preview()">Preview</button>
+							<button type="submit" class="btn btn-blue margin-left-10 btn-width-xl" ng-click="saveAsIs()">Save</button>
+					</div>
+			</nc-page-title>
+
 			<div>
 					<div class="tab-content">
 						<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
 							<div id="add-product-more-option-tab-content">
-								
+
 								<div class="row">
 									<div class="col-xs-12">
 										<div class="form-section form-section-content-grey" ng-if="!pageState.loading.state">
 											<div class="form-section-header"><h2>Admin Panel</h2></div>
 											<div class="form-section-content">
 
-												<div nc-template="common/input/fg-radio-group" nc-label="Information Tab" 
+												<div nc-template="common/input/fg-radio-group" nc-label="Information Tab"
 												nc-template-options-path="adminApproveForm/Radio"
 								                nc-template-form="form.AdminApproveInformation">
 								                    <label class="color-yellow">
@@ -41,7 +48,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products']);
 								                    </label>
 								                </div>
 
-												<div nc-template="common/input/fg-radio-group" nc-label="Image Tab" 
+												<div nc-template="common/input/fg-radio-group" nc-label="Image Tab"
 												nc-template-options-path="adminApproveForm/Radio"
 								                nc-template-form="form.AdminApproveImage">
 								                    <label class="color-yellow">
@@ -54,8 +61,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products']);
 								                    	<input type="radio" ng-model="formData.AdminApprove.Image" value="RJ" name="AdminApproveImage"/> Not Approved
 								                    </label>
 								                </div>
-												
-												<div nc-template="common/input/fg-radio-group" nc-label="Category Tab" 
+
+												<div nc-template="common/input/fg-radio-group" nc-label="Category Tab"
 												nc-template-options-path="adminApproveForm/Radio"
 								                nc-template-form="form.AdminApproveCategory">
 								                    <label class="color-yellow">
@@ -68,9 +75,9 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products']);
 								                    	<input type="radio" ng-model="formData.AdminApprove.Category" value="RJ" name="AdminApproveCategory"/> Not Approved
 								                    </label>
 								                </div>
-												
-												
-												<div nc-template="common/input/fg-radio-group" nc-label="Variation Tab" 
+
+
+												<div nc-template="common/input/fg-radio-group" nc-label="Variation Tab"
 												nc-template-options-path="adminApproveForm/Radio"
 								                nc-template-form="form.AdminApproveVariation">
 								                    <label class="color-yellow">
@@ -85,7 +92,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products']);
 								                </div>
 
 
-												<div nc-template="common/input/fg-radio-group" nc-label="More Options Tab" 
+												<div nc-template="common/input/fg-radio-group" nc-label="More Options Tab"
 												nc-template-options-path="adminApproveForm/Radio"
 								                nc-template-form="form.AdminApproveMoreOptions">
 								                    <label class="color-yellow">
@@ -99,10 +106,10 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products']);
 								                    </label>
 								                </div>
 
-												<div nc-template="common/input/form-group-with-label" nc-label="Reject Reason" 
+												<div nc-template="common/input/form-group-with-label" nc-label="Reject Reason"
 												nc-template-options-path="adminApproveForm/NothingSpecial"
 								                nc-template-form="form.AdminApproveRejectReason">
-								                    <textarea placeholder="Reason why you do not approve this product" 
+								                    <textarea placeholder="Reason why you do not approve this product"
 								                    class="form-control" name="AdminApproveRejectReason" ng-model="formData.AdminApprove.RejectReason">
 								                    </textarea>
 								                </div>
@@ -153,9 +160,11 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products']);
 				<div class="add-product-form-action main-form-action full-width-row">
 					<div class="container-fluid">
 						<div class="float-right" ng-if="adminMode">
+							<a href="/admin/approve" class="link-btn-plain">Cancel</a>
+
 							<button ng-show="formData.Status != 'WA'"
 							class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
-							
+
 							<button type="submit" class="btn btn-blue btn-width-xl"
 							ng-click="saveAsIs()">Save</button>
 						</div>
@@ -169,7 +178,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products']);
 							<button ng-show="formData.Status != 'WA'"
 							type="submit" class="btn btn-blue btn-width-xl"
 							ng-click="prePublishWA()">Publish</button>
-							
+
 						</div>
 					</div>
 				</div>

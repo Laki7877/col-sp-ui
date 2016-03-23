@@ -3,6 +3,11 @@
  */
 angular.module("productDetail").run(function($templateCache) {  'use strict';
 
+  $templateCache.put('ap/form-product-add',
+    "<form name=addProductForm class=\"ah-form sticky-mainform-action\" novalidate><nc-page-title nc-title=\"Products/Product Detail\" link=/products icon=fa-tag><div ng-include=\"'page-btn-controls'\"></div></nc-page-title><fieldset ng-disabled=\"formData.Status == 'WA' || formData.Status == 'AP' || readOnly\"><div ng-if=pageState.loading.state nc-loading=\"{{ pageState.loading.message }}..\"></div><div class=add-product-body ng-if=!pageState.loading.state><ul class=\"nav nav-tabs\" role=tablist><li ng-repeat=\"item in _apNavTabs\" role=presentation ng-class=item.class><a ng-href=#{{item.id}} data-id={{item.id}} aria-controls=item.id role=tab data-toggle=tab>{{item.name}}</a></li></ul><div class=tab-content><div role=tabpanel class=\"tab-pane margin-top-20 active\" id=information><div ng-include=\"'ap/tab-information'\"></div></div><div role=tabpanel class=\"tab-pane margin-top-20\" id=images><div ng-include=\"'ap/tab-images'\"></div></div><div role=tabpanel class=\"tab-pane margin-top-20\" id=category><div ng-include=\"'ap/tab-category'\"></div></div><div role=tabpanel class=\"tab-pane margin-top-20\" id=more_option><div ng-include=\"'ap/tab-more-option'\"></div></div><div role=tabpanel class=\"tab-pane margin-top-20\" id=variation><div ng-include=\"'ap/tab-variations'\"></div></div></div><div class=\"add-product-form-action main-form-action full-width-row\"><div class=container-fluid><div ng-include=\"'page-btn-controls'\"></div></div></div></div></fieldset></form>"
+  );
+
+
   $templateCache.put('ap/inner-tab-breadcrumb',
     "<div><div class=\"alert alert-yellow\" ng-if=\"formDataPtr.Status == 'WA' && !adminMode\">This product is waiting for approval from the admin. You cannot edit it now.</div><div class=margin-bottom-20><span>Global Category:</span> <span>{{ breadcrumb.globalCategory }}</span></div></div>"
   );
