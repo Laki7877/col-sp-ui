@@ -23,7 +23,7 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService, Ima
 			templateUrl: 'newsletter/modalAdmin',
 			controller: function($scope, $uibModalInstance, AdminShopService, NcAlert, config, common, id, uploader) {
 				'ngInject';
-				$scope.formData = NewsletterService.generate();
+				$scope.formData = {};
 				$scope.form = {};
 				$scope.loading = false;
 				$scope.saving = false;
@@ -103,7 +103,7 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService, Ima
 						//Update
 						NewsletterService.update(id, NewsletterService.serialize($scope.formData))
 							.then(function() {
-								$uibModalInstance.close();
+								$scope.alert.success('Successfully Saved');
 							}, function(err) {
 								$scope.alert.error(common.getError(err));
 							})
@@ -124,7 +124,7 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService, Ima
 		});
 		modal.result.then(function(res) {
 			$scope.reload();
-			$scope.alert.success('Successfully saved.')
+			$scope.alert.success('Successfully created.')
 		});
 	};
 };
