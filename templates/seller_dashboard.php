@@ -6,7 +6,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
 
   <div id="dashboard_page" ng-controller="SellerDashboardCtrl">
     <div class="dashboard_column col-xs-8">
-      <div class="space_column with_border">
+      <div class="space_column with_border revenue_pannel">
         <div class="group_container no_border">
           <span class="image-thumbs-img-wrapper">
             <img class="" src="<?= $this->asset('/assets/img/icon-dashboard-revenue.png') ?>" />
@@ -24,11 +24,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <!-- <canvas id="canvas" height="280"></canvas> -->
             <canvas id="line" class="chart chart-line" chart-data="data"
               chart-labels="labels" chart-legend="false" chart-series="line"
-              chart-click="onClick" chart-options="{bezierCurve : false}">
-            </canvas> 
+              chart-click="onClick" chart-options="{maintainAspectRatio: true, bezierCurve : false}">
+            </canvas>
           </div>
         </div>
-        <div class="remark">Remark: The revenue does not count canceled and pending orders.</div>
+        <div class="remark">Remark: The revenue does not count canceled and pending orders</div>
       </div>
 
       <div class="space_column with_border">
