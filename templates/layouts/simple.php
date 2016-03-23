@@ -27,6 +27,7 @@
     <script src="/assets/libs/ckeditor/config.js"></script>
     <script src="/assets/libs/ckfinder/ckfinder.js"></script>
 
+
     <script src="/assets/libs/moment/moment.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/libs/select2/css/select2.min.css">
     <link rel="stylesheet" href="/assets/libs/select2/css/selectize.css">

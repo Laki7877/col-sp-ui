@@ -1,5 +1,6 @@
-module.exports = function($scope, $controller, ProductTempService, config) {
+module.exports = function($scope, $controller, ProductTempService, config, NcAlert) {
 	'ngInject';
+    $scope.alert = new NcAlert();
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
 		options: {

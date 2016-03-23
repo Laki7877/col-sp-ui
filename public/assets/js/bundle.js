@@ -974,11 +974,12 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 }];
 
 },{}],6:[function(require,module,exports){
-module.exports = ["$scope", "$rootScope", "$controller", "config", "$uibModal", "GlobalCategory", "Category", "AttributeSet", "Product", "ProductTempService", "VariationFactorIndices", "AttributeSetService", "AttributeOptions", "$productAdd", function($scope, $rootScope, $controller,
+module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$uibModal", "GlobalCategory", "Category", "AttributeSet", "Product", "ProductTempService", "VariationFactorIndices", "AttributeSetService", "AttributeOptions", "$productAdd", function($scope, $rootScope, $controller, NcAlert,
 		config, $uibModal, GlobalCategory, Category, AttributeSet, Product, ProductTempService,
 		VariationFactorIndices, AttributeSetService, AttributeOptions, $productAdd) {
 	'ngInject';
     
+    $scope.alert = new NcAlert();
     $scope.create = function(){
         
         var fd = angular.copy($scope.formData);
@@ -1003,7 +1004,13 @@ module.exports = ["$scope", "$rootScope", "$controller", "config", "$uibModal", 
         delete fd.DefaultVariant;
         console.log("fd", fd);
         //Post to server
-		Product.savePendingProduct(fd);
+        $scope.alert.close();
+		Product.savePendingProduct(fd).then(function(suc){
+            $scope.alert.success("Pending product grouped successfully.");
+        }, function(er){
+            console.log(er);
+            $scope.alert.error("Unable to group product because " + (er.Message || er.message));
+        });
 	};
     
 	$scope.formData = {
@@ -4906,8 +4913,9 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   };
 };
 },{}],61:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "ProductTempService", "config", function($scope, $controller, ProductTempService, config) {
+module.exports = ["$scope", "$controller", "ProductTempService", "config", "NcAlert", function($scope, $controller, ProductTempService, config, NcAlert) {
 	'ngInject';
+    $scope.alert = new NcAlert();
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
 		options: {
@@ -4951,6 +4959,7 @@ module.exports = ["$scope", "$controller", "ProductTempService", "config", funct
 },{}],62:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", function($scope, $controller, Product) {
 	'ngInject';
+    
 	$controller('AbstractPendingProductGroupCtrl', {
 		$scope: $scope,
 		options: {}
@@ -10492,7 +10501,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
   $templateCache.put('ap/tab-more-option',
     "<div id=add-product-more-option-tab-content><div ap-component=ap/inner-tab-breadcrumb></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Relationship</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Related Products\" nc-template-form=form.RelatedProducts nc-template-options-path=addProductForm/RelatedProducts><ui-select ng-model=formData.RelatedProducts name=RelatedProducts nc-tag-validator nc-max-tag-count=10 multiple><ui-select-match placeholder=\"Input Product Name\"><span>{{ $item.ProductNameEn }}</span></ui-select-match><ui-select-choices repeat=\"item in (dataset.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' ) track by item.Pid\" refresh=refresher.RelatedProducts($select.search) refresh-delay=1>{{ item.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div></div><div class=row><div class=col-xs-12><div ap-component=ap/section-seo></div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>More Details</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Effective On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" placeholder=\"Select date and time when product will go online\" class=\"input-icon-calendar form-control\" value=\"{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.EffectiveDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'hour' }\"></ul></div><span class=help-block></span></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go online\"></i></div></div><div class=form-group><div class=width-label><label class=control-label>Expire On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white placeholder=\"Select date and time when product will go offline\" class=\"input-icon-calendar form-control\" name=ExpireDate ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" value=\"{{ formData.ExpireDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ExpireDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'hour' }\"></ul></div><div class=width-field-large><span class=\"help-block color-red\" ng-if=\"formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate\"><span>Effective date/time must come before expire date/time</span></span></div></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go offline\"></i></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/TheOneCardEarn nc-template-form=form.TheOneCardEarn nc-label=\"The One Card earn\"><input disabled class=form-control name=TheOneCardEarn ng-model=\"formData.TheOneCardEarn\"></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Nothing nc-template-form=form.GiftWrap nc-label=\"Gift Wrap\"><select class=form-control ng-model=formData.GiftWrap><option value=N>No</option><option value=Y>Yes</option></select></div><div class=form-group><div class=width-label><label class=control-label>Control Flag</label></div><div class=width-field-normal><div class=\"checkbox multiple-checkbox\"><label><input type=checkbox ng-model=formData.ControlFlags.Flag1>Flag 1</label><label><input type=checkbox ng-model=formData.ControlFlags.Flag2>Flag 2</label><label><input type=checkbox ng-model=formData.ControlFlags.Flag3>Flag 3</label></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Remark nc-template-form=form.Remark nc-label=Remark><textarea class=form-control ng-pattern=\"/^[^<>]+$/\" maxlength=2000 name=Remark ng-model=formData.Remark>\r" +
     "\n" +
-    "\t\t\t\t\t\t</textarea></div></div></div></div></div></div>"
+    "                        </textarea></div></div></div></div></div><div class=row ng-if=\"formData.Revisions.length > 0\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Approve Versions</h2></div><div class=form-section-content><div class=table-wrapper><table class=table id=add-product-approve-versions><thead><tr><th class=thead-approved-date>Approved Date</th><th class=thead-submitted-date>Submitted Date</th><th class=thead-submitted-by>Submitted By</th><th class=thead-actions>Actions</th></tr></thead><tbody><tr ng-repeat=\"row in formData.Revisions\" ng-if=row.ApprovedDt><td>{{ row.ApprovedDt | date: 'dd/MM/yyyy HH:mm' }}</td><td>{{ row.SubmittedDt | date: 'dd/MM/yyyy HH:mm' }}</td><td>{{ row.SubmittedBy }}</td><td><button class=\"btn btn-white\">View</button> <button class=\"btn btn-white\">Restore</button></td></tr></tbody></table></div></div></div></div></div></div>"
   );
 
 

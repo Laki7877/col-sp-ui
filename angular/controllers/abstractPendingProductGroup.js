@@ -1,8 +1,9 @@
-module.exports = function($scope, $rootScope, $controller,
+module.exports = function($scope, $rootScope, $controller, NcAlert,
 		config, $uibModal, GlobalCategory, Category, AttributeSet, Product, ProductTempService,
 		VariationFactorIndices, AttributeSetService, AttributeOptions, $productAdd) {
 	'ngInject';
     
+    $scope.alert = new NcAlert();
     $scope.create = function(){
         
         var fd = angular.copy($scope.formData);
@@ -27,7 +28,13 @@ module.exports = function($scope, $rootScope, $controller,
         delete fd.DefaultVariant;
         console.log("fd", fd);
         //Post to server
-		Product.savePendingProduct(fd);
+        $scope.alert.close();
+		Product.savePendingProduct(fd).then(function(suc){
+            $scope.alert.success("Pending product grouped successfully.");
+        }, function(er){
+            console.log(er);
+            $scope.alert.error("Unable to group product because " + (er.Message || er.message));
+        });
 	};
     
 	$scope.formData = {

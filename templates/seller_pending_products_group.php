@@ -3,6 +3,7 @@
 ?>
 <?php $this->start('page-body') ?>
 <div ng-controller="SellerPendingProductsGroupCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
+    <nc-alert nc-model="alert"></nc-alert>
 	<nc-page-title nc-title="Pending Products/Create Group Variant" link="/products/groups" icon="fa-tag">
 	<div class="page-actions float-right">
 		<button class="btn btn-white btn-width-xl">Cancel</button>

@@ -87,14 +87,4 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 
 </div>
 
-	<script src="/assets/libs/ckeditor/ckeditor.js"></script>
-	<script src="/assets/libs/ckeditor/config.js"></script>
-	<script src="/assets/libs/ckfinder/ckfinder.js"></script>
-	<script src="/assets/libs/moment/moment.min.js"></script>
-
-	<script src="/assets/libs/datepicker/js/bootstrap-datetimepicker.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="/assets/libs/datepicker/css/bootstrap-datetimepicker.min.css">
-
-
-
 <?php $this->stop() ?>
