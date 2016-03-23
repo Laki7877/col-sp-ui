@@ -292,6 +292,17 @@ ng-transclude.has-error .form-control{
     background-color:#EDF2F9;
 }
 
+//Newsletter Header
+.modal {
+	.modal-content{
+		.newsletter-modal-header{
+			border-bottom: 1px solid $color-grey;
+			padding-bottom: 15px;
+			margin-bottom: 15px;
+		}
+	}
+}
+
 .ui-select-multiple.ui-select-bootstrap input.ui-select-search {
     //width: 100% !important;
 }

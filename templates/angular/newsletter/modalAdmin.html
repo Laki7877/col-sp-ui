@@ -1,5 +1,5 @@
 <nc-alert nc-model="alert"></nc-alert>
-<div class="modal-header">
+<div class="modal-header newsletter-modal-header">
   <h3 class="modal-title modal_title_abosolute">Add Newsletter</h3>
   <div class="title_relative">
     <div class="float-right">
@@ -12,7 +12,7 @@
   <form ng-show="!saving && !loading" name="form" class="ah-form margin-top-20">
     <div class="row">
       <div class="col-xs-12">
-        <div class="form-section-content">         
+        <div class="form-section-content">
           <div nc-template="common/input/form-group-with-label"
             nc-template-options-path="addNewsletterForm/Subject"
             nc-template-form="form.Subject"
@@ -28,7 +28,7 @@
             nc-template-options-path="addNewsletterForm/Image"
             nc-template-form="form.Image"
             nc-label="Image">
-              <button 
+              <button
               type="button"
               name="Image"
               class="btn btn-default"
@@ -37,7 +37,7 @@
               >Choose File</button>
           </div>
           <div ng-show="formData.Image"
-            nc-template="common/input/form-group-with-label" 
+            nc-template="common/input/form-group-with-label"
             nc-label="Image Preview">
               <img
                 ng-src="{{formData.Image.url}}"
@@ -49,9 +49,9 @@
             nc-template-options-path="addNewsletterForm/Description"
             nc-template-form="form.Description"
             nc-label="Content">
-            <textarea 
+            <textarea
               class="form-control"
-              ng-model="formData.Description" 
+              ng-model="formData.Description"
               required></textarea>
           </div>
           <div nc-template="common/input/form-group-with-label"
@@ -65,9 +65,9 @@
                        class="input-icon-calendar form-control" value="{{ formData.PublishedDt | date: 'dd/MM/yy HH:mm' }}" />
                   </a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                      <datetimepicker name="PublishedDt" 
-                      ng-date-before="{{formData.PublishedDt}}" 
-                      data-ng-model="formData.PublishedDt" 
+                      <datetimepicker name="PublishedDt"
+                      ng-date-before="{{formData.PublishedDt}}"
+                      data-ng-model="formData.PublishedDt"
                       data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'hour' }" />
                   </ul>
               </div>
@@ -103,6 +103,7 @@
         </div>
       </div>
       <div class="col-xs-12">
+        <hr>
         <span class="float-right">
           <a class="link-btn-plain" ng-click="$dismiss()">Cancel</a>
           <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>

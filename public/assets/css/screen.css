@@ -12319,6 +12319,11 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
   background-color: #EDF2F9;
 }
 
+/* line 124, ../../../assets/_override_bootstrap.scss */
+hr {
+  border-color: #BCC7D5;
+}
+
 /* line 1, ../../../assets/_atomic.scss */
 .margin-right-20 {
   margin-right: 20px;
@@ -16217,13 +16222,20 @@ ng-transclude.has-error .form-control {
   background-color: #EDF2F9;
 }
 
+/* line 298, ../../../assets/screen.scss */
+.modal .modal-content .newsletter-modal-header {
+  border-bottom: 1px solid #BCC7D5;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
 /* Customize CK Editor */
-/* line 301, ../../../assets/screen.scss */
+/* line 312, ../../../assets/screen.scss */
 .cke_toolbox .cke_button__cut, .cke_toolbox .cke_button__copy, .cke_toolbox .cke_button__paste, .cke_toolbox .cke_button__anchor {
   display: none !important;
 }
 
-/* line 307, ../../../assets/screen.scss */
+/* line 318, ../../../assets/screen.scss */
 .cke_toolbox .cke_toolbar:nth-child(7) .cke_toolbar_separator {
   display: none;
 }
