@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
   <div ng-controller="SellerPendingProductCtrl">
-    <nc-page-title nc-title="Pending Products">
+    <nc-page-title nc-title="Pending Products" icon="fa-tag">
       <a class="btn btn-blue btn-width-xxl" ng-href="{{url}}/add">Create Group Variant</a>
     </nc-page-title>
     <div class="row search-section-wrapper">

@@ -11,10 +11,9 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminSellerCouponAddCtrl" ng-init="init(<?=$params?>)">
     <nc-alert nc-model="alert"></nc-alert>
-    <nc-page-title nc-title="{{title}}" link="{{url}}" icon="fa-bookmark">
+    <nc-page-title nc-title="All Seller Coupons/Coupon Detail" link="{{url}}" icon="fa-bookmark">
       <div class="page-header">
-        <a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
-        <button class="btn btn-blue btn-width-xl margin-left-10" ng-click="save()">Save</button>
+        <a class="btn btn-white btn-width-xl" ng-click="cancel()">Close</a>
       </div>
     </nc-page-title>
     <div ng-show="loading" nc-loading="{{loadingMessage}}"></div>
