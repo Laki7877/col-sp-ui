@@ -15,11 +15,11 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration'])
         <nc-alert nc-model="alert"></nc-alert>
 		<form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
             <fieldset> <!-- admin can edit all statuses -->
-            <nc-page-title nc-title="All Products/<?=$title?>" link="/admin/products">
+            <nc-page-title nc-title="All Products/<?=$title?>" link="/admin/products" icon="fa-tag">
                 <div class="float-right" ng-if="!_loading.state && adminMode">
                     <a class="btn btn-white btn-width-xl" ng-href="/admin/products">Cancel</a>
-                    <button ng-show="formData.Status != 'WA'" class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
-                    <button type="submit" class="btn btn-blue btn-width-xl" ng-click="saveAsIs()">Save</button>
+                    <button ng-show="formData.Status != 'WA'" class="btn btn-white margin-left-10 btn-width-xl" ng-click="preview()">Preview</button>
+                    <button type="submit" class="btn btn-blue margin-left-10 btn-width-xl" ng-click="saveAsIs()">Save</button>
                 </div>
             </nc-page-title>
             <div ng-if="pageState.loading.state" nc-loading="{{ pageState.loading.message }}..">
@@ -47,9 +47,11 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration'])
                     <div class="add-product-form-action main-form-action full-width-row">
                         <div class="container-fluid">
                             <div class="float-right" ng-if="adminMode">
+                                <a href="/admin/products" class="link-btn-plain">Cancel</a>
+
                                 <button ng-show="formData.Status != 'WA'"
                                 class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
-                                
+
                                 <button type="submit" class="btn btn-blue btn-width-xl"
                                 ng-click="saveAsIs()">Save</button>
                             </div>
@@ -66,9 +68,9 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration'])
                                 <button ng-show="formData.Status != 'WA'"
                                 type="submit" class="btn btn-blue btn-width-xl"
                                 ng-click="prePublishWA()">Publish</button>
-                                
-                                
-                                
+
+
+
                             </div>
                         </div>
                     </div>
@@ -77,7 +79,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration'])
             <!-- apbvody-->
         </fieldset>
 	</form>
-    
+
 </div>
 
 	<script src="/assets/libs/ckeditor/ckeditor.js"></script>

@@ -3,10 +3,10 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminAttributeAddCtrl" ng-init="init(<?=$params?>)">
     <nc-alert nc-model="alert"></nc-alert>
-    <nc-page-title nc-title="{{title}}" link="{{url}}" icon="fa-tag">
+    <nc-page-title nc-title="{{title}}" link="/admin/attributes" icon="fa-tag">
       <div class="page-header">
         <a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
-        <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+        <button class="btn btn-blue btn-width-xl margin-left-10" ng-click="save()">Save</button>
       </div>
     </nc-page-title>
     <div ng-show="loading" nc-loading="{{loadingMessage}}"></div>
