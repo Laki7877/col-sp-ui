@@ -12871,35 +12871,40 @@ ul.sub-sidebar .item > a {
 }
 /* line 134, ../../../assets/_sidebar.scss */
 #sidebar-wrapper .sidebar-nav li {
-  padding-left: 19px;
+  line-height: 0px;
+  padding: 0px;
   border-bottom: 1px solid #252d40;
 }
-/* line 137, ../../../assets/_sidebar.scss */
-#sidebar-wrapper .sidebar-nav li a.sidebar-nav-text {
-  display: none;
+/* line 139, ../../../assets/_sidebar.scss */
+#sidebar-wrapper .sidebar-nav li a i {
+  padding: 17px 0px;
+  margin: 0px;
+  width: 60px;
+  text-align: center;
 }
 
-/* line 146, ../../../assets/_sidebar.scss */
+/* line 152, ../../../assets/_sidebar.scss */
 #sidebar-wrapper:hover .logo-img-wrapper-collased {
   display: block;
 }
 
-/* line 162, ../../../assets/_sidebar.scss */
+/* line 168, ../../../assets/_sidebar.scss */
 ul.sub-sidebar {
   left: 60px;
   padding-top: 58px;
   background-color: #1e2534;
   color: #FFFFFF;
 }
-/* line 167, ../../../assets/_sidebar.scss */
+/* line 173, ../../../assets/_sidebar.scss */
 ul.sub-sidebar .item {
   color: #FFFFFF;
 }
-/* line 169, ../../../assets/_sidebar.scss */
+/* line 175, ../../../assets/_sidebar.scss */
 ul.sub-sidebar .item.active {
+  font-weight: normal;
   color: #ec0000;
 }
-/* line 172, ../../../assets/_sidebar.scss */
+/* line 179, ../../../assets/_sidebar.scss */
 ul.sub-sidebar .item:hover {
   color: #ec0000;
 }

@@ -132,11 +132,17 @@ ul.sub-sidebar {
 	.sidebar-nav{
 		 margin-top: 19px;
 		 li {
-			padding-left: 19px;
+      line-height: 0px;
+    	padding: 0px;
       border-bottom: 1px solid $sidebar-color;
-		 	a.sidebar-nav-text{
-			 	display: none;
-		 	}
+      a{
+        i{
+          padding: 17px 0px;
+          margin: 0px;
+          width: 60px;
+          text-align: center;
+        }
+      }
 		}
 	}
 }
@@ -167,6 +173,7 @@ ul.sub-sidebar {
   .item {
     color: $color-white;
     &.active {
+      font-weight: normal;
       color: $color-red;
     }
     &:hover {
