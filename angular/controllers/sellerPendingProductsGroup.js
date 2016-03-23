@@ -5,7 +5,5 @@ module.exports = function($scope, $controller, Product) {
 		options: {}
 	});
 
-	$scope.create = function(){
-		Product.savePendingProduct($scope.formData);
-	};
+	
 }

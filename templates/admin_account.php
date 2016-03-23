@@ -17,7 +17,7 @@
             <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
             <th nc-sort="NameEn">Admin Name</th>
             <th nc-sort="Email">Email</th>
-            <th nc-sort="UserGroup">Role</th>
+            <th nc-sort="UserGroup.GroupNameEn">Role</th>
             <th nc-sort="UpdatedDt">Modified</th>
             <th class="action-column-lg">Action</th>
         </tr>

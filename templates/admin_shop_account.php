@@ -17,7 +17,7 @@
             <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
             <th nc-sort="ShopId">Shop ID</th>
             <th nc-sort="ShopNameEn">Shop Name</th>
-            <th nc-sort="ShopType">Shop Type</th>
+            <th nc-sort="ShopType.ShopTypeNameEn">Shop Type</th>
             <th class="status-column">Status</th>
             <th class="modified-column" nc-sort="UpdatedDt">Modified</th>
             <th class="action-column-lg">Action</th>
