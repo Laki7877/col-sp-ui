@@ -57,7 +57,7 @@ module.exports = function ($cookies) {
         // if (flag) {
         //     localStorage.setItem('central.seller.portal.auth.token', sessionToken);
         // }
-        $cookies.put('central.seller.portal.auth.token', sessionToken);
+        $cookies.put('central.seller.portal.auth.token', sessionToken, {path: '/'});
     };
 
     /**
@@ -104,9 +104,10 @@ module.exports = function ($cookies) {
     service.clear = function () {
         sessionStorage.removeItem('central.seller.portal.auth.token');
         sessionStorage.removeItem('central.seller.portal.auth.profile');
-        $cookies.remove('central.seller.portal.auth.token');
-        $cookies.remove('central.seller.portal.auth.profile');
+        $cookies.remove('central.seller.portal.auth.token', {path: '/'});
+        $cookies.remove('central.seller.portal.auth.profile', {path: '/'});
 	    sessionStorage.removeItem('central.seller.portal.auth.imposter');
+        localStorage.removeItem('central.seller.portal.auth.token');
         localStorage.removeItem('central.seller.portal.auth.actions');
         localStorage.removeItem('central.seller.portal.auth.profile');
     };

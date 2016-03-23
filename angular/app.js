@@ -53,7 +53,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .config(['uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider',
     function (uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
       $ncPaginationProvider.paginationSizes = [10, 20, 50, 100]
-      uiSelectConfig.taggingTokens = '[ENTER|,]'
+      uiSelectConfig.taggingTokens = '[ENTER|,]';
     }
   ])
 

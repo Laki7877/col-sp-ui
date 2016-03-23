@@ -2,6 +2,8 @@
 require __DIR__ . '/unicorn.php';
 includeAll(__DIR__ . '/../controllers/*.php');
 
+define('__COOKIE_AUTH_KEY__', 'central_seller_portal_auth_token');
+
 class Redirect {
 	public static function index($params) {
         return View::render('main');
@@ -12,6 +14,19 @@ class Redirect {
     public static function exception($params) {
 		return View::render('exception');
 	}
+	/*
+	public static function handleAuth($route) {
+		if(strpos($route['method'], 'Login') === FALSE && !isset($_COOKIE[__COOKIE_AUTH_KEY__])) {
+			if(strpos($route['uri'], 'Admin') !== FALSE) {
+				//This is admin access attempt, get to admin login
+				header('Location: /admin/login');
+			} else {
+				//This is user access attempt, get to user login
+				header('Location: /login');
+			}
+			return true;
+		}
+	}*/
 }
 
 //index

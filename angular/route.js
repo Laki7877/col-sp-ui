@@ -95,16 +95,15 @@ var seller = {
 		'User Roles': '/roles'
 	}
 };
-
 var admin = {
 	'Products|fa-tag': {
 		'View All Products': '/admin/products',
 		'Approve Products': '/admin/approve',
-		'Pending Products': '/admin/groups',
-		'Master Products': '/admin/masters',
-		'Brands': '/admin/brands',
-		'Attributes': '/admin/attributes',
-		'Attribute Sets': '/admin/attributesets',
+		'Pending Products': ['/admin/groups', '/admin/groups/add'],
+		'Master Products': ['/admin/masters', '/admin/masters/add'],
+		'Brands': ['/admin/brands', '/admin/brands/add'],
+		'Attributes': ['/admin/attributes', '/admin/attributes/add'],
+		'Attribute Sets': ['/admin/attributesets', '/admin/attributesets/add'],
 		'Global Category': '/admin/categories'
 	},
 	'Accounts|fa-user': {
@@ -122,9 +121,27 @@ var admin = {
 		'Newsletters': '/admin/newsletters'
 	}
 };
+var permission = {
+	//Admin
+	'View All Products': '/admin/products',
+	'Approve Products': '/admin/approve',
+	'Manage Pending Products': '/admin/groups',
+	'Manage Master Products': '/admin/masters',
+	'Manage Brands': '/admin/brands',
+	'Manage Attribute & Attribute Sets': ['/admin/attributes', '/admin/attributesets'],
+	'Manage Global Categories': '/admin/categories',
+	'Manage Seller Accounts': '/admin/sellers',
+	'Manage Shops': ['/admin/shops', '/admin/shoptypes'],
+	'Manage Admin': ['/admin/accounts', '/admin/roles'],
+	'Manage Global Coupons': '/admin/coupons/global',
+	'Manage Seller Coupons': '/admin/coupons/seller',
+	'Manage Newsletter': '/admin/newsletters'
+	
+};
 
 module.exports = {
   seller: generateRouteArray(seller),
   admin: generateRouteArray(admin),
-  reserve: ['add', 'select', 'import', 'export', 'reviews', 'images']
+  reserve: ['add', 'select', 'import', 'export', 'reviews', 'images'],
+  permission: permission
 }

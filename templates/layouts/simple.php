@@ -4,9 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>
-        <?=$title?>
-    </title>
+    <title><?=$title?></title>
     <meta http-equiv="expires" content="Sun, 01 Oct 2045 00:00:00 GMT" />
     <meta http-equiv="pragma" content="no-cache" />
     <meta name="description" content="">
@@ -34,34 +32,17 @@
     <script src="/assets/libs/datepicker/js/bootstrap-datetimepicker.min.js"></script>
 </head>
 
-<body class="ahpt" ng-cloak ng-controller="RootCtrl">
+<body class="ahpt" ng-cloak ng-controller="RootCtrl" ng-strict-di>
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    <!-- Modal -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="modal-loading">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <h3 class="modal-title margin-bottom-20">Processing...</h3>
-                    <div class="progress margin-0">
-                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-                        </div>
-                    </div>
-                </div>
-                <!-- end .modal-body -->
-            </div>
-            <!-- end .modal-content -->
+    <div ng-if="!$root.DisablePage">
+        <div id="debug">
+            <?= $this->section('debug') ?>
         </div>
-        <!-- end .modal-dialog -->
-    </div>
-    <!-- end .modal -->
-
-    <div id="debug">
-        <?= $this->section('debug') ?>
-    </div>
-    <div id="wrapper">
-        <?= $this->section('content') ?>
+        <div id="wrapper">
+            <?= $this->section('content') ?>
+        </div>
     </div>
     <link rel="stylesheet" type="text/css" href="/assets/libs/datepicker/css/bootstrap-datetimepicker.min.css">
 

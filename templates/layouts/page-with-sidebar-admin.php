@@ -9,15 +9,15 @@
     </div>
 
     <ul ng-init="initMenu('admin')" class="sidebar-nav no-padding">
-        <li ng-repeat="menuItem in menu track by $index" class="sidebar-brand {{activeMenuItem(menuItem)}}" ng-mouseenter="menuItem.hover=true" ng-mouseleave="menuItem.hover=false">
+        <li ng-repeat="menuItem in menu track by $index" class="sidebar-brand {{activeMenuItem(menuItem)}}" ng-mouseenter="menuItem.hover=true" ng-mouseleave="menuItem.hover=false" ng-if="permitMenuItem(menuItem)">
             <a ng-href="{{menuItem.url}}"><i class="fa fa-fw sidebar-font-awesome {{menuItem.icon}}"></i></a>
             <a ng-href="{{menuItem.url}}" class="sidebar-nav-text">{{menuItem.header}}</a>
         </li>
     </ul>
 
-    <ul ng-if="menuItem.submenu.length > 0" ng-repeat="menuItem in menu track by $index" class="sub-sidebar" ng-show="menuItem.hover" ng-mouseenter="menuItem.hover=true" ng-mouseleave="menuItem.hover=false">
+    <ul ng-if="menuItem.submenu.length > 0 && permitMenuItem(menuItem)" ng-repeat="menuItem in menu track by $index" class="sub-sidebar" ng-show="menuItem.hover" ng-mouseenter="menuItem.hover=true" ng-mouseleave="menuItem.hover=false">
         <li class="sub-sidebar-header">{{menuItem.header}}</li>
-        <li ng-repeat="submenuItem in menuItem.submenu track by $index" class="{{ activeSubmenuItem(submenuItem) }} {{ submenuItem.css }} {{ $index == 0 ? 'margin-first-submenu' : '' }} item">
+        <li ng-repeat="submenuItem in menuItem.submenu track by $index" class="{{ activeSubmenuItem(submenuItem) }} {{ submenuItem.css }} {{ $index == 0 ? 'margin-first-submenu' : '' }} item" ng-if="permitUrl(submenuItem.url)">
             <a ng-if="submenuItem.url.length > 0" ng-href="{{ submenuItem.url }}">{{ submenuItem.header }}</a>
         </li>
     </ul>

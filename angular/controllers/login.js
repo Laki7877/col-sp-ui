@@ -28,7 +28,7 @@
     $scope.error = false;
     var user = $scope.uform.user;
     var pass = $scope.uform.pass;
-    Credential.login(user, pass).then(function (r) {
+    Credential.login(user, pass, true).then(function (r) {
       $scope.loading = false;
       if (!redir || redir == '/') {
         redir = Credential.getRedirPath(r);

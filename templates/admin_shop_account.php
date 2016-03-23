@@ -26,7 +26,7 @@
         <tbody>
           <tr ng-repeat="row in list.data">
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
-            <td class="column-text-ellipsis width_100">{{row.ShopId | leadingzero:2 }}</td>
+            <td class="column-text-ellipsis width_100">{{row.ShopId }}</td>
             <td nc-link="/admin/shops/{{row.ShopId}}">{{row.ShopNameEn }}</td>
             <td class="width_200">{{row.ShopType.ShopTypeNameEn }}</td>
             <td class="width_100">{{row.Status | mapDropdown:statusDropdown }}</td>
