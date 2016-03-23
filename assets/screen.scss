@@ -299,6 +299,10 @@ ng-transclude.has-error .form-control{
 			border-bottom: 1px solid $color-grey;
 			padding-bottom: 15px;
 			margin-bottom: 15px;
+			button.close > span{
+				margin-top: -14px;
+				color: $color-black;
+			}
 		}
 	}
 }

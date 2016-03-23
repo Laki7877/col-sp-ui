@@ -16228,14 +16228,19 @@ ng-transclude.has-error .form-control {
   padding-bottom: 15px;
   margin-bottom: 15px;
 }
+/* line 302, ../../../assets/screen.scss */
+.modal .modal-content .newsletter-modal-header button.close > span {
+  margin-top: -14px;
+  color: #32343C;
+}
 
 /* Customize CK Editor */
-/* line 312, ../../../assets/screen.scss */
+/* line 316, ../../../assets/screen.scss */
 .cke_toolbox .cke_button__cut, .cke_toolbox .cke_button__copy, .cke_toolbox .cke_button__paste, .cke_toolbox .cke_button__anchor {
   display: none !important;
 }
 
-/* line 318, ../../../assets/screen.scss */
+/* line 322, ../../../assets/screen.scss */
 .cke_toolbox .cke_toolbar:nth-child(7) .cke_toolbar_separator {
   display: none;
 }
