@@ -15,7 +15,7 @@
   		            <tr class="table-head">
   		                <th nc-sort="CouponCode">Coupon Code</th>
   		                <th nc-sort="CouponName">Coupon Name</th>
-  		                <th nc-sort="Remaining">Remaining</th>
+  		                <th class="width_150 text-align-center" nc-sort="Remaining">Remaining</th>
   		                <th nc-sort="StartDate">Start Date</th>
                       <th nc-sort="ExpireDate">Expire Date</th>
                       <th nc-sort="Status">Status</th>
@@ -28,7 +28,7 @@
   		                    {{row.CouponCode}}
   		                </td>
   		                <td>{{row.CouponName}}</td>
-  		                <td class="width_120 text-align-center">
+  		                <td class="width_150 text-align-center">
                         <span ng-if="row.Action.Type == 'PERCENT' && row.Action.MaximumUser != 0">No Limit</span>
                         <span ng-if="!(row.Action.Type == 'PERCENT' && row.Action.MaximumUser != 0)">{{row.Remaining }}</span>
   		                <td class="width_150">{{ row.StartDate | dateTh }}</td>
