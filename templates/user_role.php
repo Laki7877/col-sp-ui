@@ -3,7 +3,9 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="SellerRoleCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <? $this->insert('components/page-title-with-one-button', ['text' => 'User Roles','button' => 'Add Role', 'button_class' => 'btn-width-xl', 'link' => '/roles/add']) ?>
+    <nc-page-title nc-title="User Roles" icon="fa-user">
+      <a class="btn btn-blue btn-width-xxl" ng-href="{{url}}/add">Add {{item}}</a>
+    </nc-page-title>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="GroupId"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Roles'"></nc-search>
