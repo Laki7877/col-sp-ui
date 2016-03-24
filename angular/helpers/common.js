@@ -8,8 +8,10 @@ module.exports = function ($http, $q, storage, config, $window) {
                     options.headers = {};
                 }
 
+                console.log(options.url, accessToken);
+
                 if (accessToken && !options.headers.Authorization) {
-                    options.headers.Authorization = 'Basic ' + accessToken;
+                    options.headers.Authorization = 'Bearer ' + accessToken;
                 }
                 if (options.url.indexOf("http") !== 0) {
                     options.url = config.REST_SERVICE_BASE_URL + options.url;

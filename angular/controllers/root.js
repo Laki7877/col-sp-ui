@@ -51,6 +51,7 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   }
 
   //No cookie
+    console.log(storage.getSessionToken());
   if (_.isNil(storage.getSessionToken()) && $window.location.pathname.indexOf("/login") == -1) {
     storage.put('redirect', $window.location.pathname);
     storage.clear();
