@@ -4152,9 +4152,8 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
             $scope.saving = true;
             $scope.alert.close();
             Credential.changePassword(_.pick($scope.formData, ['Password', 'NewPassword']))
-              .then(function(basic) {
-                console.log(basic);
-                storage.storeSessionToken(basic, true);
+              .then(function(token) {
+                storage.storeSessionToken(token, true);
                 $scope.alert.success('Successfully changed password');
                 $scope.formData = {};
                 $scope.formData.error = false;
@@ -5423,11 +5422,17 @@ module.exports = ["$scope", "Product", function($scope, Product){
     'ngInject';
     $scope.querySearch = function(q){
         return Product.list({
-            _order: 'ProductId'
+            _order: 'ProductId',
+            _limit: 5,
+            searchText: q,
+            _direction: 'asc',
+            _filter: 'ALL',
+            _offset: 0
         }).then(function(res){
             return res.data; 
         });
     };
+    $scope.cacheEnable = true;
 }]
 
 // module.exports = function($scope, Attribute, util, GlobalCategoryService, Category) {
