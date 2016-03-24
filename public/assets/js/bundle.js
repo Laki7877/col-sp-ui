@@ -3036,7 +3036,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
     $scope.error = false;
     var user = $scope.uform.user;
     var pass = $scope.uform.pass;
-    Credential.login(user, pass, true).then(function (r) {
+    Credential.login(user, pass).then(function (r) {
       $scope.loading = false;
       if (!redir || redir == '/') {
         redir = Credential.getRedirPath(r);
@@ -4035,6 +4035,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
   }
 
   //No cookie
+    console.log(storage.getSessionToken());
   if (_.isNil(storage.getSessionToken()) && $window.location.pathname.indexOf("/login") == -1) {
     storage.put('redirect', $window.location.pathname);
     storage.clear();
@@ -6531,8 +6532,10 @@ module.exports = ["$http", "$q", "storage", "config", "$window", function ($http
                     options.headers = {};
                 }
 
+                console.log(options.url, accessToken);
+
                 if (accessToken && !options.headers.Authorization) {
-                    options.headers.Authorization = 'Basic ' + accessToken;
+                    options.headers.Authorization = 'Bearer ' + accessToken;
                 }
                 if (options.url.indexOf("http") !== 0) {
                     options.url = config.REST_SERVICE_BASE_URL + options.url;
@@ -12604,16 +12607,21 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
             return '/admin'
         }
         return '/products'
-    }
+    };
 
-	service.login = function(user, pass, remember){
-		var deferred = $q.defer(); 
-		storage.storeSessionToken($base64.encode(user + ":" + pass), remember);
+	service.login = function(user, pass, admin){
+		var deferred = $q.defer();
 		common.makeRequest({
-			type: 'GET',
-			url: '/Users/Login'
+			method: 'POST',
+			url: '/Users/Login',
+			data: {
+				Email: user,
+				Password: pass,
+				IsAdmin: admin || false
+			}
 		}).then(function(r){
-			storage.storeCurrentUserProfile(r, remember);
+			storage.storeCurrentUserProfile(r, true);
+			storage.storeSessionToken(r.User.Token, true);
 			deferred.resolve(r);
 		}, deferred.reject);
 
@@ -12622,21 +12630,21 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 
 	service.loginWithToken = function(token, remember) {
 		var deferred = $q.defer(); 
-		storage.storeSessionToken(token, remember);
+		storage.storeSessionToken(token, true);
 		common.makeRequest({
-			type: 'GET',
+			method: 'GET',
 			url: '/Users/Login'
 		}).then(function(r){
-			storage.storeCurrentUserProfile(r, remember);
+			storage.storeCurrentUserProfile(r, true);
 			deferred.resolve(r);
 		}, deferred.reject);
 		return deferred.promise;
 	};
 
-	service.loginAs = function(User){
+	service.loginAs= function(User){
 		var deferred = $q.defer();
 	 	common.makeRequest({
-			type: 'GET',
+			method: 'GET',
 			url: '/Users/Admin/Login/' + User.UserId
 		}).then(function(r){
 			storage.storeCurrentUserProfile(r, true);
@@ -12650,7 +12658,7 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 	service.logoutAs = function(){
 		var deferred = $q.defer();
 		common.makeRequest({
-			type: 'GET',
+			method: 'GET',
 			url: '/Users/Admin/LogoutAs'
 		}).then(function(r){
             storage.clearImposterProfile();
@@ -15063,7 +15071,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('newsletter/modalAdmin',
-    "<nc-alert nc-model=alert></nc-alert><div class=\"modal-header newsletter-modal-header\"><h3 class=\"modal-title modal_title_abosolute\">Add Newsletter</h3><div class=title_relative><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></div></div></div><div class=modal-body><form ng-show=\"!saving && !loading\" name=form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Subject nc-template-form=form.Subject nc-label=Subject><input class=form-control ng-model=formData.Subject required></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Image nc-template-form=form.Image nc-label=Image><button type=button name=Image class=\"btn btn-default\" ngf-accept=\"'.png,.jpg,.jpeg'\" ngf-select=upload($file)>Choose File</button></div><div ng-show=formData.Image nc-template=common/input/form-group-with-label nc-label=\"Image Preview\"><img ng-src={{formData.Image.url}} class=\"img-responsive\"> <a style=display:block class=margin-top-5 ng-click=\"formData.Image=null\"><i class=\"fa-trash fa\"></i> Delete this image</a></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Description nc-template-form=form.Description nc-label=Content><textarea class=form-control ng-model=formData.Description required></textarea></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/PublishedDt nc-template-form=form.PublishedDt nc-label=\"Publish Date\"><div><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.PublishedDt | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=PublishedDt ng-date-before={{formData.PublishedDt}} data-ng-model=formData.PublishedDt data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'hour' }\"></ul></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/VisibleShopGroup nc-template-form=form.VisibleShopGroup nc-label=\"Allow Reader\"><ui-select ng-model=formData.VisibleShopGroup><ui-select-match>{{$select.selected.name}}</ui-select-match><ui-select-choices repeat=\"item.value as item in shopGroupOptions\">{{item.name}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/IncludeShop nc-template-form=form.IncludeShop nc-label=\"Include Shop\"><ui-select ng-model=formData.IncludeShop multiple tagging-label=\"\"><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'include')\" repeat=\"item in shops.include.data\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/ExcludeShop nc-template-form=form.ExcludeShop nc-label=\"Exclude Shop\"><ui-select ng-model=formData.ExcludeShop multiple tagging-label=\"\"><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'exclude')\" repeat=\"item in shops.exclude.data\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div></div></div><div class=col-xs-12><hr><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "<nc-alert nc-model=alert></nc-alert><div class=\"modal-header newsletter-modal-header\"><h3 class=\"modal-title modal_title_abosolute\">Add Newsletter</h3><div class=title_relative><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></div></div></div><div class=modal-body><form ng-show=\"!saving && !loading\" name=form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Subject nc-template-form=form.Subject nc-label=Subject><input class=form-control ng-model=formData.Subject required></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Image nc-template-form=form.Image nc-label=Image><button type=button name=Image class=\"btn btn-default\" ngf-accept=\"'.png,.jpg,.jpeg'\" ngf-select=upload($file)>Choose File</button></div><div ng-show=formData.Image nc-template=common/input/form-group-with-label nc-label=\"Image Preview\"><img ng-src={{formData.Image.url}} class=\"img-responsive\"> <a style=display:block class=margin-top-5 ng-click=\"formData.Image=null\"><i class=\"fa-trash fa\"></i> Delete this image</a></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Description nc-template-form=form.Description nc-label=Content><textarea class=form-control ng-model=formData.Description required></textarea></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/PublishedDt nc-template-form=form.PublishedDt nc-label=\"Publish Date\"><div><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.PublishedDt | dateTimeTh }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=PublishedDt ng-date-before={{formData.PublishedDt}} data-ng-model=formData.PublishedDt data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'hour' }\"></ul></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/VisibleShopGroup nc-template-form=form.VisibleShopGroup nc-label=\"Allow Reader\"><ui-select ng-model=formData.VisibleShopGroup><ui-select-match>{{$select.selected.name}}</ui-select-match><ui-select-choices repeat=\"item.value as item in shopGroupOptions\">{{item.name}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/IncludeShop nc-template-form=form.IncludeShop nc-label=\"Include Shop\"><ui-select ng-model=formData.IncludeShop multiple tagging-label=\"\"><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'include')\" repeat=\"item in shops.include.data\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/ExcludeShop nc-template-form=form.ExcludeShop nc-label=\"Exclude Shop\"><ui-select ng-model=formData.ExcludeShop multiple tagging-label=\"\"><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'exclude')\" repeat=\"item in shops.exclude.data\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div></div></div><div class=col-xs-12><hr><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 

@@ -17,7 +17,7 @@
         </thead>
         <tbody>
           <tr ng-repeat="row in list.data">
-            <td class="modified-column">{{ row.PublishedDt | dateTh }}</td>
+            <td class="modified-column">{{ row.PublishedDt | dateTimeTh }}</td>
             <td><a ng-click="open(row)">{{ row.Subject }}</a></td>
             <td class="action-column text-align-center"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>
