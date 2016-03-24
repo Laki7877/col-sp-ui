@@ -8,8 +8,6 @@ module.exports = function ($http, $q, storage, config, $window) {
                     options.headers = {};
                 }
 
-                console.log(options.url, accessToken);
-
                 if (accessToken && !options.headers.Authorization) {
                     options.headers.Authorization = 'Bearer ' + accessToken;
                 }
@@ -25,7 +23,6 @@ module.exports = function ($http, $q, storage, config, $window) {
 			             var onLoginPage = ($window.location.pathname == "/login");
                         if(status == 401 && !onLoginPage){
                             //Catch Forbidden
-                            console.log('redirecting to', $window.location.pathname);
                             storage.put('redirect', $window.location.pathname);
                             storage.clear();
                             
