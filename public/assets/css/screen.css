@@ -15255,27 +15255,32 @@ html, body {
   padding-bottom: 10px;
   line-height: 1.2em;
   cursor: pointer;
+  outline: none;
 }
-/* line 80, ../../../assets/_global_category.scss */
+/* line 81, ../../../assets/_global_category.scss */
 .category-section .category-content > .content-column > li.category-active {
   background: #4899DD;
   color: #FFFFFF;
 }
-/* line 84, ../../../assets/_global_category.scss */
+/* line 85, ../../../assets/_global_category.scss */
 .category-section .category-content > .content-column > li.disabled {
   cursor: not-allowed;
   color: #BCC7D5;
   text-decoration: line-through;
 }
-/* line 91, ../../../assets/_global_category.scss */
+/* line 90, ../../../assets/_global_category.scss */
+.category-section .category-content > .content-column > li:focus {
+  outline: none;
+}
+/* line 95, ../../../assets/_global_category.scss */
 .category-section .category-content > .content-column.empty-column {
   background: #edf2f9;
 }
-/* line 95, ../../../assets/_global_category.scss */
+/* line 99, ../../../assets/_global_category.scss */
 .category-section .category-content > .content-column:not(.empty-column) {
   background: #FFFFFF;
 }
-/* line 101, ../../../assets/_global_category.scss */
+/* line 105, ../../../assets/_global_category.scss */
 .category-section .category-footer {
   margin-top: 15px;
 }
@@ -15288,29 +15293,29 @@ html, body {
 .category-section .category-footer:after {
   clear: both;
 }
-/* line 106, ../../../assets/_global_category.scss */
+/* line 110, ../../../assets/_global_category.scss */
 .category-section.column-1 {
   width: 238px;
 }
-/* line 110, ../../../assets/_global_category.scss */
+/* line 114, ../../../assets/_global_category.scss */
 .category-section.column-2 {
   width: 474px;
 }
-/* line 114, ../../../assets/_global_category.scss */
+/* line 118, ../../../assets/_global_category.scss */
 .category-section.column-3 {
   width: 710px;
 }
-/* line 118, ../../../assets/_global_category.scss */
+/* line 122, ../../../assets/_global_category.scss */
 .category-section.column-4 {
   width: 946px;
 }
-/* line 122, ../../../assets/_global_category.scss */
+/* line 126, ../../../assets/_global_category.scss */
 .category-section.column-5 {
   width: 1182px;
 }
 
 /* Source */
-/* line 131, ../../../assets/_global_category.scss */
+/* line 135, ../../../assets/_global_category.scss */
 .angular-ui-tree-empty {
   border: 1px dashed #bbb;
   min-height: 100px;
@@ -15322,7 +15327,7 @@ html, body {
   background-position: 0 0, 30px 30px;
 }
 
-/* line 142, ../../../assets/_global_category.scss */
+/* line 146, ../../../assets/_global_category.scss */
 .angular-ui-tree-nodes {
   position: relative;
   margin: 0;
@@ -15330,12 +15335,12 @@ html, body {
   list-style: none;
 }
 
-/* line 149, ../../../assets/_global_category.scss */
+/* line 153, ../../../assets/_global_category.scss */
 .angular-ui-tree-nodes .angular-ui-tree-nodes {
   padding-left: 20px;
 }
 
-/* line 153, ../../../assets/_global_category.scss */
+/* line 157, ../../../assets/_global_category.scss */
 .angular-ui-tree-node, .angular-ui-tree-placeholder {
   position: relative;
   margin: 0;
@@ -15344,19 +15349,19 @@ html, body {
   line-height: 20px;
 }
 
-/* line 161, ../../../assets/_global_category.scss */
+/* line 165, ../../../assets/_global_category.scss */
 .angular-ui-tree-hidden {
   display: none;
 }
 
-/* line 165, ../../../assets/_global_category.scss */
+/* line 169, ../../../assets/_global_category.scss */
 .angular-ui-tree-placeholder {
   margin: 0px 0;
   padding: 0;
   min-height: 30px;
 }
 
-/* line 171, ../../../assets/_global_category.scss */
+/* line 175, ../../../assets/_global_category.scss */
 .angular-ui-tree-handle {
   cursor: move;
   text-decoration: none;
@@ -15368,7 +15373,7 @@ html, body {
   line-height: 20px;
 }
 
-/* line 182, ../../../assets/_global_category.scss */
+/* line 186, ../../../assets/_global_category.scss */
 .angular-ui-tree-drag {
   position: absolute;
   pointer-events: none;
@@ -15378,7 +15383,7 @@ html, body {
 }
 
 /* More Style */
-/* line 191, ../../../assets/_global_category.scss */
+/* line 195, ../../../assets/_global_category.scss */
 .angular-ui-tree-handle {
   background: #f8faff;
   border: 1px solid #dae2ea;
@@ -15386,14 +15391,14 @@ html, body {
   padding: 10px 10px;
 }
 
-/* line 198, ../../../assets/_global_category.scss */
+/* line 202, ../../../assets/_global_category.scss */
 .angular-ui-tree-handle:hover {
   color: #438eb9;
   background: #f4f6f7;
   border-color: #dce2e8;
 }
 
-/* line 204, ../../../assets/_global_category.scss */
+/* line 208, ../../../assets/_global_category.scss */
 .angular-ui-tree-placeholder {
   background: #f0f9ff;
   border: 2px dashed #bed2db;
@@ -15402,36 +15407,36 @@ html, body {
   box-sizing: border-box;
 }
 
-/* line 212, ../../../assets/_global_category.scss */
+/* line 216, ../../../assets/_global_category.scss */
 tr.angular-ui-tree-empty {
   height: 100px;
 }
 
-/* line 216, ../../../assets/_global_category.scss */
+/* line 220, ../../../assets/_global_category.scss */
 .group-title {
   background-color: #687074 !important;
   color: #FFF !important;
 }
 
 /* --- Tree --- */
-/* line 223, ../../../assets/_global_category.scss */
+/* line 227, ../../../assets/_global_category.scss */
 .tree-node {
   border: 1px solid #dae2ea;
   background: #f8faff;
   color: #7c9eb2;
 }
 
-/* line 229, ../../../assets/_global_category.scss */
+/* line 233, ../../../assets/_global_category.scss */
 .nodrop {
   background-color: #f2dede;
 }
 
-/* line 233, ../../../assets/_global_category.scss */
+/* line 237, ../../../assets/_global_category.scss */
 .tree-node-content {
   margin: 10px;
 }
 
-/* line 236, ../../../assets/_global_category.scss */
+/* line 240, ../../../assets/_global_category.scss */
 .tree-handle {
   padding: 10px;
   background: #428bca;
@@ -15439,7 +15444,7 @@ tr.angular-ui-tree-empty {
   margin-right: 10px;
 }
 
-/* line 243, ../../../assets/_global_category.scss */
+/* line 247, ../../../assets/_global_category.scss */
 .angular-ui-tree-placeholder {
   background: #f0f9ff;
   border: 2px dashed #bed2db !important;
@@ -15449,7 +15454,7 @@ tr.angular-ui-tree-empty {
 }
 
 /*-- New Style --*/
-/* line 254, ../../../assets/_global_category.scss */
+/* line 258, ../../../assets/_global_category.scss */
 .category-column-header {
   margin-top: 30px;
   padding: 5px 10px 5px 10px;
@@ -15458,39 +15463,39 @@ tr.angular-ui-tree-empty {
   border-radius: 2px;
 }
 
-/* line 261, ../../../assets/_global_category.scss */
+/* line 265, ../../../assets/_global_category.scss */
 .category-column {
   text-align: center;
   width: 100px;
 }
 
-/* line 265, ../../../assets/_global_category.scss */
+/* line 269, ../../../assets/_global_category.scss */
 .category-action-gear {
   width: 40px;
 }
 
-/* line 268, ../../../assets/_global_category.scss */
+/* line 272, ../../../assets/_global_category.scss */
 .btn-collapse {
   color: #4891d2;
   margin-right: 3px;
 }
 
-/* line 272, ../../../assets/_global_category.scss */
+/* line 276, ../../../assets/_global_category.scss */
 .btn-collapse:hover {
   color: #4891d2;
 }
 
-/* line 275, ../../../assets/_global_category.scss */
+/* line 279, ../../../assets/_global_category.scss */
 .angular-ui-tree-nodes .angular-ui-tree-nodes {
   padding-left: 40px;
 }
 
-/* line 278, ../../../assets/_global_category.scss */
+/* line 282, ../../../assets/_global_category.scss */
 .angular-ui-tree-handle {
   padding: 5px 10px;
 }
 
-/* line 281, ../../../assets/_global_category.scss */
+/* line 285, ../../../assets/_global_category.scss */
 .tree-node {
   font-weight: normal;
   border: 1px solid #EDF2F9;
@@ -15499,16 +15504,16 @@ tr.angular-ui-tree-empty {
   color: #32343C;
 }
 
-/* line 288, ../../../assets/_global_category.scss */
+/* line 292, ../../../assets/_global_category.scss */
 .tree-node-content {
   margin: 5px 0px;
 }
 
-/* line 291, ../../../assets/_global_category.scss */
+/* line 295, ../../../assets/_global_category.scss */
 .angular-ui-tree-drag {
   border: 0px !important;
 }
-/* line 293, ../../../assets/_global_category.scss */
+/* line 297, ../../../assets/_global_category.scss */
 .angular-ui-tree-drag .tree-node-content {
   margin: 2px 0px 3px 0px;
 }
@@ -16261,11 +16266,12 @@ ng-transclude.has-error .form-control {
   display: none;
 }
 
-/* Override AngularJS MD */
-/* line 329, ../../../assets/screen.scss */
-button, html, input, select, textarea {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-  -webkit-font-smoothing: subpixel-antialiased !important;
-  -moz-osx-font-smoothing: auto;
-  font-smooth: auto;
+/* line 328, ../../../assets/screen.scss */
+li:focus {
+  outline: none !important;
+}
+
+/* line 331, ../../../assets/screen.scss */
+:focus {
+  outline: none !important;
 }

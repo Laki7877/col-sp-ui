@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="<?= $this->asset('/assets/favicon.ico') ?>">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <link rel="stylesheet" href="<?=$this->asset('/assets/libs/angular-material/angular-material.css')?>" />
     <link rel="stylesheet" href="<?=$this->asset('/assets/css/screen.css')?>" />
     <link rel="stylesheet" href="<?=$this->asset('/assets/libs/angular-bootstrap-datetimepicker/datetimepicker.css')?>" />
     <script src="<?= $this->asset('/assets/js/jquery.min.js') ?>"></script>
@@ -25,8 +25,6 @@
     <script src="/assets/libs/ckeditor/ckeditor.js"></script>
     <script src="/assets/libs/ckeditor/config.js"></script>
     <script src="/assets/libs/ckfinder/ckfinder.js"></script>
-
-
 
     <script src="/assets/libs/moment/moment.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/libs/select2/css/select2.min.css">
