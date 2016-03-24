@@ -46,7 +46,7 @@ module.exports = {
 		],
 		COUPON_DISCOUNT: [
 			{
-				display: 'Discount Percent',
+				display: 'Discount by Percent',
 				Type: 'PERCENT'
 			},
 			{

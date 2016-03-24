@@ -232,7 +232,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 			if(_.isUndefined(item)) {
 				data.nodes = [];
 				data.ProductCount = 0;
-				data.AttributeSets = 0;
+				data.AttributeSetCount = 0;
 				$scope.categories.unshift(data);
 			} else {
 				//existing data
@@ -240,7 +240,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				item.CategoryId = data.CategoryId;
 				item.CategoryAbbreviation = data.CategoryAbbreviation;
 				item.Visibility = data.Visibility;
-				data.AttributeSetCount = data.AttributeSets.length;
+				item.AttributeSetCount = data.AttributeSets.length;
 				Category.traverseSet(item.nodes, 'Visibility', item.Visibility);
 		}
 		$scope.alert.success(config.DEFAULT_SUCCESS_MESSAGE);

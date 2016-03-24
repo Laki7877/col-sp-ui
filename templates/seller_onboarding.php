@@ -53,10 +53,20 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "task_display" => "ng-show='ShopInActiveStatus'",
            "type" => "launch"]) ?>
 
-        <div class="complete_line home_task_space">
+        <div class="complete_line home_task_space" ng-show="ShopInActiveStatus">
           <!-- ng-show='checkIfHaveCompleted' -->
           <span class="complte_line_text">Completed</span>
         </div>
+        
+        <? $this->insert('components/forms/seller_task',
+          ["field_header" => "Successfully, Review & launch your store",
+           "field_text" => "{{launchTextSubtitle}}",
+           "button_text" => "Launch",
+           "image_name" => "icon-onboard-launch",
+           "home_task_container_class" => "background_blue",
+           "disble_status" => "disabled",
+           "task_display" => "ng-show='!ShopInActiveStatus'",
+           "type" => "redirectDashboard"]) ?>
 
         <? $this->insert('components/forms/seller_task',
           ["field_header" => "Successfully, set up your account",
@@ -105,15 +115,6 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "type" => "redirectShopAppearance",
            "home_task_container_class" => "hide-component"]) ?>
 
-        <? $this->insert('components/forms/seller_task',
-          ["field_header" => "Successfully, Review & launch your store",
-           "field_text" => "{{launchTextSubtitle}}",
-           "button_text" => "Launch",
-           "image_name" => "icon-onboard-launch",
-           "home_task_container_class" => "background_blue",
-           "disble_status" => "disabled",
-           "task_display" => "ng-show='!ShopInActiveStatus'",
-           "type" => "launch"]) ?>
       </div>
     </div>
   </div>
