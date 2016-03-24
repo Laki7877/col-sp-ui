@@ -176,7 +176,6 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 
 	Dashboard.getProductRating()
 		.then(function(data){
-			console.log(data);
 			if (data != 'N/A') {
 				$scope.productRatingScore = data + ' / 5.0';
 				$scope.productRatingRank = getColoredRank('Product Rating', data);
@@ -191,9 +190,22 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	$scope.onTimeDeliveryScore = otdRating + '%';
 	$scope.onTimeDeliveryRank = getColoredRank('On Time Delivery',otdRating);
 
-	var rRating = 10.88;
-	$scope.returnScore = rRating + '%';
-	$scope.returnRank = getColoredRank('Return Rate',rRating);
+	Dashboard.getReturnRating()
+		.then(function(data){
+			// console.log('return rate: ',data);
+			if (data != 'N/A') {
+				data = Math.floor(data);
+				$scope.returnScore = data + '%';
+				$scope.returnRank = getColoredRank('Return Rate', data);
+			}
+			else {
+				$scope.returnScore = 'N/A';
+				// $scope.productRatingRank = 'grey';
+			}
+		});
+	// var rRating = 10.88;
+	// $scope.returnScore = rRating + '%';
+	// $scope.returnRank = getColoredRank('Return Rate',rRating);
 
 	$scope.getColorClass = function(status) {
 		switch (status) {

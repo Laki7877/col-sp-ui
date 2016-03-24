@@ -218,7 +218,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
               <div class="font-size-16 color-green" ng-switch-when="green">{{onTimeDeliveryScore}}</div>
               <div class="font-size-16 color-yellow" ng-switch-when="yellow">{{onTimeDeliveryScore}}</div>
               <div class="font-size-16 color-red" ng-switch-when="red">{{onTimeDeliveryScore}}</div>
-              <div class="font-size-16" ng-switch-default>n/a</div>
+              <div class="font-size-16 " ng-switch-default>N/A</div>
             </div>
           </div>
         </div>
@@ -232,7 +232,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
               <div class="font-size-16 color-green" ng-switch-when="green">{{returnScore}}</div>
               <div class="font-size-16 color-yellow" ng-switch-when="yellow">{{returnScore}}</div>
               <div class="font-size-16 color-red" ng-switch-when="red">{{returnScore}}</div>
-              <div class="font-size-16" ng-switch-default>n/a</div>
+              <div class="font-size-16 color-grey" ng-switch-default>N/A</div>
             </div>
           </div>
         </div>

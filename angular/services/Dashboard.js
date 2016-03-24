@@ -11,7 +11,7 @@ module.exports = function (common, config, util, $log, $window) {
         });
     };
 
-    service.launchShop = function() {
+    service.launchShop = function () {
         return common.makeRequest({
             url: '/Shops/Launch?Status=AT',
             method: 'GET'
@@ -46,12 +46,19 @@ module.exports = function (common, config, util, $log, $window) {
         });
     };
 
-    service.getProductRating = function() {
+    service.getProductRating = function () {
         return common.makeRequest({
             url: '/ProductReviews/Rating',
             method: 'GET'
         });
     };
+
+    service.getReturnRating = function () {
+        return common.makeRequest({
+            url: '//Returns/Rate',
+            method: 'GET'
+        });
+    }
 
     return service;
 };
