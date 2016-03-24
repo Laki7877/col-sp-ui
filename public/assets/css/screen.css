@@ -16255,3 +16255,12 @@ ng-transclude.has-error .form-control {
 .cke_toolbox .cke_toolbar:nth-child(7) .cke_toolbar_separator {
   display: none;
 }
+
+/* Override AngularJS MD */
+/* line 329, ../../../assets/screen.scss */
+button, html, input, select, textarea {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  -webkit-font-smoothing: subpixel-antialiased !important;
+  -moz-osx-font-smoothing: auto;
+  font-smooth: auto;
+}

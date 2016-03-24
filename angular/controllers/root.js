@@ -51,7 +51,6 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   }
 
   //No cookie
-    console.log(storage.getSessionToken());
   if (_.isNil(storage.getSessionToken()) && $window.location.pathname.indexOf("/login") == -1) {
     storage.put('redirect', $window.location.pathname);
     storage.clear();
@@ -170,9 +169,8 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
             $scope.saving = true;
             $scope.alert.close();
             Credential.changePassword(_.pick($scope.formData, ['Password', 'NewPassword']))
-              .then(function(basic) {
-                console.log(basic);
-                storage.storeSessionToken(basic, true);
+              .then(function(token) {
+                storage.storeSessionToken(token, true);
                 $scope.alert.success('Successfully changed password');
                 $scope.formData = {};
                 $scope.formData.error = false;

@@ -2,11 +2,17 @@ module.exports = function($scope, Product){
     'ngInject';
     $scope.querySearch = function(q){
         return Product.list({
-            _order: 'ProductId'
+            _order: 'ProductId',
+            _limit: 5,
+            searchText: q,
+            _direction: 'asc',
+            _filter: 'ALL',
+            _offset: 0
         }).then(function(res){
             return res.data; 
         });
     };
+    $scope.cacheEnable = true;
 }
 
 // module.exports = function($scope, Attribute, util, GlobalCategoryService, Category) {

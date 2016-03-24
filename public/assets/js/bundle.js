@@ -1777,8 +1777,7 @@ module.exports = function($scope, $controller, GlobalCouponService, GlobalCatego
     var user = $scope.uform.user;
     var pass = $scope.uform.pass;
 
-    Credential.login(user, pass).then(function (r) {
-      console.log(JSON.stringify(r));
+    Credential.login(user, pass, true).then(function (r) {
       if(!r.User.IsAdmin){
           storage.clear();
           $scope.error = true;
@@ -3036,7 +3035,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
     $scope.error = false;
     var user = $scope.uform.user;
     var pass = $scope.uform.pass;
-    Credential.login(user, pass).then(function (r) {
+    Credential.login(user, pass, false).then(function (r) {
       $scope.loading = false;
       if (!redir || redir == '/') {
         redir = Credential.getRedirPath(r);
@@ -4035,7 +4034,6 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
   }
 
   //No cookie
-    console.log(storage.getSessionToken());
   if (_.isNil(storage.getSessionToken()) && $window.location.pathname.indexOf("/login") == -1) {
     storage.put('redirect', $window.location.pathname);
     storage.clear();
@@ -4154,9 +4152,8 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
             $scope.saving = true;
             $scope.alert.close();
             Credential.changePassword(_.pick($scope.formData, ['Password', 'NewPassword']))
-              .then(function(basic) {
-                console.log(basic);
-                storage.storeSessionToken(basic, true);
+              .then(function(token) {
+                storage.storeSessionToken(token, true);
                 $scope.alert.success('Successfully changed password');
                 $scope.formData = {};
                 $scope.formData.error = false;
@@ -4513,10 +4510,6 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 				// $scope.productRatingRank = 'grey';
 			}
 		});
-
-	// var pRating = 2.4;
-	// $scope.productRatingScore = pRating + ' / 5.0';
-	// $scope.productRatingRank = getColoredRank('Product Rating',pRating);
 
 	var otdRating = 92;
 	$scope.onTimeDeliveryScore = otdRating + '%';
@@ -5438,11 +5431,17 @@ module.exports = ["$scope", "Product", function($scope, Product){
     'ngInject';
     $scope.querySearch = function(q){
         return Product.list({
-            _order: 'ProductId'
+            _order: 'ProductId',
+            _limit: 5,
+            searchText: q,
+            _direction: 'asc',
+            _filter: 'ALL',
+            _offset: 0
         }).then(function(res){
             return res.data; 
         });
     };
+    $scope.cacheEnable = true;
 }]
 
 // module.exports = function($scope, Attribute, util, GlobalCategoryService, Category) {
@@ -6540,8 +6539,6 @@ module.exports = ["$http", "$q", "storage", "config", "$window", function ($http
                     options.headers = {};
                 }
 
-                console.log(options.url, accessToken);
-
                 if (accessToken && !options.headers.Authorization) {
                     options.headers.Authorization = 'Bearer ' + accessToken;
                 }
@@ -6557,7 +6554,6 @@ module.exports = ["$http", "$q", "storage", "config", "$window", function ($http
 			             var onLoginPage = ($window.location.pathname == "/login");
                         if(status == 401 && !onLoginPage){
                             //Catch Forbidden
-                            console.log('redirecting to', $window.location.pathname);
                             storage.put('redirect', $window.location.pathname);
                             storage.clear();
                             
