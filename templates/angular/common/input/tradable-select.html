@@ -1,11 +1,11 @@
 <div class="tradable-list">
   <div class="left-column">
     <div class="search-section section-search">
-      <input type="text" ng-model="search[options.map.text]" class="form-control input-search-icon search-box" placeholder="{{ searchPlaceholder }}" aria-describedby="basic-addon2">
+      <input type="text" ng-model="search" class="form-control input-search-icon search-box" placeholder="{{ searchPlaceholder }}" aria-describedby="basic-addon2">
     </div>
     <div class="clickable-list">
       <ul class="content-column">
-        <li ng-repeat="item in selectable | filter:search:strict track by $index" ng-class="{ 'active' : activeLeft == selectable.indexOf(item) }" ng-click="select(selectable.indexOf(item), true)" ng-if="!contain(item)">{{ options.map.text == null ? item : item[options.map.text] }}</li>
+        <li ng-repeat="item in selectable track by $index" ng-class="{ 'active' : activeLeft == selectable.indexOf(item) }" ng-click="select(selectable.indexOf(item), true)" ng-if="!contain(item)">{{ options.map.text == null ? item : item[options.map.text] }}</li>
       </ul>
     </div>
   </div>

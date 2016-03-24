@@ -162,10 +162,27 @@ angular.module('nc')
 				model: '=ncModel',
 				tree: '=ncTreeSelectTree',
 				title: '@ncTreeSelectTitle',
-				options: '=?ncTreeSelectOptions'
+				options: '=?ncTreeSelectOptions',
+				excludeBy: '=?ncExclude'
 			},
 			template: $templateCache.get('common/ncTreeSelect'),
 			link: function(scope, element, attrs) {
+				if(!scope.excludeBy){
+					scope.excludeBy = [];
+				}
+
+				scope.anyHas = function(a, B, path) {
+		      // Check if a[path] matches any of b[path] in B
+		      var aP = _.get(a, path);
+		      for(var i = 0; i < B.length; i++){
+						var b = B[i];
+		        var bP = _.get(b, path);
+		        if(bP == aP) return true;
+		      }
+
+		      return false;
+		    };
+
 				// Directive options
 				scope.options = _.defaults(scope.options, {
 					columnSize: 4,

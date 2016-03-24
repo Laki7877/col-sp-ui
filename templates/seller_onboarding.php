@@ -8,10 +8,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
       <div class="text-align-center welcome_text_big">Welcome to Central Seller Portal</div>
       <div class="text-align-center welcome_text_small">Complete these tasks to launch your store</div>
     </div>
-
     <div>
       <div class="onboarding_content">
-        <?php $this->insert('components/forms/seller_task',
+        <? $this->insert('components/forms/seller_task',
           ["field_header" => "Change password",
            "field_text" => "In order for you to remember password easier",
            "button_text" => "Change Password",
@@ -19,43 +18,57 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "task_display" => "ng-hide='Completed[0]'",
            "type" => "changePassword"]) ?>
 
-         <?php $this->insert('components/forms/seller_task',
+         <? $this->insert('components/forms/seller_task',
            ["field_header" => "Add shop description",
             "field_text" => "Tell customers what your shop is about",
             "button_text" => "Check Profile",
             "image_name" => "icon-onboard-setting",
             "task_display" => "ng-hide='Completed[1]'",
-            "type" => "redirectShopSetting"]) ?> 
+            "type" => "redirectShopSetting"]) ?>
 
-        <?php $this->insert('components/forms/seller_task',
-          ["field_header" => "Add product",
-           "field_text" => "Add at least one item to your store",
-           "button_text" => "Add Product",
+        <? $this->insert('components/forms/seller_task',
+          ["field_header" => "{{productFieldContent.title}}",
+           "field_text" => "{{productFieldContent.subTitle}}",
+           "button_text" => "{{productFieldContent.button}}",
            "image_name" => "icon-onboard-product",
            "task_display" => "ng-hide='Completed[2]'",
            "type" => "redirectProduct"]) ?>
 
-        <?php $this->insert('components/forms/seller_task',
+        <!-- NOTED! : this component is hidden -->
+        <? $this->insert('components/forms/seller_task',
           ["field_header" => "Decorate your store",
            "field_text" => "Add at least one banner to make your store unique",
            "button_text" => "Set Appearance",
            "image_name" => "icon-onboard-decorate",
-           "task_display" => "ng-hide='Completed[3]'"]) ?>
+           "task_display" => "ng-hide='Completed[3]'",
+           "type" => "redirectShopAppearance",
+           "home_task_container_class" => "hide-component"]) ?>
 
-        <?php $this->insert('components/forms/seller_task',
+        <? $this->insert('components/forms/seller_task',
           ["field_header" => "Review & launch your store",
-           "field_text" => "Complete the tasks above to launch your store",
+           "field_text" => "{{launchTextSubtitle}}",
            "button_text" => "Launch",
            "image_name" => "icon-onboard-launch",
            "disble_status" => "disabled",
+           "task_display" => "ng-show='ShopInActiveStatus'",
            "type" => "launch"]) ?>
 
-        <div class="complete_line home_task_space" ng-show='checkIfHaveCompleted'>
+        <div class="complete_line home_task_space">
+          <!-- ng-show='checkIfHaveCompleted' -->
           <span class="complte_line_text">Completed</span>
         </div>
 
-        <?php $this->insert('components/forms/seller_task',
-          ["field_header" => "Change password",
+        <? $this->insert('components/forms/seller_task',
+          ["field_header" => "Successfully, set up your account",
+           "field_text" => "We have set up the account for you",
+           "button_text" => "View Account",
+           "image_name" => "icon-onboard-account",
+           "home_task_container_class" => "background_blue",
+           "type" => "redirectUserAccounts"]) ?>
+
+
+        <? $this->insert('components/forms/seller_task',
+          ["field_header" => "Successfully, change password",
            "field_text" => "In order for you to remember password easier",
            "button_text" => "Change Password",
            "image_name" => "icon-onboard-password",
@@ -63,8 +76,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "task_display" => "ng-hide='!Completed[0]'",
            "type" => "changePassword"]) ?>
 
-        <?php $this->insert('components/forms/seller_task',
-          ["field_header" => "Add Description",
+        <? $this->insert('components/forms/seller_task',
+          ["field_header" => "Successfully, add Description",
            "field_text" => "Tell customers what your shop is about",
            "button_text" => "Check Profile",
            "image_name" => "icon-onboard-setting",
@@ -72,22 +85,35 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
            "task_display" => "ng-hide='!Completed[1]'",
            "type" => "redirectShopSetting"]) ?>
 
-        <?php $this->insert('components/forms/seller_task',
-          ["field_header" => "Add product",
-           "field_text" => "Add at least one item to your store",
-           "button_text" => "Add Product",
+        <? $this->insert('components/forms/seller_task',
+          ["field_header" => "{{productFieldContent.title}}",
+           "field_text" => "{{productFieldContent.subTitle}}",
+           "button_text" => "{{productFieldContent.button}}",
            "image_name" => "icon-onboard-product",
            "home_task_container_class" => "background_blue",
            "task_display" => "ng-hide='!Completed[2]'",
            "type" => "redirectProduct"]) ?>
 
-        <?php $this->insert('components/forms/seller_task',
-          ["field_header" => "Decorate your store",
+        <!-- NOTED! : this component is hidden -->
+        <? $this->insert('components/forms/seller_task',
+          ["field_header" => "Successfully, decorate your store",
            "field_text" => "Add at least one banner to make your store unique",
            "button_text" => "Set Appearance",
            "image_name" => "icon-onboard-decorate",
            "home_task_container_class" => "background_blue",
-           "task_display" => "ng-hide='!Completed[3]'"]) ?>
+           "task_display" => "ng-hide='!Completed[3]'",
+           "type" => "redirectShopAppearance",
+           "home_task_container_class" => "hide-component"]) ?>
+
+        <? $this->insert('components/forms/seller_task',
+          ["field_header" => "Successfully, Review & launch your store",
+           "field_text" => "{{launchTextSubtitle}}",
+           "button_text" => "Launch",
+           "image_name" => "icon-onboard-launch",
+           "home_task_container_class" => "background_blue",
+           "disble_status" => "disabled",
+           "task_display" => "ng-show='!ShopInActiveStatus'",
+           "type" => "launch"]) ?>
       </div>
     </div>
   </div>

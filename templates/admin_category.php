@@ -5,6 +5,7 @@
 		<nc-alert nc-model="alert"></nc-alert>
 		<div class="page-header with-border">
 		    <h1 class="float-left page-header-title">
+					<i class="fa fa-tag page-header-icon" style="font-size:22px;"></i>
 		    	<span>Global Category</span>
 		    	<span ng-show="!saving && pristine" class="margin-left-10"><small>All changes were saved</small></span>
 				<span ng-show="saving && pristine" class="margin-left-10" nc-loading-small="Saving..." style="display: inline-block; margin-bottom: -20px; margin-top: -5px;"></span>
@@ -16,12 +17,9 @@
 					<button type="button" class="btn-white btn btn-width-xl margin-right-10" ng-click="collapseAll()">
 						Collapse All
 					</button>
-		    	<button type="button" class="btn-white btn btn-width-xl margin-right-10">
-		          <span class="">Export</span>
-		        </button>
-		        <button type="button" class="btn-blue btn btn-width-xxl" ng-click="open()">
-		          Add Category
-		        </button>
+	        <button type="button" class="btn-blue btn btn-width-xxl" ng-click="open()">
+	          Add Category
+	        </button>
 		    </span>
 		</div>
 		<div ng-show="!loading && categories.length > 0" class="row">

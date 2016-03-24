@@ -15,7 +15,7 @@ module.exports = function($q, $http, common, storage, config, FileUploader, Uplo
         Authorization: 'Basic ' + accessToken
       };
     }
-    return Upload.upload(_.extend(options, opts));
+    return Upload.upload(_.merge(options, opts));
   };
 
   service.getUploaderFn = function(url, opts) {

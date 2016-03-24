@@ -21,15 +21,28 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 
 	service.login = function(user, pass, remember){
 		var deferred = $q.defer(); 
-		storage.storeSessionToken($base64.encode(user + ":" + pass), true);
+		storage.storeSessionToken($base64.encode(user + ":" + pass), remember);
 		common.makeRequest({
 			type: 'GET',
-			url: '/Users/Login/'
+			url: '/Users/Login'
 		}).then(function(r){
-			storage.storeCurrentUserProfile(r, true);
+			storage.storeCurrentUserProfile(r, remember);
 			deferred.resolve(r);
 		}, deferred.reject);
 
+		return deferred.promise;
+	};
+
+	service.loginWithToken = function(token, remember) {
+		var deferred = $q.defer(); 
+		storage.storeSessionToken(token, remember);
+		common.makeRequest({
+			type: 'GET',
+			url: '/Users/Login'
+		}).then(function(r){
+			storage.storeCurrentUserProfile(r, remember);
+			deferred.resolve(r);
+		}, deferred.reject);
 		return deferred.promise;
 	};
 

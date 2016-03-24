@@ -70,11 +70,27 @@
 			transform: translate(-50%, -50%)
 			background-color: white
 
+	.empty-section
+		border: none
+		margin: 0
+		height: 44px
+		line-height: 44px
+		padding: 0
+
+		i
+			font-size: 25px
+			vertical-align: middle
+
+	.loading_text
+		display: inline
+
 
 #dashboard_page
 	.remark
 		font-size: 12px
+		line-height: 12px
 		color: $color-grey
+		float: right
 	.dashboard_column:first-child
 		padding-left: 0px
 
@@ -83,7 +99,8 @@
 
 	.dashboard_graph
 		canvas
-			height: 280px !important
+			width: 100%
+			height: 300px
 
 	.with_border
 		border: 1px solid $header-border-grey
@@ -99,6 +116,9 @@
 		margin-bottom: 20px
 		line-height: 27px
 		border-radius: 3px
+
+	.revenue_pannel
+		padding-bottom: 25px
 
 	.logo-img
 		max-width: 40px
@@ -209,6 +229,11 @@
 				border-bottom: 0
 				padding-bottom: 0
 
+		tr:nth-last-child(2)
+			td
+				border-bottom: 0
+				padding-bottom: 0
+
 	.table_recent_order
 		td:first-child
 			width: 100px
@@ -223,6 +248,10 @@
 			padding-left: 30px
 			width: 56px
 
+		td.empty_data
+			text-align:	center
+			padding-left:	0
+
 	.table_lsa
 		td:first-child
 			width: 100px
@@ -235,7 +264,16 @@
 			padding-left: 30px
 			width: 80px
 
+		td.empty_data
+			text-align:	center
+			padding-left:	0
+
 	.table_newsletter
+
+		td.empty_data
+			text-align:	center
+			padding-left:	0
+
 		.newsletter_date
 			font-size: 12px
 			margin-top: 5px
@@ -247,3 +285,9 @@
 	.account_health
 		.group_container:last-child
 			padding: 10px 0px 0px 0px
+
+	.view_all_row
+		text-align: center
+		margin-top: 15px
+		padding-top: 15px
+		border-top: solid 1px $color-grey

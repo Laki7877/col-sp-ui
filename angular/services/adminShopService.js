@@ -4,8 +4,6 @@ module.exports = function(common, config, util) {
 
 	service.serialize = function(data) {
 		var processed = _.merge({}, data);
-		processed.Status = processed.Status.value;
-		processed.ShopGroup = processed.ShopGroup.value;
 
 		//Remove password if no length or undefined
 		processed = _.omit(processed, ['Users']);
@@ -19,8 +17,6 @@ module.exports = function(common, config, util) {
 
 	service.deserialize = function(data) {
 		var processed = _.merge({}, data);
-		processed.Status = util.getDropdownItem(config.DROPDOWN.DEFAULT_STATUS_DROPDOWN, processed.Status);
-		processed.ShopGroup = util.getDropdownItem(config.SHOP_GROUP, processed.ShopGroup);
 		_.remove(processed.Users, function(e) {
 			return _.isEmpty(e);
 		});
@@ -28,10 +24,13 @@ module.exports = function(common, config, util) {
 	};
 	service.generate = function() {
 		var processed = {
-			Status: config.DROPDOWN.DEFAULT_STATUS_DROPDOWN[0],
+			Status: config.DROPDOWN.DEFAULT_STATUS_DROPDOWN[0].value,
 			ShopOwner: {},
 			Users: [],
-			Commissions: []
+			Commissions: [],
+			GiftWrap: 'N',
+			TaxInvoice: 'Y',
+			StockAlert: 0
 		};
 		return processed;
 	};

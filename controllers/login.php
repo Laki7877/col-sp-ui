@@ -6,4 +6,9 @@ class LoginController extends Controller
 	{
 		return View::render('login');
 	}
+
+	public static function indexAdmin($params)
+	{
+		return View::render('login_admin');
+	}
 }

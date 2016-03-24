@@ -1,11 +1,13 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminAttributeCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <?php $this->insert('components/page-title-with-one-button', ['text' => 'Attributes','button' => 'Add Attribute', 'button_class' => 'btn-width-xxl', 'link' => '/admin/attributes/add']) ?>
+    <nc-page-title nc-title="Attributes" icon="fa-tag">
+      <a class="btn btn-blue btn-width-xxl" ng-href="{{url}}/add">Add {{item}}</a>
+    </nc-page-title>
     <div class="row search-section-wrapper">
-      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="AttributeId"></nc-bulk>
+      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="{{id}}"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Attribute Name'"></nc-search>
     </div>
     <nc-filter nc-model="params._filter" nc-filter-options="filterOptions"></nc-filter>
@@ -17,10 +19,11 @@
             <th nc-sort="AttributeNameEn">Attribute Name</th>
             <th nc-sort="DisplayNameEn">Display Name</th>
             <th>Field Type</th>
+            <th>Default</th>
             <th>Variation</th>
             <th>Mapped Set</th>
             <th nc-sort="UpdatedDt" class="modified-column">Modified</th>
-            <th>Action</th>
+            <th class="action-column-lg">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -31,10 +34,11 @@
             </td>
             <td>{{row.DisplayNameEn}}</td>
             <td>{{row.DataType | mapDropdown:dataTypeDropdown }}</td>
+            <td class="width_100">{{row.DefaultAttribute | mapDropdown:yesNoDropdown }}</td>
             <td class="width_100">{{row.VariantStatus | mapDropdown:yesNoDropdown }}</td>
             <td class="width_100">{{row.AttributeSetCount}}</td>
-            <td class="width_100">{{row.UpdatedDt | dateTh}}</td>
-            <td class="width_100"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
+            <td class="modified-column">{{row.UpdatedDt | dateTh}}</td>
+            <td class="action-column-lg"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>
         </tbody>
       </table>

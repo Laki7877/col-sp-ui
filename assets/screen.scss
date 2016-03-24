@@ -31,6 +31,7 @@
 @import "inventory";
 @import "search_section";
 @import "seller_page";
+@import "angular_print";
 
 body {
 	overflow-y: scroll;
@@ -227,7 +228,7 @@ ng-transclude.has-error .form-control{
 
 /* ui-select input fix */
 .ui-select-multiple input.ui-select-search:not(.ng-touched) {
-    width: 100% !important;
+    // width: 100% !important;
 }
 
 .ui-select-dropdown-hide .ui-select-dropdown {
@@ -291,8 +292,23 @@ ng-transclude.has-error .form-control{
     background-color:#EDF2F9;
 }
 
+//Newsletter Header
+.modal {
+	.modal-content{
+		.newsletter-modal-header{
+			border-bottom: 1px solid $color-grey;
+			padding-bottom: 15px;
+			margin-bottom: 15px;
+			button.close > span{
+				margin-top: -14px;
+				color: $color-black;
+			}
+		}
+	}
+}
+
 .ui-select-multiple.ui-select-bootstrap input.ui-select-search {
-    width: 100% !important;
+    //width: 100% !important;
 }
 
 /* Customize CK Editor */
@@ -302,7 +318,7 @@ ng-transclude.has-error .form-control{
 	}
 }
 .cke_toolbox {
-	.cke_toolbar:nth-child(6){
+	.cke_toolbar:nth-child(7){
 		.cke_toolbar_separator{
 			display:none;
 		}

@@ -10,20 +10,17 @@
 
 		<div class="page-header with-border" ng-show="loading.length >= 2">
 
-		    <h1 class="float-left page-header-title ah-breadcrumb">
-		    	<a href="/products" class="ah-breadcrumb-path ah-breadcrumb-idx-0">Products</a>
-		    	<span class="ah-breadcrumb-splitter">/</span>
-		    	<a href="#" class="ah-breadcrumb-path ah-breadcrumb-idx-1">Export</a>
-		    </h1>
-
-		    <span class="float-right page-header-action">
-		        <a href="/products" class="btn margin-left-10 btn-white btn-width-xl">
+				<nc-page-title nc-title="Products/Export" link="/products" icon="fa-tag">
+					<div class="page-header">
+						<a href="/products" class="btn margin-left-10 btn-white btn-width-xl">
 		          	<span class="">Cancel</span>
 		        </a>
 		        <a href="#" class="btn margin-left-10 btn-blue  btn-width-xl" ng-click="startExportProducts()">
 		          	<span class="">Export</span>
 		        </a>
-		    </span>
+					</div>
+				</nc-page-title>
+				
 		</div>
 
 			<form class="ah-form sticky-mainform-action" ng-show="loading.length >= 2">

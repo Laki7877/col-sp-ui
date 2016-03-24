@@ -19,9 +19,13 @@ $newText = implode('<span class="ah-breadcrumb-splitter">/</span>', $extracted);
         <button ng-show="formData.Status != 'WA'" class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
         <button type="submit" class="btn btn-blue btn-width-xl" ng-click="saveAsIs()">Save</button>
     </div>
-    <div class="page-actions float-right" ng-if="!_loading.state && !adminMode">
+    <div class="page-actions float-right" ng-if="!_loading.state && !adminMode && formData.Status != 'AP'">
         <button ng-show="formData.Status != 'WA'" class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
         <button ng-show="formData.Status != 'WA'" class="btn btn-white btn-width-xl" type="submit" ng-click="publish('DF')">Save as Draft</button>
         <button ng-show="formData.Status != 'WA'" type="submit" class="btn btn-blue btn-width-xl" ng-click="prePublishWA()">Publish</button>
+    </div>
+    <div class="page-actions float-right" ng-if="!_loading.state && !adminMode && formData.Status == 'AP'">
+        <button class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
+        <button class="btn btn-blue btn-width-xl" ng-click="preEditProduct()">Edit Product</button>
     </div>
 </div>

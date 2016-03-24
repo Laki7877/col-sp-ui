@@ -76,15 +76,15 @@
 						<h2>Map Attribute Set</h2>
 					</div>
 					<div class="form-section-content modal-custom">
-						<div nc-tradable-select nc-test="lockAttributeset" nc-model="formData.AttributeSets" nc-select-options="attributeSetOptions" column-header="Attribute Set in this Category" search-placeholder="Search Attribute Set" nc-options="{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }"></div>
+						<div nc-tradable-select nc-test="lockAttributeset" nc-model="formData.AttributeSets" nc-select-options="attributeSetOptions" column-header="Attribute Set in this Category" search-placeholder="Search Attribute Set" nc-options="{ 'map' : { 'text': 'AttributeSetNameEn', 'value' : 'AttributeSetId' } }" on-search="loadAttributeSets"></div>
 						<div class="row col-xs-12">
 		                  <p style="margin-left: 30px; margin-top:15px">* Changing attribute set mapping may affect products under this category</p>
 		                </div>
 					</div>
 				</div>
 				<!-- Banner -->
-		        <nc-image-banner name="CategoryBannerEn" nc-model="formData.CategoryBannerEn" title="Banner Upload (English)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner> 
-		        <nc-image-banner name="CategoryBannerTh" nc-model="formData.CategoryBannerTh" title="Banner Upload (ไทย)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner> 
+		        <nc-image-banner name="CategoryBannerEn" nc-model="formData.CategoryBannerEn" title="Banner Upload (English)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
+		        <nc-image-banner name="CategoryBannerTh" nc-model="formData.CategoryBannerTh" title="Banner Upload (ไทย)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
 		        <!-- Description -->
 		        <div class="form-section">
 		          <div class="form-section-header">
@@ -121,12 +121,12 @@
 		        </div>
 		        <!-- Feature product -->
 		        <div class="form-section">
-		          <div class="form-section-header"><h2>Feature Products</h2></div>
+		          <div class="form-section-header"><h2>Featured Products</h2></div>
 		          <div class="form-section-content">
 		            <div ng-if="availableProducts == 0  || id == 0">
 		              <div nc-template="common/input/form-group-with-label"
-		                nc-label="Feature Products">
-		                <span class="form-text">There are no products in this category</span>
+		                nc-label="Featured Products">
+		                <span class="form-text">will be available after adding product into this category</span>
 		              </div>
 		            </div>
 		            <div ng-if="availableProducts > 0">
@@ -136,7 +136,7 @@
 		                <input type="text" class="form-control" ng-model="params.FeatureTitle"/>
 		              </div>
 		              <div nc-template="common/input/form-group-with-label"
-		                nc-label=""><input type="checkbox" ng-model="TitleShowcase"/> Title = Showcase 
+		                nc-label=""><input type="checkbox" ng-model="TitleShowcase"/> Title = Showcase
 		              </div>
 		              <div nc-template="common/input/form-group-with-label"
 		              	nc-template-form="form.FeatureProducts"
@@ -165,8 +165,8 @@
 	                </div>
 	            </div>
 			</div> <!-- end .col-xs-12 -->
-	        <div class="col-xs-12" style="margin-top:-15px; margin-bottom:0px;">
-	          <p class="text-align-left"><span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field</p>
+	        <div class="col-xs-12 text-align-left" style="margin-top:-15px; margin-bottom:0px;">
+	          <span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field
 	        </div>
 			<div class="col-xs-12">
 				<span class="float-right">

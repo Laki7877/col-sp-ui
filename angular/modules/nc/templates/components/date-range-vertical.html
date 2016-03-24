@@ -8,9 +8,9 @@
           <a class="dropdown-toggle" id="date_range_vertical_dropdown1" role="button" data-toggle="dropdown" data-target="#" href="#">
               <input readonly style="background-color:white" type="text"
                ng-class="{'has-error': endDate <= startDate }"
-               placeholder="{{ startPlaceholder || 'Select start date' }}"
-               class="form-control width-field-large"
-               value="{{ startDate | date: 'dd/MM/yy HH:mm' }}" />
+               placeholder="{{ startPlaceholder || '' }}"
+               class="form-control input-icon-calendar width-field-large"
+               value="{{ startDate | datetimeTh }}" />
           </a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
               <datetimepicker data-ng-model="startDate" data-datetimepicker-config="{ dropdownSelector: '#date_range_vertical_dropdown1', minView: 'minute' }" />
@@ -28,9 +28,9 @@
           <a class="dropdown-toggle" id="date_range_vertical_dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
               <input readonly style="background-color:white" type="text"
                ng-class="{'has-error': endDate <= startDate }"
-               placeholder="{{ endPlaceholder || 'Select end date' }}"
-               class="form-control width-field-large"
-               value="{{ endDate | date: 'dd/MM/yy HH:mm' }}" />
+               placeholder="{{ endPlaceholder || '' }}"
+               class="form-control input-icon-calendar width-field-large"
+               value="{{ endDate | datetimeTh }}" />
           </a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel2">
               <datetimepicker data-ng-model="endDate" data-datetimepicker-config="{ dropdownSelector: '#date_range_vertical_dropdown2', minView: 'minute' }" />

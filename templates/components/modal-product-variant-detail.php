@@ -76,7 +76,7 @@
 
                             </div>
                         </div>
-                        <?php $this->insert('components/forms/form-section-upload-new-product-image',
+                        <? $this->insert('components/forms/form-section-upload-new-product-image',
                         ["uploader" => "uploaderModal",
                         "model" => $model,
                         "images" => $model .".Images"]) ?>
@@ -146,7 +146,7 @@
                                 </div>
                                 <div class="form-section-content">
 
-                                        <?php $this->insert('components/forms/ckeditor-with-label',
+                                        <? $this->insert('components/forms/ckeditor-with-label',
 								            ["label" => "Description (English)", "size" => "xxl", "label_class" => "required", "ng_model" => $model.".DescriptionFullEn"]) ?>
 
                                             <div ng-template="common/input/textarea2" ng-template-options="{
@@ -166,7 +166,7 @@
                                             </div>
 
 
-                                             <?php $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (ไทย)", "size" => "xxl", "label_class" => "required","form_group_class" => "margin-top-40", "ng_model" => $model.".DescriptionFullTh"]) ?>
+                                             <? $this->insert('components/forms/ckeditor-with-label', ["label" => "Description (ไทย)", "size" => "xxl", "label_class" => "required","form_group_class" => "margin-top-40", "ng_model" => $model.".DescriptionFullTh"]) ?>
 
                                         <div ng-template="common/input/textarea2" ng-template-options="{
                                             'label': 'Short Description (ไทย)',
@@ -193,7 +193,7 @@
                                 </div>
                                 <div class="form-section-content">
                                     <div nc-template="common/input/form-group-with-label" nc-label="Preparation Time" nc-template-form="Modal_PrepareDay" nc-template-options-path="addProductForm/PrepareDay">
-                                        <input class="form-control width-field-normal" name="Modal_PrepareDay" ng-pattern-restrict="^[0-9]*$"
+                                        <input class="form-control width-field-normal" name="Modal_PrepareDay" type="number"
                                         maxlength="5" ng-model="<?=$model?>.PrepareDay" />
                                     </div>
 

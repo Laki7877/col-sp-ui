@@ -75,13 +75,17 @@ ul.sub-sidebar {
   background-color: $color-light-grey;
   list-style: none;
   padding-left: 30px;
-  padding-top: 100px;
+  padding-top: 110px;
   margin: 0;
 
   @include box-shadow(1px 0px 2px 0px rgba(0,0,0,0.3));
 
   .sub-sidebar-header {
     font-size: 24px;
+  }
+
+  .margin-first-submenu{
+    margin-top: 18px;
   }
 
   .item {
@@ -122,39 +126,58 @@ ul.sub-sidebar {
     img{
       width: 20px;
       height: 20px;
-      margin: 65px 20px 0px 20px;
+      margin: 66px 20px 0px 20px;
     }
   }
 	.sidebar-nav{
-		 margin-top: 20px;
+		 margin-top: 19px;
 		 li {
-			padding-left: 19px;
-		 	a{
-			 	display: none;
-		 	}
+      line-height: 0px;
+    	padding: 0px;
+      border-bottom: 1px solid $sidebar-color;
+      a{
+        i{
+          padding: 17px 0px;
+          margin: 0px;
+          width: 60px;
+          text-align: center;
+        }
+      }
 		}
 	}
 }
 
 #sidebar-wrapper:hover{
-	width: 180px;
+	// width: 180px;
   .logo-img-wrapper-collased{
-    display: none;
+    display: block;;
   }
-	.logo-img-wrapper{
-		display: block;;
-	}
-	.sidebar-nav{
-		 margin-top: 0px;
-		 li {
-			 a{
-				 display: inline-block;
-			 }
-		 }
-	}
+	// .logo-img-wrapper{
+	// 	display: block;
+	// }
+	// .sidebar-nav{
+	// 	 margin-top: 0px;
+	// 	 li {
+	// 		 a{
+	// 			 display: inline-block;
+	// 		 }
+	// 	 }
+	// }
 }
 
-#page-content-wrapper{
-	z-index: 9 !important;
-	margin-left: 60px !important;
+ul.sub-sidebar {
+  left: 60px;
+  padding-top: 58px;
+  background-color: $sidebar-bg-color-active;
+  color: $color-white;
+  .item {
+    color: $color-white;
+    &.active {
+      font-weight: normal;
+      color: $color-red;
+    }
+    &:hover {
+      color: $color-red;
+    }
+  }
 }

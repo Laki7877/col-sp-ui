@@ -3,7 +3,9 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 	$scope.TYPEAHEAD_DELAY = config.TYPEAHEAD_DELAY;
 	$scope.products = [];
 	$scope.availableProducts = -1;
-	$scope.logoUploader = ImageService.getUploaderFn('/BrandImages');
+	$scope.logoUploader = ImageService.getUploaderFn('/BrandImages', {
+		data: { IsLogo: true }
+	});
 	$scope.bannerUploader = ImageService.getUploaderFn('/BrandImages');
 	$scope.uploadLogo = function(file) {
 		if(_.isNil(file)) {
@@ -16,6 +18,7 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 			.then(function(response) {
 				$scope.formData.BrandImage = response.data;
 			}, function(err) {
+				$scope.formData.BrandImage = null;
 				$scope.alert.error(common.getError(err.data));
 	});
 	};

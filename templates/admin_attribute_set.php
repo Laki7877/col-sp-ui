@@ -3,9 +3,11 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminAttributeSetCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <?php $this->insert('components/page-title-with-one-button', ['text' => 'Attribute Sets','button' => 'Add Attribute Set', 'button_class' => 'btn-width-xxl', 'link' => '/admin/attributesets/add']) ?>
+    <nc-page-title nc-title="Attribute Sets" icon="fa-tag">
+      <a class="btn btn-blue btn-width-xxl" ng-href="{{url}}/add">Add {{item}}</a>
+    </nc-page-title>
     <div class="row search-section-wrapper">
-      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="AttributeSetId"></nc-bulk>
+      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="{{id}}"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Attribute Set Name'"></nc-search>
     </div>
     <!--nc-filter nc-model="params._filter" nc-filter-options="filterOptions"></nc-filter-->
@@ -18,7 +20,7 @@
             <th nc-sort="AttributeCount">Attribute In Set</th>
             <th nc-sort="CategoryCount">Mapped Categories</th>
             <th nc-sort="UpdatedDt" class="modified-column">Modified</th>
-            <th>Action</th>
+            <th class="action-column-lg">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -29,8 +31,8 @@
             </td>
             <td class="width_200">{{row.AttributeCount }}</td>
             <td class="width_200" nc-link="/admin/attributesets/{{row.AttributeSetId}}">{{row.CategoryCount }}</td>
-            <td class="width_100">{{row.UpdatedDt | dateTh}}</td>
-            <td class="width_100"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
+            <td class="modified-column">{{row.UpdatedDt | dateTh}}</td>
+            <td class="action-column-lg"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>
         </tbody>
       </table>

@@ -6,10 +6,15 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerRoleAddCtrl" ng-init="init(<?=$params?>)">
 		<nc-alert nc-model="alert"></nc-alert>
-		<?php $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "User Roles/{{title}}", 'urls' => ['/roles']]) ?>
-		<div ng-show="loading" nc-loading="Loading Role.."></div>
-		<div ng-show="saving" nc-loading="Saving Role.."></div>
-		<form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
+	    <nc-page-title nc-title="{{title}}" link="{{url}}" icon="fa-user">
+	      <div class="page-header">
+	        <a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
+	        <button class="btn btn-blue btn-width-xl margin-left-10" ng-click="save()">Save</button>
+	      </div>
+	    </nc-page-title>
+	    <div ng-show="loading" nc-loading="{{loadingMessage}}"></div>
+	    <div ng-show="saving" nc-loading="{{savingMessage}}"></div>
+	    <form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
 					<div id="add-product-more-option-tab-content">
@@ -73,7 +78,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 												'label' : 'Product'
 											}">
 											<label ng-repeat="permission in formData.Permission | slice:1:4"><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
-											
+
 											<!-- Edit Product -->
 											<label><input ng-model="selectAll.EditProduct" type="checkbox"/>Edit Product</label>
 												<!-- Edit Info -->
@@ -82,7 +87,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 													<label ng-if="selectAll.EditInformation" ng-repeat="permission in formData.Permission | slice:4:7" class="margin-left-60"><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
 												<!-- Edit product children -->
 												<label ng-if="selectAll.EditProduct" ng-repeat="permission in formData.Permission | slice:7:10" class="margin-left-30"><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
-											
+
 											<label ng-repeat="permission in formData.Permission | slice:10:14"><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
 										</div>
 										<div ng-template="common/input/multiline-checkbox"
@@ -124,7 +129,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 									</div>
 								</div>
 							</div>
-						</div>	
+						</div>
 						<div class="row">
 							<div class="col-xs-12">
 								<p class="text-align-right"><span class="color-red"><i class="fa fa-asterisk"></i></span> - Required Field</p>
