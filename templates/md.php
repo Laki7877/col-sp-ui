@@ -21,6 +21,7 @@
             md-items="item in querySearch(ctrl.searchText)" 
             md-item-text="item.ProductNameEn" 
             md-min-length="1"
+            md-delay="500"
             placeholder="Search for Product">
                 <md-item-template>
                     <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.ProductNameEn}}</span>
