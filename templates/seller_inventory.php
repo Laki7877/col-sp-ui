@@ -53,9 +53,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
 		                <td class="width_150">{{row.Pid}}</td>
 		                <td>{{row.Sku}}</td>
 		                <td class="inventory-column popover-markup" ng-click="popoverStock(row)" uib-popover-template="'inventory/stockPopover'" popover-placement="right" popover-is-open="row.open" popover-trigger="outsideClick" popover-append-to-body="true">
-		                	<a href="javascript:;" class="color-dark-grey" style='{{ lastEdit == row.Pid ? "font-weight:bold;" : ""}}'>{{getAvailableStock(row)}}</span>
+		                	<a href="javascript:;" class="inventory-available" style='{{ lastEdit == row.Pid ? "font-weight:bold;" : ""}}'>{{getAvailableStock(row)}}</span>
 		                	<span><i class="fa fa-caret-down color-dark-grey"></i></span></td>
-		                <td class="width_150"><span class="margin-left-10 {{getStatus(row).color}}">{{getStatus(row).name}}</span></td>
+		                <td class="width_200"><span class="margin-left-10 {{getStatus(row).color}}">{{getStatus(row).name}}</span></td>
 		                <td class="action-column-lg">
 		                    <nc-action nc-model="row" nc-action-fn="actions"></nc-action>
 		                </td>
