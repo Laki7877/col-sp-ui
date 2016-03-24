@@ -30,8 +30,7 @@
     var user = $scope.uform.user;
     var pass = $scope.uform.pass;
 
-    Credential.login(user, pass).then(function (r) {
-      console.log(JSON.stringify(r));
+    Credential.login(user, pass, true).then(function (r) {
       if(!r.User.IsAdmin){
           storage.clear();
           $scope.error = true;
