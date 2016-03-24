@@ -68,6 +68,10 @@
 	.inventory-column{
 		text-align: right;
 		width: 200px;
+		.inventory-available{
+			color: $color-black;
+			text-decoration: none;
+		}
 	}
 
   .width_date {

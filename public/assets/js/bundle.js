@@ -4350,7 +4350,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 	};
 
 	var maxDate = getMaxDate(2, 2016);
-	console.log('labels',maxDate);
+	// console.log('labels',maxDate);
 
 	var tempLabels = [];
 	var tempData = [];
@@ -4458,7 +4458,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 					return 'green';
 				}
 				else {
-					return 'n/a';
+					return 'N/A';
 				}
 				break;
 
@@ -4473,7 +4473,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 					return 'green';
 				}
 				else {
-					return 'n/a';
+					return 'N/A';
 				}
 				break;
 
@@ -4488,12 +4488,12 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 					return 'green';
 				}
 				else {
-					return 'n/a';
+					return 'N/A';
 				}
 				break;
 
 			default:
-				return 'n/a'
+				return 'N/A'
 		}
 
 		
@@ -4502,9 +4502,18 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 	// temp rating  score
 	// input api for product rating score
 
-	var pRating = 2.4;
-	$scope.productRatingScore = pRating + ' / 5.0';
-	$scope.productRatingRank = getColoredRank('Product Rating',pRating);
+	Dashboard.getProductRating()
+		.then(function(data){
+			console.log(data);
+			if (data != 'N/A') {
+				$scope.productRatingScore = data + ' / 5.0';
+				$scope.productRatingRank = getColoredRank('Product Rating', data);
+			}
+			else {
+				$scope.productRatingScore = 'N/A';
+				// $scope.productRatingRank = 'grey';
+			}
+		});
 
 	var otdRating = 92;
 	$scope.onTimeDeliveryScore = otdRating + '%';
@@ -11287,6 +11296,13 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
     service.getOrders = function () {
         return common.makeRequest({
             url: '/Orders?_direction=desc&_filter=PaymentConfirmed&_limit=10&_offset=0&_order=UpdatedDt',
+            method: 'GET'
+        });
+    };
+
+    service.getProductRating = function() {
+        return common.makeRequest({
+            url: '/ProductReviews/Rating',
             method: 'GET'
         });
     };
