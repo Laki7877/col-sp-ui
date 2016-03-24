@@ -22,7 +22,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	};
 
 	var maxDate = getMaxDate(2, 2016);
-	console.log('labels',maxDate);
+	// console.log('labels',maxDate);
 
 	var tempLabels = [];
 	var tempData = [];
@@ -173,6 +173,11 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 
 	// temp rating  score
 	// input api for product rating score
+
+	Dashboard.getOutOfStock()
+		.then(function(query){
+			return $scope.PRate = query;
+		});
 
 	var pRating = 2.4;
 	$scope.productRatingScore = pRating + ' / 5.0';
