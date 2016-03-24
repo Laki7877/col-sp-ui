@@ -150,8 +150,9 @@ html, body {
   min-height: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  /*-webkit-font-smoothing: antialiased;*/
+  /*-moz-osx-font-smoothing: grayscale; */
+}
 
 /************
  * Headings
@@ -224,7 +225,8 @@ select,
 html,
 textarea,
 input {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
+  font-family: "Helvetica Neue", sans-serif; /*Roboto*/ }
+
 
 select,
 button,
@@ -9538,7 +9540,7 @@ md-bottom-sheet {
     transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2); }
   md-bottom-sheet .md-subheader {
     background-color: transparent;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: "Helvetica Neue", sans-serif; /*Roto*/
     line-height: 56px;
     padding: 0;
     white-space: nowrap; }
@@ -10301,7 +10303,7 @@ md-content {
 
 .md-chips {
   display: block;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Helvetica Neue", sans-serif; /*Roboto*/
   font-size: 16px;
   padding: 0 0 8px 3px;
   vertical-align: middle; }
@@ -11631,7 +11633,7 @@ md-input-container {
         -ms-flex-order: 1;
             order: 1;
     pointer-events: none;
-    -webkit-font-smoothing: antialiased;
+    /*-webkit-font-smoothing: antialiased;*/
     padding-left: 3px;
     padding-right: 0;
     z-index: 1;
@@ -12893,7 +12895,7 @@ md-select {
         -ms-flex-order: 1;
             order: 1;
     pointer-events: none;
-    -webkit-font-smoothing: antialiased;
+    /*-webkit-font-smoothing: antialiased;*/
     padding-left: 2px;
     z-index: 1; }
 
