@@ -16,7 +16,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 			url: config.REST_SERVICE_BASE_URL + url,
 			autoUpload: true,
 			headers: {
-				Authorization: 'Basic ' + accessToken
+				Authorization: 'Bearer ' + accessToken
 			},
 			queueLimit: 10,
 			filters: [{

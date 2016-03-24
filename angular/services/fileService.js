@@ -9,7 +9,7 @@ module.exports = function(config, storage, FileUploader) {
 			url: config.REST_SERVICE_BASE_URL + url,
 			autoUpload: false,
 			headers: {
-				Authorization: 'Basic ' + accessToken
+				Authorization: 'Bearer ' + accessToken
 			}
 		}, opt);
 		var uploader = new FileUploader(options);
