@@ -5368,6 +5368,7 @@ module.exports = function($rootScope, $scope, $controller, ShopProfileService, I
 			ShopProfileService.updateAll(ShopProfileService.serialize($scope.formData))
 				.then(function(data) {
 					$scope.formData = ShopProfileService.deserialize(data);
+					$rootScope.Profile.Shop.Status = data.Status;
 					$scope.alert.success('Successfully Saved.');
 					$scope.form.$setPristine(true);
 				}, function(err) {
