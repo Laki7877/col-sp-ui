@@ -170,7 +170,8 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
             $scope.alert.close();
             Credential.changePassword(_.pick($scope.formData, ['Password', 'NewPassword']))
               .then(function(basic) {
-                storage.storeSessionToken(basic,true);
+                console.log(basic);
+                storage.storeSessionToken(basic, true);
                 $scope.alert.success('Successfully changed password');
                 $scope.formData = {};
                 $scope.formData.error = false;

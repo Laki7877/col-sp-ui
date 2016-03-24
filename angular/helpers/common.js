@@ -1,5 +1,5 @@
-module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http, $q, storage, config, $window) {
-    'use strict';
+module.exports = function ($http, $q, storage, config, $window) {
+    'ngInject';
         var service = {};
         service.makeRequest = function (options) {
                 var deferred = $q.defer();
@@ -160,4 +160,4 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
         };
         
         return service;
-}];
+};
