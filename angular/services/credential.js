@@ -1,6 +1,6 @@
 //TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in poon's local)
-module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(common, $base64, storage, $q, $rootScope) {
-    'use strict';
+module.exports = function(common, $base64, storage, $q, $rootScope) {
+    'ngInject';
 
 	var service = {};
 
@@ -84,4 +84,4 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 	};
 
 	return service;
-}];
+};

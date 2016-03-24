@@ -12,8 +12,12 @@
     $window.location.href = Credential.getRedirPath(profile)
   }
   
-  if(redir && redir != '/') {
+  if(storage.poke('session_timeout')) {
     $scope.alert.open(false, 'Your session has timed out', '');
+  }
+
+  if(storage.poke('access_denied')) {
+    $scope.alert.error('Access denied');
   }
 
   $scope.doLogin = function () {

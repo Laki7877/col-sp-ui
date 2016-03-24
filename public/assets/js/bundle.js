@@ -3019,8 +3019,12 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
     $window.location.href = Credential.getRedirPath(profile)
   }
   
-  if(redir && redir != '/') {
+  if(storage.poke('session_timeout')) {
     $scope.alert.open(false, 'Your session has timed out', '');
+  }
+
+  if(storage.poke('access_denied')) {
+    $scope.alert.error('Access denied');
   }
 
   $scope.doLogin = function () {
@@ -4152,8 +4156,8 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
             $scope.saving = true;
             $scope.alert.close();
             Credential.changePassword(_.pick($scope.formData, ['Password', 'NewPassword']))
-              .then(function(token) {
-                storage.storeSessionToken(token, true);
+              .then(function(r) {
+                storage.storeSessionToken(r.User.Token, true);
                 $scope.alert.success('Successfully changed password');
                 $scope.formData = {};
                 $scope.formData.error = false;
@@ -6523,6 +6527,14 @@ module.exports = ["$http", "$q", "storage", "config", "$window", function ($http
                         if(status == 401 && !onLoginPage){
                             //Catch Forbidden
                             storage.put('redirect', $window.location.pathname);
+                            storage.put('access_denied');
+                            storage.clear();
+                            
+                            $window.location.href = "/login";
+                        }
+                        if(status == 403 && !onLoginPage) {
+                            storage.put('redirect', $window.location.pathname);
+                            storage.put('session_timeout');
                             storage.clear();
                             
                             $window.location.href = "/login";
@@ -6693,6 +6705,12 @@ module.exports = ["$cookies", function ($cookies) {
 
     service.has = function(key) {
         return !_.isNil(service.get(key));
+    };
+
+    service.poke = function(key) {
+        var result = !_.isNil(service.get(key));
+        service.remove(key);
+        return result;
     };
 
     /**
@@ -12576,8 +12594,8 @@ module.exports = ['common', function(common) {
 
 },{"angular":260}],167:[function(require,module,exports){
 //TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in poon's local)
-module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(common, $base64, storage, $q, $rootScope) {
-    'use strict';
+module.exports = ["common", "$base64", "storage", "$q", "$rootScope", function(common, $base64, storage, $q, $rootScope) {
+    'ngInject';
 
 	var service = {};
 
@@ -12694,7 +12712,7 @@ module.exports = ["config", "storage", "FileUploader", function(config, storage,
 			url: config.REST_SERVICE_BASE_URL + url,
 			autoUpload: false,
 			headers: {
-				Authorization: 'Basic ' + accessToken
+				Authorization: 'Bearer ' + accessToken
 			}
 		}, opt);
 		var uploader = new FileUploader(options);
@@ -12901,7 +12919,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 			url: config.REST_SERVICE_BASE_URL + url,
 			autoUpload: true,
 			headers: {
-				Authorization: 'Basic ' + accessToken
+				Authorization: 'Bearer ' + accessToken
 			},
 			queueLimit: 10,
 			filters: [{
@@ -12988,7 +13006,7 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
     };
     if(!_.isNil(accessToken)) {
       options.headers = {
-        Authorization: 'Basic ' + accessToken
+        Authorization: 'Bearer ' + accessToken
       };
     }
     return Upload.upload(_.merge(options, opts));
@@ -13012,7 +13030,7 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
       url: config.REST_SERVICE_BASE_URL + url,
       autoUpload: true,
       headers: {
-        Authorization: 'Basic ' + accessToken
+        Authorization: 'Bearer ' + accessToken
       },
       queueLimit: 10,
       removeAfterUpload : true,
