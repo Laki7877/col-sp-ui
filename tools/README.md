@@ -11,18 +11,19 @@ AhCurl automatically does #1 for you.
 Bash (or git Bash in Windows)
 
 # Usage
-./ahcurl.sh <username> <password> <isAdmin [true|false]> <(optional) URL to replace Azure URL>";
+    
+    ./ahcurl.sh <username> <password> <isAdmin [true|false]> <(optional) URL to replace Azure URL>";
 
 # Examples:
 ## Hitting against Azure 
        
-       ./ahcurl.sh vader@nsa.gov vader true 
+    ./ahcurl.sh vader@nsa.gov vader true 
       
 Since the URL is not specified, it will hit `colsp-dev.azurewebsites.net`. 
 Then it wil ask for CURL command, simply paste what Chrome gives you. Done!
 
 ## Hitting against localhost
 
-        ./ahcurl.sh vader@nsa.gov vader true localhost:55059
+    ./ahcurl.sh vader@nsa.gov vader true localhost:55059
 
 Will automatically hit against local API.
