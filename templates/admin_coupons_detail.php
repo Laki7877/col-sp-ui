@@ -76,7 +76,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
                                   </select>
                               </div>
                           </div>
-                          <div nc-template="common/input/form-group-with-label" nc-label="Discount Amount" nc-template-options-path="couponForm/DiscountAmount">
+                          <div nc-template="common/input/form-group-with-label" nc-label="Discount {{formData.Action.Type=='AMOUNT' ? 'Amount' : 'Percent'}}" nc-template-options-path="couponForm/DiscountAmount">
                               <input type="text" class="form-control" ng-model="formData.Action.DiscountAmount" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"/>
                           </div>
 
