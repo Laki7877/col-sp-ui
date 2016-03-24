@@ -204,7 +204,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
               <div class="font-size-16 color-green" ng-switch-when="green">{{productRatingScore}}</div>
               <div class="font-size-16 color-yellow" ng-switch-when="yellow">{{productRatingScore}}</div>
               <div class="font-size-16 color-red" ng-switch-when="red">{{productRatingScore}}</div>
-              <div class="font-size-16" ng-switch-default>n/a</div>
+              <div class="font-size-16 color-grey" ng-switch-default>N/A</div>
             </div>
           </div>
         </div>

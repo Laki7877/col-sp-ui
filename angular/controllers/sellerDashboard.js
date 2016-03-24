@@ -22,7 +22,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	};
 
 	var maxDate = getMaxDate(2, 2016);
-	console.log('labels',maxDate);
+	// console.log('labels',maxDate);
 
 	var tempLabels = [];
 	var tempData = [];
@@ -130,7 +130,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 					return 'green';
 				}
 				else {
-					return 'n/a';
+					return 'N/A';
 				}
 				break;
 
@@ -145,7 +145,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 					return 'green';
 				}
 				else {
-					return 'n/a';
+					return 'N/A';
 				}
 				break;
 
@@ -160,12 +160,12 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 					return 'green';
 				}
 				else {
-					return 'n/a';
+					return 'N/A';
 				}
 				break;
 
 			default:
-				return 'n/a'
+				return 'N/A'
 		}
 
 		
@@ -174,9 +174,18 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	// temp rating  score
 	// input api for product rating score
 
-	var pRating = 2.4;
-	$scope.productRatingScore = pRating + ' / 5.0';
-	$scope.productRatingRank = getColoredRank('Product Rating',pRating);
+	Dashboard.getProductRating()
+		.then(function(data){
+			console.log(data);
+			if (data != 'N/A') {
+				$scope.productRatingScore = data + ' / 5.0';
+				$scope.productRatingRank = getColoredRank('Product Rating', data);
+			}
+			else {
+				$scope.productRatingScore = 'N/A';
+				// $scope.productRatingRank = 'grey';
+			}
+		});
 
 	var otdRating = 92;
 	$scope.onTimeDeliveryScore = otdRating + '%';

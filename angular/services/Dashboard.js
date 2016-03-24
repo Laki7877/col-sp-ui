@@ -46,5 +46,12 @@ module.exports = function (common, config, util, $log, $window) {
         });
     };
 
+    service.getProductRating = function() {
+        return common.makeRequest({
+            url: '/ProductReviews/Rating',
+            method: 'GET'
+        });
+    };
+
     return service;
 };
