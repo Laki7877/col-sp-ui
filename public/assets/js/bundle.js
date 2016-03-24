@@ -4744,6 +4744,7 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
 
 		if($scope.checkBeforeLaunch) {
 			Onboarding.launchShop();
+			$window.location.reload();
 		}
 		else {
 			// console.log("can't launch");

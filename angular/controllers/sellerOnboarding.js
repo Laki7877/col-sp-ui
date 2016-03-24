@@ -66,6 +66,7 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 
 		if($scope.checkBeforeLaunch) {
 			Onboarding.launchShop();
+			$window.location.reload();
 		}
 		else {
 			// console.log("can't launch");
