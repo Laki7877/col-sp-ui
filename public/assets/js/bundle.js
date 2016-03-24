@@ -4504,7 +4504,6 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 
 	Dashboard.getProductRating()
 		.then(function(data){
-			console.log(data);
 			if (data != 'N/A') {
 				$scope.productRatingScore = data + ' / 5.0';
 				$scope.productRatingRank = getColoredRank('Product Rating', data);
@@ -4519,9 +4518,22 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 	$scope.onTimeDeliveryScore = otdRating + '%';
 	$scope.onTimeDeliveryRank = getColoredRank('On Time Delivery',otdRating);
 
-	var rRating = 10.88;
-	$scope.returnScore = rRating + '%';
-	$scope.returnRank = getColoredRank('Return Rate',rRating);
+	Dashboard.getReturnRating()
+		.then(function(data){
+			// console.log('return rate: ',data);
+			if (data != 'N/A') {
+				data = Math.floor(data);
+				$scope.returnScore = data + '%';
+				$scope.returnRank = getColoredRank('Return Rate', data);
+			}
+			else {
+				$scope.returnScore = 'N/A';
+				// $scope.productRatingRank = 'grey';
+			}
+		});
+	// var rRating = 10.88;
+	// $scope.returnScore = rRating + '%';
+	// $scope.returnRank = getColoredRank('Return Rate',rRating);
 
 	$scope.getColorClass = function(status) {
 		switch (status) {
@@ -11265,7 +11277,7 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
         });
     };
 
-    service.launchShop = function() {
+    service.launchShop = function () {
         return common.makeRequest({
             url: '/Shops/Launch?Status=AT',
             method: 'GET'
@@ -11300,12 +11312,19 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
         });
     };
 
-    service.getProductRating = function() {
+    service.getProductRating = function () {
         return common.makeRequest({
             url: '/ProductReviews/Rating',
             method: 'GET'
         });
     };
+
+    service.getReturnRating = function () {
+        return common.makeRequest({
+            url: '//Returns/Rate',
+            method: 'GET'
+        });
+    }
 
     return service;
 }];
