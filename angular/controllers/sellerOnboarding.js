@@ -69,7 +69,7 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 			$window.location.reload();
 		}
 		else {
-			// console.log("can't launch");
+			window.alert("Can't launch shop: please complete tasks before laucnh.");
 		}
 	};
 

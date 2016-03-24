@@ -4747,7 +4747,7 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
 			$window.location.reload();
 		}
 		else {
-			// console.log("can't launch");
+			window.alert("Can't launch shop: please complete tasks before laucnh.");
 		}
 	};
 
