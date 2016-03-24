@@ -32,6 +32,12 @@ module.exports = function ($cookies) {
         return !_.isNil(service.get(key));
     };
 
+    service.poke = function(key) {
+        var result = !_.isNil(service.get(key));
+        service.remove(key);
+        return result;
+    };
+
     /**
      * Returns the stored sessionToken
      * This method first checks in sessionStorage if sessionToken is not found in sessionStorage
