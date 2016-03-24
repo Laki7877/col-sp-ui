@@ -28,6 +28,28 @@ class SellerController extends Controller
     {
         return View::render('user_add_role',  ['params' => json_encode_n($params)]);
     }
+    //Coupons
+    public static function listCoupon($params)
+    {
+        return View::render('seller_coupons');
+    }
+    public static function addCoupon($params)
+    {
+        return View::render('seller_coupons_detail');
+    }
+    public static function editCoupon($params)
+    {
+        return View::render('seller_coupons_detail',  ['params' => json_encode_n($params)]);
+    }
+    //Coupons
+    public static function listReturnRequest($params)
+    {
+        return View::render('seller_return');
+    }
+    public static function editReturnRequest($params)
+    {
+        return View::render('seller_return_detail',  ['params' => json_encode_n($params)]);
+    }
     //Inventory
     public static function listInventory($params)
     {
@@ -42,5 +64,18 @@ class SellerController extends Controller
     public static function onboarding($params)
     {
         return View::render('seller_onboarding');
+    }
+    public static function dashboard($params)
+    {
+        return View::render('seller_dashboard');
+    }
+    //Coupons
+    public static function listOrder($params)
+    {
+        return View::render('seller_order');
+    }
+    public static function editOrder($params)
+    {
+        return View::render('seller_order_detail',  ['params' => json_encode_n($params)]);
     }
 }

@@ -45,7 +45,7 @@
 			</div>
 		</div>
 		<nc-alert nc-model="alert"></nc-alert>
-		<?php $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/{{title}}','urls' => ['/products']]) ?>
+		<nc-page-title nc-title="Products/{{title}}" link="/products" icon="fa-tag"></nc-page-title>
 
 		<form class="ah-form sticky-mainform-action">
 			<div class="tab-content">

@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, $uibModal, AdminShopService, AdminShoptypeService, GlobalCategoryService, Category, config, common, Credential, $rootScope, $window) {
+module.exports = function($scope, $controller, $uibModal, AdminShopService, AdminShoptypeService, GlobalCategoryService, ImageService, Category, config, common, Credential, $window) {
 	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -24,9 +24,33 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 							item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
 						});
 				});
+			},
+			onAfterSave: function(scope) {			
+				_.forEach(scope.formData.Commissions, function(item) {
+					item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
+				});
 			}
 		}
 	});
+
+	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
+		data: { IsLogo: true }
+	});
+	$scope.uploadLogo = function(file) {
+		if(_.isNil(file)) {
+			return;
+		}
+		$scope.formData.ShopImage = {
+			url: '/assets/img/loader.gif'
+		};
+		$scope.logoUploader.upload(file)
+			.then(function(response) {
+				$scope.formData.ShopImage = response.data;
+			}, function(err) {
+				$scope.formData.ShopImage = null;
+				$scope.alert.error(common.getError(err.data));
+			});
+	};	
 
 	$scope.loginAs = function(user){
 		$scope.alert.close();

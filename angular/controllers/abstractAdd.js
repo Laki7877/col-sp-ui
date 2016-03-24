@@ -5,6 +5,13 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 	$scope.alert = new NcAlert();
 	$scope.saving = false; //prevent multiple saving
 	$scope.loading = false;
+	
+	//Message
+	$scope.loadingMessage = 'Loading ' + pluralize(options.item);
+	$scope.savingMessage = 'Saving ' + pluralize(options.item);
+
+	//Link
+	$scope.url = options.url;
 
 	//Custom pre-init function
 	(options.preInit || _.noop)($scope);
@@ -17,7 +24,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 	$scope.init = function(params) {
 		//Fetch GET Params
 		if(!_.isUndefined(params)) {
-			$scope.id = _.isInteger(_.parseInt(params.id)) ? _.parseInt(params.id) : 0;
+			$scope.id = _.isInteger(_.parseInt(params.id)) ? _.parseInt(params.id) : params.id;
 		}
 		//Custom init
 		if(options.init) {
@@ -25,7 +32,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 		}
 
 		//Edit mode
-		if($scope.id > 0) {
+		if(!_.isUndefined($scope.id)) {
 			$scope.loading = true;
 			$scope.title = util.getTitle($scope.id,options.item);
 
@@ -44,7 +51,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 
 				}, function() {
 					//Jump back
-					util.page404();
+					$window.location.href = $scope.url;
 				});
 		} else {
 			//Create mode
@@ -84,8 +91,9 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 				options.service.update($scope.id, data)
 					.then(function(result) {
 						$scope.formData = options.service.deserialize(result);
-						$scope.alert.success(util.saveAlertSuccess(options.successItem || options.item, options.url));
+						$scope.alert.success(options.success || util.saveAlertSuccess(options.successItem || options.item, options.url));
 						$scope.form.$setPristine(true);
+						(options.onAfterSave || _.noop)($scope, true);
 					}, function(err) {
 						$scope.alert.error(common.getError(err));
 					})
@@ -104,8 +112,9 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 						//Set both id and formData[id]
 						$scope.id = result[options.id];
 						$scope.formData = options.service.deserialize(result);
-						$scope.alert.success(util.saveAlertSuccess(options.successItem || options.item, options.url));
+						$scope.alert.success(options.success || util.saveAlertSuccess(options.successItem || options.item, options.url));
 						$scope.form.$setPristine(true);
+						(options.onAfterSave || _.noop)($scope, false);
 					}, function(err) {
 						$scope.alert.error(common.getError(err));
 					})

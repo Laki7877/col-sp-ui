@@ -24,9 +24,9 @@
 				</div>
 			</div>
 			<div class="form-section">
-				<div class="form-section-header"><h2>Filter By...</h2></div>
+				<div class="form-section-header"><h2>Filter</h2></div>
 				<div class="form-section-content">
-					<div nc-template="common/input/form-group-with-label" nc-label="Criteria">
+					<div nc-template="common/input/form-group-with-label" nc-label="Filter by">
 							 <div class="ah-select2-dropdown">
 								 <select ng-model="formData.Conditions.FilterBy.Type" class="form-control" required>
 										 	<option ng-repeat="opt in dataSet.filters" value="{{ opt.value }}">

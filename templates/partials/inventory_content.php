@@ -144,7 +144,7 @@
               Low Stock
             </span>
           </td>
-          <td class="text-center">
+          <td class="action-column">
             <span class="popover-gear">
               <i class="fa fa-gear color-dark-grey icon-size-20"></i>
               <i class="fa fa-caret-down color-dark-grey" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="

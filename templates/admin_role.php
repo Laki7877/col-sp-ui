@@ -15,8 +15,8 @@
             <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
             <th nc-sort="GroupNameEn">Role Name</th>
             <th># of Users</th>
-            <th>Action</th>
             <th nc-sort="UpdatedDt">Modified</th>
+            <th class="action-column-lg">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -24,8 +24,8 @@
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
             <td nc-link="/admin/roles/{{row.GroupId}}">{{row.GroupNameEn }}</td>
             <td class="width_200">{{row.UserCount}}</td>
-            <td class="width_100"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
-            <td class="width_100">{{row.UpdatedDt | dateTh}}</td>
+            <td class="modified-column">{{row.UpdatedDt | dateTh}}</td>
+            <td class="action-column-lg"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>
         </tbody>
       </table>

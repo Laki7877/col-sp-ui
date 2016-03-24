@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, $window, InventoryService, config, common) {
+module.exports = function($scope, $controller, $window, InventoryService, config, common, storage) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
@@ -11,26 +11,30 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 			actions: [{
 				name: 'View / Edit',
 				fn: function(item) {
-                	$window.location.href =  '/products/' + item.ProductId;
+					$window.location.href =  '/products/' + item.ProductId;
 				}
 			}],
 			filters: [
-				{ name: "All", value: 'All'},
-				{ name: "Normal Stock", value: 'NormalStock'},
-				{ name: "Low Stock", value: 'LowStock'},
-				{ name: "Out of Stock", value: 'OutOfStock'}
+			{ name: "All", value: 'All'},
+			{ name: "Normal Stock", value: 'NormalStock'},
+			{ name: "Low Stock", value: 'LowStock'},
+			{ name: "Out of Stock", value: 'OutOfStock'}
 			],
 			onReload: function() {
 				$scope.lastEdit = null;
 			}
 		}
-	});
+	});	
+	if(storage.has('lowstock')) {
+		$scope.params._filter = 'LowStock';
+		storage.remove('lowstock');
+	}
 	$scope.getAvailableStock = function(item) {
 		return _.toInteger(item.Quantity) - (
 				_.toInteger(item.Defect) +
 				_.toInteger(item.OnHold) +
 				_.toInteger(item.Reserve)
-			);
+				);
 	};
 	$scope.getStatus = function(item) {
 		var measure = $scope.getAvailableStock(item);
@@ -39,7 +43,7 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 		if(measure <= 0) return $scope.statusDropdown[2];
 
 		measure = measure - item.SafetyStockSeller;
-		
+
 		//Low stock
 		if(measure <= 0) return $scope.statusDropdown[1];
 
@@ -66,7 +70,7 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 				$scope.alert.error(common.getError(err));
 			})
 		.finally(function() {
-			item.open = false;
+			$scope.popoverItemOriginal.open = false;
 		});
 	};
 	$scope.popoverItem = {};

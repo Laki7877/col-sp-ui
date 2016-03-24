@@ -16,13 +16,13 @@
                     </select>
 
                     <!-- dont show if nothing is dataset. to choose from -->
-                    <ui-select theme="selectize" loading="refresher.AttributeSetsLoading" 
+                    <ui-select theme="selectize" loading="refresher.AttributeSetsLoading"
                     ng-if="controlFlags.variation != 'enable'" ng-model="formData.AttributeSet" ng-show="dataset.AttributeSets.length > 0">
                         <ui-select-match placeholder="Search Attribute Set">
                             <span ng-bind="$select.selected.AttributeSetNameEn"></span>
                             <span ng-show="!$select.selected.AttributeSetNameEn">- Select Attribute Set -</span>
                         </ui-select-match>
-                        <ui-select-choices group-by="'_group'" refresh="refresher.AttributeSets($select.search)" refresh-delay="1000" 
+                        <ui-select-choices group-by="'_group'" refresh="refresher.AttributeSets($select.search)" refresh-delay="1000"
                         repeat="item in ($select.search != '' ? dataset.CombinedAttributeSets : dataset.AttributeSets) | filter : $select.search track by item.AttributeSetId">
                             <span ng-bind="item.AttributeSetNameEn"></span>
                         </ui-select-choices>
@@ -66,16 +66,17 @@
                 <input ng-if="isFreeTextInput(amap.Attribute.DataType)" ng-class="{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }"
                 ng-required="amap.Attribute.Required && onPublishing" type="text" class="form-control" name="AmapInput{{$index}}"
                 ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" />
-		
-		<div ng-if="isCheckboxInput(amap.Attribute.DataType)" 
-		       ng-init="formData.MasterAttribute[amap.Attribute.AttributeId] = {}">
-			<div class="checkbox" ng-repeat="vmap in amap.Attribute.AttributeValueMaps">
-			<label>
-				<input type="checkbox" ng-model="formData.MasterAttribute[amap.Attribute.AttributeId][vmap.AttributeValueId]"/>
-				{{ vmap.AttributeValue.AttributeValueEn }}
-			</label>
-			</div>	
-		</div>
+
+            		<div ng-if="isCheckboxInput(amap.Attribute.DataType)">
+            			<div class="checkbox" ng-repeat="vmap in amap.Attribute.AttributeValueMaps">
+              			<label>
+              				<input type="checkbox"
+                      ng-init="formData.MasterAttribute[amap.Attribute.AttributeId]._checkbox = true"
+                      ng-model="formData.MasterAttribute[amap.Attribute.AttributeId][vmap.AttributeValueId]"/>
+              				{{ vmap.AttributeValue.AttributeValueEn }}
+              			</label>
+            			</div>
+            		</div>
 
             </div>
         </div>

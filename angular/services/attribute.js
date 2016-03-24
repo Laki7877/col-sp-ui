@@ -99,6 +99,9 @@ module.exports = ['common', function(common){
 			}
 		});
 	};
+
+	
+
 	service.duplicate = function(id) {
 		return common.makeRequest({
 			method: 'POST',

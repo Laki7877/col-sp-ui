@@ -31,6 +31,9 @@ module.exports = {
     ShopAddress: {
         inputSize: 'large'
     },
+    BankName: {
+        inputSize: 'large'
+    },
     BankAccountNumber: {
         inputSize: 'large'
     },

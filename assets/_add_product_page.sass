@@ -145,14 +145,16 @@
 
 .variation-table
 	$table-column-padding: $table-cell-padding * 2
+	width: 940px
+	padding-bottom: 15px
 
-	width: 940px - 60px - 2px // - 2px for border, -60px for form padding
-	> tbody > tr:first-child > td
-		padding-top: 20px
-
+	> tbody > tr > td
+		border-color: $color-light-grey
+	> thead > tr > th
+		border-bottom: 0px
 
 	.column-sku, .column-price, .column-sale-price, .column-inventory, .column-pid
-		width: 90px + $table-column-padding
+		width: 100px + $table-column-padding
 	.column-detail
 		width: $button-width-xl + $table-column-padding
 	.column-visibility

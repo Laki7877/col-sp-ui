@@ -1,7 +1,7 @@
 <form class="ah-form sticky-mainform-action" name="addProductVariantForm">
     <div class="modal-header">
         <h3 class="float-left modal-title" ng-init="form = addProductVariantForm">Variant: {{ pair.text }}</h3>
-        
+
         <span class="float-right">
 	   <a class="link-btn-plain" ng-click="no()">Cancel</a>
 	   <button type="button" ng-disabled="form.$invalid" class="btn btn-blue btn-width-xl" ng-click="yes()">Save</button>
@@ -22,23 +22,23 @@
                         <h2>Vital Information</h2></div>
                     <div class="form-section-content modal-custom">
                         <div nc-template="common/input/form-group-with-label" nc-template-form="form.ProductNameEn" nc-label="Product Name (English)"
-                        nc-template-options-path="addProductForm/MasterVariant_ProductNameEn">
+                        nc-template-options-path="addProductForm/ProductNameEn">
                             <input class="form-control width-field-large" name="ProductNameEn" ng-model="pair.ProductNameEn" maxlength="300" ng-pattern="/^([^<>ก-๙])+$/"
                             required />
                         </div>
 
                         <div nc-template="common/input/form-group-with-label" nc-label="Product Name (ไทย)" nc-template-form="form.ProductNameTh"
-                        nc-template-options-path="addProductForm/MasterVariant_ProductNameTh">
+                        nc-template-options-path="addProductForm/ProductNameTh">
                             <input class="form-control width-field-large" name="ProductNameTh" ng-model="pair.ProductNameTh" ng-pattern="/^[^<>]+$/"
                             maxlength="300" required />
                         </div>
 
-                        <div nc-template="common/input/form-group-with-label" nc-label="SKU" nc-template-form="form.Sku" nc-template-options-path="addProductForm/MasterVariant_Sku">
+                        <div nc-template="common/input/form-group-with-label" nc-label="SKU" nc-template-form="form.Sku" nc-template-options-path="addProductForm/Sku">
                             <input class="form-control width-field-large" name="Sku" ng-model="pair.Sku" maxlength="300" ng-pattern="/^[^<>]+$/" />
                         </div>
 
 
-                        <div nc-template="common/input/form-group-with-label" nc-label="UPC" nc-template-form="form.Upc" nc-template-options-path="addProductForm/MasterVariant_Upc">
+                        <div nc-template="common/input/form-group-with-label" nc-label="UPC" nc-template-form="form.Upc" nc-template-options-path="addProductForm/Upc">
                             <input class="form-control width-field-large" ng-pattern="/^[^<>]+$/" name="Upc" maxlength="300" ng-model="pair.Upc" />
                         </div>
 

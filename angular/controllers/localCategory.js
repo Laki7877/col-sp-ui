@@ -12,13 +12,13 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 	util.warningOnLeave(function() {
 		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
 		return $scope.saving || $scope.dirty || modalDirty;
-	});	
+	});
 	//Expand and collapse all
 	$scope.collapseAll = function() {
 		$rootScope.$broadcast('angular-ui-tree:collapse-all');
 	}
 	$scope.expandAll = function() {
-        $rootScope.$broadcast('angular-ui-tree:expand-all');
+		$rootScope.$broadcast('angular-ui-tree:expand-all');
 	}
 
 	//UiTree onchange event
@@ -79,10 +79,10 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 			$timeout.cancel($scope.timerPromise);
 			$scope.timerPromise = null;
 		}
-			$scope.pristine = true;
-			$scope.saving = true;
-			$scope.timerPromise = $timeout(function() {
-				LocalCategoryService.upsert(Category.transformUITreeToNestedSet($scope.categories))
+		$scope.pristine = true;
+		$scope.saving = true;
+		$scope.timerPromise = $timeout(function() {
+			LocalCategoryService.upsert(Category.transformUITreeToNestedSet($scope.categories))
 				.then(function() {
 					$scope.alert.close();
 				}, function(err) {
@@ -90,27 +90,27 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 					$scope.alert.error(common.getError(err));
 					$scope.reload();
 				})
-				.finally(function() {
-					$scope.saving = false;
-					if($scope.dirty) {
-						$scope.dirty = false;
-						$scope.sync();
-					}
-				});
-			}, delay || config.CATEGORY_SYNC_DELAY);
+			.finally(function() {
+				$scope.saving = false;
+				if($scope.dirty) {
+					$scope.dirty = false;
+					$scope.sync();
+				}
+			});
+		}, delay || config.CATEGORY_SYNC_DELAY);
 	};
 
 	//Condition at which tradable select will lock attributeset
-	$scope.lockAttributeset = function(i) {		
-		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);		
+	$scope.lockAttributeset = function(i) {
+		return angular.isUndefined(i.ProductCount) || (i.ProductCount == 0);
 	};
 
 	//Open category modal
 	$scope.open = function(item) {
 		//Open add or edit one category
-	var modal = $uibModal.open({
+		var modal = $uibModal.open({
 			animation: true,
-			size: 'lg',
+			size: 'xl',
 			keyboard: false,
 			templateUrl: 'local_category/modal',
 			controller: function($scope, $uibModalInstance, $timeout, LocalCategoryService, NcAlert, config, id, Product, ImageService) {
@@ -131,15 +131,17 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 					$scope.loading = false;
 				} else {
 					//Check product count
-					Product.advanceList({
-						LocalCategories: [{CategoryId: id}],
-						_limit: 1,
-					}).then(function(response) {
-						$scope.availableProducts = response.total;
-					});
 					LocalCategoryService.get(id)
 						.then(function(data) {
 							$scope.formData = LocalCategoryService.deserialize(data);
+							//Check product count
+							Product.advanceList({
+								LocalCategories: [_.pick($scope.formData, ['Lft', 'Rgt'])],
+								_limit: 1,
+							}).then(function(response) {
+								$scope.availableProducts = response.total;
+							});
+
 						}, function(err) {
 							$scope.alert.error(common.getError(err));
 						}).finally(function() {
@@ -153,7 +155,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 						searchText: text
 					}).then(function(response) {
 						$scope.products = response.data;
-					});	
+					});
 				};
 				$scope.uploadBannerFail = function(e, response) {
 					if(e == 'onmaxsize') {
@@ -174,14 +176,14 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 						} else {
 							$scope.$parent.modalScope = null;
 						}
-					} 
+					}
 				});
 				$scope.save = function() {
 					$scope.alert.close();
 					$scope.saving = true;
 
 					if($scope.form.$valid) {
-					var processed = LocalCategoryService.serialize($scope.formData);
+						var processed = LocalCategoryService.serialize($scope.formData);
 						if(id == 0) {
 							LocalCategoryService.create(processed)
 								.then(function(data) {

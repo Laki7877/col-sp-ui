@@ -99,6 +99,21 @@ angular.module('nc')
 									scope.model = [];
 								});
 							});
+						} else if(scope.select.modal) {
+							var modal = $uibModal.open(_.merge({}, scope.select.modal, {
+								resolve: {
+									data: function() {
+										return scope.model;
+									}
+								}
+							}));
+							//Modal
+							modal.result.then(function(data) {
+								scope.select.fn(scope.model, function() {
+									//cb to clear all entries
+									scope.model = [];
+								}, data);
+							});
 						} else {
 							scope.select.fn(scope.model, function() {
 								//cb to clear all entries

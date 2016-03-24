@@ -20,6 +20,9 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 		total: 0,
 		data: []
 	};
+	$scope.item = options.item;
+	$scope.url = options.url;
+	$scope.id = options.id;
 
 	$scope.reload = options.reload || function(newObj, oldObj) {
 		$scope.loading = true;
@@ -33,15 +36,19 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 				$scope.params._offset = 0;
 				$scope.bulkContainer.length = 0;
 			}
+			if(newObj._filter2 !== oldObj._filter2) {
+				$scope.params._offset = 0;
+				$scope.bulkContainer.length = 0;
+			}
 		}
 
 		options.service.list($scope.params)
 			.then(function(data) {
 				$scope.list = data;
 			})
-			.finally(function() {
-				$scope.loading = false;
-			});
+		.finally(function() {
+			$scope.loading = false;
+		});
 	};
 	$scope.onLoad = function() {
 		$scope.loading = true;
@@ -102,13 +109,13 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 					case 'View':
 						return util.actionView(options.url, options.id);
 					case 'View Only':
-						return util.actionView(options.url, options.id, 'View');
+						return util.actionView(options.url, options.id, 'View Detail');
 					case 'Delete':
 						return util.actionDelete(options.service, options.id, options.item, $scope.alert, $scope.reload, function(obj, id) {
-								_.remove($scope.bulkContainer, function(e) {
-									return e[id] === obj[id];
-								})
-							});
+							_.remove($scope.bulkContainer, function(e) {
+								return e[id] === obj[id];
+							})
+						});
 					case 'Duplicate':
 						return util.actionDuplicate(options.service, options.id, options.item, $scope.alert, $scope.reload);
 				}

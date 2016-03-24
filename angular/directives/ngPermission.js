@@ -22,7 +22,7 @@ module.exports = function($rootScope, $parse, $animate) {
               value = false;
             }
           } else {
-            value = false;
+            value = true;
           }
 
           //COPIED FROM NG-IF

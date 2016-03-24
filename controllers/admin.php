@@ -11,51 +11,73 @@ class AdminController extends Controller
 	{
 		return View::render('admin_product_detail',  [
             'title' => 'Product Detail',
-            'viewBag' => array( 'productId' => $params['productid']),
+			'viewBag' => array( 'productId' => $params['id']),
         ]);
 	}
     
+	public static function approveDetail($params){
+		return View::render('admin_product_approval_detail',  [
+			'title' => 'Product Detail',
+			'viewBag' => array( 'productId' => $params['id']),
+		]);
+	}
+
     public static function approve($params)
 	{
 		return View::render('admin_product_approval');
 	}
 
-    public static function admin_coupons_list($params)
+	public static function allProducts($params)
+	{
+		return View::render('admin_all_products', []);
+	}
+	//Global Coupon
+	public static function listGlobalCoupon($params)
 	{
 		return View::render('admin_coupons');
 	}
     
-		public static function admin_coupons_edit($params)
+	public static function addGlobalCoupon($params)
 		{
-		  	return View::render('admin_coupons_detail',  [
-            'viewBag' => array('id' => $params["id"])
-        ]);
+		return View::render('admin_coupons_detail');
 		}
 
-    public static function admin_coupons_create($params)
+	public static function editGlobalCoupon($params)
 	{
-		return View::render('admin_coupons_detail');
+		return View::render('admin_coupons_detail', ['params' => json_encode_n($params)]);
+	}
+	//Seller Coupon
+	public static function listSellerCoupon($params)
+	{
+		return View::render('admin_seller_coupons');
 	}
     
-    public static function seller_coupons_create($params)
+	public static function addSellerCoupon($params)
 	{
-		return View::render('seller_coupons_detail');
+		return View::render('admin_seller_coupons_detail');
 	}
 
-    public static function seller_coupons($params)
+	public static function editSellerCoupon($params)
 	{
-		return View::render('seller_coupons');
+		return View::render('admin_seller_coupons_detail', ['params' => json_encode_n($params)]);
 	}
-
-    public static function allProducts($params)
+	//Master product
+	public static function listMaster($params)
+	{
+		return View::render('admin_master_product');
+	}
+	public static function addMaster($params)
+	{
+		return View::render('admin_add_master_product');
+	}
+	public static function editMaster($params)
     {
-        return View::render('admin_all_products', []);
+		return View::render('admin_add_master_product', ['params' => json_encode_n($params)]);
     }
+
 	//Attribute
 	public static function listAttribute($params)
 	{
-		$params['success'] = $_POST['success'];
-
 		return View::render('admin_attribute', ['params' => json_encode_n($params)]);
 	}
 
@@ -72,8 +94,6 @@ class AdminController extends Controller
 	//Attribute set
 	public static function listAttributeSet($params)
 	{
-		$params['success'] = $_POST['success'];
-
 		return View::render('admin_attribute_set', ['params' => json_encode_n($params)]);
 	}
 	public static function addAttributeSet($params)
@@ -100,6 +120,10 @@ class AdminController extends Controller
 	}
 
 	//Account
+	public static function listSeller($params)
+	{
+		return View::render('admin_seller_account');
+	}
 	public static function listAccount($params)
 	{
 		return View::render('admin_account');
@@ -155,6 +179,11 @@ class AdminController extends Controller
         return View::render('admin_add_shop_type',  ['params' => json_encode_n($params), 'title' => 'Shop Type Detail']);
 	}
 
+	//Pending product
+	public static function listPendingProduct($params) 
+	{
+		return View::render('admin_pending_product');
+	}
 
     //On top credit
 	public static function listOntopcredit($params)
@@ -203,7 +232,7 @@ class AdminController extends Controller
 	// CMS Group
 	public static function listCMSGroup($params)
 	{
-		return View::render('admin_cms_group');
+		return View::render('admin_newsletters');
 	}
 	public static function addCMSGroup($params)
 	{

@@ -240,10 +240,15 @@ angular.module('nc')
 						//Empty
 						return scope.options.emptyImg;
 					} else if(image[scope.options.urlKey] == '') {
-						return scope.options.loaderImg;
+						return null;
 					} else {
 						return image[scope.options.urlKey];
 					}
+				};
+				scope.getProgress = function(image) {
+					if(image == null)
+						return 0;
+					return image.progress || 0;
 				};
 				scope.isDisabled = function(image) {
 					return _.isNull(image) || scope.lock();
@@ -352,6 +357,9 @@ angular.module('nc')
 						scope.model.push(obj);
 						item.obj = obj;
 						item.indx = scope.model.length-1;
+						item.onProgress = function(progress) {
+							obj.progress = progress;
+						};
 					}
 				};
 				scope.uploader.onWhenAddingFileFailed = function(item, filter) {

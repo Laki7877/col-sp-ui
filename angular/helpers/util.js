@@ -8,9 +8,13 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
     service.variant.toString = function (a, b) {
         var left = null;
         var right = null;
-        left = (a.ValueEn || a.AttributeValueEn || a.AttributeValues.length && a.AttributeValues[0].AttributeValueEn || '');
-        right = (b.ValueEn || b.AttributeValueEn || b.AttributeValues.length > 0 && b.AttributeValues[0].AttributeValueEn || '');
-        console.log(a,b, 'toString variant');
+        left = (a.ValueEn || a.AttributeValueEn || a.AttributeValues.length > 0 && a.AttributeValues[0].AttributeValueEn || '');
+        if(b == null){
+          right = '';
+        }else{
+          right = (b.ValueEn || b.AttributeValueEn || b.AttributeValues.length > 0 && b.AttributeValues[0].AttributeValueEn || '');
+        }
+
         return left + (right ? ", " + right : "");
     };
 
@@ -369,12 +373,33 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
         var content = '';
         scope.content = item;
 
-        if (id > 0) {
-            content = $interpolate(config.TITLE.DETAIL)(scope);
+        if (id != 0) {
+            content = pluralize(item) + '/' + $interpolate(config.TITLE.DETAIL)(scope);
         } else {
-            content = $interpolate(config.TITLE.CREATE)(scope);
+            content = pluralize(item) + '/' + $interpolate(config.TITLE.CREATE)(scope);
         }
         return content;
+    }
+
+    service.confirm = function(title, message, yes, no, cls) {
+        return $uibModal.open({
+            size: 'size-warning',
+            templateUrl: 'common/ncActionModal',
+            controller: function($scope, $uibModalInstance) {
+                'ngInject';
+                $scope.title = title;
+                $scope.message = message;
+                $scope.btnClass = cls;
+                $scope.btnYes = yes;
+                $scope.btnNo = no;
+                $scope.no = function() {
+                    $uibModalInstance.dismiss();
+                };
+                $scope.yes = function() {
+                    $uibModalInstance.close();
+                };
+            }
+        });
     }
 
     //Open preview image modal

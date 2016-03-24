@@ -19,7 +19,14 @@ module.exports = {
       }
     }
   },
-  DateRange: {},
+  DateRange: {
+    labelClass: "required",
+    error: {
+      messages: {
+        required: 'This is a required field'
+      }
+    }
+  },
   DiscountAmount: {
     labelClass: "required",
     hint: {
@@ -42,9 +49,5 @@ module.exports = {
     }
   },
   FilterByValue: {
-    inputSize: 'xxl'
-  },
-  IncludeProducts: {
-    inputSize: 'xxl'
   }
 }

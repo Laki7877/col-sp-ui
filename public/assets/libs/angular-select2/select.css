@@ -10,7 +10,12 @@
 .ui-select-highlight {
   font-weight: bold;
 }
-
+.select-locked{
+  background-color: #DEE3E7 !important;
+  border-color: #DEE3E7 !important;
+  color: #7B7F8F;
+  cursor: not-allowed;
+}
 .ui-select-offscreen {
   clip: rect(0 0 0 0) !important;
   width: 1px !important;
@@ -27,7 +32,7 @@
 
 
 .ui-select-choices-row:hover {
-  background-color: #b4ddff;
+  background-color: #B4DCFF;
 }
 
 /* Select2 theme */
@@ -109,11 +114,11 @@ body > .select2-container.open {
 
 /* Bootstrap theme */
 .ui-select-match-item.btn.btn-default.btn-xs{
-    border-color: #007FBB !important;
-    background-color:#b4ddff;
+    border-color: #B4DCFF;
+    background-color:#B4DCFF;
 }
 .ui-select-match-item.btn.btn-default.btn-xs:focus{
-    background-color: #007FBB;
+    background-color: #B4DCFF;
 }
 /* Helper class to show styles when focus */
 .btn-default-focus {

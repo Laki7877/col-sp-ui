@@ -4,12 +4,12 @@ module.exports = ['$scope', 'LocalCategory', function($scope, LocalCategory) {
 	$scope.checkAll = false;
 	$scope.notReady = true;
 	$scope.filterOptions = [
-		{ name: "All", value: 0},
-		{ name: "Approved", value: 1},
-		{ name: "Not Approved", value: 2},
-		{ name: "Wait for Approval", value: 3},
+	{ name: "All", value: 0},
+	{ name: "Approved", value: 1},
+	{ name: "Not Approved", value: 2},
+	{ name: "Wait for Approval", value: 3},
 	];
- 	$scope.productTotal = 0;
+	$scope.productTotal = 0;
 	$scope.productList = [];
 	$scope.tableParams = {
 		filter: 0,

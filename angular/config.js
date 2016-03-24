@@ -14,6 +14,46 @@ module.exports = {
 	TYPEAHEAD_IMPORT_GUIDELINE_LIMIT: 8,
 	TYPEAHEAD_DELAY: 150,
 	DROPDOWN: {
+		COUPON_CRITERIA: [
+		{
+			name: 'No Criteria',
+			value: 'NoFilter'
+		},
+		{
+			name: 'Total price is more than..',
+			value: 'Total price is more than'
+		}
+		],
+		COUPON_GLOBAL_FILTER: [
+		{
+			name: 'No Criteria',
+			value: 'NoFilter'
+		},
+		{
+			name: 'Global Category',
+			value: 'GlobalCategory'
+		}
+		],
+		COUPON_SELLER_FILTER: [
+		{
+			name: 'No Criteria',
+			value: 'NoFilter'
+		},
+		{
+			name: 'Local Category',
+			value: 'LocalCategory'
+		}
+		],
+		COUPON_DISCOUNT: [
+			{
+				display: 'Discount Percent',
+				Type: 'PERCENT'
+			},
+			{
+				display: 'Discount by Amount',
+				Type: 'AMOUNT'
+			}
+		],
 		SHOP_GROUP_DROPDOWN: [
 			{
 				name: 'All',
@@ -51,6 +91,16 @@ module.exports = {
 				name: 'Yes',
 				value: true
 			}
+		],
+		DEFAULT_ATTRIBUTE_VISIBLE_DROPDOWN: [
+		{
+			name: 'All Users',
+			value: 'ME'
+		},
+		{
+			name: 'Admin Only',
+			value: 'AD'
+		}
 		],
 		VISIBLE_DROPDOWN: [
 			{
@@ -135,6 +185,69 @@ module.exports = {
 			}
 		]
 	},
+	ORDER_STATUS: [
+	{
+		name: 'Payment Pending',
+		value: 'PP',
+		color: 'color-grey',
+		icon: 'fa-clock-o',
+		state: 0
+	},
+	{
+		name: 'Payment Confirmed',
+		value: 'PC',
+		color: 'color-grey',
+		icon: 'fa-check-circle-o',
+		state: 1
+	},
+	{
+		name: 'Preparing',
+		value: 'PE',
+		color: 'color-yellow',
+		icon: 'fa-check-circle-o',
+		state: 2
+	},
+	{
+		name: 'Ready to Ship',
+		value: 'RS',
+		color: 'color-green',
+		icon: 'fa-check-circle-o',
+		state: 3
+	},
+	{
+		name: 'Shipping',
+		value: 'SH',
+		color: 'color-green',
+		icon: 'fa-clock-o',
+		state: 4
+	},
+	{
+		name: 'Delivered',
+		value: 'DE',
+		color: 'color-green',
+		icon: 'fa-check-circle-o',
+		state: 5
+	},
+	{
+		name: 'Canceled',
+		value: 'CA',
+		color: 'color-red',
+		icon: 'fa-ban',
+		state: -1
+	}
+	],
+	RETURN_STATUS: [
+	{
+		name: 'Accepted',
+		value: 'AP',
+		color: 'color-green'
+	},
+	{
+		name: 'Waiting',
+		value: 'WA',
+		color: 'color-grey'
+	}
+	],
 	SHOP_STATUS: [
 		{
 			name: 'Inactive',

@@ -98,6 +98,16 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
                     data: obj
                 });
             };
+            obj.updateAll = function(obj) {
+                return service.makeRequest({
+                    method: 'PUT',
+                    url: resourceUri,
+                    data: obj,
+                    headers: {
+                        'Content-Type': 'application/json;charset=UTF-8'
+                    }
+                });
+            };
             //Create
             obj.create = function(obj) {
                 return service.makeRequest({

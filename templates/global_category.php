@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="ProductAddSelectCategoryCtrl" class="global-category-page">
-		<?php $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/Add Product', 'urls' => ['/products']]) ?>
+		<nc-page-title nc-title="Products/Add Product" link="/products" icon="fa-tag"></nc-page-title>
 
 		<div ng-show="loading" nc-loading="Loading Global Categories..."></div>
 		<form ng-show="!loading" ng-submit="validate($event)" class="ah-form margin-top-30" method="POST" action="/products/add">
