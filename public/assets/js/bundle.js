@@ -12803,7 +12803,7 @@ module.exports = ["config", "storage", "FileUploader", function(config, storage,
 			url: config.REST_SERVICE_BASE_URL + url,
 			autoUpload: false,
 			headers: {
-				Authorization: 'Basic ' + accessToken
+				Authorization: 'Bearer ' + accessToken
 			}
 		}, opt);
 		var uploader = new FileUploader(options);
@@ -13010,7 +13010,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 			url: config.REST_SERVICE_BASE_URL + url,
 			autoUpload: true,
 			headers: {
-				Authorization: 'Basic ' + accessToken
+				Authorization: 'Bearer ' + accessToken
 			},
 			queueLimit: 10,
 			filters: [{
