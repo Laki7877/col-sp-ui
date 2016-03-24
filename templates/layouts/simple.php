@@ -24,6 +24,8 @@
     <script src="/assets/libs/ckeditor/ckeditor.js"></script>
     <script src="/assets/libs/ckeditor/config.js"></script>
     <script src="/assets/libs/ckfinder/ckfinder.js"></script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+
 
 
     <script src="/assets/libs/moment/moment.min.js"></script>
