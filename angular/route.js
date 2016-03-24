@@ -132,7 +132,7 @@ var admin = {
 	// Create By Col Dev (Natee)
 	'CMS|fa-product-hunt': {
 	 	'CMS Category': '/admin/cms/category',
-	 	'CMS Collection': '/admin/cms/collection',
+	 	'CMS Static & Collection': '/admin/cms/collection',
 	 	'CMS Group': '/admin/cms/group'
 	},
 	'Reports|fa-line-chart': {

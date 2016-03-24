@@ -60,61 +60,68 @@ module.exports = function ($scope, $controller, OnTopCredit, config) {
 
     // Add a Item to the list
     $scope.addItem = function () {
-        switch ($scope.formData.CardItemList.CreditCardTypeCode) {
+
+        switch ($scope.formData.CreditCardTypeCode) {
             case "15A":
-                $scope.formData.CardItemList.CreditCardTypeText = 'American Express - (15 digit)';
-                $scope.formData.CardItemList.Digit = 15;
+                $scope.formData.CreditCardTypeText = 'American Express - (15 digit)';
+                $scope.formData.Digit = 15;
                 break;
             case "14D":
-                $scope.formData.CardItemList.CreditCardTypeText = 'Diners Club - (14 digit)';
-                $scope.formData.CardItemList.Digit = 14;
+                $scope.formData.CreditCardTypeText = 'Diners Club - (14 digit)';
+                $scope.formData.Digit = 14;
                 break;
             case "14C":
-                $scope.formData.CardItemList.CreditCardTypeText = 'Carte Blanche - (14 digit)';
-                $scope.formData.CardItemList.Digit = 14;
+                $scope.formData.CreditCardTypeText = 'Carte Blanche - (14 digit)';
+                $scope.formData.Digit = 14;
                 break;
             case "16D":
-                $scope.formData.CardItemList.CreditCardTypeText = 'Discover - (16 digit)';
-                $scope.formData.CardItemList.Digit = 16;
+                $scope.formData.CreditCardTypeText = 'Discover - (16 digit)';
+                $scope.formData.Digit = 16;
                 break;
             case "15E":
-                $scope.formData.CardItemList.CreditCardTypeText = 'EnRoute - (15 digit)';
-                $scope.formData.CardItemList.Digit = 15;
+                $scope.formData.CreditCardTypeText = 'EnRoute - (15 digit)';
+                $scope.formData.Digit = 15;
                 break;
             case "16J":
-                $scope.formData.CardItemList.CreditCardTypeText = 'JCB - (16 digit)';
-                $scope.formData.CardItemList.Digit = 16;
+                $scope.formData.CreditCardTypeText = 'JCB - (16 digit)';
+                $scope.formData.Digit = 16;
                 break;
             case "15J":
-                $scope.formData.CardItemList.CreditCardTypeText = 'JCB - (15 digit)';
-                $scope.formData.CardItemList.Digit = 15;
+                $scope.formData.CreditCardTypeText = 'JCB - (15 digit)';
+                $scope.formData.Digit = 15;
                 break;
             case "16M":
-                $scope.formData.CardItemList.CreditCardTypeText = 'Master Card - (16 digit)';
-                $scope.formData.CardItemList.Digit = 16;
+                $scope.formData.CreditCardTypeText = 'Master Card - (16 digit)';
+                $scope.formData.Digit = 16;
                 break;
             case "13V":
-                $scope.formData.CardItemList.CreditCardTypeText = 'Visa - (13 digit)';
-                $scope.formData.CardItemList.Digit = 13;
+                $scope.formData.CreditCardTypeText = 'Visa - (13 digit)';
+                $scope.formData.Digit = 13;
                 break;
             case "16V":
-                $scope.formData.CardItemList.CreditCardTypeText = 'Visa - (16 digit)';
-                $scope.formData.CardItemList.Digit = 16;
+                $scope.formData.CreditCardTypeText = 'Visa - (16 digit)';
+                $scope.formData.Digit = 16;
                 break;
         }
+
+        if (!angular.isArray($scope.formData.CardItemList))
+            $scope.formData.CardItemList = [];
+
         $scope.formData.CardItemList.push({
-            CreditCardTypeCode: $scope.formData.CardItemList.CreditCardTypeCode,
-            CreditCardTypeText: $scope.formData.CardItemList.CreditCardTypeText,
-            CreditNumberFormat: $scope.formData.CardItemList.CreditNumberFormat,
-            Digit: $scope.formData.CardItemList.Digit,
+            CreditCardTypeCode: $scope.formData.CreditCardTypeCode,
+            CreditCardTypeText: $scope.formData.CreditCardTypeText,
+            CreditNumberFormat: $scope.formData.CreditNumberFormat,
+            Digit: $scope.formData.Digit,
             Visibility: 1,
             Status: true
         });
-        // Clear input fields after push
-        $scope.formData.CardItemList.CreditCardTypeCode = "0";
-        $scope.formData.CardItemList.CreditCardTypeText = "";
-        $scope.formData.CardItemList.CreditNumberFormat = "";
+        console.log($scope.formData)
 
+        // Clear input fields after push
+        $scope.formData.CreditCardTypeCode  = "0";
+        $scope.formData.CreditCardTypeText  = "";
+        $scope.formData.CreditNumberFormat  = "";
+        $scope.formData.Digit               = 0;
     };
 
     //Remove
@@ -125,7 +132,7 @@ module.exports = function ($scope, $controller, OnTopCredit, config) {
 
     // Get Total Items
     $scope.getTotalItems = function () {
-        return $scope.formData.CardItemList.length;
+        return $scope.formData.CardItemList === undefined ? 0 : $scope.formData.CardItemList.length;
     };
 
 

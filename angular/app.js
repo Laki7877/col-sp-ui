@@ -1,7 +1,7 @@
 'use strict';
 //App Start here
 var angular = require('angular');
-var bulk = require('bulk-require')(__dirname, ['controllers/*.js', 'colDev/*.js', 'services/*.js', 'helpers/*.js',
+var bulk = require('bulk-require')(__dirname, ['controllers/*.js', 'services/*.js', 'helpers/*.js',
   'directives/*.js', 'filters/*.js', 'libs/*.js', 'template-options/*.js'
 ])
 var config = require('./config')
@@ -22,6 +22,7 @@ require('angular-cookies')
 require('angular-bootstrap-datetimepicker')
 require('ng-file-upload')
 require('ui-select/dist/select.js')
+require('angular-ui-sortable/src/sortable.js')
 require('angular-chart.js')
 
 // Nc package
@@ -30,8 +31,6 @@ require('./modules/product-detail')
 
 //Internal dependencies
 var controllers = bulk.controllers;
-var colController = bulk.colDev;
-console.log(colController)
 var services = bulk.services;
 var helpers = bulk.helpers;
 var directives = bulk.directives;
@@ -41,14 +40,14 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   'nc', 'ui.bootstrap.datetimepicker',
   'duScroll', 'ngSanitize', 'ngAnimate',
   'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select',
-  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload'
+  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload',
+  'ui.sortable'
 ])
-
   // App config
   .config(['uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider',
     function (uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
-      $ncPaginationProvider.paginationSizes = [10, 20, 50, 100]
-      uiSelectConfig.taggingTokens = '[ENTER|,]'
+        $ncPaginationProvider.paginationSizes = [10, 20, 50, 100]
+        uiSelectConfig.taggingTokens = '[ENTER|,]'
     }
   ])
 
@@ -107,6 +106,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
 
 // Col Dev (Natee)
 .factory('CMSService', services.cmsService)
+//.factory('CMSCollectionService', services.cmsCollectionService)
 
   // Directives
 .directive('ncTradableSelect', directives.ncTradableSelect)
@@ -133,6 +133,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
 .filter('leadingzero', filters.leadingzero)
 .filter('variantValue', filters.variantValue)
 .filter('importGuidelineExample', filters.importGuidelineExample)
+.filter('propsFilter', filters.propsFilter) // Col Dev (Natee)
 
   // Controllers
 .controller('RootCtrl', controllers.root)
@@ -189,8 +190,12 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
 .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
 
 // Create By Col Dev (Natee)
-.controller('AdminCMSCategoryController', colController.adminCMSCategoryController)
-.controller('AdminCMSCollectionController', colController.adminCMSCollectionController)
-.controller('AdminCMSGroupController', colController.adminCMSGroupController)
+.controller('AdminCMSCategoryListCtrl', controllers.adminCMSCategoryList)
+.controller('AdminCMSCategoryAddCtrl', controllers.adminCMSCategoryAdd)
+
+.controller('AdminCMSCollectionListCtrl', controllers.adminCMSCollectionList)
+.controller('AdminCMSCollectionAddCtrl', controllers.adminCMSCollectionAdd)
+
+.controller('AdminCMSGroupController', controllers.adminCMSGroupController)
 
 .controller('TestCtrl', controllers.test)

@@ -31,6 +31,7 @@
     <script src="/assets/libs/moment/moment.min.js"></script>
 
     <script src="/assets/libs/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+      
 </head>
 
 <body class="ahpt" ng-cloak ng-controller="RootCtrl">
@@ -69,9 +70,8 @@
 
     <!--<script src="/assets/libs/angular-select2/select.min.js"></script>-->
     <link rel="stylesheet" type="text/css" href="/assets/libs/angular-select2/select.css">
-
+     
     <!-- Create By Col Dev (Natee) -->
-      
     <!-- Category -->
     <script type="text/ng-template" id="templates/admin-cms-category-manage.html">
         <div class="modal-header">
@@ -268,26 +268,67 @@
                     <div class="col-xs-12">
                         <div class="form-section">
                             <div class="form-section-header"><h2>Search Products</h2></div>
-                            <div class="form-section-content">    
+                            <div class="form-section-content">
 
-                                <!-- Search -->
-                                <div class="form-group">
-                                    <label class="control-label col-xs-3">Search Products</label>
-                                    <div class="col-xs-7">
-                                        <select class="form-control">
-                                            <option value="">-- Search By Options --</option>
-                                            <option value="">Brand</option>
-                                            <option value="">Tag</option>
-                                        </select>
-                                    </div>
+                              <!-- Category -->
+                              <div class="form-group">
+                                <label class="control-label col-xs-3">Category</label>
+                                <div class="col-xs-7">
+                                  <ui-select ng-model="category.selected" ng-disabled="disabled" style="min-width: 300px;">
+                                    <ui-select-match placeholder="Select a category in the list">{{$select.selected.NameEn}}</ui-select-match>
+                                    <ui-select-choices repeat="cate in categorys | propsFilter: {NameEn: $select.search, NameTh: $select.search}">
+                                      <div ng-bind-html="cate.NameEn | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                  </ui-select>
                                 </div>
+                              </div>
+
+                              <!-- Brand -->
+                              <div class="form-group">
+                                  <label class="control-label col-xs-3">Brand</label>
+                                  <div class="col-xs-7">
+                                    <ui-select ng-model="brand.selected" ng-disabled="disabled" style="min-width: 300px;">
+                                      <ui-select-match placeholder="Select a brand in the list">{{$select.selected.BrandNameEn}}</ui-select-match>
+                                      <ui-select-choices repeat="b in brands | propsFilter: {BrandNameTh: $select.search, BrandNameTh: $select.search}">
+                                        <div ng-bind-html="b.BrandNameEn | highlight: $select.search"></div>
+                                      </ui-select-choices>
+                                    </ui-select>
+                                  </div>
+                              </div>
+                              
+                              <!-- Tag -->
+                              <div class="form-group">
+                                  <label class="control-label col-xs-3">Tag</label>
+                                  <div class="col-xs-7">
+                                    
+                                    <ui-select multiple ng-model="tag.selected" ng-disabled="disabled" style="min-width: 300px;">
+                                      <ui-select-match placeholder="Select tags">{{$item.Tag}}</ui-select-match>
+                                      <ui-select-choices repeat="t in tags | propsFilter: {Tag: $select.search}">
+                                        <div ng-bind-html="t.Tag | highlight: $select.search"></div>
+                                      </ui-select-choices>
+                                    </ui-select>
+                                  </div>
+                              </div>
+                              
+                              <!-- Search By -->
+                              <div class="form-group">
+                                  <label class="control-label col-xs-3">Search By</label>
+                                  <div class="col-xs-7">
+                                    <select class="form-control" ng-model="searchBy">
+                                      <option value="">Select Option</option>
+                                      <option value="name">Name</option>
+                                      <option value="sku">SKU</option>
+                                      <option value="pid">PID</option>
+                                    </select>
+                                  </div>
+                              </div>
 
                                 <div class="form-group">
                                     <label class="control-label col-xs-3">Search Products</label>
                                     <div class="col-xs-7">
                                         <input type="text" class="form-control" 
-                                            ng-model="searchProductModel"
-                                            ng-enter="search()"
+                                            ng-model="searchProductInput"
+                                            ng-enter="search(searchProductInput)"
                                             placeholder="Search Products..." />
                                     </div>
                                 </div>
@@ -307,7 +348,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr ng-repeat="item in filterdItem = (products | filter: search)">
+                                                <tr ng-repeat="item in products">
                                                     <td>
                                                         <input type="checkbox" 
                                                                 ng-model="item.IsChecked"
