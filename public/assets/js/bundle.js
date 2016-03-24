@@ -10005,18 +10005,19 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       // TODO: too slow
       if (!q) return
 
-      $scope.refresher.BrandLoading = true;
+    //   $scope.refresher.BrandLoading = true;
 
-      Brand.getAll({
+      return Brand.getAll({
         pageSize: 10,
         searchText: q
       }).then(function(ds) {
         $scope.refresher.BrandLoading = false;
         $scope.dataset.Brands = ds.data; // _.unionBy($scope.dataset.Brands, ds.data, 'BrandId');
-        $scope.dataset.Brands.map(function(m) {
-          m._group = "Search Results";
-          return m;
-        });
+        // $scope.dataset.Brands.map(function(m) {
+        //   m._group = "Search Results";
+        //   return m;
+        // });
+        return $scope.dataset.Brands;
       });
 
 
@@ -10589,7 +10590,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-vital-information',
-    "<div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label ng-init=\"form = addProductForm\" nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=variantPtr.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=variantPtr.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=variantPtr.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"variantPtr.Upc\"></div><div ng-if=variantPtr.MasterVariant.Pid><div nc-template=common/input/form-group-with-label nc-template-form=form.Pid nc-label=\"{{ (formData.Variants || []).length > 0 ? 'Group ID' : 'PID' }}\" nc-template-options-path=addProductForm/Pid><input class=\"form-control width-field-large\" name=Pid disabled ng-model=\"variantPtr.Pid\"></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Brand Name</label></div><div class=width-field-normal><div class=ah-select2-dropdown><md-autocomplete md-selected-item=ctrl.selectedItem md-search-text=ctrl.searchText md-no-cache=!cacheEnable md-items=\"item in querySearch(ctrl.searchText)\" md-item-text=item.ProductNameEn md-min-length=1 md-delay=500 placeholder=\"Search for Product\"><md-item-template><span md-highlight-text=ctrl.searchText md-highlight-flags=^i>{{item.ProductNameEn}}</span></md-item-template><md-not-found>No Product Found</md-not-found></md-autocomplete></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label ng-init=\"form = addProductForm\" nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=variantPtr.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=variantPtr.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=variantPtr.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"variantPtr.Upc\"></div><div ng-if=variantPtr.MasterVariant.Pid><div nc-template=common/input/form-group-with-label nc-template-form=form.Pid nc-label=\"{{ (formData.Variants || []).length > 0 ? 'Group ID' : 'PID' }}\" nc-template-options-path=addProductForm/Pid><input class=\"form-control width-field-large\" name=Pid disabled ng-model=\"variantPtr.Pid\"></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Brand Name</label></div><div class=width-field-normal><div class=ah-select2-dropdown><md-autocomplete md-selected-item=formData.Brand md-search-text=ctrl.brandSearchText md-items=\"item in refresher.Brands(ctrl.brandSearchText)\" md-item-text=item.BrandNameEn md-min-length=1 md-delay=500 placeholder=\"Search Brand\"><md-item-template><span md-highlight-text=ctrl.brandSearchText md-highlight-flags=^i>{{item.BrandNameEn}}</span></md-item-template><md-not-found>No Product Found</md-not-found></md-autocomplete></div></div></div></div></div>"
   );
 
 

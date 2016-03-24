@@ -737,18 +737,19 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       // TODO: too slow
       if (!q) return
 
-      $scope.refresher.BrandLoading = true;
+    //   $scope.refresher.BrandLoading = true;
 
-      Brand.getAll({
+      return Brand.getAll({
         pageSize: 10,
         searchText: q
       }).then(function(ds) {
         $scope.refresher.BrandLoading = false;
         $scope.dataset.Brands = ds.data; // _.unionBy($scope.dataset.Brands, ds.data, 'BrandId');
-        $scope.dataset.Brands.map(function(m) {
-          m._group = "Search Results";
-          return m;
-        });
+        // $scope.dataset.Brands.map(function(m) {
+        //   m._group = "Search Results";
+        //   return m;
+        // });
+        return $scope.dataset.Brands;
       });
 
 
