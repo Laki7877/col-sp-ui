@@ -16260,4 +16260,7 @@ ng-transclude.has-error .form-control {
 /* line 329, ../../../assets/screen.scss */
 button, html, input, select, textarea {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  -webkit-font-smoothing: subpixel-antialiased !important;
+  -moz-osx-font-smoothing: auto;
+  font-smooth: auto;
 }
