@@ -25,7 +25,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
        <nc-alert nc-model="alert"></nc-alert>
        <nc-alert nc-model="adminAlert"></nc-alert>
        
-       <div style="padding-bottom: 10px" ng-show="formData.ProductId">
+       <div style="padding-bottom: 10px" ng-show="!pageState.loading.state">
                <button ng-click="_debugLoad()" class="btn btn-xs" ng-disabled="disableDebugLoad">
                     <span class="glyphicon glyphicon-asterisk"></span> Load Cache
                 </button>
