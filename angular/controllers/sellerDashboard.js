@@ -22,7 +22,6 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	};
 
 	var maxDate = getMaxDate(2, 2016);
-	// console.log('labels',maxDate);
 
 	var tempLabels = [];
 	var tempData = [];
@@ -36,7 +35,6 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	$scope.data = [tempData];
 
 	// End day graph section
-
 
 	Dashboard.getNewsLetter()
 		.then(function(query) {
@@ -53,23 +51,6 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 				$scope.lowStockAlertData[i].QuantityText = 'QTY: ' + $scope.lowStockAlertData[i].Quantity;
 			};
 			return $scope.lowStockAlertData;
-		// })
-		// .then(function(lowStockAlertData){
-		// 	var promise = Dashboard.getOutOfStock();
-		// 	promise.then(function(outOfStockData) {
-		// 		outOfStockData = outOfStockData.data;
-
-		// 		for (var i = outOfStockData.length - 1; i >= 0; i--) {
-		// 			outOfStockData[i].PidText = 'ID: ' + outOfStockData[i].Pid;
-		// 			outOfStockData[i].QuantityText = 'QTY: ' + outOfStockData[i].Quantity;
-		// 		};
-
-		// 		var object = lowStockAlertData.concat(outOfStockData);
-		// 		return $scope.lowStockAlertData = object;
-
-		// 	}, function(reason) {
-		// 	  console.log('Failed: ' + reason);
-		// 	});
 		});
 
 	Dashboard.getOutOfStock()
@@ -80,7 +61,6 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 				$scope.outOfStockData[i].PidText = 'ID: ' + $scope.outOfStockData[i].Pid;
 				$scope.outOfStockData[i].QuantityText = 'QTY: ' + $scope.outOfStockData[i].Quantity;
 			};
-			// console.log($scope.lowStockAlertData);
 			return $scope.outOfStockData;
 		});
 
@@ -91,31 +71,16 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 
 			for (var i = $scope.newOrdersData.length - 1; i >= 0; i--) {
 				$scope.newOrdersData[i].OrderIdText = 'ID: ' + $scope.newOrdersData[i].OrderId;
-				// $scope.newOrdersData[i].QuantityText = 'QTY: ' + $scope.newOrdersData[i].Quantity;
 			};
 
 			return $scope.newOrdersData;
 		});
 
 	$scope.maxTopSellingItems = 10;
-	$scope.topSellingItemsData = [
-		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'Chanel, the cheetah' },
-		{img_path:'/assets/img/img40.png', name:'1 French Connection, Sunday - high quality product' },		
-		{img_path:'/assets/img/img40.png', name:'2 French Connection, Sunday - high quality product' },		
-		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'3 French Connection, Sunday - high quality product' },		
-		{img_path:'/assets/img/img40.png', name:'4 French Connection, Sunday - high quality product' },
-		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'Chanel, the cheetah' },
-		{img_path:'/assets/img/img40.png', name:'1 French Connection, Sunday - high quality product' },		
-		{img_path:'/assets/img/img40.png', name:'2 French Connection, Sunday - high quality product' },		
-		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'3 French Connection, Sunday - high quality product' },		
-		{img_path:'/assets/img/img40.png', name:'4 French Connection, Sunday - high quality product' },
-		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'Chanel, the cheetah' },
-		{img_path:'/assets/img/img40.png', name:'1 French Connection, Sunday - high quality product' },		
-		{img_path:'/assets/img/img40.png', name:'2 French Connection, Sunday - high quality product' },		
-		{img_path:'http://colsp-dev.azurewebsites.net/Images/Product/111116X_1.jpg', name:'3 French Connection, Sunday - high quality product' },		
-		{img_path:'/assets/img/img40.png', name:'4 French Connection, Sunday - high quality product' }
-
-	];
+	Dashboard.getTopSellingItems()
+		.then(function(data){
+			return $scope.topSellingItemsData = data;
+		}); 
 
 	getColoredRank = function(type, data) {
 		switch(type){
@@ -182,7 +147,6 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 			}
 			else {
 				$scope.productRatingScore = 'N/A';
-				// $scope.productRatingRank = 'grey';
 			}
 		});
 
@@ -192,7 +156,6 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 
 	Dashboard.getReturnRating()
 		.then(function(data){
-			// console.log('return rate: ',data);
 			if (data != 'N/A') {
 				data = Math.floor(data);
 				$scope.returnScore = data + '%';
@@ -200,20 +163,15 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 			}
 			else {
 				$scope.returnScore = 'N/A';
-				// $scope.productRatingRank = 'grey';
 			}
 		});
-	// var rRating = 10.88;
-	// $scope.returnScore = rRating + '%';
-	// $scope.returnRank = getColoredRank('Return Rate',rRating);
 
 	$scope.getColorClass = function(status) {
 		switch (status) {
 	        case 'PC':
 	            return 'color-grey';
 	            break;
-	        case '2':
-	            // alert("Selected Case Number is 2");
+	        case 'Other':
 	            break;
 	        default:
         }
@@ -224,8 +182,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	        case 'PC':
 	            return 'fa-check-circle-o';
 	            break;
-	        case '2':
-	            // alert("Selected Case Number is 2");
+	        case 'Other':
 	            break;
 	        default:
         }
@@ -271,6 +228,5 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	$scope.linkToOrder = function(id) {
 		$window.location.href = '/orders/' +id;
 	};
-
 
 };
