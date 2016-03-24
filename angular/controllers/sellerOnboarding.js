@@ -13,12 +13,9 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 		Onboarding.getListCompletedTask()
 			.then(function(data) {
 				$scope.onLoadingFlag = false;
-				// console.log(data);
-				// data.AddProduct = false;
-				// data.ProductApprove = true;
-				// $scope.Completed = [true,true,data.AddProduct && data.ProductApprove,true];
-				// $scope.Completed = [false,false,false,false];
-		    	$scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct && data.ProductApprove, data.DecorateStore];
+		    	// $scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct && data.ProductApprove, data.DecorateStore];
+		    	$scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct && data.ProductApprove];
+
 
 		    	// Begin section Product Field: return text for Product Field
 		    	if (data.AddProduct == true && data.ProductApprove == false) {
@@ -75,21 +72,25 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 		}
 	};
 
-	$scope.redirectToProducts = function() {
+	$scope.redirectToProducts = function () {
 		$window.location.href = '/products';
     };
 
-    $scope.redirectToShopSetting = function() {
+    $scope.redirectToShopSetting = function () {
     	$window.location.href = 'shops/settings';
-    }
+    };
 
-    $scope.redirectToShopAppearance = function() {
+    $scope.redirectToShopAppearance = function () {
     	$window.location.href = 'shops/appearance';
-    }
+    };
 
-		$scope.redirectToUserAccounts = function() {
-			$window.location.href = '/accounts';
-		}
+	$scope.redirectToUserAccounts = function () {
+		$window.location.href = '/accounts';
+	};
+
+	$scope.redirectToDashboard = function () {
+		$window.location.href = '/dashboard';
+	};
 
     //Init
     $scope.load();

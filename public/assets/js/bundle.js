@@ -4340,7 +4340,10 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 	  //   console.log(points, evt);
 	  // };
 
-
+	Dashboard.getRevenue('todaye')
+		.then(function(data){
+			console.log('hello today: ', data);
+		});  
 	//Begin Day section
 	// return max date of month
 	getMaxDate = function(month, year) {
@@ -4688,12 +4691,9 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
 		Onboarding.getListCompletedTask()
 			.then(function(data) {
 				$scope.onLoadingFlag = false;
-				// console.log(data);
-				// data.AddProduct = false;
-				// data.ProductApprove = true;
-				// $scope.Completed = [true,true,data.AddProduct && data.ProductApprove,true];
-				// $scope.Completed = [false,false,false,false];
-		    	$scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct && data.ProductApprove, data.DecorateStore];
+		    	// $scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct && data.ProductApprove, data.DecorateStore];
+		    	$scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct && data.ProductApprove];
+
 
 		    	// Begin section Product Field: return text for Product Field
 		    	if (data.AddProduct == true && data.ProductApprove == false) {
@@ -4750,21 +4750,25 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
 		}
 	};
 
-	$scope.redirectToProducts = function() {
+	$scope.redirectToProducts = function () {
 		$window.location.href = '/products';
     };
 
-    $scope.redirectToShopSetting = function() {
+    $scope.redirectToShopSetting = function () {
     	$window.location.href = 'shops/settings';
-    }
+    };
 
-    $scope.redirectToShopAppearance = function() {
+    $scope.redirectToShopAppearance = function () {
     	$window.location.href = 'shops/appearance';
-    }
+    };
 
-		$scope.redirectToUserAccounts = function() {
-			$window.location.href = '/accounts';
-		}
+	$scope.redirectToUserAccounts = function () {
+		$window.location.href = '/accounts';
+	};
+
+	$scope.redirectToDashboard = function () {
+		$window.location.href = '/dashboard';
+	};
 
     //Init
     $scope.load();
@@ -11222,7 +11226,7 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
 
     service.getReturnRating = function () {
         return common.makeRequest({
-            url: '//Returns/Rate',
+            url: '/Returns/Rate',
             method: 'GET'
         });
     };
@@ -11232,6 +11236,32 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
             url: '/Orders/TopOrder',
             method: 'GET'
         });
+    };
+
+    service.getRevenue = function (type) {
+        switch (type) {
+
+            case 'today':
+                return common.makeRequest({
+                    url: '/Orders/Revenue?_filter=Today',
+                    method: 'GET'
+                });
+                break;
+
+            case 'week':
+                return common.makeRequest({
+                    url: '/Orders/Revenue?_filter=ThisWeek',
+                    method: 'GET'
+                });
+                break;
+
+            default:
+                return common.makeRequest({
+                    url: '/Orders/Revenue?_filter=ThisWeek',
+                    method: 'GET'
+                });
+                break;
+        }
     };
 
 

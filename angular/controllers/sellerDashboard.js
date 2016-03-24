@@ -12,7 +12,10 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	  //   console.log(points, evt);
 	  // };
 
-
+	Dashboard.getRevenue('todaye')
+		.then(function(data){
+			console.log('hello today: ', data);
+		});  
 	//Begin Day section
 	// return max date of month
 	getMaxDate = function(month, year) {
