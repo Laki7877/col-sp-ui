@@ -247,8 +247,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         </div>
 
         <div ng-repeat="product in topSellingItemsData  | limitTo:maxTopSellingItems" ng-show="topSellingItemsData.length != 0" class="group_container top_selling_field">
-            <img class="logo-img" src="{{product.img_path}}" />
-            <div class="column-text-ellipsis"><a href="#">{{product.name}}</a></div>
+            <img class="logo-img" src="{{product.FeatureImgUrl}}" />
+            <div class="column-text-ellipsis"><a href="#">{{product.ProductNameEn}}</a></div>
         </div>
         <div ng-show="topSellingItemsData.length == 0" class="group_container top_selling_field">
             <!-- <img class="logo-img" src="{{product.img_path}}" /> -->

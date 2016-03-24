@@ -58,7 +58,15 @@ module.exports = function (common, config, util, $log, $window) {
             url: '//Returns/Rate',
             method: 'GET'
         });
-    }
+    };
+
+    service.getTopSellingItems = function () {
+        return common.makeRequest({
+            url: '/Orders/TopOrder',
+            method: 'GET'
+        });
+    };
+
 
     return service;
 };
