@@ -65,8 +65,10 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 	$scope.launchShop = function() {
 
 		if($scope.checkBeforeLaunch) {
-			Onboarding.launchShop();
-			$window.location.reload();
+			Onboarding.launchShop()
+				.then(function(){
+					$window.location.reload();
+				});
 		}
 		else {
 			window.alert("Can't launch shop: please complete tasks before laucnh.");

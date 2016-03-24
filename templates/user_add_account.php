@@ -106,6 +106,21 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 							              		<ui-select-choices repeat="item in brands" refresh="getBrands($select.search)" refresh-delay="1">{{item.BrandNameEn}}</ui-select-choices>
 							              	</ui-select>
 							              </div>
+							              <!-- Old Password -->
+							              <div ng-show="id != 0" 
+							              	ng-template="common/input/password"
+							                ng-template-options="{
+							                  'label': 'OldPassword',
+							                  'formGroupClass': 'margin-top-30'
+							                }">
+							                <input
+							                  class="form-control"
+							                  type="{{$parent.inputType}}"
+							                  name="OldPassword"
+							                  ng-model="formData.OldPassword"
+							                  ng-class="{ 'has-error' : $root.isInvalid(form.OldPassword) }"
+							                  />
+							              </div>
 							              <!-- Password -->
 							              <div ng-template="common/input/password"
 							                ng-template-options="{
