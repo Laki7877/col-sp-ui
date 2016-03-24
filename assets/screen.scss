@@ -324,3 +324,8 @@ ng-transclude.has-error .form-control{
 		}
 	}
 }
+
+/* Override AngularJS MD */
+button, html, input, select, textarea{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
