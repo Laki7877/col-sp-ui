@@ -44,18 +44,24 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   };
   //Ready to ship
   $scope.readyShip = function() {
-    util.confirm(
-      'Are you ready to ship?',
-      'Shipping quantity cannot be changed after this.',
-      'Confirm',
-      'Cancel',
-      'btn-blue'
-    ).result.then(function() {    
-      save({
-       InvoiceNumber: $scope.formData.InvoiceNumber,
-       Status: 'RS'
+    $scope.form.$setSubmitted();
+    if($scope.saving) return;
+    if($scope.form.$valid) {
+      util.confirm(
+        'Are you ready to ship?',
+        'Shipping quantity cannot be changed after this.',
+        'Confirm',
+        'Cancel',
+        'btn-blue'
+      ).result.then(function() {    
+        save({
+         InvoiceNumber: $scope.formData.InvoiceNumber,
+         Status: 'RS'
+        });
       });
-    });
+    } else {
+      $scope.alert.error(util.saveAlertError());
+    }
   };
   //Cancel order
   $scope.cancelOrder = function() {
@@ -81,6 +87,9 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
     }
   };
   //Getter
+  $scope.getRedText = function(product) {
+    return { 'color-red' : product.Quantity != product.ShipQuantity && $scope.getState() > 2 };
+  };
   $scope.getPrice = function(product) {
     if($scope.getState() >= 2) {
       //Use ShipQty
