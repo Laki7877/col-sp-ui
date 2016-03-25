@@ -26,6 +26,8 @@ require('angular-material')
 require('angular-bootstrap-datetimepicker')
 require('ng-file-upload')
 require('ui-select/dist/select.js')
+require('angular-ui-sortable/src/sortable.js')
+require('angular-drag-and-drop-list/angular-drag-and-drop-lists.js')
 require('angular-chart.js')
 require('angular-input-masks')
 
