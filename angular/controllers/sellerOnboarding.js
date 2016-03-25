@@ -9,7 +9,7 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 	$scope.load = function() {
 		$scope.ShopInActiveStatus = ($rootScope.Profile.Shop.Status == 'NA');
 		$scope.onLoadingFlag = true;
-		
+
 		Onboarding.getListCompletedTask()
 			.then(function(data) {
 				$scope.onLoadingFlag = false;
@@ -93,6 +93,10 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 
 	$scope.redirectToDashboard = function () {
 		$window.location.href = '/dashboard';
+	};
+
+	$scope.redirectToStore = function () {
+		$window.location.href = 'http://central.co.th/';
 	};
 
     //Init

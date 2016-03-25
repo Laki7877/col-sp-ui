@@ -6,7 +6,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
   <div ng-controller="SellerOnboardingCtrl">
     <div class="onboarding_wrapper">
       <div class="text-align-center welcome_text_big">Welcome to Central Seller Portal</div>
-      <div class="text-align-center welcome_text_small">Complete these tasks to launch your store</div>
+      <div class="text-align-center welcome_text_small" ng-hide="checkIfHaveCompleted">Complete these tasks to launch your store</div>
+      <div class="text-align-center welcome_text_small" ng-show="checkIfHaveCompleted">Your store is live and ready for business!</div>
     </div>
     <div>
       <div class="onboarding_content">
@@ -57,16 +58,16 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
           <!-- ng-show='checkIfHaveCompleted' -->
           <span class="complte_line_text">Completed</span>
         </div>
-        
+
         <? $this->insert('components/forms/seller_task',
-          ["field_header" => "Successfully, Review & launch your store",
-           "field_text" => "{{launchTextSubtitle}}",
-           "button_text" => "Launch",
+          ["field_header" => "Successfully, launch your store",
+           "field_text" => "Now everyone can visit your store online",
+           "button_text" => "View Storefront",
            "image_name" => "icon-onboard-launch",
            "home_task_container_class" => "background_blue",
            "disble_status" => "disabled",
            "task_display" => "ng-show='!ShopInActiveStatus'",
-           "type" => "redirectDashboard"]) ?>
+           "type" => "redirectStore"]) ?>
 
         <? $this->insert('components/forms/seller_task',
           ["field_header" => "Successfully, set up your account",
