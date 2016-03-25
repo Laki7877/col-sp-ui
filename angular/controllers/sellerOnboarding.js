@@ -71,7 +71,7 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 				});
 		}
 		else {
-			window.alert("Can't launch shop: please complete tasks before laucnh.");
+			window.alert("Can't launch shop: please complete tasks before launch.");
 		}
 	};
 

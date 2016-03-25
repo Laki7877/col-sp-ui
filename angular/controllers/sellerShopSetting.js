@@ -5,6 +5,7 @@ module.exports = function($rootScope, $scope, $controller, ShopProfileService, I
 	$scope.alert = new NcAlert();
 	$scope.saving = false;
 	$scope.loading = false;
+	$scope.statusChangeable = false;
 
 	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
 		data: { IsLogo: true }
@@ -13,10 +14,14 @@ module.exports = function($rootScope, $scope, $controller, ShopProfileService, I
 		$scope.loading = true;
 		ShopProfileService.list()
 			.then(function(data) {
-				$scope.formData = ShopProfileService.deserialize(data);
-			})
-			.finally(function() {
-				$scope.loading = false;
+				$scope.formData = ShopProfileService.deserialize(data);			
+				Onboarding.getListCompletedTask()
+					.then(function(data) {
+						console.log(data);
+						$scope.statusChangeable = false;			
+					}).finally(function() {
+						$scope.loading = false;
+					});
 			});
 	};
 	$scope.save = function() {
