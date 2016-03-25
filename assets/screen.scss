@@ -33,10 +33,11 @@
 @import "seller_page";
 @import "angular_print";
 
-body {
-	overflow-y: scroll;
-	overflow-x: auto;
-}
+//This cause Angular MD Bug
+// body {
+// 	overflow-y: scroll;
+// 	overflow-x: auto;
+// }
 
 html, body {
 	height: 100%;
@@ -337,6 +338,9 @@ md-autocomplete{
 	 line-height: 34px;
 	 height: 34px;
 	}
+	md-autocomplete-wrap{
+		height: 34px;
+	}
 	button{
 		margin: 1px 0px 0px 0px;
 		md-icon{
@@ -347,7 +351,6 @@ md-autocomplete{
 		}
 	}
 }
-
 .md-whiteframe-1dp, .md-whiteframe-z1{
  box-shadow: none;
 }
