@@ -153,11 +153,7 @@ module.exports = ['$q', 'common', function ($q, common) {
             var req = {
                 method: 'GET',
                 url: '/CMS/SearchProduct',
-                params: {
-                    Tag: parameters.tag,
-                    ProductNameEn: parameters.searchBy,
-                    searchText: parameters.searchText
-                }
+                params: parameters
             };
 
             return common.makeRequest(req);
