@@ -12330,42 +12330,47 @@ hr {
   border-color: #BCC7D5;
 }
 
+/* line 134, ../../../assets/_override.scss */
+textarea {
+  max-width: 100%;
+}
+
 /*---- Override CK Editor ----*/
-/* line 138, ../../../assets/_override.scss */
+/* line 141, ../../../assets/_override.scss */
 .cke_toolbox .cke_button__cut, .cke_toolbox .cke_button__copy, .cke_toolbox .cke_button__paste, .cke_toolbox .cke_button__anchor {
   display: none !important;
 }
 
-/* line 144, ../../../assets/_override.scss */
+/* line 147, ../../../assets/_override.scss */
 .cke_toolbox .cke_toolbar:nth-child(7) .cke_toolbar_separator {
   display: none;
 }
 
 /*---- Override UI Select ----*/
-/* line 157, ../../../assets/_override.scss */
+/* line 160, ../../../assets/_override.scss */
 .ui-select-dropdown-hide .ui-select-dropdown {
   display: none !important;
 }
 
 /* Temporary Fix for mysterious ui-search 2 line bug */
-/* line 161, ../../../assets/_override.scss */
+/* line 164, ../../../assets/_override.scss */
 .ui-select-multiple.ui-select-bootstrap input.ui-select-search {
   width: auto !important;
   height: 26px !important;
 }
 
-/* line 166, ../../../assets/_override.scss */
+/* line 169, ../../../assets/_override.scss */
 .ui-select-container .form-control:placeholder-shown {
   color: #32343C;
 }
 
-/* line 170, ../../../assets/_override.scss */
+/* line 173, ../../../assets/_override.scss */
 [uib-typeahead-popup].dropdown-menu {
   width: 93%;
 }
 
 /*---- Override Angular Material Design ----*/
-/* line 180, ../../../assets/_override.scss */
+/* line 183, ../../../assets/_override.scss */
 md-autocomplete {
   background: #FFFFFF;
   border: 1px #BCC7D5 solid;
@@ -12374,29 +12379,29 @@ md-autocomplete {
   line-height: 34px;
   height: 34px;
 }
-/* line 187, ../../../assets/_override.scss */
+/* line 190, ../../../assets/_override.scss */
 md-autocomplete input:not(.md-input) {
   line-height: 34px;
   height: 34px;
 }
-/* line 191, ../../../assets/_override.scss */
-md-autocomplete md-autocomplete-wrap {
-  height: 34px;
-}
 /* line 194, ../../../assets/_override.scss */
+md-autocomplete md-autocomplete-wrap {
+  height: 36px;
+}
+/* line 197, ../../../assets/_override.scss */
 md-autocomplete button {
   margin: 1px 0px 0px 0px;
 }
-/* line 196, ../../../assets/_override.scss */
+/* line 199, ../../../assets/_override.scss */
 md-autocomplete button md-icon {
   color: #BCC7D5;
 }
-/* line 198, ../../../assets/_override.scss */
+/* line 201, ../../../assets/_override.scss */
 md-autocomplete button md-icon path {
   fill: #BCC7D5;
 }
 
-/* line 204, ../../../assets/_override.scss */
+/* line 207, ../../../assets/_override.scss */
 .md-whiteframe-1dp, .md-whiteframe-z1 {
   box-shadow: none;
 }
@@ -12572,166 +12577,161 @@ md-autocomplete button md-icon path {
 }
 
 /* line 137, ../../../assets/_atomic.scss */
-.padding-top-0 {
-  padding-top: 0px;
-}
-
-/* line 141, ../../../assets/_atomic.scss */
 .padding-top-6 {
   padding-top: 6px;
 }
 
-/* line 145, ../../../assets/_atomic.scss */
+/* line 141, ../../../assets/_atomic.scss */
 .padding-top-30 {
   padding-top: 30px;
 }
 
-/* line 149, ../../../assets/_atomic.scss */
+/* line 145, ../../../assets/_atomic.scss */
 .no-margin {
   margin: 0;
 }
 
-/* line 153, ../../../assets/_atomic.scss */
+/* line 149, ../../../assets/_atomic.scss */
 .no-padding {
   padding: 0;
 }
 
-/* line 157, ../../../assets/_atomic.scss */
+/* line 153, ../../../assets/_atomic.scss */
 .no-border {
   border: none;
 }
 
-/* line 161, ../../../assets/_atomic.scss */
+/* line 157, ../../../assets/_atomic.scss */
 .float-left {
   float: left;
 }
 
-/* line 165, ../../../assets/_atomic.scss */
+/* line 161, ../../../assets/_atomic.scss */
 .float-right {
   float: right;
 }
 
-/* line 169, ../../../assets/_atomic.scss */
+/* line 165, ../../../assets/_atomic.scss */
 .color-theme-light {
   color: #b4ddff;
 }
 
-/* line 173, ../../../assets/_atomic.scss */
+/* line 169, ../../../assets/_atomic.scss */
 .color-theme {
   color: #4899DD;
 }
 
-/* line 177, ../../../assets/_atomic.scss */
+/* line 173, ../../../assets/_atomic.scss */
 .color-grey {
   color: #BCC7D5;
 }
 
-/* line 181, ../../../assets/_atomic.scss */
+/* line 177, ../../../assets/_atomic.scss */
 .color-green {
   color: #33bb5b;
 }
 
-/* line 185, ../../../assets/_atomic.scss */
+/* line 181, ../../../assets/_atomic.scss */
 .color-dark-green {
   color: #68d485;
 }
 
-/* line 189, ../../../assets/_atomic.scss */
+/* line 185, ../../../assets/_atomic.scss */
 .color-red {
   color: #ec0000;
 }
 
-/* line 193, ../../../assets/_atomic.scss */
+/* line 189, ../../../assets/_atomic.scss */
 .color-dark-grey {
   color: #7B7F8F;
 }
 
-/* line 197, ../../../assets/_atomic.scss */
+/* line 193, ../../../assets/_atomic.scss */
 .color-yellow {
   color: #f5a623;
 }
 
-/* line 201, ../../../assets/_atomic.scss */
+/* line 197, ../../../assets/_atomic.scss */
 .color-black {
   color: #32343C;
 }
 
-/* line 205, ../../../assets/_atomic.scss */
+/* line 201, ../../../assets/_atomic.scss */
 .vertical-align-middle {
   vertical-align: middle;
 }
 
-/* line 209, ../../../assets/_atomic.scss */
+/* line 205, ../../../assets/_atomic.scss */
 .text-align-center {
   text-align: center;
 }
 
-/* line 217, ../../../assets/_atomic.scss */
+/* line 213, ../../../assets/_atomic.scss */
 .text-underline {
   text-decoration: underline;
 }
 
-/* line 221, ../../../assets/_atomic.scss */
+/* line 217, ../../../assets/_atomic.scss */
 .hide-component {
   display: none;
 }
 
-/* line 225, ../../../assets/_atomic.scss */
+/* line 221, ../../../assets/_atomic.scss */
 .display_inline_block {
   display: inline-block;
 }
 
-/* line 229, ../../../assets/_atomic.scss */
+/* line 225, ../../../assets/_atomic.scss */
 .font-size-12 {
   font-size: 12px;
 }
 
-/* line 233, ../../../assets/_atomic.scss */
+/* line 229, ../../../assets/_atomic.scss */
 .font-size-16 {
   font-size: 16px;
 }
 
-/* line 237, ../../../assets/_atomic.scss */
+/* line 233, ../../../assets/_atomic.scss */
 .font-size-18 {
   font-size: 18px;
 }
 
-/* line 241, ../../../assets/_atomic.scss */
+/* line 237, ../../../assets/_atomic.scss */
 .font-size-20, .icon-size-20 {
   font-size: 20px;
 }
 
-/* line 245, ../../../assets/_atomic.scss */
+/* line 241, ../../../assets/_atomic.scss */
 .font-size-27 {
   font-size: 27px;
 }
 
-/* line 249, ../../../assets/_atomic.scss */
+/* line 245, ../../../assets/_atomic.scss */
 .font-size-38 {
   font-size: 38px;
 }
 
-/* line 257, ../../../assets/_atomic.scss */
+/* line 253, ../../../assets/_atomic.scss */
 .margin-0 {
   margin: 0;
 }
 
-/* line 261, ../../../assets/_atomic.scss */
+/* line 257, ../../../assets/_atomic.scss */
 .font-weight-bold {
   font-weight: bold;
 }
 
-/* line 265, ../../../assets/_atomic.scss */
+/* line 261, ../../../assets/_atomic.scss */
 .opacity-1 {
   opacity: 1;
 }
 
-/* line 269, ../../../assets/_atomic.scss */
+/* line 265, ../../../assets/_atomic.scss */
 .opacity-50 {
   opacity: 0.5;
 }
 
-/* line 273, ../../../assets/_atomic.scss */
+/* line 269, ../../../assets/_atomic.scss */
 .width-100-percent {
   width: 100%;
 }

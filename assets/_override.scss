@@ -131,6 +131,9 @@ hr{
 	border-color: $color-grey
 }
 
+textarea{
+	max-width: 100%
+}
 
 /*---- Override CK Editor ----*/
 
@@ -189,7 +192,7 @@ md-autocomplete{
 	 height: 34px;
 	}
 	md-autocomplete-wrap{
-		height: 34px;
+		height: 36px;
 	}
 	button{
 		margin: 1px 0px 0px 0px;
