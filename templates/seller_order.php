@@ -33,7 +33,7 @@
             <td class="column-text-ellipsis">{{row.CustomerName}}</td>
             <td class="width_100">{{ row.ShippingType }}</td>
             <td class="price-column">{{ row.TotalAmt | currency: ' ': 2 }}</td>
-            <td class="width_150">
+            <td class="width_200">
               <span class="{{row.Status | mapDropdown: status:'color'}}">
                 <i class="fa {{row.Status | mapDropdown: status:'icon'}}"></i>
                 {{ row.Status | mapDropdown: status }}
