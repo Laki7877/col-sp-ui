@@ -28,12 +28,12 @@
         <tbody>
           <tr ng-repeat="row in list.data">
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
-            <td class="width_150">{{row.OrderDate | dateTh}}</td>
+            <td class="width_120">{{row.OrderDate | dateTh}}</td>
             <td class="width_100" nc-link="{{url}}/{{row.OrderId}}">{{row.OrderId}}</td>
             <td class="column-text-ellipsis">{{row.CustomerName}}</td>
             <td class="width_100">{{ row.ShippingType }}</td>
             <td class="price-column">{{ row.TotalAmt | currency: ' ': 2 }}</td>
-            <td class="width_200">
+            <td class="width_150">
               <span class="{{row.Status | mapDropdown: status:'color'}}">
                 <i class="fa {{row.Status | mapDropdown: status:'icon'}}"></i>
                 {{ row.Status | mapDropdown: status }}
