@@ -11,7 +11,7 @@ module.exports = function (common, config, util, $log, $window) {
         });
     };
 
-    service.launchShop = function() {
+    service.launchShop = function () {
         return common.makeRequest({
             url: '/Shops/Launch?Status=AT',
             method: 'GET'
@@ -45,6 +45,54 @@ module.exports = function (common, config, util, $log, $window) {
             method: 'GET'
         });
     };
+
+    service.getProductRating = function () {
+        return common.makeRequest({
+            url: '/ProductReviews/Rating',
+            method: 'GET'
+        });
+    };
+
+    service.getReturnRating = function () {
+        return common.makeRequest({
+            url: '/Returns/Rate',
+            method: 'GET'
+        });
+    };
+
+    service.getTopSellingItems = function () {
+        return common.makeRequest({
+            url: '/Orders/TopOrder',
+            method: 'GET'
+        });
+    };
+
+    service.getRevenue = function (type) {
+        switch (type) {
+
+            case 'today':
+                return common.makeRequest({
+                    url: '/Orders/Revenue?_filter=Today',
+                    method: 'GET'
+                });
+                break;
+
+            case 'week':
+                return common.makeRequest({
+                    url: '/Orders/Revenue?_filter=ThisWeek',
+                    method: 'GET'
+                });
+                break;
+
+            default:
+                return common.makeRequest({
+                    url: '/Orders/Revenue?_filter=ThisWeek',
+                    method: 'GET'
+                });
+                break;
+        }
+    };
+
 
     return service;
 };

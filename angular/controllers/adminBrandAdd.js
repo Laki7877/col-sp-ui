@@ -20,7 +20,7 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 			}, function(err) {
 				$scope.formData.BrandImage = null;
 				$scope.alert.error(common.getError(err.data));
-	});
+			});
 	};
 	$scope.uploadBannerFail = function(e, response) {
 		if(e == 'onmaxsize') {
@@ -37,7 +37,7 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 			searchText: text
 		}).then(function(response) {
 			$scope.products = response.data;
-   	});
+		});	
 	};
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,

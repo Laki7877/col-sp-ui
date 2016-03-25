@@ -3,7 +3,7 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="ProductImageManagementCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-   <!-- <?php $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => "Successfully save changes. However,your changes won't be online until you published your products." ]) ?>
+   <!-- <? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => "Successfully save changes. However,your changes won't be online until you published your products." ]) ?>
      -->
     <nc-page-title nc-title="Image Management" icon="fa-tag">
       <span class="float-right page-header-action">
@@ -101,7 +101,7 @@
   </div>
 
 <!-- data-toggle="modal" data-target="#import-product"' -->
-  <?php $this->insert('components/modal-guideline', ['id' => 'image-guideline', 'header' => 'Image Style Guideline']) ?>
+  <? $this->insert('components/modal-guideline', ['id' => 'image-guideline', 'header' => 'Image Style Guideline']) ?>
 
 
 <?php $this->stop() ?>

@@ -59,6 +59,6 @@
 </div>
 
 
-<?php $this->insert('components/modal-forget-password', ['id' => 'forget-password', 'header' => 'Forget password?']) ?>
+<? $this->insert('components/modal-forget-password', ['id' => 'forget-password', 'header' => 'Forget password?']) ?>
 
 <?php $this->stop() ?>

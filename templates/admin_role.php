@@ -3,7 +3,7 @@
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminRoleCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <?php $this->insert('components/page-title-with-one-button', ['text' => 'Admin Roles','button' => 'Add Admin Role', 'button_class' => 'btn-width-xxl', 'link' => '/admin/roles/add']) ?>
+    <? $this->insert('components/page-title-with-one-button', ['text' => 'Admin Roles','button' => 'Add Admin Role', 'button_class' => 'btn-width-xxl', 'link' => '/admin/roles/add']) ?>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="GroupId"></nc-bulk>
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Admin Roles'"></nc-search>

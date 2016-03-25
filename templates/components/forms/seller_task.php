@@ -5,7 +5,7 @@
   <div class="home_task_text">
     <div class="empty-section margin-top-20 margin-bottom-20" ng-show="onLoadingFlag">
         <i class="fa fa-spinner fa-spin color-theme"></i>
-        
+
     </div>
     <div class="font-size-18" ng-show="!onLoadingFlag"><?=$field_header?></div>
     <div class="color-dark-grey" ng-show="!onLoadingFlag"><?=$field_text?></div>
@@ -26,8 +26,13 @@
         <button class="btn btn-white btn-width-xxl" ng-click='redirectToShopSetting()' type="button"><?=$button_text?></button>
       <? elseif($type == 'redirectShopAppearance'): ?>
         <button class="btn btn-white btn-width-xxl" ng-click='redirectToShopAppearance()' type="button"><?=$button_text?></button>
-      <? elseif($type == 'redirectUserAccounts'): ?>
-        <button class="btn btn-white btn-width-xxl" ng-click='redirectToUserAccounts()' type="button"><?=$button_text?></button>            
+      <? elseif($type == 'redirectuseraccounts'): ?>
+        <button class="btn btn-white btn-width-xxl" ng-click='redirectToUserAccounts()' type="button"><?=$button_text?></button>
+      <? elseif($type == 'redirectDashboard'): ?>
+        <button class="btn btn-white btn-width-xxl" ng-click='redirectToDashboard()' type="button"><?=$button_text?></button>
+      <? elseif($type == 'redirectStore'): ?>
+        <button class="btn btn-white btn-width-xxl" ng-click='redirectToStore()' type="button"><?=$button_text?></button>
+
       <? else: ?>
         <button class="btn btn-white btn-width-xxl" <?=$disble_status?> type="button"><?=$button_text?></button>
       <? endif; ?>

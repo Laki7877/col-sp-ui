@@ -1,4 +1,4 @@
-module.exports = function ($scope, $controller, common, Product, util, Alert, $window, $rootScope, config, storage) {
+module.exports = function ($scope, $controller, common, Product, util, $window, $rootScope, config, storage) {
     'ngInject';
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
@@ -94,7 +94,7 @@ module.exports = function ($scope, $controller, common, Product, util, Alert, $w
         };
         $("#export-product").modal('show');
     };
-    $scope.confirmExportProducts = function(){
+    $scope.confirmExportProducts = function() {
         $("#export-product").modal('hide');
         var arr = [];
         Object.keys($scope.checkBoxCache).forEach(function (m) {

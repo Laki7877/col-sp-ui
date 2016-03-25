@@ -1,9 +1,9 @@
 <?php $this->layout('layouts/page-with-sidebar', ['title' => $title]) ?>
 
 <?php $this->start('page-body') ?>
-	<div class="local-category-page" ng-controller="ProductCollectionImportCtrl">
-		<?php $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => 'Successfully Import Products. <a class="color-black text-underline">View Product List</a>']) ?>
-		<?php $this->insert('components/alert-text', ['close' => true, 'color' => 'red', 'text' => 'Fail to import products', 'header_class' => 'font-weight-bold',
+	<div class="local-category-page" ng-controller="ProductImportCtrl">
+		<? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => 'Successfully Import Products. <a class="color-black text-underline">View Product List</a>']) ?>
+		<? $this->insert('components/alert-text', ['close' => true, 'color' => 'red', 'text' => 'Fail to import products', 'header_class' => 'font-weight-bold',
 		 'text_multilines' => ['- Wrong template file or format'
 		,'- Required fields are missing'
 		, '- Products with wrong PID'
@@ -13,19 +13,19 @@
 		, '- Alien Attack'
 		]]) ?>
 
-		<?php $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/Import Products']) ?>
+		<? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/Import Products']) ?>
 
 		<div>
 			<form class="ah-form sticky-mainform-action">
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
-						<?php $this->insert('partials/import-product-collection-content') ?>
+						<? $this->insert('partials/import-product-content') ?>
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
 
-<?php $this->insert('components/modal-local-category', ['id' => 'local-category-detail', 'header' => 'Local Category Detail']) ?>
+<? $this->insert('components/modal-local-category', ['id' => 'local-category-detail', 'header' => 'Local Category Detail']) ?>
 
 <?php $this->stop() ?>

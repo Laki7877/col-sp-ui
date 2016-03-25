@@ -1,6 +1,6 @@
-'use strict';
-//App Start here
-var angular = require('angular');
+'use strict'
+// App Start here
+var angular = require('angular')
 var bulk = require('bulk-require')(__dirname, ['controllers/*.js', 'services/*.js', 'helpers/*.js',
   'directives/*.js', 'filters/*.js', 'libs/*.js', 'template-options/*.js'
 ])
@@ -26,7 +26,6 @@ require('angular-material')
 require('angular-bootstrap-datetimepicker')
 require('ng-file-upload')
 require('ui-select/dist/select.js')
-require('angular-ui-sortable/src/sortable.js')
 require('angular-chart.js')
 require('angular-input-masks')
 
@@ -36,20 +35,21 @@ require('./modules/angular-print')
 require('./modules/product-detail')
 require('./modules/schematics')
 
-//Internal dependencies
-var controllers = bulk.controllers;
-var services = bulk.services;
-var helpers = bulk.helpers;
-var directives = bulk.directives;
-var filters = bulk.filters;
+// Internal dependencies
+var controllers = bulk.controllers
+var services = bulk.services
+var helpers = bulk.helpers
+var directives = bulk.directives
+var filters = bulk.filters
 
 var app = angular.module('colspApp', ['ngPatternRestrict',
   'nc', 'ui.bootstrap.datetimepicker',
   'duScroll', 'ngSanitize', 'ngAnimate', 'ngMaterial',
   'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select',
   'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload',
-  'schematics', 'AngularPrint'
+  'schematics', 'AngularPrint', 'ui.utils.masks'
 ])
+
   // App config
   .config(function (uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
       'ngInject';
@@ -119,10 +119,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .factory('ShopProfileService', services.shopProfileService)
   .factory('ProductTempService', services.productTempService)
 
-// Col Dev (Natee)
-.factory('CMSService', services.cmsService)
-//.factory('CMSCollectionService', services.cmsCollectionService)
-
   // Directives
   .directive('ncTradableSelect', directives.ncTradableSelect)
   .directive('ngCkeditor', directives.ngCkeditor)
@@ -134,10 +130,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .directive('ngPermission', directives.ngPermission)
   .directive('ngSlideToggle', directives.ngSlideToggle)
   .directive('ngTemplate', directives.ngTemplate)
-.directive('ngMatch', directives.ngMatch)
-.directive('ngMinnumber', directives.ngMinnumber)
-.directive('ngMaxnumber', directives.ngMaxnumber)
-.directive('ngDateBefore', directives.ngDateBefore)
 
   // Filters
   .filter('capitalize', filters.capitalize)
@@ -151,7 +143,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .filter('leadingzero', filters.leadingzero)
   .filter('variantValue', filters.variantValue)
   .filter('importGuidelineExample', filters.importGuidelineExample)
-.filter('propsFilter', filters.propsFilter) // Col Dev (Natee)
 
   // Controllers
   .controller('RootCtrl', controllers.root)
@@ -226,14 +217,5 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
 
   .controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
   .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
-
-// Create By Col Dev (Natee)
-.controller('AdminCMSCategoryListCtrl', controllers.adminCMSCategoryList)
-.controller('AdminCMSCategoryAddCtrl', controllers.adminCMSCategoryAdd)
-
-.controller('AdminCMSCollectionListCtrl', controllers.adminCMSCollectionList)
-.controller('AdminCMSCollectionAddCtrl', controllers.adminCMSCollectionAdd)
-
-.controller('AdminCMSGroupController', controllers.adminCMSGroupController)
 
   .controller('TestCtrl', controllers.test)

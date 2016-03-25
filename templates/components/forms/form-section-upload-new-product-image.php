@@ -15,7 +15,7 @@
         <?php endif; ?>
     >
 		<div class="col-xs-7">
-			<?php $this->insert('components/image-dropzone', ["id" => "product-images", "uploader" => $uploader]) ?>
+			<? $this->insert('components/image-dropzone', ["id" => "product-images", "uploader" => $uploader]) ?>
 		</div>
 		<div class="col-xs-5">
 			<?php if(!isset($no_guideline)): ?>
@@ -36,7 +36,7 @@
         <?php endif; ?>
     >
 
-		<?php $this->insert('components/image-thumbs-list', [
+		<? $this->insert('components/image-thumbs-list', [
 			"sep" => 1,
 			"action" => 4,
 			"images" => $images,

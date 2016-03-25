@@ -4,7 +4,7 @@
 	</div>
 	<div class="form-section-content padding-left-15 padding-right-15">
 		<div class="col-xs-7">
-			<?php $this->insert('components/image-dropzone-single', ["id" => "product-images", "uploader" => $uploader]) ?>
+			<? $this->insert('components/image-dropzone-single', ["id" => "product-images", "uploader" => $uploader]) ?>
 		</div>
 		<div class="col-xs-5">
 			<?php if(!isset($no_guideline)): ?>
@@ -20,7 +20,7 @@
 		</div>
 	</div>
 	<div class="form-section-content padding-left-15 padding-right-15" style="margin-bottom:0px;">
-		<?php $this->insert('components/image-thumbs-list', [
+		<? $this->insert('components/image-thumbs-list', [
 			"sep" => 1,
 			"action" => 2,
 			"images" => $images,

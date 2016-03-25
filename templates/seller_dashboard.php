@@ -204,7 +204,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
               <div class="font-size-16 color-green" ng-switch-when="green">{{productRatingScore}}</div>
               <div class="font-size-16 color-yellow" ng-switch-when="yellow">{{productRatingScore}}</div>
               <div class="font-size-16 color-red" ng-switch-when="red">{{productRatingScore}}</div>
-              <div class="font-size-16" ng-switch-default>n/a</div>
+              <div class="font-size-16 color-grey" ng-switch-default>N/A</div>
             </div>
           </div>
         </div>
@@ -218,7 +218,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
               <div class="font-size-16 color-green" ng-switch-when="green">{{onTimeDeliveryScore}}</div>
               <div class="font-size-16 color-yellow" ng-switch-when="yellow">{{onTimeDeliveryScore}}</div>
               <div class="font-size-16 color-red" ng-switch-when="red">{{onTimeDeliveryScore}}</div>
-              <div class="font-size-16" ng-switch-default>n/a</div>
+              <div class="font-size-16 " ng-switch-default>N/A</div>
             </div>
           </div>
         </div>
@@ -232,7 +232,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
               <div class="font-size-16 color-green" ng-switch-when="green">{{returnScore}}</div>
               <div class="font-size-16 color-yellow" ng-switch-when="yellow">{{returnScore}}</div>
               <div class="font-size-16 color-red" ng-switch-when="red">{{returnScore}}</div>
-              <div class="font-size-16" ng-switch-default>n/a</div>
+              <div class="font-size-16 color-grey" ng-switch-default>N/A</div>
             </div>
           </div>
         </div>
@@ -247,8 +247,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         </div>
 
         <div ng-repeat="product in topSellingItemsData  | limitTo:maxTopSellingItems" ng-show="topSellingItemsData.length != 0" class="group_container top_selling_field">
-            <img class="logo-img" src="{{product.img_path}}" />
-            <div class="column-text-ellipsis"><a href="#">{{product.name}}</a></div>
+            <img class="logo-img" src="{{product.FeatureImgUrl}}" />
+            <div class="column-text-ellipsis"><a href="#">{{product.ProductNameEn}}</a></div>
         </div>
         <div ng-show="topSellingItemsData.length == 0" class="group_container top_selling_field">
             <!-- <img class="logo-img" src="{{product.img_path}}" /> -->

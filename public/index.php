@@ -23,7 +23,7 @@ class Redirect {
 			} else {
 				//This is user access attempt, get to user login
 				header('Location: /login');
-}
+			}
 			return true;
 		}
 	}*/
@@ -104,35 +104,7 @@ Route::add('/admin/shoptypes', 'AdminController::listShoptype');
 Route::add('/admin/shoptypes/add', 'AdminController::addShoptype');
 Route::add('/admin/shoptypes/:id', 'AdminController::editShoptype');
 Route::add('/admin/products', 'AdminController::allProducts');
-
-// Create By Col Dev (Natee)
-Route::add('/admin/cms/category', 'AdminController::listCMSCategory');
-Route::add('/admin/cms/category/create', 'AdminController::addCMSCategory');
-Route::add('/admin/cms/category/:id', 'AdminController::editCMSCategory');
-
-Route::add('/admin/cms/collection', 'AdminController::listCMSCollection');
-Route::add('/admin/cms/collection/create', 'AdminController::addCMSCollection');
-Route::add('/admin/cms/collection/:id', 'AdminColtroller::editCMSCollection');
-
-
-
-Route::add('/collections', 'ProductCollectionController::index');
-Route::add('/collections/add/:category', 'ProductCollectionController::add');
-Route::add('/collections/addlist', 'ProductCollectionController::addlist');
-Route::add('/collections/import', 'ProductCollectionController::import');
-Route::add('/collections/group', 'ProductCollectionController::group');
-Route::add('/collections/groupadd', 'ProductCollectionController::groupadd');
-Route::add('/collections/:id', 'ProductCollectionController::edit');
-Route::add('/collections/cat', 'ProductCollectionController::cat');
-Route::add('/collections/catadd', 'ProductCollectionController::catadd');
-
-
-
-Route::add('/buy1get1', 'Buy1Get1Controller::index');
-Route::add('/buy1get1/add', 'Buy1Get1Controller::add');
-Route::add('/buy1get1/import', 'Buy1Get1Controller::import');
-Route::add('/buy1get1/:id', 'Buy1Get1Controller::edit');
-
+Route::add('/admin/products/:id', 'AdminController::detail');
 Route::add('/admin/approve', 'AdminController::approve');
 Route::add('/admin/approve/:id', 'AdminController::approveDetail');
 Route::add('/admin/coupons/seller', 'AdminController::listSellerCoupon');

@@ -4,7 +4,7 @@
  * Format:
  *
  * '<text title>|<css>' : '<startWith url>'
- * 
+ *
  * This is temporary solution
  */
 var _ = require('lodash');
@@ -37,7 +37,7 @@ function generateRouteArray(obj) {
 					url: url,
 					urls: urls
 				};
-				
+
 				if(token2.length > 1) {
 					submenuItem.css += token2[1];
 				}
@@ -67,7 +67,7 @@ var seller = {
 	},
 	'Product|fa-tag': {
 	  	'View': '/products',
-	  	'Add': ['/products/select', '/products/add'],	
+	  	'Add': ['/products/select', '/products/add'],
 	  	'Import': '/products/import',
 	  	'Export': '/products/export',
 	  	'Local Category|margin-top-30': '/categories',
@@ -93,18 +93,6 @@ var seller = {
 	'Account|fa-user': {
 		'User Accounts': '/accounts',
 		'User Roles': '/roles'
-	},
-	'Collection|fa-product-hunt': {
-		'View': '/collections',
-		'Add': '/collections/add',
-		'Category View|margin-top-30': '/collections/cat',
-	  	'Category Add': '/collections/catadd',
-	  	'Group View|margin-top-30': '/collections/cat',
-	  	'Group Add': '/collections/catadd',
-	},
-	'Buy 1 Get 1|fa-gift': {
-		'View': '/buy1get1',
-		'Add': '/buy1get1/add'
 	}
 };
 var admin = {
@@ -126,17 +114,8 @@ var admin = {
 		'Admin Roles': ['/admin/roles', '/admin/roles/add']
 	},
 	'Promotion|fa-bookmark': {
-		'Global Coupons': '/admin/coupons/admin',
-        'Seller Coupons': '/admin/coupons/seller',
-        'On Top Credit Card': '/admin/ontopcredit',
-        'Redeem': '/admin/redeem'
-	},
-
-	// Create By Col Dev (Natee)
-	'CMS|fa-product-hunt': {
-	 	'CMS Category': '/admin/cms/category',
-	 	'CMS Static & Collection': '/admin/cms/collection',
-	 	'CMS Group': '/admin/cms/group'
+		'Global Coupons': '/admin/coupons/global',
+		'Seller Coupons': '/admin/coupons/seller'
 	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'

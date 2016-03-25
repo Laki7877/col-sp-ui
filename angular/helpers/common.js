@@ -1,5 +1,5 @@
-module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http, $q, storage, config, $window) {
-    'use strict';
+module.exports = function ($http, $q, storage, config, $window) {
+    'ngInject';
         var service = {};
         service.makeRequest = function (options) {
                 var deferred = $q.defer();
@@ -9,7 +9,7 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
                 }
 
                 if (accessToken && !options.headers.Authorization) {
-                    options.headers.Authorization = 'Basic ' + accessToken;
+                    options.headers.Authorization = 'Bearer ' + accessToken;
                 }
                 if (options.url.indexOf("http") !== 0) {
                     options.url = config.REST_SERVICE_BASE_URL + options.url;
@@ -23,8 +23,15 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
 			             var onLoginPage = ($window.location.pathname == "/login");
                         if(status == 401 && !onLoginPage){
                             //Catch Forbidden
-                            console.log('redirecting to', $window.location.pathname);
                             storage.put('redirect', $window.location.pathname);
+                            storage.put('access_denied');
+                            storage.clear();
+                            
+                            $window.location.href = "/login";
+                        }
+                        if(status == 403 && !onLoginPage) {
+                            storage.put('redirect', $window.location.pathname);
+                            storage.put('session_timeout');
                             storage.clear();
                             
                             $window.location.href = "/login";
@@ -160,4 +167,4 @@ module.exports = ['$http', '$q', 'storage', 'config', '$window', function ($http
         };
         
         return service;
-}];
+};

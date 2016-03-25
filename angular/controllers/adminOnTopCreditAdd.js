@@ -9,7 +9,7 @@ module.exports = function ($scope, $controller, OnTopCredit, config) {
         BankNameEN: null,
         PromotionCode: null,
         PaymentId: null,
-        Status: null,
+        Status:null ,
         DiscountType: null,
         DiscountValue: 0,
         MinimumOrderAmount: 0,
@@ -24,7 +24,7 @@ module.exports = function ($scope, $controller, OnTopCredit, config) {
         CreateIP: null,
         CardItemList: []
     };
-
+  
     /*
     '*CARD TYPES            *PREFIX           *WIDTH
     'American Express       34, 37            15
@@ -39,100 +39,103 @@ module.exports = function ($scope, $controller, OnTopCredit, config) {
     */
     $scope.dataSet = {
         criteria: [{ value: '0', text: 'Not Set' },
-        { value: '15A', text: 'American Express - (15 digit)' },
-        { value: '14D', text: 'Diners Club - (14 digit)' },
-        { value: '14C', text: 'Carte Blanche - (14 digit)' },
-        { value: '16D', text: 'Discover - (16 digit)' },
-        { value: '15E', text: 'EnRoute - (15 digit)' },
-        { value: '16J', text: 'JCB - (16 digit)' },
-        { value: '15J', text: 'JCB - (15 digit)' },
-        { value: '16M', text: 'Master Card - (16 digit)' },
-        { value: '13V', text: 'Visa - (13 digit)' },
-        { value: '16V', text: 'Visa - (16 digit)' },
+    { value: '15A', text: 'American Express - (15 digit)' },
+    { value: '14D', text: 'Diners Club - (14 digit)' },
+    { value: '14C', text: 'Carte Blanche - (14 digit)' },
+    { value: '16D', text: 'Discover - (16 digit)' },
+    { value: '15E', text: 'EnRoute - (15 digit)' },
+    { value: '16J', text: 'JCB - (16 digit)' },
+    { value: '15J', text: 'JCB - (15 digit)' },
+    { value: '16M', text: 'Master Card - (16 digit)' },
+    { value: '13V', text: 'Visa - (13 digit)' },
+    { value: '16V', text: 'Visa - (16 digit)' },
         ],
         filters: [{ value: 'None', text: 'No filter' },
-        { text: 'Brand', value: 'Brand' },
-        { text: 'Global Category', value: 'GlobalCategory' },
-        { text: 'Shop', value: 'Shop' },
-        { text: 'Email', value: 'Email' }]
+    { text: 'Brand', value: 'Brand' },
+    { text: 'Global Category', value: 'GlobalCategory' },
+    { text: 'Shop', value: 'Shop' },
+    { text: 'Email', value: 'Email'}]
     }
 
-
+    // Item List Arrays
+    $scope.items = [{
+        CreditCardTypeCode: null,
+        CreditCardTypeText: null,
+        CreditNumberFormat: null,
+        Digit: null,
+        Visibility: 1,
+        Status: true
+    }];
     // Add a Item to the list
     $scope.addItem = function () {
-
-        switch ($scope.formData.CreditCardTypeCode) {
+        switch ($scope.items.CreditCardTypeCode) {
             case "15A":
-                $scope.formData.CreditCardTypeText = 'American Express - (15 digit)';
-                $scope.formData.Digit = 15;
+                $scope.items.CreditCardTypeText = 'American Express - (15 digit)';
+                $scope.items.Digit = 15;
                 break;
             case "14D":
-                $scope.formData.CreditCardTypeText = 'Diners Club - (14 digit)';
-                $scope.formData.Digit = 14;
+                $scope.items.CreditCardTypeText = 'Diners Club - (14 digit)';
+                $scope.items.Digit = 14;
                 break;
             case "14C":
-                $scope.formData.CreditCardTypeText = 'Carte Blanche - (14 digit)';
-                $scope.formData.Digit = 14;
+                $scope.items.CreditCardTypeText = 'Carte Blanche - (14 digit)';
+                $scope.items.Digit = 14;
                 break;
             case "16D":
-                $scope.formData.CreditCardTypeText = 'Discover - (16 digit)';
-                $scope.formData.Digit = 16;
+                $scope.items.CreditCardTypeText = 'Discover - (16 digit)';
+                $scope.items.Digit = 16;
                 break;
             case "15E":
-                $scope.formData.CreditCardTypeText = 'EnRoute - (15 digit)';
-                $scope.formData.Digit = 15;
+                $scope.items.CreditCardTypeText = 'EnRoute - (15 digit)';
+                $scope.items.Digit = 15;
                 break;
             case "16J":
-                $scope.formData.CreditCardTypeText = 'JCB - (16 digit)';
-                $scope.formData.Digit = 16;
+                $scope.items.CreditCardTypeText = 'JCB - (16 digit)';
+                $scope.items.Digit = 16;
                 break;
             case "15J":
-                $scope.formData.CreditCardTypeText = 'JCB - (15 digit)';
-                $scope.formData.Digit = 15;
+                $scope.items.CreditCardTypeText = 'JCB - (15 digit)';
+                $scope.items.Digit = 15;
                 break;
             case "16M":
-                $scope.formData.CreditCardTypeText = 'Master Card - (16 digit)';
-                $scope.formData.Digit = 16;
+                $scope.items.CreditCardTypeText = 'Master Card - (16 digit)';
+                $scope.items.Digit = 16;
                 break;
             case "13V":
-                $scope.formData.CreditCardTypeText = 'Visa - (13 digit)';
-                $scope.formData.Digit = 13;
+                $scope.items.CreditCardTypeText = 'Visa - (13 digit)';
+                $scope.items.Digit = 13;
                 break;
             case "16V":
-                $scope.formData.CreditCardTypeText = 'Visa - (16 digit)';
-                $scope.formData.Digit = 16;
+                $scope.items.CreditCardTypeText = 'Visa - (16 digit)';
+                $scope.items.Digit = 16;
                 break;
         }
-
-        if (!angular.isArray($scope.formData.CardItemList))
-            $scope.formData.CardItemList = [];
-
-        $scope.formData.CardItemList.push({
-            CreditCardTypeCode: $scope.formData.CreditCardTypeCode,
-            CreditCardTypeText: $scope.formData.CreditCardTypeText,
-            CreditNumberFormat: $scope.formData.CreditNumberFormat,
-            Digit: $scope.formData.Digit,
+        $scope.items.push({
+            CreditCardTypeCode: $scope.items.CreditCardTypeCode,
+            CreditCardTypeText: $scope.items.CreditCardTypeText,
+            CreditNumberFormat: $scope.items.CreditNumberFormat,
+            Digit: $scope.items.Digit,
             Visibility: 1,
             Status: true
         });
-        console.log($scope.formData)
-
+        $scope.formData.CardItemList = $scope.items;
         // Clear input fields after push
-        $scope.formData.CreditCardTypeCode  = "0";
-        $scope.formData.CreditCardTypeText  = "";
-        $scope.formData.CreditNumberFormat  = "";
-        $scope.formData.Digit               = 0;
+        $scope.items.CreditCardTypeCode = "0";
+        $scope.items.CreditCardTypeText = "";
+        $scope.items.CreditNumberFormat = "";
+
+        
     };
 
     //Remove
     $scope.removeItems = function (item, index) {
         debugger;
-        $scope.formData.CardItemList.splice(index, 1);
+        $scope.items.splice(index, 1);
     }
 
     // Get Total Items
     $scope.getTotalItems = function () {
-        return $scope.formData.CardItemList === undefined ? 0 : $scope.formData.CardItemList.length;
+        return $scope.items.length;
     };
 
 
@@ -144,7 +147,7 @@ module.exports = function ($scope, $controller, OnTopCredit, config) {
             url: '/admin/ontopcredit',
             item: 'OnTopCreditCard',
             service: OnTopCredit,
-            init: function (scope) { },
+            init: function(scope) {	},
             onLoad: function (scope, load) {
 
             },

@@ -2,7 +2,7 @@
 
 <?php $this->start('page-body') ?>
 	<div class="local-category-page">
-		<?php $this->insert('components/local-category-empty-content', ['text' => '404 Page not found']) ?>			
+		<? $this->insert('components/local-category-empty-content', ['text' => '404 Page not found']) ?>			
 	</div>
 
 <?php $this->stop() ?>

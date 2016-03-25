@@ -12,9 +12,9 @@
               
               <!-- <div class="form-section"> -->
                 <div class="form-section-content">
-                  <?php $this->insert('components/forms/password-field', ["size" => "small", "label" => "Old Password", "label_class" => "required", 'font_class' => 'hide-component']) ?>                  
-                  <?php $this->insert('components/forms/password-field', ["size" => "small", "label" => "New Password", "label_class" => "required", 'font_class' => 'hide-component', 'form_group_class' => 'margin-top-30']) ?>
-                  <?php $this->insert('components/forms/password-field', ["size" => "small", "label" => "Confirm Password", "label_class" => "required", 'font_class' => 'hide-component']) ?>
+                  <? $this->insert('components/forms/password-field', ["size" => "small", "label" => "Old Password", "label_class" => "required", 'font_class' => 'hide-component']) ?>                  
+                  <? $this->insert('components/forms/password-field', ["size" => "small", "label" => "New Password", "label_class" => "required", 'font_class' => 'hide-component', 'form_group_class' => 'margin-top-30']) ?>
+                  <? $this->insert('components/forms/password-field', ["size" => "small", "label" => "Confirm Password", "label_class" => "required", 'font_class' => 'hide-component']) ?>
                 </div>
               <!-- </div> -->
               <div class="container-fluid no-padding margin-top-20">

@@ -109,7 +109,7 @@ module.exports =  {
     },
     "ShippingMethod": {
       "type": "integer",
-      "enum": [0, 1]
+      "enum": [1,2]
     },
     "VideoLinks": {
       "type" : "array",
