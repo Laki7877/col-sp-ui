@@ -81,6 +81,28 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
     }
   };
   //Getter
+  $scope.getPrice = function(product) {
+    if($scope.getState() >= 2) {
+      //Use ShipQty
+      return product.UnitPrice * product.ShipQuantity;
+    } else {
+      //Use Qty
+      return product.UnitPrice * product.Quantity;
+    }
+  };
+  $scope.getSubtotal = function() {
+    var result = 0;
+    _.forEach($scope.formData.Products, function(i) {
+      result += $scope.getPrice(i);
+    })
+    return result;
+  };
+  $scope.getTotal = function() {
+    return $scope.getSubtotal() - $scope.getDiscount();
+  };
+  $scope.getDiscount = function() {
+    return $scope.formData.OrdDiscAmt;
+  };
   $scope.getTrackingNumber = function() {
     return $scope.formData.TrackingNumber ? $scope.formData.TrackingNumber : 'n/a';
   };
