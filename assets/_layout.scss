@@ -1,0 +1,300 @@
+/*---- General ----*/
+
+// body {
+// 	overflow-y: scroll;
+// 	overflow-x: auto;
+// }
+//This cause Angular MD Bug
+
+html, body {
+	height: 100%;
+	min-height: 100%;
+}
+
+#wrapper {
+  position: relative;
+  display: block;
+  min-width: 1200px;
+  min-height: 100%;
+}
+
+#page-content-wrapper {
+  margin-left: $sidebar-width;
+  position: relative;
+}
+
+#page-body-wrapper {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+
+/*---- Header ----*/
+// Top Header
+.header {
+	background: $header-bg-color;
+	height: 30px;
+
+	.header-font-subject {
+		font-size: 16px;
+		line-height: 30px;
+		color: #32343c;
+	}
+
+	.header-font-detail {
+		float: right;
+		color: $color-dark-grey;
+		line-height: 30px;
+	}
+	.header-font-detail:hover {
+		color: $color-theme;
+	}
+	.dropdown-toggle{
+		padding-top: 6px;
+		padding-bottom: 4px;
+		color: $color-dark-grey;
+	}
+	.dropdown-toggle:hover, .dropdown-toggle:focus, .open .dropdown-toggle,.open .dropdown-toggle:hover {
+    	background-color: $color-theme !important;
+    	color: $color-white !important;
+	}
+	.dropdown-menu{
+		padding: 10px 0px;
+		border-color: $color-light-grey;
+	}
+	.dropdown-menu .divider{
+		background-color: $color-light-grey;
+	}
+}
+
+// Page Header
+.page-header {
+	@extend .clearfix;
+	// padding-bottom: 14px;
+		h1{
+			margin: 4px 0px 0px 0px;
+		}
+
+	&.with-border {
+		// border-bottom: 1px solid $header-border-grey;
+	}
+	&.no-padding {
+		padding-bottom: 0;
+	}
+
+	.page-header-title {
+		font-size: 24px;
+		font-weight: normal;
+	}
+
+	.page-header-icon{
+		color: $color-dark-grey;
+		font-size: 22px;
+		height: 26px;
+		vertical-align: middle;
+		margin-right: 5px;
+		&.color-black {
+			color: $color-black;
+		}
+	}
+
+	.page-actions {
+		.btn ~ .btn {
+			margin-left: 10px;
+		}
+	}
+}
+
+//Dropdown Menu
+.page-navigation {
+
+	.dropdown-menu {
+		min-width: 67px;
+	}
+}
+
+/*---- Side Bar ----*/
+
+#sidebar-wrapper {
+  width: $sidebar-width;
+  background: $sidebar-color;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  min-height: 600px;
+}
+
+ul.sidebar-nav {
+  padding-left: 0px;
+}
+
+.sidebar-nav {
+  li {
+    padding-left: 20px;
+    line-height: 50px;
+    list-style: none;
+    a {
+      color: $font-color-grey;
+      text-decoration: none;
+    }
+    i {
+      color: $font-color-grey;
+      font-size: 16px;
+      margin-right: 20px;
+    }
+  }
+  li:hover {
+    cursor: pointer;
+    background: $sidebar-bg-color-active;
+    a {
+      color:  $sidebar-font-color-active;
+    }
+    i {
+      color:  $sidebar-font-color-active;
+    }
+  }
+  li.forced-active {
+    background: $sidebar-bg-color-active;
+    a {
+      color:  $sidebar-font-color-active;
+    }
+    i {
+      color:  $sidebar-font-color-active;
+    }
+  }
+  li.active {
+    background: $sidebar-bg-color-active;
+    a {
+      color:  $sidebar-font-color-active;
+    }
+    i {
+      color:  $sidebar-font-color-active;
+    }
+  }
+}
+
+#sidebar-wrapper .logo-img-wrapper {
+  padding: 20px;
+
+  .logo-img {
+    width: 100%;
+  }
+}
+
+ul.sub-sidebar {
+  width: $sub-sidebar-width;
+  position: absolute;
+  left: $sidebar-width;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  background-color: $color-light-grey;
+  list-style: none;
+  padding-left: 30px;
+  padding-top: 110px;
+  margin: 0;
+
+  @include box-shadow(1px 0px 2px 0px rgba(0,0,0,0.3));
+
+  .sub-sidebar-header {
+    font-size: 24px;
+  }
+
+  .margin-first-submenu{
+    margin-top: 18px;
+  }
+
+  .item {
+    color: $color-dark-grey;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    &.active {
+      color: $color-black;
+      font-weight: bold;
+    }
+
+    &:hover {
+      color: $color-theme;
+    }
+
+    > a {
+      color: inherit;
+      font-weight: inherit;
+      text-decoration: none;
+    }
+  }
+}
+
+
+/* -- Collaspable Menu -- */
+#sidebar-wrapper{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 60px;
+	z-index: 10;
+	.logo-img-wrapper{
+		display: none;
+	}
+  .logo-img-wrapper-collased{
+    display: block;
+    img{
+      width: 20px;
+      height: 20px;
+      margin: 66px 20px 0px 20px;
+    }
+  }
+	.sidebar-nav{
+		 margin-top: 19px;
+		 li {
+      line-height: 0px;
+    	padding: 0px;
+      border-bottom: 1px solid $sidebar-color;
+      a{
+        i{
+          padding: 17px 0px;
+          margin: 0px;
+          width: 60px;
+          text-align: center;
+        }
+      }
+		}
+	}
+}
+
+#sidebar-wrapper:hover{
+	// width: 180px;
+  .logo-img-wrapper-collased{
+    display: block;;
+  }
+	// .logo-img-wrapper{
+	// 	display: block;
+	// }
+	// .sidebar-nav{
+	// 	 margin-top: 0px;
+	// 	 li {
+	// 		 a{
+	// 			 display: inline-block;
+	// 		 }
+	// 	 }
+	// }
+}
+
+ul.sub-sidebar {
+  left: 60px;
+  padding-top: 58px;
+  background-color: $sidebar-bg-color-active;
+  color: $color-white;
+  .item {
+    color: $color-white;
+    &.active {
+      font-weight: normal;
+      color: $color-red;
+    }
+    &:hover {
+      color: $color-red;
+    }
+  }
+}
