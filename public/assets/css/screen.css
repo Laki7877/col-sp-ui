@@ -12309,17 +12309,22 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 
 /* line 115, ../../../assets/_override_bootstrap.scss */
+.form-control {
+  color: #32343C;
+}
+
+/* line 119, ../../../assets/_override_bootstrap.scss */
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
   background-color: #DEE3E7;
   color: #7B7F8F;
 }
 
-/* line 120, ../../../assets/_override_bootstrap.scss */
+/* line 124, ../../../assets/_override_bootstrap.scss */
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
   background-color: #EDF2F9;
 }
 
-/* line 124, ../../../assets/_override_bootstrap.scss */
+/* line 128, ../../../assets/_override_bootstrap.scss */
 hr {
   border-color: #BCC7D5;
 }
@@ -16264,4 +16269,37 @@ ng-transclude.has-error .form-control {
 /* line 322, ../../../assets/screen.scss */
 .cke_toolbox .cke_toolbar:nth-child(7) .cke_toolbar_separator {
   display: none;
+}
+
+/* Override Angular MD */
+/* line 329, ../../../assets/screen.scss */
+md-autocomplete {
+  background: #FFFFFF;
+  border: 1px #BCC7D5 solid;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  line-height: 34px;
+  height: 34px;
+}
+/* line 336, ../../../assets/screen.scss */
+md-autocomplete input:not(.md-input) {
+  line-height: 34px;
+  height: 34px;
+}
+/* line 340, ../../../assets/screen.scss */
+md-autocomplete button {
+  margin: 1px 0px 0px 0px;
+}
+/* line 342, ../../../assets/screen.scss */
+md-autocomplete button md-icon {
+  color: #BCC7D5;
+}
+/* line 344, ../../../assets/screen.scss */
+md-autocomplete button md-icon path {
+  fill: #BCC7D5;
+}
+
+/* line 351, ../../../assets/screen.scss */
+.md-whiteframe-1dp, .md-whiteframe-z1 {
+  box-shadow: none;
 }

@@ -112,6 +112,10 @@ a.like-text {
 	border-bottom-width: 1px;
 }
 
+.form-control{
+	color: $color-black;
+}
+
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control{
 	background-color: #DEE3E7;
 	color: $color-dark-grey;
