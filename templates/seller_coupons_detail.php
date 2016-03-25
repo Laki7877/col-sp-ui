@@ -65,6 +65,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                       </div>
                     </div>
                   </div>
+
+
                   <div class="form-section">
                     <div class="form-section-header"><h2>Action</h2></div>
                     <div class="form-section-content">
@@ -76,16 +78,17 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                                   </select>
                               </div>
                           </div>
-                          <div nc-template="common/input/form-group-with-label" nc-label="Discount Amount" nc-template-options-path="couponForm/DiscountAmount">
+                          <div nc-template="common/input/form-group-with-label" nc-label="Discount {{formData.Action.Type=='AMOUNT' ? 'Amount' : 'Percent'}}" nc-template-options-path="couponForm/DiscountAmount">
                               <input type="text" class="form-control" ng-model="formData.Action.DiscountAmount" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"/>
                           </div>
 
-                          <div nc-template="common/input/form-group-with-label" nc-label="Maximum Amount" nc-template-options-path="couponForm/MaximumAmount">
+                          <div ng-show="formData.Action.Type != 'AMOUNT'" nc-template="common/input/form-group-with-label" nc-label="Maximum Amount" nc-template-options-path="couponForm/MaximumAmount">
                               <input type="text" class="form-control" ng-model="formData.Action.MaximumAmount" ng-pattern-restrict="^[0-9]*$"/>
                           </div>
 
                     </div>
                   </div>
+
                   <div class="form-section">
                     <div class="form-section-header"><h2>More Options</h2></div>
                     <div class="form-section-content">

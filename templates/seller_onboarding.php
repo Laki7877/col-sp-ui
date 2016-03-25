@@ -6,8 +6,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'On Boarding'])
   <div ng-controller="SellerOnboardingCtrl">
     <div class="onboarding_wrapper">
       <div class="text-align-center welcome_text_big">Welcome to Central Seller Portal</div>
-      <div class="text-align-center welcome_text_small" ng-hide="checkIfHaveCompleted">Complete these tasks to launch your store</div>
-      <div class="text-align-center welcome_text_small" ng-show="checkIfHaveCompleted">Your store is live and ready for business!</div>
+      <div class="text-align-center welcome_text_small" ng-show="ShopInActiveStatus">Complete these tasks to launch your store</div>
+      <div class="text-align-center welcome_text_small" ng-show="!ShopInActiveStatus">Your store is live and ready for business!</div>
     </div>
     <div>
       <div class="onboarding_content">
