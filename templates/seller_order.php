@@ -18,20 +18,21 @@
             <th nc-sort="OrderDate">Date</th>
             <th nc-sort="OrderId">Order ID</th>
             <th nc-sort="CustomerName">Customer Name</th>
-            <th>Total Price</th>
             <th>Carrier</th>
+            <th class="price-column">Total Price</th>
             <th>Status</th>
             <th>Action</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="row in list.data">
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
-            <td class="modified_column">{{row.OrderDate | dateTh}}</td>
-            <td class="modified_column" nc-link="{{url}}/{{row.OrderId}}">{{row.OrderId}}</td>
+            <td class="width_150">{{row.OrderDate | dateTh}}</td>
+            <td class="width_100" nc-link="{{url}}/{{row.OrderId}}">{{row.OrderId}}</td>
             <td class="column-text-ellipsis">{{row.CustomerName}}</td>
-            <td class="width_100">{{ row.TotalAmt | currency: ' ': 2 }}</td>
             <td class="width_100">{{ row.ShippingType }}</td>
+            <td class="price-column">{{ row.TotalAmt | currency: ' ': 2 }}</td>
             <td class="width_200">
               <span class="{{row.Status | mapDropdown: status:'color'}}">
                 <i class="fa {{row.Status | mapDropdown: status:'icon'}}"></i>
@@ -39,8 +40,11 @@
               </span>
             </td>
 
-            <td class="width_200">
+
+            <td class="width_100">
               <button ng-disabled="getButtonState(row).disabled" class="btn btn-white btn-width-xl margin-right-15" ng-click="onButtonClick(row)">{{getButtonState(row).text}}</button>
+            </td>
+            <td class="action-column">
               <nc-action nc-model="row" nc-action-fn="actions"></nc-action>
             </td>
           </tr>
@@ -60,7 +64,7 @@
                 <ui-select-choices repeat="i.value as i in status">{{i.name}}</ui-select-choices>
               </ui-select>
               <button class="btn btn-blue btn-width-xl float-right" ng-click="debug.change()">Change</button>
-            </span> 
+            </span>
           </div>
         </div>
       </form>
