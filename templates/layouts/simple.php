@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="/assets/libs/select2/css/selectize.css">
 
     <script src="/assets/libs/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/assets/libs/angular-drag-and-drop-list/angular-drag-and-drop-lists.js"></script>
       
 </head>
 
@@ -298,10 +299,9 @@
                                   <label class="control-label col-xs-3">Search By</label>
                                   <div class="col-xs-7">
                                     <select class="form-control" ng-model="searchBy">
-                                      <option value="">Select Option</option>
-                                      <option value="name">Name</option>
-                                      <option value="sku">SKU</option>
-                                      <option value="pid">PID</option>
+                                      <option value="ProductName">Name</option>
+                                      <option value="SKU">SKU</option>
+                                      <option value="PID">PID</option>
                                     </select>
                                   </div>
                               </div>
@@ -309,10 +309,12 @@
                                 <div class="form-group">
                                     <label class="control-label col-xs-3">Search Products</label>
                                     <div class="col-xs-7">
-                                        <input type="text" class="form-control" 
-                                            ng-model="searchProductInput"
-                                            ng-enter="search(searchProductInput)"
-                                            placeholder="Search Products..." />
+                                      <div class="input-group search-box">
+                                        <input class="form-control input-search-icon" ng-model="searchText" placeholder="Search for Product"> 
+                                          <span class="input-group-btn">
+                                            <button class="btn btn-default btn-action" ng-click="search(searchText)">Search</button>
+                                          </span>
+                                      </div>
                                     </div>
                                 </div>
 
@@ -326,7 +328,8 @@
                                                                 ng-model="isCheckedAll" 
                                                                 ng-click="checkAll(isCheckedAll)" />
                                                     </th>
-                                                    <th>Product Name</th>
+                                                    <th>Product Name(EN)</th>
+                                                    <th>Product Name(TH)</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
@@ -337,7 +340,8 @@
                                                                 ng-model="item.IsChecked"
                                                                 ng-click="checkOnce(item, item.IsChecked)" />
                                                     </td>
-                                                    <td>{{item.ProductName}}</td>
+                                                    <td>{{item.ProductNameEn}}</td>
+                                                    <td>{{item.ProductNameTh}}</td>
                                                     <td>
                                                         
                                                     </td>

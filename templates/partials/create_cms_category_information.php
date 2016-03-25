@@ -26,7 +26,7 @@
             </div>
 
          
-            <div class="form-section">
+            <!--<div class="form-section">
                 <div class="form-section-header"><h2>Product Item in This Category</h2></div>
                 <div class="form-section-content">
 
@@ -56,7 +56,7 @@
                     
                     <div class="table-section" style="margin-top: 0;" >
 
-                      <!--<table class="table table-curved">
+                      <table class="table table-curved">
                         <thead>
                           <tr class="table-head">
                             <th>
@@ -83,17 +83,17 @@
                             </td>
                           </tr>
                         </tbody>
-                      </table>-->
+                      </table>
                     </div>
 
-                    <!-- loading -->
+                     loading 
                     <div class="empty-section margin-top-20 margin-bottom-20" ng-show="loading">
                       <span>
                         <img class="loading-img" src="/assets/img/loader.gif" />
                       </span>Loading...</span>
                     </div>
 
-                    <!-- empty -->
+                     empty 
                     <div class="local-category-page margin-bottom-20" ng-show="formData.CategoryProductList.length == 0">
                       <div class="local-category-empty-section margin-top-20">
                         <span class="">
@@ -111,7 +111,7 @@
                 </div>
             </div>
 
-          <!--<script>
+          <script>
             $(function(){
 
             $('#cms_category_product_list_table').sortable();

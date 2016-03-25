@@ -1,4 +1,10 @@
 <?php 
+
+	$menus = [
+      ["id" => "information", "name" => 'Add Information', "class" => "active"],
+      ["id" => "items", "name" => 'Add Product'],
+    ];
+
      $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System'])
 ?>
 
@@ -14,7 +20,18 @@
         </div>
 
         <div class="add-product-body">
-            <?php $this->insert('partials/create_cms_category_information') ?>
+			
+			<?php $this->insert('components/tab-nav', ["items" => $menus]) ?>
+
+			<div class="tab-content">
+                <div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
+					<?php $this->insert('partials/create_cms_category_information') ?>
+                </div>
+                <div role="tabpanel" class="tab-pane margin-top-20" id="items">
+					<?php $this->insert('partials/create_cms_category_item') ?>
+                </div>
+            </div>
+
             <div class="add-product-form-action main-form-action full-width-row">
                 <div class="container-fluid">
                     <div class="float-right">

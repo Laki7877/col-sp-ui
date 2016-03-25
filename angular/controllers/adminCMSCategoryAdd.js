@@ -27,6 +27,23 @@
         ]
     };
 
+    $scope.models = {
+        selected: null,
+        lists: { "Product": [], "CategoryProduct": [] }
+    };
+
+    // Generate initial model
+    for (var i = 1; i <= 3; ++i) {
+        $scope.models.lists.Product.push({ label: "Item A" + i });
+        $scope.models.lists.CategoryProduct.push({ label: "Item B" + i });
+    }
+
+    // Model to JSON for demo purpose
+    $scope.$watch('models', function (model) {
+        $scope.modelAsJson = angular.toJson(model, true);
+    }, true);
+
+
     // Add a Item to the list
     $scope.addProductItem = function () {
 
@@ -46,6 +63,7 @@
                 $scope.brands   = [];
                 $scope.tags     = [];
 
+
                 // load category
                 CMSService.getAllCategory()
                 .then(function (data) {
@@ -60,28 +78,33 @@
                     $scope.tags = data;
                 });
 
-
-                $scope.search = function (searchProductInput) {
+                // Search
+                $scope.search = function (searchText) {
 
                     $scope.loading = true;
                     $scope.isEmpty = false;
 
-                    console.log(searchProductInput)
-                    
+                    var tags = '';
+
+                    angular.forEach($scope.tag.selected, function (tag) {
+                        tags += tag.Tag + ',';
+                    });
+
+                    var params = {
+                        CategoryId: $scope.category.selected.CategoryId,
+                        BrandId: $scope.brand.selected.BrandId,
+                        Tag: tags,
+                        SearchBy: $scope.searchBy,
+                        SearchText: $scope.searchText
+                    };
 
                     // search product
-                    CMSService.searchProduct()
+                    CMSService.searchProduct(params)
                     .then(function (data) {
                         $scope.products = data;
                         $scope.isEmpty = false;
                         $scope.loading = false;
                         $scope.message = '';
-                    },
-                    function (reason) {
-                        console.log(reason)
-                        $scope.isEmpty = true;
-                        $scope.loading = false;
-                        $scope.message = reason;
                     });
 
                 };
@@ -98,6 +121,7 @@
                 $scope.category = {};
                 $scope.brand    = {};
                 $scope.tag      = {};
+                $scope.searchBy = 'ProductName';
 
                 $scope.$watch('category.selected', function (newValue, oldValue) {
                     if (newValue === undefined)

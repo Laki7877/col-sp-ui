@@ -47,7 +47,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   'duScroll', 'ngSanitize', 'ngAnimate',
   'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select',
   'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload',
-  'ui.sortable'
+  'ui.sortable',
+  'dndLists'
 ])
   // App config
   .config(['uiSelectConfig', '$ncPaginationProvider', '$ncAlertProvider',
