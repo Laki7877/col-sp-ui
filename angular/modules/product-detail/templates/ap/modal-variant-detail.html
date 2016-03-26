@@ -4,7 +4,8 @@
 
         <span class="float-right">
 	   <a class="link-btn-plain" ng-click="no()">Cancel</a>
-	   <button type="button" ng-disabled="form.$invalid" class="btn btn-blue btn-width-xl" ng-click="yes()">Save</button>
+	   <button type="button" ng-disabled="form.$invalid || uploader.isUploading" 
+       class="btn btn-blue btn-width-xl" ng-click="yes()">Save</button>
 	</span>
     </div>
     <div class="modal-body margin-top-20">
@@ -73,7 +74,9 @@
             <div class="col-xs-12">
                 <span class="float-right">
 					<a class="link-btn-plain" ng-click="no()">Cancel</a>
-					<button type="button" class="btn btn-blue btn-width-xl" ng-click="yes()">Save</button>
+					<button type="button"
+                     ng-disabled="form.$invalid || uploader.isUploading"
+                     class="btn btn-blue btn-width-xl" ng-click="yes()">Save</button>
 						</span>
             </div>
             <!-- end .col-xs-12 -->
