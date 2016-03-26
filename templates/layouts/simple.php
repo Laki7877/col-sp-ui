@@ -33,7 +33,7 @@
     <script src="/assets/libs/datepicker/js/bootstrap-datetimepicker.min.js"></script>
 </head>
 
-<body class="ahpt" ng-cloak ng-controller="RootCtrl" ng-strict-di>
+<body id="body" class="ahpt" ng-cloak ng-controller="RootCtrl" ng-strict-di>
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->

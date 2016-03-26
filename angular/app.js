@@ -12,26 +12,27 @@ var skeemas = require('skeemas');
 // External dependencies
 global._ = require('lodash')
 global.pluralize = require('pluralize');
-require('angular-clipboard')
-require('angular-ui-bootstrap')
 require('angular-animate')
-require('angular-file-upload')
-require('angular-ui-tree')
+require('angular-aria')
 require('angular-base64')
+require('angular-bootstrap-datetimepicker')
+require('angular-chart.js')
+require('angular-clipboard')
+require('angular-cookies')
+require('angular-file-upload')
+require('angular-input-masks')
+require('angular-material')
 require('angular-sanitize')
 require('angular-scroll')
-require('angular-cookies')
-require('angular-aria')
-require('angular-material')
-require('angular-bootstrap-datetimepicker')
+require('angular-ui-bootstrap')
+require('angular-ui-tree')
 require('ng-file-upload')
 require('ui-select/dist/select.js')
-require('angular-chart.js')
-require('angular-input-masks')
 
 // Nc package
-require('./modules/nc')
 require('./modules/angular-print')
+require('./modules/angular-scroll')
+require('./modules/nc')
 require('./modules/product-detail')
 require('./modules/schematics')
 
@@ -44,7 +45,7 @@ var filters = bulk.filters
 
 var app = angular.module('colspApp', ['ngPatternRestrict',
   'nc', 'ui.bootstrap.datetimepicker',
-  'duScroll', 'ngSanitize', 'ngAnimate', 'ngMaterial',
+  'duScroll', 'smoothScroll', 'ngSanitize', 'ngAnimate', 'ngMaterial',
   'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select',
   'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload',
   'schematics', 'AngularPrint', 'ui.utils.masks'

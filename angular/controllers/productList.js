@@ -57,8 +57,8 @@ module.exports = function ($scope, $controller, common, Product, util, $window, 
                         templateUrl: 'product/modalAddTags',
                         controller: function($scope, $uibModalInstance, data) {
                             $scope.model = {
-                            tags: []
-                        };
+                                tags: []
+                            };
                             $scope.close = function() {
                                 $uibModalInstance.close({
                                     Products: _.map(data, function(e) {
