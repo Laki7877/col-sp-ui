@@ -15,6 +15,8 @@ module.exports = function($scope, Product) {
             return res.data || [];
         });
     };
+
+    $scope.multiModel = [];
     $scope.cacheEnable = true;
 
     $scope.myModel = 1;

@@ -10,12 +10,18 @@ angular.module('umeSelect')
                 choices: '=choices',
                 delay: '@?delay',
                 autoClearSearch: '=?autoClearSearch',
-                refresh: '=refresh'
+                refresh: '=refresh',
+                multiple: '=inRelationship'
             },
             replace: true,
             priority: 1010,
             template: function (element, attrs) {
-                var templateHTML = $templateCache.get('ume/single');
+                console.log(attrs.inRelationship , 'inRelationship');
+                var tmpl = 'ume/single';
+                if(attrs.inRelationship){
+                    tmpl = 'ume/relationship';
+                }
+                var templateHTML = $templateCache.get(tmpl);
                 return templateHTML;
             },
             link: function (scope, element, attrs, ctrl, transclude) {
@@ -75,8 +81,18 @@ angular.module('umeSelect')
 
                 scope.pickItem = function(item){
                     console.log('chosen', item);
-                    scope.model = item;
-                    scope.focused = false;
+
+                    if(scope.multiple){
+                        scope.model.push(item);
+                        scope.focus(true);
+                        scope.searchText = "";
+                        scope.choices = [];
+                    }else{
+                        scope.model = item;
+                        scope.focused = false;
+                    }
+                    
+                    
 
                     if(scope.autoClearSearch){
                         scope.searchText = "";

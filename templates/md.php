@@ -36,6 +36,13 @@
 						</p>
 					</div>
 					<div class="row">
+						<ume-single in-relationship="true" placeholder="+ Product" 
+						auto-clear-search="true"
+						ng-model="multiModel" refresh="querySearch" choices="choices">
+								<span>{{ item.ProductNameEn }}</span> <!--TODO-->
+						</ume-single>
+					</div>
+					<div class="row">
 					<br/>
 						<strong>It's complicated <code>ume-complicated</code></strong>
 						<p>
