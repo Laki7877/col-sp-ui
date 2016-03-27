@@ -16,15 +16,31 @@
 						<h1>u-me-select <small>select for you and me.</small></h1>
 					</div>
 					<div class="row">
-						<strong>Single</strong>
+						<strong>Single <code>ume-single</code></strong>
 						<p>
-						When u and me are single, you can only select one item at a time.
+						When u and me are <strong>single</strong>, you can only choose one item at a time.
 						</p>
 					</div>
 					<div class="row">
-						<ume-single placeholder="Search product by name or Pid" ng-model="x" refresh="querySearch" choices="choices">
+						<ume-single placeholder="Search product by name or Pid" 
+						auto-clear-search="true"
+						ng-model="x" refresh="querySearch" choices="choices">
 								<span>{{ item.ProductNameEn }}</span> <!--TODO-->
 						</ume-single>
+					</div>
+					<div class="row">
+						<br/>
+						<strong>In a relationship <code>ume-relationship</code></strong>
+						<p>
+						When u and me are <strong>together</strong>, we can be greedy and pick many items.
+						</p>
+					</div>
+					<div class="row">
+					<br/>
+						<strong>It's complicated <code>ume-complicated</code></strong>
+						<p>
+						When <strong>it's complicated</strong>, well I'm not sure how to explain this. Basically, tag.
+						</p>
 					</div>
 				</div>
 			</div>
