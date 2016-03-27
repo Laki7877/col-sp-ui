@@ -1,0 +1,21 @@
+<div class="selectize-control single">
+	<div class="selectize-input items has-options full has-items" ng-class="{'ume-search' : !loading, 'ume-loading': loading}">
+		<input type="text" autocomplete="off" tabindex="" ng-model="searchText" placeholder="{{ placeholder }}" style="width: 100%; "/>
+	</div>
+	<!-- choicelist.html -->
+	<div class="selectize-dropdown single demo-default" 
+	ng-show="searchText.length > 0" 
+	style="width: 100%;">
+		<div class="selectize-dropdown-content">
+			<div data-group="Climbing" class="optgroup">
+			<!-- <div class="optgroup-header">Climbing</div> -->
+			<div data-value="bolts" data-selectable ng-repeat="item in choices" class="option">
+				{{ item.ProductNameEn }} <!-- i dont know how to transclude and get item access -->
+			</div>
+			<div ng-if="choices.length == 0 && notFound && !loading" data-selectable class="option">
+				No result for search term '{{ searchText }}' 
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
