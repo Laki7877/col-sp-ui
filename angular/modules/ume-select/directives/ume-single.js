@@ -28,6 +28,30 @@ angular.module('umeSelect')
                 scope.focused = false;
                 scope.loading = false;
                 scope.searchText = "";
+                scope.highlightedIndex = 0;
+
+                scope.keyDown = function(evt){
+                    if(evt.keyIdentifier == "Down"){
+                        scope.highlightedIndex++;
+                    }else if(evt.keyIdentifier == "Up"){
+                        scope.highlightedIndex--;
+                    }else if(evt.keyIdentifier == "Enter"){
+                        
+
+                        $timeout(function (){
+                            scope.$broadcast('focusLost');
+                            scope.pickItem(scope.choices[scope.highlightedIndex]);
+                        }, 250);
+                    }
+
+                    if(scope.highlightedIndex >= scope.choices.length){
+                        scope.highlightedIndex = scope.choices.length - 1;
+                    }
+
+                    if(scope.highlightedIndex <= 0){
+                        scope.highlightedIndex = 0;
+                    }
+                }
 
                 scope.blur = function(){
                     scope.focused = false;
@@ -56,7 +80,6 @@ angular.module('umeSelect')
                     if (scope.delay){
                         $timeout.cancel(scope.delay);
                     }
-                    console.log("Loading..", scope.searchText);
 
                     searchTextTimeout = $timeout(function() {                        
                         //If this is same as previous request, dont do it
@@ -80,7 +103,6 @@ angular.module('umeSelect')
                 })
 
                 scope.pickItem = function(item){
-                    console.log('chosen', item);
 
                     if(scope.multiple){
                         scope.model.push(item);
@@ -91,7 +113,6 @@ angular.module('umeSelect')
                         scope.model = item;
                         scope.focused = false;
                     }
-                    
                     
 
                     if(scope.autoClearSearch){

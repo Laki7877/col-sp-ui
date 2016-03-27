@@ -11259,6 +11259,17 @@ angular.module('umeSelect')
       });
     }
   };
+}])
+.directive('umeBlur', ["$timeout", function($timeout) {
+  return {
+    link: function(scope, elem, attr) {
+      scope.$watch('trigger', function(value) {
+        scope.$on(attr.umeBlur, function(e) {
+            elem[0].blur();
+        });
+      });
+    }
+  };
 }]);
 
 },{}],149:[function(require,module,exports){
@@ -11292,6 +11303,30 @@ angular.module('umeSelect')
                 scope.focused = false;
                 scope.loading = false;
                 scope.searchText = "";
+                scope.highlightedIndex = 0;
+
+                scope.keyDown = function(evt){
+                    if(evt.keyIdentifier == "Down"){
+                        scope.highlightedIndex++;
+                    }else if(evt.keyIdentifier == "Up"){
+                        scope.highlightedIndex--;
+                    }else if(evt.keyIdentifier == "Enter"){
+                        
+
+                        $timeout(function (){
+                            scope.$broadcast('focusLost');
+                            scope.pickItem(scope.choices[scope.highlightedIndex]);
+                        }, 250);
+                    }
+
+                    if(scope.highlightedIndex >= scope.choices.length){
+                        scope.highlightedIndex = scope.choices.length - 1;
+                    }
+
+                    if(scope.highlightedIndex <= 0){
+                        scope.highlightedIndex = 0;
+                    }
+                }
 
                 scope.blur = function(){
                     scope.focused = false;
@@ -11320,7 +11355,6 @@ angular.module('umeSelect')
                     if (scope.delay){
                         $timeout.cancel(scope.delay);
                     }
-                    console.log("Loading..", scope.searchText);
 
                     searchTextTimeout = $timeout(function() {                        
                         //If this is same as previous request, dont do it
@@ -11344,7 +11378,6 @@ angular.module('umeSelect')
                 })
 
                 scope.pickItem = function(item){
-                    console.log('chosen', item);
 
                     if(scope.multiple){
                         scope.model.push(item);
@@ -11355,7 +11388,6 @@ angular.module('umeSelect')
                         scope.model = item;
                         scope.focused = false;
                     }
-                    
                     
 
                     if(scope.autoClearSearch){
@@ -11396,7 +11428,7 @@ angular.module("umeSelect").run(["$templateCache", function($templateCache) {  '
 
 
   $templateCache.put('ume/single',
-    "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-search' : !loading, 'ume-loading': loading, 'input-active': focused}\"><input ng-focus=focus() ume-focus=focusObtained autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" ng-show=focused style=\"width: 100%\"> <button ng-show=!focused class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ model.ProductNameEn || placeholder }}</button></div><div class=\"selectize-dropdown single demo-default\" ng-show=\"searchText.length > 0 && focused\" style=\"width: 100%\"><div class=selectize-dropdown-content><div data-group=Climbing class=optgroup><div ng-click=pickItem(item) data-value=bolts data-selectable ng-repeat=\"item in choices\" class=option>{{ item.ProductNameEn }}</div><div ng-if=\"choices.length == 0 && notFound && !loading\" data-selectable class=option>No result for search term '{{ searchText }}'</div></div></div></div></div>"
+    "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-search' : !loading, 'ume-loading': loading, 'input-active': focused}\"><input ume-focus=focusObtained ume-blur=focusLost autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" ng-keydown=keyDown($event) ng-show=focused style=\"width: 100%\"> <button ng-show=!focused class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ model.ProductNameEn || placeholder }}</button></div><div class=\"selectize-dropdown single demo-default\" ng-show=\"searchText.length > 0 && focused\" style=\"width: 100%\"><div class=selectize-dropdown-content><div data-group=Climbing class=optgroup><div ng-click=pickItem(item) data-value=bolts ng-class=\"{'ume-highlighted' : $index == highlightedIndex}\" data-selectable ng-repeat=\"item in choices\" class=option>{{ item.ProductNameEn }}</div><div ng-if=\"choices.length == 0 && notFound && !loading\" data-selectable class=option>No result for search term '{{ searchText }}'</div></div></div></div></div>"
   );
  }]);
 },{}],152:[function(require,module,exports){

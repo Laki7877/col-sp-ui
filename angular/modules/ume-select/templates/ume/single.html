@@ -1,7 +1,7 @@
 <div class="selectize-control single" >
 	<div class="selectize-input items has-options full has-items" ng-class="{'ume-search' : !loading, 'ume-loading': loading, 'input-active': focused}">
-		<input ng-focus="focus()" ume-focus="focusObtained" type="text" autocomplete="off" tabindex="" ng-model="searchText" 
-		placeholder="{{ placeholder }}" ng-show="focused" style="width: 100%;"/>
+		<input ume-focus="focusObtained" ume-blur="focusLost"  type="text" autocomplete="off" tabindex="" ng-model="searchText" 
+		placeholder="{{ placeholder }}" ng-keydown="keyDown($event)" ng-show="focused" style="width: 100%;"/>
 
 		<button ng-show="!focused" class="ume-btn"
 		 ng-class="{'ume-placeholder': !model }" aria-hidden="true"
@@ -14,7 +14,9 @@
 		<div class="selectize-dropdown-content">
 			<div data-group="Climbing" class="optgroup">
 			<!-- <div class="optgroup-header">Climbing</div> -->
-			<div ng-click="pickItem(item)" data-value="bolts" data-selectable ng-repeat="item in choices" class="option">
+			<div ng-click="pickItem(item)" data-value="bolts" 
+			ng-class="{'ume-highlighted' : $index == highlightedIndex}"
+			data-selectable ng-repeat="item in choices" class="option">
 				{{ item.ProductNameEn }} <!-- i dont know how to transclude and get item access -->
 			</div>
 			<div ng-if="choices.length == 0 && notFound && !loading" data-selectable class="option">

@@ -21,6 +21,9 @@
     outline: none;
     text-align: left;
  }
+ .ume-highlighted{
+    background: #f1f6f7;
+ }
  .ume-focused{
     background-color: white !important;
     -webkit-transition: width 2s; /* Safari */
