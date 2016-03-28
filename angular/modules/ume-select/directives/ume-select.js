@@ -11,14 +11,15 @@ angular.module('umeSelect')
                 delay: '@?delay',
                 autoClearSearch: '=?autoClearSearch',
                 refresh: '=refresh',
-                inRelationship: '=inRelationship'
+                inRelationship: '=?inRelationship',
+                itsComplicated: '=?itsComplicated'
             },
             replace: true,
             priority: 1010,
             template: function (element, attrs) {
                 var tmpl = 'ume/single';
-                if(attrs.inRelationship){
-                    tmpl = 'ume/relationship';
+                if(attrs.inRelationship || attrs.itsComplicated){
+                    tmpl = 'ume/multiple';
                 }
                 var templateHTML = $templateCache.get(tmpl);
                 return templateHTML;
@@ -46,7 +47,7 @@ angular.module('umeSelect')
                         scope.highlightedIndex++;
                     }else if(evt.code == "ArrowUp"){
                         scope.highlightedIndex--;
-                    }else if(evt.code == "Enter"){
+                    }else if(evt.code == "Enter" || evt.code == "Comma"){
                         console.log("Keydown on id", scope._id);
                         if(scope.searchText == "") return;
                         $timeout(function (){
@@ -92,6 +93,7 @@ angular.module('umeSelect')
                 var effectiveText = '', searchTextTimeout;
                 var prevQ = {};
                 scope.$watch('searchText', function () {
+                    if(!scope.refresh) return;
                     if(scope.searchText == "" || !scope.searchText) return;
                     if (scope.delay){
                         $timeout.cancel(scope.delay);
@@ -120,11 +122,14 @@ angular.module('umeSelect')
 
                 scope.pickItem = function(item){
                     if(!item) return;
-                    if(scope.inRelationship){
+                    if(scope.inRelationship || scope.itsComplicated){
                         scope.model.push(item);
                         scope.focus(true);
                         scope.searchText = "";
-                        scope.choices = [];
+
+                        if(!scope.itsComplicated){
+                            scope.choices = [];
+                        }
                     }else{
                         scope.model = item;
                         scope.focused = false;

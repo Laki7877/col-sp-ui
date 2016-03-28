@@ -5474,12 +5474,11 @@ module.exports = ["$scope", "Product", function($scope, Product) {
     };
 
     $scope.multiModel = [];
+    $scope.tagModel = [];
     $scope.cacheEnable = true;
-
+    $scope.kwdchoices = ['Sleep Fast', 'Sleep Slow'];
     $scope.myModel = 1;
-
     $scope.choices = [];
-
     $scope.myConfig = {
         create: true,
         valueField: 'id',
@@ -11288,14 +11287,15 @@ angular.module('umeSelect')
                 delay: '@?delay',
                 autoClearSearch: '=?autoClearSearch',
                 refresh: '=refresh',
-                inRelationship: '=inRelationship'
+                inRelationship: '=?inRelationship',
+                itsComplicated: '=?itsComplicated'
             },
             replace: true,
             priority: 1010,
             template: function (element, attrs) {
                 var tmpl = 'ume/single';
-                if(attrs.inRelationship){
-                    tmpl = 'ume/relationship';
+                if(attrs.inRelationship || attrs.itsComplicated){
+                    tmpl = 'ume/multiple';
                 }
                 var templateHTML = $templateCache.get(tmpl);
                 return templateHTML;
@@ -11323,7 +11323,7 @@ angular.module('umeSelect')
                         scope.highlightedIndex++;
                     }else if(evt.code == "ArrowUp"){
                         scope.highlightedIndex--;
-                    }else if(evt.code == "Enter"){
+                    }else if(evt.code == "Enter" || evt.code == "Comma"){
                         console.log("Keydown on id", scope._id);
                         if(scope.searchText == "") return;
                         $timeout(function (){
@@ -11369,6 +11369,7 @@ angular.module('umeSelect')
                 var effectiveText = '', searchTextTimeout;
                 var prevQ = {};
                 scope.$watch('searchText', function () {
+                    if(!scope.refresh) return;
                     if(scope.searchText == "" || !scope.searchText) return;
                     if (scope.delay){
                         $timeout.cancel(scope.delay);
@@ -11397,11 +11398,14 @@ angular.module('umeSelect')
 
                 scope.pickItem = function(item){
                     if(!item) return;
-                    if(scope.inRelationship){
+                    if(scope.inRelationship || scope.itsComplicated){
                         scope.model.push(item);
                         scope.focus(true);
                         scope.searchText = "";
-                        scope.choices = [];
+
+                        if(!scope.itsComplicated){
+                            scope.choices = [];
+                        }
                     }else{
                         scope.model = item;
                         scope.focused = false;
@@ -11436,12 +11440,12 @@ require('./template.js');
 angular.module("umeSelect").run(["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('ume/choicelist',
-    "<div class=\"selectize-dropdown single demo-default\" ng-show=\"searchText.length > 0 && focused\" style=\"width: 100%\"><div class=selectize-dropdown-content><div data-group=Climbing class=optgroup><div ng-click=pickItem(item) data-value=bolts ng-class=\"{'ume-highlighted' : $index == highlightedIndex}\" data-selectable ng-repeat=\"item in choices\" class=option>{{ item.ProductNameEn }}</div><div ng-if=\"choices.length == 0 && notFound && !loading\" data-selectable class=option>No result for search term '{{ searchText }}'</div></div></div></div>"
+    "<div class=\"selectize-dropdown single demo-default\" ng-show=\"searchText.length > 0 && focused\" style=\"width: 100%\"><div class=selectize-dropdown-content><div data-group=Climbing class=optgroup><div ng-click=pickItem(item) data-value=bolts ng-class=\"{'ume-highlighted' : $index == highlightedIndex}\" data-selectable ng-repeat=\"item in (choices) track by $index\" class=option>{{ item.ProductNameEn || item }}</div><div ng-if=\"choices.length == 0 && notFound && !loading\" data-selectable class=option>No result for search term '{{ searchText }}'</div></div></div></div>"
   );
 
 
-  $templateCache.put('ume/relationship',
-    "<div class=\"selectize-control single\"><div class=\"selectize-input items not-full has-options has-items\" ng-class=\"{'ume-search' : !loading, 'ume-loading': loading, 'input-active': focused}\"><div ng-repeat=\"item in model\" style=\"margin-right: 5px\" class=\"item btn btn-primary btn-xs\" aria-hidden=true>{{ item.ProductNameEn }} <a ng-click=breakUp($index) class=\"glyphicon glyphicon-remove\" style=\"color:white !important; opacity: 0.7; font-size: x-small\"></a></div><input ng-focus=focus() ng-keydown=keyDown($event) ume-id=\"{{ _id }}\" ume-focus=focusObtained ume-blur=focusLost autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" class=\"btn btn-xs\" style=\"max-width: 100px;text-align: left\"></div><div ng-include=\"'ume/choicelist'\"></div></div>"
+  $templateCache.put('ume/multiple',
+    "<div class=\"selectize-control single\"><div class=\"selectize-input items not-full has-options has-items\" ng-class=\"{'ume-search' : !loading, 'ume-loading': loading, 'input-active': focused}\"><div ng-repeat=\"item in (model) track by $index\" style=\"margin-right: 5px\" class=\"item btn btn-primary btn-xs\" aria-hidden=true>{{ item.ProductNameEn || item }} <a ng-click=breakUp($index) class=\"glyphicon glyphicon-remove\" style=\"color:white !important; opacity: 0.7; font-size: x-small\"></a></div><input ng-focus=focus() ng-keydown=keyDown($event) ume-id=\"{{ _id }}\" ume-focus=focusObtained ume-blur=focusLost autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" class=\"btn btn-xs\" style=\"max-width: 100px;text-align: left\"></div><div ng-include=\"'ume/choicelist'\"></div></div>"
   );
 
 

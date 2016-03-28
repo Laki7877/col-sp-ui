@@ -37,7 +37,6 @@
 					</div>
 					<div class="row">
 						<you-me in-relationship="true" placeholder="+ Product" 
-						auto-clear-search="true"
 						ng-model="multiModel" refresh="querySearch" choices="choices">
 								<span>{{ item.ProductNameEn }}</span> <!--TODO-->
 						</you-me>
@@ -48,6 +47,12 @@
 						<p>
 						When <strong>it's complicated</strong>, well I'm not sure how to explain this. Basically, tag.
 						</p>
+					</div>
+					<div class="row">
+						<you-me its-complicated="true" in-rel placeholder="+ New Tag" 
+						ng-model="tagModel" choices="kwdchoices">
+								<span>{{ item.ProductNameEn }}</span> <!--TODO-->
+						</you-me>
 					</div>
 				</div>
 			</div>

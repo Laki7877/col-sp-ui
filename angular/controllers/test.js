@@ -17,12 +17,11 @@ module.exports = function($scope, Product) {
     };
 
     $scope.multiModel = [];
+    $scope.tagModel = [];
     $scope.cacheEnable = true;
-
+    $scope.kwdchoices = ['Sleep Fast', 'Sleep Slow'];
     $scope.myModel = 1;
-
     $scope.choices = [];
-
     $scope.myConfig = {
         create: true,
         valueField: 'id',
