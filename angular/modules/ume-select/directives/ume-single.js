@@ -36,9 +36,9 @@ angular.module('umeSelect')
                     }else if(evt.keyIdentifier == "Up"){
                         scope.highlightedIndex--;
                     }else if(evt.keyIdentifier == "Enter"){
-                        
-
+                        if(scope.searchText == "") return;
                         $timeout(function (){
+                            //This is bad, somehow broadcast intefere ewith eachtoehr
                             scope.$broadcast('focusLost');
                             scope.pickItem(scope.choices[scope.highlightedIndex]);
                         }, 250);
@@ -103,7 +103,7 @@ angular.module('umeSelect')
                 })
 
                 scope.pickItem = function(item){
-
+                    if(!item) return;
                     if(scope.multiple){
                         scope.model.push(item);
                         scope.focus(true);

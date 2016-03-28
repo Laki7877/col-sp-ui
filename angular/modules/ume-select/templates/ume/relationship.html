@@ -3,23 +3,9 @@
 		<button ng-repeat="item in model" style="margin-right: 5px" class="item btn btn-primary btn-xs" aria-hidden="true">
 		{{ item.ProductNameEn }}</button>
 
-		 <input ng-focus="focus()" ume-focus="focusObtained" type="text" autocomplete="off" tabindex="" ng-model="searchText" 
+		 <input ng-focus="focus()" ng-keydown="keyDown($event)" ume-focus="focusObtained" ume-blur="focusLost"  type="text" autocomplete="off" tabindex="" ng-model="searchText" 
 		placeholder="{{ placeholder }}" class="btn btn-xs" style="max-width: 100px;text-align: left"/>
 	</div>
 	<!-- choicelist.html -->
-	<div class="selectize-dropdown single demo-default" 
-	ng-show="searchText.length > 0 && focused" 
-	style="width: 100%;">
-		<div class="selectize-dropdown-content">
-			<div data-group="Climbing" class="optgroup">
-			<!-- <div class="optgroup-header">Climbing</div> -->
-			<div ng-click="pickItem(item)" data-value="bolts" data-selectable ng-repeat="item in choices" class="option">
-				{{ item.ProductNameEn }} <!-- i dont know how to transclude and get item access -->
-			</div>
-			<div ng-if="choices.length == 0 && notFound && !loading" data-selectable class="option">
-				No result for search term '{{ searchText }}' 
-			</div>
-			</div>
-		</div>
-	</div>
+	<div ng-include="'ume/choicelist'"></div>
 </div>

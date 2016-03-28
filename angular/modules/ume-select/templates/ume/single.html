@@ -8,21 +8,6 @@
 		 ng-click="focus(true)">{{ model.ProductNameEn || placeholder }}</button>
 	</div>
 	<!-- choicelist.html -->
-	<div class="selectize-dropdown single demo-default" 
-	ng-show="searchText.length > 0 && focused" 
-	style="width: 100%;">
-		<div class="selectize-dropdown-content">
-			<div data-group="Climbing" class="optgroup">
-			<!-- <div class="optgroup-header">Climbing</div> -->
-			<div ng-click="pickItem(item)" data-value="bolts" 
-			ng-class="{'ume-highlighted' : $index == highlightedIndex}"
-			data-selectable ng-repeat="item in choices" class="option">
-				{{ item.ProductNameEn }} <!-- i dont know how to transclude and get item access -->
-			</div>
-			<div ng-if="choices.length == 0 && notFound && !loading" data-selectable class="option">
-				No result for search term '{{ searchText }}' 
-			</div>
-			</div>
-		</div>
-	</div>
+	<div ng-include="'ume/choicelist'"></div>
+	
 </div>
