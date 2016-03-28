@@ -117,6 +117,12 @@ var admin = {
 		'Global Coupons': '/admin/coupons/global',
 		'Seller Coupons': '/admin/coupons/seller'
 	},
+    // Create By Col Dev (Natee)
+	'CMS|fa-product-hunt': {
+	    'CMS Category': '/admin/cms/category',
+	    'CMS Static & Collection': '/admin/cms/collection',
+	    'CMS Group': '/admin/cms/group'
+	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'
 	}

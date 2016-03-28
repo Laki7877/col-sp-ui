@@ -127,6 +127,10 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .factory('ShopProfileService', services.shopProfileService)
   .factory('ProductTempService', services.productTempService)
 
+    // Col Dev (Natee)
+.factory('CMSService', services.cmsService)
+//.factory('CMSCollectionService', services.cmsCollectionService)
+
   // Directives
   .directive('ncTradableSelect', directives.ncTradableSelect)
   .directive('ngCkeditor', directives.ngCkeditor)
@@ -138,7 +142,10 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .directive('ngPermission', directives.ngPermission)
   .directive('ngSlideToggle', directives.ngSlideToggle)
   .directive('ngTemplate', directives.ngTemplate)
-
+    .directive('ngMatch', directives.ngMatch)
+.directive('ngMinnumber', directives.ngMinnumber)
+.directive('ngMaxnumber', directives.ngMaxnumber)
+.directive('ngDateBefore', directives.ngDateBefore)
   // Filters
   .filter('capitalize', filters.capitalize)
   .filter('ordinal', filters.ordinal)
@@ -151,7 +158,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .filter('leadingzero', filters.leadingzero)
   .filter('variantValue', filters.variantValue)
   .filter('importGuidelineExample', filters.importGuidelineExample)
-
+    .filter('propsFilter', filters.propsFilter) // Col Dev (Natee)
   // Controllers
   .controller('RootCtrl', controllers.root)
   .controller('IndexCtrl', controllers.index)
@@ -225,5 +232,13 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
 
   .controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
   .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
+    // Create By Col Dev (Natee)
+.controller('AdminCMSCategoryListCtrl', controllers.adminCMSCategoryList)
+.controller('AdminCMSCategoryAddCtrl', controllers.adminCMSCategoryAdd)
+
+.controller('AdminCMSCollectionListCtrl', controllers.adminCMSCollectionList)
+.controller('AdminCMSCollectionAddCtrl', controllers.adminCMSCollectionAdd)
+
+.controller('AdminCMSGroupController', controllers.adminCMSGroupController)
 
   .controller('TestCtrl', controllers.test)

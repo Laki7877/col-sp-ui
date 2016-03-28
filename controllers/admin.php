@@ -204,4 +204,46 @@ class AdminController extends Controller
 	{
 		return View::render('admin_newsletters');
 	}
+
+
+
+	// Create By Col Dev (Natee)
+
+	// CMS Category
+	public static function listCMSCategory($params)
+	{
+		return View::render('admin_cms_category');
+	}
+	public static function addCMSCategory($params)
+	{
+		return View::render('admin_add_cms_category', ['title' => 'Add Admin CMS Category']);
+	}
+	public static function editCMSCategory($params)
+	{
+		return View::render('admin_add_cms_category', ['params' => json_encode_n($params), 'title' => 'Admin CMS Category Detail']);
+	}
+
+	// CMS Collection
+	public static function listCMSCollection($params)
+	{
+		return View::render('admin_cms_collection');
+	}
+	public static function addCMSCollection($params)
+	{
+		return View::render('admin_add_cms_collection', ['title' => 'Add Admin CMS Static & Collection']);
+	}
+	public static function editCMSCollection($params)
+	{
+		return View::render('admin_add_cms_collection', ['params' => json_encode_n($params), 'title' => 'Admin CMS Static & Collecton Detail']);
+	}
+
+	// CMS Group
+	public static function addCMSGroup($params)
+	{
+		return View::render('admin_cms_group', ['title' => 'Add Admin CMS Group']);
+	}
+	public static function editCMSGroup($params)
+	{
+		return View::render('admin_add_cms_group', ['params' => json_encode_n($params), 'title' => 'Admin CMS Group Detail']);
+	}
 }

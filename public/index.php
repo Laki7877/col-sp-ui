@@ -123,6 +123,35 @@ Route::add('/admin/groups', 'AdminController::listPendingProduct');
 Route::add('/admin/groups/add', 'AdminController::addPendingProduct');
 Route::add('/admin/groups/:id', 'AdminController::editPendingProduct');
 
+
+// Create By Col Dev (Natee)
+Route::add('/admin/cms/category', 'AdminController::listCMSCategory');
+Route::add('/admin/cms/category/create', 'AdminController::addCMSCategory');
+Route::add('/admin/cms/category/:id', 'AdminController::editCMSCategory');
+
+Route::add('/admin/cms/collection', 'AdminController::listCMSCollection');
+Route::add('/admin/cms/collection/create', 'AdminController::addCMSCollection');
+Route::add('/admin/cms/collection/:id', 'AdminColtroller::editCMSCollection');
+
+
+
+Route::add('/collections', 'ProductCollectionController::index');
+Route::add('/collections/add/:category', 'ProductCollectionController::add');
+Route::add('/collections/addlist', 'ProductCollectionController::addlist');
+Route::add('/collections/import', 'ProductCollectionController::import');
+Route::add('/collections/group', 'ProductCollectionController::group');
+Route::add('/collections/groupadd', 'ProductCollectionController::groupadd');
+Route::add('/collections/:id', 'ProductCollectionController::edit');
+Route::add('/collections/cat', 'ProductCollectionController::cat');
+Route::add('/collections/catadd', 'ProductCollectionController::catadd');
+
+
+
+Route::add('/buy1get1', 'Buy1Get1Controller::index');
+Route::add('/buy1get1/add', 'Buy1Get1Controller::add');
+Route::add('/buy1get1/import', 'Buy1Get1Controller::import');
+Route::add('/buy1get1/:id', 'Buy1Get1Controller::edit');
+
 //test route
 Route::add('/test/:name', 'TestController::any');
 
