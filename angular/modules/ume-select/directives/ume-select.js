@@ -1,6 +1,6 @@
 var angular = require('angular');
 angular.module('umeSelect')
-    .directive('umeSingle', function ($rootScope, $templateCache, $compile, $timeout) {
+    .directive('youMe', function ($rootScope, $templateCache, $compile, $timeout) {
         return {
             restrict: 'AE',
             transclude: true,
@@ -11,12 +11,11 @@ angular.module('umeSelect')
                 delay: '@?delay',
                 autoClearSearch: '=?autoClearSearch',
                 refresh: '=refresh',
-                multiple: '=inRelationship'
+                inRelationship: '=inRelationship'
             },
             replace: true,
             priority: 1010,
             template: function (element, attrs) {
-                console.log(attrs.inRelationship , 'inRelationship');
                 var tmpl = 'ume/single';
                 if(attrs.inRelationship){
                     tmpl = 'ume/relationship';
@@ -33,8 +32,11 @@ angular.module('umeSelect')
                 var _id = (new Date()).getTime()*Math.random() + "R";
                 scope._id =  _id;
 
-                scope.removeRelationship = function(index){
-                    if(!scope.multiple) return;
+                scope.breakUp = function(index){
+                    if(!scope.inRelationship) {
+                        //You can only break up when you re in relationship
+                        return;
+                    }
                     scope.model.splice(index, 1);
                 }
 
@@ -115,7 +117,7 @@ angular.module('umeSelect')
 
                 scope.pickItem = function(item){
                     if(!item) return;
-                    if(scope.multiple){
+                    if(scope.inRelationship){
                         scope.model.push(item);
                         scope.focus(true);
                         scope.searchText = "";

@@ -26,8 +26,8 @@
  }
  .ume-focused{
     background-color: white !important;
-    -webkit-transition: width 2s; /* Safari */
-    transition: width 2s;
+    -webkit-transition: background-color 2s; /* Safari */
+    transition: background-color 2s;
 }
  .ume-loading{
     background-image: url(http://selectize.github.io/selectize.js/images/spinner.gif) !important;

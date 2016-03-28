@@ -16,35 +16,35 @@
 						<h1>u-me-select <small>select for you and me.</small></h1>
 					</div>
 					<div class="row">
-						<strong>Single <code>ume-single</code></strong>
+						<strong>Single <code>&lt;you-me&gt;</code></strong>
 						<p>
 						When u and me are <strong>single</strong>, you can only choose one item at a time.
 						</p>
 					</div>
 					<div class="row">
-						<ume-single placeholder="Search product by name or Pid" 
+						<you-me placeholder="Search product by name or Pid" 
 						auto-clear-search="true"
 						ng-model="x" refresh="querySearch" choices="choices">
 								<span>{{ item.ProductNameEn }}</span> <!--TODO-->
-						</ume-single>
+						</you-me>
 					</div>
 					<div class="row">
 						<br/>
-						<strong>In a relationship <code>ume-relationship</code></strong>
+						<strong>In a relationship <code>&lt;you-me in-relationship="true"&gt;</code></strong>
 						<p>
 						When u and me are <strong>together</strong>, we can be greedy and pick many items.
 						</p>
 					</div>
 					<div class="row">
-						<ume-single in-relationship="true" placeholder="+ Product" 
+						<you-me in-relationship="true" placeholder="+ Product" 
 						auto-clear-search="true"
 						ng-model="multiModel" refresh="querySearch" choices="choices">
 								<span>{{ item.ProductNameEn }}</span> <!--TODO-->
-						</ume-single>
+						</you-me>
 					</div>
 					<div class="row">
 					<br/>
-						<strong>It's complicated <code>ume-complicated</code></strong>
+						<strong>It's complicated <code>&lt;you-me its-complicated="true"&gt;</code></strong>
 						<p>
 						When <strong>it's complicated</strong>, well I'm not sure how to explain this. Basically, tag.
 						</p>
