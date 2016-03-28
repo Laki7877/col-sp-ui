@@ -30,18 +30,29 @@ angular.module('umeSelect')
                 scope.searchText = "";
                 scope.highlightedIndex = 0;
 
+                var _id = (new Date()).getTime()*Math.random() + "R";
+                scope._id =  _id;
+
+                scope.removeRelationship = function(index){
+                    if(!scope.multiple) return;
+                    scope.model.splice(index, 1);
+                }
+
                 scope.keyDown = function(evt){
-                    if(evt.keyIdentifier == "Down"){
+                    if(evt.code == "ArrowDown"){
                         scope.highlightedIndex++;
-                    }else if(evt.keyIdentifier == "Up"){
+                    }else if(evt.code == "ArrowUp"){
                         scope.highlightedIndex--;
-                    }else if(evt.keyIdentifier == "Enter"){
+                    }else if(evt.code == "Enter"){
+                        console.log("Keydown on id", scope._id);
                         if(scope.searchText == "") return;
                         $timeout(function (){
-                            //This is bad, somehow broadcast intefere ewith eachtoehr
-                            scope.$broadcast('focusLost');
+                            scope.$emit('focusLost', _id);
                             scope.pickItem(scope.choices[scope.highlightedIndex]);
                         }, 250);
+                    }else if(evt.code == "Backspace"){
+                        console.log("popping");
+                        if(scope.model.length > 0) scope.model.pop();
                     }
 
                     if(scope.highlightedIndex >= scope.choices.length){
@@ -61,7 +72,7 @@ angular.module('umeSelect')
                     scope.focused=true;
                     if(broadcast){
                         $timeout(function (){
-                            scope.$broadcast('focusObtained');
+                            scope.$emit('focusObtained', _id);
                         }, 250);
                     }
                 }

@@ -1,9 +1,11 @@
-<div class="selectize-control single" >
+<div class="selectize-control single">
 	<div class="selectize-input items not-full has-options has-items" ng-class="{'ume-search' : !loading, 'ume-loading': loading, 'input-active': focused}">
-		<button ng-repeat="item in model" style="margin-right: 5px" class="item btn btn-primary btn-xs" aria-hidden="true">
-		{{ item.ProductNameEn }}</button>
+		<div ng-repeat="item in model" style="margin-right: 5px" class="item btn btn-primary btn-xs" aria-hidden="true">
+		{{ item.ProductNameEn }}
+		<a ng-click="removeRelationship($index)" class="glyphicon glyphicon-remove" style="color:white !important; opacity: 0.7; font-size: x-small;"></a>
+		</div>
 
-		 <input ng-focus="focus()" ng-keydown="keyDown($event)" ume-focus="focusObtained" ume-blur="focusLost"  type="text" autocomplete="off" tabindex="" ng-model="searchText" 
+		 <input ng-focus="focus()" ng-keydown="keyDown($event)" ume-id="{{ _id }}" ume-focus="focusObtained" ume-blur="focusLost"  type="text" autocomplete="off" tabindex="" ng-model="searchText" 
 		placeholder="{{ placeholder }}" class="btn btn-xs" style="max-width: 100px;text-align: left"/>
 	</div>
 	<!-- choicelist.html -->

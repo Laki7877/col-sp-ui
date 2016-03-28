@@ -11253,7 +11253,8 @@ angular.module('umeSelect')
   return {
     link: function(scope, elem, attr) {
       scope.$watch('trigger', function(value) {
-        scope.$on(attr.umeFocus, function(e) {
+        scope.$on(attr.umeFocus, function(e,data) {
+            console.log(attr.umeId, 'focus received');
             elem[0].focus();
         });
       });
@@ -11264,7 +11265,8 @@ angular.module('umeSelect')
   return {
     link: function(scope, elem, attr) {
       scope.$watch('trigger', function(value) {
-        scope.$on(attr.umeBlur, function(e) {
+        scope.$on(attr.umeBlur, function(e,data) {
+            console.log(attr.umeId, 'focus lost');
             elem[0].blur();
         });
       });
@@ -11305,18 +11307,29 @@ angular.module('umeSelect')
                 scope.searchText = "";
                 scope.highlightedIndex = 0;
 
+                var _id = (new Date()).getTime()*Math.random() + "R";
+                scope._id =  _id;
+
+                scope.removeRelationship = function(index){
+                    if(!scope.multiple) return;
+                    scope.model.splice(index, 1);
+                }
+
                 scope.keyDown = function(evt){
-                    if(evt.keyIdentifier == "Down"){
+                    if(evt.code == "ArrowDown"){
                         scope.highlightedIndex++;
-                    }else if(evt.keyIdentifier == "Up"){
+                    }else if(evt.code == "ArrowUp"){
                         scope.highlightedIndex--;
-                    }else if(evt.keyIdentifier == "Enter"){
+                    }else if(evt.code == "Enter"){
+                        console.log("Keydown on id", scope._id);
                         if(scope.searchText == "") return;
                         $timeout(function (){
-                            console.log("Broadcasting focus lost");
-                            scope.$broadcast('focusLost');
+                            scope.$emit('focusLost', _id);
                             scope.pickItem(scope.choices[scope.highlightedIndex]);
                         }, 250);
+                    }else if(evt.code == "Backspace"){
+                        console.log("popping");
+                        if(scope.model.length > 0) scope.model.pop();
                     }
 
                     if(scope.highlightedIndex >= scope.choices.length){
@@ -11336,7 +11349,7 @@ angular.module('umeSelect')
                     scope.focused=true;
                     if(broadcast){
                         $timeout(function (){
-                            scope.$broadcast('focusObtained');
+                            scope.$emit('focusObtained', _id);
                         }, 250);
                     }
                 }
@@ -11423,12 +11436,12 @@ angular.module("umeSelect").run(["$templateCache", function($templateCache) {  '
 
 
   $templateCache.put('ume/relationship',
-    "<div class=\"selectize-control single\"><div class=\"selectize-input items not-full has-options has-items\" ng-class=\"{'ume-search' : !loading, 'ume-loading': loading, 'input-active': focused}\"><button ng-repeat=\"item in model\" style=\"margin-right: 5px\" class=\"item btn btn-primary btn-xs\" aria-hidden=true>{{ item.ProductNameEn }}</button> <input ng-focus=focus() ng-keydown=keyDown($event) ume-focus=focusObtained ume-blur=focusLost autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" class=\"btn btn-xs\" style=\"max-width: 100px;text-align: left\"></div><div ng-include=\"'ume/choicelist'\"></div></div>"
+    "<div class=\"selectize-control single\"><div class=\"selectize-input items not-full has-options has-items\" ng-class=\"{'ume-search' : !loading, 'ume-loading': loading, 'input-active': focused}\"><div ng-repeat=\"item in model\" style=\"margin-right: 5px\" class=\"item btn btn-primary btn-xs\" aria-hidden=true>{{ item.ProductNameEn }} <a ng-click=removeRelationship($index) class=\"glyphicon glyphicon-remove\" style=\"color:white !important; opacity: 0.7; font-size: x-small\"></a></div><input ng-focus=focus() ng-keydown=keyDown($event) ume-id=\"{{ _id }}\" ume-focus=focusObtained ume-blur=focusLost autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" class=\"btn btn-xs\" style=\"max-width: 100px;text-align: left\"></div><div ng-include=\"'ume/choicelist'\"></div></div>"
   );
 
 
   $templateCache.put('ume/single',
-    "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-search' : !loading, 'ume-loading': loading, 'input-active': focused}\"><input ume-focus=focusObtained ume-blur=focusLost autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" ng-keydown=keyDown($event) ng-show=focused style=\"width: 100%\"> <button ng-show=!focused class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ model.ProductNameEn || placeholder }}</button></div><div ng-include=\"'ume/choicelist'\"></div></div>"
+    "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-search' : !loading, 'ume-loading': loading, 'input-active': focused}\"><input ume-focus=focusObtained ume-blur=focusLost ume-id=\"{{ _id }}\" autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" ng-keydown=keyDown($event) ng-show=focused style=\"width: 100%\"><div ng-show=!focused class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ model.ProductNameEn || placeholder }}</div></div><div ng-include=\"'ume/choicelist'\"></div></div>"
   );
  }]);
 },{}],152:[function(require,module,exports){
