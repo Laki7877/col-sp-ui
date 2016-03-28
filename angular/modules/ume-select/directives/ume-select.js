@@ -37,6 +37,7 @@ angular.module('umeSelect')
                         //You can only break up when you re in relationship
                         return;
                     }
+
                     scope.model.splice(index, 1);
                 }
 
@@ -53,7 +54,9 @@ angular.module('umeSelect')
                             scope.pickItem(scope.choices[scope.highlightedIndex]);
                         }, 250);
                     }else if(evt.code == "Backspace"){
-                        console.log("popping");
+
+                        if(scope.searchText.length > 0) return;
+
                         if(scope.model.length > 0) scope.model.pop();
                     }
 
