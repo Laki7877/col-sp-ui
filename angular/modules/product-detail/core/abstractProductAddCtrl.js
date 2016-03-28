@@ -75,7 +75,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         ShippingMethod: '1',
         VideoLinks: [],
         SEO: {
-          ProductBoostingWeight: 5000
+          ProductBoostingWeight: 5000,
+          MetaTitleEn: "",
+          MetaTitleTh: "",
+          MetaDescriptionEn: "",
+          MetaDescriptionTh: "",
+          MetaKeywordEn: "",
+          MetaKeywordTh: "",
+          SEO_ProductUrlKeyEn: ""
         }
       },
       Variants: []
@@ -183,7 +190,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     // CK editor options
     $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
     $scope.dataset = {
-      CombinedAttributeSets: []
+      CombinedAttributeSets: [],
+      Brands: []
     };
     $scope.dataset.AttributeSets = [{
       AttributeSetId: null,
@@ -386,11 +394,18 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
      * @param  {String} Status (WA or DF or other enum sent to server)
      */
     $scope.publish = function(Status) {
+        
+      $scope.pageState.reset();
+      
       if($scope.readOnly){
-          $scope.alert.error('This view is read-only.')
+          return $scope.alert.error('This view is read-only.');
       }
       
-      $scope.pageState.reset();
+      if($scope.uploader.isUploading){
+          return $scope.alert.error('<strong>Please Wait</strong> - One or more image upload is in progress..');
+      }
+      
+      
       $scope.pageState.load('Validating..');
 
       if ($scope.controlFlags.variation == 'enable' && $scope.formData.Variants.length == 0) {
@@ -455,6 +470,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             $scope.formData.ProductId = Number(res.ProductId);
             $scope.pageState.reset();
             $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
+            console.log("MVAR after save", $scope.formData.MasterVariant);
+            $scope.variantPtr = $scope.formData.MasterVariant;
           });
 
           $scope.addProductForm.$setPristine(true);
@@ -527,7 +544,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.controlFlags, $scope.variationFactorIndices).then(function() {
           $scope.pageState.reset();
           watchVariantFactorChanges();
-          // ImageService.assignUploaderEvents($scope.uploader, $scope.formData.MasterImages, onImageUploadQueueLimit, onImageUploadFail, onImageUploadSuccess)
         })
       } else {
         throw new KnownException('Invalid mode, viewBag garbage')
@@ -539,9 +555,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     tabPage.images = {
       angular: function() {
-        /**
-         * IMAGE THUMBNAIL EVENTS
-         */
         $scope.$on('left', function(evt, item, array, index) {
           var to = index - 1
           if (to < 0) to = array.length - 1
@@ -614,7 +627,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           var variantModal = $uibModal.open({
             animation: false,
             templateUrl: 'ap/modal-variant-detail',
-            controller: function($scope, $uibModalInstance, $timeout, pair, dataset, formData, uploader) {
+            controller: function($scope, $uibModalInstance, $timeout, pair, dataset, uploader) {
               'ngInject';
               $scope.pair = pair;
               $scope.dataset = dataset;
@@ -634,9 +647,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                   queueLimit: QUEUE_LIMIT
                 });
               },
-              formData: function() {
-                return $scope.formData
-              },
               pair: function() {
                 console.log('resolving', $scope.pairModal)
                 return $scope.pairModal
@@ -651,11 +661,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           })
 
           variantModal.result.then(function(pairModal) {
-            console.log(pairModal);
             if (pairModal) {
               $scope.formData.Variants[$scope.pairIndex] = pairModal
             }
-
+            
+            
             // Restore pointers
             $scope.form = $scope.addProductForm;
             $scope.variantPtr = $scope.formData.MasterVariant;
@@ -735,9 +745,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.refresher.BrandLoading = false;
     $scope.refresher.Brands = function(q) {
       // TODO: too slow
-      if (!q) return
+      if (!q) return;
+      $scope.dataset.Brands = []; //searching
 
-    //   $scope.refresher.BrandLoading = true;
+      $scope.refresher.BrandLoading = true;
 
       return Brand.getAll({
         pageSize: 10,
@@ -745,11 +756,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }).then(function(ds) {
         $scope.refresher.BrandLoading = false;
         $scope.dataset.Brands = ds.data; // _.unionBy($scope.dataset.Brands, ds.data, 'BrandId');
-        // $scope.dataset.Brands.map(function(m) {
-        //   m._group = "Search Results";
-        //   return m;
-        // });
-        return $scope.dataset.Brands;
+        $scope.dataset.Brands = $scope.dataset.Brands.map(function(m) {
+          m._group = "Search Results";
+          return m;
+        });
+        // return $scope.dataset.Brands;
       });
 
 

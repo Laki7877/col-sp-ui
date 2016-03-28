@@ -6,16 +6,23 @@ angular.module('nc')
 			return this;
 		};
 	})
-	.directive('ncAlert', function($templateCache) {
+	.directive('ncAlert', function($templateCache, NcAlert) {
 		return {
 			restrict: 'E',
 			scope: {
 				alert: '=ncModel'
 			},
-			template: $templateCache.get('common/ncAlert')
+			template: $templateCache.get('common/ncAlert'),
+			link: function(scope, elem) {
+				scope.$watch('alert', function(newObj) {
+					if(newObj instanceof NcAlert) {
+						scope.alert.element = elem;
+					}
+				})
+			}
 		}
 	})
-	.factory('NcAlert', function($document, $timeout, $ncAlert) {
+	.factory('NcAlert', function($document, $timeout, $ncAlert, smoothScroll) {
 		return function() {
 			var vm = this;
 			this.type = 'red';
@@ -40,7 +47,7 @@ angular.module('nc')
 				
 				$timeout(function() {
 					var section = vm.element || $document;
-					section.scrollTopAnimated(0, 1000);
+					smoothScroll(document.getElementById('body'));
 				}, 10);
 			};
 			this.success = function(obj) {
@@ -48,7 +55,7 @@ angular.module('nc')
 				
 				$timeout(function() {
 					var section = vm.element || $document;
-					section.scrollTopAnimated(0, 1000);
+					smoothScroll(document.getElementById('body'));
 				}, 10);
 			};
 			this.message = '';

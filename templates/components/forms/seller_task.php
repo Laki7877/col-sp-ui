@@ -11,7 +11,7 @@
     <div class="color-dark-grey" ng-show="!onLoadingFlag"><?=$field_text?></div>
   </div>
   <div class="loading_text" ng-show="onLoadingFlag">Loading...</div>
-  <div class="home_task_button">
+  <div class="home_task_button" ng-show="!onLoadingFlag">
     <div>
       <? if(!isset($type))
          $type = 'normal';

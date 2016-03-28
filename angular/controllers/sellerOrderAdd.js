@@ -21,7 +21,6 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
       OrderService.update($scope.formData.OrderId, form)
         .then(function(data) {
           $scope.formData = OrderService.deserialize(data);
-          console.log($scope.formData);
           $scope.alert.success(util.saveAlertSuccess('Order', $scope.url));
           $scope.form.$setPristine(true);
         }, function(err) {
@@ -44,6 +43,9 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   };
   //Ready to ship
   $scope.readyShip = function() {
+    $scope.form.$setSubmitted();
+    if($scope.saving) return;
+    if($scope.form.$valid) {
     util.confirm(
       'Are you ready to ship?',
       'Shipping quantity cannot be changed after this.',
@@ -53,9 +55,13 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
     ).result.then(function() {    
       save({
        InvoiceNumber: $scope.formData.InvoiceNumber,
-       Status: 'RS'
+         Status: 'RS',
+         Products: $scope.formData.Products
       });
     });
+    } else {
+      $scope.alert.error(util.saveAlertError());
+    }
   };
   //Cancel order
   $scope.cancelOrder = function() {
@@ -81,6 +87,31 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
     }
   };
   //Getter
+  $scope.getRedText = function(product) {
+    return { 'color-red' : product.Quantity != product.ShipQuantity && $scope.getState() > 2 };
+  };
+  $scope.getPrice = function(product) {
+    if($scope.getState() >= 2) {
+      //Use ShipQty
+      return product.UnitPrice * product.ShipQuantity;
+    } else {
+      //Use Qty
+      return product.UnitPrice * product.Quantity;
+    }
+  };
+  $scope.getSubtotal = function() {
+    var result = 0;
+    _.forEach($scope.formData.Products, function(i) {
+      result += $scope.getPrice(i);
+    })
+    return result;
+  };
+  $scope.getTotal = function() {
+    return $scope.getSubtotal() - $scope.getDiscount();
+  };
+  $scope.getDiscount = function() {
+    return $scope.formData.OrdDiscAmt;
+  };
   $scope.getTrackingNumber = function() {
     return $scope.formData.TrackingNumber ? $scope.formData.TrackingNumber : 'n/a';
   };

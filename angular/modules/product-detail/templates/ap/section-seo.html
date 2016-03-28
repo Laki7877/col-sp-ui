@@ -33,14 +33,14 @@
         </div>
         <div nc-template="common/input/form-group-with-label" nc-template-options-path="addProductForm/Nothing" nc-template-form="form.SEO_ProductBoostingWeight"
             nc-label="Product Boosting">
-            <input type="number" class="form-control width-field-normal" min="0" max="10000" step="1" name="SEO_ProductBoostingWeight"
+            <input type="text" class="form-control width-field-normal" min="0" max="10000" step="1" name="SEO_ProductBoostingWeight"
             ng-model="variantPtr.SEO.ProductBoostingWeight"
             />
         </div>
         <!-- note: backend validation blocks non-admin from modifying this field -->
         <div nc-template="common/input/form-group-with-label" ng-if="adminMode" nc-template-options-path="addProductForm/Nothing" nc-template-form="form.SEO_GlobalProductBoostingWeight"
             nc-label="Global Product Boosting">
-            <input type="number" class="form-control width-field-normal" min="0" max="10000" step="1" name="SEO_GlobalProductBoostingWeight"
+            <input type="text" class="form-control width-field-normal" min="0" max="10000" step="1" name="SEO_GlobalProductBoostingWeight"
             ng-model="variantPtr.SEO.GlobalProductBoostingWeight" />
         </div>
     </div>

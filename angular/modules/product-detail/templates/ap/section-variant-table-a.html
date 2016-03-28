@@ -41,7 +41,7 @@
         'conditions' : addProductForm['pair_SalePrice' + $index].$error
         }
         }">
-        <input type="number" ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }"
+        <input type="text" ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }"
         ng-model="pair.SalePrice" name="pair_SalePrice{{ $index }}" ng-disabled='!pair.Visibility' required class="form-control" />
       </td>
       <td ng-template="common/input/text-td" ng-template-options="{
@@ -53,7 +53,7 @@
         'conditions' : addProductForm['pair_OriginalPrice' + $index].$error
         }
         }">
-        <input type="number" ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }"
+        <input type="text" ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }"
         name="pair_OriginalPrice{{$index}}" ng-model="pair.OriginalPrice"
         ng-disabled='!pair.Visibility' class="form-control" />
       </td>
@@ -66,7 +66,7 @@
         'conditions' : addProductForm['pair_Quantity' + $index].$error
         }
         }">
-        <input type="number" ng-model="pair.Quantity" maxlength="5" ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }"
+        <input type="text" ng-model="pair.Quantity" maxlength="5" ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }"
         ng-disabled='!pair.Visibility' ng-pattern="/^[0-9]+$/" name="pair_Quantity{{$index}}"
         class="form-control" />
       </td>

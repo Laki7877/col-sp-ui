@@ -9,7 +9,9 @@ global.jQuery = require('jquery');
 global.$ = require('jquery');
 global._ = require('lodash');
 
-angular.module('nc', ['ngSanitize', 'ui.bootstrap', 'ui.select', 'duScroll', 'angularFileUpload'])
+require('../angular-scroll');
+
+angular.module('nc', ['ngSanitize', 'ui.bootstrap', 'ui.select', 'duScroll', 'smoothScroll', 'angularFileUpload'])
 
 .config(function($uibTooltipProvider) {
 	$uibTooltipProvider.setTriggers({

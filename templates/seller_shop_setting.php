@@ -20,7 +20,8 @@
 						                    <h2>Shop Information</h2></div>
 						                <div class="form-section-content">
 											<!-- Shop Status -->
-											<div ng-template="common/input/dropdown"
+											<div ng-show="statusChangeable" 
+											ng-template="common/input/dropdown"
 												ng-template-options="{
 												'label' : 'Shop Status',
 												}">
