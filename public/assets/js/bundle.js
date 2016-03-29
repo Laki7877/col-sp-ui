@@ -4349,9 +4349,10 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 			.then(function(data){
 				console.log('today',data);
 				for (var i = 0; i < data.length ; i++) {
-				 	tempData[data[i].Key-1] = data[i].Value;
+				 	tempData[data[i].Key] = data[i].Value;
 				 };
 			});
+
 		$scope.data = [tempData];
 	};
 
