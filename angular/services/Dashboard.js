@@ -91,6 +91,13 @@ module.exports = function (common, config, util, $log, $window) {
                 });
                 break;
 
+            case 'year':
+                return common.makeRequest({
+                    url: '/Orders/Revenue?_filter=ThisYear',
+                    method: 'GET'
+                });
+                break;
+
             default:
                 break;
         }

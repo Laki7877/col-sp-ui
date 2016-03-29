@@ -3,8 +3,23 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	'ngInject';
 
 	getTodayGraphData = function() {
-		return;
-	}
+		$scope.labels = ["12PM", "2AM", "4AM", "6AM", "8AM", "10AM",
+						 "12AM", "2PM", "4PM", "6PM", "8PM", "10PM"];
+		var tempData = [];
+
+		for (var i = 0; i < $scope.labels.length ; i++) {
+		 	tempData[i] = 0;
+		 }; 
+		Dashboard.getRevenue('today')
+			.then(function(data){
+				console.log('today',data);
+				for (var i = 0; i < data.length ; i++) {
+				 	tempData[data[i].Key-1] = data[i].Value;
+				 };
+			});
+		$scope.data = [tempData];
+	};
+
 	getWeekGraphData = function() {
 		$scope.labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 		var tempData = [];
@@ -58,6 +73,24 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 		$scope.data = [tempData];
 	};
 
+	getYearGraphData = function() {
+		$scope.labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+						 "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
+		var tempData = [];
+
+		for (var i = 0; i < $scope.labels.length ; i++) {
+		 	tempData[i] = 0;
+		 }; 
+		Dashboard.getRevenue('year')
+			.then(function(data){
+				console.log('year',data);
+				for (var i = 0; i < data.length ; i++) {
+				 	tempData[data[i].Key-1] = data[i].Value;
+				 };
+			});
+		$scope.data = [tempData];
+	};
+
 	$scope.setGraphData = function(flag){
 		switch (flag) {
 	        case 'today':
@@ -86,6 +119,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	    		$scope.thisWeekFlag  = false;
 				$scope.thisMonthFlag = false;
 				$scope.thisYearFlag = true;
+				return getYearGraphData();
 	            break;
 	        default:
         }

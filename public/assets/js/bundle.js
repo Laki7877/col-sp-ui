@@ -4338,8 +4338,23 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 	'ngInject';
 
 	getTodayGraphData = function() {
-		return;
-	}
+		$scope.labels = ["12PM", "2AM", "4AM", "6AM", "8AM", "10AM",
+						 "12AM", "2PM", "4PM", "6PM", "8PM", "10PM"];
+		var tempData = [];
+
+		for (var i = 0; i < $scope.labels.length ; i++) {
+		 	tempData[i] = 0;
+		 }; 
+		Dashboard.getRevenue('today')
+			.then(function(data){
+				console.log('today',data);
+				for (var i = 0; i < data.length ; i++) {
+				 	tempData[data[i].Key-1] = data[i].Value;
+				 };
+			});
+		$scope.data = [tempData];
+	};
+
 	getWeekGraphData = function() {
 		$scope.labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 		var tempData = [];
@@ -4393,6 +4408,24 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 		$scope.data = [tempData];
 	};
 
+	getYearGraphData = function() {
+		$scope.labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+						 "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
+		var tempData = [];
+
+		for (var i = 0; i < $scope.labels.length ; i++) {
+		 	tempData[i] = 0;
+		 }; 
+		Dashboard.getRevenue('year')
+			.then(function(data){
+				console.log('year',data);
+				for (var i = 0; i < data.length ; i++) {
+				 	tempData[data[i].Key-1] = data[i].Value;
+				 };
+			});
+		$scope.data = [tempData];
+	};
+
 	$scope.setGraphData = function(flag){
 		switch (flag) {
 	        case 'today':
@@ -4421,6 +4454,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 	    		$scope.thisWeekFlag  = false;
 				$scope.thisMonthFlag = false;
 				$scope.thisYearFlag = true;
+				return getYearGraphData();
 	            break;
 	        default:
         }
@@ -11740,6 +11774,13 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
             case 'month':
                 return common.makeRequest({
                     url: '/Orders/Revenue?_filter=ThisMonth',
+                    method: 'GET'
+                });
+                break;
+
+            case 'year':
+                return common.makeRequest({
+                    url: '/Orders/Revenue?_filter=ThisYear',
                     method: 'GET'
                 });
                 break;
