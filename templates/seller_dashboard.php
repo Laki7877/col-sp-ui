@@ -24,7 +24,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <!-- <canvas id="canvas" height="280"></canvas> -->
             <canvas id="line" class="chart chart-line" chart-data="data"
               chart-labels="labels" chart-legend="false" chart-series="line"
-              chart-click="onClick" chart-options="{maintainAspectRatio: true, bezierCurve : false, scaleBeginAtZero: true}">
+              chart-click="onClick" chart-options='{maintainAspectRatio: true, bezierCurve : false, scaleBeginAtZero: true
+              ,tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %> ฿"}'>
             </canvas>
           </div>
         </div>
