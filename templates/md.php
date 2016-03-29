@@ -22,11 +22,9 @@
 						</p>
 					</div>
 					<div class="row">
-						<you-me placeholder="Search product by name or Pid" 
+						<you-me display-by="ProductNameEn" placeholder="Search product by name or Pid" 
 						auto-clear-search="true"
-						ng-model="x" refresh="querySearch" choices="choices">
-								<span>{{ item.ProductNameEn }}</span> <!--TODO-->
-						</you-me>
+						ng-model="x" refresh="querySearch" choices="choices"></you-me>
 					</div>
 					<div class="row">
 						<br/>
@@ -36,10 +34,8 @@
 						</p>
 					</div>
 					<div class="row">
-						<you-me in-relationship="true" placeholder="+ Product" 
-						ng-model="multiModel" refresh="querySearch" choices="choices">
-								<span>{{ item.ProductNameEn }}</span> <!--TODO-->
-						</you-me>
+						<you-me display-by="ProductNameEn" in-relationship="true" placeholder="+ Product" 
+						ng-model="multiModel" refresh="querySearch" choices="choices"></you-me>
 					</div>
 					<div class="row">
 					<br/>
@@ -49,10 +45,9 @@
 						</p>
 					</div>
 					<div class="row">
-						<you-me its-complicated="true" in-rel placeholder="+ New Tag" 
-						ng-model="tagModel" choices="kwdchoices">
-								<span>{{ item.ProductNameEn }}</span> <!--TODO-->
-						</you-me>
+						<you-me display-by="TagName" its-complicated="true" in-rel placeholder="+ New Tag" 
+						ng-model="tagModel" choices="kwdchoices"></you-me>
+
 					</div>
 				</div>
 			</div>

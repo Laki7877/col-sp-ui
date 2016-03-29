@@ -19,7 +19,13 @@ module.exports = function($scope, Product) {
     $scope.multiModel = [];
     $scope.tagModel = [];
     $scope.cacheEnable = true;
-    $scope.kwdchoices = ['Sleep Fast', 'Sleep Slow'];
+    $scope.kwdchoices = [{
+        TagName: "Sleep"
+    }, {
+        TagName: "Batman"
+    }, {
+        TagName: "Superman"
+    }];
     $scope.myModel = 1;
     $scope.choices = [];
     $scope.myConfig = {

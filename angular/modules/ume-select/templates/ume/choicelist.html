@@ -7,10 +7,10 @@
 
 			<div ng-click="pickItem(item)" data-value="{{item}}" 
 			ng-class="{'ume-highlighted' : $index == highlightedIndex}"
-			data-selectable ng-repeat="item in (choices) track by $index" class="option">
-				{{ item.ProductNameEn || item }} <!-- i dont know how to transclude and get item access -->
+			data-selectable ng-repeat="item in (choices | filter : searchText) track by $index" class="option">
+				{{ itemValue(item) }} <!-- i dont know how to transclude and get item access -->
 			</div>
-			<div ng-if="choices.length == 0 && notFound && !loading" data-selectable class="option">
+			<div ng-if="(choices | filter : searchText).length == 0 && notFound && !loading" data-selectable class="option">
 				No result for search term '{{ searchText }}' 
 			</div>
 			</div>
