@@ -4336,7 +4336,46 @@ module.exports = function($scope, $controller, SellerCouponService, LocalCategor
 
 module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$window", "$uibModal", "NewsletterService", function($scope, $rootScope, Dashboard, $log, storage, $window, $uibModal, NewsletterService){
 	'ngInject';
-
+	// $scope.todayFlag = true;
+	// $scope.thisWeekFlag = false;
+	// $scope.thisMonthFlag = false;
+	// $scope.thisYearFlag = false;
+	// $scope.graphFlag = {
+	// 	today: true,
+	// 	thisWeek: false,
+	// 	thisMonth
+	// };
+	// $scope.toggleClassLink
+	$scope.setGraphData = function(flag){
+		switch (flag) {
+	        case 'Today':
+        		$scope.todayFlag  = true;
+	    		$scope.thisWeekFlag  = false;
+				$scope.thisMonthFlag = false;
+				$scope.thisYearFlag = false;
+				return getTodayGraphData();
+	            break;
+	        case 'Week':
+        		$scope.todayFlag  = false;
+	    		$scope.thisWeekFlag  = true;
+				$scope.thisMonthFlag = false;
+				$scope.thisYearFlag = false;
+	            break;
+	        case 'Month':
+        		$scope.todayFlag  = false;
+	    		$scope.thisWeekFlag  = false;
+				$scope.thisMonthFlag = true;
+				$scope.thisYearFlag = false;
+	            break;
+	        case 'Year':
+        		$scope.todayFlag  = false;
+	    		$scope.thisWeekFlag  = false;
+				$scope.thisMonthFlag = false;
+				$scope.thisYearFlag = true;
+	            break;
+	        default:
+        }
+	  };
 	  // Begin Week section
 
 	  // $scope.labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -4349,12 +4388,9 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 	Dashboard.getRevt()
 		.then(function(data){
 			console.log('hello today1: ', data);
-		});
-	Dashboard.getRevenue('today')
-		.then(function(data){
-			console.log('hello today: ', data);
 		});  
 	//Begin Day section
+	
 	// return max date of month
 	getMaxDate = function(month, year) {
 		var d = new Date(year, month, 0);
@@ -4362,20 +4398,37 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 		return date;
 	};
 
-	var maxDate = getMaxDate(2, 2016);
+	getTodayGraphData = function() {
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth()+1; //January is 0!
+		var yyyy = today.getFullYear();
 
-	var tempLabels = [];
-	var tempData = [];
+		var maxDate = getMaxDate(mm, yyyy);
 
-	for (var i = 0; i < maxDate ; i++) {
-	 	tempLabels[i] = i + 1;
-	 	tempData[i] = Math.floor((Math.random() * 100) + 1);
-	 }; 
+		var tempLabels = [];
+		var tempData = [];
 
-	$scope.labels = tempLabels;
-	$scope.data = [tempData];
+		for (var i = 0; i < maxDate ; i++) {
+		 	tempLabels[i] = i + 1;
+		 	tempData[i] = 0;
+		 }; 
 
+		Dashboard.getRevenue('today')
+			.then(function(data){
+				for (var i = 0; i < data.length ; i++) {
+				 	tempData[data[i].Key-1] = data[i].Value;
+				 };
+			});
+
+
+		$scope.labels = tempLabels;
+		$scope.data = [tempData];
+	};
 	// End day graph section
+
+	//Initiate graph data as Today Graph Data
+	$scope.setGraphData('Today');
 
 	Dashboard.getNewsLetter()
 		.then(function(query) {
@@ -4476,9 +4529,6 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 
 		
 	};
-
-	// temp rating  score
-	// input api for product rating score
 
 	Dashboard.getProductRating()
 		.then(function(data){
@@ -11673,7 +11723,7 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
 
     service.getRevt = function () {
         return common.makeRequest({
-            url: '/Orders/Revenue?_filter=ThisWeek',
+            url: '/Orders/Revenue?_filter=Today',
             method: 'GET'
         });
     }
