@@ -4336,61 +4336,30 @@ module.exports = function($scope, $controller, SellerCouponService, LocalCategor
 
 module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$window", "$uibModal", "NewsletterService", function($scope, $rootScope, Dashboard, $log, storage, $window, $uibModal, NewsletterService){
 	'ngInject';
-	// $scope.todayFlag = true;
-	// $scope.thisWeekFlag = false;
-	// $scope.thisMonthFlag = false;
-	// $scope.thisYearFlag = false;
-	// $scope.graphFlag = {
-	// 	today: true,
-	// 	thisWeek: false,
-	// 	thisMonth
-	// };
-	// $scope.toggleClassLink
-	$scope.setGraphData = function(flag){
-		switch (flag) {
-	        case 'Today':
-        		$scope.todayFlag  = true;
-	    		$scope.thisWeekFlag  = false;
-				$scope.thisMonthFlag = false;
-				$scope.thisYearFlag = false;
-				return getTodayGraphData();
-	            break;
-	        case 'Week':
-        		$scope.todayFlag  = false;
-	    		$scope.thisWeekFlag  = true;
-				$scope.thisMonthFlag = false;
-				$scope.thisYearFlag = false;
-	            break;
-	        case 'Month':
-        		$scope.todayFlag  = false;
-	    		$scope.thisWeekFlag  = false;
-				$scope.thisMonthFlag = true;
-				$scope.thisYearFlag = false;
-	            break;
-	        case 'Year':
-        		$scope.todayFlag  = false;
-	    		$scope.thisWeekFlag  = false;
-				$scope.thisMonthFlag = false;
-				$scope.thisYearFlag = true;
-	            break;
-	        default:
-        }
-	  };
-	  // Begin Week section
 
-	  // $scope.labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-	  // $scope.data = [
-	  //   [65, 59, 80, 81, 56, 55, 40]
-	  // ];
+	// Begin Week section
+	getWeekGraphData = function() {
+		$scope.labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+		var tempData = [];
+
+		for (var i = 0; i < $scope.labels.length ; i++) {
+		 	tempData[i] = 0;
+		 }; 
+		Dashboard.getRevenue('week')
+			.then(function(data){
+				for (var i = 0; i < data.length ; i++) {
+				 	tempData[data[i].Key-1] = data[i].Value;
+				 };
+			});
+		$scope.data = [tempData];
 	  // $scope.onClick = function (points, evt) {
 	  //   console.log(points, evt);
 	  // };
-	Dashboard.getRevt()
-		.then(function(data){
-			console.log('hello today1: ', data);
-		});  
+	};
+	// End Week Section
+
 	//Begin Day section
-	
+
 	// return max date of month
 	getMaxDate = function(month, year) {
 		var d = new Date(year, month, 0);
@@ -4427,8 +4396,40 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 	};
 	// End day graph section
 
+	$scope.setGraphData = function(flag){
+		switch (flag) {
+	        case 'today':
+        		$scope.todayFlag  = true;
+	    		$scope.thisWeekFlag  = false;
+				$scope.thisMonthFlag = false;
+				$scope.thisYearFlag = false;
+				return getTodayGraphData();
+	            break;
+	        case 'week':
+        		$scope.todayFlag  = false;
+	    		$scope.thisWeekFlag  = true;
+				$scope.thisMonthFlag = false;
+				$scope.thisYearFlag = false;
+				return getWeekGraphData();
+	            break;
+	        case 'month':
+        		$scope.todayFlag  = false;
+	    		$scope.thisWeekFlag  = false;
+				$scope.thisMonthFlag = true;
+				$scope.thisYearFlag = false;
+	            break;
+	        case 'year':
+        		$scope.todayFlag  = false;
+	    		$scope.thisWeekFlag  = false;
+				$scope.thisMonthFlag = false;
+				$scope.thisYearFlag = true;
+	            break;
+	        default:
+        }
+	};
+
 	//Initiate graph data as Today Graph Data
-	$scope.setGraphData('Today');
+	$scope.setGraphData('today');
 
 	Dashboard.getNewsLetter()
 		.then(function(query) {
@@ -11720,13 +11721,6 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
             method: 'GET'
         });
     };
-
-    service.getRevt = function () {
-        return common.makeRequest({
-            url: '/Orders/Revenue?_filter=Today',
-            method: 'GET'
-        });
-    }
 
     service.getRevenue = function (type) {
         switch (type) {

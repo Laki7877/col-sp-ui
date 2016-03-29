@@ -13,10 +13,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           </span>
           <span class="font-size-18 header_name_space">Revenue</span>
           <span class="float-right group_span_right">
-            <span ng-class="{'header-link': todayFlag}" ng-click="setGraphData('Today')"><a ng-class="{'active-underline': todayFlag, 'color-grey': !todayFlag}">Today</a></span>
-            <span ng-class="{'header-link': thisWeekFlag}" ng-click="setGraphData('Week')"><a ng-class="{'active-underline': thisWeekFlag, 'color-grey': !thisWeekFlag}">This Week</a></span>
-            <span ng-class="{'header-link': thisMonthFlag}" ng-click="setGraphData('Month')"><a ng-class="{'active-underline': thisMonthFlag, 'color-grey': !thisMonthFlag}">This Month</a></span>
-            <span ng-class="{'header-link': thisYearFlag}" ng-click="setGraphData('Year')"><a ng-class="{'active-underline': thisYearFlag, 'color-grey': !thisYearFlag}">This Year</a></span>
+            <span ng-class="{'header-link': todayFlag}" ng-click="setGraphData('today')"><a ng-class="{'active-underline': todayFlag, 'color-grey': !todayFlag}">Today</a></span>
+            <span ng-class="{'header-link': thisWeekFlag}" ng-click="setGraphData('week')"><a ng-class="{'active-underline': thisWeekFlag, 'color-grey': !thisWeekFlag}">This Week</a></span>
+            <span ng-class="{'header-link': thisMonthFlag}" ng-click="setGraphData('month')"><a ng-class="{'active-underline': thisMonthFlag, 'color-grey': !thisMonthFlag}">This Month</a></span>
+            <span ng-class="{'header-link': thisYearFlag}" ng-click="setGraphData('year')"><a ng-class="{'active-underline': thisYearFlag, 'color-grey': !thisYearFlag}">This Year</a></span>
           </span>
         </div>
         <div class="dashboard_graph">
