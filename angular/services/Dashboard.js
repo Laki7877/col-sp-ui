@@ -67,6 +67,13 @@ module.exports = function (common, config, util, $log, $window) {
         });
     };
 
+    service.getRevt = function () {
+        return common.makeRequest({
+            url: '/Orders/Revenue?_filter=Today',
+            method: 'GET'
+        });
+    }
+
     service.getRevenue = function (type) {
         switch (type) {
 
