@@ -84,11 +84,14 @@ module.exports = function (common, config, util, $log, $window) {
                 });
                 break;
 
-            default:
+            case 'month':
                 return common.makeRequest({
-                    url: '/Orders/Revenue?_filter=ThisWeek',
+                    url: '/Orders/Revenue?_filter=ThisMonth',
                     method: 'GET'
                 });
+                break;
+
+            default:
                 break;
         }
     };

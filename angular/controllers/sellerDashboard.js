@@ -2,7 +2,9 @@
 module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window, $uibModal, NewsletterService){
 	'ngInject';
 
-	// Begin Week section
+	getTodayGraphData = function() {
+		return;
+	}
 	getWeekGraphData = function() {
 		$scope.labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 		var tempData = [];
@@ -21,18 +23,14 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	  //   console.log(points, evt);
 	  // };
 	};
-	// End Week Section
 
-	//Begin Day section
-
-	// return max date of month
 	getMaxDate = function(month, year) {
 		var d = new Date(year, month, 0);
 		var date = d.getDate();
 		return date;
 	};
 
-	getTodayGraphData = function() {
+	getMonthGraphData = function() {
 		var today = new Date();
 		var dd = today.getDate();
 		var mm = today.getMonth()+1; //January is 0!
@@ -48,7 +46,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 		 	tempData[i] = 0;
 		 }; 
 
-		Dashboard.getRevenue('today')
+		Dashboard.getRevenue('month')
 			.then(function(data){
 				for (var i = 0; i < data.length ; i++) {
 				 	tempData[data[i].Key-1] = data[i].Value;
@@ -59,7 +57,6 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 		$scope.labels = tempLabels;
 		$scope.data = [tempData];
 	};
-	// End day graph section
 
 	$scope.setGraphData = function(flag){
 		switch (flag) {
@@ -82,6 +79,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	    		$scope.thisWeekFlag  = false;
 				$scope.thisMonthFlag = true;
 				$scope.thisYearFlag = false;
+				return getMonthGraphData();
 	            break;
 	        case 'year':
         		$scope.todayFlag  = false;

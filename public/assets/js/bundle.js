@@ -4337,7 +4337,9 @@ module.exports = function($scope, $controller, SellerCouponService, LocalCategor
 module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$window", "$uibModal", "NewsletterService", function($scope, $rootScope, Dashboard, $log, storage, $window, $uibModal, NewsletterService){
 	'ngInject';
 
-	// Begin Week section
+	getTodayGraphData = function() {
+		return;
+	}
 	getWeekGraphData = function() {
 		$scope.labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 		var tempData = [];
@@ -4356,18 +4358,14 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 	  //   console.log(points, evt);
 	  // };
 	};
-	// End Week Section
 
-	//Begin Day section
-
-	// return max date of month
 	getMaxDate = function(month, year) {
 		var d = new Date(year, month, 0);
 		var date = d.getDate();
 		return date;
 	};
 
-	getTodayGraphData = function() {
+	getMonthGraphData = function() {
 		var today = new Date();
 		var dd = today.getDate();
 		var mm = today.getMonth()+1; //January is 0!
@@ -4383,7 +4381,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 		 	tempData[i] = 0;
 		 }; 
 
-		Dashboard.getRevenue('today')
+		Dashboard.getRevenue('month')
 			.then(function(data){
 				for (var i = 0; i < data.length ; i++) {
 				 	tempData[data[i].Key-1] = data[i].Value;
@@ -4394,7 +4392,6 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 		$scope.labels = tempLabels;
 		$scope.data = [tempData];
 	};
-	// End day graph section
 
 	$scope.setGraphData = function(flag){
 		switch (flag) {
@@ -4417,6 +4414,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 	    		$scope.thisWeekFlag  = false;
 				$scope.thisMonthFlag = true;
 				$scope.thisYearFlag = false;
+				return getMonthGraphData();
 	            break;
 	        case 'year':
         		$scope.todayFlag  = false;
@@ -11739,11 +11737,14 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
                 });
                 break;
 
-            default:
+            case 'month':
                 return common.makeRequest({
-                    url: '/Orders/Revenue?_filter=ThisWeek',
+                    url: '/Orders/Revenue?_filter=ThisMonth',
                     method: 'GET'
                 });
+                break;
+
+            default:
                 break;
         }
     };
