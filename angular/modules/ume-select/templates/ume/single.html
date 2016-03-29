@@ -5,7 +5,7 @@
 
 		<div ng-show="!focused" class="ume-btn"
 		 ng-class="{'ume-placeholder': !model }" aria-hidden="true"
-		 ng-click="focus(true)">{{ model.ProductNameEn || placeholder }}</div>
+		 ng-click="focus(true)">{{ itemValue(model) || placeholder }}</div>
 	</div>
 	<!-- choicelist.html -->
 	<div ng-include="'ume/choicelist'"></div>
