@@ -26,7 +26,7 @@
         <button class="btn btn-white btn-width-xxl" ng-click='redirectToShopSetting()' type="button"><?=$button_text?></button>
       <? elseif($type == 'redirectShopAppearance'): ?>
         <button class="btn btn-white btn-width-xxl" ng-click='redirectToShopAppearance()' type="button"><?=$button_text?></button>
-      <? elseif($type == 'redirectuseraccounts'): ?>
+      <? elseif($type == 'redirectUserAccounts'): ?>
         <button class="btn btn-white btn-width-xxl" ng-click='redirectToUserAccounts()' type="button"><?=$button_text?></button>
       <? elseif($type == 'redirectDashboard'): ?>
         <button class="btn btn-white btn-width-xxl" ng-click='redirectToDashboard()' type="button"><?=$button_text?></button>

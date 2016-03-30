@@ -190,7 +190,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     // CK editor options
     $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
     $scope.dataset = {
-      CombinedAttributeSets: []
+      CombinedAttributeSets: [],
+      Brands: []
     };
     $scope.dataset.AttributeSets = [{
       AttributeSetId: null,
@@ -744,9 +745,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.refresher.BrandLoading = false;
     $scope.refresher.Brands = function(q) {
       // TODO: too slow
-      if (!q) return
+      if (!q) return;
+      $scope.dataset.Brands = []; //searching
 
-    //   $scope.refresher.BrandLoading = true;
+      $scope.refresher.BrandLoading = true;
 
       return Brand.getAll({
         pageSize: 10,
@@ -754,11 +756,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }).then(function(ds) {
         $scope.refresher.BrandLoading = false;
         $scope.dataset.Brands = ds.data; // _.unionBy($scope.dataset.Brands, ds.data, 'BrandId');
-        // $scope.dataset.Brands.map(function(m) {
-        //   m._group = "Search Results";
-        //   return m;
-        // });
-        return $scope.dataset.Brands;
+        $scope.dataset.Brands = $scope.dataset.Brands.map(function(m) {
+          m._group = "Search Results";
+          return m;
+        });
+        // return $scope.dataset.Brands;
       });
 
 
