@@ -16239,17 +16239,18 @@ tr.angular-ui-tree-empty {
   border-radius: 2px;
   margin: auto;
   padding: 40px 30px 20px 30px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
-/* line 34, ../../../assets/_login.scss */
+/* line 35, ../../../assets/_login.scss */
 .login-page .btn-100 {
   width: 100%;
 }
-/* line 37, ../../../assets/_login.scss */
+/* line 38, ../../../assets/_login.scss */
 .login-page .alert .close {
   margin-top: 0;
 }
 
-/* line 41, ../../../assets/_login.scss */
+/* line 42, ../../../assets/_login.scss */
 .login-loading {
   margin-right: 5px;
 }
