@@ -13,10 +13,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           </span>
           <span class="font-size-18 header_name_space">Revenue</span>
           <span class="float-right group_span_right">
-            <span><a href="#" class="color-grey">Today</a></span>
-            <span class="header-link" href="#"><a class="active-underline">This Week</a></span>
-            <span><a href="#" class="color-grey">This Month</a></span>
-            <span><a href="#" class="color-grey">This Year</a></span>
+            <span ng-class="{'header-link': todayFlag}" ng-click="setGraphData('today')"><a ng-class="{'active-underline': todayFlag, 'color-grey': !todayFlag}">Today</a></span>
+            <span ng-class="{'header-link': thisWeekFlag}" ng-click="setGraphData('week')"><a ng-class="{'active-underline': thisWeekFlag, 'color-grey': !thisWeekFlag}">This Week</a></span>
+            <span ng-class="{'header-link': thisMonthFlag}" ng-click="setGraphData('month')"><a ng-class="{'active-underline': thisMonthFlag, 'color-grey': !thisMonthFlag}">This Month</a></span>
+            <span ng-class="{'header-link': thisYearFlag}" ng-click="setGraphData('year')"><a ng-class="{'active-underline': thisYearFlag, 'color-grey': !thisYearFlag}">This Year</a></span>
           </span>
         </div>
         <div class="dashboard_graph">
@@ -24,7 +24,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <!-- <canvas id="canvas" height="280"></canvas> -->
             <canvas id="line" class="chart chart-line" chart-data="data"
               chart-labels="labels" chart-legend="false" chart-series="line"
-              chart-click="onClick" chart-options="{maintainAspectRatio: true, bezierCurve : false}">
+              chart-click="onClick" chart-options='{maintainAspectRatio: true, bezierCurve : false, scaleBeginAtZero: true
+              ,tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %> ฿"}'>
             </canvas>
           </div>
         </div>
@@ -247,11 +248,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         </div>
 
         <div ng-repeat="product in topSellingItemsData  | limitTo:maxTopSellingItems" ng-show="topSellingItemsData.length != 0" class="group_container top_selling_field">
+            <img ng-show="product.FeatureImgUrl ==''" class="logo-img" src="<?= $this->asset('/assets/img/placeholder-no-image.png') ?>" />
             <img class="logo-img" src="{{product.FeatureImgUrl}}" />
-            <div class="column-text-ellipsis"><a href="#">{{product.ProductNameEn}}</a></div>
+            <div class="column-text-ellipsis"><a ng-click="linkToProduct(product.ProductId)">{{product.ProductNameEn}}</a></div>
         </div>
         <div ng-show="topSellingItemsData.length == 0" class="group_container top_selling_field">
-            <!-- <img class="logo-img" src="{{product.img_path}}" /> -->
             <div class="text-center">- No Top Selling Product -</div>
         </div>
       </div>

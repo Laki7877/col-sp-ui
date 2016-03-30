@@ -1,6 +1,6 @@
 var angular = require('angular');
 angular.module('umeSelect')
-    .directive('youMe', function ($rootScope, $templateCache, $compile, $timeout) {
+    .directive('youMe', function ($rootScope, $templateCache, $compile, $timeout, $filter) {
         return {
             restrict: 'AE',
             transclude: true,
@@ -11,14 +11,16 @@ angular.module('umeSelect')
                 delay: '@?delay',
                 autoClearSearch: '=?autoClearSearch',
                 refresh: '=refresh',
-                inRelationship: '=inRelationship'
+                inRelationship: '=?inRelationship',
+                itsComplicated: '=?itsComplicated',
+                displayBy: '@displayBy'
             },
             replace: true,
             priority: 1010,
             template: function (element, attrs) {
                 var tmpl = 'ume/single';
-                if(attrs.inRelationship){
-                    tmpl = 'ume/relationship';
+                if(attrs.inRelationship || attrs.itsComplicated){
+                    tmpl = 'ume/multiple';
                 }
                 var templateHTML = $templateCache.get(tmpl);
                 return templateHTML;
@@ -41,18 +43,37 @@ angular.module('umeSelect')
                     scope.model.splice(index, 1);
                 }
 
+                scope.tagify = function(tagValue){
+                    var X = {};
+                    _.set(X, scope.displayBy, tagValue);
+                    return X;
+                }
+
+                if(scope.itsComplicated){
+                    scope.choices.unshift(scope.tagify('New Tag'));
+                }
+
+                scope.itemValue = function(item){
+                    return _.get(item, scope.displayBy);
+                }
+
+                
+
                 scope.keyDown = function(evt){
                     if(evt.code == "ArrowDown"){
                         scope.highlightedIndex++;
                     }else if(evt.code == "ArrowUp"){
                         scope.highlightedIndex--;
-                    }else if(evt.code == "Enter"){
+                    }else if(evt.code == "Enter" || evt.code == "Comma"){
                         console.log("Keydown on id", scope._id);
                         if(scope.searchText == "") return;
+
                         $timeout(function (){
                             scope.$emit('focusLost', _id);
-                            scope.pickItem(scope.choices[scope.highlightedIndex]);
+                            var K = $filter('filter')(scope.choices, scope.searchText);
+                            scope.pickItem(K[scope.highlightedIndex]);
                         }, 250);
+
                     }else if(evt.code == "Backspace"){
 
                         if(scope.searchText.length > 0) return;
@@ -91,7 +112,15 @@ angular.module('umeSelect')
 
                 var effectiveText = '', searchTextTimeout;
                 var prevQ = {};
+                var loadQ = [];
                 scope.$watch('searchText', function () {
+
+                    if(scope.itsComplicated){
+                        scope.choices[0] = scope.tagify(scope.searchText);
+                    }
+                    scope.highlightedIndex = 0;
+
+                    if(!scope.refresh) return;
                     if(scope.searchText == "" || !scope.searchText) return;
                     if (scope.delay){
                         $timeout.cancel(scope.delay);
@@ -107,11 +136,13 @@ angular.module('umeSelect')
 
                         //execute search
                         scope.loading = true;
+                        loadQ.push(true);
 
                         prevQ.ts = new Date();
                         prevQ.searchText = scope.searchText;
                         scope.refresh(scope.searchText).then(function(){
-                            scope.loading = false;
+                            loadQ.pop();
+                            scope.loading = (loadQ.length > 0);
                             scope.notFound = (scope.choices.length == 0);
                         });
 
@@ -120,11 +151,14 @@ angular.module('umeSelect')
 
                 scope.pickItem = function(item){
                     if(!item) return;
-                    if(scope.inRelationship){
+                    if(scope.inRelationship || scope.itsComplicated){
                         scope.model.push(item);
                         scope.focus(true);
                         scope.searchText = "";
-                        scope.choices = [];
+
+                        if(!scope.itsComplicated){
+                            scope.choices = [];
+                        }
                     }else{
                         scope.model = item;
                         scope.focused = false;
@@ -137,6 +171,7 @@ angular.module('umeSelect')
                         //hardcoded list
                         scope.choices = [];
                     }
+                    scope.highlightedIndex = 0;
                 }
 
                 if(!scope.placeholder) scope.placeholder = "Select one..";

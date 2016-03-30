@@ -4341,42 +4341,132 @@ module.exports = function($scope, $controller, SellerCouponService, LocalCategor
 module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$window", "$uibModal", "NewsletterService", function($scope, $rootScope, Dashboard, $log, storage, $window, $uibModal, NewsletterService){
 	'ngInject';
 
-	  // Begin Week section
+	getTodayGraphData = function() {
+		$scope.labels = ["12PM", "2AM", "4AM", "6AM", "8AM", "10AM",
+						 "12AM", "2PM", "4PM", "6PM", "8PM", "10PM"];
+		var tempData = [];
 
-	  // $scope.labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-	  // $scope.data = [
-	  //   [65, 59, 80, 81, 56, 55, 40]
-	  // ];
+		for (var i = 0; i < $scope.labels.length ; i++) {
+		 	tempData[i] = 0;
+		 }; 
+		Dashboard.getRevenue('today')
+			.then(function(data){
+				console.log('today',data);
+				for (var i = 0; i < data.length ; i++) {
+				 	tempData[data[i].Key] = data[i].Value;
+				 };
+			});
+
+		$scope.data = [tempData];
+	};
+
+	getWeekGraphData = function() {
+		$scope.labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+		var tempData = [];
+
+		for (var i = 0; i < $scope.labels.length ; i++) {
+		 	tempData[i] = 0;
+		 }; 
+		Dashboard.getRevenue('week')
+			.then(function(data){
+				for (var i = 0; i < data.length ; i++) {
+				 	tempData[data[i].Key-1] = data[i].Value;
+				 };
+			});
+		$scope.data = [tempData];
 	  // $scope.onClick = function (points, evt) {
 	  //   console.log(points, evt);
 	  // };
+	};
 
-	Dashboard.getRevenue('todaye')
-		.then(function(data){
-			console.log('hello today: ', data);
-		});  
-	//Begin Day section
-	// return max date of month
 	getMaxDate = function(month, year) {
 		var d = new Date(year, month, 0);
 		var date = d.getDate();
 		return date;
 	};
 
-	var maxDate = getMaxDate(2, 2016);
+	getMonthGraphData = function() {
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth()+1; //January is 0!
+		var yyyy = today.getFullYear();
 
-	var tempLabels = [];
-	var tempData = [];
+		var maxDate = getMaxDate(mm, yyyy);
 
-	for (var i = 0; i < maxDate ; i++) {
-	 	tempLabels[i] = i + 1;
-	 	tempData[i] = Math.floor((Math.random() * 100) + 1);
-	 }; 
+		var tempLabels = [];
+		var tempData = [];
 
-	$scope.labels = tempLabels;
-	$scope.data = [tempData];
+		for (var i = 0; i < maxDate ; i++) {
+		 	tempLabels[i] = i + 1;
+		 	tempData[i] = 0;
+		 }; 
 
-	// End day graph section
+		Dashboard.getRevenue('month')
+			.then(function(data){
+				for (var i = 0; i < data.length ; i++) {
+				 	tempData[data[i].Key-1] = data[i].Value;
+				 };
+			});
+
+
+		$scope.labels = tempLabels;
+		$scope.data = [tempData];
+	};
+
+	getYearGraphData = function() {
+		$scope.labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+						 "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
+		var tempData = [];
+
+		for (var i = 0; i < $scope.labels.length ; i++) {
+		 	tempData[i] = 0;
+		 }; 
+		Dashboard.getRevenue('year')
+			.then(function(data){
+				console.log('year',data);
+				for (var i = 0; i < data.length ; i++) {
+				 	tempData[data[i].Key-1] = data[i].Value;
+				 };
+			});
+		$scope.data = [tempData];
+	};
+
+	$scope.setGraphData = function(flag){
+		switch (flag) {
+	        case 'today':
+        		$scope.todayFlag  = true;
+	    		$scope.thisWeekFlag  = false;
+				$scope.thisMonthFlag = false;
+				$scope.thisYearFlag = false;
+				return getTodayGraphData();
+	            break;
+	        case 'week':
+        		$scope.todayFlag  = false;
+	    		$scope.thisWeekFlag  = true;
+				$scope.thisMonthFlag = false;
+				$scope.thisYearFlag = false;
+				return getWeekGraphData();
+	            break;
+	        case 'month':
+        		$scope.todayFlag  = false;
+	    		$scope.thisWeekFlag  = false;
+				$scope.thisMonthFlag = true;
+				$scope.thisYearFlag = false;
+				return getMonthGraphData();
+	            break;
+	        case 'year':
+        		$scope.todayFlag  = false;
+	    		$scope.thisWeekFlag  = false;
+				$scope.thisMonthFlag = false;
+				$scope.thisYearFlag = true;
+				return getYearGraphData();
+	            break;
+	        default:
+        }
+	};
+
+	//Initiate graph data as Today Graph Data
+	$scope.setGraphData('today');
 
 	Dashboard.getNewsLetter()
 		.then(function(query) {
@@ -4477,9 +4567,6 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 
 		
 	};
-
-	// temp rating  score
-	// input api for product rating score
 
 	Dashboard.getProductRating()
 		.then(function(data){
@@ -5478,12 +5565,17 @@ module.exports = ["$scope", "Product", function($scope, Product) {
     };
 
     $scope.multiModel = [];
+    $scope.tagModel = [];
     $scope.cacheEnable = true;
-
+    $scope.kwdchoices = [{
+        TagName: "Sleep"
+    }, {
+        TagName: "Batman"
+    }, {
+        TagName: "Superman"
+    }];
     $scope.myModel = 1;
-
     $scope.choices = [];
-
     $scope.myConfig = {
         create: true,
         valueField: 'id',
@@ -11336,7 +11428,7 @@ angular.module('umeSelect')
 },{}],149:[function(require,module,exports){
 var angular = require('angular');
 angular.module('umeSelect')
-    .directive('youMe', ["$rootScope", "$templateCache", "$compile", "$timeout", function ($rootScope, $templateCache, $compile, $timeout) {
+    .directive('youMe', ["$rootScope", "$templateCache", "$compile", "$timeout", "$filter", function ($rootScope, $templateCache, $compile, $timeout, $filter) {
         return {
             restrict: 'AE',
             transclude: true,
@@ -11347,14 +11439,16 @@ angular.module('umeSelect')
                 delay: '@?delay',
                 autoClearSearch: '=?autoClearSearch',
                 refresh: '=refresh',
-                inRelationship: '=inRelationship'
+                inRelationship: '=?inRelationship',
+                itsComplicated: '=?itsComplicated',
+                displayBy: '@displayBy'
             },
             replace: true,
             priority: 1010,
             template: function (element, attrs) {
                 var tmpl = 'ume/single';
-                if(attrs.inRelationship){
-                    tmpl = 'ume/relationship';
+                if(attrs.inRelationship || attrs.itsComplicated){
+                    tmpl = 'ume/multiple';
                 }
                 var templateHTML = $templateCache.get(tmpl);
                 return templateHTML;
@@ -11377,18 +11471,37 @@ angular.module('umeSelect')
                     scope.model.splice(index, 1);
                 }
 
+                scope.tagify = function(tagValue){
+                    var X = {};
+                    _.set(X, scope.displayBy, tagValue);
+                    return X;
+                }
+
+                if(scope.itsComplicated){
+                    scope.choices.unshift(scope.tagify('New Tag'));
+                }
+
+                scope.itemValue = function(item){
+                    return _.get(item, scope.displayBy);
+                }
+
+                
+
                 scope.keyDown = function(evt){
                     if(evt.code == "ArrowDown"){
                         scope.highlightedIndex++;
                     }else if(evt.code == "ArrowUp"){
                         scope.highlightedIndex--;
-                    }else if(evt.code == "Enter"){
+                    }else if(evt.code == "Enter" || evt.code == "Comma"){
                         console.log("Keydown on id", scope._id);
                         if(scope.searchText == "") return;
+
                         $timeout(function (){
                             scope.$emit('focusLost', _id);
-                            scope.pickItem(scope.choices[scope.highlightedIndex]);
+                            var K = $filter('filter')(scope.choices, scope.searchText);
+                            scope.pickItem(K[scope.highlightedIndex]);
                         }, 250);
+
                     }else if(evt.code == "Backspace"){
 
                         if(scope.searchText.length > 0) return;
@@ -11427,7 +11540,15 @@ angular.module('umeSelect')
 
                 var effectiveText = '', searchTextTimeout;
                 var prevQ = {};
+                var loadQ = [];
                 scope.$watch('searchText', function () {
+
+                    if(scope.itsComplicated){
+                        scope.choices[0] = scope.tagify(scope.searchText);
+                    }
+                    scope.highlightedIndex = 0;
+
+                    if(!scope.refresh) return;
                     if(scope.searchText == "" || !scope.searchText) return;
                     if (scope.delay){
                         $timeout.cancel(scope.delay);
@@ -11443,11 +11564,13 @@ angular.module('umeSelect')
 
                         //execute search
                         scope.loading = true;
+                        loadQ.push(true);
 
                         prevQ.ts = new Date();
                         prevQ.searchText = scope.searchText;
                         scope.refresh(scope.searchText).then(function(){
-                            scope.loading = false;
+                            loadQ.pop();
+                            scope.loading = (loadQ.length > 0);
                             scope.notFound = (scope.choices.length == 0);
                         });
 
@@ -11456,11 +11579,14 @@ angular.module('umeSelect')
 
                 scope.pickItem = function(item){
                     if(!item) return;
-                    if(scope.inRelationship){
+                    if(scope.inRelationship || scope.itsComplicated){
                         scope.model.push(item);
                         scope.focus(true);
                         scope.searchText = "";
-                        scope.choices = [];
+
+                        if(!scope.itsComplicated){
+                            scope.choices = [];
+                        }
                     }else{
                         scope.model = item;
                         scope.focused = false;
@@ -11473,6 +11599,7 @@ angular.module('umeSelect')
                         //hardcoded list
                         scope.choices = [];
                     }
+                    scope.highlightedIndex = 0;
                 }
 
                 if(!scope.placeholder) scope.placeholder = "Select one..";
@@ -11495,17 +11622,17 @@ require('./template.js');
 angular.module("umeSelect").run(["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('ume/choicelist',
-    "<div class=\"selectize-dropdown single demo-default\" ng-show=\"searchText.length > 0 && focused\" style=\"width: 100%\"><div class=selectize-dropdown-content><div data-group=Climbing class=optgroup><div ng-click=pickItem(item) data-value=bolts ng-class=\"{'ume-highlighted' : $index == highlightedIndex}\" data-selectable ng-repeat=\"item in choices\" class=option>{{ item.ProductNameEn }}</div><div ng-if=\"choices.length == 0 && notFound && !loading\" data-selectable class=option>No result for search term '{{ searchText }}'</div></div></div></div>"
+    "<div class=\"selectize-dropdown single demo-default\" ng-show=\"searchText.length > 0 && focused\" style=\"width: 100%\"><div class=selectize-dropdown-content><div data-group=Climbing class=optgroup><div ng-click=pickItem(item) data-value={{item}} ng-class=\"{'ume-highlighted' : $index == highlightedIndex}\" data-selectable ng-repeat=\"item in (choices | filter : searchText) track by $index\" class=option>{{ itemValue(item) }}</div><div ng-if=\"(choices | filter : searchText).length == 0 && notFound && !loading\" data-selectable class=option>No result for search term '{{ searchText }}'</div></div></div></div>"
   );
 
 
-  $templateCache.put('ume/relationship',
-    "<div class=\"selectize-control single\"><div class=\"selectize-input items not-full has-options has-items\" ng-class=\"{'ume-search' : !loading, 'ume-loading': loading, 'input-active': focused}\"><div ng-repeat=\"item in model\" style=\"margin-right: 5px\" class=\"item btn btn-primary btn-xs\" aria-hidden=true>{{ item.ProductNameEn }} <a ng-click=breakUp($index) class=\"glyphicon glyphicon-remove\" style=\"color:white !important; opacity: 0.7; font-size: x-small\"></a></div><input ng-focus=focus() ng-keydown=keyDown($event) ume-id=\"{{ _id }}\" ume-focus=focusObtained ume-blur=focusLost autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" class=\"btn btn-xs\" style=\"max-width: 100px;text-align: left\"></div><div ng-include=\"'ume/choicelist'\"></div></div>"
+  $templateCache.put('ume/multiple',
+    "<div class=\"selectize-control single\"><div class=\"selectize-input items not-full has-options has-items\" ng-class=\"{'ume-search' : !loading, 'ume-loading': loading, 'input-active': focused}\"><div ng-repeat=\"item in (model) track by $index\" style=\"margin-right: 5px\" class=\"item btn btn-primary btn-xs\" aria-hidden=true>{{ itemValue(item) }} <a ng-click=breakUp($index) class=\"glyphicon glyphicon-remove\" style=\"color:white !important; opacity: 0.7; font-size: x-small\"></a></div><input ng-focus=focus() ng-keydown=keyDown($event) ume-id=\"{{ _id }}\" ume-focus=focusObtained ume-blur=focusLost autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" class=\"btn btn-xs\" style=\"max-width: 100px;text-align: left\"></div><div ng-include=\"'ume/choicelist'\"></div></div>"
   );
 
 
   $templateCache.put('ume/single',
-    "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-search' : !loading, 'ume-loading': loading, 'input-active': focused}\"><input ume-focus=focusObtained ume-blur=focusLost ume-id=\"{{ _id }}\" autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" ng-keydown=keyDown($event) ng-show=focused style=\"width: 100%\"><div ng-show=!focused class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ model.ProductNameEn || placeholder }}</div></div><div ng-include=\"'ume/choicelist'\"></div></div>"
+    "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-search' : !loading, 'ume-loading': loading, 'input-active': focused}\"><input ume-focus=focusObtained ume-blur=focusLost ume-id=\"{{ _id }}\" autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" ng-keydown=keyDown($event) ng-show=focused style=\"width: 100%\"><div ng-show=!focused class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ itemValue(model) || placeholder }}</div></div><div ng-include=\"'ume/choicelist'\"></div></div>"
   );
  }]);
 },{}],152:[function(require,module,exports){
@@ -11744,11 +11871,21 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
                 });
                 break;
 
-            default:
+            case 'month':
                 return common.makeRequest({
-                    url: '/Orders/Revenue?_filter=ThisWeek',
+                    url: '/Orders/Revenue?_filter=ThisMonth',
                     method: 'GET'
                 });
+                break;
+
+            case 'year':
+                return common.makeRequest({
+                    url: '/Orders/Revenue?_filter=ThisYear',
+                    method: 'GET'
+                });
+                break;
+
+            default:
                 break;
         }
     };

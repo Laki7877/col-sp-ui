@@ -2,42 +2,132 @@
 module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window, $uibModal, NewsletterService){
 	'ngInject';
 
-	  // Begin Week section
+	getTodayGraphData = function() {
+		$scope.labels = ["12PM", "2AM", "4AM", "6AM", "8AM", "10AM",
+						 "12AM", "2PM", "4PM", "6PM", "8PM", "10PM"];
+		var tempData = [];
 
-	  // $scope.labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-	  // $scope.data = [
-	  //   [65, 59, 80, 81, 56, 55, 40]
-	  // ];
+		for (var i = 0; i < $scope.labels.length ; i++) {
+		 	tempData[i] = 0;
+		 }; 
+		Dashboard.getRevenue('today')
+			.then(function(data){
+				console.log('today',data);
+				for (var i = 0; i < data.length ; i++) {
+				 	tempData[data[i].Key] = data[i].Value;
+				 };
+			});
+
+		$scope.data = [tempData];
+	};
+
+	getWeekGraphData = function() {
+		$scope.labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+		var tempData = [];
+
+		for (var i = 0; i < $scope.labels.length ; i++) {
+		 	tempData[i] = 0;
+		 }; 
+		Dashboard.getRevenue('week')
+			.then(function(data){
+				for (var i = 0; i < data.length ; i++) {
+				 	tempData[data[i].Key-1] = data[i].Value;
+				 };
+			});
+		$scope.data = [tempData];
 	  // $scope.onClick = function (points, evt) {
 	  //   console.log(points, evt);
 	  // };
+	};
 
-	Dashboard.getRevenue('todaye')
-		.then(function(data){
-			console.log('hello today: ', data);
-		});  
-	//Begin Day section
-	// return max date of month
 	getMaxDate = function(month, year) {
 		var d = new Date(year, month, 0);
 		var date = d.getDate();
 		return date;
 	};
 
-	var maxDate = getMaxDate(2, 2016);
+	getMonthGraphData = function() {
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth()+1; //January is 0!
+		var yyyy = today.getFullYear();
 
-	var tempLabels = [];
-	var tempData = [];
+		var maxDate = getMaxDate(mm, yyyy);
 
-	for (var i = 0; i < maxDate ; i++) {
-	 	tempLabels[i] = i + 1;
-	 	tempData[i] = Math.floor((Math.random() * 100) + 1);
-	 }; 
+		var tempLabels = [];
+		var tempData = [];
 
-	$scope.labels = tempLabels;
-	$scope.data = [tempData];
+		for (var i = 0; i < maxDate ; i++) {
+		 	tempLabels[i] = i + 1;
+		 	tempData[i] = 0;
+		 }; 
 
-	// End day graph section
+		Dashboard.getRevenue('month')
+			.then(function(data){
+				for (var i = 0; i < data.length ; i++) {
+				 	tempData[data[i].Key-1] = data[i].Value;
+				 };
+			});
+
+
+		$scope.labels = tempLabels;
+		$scope.data = [tempData];
+	};
+
+	getYearGraphData = function() {
+		$scope.labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+						 "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
+		var tempData = [];
+
+		for (var i = 0; i < $scope.labels.length ; i++) {
+		 	tempData[i] = 0;
+		 }; 
+		Dashboard.getRevenue('year')
+			.then(function(data){
+				console.log('year',data);
+				for (var i = 0; i < data.length ; i++) {
+				 	tempData[data[i].Key-1] = data[i].Value;
+				 };
+			});
+		$scope.data = [tempData];
+	};
+
+	$scope.setGraphData = function(flag){
+		switch (flag) {
+	        case 'today':
+        		$scope.todayFlag  = true;
+	    		$scope.thisWeekFlag  = false;
+				$scope.thisMonthFlag = false;
+				$scope.thisYearFlag = false;
+				return getTodayGraphData();
+	            break;
+	        case 'week':
+        		$scope.todayFlag  = false;
+	    		$scope.thisWeekFlag  = true;
+				$scope.thisMonthFlag = false;
+				$scope.thisYearFlag = false;
+				return getWeekGraphData();
+	            break;
+	        case 'month':
+        		$scope.todayFlag  = false;
+	    		$scope.thisWeekFlag  = false;
+				$scope.thisMonthFlag = true;
+				$scope.thisYearFlag = false;
+				return getMonthGraphData();
+	            break;
+	        case 'year':
+        		$scope.todayFlag  = false;
+	    		$scope.thisWeekFlag  = false;
+				$scope.thisMonthFlag = false;
+				$scope.thisYearFlag = true;
+				return getYearGraphData();
+	            break;
+	        default:
+        }
+	};
+
+	//Initiate graph data as Today Graph Data
+	$scope.setGraphData('today');
 
 	Dashboard.getNewsLetter()
 		.then(function(query) {
@@ -138,9 +228,6 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 
 		
 	};
-
-	// temp rating  score
-	// input api for product rating score
 
 	Dashboard.getProductRating()
 		.then(function(data){
