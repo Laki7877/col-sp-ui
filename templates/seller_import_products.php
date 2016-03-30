@@ -240,7 +240,7 @@
 											nc-template-options-path="productImport/Upload">
 											<div type="text" class="width-100-percent form-control get_file" ng-delegate="f"><span ng-if="uploader.queue.length == 0" class="color-grey">Browse to upload</span><span ng-if="uploader.queue.length > 0">{{ uploader.queue[uploader.queue.length-1].file.name }}</span></div>
 											<i class="fa fa-folder-open fa-lg color-dark-grey fa-input-icon"></i>
-											<input nv-file-select uploader="uploader" accept=".csv" type="file" class="my_file"/>
+											<input nv-file-select uploader="uploader" accept=".csv" type="file" ng-delegatee="f" class="my_file"/>
 										</div>
 										<div nc-template="common/input/form-group-with-label" nc-label="">
 											<button ng-click="import()" class="button-size-normal btn btn-blue btn-width-xl" ng-disabled="uploader.queue.length == 0" type="button">Import</button>
