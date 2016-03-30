@@ -145,16 +145,19 @@
 
 .variation-table
 	$table-column-padding: $table-cell-padding * 2
-	width: 940px
+	width: 100%
 	padding-bottom: 15px
 
 	> tbody > tr > td
 		border-color: $color-light-grey
 	> thead > tr > th
 		border-bottom: 0px
-
-	.column-sku, .column-price, .column-sale-price, .column-inventory, .column-pid
-		width: 100px + $table-column-padding
+	.column-variant
+		min-width: 200px
+	.column-pid
+		min-width: 120px
+	.column-sku, .column-price, .column-sale-price, .column-inventory
+		width: auto
 	.column-detail
 		width: $button-width-xl + $table-column-padding
 	.column-visibility
