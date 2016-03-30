@@ -8,43 +8,119 @@
     $scope.products     = [];
     $scope.categorys    = [];
 
-    // model for binding
-    $scope.CMSRelProductCategory = {};
-    $scope.CMSCategoryModel = {
-        CMSRelProductCategory: []
-    };
 
-    $scope.dataSet = {
-        criteria: [{ value: '0', text: 'Not Set' },
-            { value: 'Brand', text: 'Brand' },
-            { value: 'Tag', text: 'Tag' }
-        ],
-        filters: [{ value: 'None', text: 'No filter' },
-            { text: 'Brand', value: 'Brand' },
-            { text: 'Global Category', value: 'GlobalCategory' },
-            { text: 'Shop', value: 'Shop' },
-            { text: 'Email', value: 'Email' }
-        ]
-    };
+    var sortableEle;
 
-    $scope.models = {
-        selected: null,
-        lists: { "Product": [], "CategoryProduct": [] }
-    };
+    $scope.dragStart = function (e, ui) {
+        ui.item.data('start', ui.item.index());
+    }
+    $scope.dragEnd = function (e, ui) {
+        var start = ui.item.data('start'),
+            end = ui.item.index();
 
-    // Generate initial model
-    for (var i = 1; i <= 3; ++i) {
-        $scope.models.lists.Product.push({ label: "Item A" + i });
-        $scope.models.lists.CategoryProduct.push({ label: "Item B" + i });
+        $scope.formData.CategoryProductList.splice(end, 0,
+            $scope.formData.CategoryProductList.splice(start, 1)[0]);
+
+        $scope.$apply();
+
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+        
     }
 
-    // Model to JSON for demo purpose
-    $scope.$watch('models', function (model) {
-        $scope.modelAsJson = angular.toJson(model, true);
-    }, true);
+    sortableEle = $('#sortable').sortable({
+        start: $scope.dragStart,
+        update: $scope.dragEnd
+    });
+
+    $scope.moveUp = function (start, end) {
+
+        // swap object
+        $scope.formData.CategoryProductList.splice(end, 0,
+           $scope.formData.CategoryProductList.splice(start, 1)[0]);
+
+        // update seq
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+    };
+
+    $scope.moveDown = function (start, end) {
+
+        // swap object
+        $scope.formData.CategoryProductList.splice(end, 0,
+           $scope.formData.CategoryProductList.splice(start, 1)[0]);
+
+        // update seq
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+    };
+
+    // update sequence
+    function updateSequence() {
+
+        var seq = 0;
+
+        angular.forEach($scope.formData.CategoryProductList, function (item) {
+            seq++;
+            item.Sequence = seq;
+        });
+    }
+
+    $scope.selectOptionText = '- Choose Action -';
+    $scope.selectOption = function (param) {
+        $scope.selectOptionText = param;
+    };
+
+    // check all item
+    $scope.checkAll = function (isChecked) {
+
+        $scope.isCheckedAll != isChecked;
+
+        if (!isChecked) {
+            angular.forEach($scope.formData.CategoryProductList, function (item) {
+                item.IsChecked = false;
+            });
+        }
+        else {
+            angular.forEach($scope.formData.CategoryProductList, function (item) {
+                item.IsChecked = true;
+            });
+        }
+
+        $scope.sumProductSelected();
+    };
+
+    // check once item
+    $scope.checkOnce = function (item, isChecked) {
+
+        if (!isChecked) {
+            item.IsChecked = false;
+        }
+        else {
+            item.IsChecked = true;
+        }
+
+        $scope.sumProductSelected();
+    };
+
+    $scope.sumProductSelected = function () {
+
+        var sum = 0;
+
+        angular.forEach($scope.formData.CategoryProductList, function (item) {
+            if (item.IsChecked) {
+                sum++;
+            }
+        });
+
+        return sum;
+    };
 
 
-    // Add a Item to the list
+    // Add Item to the list
     $scope.addProductItem = function () {
 
         // open modal
@@ -160,18 +236,54 @@
             }
         })
         .result.then(function (result) {
-            $scope.products = result;
-            $scope.loading = false;
-            $scope.isEmpty = false;
+            if ($scope.formData.CategoryProductList === undefined) {
+                $scope.formData.CategoryProductList = [];
+            }
+
+            angular.forEach(result, function (product) {
+                if (!isDuplicateProduct(product.Pid)) {
+                    var obj = angular.copy(product);
+                    obj.Sequence = getNewProductSequence();
+                    obj.ProductBoxBadge = product.ProductNameEn;
+                    $scope.formData.CategoryProductList.push(obj);
+                }
+            })
         });
     };
 
-    //Remove
-    $scope.removeItem = function (item, index) {
+    // check product duplicate before add to list
+    function isDuplicateProduct(pId) {
+        var isDuplicate = false;
+        angular.forEach($scope.formData.CategoryProductList, function (product) {
+            if (product.Pid == pId)
+                isDuplicate = true;
+        });
+
+        return isDuplicate;
+    }
+
+    // gen product seq
+    function getNewProductSequence() {
+        return $scope.formData.CategoryProductList.length + 1;
+    }
+
+    // remove product item
+    $scope.removeOnceItem = function (index) {
         $scope.formData.CategoryProductList.splice(index, 1);
     }
 
-    // Get Total Items
+    // remove multiple product
+    $scope.removeMultiItem = function () {
+        for (var i = $scope.formData.CategoryProductList.length - 1; i >= 0; i--) {
+            if ($scope.formData.CategoryProductList[i].IsChecked) {
+                $scope.formData.CategoryProductList.splice(i, 1);
+            }
+        }
+
+        $scope.isCheckedAll = false;
+    }
+
+    // get total product items
     $scope.getTotalItems = function () {
         return $scope.formData.CategoryProductList === undefined ? 0 : $scope.formData.CategoryProductList.length;
     };

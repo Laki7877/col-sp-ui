@@ -113,6 +113,7 @@ module.exports = ['$q', 'common', function ($q, common) {
         };
 
         service.create = function (obj) {
+            console.log(obj)
             return common.makeRequest({
                 method: 'POST',
                 url: '/CMS/CMSCategory',

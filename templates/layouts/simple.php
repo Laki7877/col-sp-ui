@@ -239,7 +239,7 @@
         </div>
     </script>
 
-    <!-- Add Product To Category -->
+    <!-- Add Product To Category --><!--
     <script type="text/ng-template" id="templates/admin-cms-category-manage-add-item.html">
         <div class="modal-header">
             <h3 class="modal-title">Add Product Item</h3>
@@ -247,14 +247,14 @@
         <div class="modal-body">
             <form class="form-horizontal margin-top-20" name="form" novalidate>
 
-                <!-- Search Products -->
+                --><!-- Search Products --><!--
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="form-section">
                             <div class="form-section-header"><h2>Search Products</h2></div>
                             <div class="form-section-content">
 
-                              <!-- Category -->
+                              --><!-- Category --><!--
                               <div class="form-group">
                                 <label class="control-label col-xs-3">Category</label>
                                 <div class="col-xs-7">
@@ -267,7 +267,7 @@
                                 </div>
                               </div>
 
-                              <!-- Brand -->
+                              --><!-- Brand --><!--
                               <div class="form-group">
                                   <label class="control-label col-xs-3">Brand</label>
                                   <div class="col-xs-7">
@@ -280,7 +280,7 @@
                                   </div>
                               </div>
                               
-                              <!-- Tag -->
+                              --><!-- Tag --><!--
                               <div class="form-group">
                                   <label class="control-label col-xs-3">Tag</label>
                                   <div class="col-xs-7">
@@ -294,7 +294,7 @@
                                   </div>
                               </div>
                               
-                              <!-- Search By -->
+                              --><!-- Search By --><!--
                               <div class="form-group">
                                   <label class="control-label col-xs-3">Search By</label>
                                   <div class="col-xs-7">
@@ -350,14 +350,14 @@
                                         </table>
                                     </div>
 
-                                    <!-- loading -->
+                                    --><!-- loading --><!--
                                     <div class="empty-section margin-top-20 margin-bottom-20" ng-show="loading">
                                       <span>
                                         <img class="loading-img" src="/assets/img/loader.gif" />
                                       </span>Loading...</span>
                                     </div>
 
-                                    <!-- empty -->
+                                    --><!-- empty --><!--
                                     <div class="local-category-page margin-bottom-20" ng-show="isEmpty">
                                       <div class="local-category-empty-section margin-top-20">
                                         <span class="">
@@ -391,7 +391,7 @@
                 </div>
             </form>
         </div>
-    </script>
+    </script>-->
 
     <!-- Collection -->
     <script type="text/ng-template" id="templates/admin-cms-collection-manage.html">

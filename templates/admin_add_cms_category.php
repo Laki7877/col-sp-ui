@@ -1,8 +1,8 @@
 <?php 
 
 	$menus = [
-      ["id" => "information", "name" => 'Add Information', "class" => "active"],
-      ["id" => "items", "name" => 'Add Product'],
+      ["id" => "information", "name" => 'Information', "class" => "active"],
+      ["id" => "items", "name" => 'Product'],
     ];
 
      $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System'])
@@ -16,7 +16,7 @@
     <form class="ah-form sticky-mainform-action" name="form" ng-show="!loading && !saving" novalidate>
 
         <div>
-            <?php $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "CMS Category/{{title}}", 'border_class' => 'no-padding']) ?>
+            <?php $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "{{title}}", 'border_class' => 'no-padding']) ?>
         </div>
 
         <div class="add-product-body">

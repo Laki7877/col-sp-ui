@@ -216,11 +216,11 @@ class AdminController extends Controller
 	}
 	public static function addCMSCategory($params)
 	{
-		return View::render('admin_add_cms_category', ['title' => 'Add Admin CMS Category']);
+		return View::render('admin_add_cms_category', ['title' => 'Add Category']);
 	}
 	public static function editCMSCategory($params)
 	{
-		return View::render('admin_add_cms_category', ['params' => json_encode_n($params), 'title' => 'Admin CMS Category Detail']);
+		return View::render('admin_add_cms_category', ['params' => json_encode_n($params), 'title' => 'Detail']);
 	}
 
 	// CMS Collection
