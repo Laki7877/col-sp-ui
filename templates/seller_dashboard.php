@@ -48,15 +48,12 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         <div class="group_container no-padding">
           <table class="table table_dashboard table_recent_order">
             <tbody>
-              <tr ng-repeat="order in newOrdersData | orderBy: 'date' | limitTo:maxNewOrders" ng-show="newOrdersData.length != 0">
-                <td>
-                  {{order.OrderDate | date:'MM/dd/yyyy'}}
-                </td>
+              <tr ng-click="linkToOrder(order.OrderId)" ng-repeat="order in newOrdersData | orderBy: 'date' | limitTo:maxNewOrders" ng-show="newOrdersData.length != 0">
                 <td>
                   {{order.OrderIdText}}
                 </td>
                 <td>
-                  {{order.TotalAmt | currency: ' ': 2}}
+                  Total Price: {{order.TotalAmt | currency: ' ': 2}}
                 </td>
                 <td>
                   <span ng-class="getColorClass(order.Status)">
@@ -65,8 +62,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                   </span>
                 </td>
                 <td>
-                  <button class="btn btn-white btn-width-default" ng-click="linkToOrder(order.OrderId)">View</button>
+                  {{order.OrderDate | date:'MM/dd/yyyy'}}
                 </td>
+                <!-- <td>
+                  <button class="btn btn-white btn-width-default" ng-click="linkToOrder(order.OrderId)">View</button>
+                </td> -->
               </tr>
               <tr ng-show="newOrdersData.length == 0">
                 <td class="empty_data">- No New Orders -</td>
@@ -92,10 +92,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         <div class="group_container">
           <table class="table table_dashboard table_lsa">
             <tbody>
-              <tr ng-repeat="product in lowStockAlertData | orderBy: 'Quantity' | limitTo:maxLowStockAlert" ng-show="lowStockAlertData.length != 0">
-                <td>
-                  {{product.QuantityText}}
-                </td>
+              <tr ng-click="linkToProduct(product.ProductId)" ng-repeat="product in lowStockAlertData | orderBy: 'Quantity' | limitTo:maxLowStockAlert" ng-show="lowStockAlertData.length != 0">
                 <td>
                   {{product.PidText}}
                 </td>
@@ -103,8 +100,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                   {{product.ProductNameEn}}
                 </td>
                 <td>
-                  <button class="btn btn-white btn-width-default" ng-click="linkToProduct(product.ProductId)">View</button>
+                  {{product.QuantityText}}
                 </td>
+                <!-- <td>
+                  <button class="btn btn-white btn-width-default" ng-click="linkToProduct(product.ProductId)">View</button>
+                </td> -->
               </tr>
 
               <tr ng-show="lowStockAlertData.length == 0">
@@ -131,7 +131,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         <div class="group_container">
           <table class="table table_dashboard table_newsletter">
             <tbody>
-              <tr ng-repeat="letter in newsLettersData" ng-show="newsLettersData.length != 0">
+              <tr ng-click="open(letter)" ng-repeat="letter in newsLettersData" ng-show="newsLettersData.length != 0">
                 <td class="column-text-ellipsis">
                   <div>{{letter.Subject}}</div>
                   <div class="newsletter_date">Publish on {{letter.PublishedDt | date:"MM/dd/yyyy 'at' HH:mm"}}</div>

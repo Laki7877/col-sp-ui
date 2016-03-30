@@ -224,6 +224,11 @@
 			&.column-text-ellipsis
 				max-width: 0
 
+		tr:hover
+			cursor: pointer
+			td
+				color: $color-theme
+
 		tr:last-child
 			td
 				border-bottom: 0
@@ -236,17 +241,16 @@
 
 	.table_recent_order
 		td:first-child
-			width: 100px
-
-		td:nth-child(2)
 			width: 120px
 
-		td:nth-child(3)
-			width: 	120px
+		td:nth-child(2)
+			width: 200px
 
-		td:last-child
-			padding-left: 30px
-			width: 56px
+		td:nth-child(3)
+			width: 200px
+
+		td:nth-child(4)
+			text-align: right
 
 		td.empty_data
 			text-align:	center
@@ -254,15 +258,13 @@
 
 	.table_lsa
 		td:first-child
-			width: 100px
-
-		td:nth-child(2)
 			width: 120px
 
+		td:nth-child(2)
+			width: 300px
 
-		td:last-child
-			padding-left: 30px
-			width: 80px
+		td:nth-child(3)
+			text-align: right
 
 		td.empty_data
 			text-align:	center

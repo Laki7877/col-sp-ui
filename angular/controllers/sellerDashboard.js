@@ -9,7 +9,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 
 		for (var i = 0; i < $scope.labels.length ; i++) {
 		 	tempData[i] = 0;
-		 }; 
+		 };
 		Dashboard.getRevenue('today')
 			.then(function(data){
 				console.log('today',data);
@@ -27,7 +27,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 
 		for (var i = 0; i < $scope.labels.length ; i++) {
 		 	tempData[i] = 0;
-		 }; 
+		 };
 		Dashboard.getRevenue('week')
 			.then(function(data){
 				for (var i = 0; i < data.length ; i++) {
@@ -60,7 +60,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 		for (var i = 0; i < maxDate ; i++) {
 		 	tempLabels[i] = i + 1;
 		 	tempData[i] = 0;
-		 }; 
+		 };
 
 		Dashboard.getRevenue('month')
 			.then(function(data){
@@ -81,7 +81,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 
 		for (var i = 0; i < $scope.labels.length ; i++) {
 		 	tempData[i] = 0;
-		 }; 
+		 };
 		Dashboard.getRevenue('year')
 			.then(function(data){
 				console.log('year',data);
@@ -140,7 +140,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 			$scope.lowStockAlertData = query.data;
 
 			for (var i = $scope.lowStockAlertData.length - 1; i >= 0; i--) {
-				$scope.lowStockAlertData[i].PidText = 'ID: ' + $scope.lowStockAlertData[i].Pid;
+				$scope.lowStockAlertData[i].PidText = 'PID: ' + $scope.lowStockAlertData[i].Pid;
 				$scope.lowStockAlertData[i].QuantityText = 'QTY: ' + $scope.lowStockAlertData[i].Quantity;
 			};
 			return $scope.lowStockAlertData;
@@ -151,7 +151,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 			$scope.outOfStockData = query.data;
 
 			for (var i = $scope.outOfStockData.length - 1; i >= 0; i--) {
-				$scope.outOfStockData[i].PidText = 'ID: ' + $scope.outOfStockData[i].Pid;
+				$scope.outOfStockData[i].PidText = 'PID: ' + $scope.outOfStockData[i].Pid;
 				$scope.outOfStockData[i].QuantityText = 'QTY: ' + $scope.outOfStockData[i].Quantity;
 			};
 			return $scope.outOfStockData;
@@ -173,7 +173,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	Dashboard.getTopSellingItems()
 		.then(function(data){
 			return $scope.topSellingItemsData = data;
-		}); 
+		});
 
 	getColoredRank = function(type, data) {
 		switch(type){
@@ -226,7 +226,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 				return 'N/A'
 		}
 
-		
+
 	};
 
 	Dashboard.getProductRating()
