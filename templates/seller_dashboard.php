@@ -64,18 +64,16 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                 <td>
                   {{order.OrderDate | date:'MM/dd/yyyy'}}
                 </td>
-                <!-- <td>
-                  <button class="btn btn-white btn-width-default" ng-click="linkToOrder(order.OrderId)">View</button>
-                </td> -->
-              </tr>
-              <tr ng-show="newOrdersData.length == 0">
-                <td class="empty_data">- No New Orders -</td>
               </tr>
             </tbody>
           </table>
+          <div class="loading_text loading_row" ng-show="newOrdersData==undefined">
+            <i class="fa fa-spinner fa-spin color-theme margin-right-10"></i>
+            Loading...
+          </div>
           <div class="view_all_row" ng-show="newOrdersData.length == 10">
             <a ng-click="linkToOrdersPage()">View All</a>
-          </div>
+          </div>  
         </div>
       </div>
 
@@ -112,6 +110,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
               </tr>
             </tbody>
           </table>
+          <div class="loading_text loading_row" ng-show="lowStockAlertData==undefined">
+            <i class="fa fa-spinner fa-spin color-theme margin-right-10"></i>
+            Loading...
+          </div>
           <div class="view_all_row" ng-show="lowStockAlertData.length == 10">
             <a ng-click="linkToLowStock()">View All</a>
           </div>
@@ -145,6 +147,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
               </tr>
             </tbody>
           </table>
+          <div class="loading_text loading_row" ng-show="newsLettersData==undefined">
+            <i class="fa fa-spinner fa-spin color-theme margin-right-10"></i>
+            Loading...
+          </div>
           <div class="view_all_row" ng-show="newsLettersData.length == 10">
             <a ng-click="linkToAllNewsletters()">View All</a>
           </div>

@@ -15067,6 +15067,11 @@ form h6 {
   padding-top: 15px;
   border-top: solid 1px #BCC7D5;
 }
+/* line 297, ../../../assets/_seller_page.sass */
+#dashboard_page .loading_row {
+  text-align: center;
+  margin-top: 15px;
+}
 
 /* line 1, ../../../assets/_add_product_page.sass */
 .nav-tabs {
