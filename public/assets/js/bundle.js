@@ -4816,7 +4816,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", fun
 }];
 },{}],58:[function(require,module,exports){
 
-module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", function($scope, $rootScope, Onboarding, $log, $window){
+module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "storage", "$window", function($scope, $rootScope, Onboarding, $log, storage, $window){
 	'ngInject';
 
 	$scope.$on('change-password', function() {
@@ -4884,7 +4884,9 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
 		if($scope.checkBeforeLaunch) {
 			Onboarding.launchShop()
 				.then(function(){
-					$window.location.reload();
+					$rootScope.Profile.Shop.Status = 'AT';
+					$scope.ShopInActiveStatus = ($rootScope.Profile.Shop.Status == 'NA');
+					storage.storeCurrentUserProfile($rootScope.Profile);
 				});
 		}
 		else {
