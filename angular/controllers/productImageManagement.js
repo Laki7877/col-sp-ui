@@ -126,7 +126,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     //Prevent unsaved event
     $scope.onUnsave = function() {
     	if($scope.dirty) {
-    		return confirm('Your change will not be saved.');
+    		return !confirm('Your change will not be saved.');
     	}
     	return false;
     };
