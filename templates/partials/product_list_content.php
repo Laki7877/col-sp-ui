@@ -1,5 +1,6 @@
 <div id="add-product-more-option-tab-content">
-	
+  <pre>{{advanceSearchParams|json}}</pre>
+
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="form-section">
@@ -44,7 +45,7 @@
       </div>
     </div>
   </div>
-
+  <pre>{{  }}</pre>
   <div class="table-section">
     <table class="table table-curved product-list-table">
       <thead>

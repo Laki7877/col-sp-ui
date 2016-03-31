@@ -20,7 +20,8 @@ module.exports = function(common, $q, util) {
 			UrlKeyEn: "",
 			Visibility: true,
 			CategoryBannerTh: [],
-			CategoryBannerEn: []
+			CategoryBannerEn: [],
+			TitleShowcase: false
 		}, extend);
 	};
 	service.deserialize = function(data) {
