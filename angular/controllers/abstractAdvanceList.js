@@ -102,6 +102,5 @@ module.exports = function($scope, $controller, options, Product, LocalCategorySe
 			$scope.params._offset = 0;
 			$scope.bulkContainer.length = 0;
 		}
-		$scope.reload();
 	});
 }

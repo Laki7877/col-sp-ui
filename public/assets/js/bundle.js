@@ -823,7 +823,6 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 			$scope.params._offset = 0;
 			$scope.bulkContainer.length = 0;
 		}
-		$scope.reload();
 	});
 }]
 
@@ -967,6 +966,7 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 		if(_.isEqual(a,b)) {
 			return;
 		}
+		console.log('params');
 		$scope.reload(a,b);
 	}, true);
 

@@ -137,6 +137,7 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 		if(_.isEqual(a,b)) {
 			return;
 		}
+		console.log('params');
 		$scope.reload(a,b);
 	}, true);
 
