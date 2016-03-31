@@ -1,4 +1,4 @@
-<?= $this->layout('layouts/page-with-sidebar', ['title' => 'Administration System']) ?>
+<?= $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal']) ?>
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerShopSettingCtrl" ng-init='init()'>
@@ -20,12 +20,11 @@
 						                    <h2>Shop Information</h2></div>
 						                <div class="form-section-content">
 											<!-- Shop Status -->
-											<div ng-show="statusChangeable" 
-											ng-template="common/input/dropdown"
+											<div ng-template="common/input/dropdown"
 												ng-template-options="{
 												'label' : 'Shop Status',
 												}">
-												<ui-select ng-model="formData.Status" search-enabled="false" required>
+												<ui-select ng-model="formData.Status" search-enabled="false" ng-disabled="!statusChangeable" required>
 												<ui-select-match placeholder="- Select Shop Status -">
 												<span ng-bind="$select.selected.name"></span>
 												</ui-select-match>
