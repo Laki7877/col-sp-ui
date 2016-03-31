@@ -210,6 +210,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     }];
     $scope.dataset.Brands = [];
     $scope.enableVariation = function() {
+      if($scope.uploader.isUploading){
+          return $scope.alert.error('<strong>Please Wait</strong> - One or more image upload is in progress..');
+      }
+      $scope.alert.close();
       $scope.controlFlags.variation = 'enable';
     }
 
@@ -533,7 +537,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 }
 
                 checkSchema(inverseFormData);
-                
+
               });
 
           }, function(error) {
