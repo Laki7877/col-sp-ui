@@ -3479,10 +3479,11 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
 			keyboard: false,
 			backdrop: 'static',
 			templateUrl: 'product/modalImportProgress',
-			controller: ["$scope", "$uibModalInstance", "$timeout", "file", "uploader", function($scope, $uibModalInstance, $timeout, file, uploader) {
+			controller: ["$scope", "$uibModalInstance", "$timeout", "file", "uploader", "title", function($scope, $uibModalInstance, $timeout, file, uploader, title) {
 				$scope.file = file;
 				$scope.file.upload();
 				$scope.server = 0;
+				$scope.title = title;
 				$scope.$watch('file.isUploaded', function(val) {
 					$scope.server = 1;
 					if(val) {
@@ -3498,6 +3499,9 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
 				},
 				uploader: function() {
 					return $scope.uploader;
+				},
+				title: function() {
+					return $scope.modalTitle;
 				}
 			}
 		});
@@ -3515,12 +3519,14 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
 		//Import new
 		$scope.method = 'POST';
 		$scope.title = 'Import - Add New Products'
-			$scope.update = false;
+		$scope.modalTitle = 'Adding Products';
+		$scope.update = false;
 
 		//Update only
 		if(!_.isNil(update) && update) {
 			$scope.method = 'PUT';
 			$scope.title = 'Import - Update Products';
+			$scope.modalTitle = 'Updating Products';
 			$scope.update = true;
 		}
 
@@ -3536,6 +3542,7 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
 		};
 
 		$scope.uploader.onProgressAll = function(progress) {
+
 		};
 
 		//Return list of error
@@ -11804,7 +11811,7 @@ var permission = {
 module.exports = {
   seller: generateRouteArray(seller),
   admin: generateRouteArray(admin),
-  reserve: ['add', 'select', 'import', 'export', 'reviews', 'images'],
+  reserve: ['add', 'select', 'import', 'import/update', 'export', 'reviews', 'images'],
   permission: permission
 }
 
@@ -15878,7 +15885,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('product/modalImportProgress',
-    "<div class=\"modal-header no-border\"><button type=button class=close ng-click=$dismiss()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">Adding Products</h2><div nc-loading-small=Processing...></div></div></div></div>"
+    "<div class=\"modal-header no-border\"><button type=button class=close ng-click=$dismiss()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">{{title}}</h2><div nc-loading-small=Processing...></div></div></div></div>"
   );
 
 

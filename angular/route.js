@@ -142,6 +142,6 @@ var permission = {
 module.exports = {
   seller: generateRouteArray(seller),
   admin: generateRouteArray(admin),
-  reserve: ['add', 'select', 'import', 'export', 'reviews', 'images'],
+  reserve: ['add', 'select', 'import', 'import/update', 'export', 'reviews', 'images'],
   permission: permission
 }

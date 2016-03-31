@@ -185,11 +185,8 @@
 														nc-template-options-path="productImport/Name"
 														nc-label="Name">{{ctrl.columnSearch.HeaderName}}</div>
 													<div nc-template="common/input/form-group-with-label"
-														nc-template-options-path="productImport/Description"
-														nc-label="Description">{{ctrl.columnSearch.Description}}</div>
-													<div nc-template="common/input/form-group-with-label"
 														nc-template-options-path="productImport/EnableVariation"
-														nc-label="Enable Variation">{{ctrl.columnSearch.IsVariation | mapDropdown: yesNoOptions}}</div>
+														nc-label="Enable Variation">{{ctrl.columnSearch.IsVariant | mapDropdown: yesNoOptions}}</div>
 													<div nc-template="common/input/form-group-with-label"
 														nc-template-options-path="productImport/AttributeType"
 														nc-label="Attribute Type">
@@ -201,7 +198,7 @@
 														<ul class="scrollable-content">
 															<li ng-repeat="attr in ctrl.columnSearch.AttributeValue track by $index">
 																<span>{{attr.AttributeValueEn}}</span>
-																<a class="margin-left-10" clipboard text="ctrl.AttributeValueEn">Copy to Clipboard</a>
+																<a class="margin-left-10" clipboard text="attr.AttributeValueEn">Copy to Clipboard</a>
 															</li>
 														</ul>
 													</div>
