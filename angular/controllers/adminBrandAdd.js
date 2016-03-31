@@ -46,14 +46,6 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 			url: '/admin/brands',
 			item: 'Brand',
 			service: BrandService,
-			onSave: function(scope) {
-				if(!_.isNil(scope.formData.BrandImage)) {
-					scope.form.BrandImage.$setValidity('required', true);
-				} else {
-					scope.form.BrandImage.$setValidity('required', false);
-				}
-				return false;
-			},
 			onLoad: function(scope, flag) {
 				if(flag) {
 					//Check if product exist for this brand

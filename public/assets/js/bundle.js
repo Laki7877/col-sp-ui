@@ -1409,14 +1409,6 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 			url: '/admin/brands',
 			item: 'Brand',
 			service: BrandService,
-			onSave: function(scope) {
-				if(!_.isNil(scope.formData.BrandImage)) {
-					scope.form.BrandImage.$setValidity('required', true);
-				} else {
-					scope.form.BrandImage.$setValidity('required', false);
-				}
-				return false;
-			},
 			onLoad: function(scope, flag) {
 				if(flag) {
 					//Check if product exist for this brand
@@ -15059,12 +15051,6 @@ module.exports = {
 },{}],199:[function(require,module,exports){
 module.exports = {
     BrandImage: {
-        'labelClass': 'required',
-        'error': {
-            'messages': {
-                'required': 'This is a required field',
-            }
-        }
     },
     BrandNameEn: {
       'labelClass': 'required',
