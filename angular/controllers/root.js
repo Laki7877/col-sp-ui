@@ -43,7 +43,7 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   //In case local storage expire before cookie
   if(!_.isNil(storage.getSessionToken())) {
     $rootScope.DisablePage = true;
-    if(_.isNil($rootScope.Profile)) {
+    if(!_.isNil($rootScope.Profile)) {
       Credential.checkToken()
         .then(function() {
           $rootScope.DisablePage = false;

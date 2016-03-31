@@ -1630,10 +1630,11 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				});
 				$scope.save = function() {
 					$scope.alert.close();
-					$scope.saving = true;
+					$scope.form.$setSubmitted();
 
 					if($scope.form.$valid) {
 						var processed = GlobalCategoryService.serialize($scope.formData);
+						$scope.saving = true;
 						if(id == 0) {
 							GlobalCategoryService.create(processed)
 								.then(function(data) {
@@ -1652,10 +1653,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 								});
 						}
 					} else {
-						$scope.alert.error(config.DEFAULT_ERROR_MESSAGE);
-						$timeout(function() {
-							$scope.saving = false;
-						},0);
+						$scope.alert.error(config.DEFAULT_ERROR_MESSAGE, true);
 					}
 				};
 			}],
@@ -2950,10 +2948,11 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				});
 				$scope.save = function() {
 					$scope.alert.close();
-					$scope.saving = true;
+					$scope.form.$setSubmitted();
 
 					if($scope.form.$valid) {
 						var processed = LocalCategoryService.serialize($scope.formData);
+						$scope.saving = true;
 						if(id == 0) {
 							LocalCategoryService.create(processed)
 								.then(function(data) {
@@ -2972,10 +2971,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 								});
 						}
 					} else {
-						$scope.alert.error(config.DEFAULT_ERROR_MESSAGE);
-						$timeout(function() {
-							$scope.saving = false;
-						},0);
+						$scope.alert.error(config.DEFAULT_ERROR_MESSAGE, true);
 					}
 				};
 			}],
@@ -4054,7 +4050,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
   //In case local storage expire before cookie
   if(!_.isNil(storage.getSessionToken())) {
     $rootScope.DisablePage = true;
-    if(_.isNil($rootScope.Profile)) {
+    if(!_.isNil($rootScope.Profile)) {
       Credential.checkToken()
         .then(function() {
           $rootScope.DisablePage = false;
@@ -5535,7 +5531,9 @@ module.exports = function($rootScope, $scope, $controller, ShopProfileService, I
 			ShopProfileService.updateAll(ShopProfileService.serialize($scope.formData))
 				.then(function(data) {
 					$scope.formData = ShopProfileService.deserialize(data);
+					console.log($rootScope.Profile, $scope.formData);
 					$rootScope.Profile.Shop = $scope.formData;
+
 					storage.storeCurrentUserProfile($rootScope.Profile);
 					$scope.alert.success('Successfully Saved.');
 					$scope.form.$setPristine(true);
@@ -6870,9 +6868,7 @@ module.exports = ["$cookies", function ($cookies) {
     service.storeCurrentUserProfile = function (profile, flag) {
         profile = angular.toJson(profile);
         sessionStorage.setItem('central.seller.portal.auth.profile', profile);
-        if (flag) {
-            localStorage.setItem('central.seller.portal.auth.profile', profile);
-        }
+        localStorage.setItem('central.seller.portal.auth.profile', profile);
     };
 
     service.storeImposterProfile = function(profile){

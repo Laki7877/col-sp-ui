@@ -195,10 +195,11 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				});
 				$scope.save = function() {
 					$scope.alert.close();
-					$scope.saving = true;
+					$scope.form.$setSubmitted();
 
 					if($scope.form.$valid) {
 						var processed = GlobalCategoryService.serialize($scope.formData);
+						$scope.saving = true;
 						if(id == 0) {
 							GlobalCategoryService.create(processed)
 								.then(function(data) {
@@ -217,10 +218,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 								});
 						}
 					} else {
-						$scope.alert.error(config.DEFAULT_ERROR_MESSAGE);
-						$timeout(function() {
-							$scope.saving = false;
-						},0);
+						$scope.alert.error(config.DEFAULT_ERROR_MESSAGE, true);
 					}
 				};
 			},
