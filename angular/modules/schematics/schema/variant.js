@@ -105,10 +105,10 @@ module.exports =  {
       "$ref": "#/defs/Image"
     },
     "PurchasePrice": {
-      "type": "string"
+      "type": "number"
     },
     "UnitPrice": {
-      "type": "string"
+      "type": "number"
     },
     "Installment": {
       "enum": ["Y", "N"]

@@ -10,7 +10,7 @@
 							<th>Product Name</th>
 							<th>{{ (overview.Variants || []).length == 0 ? 'PID' : 'Group ID' }}</th>
 							<th>Shop Name / Shop ID</th>
-							<th>Price</th>
+							<th>Sale Price</th>
 							<th>Info</th>
 							<th>Image</th>
 							<th>Status</th>
@@ -22,7 +22,7 @@
 								<td>{{ overview.MasterVariant.ProductNameEn }}</td>
 								<td>{{ overview.MasterVariant.Pid }}</td>
 								<td>{{ overview.ShopName }} / {{ overview.ShopId }}</td>
-								<td>{{ overview.MasterVariant.OriginalPrice | number: 2 }}</td>
+								<td>{{ overview.MasterVariant.SalePrice | number: 2 }}</td>
 								<td>
 									<i ng-if="!overview.InfoFlag" class="fa fa-minus color-grey icon-size-18px"></i>
 									<i ng-if="overview.InfoFlag" class="fa fa-check color-green icon-size-18px"></i>
@@ -41,7 +41,7 @@
 									<i class="fa fa-circle color-grey"></i>
 								</td>
 								<td>
-									<i ng-class="{'fa fa-eye-slash color-grey eye-icon font-size-16' : !overview.Visibility, 'fa fa-eye color-dark-grey eye-icon font-size-16' : overview.Visibility}"></i>
+									<a ng-click="formData.Visibility = !formData.Visibility" ng-class="{'fa fa-eye-slash color-grey eye-icon font-size-16' : !formData.Visibility, 'fa fa-eye color-dark-grey eye-icon font-size-16' : formData.Visibility}"></a>
 								</td>
 							</tr>
 							<tbody>
