@@ -40,7 +40,7 @@
 	                  <th><span>Info</span></th>
 	                  <th><span>Image</span></th>
 	                  <th class="status-column" nc-sort="Status">Status</th>
-	                  <th class="live-column" ng-if="showOnOffStatus.value">Live</th>
+	                  <th class="live-column">Live</th>
 	                  <th class="visible-column">Visible</th>
 	                  <th class="modified-column" nc-sort="UpdatedDt">Modified</th>
 	                  <th class="action-column">Action</th>
@@ -78,7 +78,7 @@
 	                      {{ asStatus(row.Status).name }}
 	                    </span>
 	                  </td>
-	                  <td class="live-column" ng-if="showOnOffStatus.value">
+	                  <td class="live-column">
 	                    <i class="fa fa-circle color-grey"></i>
 	                  </td>
 	                  <td class="visible-column">

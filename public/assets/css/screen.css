@@ -13008,29 +13008,37 @@ ul.sub-sidebar .item > a {
   width: 60px;
   text-align: center;
 }
+/* line 264, ../../../assets/_layout.scss */
+#sidebar-wrapper .sidebar-nav li:hover {
+  background: #1e2534 !important;
+}
 
-/* line 269, ../../../assets/_layout.scss */
+/* line 272, ../../../assets/_layout.scss */
 #sidebar-wrapper:hover .logo-img-wrapper-collased {
   display: block;
 }
+/* line 275, ../../../assets/_layout.scss */
+#sidebar-wrapper:hover .sidebar-nav li.active {
+  background: #252d40;
+}
 
-/* line 285, ../../../assets/_layout.scss */
+/* line 291, ../../../assets/_layout.scss */
 ul.sub-sidebar {
   left: 60px;
   padding-top: 58px;
   background-color: #1e2534;
   color: #FFFFFF;
 }
-/* line 290, ../../../assets/_layout.scss */
+/* line 296, ../../../assets/_layout.scss */
 ul.sub-sidebar .item {
   color: #FFFFFF;
 }
-/* line 292, ../../../assets/_layout.scss */
+/* line 298, ../../../assets/_layout.scss */
 ul.sub-sidebar .item.active {
   font-weight: normal;
   color: #ec0000;
 }
-/* line 296, ../../../assets/_layout.scss */
+/* line 302, ../../../assets/_layout.scss */
 ul.sub-sidebar .item:hover {
   color: #ec0000;
 }
@@ -15024,69 +15032,78 @@ form h6 {
   padding-left: 0;
 }
 /* line 259, ../../../assets/_seller_page.sass */
-#dashboard_page .table_recent_order td.empty_data:hover {
-  color: #32343C;
-  cursor: auto;
+#dashboard_page .table_recent_order tr:hover {
+  cursor: default;
 }
-/* line 264, ../../../assets/_seller_page.sass */
+/* line 261, ../../../assets/_seller_page.sass */
+#dashboard_page .table_recent_order tr:hover td {
+  color: #32343C;
+}
+/* line 265, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:first-child {
   width: 120px;
 }
-/* line 267, ../../../assets/_seller_page.sass */
+/* line 268, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:nth-child(2) {
   width: 300px;
 }
-/* line 270, ../../../assets/_seller_page.sass */
+/* line 271, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:nth-child(3) {
   text-align: right;
 }
-/* line 273, ../../../assets/_seller_page.sass */
+/* line 274, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td.empty_data {
   text-align: center;
   padding-left: 0;
 }
-/* line 277, ../../../assets/_seller_page.sass */
-#dashboard_page .table_lsa td.empty_data:hover {
-  color: #32343C;
-  cursor: auto;
+/* line 278, ../../../assets/_seller_page.sass */
+#dashboard_page .table_lsa tr:hover {
+  cursor: default;
 }
-/* line 284, ../../../assets/_seller_page.sass */
+/* line 280, ../../../assets/_seller_page.sass */
+#dashboard_page .table_lsa tr:hover td {
+  color: #32343C;
+}
+/* line 286, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter td.empty_data {
   text-align: center;
   padding-left: 0;
 }
-/* line 288, ../../../assets/_seller_page.sass */
-#dashboard_page .table_newsletter td.empty_data:hover {
-  color: #32343C;
-  cursor: auto;
-}
-/* line 292, ../../../assets/_seller_page.sass */
+/* line 290, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter .newsletter_date {
   font-size: 12px;
   margin-top: 5px;
   color: #7B7F8F;
 }
-/* line 296, ../../../assets/_seller_page.sass */
+/* line 294, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter td:last-child {
   padding-left: 30px;
   width: 80px;
 }
-/* line 300, ../../../assets/_seller_page.sass */
+/* line 298, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter td:last-child.empty_data {
   padding-left: 0;
 }
-/* line 304, ../../../assets/_seller_page.sass */
+/* line 301, ../../../assets/_seller_page.sass */
+#dashboard_page .table_newsletter tr:hover {
+  cursor: default;
+}
+/* line 303, ../../../assets/_seller_page.sass */
+#dashboard_page .table_newsletter tr:hover td {
+  color: #32343C;
+}
+/* line 306, ../../../assets/_seller_page.sass */
 #dashboard_page .account_health .group_container:last-child {
   padding: 10px 0px 0px 0px;
 }
-/* line 307, ../../../assets/_seller_page.sass */
+/* line 309, ../../../assets/_seller_page.sass */
 #dashboard_page .view_all_row {
   text-align: center;
   margin-top: 15px;
   padding-top: 15px;
   border-top: solid 1px #BCC7D5;
 }
-/* line 313, ../../../assets/_seller_page.sass */
+/* line 315, ../../../assets/_seller_page.sass */
 #dashboard_page .loading_row {
   text-align: center;
   margin-top: 15px;
