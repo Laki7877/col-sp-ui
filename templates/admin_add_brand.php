@@ -78,6 +78,7 @@
                   <button
                   type="button"
                   class="btn btn-default"
+                  name="BrandImage"
                   ngf-accept="'.png,.jpg,.jpeg'"
                   ngf-select="uploadLogo($file)"
                   ng-model="formData.brandImage"
