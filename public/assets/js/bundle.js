@@ -4519,7 +4519,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 	// This function will call 4 fucntions above when User selects the graph.
 	// If User clicks Today it will use switch to case 'today' which call getTodayGraphData.
 
-	// This fucntion also set Flag for fron-end.
+	// This fucntion also set Flag for front-end.
 	// Flag is used for some CSS class.
 
 	$scope.setGraphData = function(flag){
@@ -4934,6 +4934,7 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "storage", "$win
 		Onboarding.getListCompletedTask()
 			.then(function(data) {
 				$scope.onLoadingFlag = false;
+				// Comment below is for Decorative section 
 		    	// $scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct && data.ProductApprove, data.DecorateStore];
 		    	$scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct && data.ProductApprove];
 
