@@ -13012,33 +13012,41 @@ ul.sub-sidebar .item > a {
 #sidebar-wrapper .sidebar-nav li:hover {
   background: #1e2534 !important;
 }
+/* line 266, ../../../assets/_layout.scss */
+#sidebar-wrapper .sidebar-nav li:hover i {
+  color: #FFFFFF !important;
+}
 
-/* line 272, ../../../assets/_layout.scss */
+/* line 275, ../../../assets/_layout.scss */
 #sidebar-wrapper:hover .logo-img-wrapper-collased {
   display: block;
 }
-/* line 275, ../../../assets/_layout.scss */
+/* line 279, ../../../assets/_layout.scss */
 #sidebar-wrapper:hover .sidebar-nav li.active {
   background: #252d40;
 }
+/* line 281, ../../../assets/_layout.scss */
+#sidebar-wrapper:hover .sidebar-nav li.active i {
+  color: #7b7f8f;
+}
 
-/* line 291, ../../../assets/_layout.scss */
+/* line 299, ../../../assets/_layout.scss */
 ul.sub-sidebar {
   left: 60px;
   padding-top: 58px;
   background-color: #1e2534;
   color: #FFFFFF;
 }
-/* line 296, ../../../assets/_layout.scss */
+/* line 304, ../../../assets/_layout.scss */
 ul.sub-sidebar .item {
   color: #FFFFFF;
 }
-/* line 298, ../../../assets/_layout.scss */
+/* line 306, ../../../assets/_layout.scss */
 ul.sub-sidebar .item.active {
   font-weight: normal;
   color: #ec0000;
 }
-/* line 302, ../../../assets/_layout.scss */
+/* line 310, ../../../assets/_layout.scss */
 ul.sub-sidebar .item:hover {
   color: #ec0000;
 }

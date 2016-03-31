@@ -263,6 +263,9 @@ ul.sub-sidebar {
 		}
 		li:hover{
 			background: $sidebar-bg-color-active !important;
+			i{
+				color: $color-white !important;
+			}
 		}
 	}
 }
@@ -272,8 +275,13 @@ ul.sub-sidebar {
   .logo-img-wrapper-collased{
     display: block;
   }
-	.sidebar-nav li.active{
-		background: $sidebar-color;
+	.sidebar-nav{
+		li.active{
+			background: $sidebar-color;
+			i{
+				color: $font-color-grey;
+			}
+		}
 	}
 	// .logo-img-wrapper{
 	// 	display: block;
