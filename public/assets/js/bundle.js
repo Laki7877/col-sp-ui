@@ -4368,7 +4368,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 		 };
 		Dashboard.getRevenue('today')
 			.then(function(data){
-				console.log('today',data);
+				// console.log('today',data);
 				for (var i = 0; i < data.length ; i++) {
 				 	tempData[data[i].Key + 1] = data[i].Value;
 				 };
@@ -4485,6 +4485,33 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 	//Initiate graph data as Today Graph Data
 	$scope.setGraphData('today');
 
+	//Get Revenue Summary data
+	getSumValue = function(data) {
+		var sum = 0;
+		for (var i = 0; i < data.length; i++) {
+			sum += data[i].Value;
+		};
+		return sum;
+	}
+	Dashboard.getRevenue('today')
+		.then(function(data){
+			$scope.sumTodayRevenue = getSumValue(data);
+		});
+	Dashboard.getRevenue('week')
+		.then(function(data){
+			$scope.sumWeekRevenue = getSumValue(data);
+		});
+	Dashboard.getRevenue('month')
+		.then(function(data){
+			$scope.sumMonthRevenue = getSumValue(data);
+		});
+	Dashboard.getRevenue('year')
+		.then(function(data){
+			$scope.sumYearRevenue = getSumValue(data);
+		});
+	
+
+
 	Dashboard.getNewsLetter()
 		.then(function(query) {
 			return $scope.newsLettersData = query.data;
@@ -4581,8 +4608,6 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 			default:
 				return 'N/A'
 		}
-
-
 	};
 
 	Dashboard.getProductRating()

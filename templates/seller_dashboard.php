@@ -169,7 +169,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         </div>
         <div class="group_container small_field">
           <div class="display_inline_block width_100">Today</div>
-          <div class="float-right font-size-20">1,123.00</div>
+          <div class="float-right font-size-20">{{sumTodayRevenue | number:2 }}</div>
         </div>
         <div class="group_container small_field">
           <!-- <div class="row"> -->
@@ -177,19 +177,19 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <div class="width_100">
               This Week
             </div>
-            <div>10,535.00</div>
+            <div>{{sumWeekRevenue | number:2 }}</div>
           </div>
           <div class="row_container">
             <div class="width_100">
               This Month
             </div>
-            <div>200,934.00</div>
+            <div>{{sumMonthRevenue | number:2 }}</div>
           </div>
           <div class="row_container">
             <div class="width_100">
               This Year
             </div>
-            <div>1,210,535.00</div>
+            <div>{{sumYearRevenue | number:2 }}</div>
           </div>
           <!-- </div> -->
         </div>
