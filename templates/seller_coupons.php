@@ -29,8 +29,8 @@
                         </td>
                         <td>{{row.CouponName}}</td>
                         <td class="width_150 text-align-center">
-                            <span ng-if="row.Action.Type == 'PERCENT' && row.Action.MaximumAmount">No Limit</span>
-                            <span ng-if="!(row.Action.Type == 'PERCENT' && row.Action.MaximumAmount)">{{row.Remaining }}</span>
+                            <span ng-if="row.MaximumUser == 0">No Limit</span>
+                            <span ng-if="row.MaximumUser > 0">{{row.Remaining}}</span>
                         </td>
                         <td class="width_150">
                            {{ row.StartDate | datetimeTh }}
