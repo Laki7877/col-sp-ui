@@ -240,7 +240,7 @@
 											<input nv-file-select uploader="uploader" accept=".csv" type="file" ng-delegatee="f" class="my_file"/>
 										</div>
 										<div nc-template="common/input/form-group-with-label" nc-label="">
-											<button ng-click="import()" class="button-size-normal btn btn-blue btn-width-xl" ng-disabled="uploader.queue.length == 0" type="button">Import</button>
+											<button ng-click="import()" class="button-size-large btn btn-blue btn-width-xl" ng-disabled="uploader.queue.length == 0" type="button">Import Product</button>
 										</div>
 									</div>
 								</div>
