@@ -15,8 +15,13 @@ module.exports = function(common, $base64, storage, $q, $rootScope) {
     service.getRedirPath = function(profile){
         if(profile.User.IsAdmin === true){
             return '/admin'
+        } else {
+        	if(profile.Shop) {
+        		return profile.Shop.Status == 'AT' ? '/dashboard' : '/onboarding';
+        	} else {
+        		return '/products';
+        	}
         }
-        return '/products'
     };
 
 	service.login = function(user, pass, admin){

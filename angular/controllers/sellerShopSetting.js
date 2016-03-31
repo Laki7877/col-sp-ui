@@ -5,7 +5,7 @@ module.exports = function($rootScope, $scope, $controller, ShopProfileService, I
 	$scope.alert = new NcAlert();
 	$scope.saving = false;
 	$scope.loading = false;
-	$scope.statusChangeable = true;
+	$scope.statusChangeable = false;
 
 	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
 		data: { IsLogo: true }
@@ -17,6 +17,7 @@ module.exports = function($rootScope, $scope, $controller, ShopProfileService, I
 				$scope.formData = ShopProfileService.deserialize(data);			
 				Onboarding.getListCompletedTask()
 					.then(function(data) {
+						$scope.statusChangeable = true;
 						_.forOwn(data, function(value) {
 							$scope.statusChangeable = $scope.statusChangeable && value;
 						});		

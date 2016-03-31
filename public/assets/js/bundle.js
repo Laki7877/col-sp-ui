@@ -5501,7 +5501,7 @@ module.exports = function($rootScope, $scope, $controller, ShopProfileService, I
 	$scope.alert = new NcAlert();
 	$scope.saving = false;
 	$scope.loading = false;
-	$scope.statusChangeable = true;
+	$scope.statusChangeable = false;
 
 	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
 		data: { IsLogo: true }
@@ -5513,6 +5513,7 @@ module.exports = function($rootScope, $scope, $controller, ShopProfileService, I
 				$scope.formData = ShopProfileService.deserialize(data);			
 				Onboarding.getListCompletedTask()
 					.then(function(data) {
+						$scope.statusChangeable = true;
 						_.forOwn(data, function(value) {
 							$scope.statusChangeable = $scope.statusChangeable && value;
 						});		
@@ -7237,6 +7238,8 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
             name: 'Duplicate',
             fn: function (obj) {
                 scope.alert.close();
+
+                scope.loading = true;
 
                 //Duplicate
                 options.service.duplicate(obj[options.id])
@@ -13297,8 +13300,13 @@ module.exports = ["common", "$base64", "storage", "$q", "$rootScope", function(c
     service.getRedirPath = function(profile){
         if(profile.User.IsAdmin === true){
             return '/admin'
+        } else {
+        	if(profile.Shop) {
+        		return profile.Shop.Status == 'AT' ? '/dashboard' : '/onboarding';
+        	} else {
+        		return '/products';
+        	}
         }
-        return '/products'
     };
 
 	service.login = function(user, pass, admin){

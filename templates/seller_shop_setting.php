@@ -25,12 +25,12 @@
 												'label' : 'Shop Status',
 												}">
 												<ui-select ng-model="formData.Status" search-enabled="false" ng-disabled="!statusChangeable" required>
-												<ui-select-match placeholder="- Select Shop Status -">
-												<span ng-bind="$select.selected.name"></span>
-												</ui-select-match>
-												<ui-select-choices repeat="item.value as item in statusDropdown">
-												<span ng-bind="item.name"></span>
-												</ui-select-choices>
+													<ui-select-match placeholder="- Select Shop Status -">
+														<span ng-bind="$select.selected.name"></span>
+													</ui-select-match>
+													<ui-select-choices repeat="item.value as item in statusDropdown">
+														<span ng-bind="item.name"></span>
+													</ui-select-choices>
 												</ui-select>
 											</div>
 						                    <!-- Shop Logo -->
