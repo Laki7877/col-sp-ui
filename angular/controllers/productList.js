@@ -1,4 +1,4 @@
-module.exports = function ($scope, $controller, common, Product, util, $window, $rootScope, config, storage) {
+module.exports = function ($scope, $controller, common, Product, util, $window, $rootScope, config, storage, $base64, $timeout) {
     'ngInject';
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
@@ -150,6 +150,21 @@ module.exports = function ($scope, $controller, common, Product, util, $window, 
     $scope.exportSelected = function(){
       document.getElementById('exportForm').submit();
     };
+
+    $scope.searchCriteria = null;
+    $scope.exportSearchResult = function(){
+            var K = _.extend({}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams));
+            K._limit = 2147483647;
+            $scope.searchCriteria = $base64.encode(JSON.stringify(K));
+            
+            $timeout(function(){
+                console.log('searchCriteria', $scope.searchCriteria);
+                document.getElementById('exportForm').submit();
+            });
+            
+
+           
+    }
 
     var fromImport = storage.get('import.success');
     if(!_.isEmpty(fromImport)) {

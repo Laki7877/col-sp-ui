@@ -3092,7 +3092,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 }];
 
 },{"angular":261}],43:[function(require,module,exports){
-module.exports = ["$scope", "Product", "AttributeSet", function ($scope, Product, AttributeSet) {
+module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", function ($scope, Product, AttributeSet, NcAlert, $base64) {
 	'ngInject';
 	$scope.ProductList = [];
 	$scope.SELECT_ALL = false;
@@ -3100,6 +3100,8 @@ module.exports = ["$scope", "Product", "AttributeSet", function ($scope, Product
 	$scope.loading = [];
 	$scope.availableFields = {};
 	$scope.selectAllAttributeSets = false;
+	$scope.columnCount = 3;
+	$scope.availableFieldsColumn = [];
 	Product.getExportableFields().then(function(data){
 		data.forEach(function(record){
 			var groupName = record.GroupName;
@@ -3112,10 +3114,23 @@ module.exports = ["$scope", "Product", "AttributeSet", function ($scope, Product
 			$scope.fields[record.MapName] = (record.MapName == 'PID');
 			$scope.loading.push(true);
 		});
+
+		var groupList = Object.keys($scope.availableFields);
+			for(var i = 0; i < $scope.columnCount; i++){
+				var dct = {};
+				var keyPerColumn = Math.ceil(groupList.length / $scope.columnCount);
+
+				for(var j = 0 ; j < keyPerColumn; j++){
+					var moveKey = groupList.shift();
+					dct[moveKey] = ($scope.availableFields[moveKey]);
+				}
+
+				$scope.availableFieldsColumn.push(dct);
+		}
+
 	});
 
-	$scope.init = function(viewBag){
-		var productIds = viewBag || [];
+	var normalFlow = function(){
 		if(productIds.length == 0){
 			$scope.SELECT_ALL = true;
 		}
@@ -3123,7 +3138,8 @@ module.exports = ["$scope", "Product", "AttributeSet", function ($scope, Product
 		$scope.ProductList = productIds.map(function(p){
 			return { ProductId: p }
 		});
-
+		
+		$scope.dataSet.attributeSets = {};
 		if($scope.SELECT_ALL){
 			AttributeSet.getAll().then(function(data){
 				$scope.dataSet.attributeSets = data.map(function(m){
@@ -3147,6 +3163,29 @@ module.exports = ["$scope", "Product", "AttributeSet", function ($scope, Product
 		}
 	}
 
+	var productIds = [];
+	$scope.init = function(viewBag){
+		productIds = viewBag.selectedProducts || [];
+		var searchCriteriaObject = (viewBag.searchCriteria != "" && viewBag.searchCriteria != null) ? JSON.parse($base64.decode(viewBag.searchCriteria)) : null;
+
+		console.log(viewBag, searchCriteriaObject, productIds);
+
+		if(searchCriteriaObject){
+			return Product.advanceList(searchCriteriaObject).then(function(data) {
+	          	console.log(data, 'recv data advanced list');
+	          	$scope.SELECT_ALL = false;
+	          	//restructure into normal flow
+	          	productIds = data.data.map(function(i){
+	          		return i.ProductId;
+	          	})
+	          	normalFlow();
+	        });
+		}
+		
+
+		normalFlow();
+	}
+
 	$scope.startExportProducts = function () {
 		$scope.exporter = {
 			progress: 10,
@@ -3156,6 +3195,7 @@ module.exports = ["$scope", "Product", "AttributeSet", function ($scope, Product
 		$("#export-product").modal('show');
 	};
 
+	$scope.alert = new NcAlert();
 	$scope.confirmExportProducts = function(){
 
 		$("#export-product").modal('hide');
@@ -3693,7 +3733,7 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
 }];
 
 },{}],47:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "common", "Product", "util", "$window", "$rootScope", "config", "storage", function ($scope, $controller, common, Product, util, $window, $rootScope, config, storage) {
+module.exports = ["$scope", "$controller", "common", "Product", "util", "$window", "$rootScope", "config", "storage", "$base64", "$timeout", function ($scope, $controller, common, Product, util, $window, $rootScope, config, storage, $base64, $timeout) {
     'ngInject';
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
@@ -3845,6 +3885,21 @@ module.exports = ["$scope", "$controller", "common", "Product", "util", "$window
     $scope.exportSelected = function(){
       document.getElementById('exportForm').submit();
     };
+
+    $scope.searchCriteria = null;
+    $scope.exportSearchResult = function(){
+            var K = _.extend({}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams));
+            K._limit = 2147483647;
+            $scope.searchCriteria = $base64.encode(JSON.stringify(K));
+            
+            $timeout(function(){
+                console.log('searchCriteria', $scope.searchCriteria);
+                document.getElementById('exportForm').submit();
+            });
+            
+
+           
+    }
 
     var fromImport = storage.get('import.success');
     if(!_.isEmpty(fromImport)) {
