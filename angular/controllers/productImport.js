@@ -85,7 +85,7 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
 		$scope.uploader.onErrorItem = function(item, response, status, headers) {
 			$scope.importingFile = null;
 			response = _.map(response, function(e) {
-				return '<li>-&nbsp;&nbsp;&nbsp;' + e + '</li>';
+				return '<li>' + e + '</li>';
 			});
 			$scope.alert.error('<span class="font-weight-bold">Fail to upload CSV</span>' + '<ul>' + response.join('') + '</ul>');
 		};
