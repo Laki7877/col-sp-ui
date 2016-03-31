@@ -37,6 +37,15 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       return false;
     }
 
+    $scope.cancel = function(){
+      $scope.addProductForm.$dirty = false;
+      if(!$scope.adminMode){
+        $window.location.href = "/products";
+      }else{
+        $window.location.href = "/admin/products";
+      }
+    }
+
     $scope.overview = {};
     $scope.formData = {
       Status: 'DF',
