@@ -1223,8 +1223,7 @@ module.exports = ["$scope", "$controller", "AttributeService", "ImageService", "
 					scope.alreadyDefault = scope.formData.DefaultAttribute;
 				}
 			},
-			onAfterSave: function(scope) {
-				console.log(scope.formData);
+			onAfterSave: function(scope) { 
 				scope.alreadyDefault = scope.formData.DefaultAttribute;
 			}
 		}
@@ -1259,6 +1258,10 @@ module.exports = ["$scope", "$controller", "AttributeService", "ImageService", "
 			$scope.variantOptions = config.DROPDOWN.VARIANT_DROPDOWN;
 		}
 	}, true);
+
+	$scope.$watch('formData.VisibleTo', function() {
+		$scope.formData.Required = false;
+	});
 }];
 },{}],11:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeSetService", "util", "config", function($scope, $controller, AttributeSetService, util, config) {
@@ -1335,7 +1338,7 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeServ
 	$scope.onSearch = function($search) {
 		AttributeService.list({
 			searchText: $search,
-			_limit: 8,
+			_limit: null,
 			_filter: 'NoDefaultAttribute'
 		}).then(function(data) {
 			$scope.attributeOptions = data.data;
@@ -1606,10 +1609,10 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				};
 				$scope.uploadBannerFail = function(e, response) {
 					if(e == 'onmaxsize') {
-						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one', true);
 					}
 					else {
-						$scope.alert.error(common.getError(response.data));
+						$scope.alert.error(common.getError(response.data), true);
 					}
 				};
 
@@ -1617,7 +1620,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 					if(!closeType) {
 						if ($scope.saving) e.preventDefault();
 						if ($scope.form.$dirty) {
-							if(!confirm('Your changes will not be saved.')) {
+							if(!confirm('Are you sure you want to leave this page?')) {
 								e.preventDefault();
 							}
 						} else {
@@ -2926,10 +2929,10 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				};
 				$scope.uploadBannerFail = function(e, response) {
 					if(e == 'onmaxsize') {
-						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one', true);
 					}
 					else {
-						$scope.alert.error(common.getError(response.data));
+						$scope.alert.error(common.getError(response.data), true);
 					}
 				};
 
@@ -2937,7 +2940,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 					if(!closeType) {
 						if ($scope.saving) e.preventDefault();
 						if ($scope.form.$dirty) {
-							if(!confirm('Your changes will not be saved.')) {
+							if(!confirm('Are you sure you want to leave this page?')) {
 								e.preventDefault();
 							}
 						} else {
@@ -3034,7 +3037,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
   }
   
   if(storage.poke('session_timeout')) {
-    $scope.alert.open(false, 'Your session has timed out', '');
+    $scope.alert.open(false, 'Your session has expired', '');
   }
 
   if(storage.poke('access_denied')) {
@@ -3519,14 +3522,14 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
 		//Import new
 		$scope.method = 'POST';
 		$scope.title = 'Import - Add New Products'
-		$scope.modalTitle = 'Adding Products';
+		$scope.modalTitle = 'Adding New Products...';
 		$scope.update = false;
 
 		//Update only
 		if(!_.isNil(update) && update) {
 			$scope.method = 'PUT';
 			$scope.title = 'Import - Update Products';
-			$scope.modalTitle = 'Updating Products';
+			$scope.modalTitle = 'Updating Products...';
 			$scope.update = true;
 		}
 
@@ -5526,7 +5529,7 @@ module.exports = function($rootScope, $scope, $controller, ShopProfileService, I
 	$scope.alert = new NcAlert();
 	$scope.saving = false;
 	$scope.loading = false;
-	$scope.statusChangeable = true;
+	$scope.statusChangeable = false;
 
 	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
 		data: { IsLogo: true }
@@ -5538,6 +5541,7 @@ module.exports = function($rootScope, $scope, $controller, ShopProfileService, I
 				$scope.formData = ShopProfileService.deserialize(data);			
 				Onboarding.getListCompletedTask()
 					.then(function(data) {
+						$scope.statusChangeable = true;
 						_.forOwn(data, function(value) {
 							$scope.statusChangeable = $scope.statusChangeable && value;
 						});		
@@ -7263,6 +7267,8 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
             fn: function (obj) {
                 scope.alert.close();
 
+                scope.loading = true;
+
                 //Duplicate
                 options.service.duplicate(obj[options.id])
                     .then(function () {
@@ -7487,30 +7493,21 @@ module.exports = ['util', function (util) {
     });
 })();
 },{}],100:[function(require,module,exports){
-/* =============================================================
-/*
-/*	 Angular Smooth Scroll 1.7.1
-/*	 Animates scrolling to elements, by David Oliveros.
-/*
-/*   Callback hooks contributed by Ben Armston
-/*   https://github.com/benarmston
-/*
-/*	 Easing support contributed by Willem Liu.
-/*	 https://github.com/willemliu
-/*
-/*	 Easing functions forked from Gaëtan Renaudeau.
-/*	 https://gist.github.com/gre/1650294
-/*
-/*	 Infinite loop bugs in iOS and Chrome (when zoomed) by Alex Guzman.
-/*	 https://github.com/alexguzman
-/*
-/*	 Influenced by Chris Ferdinandi
-/*	 https://github.com/cferdinandi
-/*
-/*
-/*	 Free to use under the MIT License.
-/*
-/* ============================================================= */
+/*!
+ *	 Angular Smooth Scroll (ngSmoothScroll)
+ *	 Animates scrolling to elements, by David Oliveros.
+ *
+ *   Callback hooks contributed by Ben Armston https://github.com/benarmston
+ *	 Easing support contributed by Willem Liu. https://github.com/willemliu
+ *	 Easing functions forked from Gaëtan Renaudeau. https://gist.github.com/gre/1650294
+ *	 Infinite loop bugs in iOS and Chrome (when zoomed) by Alex Guzman. https://github.com/alexguzman
+ *	 Support for scrolling in custom containers by Joseph Matthias Goh. https://github.com/zephinzer
+ *	 Influenced by Chris Ferdinandi
+ *	 https://github.com/cferdinandi
+ *
+ *	 Version: 2.0.0
+ * 	 License: MIT
+ */
 
 (function () {
 	'use strict';
@@ -7518,8 +7515,12 @@ module.exports = ['util', function (util) {
 	var module = angular.module('smoothScroll', []);
 
 
-	// Smooth scrolls the window to the provided element.
-	//
+	/**
+	 * Smooth scrolls the window/div to the provided element.
+	 *
+	 * 20150713 EDIT - zephinzer
+	 * 	Added new option - containerId to account for scrolling within a DIV
+	 */
 	var smoothScroll = function (element, options) {
 		options = options || {};
 
@@ -7528,74 +7529,122 @@ module.exports = ['util', function (util) {
 			offset = options.offset || 0,
 			easing = options.easing || 'easeInOutQuart',
 			callbackBefore = options.callbackBefore || function() {},
-			callbackAfter = options.callbackAfter || function() {};
-			
+			callbackAfter = options.callbackAfter || function() {},
+			container = document.getElementById(options.containerId) || document.querySelectorAll(options.container)[0] || null,
+			containerPresent = (container != undefined && container != null);
+
+		/**
+		 * Retrieve current location
+		 */
 		var getScrollLocation = function() {
-			return window.pageYOffset ? window.pageYOffset : document.documentElement.scrollTop;
+			if(containerPresent) {
+				return container.scrollTop;
+			} else {
+				if(window.pageYOffset) {
+					return window.pageYOffset;
+				} else {
+					return document.documentElement.scrollTop;
+				}
+			}
 		};
 
+		/**
+		 * Calculate easing pattern.
+		 *
+		 * 20150713 edit - zephinzer
+		 * - changed if-else to switch
+		 * @see http://archive.oreilly.com/pub/a/server-administration/excerpts/even-faster-websites/writing-efficient-javascript.html
+		 */
+		var getEasingPattern = function(type, time) {
+			switch(type) {
+				case 'easeInQuad': 		return time * time; // accelerating from zero velocity
+				case 'easeOutQuad': 	return time * (2 - time); // decelerating to zero velocity
+				case 'easeInOutQuad': 	return time < 0.5 ? 2 * time * time : -1 + (4 - 2 * time) * time; // acceleration until halfway, then deceleration
+				case 'easeInCubic': 	return time * time * time; // accelerating from zero velocity
+				case 'easeOutCubic': 	return (--time) * time * time + 1; // decelerating to zero velocity
+				case 'easeInOutCubic': 	return time < 0.5 ? 4 * time * time * time : (time - 1) * (2 * time - 2) * (2 * time - 2) + 1; // acceleration until halfway, then deceleration
+				case 'easeInQuart': 	return time * time * time * time; // accelerating from zero velocity
+				case 'easeOutQuart': 	return 1 - (--time) * time * time * time; // decelerating to zero velocity
+				case 'easeInOutQuart': 	return time < 0.5 ? 8 * time * time * time * time : 1 - 8 * (--time) * time * time * time; // acceleration until halfway, then deceleration
+				case 'easeInQuint': 	return time * time * time * time * time; // accelerating from zero velocity
+				case 'easeOutQuint': 	return 1 + (--time) * time * time * time * time; // decelerating to zero velocity
+				case 'easeInOutQuint': 	return time < 0.5 ? 16 * time * time * time * time * time : 1 + 16 * (--time) * time * time * time * time; // acceleration until halfway, then deceleration
+				default:				return time;
+			}
+		};
+
+		/**
+		 * Calculate how far to scroll
+		 */
+		var getEndLocation = function(element) {
+			var location = 0;
+			if (element.offsetParent) {
+				do {
+					location += element.offsetTop;
+					element = element.offsetParent;
+				} while (element);
+			}
+			location = Math.max(location - offset, 0);
+			return location;
+		};
+
+		// Initialize the whole thing
 		setTimeout( function() {
-			var startLocation = getScrollLocation(),
-				timeLapsed = 0,
-				percentage, position;
+			var currentLocation = null,
+				startLocation 	= getScrollLocation(),
+				endLocation 	= getEndLocation(element),
+				timeLapsed 		= 0,
+				distance 		= endLocation - startLocation,
+				percentage,
+				position,
+				scrollHeight,
+				internalHeight;
 
-			// Calculate the easing pattern
-			var easingPattern = function (type, time) {
-				if ( type == 'easeInQuad' ) return time * time; // accelerating from zero velocity
-				if ( type == 'easeOutQuad' ) return time * (2 - time); // decelerating to zero velocity
-				if ( type == 'easeInOutQuad' ) return time < 0.5 ? 2 * time * time : -1 + (4 - 2 * time) * time; // acceleration until halfway, then deceleration
-				if ( type == 'easeInCubic' ) return time * time * time; // accelerating from zero velocity
-				if ( type == 'easeOutCubic' ) return (--time) * time * time + 1; // decelerating to zero velocity
-				if ( type == 'easeInOutCubic' ) return time < 0.5 ? 4 * time * time * time : (time - 1) * (2 * time - 2) * (2 * time - 2) + 1; // acceleration until halfway, then deceleration
-				if ( type == 'easeInQuart' ) return time * time * time * time; // accelerating from zero velocity
-				if ( type == 'easeOutQuart' ) return 1 - (--time) * time * time * time; // decelerating to zero velocity
-				if ( type == 'easeInOutQuart' ) return time < 0.5 ? 8 * time * time * time * time : 1 - 8 * (--time) * time * time * time; // acceleration until halfway, then deceleration
-				if ( type == 'easeInQuint' ) return time * time * time * time * time; // accelerating from zero velocity
-				if ( type == 'easeOutQuint' ) return 1 + (--time) * time * time * time * time; // decelerating to zero velocity
-				if ( type == 'easeInOutQuint' ) return time < 0.5 ? 16 * time * time * time * time * time : 1 + 16 * (--time) * time * time * time * time; // acceleration until halfway, then deceleration
-				return time; // no easing, no acceleration
-			};
-
-
-			// Calculate how far to scroll
-			var getEndLocation = function (element) {
-				var location = 0;
-				if (element.offsetParent) {
-					do {
-						location += element.offsetTop;
-						element = element.offsetParent;
-					} while (element);
-				}
-				location = Math.max(location - offset, 0);
-				return location;
-			};
-
-			var endLocation = getEndLocation(element);
-			var distance = endLocation - startLocation;
-
-
-			// Stop the scrolling animation when the anchor is reached (or at the top/bottom of the page)
+			/**
+			 * Stop the scrolling animation when the anchor is reached (or at the top/bottom of the page)
+			 */
 			var stopAnimation = function () {
-				var currentLocation = getScrollLocation();
-				if ( position == endLocation || currentLocation == endLocation || ( (window.innerHeight + currentLocation) >= document.body.scrollHeight ) ) {
+				currentLocation = getScrollLocation();
+				if(containerPresent) {
+					scrollHeight = container.scrollHeight;
+					internalHeight = container.clientHeight + currentLocation;
+				} else {
+					scrollHeight = document.body.scrollheight;
+					internalHeight = window.innerHeight + currentLocation;
+				}
+
+				if (
+					( // condition 1
+						position == endLocation
+					) ||
+					( // condition 2
+						currentLocation == endLocation
+					) ||
+					( // condition 3
+						internalHeight >= scrollHeight
+					)
+				) { // stop
 					clearInterval(runAnimation);
 					callbackAfter(element);
 				}
 			};
 
-
-			// Scroll the page by an increment, and check if it's time to stop
+			/**
+			 * Scroll the page by an increment, and check if it's time to stop
+			 */
 			var animateScroll = function () {
 				timeLapsed += 16;
 				percentage = ( timeLapsed / duration );
 				percentage = ( percentage > 1 ) ? 1 : percentage;
-				position = startLocation + ( distance * easingPattern(easing, percentage) );
-				window.scrollTo( 0, position );
+				position = startLocation + ( distance * getEasingPattern(easing, percentage) );
+				if(containerPresent) {
+					container.scrollTop = position;
+				} else {
+					window.scrollTo( 0, position );
+				}
 				stopAnimation();
 			};
 
-
-			// Init
 			callbackBefore(element);
 			var runAnimation = setInterval(animateScroll, 16);
 		}, 0);
@@ -7607,10 +7656,14 @@ module.exports = ['util', function (util) {
 	module.factory('smoothScroll', function() {
 		return smoothScroll;
 	});
-	
 
-	// Scrolls the window to this element, optionally validating an expression
-	//
+
+	/**
+	 * Scrolls the window to this element, optionally validating an expression
+	 *
+	 * 20150713 EDIT - zephinzer
+	 * 	Added containerId to attributes for smooth scrolling within a DIV
+	 */
 	module.directive('smoothScroll', ['smoothScroll', function(smoothScroll) {
 		return {
 			restrict: 'A',
@@ -7645,7 +7698,8 @@ module.exports = ['util', function (util) {
 							offset: $attrs.offset,
 							easing: $attrs.easing,
 							callbackBefore: callbackBefore,
-							callbackAfter: callbackAfter
+							callbackAfter: callbackAfter,
+							containerId: $attrs.containerId
 						});
 					}, 0);
 				}
@@ -7654,8 +7708,12 @@ module.exports = ['util', function (util) {
 	}]);
 
 
-	// Scrolls to a specified element ID when this element is clicked
-	//
+	/**
+	 * Scrolls to a specified element ID when this element is clicked
+	 *
+	 * 20150713 EDIT - zephinzer
+	 * 	Added containerId to attributes for smooth scrolling within a DIV
+	 */
 	module.directive('scrollTo', ['smoothScroll', function(smoothScroll) {
 		return {
 			restrict: 'A',
@@ -7665,13 +7723,13 @@ module.exports = ['util', function (util) {
 			},
 			link: function($scope, $elem, $attrs) {
 				var targetElement;
-				
+
 				$elem.on('click', function(e) {
 					e.preventDefault();
 
 					targetElement = document.getElementById($attrs.scrollTo);
-					if ( !targetElement ) return; 
-					
+					if ( !targetElement ) return;
+
 					var callbackBefore = function(element) {
 						if ( $attrs.callbackBefore ) {
 							var exprHandler = $scope.callbackBefore({element: element});
@@ -7695,7 +7753,8 @@ module.exports = ['util', function (util) {
 						offset: $attrs.offset,
 						easing: $attrs.easing,
 						callbackBefore: callbackBefore,
-						callbackAfter: callbackAfter
+						callbackAfter: callbackAfter,
+						containerId: $attrs.containerId
 					});
 
 					return false;
@@ -7887,20 +7946,25 @@ angular.module('nc')
 
 				this.show = true;
 			};
-			this.error = function(obj) {
+			this.error = function(obj, toElm) {
 				this.open(false, obj);
 				
 				$timeout(function() {
 					var section = vm.element || $document;
-					smoothScroll(document.getElementById('body'));
+					console.log(vm.element, toElm);
+					smoothScroll(toElm ? vm.element[0] : $document[0].body, {
+						container: toElm ? '.modal': null
+					});
 				}, 10);
 			};
-			this.success = function(obj) {
+			this.success = function(obj, toElm) {
 				this.open(true, obj);
 				
 				$timeout(function() {
 					var section = vm.element || $document;
-					smoothScroll(document.getElementById('body'));
+					smoothScroll(toElm ? vm.element[0] : $document[0].body, {
+						container: toElm ? '.modal': null
+					});
 				}, 10);
 			};
 			this.message = '';
@@ -9569,7 +9633,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncLoadingSmall',
-    "<img src=/assets/img/loader.gif width=40><small>{{ message }}</small>"
+    "<img src=/assets/img/loader.gif width=40 style=margin-left:-10px>{{ message }}"
   );
 
 
@@ -9838,6 +9902,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     }];
     $scope.dataset.Brands = [];
     $scope.enableVariation = function() {
+      if($scope.uploader.isUploading){
+          return $scope.alert.error('<strong>Please Wait</strong> - One or more image upload is in progress..');
+      }
+      $scope.alert.close();
       $scope.controlFlags.variation = 'enable';
     }
 
@@ -9885,7 +9953,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       if (!form.SalePrice) return;
       if ($scope.formData.MasterVariant.SalePrice == '') return;
 
-      if (Number($scope.formData.MasterVariant.SalePrice) >= Number($scope.formData.MasterVariant.OriginalPrice)) {
+      if (Number($scope.formData.MasterVariant.SalePrice) > Number($scope.formData.MasterVariant.OriginalPrice)) {
         if (form.SalePrice) form.SalePrice.$setValidity('min', false)
         form.SalePrice.$error['min'] = 'Sale Price must not exceed Original Price'
       }
@@ -10035,7 +10103,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           return $scope.alert.error('<strong>Please Wait</strong> - One or more image upload is in progress..');
       }
       
-      
       $scope.pageState.load('Validating..');
 
       if ($scope.controlFlags.variation == 'enable' && $scope.formData.Variants.length == 0) {
@@ -10081,6 +10148,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.alert.error('Unable to save. Please make sure all fields have no error.')
         }
         return
+      }
+
+      if (Number($scope.formData.MasterVariant.OriginalPrice) == 0 || _.isNaN(Number($scope.formData.MasterVariant.OriginalPrice))) {
+        $scope.formData.MasterVariant.OriginalPrice = $scope.formData.MasterVariant.SalePrice;
       }
 
       $scope.pageState.load('Applying changes..');
@@ -10158,6 +10229,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 }
 
                 checkSchema(inverseFormData);
+
               });
 
           }, function(error) {
@@ -10463,6 +10535,8 @@ factory('$productAdd', ["Product", "AttributeSet", "ImageService", "GlobalCatego
    * @param  {DataSet} dataSet
    */
   $productAdd.generateVariants = function(formData, dataSet) {
+    var deferred = $q.defer();
+
     var vHashSet = {};
     var prevVariants = angular.copy(formData.Variants);
     prevVariants.forEach(function(elem, index) {
@@ -10556,6 +10630,9 @@ factory('$productAdd', ["Product", "AttributeSet", "ImageService", "GlobalCatego
     }
 
     formData.DefaultVariant = formData.Variants[0];
+    deferred.resolve();
+
+    return deferred.promise;
   };
 
 
@@ -10620,6 +10697,7 @@ factory('$productAdd', ["Product", "AttributeSet", "ImageService", "GlobalCatego
             if (sharedFormData.Variants.length > 0) {
               controlFlags.variation = "enable";
             }
+
             sharedDataSet.attributeOptions = inverseResult.attributeOptions || sharedDataSet.attributeOptions;
             if (sharedDataSet.attributeOptions[1].options.length > 0) {
               variationFactorIndices.pushSecond();
@@ -10627,6 +10705,11 @@ factory('$productAdd', ["Product", "AttributeSet", "ImageService", "GlobalCatego
           };
 
           parse(ivFormData, sharedFormData.AttributeSet);
+          $productAdd.generateVariants(sharedFormData, sharedDataSet).then(function(){
+              for(var i = 0; i < sharedFormData.Variants.length; i++){
+                if(!sharedFormData.Variants[i].Pid) sharedFormData.Variants[i].Visibility = false;
+              }
+          });
         }
 
         pageLoader.load('Downloading Category Tree..');
@@ -10833,7 +10916,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-overview',
-    "<div class=row ng-if=formData.ProductId><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Overview</h2></div><div class=form-section-content><div class=container-fluid style=\"margin: -15px\"><table class=table><thead><th>Product Name</th><th>{{ (overview.Variants || []).length == 0 ? 'PID' : 'Group ID' }}</th><th>Shop Name / Shop ID</th><th>Price</th><th>Info</th><th>Image</th><th>Status</th><th>Live</th><th>Visible</th></thead><tbody><tr><td>{{ overview.MasterVariant.ProductNameEn }}</td><td>{{ overview.MasterVariant.Pid }}</td><td>{{ overview.ShopName }} / {{ overview.ShopId }}</td><td>{{ overview.MasterVariant.OriginalPrice | number: 2 }}</td><td><i ng-if=!overview.InfoFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=overview.InfoFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td><i ng-if=!overview.ImageFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=overview.ImageFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td><span class=\"{{ asStatus(overview.Status).color }}\"><i class=\"fa {{ asStatus(overview.Status).icon }}\"></i> {{ asStatus(formData.Status).name }}</span></td><td><i class=\"fa fa-circle color-grey\"></i></td><td><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon font-size-16' : !overview.Visibility, 'fa fa-eye color-dark-grey eye-icon font-size-16' : overview.Visibility}\"></i></td></tr><tbody></tbody></tbody></table></div></div></div></div></div>"
+    "<div class=row ng-if=formData.ProductId><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Overview</h2></div><div class=form-section-content><div class=container-fluid style=\"margin: -15px\"><table class=table><thead><th>Product Name</th><th>{{ (overview.Variants || []).length == 0 ? 'PID' : 'Group ID' }}</th><th>Shop Name / Shop ID</th><th>Sale Price</th><th>Info</th><th>Image</th><th>Status</th><th>Live</th><th>Visible</th></thead><tbody><tr><td>{{ overview.MasterVariant.ProductNameEn }}</td><td>{{ overview.MasterVariant.Pid }}</td><td>{{ overview.ShopName }} / {{ overview.ShopId }}</td><td>{{ overview.MasterVariant.SalePrice | number: 2 }}</td><td><i ng-if=!overview.InfoFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=overview.InfoFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td><i ng-if=!overview.ImageFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=overview.ImageFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td><span class=\"{{ asStatus(overview.Status).color }}\"><i class=\"fa {{ asStatus(overview.Status).icon }}\"></i> {{ asStatus(formData.Status).name }}</span></td><td><i class=\"fa fa-circle color-grey\"></i></td><td><a ng-click=\"formData.Visibility = !formData.Visibility\" ng-class=\"{'fa fa-eye-slash color-grey eye-icon font-size-16' : !formData.Visibility, 'fa fa-eye color-dark-grey eye-icon font-size-16' : formData.Visibility}\"></a></td></tr><tbody></tbody></tbody></table></div></div></div></div></div>"
   );
 
 
@@ -10919,7 +11002,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-vital-information',
-    "<div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label ng-init=\"form = addProductForm\" nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=variantPtr.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=variantPtr.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=variantPtr.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"variantPtr.Upc\"></div><div ng-if=variantPtr.MasterVariant.Pid><div nc-template=common/input/form-group-with-label nc-template-form=form.Pid nc-label=\"{{ (formData.Variants || []).length > 0 ? 'Group ID' : 'PID' }}\" nc-template-options-path=addProductForm/Pid><input class=\"form-control width-field-large\" name=Pid disabled ng-model=\"variantPtr.Pid\"></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Brand Name</label></div><div class=width-field-normal><div class=ah-select2-dropdown><you-me display-by=BrandNameEn placeholder=\"Search Brand\" auto-clear-search=true ng-model=x refresh=refresher.Brands choices=dataset.Brands></you-me></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label ng-init=\"form = addProductForm\" nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=variantPtr.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=variantPtr.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=variantPtr.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"variantPtr.Upc\"></div><div ng-if=variantPtr.MasterVariant.Pid><div nc-template=common/input/form-group-with-label nc-template-form=form.Pid nc-label=\"{{ (formData.Variants || []).length > 0 ? 'Group ID' : 'PID' }}\" nc-template-options-path=addProductForm/Pid><input class=\"form-control width-field-large\" name=Pid disabled ng-model=\"variantPtr.Pid\"></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Brand Name</label></div><div class=width-field-normal><div class=ah-select2-dropdown><you-me display-by=BrandNameEn placeholder=\"Search Brand\" auto-clear-search=true ng-model=formData.Brand refresh=refresher.Brands choices=dataset.Brands></you-me></div></div></div></div></div>"
   );
 
 
@@ -11361,6 +11444,12 @@ module.exports =  {
     "Images": {
       "$ref": "#/defs/Image"
     },
+    "PurchasePrice": {
+      "type": "number"
+    },
+    "UnitPrice": {
+      "type": "number"
+    },
     "Installment": {
       "enum": ["Y", "N"]
     },
@@ -11395,7 +11484,7 @@ module.exports =  {
   },
   "required": ["ShippingMethod", "ProductNameEn", "ProductNameTh",
     "StockType", "DimensionUnit", "SEO", "VideoLinks", "Images", "GiftWrap",
-    "FirstAttribute", "SecondAttribute",
+    "FirstAttribute", "SecondAttribute", 
     "Installment", "PrepareDay", "LimitIndividualDay", "Display"]
 };
 
@@ -13267,8 +13356,13 @@ module.exports = ["common", "$base64", "storage", "$q", "$rootScope", function(c
     service.getRedirPath = function(profile){
         if(profile.User.IsAdmin === true){
             return '/admin'
+        } else {
+        	if(profile.Shop) {
+        		return profile.Shop.Status == 'AT' ? '/dashboard' : '/onboarding';
+        	} else {
+        		return '/products';
+        	}
         }
-        return '/products'
     };
 
 	service.login = function(user, pass, admin){
@@ -15804,7 +15898,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('product/modalImportProgress',
-    "<div class=\"modal-header no-border\"><button type=button class=close ng-click=$dismiss()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">{{title}}</h2><div nc-loading-small=Processing...></div></div></div></div>"
+    "<div class=\"modal-header no-border\"><button type=button class=close ng-click=$dismiss()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=col-xs-12><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">{{title}}</h2><div nc-loading-small=Processing...></div></div></div></div>"
   );
 
 

@@ -333,6 +333,8 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
             fn: function (obj) {
                 scope.alert.close();
 
+                scope.loading = true;
+
                 //Duplicate
                 options.service.duplicate(obj[options.id])
                     .then(function () {

@@ -110,7 +110,7 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncLoadingSmall',
-    "<img src=/assets/img/loader.gif width=40><small>{{ message }}</small>"
+    "<img src=/assets/img/loader.gif width=40 style=margin-left:-10px>{{ message }}"
   );
 
 

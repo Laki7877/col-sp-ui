@@ -13,7 +13,7 @@
   }
   
   if(storage.poke('session_timeout')) {
-    $scope.alert.open(false, 'Your session has timed out', '');
+    $scope.alert.open(false, 'Your session has expired', '');
   }
 
   if(storage.poke('access_denied')) {
