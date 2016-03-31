@@ -9823,6 +9823,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       return false;
     }
 
+    
     $scope.cancel = function(){
       $scope.addProductForm.$dirty = false;
       if(!$scope.adminMode){
@@ -9969,6 +9970,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
       modalInstance.result.then(function(data) {
         $scope.formData[key][ith] = data;
+        if(key == 'GlobalCategories' && ith == 0){
+          $scope.updateBreadcrumb(data.CategoryId);
+        }
       });
 
     };
@@ -10053,6 +10057,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     $scope.breadcrumb = {
       globalCategory: null
+    };
+
+    $scope.updateBreadcrumb = function(globalCatId){
+      $scope.breadcrumb.globalCategory = Category.createCatStringById(globalCatId, $scope.dataset.GlobalCategories);
     };
 
     $scope.preview = function() {
