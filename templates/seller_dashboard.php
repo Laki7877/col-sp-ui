@@ -65,6 +65,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                   {{order.OrderDate | date:'MM/dd/yyyy'}}
                 </td>
               </tr>
+              <tr ng-show="newOrdersData.length == 0">
+                <td class="empty_data">- No New Orders -</td>
+              </tr>
             </tbody>
           </table>
           <div class="loading_text loading_row" ng-show="newOrdersData==undefined">
@@ -252,7 +255,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           <span class="font-size-18 header_name_space">Top Selling This Month</span>
         </div>
 
-        <div ng-repeat="product in topSellingItemsData  | limitTo:maxTopSellingItems" ng-show="topSellingItemsData.length != 0" class="group_container top_selling_field">
+        <div ng-repeat="product in topSellingItemsData  | limitTo:maxTopSellingItems" ng-show="topSellingItemsData != 'N/A'" class="group_container top_selling_field">
             <img ng-show="product.FeatureImgUrl ==''" class="logo-img" src="<?= $this->asset('/assets/img/placeholder-no-image.png') ?>" />
             <img class="logo-img" src="{{product.FeatureImgUrl}}" />
             <div class="column-text-ellipsis"><a ng-click="linkToProduct(product.ProductId)">{{product.ProductNameEn}}</a></div>
@@ -261,7 +264,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           <i class="fa fa-spinner fa-spin color-theme margin-right-10"></i>
           Loading...
         </div>
-        <div ng-show="topSellingItemsData.length == 0" class="group_container top_selling_field">
+        <div ng-show="topSellingItemsData == 'N/A'" class="group_container top_selling_field">
             <div class="text-center">- No Top Selling Product -</div>
         </div>
       </div>
