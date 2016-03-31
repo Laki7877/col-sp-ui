@@ -102,7 +102,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 							              	nc-label="Brand"
 							              	>
 							              	<ui-select ng-model="formData.Brands" multiple>
-							              		<ui-select-match placeholder="Search Brand">{{$select.selected.BrandNameEn}}</ui-select-match>
+							              		<ui-select-match placeholder="Search Brand">{{$item.BrandNameEn}}</ui-select-match>
 							              		<ui-select-choices repeat="item in brands" refresh="getBrands($select.search)" refresh-delay="1">{{item.BrandNameEn}}</ui-select-choices>
 							              	</ui-select>
 							              </div>
@@ -110,7 +110,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 							              <!-- <div ng-show="id != 0"
 							              	ng-template="common/input/password"
 							                ng-template-options="{
-							                  'label': 'OldPassword',
+							                  'label': 'Old Password',
 							                  'formGroupClass': 'margin-top-30'
 							                }">
 							                <input

@@ -58,11 +58,11 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 		$scope.params._filter = options.filters[0].value;
 	}
 	$scope.bulkContainer = [];
-	$scope.toggleEye = util.eyeToggle(options.service, options.id, $scope.alert);
+	$scope.toggleEye = util.eyeToggle($scope, options);
 
 	if(_.isUndefined(options.bulks)) {
 		$scope.bulks= [
-			util.bulkDelete(options.service, options.id, options.item, $scope.alert, $scope.reload, $scope.onload)
+			util.bulkDelete($scope, options)
 		];
 	} else {
 		$scope.bulks = _.compact(_.map(options.bulks, function(item) {
@@ -73,11 +73,11 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 			if(_.isString(item)) {
 				switch(item) {
 					case 'Delete':
-						return util.bulkDelete(options.service, options.id, options.item, $scope.alert, $scope.reload, $scope.onload);
+						return util.bulkDelete($scope, options);
 					case 'Show':
-						return util.bulkShow(options.service, options.id, options.item, $scope.alert, $scope.reload);
+						return util.bulkShow($scope, options);
 					case 'Hide':
-						return util.bulkHide(options.service, options.id, options.item, $scope.alert, $scope.reload);
+						return util.bulkHide($scope, options);
 				}
 			}
 
@@ -107,17 +107,17 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 			if(_.isString(item)) {
 				switch(item) {
 					case 'View':
-						return util.actionView(options.url, options.id);
+						return util.actionView($scope, options);
 					case 'View Only':
-						return util.actionView(options.url, options.id, 'View Detail');
+						return util.actionView($scope, options, 'View Detail');
 					case 'Delete':
-						return util.actionDelete(options.service, options.id, options.item, $scope.alert, $scope.reload, function(obj, id) {
+						return util.actionDelete($scope, options, function(obj, id) {
 							_.remove($scope.bulkContainer, function(e) {
 								return e[id] === obj[id];
 							})
 						});
 					case 'Duplicate':
-						return util.actionDuplicate(options.service, options.id, options.item, $scope.alert, $scope.reload);
+						return util.actionDuplicate($scope, options);
 				}
 			}
 

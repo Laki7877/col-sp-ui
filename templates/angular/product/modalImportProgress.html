@@ -4,13 +4,8 @@
 <div class="modal-body confirmation-modal no-margin">
 	<div class="row">
 		<div class="col-xs-12 margin-bottom-30">
-			<h2 class="font-size-20 text-centerx text-normal margin-bottom-20">Importing</h2>
-			<div class="progress">
-			  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{ file.isUploaded ? '100' : file.progress }}%;">
-			    <span class="sr-only">{{file.progress}}% Complete</span>
-			  </div>
-			</div>
-			<div ng-show="!file.isUploaded && file.progress == 100" nc-loading-small="Waiting for server..."></div>
+			<h2 class="font-size-20 text-centerx text-normal margin-bottom-20">{{title}}</h2>
+			<div nc-loading-small="Processing..."></div>
 		</div>
 	</div> <!-- end .row -->
 </div> <!-- end .modal-body -->

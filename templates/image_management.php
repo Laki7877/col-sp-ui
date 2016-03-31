@@ -39,7 +39,7 @@
                     </div>
                     <div class="form-section-content">
                       <div class="content-text">
-                        <div><h4>{{ product.ProductNameEn }}</h4>{{ product.VariantAttribute | variantValue }}</div>
+                        <div><h4>{{ product.ProductNameEn }}</h4><span ng-if="IsVariant">{{ product.VariantAttribute | variantValue }}</span></div>
                         <hr/>
                         <div class="margin-top-5">PID: {{ product.Pid }}</div>
                         <div class="margin-top-5">Status:</div>

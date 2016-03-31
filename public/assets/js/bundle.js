@@ -888,11 +888,11 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 		$scope.params._filter = options.filters[0].value;
 	}
 	$scope.bulkContainer = [];
-	$scope.toggleEye = util.eyeToggle(options.service, options.id, $scope.alert);
+	$scope.toggleEye = util.eyeToggle($scope, options);
 
 	if(_.isUndefined(options.bulks)) {
 		$scope.bulks= [
-			util.bulkDelete(options.service, options.id, options.item, $scope.alert, $scope.reload, $scope.onload)
+			util.bulkDelete($scope, options)
 		];
 	} else {
 		$scope.bulks = _.compact(_.map(options.bulks, function(item) {
@@ -903,11 +903,11 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 			if(_.isString(item)) {
 				switch(item) {
 					case 'Delete':
-						return util.bulkDelete(options.service, options.id, options.item, $scope.alert, $scope.reload, $scope.onload);
+						return util.bulkDelete($scope, options);
 					case 'Show':
-						return util.bulkShow(options.service, options.id, options.item, $scope.alert, $scope.reload);
+						return util.bulkShow($scope, options);
 					case 'Hide':
-						return util.bulkHide(options.service, options.id, options.item, $scope.alert, $scope.reload);
+						return util.bulkHide($scope, options);
 				}
 			}
 
@@ -937,17 +937,17 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 			if(_.isString(item)) {
 				switch(item) {
 					case 'View':
-						return util.actionView(options.url, options.id);
+						return util.actionView($scope, options);
 					case 'View Only':
-						return util.actionView(options.url, options.id, 'View Detail');
+						return util.actionView($scope, options, 'View Detail');
 					case 'Delete':
-						return util.actionDelete(options.service, options.id, options.item, $scope.alert, $scope.reload, function(obj, id) {
+						return util.actionDelete($scope, options, function(obj, id) {
 							_.remove($scope.bulkContainer, function(e) {
 								return e[id] === obj[id];
 							})
 						});
 					case 'Duplicate':
-						return util.actionDuplicate(options.service, options.id, options.item, $scope.alert, $scope.reload);
+						return util.actionDuplicate($scope, options);
 				}
 			}
 
@@ -3375,7 +3375,7 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
     //Prevent unsaved event
     $scope.onUnsave = function() {
     	if($scope.dirty) {
-    		return confirm('Your change will not be saved.');
+    		return !confirm('Are you sure you want to leave this page?');
     	}
     	return false;
     };
@@ -3479,10 +3479,11 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
 			keyboard: false,
 			backdrop: 'static',
 			templateUrl: 'product/modalImportProgress',
-			controller: ["$scope", "$uibModalInstance", "$timeout", "file", "uploader", function($scope, $uibModalInstance, $timeout, file, uploader) {
+			controller: ["$scope", "$uibModalInstance", "$timeout", "file", "uploader", "title", function($scope, $uibModalInstance, $timeout, file, uploader, title) {
 				$scope.file = file;
 				$scope.file.upload();
 				$scope.server = 0;
+				$scope.title = title;
 				$scope.$watch('file.isUploaded', function(val) {
 					$scope.server = 1;
 					if(val) {
@@ -3498,6 +3499,9 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
 				},
 				uploader: function() {
 					return $scope.uploader;
+				},
+				title: function() {
+					return $scope.modalTitle;
 				}
 			}
 		});
@@ -3515,12 +3519,14 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
 		//Import new
 		$scope.method = 'POST';
 		$scope.title = 'Import - Add New Products'
-			$scope.update = false;
+		$scope.modalTitle = 'Adding Products';
+		$scope.update = false;
 
 		//Update only
 		if(!_.isNil(update) && update) {
 			$scope.method = 'PUT';
 			$scope.title = 'Import - Update Products';
+			$scope.modalTitle = 'Updating Products';
 			$scope.update = true;
 		}
 
@@ -3536,13 +3542,14 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
 		};
 
 		$scope.uploader.onProgressAll = function(progress) {
+
 		};
 
 		//Return list of error
 		$scope.uploader.onErrorItem = function(item, response, status, headers) {
 			$scope.importingFile = null;
 			response = _.map(response, function(e) {
-				return '<li>-&nbsp;&nbsp;&nbsp;' + e + '</li>';
+				return '<li>' + e + '</li>';
 			});
 			$scope.alert.error('<span class="font-weight-bold">Fail to upload CSV</span>' + '<ul>' + response.join('') + '</ul>');
 		};
@@ -4005,6 +4012,16 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
 	$rootScope._ = _;
   $rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
+
+   //Prevent image dragdrop on other elements   
+    $window.addEventListener("dragover", function(e) {    
+      e = e || event;   
+      e.preventDefault();   
+    }, false);    
+    $window.addEventListener("drop", function(e) {    
+      e = e || event;   
+      e.preventDefault();   
+    }, false);
 
   //Handle route menu item active-ness
   var isActive = function(url, alt) {
@@ -5477,14 +5494,14 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 	};
 };
 },{}],69:[function(require,module,exports){
-module.exports = function($rootScope, $scope, $controller, ShopProfileService, ImageService, NcAlert, common, config, util, storage) {
+module.exports = function($rootScope, $scope, $controller, ShopProfileService, ImageService, Onboarding, NcAlert, common, config, util, storage) {
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 	$scope.shopGroupDropdown = config.DROPDOWN.SHOP_GROUP_DROPDOWN;
 	$scope.form = {};
 	$scope.alert = new NcAlert();
 	$scope.saving = false;
 	$scope.loading = false;
-	$scope.statusChangeable = false;
+	$scope.statusChangeable = true;
 
 	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
 		data: { IsLogo: true }
@@ -5496,8 +5513,9 @@ module.exports = function($rootScope, $scope, $controller, ShopProfileService, I
 				$scope.formData = ShopProfileService.deserialize(data);			
 				Onboarding.getListCompletedTask()
 					.then(function(data) {
-						console.log(data);
-						$scope.statusChangeable = false;			
+						_.forOwn(data, function(value) {
+							$scope.statusChangeable = $scope.statusChangeable && value;
+						});		
 					}).finally(function() {
 						$scope.loading = false;
 					});
@@ -7064,32 +7082,31 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
     };
 
     //Create bulk-action from template
-    service.bulkDelete = function (rest, id, item, alert, reload, onload) {
+    service.bulkDelete = function (scope, options) {
         return {
             name: 'Delete',
             fail: function() {
-                alert.error('Unable to delete. Please select ' + item + ' for this action.');
+                scope.alert.error('Unable to delete. Please select ' + options.item + ' for this action.');
             },
             fn: function (array, cb) {
-                alert.close();
+                scope.alert.close();
 
                 //Only pass ShopId
                 var array = _.map(array, function (e) {
-                    return _.pick(e, [id]);
+                    return _.pick(e, [options.id]);
                 });
 
-                //On launch endpoint
-                (onload || _.noop)();
+                scope.loading = true;
 
                 //Delete bulk
-                rest.delete(array)
+                options.service.delete(array)
                     .then(function () {
-                        alert.success('Delete successful.');
+                        scope.alert.success('Delete successful.');
                         cb();
                     }, function (err) {
-                        alert.error(common.getError(err));
+                        scope.alert.error(common.getError(err));
                     })
-                    .finally(reload);
+                    .finally(scope.reload);
             },
             confirmation: {
                 title: 'Confirm to delete',
@@ -7100,31 +7117,33 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
         };
     };
 
-    service.bulkShow = function (rest, id, item, alert, reload) {
+    service.bulkShow = function (scope, options) {
         return {
             name: 'Show',
             fail: function() {
-                alert.error('Unable to change visibility. Please select ' + item + ' for this action.');
+                scope.alert.error('Unable to change visibility. Please select ' + options.item + ' for this action.');
             },
             fn: function (array, cb) {
-                alert.close();
+                scope.alert.close();
 
                 //Only pass ShopId
                 var array = _.map(array, function (e) {
-                    var i = _.pick(e, [id]);
+                    var i = _.pick(e, [options.id]);
                     i.Visibility = true;
                     return i;
                 });
 
+                scope.loading = true;
+
                 //Delete bulk
-                rest.visible(array)
+                options.service.visible(array)
                     .then(function () {
-                        alert.success('Changed successful.');
+                        scope.alert.success('Changed successful.');
                         cb();
                     }, function (err) {
-                        alert.error(common.getError(err));
+                        scope.alert.error(common.getError(err));
                     })
-                    .finally(reload);
+                    .finally(scope.reload);
             },
             confirmation: {
                 title: 'Confirm to show',
@@ -7134,31 +7153,34 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
         };
     };
 
-    service.bulkHide = function (rest, id, item, alert, reload) {
+    service.bulkHide = function (scope, options) {
         return {
             name: 'Hide',
             fail: function() {
-                alert.error('Unable to hide. Please select ' + item + ' for this action.');
+                scope.alert.error('Unable to hide. Please select ' + options.item + ' for this action.');
             },
             fn: function (array, cb) {
-                alert.close();
+                scope.alert.close();
 
                 //Only pass ShopId
                 var array = _.map(array, function (e) {
-                    var i = _.pick(e, [id]);
+                    var i = _.pick(e, [options.id]);
                     i.Visibility = false;
                     return i;
                 });
+                
+                //On launch endpoint
+                (onload || _.noop)();
 
                 //Delete bulk
-                rest.visible(array)
+                options.service.visible(array)
                     .then(function () {
-                        alert.success('Changed successful.');
+                        scope.alert.success('Changed successful.');
                         cb();
                     }, function (err) {
-                        alert.error(common.getError(err));
+                        scope.alert.error(common.getError(err));
                     })
-                    .finally(reload);
+                    .finally(scope.reload);
             },
             confirmation: {
                 title: 'Confirm to hide',
@@ -7170,78 +7192,79 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
     };
 
     //Create action from template
-    service.actionView = function (uri, id, name) {
+    service.actionView = function (scope, options) {
         return {
-            name: name || 'View / Edit',
+            name: options.name || 'View / Edit',
             fn: function (item) {
-                $window.location.href = uri + '/' + item[id];
+                $window.location.href = options.url + '/' + item[options.id];
             }
         };
     };
 
     //Create action from template
-    service.actionDelete = function (rest, id, item, alert, reload, cb) {
+    service.actionDelete = function (scope, options, cb) {
         return {
             name: 'Delete',
             fn: function (obj) {
-                alert.close();
+                scope.alert.close();
 
                 //Only pass id
-                var obj = _.pick(obj, [id]);
+                var obj = _.pick(obj, [options.id]);
 
+                scope.loading = true;
 
                 //Delete bulk
-                rest.delete([obj])
+                options.service.delete([obj])
                     .then(function () {
-                        alert.success('Delete successful.');
-                        cb(obj, id);
+                        scope.alert.success('Delete successful.');
+                        cb(obj, options.id);
                     }, function (err) {
-                        alert.error(common.getError(err));
+                        scope.alert.error(common.getError(err));
                     })
-                    .finally(reload);
+                    .finally(scope.reload);
             },
             confirmation: {
                 title: 'Delete',
-                message: 'Are you sure you want to delete selected ' + item + '?',
+                message: 'Are you sure you want to delete selected ' + options.item + '?',
                 btnConfirm: 'Delete',
                 btnClass: 'btn-red'
             }
         };
     };
     //Create action from template
-    service.actionDuplicate = function (rest, id, item, alert, reload) {
+    service.actionDuplicate = function (scope, options) {
         return {
             name: 'Duplicate',
             fn: function (obj) {
-                alert.close();
+                scope.alert.close();
 
-                //Delete bulk
-                rest.duplicate(obj[id])
+                //Duplicate
+                options.service.duplicate(obj[options.id])
                     .then(function () {
                         alert.success('Duplicate successful.');
                     }, function (err) {
                         alert.error(common.getError(err));
                     })
-                    .finally(reload);
+                    .finally(scope.reload);
             },
             confirmation: {
                 title: 'Duplicate',
-                message: 'Are you sure you want to duplicate selected ' + item + '?',
+                message: 'Are you sure you want to duplicate selected ' + options.item + '?',
                 btnConfirm: 'Duplicate'
             }
         };
     };
 
-    service.eyeToggle = function (rest, id, alert, reload) {
+    service.eyeToggle = function (scope, options) {
         return function (item) {
             item.Visibility = !item.Visibility;
-            rest.visible([_.pick(item, [id, 'Visibility'])])
+            options.service.visible([_.pick(item, [options.id, 'Visibility'])])
                 .then(function () {
                     //success
                 }, function (err) {
                     alert.error(common.getError(err));
                 })
-                .finally(reload);
+                .finally(scope.reload);
         };
     };
 
@@ -9790,6 +9813,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     }];
     $scope.dataset.Brands = [];
     $scope.enableVariation = function() {
+      if($scope.uploader.isUploading){
+          return $scope.alert.error('<strong>Please Wait</strong> - One or more image upload is in progress..');
+      }
+      $scope.alert.close();
       $scope.controlFlags.variation = 'enable';
     }
 
@@ -10113,7 +10140,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 }
 
                 checkSchema(inverseFormData);
-                
+
               });
 
           }, function(error) {
@@ -11754,7 +11781,7 @@ var permission = {
 module.exports = {
   seller: generateRouteArray(seller),
   admin: generateRouteArray(admin),
-  reserve: ['add', 'select', 'import', 'export', 'reviews', 'images'],
+  reserve: ['add', 'select', 'import', 'import/update', 'export', 'reviews', 'images'],
   permission: permission
 }
 
@@ -15777,7 +15804,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('product/modalImportProgress',
-    "<div class=\"modal-header no-border\"><button type=button class=close ng-click=$dismiss()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">Importing</h2><div class=progress><div class=progress-bar role=progressbar aria-valuenow=0 aria-valuemin=0 aria-valuemax=100 style=\"width: {{ file.isUploaded ? '100' : file.progress }}%\"><span class=sr-only>{{file.progress}}% Complete</span></div></div><div ng-show=\"!file.isUploaded && file.progress == 100\" nc-loading-small=\"Waiting for server...\"></div></div></div></div>"
+    "<div class=\"modal-header no-border\"><button type=button class=close ng-click=$dismiss()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">{{title}}</h2><div nc-loading-small=Processing...></div></div></div></div>"
   );
 
 

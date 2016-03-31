@@ -1,11 +1,11 @@
-module.exports = function($rootScope, $scope, $controller, ShopProfileService, ImageService, NcAlert, common, config, util, storage) {
+module.exports = function($rootScope, $scope, $controller, ShopProfileService, ImageService, Onboarding, NcAlert, common, config, util, storage) {
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 	$scope.shopGroupDropdown = config.DROPDOWN.SHOP_GROUP_DROPDOWN;
 	$scope.form = {};
 	$scope.alert = new NcAlert();
 	$scope.saving = false;
 	$scope.loading = false;
-	$scope.statusChangeable = false;
+	$scope.statusChangeable = true;
 
 	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
 		data: { IsLogo: true }
@@ -17,8 +17,9 @@ module.exports = function($rootScope, $scope, $controller, ShopProfileService, I
 				$scope.formData = ShopProfileService.deserialize(data);			
 				Onboarding.getListCompletedTask()
 					.then(function(data) {
-						console.log(data);
-						$scope.statusChangeable = false;			
+						_.forOwn(data, function(value) {
+							$scope.statusChangeable = $scope.statusChangeable && value;
+						});		
 					}).finally(function() {
 						$scope.loading = false;
 					});
