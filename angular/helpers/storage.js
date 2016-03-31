@@ -106,6 +106,7 @@ module.exports = function ($cookies) {
      * Utility method to clear the sessionStorage
      */
     service.clear = function () {
+        console.log("[CLEARING STORAGE]");
         sessionStorage.removeItem('central.seller.portal.auth.token');
         sessionStorage.removeItem('central.seller.portal.auth.profile');
         $cookies.remove('central.seller.portal.auth.token', {path: '/'});

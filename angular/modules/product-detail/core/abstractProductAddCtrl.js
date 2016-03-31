@@ -106,6 +106,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       $scope.variantPtr.VideoLinks[$index] = { Url : null }
     };
 
+    $scope.disableInstallment = function(){
+        if(!$scope.variantPtr.SalePrice) return true;
+        return (Number($scope.variantPtr.SalePrice) || 0) < 5000;
+    }
+
     var checkSchema = function(data, schemaName) {
       //Perform schema check
       var schema = JSONCache.get(schemaName || 'productStages');
