@@ -23,6 +23,10 @@ angular.module('productDetail')
                     }
                 }
 
+                scope.variationFactorLocked = function(){
+                  return  scope.formData.ProductId && (scope.formData.Variants.length > 0);
+                }
+
                 scope.isFreeTextInput = util.isFreeTextDataType;
                 scope.isListInput = util.isListDataType;
                 scope.isHtmlInput = util.isHtmlDataType;

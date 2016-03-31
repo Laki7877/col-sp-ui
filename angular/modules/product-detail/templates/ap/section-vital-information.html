@@ -56,7 +56,7 @@
                             No Product Found
                         </md-not-found>
                </md-autocomplete>-->
-				<ui-select ng-model="formData.Brand" theme="selectize" loading="refresher.BrandLoading">
+				<!--<ui-select ng-model="formData.Brand" theme="selectize" loading="refresher.BrandLoading">
 					<ui-select-match>
 						<span ng-bind-html="$select.selected.BrandNameEn"></span>
 						<span ng-show="!$select.selected.BrandNameEn"><span class="color-grey"><i class="fa fa-search"></i> Search Brand</span></span>
@@ -64,7 +64,12 @@
 					<ui-select-choices group-by="'_group'" ui-disable-choice="item.disabled" refresh-delay="5" refresh="refresher.Brands($select.search)" repeat="item in (dataset.Brands.length == 0 || $select.search == '' ? dataset.BrandsEmpty : dataset.Brands) | filter: $select.search  track by item.BrandId">
 						<span ng-bind-html="item.BrandNameEn | highlight: $select.search"></span>
 					</ui-select-choices>
-				</ui-select>
+				</ui-select>-->
+
+                <you-me display-by="BrandNameEn" placeholder="Search Brand" 
+                        auto-clear-search="true"
+                        ng-model="x" refresh="refresher.Brands" choices="dataset.Brands"></you-me>
+
 			</div>
 		</div>
 	</div>
