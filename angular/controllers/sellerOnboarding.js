@@ -1,5 +1,5 @@
 
-module.exports = function($scope, $rootScope, Onboarding, $log, $window){
+module.exports = function($scope, $rootScope, Onboarding, $log, storage, $window){
 	'ngInject';
 
 	$scope.$on('change-password', function() {
@@ -67,7 +67,9 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 		if($scope.checkBeforeLaunch) {
 			Onboarding.launchShop()
 				.then(function(){
-					$window.location.reload();
+					$rootScope.Profile.Shop.Status = 'AT';
+					$scope.ShopInActiveStatus = ($rootScope.Profile.Shop.Status == 'NA');
+					storage.storeCurrentUserProfile($rootScope.Profile);
 				});
 		}
 		else {
