@@ -23,8 +23,10 @@ angular.module('productDetail')
                     }
                 }
 
+                var gmz = angular.copy(scope.formData.Variants);
+
                 scope.variationFactorLocked = function(){
-                  return  scope.formData.ProductId && (scope.formData.Variants.length > 0);
+                  return  scope.formData.ProductId && (gmz.length > 0);
                 }
 
                 scope.isFreeTextInput = util.isFreeTextDataType;
