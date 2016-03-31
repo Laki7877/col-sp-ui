@@ -67,13 +67,6 @@ module.exports = function (common, config, util, $log, $window) {
         });
     };
 
-    service.getRevt = function () {
-        return common.makeRequest({
-            url: '/Orders/Revenue?_filter=Today',
-            method: 'GET'
-        });
-    }
-
     service.getRevenue = function (type) {
         switch (type) {
 
@@ -91,11 +84,21 @@ module.exports = function (common, config, util, $log, $window) {
                 });
                 break;
 
-            default:
+            case 'month':
                 return common.makeRequest({
-                    url: '/Orders/Revenue?_filter=ThisWeek',
+                    url: '/Orders/Revenue?_filter=ThisMonth',
                     method: 'GET'
                 });
+                break;
+
+            case 'year':
+                return common.makeRequest({
+                    url: '/Orders/Revenue?_filter=ThisYear',
+                    method: 'GET'
+                });
+                break;
+
+            default:
                 break;
         }
     };

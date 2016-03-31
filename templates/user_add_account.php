@@ -107,7 +107,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 							              	</ui-select>
 							              </div>
 							              <!-- Old Password -->
-							              <div ng-show="id != 0" 
+							              <!-- <div ng-show="id != 0"
 							              	ng-template="common/input/password"
 							                ng-template-options="{
 							                  'label': 'OldPassword',
@@ -120,7 +120,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 							                  ng-model="formData.OldPassword"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.OldPassword) }"
 							                  />
-							              </div>
+							              </div> -->
 							              <!-- Password -->
 							              <div ng-template="common/input/password"
 							                ng-template-options="{
