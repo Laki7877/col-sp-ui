@@ -34,7 +34,9 @@
 		                <td class="column-text-ellipsis" nc-link="/admin/cms/category/{{row.CMSCategoryId}}">
                       {{row.CMSCategoryNameEN}}
                     </td>
-		                <td>{{row.CMSCategoryNameTH}}</td>
+		                <td class="column-text-ellipsis" nc-link="/admin/cms/category/{{row.CMSCategoryId}}">
+                      {{row.CMSCategoryNameTH}}
+                    </td>
 		                <td>{{row.IsActive}}</td>
 		                <td>{{row.UpdateDate | dateTh}}</td>
 		                <td>

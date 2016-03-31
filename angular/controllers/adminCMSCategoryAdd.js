@@ -5,8 +5,8 @@
 
     $scope.loading      = false;
     $scope.isEmpty      = true;
-    $scope.products     = [];
-    $scope.categorys    = [];
+    //$scope.products     = [];
+    //$scope.categorys    = [];
 
 
     var sortableEle;
@@ -134,7 +134,7 @@
 
                 $scope.isEmpty = true;
                 $scope.loading = false;
-                $scope.message = 'You do not have any Product';
+                $scope.message = 'Empty list.';
                 $scope.categorys = [];
                 $scope.brands   = [];
                 $scope.tags     = [];
@@ -177,21 +177,78 @@
                     // search product
                     CMSService.searchProduct(params)
                     .then(function (data) {
+                        console.log(data)
                         $scope.products = data;
                         $scope.isEmpty = false;
                         $scope.loading = false;
                         $scope.message = '';
+                    },
+                    function (error) {
+                        $scope.products = [];
+                        $scope.isEmpty = true;
+                        $scope.loading = false;
+                        $scope.message = 'Not Found Product';
                     });
 
                 };
 
                 $scope.ok = function () {
-                    $scope.loading = false;
-                    $scope.isEmpty = false;
-                    $uibModalInstance.close($scope.products)
+
+                    var itemSelected = [];
+
+                    angular.forEach($scope.products, function (item) {
+                        if (item.IsChecked) {
+                            itemSelected.push(item);
+                        }
+                    });
+
+                    $uibModalInstance.close(itemSelected);
                 };
 
+                // check all item
+                $scope.checkAll = function (isChecked) {
 
+                    $scope.isCheckedAll != isChecked;
+
+                    if (!isChecked) {
+                        angular.forEach($scope.products, function (item) {
+                            item.IsChecked = false;
+                        });
+                    }
+                    else {
+                        angular.forEach($scope.products, function (item) {
+                            item.IsChecked = true;
+                        });
+                    }
+
+                    $scope.sumProductSelected();
+                };
+
+                // check once item
+                $scope.checkOnce = function (item, isChecked) {
+
+                    if (!isChecked) {
+                        item.IsChecked = false;
+                    }
+                    else {
+                        item.IsChecked = true;
+                    }
+
+                    $scope.sumProductSelected();
+                };
+
+                $scope.sumProductSelected = function () {
+
+                    var sum = 0;
+
+                    angular.forEach($scope.products, function (item) {
+                        if (item.IsChecked) {
+                            sum++;
+                        }
+                    });
+
+                    return sum;
+                };
                 
                 /// Test
                 $scope.category = {};
