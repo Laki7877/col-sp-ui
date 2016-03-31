@@ -13619,7 +13619,8 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 			Visibility: true,
 			AttributeSets: [],
 			CategoryBannerTh: [],
-			CategoryBannerEn: []
+			CategoryBannerEn: [],
+			TitleShowcase: false
 		}, extend);
 	};
 	service.deserialize = function(data) {
@@ -14007,7 +14008,8 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 			UrlKeyEn: "",
 			Visibility: true,
 			CategoryBannerTh: [],
-			CategoryBannerEn: []
+			CategoryBannerEn: [],
+			TitleShowcase: false
 		}, extend);
 	};
 	service.deserialize = function(data) {
