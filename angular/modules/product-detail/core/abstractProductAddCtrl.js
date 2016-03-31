@@ -30,6 +30,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.readOnly = options.readOnly;
     $scope.adminMode = options.adminMode;
     $scope.approveMode = options.approveMode;
+
+    $scope.isVisibleTo = function(abbrev){
+      if(abbrev == "AD" && adminMode) return true;
+      if(abbrev == "ME") return true;
+      return false;
+    }
+
     $scope.overview = {};
     $scope.formData = {
       Status: 'DF',

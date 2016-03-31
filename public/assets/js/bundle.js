@@ -6977,6 +6977,7 @@ module.exports = ["$cookies", function ($cookies) {
      * Utility method to clear the sessionStorage
      */
     service.clear = function () {
+        console.log("[CLEARING STORAGE]");
         sessionStorage.removeItem('central.seller.portal.auth.token');
         sessionStorage.removeItem('central.seller.portal.auth.profile');
         $cookies.remove('central.seller.portal.auth.token', {path: '/'});
@@ -9781,6 +9782,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.readOnly = options.readOnly;
     $scope.adminMode = options.adminMode;
     $scope.approveMode = options.approveMode;
+
+    $scope.isVisibleTo = function(abbrev){
+      if(abbrev == "AD" && adminMode) return true;
+      if(abbrev == "ME") return true;
+      return false;
+    }
+
     $scope.overview = {};
     $scope.formData = {
       Status: 'DF',
@@ -10975,7 +10983,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-other-attributes',
-    "<div class=form-section><div class=form-section-header><h2>Default Attributes</h2></div><div class=form-section-content><div class=form-group ng-repeat=\"da in defaultAttributes\"><div class=width-label><label class=control-label ng-class=\"{'required': da.Required}\">{{ da.AttributeNameEn }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(da.DataType), 'width-field-xxl': isHtmlInput(da.DataType)}\"><select ng-if=isListInput(da.DataType) ng-required=\"da.Required && onPublishing\" class=form-control ng-model=formData.MasterAttribute[da.AttributeId] ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" name=DAInput{{$index}} ng-options=\"item as item.AttributeValue.AttributeValueEn for item in da.AttributeValueMaps track by item.AttributeValueId\"><option disabled value=\"\" selected>- Select option -</option>{{ da.AttributeId }}</select><div ng-if=isHtmlInput(da.DataType)><textarea ng-required=\"da.Required && onPublishing\" ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-model=formData.MasterAttribute[da.AttributeId] name=DAInput{{$index}} class=form-control ng-ckeditor=ckOptions></textarea></div><input ng-if=isFreeTextInput(da.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-required=\"da.Required && onPublishing\" class=form-control name=DAInput{{$index}} ng-model=\"formData.MasterAttribute[da.AttributeId]\"><div ng-if=isCheckboxInput(da.DataType)><div class=checkbox ng-repeat=\"vmap in da.AttributeValueMaps\"><label><input type=checkbox ng-init=\"formData.MasterAttribute[da.AttributeId]._checkbox = true\" ng-model=\"formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId]\"> {{ vmap.AttributeValue.AttributeValueEn }}</label></div></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Default Attributes</h2></div><div class=form-section-content><div class=form-group ng-repeat=\"da in defaultAttributes\"><div class=width-label><label class=control-label ng-class=\"{'required': da.Required}\">{{ da.AttributeNameEn }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(da.DataType), 'width-field-xxl': isHtmlInput(da.DataType)}\"><select ng-if=\"isListInput(da.DataType) && isVisibleTo(da.VisibleTo)\" ng-required=\"da.Required && onPublishing\" class=form-control ng-model=formData.MasterAttribute[da.AttributeId] ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" name=DAInput{{$index}} ng-options=\"item as item.AttributeValue.AttributeValueEn for item in da.AttributeValueMaps track by item.AttributeValueId\"><option disabled value=\"\" selected>- Select option -</option>{{ da.AttributeId }}</select><div ng-if=\"isHtmlInput(da.DataType) && isVisibleTo(da.VisibleTo)\"><textarea ng-required=\"da.Required && onPublishing\" ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-model=formData.MasterAttribute[da.AttributeId] name=DAInput{{$index}} class=form-control ng-ckeditor=ckOptions></textarea></div><input ng-if=isFreeTextInput(da.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-required=\"da.Required && onPublishing\" class=form-control name=DAInput{{$index}} ng-model=\"formData.MasterAttribute[da.AttributeId]\"><div ng-if=\"isCheckboxInput(da.DataType) && isVisibleTo(da.VisibleTo)\"><div class=checkbox ng-repeat=\"vmap in da.AttributeValueMaps\"><label><input type=checkbox ng-init=\"formData.MasterAttribute[da.AttributeId]._checkbox = true\" ng-model=\"formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId]\"> {{ vmap.AttributeValue.AttributeValueEn }}</label></div></div></div></div></div></div>"
   );
 
 
