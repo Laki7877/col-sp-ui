@@ -4006,6 +4006,16 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
   $rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
 
+   //Prevent image dragdrop on other elements   
+    $window.addEventListener("dragover", function(e) {    
+      e = e || event;   
+      e.preventDefault();   
+    }, false);    
+    $window.addEventListener("drop", function(e) {    
+      e = e || event;   
+      e.preventDefault();   
+    }, false);
+
   //Handle route menu item active-ness
   var isActive = function(url, alt) {
     var path = alt;
