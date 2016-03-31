@@ -13,6 +13,8 @@ factory('$productAdd', function(Product, AttributeSet, ImageService, GlobalCateg
    * @param  {DataSet} dataSet
    */
   $productAdd.generateVariants = function(formData, dataSet) {
+    var deferred = $q.defer();
+
     var vHashSet = {};
     var prevVariants = angular.copy(formData.Variants);
     prevVariants.forEach(function(elem, index) {
@@ -106,6 +108,9 @@ factory('$productAdd', function(Product, AttributeSet, ImageService, GlobalCateg
     }
 
     formData.DefaultVariant = formData.Variants[0];
+    deferred.resolve();
+
+    return deferred.promise;
   };
 
 
@@ -170,6 +175,7 @@ factory('$productAdd', function(Product, AttributeSet, ImageService, GlobalCateg
             if (sharedFormData.Variants.length > 0) {
               controlFlags.variation = "enable";
             }
+
             sharedDataSet.attributeOptions = inverseResult.attributeOptions || sharedDataSet.attributeOptions;
             if (sharedDataSet.attributeOptions[1].options.length > 0) {
               variationFactorIndices.pushSecond();
@@ -177,6 +183,11 @@ factory('$productAdd', function(Product, AttributeSet, ImageService, GlobalCateg
           };
 
           parse(ivFormData, sharedFormData.AttributeSet);
+          $productAdd.generateVariants(sharedFormData, sharedDataSet).then(function(){
+              for(var i = 0; i < sharedFormData.Variants.length; i++){
+                if(!sharedFormData.Variants[i].Pid) sharedFormData.Variants[i].Visibility = false;
+              }
+          });
         }
 
         pageLoader.load('Downloading Category Tree..');
