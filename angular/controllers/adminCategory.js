@@ -130,6 +130,9 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				$scope.availableProducts = -1;
 				$scope.id = id;
 
+				//For searching feature prod
+				var search = {};
+
 				if(id == 0) {
 					$scope.formData = GlobalCategoryService.generate();
 					$scope.loading = false;
@@ -138,10 +141,11 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 					GlobalCategoryService.get(id)
 						.then(function(data) {
 							$scope.formData = GlobalCategoryService.deserialize(data);
+							search = _.pick($scope.formData, ['Lft', 'Rgt']);
+
 							//Check product count
 							Product.advanceList({
-								GlobalCategories: [_.pick($scope.formData, ['Lft', 'Rgt'])],
-								_limit: 1,
+								GlobalCategories: [search]
 							}).then(function(response) {
 								$scope.availableProducts = response.total;
 							});
@@ -161,7 +165,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				};
 				$scope.getFeatureProduct = function(text) {
 					Product.advanceList({
-						GlobalCategories: [{CategoryId: id}],
+						GlobalCategories: [search],
 						_limit: 8,
 						searchText: text
 					}).then(function(response) {

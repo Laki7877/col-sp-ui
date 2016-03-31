@@ -31,23 +31,20 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   };
 
   //In case local storage expire before cookie
-  if(_.isNil($rootScope.Profile) && !_.isNil(storage.getSessionToken())) {
+  if(!_.isNil(storage.getSessionToken())) {
     $rootScope.DisablePage = true;
-    Credential.loginWithToken(storage.getSessionToken(), true)
-      .then(function(profile) {
-        $rootScope.Profile = profile;
-        $rootScope.DisablePage = false;
-      }, function(err) {
-        storage.clear();
-        if($window.location.pathname.startsWith('/admin'))
-        {
-          //Admin
-          $window.location.href = '/admin/login';
-        } else {
-          //User
-          $window.location.href = "/login";
-        }
-      });
+    if(_.isNil($rootScope.Profile)) {
+      Credential.checkToken()
+        .then(function() {
+          $rootScope.DisablePage = false;
+        });
+    } else {
+      Credential.loginWithToken(storage.getSessionToken(), true)
+        .then(function(profile) {
+          $rootScope.Profile = profile;
+          $rootScope.DisablePage = false;
+        });
+    }
   }
 
   //No cookie

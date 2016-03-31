@@ -98,36 +98,36 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
           <!-- ng-if="(getState() >= 3 && product.ShipQuantity != 0) || (getState() < 3)" -->
           <tr ng-repeat="product in formData.Products track by $index">
             <td class="column-text-ellipsis"><span print-only>{{product.ProductNameEn}}</span><a ng-href="/products/{{product.ProductId}}" print-hide>{{product.ProductNameEn}}</a></td>
-            <td class="text-align-center">{{product.UnitPrice | currency:' ':2}}</td>
-            <td class="text-align-center">{{product.Quantity}}</td>
-            <td class="text-align-center" ng-if="getState() >= 2">
+            <td ng-class="getRedText(product)" class="text-align-center">{{product.UnitPrice | currency:' ':2}}</td>
+            <td ng-class="getRedText(product)" class="text-align-center">{{product.Quantity}}</td>
+            <td ng-class="getRedText(product)" class="text-align-center" ng-if="getState() >= 2">
               <span ng-if="formData.Status != 'PE'">{{product.ShipQuantity}}</span>
               <span ng-if="formData.Status == 'PE'">
                 <input type="number" class="form-control" ng-model="product.ShipQuantity" min="0" max="{{product.Quantity}}" ng-blur="checkQuantity(product)"/>
               </span>
             </td>
-            <td class="text-align-right">{{(product.UnitPrice * product.Quantity) | currency:' ':2}}</td>
+            <td ng-class="getRedText(product)" class="text-align-right">{{getPrice(product) | currency:' ':2}}</td>
           </tr>
           <tr>
             <td>Sub Total</td>
             <td></td>
             <td></td>
-            <td  ng-if="getState() >= 2 "></td>
-            <td class="text-align-right">{{formData.TotalAmt | currency:' ':2}}</td>
+            <td ng-if="getState() >= 2 "></td>
+            <td class="text-align-right">{{getSubtotal() | currency:' ':2}}</td>
           </tr>
-          <tr ng-if="formData.OrdDiscAmt > 0" class="color-red">
+          <tr ng-if="getDiscount() > 0" class="color-red">
             <td>Discount</td>
             <td></td>
             <td></td>
-            <td  ng-if="getState() >= 2 "></td>
-            <td class="text-align-right">- {{formData.OrdDiscAmt | currency:' ':2}}</td>
+            <td ng-if="getState() >= 2 "></td>
+            <td class="text-align-right">- {{getDiscount() | currency:' ':2}}</td>
           </tr>
           <tr class="background_light_yellow ">
             <td>Total Order Price</td>
             <td></td>
             <td></td>
             <td  ng-if="getState() >= 2 "></td>
-            <td class="text-align-right"><strong>{{formData.GrandTotalAmt | currency:' ':2}}</strong></td>
+            <td class="text-align-right"><strong>{{getTotal() | currency:' ':2}}</strong></td>
           </tr>
         </tbody>
       </table>

@@ -126,6 +126,9 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				$scope.availableProducts = -1;
 				$scope.id = id;
 
+				//For searching feature prod
+				var search = {};
+
 				if(id == 0) {
 					$scope.formData = LocalCategoryService.generate();
 					$scope.loading = false;
@@ -134,9 +137,10 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 					LocalCategoryService.get(id)
 						.then(function(data) {
 							$scope.formData = LocalCategoryService.deserialize(data);
+							search = _.pick($scope.formData, ['Lft', 'Rgt']);
 							//Check product count
 							Product.advanceList({
-								LocalCategories: [_.pick($scope.formData, ['Lft', 'Rgt'])],
+								LocalCategories: [search],
 								_limit: 1,
 							}).then(function(response) {
 								$scope.availableProducts = response.total;
@@ -150,7 +154,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				};
 				$scope.getFeatureProduct = function(text) {
 					Product.advanceList({
-						LocalCategories: [{CategoryId: id}],
+						LocalCategories: [search],
 						_limit: 8,
 						searchText: text
 					}).then(function(response) {

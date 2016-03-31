@@ -13,10 +13,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           </span>
           <span class="font-size-18 header_name_space">Revenue</span>
           <span class="float-right group_span_right">
-            <span><a href="#" class="color-grey">Today</a></span>
-            <span class="header-link" href="#"><a class="active-underline">This Week</a></span>
-            <span><a href="#" class="color-grey">This Month</a></span>
-            <span><a href="#" class="color-grey">This Year</a></span>
+            <span ng-class="{'header-link': todayFlag}" ng-click="setGraphData('today')"><a ng-class="{'active-underline': todayFlag, 'color-grey': !todayFlag}">Today</a></span>
+            <span ng-class="{'header-link': thisWeekFlag}" ng-click="setGraphData('week')"><a ng-class="{'active-underline': thisWeekFlag, 'color-grey': !thisWeekFlag}">This Week</a></span>
+            <span ng-class="{'header-link': thisMonthFlag}" ng-click="setGraphData('month')"><a ng-class="{'active-underline': thisMonthFlag, 'color-grey': !thisMonthFlag}">This Month</a></span>
+            <span ng-class="{'header-link': thisYearFlag}" ng-click="setGraphData('year')"><a ng-class="{'active-underline': thisYearFlag, 'color-grey': !thisYearFlag}">This Year</a></span>
           </span>
         </div>
         <div class="dashboard_graph">
@@ -24,7 +24,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <!-- <canvas id="canvas" height="280"></canvas> -->
             <canvas id="line" class="chart chart-line" chart-data="data"
               chart-labels="labels" chart-legend="false" chart-series="line"
-              chart-click="onClick" chart-options="{maintainAspectRatio: true, bezierCurve : false}">
+              chart-click="onClick" chart-options='{maintainAspectRatio: true, bezierCurve : false, scaleBeginAtZero: true
+              ,tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %> ฿"}'>
             </canvas>
           </div>
         </div>
@@ -47,15 +48,12 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         <div class="group_container no-padding">
           <table class="table table_dashboard table_recent_order">
             <tbody>
-              <tr ng-repeat="order in newOrdersData | orderBy: 'date' | limitTo:maxNewOrders" ng-show="newOrdersData.length != 0">
-                <td>
-                  {{order.OrderDate | date:'MM/dd/yyyy'}}
-                </td>
+              <tr ng-click="linkToOrder(order.OrderId)" ng-repeat="order in newOrdersData | orderBy: 'date' | limitTo:maxNewOrders" ng-show="newOrdersData.length != 0">
                 <td>
                   {{order.OrderIdText}}
                 </td>
                 <td>
-                  {{order.TotalAmt | currency: ' ': 2}}
+                  Total Price: {{order.TotalAmt | currency: ' ': 2}}
                 </td>
                 <td>
                   <span ng-class="getColorClass(order.Status)">
@@ -64,17 +62,18 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                   </span>
                 </td>
                 <td>
-                  <button class="btn btn-white btn-width-default" ng-click="linkToOrder(order.OrderId)">View</button>
+                  {{order.OrderDate | date:'MM/dd/yyyy'}}
                 </td>
-              </tr>
-              <tr ng-show="newOrdersData.length == 0">
-                <td class="empty_data">- No New Orders -</td>
               </tr>
             </tbody>
           </table>
+          <div class="loading_text loading_row" ng-show="newOrdersData==undefined">
+            <i class="fa fa-spinner fa-spin color-theme margin-right-10"></i>
+            Loading...
+          </div>
           <div class="view_all_row" ng-show="newOrdersData.length == 10">
             <a ng-click="linkToOrdersPage()">View All</a>
-          </div>
+          </div>  
         </div>
       </div>
 
@@ -91,10 +90,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         <div class="group_container">
           <table class="table table_dashboard table_lsa">
             <tbody>
-              <tr ng-repeat="product in lowStockAlertData | orderBy: 'Quantity' | limitTo:maxLowStockAlert" ng-show="lowStockAlertData.length != 0">
-                <td>
-                  {{product.QuantityText}}
-                </td>
+              <tr ng-click="linkToProduct(product.ProductId)" ng-repeat="product in lowStockAlertData | orderBy: 'Quantity' | limitTo:maxLowStockAlert" ng-show="lowStockAlertData.length != 0">
                 <td>
                   {{product.PidText}}
                 </td>
@@ -102,8 +98,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
                   {{product.ProductNameEn}}
                 </td>
                 <td>
-                  <button class="btn btn-white btn-width-default" ng-click="linkToProduct(product.ProductId)">View</button>
+                  {{product.QuantityText}}
                 </td>
+                <!-- <td>
+                  <button class="btn btn-white btn-width-default" ng-click="linkToProduct(product.ProductId)">View</button>
+                </td> -->
               </tr>
 
               <tr ng-show="lowStockAlertData.length == 0">
@@ -111,6 +110,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
               </tr>
             </tbody>
           </table>
+          <div class="loading_text loading_row" ng-show="lowStockAlertData==undefined">
+            <i class="fa fa-spinner fa-spin color-theme margin-right-10"></i>
+            Loading...
+          </div>
           <div class="view_all_row" ng-show="lowStockAlertData.length == 10">
             <a ng-click="linkToLowStock()">View All</a>
           </div>
@@ -130,7 +133,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         <div class="group_container">
           <table class="table table_dashboard table_newsletter">
             <tbody>
-              <tr ng-repeat="letter in newsLettersData" ng-show="newsLettersData.length != 0">
+              <tr ng-click="open(letter)" ng-repeat="letter in newsLettersData" ng-show="newsLettersData.length != 0">
                 <td class="column-text-ellipsis">
                   <div>{{letter.Subject}}</div>
                   <div class="newsletter_date">Publish on {{letter.PublishedDt | date:"MM/dd/yyyy 'at' HH:mm"}}</div>
@@ -144,6 +147,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
               </tr>
             </tbody>
           </table>
+          <div class="loading_text loading_row" ng-show="newsLettersData==undefined">
+            <i class="fa fa-spinner fa-spin color-theme margin-right-10"></i>
+            Loading...
+          </div>
           <div class="view_all_row" ng-show="newsLettersData.length == 10">
             <a ng-click="linkToAllNewsletters()">View All</a>
           </div>
@@ -247,11 +254,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         </div>
 
         <div ng-repeat="product in topSellingItemsData  | limitTo:maxTopSellingItems" ng-show="topSellingItemsData.length != 0" class="group_container top_selling_field">
+            <img ng-show="product.FeatureImgUrl ==''" class="logo-img" src="<?= $this->asset('/assets/img/placeholder-no-image.png') ?>" />
             <img class="logo-img" src="{{product.FeatureImgUrl}}" />
-            <div class="column-text-ellipsis"><a href="#">{{product.ProductNameEn}}</a></div>
+            <div class="column-text-ellipsis"><a ng-click="linkToProduct(product.ProductId)">{{product.ProductNameEn}}</a></div>
         </div>
         <div ng-show="topSellingItemsData.length == 0" class="group_container top_selling_field">
-            <!-- <img class="logo-img" src="{{product.img_path}}" /> -->
             <div class="text-center">- No Top Selling Product -</div>
         </div>
       </div>

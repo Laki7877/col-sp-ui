@@ -1,3 +1,120 @@
+/*---- General ----*/
+
+// body {
+// 	overflow-y: scroll;
+// 	overflow-x: auto;
+// }
+//This cause Angular MD Bug
+
+html, body {
+	height: 100%;
+	min-height: 100%;
+}
+
+#wrapper {
+  position: relative;
+  display: block;
+  min-width: 1200px;
+  min-height: 100%;
+}
+
+#page-content-wrapper {
+  margin-left: $sidebar-width;
+  position: relative;
+}
+
+#page-body-wrapper {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+
+/*---- Header ----*/
+// Top Header
+.header {
+	background: $header-bg-color;
+	height: 30px;
+
+	.header-font-subject {
+		font-size: 16px;
+		line-height: 30px;
+		color: #32343c;
+	}
+
+	.header-font-detail {
+		float: right;
+		color: $color-dark-grey;
+		line-height: 30px;
+	}
+	.header-font-detail:hover {
+		color: $color-theme;
+	}
+	.dropdown-toggle{
+		padding-top: 6px;
+		padding-bottom: 4px;
+		color: $color-dark-grey;
+	}
+	.dropdown-toggle:hover, .dropdown-toggle:focus, .open .dropdown-toggle,.open .dropdown-toggle:hover {
+    	background-color: $color-theme !important;
+    	color: $color-white !important;
+	}
+	.dropdown-menu{
+		padding: 10px 0px;
+		border-color: $color-light-grey;
+	}
+	.dropdown-menu .divider{
+		background-color: $color-light-grey;
+	}
+}
+
+// Page Header
+.page-header {
+	@extend .clearfix;
+	// padding-bottom: 14px;
+		h1{
+			margin: 4px 0px 0px 0px;
+		}
+
+	&.with-border {
+		// border-bottom: 1px solid $header-border-grey;
+	}
+	&.no-padding {
+		padding-bottom: 0;
+	}
+
+	.page-header-title {
+		font-size: 24px;
+		font-weight: normal;
+	}
+
+	.page-header-icon{
+		color: $color-dark-grey;
+		font-size: 22px;
+		height: 26px;
+		vertical-align: middle;
+		margin-right: 5px;
+		&.color-black {
+			color: $color-black;
+		}
+	}
+
+	.page-actions {
+		.btn ~ .btn {
+			margin-left: 10px;
+		}
+	}
+}
+
+//Dropdown Menu
+.page-navigation {
+
+	.dropdown-menu {
+		min-width: 67px;
+	}
+}
+
+/*---- Side Bar ----*/
+
 #sidebar-wrapper {
   width: $sidebar-width;
   background: $sidebar-color;
@@ -111,7 +228,7 @@ ul.sub-sidebar {
 }
 
 
-/* --- Collaspable Menu --- */
+/* -- Collaspable Menu -- */
 #sidebar-wrapper{
 	position: fixed;
 	top: 0;

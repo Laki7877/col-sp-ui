@@ -55,7 +55,7 @@ module.exports = function (common, config, util, $log, $window) {
 
     service.getReturnRating = function () {
         return common.makeRequest({
-            url: '//Returns/Rate',
+            url: '/Returns/Rate',
             method: 'GET'
         });
     };
@@ -65,6 +65,42 @@ module.exports = function (common, config, util, $log, $window) {
             url: '/Orders/TopOrder',
             method: 'GET'
         });
+    };
+
+    service.getRevenue = function (type) {
+        switch (type) {
+
+            case 'today':
+                return common.makeRequest({
+                    url: '/Orders/Revenue?_filter=Today',
+                    method: 'GET'
+                });
+                break;
+
+            case 'week':
+                return common.makeRequest({
+                    url: '/Orders/Revenue?_filter=ThisWeek',
+                    method: 'GET'
+                });
+                break;
+
+            case 'month':
+                return common.makeRequest({
+                    url: '/Orders/Revenue?_filter=ThisMonth',
+                    method: 'GET'
+                });
+                break;
+
+            case 'year':
+                return common.makeRequest({
+                    url: '/Orders/Revenue?_filter=ThisYear',
+                    method: 'GET'
+                });
+                break;
+
+            default:
+                break;
+        }
     };
 
 

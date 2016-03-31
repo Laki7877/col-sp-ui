@@ -38,6 +38,12 @@ module.exports = function(common, $base64, storage, $q, $rootScope) {
 		return deferred.promise;
 	};
 
+	service.checkToken = function() {
+		return common.makeRequest({
+			method: 'GET',
+			url: '/Tokens/Validation'
+		});
+	};
 	service.loginWithToken = function(token, remember) {
 		var deferred = $q.defer(); 
 		storage.storeSessionToken(token, true);
