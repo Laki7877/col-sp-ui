@@ -174,10 +174,10 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				};
 				$scope.uploadBannerFail = function(e, response) {
 					if(e == 'onmaxsize') {
-						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one', true);
 					}
 					else {
-						$scope.alert.error(common.getError(response.data));
+						$scope.alert.error(common.getError(response.data), true);
 					}
 				};
 
@@ -185,7 +185,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 					if(!closeType) {
 						if ($scope.saving) e.preventDefault();
 						if ($scope.form.$dirty) {
-							if(!confirm('Your changes will not be saved.')) {
+							if(!confirm('Are you sure you want to leave this page?')) {
 								e.preventDefault();
 							}
 						} else {

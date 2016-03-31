@@ -20,8 +20,7 @@ module.exports = function($scope, $controller, AttributeService, ImageService, c
 					scope.alreadyDefault = scope.formData.DefaultAttribute;
 				}
 			},
-			onAfterSave: function(scope) {
-				console.log(scope.formData);
+			onAfterSave: function(scope) { 
 				scope.alreadyDefault = scope.formData.DefaultAttribute;
 			}
 		}
@@ -56,4 +55,8 @@ module.exports = function($scope, $controller, AttributeService, ImageService, c
 			$scope.variantOptions = config.DROPDOWN.VARIANT_DROPDOWN;
 		}
 	}, true);
+
+	$scope.$watch('formData.VisibleTo', function() {
+		$scope.formData.Required = false;
+	});
 };
