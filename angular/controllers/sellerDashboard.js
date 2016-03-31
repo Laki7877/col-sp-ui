@@ -3,8 +3,8 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	'ngInject';
 
 	getTodayGraphData = function() {
-		$scope.labels = ["12PM", "2AM", "4AM", "6AM", "8AM", "10AM",
-						 "12AM", "2PM", "4PM", "6PM", "8PM", "10PM"];
+		$scope.labels = ["0AM", "2AM", "4AM", "6AM", "8AM", "10AM",
+						 "12AM", "2PM", "4PM", "6PM", "8PM", "10PM", "12PM"];
 		var tempData = [];
 
 		for (var i = 0; i < $scope.labels.length ; i++) {
@@ -14,7 +14,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 			.then(function(data){
 				console.log('today',data);
 				for (var i = 0; i < data.length ; i++) {
-				 	tempData[data[i].Key] = data[i].Value;
+				 	tempData[data[i].Key + 1] = data[i].Value;
 				 };
 			});
 
@@ -84,7 +84,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 		 };
 		Dashboard.getRevenue('year')
 			.then(function(data){
-				console.log('year',data);
+				// console.log('year',data);
 				for (var i = 0; i < data.length ; i++) {
 				 	tempData[data[i].Key-1] = data[i].Value;
 				 };
