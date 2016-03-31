@@ -257,6 +257,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <img class="logo-img" src="{{product.FeatureImgUrl}}" />
             <div class="column-text-ellipsis"><a ng-click="linkToProduct(product.ProductId)">{{product.ProductNameEn}}</a></div>
         </div>
+        <div class="loading_text loading_row" ng-show="topSellingItemsData==undefined">
+          <i class="fa fa-spinner fa-spin color-theme margin-right-10"></i>
+          Loading...
+        </div>
         <div ng-show="topSellingItemsData.length == 0" class="group_container top_selling_field">
             <div class="text-center">- No Top Selling Product -</div>
         </div>
