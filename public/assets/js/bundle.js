@@ -1338,7 +1338,7 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeServ
 	$scope.onSearch = function($search) {
 		AttributeService.list({
 			searchText: $search,
-			_limit: null,
+			_limit:  2147483647,
 			_filter: 'NoDefaultAttribute'
 		}).then(function(data) {
 			$scope.attributeOptions = data.data;
