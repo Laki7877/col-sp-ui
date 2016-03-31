@@ -175,6 +175,7 @@
 		padding-top: 5px
 		border: none
 		position: relative
+		cursor: default
 
 		& div:first-child
 			padding-right: 0
@@ -255,6 +256,11 @@
 		td.empty_data
 			text-align:	center
 			padding-left:	0
+		
+		tr:hover
+			cursor: default
+			td
+				color: $color-black
 
 	.table_lsa
 		td:first-child
@@ -270,6 +276,12 @@
 			text-align:	center
 			padding-left:	0
 
+		tr:hover
+			cursor: default
+			td
+				color: $color-black
+
+
 	.table_newsletter
 
 		td.empty_data
@@ -283,7 +295,10 @@
 		td:last-child
 			padding-left: 30px
 			width: 80px
-	.table_newsletter
+
+			&.empty_data
+				padding-left: 0
+	
 		tr:hover
 			cursor: default
 			td

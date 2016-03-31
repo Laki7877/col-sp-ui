@@ -13,6 +13,7 @@ module.exports = function($scope, $rootScope, Onboarding, $log, storage, $window
 		Onboarding.getListCompletedTask()
 			.then(function(data) {
 				$scope.onLoadingFlag = false;
+				// Comment below is for Decorative section 
 		    	// $scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct && data.ProductApprove, data.DecorateStore];
 		    	$scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct && data.ProductApprove];
 

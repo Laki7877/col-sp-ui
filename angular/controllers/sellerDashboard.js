@@ -2,7 +2,16 @@
 module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window, $uibModal, NewsletterService){
 	'ngInject';
 
+	//---------------- Begin Graph section ----------------
+	// in this section we've 4 fucntions each of which calculates graph data for
+	// Today, Week, Month and Year graph.
+	// 
+	// This function will be called when User click section name/
+	// Example: if User click Today then getTodayGraphData will be called.
+
+	// the method that call the 4 fucntions is setGraphData(More at setGraphData() description).
 	getTodayGraphData = function() {
+		// set $scope.labels for Graph.js
 		$scope.labels = ["0AM", "2AM", "4AM", "6AM", "8AM", "10AM",
 						 "12AM", "2PM", "4PM", "6PM", "8PM", "10PM", "12PM"];
 		var tempData = [];
@@ -12,12 +21,12 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 		 };
 		Dashboard.getRevenue('today')
 			.then(function(data){
-				// console.log('today',data);
 				for (var i = 0; i < data.length ; i++) {
 				 	tempData[data[i].Key + 1] = data[i].Value;
 				 };
 			});
 
+		// set $scope.data for Graph.js
 		$scope.data = [tempData];
 	};
 
@@ -35,9 +44,6 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 				 };
 			});
 		$scope.data = [tempData];
-	  // $scope.onClick = function (points, evt) {
-	  //   console.log(points, evt);
-	  // };
 	};
 
 	getMaxDate = function(month, year) {
@@ -84,13 +90,19 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 		 };
 		Dashboard.getRevenue('year')
 			.then(function(data){
-				// console.log('year',data);
 				for (var i = 0; i < data.length ; i++) {
 				 	tempData[data[i].Key-1] = data[i].Value;
 				 };
 			});
 		$scope.data = [tempData];
 	};
+
+
+	// This function will call 4 fucntions above when User selects the graph.
+	// If User clicks Today it will use switch to case 'today' which call getTodayGraphData.
+
+	// This fucntion also set Flag for front-end.
+	// Flag is used for some CSS class.
 
 	$scope.setGraphData = function(flag){
 		switch (flag) {
@@ -125,11 +137,14 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	        default:
         }
 	};
+	//---------------- End Graph section ----------------
 
 	//Initiate graph data as Today Graph Data
+	// call setGraphData(today) it will set Graph to today data as default
 	$scope.setGraphData('today');
 
-	//Get Revenue Summary data
+	//---------Get Revenue Summary data---------------
+	// call end-point once for getting Revenue Summary data
 	getSumValue = function(data) {
 		var sum = 0;
 		for (var i = 0; i < data.length; i++) {
@@ -153,16 +168,20 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 		.then(function(data){
 			$scope.sumYearRevenue = getSumValue(data);
 		});
-	
+	//--------------End Get Revenue calling end-point section---------
 
 
+	// get Newslterr data and set it to $scope
 	Dashboard.getNewsLetter()
 		.then(function(query) {
 			return $scope.newsLettersData = query.data;
 		});
 
+	//-------------- Begin Low Stock Alert section -------------
+	// get Low Stock Alert data and set it to scope
 	Dashboard.getLowStockAlert()
 		.then(function(query) {
+			// set max data for table to 10
 			$scope.maxLowStockAlert = 10;
 			$scope.lowStockAlertData = query.data;
 
@@ -173,6 +192,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 			return $scope.lowStockAlertData;
 		});
 
+	// get Out of Stock data and merge with low stock
 	Dashboard.getOutOfStock()
 		.then(function(query) {
 			$scope.outOfStockData = query.data;
@@ -183,7 +203,10 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 			};
 			return $scope.outOfStockData;
 		});
+	//--------------End Low Stock Alert section-------------
 
+	// ------- get New order section --------
+	// set max order to 10
 	$scope.maxNewOrders = 10;
 	Dashboard.getOrders()
 		.then(function(query) {
@@ -196,12 +219,17 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 			return $scope.newOrdersData;
 		});
 
+	// ------- get Top Selling Items section --------
+	// set max top seliing to 10
 	$scope.maxTopSellingItems = 10;
 	Dashboard.getTopSellingItems()
 		.then(function(data){
 			return $scope.topSellingItemsData = data;
 		});
 
+
+	// ---------------- Begin Account Health section ----------------
+	// method for identify colored rank to Account Health section
 	getColoredRank = function(type, data) {
 		switch(type){
 			case 'Product Rating':
@@ -254,6 +282,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 		}
 	};
 
+	// call end-point Product Rating
 	Dashboard.getProductRating()
 		.then(function(data){
 			if (data != 'N/A') {
@@ -265,10 +294,13 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 			}
 		});
 
+	// Ontime Delivery mockup
+	// NOTED: front-end have hide this section this mock does not affect front-end
 	var otdRating = 92;
 	$scope.onTimeDeliveryScore = otdRating + '%';
 	$scope.onTimeDeliveryRank = getColoredRank('On Time Delivery',otdRating);
 
+	// call end-point Return Rating
 	Dashboard.getReturnRating()
 		.then(function(data){
 			if (data != 'N/A') {
@@ -281,6 +313,8 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 			}
 		});
 
+	// method for identify color-class for front-end
+	// for Mar 2016: it's only need one color code
 	$scope.getColorClass = function(status) {
 		switch (status) {
 	        case 'PC':
@@ -292,6 +326,8 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
         }
 	};
 
+	// method for identify fa-class
+	// need only 1 fa-class
 	$scope.getFaClass = function(status) {
 		switch (status) {
 	        case 'PC':
@@ -303,6 +339,9 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
         }
 	};
 
+	// ---------------- End Account Health section ----------------
+
+	// method for call modal for Newsletter
 	$scope.open = function(item) {
 		NewsletterService.get(item.NewsletterId)
 			.then(function(data) {
@@ -322,6 +361,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 			});
 	};
 
+	// ---------------- Begin link between page section  ----------------
 	$scope.linkToAllNewsletters = function(){
 		$window.location.href = '/newsletters';
 	};
@@ -343,5 +383,6 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	$scope.linkToOrder = function(id) {
 		$window.location.href = '/orders/' +id;
 	};
+	// ---------------- End link between page section ----------------
 
 };
