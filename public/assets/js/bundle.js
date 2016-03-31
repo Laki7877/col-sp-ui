@@ -823,7 +823,6 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 			$scope.params._offset = 0;
 			$scope.bulkContainer.length = 0;
 		}
-		$scope.reload();
 	});
 }]
 
@@ -967,6 +966,7 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 		if(_.isEqual(a,b)) {
 			return;
 		}
+		console.log('params');
 		$scope.reload(a,b);
 	}, true);
 
@@ -1223,8 +1223,7 @@ module.exports = ["$scope", "$controller", "AttributeService", "ImageService", "
 					scope.alreadyDefault = scope.formData.DefaultAttribute;
 				}
 			},
-			onAfterSave: function(scope) {
-				console.log(scope.formData);
+			onAfterSave: function(scope) { 
 				scope.alreadyDefault = scope.formData.DefaultAttribute;
 			}
 		}
@@ -1259,6 +1258,10 @@ module.exports = ["$scope", "$controller", "AttributeService", "ImageService", "
 			$scope.variantOptions = config.DROPDOWN.VARIANT_DROPDOWN;
 		}
 	}, true);
+
+	$scope.$watch('formData.VisibleTo', function() {
+		$scope.formData.Required = false;
+	});
 }];
 },{}],11:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeSetService", "util", "config", function($scope, $controller, AttributeSetService, util, config) {
@@ -1335,7 +1338,7 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeServ
 	$scope.onSearch = function($search) {
 		AttributeService.list({
 			searchText: $search,
-			_limit: 8,
+			_limit:  2147483647,
 			_filter: 'NoDefaultAttribute'
 		}).then(function(data) {
 			$scope.attributeOptions = data.data;
@@ -1606,10 +1609,10 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				};
 				$scope.uploadBannerFail = function(e, response) {
 					if(e == 'onmaxsize') {
-						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one', true);
 					}
 					else {
-						$scope.alert.error(common.getError(response.data));
+						$scope.alert.error(common.getError(response.data), true);
 					}
 				};
 
@@ -1617,7 +1620,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 					if(!closeType) {
 						if ($scope.saving) e.preventDefault();
 						if ($scope.form.$dirty) {
-							if(!confirm('Your changes will not be saved.')) {
+							if(!confirm('Are you sure you want to leave this page?')) {
 								e.preventDefault();
 							}
 						} else {
@@ -1627,10 +1630,11 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				});
 				$scope.save = function() {
 					$scope.alert.close();
-					$scope.saving = true;
+					$scope.form.$setSubmitted();
 
 					if($scope.form.$valid) {
 						var processed = GlobalCategoryService.serialize($scope.formData);
+						$scope.saving = true;
 						if(id == 0) {
 							GlobalCategoryService.create(processed)
 								.then(function(data) {
@@ -1649,10 +1653,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 								});
 						}
 					} else {
-						$scope.alert.error(config.DEFAULT_ERROR_MESSAGE);
-						$timeout(function() {
-							$scope.saving = false;
-						},0);
+						$scope.alert.error(config.DEFAULT_ERROR_MESSAGE, true);
 					}
 				};
 			}],
@@ -2926,10 +2927,10 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				};
 				$scope.uploadBannerFail = function(e, response) {
 					if(e == 'onmaxsize') {
-						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one', true);
 					}
 					else {
-						$scope.alert.error(common.getError(response.data));
+						$scope.alert.error(common.getError(response.data), true);
 					}
 				};
 
@@ -2937,7 +2938,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 					if(!closeType) {
 						if ($scope.saving) e.preventDefault();
 						if ($scope.form.$dirty) {
-							if(!confirm('Your changes will not be saved.')) {
+							if(!confirm('Are you sure you want to leave this page?')) {
 								e.preventDefault();
 							}
 						} else {
@@ -2947,10 +2948,11 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				});
 				$scope.save = function() {
 					$scope.alert.close();
-					$scope.saving = true;
+					$scope.form.$setSubmitted();
 
 					if($scope.form.$valid) {
 						var processed = LocalCategoryService.serialize($scope.formData);
+						$scope.saving = true;
 						if(id == 0) {
 							LocalCategoryService.create(processed)
 								.then(function(data) {
@@ -2969,10 +2971,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 								});
 						}
 					} else {
-						$scope.alert.error(config.DEFAULT_ERROR_MESSAGE);
-						$timeout(function() {
-							$scope.saving = false;
-						},0);
+						$scope.alert.error(config.DEFAULT_ERROR_MESSAGE, true);
 					}
 				};
 			}],
@@ -3034,7 +3033,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
   }
   
   if(storage.poke('session_timeout')) {
-    $scope.alert.open(false, 'Your session has timed out', '');
+    $scope.alert.open(false, 'Your session has expired', '');
   }
 
   if(storage.poke('access_denied')) {
@@ -4106,16 +4105,24 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
   //In case local storage expire before cookie
   if(!_.isNil(storage.getSessionToken())) {
     $rootScope.DisablePage = true;
-    if(_.isNil($rootScope.Profile)) {
+    if(!_.isNil($rootScope.Profile)) {
       Credential.checkToken()
         .then(function() {
           $rootScope.DisablePage = false;
+        }, function() {
+          storage.put('session_timeout');
+          storage.clear();
+          $window.location.reload();
         });
     } else {
       Credential.loginWithToken(storage.getSessionToken(), true)
         .then(function(profile) {
           $rootScope.Profile = profile;
           $rootScope.DisablePage = false;
+        }, function() {
+          storage.put('session_timeout');
+          storage.clear();
+          $window.location.reload();
         });
     }
   }
@@ -4414,8 +4421,8 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 	'ngInject';
 
 	getTodayGraphData = function() {
-		$scope.labels = ["12PM", "2AM", "4AM", "6AM", "8AM", "10AM",
-						 "12AM", "2PM", "4PM", "6PM", "8PM", "10PM"];
+		$scope.labels = ["0AM", "2AM", "4AM", "6AM", "8AM", "10AM",
+						 "12AM", "2PM", "4PM", "6PM", "8PM", "10PM", "12PM"];
 		var tempData = [];
 
 		for (var i = 0; i < $scope.labels.length ; i++) {
@@ -4423,9 +4430,9 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 		 };
 		Dashboard.getRevenue('today')
 			.then(function(data){
-				console.log('today',data);
+				// console.log('today',data);
 				for (var i = 0; i < data.length ; i++) {
-				 	tempData[data[i].Key] = data[i].Value;
+				 	tempData[data[i].Key + 1] = data[i].Value;
 				 };
 			});
 
@@ -4495,7 +4502,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 		 };
 		Dashboard.getRevenue('year')
 			.then(function(data){
-				console.log('year',data);
+				// console.log('year',data);
 				for (var i = 0; i < data.length ; i++) {
 				 	tempData[data[i].Key-1] = data[i].Value;
 				 };
@@ -4539,6 +4546,33 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 
 	//Initiate graph data as Today Graph Data
 	$scope.setGraphData('today');
+
+	//Get Revenue Summary data
+	getSumValue = function(data) {
+		var sum = 0;
+		for (var i = 0; i < data.length; i++) {
+			sum += data[i].Value;
+		};
+		return sum;
+	}
+	Dashboard.getRevenue('today')
+		.then(function(data){
+			$scope.sumTodayRevenue = getSumValue(data);
+		});
+	Dashboard.getRevenue('week')
+		.then(function(data){
+			$scope.sumWeekRevenue = getSumValue(data);
+		});
+	Dashboard.getRevenue('month')
+		.then(function(data){
+			$scope.sumMonthRevenue = getSumValue(data);
+		});
+	Dashboard.getRevenue('year')
+		.then(function(data){
+			$scope.sumYearRevenue = getSumValue(data);
+		});
+	
+
 
 	Dashboard.getNewsLetter()
 		.then(function(query) {
@@ -4636,8 +4670,6 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 			default:
 				return 'N/A'
 		}
-
-
 	};
 
 	Dashboard.getProductRating()
@@ -4847,7 +4879,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", fun
 }];
 },{}],58:[function(require,module,exports){
 
-module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", function($scope, $rootScope, Onboarding, $log, $window){
+module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "storage", "$window", function($scope, $rootScope, Onboarding, $log, storage, $window){
 	'ngInject';
 
 	$scope.$on('change-password', function() {
@@ -4915,7 +4947,9 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "$window", funct
 		if($scope.checkBeforeLaunch) {
 			Onboarding.launchShop()
 				.then(function(){
-					$window.location.reload();
+					$rootScope.Profile.Shop.Status = 'AT';
+					$scope.ShopInActiveStatus = ($rootScope.Profile.Shop.Status == 'NA');
+					storage.storeCurrentUserProfile($rootScope.Profile);
 				});
 		}
 		else {
@@ -6922,9 +6956,7 @@ module.exports = ["$cookies", function ($cookies) {
     service.storeCurrentUserProfile = function (profile, flag) {
         profile = angular.toJson(profile);
         sessionStorage.setItem('central.seller.portal.auth.profile', profile);
-        if (flag) {
-            localStorage.setItem('central.seller.portal.auth.profile', profile);
-        }
+        localStorage.setItem('central.seller.portal.auth.profile', profile);
     };
 
     service.storeImposterProfile = function(profile){
@@ -7520,30 +7552,21 @@ module.exports = ['util', function (util) {
     });
 })();
 },{}],100:[function(require,module,exports){
-/* =============================================================
-/*
-/*	 Angular Smooth Scroll 1.7.1
-/*	 Animates scrolling to elements, by David Oliveros.
-/*
-/*   Callback hooks contributed by Ben Armston
-/*   https://github.com/benarmston
-/*
-/*	 Easing support contributed by Willem Liu.
-/*	 https://github.com/willemliu
-/*
-/*	 Easing functions forked from Gaëtan Renaudeau.
-/*	 https://gist.github.com/gre/1650294
-/*
-/*	 Infinite loop bugs in iOS and Chrome (when zoomed) by Alex Guzman.
-/*	 https://github.com/alexguzman
-/*
-/*	 Influenced by Chris Ferdinandi
-/*	 https://github.com/cferdinandi
-/*
-/*
-/*	 Free to use under the MIT License.
-/*
-/* ============================================================= */
+/*!
+ *	 Angular Smooth Scroll (ngSmoothScroll)
+ *	 Animates scrolling to elements, by David Oliveros.
+ *
+ *   Callback hooks contributed by Ben Armston https://github.com/benarmston
+ *	 Easing support contributed by Willem Liu. https://github.com/willemliu
+ *	 Easing functions forked from Gaëtan Renaudeau. https://gist.github.com/gre/1650294
+ *	 Infinite loop bugs in iOS and Chrome (when zoomed) by Alex Guzman. https://github.com/alexguzman
+ *	 Support for scrolling in custom containers by Joseph Matthias Goh. https://github.com/zephinzer
+ *	 Influenced by Chris Ferdinandi
+ *	 https://github.com/cferdinandi
+ *
+ *	 Version: 2.0.0
+ * 	 License: MIT
+ */
 
 (function () {
 	'use strict';
@@ -7551,8 +7574,12 @@ module.exports = ['util', function (util) {
 	var module = angular.module('smoothScroll', []);
 
 
-	// Smooth scrolls the window to the provided element.
-	//
+	/**
+	 * Smooth scrolls the window/div to the provided element.
+	 *
+	 * 20150713 EDIT - zephinzer
+	 * 	Added new option - containerId to account for scrolling within a DIV
+	 */
 	var smoothScroll = function (element, options) {
 		options = options || {};
 
@@ -7561,74 +7588,122 @@ module.exports = ['util', function (util) {
 			offset = options.offset || 0,
 			easing = options.easing || 'easeInOutQuart',
 			callbackBefore = options.callbackBefore || function() {},
-			callbackAfter = options.callbackAfter || function() {};
-			
+			callbackAfter = options.callbackAfter || function() {},
+			container = document.getElementById(options.containerId) || document.querySelectorAll(options.container)[0] || null,
+			containerPresent = (container != undefined && container != null);
+
+		/**
+		 * Retrieve current location
+		 */
 		var getScrollLocation = function() {
-			return window.pageYOffset ? window.pageYOffset : document.documentElement.scrollTop;
+			if(containerPresent) {
+				return container.scrollTop;
+			} else {
+				if(window.pageYOffset) {
+					return window.pageYOffset;
+				} else {
+					return document.documentElement.scrollTop;
+				}
+			}
 		};
 
+		/**
+		 * Calculate easing pattern.
+		 *
+		 * 20150713 edit - zephinzer
+		 * - changed if-else to switch
+		 * @see http://archive.oreilly.com/pub/a/server-administration/excerpts/even-faster-websites/writing-efficient-javascript.html
+		 */
+		var getEasingPattern = function(type, time) {
+			switch(type) {
+				case 'easeInQuad': 		return time * time; // accelerating from zero velocity
+				case 'easeOutQuad': 	return time * (2 - time); // decelerating to zero velocity
+				case 'easeInOutQuad': 	return time < 0.5 ? 2 * time * time : -1 + (4 - 2 * time) * time; // acceleration until halfway, then deceleration
+				case 'easeInCubic': 	return time * time * time; // accelerating from zero velocity
+				case 'easeOutCubic': 	return (--time) * time * time + 1; // decelerating to zero velocity
+				case 'easeInOutCubic': 	return time < 0.5 ? 4 * time * time * time : (time - 1) * (2 * time - 2) * (2 * time - 2) + 1; // acceleration until halfway, then deceleration
+				case 'easeInQuart': 	return time * time * time * time; // accelerating from zero velocity
+				case 'easeOutQuart': 	return 1 - (--time) * time * time * time; // decelerating to zero velocity
+				case 'easeInOutQuart': 	return time < 0.5 ? 8 * time * time * time * time : 1 - 8 * (--time) * time * time * time; // acceleration until halfway, then deceleration
+				case 'easeInQuint': 	return time * time * time * time * time; // accelerating from zero velocity
+				case 'easeOutQuint': 	return 1 + (--time) * time * time * time * time; // decelerating to zero velocity
+				case 'easeInOutQuint': 	return time < 0.5 ? 16 * time * time * time * time * time : 1 + 16 * (--time) * time * time * time * time; // acceleration until halfway, then deceleration
+				default:				return time;
+			}
+		};
+
+		/**
+		 * Calculate how far to scroll
+		 */
+		var getEndLocation = function(element) {
+			var location = 0;
+			if (element.offsetParent) {
+				do {
+					location += element.offsetTop;
+					element = element.offsetParent;
+				} while (element);
+			}
+			location = Math.max(location - offset, 0);
+			return location;
+		};
+
+		// Initialize the whole thing
 		setTimeout( function() {
-			var startLocation = getScrollLocation(),
-				timeLapsed = 0,
-				percentage, position;
+			var currentLocation = null,
+				startLocation 	= getScrollLocation(),
+				endLocation 	= getEndLocation(element),
+				timeLapsed 		= 0,
+				distance 		= endLocation - startLocation,
+				percentage,
+				position,
+				scrollHeight,
+				internalHeight;
 
-			// Calculate the easing pattern
-			var easingPattern = function (type, time) {
-				if ( type == 'easeInQuad' ) return time * time; // accelerating from zero velocity
-				if ( type == 'easeOutQuad' ) return time * (2 - time); // decelerating to zero velocity
-				if ( type == 'easeInOutQuad' ) return time < 0.5 ? 2 * time * time : -1 + (4 - 2 * time) * time; // acceleration until halfway, then deceleration
-				if ( type == 'easeInCubic' ) return time * time * time; // accelerating from zero velocity
-				if ( type == 'easeOutCubic' ) return (--time) * time * time + 1; // decelerating to zero velocity
-				if ( type == 'easeInOutCubic' ) return time < 0.5 ? 4 * time * time * time : (time - 1) * (2 * time - 2) * (2 * time - 2) + 1; // acceleration until halfway, then deceleration
-				if ( type == 'easeInQuart' ) return time * time * time * time; // accelerating from zero velocity
-				if ( type == 'easeOutQuart' ) return 1 - (--time) * time * time * time; // decelerating to zero velocity
-				if ( type == 'easeInOutQuart' ) return time < 0.5 ? 8 * time * time * time * time : 1 - 8 * (--time) * time * time * time; // acceleration until halfway, then deceleration
-				if ( type == 'easeInQuint' ) return time * time * time * time * time; // accelerating from zero velocity
-				if ( type == 'easeOutQuint' ) return 1 + (--time) * time * time * time * time; // decelerating to zero velocity
-				if ( type == 'easeInOutQuint' ) return time < 0.5 ? 16 * time * time * time * time * time : 1 + 16 * (--time) * time * time * time * time; // acceleration until halfway, then deceleration
-				return time; // no easing, no acceleration
-			};
-
-
-			// Calculate how far to scroll
-			var getEndLocation = function (element) {
-				var location = 0;
-				if (element.offsetParent) {
-					do {
-						location += element.offsetTop;
-						element = element.offsetParent;
-					} while (element);
-				}
-				location = Math.max(location - offset, 0);
-				return location;
-			};
-
-			var endLocation = getEndLocation(element);
-			var distance = endLocation - startLocation;
-
-
-			// Stop the scrolling animation when the anchor is reached (or at the top/bottom of the page)
+			/**
+			 * Stop the scrolling animation when the anchor is reached (or at the top/bottom of the page)
+			 */
 			var stopAnimation = function () {
-				var currentLocation = getScrollLocation();
-				if ( position == endLocation || currentLocation == endLocation || ( (window.innerHeight + currentLocation) >= document.body.scrollHeight ) ) {
+				currentLocation = getScrollLocation();
+				if(containerPresent) {
+					scrollHeight = container.scrollHeight;
+					internalHeight = container.clientHeight + currentLocation;
+				} else {
+					scrollHeight = document.body.scrollheight;
+					internalHeight = window.innerHeight + currentLocation;
+				}
+
+				if (
+					( // condition 1
+						position == endLocation
+					) ||
+					( // condition 2
+						currentLocation == endLocation
+					) ||
+					( // condition 3
+						internalHeight >= scrollHeight
+					)
+				) { // stop
 					clearInterval(runAnimation);
 					callbackAfter(element);
 				}
 			};
 
-
-			// Scroll the page by an increment, and check if it's time to stop
+			/**
+			 * Scroll the page by an increment, and check if it's time to stop
+			 */
 			var animateScroll = function () {
 				timeLapsed += 16;
 				percentage = ( timeLapsed / duration );
 				percentage = ( percentage > 1 ) ? 1 : percentage;
-				position = startLocation + ( distance * easingPattern(easing, percentage) );
-				window.scrollTo( 0, position );
+				position = startLocation + ( distance * getEasingPattern(easing, percentage) );
+				if(containerPresent) {
+					container.scrollTop = position;
+				} else {
+					window.scrollTo( 0, position );
+				}
 				stopAnimation();
 			};
 
-
-			// Init
 			callbackBefore(element);
 			var runAnimation = setInterval(animateScroll, 16);
 		}, 0);
@@ -7640,10 +7715,14 @@ module.exports = ['util', function (util) {
 	module.factory('smoothScroll', function() {
 		return smoothScroll;
 	});
-	
 
-	// Scrolls the window to this element, optionally validating an expression
-	//
+
+	/**
+	 * Scrolls the window to this element, optionally validating an expression
+	 *
+	 * 20150713 EDIT - zephinzer
+	 * 	Added containerId to attributes for smooth scrolling within a DIV
+	 */
 	module.directive('smoothScroll', ['smoothScroll', function(smoothScroll) {
 		return {
 			restrict: 'A',
@@ -7678,7 +7757,8 @@ module.exports = ['util', function (util) {
 							offset: $attrs.offset,
 							easing: $attrs.easing,
 							callbackBefore: callbackBefore,
-							callbackAfter: callbackAfter
+							callbackAfter: callbackAfter,
+							containerId: $attrs.containerId
 						});
 					}, 0);
 				}
@@ -7687,8 +7767,12 @@ module.exports = ['util', function (util) {
 	}]);
 
 
-	// Scrolls to a specified element ID when this element is clicked
-	//
+	/**
+	 * Scrolls to a specified element ID when this element is clicked
+	 *
+	 * 20150713 EDIT - zephinzer
+	 * 	Added containerId to attributes for smooth scrolling within a DIV
+	 */
 	module.directive('scrollTo', ['smoothScroll', function(smoothScroll) {
 		return {
 			restrict: 'A',
@@ -7698,13 +7782,13 @@ module.exports = ['util', function (util) {
 			},
 			link: function($scope, $elem, $attrs) {
 				var targetElement;
-				
+
 				$elem.on('click', function(e) {
 					e.preventDefault();
 
 					targetElement = document.getElementById($attrs.scrollTo);
-					if ( !targetElement ) return; 
-					
+					if ( !targetElement ) return;
+
 					var callbackBefore = function(element) {
 						if ( $attrs.callbackBefore ) {
 							var exprHandler = $scope.callbackBefore({element: element});
@@ -7728,7 +7812,8 @@ module.exports = ['util', function (util) {
 						offset: $attrs.offset,
 						easing: $attrs.easing,
 						callbackBefore: callbackBefore,
-						callbackAfter: callbackAfter
+						callbackAfter: callbackAfter,
+						containerId: $attrs.containerId
 					});
 
 					return false;
@@ -7920,20 +8005,25 @@ angular.module('nc')
 
 				this.show = true;
 			};
-			this.error = function(obj) {
+			this.error = function(obj, toElm) {
 				this.open(false, obj);
 				
 				$timeout(function() {
 					var section = vm.element || $document;
-					smoothScroll(document.getElementById('body'));
+					console.log(vm.element, toElm);
+					smoothScroll(toElm ? vm.element[0] : $document[0].body, {
+						container: toElm ? '.modal': null
+					});
 				}, 10);
 			};
-			this.success = function(obj) {
+			this.success = function(obj, toElm) {
 				this.open(true, obj);
 				
 				$timeout(function() {
 					var section = vm.element || $document;
-					smoothScroll(document.getElementById('body'));
+					smoothScroll(toElm ? vm.element[0] : $document[0].body, {
+						container: toElm ? '.modal': null
+					});
 				}, 10);
 			};
 			this.message = '';
@@ -9511,7 +9601,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncAdvanceSearch',
-    "<div class=\"row margin-top-30\" ng-show=open><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Advance Search</h2></div><div class=form-section-content><form name=form class=ah-form novalidate><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductName nc-label=\"Product Name\" nc-template-options-path=searchForm/ProductName><input class=\"form-control width-field-normal\" name=ProductName ng-model=formData.ProductName required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Pids nc-label=PID nc-template-options-path=searchForm/Pid><ui-select ng-model=formData.Pids name=Pids nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field><ui-select-match>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Pids\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Skus nc-label=SKU nc-template-options-path=searchForm/Sku><ui-select ng-model=formData.Skus name=Skus nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field><ui-select-match>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Skus\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Brand nc-label=\"Brand Name\" nc-template-options-path=searchForm/Brands><ui-select ng-model=formData.Brands name=Brands nc-tag-validator multiple tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match>{{$item.BrandNameEn}}</ui-select-match><ui-select-choices repeat=\"item in options.Brands | filter:{BrandNameEn: $select.search} track by $index\">{{item.BrandNameEn}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.GlobalCategories nc-label=\"Global Category Name\" nc-template-options-path=searchForm/GlobalCategories><nc-breadcrumb-select name=GlobalCategories nc-model=formData.GlobalCategories nc-breadcrumb-select-tree=options.GlobalCategories></nc-breadcrumb-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.LocalCategories nc-label=\"Local Category Name\" nc-template-options-path=searchForm/LocalCategories ng-show=!options.Admin><nc-breadcrumb-select name=LocalCategories nc-model=formData.LocalCategories nc-breadcrumb-select-tree=options.LocalCategories></nc-breadcrumb-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Tags nc-label=\"Search Tag\" nc-template-options-path=searchForm/Tags class=ui-select-dropdown-hide><ui-select ng-model=formData.Tags name=Tags nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field><ui-select-match>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Tags\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.Price nc-label=\"Sale Price\" nc-template-options-path=searchForm/Price><div class=width-field-small-input><input name=Price ng-maxnumber={{formData.PriceTo}} ng-model=formData.PriceFrom class=form-control ng-pattern-restrict=\"^[0-9]*(\\.[0-9]{0,2})?$\"></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><input ng-model=formData.PriceTo class=form-control ng-pattern-restrict=\"^[0-9]*(\\.[0-9]{0,2})?$\"></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.CreatedDate nc-label=\"Created Date\" nc-template-options-path=searchForm/CreatedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDtFrom | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=CreatedDate ng-date-before={{formData.CreatedDtTo}} data-ng-model=formData.CreatedDtFrom data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'hour' }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDtTo | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.CreatedDtTo data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'hour' }\"></ul></div></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.ModifiedDate nc-label=\"Modified Date\" nc-template-options-path=searchForm/ModifiedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.ModifyDtFrom | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ModifyDtFrom name=ModifiedDate ng-date-before={{formData.ModifiedDtTo}} data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'hour' }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown4 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.ModifyDtTo | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ModifyDtTo data-datetimepicker-config=\"{ dropdownSelector: '#dropdown4', minView: 'hour' }\"></ul></div></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=button-size-normal><button class=\"button-size-normal btn btn-blue btn-width-xl\" ng-click=search()>Search</button></div><div class=button-size-normal><a class=\"button-size-normal margin-left-10 btn btn-white btn-width-xl\" ng-click=clear()>Clear</a></div></div></form></div></div></div></div>"
+    "<div class=\"row margin-top-30\" ng-show=open><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Advance Search</h2></div><div class=form-section-content><form name=form class=ah-form novalidate><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductName nc-label=\"Product Name\" nc-template-options-path=searchForm/ProductName><input class=form-control name=ProductName ng-model=formData.ProductName required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Pids nc-label=PID nc-template-options-path=searchForm/Pid><ui-select ng-model=formData.Pids name=Pids nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field><ui-select-match>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Pids\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Skus nc-label=SKU nc-template-options-path=searchForm/Sku><ui-select ng-model=formData.Skus name=Skus nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field><ui-select-match>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Skus\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Brand nc-label=\"Brand Name\" nc-template-options-path=searchForm/Brands><ui-select ng-model=formData.Brands name=Brands nc-tag-validator multiple tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match>{{$item.BrandNameEn}}</ui-select-match><ui-select-choices repeat=\"item in options.Brands | filter:{BrandNameEn: $select.search} track by $index\">{{item.BrandNameEn}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.GlobalCategories nc-label=\"Global Category Name\" nc-template-options-path=searchForm/GlobalCategories><nc-breadcrumb-select name=GlobalCategories nc-model=formData.GlobalCategories nc-breadcrumb-select-tree=options.GlobalCategories></nc-breadcrumb-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.LocalCategories nc-label=\"Local Category Name\" nc-template-options-path=searchForm/LocalCategories ng-show=!options.Admin><nc-breadcrumb-select name=LocalCategories nc-model=formData.LocalCategories nc-breadcrumb-select-tree=options.LocalCategories></nc-breadcrumb-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Tags nc-label=\"Search Tag\" nc-template-options-path=searchForm/Tags class=ui-select-dropdown-hide><ui-select ng-model=formData.Tags name=Tags nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field><ui-select-match>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Tags\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.Price nc-label=\"Sale Price\" nc-template-options-path=searchForm/Price><div class=width-field-small-input><input name=Price ng-maxnumber={{formData.PriceTo}} ng-model=formData.PriceFrom class=form-control ng-pattern-restrict=\"^[0-9]*(\\.[0-9]{0,2})?$\"></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><input ng-model=formData.PriceTo class=form-control ng-pattern-restrict=\"^[0-9]*(\\.[0-9]{0,2})?$\"></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.CreatedDate nc-label=\"Created Date\" nc-template-options-path=searchForm/CreatedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDtFrom | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=CreatedDate ng-date-before={{formData.CreatedDtTo}} data-ng-model=formData.CreatedDtFrom data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'hour' }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDtTo | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.CreatedDtTo data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'hour' }\"></ul></div></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.ModifiedDate nc-label=\"Modified Date\" nc-template-options-path=searchForm/ModifiedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.ModifyDtFrom | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ModifyDtFrom name=ModifiedDate ng-date-before={{formData.ModifiedDtTo}} data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'hour' }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown4 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.ModifyDtTo | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ModifyDtTo data-datetimepicker-config=\"{ dropdownSelector: '#dropdown4', minView: 'hour' }\"></ul></div></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=button-size-normal><button class=\"button-size-normal btn btn-blue btn-width-xl\" ng-click=search()>Search</button></div><div class=button-size-normal><a class=\"button-size-normal margin-left-10 btn btn-white btn-width-xl\" ng-click=clear()>Clear</a></div></div></form></div></div></div></div>"
   );
 
 
@@ -13529,7 +13619,8 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 			Visibility: true,
 			AttributeSets: [],
 			CategoryBannerTh: [],
-			CategoryBannerEn: []
+			CategoryBannerEn: [],
+			TitleShowcase: false
 		}, extend);
 	};
 	service.deserialize = function(data) {
@@ -13917,7 +14008,8 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 			UrlKeyEn: "",
 			Visibility: true,
 			CategoryBannerTh: [],
-			CategoryBannerEn: []
+			CategoryBannerEn: [],
+			TitleShowcase: false
 		}, extend);
 	};
 	service.deserialize = function(data) {

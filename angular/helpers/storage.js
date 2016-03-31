@@ -85,9 +85,7 @@ module.exports = function ($cookies) {
     service.storeCurrentUserProfile = function (profile, flag) {
         profile = angular.toJson(profile);
         sessionStorage.setItem('central.seller.portal.auth.profile', profile);
-        if (flag) {
-            localStorage.setItem('central.seller.portal.auth.profile', profile);
-        }
+        localStorage.setItem('central.seller.portal.auth.profile', profile);
     };
 
     service.storeImposterProfile = function(profile){

@@ -133,7 +133,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         <div class="group_container">
           <table class="table table_dashboard table_newsletter">
             <tbody>
-              <tr ng-click="open(letter)" ng-repeat="letter in newsLettersData" ng-show="newsLettersData.length != 0">
+              <tr ng-repeat="letter in newsLettersData" ng-show="newsLettersData.length != 0">
                 <td class="column-text-ellipsis">
                   <div>{{letter.Subject}}</div>
                   <div class="newsletter_date">Publish on {{letter.PublishedDt | date:"MM/dd/yyyy 'at' HH:mm"}}</div>
@@ -169,7 +169,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         </div>
         <div class="group_container small_field">
           <div class="display_inline_block width_100">Today</div>
-          <div class="float-right font-size-20">1,123.00</div>
+          <div class="float-right font-size-20">{{sumTodayRevenue | number:2 }}</div>
         </div>
         <div class="group_container small_field">
           <!-- <div class="row"> -->
@@ -177,19 +177,19 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <div class="width_100">
               This Week
             </div>
-            <div>10,535.00</div>
+            <div>{{sumWeekRevenue | number:2 }}</div>
           </div>
           <div class="row_container">
             <div class="width_100">
               This Month
             </div>
-            <div>200,934.00</div>
+            <div>{{sumMonthRevenue | number:2 }}</div>
           </div>
           <div class="row_container">
             <div class="width_100">
               This Year
             </div>
-            <div>1,210,535.00</div>
+            <div>{{sumYearRevenue | number:2 }}</div>
           </div>
           <!-- </div> -->
         </div>
@@ -215,12 +215,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             </div>
           </div>
         </div>
-        <div class="group_container">
+        <!-- <div class="group_container">
           <div class="row_container">
             <div class="width_150">
               Ontime Delivery
             </div>
-            <!-- <div class="font-size-16 color-yellow">75%</div> -->
             <div ng-switch on="onTimeDeliveryRank">
               <div class="font-size-16 color-green" ng-switch-when="green">{{onTimeDeliveryScore}}</div>
               <div class="font-size-16 color-yellow" ng-switch-when="yellow">{{onTimeDeliveryScore}}</div>
@@ -228,7 +227,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
               <div class="font-size-16 " ng-switch-default>N/A</div>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="group_container">
           <div class="row_container">
             <div class="width_150">
@@ -257,6 +256,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <img ng-show="product.FeatureImgUrl ==''" class="logo-img" src="<?= $this->asset('/assets/img/placeholder-no-image.png') ?>" />
             <img class="logo-img" src="{{product.FeatureImgUrl}}" />
             <div class="column-text-ellipsis"><a ng-click="linkToProduct(product.ProductId)">{{product.ProductNameEn}}</a></div>
+        </div>
+        <div class="loading_text loading_row" ng-show="topSellingItemsData==undefined">
+          <i class="fa fa-spinner fa-spin color-theme margin-right-10"></i>
+          Loading...
         </div>
         <div ng-show="topSellingItemsData.length == 0" class="group_container top_selling_field">
             <div class="text-center">- No Top Selling Product -</div>

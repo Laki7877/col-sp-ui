@@ -261,14 +261,20 @@ ul.sub-sidebar {
         }
       }
 		}
+		li:hover{
+			background: $sidebar-bg-color-active !important;
+		}
 	}
 }
 
 #sidebar-wrapper:hover{
 	// width: 180px;
   .logo-img-wrapper-collased{
-    display: block;;
+    display: block;
   }
+	.sidebar-nav li.active{
+		background: $sidebar-color;
+	}
 	// .logo-img-wrapper{
 	// 	display: block;
 	// }

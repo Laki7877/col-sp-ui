@@ -3,8 +3,8 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	'ngInject';
 
 	getTodayGraphData = function() {
-		$scope.labels = ["12PM", "2AM", "4AM", "6AM", "8AM", "10AM",
-						 "12AM", "2PM", "4PM", "6PM", "8PM", "10PM"];
+		$scope.labels = ["0AM", "2AM", "4AM", "6AM", "8AM", "10AM",
+						 "12AM", "2PM", "4PM", "6PM", "8PM", "10PM", "12PM"];
 		var tempData = [];
 
 		for (var i = 0; i < $scope.labels.length ; i++) {
@@ -12,9 +12,9 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 		 };
 		Dashboard.getRevenue('today')
 			.then(function(data){
-				console.log('today',data);
+				// console.log('today',data);
 				for (var i = 0; i < data.length ; i++) {
-				 	tempData[data[i].Key] = data[i].Value;
+				 	tempData[data[i].Key + 1] = data[i].Value;
 				 };
 			});
 
@@ -84,7 +84,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 		 };
 		Dashboard.getRevenue('year')
 			.then(function(data){
-				console.log('year',data);
+				// console.log('year',data);
 				for (var i = 0; i < data.length ; i++) {
 				 	tempData[data[i].Key-1] = data[i].Value;
 				 };
@@ -128,6 +128,33 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 
 	//Initiate graph data as Today Graph Data
 	$scope.setGraphData('today');
+
+	//Get Revenue Summary data
+	getSumValue = function(data) {
+		var sum = 0;
+		for (var i = 0; i < data.length; i++) {
+			sum += data[i].Value;
+		};
+		return sum;
+	}
+	Dashboard.getRevenue('today')
+		.then(function(data){
+			$scope.sumTodayRevenue = getSumValue(data);
+		});
+	Dashboard.getRevenue('week')
+		.then(function(data){
+			$scope.sumWeekRevenue = getSumValue(data);
+		});
+	Dashboard.getRevenue('month')
+		.then(function(data){
+			$scope.sumMonthRevenue = getSumValue(data);
+		});
+	Dashboard.getRevenue('year')
+		.then(function(data){
+			$scope.sumYearRevenue = getSumValue(data);
+		});
+	
+
 
 	Dashboard.getNewsLetter()
 		.then(function(query) {
@@ -225,8 +252,6 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 			default:
 				return 'N/A'
 		}
-
-
 	};
 
 	Dashboard.getProductRating()
