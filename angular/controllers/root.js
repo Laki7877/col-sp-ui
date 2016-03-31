@@ -47,12 +47,20 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
       Credential.checkToken()
         .then(function() {
           $rootScope.DisablePage = false;
+        }, function() {
+          storage.put('session_timeout');
+          storage.clear();
+          $window.location.reload();
         });
     } else {
       Credential.loginWithToken(storage.getSessionToken(), true)
         .then(function(profile) {
           $rootScope.Profile = profile;
           $rootScope.DisablePage = false;
+        }, function() {
+          storage.put('session_timeout');
+          storage.clear();
+          $window.location.reload();
         });
     }
   }
