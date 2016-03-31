@@ -166,6 +166,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     };
 
+    
+
     $scope.onImageUploadFail = function(item, filter) {
       $scope.image_alert.error(item.Message || 'Maximum ' + filter + ' images can be uploaded.');
     }

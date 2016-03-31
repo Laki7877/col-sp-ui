@@ -3,7 +3,7 @@
 	<head>
 		<script src="<?= $this->asset('/assets/js/bundle.js') ?>"></script>
 		<link rel="stylesheet" href="/assets/libs/selectize/dist/css/selectize.default.css"/>
-		<script type="text/javascript" src="/assets/libs/selectize/dist/js/standalone/selectize.min.js"></script>
+		<!-- <script type="text/javascript" src="/assets/libs/selectize/dist/js/standalone/selectize.min.js"></script> -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
 		<title>Test MD</title>
 	</head>

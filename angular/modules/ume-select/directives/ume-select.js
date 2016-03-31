@@ -45,6 +45,7 @@ angular.module('umeSelect')
 
                 scope.tagify = function(tagValue){
                     var X = {};
+                    if(!scope.displayBy) return tagValue;
                     _.set(X, scope.displayBy, tagValue);
                     return X;
                 }
@@ -54,30 +55,29 @@ angular.module('umeSelect')
                 }
 
                 scope.itemValue = function(item){
+                    if(!scope.displayBy) return item;
                     return _.get(item, scope.displayBy);
                 }
 
-                
-
                 scope.keyDown = function(evt){
-                    if(evt.code == "ArrowDown"){
+
+                    if(evt.code == "ArrowDown" || evt.keyCode == 40){
                         scope.highlightedIndex++;
-                    }else if(evt.code == "ArrowUp"){
+                    }else if(evt.code == "ArrowUp" || evt.keyCode == 38){
                         scope.highlightedIndex--;
-                    }else if(evt.code == "Enter" || evt.code == "Comma"){
-                        console.log("Keydown on id", scope._id);
+                    }else if(evt.code == "Enter" || evt.code == "Comma" || evt.keyCode == 13 || evt.keyCode == 188){
+                        // console.log("Keydown on id", scope._id);
                         if(scope.searchText == "") return;
 
                         $timeout(function (){
                             scope.$emit('focusLost', _id);
                             var K = $filter('filter')(scope.choices, scope.searchText);
                             scope.pickItem(K[scope.highlightedIndex]);
-                        }, 250);
+                        });
 
-                    }else if(evt.code == "Backspace"){
+                    }else if(evt.code == "Backspace" || evt.keyCode == 8){
 
                         if(scope.searchText.length > 0) return;
-
                         if(scope.model.length > 0) scope.model.pop();
                     }
 
@@ -99,7 +99,7 @@ angular.module('umeSelect')
                     if(broadcast){
                         $timeout(function (){
                             scope.$emit('focusObtained', _id);
-                        }, 250);
+                        });
                     }
                 }
 
@@ -120,6 +120,7 @@ angular.module('umeSelect')
                     }
                     scope.highlightedIndex = 0;
 
+
                     if(!scope.refresh) return;
                     if(scope.searchText == "" || !scope.searchText) return;
                     if (scope.delay){
@@ -136,13 +137,12 @@ angular.module('umeSelect')
 
                         //execute search
                         scope.loading = true;
-                        loadQ.push(true);
 
                         prevQ.ts = new Date();
                         prevQ.searchText = scope.searchText;
                         scope.refresh(scope.searchText).then(function(){
                             loadQ.pop();
-                            scope.loading = (loadQ.length > 0);
+                            scope.loading = false;
                             scope.notFound = (scope.choices.length == 0);
                         });
 
