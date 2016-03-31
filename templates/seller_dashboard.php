@@ -265,7 +265,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           Loading...
         </div>
         <div ng-show="topSellingItemsData == 'N/A'" class="group_container top_selling_field">
-            <div class="text-center">- No Top Selling Product -</div>
+            <div class="text-center">- No Top Selling Product This Month -</div>
         </div>
       </div>
 
