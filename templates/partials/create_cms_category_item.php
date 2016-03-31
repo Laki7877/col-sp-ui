@@ -49,8 +49,9 @@
                 </th>
                 <th class="col-sm-1">Seq</th>
                 <th class="col-sm-2">Picture</th>
-                <th class="col-sm-3">Name</th>
+                <th class="col-sm-2">Name</th>
                 <th class="col-sm-2">Price</th>
+                <th class="col-sm-2">Expire Date</th>
                 <th class="col-sm-2">Actions</th>
               </tr>
             </thead>
@@ -69,6 +70,7 @@
                 </td>
                 <td>{{item.ProductBoxBadge}}</td>
                 <td>{{item.OriginalPrice | currency: '฿': 0}}</td>
+                <td>{{item.ExpireDate | dateTh}}</td>
                 <td>
                   <button class="btn btn-sm btn-default" ng-disabled="$index == 0 || (formData.CategoryProductList.length == 0)" 
                           ng-click="moveUp($index, $index - 1)">
