@@ -133,7 +133,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         <div class="group_container">
           <table class="table table_dashboard table_newsletter">
             <tbody>
-              <tr ng-click="open(letter)" ng-repeat="letter in newsLettersData" ng-show="newsLettersData.length != 0">
+              <tr ng-repeat="letter in newsLettersData" ng-show="newsLettersData.length != 0">
                 <td class="column-text-ellipsis">
                   <div>{{letter.Subject}}</div>
                   <div class="newsletter_date">Publish on {{letter.PublishedDt | date:"MM/dd/yyyy 'at' HH:mm"}}</div>
@@ -215,12 +215,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             </div>
           </div>
         </div>
-        <div class="group_container">
+        <!-- <div class="group_container">
           <div class="row_container">
             <div class="width_150">
               Ontime Delivery
             </div>
-            <!-- <div class="font-size-16 color-yellow">75%</div> -->
             <div ng-switch on="onTimeDeliveryRank">
               <div class="font-size-16 color-green" ng-switch-when="green">{{onTimeDeliveryScore}}</div>
               <div class="font-size-16 color-yellow" ng-switch-when="yellow">{{onTimeDeliveryScore}}</div>
@@ -228,7 +227,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
               <div class="font-size-16 " ng-switch-default>N/A</div>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="group_container">
           <div class="row_container">
             <div class="width_150">
