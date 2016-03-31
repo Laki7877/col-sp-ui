@@ -41,7 +41,7 @@
                       <div class="content-text">
                         <div><h4>{{ product.ProductNameEn }}</h4>
                           <span ng-if="product.IsVariant">{{ product.VariantAttribute | variantValue }}</span>
-                          <span ng-if="product.VariantCount > 0">Parent</span>
+                          <span ng-if="product.VariantCount > 0">Parent Product</span>
                         </div>
                         <hr/>
                         <div class="margin-top-5">PID: {{ product.Pid }}</div>
