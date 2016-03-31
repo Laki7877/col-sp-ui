@@ -257,7 +257,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       if (!form.SalePrice) return;
       if ($scope.formData.MasterVariant.SalePrice == '') return;
 
-      if (Number($scope.formData.MasterVariant.SalePrice) >= Number($scope.formData.MasterVariant.OriginalPrice)) {
+      if (Number($scope.formData.MasterVariant.SalePrice) > Number($scope.formData.MasterVariant.OriginalPrice)) {
         if (form.SalePrice) form.SalePrice.$setValidity('min', false)
         form.SalePrice.$error['min'] = 'Sale Price must not exceed Original Price'
       }
@@ -407,7 +407,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           return $scope.alert.error('<strong>Please Wait</strong> - One or more image upload is in progress..');
       }
       
-      
       $scope.pageState.load('Validating..');
 
       if ($scope.controlFlags.variation == 'enable' && $scope.formData.Variants.length == 0) {
@@ -453,6 +452,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.alert.error('Unable to save. Please make sure all fields have no error.')
         }
         return
+      }
+
+      if (Number($scope.formData.MasterVariant.OriginalPrice) == 0 || _.isNaN(Number($scope.formData.MasterVariant.OriginalPrice))) {
+        $scope.formData.MasterVariant.OriginalPrice = $scope.formData.MasterVariant.SalePrice;
       }
 
       $scope.pageState.load('Applying changes..');
@@ -530,6 +533,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 }
 
                 checkSchema(inverseFormData);
+                
               });
 
           }, function(error) {
