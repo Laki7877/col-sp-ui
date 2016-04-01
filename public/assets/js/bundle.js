@@ -10140,6 +10140,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         }
 
         $scope.formData.Variants.forEach(function(variant) {
+          if(!variant.Visibility) return;
           if (variant.Images.length == 0) {
             mat.push('At least one image for variation ' + "'" + variant.text + "'");
           }
