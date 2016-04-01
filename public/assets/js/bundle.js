@@ -4102,6 +4102,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
         .then(function() {
           $rootScope.DisablePage = false;
         }, function() {
+          console.log('check token failed');
           storage.put('session_timeout');
           storage.clear();
           $window.location.reload();
@@ -4212,11 +4213,12 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
         alert("Fetal error while logging out.");
       });
     }
-
-    //Normal logout
-    Credential.logout();
-    storage.clear();
-    $window.location.href = isAdmin ? "/admin/login" : "/login";
+    else {  
+      //Normal logout
+        Credential.logout().finally(function() {
+          $window.location.href = isAdmin ? "/admin/login" : "/login";
+        });   
+    }
   };
 
   //Handle change password
@@ -13501,7 +13503,7 @@ module.exports = ["common", "$base64", "storage", "$q", "$rootScope", function(c
 		storage.storeSessionToken(token, true);
 		common.makeRequest({
 			method: 'GET',
-			url: '/Users/Login'
+			url: '/Users/Profile'
 		}).then(function(r){
 			storage.storeCurrentUserProfile(r, true);
 			deferred.resolve(r);
@@ -13538,7 +13540,19 @@ module.exports = ["common", "$base64", "storage", "$q", "$rootScope", function(c
 	};
     
     service.logout = function(){
-		storage.clear();
+		var deferred = $q.defer();
+		common.makeRequest({
+			method: 'GET',
+			url: '/Users/Logout'
+		}).then(function(r){
+			storage.clear();
+            deferred.resolve(r);
+		}, function() {
+			storage.clear();
+			deferred.reject(r);
+		});
+
+		return deferred.promise;
 	};
 
 	return service;

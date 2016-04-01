@@ -48,6 +48,7 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
         .then(function() {
           $rootScope.DisablePage = false;
         }, function() {
+          console.log('check token failed');
           storage.put('session_timeout');
           storage.clear();
           $window.location.reload();
@@ -158,11 +159,12 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
         alert("Fetal error while logging out.");
       });
     }
-
-    //Normal logout
-    Credential.logout();
-    storage.clear();
-    $window.location.href = isAdmin ? "/admin/login" : "/login";
+    else {  
+      //Normal logout
+        Credential.logout().finally(function() {
+          $window.location.href = isAdmin ? "/admin/login" : "/login";
+        });   
+    }
   };
 
   //Handle change password
