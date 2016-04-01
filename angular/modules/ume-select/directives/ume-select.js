@@ -35,8 +35,9 @@ angular.module('umeSelect')
                 scope._id =  _id;
 
                 scope.breakUp = function(index){
-                    if(!scope.inRelationship) {
+                    if(!scope.inRelationship && !scope.itsComplicated) {
                         //You can only break up when you re in relationship
+                        console.log('You can only break up when you re in relationship or when its complicated')
                         return;
                     }
 
