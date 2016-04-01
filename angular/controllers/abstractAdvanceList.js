@@ -73,6 +73,8 @@ module.exports = function($scope, $controller, options, Product, LocalCategorySe
 			$scope.advanceSearchMode = true;
 			$scope.advanceSearch = false;
 			$scope.params.searchText = '';
+			$scope.params._offset = 0;
+			$scope.bulkContainer.length = 0;
 		}
 		return false;
 	};
@@ -97,10 +99,6 @@ module.exports = function($scope, $controller, options, Product, LocalCategorySe
 
 	//Watch for advanceSearchParams
 	$scope.$watch('advanceSearchParams', function(newObj, oldObj) {
-		//Reset offset if advance param changes
-		if(!_.isEqual(newObj, oldObj)) {
-			$scope.params._offset = 0;
-			$scope.bulkContainer.length = 0;
-		}
+		$scope.reload();
 	});
 }

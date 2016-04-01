@@ -28,7 +28,7 @@
                             {{row.CouponCode}}
                         </td>
                         <td>{{row.CouponName}}</td>
-                        <td class="width_150 text-align-center">row.Remaining</td>
+                        <td class="width_150 text-align-center">{{row.Remaining}}</td>
                         <td class="width_150">
                            {{ row.StartDate | datetimeTh }}
                         </td>

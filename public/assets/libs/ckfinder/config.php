@@ -63,10 +63,13 @@ $config['images'] = array(
 /*=================================== Backends ========================================*/
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_backends
 
+$id = isset($_COOKIE['central_seller_portal_auth_profile_shop']) ? $_COOKIE['central_seller_portal_auth_profile_shop'] . '/' : '';
+$uri = '/local_files/' . $id;
+
 $config['backends'][] = array(
     'name'         => 'default',
     'adapter'      => 'local',
-    'baseUrl'      => '/local_files/',
+    'baseUrl'      => $uri,
     'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
     'chmodFiles'   => 0777,
     'chmodFolders' => 0777,
@@ -77,7 +80,7 @@ $config['backends'][] = array(
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_resourceTypes
 
 $config['defaultResourceTypes'] = '';
-
+/*
 $config['resourceTypes'][] = array(
     'name'              => 'Files', // Single quotes not allowed.
     'directory'         => 'files',
@@ -86,7 +89,7 @@ $config['resourceTypes'][] = array(
     'deniedExtensions'  => '',
     'backend'           => 'default'
 );
-
+*/
 $config['resourceTypes'][] = array(
     'name'              => 'Images',
     'directory'         => 'images',
