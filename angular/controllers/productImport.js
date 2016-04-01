@@ -96,7 +96,7 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
 			});
 			$scope.alert.error('<span class="font-weight-bold">Fail to upload CSV</span>' + '<ul>' + response.join('') + '</ul>');
 
-            if(status == 401){
+            if(status == 401) {
                 //Catch Forbidden
                 storage.put('redirect', $window.location.pathname);
                 storage.put('session_timeout');
