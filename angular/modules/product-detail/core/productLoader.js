@@ -1,6 +1,6 @@
 var angular = require('angular');
 angular.module('productDetail').
-factory('$productAdd', function(Product, AttributeSet, ImageService, GlobalCategory, $q, Category, util) {
+factory('$productAdd', function(Product, AttributeSet, AttributeSetService, ImageService, GlobalCategory, $q, Category, util) {
   'ngInject';
   var $productAdd = {};
 
@@ -142,9 +142,11 @@ factory('$productAdd', function(Product, AttributeSet, ImageService, GlobalCateg
     var deferred = $q.defer();
     pageLoader.load('Downloading Attribute Sets..');
 
-    AttributeSet.getByCategory(globalCatId)
-      .then(function(data) {
+    //TODO: Break dependencies
+    AttributeSet.getByCategory(globalCatId).then(function(data) {
+        pageLoader.load('Validating Schema..');
         if(data.length > 0) checkSchema(data[0], 'attributeSet');
+
         sharedDataSet.AttributeSets = data.map(function(aset) {
           aset._group = "Suggested Attribute Sets";
           aset.AttributeSetTagMaps = $productAdd.flatten.AttributeSetTagMap(aset.AttributeSetTagMaps);
@@ -153,17 +155,35 @@ factory('$productAdd', function(Product, AttributeSet, ImageService, GlobalCateg
 
         sharedDataSet.CombinedAttributeSets = angular.copy(sharedDataSet.AttributeSets);
 
+        var setupGlobalCat = function(){
+          pageLoader.load('Downloading Category Tree..');
+            //TODO: bad!
+            //Load Global Cat
+            GlobalCategory.getAll().then(function(data) {
+              sharedDataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
+              console.log("Looking for ID ", globalCatId, sharedDataSet.GlobalCategories);
+              sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
+              console.log("Got ", sharedFormData.GlobalCategories[0]);
+              breadcrumbs.globalCategory = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);
+              console.log(breadcrumbs, "breadcrumb");
+              pageLoader.load('Preparing content..');
+              deferred.resolve();
+            });
+        }
+
         if (ivFormData) {
           pageLoader.load('Indexing AttributeSet');
 
           //Search for Attribute Set from Attribute Set list that matches the Id
           //TODO: just let backend send entire thing
-          sharedFormData.AttributeSet = sharedDataSet.AttributeSets[sharedDataSet.AttributeSets.map(function(o) {
-            return o.AttributeSetId
-          }).indexOf(ivFormData.AttributeSet.AttributeSetId)];
+
+          // var kw = sharedDataSet.AttributeSets.map(function(o) {
+          //   return o.AttributeSetId
+          // }).indexOf(ivFormData.AttributeSet.AttributeSetId);
+          // console.log("KW Found", kw);
 
           var parse = function(ivFormData, FullAttributeSet) {
-            pageLoader.load('Loading product data..');
+            // pageLoader.load('Loading product data..');
             var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
 
             //copy it out
@@ -182,25 +202,38 @@ factory('$productAdd', function(Product, AttributeSet, ImageService, GlobalCateg
             }
           };
 
-          parse(ivFormData, sharedFormData.AttributeSet);
-          $productAdd.generateVariants(sharedFormData, sharedDataSet).then(function(){
-              for(var i = 0; i < sharedFormData.Variants.length; i++){
-                if(!sharedFormData.Variants[i].Pid) sharedFormData.Variants[i].Visibility = false;
-              }
+          AttributeSetService.get(ivFormData.AttributeSet.AttributeSetId).then(function(as){
+
+            //Do hacky post-procesisng because this endpoint is not APEAP compliant
+            var asComply = AttributeSetService.complyAPEAP(as);
+            pageLoader.load('Validating Schema..');
+            checkSchema(asComply, 'attributeSet');
+            //Flatten Tag
+            asComply.AttributeSetTagMaps = $productAdd.flatten.AttributeSetTagMap(asComply.AttributeSetTagMaps);
+            sharedFormData.AttributeSet = asComply;
+
+            parse(ivFormData, sharedFormData.AttributeSet);
+
+            $productAdd.generateVariants(sharedFormData, sharedDataSet).then(function(){
+                for(var i = 0; i < sharedFormData.Variants.length; i++){
+                  if(!sharedFormData.Variants[i].Pid) sharedFormData.Variants[i].Visibility = false;
+                }
+            });
+
+            setupGlobalCat();
+
           });
+
+          
+          
+
+        }else{
+          setupGlobalCat();
         }
 
-        pageLoader.load('Downloading Category Tree..');
-        //TODO: bad!
-        //Load Global Cat
-        GlobalCategory.getAll().then(function(data) {
-          sharedDataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
-          sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
-          breadcrumbs.globalCategory = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);
-          console.log(breadcrumbs, "breadcrumb");
-          pageLoader.load('Preparing content..');
-          deferred.resolve();
-        });
+        
+
+
       });
 
     return deferred.promise;

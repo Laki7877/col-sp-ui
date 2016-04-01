@@ -15,7 +15,7 @@
                             <label class="control-label">{{$index | ordinal}} Alternative:</label>
                         </div>
                         <div class="width-field-normal" ng-if="item != null">
-                            <a class="form-text" ng-click="openCategorySelectorModal($index)">{{item.NameEn}}</a>
+                            <a class="form-text" ng-click="openCategorySelectorModal($index)">{{item.NameEn}}</a>  
                             <i ng-if="!formData.GlobalCategories[$index + 1]"
                             ng-click="$emit('deleteGlobalCat', $index)" class="clickable color-dark-grey fa fa-trash margin-left-10"></i>
                         </div>

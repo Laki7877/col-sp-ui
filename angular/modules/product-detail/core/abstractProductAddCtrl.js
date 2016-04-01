@@ -132,7 +132,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       //Perform schema check
       var schema = JSONCache.get(schemaName || 'productStages');
       var validation = skeemas.validate(data, schema);
-      console.log("Schema validation result: ", validation);
+      console.log("Schema validation result: ", schemaName, validation);
       if (!validation.valid) {
         $scope.devAlert.error('<strong>Warning </strong> Automated API structure pre-check procedure failed. ' +
           'Format does not comply with the <strong>Ahancer Product Add Exchange Protocol (A-PAEP)</strong> V4');

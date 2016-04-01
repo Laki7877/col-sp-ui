@@ -421,7 +421,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				}
 			}
 
-			if (invFd.MainLocalCategory) {
+			if (invFd.MainLocalCategory && Number(invFd.MainLocalCategory.CategoryId) > 0) {
 				LocalCategory.getOne(invFd.MainLocalCategory.CategoryId).then(function(locat) {
 					invFd.LocalCategories.unshift(locat);
 					if (invFd.LocalCategories.length > 3) {
