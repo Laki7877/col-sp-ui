@@ -12,13 +12,13 @@
             </div>
             <div ng-class="{'width-field-normal': !isHtmlInput(da.DataType), 'width-field-xxl': isHtmlInput(da.DataType)}">
 
-                <select ng-if="isListInput(da.DataType)" ng-required="da.Required && onPublishing" class="form-control"
+                <select ng-if="isListInput(da.DataType) && isVisibleTo(da.VisibleTo)" ng-required="da.Required && onPublishing" class="form-control"
                 ng-model="formData.MasterAttribute[da.AttributeId]" ng-class="{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }"
                 name="DAInput{{$index}}" ng-options="item as item.AttributeValue.AttributeValueEn for item in da.AttributeValueMaps track by item.AttributeValueId">
                     <option disabled value="" selected>- Select option -</option> {{ da.AttributeId }}
                 </select>
 
-                <div ng-if="isHtmlInput(da.DataType)">
+                <div ng-if="isHtmlInput(da.DataType) && isVisibleTo(da.VisibleTo)">
                     <textarea ng-required="da.Required && onPublishing" ng-class="{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }"
                     ng-model="formData.MasterAttribute[da.AttributeId]" name="DAInput{{$index}}" class="form-control"
                     ng-ckeditor="ckOptions"></textarea>
@@ -28,7 +28,7 @@
                 ng-required="da.Required && onPublishing" type="text" class="form-control" name="DAInput{{$index}}"
                 ng-model="formData.MasterAttribute[da.AttributeId]" />
 
-            		<div ng-if="isCheckboxInput(da.DataType)">
+            		<div ng-if="isCheckboxInput(da.DataType) && isVisibleTo(da.VisibleTo)">
             			<div class="checkbox" ng-repeat="vmap in da.AttributeValueMaps">
               			<label>
               				<input type="checkbox"

@@ -30,6 +30,23 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.readOnly = options.readOnly;
     $scope.adminMode = options.adminMode;
     $scope.approveMode = options.approveMode;
+
+    $scope.isVisibleTo = function(abbrev){
+      if(abbrev == "AD" && adminMode) return true;
+      if(abbrev == "ME") return true;
+      return false;
+    }
+
+    
+    $scope.cancel = function(){
+      $scope.addProductForm.$dirty = false;
+      if(!$scope.adminMode){
+        $window.location.href = "/products";
+      }else{
+        $window.location.href = "/admin/products";
+      }
+    }
+
     $scope.overview = {};
     $scope.formData = {
       Status: 'DF',
@@ -106,6 +123,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       $scope.variantPtr.VideoLinks[$index] = { Url : null }
     };
 
+    $scope.disableInstallment = function(){
+        if(!$scope.variantPtr.SalePrice) return true;
+        return (Number($scope.variantPtr.SalePrice) || 0) < 5000;
+    }
+
     var checkSchema = function(data, schemaName) {
       //Perform schema check
       var schema = JSONCache.get(schemaName || 'productStages');
@@ -162,6 +184,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
       modalInstance.result.then(function(data) {
         $scope.formData[key][ith] = data;
+        if(key == 'GlobalCategories' && ith == 0){
+          $scope.updateBreadcrumb(data.CategoryId);
+        }
       });
 
     };
@@ -246,6 +271,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     $scope.breadcrumb = {
       globalCategory: null
+    };
+
+    $scope.updateBreadcrumb = function(globalCatId){
+      $scope.breadcrumb.globalCategory = Category.createCatStringById(globalCatId, $scope.dataset.GlobalCategories);
     };
 
     $scope.preview = function() {

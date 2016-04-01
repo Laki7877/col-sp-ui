@@ -32,6 +32,7 @@
 														<span ng-bind="item.name"></span>
 													</ui-select-choices>
 												</ui-select>
+												<span class="help-block">The status cannot be changed until all <a href="/onboarding">onboarding tasks</a> are complete.</span>
 											</div>
 						                    <!-- Shop Logo -->
 								            <div nc-template="common/input/form-group-with-label"

@@ -13012,33 +13012,41 @@ ul.sub-sidebar .item > a {
 #sidebar-wrapper .sidebar-nav li:hover {
   background: #1e2534 !important;
 }
+/* line 266, ../../../assets/_layout.scss */
+#sidebar-wrapper .sidebar-nav li:hover i {
+  color: #FFFFFF !important;
+}
 
-/* line 272, ../../../assets/_layout.scss */
+/* line 275, ../../../assets/_layout.scss */
 #sidebar-wrapper:hover .logo-img-wrapper-collased {
   display: block;
 }
-/* line 275, ../../../assets/_layout.scss */
+/* line 279, ../../../assets/_layout.scss */
 #sidebar-wrapper:hover .sidebar-nav li.active {
   background: #252d40;
 }
+/* line 281, ../../../assets/_layout.scss */
+#sidebar-wrapper:hover .sidebar-nav li.active i {
+  color: #7b7f8f;
+}
 
-/* line 291, ../../../assets/_layout.scss */
+/* line 299, ../../../assets/_layout.scss */
 ul.sub-sidebar {
   left: 60px;
   padding-top: 58px;
   background-color: #1e2534;
   color: #FFFFFF;
 }
-/* line 296, ../../../assets/_layout.scss */
+/* line 304, ../../../assets/_layout.scss */
 ul.sub-sidebar .item {
   color: #FFFFFF;
 }
-/* line 298, ../../../assets/_layout.scss */
+/* line 306, ../../../assets/_layout.scss */
 ul.sub-sidebar .item.active {
   font-weight: normal;
   color: #ec0000;
 }
-/* line 302, ../../../assets/_layout.scss */
+/* line 310, ../../../assets/_layout.scss */
 ul.sub-sidebar .item:hover {
   color: #ec0000;
 }
@@ -14993,118 +15001,101 @@ form h6 {
 #dashboard_page .table_dashboard td.column-text-ellipsis {
   max-width: 0;
 }
-/* line 228, ../../../assets/_seller_page.sass */
-#dashboard_page .table_dashboard tr:hover {
-  cursor: pointer;
-}
-/* line 230, ../../../assets/_seller_page.sass */
+/* line 229, ../../../assets/_seller_page.sass */
 #dashboard_page .table_dashboard tr:hover td {
+  cursor: pointer;
   color: #4899DD;
 }
-/* line 234, ../../../assets/_seller_page.sass */
+/* line 232, ../../../assets/_seller_page.sass */
+#dashboard_page .table_dashboard tr:hover td.empty_data {
+  cursor: default;
+  color: #32343C;
+}
+/* line 237, ../../../assets/_seller_page.sass */
 #dashboard_page .table_dashboard tr:last-child td {
   border-bottom: 0;
   padding-bottom: 0;
 }
-/* line 239, ../../../assets/_seller_page.sass */
+/* line 242, ../../../assets/_seller_page.sass */
 #dashboard_page .table_dashboard tr:nth-last-child(2) td {
   border-bottom: 0;
   padding-bottom: 0;
 }
-/* line 244, ../../../assets/_seller_page.sass */
+/* line 247, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:first-child {
   width: 120px;
 }
-/* line 247, ../../../assets/_seller_page.sass */
+/* line 250, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:nth-child(2) {
   width: 200px;
 }
-/* line 250, ../../../assets/_seller_page.sass */
+/* line 253, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:nth-child(3) {
   width: 200px;
 }
-/* line 253, ../../../assets/_seller_page.sass */
+/* line 256, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:nth-child(4) {
   text-align: right;
 }
-/* line 256, ../../../assets/_seller_page.sass */
+/* line 259, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td.empty_data {
   text-align: center;
   padding-left: 0;
 }
-/* line 260, ../../../assets/_seller_page.sass */
-#dashboard_page .table_recent_order tr:hover {
-  cursor: default;
-}
-/* line 262, ../../../assets/_seller_page.sass */
-#dashboard_page .table_recent_order tr:hover td {
-  color: #32343C;
-}
-/* line 266, ../../../assets/_seller_page.sass */
+/* line 265, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:first-child {
   width: 120px;
 }
-/* line 269, ../../../assets/_seller_page.sass */
+/* line 268, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:nth-child(2) {
   width: 300px;
 }
-/* line 272, ../../../assets/_seller_page.sass */
+/* line 271, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:nth-child(3) {
   text-align: right;
 }
-/* line 275, ../../../assets/_seller_page.sass */
+/* line 274, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td.empty_data {
   text-align: center;
   padding-left: 0;
 }
-/* line 279, ../../../assets/_seller_page.sass */
-#dashboard_page .table_lsa tr:hover {
-  cursor: default;
-}
-/* line 281, ../../../assets/_seller_page.sass */
-#dashboard_page .table_lsa tr:hover td {
-  color: #32343C;
-}
-/* line 287, ../../../assets/_seller_page.sass */
+/* line 280, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter td.empty_data {
   text-align: center;
   padding-left: 0;
 }
-/* line 291, ../../../assets/_seller_page.sass */
+/* line 284, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter .newsletter_date {
   font-size: 12px;
   margin-top: 5px;
   color: #7B7F8F;
 }
-/* line 295, ../../../assets/_seller_page.sass */
+/* line 288, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter td:last-child {
   padding-left: 30px;
   width: 80px;
 }
-/* line 299, ../../../assets/_seller_page.sass */
+/* line 292, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter td:last-child.empty_data {
   padding-left: 0;
 }
-/* line 302, ../../../assets/_seller_page.sass */
-#dashboard_page .table_newsletter tr:hover {
-  cursor: default;
-}
-/* line 304, ../../../assets/_seller_page.sass */
+/* line 296, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter tr:hover td {
+  cursor: default;
   color: #32343C;
 }
-/* line 307, ../../../assets/_seller_page.sass */
+/* line 300, ../../../assets/_seller_page.sass */
 #dashboard_page .account_health .group_container:last-child {
   padding: 10px 0px 0px 0px;
 }
-/* line 310, ../../../assets/_seller_page.sass */
+/* line 303, ../../../assets/_seller_page.sass */
 #dashboard_page .view_all_row {
   text-align: center;
   margin-top: 15px;
   padding-top: 15px;
   border-top: solid 1px #BCC7D5;
 }
-/* line 316, ../../../assets/_seller_page.sass */
+/* line 309, ../../../assets/_seller_page.sass */
 #dashboard_page .loading_row {
   text-align: center;
   margin-top: 15px;

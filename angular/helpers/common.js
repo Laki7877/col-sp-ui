@@ -19,7 +19,7 @@ module.exports = function ($http, $q, storage, config, $window) {
                         deferred.resolve(data);
                     })
                     .error(function (data, status, headers, config) {
-                        console.warn(status, config.method, config.url, data);
+                        console.warn('HTTP Request Error', status, config.method, config.url, data);
 			             var onLoginPage = ($window.location.pathname == "/login");
                         if(status == 401 && !onLoginPage){
                             //Catch Forbidden

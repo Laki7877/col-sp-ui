@@ -4414,7 +4414,16 @@ module.exports = function($scope, $controller, SellerCouponService, LocalCategor
 module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$window", "$uibModal", "NewsletterService", function($scope, $rootScope, Dashboard, $log, storage, $window, $uibModal, NewsletterService){
 	'ngInject';
 
+	//---------------- Begin Graph section ----------------
+	// in this section we've 4 fucntions each of which calculates graph data for
+	// Today, Week, Month and Year graph.
+	// 
+	// This function will be called when User click section name/
+	// Example: if User click Today then getTodayGraphData will be called.
+
+	// the method that call the 4 fucntions is setGraphData(More at setGraphData() description).
 	getTodayGraphData = function() {
+		// set $scope.labels for Graph.js
 		$scope.labels = ["0AM", "2AM", "4AM", "6AM", "8AM", "10AM",
 						 "12AM", "2PM", "4PM", "6PM", "8PM", "10PM", "12PM"];
 		var tempData = [];
@@ -4424,12 +4433,12 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 		 };
 		Dashboard.getRevenue('today')
 			.then(function(data){
-				// console.log('today',data);
 				for (var i = 0; i < data.length ; i++) {
 				 	tempData[data[i].Key + 1] = data[i].Value;
 				 };
 			});
 
+		// set $scope.data for Graph.js
 		$scope.data = [tempData];
 	};
 
@@ -4447,9 +4456,6 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 				 };
 			});
 		$scope.data = [tempData];
-	  // $scope.onClick = function (points, evt) {
-	  //   console.log(points, evt);
-	  // };
 	};
 
 	getMaxDate = function(month, year) {
@@ -4496,13 +4502,19 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 		 };
 		Dashboard.getRevenue('year')
 			.then(function(data){
-				// console.log('year',data);
 				for (var i = 0; i < data.length ; i++) {
 				 	tempData[data[i].Key-1] = data[i].Value;
 				 };
 			});
 		$scope.data = [tempData];
 	};
+
+
+	// This function will call 4 fucntions above when User selects the graph.
+	// If User clicks Today it will use switch to case 'today' which call getTodayGraphData.
+
+	// This fucntion also set Flag for front-end.
+	// Flag is used for some CSS class.
 
 	$scope.setGraphData = function(flag){
 		switch (flag) {
@@ -4537,11 +4549,14 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 	        default:
         }
 	};
+	//---------------- End Graph section ----------------
 
 	//Initiate graph data as Today Graph Data
+	// call setGraphData(today) it will set Graph to today data as default
 	$scope.setGraphData('today');
 
-	//Get Revenue Summary data
+	//---------Get Revenue Summary data---------------
+	// call end-point once for getting Revenue Summary data
 	getSumValue = function(data) {
 		var sum = 0;
 		for (var i = 0; i < data.length; i++) {
@@ -4565,16 +4580,20 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 		.then(function(data){
 			$scope.sumYearRevenue = getSumValue(data);
 		});
-	
+	//--------------End Get Revenue calling end-point section---------
 
 
+	// get Newslterr data and set it to $scope
 	Dashboard.getNewsLetter()
 		.then(function(query) {
 			return $scope.newsLettersData = query.data;
 		});
 
+	//-------------- Begin Low Stock Alert section -------------
+	// get Low Stock Alert data and set it to scope
 	Dashboard.getLowStockAlert()
 		.then(function(query) {
+			// set max data for table to 10
 			$scope.maxLowStockAlert = 10;
 			$scope.lowStockAlertData = query.data;
 
@@ -4585,6 +4604,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 			return $scope.lowStockAlertData;
 		});
 
+	// get Out of Stock data and merge with low stock
 	Dashboard.getOutOfStock()
 		.then(function(query) {
 			$scope.outOfStockData = query.data;
@@ -4595,7 +4615,10 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 			};
 			return $scope.outOfStockData;
 		});
+	//--------------End Low Stock Alert section-------------
 
+	// ------- get New order section --------
+	// set max order to 10
 	$scope.maxNewOrders = 10;
 	Dashboard.getOrders()
 		.then(function(query) {
@@ -4608,12 +4631,17 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 			return $scope.newOrdersData;
 		});
 
+	// ------- get Top Selling Items section --------
+	// set max top seliing to 10
 	$scope.maxTopSellingItems = 10;
 	Dashboard.getTopSellingItems()
 		.then(function(data){
 			return $scope.topSellingItemsData = data;
 		});
 
+
+	// ---------------- Begin Account Health section ----------------
+	// method for identify colored rank to Account Health section
 	getColoredRank = function(type, data) {
 		switch(type){
 			case 'Product Rating':
@@ -4666,6 +4694,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 		}
 	};
 
+	// call end-point Product Rating
 	Dashboard.getProductRating()
 		.then(function(data){
 			if (data != 'N/A') {
@@ -4677,10 +4706,13 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 			}
 		});
 
+	// Ontime Delivery mockup
+	// NOTED: front-end have hide this section this mock does not affect front-end
 	var otdRating = 92;
 	$scope.onTimeDeliveryScore = otdRating + '%';
 	$scope.onTimeDeliveryRank = getColoredRank('On Time Delivery',otdRating);
 
+	// call end-point Return Rating
 	Dashboard.getReturnRating()
 		.then(function(data){
 			if (data != 'N/A') {
@@ -4693,6 +4725,8 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 			}
 		});
 
+	// method for identify color-class for front-end
+	// for Mar 2016: it's only need one color code
 	$scope.getColorClass = function(status) {
 		switch (status) {
 	        case 'PC':
@@ -4704,6 +4738,8 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
         }
 	};
 
+	// method for identify fa-class
+	// need only 1 fa-class
 	$scope.getFaClass = function(status) {
 		switch (status) {
 	        case 'PC':
@@ -4715,6 +4751,9 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
         }
 	};
 
+	// ---------------- End Account Health section ----------------
+
+	// method for call modal for Newsletter
 	$scope.open = function(item) {
 		NewsletterService.get(item.NewsletterId)
 			.then(function(data) {
@@ -4734,6 +4773,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 			});
 	};
 
+	// ---------------- Begin link between page section  ----------------
 	$scope.linkToAllNewsletters = function(){
 		$window.location.href = '/newsletters';
 	};
@@ -4755,6 +4795,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 	$scope.linkToOrder = function(id) {
 		$window.location.href = '/orders/' +id;
 	};
+	// ---------------- End link between page section ----------------
 
 }];
 
@@ -4887,6 +4928,7 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "storage", "$win
 		Onboarding.getListCompletedTask()
 			.then(function(data) {
 				$scope.onLoadingFlag = false;
+				// Comment below is for Decorative section 
 		    	// $scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct && data.ProductApprove, data.DecorateStore];
 		    	$scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct && data.ProductApprove];
 
@@ -6712,7 +6754,7 @@ module.exports = ["$http", "$q", "storage", "config", "$window", function ($http
                         deferred.resolve(data);
                     })
                     .error(function (data, status, headers, config) {
-                        console.warn(status, config.method, config.url, data);
+                        console.warn('HTTP Request Error', status, config.method, config.url, data);
 			             var onLoginPage = ($window.location.pathname == "/login");
                         if(status == 401 && !onLoginPage){
                             //Catch Forbidden
@@ -6971,6 +7013,7 @@ module.exports = ["$cookies", function ($cookies) {
      * Utility method to clear the sessionStorage
      */
     service.clear = function () {
+        console.log("[CLEARING STORAGE]");
         sessionStorage.removeItem('central.seller.portal.auth.token');
         sessionStorage.removeItem('central.seller.portal.auth.profile');
         $cookies.remove('central.seller.portal.auth.token', {path: '/'});
@@ -9779,6 +9822,23 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.readOnly = options.readOnly;
     $scope.adminMode = options.adminMode;
     $scope.approveMode = options.approveMode;
+
+    $scope.isVisibleTo = function(abbrev){
+      if(abbrev == "AD" && adminMode) return true;
+      if(abbrev == "ME") return true;
+      return false;
+    }
+
+    
+    $scope.cancel = function(){
+      $scope.addProductForm.$dirty = false;
+      if(!$scope.adminMode){
+        $window.location.href = "/products";
+      }else{
+        $window.location.href = "/admin/products";
+      }
+    }
+
     $scope.overview = {};
     $scope.formData = {
       Status: 'DF',
@@ -9855,6 +9915,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       $scope.variantPtr.VideoLinks[$index] = { Url : null }
     };
 
+    $scope.disableInstallment = function(){
+        if(!$scope.variantPtr.SalePrice) return true;
+        return (Number($scope.variantPtr.SalePrice) || 0) < 5000;
+    }
+
     var checkSchema = function(data, schemaName) {
       //Perform schema check
       var schema = JSONCache.get(schemaName || 'productStages');
@@ -9911,6 +9976,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
       modalInstance.result.then(function(data) {
         $scope.formData[key][ith] = data;
+        if(key == 'GlobalCategories' && ith == 0){
+          $scope.updateBreadcrumb(data.CategoryId);
+        }
       });
 
     };
@@ -9995,6 +10063,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     $scope.breadcrumb = {
       globalCategory: null
+    };
+
+    $scope.updateBreadcrumb = function(globalCatId){
+      $scope.breadcrumb.globalCategory = Category.createCatStringById(globalCatId, $scope.dataset.GlobalCategories);
     };
 
     $scope.preview = function() {
@@ -10972,7 +11044,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-other-attributes',
-    "<div class=form-section><div class=form-section-header><h2>Default Attributes</h2></div><div class=form-section-content><div class=form-group ng-repeat=\"da in defaultAttributes\"><div class=width-label><label class=control-label ng-class=\"{'required': da.Required}\">{{ da.AttributeNameEn }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(da.DataType), 'width-field-xxl': isHtmlInput(da.DataType)}\"><select ng-if=isListInput(da.DataType) ng-required=\"da.Required && onPublishing\" class=form-control ng-model=formData.MasterAttribute[da.AttributeId] ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" name=DAInput{{$index}} ng-options=\"item as item.AttributeValue.AttributeValueEn for item in da.AttributeValueMaps track by item.AttributeValueId\"><option disabled value=\"\" selected>- Select option -</option>{{ da.AttributeId }}</select><div ng-if=isHtmlInput(da.DataType)><textarea ng-required=\"da.Required && onPublishing\" ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-model=formData.MasterAttribute[da.AttributeId] name=DAInput{{$index}} class=form-control ng-ckeditor=ckOptions></textarea></div><input ng-if=isFreeTextInput(da.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-required=\"da.Required && onPublishing\" class=form-control name=DAInput{{$index}} ng-model=\"formData.MasterAttribute[da.AttributeId]\"><div ng-if=isCheckboxInput(da.DataType)><div class=checkbox ng-repeat=\"vmap in da.AttributeValueMaps\"><label><input type=checkbox ng-init=\"formData.MasterAttribute[da.AttributeId]._checkbox = true\" ng-model=\"formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId]\"> {{ vmap.AttributeValue.AttributeValueEn }}</label></div></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Default Attributes</h2></div><div class=form-section-content><div class=form-group ng-repeat=\"da in defaultAttributes\"><div class=width-label><label class=control-label ng-class=\"{'required': da.Required}\">{{ da.AttributeNameEn }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(da.DataType), 'width-field-xxl': isHtmlInput(da.DataType)}\"><select ng-if=\"isListInput(da.DataType) && isVisibleTo(da.VisibleTo)\" ng-required=\"da.Required && onPublishing\" class=form-control ng-model=formData.MasterAttribute[da.AttributeId] ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" name=DAInput{{$index}} ng-options=\"item as item.AttributeValue.AttributeValueEn for item in da.AttributeValueMaps track by item.AttributeValueId\"><option disabled value=\"\" selected>- Select option -</option>{{ da.AttributeId }}</select><div ng-if=\"isHtmlInput(da.DataType) && isVisibleTo(da.VisibleTo)\"><textarea ng-required=\"da.Required && onPublishing\" ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-model=formData.MasterAttribute[da.AttributeId] name=DAInput{{$index}} class=form-control ng-ckeditor=ckOptions></textarea></div><input ng-if=isFreeTextInput(da.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-required=\"da.Required && onPublishing\" class=form-control name=DAInput{{$index}} ng-model=\"formData.MasterAttribute[da.AttributeId]\"><div ng-if=\"isCheckboxInput(da.DataType) && isVisibleTo(da.VisibleTo)\"><div class=checkbox ng-repeat=\"vmap in da.AttributeValueMaps\"><label><input type=checkbox ng-init=\"formData.MasterAttribute[da.AttributeId]._checkbox = true\" ng-model=\"formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId]\"> {{ vmap.AttributeValue.AttributeValueEn }}</label></div></div></div></div></div></div>"
   );
 
 
@@ -10982,7 +11054,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-price',
-    "<div class=form-section><div class=form-section-header><h2>Price</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SalePrice nc-label=\"Sale Price\" nc-template-options-path=addProductForm/SalePrice><input autocomplete=off class=\"form-control width-field-normal\" maxlength=20 name=SalePrice ng-model=variantPtr.SalePrice required></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.OriginalPrice><input autocomplete=off class=\"form-control width-field-normal\" name=OriginalPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"variantPtr.OriginalPrice\"></div><div nc-template=common/input/form-group-with-label nc-label=Installment nc-template-options-path=addProductForm/Installment nc-template-form=form.Installment><select ng-if=\"(variantPtr.SalePrice || 0) > 5000\" class=form-control ng-model=variantPtr.Installment><option value=Y>Yes</option><option value=N selected>No</option></select><select disabled ng-if=\"(variantPtr.SalePrice || 0) <= 5000\" class=form-control><option value=No selected>Available when price is more than 5,000</option></select></div><div nc-template=common/input/form-group-with-label nc-label=\"Unit Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.UnitPrice><input autocomplete=off class=\"form-control width-field-normal\" name=UnitPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"variantPtr.UnitPrice\"></div><div nc-template=common/input/form-group-with-label nc-label=\"Purchase Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.PurchasePrice><input autocomplete=off class=\"form-control width-field-normal\" name=PurchasePrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"variantPtr.PurchasePrice\"></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Price</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SalePrice nc-label=\"Sale Price\" ng-cloack nc-template-options-path=addProductForm/SalePrice><input autocomplete=off ng-pattern-restrict=^[0-9]*$ class=\"form-control width-field-normal\" maxlength=20 name=SalePrice ng-model=variantPtr.SalePrice required></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.OriginalPrice><input autocomplete=off class=\"form-control width-field-normal\" name=OriginalPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=variantPtr.OriginalPrice ng-pattern-restrict=\"^[0-9]*$\"></div><div nc-template=common/input/form-group-with-label nc-label=Installment nc-template-options-path=addProductForm/Installment nc-template-form=form.Installment><select ng-disabled=disableInstallment() ng-cloak class=form-control ng-model=variantPtr.Installment><option ng-if=disableInstallment() value=N selected>Available when price is more than 5,000</option><option ng-if=!disableInstallment() value=Y>Yes</option><option ng-if=!disableInstallment() value=N selected>No</option></select></div><div nc-template=common/input/form-group-with-label nc-label=\"Unit Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.UnitPrice><input autocomplete=off class=\"form-control width-field-normal\" name=UnitPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"variantPtr.UnitPrice\"></div><div nc-template=common/input/form-group-with-label nc-label=\"Purchase Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.PurchasePrice><input autocomplete=off class=\"form-control width-field-normal\" name=PurchasePrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"variantPtr.PurchasePrice\"></div></div></div>"
   );
 
 
