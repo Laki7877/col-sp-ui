@@ -32,7 +32,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.approveMode = options.approveMode;
 
     $scope.isVisibleTo = function(abbrev){
-      console.log(abbrev);
       if(abbrev == "AD" && $scope.adminMode) return true;
       if(abbrev == "ME") return true;
       return false;
