@@ -226,9 +226,12 @@
 				max-width: 0
 
 		tr:hover
-			cursor: pointer
 			td
+				cursor: pointer
 				color: $color-theme
+			td.empty_data
+				cursor: default
+				color: $color-black
 
 		tr:last-child
 			td
@@ -256,11 +259,7 @@
 		td.empty_data
 			text-align:	center
 			padding-left:	0
-		
-		tr:hover
-			cursor: default
-			td
-				color: $color-black
+
 
 	.table_lsa
 		td:first-child
@@ -275,12 +274,6 @@
 		td.empty_data
 			text-align:	center
 			padding-left:	0
-
-		tr:hover
-			cursor: default
-			td
-				color: $color-black
-
 
 	.table_newsletter
 
@@ -298,10 +291,10 @@
 
 			&.empty_data
 				padding-left: 0
-	
+
 		tr:hover
-			cursor: default
 			td
+				cursor: default
 				color: $color-black
 	.account_health
 		.group_container:last-child

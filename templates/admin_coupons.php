@@ -15,7 +15,7 @@
   		            <tr class="table-head">
   		                <th nc-sort="CouponCode">Coupon Code</th>
   		                <th nc-sort="CouponName">Coupon Name</th>
-  		                <th class="width_150 text-align-center" nc-sort="Remaining">Remaining</th>
+  		                <th class="width_150 text-align-center" nc-sort="MaximumUser">Remaining</th>
   		                <th nc-sort="StartDate">Start Date</th>
                       <th nc-sort="ExpireDate">Expire Date</th>
                       <th nc-sort="Status">Status</th>
@@ -28,10 +28,7 @@
   		                    {{row.CouponCode}}
   		                </td>
   		                <td>{{row.CouponName}}</td>
-                      <td class="width_150 text-align-center">
-                          <span ng-if="row.MaximumUser == 0">No Limit</span>
-                          <span ng-if="row.MaximumUser > 0">{{row.Remaining}}</span>
-                      </td>
+                        <td class="width_150 text-align-center">row.Remaining</td>
   		                <td class="width_150">{{ row.StartDate | dateTh }}</td>
   		                <td class="width_150">{{ row.ExpireDate | dateTh }}</td>
   		                <td class="width_100"> {{ row.Status | mapDropdown: statusDropdown }}</td>
