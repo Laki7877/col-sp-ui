@@ -83,12 +83,14 @@ module.exports = function ($cookies) {
      * should also be stored in localStorage
      */
     service.storeCurrentUserProfile = function (profile, flag) {
+        $cookies.put('central.seller.portal.auth.profile.shop', profile.Shop.ShopId, {path: '/'});
         profile = angular.toJson(profile);
         sessionStorage.setItem('central.seller.portal.auth.profile', profile);
         localStorage.setItem('central.seller.portal.auth.profile', profile);
     };
 
     service.storeImposterProfile = function(profile){
+        $cookies.put('central.seller.portal.auth.profile.shop', profile.Shop.ShopId, {path: '/'});
 	    profile = angular.toJson(profile);
         sessionStorage.setItem('central.seller.portal.auth.imposter', profile);
     };
@@ -100,6 +102,7 @@ module.exports = function ($cookies) {
     
     service.clearImposterProfile = function () {
          sessionStorage.removeItem('central.seller.portal.auth.imposter');
+        $cookies.remove('central.seller.portal.auth.profile.shop', {path: '/'});
     };
 
     /**
@@ -111,6 +114,7 @@ module.exports = function ($cookies) {
         sessionStorage.removeItem('central.seller.portal.auth.profile');
         $cookies.remove('central.seller.portal.auth.token', {path: '/'});
         $cookies.remove('central.seller.portal.auth.profile', {path: '/'});
+        $cookies.remove('central.seller.portal.auth.profile.shop', {path: '/'});
 	    sessionStorage.removeItem('central.seller.portal.auth.imposter');
         localStorage.removeItem('central.seller.portal.auth.token');
         localStorage.removeItem('central.seller.portal.auth.actions');

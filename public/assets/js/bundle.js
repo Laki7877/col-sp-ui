@@ -794,6 +794,8 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 			$scope.advanceSearchMode = true;
 			$scope.advanceSearch = false;
 			$scope.params.searchText = '';
+			$scope.params._offset = 0;
+			$scope.bulkContainer.length = 0;
 		}
 		return false;
 	};
@@ -818,11 +820,7 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 
 	//Watch for advanceSearchParams
 	$scope.$watch('advanceSearchParams', function(newObj, oldObj) {
-		//Reset offset if advance param changes
-		if(!_.isEqual(newObj, oldObj)) {
-			$scope.params._offset = 0;
-			$scope.bulkContainer.length = 0;
-		}
+		$scope.reload();
 	});
 }]
 
@@ -963,10 +961,6 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 	};
 
 	$scope.$watch('params', function(a,b) {
-		if(_.isEqual(a,b)) {
-			return;
-		}
-		console.log('params');
 		$scope.reload(a,b);
 	}, true);
 
@@ -3572,10 +3566,6 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
 			},0);
 		};
 
-		$scope.uploader.onProgressAll = function(progress) {
-
-		};
-
 		//Return list of error
 		$scope.uploader.onErrorItem = function(item, response, status, headers) {
 			$scope.importingFile = null;
@@ -3583,8 +3573,8 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
 				return '<li>' + e + '</li>';
 			});
 			$scope.alert.error('<span class="font-weight-bold">Fail to upload CSV</span>' + '<ul>' + response.join('') + '</ul>');
-
-            if(status == 401){
+			
+            if(status == 401) {
                 //Catch Forbidden
                 storage.put('redirect', $window.location.pathname);
                 storage.put('session_timeout');
@@ -7007,12 +6997,14 @@ module.exports = ["$cookies", function ($cookies) {
      * should also be stored in localStorage
      */
     service.storeCurrentUserProfile = function (profile, flag) {
+        $cookies.put('central.seller.portal.auth.profile.shop', profile.Shop.ShopId, {path: '/'});
         profile = angular.toJson(profile);
         sessionStorage.setItem('central.seller.portal.auth.profile', profile);
         localStorage.setItem('central.seller.portal.auth.profile', profile);
     };
 
     service.storeImposterProfile = function(profile){
+        $cookies.put('central.seller.portal.auth.profile.shop', profile.Shop.ShopId, {path: '/'});
 	    profile = angular.toJson(profile);
         sessionStorage.setItem('central.seller.portal.auth.imposter', profile);
     };
@@ -7024,6 +7016,7 @@ module.exports = ["$cookies", function ($cookies) {
     
     service.clearImposterProfile = function () {
          sessionStorage.removeItem('central.seller.portal.auth.imposter');
+        $cookies.remove('central.seller.portal.auth.profile.shop', {path: '/'});
     };
 
     /**
@@ -7035,6 +7028,7 @@ module.exports = ["$cookies", function ($cookies) {
         sessionStorage.removeItem('central.seller.portal.auth.profile');
         $cookies.remove('central.seller.portal.auth.token', {path: '/'});
         $cookies.remove('central.seller.portal.auth.profile', {path: '/'});
+        $cookies.remove('central.seller.portal.auth.profile.shop', {path: '/'});
 	    sessionStorage.removeItem('central.seller.portal.auth.imposter');
         localStorage.removeItem('central.seller.portal.auth.token');
         localStorage.removeItem('central.seller.portal.auth.actions');

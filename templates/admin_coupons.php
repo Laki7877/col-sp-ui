@@ -28,7 +28,7 @@
   		                    {{row.CouponCode}}
   		                </td>
   		                <td>{{row.CouponName}}</td>
-                        <td class="width_150 text-align-center">row.Remaining</td>
+                        <td class="width_150 text-align-center">{{row.Remaining}}</td>
   		                <td class="width_150">{{ row.StartDate | dateTh }}</td>
   		                <td class="width_150">{{ row.ExpireDate | dateTh }}</td>
   		                <td class="width_100"> {{ row.Status | mapDropdown: statusDropdown }}</td>

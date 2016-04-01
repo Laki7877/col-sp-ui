@@ -134,10 +134,6 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 	};
 
 	$scope.$watch('params', function(a,b) {
-		if(_.isEqual(a,b)) {
-			return;
-		}
-		console.log('params');
 		$scope.reload(a,b);
 	}, true);
 
