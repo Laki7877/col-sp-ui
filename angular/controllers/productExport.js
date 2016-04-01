@@ -80,10 +80,12 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64) {
 			return Product.advanceList(searchCriteriaObject).then(function(data) {
 	          	console.log(data, 'recv data advanced list');
 	          	$scope.SELECT_ALL = false;
+	          	
 	          	//restructure into normal flow
 	          	productIds = data.data.map(function(i){
 	          		return i.ProductId;
-	          	})
+	          	});
+
 	          	normalFlow();
 	        });
 		}

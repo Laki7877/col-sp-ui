@@ -3166,10 +3166,12 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", fun
 			return Product.advanceList(searchCriteriaObject).then(function(data) {
 	          	console.log(data, 'recv data advanced list');
 	          	$scope.SELECT_ALL = false;
+	          	
 	          	//restructure into normal flow
 	          	productIds = data.data.map(function(i){
 	          		return i.ProductId;
-	          	})
+	          	});
+
 	          	normalFlow();
 	        });
 		}
@@ -10147,13 +10149,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
       }
 
-      var cnt = $scope.formData.Variants.reduce(function(total, x) {
-        return x.Visibility ? total + 1 : total
-      }, 0)
+      // var cnt = $scope.formData.Variants.reduce(function(total, x) {
+      //   return x.Visibility ? total + 1 : total
+      // }, 0)
 
-      if (cnt == 0 && $scope.formData.Variants.length > 0) {
-        mat.push('At least one variant must be visible.')
-      }
+      // if (cnt == 0 && $scope.formData.Variants.length > 0) {
+      //   mat.push('At least one variant must be visible.')
+      // }
 
       if ($scope.formData.ExpireDate && $scope.formData.ExpireDate <= $scope.formData.EffectiveDate) {
         mat.push('Effective date/time must come before expire date/time.')
