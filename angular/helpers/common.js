@@ -36,11 +36,6 @@ module.exports = function ($http, $q, storage, config, $window) {
                             
                             $window.location.href = "/login";
                         }
-                        
-                        if(status == 406){
-                            alert("Server died!");
-                        }
-
                         deferred.reject(data || {"error": "Unknown error"});
                     });
                 return deferred.promise;
