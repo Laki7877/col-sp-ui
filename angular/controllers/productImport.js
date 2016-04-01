@@ -95,6 +95,23 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
 				return '<li>' + e + '</li>';
 			});
 			$scope.alert.error('<span class="font-weight-bold">Fail to upload CSV</span>' + '<ul>' + response.join('') + '</ul>');
+
+            if(status == 401){
+                //Catch Forbidden
+                storage.put('redirect', $window.location.pathname);
+                storage.put('session_timeout');
+                storage.clear();
+                
+                $window.location.href = "/login";
+            }
+            if(status == 403) {
+                storage.put('redirect', $window.location.pathname);
+                storage.put('access_denied');
+                storage.clear();
+                
+                $window.location.href = "/login";
+            }
+
 		};
 
 		$scope.uploader.onAfterAddingFile = function(item) {
