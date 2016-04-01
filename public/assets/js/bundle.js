@@ -10370,6 +10370,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                   $scope.adminAlert.error("<strong>Message from Admin</strong><br>" + $scope.formData.AdminApprove.RejectReason);
                 }else if(!$scope.adminMode && $scope.formData.Status == 'AP'){
                   $scope.adminAlert.success("This product has been approved. Click 'Edit Product' to make changes.");
+                }else if(!$scope.adminMode && $scope.formData.Status == 'WA'){
+                  $scope.adminAlert.open(false, "This product is waiting for approval for the admin. You cannot edit any product detail now.", "yellow");
                 }
 
                 checkSchema(inverseFormData);
