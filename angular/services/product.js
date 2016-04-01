@@ -363,6 +363,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			var invFd = angular.copy(pap);
 			//Load attribute set (TODO: we won't have to do this in future)
 			invFd.AttributeSet = FullAttributeSet;
+			console.log('invFd.AttributeSet  = FullAttributeSet', FullAttributeSet);
 
 			//Find which variant is default
 			try {
@@ -405,6 +406,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			} catch (ex) {
 				console.warn('Unable to set MasterAttribute', ex);
 			}
+			
 			invFd.MasterAttribute = MasterAttribute;
 
 			if (!invFd.LocalCategories) {

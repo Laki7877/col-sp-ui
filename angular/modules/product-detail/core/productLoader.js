@@ -172,7 +172,7 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
         }
 
         if (ivFormData) {
-          pageLoader.load('Indexing AttributeSet');
+          pageLoader.load('Indexing Attribute Set');
 
           //Search for Attribute Set from Attribute Set list that matches the Id
           //TODO: just let backend send entire thing
@@ -202,6 +202,19 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
             }
           };
 
+
+          var ensureVariantPidness = function(){
+            //Ensure that Variants that are multiplied
+            //has pid, if not its  special case that are/
+            //spawn from import
+            $productAdd.generateVariants(sharedFormData, sharedDataSet).then(function(){
+                for(var i = 0; i < sharedFormData.Variants.length; i++){
+                  if(!sharedFormData.Variants[i].Pid) sharedFormData.Variants[i].Visibility = false;
+                }
+            });
+
+          }
+
           AttributeSetService.get(ivFormData.AttributeSet.AttributeSetId).then(function(as){
 
             //Do hacky post-procesisng because this endpoint is not APEAP compliant
@@ -212,16 +225,11 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
             asComply.AttributeSetTagMaps = $productAdd.flatten.AttributeSetTagMap(asComply.AttributeSetTagMaps);
             sharedFormData.AttributeSet = asComply;
 
+            
+          }).finally(function(){
             parse(ivFormData, sharedFormData.AttributeSet);
-
-            $productAdd.generateVariants(sharedFormData, sharedDataSet).then(function(){
-                for(var i = 0; i < sharedFormData.Variants.length; i++){
-                  if(!sharedFormData.Variants[i].Pid) sharedFormData.Variants[i].Visibility = false;
-                }
-            });
-
+            ensureVariantPidness();
             setupGlobalCat();
-
           });
 
           

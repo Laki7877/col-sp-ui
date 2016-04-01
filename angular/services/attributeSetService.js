@@ -47,10 +47,17 @@ module.exports = function(common, config) {
 	*/
 	service.complyAPEAP = function(direct){
 		var indirect = angular.copy(direct);
-		indirect.AttributeSetMaps = direct.Attributes.map(function(AttributeSetObject){
+		indirect.AttributeSetMaps = direct.Attributes.map(function(AttributeObject){
+			AttributeObject.AttributeValueMaps = AttributeObject.AttributeValues.map(function(AttributeValue){
+				return {
+					AttributeValueId: AttributeValue.AttributeValueId,
+					AttributeValue: AttributeValue,
+					AttributeId: AttributeObject.AttributeId
+				}
+			});
 			return {
-				Attribute: AttributeSetObject,
-				AttributeId: AttributeSetObject.AttributeId,
+				Attribute: AttributeObject,
+				AttributeId: AttributeObject.AttributeId,
 				AttributeSetId: indirect.AttributeSetId
 			}
 		});
