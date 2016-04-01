@@ -44,15 +44,15 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   if(!_.isNil(storage.getSessionToken())) {
     $rootScope.DisablePage = true;
     if(!_.isNil($rootScope.Profile)) {
-      Credential.checkToken()
-        .then(function() {
-          $rootScope.DisablePage = false;
-        }, function() {
-          console.log('check token failed');
-          storage.put('session_timeout');
-          storage.clear();
-          $window.location.reload();
-        });
+      // Credential.checkToken()
+      //   .then(function() {
+      //     $rootScope.DisablePage = false;
+      //   }, function() {
+      //     console.log('check token failed');
+      //     storage.put('session_timeout');
+      //     storage.clear();
+      //     $window.location.reload();
+      //   });
     } else {
       Credential.loginWithToken(storage.getSessionToken(), true)
         .then(function(profile) {
