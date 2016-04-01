@@ -3583,6 +3583,23 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
 				return '<li>' + e + '</li>';
 			});
 			$scope.alert.error('<span class="font-weight-bold">Fail to upload CSV</span>' + '<ul>' + response.join('') + '</ul>');
+
+            if(status == 401) {
+                //Catch Forbidden
+                storage.put('redirect', $window.location.pathname);
+                storage.put('session_timeout');
+                storage.clear();
+                
+                $window.location.href = "/login";
+            }
+            if(status == 403) {
+                storage.put('redirect', $window.location.pathname);
+                storage.put('access_denied');
+                storage.clear();
+                
+                $window.location.href = "/login";
+            }
+
 		};
 
 		$scope.uploader.onAfterAddingFile = function(item) {
@@ -6771,11 +6788,6 @@ module.exports = ["$http", "$q", "storage", "config", "$window", function ($http
                             
                             $window.location.href = "/login";
                         }
-                        
-                        if(status == 406){
-                            alert("Server died!");
-                        }
-
                         deferred.reject(data || {"error": "Unknown error"});
                     });
                 return deferred.promise;
