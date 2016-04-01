@@ -10,7 +10,7 @@
       <table class="table table-curved">
         <thead>
           <tr class="table-head">
-            <th nc-sort="PublishedDt">Publish Date</th>
+            <th nc-sort="PublishedDt">Published Date</th>
             <th nc-sort="Subject">Subject</th>
             <th class="text-align-center">Action</th>
           </tr>
