@@ -136,3 +136,6 @@ angular/nc/template.js
 angular/template.js
 ## include bundle because, test team doesnt want to grunt
 ## public/assets/js/bundle.js
+
+## ignore local_files
+public/local_files

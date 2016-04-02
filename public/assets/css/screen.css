@@ -12406,6 +12406,11 @@ md-autocomplete button md-icon path {
   box-shadow: none;
 }
 
+/* line 211, ../../../assets/_override.scss */
+a.cke_dialog_tab {
+  display: none !important;
+}
+
 /* line 1, ../../../assets/_atomic.scss */
 .margin-right-20 {
   margin-right: 20px;

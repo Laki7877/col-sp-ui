@@ -15625,7 +15625,14 @@ module.exports = {
     }
   },
   MaximumAmount: {},
-  MaximumUsers: {},
+  MaximumUsers: {
+    labelClass: "required",
+    error: {
+      messages: {
+        required: 'This is a required field'
+      }
+    }
+  },
   UsagePerCustomer: {},
   ConditionValue: {
     hint: {
