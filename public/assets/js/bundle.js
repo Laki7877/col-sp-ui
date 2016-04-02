@@ -6758,30 +6758,54 @@ module.exports = ["$http", "$q", "storage", "config", "$window", function ($http
                 if (options.url.indexOf("http") !== 0) {
                     options.url = config.REST_SERVICE_BASE_URL + options.url;
                 }
-                $http(options)
+
+                var counter = 1;
+                var MAX_RETRY = 5;
+                var request = function() {
+
+                    $http(options)
                     .success(function (data) {
                         deferred.resolve(data);
                     })
                     .error(function (data, status, headers, config) {
-                        console.warn('HTTP Request Error', status, config.method, config.url, data);
-			             var onLoginPage = ($window.location.pathname == "/login");
-                        if(status == 401 && !onLoginPage){
-                            //Catch Forbidden
-                            storage.put('redirect', $window.location.pathname);
-                            storage.put('session_timeout');
-                            storage.clear();
-                            
-                            $window.location.href = "/login";
+
+                        if(counter > MAX_RETRY || status == 404){
+                            //Don't retry on 404
+                            console.warn('HTTP Request Error', status, config.method, config.url, data);
+                            var onLoginPage = ($window.location.pathname == "/login");
+                            if(status == 401 && !onLoginPage){
+                                //Catch Forbidden
+                                storage.put('redirect', $window.location.pathname);
+                                storage.put('session_timeout');
+                                storage.clear();
+                                
+                                $window.location.href = "/login";
+                            }
+
+                            if(status == 403 && !onLoginPage) {
+                                storage.put('redirect', $window.location.pathname);
+                                storage.put('access_denied');
+                                storage.clear();
+                                
+                                $window.location.href = "/login";
+                            }
+
+                            deferred.reject(data || {"error": "Unknown error"});
+                        }else{
+                            console.log("Got", status, "Retrying..", counter);
+                            counter++;
+                            request();
                         }
-                        if(status == 403 && !onLoginPage) {
-                            storage.put('redirect', $window.location.pathname);
-                            storage.put('access_denied');
-                            storage.clear();
-                            
-                            $window.location.href = "/login";
-                        }
-                        deferred.reject(data || {"error": "Unknown error"});
+                        
+
+                        
+                        
                     });
+
+                }
+
+                request();
+
                 return deferred.promise;
         };
 
@@ -6999,7 +7023,10 @@ module.exports = ["$cookies", function ($cookies) {
      * should also be stored in localStorage
      */
     service.storeCurrentUserProfile = function (profile, flag) {
-        $cookies.put('central.seller.portal.auth.profile.shop', profile.Shop.ShopId, {path: '/'});
+        if(_.has(profile, 'Shop.ShopId')){
+            $cookies.put('central.seller.portal.auth.profile.shop', profile.Shop.ShopId, {path: '/'});
+        }
+        
         profile = angular.toJson(profile);
         sessionStorage.setItem('central.seller.portal.auth.profile', profile);
         localStorage.setItem('central.seller.portal.auth.profile', profile);
@@ -9812,9 +9839,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
 
     var loadOverview = function(res){
-      $scope.overview = res;
       Shop.get(res.ShopId).then(function(x){
-        $scope.overview.ShopName = x.ShopNameEn;
+        $scope.formData.ShopName = x.ShopNameEn;
       })
     }
 
@@ -9848,7 +9874,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
     }
 
-    $scope.overview = {};
     $scope.formData = {
       Status: 'DF',
       ShopId: null,
@@ -10877,7 +10902,7 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
             });
 
           }
-
+          
           AttributeSetService.get(ivFormData.AttributeSet.AttributeSetId).then(function(as){
 
             //Do hacky post-procesisng because this endpoint is not APEAP compliant
@@ -11098,7 +11123,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-overview',
-    "<div class=row ng-if=formData.ProductId><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Overview</h2></div><div class=form-section-content><div class=container-fluid style=\"margin: -15px\"><table class=table><thead><th>Product Name</th><th>{{ (overview.Variants || []).length == 0 ? 'PID' : 'Group ID' }}</th><th>Shop Name / Shop ID</th><th>Sale Price</th><th>Info</th><th>Image</th><th>Status</th><th>Live</th><th>Visible</th></thead><tbody><tr><td>{{ overview.MasterVariant.ProductNameEn }}</td><td>{{ overview.MasterVariant.Pid }}</td><td>{{ overview.ShopName }} / {{ overview.ShopId }}</td><td>{{ overview.MasterVariant.SalePrice | number: 2 }}</td><td><i ng-if=!overview.InfoFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=overview.InfoFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td><i ng-if=!overview.ImageFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=overview.ImageFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td><span class=\"{{ asStatus(overview.Status).color }}\"><i class=\"fa {{ asStatus(overview.Status).icon }}\"></i> {{ asStatus(formData.Status).name }}</span></td><td><i class=\"fa fa-circle color-grey\"></i></td><td><a ng-click=\"formData.Visibility = !formData.Visibility\" ng-class=\"{'fa fa-eye-slash color-grey eye-icon font-size-16' : !formData.Visibility, 'fa fa-eye color-dark-grey eye-icon font-size-16' : formData.Visibility}\"></a></td></tr><tbody></tbody></tbody></table></div></div></div></div></div>"
+    "<div class=row ng-if=formData.ProductId><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Overview</h2></div><div class=form-section-content><div class=container-fluid style=\"margin: -15px\"><table class=table><thead><th>Product Name</th><th>{{ (formData.Variants || []).length == 0 ? 'PID' : 'Group ID' }}</th><th>Shop Name / Shop ID</th><th>Sale Price</th><th>Info</th><th>Image</th><th>Status</th><th>Live</th><th>Visible</th></thead><tbody><tr><td>{{ formData.MasterVariant.ProductNameEn }}</td><td>{{ formData.MasterVariant.Pid }}</td><td>{{ formData.ShopName }} / {{ formData.ShopId }}</td><td>{{ formData.MasterVariant.SalePrice | number: 2 }}</td><td><i ng-if=!formData.InfoFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=formData.InfoFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td><i ng-if=!formData.ImageFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=formData.ImageFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td><span class=\"{{ asStatus(formData.Status).color }}\"><i class=\"fa {{ asStatus(formData.Status).icon }}\"></i> {{ asStatus(formData.Status).name }}</span></td><td><i class=\"fa fa-circle color-grey\"></i></td><td><a ng-click=\"formData.Visibility = !formData.Visibility\" ng-class=\"{'fa fa-eye-slash color-grey eye-icon font-size-16' : !formData.Visibility, 'fa fa-eye color-dark-grey eye-icon font-size-16' : formData.Visibility}\"></a></td></tr><tbody></tbody></tbody></table></div></div></div></div></div>"
   );
 
 

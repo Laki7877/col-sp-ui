@@ -83,7 +83,10 @@ module.exports = function ($cookies) {
      * should also be stored in localStorage
      */
     service.storeCurrentUserProfile = function (profile, flag) {
-        $cookies.put('central.seller.portal.auth.profile.shop', profile.Shop.ShopId, {path: '/'});
+        if(_.has(profile, 'Shop.ShopId')){
+            $cookies.put('central.seller.portal.auth.profile.shop', profile.Shop.ShopId, {path: '/'});
+        }
+        
         profile = angular.toJson(profile);
         sessionStorage.setItem('central.seller.portal.auth.profile', profile);
         localStorage.setItem('central.seller.portal.auth.profile', profile);

@@ -214,7 +214,7 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
             });
 
           }
-
+          
           AttributeSetService.get(ivFormData.AttributeSet.AttributeSetId).then(function(as){
 
             //Do hacky post-procesisng because this endpoint is not APEAP compliant

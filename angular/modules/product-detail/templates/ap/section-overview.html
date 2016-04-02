@@ -8,7 +8,7 @@
 					<table class="table">
 						<thead>
 							<th>Product Name</th>
-							<th>{{ (overview.Variants || []).length == 0 ? 'PID' : 'Group ID' }}</th>
+							<th>{{ (formData.Variants || []).length == 0 ? 'PID' : 'Group ID' }}</th>
 							<th>Shop Name / Shop ID</th>
 							<th>Sale Price</th>
 							<th>Info</th>
@@ -19,21 +19,21 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td>{{ overview.MasterVariant.ProductNameEn }}</td>
-								<td>{{ overview.MasterVariant.Pid }}</td>
-								<td>{{ overview.ShopName }} / {{ overview.ShopId }}</td>
-								<td>{{ overview.MasterVariant.SalePrice | number: 2 }}</td>
+								<td>{{ formData.MasterVariant.ProductNameEn }}</td>
+								<td>{{ formData.MasterVariant.Pid }}</td>
+								<td>{{ formData.ShopName }} / {{ formData.ShopId }}</td>
+								<td>{{ formData.MasterVariant.SalePrice | number: 2 }}</td>
 								<td>
-									<i ng-if="!overview.InfoFlag" class="fa fa-minus color-grey icon-size-18px"></i>
-									<i ng-if="overview.InfoFlag" class="fa fa-check color-green icon-size-18px"></i>
+									<i ng-if="!formData.InfoFlag" class="fa fa-minus color-grey icon-size-18px"></i>
+									<i ng-if="formData.InfoFlag" class="fa fa-check color-green icon-size-18px"></i>
 								</td>
 								<td>
-									<i ng-if="!overview.ImageFlag" class="fa fa-minus color-grey icon-size-18px"></i>
-									<i ng-if="overview.ImageFlag" class="fa fa-check color-green icon-size-18px"></i>
+									<i ng-if="!formData.ImageFlag" class="fa fa-minus color-grey icon-size-18px"></i>
+									<i ng-if="formData.ImageFlag" class="fa fa-check color-green icon-size-18px"></i>
 								</td>
 								<td>
-									<span class="{{ asStatus(overview.Status).color }}">
-										<i class="fa {{ asStatus(overview.Status).icon }}"></i>
+									<span class="{{ asStatus(formData.Status).color }}">
+										<i class="fa {{ asStatus(formData.Status).icon }}"></i>
 										{{ asStatus(formData.Status).name }}
 									</span>
 								</td>

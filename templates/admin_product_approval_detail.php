@@ -1,11 +1,4 @@
 <?php
-$menus = [
-	["id" => "information", "name" => 'Information', "class" => "require active"],
-	["id" => "images", "name" => 'Images', "class" => "require"],
-	["id" => "category", "name" => 'Category', 'class' => ''],
-	["id" => "variation", "name" => 'Variation', 'class' => ''],
-	["id" => "more_option", "name" => 'More Options', 'class' => ''],
-];
 $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products']);
 ?>
 <?php $this->start('page-body') ?>

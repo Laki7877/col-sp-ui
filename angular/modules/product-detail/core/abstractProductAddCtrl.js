@@ -11,9 +11,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
 
     var loadOverview = function(res){
-      $scope.overview = res;
       Shop.get(res.ShopId).then(function(x){
-        $scope.overview.ShopName = x.ShopNameEn;
+        $scope.formData.ShopName = x.ShopNameEn;
       })
     }
 
@@ -47,7 +46,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
     }
 
-    $scope.overview = {};
     $scope.formData = {
       Status: 'DF',
       ShopId: null,
