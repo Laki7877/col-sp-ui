@@ -3,7 +3,7 @@
                  <div ng-include="'page-btn-controls'"></div>
             </nc-page-title>
 
-            
+
             <div ng-if="pageState.loading.state" nc-loading="{{ pageState.loading.message }}.."></div>
             <div class="add-product-body" ng-if="!pageState.loading.state">
                     <ng-transclude></ng-transclude>
@@ -40,6 +40,6 @@
                     <!--fullwidthrow-->
             </div>
             <!-- apbvody-->
-        
-        
+
+
 	</form>
