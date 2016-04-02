@@ -11079,7 +11079,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/inner-tab-breadcrumb',
-    "<div><div class=\"alert alert-yellow\" ng-if=\"formDataPtr.Status == 'WA' && !adminMode\">This product is waiting for approval from the admin. You cannot edit it now.</div><div class=margin-bottom-20><span>Global Category:</span> <span>{{ breadcrumb.globalCategory }}</span></div></div>"
+    "<div><div class=\"alert alert-yellow\" ng-if=\"formDataPtr.Status == 'WA' && !adminMode\">This product is waiting for approval from the admin. You cannot edit it now.</div><div class=margin-bottom-20><span>{{ breadcrumb.globalCategory }}</span> <span ng-if=formData.ProductId>&gt; {{ formData.MasterVariant.ProductNameEn }}</span> <span ng-if=formData.ProductId>({{ formData.MasterVariant.Pid }})</span></div></div>"
   );
 
 
