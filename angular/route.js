@@ -70,7 +70,7 @@ var seller = {
 	  	'Add Product': ['/products/select', '/products/add'],
 	  	'Import - Add Products': '/products/import',
 			'Import - Update Products': '/products/import/update',
-	  	'Export': '/products/export',
+	  	'Export Products': '/products/export',
 	  	'Local Category|margin-top-30': '/categories',
 	  	'Product Reviews': '/products/reviews',
 	  	'Image Management': '/products/images',
