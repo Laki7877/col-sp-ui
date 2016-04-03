@@ -91,8 +91,8 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 	//Handle array of string options.actions
 	if(_.isUndefined(options.actions)) {
 		$scope.actions = [
-			util.actionView(options.url, options.id),
-			util.actionDelete(options.service, options.id, options.item, $scope.alert, $scope.reload, function(obj, id) {
+			util.actionView($scope, options),
+			util.actionDelete($scope, options, function(obj, id) {
 				_.remove($scope.bulkContainer, function(e) {
 					return e[id] === obj[id];
 				});
