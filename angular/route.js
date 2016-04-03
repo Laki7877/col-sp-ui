@@ -62,13 +62,14 @@ var seller = {
 		'Newsletters': '/newsletters'
 	},
 	'Order|fa-inbox': {
-		'View': '/orders',
+		'View Orders': '/orders',
 		'Return Request': '/returns'
 	},
 	'Product|fa-tag': {
-	  	'View': '/products',
-	  	'Add': ['/products/select', '/products/add'],
-	  	'Import': '/products/import',
+	  	'View Products': '/products',
+	  	'Add Product': ['/products/select', '/products/add'],
+	  	'Import - Add Products': '/products/import',
+			'Import - Update Products': '/products/import/update',
 	  	'Export': '/products/export',
 	  	'Local Category|margin-top-30': '/categories',
 	  	'Product Reviews': '/products/reviews',
@@ -77,7 +78,7 @@ var seller = {
 	},
 
 	'Inventory|fa-archive': {
-		'View': '/inventory'
+		'View Inventory': '/inventory'
 	},
 
 	'Promotion|fa-bookmark': {
@@ -136,7 +137,7 @@ var permission = {
 	'Manage Global Coupons': '/admin/coupons/global',
 	'Manage Seller Coupons': '/admin/coupons/seller',
 	'Manage Newsletter': '/admin/newsletters'
-	
+
 };
 
 module.exports = {
