@@ -44,7 +44,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64) {
 		$scope.ProductList = productIds.map(function(p){
 			return { ProductId: p }
 		});
-		
+
 		$scope.dataSet.attributeSets = {};
 		if($scope.SELECT_ALL){
 			AttributeSet.getAll().then(function(data){
@@ -80,7 +80,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64) {
 			return Product.advanceList(searchCriteriaObject).then(function(data) {
 	          	console.log(data, 'recv data advanced list');
 	          	$scope.SELECT_ALL = false;
-	          	
+
 	          	//restructure into normal flow
 	          	productIds = data.data.map(function(i){
 	          		return i.ProductId;
@@ -89,7 +89,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64) {
 	          	normalFlow();
 	        });
 		}
-		
+
 
 		normalFlow();
 	}
@@ -97,7 +97,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64) {
 	$scope.startExportProducts = function () {
 		$scope.exporter = {
 			progress: 10,
-			title: 'Exporting...'
+			title: 'Exporting Product...'
 		};
 
 		$("#export-product").modal('show');
