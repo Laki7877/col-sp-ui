@@ -7,7 +7,7 @@
       <form id="exportForm" name="exportForm" action="/products/export" method="post">
           <input type="hidden" name="selected_products[]" ng-repeat="item in bulkContainer" value="{{ item.ProductId }}"/>
           <input type="hidden" name="search_criteria"  value="{{ searchCriteria }}"/>
-          
+
           <div class="btn-group margin-right-10">
             <button type="button" class="btn btn-white dropdown-toggle btn-width-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Export <span class="caret"></span>
@@ -24,7 +24,7 @@
             </button>
             <ul class="dropdown-menu">
               <li><a href="/products/import">Add New Products</a></li>
-              <li><a href="/products/import/update">Update Existing Products</a></li>
+              <li><a href="/products/update">Update Existing Products</a></li>
             </ul>
           </div>
         <a href="/products/select" class="btn-blue btn btn-width-xl">

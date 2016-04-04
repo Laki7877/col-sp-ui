@@ -15,7 +15,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
               </button>
               <ul class="dropdown-menu">
                 <li><a href="/products/import">Add New Products</a></li>
-                <li><a href="/products/import/update">Update Existing Products</a></li>
+                <li><a href="/products/update">Update Existing Products</a></li>
               </ul>
             </div>
        </nc-page-title>

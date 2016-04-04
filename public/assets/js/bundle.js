@@ -12005,8 +12005,8 @@ var seller = {
 	  	'View Products': '/products',
 	  	'Add Product': ['/products/select', '/products/add'],
 	  	'Import - Add Products': '/products/import',
-			'Import - Update Products': '/products/import/update',
-	  	'Export': '/products/export',
+			'Import - Update Products': '/products/update',
+	  	'Export Products': '/products/export',
 	  	'Local Category|margin-top-30': '/categories',
 	  	'Product Reviews': '/products/reviews',
 	  	'Image Management': '/products/images',
@@ -12079,7 +12079,7 @@ var permission = {
 module.exports = {
   seller: generateRouteArray(seller),
   admin: generateRouteArray(admin),
-  reserve: ['add', 'select', 'import', 'import/update', 'export', 'reviews', 'images'],
+  reserve: ['add', 'select', 'import', 'update', 'export', 'reviews', 'images'],
   permission: permission
 }
 
