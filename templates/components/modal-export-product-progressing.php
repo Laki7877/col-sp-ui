@@ -16,10 +16,9 @@ if (isset($percent)) $progress = $percent;
 						<div nc-loading-small="Processing..."></div>
 					</div>
 					<div class="confirmation-action no-margin">
-						<button class="btn btn-white" data-dismiss="modal">Cancel</button>
+						<!--button class="btn btn-white" data-dismiss="modal">Cancel</button-->
 
-						<a id="export_download_btn" download="ProductExport.csv" class="btn btn-blue"
-                         ng-disabled="exporter.progress < 100">Download</a>
+						<a id="export_download_btn" download="ProductExport.csv"></a>
 						<!-- <button type="button" disabled class="btn btn-grey">Download</button> -->
 					</div> <!-- end .col-xs-12 -->
 				</div> <!-- end .row -->

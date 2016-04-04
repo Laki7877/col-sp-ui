@@ -144,9 +144,11 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64) {
 			$scope.exporter.href = fileURL;
 			$scope.exporter.download = fileName;
 			$scope.exporter.progress = 100;
-			$scope.exporter.title = 'Export Complete'
+			//$scope.exporter.title = 'Export Complete'
 				a.href = fileURL;
 			a.click();
+
+			$("#export-product-progressing").modal('hide');
 		}, error);
 	}
 
