@@ -15,7 +15,7 @@
 	            <ul class="dropdown-menu" style="right: 0; left: auto;">
 	              <li><a href="/admin/products/export">Export All Products</a></li>
 	              <li><a ng-click="exportSelected()">Export Selected Products</a></li>
-	              <li><a ng-click="exportCriteria()">Export Search Result</a></li>
+	              <li><a ng-click="exportCriteria()">Export Search Results</a></li>
 	            </ul>
 	          </div>
 	      </form>
