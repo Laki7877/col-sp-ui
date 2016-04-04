@@ -46,7 +46,8 @@ module.exports = function($scope, $controller, AttributeService, ImageService, c
  	};
 
 	$scope.$watch('formData.DataType', function() {
-		if($scope.formData.DataType == 'HB') {
+		if($scope.formData.DataType == 'HB' ||
+			$scope.formData.DataType == 'ST') {
 			$scope.formData.VariantStatus = false;
 		}
 		if($scope.formData.DataType == 'LT') {

@@ -331,7 +331,7 @@
                 ng-template-options="{
                   'label' : 'Set as Variation'
                 }">
-                <ui-select ng-model="formData.VariantStatus" search-enabled="false" ng-disabled="formData.DataType == 'HB'">
+                <ui-select ng-model="formData.VariantStatus" search-enabled="false" ng-disabled="formData.DataType == 'HB'|| formData.DataType == 'ST'">
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>
