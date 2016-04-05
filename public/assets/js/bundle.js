@@ -62,6 +62,9 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
 
   // App template cache load
   .run(template)
+  .run([function(){
+       Rollbar.configure({logLevel: "warning"});
+  }])
 
   // Configuration
   .value('config', config)
@@ -10343,6 +10346,12 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       // checkSchema(apiRequest, 'productStages', '(TX)');
 
       Product.publish(apiRequest, Status).then(function(res) {
+
+        Rollbar.log("AP Module: User pressed save or publish", {
+          payload: apiRequest,
+          user: $rootScope.Profile
+        });
+
         $scope.pageState.reset();
         if (res.ProductId) {
           
@@ -10365,7 +10374,15 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         }
       }, function(er) {
         $scope.pageState.reset();
-        $scope.alert.error('Unable to save because ' + (er.message || er.Message));
+        var emsg = 'Unable to save because ' + (er.message || er.Message);
+        $scope.alert.error(emsg);
+
+        Rollbar.error("AP Module: Unable to save" , {
+          payload: apiRequest,
+          message: emsg,
+          user: $rootScope.Profile
+        });
+
         $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
       });
 
@@ -13737,6 +13754,7 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
         //     'message': exception.message
         // }));
         // $window.location = '/exception?e=' + encMsg;
+        alert("A very very fetal error has occurred, D-Team has been notified.")
         Rollbar.error("Uncaught Exception", exception);
     };
 }];
@@ -15917,6 +15935,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('common/breadcrumb/normal',
     ""
+  );
+
+
+  $templateCache.put('common/error',
+    "<nav class=header><div class=container-fluid style=\"background-color: rgba(224, 86, 86, 0.6); color: white\"><strong>Oops!</strong> Sorry this page has crashed due to uncaught error. The D-Team has been notified of this crash.</div></nav>"
   );
 
 

@@ -10,6 +10,7 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
         //     'message': exception.message
         // }));
         // $window.location = '/exception?e=' + encMsg;
+        alert("A very very fetal error has occurred, D-Team has been notified.")
         Rollbar.error("Uncaught Exception", exception);
     };
 }];

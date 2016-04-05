@@ -28,6 +28,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
   );
 
 
+  $templateCache.put('common/error',
+    "<nav class=header><div class=container-fluid style=\"background-color: rgba(224, 86, 86, 0.6); color: white\"><strong>Oops!</strong> Sorry this page has crashed due to uncaught error. The D-Team has been notified of this crash.</div></nav>"
+  );
+
+
   $templateCache.put('common/input/div-with-label',
     "<div ng-class=\"options.divClass || {}\"><label ng-class=\"options.labelClass || {}\">{{ label }}</label><ng-transclude class=\"{{ options.transcludeClasses }}\" ng-class=\"{ 'has-error' : isInvalid(templateField()) }\"></ng-transclude><span class=\"help-block color-red\" ng-if=isInvalid(templateField()) ng-repeat=\"(key, prop) in (templateField().$error) track by key\"><span ng-bind-html=options.error.messages[key]></span></span></div>"
   );

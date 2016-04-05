@@ -62,6 +62,9 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
 
   // App template cache load
   .run(template)
+  .run([function(){
+       Rollbar.configure({logLevel: "warning"});
+  }])
 
   // Configuration
   .value('config', config)

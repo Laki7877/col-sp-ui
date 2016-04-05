@@ -496,6 +496,12 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       // checkSchema(apiRequest, 'productStages', '(TX)');
 
       Product.publish(apiRequest, Status).then(function(res) {
+
+        Rollbar.log("AP Module: User pressed save or publish", {
+          payload: apiRequest,
+          user: $rootScope.Profile
+        });
+
         $scope.pageState.reset();
         if (res.ProductId) {
           
@@ -518,7 +524,15 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         }
       }, function(er) {
         $scope.pageState.reset();
-        $scope.alert.error('Unable to save because ' + (er.message || er.Message));
+        var emsg = 'Unable to save because ' + (er.message || er.Message);
+        $scope.alert.error(emsg);
+
+        Rollbar.error("AP Module: Unable to save" , {
+          payload: apiRequest,
+          message: emsg,
+          user: $rootScope.Profile
+        });
+
         $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
       });
 
