@@ -12018,10 +12018,15 @@ angular.module('umeSelect')
                 var loadQ = [];
                 scope.$watch('searchText', function () {
 
-                    if(!scope.itsComplicated) scope.choices = []; //when its complicated, you are in choice deadlock
+                    if(!scope.itsComplicated) {
+                        //when its complicated, you are out of options
+                        scope.choices = []; 
+                    }
+
                     if(scope.itsComplicated && scope.freedomOfSpeech){
                         scope.choices[0] = scope.tagify(scope.searchText);
                     }
+                    
                     scope.highlightedIndex = 0;
 
 
@@ -12109,7 +12114,7 @@ angular.module("umeSelect").run(["$templateCache", function($templateCache) {  '
 
 
   $templateCache.put('ume/single',
-    "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-search' : !loading, 'ume-loading': loading, 'input-active': true}\" style=\"min-height: 34px\"><input ume-focus=focusObtained ume-blur=focusLost ume-id=\"{{ _id }}\" autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" ng-keydown=keyDown($event) ng-show=\"focused || !itemValue(model)\" style=\"width: 100%\"><div ng-show=\"!focused && itemValue(model)\" class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ itemValue(model) || placeholder }}</div></div><div ng-include=\"'ume/choicelist'\"></div></div>"
+    "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-search' : !loading, 'ume-loading': loading, 'input-active': true}\" style=\"min-height: 34px\"><input ume-focus=focusObtained ume-blur=focusLost ume-id=\"{{ _id }}\" autocomplete=off tabindex=\"\" ng-model=searchText ng-focus=focus() ng-blur=blur() placeholder=\"{{ placeholder }}\" ng-keydown=keyDown($event) ng-show=\"focused || !itemValue(model)\" style=\"width: 100%\"><div ng-show=\"!focused && itemValue(model)\" class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ itemValue(model) || placeholder }}</div></div><div ng-include=\"'ume/choicelist'\"></div></div>"
   );
  }]);
 },{}],154:[function(require,module,exports){
