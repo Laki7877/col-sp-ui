@@ -191,8 +191,17 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     
 
-    $scope.onImageUploadFail = function(item, filter) {
-      $scope.image_alert.error(item.Message || 'Maximum ' + filter + ' images can be uploaded.');
+    $scope.onImageUploadFail = function(kwd, data) {
+      console.log(kwd, data);
+      if(kwd == "onmaxsize"){
+        $scope.image_alert.error('Maximum ' + data + ' images can be uploaded.');
+      }else if(kwd == "ondimension") {
+        $scope.image_alert.error('Dimension must be greater than ' + data[0] + 'x' + data[1] + '.');
+      }else if(kwd == "onsquare"){
+        $scope.image_alert.error('Image must be square.');
+      }else{
+        $scope.image_alert.error(data);
+      }
     }
 
     $scope.onImageUploadSuccess = function() {

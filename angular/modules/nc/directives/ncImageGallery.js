@@ -36,10 +36,12 @@ angular.module('nc')
 			template: $templateCache.get('common/ncImageBanner'),
 			link: function(scope, element, attrs, form) {
 				var fileUploader = false;
+
 				scope.options = _.defaults(scope.options,{
 					height: '150px',
 					width: '150px'
 				});
+
 				scope.$watch('uploader', function(val) {
 					if(val instanceof FileUploader) {
 						fileUploader = true;
@@ -58,35 +60,47 @@ angular.module('nc')
 							var img = new Image;
 
 							img.onload = function() {
-							    alert(img.width + "x" + img.height);
+							   if(img.width < Number(scope.options.minWidth) || img.height < Number(scope.options.minHeight)){
+							   	 scope.onfail('ondimension', [scope.options.minHeight, scope.options.minWidth, scope.options.square]);
+							     return;
+							   }
+
+							   if(img.width != img.height && scope.options.square){
+							   	 scope.onfail('onsquare', [scope.options.minHeight, scope.options.minWidth, scope.options.square]);
+							     return;
+							   }
+
+							   //max size
+								if(scope.images.length >= _.toInteger(scope.size)) {
+									scope.onfail('onmaxsize', scope.size);
+									return;
+								}
+
+								var obj = {
+									progress: 0
+								};
+								scope.images.push(obj);
+								var f = new FileItem(scope.uploader, file, {
+									onSuccess: function(response) {
+										_.extend(obj, response);
+									},
+									onError: function(response, status, headers) {
+										scope.onfail('onerror', response, status, headers);
+										_.remove(scope.images, function(n) {
+											return n === obj;
+										});
+									},
+									onProgress: function(progress) {
+										obj.progress = progress;
+									}
+								});
+								scope.uploader.queue.push(f);
+								f.upload();
+
 							};
 
 							img.src = url;
-							//max size
-							if(scope.images.length >= _.toInteger(scope.size)) {
-								scope.onfail('onmaxsize', scope.size);
-								return;
-							}
-							var obj = {
-								progress: 0
-							};
-							scope.images.push(obj);
-							var f = new FileItem(scope.uploader, file, {
-								onSuccess: function(response) {
-									_.extend(obj, response);
-								},
-								onError: function(response, status, headers) {
-									scope.onfail('onerror', response, status, headers);
-									_.remove(scope.images, function(n) {
-										return n === obj;
-									});
-								},
-								onProgress: function(progress) {
-									obj.progress = progress;
-								}
-							});
-							scope.uploader.queue.push(f);
-							f.upload();
+							
 						});
 					} else {
 						//newer version

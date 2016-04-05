@@ -8596,10 +8596,12 @@ angular.module('nc')
 			template: $templateCache.get('common/ncImageBanner'),
 			link: function(scope, element, attrs, form) {
 				var fileUploader = false;
+
 				scope.options = _.defaults(scope.options,{
 					height: '150px',
 					width: '150px'
 				});
+
 				scope.$watch('uploader', function(val) {
 					if(val instanceof FileUploader) {
 						fileUploader = true;
@@ -8618,35 +8620,47 @@ angular.module('nc')
 							var img = new Image;
 
 							img.onload = function() {
-							    alert(img.width + "x" + img.height);
+							   if(img.width < Number(scope.options.minWidth) || img.height < Number(scope.options.minHeight)){
+							   	 scope.onfail('ondimension', [scope.options.minHeight, scope.options.minWidth, scope.options.square]);
+							     return;
+							   }
+
+							   if(img.width != img.height && scope.options.square){
+							   	 scope.onfail('onsquare', [scope.options.minHeight, scope.options.minWidth, scope.options.square]);
+							     return;
+							   }
+
+							   //max size
+								if(scope.images.length >= _.toInteger(scope.size)) {
+									scope.onfail('onmaxsize', scope.size);
+									return;
+								}
+
+								var obj = {
+									progress: 0
+								};
+								scope.images.push(obj);
+								var f = new FileItem(scope.uploader, file, {
+									onSuccess: function(response) {
+										_.extend(obj, response);
+									},
+									onError: function(response, status, headers) {
+										scope.onfail('onerror', response, status, headers);
+										_.remove(scope.images, function(n) {
+											return n === obj;
+										});
+									},
+									onProgress: function(progress) {
+										obj.progress = progress;
+									}
+								});
+								scope.uploader.queue.push(f);
+								f.upload();
+
 							};
 
 							img.src = url;
-							//max size
-							if(scope.images.length >= _.toInteger(scope.size)) {
-								scope.onfail('onmaxsize', scope.size);
-								return;
-							}
-							var obj = {
-								progress: 0
-							};
-							scope.images.push(obj);
-							var f = new FileItem(scope.uploader, file, {
-								onSuccess: function(response) {
-									_.extend(obj, response);
-								},
-								onError: function(response, status, headers) {
-									scope.onfail('onerror', response, status, headers);
-									_.remove(scope.images, function(n) {
-										return n === obj;
-									});
-								},
-								onProgress: function(progress) {
-									obj.progress = progress;
-								}
-							});
-							scope.uploader.queue.push(f);
-							f.upload();
+							
 						});
 					} else {
 						//newer version
@@ -10073,8 +10087,17 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     
 
-    $scope.onImageUploadFail = function(item, filter) {
-      $scope.image_alert.error(item.Message || 'Maximum ' + filter + ' images can be uploaded.');
+    $scope.onImageUploadFail = function(kwd, data) {
+      console.log(kwd, data);
+      if(kwd == "onmaxsize"){
+        $scope.image_alert.error('Maximum ' + data + ' images can be uploaded.');
+      }else if(kwd == "ondimension") {
+        $scope.image_alert.error('Dimension must be greater than ' + data[0] + 'x' + data[1] + '.');
+      }else if(kwd == "onsquare"){
+        $scope.image_alert.error('Image must be square.');
+      }else{
+        $scope.image_alert.error(data);
+      }
     }
 
     $scope.onImageUploadSuccess = function() {
@@ -11162,7 +11185,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-image-video',
-    "<div><nc-image-block options=\"{height: '150px', width: '150px'}\" name=Images nc-model=variantPtr.Images title=\"Product Images\" uploader=uploader on-fail=onImageUploadFail size=10><div>Choose images that clearly represent your product. Images must meet the following requirements:</div><ul class=margin-top-10><li>Image width or height must be between at least <strong>1500px</strong> but not larger than <strong>2000px</strong></li><li>Image portion must be in square format.</li><li>File size must not be larger than 5MB and.</li><li>File format must be JPG or PNG.</li></ul></nc-image-block><div class=form-section ng-show=\"variantPtr.Images.length > 0\"><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-repeat=\"i in variantPtr.Images\"><div nc-template=common/input/form-group-with-label nc-label=\"Video Link {{$index + 1}}\" nc-template-form=\"form['VideoLinks' + $index]\" nc-template-options-path=addProductForm/VideoLink><input class=\"form-control width-field-normal\" name=VideoLinks{{$index}} type=url ng-init=initializeVideoLink($index) maxlength=500 ng-model=\"variantPtr.VideoLinks[$index].Url\"></div></div></div></div></div>"
+    "<div><nc-image-block options=\"{height: '150px', width: '150px', 'minWidth': 1500, 'minHeight': 1500, 'square': true}\" name=Images nc-model=variantPtr.Images title=\"Product Images\" uploader=uploader on-fail=onImageUploadFail size=10><div>Choose images that clearly represent your product. Images must meet the following requirements:</div><ul class=margin-top-10><li>Image width or height must be between at least <strong>1500px</strong> but not larger than <strong>2000px</strong></li><li>Image portion must be in square format.</li><li>File size must not be larger than 5MB and.</li><li>File format must be JPG or PNG.</li></ul></nc-image-block><div class=form-section ng-show=\"variantPtr.Images.length > 0\"><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-repeat=\"i in variantPtr.Images\"><div nc-template=common/input/form-group-with-label nc-label=\"Video Link {{$index + 1}}\" nc-template-form=\"form['VideoLinks' + $index]\" nc-template-options-path=addProductForm/VideoLink><input class=\"form-control width-field-normal\" name=VideoLinks{{$index}} type=url ng-init=initializeVideoLink($index) maxlength=500 ng-model=\"variantPtr.VideoLinks[$index].Url\"></div></div></div></div></div>"
   );
 
 
