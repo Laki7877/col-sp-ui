@@ -130,6 +130,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
 
     // Col Dev (Natee)
 .factory('CMSService', services.cmsService)
+.factory('CMSMasterService', services.adminCMSMasterService)
 //.factory('CMSCollectionService', services.cmsCollectionService)
 
   // Directives
@@ -233,13 +234,15 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
 
   .controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
   .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
+
     // Create By Col Dev (Natee)
 .controller('AdminCMSCategoryListCtrl', controllers.adminCMSCategoryList)
 .controller('AdminCMSCategoryAddCtrl', controllers.adminCMSCategoryAdd)
-
 .controller('AdminCMSCollectionListCtrl', controllers.adminCMSCollectionList)
 .controller('AdminCMSCollectionAddCtrl', controllers.adminCMSCollectionAdd)
-
 .controller('AdminCMSGroupController', controllers.adminCMSGroupController)
-
+  //iOATH
+  .controller('AdminCMSMasterListCtrl', controllers.adminCMSMasterList)
+  .controller('AdminCMSMasterAddSelectTypeCtrl', controllers.adminCMSMasterAddSelect)
+  .controller('AdminCMSMasterDetailCtrl', controllers.AdminCMSMasterDetail)
   .controller('TestCtrl', controllers.test)
