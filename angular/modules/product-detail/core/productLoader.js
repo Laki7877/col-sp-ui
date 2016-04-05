@@ -142,7 +142,6 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
 
     var deferred = $q.defer();
     pageLoader.load('Downloading Attribute Sets..');
-    pageLoader.pop();//test err
 
     //TODO: Break dependencies
     AttributeSet.getByCategory(globalCatId).then(function(data) {

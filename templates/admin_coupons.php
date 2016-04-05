@@ -29,8 +29,8 @@
   		                </td>
   		                <td>{{row.CouponName}}</td>
                         <td class="width_150 text-align-center">{{row.Remaining}} / {{row.MaximumUser}}</td>
-  		                <td class="width_150">{{ row.StartDate | dateTh }}</td>
-  		                <td class="width_150">{{ row.ExpireDate | dateTh }}</td>
+                      <td class="width_150">{{ row.StartDate | datetimeTh }}</td>
+                      <td class="width_150">{{ row.ExpireDate | datetimeTh }}</td>
   		                <td class="width_100"> {{ row.Status | mapDropdown: statusDropdown }}</td>
                       <td class="action-column-lg"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
   		            </tr>
