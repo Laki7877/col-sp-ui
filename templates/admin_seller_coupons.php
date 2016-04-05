@@ -29,9 +29,7 @@
   		                <td>{{row.CouponName}}</td>
                       <td>{{row.Shop.ShopNameEn}}</td>
                         <td class="width_150 text-align-center">{{row.Remaining}} / {{row.MaximumUser}}</td>
-  		                <td class="width_150">
-  		                   {{ row.StartDate | datetimeTh }}
-  		                </td>
+  		                <td class="width_150">{{ row.StartDate | datetimeTh }}</td>
   		                <td class="width_150">{{ row.ExpireDate | datetimeTh }}</td>
   		                <td class="width_100">
   		                    {{ row.Status | mapDropdown: statusDropdown}}
