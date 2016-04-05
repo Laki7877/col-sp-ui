@@ -208,7 +208,6 @@ class AdminController extends Controller
 
 
 	// Create By Col Dev (Natee)
-
 	// CMS Category
 	public static function listCMSCategory($params)
 	{
@@ -222,7 +221,6 @@ class AdminController extends Controller
 	{
 		return View::render('admin_add_cms_category', ['params' => json_encode_n($params), 'title' => 'Detail']);
 	}
-
 	// CMS Collection
 	public static function listCMSCollection($params)
 	{
@@ -236,7 +234,6 @@ class AdminController extends Controller
 	{
 		return View::render('admin_add_cms_collection', ['params' => json_encode_n($params), 'title' => 'Admin CMS Static & Collecton Detail']);
 	}
-
 	// CMS Group
 	public static function listCMSGroup($params)
 	{
@@ -250,4 +247,89 @@ class AdminController extends Controller
 	{
 		return View::render('admin_add_cms_group', ['params' => json_encode_n($params), 'title' => 'Admin CMS Group Detail']);
 	}
+    
+           // CMS Get All iOath
+           //public static function cmsMasterList($params) 
+           //{
+           //    return View::render('admin_cms_master_list');
+           //}
+    
+          /// public static function addCMSMaster($params)
+           //{
+           //    return View::render('admin_add_cms_master', ['title' => 'Create CMS Master']);
+           //}
+          // public static function editCMSMaster($params)
+           //{
+            //   return View::render('admin_add_cms_master',  ['params' => json_encode_n($params), 'title' => 'View/Edit CMS Master']);
+           //}
+    
+            public static function cmsMasterList($params)
+            {
+                return View::render('admin_cms_master_list');
+            }
+    
+            public static function export($params)
+            {
+                return View::render('seller_export_products', [
+                'viewBag' => $_POST['selected_products'],
+                ]);
+            }
+    
+            public static function group($params) {
+                return View::render('seller_pending_product');
+            }
+    
+            public static function groupCreate($param)
+            {
+                return View::render('seller_pending_products_group', [
+                'viewBag' => $_POST['selected_products'],
+                ]);
+            }
+    
+            public static function addCMSMaster($params)
+            {
+                return View::render('admin_add_cms_master', [
+                'title' => 'Create CMS Master'
+                ]);
+            }
+    
+            public static function images($params)
+            {
+                return View::render('image_management');
+            }
+    
+            public static function editCMSMaster($params)
+            {
+                return View::render('add_product', [
+                'title' => 'Product Detail',
+                'viewBag' => array(
+                'productId' => $params['productid'],
+                ),
+                ]);
+            }
+    
+            public static function import($params)
+            {
+                return View::render('seller_import_products', [
+                'title' => 'Import Product',
+                ]);
+            }
+            public static function importUpdate($params)
+            {
+                return View::render('seller_import_products', [
+                'title' => 'Import Product',
+                'update' => true
+                ]);
+            }
+    
+            public static function selectCMSMasterType($params)
+            {
+                return View::render('admin_cms_master_select');
 }
+    
+            public static function reviews($params)
+            {
+                return View::render('product_review');
+            }
+ }
+    
