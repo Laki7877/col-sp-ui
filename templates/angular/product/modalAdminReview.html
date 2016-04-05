@@ -1,5 +1,9 @@
 <div class="modal-header">
-  <button type="button" class="close" aria-label="Close" ng-click="$dismiss()"><span aria-hidden="true">&times;</span></button>
+  <nc-alert nc-model="alert"></nc-alert>
+  <span class="float-right">
+    <a class="link-btn-plain" ng-click="$dismiss()">Cancel</a>
+    <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+  </span>
   <h3 class="modal-title">Review Detail</h3>
 </div>
 <div class="modal-body">
@@ -20,19 +24,19 @@
             <div class="margin-top-5"
               nc-template="common/input/form-group-with-label"
               nc-label="Delivery Speed">
-              <p class="form-control-static">{{formData.DeliverySpeed | currency: '': 1}} / {{maxRating | currency: ' ': 1}}</p>
+              <select class="form-control" ng-model="formData.DeliverySpeed" ng-options="rating as (rating | currency:' ':1) for rating in ratings"></select>
             </div>
             <div nc-template="common/input/form-group-with-label"
               nc-label="Product Content">
-              <p class="form-control-static">{{formData.ProductContent | currency: '': 1}} / {{maxRating | currency: ' ': 1}}</p>
+              <select class="form-control" ng-model="formData.ProductContent" ng-options="rating as (rating | currency:' ':1) for rating in ratings"></select>
             </div>
             <div nc-template="common/input/form-group-with-label"
               nc-label="Product Validity">
-              <p class="form-control-static">{{formData.ProductValidity | currency: '': 1}} / {{maxRating | currency: ' ': 1}}</p>
+              <select class="form-control" ng-model="formData.ProductValidity" ng-options="rating as (rating | currency:' ':1) for rating in ratings"></select>
             </div>
             <div nc-template="common/input/form-group-with-label"
               nc-label="Packaging">
-              <p class="form-control-static">{{formData.Packaging | currency: '': 1}} / {{maxRating | currency: ' ': 1}}</p>
+              <select class="form-control" ng-model="formData.Packaging" ng-options="rating as (rating | currency:' ':1) for rating in ratings"></select>
             </div>
           </div>
         </div>

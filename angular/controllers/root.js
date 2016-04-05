@@ -146,6 +146,8 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
 
     var isAdmin = $rootScope.Profile.User.IsAdmin;
 
+    console.log($rootScope.Profile.User.IsAdmin);
+
     //Logout-as
     if ($rootScope.Imposter) {
       return Credential.logoutAs().then(function(R) {

@@ -347,7 +347,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 											</thead>
 											<tbody>
 											<tr ng-repeat="user in formData.Users track by user.UserId">
-													<td>{{ user.UserId | leadingzero:2 }}</td>
+													<td>{{ user.UserId }}</td>
 													<td>{{ user.NameEn }}</td>
 													<td>{{ user.Email }}</td>
 													<td>{{ user.UserGroup[0] }}</td>

@@ -62,7 +62,7 @@ var seller = {
 		'Newsletters': '/newsletters'
 	},
 	'Order|fa-inbox': {
-		'View Orders': '/orders',
+		'View Orders': ['/orders', '/orders/shippinglist'],
 		'Return Request': '/returns'
 	},
 	'Product|fa-tag': {
@@ -102,6 +102,7 @@ var admin = {
 		'Approve Products': '/admin/approve',
 		'Pending Products': ['/admin/groups', '/admin/groups/add'],
 		'Master Products': ['/admin/masters', '/admin/masters/add'],
+		'Product Reviews': '/admin/products/reviews',
 		'Brands': ['/admin/brands', '/admin/brands/add'],
 		'Attributes': ['/admin/attributes', '/admin/attributes/add'],
 		'Attribute Sets': ['/admin/attributesets', '/admin/attributesets/add'],
@@ -143,6 +144,6 @@ var permission = {
 module.exports = {
   seller: generateRouteArray(seller),
   admin: generateRouteArray(admin),
-  reserve: ['add', 'select', 'import', 'update', 'export', 'reviews', 'images'],
+  reserve: ['add', 'select', 'import', 'update', 'export', 'reviews', 'images', 'shippinglist'],
   permission: permission
 }

@@ -76,6 +76,7 @@ Route::add('/newsletters', 'SellerController::listNewsletter');
 Route::add('/onboarding', 'SellerController::onboarding');
 Route::add('/dashboard', 'SellerController::dashboard');
 Route::add('/orders', 'SellerController::listOrder');
+Route::add('/orders/shippinglist', 'SellerController::shipOrder');
 Route::add('/orders/:id', 'SellerController::editOrder');
 
 
@@ -104,6 +105,7 @@ Route::add('/admin/shoptypes', 'AdminController::listShoptype');
 Route::add('/admin/shoptypes/add', 'AdminController::addShoptype');
 Route::add('/admin/shoptypes/:id', 'AdminController::editShoptype');
 Route::add('/admin/products', 'AdminController::allProducts');
+Route::add('/admin/products/reviews', 'AdminController::reviewProduct');
 Route::add('/admin/products/:id', 'AdminController::detail');
 Route::add('/admin/approve', 'AdminController::approve');
 Route::add('/admin/approve/:id', 'AdminController::approveDetail');

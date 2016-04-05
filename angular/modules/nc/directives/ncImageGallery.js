@@ -19,6 +19,27 @@ angular.module('nc')
 			}
 		}
 	})
+	.directive('ncImageBanner2', function() {
+		return {
+			restrict: 'E',
+			scope: {
+				ncModel: '=',
+				onFail: '=',
+				uploader: '=',
+				options: '=?',
+				source: '=',
+				size: '@',
+				title: '@'
+			},
+			template: '<nc-image-block template="common/ncImageBanner2" source="source" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 7 images</li><li>The width must be 1920px</li><li>The height must be 1080px</li></ul></nc-image-block>',
+			link: function(scope) {
+				scope.options = _.defaults(scope.options,{
+					height: '144px',
+					width: '256px'
+				});
+			}
+		}
+	})
 	.directive('ncImageBlock', function($uibModal, $templateCache, FileItem, FileUploader) {
 		return {
 			restrict: 'E',
@@ -30,10 +51,17 @@ angular.module('nc')
 				onfail: '=onFail', 
 				uploader: '=uploader',
 				options: '=?options',
+				source: '=?source',
 				size: '@size',
 				title: '@title'
 			},
-			template: $templateCache.get('common/ncImageBanner'),
+			template: function(elem, attrs) {
+				if(attrs.template) {
+					return $templateCache.get(attrs.template);
+				} else {
+					return $templateCache.get('common/ncImageBanner');
+				}
+			},
 			link: function(scope, element, attrs, form) {
 				var fileUploader = false;
 				scope.options = _.defaults(scope.options,{
