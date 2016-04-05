@@ -171,6 +171,28 @@
             <div class="form-section-header"><h2>SEO</h2></div>
             <div class="form-section-content">
               <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.SEO_En"
+                nc-label="SEO (English)"
+                >
+                <input
+                  class="form-control"
+                  name="SEO_En"
+                  ng-model="formData.SEO.En"
+                  maxlength="60"
+                   />
+              </div>
+              <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.SEO_Th"
+                nc-label="SEO (ไทย)"
+                >
+                <input
+                  class="form-control"
+                  name="SEO_Th"
+                  ng-model="formData.SEO.Th"
+                  maxlength="60"
+                   />
+              </div>
+              <div nc-template="common/input/form-group-with-label"
                 nc-template-form="form.SEO_MetaTitleEn"
                 nc-label="Meta Title (English)"
                 >

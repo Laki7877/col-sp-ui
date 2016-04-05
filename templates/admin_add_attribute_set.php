@@ -1,4 +1,5 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute Set']) ?>
+
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminAttributeSetAddCtrl" ng-init="init(<?=$params?>)">
     <nc-alert nc-model="alert"></nc-alert>
@@ -16,42 +17,27 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Set Information</h2></div>
             <div class="form-section-content">
-              <div ng-template="common/input/text2"
-                ng-template-options="{
-                  'label': 'Attribute Set Name',
-                  'labelClass': 'required',
-                  'inputSize': 'large',
-                  'error' : {
-                        'messages': {
-                          'required': 'This is a required field',
-                          'pattern': 'Only English letters and numbers allowed'
-                        },
-                        'show': $root.isInvalid(form.AttributeSetNameEn),
-                        'conditions' : form.AttributeSetNameEn.$error
-                   }
-                }">
+              <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.AttributeSetNameEn"
+                nc-template-options-path="addAttributeSetForm/AttributeSetNameEn"
+                nc-label="Attribute Set Name">
                 <input
                   class="form-control"
                   name="AttributeSetNameEn"
                   ng-model="formData.AttributeSetNameEn"
-                  ng-class="{ 'has-error' : $root.isInvalid(form.AttributeSetNameEn) }"
                   ng-pattern="/^[A-Za-z0-9_\-\s]+$/"
                   maxlength="100"
                   required />
               </div>
-              <div ng-template="common/input/textarea"
-                  ng-template-options="{
-                    'label' : 'Attribute Set Description',
-                    'inputSize': 'large'
-                  }">
+              <div nc-template="common/input/form-group-with-label"
+                nc-template-options-path="addAttributeSetForm/LargeInput"
+                nc-label="Attribute Set Description">
                   <textarea class="form-control" ng-model="formData.AttributeSetDescriptionEn" maxlength="500"></textarea>
               </div>
               <div ng-show="id != 0"
-                  ng-template="common/input/label"
-                  ng-template-options="{
-                    'label' : 'Mapped Categories (ID)',
-                    'inputSize': 'large'
-                  }">{{formData.Categories}}</div>
+                  nc-template="common/input/form-group-with-label"
+                nc-template-options-path="addAttributeSetForm/LargeInput"
+                nc-label="Mapped Category (ID)">{{formData.Categories}}</div>
             </div>
           </div>
 
@@ -68,20 +54,10 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Suggested Search Tag</h2></div>
             <div class="form-section-content">
-              <div ng-template="common/input/text2"
-                ng-template-options="{
-                  'label': 'Search Tag',
-                  'inputSize': 'large',
-                  'error' : {
-                    'messages': {
-                      'tagcount': 'Cannot exceed 100 tags',
-                      'taglength': 'Tag must contain 30 characters or less',
-                      'pattern': 'Only letters and numbers'
-                    },
-                    'show': true,
-                    'conditions' :  keywordValidConditions
-                  }
-                }">
+              <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.Tags"
+                nc-template-options-path="addAttributeSetForm/Tags"
+                nc-label="Search Tag">
                   <ui-select
                   ng-model="formData.Tags"
                   on-select="onKeywordAdded($item, $model)"

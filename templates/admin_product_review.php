@@ -1,7 +1,7 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Product Review']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']) ?>
 
 <?php $this->start('page-body') ?>
-  <div ng-controller="ProductReviewCtrl">
+  <div ng-controller="AdminProductReviewCtrl">
     <nc-alert nc-model="alert"></nc-alert>
     <nc-page-title nc-title="Product Review" icon="fa-tag"></nc-page-title>
     <div class="row search-section-wrapper">
@@ -12,8 +12,9 @@
         <thead>
           <tr class="table-head">
             <th class="width_100" nc-sort="UpdatedDt">Date</th>
+            <th class="width_150">Shop Name</th>
             <th class="width_100" nc-sort="PID">PID</th>
-            <th>Product Name</th>
+            <th>Product name</th>
             <th>Customer</th>
             <th class="action-column">Action</th>
           </tr>
@@ -21,6 +22,7 @@
         <tbody>
           <tr ng-repeat="row in list.data">
             <td>{{row.UpdatedDt | dateTh}}</td>
+            <td>{{row.Shop.ShopNameEn}}</td>
             <td>{{row.Pid}}</td>
             <td class="column-text-ellipsis">{{row.ProductNameEn}}</td>
             <td class="column-text-ellipsis">{{row.Customer.Name}}</td>

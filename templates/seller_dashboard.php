@@ -75,7 +75,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             Loading...
           </div>
           <div class="view_all_row" ng-show="newOrdersData.length == 10">
-            <a ng-click="linkToOrdersPage()">View All</a>
+            <a ng-click="linkToOrdersPage()">View All ({{totalOrder}})</a>
           </div>  
         </div>
       </div>
@@ -87,7 +87,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           </span>
           <span class="font-size-18 header_name_space">Low Stock Alert</span>
           <span class="float-right group_span_right">
-            <span><a ng-click="linkToLowStock()">View All</a></span>
+            <span><a ng-click="linkToLowStock()">View All ({{totalLowStockAlert + totalOutStockAlert}})</a></span>
           </span>
         </div>
         <div class="group_container">
@@ -118,7 +118,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             Loading...
           </div>
           <div class="view_all_row" ng-show="lowStockAlertData.length == 10">
-            <a ng-click="linkToLowStock()">View All</a>
+            <a ng-click="linkToLowStock()">View All ({{totalLowStockAlert + totalOutStockAlert}})</a>
           </div>
         </div>
       </div>
@@ -130,7 +130,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           </span>
           <span class="font-size-18 header_name_space">Newsletters</span>
           <span class="float-right group_span_right">
-            <span><a ng-click="linkToAllNewsletters()">View All</a></span>
+            <span><a ng-click="linkToAllNewsletters()">View All ({{totalNews}})</a></span>
           </span>
         </div>
         <div class="group_container">
@@ -207,15 +207,20 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
         </div>
         <div class="group_container">
           <div class="row_container">
-            <div class="width_150">
-              Product Rating
-            </div>
-            <div ng-switch on="productRatingRank">
-              <div class="font-size-16 color-green" ng-switch-when="green">{{productRatingScore}}</div>
-              <div class="font-size-16 color-yellow" ng-switch-when="yellow">{{productRatingScore}}</div>
-              <div class="font-size-16 color-red" ng-switch-when="red">{{productRatingScore}}</div>
-              <div class="font-size-16 color-grey" ng-switch-default>N/A</div>
-            </div>
+            <div class="width_150">Delivery Speed</div>
+            <div ng-bind-html="rating.DeliverySpeed"></div>
+          </div>
+          <div class="row_container">
+            <div class="width_150">Product Content</div>
+            <div ng-bind-html="rating.ProductContent"></div>
+          </div>
+          <div class="row_container">
+            <div class="width_150">Product Validity</div>
+            <div ng-bind-html="rating.ProductValidity"></div>
+          </div>
+          <div class="row_container">
+            <div class="width_150">Packaging</div>
+            <div ng-bind-html="rating.Packaging"></div>
           </div>
         </div>
         <!-- <div class="group_container">

@@ -204,4 +204,9 @@ class AdminController extends Controller
 	{
 		return View::render('admin_newsletters');
 	}
+	//Newsletter
+	public static function reviewProduct($params)
+	{
+		return View::render('admin_product_review');
+	}
 }

@@ -16373,3 +16373,16 @@ ng-transclude.has-error .form-control {
   border-radius: 3px;
   background-color: #EDF2F9;
 }
+
+/* line 59, ../../../assets/_additional_code.scss */
+.signature-box {
+  border-bottom: 1px solid #32343c;
+  min-height: 88px;
+}
+
+/* line 63, ../../../assets/_additional_code.scss */
+.signature-provider {
+  margin-top: 8px;
+  font-size: 14px;
+  text-align: center;
+}

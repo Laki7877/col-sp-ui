@@ -39,6 +39,24 @@ module.exports = function($scope, $window, $controller, OrderService, config, st
 					btnConfirm: 'Acknowledge',
 					btnClass: 'btn-blue'
 				}
+			}, {
+				name: 'Create Shipping List',
+				fn: function(arr, cb) {
+					var result = _.compact(_.map(arr, function(e) {
+						if(e.Status == 'RS') {
+							return e;
+						} else {
+							return null;
+						}
+					}));
+					if(result.length == 0) {
+						$scope.alert.error('Unable to create a Shipping List. Please make sure to select Ready to Ship order(s)');
+					}
+					else {
+						storage.putObject('order_shipping_list', result);
+						$window.location.href='/orders/shippinglist';
+					}
+				},
 			}],
 			filters: [
 				{ name: "All", value: 'All'},
