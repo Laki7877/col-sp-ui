@@ -41,8 +41,14 @@ module.exports = function($q, $http, common, storage, config, FileUploader, Uplo
       queueLimit: 10,
       removeAfterUpload : true,
       filters: [{
+        name: 'dimensionFilter',
+        fn: function(item /*{File|FileLikeObject}*/ , options){
+          console.log(item);
+        }
+      },{
         name: 'imageFilter',
         fn: function(item /*{File|FileLikeObject}*/ , options) {
+          console.log('item', item);
           var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
           return '|jpg|png|jpeg|'.indexOf(type) !== -1;
         }
@@ -53,6 +59,7 @@ module.exports = function($q, $http, common, storage, config, FileUploader, Uplo
         }
       }, ]
     }, opt);
+    
     var uploader = new FileUploader(options);
 
     return uploader;

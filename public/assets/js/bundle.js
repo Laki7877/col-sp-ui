@@ -6765,6 +6765,14 @@ module.exports = [function () {
 module.exports = ["$http", "$q", "storage", "config", "$window", function ($http, $q, storage, config, $window) {
     'ngInject';
         var service = {};
+
+        service.makeCurl = function(method, url, token, body){
+            var compiled = _.template("curl '<%= url %>' -X <%= method %> -H 'Pragma: no-cache' -H 'Content-Type: application/json;charset=UTF-8' -H 'Accept: application/json, text/plain, */*' -H 'Cache-Control: no-cache' -H 'Authorization: <%= token %>' -H 'Connection: keep-alive' --data-binary $'<%= body %>' --compressed");
+            var str = compiled({ 'url': url, 'method': method, 'token': token, 'body': JSON.stringify(body) });
+            return str;
+        }
+
+
         service.makeRequest = function (options) {
                 var deferred = $q.defer();
                 var accessToken = storage.getSessionToken();
@@ -6779,12 +6787,21 @@ module.exports = ["$http", "$q", "storage", "config", "$window", function ($http
                     options.url = config.REST_SERVICE_BASE_URL + options.url;
                 }
 
+                
+                var curlCmd = service.makeCurl(options.method, options.url, options.headers.Authorization, options.data);
                 var counter = 1;
                 var MAX_RETRY = 5;
                 var request = function() {
 
                     $http(options)
                     .success(function (data) {
+                        //IN production, remove this on-success
+                        if(_.has(options, 'rollbar')){
+                            Rollbar.log(options.rollbar, {
+                                'curl': curlCmd
+                            });
+                        }
+
                         deferred.resolve(data);
                     })
                     .error(function (data, status, headers, config) {
@@ -6810,15 +6827,19 @@ module.exports = ["$http", "$q", "storage", "config", "$window", function ($http
                                 $window.location.href = "/login";
                             }
 
+
+                            if(_.has(options, 'rollbar')){
+                                Rollbar.error(options.rollbar, {
+                                    'curl': curlCmd
+                                });
+                            }
+
                             deferred.reject(data || {"error": "Unknown error"});
                         }else{
                             console.log("Got", status, "Retrying..", counter);
                             counter++;
                             request();
                         }
-                        
-
-                        
                         
                     });
 
@@ -7516,6 +7537,8 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
             }
         });
     };
+
+
     return service;
 }];
 
@@ -8590,6 +8613,15 @@ angular.module('nc')
 					}
 					if(fileUploader) {
 						_.forEach(files, function(file) {
+
+							var url = URL.createObjectURL(file);
+							var img = new Image;
+
+							img.onload = function() {
+							    alert(img.width + "x" + img.height);
+							};
+
+							img.src = url;
 							//max size
 							if(scope.images.length >= _.toInteger(scope.size)) {
 								scope.onfail('onmaxsize', scope.size);
@@ -10346,12 +10378,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       // checkSchema(apiRequest, 'productStages', '(TX)');
 
       Product.publish(apiRequest, Status).then(function(res) {
-
-        Rollbar.log("AP Module: User pressed save or publish", {
-          payload: apiRequest,
-          user: $rootScope.Profile
-        });
-
+      
         $scope.pageState.reset();
         if (res.ProductId) {
           
@@ -10376,12 +10403,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         $scope.pageState.reset();
         var emsg = 'Unable to save because ' + (er.message || er.Message);
         $scope.alert.error(emsg);
-
-        Rollbar.error("AP Module: Unable to save" , {
-          payload: apiRequest,
-          message: emsg,
-          user: $rootScope.Profile
-        });
 
         $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
       });
@@ -10592,6 +10613,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.uploader.filters.push({
       'name': 'enforceMaxFileSize',
       'fn': function(item) {
+        console.log('iterm', item);
         return item.size <= MAX_FILESIZE
       }
     });
@@ -11121,7 +11143,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/modal-variant-detail',
-    "<form class=\"ah-form sticky-mainform-action\" name=addProductVariantForm><div class=modal-header><h3 class=\"float-left modal-title\" ng-init=\"form = addProductVariantForm\">Variant: {{ pair.text }}</h3><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=\"form.$invalid || uploader.isUploading\" class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div><div class=\"modal-body margin-top-20\"><div class=row><div class=col-xs-12><div ng-if=form.$invalid class=\"alert alert-red\" ng-cloak>Please make sure all fields have no error.</div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=pair.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=pair.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=pair.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"pair.Upc\"></div><div class=form-group><div class=width-label><label class=control-label>Display</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select class=form-control ng-model=pair.Display><option value={{op.value}} ng-repeat=\"op in dataset.VariantDisplayOption\">{{ op.text }}</option></select></div></div></div></div></div><div ap-component=ap/section-image-video></div><div ap-component=ap/section-description></div><div ap-component=ap/section-shipping></div><div ap-component=ap/section-seo></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=\"form.$invalid || uploader.isUploading\" class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div></div></div><form></form></form>"
+    "<form class=ah-form name=addProductVariantForm><div class=modal-header><h3 class=\"float-left modal-title\" ng-init=\"form = addProductVariantForm\">Variant: {{ pair.text }}</h3><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=\"form.$invalid || uploader.isUploading\" class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div><div class=\"modal-body margin-top-20\"><div class=row><div class=col-xs-12><div ng-if=form.$invalid class=\"alert alert-red\" ng-cloak>Please make sure all fields have no error.</div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=pair.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=pair.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=pair.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"pair.Upc\"></div><div class=form-group><div class=width-label><label class=control-label>Display</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select class=form-control ng-model=pair.Display><option value={{op.value}} ng-repeat=\"op in dataset.VariantDisplayOption\">{{ op.text }}</option></select></div></div></div></div></div><div ap-component=ap/section-image-video></div><div ap-component=ap/section-description></div><div ap-component=ap/section-shipping></div><div ap-component=ap/section-seo></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=\"form.$invalid || uploader.isUploading\" class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div></div></div><form></form></form>"
   );
 
 
@@ -11891,6 +11913,7 @@ angular.module('umeSelect')
                 var loadQ = [];
                 scope.$watch('searchText', function () {
 
+                    if(!scope.itsComplicated) scope.choices = []; //when its complicated, you are in choice deadlock
                     if(scope.itsComplicated && scope.freedomOfSpeech){
                         scope.choices[0] = scope.tagify(scope.searchText);
                     }
@@ -13985,6 +14008,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 			filters: [{
 	            name: 'imageFilter',
 	            fn: function(item /*{File|FileLikeObject}*/, options) {
+	            	console.log('item', item);
 	                var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
 	                return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
 	            }}]
@@ -14095,8 +14119,14 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
       queueLimit: 10,
       removeAfterUpload : true,
       filters: [{
+        name: 'dimensionFilter',
+        fn: function(item /*{File|FileLikeObject}*/ , options){
+          console.log(item);
+        }
+      },{
         name: 'imageFilter',
         fn: function(item /*{File|FileLikeObject}*/ , options) {
+          console.log('item', item);
           var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
           return '|jpg|png|jpeg|'.indexOf(type) !== -1;
         }
@@ -14107,6 +14137,7 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
         }
       }, ]
     }, opt);
+    
     var uploader = new FileUploader(options);
 
     return uploader;
@@ -14468,7 +14499,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			return common.makeRequest({
 				method: mode,
 				url: path,
-				data: tobj
+				data: tobj,
+				rollbar: 'AP: Product publish or save'
 			})
 		}
 

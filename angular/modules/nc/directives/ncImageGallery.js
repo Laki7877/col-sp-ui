@@ -53,6 +53,15 @@ angular.module('nc')
 					}
 					if(fileUploader) {
 						_.forEach(files, function(file) {
+
+							var url = URL.createObjectURL(file);
+							var img = new Image;
+
+							img.onload = function() {
+							    alert(img.width + "x" + img.height);
+							};
+
+							img.src = url;
 							//max size
 							if(scope.images.length >= _.toInteger(scope.size)) {
 								scope.onfail('onmaxsize', scope.size);

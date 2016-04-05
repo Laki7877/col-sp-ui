@@ -496,12 +496,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       // checkSchema(apiRequest, 'productStages', '(TX)');
 
       Product.publish(apiRequest, Status).then(function(res) {
-
-        Rollbar.log("AP Module: User pressed save or publish", {
-          payload: apiRequest,
-          user: $rootScope.Profile
-        });
-
+      
         $scope.pageState.reset();
         if (res.ProductId) {
           
@@ -526,12 +521,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         $scope.pageState.reset();
         var emsg = 'Unable to save because ' + (er.message || er.Message);
         $scope.alert.error(emsg);
-
-        Rollbar.error("AP Module: Unable to save" , {
-          payload: apiRequest,
-          message: emsg,
-          user: $rootScope.Profile
-        });
 
         $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
       });
@@ -742,6 +731,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.uploader.filters.push({
       'name': 'enforceMaxFileSize',
       'fn': function(item) {
+        console.log('iterm', item);
         return item.size <= MAX_FILESIZE
       }
     });

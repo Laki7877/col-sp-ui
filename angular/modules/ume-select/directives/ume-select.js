@@ -129,6 +129,7 @@ angular.module('umeSelect')
                 var loadQ = [];
                 scope.$watch('searchText', function () {
 
+                    if(!scope.itsComplicated) scope.choices = []; //when its complicated, you are in choice deadlock
                     if(scope.itsComplicated && scope.freedomOfSpeech){
                         scope.choices[0] = scope.tagify(scope.searchText);
                     }
