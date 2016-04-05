@@ -7,13 +7,14 @@ angular.module('umeSelect')
             scope: {
                 model: '=ngModel',
                 placeholder: '@?placeholder',
-                choices: '=choices',
+                originalChoices: '&choices',
                 delay: '@?delay',
                 autoClearSearch: '=?autoClearSearch',
                 refresh: '=refresh',
                 inRelationship: '=?inRelationship',
                 itsComplicated: '=?itsComplicated',
-                displayBy: '@displayBy'
+                displayBy: '@displayBy',
+                freedomOfSpeech: '=freedomOfSpeech'
             },
             replace: true,
             priority: 1010,
@@ -30,6 +31,11 @@ angular.module('umeSelect')
                 scope.loading = false;
                 scope.searchText = "";
                 scope.highlightedIndex = 0;
+                scope.choices = [];
+
+                scope.$watchCollection('originalChoices()', function(data){
+                    scope.choices = data;
+                });
 
                 var _id = (new Date()).getTime()*Math.random() + "R";
                 scope._id =  _id;
@@ -42,6 +48,10 @@ angular.module('umeSelect')
                     }
 
                     scope.model.splice(index, 1);
+                }
+
+                scope.forceFocus = function(){
+                    scope.$emit('focusObtained', _id);
                 }
 
                 scope.tagify = function(tagValue){
@@ -73,7 +83,10 @@ angular.module('umeSelect')
                         $timeout(function (){
                             scope.$emit('focusLost', _id);
                             var K = $filter('filter')(scope.choices, scope.searchText);
-                            scope.pickItem(K[scope.highlightedIndex]);
+                            var result= scope.pickItem(K[scope.highlightedIndex]);
+                            if(!result){
+                                scope.$emit('focusObtained', _id);
+                            }
                         });
 
                     }else if(evt.code == "Backspace" || evt.keyCode == 8){
@@ -116,7 +129,8 @@ angular.module('umeSelect')
                 var loadQ = [];
                 scope.$watch('searchText', function () {
 
-                    if(scope.itsComplicated){
+                    if(!scope.itsComplicated) scope.choices = []; //when its complicated, you are in choice deadlock
+                    if(scope.itsComplicated && scope.freedomOfSpeech){
                         scope.choices[0] = scope.tagify(scope.searchText);
                     }
                     scope.highlightedIndex = 0;
@@ -151,7 +165,7 @@ angular.module('umeSelect')
                 })
 
                 scope.pickItem = function(item){
-                    if(!item) return;
+                    if(!item) return false;
                     if(scope.inRelationship || scope.itsComplicated){
                         scope.model.push(item);
                         scope.focus(true);
@@ -173,6 +187,7 @@ angular.module('umeSelect')
                         scope.choices = [];
                     }
                     scope.highlightedIndex = 0;
+                    return true;
                 }
 
                 if(!scope.placeholder) scope.placeholder = "Select one..";

@@ -2,9 +2,9 @@
 	<div class="selectize-input items has-options full has-items" ng-class="{'ume-search' : !loading, 'ume-loading': loading, 'input-active': true}" style="min-height: 34px">
 		<input ume-focus="focusObtained" ume-blur="focusLost" ume-id="{{ _id }}" type="text" autocomplete="off" 
 		tabindex="" ng-model="searchText" 
-		placeholder="{{ placeholder }}" ng-keydown="keyDown($event)" ng-show="focused" style="width: 100%;"/>
+		placeholder="{{ placeholder }}" ng-keydown="keyDown($event)" ng-show="focused || !itemValue(model)" style="width: 100%;"/>
 
-		<div ng-show="!focused" class="ume-btn"
+		<div ng-show="!focused && itemValue(model)" class="ume-btn"
 		 ng-class="{'ume-placeholder': !model }" aria-hidden="true"
 		 ng-click="focus(true)">{{ itemValue(model) || placeholder }}</div>
 		</div>

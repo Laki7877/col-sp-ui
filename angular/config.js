@@ -1,7 +1,6 @@
 module.exports = {
 	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
-	HANDLE_EXCEPTION: false,
 	MAX_IMAGE_UPLOAD_SIZE: 5242880,
 	CK_DEFAULT_OPTIONS: {
 		filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
@@ -13,6 +12,10 @@ module.exports = {
 	},
 	TYPEAHEAD_IMPORT_GUIDELINE_LIMIT: 8,
 	TYPEAHEAD_DELAY: 150,
+	ROLLBAR: {
+		token: '3f012de90d9247c0a19ae95ac6ed9daf',
+		environment: 'development'
+	},
 	DROPDOWN: {
 		COUPON_CRITERIA: [
 		{

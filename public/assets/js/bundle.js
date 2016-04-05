@@ -62,6 +62,9 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
 
   // App template cache load
   .run(template)
+  .run([function(){
+       Rollbar.configure({logLevel: "warning"});
+  }])
 
   // Configuration
   .value('config', config)
@@ -224,12 +227,22 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
 
   .controller('TestCtrl', controllers.test)
 
+
+var _rollbarConfig = {
+    accessToken: config.ROLLBAR.token,
+    captureUncaught: true,
+    payload: {
+        environment: config.ROLLBAR.environment
+    }
+};
+!function(r){function o(e){if(t[e])return t[e].exports;var n=t[e]={exports:{},id:e,loaded:!1};return r[e].call(n.exports,n,n.exports,o),n.loaded=!0,n.exports}var t={};return o.m=r,o.c=t,o.p="",o(0)}([function(r,o,t){"use strict";var e=t(1).Rollbar,n=t(2);_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://d37gvrvc0wt4s1.cloudfront.net/js/v1.8/rollbar.min.js";var a=e.init(window,_rollbarConfig),i=n(a,_rollbarConfig);a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,i)},function(r,o){"use strict";function t(r){return function(){try{return r.apply(this,arguments)}catch(o){try{console.error("[Rollbar]: Internal error",o)}catch(t){}}}}function e(r,o,t){window._rollbarWrappedError&&(t[4]||(t[4]=window._rollbarWrappedError),t[5]||(t[5]=window._rollbarWrappedError._rollbarContext),window._rollbarWrappedError=null),r.uncaughtError.apply(r,t),o&&o.apply(window,t)}function n(r){var o=function(){var o=Array.prototype.slice.call(arguments,0);e(r,r._rollbarOldOnError,o)};return o.belongsToShim=!0,o}function a(r){this.shimId=++s,this.notifier=null,this.parentShim=r,this._rollbarOldOnError=null}function i(r){var o=a;return t(function(){if(this.notifier)return this.notifier[r].apply(this.notifier,arguments);var t=this,e="scope"===r;e&&(t=new o(this));var n=Array.prototype.slice.call(arguments,0),a={shim:t,method:r,args:n,ts:new Date};return window._rollbarShimQueue.push(a),e?t:void 0})}function l(r,o){if(o.hasOwnProperty&&o.hasOwnProperty("addEventListener")){var t=o.addEventListener;o.addEventListener=function(o,e,n){t.call(this,o,r.wrap(e),n)};var e=o.removeEventListener;o.removeEventListener=function(r,o,t){e.call(this,r,o&&o._wrapped?o._wrapped:o,t)}}}var s=0;a.init=function(r,o){var e=o.globalAlias||"Rollbar";if("object"==typeof r[e])return r[e];r._rollbarShimQueue=[],r._rollbarWrappedError=null,o=o||{};var i=new a;return t(function(){if(i.configure(o),o.captureUncaught){i._rollbarOldOnError=r.onerror,r.onerror=n(i);var t,a,s="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<s.length;++t)a=s[t],r[a]&&r[a].prototype&&l(i,r[a].prototype)}return r[e]=i,i})()},a.prototype.loadFull=function(r,o,e,n,a){var i=function(){var o;if(void 0===r._rollbarPayloadQueue){var t,e,n,i;for(o=new Error("rollbar.js did not load");t=r._rollbarShimQueue.shift();)for(n=t.args,i=0;i<n.length;++i)if(e=n[i],"function"==typeof e){e(o);break}}"function"==typeof a&&a(o)},l=!1,s=o.createElement("script"),u=o.getElementsByTagName("script")[0],p=u.parentNode;s.crossOrigin="",s.src=n.rollbarJsUrl,s.async=!e,s.onload=s.onreadystatechange=t(function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){s.onload=s.onreadystatechange=null;try{p.removeChild(s)}catch(r){}l=!0,i()}}),p.insertBefore(s,u)},a.prototype.wrap=function(r,o){try{var t;if(t="function"==typeof o?o:function(){return o||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._wrapped){r._wrapped=function(){try{return r.apply(this,arguments)}catch(o){throw o._rollbarContext=t()||{},o._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=o,o}},r._wrapped._isWrap=!0;for(var e in r)r.hasOwnProperty(e)&&(r._wrapped[e]=r[e])}return r._wrapped}catch(n){return r}};for(var u="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),p=0;p<u.length;++p)a.prototype[u[p]]=i(u[p]);r.exports={Rollbar:a,_rollbarWindowOnError:e}},function(r,o){"use strict";r.exports=function(r,o){return function(t){if(!t&&!window._rollbarInitialized){var e=window.RollbarNotifier,n=o||{},a=n.globalAlias||"Rollbar",i=window.Rollbar.init(n,r);i._processShimQueue(window._rollbarShimQueue||[]),window[a]=i,window._rollbarInitialized=!0,e.processPayloads()}}}}]);
+
+
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\abstractPendingProductGroup.js":6,"./controllers\\adminAccount.js":7,"./controllers\\adminAccountAdd.js":8,"./controllers\\adminAttribute.js":9,"./controllers\\adminAttributeAdd.js":10,"./controllers\\adminAttributeSet.js":11,"./controllers\\adminAttributeSetAdd.js":12,"./controllers\\adminBrand.js":13,"./controllers\\adminBrandAdd.js":14,"./controllers\\adminCategory.js":15,"./controllers\\adminGlobalCoupon.js":16,"./controllers\\adminGlobalCouponAdd.js":17,"./controllers\\adminLogin.js":18,"./controllers\\adminMasterProduct.js":19,"./controllers\\adminMasterProductAdd.js":20,"./controllers\\adminNewsletter.js":21,"./controllers\\adminOnTopCreditAdd.js":22,"./controllers\\adminOnTopCreditList.js":23,"./controllers\\adminPendingProduct.js":24,"./controllers\\adminPendingProductAdd.js":25,"./controllers\\adminProductApprovalDetail.js":26,"./controllers\\adminProductApprovalList.js":27,"./controllers\\adminProductDetail.js":28,"./controllers\\adminProductList.js":29,"./controllers\\adminProductReview.js":30,"./controllers\\adminRole.js":31,"./controllers\\adminRoleAdd.js":32,"./controllers\\adminSellerAccount.js":33,"./controllers\\adminSellerCoupon.js":34,"./controllers\\adminSellerCouponAdd.js":35,"./controllers\\adminShop.js":36,"./controllers\\adminShopAdd.js":37,"./controllers\\adminShoptype.js":38,"./controllers\\adminShoptypeAdd.js":39,"./controllers\\index.js":40,"./controllers\\localCategory.js":41,"./controllers\\login.js":42,"./controllers\\productAddSelectCategory.js":43,"./controllers\\productExport.js":44,"./controllers\\productImageList.js":45,"./controllers\\productImageManagement.js":46,"./controllers\\productImport.js":47,"./controllers\\productList.js":48,"./controllers\\productListLocalCategory.js":49,"./controllers\\productReview.js":50,"./controllers\\root.js":51,"./controllers\\sellerAccount.js":52,"./controllers\\sellerAccountAdd.js":53,"./controllers\\sellerCoupon.js":54,"./controllers\\sellerCouponAdd.js":55,"./controllers\\sellerDashboard.js":56,"./controllers\\sellerInventoryList.js":57,"./controllers\\sellerNewsletter.js":58,"./controllers\\sellerOnboarding.js":59,"./controllers\\sellerOrder.js":60,"./controllers\\sellerOrderAdd.js":61,"./controllers\\sellerOrderShippingList.js":62,"./controllers\\sellerPendingProduct.js":63,"./controllers\\sellerPendingProductsGroup.js":64,"./controllers\\sellerProductDetail.js":65,"./controllers\\sellerReturnRequest.js":66,"./controllers\\sellerReturnRequestAdd.js":67,"./controllers\\sellerRole.js":68,"./controllers\\sellerRoleAdd.js":69,"./controllers\\sellerShopAppearance.js":70,"./controllers\\sellerShopSetting.js":71,"./controllers\\test.js":72,"./directives\\ncTradableSelect.js":73,"./directives\\ngCkeditor.js":74,"./directives\\ngDateBefore.js":75,"./directives\\ngDelegate.js":76,"./directives\\ngMatch.js":77,"./directives\\ngMaxnumber.js":78,"./directives\\ngMinnumber.js":79,"./directives\\ngPatternRestrict.js":80,"./directives\\ngPermission.js":81,"./directives\\ngSlideToggle.js":82,"./directives\\ngTemplate.js":83,"./directives\\popoverAny.js":84,"./filters\\capitalize.js":85,"./filters\\exclude.js":86,"./filters\\excludeCategory.js":87,"./filters\\html.js":88,"./filters\\importGuidelineExample.js":89,"./filters\\leadingzero.js":90,"./filters\\ordinal.js":91,"./filters\\slice.js":92,"./filters\\truncate.js":93,"./filters\\truth.js":94,"./filters\\variantValue.js":95,"./helpers\\base64.js":96,"./helpers\\common.js":97,"./helpers\\storage.js":98,"./helpers\\util.js":99,"./helpers\\variantPair.js":100,"./modules/angular-print":101,"./modules/angular-scroll":102,"./modules/nc":130,"./modules/product-detail":139,"./modules/schematics":141,"./modules/ume-select":152,"./route":154,"./services\\Dashboard.js":155,"./services\\OnTopCredit.js":156,"./services\\OnTopCreditService.js":157,"./services\\Onboarding.js":158,"./services\\adminAccountService.js":159,"./services\\adminMasterProductService.js":160,"./services\\adminPermissionService.js":161,"./services\\adminRoleService.js":162,"./services\\adminShopService.js":163,"./services\\adminShoptypeService.js":164,"./services\\attribute.js":165,"./services\\attributeService.js":166,"./services\\attributeSet.js":167,"./services\\attributeSetService.js":168,"./services\\blocker.js":169,"./services\\brand.js":170,"./services\\brandService.js":171,"./services\\category.js":172,"./services\\coupon.js":173,"./services\\credential.js":174,"./services\\exceptionHandler.js":175,"./services\\fileService.js":176,"./services\\globalCategory.js":177,"./services\\globalCategoryService.js":178,"./services\\globalCouponService.js":179,"./services\\image.js":180,"./services\\imageService.js":181,"./services\\inventoryService.js":182,"./services\\knownException.js":183,"./services\\localCategory.js":184,"./services\\localCategoryService.js":185,"./services\\newsletterService.js":186,"./services\\orderService.js":187,"./services\\product.js":188,"./services\\productReviewService.js":189,"./services\\productTempService.js":190,"./services\\returnRequestService.js":191,"./services\\sellerAccountService.js":192,"./services\\sellerCouponService.js":193,"./services\\sellerPermissionService.js":194,"./services\\sellerRoleService.js":195,"./services\\shop.js":196,"./services\\shopAppearanceService.js":197,"./services\\shopPermissionService.js":198,"./services\\shopProfileService.js":199,"./template":220,"./template-options\\PromotionForm.js":200,"./template-options\\addAttributeForm.js":201,"./template-options\\addAttributeSetForm.js":202,"./template-options\\addBrandForm.js":203,"./template-options\\addCategoryForm.js":204,"./template-options\\addMasterProductForm.js":205,"./template-options\\addNewsletterForm.js":206,"./template-options\\addProductForm.js":207,"./template-options\\addRoleForm.js":208,"./template-options\\addShopAccountForm.js":209,"./template-options\\addShopAppearanceForm.js":210,"./template-options\\addShopTypeForm.js":211,"./template-options\\adminApproveForm.js":212,"./template-options\\couponForm.js":213,"./template-options\\createGroupVariant.js":214,"./template-options\\genericForm.js":215,"./template-options\\productExport.js":216,"./template-options\\productImport.js":217,"./template-options\\searchForm.js":218,"./template-options\\shopSettingForm.js":219,"angular":267,"angular-animate":222,"angular-base64":223,"angular-bootstrap-datetimepicker":225,"angular-chart.js":226,"angular-clipboard":228,"angular-cookies":230,"angular-file-upload":231,"angular-input-masks":232,"angular-sanitize":259,"angular-scroll":261,"angular-ui-bootstrap":263,"angular-ui-tree":265,"lodash":270,"ng-file-upload":272,"pluralize":273,"skeemas":274,"ui-select/dist/select.js":288}],2:[function(require,module,exports){
 module.exports = {
 	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
-	HANDLE_EXCEPTION: false,
 	MAX_IMAGE_UPLOAD_SIZE: 5242880,
 	CK_DEFAULT_OPTIONS: {
 		filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
@@ -241,6 +254,10 @@ module.exports = {
 	},
 	TYPEAHEAD_IMPORT_GUIDELINE_LIMIT: 8,
 	TYPEAHEAD_DELAY: 150,
+	ROLLBAR: {
+		token: '3f012de90d9247c0a19ae95ac6ed9daf',
+		environment: 'development'
+	},
 	DROPDOWN: {
 		COUPON_CRITERIA: [
 		{
@@ -6794,6 +6811,14 @@ module.exports = [function () {
 module.exports = ["$http", "$q", "storage", "config", "$window", function ($http, $q, storage, config, $window) {
     'ngInject';
         var service = {};
+
+        service.makeCurl = function(method, url, token, body){
+            var compiled = _.template("curl '<%= url %>' -X <%= method %> -H 'Pragma: no-cache' -H 'Content-Type: application/json;charset=UTF-8' -H 'Accept: application/json, text/plain, */*' -H 'Cache-Control: no-cache' -H 'Authorization: <%= token %>' -H 'Connection: keep-alive' --data-binary $'<%= body %>' --compressed");
+            var str = compiled({ 'url': url, 'method': method, 'token': token, 'body': JSON.stringify(body) });
+            return str;
+        }
+
+
         service.makeRequest = function (options) {
                 var deferred = $q.defer();
                 var accessToken = storage.getSessionToken();
@@ -6808,12 +6833,21 @@ module.exports = ["$http", "$q", "storage", "config", "$window", function ($http
                     options.url = config.REST_SERVICE_BASE_URL + options.url;
                 }
 
+                
+                var curlCmd = service.makeCurl(options.method, options.url, options.headers.Authorization, options.data);
                 var counter = 1;
                 var MAX_RETRY = 5;
                 var request = function() {
 
                     $http(options)
                     .success(function (data) {
+                        //IN production, remove this on-success
+                        if(_.has(options, 'rollbar')){
+                            Rollbar.log(options.rollbar, {
+                                'curl': curlCmd
+                            });
+                        }
+
                         deferred.resolve(data);
                     })
                     .error(function (data, status, headers, config) {
@@ -6839,15 +6873,19 @@ module.exports = ["$http", "$q", "storage", "config", "$window", function ($http
                                 $window.location.href = "/login";
                             }
 
+
+                            if(_.has(options, 'rollbar')){
+                                Rollbar.error(options.rollbar, {
+                                    'curl': curlCmd
+                                });
+                            }
+
                             deferred.reject(data || {"error": "Unknown error"});
                         }else{
                             console.log("Got", status, "Retrying..", counter);
                             counter++;
                             request();
                         }
-                        
-
-                        
                         
                     });
 
@@ -7548,6 +7586,8 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
             }
         });
     };
+
+
     return service;
 }];
 
@@ -8650,6 +8690,15 @@ angular.module('nc')
 					}
 					if(fileUploader) {
 						_.forEach(files, function(file) {
+
+							var url = URL.createObjectURL(file);
+							var img = new Image;
+
+							img.onload = function() {
+							    alert(img.width + "x" + img.height);
+							};
+
+							img.src = url;
 							//max size
 							if(scope.images.length >= _.toInteger(scope.size)) {
 								scope.onfail('onmaxsize', scope.size);
@@ -10415,6 +10464,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       // checkSchema(apiRequest, 'productStages', '(TX)');
 
       Product.publish(apiRequest, Status).then(function(res) {
+      
         $scope.pageState.reset();
         if (res.ProductId) {
           
@@ -10437,7 +10487,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         }
       }, function(er) {
         $scope.pageState.reset();
-        $scope.alert.error('Unable to save because ' + (er.message || er.Message));
+        var emsg = 'Unable to save because ' + (er.message || er.Message);
+        $scope.alert.error(emsg);
+
         $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
       });
 
@@ -10647,6 +10699,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.uploader.filters.push({
       'name': 'enforceMaxFileSize',
       'fn': function(item) {
+        console.log('iterm', item);
         return item.size <= MAX_FILESIZE
       }
     });
@@ -10814,6 +10867,7 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
       var B = B0;
       var A = A0;
 
+
       if (_.has(A0, 'AttributeValue.AttributeValueId')) {
         AVId = A0.AttributeValue.AttributeValueId;
         A = A0.AttributeValue.AttributeValueEn;
@@ -10940,11 +10994,11 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
             //Load Global Cat
             GlobalCategory.getAll().then(function(data) {
               sharedDataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
-              console.log("Looking for ID ", globalCatId, sharedDataSet.GlobalCategories);
+              // console.log("Looking for ID ", globalCatId, sharedDataSet.GlobalCategories);
               sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
-              console.log("Got ", sharedFormData.GlobalCategories[0]);
+              // console.log("Got ", sharedFormData.GlobalCategories[0]);
               breadcrumbs.globalCategory = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);
-              console.log(breadcrumbs, "breadcrumb");
+              // console.log(breadcrumbs, "breadcrumb");
               pageLoader.load('Preparing content..');
               deferred.resolve();
             });
@@ -11175,7 +11229,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/modal-variant-detail',
-    "<form class=\"ah-form sticky-mainform-action\" name=addProductVariantForm><div class=modal-header><h3 class=\"float-left modal-title\" ng-init=\"form = addProductVariantForm\">Variant: {{ pair.text }}</h3><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=\"form.$invalid || uploader.isUploading\" class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div><div class=\"modal-body margin-top-20\"><div class=row><div class=col-xs-12><div ng-if=form.$invalid class=\"alert alert-red\" ng-cloak>Please make sure all fields have no error.</div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=pair.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=pair.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=pair.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"pair.Upc\"></div><div class=form-group><div class=width-label><label class=control-label>Display</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select class=form-control ng-model=pair.Display><option value={{op.value}} ng-repeat=\"op in dataset.VariantDisplayOption\">{{ op.text }}</option></select></div></div></div></div></div><div ap-component=ap/section-image-video></div><div ap-component=ap/section-description></div><div ap-component=ap/section-shipping></div><div ap-component=ap/section-seo></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=\"form.$invalid || uploader.isUploading\" class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div></div></div><form></form></form>"
+    "<form class=ah-form name=addProductVariantForm><div class=modal-header><h3 class=\"float-left modal-title\" ng-init=\"form = addProductVariantForm\">Variant: {{ pair.text }}</h3><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=\"form.$invalid || uploader.isUploading\" class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div><div class=\"modal-body margin-top-20\"><div class=row><div class=col-xs-12><div ng-if=form.$invalid class=\"alert alert-red\" ng-cloak>Please make sure all fields have no error.</div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=pair.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=pair.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=pair.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"pair.Upc\"></div><div class=form-group><div class=width-label><label class=control-label>Display</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select class=form-control ng-model=pair.Display><option value={{op.value}} ng-repeat=\"op in dataset.VariantDisplayOption\">{{ op.text }}</option></select></div></div></div></div></div><div ap-component=ap/section-image-video></div><div ap-component=ap/section-description></div><div ap-component=ap/section-shipping></div><div ap-component=ap/section-seo></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=\"form.$invalid || uploader.isUploading\" class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div></div></div><form></form></form>"
   );
 
 
@@ -11208,7 +11262,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-keywords',
-    "<div class=form-section><div class=form-section-header><h2>Search Tags</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Search Tags\" nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><you-me its-complicated=true in-rel placeholder=\"Input keywords\" ng-model=formData.Tags choices=formData.AttributeSet.AttributeSetTagMaps></you-me></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags).length > 1\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags\" ng-click=\"(formData.Tags.indexOf(tag) == -1) && formData.Tags.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Search Tags</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Search Tags\" nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><you-me its-complicated=true in-rel placeholder=\"Input keywords\" freedom-of-speech=true ng-model=formData.Tags choices=formData.AttributeSet.AttributeSetTagMaps></you-me></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags).length > 1\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags\" ng-click=\"(formData.Tags.indexOf(tag) == -1) && formData.Tags.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
   );
 
 
@@ -11355,7 +11409,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/tab-category',
-    "<div id=add-product-category-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row><div class=col-xs-9><div class=form-section><div class=form-section-header><h2>Global Category</h2></div><div class=form-section-content><div class=form-group ng-repeat=\"item in formData.GlobalCategories track by $index\" ng-cloak><div class=width-label ng-if=\"$index == 0\"><label class=control-label>Global Category:</label></div><div class=width-label ng-if=\"$index != 0 && formData.GlobalCategories[$index - 1] != null\"><label class=control-label>{{$index | ordinal}} Alternative:</label></div><div class=width-field-normal ng-if=\"item != null\"><a class=form-text ng-click=openCategorySelectorModal($index)>{{item.NameEn}}</a> <i ng-if=\"!formData.GlobalCategories[$index + 1]\" ng-click=\"$emit('deleteGlobalCat', $index)\" class=\"clickable color-dark-grey fa fa-trash margin-left-10\"></i></div><div class=width-field-normal ng-if=\"$index != 0 && item == null && formData.GlobalCategories[$index - 1] != null\"><a class=\"like-text form-text\" ng-click=openCategorySelectorModal($index)><i class=\"fa fa-plus-circle color-theme\"></i> Add Alternative Category</a></div></div></div></div></div><div class=col-xs-3><h4>Global Category</h4><p>Global category is where this product will belong to when user finds it on the market place. You can have one main global category, but you can have an alternative category where the product will be cloned into.</p></div></div><div class=row><div class=col-xs-9><div class=form-section><div class=form-section-header><h2>Local Category</h2></div><div class=form-section-content><div class=form-group ng-repeat=\"item in formData.LocalCategories track by $index\" ng-cloak><div class=width-label ng-if=\"$index == 0\"><label class=control-label>Local Category:</label></div><div class=width-label ng-if=\"$index != 0 && formData.LocalCategories[$index - 1] != null\"><label class=control-label>{{$index | ordinal}} Alternative:</label></div><div class=width-field-normal ng-if=\"item != null\"><a class=form-text data-toggle=modal data-target=#local-category ng-click=\"openCategorySelectorModal($index, 'LocalCategories', 'Local Categories')\">{{item.NameEn}}</a> <i ng-if=\"!formData.LocalCategories[$index + 1]\" ng-click=\"$emit('deleteLocalCat', $index)\" class=\"clickable color-dark-grey fa fa-trash margin-left-10\"></i></div><div class=width-field-normal ng-if=\"item == null && (formData.LocalCategories[$index - 1] != null || $index == 0)\"><a class=\"like-text form-text\" ng-click=\"openCategorySelectorModal($index, 'LocalCategories', 'Local Categories')\"><i class=\"fa fa-plus-circle color-theme\"></i> Add <span ng-if=\"$index == 0\">Local</span> <span ng-if=\"$index > 0\">Alternative Local</span> Category</a></div></div></div></div></div><div class=col-xs-3><h4>Local Category</h4><p>Local category is where this product will belong when user finds it on this store. You can have one main local category but many alternative ones.</p></div></div></div>"
+    "<div id=add-product-category-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row><div class=col-xs-9><div class=form-section><div class=form-section-header><h2>Global Category</h2></div><div class=form-section-content><div class=form-group ng-repeat=\"item in formData.GlobalCategories track by $index\" ng-cloak><div class=width-label ng-if=\"$index == 0\"><label class=control-label>Global Category:</label></div><div class=width-label ng-if=\"$index != 0 && formData.GlobalCategories[$index - 1] != null\"><label class=control-label>{{$index | ordinal}} Alternative:</label></div><div class=width-field-normal ng-if=\"item != null\"><a class=form-text ng-click=openCategorySelectorModal($index)>{{item.NameEn}}</a> <i ng-if=\"!formData.GlobalCategories[$index + 1] \" ng-show=\"$index > 0\" ng-click=\"$emit('deleteGlobalCat', $index)\" class=\"clickable color-dark-grey fa fa-trash margin-left-10\"></i></div><div class=width-field-normal ng-if=\"$index != 0 && item == null && formData.GlobalCategories[$index - 1] != null\"><a class=\"like-text form-text\" ng-click=openCategorySelectorModal($index)><i class=\"fa fa-plus-circle color-theme\"></i> Add Alternative Category</a></div></div></div></div></div><div class=col-xs-3><h4>Global Category</h4><p>Global category is where this product will belong to when user finds it on the market place. You can have one main global category, but you can have an alternative category where the product will be cloned into.</p></div></div><div class=row><div class=col-xs-9><div class=form-section><div class=form-section-header><h2>Local Category</h2></div><div class=form-section-content><div class=form-group ng-repeat=\"item in formData.LocalCategories track by $index\" ng-cloak><div class=width-label ng-if=\"$index == 0\"><label class=control-label>Local Category:</label></div><div class=width-label ng-if=\"$index != 0 && formData.LocalCategories[$index - 1] != null\"><label class=control-label>{{$index | ordinal}} Alternative:</label></div><div class=width-field-normal ng-if=\"item != null\"><a class=form-text data-toggle=modal data-target=#local-category ng-click=\"openCategorySelectorModal($index, 'LocalCategories', 'Local Categories')\">{{item.NameEn}}</a> <i ng-if=\"!formData.LocalCategories[$index + 1]\" ng-click=\"$emit('deleteLocalCat', $index)\" class=\"clickable color-dark-grey fa fa-trash margin-left-10\"></i></div><div class=width-field-normal ng-if=\"item == null && (formData.LocalCategories[$index - 1] != null || $index == 0)\"><a class=\"like-text form-text\" ng-click=\"openCategorySelectorModal($index, 'LocalCategories', 'Local Categories')\"><i class=\"fa fa-plus-circle color-theme\"></i> Add <span ng-if=\"$index == 0\">Local</span> <span ng-if=\"$index > 0\">Alternative Local</span> Category</a></div></div></div></div></div><div class=col-xs-3><h4>Local Category</h4><p>Local category is where this product will belong when user finds it on this store. You can have one main local category but many alternative ones.</p></div></div></div>"
   );
 
 
@@ -11370,7 +11424,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/tab-more-option',
-    "<div id=add-product-more-option-tab-content><div ap-component=ap/inner-tab-breadcrumb></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Relationship</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Related Products\" nc-template-form=form.RelatedProducts nc-template-options-path=addProductForm/RelatedProducts><ui-select ng-model=formData.RelatedProducts name=RelatedProducts nc-tag-validator nc-max-tag-count=10 multiple><ui-select-match placeholder=\"Input Product Name\"><span>{{ $item.ProductNameEn }}</span></ui-select-match><ui-select-choices repeat=\"item in (dataset.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' ) track by item.ProductId\" refresh=refresher.RelatedProducts($select.search) refresh-delay=1>{{ item.ProductNameEn }}</ui-select-choices></ui-select></div></div></div></div></div><div class=row><div class=col-xs-12><div ap-component=ap/section-seo></div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>More Details</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Effective On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" placeholder=\"Select date and time when product will go online\" class=\"input-icon-calendar form-control\" value=\"{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.EffectiveDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'hour' }\"></ul></div><span class=help-block></span></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go online\"></i></div></div><div class=form-group><div class=width-label><label class=control-label>Expire On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white placeholder=\"Select date and time when product will go offline\" class=\"input-icon-calendar form-control\" name=ExpireDate ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" value=\"{{ formData.ExpireDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ExpireDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'hour' }\"></ul></div><div class=width-field-large><span class=\"help-block color-red\" ng-if=\"formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate\"><span>Effective date/time must come before expire date/time</span></span></div></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go offline\"></i></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/TheOneCardEarn nc-template-form=form.TheOneCardEarn nc-label=\"The One Card earn\"><input disabled class=form-control name=TheOneCardEarn ng-model=\"formData.TheOneCardEarn\"></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Nothing nc-template-form=form.GiftWrap nc-label=\"Gift Wrap\"><select class=form-control ng-model=formData.GiftWrap><option value=N>No</option><option value=Y>Yes</option></select></div><div class=form-group><div class=width-label><label class=control-label>Control Flag</label></div><div class=width-field-normal><div class=\"checkbox multiple-checkbox\"><label><input type=checkbox ng-model=formData.ControlFlags.Flag1>Flag 1</label><label><input type=checkbox ng-model=formData.ControlFlags.Flag2>Flag 2</label><label><input type=checkbox ng-model=formData.ControlFlags.Flag3>Flag 3</label></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Remark nc-template-form=form.Remark nc-label=Remark><textarea class=form-control ng-pattern=\"/^[^<>]+$/\" maxlength=2000 name=Remark ng-model=formData.Remark>\r" +
+    "<div id=add-product-more-option-tab-content><div ap-component=ap/inner-tab-breadcrumb></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Relationship</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Related Products\" nc-template-form=form.RelatedProducts nc-template-options-path=addProductForm/RelatedProducts><you-me display-by=ProductNameEn placeholder=\"Search by Product Name\" its-complicated=true ng-model=formData.RelatedProducts refresh=refresher.RelatedProducts freedom-of-speech=false choices=\"dataset.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' \"></you-me></div></div></div></div></div><div class=row><div class=col-xs-12><div ap-component=ap/section-seo></div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>More Details</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Effective On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" placeholder=\"Select date and time when product will go online\" class=\"input-icon-calendar form-control\" value=\"{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.EffectiveDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'hour' }\"></ul></div><span class=help-block></span></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go online\"></i></div></div><div class=form-group><div class=width-label><label class=control-label>Expire On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white placeholder=\"Select date and time when product will go offline\" class=\"input-icon-calendar form-control\" name=ExpireDate ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" value=\"{{ formData.ExpireDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ExpireDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'hour' }\"></ul></div><div class=width-field-large><span class=\"help-block color-red\" ng-if=\"formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate\"><span>Effective date/time must come before expire date/time</span></span></div></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go offline\"></i></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/TheOneCardEarn nc-template-form=form.TheOneCardEarn nc-label=\"The One Card earn\"><input disabled class=form-control name=TheOneCardEarn ng-model=\"formData.TheOneCardEarn\"></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Nothing nc-template-form=form.GiftWrap nc-label=\"Gift Wrap\"><select class=form-control ng-model=formData.GiftWrap><option value=N>No</option><option value=Y>Yes</option></select></div><div class=form-group><div class=width-label><label class=control-label>Control Flag</label></div><div class=width-field-normal><div class=\"checkbox multiple-checkbox\"><label><input type=checkbox ng-model=formData.ControlFlags.Flag1>Flag 1</label><label><input type=checkbox ng-model=formData.ControlFlags.Flag2>Flag 2</label><label><input type=checkbox ng-model=formData.ControlFlags.Flag3>Flag 3</label></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Remark nc-template-form=form.Remark nc-label=Remark><textarea class=form-control ng-pattern=\"/^[^<>]+$/\" maxlength=2000 name=Remark ng-model=formData.Remark>\r" +
     "\n" +
     "                        </textarea></div></div></div></div></div><div class=row ng-if=\"formData.Revisions.length > 0\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Approve Versions</h2></div><div class=form-section-content><div class=table-wrapper><table class=table id=add-product-approve-versions><thead><tr><th class=thead-approved-date>Approved Date</th><th class=thead-submitted-date>Submitted Date</th><th class=thead-submitted-by>Submitted By</th><th class=thead-actions>Actions</th></tr></thead><tbody><tr ng-repeat=\"row in formData.Revisions\" ng-if=row.ApprovedDt><td>{{ row.ApprovedDt | date: 'dd/MM/yyyy HH:mm' }}</td><td>{{ row.SubmittedDt | date: 'dd/MM/yyyy HH:mm' }}</td><td>{{ row.SubmittedBy }}</td><td><button class=\"btn btn-white\">View</button> <button class=\"btn btn-white\">Restore</button></td></tr></tbody></table></div></div></div></div></div></div>"
   );
@@ -11844,7 +11898,7 @@ angular.module('umeSelect')
     link: function(scope, elem, attr) {
       scope.$watch('trigger', function(value) {
         scope.$on(attr.umeFocus, function(e,data) {
-            console.log(attr.umeId, 'focus received');
+            // console.log(attr.umeId, 'focus received');
             elem[0].focus();
         });
       });
@@ -11856,7 +11910,7 @@ angular.module('umeSelect')
     link: function(scope, elem, attr) {
       scope.$watch('trigger', function(value) {
         scope.$on(attr.umeBlur, function(e,data) {
-            console.log(attr.umeId, 'focus lost');
+            // console.log(attr.umeId, 'focus lost');
             elem[0].blur();
         });
       });
@@ -11874,13 +11928,14 @@ angular.module('umeSelect')
             scope: {
                 model: '=ngModel',
                 placeholder: '@?placeholder',
-                choices: '=choices',
+                originalChoices: '&choices',
                 delay: '@?delay',
                 autoClearSearch: '=?autoClearSearch',
                 refresh: '=refresh',
                 inRelationship: '=?inRelationship',
                 itsComplicated: '=?itsComplicated',
-                displayBy: '@displayBy'
+                displayBy: '@displayBy',
+                freedomOfSpeech: '=freedomOfSpeech'
             },
             replace: true,
             priority: 1010,
@@ -11897,6 +11952,11 @@ angular.module('umeSelect')
                 scope.loading = false;
                 scope.searchText = "";
                 scope.highlightedIndex = 0;
+                scope.choices = [];
+
+                scope.$watchCollection('originalChoices()', function(data){
+                    scope.choices = data;
+                });
 
                 var _id = (new Date()).getTime()*Math.random() + "R";
                 scope._id =  _id;
@@ -11909,6 +11969,10 @@ angular.module('umeSelect')
                     }
 
                     scope.model.splice(index, 1);
+                }
+
+                scope.forceFocus = function(){
+                    scope.$emit('focusObtained', _id);
                 }
 
                 scope.tagify = function(tagValue){
@@ -11940,7 +12004,10 @@ angular.module('umeSelect')
                         $timeout(function (){
                             scope.$emit('focusLost', _id);
                             var K = $filter('filter')(scope.choices, scope.searchText);
-                            scope.pickItem(K[scope.highlightedIndex]);
+                            var result= scope.pickItem(K[scope.highlightedIndex]);
+                            if(!result){
+                                scope.$emit('focusObtained', _id);
+                            }
                         });
 
                     }else if(evt.code == "Backspace" || evt.keyCode == 8){
@@ -11983,7 +12050,8 @@ angular.module('umeSelect')
                 var loadQ = [];
                 scope.$watch('searchText', function () {
 
-                    if(scope.itsComplicated){
+                    if(!scope.itsComplicated) scope.choices = []; //when its complicated, you are in choice deadlock
+                    if(scope.itsComplicated && scope.freedomOfSpeech){
                         scope.choices[0] = scope.tagify(scope.searchText);
                     }
                     scope.highlightedIndex = 0;
@@ -12018,7 +12086,7 @@ angular.module('umeSelect')
                 })
 
                 scope.pickItem = function(item){
-                    if(!item) return;
+                    if(!item) return false;
                     if(scope.inRelationship || scope.itsComplicated){
                         scope.model.push(item);
                         scope.focus(true);
@@ -12040,6 +12108,7 @@ angular.module('umeSelect')
                         scope.choices = [];
                     }
                     scope.highlightedIndex = 0;
+                    return true;
                 }
 
                 if(!scope.placeholder) scope.placeholder = "Select one..";
@@ -12067,12 +12136,12 @@ angular.module("umeSelect").run(["$templateCache", function($templateCache) {  '
 
 
   $templateCache.put('ume/multiple',
-    "<div class=\"selectize-control single\"><div class=\"selectize-input items not-full has-options has-items\" ng-class=\"{'ume-search' : !loading, 'ume-loading': loading, 'input-active': focused}\"><div ng-repeat=\"item in (model) track by $index\" style=\"margin-right: 5px\" class=\"item btn btn-primary btn-xs\" aria-hidden=true>{{ itemValue(item) }} <a ng-click=breakUp($index) class=\"glyphicon glyphicon-remove\" style=\"color:white !important; opacity: 0.7; font-size: x-small\"></a></div><input ng-focus=focus() ng-keydown=keyDown($event) ume-id=\"{{ _id }}\" ume-focus=focusObtained ume-blur=focusLost autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" class=\"btn btn-xs\" style=\"max-width: 130px !important;text-align: left\"></div><div ng-include=\"'ume/choicelist'\"></div></div>"
+    "<div class=\"selectize-control single\"><div ng-click=forceFocus() class=\"selectize-input items not-full has-options has-items\" ng-class=\"{'ume-search' : !loading, 'ume-loading': loading, 'input-active': focused}\"><div ng-repeat=\"item in (model) track by $index\" style=\"margin-right: 5px\" class=\"item btn btn-primary btn-xs\" aria-hidden=true>{{ itemValue(item) }} <a ng-click=breakUp($index) class=\"glyphicon glyphicon-remove\" style=\"color:white !important; opacity: 0.7; font-size: x-small\"></a></div><input ng-focus=focus() ng-keydown=keyDown($event) ume-id=\"{{ _id }}\" ume-focus=focusObtained ume-blur=focusLost autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" class=\"btn btn-xs\" style=\"max-width: 150px !important;text-align: left\"></div><div ng-include=\"'ume/choicelist'\"></div></div>"
   );
 
 
   $templateCache.put('ume/single',
-    "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-search' : !loading, 'ume-loading': loading, 'input-active': true}\" style=\"min-height: 34px\"><input ume-focus=focusObtained ume-blur=focusLost ume-id=\"{{ _id }}\" autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" ng-keydown=keyDown($event) ng-show=focused style=\"width: 100%\"><div ng-show=!focused class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ itemValue(model) || placeholder }}</div></div><div ng-include=\"'ume/choicelist'\"></div></div>"
+    "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-search' : !loading, 'ume-loading': loading, 'input-active': true}\" style=\"min-height: 34px\"><input ume-focus=focusObtained ume-blur=focusLost ume-id=\"{{ _id }}\" autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" ng-keydown=keyDown($event) ng-show=\"focused || !itemValue(model)\" style=\"width: 100%\"><div ng-show=\"!focused && itemValue(model)\" class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ itemValue(model) || placeholder }}</div></div><div ng-include=\"'ume/choicelist'\"></div></div>"
   );
  }]);
 },{}],154:[function(require,module,exports){
@@ -13839,16 +13908,15 @@ var angular = require('angular');
 module.exports = ['$window', '$base64', 'config', function($window, $base64, config) {
     return function(exception, cause) {
         console.log("Exception handler", exception, cause);
-        if(exception.message && exception.message.length > 200){
-            exception.message = exception.message.substring(0, 200);
-        }
-        var encMsg = $base64.encode(JSON.stringify({
-            'message': exception.message
-        }));
-
-        if(config.HANDLE_EXCEPTION) {
-            $window.location = '/exception?e=' + encMsg;
-        }
+        // if(exception.message && exception.message.length > 200){
+        //     exception.message = exception.message.substring(0, 200);
+        // }
+        // var encMsg = $base64.encode(JSON.stringify({
+        //     'message': exception.message
+        // }));
+        // $window.location = '/exception?e=' + encMsg;
+        alert("A very very fetal error has occurred, D-Team has been notified.")
+        Rollbar.error("Uncaught Exception", exception);
     };
 }];
 
@@ -14078,6 +14146,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 			filters: [{
 	            name: 'imageFilter',
 	            fn: function(item /*{File|FileLikeObject}*/, options) {
+	            	console.log('item', item);
 	                var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
 	                return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
 	            }}]
@@ -14188,8 +14257,14 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
       queueLimit: 10,
       removeAfterUpload : true,
       filters: [{
+        name: 'dimensionFilter',
+        fn: function(item /*{File|FileLikeObject}*/ , options){
+          console.log(item);
+        }
+      },{
         name: 'imageFilter',
         fn: function(item /*{File|FileLikeObject}*/ , options) {
+          console.log('item', item);
           var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
           return '|jpg|png|jpeg|'.indexOf(type) !== -1;
         }
@@ -14200,6 +14275,7 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
         }
       }, ]
     }, opt);
+    
     var uploader = new FileUploader(options);
 
     return uploader;
@@ -14561,7 +14637,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			return common.makeRequest({
 				method: mode,
 				url: path,
-				data: tobj
+				data: tobj,
+				rollbar: 'AP: Product publish or save'
 			})
 		}
 
@@ -16118,6 +16195,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('common/breadcrumb/normal',
     ""
+  );
+
+
+  $templateCache.put('common/error',
+    "<nav class=header><div class=container-fluid style=\"background-color: rgba(224, 86, 86, 0.6); color: white\"><strong>Oops!</strong> Sorry this page has crashed due to uncaught error. The D-Team has been notified of this crash.</div></nav>"
   );
 
 
