@@ -101,6 +101,7 @@ class Route
 				}
 				else {
 					return call_user_func_array($route['method'], array($params));
+                    //return $route['method'];
 				}
 			}
 		}

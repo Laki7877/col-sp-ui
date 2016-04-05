@@ -58,30 +58,30 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   'dndLists'
 ])
 
-  // App config
+// App config
   .config(function (uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
       'ngInject';
       $ncPaginationProvider.paginationSizes = [10, 20, 50, 100];
       uiSelectConfig.taggingTokens = '[ENTER|,]';
-    }
+  }
   )
 
-  // App template cache load
+// App template cache load
   .run(template)
 
-  // Configuration
+// Configuration
   .value('config', config)
   .value('route', route)
   .value('$templateOptionsCache', bulk['template-options'])
 
-  // Helpers
+// Helpers
   .factory('base64', helpers.base64)
   .factory('common', helpers.common)
   .factory('skeemas', skeemas)
   .factory('storage', helpers.storage)
   .factory('util', helpers.util)
 
-  // Services
+// Services
   .factory('$exceptionHandler', services.exceptionHandler)
   .factory('AdminAccountService', services.adminAccountService)
   .factory('AdminMasterProductService', services.adminMasterProductService) // newer version
@@ -127,11 +127,12 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .factory('ShopProfileService', services.shopProfileService)
   .factory('ProductTempService', services.productTempService)
 
-    // Col Dev (Natee)
+// Col Dev (Natee)
 .factory('CMSService', services.cmsService)
+.factory('CMSMasterService', services.adminCMSMasterService)
 //.factory('CMSCollectionService', services.cmsCollectionService)
 
-  // Directives
+// Directives
   .directive('ncTradableSelect', directives.ncTradableSelect)
   .directive('ngCkeditor', directives.ngCkeditor)
   .directive('ngDateBefore', directives.ngDateBefore)
@@ -143,10 +144,10 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .directive('ngSlideToggle', directives.ngSlideToggle)
   .directive('ngTemplate', directives.ngTemplate)
     .directive('ngMatch', directives.ngMatch)
-.directive('ngMinnumber', directives.ngMinnumber)
-.directive('ngMaxnumber', directives.ngMaxnumber)
-.directive('ngDateBefore', directives.ngDateBefore)
-  // Filters
+    .directive('ngMinnumber', directives.ngMinnumber)
+    .directive('ngMaxnumber', directives.ngMaxnumber)
+    .directive('ngDateBefore', directives.ngDateBefore)
+// Filters
   .filter('capitalize', filters.capitalize)
   .filter('ordinal', filters.ordinal)
   .filter('html', filters.html)
@@ -159,7 +160,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .filter('variantValue', filters.variantValue)
   .filter('importGuidelineExample', filters.importGuidelineExample)
     .filter('propsFilter', filters.propsFilter) // Col Dev (Natee)
-  // Controllers
+// Controllers
   .controller('RootCtrl', controllers.root)
   .controller('IndexCtrl', controllers.index)
   .controller('ProductListCtrl', controllers.productList)
@@ -224,7 +225,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
 
   .controller('LoginCtrl', controllers.login)
   .controller('AdminLoginCtrl', controllers.adminLogin)
-  
+
   .controller('AbstractListCtrl', controllers.abstractList)
   .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
   .controller('AbstractAddCtrl', controllers.abstractAdd)
@@ -232,13 +233,15 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
 
   .controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
   .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
-    // Create By Col Dev (Natee)
-.controller('AdminCMSCategoryListCtrl', controllers.adminCMSCategoryList)
-.controller('AdminCMSCategoryAddCtrl', controllers.adminCMSCategoryAdd)
 
-.controller('AdminCMSCollectionListCtrl', controllers.adminCMSCollectionList)
-.controller('AdminCMSCollectionAddCtrl', controllers.adminCMSCollectionAdd)
-
-.controller('AdminCMSGroupController', controllers.adminCMSGroupController)
-
+  // Create By Col Dev (Natee)
+  .controller('AdminCMSCategoryListCtrl', controllers.adminCMSCategoryList)
+  .controller('AdminCMSCategoryAddCtrl', controllers.adminCMSCategoryAdd)
+  .controller('AdminCMSCollectionListCtrl', controllers.adminCMSCollectionList)
+  .controller('AdminCMSCollectionAddCtrl', controllers.adminCMSCollectionAdd)
+  .controller('AdminCMSGroupController', controllers.adminCMSGroupController)
+  //iOATH
+  .controller('AdminCMSMasterListCtrl', controllers.adminCMSMasterList)
+  .controller('AdminCMSMasterAddSelectTypeCtrl', controllers.adminCMSMasterAddSelect)
+  .controller('AdminCMSMasterDetailCtrl', controllers.AdminCMSMasterDetail)
   .controller('TestCtrl', controllers.test)
