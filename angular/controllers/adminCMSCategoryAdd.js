@@ -1,4 +1,4 @@
-﻿module.exports = function ($scope, $controller, CMSService, config, $uibModal, $timeout) {
+﻿module.exports = function ($scope, $controller, CMSCategoryService, config, $uibModal, $timeout) {
     'ngInject';
 
     $scope.formData     = {};
@@ -141,14 +141,14 @@
 
 
                 // load category
-                CMSService.getAllCategory()
+                CMSCategoryService.getAllCategory()
                 .then(function (data) {
                     console.log(data)
                     $scope.categorys = data;
                 });
 
                 // load category
-                CMSService.getAllTag()
+                CMSCategoryService.getAllTag()
                 .then(function (data) {
                     console.log(data)
                     $scope.tags = data;
@@ -175,7 +175,7 @@
                     };
 
                     // search product
-                    CMSService.searchProduct(params)
+                    CMSCategoryService.searchProduct(params)
                     .then(function (data) {
                         console.log(data)
                         $scope.products = data;
@@ -261,7 +261,7 @@
                         return;
 
                     // get brand by category id
-                    CMSService.getBrand(newValue.CategoryId)
+                    CMSCategoryService.getBrand(newValue.CategoryId)
                     .then(function (data) {
                         $scope.brands = data;
                     });
@@ -349,7 +349,7 @@
         $scope: $scope,
         options: {
             url: '/admin/cms/category',
-            service: CMSService,
+            service: CMSCategoryService,
             item: 'CMS Category',
             order: 'UpdateDate',
             id: 'CMSCategoryId',

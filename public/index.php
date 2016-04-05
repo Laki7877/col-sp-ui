@@ -133,6 +133,9 @@ Route::add('/admin/cms/collection', 'AdminController::listCMSCollection');
 Route::add('/admin/cms/collection/create', 'AdminController::addCMSCollection');
 Route::add('/admin/cms/collection/:id', 'AdminColtroller::editCMSCollection');
 
+Route::add('/admin/cms/group', 'AdminController::listCMSGroup');
+Route::add('/admin/cms/group/create', 'AdminController::addCMSGroup');
+Route::add('/admin/cms/group/:id', 'AdminController::editCMSGroup');
 
 
 Route::add('/collections', 'ProductCollectionController::index');

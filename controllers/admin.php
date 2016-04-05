@@ -238,9 +238,13 @@ class AdminController extends Controller
 	}
 
 	// CMS Group
+	public static function listCMSGroup($params)
+	{
+		return View::render('admin_cms_group');
+	}
 	public static function addCMSGroup($params)
 	{
-		return View::render('admin_cms_group', ['title' => 'Add Admin CMS Group']);
+		return View::render('admin_add_cms_group', ['title' => 'Add Admin CMS Group']);
 	}
 	public static function editCMSGroup($params)
 	{

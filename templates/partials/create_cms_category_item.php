@@ -1,4 +1,4 @@
-<div id="create_cms_collection_item">
+<div id="create_cms_category_item">
 
   <div class="row">
     <div class="col-xs-12">

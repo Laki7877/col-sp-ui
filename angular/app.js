@@ -129,7 +129,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .factory('ProductTempService', services.productTempService)
 
     // Col Dev (Natee)
-.factory('CMSService', services.cmsService)
+  .factory('CMSCategoryService', services.cmsCategoryService)
+  .factory('CMSGroupService', services.cmsGroupService)
 //.factory('CMSCollectionService', services.cmsCollectionService)
 
   // Directives
@@ -233,13 +234,15 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
 
   .controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
   .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
+
     // Create By Col Dev (Natee)
-.controller('AdminCMSCategoryListCtrl', controllers.adminCMSCategoryList)
-.controller('AdminCMSCategoryAddCtrl', controllers.adminCMSCategoryAdd)
+    .controller('AdminCMSCategoryListCtrl', controllers.adminCMSCategoryList)
+    .controller('AdminCMSCategoryAddCtrl', controllers.adminCMSCategoryAdd)
 
-.controller('AdminCMSCollectionListCtrl', controllers.adminCMSCollectionList)
-.controller('AdminCMSCollectionAddCtrl', controllers.adminCMSCollectionAdd)
+    .controller('AdminCMSCollectionListCtrl', controllers.adminCMSCollectionList)
+    .controller('AdminCMSCollectionAddCtrl', controllers.adminCMSCollectionAdd)
 
-.controller('AdminCMSGroupController', controllers.adminCMSGroupController)
+    .controller('AdminCMSGroupListCtrl', controllers.adminCMSGroupList)
+    .controller('AdminCMSGroupAddCtrl', controllers.adminCMSGroupAdd)
 
   .controller('TestCtrl', controllers.test)

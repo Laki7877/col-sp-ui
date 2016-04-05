@@ -1,14 +1,14 @@
 
-module.exports = function ($scope, $controller, CMSCategoryService, config) {
+module.exports = function ($scope, $controller, CMSGroupService, config) {
     'ngInject';
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
-            url: '/admin/cms/category',
-            service: CMSCategoryService,
-            item: 'CMSCategory',
+            url: '/admin/cms/group',
+            service: CMSGroupService,
+            item: 'CMSGroup',
             order: 'UpdateDate',
-            id: 'CMSCategoryId',
+            id: 'CMSGroupId',
             actions: ['View', 'Delete'],
             bulks: ['Delete'],
             filters: [
