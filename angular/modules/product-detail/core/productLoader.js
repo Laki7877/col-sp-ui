@@ -35,6 +35,7 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
       var B = B0;
       var A = A0;
 
+
       if (_.has(A0, 'AttributeValue.AttributeValueId')) {
         AVId = A0.AttributeValue.AttributeValueId;
         A = A0.AttributeValue.AttributeValueEn;
@@ -141,6 +142,7 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
 
     var deferred = $q.defer();
     pageLoader.load('Downloading Attribute Sets..');
+    pageLoader.pop();//test err
 
     //TODO: Break dependencies
     AttributeSet.getByCategory(globalCatId).then(function(data) {
@@ -161,11 +163,11 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
             //Load Global Cat
             GlobalCategory.getAll().then(function(data) {
               sharedDataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
-              console.log("Looking for ID ", globalCatId, sharedDataSet.GlobalCategories);
+              // console.log("Looking for ID ", globalCatId, sharedDataSet.GlobalCategories);
               sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
-              console.log("Got ", sharedFormData.GlobalCategories[0]);
+              // console.log("Got ", sharedFormData.GlobalCategories[0]);
               breadcrumbs.globalCategory = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);
-              console.log(breadcrumbs, "breadcrumb");
+              // console.log(breadcrumbs, "breadcrumb");
               pageLoader.load('Preparing content..');
               deferred.resolve();
             });

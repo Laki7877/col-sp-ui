@@ -9,7 +9,7 @@
                 <div class="form-section-content">
                     <div nc-template="common/input/form-group-with-label" nc-label="Related Products" nc-template-form="form.RelatedProducts"
                     nc-template-options-path="addProductForm/RelatedProducts">
-                        <ui-select ng-model="formData.RelatedProducts" name="RelatedProducts" nc-tag-validator nc-max-tag-count="10" multiple>
+<!--                         <ui-select ng-model="formData.RelatedProducts" name="RelatedProducts" nc-tag-validator nc-max-tag-count="10" multiple>
                             <ui-select-match placeholder="Input Product Name">
                                 <span>{{ $item.ProductNameEn }}</span>
                             </ui-select-match>
@@ -18,6 +18,11 @@
                                 {{ item.ProductNameEn }}
                             </ui-select-choices>
                         </ui-select>
+ -->
+                        <you-me display-by="ProductNameEn" placeholder="Search by Product Name" its-complicated="true"
+                        ng-model="formData.RelatedProducts" refresh="refresher.RelatedProducts" freedom-of-speech="false"
+                        choices="dataset.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' "></you-me>
+
                     </div>
 
                 </div>
