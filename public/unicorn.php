@@ -37,7 +37,7 @@ class Route
 	// add new route
 	public static function add($uri, $method, $id = null)
 	{
-		$tokens = explode('/', strtolower($uri));
+		$tokens = explode('/', $uri);
 		$params = [];
 
 		foreach ($tokens as &$t) {
@@ -64,10 +64,10 @@ class Route
 	} 
 
 	// process route
-	public static function process() 
+	public static function process($middleware=null) 
 	{
 		// base uri
-		$uri = strtolower($_SERVER['REQUEST_URI']);
+		$uri = $_SERVER['REQUEST_URI'];
 
 		if(substr($uri,-1) == "/") {
 			$uri = substr($uri, 0, -1);
@@ -89,14 +89,18 @@ class Route
 				}
 				self::$_currentRoute = $route;
 				
-				// pass to controller
-				if (is_string($route['method'])) 
-				{
-					return call_user_func_array($route['method'], array($params));
+				if ($middleware != null) {
+					$result = call_user_func_array($middleware, array($route));
+					if (isset($result)) {
+						die();
+						return $result;
+					}
+					else {
+						return call_user_func_array($route['method'], array($params));
+					}
 				}
-				else
-				{
-					return $route['method']($params);
+				else {
+					return call_user_func_array($route['method'], array($params));
 				}
 			}
 		}

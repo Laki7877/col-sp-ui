@@ -3,7 +3,11 @@
   display: block;
   min-width: 1200px;
   min-height: 100%;
-  background-color: $sidebar-color;
+  background: url('/assets/img/bg-login.png');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 100% auto;
+  background-color: #FFFFFF;
 }
 
 .login-page {
@@ -11,25 +15,29 @@
 	.logo-img-wrapper {
 		text-align: center;
     	margin-top: 50px;
-    	margin-bottom: 30px;
+    	margin-bottom: 20px;
 	}
 
 	.logo-img {
-		height: 75px;
+		height: 130px;
 	}
 
 	.form-login {
 		background-color: $color-white;
-	    border: solid $color-grey 1px;
-	    width: 300px;
-	    border-radius: 2px;
-	    margin: auto;
-	    padding: 40px 30px 20px 30px;
+    border: solid $color-grey 1px;
+    width: 300px;
+    border-radius: 2px;
+    margin: auto;
+    padding: 40px 30px 20px 30px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 	}
 
 	.btn-100 {
 		width:	100%;
 	}
+  .alert .close {
+    margin-top: 0;
+  }
 }
 .login-loading{
 	margin-right: 5px;

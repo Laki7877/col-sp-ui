@@ -2,20 +2,11 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="ProductAddSelectCategoryCtrl" class="global-category-page">
-		<? $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/Add Product', 'urls' => ['/products']]) ?>
+		<nc-page-title nc-title="Products/Add Product" link="/products" icon="fa-tag"></nc-page-title>
 
-		<div ng-show="loading">
-			<img src="/assets/img/loader.gif" width="40"> <small>Loading Global Categories..</small>
-		</div>
+		<div ng-show="loading" nc-loading="Loading Global Categories..."></div>
 		<form ng-show="!loading" ng-submit="validate($event)" class="ah-form margin-top-30" method="POST" action="/products/add">
 			<input type="hidden" name="category" ng-value="selected.CategoryId" />
-<!--			<div class="global-category-radio-section ">
-				<span>Type of upload</span>
-				<div class="radio multiple-radio">
-					<label><input type="radio" name="optradio" checked="checked">Single</label>
-					<label><input type="radio" name="optradio">Bulk (via Excel)</label>
-				</div>
-			</div> -->
 			<div class="category-section column-4">
 				<div class="category-section-border-box">
 					<div class="category-header">

@@ -10,7 +10,6 @@
 	$action-button-height: 20px
 	$action-padding: ($action-height - $action-button-height) / 2
 
-	width: $width
 	border: $border-size solid $color-grey
 	background-color: $color-light-blue
 	@include border-radius(3px)
@@ -31,6 +30,7 @@
 
 	.actions-wrapper
 		width: 100%
+		text-align: center
 		padding-top: $action-padding
 		padding-bottom: $action-padding
 		border-top: $border-size solid $color-grey
@@ -38,9 +38,8 @@
 		@extend .clearfix
 
 		.action
-			display: block
+			display: inline-block
 			text-align: center
-			float: left
 			color: $color-dark-grey
 			cursor: pointer
 			.fa
@@ -56,3 +55,12 @@
 
 .image-thumbs-actions
 	+image-thumbs
+
+// Image Preview
+.image_preview
+	.image_radion_thumbnail
+		padding-top: 25px
+		margin-left: -20px
+
+	.label_width
+		width:	200px

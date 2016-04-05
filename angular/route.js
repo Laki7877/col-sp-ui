@@ -4,7 +4,7 @@
  * Format:
  *
  * '<text title>|<css>' : '<startWith url>'
- * 
+ *
  * This is temporary solution
  */
 var _ = require('lodash');
@@ -37,7 +37,7 @@ function generateRouteArray(obj) {
 					url: url,
 					urls: urls
 				};
-				
+
 				if(token2.length > 1) {
 					submenuItem.css += token2[1];
 				}
@@ -57,23 +57,28 @@ function generateRouteArray(obj) {
 
 var seller = {
 	'Home|fa-home': {
-
+		'Onboarding': '/onboarding',
+		'Dashboard': '/dashboard',
+		'Newsletters': '/newsletters'
 	},
-	'Orders|fa-inbox': {
-
+	'Order|fa-inbox': {
+		'View Orders': '/orders',
+		'Return Request': '/returns'
 	},
 	'Product|fa-tag': {
-	  	'View': '/products',
-	  	'Add': ['/products/select', '/products/add'],	
-	  	'Import': '/products/import',
-	  	'Export': '/products/export',
+	  	'View Products': '/products',
+	  	'Add Product': ['/products/select', '/products/add'],
+	  	'Import - Add Products': '/products/import',
+			'Import - Update Products': '/products/update',
+	  	'Export Products': '/products/export',
 	  	'Local Category|margin-top-30': '/categories',
 	  	'Product Reviews': '/products/reviews',
-	  	'Image Management': '/products/images'
+	  	'Image Management': '/products/images',
+	  	'Pending Products': '/products/groups'
 	},
 
 	'Inventory|fa-archive': {
-		'View': '/inventory'
+		'View Inventory': '/inventory'
 	},
 
 	'Promotion|fa-bookmark': {
@@ -85,44 +90,59 @@ var seller = {
 		'Shop Appearance': '/shops/appearance'
 	},
 
-	'Report|fa-line-chart': {
 
-	},
 	'Account|fa-user': {
 		'User Accounts': '/accounts',
 		'User Roles': '/roles'
 	}
 };
-
 var admin = {
 	'Products|fa-tag': {
 		'View All Products': '/admin/products',
 		'Approve Products': '/admin/approve',
-		'Master Products': '/admin/master',
-		'Brands': '/admin/brands',
-		'Attributes': '/admin/attributes',
-		'Attribute Sets': '/admin/attributesets',
+		'Pending Products': ['/admin/groups', '/admin/groups/add'],
+		'Master Products': ['/admin/masters', '/admin/masters/add'],
+		'Brands': ['/admin/brands', '/admin/brands/add'],
+		'Attributes': ['/admin/attributes', '/admin/attributes/add'],
+		'Attribute Sets': ['/admin/attributesets', '/admin/attributesets/add'],
 		'Global Category': '/admin/categories'
 	},
 	'Accounts|fa-user': {
-		'Shop Accounts': '/admin/shops',
-		'Shop Types': '/admin/shoptypes',
-		'Admin Accounts': '/admin/accounts',
-		'Admin Roles': '/admin/roles'
+		'Seller Accounts': '/admin/sellers',
+		'Shop Accounts': ['/admin/shops', '/admin/shops/add'],
+		'Shop Types': ['/admin/shoptypes', '/admin/shoptypes/add'],
+		'Admin Accounts': ['/admin/accounts', '/admin/accounts/add'],
+		'Admin Roles': ['/admin/roles', '/admin/roles/add']
 	},
 	'Promotion|fa-bookmark': {
-		'Global Coupons': '/admin/coupons/admin',
+		'Global Coupons': '/admin/coupons/global',
 		'Seller Coupons': '/admin/coupons/seller'
-	},
-	'Reports|fa-line-chart': {
-		'View': '/admin/reports'
 	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'
 	}
 };
+var permission = {
+	//Admin
+	'View All Products': '/admin/products',
+	'Approve Products': '/admin/approve',
+	'Manage Pending Products': '/admin/groups',
+	'Manage Master Products': '/admin/masters',
+	'Manage Brands': '/admin/brands',
+	'Manage Attribute & Attribute Sets': ['/admin/attributes', '/admin/attributesets'],
+	'Manage Global Categories': '/admin/categories',
+	'Manage Seller Accounts': '/admin/sellers',
+	'Manage Shops': ['/admin/shops', '/admin/shoptypes'],
+	'Manage Admin': ['/admin/accounts', '/admin/roles'],
+	'Manage Global Coupons': '/admin/coupons/global',
+	'Manage Seller Coupons': '/admin/coupons/seller',
+	'Manage Newsletter': '/admin/newsletters'
+
+};
 
 module.exports = {
   seller: generateRouteArray(seller),
-  admin: generateRouteArray(admin)
+  admin: generateRouteArray(admin),
+  reserve: ['add', 'select', 'import', 'update', 'export', 'reviews', 'images'],
+  permission: permission
 }

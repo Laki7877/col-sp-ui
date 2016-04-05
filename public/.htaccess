@@ -1,11 +1,6 @@
 RewriteEngine On
 RewriteBase /
 
-AuthType Basic
-AuthName "Password Protected Area"
-AuthUserFile /var/www/.htpasswd
-Require valid-user
-
 RewriteCond %{REQUEST_URI} .*
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

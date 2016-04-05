@@ -45,25 +45,38 @@
 			</div>
 		</div>
 		<nc-alert nc-model="alert"></nc-alert>
-		<?php $this->insert('components/page-title-breadcrumb-border', ['text' => 'Products/{{title}}','urls' => ['/products']]) ?>
+		<nc-page-title nc-title="Products/{{title}}" link="/products" icon="fa-tag"></nc-page-title>
 
 		<form class="ah-form sticky-mainform-action">
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
 					<div id="import-product-content-page">
-						<div class="row">
+						<div ng-if="!update" class="row">
 							<div class="col-xs-12">
 								<div class="form-section">
 									<div class="form-section-header"><h2>Getting Started</h2></div>
 									<div class="form-section-content">
-
 										<div class="form-group ">
 											<div class="width-label"><label class="control-label">Add Products Template</label></div>
 											<div class="button-size-large">
 												<a class="button-size-large btn btn-white btn-width-xl" data-toggle="modal" data-target="#modal-choose-template">Download Template</a>
 											</div>
 										</div>
-
+									</div>
+								</div>
+							</div>
+						</div>
+						<div ng-if="update" class="row">
+							<div class="col-xs-12">
+								<div class="form-section">
+									<div class="form-section-header"><h2>Getting Started</h2></div>
+									<div class="form-section-content">
+										<div class="form-group ">
+											<div class="width-label"><label class="control-label">If not already export</label></div>
+											<div class="button-size-large">
+												<a class="button-size-large btn btn-white btn-width-xl" href="/products/export">Export All Product</a>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -172,11 +185,8 @@
 														nc-template-options-path="productImport/Name"
 														nc-label="Name">{{ctrl.columnSearch.HeaderName}}</div>
 													<div nc-template="common/input/form-group-with-label"
-														nc-template-options-path="productImport/Description"
-														nc-label="Description">{{ctrl.columnSearch.Description}}</div>
-													<div nc-template="common/input/form-group-with-label"
 														nc-template-options-path="productImport/EnableVariation"
-														nc-label="Enable Variation">{{ctrl.columnSearch.IsVariation | mapDropdown: yesNoOptions}}</div>
+														nc-label="Enable Variation">{{ctrl.columnSearch.IsVariant | mapDropdown: yesNoOptions}}</div>
 													<div nc-template="common/input/form-group-with-label"
 														nc-template-options-path="productImport/AttributeType"
 														nc-label="Attribute Type">
@@ -188,7 +198,7 @@
 														<ul class="scrollable-content">
 															<li ng-repeat="attr in ctrl.columnSearch.AttributeValue track by $index">
 																<span>{{attr.AttributeValueEn}}</span>
-																<a class="margin-left-10" clipboard text="ctrl.AttributeValueEn">Copy to Clipboard</a>
+																<a class="margin-left-10" clipboard text="attr.AttributeValueEn">Copy to Clipboard</a>
 															</li>
 														</ul>
 													</div>
@@ -223,14 +233,17 @@
 									<div class="form-section-content">
 										<div nc-template="common/input/form-group-with-label"
 											nc-template-form="form.Upload"
-											nc-label="Choose File"
+											nc-label="Choose File (.csv)"
 											nc-template-options-path="productImport/Upload">
-											<div type="text" class="width-100-percent form-control get_file" ng-delegate="f"><span ng-if="uploader.queue.length == 0" class="color-grey">Browse to upload</span><span ng-if="uploader.queue.length > 0">{{ uploader.queue[uploader.queue.length-1].file.name }}</span></div>
+											<div type="text" class="width-100-percent form-control get_file" nv-file-select uploader="uploader" accept=".csv">
+												<span ng-if="uploader.queue.length == 0" class="color-grey">Browse file to upload</span>
+												<span ng-if="uploader.queue.length > 0">{{ uploader.queue[uploader.queue.length-1].file.name }}</span>
+											</div>
 											<i class="fa fa-folder-open fa-lg color-dark-grey fa-input-icon"></i>
 											<input nv-file-select uploader="uploader" accept=".csv" type="file" class="my_file"/>
 										</div>
 										<div nc-template="common/input/form-group-with-label" nc-label="">
-											<button ng-click="import()" class="button-size-normal btn btn-blue btn-width-xl" ng-disabled="uploader.queue.length == 0" type="button">Import</button>
+											<button ng-click="import()" class="button-size-large btn btn-blue btn-width-xl" ng-disabled="uploader.queue.length == 0" type="button">Import Product</button>
 										</div>
 									</div>
 								</div>

@@ -1,6 +1,6 @@
 //TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in poon's local)
-module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(common, $base64, storage, $q, $rootScope) {
-    'use strict';
+module.exports = function(common, $base64, storage, $q, $rootScope) {
+    'ngInject';
 
 	var service = {};
 
@@ -15,28 +15,57 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
     service.getRedirPath = function(profile){
         if(profile.User.IsAdmin === true){
             return '/admin'
+        } else {
+        	if(profile.Shop) {
+        		return profile.Shop.Status == 'AT' ? '/dashboard' : '/onboarding';
+        	} else {
+        		return '/products';
+        	}
         }
-        return '/products'
-    }
+    };
 
-	service.login = function(user, pass, remember){
-		var deferred = $q.defer(); 
-		storage.storeSessionToken($base64.encode(user + ":" + pass), true);
+	service.login = function(user, pass, admin){
+		var deferred = $q.defer();
 		common.makeRequest({
-			type: 'GET',
-			url: '/Users/Login/'
+			method: 'POST',
+			url: '/Users/Login',
+			data: {
+				Email: user,
+				Password: pass,
+				IsAdmin: admin || false
+			}
 		}).then(function(r){
 			storage.storeCurrentUserProfile(r, true);
+			storage.storeSessionToken(r.User.Token, true);
 			deferred.resolve(r);
 		}, deferred.reject);
 
 		return deferred.promise;
 	};
 
-	service.loginAs = function(User){
+	service.checkToken = function() {
+		return common.makeRequest({
+			method: 'GET',
+			url: '/Tokens/Validation'
+		});
+	};
+	service.loginWithToken = function(token, remember) {
+		var deferred = $q.defer(); 
+		storage.storeSessionToken(token, true);
+		common.makeRequest({
+			method: 'GET',
+			url: '/Users/Profile'
+		}).then(function(r){
+			storage.storeCurrentUserProfile(r, true);
+			deferred.resolve(r);
+		}, deferred.reject);
+		return deferred.promise;
+	};
+
+	service.loginAs= function(User){
 		var deferred = $q.defer();
 	 	common.makeRequest({
-			type: 'GET',
+			method: 'GET',
 			url: '/Users/Admin/Login/' + User.UserId
 		}).then(function(r){
 			storage.storeCurrentUserProfile(r, true);
@@ -50,7 +79,7 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 	service.logoutAs = function(){
 		var deferred = $q.defer();
 		common.makeRequest({
-			type: 'GET',
+			method: 'GET',
 			url: '/Users/Admin/LogoutAs'
 		}).then(function(r){
             storage.clearImposterProfile();
@@ -62,8 +91,20 @@ module.exports = ['common', '$base64', 'storage', '$q', '$rootScope', function(c
 	};
     
     service.logout = function(){
-		storage.clear();
+		var deferred = $q.defer();
+		common.makeRequest({
+			method: 'GET',
+			url: '/Users/Logout'
+		}).then(function(r){
+			storage.clear();
+            deferred.resolve(r);
+		}, function() {
+			storage.clear();
+			deferred.reject(r);
+		});
+
+		return deferred.promise;
 	};
 
 	return service;
-}];
+};

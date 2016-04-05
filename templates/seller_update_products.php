@@ -21,7 +21,7 @@
 					<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
 
 						<div id="import-product-content-page">
-	
+
 							<div class="row">
 								<div class="col-xs-12">
 									<div class="form-section">
@@ -61,7 +61,7 @@
 										<div class="form-section-header"><h2>Brand Guideline</h2></div>
 										<div class="form-section-content">
 											<? $this->insert('components/forms/input-text-with-label', ["label" => "Search Brand", 'input_class' => 'input-icon-right-search', 'placeholder' => 'Search for Brand Name']) ?>
-											
+
 											<div class="form-group ">
 												<div class="width-label">
 													<label class="control-label ">
@@ -86,7 +86,7 @@
 										<div class="form-section-header"><h2>Attribute Guideline</h2></div>
 										<div class="form-section-content">
 											<? $this->insert('components/forms/input-text-with-label', ["label" => "Search Attribute", 'input_class' => 'input-icon-right-search', 'placeholder' => 'Search for Attribute Name']) ?>
-											
+
 											<div class="form-group ">
 												<div class="width-label">
 													<label class="control-label ">
@@ -306,7 +306,7 @@
                     </div>
                 </div>
                 <div class="category-footer no-padding">
-                    
+
 
                  	<span class="float-left">
                  		<div class="dropdown">

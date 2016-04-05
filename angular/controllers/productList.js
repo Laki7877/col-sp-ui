@@ -1,4 +1,4 @@
-module.exports = function ($scope, $controller, Product, util, Alert, $window, $rootScope, config, storage) {
+module.exports = function ($scope, $controller, common, Product, util, $window, $rootScope, config, storage, $base64, $timeout) {
     'ngInject';
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
@@ -19,11 +19,12 @@ module.exports = function ($scope, $controller, Product, util, Alert, $window, $
                 'Show',
                 {
                     name: 'Publish',
-                    fn: function(arr) {
+                    fn: function(arr, cb) {
                         $scope.alert.close();
                         Product.bulkPublish(_.map(arr, function(e) {
                             return _.pick(e, ['ProductId']);
                         })).then(function() {
+                            cb();
                             $scope.alert.success('Successfully published ' + arr.length + ' products')
                         }, function(resp) {
                             $scope.alert.error(common.getError(resp));
@@ -36,6 +37,37 @@ module.exports = function ($scope, $controller, Product, util, Alert, $window, $
                         message: 'Are you sure you want to publish {{model.length}} products?',
                         btnConfirm: 'Publish',
                         btnClass: 'btn-green'
+                    }
+                },
+                {
+                    name: 'Add Tags',
+                    fn: function(add, cb, r) {
+                        $scope.alert.close();
+                        Product.addTags(r).then(function() {
+                            cb();
+                            $scope.alert.success('Successfully add tags for ' + add.length + ' products')
+                        }, function(resp) {
+                            $scope.alert.error(common.getError(resp));
+                        }).finally(function() {
+                            $scope.reload();
+                        });
+                    },
+                    modal: {
+                        size: 'size-warning',
+                        templateUrl: 'product/modalAddTags',
+                        controller: function($scope, $uibModalInstance, data) {
+                            $scope.model = {
+                                tags: []
+                            };
+                            $scope.close = function() {
+                                $uibModalInstance.close({
+                                    Products: _.map(data, function(e) {
+                                        return _.pick(e, ['ProductId']);
+                                    }),
+                                    Tags: $scope.model.tags
+                                })
+                            };
+                        }
                     }
                 }
             ],
@@ -58,13 +90,12 @@ module.exports = function ($scope, $controller, Product, util, Alert, $window, $
     $scope.startExportProducts = function () {
         $scope.exporter = {
             progress: 10,
-        	  title: 'Exporting...'
+        	  title: 'Exporting Product...'
         };
         $("#export-product").modal('show');
     };
-    $scope.confirmExportProducts = function(){
+    $scope.confirmExportProducts = function() {
         $("#export-product").modal('hide');
-
         var arr = [];
         Object.keys($scope.checkBoxCache).forEach(function (m) {
             if (!$scope.checkBoxCache[m]) return;
@@ -113,9 +144,27 @@ module.exports = function ($scope, $controller, Product, util, Alert, $window, $
     $scope.asStatus = function (ab) {
         return $scope.statusLookup[ab];
     };
+    $scope.getTag = function(tags) {
+        return _.join(tags, ', ');
+    }
     $scope.exportSelected = function(){
       document.getElementById('exportForm').submit();
     };
+
+    $scope.searchCriteria = null;
+    $scope.exportSearchResult = function(){
+            var K = _.extend({}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams));
+            K._limit = 2147483647;
+            $scope.searchCriteria = $base64.encode(JSON.stringify(K));
+
+            $timeout(function(){
+                console.log('searchCriteria', $scope.searchCriteria);
+                document.getElementById('exportForm').submit();
+            });
+
+
+
+    }
 
     var fromImport = storage.get('import.success');
     if(!_.isEmpty(fromImport)) {

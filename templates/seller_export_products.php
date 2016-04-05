@@ -7,23 +7,21 @@
 		<?php $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
 		<?php $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
 		<?php $this->insert('components/modal-export-product-complete', ['id' => 'export-product-complete']) ?>
+       <nc-alert nc-model="alert"></nc-alert>
 
 		<div class="page-header with-border" ng-show="loading.length >= 2">
 
-		    <h1 class="float-left page-header-title ah-breadcrumb">
-		    	<a href="/products" class="ah-breadcrumb-path ah-breadcrumb-idx-0">Products</a>
-		    	<span class="ah-breadcrumb-splitter">/</span>
-		    	<a href="#" class="ah-breadcrumb-path ah-breadcrumb-idx-1">Export</a>
-		    </h1>
-
-		    <span class="float-right page-header-action">
-		        <a href="/products" class="btn margin-left-10 btn-white btn-width-xl">
+				<nc-page-title nc-title="Products/Export" link="/products" icon="fa-tag">
+					<div class="page-header">
+						<a href="/products" class="btn margin-left-10 btn-white btn-width-xl">
 		          	<span class="">Cancel</span>
 		        </a>
 		        <a href="#" class="btn margin-left-10 btn-blue  btn-width-xl" ng-click="startExportProducts()">
 		          	<span class="">Export</span>
 		        </a>
-		    </span>
+					</div>
+				</nc-page-title>
+				
 		</div>
 
 			<form class="ah-form sticky-mainform-action" ng-show="loading.length >= 2">
@@ -47,28 +45,25 @@
 										<div class="form-section-content">
 
 											<div class="row">
-												<div nc-template="common/input/form-group-with-label"
-												nc-template-options-path="productExport/MultiCheckbox"
-												nc-label="">
+												<div class="col-sm-12 export-select-all">
 													<label>
-														<input type="checkbox" ng-click="toggleSelectAll()" ng-model="ctrl.selectAll"/> Select All
+														<input type="checkbox" ng-click="toggleSelectAll()" ng-model="ctrl.selectAll"/> Select All 
 													</label>
 												</div>
-
-												<div ng-repeat="(group, items) in availableFields">
-													<div nc-template="common/input/form-group-with-label"
-													nc-template-options-path="productExport/MultiCheckbox"
-													nc-label="{{group}}">
-													<label ng-repeat="item in items">
-														<input type="checkbox" name="fieldfilter"
-														 ng-disabled="item.MapName == 'PID'"
-														 ng-model="fields[item.MapName]"> 	{{ item.HeaderName }}
-													</label>
-													</div>
+												<div class="col-sm-{{12/columnCount}}" ng-repeat="col in _.range(columnCount)">
+													<ul class="export-list" ng-repeat="(group, items) in availableFieldsColumn[col]">
+														<li class="group-label">
+															{{ group }}
+														</li>
+														<li ng-repeat="item in items">
+															<label>
+																<input type="checkbox" name="fieldfilter"
+																 ng-disabled="item.MapName == 'PID'"
+																 ng-model="fields[item.MapName]"> 	{{ item.HeaderName }}
+															</label>
+														</li>
+													</ul>
 												</div>
-
-
-
 											</div>
 
 										</div>

@@ -6,11 +6,10 @@
 
 .onboarding_wrapper
 	background-image: url('/assets/img/bg-onboarding.png')
-	background-size: 1025px 478px
+	background-size: 1100px 200px
 	background-color: #f8e6e6
 	background-repeat: no-repeat
-	background-position: center 48%
-	background-origin: content-box
+	background-position: center top
 	margin-top: -30px
 	margin-bottom: -30px
 	margin-left: -40px
@@ -27,8 +26,9 @@
 
 .onboarding_content
 	margin-top: -36px
-	margin-left: 190px
-	margin-right: 190px
+	width: 800px
+	margin-left: auto
+	margin-right: auto
 
 	> .home_task_space
 		margin-bottom: 20px
@@ -70,8 +70,27 @@
 			transform: translate(-50%, -50%)
 			background-color: white
 
+	.empty-section
+		border: none
+		margin: 0
+		height: 44px
+		line-height: 44px
+		padding: 0
+
+		i
+			font-size: 25px
+			vertical-align: middle
+
+	.loading_text
+		display: inline
+
 
 #dashboard_page
+	.remark
+		font-size: 12px
+		line-height: 12px
+		color: $color-grey
+		float: right
 	.dashboard_column:first-child
 		padding-left: 0px
 
@@ -80,7 +99,8 @@
 
 	.dashboard_graph
 		canvas
-			height: 280px !important
+			width: 100%
+			height: 300px
 
 	.with_border
 		border: 1px solid $header-border-grey
@@ -97,6 +117,9 @@
 		line-height: 27px
 		border-radius: 3px
 
+	.revenue_pannel
+		padding-bottom: 25px
+
 	.logo-img
 		max-width: 40px
 		max-heigh: 40px
@@ -107,8 +130,8 @@
 
 	.header-link
 		> .active-underline
-		border-bottom: 2px solid $color-soft-blue
-		padding-bottom: 4px
+			border-bottom: 2px solid $color-soft-blue
+			padding-bottom: 4px
 		&:focus
 			text-decoration: none
 
@@ -152,6 +175,7 @@
 		padding-top: 5px
 		border: none
 		position: relative
+		cursor: default
 
 		& div:first-child
 			padding-right: 0
@@ -201,38 +225,62 @@
 			&.column-text-ellipsis
 				max-width: 0
 
+		tr:hover
+			td
+				cursor: pointer
+				color: $color-theme
+			td.empty_data
+				cursor: default
+				color: $color-black
+
 		tr:last-child
+			td
+				border-bottom: 0
+				padding-bottom: 0
+
+		tr:nth-last-child(2)
 			td
 				border-bottom: 0
 				padding-bottom: 0
 
 	.table_recent_order
 		td:first-child
-			width: 100px
-
-		td:nth-child(2)
 			width: 120px
 
-		td:nth-child(3)
-			width: 	120px
+		td:nth-child(2)
+			width: 200px
 
-		td:last-child
-			padding-left: 30px
-			width: 56px
+		td:nth-child(3)
+			width: 200px
+
+		td:nth-child(4)
+			text-align: right
+
+		td.empty_data
+			text-align:	center
+			padding-left:	0
+
 
 	.table_lsa
 		td:first-child
-			width: 100px
-
-		td:nth-child(2)
 			width: 120px
 
+		td:nth-child(2)
+			width: 300px
 
-		td:last-child
-			padding-left: 30px
-			width: 80px
+		td:nth-child(3)
+			text-align: right
+
+		td.empty_data
+			text-align:	center
+			padding-left:	0
 
 	.table_newsletter
+
+		td.empty_data
+			text-align:	center
+			padding-left:	0
+
 		.newsletter_date
 			font-size: 12px
 			margin-top: 5px
@@ -241,6 +289,23 @@
 			padding-left: 30px
 			width: 80px
 
+			&.empty_data
+				padding-left: 0
+
+		tr:hover
+			td
+				cursor: default
+				color: $color-black
 	.account_health
 		.group_container:last-child
 			padding: 10px 0px 0px 0px
+
+	.view_all_row
+		text-align: center
+		margin-top: 15px
+		padding-top: 15px
+		border-top: solid 1px $color-grey
+
+	.loading_row
+		text-align: center
+		margin-top: 15px

@@ -5,19 +5,18 @@
     <nc-alert nc-model="alert"></nc-alert>
    <!-- <? $this->insert('components/alert-text', ['close' => true, 'color' => 'green', 'text' => "Successfully save changes. However,your changes won't be online until you published your products." ]) ?>
      -->
-    <div class="page-header with-border">
-        <h1 class="float-left page-header-title">Image Management</h1>
-        <span class="float-right page-header-action">
-            <a class="btn btn-white btn-width-xl margin-right-10" data-toggle="modal" data-target="#image-guideline">
-              <span class="">View Guideline</span>
-            </a>
-            <button ng-click="save()" class="btn btn-blue btn-width-xl">
-              <span class="login-loading" ng-cloak ng-show="saving">
-                <i class="fa fa-spinner fa-spin" ></i>
-              </span>Save
-            </button>
-        </span>
-    </div>
+    <nc-page-title nc-title="Image Management" icon="fa-tag">
+      <span class="float-right page-header-action">
+          <a class="btn btn-white btn-width-xl margin-right-10" data-toggle="modal" data-target="#image-guideline">
+            <span class="">View Guideline</span>
+          </a>
+          <button ng-click="save()" class="btn btn-blue btn-width-xl">
+            <span class="login-loading" ng-cloak ng-show="saving">
+              <i class="fa fa-spinner fa-spin" ></i>
+            </span>Save
+          </button>
+      </span>
+    </nc-page-title>
 
     <div class="row search-section-wrapper">
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Product Name and PID'" nc-search-event="onUnsave"></nc-search>
@@ -40,7 +39,10 @@
                     </div>
                     <div class="form-section-content">
                       <div class="content-text">
-                        <div><h4>{{ product.ProductNameEn }}</h4>{{ product.VariantAttribute | variantValue }}</div>
+                        <div><h4>{{ product.ProductNameEn }}</h4>
+                          <span ng-if="product.IsVariant">{{ product.VariantAttribute | variantValue }}</span>
+                          <span ng-if="product.VariantCount > 0">Parent Product</span>
+                        </div>
                         <hr/>
                         <div class="margin-top-5">PID: {{ product.Pid }}</div>
                         <div class="margin-top-5">Status:</div>
@@ -53,23 +55,23 @@
                           </div>
                         </div>
                         <div class="drop-zone-container {{ getContainer(product) }}">
-                          <nc-image-dropzone 
-                            ng-if="product.IsVariant" 
-                            nc-model="product.VariantImg" 
-                            nc-image-template="{{getTemplate(product)}}" 
-                            nc-image-uploader="uploader" 
-                            nc-image-dropzone-options="imageDropzoneOptions" 
-                            nc-image-dropzone-on-error="onError(product, $response)" 
+                          <nc-image-dropzone
+                            ng-if="product.IsVariant"
+                            nc-model="product.VariantImg"
+                            nc-image-template="{{getTemplate(product)}}"
+                            nc-image-uploader="uploader"
+                            nc-image-dropzone-options="imageDropzoneOptions"
+                            nc-image-dropzone-on-error="onError(product, $response)"
                             nc-image-dropzone-on-event="onEvent(product, $eventName)"
                             is-uploading="product.isUploading"
                             ></nc-image-dropzone>
-                          <nc-image-dropzone 
-                            ng-if="!product.IsVariant" 
-                            nc-model="product.MasterImg" 
-                            nc-image-template="{{getTemplate(product)}}" 
-                            nc-image-uploader="uploader" 
-                            nc-image-dropzone-options="imageDropzoneOptions" 
-                            nc-image-dropzone-on-error="onError(product, $response)" 
+                          <nc-image-dropzone
+                            ng-if="!product.IsVariant"
+                            nc-model="product.MasterImg"
+                            nc-image-template="{{getTemplate(product)}}"
+                            nc-image-uploader="uploader"
+                            nc-image-dropzone-options="imageDropzoneOptions"
+                            nc-image-dropzone-on-error="onError(product, $response)"
                             nc-image-dropzone-on-event="onEvent(product, $eventName)"
                             is-uploading="product.isUploading"
                             ></nc-image-dropzone>

@@ -1,6 +1,5 @@
-var angular = require('angular');
-
-module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$interpolate', 'KnownException', function (storage, config, common, $window, $rootScope, $interpolate, KnownException) {
+module.exports = function (storage, config, common, $window, $rootScope, $interpolate, KnownException, $uibModal) {
+    'ngInject';
     'use strict';
     var service = {};
 
@@ -9,9 +8,13 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     service.variant.toString = function (a, b) {
         var left = null;
         var right = null;
-        left = (a.ValueEn || a.AttributeValueEn || a.AttributeValues.length && a.AttributeValues[0].AttributeValueEn || '');
-        right = (b.ValueEn || b.AttributeValueEn || b.AttributeValues.length > 0 && b.AttributeValues[0].AttributeValueEn || '');
-        console.log(a,b, 'toString variant');
+        left = (a.ValueEn || a.AttributeValueEn || a.AttributeValues.length > 0 && a.AttributeValues[0].AttributeValueEn || '');
+        if(b == null){
+          right = '';
+        }else{
+          right = (b.ValueEn || b.AttributeValueEn || b.AttributeValues.length > 0 && b.AttributeValues[0].AttributeValueEn || '');
+        }
+
         return left + (right ? ", " + right : "");
     };
 
@@ -61,6 +64,12 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
         if (!('HB' in DataTypeDropDown)) throw new KnownException("HTML Box in no longer 'HB' in config");
         return (dataType == 'HB');
     }
+
+    service.isCheckboxDataType = function (dataType) {
+        if (!('CB' in DataTypeDropDown)) throw new KnownException("Checkbox in no longer 'CB' in config");
+        return (dataType == 'CB');
+    }
+
 
     service.tableSortClass = function ($scope) {
         return function (id, flag) {
@@ -168,32 +177,31 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     };
 
     //Create bulk-action from template
-    service.bulkDelete = function (rest, id, item, alert, reload, onload) {
+    service.bulkDelete = function (scope, options) {
         return {
             name: 'Delete',
             fail: function() {
-                alert.error('Unable to delete. Please select ' + item + ' for this action.');
+                scope.alert.error('Unable to delete. Please select ' + options.item + ' for this action.');
             },
             fn: function (array, cb) {
-                alert.close();
+                scope.alert.close();
 
                 //Only pass ShopId
                 var array = _.map(array, function (e) {
-                    return _.pick(e, [id]);
+                    return _.pick(e, [options.id]);
                 });
 
-                //On launch endpoint
-                (onload || _.noop)();
+                scope.loading = true;
 
                 //Delete bulk
-                rest.delete(array)
+                options.service.delete(array)
                     .then(function () {
-                        alert.success('Delete successful.');
+                        scope.alert.success('Delete successful.');
                         cb();
                     }, function (err) {
-                        alert.error(common.getError(err));
+                        scope.alert.error(common.getError(err));
                     })
-                    .finally(reload);
+                    .finally(scope.reload);
             },
             confirmation: {
                 title: 'Confirm to delete',
@@ -204,31 +212,33 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
         };
     };
 
-    service.bulkShow = function (rest, id, item, alert, reload) {
+    service.bulkShow = function (scope, options) {
         return {
             name: 'Show',
             fail: function() {
-                alert.error('Unable to change visibility. Please select ' + item + ' for this action.');
+                scope.alert.error('Unable to change visibility. Please select ' + options.item + ' for this action.');
             },
             fn: function (array, cb) {
-                alert.close();
+                scope.alert.close();
 
                 //Only pass ShopId
                 var array = _.map(array, function (e) {
-                    var i = _.pick(e, [id]);
+                    var i = _.pick(e, [options.id]);
                     i.Visibility = true;
                     return i;
                 });
 
+                scope.loading = true;
+
                 //Delete bulk
-                rest.visible(array)
+                options.service.visible(array)
                     .then(function () {
-                        alert.success('Changed successful.');
+                        scope.alert.success('Changed successful.');
                         cb();
                     }, function (err) {
-                        alert.error(common.getError(err));
+                        scope.alert.error(common.getError(err));
                     })
-                    .finally(reload);
+                    .finally(scope.reload);
             },
             confirmation: {
                 title: 'Confirm to show',
@@ -238,31 +248,34 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
         };
     };
 
-    service.bulkHide = function (rest, id, item, alert, reload) {
+    service.bulkHide = function (scope, options) {
         return {
             name: 'Hide',
             fail: function() {
-                alert.error('Unable to hide. Please select ' + item + ' for this action.');
+                scope.alert.error('Unable to hide. Please select ' + options.item + ' for this action.');
             },
             fn: function (array, cb) {
-                alert.close();
+                scope.alert.close();
 
                 //Only pass ShopId
                 var array = _.map(array, function (e) {
-                    var i = _.pick(e, [id]);
+                    var i = _.pick(e, [options.id]);
                     i.Visibility = false;
                     return i;
                 });
+                
+                //On launch endpoint
+                (onload || _.noop)();
 
                 //Delete bulk
-                rest.visible(array)
+                options.service.visible(array)
                     .then(function () {
-                        alert.success('Changed successful.');
+                        scope.alert.success('Changed successful.');
                         cb();
                     }, function (err) {
-                        alert.error(common.getError(err));
+                        scope.alert.error(common.getError(err));
                     })
-                    .finally(reload);
+                    .finally(scope.reload);
             },
             confirmation: {
                 title: 'Confirm to hide',
@@ -274,78 +287,81 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
     };
 
     //Create action from template
-    service.actionView = function (uri, id, name) {
+    service.actionView = function (scope, options) {
         return {
-            name: name || 'View / Edit',
+            name: options.name || 'View / Edit',
             fn: function (item) {
-                $window.location.href = uri + '/' + item[id];
+                $window.location.href = options.url + '/' + item[options.id];
             }
         };
     };
 
     //Create action from template
-    service.actionDelete = function (rest, id, item, alert, reload, cb) {
+    service.actionDelete = function (scope, options, cb) {
         return {
             name: 'Delete',
             fn: function (obj) {
-                alert.close();
+                scope.alert.close();
 
                 //Only pass id
-                var obj = _.pick(obj, [id]);
+                var obj = _.pick(obj, [options.id]);
 
+                scope.loading = true;
 
                 //Delete bulk
-                rest.delete([obj])
+                options.service.delete([obj])
                     .then(function () {
-                        alert.success('Delete successful.');
-                        cb(obj, id);
+                        scope.alert.success('Delete successful.');
+                        cb(obj, options.id);
                     }, function (err) {
-                        alert.error(common.getError(err));
+                        scope.alert.error(common.getError(err));
                     })
-                    .finally(reload);
+                    .finally(scope.reload);
             },
             confirmation: {
                 title: 'Delete',
-                message: 'Are you sure you want to delete selected ' + item + '?',
+                message: 'Are you sure you want to delete selected ' + options.item + '?',
                 btnConfirm: 'Delete',
                 btnClass: 'btn-red'
             }
         };
     };
     //Create action from template
-    service.actionDuplicate = function (rest, id, item, alert, reload) {
+    service.actionDuplicate = function (scope, options) {
         return {
             name: 'Duplicate',
             fn: function (obj) {
-                alert.close();
+                scope.alert.close();
 
-                //Delete bulk
-                rest.duplicate(obj[id])
+                scope.loading = true;
+
+                //Duplicate
+                options.service.duplicate(obj[options.id])
                     .then(function () {
                         alert.success('Duplicate successful.');
                     }, function (err) {
                         alert.error(common.getError(err));
                     })
-                    .finally(reload);
+                    .finally(scope.reload);
             },
             confirmation: {
                 title: 'Duplicate',
-                message: 'Are you sure you want to duplicate selected ' + item + '?',
+                message: 'Are you sure you want to duplicate selected ' + options.item + '?',
                 btnConfirm: 'Duplicate'
             }
         };
     };
 
-    service.eyeToggle = function (rest, id, alert, reload) {
+    service.eyeToggle = function (scope, options) {
         return function (item) {
             item.Visibility = !item.Visibility;
-            rest.visible([_.pick(item, [id, 'Visibility'])])
+            options.service.visible([_.pick(item, [options.id, 'Visibility'])])
                 .then(function () {
                     //success
                 }, function (err) {
                     alert.error(common.getError(err));
                 })
-                .finally(reload);
+                .finally(scope.reload);
         };
     };
 
@@ -364,12 +380,49 @@ module.exports = ['storage', 'config', 'common', '$window', '$rootScope', '$inte
         var content = '';
         scope.content = item;
 
-        if (id > 0) {
-            content = $interpolate(config.TITLE.DETAIL)(scope);
+        if (id != 0) {
+            content = pluralize(item) + '/' + $interpolate(config.TITLE.DETAIL)(scope);
         } else {
-            content = $interpolate(config.TITLE.CREATE)(scope);
+            content = pluralize(item) + '/' + $interpolate(config.TITLE.CREATE)(scope);
         }
         return content;
     }
+
+    service.confirm = function(title, message, yes, no, cls) {
+        return $uibModal.open({
+            size: 'size-warning',
+            templateUrl: 'common/ncActionModal',
+            controller: function($scope, $uibModalInstance) {
+                'ngInject';
+                $scope.title = title;
+                $scope.message = message;
+                $scope.btnClass = cls;
+                $scope.btnYes = yes;
+                $scope.btnNo = no;
+                $scope.no = function() {
+                    $uibModalInstance.dismiss();
+                };
+                $scope.yes = function() {
+                    $uibModalInstance.close();
+                };
+            }
+        });
+    }
+
+    //Open preview image modal
+    service.previewImage = function(url) {
+        $uibModal.open({
+            size: 'product-image',
+            template: '<img ng-src="{{url}}" alt=""/>',
+            controller: function($scope, url) {
+                $scope.url = url;
+            },
+            resolve: {
+                url: function() {
+                    return url;
+                }
+            }
+        });
+    };
     return service;
-}];
+};

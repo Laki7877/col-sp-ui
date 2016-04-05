@@ -19,7 +19,14 @@ module.exports = {
       }
     }
   },
-  DateRange: {},
+  DateRange: {
+    labelClass: "required",
+    error: {
+      messages: {
+        required: 'This is a required field'
+      }
+    }
+  },
   DiscountAmount: {
     labelClass: "required",
     hint: {
@@ -33,7 +40,14 @@ module.exports = {
     }
   },
   MaximumAmount: {},
-  MaximumUsers: {},
+  MaximumUsers: {
+    labelClass: "required",
+    error: {
+      messages: {
+        required: 'This is a required field'
+      }
+    }
+  },
   UsagePerCustomer: {},
   ConditionValue: {
     hint: {
@@ -42,9 +56,5 @@ module.exports = {
     }
   },
   FilterByValue: {
-    inputSize: 'xxl'
-  },
-  IncludeProducts: {
-    inputSize: 'xxl'
   }
 }

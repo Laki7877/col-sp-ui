@@ -5,10 +5,15 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerAccountAddCtrl" ng-init="init(<?=$params?>)">
 		<nc-alert nc-model="alert"></nc-alert>
-		<? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "User Accounts/{{title}}", 'urls' => ['/accounts']]) ?>
-		<div ng-show="loading" nc-loading="Loading User Account.."></div>
-		<div ng-show="saving" nc-loading="Saving User Account.."></div>
-		<form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
+	    <nc-page-title nc-title="{{title}}" link="{{url}}" icon="fa-user">
+	      <div class="page-header">
+	        <a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
+	        <button class="btn btn-blue btn-width-xl margin-left-10" ng-click="save()">Save</button>
+	      </div>
+	    </nc-page-title>
+	    <div ng-show="loading" nc-loading="{{loadingMessage}}"></div>
+	    <div ng-show="saving" nc-loading="{{savingMessage}}"></div>
+	    <form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
 					<div id="add-product-more-option-tab-content">
@@ -91,6 +96,31 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 							                  maxlength="20"
 							                  required />
 							              </div>
+							              <!-- Brand -->
+							              <div ng-show="formData.ShopGroup != 'ME'"
+							              	nc-template="common/input/form-group-with-label"
+							              	nc-label="Brand"
+							              	>
+							              	<ui-select ng-model="formData.Brands" multiple>
+							              		<ui-select-match placeholder="Search Brand">{{$item.BrandNameEn}}</ui-select-match>
+							              		<ui-select-choices repeat="item in brands" refresh="getBrands($select.search)" refresh-delay="1">{{item.BrandNameEn}}</ui-select-choices>
+							              	</ui-select>
+							              </div>
+							              <!-- Old Password -->
+							              <!-- <div ng-show="id != 0"
+							              	ng-template="common/input/password"
+							                ng-template-options="{
+							                  'label': 'Old Password',
+							                  'formGroupClass': 'margin-top-30'
+							                }">
+							                <input
+							                  class="form-control"
+							                  type="{{$parent.inputType}}"
+							                  name="OldPassword"
+							                  ng-model="formData.OldPassword"
+							                  ng-class="{ 'has-error' : $root.isInvalid(form.OldPassword) }"
+							                  />
+							              </div> -->
 							              <!-- Password -->
 							              <div ng-template="common/input/password"
 							                ng-template-options="{
@@ -147,7 +177,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 								</div>
 							</div>
 						</div>
-						<div class="row">
+						<div ng-if="!getShopOwner(formData.UserGroup)" class="row">
 							<div class="col-xs-12">
 								<div class="form-section">
 									<div class="form-section-header"><h2>User Roles</h2></div>

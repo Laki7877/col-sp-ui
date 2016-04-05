@@ -2,9 +2,8 @@
 require __DIR__ . '/unicorn.php';
 includeAll(__DIR__ . '/../controllers/*.php');
 
+define('__COOKIE_AUTH_KEY__', 'central_seller_portal_auth_token');
 
-//LOL redirect functions
-//LOL?
 class Redirect {
 	public static function index($params) {
         return View::render('main');
@@ -15,6 +14,19 @@ class Redirect {
     public static function exception($params) {
 		return View::render('exception');
 	}
+	/*
+	public static function handleAuth($route) {
+		if(strpos($route['method'], 'Login') === FALSE && !isset($_COOKIE[__COOKIE_AUTH_KEY__])) {
+			if(strpos($route['uri'], 'Admin') !== FALSE) {
+				//This is admin access attempt, get to admin login
+				header('Location: /admin/login');
+			} else {
+				//This is user access attempt, get to user login
+				header('Location: /login');
+			}
+			return true;
+		}
+	}*/
 }
 
 //index
@@ -25,6 +37,7 @@ Route::add('/exception', 'Redirect::exception');
 
 //login routing
 Route::add('/login', 'LoginController::index');
+Route::add('/admin/login', 'LoginController::indexAdmin');
 
 //product routing
 Route::add('/products', 'ProductController::index');
@@ -33,8 +46,10 @@ Route::add('/products/select', 'ProductController::select');
 Route::add('/products/images', 'ProductController::images');
 Route::add('/products/reviews', 'ProductController::reviews');
 Route::add('/products/export', 'ProductController::export');
-Route::add('/products/import/update', 'ProductController::importUpdate');
+Route::add('/products/update', 'ProductController::importUpdate');
 Route::add('/products/import', 'ProductController::import');
+Route::add('/products/groups', 'ProductController::group');
+Route::add('/products/groups/add', 'ProductController::groupCreate');
 Route::add('/products/:productid', 'ProductController::edit');
 
 //category routing
@@ -42,6 +57,7 @@ Route::add('/categories', 'CategoryController::index');
 
 //Shop Setting tab
 Route::add('/shops/settings', 'ShopController::settings');
+Route::add('/shops/appearance', 'ShopController::appearance');
 
 //seller routing
 Route::add('/accounts', 'SellerController::listAccount');
@@ -50,7 +66,18 @@ Route::add('/accounts/:id', 'SellerController::editAccount');
 Route::add('/roles', 'SellerController::listRole');
 Route::add('/roles/add', 'SellerController::addRole');
 Route::add('/roles/:id', 'SellerController::editRole');
+Route::add('/coupons', 'SellerController::listCoupon');
+Route::add('/coupons/add', 'SellerController::addCoupon');
+Route::add('/coupons/:id', 'SellerController::editCoupon');
+Route::add('/returns', 'SellerController::listReturnRequest');
+Route::add('/returns/:id', 'SellerController::editReturnRequest');
 Route::add('/inventory', 'SellerController::listInventory');
+Route::add('/newsletters', 'SellerController::listNewsletter');
+Route::add('/onboarding', 'SellerController::onboarding');
+Route::add('/dashboard', 'SellerController::dashboard');
+Route::add('/orders', 'SellerController::listOrder');
+Route::add('/orders/:id', 'SellerController::editOrder');
+
 
 //admin routing
 Route::add('/admin/attributes/add','AdminController::addAttribute');
@@ -63,6 +90,7 @@ Route::add('/admin/categories', 'AdminController::category');
 Route::add('/admin/brands', 'AdminController::listBrand');
 Route::add('/admin/brands/add', 'AdminController::addBrand');
 Route::add('/admin/brands/:id', 'AdminController::editBrand');
+Route::add('/admin/sellers', 'AdminController::listSeller');
 Route::add('/admin/accounts', 'AdminController::listAccount');
 Route::add('/admin/accounts/add', 'AdminController::addAccount');
 Route::add('/admin/accounts/:id', 'AdminController::editAccount');
@@ -76,17 +104,25 @@ Route::add('/admin/shoptypes', 'AdminController::listShoptype');
 Route::add('/admin/shoptypes/add', 'AdminController::addShoptype');
 Route::add('/admin/shoptypes/:id', 'AdminController::editShoptype');
 Route::add('/admin/products', 'AdminController::allProducts');
+Route::add('/admin/products/:id', 'AdminController::detail');
 Route::add('/admin/approve', 'AdminController::approve');
-Route::add('/admin/coupons/seller', 'AdminController::seller_coupons');
-Route::add('/admin/coupons/seller/create', 'AdminController::seller_coupons_create');
-Route::add('/admin/coupons/admin', 'AdminController::admin_coupons_list');
-Route::add('/admin/coupons/admin/:id', 'AdminController::admin_coupons_edit');
-Route::add('/admin/coupons/admin/create', 'AdminController::create_admin_coupons_create');
-Route::add('/admin/coupons/admin', 'AdminController::admin_coupons');
-Route::add('/admin/coupons/admin/create', 'AdminController::admin_coupons_create');
+Route::add('/admin/approve/:id', 'AdminController::approveDetail');
+Route::add('/admin/coupons/seller', 'AdminController::listSellerCoupon');
+Route::add('/admin/coupons/seller/:id', 'AdminController::editSellerCoupon');
+Route::add('/admin/coupons/global', 'AdminController::listGlobalCoupon');
+Route::add('/admin/coupons/global/add', 'AdminController::addGlobalCoupon');
+Route::add('/admin/coupons/global/:id', 'AdminController::editGlobalCoupon');
 Route::add('/admin/ontopcredit', 'AdminController::listOntopcredit');
 Route::add('/admin/ontopcredit/create', 'AdminController::addOntopcredit');
 Route::add('/admin/ontopcredit/:id', 'AdminController::editOntopcredit');
+Route::add('/admin/newsletters', 'AdminController::listNewsletter');
+Route::add('/admin/masters', 'AdminController::listMaster');
+Route::add('/admin/masters/add', 'AdminController::addMaster');
+Route::add('/admin/masters/:id', 'AdminController::editMaster');
+Route::add('/admin/groups', 'AdminController::listPendingProduct');
+Route::add('/admin/groups/add', 'AdminController::addPendingProduct');
+Route::add('/admin/groups/:id', 'AdminController::editPendingProduct');
+
 //test route
 Route::add('/test/:name', 'TestController::any');
 

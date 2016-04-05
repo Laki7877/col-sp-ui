@@ -1,72 +1,69 @@
-module.exports = function($rootScope, $scope, Shop, ImageService, NcAlert, config, storage) {
-  $scope.alert = new NcAlert();
+module.exports = function($rootScope, $scope, $controller, ShopProfileService, ImageService, Onboarding, NcAlert, common, config, util, storage) {
+	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
+	$scope.shopGroupDropdown = config.DROPDOWN.SHOP_GROUP_DROPDOWN;
+	$scope.form = {};
+	$scope.alert = new NcAlert();
+	$scope.saving = false;
+	$scope.loading = false;
+	$scope.statusChangeable = false;
 
-  $scope.formData = {
-    ShopId: null,
-    ShopLogo: {},
-    ShopNameEn: null,
-    ShopDescriptionEn: null,
-    ShopDescriptionTh: null,
-    FloatMessageEn: null,
-    FloatMessageTh: null,
-    ShopAddress: null,
-    BankAccountName: null,
-    BankAccountNumber: null,
-    Facebook: null,
-    YouTube: null,
-    Instagram: null,
-    Pinterest: null,
-    GiftWrap: 'NotAvailable',
-    TaxInvoice: 'NotAvailable',
-    StockAlert: null,
-    Logo: {}
-  };
+	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
+		data: { IsLogo: true }
+	});
+	$scope.init = function() {
+		$scope.loading = true;
+		ShopProfileService.list()
+			.then(function(data) {
+				$scope.formData = ShopProfileService.deserialize(data);			
+				Onboarding.getListCompletedTask()
+					.then(function(data) {
+						$scope.statusChangeable = true;
+						_.forOwn(data, function(value) {
+							$scope.statusChangeable = $scope.statusChangeable && value;
+						});		
+					}).finally(function() {
+						$scope.loading = false;
+					});
+			});
+	};
+	$scope.save = function() {
+		if($scope.saving) return;
+		
+		//Activate form submission
+		$scope.form.$setSubmitted();
 
-  $scope.loading = true;
-  $scope.uploadViewBag = {
-    uploader: null,
-    images: []
-  };
-  $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
-
-  $scope.uploadViewBag.uploader = ImageService.getUploader('/ShopImages', {
-    queueLimit: 1
-  });
-
-
-  var onQueueLimit = function(images, item, obj){
-    console.log('queue limit reached');    
-  };
-  
-  ImageService.assignUploaderEvents($scope.uploadViewBag.uploader, $scope.uploadViewBag.images, onQueueLimit, function() {
-    //On Fail
-    alert("Failed to upload image");
-  });
-
-  $scope.init = function() {
-
-    Shop.getProfile().then(function(data) {
-      console.log(data);
-      $scope.formData = Shop.deserialize(data);
-      $scope.loading = false;
-      if (data.Logo.url) $scope.uploadViewBag.images.push(data.Logo);
-    });
-  };
-
-  $scope.save = function() {
-    $scope.formData.Logo = $scope.uploadViewBag.images[0];
-    $scope.alert.close();
-    Shop.saveProfile(Shop.serialize($scope.formData)).then(function(data) {
-      $scope.formData = Shop.deserialize(data); 
-      if (data.Logo.url) {
-        $scope.uploadViewBag.images.pop();
-        $scope.uploadViewBag.images.push(data.Logo);
-      }
-      $scope.alert.success('Saved Profile Successfully');
-      $rootScope.Profile.Shop.Status = data.Status;
-      storage.storeCurrentUserProfile($rootScope.Profile, true);
-    }, function(err) {
-      $scope.alert.error(common.getError(err));
-    });
-  };
+		if($scope.form.$valid) {
+			ShopProfileService.updateAll(ShopProfileService.serialize($scope.formData))
+				.then(function(data) {
+					$scope.formData = ShopProfileService.deserialize(data);
+					$rootScope.Profile.Shop = $scope.formData;
+					storage.storeCurrentUserProfile($rootScope.Profile);
+					$scope.alert.success('Successfully Saved.');
+					$scope.form.$setPristine(true);
+				}, function(err) {
+					$scope.alert.error(common.getError(err));
+				})
+				.finally(function() {
+					$scope.saving = false;
+				});
+		} else {
+			//Form id
+			$scope.alert.error(util.saveAlertError());
+		}
+	}
+	$scope.uploadLogo = function(file) {
+		if(_.isNil(file)) {
+			return;
+		}
+		$scope.formData.ShopImage = {
+			url: '/assets/img/loader.gif'
+		};
+		$scope.logoUploader.upload(file)
+			.then(function(response) {
+				$scope.formData.ShopImage = response.data;
+			}, function(err) {
+				$scope.formData.ShopImage = null;
+				$scope.alert.error(common.getError(err.data));
+			});
+	};
 };

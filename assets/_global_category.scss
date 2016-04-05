@@ -77,9 +77,18 @@
 				padding-bottom: 10px;
 				line-height: 1.2em;
 				cursor: pointer;
+				outline: none;
 				&.category-active {
 					background: $color-blue;
 					color: $color-white;
+				}
+				&.disabled{
+					cursor: not-allowed;
+					color: $color-grey;
+					text-decoration: line-through;
+				}
+				&:focus{
+					outline: none;
 				}
 			}
 
@@ -118,3 +127,174 @@
 		width: ($item-column-size * 5) + 2px;
 	}
 }
+
+/* Source */
+.angular-ui-tree {
+}
+
+.angular-ui-tree-empty {
+	border: 1px dashed #bbb;
+	min-height: 100px;
+	background-color: #e5e5e5;
+	background-image: -webkit-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff), -webkit-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);
+	background-image: -moz-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff), -moz-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);
+	background-image: linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff), linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);
+	background-size: 60px 60px;
+	background-position: 0 0, 30px 30px;
+}
+
+.angular-ui-tree-nodes {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.angular-ui-tree-nodes .angular-ui-tree-nodes {
+	padding-left: 20px;
+}
+
+.angular-ui-tree-node, .angular-ui-tree-placeholder {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	min-height: 20px;
+	line-height: 20px;
+}
+
+.angular-ui-tree-hidden {
+	display: none;
+}
+
+.angular-ui-tree-placeholder {
+	margin: 0px 0;
+	padding: 0;
+	min-height: 30px;
+}
+
+.angular-ui-tree-handle {
+	cursor: move;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	min-height: 20px;
+	line-height: 20px;
+}
+
+.angular-ui-tree-drag {
+	position: absolute;
+	pointer-events: none;
+	z-index: 999;
+	opacity: .9;
+	background: rgba(255, 255, 255, 0.0) !important;
+}
+/* More Style */
+
+.angular-ui-tree-handle {
+    background: #f8faff;
+    border: 1px solid #dae2ea;
+    color: #7c9eb2;
+    padding: 10px 10px;
+}
+
+.angular-ui-tree-handle:hover {
+    color: #438eb9;
+    background: #f4f6f7;
+    border-color: #dce2e8;
+}
+
+.angular-ui-tree-placeholder {
+    background: #f0f9ff;
+    border: 2px dashed #bed2db;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+tr.angular-ui-tree-empty {
+    height:100px
+}
+
+.group-title {
+    background-color: #687074 !important;
+    color: #FFF !important;
+}
+
+
+/* --- Tree --- */
+.tree-node {
+    border: 1px solid #dae2ea;
+    background: #f8faff;
+    color: #7c9eb2;
+}
+
+.nodrop {
+    background-color: #f2dede;
+}
+
+.tree-node-content {
+    margin: 10px;
+}
+.tree-handle {
+    padding: 10px;
+    background: #428bca;
+    color: #FFF;
+    margin-right: 10px;
+}
+
+.angular-ui-tree-placeholder {
+    background: #f0f9ff;
+    border: 2px dashed #bed2db !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+ /*-- New Style --*/
+
+
+	.category-column-header{
+		margin-top: 30px;
+		padding: 5px 10px 5px 10px;
+		background: $color-light-blue;
+		border: 1px solid $color-grey;
+		border-radius: 2px;
+	}
+ .category-column{
+	 text-align: center;
+	 width: 100px;
+ }
+ .category-action-gear{
+	 width: 40px;
+ }
+ .btn-collapse{
+	 color: #4891d2;
+	 margin-right: 3px;
+ }
+ .btn-collapse:hover{
+	 color: #4891d2;
+ }
+ .angular-ui-tree-nodes .angular-ui-tree-nodes {
+	padding-left: 40px;
+ }
+ .angular-ui-tree-handle{
+	 padding: 5px 10px;
+ }
+ .tree-node {
+	 font-weight: normal;
+	 border: 1px solid #EDF2F9;
+	 border-radius: 2px;
+	 background: #ffffff;
+	 color: #32343C;
+	}
+	.tree-node-content {
+		 margin: 5px 0px;
+	}
+	.angular-ui-tree-drag {
+		 border: 0px !important;
+		 .tree-node-content {
+	  		margin: 2px 0px 3px 0px;
+	 		}
+	 }

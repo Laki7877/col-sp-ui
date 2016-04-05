@@ -193,7 +193,7 @@
                                 </div>
                                 <div class="form-section-content">
                                     <div nc-template="common/input/form-group-with-label" nc-label="Preparation Time" nc-template-form="Modal_PrepareDay" nc-template-options-path="addProductForm/PrepareDay">
-                                        <input class="form-control width-field-normal" name="Modal_PrepareDay" ng-pattern-restrict="^[0-9]*$"
+                                        <input class="form-control width-field-normal" name="Modal_PrepareDay" type="number"
                                         maxlength="5" ng-model="<?=$model?>.PrepareDay" />
                                     </div>
 

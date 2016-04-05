@@ -8,20 +8,15 @@ var angular = require('angular');
 module.exports = [function() {
   return function(arr, value) {
   	 var i = [];
-
   	 //TODO: use map
      arr.forEach(function(obj){
-          var path = value.split('.');
-
-          var state = angular.copy(obj);
-          for(var j = 0; j < path.length; j++){
-          	 state = state[path[j]];
-          }
+          var state = _.get(obj, value);
 
           if(state === true){
      	     i.push(obj);
           }
      });
+     
      return i;
   }
 }];

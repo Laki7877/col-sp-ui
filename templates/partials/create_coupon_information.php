@@ -52,7 +52,7 @@
 									<input type="text" class="form-control" ng-model="formData.Action.DiscountAmount"/>
 		          </div>
 
-							<div nc-template="common/input/form-group-with-label" nc-label="Maximum Amount" nc-template-options-path="couponForm/MaximumAmount">
+							<div nc-template="common/input/form-group-with-label" nc-label="Max. Discount Amount" nc-template-options-path="couponForm/MaximumAmount">
 									<input type="text" class="form-control" ng-model="formData.Action.MaximumAmount"/>
 		          </div>
 
@@ -61,11 +61,11 @@
 			<div class="form-section">
 				<div class="form-section-header"><h2>More Options</h2></div>
 				<div class="form-section-content">
+					<div nc-template="common/input/form-group-with-label" nc-label="Maximum Usage" nc-template-options-path="couponForm/MaximumUsers">
+							<input type="text" class="form-control" ng-model="formData.MaximumUser"/>
+					</div>
 					<div nc-template="common/input/form-group-with-label" nc-label="Usage per Customer" nc-template-options-path="couponForm/UsagePerCustomer">
 							<input type="text" class="form-control" ng-model="formData.UsagePerCustomer"/>
-					</div>
-					<div nc-template="common/input/form-group-with-label" nc-label="Maximum Users" nc-template-options-path="couponForm/MaximumUsers">
-							<input type="text" class="form-control" ng-model="formData.MaximumUser"/>
 					</div>
 				</div>
 			</div>

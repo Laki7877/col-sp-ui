@@ -1,3 +1,60 @@
+/*---- Form Section ----*/
+.form-section-content-grey
+	background-color: $color-light-grey
+.form-section.margin-bottom-0
+	margin-bottom: 0
+.form-section
+	border: 1px solid $color-grey
+	@include border-radius(3px)
+	margin-bottom: 30px
+
+	.form-section-header
+		h1,h2,h3,h4,h5,h6
+			margin-top: 0
+			margin-bottom: 0
+		*
+			font-size: inherit
+			font-weight: inherit
+
+		font-size: 14px
+		font-wieght: normal
+		padding: 6px 10px
+		border-bottom: 1px solid $color-grey
+		background-color: $color-light-grey
+
+
+	.form-section-content
+		@extend .clearfix
+		margin-top: 30px
+		margin-bottom: 15px
+
+		&.no-margin
+			margin-top: 0
+			margin-bottom: 0
+
+		&.margin-filter
+			margin-bottom:	20px
+
+		.table-wrapper
+			padding-left: 30px
+			padding-right: 30px
+
+		.two-columns
+			margin: 0px 30px 15px 30px
+			label
+				margin-bottom: 10px
+			textarea
+				max-width: 100%
+
+	.section-break
+		width: 100%
+		@extend .clearfix
+		border-bottom: 1px solid $color-grey
+		min-height: 1px
+
+
+/*---- Form ----*/
+
 form
 	*
 		font-weight: inherit
@@ -93,6 +150,14 @@ form
 				vertical-align: middle
 			&.no-padding-left
 				padding-left: 0
+		.width-field-checkbox
+			@extend .col-xs-3
+			width:	250px
+			line-height: 34px
+
+			.checkbox_text
+				padding-left: 10px
+
 		.button-size-normal
 			@extend .col-xs-7
 			width: 120px
@@ -106,6 +171,9 @@ form
 	.form-group.margin-bottom-0
 		margin-bottom:	0
 
+	.control-label
+		padding-top: 8px
+
 	.form-text
 		@extend .control-label
 		display: inline-block
@@ -113,7 +181,7 @@ form
 
 	.text-result
 		text-align: left
-		padding-top: 7px
+		padding-top: 8px
 		ul
 			padding-left: 0px
 
@@ -217,12 +285,87 @@ form
 	&.sticky-mainform-action
 		padding-bottom: 64px
 		.main-form-action
+			z-index: 9
 			position: fixed
 			bottom: 0
 			width: 100%
-			padding-right: $sidebar-width
+			padding-right: 60px
 			background: #fff
 
 .form-inline
 	.width-field-small-input
-		width: 230px			
+		width: 230px
+
+/*---- Tagsinput ----*/
+.ahpt
+	.bootstrap-tagsinput
+		padding-top: $padding-base-vertical + 1
+		width: 100%
+
+		&.tagsinput-plain
+			border: none
+			box-shadow: none
+			padding-left: 0
+			cursor: initial
+
+		.label-info
+			background-color: $color-light-theme
+		.label
+			font-size: 100%
+			color: $color-black
+			font-weight: normal
+			margin-right: 5px
+
+/*---- Select 2 ----*/
+.ahpt
+	.input-with-unit .select2-container--default .select2-selection .select2-selection__rendered
+		padding-right: 45px
+	.input-with-unit .select2-container--default .select2-selection .select2-selection__rendered
+		padding-right: 15px
+
+	.select2-container--default
+		&, &.select2-container--focus
+			.select2-selection
+				border-color: $color-grey
+
+		// [aria-multiselectable="true"] .select2-results__option[aria-selected=true]
+		// 	display: none
+
+	.select2-container .select2-selection
+		min-height: 34px
+
+	.select2-container .select2-search--inline .select2-search__field
+		margin-top: 7px
+
+	.select2-container--default .select2-selection .select2-selection__choice
+		line-height: 20px
+		color: $color-black
+		background-color: $color-light-theme
+		border-color: $color-light-theme
+
+	.select2-container--default .select2-selection--single .select2-selection__rendered
+		line-height: 32px
+
+	.select2-container--default .select2-selection .select2-selection__choice__remove
+		line-height: 20px
+		float: right
+		margin-left: 3px
+		margin-right: 0
+		color: $color-black
+		font-weight: bold
+
+	.select2-container--open
+		.select2-dropdown--below
+			border-color: $color-grey
+
+	.ah-select2-dropdown .select2-selection--multiple
+		cursor: pointer
+
+	.ah-select2-dropdown .select2-container .select2-selection
+		background-position: right 6px center
+		background-repeat: no-repeat
+		background-image: url("/assets/img/dropdown.png")
+		background-size: 9px 6px
+
+	.select2-container--default .select2-selection .select2-selection__arrow
+		display: none

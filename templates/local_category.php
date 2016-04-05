@@ -5,49 +5,46 @@
 		<nc-alert nc-model="alert"></nc-alert>
 		<div class="page-header with-border">
 		    <h1 class="float-left page-header-title">
+					<i class="fa fa-tag page-header-icon" style="font-size:22px;"></i>
 		    	<span>Local Category</span>
-		    	<span ng-show="!saving && pristine" class="margin-left-10"><small>All changes were saved</small></span>
-				<span ng-show="saving && pristine" class="margin-left-10" nc-loading-small="Saving..." style="display: inline-block; margin-bottom: -20px; margin-top: -5px;"></span>
-		    </h1>
+					<small>
+		    		<span ng-show="!saving && pristine" class="margin-left-10">All changes were saved</span>
+						<span ng-show="saving && pristine" class="margin-left-10" nc-loading-small="Saving..." style="display: inline-block; margin-bottom: -20px; margin-top: -5px;"></span>
+					</small>
+				</h1>
 		    <span class="float-right page-header-action">
 		        <button type="button" class="btn-blue btn btn-width-xxl" ng-click="open()">
 		          Add Category
 		        </button>
 		    </span>
 		</div>
-		<div ng-if="!loading && categories.length > 0" class="local-category-section">
-			<div class="col-xs-12 category-header no-padding">
-				<span class="col-xs-8">
+		<div ng-show="!loading && categories.length > 0" class="row">
+			<div class="col-sm-12">
+				<div class="category-column-header">
 					Category Name
-				</span>
-				<span class="col-xs-1 text-align-center">
-					Products
-				</span>
-				<span class="col-xs-1 text-align-center">
-					Visible
-				</span>
-				<span class="col-xs-1 text-align-center">
-					Move
-				</span>
-				<span class="col-xs-1 text-align-center">
-					Action
-				</span>
-			</div>
-			<div class="col-xs-12 no-padding" ui-tree="treeOptions" max-depth="4">
-				<ol class="sortable no-padding" ui-tree-nodes ng-model="categories">
-					<li ng-repeat="node in categories" ui-tree-node ng-include="'local_category/nodes'"></li>
-				</ol>
+					<span class="pull-right category-column category-action-gear">
+						Action
+					</span>
+					<span class="pull-right category-column">
+						Visible
+					</span>
+					<span class="pull-right category-column">
+						Products
+					</span>
+				</div>
 			</div>
 		</div>
-		<div ng-if="!loading && categories.length == 0" class="local-category-empty-section margin-top-20">
-			<span class="">
-				<span class="zero-category-image">
-				</span>
-			</span>
-			<span class="local-category-empty-text">You have no category</span>
+
+		<div ng-show="!loading && categories.length > 0" class="row">
+		  <div class="col-sm-12">
+		    <div ui-tree="treeOptions" max-depth="4">
+		      <ol class="sortable" ui-tree-nodes ng-model="categories">
+		        <li ng-repeat="node in categories" ui-tree-node ng-include="'local_category/nodes'"></li>
+		      </ol>
+		    </div>
+		  </div>
 		</div>
-      	<div ng-if="loading">
-          <? $this->insert('components/table-loading', ['text' => 'Loading...']) ?>
-      	</div>
+		<div ng-show="!loading && categories.length == 0" nc-empty="You do not have any categories" class="margin-top-20"></div>
+      	<div ng-show="loading" nc-loading="Loading.."></div>
 	</div>
 <?php $this->stop() ?>

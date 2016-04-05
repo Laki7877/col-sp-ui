@@ -37,7 +37,7 @@ module.exports = function($scope, $controller, ProductReviewService, config, $ui
 	$scope.open = function(item) {
 		$uibModal.open({
 			size: 'lg',
-			templateUrl: 'product/productReviewModal',
+			templateUrl: 'product/modalReview',
 			controller: function($scope, info) {
 				'ngInject';
 				$scope = _.extend($scope, info);

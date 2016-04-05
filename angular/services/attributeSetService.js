@@ -23,9 +23,11 @@ module.exports = function(common, config) {
 	};
 	service.deserialize = function(data) {
 		var processed = angular.merge(service.generate(), data);
-		processed.Tags = [];
+		processed.Tags = _.map(processed.Tags, function(e) {
+			return _.pick(e, ['TagId', 'TagName']);
+		});
 		processed.Categories = _.join(_.map(data.Category, function(e) {
-			return e.NameEn + ' (' + e.CategoryAbbreviation + ')';
+			return e.NameEn + ' (' + e.CategoryId + ')';
 		}), ', ');
 		if(processed.Categories.length == 0) {
 			processed.Categories = 'None'; 
@@ -33,23 +35,50 @@ module.exports = function(common, config) {
 		if(angular.isUndefined(processed.Attributes)) {
 			processed.Attributes = [];
 		}
-		angular.forEach(data.Tags, function(tag) {
-			processed.Tags.push(tag.TagName);
-		});
 		angular.forEach(processed.Attributes, function(attr) {
 			attr.Required = attr.Required || false;
 			attr.Filterable = attr.Filterable || false;
 		});
 		return _.omit(processed, ['Category']);
 	};
+
+	/*
+	* Deserialize for A-PEAP compliance
+	*/
+	service.complyAPEAP = function(direct){
+		var indirect = angular.copy(direct);
+		indirect.AttributeSetMaps = direct.Attributes.map(function(AttributeObject){
+			AttributeObject.AttributeValueMaps = AttributeObject.AttributeValues.map(function(AttributeValue){
+				return {
+					AttributeValueId: AttributeValue.AttributeValueId,
+					AttributeValue: AttributeValue,
+					AttributeId: AttributeObject.AttributeId
+				}
+			});
+			return {
+				Attribute: AttributeObject,
+				AttributeId: AttributeObject.AttributeId,
+				AttributeSetId: indirect.AttributeSetId
+			}
+		});
+		indirect.AttributeSetTagMaps = direct.Tags.map(function(TagObject){
+			return {
+				Tag: TagObject
+			}
+		});
+
+		console.log("APEAP Deserializaation for Attribute Set", indirect);
+		return indirect;
+
+	}
+
 	service.serialize = function(data) {
 		var processed = angular.copy(data);
-		processed.Tags = [];
-		//processed.Visibility = processed.Status.value;
-		angular.forEach(data.Tags, function(tag) {
-			processed.Tags.push({
-				TagName: tag
-			});
+		processed.Tags = _.map(processed.Tags, function(e) {
+			e.match = function(i) {
+				return this.TagName.match(i);
+			};
+			return e;
 		});
 		angular.forEach(processed.Attributes, function(attr) {
 			attr.Required = attr.Required || false;

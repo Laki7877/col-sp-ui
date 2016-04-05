@@ -27,6 +27,16 @@ module.exports = function($scope, $controller, AttributeSetService, AttributeSer
 	$scope.lockAttributeset = function(i) {	
 		return false;
 	};
+	$scope.tagTransform = function(newTag) {
+		return {
+			TagName: newTag,
+			ValueEn: {
+					match: function(i) {
+					return newTag.match(i);
+				}
+			}
+		};
+	};
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
 		options: {
@@ -34,13 +44,17 @@ module.exports = function($scope, $controller, AttributeSetService, AttributeSer
 			url: '/admin/attributesets',
 			item: 'Attribute Set',
 			service: AttributeSetService,
-			init: function(scope) {		
-				//Get all available roles
-				AttributeService.listAll()
-					.then(function(data) {
-						scope.attributeOptions = data;
-					});
+			init: function(scope) {
 			}
 		}
 	});
+	$scope.onSearch = function($search) {
+		AttributeService.list({
+			searchText: $search,
+			_limit:  2147483647,
+			_filter: 'NoDefaultAttribute'
+		}).then(function(data) {
+			$scope.attributeOptions = data.data;
+		});
+	}
 }

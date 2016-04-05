@@ -19,10 +19,12 @@ if (! isset($border_class)) {
 
 <div class="page-header <?=$border_class?>">
     <h1 class="float-left page-header-title ah-breadcrumb"><?= $newText ?></h1>
+    <?php if(!isset($ignored)): ?>
     <div class="page-actions float-right">
 		<a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
 		<button class="btn btn-blue btn-width-xl" ng-click="save()" ng-class="<?= $class ?>">Save</button>
 	</div>
+	<?php endif;?>
 </div>
 
 
