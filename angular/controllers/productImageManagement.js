@@ -53,10 +53,10 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     });
 	$scope.paginationSize = [5,10,15];
 	$scope.imageDropzoneOptions = {
-		urlKey: 'url'
+		urlKey: 'Url'
 	};
 	$scope.imageGalleryOptions = {
-		urlKey: 'url',
+		urlKey: 'Url',
 		actions: [
 			{
 				//Left

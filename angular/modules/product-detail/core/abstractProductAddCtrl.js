@@ -628,7 +628,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         })
         $scope.$on('zoom', function(evt, item, array, index) {
           // Should use angular way, but ok whatever
-          $('#product-image-zoom img').attr('src', item.url)
+          $('#product-image-zoom img').attr('src', item.Url)
           $('#product-image-zoom').modal('show')
         })
       }
