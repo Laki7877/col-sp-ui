@@ -204,7 +204,7 @@ angular.module('nc')
 					}
 				};
 				scope.getSrc = function(image) {
-					return image.url || null;
+					return image.Url || null;
 				};
 				scope.getProgress = function(image) {
 					return image.progress || 0;
