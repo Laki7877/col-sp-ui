@@ -49,7 +49,7 @@
         <div class="form-group" ng-repeat="amap in formData.AttributeSet.AttributeSetMaps">
             <div class="width-label">
                 <label class="control-label" ng-class="{'required': amap.Attribute.Required}">
-                    {{ amap.Attribute.AttributeNameEn }}
+                    {{ amap.Attribute.DisplayNameEn }}
                 </label>
             </div>
             <div ng-class="{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}">
