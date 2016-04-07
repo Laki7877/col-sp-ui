@@ -15,8 +15,7 @@
                         <option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option>
                     </select>
 
-                    <!-- dont show if nothing is dataset. to choose from -->
-                    <ui-select loading="refresher.AttributeSetsLoading"
+                   <!--  <ui-select loading="refresher.AttributeSetsLoading"
                     ng-if="controlFlags.variation != 'enable'" ng-model="formData.AttributeSet">
                         <ui-select-match placeholder="Search Attribute Set">
                             <span ng-bind="$select.selected.AttributeSetNameEn"></span>
@@ -27,6 +26,15 @@
                             <span ng-bind="item.AttributeSetNameEn"></span>
                         </ui-select-choices>
                     </ui-select>
+ -->
+                    <you-me display-by="AttributeSetNameEn" placeholder="Search Attribute Set"  
+                        ng-show="controlFlags.variation != 'enable'" 
+                        auto-clear-search="true" group-by="_group"
+                        ng-model="formData.AttributeSet" 
+                        refresh="refresher.AttributeSets" 
+                        initial-choices="dataset.AttributeSets"
+                        choices="dataset.CombinedAttributeSets"></you-me>
+
 
                 </div>
 
