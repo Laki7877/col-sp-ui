@@ -1,6 +1,6 @@
 <div class="form-section">
 	<div class="form-section-header">
-		<h2><input class="form-control" ng-model="source.IsBanner"/>{{title}}</h2>
+		<h2><input type="checkbox" style="margin-right: 10px" ng-model="source.IsBanner"/>{{title}}</h2>
 	</div>
 	<div class="form-section-content padding-left-15 padding-right-15">
 		<div class="col-xs-7">
@@ -50,13 +50,19 @@
 						</a>
 					</div>
 				</div>
-				<div style="text-align:center; padding-top: 10px; color: grey" ng-if="$index == 0">
-					Featured Banner
-				</div>
 			</li>
 		</ul>
 	</div>
-	<div class="form-section-content padding-left-15 padding-right-15" style="margin-bottom:0px;">
-		
+	<div class="section-break"></div>
+	<div class="form-section-content no-margin padding-left-15 padding-right-15" style="margin-top:15px;">
+		<div nc-template="common/input/form-group-with-label" nc-label="Auto Play">
+			<select ng-model="source.Banner.AutoPlay" class="form-control" ng-options="o.v as o.n for o in [{v: false, n: 'No'}, {v: true, n: 'Yes'}]"></select>
+		</div>
+		<div ng-repeat="image in source.Banner.Images track by $index" class="form-group">
+			<div class="width-label">Slide Duration {{$index+1}}</div>
+			<div class="width-field-normal">
+				<input class="form-control" ng-model="image.SlideDuration" />
+			</div>
+		</div>
 	</div>
 </div>

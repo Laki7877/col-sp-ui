@@ -47,11 +47,11 @@
 								                ng-class="{'has-error-btn' : isInvalid(form.Logo)}"
 								                required>Choose File</button>
 								            </div>
-								            <div ng-show="formData.ShopImage.url"
+								            <div ng-show="formData.ShopImage.Url"
 								              nc-template="common/input/form-group-with-label"
 								              nc-label="Logo Preview">
 								                <img
-								                  ng-src="{{formData.ShopImage.url}}"
+								                  ng-src="{{formData.ShopImage.Url}}"
 								                  width="160"
 								                  />
 								                <a style="display:block;" class="margin-top-5" ng-click="formData.Logo=null"><i class="fa-trash fa"></i> Delete this image</a>

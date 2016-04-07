@@ -211,3 +211,21 @@ md-autocomplete{
 a.cke_dialog_tab{
 	display: none !important;
 }
+
+
+//Override UME select
+.selectize-control.single{
+	.selectize-input{
+		color: $color-black;
+	  border-color: $color-grey;
+		min-height: 34px;
+	}
+}
+
+.selectize-dropdown{
+	margin-top: -5px;
+	.single{
+		color: $color-black;
+		border-color: $color-grey;
+	}
+}

@@ -3399,10 +3399,10 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
     });
 	$scope.paginationSize = [5,10,15];
 	$scope.imageDropzoneOptions = {
-		urlKey: 'url'
+		urlKey: 'Url'
 	};
 	$scope.imageGalleryOptions = {
-		urlKey: 'url',
+		urlKey: 'Url',
 		actions: [
 			{
 				//Left
@@ -5628,9 +5628,24 @@ module.exports = ["$scope", "$controller", "SellerRoleService", function($scope,
 },{}],70:[function(require,module,exports){
 module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, config, util) {
 	$scope.form = {};
+	$scope.formData = {};
 	$scope.alert = new NcAlert();
 	$scope.saving = false;
 	$scope.loading = false;
+	$scope.themes = [];
+
+	//Load theme
+	ShopAppearanceService.getThemes()
+		.then(function(data) {
+			$scope.themes = data;
+		});
+
+	//Load ShopAppearance
+	ShopAppearanceService.list()
+		.then(function(data) {
+			$scope.formData = data;
+			$scope.selectTheme($scope.formData.ThemeId);
+		});
 
 	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
 		data: { IsLogo: true }
@@ -5645,6 +5660,30 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 			.finally(function() {
 				$scope.loading = false;
 			});
+	};
+	$scope.selectTheme = function(id) {
+		ShopAppearanceService.getTheme(id)
+			.then(function(data) {
+				$scope.theme = data;
+			});
+	};
+	$scope.hasComponent = function(name) {
+		if(_.isNil($scope.theme)) {
+			return false;
+		} else {
+			return _.findIndex($scope.theme.ThemeComponentMaps, function(e) {
+				return e.ComponentName == name;
+			}) >= 0;
+		}
+	};
+	$scope.getComponent = function(name) {
+		if(_.isNil($scope.theme)) {
+			return;
+		} else {
+			return _.find($scope.theme.ThemeComponentMaps, function(e) {
+				return e.ComponentName == name;
+			});
+		}
 	};
 	$scope.save = function() {
 		if($scope.saving) return;
@@ -5674,7 +5713,7 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 			return;
 		}
 		$scope.formData.ShopImage = {
-			url: '/assets/img/loader.gif'
+			Url: '/assets/img/loader.gif'
 		};
 		$scope.logoUploader.upload(file)
 			.then(function(response) {
@@ -5752,7 +5791,7 @@ module.exports = function($rootScope, $scope, $controller, ShopProfileService, I
 			return;
 		}
 		$scope.formData.ShopImage = {
-			url: '/assets/img/loader.gif'
+			Url: '/assets/img/loader.gif'
 		};
 		$scope.logoUploader.upload(file)
 			.then(function(response) {
@@ -8624,7 +8663,7 @@ angular.module('nc')
 				size: '@',
 				title: '@'
 			},
-			template: '<nc-image-block nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 8 images</li><li>Image ratio 16:9</li></ul></nc-image-block>',
+			template: '<nc-image-block nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>Image ratio 16:9</li></ul></nc-image-block>',
 			link: function(scope) {
 				scope.options = _.defaults(scope.options,{
 					height: '144px',
@@ -8895,7 +8934,7 @@ angular.module('nc')
 				scope.options = _.defaults(scope.options, {
 					actions: [],
 					size: 10, //max size of gallery
-					urlKey: 'url', //image[urlKey] to get src
+					urlKey: 'Url', //image[urlKey] to get src
 					loaderImg: '/assets/img/loader.gif', //when image[urlKey] = ''
 					emptyImg: '/assets/img/placeholder-no-image-blank.png' //when image = null 
 				});
@@ -8986,7 +9025,7 @@ angular.module('nc')
 				scope.uploader = new FileUploader(scope.originalUploader);
 				scope.template = scope.template || 'common/ncImageDropzoneTemplate';
 				scope.options = _.defaults(scope.options, {
-					urlKey: 'url',
+					urlKey: 'Url',
 					onQueueLimit: _.noop,
 					onEvent: _.noop,
 					onResponse: function(item) { return item; },
@@ -9889,12 +9928,12 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncImageBanner',
-    "<div class=form-section><div class=form-section-header><h2>{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center;margin-top:35px\" class=color-grey><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\">Processing..</span></h4></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div><div style=\"text-align:center; padding-top: 10px; color: grey\" ng-if=\"$index == 0\">Featured Image</div></li></ul></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center;margin-top:35px\" class=color-grey><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\">Processing..</span></h4></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div></div>"
   );
 
 
   $templateCache.put('common/ncImageBanner2',
-    "<div class=form-section><div class=form-section-header><h2><input class=form-control ng-model=\"source.IsBanner\">{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center;margin-top:35px\" class=color-grey><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\">Processing..</span></h4></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div><div style=\"text-align:center; padding-top: 10px; color: grey\" ng-if=\"$index == 0\">Featured Banner</div></li></ul></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px></div></div>"
+    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.IsBanner\">{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center;margin-top:35px\" class=color-grey><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\">Processing..</span></h4></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div><div class=section-break></div><div class=\"form-section-content no-margin padding-left-15 padding-right-15\" style=margin-top:15px><div nc-template=common/input/form-group-with-label nc-label=\"Auto Play\"><select ng-model=source.Banner.AutoPlay class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'No'}, {v: true, n: 'Yes'}]\"></select></div><div ng-repeat=\"image in source.Banner.Images track by $index\" class=form-group><div class=width-label>Slide Duration {{$index+1}}</div><div class=width-field-normal><input class=form-control ng-model=\"image.SlideDuration\"></div></div></div></div>"
   );
 
 
@@ -9972,7 +10011,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('components/single-upload',
-    "<div class=image-drop-wrapper style=width:320px><input nv-file-select uploader=viewBag.uploader type=file ng-delegatee=viewBag.uploader onclick=\"this.value = null\"><div nv-file-drop uploader=viewBag.uploader class=image-drop-zone style=\"width:320px; height:120px; overflow: hidden\"><div class=image-drop-zone-text><p><img ng-src=\"{{ viewBag.images[0].url }}\" style=\"width:100%; height: auto\"></p><span ng-if=\"!viewBag.images || viewBag.images.length == 0\">Drag &amp; drop your shop logo here</span><h3 ng-if=\"viewBag.uploader.progress > 0 && viewBag.uploader.progress < 100\" class=color-grey>{{ uploader.progress }} %</h3><h3 ng-if=\"viewBag.uploader.progress == 100 && !viewBag.images[0].url\" class=color-grey><img style=\"width:100%; height: auto\" src=\"/assets/img/loader.gif\"></h3></div></div><div ng-show=viewBag.uploader.isHTML5 class=image-select-alternative-text><span>Or</span> <a href=javascript:; ng-delegate=viewBag.uploader><span ng-if=\"viewBag.images.length === 0\">Select image from your computer</span> <span ng-if=\"viewBag.images.length > 0\">Upload new image</span></a></div></div>"
+    "<div class=image-drop-wrapper style=width:320px><input nv-file-select uploader=viewBag.uploader type=file ng-delegatee=viewBag.uploader onclick=\"this.value = null\"><div nv-file-drop uploader=viewBag.uploader class=image-drop-zone style=\"width:320px; height:120px; overflow: hidden\"><div class=image-drop-zone-text><p><img ng-src=\"{{ viewBag.images[0].Url }}\" style=\"width:100%; height: auto\"></p><span ng-if=\"!viewBag.images || viewBag.images.length == 0\">Drag &amp; drop your shop logo here</span><h3 ng-if=\"viewBag.uploader.progress > 0 && viewBag.uploader.progress < 100\" class=color-grey>{{ uploader.progress }} %</h3><h3 ng-if=\"viewBag.uploader.progress == 100 && !viewBag.images[0].Url\" class=color-grey><img style=\"width:100%; height: auto\" src=\"/assets/img/loader.gif\"></h3></div></div><div ng-show=viewBag.uploader.isHTML5 class=image-select-alternative-text><span>Or</span> <a href=javascript:; ng-delegate=viewBag.uploader><span ng-if=\"viewBag.images.length === 0\">Select image from your computer</span> <span ng-if=\"viewBag.images.length > 0\">Upload new image</span></a></div></div>"
   );
 
 
@@ -10614,7 +10653,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         })
         $scope.$on('zoom', function(evt, item, array, index) {
           // Should use angular way, but ok whatever
-          $('#product-image-zoom img').attr('src', item.url)
+          $('#product-image-zoom img').attr('src', item.Url)
           $('#product-image-zoom').modal('show')
         })
       }
@@ -11295,7 +11334,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-overview',
-    "<div class=row ng-if=formData.ProductId><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Overview</h2></div><div class=form-section-content><div class=container-fluid style=\"margin: -15px\"><table class=table><thead><th>Product Name</th><th>{{ (formData.Variants || []).length == 0 ? 'PID' : 'Group ID' }}</th><th>Shop Name / Shop ID</th><th>Sale Price</th><th class=info-column>Info</th><th class=image-column>Image</th><th class=status-column>Status</th><th class=live-column>Live</th><th class=visible-column>Visible</th></thead><tbody><tr><td class=column-text-ellipsis>{{ formData.MasterVariant.ProductNameEn }}</td><td>{{ formData.MasterVariant.Pid }}</td><td>{{ formData.ShopName }} / {{ formData.ShopId }}</td><td>{{ formData.MasterVariant.SalePrice | number: 2 }}</td><td class=info-column><i ng-if=!formData.InfoFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=formData.InfoFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td class=image-column><i ng-if=!formData.ImageFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=formData.ImageFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td class=status-column><span class=\"{{ asStatus(formData.Status).color }}\"><i class=\"fa {{ asStatus(formData.Status).icon }}\"></i> {{ asStatus(formData.Status).name }}</span></td><td class=live-column><i class=\"fa fa-circle color-grey\"></i></td><td class=visible-column><a ng-click=\"formData.Visibility = !formData.Visibility\" ng-class=\"{'fa fa-eye-slash color-grey eye-icon font-size-16' : !formData.Visibility, 'fa fa-eye color-dark-grey eye-icon font-size-16' : formData.Visibility}\"></a></td></tr><tbody></tbody></tbody></table></div></div></div></div></div>"
+    "<div class=row ng-if=formData.ProductId><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Overview</h2></div><div class=form-section-content><div class=container-fluid style=\"margin: -15px\"><table class=table><thead><th>Product Name</th><th>{{ (formData.Variants || []).length == 0 ? 'PID' : 'PID of Parent Product' }}</th><th>Shop Name / Shop ID</th><th>Sale Price</th><th class=info-column>Info</th><th class=image-column>Image</th><th class=status-column>Status</th><th class=live-column>Live</th><th class=visible-column>Visible</th></thead><tbody><tr><td class=column-text-ellipsis>{{ formData.MasterVariant.ProductNameEn }}</td><td>{{ formData.MasterVariant.Pid }}</td><td>{{ formData.ShopName }} / {{ formData.ShopId }}</td><td>{{ formData.MasterVariant.SalePrice | number: 2 }}</td><td class=info-column><i ng-if=!formData.InfoFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=formData.InfoFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td class=image-column><i ng-if=!formData.ImageFlag class=\"fa fa-minus color-grey icon-size-18px\"></i> <i ng-if=formData.ImageFlag class=\"fa fa-check color-green icon-size-18px\"></i></td><td class=status-column><span class=\"{{ asStatus(formData.Status).color }}\"><i class=\"fa {{ asStatus(formData.Status).icon }}\"></i> {{ asStatus(formData.Status).name }}</span></td><td class=live-column><i class=\"fa fa-circle color-grey\"></i></td><td class=visible-column><a ng-click=\"formData.Visibility = !formData.Visibility\" ng-class=\"{'fa fa-eye-slash color-grey eye-icon font-size-16' : !formData.Visibility, 'fa fa-eye color-dark-grey eye-icon font-size-16' : formData.Visibility}\"></a></td></tr><tbody></tbody></tbody></table></div></div></div></div></div>"
   );
 
 
@@ -14166,7 +14205,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 			onFail(item, filter);
 		};
 		uploader.onAfterAddingFile = function(item) {
-			var obj = { url: '' };
+			var obj = { Url: '' };
 			if(images.length == uploader.queueLimit) {
 				//Callback for queueLimit reached
 				if(queueLimit) {
@@ -14289,7 +14328,7 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
     };
     uploader.onAfterAddingFile = function(item) {
       var obj = {
-        url: ''
+        Url: ''
       };
       if (images.length == uploader.queueLimit) {
         //Callback for queueLimit reached
@@ -15271,7 +15310,21 @@ module.exports = ["common", "config", "util", function (common, config, util) {
 },{}],197:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
-    var service = common.Rest('/Shops/Appearance');
+    var service = common.Rest('/Shops/ShopAppearance');
+    	
+    service.getThemes = function() {
+    	return common.makeRequest({
+    		method: 'GET',
+    		url: '/Themes'
+    	});
+    };
+    service.getTheme = function(id) {
+    	return common.makeRequest({
+    		method: 'GET',
+    		url: '/Themes/' + id
+    	});
+    };
+
     return service;
 }];
 },{}],198:[function(require,module,exports){
@@ -16402,7 +16455,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('newsletter/modalAdmin',
-    "<nc-alert nc-model=alert></nc-alert><div class=\"modal-header newsletter-modal-header\"><h3 class=\"modal-title modal_title_abosolute\">Add Newsletter</h3><div class=title_relative><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></div></div></div><div class=modal-body><form ng-show=\"!saving && !loading\" name=form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Subject nc-template-form=form.Subject nc-label=Subject><input class=form-control ng-model=formData.Subject required></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Image nc-template-form=form.Image nc-label=Image><button type=button name=Image class=\"btn btn-default\" ngf-accept=\"'.png,.jpg,.jpeg'\" ngf-select=upload($file)>Choose File</button></div><div ng-show=formData.Image nc-template=common/input/form-group-with-label nc-label=\"Image Preview\"><img ng-src={{formData.Image.url}} class=\"img-responsive\"> <a style=display:block class=margin-top-5 ng-click=\"formData.Image=null\"><i class=\"fa-trash fa\"></i> Delete this image</a></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Description nc-template-form=form.Description nc-label=Content><textarea class=form-control ng-model=formData.Description required></textarea></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/PublishedDt nc-template-form=form.PublishedDt nc-label=\"Published Date\"><div><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.PublishedDt | datetimeTh }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=PublishedDt ng-date-before={{formData.PublishedDt}} data-ng-model=formData.PublishedDt data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'hour' }\"></ul></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/VisibleShopGroup nc-template-form=form.VisibleShopGroup nc-label=\"Allow Reader\"><ui-select ng-model=formData.VisibleShopGroup><ui-select-match>{{$select.selected.name}}</ui-select-match><ui-select-choices repeat=\"item.value as item in shopGroupOptions\">{{item.name}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/IncludeShop nc-template-form=form.IncludeShop nc-label=\"Include Shop\"><ui-select ng-model=formData.IncludeShop multiple tagging-label=\"\"><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'include')\" repeat=\"item in shops.include.data\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/ExcludeShop nc-template-form=form.ExcludeShop nc-label=\"Exclude Shop\"><ui-select ng-model=formData.ExcludeShop multiple tagging-label=\"\"><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'exclude')\" repeat=\"item in shops.exclude.data\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div></div></div><div class=col-xs-12><hr><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "<nc-alert nc-model=alert></nc-alert><div class=\"modal-header newsletter-modal-header\"><h3 class=\"modal-title modal_title_abosolute\">Add Newsletter</h3><div class=title_relative><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></div></div></div><div class=modal-body><form ng-show=\"!saving && !loading\" name=form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Subject nc-template-form=form.Subject nc-label=Subject><input class=form-control ng-model=formData.Subject required></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Image nc-template-form=form.Image nc-label=Image><button type=button name=Image class=\"btn btn-default\" ngf-accept=\"'.png,.jpg,.jpeg'\" ngf-select=upload($file)>Choose File</button></div><div ng-show=formData.Image nc-template=common/input/form-group-with-label nc-label=\"Image Preview\"><img ng-src={{formData.Image.Url}} class=\"img-responsive\"> <a style=display:block class=margin-top-5 ng-click=\"formData.Image=null\"><i class=\"fa-trash fa\"></i> Delete this image</a></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Description nc-template-form=form.Description nc-label=Content><textarea class=form-control ng-model=formData.Description required></textarea></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/PublishedDt nc-template-form=form.PublishedDt nc-label=\"Published Date\"><div><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.PublishedDt | datetimeTh }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=PublishedDt ng-date-before={{formData.PublishedDt}} data-ng-model=formData.PublishedDt data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'hour' }\"></ul></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/VisibleShopGroup nc-template-form=form.VisibleShopGroup nc-label=\"Allow Reader\"><ui-select ng-model=formData.VisibleShopGroup><ui-select-match>{{$select.selected.name}}</ui-select-match><ui-select-choices repeat=\"item.value as item in shopGroupOptions\">{{item.name}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/IncludeShop nc-template-form=form.IncludeShop nc-label=\"Include Shop\"><ui-select ng-model=formData.IncludeShop multiple tagging-label=\"\"><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'include')\" repeat=\"item in shops.include.data\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/ExcludeShop nc-template-form=form.ExcludeShop nc-label=\"Exclude Shop\"><ui-select ng-model=formData.ExcludeShop multiple tagging-label=\"\"><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'exclude')\" repeat=\"item in shops.exclude.data\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div></div></div><div class=col-xs-12><hr><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
