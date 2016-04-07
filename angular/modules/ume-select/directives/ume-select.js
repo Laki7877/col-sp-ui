@@ -181,11 +181,15 @@ angular.module('umeSelect')
 
                         prevQ.ts = new Date();
                         prevQ.searchText = scope.searchText;
-                        scope.refresh(scope.searchText).then(function(){
-                            loadQ.pop();
-                            scope.loading = false;
-                            scope.notFound = (scope.choices.length == 0);
-                        });
+                        try{
+                            scope.refresh(scope.searchText).then(function(){
+                                loadQ.pop();
+                                scope.loading = false;
+                                scope.notFound = (scope.choices.length == 0);
+                            });
+                        }catch(ex){
+                            //Ugh
+                        }
 
                     }, 500); // delay 250 ms
                 })
