@@ -30,7 +30,7 @@
     transition: background-color 2s;
 }
  .ume-loading{
-    background-image: url(http://selectize.github.io/selectize.js/images/spinner.gif) !important;
+    background-image: url('loader.gif') !important;
     background-repeat: no-repeat !important;
     background-size: 20px !important;
     background-position-x: 5px !important;
@@ -38,7 +38,7 @@
     padding-left: 30px !important;
 }
 .ume-search{
-    background-image: url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-32.png) !important;
+    background-image: url('icon-search.png') !important;
     background-repeat: no-repeat !important;
     background-size: 20px !important;
     background-position-x: 5px !important;
@@ -52,7 +52,7 @@
 
 
 .ume-placeholder{
-  color: #b8b8b8;
+  color: #BCC7D5;
 }
 .selectize-dropdown-content .option:hover{
   background: #f1f6f7;
