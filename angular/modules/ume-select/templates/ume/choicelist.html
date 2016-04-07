@@ -1,10 +1,10 @@
 <div class="selectize-dropdown single demo-default" 
-	ng-show="searchText.length > 0 && focused" 
+	ng-show="(searchText.length > 0 && focused) || (initialChoices && focused)" 
 	style="width: 100%;">
 		<div class="selectize-dropdown-content">
 
 			<div data-group="Default" class="optgroup">
-				<div ng-show="item[groupBy]" ng-repeat-start="item in (choices | filter : searchText) track by $index" class="optgroup-header">
+				<div ng-show="item[groupBy]" ng-repeat-start="item in (searchText.length > 0 ? choices : initialChoices) track by $index" class="optgroup-header">
 					{{ item[groupBy] }}
 				</div>
 				<div ng-repeat-end ng-click="pickItem(item)" data-value="{{item}}" 

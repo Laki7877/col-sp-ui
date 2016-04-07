@@ -15,7 +15,8 @@ angular.module('umeSelect')
                 itsComplicated: '=?itsComplicated',
                 displayBy: '@displayBy',
                 freedomOfSpeech: '=freedomOfSpeech',
-                groupBy: '@?groupBy'
+                groupBy: '@?groupBy',
+                initialChoices: '=?initialChoices'
             },
             replace: true,
             priority: 1010,
@@ -126,7 +127,7 @@ angular.module('umeSelect')
                 scope.blur = function(){
                     $timeout(function(){
                         scope.focused = false;
-                    }, 600)
+                    }, 500)
                 }
 
                 scope.focus = function(broadcast){
