@@ -177,7 +177,7 @@
                 <input
                   class="form-control"
                   name="SEO_En"
-                  ng-model="formData.SEO.En"
+                  ng-model="formData.SEO.SeoEn"
                   maxlength="60"
                    />
               </div>
@@ -188,7 +188,7 @@
                 <input
                   class="form-control"
                   name="SEO_Th"
-                  ng-model="formData.SEO.Th"
+                  ng-model="formData.SEO.SeoTh"
                   maxlength="60"
                    />
               </div>

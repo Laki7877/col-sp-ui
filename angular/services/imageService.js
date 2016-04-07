@@ -41,11 +41,6 @@ module.exports = function($q, $http, common, storage, config, FileUploader, Uplo
       queueLimit: 10,
       removeAfterUpload : true,
       filters: [{
-        name: 'dimensionFilter',
-        fn: function(item /*{File|FileLikeObject}*/ , options){
-          console.log(item);
-        }
-      },{
         name: 'imageFilter',
         fn: function(item /*{File|FileLikeObject}*/ , options) {
           console.log('item', item);
