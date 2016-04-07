@@ -32,9 +32,9 @@
  .ume-loading{
     background-image: url('loader.gif') !important;
     background-repeat: no-repeat !important;
-    background-size: 20px !important;
-    background-position-x: 5px !important;
-    background-position-y: 6px !important;
+    background-size: 18px !important;
+    background-position-x: 6px !important;
+    background-position-y: 8px !important;
     padding-left: 30px !important;
 }
 .ume-search{
