@@ -5628,9 +5628,24 @@ module.exports = ["$scope", "$controller", "SellerRoleService", function($scope,
 },{}],70:[function(require,module,exports){
 module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, config, util) {
 	$scope.form = {};
+	$scope.formData = {};
 	$scope.alert = new NcAlert();
 	$scope.saving = false;
 	$scope.loading = false;
+	$scope.themes = [];
+
+	//Load theme
+	ShopAppearanceService.getThemes()
+		.then(function(data) {
+			$scope.themes = data;
+		});
+
+	//Load ShopAppearance
+	ShopAppearanceService.list()
+		.then(function(data) {
+			$scope.formData = data;
+			$scope.selectTheme($scope.formData.ThemeId);
+		});
 
 	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
 		data: { IsLogo: true }
@@ -5645,6 +5660,30 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 			.finally(function() {
 				$scope.loading = false;
 			});
+	};
+	$scope.selectTheme = function(id) {
+		ShopAppearanceService.getTheme(id)
+			.then(function(data) {
+				$scope.theme = data;
+			});
+	};
+	$scope.hasComponent = function(name) {
+		if(_.isNil($scope.theme)) {
+			return false;
+		} else {
+			return _.findIndex($scope.theme.ThemeComponentMaps, function(e) {
+				return e.ComponentName == name;
+			}) >= 0;
+		}
+	};
+	$scope.getComponent = function(name) {
+		if(_.isNil($scope.theme)) {
+			return;
+		} else {
+			return _.find($scope.theme.ThemeComponentMaps, function(e) {
+				return e.ComponentName == name;
+			});
+		}
 	};
 	$scope.save = function() {
 		if($scope.saving) return;
@@ -9890,7 +9929,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncImageBanner2',
-    "<div class=form-section><div class=form-section-header><h2><input class=form-control ng-model=\"source.IsBanner\">{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center;margin-top:35px\" class=color-grey><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\">Processing..</span></h4></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div><div style=\"text-align:center; padding-top: 10px; color: grey\" ng-if=\"$index == 0\">Featured Banner</div></li></ul></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px></div></div>"
+    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.IsBanner\">{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center;margin-top:35px\" class=color-grey><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\">Processing..</span></h4></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div><div style=\"text-align:center; padding-top: 10px; color: grey\" ng-if=\"$index == 0\">Featured Banner</div></li></ul></div><div class=section-break></div><div class=\"form-section-content no-margin padding-left-15 padding-right-15\" style=margin-top:15px><div nc-template=common/input/form-group-with-label nc-label=\"Auto Play\"><select ng-model=source.Banner.AutoPlay class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'No'}, {v: true, n: 'Yes'}]\"></select></div><div ng-repeat=\"image in source.Banner.Images track by $index\" class=form-group><div class=width-label>Slide Duration {{$index+1}}</div><div class=width-field-normal><input class=form-control ng-model=\"image.SlideDuration\"></div></div></div></div>"
   );
 
 
@@ -15297,7 +15336,21 @@ module.exports = ["common", "config", "util", function (common, config, util) {
 },{}],197:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
-    var service = common.Rest('/Shops/Appearance');
+    var service = common.Rest('/Shops/ShopAppearance');
+    	
+    service.getThemes = function() {
+    	return common.makeRequest({
+    		method: 'GET',
+    		url: '/Themes'
+    	});
+    };
+    service.getTheme = function(id) {
+    	return common.makeRequest({
+    		method: 'GET',
+    		url: '/Themes/' + id
+    	});
+    };
+
     return service;
 }];
 },{}],198:[function(require,module,exports){

@@ -1,8 +1,23 @@
 module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, config, util) {
 	$scope.form = {};
+	$scope.formData = {};
 	$scope.alert = new NcAlert();
 	$scope.saving = false;
 	$scope.loading = false;
+	$scope.themes = [];
+
+	//Load theme
+	ShopAppearanceService.getThemes()
+		.then(function(data) {
+			$scope.themes = data;
+		});
+
+	//Load ShopAppearance
+	ShopAppearanceService.list()
+		.then(function(data) {
+			$scope.formData = data;
+			$scope.selectTheme($scope.formData.ThemeId);
+		});
 
 	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
 		data: { IsLogo: true }
@@ -17,6 +32,30 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 			.finally(function() {
 				$scope.loading = false;
 			});
+	};
+	$scope.selectTheme = function(id) {
+		ShopAppearanceService.getTheme(id)
+			.then(function(data) {
+				$scope.theme = data;
+			});
+	};
+	$scope.hasComponent = function(name) {
+		if(_.isNil($scope.theme)) {
+			return false;
+		} else {
+			return _.findIndex($scope.theme.ThemeComponentMaps, function(e) {
+				return e.ComponentName == name;
+			}) >= 0;
+		}
+	};
+	$scope.getComponent = function(name) {
+		if(_.isNil($scope.theme)) {
+			return;
+		} else {
+			return _.find($scope.theme.ThemeComponentMaps, function(e) {
+				return e.ComponentName == name;
+			});
+		}
 	};
 	$scope.save = function() {
 		if($scope.saving) return;
@@ -46,7 +85,7 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 			return;
 		}
 		$scope.formData.ShopImage = {
-			url: '/assets/img/loader.gif'
+			Url: '/assets/img/loader.gif'
 		};
 		$scope.logoUploader.upload(file)
 			.then(function(response) {

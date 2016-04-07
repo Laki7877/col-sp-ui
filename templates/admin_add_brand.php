@@ -84,11 +84,11 @@
                   ng-model="formData.brandImage"
                   ng-class="{'has-error-btn' : isInvalid(form.BrandImage)}">Choose File</button>
               </div>
-              <div ng-show="formData.BrandImage && formData.BrandImage.url != ''"
+              <div ng-show="formData.BrandImage && formData.BrandImage.Url != ''"
                 nc-template="common/input/form-group-with-label"
                 nc-label="Logo Preview">
                   <img
-                    ng-src="{{formData.BrandImage.url}}"
+                    ng-src="{{formData.BrandImage.Url}}"
                     width="160"
                     />
                   <a style="display:block;" class="margin-top-5" ng-click="formData.BrandImage=null"><i class="fa-trash fa"></i> Delete this image</a>

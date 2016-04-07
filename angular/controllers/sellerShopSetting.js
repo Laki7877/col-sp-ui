@@ -56,7 +56,7 @@ module.exports = function($rootScope, $scope, $controller, ShopProfileService, I
 			return;
 		}
 		$scope.formData.ShopImage = {
-			url: '/assets/img/loader.gif'
+			Url: '/assets/img/loader.gif'
 		};
 		$scope.logoUploader.upload(file)
 			.then(function(response) {

@@ -10,7 +10,7 @@ angular.module('nc')
 				size: '@',
 				title: '@'
 			},
-			template: '<nc-image-block nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 8 images</li><li>Image ratio 16:9</li></ul></nc-image-block>',
+			template: '<nc-image-block nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>Image ratio 16:9</li></ul></nc-image-block>',
 			link: function(scope) {
 				scope.options = _.defaults(scope.options,{
 					height: '144px',
@@ -281,7 +281,7 @@ angular.module('nc')
 				scope.options = _.defaults(scope.options, {
 					actions: [],
 					size: 10, //max size of gallery
-					urlKey: 'url', //image[urlKey] to get src
+					urlKey: 'Url', //image[urlKey] to get src
 					loaderImg: '/assets/img/loader.gif', //when image[urlKey] = ''
 					emptyImg: '/assets/img/placeholder-no-image-blank.png' //when image = null 
 				});
@@ -372,7 +372,7 @@ angular.module('nc')
 				scope.uploader = new FileUploader(scope.originalUploader);
 				scope.template = scope.template || 'common/ncImageDropzoneTemplate';
 				scope.options = _.defaults(scope.options, {
-					urlKey: 'url',
+					urlKey: 'Url',
 					onQueueLimit: _.noop,
 					onEvent: _.noop,
 					onResponse: function(item) { return item; },
