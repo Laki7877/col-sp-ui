@@ -30,24 +30,29 @@
     transition: background-color 2s;
 }
  .ume-loading{
-    background-image: url(loader.gif) !important;
-    background-repeat: no-repeat !important;
-    background-size: 16px !important;
-    background-position-x: 6px !important;
-    background-position-y: 8px !important;
-    padding-left: 30px !important;
-}
-.ume-search{
-    background-image: url(icon-search.png) !important;
+    background-image: url(http://selectize.github.io/selectize.js/images/spinner.gif) !important;
     background-repeat: no-repeat !important;
     background-size: 20px !important;
     background-position-x: 5px !important;
-    background-position-y: 5px !important;
+    background-position-y: 6px !important;
+    padding-left: 30px !important;
+}
+.ume-search{
+    background-image: url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-32.png) !important;
+    background-repeat: no-repeat !important;
+    background-size: 20px !important;
+    background-position-x: 5px !important;
+    background-position-y: 6px !important;
     padding-left: 30px !important;
 }
 
+.ume-plain{
+    background-image: none !important;
+}
+
+
 .ume-placeholder{
-  color: #BCC7D5;
+  color: #b8b8b8;
 }
 .selectize-dropdown-content .option:hover{
   background: #f1f6f7;
@@ -336,12 +341,12 @@
   height: 0;
   border-style: solid;
   border-width: 5px 5px 0 5px;
-  border-color: #7B7F8F transparent transparent transparent;
+  border-color: #808080 transparent transparent transparent;
 }
 .selectize-control.single .selectize-input.dropdown-active:after {
   margin-top: -4px;
   border-width: 0 5px 5px 5px;
-  border-color: transparent transparent #7B7F8F transparent;
+  border-color: transparent transparent #808080 transparent;
 }
 .selectize-control.rtl.single .selectize-input:after {
   left: 15px;

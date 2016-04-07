@@ -11327,7 +11327,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-keywords',
-    "<div class=form-section><div class=form-section-header><h2>Search Tags</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Search Tags\" nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><you-me its-complicated=true in-rel placeholder=\"Input keywords\" freedom-of-speech=true ng-model=formData.Tags choices=formData.AttributeSet.AttributeSetTagMaps></you-me></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags).length > 1\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags\" ng-click=\"(formData.Tags.indexOf(tag) == -1) && formData.Tags.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Search Tags</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Search Tags\" nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><you-me its-complicated=true in-rel hide-icon=true placeholder=\"Enter keyword\" freedom-of-speech=true ng-model=formData.Tags choices=formData.AttributeSet.AttributeSetTagMaps></you-me></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags).length > 1\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags\" ng-click=\"(formData.Tags.indexOf(tag) == -1) && formData.Tags.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
   );
 
 
@@ -11955,7 +11955,8 @@ angular.module('umeSelect')
                 displayBy: '@displayBy',
                 freedomOfSpeech: '=freedomOfSpeech',
                 groupBy: '@?groupBy',
-                initialChoices: '=?initialChoices'
+                initialChoices: '=?initialChoices',
+                hideIcon: '=?hideIcon'
             },
             replace: true,
             priority: 1010,
@@ -12185,12 +12186,12 @@ angular.module("umeSelect").run(["$templateCache", function($templateCache) {  '
 
 
   $templateCache.put('ume/multiple',
-    "<div class=\"selectize-control single\"><div ng-click=forceFocus() class=\"selectize-input items not-full has-options has-items\" ng-class=\"{'ume-search' : !loading, 'ume-loading': loading, 'input-active': focused}\"><div ng-repeat=\"item in (model) track by $index\" style=\"margin-right: 5px\" class=\"item btn btn-primary btn-xs\" aria-hidden=true>{{ itemValue(item) }} <a ng-click=breakUp($index) class=\"glyphicon glyphicon-remove\" style=\"color:white !important; opacity: 0.7; font-size: x-small\"></a></div><input ng-focus=focus() ng-keydown=keyDown($event) ume-id=\"{{ _id }}\" ume-focus=focusObtained ume-blur=focusLost autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" class=\"btn btn-xs\" style=\"max-width: 150px !important;text-align: left\"></div><div ng-include=\"'ume/choicelist'\"></div></div>"
+    "<div class=\"selectize-control single\"><div ng-click=forceFocus() class=\"selectize-input items not-full has-options has-items\" ng-class=\"{ 'ume-plain': hideIcon, 'ume-search' : !loading && !hideIcon, 'ume-loading': loading, 'input-active': focused}\"><div ng-repeat=\"item in (model) track by $index\" style=\"margin-right: 5px\" class=\"item btn btn-primary btn-xs\" aria-hidden=true>{{ itemValue(item) }} <a ng-click=breakUp($index) class=\"glyphicon glyphicon-remove\" style=\"color:white !important; opacity: 0.7; font-size: x-small\"></a></div><input ng-focus=focus() ng-keydown=keyDown($event) ume-id=\"{{ _id }}\" ume-focus=focusObtained ume-blur=focusLost autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" class=\"btn btn-xs\" style=\"max-width: 150px !important;text-align: left\"></div><div ng-include=\"'ume/choicelist'\"></div></div>"
   );
 
 
   $templateCache.put('ume/single',
-    "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-search' : !loading, 'ume-loading': loading, 'input-active': true}\" style=\"min-height: 34px\"><input ume-focus=focusObtained ume-blur=focusLost ume-id=\"{{ _id }}\" autocomplete=off tabindex=\"\" ng-model=searchText ng-focus=focus() ng-blur=blur() placeholder=\"{{ placeholder }}\" ng-keydown=keyDown($event) ng-show=\"focused || !itemValue(model)\" style=\"width: 100%\"><div ng-show=\"!focused && itemValue(model)\" class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ itemValue(model) || placeholder }}</div></div><div ng-include=\"'ume/choicelist'\"></div></div>"
+    "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-plain': hideIcon, 'ume-search' : !loading && !hideIcon, 'ume-loading': loading, 'input-active': true}\" style=\"min-height: 34px\"><input ume-focus=focusObtained ume-blur=focusLost ume-id=\"{{ _id }}\" autocomplete=off tabindex=\"\" ng-model=searchText ng-focus=focus() ng-blur=blur() placeholder=\"{{ placeholder }}\" ng-keydown=keyDown($event) ng-show=\"focused || !itemValue(model)\" style=\"width: 100%\"><div ng-show=\"!focused && itemValue(model)\" class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ itemValue(model) || placeholder }}</div></div><div ng-include=\"'ume/choicelist'\"></div></div>"
   );
  }]);
 },{}],154:[function(require,module,exports){

@@ -16,7 +16,8 @@ angular.module('umeSelect')
                 displayBy: '@displayBy',
                 freedomOfSpeech: '=freedomOfSpeech',
                 groupBy: '@?groupBy',
-                initialChoices: '=?initialChoices'
+                initialChoices: '=?initialChoices',
+                hideIcon: '=?hideIcon'
             },
             replace: true,
             priority: 1010,
