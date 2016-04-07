@@ -43,7 +43,6 @@ module.exports = function($q, $http, common, storage, config, FileUploader, Uplo
       filters: [{
         name: 'imageFilter',
         fn: function(item /*{File|FileLikeObject}*/ , options) {
-          console.log('item', item);
           var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
           return '|jpg|png|jpeg|'.indexOf(type) !== -1;
         }

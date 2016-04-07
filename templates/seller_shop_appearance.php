@@ -2,7 +2,6 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerShopAppearanceCtrl">
-		<pre>{{formData | json}}</pre>
 		<div ng-show="loading" nc-loading="Loading Shop Settings.."></div>
 		<nc-alert nc-model="alert"></nc-alert>
         <form class="ah-form sticky-mainform-action" name="form" ng-submit="save()" ng-show="!loading">
@@ -31,22 +30,27 @@
 										</div>
 									</div>
 					            </div>
-          						<nc-image-banner2 ng-if="hasComponent('Banner')"  name="Banner" nc-model="formData.Banner.Images" source="formData" title="Banner Upload" uploader="bannerUploader" on-fail="uploadBannerFail" size="{{getComponent('Banner').Count}}"></nc-image-banner2>
+          						<nc-image-banner2 ng-if="hasComponent('Banner')"  name="Banner" nc-model="formData.Banner.Images" source="formData" title="Banner Upload" uploader="bannerUploader" on-fail="uploadBannerFail" size="getComponent('Banner')"></nc-image-banner2>
 					            <div ng-if="hasComponent('Layout')" class="form-section">
 					                <div class="form-section-header">
 					                    <h2><input style="margin-right:10px" type="checkbox" ng-model="formData.IsLayout" />Layouts</h2>
 					                </div>
 					                <div class="form-section-content">
-					                    <div ng-repeat="layout in formData.Layouts track by $index"
-					                    	nc-template="common/input/form-group-with-label"
-					                    	nc-label="Position {{$index+1}}">
-					                        <select ng-model="layout.CollectionName" class="form-control">
-                        						<option selected>-- Select Collection --</option>
-					                            <option value="New Arrival">New Arrival</option>
-					                            <option value="Available">Available</option>
-					                        </select>
-					                        <input type="checkbox" ng-model="layout"/> Title = Showcase
-					                    </div>
+					                    <div ng-repeat="layout in formData.Layouts track by $index">
+					                    	<div class="form-group">
+					                    		<div class="width-label"><label class="control-label">Position {{$index+1}}</label></div>
+					                    		<div class="width-field-normal">
+							                        <select ng-model="layout.CollectionName" class="form-control">
+		                        						<option value="">-- Select Collection --</option>
+							                            <option value="New Arrival">New Arrival</option>
+							                            <option value="Available">Available</option>
+							                        </select>
+							                    </div>
+						                        <div class="width-field-normal">
+						                        	<input class="form-inline" type="checkbox" ng-model="layout.DisplayCountTime"/> Display Countdown Time
+						                        </div>
+					                    	</div>
+					                   	</div>
 					                </div>
 					            </div>
 					            <div ng-if="hasComponent('Video')" class="form-section">
@@ -72,15 +76,15 @@
 								                  name="Thumbnail{{$index}}"
 								                  class="btn btn-default"
 								                  ngf-accept="'.png,.jpg,.jpeg'"
-								                  ngf-select="uploadLogo($file)"
+								                  ngf-select="uploadThumbnail($file, video)"
 								                  >Choose File</button>
-								              </div>
-								              <div ng-show="video."
+								            </div>
+								            <div ng-show="video.Thumbnail && video.Thumbnail != ''"
 								                nc-template="common/input/form-group-with-label"
 								                nc-label="Thumbnail Image Preview">
-								                  <img ng-src="{{formData.Thumbnail}}" width="160" />
+								                  <img ng-src="{{video.Thumbnail}}" width="160" />
 								                  <a style="display:block;" class="margin-top-5" ng-click="video.Thumbnail=''"><i class="fa-trash fa"></i> Delete this image</a>
-								              </div>
+								            </div>
 					                    </div>
 					                </div>
 					            </div>

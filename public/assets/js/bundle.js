@@ -5626,12 +5626,12 @@ module.exports = ["$scope", "$controller", "SellerRoleService", function($scope,
 	}, true);
 }];
 },{}],70:[function(require,module,exports){
-module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, config, util) {
+module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, config, util, common) {
 	$scope.form = {};
 	$scope.formData = {};
 	$scope.alert = new NcAlert();
 	$scope.saving = false;
-	$scope.loading = false;
+	$scope.loading = true;
 	$scope.themes = [];
 
 	//Load theme
@@ -5650,7 +5650,7 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
 		data: { IsLogo: true }
 	});
-	$scope.bannerUploader = ImageService.getUploaderFn('/ShopImages');
+
 	$scope.init = function() {
 		$scope.loading = true;
 		ShopAppearanceService.list()
@@ -5664,7 +5664,34 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 	$scope.selectTheme = function(id) {
 		ShopAppearanceService.getTheme(id)
 			.then(function(data) {
+				$scope.formData.ThemeId = id;
+				$scope.loading = false;
 				$scope.theme = data;
+				$scope.bannerUploader = ImageService.getUploaderFn('/ShopImages/' + id);
+				$scope.thumbUploader = ImageService.getUploaderFn('/ShopImages/' + id);
+
+				// Readjust components if any
+				if($scope.hasComponent('Banner')) {
+					// Banner
+					var diff = $scope.formData.Banner.Images.length - $scope.getComponent('Banner').Count;
+					for (var i = 0; i < diff; i++) {
+						$scope.formData.Banner.Images.pop();
+					};
+				}
+				if($scope.hasComponent('Layout')) {
+					var layouts = $scope.formData.Layouts;
+					$scope.formData.Layouts = [];
+					for (var i = 0; i < $scope.getComponent('Layout').Count; i++) {
+						$scope.formData.Layouts.push(layouts[i] || {});
+					};
+				}
+				if($scope.hasComponent('Video')) {
+					var videos = $scope.formData.Videos;
+					$scope.formData.Videos = [];
+					for (var i = 0; i < $scope.getComponent('Video').Count; i++) {
+						$scope.formData.Videos.push(videos[i] || {});
+					};
+				}
 			});
 	};
 	$scope.hasComponent = function(name) {
@@ -5708,6 +5735,20 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 			$scope.alert.error(util.saveAlertError());
 		}
 	}
+	$scope.uploadThumbnail = function(file, video) {
+		if(_.isNil(file)) {
+			return;
+		}
+		video.Thumbnail = '/assets/img/loader.gif';
+
+		$scope.thumbUploader.upload(file)
+			.then(function(response) {
+				video.Thumbnail = response.data.Url;
+			}, function(err) {
+				video.Thumbnail = '';
+				$scope.alert.error(common.getError(err.data));
+			});
+	};
 	$scope.uploadLogo = function(file) {
 		if(_.isNil(file)) {
 			return;
@@ -5720,7 +5761,7 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 				$scope.formData.ShopImage = response.data;
 			}, function(err) {
 				$scope.formData.ShopImage = null;
-				$scope.alert.error(common.getError(err));
+				$scope.alert.error(common.getError(err.data));
 			});
 	};
 	$scope.uploadBannerFail = function(e, response) {
@@ -8676,14 +8717,18 @@ angular.module('nc')
 				uploader: '=',
 				options: '=?',
 				source: '=',
-				size: '@',
+				size: '=',
 				title: '@'
 			},
-			template: '<nc-image-block template="common/ncImageBanner2" source="source" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 7 images</li><li>The width must be 1920px</li><li>The height must be 1080px</li></ul></nc-image-block>',
+			template: '<nc-image-block template="common/ncImageBanner2" source="source" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 7 images</li><li>The width must be {{size.Width}}px</li><li>The height must be {{size.Height}}px</li></ul></nc-image-block>',
 			link: function(scope) {
 				scope.options = _.defaults(scope.options,{
 					height: '144px',
 					width: '256px'
+				});
+				scope.$watch('size', function(data) {
+					scope.options.height = data.Height + 'px';
+					scope.options.width = data.Width + 'px';
 				});
 			}
 		}
@@ -9929,7 +9974,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncImageBanner2',
-    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.IsBanner\">{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center;margin-top:35px\" class=color-grey><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\">Processing..</span></h4></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div><div class=section-break></div><div class=\"form-section-content no-margin padding-left-15 padding-right-15\" style=margin-top:15px><div nc-template=common/input/form-group-with-label nc-label=\"Auto Play\"><select ng-model=source.Banner.AutoPlay class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'No'}, {v: true, n: 'Yes'}]\"></select></div><div ng-repeat=\"image in source.Banner.Images track by $index\" class=form-group><div class=width-label>Slide Duration {{$index+1}}</div><div class=width-field-normal><input class=form-control ng-model=\"image.SlideDuration\"></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.IsBanner\">{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center;margin-top:35px\" class=color-grey><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\">Processing..</span></h4></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div><div class=section-break></div><div class=\"form-section-content no-margin padding-left-15 padding-right-15\" style=margin-top:15px><div nc-template=common/input/form-group-with-label nc-label=\"Auto Play\"><select ng-model=source.Banner.AutoPlay class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'No'}, {v: true, n: 'Yes'}]\"></select></div><div ng-repeat=\"image in source.Banner.Images track by $index\" class=form-group><div class=width-label><label class=control-label>Slide Duration {{$index+1}}</label></div><div class=width-field-normal><input class=form-control ng-model=\"image.SlideDuration\"> <span class=input-with-unit><span class=input-unit>Seconds</span></span></div></div></div></div>"
   );
 
 
@@ -14326,7 +14371,6 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
       filters: [{
         name: 'imageFilter',
         fn: function(item /*{File|FileLikeObject}*/ , options) {
-          console.log('item', item);
           var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
           return '|jpg|png|jpeg|'.indexOf(type) !== -1;
         }
@@ -15350,6 +15394,11 @@ module.exports = ["common", "config", "util", function (common, config, util) {
     		url: '/Themes/' + id
     	});
     };
+
+    service.serialize = function(data) {
+        var processed = _.cloneDeep(data);
+        return processed;
+    }
 
     return service;
 }];

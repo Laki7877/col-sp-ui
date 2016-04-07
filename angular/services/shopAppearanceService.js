@@ -15,5 +15,10 @@ module.exports = function (common, config, util) {
     	});
     };
 
+    service.serialize = function(data) {
+        var processed = _.cloneDeep(data);
+        return processed;
+    }
+
     return service;
 };

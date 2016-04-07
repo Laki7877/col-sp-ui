@@ -1,9 +1,9 @@
-module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, config, util) {
+module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, config, util, common) {
 	$scope.form = {};
 	$scope.formData = {};
 	$scope.alert = new NcAlert();
 	$scope.saving = false;
-	$scope.loading = false;
+	$scope.loading = true;
 	$scope.themes = [];
 
 	//Load theme
@@ -22,7 +22,7 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
 		data: { IsLogo: true }
 	});
-	$scope.bannerUploader = ImageService.getUploaderFn('/ShopImages');
+
 	$scope.init = function() {
 		$scope.loading = true;
 		ShopAppearanceService.list()
@@ -36,7 +36,34 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 	$scope.selectTheme = function(id) {
 		ShopAppearanceService.getTheme(id)
 			.then(function(data) {
+				$scope.formData.ThemeId = id;
+				$scope.loading = false;
 				$scope.theme = data;
+				$scope.bannerUploader = ImageService.getUploaderFn('/ShopImages/' + id);
+				$scope.thumbUploader = ImageService.getUploaderFn('/ShopImages/' + id);
+
+				// Readjust components if any
+				if($scope.hasComponent('Banner')) {
+					// Banner
+					var diff = $scope.formData.Banner.Images.length - $scope.getComponent('Banner').Count;
+					for (var i = 0; i < diff; i++) {
+						$scope.formData.Banner.Images.pop();
+					};
+				}
+				if($scope.hasComponent('Layout')) {
+					var layouts = $scope.formData.Layouts;
+					$scope.formData.Layouts = [];
+					for (var i = 0; i < $scope.getComponent('Layout').Count; i++) {
+						$scope.formData.Layouts.push(layouts[i] || {});
+					};
+				}
+				if($scope.hasComponent('Video')) {
+					var videos = $scope.formData.Videos;
+					$scope.formData.Videos = [];
+					for (var i = 0; i < $scope.getComponent('Video').Count; i++) {
+						$scope.formData.Videos.push(videos[i] || {});
+					};
+				}
 			});
 	};
 	$scope.hasComponent = function(name) {
@@ -80,6 +107,20 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 			$scope.alert.error(util.saveAlertError());
 		}
 	}
+	$scope.uploadThumbnail = function(file, video) {
+		if(_.isNil(file)) {
+			return;
+		}
+		video.Thumbnail = '/assets/img/loader.gif';
+
+		$scope.thumbUploader.upload(file)
+			.then(function(response) {
+				video.Thumbnail = response.data.Url;
+			}, function(err) {
+				video.Thumbnail = '';
+				$scope.alert.error(common.getError(err.data));
+			});
+	};
 	$scope.uploadLogo = function(file) {
 		if(_.isNil(file)) {
 			return;
@@ -92,7 +133,7 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 				$scope.formData.ShopImage = response.data;
 			}, function(err) {
 				$scope.formData.ShopImage = null;
-				$scope.alert.error(common.getError(err));
+				$scope.alert.error(common.getError(err.data));
 			});
 	};
 	$scope.uploadBannerFail = function(e, response) {

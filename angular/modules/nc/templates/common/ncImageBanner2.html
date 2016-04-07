@@ -59,9 +59,12 @@
 			<select ng-model="source.Banner.AutoPlay" class="form-control" ng-options="o.v as o.n for o in [{v: false, n: 'No'}, {v: true, n: 'Yes'}]"></select>
 		</div>
 		<div ng-repeat="image in source.Banner.Images track by $index" class="form-group">
-			<div class="width-label">Slide Duration {{$index+1}}</div>
+			<div class="width-label"><label class="control-label">Slide Duration {{$index+1}}</label></div>
 			<div class="width-field-normal">
 				<input class="form-control" ng-model="image.SlideDuration" />
+				<span class="input-with-unit">
+					<span class="input-unit">Seconds</span>
+				</span>
 			</div>
 		</div>
 	</div>
