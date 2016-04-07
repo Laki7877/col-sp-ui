@@ -7,6 +7,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     VariationFactorIndices, AttributeOptions) {
     'ngInject';
 
+    // console.log('SHOP_GROUP', config.SHOP_GROUP);
+    // console.log("User Shop Group", $rootScope.Profile.Shop.ShopGroup);
+
     var MAX_FILESIZE = (options.maxImageUploadSize || 5000000);
     var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
 

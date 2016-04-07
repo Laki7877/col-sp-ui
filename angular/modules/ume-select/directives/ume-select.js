@@ -14,7 +14,8 @@ angular.module('umeSelect')
                 inRelationship: '=?inRelationship',
                 itsComplicated: '=?itsComplicated',
                 displayBy: '@displayBy',
-                freedomOfSpeech: '=freedomOfSpeech'
+                freedomOfSpeech: '=freedomOfSpeech',
+                groupBy: '@?groupBy'
             },
             replace: true,
             priority: 1010,
@@ -34,7 +35,25 @@ angular.module('umeSelect')
                 scope.choices = [];
 
                 scope.$watchCollection('originalChoices()', function(data){
-                    scope.choices = data;
+                    var sortedData = data;
+                    var seenGroup = new Set();
+
+                    if(scope.groupBy){
+                        seenGroup.clear();
+                        sortedData = _.sortBy(data, function(o) { return _.get(o, scope.groupBy); });
+                        sortedData = sortedData.map(function(d){
+                            var groupName = _.get(d, scope.groupBy);
+                            if(!seenGroup.has(groupName)){
+                                seenGroup.add(groupName);
+                            }else{
+                                delete d[scope.groupBy];
+                            }
+
+                            return d;
+                        });
+                    }
+                    
+                    scope.choices = sortedData;
                 });
 
                 var _id = (new Date()).getTime()*Math.random() + "R";
@@ -92,7 +111,7 @@ angular.module('umeSelect')
                     }else if(evt.code == "Backspace" || evt.keyCode == 8){
 
                         if(scope.searchText.length > 0) return;
-                        if(scope.model.length > 0) scope.model.pop();
+                        if(_.isArray(scope.model) && scope.model.length > 0) scope.model.pop();
                     }
 
                     if(scope.highlightedIndex >= scope.choices.length){
@@ -105,7 +124,9 @@ angular.module('umeSelect')
                 }
 
                 scope.blur = function(){
-                    scope.focused = false;
+                    $timeout(function(){
+                        scope.focused = false;
+                    }, 600)
                 }
 
                 scope.focus = function(broadcast){
