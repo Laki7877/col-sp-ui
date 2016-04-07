@@ -2,12 +2,13 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerShopAppearanceCtrl">
-		<div ng-show="loading" nc-loading="Loading Shop Settings.."></div>
 		<nc-alert nc-model="alert"></nc-alert>
-        <form class="ah-form sticky-mainform-action" name="form" ng-submit="save()" ng-show="!loading">
-            <nc-page-title nc-title="Shop Appearance" icon="fa-sliders">
-                <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
-            </nc-page-title>
+        <nc-page-title nc-title="Shop Appearance" icon="fa-sliders">
+            <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+        </nc-page-title>
+		<div ng-show="loading" nc-loading="Loading.."></div>
+		<div ng-show="saving" nc-loading="Saving.."></div>
+        <form class="ah-form sticky-mainform-action" name="form" ng-submit="save()" ng-show="!loading && !saving">
 		    <div>
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">

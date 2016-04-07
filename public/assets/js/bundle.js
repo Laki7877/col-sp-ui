@@ -5668,7 +5668,7 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 				$scope.loading = false;
 				$scope.theme = data;
 				$scope.bannerUploader = ImageService.getUploaderFn('/ShopImages/' + id);
-				$scope.thumbUploader = ImageService.getUploaderFn('/ShopImages/' + id);
+				$scope.thumbUploader = ImageService.getUploaderFn('/ShopImages');
 
 				// Readjust components if any
 				if($scope.hasComponent('Banner')) {
@@ -5719,6 +5719,7 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 		$scope.form.$setSubmitted();
 
 		if($scope.form.$valid) {
+			$scope.saving = true;
 			ShopAppearanceService.updateAll(ShopAppearanceService.serialize($scope.formData))
 				.then(function(data) {
 					$scope.formData = ShopAppearanceService.deserialize(data);
@@ -8266,7 +8267,6 @@ angular.module('nc')
 				
 				$timeout(function() {
 					var section = vm.element || $document;
-					console.log(vm.element, toElm);
 					smoothScroll(toElm ? vm.element[0] : $document[0].body, {
 						container: toElm ? '.modal': null
 					});
@@ -16027,7 +16027,6 @@ module.exports = {
     },
     VideoLink: {
         inputSize: 'normal',
-        tooltip: "Input number of stock before customer will get alerted when they visit your product page",
         hint: {
             show: true,
             message: 'Example:https://www.youtube.com/watch?v=i79M4nKW1Ms'

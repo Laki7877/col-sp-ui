@@ -40,7 +40,7 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 				$scope.loading = false;
 				$scope.theme = data;
 				$scope.bannerUploader = ImageService.getUploaderFn('/ShopImages/' + id);
-				$scope.thumbUploader = ImageService.getUploaderFn('/ShopImages/' + id);
+				$scope.thumbUploader = ImageService.getUploaderFn('/ShopImages');
 
 				// Readjust components if any
 				if($scope.hasComponent('Banner')) {
@@ -91,6 +91,7 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 		$scope.form.$setSubmitted();
 
 		if($scope.form.$valid) {
+			$scope.saving = true;
 			ShopAppearanceService.updateAll(ShopAppearanceService.serialize($scope.formData))
 				.then(function(data) {
 					$scope.formData = ShopAppearanceService.deserialize(data);
