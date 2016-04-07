@@ -88,13 +88,13 @@ angular.module('nc')
 							var img = new Image;
 
 							img.onload = function() {
-							   if(img.width < Number(scope.options.minWidth) || img.height < Number(scope.options.minHeight)){
-							   	 scope.onfail('ondimension', [scope.options.minHeight, scope.options.minWidth, scope.options.square]);
+							   if(img.width < Number(scope.options.validateMinWidth) || img.height < Number(scope.options.validateMinHeight)){
+							   	 scope.onfail('ondimension', [scope.options.validateMinHeight, scope.options.validateMinWidth, scope.options.validateSquare]);
 							     return;
 							   }
 
-							   if(img.width != img.height && scope.options.square){
-							   	 scope.onfail('onsquare', [scope.options.minHeight, scope.options.minWidth, scope.options.square]);
+							   if(img.width != img.height && scope.options.validateSquare){
+							   	 scope.onfail('onsquare', [scope.options.validateMinHeight, scope.options.validateMinWidth, scope.options.validateSquare]);
 							     return;
 							   }
 
