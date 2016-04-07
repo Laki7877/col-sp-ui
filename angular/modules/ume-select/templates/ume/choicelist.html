@@ -4,8 +4,8 @@
 		<div class="selectize-dropdown-content">
 
 			<div data-group="Default" class="optgroup">
-				<div ng-show="item._group" ng-repeat-start="item in (choices | filter : searchText) track by $index" class="optgroup-header">
-					{{ item._group }}
+				<div ng-show="item[groupBy]" ng-repeat-start="item in (choices | filter : searchText) track by $index" class="optgroup-header">
+					{{ item[groupBy] }}
 				</div>
 				<div ng-repeat-end ng-click="pickItem(item)" data-value="{{item}}" 
 				ng-class="{'ume-highlighted' : $index == highlightedIndex}"
