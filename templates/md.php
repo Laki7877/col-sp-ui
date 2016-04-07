@@ -23,7 +23,7 @@
 					</div>
 					<div class="row">
 						<you-me display-by="ProductNameEn" placeholder="Search product by name or Pid" 
-						auto-clear-search="true"
+						auto-clear-search="true" group-by="_group"
 						ng-model="x" refresh="querySearch" choices="choices"></you-me>
 					</div>
 					<div class="row">

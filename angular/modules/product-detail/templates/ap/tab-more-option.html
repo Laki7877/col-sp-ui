@@ -9,7 +9,7 @@
                 <div class="form-section-content">
                     <div nc-template="common/input/form-group-with-label" nc-label="Related Products" nc-template-form="form.RelatedProducts"
                     nc-template-options-path="addProductForm/RelatedProducts">
-                        <you-me display-by="ProductNameEn" placeholder="Search by Product Name" its-complicated="true"
+                        <you-me display-by="ProductNameEn" placeholder="Search by Product" its-complicated="true"
                         ng-model="formData.RelatedProducts" refresh="refresher.RelatedProducts" freedom-of-speech="false"
                         choices="dataset.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' "></you-me>
 
@@ -151,7 +151,7 @@
                                         <button class="btn btn-white">Restore</button>
                                     </td>
                                 </tr>
-                                
+
                             </tbody>
                         </table>
                     </div>

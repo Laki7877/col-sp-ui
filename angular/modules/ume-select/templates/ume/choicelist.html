@@ -1,18 +1,21 @@
 <div class="selectize-dropdown single demo-default" 
-	ng-show="searchText.length > 0 && focused" 
+	ng-show="(searchText.length > 0 && focused) || (initialChoices && focused)" 
 	style="width: 100%;">
 		<div class="selectize-dropdown-content">
-			<div data-group="Climbing" class="optgroup">
-			<!-- <div class="optgroup-header">Climbing</div> -->
 
-			<div ng-click="pickItem(item)" data-value="{{item}}" 
-			ng-class="{'ume-highlighted' : $index == highlightedIndex}"
-			data-selectable ng-repeat="item in (choices | filter : searchText) track by $index" class="option">
-				{{ itemValue(item) }} <!-- i dont know how to transclude and get item access -->
-			</div>
-			<div ng-if="(choices | filter : searchText).length == 0 && notFound && !loading" data-selectable class="option">
-				No result for search term '{{ searchText }}' 
-			</div>
+			<div data-group="Default" class="optgroup">
+				<div ng-show="item[groupBy]" ng-repeat-start="item in (searchText.length > 0 ? choices : initialChoices) track by $index" class="optgroup-header">
+					{{ item[groupBy] }}
+				</div>
+				<div ng-repeat-end ng-click="pickItem(item)" data-value="{{item}}" 
+				ng-class="{'ume-highlighted' : $index == highlightedIndex}"
+				data-selectable  class="option">
+					{{ itemValue(item) }} 
+				</div>
+				<!-- no result -->
+				<div ng-if="(choices | filter : searchText).length == 0 && notFound && !loading" data-selectable class="option">
+					No result for search term '{{ searchText }}' 
+				</div>
 			</div>
 		</div>
 	</div>
