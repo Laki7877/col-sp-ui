@@ -220,15 +220,18 @@ a.cke_dialog_tab{
 	  border-color: $color-grey;
 		min-height: 34px;
 	}
+	.selectize-input:after{
+		display: none;
+	}
 }
 .selectize-control{
 	.btn-primary{
 		background-color: $color-theme;
 		border-color: $color-theme;
-		margin-bottom: 5px;
+		margin-top: 2px;
+		margin-bottom: 2px;
 	}
 }
-
 .selectize-dropdown{
 	margin-top: -7px;
 	.single{

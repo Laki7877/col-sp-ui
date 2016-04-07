@@ -336,12 +336,12 @@
   height: 0;
   border-style: solid;
   border-width: 5px 5px 0 5px;
-  border-color: #808080 transparent transparent transparent;
+  border-color: #7B7F8F transparent transparent transparent;
 }
 .selectize-control.single .selectize-input.dropdown-active:after {
   margin-top: -4px;
   border-width: 0 5px 5px 5px;
-  border-color: transparent transparent #808080 transparent;
+  border-color: transparent transparent #7B7F8F transparent;
 }
 .selectize-control.rtl.single .selectize-input:after {
   left: 15px;

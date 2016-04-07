@@ -12417,19 +12417,24 @@ a.cke_dialog_tab {
   border-color: #BCC7D5;
   min-height: 34px;
 }
+/* line 223, ../../../assets/_override.scss */
+.selectize-control.single .selectize-input:after {
+  display: none;
+}
 
-/* line 225, ../../../assets/_override.scss */
+/* line 228, ../../../assets/_override.scss */
 .selectize-control .btn-primary {
   background-color: #4899DD;
   border-color: #4899DD;
-  margin-bottom: 5px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
-/* line 232, ../../../assets/_override.scss */
+/* line 235, ../../../assets/_override.scss */
 .selectize-dropdown {
   margin-top: -7px;
 }
-/* line 234, ../../../assets/_override.scss */
+/* line 237, ../../../assets/_override.scss */
 .selectize-dropdown .single {
   color: #32343C;
   border-color: #BCC7D5;
