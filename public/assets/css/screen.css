@@ -12419,10 +12419,17 @@ a.cke_dialog_tab {
 }
 
 /* line 225, ../../../assets/_override.scss */
+.selectize-control .btn-primary {
+  background-color: #4899DD;
+  border-color: #4899DD;
+  margin-bottom: 5px;
+}
+
+/* line 232, ../../../assets/_override.scss */
 .selectize-dropdown {
   margin-top: -7px;
 }
-/* line 227, ../../../assets/_override.scss */
+/* line 234, ../../../assets/_override.scss */
 .selectize-dropdown .single {
   color: #32343C;
   border-color: #BCC7D5;

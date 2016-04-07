@@ -221,6 +221,13 @@ a.cke_dialog_tab{
 		min-height: 34px;
 	}
 }
+.selectize-control{
+	.btn-primary{
+		background-color: $color-theme;
+		border-color: $color-theme;
+		margin-bottom: 5px;
+	}
+}
 
 .selectize-dropdown{
 	margin-top: -7px;
