@@ -7,17 +7,19 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     VariationFactorIndices, AttributeOptions) {
     'ngInject';
 
-    // console.log('SHOP_GROUP', config.SHOP_GROUP);
-    // console.log("User Shop Group", $rootScope.Profile.Shop.ShopGroup);
+    $scope.profileIsIndy = $rootScope.profileIsIndy;
 
     var MAX_FILESIZE = (options.maxImageUploadSize || 5000000);
     var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
+    $scope.readOnly = options.readOnly;
+    $scope.adminMode = options.adminMode;
+    $scope.approveMode = options.approveMode;
 
     var loadOverview = function(res){
       Shop.get(res.ShopId).then(function(x){
         $scope.formData.ShopName = x.ShopNameEn;
       })
-    }
+    };
 
     $scope.adminAlert = new NcAlert();
     $scope.alert = new NcAlert();
@@ -29,16 +31,12 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       $scope.defaultAttributes = res;
     });
 
-    $scope.readOnly = options.readOnly;
-    $scope.adminMode = options.adminMode;
-    $scope.approveMode = options.approveMode;
 
     $scope.isVisibleTo = function(abbrev){
       if(abbrev == "AD" && $scope.adminMode) return true;
       if(abbrev == "ME") return true;
       return false;
     }
-
     
     $scope.cancel = function(){
       $scope.addProductForm.$dirty = false;

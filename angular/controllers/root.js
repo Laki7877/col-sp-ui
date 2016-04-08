@@ -4,6 +4,10 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
 	$rootScope._ = _;
   $rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
+  
+  $rootScope.profileIsIndy = function(){
+    return _.get($rootScope.Profile, 'Shop.ShopGroup') == 'IN';
+  }
 
    //Prevent image dragdrop on other elements   
     $window.addEventListener("dragover", function(e) {    

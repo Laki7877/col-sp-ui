@@ -28,14 +28,14 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
        <nc-alert nc-model="alert"></nc-alert>
        <nc-alert nc-model="adminAlert"></nc-alert>
 
-      <!-- <div style="padding-bottom: 10px" ng-show="!pageState.loading.state">
+      <div style="padding-bottom: 10px" ng-show="!pageState.loading.state">
                <button ng-click="_debugLoad()" class="btn btn-xs" ng-disabled="disableDebugLoad">
-                    <span class="glyphicon glyphicon-asterisk"></span> Load Cache
+                    <span class="glyphicon glyphicon-asterisk"></span> Quick Load
                 </button>
                 <button ng-click="_debugSave()" class="btn btn-xs">
-                    <span class="glyphicon glyphicon-asterisk"></span> Save Cache
+                    <span class="glyphicon glyphicon-asterisk"></span> Quick Save
                 </button>
-       </div>-->
+       </div>
 
        <div ap-component="ap/form-product-add"></div>
 </div>
