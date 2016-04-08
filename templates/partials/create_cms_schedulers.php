@@ -14,10 +14,10 @@
                         <div class="width-field-normal">
                             <div class="dropdown">
                                 <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
-                                    <input readonly style="background-color:white" type="text" ng-class="{'has-error': formData.ExpireDate <= formData.EffectiveDate }" placeholder="Select date and time when cms will go online" class="input-icon-calendar form-control" value="{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}" />
-                                </a>
+                                    <input readonly style="background-color:white" type="text" ng-class="{'has-error': Schedule.ExpireDate <= Schedule.EffectiveDate }" placeholder="Select date and time when cms will go online" class="input-icon-calendar form-control" value="{{ Schedule.EffectiveDate | date: 'dd/MM/yy HH:mm' }}" />
+                                    </a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <datetimepicker data-ng-model="formData.EffectiveDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'hour' }" />
+                                    <datetimepicker data-ng-model="Schedule.EffectiveDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'hour' }" />
                                 </ul>
                             </div>
                             <span class="help-block"></span>
@@ -34,15 +34,15 @@
                         <div class="width-field-normal">
                             <div class="dropdown">
                                 <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="#">
-                                    <input readonly style="background-color:white" type="text" placeholder="Select date and time when cms will go offline" class="input-icon-calendar form-control" name="ExpiryDate" ng-class="{'has-error': formData.ExpiryDate <= formData.EffectiveDate }" value="{{ formData.ExpiryDate | date: 'dd/MM/yy HH:mm' }}">
-                                </a>
+                                    <input readonly style="background-color:white" type="text" placeholder="Select date and time when cms will go offline" class="input-icon-calendar form-control" name="ExpiryDate" ng-class="{'has-error': Schedule.ExpiryDate <= Schedule.EffectiveDate }" value="{{ Schedule.ExpiryDate | date: 'dd/MM/yy HH:mm' }}" />
+                                    </a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <datetimepicker data-ng-model="formData.ExpiryDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'hour' }" />
+                                    <datetimepicker data-ng-model="Schedule.ExpiryDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'hour' }" />
                                 </ul>
                             </div>
                             <div class="width-field-large">
-                                <span class="help-block color-red" ng-if="formData.ExpiryDate <= formData.EffectiveDate">
-                                    <span>Effective date/time must come before expire date/time</span>
+                                <span class="help-block color-red" ng-if="Schedule.ExpiryDate <= Schedule.EffectiveDate">
+                                  <span>Effective date/time must come before expire date/time</span>
                                 </span>
                             </div>
 

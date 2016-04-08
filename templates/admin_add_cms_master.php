@@ -1,7 +1,8 @@
 <?php
     $menus = [
       ["id" => "information", "name" => 'Information', "class" => "active"],
-      ["id" => "schedulers", "name" => 'Schedulers'],
+      ["id" => "collections", "name" => 'Collections'],
+	  ["id" => "schedulers", "name" => 'Schedulers'],
       ["id" => "conditions", "name" => 'Conditions'],
     ];
     
@@ -10,7 +11,7 @@
 ?>
 
 <?php $this->start('page-body') ?>
-<div ng-controller="AdminCMSMasterDetailCtrl" ng-init="init(<?=$params?>)">
+<div ng-controller="AdminCMSMasterAddCtrl" ng-init="init(<?=$params?>)">
     <nc-alert nc-model="alert"></nc-alert>
     <div ng-show="loading" nc-loading="Loading CMS Master.."></div>
     <div ng-show="saving" nc-loading="Saving CMS Master.."></div>
@@ -20,12 +21,15 @@
             <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "CMS Master/Create CMS Master", 'border_class' => 'no-padding']) ?>
         </div>
 
-        <div class="add-product-body">
+        <div id="add_cms_master_body" class="add-product-body">
             <? $this->insert('components/tab-nav', ["items" => $menus]) ?>
 
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
                     <? $this->insert('partials/create_cms_information') ?>
+                </div>
+				<div role="tabpanel" class="tab-pane margin-top-20" id="collections">
+                    <? $this->insert('partials/create_cms_collections') ?>
                 </div>
                 <div role="tabpanel" class="tab-pane margin-top-20" id="schedulers">
                     <? $this->insert('partials/create_cms_schedulers') ?>

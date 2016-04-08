@@ -71,7 +71,6 @@
 
     //Remove
     $scope.removeItems = function (item, index) {
-        debugger;
         $scope.formData.CardItemList.splice(index, 1);
     }
 

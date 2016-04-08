@@ -7,7 +7,6 @@ var angular = require('angular');
 module.exports = ['config', function (config) {
     'use strict';
     var service = {};
-    debugger;
     service.traverseSet = function (tree, key, value) {
         if (tree.length == 0) return;
         _.forEach(tree, function (node) {
@@ -44,7 +43,6 @@ module.exports = ['config', function (config) {
             //Remove subnodes ptr
             cnode = _.pick(cnode, ['CategoryId', 'Lft', 'Rgt']);
             set.push(cnode);
-            debugger;
         };
 
         for (var i = tree.length - 1; i >= 0; i--) {

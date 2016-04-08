@@ -17,59 +17,59 @@ module.exports = function ($scope, $controller, common, CMSMasterService, util, 
                 'Delete',
                 'Hide',
                 'Show',
-                {
-                    name: 'Publish',
-                    fn: function(arr, cb) {
-                        $scope.alert.close();
-                        Product.bulkPublish(_.map(arr, function(e) {
-                            return _.pick(e, ['ProductId']);
-                        })).then(function() {
-                            cb();
-                            $scope.alert.success('Successfully published ' + arr.length + ' products')
-                        }, function(resp) {
-                            $scope.alert.error(common.getError(resp));
-                        }).finally(function() {
-                            $scope.reload();
-                        });
-                    },
-                    confirmation: {
-                        title: 'Confirm to publish',
-                        message: 'Are you sure you want to publish {{model.length}} products?',
-                        btnConfirm: 'Publish',
-                        btnClass: 'btn-green'
-                    }
-                },
-                {
-                    name: 'Add Tags',
-                    fn: function(add, cb, r) {
-                        $scope.alert.close();
-                        Product.addTags(r).then(function() {
-                            cb();
-                            $scope.alert.success('Successfully add tags for ' + add.length + ' products')
-                        }, function(resp) {
-                            $scope.alert.error(common.getError(resp));
-                        }).finally(function() {
-                            $scope.reload();
-                        });
-                    },
-                    modal: {
-                        size: 'size-warning',
-                        templateUrl: 'product/modalAddTags',
-                        controller: function($scope, $uibModalInstance, data) {
-                            $scope.model = {
-                                tags: []
-                            };
-                            $scope.close = function() {
-                                $uibModalInstance.close({
-                                    Products: _.map(data, function(e) {
-                                        return _.pick(e, ['ProductId']);
-                                    }),
-                                    Tags: $scope.model.tags
-                                })
-                            };
-                        }
-                    }
-                }
+                //{
+                //    name: 'Publish',
+                //    fn: function(arr, cb) {
+                //        $scope.alert.close();
+                //        Product.bulkPublish(_.map(arr, function(e) {
+                //            return _.pick(e, ['ProductId']);
+                //        })).then(function() {
+                //            cb();
+                //            $scope.alert.success('Successfully published ' + arr.length + ' products')
+                //        }, function(resp) {
+                //            $scope.alert.error(common.getError(resp));
+                //        }).finally(function() {
+                //            $scope.reload();
+                //        });
+                //    },
+                //    confirmation: {
+                //        title: 'Confirm to publish',
+                //        message: 'Are you sure you want to publish {{model.length}} products?',
+                //        btnConfirm: 'Publish',
+                //        btnClass: 'btn-green'
+                //    }
+                //},
+                //{
+                //    name: 'Add Tags',
+                //    fn: function(add, cb, r) {
+                //        $scope.alert.close();
+                //        Product.addTags(r).then(function() {
+                //            cb();
+                //            $scope.alert.success('Successfully add tags for ' + add.length + ' products')
+                //        }, function(resp) {
+                //            $scope.alert.error(common.getError(resp));
+                //        }).finally(function() {
+                //            $scope.reload();
+                //        });
+                //    },
+                //    modal: {
+                //        size: 'size-warning',
+                //        templateUrl: 'product/modalAddTags',
+                //        controller: function($scope, $uibModalInstance, data) {
+                //            $scope.model = {
+                //                tags: []
+                //            };
+                //            $scope.close = function() {
+                //                $uibModalInstance.close({
+                //                    Products: _.map(data, function(e) {
+                //                        return _.pick(e, ['ProductId']);
+                //                    }),
+                //                    Tags: $scope.model.tags
+                //                })
+                //            };
+                //        }
+                //    }
+                //}
             ],
             filters: [
                 { name: "All", value: 'All' },

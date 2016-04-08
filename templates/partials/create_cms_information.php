@@ -17,7 +17,7 @@
                     </div>
                     <div nc-template="common/input/form-group-with-label" nc-label="Type">
                         <div class="ah-select2-dropdown">
-                            <select ng-model="formData.CMSType" class="form-control" required>
+                            <select ng-model="formData.CMSType" ng-change="typeChanged(formData.CMSType)" class="form-control" required>
                                 <option value="ST">Static</option>
                                 <option value="CT">Collection</option>
                             </select>
@@ -82,7 +82,30 @@
 				</div>
 			</div>
             </div>
-            
+
+          <div class="form-section">
+            <div class="form-section-header">
+              <h2>Status & Visibility</h2>
+            </div>
+            <div class="form-section-content">
+              <div nc-template="common/input/form-group-with-label" nc-label="Status">
+                <div class="ah-select2-dropdown">
+                  <select ng-model="formData.Status" class="form-control" required="">
+                    <option value="1">Active</option>
+                    <option value="0">In Active</option>
+                  </select>
+                </div>
+              </div>
+              <div nc-template="common/input/form-group-with-label" nc-label="Visibility">
+                <div class="ah-select2-dropdown">
+                  <select ng-model="formData.Visibility" class="form-control" required="">
+                    <option value="1">Visible</option>
+                    <option value="0">Not Visible</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
 </div>

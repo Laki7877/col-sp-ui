@@ -249,6 +249,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
 .controller('AdminCMSGroupController', controllers.adminCMSGroupController)
   //iOATH
   .controller('AdminCMSMasterListCtrl', controllers.adminCMSMasterList)
-  .controller('AdminCMSMasterAddSelectTypeCtrl', controllers.adminCMSMasterAddSelect)
-  .controller('AdminCMSMasterDetailCtrl', controllers.AdminCMSMasterDetail)
+  //.controller('AdminCMSMasterAddSelectTypeCtrl', controllers.adminCMSMasterAddSelect)
+  .controller('AdminCMSMasterAddCtrl', controllers.adminCMSMasterAdd)
   .controller('TestCtrl', controllers.test)

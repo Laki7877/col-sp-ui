@@ -121,9 +121,9 @@ var admin = {
 	},
     // Create By Col Dev (Natee)
 	'CMS|fa fa-contao': {
-        'CMS View':'/admin/cms/master',
+        //'CMS View':'/admin/cms/master',
 	    'CMS Category': '/admin/cms/category',
-	    'CMS Static & Collection': '/admin/cms/collection',
+	    'CMS Static & Collection': '/admin/cms/master',
 	    'CMS Group': '/admin/cms/group'
 	},
 	'Others|fa-sliders': {

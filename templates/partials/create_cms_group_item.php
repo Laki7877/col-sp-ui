@@ -106,16 +106,6 @@
             </div>
             <div class="form-section-content" style="padding: 10px; min-height: 400px;">
 
-              <!-- Search By -->
-              <!--<div class="form-group">
-                <label>Search By</label>
-                  <select class="form-control" ng-model="searchBy" style="min-width: 300px;">
-                    <option value="ProductName">Name</option>
-                    <option value="SKU">SKU</option>
-                    <option value="PID">PID</option>
-                  </select>
-              </div>-->
-
               <div class="form-group">
                 <label>Search</label>
                   <div class="input-group search-box" style="min-width: 300px;">

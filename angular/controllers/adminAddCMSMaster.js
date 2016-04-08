@@ -129,7 +129,6 @@ module.exports = function ($scope, $controller, CMSMasterService, config) {
 
     //Remove
     $scope.removeItems = function (item, index) {
-        debugger;
         $scope.items.splice(index, 1);
     }
 

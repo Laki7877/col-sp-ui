@@ -138,10 +138,10 @@ Route::add('/admin/cms/group', 'AdminController::listCMSGroup');
 Route::add('/admin/cms/group/create', 'AdminController::addCMSGroup');
 Route::add('/admin/cms/group/:id', 'AdminController::editCMSGroup');
 
-Route::add('/admin/cms/master', 'AdminController::cmsMasterList');
-Route::add('/admin/cms/master/select', 'AdminController::selectCMSMasterType');
+Route::add('/admin/cms/master', 'AdminController::listCMSMaster');
+//Route::add('/admin/cms/master/select', 'AdminController::selectCMSMasterType');
 Route::add('/admin/cms/master/create', 'AdminController::addCMSMaster');
-//Route::add('/admin/cms/master/::id', 'AdminController::editCMSMaster');
+Route::add('/admin/cms/master/:id', 'AdminController::editCMSMaster');
 
 
 Route::add('/buy1get1', 'Buy1Get1Controller::index');

@@ -2,49 +2,12 @@
 module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     function ($http, common, util, config, KnownException) {
         'use strict';
-        var service = common.Rest('/cms/master');
-
-        service.getOne = function (CMSMasterId) {
-            var req = {
-                method: 'GET',
-                url: '/cms/master/' + CMSMasterId
-            };
-            return common.makeRequest(req);
-        };
-        service.create = function (obj) {
-            return common.makeRequest({
-                method: 'POST',
-                url: '/cms/master/create',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            });
-        };
-        service.update = function (CMSMasterId, obj) {
-            return common.makeRequest({
-                method: 'PUT',
-                url: '/cms/master/update/' + CMSMasterId,
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            });
-        };
-        service.duplicate = function (CMSMasterId) {
-            //this URL structure is weird dont u think
-            var req = {
-                method: 'POST',
-                url: '/cms/master/' + CMSMasterId
-            };
-
-            return common.makeRequest(req);
-        };
+        var service = common.Rest('/CMS/CMSMaster');
 
         service.getAll = function (parameters) {
             var req = {
                 method: 'GET',
-                url: '/cms/master',
+                url: '/CMS/CMSMaster',
                 params: {
                     _order: parameters.orderBy || 'CMSMasterId',
                     _limit: parameters.pageSize || 10,
@@ -58,33 +21,72 @@ module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
             return common.makeRequest(req);
         };
 
+        service.getOne = function (id) {
+            return common.makeRequest({
+                method: 'GET',
+                url: '/CMS/GetCMSMaster/' + id
+            });
+        };
 
-        service.visible = function (obj) {
+        service.create = function (obj) {
+            return common.makeRequest({
+                method: 'POST',
+                url: '/CMS/CMSMaster',
+                data: obj
+            });
+        };
+
+        service.update = function (CMSMasterId, obj) {
             return common.makeRequest({
                 method: 'PUT',
-                url: '/cms/master/Visibility',
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
-            });
-        };
-        service.deleteBulk = function (arr) {
-            return common.makeRequest({
-                method: 'DELETE',
-                url: '/cms/master/delete',
-                data: arr,
-                headers: {
-                    'Content-Type': 'application/json;charset=UTF-8'
-                }
+                url: '/CMS/CMSMaster/' + CMSMasterId,
+                data: obj
             });
         };
 
+        //service.duplicate = function (CMSMasterId) {
+        //    var req = {
+        //        method: 'POST',
+        //        url: '/cms/master/' + CMSMasterId
+        //    };
 
-        service.getStatus = function (abbreviation) {
-            return StatusLookup[abbreviation];
-        }
+        //    return common.makeRequest(req);
+        //};
 
+        //service.visible = function (obj) {
+        //    return common.makeRequest({
+        //        method: 'PUT',
+        //        url: '/cms/master/Visibility',
+        //        data: obj,
+        //        headers: {
+        //            'Content-Type': 'application/json;charset=UTF-8'
+        //        }
+        //    });
+        //};
+
+        //service.deleteBulk = function (arr) {
+        //    return common.makeRequest({
+        //        method: 'DELETE',
+        //        url: '/cms/master/delete',
+        //        data: arr,
+        //        headers: {
+        //            'Content-Type': 'application/json;charset=UTF-8'
+        //        }
+        //    });
+        //};
+
+        //service.getStatus = function (abbreviation) {
+        //    return StatusLookup[abbreviation];
+        //}
+
+        service.searchCMSCategory = function (parameters) {
+            var req = {
+                method: 'GET',
+                url: '/cms/SearchCMSCategory',
+                params: parameters
+            };
+            return common.makeRequest(req);
+        };
 
         return service;
     }
