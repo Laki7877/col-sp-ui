@@ -858,6 +858,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           // only warn when form is dirty
           return null;
         }
+        console.log($scope.addProductForm);
         var message = 'Your changes will not be saved.',
           e = e || window.event
           // For IE and Firefox

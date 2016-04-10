@@ -54,7 +54,7 @@
 							</p>
 						</div>
 						<div class="row">
-							<you-me display-by="TagName" max-tag-count="3" freedom-of-speech="true" 
+							<you-me display-by="TagName" max-tag-count="3" 
 							its-complicated="true" in-rel placeholder="+ New Tag" 
 							ng-model="tagModel" choices="kwdchoices"></you-me>
 

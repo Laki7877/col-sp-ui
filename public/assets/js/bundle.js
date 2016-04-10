@@ -10951,6 +10951,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           // only warn when form is dirty
           return null;
         }
+        console.log($scope.addProductForm);
         var message = 'Your changes will not be saved.',
           e = e || window.event
           // For IE and Firefox
@@ -11547,7 +11548,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/tab-variations',
-    "<div id=add-product-variation-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row ng-if=\"controlFlags.variation != 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content><div class=form-group><p class=form-control-static>Variation will allow you to create a group of products with different attributes such as size and color. Once you enable variation, information from other tabs will be copied into variants that you will create, and variation cannot be disabled. <strong>Please select attribute set before enabling variation.</strong></p><button class=\"btn btn-width-xxl btn-blue margin-top-20\" ng-disabled=!formData.AttributeSet.AttributeSetId ng-click=enableVariation()>Enable Variation</button></div></div></div></div></div><div class=row ng-show=\"controlFlags.variation == 'enable'\"><div class=col-xs-12><ap-variation-option form-data=formData control-flags=controlFlags generator=variationFactorIndices dataset=dataset></ap-variation-option><ap-multiplied-variants ng-show=\"formData.Variants.length > 0\"><div ng-include=\"'ap/section-variant-table-a'\"></div></ap-multiplied-variants></div></div></div>"
+    "<div id=add-product-variation-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row ng-if=\"controlFlags.variation != 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content><div class=form-group><p class=form-control-static>Variation will allow you to create a group of products with different attributes such as size and color. Once you enable variation, information from other tabs will be copied into variants that you will create, and variation cannot be disabled. <strong>Please select attribute set before enabling variation.</strong></p><a class=\"btn btn-width-xxl btn-blue margin-top-20\" ng-disabled=!formData.AttributeSet.AttributeSetId ng-click=enableVariation()>Enable Variation</a></div></div></div></div></div><div class=row ng-show=\"controlFlags.variation == 'enable'\"><div class=col-xs-12><ap-variation-option form-data=formData control-flags=controlFlags generator=variationFactorIndices dataset=dataset></ap-variation-option><ap-multiplied-variants ng-show=\"formData.Variants.length > 0\"><div ng-include=\"'ap/section-variant-table-a'\"></div></ap-multiplied-variants></div></div></div>"
   );
  }]);
 },{}],141:[function(require,module,exports){
@@ -12052,7 +12053,6 @@ angular.module('umeSelect')
                 inRelationship: '=?inRelationship',
                 itsComplicated: '=?itsComplicated',
                 displayBy: '@displayBy',
-                freedomOfSpeech: '=freedomOfSpeech',
                 groupBy: '@?groupBy',
                 initialChoices: '=?initialChoices',
                 hideIcon: '=?hideIcon',
@@ -12086,13 +12086,15 @@ angular.module('umeSelect')
                 //Don't reset model on error, I will handle this manually
                 ngModel.$options = { allowInvalid: true }
 
-                //Listen for any change in error state
+                //Listen for any change in error state and model
                 scope.$watch('[model, E_STATE]', function(value){
+                    //Update ng model
                     ngModel.$setViewValue(value[0]);
                     ngModel.$setDirty();
                     ngModel.$validate();
                 }, true);
 
+                //For error validations
                 var maxTagCount = undefined;
                 var maxLengthPerTag = undefined;
                 var tagPattern = undefined;
@@ -12118,10 +12120,12 @@ angular.module('umeSelect')
                     return !maxTagCount || !value || (value.length <= maxTagCount);
                 };
 
+                //Watch change on input choices
                 scope.$watchCollection('originalChoices()', function(data){
                     var sortedData = data;
                     var seenGroup = new Set();
 
+                    //Create grouping if groupby is present
                     if(scope.groupBy){
                         seenGroup.clear();
                         sortedData = _.sortBy(data, function(o) { return _.get(o, scope.groupBy); });
@@ -12140,9 +12144,12 @@ angular.module('umeSelect')
                     scope.choices = sortedData;
                 });
 
+
+                //For debugging purpose I needed to know where event is firing from
                 var _id = (new Date()).getTime()*Math.random() + "R";
                 scope._id =  _id;
 
+                //Delete item from tag list 
                 scope.breakUp = function(index){
                     if(!scope.inRelationship && !scope.itsComplicated) {
                         //You can only break up when you re in relationship
@@ -12153,10 +12160,12 @@ angular.module('umeSelect')
                     scope.model.splice(index, 1);
                 }
 
+                //Focus on search field
                 scope.forceFocus = function(){
                     scope.$emit('focusObtained', _id);
                 }
 
+                //Tokenize string into tag object
                 scope.tagify = function(tagValue){
                     var X = {};
                     if(!scope.displayBy) return tagValue;
@@ -12164,28 +12173,30 @@ angular.module('umeSelect')
                     return X;
                 }
 
+                //In complicated mode (multiple)
                 if(scope.itsComplicated){
                     scope.choices.unshift(scope.tagify('New Tag'));
                 }
 
+                //Get true item display value
                 scope.itemValue = function(item){
                     if(!scope.displayBy) return item;
                     return _.get(item, scope.displayBy);
                 }
 
+                //Watch keyboard events
                 scope.keyDown = function(evt){
-
                     if(evt.code == "ArrowDown" || evt.keyCode == 40){
                         scope.highlightedIndex++;
                     }else if(evt.code == "ArrowUp" || evt.keyCode == 38){
                         scope.highlightedIndex--;
                     }else if(evt.code == "Enter" || evt.code == "Comma" || evt.keyCode == 13 || evt.keyCode == 188){
-                        // console.log("Keydown on id", scope._id);
                         if(scope.searchText == "") return;
 
                         $timeout(function (){
                             scope.$emit('focusLost', _id);
-                            var K = $filter('filter')(scope.choices, scope.searchText);
+                            // var K = $filter('filter')(scope.choices, scope.searchText);
+                            var K = (scope.searchText.length > 0 ? scope.choices : scope.initialChoices);
                             var result= scope.pickItem(K[scope.highlightedIndex]);
                             if(!result){
                                 scope.$emit('focusObtained', _id);
@@ -12194,6 +12205,7 @@ angular.module('umeSelect')
 
                     }else if(evt.code == "Backspace" || evt.keyCode == 8){
                         if(scope.searchText.length > 0) return;
+                        //reset error state
                         scope.E_STATE = null;
                         if(_.isArray(scope.model) && scope.model.length > 0) scope.model.pop();
                     }
@@ -12208,6 +12220,9 @@ angular.module('umeSelect')
                 }
 
                 scope.blur = function(){
+                    //Note the 500ms delay is significant because
+                    //mouse clicking on choice item will be < 1 second in duration
+                    //but long enough to trigger a blur which deactivates choices
                     $timeout(function(){
                         scope.focused = false;
                     }, 500)
@@ -12230,6 +12245,7 @@ angular.module('umeSelect')
                 scope.notFound = false;
 
                 var effectiveText = '', searchTextTimeout;
+                //Debouncing var and etc
                 var prevQ = {};
                 var loadQ = [];
                 scope.$watch('searchText', function () {
@@ -12239,7 +12255,7 @@ angular.module('umeSelect')
                         scope.choices = []; 
                     }
 
-                    if(scope.itsComplicated && scope.freedomOfSpeech){
+                    if(scope.itsComplicated){
                         scope.choices[0] = scope.tagify(scope.searchText);
                     }
                     
@@ -12280,6 +12296,8 @@ angular.module('umeSelect')
 
                 scope.pickItem = function(item){
 
+                    //Action to perform when user select a choice
+                    //if inlove (such as inrelationship or its-complicated)
                     var finishListModel = function(){
                         scope.focus(true);
                         scope.searchText = "";
@@ -12289,6 +12307,7 @@ angular.module('umeSelect')
                         }
                     };
 
+                    //same as above but for single people
                     var finishSingleModel = function(){
                         scope.focused = false;
                     }
@@ -12305,10 +12324,12 @@ angular.module('umeSelect')
 
                     scope.E_STATE = null;
 
+                    //If in love, treat model as array
                     if(scope.inRelationship || scope.itsComplicated){
                         scope.model.push(item);
                         finishListModel();
                     }else{
+                        //if lonely, its not array :(
                         scope.model = item;
                         finishSingleModel();
                     }
