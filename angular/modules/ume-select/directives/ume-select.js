@@ -31,20 +31,27 @@ angular.module('umeSelect')
                 return templateHTML;
             },
             link: function (scope, element, attrs, ngModel, transclude) {
+                
+                //text user types in searchbox
+                scope.searchText = "";
+                //index of currently highlighted choice
+                scope.highlightedIndex = 0;
+                //choices
+                scope.choices = [];
+
+                //State variables
+                scope.E_STATE = null;
+                var STATE_MAXTAGBLOCKED = 1;
                 scope.focused = false;
                 scope.loading = false;
-                scope.searchText = "";
-                scope.highlightedIndex = 0;
-                scope.choices = [];
-                // scope.modelInitialState = angular.copy(scope.model);
 
+                //Don't reset model on error, I will handle this manually
                 ngModel.$options = { allowInvalid: true }
 
-                scope.$watch('model', function(value){
-                    
-                    // if(!value) scope.model = scope.modelInitialState;
-
+                //Listen for any change in error state
+                scope.$watch('[model, E_STATE]', function(value){
                     ngModel.$setViewValue(value);
+                    ngModel.$setDirty();
                     ngModel.$validate();
                 }, true);
 
@@ -69,6 +76,7 @@ angular.module('umeSelect')
 
                 ngModel.$validators.maxTagCount = function(modelValue, viewValue) {
                     var value = modelValue || viewValue;
+                    if(scope.E_STATE == STATE_MAXTAGBLOCKED) return false;
                     return !maxTagCount || !value || (value.length <= maxTagCount);
                 };
 
@@ -147,8 +155,8 @@ angular.module('umeSelect')
                         });
 
                     }else if(evt.code == "Backspace" || evt.keyCode == 8){
-
                         if(scope.searchText.length > 0) return;
+                        scope.E_STATE = null;
                         if(_.isArray(scope.model) && scope.model.length > 0) scope.model.pop();
                     }
 
@@ -251,9 +259,13 @@ angular.module('umeSelect')
                     if(_.isArray(scope.model) && maxTagCount){
                         if(scope.model.length >= maxTagCount){
                             finishListModel();
+                            scope.E_STATE = STATE_MAXTAGBLOCKED; //error state
+                            console.log('scope.E_STATE', scope.E_STATE);
                             return true;
                         }
                     }
+
+                    scope.E_STATE = null;
 
                     if(scope.inRelationship || scope.itsComplicated){
                         scope.model.push(item);
@@ -266,10 +278,9 @@ angular.module('umeSelect')
 
                     if(scope.autoClearSearch){
                         scope.searchText = "";
-                        //TODO: Note this will not work well with
-                        //hardcoded list
                         scope.choices = [];
                     }
+
                     scope.highlightedIndex = 0;
                     return true;
                 }

@@ -9459,6 +9459,7 @@ angular.module('nc')
                         opt = {};
                     }
 
+                    console.log('opt', scope.optionsPath, opt)
                     if(!('error' in opt)){
                         opt.error = {};
                     };
@@ -11381,7 +11382,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-keywords',
-    "<div class=form-section><div class=form-section-header><h2>Search Tags</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Search Tags\" nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><you-me its-complicated=true in-rel hide-icon=true placeholder=\"Enter keyword\" freedom-of-speech=true ng-model=formData.Tags choices=formData.AttributeSet.AttributeSetTagMaps></you-me></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags).length > 1\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags\" ng-click=\"(formData.Tags.indexOf(tag) == -1) && formData.Tags.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Search Tags</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Search Tags\" nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><you-me its-complicated=true hide-icon=true name=Keywords placeholder=\"Enter keyword\" freedom-of-speech=true max-tag-count=20 ng-model=formData.Tags choices=formData.AttributeSet.AttributeSetTagMaps></you-me></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags).length > 1\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags\" ng-click=\"(formData.Tags.indexOf(tag) == -1) && formData.Tags.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
   );
 
 
@@ -12024,20 +12025,27 @@ angular.module('umeSelect')
                 return templateHTML;
             },
             link: function (scope, element, attrs, ngModel, transclude) {
+                
+                //text user types in searchbox
+                scope.searchText = "";
+                //index of currently highlighted choice
+                scope.highlightedIndex = 0;
+                //choices
+                scope.choices = [];
+
+                //State variables
+                scope.E_STATE = null;
+                var STATE_MAXTAGBLOCKED = 1;
                 scope.focused = false;
                 scope.loading = false;
-                scope.searchText = "";
-                scope.highlightedIndex = 0;
-                scope.choices = [];
-                // scope.modelInitialState = angular.copy(scope.model);
 
+                //Don't reset model on error, I will handle this manually
                 ngModel.$options = { allowInvalid: true }
 
-                scope.$watch('model', function(value){
-                    
-                    // if(!value) scope.model = scope.modelInitialState;
-
+                //Listen for any change in error state
+                scope.$watch('[model, E_STATE]', function(value){
                     ngModel.$setViewValue(value);
+                    ngModel.$setDirty();
                     ngModel.$validate();
                 }, true);
 
@@ -12062,6 +12070,7 @@ angular.module('umeSelect')
 
                 ngModel.$validators.maxTagCount = function(modelValue, viewValue) {
                     var value = modelValue || viewValue;
+                    if(scope.E_STATE == STATE_MAXTAGBLOCKED) return false;
                     return !maxTagCount || !value || (value.length <= maxTagCount);
                 };
 
@@ -12140,8 +12149,8 @@ angular.module('umeSelect')
                         });
 
                     }else if(evt.code == "Backspace" || evt.keyCode == 8){
-
                         if(scope.searchText.length > 0) return;
+                        scope.E_STATE = null;
                         if(_.isArray(scope.model) && scope.model.length > 0) scope.model.pop();
                     }
 
@@ -12244,9 +12253,13 @@ angular.module('umeSelect')
                     if(_.isArray(scope.model) && maxTagCount){
                         if(scope.model.length >= maxTagCount){
                             finishListModel();
+                            scope.E_STATE = STATE_MAXTAGBLOCKED; //error state
+                            console.log('scope.E_STATE', scope.E_STATE);
                             return true;
                         }
                     }
+
+                    scope.E_STATE = null;
 
                     if(scope.inRelationship || scope.itsComplicated){
                         scope.model.push(item);
@@ -12259,10 +12272,9 @@ angular.module('umeSelect')
 
                     if(scope.autoClearSearch){
                         scope.searchText = "";
-                        //TODO: Note this will not work well with
-                        //hardcoded list
                         scope.choices = [];
                     }
+
                     scope.highlightedIndex = 0;
                     return true;
                 }
@@ -15922,6 +15934,7 @@ module.exports = {
     'error': {
       'messages': {
         'maxtagcount': 'Cannot exceed 20 tags',
+        'maxTagCount': 'Cannot exceed 20 tags',
         'maxtaglength': 'Tag must contain 30 characters or less',
         'pattern': 'Only letters and numbers allowed'
       }

@@ -37,8 +37,14 @@
 							</p>
 						</div>
 						<div class="row">
-							<you-me display-by="ProductNameEn" max-tag-count="5" name="sebun" in-relationship="true" placeholder="+ Product" 
-							ng-model="multiModel" refresh="querySearch" choices="choices"></you-me>
+							
+
+							<div nc-template="common/input/form-group-with-label" nc-label="Search Tags" nc-template-form="myform.sebun" nc-template-options-path="addProductForm/Keywords">
+								<you-me display-by="ProductNameEn" max-tag-count="5" name="sebun" in-relationship="true" placeholder="+ Product" 
+									ng-model="multiModel" refresh="querySearch" choices="choices"></you-me>
+							</div>
+
+
 						</div>
 						<div class="row">
 						<br/>
