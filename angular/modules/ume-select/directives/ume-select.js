@@ -18,7 +18,8 @@ angular.module('umeSelect')
                 freedomOfSpeech: '=freedomOfSpeech',
                 groupBy: '@?groupBy',
                 initialChoices: '=?initialChoices',
-                hideIcon: '=?hideIcon'
+                hideIcon: '=?hideIcon',
+                disabled: '&?ngDisabled'
             },
             replace: true,
             priority: 1010,
@@ -50,7 +51,7 @@ angular.module('umeSelect')
 
                 //Listen for any change in error state
                 scope.$watch('[model, E_STATE]', function(value){
-                    ngModel.$setViewValue(value);
+                    ngModel.$setViewValue(value[0]);
                     ngModel.$setDirty();
                     ngModel.$validate();
                 }, true);

@@ -45,7 +45,7 @@ angular.module('nc')
                         opt = {};
                     }
 
-                    console.log('opt', scope.optionsPath, opt)
+                    // console.log('opt', scope.optionsPath, opt)
                     if(!('error' in opt)){
                         opt.error = {};
                     };

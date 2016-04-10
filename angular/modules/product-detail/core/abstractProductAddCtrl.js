@@ -254,10 +254,22 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       disabled: true
     }];
     $scope.dataset.Brands = [];
+
     $scope.enableVariation = function() {
       if ($scope.uploader.isUploading) {
         return $scope.alert.error('<strong>Please Wait</strong> - One or more image upload is in progress..');
       }
+
+      //check if there are options that can variate
+      var count = $scope.formData.AttributeSet.AttributeSetMaps.reduce(function(previousValue, currentValue, currentIndex, array){
+        return previousValue + (array[currentIndex].Attribute.VariantStatus ? 1 : 0);
+      }, 0);
+
+      console.log('count', count);
+      if(count == 0){
+        return $scope.alert.error('<strong>Not allowed</strong> - Cannot create variation because selected attribute set does not have any variate-able option.');
+      }
+
       $scope.alert.close();
       $scope.controlFlags.variation = 'enable';
     }
