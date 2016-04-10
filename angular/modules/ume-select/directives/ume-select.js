@@ -3,6 +3,7 @@ angular.module('umeSelect')
     .directive('youMe', function ($rootScope, $templateCache, $compile, $timeout, $filter) {
         return {
             restrict: 'AE',
+            require: 'ngModel',
             transclude: true,
             scope: {
                 model: '=ngModel',
@@ -29,12 +30,47 @@ angular.module('umeSelect')
                 var templateHTML = $templateCache.get(tmpl);
                 return templateHTML;
             },
-            link: function (scope, element, attrs, ctrl, transclude) {
+            link: function (scope, element, attrs, ngModel, transclude) {
                 scope.focused = false;
                 scope.loading = false;
                 scope.searchText = "";
                 scope.highlightedIndex = 0;
                 scope.choices = [];
+                // scope.modelInitialState = angular.copy(scope.model);
+
+                ngModel.$options = { allowInvalid: true }
+
+                scope.$watch('model', function(value){
+                    
+                    // if(!value) scope.model = scope.modelInitialState;
+
+                    ngModel.$setViewValue(value);
+                    ngModel.$validate();
+                }, true);
+
+                var maxTagCount = undefined;
+                var maxLengthPerTag = undefined;
+                var tagPattern = undefined;
+
+                attrs.$observe('maxTagCount', function(val) {
+                    maxTagCount = val;
+                    ngModel.$validate();
+                });
+
+                attrs.$observe('maxLengthPerTag', function(val) {
+                    maxLengthPerTag = val;
+                    ngModel.$validate();
+                });
+
+                attrs.$observe('tagPattern', function(val) {
+                    tagPattern = val;
+                    ngModel.$validate();
+                });
+
+                ngModel.$validators.maxTagCount = function(modelValue, viewValue) {
+                    var value = modelValue || viewValue;
+                    return !maxTagCount || !value || (value.length <= maxTagCount);
+                };
 
                 scope.$watchCollection('originalChoices()', function(data){
                     var sortedData = data;
@@ -197,18 +233,34 @@ angular.module('umeSelect')
                 })
 
                 scope.pickItem = function(item){
-                    if(!item) return false;
-                    if(scope.inRelationship || scope.itsComplicated){
-                        scope.model.push(item);
+
+                    var finishListModel = function(){
                         scope.focus(true);
                         scope.searchText = "";
 
                         if(!scope.itsComplicated){
                             scope.choices = [];
                         }
+                    };
+
+                    var finishSingleModel = function(){
+                        scope.focused = false;
+                    }
+
+                    if(!item) return false;
+                    if(_.isArray(scope.model) && maxTagCount){
+                        if(scope.model.length >= maxTagCount){
+                            finishListModel();
+                            return true;
+                        }
+                    }
+
+                    if(scope.inRelationship || scope.itsComplicated){
+                        scope.model.push(item);
+                        finishListModel();
                     }else{
                         scope.model = item;
-                        scope.focused = false;
+                        finishSingleModel();
                     }
                     
 
@@ -223,6 +275,7 @@ angular.module('umeSelect')
                 }
 
                 if(!scope.placeholder) scope.placeholder = "Select one..";
+                return false; 
             }
         };
     });
