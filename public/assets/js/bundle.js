@@ -8710,7 +8710,7 @@ angular.module('nc')
 			},
 			template: '<nc-image-block nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>Image ratio 16:9</li></ul></nc-image-block>',
 			link: function(scope) {
-				scope.options = _.defaults(scope.options,{
+				scope.options = _.defaults(scope.options, {
 					height: '144px',
 					width: '256px'
 				});
@@ -8731,7 +8731,7 @@ angular.module('nc')
 			},
 			template: '<nc-image-block template="common/ncImageBanner2" source="source" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 7 images</li><li>The width must be {{size.Width}}px</li><li>The height must be {{size.Height}}px</li></ul></nc-image-block>',
 			link: function(scope) {
-				scope.options = _.defaults(scope.options,{
+				scope.options = _.defaults(scope.options, {
 					height: '144px',
 					width: '256px'
 				});
@@ -8750,7 +8750,7 @@ angular.module('nc')
 			transclude: true,
 			scope: {
 				images: '=ncModel',
-				onfail: '=onFail', 
+				onfail: '=onFail',
 				uploader: '=uploader',
 				options: '=?options',
 				source: '=?source',
@@ -8758,7 +8758,7 @@ angular.module('nc')
 				title: '@title'
 			},
 			template: function(elem, attrs) {
-				if(attrs.template) {
+				if (attrs.template) {
 					return $templateCache.get(attrs.template);
 				} else {
 					return $templateCache.get('common/ncImageBanner');
@@ -8767,42 +8767,58 @@ angular.module('nc')
 			link: function(scope, element, attrs, form) {
 				var fileUploader = false;
 
-				scope.options = _.defaults(scope.options,{
+				scope.options = _.defaults(scope.options, {
 					height: '150px',
 					width: '150px'
 				});
 
 				scope.$watch('uploader', function(val) {
-					if(val instanceof FileUploader) {
+					if (val instanceof FileUploader) {
 						fileUploader = true;
 					} else {
 						fileUploader = false;
 					}
 				});
 				scope.upload = function(files) {
-					if(!_.isNil(form) && !_.isNil(attrs.name)) {
+					if (!_.isNil(form) && !_.isNil(attrs.name)) {
 						form.$setDirty();
 					}
-					if(fileUploader) {
+					if (fileUploader) {
 						_.forEach(files, function(file) {
 
 							var url = URL.createObjectURL(file);
 							var img = new Image;
 
 							img.onload = function() {
-							   if(img.width < Number(scope.options.validateMinWidth) || img.height < Number(scope.options.validateMinHeight)){
-							   	 scope.onfail('ondimension', [scope.options.validateMinHeight, scope.options.validateMinWidth, scope.options.validateSquare]);
-							     return;
-							   }
+								var minDim = scope.options.validateDimensionMin;
+								var maxDim = scope.options.validateDimensionMax;
 
-							   if(img.width != img.height && scope.options.validateSquare){
-							   	 scope.onfail('onsquare', [scope.options.validateMinHeight, scope.options.validateMinWidth, scope.options.validateSquare]);
-							     return;
-							   }
+								var minW = Number(minDim[0]);
+								var minH = Number(minDim[1]);
+								var maxW = Number(maxDim[0]);
+								var maxH = Number(maxDim[1]);
 
-							   //max size
-								if(scope.images.length >= _.toInteger(scope.size)) {
-									scope.onfail('onmaxsize', scope.size);
+								if (img.width < minW || img.height < minH) {
+									//min width error
+									scope.onfail('ondimension', [img.width, img.height]);
+									return;
+								}
+
+								if (img.width > maxW || img.height > maxH) {
+									//min width error
+									scope.onfail('ondimension', [img.width, img.height]);
+									return;
+								}
+
+								if (img.width != img.height && scope.options.validateSquare) {
+									//square error
+									scope.onfail('onsquare', [img.width, img.height]);
+									return;
+								}
+
+								//max size
+								if (scope.images.length >= _.toInteger(scope.size)) {
+									scope.onfail('onmaxsize', scope.images.length);
 									return;
 								}
 
@@ -8830,13 +8846,13 @@ angular.module('nc')
 							};
 
 							img.src = url;
-							
+
 						});
 					} else {
 						//newer version
 						_.forEach(files, function(file) {
 							//max size
-							if(scope.images.length >= _.toInteger(scope.size)) {
+							if (scope.images.length >= _.toInteger(scope.size)) {
 								scope.onfail('onmaxsize', scope.size);
 								return;
 							}
@@ -8853,14 +8869,14 @@ angular.module('nc')
 										return n === obj;
 									});
 								}, function(evt) {
-            						obj.progress = _.parseInt(100.0 * evt.loaded / evt.total);
+									obj.progress = _.parseInt(100.0 * evt.loaded / evt.total);
 								});
 						});
 					}
 				};
 				scope.call = function(image, index, action) {
-					if(!_.isNil(action.confirmation)) {
-						var modal = $uibModal.open ({
+					if (!_.isNil(action.confirmation)) {
+						var modal = $uibModal.open({
 							size: 'size-warning',
 							templateUrl: 'common/ncActionModal',
 							controller: ["$scope", "$uibModalInstance", "options", "$interpolate", function($scope, $uibModalInstance, options, $interpolate) {
@@ -8889,13 +8905,13 @@ angular.module('nc')
 						});
 
 						modal.result.then(function() {
-							if(!_.isNil(form) && !_.isNil(attrs.name)) {
+							if (!_.isNil(form) && !_.isNil(attrs.name)) {
 								form.$setDirty();
 							}
 							action.fn(image, scope.images, index);
 						});
 					} else {
-						if(!_.isNil(form) && !_.isNil(attrs.name)) {
+						if (!_.isNil(form) && !_.isNil(attrs.name)) {
 							form.$setDirty();
 						}
 						action.fn(image, scope.images, index);
@@ -8907,64 +8923,59 @@ angular.module('nc')
 				scope.getProgress = function(image) {
 					return image.progress || 0;
 				};
-				scope.actions = [
-					{
-						//Zoom
-						fn: function(item, array, index) {
-							$uibModal.open({
-								size: 'product-image',
-								template: '<img ng-src="{{url}}" alt=""/>',
-								controller: ["$scope", "url", function($scope, url) {
-									$scope.url = url;
-								}],
-								resolve: {
-									url: function() {
-										return item.url;
-									}
+				scope.actions = [{
+					//Zoom
+					fn: function(item, array, index) {
+						$uibModal.open({
+							size: 'product-image',
+							template: '<img ng-src="{{url}}" alt=""/>',
+							controller: ["$scope", "url", function($scope, url) {
+								$scope.url = url;
+							}],
+							resolve: {
+								url: function() {
+									return item.url;
 								}
-							});
-						},
-						icon: 'fa-search-plus'
+							}
+						});
 					},
-					{
-						//Trash
-						fn: function(item, array, index) {
-							array.splice(index, 1);
-						},
-						icon: 'fa-trash',
-						confirmation: {
-							title: 'Confirm to delete',
-							message: 'Are you sure you want to delete the image?',
-							btnConfirm: 'Delete',
-							btnCancel: 'Cancel',
-							btnClass: 'btn-red'
-						}
+					icon: 'fa-search-plus'
+				}, {
+					//Trash
+					fn: function(item, array, index) {
+						array.splice(index, 1);
 					},
-					{
-						//Left
-						fn: function(item, array, index) {
-						    var to = index - 1;
-						    if (to < 0) return;
-						    var tmp = array[to];
-						    array[to] = item;
-						    array[index] = tmp;
-						},
-						icon: 'fa-arrow-left'
-					},
-					{
-						//Right
-						fn: function(item, array, index) {
-							//console.log(item, array, index);
-						    var to = index + 1;
-						    if (to >= array.length) return;
-
-						    var tmp = array[to];
-						    array[to] = item;
-						    array[index] = tmp;
-						},
-						icon: 'fa-arrow-right'
+					icon: 'fa-trash',
+					confirmation: {
+						title: 'Confirm to delete',
+						message: 'Are you sure you want to delete the image?',
+						btnConfirm: 'Delete',
+						btnCancel: 'Cancel',
+						btnClass: 'btn-red'
 					}
-				];
+				}, {
+					//Left
+					fn: function(item, array, index) {
+						var to = index - 1;
+						if (to < 0) return;
+						var tmp = array[to];
+						array[to] = item;
+						array[index] = tmp;
+					},
+					icon: 'fa-arrow-left'
+				}, {
+					//Right
+					fn: function(item, array, index) {
+						//console.log(item, array, index);
+						var to = index + 1;
+						if (to >= array.length) return;
+
+						var tmp = array[to];
+						array[to] = item;
+						array[index] = tmp;
+					},
+					icon: 'fa-arrow-right'
+				}];
 			}
 		}
 	}])
@@ -8987,19 +8998,21 @@ angular.module('nc')
 					loaderImg: '/assets/img/loader.gif', //when image[urlKey] = ''
 					emptyImg: '/assets/img/placeholder-no-image-blank.png' //when image = null 
 				});
-				scope.lock = _.defaults(scope.lock, function() { return false; });
+				scope.lock = _.defaults(scope.lock, function() {
+					return false;
+				});
 				scope.getSrc = function(image) {
-					if(image == null) {
+					if (image == null) {
 						//Empty
 						return scope.options.emptyImg;
-					} else if(image[scope.options.urlKey] == '') {
+					} else if (image[scope.options.urlKey] == '') {
 						return null;
 					} else {
 						return image[scope.options.urlKey];
 					}
 				};
 				scope.getProgress = function(image) {
-					if(image == null)
+					if (image == null)
 						return 0;
 					return image.progress || 0;
 				};
@@ -9007,10 +9020,10 @@ angular.module('nc')
 					return _.isNull(image) || scope.lock();
 				};
 				scope.call = function(action, image) {
-					if(scope.isDisabled(image)) return;
+					if (scope.isDisabled(image)) return;
 					var index = scope.model.indexOf(image);
-					
-					if(action.confirmation) {
+
+					if (action.confirmation) {
 						var modal = $uibModal.open({
 							size: 'size-warning',
 							templateUrl: 'common/ncActionModal',
@@ -9077,7 +9090,9 @@ angular.module('nc')
 					urlKey: 'Url',
 					onQueueLimit: _.noop,
 					onEvent: _.noop,
-					onResponse: function(item) { return item; },
+					onResponse: function(item) {
+						return item;
+					},
 					onUpload: function(item) {}
 				});
 				scope.onError = scope.onError || _.noop;
@@ -9087,19 +9102,21 @@ angular.module('nc')
 					element.html(html);
 					$compile(element.contents())(scope);
 				};
-	
+
 				scope.upload = function() {
 					element.find('input').trigger('click');
 				};
 
 				scope.triggerEvent = function(eventName) {
-					scope.onEvent({$eventName: eventName});
+					scope.onEvent({
+						$eventName: eventName
+					});
 				};
 
 				//Upload
 				scope.uploader.onAfterAddingFile = function(item) {
-					if(scope.uploader.queueLimit == scope.model.length) {
-						if(scope.options.onQueueLimit) {
+					if (scope.uploader.queueLimit == scope.model.length) {
+						if (scope.options.onQueueLimit) {
 							scope.options.onQueueLimit(item, scope.model);
 						}
 						item.cancel();
@@ -9109,22 +9126,26 @@ angular.module('nc')
 						obj[scope.options.urlKey] = '';
 						scope.model.push(obj);
 						item.obj = obj;
-						item.indx = scope.model.length-1;
+						item.indx = scope.model.length - 1;
 						item.onProgress = function(progress) {
 							obj.progress = progress;
 						};
 					}
 				};
 				scope.uploader.onWhenAddingFileFailed = function(item, filter) {
-			    	scope.onError({$response : filter});
+					scope.onError({
+						$response: filter
+					});
 				};
-			    scope.uploader.onSuccessItem = function(item, response, status, headers) {
-					scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];			    	
-			    };
-			    scope.uploader.onErrorItem = function(item, response, status, headers) {
-			    	scope.model.splice(scope.model.indexOf(item.obj), 1);
-			    	scope.onError({$response : response});
-			    };
+				scope.uploader.onSuccessItem = function(item, response, status, headers) {
+					scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];
+				};
+				scope.uploader.onErrorItem = function(item, response, status, headers) {
+					scope.model.splice(scope.model.indexOf(item.obj), 1);
+					scope.onError({
+						$response: response
+					});
+				};
 
 				scope.update();
 				scope.$watch('template', scope.update);
@@ -10083,9 +10104,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     var MAX_FILESIZE = (options.maxImageUploadSize || 5000000);
     var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
+
+    //allow from 1500x1500 but no greater than 2000x2000
+    var IMAGE_DIM_BOUND = [[1500, 1500], [2000, 2000]];
+
     $scope.readOnly = options.readOnly;
     $scope.adminMode = options.adminMode;
     $scope.approveMode = options.approveMode;
+
 
     var loadOverview = function(res) {
       Shop.get(res.ShopId).then(function(x) {
@@ -10118,6 +10144,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         $window.location.href = "/admin/products";
       }
     }
+
+    $scope.imageBlockOptions = {height: '150px', width: '150px', 
+      validateDimensionMin: IMAGE_DIM_BOUND[0], 
+      validateDimensionMax: IMAGE_DIM_BOUND[1], 'validateSquare': true};
 
     $scope.formData = {
       Status: 'DF',
@@ -10271,7 +10301,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       if (kwd == "onmaxsize") {
         $scope.image_alert.error('Maximum ' + data + ' images can be uploaded.');
       } else if (kwd == "ondimension") {
-        $scope.image_alert.error('Dimension must be greater than ' + data[0] + 'x' + data[1] + '.');
+        $scope.image_alert.error('Dimension must be greater than ' + IMAGE_DIM_BOUND[0][0] + 'x' + 
+          IMAGE_DIM_BOUND[0][1] + '.' + ' and not larger than ' + IMAGE_DIM_BOUND[1][0] + 'x' + IMAGE_DIM_BOUND[1][1] + '. <strong>Your Image Size is ' + data[0] + "x" + data[1] + '</strong>');
       } else if (kwd == "onsquare") {
         $scope.image_alert.error('Image must be square.');
       } else {
@@ -11372,7 +11403,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-image-video',
-    "<div><nc-image-block options=\"{height: '150px', width: '150px', 'validateMinWidth': 1500, 'validateMinHeight': 1500, 'validateSquare': true}\" name=Images nc-model=variantPtr.Images title=\"Product Images\" uploader=uploader on-fail=onImageUploadFail size=10><div>Choose images that clearly represent your product. Images must meet the following requirements:</div><ul class=margin-top-10><li>Image width or height must be between at least <strong>1500px</strong> but not larger than <strong>2000px</strong></li><li>Image portion must be in square format.</li><li>File size must not be larger than 5MB and.</li><li>File format must be JPG or PNG.</li></ul></nc-image-block><div class=form-section ng-show=\"variantPtr.Images.length > 0\"><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-repeat=\"i in variantPtr.Images\"><div nc-template=common/input/form-group-with-label nc-label=\"Video Link {{$index + 1}}\" nc-template-form=\"form['VideoLinks' + $index]\" nc-template-options-path=addProductForm/VideoLink><input class=\"form-control width-field-normal\" name=VideoLinks{{$index}} type=url ng-init=initializeVideoLink($index) maxlength=500 ng-model=\"variantPtr.VideoLinks[$index].Url\"></div></div></div></div></div>"
+    "<div><nc-image-block options=imageBlockOptions name=Images nc-model=variantPtr.Images title=\"Product Images\" uploader=uploader on-fail=onImageUploadFail size=10><div>Choose images that clearly represent your product. Images must meet the following requirements:</div><ul class=margin-top-10><li>Image width or height must be between at least <strong>1500px</strong> but not larger than <strong>2000px</strong></li><li>Image portion must be in square format.</li><li>File size must not be larger than 5MB and.</li><li>File format must be JPG or PNG.</li></ul></nc-image-block><div class=form-section ng-show=\"variantPtr.Images.length > 0\"><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-repeat=\"i in variantPtr.Images\"><div nc-template=common/input/form-group-with-label nc-label=\"Video Link {{$index + 1}}\" nc-template-form=\"form['VideoLinks' + $index]\" nc-template-options-path=addProductForm/VideoLink><input class=\"form-control width-field-normal\" name=VideoLinks{{$index}} type=url ng-init=initializeVideoLink($index) maxlength=500 ng-model=\"variantPtr.VideoLinks[$index].Url\"></div></div></div></div></div>"
   );
 
 

@@ -11,9 +11,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     var MAX_FILESIZE = (options.maxImageUploadSize || 5000000);
     var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
+
+    //allow from 1500x1500 but no greater than 2000x2000
+    var IMAGE_DIM_BOUND = [[1500, 1500], [2000, 2000]];
+
     $scope.readOnly = options.readOnly;
     $scope.adminMode = options.adminMode;
     $scope.approveMode = options.approveMode;
+
 
     var loadOverview = function(res) {
       Shop.get(res.ShopId).then(function(x) {
@@ -46,6 +51,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         $window.location.href = "/admin/products";
       }
     }
+
+    $scope.imageBlockOptions = {height: '150px', width: '150px', 
+      validateDimensionMin: IMAGE_DIM_BOUND[0], 
+      validateDimensionMax: IMAGE_DIM_BOUND[1], 'validateSquare': true};
 
     $scope.formData = {
       Status: 'DF',
@@ -199,7 +208,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       if (kwd == "onmaxsize") {
         $scope.image_alert.error('Maximum ' + data + ' images can be uploaded.');
       } else if (kwd == "ondimension") {
-        $scope.image_alert.error('Dimension must be greater than ' + data[0] + 'x' + data[1] + '.');
+        $scope.image_alert.error('Dimension must be greater than ' + IMAGE_DIM_BOUND[0][0] + 'x' + 
+          IMAGE_DIM_BOUND[0][1] + '.' + ' and not larger than ' + IMAGE_DIM_BOUND[1][0] + 'x' + IMAGE_DIM_BOUND[1][1] + '. <strong>Your Image Size is ' + data[0] + "x" + data[1] + '</strong>');
       } else if (kwd == "onsquare") {
         $scope.image_alert.error('Image must be square.');
       } else {
