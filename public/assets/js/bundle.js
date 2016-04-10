@@ -8773,7 +8773,7 @@ angular.module('nc')
 			},
 			template: '<nc-image-block nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>Image ratio 16:9</li></ul></nc-image-block>',
 			link: function(scope) {
-				scope.options = _.defaults(scope.options,{
+				scope.options = _.defaults(scope.options, {
 					height: '144px',
 					width: '256px'
 				});
@@ -8794,7 +8794,7 @@ angular.module('nc')
 			},
 			template: '<nc-image-block template="common/ncImageBanner2" source="source" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 7 images</li><li>The width must be {{size.Width}}px</li><li>The height must be {{size.Height}}px</li></ul></nc-image-block>',
 			link: function(scope) {
-				scope.options = _.defaults(scope.options,{
+				scope.options = _.defaults(scope.options, {
 					height: '144px',
 					width: '256px'
 				});
@@ -8813,7 +8813,7 @@ angular.module('nc')
 			transclude: true,
 			scope: {
 				images: '=ncModel',
-				onfail: '=onFail', 
+				onfail: '=onFail',
 				uploader: '=uploader',
 				options: '=?options',
 				source: '=?source',
@@ -8821,7 +8821,7 @@ angular.module('nc')
 				title: '@title'
 			},
 			template: function(elem, attrs) {
-				if(attrs.template) {
+				if (attrs.template) {
 					return $templateCache.get(attrs.template);
 				} else {
 					return $templateCache.get('common/ncImageBanner');
@@ -8830,42 +8830,58 @@ angular.module('nc')
 			link: function(scope, element, attrs, form) {
 				var fileUploader = false;
 
-				scope.options = _.defaults(scope.options,{
+				scope.options = _.defaults(scope.options, {
 					height: '150px',
 					width: '150px'
 				});
 
 				scope.$watch('uploader', function(val) {
-					if(val instanceof FileUploader) {
+					if (val instanceof FileUploader) {
 						fileUploader = true;
 					} else {
 						fileUploader = false;
 					}
 				});
 				scope.upload = function(files) {
-					if(!_.isNil(form) && !_.isNil(attrs.name)) {
+					if (!_.isNil(form) && !_.isNil(attrs.name)) {
 						form.$setDirty();
 					}
-					if(fileUploader) {
+					if (fileUploader) {
 						_.forEach(files, function(file) {
 
 							var url = URL.createObjectURL(file);
 							var img = new Image;
 
 							img.onload = function() {
-							   if(img.width < Number(scope.options.validateMinWidth) || img.height < Number(scope.options.validateMinHeight)){
-							   	 scope.onfail('ondimension', [scope.options.validateMinHeight, scope.options.validateMinWidth, scope.options.validateSquare]);
-							     return;
-							   }
+								var minDim = scope.options.validateDimensionMin;
+								var maxDim = scope.options.validateDimensionMax;
 
-							   if(img.width != img.height && scope.options.validateSquare){
-							   	 scope.onfail('onsquare', [scope.options.validateMinHeight, scope.options.validateMinWidth, scope.options.validateSquare]);
-							     return;
-							   }
+								var minW = Number(minDim[0]);
+								var minH = Number(minDim[1]);
+								var maxW = Number(maxDim[0]);
+								var maxH = Number(maxDim[1]);
 
-							   //max size
-								if(scope.images.length >= _.toInteger(scope.size)) {
-									scope.onfail('onmaxsize', scope.size);
+								if (img.width < minW || img.height < minH) {
+									//min width error
+									scope.onfail('ondimension', [img.width, img.height]);
+									return;
+								}
+
+								if (img.width > maxW || img.height > maxH) {
+									//min width error
+									scope.onfail('ondimension', [img.width, img.height]);
+									return;
+								}
+
+								if (img.width != img.height && scope.options.validateSquare) {
+									//square error
+									scope.onfail('onsquare', [img.width, img.height]);
+									return;
+								}
+
+								//max size
+								if (scope.images.length >= _.toInteger(scope.size)) {
+									scope.onfail('onmaxsize', scope.images.length);
 									return;
 								}
 
@@ -8893,13 +8909,13 @@ angular.module('nc')
 							};
 
 							img.src = url;
-							
+
 						});
 					} else {
 						//newer version
 						_.forEach(files, function(file) {
 							//max size
-							if(scope.images.length >= _.toInteger(scope.size)) {
+							if (scope.images.length >= _.toInteger(scope.size)) {
 								scope.onfail('onmaxsize', scope.size);
 								return;
 							}
@@ -8916,14 +8932,14 @@ angular.module('nc')
 										return n === obj;
 									});
 								}, function(evt) {
-            						obj.progress = _.parseInt(100.0 * evt.loaded / evt.total);
+									obj.progress = _.parseInt(100.0 * evt.loaded / evt.total);
 								});
 						});
 					}
 				};
 				scope.call = function(image, index, action) {
-					if(!_.isNil(action.confirmation)) {
-						var modal = $uibModal.open ({
+					if (!_.isNil(action.confirmation)) {
+						var modal = $uibModal.open({
 							size: 'size-warning',
 							templateUrl: 'common/ncActionModal',
 							controller: ["$scope", "$uibModalInstance", "options", "$interpolate", function($scope, $uibModalInstance, options, $interpolate) {
@@ -8952,13 +8968,13 @@ angular.module('nc')
 						});
 
 						modal.result.then(function() {
-							if(!_.isNil(form) && !_.isNil(attrs.name)) {
+							if (!_.isNil(form) && !_.isNil(attrs.name)) {
 								form.$setDirty();
 							}
 							action.fn(image, scope.images, index);
 						});
 					} else {
-						if(!_.isNil(form) && !_.isNil(attrs.name)) {
+						if (!_.isNil(form) && !_.isNil(attrs.name)) {
 							form.$setDirty();
 						}
 						action.fn(image, scope.images, index);
@@ -8970,64 +8986,59 @@ angular.module('nc')
 				scope.getProgress = function(image) {
 					return image.progress || 0;
 				};
-				scope.actions = [
-					{
-						//Zoom
-						fn: function(item, array, index) {
-							$uibModal.open({
-								size: 'product-image',
-								template: '<img ng-src="{{url}}" alt=""/>',
-								controller: ["$scope", "url", function($scope, url) {
-									$scope.url = url;
-								}],
-								resolve: {
-									url: function() {
-										return item.url;
-									}
+				scope.actions = [{
+					//Zoom
+					fn: function(item, array, index) {
+						$uibModal.open({
+							size: 'product-image',
+							template: '<img ng-src="{{url}}" alt=""/>',
+							controller: ["$scope", "url", function($scope, url) {
+								$scope.url = url;
+							}],
+							resolve: {
+								url: function() {
+									return item.url;
 								}
-							});
-						},
-						icon: 'fa-search-plus'
+							}
+						});
 					},
-					{
-						//Trash
-						fn: function(item, array, index) {
-							array.splice(index, 1);
-						},
-						icon: 'fa-trash',
-						confirmation: {
-							title: 'Confirm to delete',
-							message: 'Are you sure you want to delete the image?',
-							btnConfirm: 'Delete',
-							btnCancel: 'Cancel',
-							btnClass: 'btn-red'
-						}
+					icon: 'fa-search-plus'
+				}, {
+					//Trash
+					fn: function(item, array, index) {
+						array.splice(index, 1);
 					},
-					{
-						//Left
-						fn: function(item, array, index) {
-						    var to = index - 1;
-						    if (to < 0) return;
-						    var tmp = array[to];
-						    array[to] = item;
-						    array[index] = tmp;
-						},
-						icon: 'fa-arrow-left'
-					},
-					{
-						//Right
-						fn: function(item, array, index) {
-							//console.log(item, array, index);
-						    var to = index + 1;
-						    if (to >= array.length) return;
-
-						    var tmp = array[to];
-						    array[to] = item;
-						    array[index] = tmp;
-						},
-						icon: 'fa-arrow-right'
+					icon: 'fa-trash',
+					confirmation: {
+						title: 'Confirm to delete',
+						message: 'Are you sure you want to delete the image?',
+						btnConfirm: 'Delete',
+						btnCancel: 'Cancel',
+						btnClass: 'btn-red'
 					}
-				];
+				}, {
+					//Left
+					fn: function(item, array, index) {
+						var to = index - 1;
+						if (to < 0) return;
+						var tmp = array[to];
+						array[to] = item;
+						array[index] = tmp;
+					},
+					icon: 'fa-arrow-left'
+				}, {
+					//Right
+					fn: function(item, array, index) {
+						//console.log(item, array, index);
+						var to = index + 1;
+						if (to >= array.length) return;
+
+						var tmp = array[to];
+						array[to] = item;
+						array[index] = tmp;
+					},
+					icon: 'fa-arrow-right'
+				}];
 			}
 		}
 	}])
@@ -9050,19 +9061,21 @@ angular.module('nc')
 					loaderImg: '/assets/img/loader.gif', //when image[urlKey] = ''
 					emptyImg: '/assets/img/placeholder-no-image-blank.png' //when image = null 
 				});
-				scope.lock = _.defaults(scope.lock, function() { return false; });
+				scope.lock = _.defaults(scope.lock, function() {
+					return false;
+				});
 				scope.getSrc = function(image) {
-					if(image == null) {
+					if (image == null) {
 						//Empty
 						return scope.options.emptyImg;
-					} else if(image[scope.options.urlKey] == '') {
+					} else if (image[scope.options.urlKey] == '') {
 						return null;
 					} else {
 						return image[scope.options.urlKey];
 					}
 				};
 				scope.getProgress = function(image) {
-					if(image == null)
+					if (image == null)
 						return 0;
 					return image.progress || 0;
 				};
@@ -9070,10 +9083,10 @@ angular.module('nc')
 					return _.isNull(image) || scope.lock();
 				};
 				scope.call = function(action, image) {
-					if(scope.isDisabled(image)) return;
+					if (scope.isDisabled(image)) return;
 					var index = scope.model.indexOf(image);
-					
-					if(action.confirmation) {
+
+					if (action.confirmation) {
 						var modal = $uibModal.open({
 							size: 'size-warning',
 							templateUrl: 'common/ncActionModal',
@@ -9140,7 +9153,9 @@ angular.module('nc')
 					urlKey: 'Url',
 					onQueueLimit: _.noop,
 					onEvent: _.noop,
-					onResponse: function(item) { return item; },
+					onResponse: function(item) {
+						return item;
+					},
 					onUpload: function(item) {}
 				});
 				scope.onError = scope.onError || _.noop;
@@ -9150,19 +9165,21 @@ angular.module('nc')
 					element.html(html);
 					$compile(element.contents())(scope);
 				};
-	
+
 				scope.upload = function() {
 					element.find('input').trigger('click');
 				};
 
 				scope.triggerEvent = function(eventName) {
-					scope.onEvent({$eventName: eventName});
+					scope.onEvent({
+						$eventName: eventName
+					});
 				};
 
 				//Upload
 				scope.uploader.onAfterAddingFile = function(item) {
-					if(scope.uploader.queueLimit == scope.model.length) {
-						if(scope.options.onQueueLimit) {
+					if (scope.uploader.queueLimit == scope.model.length) {
+						if (scope.options.onQueueLimit) {
 							scope.options.onQueueLimit(item, scope.model);
 						}
 						item.cancel();
@@ -9172,22 +9189,26 @@ angular.module('nc')
 						obj[scope.options.urlKey] = '';
 						scope.model.push(obj);
 						item.obj = obj;
-						item.indx = scope.model.length-1;
+						item.indx = scope.model.length - 1;
 						item.onProgress = function(progress) {
 							obj.progress = progress;
 						};
 					}
 				};
 				scope.uploader.onWhenAddingFileFailed = function(item, filter) {
-			    	scope.onError({$response : filter});
+					scope.onError({
+						$response: filter
+					});
 				};
-			    scope.uploader.onSuccessItem = function(item, response, status, headers) {
-					scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];			    	
-			    };
-			    scope.uploader.onErrorItem = function(item, response, status, headers) {
-			    	scope.model.splice(scope.model.indexOf(item.obj), 1);
-			    	scope.onError({$response : response});
-			    };
+				scope.uploader.onSuccessItem = function(item, response, status, headers) {
+					scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];
+				};
+				scope.uploader.onErrorItem = function(item, response, status, headers) {
+					scope.model.splice(scope.model.indexOf(item.obj), 1);
+					scope.onError({
+						$response: response
+					});
+				};
 
 				scope.update();
 				scope.$watch('template', scope.update);
@@ -9522,6 +9543,7 @@ angular.module('nc')
                         opt = {};
                     }
 
+                    // console.log('opt', scope.optionsPath, opt)
                     if(!('error' in opt)){
                         opt.error = {};
                     };
@@ -10136,12 +10158,12 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
   );
  }]);
 },{}],132:[function(require,module,exports){
-var angular = require('angular')
+var angular = require('angular');
 
 angular.module('productDetail').controller('AbstractProductAddCtrl',
-  ["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "AttributeService", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "$rootScope", "KnownException", "NcAlert", "$productAdd", "options", "AttributeSetService", "JSONCache", "skeemas", "VariationFactorIndices", "AttributeOptions", function($scope, $uibModal, $window, util, config, Product, ImageService,  AttributeService,
+  ["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "AttributeService", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "$rootScope", "KnownException", "NcAlert", "$productAdd", "options", "AttributeSetService", "JSONCache", "skeemas", "AdminShopService", "VariationFactorIndices", "AttributeOptions", function($scope, $uibModal, $window, util, config, Product, ImageService, AttributeService,
     AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
-    KnownException, NcAlert, $productAdd, options, AttributeSetService, JSONCache, skeemas, 
+    KnownException, NcAlert, $productAdd, options, AttributeSetService, JSONCache, skeemas, AdminShopService,
     VariationFactorIndices, AttributeOptions) {
     'ngInject';
 
@@ -10149,12 +10171,17 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     var MAX_FILESIZE = (options.maxImageUploadSize || 5000000);
     var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
+
+    //allow from 1500x1500 but no greater than 2000x2000
+    var IMAGE_DIM_BOUND = [[1500, 1500], [2000, 2000]];
+
     $scope.readOnly = options.readOnly;
     $scope.adminMode = options.adminMode;
     $scope.approveMode = options.approveMode;
 
-    var loadOverview = function(res){
-      Shop.get(res.ShopId).then(function(x){
+
+    var loadOverview = function(res) {
+      Shop.get(res.ShopId).then(function(x) {
         $scope.formData.ShopName = x.ShopNameEn;
       })
     };
@@ -10165,25 +10192,29 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.image_alert = new NcAlert();
 
     $scope.defaultAttributes = [];
-    AttributeService.getDefaultAttributes().then(function(res){
+    AttributeService.getDefaultAttributes().then(function(res) {
       $scope.defaultAttributes = res;
     });
 
 
-    $scope.isVisibleTo = function(abbrev){
-      if(abbrev == "AD" && $scope.adminMode) return true;
-      if(abbrev == "ME") return true;
+    $scope.isVisibleTo = function(abbrev) {
+      if (abbrev == "AD" && $scope.adminMode) return true;
+      if (abbrev == "ME") return true;
       return false;
     }
-    
-    $scope.cancel = function(){
+
+    $scope.cancel = function() {
       $scope.addProductForm.$dirty = false;
-      if(!$scope.adminMode){
+      if (!$scope.adminMode) {
         $window.location.href = "/products";
-      }else{
+      } else {
         $window.location.href = "/admin/products";
       }
     }
+
+    $scope.imageBlockOptions = {height: '150px', width: '150px', 
+      validateDimensionMin: IMAGE_DIM_BOUND[0], 
+      validateDimensionMax: IMAGE_DIM_BOUND[1], 'validateSquare': true};
 
     $scope.formData = {
       Status: 'DF',
@@ -10242,7 +10273,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       Variants: []
     };
 
-    if($scope.approveMode){
+    if ($scope.approveMode) {
       $scope.formData.AdminApprove = {
         Information: 'WA',
         Image: 'WA',
@@ -10255,14 +10286,16 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     //Initialize Pointers
     $scope.variantPtr = $scope.formData.MasterVariant;
-    $scope.initializeVideoLink = function($index){
-      if($scope.variantPtr.VideoLinks[$index]) return;
-      $scope.variantPtr.VideoLinks[$index] = { Url : null }
+    $scope.initializeVideoLink = function($index) {
+      if ($scope.variantPtr.VideoLinks[$index]) return;
+      $scope.variantPtr.VideoLinks[$index] = {
+        Url: null
+      }
     };
 
-    $scope.disableInstallment = function(){
-        if(!$scope.variantPtr.SalePrice) return true;
-        return (Number($scope.variantPtr.SalePrice) || 0) < 5000;
+    $scope.disableInstallment = function() {
+      if (!$scope.variantPtr.SalePrice) return true;
+      return (Number($scope.variantPtr.SalePrice) || 0) < 5000;
     }
 
     var checkSchema = function(data, schemaName) {
@@ -10321,24 +10354,25 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
       modalInstance.result.then(function(data) {
         $scope.formData[key][ith] = data;
-        if(key == 'GlobalCategories' && ith == 0){
+        if (key == 'GlobalCategories' && ith == 0) {
           $scope.updateBreadcrumb(data.CategoryId);
         }
       });
 
     };
 
-    
+
 
     $scope.onImageUploadFail = function(kwd, data) {
       console.log(kwd, data);
-      if(kwd == "onmaxsize"){
+      if (kwd == "onmaxsize") {
         $scope.image_alert.error('Maximum ' + data + ' images can be uploaded.');
-      }else if(kwd == "ondimension") {
-        $scope.image_alert.error('Dimension must be greater than ' + data[0] + 'x' + data[1] + '.');
-      }else if(kwd == "onsquare"){
+      } else if (kwd == "ondimension") {
+        $scope.image_alert.error('Dimension must be greater than ' + IMAGE_DIM_BOUND[0][0] + 'x' + 
+          IMAGE_DIM_BOUND[0][1] + '.' + ' and not larger than ' + IMAGE_DIM_BOUND[1][0] + 'x' + IMAGE_DIM_BOUND[1][1] + '. <strong>Your Image Size is ' + data[0] + "x" + data[1] + '</strong>');
+      } else if (kwd == "onsquare") {
         $scope.image_alert.error('Image must be square.');
-      }else{
+      } else {
         $scope.image_alert.error(data);
       }
     }
@@ -10380,10 +10414,22 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       disabled: true
     }];
     $scope.dataset.Brands = [];
+
     $scope.enableVariation = function() {
-      if($scope.uploader.isUploading){
-          return $scope.alert.error('<strong>Please Wait</strong> - One or more image upload is in progress..');
+      if ($scope.uploader.isUploading) {
+        return $scope.alert.error('<strong>Please Wait</strong> - One or more image upload is in progress..');
       }
+
+      //check if there are options that can variate
+      var count = $scope.formData.AttributeSet.AttributeSetMaps.reduce(function(previousValue, currentValue, currentIndex, array){
+        return previousValue + (array[currentIndex].Attribute.VariantStatus ? 1 : 0);
+      }, 0);
+
+      console.log('count', count);
+      if(count == 0){
+        return $scope.alert.error('<strong>Not allowed</strong> - Cannot create variation because selected attribute set does not have any variate-able option.');
+      }
+
       $scope.alert.close();
       $scope.controlFlags.variation = 'enable';
     }
@@ -10419,7 +10465,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       globalCategory: null
     };
 
-    $scope.updateBreadcrumb = function(globalCatId){
+    $scope.updateBreadcrumb = function(globalCatId) {
       $scope.breadcrumb.globalCategory = Category.createCatStringById(globalCatId, $scope.dataset.GlobalCategories);
     };
 
@@ -10481,7 +10527,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         }
 
         $scope.formData.Variants.forEach(function(variant) {
-          if(!variant.Visibility) return;
+          if (!variant.Visibility) return;
           if (variant.Images.length == 0) {
             mat.push('At least one image for variation ' + "'" + variant.text + "'");
           }
@@ -10576,17 +10622,17 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
      * @param  {String} Status (WA or DF or other enum sent to server)
      */
     $scope.publish = function(Status) {
-        
+
       $scope.pageState.reset();
-      
-      if($scope.readOnly){
-          return $scope.alert.error('This view is read-only.');
+
+      if ($scope.readOnly) {
+        return $scope.alert.error('This view is read-only.');
       }
-      
-      if($scope.uploader.isUploading){
-          return $scope.alert.error('<strong>Please Wait</strong> - One or more image upload is in progress..');
+
+      if ($scope.uploader.isUploading) {
+        return $scope.alert.error('<strong>Please Wait</strong> - One or more image upload is in progress..');
       }
-      
+
       $scope.pageState.load('Validating..');
 
       if ($scope.controlFlags.variation == 'enable' && $scope.formData.Variants.length == 0) {
@@ -10644,10 +10690,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       // checkSchema(apiRequest, 'productStages', '(TX)');
 
       Product.publish(apiRequest, Status).then(function(res) {
-      
+
         $scope.pageState.reset();
         if (res.ProductId) {
-          
+
           loadOverview(res);
           $scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions); // will trigger watchvariantchange
           var catId = Number(res.MainGlobalCategory.CategoryId);
@@ -10702,18 +10748,24 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 $scope.pageState.reset();
                 watchVariantFactorChanges();
 
-                LocalCategoryService.getAllByShopId($scope.formData.ShopId).then(function(data) {
-                  $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data);
-                });
-                
+                if (!$scope.adminMode) {
+                  LocalCategoryService.getAllByShopId($scope.formData.ShopId).then(function(data) {
+                    $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data);
+                  });
+                } else {
+                  AdminShopService.getLocalCategories($scope.formData.ShopId).then(function(data) {
+                    $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data);
+                  });
+                }
+
                 $scope.adminAlert.close();
                 console.log('adminMode', $scope.adminMode, $scope.formData.Status);
-                if(!$scope.adminMode && $scope.formData.Status == 'RJ'){
+                if (!$scope.adminMode && $scope.formData.Status == 'RJ') {
                   //Show rejection from admin
                   $scope.adminAlert.error("<strong>Message from Admin</strong><br>" + $scope.formData.AdminApprove.RejectReason);
-                }else if(!$scope.adminMode && $scope.formData.Status == 'AP'){
+                } else if (!$scope.adminMode && $scope.formData.Status == 'AP') {
                   $scope.adminAlert.success("This product has been approved. Click 'Edit Product' to make changes.");
-                }else if(!$scope.adminMode && $scope.formData.Status == 'WA'){
+                } else if (!$scope.adminMode && $scope.formData.Status == 'WA') {
                   $scope.adminAlert.open(false, "This product is waiting for approval for the admin. You cannot edit any product detail now.", "yellow");
                 }
 
@@ -10855,8 +10907,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             if (pairModal) {
               $scope.formData.Variants[$scope.pairIndex] = pairModal
             }
-            
-            
+
+
             // Restore pointers
             $scope.form = $scope.addProductForm;
             $scope.variantPtr = $scope.formData.MasterVariant;
@@ -10898,7 +10950,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         searchText: q
       }).then(function(ds) {
         $scope.refresher.AttributeSetsLoading = false;
-        
+
         var searchRes = ds.data.map(function(d) {
           d._group = 'Search Results';
           d.AttributeSetTagMaps = $productAdd.flatten.AttributeSetTagMap(d.AttributeSetTagMaps);
@@ -10966,6 +11018,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           // only warn when form is dirty
           return null;
         }
+        console.log($scope.addProductForm);
         var message = 'Your changes will not be saved.',
           e = e || window.event
           // For IE and Firefox
@@ -10989,7 +11042,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
 
   }])
-
 },{"angular":268}],133:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
@@ -11417,9 +11469,9 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-description',
-    "<div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=DescriptionFullEn ng-model=variantPtr.DescriptionFullEn>\r" +
+    "<div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=ckOptions class=form-control name=DescriptionFullEn ng-model=variantPtr.DescriptionFullEn>\r" +
     "\n" +
-    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=variantPtr.DescriptionFullTh>\r" +
+    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=ckOptions class=form-control name=DescriptionFullTh ng-model=variantPtr.DescriptionFullTh>\r" +
     "\n" +
     "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=addProductForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=variantPtr.DescriptionShortEn>\r" +
     "\n" +
@@ -11430,12 +11482,12 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-detail',
-    "<div class=form-section><div class=form-section-header><h2>Detail</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Attribute Set</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-if=\"controlFlags.variation == 'enable'\" class=form-control disabled><option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option></select><you-me display-by=AttributeSetNameEn placeholder=\"Search Attribute Set\" ng-show=\"controlFlags.variation != 'enable'\" auto-clear-search=true group-by=_group ng-model=formData.AttributeSet refresh=refresher.AttributeSets initial-choices=dataset.AttributeSets choices=dataset.CombinedAttributeSets></you-me></div></div><a class=\"like-text form-text\" ng-if=\"formData.AttributeSet.AttributeSetId && controlFlags.variation != 'enable'\" ng-click=\"formData.AttributeSet = {}\"><i class=\"fa fa-minus-circle color-theme\"></i></a></div><div class=form-group ng-repeat=\"amap in formData.AttributeSet.AttributeSetMaps\"><div class=width-label><label class=control-label ng-class=\"{'required': amap.Attribute.Required}\">{{ amap.Attribute.DisplayNameEn }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}\"><select ng-if=isListInput(amap.Attribute.DataType) ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control ng-model=formData.MasterAttribute[amap.Attribute.AttributeId] ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" name=AmapInput{{$index}} ng-options=\"item as item.AttributeValue.AttributeValueEn for item in amap.Attribute.AttributeValueMaps track by item.AttributeValueId\"><option disabled value=\"\" selected>- Select option -</option></select><div ng-if=isHtmlInput(amap.Attribute.DataType)><textarea ng-required=\"amap.Attribute.Required && onPublishing\" ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" ng-model=formData.MasterAttribute[amap.Attribute.AttributeId] name=AmapInput{{$index}} class=form-control ng-ckeditor=ckOptions></textarea></div><input ng-if=isFreeTextInput(amap.Attribute.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control name=AmapInput{{$index}} ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId]\"><div ng-if=isCheckboxInput(amap.Attribute.DataType)><div class=checkbox ng-repeat=\"vmap in amap.Attribute.AttributeValueMaps\"><label><input type=checkbox ng-init=\"formData.MasterAttribute[amap.Attribute.AttributeId]._checkbox = true\" ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId][vmap.AttributeValueId]\"> {{ vmap.AttributeValue.AttributeValueEn }}</label></div></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Detail</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Attribute Set</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-show=\"controlFlags.variation == 'enable'\" class=form-control disabled><option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option></select><you-me display-by=AttributeSetNameEn placeholder=\"Search Attribute Set\" ng-show=\"controlFlags.variation != 'enable'\" auto-clear-search=true group-by=_group ng-model=formData.AttributeSet refresh=refresher.AttributeSets initial-choices=dataset.AttributeSets choices=dataset.CombinedAttributeSets></you-me></div></div><a class=\"like-text form-text\" ng-if=\"formData.AttributeSet.AttributeSetId && controlFlags.variation != 'enable'\" ng-click=\"formData.AttributeSet = {}\"><i class=\"fa fa-minus-circle color-theme\"></i></a></div><div class=form-group ng-repeat=\"amap in formData.AttributeSet.AttributeSetMaps\"><div class=width-label><label class=control-label ng-class=\"{'required': amap.Attribute.Required}\">{{ amap.Attribute.DisplayNameEn }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}\"><select ng-if=isListInput(amap.Attribute.DataType) ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control ng-model=formData.MasterAttribute[amap.Attribute.AttributeId] ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" name=AmapInput{{$index}} ng-options=\"item as item.AttributeValue.AttributeValueEn for item in amap.Attribute.AttributeValueMaps track by item.AttributeValueId\"><option disabled value=\"\" selected>- Select option -</option></select><div ng-if=isHtmlInput(amap.Attribute.DataType)><textarea ng-required=\"amap.Attribute.Required && onPublishing\" ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" ng-model=formData.MasterAttribute[amap.Attribute.AttributeId] name=AmapInput{{$index}} class=form-control ng-ckeditor=ckOptions></textarea></div><input ng-if=isFreeTextInput(amap.Attribute.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control name=AmapInput{{$index}} ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId]\"><div ng-if=isCheckboxInput(amap.Attribute.DataType)><div class=checkbox ng-repeat=\"vmap in amap.Attribute.AttributeValueMaps\"><label><input type=checkbox ng-init=\"formData.MasterAttribute[amap.Attribute.AttributeId]._checkbox = true\" ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId][vmap.AttributeValueId]\"> {{ vmap.AttributeValue.AttributeValueEn }}</label></div></div></div></div></div></div>"
   );
 
 
   $templateCache.put('ap/section-image-video',
-    "<div><nc-image-block options=\"{height: '150px', width: '150px', 'validateMinWidth': 1500, 'validateMinHeight': 1500, 'validateSquare': true}\" name=Images nc-model=variantPtr.Images title=\"Product Images\" uploader=uploader on-fail=onImageUploadFail size=10><div>Choose images that clearly represent your product. Images must meet the following requirements:</div><ul class=margin-top-10><li>Image width or height must be between at least <strong>1500px</strong> but not larger than <strong>2000px</strong></li><li>Image portion must be in square format.</li><li>File size must not be larger than 5MB and.</li><li>File format must be JPG or PNG.</li></ul></nc-image-block><div class=form-section ng-show=\"variantPtr.Images.length > 0\"><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-repeat=\"i in variantPtr.Images\"><div nc-template=common/input/form-group-with-label nc-label=\"Video Link {{$index + 1}}\" nc-template-form=\"form['VideoLinks' + $index]\" nc-template-options-path=addProductForm/VideoLink><input class=\"form-control width-field-normal\" name=VideoLinks{{$index}} type=url ng-init=initializeVideoLink($index) maxlength=500 ng-model=\"variantPtr.VideoLinks[$index].Url\"></div></div></div></div></div>"
+    "<div><nc-image-block options=imageBlockOptions name=Images nc-model=variantPtr.Images title=\"Product Images\" uploader=uploader on-fail=onImageUploadFail size=10><div>Choose images that clearly represent your product. Images must meet the following requirements:</div><ul class=margin-top-10><li>Image width or height must be between at least <strong>1500px</strong> but not larger than <strong>2000px</strong></li><li>Image portion must be in square format.</li><li>File size must not be larger than 5MB and.</li><li>File format must be JPG or PNG.</li></ul></nc-image-block><div class=form-section ng-show=\"variantPtr.Images.length > 0\"><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-repeat=\"i in variantPtr.Images\"><div nc-template=common/input/form-group-with-label nc-label=\"Video Link {{$index + 1}}\" nc-template-form=\"form['VideoLinks' + $index]\" nc-template-options-path=addProductForm/VideoLink><input class=\"form-control width-field-normal\" name=VideoLinks{{$index}} type=url ng-init=initializeVideoLink($index) maxlength=500 ng-model=\"variantPtr.VideoLinks[$index].Url\"></div></div></div></div></div>"
   );
 
 
@@ -11445,7 +11497,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-keywords',
-    "<div class=form-section><div class=form-section-header><h2>Search Tags</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Search Tags\" nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><you-me its-complicated=true in-rel hide-icon=true placeholder=\"Enter keyword\" freedom-of-speech=true ng-model=formData.Tags choices=formData.AttributeSet.AttributeSetTagMaps></you-me></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags).length > 1\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags\" ng-click=\"(formData.Tags.indexOf(tag) == -1) && formData.Tags.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Search Tags</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Search Tags\" nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><you-me its-complicated=true hide-icon=true name=Keywords placeholder=\"Enter keyword\" freedom-of-speech=true max-tag-count=20 ng-model=formData.Tags choices=formData.AttributeSet.AttributeSetTagMaps></you-me></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags).length > 1\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags\" ng-click=\"(formData.Tags.indexOf(tag) == -1) && formData.Tags.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
   );
 
 
@@ -11614,7 +11666,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/tab-variations',
-    "<div id=add-product-variation-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row ng-if=\"controlFlags.variation != 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content><div class=form-group><p class=form-control-static>Variation will allow you to create a group of products with different attributes such as size and color. Once you enable variation, information from other tabs will be copied into variants that you will create, and variation cannot be disabled. <strong>Please select attribute set before enabling variation.</strong></p><button class=\"btn btn-width-xxl btn-blue margin-top-20\" ng-disabled=!formData.AttributeSet.AttributeSetId ng-click=enableVariation()>Enable Variation</button></div></div></div></div></div><div class=row ng-show=\"controlFlags.variation == 'enable'\"><div class=col-xs-12><ap-variation-option form-data=formData control-flags=controlFlags generator=variationFactorIndices dataset=dataset></ap-variation-option><ap-multiplied-variants ng-show=\"formData.Variants.length > 0\"><div ng-include=\"'ap/section-variant-table-a'\"></div></ap-multiplied-variants></div></div></div>"
+    "<div id=add-product-variation-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row ng-if=\"controlFlags.variation != 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content><div class=form-group><p class=form-control-static>Variation will allow you to create a group of products with different attributes such as size and color. Once you enable variation, information from other tabs will be copied into variants that you will create, and variation cannot be disabled. <strong>Please select attribute set before enabling variation.</strong></p><a class=\"btn btn-width-xxl btn-blue margin-top-20\" ng-disabled=!formData.AttributeSet.AttributeSetId ng-click=enableVariation()>Enable Variation</a></div></div></div></div></div><div class=row ng-show=\"controlFlags.variation == 'enable'\"><div class=col-xs-12><ap-variation-option form-data=formData control-flags=controlFlags generator=variationFactorIndices dataset=dataset></ap-variation-option><ap-multiplied-variants ng-show=\"formData.Variants.length > 0\"><div ng-include=\"'ap/section-variant-table-a'\"></div></ap-multiplied-variants></div></div></div>"
   );
  }]);
 },{}],141:[function(require,module,exports){
@@ -12107,6 +12159,7 @@ angular.module('umeSelect')
     .directive('youMe', ["$rootScope", "$templateCache", "$compile", "$timeout", "$filter", function ($rootScope, $templateCache, $compile, $timeout, $filter) {
         return {
             restrict: 'AE',
+            require: 'ngModel',
             transclude: true,
             scope: {
                 model: '=ngModel',
@@ -12118,10 +12171,10 @@ angular.module('umeSelect')
                 inRelationship: '=?inRelationship',
                 itsComplicated: '=?itsComplicated',
                 displayBy: '@displayBy',
-                freedomOfSpeech: '=freedomOfSpeech',
                 groupBy: '@?groupBy',
                 initialChoices: '=?initialChoices',
-                hideIcon: '=?hideIcon'
+                hideIcon: '=?hideIcon',
+                disabled: '&?ngDisabled'
             },
             replace: true,
             priority: 1010,
@@ -12133,17 +12186,64 @@ angular.module('umeSelect')
                 var templateHTML = $templateCache.get(tmpl);
                 return templateHTML;
             },
-            link: function (scope, element, attrs, ctrl, transclude) {
-                scope.focused = false;
-                scope.loading = false;
+            link: function (scope, element, attrs, ngModel, transclude) {
+                
+                //text user types in searchbox
                 scope.searchText = "";
+                //index of currently highlighted choice
                 scope.highlightedIndex = 0;
+                //choices
                 scope.choices = [];
 
+                //State variables
+                scope.E_STATE = null;
+                var STATE_MAXTAGBLOCKED = 1;
+                scope.focused = false;
+                scope.loading = false;
+
+                //Don't reset model on error, I will handle this manually
+                ngModel.$options = { allowInvalid: true }
+
+                //Listen for any change in error state and model
+                scope.$watch('[model, E_STATE]', function(value){
+                    //Update ng model
+                    ngModel.$setViewValue(value[0]);
+                    ngModel.$setDirty();
+                    ngModel.$validate();
+                }, true);
+
+                //For error validations
+                var maxTagCount = undefined;
+                var maxLengthPerTag = undefined;
+                var tagPattern = undefined;
+
+                attrs.$observe('maxTagCount', function(val) {
+                    maxTagCount = val;
+                    ngModel.$validate();
+                });
+
+                attrs.$observe('maxLengthPerTag', function(val) {
+                    maxLengthPerTag = val;
+                    ngModel.$validate();
+                });
+
+                attrs.$observe('tagPattern', function(val) {
+                    tagPattern = val;
+                    ngModel.$validate();
+                });
+
+                ngModel.$validators.maxTagCount = function(modelValue, viewValue) {
+                    var value = modelValue || viewValue;
+                    if(scope.E_STATE == STATE_MAXTAGBLOCKED) return false;
+                    return !maxTagCount || !value || (value.length <= maxTagCount);
+                };
+
+                //Watch change on input choices
                 scope.$watchCollection('originalChoices()', function(data){
                     var sortedData = data;
                     var seenGroup = new Set();
 
+                    //Create grouping if groupby is present
                     if(scope.groupBy){
                         seenGroup.clear();
                         sortedData = _.sortBy(data, function(o) { return _.get(o, scope.groupBy); });
@@ -12162,9 +12262,12 @@ angular.module('umeSelect')
                     scope.choices = sortedData;
                 });
 
+
+                //For debugging purpose I needed to know where event is firing from
                 var _id = (new Date()).getTime()*Math.random() + "R";
                 scope._id =  _id;
 
+                //Delete item from tag list 
                 scope.breakUp = function(index){
                     if(!scope.inRelationship && !scope.itsComplicated) {
                         //You can only break up when you re in relationship
@@ -12175,10 +12278,12 @@ angular.module('umeSelect')
                     scope.model.splice(index, 1);
                 }
 
+                //Focus on search field
                 scope.forceFocus = function(){
                     scope.$emit('focusObtained', _id);
                 }
 
+                //Tokenize string into tag object
                 scope.tagify = function(tagValue){
                     var X = {};
                     if(!scope.displayBy) return tagValue;
@@ -12186,28 +12291,30 @@ angular.module('umeSelect')
                     return X;
                 }
 
+                //In complicated mode (multiple)
                 if(scope.itsComplicated){
                     scope.choices.unshift(scope.tagify('New Tag'));
                 }
 
+                //Get true item display value
                 scope.itemValue = function(item){
                     if(!scope.displayBy) return item;
                     return _.get(item, scope.displayBy);
                 }
 
+                //Watch keyboard events
                 scope.keyDown = function(evt){
-
                     if(evt.code == "ArrowDown" || evt.keyCode == 40){
                         scope.highlightedIndex++;
                     }else if(evt.code == "ArrowUp" || evt.keyCode == 38){
                         scope.highlightedIndex--;
                     }else if(evt.code == "Enter" || evt.code == "Comma" || evt.keyCode == 13 || evt.keyCode == 188){
-                        // console.log("Keydown on id", scope._id);
                         if(scope.searchText == "") return;
 
                         $timeout(function (){
                             scope.$emit('focusLost', _id);
-                            var K = $filter('filter')(scope.choices, scope.searchText);
+                            // var K = $filter('filter')(scope.choices, scope.searchText);
+                            var K = (scope.searchText.length > 0 ? scope.choices : scope.initialChoices);
                             var result= scope.pickItem(K[scope.highlightedIndex]);
                             if(!result){
                                 scope.$emit('focusObtained', _id);
@@ -12215,8 +12322,9 @@ angular.module('umeSelect')
                         });
 
                     }else if(evt.code == "Backspace" || evt.keyCode == 8){
-
                         if(scope.searchText.length > 0) return;
+                        //reset error state
+                        scope.E_STATE = null;
                         if(_.isArray(scope.model) && scope.model.length > 0) scope.model.pop();
                     }
 
@@ -12230,6 +12338,9 @@ angular.module('umeSelect')
                 }
 
                 scope.blur = function(){
+                    //Note the 500ms delay is significant because
+                    //mouse clicking on choice item will be < 1 second in duration
+                    //but long enough to trigger a blur which deactivates choices
                     $timeout(function(){
                         scope.focused = false;
                     }, 500)
@@ -12252,6 +12363,7 @@ angular.module('umeSelect')
                 scope.notFound = false;
 
                 var effectiveText = '', searchTextTimeout;
+                //Debouncing var and etc
                 var prevQ = {};
                 var loadQ = [];
                 scope.$watch('searchText', function () {
@@ -12261,7 +12373,7 @@ angular.module('umeSelect')
                         scope.choices = []; 
                     }
 
-                    if(scope.itsComplicated && scope.freedomOfSpeech){
+                    if(scope.itsComplicated){
                         scope.choices[0] = scope.tagify(scope.searchText);
                     }
                     
@@ -12301,32 +12413,57 @@ angular.module('umeSelect')
                 })
 
                 scope.pickItem = function(item){
-                    if(!item) return false;
-                    if(scope.inRelationship || scope.itsComplicated){
-                        scope.model.push(item);
+
+                    //Action to perform when user select a choice
+                    //if inlove (such as inrelationship or its-complicated)
+                    var finishListModel = function(){
                         scope.focus(true);
                         scope.searchText = "";
 
                         if(!scope.itsComplicated){
                             scope.choices = [];
                         }
-                    }else{
-                        scope.model = item;
+                    };
+
+                    //same as above but for single people
+                    var finishSingleModel = function(){
                         scope.focused = false;
+                    }
+
+                    if(!item) return false;
+                    if(_.isArray(scope.model) && maxTagCount){
+                        if(scope.model.length >= maxTagCount){
+                            finishListModel();
+                            scope.E_STATE = STATE_MAXTAGBLOCKED; //error state
+                            console.log('scope.E_STATE', scope.E_STATE);
+                            return true;
+                        }
+                    }
+
+                    scope.E_STATE = null;
+
+                    //If in love, treat model as array
+                    if(scope.inRelationship || scope.itsComplicated){
+                        scope.model.push(item);
+                        finishListModel();
+                    }else{
+                        //if lonely, its not array :(
+                        scope.model = item;
+                        finishSingleModel();
                     }
                     
 
                     if(scope.autoClearSearch){
                         scope.searchText = "";
-                        //TODO: Note this will not work well with
-                        //hardcoded list
                         scope.choices = [];
                     }
+
                     scope.highlightedIndex = 0;
                     return true;
                 }
 
                 if(!scope.placeholder) scope.placeholder = "Select one..";
+                return false; 
             }
         };
     }]);
@@ -12356,7 +12493,7 @@ angular.module("umeSelect").run(["$templateCache", function($templateCache) {  '
 
 
   $templateCache.put('ume/single',
-    "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-plain': hideIcon, 'ume-search' : !loading && !hideIcon, 'ume-loading': loading, 'input-active': true}\" style=\"min-height: 34px\"><input ume-focus=focusObtained ume-blur=focusLost ume-id=\"{{ _id }}\" autocomplete=off tabindex=\"\" ng-model=searchText ng-focus=focus() ng-blur=blur() placeholder=\"{{ placeholder }}\" ng-keydown=keyDown($event) ng-show=\"focused || !itemValue(model)\" style=\"width: 100%\"><div ng-show=\"!focused && itemValue(model)\" class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ itemValue(model) || placeholder }}</div></div><div ng-include=\"'ume/choicelist'\"></div></div>"
+    "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-plain': hideIcon, 'ume-search' : !loading && !hideIcon, 'ume-loading': loading, 'input-active': true}\" style=\"min-height: 34px\"><input ume-focus=focusObtained ng-disabled=disabled() ume-blur=focusLost ume-id=\"{{ _id }}\" autocomplete=off tabindex=\"\" ng-model=searchText ng-focus=focus() ng-blur=blur() placeholder=\"{{ placeholder }}\" ng-keydown=keyDown($event) ng-show=\"focused || !itemValue(model)\" style=\"width: 100%\"><div ng-show=\"!focused && itemValue(model)\" class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ itemValue(model) || placeholder }}</div></div><div ng-include=\"'ume/choicelist'\"></div></div>"
   );
  }]);
 },{}],154:[function(require,module,exports){
@@ -12854,6 +12991,13 @@ module.exports = ["common", "config", "util", function(common, config, util) {
 		});
 		return processed;
 	};
+
+	service.getLocalCategories = function(ShopId){
+		return common.makeRequest({
+				method: 'GET',
+				url: '/Shops/' + ShopId + '/LocalCategories'
+		});
+	}
 
 	service.deserialize = function(data) {
 		var processed = _.merge({}, data);
@@ -14130,7 +14274,6 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
         //     'message': exception.message
         // }));
         // $window.location = '/exception?e=' + encMsg;
-        alert("A very very fetal error has occurred, D-Team has been notified.")
         Rollbar.error("Uncaught Exception", exception);
     };
 }];
@@ -15988,6 +16131,7 @@ module.exports = {
     'error': {
       'messages': {
         'maxtagcount': 'Cannot exceed 20 tags',
+        'maxTagCount': 'Cannot exceed 20 tags',
         'maxtaglength': 'Tag must contain 30 characters or less',
         'pattern': 'Only letters and numbers allowed'
       }

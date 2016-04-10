@@ -119,6 +119,7 @@ module.exports = {
     'error': {
       'messages': {
         'maxtagcount': 'Cannot exceed 20 tags',
+        'maxTagCount': 'Cannot exceed 20 tags',
         'maxtaglength': 'Tag must contain 30 characters or less',
         'pattern': 'Only letters and numbers allowed'
       }

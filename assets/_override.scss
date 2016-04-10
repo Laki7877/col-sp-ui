@@ -214,6 +214,11 @@ a.cke_dialog_tab{
 
 
 //Override UME select
+
+.selectize-control.has-error selectize-input{
+  border-color: $color-red;
+}
+
 .selectize-dropdown,
 .selectize-input,
 .selectize-input input {

@@ -12,7 +12,7 @@ angular.module('nc')
 			},
 			template: '<nc-image-block nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>Image ratio 16:9</li></ul></nc-image-block>',
 			link: function(scope) {
-				scope.options = _.defaults(scope.options,{
+				scope.options = _.defaults(scope.options, {
 					height: '144px',
 					width: '256px'
 				});
@@ -33,7 +33,7 @@ angular.module('nc')
 			},
 			template: '<nc-image-block template="common/ncImageBanner2" source="source" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 7 images</li><li>The width must be {{size.Width}}px</li><li>The height must be {{size.Height}}px</li></ul></nc-image-block>',
 			link: function(scope) {
-				scope.options = _.defaults(scope.options,{
+				scope.options = _.defaults(scope.options, {
 					height: '144px',
 					width: '256px'
 				});
@@ -52,7 +52,7 @@ angular.module('nc')
 			transclude: true,
 			scope: {
 				images: '=ncModel',
-				onfail: '=onFail', 
+				onfail: '=onFail',
 				uploader: '=uploader',
 				options: '=?options',
 				source: '=?source',
@@ -60,7 +60,7 @@ angular.module('nc')
 				title: '@title'
 			},
 			template: function(elem, attrs) {
-				if(attrs.template) {
+				if (attrs.template) {
 					return $templateCache.get(attrs.template);
 				} else {
 					return $templateCache.get('common/ncImageBanner');
@@ -69,42 +69,58 @@ angular.module('nc')
 			link: function(scope, element, attrs, form) {
 				var fileUploader = false;
 
-				scope.options = _.defaults(scope.options,{
+				scope.options = _.defaults(scope.options, {
 					height: '150px',
 					width: '150px'
 				});
 
 				scope.$watch('uploader', function(val) {
-					if(val instanceof FileUploader) {
+					if (val instanceof FileUploader) {
 						fileUploader = true;
 					} else {
 						fileUploader = false;
 					}
 				});
 				scope.upload = function(files) {
-					if(!_.isNil(form) && !_.isNil(attrs.name)) {
+					if (!_.isNil(form) && !_.isNil(attrs.name)) {
 						form.$setDirty();
 					}
-					if(fileUploader) {
+					if (fileUploader) {
 						_.forEach(files, function(file) {
 
 							var url = URL.createObjectURL(file);
 							var img = new Image;
 
 							img.onload = function() {
-							   if(img.width < Number(scope.options.validateMinWidth) || img.height < Number(scope.options.validateMinHeight)){
-							   	 scope.onfail('ondimension', [scope.options.validateMinHeight, scope.options.validateMinWidth, scope.options.validateSquare]);
-							     return;
-							   }
+								var minDim = scope.options.validateDimensionMin;
+								var maxDim = scope.options.validateDimensionMax;
 
-							   if(img.width != img.height && scope.options.validateSquare){
-							   	 scope.onfail('onsquare', [scope.options.validateMinHeight, scope.options.validateMinWidth, scope.options.validateSquare]);
-							     return;
-							   }
+								var minW = Number(minDim[0]);
+								var minH = Number(minDim[1]);
+								var maxW = Number(maxDim[0]);
+								var maxH = Number(maxDim[1]);
 
-							   //max size
-								if(scope.images.length >= _.toInteger(scope.size)) {
-									scope.onfail('onmaxsize', scope.size);
+								if (img.width < minW || img.height < minH) {
+									//min width error
+									scope.onfail('ondimension', [img.width, img.height]);
+									return;
+								}
+
+								if (img.width > maxW || img.height > maxH) {
+									//min width error
+									scope.onfail('ondimension', [img.width, img.height]);
+									return;
+								}
+
+								if (img.width != img.height && scope.options.validateSquare) {
+									//square error
+									scope.onfail('onsquare', [img.width, img.height]);
+									return;
+								}
+
+								//max size
+								if (scope.images.length >= _.toInteger(scope.size)) {
+									scope.onfail('onmaxsize', scope.images.length);
 									return;
 								}
 
@@ -132,13 +148,13 @@ angular.module('nc')
 							};
 
 							img.src = url;
-							
+
 						});
 					} else {
 						//newer version
 						_.forEach(files, function(file) {
 							//max size
-							if(scope.images.length >= _.toInteger(scope.size)) {
+							if (scope.images.length >= _.toInteger(scope.size)) {
 								scope.onfail('onmaxsize', scope.size);
 								return;
 							}
@@ -155,14 +171,14 @@ angular.module('nc')
 										return n === obj;
 									});
 								}, function(evt) {
-            						obj.progress = _.parseInt(100.0 * evt.loaded / evt.total);
+									obj.progress = _.parseInt(100.0 * evt.loaded / evt.total);
 								});
 						});
 					}
 				};
 				scope.call = function(image, index, action) {
-					if(!_.isNil(action.confirmation)) {
-						var modal = $uibModal.open ({
+					if (!_.isNil(action.confirmation)) {
+						var modal = $uibModal.open({
 							size: 'size-warning',
 							templateUrl: 'common/ncActionModal',
 							controller: function($scope, $uibModalInstance, options, $interpolate) {
@@ -191,13 +207,13 @@ angular.module('nc')
 						});
 
 						modal.result.then(function() {
-							if(!_.isNil(form) && !_.isNil(attrs.name)) {
+							if (!_.isNil(form) && !_.isNil(attrs.name)) {
 								form.$setDirty();
 							}
 							action.fn(image, scope.images, index);
 						});
 					} else {
-						if(!_.isNil(form) && !_.isNil(attrs.name)) {
+						if (!_.isNil(form) && !_.isNil(attrs.name)) {
 							form.$setDirty();
 						}
 						action.fn(image, scope.images, index);
@@ -209,64 +225,59 @@ angular.module('nc')
 				scope.getProgress = function(image) {
 					return image.progress || 0;
 				};
-				scope.actions = [
-					{
-						//Zoom
-						fn: function(item, array, index) {
-							$uibModal.open({
-								size: 'product-image',
-								template: '<img ng-src="{{url}}" alt=""/>',
-								controller: function($scope, url) {
-									$scope.url = url;
-								},
-								resolve: {
-									url: function() {
-										return item.url;
-									}
+				scope.actions = [{
+					//Zoom
+					fn: function(item, array, index) {
+						$uibModal.open({
+							size: 'product-image',
+							template: '<img ng-src="{{url}}" alt=""/>',
+							controller: function($scope, url) {
+								$scope.url = url;
+							},
+							resolve: {
+								url: function() {
+									return item.url;
 								}
-							});
-						},
-						icon: 'fa-search-plus'
+							}
+						});
 					},
-					{
-						//Trash
-						fn: function(item, array, index) {
-							array.splice(index, 1);
-						},
-						icon: 'fa-trash',
-						confirmation: {
-							title: 'Confirm to delete',
-							message: 'Are you sure you want to delete the image?',
-							btnConfirm: 'Delete',
-							btnCancel: 'Cancel',
-							btnClass: 'btn-red'
-						}
+					icon: 'fa-search-plus'
+				}, {
+					//Trash
+					fn: function(item, array, index) {
+						array.splice(index, 1);
 					},
-					{
-						//Left
-						fn: function(item, array, index) {
-						    var to = index - 1;
-						    if (to < 0) return;
-						    var tmp = array[to];
-						    array[to] = item;
-						    array[index] = tmp;
-						},
-						icon: 'fa-arrow-left'
-					},
-					{
-						//Right
-						fn: function(item, array, index) {
-							//console.log(item, array, index);
-						    var to = index + 1;
-						    if (to >= array.length) return;
-
-						    var tmp = array[to];
-						    array[to] = item;
-						    array[index] = tmp;
-						},
-						icon: 'fa-arrow-right'
+					icon: 'fa-trash',
+					confirmation: {
+						title: 'Confirm to delete',
+						message: 'Are you sure you want to delete the image?',
+						btnConfirm: 'Delete',
+						btnCancel: 'Cancel',
+						btnClass: 'btn-red'
 					}
-				];
+				}, {
+					//Left
+					fn: function(item, array, index) {
+						var to = index - 1;
+						if (to < 0) return;
+						var tmp = array[to];
+						array[to] = item;
+						array[index] = tmp;
+					},
+					icon: 'fa-arrow-left'
+				}, {
+					//Right
+					fn: function(item, array, index) {
+						//console.log(item, array, index);
+						var to = index + 1;
+						if (to >= array.length) return;
+
+						var tmp = array[to];
+						array[to] = item;
+						array[index] = tmp;
+					},
+					icon: 'fa-arrow-right'
+				}];
 			}
 		}
 	})
@@ -289,19 +300,21 @@ angular.module('nc')
 					loaderImg: '/assets/img/loader.gif', //when image[urlKey] = ''
 					emptyImg: '/assets/img/placeholder-no-image-blank.png' //when image = null 
 				});
-				scope.lock = _.defaults(scope.lock, function() { return false; });
+				scope.lock = _.defaults(scope.lock, function() {
+					return false;
+				});
 				scope.getSrc = function(image) {
-					if(image == null) {
+					if (image == null) {
 						//Empty
 						return scope.options.emptyImg;
-					} else if(image[scope.options.urlKey] == '') {
+					} else if (image[scope.options.urlKey] == '') {
 						return null;
 					} else {
 						return image[scope.options.urlKey];
 					}
 				};
 				scope.getProgress = function(image) {
-					if(image == null)
+					if (image == null)
 						return 0;
 					return image.progress || 0;
 				};
@@ -309,10 +322,10 @@ angular.module('nc')
 					return _.isNull(image) || scope.lock();
 				};
 				scope.call = function(action, image) {
-					if(scope.isDisabled(image)) return;
+					if (scope.isDisabled(image)) return;
 					var index = scope.model.indexOf(image);
-					
-					if(action.confirmation) {
+
+					if (action.confirmation) {
 						var modal = $uibModal.open({
 							size: 'size-warning',
 							templateUrl: 'common/ncActionModal',
@@ -379,7 +392,9 @@ angular.module('nc')
 					urlKey: 'Url',
 					onQueueLimit: _.noop,
 					onEvent: _.noop,
-					onResponse: function(item) { return item; },
+					onResponse: function(item) {
+						return item;
+					},
 					onUpload: function(item) {}
 				});
 				scope.onError = scope.onError || _.noop;
@@ -389,19 +404,21 @@ angular.module('nc')
 					element.html(html);
 					$compile(element.contents())(scope);
 				};
-	
+
 				scope.upload = function() {
 					element.find('input').trigger('click');
 				};
 
 				scope.triggerEvent = function(eventName) {
-					scope.onEvent({$eventName: eventName});
+					scope.onEvent({
+						$eventName: eventName
+					});
 				};
 
 				//Upload
 				scope.uploader.onAfterAddingFile = function(item) {
-					if(scope.uploader.queueLimit == scope.model.length) {
-						if(scope.options.onQueueLimit) {
+					if (scope.uploader.queueLimit == scope.model.length) {
+						if (scope.options.onQueueLimit) {
 							scope.options.onQueueLimit(item, scope.model);
 						}
 						item.cancel();
@@ -411,22 +428,26 @@ angular.module('nc')
 						obj[scope.options.urlKey] = '';
 						scope.model.push(obj);
 						item.obj = obj;
-						item.indx = scope.model.length-1;
+						item.indx = scope.model.length - 1;
 						item.onProgress = function(progress) {
 							obj.progress = progress;
 						};
 					}
 				};
 				scope.uploader.onWhenAddingFileFailed = function(item, filter) {
-			    	scope.onError({$response : filter});
+					scope.onError({
+						$response: filter
+					});
 				};
-			    scope.uploader.onSuccessItem = function(item, response, status, headers) {
-					scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];			    	
-			    };
-			    scope.uploader.onErrorItem = function(item, response, status, headers) {
-			    	scope.model.splice(scope.model.indexOf(item.obj), 1);
-			    	scope.onError({$response : response});
-			    };
+				scope.uploader.onSuccessItem = function(item, response, status, headers) {
+					scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];
+				};
+				scope.uploader.onErrorItem = function(item, response, status, headers) {
+					scope.model.splice(scope.model.indexOf(item.obj), 1);
+					scope.onError({
+						$response: response
+					});
+				};
 
 				scope.update();
 				scope.$watch('template', scope.update);
