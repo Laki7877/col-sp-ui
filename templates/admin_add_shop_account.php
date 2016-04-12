@@ -561,37 +561,33 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 												</ui-select-choices>
 											</ui-select>
 				                    </div>
-				                    <div ng-show="formData.Country" 
-				                    	nc-template="common/input/form-group-with-label"
+				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.CountryCode"
 				                    	nc-label="Country Code"
 				                    	nc-template-options-path="addShopAccountForm/CountryCode">
-					                        <p class="form-control-static">
-					                        	{{formData.Country.CountryCode}}
-					                        </p>
-											<!--ui-select name="CountryCode" ng-model="formData.CountryCode" search-enabled="false">
-												<ui-select-match placeholder="- Select CountryCode -">
-													<span ng-bind="$select.selected.name"></span>
+											<ui-select name="CountryCode" ng-model="formData.Country" search-enabled="false">
+												<ui-select-match placeholder="- Select Country Code -">
+													<span ng-bind="$select.selected.CountryCode"></span>
 												</ui-select-match>
-												<ui-select-choices repeat="item in countryCodes">
-													<span ng-bind="item.name"></span>
+												<ui-select-choices repeat="item in countries">
+													<span ng-bind="item.CountryCode"></span>
 												</ui-select-choices>
-											</ui-select-->
+											</ui-select>
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.Province"
 				                    	nc-label="Province"
 				                    	nc-template-options-path="addShopAccountForm/Province">
-											<ui-select name="Province" ng-model="formData.Province" search-enabled="false">
+											<ui-select name="Province" ng-model="formData.Province" append-to-body="true" search-enabled="false">
 												<ui-select-match placeholder="- Select Province -">
 													<span ng-bind="$select.selected.ProvinceName"></span>
 												</ui-select-match>
-												<ui-select-choices repeat="item in provinces">
+												<ui-select-choices style="max-height:300px;" position="down" repeat="item in provinces">
 													<span ng-bind="item.ProvinceName"></span>
 												</ui-select-choices>
 											</ui-select>
 				                    </div>
-				                    <div ng-show="formData.Country"  
+				                    <div ng-show="formData.Province"  
 				                    	nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.City"
 				                    	nc-label="City"
@@ -600,7 +596,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 												<ui-select-match placeholder="- Select City -">
 													<span ng-bind="$select.selected.CityName"></span>
 												</ui-select-match>
-												<ui-select-choices repeat="item in cities">
+												<ui-select-choices style="max-height:300px;" position="down" repeat="item in cities">
 													<span ng-bind="item.CityName"></span>
 												</ui-select-choices>
 											</ui-select>
@@ -614,12 +610,13 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 												<ui-select-match placeholder="- Select District -">
 													<span ng-bind="$select.selected.DistrictName"></span>
 												</ui-select-match>
-												<ui-select-choices repeat="item in districts">
+												<ui-select-choices style="max-height:300px;" position="down" repeat="item in districts">
 													<span ng-bind="item.DistrictName"></span>
 												</ui-select-choices>
 											</ui-select>
 				                    </div>
-				                    <div nc-template="common/input/form-group-with-label"
+				                    <div ng-show="formData.City" 
+				                    	nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.PostalCode"
 				                    	nc-template-options-path="addShopAccountForm/PostalCode"
 				                    	nc-label="Postal Code">
