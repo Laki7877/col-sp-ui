@@ -27,12 +27,12 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										  	nc-label="Admin Role ID"
 										  	ng-show="formData.GroupId"
 										  	>
-										  	{{formData.GroupId}}
+										  	<div style="margin-top:5px">{{formData.GroupId}}</div>
 										  </div>
 							              <!-- Name -->
 							              <div nc-template="common/input/form-group-with-label"
 										  	nc-template-form="form.GroupNameEn"
-										  	nc-label="Admin Role ID"
+										  	nc-label="Admin Role Name"
 							                nc-template-options-path="addRoleForm/GroupNameEn">
 							                <input
 							                  class="form-control"
