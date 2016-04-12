@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, AdminMasterProductService, config) {
+module.exports = function($scope, $controller, $window, AdminMasterProductService, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
@@ -8,7 +8,17 @@ module.exports = function($scope, $controller, AdminMasterProductService, config
 			item: 'Master Product',
 			order: 'UpdatedDt',
 			id: 'ProductId',
-			actions: ['View']
+			actions: [{
+				name: 'Edit Master Product',
+				fn: function(item) {
+
+				}
+			}, {
+				name: 'Edit Grouping',
+				fn: function(item) {
+					
+				}
+			}]
 		}
 	});
 	$scope.getChildProducts = function(list) {

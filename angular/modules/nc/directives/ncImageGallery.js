@@ -38,8 +38,9 @@ angular.module('nc')
 					width: '256px'
 				});
 				scope.$watch('size', function(data) {
-					scope.options.height = data.Height + 'px';
-					scope.options.width = data.Width + 'px';
+					console.log(data);
+					scope.options.height = (data.Height/data.Width)*256 + 'px';
+					scope.options.width =  '256px';
 				});
 			}
 		}
