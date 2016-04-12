@@ -12157,6 +12157,7 @@ angular.module('umeSelect')
                         return;
                     }
 
+                    scope.E_STATE = null;
                     scope.model.splice(index, 1);
                 }
 

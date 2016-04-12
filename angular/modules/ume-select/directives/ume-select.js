@@ -40,7 +40,11 @@ angular.module('umeSelect')
                 scope.choices = [];
 
                 //State variables
-                scope.E_STATE = null;
+                //E_STATE is error state that is used by 
+                //customValidation events such as tag limiting
+                //to notify $validator that there is an error
+                //It is not conventional because, who knows.
+                scope.E_STATE = null; 
                 var STATE_MAXTAGBLOCKED = 1;
                 scope.focused = false;
                 scope.loading = false;
@@ -77,6 +81,7 @@ angular.module('umeSelect')
                 });
 
                 ngModel.$validators.maxTagCount = function(modelValue, viewValue) {
+
                     var value = modelValue || viewValue;
                     if(scope.E_STATE == STATE_MAXTAGBLOCKED) return false;
                     return !maxTagCount || !value || (value.length <= maxTagCount);
@@ -119,6 +124,7 @@ angular.module('umeSelect')
                         return;
                     }
 
+                    scope.E_STATE = null;
                     scope.model.splice(index, 1);
                 }
 
