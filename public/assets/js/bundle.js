@@ -4531,7 +4531,7 @@ module.exports = function($scope, $controller, SellerCouponService, LocalCategor
 };
 },{}],56:[function(require,module,exports){
 
-module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$window", "$uibModal", "NewsletterService", function($scope, $rootScope, Dashboard, $log, storage, $window, $uibModal, NewsletterService){
+module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$filter", "storage", "$window", "$uibModal", "NewsletterService", function($scope, $rootScope, Dashboard, $log, $filter, storage, $window, $uibModal, NewsletterService){
 	'ngInject';
 
 	//---------------- Begin Graph section ----------------
@@ -4825,7 +4825,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 			_.forOwn(data, function(v, k) {
 				if (v != 'N/A') {
 					v = _.round(v, 1);
-					$scope.rating[k] = '<div class="font-size-16 color-' + getColoredRank('Product Rating', v) + '">' + v + ' / 5.0' + '</div>';
+					$scope.rating[k] = '<div class="font-size-16 color-' + getColoredRank('Product Rating', v) + '">' + $filter('currency')(v, ' ', 1) + ' / 5.0' + '</div>';
 				} else {
 					$scope.rating[k] = '<div class="font-size-16 color-grey">' + v  + '</div>';
 
