@@ -1832,12 +1832,12 @@ module.exports = ["$scope", "$controller", "$window", "AdminMasterProductService
 			actions: [{
 				name: 'Edit Master Product',
 				fn: function(item) {
-
+					$window.location.href= '/admin/products/' + item.ProductId;
 				}
 			}, {
 				name: 'Edit Grouping',
 				fn: function(item) {
-					
+					$window.location.href= '/admin/masters/' + item.ProductId;
 				}
 			}]
 		}
