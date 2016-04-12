@@ -15,15 +15,17 @@ module.exports = function($scope, $controller, ProductReviewService, config, $ui
 		$uibModal.open({
 			size: 'lg',
 			templateUrl: 'product/modalAdminReview',
-			controller: function($scope, $uibModalInstance, info) {
+			controller: function($scope, $uibModalInstance, NcAlert, info) {
 				'ngInject';
+				$scope.alert = new NcAlert();
 				$scope.formData = _.extend({}, info);
 				$scope.ratings = [];
 
 				$scope.save = function() {
 					$scope.alert.close();
 					//Save this data..
-					ProductReviewService.update($scope.formData.ReviewId, $scope.formData)
+					console.log($scope.formData);
+					ProductReviewService.update($scope.formData.ProductReviewId, $scope.formData)
 						.then(function() {
 							$uibModalInstance.close();
 						}, function(err) {
