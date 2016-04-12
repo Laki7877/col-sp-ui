@@ -545,7 +545,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $productAdd.fill(checkSchema, catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function() {
             $scope.formData.ProductId = Number(res.ProductId);
             $scope.pageState.reset();
-            $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
+            $scope.alert.success('Your product has been saved successfully. <a href="' + ($scope.adminMode ? '/admin/approve/' : '/products') +  '">View Product List</a>');
             console.log("MVAR after save", $scope.formData.MasterVariant);
             $scope.variantPtr = $scope.formData.MasterVariant;
             $scope.addProductForm.$setPristine(true);
