@@ -19,12 +19,12 @@ module.exports = function ($cookies) {
         localStorage.setItem('central.seller.portal.shared.' + key, obj);
     };
 
-    service.getObject = function(key, obj) {
-        return angular.fromJson(service.get());
+    service.getObject = function(key) {
+        return angular.fromJson(service.get(key));
     }
 
     service.putObject = function(key, obj) {
-        service.put(angular.toJson(obj));
+        service.put(key, angular.toJson(obj));
     }
 
     service.remove = function(key) {

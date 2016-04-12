@@ -138,7 +138,6 @@ var permission = {
 	'Manage Global Coupons': '/admin/coupons/global',
 	'Manage Seller Coupons': '/admin/coupons/seller',
 	'Manage Newsletter': '/admin/newsletters'
-
 };
 
 module.exports = {
