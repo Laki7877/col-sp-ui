@@ -7,7 +7,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     VariationFactorIndices, AttributeOptions) {
     'ngInject';
 
-    $scope.profileIsIndy = $rootScope.profileIsIndy;
 
     var MAX_FILESIZE = (options.maxImageUploadSize || 5000000);
     var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
@@ -18,7 +17,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.readOnly = options.readOnly;
     $scope.adminMode = options.adminMode;
     $scope.approveMode = options.approveMode;
-
 
     var loadOverview = function(res) {
       Shop.get(res.ShopId).then(function(x) {
@@ -35,6 +33,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     AttributeService.getDefaultAttributes().then(function(res) {
       $scope.defaultAttributes = res;
     });
+
+    $scope.ShopGroupPolicy = function(range){
+      return $scope.adminMode || $rootScope.ShopGroupPolicy(range);
+    }
 
 
     $scope.isVisibleTo = function(abbrev) {
@@ -64,6 +66,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       LocalCategories: [null, null, null],
       MainGlobalCategory: null,
       MainLocalCategory: null,
+      IsHasExpiryDate: 'N',
       Tags: [],
       ControlFlags: {
         Flag1: false,
@@ -545,12 +548,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $productAdd.fill(checkSchema, catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function() {
             $scope.formData.ProductId = Number(res.ProductId);
             $scope.pageState.reset();
-            $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
+            $scope.alert.success('Your product has been saved successfully. <a href="' + ($scope.adminMode ? '/admin/approve/' : '/products') +  '">View Product List</a>');
             console.log("MVAR after save", $scope.formData.MasterVariant);
             $scope.variantPtr = $scope.formData.MasterVariant;
+            $scope.addProductForm.$setPristine(true);
           });
 
           $scope.addProductForm.$setPristine(true);
+          
         } else {
           $scope.alert.error('Unable to save because ' + (res.message || res.Message));
           $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
