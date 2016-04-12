@@ -61,7 +61,7 @@
 		<div ng-repeat="image in source.Banner.Images track by $index" class="form-group">
 			<div class="width-label"><label class="control-label">Slide Duration {{$index+1}}</label></div>
 			<div class="width-field-normal">
-				<input class="form-control width-field-normal" ng-model="image.SlideDuration" />
+				<input class="form-control width-field-normal" ng-model="image.SlideDuration" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"/>
 				<span class="input-with-unit">
 					<span class="input-unit">Seconds</span>
 				</span>
