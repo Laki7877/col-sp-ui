@@ -1,5 +1,6 @@
 <form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
-            <nc-page-title nc-title="Products/Product Detail" link="/products" icon="fa-tag">
+    {{options}}
+            <nc-page-title nc-title="Products/Product Detail" ng-link="listingUrl || '/products'" icon="fa-tag">
                  <div ng-include="'page-btn-controls'"></div>
             </nc-page-title>
 

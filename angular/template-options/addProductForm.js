@@ -23,6 +23,9 @@ module.exports = {
   Installment: {
 
   },
+  NonRequiredSystemField: {
+
+  },
   VideoLink: {
     'hint': {
       'show': true,

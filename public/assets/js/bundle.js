@@ -1022,6 +1022,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
         console.log("fd", fd);
         //Post to server
         $scope.alert.close();
+        
 		Product.savePendingProduct(fd).then(function(suc){
             $scope.alert.success("Pending product grouped successfully.");
         }, function(er){
@@ -1852,6 +1853,7 @@ module.exports = ["$scope", "$controller", "BrandService", "Product", "AdminMast
 	$scope.childProducts = [];
 	$scope.products = [];
 	$scope.brands = [];
+	
 	$scope.getProducts = function(search) {
 		var brands = !_.isEmpty($scope.formData.FilterBy) ? [$scope.formData.FilterBy] : [];
 		Product.advanceList({
@@ -2251,7 +2253,8 @@ module.exports = ["$scope", "$controller", function ($scope, $controller) {
         options: {
             maxImageUploadQueueLimit: 25,
             adminMode : true,
-            approveMode: true
+            approveMode: true,
+            listingUrl: '/admin/approve'
         }
     });
 
@@ -2334,7 +2337,8 @@ module.exports = ["$scope", "$controller", function ($scope, $controller) {
         $scope: $scope,
         options: {
             maxImageUploadQueueLimit: 25,
-            adminMode : true
+            adminMode : true,
+            listingUrl: '/admin/products'
         }
     });
 
@@ -5447,7 +5451,6 @@ module.exports = ["$scope", "$controller", "Product", function($scope, $controll
 		$scope: $scope,
 		options: {}
 	});
-
 	
 }]
 
@@ -5460,7 +5463,8 @@ module.exports = ["$scope", "$controller", "storage", function($scope, $controll
   $controller('AbstractProductAddCtrl', {
     $scope: $scope,
     options: {
-      maxImageUploadQueueLimit: 25
+      maxImageUploadQueueLimit: 25,
+      listingUrl: '/products'
     }
   });
 
@@ -9331,7 +9335,8 @@ angular.module('nc')
             priority: 1010,
             scope: {
                 title: '@ncTitle',
-                topLink: '@link',
+                topLink: '@?link',
+                ngTopLink: '&?ngLink',
                 icon: '@icon'
             },
             template: function (element, attrs) {
@@ -10206,7 +10211,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('partials/page-title',
-    "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title ah-breadcrumb\"><a ng-if=\"icon && breads.length != 1\" ng-href={{topLink}}><i class=\"fa {{icon}} page-header-icon\"></i></a> <i ng-if=\"icon && breads.length == 1\" class=\"fa {{icon}} page-header-icon\"></i> <span ng-repeat=\"b in breads\" class=ah-breadcrumb><a ng-if=\"$index == 0 && breads.length > 1\" class=ah-breadcrumb-path ng-href={{topLink}}>{{b}}</a><span ng-if=\"$index > 0 || breads.length == 1\" class=ah-breadcrumb-path>{{b}}</span><span ng-if=\"$index == 0 && breads.length > 1\" class=ah-breadcrumb-splitter>/</span></span></h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
+    "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title ah-breadcrumb\"><a ng-if=\"icon && breads.length != 1\" ng-href=\"{{ngTopLink() || topLink}}\"><i class=\"fa {{icon}} page-header-icon\"></i></a> <i ng-if=\"icon && breads.length == 1\" class=\"fa {{icon}} page-header-icon\"></i> <span ng-repeat=\"b in breads\" class=ah-breadcrumb><a ng-if=\"$index == 0 && breads.length > 1\" class=ah-breadcrumb-path ng-href=\"{{ngTopLink()  || topLink}}\">{{b}}</a><span ng-if=\"$index > 0 || breads.length == 1\" class=ah-breadcrumb-path>{{b}}</span><span ng-if=\"$index == 0 && breads.length > 1\" class=ah-breadcrumb-splitter>/</span></span></h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
   );
  }]);
 },{}],132:[function(require,module,exports){
@@ -10224,11 +10229,15 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
 
     //allow from 1500x1500 but no greater than 2000x2000
-    var IMAGE_DIM_BOUND = [[1500, 1500], [2000, 2000]];
+    var IMAGE_DIM_BOUND = [
+      [1500, 1500],
+      [2000, 2000]
+    ];
 
     $scope.readOnly = options.readOnly;
     $scope.adminMode = options.adminMode;
     $scope.approveMode = options.approveMode;
+    $scope.listingUrl = options.listingUrl;
 
     var loadOverview = function(res) {
       Shop.get(res.ShopId).then(function(x) {
@@ -10246,7 +10255,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       $scope.defaultAttributes = res;
     });
 
-    $scope.ShopGroupPolicy = function(range){
+    $scope.ShopGroupPolicy = function(range) {
       return $scope.adminMode || $rootScope.ShopGroupPolicy(range);
     }
 
@@ -10266,9 +10275,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
     }
 
-    $scope.imageBlockOptions = {height: '150px', width: '150px', 
-      validateDimensionMin: IMAGE_DIM_BOUND[0], 
-      validateDimensionMax: IMAGE_DIM_BOUND[1], 'validateSquare': true};
+    $scope.imageBlockOptions = {
+      height: '150px',
+      width: '150px',
+      validateDimensionMin: IMAGE_DIM_BOUND[0],
+      validateDimensionMax: IMAGE_DIM_BOUND[1],
+      'validateSquare': true
+    };
 
     $scope.formData = {
       Status: 'DF',
@@ -10278,7 +10291,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       LocalCategories: [null, null, null],
       MainGlobalCategory: null,
       MainLocalCategory: null,
-      IsHasExpiryDate: 'N',
       Tags: [],
       ControlFlags: {
         Flag1: false,
@@ -10299,6 +10311,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       ExpireDate: null,
       LimitIndividualDay: false,
       MasterVariant: {
+        IsHasExpiryDate: 'N',
+        IsVat: 'N',
         Display: 'GROUP',
         ProductNameEn: '',
         ProductNameTh: '',
@@ -10427,7 +10441,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       if (kwd == "onmaxsize") {
         $scope.image_alert.error('Maximum ' + data + ' images can be uploaded.');
       } else if (kwd == "ondimension") {
-        $scope.image_alert.error('Dimension must be greater than ' + IMAGE_DIM_BOUND[0][0] + 'x' + 
+        $scope.image_alert.error('Dimension must be greater than ' + IMAGE_DIM_BOUND[0][0] + 'x' +
           IMAGE_DIM_BOUND[0][1] + '.' + ' and not larger than ' + IMAGE_DIM_BOUND[1][0] + 'x' + IMAGE_DIM_BOUND[1][1] + '. <strong>Your Image Size is ' + data[0] + "x" + data[1] + '</strong>');
       } else if (kwd == "onsquare") {
         $scope.image_alert.error('Image must be square.');
@@ -10480,12 +10494,12 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
 
       //check if there are options that can variate
-      var count = $scope.formData.AttributeSet.AttributeSetMaps.reduce(function(previousValue, currentValue, currentIndex, array){
+      var count = $scope.formData.AttributeSet.AttributeSetMaps.reduce(function(previousValue, currentValue, currentIndex, array) {
         return previousValue + (array[currentIndex].Attribute.VariantStatus ? 1 : 0);
       }, 0);
 
       console.log('count', count);
-      if(count == 0){
+      if (count == 0) {
         return $scope.alert.error('<strong>Not allowed</strong> - Cannot create variation because selected attribute set does not have any variate-able option.');
       }
 
@@ -10760,14 +10774,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $productAdd.fill(checkSchema, catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function() {
             $scope.formData.ProductId = Number(res.ProductId);
             $scope.pageState.reset();
-            $scope.alert.success('Your product has been saved successfully. <a href="' + ($scope.adminMode ? '/admin/approve/' : '/products') +  '">View Product List</a>');
+            $scope.alert.success('Your product has been saved successfully. <a href="' + (options.listingUrl || '/products') + '">View Product List</a>');
             console.log("MVAR after save", $scope.formData.MasterVariant);
             $scope.variantPtr = $scope.formData.MasterVariant;
             $scope.addProductForm.$setPristine(true);
           });
 
           $scope.addProductForm.$setPristine(true);
-          
+
         } else {
           $scope.alert.error('Unable to save because ' + (res.message || res.Message));
           $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
@@ -11514,7 +11528,7 @@ require('./template.js');
 angular.module("productDetail").run(["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('ap/form-product-add',
-    "<form name=addProductForm class=\"ah-form sticky-mainform-action\" novalidate><nc-page-title nc-title=\"Products/Product Detail\" link=/products icon=fa-tag><div ng-include=\"'page-btn-controls'\"></div></nc-page-title><div ng-if=pageState.loading.state nc-loading=\"{{ pageState.loading.message }}..\"></div><div class=add-product-body ng-if=!pageState.loading.state><ng-transclude></ng-transclude><ul class=\"nav nav-tabs\" role=tablist><li ng-repeat=\"item in _apNavTabs\" role=presentation ng-class=item.class><a ng-href=#{{item.id}} data-id={{item.id}} aria-controls=item.id role=tab data-toggle=tab>{{item.name}}</a></li></ul><fieldset ng-disabled=\"(formData.Status == 'WA' || formData.Status == 'AP' || readOnly) && !adminMode\"><div class=tab-content><div role=tabpanel class=\"tab-pane margin-top-20 active\" id=information><div ng-include=\"'ap/tab-information'\"></div></div><div role=tabpanel class=\"tab-pane margin-top-20\" id=images><div ng-include=\"'ap/tab-images'\"></div></div><div role=tabpanel class=\"tab-pane margin-top-20\" id=category><div ng-include=\"'ap/tab-category'\"></div></div><div role=tabpanel class=\"tab-pane margin-top-20\" id=more_option><div ng-include=\"'ap/tab-more-option'\"></div></div><div role=tabpanel class=\"tab-pane margin-top-20\" id=variation><div ng-include=\"'ap/tab-variations'\"></div></div></div></fieldset><div class=\"add-product-form-action main-form-action full-width-row\"><div class=container-fluid><div ng-include=\"'page-btn-controls'\"></div></div></div></div></form>"
+    "<form name=addProductForm class=\"ah-form sticky-mainform-action\" novalidate>{{options}}<nc-page-title nc-title=\"Products/Product Detail\" ng-link=\"listingUrl || '/products'\" icon=fa-tag><div ng-include=\"'page-btn-controls'\"></div></nc-page-title><div ng-if=pageState.loading.state nc-loading=\"{{ pageState.loading.message }}..\"></div><div class=add-product-body ng-if=!pageState.loading.state><ng-transclude></ng-transclude><ul class=\"nav nav-tabs\" role=tablist><li ng-repeat=\"item in _apNavTabs\" role=presentation ng-class=item.class><a ng-href=#{{item.id}} data-id={{item.id}} aria-controls=item.id role=tab data-toggle=tab>{{item.name}}</a></li></ul><fieldset ng-disabled=\"(formData.Status == 'WA' || formData.Status == 'AP' || readOnly) && !adminMode\"><div class=tab-content><div role=tabpanel class=\"tab-pane margin-top-20 active\" id=information><div ng-include=\"'ap/tab-information'\"></div></div><div role=tabpanel class=\"tab-pane margin-top-20\" id=images><div ng-include=\"'ap/tab-images'\"></div></div><div role=tabpanel class=\"tab-pane margin-top-20\" id=category><div ng-include=\"'ap/tab-category'\"></div></div><div role=tabpanel class=\"tab-pane margin-top-20\" id=more_option><div ng-include=\"'ap/tab-more-option'\"></div></div><div role=tabpanel class=\"tab-pane margin-top-20\" id=variation><div ng-include=\"'ap/tab-variations'\"></div></div></div></fieldset><div class=\"add-product-form-action main-form-action full-width-row\"><div class=container-fluid><div ng-include=\"'page-btn-controls'\"></div></div></div></div></form>"
   );
 
 
@@ -11524,7 +11538,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/modal-variant-detail',
-    "<form class=ah-form name=addProductVariantForm><div class=modal-header><h3 class=\"float-left modal-title\" ng-init=\"form = addProductVariantForm\">Variant: {{ pair.text }}</h3><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=\"form.$invalid || uploader.isUploading\" class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div><div class=\"modal-body margin-top-20\"><div class=row><div class=col-xs-12><div ng-if=form.$invalid class=\"alert alert-red\" ng-cloak>Please make sure all fields have no error.</div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=pair.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=pair.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=pair.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"pair.Upc\"></div><div class=form-group><div class=width-label><label class=control-label>Display</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select class=form-control ng-model=pair.Display><option value={{op.value}} ng-repeat=\"op in dataset.VariantDisplayOption\">{{ op.text }}</option></select></div></div></div></div></div><div ap-component=ap/section-image-video></div><div ap-component=ap/section-description></div><div ap-component=ap/section-shipping></div><div ap-component=ap/section-seo></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=\"form.$invalid || uploader.isUploading\" class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div></div></div><form></form></form>"
+    "<form class=ah-form name=addProductVariantForm><div class=modal-header><h3 class=\"float-left modal-title\" ng-init=\"form = addProductVariantForm\">Variant: {{ pair.text }}</h3><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=\"form.$invalid || uploader.isUploading\" class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div><div class=\"modal-body margin-top-20\"><div class=row><div class=col-xs-12><div ng-if=\"form.$invalid && form.$dirty\" class=\"alert alert-red\" ng-cloak>Please make sure all required fields are filled and has no error.</div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=pair.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=pair.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=pair.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"pair.Upc\"></div><div class=form-group><div class=width-label><label class=control-label>Display</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select class=form-control ng-model=pair.Display><option value={{op.value}} ng-repeat=\"op in dataset.VariantDisplayOption\">{{ op.text }}</option></select></div></div></div></div></div><div ap-component=ap/section-price></div><div ap-component=ap/section-image-video></div><div ap-component=ap/section-description></div><div ap-component=ap/section-shipping></div><div ap-component=ap/section-seo></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=\"form.$invalid || uploader.isUploading\" class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div></div></div><form></form></form>"
   );
 
 
@@ -11568,7 +11582,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-price',
-    "<div class=form-section><div class=form-section-header><h2>Price</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SalePrice nc-label=\"Sale Price\" ng-cloack nc-template-options-path=addProductForm/SalePrice><input autocomplete=off ng-pattern-restrict=^[0-9]*$ class=\"form-control width-field-normal\" maxlength=20 name=SalePrice ng-model=variantPtr.SalePrice required></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.OriginalPrice><input autocomplete=off class=\"form-control width-field-normal\" name=OriginalPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=variantPtr.OriginalPrice ng-pattern-restrict=\"^[0-9]*$\"></div><div nc-template=common/input/form-group-with-label nc-label=Installment nc-template-options-path=addProductForm/Installment nc-template-form=form.Installment><select ng-disabled=disableInstallment() ng-cloak class=form-control ng-model=variantPtr.Installment><option ng-if=disableInstallment() value=N selected>Available when price is more than 5,000</option><option ng-if=!disableInstallment() value=Y>Yes</option><option ng-if=!disableInstallment() value=N selected>No</option></select></div><div nc-template=common/input/form-group-with-label ng-show=\"ShopGroupPolicy(['IN'])\" nc-label=\"Unit Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.UnitPrice><input autocomplete=off class=\"form-control width-field-normal\" name=UnitPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"variantPtr.UnitPrice\"></div><div nc-template=common/input/form-group-with-label ng-show=\"ShopGroupPolicy(['IN'])\" nc-label=\"Purchase Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.PurchasePrice><input autocomplete=off class=\"form-control width-field-normal\" name=PurchasePrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"variantPtr.PurchasePrice\"></div><div nc-template=common/input/form-group-with-label ng-show=\"ShopGroupPolicy(['IN', 'BU'])\" nc-label=\"Sale Unit (English)\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.SaleUnitEn><input autocomplete=off class=\"form-control width-field-normal\" name=SaleUnitEn maxlength=20 ng-model=\"variantPtr.SaleUnitEn\"></div><div nc-template=common/input/form-group-with-label ng-show=\"ShopGroupPolicy(['IN', 'BU'])\" nc-label=\"Sale Unit (ไทย)\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.SaleUnitTh><input autocomplete=off class=\"form-control width-field-normal\" name=SaleUnitTh maxlength=20 ng-model=\"variantPtr.SaleUnitTh\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.IsVat nc-template-options-path=addProductForm/OriginalPrice nc-label=\"Is VAT\"><select ng-model=variantPtr.IsVat class=form-control name=IsVat><option value=N>No</option><option value=Y>Yes</option></select></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Price</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SalePrice nc-label=\"Sale Price\" ng-cloack nc-template-options-path=addProductForm/SalePrice><input autocomplete=off ng-pattern-restrict=^[0-9]*$ class=\"form-control width-field-normal\" maxlength=20 name=SalePrice ng-model=variantPtr.SalePrice required></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.OriginalPrice><input autocomplete=off class=\"form-control width-field-normal\" name=OriginalPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=variantPtr.OriginalPrice ng-pattern-restrict=\"^[0-9]*$\"></div><div nc-template=common/input/form-group-with-label nc-label=Installment nc-template-options-path=addProductForm/Installment nc-template-form=form.Installment><select ng-disabled=disableInstallment() ng-cloak class=form-control ng-model=variantPtr.Installment><option ng-if=disableInstallment() value=N selected>Available when price is more than 5,000</option><option ng-if=!disableInstallment() value=Y>Yes</option><option ng-if=!disableInstallment() value=N selected>No</option></select></div><div nc-template=common/input/form-group-with-label ng-show=\"ShopGroupPolicy(['IN'])\" nc-label=\"Unit Price\" nc-template-options-path=addProductForm/NonRequiredSystemField nc-template-form=form.UnitPrice><input autocomplete=off class=\"form-control width-field-normal\" name=UnitPrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"variantPtr.UnitPrice\"></div><div nc-template=common/input/form-group-with-label ng-show=\"ShopGroupPolicy(['IN'])\" nc-label=\"Purchase Price\" nc-template-options-path=addProductForm/NonRequiredSystemField nc-template-form=form.PurchasePrice><input autocomplete=off class=\"form-control width-field-normal\" name=PurchasePrice ng-pattern=\"/^\\d+(\\.\\d{1,2})?$/\" maxlength=20 ng-model=\"variantPtr.PurchasePrice\"></div><div nc-template=common/input/form-group-with-label ng-show=\"ShopGroupPolicy(['IN', 'BU'])\" nc-label=\"Sale Unit (English)\" nc-template-options-path=addProductForm/NonRequiredSystemField nc-template-form=form.SaleUnitEn><input autocomplete=off class=\"form-control width-field-normal\" name=SaleUnitEn maxlength=20 ng-model=\"variantPtr.SaleUnitEn\"></div><div nc-template=common/input/form-group-with-label ng-show=\"ShopGroupPolicy(['IN', 'BU'])\" nc-label=\"Sale Unit (ไทย)\" nc-template-options-path=addProductForm/NonRequiredSystemField nc-template-form=form.SaleUnitTh><input autocomplete=off class=\"form-control width-field-normal\" name=SaleUnitTh maxlength=20 ng-model=\"variantPtr.SaleUnitTh\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.IsVat nc-template-options-path=addProductForm/NonRequiredSystemField nc-label=\"Is VAT\"><select ng-model=variantPtr.IsVat class=form-control name=IsVat><option value=N>No</option><option value=Y>Yes</option></select></div></div></div>"
   );
 
 
@@ -11649,7 +11663,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-vital-information',
-    "<div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label ng-init=\"form = addProductForm\" nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=variantPtr.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=variantPtr.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label ng-show=\"ShopGroupPolicy(['IN', 'BU'])\" nc-label=\"Short Product Name (Eng)\" nc-template-form=form.ProdTDNameEn nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProdTDNameEn ng-model=variantPtr.ProdTDNameEn ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label ng-show=\"ShopGroupPolicy(['IN', 'BU'])\" nc-label=\"Short Product Name (ไทย)\" nc-template-form=form.ProdTDNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProdTDNameTh ng-model=variantPtr.ProdTDNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=variantPtr.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"variantPtr.Upc\"></div><div ng-if=variantPtr.MasterVariant.Pid><div nc-template=common/input/form-group-with-label nc-template-form=form.Pid nc-label=\"{{ (formData.Variants || []).length > 0 ? 'Group ID' : 'PID' }}\" nc-template-options-path=addProductForm/Pid><input class=\"form-control width-field-large\" name=Pid disabled ng-model=\"variantPtr.Pid\"></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Brand Name</label></div><div class=width-field-normal><div class=ah-select2-dropdown><you-me display-by=BrandNameEn placeholder=\"Search Brand\" auto-clear-search=true group-by=_group ng-model=formData.Brand refresh=refresher.Brands choices=dataset.Brands></you-me></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label ng-init=\"form = addProductForm\" nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=variantPtr.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=variantPtr.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label ng-show=\"ShopGroupPolicy(['IN', 'BU'])\" nc-label=\"Short Product Name (Eng)\" nc-template-form=form.ProdTDNameEn nc-template-options-path=addProductForm/NonRequiredSystemField><input class=\"form-control width-field-large\" name=ProdTDNameEn ng-model=variantPtr.ProdTDNameEn ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label ng-show=\"ShopGroupPolicy(['IN', 'BU'])\" nc-label=\"Short Product Name (ไทย)\" nc-template-form=form.ProdTDNameTh nc-template-options-path=addProductForm/NonRequiredSystemField><input class=\"form-control width-field-large\" name=ProdTDNameTh ng-model=variantPtr.ProdTDNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=variantPtr.Sku maxlength=300 ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"variantPtr.Upc\"></div><div ng-if=variantPtr.MasterVariant.Pid><div nc-template=common/input/form-group-with-label nc-template-form=form.Pid nc-label=\"{{ (formData.Variants || []).length > 0 ? 'Group ID' : 'PID' }}\" nc-template-options-path=addProductForm/Pid><input class=\"form-control width-field-large\" name=Pid disabled ng-model=\"variantPtr.Pid\"></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Brand Name</label></div><div class=width-field-normal><div class=ah-select2-dropdown><you-me display-by=BrandNameEn placeholder=\"Search Brand\" auto-clear-search=true group-by=_group ng-model=formData.Brand refresh=refresher.Brands choices=dataset.Brands></you-me></div></div></div></div></div>"
   );
 
 
@@ -12204,6 +12218,9 @@ angular.module('umeSelect')
                 scope.highlightedIndex = 0;
                 //choices
                 scope.choices = [];
+                if(!scope.model && (scope.inRelationship || scope.itsComplicated)){
+                    scope.model = [];
+                }
 
                 //State variables
                 //E_STATE is error state that is used by 
@@ -16058,6 +16075,9 @@ module.exports = {
 
   },
   Installment: {
+
+  },
+  NonRequiredSystemField: {
 
   },
   VideoLink: {

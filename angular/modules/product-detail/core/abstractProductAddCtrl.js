@@ -12,11 +12,15 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
 
     //allow from 1500x1500 but no greater than 2000x2000
-    var IMAGE_DIM_BOUND = [[1500, 1500], [2000, 2000]];
+    var IMAGE_DIM_BOUND = [
+      [1500, 1500],
+      [2000, 2000]
+    ];
 
     $scope.readOnly = options.readOnly;
     $scope.adminMode = options.adminMode;
     $scope.approveMode = options.approveMode;
+    $scope.listingUrl = options.listingUrl;
 
     var loadOverview = function(res) {
       Shop.get(res.ShopId).then(function(x) {
@@ -34,7 +38,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       $scope.defaultAttributes = res;
     });
 
-    $scope.ShopGroupPolicy = function(range){
+    $scope.ShopGroupPolicy = function(range) {
       return $scope.adminMode || $rootScope.ShopGroupPolicy(range);
     }
 
@@ -54,9 +58,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
     }
 
-    $scope.imageBlockOptions = {height: '150px', width: '150px', 
-      validateDimensionMin: IMAGE_DIM_BOUND[0], 
-      validateDimensionMax: IMAGE_DIM_BOUND[1], 'validateSquare': true};
+    $scope.imageBlockOptions = {
+      height: '150px',
+      width: '150px',
+      validateDimensionMin: IMAGE_DIM_BOUND[0],
+      validateDimensionMax: IMAGE_DIM_BOUND[1],
+      'validateSquare': true
+    };
 
     $scope.formData = {
       Status: 'DF',
@@ -66,7 +74,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       LocalCategories: [null, null, null],
       MainGlobalCategory: null,
       MainLocalCategory: null,
-      IsHasExpiryDate: 'N',
       Tags: [],
       ControlFlags: {
         Flag1: false,
@@ -87,6 +94,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       ExpireDate: null,
       LimitIndividualDay: false,
       MasterVariant: {
+        IsHasExpiryDate: 'N',
+        IsVat: 'N',
         Display: 'GROUP',
         ProductNameEn: '',
         ProductNameTh: '',
@@ -215,7 +224,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       if (kwd == "onmaxsize") {
         $scope.image_alert.error('Maximum ' + data + ' images can be uploaded.');
       } else if (kwd == "ondimension") {
-        $scope.image_alert.error('Dimension must be greater than ' + IMAGE_DIM_BOUND[0][0] + 'x' + 
+        $scope.image_alert.error('Dimension must be greater than ' + IMAGE_DIM_BOUND[0][0] + 'x' +
           IMAGE_DIM_BOUND[0][1] + '.' + ' and not larger than ' + IMAGE_DIM_BOUND[1][0] + 'x' + IMAGE_DIM_BOUND[1][1] + '. <strong>Your Image Size is ' + data[0] + "x" + data[1] + '</strong>');
       } else if (kwd == "onsquare") {
         $scope.image_alert.error('Image must be square.');
@@ -268,12 +277,12 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
 
       //check if there are options that can variate
-      var count = $scope.formData.AttributeSet.AttributeSetMaps.reduce(function(previousValue, currentValue, currentIndex, array){
+      var count = $scope.formData.AttributeSet.AttributeSetMaps.reduce(function(previousValue, currentValue, currentIndex, array) {
         return previousValue + (array[currentIndex].Attribute.VariantStatus ? 1 : 0);
       }, 0);
 
       console.log('count', count);
-      if(count == 0){
+      if (count == 0) {
         return $scope.alert.error('<strong>Not allowed</strong> - Cannot create variation because selected attribute set does not have any variate-able option.');
       }
 
@@ -548,14 +557,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $productAdd.fill(checkSchema, catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function() {
             $scope.formData.ProductId = Number(res.ProductId);
             $scope.pageState.reset();
-            $scope.alert.success('Your product has been saved successfully. <a href="' + ($scope.adminMode ? '/admin/approve/' : '/products') +  '">View Product List</a>');
+            $scope.alert.success('Your product has been saved successfully. <a href="' + (options.listingUrl || '/products') + '">View Product List</a>');
             console.log("MVAR after save", $scope.formData.MasterVariant);
             $scope.variantPtr = $scope.formData.MasterVariant;
             $scope.addProductForm.$setPristine(true);
           });
 
           $scope.addProductForm.$setPristine(true);
-          
+
         } else {
           $scope.alert.error('Unable to save because ' + (res.message || res.Message));
           $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');

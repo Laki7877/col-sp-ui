@@ -39,6 +39,9 @@ angular.module('umeSelect')
                 scope.highlightedIndex = 0;
                 //choices
                 scope.choices = [];
+                if(!scope.model && (scope.inRelationship || scope.itsComplicated)){
+                    scope.model = [];
+                }
 
                 //State variables
                 //E_STATE is error state that is used by 

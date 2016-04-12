@@ -22,10 +22,17 @@
             <div class="form-section-content">
               <div nc-template="common/input/form-group-with-label"
                 nc-label="Select Master Product" >
-                <ui-select ng-model="formData.MasterProduct">
+
+<!--                 <ui-select ng-model="formData.MasterProduct">
                   <ui-select-match placeholder="Search Master Product">{{$select.selected.ProductNameEn}}</ui-select-match>
                   <ui-select-choices repeat="item in products" refresh="getProducts($select.search)" refresh-delay="1">{{ item.ProductNameEn }}</ui-select-choices>
                 </ui-select>
+ -->                
+                <you-me display-by="ProductNameEn" placeholder="Search Master Product" 
+                        auto-clear-search="true"
+                        ng-model="formData.MasterProduct" refresh="getProducts" choices="products"></you-me>
+
+
               </div>
             </div>
           </div>
@@ -37,12 +44,21 @@
                 nc-label="Select Child Products"
                 nc-template-form="form.ChildProducts"
                 nc-template-options-path="addMasterProductForm/ChildProducts">
-                <ui-select ng-model="formData.ChildProducts" name="ChildProducts" multiple>
+
+<!--                 <ui-select ng-model="formData.ChildProducts" name="ChildProducts" multiple>
                   <ui-select-match placeholder="Search Product">
                     <span>{{ $item.ProductNameEn }}</span>
                   </ui-select-match>
                   <ui-select-choices repeat="item in (childProducts | exclude: formData.ChildProducts : 'ProductId' | exclude: formData.MasterProduct : 'ProductId' ) track by item.Pid" refresh="getChildProducts($select.search)" refresh-delay="1">{{ item.ProductNameEn }}</ui-select-choices>
                 </ui-select>
+
+ -->     
+             <you-me display-by="ProductNameEn" placeholder="Search Product" 
+                        name="ChildProducts"
+                        ng-model="formData.ChildProducts" refresh="getChildProducts" in-relationship="true"
+                        choices="childProducts | exclude: formData.ChildProducts : 'ProductId' | exclude: formData.MasterProduct : 'ProductId' "></you-me>
+
+
               </div>
             </div>
           </div>
