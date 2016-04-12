@@ -26,7 +26,7 @@ module.exports = function ($http, $q, storage, config, $window) {
                 
                 var curlCmd = service.makeCurl(options.method, options.url, options.headers.Authorization, options.data);
                 var counter = 1;
-                var MAX_RETRY = 5;
+                var MAX_RETRY = 2;
                 var request = function() {
 
                     $http(options)

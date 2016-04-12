@@ -6,7 +6,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products']);
 <div class="float-right" ng-if="!_loading.state && adminMode">
 			<a class="btn btn-white btn-width-xl" ng-href="/admin/approve">Cancel</a>
 				<button ng-show="formData.Status != 'WA'" class="btn btn-white margin-left-10 btn-width-xl" ng-click="preview()">Preview</button>
-					<button type="submit" class="btn btn-blue margin-left-10 btn-width-xl" ng-click="saveAsIs()">Save</button>
+					<button type="submit" class="btn btn-blue margin-left-10 btn-width-xl" ng-click="prePublishWA()">Save</button>
 	</div>
 </script>
 <script type="text/ng-template" id="admin-panel">
