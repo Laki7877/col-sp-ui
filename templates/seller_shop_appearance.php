@@ -37,7 +37,7 @@
 					                <div class="form-section-header">
 					                    <h2><input style="margin-right:10px" type="checkbox" ng-model="formData.IsLayout" />Layouts</h2>
 					                </div>
-					                <div class="form-section-content">
+					                <div class="form-section-content" ng-show="formData.IsLayout">
 					                    <div ng-repeat="layout in formData.Layouts track by $index">
 					                    	<div class="form-group">
 					                    		<div class="width-label"><label class="control-label">Position {{$index+1}}</label></div>
@@ -58,7 +58,7 @@
 					            <div ng-if="hasComponent('Video')" class="form-section">
 					                <div class="form-section-header">
 					                    <h2><input style="margin-right:10px" type="checkbox" ng-model="formData.IsVideo" />Highlight Video</h2></div>
-					                <div class="form-section-content">
+					                <div class="form-section-content" ng-show="formData.IsVideo">
 					                    <div ng-repeat="video in formData.Videos track by $index" class="margin-bottom-40">
 					                        <div nc-template="common/input/form-group-with-label"
 					                        	nc-label="Video Link {{$index+1}}"

@@ -1,4 +1,5 @@
 'use strict'
+
 // App Start here
 var angular = require('angular')
 var bulk = require('bulk-require')(__dirname, ['controllers/*.js', 'services/*.js', 'helpers/*.js',
@@ -8,6 +9,9 @@ var config = require('./config')
 var route = require('./route')
 var template = require('./template')
 var skeemas = require('skeemas');
+
+// IE fix
+require('./iefix.js')
 
 // External dependencies
 global._ = require('lodash')
@@ -36,6 +40,11 @@ require('./modules/nc')
 require('./modules/product-detail')
 require('./modules/schematics')
 require('./modules/ume-select')
+
+
+String.prototype.startsWith = String.prototype.startsWith || function() {
+  
+}
 
 // Internal dependencies
 var controllers = bulk.controllers

@@ -2,7 +2,7 @@
 	<div class="form-section-header">
 		<h2><input type="checkbox" style="margin-right: 10px" ng-model="source.IsBanner"/>{{title}}</h2>
 	</div>
-	<div class="form-section-content padding-left-15 padding-right-15">
+	<div class="form-section-content padding-left-15 padding-right-15" ng-show="source.IsBanner">
 		<div class="col-xs-7">
 			<div class="image-drop-wrapper">
 				<div
@@ -61,7 +61,7 @@
 		<div ng-repeat="image in source.Banner.Images track by $index" class="form-group">
 			<div class="width-label"><label class="control-label">Slide Duration {{$index+1}}</label></div>
 			<div class="width-field-normal">
-				<input class="form-control" ng-model="image.SlideDuration" />
+				<input class="form-control width-field-normal" ng-model="image.SlideDuration" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"/>
 				<span class="input-with-unit">
 					<span class="input-unit">Seconds</span>
 				</span>

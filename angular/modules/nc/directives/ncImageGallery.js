@@ -31,15 +31,15 @@ angular.module('nc')
 				size: '=',
 				title: '@'
 			},
-			template: '<nc-image-block template="common/ncImageBanner2" source="source" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size.Count}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum 7 images</li><li>The width must be {{size.Width}}px</li><li>The height must be {{size.Height}}px</li></ul></nc-image-block>',
+			template: '<nc-image-block template="common/ncImageBanner2" source="source" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size.Count}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size.Count}} images</li><li>The width must be {{size.Width}}px</li><li>The height must be {{size.Height}}px</li></ul></nc-image-block>',
 			link: function(scope) {
 				scope.options = _.defaults(scope.options, {
 					height: '144px',
 					width: '256px'
 				});
 				scope.$watch('size', function(data) {
-					scope.options.height = data.Height + 'px';
-					scope.options.width = data.Width + 'px';
+					scope.options.height = (data.Height/data.Width)*256 + 'px';
+					scope.options.width =  '256px';
 				});
 			}
 		}
@@ -119,6 +119,7 @@ angular.module('nc')
 								}
 
 								//max size
+								console.log(scope.size, scope.images.length);
 								if (scope.images.length >= _.toInteger(scope.size)) {
 									scope.onfail('onmaxsize', scope.images.length);
 									return;

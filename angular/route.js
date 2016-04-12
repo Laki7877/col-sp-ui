@@ -137,7 +137,22 @@ var permission = {
 	'Manage Admin': ['/admin/accounts', '/admin/roles'],
 	'Manage Global Coupons': '/admin/coupons/global',
 	'Manage Seller Coupons': '/admin/coupons/seller',
-	'Manage Newsletter': '/admin/newsletters'
+	'Manage Newsletter': '/admin/newsletters',
+
+	'View Dashboard': '/dashboard',
+	'View Orders': '/orders',
+	'Manage Return Requests': '/returns',
+	'View Products': '/products',
+	'Manage Local Category': '/categories',
+	'Manage Product Reviews': '/reviews',
+	'Manage Product Images': '/products/images',
+	'Manage Pending Products': '/products/groups',
+	'View Intentory': '/inventory',
+	'View Coupons': '/coupons',
+	'Manage Shop Profile': '/shop/settings',
+	'Manage Shop Appearance': '/shop/appearance',
+	'Manage User Account & Roles': ['/accounts', '/roles']
+	
 };
 
 module.exports = {
