@@ -2237,7 +2237,9 @@ module.exports = ["$scope", "$controller", "ProductTempService", "config", funct
 	});
 }]
 },{}],25:[function(require,module,exports){
-
+module.exports = function() {
+	
+}
 },{}],26:[function(require,module,exports){
 var angular = require('angular');
 
@@ -4809,10 +4811,11 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "storage", "$wind
 		.then(function(data){	
 			$scope.rating = {};		
 			_.forOwn(data, function(v, k) {
-				if (data != 'N/A') {
-					$scope.rating[k] = '<div class="font-size-16 color-' + getColoredRank('Product Rating', data) + '">' + v + ' / 5.0' + '</div>';
+				if (v != 'N/A') {
+					v = _.round(v, 1);
+					$scope.rating[k] = '<div class="font-size-16 color-' + getColoredRank('Product Rating', v) + '">' + v + ' / 5.0' + '</div>';
 				} else {
-					$scope.rating[k] = '<div class="font-size-16 color-grey">' + data + '</div>';
+					$scope.rating[k] = '<div class="font-size-16 color-grey">' + v  + '</div>';
 
 				}
 			});

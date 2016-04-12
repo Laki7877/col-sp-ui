@@ -42,7 +42,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <span class="hide-component header-link" href="#"><a class="active-underline">Today (2)</a></span>
             <span class="hide-component"><a href="#" class="color-grey">Pending (4)</a></span>
             <span class="hide-component"><a href="#" class="color-grey">Complete (230)</a></span>
-            <span><a ng-click="linkToOrdersPage()">View All</a></span>
+            <span><a ng-click="linkToOrdersPage()">View All ({{totalOrders}})</a></span>
           </span>
         </div>
         <div class="group_container no-padding">
@@ -75,7 +75,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             Loading...
           </div>
           <div class="view_all_row" ng-show="newOrdersData.length == 10">
-            <a ng-click="linkToOrdersPage()">View All ({{totalOrder}})</a>
+            <a ng-click="linkToOrdersPage()">View All ({{totalOrders}})</a>
           </div>  
         </div>
       </div>
@@ -155,7 +155,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             Loading...
           </div>
           <div class="view_all_row" ng-show="newsLettersData.length == 10">
-            <a ng-click="linkToAllNewsletters()">View All</a>
+            <a ng-click="linkToAllNewsletters()">View All ({{totalNews}})</a>
           </div>
         </div>
       </div>
@@ -210,14 +210,20 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <div class="width_150">Delivery Speed</div>
             <div ng-bind-html="rating.DeliverySpeed"></div>
           </div>
+        </div>
+        <div class="group_container">
           <div class="row_container">
             <div class="width_150">Product Content</div>
             <div ng-bind-html="rating.ProductContent"></div>
           </div>
+        </div>
+        <div class="group_container">
           <div class="row_container">
             <div class="width_150">Product Validity</div>
             <div ng-bind-html="rating.ProductValidity"></div>
           </div>
+        </div>
+        <div class="group_container">
           <div class="row_container">
             <div class="width_150">Packaging</div>
             <div ng-bind-html="rating.Packaging"></div>
