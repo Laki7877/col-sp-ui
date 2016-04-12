@@ -18,7 +18,8 @@ angular.module('umeSelect')
                 groupBy: '@?groupBy',
                 initialChoices: '=?initialChoices',
                 hideIcon: '=?hideIcon',
-                disabled: '&?ngDisabled'
+                disabled: '&?ngDisabled',
+                strictMode: '=?strictMode'
             },
             replace: true,
             priority: 1010,
@@ -106,6 +107,13 @@ angular.module('umeSelect')
 
                             return d;
                         });
+                    }
+
+                    if(scope.strictMode){
+                        //strictly filter by search text
+                        var searchObj = {};
+                        searchObj[scope.displayBy] = scope.searchText;
+                        sortedData = $filter('filter')(sortedData, searchObj)
                     }
                     
                     scope.choices = sortedData;
@@ -231,7 +239,10 @@ angular.module('umeSelect')
 
 
                     if(!scope.refresh) return;
-                    if(scope.searchText == "" || !scope.searchText) return;
+                    if(scope.searchText == "" || !scope.searchText) {
+                        scope.loading = false;
+                        return;
+                    }
                     if (scope.delay){
                         $timeout.cancel(scope.delay);
                     }

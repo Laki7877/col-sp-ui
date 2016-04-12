@@ -24,13 +24,13 @@
 
         </div>
 
-        <div nc-template="common/input/form-group-with-label" ng-if="profileIsIndy()" nc-label="Unit Price" nc-template-options-path="addProductForm/OriginalPrice"
+        <div nc-template="common/input/form-group-with-label" ng-show="profileIsIndy()" nc-label="Unit Price" nc-template-options-path="addProductForm/OriginalPrice"
         nc-template-form="form.UnitPrice">
             <input autocomplete="off" class="form-control width-field-normal" type="text" name="UnitPrice" ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="20"
             ng-model="variantPtr.UnitPrice" />
         </div>
 
-        <div nc-template="common/input/form-group-with-label" ng-if="profileIsIndy()" nc-label="Purchase Price" nc-template-options-path="addProductForm/OriginalPrice"
+        <div nc-template="common/input/form-group-with-label" ng-show="profileIsIndy()" nc-label="Purchase Price" nc-template-options-path="addProductForm/OriginalPrice"
         nc-template-form="form.PurchasePrice">
             <input autocomplete="off" class="form-control width-field-normal" type="text" name="PurchasePrice" ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="20"
             ng-model="variantPtr.PurchasePrice" />

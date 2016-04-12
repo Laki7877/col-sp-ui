@@ -195,12 +195,16 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       modalInstance.result.then(function(data) {
         $scope.formData[key][ith] = data;
         if (key == 'GlobalCategories' && ith == 0) {
+          //update category
           $scope.updateBreadcrumb(data.CategoryId);
+          //Updated suggested attriubte set
+          AttributeSet.getByCategory(data.CategoryId).then(function(data) {
+            $productAdd.loadSuggestedAttributeSets($scope.dataset, data);
+          });
         }
       });
 
     };
-
 
 
     $scope.onImageUploadFail = function(kwd, data) {

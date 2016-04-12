@@ -123,6 +123,22 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
     }
   };
 
+
+  /*
+  * Load suggested attribute sets
+  * @param {DataSet} sharedDataSet
+  * @param {Array} data 
+  */
+  $productAdd.loadSuggestedAttributeSets = function(sharedDataSet, data){
+
+        sharedDataSet.AttributeSets = data.map(function(aset) {
+          aset._group = "Suggested Attribute Sets";
+          aset.AttributeSetTagMaps = $productAdd.flatten.AttributeSetTagMap(aset.AttributeSetTagMaps);
+          return aset;
+        });
+
+        sharedDataSet.CombinedAttributeSets = angular.copy(sharedDataSet.AttributeSets);
+  }
   /**
    *
    * Fill product add page with data of related dependencies
@@ -143,18 +159,11 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
     var deferred = $q.defer();
     pageLoader.load('Downloading Attribute Sets..');
 
-    //TODO: Break dependencies
     AttributeSet.getByCategory(globalCatId).then(function(data) {
         pageLoader.load('Validating Schema..');
         if(data.length > 0) checkSchema(data[0], 'attributeSet');
 
-        sharedDataSet.AttributeSets = data.map(function(aset) {
-          aset._group = "Suggested Attribute Sets";
-          aset.AttributeSetTagMaps = $productAdd.flatten.AttributeSetTagMap(aset.AttributeSetTagMaps);
-          return aset;
-        });
-
-        sharedDataSet.CombinedAttributeSets = angular.copy(sharedDataSet.AttributeSets);
+        $productAdd.loadSuggestedAttributeSets(sharedDataSet, data);
 
         var setupGlobalCat = function(){
           pageLoader.load('Downloading Category Tree..');
@@ -175,13 +184,6 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
         if (ivFormData) {
           pageLoader.load('Indexing Attribute Set');
 
-          //Search for Attribute Set from Attribute Set list that matches the Id
-          //TODO: just let backend send entire thing
-
-          // var kw = sharedDataSet.AttributeSets.map(function(o) {
-          //   return o.AttributeSetId
-          // }).indexOf(ivFormData.AttributeSet.AttributeSetId);
-          // console.log("KW Found", kw);
 
           var parse = function(ivFormData, FullAttributeSet) {
             // pageLoader.load('Loading product data..');
@@ -217,7 +219,6 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
           }
           
           AttributeSetService.get(ivFormData.AttributeSet.AttributeSetId).then(function(as){
-
             //Do hacky post-procesisng because this endpoint is not APEAP compliant
             var asComply = AttributeSetService.complyAPEAP(as);
             pageLoader.load('Validating Schema..');
@@ -232,8 +233,6 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
             ensureVariantPidness();
             setupGlobalCat();
           });
-
-          
           
 
         }else{
