@@ -548,9 +548,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             $scope.alert.success('Your product has been saved successfully. <a href="/products/">View Product List</a>');
             console.log("MVAR after save", $scope.formData.MasterVariant);
             $scope.variantPtr = $scope.formData.MasterVariant;
+            $scope.addProductForm.$setPristine(true);
           });
 
           $scope.addProductForm.$setPristine(true);
+          
         } else {
           $scope.alert.error('Unable to save because ' + (res.message || res.Message));
           $scope.controlFlags.variation = ($scope.formData.Variants.length > 0 ? 'enable' : 'disable');
