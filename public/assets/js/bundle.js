@@ -10380,9 +10380,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       },
       TheOneCardEarn: 1,
       GiftWrap: 'N',
-      AttributeSet: {
-        AttributeSetTagMaps: []
-      },
+      AttributeSet: {},
       MasterAttribute: {},
       RelatedProducts: [],
       EffectiveDate: null,
@@ -10932,9 +10930,16 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
       } else if ('catId' in viewBag) {
         if (viewBag.catId == null) window.location.href = '/products/select';
+        if ($scope.adminMode){
+          //Admin mode cant do add product
+          $scope.alert.error("Feature not available in admin mode.");
+          $scope.pageState.halt = true;
+        }
+        
         LocalCategoryService.list().then(function(data) {
           $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data);
-        })
+        });
+        
         var catId = Number(viewBag.catId);
         $productAdd.fill(checkSchema, catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb,
           $scope.controlFlags, $scope.variationFactorIndices).then(function() {
@@ -11606,7 +11611,7 @@ require('./template.js');
 angular.module("productDetail").run(["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('ap/form-product-add',
-    "<form name=addProductForm class=\"ah-form sticky-mainform-action\" novalidate>{{options}}<nc-page-title nc-title=\"Products/Product Detail\" ng-link=\"listingUrl || '/products'\" icon=fa-tag><div ng-include=\"'page-btn-controls'\"></div></nc-page-title><div ng-if=pageState.loading.state nc-loading=\"{{ pageState.loading.message }}..\"></div><div class=add-product-body ng-if=!pageState.loading.state><ng-transclude></ng-transclude><ul class=\"nav nav-tabs\" role=tablist><li ng-repeat=\"item in _apNavTabs\" role=presentation ng-class=item.class><a ng-href=#{{item.id}} data-id={{item.id}} aria-controls=item.id role=tab data-toggle=tab>{{item.name}}</a></li></ul><fieldset ng-disabled=\"(formData.Status == 'WA' || formData.Status == 'AP' || readOnly) && !adminMode\"><div class=tab-content><div role=tabpanel class=\"tab-pane margin-top-20 active\" id=information><div ng-include=\"'ap/tab-information'\"></div></div><div role=tabpanel class=\"tab-pane margin-top-20\" id=images><div ng-include=\"'ap/tab-images'\"></div></div><div role=tabpanel class=\"tab-pane margin-top-20\" id=category><div ng-include=\"'ap/tab-category'\"></div></div><div role=tabpanel class=\"tab-pane margin-top-20\" id=more_option><div ng-include=\"'ap/tab-more-option'\"></div></div><div role=tabpanel class=\"tab-pane margin-top-20\" id=variation><div ng-include=\"'ap/tab-variations'\"></div></div></div></fieldset><div class=\"add-product-form-action main-form-action full-width-row\"><div class=container-fluid><div ng-include=\"'page-btn-controls'\"></div></div></div></div></form>"
+    "<form name=addProductForm class=\"ah-form sticky-mainform-action\" novalidate>{{options}}<nc-page-title nc-title=\"Products/Product Detail\" ng-link=\"listingUrl || '/products'\" icon=fa-tag><div ng-include=\"'page-btn-controls'\"></div></nc-page-title><div ng-if=pageState.loading.state nc-loading=\"{{ pageState.loading.message }}..\"></div><div class=add-product-body ng-if=\"!pageState.loading.state || pageState.halt\"><ng-transclude></ng-transclude><ul class=\"nav nav-tabs\" role=tablist><li ng-repeat=\"item in _apNavTabs\" role=presentation ng-class=item.class><a ng-href=#{{item.id}} data-id={{item.id}} aria-controls=item.id role=tab data-toggle=tab>{{item.name}}</a></li></ul><fieldset ng-disabled=\"(formData.Status == 'WA' || formData.Status == 'AP' || readOnly) && !adminMode\"><div class=tab-content><div role=tabpanel class=\"tab-pane margin-top-20 active\" id=information><div ng-include=\"'ap/tab-information'\"></div></div><div role=tabpanel class=\"tab-pane margin-top-20\" id=images><div ng-include=\"'ap/tab-images'\"></div></div><div role=tabpanel class=\"tab-pane margin-top-20\" id=category><div ng-include=\"'ap/tab-category'\"></div></div><div role=tabpanel class=\"tab-pane margin-top-20\" id=more_option><div ng-include=\"'ap/tab-more-option'\"></div></div><div role=tabpanel class=\"tab-pane margin-top-20\" id=variation><div ng-include=\"'ap/tab-variations'\"></div></div></div></fieldset><div class=\"add-product-form-action main-form-action full-width-row\"><div class=container-fluid><div ng-include=\"'page-btn-controls'\"></div></div></div></div></form>"
   );
 
 
@@ -11645,7 +11650,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-keywords',
-    "<div class=form-section><div class=form-section-header><h2>Search Tags</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Search Tags\" nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><you-me its-complicated=true hide-icon=true name=Keywords placeholder=\"Enter keyword\" freedom-of-speech=true max-tag-count=20 ng-model=formData.Tags choices=formData.AttributeSet.AttributeSetTagMaps></you-me></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags).length > 1\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags\" ng-click=\"(formData.Tags.indexOf(tag) == -1) && formData.Tags.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Search Tags</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Search Tags\" nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><you-me its-complicated=true hide-icon=true placeholder=\"Enter keyword\" freedom-of-speech=true max-tag-count=20 ng-model=formData.Tags choices=formData.AttributeSet.AttributeSetTagMaps></you-me></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags).length > 1\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags\" ng-click=\"(formData.Tags.indexOf(tag) == -1) && formData.Tags.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
   );
 
 
@@ -12313,13 +12318,34 @@ angular.module('umeSelect')
                 //Don't reset model on error, I will handle this manually
                 ngModel.$options = { allowInvalid: true }
 
+                var initModel = false, initState = false;
                 //Listen for any change in error state and model
-                scope.$watch('[model, E_STATE]', function(value, oldValue){
+                scope.$watch('model', function(value, oldValue){
+
                     //Update ng model
+                    
                     ngModel.$setViewValue(value[0]);
+
+                    if(!initModel || _.isEmpty(oldValue)){
+                        initModel = true;
+                        return;
+                    }
+
+                    console.log('model', value, oldValue);
+
                     ngModel.$setDirty();
                     ngModel.$validate();
                 }, true);
+
+                scope.$watch('E_STATE', function(value, oldValue){
+                    
+                    if(!initState || _.isEmpty(oldValue)){
+                        initState = true;
+                        return;
+                    }
+                    console.log('E_STATE', value, oldValue);
+                    ngModel.$setDirty();
+                });
 
                 //For error validations
                 var maxTagCount = undefined;
@@ -12486,6 +12512,8 @@ angular.module('umeSelect')
                 var loadQ = [];
                 scope.$watch('searchText', function () {
 
+                    if(_.isEmpty(scope.searchText)) return;
+                    
                     if(!scope.itsComplicated) {
                         //when its complicated, you are out of options
                         scope.choices = []; 

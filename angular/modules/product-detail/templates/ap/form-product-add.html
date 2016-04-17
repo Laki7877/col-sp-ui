@@ -5,7 +5,7 @@
             </nc-page-title>
 
             <div ng-if="pageState.loading.state" nc-loading="{{ pageState.loading.message }}.."></div>
-            <div class="add-product-body" ng-if="!pageState.loading.state">
+            <div class="add-product-body" ng-if="!pageState.loading.state || pageState.halt">
                     <ng-transclude></ng-transclude>
                     <ul class="nav nav-tabs" role="tablist">
                             <li ng-repeat="item in _apNavTabs" role="presentation" ng-class="item.class">

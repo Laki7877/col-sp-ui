@@ -85,9 +85,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       },
       TheOneCardEarn: 1,
       GiftWrap: 'N',
-      AttributeSet: {
-        AttributeSetTagMaps: []
-      },
+      AttributeSet: {},
       MasterAttribute: {},
       RelatedProducts: [],
       EffectiveDate: null,
@@ -637,9 +635,16 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
       } else if ('catId' in viewBag) {
         if (viewBag.catId == null) window.location.href = '/products/select';
+        if ($scope.adminMode){
+          //Admin mode cant do add product
+          $scope.alert.error("Feature not available in admin mode.");
+          $scope.pageState.halt = true;
+        }
+        
         LocalCategoryService.list().then(function(data) {
           $scope.dataset.LocalCategories = Category.transformNestedSetToUITree(data);
-        })
+        });
+        
         var catId = Number(viewBag.catId);
         $productAdd.fill(checkSchema, catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb,
           $scope.controlFlags, $scope.variationFactorIndices).then(function() {

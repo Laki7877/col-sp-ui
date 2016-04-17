@@ -56,13 +56,34 @@ angular.module('umeSelect')
                 //Don't reset model on error, I will handle this manually
                 ngModel.$options = { allowInvalid: true }
 
+                var initModel = false, initState = false;
                 //Listen for any change in error state and model
-                scope.$watch('[model, E_STATE]', function(value, oldValue){
+                scope.$watch('model', function(value, oldValue){
+
                     //Update ng model
+                    
                     ngModel.$setViewValue(value[0]);
+
+                    if(!initModel || _.isEmpty(oldValue)){
+                        initModel = true;
+                        return;
+                    }
+
+                    console.log('model', value, oldValue);
+
                     ngModel.$setDirty();
                     ngModel.$validate();
                 }, true);
+
+                scope.$watch('E_STATE', function(value, oldValue){
+                    
+                    if(!initState || _.isEmpty(oldValue)){
+                        initState = true;
+                        return;
+                    }
+                    console.log('E_STATE', value, oldValue);
+                    ngModel.$setDirty();
+                });
 
                 //For error validations
                 var maxTagCount = undefined;
@@ -229,6 +250,8 @@ angular.module('umeSelect')
                 var loadQ = [];
                 scope.$watch('searchText', function () {
 
+                    if(_.isEmpty(scope.searchText)) return;
+                    
                     if(!scope.itsComplicated) {
                         //when its complicated, you are out of options
                         scope.choices = []; 

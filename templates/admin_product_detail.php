@@ -14,9 +14,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration'])
 <div ng-controller="AdminProductDetailCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
     
         <nc-alert nc-model="alert"></nc-alert>
-        
-		 <div ap-component="ap/form-product-add"></div>
-
+		<div ap-component="ap/form-product-add"></div>
 
 </div>
 
