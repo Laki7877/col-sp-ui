@@ -3,7 +3,7 @@
       ["id" => "information", "name" => 'Information', "class" => "active"],
       ["id" => "collections", "name" => 'Collections'],
 	  ["id" => "schedulers", "name" => 'Schedulers'],
-      ["id" => "conditions", "name" => 'Conditions'],
+      //["id" => "conditions", "name" => 'Conditions'],
     ];
     
      $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System'])
@@ -34,9 +34,11 @@
                 <div role="tabpanel" class="tab-pane margin-top-20" id="schedulers">
                     <? $this->insert('partials/create_cms_schedulers') ?>
                 </div>
+			   <!--
                <div role="tabpanel" class="tab-pane margin-top-20" id="conditions">
                     <? $this->insert('partials/create_cms_conditions') ?>
                 </div>
+				-->
             </div>
             <div class="add-product-form-action main-form-action full-width-row">
                 <div class="container-fluid">

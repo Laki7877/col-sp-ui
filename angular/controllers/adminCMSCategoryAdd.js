@@ -139,15 +139,28 @@
                 $scope.brands   = [];
                 $scope.tags     = [];
 
+                $scope.init = function () {
+                    $('#form-category :input[type=text]').keyup(function () {
+
+                        var val = $(this).val();
+                        console.log(val)
+                        var param   = { SearchText: val };
+
+                        CMSCategoryService.getAllCategory(param)
+                        .then(function (data) {
+                            $scope.categorys = data;
+                        });
+                    });
+                };
 
                 // load category
-                CMSCategoryService.getAllCategory()
+                CMSCategoryService.getAllCategory({})
                 .then(function (data) {
                     console.log(data)
                     $scope.categorys = data;
                 });
 
-                // load category
+                // load tag
                 CMSCategoryService.getAllTag()
                 .then(function (data) {
                     console.log(data)

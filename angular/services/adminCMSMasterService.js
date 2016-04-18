@@ -53,16 +53,16 @@ module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
         //    return common.makeRequest(req);
         //};
 
-        //service.visible = function (obj) {
-        //    return common.makeRequest({
-        //        method: 'PUT',
-        //        url: '/cms/master/Visibility',
-        //        data: obj,
-        //        headers: {
-        //            'Content-Type': 'application/json;charset=UTF-8'
-        //        }
-        //    });
-        //};
+        service.visible = function (obj) {
+            return common.makeRequest({
+                method: 'PUT',
+                url: '/CMS/CMSMaster/Visibility',
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            });
+        };
 
         //service.deleteBulk = function (arr) {
         //    return common.makeRequest({

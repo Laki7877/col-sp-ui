@@ -100,7 +100,7 @@
   <div class="modal-header">
     <h3 class="modal-title">Add Category Item</h3>
   </div>
-  <div class="modal-body">
+  <div class="modal-body" ng-init="init()">
     
     <form class="form" name="form" novalidate="">
 
@@ -114,7 +114,7 @@
             <div class="form-section-content" style="padding: 10px; min-height: 400px;">
 
               <!-- Category -->
-              <div class="form-group">
+              <div class="form-group" id="form-category">
                   <label>Category</label>
                   <ui-select ng-model="category.selected" ng-disabled="disabled" style="min-width: 300px;">
                     <ui-select-match placeholder="Select a category in the list">{{$select.selected.NameEn}}</ui-select-match>
@@ -123,7 +123,7 @@
                     </ui-select-choices>
                   </ui-select>
               </div>
-              
+
               <!-- Brand -->
               <div class="form-group">
                   <label>Brand</label>

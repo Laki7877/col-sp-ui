@@ -80,14 +80,14 @@
 
           <div class="form-section">
             <div class="form-section-header">
-              <h2>Search Product</h2>
+              <h2>Search CMS Category</h2>
             </div>
             <div class="form-section-content" style="padding: 10px; min-height: 400px;">
 
               <div class="form-group">
                 <label>Search</label>
                 <div class="input-group search-box" style="min-width: 300px;">
-                  <input class="form-control input-search-icon" ng-model="searchText" placeholder="Search for CMS Master" />
+                  <input class="form-control input-search-icon" ng-model="searchText" placeholder="Search for CMS Category" />
                   <span class="input-group-btn">
                     <button class="btn btn-default btn-action" ng-click="search(searchText)">Search</button>
                   </span>

@@ -63,10 +63,11 @@ module.exports = ['$q', 'common', function ($q, common) {
             });
         };
 
-        service.getAllCategory = function () {
+        service.getAllCategory = function (parameters) {
             return common.makeRequest({
                 method: 'GET',
-                url: '/CMS/GetAllCategory'
+                url: '/CMS/GetAllCategory',
+                params: parameters
             });
         };
 

@@ -12,7 +12,7 @@
        </nc-page-title>
 	    <div class="row search-section-wrapper">
   			<nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="CMSCategoryId"></nc-bulk>
-      		<nc-search nc-model="params.searchText" nc-search-event="onSearch" nc-search-placeholder="'Search for Product Name'"></nc-search>
+      		<nc-search nc-model="params.searchText" nc-search-event="onSearch" nc-search-placeholder="'Search for Category Name'"></nc-search>
 		  	  <!--<nc-advance-search-button nc-model="searchAdvance"></nc-advance-search-button>-->
 		</div>
 		
