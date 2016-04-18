@@ -9,15 +9,10 @@
                 <div class="form-section-content">
                     <div nc-template="common/input/form-group-with-label" nc-label="Related Products" nc-template-form="form.RelatedProducts"
                     nc-template-options-path="addProductForm/RelatedProducts">
-                        <ui-select ng-model="formData.RelatedProducts" name="RelatedProducts" nc-tag-validator nc-max-tag-count="10" multiple>
-                            <ui-select-match placeholder="Input Product Name">
-                                <span>{{ $item.ProductNameEn }}</span>
-                            </ui-select-match>
-                            <ui-select-choices repeat="item in (dataset.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' ) track by item.ProductId"
-                            refresh="refresher.RelatedProducts($select.search)" refresh-delay="1">
-                                {{ item.ProductNameEn }}
-                            </ui-select-choices>
-                        </ui-select>
+                        <you-me display-by="ProductNameEn" placeholder="Search by Product" in-relationship="true"
+                        ng-model="formData.RelatedProducts" refresh="refresher.RelatedProducts" strict-mode="true"
+                        choices="dataset.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' "></you-me>
+
                     </div>
 
                 </div>
@@ -156,7 +151,7 @@
                                         <button class="btn btn-white">Restore</button>
                                     </td>
                                 </tr>
-                                
+
                             </tbody>
                         </table>
                     </div>

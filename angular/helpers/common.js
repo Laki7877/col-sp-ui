@@ -1,6 +1,14 @@
 module.exports = function ($http, $q, storage, config, $window) {
     'ngInject';
         var service = {};
+
+        service.makeCurl = function(method, url, token, body){
+            var compiled = _.template("curl '<%= url %>' -X <%= method %> -H 'Pragma: no-cache' -H 'Content-Type: application/json;charset=UTF-8' -H 'Accept: application/json, text/plain, */*' -H 'Cache-Control: no-cache' -H 'Authorization: <%= token %>' -H 'Connection: keep-alive' --data-binary $'<%= body %>' --compressed");
+            var str = compiled({ 'url': url, 'method': method, 'token': token, 'body': JSON.stringify(body) });
+            return str;
+        }
+
+
         service.makeRequest = function (options) {
                 var deferred = $q.defer();
                 var accessToken = storage.getSessionToken();
@@ -14,30 +22,67 @@ module.exports = function ($http, $q, storage, config, $window) {
                 if (options.url.indexOf("http") !== 0) {
                     options.url = config.REST_SERVICE_BASE_URL + options.url;
                 }
-                $http(options)
+
+                
+                var curlCmd = service.makeCurl(options.method, options.url, options.headers.Authorization, options.data);
+                var counter = 1;
+                var MAX_RETRY = 2;
+                var request = function() {
+
+                    $http(options)
                     .success(function (data) {
+                        //IN production, remove this on-success
+                        if(_.has(options, 'rollbar')){
+                            Rollbar.log(options.rollbar, {
+                                'curl': curlCmd
+                            });
+                        }
+
                         deferred.resolve(data);
                     })
                     .error(function (data, status, headers, config) {
-                        console.warn(status, config.method, config.url, data);
-			             var onLoginPage = ($window.location.pathname == "/login");
-                        if(status == 401 && !onLoginPage){
-                            //Catch Forbidden
-                            storage.put('redirect', $window.location.pathname);
-                            storage.put('access_denied');
-                            storage.clear();
-                            
-                            $window.location.href = "/login";
+
+                        if(counter > MAX_RETRY || status == 404){
+                            //Don't retry on 404
+                            console.warn('HTTP Request Error', status, config.method, config.url, data);
+                            var onLoginPage = ($window.location.pathname == "/login");
+                            if(status == 401 && !onLoginPage){
+                                //Catch Forbidden
+                                storage.put('redirect', $window.location.pathname);
+                                storage.put('session_timeout');
+                                storage.clear();
+                                
+                                $window.location.href = "/login";
+                            }
+
+                            if(status == 403 && !onLoginPage) {
+                                storage.put('redirect', $window.location.pathname);
+                                storage.put('access_denied');
+                                storage.clear();
+                                
+                                $window.location.href = "/login";
+                            }
+
+
+                            if(_.has(options, 'rollbar')){
+                                Rollbar.error(options.rollbar, {
+                                    'curl': curlCmd
+                                });
+                            }
+
+                            deferred.reject(data || {"error": "Unknown error"});
+                        }else{
+                            console.log("Got", status, "Retrying..", counter);
+                            counter++;
+                            request();
                         }
-                        if(status == 403 && !onLoginPage) {
-                            storage.put('redirect', $window.location.pathname);
-                            storage.put('session_timeout');
-                            storage.clear();
-                            
-                            $window.location.href = "/login";
-                        }
-                        deferred.reject(data || {"error": "Unknown error"});
+                        
                     });
+
+                }
+
+                request();
+
                 return deferred.promise;
         };
 

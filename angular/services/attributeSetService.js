@@ -41,6 +41,37 @@ module.exports = function(common, config) {
 		});
 		return _.omit(processed, ['Category']);
 	};
+
+	/*
+	* Deserialize for A-PEAP compliance
+	*/
+	service.complyAPEAP = function(direct){
+		var indirect = angular.copy(direct);
+		indirect.AttributeSetMaps = direct.Attributes.map(function(AttributeObject){
+			AttributeObject.AttributeValueMaps = AttributeObject.AttributeValues.map(function(AttributeValue){
+				return {
+					AttributeValueId: AttributeValue.AttributeValueId,
+					AttributeValue: AttributeValue,
+					AttributeId: AttributeObject.AttributeId
+				}
+			});
+			return {
+				Attribute: AttributeObject,
+				AttributeId: AttributeObject.AttributeId,
+				AttributeSetId: indirect.AttributeSetId
+			}
+		});
+		indirect.AttributeSetTagMaps = direct.Tags.map(function(TagObject){
+			return {
+				Tag: TagObject
+			}
+		});
+
+		console.log("APEAP Deserializaation for Attribute Set", indirect);
+		return indirect;
+
+	}
+
 	service.serialize = function(data) {
 		var processed = angular.copy(data);
 		processed.Tags = _.map(processed.Tags, function(e) {

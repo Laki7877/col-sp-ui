@@ -15,8 +15,13 @@ module.exports = function(common, $base64, storage, $q, $rootScope) {
     service.getRedirPath = function(profile){
         if(profile.User.IsAdmin === true){
             return '/admin'
+        } else {
+        	if(profile.Shop) {
+        		return profile.Shop.Status == 'AT' ? '/dashboard' : '/onboarding';
+        	} else {
+        		return '/products';
+        	}
         }
-        return '/products'
     };
 
 	service.login = function(user, pass, admin){
@@ -49,7 +54,7 @@ module.exports = function(common, $base64, storage, $q, $rootScope) {
 		storage.storeSessionToken(token, true);
 		common.makeRequest({
 			method: 'GET',
-			url: '/Users/Login'
+			url: '/Users/Profile'
 		}).then(function(r){
 			storage.storeCurrentUserProfile(r, true);
 			deferred.resolve(r);
@@ -86,7 +91,19 @@ module.exports = function(common, $base64, storage, $q, $rootScope) {
 	};
     
     service.logout = function(){
-		storage.clear();
+		var deferred = $q.defer();
+		common.makeRequest({
+			method: 'GET',
+			url: '/Users/Logout'
+		}).then(function(r){
+			storage.clear();
+            deferred.resolve(r);
+		}, function() {
+			storage.clear();
+			deferred.reject(r);
+		});
+
+		return deferred.promise;
 	};
 
 	return service;

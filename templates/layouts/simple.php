@@ -11,7 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="<?= $this->asset('/assets/favicon.ico') ?>">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!--<link rel="stylesheet" href="<?=$this->asset('/assets/libs/angular-material/angular-material.css')?>" />-->
+    <link rel="stylesheet" type="text/css" href="/assets/libs/select2/css/select2.min.css">
+    <link rel="stylesheet" href="/assets/libs/select2/css/selectize.css">
+    <link rel="stylesheet" href="/assets/libs/selectize/dist/css/selectize.default.css"/>
     <link rel="stylesheet" href="<?=$this->asset('/assets/css/screen.css')?>" />
     <link rel="stylesheet" href="<?=$this->asset('/assets/libs/angular-bootstrap-datetimepicker/datetimepicker.css')?>" />
     <script src="<?= $this->asset('/assets/js/jquery.min.js') ?>"></script>
@@ -27,33 +29,30 @@
     <script src="/assets/libs/ckfinder/ckfinder.js"></script>
 
     <script src="/assets/libs/moment/moment.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/libs/select2/css/select2.min.css">
-    <link rel="stylesheet" href="/assets/libs/select2/css/selectize.css">
+
 
     <script src="/assets/libs/datepicker/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="/assets/libs/angular-drag-and-drop-list/angular-drag-and-drop-lists.js"></script>
-      
 </head>
-  <body id="body" class="ahpt" ng-cloak="" ng-controller="RootCtrl" ng-strict-di="">
+
+<body id="body" class="ahpt" ng-cloak ng-controller="RootCtrl" ng-strict-di>
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <div ng-if="!$root.DisablePage">
-      <div id="debug">
-        <?= $this->section('debug') ?>
-      </div>
-      <div id="wrapper">
-        <?= $this->section('content') ?>
-      </div>
+        <div id="debug">
+            <?= $this->section('debug') ?>
+        </div>
+        <div id="wrapper">
+            <?= $this->section('content') ?>
+        </div>
     </div>
     <link rel="stylesheet" type="text/css" href="/assets/libs/datepicker/css/bootstrap-datetimepicker.min.css">
 
-      <!--<script src="/assets/libs/select2/js/select2.js"></script>-->
-      <!--<link rel="stylesheet" type="text/css" href="/assets/libs/select2/css/select2.min.css">-->
+    <!--<script src="/assets/libs/select2/js/select2.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="/assets/libs/select2/css/select2.min.css">-->
 
-      <!--<script src="/assets/libs/angular-select2/select.min.js"></script>-->
-      <link rel="stylesheet" type="text/css" href="/assets/libs/angular-select2/select.css">
-
+    <!--<script src="/assets/libs/angular-select2/select.min.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="/assets/libs/angular-select2/select.css">
 </body>
 
 </html>

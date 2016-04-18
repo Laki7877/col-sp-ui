@@ -175,6 +175,7 @@
 		padding-top: 5px
 		border: none
 		position: relative
+		cursor: default
 
 		& div:first-child
 			padding-right: 0
@@ -224,6 +225,14 @@
 			&.column-text-ellipsis
 				max-width: 0
 
+		tr:hover
+			td
+				cursor: pointer
+				color: $color-theme
+			td.empty_data
+				cursor: default
+				color: $color-black
+
 		tr:last-child
 			td
 				border-bottom: 0
@@ -236,33 +245,31 @@
 
 	.table_recent_order
 		td:first-child
-			width: 100px
-
-		td:nth-child(2)
 			width: 120px
 
-		td:nth-child(3)
-			width: 	120px
+		td:nth-child(2)
+			width: 200px
 
-		td:last-child
-			padding-left: 30px
-			width: 56px
+		td:nth-child(3)
+			width: 200px
+
+		td:nth-child(4)
+			text-align: right
 
 		td.empty_data
 			text-align:	center
 			padding-left:	0
 
+
 	.table_lsa
 		td:first-child
-			width: 100px
-
-		td:nth-child(2)
 			width: 120px
 
+		td:nth-child(2)
+			width: 300px
 
-		td:last-child
-			padding-left: 30px
-			width: 80px
+		td:nth-child(3)
+			text-align: right
 
 		td.empty_data
 			text-align:	center
@@ -282,6 +289,13 @@
 			padding-left: 30px
 			width: 80px
 
+			&.empty_data
+				padding-left: 0
+
+		tr:hover
+			td
+				cursor: default
+				color: $color-black
 	.account_health
 		.group_container:last-child
 			padding: 10px 0px 0px 0px
@@ -291,3 +305,7 @@
 		margin-top: 15px
 		padding-top: 15px
 		border-top: solid 1px $color-grey
+
+	.loading_row
+		text-align: center
+		margin-top: 15px

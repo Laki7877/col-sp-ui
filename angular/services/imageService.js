@@ -53,6 +53,7 @@ module.exports = function($q, $http, common, storage, config, FileUploader, Uplo
         }
       }, ]
     }, opt);
+    
     var uploader = new FileUploader(options);
 
     return uploader;
@@ -69,7 +70,7 @@ module.exports = function($q, $http, common, storage, config, FileUploader, Uplo
     };
     uploader.onAfterAddingFile = function(item) {
       var obj = {
-        url: ''
+        Url: ''
       };
       if (images.length == uploader.queueLimit) {
         //Callback for queueLimit reached

@@ -23,32 +23,21 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 								<div class="form-section">
 									<div class="form-section-header"><h2>Admin Account Information</h2></div>
 									<div class="form-section-content">
-										  <div ng-template="common/input/label"
-										  	ng-template-options="{
-										  		'label': 'Admin Role ID'
-										  	}"
+										  <div nc-template="common/input/form-group-with-label"
+										  	nc-label="Admin Role ID"
 										  	ng-show="formData.GroupId"
 										  	>
-										  	{{formData.GroupId | leadingzero: 2}}
+										  	<div style="margin-top:5px">{{formData.GroupId}}</div>
 										  </div>
 							              <!-- Name -->
-							              <div ng-template="common/input/text2"
-							                ng-template-options="{
-							                  'label': 'Role Name',
-							                  'labelClass': 'required',
-							                  'error' : {
-							                        'messages': {
-							                          'required': 'This is a required field'
-							                        },
-							                        'show': $root.isInvalid(form.GroupNameEn),
-							                        'conditions' : form.GroupNameEn.$error
-							                   }
-							                }">
+							              <div nc-template="common/input/form-group-with-label"
+										  	nc-template-form="form.GroupNameEn"
+										  	nc-label="Admin Role Name"
+							                nc-template-options-path="addRoleForm/GroupNameEn">
 							                <input
 							                  class="form-control"
 							                  name="GroupNameEn"
 							                  ng-model="formData.GroupNameEn"
-							                  ng-class="{ 'has-error' : $root.isInvalid(form.GroupNameEn) }"
 							                  maxlength="100"
 							                  required />
 							              </div>

@@ -53,10 +53,10 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     });
 	$scope.paginationSize = [5,10,15];
 	$scope.imageDropzoneOptions = {
-		urlKey: 'url'
+		urlKey: 'Url'
 	};
 	$scope.imageGalleryOptions = {
-		urlKey: 'url',
+		urlKey: 'Url',
 		actions: [
 			{
 				//Left
@@ -126,7 +126,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     //Prevent unsaved event
     $scope.onUnsave = function() {
     	if($scope.dirty) {
-    		return confirm('Your change will not be saved.');
+    		return !confirm('Are you sure you want to leave this page?');
     	}
     	return false;
     };

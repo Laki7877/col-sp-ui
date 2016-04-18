@@ -21,7 +21,6 @@ module.exports = function($scope, $controller, AttributeService, ImageService, c
 				}
 			},
 			onAfterSave: function(scope) {
-				console.log(scope.formData);
 				scope.alreadyDefault = scope.formData.DefaultAttribute;
 			}
 		}
@@ -47,7 +46,8 @@ module.exports = function($scope, $controller, AttributeService, ImageService, c
  	};
 
 	$scope.$watch('formData.DataType', function() {
-		if($scope.formData.DataType == 'HB') {
+		if($scope.formData.DataType == 'HB' ||
+			$scope.formData.DataType == 'ST') {
 			$scope.formData.VariantStatus = false;
 		}
 		if($scope.formData.DataType == 'LT') {
@@ -56,4 +56,8 @@ module.exports = function($scope, $controller, AttributeService, ImageService, c
 			$scope.variantOptions = config.DROPDOWN.VARIANT_DROPDOWN;
 		}
 	}, true);
+
+	$scope.$watch('formData.VisibleTo', function() {
+		$scope.formData.Required = false;
+	});
 };

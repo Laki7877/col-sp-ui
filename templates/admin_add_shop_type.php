@@ -23,32 +23,18 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 								<div class="form-section">
 									<div class="form-section-header"><h2>Admin Account Information</h2></div>
 									<div class="form-section-content">
-										  <div ng-template="common/input/label"
-										  	ng-template-options="{
-										  		'label': 'Shop Type ID'
-										  	}"
-										  	ng-show="formData.ShopTypeId"
-										  	>
-										  	{{formData.ShopTypeId | leadingzero:2}}
+										  <div nc-template="common/input/form-group-with-label"
+										  	nc-label="Shop Type ID"
+										  	ng-show="formData.ShopTypeId">
+										  	{{formData.ShopTypeId}}
 										  </div>
 							              <!-- Name -->
-							              <div ng-template="common/input/text2"
-							                ng-template-options="{
-							                  'label': 'Type Name',
-							                  'labelClass': 'required',
-							                  'error' : {
-							                        'messages': {
-							                          'required': 'This is a required field'
-							                        },
-							                        'show': $root.isInvalid(form.ShopTypeNameEn),
-							                        'conditions' : form.ShopTypeNameEn.$error
-							                   }
-							                }">
-							                <input
-							                  class="form-control"
+							              <div nc-template="common/input/form-group-with-label"
+							                nc-template-options-path="addShopTypeForm/ShopTypeNameEn"
+							                nc-label="Type Name">
+							                <input class="form-control"
 							                  name="ShopTypeNameEn"
 							                  ng-model="formData.ShopTypeNameEn"
-							                  ng-class="{ 'has-error' : $root.isInvalid(form.ShopTypeNameEn) }"
 							                  maxlength="100"
 							                  required />
 							              </div>

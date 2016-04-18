@@ -62,14 +62,15 @@ var seller = {
 		'Newsletters': '/newsletters'
 	},
 	'Order|fa-inbox': {
-		'View': '/orders',
+		'View Orders': ['/orders', '/orders/shippinglist'],
 		'Return Request': '/returns'
 	},
 	'Product|fa-tag': {
-	  	'View': '/products',
-	  	'Add': ['/products/select', '/products/add'],
-	  	'Import': '/products/import',
-	  	'Export': '/products/export',
+	  	'View Products': '/products',
+	  	'Add Product': ['/products/select', '/products/add'],
+	  	'Import - Add Products': '/products/import',
+			'Import - Update Products': '/products/update',
+	  	'Export Products': '/products/export',
 	  	'Local Category|margin-top-30': '/categories',
 	  	'Product Reviews': '/products/reviews',
 	  	'Image Management': '/products/images',
@@ -77,7 +78,7 @@ var seller = {
 	},
 
 	'Inventory|fa-archive': {
-		'View': '/inventory'
+		'View Inventory': '/inventory'
 	},
 
 	'Promotion|fa-bookmark': {
@@ -101,6 +102,7 @@ var admin = {
 		'Approve Products': '/admin/approve',
 		'Pending Products': ['/admin/groups', '/admin/groups/add'],
 		'Master Products': ['/admin/masters', '/admin/masters/add'],
+		'Product Reviews': '/admin/products/reviews',
 		'Brands': ['/admin/brands', '/admin/brands/add'],
 		'Attributes': ['/admin/attributes', '/admin/attributes/add'],
 		'Attribute Sets': ['/admin/attributesets', '/admin/attributesets/add'],
@@ -144,13 +146,27 @@ var permission = {
 	'Manage Admin': ['/admin/accounts', '/admin/roles'],
 	'Manage Global Coupons': '/admin/coupons/global',
 	'Manage Seller Coupons': '/admin/coupons/seller',
-	'Manage Newsletter': '/admin/newsletters'
+	'Manage Newsletter': '/admin/newsletters',
+
+	'View Dashboard': '/dashboard',
+	'View Orders': '/orders',
+	'Manage Return Requests': '/returns',
+	'View Products': '/products',
+	'Manage Local Category': '/categories',
+	'Manage Product Reviews': '/reviews',
+	'Manage Product Images': '/products/images',
+	'Manage Pending Products': '/products/groups',
+	'View Intentory': '/inventory',
+	'View Coupons': '/coupons',
+	'Manage Shop Profile': '/shop/settings',
+	'Manage Shop Appearance': '/shop/appearance',
+	'Manage User Account & Roles': ['/accounts', '/roles']
 	
 };
 
 module.exports = {
   seller: generateRouteArray(seller),
   admin: generateRouteArray(admin),
-  reserve: ['add', 'select', 'import', 'export', 'reviews', 'images'],
+  reserve: ['add', 'select', 'import', 'update', 'export', 'reviews', 'images', 'shippinglist'],
   permission: permission
 }

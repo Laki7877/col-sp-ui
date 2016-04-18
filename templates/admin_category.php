@@ -7,9 +7,11 @@
 		    <h1 class="float-left page-header-title">
 					<i class="fa fa-tag page-header-icon" style="font-size:22px;"></i>
 		    	<span>Global Category</span>
-		    	<span ng-show="!saving && pristine" class="margin-left-10"><small>All changes were saved</small></span>
-				<span ng-show="saving && pristine" class="margin-left-10" nc-loading-small="Saving..." style="display: inline-block; margin-bottom: -20px; margin-top: -5px;"></span>
-		    </h1>
+					<small>
+		    		<span ng-show="!saving && pristine" class="margin-left-10">All changes were saved</small>
+						<span ng-show="saving && pristine" class="margin-left-10" nc-loading-small="Saving..." style="display: inline-block; margin-bottom: -20px; margin-top: -5px;"></span>
+					</span>
+				</h1>
 		    <span class="float-right page-header-action">
 					<button type="button" class="btn-white btn btn-width-xl margin-right-10" ng-click="expandAll()">
 						Expand All

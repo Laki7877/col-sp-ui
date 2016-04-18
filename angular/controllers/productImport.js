@@ -22,10 +22,11 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
 			keyboard: false,
 			backdrop: 'static',
 			templateUrl: 'product/modalImportProgress',
-			controller: function($scope, $uibModalInstance, $timeout, file, uploader) {
+			controller: function($scope, $uibModalInstance, $timeout, file, uploader, title) {
 				$scope.file = file;
 				$scope.file.upload();
 				$scope.server = 0;
+				$scope.title = title;
 				$scope.$watch('file.isUploaded', function(val) {
 					$scope.server = 1;
 					if(val) {
@@ -41,6 +42,9 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
 				},
 				uploader: function() {
 					return $scope.uploader;
+				},
+				title: function() {
+					return $scope.modalTitle;
 				}
 			}
 		});
@@ -57,13 +61,15 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
 	$scope.init = function(update) {
 		//Import new
 		$scope.method = 'POST';
-		$scope.title = 'Import - Add New Products'
-			$scope.update = false;
+		$scope.title = 'Import - Add Products'
+		$scope.modalTitle = 'Adding New Products...';
+		$scope.update = false;
 
 		//Update only
 		if(!_.isNil(update) && update) {
 			$scope.method = 'PUT';
 			$scope.title = 'Import - Update Products';
+			$scope.modalTitle = 'Updating Products...';
 			$scope.update = true;
 		}
 
@@ -78,16 +84,30 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
 			},0);
 		};
 
-		$scope.uploader.onProgressAll = function(progress) {
-		};
-
 		//Return list of error
 		$scope.uploader.onErrorItem = function(item, response, status, headers) {
 			$scope.importingFile = null;
 			response = _.map(response, function(e) {
-				return '<li>-&nbsp;&nbsp;&nbsp;' + e + '</li>';
+				return '<li>' + e + '</li>';
 			});
 			$scope.alert.error('<span class="font-weight-bold">Fail to upload CSV</span>' + '<ul>' + response.join('') + '</ul>');
+
+            if(status == 401) {
+                //Catch Forbidden
+                storage.put('redirect', $window.location.pathname);
+                storage.put('session_timeout');
+                storage.clear();
+
+                $window.location.href = "/login";
+            }
+            if(status == 403) {
+                storage.put('redirect', $window.location.pathname);
+                storage.put('access_denied');
+                storage.clear();
+
+                $window.location.href = "/login";
+            }
+
 		};
 
 		$scope.uploader.onAfterAddingFile = function(item) {

@@ -165,7 +165,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			return common.makeRequest({
 				method: mode,
 				url: path,
-				data: tobj
+				data: tobj,
+				rollbar: 'AP: Product publish or save'
 			})
 		}
 
@@ -363,6 +364,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			var invFd = angular.copy(pap);
 			//Load attribute set (TODO: we won't have to do this in future)
 			invFd.AttributeSet = FullAttributeSet;
+			console.log('invFd.AttributeSet  = FullAttributeSet', FullAttributeSet);
 
 			//Find which variant is default
 			try {
@@ -405,6 +407,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			} catch (ex) {
 				console.warn('Unable to set MasterAttribute', ex);
 			}
+			
 			invFd.MasterAttribute = MasterAttribute;
 
 			if (!invFd.LocalCategories) {
@@ -421,7 +424,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				}
 			}
 
-			if (invFd.MainLocalCategory) {
+			if (invFd.MainLocalCategory && Number(invFd.MainLocalCategory.CategoryId) > 0) {
 				LocalCategory.getOne(invFd.MainLocalCategory.CategoryId).then(function(locat) {
 					invFd.LocalCategories.unshift(locat);
 					if (invFd.LocalCategories.length > 3) {

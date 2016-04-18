@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, $uibModal, AdminShopService, AdminShoptypeService, GlobalCategoryService, ImageService, Category, config, common, Credential, $window) {
+module.exports = function($scope, $controller, $uibModal, AdminShopService, AdminShoptypeService, GlobalCategoryService, ShopService, ImageService, Category, config, common, Credential, $window) {
 	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -23,6 +23,22 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 						_.forEach(scope.formData.Commissions, function(item) {
 							item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
 						});
+				});
+
+				$scope.$watch('formData.Province', function(data, old) {
+					if(_.isNil(data) || data == old) {
+						return;
+					}
+					_.unset($scope.formData, ['City']);
+					$scope.getCities(data.ProvinceId);
+				});
+
+				$scope.$watch('formData.City', function(data, old) {
+					if(_.isNil(data) || data == old) {
+						return;
+					}
+					_.unset($scope.formData, ['District']);
+					$scope.getDistricts(data.CityId);
 				});
 			},
 			onAfterSave: function(scope) {			
@@ -51,6 +67,52 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 				$scope.alert.error(common.getError(err.data));
 			});
 	};	
+
+	$scope.getCities = function(id) {
+		ShopService.get('Cities', id)
+			.then(function(data) {
+				$scope.cities = data;
+			});
+	};
+
+	$scope.getDistricts = function(id) {
+		ShopService.get('Districts', id)
+			.then(function(data) {
+				$scope.districts = data;
+			});
+	};
+
+	$scope.fetchAllList = function() {
+		ShopService.get('TermPayments')
+			.then(function(data) {
+				$scope.termOfPayments = data;
+			});
+		ShopService.get('VendorTaxRates')
+			.then(function(data) {
+				$scope.vendorTaxRates = data;
+			});
+		ShopService.get('WithholdingTaxes')
+			.then(function(data) {
+				$scope.withholdingTaxes = data;
+			});
+		ShopService.get('BankNames')
+			.then(function(data) {
+				$scope.bankNames = data;
+			});
+		ShopService.get('Provinces')
+			.then(function(data) {
+				$scope.provinces = data;
+			});
+		ShopService.get('Overseas')
+			.then(function(data) {
+				$scope.overseas = data;
+			});
+		ShopService.get('Countries')
+			.then(function(data) {
+				$scope.countries = data;
+			});
+	};
+	$scope.fetchAllList();
 
 	$scope.loginAs = function(user){
 		$scope.alert.close();

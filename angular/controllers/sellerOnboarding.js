@@ -1,5 +1,5 @@
 
-module.exports = function($scope, $rootScope, Onboarding, $log, $window){
+module.exports = function($scope, $rootScope, Onboarding, $log, storage, $window){
 	'ngInject';
 
 	$scope.$on('change-password', function() {
@@ -13,6 +13,7 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 		Onboarding.getListCompletedTask()
 			.then(function(data) {
 				$scope.onLoadingFlag = false;
+				// Comment below is for Decorative section 
 		    	// $scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct && data.ProductApprove, data.DecorateStore];
 		    	$scope.Completed = [data.ChangePassword, data.SetUpShop, data.AddProduct && data.ProductApprove];
 
@@ -67,7 +68,9 @@ module.exports = function($scope, $rootScope, Onboarding, $log, $window){
 		if($scope.checkBeforeLaunch) {
 			Onboarding.launchShop()
 				.then(function(){
-					$window.location.reload();
+					$rootScope.Profile.Shop.Status = 'AT';
+					$scope.ShopInActiveStatus = ($rootScope.Profile.Shop.Status == 'NA');
+					storage.storeCurrentUserProfile($rootScope.Profile);
 				});
 		}
 		else {

@@ -11,27 +11,17 @@
             <div class="width-field-normal">
                 <div class="ah-select2-dropdown">
 
-                    <select ng-if="controlFlags.variation == 'enable'" class="form-control" disabled>
+                   <select ng-show="controlFlags.variation == 'enable'" class="form-control" disabled>
                         <option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option>
-                    </select>
+                    </select> 
 
-                    <!-- dont show if nothing is dataset. to choose from -->
-                    <ui-select theme="selectize" loading="refresher.AttributeSetsLoading"
-                    ng-if="controlFlags.variation != 'enable'" ng-model="formData.AttributeSet" ng-show="dataset.AttributeSets.length > 0">
-                        <ui-select-match placeholder="Search Attribute Set">
-                            <span ng-bind="$select.selected.AttributeSetNameEn"></span>
-                            <span ng-show="!$select.selected.AttributeSetNameEn">- Select Attribute Set -</span>
-                        </ui-select-match>
-                        <ui-select-choices group-by="'_group'" refresh="refresher.AttributeSets($select.search)" refresh-delay="1000"
-                        repeat="item in ($select.search != '' ? dataset.CombinedAttributeSets : dataset.AttributeSets) | filter : $select.search track by item.AttributeSetId">
-                            <span ng-bind="item.AttributeSetNameEn"></span>
-                        </ui-select-choices>
-                    </ui-select>
-
-                    <!-- if nothing is availalbe to pick -->
-                    <select class="form-control" ng-if="dataset.AttributeSets.length == 0" disabled>
-                        <option disabled>This category has no attribute sets</option>
-                    </select>
+                    <you-me display-by="AttributeSetNameEn" placeholder="Search Attribute Set"  
+                        ng-show="controlFlags.variation != 'enable'" 
+                        auto-clear-search="true" group-by="_group"
+                        ng-model="formData.AttributeSet" 
+                        refresh="refresher.AttributeSets" 
+                        initial-choices="dataset.AttributeSets"
+                        choices="dataset.CombinedAttributeSets"></you-me>
 
                 </div>
 
@@ -46,7 +36,7 @@
         <div class="form-group" ng-repeat="amap in formData.AttributeSet.AttributeSetMaps">
             <div class="width-label">
                 <label class="control-label" ng-class="{'required': amap.Attribute.Required}">
-                    {{ amap.Attribute.AttributeNameEn }}
+                    {{ amap.Attribute.DisplayNameEn }}
                 </label>
             </div>
             <div ng-class="{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}">

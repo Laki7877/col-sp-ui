@@ -24,11 +24,12 @@
 
 	.form-login {
 		background-color: $color-white;
-	    border: solid $color-grey 1px;
-	    width: 300px;
-	    border-radius: 2px;
-	    margin: auto;
-	    padding: 40px 30px 20px 30px;
+    border: solid $color-grey 1px;
+    width: 300px;
+    border-radius: 2px;
+    margin: auto;
+    padding: 40px 30px 20px 30px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 	}
 
 	.btn-100 {

@@ -4,6 +4,22 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
 	$rootScope._ = _;
   $rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
+  
+  $rootScope.ShopGroupPolicy = function(range){
+    var mySG = _.get($rootScope.Profile, 'Shop.ShopGroup');
+    if(mySG == range) return true;
+    if(mySG in range) return true;
+  }
+
+   //Prevent image dragdrop on other elements   
+    $window.addEventListener("dragover", function(e) {    
+      e = e || event;   
+      e.preventDefault();   
+    }, false);    
+    $window.addEventListener("drop", function(e) {    
+      e = e || event;   
+      e.preventDefault();   
+    }, false);
 
   //Handle route menu item active-ness
   var isActive = function(url, alt) {
@@ -32,17 +48,26 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
 
   //In case local storage expire before cookie
   if(!_.isNil(storage.getSessionToken())) {
-    $rootScope.DisablePage = true;
-    if(_.isNil($rootScope.Profile)) {
-      Credential.checkToken()
-        .then(function() {
-          $rootScope.DisablePage = false;
-        });
+    if(!_.isNil($rootScope.Profile)) {
+      // Credential.checkToken()
+      //   .then(function() {
+      //     $rootScope.DisablePage = false;
+      //   }, function() {
+      //     console.log('check token failed');
+      //     storage.put('session_timeout');
+      //     storage.clear();
+      //     $window.location.reload();
+      //   });
     } else {
+      $rootScope.DisablePage = true;
       Credential.loginWithToken(storage.getSessionToken(), true)
         .then(function(profile) {
           $rootScope.Profile = profile;
           $rootScope.DisablePage = false;
+        }, function() {
+          storage.put('session_timeout');
+          storage.clear();
+          $window.location.reload();
         });
     }
   }
@@ -66,7 +91,9 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   //Handle permission
   $rootScope.permit = function(name) {
     return true;
+    //return true;
     return _.findIndex($rootScope.Profile.Permission, function(item) {
+      console.log(item);
       if(item.Permission === name) {
         return true;
       }
@@ -78,8 +105,9 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
 
   //Check url access permission
   $rootScope.permitUrl = function(url) {
-    var result = true;
     return true;
+    var result = true;
+    //return true;
     _.forEach(route.permission, function(v, k) {
       if(_.isArray(v)) {
         for (var i = 0; i < v.length; i++) {
@@ -95,8 +123,9 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   };
 
   $rootScope.permitMenuItem = function(menuItem) {
-    var result = false;
     return true;
+    var result = false;
+    //return true;
     _.forEach(menuItem.submenu, function(u) {
       result = result || $rootScope.permitUrl(u.url);
     });
@@ -104,9 +133,10 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   }
 
   //Check url acccess permission for this page
-  if(!$rootScope.permitUrl()) {
+  if(!$rootScope.permitUrl($window.location.pathname) && $window.location.pathname.indexOf("/login") == -1) {
+    console.log($window.location.pathname);
     //$rootScope.DisablePage = true;
-    console.log($rootScope.Profile.Permission);
+    //util.page404();
   }
 
   //Get Shop activity
@@ -140,11 +170,12 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
         alert("Fetal error while logging out.");
       });
     }
-
-    //Normal logout
-    Credential.logout();
-    storage.clear();
-    $window.location.href = isAdmin ? "/admin/login" : "/login";
+    else {  
+      //Normal logout
+        Credential.logout().finally(function() {
+          $window.location.href = isAdmin ? "/admin/login" : "/login";
+        });   
+    }
   };
 
   //Handle change password

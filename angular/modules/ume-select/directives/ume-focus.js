@@ -3,7 +3,8 @@ angular.module('umeSelect')
   return {
     link: function(scope, elem, attr) {
       scope.$watch('trigger', function(value) {
-        scope.$on(attr.umeFocus, function(e) {
+        scope.$on(attr.umeFocus, function(e,data) {
+            // console.log(attr.umeId, 'focus received');
             elem[0].focus();
         });
       });
@@ -14,7 +15,8 @@ angular.module('umeSelect')
   return {
     link: function(scope, elem, attr) {
       scope.$watch('trigger', function(value) {
-        scope.$on(attr.umeBlur, function(e) {
+        scope.$on(attr.umeBlur, function(e,data) {
+            // console.log(attr.umeId, 'focus lost');
             elem[0].blur();
         });
       });

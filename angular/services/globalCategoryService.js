@@ -12,7 +12,8 @@ module.exports = function(common, $q, util) {
 			Visibility: true,
 			AttributeSets: [],
 			CategoryBannerTh: [],
-			CategoryBannerEn: []
+			CategoryBannerEn: [],
+			TitleShowcase: false
 		}, extend);
 	};
 	service.deserialize = function(data) {

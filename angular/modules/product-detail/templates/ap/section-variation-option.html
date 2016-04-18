@@ -1,4 +1,5 @@
 <div class="form-section">
+
     <div class="form-section-header">
     <h2>Variation Option</h2></div>
     <!-- ng-if too long -->
@@ -7,7 +8,7 @@
         ng-show="(dataset.attributeOptions[0].options.length > 0) || (jth == 0)">
             <div class="width-label">
                 <select class="form-control"
-                    ng-disabled="formData.ProductId && dataset.attributeOptions[jth].Attribute"
+                    ng-disabled="variationFactorLocked() && dataset.attributeOptions[jth].Attribute"
                     ng-options="i as i.Attribute.AttributeNameEn
                     for i in formData.AttributeSet.AttributeSetMaps |
                     exclude: dataset.attributeOptions[1 - jth].Attribute : 'AttributeId' |
@@ -27,39 +28,40 @@
                 'conditions' :  addProductForm['attributeOptions' + jth].$error
                 }
                 }">
+
                 <ui-select
                 ng-if="isListInput(dataset.attributeOptions[jth].Attribute.DataType)"
                 multiple ng-model="dataset.attributeOptions[jth].options">
-                <ui-select-match ui-lock-choice="$item._locked" placeholder="Select variant">
-                {{ $item.AttributeValue.AttributeValueEn }}
-                </ui-select-match>
-                <ui-select-choices repeat="i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataset.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search">
-                {{ i.AttributeValue.AttributeValueEn }}
-                </ui-select-choices>
+                    <ui-select-match ui-lock-choice="$item._locked" placeholder="Select variant">
+                    {{ $item.AttributeValue.AttributeValueEn }}
+                    </ui-select-match>
+                    <ui-select-choices repeat="i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataset.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search">
+                    {{ i.AttributeValue.AttributeValueEn }}
+                    </ui-select-choices>
                 </ui-select>
-                <!--nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30"
-                nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$"  This breaks on-select -->
+
                 <ui-select ng-if="isFreeTextInput(dataset.attributeOptions[jth].Attribute.DataType)"
-                nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30"
-                nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$"
-                multiple tagging="tagTransform" tagging-label="" tagging-tokens=",|ENTER"
-                name="attributeOptions{{jth}}" ng-model="dataset.attributeOptions[jth].options">
-                <ui-select-match ui-lock-choice="$item._locked" placeholder="Input variant">
-                {{ $item.ValueEn }}
-                </ui-select-match>
-                <ui-select-choices repeat="i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search">
-                {{ i.ValueEn }}
-                </ui-select-choices>
+                    nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30"
+                    nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$"
+                    multiple tagging="tagTransform" tagging-label="" tagging-tokens=",|ENTER"
+                    name="attributeOptions{{jth}}" ng-model="dataset.attributeOptions[jth].options">
+                    <ui-select-match ui-lock-choice="$item._locked" placeholder="Input variant">
+                    {{ $item.ValueEn }}
+                    </ui-select-match>
+                    <ui-select-choices repeat="i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search">
+                    {{ i.ValueEn }}
+                    </ui-select-choices>
                 </ui-select>
+
                 <input ng-if="!dataset.attributeOptions[jth].Attribute.DataType" type="text" disabled class="form-control" />
             </div>
             <!--</div>-->
-            <a class="like-text form-text" ng-show="!formData.ProductId"
+            <a class="like-text form-text" ng-show="!variationFactorLocked()"
             ng-click="variationFactorIndices.pushSecond()"
             ng-if="dataset.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1">
                 <i class="fa fa-plus-circle color-theme"></i> Add another option
             </a>
-            <a ng-show="!formData.ProductId"
+            <a ng-show="!variationFactorLocked()"
             class="like-text form-text"
             ng-click="variationFactorIndices.popSecond()"
             ng-if="variationFactorIndices.length() == 2 && jth == 1">

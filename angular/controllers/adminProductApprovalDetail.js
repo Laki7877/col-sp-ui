@@ -8,7 +8,8 @@ module.exports = function ($scope, $controller) {
         options: {
             maxImageUploadQueueLimit: 25,
             adminMode : true,
-            approveMode: true
+            approveMode: true,
+            listingUrl: '/admin/approve'
         }
     });
 

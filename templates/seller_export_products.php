@@ -7,6 +7,7 @@
 		<?php $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
 		<?php $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
 		<?php $this->insert('components/modal-export-product-complete', ['id' => 'export-product-complete']) ?>
+       <nc-alert nc-model="alert"></nc-alert>
 
 		<div class="page-header with-border" ng-show="loading.length >= 2">
 
@@ -44,28 +45,25 @@
 										<div class="form-section-content">
 
 											<div class="row">
-												<div nc-template="common/input/form-group-with-label"
-												nc-template-options-path="productExport/MultiCheckbox"
-												nc-label="">
+												<div class="col-sm-12 export-select-all">
 													<label>
-														<input type="checkbox" ng-click="toggleSelectAll()" ng-model="ctrl.selectAll"/> Select All
+														<input type="checkbox" ng-click="toggleSelectAll()" ng-model="ctrl.selectAll"/> Select All 
 													</label>
 												</div>
-
-												<div ng-repeat="(group, items) in availableFields">
-													<div nc-template="common/input/form-group-with-label"
-													nc-template-options-path="productExport/MultiCheckbox"
-													nc-label="{{group}}">
-													<label ng-repeat="item in items">
-														<input type="checkbox" name="fieldfilter"
-														 ng-disabled="item.MapName == 'PID'"
-														 ng-model="fields[item.MapName]"> 	{{ item.HeaderName }}
-													</label>
-													</div>
+												<div class="col-sm-{{12/columnCount}}" ng-repeat="col in _.range(columnCount)">
+													<ul class="export-list" ng-repeat="(group, items) in availableFieldsColumn[col]">
+														<li class="group-label">
+															{{ group }}
+														</li>
+														<li ng-repeat="item in items">
+															<label>
+																<input type="checkbox" name="fieldfilter"
+																 ng-disabled="item.MapName == 'PID'"
+																 ng-model="fields[item.MapName]"> 	{{ item.HeaderName }}
+															</label>
+														</li>
+													</ul>
 												</div>
-
-
-
 											</div>
 
 										</div>
