@@ -143,11 +143,10 @@ Route::add('/admin/cms/master', 'AdminController::listCMSMaster');
 Route::add('/admin/cms/master/create', 'AdminController::addCMSMaster');
 Route::add('/admin/cms/master/:id', 'AdminController::editCMSMaster');
 
+Route::add('/admin/buy1get1','AdminController::listBuy1Get1');
+Route::add('/admin/buy1get1/create','AdminController::addBuy1Get1');
+Route::add('/admin/buy1get1/:id','AdminController::editBuy1Get1');
 
-Route::add('/buy1get1', 'Buy1Get1Controller::index');
-Route::add('/buy1get1/add', 'Buy1Get1Controller::add');
-Route::add('/buy1get1/import', 'Buy1Get1Controller::import');
-Route::add('/buy1get1/:id', 'Buy1Get1Controller::edit');
 
 //test route
 Route::add('/test/:name', 'TestController::any');

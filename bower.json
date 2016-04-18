@@ -23,6 +23,10 @@
     "eonasdan-bootstrap-datetimepicker": "~4.17.37",
     "select2": "~4.0.1",
     "Chart.js": "~1.0.2",
-    "selectize": "~0.12.1"
+    "selectize": "~0.12.1",
+    "angular-ui-sortable": "^0.14.0",
+    "jquery": "1.x",
+    "jQuery UI Sortable": "jquery-ui-sortable#*",
+    "angular": "^1.5.3"
   }
 }
