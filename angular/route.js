@@ -147,7 +147,7 @@ var permission = {
 	'Manage Product Reviews': '/reviews',
 	'Manage Product Images': '/products/images',
 	'Manage Pending Products': '/products/groups',
-	'View Intentory': '/inventory',
+	'View Inventory': '/inventory',
 	'View Coupons': '/coupons',
 	'Manage Shop Profile': '/shop/settings',
 	'Manage Shop Appearance': '/shop/appearance',

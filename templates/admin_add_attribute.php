@@ -304,7 +304,7 @@
                 </ui-select>
              </div>
               <div nc-template="common/input/form-group-with-label"
-                ng-label="Filterable">
+                nc-label="Filterable">
                 <ui-select ng-model="formData.Filterable" search-enabled="false" ng-disabled="formData.DataType == 'HB'">
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>

@@ -174,7 +174,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 				                    	nc-template-form="form.TermOfPayment"
 				                    	nc-label="Term of Payment"
 				                    	nc-template-options-path="addShopAccountForm/TermOfPayment">
-											<ui-select name="TermOfPayment" ng-model="formData.TermOfPayment" search-enabled="false" required>
+											<ui-select name="TermOfPayment" ng-model="formData.TermPayment" search-enabled="false" required>
 												<ui-select-match placeholder="- Select Term of Payment -">
 													<span ng-bind="$select.selected.Description"></span>
 												</ui-select-match>

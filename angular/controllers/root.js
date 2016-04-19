@@ -90,7 +90,6 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
 
   //Handle permission
   $rootScope.permit = function(name) {
-    return true;
     //return true;
     return _.findIndex($rootScope.Profile.Permission, function(item) {
       console.log(item);
@@ -105,7 +104,6 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
 
   //Check url access permission
   $rootScope.permitUrl = function(url) {
-    return true;
     var result = true;
     //return true;
     _.forEach(route.permission, function(v, k) {
@@ -123,14 +121,25 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   };
 
   $rootScope.permitMenuItem = function(menuItem) {
-    return true;
     var result = false;
     //return true;
     _.forEach(menuItem.submenu, function(u) {
       result = result || $rootScope.permitUrl(u.url);
     });
     return result;
-  }
+  };
+
+  $rootScope.getPermittedSubmenu = function(menu) {
+    var result = [];
+    console.log('hi');
+    _.forEach(menu, function(u) {
+      if($rootScope.permitUrl(u.url)) {
+        result.push(u);
+      }
+    });
+
+    return result;
+  };
 
   //Check url acccess permission for this page
   if(!$rootScope.permitUrl($window.location.pathname) && $window.location.pathname.indexOf("/login") == -1) {
@@ -233,7 +242,19 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   //new version of route handler
   $rootScope.menu = [];
   $rootScope.initMenu = function(id) {
-    $rootScope.menu = route[id];
+    var menu = route[id];
+    $rootScope.menu = _.compact(_.map(menu, function(menuItem) {
+      if($rootScope.permitMenuItem(menuItem)) {
+        menuItem.submenu = _.compact(_.map(menuItem.submenu, function(submenuItem) {
+          if($rootScope.permitUrl(submenuItem.url)) {
+            return submenuItem;
+          }
+          return null;
+        }));
+        return menuItem;
+      }
+      return null; 
+    }));
   };
   //Active class for sub menu
   $rootScope.activeSubmenuItem = function(item) {
