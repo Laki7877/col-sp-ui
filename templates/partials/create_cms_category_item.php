@@ -95,7 +95,7 @@
 </div>
 
 <!-- modal temaplate -->
-<script type="text/ng-template" id="templates/admin-cms-category-manage-add-item.html">
+<script type="text/ng-template" id="templates/promotion-buy1get1-add-item.html">
   
   <div class="modal-header">
     <h3 class="modal-title">Add Category Item</h3>

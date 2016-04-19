@@ -119,7 +119,7 @@ var admin = {
 		'Global Coupons': '/admin/coupons/global',
 		'Seller Coupons': '/admin/coupons/seller',
         'On Top Credit Card':'/admin/ontopcredit',
-        'Buy 1 Get 1':'/buy1get1'
+        'Buy 1 Get 1':'/admin/buy1get1'
 	},
     // Create By Col Dev (Natee)
 	'CMS|fa fa-contao': {

@@ -141,12 +141,13 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .factory('ShopProfileService', services.shopProfileService)
   .factory('ProductTempService', services.productTempService)
 
-    // Col Dev (Natee)
+  // Col Dev (Natee)
   .factory('CMSCategoryService', services.cmsCategoryService)
   .factory('CMSGroupService', services.cmsGroupService)
-.factory('CMSService', services.cmsService)
-.factory('CMSMasterService', services.adminCMSMasterService)
-//.factory('CMSCollectionService', services.cmsCollectionService)
+  .factory('CMSService', services.cmsService)
+  .factory('CMSMasterService', services.adminCMSMasterService)
+  .factory('Buy1Get1Service', services.Buy1Get1Service)
+  //.factory('CMSCollectionService', services.cmsCollectionService)
 
   // Directives
   .directive('ncTradableSelect', directives.ncTradableSelect)
@@ -159,10 +160,10 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .directive('ngPermission', directives.ngPermission)
   .directive('ngSlideToggle', directives.ngSlideToggle)
   .directive('ngTemplate', directives.ngTemplate)
-    .directive('ngMatch', directives.ngMatch)
-.directive('ngMinnumber', directives.ngMinnumber)
-.directive('ngMaxnumber', directives.ngMaxnumber)
-.directive('ngDateBefore', directives.ngDateBefore)
+  .directive('ngMatch', directives.ngMatch)
+  .directive('ngMinnumber', directives.ngMinnumber)
+  .directive('ngMaxnumber', directives.ngMaxnumber)
+  .directive('ngDateBefore', directives.ngDateBefore)
   // Filters
   .filter('capitalize', filters.capitalize)
   .filter('ordinal', filters.ordinal)
@@ -175,7 +176,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .filter('leadingzero', filters.leadingzero)
   .filter('variantValue', filters.variantValue)
   .filter('importGuidelineExample', filters.importGuidelineExample)
-    .filter('propsFilter', filters.propsFilter) // Col Dev (Natee)
+  .filter('propsFilter', filters.propsFilter) // Col Dev (Natee)
   // Controllers
   .controller('RootCtrl', controllers.root)
   .controller('IndexCtrl', controllers.index)
@@ -253,19 +254,24 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
 
     // Create By Col Dev (Natee)
-.controller('AdminCMSCategoryListCtrl', controllers.adminCMSCategoryList)
-.controller('AdminCMSCategoryAddCtrl', controllers.adminCMSCategoryAdd)
-.controller('AdminCMSCollectionListCtrl', controllers.adminCMSCollectionList)
-.controller('AdminCMSCollectionAddCtrl', controllers.adminCMSCollectionAdd)
+  .controller('AdminCMSCategoryListCtrl', controllers.adminCMSCategoryList)
+  .controller('AdminCMSCategoryAddCtrl', controllers.adminCMSCategoryAdd)
+  .controller('AdminCMSCollectionListCtrl', controllers.adminCMSCollectionList)
+  .controller('AdminCMSCollectionAddCtrl', controllers.adminCMSCollectionAdd)
 
-    .controller('AdminCMSGroupListCtrl', controllers.adminCMSGroupList)
-    .controller('AdminCMSGroupAddCtrl', controllers.adminCMSGroupAdd)
+  .controller('AdminCMSGroupListCtrl', controllers.adminCMSGroupList)
+  .controller('AdminCMSGroupAddCtrl', controllers.adminCMSGroupAdd)
 
-.controller('AdminCMSGroupController', controllers.adminCMSGroupController)
+  .controller('AdminCMSGroupController', controllers.adminCMSGroupController)
   //iOATH
   .controller('AdminCMSMasterListCtrl', controllers.adminCMSMasterList)
   //.controller('AdminCMSMasterAddSelectTypeCtrl', controllers.adminCMSMasterAddSelect)
   .controller('AdminCMSMasterAddCtrl', controllers.adminCMSMasterAdd)
+
+  //iOATH
+  .controller('AdminBuy1Get1AddCtrl',controllers.adminBuy1Get1Add)
+  .controller('AdminBuy1Get1ListCtrl',controllers.adminBuy1Get1List)
+
   .controller('TestCtrl', controllers.test)
 
 
