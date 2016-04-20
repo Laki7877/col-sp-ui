@@ -4272,8 +4272,8 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
   $rootScope.permit = function(name) {
     //return true;
     return _.findIndex($rootScope.Profile.Permission, function(item) {
-      console.log(item);
-      if(item.Permission === name) {
+      //console.log(item);
+      if(item.Permission == name) {
         return true;
       }
       else {
@@ -4294,6 +4294,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
           }
         }
       } else if(isActive(v, url) == 'active') {
+        console.log(v, k, url);
           result = $rootScope.permit(k);
       }
     });
@@ -4309,23 +4310,10 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
     return result;
   };
 
-  $rootScope.getPermittedSubmenu = function(menu) {
-    var result = [];
-    console.log('hi');
-    _.forEach(menu, function(u) {
-      if($rootScope.permitUrl(u.url)) {
-        result.push(u);
-      }
-    });
-
-    return result;
-  };
-
   //Check url acccess permission for this page
   if(!$rootScope.permitUrl($window.location.pathname) && $window.location.pathname.indexOf("/login") == -1) {
-    console.log($window.location.pathname);
-    //$rootScope.DisablePage = true;
-    //util.page404();
+    $rootScope.DisablePage = true;
+    util.page404();
   }
 
   //Get Shop activity
@@ -12814,10 +12802,11 @@ var permission = {
 	'Manage Seller Coupons': '/admin/coupons/seller',
 	'Manage Newsletter': '/admin/newsletters',
 
+	'View Product': '/products',
+	'Add Product': ['/products/select', '/products/add'],
 	'View Dashboard': '/dashboard',
 	'View Orders': '/orders',
 	'Manage Return Requests': '/returns',
-	'View Products': '/products',
 	'Manage Local Category': '/categories',
 	'Manage Product Reviews': '/reviews',
 	'Manage Product Images': '/products/images',
