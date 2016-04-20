@@ -24,10 +24,9 @@ module.exports = function($scope, $controller, ProductReviewService, config, $ui
 				$scope.save = function() {
 					$scope.alert.close();
 					//Save this data..
-					console.log($scope.formData);
 					ProductReviewService.update($scope.formData.ProductReviewId, $scope.formData)
 						.then(function() {
-							$uibModalInstance.close();
+							$uibModalInstance.close($scope.formData);
 						}, function(err) {
 							$scope.alert.error(common.getError(err));
 						});
@@ -36,13 +35,14 @@ module.exports = function($scope, $controller, ProductReviewService, config, $ui
 				for (var i = 0; i < 10; i++) {
 					$scope.ratings.push(i*0.5);
 				};
-				console.log($scope.ratings);
 			},
 			resolve: {
 				info: function() {
 					return item;
 				}
 			}
+		}).result.then(function(data) {
+			$scope.reload();
 		});
 	};
 };

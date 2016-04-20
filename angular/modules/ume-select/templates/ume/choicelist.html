@@ -10,7 +10,7 @@
 				<div ng-repeat-end ng-click="pickItem(item)" data-value="{{item}}" 
 				ng-class="{'ume-highlighted' : $index == highlightedIndex}"
 				data-selectable  class="option">
-					{{ itemValue(item) }} 
+					{{ itemValue(item) }}
 				</div>
 				<!-- no result -->
 				<div ng-if="(choices | filter : searchText).length == 0 && notFound && !loading" data-selectable class="option">

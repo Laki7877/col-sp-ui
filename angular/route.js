@@ -136,7 +136,7 @@ var permission = {
 	'Manage Shops': ['/admin/shops', '/admin/shoptypes'],
 	'Manage Admin': ['/admin/accounts', '/admin/roles'],
 	'Manage Global Coupons': '/admin/coupons/global',
-	'Manage Seller Coupons': '/admin/coupons/seller',
+	'View All Seller Coupons': '/admin/coupons/seller',
 	'Manage Newsletter': '/admin/newsletters',
 
 	'View Product': '/products',
@@ -152,7 +152,8 @@ var permission = {
 	'View Coupons': '/coupons',
 	'Manage Shop Profile': '/shop/settings',
 	'Manage Shop Appearance': '/shop/appearance',
-	'Manage User Account & Roles': ['/accounts', '/roles']
+	'Manage Roles': '/roles',
+	'View Sub Account': '/accounts'
 	
 };
 

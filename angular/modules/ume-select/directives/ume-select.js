@@ -32,7 +32,6 @@ angular.module('umeSelect')
                 return templateHTML;
             },
             link: function (scope, element, attrs, ngModel, transclude) {
-                
                 //text user types in searchbox
                 scope.searchText = "";
                 //index of currently highlighted choice

@@ -7,7 +7,7 @@ module.exports = function(common, SellerPermissionService) {
 		_.remove(processed.Permission, function(e) {
 			return !e.check;
 		});
-		processed.Permission = _.map(processed.Permission, function(e) {
+		processed.Permission = _.map(processed.Permissions, function(e) {
 				return _.pick(e, ['PermissionId']);
 			});
 		return processed;
@@ -17,7 +17,7 @@ module.exports = function(common, SellerPermissionService) {
 		var processed = _.merge({}, data);
 		SellerPermissionService.listAll()
 			.then(function(data) {
-				processed.Permission = _.map(data, function(e) {
+				processed.Permissions = _.map(data, function(e) {
 					if(_.isUndefined(_.find(processed.Permission, { PermissionId: e.PermissionId }))) {
 						e.check = false;
 					} else {
@@ -34,7 +34,7 @@ module.exports = function(common, SellerPermissionService) {
 		};
 		SellerPermissionService.listAll()
 			.then(function(data) {
-				processed.Permission = _.map(data, function(e) {
+				processed.Permissions = _.map(data, function(e) {
 					e.check = false;
 					return e;
 				});
