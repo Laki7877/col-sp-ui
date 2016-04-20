@@ -92,8 +92,8 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   $rootScope.permit = function(name) {
     //return true;
     return _.findIndex($rootScope.Profile.Permission, function(item) {
-      console.log(item);
-      if(item.Permission === name) {
+      //console.log(item);
+      if(item.Permission == name) {
         return true;
       }
       else {
@@ -114,6 +114,7 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
           }
         }
       } else if(isActive(v, url) == 'active') {
+        console.log(v, k, url);
           result = $rootScope.permit(k);
       }
     });
@@ -129,23 +130,10 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
     return result;
   };
 
-  $rootScope.getPermittedSubmenu = function(menu) {
-    var result = [];
-    console.log('hi');
-    _.forEach(menu, function(u) {
-      if($rootScope.permitUrl(u.url)) {
-        result.push(u);
-      }
-    });
-
-    return result;
-  };
-
   //Check url acccess permission for this page
   if(!$rootScope.permitUrl($window.location.pathname) && $window.location.pathname.indexOf("/login") == -1) {
-    console.log($window.location.pathname);
-    //$rootScope.DisablePage = true;
-    //util.page404();
+    $rootScope.DisablePage = true;
+    util.page404();
   }
 
   //Get Shop activity

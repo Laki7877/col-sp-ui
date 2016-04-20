@@ -139,10 +139,11 @@ var permission = {
 	'Manage Seller Coupons': '/admin/coupons/seller',
 	'Manage Newsletter': '/admin/newsletters',
 
+	'View Product': '/products',
+	'Add Product': ['/products/select', '/products/add'],
 	'View Dashboard': '/dashboard',
 	'View Orders': '/orders',
 	'Manage Return Requests': '/returns',
-	'View Products': '/products',
 	'Manage Local Category': '/categories',
 	'Manage Product Reviews': '/reviews',
 	'Manage Product Images': '/products/images',
