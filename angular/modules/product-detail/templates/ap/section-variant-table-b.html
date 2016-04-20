@@ -12,7 +12,7 @@
 				{{ pair.text }}
 			</td>
 			<td>
-				<ui-select ng-model="pair.MappedProduct" theme="selectize" ng-disabled="!pair.Visibility"
+				<!--<ui-select ng-model="pair.MappedProduct" theme="selectize" ng-disabled="!pair.Visibility"
 				name="pair_MappedProduct"
 				nc-tag-validator nc-tag-field>
 				
@@ -24,7 +24,14 @@
 						{{item.ProductNameEn}}
 					</ui-select-choices>
 
-				</ui-select>
+				</ui-select>-->
+				
+				<you-me ng-model="pair.MappedProduct" display-by="ProductNameEn"
+				 refresh="refresher.Products"
+				 strict-mode="true" choices="dataset.Products" ng-disabled="!pair.Visibility" name="pair_MappedProduct">
+					
+				</you-me>
+				
 			</td>
 			<td>
 				<a class="btn btn-white" ng-click='pair.Visibility = !pair.Visibility'>

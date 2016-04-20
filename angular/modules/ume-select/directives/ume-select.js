@@ -62,7 +62,7 @@ angular.module('umeSelect')
 
                     //Update ng model
                     
-                    ngModel.$setViewValue(value[0]);
+                    ngModel.$setViewValue(value);
 
                     if(!initModel || _.isEmpty(oldValue)){
                         initModel = true;

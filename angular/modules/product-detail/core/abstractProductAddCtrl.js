@@ -4,9 +4,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
   function($scope, $uibModal, $window, util, config, Product, ImageService, AttributeService,
     AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
     KnownException, NcAlert, $productAdd, options, AttributeSetService, JSONCache, skeemas, AdminShopService,
-    VariationFactorIndices, AttributeOptions) {
+    VariationFactorIndices, AttributeOptions, ShippingService) {
     'ngInject';
 
+   
 
     var MAX_FILESIZE = (options.maxImageUploadSize || 5000000);
     var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
@@ -825,7 +826,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       })
     };
 
-
+    
+    ShippingService.list().then(function(data){
+        $scope.dataset.ShippingList = data;
+    });
+    
     /**
      * Refresh Related Product Data
      * @param  {String} q
