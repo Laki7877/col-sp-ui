@@ -8,10 +8,8 @@
             </div>
             <div class="width-field-normal">
                 <div class="radio multiple-radio multiline">
-                    <label>
-                        <input type="radio" name="shipping_method" ng-value="1" ng-model="variantPtr.ShippingMethod" /> Dropship by 3PL</label>
-                    <label>
-                        <input type="radio" name="shipping_method" ng-value="2" ng-model="variantPtr.ShippingMethod" /> Central Fulfillment</label>
+                    <label ng-repeat="shi in dataset.ShippingList">
+                        <input type="radio" name="shipping_method" ng-value="{{shi.ShippingId}}" ng-model="variantPtr.ShippingMethod" /> {{ shi.ShippingMethodEn }} </label>
                 </div>
             </div>
         </div>

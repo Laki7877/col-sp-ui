@@ -103,6 +103,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .factory('Blocker', services.blocker)
   .factory('Brand', services.brand)
   .factory('BrandService', services.brandService) // newer version
+  .factory('ShippingService', services.shippingService) // newer version
   .factory('Category', services.category)
   .factory('Credential', services.credential)
   .factory('Dashboard', services.Dashboard)

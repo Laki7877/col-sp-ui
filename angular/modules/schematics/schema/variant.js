@@ -2,6 +2,12 @@ module.exports =  {
   "title": "Variant Schema V4",
   "type": "object",
   "properties": {
+    "IsHasExpiryDate":{
+      "enum": ["Y", "N"]
+    },
+    "IsVat":{
+       "enum": ["Y", "N"]
+    },
     "Length": {
       "type": "number"
     },
