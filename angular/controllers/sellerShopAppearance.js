@@ -44,7 +44,6 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 
 				// Readjust components if any
 				if($scope.hasComponent('Banner')) {
-					// Banner
 					var diff = $scope.formData.Banner.Images.length - $scope.getComponent('Banner').Count;
 					for (var i = 0; i < diff; i++) {
 						$scope.formData.Banner.Images.pop();

@@ -117,7 +117,7 @@ var admin = {
 	},
 	'Promotion|fa-bookmark': {
 		'Global Coupons': '/admin/coupons/global',
-		'Seller Coupons': '/admin/coupons/seller'
+		'All Seller Coupons': '/admin/coupons/seller'
 	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'
