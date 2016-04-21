@@ -12369,8 +12369,13 @@ textarea {
   width: 93%;
 }
 
+/* line 180, ../../../assets/_override.scss */
+.ui-select-choices {
+  max-height: 200px !important;
+}
+
 /*---- Override Angular Material Design ----*/
-/* line 183, ../../../assets/_override.scss */
+/* line 187, ../../../assets/_override.scss */
 md-autocomplete {
   background: #FFFFFF;
   border: 1px #BCC7D5 solid;
@@ -12379,44 +12384,44 @@ md-autocomplete {
   line-height: 34px;
   height: 34px;
 }
-/* line 190, ../../../assets/_override.scss */
+/* line 194, ../../../assets/_override.scss */
 md-autocomplete input:not(.md-input) {
   line-height: 34px;
   height: 34px;
 }
-/* line 194, ../../../assets/_override.scss */
+/* line 198, ../../../assets/_override.scss */
 md-autocomplete md-autocomplete-wrap {
   height: 36px;
 }
-/* line 197, ../../../assets/_override.scss */
+/* line 201, ../../../assets/_override.scss */
 md-autocomplete button {
   margin: 1px 0px 0px 0px;
 }
-/* line 199, ../../../assets/_override.scss */
+/* line 203, ../../../assets/_override.scss */
 md-autocomplete button md-icon {
   color: #BCC7D5;
 }
-/* line 201, ../../../assets/_override.scss */
+/* line 205, ../../../assets/_override.scss */
 md-autocomplete button md-icon path {
   fill: #BCC7D5;
 }
 
-/* line 207, ../../../assets/_override.scss */
+/* line 211, ../../../assets/_override.scss */
 .md-whiteframe-1dp, .md-whiteframe-z1 {
   box-shadow: none;
 }
 
-/* line 211, ../../../assets/_override.scss */
+/* line 215, ../../../assets/_override.scss */
 a.cke_dialog_tab {
   display: none !important;
 }
 
-/* line 218, ../../../assets/_override.scss */
+/* line 222, ../../../assets/_override.scss */
 .selectize-control.has-error selectize-input {
   border-color: #ec0000;
 }
 
-/* line 222, ../../../assets/_override.scss */
+/* line 226, ../../../assets/_override.scss */
 .selectize-dropdown,
 .selectize-input,
 .selectize-input input {
@@ -12427,7 +12432,7 @@ a.cke_dialog_tab {
   -webkit-font-smoothing: inherit;
 }
 
-/* line 233, ../../../assets/_override.scss */
+/* line 237, ../../../assets/_override.scss */
 .selectize-control.single .selectize-input {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   background-color: #FFFFFF;
@@ -12435,16 +12440,16 @@ a.cke_dialog_tab {
   border-color: #BCC7D5;
   min-height: 34px;
 }
-/* line 239, ../../../assets/_override.scss */
+/* line 243, ../../../assets/_override.scss */
 .selectize-control.single .selectize-input input::-webkit-input-placeholder {
   color: #7B7F8F;
 }
-/* line 243, ../../../assets/_override.scss */
+/* line 247, ../../../assets/_override.scss */
 .selectize-control.single .selectize-input:after {
   display: none;
 }
 
-/* line 248, ../../../assets/_override.scss */
+/* line 252, ../../../assets/_override.scss */
 .selectize-control .btn-primary {
   background-color: #4899DD;
   border-color: #4899DD;
@@ -12452,11 +12457,11 @@ a.cke_dialog_tab {
   margin-bottom: 2px;
 }
 
-/* line 255, ../../../assets/_override.scss */
+/* line 259, ../../../assets/_override.scss */
 .selectize-dropdown {
   margin-top: -7px;
 }
-/* line 257, ../../../assets/_override.scss */
+/* line 261, ../../../assets/_override.scss */
 .selectize-dropdown .single {
   color: #32343C;
   border-color: #BCC7D5;
