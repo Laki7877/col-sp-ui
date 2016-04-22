@@ -54,7 +54,6 @@ function generateRouteArray(obj) {
 
 	return menu;
 }
-
 var seller = {
 	'Home|fa-home': {
 		'Onboarding': '/onboarding',
@@ -100,7 +99,7 @@ var admin = {
 	'Products|fa-tag': {
 		'View All Products': '/admin/products',
 		'Approve Products': '/admin/approve',
-		'Pending Products': ['/admin/groups', '/admin/groups/add'],
+		'Pending Products': ['/admin/products/groups', '/admin/products/groups/add'],
 		'Master Products': ['/admin/masters', '/admin/masters/add'],
 		'Product Reviews': '/admin/products/reviews',
 		'Brands': ['/admin/brands', '/admin/brands/add'],

@@ -106,7 +106,7 @@ Route::add('/admin/shoptypes/add', 'AdminController::addShoptype');
 Route::add('/admin/shoptypes/:id', 'AdminController::editShoptype');
 Route::add('/admin/products', 'AdminController::allProducts');
 Route::add('/admin/products/reviews', 'AdminController::reviewProduct');
-Route::add('/admin/products/:id', 'AdminController::detail');
+
 Route::add('/admin/approve', 'AdminController::approve');
 Route::add('/admin/approve/:id', 'AdminController::approveDetail');
 Route::add('/admin/coupons/seller', 'AdminController::listSellerCoupon');
@@ -121,9 +121,10 @@ Route::add('/admin/newsletters', 'AdminController::listNewsletter');
 Route::add('/admin/masters', 'AdminController::listMaster');
 Route::add('/admin/masters/add', 'AdminController::addMaster');
 Route::add('/admin/masters/:id', 'AdminController::editMaster');
-Route::add('/admin/groups', 'AdminController::listPendingProduct');
-Route::add('/admin/groups/add', 'AdminController::addPendingProduct');
-Route::add('/admin/groups/:id', 'AdminController::editPendingProduct');
+Route::add('/admin/products/groups', 'AdminController::listPendingProduct');
+Route::add('/admin/products/groups/add', 'AdminController::addPendingProduct');
+Route::add('/admin/products/:id', 'AdminController::detail');
+// Route::add('/admin/products/groups/:id', 'AdminController::editPendingProduct');
 
 //test route
 Route::add('/test/:name', 'TestController::any');

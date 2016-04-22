@@ -194,7 +194,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('SellerOrderShippingListCtrl', controllers.sellerOrderShippingList)
   .controller('SellerOrderAddCtrl', controllers.sellerOrderAdd)
   .controller('SellerPendingProductCtrl', controllers.sellerPendingProduct)
-  .controller('SellerPendingProductsGroupCtrl', controllers.sellerPendingProductsGroup)
+  .controller('SellerPendingProductGroupAddCtrl', controllers.sellerPendingProductGroupAdd)
 
 
   .controller('AdminAttributeCtrl', controllers.adminAttribute)
@@ -219,6 +219,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('AdminSellerCouponAddCtrl', controllers.adminSellerCouponAdd)
   .controller('AdminNewsletterCtrl', controllers.adminNewsletter)
   .controller('AdminPendingProductCtrl', controllers.adminPendingProduct)
+  .controller('AdminPendingProductGroupAddCtrl', controllers.adminPendingProductGroupAdd)
   .controller('AdminProductApprovalDetailCtrl', controllers.adminProductApprovalDetail)
   .controller('AdminProductApprovalListCtrl', controllers.adminProductApprovalList)
   .controller('AdminProductListCtrl', controllers.adminProductList)

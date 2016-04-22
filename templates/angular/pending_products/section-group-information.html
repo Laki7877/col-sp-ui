@@ -2,6 +2,16 @@
     <div class="form-section-header">
     <h2>Group Information</h2></div>
     <div class="form-section-content">
+        <div ng-show="adminMode" nc-template="common/input/form-group-with-label" nc-template-form="form.Category"
+            nc-template-options-path="createGroupVariant/Required"
+            nc-label="Shop">
+               <you-me display-by="ShopNameEn" placeholder="Search Shop"  
+                        auto-clear-search="true"
+                        ng-model="formData.Shop" 
+                        refresh="refresher.Shops" 
+                        choices="dataset.Shops"></you-me>
+        </div>
+
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.Category"
             nc-template-options-path="createGroupVariant/Required"
             nc-label="Category">

@@ -3,7 +3,7 @@ module.exports = function($scope, $controller, ProductTempService, config) {
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
 		options: {
-			url: '/admin/groups',
+			url: '/admin/products/groups',
 			service: ProductTempService,
 			item: 'Pending Product',
 			order: 'UpdatedDt',

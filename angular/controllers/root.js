@@ -112,7 +112,7 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   //Check url access permission
   $rootScope.permitUrl = function(url) {
     var result = true;
-    //return true;
+    return true;
     _.forEach(route.permission, function(v, k) {
       if(_.isArray(v)) {
         for (var i = 0; i < v.length; i++) {
@@ -129,7 +129,7 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
 
   $rootScope.permitMenuItem = function(menuItem) {
     var result = false;
-    //return true;
+    return true;
     _.forEach(menuItem.submenu, function(u) {
       result = result || $rootScope.permitUrl(u.url);
     });
