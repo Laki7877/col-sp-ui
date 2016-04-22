@@ -20,7 +20,10 @@ module.exports = function($scope, $controller, BrandService, Product, AdminMaste
 			searchText: search
 		})
 		.then(function(data) {
-			$scope.products = data.data;
+			$scope.products = data.data.map(function(X){
+				X.CustomName = X.ProductNameEn + " (" + X.Pid + ")";
+				return X;
+			});
 		});
 	};
 	$scope.getChildProducts = function(search) {
@@ -29,7 +32,10 @@ module.exports = function($scope, $controller, BrandService, Product, AdminMaste
 			_limit: 8,
 		})
 		.then(function(data) {
-			$scope.childProducts = data.data;
+			$scope.childProducts = data.data.map(function(X){
+				X.CustomName = X.ProductNameEn + " (" + X.Pid + ")";
+				return X;
+			});
 		});
 	};
 

@@ -100,7 +100,7 @@ var admin = {
 	'Products|fa-tag': {
 		'View All Products': '/admin/products',
 		'Approve Products': '/admin/approve',
-		'Pending Products': ['/admin/groups', '/admin/groups/add'],
+		'Pending Products': ['/admin/products/groups', '/admin/products/groups/add'],
 		'Master Products': ['/admin/masters', '/admin/masters/add'],
 		'Product Reviews': '/admin/products/reviews',
 		'Brands': ['/admin/brands', '/admin/brands/add'],
@@ -127,7 +127,7 @@ var permission = {
 	//Admin
 	'View All Products': '/admin/products',
 	'Approve Products': '/admin/approve',
-	'Manage Pending Products': '/admin/groups',
+	'Manage Pending Products': '/admin/products/groups',
 	'Manage Master Products': '/admin/masters',
 	'Manage Brands': '/admin/brands',
 	'Manage Attribute & Attribute Sets': ['/admin/attributes', '/admin/attributesets'],

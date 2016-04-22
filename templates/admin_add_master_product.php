@@ -28,7 +28,7 @@
                   <ui-select-choices repeat="item in products" refresh="getProducts($select.search)" refresh-delay="1">{{ item.ProductNameEn }}</ui-select-choices>
                 </ui-select>
  -->                
-                <you-me display-by="ProductNameEn" placeholder="Search Master Product" 
+                <you-me display-by="CustomName" placeholder="Search Master Product" 
                         auto-clear-search="true"
                         ng-model="formData.MasterProduct" refresh="getProducts" choices="products"></you-me>
 
@@ -53,7 +53,7 @@
                 </ui-select>
 
  -->     
-             <you-me display-by="ProductNameEn" placeholder="Search Product" 
+             <you-me display-by="CustomName" placeholder="Search Product" 
                         name="ChildProducts"
                         ng-model="formData.ChildProducts" refresh="getChildProducts" in-relationship="true"
                         choices="childProducts | exclude: formData.ChildProducts : 'ProductId' | exclude: formData.MasterProduct : 'ProductId' "></you-me>

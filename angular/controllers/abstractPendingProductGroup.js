@@ -1,8 +1,9 @@
 module.exports = function($scope, $rootScope, $controller, NcAlert,
-		config, $uibModal, GlobalCategory, Category, AttributeSet, Product, ProductTempService,
-		VariationFactorIndices, AttributeSetService, AttributeOptions, $productAdd) {
+		config, $uibModal, GlobalCategory, Category, AttributeSet, Product, ProductTempService, options,
+		VariationFactorIndices, AttributeSetService, AttributeOptions, $productAdd, AdminShopService) {
 	'ngInject';
     
+    $scope.adminMode = (options.adminMode);
     $scope.alert = new NcAlert();
     $scope.create = function(){
         
@@ -52,7 +53,7 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 		},
 		Variants: [],
 		Shop: {
-			ShopId: $rootScope.Profile.Shop.ShopId
+			ShopId: options.adminMode ? null : $rootScope.Profile.Shop.ShopId
 		}
 	};
 
@@ -84,6 +85,19 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 			_direction: 'asc'
 		}).then(function(ds) {
 		  $scope.dataset.Products = ds.data;
+		  return ds.data;
+		});
+	};
+
+	$scope.refresher.Shops = function(q){
+		if(!$scope.adminMode) return;
+		return AdminShopService.list({
+			searchText: q,
+			_limit: 8,
+			_offset: 0,
+			_direction: 'asc'
+		}).then(function(ds) {
+		  $scope.dataset.Shops = ds.data;
 		  return ds.data;
 		});
 	};
