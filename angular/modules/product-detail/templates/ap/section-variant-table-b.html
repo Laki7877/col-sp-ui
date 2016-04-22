@@ -27,7 +27,7 @@
 				</ui-select>-->
 				
 				<you-me ng-model="pair.MappedProduct" display-by="ProductNameEn"
-				 refresh="refresher.Products"
+				 refresh="refresher.Products" initial-choices="dataset.Products" placeholder="Search from pending product list."
 				 strict-mode="true" choices="dataset.Products" ng-disabled="!pair.Visibility" name="pair_MappedProduct">
 					
 				</you-me>
