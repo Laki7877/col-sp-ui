@@ -82,11 +82,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 											<!-- Edit Product -->
 											<label><input ng-model="selectAll.EditProduct" ng-change="check(selectAll.EditProduct, 4, 9)" type="checkbox"/>Edit Product</label>
 												<!-- Edit Info -->
-												<label class="margin-left-30"><input ng-model="selectAll.EditInformation" ng-change="check(selectAll.EditInformation, 4, 6)" type="checkbox"/>Edit Information</label>
+												<label class="margin-left-30"><i class="fa fa-level-up fa-rotate-90 child-checkbox-enter" aria-hidden="true"></i><input ng-model="selectAll.EditInformation" ng-change="check(selectAll.EditInformation, 4, 6)" type="checkbox"/>Edit Information</label>
 													<!-- Edit info children -->
-													<label  ng-repeat="permission in formData.Permissions | slice:4:7" class="margin-left-60"><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
+													<label  ng-repeat="permission in formData.Permissions | slice:4:7" class="margin-left-60"><i class="fa fa-level-up fa-rotate-90 child-checkbox-enter" aria-hidden="true"></i><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
 												<!-- Edit product children -->
-												<label ng-repeat="permission in formData.Permissions | slice:7:10" class="margin-left-30"><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
+												<label ng-repeat="permission in formData.Permissions | slice:7:10" class="margin-left-30"><i class="fa fa-level-up fa-rotate-90 child-checkbox-enter" aria-hidden="true"></i><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
 
 											<label ng-repeat="permission in formData.Permissions | slice:10:14"><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
 										</div>
