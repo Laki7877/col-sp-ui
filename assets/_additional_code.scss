@@ -65,3 +65,16 @@ ng-transclude.has-error .form-control{
   font-size: 14px;
   text-align: center;
 }
+
+ul[dnd-list] .dndPlaceholder {
+    display:block;
+    padding-left: 15px;
+    padding-right: 15px;
+    line-height: 30px;
+    height:30px;
+    cursor: pointer;
+    background: white;
+}
+ul[dnd-list] .dndDraggingSource {
+    display: none !important;
+}

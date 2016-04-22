@@ -130,7 +130,7 @@ var permission = {
 	'Manage Pending Products': '/admin/groups',
 	'Manage Master Products': '/admin/masters',
 	'Manage Brands': '/admin/brands',
-	'Manage Attribute & Attribute Sets': ['/admin/attributes', '/admin/attributesets'],
+	//'Manage Attribute & Attribute Sets': ['/admin/attributes', '/admin/attributesets'],
 	'Manage Global Categories': '/admin/categories',
 	'Manage Seller Accounts': '/admin/sellers',
 	'Manage Shops': ['/admin/shops', '/admin/shoptypes'],

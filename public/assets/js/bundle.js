@@ -25,6 +25,7 @@ require('angular-clipboard')
 require('angular-cookies')
 require('angular-file-upload')
 require('angular-input-masks')
+require('angular-drag-and-drop-lists')
 // require('angular-material')
 require('angular-sanitize')
 require('angular-scroll')
@@ -36,6 +37,7 @@ require('ui-select/dist/select.js')
 // Nc package
 require('./modules/angular-print')
 require('./modules/angular-scroll')
+require('./modules/angular-draggable')
 require('./modules/nc')
 require('./modules/product-detail')
 require('./modules/schematics')
@@ -53,8 +55,8 @@ var helpers = bulk.helpers
 var directives = bulk.directives
 var filters = bulk.filters
 
-var app = angular.module('colspApp', ['ngPatternRestrict',
-  'nc', 'ui.bootstrap.datetimepicker',
+var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
+  'nc', 'ui.bootstrap.datetimepicker', 'ngDraggable',
   'duScroll', 'smoothScroll', 'ngSanitize', 'ngAnimate',
   'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select',
   'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload',
@@ -250,7 +252,7 @@ var _rollbarConfig = {
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\abstractPendingProductGroup.js":6,"./controllers\\adminAccount.js":7,"./controllers\\adminAccountAdd.js":8,"./controllers\\adminAttribute.js":9,"./controllers\\adminAttributeAdd.js":10,"./controllers\\adminAttributeSet.js":11,"./controllers\\adminAttributeSetAdd.js":12,"./controllers\\adminBrand.js":13,"./controllers\\adminBrandAdd.js":14,"./controllers\\adminCategory.js":15,"./controllers\\adminGlobalCoupon.js":16,"./controllers\\adminGlobalCouponAdd.js":17,"./controllers\\adminLogin.js":18,"./controllers\\adminMasterProduct.js":19,"./controllers\\adminMasterProductAdd.js":20,"./controllers\\adminNewsletter.js":21,"./controllers\\adminOnTopCreditAdd.js":22,"./controllers\\adminOnTopCreditList.js":23,"./controllers\\adminPendingProduct.js":24,"./controllers\\adminPendingProductAdd.js":25,"./controllers\\adminProductApprovalDetail.js":26,"./controllers\\adminProductApprovalList.js":27,"./controllers\\adminProductDetail.js":28,"./controllers\\adminProductList.js":29,"./controllers\\adminProductReview.js":30,"./controllers\\adminRole.js":31,"./controllers\\adminRoleAdd.js":32,"./controllers\\adminSellerAccount.js":33,"./controllers\\adminSellerCoupon.js":34,"./controllers\\adminSellerCouponAdd.js":35,"./controllers\\adminShop.js":36,"./controllers\\adminShopAdd.js":37,"./controllers\\adminShoptype.js":38,"./controllers\\adminShoptypeAdd.js":39,"./controllers\\index.js":40,"./controllers\\localCategory.js":41,"./controllers\\login.js":42,"./controllers\\productAddSelectCategory.js":43,"./controllers\\productExport.js":44,"./controllers\\productImageList.js":45,"./controllers\\productImageManagement.js":46,"./controllers\\productImport.js":47,"./controllers\\productList.js":48,"./controllers\\productListLocalCategory.js":49,"./controllers\\productReview.js":50,"./controllers\\root.js":51,"./controllers\\sellerAccount.js":52,"./controllers\\sellerAccountAdd.js":53,"./controllers\\sellerCoupon.js":54,"./controllers\\sellerCouponAdd.js":55,"./controllers\\sellerDashboard.js":56,"./controllers\\sellerInventoryList.js":57,"./controllers\\sellerNewsletter.js":58,"./controllers\\sellerOnboarding.js":59,"./controllers\\sellerOrder.js":60,"./controllers\\sellerOrderAdd.js":61,"./controllers\\sellerOrderShippingList.js":62,"./controllers\\sellerPendingProduct.js":63,"./controllers\\sellerPendingProductsGroup.js":64,"./controllers\\sellerProductDetail.js":65,"./controllers\\sellerReturnRequest.js":66,"./controllers\\sellerReturnRequestAdd.js":67,"./controllers\\sellerRole.js":68,"./controllers\\sellerRoleAdd.js":69,"./controllers\\sellerShopAppearance.js":70,"./controllers\\sellerShopSetting.js":71,"./controllers\\test.js":72,"./directives\\ncTradableSelect.js":73,"./directives\\ngCkeditor.js":74,"./directives\\ngDateBefore.js":75,"./directives\\ngDelegate.js":76,"./directives\\ngMatch.js":77,"./directives\\ngMaxnumber.js":78,"./directives\\ngMinnumber.js":79,"./directives\\ngPatternRestrict.js":80,"./directives\\ngPermission.js":81,"./directives\\ngSlideToggle.js":82,"./directives\\ngTemplate.js":83,"./directives\\popoverAny.js":84,"./filters\\capitalize.js":85,"./filters\\exclude.js":86,"./filters\\excludeCategory.js":87,"./filters\\html.js":88,"./filters\\importGuidelineExample.js":89,"./filters\\leadingzero.js":90,"./filters\\ordinal.js":91,"./filters\\slice.js":92,"./filters\\truncate.js":93,"./filters\\truth.js":94,"./filters\\variantValue.js":95,"./helpers\\base64.js":96,"./helpers\\common.js":97,"./helpers\\storage.js":98,"./helpers\\util.js":99,"./helpers\\variantPair.js":100,"./iefix.js":101,"./modules/angular-print":102,"./modules/angular-scroll":103,"./modules/nc":131,"./modules/product-detail":140,"./modules/schematics":142,"./modules/ume-select":153,"./route":155,"./services\\Dashboard.js":156,"./services\\OnTopCredit.js":157,"./services\\OnTopCreditService.js":158,"./services\\Onboarding.js":159,"./services\\adminAccountService.js":160,"./services\\adminMasterProductService.js":161,"./services\\adminPermissionService.js":162,"./services\\adminRoleService.js":163,"./services\\adminShopService.js":164,"./services\\adminShoptypeService.js":165,"./services\\attribute.js":166,"./services\\attributeService.js":167,"./services\\attributeSet.js":168,"./services\\attributeSetService.js":169,"./services\\blocker.js":170,"./services\\brand.js":171,"./services\\brandService.js":172,"./services\\category.js":173,"./services\\coupon.js":174,"./services\\credential.js":175,"./services\\exceptionHandler.js":176,"./services\\fileService.js":177,"./services\\globalCategory.js":178,"./services\\globalCategoryService.js":179,"./services\\globalCouponService.js":180,"./services\\image.js":181,"./services\\imageService.js":182,"./services\\inventoryService.js":183,"./services\\knownException.js":184,"./services\\localCategory.js":185,"./services\\localCategoryService.js":186,"./services\\newsletterService.js":187,"./services\\orderService.js":188,"./services\\product.js":189,"./services\\productReviewService.js":190,"./services\\productTempService.js":191,"./services\\returnRequestService.js":192,"./services\\sellerAccountService.js":193,"./services\\sellerCouponService.js":194,"./services\\sellerPermissionService.js":195,"./services\\sellerRoleService.js":196,"./services\\shippingService.js":197,"./services\\shop.js":198,"./services\\shopAppearanceService.js":199,"./services\\shopPermissionService.js":200,"./services\\shopProfileService.js":201,"./services\\shopService.js":202,"./template":223,"./template-options\\PromotionForm.js":203,"./template-options\\addAttributeForm.js":204,"./template-options\\addAttributeSetForm.js":205,"./template-options\\addBrandForm.js":206,"./template-options\\addCategoryForm.js":207,"./template-options\\addMasterProductForm.js":208,"./template-options\\addNewsletterForm.js":209,"./template-options\\addProductForm.js":210,"./template-options\\addRoleForm.js":211,"./template-options\\addShopAccountForm.js":212,"./template-options\\addShopAppearanceForm.js":213,"./template-options\\addShopTypeForm.js":214,"./template-options\\adminApproveForm.js":215,"./template-options\\couponForm.js":216,"./template-options\\createGroupVariant.js":217,"./template-options\\genericForm.js":218,"./template-options\\productExport.js":219,"./template-options\\productImport.js":220,"./template-options\\searchForm.js":221,"./template-options\\shopSettingForm.js":222,"angular":270,"angular-animate":225,"angular-base64":226,"angular-bootstrap-datetimepicker":228,"angular-chart.js":229,"angular-clipboard":231,"angular-cookies":233,"angular-file-upload":234,"angular-input-masks":235,"angular-sanitize":262,"angular-scroll":264,"angular-ui-bootstrap":266,"angular-ui-tree":268,"lodash":273,"ng-file-upload":275,"pluralize":276,"skeemas":277,"ui-select/dist/select.js":291}],2:[function(require,module,exports){
+},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\abstractPendingProductGroup.js":6,"./controllers\\adminAccount.js":7,"./controllers\\adminAccountAdd.js":8,"./controllers\\adminAttribute.js":9,"./controllers\\adminAttributeAdd.js":10,"./controllers\\adminAttributeSet.js":11,"./controllers\\adminAttributeSetAdd.js":12,"./controllers\\adminBrand.js":13,"./controllers\\adminBrandAdd.js":14,"./controllers\\adminCategory.js":15,"./controllers\\adminGlobalCoupon.js":16,"./controllers\\adminGlobalCouponAdd.js":17,"./controllers\\adminLogin.js":18,"./controllers\\adminMasterProduct.js":19,"./controllers\\adminMasterProductAdd.js":20,"./controllers\\adminNewsletter.js":21,"./controllers\\adminOnTopCreditAdd.js":22,"./controllers\\adminOnTopCreditList.js":23,"./controllers\\adminPendingProduct.js":24,"./controllers\\adminPendingProductAdd.js":25,"./controllers\\adminProductApprovalDetail.js":26,"./controllers\\adminProductApprovalList.js":27,"./controllers\\adminProductDetail.js":28,"./controllers\\adminProductList.js":29,"./controllers\\adminProductReview.js":30,"./controllers\\adminRole.js":31,"./controllers\\adminRoleAdd.js":32,"./controllers\\adminSellerAccount.js":33,"./controllers\\adminSellerCoupon.js":34,"./controllers\\adminSellerCouponAdd.js":35,"./controllers\\adminShop.js":36,"./controllers\\adminShopAdd.js":37,"./controllers\\adminShoptype.js":38,"./controllers\\adminShoptypeAdd.js":39,"./controllers\\index.js":40,"./controllers\\localCategory.js":41,"./controllers\\login.js":42,"./controllers\\productAddSelectCategory.js":43,"./controllers\\productExport.js":44,"./controllers\\productImageList.js":45,"./controllers\\productImageManagement.js":46,"./controllers\\productImport.js":47,"./controllers\\productList.js":48,"./controllers\\productListLocalCategory.js":49,"./controllers\\productReview.js":50,"./controllers\\root.js":51,"./controllers\\sellerAccount.js":52,"./controllers\\sellerAccountAdd.js":53,"./controllers\\sellerCoupon.js":54,"./controllers\\sellerCouponAdd.js":55,"./controllers\\sellerDashboard.js":56,"./controllers\\sellerInventoryList.js":57,"./controllers\\sellerNewsletter.js":58,"./controllers\\sellerOnboarding.js":59,"./controllers\\sellerOrder.js":60,"./controllers\\sellerOrderAdd.js":61,"./controllers\\sellerOrderShippingList.js":62,"./controllers\\sellerPendingProduct.js":63,"./controllers\\sellerPendingProductsGroup.js":64,"./controllers\\sellerProductDetail.js":65,"./controllers\\sellerReturnRequest.js":66,"./controllers\\sellerReturnRequestAdd.js":67,"./controllers\\sellerRole.js":68,"./controllers\\sellerRoleAdd.js":69,"./controllers\\sellerShopAppearance.js":70,"./controllers\\sellerShopSetting.js":71,"./controllers\\test.js":72,"./directives\\ncTradableSelect.js":73,"./directives\\ngCkeditor.js":74,"./directives\\ngDateBefore.js":75,"./directives\\ngDelegate.js":76,"./directives\\ngMatch.js":77,"./directives\\ngMaxnumber.js":78,"./directives\\ngMinnumber.js":79,"./directives\\ngPatternRestrict.js":80,"./directives\\ngPermission.js":81,"./directives\\ngSlideToggle.js":82,"./directives\\ngTemplate.js":83,"./directives\\popoverAny.js":84,"./filters\\capitalize.js":85,"./filters\\exclude.js":86,"./filters\\excludeCategory.js":87,"./filters\\html.js":88,"./filters\\importGuidelineExample.js":89,"./filters\\leadingzero.js":90,"./filters\\ordinal.js":91,"./filters\\slice.js":92,"./filters\\truncate.js":93,"./filters\\truth.js":94,"./filters\\variantValue.js":95,"./helpers\\base64.js":96,"./helpers\\common.js":97,"./helpers\\storage.js":98,"./helpers\\util.js":99,"./helpers\\variantPair.js":100,"./iefix.js":101,"./modules/angular-draggable":102,"./modules/angular-print":103,"./modules/angular-scroll":104,"./modules/nc":132,"./modules/product-detail":141,"./modules/schematics":143,"./modules/ume-select":154,"./route":156,"./services\\Dashboard.js":157,"./services\\OnTopCredit.js":158,"./services\\OnTopCreditService.js":159,"./services\\Onboarding.js":160,"./services\\adminAccountService.js":161,"./services\\adminMasterProductService.js":162,"./services\\adminPermissionService.js":163,"./services\\adminRoleService.js":164,"./services\\adminShopService.js":165,"./services\\adminShoptypeService.js":166,"./services\\attribute.js":167,"./services\\attributeService.js":168,"./services\\attributeSet.js":169,"./services\\attributeSetService.js":170,"./services\\blocker.js":171,"./services\\brand.js":172,"./services\\brandService.js":173,"./services\\category.js":174,"./services\\coupon.js":175,"./services\\credential.js":176,"./services\\exceptionHandler.js":177,"./services\\fileService.js":178,"./services\\globalCategory.js":179,"./services\\globalCategoryService.js":180,"./services\\globalCouponService.js":181,"./services\\image.js":182,"./services\\imageService.js":183,"./services\\inventoryService.js":184,"./services\\knownException.js":185,"./services\\localCategory.js":186,"./services\\localCategoryService.js":187,"./services\\newsletterService.js":188,"./services\\orderService.js":189,"./services\\product.js":190,"./services\\productReviewService.js":191,"./services\\productTempService.js":192,"./services\\returnRequestService.js":193,"./services\\sellerAccountService.js":194,"./services\\sellerCouponService.js":195,"./services\\sellerPermissionService.js":196,"./services\\sellerRoleService.js":197,"./services\\shippingService.js":198,"./services\\shop.js":199,"./services\\shopAppearanceService.js":200,"./services\\shopPermissionService.js":201,"./services\\shopProfileService.js":202,"./services\\shopService.js":203,"./template":224,"./template-options\\PromotionForm.js":204,"./template-options\\addAttributeForm.js":205,"./template-options\\addAttributeSetForm.js":206,"./template-options\\addBrandForm.js":207,"./template-options\\addCategoryForm.js":208,"./template-options\\addMasterProductForm.js":209,"./template-options\\addNewsletterForm.js":210,"./template-options\\addProductForm.js":211,"./template-options\\addRoleForm.js":212,"./template-options\\addShopAccountForm.js":213,"./template-options\\addShopAppearanceForm.js":214,"./template-options\\addShopTypeForm.js":215,"./template-options\\adminApproveForm.js":216,"./template-options\\couponForm.js":217,"./template-options\\createGroupVariant.js":218,"./template-options\\genericForm.js":219,"./template-options\\productExport.js":220,"./template-options\\productImport.js":221,"./template-options\\searchForm.js":222,"./template-options\\shopSettingForm.js":223,"angular":272,"angular-animate":226,"angular-base64":227,"angular-bootstrap-datetimepicker":229,"angular-chart.js":230,"angular-clipboard":232,"angular-cookies":234,"angular-drag-and-drop-lists":235,"angular-file-upload":236,"angular-input-masks":237,"angular-sanitize":264,"angular-scroll":266,"angular-ui-bootstrap":268,"angular-ui-tree":270,"lodash":275,"ng-file-upload":277,"pluralize":278,"skeemas":279,"ui-select/dist/select.js":293}],2:[function(require,module,exports){
 module.exports = {
 	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
@@ -1772,61 +1774,61 @@ module.exports = function($scope, $controller, GlobalCouponService, GlobalCatego
 },{}],18:[function(require,module,exports){
   module.exports = ["$scope", "Credential", "$window", "NcAlert", "$uibModal", "storage", "config", function ($scope, Credential, $window, NcAlert, $uibModal, storage, config) {
     'ngInject';
-  $scope.uform = {};
-  $scope.loginForm = {};
-  $scope.events = {};
-  $scope.alert = new NcAlert();
-  var redir = storage.get('redirect');
-  storage.remove('redirect');
-  
-  var profile = storage.getCurrentUserProfile();
-  if (profile) {
-    $window.location.href = Credential.getRedirPath(profile)
-  }
-  
-  if(storage.poke('session_timeout')) {
-    $scope.alert.open(false, 'Your session has timed out', '');
-  }
-
-  if(storage.poke('access_denied')) {
-    $scope.alert.error('Access denied');
-  }
-  
-  $scope.doLogin = function () {
-    if ($scope.loginForm.$invalid) {
-      if(_.isEmpty($scope.events)) {
-        $scope.events.user = false;
-        $scope.events.pass = false;
-      }
-      return;
+    $scope.uform = {};
+    $scope.loginForm = {};
+    $scope.events = {};
+    $scope.alert = new NcAlert();
+    var redir = storage.get('redirect');
+    storage.remove('redirect');
+    
+    var profile = storage.getCurrentUserProfile();
+    if (profile) {
+      $window.location.href = Credential.getRedirPath(profile)
+    }
+    
+    if(storage.poke('session_timeout')) {
+      $scope.alert.open(false, 'Your session has timed out', '');
     }
 
-    $scope.loading = true;
-    $scope.error = false;
-    var user = $scope.uform.user;
-    var pass = $scope.uform.pass;
-
-    Credential.login(user, pass, true).then(function (r) {
-      if(!r.User.IsAdmin){
-          storage.clear();
-          $scope.error = true;
-          $scope.loading = false;
-          $scope.loginForm.$setPristine();
-          return;
+    if(storage.poke('access_denied')) {
+      $scope.alert.error('Access denied');
+    }
+    
+    $scope.doLogin = function () {
+      if ($scope.loginForm.$invalid) {
+        if(_.isEmpty($scope.events)) {
+          $scope.events.user = false;
+          $scope.events.pass = false;
+        }
+        return;
       }
 
-      $scope.loading = false;
-      if (!redir || redir == '/') {
-        redir = Credential.getRedirPath(r);
-      }
-      $window.location.href = redir;
-    }, function (err) {
-      storage.clear();
-      $scope.error = true;
-      $scope.loading = false;
-      $scope.loginForm.$setPristine();
-    });
-  }
+      $scope.loading = true;
+      $scope.error = false;
+      var user = $scope.uform.user;
+      var pass = $scope.uform.pass;
+
+      Credential.login(user, pass, true).then(function (r) {
+        if(!r.User.IsAdmin){
+            storage.clear();
+            $scope.error = true;
+            $scope.loading = false;
+            $scope.loginForm.$setPristine();
+            return;
+        }
+
+        $scope.loading = false;
+        if (!redir || redir == '/') {
+          redir = Credential.getRedirPath(r);
+        }
+        $window.location.href = redir;
+      }, function (err) {
+        storage.clear();
+        $scope.error = true;
+        $scope.loading = false;
+        $scope.loginForm.$setPristine();
+      });
+    }
 }];
 
 },{}],19:[function(require,module,exports){
@@ -2285,7 +2287,7 @@ module.exports = ["$scope", "$controller", function ($scope, $controller) {
     }
 
 }];
-},{"angular":270}],27:[function(require,module,exports){
+},{"angular":272}],27:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "config", "util", function($scope, $controller, Product, config, util) {
 	'ngInject';
     $scope.asStatus = Product.getStatus;
@@ -2309,9 +2311,7 @@ module.exports = ["$scope", "$controller", "Product", "config", "util", function
 				}),
 			],
 			filters: [
-				{ name: "All", value: 'All'},
 				{ name: "Approved", value: 'Approved'},
-				{ name: "Draft", value: 'Draft'},
 				{ name: "Not Approved", value: 'NotApproved'},
 				{ name: "Wait for Approval", value: 'WaitForApproval'}
 			]
@@ -2343,7 +2343,7 @@ module.exports = ["$scope", "$controller", "Product", "config", "util", function
 			value: 'ReadyForAction'
 		}
 	];
-	$scope.params._filter = $scope.filterOptions[4].value;
+	$scope.params._filter = $scope.filterOptions[2].value;
 	$scope.params._filter2 = 'None';
 }];
 
@@ -2363,7 +2363,7 @@ module.exports = ["$scope", "$controller", function ($scope, $controller) {
     });
 
 }];
-},{"angular":270}],29:[function(require,module,exports){
+},{"angular":272}],29:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "common", "config", function($scope, $controller, Product, common, config) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
@@ -3198,6 +3198,14 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
     var user = $scope.uform.user;
     var pass = $scope.uform.pass;
     Credential.login(user, pass, false).then(function (r) {
+      if(r.User.IsAdmin){
+          storage.clear();
+          $scope.error = true;
+          $scope.loading = false;
+          $scope.loginForm.$setPristine();
+          return;
+      }
+
       $scope.loading = false;
       if (!redir || redir == '/') {
         redir = Credential.getRedirPath(r);
@@ -3236,7 +3244,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	});
 }];
 
-},{"angular":270}],44:[function(require,module,exports){
+},{"angular":272}],44:[function(require,module,exports){
 module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", function ($scope, Product, AttributeSet, NcAlert, $base64) {
 	'ngInject';
 	$scope.ProductList = [];
@@ -4184,6 +4192,8 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
 	$rootScope._ = _;
   $rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
+
+  //console.log($rootScope.Profile.Permission);
   
   $rootScope.ShopGroupPolicy = function(range){
     var mySG = _.get($rootScope.Profile, 'Shop.ShopGroup');
@@ -5548,7 +5558,7 @@ module.exports = ["$scope", "$controller", "storage", function($scope, $controll
 
 }];
 
-},{"angular":270}],66:[function(require,module,exports){
+},{"angular":272}],66:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "$uibModal", "ReturnRequestService", "config", function($scope, $controller, $uibModal, ReturnRequestService, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -6083,144 +6093,81 @@ module.exports = ["$templateCache", "$filter", function($templateCache, $filter)
 		scope: {
 			selectable: '=ncSelectOptions',
 			model: '=ncModel',
-			options: '=ncOptions',
 			test: '=?ncTest',
-			callback: '=?onSearch'
+			callback: '=?onSearch',
+			searchPlaceholder: '@?',
+			columnHeader: '@?',
+			id: '@ncId',
+			text: '@ncText'
 		},
-		template: function(element, attrs) {
-			if(attrs.ncTradableSelect) {
-				return $templateCache.get(attrs.ncTradableSelect);
-			} else {
-				return $templateCache.get('common/input/tradable-select');
-			}
-		},
+		templateUrl: 'common/input/tradable-select',
 		link: function(scope, element, attrs, ctrl) {
 			//Extend options
-			scope.options = angular.merge({
-				map: {
-					text: null,
-					value: null
-				}
-			}, scope.options);
 			scope.model = scope.model || [];
-			//Required attr
-			if(angular.isUndefined(scope.selectable)) {
-				throw 'Please set required field "ncSelectOptions"';
-			}
+			scope.search = '';
+			scope.activeRight = -1;
+			scope.activeLeft = -1;
+			scope.test = scope.test || function() { return false; };
+
 			//Right Column Header
 			scope.header = attrs.columnHeader;
+
 			//Search Placeholder
-			scope.searchPlaceholder = attrs.searchPlaceholder;
 			scope.$watch('search', function(newObj) {
 				(scope.callback || _.noop)(newObj);
 			});
-		},
-		controller: ["$scope", function($scope) {
-			'ngInject';
-			$scope.search = '';
-			$scope.activeRight = -1;
-			$scope.activeLeft = -1;
-			$scope.test = $scope.test || function() { return false; };
-			var findFn = function(element) {
-				if ($scope.options.map.value != null) {
-					if (element[$scope.options.map.value] === this[$scope.options.map.value]) {
-						return true;
-					}
-				} else {
-					if (element == this) {
-						return true;
-					}
-				}
-				return false;
-			}
-			var findClosestIndexRight = function() {
-				if ($scope.model.length <= 1) {
-					return $scope.model.length - 1;
-				} else {
-					for (var i = $scope.activeRight; i < $scope.model.length; i++) {
-						if(angular.isDefined($scope.model[$scope.activeRight]) &&
-							$scope.test($scope.model[$scope.activeRight])) {
-							continue;
-						}
-						return i;
-					}
-					for (var i = $scope.activeRight; i >= 0; i--) {
-						if(angular.isDefined($scope.model[$scope.activeRight]) &&
-							$scope.test($scope.model[$scope.activeRight])) {
-							continue;
-						}
-						return i;
-					}
+			scope.$watch('selectable', function() {
+				_.pullAllBy(scope.selectable, scope.model, scope.id);
+			});
 
-					return -1;
-				}
+			//Drag event
+			scope.onDrag = function($index, item) {
+				scope.model.splice($index, 1);
+				scope.select(_.findIndex(scope.model, function(e) { return e[scope.id] == item[scope.id] }), false);
 			};
-			var findClosestIndexLeft = function() {
-				if ($scope.selectable.length - $scope.model.length <= 0) {
-					return -1;
-				}
-				else {
-					var item = $scope.selectable[$scope.activeLeft];
-					var outersect = $scope.selectable.filter(function(obj) {
-						return !$scope.contain(obj) && ($filter('filter')($scope.selectable, $scope.search, 'strict').findIndex(findFn, obj) != -1);
-					});
-
-					var oIndex = outersect.indexOf(item);
-					if(oIndex !== outersect.length - 1) {
-						oIndex++;
-					} else {
-						oIndex--;
-					}
-					return $scope.selectable.indexOf(outersect[oIndex]);
-				}
+			scope.onInsert = function(index, item) {
+				scope.select(scope.model.indexOf(item), false);
 			};
-			$scope.transfer = function(direction) {
+			scope.transfer = function(direction) {
 				if(direction) {
-					//left to right
-					if ($scope.activeLeft < 0) {
-						return;
+					var removed = scope.selectable[scope.activeLeft];
+					scope.selectable.splice(scope.activeLeft, 1);
+					if(scope.activeLeft >= scope.selectable.length) {
+						scope.activeLeft--;
 					}
-					var item = $scope.selectable[$scope.activeLeft];
-					$scope.model.push(angular.copy(item));
-					var next = findClosestIndexLeft();
-					$scope.activeLeft = next;
-
+					scope.model.push(removed);
 				} else {
-					if ($scope.activeRight < 0 ||
-						(angular.isDefined($scope.model[$scope.activeRight]) &&
-						$scope.test($scope.model[$scope.activeRight]))) {
-						return;
+					var removed = scope.model[scope.activeRight];
+					scope.model.splice(scope.activeRight, 1);
+					if(scope.activeRight >= scope.model.length) {
+						scope.activeRight--;
 					}
-					$scope.model.splice($scope.activeRight, 1);
-					var next = findClosestIndexRight();
-					$scope.activeRight = next;
+					scope.selectable.push(removed);
 				}
 			};
-			$scope.active = function(direction) {
-				if(direction) {
-					if($scope.activeRight >= 0 && angular.isDefined($scope.model[$scope.activeRight]) && !$scope.test($scope.model[$scope.activeRight]))
+			scope.active = function(direction) {
+				if(!direction) {
+					if(scope.activeRight >= 0 && !scope.test(scope.model[scope.activeRight]))
 						return 'active';
 				} else {
-					if($scope.activeLeft >= 0 && !$scope.contain($scope.selectable[$scope.activeLeft]))
+					if(scope.activeLeft >= 0)
 						return 'active';
 				}
 			}
-			$scope.select = function($index, direction) {
+			scope.select = function($index, direction) {
 				if(direction) {
-					$scope.activeLeft = $index;
-					$scope.activeRight = -1;
+					scope.activeLeft = $index;
+					scope.activeRight = -1;
 				} else {
-					if(angular.isDefined($scope.model[$index]) &&
-						$scope.test($scope.model[$index]))
+					if(scope.test(scope.model[$index]))
 						return;
-					$scope.activeRight = $index;
-					$scope.activeLeft = -1;
+					scope.activeRight = $index;
+					scope.activeLeft = -1;
 				}
+
+				return true;
 			};
-			$scope.contain = function(item) {
-				return $scope.model.findIndex(findFn, item) != -1;
-			};
-		}]
+		}
 	};
 }];
 
@@ -6303,7 +6250,7 @@ module.exports = [function() {
 		}
 	};
 }];
-},{"angular":270}],77:[function(require,module,exports){
+},{"angular":272}],77:[function(require,module,exports){
 module.exports = ["$interpolate", function($interpolate) {
 	'ngInject';
 	return {
@@ -6783,7 +6730,7 @@ module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownE
         }
     };
 }];
-},{"angular":270}],84:[function(require,module,exports){
+},{"angular":272}],84:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$document', '$window', function($document, $window) {
 	$window._globalPopoverAny = null;
@@ -6813,7 +6760,7 @@ module.exports = ['$document', '$window', function($document, $window) {
 		}
 	};
 }];
-},{"angular":270}],85:[function(require,module,exports){
+},{"angular":272}],85:[function(require,module,exports){
 module.exports = [function() {
   return function(input, scope) {
     if (input!=null)
@@ -6856,7 +6803,7 @@ module.exports = [function() {
      });
   }
 }];
-},{"angular":270}],87:[function(require,module,exports){
+},{"angular":272}],87:[function(require,module,exports){
 module.exports = [function() {
   
 var search = function(catId, tmp) {
@@ -6986,7 +6933,7 @@ module.exports = [function() {
   	return input;
   }
 }];
-},{"angular":270}],92:[function(require,module,exports){
+},{"angular":272}],92:[function(require,module,exports){
 /*
  * Get slice or subarray of array
  */
@@ -7043,7 +6990,7 @@ module.exports = [function() {
      return i;
   }
 }];
-},{"angular":270}],95:[function(require,module,exports){
+},{"angular":272}],95:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return function(value) {
@@ -7925,6 +7872,660 @@ if (!String.prototype.trim) {
   };
 }
 },{}],102:[function(require,module,exports){
+/*
+ *
+ * https://github.com/fatlinesofcode/ngDraggable
+ */
+angular.module("ngDraggable", [])
+    .service('ngDraggable', [function() {
+
+
+        var scope = this;
+        scope.inputEvent = function(event) {
+            if (angular.isDefined(event.touches)) {
+                return event.touches[0];
+            }
+            //Checking both is not redundent. If only check if touches isDefined, angularjs isDefnied will return error and stop the remaining scripty if event.originalEvent is not defined.
+            else if (angular.isDefined(event.originalEvent) && angular.isDefined(event.originalEvent.touches)) {
+                return event.originalEvent.touches[0];
+            }
+            return event;
+        };
+
+    }])
+    .directive('ngDrag', ['$rootScope', '$parse', '$document', '$window', 'ngDraggable', function ($rootScope, $parse, $document, $window, ngDraggable) {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                scope.value = attrs.ngDrag;
+                var offset,_centerAnchor=false,_mx,_my,_tx,_ty,_mrx,_mry;
+                var _hasTouch = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch;
+                var _pressEvents = 'touchstart mousedown';
+                var _moveEvents = 'touchmove mousemove';
+                var _releaseEvents = 'touchend mouseup';
+                var _dragHandle;
+
+                // to identify the element in order to prevent getting superflous events when a single element has both drag and drop directives on it.
+                var _myid = scope.$id;
+                var _data = null;
+
+                var _dragOffset = null;
+
+                var _dragEnabled = false;
+
+                var _pressTimer = null;
+
+                var onDragStartCallback = $parse(attrs.ngDragStart) || null;
+                var onDragStopCallback = $parse(attrs.ngDragStop) || null;
+                var onDragSuccessCallback = $parse(attrs.ngDragSuccess) || null;
+                var allowTransform = angular.isDefined(attrs.allowTransform) ? scope.$eval(attrs.allowTransform) : true;
+
+                var getDragData = $parse(attrs.ngDragData);
+
+                // deregistration function for mouse move events in $rootScope triggered by jqLite trigger handler
+                var _deregisterRootMoveListener = angular.noop;
+
+                var initialize = function () {
+                    element.attr('draggable', 'false'); // prevent native drag
+                    // check to see if drag handle(s) was specified
+                    // if querySelectorAll is available, we use this instead of find
+                    // as JQLite find is limited to tagnames
+                    if (element[0].querySelectorAll) {
+                        var dragHandles = angular.element(element[0].querySelectorAll('[ng-drag-handle]'));
+                    } else {
+                        var dragHandles = element.find('[ng-drag-handle]');
+                    }
+                    if (dragHandles.length) {
+                        _dragHandle = dragHandles;
+                    }
+                    toggleListeners(true);
+                };
+
+                var toggleListeners = function (enable) {
+                    if (!enable)return;
+                    // add listeners.
+
+                    scope.$on('$destroy', onDestroy);
+                    scope.$watch(attrs.ngDrag, onEnableChange);
+                    scope.$watch(attrs.ngCenterAnchor, onCenterAnchor);
+                    // wire up touch events
+                    if (_dragHandle) {
+                        // handle(s) specified, use those to initiate drag
+                        _dragHandle.on(_pressEvents, onpress);
+                    } else {
+                        // no handle(s) specified, use the element as the handle
+                        element.on(_pressEvents, onpress);
+                    }
+                    if(! _hasTouch && element[0].nodeName.toLowerCase() == "img"){
+                        element.on('mousedown', function(){ return false;}); // prevent native drag for images
+                    }
+                };
+                var onDestroy = function (enable) {
+                    toggleListeners(false);
+                };
+                var onEnableChange = function (newVal, oldVal) {
+                    _dragEnabled = (newVal);
+                };
+                var onCenterAnchor = function (newVal, oldVal) {
+                    if(angular.isDefined(newVal))
+                        _centerAnchor = (newVal || 'true');
+                };
+
+                var isClickableElement = function (evt) {
+                    return (
+                        angular.isDefined(angular.element(evt.target).attr("ng-cancel-drag"))
+                    );
+                };
+                /*
+                 * When the element is clicked start the drag behaviour
+                 * On touch devices as a small delay so as not to prevent native window scrolling
+                 */
+                var onpress = function(evt) {
+                    if(! _dragEnabled)return;
+
+                    if (isClickableElement(evt)) {
+                        return;
+                    }
+
+                    if (evt.type == "mousedown" && evt.button != 0) {
+                        // Do not start dragging on right-click
+                        return;
+                    }
+
+                    if(_hasTouch){
+                        cancelPress();
+                        _pressTimer = setTimeout(function(){
+                            cancelPress();
+                            onlongpress(evt);
+                        },100);
+                        $document.on(_moveEvents, cancelPress);
+                        $document.on(_releaseEvents, cancelPress);
+                    }else{
+                        onlongpress(evt);
+                    }
+
+                };
+
+                var cancelPress = function() {
+                    clearTimeout(_pressTimer);
+                    $document.off(_moveEvents, cancelPress);
+                    $document.off(_releaseEvents, cancelPress);
+                };
+
+                var onlongpress = function(evt) {
+                    if(! _dragEnabled)return;
+                    evt.preventDefault();
+
+                    offset = element[0].getBoundingClientRect();
+                    if(allowTransform)
+                        _dragOffset = offset;
+                    else{
+                        _dragOffset = {left:document.body.scrollLeft, top:document.body.scrollTop};
+                    }
+
+
+                    element.centerX = element[0].offsetWidth / 2;
+                    element.centerY = element[0].offsetHeight / 2;
+
+                    _mx = ngDraggable.inputEvent(evt).pageX;//ngDraggable.getEventProp(evt, 'pageX');
+                    _my = ngDraggable.inputEvent(evt).pageY;//ngDraggable.getEventProp(evt, 'pageY');
+                    _mrx = _mx - offset.left;
+                    _mry = _my - offset.top;
+                    if (_centerAnchor) {
+                        _tx = _mx - element.centerX - $window.pageXOffset;
+                        _ty = _my - element.centerY - $window.pageYOffset;
+                    } else {
+                        _tx = _mx - _mrx - $window.pageXOffset;
+                        _ty = _my - _mry - $window.pageYOffset;
+                    }
+
+                    $document.on(_moveEvents, onmove);
+                    $document.on(_releaseEvents, onrelease);
+                    // This event is used to receive manually triggered mouse move events
+                    // jqLite unfortunately only supports triggerHandler(...)
+                    // See http://api.jquery.com/triggerHandler/
+                    // _deregisterRootMoveListener = $rootScope.$on('draggable:_triggerHandlerMove', onmove);
+                    _deregisterRootMoveListener = $rootScope.$on('draggable:_triggerHandlerMove', function(event, origEvent) {
+                        onmove(origEvent);
+                    });
+                };
+
+                var onmove = function (evt) {
+                    if (!_dragEnabled)return;
+                    evt.preventDefault();
+
+                    if (!element.hasClass('dragging')) {
+                        _data = getDragData(scope);
+                        element.addClass('dragging');
+                        $rootScope.$broadcast('draggable:start', {x:_mx, y:_my, tx:_tx, ty:_ty, event:evt, element:element, data:_data});
+
+                        if (onDragStartCallback ){
+                            scope.$apply(function () {
+                                onDragStartCallback(scope, {$data: _data, $event: evt});
+                            });
+                        }
+                    }
+
+                    _mx = ngDraggable.inputEvent(evt).pageX;//ngDraggable.getEventProp(evt, 'pageX');
+                    _my = ngDraggable.inputEvent(evt).pageY;//ngDraggable.getEventProp(evt, 'pageY');
+
+                    if (_centerAnchor) {
+                        _tx = _mx - element.centerX - _dragOffset.left;
+                        _ty = _my - element.centerY - _dragOffset.top;
+                    } else {
+                        _tx = _mx - _mrx - _dragOffset.left;
+                        _ty = _my - _mry - _dragOffset.top;
+                    }
+
+                    moveElement(_tx, _ty);
+
+                    $rootScope.$broadcast('draggable:move', { x: _mx, y: _my, tx: _tx, ty: _ty, event: evt, element: element, data: _data, uid: _myid, dragOffset: _dragOffset });
+                };
+
+                var onrelease = function(evt) {
+                    if (!_dragEnabled)
+                        return;
+                    evt.preventDefault();
+                    $rootScope.$broadcast('draggable:end', {x:_mx, y:_my, tx:_tx, ty:_ty, event:evt, element:element, data:_data, callback:onDragComplete, uid: _myid});
+                    element.removeClass('dragging');
+                    element.parent().find('.drag-enter').removeClass('drag-enter');
+                    reset();
+                    $document.off(_moveEvents, onmove);
+                    $document.off(_releaseEvents, onrelease);
+
+                    if (onDragStopCallback ){
+                        scope.$apply(function () {
+                            onDragStopCallback(scope, {$data: _data, $event: evt});
+                        });
+                    }
+
+                    _deregisterRootMoveListener();
+                };
+
+                var onDragComplete = function(evt) {
+
+
+                    if (!onDragSuccessCallback )return;
+
+                    scope.$apply(function () {
+                        onDragSuccessCallback(scope, {$data: _data, $event: evt});
+                    });
+                };
+
+                var reset = function() {
+                    if(allowTransform)
+                        element.css({transform:'', 'z-index':'', '-webkit-transform':'', '-ms-transform':''});
+                    else
+                        element.css({'position':'',top:'',left:''});
+                };
+
+                var moveElement = function (x, y) {
+                    if(allowTransform) {
+                        element.css({
+                            transform: 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, ' + x + ', ' + y + ', 0, 1)',
+                            'z-index': 99999,
+                            '-webkit-transform': 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, ' + x + ', ' + y + ', 0, 1)',
+                            '-ms-transform': 'matrix(1, 0, 0, 1, ' + x + ', ' + y + ')'
+                        });
+                    }else{
+                        element.css({'left':x+'px','top':y+'px', 'position':'fixed'});
+                    }
+                };
+                initialize();
+            }
+        };
+    }])
+
+    .directive('ngDrop', ['$parse', '$timeout', '$window', '$document', 'ngDraggable', function ($parse, $timeout, $window, $document, ngDraggable) {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                scope.value = attrs.ngDrop;
+                scope.isTouching = false;
+
+                var _lastDropTouch=null;
+
+                var _myid = scope.$id;
+
+                var _dropEnabled=false;
+
+                var onDropCallback = $parse(attrs.ngDropSuccess);// || function(){};
+
+                var onDragStartCallback = $parse(attrs.ngDragStart);
+                var onDragStopCallback = $parse(attrs.ngDragStop);
+                var onDragMoveCallback = $parse(attrs.ngDragMove);
+
+                var initialize = function () {
+                    toggleListeners(true);
+                };
+
+                var toggleListeners = function (enable) {
+                    // remove listeners
+
+                    if (!enable)return;
+                    // add listeners.
+                    scope.$watch(attrs.ngDrop, onEnableChange);
+                    scope.$on('$destroy', onDestroy);
+                    scope.$on('draggable:start', onDragStart);
+                    scope.$on('draggable:move', onDragMove);
+                    scope.$on('draggable:end', onDragEnd);
+                };
+
+                var onDestroy = function (enable) {
+                    toggleListeners(false);
+                };
+                var onEnableChange = function (newVal, oldVal) {
+                    _dropEnabled=newVal;
+                };
+                var onDragStart = function(evt, obj) {
+                    if(! _dropEnabled)return;
+                    isTouching(obj.x,obj.y,obj.element);
+
+                    if (attrs.ngDragStart) {
+                        $timeout(function(){
+                            onDragStartCallback(scope, {$data: obj.data, $event: obj});
+                        });
+                    }
+                };
+                var onDragMove = function(evt, obj) {
+                    if(! _dropEnabled)return;
+                    isTouching(obj.x,obj.y,obj.element);
+
+                    if (attrs.ngDragMove) {
+                        $timeout(function(){
+                            onDragMoveCallback(scope, {$data: obj.data, $event: obj});
+                        });
+                    }
+                };
+
+                var onDragEnd = function (evt, obj) {
+
+                    // don't listen to drop events if this is the element being dragged
+                    // only update the styles and return
+                    if (!_dropEnabled || _myid === obj.uid) {
+                        updateDragStyles(false, obj.element);
+                        return;
+                    }
+                    if (isTouching(obj.x, obj.y, obj.element)) {
+                        // call the ngDraggable ngDragSuccess element callback
+                        if(obj.callback){
+                            obj.callback(obj);
+                        }
+
+                        if (attrs.ngDropSuccess) {
+                            $timeout(function(){
+                                onDropCallback(scope, {$data: obj.data, $event: obj, $target: scope.$eval(scope.value)});
+                            });
+                        }
+                    }
+
+                    if (attrs.ngDragStop) {
+                        $timeout(function(){
+                            onDragStopCallback(scope, {$data: obj.data, $event: obj});
+                        });
+                    }
+
+                    updateDragStyles(false, obj.element);
+                };
+
+                var isTouching = function(mouseX, mouseY, dragElement) {
+                    var touching= hitTest(mouseX, mouseY);
+                    scope.isTouching = touching;
+                    if(touching){
+                        _lastDropTouch = element;
+                    }
+                    updateDragStyles(touching, dragElement);
+                    return touching;
+                };
+
+                var updateDragStyles = function(touching, dragElement) {
+                    if(touching){
+                        element.addClass('drag-enter');
+                        dragElement.addClass('drag-over');
+                    }else if(_lastDropTouch == element){
+                        _lastDropTouch=null;
+                        element.removeClass('drag-enter');
+                        dragElement.removeClass('drag-over');
+                    }
+                };
+
+                var hitTest = function(x, y) {
+                    var bounds = element[0].getBoundingClientRect();// ngDraggable.getPrivOffset(element);
+                    x -= $document[0].body.scrollLeft + $document[0].documentElement.scrollLeft;
+                    y -= $document[0].body.scrollTop + $document[0].documentElement.scrollTop;
+                    return  x >= bounds.left
+                        && x <= bounds.right
+                        && y <= bounds.bottom
+                        && y >= bounds.top;
+                };
+
+                initialize();
+            }
+        };
+    }])
+    .directive('ngDragClone', ['$parse', '$timeout', 'ngDraggable', function ($parse, $timeout, ngDraggable) {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                var img, _allowClone=true;
+                var _dragOffset = null;
+                scope.clonedData = {};
+                var initialize = function () {
+
+                    img = element.find('img');
+                    element.attr('draggable', 'false');
+                    img.attr('draggable', 'false');
+                    reset();
+                    toggleListeners(true);
+                };
+
+
+                var toggleListeners = function (enable) {
+                    // remove listeners
+
+                    if (!enable)return;
+                    // add listeners.
+                    scope.$on('draggable:start', onDragStart);
+                    scope.$on('draggable:move', onDragMove);
+                    scope.$on('draggable:end', onDragEnd);
+                    preventContextMenu();
+
+                };
+                var preventContextMenu = function() {
+                    //  element.off('mousedown touchstart touchmove touchend touchcancel', absorbEvent_);
+                    img.off('mousedown touchstart touchmove touchend touchcancel', absorbEvent_);
+                    //  element.on('mousedown touchstart touchmove touchend touchcancel', absorbEvent_);
+                    img.on('mousedown touchstart touchmove touchend touchcancel', absorbEvent_);
+                };
+                var onDragStart = function(evt, obj, elm) {
+                    _allowClone=true;
+                    if(angular.isDefined(obj.data.allowClone)){
+                        _allowClone=obj.data.allowClone;
+                    }
+                    if(_allowClone) {
+                        scope.$apply(function () {
+                            scope.clonedData = obj.data;
+                        });
+                        element.css('width', obj.element[0].offsetWidth);
+                        element.css('height', obj.element[0].offsetHeight);
+
+                        moveElement(obj.tx, obj.ty);
+                    }
+
+                };
+                var onDragMove = function(evt, obj) {
+                    if(_allowClone) {
+
+                        _tx = obj.tx + obj.dragOffset.left;
+                        _ty = obj.ty + obj.dragOffset.top;
+
+                        moveElement(_tx, _ty);
+                    }
+                };
+                var onDragEnd = function(evt, obj) {
+                    //moveElement(obj.tx,obj.ty);
+                    if(_allowClone) {
+                        reset();
+                    }
+                };
+
+                var reset = function() {
+                    element.css({left:0,top:0, position:'fixed', 'z-index':-1, visibility:'hidden'});
+                };
+                var moveElement = function(x,y) {
+                    element.css({
+                        transform: 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '+x+', '+y+', 0, 1)', 'z-index': 99999, 'visibility': 'visible',
+                        '-webkit-transform': 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '+x+', '+y+', 0, 1)',
+                        '-ms-transform': 'matrix(1, 0, 0, 1, '+x+', '+y+')'
+                        //,margin: '0'  don't monkey with the margin,
+                    });
+                };
+
+                var absorbEvent_ = function (event) {
+                    var e = event;//.originalEvent;
+                    e.preventDefault && e.preventDefault();
+                    e.stopPropagation && e.stopPropagation();
+                    e.cancelBubble = true;
+                    e.returnValue = false;
+                    return false;
+                };
+
+                initialize();
+            }
+        };
+    }])
+    .directive('ngPreventDrag', ['$parse', '$timeout', function ($parse, $timeout) {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                var initialize = function () {
+
+                    element.attr('draggable', 'false');
+                    toggleListeners(true);
+                };
+
+
+                var toggleListeners = function (enable) {
+                    // remove listeners
+
+                    if (!enable)return;
+                    // add listeners.
+                    element.on('mousedown touchstart touchmove touchend touchcancel', absorbEvent_);
+                };
+
+
+                var absorbEvent_ = function (event) {
+                    var e = event.originalEvent;
+                    e.preventDefault && e.preventDefault();
+                    e.stopPropagation && e.stopPropagation();
+                    e.cancelBubble = true;
+                    e.returnValue = false;
+                    return false;
+                };
+
+                initialize();
+            }
+        };
+    }])
+    .directive('ngCancelDrag', [function () {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                element.find('*').attr('ng-cancel-drag', 'ng-cancel-drag');
+            }
+        };
+    }])
+    .directive('ngDragScroll', ['$window', '$interval', '$timeout', '$document', '$rootScope', function($window, $interval, $timeout, $document, $rootScope) {
+        return {
+            restrict: 'A',
+            link: function(scope, element, attrs) {
+                var intervalPromise = null;
+                var lastMouseEvent = null;
+
+                var config = {
+                    verticalScroll: attrs.verticalScroll || true,
+                    horizontalScroll: attrs.horizontalScroll || true,
+                    activationDistance: attrs.activationDistance || 75,
+                    scrollDistance: attrs.scrollDistance || 15
+                };
+
+
+                var reqAnimFrame = (function() {
+                    return window.requestAnimationFrame ||
+                        window.webkitRequestAnimationFrame ||
+                        window.mozRequestAnimationFrame ||
+                        window.oRequestAnimationFrame ||
+                        window.msRequestAnimationFrame ||
+                        function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element ) {
+                            window.setTimeout(callback, 1000 / 60);
+                        };
+                })();
+
+                var animationIsOn = false;
+                var createInterval = function() {
+                    animationIsOn = true;
+
+                    function nextFrame(callback) {
+                        var args = Array.prototype.slice.call(arguments);
+                        if(animationIsOn) {
+                            reqAnimFrame(function () {
+                                $rootScope.$apply(function () {
+                                    callback.apply(null, args);
+                                    nextFrame(callback);
+                                });
+                            })
+                        }
+                    }
+
+                    nextFrame(function() {
+                        if (!lastMouseEvent) return;
+
+                        var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+                        var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+                        var scrollX = 0;
+                        var scrollY = 0;
+
+                        if (config.horizontalScroll) {
+                            // If horizontal scrolling is active.
+                            if (lastMouseEvent.clientX < config.activationDistance) {
+                                // If the mouse is on the left of the viewport within the activation distance.
+                                scrollX = -config.scrollDistance;
+                            }
+                            else if (lastMouseEvent.clientX > viewportWidth - config.activationDistance) {
+                                // If the mouse is on the right of the viewport within the activation distance.
+                                scrollX = config.scrollDistance;
+                            }
+                        }
+
+                        if (config.verticalScroll) {
+                            // If vertical scrolling is active.
+                            if (lastMouseEvent.clientY < config.activationDistance) {
+                                // If the mouse is on the top of the viewport within the activation distance.
+                                scrollY = -config.scrollDistance;
+                            }
+                            else if (lastMouseEvent.clientY > viewportHeight - config.activationDistance) {
+                                // If the mouse is on the bottom of the viewport within the activation distance.
+                                scrollY = config.scrollDistance;
+                            }
+                        }
+
+
+
+                        if (scrollX !== 0 || scrollY !== 0) {
+                            // Record the current scroll position.
+                            var currentScrollLeft = ($window.pageXOffset || $document[0].documentElement.scrollLeft);
+                            var currentScrollTop = ($window.pageYOffset || $document[0].documentElement.scrollTop);
+
+                            // Remove the transformation from the element, scroll the window by the scroll distance
+                            // record how far we scrolled, then reapply the element transformation.
+                            var elementTransform = element.css('transform');
+                            element.css('transform', 'initial');
+
+                            $window.scrollBy(scrollX, scrollY);
+
+                            var horizontalScrollAmount = ($window.pageXOffset || $document[0].documentElement.scrollLeft) - currentScrollLeft;
+                            var verticalScrollAmount =  ($window.pageYOffset || $document[0].documentElement.scrollTop) - currentScrollTop;
+
+                            element.css('transform', elementTransform);
+
+                            lastMouseEvent.pageX += horizontalScrollAmount;
+                            lastMouseEvent.pageY += verticalScrollAmount;
+
+                            $rootScope.$emit('draggable:_triggerHandlerMove', lastMouseEvent);
+                        }
+
+                    });
+                };
+
+                var clearInterval = function() {
+                    animationIsOn = false;
+                };
+
+                scope.$on('draggable:start', function(event, obj) {
+                    // Ignore this event if it's not for this element.
+                    if (obj.element[0] !== element[0]) return;
+
+                    if (!animationIsOn) createInterval();
+                });
+
+                scope.$on('draggable:end', function(event, obj) {
+                    // Ignore this event if it's not for this element.
+                    if (obj.element[0] !== element[0]) return;
+
+                    if (animationIsOn) clearInterval();
+                });
+
+                scope.$on('draggable:move', function(event, obj) {
+                    // Ignore this event if it's not for this element.
+                    if (obj.element[0] !== element[0]) return;
+
+                    lastMouseEvent = obj.event;
+                });
+            }
+        };
+    }]);
+},{}],103:[function(require,module,exports){
 'use strict';
 (function(){
     var lowercase = function(string){return (typeof string === 'string') ? string.toLowerCase() : string;};
@@ -8041,7 +8642,7 @@ if (!String.prototype.trim) {
         };
     });
 })();
-},{}],103:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 /*!
  *	 Angular Smooth Scroll (ngSmoothScroll)
  *	 Animates scrolling to elements, by David Oliveros.
@@ -8313,7 +8914,7 @@ if (!String.prototype.trim) {
 	}]);
 
 }());
-},{}],104:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncAction', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
@@ -8386,7 +8987,7 @@ angular.module('nc')
 		}
 	}]);
 
-},{}],105:[function(require,module,exports){
+},{}],106:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncAdvanceSearch', ["$templateCache", "$timeout", "$uibModal", function($templateCache, $timeout, $uibModal) {
 		return {
@@ -8450,7 +9051,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],106:[function(require,module,exports){
+},{}],107:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncAlert', function() {
 		this.defaultErrorMessage = 'Error';
@@ -8518,7 +9119,7 @@ angular.module('nc')
 			this.message = '';
 		};
 	}]);
-},{}],107:[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBindCompile', ["$compile", "$templateCache", function($compile, $templateCache) {
        return {
@@ -8547,7 +9148,7 @@ angular.module('nc')
             }
         };
     }]);
-},{}],108:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBreadcrumbSelect', ["$templateCache", "$filter", "$timeout", function($templateCache, $filter, $timeout) {
 		var _globalOptions = {};
@@ -8640,7 +9241,7 @@ angular.module('nc')
 			}
 		};
 	}])
-},{}],109:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBulk', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
@@ -8808,7 +9409,7 @@ angular.module('nc')
 			}
 		}
 	}])
-},{}],110:[function(require,module,exports){
+},{}],111:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncDateRange', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse) {
@@ -8870,7 +9471,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":270}],111:[function(require,module,exports){
+},{"angular":272}],112:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEmpty', ["$templateCache", function($templateCache) {
 		return {
@@ -8884,7 +9485,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],112:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEye', ["$templateCache", function($templateCache) {
 		return {
@@ -8902,7 +9503,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],113:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncFilter', ["$templateCache", function($templateCache) {
 		return {
@@ -8924,7 +9525,7 @@ angular.module('nc')
 			}
 		}
 	}])
-},{}],114:[function(require,module,exports){
+},{}],115:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncImageBanner', function() {
 		return {
@@ -9387,7 +9988,7 @@ angular.module('nc')
 			}
 		};
 	}])
-},{}],115:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 angular.module('nc')
 .directive('ncImageIntegrity', function() {
     //Only show if image loaded by <img> integrity is OK (100% finished loading)
@@ -9407,7 +10008,7 @@ angular.module('nc')
             }
         };
     })
-},{}],116:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncLoading', ["$templateCache", function($templateCache) {
 		return {
@@ -9433,7 +10034,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],117:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncPageTitle', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "$parse", "KnownException", function ($rootScope, $templateCache, $compile, $templateOptionsCache, $parse, KnownException) {
@@ -9466,7 +10067,7 @@ angular.module('nc')
         };
     }]);
 
-},{"angular":270}],118:[function(require,module,exports){
+},{"angular":272}],119:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncPagination', function() {
 		this.paginationSizes = [10,20,30];
@@ -9533,7 +10134,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],119:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 angular.module('nc')
 	.provider('ncPermissionProvider', function() {
 		this.permission = function() {
@@ -9554,7 +10155,7 @@ angular.module('nc')
 	.directive('ncShowPermission', function() {
 		
 	});
-},{}],120:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncSearch', ["$templateCache", function($templateCache) {
 		return {
@@ -9576,7 +10177,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],121:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncTable', function() {
 		this.tableOptions = {
@@ -9665,7 +10266,7 @@ angular.module('nc')
 			template: '<a ng-href="{{link}}" ng-transclude></a>',
 		}
 	});
-},{}],122:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncTemplate', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse) {
@@ -9724,7 +10325,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":270}],123:[function(require,module,exports){
+},{"angular":272}],124:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncTreeSelect', ["$interpolate", "$templateCache", function($interpolate, $templateCache) {
 		/**
@@ -9953,7 +10554,7 @@ angular.module('nc')
 		};
 	}]);
 
-},{}],124:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 angular.module('nc')
     .directive('ncTagValidator', function () {
         return {
@@ -10013,14 +10614,14 @@ angular.module('nc')
         }
     });
 
-},{}],125:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 angular.module('nc')
 	.filter('compact', function() {
 		return function(input) {
 			return _.compact(input);
 		};
 	});
-},{}],126:[function(require,module,exports){
+},{}],127:[function(require,module,exports){
 angular.module('nc')
 	.filter('dateTh', ["$filter", function($filter) {
 		return function(input) {
@@ -10038,7 +10639,7 @@ angular.module('nc')
 			return $filter('date')(input, 'H:mm');
 		}
 	}]);
-},{}],127:[function(require,module,exports){
+},{}],128:[function(require,module,exports){
 angular.module('nc')
     .filter('escapeHtml', function () {
         var entityMap = {
@@ -10056,7 +10657,7 @@ angular.module('nc')
             });
         }
     });
-},{}],128:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 /*
  Return dropdown[value] if input == dropdown[name]
  */
@@ -10079,7 +10680,7 @@ angular.module('nc')
 			return _.isUndefined(find) ? input : find[name];
 		}
 	});
-},{}],129:[function(require,module,exports){
+},{}],130:[function(require,module,exports){
 var angular = require('angular');
 
 angular.module('nc')
@@ -10116,14 +10717,14 @@ angular.module('nc')
     }
   });
 
-},{"angular":270}],130:[function(require,module,exports){
+},{"angular":272}],131:[function(require,module,exports){
 angular.module('nc')
 	.filter('replace', function() {
 		return function(input, from, to) {
 			return input.replace(from, to);
 		};
 	});
-},{}],131:[function(require,module,exports){
+},{}],132:[function(require,module,exports){
 (function (global){
 var angular = require('angular');
 
@@ -10149,7 +10750,7 @@ angular.module('nc', ['ngSanitize', 'ui.bootstrap', 'ui.select', 'duScroll', 'sm
 require('./template.js');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../angular-scroll":103,"./directives\\ncAction.js":104,"./directives\\ncAdvanceSearch.js":105,"./directives\\ncAlert.js":106,"./directives\\ncBindCompile.js":107,"./directives\\ncBreadcrumpSelect.js":108,"./directives\\ncBulk.js":109,"./directives\\ncDateRange.js":110,"./directives\\ncEmpty.js":111,"./directives\\ncEye.js":112,"./directives\\ncFilter.js":113,"./directives\\ncImageGallery.js":114,"./directives\\ncImageIntegrity.js":115,"./directives\\ncLoading.js":116,"./directives\\ncPageTitle.js":117,"./directives\\ncPagination.js":118,"./directives\\ncPermission.js":119,"./directives\\ncSearch.js":120,"./directives\\ncTable.js":121,"./directives\\ncTemplate.js":122,"./directives\\ncTreeSelect.js":123,"./directives\\ncUiSelect.js":124,"./filters\\compact.js":125,"./filters\\date.js":126,"./filters\\escapeHtml.js":127,"./filters\\map.js":128,"./filters\\ncexclude.js":129,"./filters\\replace.js":130,"./index.js":131,"./template.js":132,"angular":270,"angular-file-upload":234,"angular-sanitize":262,"angular-scroll":264,"angular-ui-bootstrap":266,"jquery":272,"lodash":273,"ui-select":292}],132:[function(require,module,exports){
+},{"../angular-scroll":104,"./directives\\ncAction.js":105,"./directives\\ncAdvanceSearch.js":106,"./directives\\ncAlert.js":107,"./directives\\ncBindCompile.js":108,"./directives\\ncBreadcrumpSelect.js":109,"./directives\\ncBulk.js":110,"./directives\\ncDateRange.js":111,"./directives\\ncEmpty.js":112,"./directives\\ncEye.js":113,"./directives\\ncFilter.js":114,"./directives\\ncImageGallery.js":115,"./directives\\ncImageIntegrity.js":116,"./directives\\ncLoading.js":117,"./directives\\ncPageTitle.js":118,"./directives\\ncPagination.js":119,"./directives\\ncPermission.js":120,"./directives\\ncSearch.js":121,"./directives\\ncTable.js":122,"./directives\\ncTemplate.js":123,"./directives\\ncTreeSelect.js":124,"./directives\\ncUiSelect.js":125,"./filters\\compact.js":126,"./filters\\date.js":127,"./filters\\escapeHtml.js":128,"./filters\\map.js":129,"./filters\\ncexclude.js":130,"./filters\\replace.js":131,"./index.js":132,"./template.js":133,"angular":272,"angular-file-upload":236,"angular-sanitize":264,"angular-scroll":266,"angular-ui-bootstrap":268,"jquery":274,"lodash":275,"ui-select":294}],133:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -10327,7 +10928,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
     "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title ah-breadcrumb\"><a ng-if=\"icon && breads.length != 1\" ng-href=\"{{ngTopLink() || topLink}}\"><i class=\"fa {{icon}} page-header-icon\"></i></a> <i ng-if=\"icon && breads.length == 1\" class=\"fa {{icon}} page-header-icon\"></i> <span ng-repeat=\"b in breads\" class=ah-breadcrumb><a ng-if=\"$index == 0 && breads.length > 1\" class=ah-breadcrumb-path ng-href=\"{{ngTopLink()  || topLink}}\">{{b}}</a><span ng-if=\"$index > 0 || breads.length == 1\" class=ah-breadcrumb-path>{{b}}</span><span ng-if=\"$index == 0 && breads.length > 1\" class=ah-breadcrumb-splitter>/</span></span></h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
   );
  }]);
-},{}],133:[function(require,module,exports){
+},{}],134:[function(require,module,exports){
 var angular = require('angular');
 
 angular.module('productDetail').controller('AbstractProductAddCtrl',
@@ -11240,7 +11841,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
 
   }])
-},{"angular":270}],134:[function(require,module,exports){
+},{"angular":272}],135:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
 factory('AttributeOptions', function() {
@@ -11262,7 +11863,7 @@ factory('AttributeOptions', function() {
     }
 
 });
-},{"angular":270}],135:[function(require,module,exports){
+},{"angular":272}],136:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
 factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "ImageService", "GlobalCategory", "$q", "Category", "util", function(Product, AttributeSet, AttributeSetService, ImageService, GlobalCategory, $q, Category, util) {
@@ -11515,7 +12116,7 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
   return $productAdd;
 }]);
 
-},{"angular":270}],136:[function(require,module,exports){
+},{"angular":272}],137:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
 factory('VariationFactorIndices', function() {
@@ -11540,7 +12141,7 @@ factory('VariationFactorIndices', function() {
 
 });
 
-},{"angular":270}],137:[function(require,module,exports){
+},{"angular":272}],138:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
     .directive('apComponent', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", "Product", "util", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse, Product, util) {
@@ -11570,7 +12171,7 @@ angular.module('productDetail')
         };
     }]);
 
-},{"angular":270}],138:[function(require,module,exports){
+},{"angular":272}],139:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
     .directive('apMultipliedVariants', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "util", function ($rootScope, 
@@ -11591,7 +12192,7 @@ angular.module('productDetail')
         };
     }]);
 
-},{"angular":270}],139:[function(require,module,exports){
+},{"angular":272}],140:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
     .directive('apVariationOption', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "util", function ($rootScope, 
@@ -11636,7 +12237,7 @@ angular.module('productDetail')
         };
     }]);
 
-},{"angular":270}],140:[function(require,module,exports){
+},{"angular":272}],141:[function(require,module,exports){
 var angular = require('angular');
 
 
@@ -11644,7 +12245,7 @@ angular.module('productDetail', []);
 
 (function () {var f = require("./index.js");f["core"]=({"abstractProductAddCtrl":require("./core\\abstractProductAddCtrl.js"),"attributeOptions":require("./core\\attributeOptions.js"),"productLoader":require("./core\\productLoader.js"),"variationFactorIndices":require("./core\\variationFactorIndices.js")});f["directives"]=({"apComponent":require("./directives\\apComponent.js"),"apMultipliedVariants":require("./directives\\apMultipliedVariants.js"),"apVariationOption":require("./directives\\apVariationOption.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
-},{"./core\\abstractProductAddCtrl.js":133,"./core\\attributeOptions.js":134,"./core\\productLoader.js":135,"./core\\variationFactorIndices.js":136,"./directives\\apComponent.js":137,"./directives\\apMultipliedVariants.js":138,"./directives\\apVariationOption.js":139,"./index.js":140,"./template.js":141,"angular":270}],141:[function(require,module,exports){
+},{"./core\\abstractProductAddCtrl.js":134,"./core\\attributeOptions.js":135,"./core\\productLoader.js":136,"./core\\variationFactorIndices.js":137,"./directives\\apComponent.js":138,"./directives\\apMultipliedVariants.js":139,"./directives\\apVariationOption.js":140,"./index.js":141,"./template.js":142,"angular":272}],142:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -11866,7 +12467,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "<div id=add-product-variation-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row ng-if=\"controlFlags.variation != 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content><div class=form-group><p class=form-control-static>Variation will allow you to create a group of products with different attributes such as size and color. Once you enable variation, information from other tabs will be copied into variants that you will create, and variation cannot be disabled. <strong>Please select attribute set before enabling variation.</strong></p><a class=\"btn btn-width-xxl btn-blue margin-top-20\" ng-disabled=!formData.AttributeSet.AttributeSetId ng-click=enableVariation()>Enable Variation</a></div></div></div></div></div><div class=row ng-show=\"controlFlags.variation == 'enable'\"><div class=col-xs-12><ap-variation-option form-data=formData control-flags=controlFlags generator=variationFactorIndices dataset=dataset></ap-variation-option><ap-multiplied-variants ng-show=\"formData.Variants.length > 0\"><div ng-include=\"'ap/section-variant-table-a'\"></div></ap-multiplied-variants></div></div></div>"
   );
  }]);
-},{}],142:[function(require,module,exports){
+},{}],143:[function(require,module,exports){
 var angular = require('angular');
 var bulk = {};
 angular.module('schematics', []).
@@ -11882,7 +12483,7 @@ factory('JSONCache', function(){
   }
 });
 
-},{"./schema\\attribute.js":143,"./schema\\attributeSet.js":144,"./schema\\attributeValue.js":145,"./schema\\attributeValueMap.js":146,"./schema\\nthAttribute.js":147,"./schema\\productStages.js":148,"./schema\\seo.js":149,"./schema\\variant.js":150,"angular":270}],143:[function(require,module,exports){
+},{"./schema\\attribute.js":144,"./schema\\attributeSet.js":145,"./schema\\attributeValue.js":146,"./schema\\attributeValueMap.js":147,"./schema\\nthAttribute.js":148,"./schema\\productStages.js":149,"./schema\\seo.js":150,"./schema\\variant.js":151,"angular":272}],144:[function(require,module,exports){
 module.exports = {
   "title": "Attribute Schema V4",
   "type": "object",
@@ -11915,7 +12516,7 @@ module.exports = {
   ]
 };
 
-},{"./attributeValue":145,"./attributeValueMap":146}],144:[function(require,module,exports){
+},{"./attributeValue":146,"./attributeValueMap":147}],145:[function(require,module,exports){
 module.exports = {
   "title": "Attribute Set Schema V4",
   "type": "object",
@@ -11963,7 +12564,7 @@ module.exports = {
   }
 };
 
-},{"./attribute":143}],145:[function(require,module,exports){
+},{"./attribute":144}],146:[function(require,module,exports){
 module.exports = {
     "title": "Attribute Value Schema V4",
     "type": "object",
@@ -11981,7 +12582,7 @@ module.exports = {
     "required": ["AttributeValueId"]
 };
 
-},{}],146:[function(require,module,exports){
+},{}],147:[function(require,module,exports){
 module.exports = {
   "title": "Attribute Value Map Schema V4",
   "type": "object",
@@ -11992,7 +12593,7 @@ module.exports = {
   }
 };
 
-},{"./attributeValue":145}],147:[function(require,module,exports){
+},{"./attributeValue":146}],148:[function(require,module,exports){
 module.exports = {
   "title": "Nth Attribute Schema V4",
   "type": "object",
@@ -12014,7 +12615,7 @@ module.exports = {
   "required": ["ValueEn", "AttributeId", "AttributeValues"]
 }
 
-},{"./attributeValue":145}],148:[function(require,module,exports){
+},{"./attributeValue":146}],149:[function(require,module,exports){
 module.exports = {
   "title": "Product Stage Schema V4",
   "type": "object",
@@ -12149,7 +12750,7 @@ module.exports = {
   }
 };
 
-},{"./attribute":143,"./variant":150}],149:[function(require,module,exports){
+},{"./attribute":144,"./variant":151}],150:[function(require,module,exports){
 module.exports = {
   "title": "SEO Schema V4",
   "type": "object",
@@ -12172,7 +12773,7 @@ module.exports = {
    "MetaKeywordEn", "MetaKeywordTh", "ProductUrlKeyEn", "ProductBoostingWeight"]
 }
 
-},{}],150:[function(require,module,exports){
+},{}],151:[function(require,module,exports){
 module.exports =  {
   "title": "Variant Schema V4",
   "type": "object",
@@ -12329,7 +12930,7 @@ module.exports =  {
     "Installment", "PrepareDay", "LimitIndividualDay", "Display"]
 };
 
-},{"./nthAttribute":147,"./seo":149}],151:[function(require,module,exports){
+},{"./nthAttribute":148,"./seo":150}],152:[function(require,module,exports){
 angular.module('umeSelect')
 .directive('umeFocus', ["$timeout", function($timeout) {
   return {
@@ -12356,7 +12957,7 @@ angular.module('umeSelect')
   };
 }]);
 
-},{}],152:[function(require,module,exports){
+},{}],153:[function(require,module,exports){
 var angular = require('angular');
 angular.module('umeSelect')
     .directive('youMe', ["$rootScope", "$templateCache", "$compile", "$timeout", "$filter", function ($rootScope, $templateCache, $compile, $timeout, $filter) {
@@ -12713,7 +13314,7 @@ angular.module('umeSelect')
         };
     }]);
 
-},{"angular":270}],153:[function(require,module,exports){
+},{"angular":272}],154:[function(require,module,exports){
 var angular = require('angular');
 
 
@@ -12721,7 +13322,7 @@ angular.module('umeSelect', []);
 
 (function () {var f = require("./index.js");f["directives"]=({"ume-focus":require("./directives\\ume-focus.js"),"ume-select":require("./directives\\ume-select.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
-},{"./directives\\ume-focus.js":151,"./directives\\ume-select.js":152,"./index.js":153,"./template.js":154,"angular":270}],154:[function(require,module,exports){
+},{"./directives\\ume-focus.js":152,"./directives\\ume-select.js":153,"./index.js":154,"./template.js":155,"angular":272}],155:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -12741,7 +13342,7 @@ angular.module("umeSelect").run(["$templateCache", function($templateCache) {  '
     "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-plain': hideIcon, 'ume-search' : !loading && !hideIcon, 'ume-loading': loading, 'input-active': true}\" style=\"min-height: 34px\"><input ume-focus=focusObtained ng-disabled=disabled() ume-blur=focusLost ume-id=\"{{ _id }}\" autocomplete=off tabindex=\"\" ng-model=searchText ng-focus=focus() ng-blur=blur() placeholder=\"{{ placeholder }}\" ng-keydown=keyDown($event) ng-show=\"focused || !itemValue(model)\" style=\"width: 100%\"><div ng-show=\"!focused && itemValue(model)\" class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ itemValue(model) || placeholder }}</div></div><div ng-include=\"'ume/choicelist'\"></div></div>"
   );
  }]);
-},{}],155:[function(require,module,exports){
+},{}],156:[function(require,module,exports){
 /**
  * Collection of Route ID (Object key) with route string
  *
@@ -12874,7 +13475,7 @@ var permission = {
 	'Manage Pending Products': '/admin/groups',
 	'Manage Master Products': '/admin/masters',
 	'Manage Brands': '/admin/brands',
-	'Manage Attribute & Attribute Sets': ['/admin/attributes', '/admin/attributesets'],
+	//'Manage Attribute & Attribute Sets': ['/admin/attributes', '/admin/attributesets'],
 	'Manage Global Categories': '/admin/categories',
 	'Manage Seller Accounts': '/admin/sellers',
 	'Manage Shops': ['/admin/shops', '/admin/shoptypes'],
@@ -12908,7 +13509,7 @@ module.exports = {
   permission: permission
 }
 
-},{"lodash":273}],156:[function(require,module,exports){
+},{"lodash":275}],157:[function(require,module,exports){
 module.exports = ["common", "config", "util", "$log", "$window", function (common, config, util, $log, $window) {
     'ngInject';
     'use strict';
@@ -13018,7 +13619,7 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
     return service;
 }];
 
-},{}],157:[function(require,module,exports){
+},{}],158:[function(require,module,exports){
 //Products Service
 module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     function ($http, common, util, config, KnownException) {
@@ -13111,13 +13712,13 @@ module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     }
 ];
 
-},{}],158:[function(require,module,exports){
+},{}],159:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Promotion/Ontopcreate');
 	return service;
 }];
-},{}],159:[function(require,module,exports){
+},{}],160:[function(require,module,exports){
 module.exports = ["common", "config", "util", "$log", "$window", function (common, config, util, $log, $window) {
     'ngInject';
     'use strict';
@@ -13141,7 +13742,7 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
     return service;
 }];
 
-},{}],160:[function(require,module,exports){
+},{}],161:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Admin');
@@ -13176,20 +13777,20 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],161:[function(require,module,exports){
+},{}],162:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/ProductStages/Master');
 	return service;
 }];
-},{}],162:[function(require,module,exports){
+},{}],163:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Admin');
 
 	return service;
 }]
-},{}],163:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 module.exports = ["common", "AdminPermissionService", function(common, AdminPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Admin');
@@ -13235,7 +13836,7 @@ module.exports = ["common", "AdminPermissionService", function(common, AdminPerm
 	};
 	return service;	
 }]
-},{}],164:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 module.exports = ["common", "config", "util", function(common, config, util) {
 	'ngInject';
 	var service = common.Rest('/Shops');
@@ -13281,7 +13882,7 @@ module.exports = ["common", "config", "util", function(common, config, util) {
 	};
 	return service;	
 }]
-},{}],165:[function(require,module,exports){
+},{}],166:[function(require,module,exports){
 module.exports = ["common", "ShopPermissionService", function(common, ShopPermissionService) {
 	'ngInject';
 	var service = common.Rest('/Shoptypes');
@@ -13327,7 +13928,7 @@ module.exports = ["common", "ShopPermissionService", function(common, ShopPermis
 	};
 	return service;	
 }]
-},{}],166:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common){
 	'use strict';
@@ -13576,7 +14177,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{"angular":270}],167:[function(require,module,exports){
+},{"angular":272}],168:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/Attributes');
@@ -13690,7 +14291,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }];
-},{}],168:[function(require,module,exports){
+},{}],169:[function(require,module,exports){
 module.exports = ['common', function(common){
 	'use strict';
 	var service = {};
@@ -13838,7 +14439,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{}],169:[function(require,module,exports){
+},{}],170:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/AttributeSets');
@@ -13929,7 +14530,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }]
-},{}],170:[function(require,module,exports){
+},{}],171:[function(require,module,exports){
 module.exports = ['$window', function($window) {
 	return function(fn, close) {
 		var vm = this;
@@ -13965,7 +14566,7 @@ module.exports = ['$window', function($window) {
 		};
 	};
 }];
-},{}],171:[function(require,module,exports){
+},{}],172:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$q', 'common', function($q, common){
 	var service = {};
@@ -14051,7 +14652,7 @@ module.exports = ['$q', 'common', function($q, common){
 	};
 	return service;
 }];
-},{"angular":270}],172:[function(require,module,exports){
+},{"angular":272}],173:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	service = common.Rest('/Brands');
@@ -14076,7 +14677,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }]
-},{}],173:[function(require,module,exports){
+},{}],174:[function(require,module,exports){
 /**
  * Util class for category
  * @author poonwu
@@ -14403,14 +15004,14 @@ module.exports = ['config', function(config) {
     return service;
 }];
 
-},{"angular":270}],174:[function(require,module,exports){
+},{"angular":272}],175:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common) {
 	var service = common.Rest('/Coupons');
 	return service;
 }];
 
-},{"angular":270}],175:[function(require,module,exports){
+},{"angular":272}],176:[function(require,module,exports){
 //TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in poon's local)
 module.exports = ["common", "$base64", "storage", "$q", "$rootScope", function(common, $base64, storage, $q, $rootScope) {
     'ngInject';
@@ -14522,7 +15123,7 @@ module.exports = ["common", "$base64", "storage", "$q", "$rootScope", function(c
 	return service;
 }];
 
-},{}],176:[function(require,module,exports){
+},{}],177:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$window', '$base64', 'config', function($window, $base64, config) {
@@ -14539,7 +15140,7 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
     };
 }];
 
-},{"angular":270}],177:[function(require,module,exports){
+},{"angular":272}],178:[function(require,module,exports){
 module.exports = ["config", "storage", "FileUploader", function(config, storage, FileUploader) {
 	'ngInject';
 	var service = {};
@@ -14559,7 +15160,7 @@ module.exports = ["config", "storage", "FileUploader", function(config, storage,
 	};
 	return service;
 }];
-},{}],178:[function(require,module,exports){
+},{}],179:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/GlobalCategories');
@@ -14627,7 +15228,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],179:[function(require,module,exports){
+},{}],180:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	service = common.Rest('/GlobalCategories');
@@ -14702,7 +15303,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],180:[function(require,module,exports){
+},{}],181:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Coupons');
@@ -14740,7 +15341,7 @@ module.exports = ["common", function(common) {
     };
 	return service;
 }]
-},{}],181:[function(require,module,exports){
+},{}],182:[function(require,module,exports){
 var angular = require('angular');
 //Image Service
 //Note: this file is not used anywhere (legacy!!! dOnt edit )
@@ -14832,7 +15433,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	return service;
 }];
 
-},{"angular":270}],182:[function(require,module,exports){
+},{"angular":272}],183:[function(require,module,exports){
 //Image Service
 module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", "Upload", function($q, $http, common, storage, config, FileUploader, Upload) {
   'ngInject';
@@ -14958,12 +15559,12 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
   return service;
 }];
 
-},{}],183:[function(require,module,exports){
+},{}],184:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Inventories');
 	return service;
 };
-},{}],184:[function(require,module,exports){
+},{}],185:[function(require,module,exports){
 module.exports = [function() {
 	'use strict';
 
@@ -14971,7 +15572,7 @@ module.exports = [function() {
         this.message = "Known Exception - " + msg;   
     };
 }];
-},{}],185:[function(require,module,exports){
+},{}],186:[function(require,module,exports){
 module.exports = ['common', function(common) {
 	'use strict';
 	var service = {};
@@ -15010,7 +15611,7 @@ module.exports = ['common', function(common) {
 
 	return service;
 }];
-},{}],186:[function(require,module,exports){
+},{}],187:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/LocalCategories');
@@ -15053,7 +15654,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	};
 	return service;
 }];
-},{}],187:[function(require,module,exports){
+},{}],188:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Newsletters');
 
@@ -15068,7 +15669,7 @@ module.exports = function(common) {
 
 	return service;
 };
-},{}],188:[function(require,module,exports){
+},{}],189:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	service = common.Rest('/Orders');
@@ -15082,7 +15683,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }]
-},{}],189:[function(require,module,exports){
+},{}],190:[function(require,module,exports){
 // Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config', 'KnownException',
 	function($http, common, util, LocalCategory, Brand, config, KnownException) {
@@ -15659,7 +16260,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 	}
 ]
 
-},{}],190:[function(require,module,exports){
+},{}],191:[function(require,module,exports){
 module.exports = ["common", "util", function(common, util) {
 	'ngInject';
 	var service = common.Rest('/ProductReviews');
@@ -15695,7 +16296,7 @@ module.exports = ["common", "util", function(common, util) {
 	};	
 	return service;
 }];
-},{}],191:[function(require,module,exports){
+},{}],192:[function(require,module,exports){
 module.exports = ["common", "util", function(common, util) {
 	'ngInject';
 	var service = common.Rest('/ProductTemps');
@@ -15703,12 +16304,12 @@ module.exports = ["common", "util", function(common, util) {
 	return service;
 }];
 
-},{}],192:[function(require,module,exports){
+},{}],193:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Returns');
 	return service;
 };
-},{}],193:[function(require,module,exports){
+},{}],194:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Seller');
@@ -15743,7 +16344,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],194:[function(require,module,exports){
+},{}],195:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Coupons');
@@ -15772,14 +16373,14 @@ module.exports = ["common", function(common) {
     };
 	return service;
 }]
-},{}],195:[function(require,module,exports){
+},{}],196:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Seller');
 	
 	return service;
 }]
-},{}],196:[function(require,module,exports){
+},{}],197:[function(require,module,exports){
 module.exports = ["common", "SellerPermissionService", function(common, SellerPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Seller');
@@ -15825,13 +16426,13 @@ module.exports = ["common", "SellerPermissionService", function(common, SellerPe
 	};
 	return service;	
 }]
-},{}],197:[function(require,module,exports){
+},{}],198:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/Shippings');
 	return service;
 }];
-},{}],198:[function(require,module,exports){
+},{}],199:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     'use strict';
@@ -15890,7 +16491,7 @@ module.exports = ["common", "config", "util", function (common, config, util) {
     return service;
 }];
 
-},{}],199:[function(require,module,exports){
+},{}],200:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     var service = common.Rest('/Shops/ShopAppearance');
@@ -15915,20 +16516,20 @@ module.exports = ["common", "config", "util", function (common, config, util) {
 
     return service;
 }];
-},{}],200:[function(require,module,exports){
+},{}],201:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Shop');
 
 	return service;
 }]
-},{}],201:[function(require,module,exports){
+},{}],202:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     var service = common.Rest('/Shops/Profile');
     return service;
 }];
-},{}],202:[function(require,module,exports){
+},{}],203:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = {};
@@ -15942,7 +16543,7 @@ module.exports = ["common", function(common) {
 
 	return service;
 }]
-},{}],203:[function(require,module,exports){
+},{}],204:[function(require,module,exports){
 module.exports = {
     NameTH: {
         labelClass: "required",
@@ -16081,7 +16682,7 @@ module.exports = {
     }
 }
 
-},{}],204:[function(require,module,exports){
+},{}],205:[function(require,module,exports){
 module.exports = {
 	AttributeNameEn: {
       'labelClass': 'required',
@@ -16122,7 +16723,7 @@ module.exports = {
    	}
     
 };
-},{}],205:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 module.exports = {
 	AttributeSetNameEn: {
 	  'labelClass': 'required',
@@ -16148,7 +16749,7 @@ module.exports = {
       }
     }
 }
-},{}],206:[function(require,module,exports){
+},{}],207:[function(require,module,exports){
 module.exports = {
     BrandImage: {
     },
@@ -16178,7 +16779,7 @@ module.exports = {
     }
 };
 
-},{}],207:[function(require,module,exports){
+},{}],208:[function(require,module,exports){
 module.exports = {
     NameEn: {
         'labelClass': 'required',
@@ -16218,7 +16819,7 @@ module.exports = {
 
 }
 
-},{}],208:[function(require,module,exports){
+},{}],209:[function(require,module,exports){
 module.exports = {
 	ChildProducts: {
 		labelClass: 'required',
@@ -16237,7 +16838,7 @@ module.exports = {
 	    }
 	}
 };
-},{}],209:[function(require,module,exports){
+},{}],210:[function(require,module,exports){
 module.exports = {
     Image: {
 
@@ -16276,7 +16877,7 @@ module.exports = {
 
     }
 }
-},{}],210:[function(require,module,exports){
+},{}],211:[function(require,module,exports){
 module.exports = {
   KillerPointTh: {
     divClass: 'col-xs-6',
@@ -16479,7 +17080,7 @@ module.exports = {
   }
 }
 
-},{}],211:[function(require,module,exports){
+},{}],212:[function(require,module,exports){
 module.exports = {
 	GroupNameEn: {
       'labelClass': 'required',
@@ -16491,7 +17092,7 @@ module.exports = {
     }
 
 }
-},{}],212:[function(require,module,exports){
+},{}],213:[function(require,module,exports){
 module.exports = {
 	TaxPayerId: {
 		inputSize: 'large',
@@ -16571,7 +17172,7 @@ module.exports = {
 		input: 'large'
 	}
 }
-},{}],213:[function(require,module,exports){
+},{}],214:[function(require,module,exports){
 module.exports = {
     Layout: {
         // tooltip: "Please select 'Available' if you can provide gift wrapping service to your customer",
@@ -16589,7 +17190,7 @@ module.exports = {
     }
 }
 
-},{}],214:[function(require,module,exports){
+},{}],215:[function(require,module,exports){
 module.exports = {
 	ShopTypeNameEn: {
       'labelClass': 'required',
@@ -16600,7 +17201,7 @@ module.exports = {
        }
     }
 }
-},{}],215:[function(require,module,exports){
+},{}],216:[function(require,module,exports){
 module.exports = {
     'NothingSpecial': {
         
@@ -16610,7 +17211,7 @@ module.exports = {
     }
 };
 
-},{}],216:[function(require,module,exports){
+},{}],217:[function(require,module,exports){
 module.exports = {
   CouponName: {
     labelClass: "required",
@@ -16672,7 +17273,7 @@ module.exports = {
   }
 }
 
-},{}],217:[function(require,module,exports){
+},{}],218:[function(require,module,exports){
 module.exports = {
     Required: {
         'labelClass': 'required'
@@ -16680,7 +17281,7 @@ module.exports = {
 
 }
 
-},{}],218:[function(require,module,exports){
+},{}],219:[function(require,module,exports){
 module.exports = {
   // Description
     DescriptionFull: {
@@ -16721,14 +17322,14 @@ module.exports = {
         inputClass: 'large'
     }
 }
-},{}],219:[function(require,module,exports){
+},{}],220:[function(require,module,exports){
 module.exports = {
   MultiCheckbox: {
     transcludeClasses:  "checkbox multiple-checkbox multiline"
   }
 }
 
-},{}],220:[function(require,module,exports){
+},{}],221:[function(require,module,exports){
 module.exports = {
 	ColumnSearch: {
 
@@ -16784,7 +17385,7 @@ module.exports = {
 	}
 }
 
-},{}],221:[function(require,module,exports){
+},{}],222:[function(require,module,exports){
 module.exports = {
   ProductName: {},
   Pid: {},
@@ -16816,7 +17417,7 @@ module.exports = {
   }
 }
 
-},{}],222:[function(require,module,exports){
+},{}],223:[function(require,module,exports){
 module.exports = {
     GiftWrap: {
         tooltip: "Please select 'Available' if you can provide gift wrapping service to your customer"
@@ -16884,7 +17485,7 @@ module.exports = {
     }
 }
 
-},{}],223:[function(require,module,exports){
+},{}],224:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -17018,7 +17619,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/input/tradable-select',
-    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><input ng-model=search class=\"form-control input-search-icon search-box\" placeholder=\"{{ searchPlaceholder }}\" aria-describedby=basic-addon2></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable track by $index\" ng-class=\"{ 'active' : activeLeft == selectable.indexOf(item) }\" ng-click=\"select(selectable.indexOf(item), true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=active(false) ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=active(true) ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>{{ header }}</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == model.indexOf(item), 'disabled' : test(item) }\" ng-click=\"select(model.indexOf(item), false)\">{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div></div>"
+    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><input ng-model=search class=\"form-control input-search-icon search-box\" placeholder={{searchPlaceholder}} aria-describedby=basic-addon2></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable track by $index\" ng-class=\"{ 'active' : activeLeft == $index }\" ng-click=\"select($index, true)\">{{ item[text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=active(true) ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=active(false) ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>{{ header }}</span></div><div class=clickable-list><ul dnd-list=model class=content-column><li ng-repeat=\"item in model\" ng-class=\"{ 'active' : activeRight == $index, 'disabled' : test(item) }\" dnd-draggable=item dnd-moved=\"onDrag($index, item)\" ng-click=\"select($index, false)\">{{ item[text] }}</li></ul></div></div></div>"
   );
 
 
@@ -17261,7 +17862,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "<div class=modal-header><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Add Commission Rule</h3></div><div class=modal-body style=\"padding-top: 15px\"><div class=\"category-section column-4 ah-form\"><nc-tree-select nc-model=model nc-tree-select-tree=tree nc-tree-select-title=\"Global Category\"></nc-tree-select><div class=\"category-footer no-padding form-group\" style=\"margin: 30px 0px 0px 0px\"><div class=float-right><span class=float-left>Commission (%)</span><form name=form class=width-field-normal><input class=form-control ng-class=\"{ 'has-error' : $root.isInvalid(form.Commission) }\" name=Commission ng-model=Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-maxnumber=100 ng-minnumber=\"0\"><div class=\"help-block color-red float-left\"><div ng-if=\"form.Commission.$error.maxnumber || form.Commission.$error.minnumber\">Please enter between 0% and 100%</div><div ng-if=form.Commission.$error.pattern>Only numbers and decimals (up to 2 digits) allowed</div></div></form><button class=\"btn btn-blue btn-width-xl float-left\" ng-click=select() ng-disabled=\"form.$invalid || _.isEmpty(Commission) || _.isEmpty(model)\">Set</button></div></div></div></div>"
   );
  }];
-},{}],224:[function(require,module,exports){
+},{}],225:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -21193,11 +21794,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-},{}],225:[function(require,module,exports){
+},{}],226:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":224}],226:[function(require,module,exports){
+},{"./angular-animate":225}],227:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -21365,7 +21966,7 @@ module.exports = 'ngAnimate';
 
 })();
 
-},{}],227:[function(require,module,exports){
+},{}],228:[function(require,module,exports){
 //! moment.js
 //! version : 2.12.0
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -25054,7 +25655,7 @@ module.exports = 'ngAnimate';
     return _moment;
 
 }));
-},{}],228:[function(require,module,exports){
+},{}],229:[function(require,module,exports){
 /*globals define, jQuery, module, require */
 /*jslint vars:true */
 
@@ -25504,7 +26105,7 @@ module.exports = 'ngAnimate';
     }]);
 }));
 
-},{"angular":270,"moment":227}],229:[function(require,module,exports){
+},{"angular":272,"moment":228}],230:[function(require,module,exports){
 (function (factory) {
   'use strict';
   if (typeof exports === 'object') {
@@ -25868,7 +26469,7 @@ module.exports = 'ngAnimate';
   }
 }));
 
-},{"angular":270,"chart.js":230}],230:[function(require,module,exports){
+},{"angular":272,"chart.js":231}],231:[function(require,module,exports){
 /*!
  * Chart.js
  * http://chartjs.org/
@@ -29346,7 +29947,7 @@ module.exports = 'ngAnimate';
 
 
 }).call(this);
-},{}],231:[function(require,module,exports){
+},{}],232:[function(require,module,exports){
 (function (root, factory) {
     /* istanbul ignore next */
     if (typeof define === 'function' && define.amd) {
@@ -29424,7 +30025,7 @@ return angular.module('angular-clipboard', [])
     }]);
 
 }));
-},{"angular":270}],232:[function(require,module,exports){
+},{"angular":272}],233:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -29748,11 +30349,603 @@ angular.module('ngCookies').provider('$$cookieWriter', function $$CookieWriterPr
 
 })(window, window.angular);
 
-},{}],233:[function(require,module,exports){
+},{}],234:[function(require,module,exports){
 require('./angular-cookies');
 module.exports = 'ngCookies';
 
-},{"./angular-cookies":232}],234:[function(require,module,exports){
+},{"./angular-cookies":233}],235:[function(require,module,exports){
+/**
+ * angular-drag-and-drop-lists v1.4.0
+ *
+ * Copyright (c) 2014 Marcel Juenemann marcel@juenemann.cc
+ * Copyright (c) 2014-2016 Google Inc.
+ * https://github.com/marceljuenemann/angular-drag-and-drop-lists
+ *
+ * License: MIT
+ */
+angular.module('dndLists', [])
+
+  /**
+   * Use the dnd-draggable attribute to make your element draggable
+   *
+   * Attributes:
+   * - dnd-draggable      Required attribute. The value has to be an object that represents the data
+   *                      of the element. In case of a drag and drop operation the object will be
+   *                      serialized and unserialized on the receiving end.
+   * - dnd-selected       Callback that is invoked when the element was clicked but not dragged.
+   *                      The original click event will be provided in the local event variable.
+   * - dnd-effect-allowed Use this attribute to limit the operations that can be performed. Options:
+   *                      - "move": The drag operation will move the element. This is the default.
+   *                      - "copy": The drag operation will copy the element. Shows a copy cursor.
+   *                      - "copyMove": The user can choose between copy and move by pressing the
+   *                        ctrl or shift key. *Not supported in IE:* In Internet Explorer this
+   *                        option will be the same as "copy". *Not fully supported in Chrome on
+   *                        Windows:* In the Windows version of Chrome the cursor will always be the
+   *                        move cursor. However, when the user drops an element and has the ctrl
+   *                        key pressed, we will perform a copy anyways.
+   *                      - HTML5 also specifies the "link" option, but this library does not
+   *                        actively support it yet, so use it at your own risk.
+   * - dnd-moved          Callback that is invoked when the element was moved. Usually you will
+   *                      remove your element from the original list in this callback, since the
+   *                      directive is not doing that for you automatically. The original dragend
+   *                      event will be provided in the local event variable.
+   * - dnd-canceled       Callback that is invoked if the element was dragged, but the operation was
+   *                      canceled and the element was not dropped. The original dragend event will
+   *                      be provided in the local event variable.
+   * - dnd-copied         Same as dnd-moved, just that it is called when the element was copied
+   *                      instead of moved. The original dragend event will be provided in the local
+   *                      event variable.
+   * - dnd-dragstart      Callback that is invoked when the element was dragged. The original
+   *                      dragstart event will be provided in the local event variable.
+   * - dnd-dragend        Callback that is invoked when the drag operation ended. Available local
+   *                      variables are event and dropEffect.
+   * - dnd-type           Use this attribute if you have different kinds of items in your
+   *                      application and you want to limit which items can be dropped into which
+   *                      lists. Combine with dnd-allowed-types on the dnd-list(s). This attribute
+   *                      should evaluate to a string, although this restriction is not enforced.
+   * - dnd-disable-if     You can use this attribute to dynamically disable the draggability of the
+   *                      element. This is useful if you have certain list items that you don't want
+   *                      to be draggable, or if you want to disable drag & drop completely without
+   *                      having two different code branches (e.g. only allow for admins).
+   *                      **Note**: If your element is not draggable, the user is probably able to
+   *                      select text or images inside of it. Since a selection is always draggable,
+   *                      this breaks your UI. You most likely want to disable user selection via
+   *                      CSS (see user-select).
+   *
+   * CSS classes:
+   * - dndDragging        This class will be added to the element while the element is being
+   *                      dragged. It will affect both the element you see while dragging and the
+   *                      source element that stays at it's position. Do not try to hide the source
+   *                      element with this class, because that will abort the drag operation.
+   * - dndDraggingSource  This class will be added to the element after the drag operation was
+   *                      started, meaning it only affects the original element that is still at
+   *                      it's source position, and not the "element" that the user is dragging with
+   *                      his mouse pointer.
+   */
+  .directive('dndDraggable', ['$parse', '$timeout', 'dndDropEffectWorkaround', 'dndDragTypeWorkaround',
+                      function($parse,   $timeout,   dndDropEffectWorkaround,   dndDragTypeWorkaround) {
+    return function(scope, element, attr) {
+      // Set the HTML5 draggable attribute on the element
+      element.attr("draggable", "true");
+
+      // If the dnd-disable-if attribute is set, we have to watch that
+      if (attr.dndDisableIf) {
+        scope.$watch(attr.dndDisableIf, function(disabled) {
+          element.attr("draggable", !disabled);
+        });
+      }
+
+      /**
+       * When the drag operation is started we have to prepare the dataTransfer object,
+       * which is the primary way we communicate with the target element
+       */
+      element.on('dragstart', function(event) {
+        event = event.originalEvent || event;
+
+        // Check whether the element is draggable, since dragstart might be triggered on a child.
+        if (element.attr('draggable') == 'false') return true;
+
+        // Serialize the data associated with this element. IE only supports the Text drag type
+        event.dataTransfer.setData("Text", angular.toJson(scope.$eval(attr.dndDraggable)));
+
+        // Only allow actions specified in dnd-effect-allowed attribute
+        event.dataTransfer.effectAllowed = attr.dndEffectAllowed || "move";
+
+        // Add CSS classes. See documentation above
+        element.addClass("dndDragging");
+        $timeout(function() { element.addClass("dndDraggingSource"); }, 0);
+
+        // Workarounds for stupid browsers, see description below
+        dndDropEffectWorkaround.dropEffect = "none";
+        dndDragTypeWorkaround.isDragging = true;
+
+        // Save type of item in global state. Usually, this would go into the dataTransfer
+        // typename, but we have to use "Text" there to support IE
+        dndDragTypeWorkaround.dragType = attr.dndType ? scope.$eval(attr.dndType) : undefined;
+
+        // Try setting a proper drag image if triggered on a dnd-handle (won't work in IE).
+        if (event._dndHandle && event.dataTransfer.setDragImage) {
+          event.dataTransfer.setDragImage(element[0], 0, 0);
+        }
+
+        // Invoke callback
+        $parse(attr.dndDragstart)(scope, {event: event});
+
+        event.stopPropagation();
+      });
+
+      /**
+       * The dragend event is triggered when the element was dropped or when the drag
+       * operation was aborted (e.g. hit escape button). Depending on the executed action
+       * we will invoke the callbacks specified with the dnd-moved or dnd-copied attribute.
+       */
+      element.on('dragend', function(event) {
+        event = event.originalEvent || event;
+
+        // Invoke callbacks. Usually we would use event.dataTransfer.dropEffect to determine
+        // the used effect, but Chrome has not implemented that field correctly. On Windows
+        // it always sets it to 'none', while Chrome on Linux sometimes sets it to something
+        // else when it's supposed to send 'none' (drag operation aborted).
+        var dropEffect = dndDropEffectWorkaround.dropEffect;
+        scope.$apply(function() {
+          switch (dropEffect) {
+            case "move":
+              $parse(attr.dndMoved)(scope, {event: event});
+              break;
+            case "copy":
+              $parse(attr.dndCopied)(scope, {event: event});
+              break;
+            case "none":
+              $parse(attr.dndCanceled)(scope, {event: event});
+              break;
+          }
+          $parse(attr.dndDragend)(scope, {event: event, dropEffect: dropEffect});
+        });
+
+        // Clean up
+        element.removeClass("dndDragging");
+        $timeout(function() { element.removeClass("dndDraggingSource"); }, 0);
+        dndDragTypeWorkaround.isDragging = false;
+        event.stopPropagation();
+      });
+
+      /**
+       * When the element is clicked we invoke the callback function
+       * specified with the dnd-selected attribute.
+       */
+      element.on('click', function(event) {
+        if (!attr.dndSelected) return;
+
+        event = event.originalEvent || event;
+        scope.$apply(function() {
+          $parse(attr.dndSelected)(scope, {event: event});
+        });
+
+        // Prevent triggering dndSelected in parent elements.
+        event.stopPropagation();
+      });
+
+      /**
+       * Workaround to make element draggable in IE9
+       */
+      element.on('selectstart', function() {
+        if (this.dragDrop) this.dragDrop();
+      });
+    };
+  }])
+
+  /**
+   * Use the dnd-list attribute to make your list element a dropzone. Usually you will add a single
+   * li element as child with the ng-repeat directive. If you don't do that, we will not be able to
+   * position the dropped element correctly. If you want your list to be sortable, also add the
+   * dnd-draggable directive to your li element(s). Both the dnd-list and it's direct children must
+   * have position: relative CSS style, otherwise the positioning algorithm will not be able to
+   * determine the correct placeholder position in all browsers.
+   *
+   * Attributes:
+   * - dnd-list             Required attribute. The value has to be the array in which the data of
+   *                        the dropped element should be inserted.
+   * - dnd-allowed-types    Optional array of allowed item types. When used, only items that had a
+   *                        matching dnd-type attribute will be dropable.
+   * - dnd-disable-if       Optional boolean expresssion. When it evaluates to true, no dropping
+   *                        into the list is possible. Note that this also disables rearranging
+   *                        items inside the list.
+   * - dnd-horizontal-list  Optional boolean expresssion. When it evaluates to true, the positioning
+   *                        algorithm will use the left and right halfs of the list items instead of
+   *                        the upper and lower halfs.
+   * - dnd-dragover         Optional expression that is invoked when an element is dragged over the
+   *                        list. If the expression is set, but does not return true, the element is
+   *                        not allowed to be dropped. The following variables will be available:
+   *                        - event: The original dragover event sent by the browser.
+   *                        - index: The position in the list at which the element would be dropped.
+   *                        - type: The dnd-type set on the dnd-draggable, or undefined if unset.
+   *                        - external: Whether the element was dragged from an external source.
+   * - dnd-drop             Optional expression that is invoked when an element is dropped on the
+   *                        list. The following variables will be available:
+   *                        - event: The original drop event sent by the browser.
+   *                        - index: The position in the list at which the element would be dropped.
+   *                        - item: The transferred object.
+   *                        - type: The dnd-type set on the dnd-draggable, or undefined if unset.
+   *                        - external: Whether the element was dragged from an external source.
+   *                        The return value determines the further handling of the drop:
+   *                        - false: The drop will be canceled and the element won't be inserted.
+   *                        - true: Signalises that the drop is allowed, but the dnd-drop
+   *                          callback already took care of inserting the element.
+   *                        - otherwise: All other return values will be treated as the object to
+   *                          insert into the array. In most cases you want to simply return the
+   *                          item parameter, but there are no restrictions on what you can return.
+   * - dnd-inserted         Optional expression that is invoked after a drop if the element was
+   *                        actually inserted into the list. The same local variables as for
+   *                        dnd-drop will be available. Note that for reorderings inside the same
+   *                        list the old element will still be in the list due to the fact that
+   *                        dnd-moved was not called yet.
+   * - dnd-external-sources Optional boolean expression. When it evaluates to true, the list accepts
+   *                        drops from sources outside of the current browser tab. This allows to
+   *                        drag and drop accross different browser tabs. Note that this will allow
+   *                        to drop arbitrary text into the list, thus it is highly recommended to
+   *                        implement the dnd-drop callback to check the incoming element for
+   *                        sanity. Furthermore, the dnd-type of external sources can not be
+   *                        determined, therefore do not rely on restrictions of dnd-allowed-type.
+   *
+   * CSS classes:
+   * - dndPlaceholder       When an element is dragged over the list, a new placeholder child
+   *                        element will be added. This element is of type li and has the class
+   *                        dndPlaceholder set. Alternatively, you can define your own placeholder
+   *                        by creating a child element with dndPlaceholder class.
+   * - dndDragover          Will be added to the list while an element is dragged over the list.
+   */
+  .directive('dndList', ['$parse', '$timeout', 'dndDropEffectWorkaround', 'dndDragTypeWorkaround',
+                 function($parse,   $timeout,   dndDropEffectWorkaround,   dndDragTypeWorkaround) {
+    return function(scope, element, attr) {
+      // While an element is dragged over the list, this placeholder element is inserted
+      // at the location where the element would be inserted after dropping
+      var placeholder = getPlaceholderElement();
+      var placeholderNode = placeholder[0];
+      var listNode = element[0];
+      placeholder.remove();
+
+      var horizontal = attr.dndHorizontalList && scope.$eval(attr.dndHorizontalList);
+      var externalSources = attr.dndExternalSources && scope.$eval(attr.dndExternalSources);
+
+      /**
+       * The dragenter event is fired when a dragged element or text selection enters a valid drop
+       * target. According to the spec, we either need to have a dropzone attribute or listen on
+       * dragenter events and call preventDefault(). It should be noted though that no browser seems
+       * to enforce this behaviour.
+       */
+      element.on('dragenter', function (event) {
+        event = event.originalEvent || event;
+        if (!isDropAllowed(event)) return true;
+        event.preventDefault();
+      });
+
+      /**
+       * The dragover event is triggered "every few hundred milliseconds" while an element
+       * is being dragged over our list, or over an child element.
+       */
+      element.on('dragover', function(event) {
+        event = event.originalEvent || event;
+
+        if (!isDropAllowed(event)) return true;
+
+        // First of all, make sure that the placeholder is shown
+        // This is especially important if the list is empty
+        if (placeholderNode.parentNode != listNode) {
+          element.append(placeholder);
+        }
+
+        if (event.target !== listNode) {
+          // Try to find the node direct directly below the list node.
+          var listItemNode = event.target;
+          while (listItemNode.parentNode !== listNode && listItemNode.parentNode) {
+            listItemNode = listItemNode.parentNode;
+          }
+
+          if (listItemNode.parentNode === listNode && listItemNode !== placeholderNode) {
+            // If the mouse pointer is in the upper half of the child element,
+            // we place it before the child element, otherwise below it.
+            if (isMouseInFirstHalf(event, listItemNode)) {
+              listNode.insertBefore(placeholderNode, listItemNode);
+            } else {
+              listNode.insertBefore(placeholderNode, listItemNode.nextSibling);
+            }
+          }
+        } else {
+          // This branch is reached when we are dragging directly over the list element.
+          // Usually we wouldn't need to do anything here, but the IE does not fire it's
+          // events for the child element, only for the list directly. Therefore, we repeat
+          // the positioning algorithm for IE here.
+          if (isMouseInFirstHalf(event, placeholderNode, true)) {
+            // Check if we should move the placeholder element one spot towards the top.
+            // Note that display none elements will have offsetTop and offsetHeight set to
+            // zero, therefore we need a special check for them.
+            while (placeholderNode.previousElementSibling
+                 && (isMouseInFirstHalf(event, placeholderNode.previousElementSibling, true)
+                 || placeholderNode.previousElementSibling.offsetHeight === 0)) {
+              listNode.insertBefore(placeholderNode, placeholderNode.previousElementSibling);
+            }
+          } else {
+            // Check if we should move the placeholder element one spot towards the bottom
+            while (placeholderNode.nextElementSibling &&
+                 !isMouseInFirstHalf(event, placeholderNode.nextElementSibling, true)) {
+              listNode.insertBefore(placeholderNode,
+                  placeholderNode.nextElementSibling.nextElementSibling);
+            }
+          }
+        }
+
+        // At this point we invoke the callback, which still can disallow the drop.
+        // We can't do this earlier because we want to pass the index of the placeholder.
+        if (attr.dndDragover && !invokeCallback(attr.dndDragover, event, getPlaceholderIndex())) {
+          return stopDragover();
+        }
+
+        element.addClass("dndDragover");
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+      });
+
+      /**
+       * When the element is dropped, we use the position of the placeholder element as the
+       * position where we insert the transferred data. This assumes that the list has exactly
+       * one child element per array element.
+       */
+      element.on('drop', function(event) {
+        event = event.originalEvent || event;
+
+        if (!isDropAllowed(event)) return true;
+
+        // The default behavior in Firefox is to interpret the dropped element as URL and
+        // forward to it. We want to prevent that even if our drop is aborted.
+        event.preventDefault();
+
+        // Unserialize the data that was serialized in dragstart. According to the HTML5 specs,
+        // the "Text" drag type will be converted to text/plain, but IE does not do that.
+        var data = event.dataTransfer.getData("Text") || event.dataTransfer.getData("text/plain");
+        var transferredObject;
+        try {
+          transferredObject = JSON.parse(data);
+        } catch(e) {
+          return stopDragover();
+        }
+
+        // Invoke the callback, which can transform the transferredObject and even abort the drop.
+        var index = getPlaceholderIndex();
+        if (attr.dndDrop) {
+          transferredObject = invokeCallback(attr.dndDrop, event, index, transferredObject);
+          if (!transferredObject) {
+            return stopDragover();
+          }
+        }
+
+        // Insert the object into the array, unless dnd-drop took care of that (returned true).
+        if (transferredObject !== true) {
+          scope.$apply(function() {
+            scope.$eval(attr.dndList).splice(index, 0, transferredObject);
+          });
+        }
+        invokeCallback(attr.dndInserted, event, index, transferredObject);
+
+        // In Chrome on Windows the dropEffect will always be none...
+        // We have to determine the actual effect manually from the allowed effects
+        if (event.dataTransfer.dropEffect === "none") {
+          if (event.dataTransfer.effectAllowed === "copy" ||
+              event.dataTransfer.effectAllowed === "move") {
+            dndDropEffectWorkaround.dropEffect = event.dataTransfer.effectAllowed;
+          } else {
+            dndDropEffectWorkaround.dropEffect = event.ctrlKey ? "copy" : "move";
+          }
+        } else {
+          dndDropEffectWorkaround.dropEffect = event.dataTransfer.dropEffect;
+        }
+
+        // Clean up
+        stopDragover();
+        event.stopPropagation();
+        return false;
+      });
+
+      /**
+       * We have to remove the placeholder when the element is no longer dragged over our list. The
+       * problem is that the dragleave event is not only fired when the element leaves our list,
+       * but also when it leaves a child element -- so practically it's fired all the time. As a
+       * workaround we wait a few milliseconds and then check if the dndDragover class was added
+       * again. If it is there, dragover must have been called in the meantime, i.e. the element
+       * is still dragging over the list. If you know a better way of doing this, please tell me!
+       */
+      element.on('dragleave', function(event) {
+        event = event.originalEvent || event;
+
+        element.removeClass("dndDragover");
+        $timeout(function() {
+          if (!element.hasClass("dndDragover")) {
+            placeholder.remove();
+          }
+        }, 100);
+      });
+
+      /**
+       * Checks whether the mouse pointer is in the first half of the given target element.
+       *
+       * In Chrome we can just use offsetY, but in Firefox we have to use layerY, which only
+       * works if the child element has position relative. In IE the events are only triggered
+       * on the listNode instead of the listNodeItem, therefore the mouse positions are
+       * relative to the parent element of targetNode.
+       */
+      function isMouseInFirstHalf(event, targetNode, relativeToParent) {
+        var mousePointer = horizontal ? (event.offsetX || event.layerX)
+                                      : (event.offsetY || event.layerY);
+        var targetSize = horizontal ? targetNode.offsetWidth : targetNode.offsetHeight;
+        var targetPosition = horizontal ? targetNode.offsetLeft : targetNode.offsetTop;
+        targetPosition = relativeToParent ? targetPosition : 0;
+        return mousePointer < targetPosition + targetSize / 2;
+      }
+
+      /**
+       * Tries to find a child element that has the dndPlaceholder class set. If none was found, a
+       * new li element is created.
+       */
+      function getPlaceholderElement() {
+        var placeholder;
+        angular.forEach(element.children(), function(childNode) {
+          var child = angular.element(childNode);
+          if (child.hasClass('dndPlaceholder')) {
+            placeholder = child;
+          }
+        });
+        return placeholder || angular.element("<li class='dndPlaceholder'></li>");
+      }
+
+      /**
+       * We use the position of the placeholder node to determine at which position of the array the
+       * object needs to be inserted
+       */
+      function getPlaceholderIndex() {
+        return Array.prototype.indexOf.call(listNode.children, placeholderNode);
+      }
+
+      /**
+       * Checks various conditions that must be fulfilled for a drop to be allowed
+       */
+      function isDropAllowed(event) {
+        // Disallow drop from external source unless it's allowed explicitly.
+        if (!dndDragTypeWorkaround.isDragging && !externalSources) return false;
+
+        // Check mimetype. Usually we would use a custom drag type instead of Text, but IE doesn't
+        // support that.
+        if (!hasTextMimetype(event.dataTransfer.types)) return false;
+
+        // Now check the dnd-allowed-types against the type of the incoming element. For drops from
+        // external sources we don't know the type, so it will need to be checked via dnd-drop.
+        if (attr.dndAllowedTypes && dndDragTypeWorkaround.isDragging) {
+          var allowed = scope.$eval(attr.dndAllowedTypes);
+          if (angular.isArray(allowed) && allowed.indexOf(dndDragTypeWorkaround.dragType) === -1) {
+            return false;
+          }
+        }
+
+        // Check whether droping is disabled completely
+        if (attr.dndDisableIf && scope.$eval(attr.dndDisableIf)) return false;
+
+        return true;
+      }
+
+      /**
+       * Small helper function that cleans up if we aborted a drop.
+       */
+      function stopDragover() {
+        placeholder.remove();
+        element.removeClass("dndDragover");
+        return true;
+      }
+
+      /**
+       * Invokes a callback with some interesting parameters and returns the callbacks return value.
+       */
+      function invokeCallback(expression, event, index, item) {
+        return $parse(expression)(scope, {
+          event: event,
+          index: index,
+          item: item || undefined,
+          external: !dndDragTypeWorkaround.isDragging,
+          type: dndDragTypeWorkaround.isDragging ? dndDragTypeWorkaround.dragType : undefined
+        });
+      }
+
+      /**
+       * Check if the dataTransfer object contains a drag type that we can handle. In old versions
+       * of IE the types collection will not even be there, so we just assume a drop is possible.
+       */
+      function hasTextMimetype(types) {
+        if (!types) return true;
+        for (var i = 0; i < types.length; i++) {
+          if (types[i] === "Text" || types[i] === "text/plain") return true;
+        }
+
+        return false;
+      }
+    };
+  }])
+
+  /**
+   * Use the dnd-nodrag attribute inside of dnd-draggable elements to prevent them from starting
+   * drag operations. This is especially useful if you want to use input elements inside of
+   * dnd-draggable elements or create specific handle elements. Note: This directive does not work
+   * in Internet Explorer 9.
+   */
+  .directive('dndNodrag', function() {
+    return function(scope, element, attr) {
+      // Set as draggable so that we can cancel the events explicitly
+      element.attr("draggable", "true");
+
+      /**
+       * Since the element is draggable, the browser's default operation is to drag it on dragstart.
+       * We will prevent that and also stop the event from bubbling up.
+       */
+      element.on('dragstart', function(event) {
+        event = event.originalEvent || event;
+
+        if (!event._dndHandle) {
+          // If a child element already reacted to dragstart and set a dataTransfer object, we will
+          // allow that. For example, this is the case for user selections inside of input elements.
+          if (!(event.dataTransfer.types && event.dataTransfer.types.length)) {
+            event.preventDefault();
+          }
+          event.stopPropagation();
+        }
+      });
+
+      /**
+       * Stop propagation of dragend events, otherwise dnd-moved might be triggered and the element
+       * would be removed.
+       */
+      element.on('dragend', function(event) {
+        event = event.originalEvent || event;
+        if (!event._dndHandle) {
+          event.stopPropagation();
+        }
+      });
+    };
+  })
+
+  /**
+   * Use the dnd-handle directive within a dnd-nodrag element in order to allow dragging with that
+   * element after all. Therefore, by combining dnd-nodrag and dnd-handle you can allow
+   * dnd-draggable elements to only be dragged via specific "handle" elements. Note that Internet
+   * Explorer will show the handle element as drag image instead of the dnd-draggable element. You
+   * can work around this by styling the handle element differently when it is being dragged. Use
+   * the CSS selector .dndDragging:not(.dndDraggingSource) [dnd-handle] for that.
+   */
+  .directive('dndHandle', function() {
+    return function(scope, element, attr) {
+      element.attr("draggable", "true");
+
+      element.on('dragstart dragend', function(event) {
+        event = event.originalEvent || event;
+        event._dndHandle = true;
+      });
+    };
+  })
+
+  /**
+   * This workaround handles the fact that Internet Explorer does not support drag types other than
+   * "Text" and "URL". That means we can not know whether the data comes from one of our elements or
+   * is just some other data like a text selection. As a workaround we save the isDragging flag in
+   * here. When a dropover event occurs, we only allow the drop if we are already dragging, because
+   * that means the element is ours.
+   */
+  .factory('dndDragTypeWorkaround', function(){ return {} })
+
+  /**
+   * Chrome on Windows does not set the dropEffect field, which we need in dragend to determine
+   * whether a drag operation was successful. Therefore we have to maintain it in this global
+   * variable. The bug report for that has been open for years:
+   * https://code.google.com/p/chromium/issues/detail?id=39399
+   */
+  .factory('dndDropEffectWorkaround', function(){ return {} });
+
+},{}],236:[function(require,module,exports){
 /*
  angular-file-upload v2.2.0
  https://github.com/nervgh/angular-file-upload
@@ -29760,12 +30953,12 @@ module.exports = 'ngCookies';
 
 !function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["angular-file-upload"]=t():e["angular-file-upload"]=t()}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return e[r].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=r(n(1)),o=r(n(2)),s=r(n(3)),a=r(n(4)),u=r(n(5)),l=r(n(6)),c=r(n(7)),f=r(n(8)),p=r(n(9)),d=r(n(10)),v=r(n(11)),h=r(n(12));angular.module(i.name,[]).value("fileUploaderOptions",o).factory("FileUploader",s).factory("FileLikeObject",a).factory("FileItem",u).factory("FileDirective",l).factory("FileSelect",c).factory("FileDrop",f).factory("FileOver",p).directive("nvFileSelect",d).directive("nvFileDrop",v).directive("nvFileOver",h).run(["FileUploader","FileLikeObject","FileItem","FileDirective","FileSelect","FileDrop","FileOver",function(e,t,n,r,i,o,s){e.FileLikeObject=t,e.FileItem=n,e.FileDirective=r,e.FileSelect=i,e.FileDrop=o,e.FileOver=s}])},function(e,t){e.exports={name:"angularFileUpload"}},function(e,t){"use strict";e.exports={url:"/",alias:"file",headers:{},queue:[],progress:0,autoUpload:!1,removeAfterUpload:!1,method:"POST",filters:[],formData:[],queueLimit:Number.MAX_VALUE,withCredentials:!1}},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.forEach,l=angular.isObject,c=angular.isNumber,f=angular.isDefined,p=angular.isArray,d=angular.element;e.exports=function(e,t,n,r,v,h){var m=r.File,g=r.FormData,_=function(){function r(t){o(this,r);var n=s(e);a(this,n,t,{isUploading:!1,_nextIndex:0,_failFilterIndex:-1,_directives:{select:[],drop:[],over:[]}}),this.filters.unshift({name:"queueLimit",fn:this._queueLimitFilter}),this.filters.unshift({name:"folder",fn:this._folderFilter})}return i(r,{addToQueue:{value:function(e,t,n){var r=this,i=this.isArrayLikeObject(e)?e:[e],o=this._getFilters(n),s=this.queue.length,a=[];u(i,function(e){var n=new v(e);if(r._isValidFile(n,o,t)){var i=new h(r,e,t);a.push(i),r.queue.push(i),r._onAfterAddingFile(i)}else{var s=o[r._failFilterIndex];r._onWhenAddingFileFailed(n,s,t)}}),this.queue.length!==s&&(this._onAfterAddingAll(a),this.progress=this._getTotalProgress()),this._render(),this.autoUpload&&this.uploadAll()}},removeFromQueue:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t];n.isUploading&&n.cancel(),this.queue.splice(t,1),n._destroy(),this.progress=this._getTotalProgress()}},clearQueue:{value:function(){for(;this.queue.length;)this.queue[0].remove();this.progress=0}},uploadItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhrTransport":"_iframeTransport";n._prepareToUploading(),this.isUploading||(this.isUploading=!0,this[r](n))}},cancelItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhr":"_form";n&&n.isUploading&&n[r].abort()}},uploadAll:{value:function(){var e=this.getNotUploadedItems().filter(function(e){return!e.isUploading});e.length&&(u(e,function(e){return e._prepareToUploading()}),e[0].upload())}},cancelAll:{value:function(){var e=this.getNotUploadedItems();u(e,function(e){return e.cancel()})}},isFile:{value:function(e){return this.constructor.isFile(e)}},isFileLikeObject:{value:function(e){return this.constructor.isFileLikeObject(e)}},isArrayLikeObject:{value:function(e){return this.constructor.isArrayLikeObject(e)}},getIndexOfItem:{value:function(e){return c(e)?e:this.queue.indexOf(e)}},getNotUploadedItems:{value:function(){return this.queue.filter(function(e){return!e.isUploaded})}},getReadyItems:{value:function(){return this.queue.filter(function(e){return e.isReady&&!e.isUploading}).sort(function(e,t){return e.index-t.index})}},destroy:{value:function(){var e=this;u(this._directives,function(t){u(e._directives[t],function(e){e.destroy()})})}},onAfterAddingAll:{value:function(e){}},onAfterAddingFile:{value:function(e){}},onWhenAddingFileFailed:{value:function(e,t,n){}},onBeforeUploadItem:{value:function(e){}},onProgressItem:{value:function(e,t){}},onProgressAll:{value:function(e){}},onSuccessItem:{value:function(e,t,n,r){}},onErrorItem:{value:function(e,t,n,r){}},onCancelItem:{value:function(e,t,n,r){}},onCompleteItem:{value:function(e,t,n,r){}},onCompleteAll:{value:function(){}},_getTotalProgress:{value:function(e){if(this.removeAfterUpload)return e||0;var t=this.getNotUploadedItems().length,n=t?this.queue.length-t:this.queue.length,r=100/this.queue.length,i=(e||0)*r/100;return Math.round(n*r+i)}},_getFilters:{value:function(e){if(!e)return this.filters;if(p(e))return e;var t=e.match(/[^\s,]+/g);return this.filters.filter(function(e){return-1!==t.indexOf(e.name)})}},_render:{value:function(){t.$$phase||t.$apply()}},_folderFilter:{value:function(e){return!(!e.size&&!e.type)}},_queueLimitFilter:{value:function(){return this.queue.length<this.queueLimit}},_isValidFile:{value:function(e,t,n){var r=this;return this._failFilterIndex=-1,t.length?t.every(function(t){return r._failFilterIndex++,t.fn.call(r,e,n)}):!0}},_isSuccessCode:{value:function(e){return e>=200&&300>e||304===e}},_transformResponse:{value:function(e,t){var r=this._headersGetter(t);return u(n.defaults.transformResponse,function(t){e=t(e,r)}),e}},_parseHeaders:{value:function(e){var t,n,r,i={};return e?(u(e.split("\n"),function(e){r=e.indexOf(":"),t=e.slice(0,r).trim().toLowerCase(),n=e.slice(r+1).trim(),t&&(i[t]=i[t]?i[t]+", "+n:n)}),i):i}},_headersGetter:{value:function(e){return function(t){return t?e[t.toLowerCase()]||null:e}}},_xhrTransport:{value:function(e){var t=this,n=e._xhr=new XMLHttpRequest,r=new g;if(this._onBeforeUploadItem(e),u(e.formData,function(e){u(e,function(e,t){r.append(t,e)})}),"number"!=typeof e._file.size)throw new TypeError("The file specified is no longer valid");r.append(e.alias,e._file,e.file.name),n.upload.onprogress=function(n){var r=Math.round(n.lengthComputable?100*n.loaded/n.total:0);t._onProgressItem(e,r)},n.onload=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r),o=t._isSuccessCode(n.status)?"Success":"Error",s="_on"+o+"Item";t[s](e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onerror=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onErrorItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onabort=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onCancelItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.open(e.method,e.url,!0),n.withCredentials=e.withCredentials,u(e.headers,function(e,t){n.setRequestHeader(t,e)}),n.send(r),this._render()}},_iframeTransport:{value:function(e){var t=this,n=d('<form style="display: none;" />'),r=d('<iframe name="iframeTransport'+Date.now()+'">'),i=e._input;e._form&&e._form.replaceWith(i),e._form=n,this._onBeforeUploadItem(e),i.prop("name",e.alias),u(e.formData,function(e){u(e,function(e,t){var r=d('<input type="hidden" name="'+t+'" />');r.val(e),n.append(r)})}),n.prop({action:e.url,method:"POST",target:r.prop("name"),enctype:"multipart/form-data",encoding:"multipart/form-data"}),r.bind("load",function(){var n="",i=200;try{n=r[0].contentDocument.body.innerHTML}catch(o){i=500}var s={response:n,status:i,dummy:!0},a={},u=t._transformResponse(s.response,a);t._onSuccessItem(e,u,s.status,a),t._onCompleteItem(e,u,s.status,a)}),n.abort=function(){var o,s={status:0,dummy:!0},a={};r.unbind("load").prop("src","javascript:false;"),n.replaceWith(i),t._onCancelItem(e,o,s.status,a),t._onCompleteItem(e,o,s.status,a)},i.after(n),n.append(i).append(r),n[0].submit(),this._render()}},_onWhenAddingFileFailed:{value:function(e,t,n){this.onWhenAddingFileFailed(e,t,n)}},_onAfterAddingFile:{value:function(e){this.onAfterAddingFile(e)}},_onAfterAddingAll:{value:function(e){this.onAfterAddingAll(e)}},_onBeforeUploadItem:{value:function(e){e._onBeforeUpload(),this.onBeforeUploadItem(e)}},_onProgressItem:{value:function(e,t){var n=this._getTotalProgress(t);this.progress=n,e._onProgress(t),this.onProgressItem(e,t),this.onProgressAll(n),this._render()}},_onSuccessItem:{value:function(e,t,n,r){e._onSuccess(t,n,r),this.onSuccessItem(e,t,n,r)}},_onErrorItem:{value:function(e,t,n,r){e._onError(t,n,r),this.onErrorItem(e,t,n,r)}},_onCancelItem:{value:function(e,t,n,r){e._onCancel(t,n,r),this.onCancelItem(e,t,n,r)}},_onCompleteItem:{value:function(e,t,n,r){e._onComplete(t,n,r),this.onCompleteItem(e,t,n,r);var i=this.getReadyItems()[0];return this.isUploading=!1,f(i)?void i.upload():(this.onCompleteAll(),this.progress=this._getTotalProgress(),void this._render())}}},{isFile:{value:function(e){return m&&e instanceof m}},isFileLikeObject:{value:function(e){return e instanceof v}},isArrayLikeObject:{value:function(e){return l(e)&&"length"in e}},inherit:{value:function(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,e.super_=t}}}),r}();return _.prototype.isHTML5=!(!m||!g),_.isHTML5=_.prototype.isHTML5,_},e.exports.$inject=["fileUploaderOptions","$rootScope","$http","$window","FileLikeObject","FileItem"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.isElement,u=angular.isString;e.exports=function(){var e=function(){function e(t){o(this,e);var n=a(t),r=n?t.value:t,i=u(r)?"FakePath":"Object",s="_createFrom"+i;this[s](r)}return i(e,{_createFromFakePath:{value:function(e){this.lastModifiedDate=null,this.size=null,this.type="like/"+e.slice(e.lastIndexOf(".")+1).toLowerCase(),this.name=e.slice(e.lastIndexOf("/")+e.lastIndexOf("\\")+2)}},_createFromObject:{value:function(e){this.lastModifiedDate=s(e.lastModifiedDate),this.size=e.size,this.type=e.type,this.name=e.name}}}),e}();return e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.element,l=angular.isElement;e.exports=function(e,t){var n=function(){function n(e,r,i){o(this,n);var c=l(r),f=c?u(r):null,p=c?null:r;a(this,{url:e.url,alias:e.alias,headers:s(e.headers),formData:s(e.formData),removeAfterUpload:e.removeAfterUpload,withCredentials:e.withCredentials,method:e.method},i,{uploader:e,file:new t(r),isReady:!1,isUploading:!1,isUploaded:!1,isSuccess:!1,isCancel:!1,isError:!1,progress:0,index:null,_file:p,_input:f}),f&&this._replaceNode(f)}return i(n,{upload:{value:function(){try{this.uploader.uploadItem(this)}catch(e){this.uploader._onCompleteItem(this,"",0,[]),this.uploader._onErrorItem(this,"",0,[])}}},cancel:{value:function(){this.uploader.cancelItem(this)}},remove:{value:function(){this.uploader.removeFromQueue(this)}},onBeforeUpload:{value:function(){}},onProgress:{value:function(e){}},onSuccess:{value:function(e,t,n){}},onError:{value:function(e,t,n){}},onCancel:{value:function(e,t,n){}},onComplete:{value:function(e,t,n){}},_onBeforeUpload:{value:function(){this.isReady=!0,this.isUploading=!0,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!1,this.isError=!1,this.progress=0,this.onBeforeUpload()}},_onProgress:{value:function(e){this.progress=e,this.onProgress(e)}},_onSuccess:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!0,this.isCancel=!1,this.isError=!1,this.progress=100,this.index=null,this.onSuccess(e,t,n)}},_onError:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!1,this.isCancel=!1,this.isError=!0,this.progress=0,this.index=null,this.onError(e,t,n)}},_onCancel:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!0,this.isError=!1,this.progress=0,this.index=null,this.onCancel(e,t,n)}},_onComplete:{value:function(e,t,n){this.onComplete(e,t,n),this.removeAfterUpload&&this.remove()}},_destroy:{value:function(){this._input&&this._input.remove(),this._form&&this._form.remove(),delete this._form,delete this._input}},_prepareToUploading:{value:function(){this.index=this.index||++this.uploader._nextIndex,this.isReady=!0}},_replaceNode:{value:function(t){var n=e(t.clone())(t.scope());n.prop("value",null),t.css("display","none"),t.after(n)}}}),n}();return n},e.exports.$inject=["$compile","FileLikeObject"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.extend);e.exports=function(){var e=function(){function e(t){o(this,e),s(this,t),this.uploader._directives[this.prop].push(this),this._saveLinks(),this.bind()}return i(e,{bind:{value:function(){for(var e in this.events){var t=this.events[e];this.element.bind(e,this[t])}}},unbind:{value:function(){for(var e in this.events)this.element.unbind(e,this.events[e])}},destroy:{value:function(){var e=this.uploader._directives[this.prop].indexOf(this);this.uploader._directives[this.prop].splice(e,1),this.unbind()}},_saveLinks:{value:function(){for(var e in this.events){var t=this.events[e];this[t]=this[t].bind(this)}}}}),e}();return e.prototype.events={},e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",change:"onChange"},prop:"select"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n),this.uploader.isHTML5||this.element.removeAttr("multiple"),this.element.prop("value",null)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},isEmptyAfterSelection:{value:function(){return!!this.element.attr("multiple")}},onChange:{value:function(){var e=this.uploader.isHTML5?this.element[0].files:this.element[0],t=this.getOptions(),n=this.getFilters();this.uploader.isHTML5||this.destroy(),this.uploader.addToQueue(e,t,n),this.isEmptyAfterSelection()&&(this.element.prop("value",null),this.element.replaceWith(this.element=this.element.clone(!0)))}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function c(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:c(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend),l=angular.forEach;e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",drop:"onDrop",dragover:"onDragOver",dragleave:"onDragLeave"},prop:"drop"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},onDrop:{value:function(e){var t=this._getTransfer(e);if(t){var n=this.getOptions(),r=this.getFilters();this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this),this.uploader.addToQueue(t.files,n,r)}}},onDragOver:{value:function(e){var t=this._getTransfer(e);this._haveFiles(t.types)&&(t.dropEffect="copy",this._preventAndStop(e),l(this.uploader._directives.over,this._addOverClass,this))}},onDragLeave:{value:function(e){e.currentTarget!==this.element[0]&&(this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this))}},_getTransfer:{value:function(e){return e.dataTransfer?e.dataTransfer:e.originalEvent.dataTransfer}},_preventAndStop:{value:function(e){e.preventDefault(),e.stopPropagation()}},_haveFiles:{value:function(e){return e?e.indexOf?-1!==e.indexOf("Files"):e.contains?e.contains("Files"):!1:!1}},_addOverClass:{value:function(e){e.addOverClass()}},_removeOverClass:{value:function(e){e.removeOverClass()}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy"},prop:"over",overClass:"nv-file-over"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{addOverClass:{value:function(){this.element.addClass(this.getOverClass())}},removeOverClass:{value:function(){this.element.removeClass(this.getOverClass())}},getOverClass:{value:function(){return this.overClass}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}},e.exports.$inject=["$parse","FileUploader","FileSelect"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');if(s.isHTML5){var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}}},e.exports.$inject=["$parse","FileUploader","FileDrop"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t){return{link:function(n,r,i){var o=n.$eval(i.uploader);if(!(o instanceof e))throw new TypeError('"Uploader" must be an instance of FileUploader');var s=new t({uploader:o,element:r});s.getOverClass=function(){return i.overClass||s.overClass}}}},e.exports.$inject=["FileUploader","FileOver"]}])});
 
-},{}],235:[function(require,module,exports){
+},{}],237:[function(require,module,exports){
 var moduleName = require('./src/angular-input-masks.js');
 
 module.exports = moduleName;
 
-},{"./src/angular-input-masks.js":239}],236:[function(require,module,exports){
+},{"./src/angular-input-masks.js":241}],238:[function(require,module,exports){
 /**
  * br-validations
  * A library of validations applicable to several Brazilian data like I.E., CNPJ, CPF and others
@@ -30409,9 +31602,9 @@ IErules.AP = [{
 		cnpj: CNPJ
 	};
 }));
-},{}],237:[function(require,module,exports){
-arguments[4][227][0].apply(exports,arguments)
-},{"dup":227}],238:[function(require,module,exports){
+},{}],239:[function(require,module,exports){
+arguments[4][228][0].apply(exports,arguments)
+},{"dup":228}],240:[function(require,module,exports){
 (function (root, factory) {
 	if (typeof define === 'function' && define.amd) {
 		// AMD. Register as an anonymous module.
@@ -30605,14 +31798,14 @@ arguments[4][227][0].apply(exports,arguments)
 	return StringMask;
 }));
 
-},{}],239:[function(require,module,exports){
+},{}],241:[function(require,module,exports){
 module.exports = angular.module('ui.utils.masks', [
 	require('./global/global-masks'),
 	require('./br/br-masks'),
 	require('./us/us-masks')
 ]).name;
 
-},{"./br/br-masks":241,"./global/global-masks":250,"./us/us-masks":260}],240:[function(require,module,exports){
+},{"./br/br-masks":243,"./global/global-masks":252,"./us/us-masks":262}],242:[function(require,module,exports){
 var StringMask = require('string-mask');
 var maskFactory = require('mask-factory');
 
@@ -30636,7 +31829,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":257,"string-mask":238}],241:[function(require,module,exports){
+},{"mask-factory":259,"string-mask":240}],243:[function(require,module,exports){
 var m = angular.module('ui.utils.masks.br', [
 	require('../helpers'),
 ])
@@ -30651,7 +31844,7 @@ var m = angular.module('ui.utils.masks.br', [
 
 module.exports = m.name;
 
-},{"../helpers":256,"./boleto-bancario/boleto-bancario":240,"./cep/cep":242,"./cnpj/cnpj":243,"./cpf-cnpj/cpf-cnpj":244,"./cpf/cpf":245,"./inscricao-estadual/ie":246,"./nfe/nfe":247,"./phone/br-phone":248}],242:[function(require,module,exports){
+},{"../helpers":258,"./boleto-bancario/boleto-bancario":242,"./cep/cep":244,"./cnpj/cnpj":245,"./cpf-cnpj/cpf-cnpj":246,"./cpf/cpf":247,"./inscricao-estadual/ie":248,"./nfe/nfe":249,"./phone/br-phone":250}],244:[function(require,module,exports){
 var StringMask = require('string-mask');
 var maskFactory = require('mask-factory');
 
@@ -30671,7 +31864,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":257,"string-mask":238}],243:[function(require,module,exports){
+},{"mask-factory":259,"string-mask":240}],245:[function(require,module,exports){
 var StringMask = require('string-mask');
 var BrV = require('br-validations');
 var maskFactory = require('mask-factory');
@@ -30692,7 +31885,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"br-validations":236,"mask-factory":257,"string-mask":238}],244:[function(require,module,exports){
+},{"br-validations":238,"mask-factory":259,"string-mask":240}],246:[function(require,module,exports){
 var StringMask = require('string-mask');
 var BrV = require('br-validations');
 var maskFactory = require('mask-factory');
@@ -30725,7 +31918,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"br-validations":236,"mask-factory":257,"string-mask":238}],245:[function(require,module,exports){
+},{"br-validations":238,"mask-factory":259,"string-mask":240}],247:[function(require,module,exports){
 var StringMask = require('string-mask');
 var BrV = require('br-validations');
 var maskFactory = require('mask-factory');
@@ -30746,7 +31939,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"br-validations":236,"mask-factory":257,"string-mask":238}],246:[function(require,module,exports){
+},{"br-validations":238,"mask-factory":259,"string-mask":240}],248:[function(require,module,exports){
 var StringMask = require('string-mask');
 var BrV = require('br-validations');
 
@@ -30883,7 +32076,7 @@ BrIeMaskDirective.$inject = ['$parse'];
 
 module.exports = BrIeMaskDirective;
 
-},{"br-validations":236,"string-mask":238}],247:[function(require,module,exports){
+},{"br-validations":238,"string-mask":240}],249:[function(require,module,exports){
 var StringMask = require('string-mask');
 var maskFactory = require('mask-factory');
 
@@ -30904,7 +32097,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":257,"string-mask":238}],248:[function(require,module,exports){
+},{"mask-factory":259,"string-mask":240}],250:[function(require,module,exports){
 var StringMask = require('string-mask');
 var maskFactory = require('mask-factory');
 
@@ -30945,7 +32138,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":257,"string-mask":238}],249:[function(require,module,exports){
+},{"mask-factory":259,"string-mask":240}],251:[function(require,module,exports){
 var moment = require('moment');
 var StringMask = require('string-mask');
 
@@ -31009,7 +32202,7 @@ DateMaskDirective.$inject = ['$locale'];
 
 module.exports = DateMaskDirective;
 
-},{"moment":237,"string-mask":238}],250:[function(require,module,exports){
+},{"moment":239,"string-mask":240}],252:[function(require,module,exports){
 var m = angular.module('ui.utils.masks.global', [
 	require('../helpers'),
 ])
@@ -31022,7 +32215,7 @@ var m = angular.module('ui.utils.masks.global', [
 
 module.exports = m.name;
 
-},{"../helpers":256,"./date/date":249,"./money/money":251,"./number/number":252,"./percentage/percentage":253,"./scientific-notation/scientific-notation":254,"./time/time":255}],251:[function(require,module,exports){
+},{"../helpers":258,"./date/date":251,"./money/money":253,"./number/number":254,"./percentage/percentage":255,"./scientific-notation/scientific-notation":256,"./time/time":257}],253:[function(require,module,exports){
 var StringMask = require('string-mask');
 var validators = require('validators');
 
@@ -31134,7 +32327,7 @@ MoneyMaskDirective.$inject = ['$locale', '$parse', 'PreFormatters'];
 
 module.exports = MoneyMaskDirective;
 
-},{"string-mask":238,"validators":258}],252:[function(require,module,exports){
+},{"string-mask":240,"validators":260}],254:[function(require,module,exports){
 var validators = require('validators');
 
 function NumberMaskDirective($locale, $parse, PreFormatters, NumberMasks) {
@@ -31241,7 +32434,7 @@ NumberMaskDirective.$inject = ['$locale', '$parse', 'PreFormatters', 'NumberMask
 
 module.exports = NumberMaskDirective;
 
-},{"validators":258}],253:[function(require,module,exports){
+},{"validators":260}],255:[function(require,module,exports){
 var validators = require('validators');
 
 function PercentageMaskDirective($locale, $parse, PreFormatters, NumberMasks) {
@@ -31360,7 +32553,7 @@ PercentageMaskDirective.$inject = ['$locale', '$parse', 'PreFormatters', 'Number
 
 module.exports = PercentageMaskDirective;
 
-},{"validators":258}],254:[function(require,module,exports){
+},{"validators":260}],256:[function(require,module,exports){
 var StringMask = require('string-mask');
 
 function ScientificNotationMaskDirective($locale, $parse) {
@@ -31480,7 +32673,7 @@ ScientificNotationMaskDirective.$inject = ['$locale', '$parse'];
 
 module.exports = ScientificNotationMaskDirective;
 
-},{"string-mask":238}],255:[function(require,module,exports){
+},{"string-mask":240}],257:[function(require,module,exports){
 var StringMask = require('string-mask');
 
 module.exports = function TimeMaskDirective() {
@@ -31545,7 +32738,7 @@ module.exports = function TimeMaskDirective() {
 	};
 };
 
-},{"string-mask":238}],256:[function(require,module,exports){
+},{"string-mask":240}],258:[function(require,module,exports){
 var StringMask = require('string-mask');
 
 var m = angular.module('ui.utils.masks.helpers', []);
@@ -31620,7 +32813,7 @@ m.factory('PreFormatters', [function(){
 	};
 }]);
 
-},{"string-mask":238}],257:[function(require,module,exports){
+},{"string-mask":240}],259:[function(require,module,exports){
 module.exports = function maskFactory(maskDefinition) {
 	return function MaskDirective() {
 		return {
@@ -31667,7 +32860,7 @@ module.exports = function maskFactory(maskDefinition) {
 	};
 };
 
-},{}],258:[function(require,module,exports){
+},{}],260:[function(require,module,exports){
 module.exports = {
 	maxNumber: function(ctrl, value, limit) {
 		var max = parseFloat(limit, 10);
@@ -31679,7 +32872,7 @@ module.exports = {
 	}
 };
 
-},{}],259:[function(require,module,exports){
+},{}],261:[function(require,module,exports){
 var StringMask = require('string-mask');
 var maskFactory = require('mask-factory');
 
@@ -31708,7 +32901,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":257,"string-mask":238}],260:[function(require,module,exports){
+},{"mask-factory":259,"string-mask":240}],262:[function(require,module,exports){
 var m = angular.module('ui.utils.masks.us', [
 	require('../helpers')
 ])
@@ -31716,7 +32909,7 @@ var m = angular.module('ui.utils.masks.us', [
 
 module.exports = m.name;
 
-},{"../helpers":256,"./phone/us-phone":259}],261:[function(require,module,exports){
+},{"../helpers":258,"./phone/us-phone":261}],263:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -32401,11 +33594,11 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],262:[function(require,module,exports){
+},{}],264:[function(require,module,exports){
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":261}],263:[function(require,module,exports){
+},{"./angular-sanitize":263}],265:[function(require,module,exports){
 /**
   * x is a value between 0 and 1, indicating where in the animation you are.
   */
@@ -33034,13 +34227,13 @@ angular.module('duScroll.scrollspy', ['duScroll.spyAPI'])
   };
 }]);
 
-},{}],264:[function(require,module,exports){
+},{}],266:[function(require,module,exports){
 require('angular');
 require('./angular-scroll');
 
 module.exports = 'duScroll';
 
-},{"./angular-scroll":263,"angular":270}],265:[function(require,module,exports){
+},{"./angular-scroll":265,"angular":272}],267:[function(require,module,exports){
 /*
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
@@ -40120,12 +41313,12 @@ angular.module('ui.bootstrap.carousel').run(function() {!angular.$$csp().noInlin
 angular.module('ui.bootstrap.datepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-datepicker-popup.dropdown-menu{display:block;}.uib-button-bar{padding:10px 9px 2px;}</style>'); });
 angular.module('ui.bootstrap.timepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-time input{width:50px;}</style>'); });
 angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); });
-},{}],266:[function(require,module,exports){
+},{}],268:[function(require,module,exports){
 require('./dist/ui-bootstrap-tpls');
 
 module.exports = 'ui.bootstrap';
 
-},{"./dist/ui-bootstrap-tpls":265}],267:[function(require,module,exports){
+},{"./dist/ui-bootstrap-tpls":267}],269:[function(require,module,exports){
 /**
  * @license Angular UI Tree v2.15.0
  * (c) 2010-2016. https://github.com/angular-ui-tree/angular-ui-tree
@@ -41696,11 +42889,11 @@ module.exports = 'ui.bootstrap';
 
 })();
 
-},{}],268:[function(require,module,exports){
+},{}],270:[function(require,module,exports){
 require('./dist/angular-ui-tree');
 module.exports = 'ui.tree';
 
-},{"./dist/angular-ui-tree":267}],269:[function(require,module,exports){
+},{"./dist/angular-ui-tree":269}],271:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.9
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -71358,11 +72551,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],270:[function(require,module,exports){
+},{}],272:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":269}],271:[function(require,module,exports){
+},{"./angular":271}],273:[function(require,module,exports){
 (function (global){
 /*! https://mths.be/punycode v1.4.0 by @mathias */
 ;(function(root) {
@@ -71899,7 +73092,7 @@ module.exports = angular;
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],272:[function(require,module,exports){
+},{}],274:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.0
  * http://jquery.com/
@@ -81732,7 +82925,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],273:[function(require,module,exports){
+},{}],275:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -96166,7 +97359,7 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],274:[function(require,module,exports){
+},{}],276:[function(require,module,exports){
 /**!
  * AngularJS file upload directives and services. Supoorts: file upload/drop/paste, resume, cancel/abort,
  * progress, resize, thumbnail, preview, validation and CORS
@@ -98945,10 +100138,10 @@ ngFileUpload.service('UploadExif', ['UploadResize', '$q', function (UploadResize
 }]);
 
 
-},{}],275:[function(require,module,exports){
+},{}],277:[function(require,module,exports){
 require('./dist/ng-file-upload-all');
 module.exports = 'ngFileUpload';
-},{"./dist/ng-file-upload-all":274}],276:[function(require,module,exports){
+},{"./dist/ng-file-upload-all":276}],278:[function(require,module,exports){
 /* global define */
 
 (function (root, pluralize) {
@@ -99383,7 +100576,7 @@ module.exports = 'ngFileUpload';
   return pluralize;
 });
 
-},{}],277:[function(require,module,exports){
+},{}],279:[function(require,module,exports){
 var validators = require('./validators'),
 	validationContext = require('./validation-context'),
 	jsonRefs = require('skeemas-json-refs');
@@ -99453,7 +100646,7 @@ module.exports.use = function(plugin) {
 	return this;
 };
 
-},{"./validation-context":280,"./validators":286,"skeemas-json-refs":279}],278:[function(require,module,exports){
+},{"./validation-context":282,"./validators":288,"skeemas-json-refs":281}],280:[function(require,module,exports){
 function fastMap(array, fn) {
 	var len = array.length,
 		result = new Array(len);
@@ -99523,7 +100716,7 @@ module.exports = function(sPointer) {
 	});
 };
 
-},{}],279:[function(require,module,exports){
+},{}],281:[function(require,module,exports){
 var jsonPointer = require('skeemas-json-pointer');
 
 var protoJsonRefs = {
@@ -99571,7 +100764,7 @@ module.exports = function() {
 	});
 };
 
-},{"skeemas-json-pointer":278}],280:[function(require,module,exports){
+},{"skeemas-json-pointer":280}],282:[function(require,module,exports){
 var validationResult = require('./validation-result'),
 	jsonRefs = require('skeemas-json-refs');
 
@@ -99623,7 +100816,7 @@ var makeContext = module.exports = function(schema, context, forceNewResult) {
 	});
 };
 
-},{"./validation-result":281,"skeemas-json-refs":279}],281:[function(require,module,exports){
+},{"./validation-result":283,"skeemas-json-refs":281}],283:[function(require,module,exports){
 function errorToString() {
 	return this.message + ' (pointer: ' + this.context + ')';
 }
@@ -99651,7 +100844,7 @@ module.exports = function(instance) {
 	});
 };
 
-},{}],282:[function(require,module,exports){
+},{}],284:[function(require,module,exports){
 var validateBase = require('./base'),
 	deepEqual = require('./deep-equal');
 
@@ -99793,7 +100986,7 @@ module.exports = function(context, subject, schema) {
 	return valid;
 };
 
-},{"./base":283,"./deep-equal":285}],283:[function(require,module,exports){
+},{"./base":285,"./deep-equal":287}],285:[function(require,module,exports){
 var validators = require('./'),
 	formats = {
 		'date-time': /^\d{4}-(0[0-9]{1}|1[0-2]{1})-[0-9]{2}[t ]\d{2}:\d{2}:\d{2}(\.\d+)?([zZ]|[+-]\d{2}:\d{2})$/i,
@@ -100054,7 +101247,7 @@ function validateBase(context, subject, schema) {
 
 module.exports = validateBase;
 
-},{"./":286}],284:[function(require,module,exports){
+},{"./":288}],286:[function(require,module,exports){
 function validateBoolean(context, subject, schema) {
 	if(typeof subject !== 'boolean') {
 		context.addError('Failed type:boolean criteria', subject, schema);
@@ -100068,7 +101261,7 @@ function validateBoolean(context, subject, schema) {
 
 module.exports = validateBoolean;
 
-},{}],285:[function(require,module,exports){
+},{}],287:[function(require,module,exports){
 function getType(subject) {
 	var type = typeof subject;
 
@@ -100117,7 +101310,7 @@ var deepEqual = module.exports = function(a, b) {
 	return false;
 };
 
-},{}],286:[function(require,module,exports){
+},{}],288:[function(require,module,exports){
 exports.types = {
 	'any': function() { return true; },
 	'array': require('./array'),
@@ -100134,7 +101327,7 @@ exports.deepEqual = require('./deep-equal');
 // base cannot be required until other validators are added
 exports.base = require('./base');
 
-},{"./array":282,"./base":283,"./boolean":284,"./deep-equal":285,"./null":287,"./number":288,"./object":289,"./string":290}],287:[function(require,module,exports){
+},{"./array":284,"./base":285,"./boolean":286,"./deep-equal":287,"./null":289,"./number":290,"./object":291,"./string":292}],289:[function(require,module,exports){
 function validateNull(context, subject, schema) {
 	if(subject !== null) {
 		context.addError('Failed type:null criteria', subject, schema);
@@ -100148,7 +101341,7 @@ function validateNull(context, subject, schema) {
 
 module.exports = validateNull;
 
-},{}],288:[function(require,module,exports){
+},{}],290:[function(require,module,exports){
 function validateNumber(context, subject, schema) {
 	if(typeof subject !== 'number') {
 		context.addError('Failed type:number criteria', subject, schema);
@@ -100216,7 +101409,7 @@ module.exports = function(context, subject, schema) {
 	], subject, schema);
 };
 
-},{}],289:[function(require,module,exports){
+},{}],291:[function(require,module,exports){
 var validateBase = require('./base');
 
 function properties(context, subject, schema, handledProps) {
@@ -100411,7 +101604,7 @@ function validateObject(context, subject, schema) {
 
 module.exports = validateObject;
 
-},{"./base":283}],290:[function(require,module,exports){
+},{"./base":285}],292:[function(require,module,exports){
 var decode = require('punycode').ucs2.decode;
 
 
@@ -100463,7 +101656,7 @@ function validateString(context, subject, schema) {
 
 module.exports = validateString;
 
-},{"punycode":271}],291:[function(require,module,exports){
+},{"punycode":273}],293:[function(require,module,exports){
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
@@ -102502,8 +103695,8 @@ $templateCache.put("select2/select.tpl.html","<div class=\"ui-select-container s
 $templateCache.put("selectize/choices.tpl.html","<div ng-show=\"$select.open\" class=\"ui-select-choices ui-select-dropdown selectize-dropdown single\"><div class=\"ui-select-choices-content selectize-dropdown-content\"><div class=\"ui-select-choices-group optgroup\" role=\"listbox\"><div ng-show=\"$select.isGrouped\" class=\"ui-select-choices-group-label optgroup-header\" ng-bind=\"$group.name\"></div><div role=\"option\" class=\"ui-select-choices-row\" ng-class=\"{active: $select.isActive(this), disabled: $select.isDisabled(this)}\"><div class=\"option ui-select-choices-row-inner\" data-selectable=\"\"></div></div></div></div></div>");
 $templateCache.put("selectize/match.tpl.html","<div ng-hide=\"($select.open || $select.isEmpty())\" class=\"ui-select-match\" ng-transclude=\"\"></div>");
 $templateCache.put("selectize/select.tpl.html","<div class=\"ui-select-container selectize-control single\" ng-class=\"{\'open\': $select.open}\"><div class=\"row\"><div class=\"col-md-11\"><div class=\"selectize-input\" ng-class=\"{\'focus\': $select.open, \'disabled\': $select.disabled, \'selectize-focus\' : $select.focus}\" ng-click=\"$select.open && !$select.searchEnabled ? $select.toggle($event) : $select.activate()\"><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" tabindex=\"-1\" class=\"ui-select-search ui-select-toggle\" ng-click=\"$select.toggle($event)\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-hide=\"!$select.searchEnabled || ($select.selected && !$select.open)\" ng-disabled=\"$select.disabled\" aria-label=\"{{ $select.baseTitle }}\"></div></div><div class=\"col-md-1\"><img ng-if=\"$select.loading\" width=\"30\" src=\"data:image/gif;base64,R0lGODlhlACUAPeAAEuW34q76prE7Wem5GWl5G6q5Wqo5Xyz6FCZ4E6Y4Hmx53Cr5lme4pTA7Fqf4nKt5lyg4kyX30qW31Sb4abL71id4eDt+YK26Y2960yX4LHS8anM8Nnp+K7Q8fz9/k2X4MHa9I++60+Y4EqV38Xd9Xiw58rg9rjV8nav51Wc4aTK72up5WOk41Ka4NPl94a56p7G7rXU8oS46fn7/v3+/lKa4ZfC7GGj41+i4+zz+/r8/n606PD2/HWv5t7r+bzX80yW32Ci44O36c7i9mCj412h41Sc4cPc9NHk9+Tv+r7Z86vO8Obw+rvX89bn9/T4/ejy+6LI7lac4Z/H7lie4e71/H+16FGZ4JC/6/7+/l6h4/X5/Vug4uz0/FGa4KPJ79Xm+Nzq+LnW88/i9snf9vb6/efx+7PT8ePu+ZXC7czh9vL3/azO8PH3/Mje9ery+9zr+ZzF7uLt+s/j97fU8v7+/7TS8qDH7srg9fj7/evz/Njn9+fw+vj6/vr7/f///////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NzQ4RDczNjVBRDM0MTFFNTg0ODlGMDgwQkJDRjVCMDAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NzQ4RDczNjZBRDM0MTFFNTg0ODlGMDgwQkJDRjVCMDAiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3NDhENzM2M0FEMzQxMUU1ODQ4OUYwODBCQkNGNUIwMCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo3NDhENzM2NEFEMzQxMUU1ODQ4OUYwODBCQkNGNUIwMCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5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\"></div></div><div class=\"ui-select-choices\"></div></div>");}]);
-},{}],292:[function(require,module,exports){
+},{}],294:[function(require,module,exports){
 require('./dist/select.js');
 module.exports = 'ui.select';
 
-},{"./dist/select.js":291}]},{},[1]);
+},{"./dist/select.js":293}]},{},[1]);

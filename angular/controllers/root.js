@@ -4,6 +4,8 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
 	$rootScope._ = _;
   $rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
+
+  //console.log($rootScope.Profile.Permission);
   
   $rootScope.ShopGroupPolicy = function(range){
     var mySG = _.get($rootScope.Profile, 'Shop.ShopGroup');

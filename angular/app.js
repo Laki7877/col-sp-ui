@@ -25,6 +25,7 @@ require('angular-clipboard')
 require('angular-cookies')
 require('angular-file-upload')
 require('angular-input-masks')
+require('angular-drag-and-drop-lists')
 // require('angular-material')
 require('angular-sanitize')
 require('angular-scroll')
@@ -36,6 +37,7 @@ require('ui-select/dist/select.js')
 // Nc package
 require('./modules/angular-print')
 require('./modules/angular-scroll')
+require('./modules/angular-draggable')
 require('./modules/nc')
 require('./modules/product-detail')
 require('./modules/schematics')
@@ -53,8 +55,8 @@ var helpers = bulk.helpers
 var directives = bulk.directives
 var filters = bulk.filters
 
-var app = angular.module('colspApp', ['ngPatternRestrict',
-  'nc', 'ui.bootstrap.datetimepicker',
+var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
+  'nc', 'ui.bootstrap.datetimepicker', 'ngDraggable',
   'duScroll', 'smoothScroll', 'ngSanitize', 'ngAnimate',
   'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select',
   'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload',
