@@ -1,8 +1,8 @@
 module.exports = function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Admin');
-	var _list = service.list;
-	service.list = function() {
+	var _list = service.listAll;
+	service.listAll = function() {
 		var defer = $q.defer();
 		_list().then(function(data) {
 			_.forEach(data, function(item1) {
@@ -16,10 +16,12 @@ module.exports = function(common) {
 				});
 				_.sortBy(item1.Children, ['Position']);
 			});
-
 			_.remove(data, function(e) {
-				return e.Parent == 0;
+				return e.Parent != 0;
 			});
+
+			data = _.groupBy(data, 'PermissionGroup');
+
 			defer.resolve(data);
 		}, defer.reject);
 

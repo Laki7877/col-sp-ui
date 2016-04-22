@@ -21,13 +21,6 @@ module.exports = function(common, AdminPermissionService) {
 		var processed = {
 			Permission: []
 		};
-		AdminPermissionService.listAll()
-			.then(function(data) {
-				processed.Permission = _.map(data, function(e) {
-					e.check = false;
-					return e;
-				});
-			});
 		return processed;
 	};
 	return service;	

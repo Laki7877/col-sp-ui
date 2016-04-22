@@ -424,7 +424,7 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
             }
         });
     };
-
+    
 
     return service;
 };
