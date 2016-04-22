@@ -12,7 +12,7 @@
 	</nc-page-title>
 	<form name="form" style="margin-top:30px" class="ah-form sticky-mainform-action" novalidate>
 		<div ng-include="'pending_products/section-group-information'"></div>
-		<ap-variation-option form-data="formData"
+		<ap-variation-option form-data="formData" ng-show="formData.AttributeSet"
 			generator="variationFactorIndices" dataset="dataset">
 		</ap-variation-option>
 		<ap-multiplied-variants ng-show="formData.Variants.length > 0" >

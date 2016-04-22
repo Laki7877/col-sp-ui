@@ -1089,12 +1089,10 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 			_direction: 'asc'
 		}).then(function(ds) {
 		  $scope.dataset.Products = ds.data;
-		  return ds.data;
 		});
 	};
-
+	
 	$scope.refresher.Shops = function(q){
-		if(!$scope.adminMode) return;
 		return AdminShopService.list({
 			searchText: q,
 			_limit: 8,
@@ -1102,13 +1100,10 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 			_direction: 'asc'
 		}).then(function(ds) {
 		  $scope.dataset.Shops = ds.data;
-		  return ds.data;
 		});
 	};
 
 	$scope.refresher.AttributeSets = function(q) {
-		if (!q) return;
-		$scope.refresher.AttributeSetsLoading = true;
 		return AttributeSetService.list({
 			_order: 'AttributeSetId',
 			_limit: 5,
@@ -1116,7 +1111,6 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 			_direction: 'asc',
 			searchText: q
 		}).then(function(ds) {
-			$scope.refresher.AttributeSetsLoading = false;
 			var searchRes = ds.data.map(function(d) {
 				d._group = 'Search Results';
 				return d;
