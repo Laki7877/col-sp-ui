@@ -158,7 +158,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				$scope.loadAttributeSets = function($search) {
 					AttributeSetService.list({
 						searchText: $search,
-						_limit: 8
+						_limit: 100000
 					}).then(function(data) {
 						$scope.attributeSetOptions = data.data;
 					});

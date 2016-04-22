@@ -1620,7 +1620,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				$scope.loadAttributeSets = function($search) {
 					AttributeSetService.list({
 						searchText: $search,
-						_limit: 8
+						_limit: 100000
 					}).then(function(data) {
 						$scope.attributeSetOptions = data.data;
 					});
@@ -2479,10 +2479,9 @@ module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$u
 				$scope.save = function() {
 					$scope.alert.close();
 					//Save this data..
-					console.log($scope.formData);
 					ProductReviewService.update($scope.formData.ProductReviewId, $scope.formData)
 						.then(function() {
-							$uibModalInstance.close();
+							$uibModalInstance.close($scope.formData);
 						}, function(err) {
 							$scope.alert.error(common.getError(err));
 						});
@@ -2491,13 +2490,14 @@ module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$u
 				for (var i = 0; i < 10; i++) {
 					$scope.ratings.push(i*0.5);
 				};
-				console.log($scope.ratings);
 			}],
 			resolve: {
 				info: function() {
 					return item;
 				}
 			}
+		}).result.then(function(data) {
+			$scope.reload();
 		});
 	};
 }];
@@ -4253,15 +4253,15 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
   //In case local storage expire before cookie
   if(!_.isNil(storage.getSessionToken())) {
     if(!_.isNil($rootScope.Profile)) {
-      // Credential.checkToken()
-      //   .then(function() {
-      //     $rootScope.DisablePage = false;
-      //   }, function() {
-      //     console.log('check token failed');
-      //     storage.put('session_timeout');
-      //     storage.clear();
-      //     $window.location.reload();
-      //   });
+      $rootScope.DisablePage = true;
+      Credential.checkToken()
+        .then(function() {
+          $rootScope.DisablePage = false;
+        }, function() {
+          storage.put('session_timeout');
+          storage.clear();
+          $window.location.reload();
+        });
     } else {
       $rootScope.DisablePage = true;
       Credential.loginWithToken(storage.getSessionToken(), true)
@@ -4296,7 +4296,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
   $rootScope.permit = function(name) {
     return true;
     return _.findIndex($rootScope.Profile.Permission, function(item) {
-      //console.log(item);
+      //console.log(item.Permission);
       if(item.Permission == name) {
         return true;
       }
@@ -4318,7 +4318,6 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
           }
         }
       } else if(isActive(v, url) == 'active') {
-        console.log(v, k, url);
           result = $rootScope.permit(k);
       }
     });
@@ -5690,7 +5689,10 @@ module.exports = ["$scope", "$controller", "SellerRoleService", function($scope,
 			id: 'GroupId',
 			url: '/roles',
 			item: 'User Role',
-			service: SellerRoleService
+			service: SellerRoleService,
+			onLoad: function() {
+				$scope.loading = true;
+			}
 		}
 	});	
 	$scope.selectAll = {
@@ -5698,63 +5700,81 @@ module.exports = ["$scope", "$controller", "SellerRoleService", function($scope,
 		EditProduct: false,
 		EditInformation: false
 	};
-	$scope.test = function(min, max) {
-		if($scope.formData.Permission.length > 0) {
+
+	$scope.recheck = function() {
+		var test = true;
+		var test2 = true;
+		var test3 = true;
+
+		for (var i = 4; i < 10; i++) {
+			test = test && $scope.formData.Permissions[i].check;
+		}
+		for (var i = 4; i < 7; i++) {
+			test2 = test2 && $scope.formData.Permissions[i].check;
+		}
+		for (var i = 0; i < $scope.formData.Permissions.length; i++) {
+			test3 = test3 && $scope.formData.Permissions[i].check;
+		}
+
+		$scope.selectAll.EditProduct = test;
+		$scope.selectAll.EditInformation = test2;
+		$scope.selectAll.AllFeatures = test3;
+	};
+	$scope.testCheck = function(min, max) {
+		if($scope.formData.Permissions.length > 0) {
 			var test = true;
 			for(var i = min; i < max; i++) {
-				test = test && $scope.formData.Permission[i].check;
+				test = test && $scope.formData.Permissions[i].check;
 			}
 			return test;
 		}
 		return false;
 	};
 	$scope.same = function(newObj, oldObj, min, max) {
-		if($scope.formData.Permission.length > 0) {
-			var test = true;
-			for(var i = min; i < max; i++) {
-				test = test || newObj[i].check != oldObj.check;
-			}
-			return test;
+		var test = true;
+		for(var i = min; i <= max; i++) {
+			test = test && (newObj[i].check == oldObj[i].check);
 		}
-		return false;
+		return test;
 	};
+	$scope.some = function(min, max) {
+		var result = false;
+		for(var i = min; i <= max; i++) {
+			result = result || $scope.formData.Permissions[i].check;
+		}
+		return result;
+	}
 	$scope.check = function(val, min, max) {
-		if($scope.formData.Permission.length > 0) {
+		if(_.isNil($scope.formData.Permissions)) return;
+		if($scope.formData.Permissions.length > 0) {
 			for(var i = min; i <= max; i++) {
-				$scope.formData.Permission[i].check = val;
+				$scope.formData.Permissions[i].check = val;
 			}
 		}
-	}
+	};
 	$scope.checkAll = function(val) {
-		if(_.isNil($scope.formData.Permission)) return;
-		for(var i = 0; i < $scope.formData.Permission.length; i++) {
-			if($scope.formData.Permission[i]) {
-				$scope.formData.Permission[i].check = val;
+		if(_.isNil($scope.formData.Permissions)) return;
+		for(var i = 0; i < $scope.formData.Permissions.length; i++) {
+			if($scope.formData.Permissions[i]) {
+				$scope.formData.Permissions[i].check = val;
 			}
 		}
 		$scope.selectAll.EditProduct = val;
 		$scope.selectAll.EditInformation = val;
 	};
-	$scope.$watch('selectAll.EditProduct', function() {		
-		if($scope.selectAll.EditProduct == false) {
-			$scope.check(false, 4, 9);
-		}
-	});
-	$scope.$watch('selectAll.EditInformation', function() {		
-		if($scope.selectAll.EditInformation == false) {
-			$scope.check(false, 4, 6);
-		}
-	});
-	$scope.$watch('formData.Permission', function(val, val2) {
-		if(!_.isNil(val)) {
+	$scope.$watch('formData.Permissions', function(val, val2) {
+		if(_.isNil(val2) && !_.isNil(val)) {
+			$scope.loading = false;
 			$scope.recheck();
-			$scope.selectAll.AllFeatures = $scope.test(0, $scope.formData.Permission.length);
+		}
+		if(!_.isNil(val2) && !_.isNil(val)) {
+			$scope.selectAll.AllFeatures = $scope.testCheck(0, $scope.formData.Permissions.length);
 			if(!$scope.same(val, val2, 4, 6)) {
-				$scope.selectAll.EditInformation = $scope.test(4, 6);
+				$scope.selectAll.EditInformation = $scope.testCheck(4, 6);
 			}
 			if(!$scope.same(val, val2, 4, 9)) {
-				$scope.selectAll.EditProduct = $scope.test(4, 9);
-				$scope.selectAll.EditInformation = $scope.selectAll.EditProduct;
+				$scope.selectAll.EditProduct = $scope.testCheck(4, 9);
+				$scope.selectAll.EditInformation = $scope.testCheck(4, 6);
 			}
 		}
 	}, true);
@@ -5806,7 +5826,6 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 
 				// Readjust components if any
 				if($scope.hasComponent('Banner')) {
-					// Banner
 					var diff = $scope.formData.Banner.Images.length - $scope.getComponent('Banner').Count;
 					for (var i = 0; i < diff; i++) {
 						$scope.formData.Banner.Images.pop();
@@ -9058,7 +9077,8 @@ angular.module('nc')
 								}
 
 								var obj = {
-									progress: 0
+									progress: 0,
+									SlideDuration: 1
 								};
 								scope.images.push(obj);
 								var f = new FileItem(scope.uploader, file, {
@@ -9092,7 +9112,8 @@ angular.module('nc')
 								return;
 							}
 							var obj = {
-								progress: 0
+								progress: 0,
+								SlideDuration: 1
 							};
 							scope.images.push(obj);
 							scope.uploader.upload(file)
@@ -10240,7 +10261,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncImageBanner2',
-    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.IsBanner\">{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\" ng-show=source.IsBanner><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center;margin-top:35px\" class=color-grey><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\">Processing..</span></h4></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div><div class=section-break></div><div class=\"form-section-content no-margin padding-left-15 padding-right-15\" style=margin-top:15px><div nc-template=common/input/form-group-with-label nc-label=\"Auto Play\"><select ng-model=source.Banner.AutoPlay class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'No'}, {v: true, n: 'Yes'}]\"></select></div><div ng-repeat=\"image in source.Banner.Images track by $index\" class=form-group><div class=width-label><label class=control-label>Slide Duration {{$index+1}}</label></div><div class=width-field-normal><input class=\"form-control width-field-normal\" ng-model=image.SlideDuration ng-pattern-restrict=\"^[0-9]*(\\.[0-9]*)?$\"> <span class=input-with-unit><span class=input-unit>Seconds</span></span></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.IsBanner\">{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\" ng-show=source.IsBanner><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p></div></div><div class=image-select-alternative-text><span>Or</span> <a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">Select Images from your computer</a></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px ng-show=source.IsBanner><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center;margin-top:35px\" class=color-grey><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\">Processing..</span></h4></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div><div class=section-break ng-show=source.IsBanner></div><div class=\"form-section-content no-margin padding-left-15 padding-right-15\" style=margin-top:15px ng-show=source.IsBanner><div nc-template=common/input/form-group-with-label nc-label=\"Auto Play\"><select ng-model=source.Banner.AutoPlay class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'No'}, {v: true, n: 'Yes'}]\"></select></div><div ng-repeat=\"image in source.Banner.Images track by $index\" class=form-group><div class=width-label><label class=control-label>Slide Duration {{$index+1}}</label></div><div class=width-field-normal><input class=\"form-control width-field-normal\" ng-model=image.SlideDuration ng-pattern-restrict=\"^[0-9]*(\\.[0-9]*)?$\"> <span class=input-with-unit><span class=input-unit>Seconds</span></span></div></div></div></div>"
   );
 
 
@@ -12339,7 +12360,6 @@ angular.module('umeSelect')
                 return templateHTML;
             },
             link: function (scope, element, attrs, ngModel, transclude) {
-                
                 //text user types in searchbox
                 scope.searchText = "";
                 //index of currently highlighted choice
@@ -12810,7 +12830,7 @@ var admin = {
 	},
 	'Promotion|fa-bookmark': {
 		'Global Coupons': '/admin/coupons/global',
-		'Seller Coupons': '/admin/coupons/seller'
+		'All Seller Coupons': '/admin/coupons/seller'
 	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'
@@ -12829,7 +12849,7 @@ var permission = {
 	'Manage Shops': ['/admin/shops', '/admin/shoptypes'],
 	'Manage Admin': ['/admin/accounts', '/admin/roles'],
 	'Manage Global Coupons': '/admin/coupons/global',
-	'Manage Seller Coupons': '/admin/coupons/seller',
+	'View All Seller Coupons': '/admin/coupons/seller',
 	'Manage Newsletter': '/admin/newsletters',
 
 	'View Product': '/products',
@@ -12845,7 +12865,8 @@ var permission = {
 	'View Coupons': '/coupons',
 	'Manage Shop Profile': '/shop/settings',
 	'Manage Shop Appearance': '/shop/appearance',
-	'Manage User Account & Roles': ['/accounts', '/roles']
+	'Manage Roles': '/roles',
+	'View Sub Account': '/accounts'
 	
 };
 
@@ -15737,7 +15758,7 @@ module.exports = ["common", "SellerPermissionService", function(common, SellerPe
 		_.remove(processed.Permission, function(e) {
 			return !e.check;
 		});
-		processed.Permission = _.map(processed.Permission, function(e) {
+		processed.Permission = _.map(processed.Permissions, function(e) {
 				return _.pick(e, ['PermissionId']);
 			});
 		return processed;
@@ -15747,7 +15768,7 @@ module.exports = ["common", "SellerPermissionService", function(common, SellerPe
 		var processed = _.merge({}, data);
 		SellerPermissionService.listAll()
 			.then(function(data) {
-				processed.Permission = _.map(data, function(e) {
+				processed.Permissions = _.map(data, function(e) {
 					if(_.isUndefined(_.find(processed.Permission, { PermissionId: e.PermissionId }))) {
 						e.check = false;
 					} else {
@@ -15764,7 +15785,7 @@ module.exports = ["common", "SellerPermissionService", function(common, SellerPe
 		};
 		SellerPermissionService.listAll()
 			.then(function(data) {
-				processed.Permission = _.map(data, function(e) {
+				processed.Permissions = _.map(data, function(e) {
 					e.check = false;
 					return e;
 				});
@@ -17071,12 +17092,12 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('newsletter/modalAdmin',
-    "<nc-alert nc-model=alert></nc-alert><div class=\"modal-header newsletter-modal-header\"><h3 class=\"modal-title modal_title_abosolute\">Add Newsletter</h3><div class=title_relative><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></div></div></div><div class=modal-body><form ng-show=\"!saving && !loading\" name=form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Subject nc-template-form=form.Subject nc-label=Subject><input class=form-control ng-model=formData.Subject required></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Image nc-template-form=form.Image nc-label=Image><button type=button name=Image class=\"btn btn-default\" ngf-accept=\"'.png,.jpg,.jpeg'\" ngf-select=upload($file)>Choose File</button></div><div ng-show=formData.Image nc-template=common/input/form-group-with-label nc-label=\"Image Preview\"><img ng-src={{formData.Image.Url}} class=\"img-responsive\"> <a style=display:block class=margin-top-5 ng-click=\"formData.Image=null\"><i class=\"fa-trash fa\"></i> Delete this image</a></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Description nc-template-form=form.Description nc-label=Content><textarea class=form-control ng-model=formData.Description required></textarea></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/PublishedDt nc-template-form=form.PublishedDt nc-label=\"Published Date\"><div><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.PublishedDt | datetimeTh }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=PublishedDt ng-date-before={{formData.PublishedDt}} data-ng-model=formData.PublishedDt data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'hour' }\"></ul></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/VisibleShopGroup nc-template-form=form.VisibleShopGroup nc-label=\"Allow Reader\"><ui-select ng-model=formData.VisibleShopGroup><ui-select-match>{{$select.selected.name}}</ui-select-match><ui-select-choices repeat=\"item.value as item in shopGroupOptions\">{{item.name}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/IncludeShop nc-template-form=form.IncludeShop nc-label=\"Include Shop\"><ui-select ng-model=formData.IncludeShop multiple tagging-label=\"\"><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'include')\" repeat=\"item in shops.include.data\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/ExcludeShop nc-template-form=form.ExcludeShop nc-label=\"Exclude Shop\"><ui-select ng-model=formData.ExcludeShop multiple tagging-label=\"\"><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'exclude')\" repeat=\"item in shops.exclude.data\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div></div></div><div class=col-xs-12><hr><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "<nc-alert nc-model=alert></nc-alert><div class=\"modal-header newsletter-modal-header\"><h3 class=\"modal-title modal_title_abosolute\">Newsletter Detail</h3><div class=title_relative><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></div></div></div><div class=modal-body><form ng-show=\"!saving && !loading\" name=form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Subject nc-template-form=form.Subject nc-label=Subject><input class=form-control ng-model=formData.Subject required></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Image nc-template-form=form.Image nc-label=Image><button type=button name=Image class=\"btn btn-default\" ngf-accept=\"'.png,.jpg,.jpeg'\" ngf-select=upload($file)>Choose File</button></div><div ng-show=formData.Image nc-template=common/input/form-group-with-label nc-label=\"Image Preview\"><img ng-src={{formData.Image.Url}} class=\"img-responsive\"> <a style=display:block class=margin-top-5 ng-click=\"formData.Image=null\"><i class=\"fa-trash fa\"></i> Delete this image</a></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Description nc-template-form=form.Description nc-label=Content><textarea class=form-control ng-model=formData.Description required></textarea></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/PublishedDt nc-template-form=form.PublishedDt nc-label=\"Published Date\"><div><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.PublishedDt | datetimeTh }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=PublishedDt ng-date-before={{formData.PublishedDt}} data-ng-model=formData.PublishedDt data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'hour' }\"></ul></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/VisibleShopGroup nc-template-form=form.VisibleShopGroup nc-label=\"Allow Reader\"><ui-select ng-model=formData.VisibleShopGroup><ui-select-match>{{$select.selected.name}}</ui-select-match><ui-select-choices repeat=\"item.value as item in shopGroupOptions\">{{item.name}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/IncludeShop nc-template-form=form.IncludeShop nc-label=\"Include Shop\"><ui-select ng-model=formData.IncludeShop multiple tagging-label=\"\"><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'include')\" repeat=\"item in shops.include.data\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/ExcludeShop nc-template-form=form.ExcludeShop nc-label=\"Exclude Shop\"><ui-select ng-model=formData.ExcludeShop multiple tagging-label=\"\"><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'exclude')\" repeat=\"item in shops.exclude.data\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div></div></div><div class=col-xs-12><hr><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
   $templateCache.put('newsletter/modalSeller',
-    "<div class=\"modal-header newsletter-modal-header\"><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>{{ item.Subject }}</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section-content><p class=margin-top-15><img ng-if=item.ImageUrl src=\"item.ImageUrl\"> {{ item.Description }}</p><hr><div class=color-dark-grey>Publish Date: {{ item.PublishedDt | datetimeTh }}</div></div></div></div></form></div>"
+    "<div class=\"modal-header newsletter-modal-header\"><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>{{ item.Subject }}</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section-content><p class=margin-top-15><img ng-if=item.Image.Url src=\"item.Image.Url\"> {{ item.Description }}</p><hr><div class=color-dark-grey>Publish Date: {{ item.PublishedDt | datetimeTh }}</div></div></div></div></form></div>"
   );
 
 

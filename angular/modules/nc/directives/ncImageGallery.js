@@ -126,7 +126,8 @@ angular.module('nc')
 								}
 
 								var obj = {
-									progress: 0
+									progress: 0,
+									SlideDuration: 1
 								};
 								scope.images.push(obj);
 								var f = new FileItem(scope.uploader, file, {
@@ -160,7 +161,8 @@ angular.module('nc')
 								return;
 							}
 							var obj = {
-								progress: 0
+								progress: 0,
+								SlideDuration: 1
 							};
 							scope.images.push(obj);
 							scope.uploader.upload(file)

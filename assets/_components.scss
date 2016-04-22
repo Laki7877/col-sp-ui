@@ -50,6 +50,13 @@ background-image:url(http://csscheckbox.com/checkboxes/u/csscheckbox_7875fc1239d
 user-select: none;
 }
 
+.child-checkbox-enter{
+	margin-left: -37px;
+	margin-top: 1px;
+	position: absolute;
+	color: $color-grey;
+}
+
 /*---- Table ----*/
 .table {
 	.checkbox-column {

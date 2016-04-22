@@ -227,7 +227,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 													<span ng-bind="$select.selected.BankName"></span>
 												</ui-select-match>
 												<ui-select-choices repeat="item in bankNames">
-													<span ng-bind="item.BankName"></span>
+													<div ng-bind="item.BankName" class="column-text-ellipsis"></div>
 												</ui-select-choices>
 											</ui-select>
 				                    </div>

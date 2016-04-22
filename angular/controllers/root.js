@@ -49,15 +49,15 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   //In case local storage expire before cookie
   if(!_.isNil(storage.getSessionToken())) {
     if(!_.isNil($rootScope.Profile)) {
-      // Credential.checkToken()
-      //   .then(function() {
-      //     $rootScope.DisablePage = false;
-      //   }, function() {
-      //     console.log('check token failed');
-      //     storage.put('session_timeout');
-      //     storage.clear();
-      //     $window.location.reload();
-      //   });
+      $rootScope.DisablePage = true;
+      Credential.checkToken()
+        .then(function() {
+          $rootScope.DisablePage = false;
+        }, function() {
+          storage.put('session_timeout');
+          storage.clear();
+          $window.location.reload();
+        });
     } else {
       $rootScope.DisablePage = true;
       Credential.loginWithToken(storage.getSessionToken(), true)
@@ -92,7 +92,7 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   $rootScope.permit = function(name) {
     return true;
     return _.findIndex($rootScope.Profile.Permission, function(item) {
-      //console.log(item);
+      //console.log(item.Permission);
       if(item.Permission == name) {
         return true;
       }
@@ -114,7 +114,6 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
           }
         }
       } else if(isActive(v, url) == 'active') {
-        console.log(v, k, url);
           result = $rootScope.permit(k);
       }
     });
