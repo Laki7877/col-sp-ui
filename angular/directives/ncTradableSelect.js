@@ -39,9 +39,6 @@ module.exports = function($templateCache, $filter) {
 				scope.model.splice($index, 1);
 				scope.select(_.findIndex(scope.model, function(e) { return e[scope.id] == item[scope.id] }), false);
 			};
-			scope.onInsert = function(index, item) {
-				scope.select(scope.model.indexOf(item), false);
-			};
 			scope.transfer = function(direction) {
 				if(direction) {
 					var removed = scope.selectable[scope.activeLeft];

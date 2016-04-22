@@ -4279,12 +4279,17 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
   } 
 
   //Handle permission
-  $rootScope.permit = function(name) {
+  $rootScope.permit = function(id) {
     //return true;
     return _.findIndex($rootScope.Profile.Permission, function(item) {
-      //console.log(item.Permission);
-      if(item.Permission == name) {
-        return true;
+      if(item.PermissionId == id) {
+        if(item.OverrideParent > 0) {
+          return (_.findIndex($rootScope.Profile.Permission, function(e) {
+              return e.PermissionId === item.OverrideParent;
+            }) >= 0);
+        } else {
+          return true;
+        }
       }
       else {
         return false;
@@ -4300,11 +4305,11 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
       if(_.isArray(v)) {
         for (var i = 0; i < v.length; i++) {
           if(isActive(v[i], url) == 'active') {
-            result = $rootScope.permit(k);
+            result = result && $rootScope.permit(k);
           }
         }
       } else if(isActive(v, url) == 'active') {
-          result = $rootScope.permit(k);
+          result = result && $rootScope.permit(k);
       }
     });
     return result;
@@ -4353,7 +4358,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
           $window.location.href = "/products";
         }
       }, function() {
-        alert("Fetal error while logging out.");
+        //alert("Fatal error while logging out.");
       });
     }
     else {  
@@ -6124,9 +6129,6 @@ module.exports = ["$templateCache", "$filter", function($templateCache, $filter)
 			scope.onDrag = function($index, item) {
 				scope.model.splice($index, 1);
 				scope.select(_.findIndex(scope.model, function(e) { return e[scope.id] == item[scope.id] }), false);
-			};
-			scope.onInsert = function(index, item) {
-				scope.select(scope.model.indexOf(item), false);
 			};
 			scope.transfer = function(direction) {
 				if(direction) {
@@ -13470,36 +13472,42 @@ var admin = {
 };
 var permission = {
 	//Admin
-	'View All Products': '/admin/products',
-	'Approve Products': '/admin/approve',
-	'Manage Pending Products': '/admin/groups',
-	'Manage Master Products': '/admin/masters',
-	'Manage Brands': '/admin/brands',
-	//'Manage Attribute & Attribute Sets': ['/admin/attributes', '/admin/attributesets'],
-	'Manage Global Categories': '/admin/categories',
-	'Manage Seller Accounts': '/admin/sellers',
-	'Manage Shops': ['/admin/shops', '/admin/shoptypes'],
-	'Manage Admin': ['/admin/accounts', '/admin/roles'],
-	'Manage Global Coupons': '/admin/coupons/global',
-	'View All Seller Coupons': '/admin/coupons/seller',
-	'Manage Newsletter': '/admin/newsletters',
+	1: '/admin/products',
+	3: '/admin/approve',
+	4: ['/admin/products/groups', '/admin/products/groups/add'],
+	5: ['/admin/masters', '/admin/masters/add'],
+	6: ['/admin/brands', '/admin/brands/add'],
+	7: ['/admin/attributes', '/admin/attributes/add', '/admin/attributesets', '/admin/attributesets/add'],
+	8: '/admin/categories',
+	9: '/admin/sellers',
+	10: ['/admin/shops', '/admin/shops/add'],
+	11: ['/admin/accounts', '/admin/accounts/add'],
+	12: '/admin/coupons/global',
+	13: '/admin/coupons/seller',
+	21: '/admin/newsletters',
 
-	'View Product': '/products',
-	'Add Product': ['/products/select', '/products/add'],
-	'View Dashboard': '/dashboard',
-	'View Orders': '/orders',
-	'Manage Return Requests': '/returns',
-	'Manage Local Category': '/categories',
-	'Manage Product Reviews': '/reviews',
-	'Manage Product Images': '/products/images',
-	'Manage Pending Products': '/products/groups',
-	'View Inventory': '/inventory',
-	'View Coupons': '/coupons',
-	'Manage Shop Profile': '/shop/settings',
-	'Manage Shop Appearance': '/shop/appearance',
-	'Manage Roles': '/roles',
-	'View Sub Account': '/accounts'
-	
+	//Seller
+	29: '/dashboard',
+	30: '/orders',
+	32: '/returns',
+	33: '/products',
+	34: ['/products/select', '/products/add'],
+	46: '/categories',
+	47: '/reviews',
+	48: '/products/images',
+	49: '/products/groups',
+	50: '/inventory',
+	52: '/coupons',
+	55: '/shop/settings',
+	56: '/shop/appearance',
+	57: ['/roles', '/accounts'],
+
+	//Shop
+	64: '/dashboard',
+	65: '/products/groups',
+	66: '/products/images',
+	68: '/inventory',
+	69: '/coupons'
 };
 
 module.exports = {
@@ -13787,7 +13795,30 @@ module.exports = ["common", function(common) {
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Admin');
+	var _list = service.list;
+	service.list = function() {
+		var defer = $q.defer();
+		_list().then(function(data) {
+			_.forEach(data, function(item1) {
+				item1.Children = [];
+				_.forEach(data, function(item2) {
+					if(item != item2) {
+						if(item2.Parent == item1.PermissionId) {
+							item1.Children.push(item2); 
+						}
+					}
+				});
+				_.sortBy(item1.Children, ['Position']);
+			});
 
+			_.remove(data, function(e) {
+				return e.Parent == 0;
+			});
+			defer.resolve(data);
+		}, defer.reject);
+
+		return defer.promise;
+	}
 	return service;
 }]
 },{}],164:[function(require,module,exports){
@@ -16377,7 +16408,30 @@ module.exports = ["common", function(common) {
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Seller');
-	
+	var _list = service.list;
+	service.list = function() {
+		var defer = $q.defer();
+		_list().then(function(data) {
+			_.forEach(data, function(item1) {
+				item1.Children = [];
+				_.forEach(data, function(item2) {
+					if(item != item2) {
+						if(item2.Parent == item1.PermissionId) {
+							item1.Children.push(item2); 
+						}
+					}
+				});
+				_.sortBy(item1.Children, ['Position']);
+			});
+
+			_.remove(data, function(e) {
+				return e.Parent == 0;
+			});
+			defer.resolve(data);
+		}, defer.reject);
+
+		return defer.promise;
+	}
 	return service;
 }]
 },{}],197:[function(require,module,exports){
@@ -16520,7 +16574,30 @@ module.exports = ["common", "config", "util", function (common, config, util) {
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Shop');
+	var _list = service.list;
+	service.list = function() {
+		var defer = $q.defer();
+		_list().then(function(data) {
+			_.forEach(data, function(item1) {
+				item1.Children = [];
+				_.forEach(data, function(item2) {
+					if(item != item2) {
+						if(item2.Parent == item1.PermissionId) {
+							item1.Children.push(item2); 
+						}
+					}
+				});
+				_.sortBy(item1.Children, ['Position']);
+			});
 
+			_.remove(data, function(e) {
+				return e.Parent == 0;
+			});
+			defer.resolve(data);
+		}, defer.reject);
+
+		return defer.promise;
+	}
 	return service;
 }]
 },{}],202:[function(require,module,exports){
