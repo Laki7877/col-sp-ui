@@ -1062,6 +1062,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 	};
 
 	$scope.dataset = {
+		Products: [],
 		CombinedAttributeSets: [],
 		GlobalCategoryTree: null
 	};
@@ -1092,6 +1093,14 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 		});
 	};
 	
+	ProductTempService.list({
+		_limit: 8,
+		_offset: 0,
+		_direction: 'asc'
+	}).then(function(ds) {
+		$scope.dataset.Products = ds.data;
+	});
+
 	$scope.refresher.Shops = function(q){
 		return AdminShopService.list({
 			searchText: q,
@@ -11777,7 +11786,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-variant-table-b',
-    "<table class=\"table variation-table\"><thead><tr><th class=column-variant style=width:150px>Variant</th><th class=column-mapped-product style=width:400px>Mapped Product</th><th class=column-visibility>Visibility</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td><you-me ng-model=pair.MappedProduct display-by=ProductNameEn refresh=refresher.Products strict-mode=true choices=dataset.Products ng-disabled=!pair.Visibility name=pair_MappedProduct></you-me></td><td><a class=\"btn btn-white\" ng-click=\"pair.Visibility = !pair.Visibility\"><span ng-if=pair.Visibility>Hide</span> <span ng-if=!pair.Visibility>Show</span></a></td></tr></tbody></table>"
+    "<table class=\"table variation-table\"><thead><tr><th class=column-variant style=width:150px>Variant</th><th class=column-mapped-product style=width:400px>Mapped Product</th><th class=column-visibility>Visibility</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td><you-me ng-model=pair.MappedProduct display-by=ProductNameEn refresh=refresher.Products initial-choices=dataset.Products placeholder=\"Search from pending product list.\" strict-mode=true choices=dataset.Products ng-disabled=!pair.Visibility name=pair_MappedProduct></you-me></td><td><a class=\"btn btn-white\" ng-click=\"pair.Visibility = !pair.Visibility\"><span ng-if=pair.Visibility>Hide</span> <span ng-if=!pair.Visibility>Show</span></a></td></tr></tbody></table>"
   );
 
 

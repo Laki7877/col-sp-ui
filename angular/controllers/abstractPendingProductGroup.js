@@ -58,6 +58,7 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 	};
 
 	$scope.dataset = {
+		Products: [],
 		CombinedAttributeSets: [],
 		GlobalCategoryTree: null
 	};
@@ -88,6 +89,14 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 		});
 	};
 	
+	ProductTempService.list({
+		_limit: 8,
+		_offset: 0,
+		_direction: 'asc'
+	}).then(function(ds) {
+		$scope.dataset.Products = ds.data;
+	});
+
 	$scope.refresher.Shops = function(q){
 		return AdminShopService.list({
 			searchText: q,
