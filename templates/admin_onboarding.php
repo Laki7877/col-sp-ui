@@ -1,5 +1,5 @@
 <?php
-$this->layout('layouts/page-with-sidebar', ['title' => 'Top Features'])
+$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Top Features'])
 ?>
 
 <?php $this->start('page-body') ?>
