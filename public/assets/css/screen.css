@@ -16459,3 +16459,19 @@ ng-transclude.has-error .form-control {
   font-size: 14px;
   text-align: center;
 }
+
+/* line 69, ../../../assets/_additional_code.scss */
+ul[dnd-list] .dndPlaceholder {
+  display: block;
+  padding-left: 15px;
+  padding-right: 15px;
+  line-height: 30px;
+  height: 30px;
+  cursor: pointer;
+  background: white;
+}
+
+/* line 78, ../../../assets/_additional_code.scss */
+ul[dnd-list] .dndDraggingSource {
+  display: none !important;
+}

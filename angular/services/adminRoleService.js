@@ -15,17 +15,6 @@ module.exports = function(common, AdminPermissionService) {
 
 	service.deserialize = function(data) {
 		var processed = _.merge({}, data);
-		AdminPermissionService.listAll()
-			.then(function(data) {
-				processed.Permission = _.map(data, function(e) {
-					if(_.isUndefined(_.find(processed.Permission, { PermissionId: e.PermissionId }))) {
-						e.check = false;
-					} else {
-						e.check = true;
-					}
-					return e;
-				});
-			});
 		return processed;
 	};
 	service.generate = function() {

@@ -81,7 +81,8 @@
 												nc-test="lockAS"
 												nc-model="ctrl.tradedAS"
 												nc-select-options="dataSet.attributeSets"
-												nc-options="{ 'map' : { 'text': 'Display', 'value' : 'AttributeSetId' } }">
+												nc-id="AttributeSetId"
+												nc-text="Display">
 										 	 </nc-tradable-select>
 
 										 </div>

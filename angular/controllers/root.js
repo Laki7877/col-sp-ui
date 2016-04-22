@@ -4,6 +4,8 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
 	$rootScope._ = _;
   $rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
+
+  //console.log($rootScope.Profile.Permission);
   
   $rootScope.ShopGroupPolicy = function(range){
     var mySG = _.get($rootScope.Profile, 'Shop.ShopGroup');
@@ -89,12 +91,17 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   } 
 
   //Handle permission
-  $rootScope.permit = function(name) {
-    return true;
+  $rootScope.permit = function(id) {
+    //return true;
     return _.findIndex($rootScope.Profile.Permission, function(item) {
-      //console.log(item.Permission);
-      if(item.Permission == name) {
-        return true;
+      if(item.PermissionId == id) {
+        if(item.OverrideParent > 0) {
+          return (_.findIndex($rootScope.Profile.Permission, function(e) {
+              return e.PermissionId === item.OverrideParent;
+            }) >= 0);
+        } else {
+          return true;
+        }
       }
       else {
         return false;
@@ -110,11 +117,11 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
       if(_.isArray(v)) {
         for (var i = 0; i < v.length; i++) {
           if(isActive(v[i], url) == 'active') {
-            result = $rootScope.permit(k);
+            result = result && $rootScope.permit(k);
           }
         }
       } else if(isActive(v, url) == 'active') {
-          result = $rootScope.permit(k);
+          result = result && $rootScope.permit(k);
       }
     });
     return result;
@@ -163,7 +170,7 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
           $window.location.href = "/products";
         }
       }, function() {
-        alert("Fetal error while logging out.");
+        //alert("Fatal error while logging out.");
       });
     }
     else {  
