@@ -102,7 +102,7 @@ var admin = {
 		'Pending Products': ['/admin/products/groups', '/admin/products/groups/add'],
 		'Master Products': ['/admin/masters', '/admin/masters/add'],
 		'Product Reviews': '/admin/products/reviews',
-		'Brands': ['/admin/brands', '/admin/brands/add'],
+		'Brands|margin-top-30': ['/admin/brands', '/admin/brands/add'],
 		'Attributes': ['/admin/attributes', '/admin/attributes/add'],
 		'Attribute Sets': ['/admin/attributesets', '/admin/attributesets/add'],
 		'Global Category': '/admin/categories'
