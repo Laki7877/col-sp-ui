@@ -4,12 +4,7 @@ module.exports = function(common, AdminPermissionService) {
 
 	service.serialize = function(data) {
 		var processed = _.merge({}, data);
-		_.remove(processed.Permission, function(e) {
-			return !e.check;
-		});
-		processed.Permission = _.map(processed.Permission, function(e) {
-				return _.pick(e, ['PermissionId']);
-			});
+		_.unset(processed, ['Permissions']);
 		return processed;
 	};
 

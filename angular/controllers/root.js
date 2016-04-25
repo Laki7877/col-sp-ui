@@ -278,4 +278,25 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
     }
     return '';
   };
+
+  //For permission navigator
+  var traverseFalse = function(arr) {
+    for (var i = arr.length - 1; i >= 0; i--) {
+      arr[i].check = false;
+      traverseFalse(arr[i].Children);
+    };
+  }
+  $rootScope.checkRecursive = function(permObj, value) {
+    if(value) {
+      var parent = permObj.ParentNode;
+      while(!_.isNil(parent)) {
+        parent.check = true;
+        parent = parent.ParentNode;
+      }
+    }
+    else {
+      if(permObj.Children.length > 0)
+        traverseFalse(permObj.Children);
+    }
+  }
 };
