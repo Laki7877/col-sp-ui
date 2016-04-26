@@ -19,7 +19,12 @@ module.exports = function($scope, $controller, AdminRoleService, AdminPermission
 						scope.formData.Permissions = PermissionService.generate(scope.permissions);
 					}
 
-					console.log(scope.formData.Permissions);
+					$scope.selectAll = true;
+					_.forOwn($scope.formData.Permissions, function(v,k) {
+						util.traverse(v, 'Children', function(e) {
+							$scope.selectAll = $scope.selectAll && e.check;
+						});
+					});					
 				}).finally(function() {
 					scope.loading = false;
 				});
@@ -29,6 +34,12 @@ module.exports = function($scope, $controller, AdminRoleService, AdminPermission
 			},
 			onAfterSave: function(scope) {
 				scope.formData.Permissions = PermissionService.deserialize(scope.formData.Permission, scope.permissions);
+				$scope.selectAll = true;
+				_.forOwn($scope.formData.Permissions, function(v,k) {
+					util.traverse(v, 'Children', function(e) {
+						$scope.selectAll = $scope.selectAll && e.check;
+					});
+				});
 			}
 		}
 	});

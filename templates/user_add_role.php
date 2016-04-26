@@ -62,69 +62,14 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 									<div class="form-section-header"><h2>Role Permission</h2></div>
 									<div class="form-section-content">
 										<div ng-template="common/input/multiline-checkbox"
-											ng-template-options="{
-												'label' : 'All Features'
-											}">
-											<label><input ng-model="selectAll.AllFeatures" ng-change="checkAll(selectAll.AllFeatures, 0, formData.Permissions.length)" type="checkbox">Select All</label>
+											ng-template-options="{ 'label' : 'All Features' }">
+											<label><input ng-model="selectAll" ng-change="checkAll(selectAll)" type="checkbox">Select All</label>
 										</div>
-										<div ng-template="common/input/multiline-checkbox"
-											ng-template-options="{
-												'label' : 'Dashboard'
-											}">
-											<label ng-repeat="permission in formData.Permissions | slice:0:1"><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
-										</div>
-										<div ng-template="common/input/multiline-checkbox"
-											ng-template-options="{
-												'label' : 'Product'
-											}">
-											<label ng-repeat="permission in formData.Permissions | slice:1:4"><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
-
-											<!-- Edit Product -->
-											<label><input ng-model="selectAll.EditProduct" ng-change="check(selectAll.EditProduct, 4, 9)" type="checkbox"/>Edit Product</label>
-												<!-- Edit Info -->
-												<label class="margin-left-30"><i class="fa fa-level-up fa-rotate-90 child-checkbox-enter" aria-hidden="true"></i><input ng-model="selectAll.EditInformation" ng-change="check(selectAll.EditInformation, 4, 6)" type="checkbox"/>Edit Information</label>
-													<!-- Edit info children -->
-													<label  ng-repeat="permission in formData.Permissions | slice:4:7" class="margin-left-60"><i class="fa fa-level-up fa-rotate-90 child-checkbox-enter" aria-hidden="true"></i><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
-												<!-- Edit product children -->
-												<label ng-repeat="permission in formData.Permissions | slice:7:10" class="margin-left-30"><i class="fa fa-level-up fa-rotate-90 child-checkbox-enter" aria-hidden="true"></i><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
-
-											<label ng-repeat="permission in formData.Permissions | slice:10:14"><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
-										</div>
-										<div ng-template="common/input/multiline-checkbox"
-											ng-template-options="{
-												'label' : 'Inventory'
-											}">
-											<label ng-repeat="permission in formData.Permissions | slice:14:16"><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
-										</div>
-										<div ng-template="common/input/multiline-checkbox"
-											ng-template-options="{
-												'label' : 'Promotion'
-											}">
-											<label ng-repeat="permission in formData.Permissions | slice:16:18"><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
-										</div>
-										<div ng-template="common/input/multiline-checkbox"
-											ng-template-options="{
-												'label' : 'Orders'
-											}">
-											<label ng-repeat="permission in formData.Permissions | slice:18:22"><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
-										</div>
-										<div ng-template="common/input/multiline-checkbox"
-											ng-template-options="{
-												'label' : 'Shop Setting'
-											}">
-											<label ng-repeat="permission in formData.Permissions | slice:22:24"><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
-										</div>
-										<div ng-template="common/input/multiline-checkbox"
-											ng-template-options="{
-												'label' : 'Account'
-											}">
-											<label ng-repeat="permission in formData.Permissions | slice:24:27"><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
-										</div>
-										<div ng-template="common/input/multiline-checkbox"
-											ng-template-options="{
-												'label' : 'Report'
-											}">
-											<label ng-repeat="permission in formData.Permissions | slice:27:28"><input ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
+										<div ng-repeat="name in group">
+											<div ng-template="common/input/multiline-checkbox"
+												ng-template-options="{ 'label' : name }">
+												<div ng-include="'common/roleNode'" ng-repeat="p in formData.Permissions[name]"></div>
+											</div>
 										</div>
 									</div>
 								</div>

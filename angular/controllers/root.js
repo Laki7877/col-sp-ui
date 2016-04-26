@@ -90,9 +90,7 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
     }
   } 
 
-  //Handle permission
-  $rootScope.permit = function(id) {
-    //return true;
+  $rootScope.hasPermission = function(id) {
     return _.findIndex($rootScope.Profile.Permission, function(item) {
       if(item.PermissionId == id) {
         if(item.OverrideParent > 0) {
@@ -107,6 +105,12 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
         return false;
       }
     }) >= 0;
+  }
+
+  //Handle permission
+  $rootScope.permit = function(id) {
+    //return true;
+    return $rootScope.hasPermission(id);
   };
 
   //Check url access permission
