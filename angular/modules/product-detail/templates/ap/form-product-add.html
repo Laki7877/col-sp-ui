@@ -1,8 +1,5 @@
 <form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
-    {{options}}
-            <nc-page-title nc-title="Products/Product Detail" ng-link="listingUrl || '/products'" icon="fa-tag">
-                 <div ng-include="'page-btn-controls'"></div>
-            </nc-page-title>
+            {{options}}
 
             <div ng-if="pageState.loading.state" nc-loading="{{ pageState.loading.message }}.."></div>
             <div class="add-product-body" ng-if="!pageState.loading.state || pageState.halt">
