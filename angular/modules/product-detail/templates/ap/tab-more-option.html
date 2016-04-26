@@ -143,9 +143,9 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="row in formData.Revisions" ng-if="row.ApprovedDt">
-                                    <td>{{ row.ApprovedDt | date: 'dd/MM/yyyy HH:mm' }}</td>
-                                    <td>{{ row.SubmittedDt | date: 'dd/MM/yyyy HH:mm' }}</td>
-                                    <td>{{ row.SubmittedBy }}</td>
+                                    <td>{{ row.ApprovedOn | date: 'dd/MM/yyyy HH:mm' }}</td>
+                                    <td>{{ row.SubmitOn | date: 'dd/MM/yyyy HH:mm' }}</td>
+                                    <td>{{ row.SubmitBy }}</td>
                                     <td>
                                         <button class="btn btn-white">View</button>
                                         <button class="btn btn-white">Restore</button>
