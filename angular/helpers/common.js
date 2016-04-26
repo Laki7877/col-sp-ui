@@ -26,7 +26,7 @@ module.exports = function ($http, $q, storage, config, $window) {
                 
                 var curlCmd = service.makeCurl(options.method, options.url, options.headers.Authorization, options.data);
                 var counter = 1;
-                var MAX_RETRY = 2;
+                var MAX_RETRY = 0;
                 var request = function() {
 
                     $http(options)
@@ -210,6 +210,14 @@ module.exports = function ($http, $q, storage, config, $window) {
 
             return obj;
         };
+
+        //Get sort by table
+        service.getSortBy = function() {
+            return service.makeRequest({
+                url: '/SortBy',
+                method: 'GET'
+            });
+        }
         
         return service;
 };

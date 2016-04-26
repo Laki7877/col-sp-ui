@@ -11,4 +11,5 @@ module.exports = function($scope, $controller, BrandService, config) {
 			id: 'BrandId'
 		}
 	});
+	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 };

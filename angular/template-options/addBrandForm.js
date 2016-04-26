@@ -24,5 +24,11 @@ module.exports = {
                 'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'
             }
         }
+    },
+    SortBy: {
+
+    },
+    Status: {
+      
     }
 };

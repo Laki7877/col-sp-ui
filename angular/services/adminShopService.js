@@ -37,7 +37,8 @@ module.exports = function(common, config, util) {
 			Commissions: [],
 			GiftWrap: 'N',
 			TaxInvoice: 'Y',
-			StockAlert: 0
+			StockAlert: 0,
+			CloneGlobalCategory: false
 		};
 		return processed;
 	};

@@ -212,5 +212,12 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 	    });
 	};
 	$scope.shopGroupDropdown = config.SHOP_GROUP;
+	$scope.yesNoDropdown = config.DROPDOWN.YES_NO_DROPDOWN;
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
+
+	$scope.$watch('formData.CloneGlobalCategory', function(val) {
+		if(val) {
+			$scope.formData.MaximumLocalCategory = 99;
+		}
+	});
 };

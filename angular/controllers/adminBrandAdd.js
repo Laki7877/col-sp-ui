@@ -4,9 +4,14 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 	$scope.products = [];
 	$scope.availableProducts = -1;
 	$scope.logoUploader = ImageService.getUploaderFn('/BrandImages', {
-		data: { IsLogo: true }
+		data: { Type: 'Logo' }
 	});
-	$scope.bannerUploader = ImageService.getUploaderFn('/BrandImages');
+	$scope.bannerUploader = ImageService.getUploaderFn('/BrandImages', {
+		data: { Type: 'Banner' }
+	});
+	$scope.bannerSmUploader = ImageService.getUploaderFn('/BrandImages', {
+		data: { Type: 'SmallBanner' }
+	});
 	$scope.uploadLogo = function(file) {
 		if(_.isNil(file)) {
 			return;
@@ -39,6 +44,9 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 			$scope.products = response.data;
 		});	
 	};
+	$scope.status = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
+	$scope.sortby = [];
+	
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
 		options: {
@@ -47,6 +55,10 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 			item: 'Brand',
 			service: BrandService,
 			onLoad: function(scope, flag) {
+				common.getSortBy().then(function(data) {
+					$scope.sortBy = data;
+				});
+
 				if(flag) {
 					//Check if product exist for this brand
 					Product.advanceList({

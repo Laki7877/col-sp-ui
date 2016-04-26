@@ -59,6 +59,22 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										maxlength="100"
 										required />
 									</div>
+									<!-- URL Key -->
+									<div ng-template="common/input/text2"
+										ng-template-options="{
+										'label': 'URL Key',
+										'show': $root.isInvalid(form.UrlKey),
+										'conditions' : form.UrlKey.$error
+										}
+										}">
+										<input
+										class="form-control"
+										name="UrlKey"
+										ng-model="formData.UrlKey"
+										ng-class="{ 'has-error' : $root.isInvalid(form.UrlKey) }"
+										maxlength="100"
+										/>
+									</div>
 									<!-- Shop Group -->
 									<div ng-template="common/input/dropdown"
 										ng-template-options="{
@@ -127,7 +143,26 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 									<!-- Max local cat -->
 									<div ng-template="common/input/text2"
 										ng-template-options="{
-										'label': 'Max Local Category (LV1)',
+										'label': 'Maximum Local Category',
+										'inputSize' : 'small',
+										'error' : {
+										'show': $root.isInvalid(form.MaxLocalCategory),
+										'conditions' : form.MaxLocalCategory.$error
+										}
+										}">
+										<ui-select ng-model="formData.CloneGlobalCategory" search-enabled="false" required>
+											<ui-select-match placeholder="- Select Type -">
+												<span ng-bind="$select.selected.name"></span>
+											</ui-select-match>
+											<ui-select-choices repeat="item.value as item in yesNoDropdown">
+												<span ng-bind="item.name"></span>
+											</ui-select-choices>
+										</ui-select>
+									</div>
+									<!-- Max local cat -->
+									<div ng-template="common/input/text2"
+										ng-template-options="{
+										'label': 'Maximum Local Category',
 										'inputSize' : 'small',
 										'error' : {
 										'show': $root.isInvalid(form.MaxLocalCategory),

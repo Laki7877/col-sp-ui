@@ -5,6 +5,11 @@ module.exports = {
         'formGroupClass': 'margin-top-40',
         'inputSize': 'xxl'
     },
+    DescriptionMobile: {
+        'divClass': 'col-sm-6',
+        'formGroupClass': 'margin-top-40',
+        'inputSize': 'xxl'
+    },
     DescriptionShortTh: {
         'divClass': 'col-sm-6',
         'inputSize': 'xxl',

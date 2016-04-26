@@ -16,7 +16,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Top Features'])
            "field_text" => "This feature is only accessible if you have the permission.",
            "button_text" => "View Feature",
            "image_name" => "icon-onboard-product",
-           "disble_status" => "href='/admin/products/'",
+           "disble_status" => "href='/admin/products'",
            "type" => ""]) ?>
 
          <? $this->insert('components/forms/seller_task',
@@ -24,7 +24,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Top Features'])
             "field_text" => "This feature is only accessible if you have the permission.",
             "button_text" => "View Feature",
             "image_name" => "icon-onboard-decorate",
-            "disble_status" => "href='/admin/brands/'",
+            "disble_status" => "href='/admin/brands'",
             "type" => ""]) ?>
 
          <? $this->insert('components/forms/seller_task',
@@ -32,7 +32,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Top Features'])
             "field_text" => "This feature is only accessible if you have the permission.",
             "button_text" => "View Feature",
             "image_name" => "icon-onboard-category",
-            "disble_status" => "href='/admin/brands/'",
+            "disble_status" => "href='/admin/brands'",
             "type" => ""]) ?>
 
         <? $this->insert('components/forms/seller_task',
@@ -40,7 +40,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Top Features'])
            "field_text" => "This feature is only accessible if you have the permission.",
            "button_text" => "View Feature",
            "image_name" => "icon-onboard-account",
-           "disble_status" => "href='/admin/shops/'",
+           "disble_status" => "href='/admin/shops'",
            "type" => ""]) ?>
 
          <? $this->insert('components/forms/seller_task',
@@ -48,7 +48,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Top Features'])
             "field_text" => "This feature is only accessible if you have the permission.",
             "button_text" => "View Feature",
             "image_name" => "icon-dashboard-promotion",
-            "disble_status" => "href='/coupons/global/'",
+            "disble_status" => "href='/admin/coupons/global'",
             "type" => ""]) ?>
 
     </div>

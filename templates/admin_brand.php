@@ -17,6 +17,7 @@
             <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
             <th nc-sort="BrandId">Brand ID</th>
             <th nc-sort="BrandNameEn">Brand Name</th>
+            <th nc-sort="Status">Status</th>
             <th nc-sort="UpdatedDt">Modified</th>
             <th class="action-column-lg">Action</th>
         </tr>
@@ -26,6 +27,7 @@
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
             <td class="width_100" nc-link="/admin/brands/{{row.BrandId}}">{{row.BrandId}}</td>
             <td nc-link="/admin/brands/{{row.BrandId}}">{{ row.BrandNameEn }}</td>
+            <td class="modified-column">{{row.Status | mapDropdown:statusDropdown}}</td>
             <td class="modified-column">{{row.UpdatedDt | dateTh}}</td>
             <td class="action-column-lg"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>

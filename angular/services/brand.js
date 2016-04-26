@@ -1,4 +1,3 @@
-var angular = require('angular');
 module.exports = ['$q', 'common', function($q, common){
 	var service = {};
 	//TODO: change searchText -> q

@@ -65,6 +65,28 @@
                   maxlength="300"
                   />
               </div>
+              <div nc-template="common/input/form-group-with-label" 
+                  nc-template-form="form.SortBy" 
+                  nc-label="Default Sort By" 
+                  nc-template-options-path="addBrandForm/SortBy">
+                  <ui-select ng-model="formData.SortBy" name="SortBy" search-enabled="false" required>
+                      <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                      <ui-select-choices repeat="item.value as item in sortBy">{{item.name}}</ui-select-choices>
+                  </ui-select>
+              </div>
+              <div nc-template="common/input/form-group-with-label" 
+                  nc-template-form="form.Status" 
+                  nc-label="Default Sort By" 
+                  nc-template-options-path="addBrandForm/Status">
+                  <ui-select ng-model="formData.Status" name="Status" search-enabled="false" required>
+                      <ui-select-match>
+                            <span ng-bind="$select.selected.name"></span>
+                      </ui-select-match>
+                      <ui-select-choices repeat="item.value as item in status">
+                        <span ng-bind="item.name"></span>
+                      </ui-select-choices>
+                  </ui-select>
+              </div>
             </div>
           </div>
           <!-- Logo -->
@@ -95,8 +117,10 @@
               </div>
             </div>
           </div>
-          <nc-image-banner name="BrandBannerEn" nc-model="formData.BrandBannerEn" title="Banner Upload (English)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
-          <nc-image-banner name="BrandBannerTh" nc-model="formData.BrandBannerTh" title="Banner Upload (ไทย)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
+          <nc-image-banner name="BrandBannerEn" nc-model="formData.BrandBannerEn" title="Upload Banner (English)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
+          <nc-image-banner name="BrandBannerTh" nc-model="formData.BrandBannerTh" title="Upload Banner (ไทย)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
+          <nc-image-banner name="BrandBannerEn" nc-model="formData.BrandSmallBannerEn" title="Upload Small Banner (English)" uploader="bannerSmUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
+          <nc-image-banner name="BrandBannerTh" nc-model="formData.BrandSmallBannerTh" title="Upload Small Banner (ไทย)" uploader="bannerSmUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
           <!-- Description -->
           <div class="form-section">
             <div class="form-section-header">
@@ -112,6 +136,19 @@
                         <div nc-template="common/input/div-with-label" nc-label="Description (ไทย)" nc-template-options-path="genericForm/DescriptionFull"
                         nc-template-form="form.DescriptionFullTh">
                             <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="500" name="DescriptionFullTh" ng-model="formData.DescriptionFullTh">
+                            </textarea>
+                        </div>
+
+                    </div>
+                    <div class="row margin-top-30">
+                        <div nc-template="common/input/div-with-label" nc-label="Mobile Description (English)" nc-template-options-path="genericForm/DescriptionMobile"
+                        nc-template-form="form.DescriptionMobileEn">
+                            <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="500" name="DescriptionMobileEn" ng-model="formData.DescriptionMobileEn">
+                            </textarea>
+                        </div>
+                        <div nc-template="common/input/div-with-label" nc-label="Mobile Description (ไทย)" nc-template-options-path="genericForm/DescriptionMobile"
+                        nc-template-form="form.DescriptionMobileTh">
+                            <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="500" name="DescriptionMobileTh" ng-model="formData.DescriptionMobileTh">
                             </textarea>
                         </div>
 
@@ -163,6 +200,9 @@
                       </ui-select-choices>
                   </ui-select>
                 </div>
+              </div>    
+              <div nc-template="common/input/form-group-with-label" nc-label="Feature Product Status">
+                <select ng-model="formData.FeatureProductsStatus" class="form-control" ng-options="o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]"></select>
               </div>
             </div>
           </div>

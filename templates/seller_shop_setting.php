@@ -58,7 +58,22 @@
 						                    <div nc-template="common/input/form-group-with-label" nc-label="Shop Name" nc-template-options-path="shopSettingForm/ShopNameEn">
 						                        <input class="form-control" type="text" ng-model="formData.ShopNameEn" ng-pattern="/^[^<>]+$/" required/>
 						                    </div>
-
+											<!-- URL Key -->
+											<div ng-template="common/input/text2"
+												ng-template-options="{
+												'label': 'URL Key',
+												'show': $root.isInvalid(form.UrlKey),
+												'conditions' : form.UrlKey.$error
+												}
+												}">
+												<input
+												class="form-control"
+												name="UrlKey"
+												ng-model="formData.UrlKey"
+												ng-class="{ 'has-error' : $root.isInvalid(form.UrlKey) }"
+												maxlength="100"
+												/>
+											</div>
 						                    <div nc-template="common/input/form-group-with-label" nc-label="Shop Description (English)" nc-template-options-path="shopSettingForm/ShopDescriptionEn">
 						                        <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopDescriptionEn"></textarea>
 						                    </div>
