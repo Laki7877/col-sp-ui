@@ -37,7 +37,8 @@
               <div ng-show="id != 0"
                   nc-template="common/input/form-group-with-label"
                 nc-template-options-path="addAttributeSetForm/LargeInput"
-                nc-label="Mapped Category (ID)">{{formData.Categories}}</div>
+                nc-label="Mapped Category (ID)">
+                <div class="text-result">{{formData.Categories}}</div></div>
             </div>
           </div>
 

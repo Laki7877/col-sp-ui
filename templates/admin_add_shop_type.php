@@ -26,7 +26,9 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										  <div nc-template="common/input/form-group-with-label"
 										  	nc-label="Shop Type ID"
 										  	ng-show="formData.ShopTypeId">
-										  	{{formData.ShopTypeId}}
+												<div class="text-result">
+													{{formData.ShopTypeId}}
+												</div>
 										  </div>
 							              <!-- Name -->
 							              <div nc-template="common/input/form-group-with-label"
