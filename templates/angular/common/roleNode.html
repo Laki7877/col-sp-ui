@@ -1,2 +1,2 @@
-<label><input ng-model="p.check" ng-change="$root.checkRecursive(p, p.check)" type="checkbox">{{ p.PermissionName }}</label>
+<label><i class="fa fa-level-up fa-rotate-90 child-checkbox-enter" aria-hidden="true"></i><input ng-model="p.check" ng-change="$root.checkRecursive(p, p.check)" type="checkbox">{{ p.PermissionName }}</label>
 <div class="margin-left-30" ng-repeat="p in p.Children" ng-include="'common/roleNode'"></div>
