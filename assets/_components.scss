@@ -51,6 +51,9 @@ user-select: none;
 }
 
 .multiple-checkbox{
+	label{
+		margin-bottom: 1px;
+	}
 	.child-checkbox-enter{
 			display: none;
 	}
