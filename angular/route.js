@@ -54,7 +54,6 @@ function generateRouteArray(obj) {
 
 	return menu;
 }
-
 var seller = {
 	'Home|fa-home': {
 		'Onboarding': '/onboarding',
@@ -103,7 +102,7 @@ var admin = {
 		'Pending Products': ['/admin/products/groups', '/admin/products/groups/add'],
 		'Master Products': ['/admin/masters', '/admin/masters/add'],
 		'Product Reviews': '/admin/products/reviews',
-		'Brands': ['/admin/brands', '/admin/brands/add'],
+		'Brands|margin-top-30': ['/admin/brands', '/admin/brands/add'],
 		'Attributes': ['/admin/attributes', '/admin/attributes/add'],
 		'Attribute Sets': ['/admin/attributesets', '/admin/attributesets/add'],
 		'Global Category': '/admin/categories'
@@ -125,36 +124,42 @@ var admin = {
 };
 var permission = {
 	//Admin
-	'View All Products': '/admin/products',
-	'Approve Products': '/admin/approve',
-	'Manage Pending Products': '/admin/products/groups',
-	'Manage Master Products': '/admin/masters',
-	'Manage Brands': '/admin/brands',
-	'Manage Attribute & Attribute Sets': ['/admin/attributes', '/admin/attributesets'],
-	'Manage Global Categories': '/admin/categories',
-	'Manage Seller Accounts': '/admin/sellers',
-	'Manage Shops': ['/admin/shops', '/admin/shoptypes'],
-	'Manage Admin': ['/admin/accounts', '/admin/roles'],
-	'Manage Global Coupons': '/admin/coupons/global',
-	'View All Seller Coupons': '/admin/coupons/seller',
-	'Manage Newsletter': '/admin/newsletters',
+	1: '/admin/products',
+	3: '/admin/approve',
+	4: ['/admin/products/groups', '/admin/products/groups/add'],
+	5: ['/admin/masters', '/admin/masters/add'],
+	6: ['/admin/brands', '/admin/brands/add'],
+	7: ['/admin/attributes', '/admin/attributes/add', '/admin/attributesets', '/admin/attributesets/add'],
+	8: '/admin/categories',
+	9: '/admin/sellers',
+	10: ['/admin/shops', '/admin/shops/add'],
+	11: ['/admin/accounts', '/admin/accounts/add'],
+	12: '/admin/coupons/global',
+	13: '/admin/coupons/seller',
+	21: '/admin/newsletters',
 
-	'View Product': '/products',
-	'Add Product': ['/products/select', '/products/add'],
-	'View Dashboard': '/dashboard',
-	'View Orders': '/orders',
-	'Manage Return Requests': '/returns',
-	'Manage Local Category': '/categories',
-	'Manage Product Reviews': '/reviews',
-	'Manage Product Images': '/products/images',
-	'Manage Pending Products': '/products/groups',
-	'View Inventory': '/inventory',
-	'View Coupons': '/coupons',
-	'Manage Shop Profile': '/shop/settings',
-	'Manage Shop Appearance': '/shop/appearance',
-	'Manage Roles': '/roles',
-	'View Sub Account': '/accounts'
-	
+	//Seller
+	29: '/dashboard',
+	30: '/orders',
+	32: '/returns',
+	33: '/products',
+	34: ['/products/select', '/products/add'],
+	46: '/categories',
+	47: '/reviews',
+	48: '/products/images',
+	49: '/products/groups',
+	50: '/inventory',
+	52: '/coupons',
+	55: '/shop/settings',
+	56: '/shop/appearance',
+	57: ['/roles', '/accounts'],
+
+	//Shop
+	64: '/dashboard',
+	65: '/products/groups',
+	66: '/products/images',
+	68: '/inventory',
+	69: '/coupons'
 };
 
 module.exports = {

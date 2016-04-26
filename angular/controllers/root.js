@@ -5,7 +5,6 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   $rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
 
-  console.log('GroupPolicy', $rootScope.Profile);
  
   /*
   *  range {array} - set of shop group that is permitted in the current shop group policy 
@@ -94,18 +93,27 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
     }
   } 
 
-  //Handle permission
-  $rootScope.permit = function(name) {
-    return true;
+  $rootScope.hasPermission = function(id) {
     return _.findIndex($rootScope.Profile.Permission, function(item) {
-      //console.log(item.Permission);
-      if(item.Permission == name) {
-        return true;
+      if(item.PermissionId == id) {
+        if(item.OverrideParent > 0) {
+          return (_.findIndex($rootScope.Profile.Permission, function(e) {
+              return e.PermissionId === item.OverrideParent;
+            }) >= 0);
+        } else {
+          return true;
+        }
       }
       else {
         return false;
       }
     }) >= 0;
+  }
+
+  //Handle permission
+  $rootScope.permit = function(id) {
+    //return true;
+    return $rootScope.hasPermission(id);
   };
 
   //Check url access permission
@@ -116,11 +124,11 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
       if(_.isArray(v)) {
         for (var i = 0; i < v.length; i++) {
           if(isActive(v[i], url) == 'active') {
-            result = $rootScope.permit(k);
+            result = result && $rootScope.permit(k);
           }
         }
       } else if(isActive(v, url) == 'active') {
-          result = $rootScope.permit(k);
+          result = result && $rootScope.permit(k);
       }
     });
     return result;
@@ -169,7 +177,7 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
           $window.location.href = "/products";
         }
       }, function() {
-        alert("Fetal error while logging out.");
+        //alert("Fatal error while logging out.");
       });
     }
     else {  
@@ -277,4 +285,25 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
     }
     return '';
   };
+
+  //For permission navigator
+  var traverseFalse = function(arr) {
+    for (var i = arr.length - 1; i >= 0; i--) {
+      arr[i].check = false;
+      traverseFalse(arr[i].Children);
+    };
+  }
+  $rootScope.checkRecursive = function(permObj, value) {
+    if(value) {
+      var parent = permObj.ParentNode;
+      while(!_.isNil(parent)) {
+        parent.check = true;
+        parent = parent.ParentNode;
+      }
+    }
+    else {
+      if(permObj.Children.length > 0)
+        traverseFalse(permObj.Children);
+    }
+  }
 };

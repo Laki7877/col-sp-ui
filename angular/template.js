@@ -130,7 +130,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/input/tradable-select',
-    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><input ng-model=search class=\"form-control input-search-icon search-box\" placeholder=\"{{ searchPlaceholder }}\" aria-describedby=basic-addon2></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable track by $index\" ng-class=\"{ 'active' : activeLeft == selectable.indexOf(item) }\" ng-click=\"select(selectable.indexOf(item), true)\" ng-if=!contain(item)>{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=active(false) ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=active(true) ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>{{ header }}</span></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in model track by $index\" ng-class=\"{ 'active' : activeRight == model.indexOf(item), 'disabled' : test(item) }\" ng-click=\"select(model.indexOf(item), false)\">{{ options.map.text == null ? item : item[options.map.text] }}</li></ul></div></div></div>"
+    "<div class=tradable-list><div class=left-column><div class=\"search-section section-search\"><input ng-model=search class=\"form-control input-search-icon search-box\" placeholder={{searchPlaceholder}} aria-describedby=basic-addon2></div><div class=clickable-list><ul class=content-column><li ng-repeat=\"item in selectable track by $index\" ng-class=\"{ 'active' : activeLeft == $index }\" ng-click=\"select($index, true)\">{{ item[text] }}</li></ul></div></div><div class=center-column><div class=trade-button ng-class=active(true) ng-click=transfer(true)><i class=\"fa fa-chevron-right\"></i></div><div class=trade-button ng-class=active(false) ng-click=transfer(false)><i class=\"fa fa-chevron-left\"></i></div></div><div class=right-column><div class=list-header><span class=column-1>{{ header }}</span></div><div class=clickable-list><ul dnd-list=model class=content-column><li ng-repeat=\"item in model\" ng-class=\"{ 'active' : activeRight == $index, 'disabled' : test(item) }\" dnd-draggable=item dnd-moved=\"onDrag($index, item)\" ng-click=\"select($index, false)\">{{ item[text] }}</li></ul></div></div></div>"
   );
 
 
@@ -194,6 +194,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('common/modalPreviewImage',
     "<img ng-src={{url}} alt=\"\">"
+  );
+
+
+  $templateCache.put('common/roleNode',
+    "<label><i class=\"fa fa-level-up fa-rotate-90 child-checkbox-enter\" aria-hidden=true></i><input ng-model=p.check ng-change=\"$root.checkRecursive(p, p.check)\" type=checkbox>{{ p.PermissionName }}</label><div class=margin-left-30 ng-repeat=\"p in p.Children\" ng-include=\"'common/roleNode'\"></div>"
   );
 
 

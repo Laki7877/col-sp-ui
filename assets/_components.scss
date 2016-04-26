@@ -50,6 +50,20 @@ background-image:url(http://csscheckbox.com/checkboxes/u/csscheckbox_7875fc1239d
 user-select: none;
 }
 
+.multiple-checkbox{
+	label{
+		margin-bottom: 1px;
+	}
+	.child-checkbox-enter{
+			display: none;
+	}
+	.margin-left-30{
+		.child-checkbox-enter{
+			display: block;
+		}
+	}
+}
+
 .child-checkbox-enter{
 	margin-left: -37px;
 	margin-top: 1px;
