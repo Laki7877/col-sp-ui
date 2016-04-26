@@ -1,13 +1,13 @@
 <?php
-$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Top Features'])
+$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin Homepage'])
 ?>
 
 <?php $this->start('page-body') ?>
   <!-- <div ng-controller="SellerOnboardingCtrl"> -->
   <div>
     <div class="onboarding_wrapper">
-      <div class="text-align-center welcome_text_big">Administration System's Top Features</div>
-      <div class="text-align-center welcome_text_small">Select feature from below or the side menu</div>
+      <div class="text-align-center welcome_text_big">Administration System's Homepage</div>
+      <div class="text-align-center welcome_text_small">Highlight Features</div>
     </div>
     <div>
       <div class="onboarding_content">
