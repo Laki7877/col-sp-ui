@@ -77,9 +77,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       MainLocalCategory: null,
       Tags: [],
       ControlFlags: {
-        Flag1: false,
-        Flag2: false,
-        Flag3: false
+        IsNew: false,
+        IsClearance: false,
+        IsBestSeller: false,
+        IsOnlineExclusive: false,
+        IsOnlyAt: false
       },
       Brand: {
         id: null

@@ -9,10 +9,27 @@
             <div class="width-field-normal">
                 <div class="radio multiple-radio multiline">
                     <label ng-repeat="shi in dataset.ShippingList">
-                        <input type="radio" name="shipping_method" ng-value="{{shi.ShippingId}}" ng-model="variantPtr.ShippingMethod" /> {{ shi.ShippingMethodEn }} </label>
+                        <input type="radio" name="shipping_method" ng-value="{{shi.ShippingId}}" ng-model="formData.ShippingMethod" /> {{ shi.ShippingMethodEn }} </label>
                 </div>
             </div>
         </div>
+
+
+        <div nc-template="common/input/form-group-with-label" nc-template-form="form.ExpressDelivery" nc-template-options-path="addProductForm/SafetyStock"
+        nc-label="Express Delivery">
+            <select ng-model="variantPtr.ExpressDelivery" class="form-control" name="ExpressDelivery">
+                <option selected value="-" disabled>- Select Express Delivery Option -</option>
+                <option value="Y">Enable</option>
+                <option value="N">Disable</option>
+            </select>
+        </div>
+
+        <div nc-template="common/input/form-group-with-label" nc-template-form="form.ExpressDelivery" nc-template-options-path="addProductForm/SafetyStock"
+        nc-label="Delivery Fee">
+           <input class="form-control" name="DeliveryFee" type="text" 
+            maxlength="5" ng-pattern-restrict="^[0-9]*(\\.[0-9]*)?$"  ng-model="variantPtr.DeliveryFee"/>
+        </div>
+
 
         <div nc-template="common/input/form-group-with-label" nc-label="Preparation Time" nc-template-form="form.PrepareDay"
         nc-template-options-path="addProductForm/PrepareDay" style="margin-bottom: 0px;">

@@ -5,12 +5,15 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   $rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
 
-  //console.log($rootScope.Profile.Permission);
-  
+ 
+  /*
+  *  range {array} - set of shop group that is permitted in the current shop group policy 
+  */ 
   $rootScope.ShopGroupPolicy = function(range){
     var mySG = _.get($rootScope.Profile, 'Shop.ShopGroup');
     if(mySG == range) return true;
-    if(mySG in range) return true;
+    
+    return range.includes(mySG);
   }
 
    //Prevent image dragdrop on other elements   

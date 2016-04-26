@@ -103,12 +103,15 @@
                             <div class="checkbox multiple-checkbox">
 
                                 <label>
-                                    <input type="checkbox" ng-model="formData.ControlFlags.Flag1">Flag 1</label>
+                                    <input type="checkbox" ng-model="formData.ControlFlags.IsNew">New</label>
                                 <label>
-                                    <input type="checkbox" ng-model="formData.ControlFlags.Flag2">Flag 2</label>
+                                    <input type="checkbox" ng-model="formData.ControlFlags.IsClearance">Clearance</label>
                                 <label>
-                                    <input type="checkbox" ng-model="formData.ControlFlags.Flag3">Flag 3</label>
-
+                                    <input type="checkbox" ng-model="formData.ControlFlags.IsBestSeller">Best Seller</label>
+                                <label>
+                                    <input type="checkbox" ng-model="formData.ControlFlags.IsOnlineExclusive">Online Exclusive</label>
+                                <label>
+                                    <input type="checkbox" ng-model="formData.ControlFlags.IsOnlyAt">Only @</label>
                             </div>
                         </div>
                     </div>
@@ -143,9 +146,9 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="row in formData.Revisions" ng-if="row.ApprovedDt">
-                                    <td>{{ row.ApprovedDt | date: 'dd/MM/yyyy HH:mm' }}</td>
-                                    <td>{{ row.SubmittedDt | date: 'dd/MM/yyyy HH:mm' }}</td>
-                                    <td>{{ row.SubmittedBy }}</td>
+                                    <td>{{ row.ApprovedOn | date: 'dd/MM/yyyy HH:mm' }}</td>
+                                    <td>{{ row.SubmitOn | date: 'dd/MM/yyyy HH:mm' }}</td>
+                                    <td>{{ row.SubmitBy }}</td>
                                     <td>
                                         <button class="btn btn-white">View</button>
                                         <button class="btn btn-white">Restore</button>

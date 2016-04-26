@@ -27,7 +27,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										  	nc-label="Admin Role ID"
 										  	ng-show="formData.GroupId"
 										  	>
-										  	<div style="margin-top:5px">{{formData.GroupId}}</div>
+										  	<div class="text-result">{{formData.GroupId}}</div>
 										  </div>
 							              <!-- Name -->
 							              <div nc-template="common/input/form-group-with-label"

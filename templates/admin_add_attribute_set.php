@@ -37,23 +37,29 @@
               <div ng-show="id != 0"
                   nc-template="common/input/form-group-with-label"
                 nc-template-options-path="addAttributeSetForm/LargeInput"
-                nc-label="Mapped Category (ID)">{{formData.Categories}}</div>
+                nc-label="Mapped Category (ID)">
+                <div class="text-result">{{formData.Categories}}</div></div>
             </div>
           </div>
 
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Mapping</h2></div>
             <div class="form-section-content">
-                <nc-tradable-select nc-test="lockAttributeset" 
-                  nc-model="formData.Attributes" 
-                  on-search="onSearch" 
+                <nc-tradable-select nc-test="lockAttributeset"
+                  nc-model="formData.Attributes"
+                  on-search="onSearch"
                   nc-select-options="attributeOptions"
-                  column-header="Attribute in this Attribute Set" 
-                  search-placeholder="Search Attribute" 
+                  column-header="Attribute in this Attribute Set"
+                  search-placeholder="Search Attribute"
                   nc-id="AttributeId"
                   nc-text="AttributeNameEn"></nc-tradable-select>
                 <div class="row col-xs-12">
-                  <p style="margin-left: 30px; margin-top:15px">* Changing attribute mapping may affect products under this attribute set</p>
+                  <p style="margin-left: 30px; margin-top:20px;">
+                    * Changing attribute mapping may affect products under this attribute set
+                  </p>
+                  <p style="margin-left: 30px;">
+                    ** You can change order of attribute in this attribute set by dragging it.
+                  </p>
                 </div>
             </div>
           </div>
