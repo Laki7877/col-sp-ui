@@ -15,13 +15,13 @@
             <input class="form-control width-field-large" name="ProductNameTh" ng-model="variantPtr.ProductNameTh"
             ng-pattern="/^[^<>]+$/" maxlength="300" required />
         </div>
-        <div nc-template="common/input/form-group-with-label" ng-show="ShopGroupPolicy(['IN', 'BU'])"  nc-label="Short Product Name (Eng)" nc-template-form="form.ProdTDNameEn"
+        <div nc-template="common/input/form-group-with-label" nc-policy-indy-bu nc-label="Short Product Name (Eng)" nc-template-form="form.ProdTDNameEn"
         nc-template-options-path="addProductForm/NonRequiredSystemField">
             <input class="form-control width-field-large" name="ProdTDNameEn" ng-model="variantPtr.ProdTDNameEn"
             ng-pattern="/^[^<>]+$/" maxlength="300"  />
         </div>
 
-        <div nc-template="common/input/form-group-with-label" ng-show="ShopGroupPolicy(['IN', 'BU'])"  nc-label="Short Product Name (ไทย)" nc-template-form="form.ProdTDNameTh"
+        <div nc-template="common/input/form-group-with-label" nc-policy-indy-bu  nc-label="Short Product Name (ไทย)" nc-template-form="form.ProdTDNameTh"
         nc-template-options-path="addProductForm/NonRequiredSystemField">
             <input class="form-control width-field-large" name="ProdTDNameTh" ng-model="variantPtr.ProdTDNameTh"
             ng-pattern="/^[^<>]+$/" maxlength="300"  />
