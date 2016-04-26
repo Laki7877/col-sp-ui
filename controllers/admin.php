@@ -2,6 +2,9 @@
 
 class AdminController extends Controller
 {
+	public static function onboarding($params) {
+		return View::render('admin_onboarding');
+	}
 	public static function category($params)
 	{
 		return View::render('admin_category');

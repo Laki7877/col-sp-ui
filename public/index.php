@@ -9,7 +9,7 @@ class Redirect {
         return View::render('main');
 	}
 	public static function admin($params) {
-		header('Location: /admin/accounts');
+		header('Location: /admin/onboarding');
 	}
     public static function exception($params) {
 		return View::render('exception');
@@ -81,6 +81,7 @@ Route::add('/orders/:id', 'SellerController::editOrder');
 
 
 //admin routing
+Route::add('/admin/onboarding', 'AdminController::onboarding');
 Route::add('/admin/attributes/add','AdminController::addAttribute');
 Route::add('/admin/attributes/:id','AdminController::editAttribute');
 Route::add('/admin/attributes','AdminController::listAttribute');

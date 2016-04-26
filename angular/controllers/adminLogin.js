@@ -8,7 +8,7 @@
     storage.remove('redirect');
     
     var profile = storage.getCurrentUserProfile();
-    if (profile) {
+    if (profile && profile.User.IsAdmin) {
       $window.location.href = Credential.getRedirPath(profile)
     }
     

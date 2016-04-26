@@ -1801,7 +1801,7 @@ module.exports = function($scope, $controller, GlobalCouponService, GlobalCatego
     storage.remove('redirect');
     
     var profile = storage.getCurrentUserProfile();
-    if (profile) {
+    if (profile && profile.User.IsAdmin) {
       $window.location.href = Credential.getRedirPath(profile)
     }
     
@@ -3246,7 +3246,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
   storage.remove('redirect');
   
   var profile = storage.getCurrentUserProfile();
-  if (profile) {
+  if (profile && !profile.User.IsAdmin) {
     $window.location.href = Credential.getRedirPath(profile)
   }
   
@@ -13424,51 +13424,6 @@ angular.module("umeSelect").run(["$templateCache", function($templateCache) {  '
  */
 var _ = require('lodash');
 
-function generateRouteArray(obj) {
-	var menu = [];
-	_.forOwn(obj, function(object, header) {
-		var token = header.split('|');
-		var menuItem = {
-			header: token[0],
-			submenu: []
-		};
-
-		if(token.length > 1) {
-			menuItem.icon = token[1];
-		}
-
-		if(!_.isEmpty(object)) {
-			_.forOwn(object, function(url, subheader) {
-
-				var urls = [];
-				if(_.isArray(url)) {
-					urls = url;
-					url = url[0];
-				}
-				var token2 = subheader.split('|');
-				var submenuItem = {
-					header: token2[0],
-					css: '',
-					url: url,
-					urls: urls
-				};
-
-				if(token2.length > 1) {
-					submenuItem.css += token2[1];
-				}
-
-				menuItem.submenu.push(submenuItem);
-			});
-			if(menuItem.submenu.length > 0) {
-				menuItem.url = menuItem.submenu[0].url;
-			}
-		}
-
-		menu.push(menuItem);
-	});
-
-	return menu;
-}
 var seller = {
 	'Home|fa-home': {
 		'Onboarding': '/onboarding',
@@ -13511,6 +13466,9 @@ var seller = {
 	}
 };
 var admin = {
+	'Home|fa-home': {
+		'Onboarding': '/admin/onboarding'
+	},
 	'Products|fa-tag': {
 		'View All Products': '/admin/products',
 		'Approve Products': '/admin/approve',
@@ -13576,6 +13534,52 @@ var permission = {
 	68: '/inventory',
 	69: '/coupons'
 };
+
+function generateRouteArray(obj) {
+	var menu = [];
+	_.forOwn(obj, function(object, header) {
+		var token = header.split('|');
+		var menuItem = {
+			header: token[0],
+			submenu: []
+		};
+
+		if(token.length > 1) {
+			menuItem.icon = token[1];
+		}
+
+		if(!_.isEmpty(object)) {
+			_.forOwn(object, function(url, subheader) {
+
+				var urls = [];
+				if(_.isArray(url)) {
+					urls = url;
+					url = url[0];
+				}
+				var token2 = subheader.split('|');
+				var submenuItem = {
+					header: token2[0],
+					css: '',
+					url: url,
+					urls: urls
+				};
+
+				if(token2.length > 1) {
+					submenuItem.css += token2[1];
+				}
+
+				menuItem.submenu.push(submenuItem);
+			});
+			if(menuItem.submenu.length > 0) {
+				menuItem.url = menuItem.submenu[0].url;
+			}
+		}
+
+		menu.push(menuItem);
+	});
+
+	return menu;
+}
 
 module.exports = {
   seller: generateRouteArray(seller),
