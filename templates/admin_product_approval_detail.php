@@ -115,6 +115,10 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products Approve']
 </script>
 <div ng-controller="AdminProductApprovalDetailCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
 	<nc-alert nc-model="alert"></nc-alert>
+	  <nc-page-title nc-title="Product Approval/Product Detail" ng-link="listingUrl || '/admin/approve'" icon="fa-tag">
+             <div ng-include="'page-btn-controls'"></div>
+         </nc-page-title>
+
 	<div ap-component="ap/form-product-add">
 		<div ng-include="'admin-panel'"></div>
 	</div>
