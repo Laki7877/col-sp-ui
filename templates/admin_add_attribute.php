@@ -281,7 +281,7 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Search Property</h2></div>
             <div class="form-section-content">
-              <div nc-template="common/input/form-group-with-label"
+              <div class="two-lines-label" nc-template="common/input/form-group-with-label"
                 nc-label="Use in Global <br> Advanced Search">
                 <ui-select ng-model="formData.ShowGlobalSearchFlag" search-enabled="false">
                   <ui-select-match>
@@ -292,7 +292,7 @@
                   </ui-select-choices>
                 </ui-select>
               </div>
-              <div nc-template="common/input/form-group-with-label"
+              <div class="two-lines-label" nc-template="common/input/form-group-with-label"
                 nc-label="Use in Local <br> Advanced Search">
                 <ui-select ng-model="formData.ShowLocalSearchFlag" search-enabled="false">
                   <ui-select-match>
@@ -303,8 +303,8 @@
                   </ui-select-choices>
                 </ui-select>
              </div>
-			 
-			 <div nc-template="common/input/form-group-with-label"
+
+			 <div class="two-lines-label" nc-template="common/input/form-group-with-label"
                 nc-label="Show Filter in <br> Global Search">
                 <ui-select ng-model="formData.ShowGlobalFilterFlag" search-enabled="false">
                   <ui-select-match>
@@ -315,9 +315,9 @@
                   </ui-select-choices>
                 </ui-select>
               </div>
-			  
-			  
-			  <div nc-template="common/input/form-group-with-label"
+
+
+			  <div class="two-lines-label" nc-template="common/input/form-group-with-label"
                 nc-label="Show Filter in <br> Local Search">
                 <ui-select ng-model="formData.ShowLocalFilterFlag" search-enabled="false">
                   <ui-select-match>
@@ -328,7 +328,7 @@
                   </ui-select-choices>
                 </ui-select>
               </div>
-			  
+
               <div nc-template="common/input/form-group-with-label"
                 nc-label="Filterable">
                 <ui-select ng-model="formData.Filterable" search-enabled="false" ng-disabled="formData.DataType == 'HB'">

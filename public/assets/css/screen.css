@@ -14408,28 +14408,32 @@ form h6 {
   margin-bottom: 0;
 }
 /* line 175, ../../../assets/_form.sass */
+.ah-form .two-lines-label .control-label, .ah-form .two-lines-label .form-text {
+  padding-top: 0px;
+}
+/* line 178, ../../../assets/_form.sass */
 .ah-form .control-label, .ah-form .form-text {
   padding-top: 8px;
 }
-/* line 178, ../../../assets/_form.sass */
+/* line 181, ../../../assets/_form.sass */
 .ah-form .form-text {
   display: inline-block;
   max-width: 100%;
 }
-/* line 183, ../../../assets/_form.sass */
+/* line 186, ../../../assets/_form.sass */
 .ah-form .text-result {
   text-align: left;
   padding-top: 8px;
 }
-/* line 186, ../../../assets/_form.sass */
+/* line 189, ../../../assets/_form.sass */
 .ah-form .text-result ul {
   padding-left: 0px;
 }
-/* line 189, ../../../assets/_form.sass */
+/* line 192, ../../../assets/_form.sass */
 .ah-form .scrollable-field {
   overflow: hidden;
 }
-/* line 191, ../../../assets/_form.sass */
+/* line 194, ../../../assets/_form.sass */
 .ah-form .scrollable-field .scrollable-content {
   -webkit-padding-start: 0px;
   height: 230px;
@@ -14438,46 +14442,46 @@ form h6 {
   border: 1px solid #BCC7D5;
   border-radius: 3px;
 }
-/* line 198, ../../../assets/_form.sass */
+/* line 201, ../../../assets/_form.sass */
 .ah-form .scrollable-field .scrollable-content li {
   padding-left: 15px;
   padding-right: 15px;
   line-height: 30px;
 }
-/* line 203, ../../../assets/_form.sass */
+/* line 206, ../../../assets/_form.sass */
 .ah-form .help-block {
   margin-bottom: 0;
   font-size: 11px;
 }
-/* line 207, ../../../assets/_form.sass */
+/* line 210, ../../../assets/_form.sass */
 .ah-form .main-form-action {
   padding-top: 15px;
   padding-bottom: 15px;
   border-top: 1px solid #BCC7D5;
 }
-/* line 213, ../../../assets/_form.sass */
+/* line 216, ../../../assets/_form.sass */
 .ah-form .radio.multiline > label, .ah-form .checkbox.multiline > label {
   padding-top: 7px;
   display: block;
 }
-/* line 216, ../../../assets/_form.sass */
+/* line 219, ../../../assets/_form.sass */
 .ah-form .radio.multiline > label:first-child, .ah-form .checkbox.multiline > label:first-child {
   padding-top: 0;
 }
-/* line 219, ../../../assets/_form.sass */
+/* line 222, ../../../assets/_form.sass */
 .ah-form .radio.multiple-radio > label {
   margin-right: 15px;
 }
-/* line 222, ../../../assets/_form.sass */
+/* line 225, ../../../assets/_form.sass */
 .ah-form .checkbox.multiple-checkbox > label {
   margin-right: 15px;
 }
-/* line 226, ../../../assets/_form.sass */
+/* line 229, ../../../assets/_form.sass */
 .ah-form a.required, .ah-form span.required, .ah-form label.required {
   position: relative;
   display: inline-block;
 }
-/* line 229, ../../../assets/_form.sass */
+/* line 232, ../../../assets/_form.sass */
 .ah-form a.required:after, .ah-form span.required:after, .ah-form label.required:after {
   display: block;
   content: "*";
@@ -14488,19 +14492,19 @@ form h6 {
   font-size: 16px;
   line-height: 1;
 }
-/* line 239, ../../../assets/_form.sass */
+/* line 242, ../../../assets/_form.sass */
 .ah-form .main-form-action .btn ~ .btn {
   margin-left: 10px;
 }
-/* line 242, ../../../assets/_form.sass */
+/* line 245, ../../../assets/_form.sass */
 .ah-form .input-with-unit {
   position: relative;
 }
-/* line 244, ../../../assets/_form.sass */
+/* line 247, ../../../assets/_form.sass */
 .ah-form .input-with-unit input.form-control {
   padding-right: 50px;
 }
-/* line 246, ../../../assets/_form.sass */
+/* line 249, ../../../assets/_form.sass */
 .ah-form .input-with-unit .input-unit {
   position: absolute;
   right: 7px;
@@ -14508,7 +14512,7 @@ form h6 {
   color: #BCC7D5;
   pointer-events: none;
 }
-/* line 254, ../../../assets/_form.sass */
+/* line 257, ../../../assets/_form.sass */
 .ah-form .multiple-input {
   margin-left: -7px;
   margin-right: -8px;
@@ -14522,7 +14526,7 @@ form h6 {
 .ah-form .multiple-input:after {
   clear: both;
 }
-/* line 258, ../../../assets/_form.sass */
+/* line 261, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column {
   position: relative;
   float: left;
@@ -14532,23 +14536,23 @@ form h6 {
   padding-right: 7.5px;
   width: 120px;
 }
-/* line 259, ../../../assets/_form.sass */
+/* line 262, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column > label {
   padding-top: 7px;
 }
-/* line 261, ../../../assets/_form.sass */
+/* line 264, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column.no-label {
   padding-top: 31px;
 }
-/* line 267, ../../../assets/_form.sass */
+/* line 270, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column.input-xl {
   width: 150px;
 }
-/* line 270, ../../../assets/_form.sass */
+/* line 273, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column.input-xxl {
   width: 200px;
 }
-/* line 276, ../../../assets/_form.sass */
+/* line 279, ../../../assets/_form.sass */
 .ah-form select.form-control {
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -14557,15 +14561,15 @@ form h6 {
   background-image: url("/assets/img/dropdown.png");
   background-size: 9px 6px;
 }
-/* line 283, ../../../assets/_form.sass */
+/* line 286, ../../../assets/_form.sass */
 .ah-form .ah-select2-dropdown {
   width: 100%;
 }
-/* line 286, ../../../assets/_form.sass */
+/* line 289, ../../../assets/_form.sass */
 .ah-form.sticky-mainform-action {
   padding-bottom: 64px;
 }
-/* line 288, ../../../assets/_form.sass */
+/* line 291, ../../../assets/_form.sass */
 .ah-form.sticky-mainform-action .main-form-action {
   z-index: 9;
   position: fixed;
@@ -14575,29 +14579,29 @@ form h6 {
   background: #fff;
 }
 
-/* line 297, ../../../assets/_form.sass */
+/* line 300, ../../../assets/_form.sass */
 .form-inline .width-field-small-input {
   width: 230px;
 }
 
 /*---- Tagsinput ---- */
-/* line 302, ../../../assets/_form.sass */
+/* line 305, ../../../assets/_form.sass */
 .ahpt .bootstrap-tagsinput {
   padding-top: 7px;
   width: 100%;
 }
-/* line 306, ../../../assets/_form.sass */
+/* line 309, ../../../assets/_form.sass */
 .ahpt .bootstrap-tagsinput.tagsinput-plain {
   border: none;
   box-shadow: none;
   padding-left: 0;
   cursor: initial;
 }
-/* line 312, ../../../assets/_form.sass */
+/* line 315, ../../../assets/_form.sass */
 .ahpt .bootstrap-tagsinput .label-info {
   background-color: #b4ddff;
 }
-/* line 314, ../../../assets/_form.sass */
+/* line 317, ../../../assets/_form.sass */
 .ahpt .bootstrap-tagsinput .label {
   font-size: 100%;
   color: #32343C;
@@ -14606,38 +14610,38 @@ form h6 {
 }
 
 /*---- Select 2 ---- */
-/* line 322, ../../../assets/_form.sass */
+/* line 325, ../../../assets/_form.sass */
 .ahpt .input-with-unit .select2-container--default .select2-selection .select2-selection__rendered {
   padding-right: 45px;
 }
-/* line 324, ../../../assets/_form.sass */
+/* line 327, ../../../assets/_form.sass */
 .ahpt .input-with-unit .select2-container--default .select2-selection .select2-selection__rendered {
   padding-right: 15px;
 }
-/* line 329, ../../../assets/_form.sass */
+/* line 332, ../../../assets/_form.sass */
 .ahpt .select2-container--default .select2-selection, .ahpt .select2-container--default.select2-container--focus .select2-selection {
   border-color: #BCC7D5;
 }
-/* line 335, ../../../assets/_form.sass */
+/* line 338, ../../../assets/_form.sass */
 .ahpt .select2-container .select2-selection {
   min-height: 34px;
 }
-/* line 338, ../../../assets/_form.sass */
+/* line 341, ../../../assets/_form.sass */
 .ahpt .select2-container .select2-search--inline .select2-search__field {
   margin-top: 7px;
 }
-/* line 341, ../../../assets/_form.sass */
+/* line 344, ../../../assets/_form.sass */
 .ahpt .select2-container--default .select2-selection .select2-selection__choice {
   line-height: 20px;
   color: #32343C;
   background-color: #b4ddff;
   border-color: #b4ddff;
 }
-/* line 347, ../../../assets/_form.sass */
+/* line 350, ../../../assets/_form.sass */
 .ahpt .select2-container--default .select2-selection--single .select2-selection__rendered {
   line-height: 32px;
 }
-/* line 350, ../../../assets/_form.sass */
+/* line 353, ../../../assets/_form.sass */
 .ahpt .select2-container--default .select2-selection .select2-selection__choice__remove {
   line-height: 20px;
   float: right;
@@ -14646,22 +14650,22 @@ form h6 {
   color: #32343C;
   font-weight: bold;
 }
-/* line 359, ../../../assets/_form.sass */
+/* line 362, ../../../assets/_form.sass */
 .ahpt .select2-container--open .select2-dropdown--below {
   border-color: #BCC7D5;
 }
-/* line 362, ../../../assets/_form.sass */
+/* line 365, ../../../assets/_form.sass */
 .ahpt .ah-select2-dropdown .select2-selection--multiple {
   cursor: pointer;
 }
-/* line 365, ../../../assets/_form.sass */
+/* line 368, ../../../assets/_form.sass */
 .ahpt .ah-select2-dropdown .select2-container .select2-selection {
   background-position: right 6px center;
   background-repeat: no-repeat;
   background-image: url("/assets/img/dropdown.png");
   background-size: 9px 6px;
 }
-/* line 371, ../../../assets/_form.sass */
+/* line 374, ../../../assets/_form.sass */
 .ahpt .select2-container--default .select2-selection .select2-selection__arrow {
   display: none;
 }
