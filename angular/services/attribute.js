@@ -172,6 +172,8 @@ module.exports = ['common', function(common){
 			},
 			ShowGlobalSearchFlag: service.boolOptions[0],
 			ShowLocalSearchFlag: service.boolOptions[0],
+			ShowLocalFilterFlag: service.boolOptions[0],
+			ShowGlobalFilterFlag: service.boolOptions[0],
 			VariantDataType: service.variantOptions[0],
 			IsRequired: service.boolOptions[0],
 			Filterable: service.boolOptions[0]
@@ -185,6 +187,8 @@ module.exports = ['common', function(common){
 		processed.DataValidation = find(service.validationOptions, data.DataValidation);
 		processed.ShowLocalSearchFlag = find(service.boolOptions, data.ShowLocalSearchFlag);
 		processed.ShowGlobalSearchFlag = find(service.boolOptions, data.ShowGlobalSearchFlag);
+		processed.ShowLocalFilterFlag = find(service.boolOptions, data.ShowLocalFilterFlag);
+		processed.ShowGlobalFilterFlag = find(service.boolOptions, data.ShowGlobalFilterFlag);
 		processed.Filterable = find(service.boolOptions, data.Filterable);
 		processed.IsRequired = find(service.boolOptions, data.IsRequired);
 
@@ -218,6 +222,8 @@ module.exports = ['common', function(common){
 		processed.DataType = processed.DataType ? processed.DataType.value : undefined;
 		processed.ShowLocalSearchFlag = processed.ShowLocalSearchFlag ? processed.ShowLocalSearchFlag.value : undefined;
 		processed.ShowGlobalSearchFlag = processed.ShowGlobalSearchFlag ? processed.ShowGlobalSearchFlag.value : undefined;
+		processed.ShowLocalFilterFlag = processed.ShowLocalFilterFlag ? processed.ShowLocalFilterFlag.value : undefined;
+		processed.ShowGlobalFilterFlag = processed.ShowGlobalFilterFlag ? processed.ShowGlobalFilterFlag.value : undefined;
 		processed.IsRequired = processed.IsRequired ? processed.IsRequired.value : undefined;
 		processed.Filterable = processed.Filterable ? processed.Filterable.value : undefined;
 

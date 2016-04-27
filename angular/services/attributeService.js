@@ -44,6 +44,8 @@ module.exports = function(common, config) {
 			VisibleTo: visibleToOptions[0].value,
 			ShowGlobalSearchFlag: false,
 			ShowLocalSearchFlag: false,
+			ShowLocalFilterFlag: false,
+			ShowGlobalFilterFlag: false,
 			VariantDataType: variantOptions[0].value
 		};
 	};
