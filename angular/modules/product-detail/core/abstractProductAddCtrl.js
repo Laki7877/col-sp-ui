@@ -6,8 +6,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     KnownException, NcAlert, $productAdd, options, AttributeSetService, JSONCache, skeemas, AdminShopService,
     VariationFactorIndices, AttributeOptions, ShippingService) {
     'ngInject';
-
-   
+    
+    $scope.unlockedFields = [];
+    Product.getUnlockedFields().then(function(data){
+        $scope.unlockedFields = data;
+    });
 
     var MAX_FILESIZE = (options.maxImageUploadSize || 5000000);
     var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);

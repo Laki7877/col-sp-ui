@@ -3,7 +3,17 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 	function($http, common, util, LocalCategory, Brand, config, KnownException) {
 		'use strict';
 		var service = common.Rest('/ProductStages');
-
+		
+		
+		service.getUnlockedFields = function(){
+			//Get list of fields that are always enabled (unlocked)	
+			return common.makeRequest({
+				method: 'GET',
+				url: '/ProductStages/IgnoreApprove'
+			});
+		}
+		
+		
 		service.savePendingProduct = function(apgp){
 			return common.makeRequest({
 				method: 'POST',
