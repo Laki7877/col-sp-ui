@@ -117,10 +117,10 @@
               </div>
             </div>
           </div>
-          <nc-image-banner name="BrandBannerEn" data-source="formData.IsBannerEn" nc-model="formData.BrandBannerEn" title="Upload Banner (English)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
-          <nc-image-banner name="BrandBannerTh" data-source="formData.IsBannerTh" nc-model="formData.BrandBannerTh" title="Upload Banner (ไทย)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
-          <nc-image-banner name="BrandBannerEn" data-source="formData.IsSmallBannerEn" nc-model="formData.BrandSmallBannerEn" title="Upload Small Banner (English)" uploader="bannerSmUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
-          <nc-image-banner name="BrandBannerTh" data-source="formData.IsSmallBannerTh" nc-model="formData.BrandSmallBannerTh" title="Upload Small Banner (ไทย)" uploader="bannerSmUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
+          <nc-image-banner name="BrandBannerEn" data-source="formData.BannerStatusEn" nc-model="formData.BrandBannerEn" title="Upload Banner (English)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
+          <nc-image-banner name="BrandBannerTh" data-source="formData.BannerStatusTh" nc-model="formData.BrandBannerTh" title="Upload Banner (ไทย)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
+          <nc-image-banner name="BrandBannerEn" data-source="formData.BannerSmallStatusEn" nc-model="formData.BrandSmallBannerEn" title="Upload Small Banner (English)" uploader="bannerSmUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
+          <nc-image-banner name="BrandBannerTh" data-source="formData.BannerSmallStatusTh" nc-model="formData.BrandSmallBannerTh" title="Upload Small Banner (ไทย)" uploader="bannerSmUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
           <!-- Description -->
           <div class="form-section">
             <div class="form-section-header">
