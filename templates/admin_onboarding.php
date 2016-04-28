@@ -12,7 +12,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin Homepage'])
     <div>
       <div class="onboarding_content">
         <? $this->insert('components/forms/seller_task',
-          ["field_header" => "View All Products",
+          ["field_header" => "Manage All Products",
            "field_text" => "This feature is only accessible if you have the permission.",
            "button_text" => "View Products",
            "image_name" => "icon-onboard-product",
@@ -20,7 +20,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin Homepage'])
            "type" => ""]) ?>
 
          <? $this->insert('components/forms/seller_task',
-           ["field_header" => "View All Brands",
+           ["field_header" => "Manage All Brands",
             "field_text" => "This feature is only accessible if you have the permission.",
             "button_text" => "View Brands",
             "image_name" => "icon-onboard-decorate",
@@ -28,7 +28,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin Homepage'])
             "type" => ""]) ?>
 
          <? $this->insert('components/forms/seller_task',
-           ["field_header" => "View All Global Categories",
+           ["field_header" => "Manage All Global Categories",
             "field_text" => "This feature is only accessible if you have the permission.",
             "button_text" => "View Categories",
             "image_name" => "icon-onboard-category",
@@ -36,7 +36,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin Homepage'])
             "type" => ""]) ?>
 
         <? $this->insert('components/forms/seller_task',
-          ["field_header" => "View All Shop Accounts",
+          ["field_header" => "Manage All Shop Accounts",
            "field_text" => "This feature is only accessible if you have the permission.",
            "button_text" => "View Shops",
            "image_name" => "icon-onboard-account",
@@ -44,7 +44,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin Homepage'])
            "type" => ""]) ?>
 
          <? $this->insert('components/forms/seller_task',
-           ["field_header" => "View All Global Coupons",
+           ["field_header" => "Manage All Global Coupons",
             "field_text" => "This feature is only accessible if you have the permission.",
             "button_text" => "View Coupons",
             "image_name" => "icon-dashboard-promotion",
