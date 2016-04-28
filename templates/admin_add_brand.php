@@ -70,8 +70,8 @@
                   nc-label="Default Sort By" 
                   nc-template-options-path="addBrandForm/SortBy">
                   <ui-select ng-model="formData.SortBy" name="SortBy" search-enabled="false" required>
-                      <ui-select-match>{{$select.selected.name}}</ui-select-match>
-                      <ui-select-choices repeat="item.value as item in sortBy">{{item.name}}</ui-select-choices>
+                      <ui-select-match>{{$select.selected.SortByName}}</ui-select-match>
+                      <ui-select-choices repeat="item in sortBy">{{item.SortByName}}</ui-select-choices>
                   </ui-select>
               </div>
               <div nc-template="common/input/form-group-with-label" 
