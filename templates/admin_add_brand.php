@@ -80,7 +80,7 @@
                   nc-template-options-path="addBrandForm/Status">
                   <ui-select ng-model="formData.Status" name="Status" search-enabled="false" required>
                       <ui-select-match>
-                            <span ng-bind="$select.selected.name"></span>
+                        <span ng-bind="$select.selected.name"></span>
                       </ui-select-match>
                       <ui-select-choices repeat="item.value as item in status">
                         <span ng-bind="item.name"></span>
@@ -117,10 +117,10 @@
               </div>
             </div>
           </div>
-          <nc-image-banner name="BrandBannerEn" nc-model="formData.BrandBannerEn" title="Upload Banner (English)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
-          <nc-image-banner name="BrandBannerTh" nc-model="formData.BrandBannerTh" title="Upload Banner (ไทย)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
-          <nc-image-banner name="BrandBannerEn" nc-model="formData.BrandSmallBannerEn" title="Upload Small Banner (English)" uploader="bannerSmUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
-          <nc-image-banner name="BrandBannerTh" nc-model="formData.BrandSmallBannerTh" title="Upload Small Banner (ไทย)" uploader="bannerSmUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
+          <nc-image-banner name="BrandBannerEn" data-source="formData.BannerStatusEn" nc-model="formData.BrandBannerEn" title="Upload Banner (English)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
+          <nc-image-banner name="BrandBannerTh" data-source="formData.BannerStatusTh" nc-model="formData.BrandBannerTh" title="Upload Banner (ไทย)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
+          <nc-image-banner name="BrandBannerEn" data-source="formData.BannerSmallStatusEn" nc-model="formData.BrandSmallBannerEn" title="Upload Small Banner (English)" uploader="bannerSmUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
+          <nc-image-banner name="BrandBannerTh" data-source="formData.BannerSmallStatusTh" nc-model="formData.BrandSmallBannerTh" title="Upload Small Banner (ไทย)" uploader="bannerSmUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
           <!-- Description -->
           <div class="form-section">
             <div class="form-section-header">
@@ -202,7 +202,7 @@
                 </div>
               </div>    
               <div nc-template="common/input/form-group-with-label" nc-label="Feature Product Status">
-                <select ng-model="formData.FeatureProductsStatus" class="form-control" ng-options="o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]"></select>
+                <select ng-model="formData.FeatureProductStatus" class="form-control" ng-options="o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]"></select>
               </div>
             </div>
           </div>

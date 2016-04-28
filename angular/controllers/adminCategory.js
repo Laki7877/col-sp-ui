@@ -122,13 +122,22 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				$scope.alert = new NcAlert();
 				$scope.statusOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
 				$scope.attributeSetOptions = [];
-				$scope.bannerUploader = ImageService.getUploaderFn('/GlobalCategoryImages');
-				$scope.formData = {};
+				$scope.bannerUploader = ImageService.getUploaderFn('/GlobalCategoryImages', {
+					data: { Type: 'Banner' }
+				});
+				$scope.bannerSmUploader = ImageService.getUploaderFn('/GlobalCategoryImages', {
+					data: { Type: 'SmallBanner' }
+				});				$scope.formData = {};
 				$scope.saving = false;
 				$scope.loading = true;
 				$scope.products = [];
 				$scope.availableProducts = -1;
 				$scope.id = id;
+				$scope.sortBy = [];
+				
+				common.getSortBy().then(function(data) {
+					$scope.sortBy = data;
+				});
 
 				//For searching feature prod
 				var search = {};
@@ -158,7 +167,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				$scope.loadAttributeSets = function($search) {
 					AttributeSetService.list({
 						searchText: $search,
-						_limit: 100000
+						_limit: 16
 					}).then(function(data) {
 						$scope.attributeSetOptions = data.data;
 					});
@@ -172,12 +181,21 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 						$scope.products = response.data;
 					});
 				};
-				$scope.uploadBannerFail = function(e, response) {
+				$scope.uploadBannerFail = function(e, response, min, max) {
 					if(e == 'onmaxsize') {
-						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one', true);
+						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+					}
+					else if(e == 'ondimension') {
+						$scope.alert.error('Banner size should be between ' + min[0] + 'x' + min[1] + ' and ' + max[0] + 'x' + max[1]);
+					}
+					else if(e == 'onratio') {
+						$scope.alert.error('Banner size ratio should be ' + min[0] + ':' + min[1]);
+					}
+					else if(e == 'onfilesize') {
+						$scope.alert.error('Banner file size should not exceed ' + (min/1000000) + ' MB')
 					}
 					else {
-						$scope.alert.error(common.getError(response.data), true);
+						$scope.alert.error(common.getError(response.data));
 					}
 				};
 
