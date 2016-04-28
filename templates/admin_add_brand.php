@@ -80,7 +80,7 @@
                   nc-template-options-path="addBrandForm/Status">
                   <ui-select ng-model="formData.Status" name="Status" search-enabled="false" required>
                       <ui-select-match>
-                            <span ng-bind="$select.selected.name"></span>
+                        <span ng-bind="$select.selected.name"></span>
                       </ui-select-match>
                       <ui-select-choices repeat="item.value as item in status">
                         <span ng-bind="item.name"></span>
@@ -202,7 +202,7 @@
                 </div>
               </div>    
               <div nc-template="common/input/form-group-with-label" nc-label="Feature Product Status">
-                <select ng-model="formData.FeatureProductsStatus" class="form-control" ng-options="o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]"></select>
+                <select ng-model="formData.FeatureProductStatus" class="form-control" ng-options="o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]"></select>
               </div>
             </div>
           </div>
