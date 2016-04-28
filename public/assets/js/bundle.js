@@ -14914,7 +14914,8 @@ module.exports = ["common", function(common) {
 	service.generate = function(data) {
 		return {
 			BrandBannerEn: [],
-			BrandBannerTh: []
+			BrandBannerTh: [],
+			Status: 'NA'
 		};
 	}
 	service.deserialize = function(data) {
