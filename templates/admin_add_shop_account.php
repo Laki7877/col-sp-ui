@@ -65,7 +65,6 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										'label': 'URL Key',
 										'show': $root.isInvalid(form.UrlKey),
 										'conditions' : form.UrlKey.$error
-										}
 										}">
 										<input
 										class="form-control"

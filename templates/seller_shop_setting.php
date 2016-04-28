@@ -64,7 +64,6 @@
 												'label': 'URL Key',
 												'show': $root.isInvalid(form.UrlKey),
 												'conditions' : form.UrlKey.$error
-												}
 												}">
 												<input
 												class="form-control"
