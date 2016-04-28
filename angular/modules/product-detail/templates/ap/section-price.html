@@ -4,14 +4,14 @@
     <div class="form-section-content">
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.SalePrice" nc-label="Sale Price" ng-cloack
         nc-template-options-path="addProductForm/SalePrice">
-            <input autocomplete="off" ng-pattern-restrict="^[0-9]*$" type="text" class="form-control" maxlength="20" name="SalePrice"
+            <input autocomplete="off" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$" type="text" class="form-control" maxlength="20" name="SalePrice"
             ng-model="variantPtr.SalePrice" required/>
         </div>
 
         <div nc-template="common/input/form-group-with-label" nc-label="Original Price" nc-template-options-path="addProductForm/OriginalPrice"
         nc-template-form="form.OriginalPrice">
             <input autocomplete="off" class="form-control" type="text" name="OriginalPrice" ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="20"
-            ng-model="variantPtr.OriginalPrice" ng-pattern-restrict="^[0-9]*(\\.[0-9]*)?$" />
+            ng-model="variantPtr.OriginalPrice" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$" />
         </div>
 
         <div nc-template="common/input/form-group-with-label" nc-label="Installment" nc-template-options-path="addProductForm/Installment"
@@ -26,30 +26,30 @@
         <div nc-template="common/input/form-group-with-label" nc-label="Promotion Price" nc-template-form="form.PromotionPrice"
         nc-template-options-path="addProductForm/NonRequiredSystemField">
             <input class="form-control" name="PromotionPrice" ng-model="variantPtr.PromotionPrice"
-            ng-pattern-restrict="^[0-9]*(\\.[0-9]*)?$" />
+            ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$" />
         </div>
 
         <div nc-template="common/input/form-group-with-label" nc-label="Promotion Effective Date" nc-template-form="form.PromotionEffectiveDate"
         nc-template-options-path="addProductForm/NonRequiredSystemField">
             <input class="form-control" name="PromotionEffectiveDate" ng-model="variantPtr.PromotionEffectiveDate"
-            ng-pattern-restrict="^[0-9]*(\\.[0-9]*)?$" />
+            ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$" />
         </div>
 
         <div nc-template="common/input/form-group-with-label" nc-label="Promotion Expire Date" nc-template-form="form.PromotionExpireDate"
         nc-template-options-path="addProductForm/NonRequiredSystemField">
             <input class="form-control" name="PromotionExpireDate" ng-model="variantPtr.PromotionExpireDate"
-            ng-pattern-restrict="^[0-9]*(\\.[0-9]*)?$" />
+            ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$" />
         </div>
 
         <div nc-template="common/input/form-group-with-label" ng-show="ShopGroupPolicy(['IN'])" nc-label="Unit Price" nc-template-options-path="addProductForm/NonRequiredSystemField"
         nc-template-form="form.UnitPrice">
-            <input autocomplete="off" class="form-control" type="text" name="UnitPrice" ng-pattern-restrict="^[0-9]*(\\.[0-9]*)?$"  maxlength="20"
+            <input autocomplete="off" class="form-control" type="text" name="UnitPrice" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"  maxlength="20"
             ng-model="variantPtr.UnitPrice" />
         </div>
 
         <div nc-template="common/input/form-group-with-label" ng-show="ShopGroupPolicy(['IN'])" nc-label="Purchase Price" nc-template-options-path="addProductForm/NonRequiredSystemField"
         nc-template-form="form.PurchasePrice">
-            <input autocomplete="off" class="form-control" type="text" name="PurchasePrice" ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="20"
+            <input autocomplete="off" class="form-control" type="text" name="PurchasePrice" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$" maxlength="20"
             ng-model="variantPtr.PurchasePrice" />
         </div>
 

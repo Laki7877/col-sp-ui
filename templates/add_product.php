@@ -37,6 +37,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
                 </button>
        </div>
 
+        <nc-page-title nc-title="Products/Product Detail" ng-link="listingUrl || '/products'" icon="fa-tag">
+             <div ng-include="'page-btn-controls'"></div>
+         </nc-page-title>
+
        <div ap-component="ap/form-product-add"></div>
 </div>
 

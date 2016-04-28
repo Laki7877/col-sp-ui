@@ -76,7 +76,7 @@
               </div>
               <div nc-template="common/input/form-group-with-label" 
                   nc-template-form="form.Status" 
-                  nc-label="Default Sort By" 
+                  nc-label="Status" 
                   nc-template-options-path="addBrandForm/Status">
                   <ui-select ng-model="formData.Status" name="Status" search-enabled="false" required>
                       <ui-select-match>
