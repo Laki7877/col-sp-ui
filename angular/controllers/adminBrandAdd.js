@@ -27,9 +27,18 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 				$scope.alert.error(common.getError(err.data));
 			});
 	};
-	$scope.uploadBannerFail = function(e, response) {
+	$scope.uploadBannerFail = function(e, response, min, max) {
 		if(e == 'onmaxsize') {
 			$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+		}
+		else if(e == 'ondimension') {
+			$scope.alert.error('Banner size should be between ' + min[0] + 'x' + min[1] + ' and ' + max[0] + 'x' + max[1]);
+		}
+		else if(e == 'onratio') {
+			$scope.alert.error('Banner size ratio should be ' + min[0] + ':' + min[1]);
+		}
+		else if(e == 'onfilesize') {
+			$scope.alert.error('Banner file size should not exceed ' + (min/1000000) + ' MB')
 		}
 		else {
 			$scope.alert.error(common.getError(response.data));

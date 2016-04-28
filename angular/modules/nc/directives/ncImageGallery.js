@@ -14,7 +14,11 @@ angular.module('nc')
 			link: function(scope) {
 				scope.options = _.defaults(scope.options, {
 					height: '144px',
-					width: '256px'
+					width: '256px',
+					validateRatio: [16, 9],
+					validateDimensionMin: [1500, 1500],
+					validateDimensionMax: [2000, 2000],
+					validateFileSize: 5000000
 				});
 			}
 		}
@@ -94,6 +98,7 @@ angular.module('nc')
 							img.onload = function() {
 								var minDim = scope.options.validateDimensionMin;
 								var maxDim = scope.options.validateDimensionMax;
+								var ratio = scope.options.validateRatio;
 
 								var minW = Number(minDim[0]);
 								var minH = Number(minDim[1]);
@@ -112,6 +117,12 @@ angular.module('nc')
 									return;
 								}
 
+								if (scope.options.validateRatio && img.width != scope.options.validateRatio * img.height) {
+									//ratio error
+									scope.onfail('onratio', [img.width, img.height]);
+									return;
+								}
+
 								if (img.width != img.height && scope.options.validateSquare) {
 									//square error
 									scope.onfail('onsquare', [img.width, img.height]);
@@ -119,7 +130,6 @@ angular.module('nc')
 								}
 
 								//max size
-								console.log(scope.size, scope.images.length);
 								if (scope.images.length >= _.toInteger(scope.size)) {
 									scope.onfail('onmaxsize', scope.images.length);
 									return;
@@ -156,26 +166,71 @@ angular.module('nc')
 						//newer version
 						_.forEach(files, function(file) {
 							//max size
-							if (scope.images.length >= _.toInteger(scope.size)) {
-								scope.onfail('onmaxsize', scope.size);
-								return;
-							}
-							var obj = {
-								progress: 0,
-								SlideDuration: 1
-							};
-							scope.images.push(obj);
-							scope.uploader.upload(file)
-								.then(function(response) {
-									_.extend(obj, response.data);
-								}, function(response) {
-									scope.onfail('onerror', response);
-									_.remove(scope.images, function(n) {
-										return n === obj;
+							var url = URL.createObjectURL(file);
+							var img = new Image;
+
+							img.onload = function() {
+								var minDim = scope.options.validateDimensionMin;
+								var maxDim = scope.options.validateDimensionMax;
+								var ratio = scope.options.validateRatio;
+
+
+								if (scope.options.validateDimensionMin && (img.width < Number(minDim[0]) || img.height < Number(minDim[1]))) {
+									//min width error
+									scope.onfail('ondimension', [img.width, img.height], minDim, maxDim);
+									return;
+								}
+
+								if (scope.options.validateDimensionMax && (img.width > Number(maxDim[0]) || img.height > Number(maxDim[1]))) {
+									//min width error
+									scope.onfail('ondimension', [img.width, img.height], minDim, maxDim);
+									return;
+								}
+
+								if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
+									//file size error
+									scope.onfail('onfilesize', file.size, scope.options.validateFileSize);
+									return;
+								}
+
+								if (scope.options.validateRatio && img.width * Number(ratio[1]) != Number(ratio[0]) * img.height) {
+									//ratio error
+									scope.onfail('onratio', [img.width, img.height], ratio);
+									return;
+								}
+
+								if (img.width != img.height && scope.options.validateSquare) {
+									//square error
+									scope.onfail('onsquare', [img.width, img.height]);
+									return;
+								}
+
+								//max size
+								if (scope.images.length >= _.toInteger(scope.size)) {
+									scope.onfail('onmaxsize', scope.images.length);
+									return;
+								}
+								var obj = {
+									progress: 0,
+									SlideDuration: 1
+								};
+								scope.images.push(obj);
+								scope.uploader.upload(file)
+									.then(function(response) {
+										_.extend(obj, response.data);
+									}, function(response) {
+										scope.onfail('onerror', response);
+										_.remove(scope.images, function(n) {
+											return n === obj;
+										});
+									}, function(evt) {
+										obj.progress = _.parseInt(100.0 * evt.loaded / evt.total);
 									});
-								}, function(evt) {
-									obj.progress = _.parseInt(100.0 * evt.loaded / evt.total);
-								});
+
+							};
+
+							img.src = url;
+
 						});
 					}
 				};
