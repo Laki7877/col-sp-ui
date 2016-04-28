@@ -9653,7 +9653,6 @@ angular.module('nc')
 				scope.options = _.defaults(scope.options, {
 					height: '144px',
 					width: '256px',
-					validateRatio: [16, 9],
 					validateDimensionMin: [1500, 1500],
 					validateDimensionMax: [2000, 2000],
 					validateFileSize: 5000000
