@@ -130,6 +130,11 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				$scope.products = [];
 				$scope.availableProducts = -1;
 				$scope.id = id;
+				$scope.sortBy = [];
+				
+				common.getSortBy().then(function(data) {
+					$scope.sortBy = data;
+				});
 
 				//For searching feature prod
 				var search = {};
