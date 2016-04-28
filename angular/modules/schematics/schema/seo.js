@@ -13,9 +13,12 @@ module.exports = {
     },
     "ProductBoostingWeight": {
       "type": "integer"
+    },
+    "GlobalProductBoostingWeight": {
+      "type": "integer"
     }
   },
-  "required": ["MetaTitleTh",
+  "required": ["MetaTitleTh", "MetaTitleEn",
   "MetaDescriptionTh", "MetaDescriptionEn",
-   "MetaKeywordEn", "MetaKeywordTh", "ProductUrlKeyEn", "ProductBoostingWeight"]
+   "MetaKeywordEn", "MetaKeywordTh", "ProductUrlKeyEn", "ProductBoostingWeight", "GlobalProductBoostingWeight"]
 }

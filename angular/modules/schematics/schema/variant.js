@@ -5,8 +5,23 @@ module.exports =  {
     "IsHasExpiryDate":{
       "enum": ["Y", "N"]
     },
+    "MinimumAllowedInCart":{
+      "type": "number"
+    },
+    "MaximumAllowedInCart": {
+      "type": "number"
+    },
+    "MaximumAllowedPreOrder": {
+      "type": "number"
+    },
+    "Pid": {
+      "type": "number"
+    },
     "IsVat":{
        "enum": ["Y", "N"]
+    },
+    "Sku": {
+      "type": "string"
     },
     "Length": {
       "type": "number"
@@ -19,6 +34,12 @@ module.exports =  {
     },
     "Weight": {
       "type": "number"
+    },
+    "ProdTDNameEn":{
+       "type": "string"
+    },
+    "ProdTDNameTh":{
+       "type": "string"
     },
     "ProductNameEn": {
       "type": "string"
@@ -49,6 +70,15 @@ module.exports =  {
     },
     "SalePrice": {
       "type": "number"
+    },
+    "PromotionPrice":{
+      "type": "number"
+    },
+    "PromotionEffectiveDate":{
+      "type": "string"
+    },
+    "PromotionExpireDate":{
+      "type": "string"
     },
     "Quantity": {
       "type": "integer"
@@ -116,6 +146,18 @@ module.exports =  {
     "UnitPrice": {
       "type": "number"
     },
+    "SaleUnitTh": {
+      "type": "string"
+    },
+    "SaleUnitEn": {
+      "type": "string"
+    },
+    "ExpressDelivery":{
+      "enum": ["Y", "N"]
+    },
+    "DeliveryFee":{
+      "type": "number"
+    },
     "Installment": {
       "enum": ["Y", "N"]
     },
@@ -146,10 +188,13 @@ module.exports =  {
     },
     "IsVariant": {
       "type": "boolean"
+    },
+    "DefaultVariant": {
+      "type": "boolean"
     }
   },
   "required": ["ShippingMethod", "ProductNameEn", "ProductNameTh",
     "StockType", "DimensionUnit", "SEO", "VideoLinks", "Images", "GiftWrap",
-    "FirstAttribute", "SecondAttribute", 
+    "FirstAttribute", "SecondAttribute", "DefaultVariant",
     "Installment", "PrepareDay", "LimitIndividualDay", "Display"]
 };

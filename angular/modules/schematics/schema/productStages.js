@@ -5,6 +5,10 @@ module.exports = {
     "ProductId": {
       "type": "integer"
     },
+    "Revisions": {
+      "type": "array",
+      "item": require("./revisionObject") 
+    },
     "MasterVariant": require('./variant'),
     "Variants": {
       "type": "array",
@@ -117,7 +121,7 @@ module.exports = {
     },
     "ControlFlags": {
       "properties": {
-        "required": ["Flag1", "Flag2", "Flag3"],
+        "required": ["IsNew", "IsClearance", "IsBestSeller", "IsOnlineExclusive", "IsOnlyAt"],
         "Flag1": {
           "type": "boolean"
         },
