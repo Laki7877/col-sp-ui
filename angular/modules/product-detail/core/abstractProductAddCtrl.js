@@ -24,8 +24,32 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.readOnly = options.readOnly;
     $scope.adminMode = options.adminMode;
     $scope.approveMode = options.approveMode;
+
     $scope.listingUrl = options.listingUrl;
 
+    $scope.TimeMachine = {
+      active: false,
+      preview: function(historyId){
+        Product.getRevision(historyId).then(function(res){
+            checkSchema(res);
+            loadOverview(res);
+            res.Status = 'DF';
+            $scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions); // will trigger watchvariantchange
+            var catId = Number(res.MainGlobalCategory.CategoryId);
+
+            $productAdd.fill(checkSchema, catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function() {
+              $scope.formData.ProductId = Number(res.ProductId);
+              $scope.pageState.reset();
+              $scope.alert.success('This is a preview of revision history ' + historyId);
+              $scope.variantPtr = $scope.formData.MasterVariant;
+              $scope.addProductForm.$setPristine(true);
+            });
+
+            $scope.addProductForm.$setPristine(true);
+        });
+      }
+    }
+    
     var loadOverview = function(res) {
       Shop.get(res.ShopId).then(function(x) {
         $scope.formData.ShopName = x.ShopNameEn;
@@ -553,6 +577,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       Product.publish(apiRequest, Status).then(function(res) {
 
         $scope.pageState.reset();
+        
         if (res.ProductId) {
 
           loadOverview(res);

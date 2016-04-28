@@ -4,6 +4,12 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		'use strict';
 		var service = common.Rest('/ProductStages');
 		
+		service.getRevision = function(revId){
+			return common.makeRequest({
+				method: 'GET',
+				url: '/ProductHistories/' + revId
+			});
+		}
 		
 		service.getUnlockedFields = function(){
 			//Get list of fields that are always enabled (unlocked)	
