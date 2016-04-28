@@ -8,9 +8,10 @@ angular.module('nc')
 				uploader: '=',
 				options: '=?',
 				size: '@',
-				title: '@'
+				title: '@',
+				source: '?='
 			},
-			template: '<nc-image-block template="common/ncImageBanner3" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>Image ratio 16:9</li></ul></nc-image-block>',
+			template: '<nc-image-block template="common/ncImageBanner3" source="source" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>Image ratio 16:9</li></ul></nc-image-block>',
 			link: function(scope) {
 				scope.options = _.defaults(scope.options, {
 					height: '144px',
