@@ -74,11 +74,11 @@ module.exports =  {
     "PromotionPrice":{
       "type": "number"
     },
-    "PromotionEffectiveDate":{
-      "type": "string"
+    "EffectiveDatePromotion":{
+      "type": ["string", "null"]
     },
-    "PromotionExpireDate":{
-      "type": "string"
+    "ExpireDatePromotion":{
+      "type": ["string", "null"]
     },
     "Quantity": {
       "type": "integer"
@@ -161,10 +161,6 @@ module.exports =  {
     "Installment": {
       "enum": ["Y", "N"]
     },
-    "ShippingMethod": {
-      "type": "integer",
-      "enum": [1,2]
-    },
     "VideoLinks": {
       "type" : "array",
       "items": {
@@ -193,8 +189,8 @@ module.exports =  {
       "type": "boolean"
     }
   },
-  "required": ["ShippingMethod", "ProductNameEn", "ProductNameTh",
-    "StockType", "DimensionUnit", "SEO", "VideoLinks", "Images", "GiftWrap",
+  "required": ["ProductNameEn", "ProductNameTh",
+    "StockType", "DimensionUnit", "SEO", "VideoLinks", "Images",
     "FirstAttribute", "SecondAttribute", "DefaultVariant",
     "Installment", "PrepareDay", "LimitIndividualDay", "Display"]
 };

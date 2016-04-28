@@ -98,6 +98,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       ExpireDate: null,
       LimitIndividualDay: false,
       MasterVariant: {
+        ExpressDelivery: 'N',
         IsHasExpiryDate: 'N',
         IsVat: 'N',
         Display: 'GROUP',

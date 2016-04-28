@@ -84,6 +84,9 @@ module.exports = {
         }
       ]
     },
+    "ShippingMethod": {
+      "type": "integer"
+    },
     "ExpireDate": {
       "oneOf": [
         {
