@@ -30,6 +30,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.TimeMachine = {
       active: false,
       preview: function(historyId){
+        $scope.pageState.load("Loading Product Revision");
         Product.getRevision(historyId).then(function(res){
             checkSchema(res);
             loadOverview(res);
@@ -43,6 +44,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
               $scope.alert.success('This is a preview of revision history ' + historyId);
               $scope.variantPtr = $scope.formData.MasterVariant;
               $scope.addProductForm.$setPristine(true);
+              $scope.TimeMachine.active = true;
             });
 
             $scope.addProductForm.$setPristine(true);
@@ -343,6 +345,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         $scope.devAlert.close();
         $scope.adminAlert.close();
         $scope.pageState.loading.state = false;
+        $scope.TimeMachine.active = false;
       }
     };
 

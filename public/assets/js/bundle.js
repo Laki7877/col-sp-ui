@@ -11191,6 +11191,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.TimeMachine = {
       active: false,
       preview: function(historyId){
+        $scope.pageState.load("Loading Product Revision");
         Product.getRevision(historyId).then(function(res){
             checkSchema(res);
             loadOverview(res);
@@ -11204,6 +11205,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
               $scope.alert.success('This is a preview of revision history ' + historyId);
               $scope.variantPtr = $scope.formData.MasterVariant;
               $scope.addProductForm.$setPristine(true);
+              $scope.TimeMachine.active = true;
             });
 
             $scope.addProductForm.$setPristine(true);
@@ -11504,6 +11506,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         $scope.devAlert.close();
         $scope.adminAlert.close();
         $scope.pageState.loading.state = false;
+        $scope.TimeMachine.active = false;
       }
     };
 
@@ -16360,15 +16363,16 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 								g.AttributeValues.push(ma[key]);
 								t.push(g);
-							} else {
-								t.push({
-									AttributeValues: [],
-									AttributeId: Number(key),
-									ValueEn: ma[key]
-								});
+							} else if(!_.isEmpty(ma[key])){
+									t.push({
+										AttributeValues: [],
+										AttributeId: Number(key),
+										ValueEn: ma[key]
+									});
 							}
 
 						});
+						
 						return t;
 					},
 					fallback: function() {
@@ -16440,9 +16444,11 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 							MasterAttribute[ma.AttributeId][item.AttributeValueId] = item.CheckboxValue;
 						}
 					}else{
-						var k = {
-							'AttributeValue': ma.AttributeValues[0]
+						
+						if(ma.AttributeValues[0]){
+							k['AttributeValue'] = ma.AttributeValues[0];
 						}
+						
 						if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
 							k.AttributeId = ma.AttributeId;
 							k.AttributeValueId = ma.AttributeValues[0].AttributeValueId;

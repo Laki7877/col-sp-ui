@@ -330,15 +330,16 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 								g.AttributeValues.push(ma[key]);
 								t.push(g);
-							} else {
-								t.push({
-									AttributeValues: [],
-									AttributeId: Number(key),
-									ValueEn: ma[key]
-								});
+							} else if(!_.isEmpty(ma[key])){
+									t.push({
+										AttributeValues: [],
+										AttributeId: Number(key),
+										ValueEn: ma[key]
+									});
 							}
 
 						});
+						
 						return t;
 					},
 					fallback: function() {
@@ -410,9 +411,11 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 							MasterAttribute[ma.AttributeId][item.AttributeValueId] = item.CheckboxValue;
 						}
 					}else{
-						var k = {
-							'AttributeValue': ma.AttributeValues[0]
+						
+						if(ma.AttributeValues[0]){
+							k['AttributeValue'] = ma.AttributeValues[0];
 						}
+						
 						if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
 							k.AttributeId = ma.AttributeId;
 							k.AttributeValueId = ma.AttributeValues[0].AttributeValueId;
