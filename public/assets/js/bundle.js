@@ -9753,6 +9753,8 @@ angular.module('nc')
 					width: '150px'
 				});
 
+				scope.images = scope.images || [];
+
 				scope.$watch('uploader', function(val) {
 					if (val instanceof FileUploader) {
 						fileUploader = true;
