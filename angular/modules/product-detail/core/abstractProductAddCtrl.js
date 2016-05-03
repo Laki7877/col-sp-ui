@@ -128,7 +128,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         IsHasExpiryDate: 'N',
         IsVat: 'N',
         Display: 'GROUP',
-        ProductNameEn: '',
+        ProductNameEn: '?',
         ProductNameTh: '',
         Sku: '',
         DescriptionFullEn: '',
@@ -229,7 +229,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             }
           },
           exclude: function() {
-            console.log('will exclude', $scope.formData[key])
+            // console.log('will exclude', $scope.formData[key])
             return $scope.formData[key];
           }
         }
@@ -251,7 +251,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
 
     $scope.onImageUploadFail = function(kwd, data) {
-      console.log(kwd, data);
+      // console.log(kwd, data);
       if (kwd == "onmaxsize") {
         $scope.image_alert.error('Maximum ' + data + ' images can be uploaded.');
       } else if (kwd == "ondimension") {
@@ -312,7 +312,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         return previousValue + (array[currentIndex].Attribute.VariantStatus ? 1 : 0);
       }, 0);
 
-      console.log('count', count);
+      // console.log('count', count);
       if (count == 0) {
         return $scope.alert.error('<strong>Not allowed</strong> - Cannot create variation because selected attribute set does not have any variate-able option.');
       }
@@ -591,7 +591,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             $scope.formData.ProductId = Number(res.ProductId);
             $scope.pageState.reset();
             $scope.alert.success('Your product has been saved successfully. <a href="' + (options.listingUrl || '/products') + '">View Product List</a>');
-            console.log("MVAR after save", $scope.formData.MasterVariant);
+            // console.log("MVAR after save", $scope.formData.MasterVariant);
             $scope.variantPtr = $scope.formData.MasterVariant;
             $scope.addProductForm.$setPristine(true);
           });
@@ -650,7 +650,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 }
 
                 $scope.adminAlert.close();
-                console.log('adminMode', $scope.adminMode, $scope.formData.Status);
+                // console.log('adminMode', $scope.adminMode, $scope.formData.Status);
                 if (!$scope.adminMode && $scope.formData.Status == 'RJ') {
                   //Show rejection from admin
                   $scope.adminAlert.error("<strong>Message from Admin</strong><br>" + $scope.formData.AdminApprove.RejectReason);
@@ -856,7 +856,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         });
 
         $scope.dataset.CombinedAttributeSets = _.unionBy(searchRes, $scope.dataset.AttributeSets, 'AttributeSetId');
-        console.log($scope.dataset.CombinedAttributeSets, 'scope.dataset.CombinedAttributeSets');
+        // console.log($scope.dataset.CombinedAttributeSets, 'scope.dataset.CombinedAttributeSets');
       })
     };
 

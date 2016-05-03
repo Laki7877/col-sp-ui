@@ -1,26 +1,26 @@
 // Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config', 'KnownException',
-	function($http, common, util, LocalCategory, Brand, config, KnownException) {
+	function ($http, common, util, LocalCategory, Brand, config, KnownException) {
 		'use strict';
 		var service = common.Rest('/ProductStages');
-		
-		service.getRevision = function(revId){
+
+		service.getRevision = function (revId) {
 			return common.makeRequest({
 				method: 'GET',
 				url: '/ProductHistories/' + revId
 			});
 		}
-		
-		service.getUnlockedFields = function(){
+
+		service.getUnlockedFields = function () {
 			//Get list of fields that are always enabled (unlocked)	
 			return common.makeRequest({
 				method: 'GET',
 				url: '/ProductStages/IgnoreApprove'
 			});
 		}
-		
-		
-		service.savePendingProduct = function(apgp){
+
+
+		service.savePendingProduct = function (apgp) {
 			return common.makeRequest({
 				method: 'POST',
 				url: '/ProductStages/PendingProduct',
@@ -28,14 +28,14 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			})
 		}
 
-		service.addTags = function(arr) {
+		service.addTags = function (arr) {
 			return common.makeRequest({
 				method: 'PUT',
 				url: '/ProductStages/Tags',
 				data: arr
 			})
 		};
-		service.getExportableFields = function() {
+		service.getExportableFields = function () {
 			var req = {
 				method: 'GET',
 				url: '/ProductStages/Guidance/Export'
@@ -43,7 +43,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			return common.makeRequest(req)
 		}
 
-		service.downloadTemplate = function(globalCat, aset) {
+		service.downloadTemplate = function (globalCat, aset) {
 			var req = {
 				method: 'POST',
 				url: '/ProductStages/Template',
@@ -55,7 +55,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			return common.makeRequest(req)
 		}
 
-		service.getAllAttributeSetsForProducts = function(productList) {
+		service.getAllAttributeSetsForProducts = function (productList) {
 			var req = {
 				method: 'POST',
 				url: '/ProductStages/AttributeSet',
@@ -64,7 +64,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			return common.makeRequest(req)
 		}
 
-		service.export = function(ps) {
+		service.export = function (ps) {
 			var req = {
 				method: 'POST',
 				url: '/ProductStages/Export',
@@ -73,7 +73,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			return common.makeRequest(req)
 		}
 
-		service.guideline = function(params) {
+		service.guideline = function (params) {
 			var req = {
 				method: 'GET',
 				url: '/ProductStages/Guidance',
@@ -81,7 +81,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			}
 			return common.makeRequest(req)
 		}
-		service.approve = function(obj) {
+		service.approve = function (obj) {
 			return common.makeRequest({
 				method: 'PUT',
 				url: '/ProductStages/Approve',
@@ -91,7 +91,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				}
 			})
 		}
-		service.reject = function(obj) {
+		service.reject = function (obj) {
 			return common.makeRequest({
 				method: 'PUT',
 				url: '/ProductStages/Reject',
@@ -102,7 +102,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			})
 		}
 
-		service.getOne = function(productId) {
+		service.getOne = function (productId) {
 			var req = {
 				method: 'GET',
 				url: '/ProductStages/' + productId
@@ -110,7 +110,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			return common.makeRequest(req)
 		}
 
-		service.getAllVariants = function(parameters) {
+		service.getAllVariants = function (parameters) {
 			var req = {
 				method: 'GET',
 				url: '/ProductStages/All',
@@ -120,7 +120,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			return common.makeRequest(req)
 		}
 
-		service.updateAllVariants = function(obj) {
+		service.updateAllVariants = function (obj) {
 			var req = {
 				method: 'PUT',
 				url: '/ProductStages/All/Image',
@@ -133,7 +133,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			return common.makeRequest(req)
 		}
 
-		service.duplicate = function(ProductId) {
+		service.duplicate = function (ProductId) {
 			// this URL structure is weird dont u think
 			var req = {
 				method: 'POST',
@@ -143,7 +143,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			return common.makeRequest(req)
 		}
 
-		service.getAll = function(parameters) {
+		service.getAll = function (parameters) {
 			var req = {
 				method: 'GET',
 				url: '/ProductStages/',
@@ -160,24 +160,24 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			return common.makeRequest(req)
 		}
 
-		service.export = function(tobj) {
+		service.export = function (tobj) {
 			var path = '/ProductStages/Export'
-				return common.makeRequest({
-					responseType: 'arraybuffer',
-					method: 'POST',
-					url: path,
-					data: tobj
-				})
+			return common.makeRequest({
+				responseType: 'arraybuffer',
+				method: 'POST',
+				url: path,
+				data: tobj
+			})
 		}
 
-		service.publish = function(tobj, Status) {
+		service.publish = function (tobj, Status) {
 			tobj.Status = Status
-				var mode = 'POST'
-				var path = '/ProductStages'
-				if (tobj.ProductId) {
-					mode = 'PUT'
-						path = path + '/' + tobj.ProductId
-				}
+			var mode = 'POST'
+			var path = '/ProductStages'
+			if (tobj.ProductId) {
+				mode = 'PUT'
+				path = path + '/' + tobj.ProductId
+			}
 			return common.makeRequest({
 				method: mode,
 				url: path,
@@ -186,7 +186,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			})
 		}
 
-		service.bulkPublish = function(tobj) {
+		service.bulkPublish = function (tobj) {
 			return common.makeRequest({
 				method: 'POST',
 				url: '/ProductStages/Publish',
@@ -197,7 +197,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			})
 		}
 
-		service.visible = function(obj) {
+		service.visible = function (obj) {
 			return common.makeRequest({
 				method: 'PUT',
 				url: '/ProductStages/Visibility',
@@ -207,7 +207,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				}
 			})
 		}
-		service.deleteBulk = function(arr) {
+		service.deleteBulk = function (arr) {
 			return common.makeRequest({
 				method: 'DELETE',
 				url: '/ProductStages',
@@ -219,10 +219,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		}
 
 		var StatusLookup = {}
-		config.PRODUCT_STATUS.forEach(function(object) {
+		config.PRODUCT_STATUS.forEach(function (object) {
 			StatusLookup[object.value] = object;
 		})
-		service.getStatus = function(abbreviation) {
+		service.getStatus = function (abbreviation) {
 			if (_.isNil(abbreviation)) {
 				return {
 					name: 'No Status',
@@ -235,68 +235,68 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		/**
 		 * @param  {Product Object} fd
 		 */
-		service.serialize = function(fd) {
+		service.serialize = function (fd) {
 
 			var clean = {}
 			var serializer = {
 				GlobalCategories: {
-					serialize: function(data) {
-						return data.map(function(lcat) {
+					serialize: function (data) {
+						return data.map(function (lcat) {
 							if (lcat == null) return null;
 							return {
 								CategoryId: lcat.CategoryId
 							}
 						});
 					},
-					fallback: function(data) {
+					fallback: function (data) {
 						throw new KnownException("No serialization fallback for Global Categories");
 					}
 				},
 				LocalCategories: {
-					serialize: function(data) {
-						return data.map(function(lcat) {
+					serialize: function (data) {
+						return data.map(function (lcat) {
 							if (lcat == null) return null;
 							return {
 								CategoryId: lcat.CategoryId
 							}
 						});
 					},
-					fallback: function(data) {
+					fallback: function (data) {
 						return [null, null, null];
 					}
 				},
 				AttributeSet: {
-					serialize: function(data) {
+					serialize: function (data) {
 						var k = null;
 						if (data.AttributeSetId) k = data.AttributeSetId;
 						return {
 							AttributeSetId: k
 						};
 					},
-					fallback: function(data) {
+					fallback: function (data) {
 						return {
 							AttributeSetId: null
 						};
 					}
 				},
 				Images: {
-					serialize: function(images) {
-						return images.map(function(image) {
+					serialize: function (images) {
+						return images.map(function (image) {
 							image.position = pos;
 							return image;
 						});
 					},
-					fallback: function(x) {
+					fallback: function (x) {
 						return [];
 					}
 				},
 				MasterAttribute: {
-					serialize: function(ma) {
+					serialize: function (ma) {
 						var t = [];
 
-						Object.keys(ma).forEach(function(key) {
-							//key is essentially Attribute Id
-							if(ma[key]._checkbox){
+						Object.keys(ma).forEach(function (key) {
+							//key is Attribute Id
+							if (ma[key]._checkbox) {
 
 								var g = {
 									AttributeValues: [],
@@ -306,9 +306,9 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 								//xKey is a essentially a list of ValueIds
 								var xKey = Object.keys(ma[key]);
-								for(var x = 0; x < xKey.length; x++){
-									if(xKey[x] == "_checkbox") continue;
-									if(_.isNaN(Number(xKey[x]))) continue;
+								for (var x = 0; x < xKey.length; x++) {
+									if (xKey[x] == "_checkbox") continue;
+									if (_.isNaN(Number(xKey[x]))) continue;
 
 
 									var valueId = xKey[x];
@@ -321,7 +321,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 								}
 
 								t.push(g);
-							}else if (ma[key].AttributeValueId) {
+							} else if (ma[key].AttributeValueId) {
+								//Dropdown LT (items are not freetext)
 								var g = {
 									AttributeValues: [],
 									AttributeId: ma[key].AttributeId,
@@ -330,24 +331,36 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 								g.AttributeValues.push(ma[key]);
 								t.push(g);
-							} else if(!_.isEmpty(ma[key])){
+							} else if (!_.isEmpty(ma[key])) {
+								//Freetext
+								if (_.isObject(ma[key])) {
+									//ma[key] will look like { ValueEn: '', ValueTh: '' }
+									t.push(_.merge({
+										AttributeValues: [],
+										AttributeId: Number(key)
+									}, ma[key]));
+								} else {
+									//Legacy freetext, theoretically 
+									//this will never be reached
 									t.push({
 										AttributeValues: [],
 										AttributeId: Number(key),
 										ValueEn: ma[key]
 									});
+								}
 							}
 
 						});
-						
+
 						return t;
 					},
-					fallback: function() {
+					fallback: function () {
 						return [];
 					}
 				}
 			};
 
+			//parse each key according to serializer
 			for (var key in fd) {
 				if (_.has(fd[key], 'queue')) delete fd[key].queue;
 				if (_.has(fd[key], '$id')) delete fd[key].$id;
@@ -377,15 +390,14 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		 * Deserialize server format
 		 * invFd {Server FormData}
 		 */
-		service.deserialize = function(pap, FullAttributeSet) {
+		service.deserialize = function (pap, FullAttributeSet) {
 			var invFd = angular.copy(pap);
-			//Load attribute set (TODO: we won't have to do this in future)
+			//Load attribute set
 			invFd.AttributeSet = FullAttributeSet;
-			console.log('invFd.AttributeSet  = FullAttributeSet', FullAttributeSet);
 
 			//Find which variant is default
 			try {
-				var DefaultVariantIndex = (invFd.Variants || []).map(function(o) {
+				var DefaultVariantIndex = (invFd.Variants || []).map(function (o) {
 					return o.DefaultVariant || false;
 				}).indexOf(true);
 
@@ -396,37 +408,38 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 			var MasterAttribute = {};
 			try {
-				invFd.MasterAttribute.forEach(function(ma) {
+				invFd.MasterAttribute.forEach(function (ma) {
 					//Hacky AF
-					if(ma.DataType == "CB"){
-						for(var i = 0; i < ma.AttributeValues.length; i++){
-							var item  = ma.AttributeValues[i];
+					if (ma.DataType == "CB") {
+						for (var i = 0; i < ma.AttributeValues.length; i++) {
+							var item = ma.AttributeValues[i];
 
-							if(!MasterAttribute[ma.AttributeId]){
+							if (!MasterAttribute[ma.AttributeId]) {
 								MasterAttribute[ma.AttributeId] = {
-									_checkbox : true
+									_checkbox: true
 								};
 							}
 
 							MasterAttribute[ma.AttributeId][item.AttributeValueId] = item.CheckboxValue;
 						}
-					}else{
-						
-						if(ma.AttributeValues[0]){
+					} else {
+						var k = {};
+						if (ma.AttributeValues[0]) {
 							k['AttributeValue'] = ma.AttributeValues[0];
 						}
-						
+
 						if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
 							k.AttributeId = ma.AttributeId;
 							k.AttributeValueId = ma.AttributeValues[0].AttributeValueId;
 						}
-						MasterAttribute[ma.AttributeId] = ma.ValueEn || k;
+
+						MasterAttribute[ma.AttributeId] = ((ma.ValueEn || ma.ValueTh) ? ma : k);
 					}
 				});
 			} catch (ex) {
-				console.warn('Unable to set MasterAttribute', ex);
+				throw new KnownException('Unable to deserialize MasterAttribute');
 			}
-			
+
 			invFd.MasterAttribute = MasterAttribute;
 
 			if (!invFd.LocalCategories) {
@@ -438,13 +451,12 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			} else {
 				var kmax = invFd.LocalCategories.length;
 				for (var k = 0; k < 3 - kmax; k++) {
-					console.log('pushing null');
 					invFd.LocalCategories.push(null);
 				}
 			}
 
 			if (invFd.MainLocalCategory && Number(invFd.MainLocalCategory.CategoryId) > 0) {
-				LocalCategory.getOne(invFd.MainLocalCategory.CategoryId).then(function(locat) {
+				LocalCategory.getOne(invFd.MainLocalCategory.CategoryId).then(function (locat) {
 					invFd.LocalCategories.unshift(locat);
 					if (invFd.LocalCategories.length > 3) {
 						invFd.LocalCategories.pop();
@@ -453,7 +465,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			};
 
 			var invMapper = {
-				Variants: function(m) {
+				Variants: function (m) {
 					m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
 					return m;
 				}
@@ -471,7 +483,6 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			} else {
 				var kmax = invFd.GlobalCategories.length;
 				for (var k = 0; k < 3 - kmax; k++) {
-					console.log('pushing null');
 					invFd.GlobalCategories.push(null);
 				}
 			}
@@ -510,20 +521,20 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				// Figure out the Attributes that make up each Variant
 				var HasTwoAttr = _.has(invFd.Variants[0], 'SecondAttribute.AttributeId') && invFd.Variants[0].SecondAttribute.AttributeId != 0;
 				// Generate attributeOptions
-				var map0_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
+				var map0_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
 					return a.Attribute.AttributeId
 				}).indexOf(invFd.Variants[0].FirstAttribute.AttributeId);
 
-				var map1_index, SecondArray
-					if (HasTwoAttr) {
-						map1_index = FullAttributeSet.AttributeSetMaps.map(function(a) {
-							return a.Attribute.AttributeId
-						}).indexOf(invFd.Variants[0].SecondAttribute.AttributeId);
-					}
+				var map1_index, SecondArray;
+				if (HasTwoAttr) {
+					map1_index = FullAttributeSet.AttributeSetMaps.map(function (a) {
+						return a.Attribute.AttributeId
+					}).indexOf(invFd.Variants[0].SecondAttribute.AttributeId);
+				}
 
 				// Find array of values to populate factors array that can be used to reproduce
 				// the expanded variants
-				var FirstArray = invFd.Variants.map(function(variant) {
+				var FirstArray = invFd.Variants.map(function (variant) {
 					if (variant.FirstAttribute.AttributeValues.length > 0) {
 						return {
 							'AttributeValue': variant.FirstAttribute.AttributeValues[0],
@@ -536,10 +547,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 						'ValueEn': variant.FirstAttribute.ValueEn.trim(),
 						'_locked': true
 					}
-				})
+				});
 
 				if (HasTwoAttr) {
-					SecondArray = invFd.Variants.map(function(variant) {
+					SecondArray = invFd.Variants.map(function (variant) {
 						if (variant.SecondAttribute.AttributeValues.length > 0) {
 							return {
 								'AttributeValue': variant.SecondAttribute.AttributeValues[0],
@@ -557,7 +568,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				// Get updated map from invFd.AttributeSet
 				// and load factorization array
 				var uniqueFirst = util.uniqueSet(FirstArray, 'AttributeValue.AttributeValueId');
-				if(_.has(FirstArray[0], 'ValueEn')){
+				if (_.has(FirstArray[0], 'ValueEn')) {
 					uniqueFirst = util.uniqueSet(FirstArray, 'ValueEn');
 				}
 
@@ -568,7 +579,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 				if (HasTwoAttr) {
 					var uniqueSecond = util.uniqueSet(SecondArray, 'AttributeValue.AttributeValueId');
-					if(_.has(SecondArray[0], 'ValueEn')){
+					if (_.has(SecondArray[0], 'ValueEn')) {
 						uniqueSecond = util.uniqueSet(SecondArray, 'ValueEn');
 					}
 					transformed.attributeOptions.push({
@@ -584,7 +595,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 			}
 
-			console.log('transformation array', transformed);
+			console.log('Deserialized Wrapper', transformed);
 
 			return transformed;
 		}
