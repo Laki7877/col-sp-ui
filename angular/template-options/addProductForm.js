@@ -63,6 +63,7 @@ module.exports = {
     }
   },
   Sku: {
+    'labelClass': 'required',
     'error': {
       'messages': {
         'pattern': 'Special characters are not allowed'

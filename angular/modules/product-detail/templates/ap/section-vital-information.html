@@ -4,38 +4,45 @@
     </div>
     <div class="form-section-content">
         
-        <div nc-template="common/input/form-group-with-label" ng-init="form = addProductForm" nc-template-form="form.ProductNameEn"
+        <div nc-template="common/input/form-group-with-label" ng-init="form = addProductForm" 
+        nc-template-form="form.ProductNameEn"
         nc-label="Product Name (English)" nc-template-options-path="addProductForm/ProductNameEn">
             <input class="form-control width-field-large" name="ProductNameEn" ng-model="variantPtr.ProductNameEn"
-            maxlength="300" ng-pattern="/^([^<>ก-๙])+$/"
+            maxlength="255" ng-pattern="/^([^<>ก-๙])+$/"
             required />
         </div>
 
-        <div nc-template="common/input/form-group-with-label" nc-label="Product Name (ไทย)" nc-template-form="form.ProductNameTh"
+        <div nc-template="common/input/form-group-with-label" 
+        nc-label="Product Name (ไทย)" nc-template-form="form.ProductNameTh"
         nc-template-options-path="addProductForm/ProductNameTh">
             <input class="form-control width-field-large" name="ProductNameTh" ng-model="variantPtr.ProductNameTh"
-            ng-pattern="/^[^<>]+$/" maxlength="300" required />
+            ng-pattern="/^[^<>]+$/" maxlength="255" required />
         </div>
-        <div nc-template="common/input/form-group-with-label" nc-policy-indy-bu nc-label="Short Product Name (Eng)" nc-template-form="form.ProdTDNameEn"
+        
+        <div nc-template="common/input/form-group-with-label" nc-policy-indy-bu 
+        nc-label="Short Product Name (Eng)" nc-template-form="form.ProdTDNameEn"
         nc-template-options-path="addProductForm/NonRequiredSystemField">
             <input class="form-control width-field-large" name="ProdTDNameEn" ng-model="variantPtr.ProdTDNameEn"
-            ng-pattern="/^[^<>]+$/" maxlength="300"  />
+            ng-pattern="/^[^<>]+$/" maxlength="55"  />
         </div>
 
-        <div nc-template="common/input/form-group-with-label" nc-policy-indy-bu  nc-label="Short Product Name (ไทย)" nc-template-form="form.ProdTDNameTh"
+        <div nc-template="common/input/form-group-with-label" nc-policy-indy-bu 
+        nc-label="Short Product Name (ไทย)" nc-template-form="form.ProdTDNameTh"
         nc-template-options-path="addProductForm/NonRequiredSystemField">
             <input class="form-control width-field-large" name="ProdTDNameTh" ng-model="variantPtr.ProdTDNameTh"
-            ng-pattern="/^[^<>]+$/" maxlength="300"  />
+            ng-pattern="/^[^<>]+$/" maxlength="55"  />
         </div>
 
         <div nc-template="common/input/form-group-with-label" nc-label="SKU" nc-template-form="form.Sku" nc-template-options-path="addProductForm/Sku">
-            <input class="form-control width-field-large" name="Sku" ng-model="variantPtr.Sku" maxlength="300"
+            <input class="form-control width-field-large" name="Sku" ng-model="variantPtr.Sku" maxlength="255" required
             ng-pattern="/^[^<>]+$/" />
         </div>
 
 
-	<div nc-template="common/input/form-group-with-label" nc-label="UPC" nc-template-form="form.Upc" nc-template-options-path="addProductForm/Upc">
-		<input class="form-control width-field-large" ng-pattern="/^[^<>]+$/" name="Upc" maxlength="300"
+	<div nc-template="common/input/form-group-with-label" nc-label="UPC" 
+    nc-template-form="form.Upc" nc-template-options-path="addProductForm/Upc">
+		<input class="form-control width-field-large" 
+        ng-pattern="/^[^<>]+$/" name="Upc" maxlength="13"
 		 ng-model="variantPtr.Upc"  />
 	</div>
 
