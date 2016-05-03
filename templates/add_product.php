@@ -6,8 +6,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
 <script type="text/ng-template" id="page-btn-controls">
 
                 <div ng-if="TimeMachine.active" class="page-actions float-right">
-                    <a type="button" class="link-btn-plain" ng-click="cancel()">Revert</a>
-                    <button class="btn btn-blue btn-width-xl" type="button" ng-click="publish('DF')"><strong>Restore</strong></button>
+                    <a type="button" class="link-btn-plain" ng-click="cancel()">Cancel</a>
+                    <button class="btn btn-green btn-width-xl" type="button" ng-click="publish('DF')"><strong>Restore</strong></button>
                 </div> 
                 
                 <div class="float-right" ng-if="!TimeMachine.active && !_loading.state && adminMode">

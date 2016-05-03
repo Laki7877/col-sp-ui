@@ -16,23 +16,23 @@ module.exports = function($scope, $controller, BrandService, Product, AdminMaste
 	
 	$scope.getProducts = function(search) {
 		var brands = !_.isEmpty($scope.formData.FilterBy) ? [$scope.formData.FilterBy] : [];
-		Product.advanceList({
+		return Product.advanceList({
 			searchText: search
 		})
 		.then(function(data) {
-			$scope.products = data.data.map(function(X){
+			return $scope.products = data.data.map(function(X){
 				X.CustomName = X.ProductNameEn + " (" + X.Pid + ")";
 				return X;
 			});
 		});
 	};
 	$scope.getChildProducts = function(search) {
-		Product.list({
+		return Product.list({
 			searchText: search,
-			_limit: 8,
+			_limit: 8
 		})
 		.then(function(data) {
-			$scope.childProducts = data.data.map(function(X){
+			return $scope.childProducts = data.data.map(function(X){
 				X.CustomName = X.ProductNameEn + " (" + X.Pid + ")";
 				return X;
 			});

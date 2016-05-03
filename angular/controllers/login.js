@@ -9,7 +9,12 @@
   
   var profile = storage.getCurrentUserProfile();
   if (profile && !profile.User.IsAdmin) {
-    $window.location.href = Credential.getRedirPath(profile)
+        Credential.checkToken()
+        .then(function() {
+          $window.location.href = Credential.getRedirPath(profile)
+        }, function() {
+          storage.clear();
+        });
   }
   
   if(storage.poke('session_timeout')) {

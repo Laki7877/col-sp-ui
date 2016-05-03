@@ -76,6 +76,7 @@
 						                        </td>
 						                        <td class="column-text-ellipsis" nc-link="/admin/approve/{{row.ProductId}}">
 						                            {{row.ProductNameEn}}
+													<div class="color-grey">{{row.Pid}}</div>
 						                        </td>
 						                        <td>{{row.Shop.ShopNameEn}}</td>
 						                        <td class="approve-column"> <span class="{{ asStatus(row.InformationTabStatus).color }}"><i class="fa fa-circle"></i></span></td>
