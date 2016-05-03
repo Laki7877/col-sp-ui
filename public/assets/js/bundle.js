@@ -14169,7 +14169,7 @@ module.exports = ["common", function(common) {
 },{}],166:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
-	var service = common.Rest('/ProductStages/Master');
+	var service = common.Rest('/Products/Master');
 	return service;
 }];
 },{}],167:[function(require,module,exports){
