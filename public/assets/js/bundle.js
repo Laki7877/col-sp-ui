@@ -11073,8 +11073,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncEye',
-    "<a ng-click=_toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\r" +
-    "\n" +
+    "<a ng-click=_toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\n" +
     "                            'fa fa-eye color-dark-grey eye-icon' : model}\"></i></a>"
   );
 
@@ -11150,12 +11149,9 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncTableSort',
-    "<a class=header-link ng-click=click()><span ng-class=\"{ 'active-underline' : isCurrent() }\" ng-transclude></span></a> <i class=fa ng-class=\"{ \r" +
-    "\n" +
-    "'fa fa-caret-down' : isCurrent() && direction, \r" +
-    "\n" +
-    "'fa fa-caret-up' : isCurrent() && !direction, \r" +
-    "\n" +
+    "<a class=header-link ng-click=click()><span ng-class=\"{ 'active-underline' : isCurrent() }\" ng-transclude></span></a> <i class=fa ng-class=\"{ \n" +
+    "'fa fa-caret-down' : isCurrent() && direction, \n" +
+    "'fa fa-caret-up' : isCurrent() && !direction, \n" +
     "'fa fa-caret-down color-grey' : !isCurrent() }\" ng-click=click()></i>"
   );
 
@@ -11221,7 +11217,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     $scope.TimeMachine = {
       active: false,
-      preview: function(historyId){
+      preview: function(historyId, historyDate){
         $scope.pageState.load("Loading Product Revision");
         Product.getRevision(historyId).then(function(res){
             checkSchema(res);
@@ -11233,7 +11229,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             $productAdd.fill(checkSchema, catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function() {
               $scope.formData.ProductId = Number(res.ProductId);
               $scope.pageState.reset();
-              $scope.alert.success('This is a preview of revision history ' + historyId);
+              $scope.alert.success('This is a preview of revision history on ' + moment(historyDate).format("d/mm/YY"));
               $scope.variantPtr = $scope.formData.MasterVariant;
               $scope.addProductForm.$setPristine(true);
               $scope.TimeMachine.active = true;
@@ -12583,20 +12579,16 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-description',
-    "<div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=ckOptions class=form-control name=DescriptionFullEn ng-model=variantPtr.DescriptionFullEn>\r" +
-    "\n" +
-    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=ckOptions class=form-control name=DescriptionFullTh ng-model=variantPtr.DescriptionFullTh>\r" +
-    "\n" +
-    "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=addProductForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=variantPtr.DescriptionShortEn>\r" +
-    "\n" +
-    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=variantPtr.DescriptionShortTh>\r" +
-    "\n" +
+    "<div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=ckOptions class=form-control name=DescriptionFullEn ng-model=variantPtr.DescriptionFullEn>\n" +
+    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=ckOptions class=form-control name=DescriptionFullTh ng-model=variantPtr.DescriptionFullTh>\n" +
+    "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=addProductForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=variantPtr.DescriptionShortEn>\n" +
+    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=variantPtr.DescriptionShortTh>\n" +
     "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint1En nc-label=\"Killer Point 1 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint1En ng-model=variantPtr.KillerPoint1En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint1Th nc-label=\"Killer Point 1 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint1Th ng-model=variantPtr.KillerPoint1Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint2En nc-label=\"Killer Point 2 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint2En ng-model=variantPtr.KillerPoint2En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint2Th nc-label=\"Killer Point 2 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint2Th ng-model=variantPtr.KillerPoint2Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint3En nc-label=\"Killer Point 3 (English)\" nc-template-options-path=addProductForm/KillerPointEn><input class=\"form-control width-field-large\" name=KillerPoint3En ng-model=variantPtr.KillerPoint3En maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\"></div><div nc-template=common/input/div-with-label nc-template-form=form.KillerPoint3Th nc-label=\"Killer Point 3 (ไทย)\" nc-template-options-path=addProductForm/KillerPointTh><input class=\"form-control width-field-large\" name=KillerPoint3Th ng-model=variantPtr.KillerPoint3Th maxlength=300 ng-pattern=\"/^([^<>])+$/\"></div></div></div></div></div>"
   );
 
 
   $templateCache.put('ap/section-detail',
-    "<div class=form-section><div class=form-section-header><h2>Detail</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Attribute Set</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-show=\"controlFlags.variation == 'enable'\" class=form-control disabled><option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option></select><you-me display-by=AttributeSetNameEn placeholder=\"Search Attribute Set\" ng-show=\"controlFlags.variation != 'enable'\" auto-clear-search=true group-by=_group ng-model=formData.AttributeSet refresh=refresher.AttributeSets initial-choices=dataset.AttributeSets choices=dataset.CombinedAttributeSets></you-me></div></div><a class=\"like-text form-text\" ng-if=\"formData.AttributeSet.AttributeSetId && controlFlags.variation != 'enable'\" ng-click=\"formData.AttributeSet = {}\"><i class=\"fa fa-minus-circle color-theme\"></i></a></div><pre>{{formData.MasterAttribute | json}}</pre><div class=form-group ng-repeat-start=\"amap in formData.AttributeSet.AttributeSetMaps\"><div class=width-label><label class=control-label ng-class=\"{'required': amap.Attribute.Required}\">{{ amap.Attribute.DisplayNameEn }} (English)</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}\"><select ng-if=isListInput(amap.Attribute.DataType) ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control ng-model=formData.MasterAttribute[amap.Attribute.AttributeId] ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" name=AmapInput{{$index}} ng-options=\"item as item.AttributeValue.AttributeValueEn for item in amap.Attribute.AttributeValueMaps track by item.AttributeValueId\"><option disabled value=\"\" selected>- Select option -</option></select><div ng-if=isHtmlInput(amap.Attribute.DataType)><textarea ng-required=\"amap.Attribute.Required && onPublishing\" ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" ng-model=formData.MasterAttribute[amap.Attribute.AttributeId] name=AmapInput{{$index}} class=form-control ng-ckeditor=ckOptions></textarea></div><input ng-if=isFreeTextInput(amap.Attribute.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control name=AmapInput{{$index}} nc-default-value=\"''\" ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId].ValueEn\"><div ng-if=isCheckboxInput(amap.Attribute.DataType)><div class=checkbox ng-repeat=\"vmap in amap.Attribute.AttributeValueMaps\"><label><input type=checkbox ng-init=\"formData.MasterAttribute[amap.Attribute.AttributeId]._checkbox = true\" ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId][vmap.AttributeValueId]\"> {{ vmap.AttributeValue.AttributeValueEn }}</label></div></div></div></div><div class=form-group ng-if=isFreeTextInput(amap.Attribute.DataType) ng-repeat-end><div class=width-label><label class=control-label ng-class=\"{'required': amap.Attribute.Required}\">{{ amap.Attribute.DisplayNameEn }} (ไทย)</label></div><div class=width-field-normal><input ng-if=isFreeTextInput(amap.Attribute.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" nc-default-value=\"''\" ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control name=AmapInput{{$index}} ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId].ValueTh\"></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Detail</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Attribute Set</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-show=\"controlFlags.variation == 'enable'\" class=form-control disabled><option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option></select><you-me display-by=AttributeSetNameEn placeholder=\"Search Attribute Set\" ng-show=\"controlFlags.variation != 'enable'\" auto-clear-search=true group-by=_group ng-model=formData.AttributeSet refresh=refresher.AttributeSets initial-choices=dataset.AttributeSets choices=dataset.CombinedAttributeSets></you-me></div></div><a class=\"like-text form-text\" ng-if=\"formData.AttributeSet.AttributeSetId && controlFlags.variation != 'enable'\" ng-click=\"formData.AttributeSet = {}\"><i class=\"fa fa-minus-circle color-theme\"></i></a></div><div class=form-group ng-repeat-start=\"amap in formData.AttributeSet.AttributeSetMaps\"><div class=width-label><label class=control-label ng-class=\"{'required': amap.Attribute.Required}\">{{ amap.Attribute.DisplayNameEn }} (English)</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}\"><select ng-if=isListInput(amap.Attribute.DataType) ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control ng-model=formData.MasterAttribute[amap.Attribute.AttributeId] ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" name=AmapInput{{$index}} ng-options=\"item as item.AttributeValue.AttributeValueEn for item in amap.Attribute.AttributeValueMaps track by item.AttributeValueId\"><option disabled value=\"\" selected>- Select option -</option></select><div ng-if=isHtmlInput(amap.Attribute.DataType)><textarea ng-required=\"amap.Attribute.Required && onPublishing\" ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" ng-model=formData.MasterAttribute[amap.Attribute.AttributeId] name=AmapInput{{$index}} class=form-control ng-ckeditor=ckOptions></textarea></div><input ng-if=isFreeTextInput(amap.Attribute.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control name=AmapInput{{$index}} nc-default-value=\"''\" ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId].ValueEn\"><div ng-if=isCheckboxInput(amap.Attribute.DataType)><div class=checkbox ng-repeat=\"vmap in amap.Attribute.AttributeValueMaps\"><label><input type=checkbox ng-init=\"formData.MasterAttribute[amap.Attribute.AttributeId]._checkbox = true\" ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId][vmap.AttributeValueId]\"> {{ vmap.AttributeValue.AttributeValueEn }}</label></div></div></div></div><div class=form-group ng-if=isFreeTextInput(amap.Attribute.DataType) ng-repeat-end><div class=width-label><label class=control-label ng-class=\"{'required': amap.Attribute.Required}\">{{ amap.Attribute.DisplayNameEn }} (ไทย)</label></div><div class=width-field-normal><input ng-if=isFreeTextInput(amap.Attribute.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }\" nc-default-value=\"''\" ng-required=\"amap.Attribute.Required && onPublishing\" class=form-control name=AmapInput{{$index}} ng-model=\"formData.MasterAttribute[amap.Attribute.AttributeId].ValueTh\"></div></div></div></div>"
   );
 
 
@@ -12641,70 +12633,38 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-variant-table-a',
-    "<table class=\"table variation-table\"><thead><tr><th class=column-variant>Variant</th><th class=column-pid ng-if=\"formData.Variants.length > 0 && formData.Variants[0].Pid\">PID</th><th class=column-sku>SKU</th><th class=column-sale-price>Sale Price <span class=color-red>*</span></th><th class=column-price>Original Price</th><th class=column-inventory>Inventory</th><th class=column-detail>More Detail</th><th class=column-visibility>Visibility</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td ng-if=\"formData.Variants.length > 0 && formData.Variants[0].Pid\">{{pair.Pid }}</td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
-    "\n" +
-    "        'error' : {\r" +
-    "\n" +
-    "        'messages': {\r" +
-    "\n" +
-    "        'pattern': 'Special characters are not allowed'\r" +
-    "\n" +
-    "        },\r" +
-    "\n" +
-    "        'show': $root.isInvalid(addProductForm['pair_Sku' + $index]),\r" +
-    "\n" +
-    "        'conditions' : addProductForm['pair_Sku' + $index].$error\r" +
-    "\n" +
-    "        }\r" +
-    "\n" +
-    "        }\"><input ng-disabled=!pair.Visibility class=form-control name=\"pair_Sku{{ $index }}\" maxlength=300 ng-pattern=\"/^[^<>]+$/\" ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }\" ng-model=\"pair.Sku\"></td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
-    "\n" +
-    "        'error' : {\r" +
-    "\n" +
-    "        'messages': {\r" +
-    "\n" +
-    "        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
-    "\n" +
-    "        },\r" +
-    "\n" +
-    "        'show': $root.isInvalid(addProductForm['pair_SalePrice' + $index]),\r" +
-    "\n" +
-    "        'conditions' : addProductForm['pair_SalePrice' + $index].$error\r" +
-    "\n" +
-    "        }\r" +
-    "\n" +
-    "        }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }\" ng-model=pair.SalePrice name=\"pair_SalePrice{{ $index }}\" ng-disabled=!pair.Visibility required class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
-    "\n" +
-    "        'error' : {\r" +
-    "\n" +
-    "        'messages': {\r" +
-    "\n" +
-    "        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
-    "\n" +
-    "        },\r" +
-    "\n" +
-    "        'show': $root.isInvalid(addProductForm['pair_OriginalPrice' + $index]),\r" +
-    "\n" +
-    "        'conditions' : addProductForm['pair_OriginalPrice' + $index].$error\r" +
-    "\n" +
-    "        }\r" +
-    "\n" +
-    "        }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }\" name=pair_OriginalPrice{{$index}} ng-model=pair.OriginalPrice ng-disabled=!pair.Visibility class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
-    "\n" +
-    "        'error' : {\r" +
-    "\n" +
-    "        'messages': {\r" +
-    "\n" +
-    "        'pattern': 'Only numbers allowed'\r" +
-    "\n" +
-    "        },\r" +
-    "\n" +
-    "        'show': $root.isInvalid(addProductForm['pair_Quantity' + $index]),\r" +
-    "\n" +
-    "        'conditions' : addProductForm['pair_Quantity' + $index].$error\r" +
-    "\n" +
-    "        }\r" +
-    "\n" +
+    "<table class=\"table variation-table\"><thead><tr><th class=column-variant>Variant</th><th class=column-pid ng-if=\"formData.Variants.length > 0 && formData.Variants[0].Pid\">PID</th><th class=column-sku>SKU</th><th class=column-sale-price>Sale Price <span class=color-red>*</span></th><th class=column-price>Original Price</th><th class=column-inventory>Inventory</th><th class=column-detail>More Detail</th><th class=column-visibility>Visibility</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td ng-if=\"formData.Variants.length > 0 && formData.Variants[0].Pid\">{{pair.Pid }}</td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
+    "        'error' : {\n" +
+    "        'messages': {\n" +
+    "        'pattern': 'Special characters are not allowed'\n" +
+    "        },\n" +
+    "        'show': $root.isInvalid(addProductForm['pair_Sku' + $index]),\n" +
+    "        'conditions' : addProductForm['pair_Sku' + $index].$error\n" +
+    "        }\n" +
+    "        }\"><input ng-disabled=!pair.Visibility class=form-control name=\"pair_Sku{{ $index }}\" maxlength=300 ng-pattern=\"/^[^<>]+$/\" ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }\" ng-model=\"pair.Sku\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
+    "        'error' : {\n" +
+    "        'messages': {\n" +
+    "        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\n" +
+    "        },\n" +
+    "        'show': $root.isInvalid(addProductForm['pair_SalePrice' + $index]),\n" +
+    "        'conditions' : addProductForm['pair_SalePrice' + $index].$error\n" +
+    "        }\n" +
+    "        }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }\" ng-model=pair.SalePrice name=\"pair_SalePrice{{ $index }}\" ng-disabled=!pair.Visibility required class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
+    "        'error' : {\n" +
+    "        'messages': {\n" +
+    "        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\n" +
+    "        },\n" +
+    "        'show': $root.isInvalid(addProductForm['pair_OriginalPrice' + $index]),\n" +
+    "        'conditions' : addProductForm['pair_OriginalPrice' + $index].$error\n" +
+    "        }\n" +
+    "        }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }\" name=pair_OriginalPrice{{$index}} ng-model=pair.OriginalPrice ng-disabled=!pair.Visibility class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
+    "        'error' : {\n" +
+    "        'messages': {\n" +
+    "        'pattern': 'Only numbers allowed'\n" +
+    "        },\n" +
+    "        'show': $root.isInvalid(addProductForm['pair_Quantity' + $index]),\n" +
+    "        'conditions' : addProductForm['pair_Quantity' + $index].$error\n" +
+    "        }\n" +
     "        }\"><input ng-model=pair.Quantity maxlength=5 ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }\" ng-disabled=!pair.Visibility ng-pattern=\"/^[0-9]+$/\" name=pair_Quantity{{$index}} class=\"form-control\"></td><td><a class=\"btn btn-white btn-width-xl\" ng-disabled=!pair.Visibility ng-click=\"openVariantDetail(pair, formData.Variants, $index)\">More Detail</a></td><td><a class=\"btn btn-white\" ng-click=\"pair.Visibility = !pair.Visibility\"><span ng-if=pair.Visibility>Hide</span> <span ng-if=!pair.Visibility>Show</span></a></td></tr></tbody></table>"
   );
 
@@ -12720,34 +12680,20 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-variation-option',
-    "<div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content ng-if=\"!(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) && controlFlags.variation == 'enable'\"><div class=form-group ng-repeat=\"jth in variationFactorIndices.iterator\" ng-show=\"(dataset.attributeOptions[0].options.length > 0) || (jth == 0)\"><div class=width-label><select class=form-control ng-disabled=\"variationFactorLocked() && dataset.attributeOptions[jth].Attribute\" ng-options=\"i as i.Attribute.AttributeNameEn\r" +
-    "\n" +
-    "                    for i in formData.AttributeSet.AttributeSetMaps |\r" +
-    "\n" +
-    "                    exclude: dataset.attributeOptions[1 - jth].Attribute : 'AttributeId' |\r" +
-    "\n" +
-    "                    truth: 'Attribute.VariantStatus'\r" +
-    "\n" +
-    "                    track by i.Attribute.AttributeId\" ng-model=dataset.attributeOptions[jth]><option value=\"\" disabled selected>Select an option..</option></select></div><div ng-template=common/input/width-field-large ng-template-options=\"{\r" +
-    "\n" +
-    "                'error' : {\r" +
-    "\n" +
-    "                'messages': {\r" +
-    "\n" +
-    "                'maxtagcount': 'Cannot exceed 20 tags',\r" +
-    "\n" +
-    "                'maxtaglength': 'Tag must contain 30 characters or less',\r" +
-    "\n" +
-    "                'pattern': 'Only letters and numbers allowed'\r" +
-    "\n" +
-    "                },\r" +
-    "\n" +
-    "                'show': true,\r" +
-    "\n" +
-    "                'conditions' :  addProductForm['attributeOptions' + jth].$error\r" +
-    "\n" +
-    "                }\r" +
-    "\n" +
+    "<div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content ng-if=\"!(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) && controlFlags.variation == 'enable'\"><div class=form-group ng-repeat=\"jth in variationFactorIndices.iterator\" ng-show=\"(dataset.attributeOptions[0].options.length > 0) || (jth == 0)\"><div class=width-label><select class=form-control ng-disabled=\"variationFactorLocked() && dataset.attributeOptions[jth].Attribute\" ng-options=\"i as i.Attribute.AttributeNameEn\n" +
+    "                    for i in formData.AttributeSet.AttributeSetMaps |\n" +
+    "                    exclude: dataset.attributeOptions[1 - jth].Attribute : 'AttributeId' |\n" +
+    "                    truth: 'Attribute.VariantStatus'\n" +
+    "                    track by i.Attribute.AttributeId\" ng-model=dataset.attributeOptions[jth]><option value=\"\" disabled selected>Select an option..</option></select></div><div ng-template=common/input/width-field-large ng-template-options=\"{\n" +
+    "                'error' : {\n" +
+    "                'messages': {\n" +
+    "                'maxtagcount': 'Cannot exceed 20 tags',\n" +
+    "                'maxtaglength': 'Tag must contain 30 characters or less',\n" +
+    "                'pattern': 'Only letters and numbers allowed'\n" +
+    "                },\n" +
+    "                'show': true,\n" +
+    "                'conditions' :  addProductForm['attributeOptions' + jth].$error\n" +
+    "                }\n" +
     "                }\"><ui-select ng-if=isListInput(dataset.attributeOptions[jth].Attribute.DataType) multiple ng-model=dataset.attributeOptions[jth].options><ui-select-match ui-lock-choice=$item._locked placeholder=\"Select variant\">{{ $item.AttributeValue.AttributeValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataset.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search\">{{ i.AttributeValue.AttributeValueEn }}</ui-select-choices></ui-select><ui-select ng-if=isFreeTextInput(dataset.attributeOptions[jth].Attribute.DataType) nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ multiple tagging=tagTransform tagging-label=\"\" tagging-tokens=,|ENTER name=attributeOptions{{jth}} ng-model=dataset.attributeOptions[jth].options><ui-select-match ui-lock-choice=$item._locked placeholder=\"Input variant\">{{ $item.ValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search\">{{ i.ValueEn }}</ui-select-choices></ui-select><input ng-if=!dataset.attributeOptions[jth].Attribute.DataType disabled class=\"form-control\"></div><a class=\"like-text form-text\" ng-show=!variationFactorLocked() ng-click=variationFactorIndices.pushSecond() ng-if=\"dataset.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1\"><i class=\"fa fa-plus-circle color-theme\"></i> Add another option</a> <a ng-show=!variationFactorLocked() class=\"like-text form-text\" ng-click=variationFactorIndices.popSecond() ng-if=\"variationFactorIndices.length() == 2 && jth == 1\"><i class=\"fa fa-trash color-theme icon-size-20\"></i></a></div><div class=form-group ng-show=\"formData.Variants.length > 0\"><div class=width-label><label class=control-label>Default Variant</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-model=formData.DefaultVariant class=form-control ng-options=\"i as i.text for i in formData.Variants track by i.text\" required></select></div></div></div></div></div>"
   );
 
@@ -12773,9 +12719,8 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/tab-more-option',
-    "<div id=add-product-more-option-tab-content><div ap-component=ap/inner-tab-breadcrumb></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Relationship</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Related Products\" nc-template-form=form.RelatedProducts nc-template-options-path=addProductForm/RelatedProducts><you-me display-by=ProductNameEn placeholder=\"Search by Product\" in-relationship=true ng-model=formData.RelatedProducts refresh=refresher.RelatedProducts strict-mode=true choices=\"dataset.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' \"></you-me></div></div></div></div></div><div class=row><div class=col-xs-12><div ap-component=ap/section-seo></div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>More Details</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Effective On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" placeholder=\"Select date and time when product will go online\" class=\"input-icon-calendar form-control\" value=\"{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.EffectiveDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'hour' }\"></ul></div><span class=help-block></span></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go online\"></i></div></div><div class=form-group><div class=width-label><label class=control-label>Expire On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white placeholder=\"Select date and time when product will go offline\" class=\"input-icon-calendar form-control\" name=ExpireDate ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" value=\"{{ formData.ExpireDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ExpireDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'hour' }\"></ul></div><div class=width-field-large><span class=\"help-block color-red\" ng-if=\"formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate\"><span>Effective date/time must come before expire date/time</span></span></div></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go offline\"></i></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/TheOneCardEarn nc-template-form=form.TheOneCardEarn nc-label=\"The One Card earn\"><input disabled class=form-control name=TheOneCardEarn ng-model=\"formData.TheOneCardEarn\"></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Nothing nc-template-form=form.GiftWrap nc-label=\"Gift Wrap\"><select class=form-control ng-model=formData.GiftWrap><option value=N>No</option><option value=Y>Yes</option></select></div><div class=form-group><div class=width-label><label class=control-label>Control Flag</label></div><div class=width-field-xl><div class=\"checkbox multiple-checkbox\"><label><input type=checkbox ng-model=formData.ControlFlags.IsNew>New</label><label><input type=checkbox ng-model=formData.ControlFlags.IsClearance>Clearance</label><label><input type=checkbox ng-model=formData.ControlFlags.IsBestSeller>Best Seller</label><label><input type=checkbox ng-model=formData.ControlFlags.IsOnlineExclusive>Online Exclusive</label><label><input type=checkbox ng-model=formData.ControlFlags.IsOnlyAt>Only @</label></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Remark nc-template-form=form.Remark nc-label=Remark><textarea class=form-control ng-pattern=\"/^[^<>]+$/\" maxlength=2000 name=Remark ng-model=formData.Remark>\r" +
-    "\n" +
-    "                        </textarea></div></div></div></div></div><div class=row ng-if=\"formData.Revisions.length > 0\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Approve Versions</h2></div><div class=form-section-content><div class=table-wrapper><table class=table id=add-product-approve-versions><thead><tr><th class=thead-approved-date>Approved Date</th><th class=thead-submitted-date>Submitted Date</th><th class=thead-submitted-by>Submitted By</th><th class=thead-actions>Action</th></tr></thead><tbody><tr ng-repeat=\"row in formData.Revisions\"><td>{{ row.ApproveOn | date: 'dd/MM/yyyy HH:mm' }}</td><td>{{ row.SubmitOn | date: 'dd/MM/yyyy HH:mm' }}</td><td>{{ row.SubmitBy }}</td><td><a ng-click=TimeMachine.preview(row.HistoryId) class=\"btn btn-white btn-width-xxl\">Preview This Version</a></td></tr></tbody></table></div></div></div></div></div></div>"
+    "<div id=add-product-more-option-tab-content><div ap-component=ap/inner-tab-breadcrumb></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Relationship</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Related Products\" nc-template-form=form.RelatedProducts nc-template-options-path=addProductForm/RelatedProducts><you-me display-by=ProductNameEn placeholder=\"Search by Product\" in-relationship=true ng-model=formData.RelatedProducts refresh=refresher.RelatedProducts strict-mode=true choices=\"dataset.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' \"></you-me></div></div></div></div></div><div class=row><div class=col-xs-12><div ap-component=ap/section-seo></div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>More Details</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Effective On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" placeholder=\"Select date and time when product will go online\" class=\"input-icon-calendar form-control\" value=\"{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.EffectiveDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'hour' }\"></ul></div><span class=help-block></span></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go online\"></i></div></div><div class=form-group><div class=width-label><label class=control-label>Expire On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white placeholder=\"Select date and time when product will go offline\" class=\"input-icon-calendar form-control\" name=ExpireDate ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" value=\"{{ formData.ExpireDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ExpireDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'hour' }\"></ul></div><div class=width-field-large><span class=\"help-block color-red\" ng-if=\"formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate\"><span>Effective date/time must come before expire date/time</span></span></div></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go offline\"></i></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/TheOneCardEarn nc-template-form=form.TheOneCardEarn nc-label=\"The One Card earn\"><input disabled class=form-control name=TheOneCardEarn ng-model=\"formData.TheOneCardEarn\"></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Nothing nc-template-form=form.GiftWrap nc-label=\"Gift Wrap\"><select class=form-control ng-model=formData.GiftWrap><option value=N>No</option><option value=Y>Yes</option></select></div><div class=form-group><div class=width-label><label class=control-label>Control Flag</label></div><div class=width-field-xl><div class=\"checkbox multiple-checkbox\"><label><input type=checkbox ng-model=formData.ControlFlags.IsNew>New</label><label><input type=checkbox ng-model=formData.ControlFlags.IsClearance>Clearance</label><label><input type=checkbox ng-model=formData.ControlFlags.IsBestSeller>Best Seller</label><label><input type=checkbox ng-model=formData.ControlFlags.IsOnlineExclusive>Online Exclusive</label><label><input type=checkbox ng-model=formData.ControlFlags.IsOnlyAt>Only @</label></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Remark nc-template-form=form.Remark nc-label=Remark><textarea class=form-control ng-pattern=\"/^[^<>]+$/\" maxlength=2000 name=Remark ng-model=formData.Remark>\n" +
+    "                        </textarea></div></div></div></div></div><div class=row ng-if=\"formData.Revisions.length > 0\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Approve Versions</h2></div><div class=form-section-content><div class=table-wrapper><table class=table id=add-product-approve-versions><thead><tr><th class=thead-approved-date>Approved Date</th><th class=thead-submitted-date>Submitted Date</th><th class=thead-submitted-by>Submitted By</th><th class=thead-actions>Action</th></tr></thead><tbody><tr ng-repeat=\"row in formData.Revisions\"><td>{{ row.ApproveOn | date: 'dd/MM/yyyy HH:mm' }}</td><td>{{ row.SubmitOn | date: 'dd/MM/yyyy HH:mm' }}</td><td>{{ row.SubmitBy }}</td><td><a ng-click=\"TimeMachine.preview(row.HistoryId, row.ApproveOn)\" class=\"btn btn-white btn-width-xxl\">Preview This Version</a></td></tr></tbody></table></div></div></div></div></div></div>"
   );
 
 
@@ -18003,8 +17948,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/input/label',
-    "<div class=form-group ng-class=\"options.formGroupClass || {}\"><div class=width-label><label class=control-label ng-class=\"options.labelClass || {}\">{{options.label}}</label></div><div ng-class=\"{ 'width-field-normal' : options.fieldSize == 'normal',\r" +
-    "\n" +
+    "<div class=form-group ng-class=\"options.formGroupClass || {}\"><div class=width-label><label class=control-label ng-class=\"options.labelClass || {}\">{{options.label}}</label></div><div ng-class=\"{ 'width-field-normal' : options.fieldSize == 'normal',\n" +
     "    \t\t\t\t 'width-field-xxl' : options.fieldSize != 'normal' }\"><p class=form-control-static><ng-transclude></ng-transclude></p></div></div>"
   );
 
@@ -18090,82 +18034,44 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/modalChangePassword',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><button type=button class=close ng-click=$dismiss() aria-label=Close><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Change Password</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\" name=form novalidate><div class=row><div class=col-xs-12><div class=form-section-content><div ng-if=oldPassword><div ng-template=common/input/password ng-template-options=\"{\r" +
-    "\n" +
-    "              'label': 'Old Password',\r" +
-    "\n" +
-    "              'labelClass': 'required',\r" +
-    "\n" +
-    "              'inputSize': 'small',\r" +
-    "\n" +
-    "              'error' : {\r" +
-    "\n" +
-    "                'messages': {\r" +
-    "\n" +
-    "                'required': 'This is a required field'\r" +
-    "\n" +
-    "              },\r" +
-    "\n" +
-    "              'show': isInvalid(form.Password),\r" +
-    "\n" +
-    "              'conditions' : form.Password.$error\r" +
-    "\n" +
-    "              }\r" +
-    "\n" +
-    "              }\"><input class=form-control type={{$parent.inputType}} name=Password ng-model=formData.Password ng-class=\"{ 'has-error' : isInvalid(form.Password) || (form.$pristine && formData.error) }\" required></div></div><div ng-template=common/input/password ng-template-options=\"{\r" +
-    "\n" +
-    "              'label': 'New Password',\r" +
-    "\n" +
-    "              'labelClass': 'required',\r" +
-    "\n" +
-    "              'inputSize': 'small',\r" +
-    "\n" +
-    "              'formGroupClass': oldPassword ? 'margin-top-30': '',\r" +
-    "\n" +
-    "              'error' : {\r" +
-    "\n" +
-    "              'messages': {\r" +
-    "\n" +
-    "              'required': 'This is a required field',\r" +
-    "\n" +
-    "              'pattern': 'Your password must contain letters and numbers',\r" +
-    "\n" +
-    "              'minlength': 'Your password must be 8-20 characters long',\r" +
-    "\n" +
-    "              'maxlength': 'Your password must be 8-20 characters long'\r" +
-    "\n" +
-    "              },\r" +
-    "\n" +
-    "              'show': isInvalid(form.NewPassword),\r" +
-    "\n" +
-    "              'conditions' : form.NewPassword.$error\r" +
-    "\n" +
-    "              }\r" +
-    "\n" +
-    "              }\"><input class=form-control type={{$parent.inputType}} name=NewPassword ng-model=formData.NewPassword ng-class=\"{ 'has-error' : isInvalid(form.NewPassword) || (form.$pristine && formData.error) }\" ng-pattern=\"/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/\" ng-pattern-restrict=^[0-9a-zA-Z]*$ ng-maxlength=20 ng-minlength=8 required></div><div ng-template=common/input/password ng-template-options=\"{\r" +
-    "\n" +
-    "              'label': 'Confirm Password',\r" +
-    "\n" +
-    "              'labelClass': 'required',\r" +
-    "\n" +
-    "              'inputSize': 'small',\r" +
-    "\n" +
-    "              'error' : {\r" +
-    "\n" +
-    "              'messages': {\r" +
-    "\n" +
-    "                'required': 'This is a required field',\r" +
-    "\n" +
-    "                'match': 'Your password and password confirmation do not match'\r" +
-    "\n" +
-    "              },\r" +
-    "\n" +
-    "              'show': isInvalid(form.ConfirmPassword),\r" +
-    "\n" +
-    "              'conditions' : form.ConfirmPassword.$error\r" +
-    "\n" +
-    "              }\r" +
-    "\n" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><button type=button class=close ng-click=$dismiss() aria-label=Close><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Change Password</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\" name=form novalidate><div class=row><div class=col-xs-12><div class=form-section-content><div ng-if=oldPassword><div ng-template=common/input/password ng-template-options=\"{\n" +
+    "              'label': 'Old Password',\n" +
+    "              'labelClass': 'required',\n" +
+    "              'inputSize': 'small',\n" +
+    "              'error' : {\n" +
+    "                'messages': {\n" +
+    "                'required': 'This is a required field'\n" +
+    "              },\n" +
+    "              'show': isInvalid(form.Password),\n" +
+    "              'conditions' : form.Password.$error\n" +
+    "              }\n" +
+    "              }\"><input class=form-control type={{$parent.inputType}} name=Password ng-model=formData.Password ng-class=\"{ 'has-error' : isInvalid(form.Password) || (form.$pristine && formData.error) }\" required></div></div><div ng-template=common/input/password ng-template-options=\"{\n" +
+    "              'label': 'New Password',\n" +
+    "              'labelClass': 'required',\n" +
+    "              'inputSize': 'small',\n" +
+    "              'formGroupClass': oldPassword ? 'margin-top-30': '',\n" +
+    "              'error' : {\n" +
+    "              'messages': {\n" +
+    "              'required': 'This is a required field',\n" +
+    "              'pattern': 'Your password must contain letters and numbers',\n" +
+    "              'minlength': 'Your password must be 8-20 characters long',\n" +
+    "              'maxlength': 'Your password must be 8-20 characters long'\n" +
+    "              },\n" +
+    "              'show': isInvalid(form.NewPassword),\n" +
+    "              'conditions' : form.NewPassword.$error\n" +
+    "              }\n" +
+    "              }\"><input class=form-control type={{$parent.inputType}} name=NewPassword ng-model=formData.NewPassword ng-class=\"{ 'has-error' : isInvalid(form.NewPassword) || (form.$pristine && formData.error) }\" ng-pattern=\"/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/\" ng-pattern-restrict=^[0-9a-zA-Z]*$ ng-maxlength=20 ng-minlength=8 required></div><div ng-template=common/input/password ng-template-options=\"{\n" +
+    "              'label': 'Confirm Password',\n" +
+    "              'labelClass': 'required',\n" +
+    "              'inputSize': 'small',\n" +
+    "              'error' : {\n" +
+    "              'messages': {\n" +
+    "                'required': 'This is a required field',\n" +
+    "                'match': 'Your password and password confirmation do not match'\n" +
+    "              },\n" +
+    "              'show': isInvalid(form.ConfirmPassword),\n" +
+    "              'conditions' : form.ConfirmPassword.$error\n" +
+    "              }\n" +
     "              }\"><input class=form-control type={{$parent.inputType}} name=ConfirmPassword ng-model=formData.ConfirmPassword ng-class=\"{ 'has-error' : isInvalid(form.ConfirmPassword) || (form.$pristine && formData.error) }\" ng-match={{formData.NewPassword}} required></div></div><div class=\"container-fluid no-padding margin-top-20\"><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()><span class=login-loading ng-cloak ng-show=saving><i class=\"fa fa-spinner fa-spin\"></i></span>Save</button></div></div></div></div></form></div>"
   );
 
@@ -18181,27 +18087,19 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('global_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading && true\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKey nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL Key\"><input class=form-control name=UrlKey ng-model=formData.UrlKey ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" maxlength=\"300\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SortBy nc-label=\"Default Sort By\" nc-template-options-path=addBrandForm/SortBy><ui-select ng-model=formData.SortBy name=SortBy search-enabled=false required><ui-select-match placeholder=\"- Select Sort By -\">{{$select.selected.SortByName}}</ui-select-match><ui-select-choices repeat=\"item in sortBy\">{{item.SortByName}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Commission nc-template-options-path=addCategoryForm/Commission nc-label=\"Commission (%)\"><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ maxlength=20 ng-maxnumber=100 ng-minnumber=0 required></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions column-header=\"Attribute Set in this Category\" search-placeholder=\"Search Attribute Set\" nc-text=AttributeSetNameEn nc-id=AttributeSetId on-search=loadAttributeSets></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\">* Changing attribute set mapping may affect products under this category</p></div></div></div><nc-image-banner name=CategoryBannerEn data-source=formData.BannerStatusEn nc-model=formData.CategoryBannerEn title=\"Upload Banner (English)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData.BannerStatusTh nc-model=formData.CategoryBannerTh title=\"Upload Banner (ไทย)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerEn data-source=formData.BannerSmallStatusEn nc-model=formData.CategorySmallBannerEn title=\"Upload Small Banner (English)\" uploader=bannerSmUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData.BannerSmallStatusTh nc-model=formData.CategorySmallBannerTh title=\"Upload Small Banner (ไทย)\" uploader=bannerSmUploader on-fail=uploadBannerFail size=8></nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\r" +
-    "\n" +
-    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\r" +
-    "\n" +
-    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (English)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionMobileEn ng-model=formData.DescriptionMobileEn>\r" +
-    "\n" +
-    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (ไทย)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionMobileTh ng-model=formData.DescriptionMobileTh>\r" +
-    "\n" +
-    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=formData.DescriptionShortEn>\r" +
-    "\n" +
-    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\r" +
-    "\n" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading && true\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKey nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL Key\"><input class=form-control name=UrlKey ng-model=formData.UrlKey ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" maxlength=\"300\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SortBy nc-label=\"Default Sort By\" nc-template-options-path=addBrandForm/SortBy><ui-select ng-model=formData.SortBy name=SortBy search-enabled=false required><ui-select-match placeholder=\"- Select Sort By -\">{{$select.selected.SortByName}}</ui-select-match><ui-select-choices repeat=\"item in sortBy\">{{item.SortByName}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Commission nc-template-options-path=addCategoryForm/Commission nc-label=\"Commission (%)\"><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ maxlength=20 ng-maxnumber=100 ng-minnumber=0 required></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions column-header=\"Attribute Set in this Category\" search-placeholder=\"Search Attribute Set\" nc-text=AttributeSetNameEn nc-id=AttributeSetId on-search=loadAttributeSets></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\">* Changing attribute set mapping may affect products under this category</p></div></div></div><nc-image-banner name=CategoryBannerEn data-source=formData.BannerStatusEn nc-model=formData.CategoryBannerEn title=\"Upload Banner (English)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData.BannerStatusTh nc-model=formData.CategoryBannerTh title=\"Upload Banner (ไทย)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerEn data-source=formData.BannerSmallStatusEn nc-model=formData.CategorySmallBannerEn title=\"Upload Small Banner (English)\" uploader=bannerSmUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData.BannerSmallStatusTh nc-model=formData.CategorySmallBannerTh title=\"Upload Small Banner (ไทย)\" uploader=bannerSmUploader on-fail=uploadBannerFail size=8></nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\n" +
+    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\n" +
+    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (English)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionMobileEn ng-model=formData.DescriptionMobileEn>\n" +
+    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (ไทย)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionMobileTh ng-model=formData.DescriptionMobileTh>\n" +
+    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=formData.DescriptionShortEn>\n" +
+    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\n" +
     "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Featured Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Featured Products\"><span class=form-text>will be available after adding product into this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"formData.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"formData.TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-label=\"Feature Product Status\"><select ng-model=formData.FeatureProductStatus class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]\"></select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
   $templateCache.put('global_category/nodes',
-    "<div ui-tree-handle class=\"tree-node tree-node-content\"><a class=btn-collapse ng-if=\"node.nodes && node.nodes.length > 0\" data-nodrag ng-click=toggle(this)><span class=glyphicon ng-class=\"{\r" +
-    "\n" +
-    "\t\t'glyphicon-chevron-right': collapsed,\r" +
-    "\n" +
+    "<div ui-tree-handle class=\"tree-node tree-node-content\"><a class=btn-collapse ng-if=\"node.nodes && node.nodes.length > 0\" data-nodrag ng-click=toggle(this)><span class=glyphicon ng-class=\"{\n" +
+    "\t\t'glyphicon-chevron-right': collapsed,\n" +
     "\t\t'glyphicon-chevron-down': !collapsed }\"></span></a> <span ng-if=\"!node.nodes || node.nodes.length == 0\"><span class=\"glyphicon glyphicon-chevron-right color-grey\"></span></span> <a ng-click=open(node) data-nodrag>{{node.NameEn}}</a> <span class=\"pull-right category-column category-action-gear\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span> <span class=\"pull-right category-column\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"pull-right category-column\">{{node.AttributeSetCount}}</span> <span class=\"pull-right category-column\">{{node.ProductCount}}</span> <span class=\"pull-right category-column\">{{node.CategoryId}}</span></div><ol ui-tree-nodes=\"\" ng-model=node.nodes ng-class=\"{hidden: collapsed}\"><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'global_category/nodes'\"></li></ol>"
   );
 
@@ -18212,27 +18110,19 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('local_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading && true\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKey nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL Key\"><input class=form-control name=UrlKey ng-model=formData.UrlKey ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" maxlength=\"300\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SortBy nc-label=\"Default Sort By\" nc-template-options-path=addBrandForm/SortBy><ui-select ng-model=formData.SortBy name=SortBy search-enabled=false required><ui-select-match placeholder=\"- Select Sort By -\">{{$select.selected.SortByName}}</ui-select-match><ui-select-choices repeat=\"item in sortBy\">{{item.SortByName}}</ui-select-choices></ui-select></div></div></div><nc-image-banner name=CategoryBannerEn data-source=formData.BannerStatusEn nc-model=formData.CategoryBannerEn title=\"Upload Banner (English)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData.BannerStatusTh nc-model=formData.CategoryBannerTh title=\"Upload Banner (ไทย)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerEn data-source=formData.BannerSmallStatusEn nc-model=formData.CategorySmallBannerEn title=\"Upload Small Banner (English)\" uploader=bannerSmUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData.BannerSmallStatusTh nc-model=formData.CategorySmallBannerTh title=\"Upload Small Banner (ไทย)\" uploader=bannerSmUploader on-fail=uploadBannerFail size=8></nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\r" +
-    "\n" +
-    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\r" +
-    "\n" +
-    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (English)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionMobileEn ng-model=formData.DescriptionMobileEn>\r" +
-    "\n" +
-    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (ไทย)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionMobileTh ng-model=formData.DescriptionMobileTh>\r" +
-    "\n" +
-    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=formData.DescriptionShortEn>\r" +
-    "\n" +
-    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\r" +
-    "\n" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading && true\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKey nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL Key\"><input class=form-control name=UrlKey ng-model=formData.UrlKey ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" maxlength=\"300\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SortBy nc-label=\"Default Sort By\" nc-template-options-path=addBrandForm/SortBy><ui-select ng-model=formData.SortBy name=SortBy search-enabled=false required><ui-select-match placeholder=\"- Select Sort By -\">{{$select.selected.SortByName}}</ui-select-match><ui-select-choices repeat=\"item in sortBy\">{{item.SortByName}}</ui-select-choices></ui-select></div></div></div><nc-image-banner name=CategoryBannerEn data-source=formData.BannerStatusEn nc-model=formData.CategoryBannerEn title=\"Upload Banner (English)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData.BannerStatusTh nc-model=formData.CategoryBannerTh title=\"Upload Banner (ไทย)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerEn data-source=formData.BannerSmallStatusEn nc-model=formData.CategorySmallBannerEn title=\"Upload Small Banner (English)\" uploader=bannerSmUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData.BannerSmallStatusTh nc-model=formData.CategorySmallBannerTh title=\"Upload Small Banner (ไทย)\" uploader=bannerSmUploader on-fail=uploadBannerFail size=8></nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\n" +
+    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\n" +
+    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (English)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionMobileEn ng-model=formData.DescriptionMobileEn>\n" +
+    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (ไทย)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionMobileTh ng-model=formData.DescriptionMobileTh>\n" +
+    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=formData.DescriptionShortEn>\n" +
+    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\n" +
     "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Featured Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Featured Products\"><span class=form-text>will be available after adding product into this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"formData.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"formData.TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-label=\"Feature Product Status\"><select ng-model=formData.FeatureProductStatus class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]\"></select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
   $templateCache.put('local_category/nodes',
-    "<div ui-tree-handle class=\"tree-node tree-node-content\"><a class=btn-collapse ng-if=\"node.nodes && node.nodes.length > 0\" data-nodrag ng-click=toggle(this)><span class=glyphicon ng-class=\"{\r" +
-    "\n" +
-    "\t\t'glyphicon-chevron-right': collapsed,\r" +
-    "\n" +
+    "<div ui-tree-handle class=\"tree-node tree-node-content\"><a class=btn-collapse ng-if=\"node.nodes && node.nodes.length > 0\" data-nodrag ng-click=toggle(this)><span class=glyphicon ng-class=\"{\n" +
+    "\t\t'glyphicon-chevron-right': collapsed,\n" +
     "\t\t'glyphicon-chevron-down': !collapsed }\"></span></a> <span ng-if=\"!node.nodes || node.nodes.length == 0\"><span class=\"glyphicon glyphicon-chevron-right color-grey\"></span></span> <a ng-click=open(node) data-nodrag>{{node.NameEn}}</a> <span class=\"pull-right category-column category-action-gear\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span> <span class=\"pull-right category-column\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"pull-right category-column\">{{node.ProductCount}}</span></div><ol ui-tree-nodes ng-model=node.nodes ng-class=\"{hidden: collapsed}\"><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'local_category/nodes'\"></li></ol>"
   );
 

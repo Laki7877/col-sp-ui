@@ -150,7 +150,7 @@
                                     <td>{{ row.SubmitOn | date: 'dd/MM/yyyy HH:mm' }}</td>
                                     <td>{{ row.SubmitBy }}</td>
                                     <td>
-                                        <a ng-click="TimeMachine.preview(row.HistoryId)" class="btn btn-white btn-width-xxl">Preview This Version</a>
+                                        <a ng-click="TimeMachine.preview(row.HistoryId, row.ApproveOn)" class="btn btn-white btn-width-xxl">Preview This Version</a>
                                     </td>
                                 </tr>
 
