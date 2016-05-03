@@ -147,13 +147,14 @@ module.exports =  {
       "type": "number"
     },
     "SaleUnitTh": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "SaleUnitEn": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "ExpressDelivery":{
-      "enum": ["Y", "N"]
+      "type": ["string", "null"],
+      "enum": ["Y", "N", null]
     },
     "DeliveryFee":{
       "type": "number"

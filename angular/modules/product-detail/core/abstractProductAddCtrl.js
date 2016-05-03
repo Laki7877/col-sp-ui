@@ -187,8 +187,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       var validation = skeemas.validate(data, schema);
       console.log("Schema validation result: ", schemaName, validation);
       if (!validation.valid) {
-        $scope.devAlert.error('<strong>Warning </strong> Automated API structure pre-check procedure failed. ' +
-          'Format does not comply with the <strong>Ahancer Product Add Exchange Protocol (A-PAEP)</strong> V4');
+        $scope.devAlert.error('<strong>Warning </strong> Ahancer Product Add Exchange Protocol (A-PAEP) not enforced.');
       }
     };
 
@@ -466,7 +465,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.publish('DF');
         }
       }, function () {
-        console.log('Modal dismissed at: ' + new Date())
+        // console.log('Modal dismissed at: ' + new Date())
       })
 
     }
@@ -495,12 +494,12 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         }
       })
       modalInstance.result.then(function (selectedItem) {
-        console.log(selectedItem)
+        // console.log(selectedItem)
         if (selectedItem == 'yes') {
           $scope.publish('WA')
         }
       }, function () {
-        console.log('Modal dismissed at: ' + new Date())
+        // console.log('Modal dismissed at: ' + new Date())
       })
 
     }
@@ -789,7 +788,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 });
               },
               pair: function () {
-                console.log('resolving', $scope.pairModal)
+                // console.log('resolving', $scope.pairModal)
                 return $scope.pairModal
               },
               ckOptions: function () {
@@ -829,7 +828,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.uploader.filters.push({
       'name': 'enforceMaxFileSize',
       'fn': function (item) {
-        console.log('iterm', item);
+        // console.log('iterm', item);
         return item.size <= MAX_FILESIZE
       }
     });
