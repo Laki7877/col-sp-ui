@@ -254,7 +254,7 @@ var _rollbarConfig = {
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./config":2,"./controllers/abstractAdd.js":3,"./controllers/abstractAdvanceList.js":4,"./controllers/abstractList.js":5,"./controllers/abstractPendingProductGroup.js":6,"./controllers/adminAccount.js":7,"./controllers/adminAccountAdd.js":8,"./controllers/adminAttribute.js":9,"./controllers/adminAttributeAdd.js":10,"./controllers/adminAttributeSet.js":11,"./controllers/adminAttributeSetAdd.js":12,"./controllers/adminBrand.js":13,"./controllers/adminBrandAdd.js":14,"./controllers/adminCategory.js":15,"./controllers/adminGlobalCoupon.js":16,"./controllers/adminGlobalCouponAdd.js":17,"./controllers/adminLogin.js":18,"./controllers/adminMasterProduct.js":19,"./controllers/adminMasterProductAdd.js":20,"./controllers/adminNewsletter.js":21,"./controllers/adminOnTopCreditAdd.js":22,"./controllers/adminOnTopCreditList.js":23,"./controllers/adminPendingProduct.js":24,"./controllers/adminPendingProductGroupAdd.js":25,"./controllers/adminProductApprovalDetail.js":26,"./controllers/adminProductApprovalList.js":27,"./controllers/adminProductDetail.js":28,"./controllers/adminProductList.js":29,"./controllers/adminProductReview.js":30,"./controllers/adminRole.js":31,"./controllers/adminRoleAdd.js":32,"./controllers/adminSellerAccount.js":33,"./controllers/adminSellerCoupon.js":34,"./controllers/adminSellerCouponAdd.js":35,"./controllers/adminShop.js":36,"./controllers/adminShopAdd.js":37,"./controllers/adminShoptype.js":38,"./controllers/adminShoptypeAdd.js":39,"./controllers/index.js":40,"./controllers/localCategory.js":41,"./controllers/login.js":42,"./controllers/productAddSelectCategory.js":43,"./controllers/productExport.js":44,"./controllers/productImageList.js":45,"./controllers/productImageManagement.js":46,"./controllers/productImport.js":47,"./controllers/productList.js":48,"./controllers/productListLocalCategory.js":49,"./controllers/productReview.js":50,"./controllers/root.js":51,"./controllers/sellerAccount.js":52,"./controllers/sellerAccountAdd.js":53,"./controllers/sellerCoupon.js":54,"./controllers/sellerCouponAdd.js":55,"./controllers/sellerDashboard.js":56,"./controllers/sellerInventoryList.js":57,"./controllers/sellerNewsletter.js":58,"./controllers/sellerOnboarding.js":59,"./controllers/sellerOrder.js":60,"./controllers/sellerOrderAdd.js":61,"./controllers/sellerOrderShippingList.js":62,"./controllers/sellerPendingProduct.js":63,"./controllers/sellerPendingProductGroupAdd.js":64,"./controllers/sellerProductDetail.js":65,"./controllers/sellerReturnRequest.js":66,"./controllers/sellerReturnRequestAdd.js":67,"./controllers/sellerRole.js":68,"./controllers/sellerRoleAdd.js":69,"./controllers/sellerShopAppearance.js":70,"./controllers/sellerShopSetting.js":71,"./controllers/test.js":72,"./directives/ncTradableSelect.js":73,"./directives/ngCkeditor.js":74,"./directives/ngDateBefore.js":75,"./directives/ngDelegate.js":76,"./directives/ngMatch.js":77,"./directives/ngMaxnumber.js":78,"./directives/ngMinnumber.js":79,"./directives/ngPatternRestrict.js":80,"./directives/ngPermission.js":81,"./directives/ngSlideToggle.js":82,"./directives/ngTemplate.js":83,"./directives/popoverAny.js":84,"./filters/capitalize.js":85,"./filters/exclude.js":86,"./filters/excludeCategory.js":87,"./filters/html.js":88,"./filters/importGuidelineExample.js":89,"./filters/leadingzero.js":90,"./filters/ordinal.js":91,"./filters/slice.js":92,"./filters/truncate.js":93,"./filters/truth.js":94,"./filters/variantValue.js":95,"./helpers/base64.js":96,"./helpers/common.js":97,"./helpers/storage.js":98,"./helpers/util.js":99,"./helpers/variantPair.js":100,"./iefix.js":101,"./modules/angular-draggable":102,"./modules/angular-print":103,"./modules/angular-scroll":104,"./modules/nc":134,"./modules/product-detail":143,"./modules/schematics":145,"./modules/ume-select":157,"./route":159,"./services/Dashboard.js":160,"./services/OnTopCredit.js":161,"./services/OnTopCreditService.js":162,"./services/Onboarding.js":163,"./services/adminAccountService.js":164,"./services/adminMasterProductService.js":165,"./services/adminPermissionService.js":166,"./services/adminRoleService.js":167,"./services/adminShopService.js":168,"./services/adminShoptypeService.js":169,"./services/attribute.js":170,"./services/attributeService.js":171,"./services/attributeSet.js":172,"./services/attributeSetService.js":173,"./services/blocker.js":174,"./services/brand.js":175,"./services/brandService.js":176,"./services/category.js":177,"./services/coupon.js":178,"./services/credential.js":179,"./services/exceptionHandler.js":180,"./services/fileService.js":181,"./services/globalCategory.js":182,"./services/globalCategoryService.js":183,"./services/globalCouponService.js":184,"./services/image.js":185,"./services/imageService.js":186,"./services/inventoryService.js":187,"./services/knownException.js":188,"./services/localCategory.js":189,"./services/localCategoryService.js":190,"./services/newsletterService.js":191,"./services/orderService.js":192,"./services/permissionService.js":193,"./services/product.js":194,"./services/productReviewService.js":195,"./services/productTempService.js":196,"./services/returnRequestService.js":197,"./services/sellerAccountService.js":198,"./services/sellerCouponService.js":199,"./services/sellerPermissionService.js":200,"./services/sellerRoleService.js":201,"./services/shippingService.js":202,"./services/shop.js":203,"./services/shopAppearanceService.js":204,"./services/shopPermissionService.js":205,"./services/shopProfileService.js":206,"./services/shopService.js":207,"./template":228,"./template-options/PromotionForm.js":208,"./template-options/addAttributeForm.js":209,"./template-options/addAttributeSetForm.js":210,"./template-options/addBrandForm.js":211,"./template-options/addCategoryForm.js":212,"./template-options/addMasterProductForm.js":213,"./template-options/addNewsletterForm.js":214,"./template-options/addProductForm.js":215,"./template-options/addRoleForm.js":216,"./template-options/addShopAccountForm.js":217,"./template-options/addShopAppearanceForm.js":218,"./template-options/addShopTypeForm.js":219,"./template-options/adminApproveForm.js":220,"./template-options/couponForm.js":221,"./template-options/createGroupVariant.js":222,"./template-options/genericForm.js":223,"./template-options/productExport.js":224,"./template-options/productImport.js":225,"./template-options/searchForm.js":226,"./template-options/shopSettingForm.js":227,"angular":271,"angular-animate":230,"angular-base64":231,"angular-bootstrap-datetimepicker":232,"angular-chart.js":233,"angular-clipboard":234,"angular-cookies":236,"angular-drag-and-drop-lists":237,"angular-file-upload":238,"angular-input-masks":239,"angular-sanitize":263,"angular-scroll":265,"angular-ui-bootstrap":267,"angular-ui-tree":269,"lodash":275,"ng-file-upload":278,"pluralize":279,"skeemas":283,"ui-select/dist/select.js":296}],2:[function(require,module,exports){
+},{"./config":2,"./controllers/abstractAdd.js":3,"./controllers/abstractAdvanceList.js":4,"./controllers/abstractList.js":5,"./controllers/abstractPendingProductGroup.js":6,"./controllers/adminAccount.js":7,"./controllers/adminAccountAdd.js":8,"./controllers/adminAttribute.js":9,"./controllers/adminAttributeAdd.js":10,"./controllers/adminAttributeSet.js":11,"./controllers/adminAttributeSetAdd.js":12,"./controllers/adminBrand.js":13,"./controllers/adminBrandAdd.js":14,"./controllers/adminCategory.js":15,"./controllers/adminGlobalCoupon.js":16,"./controllers/adminGlobalCouponAdd.js":17,"./controllers/adminLogin.js":18,"./controllers/adminMasterProduct.js":19,"./controllers/adminMasterProductAdd.js":20,"./controllers/adminNewsletter.js":21,"./controllers/adminOnTopCreditAdd.js":22,"./controllers/adminOnTopCreditList.js":23,"./controllers/adminPendingProduct.js":24,"./controllers/adminPendingProductGroupAdd.js":25,"./controllers/adminProductApprovalDetail.js":26,"./controllers/adminProductApprovalList.js":27,"./controllers/adminProductDetail.js":28,"./controllers/adminProductList.js":29,"./controllers/adminProductReview.js":30,"./controllers/adminRole.js":31,"./controllers/adminRoleAdd.js":32,"./controllers/adminSellerAccount.js":33,"./controllers/adminSellerCoupon.js":34,"./controllers/adminSellerCouponAdd.js":35,"./controllers/adminShop.js":36,"./controllers/adminShopAdd.js":37,"./controllers/adminShoptype.js":38,"./controllers/adminShoptypeAdd.js":39,"./controllers/index.js":40,"./controllers/localCategory.js":41,"./controllers/login.js":42,"./controllers/productAddSelectCategory.js":43,"./controllers/productExport.js":44,"./controllers/productImageList.js":45,"./controllers/productImageManagement.js":46,"./controllers/productImport.js":47,"./controllers/productList.js":48,"./controllers/productListLocalCategory.js":49,"./controllers/productReview.js":50,"./controllers/root.js":51,"./controllers/sellerAccount.js":52,"./controllers/sellerAccountAdd.js":53,"./controllers/sellerCoupon.js":54,"./controllers/sellerCouponAdd.js":55,"./controllers/sellerDashboard.js":56,"./controllers/sellerInventoryList.js":57,"./controllers/sellerNewsletter.js":58,"./controllers/sellerOnboarding.js":59,"./controllers/sellerOrder.js":60,"./controllers/sellerOrderAdd.js":61,"./controllers/sellerOrderShippingList.js":62,"./controllers/sellerPendingProduct.js":63,"./controllers/sellerPendingProductGroupAdd.js":64,"./controllers/sellerProductDetail.js":65,"./controllers/sellerReturnRequest.js":66,"./controllers/sellerReturnRequestAdd.js":67,"./controllers/sellerRole.js":68,"./controllers/sellerRoleAdd.js":69,"./controllers/sellerShopAppearance.js":70,"./controllers/sellerShopSetting.js":71,"./controllers/test.js":72,"./directives/ncTradableSelect.js":73,"./directives/ngCkeditor.js":74,"./directives/ngDateBefore.js":75,"./directives/ngDelegate.js":76,"./directives/ngMatch.js":77,"./directives/ngMaxnumber.js":78,"./directives/ngMinnumber.js":79,"./directives/ngPatternRestrict.js":80,"./directives/ngPermission.js":81,"./directives/ngSlideToggle.js":82,"./directives/ngTemplate.js":83,"./directives/popoverAny.js":84,"./filters/capitalize.js":85,"./filters/exclude.js":86,"./filters/excludeCategory.js":87,"./filters/html.js":88,"./filters/importGuidelineExample.js":89,"./filters/leadingzero.js":90,"./filters/ordinal.js":91,"./filters/slice.js":92,"./filters/truncate.js":93,"./filters/truth.js":94,"./filters/variantValue.js":95,"./helpers/base64.js":96,"./helpers/common.js":97,"./helpers/storage.js":98,"./helpers/util.js":99,"./helpers/variantPair.js":100,"./iefix.js":101,"./modules/angular-draggable":102,"./modules/angular-print":103,"./modules/angular-scroll":104,"./modules/nc":135,"./modules/product-detail":144,"./modules/schematics":146,"./modules/ume-select":158,"./route":160,"./services/Dashboard.js":161,"./services/OnTopCredit.js":162,"./services/OnTopCreditService.js":163,"./services/Onboarding.js":164,"./services/adminAccountService.js":165,"./services/adminMasterProductService.js":166,"./services/adminPermissionService.js":167,"./services/adminRoleService.js":168,"./services/adminShopService.js":169,"./services/adminShoptypeService.js":170,"./services/attribute.js":171,"./services/attributeService.js":172,"./services/attributeSet.js":173,"./services/attributeSetService.js":174,"./services/blocker.js":175,"./services/brand.js":176,"./services/brandService.js":177,"./services/category.js":178,"./services/coupon.js":179,"./services/credential.js":180,"./services/exceptionHandler.js":181,"./services/fileService.js":182,"./services/globalCategory.js":183,"./services/globalCategoryService.js":184,"./services/globalCouponService.js":185,"./services/image.js":186,"./services/imageService.js":187,"./services/inventoryService.js":188,"./services/knownException.js":189,"./services/localCategory.js":190,"./services/localCategoryService.js":191,"./services/newsletterService.js":192,"./services/orderService.js":193,"./services/permissionService.js":194,"./services/product.js":195,"./services/productReviewService.js":196,"./services/productTempService.js":197,"./services/returnRequestService.js":198,"./services/sellerAccountService.js":199,"./services/sellerCouponService.js":200,"./services/sellerPermissionService.js":201,"./services/sellerRoleService.js":202,"./services/shippingService.js":203,"./services/shop.js":204,"./services/shopAppearanceService.js":205,"./services/shopPermissionService.js":206,"./services/shopProfileService.js":207,"./services/shopService.js":208,"./template":229,"./template-options/PromotionForm.js":209,"./template-options/addAttributeForm.js":210,"./template-options/addAttributeSetForm.js":211,"./template-options/addBrandForm.js":212,"./template-options/addCategoryForm.js":213,"./template-options/addMasterProductForm.js":214,"./template-options/addNewsletterForm.js":215,"./template-options/addProductForm.js":216,"./template-options/addRoleForm.js":217,"./template-options/addShopAccountForm.js":218,"./template-options/addShopAppearanceForm.js":219,"./template-options/addShopTypeForm.js":220,"./template-options/adminApproveForm.js":221,"./template-options/couponForm.js":222,"./template-options/createGroupVariant.js":223,"./template-options/genericForm.js":224,"./template-options/productExport.js":225,"./template-options/productImport.js":226,"./template-options/searchForm.js":227,"./template-options/shopSettingForm.js":228,"angular":272,"angular-animate":231,"angular-base64":232,"angular-bootstrap-datetimepicker":233,"angular-chart.js":234,"angular-clipboard":235,"angular-cookies":237,"angular-drag-and-drop-lists":238,"angular-file-upload":239,"angular-input-masks":240,"angular-sanitize":264,"angular-scroll":266,"angular-ui-bootstrap":268,"angular-ui-tree":270,"lodash":276,"ng-file-upload":279,"pluralize":280,"skeemas":284,"ui-select/dist/select.js":297}],2:[function(require,module,exports){
 module.exports = {
 	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
@@ -2343,7 +2343,7 @@ module.exports = ["$scope", "$controller", "Product", function($scope, $controll
 },{}],26:[function(require,module,exports){
 var angular = require('angular');
 
-module.exports = ["$scope", "$controller", function ($scope, $controller) {
+module.exports = ["$scope", "$controller", "$uibModal", "NCConfirm", function ($scope, $controller, $uibModal, NCConfirm) {
     'ngInject';
 
     $controller('AbstractProductAddCtrl', {
@@ -2355,6 +2355,26 @@ module.exports = ["$scope", "$controller", function ($scope, $controller) {
             listingUrl: '/admin/approve'
         }
     });
+    
+    
+    $scope.confirmAP = function(){
+        NCConfirm('Approve', 'Are you sure you want to approve this product', function(){
+            $scope.publish('AP');
+        });
+    }
+    
+    $scope.confirmFA = function(){
+        NCConfirm('Force Approval', 'Are you sure you want to force approve this product', function(){
+            $scope.publish('AP');
+        });
+    }
+    
+    $scope.confirmRJ = function(){
+        NCConfirm('Reject', 'Are you sure you want to reject this product', function(){
+            $scope.publish('RJ');
+        });
+    }
+
 
     $scope.canApprove = function(){
     	return $scope.formData.AdminApprove.Information == 'AP' && $scope.formData.AdminApprove.Image == 'AP' &&
@@ -2363,7 +2383,7 @@ module.exports = ["$scope", "$controller", function ($scope, $controller) {
     }
 
 }];
-},{"angular":271}],27:[function(require,module,exports){
+},{"angular":272}],27:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "config", "util", function($scope, $controller, Product, config, util) {
 	'ngInject';
     $scope.asStatus = Product.getStatus;
@@ -2439,7 +2459,7 @@ module.exports = ["$scope", "$controller", function ($scope, $controller) {
     });
 
 }];
-},{"angular":271}],29:[function(require,module,exports){
+},{"angular":272}],29:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "common", "config", function($scope, $controller, Product, common, config) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
@@ -3391,7 +3411,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	});
 }];
 
-},{"angular":271}],44:[function(require,module,exports){
+},{"angular":272}],44:[function(require,module,exports){
 module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", function ($scope, Product, AttributeSet, NcAlert, $base64) {
 	'ngInject';
 	$scope.ProductList = [];
@@ -5738,7 +5758,7 @@ module.exports = ["$scope", "$controller", "storage", function($scope, $controll
 
 }];
 
-},{"angular":271}],66:[function(require,module,exports){
+},{"angular":272}],66:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "$uibModal", "ReturnRequestService", "config", function($scope, $controller, $uibModal, ReturnRequestService, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -6383,7 +6403,7 @@ module.exports = [function() {
 		}
 	};
 }];
-},{"angular":271}],77:[function(require,module,exports){
+},{"angular":272}],77:[function(require,module,exports){
 module.exports = ["$interpolate", function($interpolate) {
 	'ngInject';
 	return {
@@ -6863,7 +6883,7 @@ module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownE
         }
     };
 }];
-},{"angular":271}],84:[function(require,module,exports){
+},{"angular":272}],84:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$document', '$window', function($document, $window) {
 	$window._globalPopoverAny = null;
@@ -6893,7 +6913,7 @@ module.exports = ['$document', '$window', function($document, $window) {
 		}
 	};
 }];
-},{"angular":271}],85:[function(require,module,exports){
+},{"angular":272}],85:[function(require,module,exports){
 module.exports = [function() {
   return function(input, scope) {
     if (input!=null)
@@ -6936,7 +6956,7 @@ module.exports = [function() {
      });
   }
 }];
-},{"angular":271}],87:[function(require,module,exports){
+},{"angular":272}],87:[function(require,module,exports){
 module.exports = [function() {
   
 var search = function(catId, tmp) {
@@ -7066,7 +7086,7 @@ module.exports = [function() {
   	return input;
   }
 }];
-},{"angular":271}],92:[function(require,module,exports){
+},{"angular":272}],92:[function(require,module,exports){
 /*
  * Get slice or subarray of array
  */
@@ -7123,7 +7143,7 @@ module.exports = [function() {
      return i;
   }
 }];
-},{"angular":271}],95:[function(require,module,exports){
+},{"angular":272}],95:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return function(value) {
@@ -7958,6 +7978,7 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
 }];
 
 },{}],100:[function(require,module,exports){
+//DEPRECATED
 module.exports = ['util', function (util) {
 	
 	//Struct for Variant Pair
@@ -7970,7 +7991,6 @@ module.exports = ['util', function (util) {
 
 	return VariantPair;
 }];
-
 },{}],101:[function(require,module,exports){
 // Some common IE shims... indexOf, startsWith, trim
 
@@ -9565,6 +9585,41 @@ angular.module('nc')
 		}
 	}])
 },{}],111:[function(require,module,exports){
+angular.module('nc')
+	.factory('NCConfirm', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
+		var ConfirmationDialog = function (line1, line2, yesAction, noAction) {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: 'common/abstractConfirmationModal',
+                controller: ["$scope", "$uibModalInstance", "$timeout", function ($scope, $uibModalInstance, $timeout) {
+                'ngInject'
+                $scope.no = function () {
+                    $uibModalInstance.close('no')
+                };
+                $scope.yes = function () {
+                    $uibModalInstance.close('yes')
+                };
+                $scope.line1 = line1; 
+                $scope.line2 = line2;
+                }],
+                size: 'size-warning',
+                resolve: { }
+            })
+        
+            modalInstance.result.then(function (selectedItem) {
+                if (selectedItem == 'yes') {
+                    yesAction();
+                }else if(selectedItem == 'no'){
+                    noAction();
+                }
+            });
+            
+            return modalInstance;
+        }
+        
+        return ConfirmationDialog;
+	}]);
+},{}],112:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncDateRange', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse) {
@@ -9626,7 +9681,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":271}],112:[function(require,module,exports){
+},{"angular":272}],113:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncDefaultValue', function() {
 		return {
@@ -9643,7 +9698,7 @@ angular.module('nc')
 			}
 		};
 	});
-},{}],113:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEmpty', ["$templateCache", function($templateCache) {
 		return {
@@ -9657,7 +9712,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],114:[function(require,module,exports){
+},{}],115:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEye', ["$templateCache", function($templateCache) {
 		return {
@@ -9675,7 +9730,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],115:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncFilter', ["$templateCache", function($templateCache) {
 		return {
@@ -9697,7 +9752,7 @@ angular.module('nc')
 			}
 		}
 	}])
-},{}],116:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncImageBanner', function() {
 		return {
@@ -10217,7 +10272,7 @@ angular.module('nc')
 			}
 		};
 	}])
-},{}],117:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 angular.module('nc')
 .directive('ncImageIntegrity', function() {
     //Only show if image loaded by <img> integrity is OK (100% finished loading)
@@ -10237,7 +10292,7 @@ angular.module('nc')
             }
         };
     })
-},{}],118:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncLoading', ["$templateCache", function($templateCache) {
 		return {
@@ -10263,7 +10318,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],119:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncPageTitle', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "$parse", "KnownException", function ($rootScope, $templateCache, $compile, $templateOptionsCache, $parse, KnownException) {
@@ -10296,7 +10351,7 @@ angular.module('nc')
         };
     }]);
 
-},{"angular":271}],120:[function(require,module,exports){
+},{"angular":272}],121:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncPagination', function() {
 		this.paginationSizes = [10,20,30];
@@ -10363,7 +10418,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],121:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 angular.module('nc')
 	.provider('ncPermissionProvider', function() {
 		this.permission = function() {
@@ -10384,7 +10439,7 @@ angular.module('nc')
 	.directive('ncShowPermission', function() {
 		
 	});
-},{}],122:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 angular.module('nc')
 .directive('ncPolicyAdmin', ["$rootScope", function($rootScope) {
 		return {
@@ -10411,7 +10466,7 @@ angular.module('nc')
 			$(element).hide();
 		}
 }])
-},{}],123:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncSearch', ["$templateCache", function($templateCache) {
 		return {
@@ -10433,7 +10488,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],124:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncTable', function() {
 		this.tableOptions = {
@@ -10522,7 +10577,7 @@ angular.module('nc')
 			template: '<a ng-href="{{link}}" ng-transclude></a>',
 		}
 	});
-},{}],125:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncTemplate', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse) {
@@ -10581,7 +10636,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":271}],126:[function(require,module,exports){
+},{"angular":272}],127:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncTreeSelect', ["$interpolate", "$templateCache", function($interpolate, $templateCache) {
 		/**
@@ -10810,7 +10865,7 @@ angular.module('nc')
 		};
 	}]);
 
-},{}],127:[function(require,module,exports){
+},{}],128:[function(require,module,exports){
 angular.module('nc')
     .directive('ncTagValidator', function () {
         return {
@@ -10870,14 +10925,14 @@ angular.module('nc')
         }
     });
 
-},{}],128:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 angular.module('nc')
 	.filter('compact', function() {
 		return function(input) {
 			return _.compact(input);
 		};
 	});
-},{}],129:[function(require,module,exports){
+},{}],130:[function(require,module,exports){
 angular.module('nc')
 	.filter('dateTh', ["$filter", function($filter) {
 		return function(input) {
@@ -10895,7 +10950,7 @@ angular.module('nc')
 			return $filter('date')(input, 'H:mm');
 		}
 	}]);
-},{}],130:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 angular.module('nc')
     .filter('escapeHtml', function () {
         var entityMap = {
@@ -10913,7 +10968,7 @@ angular.module('nc')
             });
         }
     });
-},{}],131:[function(require,module,exports){
+},{}],132:[function(require,module,exports){
 /*
  Return dropdown[value] if input == dropdown[name]
  */
@@ -10936,7 +10991,7 @@ angular.module('nc')
 			return _.isUndefined(find) ? input : find[name];
 		}
 	});
-},{}],132:[function(require,module,exports){
+},{}],133:[function(require,module,exports){
 var angular = require('angular');
 
 angular.module('nc')
@@ -10973,14 +11028,14 @@ angular.module('nc')
     }
   });
 
-},{"angular":271}],133:[function(require,module,exports){
+},{"angular":272}],134:[function(require,module,exports){
 angular.module('nc')
 	.filter('replace', function() {
 		return function(input, from, to) {
 			return input.replace(from, to);
 		};
 	});
-},{}],134:[function(require,module,exports){
+},{}],135:[function(require,module,exports){
 (function (global){
 var angular = require('angular');
 
@@ -11002,11 +11057,11 @@ angular.module('nc', ['ngSanitize', 'ui.bootstrap', 'ui.select', 'duScroll', 'sm
 		'clickanystart' : 'clickanyend'
 	});
 }]);
-(function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives/ncAction.js"),"ncAdvanceSearch":require("./directives/ncAdvanceSearch.js"),"ncAlert":require("./directives/ncAlert.js"),"ncBindCompile":require("./directives/ncBindCompile.js"),"ncBreadcrumpSelect":require("./directives/ncBreadcrumpSelect.js"),"ncBulk":require("./directives/ncBulk.js"),"ncDateRange":require("./directives/ncDateRange.js"),"ncDefaultValue":require("./directives/ncDefaultValue.js"),"ncEmpty":require("./directives/ncEmpty.js"),"ncEye":require("./directives/ncEye.js"),"ncFilter":require("./directives/ncFilter.js"),"ncImageGallery":require("./directives/ncImageGallery.js"),"ncImageIntegrity":require("./directives/ncImageIntegrity.js"),"ncLoading":require("./directives/ncLoading.js"),"ncPageTitle":require("./directives/ncPageTitle.js"),"ncPagination":require("./directives/ncPagination.js"),"ncPermission":require("./directives/ncPermission.js"),"ncPolicy":require("./directives/ncPolicy.js"),"ncSearch":require("./directives/ncSearch.js"),"ncTable":require("./directives/ncTable.js"),"ncTemplate":require("./directives/ncTemplate.js"),"ncTreeSelect":require("./directives/ncTreeSelect.js"),"ncUiSelect":require("./directives/ncUiSelect.js")});f["filters"]=({"compact":require("./filters/compact.js"),"date":require("./filters/date.js"),"escapeHtml":require("./filters/escapeHtml.js"),"map":require("./filters/map.js"),"ncexclude":require("./filters/ncexclude.js"),"replace":require("./filters/replace.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
+(function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives/ncAction.js"),"ncAdvanceSearch":require("./directives/ncAdvanceSearch.js"),"ncAlert":require("./directives/ncAlert.js"),"ncBindCompile":require("./directives/ncBindCompile.js"),"ncBreadcrumpSelect":require("./directives/ncBreadcrumpSelect.js"),"ncBulk":require("./directives/ncBulk.js"),"ncConfirm":require("./directives/ncConfirm.js"),"ncDateRange":require("./directives/ncDateRange.js"),"ncDefaultValue":require("./directives/ncDefaultValue.js"),"ncEmpty":require("./directives/ncEmpty.js"),"ncEye":require("./directives/ncEye.js"),"ncFilter":require("./directives/ncFilter.js"),"ncImageGallery":require("./directives/ncImageGallery.js"),"ncImageIntegrity":require("./directives/ncImageIntegrity.js"),"ncLoading":require("./directives/ncLoading.js"),"ncPageTitle":require("./directives/ncPageTitle.js"),"ncPagination":require("./directives/ncPagination.js"),"ncPermission":require("./directives/ncPermission.js"),"ncPolicy":require("./directives/ncPolicy.js"),"ncSearch":require("./directives/ncSearch.js"),"ncTable":require("./directives/ncTable.js"),"ncTemplate":require("./directives/ncTemplate.js"),"ncTreeSelect":require("./directives/ncTreeSelect.js"),"ncUiSelect":require("./directives/ncUiSelect.js")});f["filters"]=({"compact":require("./filters/compact.js"),"date":require("./filters/date.js"),"escapeHtml":require("./filters/escapeHtml.js"),"map":require("./filters/map.js"),"ncexclude":require("./filters/ncexclude.js"),"replace":require("./filters/replace.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../angular-scroll":104,"./directives/ncAction.js":105,"./directives/ncAdvanceSearch.js":106,"./directives/ncAlert.js":107,"./directives/ncBindCompile.js":108,"./directives/ncBreadcrumpSelect.js":109,"./directives/ncBulk.js":110,"./directives/ncDateRange.js":111,"./directives/ncDefaultValue.js":112,"./directives/ncEmpty.js":113,"./directives/ncEye.js":114,"./directives/ncFilter.js":115,"./directives/ncImageGallery.js":116,"./directives/ncImageIntegrity.js":117,"./directives/ncLoading.js":118,"./directives/ncPageTitle.js":119,"./directives/ncPagination.js":120,"./directives/ncPermission.js":121,"./directives/ncPolicy.js":122,"./directives/ncSearch.js":123,"./directives/ncTable.js":124,"./directives/ncTemplate.js":125,"./directives/ncTreeSelect.js":126,"./directives/ncUiSelect.js":127,"./filters/compact.js":128,"./filters/date.js":129,"./filters/escapeHtml.js":130,"./filters/map.js":131,"./filters/ncexclude.js":132,"./filters/replace.js":133,"./index.js":134,"./template.js":135,"angular":271,"angular-file-upload":238,"angular-sanitize":263,"angular-scroll":265,"angular-ui-bootstrap":267,"jquery":274,"lodash":275,"ui-select":297}],135:[function(require,module,exports){
+},{"../angular-scroll":104,"./directives/ncAction.js":105,"./directives/ncAdvanceSearch.js":106,"./directives/ncAlert.js":107,"./directives/ncBindCompile.js":108,"./directives/ncBreadcrumpSelect.js":109,"./directives/ncBulk.js":110,"./directives/ncConfirm.js":111,"./directives/ncDateRange.js":112,"./directives/ncDefaultValue.js":113,"./directives/ncEmpty.js":114,"./directives/ncEye.js":115,"./directives/ncFilter.js":116,"./directives/ncImageGallery.js":117,"./directives/ncImageIntegrity.js":118,"./directives/ncLoading.js":119,"./directives/ncPageTitle.js":120,"./directives/ncPagination.js":121,"./directives/ncPermission.js":122,"./directives/ncPolicy.js":123,"./directives/ncSearch.js":124,"./directives/ncTable.js":125,"./directives/ncTemplate.js":126,"./directives/ncTreeSelect.js":127,"./directives/ncUiSelect.js":128,"./filters/compact.js":129,"./filters/date.js":130,"./filters/escapeHtml.js":131,"./filters/map.js":132,"./filters/ncexclude.js":133,"./filters/replace.js":134,"./index.js":135,"./template.js":136,"angular":272,"angular-file-upload":239,"angular-sanitize":264,"angular-scroll":266,"angular-ui-bootstrap":268,"jquery":275,"lodash":276,"ui-select":298}],136:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -11185,7 +11240,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
     "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title ah-breadcrumb\"><a ng-if=\"icon && breads.length != 1\" ng-href=\"{{ngTopLink() || topLink}}\"><i class=\"fa {{icon}} page-header-icon\"></i></a> <i ng-if=\"icon && breads.length == 1\" class=\"fa {{icon}} page-header-icon\"></i> <span ng-repeat=\"b in breads\" class=ah-breadcrumb><a ng-if=\"$index == 0 && breads.length > 1\" class=ah-breadcrumb-path ng-href=\"{{ngTopLink()  || topLink}}\">{{b}}</a><span ng-if=\"$index > 0 || breads.length == 1\" class=ah-breadcrumb-path>{{b}}</span><span ng-if=\"$index == 0 && breads.length > 1\" class=ah-breadcrumb-splitter>/</span></span></h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
   );
  }]);
-},{}],136:[function(require,module,exports){
+},{}],137:[function(require,module,exports){
 var angular = require('angular');
 
 angular.module('productDetail').controller('AbstractProductAddCtrl',
@@ -11647,7 +11702,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         resolve: {
 
         }
-      })
+      });
+      
       modalInstance.result.then(function (selectedItem) {
         if (selectedItem == 'yes') {
           $scope.publish('DF');
@@ -12130,7 +12186,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
 
   }])
-},{"angular":271}],137:[function(require,module,exports){
+},{"angular":272}],138:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
 factory('AttributeOptions', function() {
@@ -12152,7 +12208,7 @@ factory('AttributeOptions', function() {
     }
 
 });
-},{"angular":271}],138:[function(require,module,exports){
+},{"angular":272}],139:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
 factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "ImageService", "GlobalCategory", "$q", "Category", "util", function(Product, AttributeSet, AttributeSetService, ImageService, GlobalCategory, $q, Category, util) {
@@ -12405,7 +12461,7 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
   return $productAdd;
 }]);
 
-},{"angular":271}],139:[function(require,module,exports){
+},{"angular":272}],140:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
 factory('VariationFactorIndices', function() {
@@ -12430,7 +12486,7 @@ factory('VariationFactorIndices', function() {
 
 });
 
-},{"angular":271}],140:[function(require,module,exports){
+},{"angular":272}],141:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
     .directive('apComponent', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", "Product", "util", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse, Product, util) {
@@ -12481,7 +12537,7 @@ angular.module('productDetail')
             }
         };
     }]);
-},{"angular":271}],141:[function(require,module,exports){
+},{"angular":272}],142:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
     .directive('apMultipliedVariants', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "util", function ($rootScope, 
@@ -12502,7 +12558,7 @@ angular.module('productDetail')
         };
     }]);
 
-},{"angular":271}],142:[function(require,module,exports){
+},{"angular":272}],143:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
     .directive('apVariationOption', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "util", function ($rootScope, 
@@ -12547,7 +12603,7 @@ angular.module('productDetail')
         };
     }]);
 
-},{"angular":271}],143:[function(require,module,exports){
+},{"angular":272}],144:[function(require,module,exports){
 var angular = require('angular');
 
 
@@ -12555,7 +12611,7 @@ angular.module('productDetail', []);
 
 (function () {var f = require("./index.js");f["core"]=({"abstractProductAddCtrl":require("./core/abstractProductAddCtrl.js"),"attributeOptions":require("./core/attributeOptions.js"),"productLoader":require("./core/productLoader.js"),"variationFactorIndices":require("./core/variationFactorIndices.js")});f["directives"]=({"apComponent":require("./directives/apComponent.js"),"apMultipliedVariants":require("./directives/apMultipliedVariants.js"),"apVariationOption":require("./directives/apVariationOption.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
-},{"./core/abstractProductAddCtrl.js":136,"./core/attributeOptions.js":137,"./core/productLoader.js":138,"./core/variationFactorIndices.js":139,"./directives/apComponent.js":140,"./directives/apMultipliedVariants.js":141,"./directives/apVariationOption.js":142,"./index.js":143,"./template.js":144,"angular":271}],144:[function(require,module,exports){
+},{"./core/abstractProductAddCtrl.js":137,"./core/attributeOptions.js":138,"./core/productLoader.js":139,"./core/variationFactorIndices.js":140,"./directives/apComponent.js":141,"./directives/apMultipliedVariants.js":142,"./directives/apVariationOption.js":143,"./index.js":144,"./template.js":145,"angular":272}],145:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -12726,7 +12782,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "<div id=add-product-variation-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row ng-if=\"controlFlags.variation != 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content><div class=form-group><p class=form-control-static>Variation will allow you to create a group of products with different attributes such as size and color. Once you enable variation, information from other tabs will be copied into variants that you will create, and variation cannot be disabled. <strong>Please select attribute set before enabling variation.</strong></p><a class=\"btn btn-width-xxl btn-blue margin-top-20\" ng-disabled=!formData.AttributeSet.AttributeSetId ng-click=enableVariation()>Enable Variation</a></div></div></div></div></div><div class=row ng-show=\"controlFlags.variation == 'enable'\"><div class=col-xs-12><ap-variation-option form-data=formData control-flags=controlFlags generator=variationFactorIndices dataset=dataset></ap-variation-option><ap-multiplied-variants ng-show=\"formData.Variants.length > 0\"><div ng-include=\"'ap/section-variant-table-a'\"></div></ap-multiplied-variants></div></div></div>"
   );
  }]);
-},{}],145:[function(require,module,exports){
+},{}],146:[function(require,module,exports){
 var angular = require('angular');
 var bulk = {};
 angular.module('schematics', []).
@@ -12741,7 +12797,7 @@ factory('JSONCache', function(){
     }
   }
 });
-},{"./schema/attribute.js":146,"./schema/attributeSet.js":147,"./schema/attributeValue.js":148,"./schema/attributeValueMap.js":149,"./schema/nthAttribute.js":150,"./schema/productStages.js":151,"./schema/revisionObject.js":152,"./schema/seo.js":153,"./schema/variant.js":154,"angular":271}],146:[function(require,module,exports){
+},{"./schema/attribute.js":147,"./schema/attributeSet.js":148,"./schema/attributeValue.js":149,"./schema/attributeValueMap.js":150,"./schema/nthAttribute.js":151,"./schema/productStages.js":152,"./schema/revisionObject.js":153,"./schema/seo.js":154,"./schema/variant.js":155,"angular":272}],147:[function(require,module,exports){
 module.exports = {
   "title": "Attribute Schema V9",
   "type": "object",
@@ -12774,7 +12830,7 @@ module.exports = {
   ]
 };
 
-},{"./attributeValue":148,"./attributeValueMap":149}],147:[function(require,module,exports){
+},{"./attributeValue":149,"./attributeValueMap":150}],148:[function(require,module,exports){
 module.exports = {
   "title": "Attribute Set Schema V4",
   "type": "object",
@@ -12822,7 +12878,7 @@ module.exports = {
   }
 };
 
-},{"./attribute":146}],148:[function(require,module,exports){
+},{"./attribute":147}],149:[function(require,module,exports){
 module.exports = {
     "title": "Attribute Value Schema V4",
     "type": "object",
@@ -12840,7 +12896,7 @@ module.exports = {
     "required": ["AttributeValueId"]
 };
 
-},{}],149:[function(require,module,exports){
+},{}],150:[function(require,module,exports){
 module.exports = {
   "title": "Attribute Value Map Schema V4",
   "type": "object",
@@ -12851,7 +12907,7 @@ module.exports = {
   }
 };
 
-},{"./attributeValue":148}],150:[function(require,module,exports){
+},{"./attributeValue":149}],151:[function(require,module,exports){
 module.exports = {
   "title": "Nth Attribute Schema V9",
   "type": "object",
@@ -12873,7 +12929,7 @@ module.exports = {
   "required": ["ValueEn", "AttributeId", "AttributeValues"]
 }
 
-},{"./attributeValue":148}],151:[function(require,module,exports){
+},{"./attributeValue":149}],152:[function(require,module,exports){
 module.exports = {
   "title": "Product Stage Schema V9",
   "type": "object",
@@ -13015,7 +13071,7 @@ module.exports = {
   }
 };
 
-},{"./attribute":146,"./revisionObject":152,"./variant":154}],152:[function(require,module,exports){
+},{"./attribute":147,"./revisionObject":153,"./variant":155}],153:[function(require,module,exports){
 module.exports = {
   "title": "Revisions V9",
   "type": "object",
@@ -13027,7 +13083,7 @@ module.exports = {
   }
 }
 
-},{}],153:[function(require,module,exports){
+},{}],154:[function(require,module,exports){
 module.exports = {
   "title": "SEO Schema V9",
   "type": "object",
@@ -13053,7 +13109,7 @@ module.exports = {
    "MetaKeywordEn", "MetaKeywordTh", "ProductUrlKeyEn", "ProductBoostingWeight", "GlobalProductBoostingWeight"]
 }
 
-},{}],154:[function(require,module,exports){
+},{}],155:[function(require,module,exports){
 module.exports =  {
   "title": "Variant Schema V9",
   "type": "object",
@@ -13252,7 +13308,7 @@ module.exports =  {
     "Installment", "PrepareDay", "LimitIndividualDay", "Display"]
 };
 
-},{"./nthAttribute":150,"./seo":153}],155:[function(require,module,exports){
+},{"./nthAttribute":151,"./seo":154}],156:[function(require,module,exports){
 angular.module('umeSelect')
 .directive('umeFocus', ["$timeout", function($timeout) {
   return {
@@ -13279,7 +13335,7 @@ angular.module('umeSelect')
   };
 }]);
 
-},{}],156:[function(require,module,exports){
+},{}],157:[function(require,module,exports){
 var angular = require('angular');
 angular.module('umeSelect')
     .directive('youMe', ["$rootScope", "$templateCache", "$compile", "$timeout", "$filter", function ($rootScope, $templateCache, $compile, $timeout, $filter) {
@@ -13636,7 +13692,7 @@ angular.module('umeSelect')
         };
     }]);
 
-},{"angular":271}],157:[function(require,module,exports){
+},{"angular":272}],158:[function(require,module,exports){
 var angular = require('angular');
 
 
@@ -13644,7 +13700,7 @@ angular.module('umeSelect', []);
 
 (function () {var f = require("./index.js");f["directives"]=({"ume-focus":require("./directives/ume-focus.js"),"ume-select":require("./directives/ume-select.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
-},{"./directives/ume-focus.js":155,"./directives/ume-select.js":156,"./index.js":157,"./template.js":158,"angular":271}],158:[function(require,module,exports){
+},{"./directives/ume-focus.js":156,"./directives/ume-select.js":157,"./index.js":158,"./template.js":159,"angular":272}],159:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -13664,7 +13720,7 @@ angular.module("umeSelect").run(["$templateCache", function($templateCache) {  '
     "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-plain': hideIcon, 'ume-search' : !loading && !hideIcon, 'ume-loading': loading, 'input-active': true}\" style=\"min-height: 34px\"><input ume-focus=focusObtained ng-disabled=disabled() ume-blur=focusLost ume-id=\"{{ _id }}\" autocomplete=off tabindex=\"\" ng-model=searchText ng-focus=focus() ng-blur=blur() placeholder=\"{{ placeholder }}\" ng-keydown=keyDown($event) ng-show=\"focused || !itemValue(model)\" style=\"width: 100%\"><div ng-show=\"!focused && itemValue(model)\" class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ itemValue(model) || placeholder }}</div></div><div ng-include=\"'ume/choicelist'\"></div></div>"
   );
  }]);
-},{}],159:[function(require,module,exports){
+},{}],160:[function(require,module,exports){
 /**
  * Collection of Route ID (Object key) with route string
  *
@@ -13840,7 +13896,7 @@ module.exports = {
   permission: permission
 }
 
-},{"lodash":275}],160:[function(require,module,exports){
+},{"lodash":276}],161:[function(require,module,exports){
 module.exports = ["common", "config", "util", "$log", "$window", function (common, config, util, $log, $window) {
     'ngInject';
     'use strict';
@@ -13950,7 +14006,7 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
     return service;
 }];
 
-},{}],161:[function(require,module,exports){
+},{}],162:[function(require,module,exports){
 //Products Service
 module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     function ($http, common, util, config, KnownException) {
@@ -14043,13 +14099,13 @@ module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     }
 ];
 
-},{}],162:[function(require,module,exports){
+},{}],163:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Promotion/Ontopcreate');
 	return service;
 }];
-},{}],163:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 module.exports = ["common", "config", "util", "$log", "$window", function (common, config, util, $log, $window) {
     'ngInject';
     'use strict';
@@ -14073,7 +14129,7 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
     return service;
 }];
 
-},{}],164:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Admin');
@@ -14110,19 +14166,19 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],165:[function(require,module,exports){
+},{}],166:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/ProductStages/Master');
 	return service;
 }];
-},{}],166:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 module.exports = ["common", "$q", function(common, $q) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Admin');
 	return service;
 }]
-},{}],167:[function(require,module,exports){
+},{}],168:[function(require,module,exports){
 module.exports = ["common", "AdminPermissionService", function(common, AdminPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Admin');
@@ -14145,7 +14201,7 @@ module.exports = ["common", "AdminPermissionService", function(common, AdminPerm
 	};
 	return service;	
 }]
-},{}],168:[function(require,module,exports){
+},{}],169:[function(require,module,exports){
 module.exports = ["common", "config", "util", function(common, config, util) {
 	'ngInject';
 	var service = common.Rest('/Shops');
@@ -14192,7 +14248,7 @@ module.exports = ["common", "config", "util", function(common, config, util) {
 	};
 	return service;	
 }]
-},{}],169:[function(require,module,exports){
+},{}],170:[function(require,module,exports){
 module.exports = ["common", "ShopPermissionService", function(common, ShopPermissionService) {
 	'ngInject';
 	var service = common.Rest('/Shoptypes');
@@ -14215,7 +14271,7 @@ module.exports = ["common", "ShopPermissionService", function(common, ShopPermis
 	};
 	return service;	
 }]
-},{}],170:[function(require,module,exports){
+},{}],171:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common){
 	'use strict';
@@ -14470,7 +14526,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{"angular":271}],171:[function(require,module,exports){
+},{"angular":272}],172:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/Attributes');
@@ -14586,7 +14642,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }];
-},{}],172:[function(require,module,exports){
+},{}],173:[function(require,module,exports){
 module.exports = ['common', function(common){
 	'use strict';
 	var service = {};
@@ -14734,7 +14790,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{}],173:[function(require,module,exports){
+},{}],174:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/AttributeSets');
@@ -14825,7 +14881,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }]
-},{}],174:[function(require,module,exports){
+},{}],175:[function(require,module,exports){
 module.exports = ['$window', function($window) {
 	return function(fn, close) {
 		var vm = this;
@@ -14861,7 +14917,7 @@ module.exports = ['$window', function($window) {
 		};
 	};
 }];
-},{}],175:[function(require,module,exports){
+},{}],176:[function(require,module,exports){
 module.exports = ['$q', 'common', function($q, common){
 	var service = {};
 	//TODO: change searchText -> q
@@ -14946,7 +15002,7 @@ module.exports = ['$q', 'common', function($q, common){
 	};
 	return service;
 }];
-},{}],176:[function(require,module,exports){
+},{}],177:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	service = common.Rest('/Brands');
@@ -14976,7 +15032,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }]
-},{}],177:[function(require,module,exports){
+},{}],178:[function(require,module,exports){
 /**
  * Util class for category
  * @author poonwu
@@ -15303,14 +15359,14 @@ module.exports = ['config', function(config) {
     return service;
 }];
 
-},{"angular":271}],178:[function(require,module,exports){
+},{"angular":272}],179:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common) {
 	var service = common.Rest('/Coupons');
 	return service;
 }];
 
-},{"angular":271}],179:[function(require,module,exports){
+},{"angular":272}],180:[function(require,module,exports){
 //TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in poon's local)
 module.exports = ["common", "$base64", "storage", "$q", "$rootScope", function(common, $base64, storage, $q, $rootScope) {
     'ngInject';
@@ -15422,7 +15478,7 @@ module.exports = ["common", "$base64", "storage", "$q", "$rootScope", function(c
 	return service;
 }];
 
-},{}],180:[function(require,module,exports){
+},{}],181:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$window', '$base64', 'config', function($window, $base64, config) {
@@ -15439,7 +15495,7 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
     };
 }];
 
-},{"angular":271}],181:[function(require,module,exports){
+},{"angular":272}],182:[function(require,module,exports){
 module.exports = ["config", "storage", "FileUploader", function(config, storage, FileUploader) {
 	'ngInject';
 	var service = {};
@@ -15459,7 +15515,7 @@ module.exports = ["config", "storage", "FileUploader", function(config, storage,
 	};
 	return service;
 }];
-},{}],182:[function(require,module,exports){
+},{}],183:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/GlobalCategories');
@@ -15527,7 +15583,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],183:[function(require,module,exports){
+},{}],184:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	service = common.Rest('/GlobalCategories');
@@ -15602,7 +15658,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],184:[function(require,module,exports){
+},{}],185:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Coupons');
@@ -15640,7 +15696,7 @@ module.exports = ["common", function(common) {
     };
 	return service;
 }]
-},{}],185:[function(require,module,exports){
+},{}],186:[function(require,module,exports){
 var angular = require('angular');
 //Image Service
 //Note: this file is not used anywhere (legacy!!! dOnt edit )
@@ -15732,7 +15788,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	return service;
 }];
 
-},{"angular":271}],186:[function(require,module,exports){
+},{"angular":272}],187:[function(require,module,exports){
 //Image Service
 module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", "Upload", function($q, $http, common, storage, config, FileUploader, Upload) {
   'ngInject';
@@ -15858,12 +15914,12 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
   return service;
 }];
 
-},{}],187:[function(require,module,exports){
+},{}],188:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Inventories');
 	return service;
 };
-},{}],188:[function(require,module,exports){
+},{}],189:[function(require,module,exports){
 module.exports = [function() {
 	'use strict';
 
@@ -15871,7 +15927,7 @@ module.exports = [function() {
         this.message = "Known Exception - " + msg;   
     };
 }];
-},{}],189:[function(require,module,exports){
+},{}],190:[function(require,module,exports){
 module.exports = ['common', function(common) {
 	'use strict';
 	var service = {};
@@ -15910,7 +15966,7 @@ module.exports = ['common', function(common) {
 
 	return service;
 }];
-},{}],190:[function(require,module,exports){
+},{}],191:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/LocalCategories');
@@ -15953,7 +16009,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	};
 	return service;
 }];
-},{}],191:[function(require,module,exports){
+},{}],192:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Newsletters');
 
@@ -15968,7 +16024,7 @@ module.exports = function(common) {
 
 	return service;
 };
-},{}],192:[function(require,module,exports){
+},{}],193:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	service = common.Rest('/Orders');
@@ -15982,7 +16038,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }]
-},{}],193:[function(require,module,exports){
+},{}],194:[function(require,module,exports){
 module.exports = ["util", function(util) {
 	'ngInject';
 	var service = {};
@@ -16058,7 +16114,7 @@ module.exports = ["util", function(util) {
 
 	return service;
 }]
-},{}],194:[function(require,module,exports){
+},{}],195:[function(require,module,exports){
 // Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config', 'KnownException',
 	function ($http, common, util, LocalCategory, Brand, config, KnownException) {
@@ -16665,7 +16721,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 	}
 ]
 
-},{}],195:[function(require,module,exports){
+},{}],196:[function(require,module,exports){
 module.exports = ["common", "util", function(common, util) {
 	'ngInject';
 	var service = common.Rest('/ProductReviews');
@@ -16701,7 +16757,7 @@ module.exports = ["common", "util", function(common, util) {
 	};	
 	return service;
 }];
-},{}],196:[function(require,module,exports){
+},{}],197:[function(require,module,exports){
 module.exports = ["common", "util", function(common, util) {
 	'ngInject';
 	var service = common.Rest('/ProductTemps');
@@ -16709,12 +16765,12 @@ module.exports = ["common", "util", function(common, util) {
 	return service;
 }];
 
-},{}],197:[function(require,module,exports){
+},{}],198:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Returns');
 	return service;
 };
-},{}],198:[function(require,module,exports){
+},{}],199:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Seller');
@@ -16749,7 +16805,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],199:[function(require,module,exports){
+},{}],200:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Coupons');
@@ -16778,13 +16834,13 @@ module.exports = ["common", function(common) {
     };
 	return service;
 }]
-},{}],200:[function(require,module,exports){
+},{}],201:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Seller');
 	return service;
 }]
-},{}],201:[function(require,module,exports){
+},{}],202:[function(require,module,exports){
 module.exports = ["common", "SellerPermissionService", function(common, SellerPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Seller');
@@ -16807,13 +16863,13 @@ module.exports = ["common", "SellerPermissionService", function(common, SellerPe
 	};
 	return service;	
 }]
-},{}],202:[function(require,module,exports){
+},{}],203:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/Shippings');
 	return service;
 }];
-},{}],203:[function(require,module,exports){
+},{}],204:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     'use strict';
@@ -16872,7 +16928,7 @@ module.exports = ["common", "config", "util", function (common, config, util) {
     return service;
 }];
 
-},{}],204:[function(require,module,exports){
+},{}],205:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     var service = common.Rest('/Shops/ShopAppearance');
@@ -16897,19 +16953,19 @@ module.exports = ["common", "config", "util", function (common, config, util) {
 
     return service;
 }];
-},{}],205:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Shop');
 	return service;
 }]
-},{}],206:[function(require,module,exports){
+},{}],207:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     var service = common.Rest('/Shops/Profile');
     return service;
 }];
-},{}],207:[function(require,module,exports){
+},{}],208:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = {};
@@ -16923,7 +16979,7 @@ module.exports = ["common", function(common) {
 
 	return service;
 }]
-},{}],208:[function(require,module,exports){
+},{}],209:[function(require,module,exports){
 module.exports = {
     NameTH: {
         labelClass: "required",
@@ -17062,7 +17118,7 @@ module.exports = {
     }
 }
 
-},{}],209:[function(require,module,exports){
+},{}],210:[function(require,module,exports){
 module.exports = {
   	AttributeNameEn: {
         'labelClass': 'required',
@@ -17106,7 +17162,7 @@ module.exports = {
     }
     
 };
-},{}],210:[function(require,module,exports){
+},{}],211:[function(require,module,exports){
 module.exports = {
 	AttributeSetNameEn: {
 	  'labelClass': 'required',
@@ -17132,7 +17188,7 @@ module.exports = {
       }
     }
 }
-},{}],211:[function(require,module,exports){
+},{}],212:[function(require,module,exports){
 module.exports = {
     BrandImage: {
     },
@@ -17168,7 +17224,7 @@ module.exports = {
     }
 };
 
-},{}],212:[function(require,module,exports){
+},{}],213:[function(require,module,exports){
 module.exports = {
     NameEn: {
         'labelClass': 'required',
@@ -17208,7 +17264,7 @@ module.exports = {
 
 }
 
-},{}],213:[function(require,module,exports){
+},{}],214:[function(require,module,exports){
 module.exports = {
 	ChildProducts: {
 		labelClass: 'required',
@@ -17228,7 +17284,7 @@ module.exports = {
 	    }
 	}
 };
-},{}],214:[function(require,module,exports){
+},{}],215:[function(require,module,exports){
 module.exports = {
     Image: {
 
@@ -17267,7 +17323,7 @@ module.exports = {
 
     }
 }
-},{}],215:[function(require,module,exports){
+},{}],216:[function(require,module,exports){
 module.exports = {
   KillerPointTh: {
     divClass: 'col-xs-6',
@@ -17470,7 +17526,7 @@ module.exports = {
   }
 }
 
-},{}],216:[function(require,module,exports){
+},{}],217:[function(require,module,exports){
 module.exports = {
 	GroupNameEn: {
       'labelClass': 'required',
@@ -17482,7 +17538,7 @@ module.exports = {
     }
 
 }
-},{}],217:[function(require,module,exports){
+},{}],218:[function(require,module,exports){
 module.exports = {
 	TaxPayerId: {
 		inputSize: 'large',
@@ -17562,7 +17618,7 @@ module.exports = {
 		input: 'large'
 	}
 }
-},{}],218:[function(require,module,exports){
+},{}],219:[function(require,module,exports){
 module.exports = {
     Layout: {
         // tooltip: "Please select 'Available' if you can provide gift wrapping service to your customer",
@@ -17580,7 +17636,7 @@ module.exports = {
     }
 }
 
-},{}],219:[function(require,module,exports){
+},{}],220:[function(require,module,exports){
 module.exports = {
 	ShopTypeNameEn: {
       'labelClass': 'required',
@@ -17591,7 +17647,7 @@ module.exports = {
        }
     }
 }
-},{}],220:[function(require,module,exports){
+},{}],221:[function(require,module,exports){
 module.exports = {
     'NothingSpecial': {
         
@@ -17601,7 +17657,7 @@ module.exports = {
     }
 };
 
-},{}],221:[function(require,module,exports){
+},{}],222:[function(require,module,exports){
 module.exports = {
   CouponName: {
     labelClass: "required",
@@ -17663,7 +17719,7 @@ module.exports = {
   }
 }
 
-},{}],222:[function(require,module,exports){
+},{}],223:[function(require,module,exports){
 module.exports = {
     Required: {
         'labelClass': 'required'
@@ -17671,7 +17727,7 @@ module.exports = {
 
 }
 
-},{}],223:[function(require,module,exports){
+},{}],224:[function(require,module,exports){
 module.exports = {
   // Description
     DescriptionFull: {
@@ -17717,14 +17773,14 @@ module.exports = {
         inputClass: 'large'
     }
 }
-},{}],224:[function(require,module,exports){
+},{}],225:[function(require,module,exports){
 module.exports = {
   MultiCheckbox: {
     transcludeClasses:  "checkbox multiple-checkbox multiline"
   }
 }
 
-},{}],225:[function(require,module,exports){
+},{}],226:[function(require,module,exports){
 module.exports = {
 	ColumnSearch: {
 
@@ -17780,7 +17836,7 @@ module.exports = {
 	}
 }
 
-},{}],226:[function(require,module,exports){
+},{}],227:[function(require,module,exports){
 module.exports = {
   ProductName: {},
   Pid: {},
@@ -17812,7 +17868,7 @@ module.exports = {
   }
 }
 
-},{}],227:[function(require,module,exports){
+},{}],228:[function(require,module,exports){
 module.exports = {
     GiftWrap: {
         tooltip: "Please select 'Available' if you can provide gift wrapping service to your customer"
@@ -17880,7 +17936,7 @@ module.exports = {
     }
 }
 
-},{}],228:[function(require,module,exports){
+},{}],229:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -17898,6 +17954,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('brand/action',
     "<div><a ng-click=\"actions.edit(row, true)\">View / Edit</a></div><div><a ng-click=\"actions.delete(row, true)\">Delete</a></div>"
+  );
+
+
+  $templateCache.put('common/abstractConfirmationModal',
+    "<div class=\"modal-header no-border ng-scope\"><button type=button class=close aria-label=Close ng-click=no()><span class=padding-left-15 aria-hidden=true>×</span></button></div><div class=\"modal-body confirmation-modal no-margin ng-scope\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20 ng-binding\">{{ line1 }}</h2><div>{{ line2 }}</div></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white ng-binding\" ng-click=no()>Cancel</button> <button type=button class=\"btn btn-green\" ng-click=yes()>Confirm</button></div></div></div>"
   );
 
 
@@ -18215,7 +18276,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "<div class=modal-header><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Add Commission Rule</h3></div><div class=modal-body style=\"padding-top: 15px\"><div class=\"category-section column-4 ah-form\"><nc-tree-select nc-model=model nc-tree-select-tree=tree nc-tree-select-title=\"Global Category\"></nc-tree-select><div class=\"category-footer no-padding form-group\" style=\"margin: 30px 0px 0px 0px\"><div class=float-right><span class=float-left>Commission (%)</span><form name=form class=width-field-normal><input class=form-control ng-class=\"{ 'has-error' : $root.isInvalid(form.Commission) }\" name=Commission ng-model=Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-maxnumber=100 ng-minnumber=\"0\"><div class=\"help-block color-red float-left\"><div ng-if=\"form.Commission.$error.maxnumber || form.Commission.$error.minnumber\">Please enter between 0% and 100%</div><div ng-if=form.Commission.$error.pattern>Only numbers and decimals (up to 2 digits) allowed</div></div></form><button class=\"btn btn-blue btn-width-xl float-left\" ng-click=select() ng-disabled=\"form.$invalid || _.isEmpty(Commission) || _.isEmpty(model)\">Set</button></div></div></div></div>"
   );
  }];
-},{}],229:[function(require,module,exports){
+},{}],230:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -22147,11 +22208,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-},{}],230:[function(require,module,exports){
+},{}],231:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":229}],231:[function(require,module,exports){
+},{"./angular-animate":230}],232:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -22319,7 +22380,7 @@ module.exports = 'ngAnimate';
 
 })();
 
-},{}],232:[function(require,module,exports){
+},{}],233:[function(require,module,exports){
 /*globals define, jQuery, module, require */
 /*jslint vars:true */
 
@@ -22769,7 +22830,7 @@ module.exports = 'ngAnimate';
     }]);
 }));
 
-},{"angular":271,"moment":276}],233:[function(require,module,exports){
+},{"angular":272,"moment":277}],234:[function(require,module,exports){
 (function (factory) {
   'use strict';
   if (typeof exports === 'object') {
@@ -23133,7 +23194,7 @@ module.exports = 'ngAnimate';
   }
 }));
 
-},{"angular":271,"chart.js":273}],234:[function(require,module,exports){
+},{"angular":272,"chart.js":274}],235:[function(require,module,exports){
 (function (root, factory) {
     /* istanbul ignore next */
     if (typeof define === 'function' && define.amd) {
@@ -23211,7 +23272,7 @@ return angular.module('angular-clipboard', [])
     }]);
 
 }));
-},{"angular":271}],235:[function(require,module,exports){
+},{"angular":272}],236:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -23535,11 +23596,11 @@ angular.module('ngCookies').provider('$$cookieWriter', function $$CookieWriterPr
 
 })(window, window.angular);
 
-},{}],236:[function(require,module,exports){
+},{}],237:[function(require,module,exports){
 require('./angular-cookies');
 module.exports = 'ngCookies';
 
-},{"./angular-cookies":235}],237:[function(require,module,exports){
+},{"./angular-cookies":236}],238:[function(require,module,exports){
 /**
  * angular-drag-and-drop-lists v1.4.0
  *
@@ -24131,7 +24192,7 @@ angular.module('dndLists', [])
    */
   .factory('dndDropEffectWorkaround', function(){ return {} });
 
-},{}],238:[function(require,module,exports){
+},{}],239:[function(require,module,exports){
 /*
  angular-file-upload v2.2.0
  https://github.com/nervgh/angular-file-upload
@@ -24139,19 +24200,19 @@ angular.module('dndLists', [])
 
 !function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["angular-file-upload"]=t():e["angular-file-upload"]=t()}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return e[r].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=r(n(1)),o=r(n(2)),s=r(n(3)),a=r(n(4)),u=r(n(5)),l=r(n(6)),c=r(n(7)),f=r(n(8)),p=r(n(9)),d=r(n(10)),v=r(n(11)),h=r(n(12));angular.module(i.name,[]).value("fileUploaderOptions",o).factory("FileUploader",s).factory("FileLikeObject",a).factory("FileItem",u).factory("FileDirective",l).factory("FileSelect",c).factory("FileDrop",f).factory("FileOver",p).directive("nvFileSelect",d).directive("nvFileDrop",v).directive("nvFileOver",h).run(["FileUploader","FileLikeObject","FileItem","FileDirective","FileSelect","FileDrop","FileOver",function(e,t,n,r,i,o,s){e.FileLikeObject=t,e.FileItem=n,e.FileDirective=r,e.FileSelect=i,e.FileDrop=o,e.FileOver=s}])},function(e,t){e.exports={name:"angularFileUpload"}},function(e,t){"use strict";e.exports={url:"/",alias:"file",headers:{},queue:[],progress:0,autoUpload:!1,removeAfterUpload:!1,method:"POST",filters:[],formData:[],queueLimit:Number.MAX_VALUE,withCredentials:!1}},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.forEach,l=angular.isObject,c=angular.isNumber,f=angular.isDefined,p=angular.isArray,d=angular.element;e.exports=function(e,t,n,r,v,h){var m=r.File,g=r.FormData,_=function(){function r(t){o(this,r);var n=s(e);a(this,n,t,{isUploading:!1,_nextIndex:0,_failFilterIndex:-1,_directives:{select:[],drop:[],over:[]}}),this.filters.unshift({name:"queueLimit",fn:this._queueLimitFilter}),this.filters.unshift({name:"folder",fn:this._folderFilter})}return i(r,{addToQueue:{value:function(e,t,n){var r=this,i=this.isArrayLikeObject(e)?e:[e],o=this._getFilters(n),s=this.queue.length,a=[];u(i,function(e){var n=new v(e);if(r._isValidFile(n,o,t)){var i=new h(r,e,t);a.push(i),r.queue.push(i),r._onAfterAddingFile(i)}else{var s=o[r._failFilterIndex];r._onWhenAddingFileFailed(n,s,t)}}),this.queue.length!==s&&(this._onAfterAddingAll(a),this.progress=this._getTotalProgress()),this._render(),this.autoUpload&&this.uploadAll()}},removeFromQueue:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t];n.isUploading&&n.cancel(),this.queue.splice(t,1),n._destroy(),this.progress=this._getTotalProgress()}},clearQueue:{value:function(){for(;this.queue.length;)this.queue[0].remove();this.progress=0}},uploadItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhrTransport":"_iframeTransport";n._prepareToUploading(),this.isUploading||(this.isUploading=!0,this[r](n))}},cancelItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhr":"_form";n&&n.isUploading&&n[r].abort()}},uploadAll:{value:function(){var e=this.getNotUploadedItems().filter(function(e){return!e.isUploading});e.length&&(u(e,function(e){return e._prepareToUploading()}),e[0].upload())}},cancelAll:{value:function(){var e=this.getNotUploadedItems();u(e,function(e){return e.cancel()})}},isFile:{value:function(e){return this.constructor.isFile(e)}},isFileLikeObject:{value:function(e){return this.constructor.isFileLikeObject(e)}},isArrayLikeObject:{value:function(e){return this.constructor.isArrayLikeObject(e)}},getIndexOfItem:{value:function(e){return c(e)?e:this.queue.indexOf(e)}},getNotUploadedItems:{value:function(){return this.queue.filter(function(e){return!e.isUploaded})}},getReadyItems:{value:function(){return this.queue.filter(function(e){return e.isReady&&!e.isUploading}).sort(function(e,t){return e.index-t.index})}},destroy:{value:function(){var e=this;u(this._directives,function(t){u(e._directives[t],function(e){e.destroy()})})}},onAfterAddingAll:{value:function(e){}},onAfterAddingFile:{value:function(e){}},onWhenAddingFileFailed:{value:function(e,t,n){}},onBeforeUploadItem:{value:function(e){}},onProgressItem:{value:function(e,t){}},onProgressAll:{value:function(e){}},onSuccessItem:{value:function(e,t,n,r){}},onErrorItem:{value:function(e,t,n,r){}},onCancelItem:{value:function(e,t,n,r){}},onCompleteItem:{value:function(e,t,n,r){}},onCompleteAll:{value:function(){}},_getTotalProgress:{value:function(e){if(this.removeAfterUpload)return e||0;var t=this.getNotUploadedItems().length,n=t?this.queue.length-t:this.queue.length,r=100/this.queue.length,i=(e||0)*r/100;return Math.round(n*r+i)}},_getFilters:{value:function(e){if(!e)return this.filters;if(p(e))return e;var t=e.match(/[^\s,]+/g);return this.filters.filter(function(e){return-1!==t.indexOf(e.name)})}},_render:{value:function(){t.$$phase||t.$apply()}},_folderFilter:{value:function(e){return!(!e.size&&!e.type)}},_queueLimitFilter:{value:function(){return this.queue.length<this.queueLimit}},_isValidFile:{value:function(e,t,n){var r=this;return this._failFilterIndex=-1,t.length?t.every(function(t){return r._failFilterIndex++,t.fn.call(r,e,n)}):!0}},_isSuccessCode:{value:function(e){return e>=200&&300>e||304===e}},_transformResponse:{value:function(e,t){var r=this._headersGetter(t);return u(n.defaults.transformResponse,function(t){e=t(e,r)}),e}},_parseHeaders:{value:function(e){var t,n,r,i={};return e?(u(e.split("\n"),function(e){r=e.indexOf(":"),t=e.slice(0,r).trim().toLowerCase(),n=e.slice(r+1).trim(),t&&(i[t]=i[t]?i[t]+", "+n:n)}),i):i}},_headersGetter:{value:function(e){return function(t){return t?e[t.toLowerCase()]||null:e}}},_xhrTransport:{value:function(e){var t=this,n=e._xhr=new XMLHttpRequest,r=new g;if(this._onBeforeUploadItem(e),u(e.formData,function(e){u(e,function(e,t){r.append(t,e)})}),"number"!=typeof e._file.size)throw new TypeError("The file specified is no longer valid");r.append(e.alias,e._file,e.file.name),n.upload.onprogress=function(n){var r=Math.round(n.lengthComputable?100*n.loaded/n.total:0);t._onProgressItem(e,r)},n.onload=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r),o=t._isSuccessCode(n.status)?"Success":"Error",s="_on"+o+"Item";t[s](e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onerror=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onErrorItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onabort=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onCancelItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.open(e.method,e.url,!0),n.withCredentials=e.withCredentials,u(e.headers,function(e,t){n.setRequestHeader(t,e)}),n.send(r),this._render()}},_iframeTransport:{value:function(e){var t=this,n=d('<form style="display: none;" />'),r=d('<iframe name="iframeTransport'+Date.now()+'">'),i=e._input;e._form&&e._form.replaceWith(i),e._form=n,this._onBeforeUploadItem(e),i.prop("name",e.alias),u(e.formData,function(e){u(e,function(e,t){var r=d('<input type="hidden" name="'+t+'" />');r.val(e),n.append(r)})}),n.prop({action:e.url,method:"POST",target:r.prop("name"),enctype:"multipart/form-data",encoding:"multipart/form-data"}),r.bind("load",function(){var n="",i=200;try{n=r[0].contentDocument.body.innerHTML}catch(o){i=500}var s={response:n,status:i,dummy:!0},a={},u=t._transformResponse(s.response,a);t._onSuccessItem(e,u,s.status,a),t._onCompleteItem(e,u,s.status,a)}),n.abort=function(){var o,s={status:0,dummy:!0},a={};r.unbind("load").prop("src","javascript:false;"),n.replaceWith(i),t._onCancelItem(e,o,s.status,a),t._onCompleteItem(e,o,s.status,a)},i.after(n),n.append(i).append(r),n[0].submit(),this._render()}},_onWhenAddingFileFailed:{value:function(e,t,n){this.onWhenAddingFileFailed(e,t,n)}},_onAfterAddingFile:{value:function(e){this.onAfterAddingFile(e)}},_onAfterAddingAll:{value:function(e){this.onAfterAddingAll(e)}},_onBeforeUploadItem:{value:function(e){e._onBeforeUpload(),this.onBeforeUploadItem(e)}},_onProgressItem:{value:function(e,t){var n=this._getTotalProgress(t);this.progress=n,e._onProgress(t),this.onProgressItem(e,t),this.onProgressAll(n),this._render()}},_onSuccessItem:{value:function(e,t,n,r){e._onSuccess(t,n,r),this.onSuccessItem(e,t,n,r)}},_onErrorItem:{value:function(e,t,n,r){e._onError(t,n,r),this.onErrorItem(e,t,n,r)}},_onCancelItem:{value:function(e,t,n,r){e._onCancel(t,n,r),this.onCancelItem(e,t,n,r)}},_onCompleteItem:{value:function(e,t,n,r){e._onComplete(t,n,r),this.onCompleteItem(e,t,n,r);var i=this.getReadyItems()[0];return this.isUploading=!1,f(i)?void i.upload():(this.onCompleteAll(),this.progress=this._getTotalProgress(),void this._render())}}},{isFile:{value:function(e){return m&&e instanceof m}},isFileLikeObject:{value:function(e){return e instanceof v}},isArrayLikeObject:{value:function(e){return l(e)&&"length"in e}},inherit:{value:function(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,e.super_=t}}}),r}();return _.prototype.isHTML5=!(!m||!g),_.isHTML5=_.prototype.isHTML5,_},e.exports.$inject=["fileUploaderOptions","$rootScope","$http","$window","FileLikeObject","FileItem"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.isElement,u=angular.isString;e.exports=function(){var e=function(){function e(t){o(this,e);var n=a(t),r=n?t.value:t,i=u(r)?"FakePath":"Object",s="_createFrom"+i;this[s](r)}return i(e,{_createFromFakePath:{value:function(e){this.lastModifiedDate=null,this.size=null,this.type="like/"+e.slice(e.lastIndexOf(".")+1).toLowerCase(),this.name=e.slice(e.lastIndexOf("/")+e.lastIndexOf("\\")+2)}},_createFromObject:{value:function(e){this.lastModifiedDate=s(e.lastModifiedDate),this.size=e.size,this.type=e.type,this.name=e.name}}}),e}();return e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.element,l=angular.isElement;e.exports=function(e,t){var n=function(){function n(e,r,i){o(this,n);var c=l(r),f=c?u(r):null,p=c?null:r;a(this,{url:e.url,alias:e.alias,headers:s(e.headers),formData:s(e.formData),removeAfterUpload:e.removeAfterUpload,withCredentials:e.withCredentials,method:e.method},i,{uploader:e,file:new t(r),isReady:!1,isUploading:!1,isUploaded:!1,isSuccess:!1,isCancel:!1,isError:!1,progress:0,index:null,_file:p,_input:f}),f&&this._replaceNode(f)}return i(n,{upload:{value:function(){try{this.uploader.uploadItem(this)}catch(e){this.uploader._onCompleteItem(this,"",0,[]),this.uploader._onErrorItem(this,"",0,[])}}},cancel:{value:function(){this.uploader.cancelItem(this)}},remove:{value:function(){this.uploader.removeFromQueue(this)}},onBeforeUpload:{value:function(){}},onProgress:{value:function(e){}},onSuccess:{value:function(e,t,n){}},onError:{value:function(e,t,n){}},onCancel:{value:function(e,t,n){}},onComplete:{value:function(e,t,n){}},_onBeforeUpload:{value:function(){this.isReady=!0,this.isUploading=!0,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!1,this.isError=!1,this.progress=0,this.onBeforeUpload()}},_onProgress:{value:function(e){this.progress=e,this.onProgress(e)}},_onSuccess:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!0,this.isCancel=!1,this.isError=!1,this.progress=100,this.index=null,this.onSuccess(e,t,n)}},_onError:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!1,this.isCancel=!1,this.isError=!0,this.progress=0,this.index=null,this.onError(e,t,n)}},_onCancel:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!0,this.isError=!1,this.progress=0,this.index=null,this.onCancel(e,t,n)}},_onComplete:{value:function(e,t,n){this.onComplete(e,t,n),this.removeAfterUpload&&this.remove()}},_destroy:{value:function(){this._input&&this._input.remove(),this._form&&this._form.remove(),delete this._form,delete this._input}},_prepareToUploading:{value:function(){this.index=this.index||++this.uploader._nextIndex,this.isReady=!0}},_replaceNode:{value:function(t){var n=e(t.clone())(t.scope());n.prop("value",null),t.css("display","none"),t.after(n)}}}),n}();return n},e.exports.$inject=["$compile","FileLikeObject"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.extend);e.exports=function(){var e=function(){function e(t){o(this,e),s(this,t),this.uploader._directives[this.prop].push(this),this._saveLinks(),this.bind()}return i(e,{bind:{value:function(){for(var e in this.events){var t=this.events[e];this.element.bind(e,this[t])}}},unbind:{value:function(){for(var e in this.events)this.element.unbind(e,this.events[e])}},destroy:{value:function(){var e=this.uploader._directives[this.prop].indexOf(this);this.uploader._directives[this.prop].splice(e,1),this.unbind()}},_saveLinks:{value:function(){for(var e in this.events){var t=this.events[e];this[t]=this[t].bind(this)}}}}),e}();return e.prototype.events={},e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",change:"onChange"},prop:"select"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n),this.uploader.isHTML5||this.element.removeAttr("multiple"),this.element.prop("value",null)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},isEmptyAfterSelection:{value:function(){return!!this.element.attr("multiple")}},onChange:{value:function(){var e=this.uploader.isHTML5?this.element[0].files:this.element[0],t=this.getOptions(),n=this.getFilters();this.uploader.isHTML5||this.destroy(),this.uploader.addToQueue(e,t,n),this.isEmptyAfterSelection()&&(this.element.prop("value",null),this.element.replaceWith(this.element=this.element.clone(!0)))}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function c(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:c(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend),l=angular.forEach;e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",drop:"onDrop",dragover:"onDragOver",dragleave:"onDragLeave"},prop:"drop"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},onDrop:{value:function(e){var t=this._getTransfer(e);if(t){var n=this.getOptions(),r=this.getFilters();this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this),this.uploader.addToQueue(t.files,n,r)}}},onDragOver:{value:function(e){var t=this._getTransfer(e);this._haveFiles(t.types)&&(t.dropEffect="copy",this._preventAndStop(e),l(this.uploader._directives.over,this._addOverClass,this))}},onDragLeave:{value:function(e){e.currentTarget!==this.element[0]&&(this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this))}},_getTransfer:{value:function(e){return e.dataTransfer?e.dataTransfer:e.originalEvent.dataTransfer}},_preventAndStop:{value:function(e){e.preventDefault(),e.stopPropagation()}},_haveFiles:{value:function(e){return e?e.indexOf?-1!==e.indexOf("Files"):e.contains?e.contains("Files"):!1:!1}},_addOverClass:{value:function(e){e.addOverClass()}},_removeOverClass:{value:function(e){e.removeOverClass()}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy"},prop:"over",overClass:"nv-file-over"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{addOverClass:{value:function(){this.element.addClass(this.getOverClass())}},removeOverClass:{value:function(){this.element.removeClass(this.getOverClass())}},getOverClass:{value:function(){return this.overClass}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}},e.exports.$inject=["$parse","FileUploader","FileSelect"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');if(s.isHTML5){var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}}},e.exports.$inject=["$parse","FileUploader","FileDrop"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t){return{link:function(n,r,i){var o=n.$eval(i.uploader);if(!(o instanceof e))throw new TypeError('"Uploader" must be an instance of FileUploader');var s=new t({uploader:o,element:r});s.getOverClass=function(){return i.overClass||s.overClass}}}},e.exports.$inject=["FileUploader","FileOver"]}])});
 
-},{}],239:[function(require,module,exports){
+},{}],240:[function(require,module,exports){
 var moduleName = require('./src/angular-input-masks.js');
 
 module.exports = moduleName;
 
-},{"./src/angular-input-masks.js":240}],240:[function(require,module,exports){
+},{"./src/angular-input-masks.js":241}],241:[function(require,module,exports){
 module.exports = angular.module('ui.utils.masks', [
 	require('./global/global-masks'),
 	require('./br/br-masks'),
 	require('./us/us-masks')
 ]).name;
 
-},{"./br/br-masks":242,"./global/global-masks":251,"./us/us-masks":261}],241:[function(require,module,exports){
+},{"./br/br-masks":243,"./global/global-masks":252,"./us/us-masks":262}],242:[function(require,module,exports){
 var StringMask = require('string-mask');
 var maskFactory = require('mask-factory');
 
@@ -24175,7 +24236,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":258,"string-mask":295}],242:[function(require,module,exports){
+},{"mask-factory":259,"string-mask":296}],243:[function(require,module,exports){
 var m = angular.module('ui.utils.masks.br', [
 	require('../helpers'),
 ])
@@ -24190,7 +24251,7 @@ var m = angular.module('ui.utils.masks.br', [
 
 module.exports = m.name;
 
-},{"../helpers":257,"./boleto-bancario/boleto-bancario":241,"./cep/cep":243,"./cnpj/cnpj":244,"./cpf-cnpj/cpf-cnpj":245,"./cpf/cpf":246,"./inscricao-estadual/ie":247,"./nfe/nfe":248,"./phone/br-phone":249}],243:[function(require,module,exports){
+},{"../helpers":258,"./boleto-bancario/boleto-bancario":242,"./cep/cep":244,"./cnpj/cnpj":245,"./cpf-cnpj/cpf-cnpj":246,"./cpf/cpf":247,"./inscricao-estadual/ie":248,"./nfe/nfe":249,"./phone/br-phone":250}],244:[function(require,module,exports){
 var StringMask = require('string-mask');
 var maskFactory = require('mask-factory');
 
@@ -24210,7 +24271,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":258,"string-mask":295}],244:[function(require,module,exports){
+},{"mask-factory":259,"string-mask":296}],245:[function(require,module,exports){
 var StringMask = require('string-mask');
 var BrV = require('br-validations');
 var maskFactory = require('mask-factory');
@@ -24231,7 +24292,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"br-validations":272,"mask-factory":258,"string-mask":295}],245:[function(require,module,exports){
+},{"br-validations":273,"mask-factory":259,"string-mask":296}],246:[function(require,module,exports){
 var StringMask = require('string-mask');
 var BrV = require('br-validations');
 var maskFactory = require('mask-factory');
@@ -24264,7 +24325,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"br-validations":272,"mask-factory":258,"string-mask":295}],246:[function(require,module,exports){
+},{"br-validations":273,"mask-factory":259,"string-mask":296}],247:[function(require,module,exports){
 var StringMask = require('string-mask');
 var BrV = require('br-validations');
 var maskFactory = require('mask-factory');
@@ -24285,7 +24346,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"br-validations":272,"mask-factory":258,"string-mask":295}],247:[function(require,module,exports){
+},{"br-validations":273,"mask-factory":259,"string-mask":296}],248:[function(require,module,exports){
 var StringMask = require('string-mask');
 var BrV = require('br-validations');
 
@@ -24422,7 +24483,7 @@ BrIeMaskDirective.$inject = ['$parse'];
 
 module.exports = BrIeMaskDirective;
 
-},{"br-validations":272,"string-mask":295}],248:[function(require,module,exports){
+},{"br-validations":273,"string-mask":296}],249:[function(require,module,exports){
 var StringMask = require('string-mask');
 var maskFactory = require('mask-factory');
 
@@ -24443,7 +24504,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":258,"string-mask":295}],249:[function(require,module,exports){
+},{"mask-factory":259,"string-mask":296}],250:[function(require,module,exports){
 var StringMask = require('string-mask');
 var maskFactory = require('mask-factory');
 
@@ -24484,7 +24545,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":258,"string-mask":295}],250:[function(require,module,exports){
+},{"mask-factory":259,"string-mask":296}],251:[function(require,module,exports){
 var moment = require('moment');
 var StringMask = require('string-mask');
 
@@ -24548,7 +24609,7 @@ DateMaskDirective.$inject = ['$locale'];
 
 module.exports = DateMaskDirective;
 
-},{"moment":276,"string-mask":295}],251:[function(require,module,exports){
+},{"moment":277,"string-mask":296}],252:[function(require,module,exports){
 var m = angular.module('ui.utils.masks.global', [
 	require('../helpers'),
 ])
@@ -24561,7 +24622,7 @@ var m = angular.module('ui.utils.masks.global', [
 
 module.exports = m.name;
 
-},{"../helpers":257,"./date/date":250,"./money/money":252,"./number/number":253,"./percentage/percentage":254,"./scientific-notation/scientific-notation":255,"./time/time":256}],252:[function(require,module,exports){
+},{"../helpers":258,"./date/date":251,"./money/money":253,"./number/number":254,"./percentage/percentage":255,"./scientific-notation/scientific-notation":256,"./time/time":257}],253:[function(require,module,exports){
 var StringMask = require('string-mask');
 var validators = require('validators');
 
@@ -24673,7 +24734,7 @@ MoneyMaskDirective.$inject = ['$locale', '$parse', 'PreFormatters'];
 
 module.exports = MoneyMaskDirective;
 
-},{"string-mask":295,"validators":259}],253:[function(require,module,exports){
+},{"string-mask":296,"validators":260}],254:[function(require,module,exports){
 var validators = require('validators');
 
 function NumberMaskDirective($locale, $parse, PreFormatters, NumberMasks) {
@@ -24780,7 +24841,7 @@ NumberMaskDirective.$inject = ['$locale', '$parse', 'PreFormatters', 'NumberMask
 
 module.exports = NumberMaskDirective;
 
-},{"validators":259}],254:[function(require,module,exports){
+},{"validators":260}],255:[function(require,module,exports){
 var validators = require('validators');
 
 function PercentageMaskDirective($locale, $parse, PreFormatters, NumberMasks) {
@@ -24899,7 +24960,7 @@ PercentageMaskDirective.$inject = ['$locale', '$parse', 'PreFormatters', 'Number
 
 module.exports = PercentageMaskDirective;
 
-},{"validators":259}],255:[function(require,module,exports){
+},{"validators":260}],256:[function(require,module,exports){
 var StringMask = require('string-mask');
 
 function ScientificNotationMaskDirective($locale, $parse) {
@@ -25019,7 +25080,7 @@ ScientificNotationMaskDirective.$inject = ['$locale', '$parse'];
 
 module.exports = ScientificNotationMaskDirective;
 
-},{"string-mask":295}],256:[function(require,module,exports){
+},{"string-mask":296}],257:[function(require,module,exports){
 var StringMask = require('string-mask');
 
 module.exports = function TimeMaskDirective() {
@@ -25084,7 +25145,7 @@ module.exports = function TimeMaskDirective() {
 	};
 };
 
-},{"string-mask":295}],257:[function(require,module,exports){
+},{"string-mask":296}],258:[function(require,module,exports){
 var StringMask = require('string-mask');
 
 var m = angular.module('ui.utils.masks.helpers', []);
@@ -25159,7 +25220,7 @@ m.factory('PreFormatters', [function(){
 	};
 }]);
 
-},{"string-mask":295}],258:[function(require,module,exports){
+},{"string-mask":296}],259:[function(require,module,exports){
 module.exports = function maskFactory(maskDefinition) {
 	return function MaskDirective() {
 		return {
@@ -25206,7 +25267,7 @@ module.exports = function maskFactory(maskDefinition) {
 	};
 };
 
-},{}],259:[function(require,module,exports){
+},{}],260:[function(require,module,exports){
 module.exports = {
 	maxNumber: function(ctrl, value, limit) {
 		var max = parseFloat(limit, 10);
@@ -25218,7 +25279,7 @@ module.exports = {
 	}
 };
 
-},{}],260:[function(require,module,exports){
+},{}],261:[function(require,module,exports){
 var StringMask = require('string-mask');
 var maskFactory = require('mask-factory');
 
@@ -25247,7 +25308,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":258,"string-mask":295}],261:[function(require,module,exports){
+},{"mask-factory":259,"string-mask":296}],262:[function(require,module,exports){
 var m = angular.module('ui.utils.masks.us', [
 	require('../helpers')
 ])
@@ -25255,7 +25316,7 @@ var m = angular.module('ui.utils.masks.us', [
 
 module.exports = m.name;
 
-},{"../helpers":257,"./phone/us-phone":260}],262:[function(require,module,exports){
+},{"../helpers":258,"./phone/us-phone":261}],263:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -25940,11 +26001,11 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],263:[function(require,module,exports){
+},{}],264:[function(require,module,exports){
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":262}],264:[function(require,module,exports){
+},{"./angular-sanitize":263}],265:[function(require,module,exports){
 /**
   * x is a value between 0 and 1, indicating where in the animation you are.
   */
@@ -26573,13 +26634,13 @@ angular.module('duScroll.scrollspy', ['duScroll.spyAPI'])
   };
 }]);
 
-},{}],265:[function(require,module,exports){
+},{}],266:[function(require,module,exports){
 require('angular');
 require('./angular-scroll');
 
 module.exports = 'duScroll';
 
-},{"./angular-scroll":264,"angular":271}],266:[function(require,module,exports){
+},{"./angular-scroll":265,"angular":272}],267:[function(require,module,exports){
 /*
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
@@ -33659,12 +33720,12 @@ angular.module('ui.bootstrap.carousel').run(function() {!angular.$$csp().noInlin
 angular.module('ui.bootstrap.datepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-datepicker-popup.dropdown-menu{display:block;}.uib-button-bar{padding:10px 9px 2px;}</style>'); });
 angular.module('ui.bootstrap.timepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-time input{width:50px;}</style>'); });
 angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); });
-},{}],267:[function(require,module,exports){
+},{}],268:[function(require,module,exports){
 require('./dist/ui-bootstrap-tpls');
 
 module.exports = 'ui.bootstrap';
 
-},{"./dist/ui-bootstrap-tpls":266}],268:[function(require,module,exports){
+},{"./dist/ui-bootstrap-tpls":267}],269:[function(require,module,exports){
 /**
  * @license Angular UI Tree v2.15.0
  * (c) 2010-2016. https://github.com/angular-ui-tree/angular-ui-tree
@@ -35235,11 +35296,11 @@ module.exports = 'ui.bootstrap';
 
 })();
 
-},{}],269:[function(require,module,exports){
+},{}],270:[function(require,module,exports){
 require('./dist/angular-ui-tree');
 module.exports = 'ui.tree';
 
-},{"./dist/angular-ui-tree":268}],270:[function(require,module,exports){
+},{"./dist/angular-ui-tree":269}],271:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.10
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -65059,11 +65120,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],271:[function(require,module,exports){
+},{}],272:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":270}],272:[function(require,module,exports){
+},{"./angular":271}],273:[function(require,module,exports){
 /**
  * br-validations
  * A library of validations applicable to several Brazilian data like I.E., CNPJ, CPF and others
@@ -65707,7 +65768,7 @@ IErules.AP = [{
 		cnpj: CNPJ
 	};
 }));
-},{}],273:[function(require,module,exports){
+},{}],274:[function(require,module,exports){
 /*!
  * Chart.js
  * http://chartjs.org/
@@ -69185,7 +69246,7 @@ IErules.AP = [{
 
 
 }).call(this);
-},{}],274:[function(require,module,exports){
+},{}],275:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.0
  * http://jquery.com/
@@ -79018,7 +79079,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],275:[function(require,module,exports){
+},{}],276:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -93452,7 +93513,7 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],276:[function(require,module,exports){
+},{}],277:[function(require,module,exports){
 //! moment.js
 //! version : 2.12.0
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -97141,7 +97202,7 @@ return jQuery;
     return _moment;
 
 }));
-},{}],277:[function(require,module,exports){
+},{}],278:[function(require,module,exports){
 /**!
  * AngularJS file upload directives and services. Supoorts: file upload/drop/paste, resume, cancel/abort,
  * progress, resize, thumbnail, preview, validation and CORS
@@ -99920,10 +99981,10 @@ ngFileUpload.service('UploadExif', ['UploadResize', '$q', function (UploadResize
 }]);
 
 
-},{}],278:[function(require,module,exports){
+},{}],279:[function(require,module,exports){
 require('./dist/ng-file-upload-all');
 module.exports = 'ngFileUpload';
-},{"./dist/ng-file-upload-all":277}],279:[function(require,module,exports){
+},{"./dist/ng-file-upload-all":278}],280:[function(require,module,exports){
 /* global define */
 
 (function (root, pluralize) {
@@ -100358,7 +100419,7 @@ module.exports = 'ngFileUpload';
   return pluralize;
 });
 
-},{}],280:[function(require,module,exports){
+},{}],281:[function(require,module,exports){
 (function (global){
 /*! https://mths.be/punycode v1.4.1 by @mathias */
 ;(function(root) {
@@ -100895,7 +100956,7 @@ module.exports = 'ngFileUpload';
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],281:[function(require,module,exports){
+},{}],282:[function(require,module,exports){
 function fastMap(array, fn) {
 	var len = array.length,
 		result = new Array(len);
@@ -100965,7 +101026,7 @@ module.exports = function(sPointer) {
 	});
 };
 
-},{}],282:[function(require,module,exports){
+},{}],283:[function(require,module,exports){
 var jsonPointer = require('skeemas-json-pointer');
 
 var protoJsonRefs = {
@@ -101013,7 +101074,7 @@ module.exports = function() {
 	});
 };
 
-},{"skeemas-json-pointer":281}],283:[function(require,module,exports){
+},{"skeemas-json-pointer":282}],284:[function(require,module,exports){
 var validators = require('./validators'),
 	validationContext = require('./validation-context'),
 	jsonRefs = require('skeemas-json-refs');
@@ -101083,7 +101144,7 @@ module.exports.use = function(plugin) {
 	return this;
 };
 
-},{"./validation-context":284,"./validators":290,"skeemas-json-refs":282}],284:[function(require,module,exports){
+},{"./validation-context":285,"./validators":291,"skeemas-json-refs":283}],285:[function(require,module,exports){
 var validationResult = require('./validation-result'),
 	jsonRefs = require('skeemas-json-refs');
 
@@ -101135,7 +101196,7 @@ var makeContext = module.exports = function(schema, context, forceNewResult) {
 	});
 };
 
-},{"./validation-result":285,"skeemas-json-refs":282}],285:[function(require,module,exports){
+},{"./validation-result":286,"skeemas-json-refs":283}],286:[function(require,module,exports){
 function errorToString() {
 	return this.message + ' (pointer: ' + this.context + ')';
 }
@@ -101163,7 +101224,7 @@ module.exports = function(instance) {
 	});
 };
 
-},{}],286:[function(require,module,exports){
+},{}],287:[function(require,module,exports){
 var validateBase = require('./base'),
 	deepEqual = require('./deep-equal');
 
@@ -101305,7 +101366,7 @@ module.exports = function(context, subject, schema) {
 	return valid;
 };
 
-},{"./base":287,"./deep-equal":289}],287:[function(require,module,exports){
+},{"./base":288,"./deep-equal":290}],288:[function(require,module,exports){
 var validators = require('./'),
 	formats = {
 		'date-time': /^\d{4}-(0[0-9]{1}|1[0-2]{1})-[0-9]{2}[t ]\d{2}:\d{2}:\d{2}(\.\d+)?([zZ]|[+-]\d{2}:\d{2})$/i,
@@ -101566,7 +101627,7 @@ function validateBase(context, subject, schema) {
 
 module.exports = validateBase;
 
-},{"./":290}],288:[function(require,module,exports){
+},{"./":291}],289:[function(require,module,exports){
 function validateBoolean(context, subject, schema) {
 	if(typeof subject !== 'boolean') {
 		context.addError('Failed type:boolean criteria', subject, schema);
@@ -101580,7 +101641,7 @@ function validateBoolean(context, subject, schema) {
 
 module.exports = validateBoolean;
 
-},{}],289:[function(require,module,exports){
+},{}],290:[function(require,module,exports){
 function getType(subject) {
 	var type = typeof subject;
 
@@ -101629,7 +101690,7 @@ var deepEqual = module.exports = function(a, b) {
 	return false;
 };
 
-},{}],290:[function(require,module,exports){
+},{}],291:[function(require,module,exports){
 exports.types = {
 	'any': function() { return true; },
 	'array': require('./array'),
@@ -101646,7 +101707,7 @@ exports.deepEqual = require('./deep-equal');
 // base cannot be required until other validators are added
 exports.base = require('./base');
 
-},{"./array":286,"./base":287,"./boolean":288,"./deep-equal":289,"./null":291,"./number":292,"./object":293,"./string":294}],291:[function(require,module,exports){
+},{"./array":287,"./base":288,"./boolean":289,"./deep-equal":290,"./null":292,"./number":293,"./object":294,"./string":295}],292:[function(require,module,exports){
 function validateNull(context, subject, schema) {
 	if(subject !== null) {
 		context.addError('Failed type:null criteria', subject, schema);
@@ -101660,7 +101721,7 @@ function validateNull(context, subject, schema) {
 
 module.exports = validateNull;
 
-},{}],292:[function(require,module,exports){
+},{}],293:[function(require,module,exports){
 function validateNumber(context, subject, schema) {
 	if(typeof subject !== 'number') {
 		context.addError('Failed type:number criteria', subject, schema);
@@ -101728,7 +101789,7 @@ module.exports = function(context, subject, schema) {
 	], subject, schema);
 };
 
-},{}],293:[function(require,module,exports){
+},{}],294:[function(require,module,exports){
 var validateBase = require('./base');
 
 function properties(context, subject, schema, handledProps) {
@@ -101923,7 +101984,7 @@ function validateObject(context, subject, schema) {
 
 module.exports = validateObject;
 
-},{"./base":287}],294:[function(require,module,exports){
+},{"./base":288}],295:[function(require,module,exports){
 var decode = require('punycode').ucs2.decode;
 
 
@@ -101975,7 +102036,7 @@ function validateString(context, subject, schema) {
 
 module.exports = validateString;
 
-},{"punycode":280}],295:[function(require,module,exports){
+},{"punycode":281}],296:[function(require,module,exports){
 (function (root, factory) {
 	if (typeof define === 'function' && define.amd) {
 		// AMD. Register as an anonymous module.
@@ -102169,7 +102230,7 @@ module.exports = validateString;
 	return StringMask;
 }));
 
-},{}],296:[function(require,module,exports){
+},{}],297:[function(require,module,exports){
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
@@ -104208,8 +104269,8 @@ $templateCache.put("select2/select.tpl.html","<div class=\"ui-select-container s
 $templateCache.put("selectize/choices.tpl.html","<div ng-show=\"$select.open\" class=\"ui-select-choices ui-select-dropdown selectize-dropdown single\"><div class=\"ui-select-choices-content selectize-dropdown-content\"><div class=\"ui-select-choices-group optgroup\" role=\"listbox\"><div ng-show=\"$select.isGrouped\" class=\"ui-select-choices-group-label optgroup-header\" ng-bind=\"$group.name\"></div><div role=\"option\" class=\"ui-select-choices-row\" ng-class=\"{active: $select.isActive(this), disabled: $select.isDisabled(this)}\"><div class=\"option ui-select-choices-row-inner\" data-selectable=\"\"></div></div></div></div></div>");
 $templateCache.put("selectize/match.tpl.html","<div ng-hide=\"($select.open || $select.isEmpty())\" class=\"ui-select-match\" ng-transclude=\"\"></div>");
 $templateCache.put("selectize/select.tpl.html","<div class=\"ui-select-container selectize-control single\" ng-class=\"{\'open\': $select.open}\"><div class=\"row\"><div class=\"col-md-11\"><div class=\"selectize-input\" ng-class=\"{\'focus\': $select.open, \'disabled\': $select.disabled, \'selectize-focus\' : $select.focus}\" ng-click=\"$select.open && !$select.searchEnabled ? $select.toggle($event) : $select.activate()\"><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" tabindex=\"-1\" class=\"ui-select-search ui-select-toggle\" ng-click=\"$select.toggle($event)\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-hide=\"!$select.searchEnabled || ($select.selected && !$select.open)\" ng-disabled=\"$select.disabled\" aria-label=\"{{ $select.baseTitle }}\"></div></div><div class=\"col-md-1\"><img ng-if=\"$select.loading\" width=\"30\" src=\"data:image/gif;base64,R0lGODlhlACUAPeAAEuW34q76prE7Wem5GWl5G6q5Wqo5Xyz6FCZ4E6Y4Hmx53Cr5lme4pTA7Fqf4nKt5lyg4kyX30qW31Sb4abL71id4eDt+YK26Y2960yX4LHS8anM8Nnp+K7Q8fz9/k2X4MHa9I++60+Y4EqV38Xd9Xiw58rg9rjV8nav51Wc4aTK72up5WOk41Ka4NPl94a56p7G7rXU8oS46fn7/v3+/lKa4ZfC7GGj41+i4+zz+/r8/n606PD2/HWv5t7r+bzX80yW32Ci44O36c7i9mCj412h41Sc4cPc9NHk9+Tv+r7Z86vO8Obw+rvX89bn9/T4/ejy+6LI7lac4Z/H7lie4e71/H+16FGZ4JC/6/7+/l6h4/X5/Vug4uz0/FGa4KPJ79Xm+Nzq+LnW88/i9snf9vb6/efx+7PT8ePu+ZXC7czh9vL3/azO8PH3/Mje9ery+9zr+ZzF7uLt+s/j97fU8v7+/7TS8qDH7srg9fj7/evz/Njn9+fw+vj6/vr7/f///////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NzQ4RDczNjVBRDM0MTFFNTg0ODlGMDgwQkJDRjVCMDAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NzQ4RDczNjZBRDM0MTFFNTg0ODlGMDgwQkJDRjVCMDAiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3NDhENzM2M0FEMzQxMUU1ODQ4OUYwODBCQkNGNUIwMCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo3NDhENzM2NEFEMzQxMUU1ODQ4OUYwODBCQkNGNUIwMCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5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\"></div></div><div class=\"ui-select-choices\"></div></div>");}]);
-},{}],297:[function(require,module,exports){
+},{}],298:[function(require,module,exports){
 require('./dist/select.js');
 module.exports = 'ui.select';
 
-},{"./dist/select.js":296}]},{},[1]);
+},{"./dist/select.js":297}]},{},[1]);

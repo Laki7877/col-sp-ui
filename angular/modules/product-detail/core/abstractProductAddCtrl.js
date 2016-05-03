@@ -459,7 +459,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         resolve: {
 
         }
-      })
+      });
+      
       modalInstance.result.then(function (selectedItem) {
         if (selectedItem == 'yes') {
           $scope.publish('DF');

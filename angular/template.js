@@ -18,6 +18,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
   );
 
 
+  $templateCache.put('common/abstractConfirmationModal',
+    "<div class=\"modal-header no-border ng-scope\"><button type=button class=close aria-label=Close ng-click=no()><span class=padding-left-15 aria-hidden=true>×</span></button></div><div class=\"modal-body confirmation-modal no-margin ng-scope\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20 ng-binding\">{{ line1 }}</h2><div>{{ line2 }}</div></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white ng-binding\" ng-click=no()>Cancel</button> <button type=button class=\"btn btn-green\" ng-click=yes()>Confirm</button></div></div></div>"
+  );
+
+
   $templateCache.put('common/alert',
     "<div id=alert class=alert ng-class=\"['alert-' + (type || 'warning')]\" role=alert><span class=\"close color opacity-1\" ng-class=\"'color-' + (type || 'warning')\" aria-hidden=true ng-show=closeable ng-click=\"close({$event: $event})\">&times;</span><ng-transclude><ng-transclude></ng-transclude></div>"
   );

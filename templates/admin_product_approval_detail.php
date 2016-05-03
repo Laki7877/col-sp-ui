@@ -95,13 +95,13 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products Approve']
 																						<div class="width-label"><label class="control-label"></label></div>
 																						<div class="button-size-normal">
 																								<a ng-disabled="!canApprove()"
-																								class="button-size-normal btn btn-green btn-width-xl" ng-click="publish('AP')">Approve</a>
+																								class="button-size-normal btn btn-green btn-width-xl" ng-click="confirmAP()">Approve</a>
 																						</div>
 																						<div class="button-size-normal margin-left-10">
-																								<a class="button-size-normal btn btn-green btn-width-xl" ng-click="publish('AP')">Force Approve</a>
+																								<a class="button-size-normal btn btn-green btn-width-xl" ng-click="confirmFA()">Force Approve</a>
 																						</div>
 																						<div class="button-size-normal margin-left-10">
-																								<a class="button-size-normal btn btn-red btn-width-xl" ng-click="publish('RJ')">Reject</a>
+																								<a class="button-size-normal btn btn-red btn-width-xl" ng-click="confirmRJ()">Reject</a>
 																						</div>
 																				</div>
 																		</div>
