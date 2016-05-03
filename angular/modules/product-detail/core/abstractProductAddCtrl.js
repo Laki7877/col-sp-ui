@@ -41,7 +41,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $productAdd.fill(checkSchema, catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory, $scope.controlFlags, $scope.variationFactorIndices, res).then(function () {
             $scope.formData.ProductId = Number(res.ProductId);
             $scope.pageState.reset();
-            $scope.alert.success('This is a preview of revision history on ' + moment(historyDate).format("d/mm/YY"));
+            $scope.alert.success('This is a preview of revision history on ' + moment(historyDate).format("d/MM/YY"));
             $scope.variantPtr = $scope.formData.MasterVariant;
             $scope.addProductForm.$setPristine(true);
             $scope.TimeMachine.active = true;
