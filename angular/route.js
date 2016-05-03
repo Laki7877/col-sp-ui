@@ -52,7 +52,7 @@ var seller = {
 };
 var admin = {
 	'Home|fa-home': {
-		'Homepage': '/admin/onboarding'
+		'Onboarding': '/admin/onboarding'
 	},
 	'Products|fa-tag': {
 		'View All Products': '/admin/products',

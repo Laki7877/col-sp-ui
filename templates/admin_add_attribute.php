@@ -54,6 +54,14 @@
                   required />
               </div>
               <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.DescriptionEn"
+                nc-template-options-path="addAttributeForm/DescriptionEn"
+                nc-label="Description">
+                <textarea class="form-control"
+                  name="AttributeDescriptionEn"
+                  ng-model="formData.AttributeDescriptionEn"></textarea>
+              </div>
+              <div nc-template="common/input/form-group-with-label"
                 nc-label="Required">
                 <ui-select ng-model="formData.Required" ng-disabled="formData.VisibleTo == 'AD'" search-enabled="false">
                   <ui-select-match>
@@ -143,6 +151,9 @@
                         </div>
                         <div class="input-column input-xxl">
                           <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['ltChoiceTh' + $index])}" maxlength="100" required/>
+                        </div>
+                        <div class="input-column input-l">
+                          <input name="ltChoicePos{{$index}}" type="number" class="form-control" ng-model="choice.Position" ng-class="{'has-error': isInvalid(form['ltChoicePos' + $index])}" required/>
                         </div>
                         <img class="image-wrapper"
                           ng-if="choice.Image.Url"

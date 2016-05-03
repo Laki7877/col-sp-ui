@@ -59,6 +59,21 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										maxlength="100"
 										required />
 									</div>
+									<!-- Domain Name -->
+									<div ng-template="common/input/text2"
+										ng-template-options="{
+										'label': 'Domain Name',
+										'show': $root.isInvalid(form.DomainName),
+										'conditions' : form.DomainName.$error
+										}">
+										<input
+										class="form-control"
+										type="url"
+										name="DomainName"
+										ng-model="formData.DomainName"
+										ng-class="{ 'has-error' : $root.isInvalid(form.DomainName) }"
+										/>
+									</div>
 									<!-- URL Key -->
 									<div ng-template="common/input/text2"
 										ng-template-options="{
