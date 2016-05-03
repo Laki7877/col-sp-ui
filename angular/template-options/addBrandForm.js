@@ -26,7 +26,7 @@ module.exports = {
         }
     },
     SortBy: {
-
+      'labelClass': 'required'
     },
     Status: {
       
