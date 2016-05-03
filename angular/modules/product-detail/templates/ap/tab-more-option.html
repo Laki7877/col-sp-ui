@@ -99,7 +99,7 @@
                         <div class="width-label">
                             <label class="control-label">Control Flag</label>
                         </div>
-                        <div class="width-field-normal">
+                        <div class="width-field-xl">
                             <div class="checkbox multiple-checkbox">
 
                                 <label>
@@ -141,7 +141,7 @@
                                     <th class="thead-approved-date">Approved Date</th>
                                     <th class="thead-submitted-date">Submitted Date</th>
                                     <th class="thead-submitted-by">Submitted By</th>
-                                    <th class="thead-actions">Actions</th>
+                                    <th class="thead-actions">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -150,7 +150,7 @@
                                     <td>{{ row.SubmitOn | date: 'dd/MM/yyyy HH:mm' }}</td>
                                     <td>{{ row.SubmitBy }}</td>
                                     <td>
-                                        <a ng-click="TimeMachine.preview(row.HistoryId)" class="btn btn-white">Preview</a>
+                                        <a ng-click="TimeMachine.preview(row.HistoryId)" class="btn btn-white btn-width-xxl">Preview This Version</a>
                                     </td>
                                 </tr>
 
