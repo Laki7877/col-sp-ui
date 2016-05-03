@@ -11,7 +11,7 @@ module.exports = function($scope, $controller, ProductTempService, config) {
 			bulks: [{
 				name: 'Create Single Product',
 				fn: function(arr, cb, cat) {
-					console.log(arr, cb, cat);
+					//WFENDPOINT
 				},
 				modal: {
 					size: 'category-section modal-lg column-4',

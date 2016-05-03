@@ -52,7 +52,7 @@ var seller = {
 };
 var admin = {
 	'Home|fa-home': {
-		'Homepage': '/admin/onboarding'
+		'Onboarding': '/admin/onboarding'
 	},
 	'Products|fa-tag': {
 		'View All Products': '/admin/products',
@@ -169,6 +169,6 @@ function generateRouteArray(obj) {
 module.exports = {
   seller: generateRouteArray(seller),
   admin: generateRouteArray(admin),
-  reserve: ['add', 'select', 'import', 'update', 'export', 'reviews', 'images', 'shippinglist'],
+  reserve: ['add', 'select', 'import', 'update', 'export', 'reviews', 'images', 'shippinglist', 'groups'],
   permission: permission
 }

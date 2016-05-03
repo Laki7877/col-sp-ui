@@ -13,6 +13,12 @@
 					</small>
 				</h1>
 		    <span class="float-right page-header-action">
+				<button type="button" class="btn-white btn btn-width-xl margin-right-10" ng-click="expandAll()">
+					Expand All
+				</button>
+				<button type="button" class="btn-white btn btn-width-xl margin-right-10" ng-click="collapseAll()">
+					Collapse All
+				</button>
 		        <button type="button" class="btn-blue btn btn-width-xxl" ng-click="open()">
 		          Add Category
 		        </button>

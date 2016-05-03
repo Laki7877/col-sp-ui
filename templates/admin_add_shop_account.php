@@ -59,6 +59,17 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										maxlength="100"
 										required />
 									</div>
+									<!-- Domain Name -->
+									<div ng-template="common/input/text2"
+										ng-template-options="{
+										'label': 'Domain Name'
+										}">
+										<input
+										class="form-control"
+										name="DomainName"
+										ng-model="formData.DomainName"
+										/>
+									</div>
 									<!-- URL Key -->
 									<div ng-template="common/input/text2"
 										ng-template-options="{
@@ -142,14 +153,14 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 									<!-- Max local cat -->
 									<div ng-template="common/input/text2"
 										ng-template-options="{
-										'label': 'Maximum Local Category',
+										'label': 'Clone Global Category',
 										'inputSize' : 'small',
 										'error' : {
-										'show': $root.isInvalid(form.MaxLocalCategory),
-										'conditions' : form.MaxLocalCategory.$error
+										'show': $root.isInvalid(form.CloneGlobalCategory),
+										'conditions' : form.CloneGlobalCategory.$error
 										}
 										}">
-										<ui-select ng-model="formData.CloneGlobalCategory" search-enabled="false" required>
+										<ui-select name="CloneGlobalCategory" ng-model="formData.CloneGlobalCategory" search-enabled="false" required>
 											<ui-select-match placeholder="- Select Type -">
 												<span ng-bind="$select.selected.name"></span>
 											</ui-select-match>

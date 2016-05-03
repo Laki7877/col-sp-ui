@@ -54,6 +54,14 @@
                   required />
               </div>
               <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.DescriptionEn"
+                nc-template-options-path="addAttributeForm/DescriptionEn"
+                nc-label="Description">
+                <textarea class="form-control"
+                  name="AttributeDescriptionEn"
+                  ng-model="formData.AttributeDescriptionEn"></textarea>
+              </div>
+              <div nc-template="common/input/form-group-with-label"
                 nc-label="Required">
                 <ui-select ng-model="formData.Required" ng-disabled="formData.VisibleTo == 'AD'" search-enabled="false">
                   <ui-select-match>
@@ -144,6 +152,9 @@
                         <div class="input-column input-xxl">
                           <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['ltChoiceTh' + $index])}" maxlength="100" required/>
                         </div>
+                        <div class="input-column input-l">
+                          <input name="ltChoicePos{{$index}}" type="number" class="form-control" ng-model="choice.Position" ng-class="{'has-error': isInvalid(form['ltChoicePos' + $index])}" required/>
+                        </div>
                         <img class="image-wrapper"
                           ng-if="choice.Image.Url"
                           style="cursor: pointer;margin-top:-4px;"
@@ -172,7 +183,7 @@
                       </a>
                     </div>
                   </div>
-                  <div nc-template="common/input/form-group-with-label"
+                  <!--div nc-template="common/input/form-group-with-label"
                     nc-template-form="form.LT_DefaultValue"
                     nc-template-options-path="addAttributeForm/DefaultValue"
                     nc-label="If empty, value equals">
@@ -183,7 +194,7 @@
                       ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
                       maxlength="100"
                       />
-                  </div>
+                  </div-->
                 </div>
                 <div ng-switch-when="HB">
                   <div nc-template="common/input/form-group-with-label"
@@ -232,7 +243,7 @@
                       </a>
                     </div>
                   </div>
-                  <div nc-template="common/input/form-group-with-label"
+                  <!--div nc-template="common/input/form-group-with-label"
                     nc-template-form="form.CB_DefaultValue"
                     nc-template-options-path="addAttributeForm/DefaultValue"
                     nc-label="If empty, value equals">
@@ -243,7 +254,7 @@
                       ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
                       maxlength="100"
                       />
-                  </div>
+                  </div-->
                 </div>
               </div>
             </div>

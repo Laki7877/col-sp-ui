@@ -3,7 +3,9 @@ module.exports = function(common) {
 	var service = common.Rest('/Users/Admin');
 
 	service.generate = function() {
-		return {};
+		return {
+			
+		};
 	};
 
 	service.serialize = function(data) {
