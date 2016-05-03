@@ -120,16 +120,17 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				'ngInject';
 				$scope.$parent.modalScope = $scope;
 				$scope.alert = new NcAlert();
-				$scope.statusOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
 				$scope.attributeSetOptions = [];
+				$scope.statusOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
 				$scope.bannerUploader = ImageService.getUploaderFn('/GlobalCategoryImages', {
 					data: { Type: 'Banner' }
 				});
 				$scope.bannerSmUploader = ImageService.getUploaderFn('/GlobalCategoryImages', {
 					data: { Type: 'SmallBanner' }
-				});				$scope.formData = {};
+				});				
+				$scope.formData = {};
 				$scope.saving = false;
-				$scope.loading = true;
+				$scope.loading = false;
 				$scope.products = [];
 				$scope.availableProducts = -1;
 				$scope.id = id;
@@ -147,6 +148,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 					$scope.loading = false;
 				} else {
 					//Load cat
+					$scope.loading = true;
 					GlobalCategoryService.get(id)
 						.then(function(data) {
 							$scope.formData = GlobalCategoryService.deserialize(data);

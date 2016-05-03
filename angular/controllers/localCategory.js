@@ -126,7 +126,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				});
 				$scope.formData = {};
 				$scope.saving = false;
-				$scope.loading = true;
+				$scope.loading = false;
 				$scope.products = [];
 				$scope.availableProducts = -1;
 				$scope.id = id;
@@ -144,6 +144,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 					$scope.loading = false;
 				} else {
 					//Check product count
+					$scope.loading = true;
 					LocalCategoryService.get(id)
 						.then(function(data) {
 							$scope.formData = LocalCategoryService.deserialize(data);

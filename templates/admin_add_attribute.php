@@ -183,7 +183,7 @@
                       </a>
                     </div>
                   </div>
-                  <div nc-template="common/input/form-group-with-label"
+                  <!--div nc-template="common/input/form-group-with-label"
                     nc-template-form="form.LT_DefaultValue"
                     nc-template-options-path="addAttributeForm/DefaultValue"
                     nc-label="If empty, value equals">
@@ -194,7 +194,7 @@
                       ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
                       maxlength="100"
                       />
-                  </div>
+                  </div-->
                 </div>
                 <div ng-switch-when="HB">
                   <div nc-template="common/input/form-group-with-label"
@@ -243,7 +243,7 @@
                       </a>
                     </div>
                   </div>
-                  <div nc-template="common/input/form-group-with-label"
+                  <!--div nc-template="common/input/form-group-with-label"
                     nc-template-form="form.CB_DefaultValue"
                     nc-template-options-path="addAttributeForm/DefaultValue"
                     nc-label="If empty, value equals">
@@ -254,7 +254,7 @@
                       ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
                       maxlength="100"
                       />
-                  </div>
+                  </div-->
                 </div>
               </div>
             </div>
