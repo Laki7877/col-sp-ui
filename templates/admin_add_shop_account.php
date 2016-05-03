@@ -151,7 +151,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										</ui-select>
 									</div>
 									<!-- Max local cat -->
-									<div ng-template="common/input/text2"
+									<div ng-show="!(id != 0)" 
+										ng-template="common/input/text2"
 										ng-template-options="{
 										'label': 'Clone Global Category',
 										'inputSize' : 'small',
