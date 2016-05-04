@@ -16104,6 +16104,10 @@ tr.angular-ui-tree-empty {
 }
 
 /* line 4, ../../../assets/_image_management.scss */
+.image-management .content-text h4 {
+  font-size: 12px;
+}
+/* line 8, ../../../assets/_image_management.scss */
 .image-management .form-section-content {
   display: flex;
   margin-top: 10px;
@@ -16111,57 +16115,57 @@ tr.angular-ui-tree-empty {
   padding-left: 15px;
   padding-right: 15px;
 }
-/* line 11, ../../../assets/_image_management.scss */
+/* line 15, ../../../assets/_image_management.scss */
 .image-management .feature-text {
   font-size: 12px;
   margin-left: 27px;
   height: 20px;
 }
-/* line 16, ../../../assets/_image_management.scss */
+/* line 20, ../../../assets/_image_management.scss */
 .image-management .content-text {
   width: 140px;
   display: block;
   float: left;
 }
-/* line 22, ../../../assets/_image_management.scss */
+/* line 26, ../../../assets/_image_management.scss */
 .image-management .picture-container, .image-management .drop-zone-container {
   display: block;
   float: left;
 }
-/* line 27, ../../../assets/_image_management.scss */
+/* line 31, ../../../assets/_image_management.scss */
 .image-management .drop-zone-container {
   margin-left: 10px;
   flex-grow: 100;
 }
-/* line 32, ../../../assets/_image_management.scss */
+/* line 36, ../../../assets/_image_management.scss */
 .image-management .drop-zone-container.disabled .image-drop-zone {
   background-image: none;
   background-color: #BCC7D5;
 }
-/* line 39, ../../../assets/_image_management.scss */
+/* line 43, ../../../assets/_image_management.scss */
 .image-management .drop-zone-container.no-background .image-drop-zone {
   background-image: none;
   background-color: #edf2f9;
   border: solid 1px #BCC7D5;
 }
-/* line 47, ../../../assets/_image_management.scss */
+/* line 51, ../../../assets/_image_management.scss */
 .image-management .image-drop-wrapper {
   width: 100%;
   margin-right: 20px;
 }
-/* line 52, ../../../assets/_image_management.scss */
+/* line 56, ../../../assets/_image_management.scss */
 .image-management .image-drop-zone {
   height: 228px;
 }
-/* line 56, ../../../assets/_image_management.scss */
+/* line 60, ../../../assets/_image_management.scss */
 .image-management .image-drop-zone-text {
   width: 120px;
 }
-/* line 60, ../../../assets/_image_management.scss */
+/* line 64, ../../../assets/_image_management.scss */
 .image-management .alert-wrapper {
   margin: 15px 15px 15px 15px;
 }
-/* line 64, ../../../assets/_image_management.scss */
+/* line 68, ../../../assets/_image_management.scss */
 .image-management .featured-image-wrapper {
   display: none;
   font-size: 11px;
@@ -16169,11 +16173,11 @@ tr.angular-ui-tree-empty {
   margin-left: 17px;
 }
 
-/* line 73, ../../../assets/_image_management.scss */
+/* line 77, ../../../assets/_image_management.scss */
 .image-management {
   margin-bottom: 20px;
 }
-/* line 75, ../../../assets/_image_management.scss */
+/* line 79, ../../../assets/_image_management.scss */
 .image-management .image-thumbs-actions {
   border: 1px solid #BCC7D5;
   background-color: #edf2f9;
@@ -16232,27 +16236,27 @@ tr.angular-ui-tree-empty {
 .image-management .image-thumbs-actions .actions-wrapper.actions-4 .action {
   width: 25%;
 }
-/* line 77, ../../../assets/_image_management.scss */
+/* line 81, ../../../assets/_image_management.scss */
 .image-management .image-thumbs-actions .actions-wrapper {
   padding: 4px 0px;
   height: 28px;
 }
-/* line 80, ../../../assets/_image_management.scss */
+/* line 84, ../../../assets/_image_management.scss */
 .image-management .image-thumbs-actions .actions-wrapper .disabled {
   opacity: 0.4 !important;
   pointer-events: none;
 }
-/* line 84, ../../../assets/_image_management.scss */
+/* line 88, ../../../assets/_image_management.scss */
 .image-management .image-thumbs-actions .actions-wrapper .action .fa {
   font-size: 14px;
 }
-/* line 90, ../../../assets/_image_management.scss */
+/* line 94, ../../../assets/_image_management.scss */
 .image-management .image-management-list {
   padding: 0;
   max-width: 475px;
   margin: 0;
 }
-/* line 96, ../../../assets/_image_management.scss */
+/* line 100, ../../../assets/_image_management.scss */
 .image-management .image-management-list .list-item {
   display: block;
   float: left;
