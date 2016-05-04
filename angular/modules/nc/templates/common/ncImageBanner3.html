@@ -12,16 +12,23 @@
 					<div class="image-drop-zone-text">
 						<p><i class="fa fa-image fa-3x color-theme"></i></p>
 						<p>Drag &amp; drop your product images here</p>
+						<p>
+							<a href="javascript:;"
+							ngf-select="upload($files)"
+							ngf-multiple="true"
+							ngf-accept="'.png,.jpg,.jpeg'"
+							>or select images from your computer</a>
+						</p>
 					</div>
 				</div>
-				<div class="image-select-alternative-text">
+				<!-- <div class="image-select-alternative-text">
 					<span>Or</span>
 					<a href="javascript:;"
 					ngf-select="upload($files)"
 					ngf-multiple="true"
 					ngf-accept="'.png,.jpg,.jpeg'"
 					>Select Images from your computer</a>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="col-xs-5" ng-transclude></div>
