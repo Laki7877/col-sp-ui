@@ -14408,12 +14408,12 @@ form h6 {
   margin-bottom: 0;
 }
 /* line 175, ../../../assets/_form.sass */
-.ah-form .two-lines-label .control-label, .ah-form .two-lines-label .form-text {
-  padding-top: 0px;
-}
-/* line 178, ../../../assets/_form.sass */
 .ah-form .control-label, .ah-form .form-text {
   padding-top: 8px;
+}
+/* line 178, ../../../assets/_form.sass */
+.ah-form .two-lines-label .control-label, .ah-form .two-lines-label .form-text {
+  padding-top: 0px;
 }
 /* line 181, ../../../assets/_form.sass */
 .ah-form .form-text {
@@ -16490,5 +16490,10 @@ ul[dnd-list] .dndPlaceholder {
 
 /* line 78, ../../../assets/_additional_code.scss */
 ul[dnd-list] .dndDraggingSource {
+  display: none !important;
+}
+
+/* line 31, ../../../assets/screen.scss */
+[ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }

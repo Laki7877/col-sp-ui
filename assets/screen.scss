@@ -27,3 +27,7 @@
 @import "angular_print";
 @import "login";
 @import "additional_code";
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
