@@ -76,7 +76,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
           </div>
           <div class="view_all_row" ng-show="newOrdersData.length == 10">
             <a ng-click="linkToOrdersPage()">View All ({{totalOrders}})</a>
-          </div>  
+          </div>
         </div>
       </div>
 
@@ -158,6 +158,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Dashboard'])
             <a ng-click="linkToAllNewsletters()">View All ({{totalNews}})</a>
           </div>
         </div>
+      </div>
+
+      <div class="small color-grey">
+        Remark: The information on this page will update every 15 minutes.
       </div>
 
     </div>
