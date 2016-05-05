@@ -108,6 +108,7 @@ var permission = {
 	49: '/products/groups',
 	50: '/inventory',
 	52: '/coupons',
+	53: '/coupons/add',
 	55: '/shop/settings',
 	56: '/shop/appearance',
 	57: ['/roles', '/accounts'],

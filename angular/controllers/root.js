@@ -174,7 +174,11 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
         if (R.User.IsAdmin) {
           $window.location.href = "/admin";
         } else {
-          $window.location.href = "/products";
+          if($rootScope.permit(29)) {
+            $window.location.href = "/dashboard";
+          } else {
+            $window.location.href = "/onboarding";
+          }
         }
       }, function() {
         //alert("Fatal error while logging out.");
