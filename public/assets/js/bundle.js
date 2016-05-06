@@ -4542,7 +4542,12 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
   //Check url acccess permission for this page
   if(!$rootScope.permitUrl($window.location.pathname) && $window.location.pathname.indexOf("/login") == -1) {
     $rootScope.DisablePage = true;
-    util.page404();
+    
+    if($window.location.pathname == '/dashboard' && !$rootScope.permit(29)) {
+      $window.location.href = "/onboarding";
+    } else {
+      util.page404();
+    }
   }
 
   //Get Shop activity
@@ -15496,14 +15501,10 @@ module.exports = ["common", "$base64", "storage", "$q", "$rootScope", function(c
 
     service.getRedirPath = function(profile){
         if(profile.User.IsAdmin === true){
-            return '/admin';
+            return '/admin'
         } else {
         	if(profile.Shop) {
-        		var url = profile.Shop.Status == 'AT' ? '/dashboard' : '/onboarding';
-        		if(!$rootScope.permit(29)) {
-        			url = '/onboarding';
-        		}
-        		return url;
+        		return profile.Shop.Status == 'AT' ? '/dashboard' : '/onboarding';
         	} else {
         		return '/products';
         	}

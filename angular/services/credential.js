@@ -14,14 +14,10 @@ module.exports = function(common, $base64, storage, $q, $rootScope) {
 
     service.getRedirPath = function(profile){
         if(profile.User.IsAdmin === true){
-            return '/admin';
+            return '/admin'
         } else {
         	if(profile.Shop) {
-        		var url = profile.Shop.Status == 'AT' ? '/dashboard' : '/onboarding';
-        		if(!$rootScope.permit(29)) {
-        			url = '/onboarding';
-        		}
-        		return url;
+        		return profile.Shop.Status == 'AT' ? '/dashboard' : '/onboarding';
         	} else {
         		return '/products';
         	}
