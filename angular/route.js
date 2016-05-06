@@ -118,7 +118,7 @@ var permission = {
 	65: '/products/groups',
 	66: '/products/images',
 	68: '/inventory',
-	69: '/coupons'
+	69: ['/coupons', '/coupons/add']
 };
 
 function generateRouteArray(obj) {

@@ -3,8 +3,8 @@ module.exports = function($scope, $rootScope, $controller, SellerCouponService, 
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
   $scope.filters = config.DROPDOWN.COUPON_SELLER_FILTER;
   $scope.discount = config.DROPDOWN.COUPON_DISCOUNT;
-  $scope.manageable = $rootScope.permit(53);
-
+  $scope.manageable = !$rootScope.permit(53);
+  
   //Abstract Add Ctrl
   $controller('AbstractAddCtrl', {
     $scope: $scope,

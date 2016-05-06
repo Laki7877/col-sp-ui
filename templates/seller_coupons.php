@@ -2,6 +2,7 @@
 
 <?php $this->start('page-body') ?>
   <div ng-controller="SellerCouponCtrl">
+    <nc-alert nc-model="alert"></nc-alert>
     <nc-page-title nc-title="Coupons" icon="fa-bookmark">
         <a ng-if="$root.permit(53)" ng-href="/coupons/add" class="btn ng-scope btn-blue btn-width-xxl">Add Coupon</a>
     </nc-page-title>

@@ -85,6 +85,12 @@ module.exports = function($scope, $controller, options, Product, LocalCategorySe
 			$scope.advanceSearchOptions.Brands = data;
 		});
 
+	//Load all Shops
+	ShopService.list()
+		.then(function(data) {
+			$scope.advanceSearchOptions.Shops = data;
+		});
+
 	//Load Global category
 	GlobalCategoryService.list()
 		.then(function(data) {

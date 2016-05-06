@@ -25,6 +25,7 @@ angular.module('nc')
 					Brands: [],
 					Pids: [],
 					Skus: [],
+					Shops: [],
 					LocalCategories: [],
 					GlobalCategories: [],
 					Admin: true

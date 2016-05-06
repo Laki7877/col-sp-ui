@@ -59,8 +59,23 @@ module.exports = {
     Instagram: {
         inputSize: 'large'
     },
+    SocialMediaLink: {
+        inputSize: 'large',
+        error: {
+            messages: {
+                url: 'Please enter a valid URL'
+            }
+        }
+    },
     StockAlert: {
         inputSize: 'small',
         tooltip: "Input number of stock before customer will get alerted when they visit your product page"
+    },
+    Email: {
+        error: {
+            messages: {
+                email: 'Please enter a valid Email'
+            }
+        }
     }
 }

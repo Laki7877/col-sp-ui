@@ -27,13 +27,27 @@
 	                                </ui-select-choices>
 	                            </ui-select>
 						</div>
-						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Brand" nc-label="Brand Name" nc-template-options-path="searchForm/Brands">
+						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Brands" nc-label="Brand Name" nc-template-options-path="searchForm/Brands">
 							    <ui-select ng-model="formData.Brands" name="Brands" nc-tag-validator multiple tagging-tokens=",|ENTER" tagging-label="" nc-tag-field>
 	                                <ui-select-match>
 	                                    {{$item.BrandNameEn}}
 	                                </ui-select-match>
 	                                <ui-select-choices repeat="item in options.Brands | filter:{BrandNameEn: $select.search} track by $index">
 	                                    {{item.BrandNameEn}}
+	                                </ui-select-choices>
+	                            </ui-select>
+						</div>
+						<div ng-show="options.Admin"
+							nc-template="common/input/form-group-with-label" 
+							nc-template-form="form.Shop" 
+							nc-label="Shop Name" 
+							nc-template-options-path="searchForm/Shops">
+							    <ui-select ng-model="formData.Shops" name="Shops" nc-tag-validator multiple tagging-tokens=",|ENTER" tagging-label="" nc-tag-field>
+	                                <ui-select-match>
+	                                    {{$item.ShopNameEn}}
+	                                </ui-select-match>
+	                                <ui-select-choices repeat="item in options.Shops | filter:{ShopNameEn: $select.search} track by $index">
+	                                    {{item.ShopNameEn}}
 	                                </ui-select-choices>
 	                            </ui-select>
 						</div>

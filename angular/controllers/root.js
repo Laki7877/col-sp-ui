@@ -93,28 +93,66 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
     }
   } 
 
+  var permitParent = function(p) {
+    var parent = false; 
+    var oparent = false;
+    
+    if(p.Parent > 0) {
+      //has perm?
+      var i = _.findIndex($rootScope.Profile.Permission, function(item) {
+        if(item.PermissionId == p.Parent) {
+          return true;
+        }
+      });
+      if(i >= 0) {
+        parent = permitParent($rootScope.Profile.Permission[i]);
+      } else {
+        parent = false;
+      }
+    } else {
+      parent = true;
+    }
+
+    if(p.OverrideParent > 0) {
+      //has perm?
+      var i = _.findIndex($rootScope.Profile.Permission, function(item) {
+        if(item.PermissionId == p.OverrideParent) {
+          return true;
+        }
+      });
+      if(i >= 0) {
+        oparent = permitParent($rootScope.Profile.Permission[i]);
+      } else {
+        oparent = false;
+      }
+    } else {
+      oparent = true
+    }
+
+    return oparent ? parent : false;
+  }
+
   $rootScope.hasPermission = function(id) {
     return _.findIndex($rootScope.Profile.Permission, function(item) {
       if(item.PermissionId == id) {
-        if(item.OverrideParent > 0) {
-          return (_.findIndex($rootScope.Profile.Permission, function(e) {
-              return e.PermissionId === item.OverrideParent;
-            }) >= 0);
-        } else {
-          return true;
-        }
+        return permitParent(id);
       }
       else {
         return false;
       }
     }) >= 0;
-  }
+  };
 
   //Handle permission
   $rootScope.permit = function(id) {
     //return true;
     return $rootScope.hasPermission(id);
   };
+
+  if($rootScope.Profile) {  
+    console.log($rootScope.permit(52),$rootScope.permit(53), $rootScope.permit(69));
+    console.log($rootScope.Profile.Permission);
+  }
 
   //Check url access permission
   $rootScope.permitUrl = function(url) {

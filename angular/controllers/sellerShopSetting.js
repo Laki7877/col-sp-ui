@@ -99,7 +99,7 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 			//Form id
 			$scope.alert.error(util.saveAlertError());
 		}
-	}
+	};
 	$scope.uploadLogo = function(file) {
 		if(_.isNil(file)) {
 			return;
@@ -111,6 +111,7 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 			.then(function(response) {
 				$scope.formData.ShopImage = response.data;
 			}, function(err) {
+				console.log(err);
 				$scope.formData.ShopImage = null;
 				$scope.alert.error(common.getError(err.data));
 			});
