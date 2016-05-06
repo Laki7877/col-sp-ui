@@ -1,6 +1,6 @@
 <?php
 
-$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System'])
+$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accounts'])
 ?>
 
 <?php $this->start('page-body') ?>
@@ -151,7 +151,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 										</ui-select>
 									</div>
 									<!-- Max local cat -->
-									<div ng-show="!(id != 0)" 
+									<div ng-show="!(id != 0)"
 										ng-template="common/input/text2"
 										ng-template-options="{
 										'label': 'Clone Global Category',
@@ -263,7 +263,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 												</ui-select-choices>
 											</ui-select>
 				                    </div>
-				                    <div class="margin-top-10" 
+				                    <div class="margin-top-10"
 				                    	nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.BankName"
 				                    	nc-label="Bank Name"
@@ -569,15 +569,15 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 				                <div class="form-section-header">
 				                    <h2>Shop Address and Contact Information</h2></div>
 				                <div class="form-section-content">
-				                    <div nc-template="common/input/form-group-with-label" 
+				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-label="Address 1">
 				                        <input class="form-control" ng-model="formData.Address1" />
 				                    </div>
-				                    <div nc-template="common/input/form-group-with-label" 
+				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-label="Address 2">
 				                        <input class="form-control" ng-model="formData.Address2" />
 				                    </div>
-				                    <div nc-template="common/input/form-group-with-label" 
+				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-label="Address 3">
 				                        <input class="form-control" ng-model="formData.Address3" />
 				                    </div>
@@ -633,7 +633,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 												</ui-select-choices>
 											</ui-select>
 				                    </div>
-				                    <div ng-show="formData.Province"  
+				                    <div ng-show="formData.Province"
 				                    	nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.City"
 				                    	nc-label="City"
@@ -647,7 +647,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 												</ui-select-choices>
 											</ui-select>
 				                    </div>
-				                    <div ng-show="formData.City" 
+				                    <div ng-show="formData.City"
 				                    	nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.District"
 				                    	nc-label="District"
@@ -661,7 +661,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 												</ui-select-choices>
 											</ui-select>
 				                    </div>
-				                    <div ng-show="formData.City" 
+				                    <div ng-show="formData.City"
 				                    	nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.PostalCode"
 				                    	nc-template-options-path="addShopAccountForm/PostalCode"

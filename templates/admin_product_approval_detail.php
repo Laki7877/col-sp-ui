@@ -1,5 +1,5 @@
 <?php
-$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products Approve']);
+$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Product Approval']);
 ?>
 <?php $this->start('page-body') ?>
 <script type="text/ng-template" id="page-btn-controls">

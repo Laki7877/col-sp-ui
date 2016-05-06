@@ -1,6 +1,6 @@
 <?php
 
-$this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product']) ?>
+$this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Products']) ?>
 <?php $this->start('page-body') ?>
 
 <script type="text/ng-template" id="page-btn-controls">
@@ -8,8 +8,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
                 <div ng-if="TimeMachine.active" class="page-actions float-right">
                     <a type="button" class="link-btn-plain" ng-click="cancel()">Cancel</a>
                     <button class="btn btn-green btn-width-xl" type="button" ng-click="publish('DF')"><strong>Restore</strong></button>
-                </div> 
-                
+                </div>
+
                 <div class="float-right" ng-if="!TimeMachine.active && !_loading.state && adminMode">
                     <a class="link-btn-plain" type="button" ng-click="cancel()">Cancel</a>
                     <button type="button"  ng-show="formData.Status != 'WA'" class="btn btn-white btn-width-xl" ng-click="preview()">Preview</button>
@@ -26,7 +26,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'
                     <button class="btn btn-white btn-width-xl" type="button" ng-click="preview()">Preview</button>
                     <button class="btn btn-blue btn-width-xl" type="button" ng-click="preEditProduct()">Edit Product</button>
                 </div>
-                
+
 </script>
 
 <div ng-controller="SellerProductDetailCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>

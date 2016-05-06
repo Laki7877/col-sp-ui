@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Export Products']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Export Products']) ?>
 
 <?php $this->start('page-body') ?>
 	<div class="seller-export-page" ng-init="init(<?= json_encode_n($viewBag) ?>)" ng-controller="ProductExportCtrl">
@@ -21,7 +21,7 @@
 		        </a>
 					</div>
 				</nc-page-title>
-				
+
 		</div>
 
 			<form class="ah-form sticky-mainform-action" ng-show="loading.length >= 2">
@@ -47,7 +47,7 @@
 											<div class="row">
 												<div class="col-sm-12 export-select-all">
 													<label>
-														<input type="checkbox" ng-click="toggleSelectAll()" ng-model="ctrl.selectAll"/> Select All 
+														<input type="checkbox" ng-click="toggleSelectAll()" ng-model="ctrl.selectAll"/> Select All
 													</label>
 												</div>
 												<div class="col-sm-{{12/columnCount}}" ng-repeat="col in _.range(columnCount)">

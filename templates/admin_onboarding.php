@@ -1,5 +1,5 @@
 <?php
-$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin Homepage'])
+$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Onboarding'])
 ?>
 
 <?php $this->start('page-body') ?>

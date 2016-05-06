@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Category']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Global Category']) ?>
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminCategoryCtrl" ng-init="init()" class="local-category-page">

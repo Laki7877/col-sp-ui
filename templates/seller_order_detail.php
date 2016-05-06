@@ -1,5 +1,5 @@
 <?php
-$this->layout('layouts/page-with-sidebar', ['title' => 'Order Detail'])
+$this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders'])
 ?>
 
 <?php $this->start('page-body') ?>

@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Return Requests']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Return Requests']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="SellerReturnRequestCtrl">

@@ -1,5 +1,5 @@
  <?php
-$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration'])
+$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - All Products'])
 ?>
 <?php $this->start('page-body') ?>
 
@@ -12,7 +12,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration'])
 </script>
 
 <div ng-controller="AdminProductDetailCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
-    	
+
 
         <nc-alert nc-model="alert"></nc-alert>
          <nc-page-title nc-title="All Products/Product Detail" ng-link="listingUrl || '/admin/products'" icon="fa-tag">
