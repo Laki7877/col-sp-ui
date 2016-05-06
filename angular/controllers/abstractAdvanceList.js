@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, options, Product, LocalCategoryService, GlobalCategoryService, BrandService, Category) {
+module.exports = function($scope, $controller, options, Product, LocalCategoryService, GlobalCategoryService, BrandService, Category, ShopService) {
 	'ngInject';
 	var overrideReload = function(newObj, oldObj) {
 		if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {

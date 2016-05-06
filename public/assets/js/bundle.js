@@ -753,7 +753,7 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 }];
 
 },{}],4:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryService", "GlobalCategoryService", "BrandService", "Category", function($scope, $controller, options, Product, LocalCategoryService, GlobalCategoryService, BrandService, Category) {
+module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryService", "GlobalCategoryService", "BrandService", "Category", "ShopService", function($scope, $controller, options, Product, LocalCategoryService, GlobalCategoryService, BrandService, Category, ShopService) {
 	'ngInject';
 	var overrideReload = function(newObj, oldObj) {
 		if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
