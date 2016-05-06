@@ -13938,7 +13938,7 @@ var permission = {
 	33: '/products',
 	34: ['/products/select', '/products/add'],
 	46: '/categories',
-	47: '/reviews',
+	47: '/products/reviews',
 	48: '/products/images',
 	49: '/products/groups',
 	50: '/inventory',
