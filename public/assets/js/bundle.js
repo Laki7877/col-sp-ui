@@ -4461,7 +4461,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
   var permitParent = function(p) {
     var parent = false; 
     var oparent = false;
-    
+
     if(p.Parent > 0) {
       //has perm?
       var i = _.findIndex($rootScope.Profile.Permission, function(item) {
@@ -4514,15 +4514,9 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
     return $rootScope.hasPermission(id);
   };
 
-  if($rootScope.Profile) {  
-    console.log($rootScope.permit(52),$rootScope.permit(53), $rootScope.permit(69));
-    console.log($rootScope.Profile.Permission);
-  }
-
   //Check url access permission
   $rootScope.permitUrl = function(url) {
     var result = true;
-    return true;
     _.forEach(route.permission, function(v, k) {
       if(_.isArray(v)) {
         for (var i = 0; i < v.length; i++) {
@@ -4539,7 +4533,6 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
 
   $rootScope.permitMenuItem = function(menuItem) {
     var result = false;
-    return true;
     _.forEach(menuItem.submenu, function(u) {
       result = result || $rootScope.permitUrl(u.url);
     });
