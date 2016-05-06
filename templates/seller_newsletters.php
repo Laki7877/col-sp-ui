@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Newsletters']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Newsletters']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="SellerNewsletterCtrl">

@@ -1,6 +1,6 @@
 <?php
 
-$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System'])
+$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Type'])
 ?>
 
 <?php $this->start('page-body') ?>

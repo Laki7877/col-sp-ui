@@ -1,4 +1,4 @@
-r<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']) ?>
+r<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Master Products']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminMasterProductCtrl">

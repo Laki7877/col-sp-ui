@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-plain', ['title' => 'Login']) ?>
+<?php $this->layout('layouts/page-plain', ['title' => 'Seller Portal - Login']) ?>
 
 <?php $this->start('page-body') ?>
 <div class="login-page" ng-controller="LoginCtrl">

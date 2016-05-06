@@ -1,6 +1,6 @@
 <?php
 
-$this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
+$this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Inventory'])
 ?>
 
 <?php $this->start('page-body') ?>

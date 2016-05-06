@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Product - Import']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Import Products']) ?>
 
 <?php $this->start('page-body') ?>
 	<div class="import-page" ng-controller="ProductImportCtrl" ng-init="init(<?=$update?>)">

@@ -1,4 +1,4 @@
-<?= $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal']) ?>
+<?= $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Shop Profile']) ?>
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerShopSettingCtrl" ng-init='init()'>
@@ -186,15 +186,15 @@
 						                <div class="form-section-header">
 						                    <h2>Shop Address and Contact Information</h2></div>
 						                <div class="form-section-content">
-						                    <div nc-template="common/input/form-group-with-label" 
+						                    <div nc-template="common/input/form-group-with-label"
 						                    	nc-label="Address 1">
 						                        <input class="form-control" ng-model="formData.Address1" ng-disabled="true" ng-pattern-restrict="[^<>]*" maxlength="35"/>
 						                    </div>
-						                    <div nc-template="common/input/form-group-with-label" 
+						                    <div nc-template="common/input/form-group-with-label"
 						                    	nc-label="Address 2">
 						                        <input class="form-control" ng-model="formData.Address2" ng-disabled="true" ng-pattern-restrict="[^<>]*" maxlength="35"/>
 						                    </div>
-						                    <div nc-template="common/input/form-group-with-label" 
+						                    <div nc-template="common/input/form-group-with-label"
 						                    	nc-label="Address 3">
 						                        <input class="form-control" ng-model="formData.Address3" ng-disabled="true" ng-pattern-restrict="[^<>]*" maxlength="35"/>
 						                    </div>
@@ -250,7 +250,7 @@
 														</ui-select-choices>
 													</ui-select>
 						                    </div>
-						                    <div ng-show="formData.Province"  
+						                    <div ng-show="formData.Province"
 						                    	nc-template="common/input/form-group-with-label"
 						                    	nc-template-form="form.City"
 						                    	nc-label="City"
@@ -264,7 +264,7 @@
 														</ui-select-choices>
 													</ui-select>
 						                    </div>
-						                    <div ng-show="formData.City" 
+						                    <div ng-show="formData.City"
 						                    	nc-template="common/input/form-group-with-label"
 						                    	nc-template-form="form.District"
 						                    	nc-label="District"
@@ -278,7 +278,7 @@
 														</ui-select-choices>
 													</ui-select>
 						                    </div>
-						                    <div ng-show="formData.City" 
+						                    <div ng-show="formData.City"
 						                    	nc-template="common/input/form-group-with-label"
 						                    	nc-template-form="form.PostalCode"
 						                    	nc-template-options-path="addShopAccountForm/PostalCode"
@@ -457,7 +457,7 @@
 														</ui-select-choices>
 													</ui-select>
 						                    </div>
-						                    <div class="margin-top-10" 
+						                    <div class="margin-top-10"
 						                    	nc-template="common/input/form-group-with-label"
 						                    	nc-template-form="form.BankName"
 						                    	nc-label="Bank Name"

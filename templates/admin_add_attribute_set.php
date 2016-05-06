@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute Set']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute Sets']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminAttributeSetAddCtrl" ng-init="init(<?=$params?>)">

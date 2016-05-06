@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Category']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Global Category']) ?>
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminCategoryCtrl" ng-init="init()" class="local-category-page">
@@ -9,7 +9,7 @@
 		    	<span>Global Category</span>
 					<small>
 		    		<span ng-show="!saving && pristine" class="margin-left-10">All changes were saved</small>
-						<span ng-show="saving && pristine" class="margin-left-10" nc-loading-small="Saving..." style="display: inline-block; margin-bottom: -20px; margin-top: -5px;"></span>
+						<span ng-show="saving && pristine" class="margin-left-10" nc-loading-small="Saving..." style="display: inline-block; margin-bottom: -20px; margin-top: -5px; font-size:14px;"></span>
 					</span>
 				</h1>
 		    <span class="float-right page-header-action">

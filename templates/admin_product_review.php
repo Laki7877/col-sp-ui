@@ -1,9 +1,9 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Product Reviews']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminProductReviewCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <nc-page-title nc-title="Product Review" icon="fa-tag"></nc-page-title>
+    <nc-page-title nc-title="Product Reviews" icon="fa-tag"></nc-page-title>
     <div class="row search-section-wrapper">
       <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for PID or Customer'"></nc-search>
     </div>

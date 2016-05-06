@@ -1,6 +1,6 @@
 <?php
 
-$this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
+$this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - User Roles'])
 ?>
 
 <?php $this->start('page-body') ?>
