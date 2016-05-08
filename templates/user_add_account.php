@@ -38,7 +38,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Accounts
 							                  'error' : {
 							                        'messages': {
 							                          'required': 'This is a required field',
-							                          'email': 'Please enter valid email address'
+							                          'email': 'Please enter a valid Email'
 							                        },
 							                        'show': $root.isInvalid(form.Email),
 							                        'conditions' : form.Email.$error
@@ -49,8 +49,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Accounts
 							                  name="Email"
 							                  ng-model="formData.Email"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Email) }"
+											  ng-pattern-restrict="[^<>]*"
 							                  type="email"
-							                  maxlength="50"
+							                  maxlength="255"
 							                  required />
 							              </div>
 							              <!-- Name -->
@@ -71,7 +72,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Accounts
 							                  name="NameEn"
 							                  ng-model="formData.NameEn"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.NameEn) }"
-							                  maxlength="100"
+											  ng-pattern-restrict="[^<>]*"
+							                  maxlength="255"
 							                  required />
 							              </div>
 							              <!-- Phone Number -->
@@ -99,10 +101,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Accounts
 							              <!-- Brand -->
 							              <div ng-show="formData.ShopGroup != 'ME'"
 							              	nc-template="common/input/form-group-with-label"
-							              	nc-label="Brand"
-							              	>
-							              	<ui-select ng-model="formData.Brands" multiple>
-							              		<ui-select-match placeholder="Search Brand">{{$item.BrandNameEn}}</ui-select-match>
+							              	nc-template-form="form.Brands"
+							              	nc-template-options-path="genericForm/BrandVisibilitys"
+							              	nc-label="Brand">
+							              	<ui-select name="Brands" ng-model="formData.Brands" multiple>
+							              		<ui-select-match placeholder="Search by Brand Name" nc-tag-validator nc-max-tag-count="20">{{$item.BrandNameEn}}</ui-select-match>
 							              		<ui-select-choices repeat="item in brands" refresh="getBrands($select.search)" refresh-delay="1">{{item.BrandNameEn}}</ui-select-choices>
 							              	</ui-select>
 							              </div>

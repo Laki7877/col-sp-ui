@@ -30,6 +30,13 @@ module.exports = {
             }
         }
     },
+    BrandVisibility: {
+        error: {
+            messages: {
+                maxtagcount: 'Maximum number of Brands reached'
+            }
+        }
+    },
     // Feature products
     FeatureProducts: {
         inputClass: 'large',
