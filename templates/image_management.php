@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Product - Image Management']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Image Management']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="ProductImageManagementCtrl">

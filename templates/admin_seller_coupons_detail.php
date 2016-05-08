@@ -4,7 +4,7 @@ $menus = [
   ["id" => "conditions", "name" => 'Conditions'],
 ];
 
-$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']);
+$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Coupons']);
 
 ?>
 

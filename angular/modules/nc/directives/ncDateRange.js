@@ -51,7 +51,7 @@ angular.module('nc')
                             return form.$invalid && (form.$dirty || form.$$parentForm.$submitted);
                         }
                         return false;
-                    };                    
+                    };            
                     scope.options = opt;
                     scope.config1 = { dropdownSelector: '#date_range_vertical_dropdown1', minView: (scope.startMinView || 'hour') }
                     scope.config2 = { dropdownSelector: '#date_range_vertical_dropdown2', minView: (scope.endMinView || 'hour') }

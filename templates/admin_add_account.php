@@ -1,6 +1,6 @@
 <?php
 
-$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System'])
+$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Admin Accounts'])
 ?>
 
 <?php $this->start('page-body') ?>

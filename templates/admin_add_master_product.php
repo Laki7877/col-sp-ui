@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Master Products']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminMasterProductAddCtrl" ng-init="init(<?=$params?>)">
@@ -24,8 +24,8 @@
               <div nc-template="common/input/form-group-with-label"
               nc-template-options-path="addMasterProductForm/ChildProducts"
                 nc-label="Select Master Product" >
-                
-                <you-me display-by="CustomName" placeholder="Search Master Product" 
+
+                <you-me display-by="CustomName" placeholder="Search Master Product"
                         auto-clear-search="true"
                         ng-model="formData.MasterProduct" refresh="getProducts" choices="products"></you-me>
 
@@ -42,7 +42,7 @@
                 nc-template-form="form.ChildProducts"
                 nc-template-options-path="addMasterProductForm/ChildProducts">
 
-             <you-me display-by="CustomName" placeholder="Search Product" 
+             <you-me display-by="CustomName" placeholder="Search Product"
                         name="ChildProducts"
                         ng-model="formData.ChildProducts" refresh="getChildProducts" in-relationship="true"
                         choices="childProducts | exclude: formData.ChildProducts : 'ProductId' | exclude: formData.MasterProduct : 'ProductId' "></you-me>

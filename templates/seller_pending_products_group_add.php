@@ -1,5 +1,5 @@
 <?php
-	$this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product'])
+	$this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Pending Products'])
 ?>
 <?php $this->start('page-body') ?>
 <div ng-controller="SellerPendingProductGroupAddCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>

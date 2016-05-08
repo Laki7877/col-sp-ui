@@ -103,11 +103,12 @@ var permission = {
 	33: '/products',
 	34: ['/products/select', '/products/add'],
 	46: '/categories',
-	47: '/reviews',
+	47: '/products/reviews',
 	48: '/products/images',
 	49: '/products/groups',
 	50: '/inventory',
 	52: '/coupons',
+	53: '/coupons/add',
 	55: '/shop/settings',
 	56: '/shop/appearance',
 	57: ['/roles', '/accounts'],
@@ -117,7 +118,7 @@ var permission = {
 	65: '/products/groups',
 	66: '/products/images',
 	68: '/inventory',
-	69: '/coupons'
+	69: ['/coupons', '/coupons/add']
 };
 
 function generateRouteArray(obj) {

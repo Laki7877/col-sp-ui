@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Products']) ?>
 
 <?php $this->start('page-body') ?>
 <div ng-controller="ProductListCtrl">

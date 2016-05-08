@@ -1,6 +1,6 @@
 <?php
 
-$this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
+$this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Inventory'])
 ?>
 
 <?php $this->start('page-body') ?>
@@ -20,7 +20,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
             </div>
        </nc-page-title>
 	    <div class="row search-section-wrapper">
-      		<nc-search nc-model="params.searchText" nc-search-event="onSearch" nc-search-placeholder="'Search for Product SKU, Name, ...'"></nc-search>
+      		<nc-search nc-model="params.searchText" nc-search-event="onSearch" nc-search-placeholder="'Search by Product Name, PID, or SKU'"></nc-search>
 		  	<nc-advance-search-button nc-model="advanceSearch"></nc-advance-search-button>
 		</div>
 		<nc-advance-search nc-model="advanceSearchParams" nc-advance-search-toggle="advanceSearch" nc-advance-search-event="onAdvanceSearch" nc-advance-search-options="advanceSearchOptions"></nc-advance-search>

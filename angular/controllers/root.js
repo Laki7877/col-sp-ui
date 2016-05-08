@@ -93,22 +93,55 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
     }
   } 
 
+  var permitParent = function(p) {
+    var parent = false; 
+    var oparent = false;
+
+    if(p.Parent > 0) {
+      //has perm?
+      var i = _.findIndex($rootScope.Profile.Permission, function(item) {
+        if(item.PermissionId == p.Parent) {
+          return true;
+        }
+      });
+      if(i >= 0) {
+        parent = permitParent($rootScope.Profile.Permission[i]);
+      } else {
+        parent = false;
+      }
+    } else {
+      parent = true;
+    }
+
+    if(p.OverrideParent > 0) {
+      //has perm?
+      var i = _.findIndex($rootScope.Profile.Permission, function(item) {
+        if(item.PermissionId == p.OverrideParent) {
+          return true;
+        }
+      });
+      if(i >= 0) {
+        oparent = permitParent($rootScope.Profile.Permission[i]);
+      } else {
+        oparent = false;
+      }
+    } else {
+      oparent = true
+    }
+
+    return oparent ? parent : false;
+  }
+
   $rootScope.hasPermission = function(id) {
     return _.findIndex($rootScope.Profile.Permission, function(item) {
       if(item.PermissionId == id) {
-        if(item.OverrideParent > 0) {
-          return (_.findIndex($rootScope.Profile.Permission, function(e) {
-              return e.PermissionId === item.OverrideParent;
-            }) >= 0);
-        } else {
-          return true;
-        }
+        return permitParent(id);
       }
       else {
         return false;
       }
     }) >= 0;
-  }
+  };
 
   //Handle permission
   $rootScope.permit = function(id) {
@@ -119,7 +152,6 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   //Check url access permission
   $rootScope.permitUrl = function(url) {
     var result = true;
-    return true;
     _.forEach(route.permission, function(v, k) {
       if(_.isArray(v)) {
         for (var i = 0; i < v.length; i++) {
@@ -136,7 +168,6 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
 
   $rootScope.permitMenuItem = function(menuItem) {
     var result = false;
-    return true;
     _.forEach(menuItem.submenu, function(u) {
       result = result || $rootScope.permitUrl(u.url);
     });
@@ -146,7 +177,12 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   //Check url acccess permission for this page
   if(!$rootScope.permitUrl($window.location.pathname) && $window.location.pathname.indexOf("/login") == -1) {
     $rootScope.DisablePage = true;
-    util.page404();
+    
+    if($window.location.pathname == '/dashboard' && !$rootScope.permit(29)) {
+      $window.location.href = "/onboarding";
+    } else {
+      util.page404();
+    }
   }
 
   //Get Shop activity
@@ -174,7 +210,11 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
         if (R.User.IsAdmin) {
           $window.location.href = "/admin";
         } else {
-          $window.location.href = "/products";
+          if($rootScope.permit(29)) {
+            $window.location.href = "/dashboard";
+          } else {
+            $window.location.href = "/onboarding";
+          }
         }
       }, function() {
         //alert("Fatal error while logging out.");

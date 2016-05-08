@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Product - Import']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Import Products']) ?>
 
 <?php $this->start('page-body') ?>
 	<div class="import-page" ng-controller="ProductImportCtrl" ng-init="init(<?=$update?>)">
@@ -184,6 +184,9 @@
 													<div nc-template="common/input/form-group-with-label"
 														nc-template-options-path="productImport/Name"
 														nc-label="Name">{{ctrl.columnSearch.HeaderName}}</div>
+													<div nc-template="common/input/form-group-with-label"
+														nc-template-options-path="productImport/Description"
+														nc-label="Description">{{ctrl.columnSearch.Description}}</div>
 													<div nc-template="common/input/form-group-with-label"
 														nc-template-options-path="productImport/EnableVariation"
 														nc-label="Enable Variation">{{ctrl.columnSearch.IsVariant | mapDropdown: yesNoOptions}}</div>

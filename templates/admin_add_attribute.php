@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attributes']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminAttributeAddCtrl" ng-init="init(<?=$params?>)">
@@ -229,6 +229,9 @@
                         </div>
                         <div class="input-column input-xxl">
                           <input name="cbChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['cbChoiceTh' + $index])}" maxlength="100" required/>
+                        </div>
+                        <div class="input-column input-l">
+                          <input name="cbChoicePos{{$index}}" type="number" class="form-control" ng-model="choice.Position" ng-class="{'has-error': isInvalid(form['cbChoicePos' + $index])}" required/>
                         </div>
                         <i class="clickable fa fa-trash margin-left-10 color-dark-grey icon-size-20" ng-click="formData.CB.AttributeValues.splice($index,1)" style="margin-top:6px;"></i>
                       </div>

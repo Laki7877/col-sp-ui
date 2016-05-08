@@ -1,6 +1,6 @@
 module.exports = function(common) {
 	'ngInject';
-	var service = {};
+	var service = common.Rest('/Shops');
 
 	service.get = function(url, id) {
 		return common.makeRequest({

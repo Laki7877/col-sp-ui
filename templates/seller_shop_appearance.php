@@ -1,4 +1,4 @@
-<?= $this->layout('layouts/page-with-sidebar', ['title' => 'Administration System']) ?>
+<?= $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Shop Appearance']) ?>
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerShopAppearanceCtrl">
