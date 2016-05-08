@@ -20,8 +20,8 @@
 
                 <div ng-if="isHtmlInput(da.DataType)">
                     <textarea ng-required="da.Required && onPublishing" ng-class="{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }"
-                    ng-model="formData.MasterAttribute[da.AttributeId]" name="DAInput{{$index}}" class="form-control"
-                    ng-ckeditor="ckOptions"></textarea>
+                        ng-model="formData.MasterAttribute[da.AttributeId]" name="DAInput{{$index}}" class="form-control"
+                        ng-ckeditor="ckOptions"></textarea>
                 </div>
 
                 <input ng-if="isFreeTextInput(da.DataType)" ng-class="{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }"
