@@ -19,7 +19,7 @@
             <div class="row margin-top-30">
                 <div nc-template="common/input/div-with-label" nc-label="Short Description (English)" nc-template-options-path="addProductForm/DescriptionShortEn"
                 nc-template-form="form.DescriptionShortEn">
-                    <textarea ng-pattern="/^[^<>ก-๙]+$/" class="form-control" maxlength="500" 
+                    <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" 
 			    name="DescriptionShortEn" ng-model="variantPtr.DescriptionShortEn">
                     </textarea>
                 </div>
@@ -35,36 +35,37 @@
                 <div nc-template="common/input/div-with-label" nc-template-form="form.KillerPoint1En" nc-label="Killer Point 1 (English)"
                 nc-template-options-path="addProductForm/KillerPointEn">
                     <input class="form-control width-field-large" name="KillerPoint1En" ng-model="variantPtr.KillerPoint1En"
-                    maxlength="300" ng-pattern="/^([^<>ก-๙])+$/" />
+                    maxlength="50" ng-pattern="/^([^<>])+$/" />
                 </div>
+                
                 <div nc-template="common/input/div-with-label" nc-template-form="form.KillerPoint1Th" nc-label="Killer Point 1 (ไทย)"
                 nc-template-options-path="addProductForm/KillerPointTh">
                     <input class="form-control width-field-large" name="KillerPoint1Th" ng-model="variantPtr.KillerPoint1Th"
-                    maxlength="300" ng-pattern="/^([^<>])+$/" />
+                    maxlength="50" ng-pattern="/^([^<>])+$/" />
                 </div>
             </div>
             <div class="row margin-top-30">
                 <div nc-template="common/input/div-with-label" nc-template-form="form.KillerPoint2En" nc-label="Killer Point 2 (English)"
                 nc-template-options-path="addProductForm/KillerPointEn">
                     <input class="form-control width-field-large" name="KillerPoint2En" ng-model="variantPtr.KillerPoint2En"
-                    maxlength="300" ng-pattern="/^([^<>ก-๙])+$/" />
+                    maxlength="50" ng-pattern="/^([^<>])+$/" />
                 </div>
                 <div nc-template="common/input/div-with-label" nc-template-form="form.KillerPoint2Th" nc-label="Killer Point 2 (ไทย)"
                 nc-template-options-path="addProductForm/KillerPointTh">
                     <input class="form-control width-field-large" name="KillerPoint2Th" ng-model="variantPtr.KillerPoint2Th"
-                    maxlength="300" ng-pattern="/^([^<>])+$/" />
+                    maxlength="50" ng-pattern="/^([^<>])+$/" />
                 </div>
             </div>
             <div class="row margin-top-30">
                 <div nc-template="common/input/div-with-label" nc-template-form="form.KillerPoint3En" nc-label="Killer Point 3 (English)"
                 nc-template-options-path="addProductForm/KillerPointEn">
                     <input class="form-control width-field-large" name="KillerPoint3En" ng-model="variantPtr.KillerPoint3En"
-                    maxlength="300" ng-pattern="/^([^<>ก-๙])+$/" />
+                    maxlength="50" ng-pattern="/^([^<>])+$/" />
                 </div>
                 <div nc-template="common/input/div-with-label" nc-template-form="form.KillerPoint3Th" nc-label="Killer Point 3 (ไทย)"
                 nc-template-options-path="addProductForm/KillerPointTh">
                     <input class="form-control width-field-large" name="KillerPoint3Th" ng-model="variantPtr.KillerPoint3Th"
-                    maxlength="300" ng-pattern="/^([^<>])+$/" />
+                    maxlength="50" ng-pattern="/^([^<>])+$/" />
                 </div>
             </div>
 

@@ -10,6 +10,7 @@ module.exports = function($scope, $controller, BrandService, Product, AdminMaste
 			service: AdminMasterProductService
 		}
 	});
+	
 	$scope.childProducts = [];
 	$scope.products = [];
 	$scope.brands = [];
@@ -26,6 +27,7 @@ module.exports = function($scope, $controller, BrandService, Product, AdminMaste
 			});
 		});
 	};
+		
 	$scope.getChildProducts = function(search) {
 		return Product.list({
 			searchText: search,
