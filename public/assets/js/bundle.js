@@ -2771,6 +2771,9 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 						scope.shoptypes = data;
 					});
 			},
+			onSave: function(scope) {
+				console.log(scope.form);
+			},
 			onLoad: function(scope, flag) {	
 				//Load global cat
 				scope.globalCategory = [];

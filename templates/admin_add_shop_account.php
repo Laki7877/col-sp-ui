@@ -151,24 +151,25 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 										</ui-select>
 									</div>
 									<!-- Max local cat -->
-									<div ng-show="!(id != 0)"
-										ng-template="common/input/text2"
-										ng-template-options="{
-										'label': 'Clone Global Category',
-										'inputSize' : 'small',
-										'error' : {
-										'show': $root.isInvalid(form.CloneGlobalCategory),
-										'conditions' : form.CloneGlobalCategory.$error
-										}
-										}">
-										<ui-select name="CloneGlobalCategory" ng-model="formData.CloneGlobalCategory" search-enabled="false" required>
-											<ui-select-match placeholder="- Select Type -">
-												<span ng-bind="$select.selected.name"></span>
-											</ui-select-match>
-											<ui-select-choices repeat="item.value as item in yesNoDropdown">
-												<span ng-bind="item.name"></span>
-											</ui-select-choices>
-										</ui-select>
+									<div ng-if="!(id != 0)">
+										<div ng-template="common/input/text2"
+											ng-template-options="{
+											'label': 'Clone Global Category',
+											'inputSize' : 'small',
+											'error' : {
+											'show': $root.isInvalid(form.CloneGlobalCategory),
+											'conditions' : form.CloneGlobalCategory.$error
+											}
+											}">
+											<ui-select name="CloneGlobalCategory" ng-model="formData.CloneGlobalCategory" search-enabled="false" required>
+												<ui-select-match placeholder="- Select Type -">
+													<span ng-bind="$select.selected.name"></span>
+												</ui-select-match>
+												<ui-select-choices repeat="item.value as item in yesNoDropdown">
+													<span ng-bind="item.name"></span>
+												</ui-select-choices>
+											</ui-select>
+										</div>
 									</div>
 									<!-- Max local cat -->
 									<div ng-template="common/input/text2"
@@ -346,13 +347,13 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 										'label': 'Email',
 										'labelClass': 'required',
 										'error' : {
-										'messages': {
-										'required': 'This is a required field',
-										'email': 'Please enter valid email address'
-										},
-										'show': $root.isInvalid(form.Email),
-										'conditions' : form.Email.$error
-										}
+											'messages': {
+												'required': 'This is a required field',
+												'email': 'Please enter valid email address'
+											},
+											'show': $root.isInvalid(form.Email),
+											'conditions' : form.Email.$error
+											}
 										}">
 										<input
 										class="form-control"
