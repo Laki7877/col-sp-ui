@@ -49,7 +49,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - User Rol
 							                  name="GroupNameEn"
 							                  ng-model="formData.GroupNameEn"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.GroupNameEn) }"
-							                  maxlength="100"
+							                  ng-pattern-restrict="[^<>]*"
+							                  maxlength="255"
 							                  required />
 							              </div>
 									</div>

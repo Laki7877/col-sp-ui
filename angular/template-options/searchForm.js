@@ -5,6 +5,7 @@ module.exports = {
   Brands: {},
   GlobalCategories: {},
   LocalCategories: {},
+  Shops: {},
   Tags: {},
   Price: {
     'error': {
