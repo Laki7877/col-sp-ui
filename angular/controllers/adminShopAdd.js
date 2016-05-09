@@ -14,6 +14,9 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 						scope.shoptypes = data;
 					});
 			},
+			onSave: function(scope) {
+				console.log(scope.form);
+			},
 			onLoad: function(scope, flag) {	
 				//Load global cat
 				scope.globalCategory = [];
