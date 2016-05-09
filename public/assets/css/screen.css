@@ -16368,17 +16368,23 @@ tr.angular-ui-tree-empty {
   background-color: #FFFFFF;
 }
 
-/* line 15, ../../../assets/_login.scss */
+/* line 13, ../../../assets/_login.scss */
+#wrapper-login.login-admin {
+  background-image: none;
+  background-color: #252d40;
+}
+
+/* line 20, ../../../assets/_login.scss */
 .login-page .logo-img-wrapper {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 80px;
   margin-bottom: 20px;
 }
-/* line 21, ../../../assets/_login.scss */
+/* line 26, ../../../assets/_login.scss */
 .login-page .logo-img {
   height: 130px;
 }
-/* line 25, ../../../assets/_login.scss */
+/* line 30, ../../../assets/_login.scss */
 .login-page .form-login {
   background-color: #FFFFFF;
   border: solid #BCC7D5 1px;
@@ -16388,16 +16394,16 @@ tr.angular-ui-tree-empty {
   padding: 40px 30px 20px 30px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
-/* line 35, ../../../assets/_login.scss */
+/* line 40, ../../../assets/_login.scss */
 .login-page .btn-100 {
   width: 100%;
 }
-/* line 38, ../../../assets/_login.scss */
+/* line 43, ../../../assets/_login.scss */
 .login-page .alert .close {
   margin-top: 0;
 }
 
-/* line 42, ../../../assets/_login.scss */
+/* line 47, ../../../assets/_login.scss */
 .login-loading {
   margin-right: 5px;
 }
