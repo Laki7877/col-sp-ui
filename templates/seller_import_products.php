@@ -215,7 +215,7 @@
 														nc-label="Description">{{ctrl.columnSearch.Description}}</div>
 													<div nc-template="common/input/form-group-with-label"
 														nc-template-options-path="productImport/AcceptedValue"
-														nc-label="Accepted Value">{{ctrl.columnSearch.AcceptedValue}}</div>
+														nc-label="Accepted Value"><span ng-bind-html="ctrl.columnSearch.AcceptedValue"></span></div>
 													<div nc-template="common/input/form-group-with-label"
 														nc-template-options-path="productImport/Example"
 														nc-label="Example"><span ng-bind-html="ctrl.columnSearch.Example"></span></div>
