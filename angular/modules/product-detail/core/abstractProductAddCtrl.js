@@ -201,8 +201,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         size: 'category-section modal-lg column-4',
         keyboard: false,
         templateUrl: 'product/modalCategorySelector',
-        controller: function ($scope, $uibModalInstance, tree, model, disable, exclude) {
+        controller: function ($scope, $uibModalInstance, tree, model, disable, exclude, imageBlockOptions) {
           'ngInject';
+          $scope.imageBlockOptions = imageBlockOptions;
           $scope.model = model;
           $scope.exclude = exclude;
           $scope.tree = tree;
@@ -215,6 +216,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           };
         },
         resolve: {
+          imageBlockOptions: function(){
+              return $scope.imageBlockOptions;
+          }, 
           model: function () {
             return $scope.formData[key][ith];
           },
@@ -768,9 +772,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           var variantModal = $uibModal.open({
             animation: false,
             templateUrl: 'ap/modal-variant-detail',
-            controller: function ($scope, $uibModalInstance, $timeout, pair, dataset, uploader) {
+            controller: function ($scope, $uibModalInstance, $timeout, pair, dataset, uploader, imageBlockOptions) {
               'ngInject';
               $scope.pair = pair;
+              $scope.imageBlockOptions = imageBlockOptions;
               $scope.dataset = dataset;
               $scope.variantPtr = pair;
               $scope.uploader = uploader;
@@ -783,6 +788,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             },
             size: 'xl',
             resolve: {
+              imageBlockOptions: function(){
+                return $scope.imageBlockOptions;
+              }, 
               uploader: function () {
                 return ImageService.getUploader('/ProductImages', {
                   queueLimit: QUEUE_LIMIT
