@@ -1,4 +1,5 @@
 <div>
+      <pre>{{imageBlockOptions | json}}</pre>
     <nc-image-block options="imageBlockOptions" 
     name="Images" nc-model="variantPtr.Images"
     title="Product Images" uploader="uploader" on-fail="onImageUploadFail" size="10">
@@ -10,7 +11,7 @@
       <li>File format must be JPG or PNG.</li>
     </ul>
     </nc-image-block>
-
+ 
     <div class="form-section" ng-show="variantPtr.Images.length > 0">
         <div class="form-section-header">
             Embed Video
