@@ -2,6 +2,14 @@
     <div class="form-section-header">
     <h2>SEO</h2></div>
     <div class="form-section-content">
+         <div nc-template="common/input/form-group-with-label" nc-template-form="form.SEO_MetaTitleEn" nc-label="SEO (English)"
+            nc-template-options-path="addProductForm/Nothing">
+            <input class="form-control width-field-normal" name="SEO_En" ng-model="variantPtr.SEO.SEO_En" maxlength="60" />
+        </div>
+         <div nc-template="common/input/form-group-with-label" nc-template-form="form.SEO_MetaTitleEn" nc-label="SEO (ไทย)"
+            nc-template-options-path="addProductForm/Nothing">
+            <input class="form-control width-field-normal" name="SEO_Th" ng-model="variantPtr.SEO.SEO_Th" maxlength="60" />
+        </div>
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.SEO_MetaTitleEn" nc-label="Meta Title (English)"
             nc-template-options-path="addProductForm/Nothing">
             <input class="form-control width-field-normal" name="SEO_MetaTitleEn" ng-model="variantPtr.SEO.MetaTitleEn" maxlength="60" />

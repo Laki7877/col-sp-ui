@@ -16,6 +16,23 @@
                 </div>
 
             </div>
+             <div class="row">
+                <div nc-template="common/input/div-with-label" nc-label="Mobile Description (English)" 
+                nc-template-options-path="addProductForm/DescriptionFull"
+                nc-template-form="form.DescriptionMobileEn">
+                    <textarea ng-ckeditor="ckOptions" class="form-control" name="DescriptionMobileEn" 
+                        ng-model="variantPtr.DescriptionMobileEn">
+                    </textarea>
+                </div>
+                <div nc-template="common/input/div-with-label" nc-label="Mobile Description (ไทย)" 
+                nc-template-options-path="addProductForm/DescriptionFull"
+                nc-template-form="form.DescriptionMobileTh">
+                    <textarea ng-ckeditor="ckOptions" class="form-control" name="DescriptionMobileTh" 
+                        ng-model="variantPtr.DescriptionMobileTh">
+                    </textarea>
+                </div>
+
+            </div>
             <div class="row margin-top-30">
                 <div nc-template="common/input/div-with-label" nc-label="Short Description (English)" nc-template-options-path="addProductForm/DescriptionShortEn"
                 nc-template-form="form.DescriptionShortEn">
