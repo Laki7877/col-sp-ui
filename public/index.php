@@ -80,7 +80,7 @@ Route::add('/orders/shippinglist', 'SellerController::shipOrder');
 Route::add('/orders/:id', 'SellerController::editOrder');
 
 
-//admin routing
+//admin routing 
 Route::add('/admin/onboarding', 'AdminController::onboarding');
 Route::add('/admin/attributes/add','AdminController::addAttribute');
 Route::add('/admin/attributes/:id','AdminController::editAttribute');
