@@ -79,7 +79,9 @@
 										<div class="form-group" style="margin:0px; padding:0px" ng-show="!selectAllAttributeSets">
 												<nc-tradable-select
 												nc-test="lockAS"
+												on-search="onSearch" 
 												nc-model="ctrl.tradedAS"
+												search-placeholder="Search Attribute Set"
 												nc-select-options="dataSet.attributeSets"
 												nc-id="AttributeSetId"
 												nc-text="Display">

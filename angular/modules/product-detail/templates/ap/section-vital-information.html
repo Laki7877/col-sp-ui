@@ -35,14 +35,14 @@
 
         <div nc-template="common/input/form-group-with-label" nc-label="SKU" nc-template-form="form.Sku" nc-template-options-path="addProductForm/Sku">
             <input class="form-control width-field-large" name="Sku" ng-model="variantPtr.Sku" maxlength="255" ng-required="onPublishing"
-            ng-pattern-restrict="^[a-zA-Z0-9]+$" />
+            ng-pattern-restrict="^[a-zA-Z0-9]*$" />
         </div>
 
 
 	<div nc-template="common/input/form-group-with-label" nc-label="UPC" 
     nc-template-form="form.Upc" nc-template-options-path="addProductForm/Upc">
 		<input class="form-control width-field-large" 
-         ng-pattern-restrict="^[a-zA-Z0-9]+$" name="Upc" maxlength="13"
+         ng-pattern-restrict="^[a-zA-Z0-9]*$" name="Upc" maxlength="13"
 		 ng-model="variantPtr.Upc"  />
 	</div>
 

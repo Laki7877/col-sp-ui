@@ -47,7 +47,7 @@
             <div class="form-section-content">
                 <nc-tradable-select nc-test="lockAttributeset"
                   nc-model="formData.Attributes"
-                  on-search="onSearch"
+                  on-search="onSearch" 
                   nc-select-options="attributeOptions"
                   column-header="Attribute in this Attribute Set"
                   search-placeholder="Search Attribute"

@@ -5,7 +5,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Product Ap
 <script type="text/ng-template" id="page-btn-controls">
 <div class="float-right" ng-if="!_loading.state && adminMode">
 			<a class="btn btn-white btn-width-xl" ng-href="/admin/approve">Cancel</a>
-				<button class="btn btn-white margin-left-10 btn-width-xl" ng-click="preview()">Preview</button>
+				<!--<button class="btn btn-white margin-left-10 btn-width-xl" ng-click="preview()">Preview</button>-->
 					<button type="submit" class="btn btn-blue margin-left-10 btn-width-xxl" ng-click="publish('WA')">Save & Wait for Approval</button>
 	</div>
 </script>

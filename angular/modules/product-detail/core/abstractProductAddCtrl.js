@@ -142,6 +142,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         Installment: 'N',
         ShippingMethod: '1',
         VideoLinks: [],
+        Visibility: true,
         SEO: {
           ProductBoostingWeight: 5000,
           MetaTitleEn: "",
