@@ -33,6 +33,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
           </div>
           <div class="color-dark-grey margin-top-5">
             <div>Order Date: {{formData.OrderDate | dateTh}}</div>
+            <div>Shipping Type: [Shipping Type]</div>
+            <div>Payment Type: [Payment Type]</div>
             <div>Carrier: {{formData.ShippingType}}</div>
             <div>Tracking Number: {{getTrackingNumber()}}</div>
           </div>
@@ -88,6 +90,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
         <thead>
           <tr class="table-head">
             <th>Product Name</th>
+            <th class="width_100 ">PID</th>
+            <th class="width_100 ">SKU</th>
             <th class="width_100 ">Price / Unit</th>
             <th class="width_100 text-align-center">Order Qty</th>
             <th class="width_100 text-align-center" ng-if="getState() >= 2 ">Shipping Qty</th>
@@ -97,7 +101,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
         <tbody>
           <!-- ng-if="(getState() >= 3 && product.ShipQuantity != 0) || (getState() < 3)" -->
           <tr ng-repeat="product in formData.Products track by $index">
-            <td class="column-text-ellipsis"><span print-only>{{product.ProductNameEn}}</span><a ng-href="/products/{{product.ProductId}}" print-hide>{{product.ProductNameEn}}</a></td>
+            <td class="column-text-ellipsis">
+              <span print-only>{{product.ProductNameEn}}</span><a ng-href="/products/{{product.ProductId}}" print-hide>{{product.ProductNameEn}}</a>
+            </td>
+            <td>1234567</td>
+            <td>1234567</td>
             <td ng-class="getRedText(product)" class="text-align-center">{{product.UnitPrice | currency:' ':2}}</td>
             <td ng-class="getRedText(product)" class="text-align-center">{{product.Quantity}}</td>
             <td ng-class="getRedText(product)" class="text-align-center" ng-if="getState() >= 2">
@@ -112,6 +120,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
             <td>Sub Total</td>
             <td></td>
             <td></td>
+            <td></td>
+            <td></td>
             <td ng-if="getState() >= 2 "></td>
             <td class="text-align-right">{{getSubtotal() | currency:' ':2}}</td>
           </tr>
@@ -119,11 +129,15 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
             <td>Discount</td>
             <td></td>
             <td></td>
+            <td></td>
+            <td></td>
             <td ng-if="getState() >= 2 "></td>
             <td class="text-align-right">- {{getDiscount() | currency:' ':2}}</td>
           </tr>
           <tr class="background_light_yellow ">
             <td>Total Order Price</td>
+            <td></td>
+            <td></td>
             <td></td>
             <td></td>
             <td  ng-if="getState() >= 2 "></td>

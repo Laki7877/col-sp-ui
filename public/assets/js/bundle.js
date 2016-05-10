@@ -11843,13 +11843,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       checkSchema(serialized);
     };
 
-    $scope.$watch('formData.MasterVariant.OriginalPrice+formData.MasterVariant.SalePrice', function () {
+    $scope.$watch('variantPtr.OriginalPrice+variantPtr.SalePrice', function () {
       var form = $scope.addProductForm;
       if (form.SalePrice) form.SalePrice.$setValidity('min', true);
       if (!form.SalePrice) return;
-      if ($scope.formData.MasterVariant.SalePrice == '') return;
-
-      if (Number($scope.formData.MasterVariant.SalePrice) > Number($scope.formData.MasterVariant.OriginalPrice)) {
+      if ($scope.variantPtr.SalePrice == '') return;
+      if ($scope.variantPtr.OriginalPrice == '') return;
+      
+      if (Number($scope.variantPtr.SalePrice) > Number($scope.variantPtr.OriginalPrice)) {
         if (form.SalePrice) form.SalePrice.$setValidity('min', false)
         form.SalePrice.$error['min'] = 'Sale Price must not exceed Original Price'
       }
@@ -12051,6 +12052,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       if (Number($scope.formData.MasterVariant.OriginalPrice) == 0 || _.isNaN(Number($scope.formData.MasterVariant.OriginalPrice))) {
         $scope.formData.MasterVariant.OriginalPrice = $scope.formData.MasterVariant.SalePrice;
       }
+      
 
       $scope.pageState.load('Applying changes..');
 
@@ -12896,12 +12898,12 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-image-video',
-    "<div><pre>{{imageBlockOptions | json}}</pre><nc-image-block options=imageBlockOptions name=Images nc-model=variantPtr.Images title=\"Product Images\" uploader=uploader on-fail=onImageUploadFail size=10><div>Choose images that clearly represent your product. Images must meet the following requirements:</div><ul class=margin-top-10><li>Image width or height must be between at least <strong>1500px</strong> but not larger than <strong>2000px</strong></li><li>Image portion must be in square format.</li><li>File size must not be larger than 5MB and.</li><li>File format must be JPG or PNG.</li></ul></nc-image-block><div class=form-section ng-show=\"variantPtr.Images.length > 0\"><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-repeat=\"i in variantPtr.Images\"><div nc-template=common/input/form-group-with-label nc-label=\"Video Link {{$index + 1}}\" nc-template-form=\"form['VideoLinks' + $index]\" nc-template-options-path=addProductForm/VideoLink><input class=\"form-control width-field-normal\" name=VideoLinks{{$index}} type=url ng-init=initializeVideoLink($index) maxlength=500 ng-model=\"variantPtr.VideoLinks[$index].Url\"></div></div></div></div></div>"
+    "<div><nc-image-block options=imageBlockOptions name=Images nc-model=variantPtr.Images title=\"Product Images\" uploader=uploader on-fail=onImageUploadFail size=10><div>Choose images that clearly represent your product. Images must meet the following requirements:</div><ul class=margin-top-10><li>Image width or height must be between at least <strong>1500px</strong> but not larger than <strong>2000px</strong></li><li>Image portion must be in square format.</li><li>File size must not be larger than 5MB and.</li><li>File format must be JPG or PNG.</li></ul></nc-image-block><div class=form-section ng-show=\"variantPtr.Images.length > 0\"><div class=form-section-header>Embed Video</div><div class=form-section-content><div ng-repeat=\"i in variantPtr.Images\"><div nc-template=common/input/form-group-with-label nc-label=\"Video Link {{$index + 1}}\" nc-template-form=\"form['VideoLinks' + $index]\" nc-template-options-path=addProductForm/VideoLink><input class=\"form-control width-field-normal\" name=VideoLinks{{$index}} type=url ng-init=initializeVideoLink($index) maxlength=500 ng-model=\"variantPtr.VideoLinks[$index].Url\"></div></div></div></div></div>"
   );
 
 
   $templateCache.put('ap/section-inventory',
-    "<div class=form-section><div class=form-section-header><h2>Inventory</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.Quantity nc-template-options-path=addProductForm/Quantity nc-label=\"Inventory Amount\"><input class=form-control ng-pattern-restrict=^-?[0-9]*$ ng-disabled=formData.ProductId name=Quantity maxlength=10 ng-model=\"variantPtr.Quantity\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UpdateAmount nc-template-options-path=addProductForm/Quantity nc-label=\"Update Amount\"><input class=form-control ng-pattern-restrict=^-?[0-9]*$ name=UpdateAmount maxlength=10 ng-disabled=!formData.ProductId ng-model=\"variantPtr.UpdateAmount\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SafetyStock nc-template-options-path=addProductForm/SafetyStock nc-label=\"Safety Stock Amount\"><input class=form-control name=SafetyStock maxlength=10 ng-model=\"variantPtr.SafetyStock\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.OnHold nc-template-options-path=addProductForm/SafetyStock nc-label=\"On Hold Amount\"><input class=form-control name=OnHold maxlength=10 ng-model=\"variantPtr.OnHold\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Reserve nc-template-options-path=addProductForm/SafetyStock nc-label=\"Reserve Amount\"><input class=form-control name=Reserve maxlength=10 ng-model=\"variantPtr.Reserve\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Defect nc-template-options-path=addProductForm/SafetyStock nc-label=\"Defect Amount\"><input class=form-control name=Defect maxlength=10 ng-model=\"variantPtr.Defect\"></div><div class=two-lines-label nc-template=common/input/form-group-with-label nc-template-form=form.MinQtyAllowInCart nc-template-options-path=addProductForm/SafetyStock nc-label=\"Minimum Quantity<br> Allowed in Cart\"><input class=form-control name=MinQtyAllowInCart ng-pattern-restrict=^[0-9]*(\\\\.[0-9]*)?$ maxlength=10 ng-model=\"variantPtr.MinQtyAllowInCart\"></div><div class=two-lines-label nc-template=common/input/form-group-with-label nc-template-form=form.MaxQtyAllowInCart nc-template-options-path=addProductForm/SafetyStock nc-label=\"Maximum Quantity<br> Allowed in Cart\"><input class=form-control name=MaxQtyAllowInCart ng-pattern-restrict=^[0-9]*(\\\\.[0-9]*)?$ maxlength=10 ng-model=\"variantPtr.MaxQtyAllowInCart\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.StockType nc-template-options-path=addProductForm/StockType nc-label=\"Stock Type\"><select ng-model=variantPtr.StockType class=form-control name=StockType><option selected value=- disabled>- Select Stock Type -</option><option value=Stock>Stock</option><option value=Pre-Order>Pre-Order</option></select></div><div nc-template=common/input/form-group-with-label ng-show=\"variantPtr.StockType == 'Pre-Order'\" nc-template-form=form.MaxQtyPreOrder nc-template-options-path=addProductForm/SafetyStock nc-label=\"Maximum Quantity Allowed for Pre-Order\"><input class=form-control name=MaxQtyPreOrder ng-pattern-restrict=^[0-9]*(\\\\.[0-9]*)?$ maxlength=10 ng-model=\"variantPtr.MaxQtyPreOrder\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.IsHasExpiryDate nc-template-options-path=addProductForm/StockType nc-policy-indy-bu nc-label=\"Has Expiry Date\"><select ng-model=variantPtr.IsHasExpiryDate class=form-control name=IsHasExpiryDate><option value=N>No</option><option value=Y>Yes</option></select></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Inventory</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.Quantity nc-template-options-path=addProductForm/Quantity nc-label=\"Inventory Amount\"><input class=form-control ng-pattern-restrict=^-?[0-9]*$ ng-disabled=formData.ProductId name=Quantity maxlength=10 ng-model=\"variantPtr.Quantity\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UpdateAmount nc-template-options-path=addProductForm/UpdateAmount nc-label=\"Update Amount\"><input class=form-control ng-pattern-restrict=^-?[0-9]*$ name=UpdateAmount maxlength=10 ng-disabled=!formData.ProductId ng-model=\"variantPtr.UpdateAmount\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SafetyStock nc-template-options-path=addProductForm/SafetyStock nc-label=\"Safety Stock Amount\"><input class=form-control name=SafetyStock maxlength=10 ng-model=\"variantPtr.SafetyStock\"></div><div nc-template=common/input/form-group-with-label nc-policy-admin nc-template-form=form.OnHold nc-template-options-path=addProductForm/SafetyStock nc-label=\"On Hold Amount\"><input class=form-control name=OnHold maxlength=10 ng-model=\"variantPtr.OnHold\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Reserve nc-template-options-path=addProductForm/SafetyStock nc-policy-admin nc-label=\"Reserve Amount\"><input class=form-control name=Reserve maxlength=10 ng-model=\"variantPtr.Reserve\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Defect nc-template-options-path=addProductForm/SafetyStock nc-policy-admin nc-label=\"Defect Amount\"><input class=form-control name=Defect maxlength=10 ng-model=\"variantPtr.Defect\"></div><div class=two-lines-label nc-template=common/input/form-group-with-label nc-template-form=form.MinQtyAllowInCart nc-template-options-path=addProductForm/SafetyStock nc-label=\"Minimum Quantity<br> Allowed in Cart\"><input class=form-control name=MinQtyAllowInCart ng-pattern-restrict=^[0-9]*(\\\\.[0-9]*)?$ maxlength=10 ng-model=\"variantPtr.MinQtyAllowInCart\"></div><div class=two-lines-label nc-template=common/input/form-group-with-label nc-template-form=form.MaxQtyAllowInCart nc-template-options-path=addProductForm/SafetyStock nc-label=\"Maximum Quantity<br> Allowed in Cart\"><input class=form-control name=MaxQtyAllowInCart ng-pattern-restrict=^[0-9]*(\\\\.[0-9]*)?$ maxlength=10 ng-model=\"variantPtr.MaxQtyAllowInCart\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.StockType nc-template-options-path=addProductForm/StockType nc-label=\"Stock Type\"><select ng-model=variantPtr.StockType class=form-control name=StockType><option selected value=- disabled>- Select Stock Type -</option><option value=Stock>Stock</option><option value=Pre-Order>Pre-Order</option></select></div><div nc-template=common/input/form-group-with-label ng-show=\"variantPtr.StockType == 'Pre-Order'\" nc-template-form=form.MaxQtyPreOrder nc-template-options-path=addProductForm/SafetyStock nc-label=\"Maximum Quantity Allowed for Pre-Order\"><input class=form-control name=MaxQtyPreOrder ng-pattern-restrict=^[0-9]*(\\\\.[0-9]*)?$ maxlength=10 ng-model=\"variantPtr.MaxQtyPreOrder\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.IsHasExpiryDate nc-template-options-path=addProductForm/StockType nc-policy-indy-bu nc-label=\"Has Expiry Date\"><select ng-model=variantPtr.IsHasExpiryDate class=form-control name=IsHasExpiryDate><option value=N>No</option><option value=Y>Yes</option></select></div></div></div>"
   );
 
 
@@ -13017,7 +13019,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-variation-option',
-    "<div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content ng-if=\"!(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) && controlFlags.variation == 'enable'\"><div class=form-group ng-repeat=\"jth in variationFactorIndices.iterator\" ng-show=\"(dataset.attributeOptions[0].options.length > 0) || (jth == 0)\"><div class=width-label><select class=form-control ng-disabled=\"variationFactorLocked() && dataset.attributeOptions[jth].Attribute\" ng-options=\"i as i.Attribute.AttributeNameEn\r" +
+    "<div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content ng-if=\"!(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) && controlFlags.variation == 'enable'\"><div class=form-group ng-repeat=\"jth in variationFactorIndices.iterator\" ng-show=\"(dataset.attributeOptions[0].options.length > 0) || (jth == 0)\"><div class=width-label><select class=form-control ng-disabled=\"variationFactorLocked() && dataset.attributeOptions[jth].Attribute\" ng-options=\"i as i.Attribute.DisplayNameEn\r" +
     "\n" +
     "                    for i in formData.AttributeSet.AttributeSetMaps |\r" +
     "\n" +
@@ -17776,6 +17778,17 @@ module.exports = {
   Quantity: {
     'hint': {
       'message': 'Example: 100',
+      'show': true
+    },
+    'error': {
+      'messages': {
+        'pattern': 'Only numbers allowed'
+      }
+    }
+  },
+  UpdateAmount: {
+    'hint': {
+      'message': 'Example: 10 or -10',
       'show': true
     },
     'error': {
