@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-plain', ['title' => 'Admin - Login']) ?>
+<?php	$this->layout('layouts/page-plain', ['title' => 'Admin - Login', 'loginType' => 'login-admin']);?>
 
 <?php $this->start('page-body') ?>
 <div class="login-page" ng-controller="AdminLoginCtrl">

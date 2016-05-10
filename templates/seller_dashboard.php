@@ -118,7 +118,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Dashboar
             Loading...
           </div>
           <div class="view_all_row" ng-show="lowStockAlertData.length == 10">
-            <a ng-click="linkToLowStock()">View All ({{totalLowStockAlert + totalOutStockAlert}})</a>
+            <a ng-click="linkToLowStock()">View All ({{totalLowStockAlert}})</a>
           </div>
         </div>
       </div>

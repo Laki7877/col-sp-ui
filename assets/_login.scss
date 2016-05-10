@@ -10,11 +10,16 @@
   background-color: #FFFFFF;
 }
 
+#wrapper-login.login-admin {
+  background-image: none;
+  background-color: $sidebar-color;
+}
+
 .login-page {
 
 	.logo-img-wrapper {
 		text-align: center;
-    	margin-top: 50px;
+    	margin-top: 80px;
     	margin-bottom: 20px;
 	}
 
