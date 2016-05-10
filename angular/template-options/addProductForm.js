@@ -140,6 +140,17 @@ module.exports = {
       }
     }
   },
+  UpdateAmount: {
+    'hint': {
+      'message': 'Example: 10 or -10',
+      'show': true
+    },
+    'error': {
+      'messages': {
+        'pattern': 'Only numbers allowed'
+      }
+    }
+  },
   SafetyStock: {
     'hint': {
       'message': 'Example: 10',
