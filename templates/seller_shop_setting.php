@@ -35,6 +35,7 @@
 											</div>
 						                    <!-- Shop Logo -->
 								            <div nc-template="common/input/form-group-with-label"
+								            	nc-template-options-path=""
 								              nc-template-form="form.Logo"
 								              nc-label="Shop Logo file">
 								                <button

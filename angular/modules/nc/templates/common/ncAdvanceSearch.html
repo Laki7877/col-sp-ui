@@ -5,21 +5,20 @@
 			<div class="form-section-content">
 				<form name="form" class="ah-form" novalidate>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.ProductName" nc-label="Product Name" nc-template-options-path="searchForm/ProductName">
-		                    <input class="form-control" name="ProductName" ng-model="formData.ProductName" required />
+		                    <input class="form-control" name="ProductName" ng-pattern-restrict="[^<>]*" maxlength="255" ng-model="formData.ProductName"/>
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Pids" nc-label="PID" nc-template-options-path="searchForm/Pid">
 							    <ui-select ng-model="formData.Pids" name="Pids" nc-tag-validator tagging tagging-label="" multiple nc-tag-field>
-	                                <ui-select-match>
+	                                <ui-select-match ng-pattern-restrict="[0-9]*" maxlength="7">
 	                                    {{$item}}
 	                                </ui-select-match>
-	                                <ui-select-choices repeat="item in options.Pids">
-	                                	{{item}}
+	                                <ui-select-choices repeat="item in options.Pids">{{item}}
 	                                </ui-select-choices>
 	                            </ui-select>
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Skus" nc-label="SKU" nc-template-options-path="searchForm/Sku">
 							    <ui-select ng-model="formData.Skus" name="Skus" nc-tag-validator tagging tagging-label="" multiple nc-tag-field>
-	                                <ui-select-match>
+	                                <ui-select-match ng-pattern-restrict="[^<>]*" maxlength="255">
 	                                    {{$item}}
 	                                </ui-select-match>
 	                                <ui-select-choices repeat="item in options.Skus">
@@ -29,7 +28,7 @@
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Brands" nc-label="Brand Name" nc-template-options-path="searchForm/Brands">
 							    <ui-select ng-model="formData.Brands" name="Brands" nc-tag-validator multiple tagging-tokens=",|ENTER" tagging-label="" nc-tag-field>
-	                                <ui-select-match>
+	                                <ui-select-match ng-pattern-restrict="[^<>]*" maxlength="255">
 	                                    {{$item.BrandNameEn}}
 	                                </ui-select-match>
 	                                <ui-select-choices repeat="item in options.Brands | filter:{BrandNameEn: $select.search} track by $index">
@@ -58,25 +57,21 @@
 							<nc-breadcrumb-select name="LocalCategories" nc-model="formData.LocalCategories" nc-breadcrumb-select-tree="options.LocalCategories"></nc-breadcrumb-select>
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Tags" nc-label="Search Tag" nc-template-options-path="searchForm/Tags" class="ui-select-dropdown-hide" >
-							    <ui-select ng-model="formData.Tags" name="Tags" nc-tag-validator tagging tagging-label="" multiple nc-tag-field>
-	                                <ui-select-match>
-	                                    {{$item}}
-	                                </ui-select-match>
-	                                <ui-select-choices repeat="item in options.Tags">
-	                                	{{item}}
-	                                </ui-select-choices>
+							    <ui-select ng-model="formData.Tags" name="Tags" nc-tag-validator tagging tagging-label="" multiple nc-tag-field nc-max-tag-count="20" nc-max-tag-length="30">
+	                                <ui-select-match>{{$item}}</ui-select-match>
+	                                <ui-select-choices repeat="item in options.Tags">{{item}}</ui-select-choices>
 	                            </ui-select>
 						</div>
 						<div nc-template="common/input/form-group-with-label-multiple" nc-template-form="form.Price" nc-label="Sale Price" nc-template-options-path="searchForm/Price">
 							<div class="width-field-small-input">
-								<input type="text" name="Price" ng-maxnumber="{{formData.PriceTo}}" ng-model="formData.PriceFrom" class="form-control" ng-pattern-restrict="^[0-9]*(\.[0-9]{0,2})?$"/>
+								<input type="text" name="Price" ng-maxnumber="{{formData.PriceTo}}" ng-model="formData.PriceFrom" class="form-control" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$" maxlength="20"/>
 							</div>
 							<div class="width-label-extend text-center"><label class="control-label">To</label></div>
 							<div class="width-field-small-input">
-								<input type="text" ng-model="formData.PriceTo" class="form-control" ng-pattern-restrict="^[0-9]*(\.[0-9]{0,2})?$"/>
+								<input type="text" ng-model="formData.PriceTo" class="form-control" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$" maxlength="20"/>
 							</div>
 						</div>
-						<div nc-template="common/input/form-group-with-label-multiple" nc-template-form="form.CreatedDate" nc-label="Created Date" nc-template-options-path="searchForm/CreatedDate">
+						<div nc-template="common/input/form-group-with-label-multiple" nc-template-form="form.CreatedDate" nc-label="Created date" nc-template-options-path="searchForm/CreatedDate">
 							<div class="width-field-small-input">
                                 <div class="dropdown">
                                     <a class="dropdown-toggle" id="dropdown" role="button" data-toggle="dropdown" data-target="#" href="#">

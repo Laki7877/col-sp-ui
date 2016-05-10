@@ -5,6 +5,18 @@ module.exports = {
     TaxInvoice: {
         tooltip: "Please select 'Available' if you can issue Tax Invoice to your customer"
     },
+    Logo: {
+        error: {
+            messages: {
+                minHeight: 'Image must be between 500x500 to 1000x1000 pixels',
+                maxHeight: 'Image must be between 500x500 to 1000x1000 pixels',
+                minWidth: 'Image must be between 500x500 to 1000x1000 pixels',
+                maxWidth: 'Image must be between 500x500 to 1000x1000 pixels',
+                ratio: 'Image must be a square (1:1 ratio)',
+                maxSize: ' Image file size must not exceed 5MB'
+            }
+        }
+    },
     ShopId: {},
     ShopNameEn: {
         labelClass: 'required',
