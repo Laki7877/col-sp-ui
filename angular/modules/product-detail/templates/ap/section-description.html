@@ -16,19 +16,19 @@
                 </div>
 
             </div>
-             <div class="row">
-                <div nc-template="common/input/div-with-label" nc-label="Mobile Description (English)" 
+             <div class="row margin-top-30">
+                <div nc-template="common/input/div-with-label" nc-label="Mobile Description (English)"
                 nc-template-options-path="addProductForm/DescriptionFull"
-                nc-template-form="form.DescriptionMobileEn">
-                    <textarea ng-ckeditor="ckOptions" class="form-control" name="DescriptionMobileEn" 
-                        ng-model="variantPtr.DescriptionMobileEn">
+                nc-template-form="form.MobileDescriptionEn">
+                    <textarea ng-ckeditor="ckOptions" class="form-control" name="MobileDescriptionEn"
+                        ng-model="variantPtr.MobileDescriptionEn">
                     </textarea>
                 </div>
-                <div nc-template="common/input/div-with-label" nc-label="Mobile Description (ไทย)" 
+                <div nc-template="common/input/div-with-label" nc-label="Mobile Description (ไทย)"
                 nc-template-options-path="addProductForm/DescriptionFull"
-                nc-template-form="form.DescriptionMobileTh">
-                    <textarea ng-ckeditor="ckOptions" class="form-control" name="DescriptionMobileTh" 
-                        ng-model="variantPtr.DescriptionMobileTh">
+                nc-template-form="form.MobileDescriptionTh">
+                    <textarea ng-ckeditor="ckOptions" class="form-control" name="MobileDescriptionTh"
+                        ng-model="variantPtr.MobileDescriptionTh">
                     </textarea>
                 </div>
 
@@ -36,14 +36,14 @@
             <div class="row margin-top-30">
                 <div nc-template="common/input/div-with-label" nc-label="Short Description (English)" nc-template-options-path="addProductForm/DescriptionShortEn"
                 nc-template-form="form.DescriptionShortEn">
-                    <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" 
+                    <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500"
 			    name="DescriptionShortEn" ng-model="variantPtr.DescriptionShortEn">
                     </textarea>
                 </div>
-                <div nc-template="common/input/div-with-label" nc-label="Short Description (ไทย)" 
+                <div nc-template="common/input/div-with-label" nc-label="Short Description (ไทย)"
 							       nc-template-options-path="addProductForm/DescriptionShortTh"
                 nc-template-form="form.DescriptionShortTh">
-                    <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="DescriptionShortTh" 
+                    <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="DescriptionShortTh"
 			    ng-model="variantPtr.DescriptionShortTh">
                     </textarea>
                 </div>
@@ -54,7 +54,7 @@
                     <input class="form-control width-field-large" name="KillerPoint1En" ng-model="variantPtr.KillerPoint1En"
                     maxlength="50" ng-pattern="/^([^<>])+$/" />
                 </div>
-                
+
                 <div nc-template="common/input/div-with-label" nc-template-form="form.KillerPoint1Th" nc-label="Killer Point 1 (ไทย)"
                 nc-template-options-path="addProductForm/KillerPointTh">
                     <input class="form-control width-field-large" name="KillerPoint1Th" ng-model="variantPtr.KillerPoint1Th"

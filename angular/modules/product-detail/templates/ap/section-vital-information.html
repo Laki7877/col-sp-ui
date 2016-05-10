@@ -34,7 +34,7 @@
         </div>
 
         <div nc-template="common/input/form-group-with-label" nc-label="SKU" nc-template-form="form.Sku" nc-template-options-path="addProductForm/Sku">
-            <input class="form-control width-field-large" name="Sku" ng-model="variantPtr.Sku" maxlength="255" required
+            <input class="form-control width-field-large" name="Sku" ng-model="variantPtr.Sku" maxlength="255" ng-required="onPublishing"
             ng-pattern-restrict="^[a-zA-Z0-9]+$" />
         </div>
 
