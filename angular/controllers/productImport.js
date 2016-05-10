@@ -76,6 +76,7 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
 		$scope.uploader = FileService.getUploader('/ProductStages/Import', {
 			method: $scope.method
 		});
+		$scope.uploader.filters.push({ name: 'sizeFilter', fn:function(item) { return item.size <= 5000000; } });
 		$scope.uploader.onSuccessItem = function(item, response) {
 			$scope.importingFile = null;
 			storage.put('import.success', response);
@@ -86,6 +87,8 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
 
 		//Return list of error
 		$scope.uploader.onErrorItem = function(item, response, status, headers) {
+			console.log(item, response, status, headers);
+
 			$scope.importingFile = null;
 			response = _.map(response, function(e) {
 				return '<li>' + e + '</li>';
@@ -110,7 +113,14 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
 
 		};
 
-		$scope.uploader.onAfterAddingFile = function(item) {
+		$scope.uploader.onWhenAddingFileFailed = function(item, filter) {
+			$scope.alert.close();
+			if(filter.name == 'sizeFilter') {
+				$scope.alert.error('Import failed. File size is larger than maximum file size of 5MB.');
+			}
+		}
+
+		$scope.uploader.onAfterAddingFile = function(item, response, status, headers) {
 			$scope.uploader.queue.unshift();
 		};
 	}

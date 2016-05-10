@@ -21,6 +21,12 @@ module.exports = function ($scope, $controller, common, Product, util, $window, 
                     name: 'Publish',
                     fn: function(arr, cb) {
                         $scope.alert.close();
+
+                        if(arr.length == 0) {
+                            $scope.alert.error('Unable to Publish. Please select Product for this action.');
+                            return;
+                        }
+
                         Product.bulkPublish(_.map(arr, function(e) {
                             return _.pick(e, ['ProductId']);
                         })).then(function() {
@@ -112,7 +118,7 @@ module.exports = function ($scope, $controller, common, Product, util, $window, 
 
         var error = function (r) {
             $(".modal").modal('hide');
-            $scope.exporter.title = 'Error'
+            $scope.exporter.title = 'Error';
             $scope.alert.error('Unable to Export Product');
             $scope.reloadData();
         };
@@ -148,22 +154,23 @@ module.exports = function ($scope, $controller, common, Product, util, $window, 
         return _.join(tags, ', ');
     }
     $scope.exportSelected = function(){
-      document.getElementById('exportForm').submit();
+        $scope.alert.close();
+        if($scope.bulkContainer.length == 0) {
+            $scope.alert.error('Unable to Export. Please select Product for this action.');
+        }
+        document.getElementById('exportForm').submit();
     };
 
     $scope.searchCriteria = null;
     $scope.exportSearchResult = function(){
-            var K = _.extend({}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams));
-            K._limit = 2147483647;
-            $scope.searchCriteria = $base64.encode(JSON.stringify(K));
+        var K = _.extend({}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams));
+        K._limit = 2147483647;
+        $scope.searchCriteria = $base64.encode(JSON.stringify(K));
 
-            $timeout(function(){
-                console.log('searchCriteria', $scope.searchCriteria);
-                document.getElementById('exportForm').submit();
-            });
-
-
-
+        $timeout(function(){
+            console.log('searchCriteria', $scope.searchCriteria);
+            document.getElementById('exportForm').submit();
+        });
     }
 
     var fromImport = storage.get('import.success');

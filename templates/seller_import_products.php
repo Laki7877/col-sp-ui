@@ -93,6 +93,8 @@
 											nc-template-options-path="productImport/ColumnSearch">
 											<input type="text"
 												ng-model="ctrl.columnSearch"
+												ng-pattern-restrict="[^<>]*"
+												maxlength="255"
 												uib-typeahead="item as item.HeaderName for item in getGuideline($viewValue)"
 												class="form-control input-icon-right-search"
 												placeholder="Search column header for more detail"
@@ -243,7 +245,12 @@
 												<span ng-if="uploader.queue.length > 0">{{ uploader.queue[uploader.queue.length-1].file.name }}</span>
 											</div>
 											<i class="fa fa-folder-open fa-lg color-dark-grey fa-input-icon"></i>
-											<input nv-file-select uploader="uploader" accept=".csv" type="file" class="my_file" ng-delegatee="up"/>
+											<input nv-file-select
+												uploader="uploader" 
+												type="file" 
+												accept=".csv"
+												class="my_file" 
+												ng-delegatee="up"/>
 										</div>
 										<div nc-template="common/input/form-group-with-label" nc-label="">
 											<button ng-click="import()" class="button-size-large btn btn-blue btn-width-xl" ng-disabled="uploader.queue.length == 0" type="button">Import Product</button>

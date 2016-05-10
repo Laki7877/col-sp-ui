@@ -120,7 +120,7 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 	$scope.loginAs = function(user){
 		$scope.alert.close();
 		Credential.loginAs(user).then(function(){
-			$window.location.href = "/products";
+			$window.location.href = "/dashboard";
 		}, function(err){
            $scope.alert.error(common.getError(err));
         });
