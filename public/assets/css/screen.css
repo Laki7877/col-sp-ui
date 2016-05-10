@@ -12341,11 +12341,6 @@ textarea {
   display: none !important;
 }
 
-/* line 147, ../../../assets/_override.scss */
-.cke_toolbox .cke_toolbar:nth-child(7) .cke_toolbar_separator {
-  display: none;
-}
-
 /*---- Override UI Select ----*/
 /* line 160, ../../../assets/_override.scss */
 .ui-select-dropdown-hide .ui-select-dropdown {
