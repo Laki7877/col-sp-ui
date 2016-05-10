@@ -51,7 +51,7 @@ module.exports = function($q, $http, common, storage, config, FileUploader, Uplo
         fn: function(item /*{File|FileLikeObject}*/ , options) {
           return item.size <= config.MAX_IMAGE_UPLOAD_SIZE;
         }
-      }, ]
+      }]
     }, opt);
     
     var uploader = new FileUploader(options);

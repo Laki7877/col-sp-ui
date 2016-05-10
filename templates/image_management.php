@@ -50,8 +50,14 @@
                       </div>
                         <div class="picture-container">
                           <div class="col-xs-12 padding-left-0">
-                            <nc-image-gallery ng-if="product.IsVariant" nc-model="product.VariantImg" nc-image-gallery-options="imageGalleryOptions" nc-image-gallery-disabled="isDisabled(product)"></nc-image-gallery>
-                            <nc-image-gallery ng-if="!product.IsVariant" nc-model="product.MasterImg" nc-image-gallery-options="imageGalleryOptions" nc-image-gallery-disabled="isDisabled(product)"></nc-image-gallery>
+                            <nc-image-gallery ng-if="product.IsVariant" 
+                                nc-model="product.VariantImg" 
+                                nc-image-gallery-options="imageGalleryOptions"
+                                nc-image-gallery-disabled="isDisabled(product)"></nc-image-gallery>
+                            <nc-image-gallery ng-if="!product.IsVariant" 
+                                nc-model="product.MasterImg" 
+                                nc-image-gallery-options="imageGalleryOptions"
+                                nc-image-gallery-disabled="isDisabled(product)"></nc-image-gallery>
                           </div>
                         </div>
                         <div class="drop-zone-container {{ getContainer(product) }}">

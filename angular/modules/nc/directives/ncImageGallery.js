@@ -20,6 +20,7 @@ angular.module('nc')
 					validateDimensionMax: [2000, 2000],
 					validateFileSize: 5000000
 				});
+				source = source && true;
 			}
 		}
 	})
@@ -94,74 +95,73 @@ angular.module('nc')
 					if (fileUploader) {
 						_.forEach(files, function(file) {
 
-							var url = URL.createObjectURL(file);
-							var img = new Image;
+								var url = URL.createObjectURL(file);
+								var img = new Image;
 
-							img.onload = function() {
-								var minDim = scope.options.validateDimensionMin;
-								var maxDim = scope.options.validateDimensionMax;
-								var ratio = scope.options.validateRatio;
+								img.onload = function() {
+									var minDim = scope.options.validateDimensionMin;
+									var maxDim = scope.options.validateDimensionMax;
+									var ratio = scope.options.validateRatio;
 
-								var minW = Number(minDim[0]);
-								var minH = Number(minDim[1]);
-								var maxW = Number(maxDim[0]);
-								var maxH = Number(maxDim[1]);
+									var minW = Number(minDim[0]);
+									var minH = Number(minDim[1]);
+									var maxW = Number(maxDim[0]);
+									var maxH = Number(maxDim[1]);
 
-								if (img.width < minW || img.height < minH) {
-									//min width error
-									scope.onfail('ondimension', [img.width, img.height]);
-									return;
-								}
-
-								if (img.width > maxW || img.height > maxH) {
-									//min width error
-									scope.onfail('ondimension', [img.width, img.height]);
-									return;
-								}
-
-								if (scope.options.validateRatio && img.width != scope.options.validateRatio * img.height) {
-									//ratio error
-									scope.onfail('onratio', [img.width, img.height]);
-									return;
-								}
-
-								if (img.width != img.height && scope.options.validateSquare) {
-									//square error
-									scope.onfail('onsquare', [img.width, img.height]);
-									return;
-								}
-
-								//max size
-								if (scope.images.length >= _.toInteger(scope.size)) {
-									scope.onfail('onmaxsize', scope.images.length);
-									return;
-								}
-
-								var obj = {
-									progress: 0,
-									SlideDuration: 1
-								};
-								scope.images.push(obj);
-								var f = new FileItem(scope.uploader, file, {
-									onSuccess: function(response) {
-										_.extend(obj, response);
-									},
-									onError: function(response, status, headers) {
-										scope.onfail('onerror', response, status, headers);
-										_.remove(scope.images, function(n) {
-											return n === obj;
-										});
-									},
-									onProgress: function(progress) {
-										obj.progress = progress;
+									if (img.width < minW || img.height < minH) {
+										//min width error
+										scope.onfail('ondimension', [img.width, img.height]);
+										return;
 									}
-								});
-								scope.uploader.queue.push(f);
-								f.upload();
 
-							};
+									if (img.width > maxW || img.height > maxH) {
+										//min width error
+										scope.onfail('ondimension', [img.width, img.height]);
+										return;
+									}
 
-							img.src = url;
+									if (scope.options.validateRatio && img.width != scope.options.validateRatio * img.height) {
+										//ratio error
+										scope.onfail('onratio', [img.width, img.height]);
+										return;
+									}
+
+									if (img.width != img.height && scope.options.validateSquare) {
+										//square error
+										scope.onfail('onsquare', [img.width, img.height]);
+										return;
+									}
+
+									//max size
+									if (scope.images.length >= _.toInteger(scope.size)) {
+										scope.onfail('onmaxsize', scope.images.length);
+										return;
+									}
+
+									var obj = {
+										progress: 0,
+										SlideDuration: 1
+									};
+									scope.images.push(obj);
+									var f = new FileItem(scope.uploader, file, {
+										onSuccess: function(response) {
+											_.extend(obj, response);
+										},
+										onError: function(response, status, headers) {
+											scope.onfail('onerror', response, status, headers);
+											_.remove(scope.images, function(n) {
+												return n === obj;
+											});
+										},
+										onProgress: function(progress) {
+											obj.progress = progress;
+										}
+									});
+									scope.uploader.queue.push(f);
+									f.upload();
+								};
+
+								img.src = url;
 
 						});
 					} else {
@@ -437,7 +437,7 @@ angular.module('nc')
 			replace: true,
 			scope: {
 				model: '=ncModel',
-				originalUploader: '=ncImageUploader',
+				uploader: '=ncImageUploader',
 				options: '=?ncImageDropzoneOptions',
 				onEvent: '&?ncImageDropzoneOnEvent',
 				onError: '&?ncImageDropzoneOnError',
@@ -455,7 +455,10 @@ angular.module('nc')
 					onResponse: function(item) {
 						return item;
 					},
-					onUpload: function(item) {}
+					onUpload: function(item) {},
+					ratio:1,
+					min:[1500, 1500],
+					max:[2000, 2000]
 				});
 				scope.onError = scope.onError || _.noop;
 				scope.onSuccess = scope.onSuccess || _.noop;
@@ -478,9 +481,7 @@ angular.module('nc')
 				//Upload
 				scope.uploader.onAfterAddingFile = function(item) {
 					if (scope.uploader.queueLimit == scope.model.length) {
-						if (scope.options.onQueueLimit) {
-							scope.options.onQueueLimit(item, scope.model);
-						}
+						scope.onError({$response: { name: 'queueFilter' }})
 						item.cancel();
 						item.remove();
 					} else {
@@ -493,6 +494,52 @@ angular.module('nc')
 							obj.progress = progress;
 						};
 					}
+
+					var url = URL.createObjectURL(item._file);
+					var img = new Image;
+
+					img.onload = function() {
+						var minDim = scope.options.min;
+						var maxDim = scope.options.max;
+						var ratio = scope.options.ratio;
+
+						var minW = Number(minDim[0]);
+						var minH = Number(minDim[1]);
+						var maxW = Number(maxDim[0]);
+						var maxH = Number(maxDim[1]);
+
+						if (img.width < minW || img.height < minH) {
+							//min width error
+							scope.onError({
+								$response: 'dimensionFilter'
+							});
+							item.remove();
+							item.cancel();
+							return;
+						}
+
+						if (img.width > maxW || img.height > maxH) {
+							//min width error
+							scope.onError({
+								$response: {name:'dimensionFilter'}
+							});
+							item.remove();
+							item.cancel();
+							return;
+						}
+
+						if (scope.options.validateRatio && img.width != scope.options.validateRatio * img.height) {
+							//min width error
+							scope.onError({
+								$response: {name: 'ratioFilter'}
+							});
+							item.remove();
+							item.cancel();
+							return;
+						}
+					};
+
+					img.src = url;
 				};
 				scope.uploader.onWhenAddingFileFailed = function(item, filter) {
 					scope.onError({

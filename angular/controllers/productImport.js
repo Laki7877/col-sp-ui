@@ -76,7 +76,7 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
 		$scope.uploader = FileService.getUploader('/ProductStages/Import', {
 			method: $scope.method
 		});
-		$scope.uploader.filters.push({ name: 'sizeFilter', fn:function(item) { return item.size <= 5000000; } });
+		$scope.uploader.filters.push({ name: 'sizeFilter', fn:function(item) { return item.size <= config.MAX_IMAGE_UPLOAD_SIZE; } });
 		$scope.uploader.onSuccessItem = function(item, response) {
 			$scope.importingFile = null;
 			storage.put('import.success', response);

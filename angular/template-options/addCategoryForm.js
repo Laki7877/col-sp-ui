@@ -4,7 +4,6 @@ module.exports = {
         'error': {
             'messages': {
                 'required': 'This is a required field',
-                'pattern': 'Only English allowed'
             }
         }
     },
@@ -19,8 +18,8 @@ module.exports = {
     UrlKeyEn: {
         'error': {
             'messages': {
-                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'
-            },
+                'pattern': 'Only 0-9 a-z - are allowed (no spaces or underscores)'
+            }
         }
     },
     Commission: {

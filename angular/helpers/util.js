@@ -360,8 +360,8 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
                     //success
                 }, function (err) {
                     alert.error(common.getError(err));
-                })
-                .finally(scope.reload);
+                    item.Visibility = !item.Visibility;
+                });
         };
     };
 
