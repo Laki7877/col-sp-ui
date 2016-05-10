@@ -368,13 +368,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       checkSchema(serialized);
     };
 
-    $scope.$watch('formData.MasterVariant.OriginalPrice+formData.MasterVariant.SalePrice', function () {
+    $scope.$watch('variantPtr.OriginalPrice+variantPtr.SalePrice', function () {
       var form = $scope.addProductForm;
       if (form.SalePrice) form.SalePrice.$setValidity('min', true);
       if (!form.SalePrice) return;
-      if ($scope.formData.MasterVariant.SalePrice == '') return;
-
-      if (Number($scope.formData.MasterVariant.SalePrice) > Number($scope.formData.MasterVariant.OriginalPrice)) {
+      if ($scope.variantPtr.SalePrice == '') return;
+      if ($scope.variantPtr.OriginalPrice == '') return;
+      
+      if (Number($scope.variantPtr.SalePrice) > Number($scope.variantPtr.OriginalPrice)) {
         if (form.SalePrice) form.SalePrice.$setValidity('min', false)
         form.SalePrice.$error['min'] = 'Sale Price must not exceed Original Price'
       }
@@ -576,6 +577,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       if (Number($scope.formData.MasterVariant.OriginalPrice) == 0 || _.isNaN(Number($scope.formData.MasterVariant.OriginalPrice))) {
         $scope.formData.MasterVariant.OriginalPrice = $scope.formData.MasterVariant.SalePrice;
       }
+      
 
       $scope.pageState.load('Applying changes..');
 
