@@ -103,7 +103,6 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
           <tr ng-repeat="product in formData.Products track by $index">
             <td class="column-text-ellipsis">
               <span print-only>{{product.ProductNameEn}}</span><a ng-href="/products/{{product.ProductId}}" print-hide>{{product.ProductNameEn}}</a>
-              <div class="color-grey small">X / X</div>
             </td>
             <td>1234567</td>
             <td>1234567</td>
