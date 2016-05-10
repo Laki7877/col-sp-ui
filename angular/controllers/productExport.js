@@ -1,4 +1,4 @@
-module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64) {
+module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $filter) {
 	'ngInject';
 	$scope.ProductList = [];
 	$scope.SELECT_ALL = false;
@@ -35,6 +35,11 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64) {
 		}
 
 	});
+	
+	$scope.onSearch = function(q){
+		console.log(q, $scope.dataSet.attributeSets);
+		$scope.dataSet.attributeSets = $filter('filter')($scope.dataSet._attributeSets, q);
+	}
 
 	var normalFlow = function(){
 		if(productIds.length == 0){
@@ -54,6 +59,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64) {
 					$scope.loading.push(true);
 					return m;
 				});
+				$scope.dataSet._attributeSets = $scope.dataSet.attributeSets;
 				console.log(data);
 			});
 		}else{
@@ -64,6 +70,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64) {
 					$scope.loading.push(true);
 					return m;
 				});
+				$scope.dataSet._attributeSets = $scope.dataSet.attributeSets;
 				console.log(data);
 			});
 		}

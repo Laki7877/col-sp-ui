@@ -61,4 +61,21 @@ module.exports = function($scope, $controller, Product, common, config) {
     $scope.getTag = function(tags) {
         return _.join(tags, ', ');
     }
+    $scope.exportSelected = function(){
+        $scope.alert.close();
+        if($scope.bulkContainer.length == 0) {
+            $scope.alert.error('Unable to Export. Please select Product for this action.');
+        }
+        document.getElementById('exportForm').submit();
+    };
+    $scope.exportSearchResult = function(){
+        var K = _.extend({}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams));
+        K._limit = 2147483647;
+        $scope.searchCriteria = $base64.encode(JSON.stringify(K));
+
+        $timeout(function(){
+            console.log('searchCriteria', $scope.searchCriteria);
+            document.getElementById('exportForm').submit();
+        });
+    }
 };

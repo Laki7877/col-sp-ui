@@ -42,7 +42,7 @@
 							nc-label="Shop Name" 
 							nc-template-options-path="searchForm/Shops">
 							    <ui-select ng-model="formData.Shops" name="Shops" nc-tag-validator multiple tagging-tokens=",|ENTER" tagging-label="" nc-tag-field>
-	                                <ui-select-match>
+	                                <ui-select-match maxlength="255">
 	                                    {{$item.ShopNameEn}}
 	                                </ui-select-match>
 	                                <ui-select-choices repeat="item in options.Shops | filter:{ShopNameEn: $select.search} track by $index">

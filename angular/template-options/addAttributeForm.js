@@ -5,7 +5,7 @@ module.exports = {
         'error' : {
               'messages': {
                 'required': 'This is a required field',
-                'pattern': 'Only English letters and numbers allowed'
+                'pattern': 'Only 0-9 a-z - _ are allowed (no spaces)'
               }
          }		
   	},
@@ -15,7 +15,6 @@ module.exports = {
       'error' : {
             'messages': {
               'required': 'This is a required field',
-              'pattern': 'Only English letters and numbers allowed'
             }
        }
     },
@@ -25,7 +24,6 @@ module.exports = {
       'error' : {
             'messages': {
               'required': 'This is a required field',
-              'pattern': 'Only letters and numbers allowed'
             }
        }
     },

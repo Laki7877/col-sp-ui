@@ -129,8 +129,8 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 					validateDimensionMax: [1080, 1080]
 				};
 				$scope.bannerSmOptions = {
-					validateDimensionMin: [1920, 1920],
-					validateDimensionMax: [1080, 1080]
+					validateDimensionMin: [1600, 1600],
+					validateDimensionMax: [900, 900]
 				};
 				$scope.formData = {};
 				$scope.saving = false;
@@ -186,6 +186,20 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 					}
 					else if(e == 'ondimension') {
 						$scope.alert.error('Image must be 1920x1080 pixels');
+					}
+					else if(e == 'onfilesize') {
+						$scope.alert.error('Image file size should not exceed 5MB')
+					}
+					else {
+						$scope.alert.error(common.getError(response.data));
+					}
+				};
+				$scope.uploadBannerSmFail = function(e, response, min, max) {
+					if(e == 'onmaxsize') {
+						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+					}
+					else if(e == 'ondimension') {
+						$scope.alert.error('Image must be 1600x900 pixels');
 					}
 					else if(e == 'onfilesize') {
 						$scope.alert.error('Image file size should not exceed 5MB')

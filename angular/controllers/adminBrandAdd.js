@@ -12,6 +12,14 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 	$scope.bannerSmUploader = ImageService.getUploaderFn('/BrandImages', {
 		data: { Type: 'SmallBanner' }
 	});
+	$scope.bannerOptions = {
+		validateDimensionMin: [1920, 1920],
+		validateDimensionMax: [1080, 1080]
+	};
+	$scope.bannerSmOptions = {
+		validateDimensionMin: [1600, 1600],
+		validateDimensionMax: [900, 900]
+	};
 	$scope.uploadLogo = function(file) {
 		if(_.isNil(file)) {
 			return;
@@ -29,16 +37,27 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 	};
 	$scope.uploadBannerFail = function(e, response, min, max) {
 		if(e == 'onmaxsize') {
-			$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+			$scope.alert.error('Cannot exceed 8 images');
 		}
 		else if(e == 'ondimension') {
-			$scope.alert.error('Banner size should be between ' + min[0] + 'x' + min[1] + ' and ' + max[0] + 'x' + max[1]);
-		}
-		else if(e == 'onratio') {
-			$scope.alert.error('Banner size ratio should be ' + min[0] + ':' + min[1]);
+			$scope.alert.error('Image must be 1920x1080 pixels');
 		}
 		else if(e == 'onfilesize') {
-			$scope.alert.error('Banner file size should not exceed ' + (min/1000000) + ' MB')
+			$scope.alert.error('Each image file size must not exceed 5MB')
+		}
+		else {
+			$scope.alert.error(common.getError(response.data));
+		}
+	};
+	$scope.uploadBannerSmFail = function(e, response, min, max) {
+		if(e == 'onmaxsize') {
+			$scope.alert.error('Cannot exceed 8 images');
+		}
+		else if(e == 'ondimension') {
+			$scope.alert.error('Image must be 1600x900 pixels');
+		}
+		else if(e == 'onfilesize') {
+			$scope.alert.error('Each image file size must not exceed 5MB')
 		}
 		else {
 			$scope.alert.error(common.getError(response.data));

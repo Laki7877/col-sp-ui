@@ -5,7 +5,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Product Ap
 <script type="text/ng-template" id="page-btn-controls">
 <div class="float-right" ng-if="!_loading.state && adminMode">
 			<a class="btn btn-white btn-width-xl" ng-href="/admin/approve">Cancel</a>
-				<button class="btn btn-white margin-left-10 btn-width-xl" ng-click="preview()">Preview</button>
+				<!--<button class="btn btn-white margin-left-10 btn-width-xl" ng-click="preview()">Preview</button>-->
 					<button type="submit" class="btn btn-blue margin-left-10 btn-width-xxl" ng-click="publish('WA')">Save & Wait for Approval</button>
 	</div>
 </script>
@@ -88,7 +88,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Product Ap
 																					nc-template-options-path="adminApproveForm/NothingSpecial"
 																	nc-template-form="form.AdminApproveRejectReason">
 																	<textarea placeholder="Reason why you do not approve this product"
-																	class="form-control" name="AdminApproveRejectReason" ng-model="formData.AdminApprove.RejectReason">
+																	class="form-control" name="AdminApproveRejectReason" ng-model="formData.AdminApprove.RejectReason" ng-pattern-restrict="[^<>]*" maxlength="1000">
 																	</textarea>
 																</div>
 																				<div class="form-group">

@@ -22,11 +22,11 @@
                 nc-template-options-path="addAttributeForm/AttributeNameEn"
                 nc-label="Attribute Name">
                 <input
-                  class="form-control"
+                  class="form-control text-lowercase"
                   name="AttributeNameEn"
                   ng-model="formData.AttributeNameEn"
-                  ng-pattern="/^[A-Za-z0-9_\-\s]+$/"
-                  maxlength="100"
+                  ng-pattern="/^[a-z0-9_\-]+$/"
+                  maxlength="255"
                   required />
               </div>
               <div nc-template="common/input/form-group-with-label"
@@ -37,8 +37,8 @@
                   class="form-control"
                   name="DisplayNameEn"
                   ng-model="formData.DisplayNameEn"
-                  ng-pattern="/^[A-Za-z0-9_\-\(\)\*\s\.]+$/"
-                  maxlength="100"
+                  ng-pattern-restrict="[^<>]*"
+                  maxlength="255"
                   required />
               </div>
               <div nc-template="common/input/form-group-with-label"
@@ -49,8 +49,8 @@
                   class="form-control"
                   name="DisplayNameTh"
                   ng-model="formData.DisplayNameTh"
-                  ng-pattern="/^[ก-๙A-Za-z0-9_\-\(\)\*\s\.]+$/"
-                  maxlength="100"
+                  ng-pattern-restrict="[^<>]*"
+                  maxlength="255"
                   required />
               </div>
               <div nc-template="common/input/form-group-with-label"
@@ -126,8 +126,8 @@
                       class="form-control"
                       name="ST_DefaultValue"
                       ng-model="formData.ST.DefaultValue"
-                      ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
-                      maxlength="100"
+                      ng-pattern-restrict="[^<>]*"
+                      maxlength="255"
                       />
                   </div>
                 </div>
@@ -139,18 +139,17 @@
                     <div class="width-field-xxl">
                       <div class="multiple-input">
                         <div class="input-column input-xxl">
-                          <input name="ltChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['ltChoiceEn' + $index])}" maxlength="100" ng-pattern="/^[^ก-๙]+$/" required/>
+                          <input name="ltChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['ltChoiceEn' + $index])}" maxlength="100" ng-pattern-restrict="[^<>]*" required/>
                           <!-- Required -->
                           <div class="help-block color-red" ng-show="isInvalid(form['ltChoiceEn' + $index]) || isInvalid(form['ltChoiceTh' + $index])">
                               <span ng-show="form['ltChoiceTh' + $index].$error.required || form['ltChoiceEn' + $index].$error.required">This is a required field</span>
                           </div>
-                          <!-- Pattern -->
-                          <div class="help-block color-red" ng-show="isInvalid(form['ltChoiceEn' + $index])">
-                              <span ng-show="form['ltChoiceEn' + $index].$error.pattern">Only English allowed</span>
+                          <div class="help-block color-red" ng-show="isInvalid(form['ltChoiceImg' + $index])">
+                               <span ng-show="form['ltChoiceImg' + $index].$error.dimensions">Image must be 100x100 pixels</span>
                           </div>
                         </div>
                         <div class="input-column input-xxl">
-                          <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['ltChoiceTh' + $index])}" maxlength="100" required/>
+                          <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['ltChoiceTh' + $index])}" maxlength="100" ng-pattern-restrict="[^<>]*" required/>
                         </div>
                         <div class="input-column input-l">
                           <input name="ltChoicePos{{$index}}" type="number" class="form-control" ng-model="choice.Position" ng-class="{'has-error': isInvalid(form['ltChoicePos' + $index])}" required/>
@@ -162,11 +161,14 @@
                           ng-click="preview(choice.Image.Url)"
                           width="34" />
                         <i uib-tooltip="Upload dropdown image"
-                          tooltip-placement="top"
+                          name="ltChoiceImg{{$index}}"
+                          tooltip-placement="top" 
                           tooltip-popup-delay="200"
                           tooltip-append-to-body="true"
                           ngf-select="upload($file, choice)"
-                          ngf-accept="'.png,.jpg,.jpeg'"
+                          ngf-accept="'.jpg,.jpeg'"
+                          ngf-dimensions="$width == 100 && $height == 100"
+                          ng-model="choice._dummy"
                           class="clickable fa fa-upload margin-left-10 color-dark-grey icon-size-20" ng-click="open(choice)"
                           style="margin-top:6px;"
                           ></i>
@@ -204,8 +206,8 @@
                       class="form-control"
                       name="HB_DefaultValue"
                       ng-model="formData.HB.DefaultValue"
-                      ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
-                      maxlength="100"
+                      ng-pattern-restrict="[^<>]*"
+                      maxlength="255"
                       />
                   </div>
                 </div>
@@ -217,18 +219,14 @@
                     <div class="width-field-xxl">
                       <div class="multiple-input">
                         <div class="input-column input-xxl">
-                          <input name="cbChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['cbChoiceEn' + $index])}" maxlength="100" ng-pattern="/^[^ก-๙]+$/" required/>
+                          <input name="cbChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['cbChoiceEn' + $index])}" maxlength="100" ng-pattern-restrict="[^<>]*" required/>
                           <!-- Required -->
                           <div class="help-block color-red" ng-show="isInvalid(form['cbChoiceEn' + $index]) || isInvalid(form['cbChoiceTh' + $index])">
                               <span ng-show="form['cbChoiceTh' + $index].$error.required || form['cbChoiceEn' + $index].$error.required">This is a required field</span>
                           </div>
-                          <!-- Pattern -->
-                          <div class="help-block color-red" ng-show="isInvalid(form['cbChoiceEn' + $index])">
-                              <span ng-show="form['cbChoiceEn' + $index].$error.pattern">Only English allowed</span>
-                          </div>
                         </div>
                         <div class="input-column input-xxl">
-                          <input name="cbChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['cbChoiceTh' + $index])}" maxlength="100" required/>
+                          <input name="cbChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['cbChoiceTh' + $index])}" maxlength="100" ng-pattern-restrict="[^<>]*" required/>
                         </div>
                         <div class="input-column input-l">
                           <input name="cbChoicePos{{$index}}" type="number" class="form-control" ng-model="choice.Position" ng-class="{'has-error': isInvalid(form['cbChoicePos' + $index])}" required/>
@@ -318,8 +316,8 @@
                 </ui-select>
              </div>
 
-			 <div class="two-lines-label" nc-template="common/input/form-group-with-label"
-                nc-label="Show Filter in <br> Global Search">
+			 <div ng-show="formData.Filterable" class="two-lines-label" nc-template="common/input/form-group-with-label"
+                nc-label="Show Filter in <br> Global">
                 <ui-select ng-model="formData.ShowGlobalFilterFlag" search-enabled="false">
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
@@ -331,8 +329,8 @@
               </div>
 
 
-			  <div class="two-lines-label" nc-template="common/input/form-group-with-label"
-                nc-label="Show Filter in <br> Local Search">
+			  <div  ng-show="formData.Filterable" class="two-lines-label" nc-template="common/input/form-group-with-label"
+                nc-label="Show Filter in <br> Local">
                 <ui-select ng-model="formData.ShowLocalFilterFlag" search-enabled="false">
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>

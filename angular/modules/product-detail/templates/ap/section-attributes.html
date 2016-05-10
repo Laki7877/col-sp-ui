@@ -46,7 +46,7 @@
 
                 <div ng-if="isHtmlInput(amap.Attribute.DataType)">
                     <textarea ng-required="amap.Attribute.Required && onPublishing" ng-class="{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }"
-                        ng-model="formData.MasterAttribute[amap.Attribute.AttributeId]" name="AmapInput{{$index}}" class="form-control"
+                        ng-model="formData.MasterAttribute[amap.Attribute.AttributeId].ValueEn" name="AmapInput{{$index}}" class="form-control"
                         ng-ckeditor="ckOptions"></textarea>
                 </div>
 

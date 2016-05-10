@@ -67,7 +67,7 @@
         }
         }">
         <input type="text" ng-model="pair.Quantity" maxlength="5" ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }"
-        ng-disabled='!pair.Visibility' ng-pattern="/^[0-9]+$/" name="pair_Quantity{{$index}}"
+        ng-disabled='!pair.Visibility' ng-pattern="/^[0-9]+$/" ng-disabled="formData.ProductId" name="pair_Quantity{{$index}}"
         class="form-control" />
       </td>
       <!--$emit('openPairModal', pair, formData.Variants, $index)-->

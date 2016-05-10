@@ -27,7 +27,6 @@ module.exports = {
         'error': {
             'messages': {
                 'required': 'This is a required field',
-                'pattern': 'Only numbers and decimals (up to 2 digits) allowed',
                 'minnumber': 'Please enter between 0% and 100%',
                 'maxnumber': 'Please enter between 0% and 100%'
             }
