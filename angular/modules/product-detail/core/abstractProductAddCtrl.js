@@ -219,7 +219,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         resolve: {
           imageBlockOptions: function(){
               return $scope.imageBlockOptions;
-          }, 
+          },
           model: function () {
             return $scope.formData[key][ith];
           },
@@ -374,7 +374,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       if (!form.SalePrice) return;
       if ($scope.variantPtr.SalePrice == '') return;
       if ($scope.variantPtr.OriginalPrice == '') return;
-      
+
       if (Number($scope.variantPtr.SalePrice) > Number($scope.variantPtr.OriginalPrice)) {
         if (form.SalePrice) form.SalePrice.$setValidity('min', false)
         form.SalePrice.$error['min'] = 'Sale Price must not exceed Original Price'
@@ -466,7 +466,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
         }
       });
-      
+
       modalInstance.result.then(function (selectedItem) {
         if (selectedItem == 'yes') {
           $scope.publish('DF');
@@ -577,7 +577,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       if (Number($scope.formData.MasterVariant.OriginalPrice) == 0 || _.isNaN(Number($scope.formData.MasterVariant.OriginalPrice))) {
         $scope.formData.MasterVariant.OriginalPrice = $scope.formData.MasterVariant.SalePrice;
       }
-      
+
 
       $scope.pageState.load('Applying changes..');
 
@@ -660,7 +660,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 // console.log('adminMode', $scope.adminMode, $scope.formData.Status);
                 if (!$scope.adminMode && $scope.formData.Status == 'RJ') {
                   //Show rejection from admin
-                  $scope.adminAlert.error("<strong>Message from Admin</strong><br>" + $scope.formData.AdminApprove.RejectReason);
+                  $scope.adminAlert.error("<strong>This product has been rejected by Admin.</strong><br>" + $scope.formData.AdminApprove.RejectReason);
                 } else if (!$scope.adminMode && $scope.formData.Status == 'AP') {
                   $scope.adminAlert.success("This product has been approved. Click 'Edit Product' to make changes.");
                 } else if (!$scope.adminMode && $scope.formData.Status == 'WA') {
@@ -793,7 +793,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             resolve: {
               imageBlockOptions: function(){
                 return $scope.imageBlockOptions;
-              }, 
+              },
               uploader: function () {
                 return ImageService.getUploader('/ProductImages', {
                   queueLimit: QUEUE_LIMIT
