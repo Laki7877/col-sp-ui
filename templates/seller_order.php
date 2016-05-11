@@ -32,9 +32,9 @@
             <td class="width_120">{{row.OrderDate | dateTh}}</td>
             <td class="width_100" nc-link="{{url}}/{{row.OrderId}}">{{row.OrderId}}</td>
             <td class="column-text-ellipsis">{{row.CustomerName}}</td>
-            <td class="width_120">[Shipping Type]</td>
-            <td class="width_100">{{ row.ShippingType }}</td>
-            <td class="width_100">[Payment]</td>
+            <td class="width_120">{{ row.ShippingType }}</td>
+            <td class="width_100">{{ row.Carrier}}</td>
+            <td class="width_100">{{ row.Payment}}</td>
             <td class="price-column">{{ row.TotalAmt | currency: ' ': 2 }}</td>
             <td class="width_200">
               <span class="{{row.Status | mapDropdown: status:'color'}}">

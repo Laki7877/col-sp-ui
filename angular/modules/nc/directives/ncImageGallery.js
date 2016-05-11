@@ -510,31 +510,34 @@ angular.module('nc')
 
 						if (img.width < minW || img.height < minH) {
 							//min width error
-							scope.onError({
-								$response: 'dimensionFilter'
-							});
 							item.remove();
 							item.cancel();
+							scope.model.splice(scope.model.indexOf(item.obj));
+							scope.onError({
+								$response: {name: 'dimensionFilter'}
+							});
 							return;
 						}
 
 						if (img.width > maxW || img.height > maxH) {
 							//min width error
+							item.remove();
+							item.cancel();
+							scope.model.splice(scope.model.indexOf(item.obj));
 							scope.onError({
 								$response: {name:'dimensionFilter'}
 							});
-							item.remove();
-							item.cancel();
 							return;
 						}
 
 						if (scope.options.validateRatio && img.width != scope.options.validateRatio * img.height) {
 							//min width error
+							item.remove();
+							item.cancel();
+							scope.model.splice(scope.model.indexOf(item.obj));
 							scope.onError({
 								$response: {name: 'ratioFilter'}
 							});
-							item.remove();
-							item.cancel();
 							return;
 						}
 					};

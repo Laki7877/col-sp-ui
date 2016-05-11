@@ -62,11 +62,11 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 	$scope.updateStock = function(item) {
 		$scope.alert.close();
 		// cast to int
-		var i = _.pick(item, ['Quantity']);
-		if(_.isEmpty(i.Quantity)) {
-			i.Quantity = 0
+		var i = _.pick(item, ['Update']);
+		if(_.isEmpty(i.Update)) {
+			i.Update = 0
 		}
-		i.Quantity = _.toInteger(i.Quantity);
+		i.Update = _.toInteger(i.Update);
 
 		// save
 		InventoryService.update(item.Pid, i)
