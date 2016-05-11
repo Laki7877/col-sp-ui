@@ -78,7 +78,7 @@
                     <div class="color-grey" ng-if="row.VariantCount > 0">({{row.VariantCount}} variants)</div>
                     <div class="color-grey" ng-hide="row.VariantCount > 0">PID: {{row.Pid}}</div>
                   </td>
-                  <td class="tag-column column-text-ellipsis">
+                  <td class="column-text-ellipsis">
                     {{getTag(row.Tags)}}
                   </td>
                   <td class="price-column">
