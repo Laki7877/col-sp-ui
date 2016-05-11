@@ -51,8 +51,8 @@
 						                            <nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox>
 						                        </th>
 						                        <th></th>
-						                        <th nc-sort="ProductNameEn">Product Name </th>
-						                        <th nc-sort="Shop">Shop</th>
+						                        <th class="product-name-column" nc-sort="ProductNameEn">Product Name </th>
+						                        <th class="shop-name-column" nc-sort="Shop">Shop</th>
 						                        <th class="approve-column" nc-sort="InformationTabStatus">Info.</th>
 						                        <th class="approve-column" nc-sort="ImageTabStatus">Img.</th>
 						                        <th class="approve-column" nc-sort="CategoryTabStatus">Cat.</th>
@@ -75,8 +75,9 @@
 						                            </div>
 						                        </td>
 						                        <td class="column-text-ellipsis" nc-link="/admin/approve/{{row.ProductId}}">
-						                            {{row.ProductNameEn}}
-													<div class="color-grey">{{row.Pid}}</div>
+						                            <div class="text-ellipsis">{{row.ProductNameEn}}</div>
+                                        <div class="color-grey" ng-if="row.VariantCount > 0">({{row.VariantCount}} variants)</div>
+                                        <div class="color-grey" ng-hide="row.VariantCount > 0">PID: {{row.Pid}}</div>
 						                        </td>
 						                        <td>{{row.Shop.ShopNameEn}}</td>
 						                        <td class="approve-column"> <span class="{{ asStatus(row.InformationTabStatus).color }}"><i class="fa fa-circle"></i></span></td>
