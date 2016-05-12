@@ -46,7 +46,7 @@ Route::add('/products/select', 'ProductController::select');
 Route::add('/products/images', 'ProductController::images');
 Route::add('/products/reviews', 'ProductController::reviews');
 Route::add('/products/export', 'ProductController::export');
-Route::add('/products/import/update', 'ProductController::importUpdate');
+Route::add('/products/update', 'ProductController::importUpdate');
 Route::add('/products/import', 'ProductController::import');
 Route::add('/products/groups', 'ProductController::group');
 Route::add('/products/groups/add', 'ProductController::groupCreate');
@@ -76,6 +76,7 @@ Route::add('/newsletters', 'SellerController::listNewsletter');
 Route::add('/onboarding', 'SellerController::onboarding');
 Route::add('/dashboard', 'SellerController::dashboard');
 Route::add('/orders', 'SellerController::listOrder');
+Route::add('/orders/shippinglist', 'SellerController::shipOrder');
 Route::add('/orders/:id', 'SellerController::editOrder');
 Route::add('/reports', 'SellerController::report');
 
@@ -104,6 +105,7 @@ Route::add('/admin/shoptypes', 'AdminController::listShoptype');
 Route::add('/admin/shoptypes/add', 'AdminController::addShoptype');
 Route::add('/admin/shoptypes/:id', 'AdminController::editShoptype');
 Route::add('/admin/products', 'AdminController::allProducts');
+Route::add('/admin/products/reviews', 'AdminController::reviewProduct');
 Route::add('/admin/products/:id', 'AdminController::detail');
 Route::add('/admin/approve', 'AdminController::approve');
 Route::add('/admin/approve/:id', 'AdminController::approveDetail');
@@ -137,10 +139,10 @@ Route::add('/admin/cms/master', 'AdminController::listCMSMaster');
 Route::add('/admin/cms/master/create', 'AdminController::addCMSMaster');
 Route::add('/admin/cms/master/:id', 'AdminController::editCMSMaster');
 
-Route::add('/buy1get1', 'Buy1Get1Controller::index');
-Route::add('/buy1get1/add', 'Buy1Get1Controller::add');
-Route::add('/buy1get1/import', 'Buy1Get1Controller::import');
-Route::add('/buy1get1/:id', 'Buy1Get1Controller::edit');
+Route::add('/admin/buy1get1','AdminController::listBuy1Get1');
+Route::add('/admin/buy1get1/create','AdminController::addBuy1Get1');
+Route::add('/admin/buy1get1/:id','AdminController::editBuy1Get1');
+
 
 //test route
 Route::add('/test/:name', 'TestController::any');

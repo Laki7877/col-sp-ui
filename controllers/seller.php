@@ -69,7 +69,7 @@ class SellerController extends Controller
     {
         return View::render('seller_dashboard');
     }
-    //Coupons
+    //Order
     public static function listOrder($params)
     {
         return View::render('seller_order');
@@ -82,5 +82,9 @@ class SellerController extends Controller
 	public static function report($params)
     {
         return View::render('seller_report',  ['params' => json_encode_n($params)]);
+    }
+    public static function shipOrder($params)
+    {
+        return View::render('seller_order_shipping_list');
     }
 }

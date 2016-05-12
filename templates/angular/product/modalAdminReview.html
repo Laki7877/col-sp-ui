@@ -1,0 +1,67 @@
+<div class="modal-header">
+  <nc-alert nc-model="alert"></nc-alert>
+  <span class="float-right">
+    <a class="link-btn-plain" ng-click="$dismiss()">Cancel</a>
+    <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+  </span>
+  <h3 class="modal-title">Review Detail</h3>
+</div>
+<div class="modal-body">
+  <form class="ah-form margin-top-20">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-section">
+          <div class="form-section-header"><h2>Review Detail</h2></div>
+          <div class="form-section-content modal-custom">
+            <div nc-template="common/input/form-group-with-label"
+              nc-label="Date & Time">
+              <p class="form-control-static">{{formData.UpdatedDt | dateTh}} at {{formData.UpdatedDt | timeTh}}</p>
+            </div>
+            <div nc-template="common/input/form-group-with-label"
+              nc-label="Customer Name">
+              <p class="form-control-static">{{formData.Customer.Name}}</p>
+            </div>
+            <div class="margin-top-5"
+              nc-template="common/input/form-group-with-label"
+              nc-label="Delivery Speed">
+              <select class="form-control" ng-model="formData.DeliverySpeed" ng-options="rating as (rating | currency:' ':1) for rating in ratings"></select>
+            </div>
+            <div nc-template="common/input/form-group-with-label"
+              nc-label="Product Content">
+              <select class="form-control" ng-model="formData.ProductContent" ng-options="rating as (rating | currency:' ':1) for rating in ratings"></select>
+            </div>
+            <div nc-template="common/input/form-group-with-label"
+              nc-label="Product Validity">
+              <select class="form-control" ng-model="formData.ProductValidity" ng-options="rating as (rating | currency:' ':1) for rating in ratings"></select>
+            </div>
+            <div nc-template="common/input/form-group-with-label"
+              nc-label="Packaging">
+              <select class="form-control" ng-model="formData.Packaging" ng-options="rating as (rating | currency:' ':1) for rating in ratings"></select>
+            </div>
+          </div>
+        </div>
+        <div class="form-section">
+          <div class="form-section-header"><h2>Product Information</h2></div>
+          <div class="form-section-content modal-custom">
+            <div nc-template="common/input/form-group-with-label"
+              nc-label="PID">
+              <p class="form-control-static">{{formData.Pid}}</p>
+            </div>
+            <div nc-template="common/input/form-group-with-label"
+              nc-label="Product Name (English)">
+              <p class="form-control-static">{{formData.ProductNameEn}}</p>
+            </div>
+            <div nc-template="common/input/form-group-with-label"
+              nc-label="Product Name (ไทย)">
+              <p class="form-control-static">{{formData.ProductNameTh}}</p>
+            </div>
+            <div nc-template="common/input/form-group-with-label"
+              nc-label="Brand">
+              <p class="form-control-static">{{formData.Brand.BrandNameEn}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -29,6 +29,7 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
         console.log("fd", fd);
         //Post to server
         $scope.alert.close();
+        
 		Product.savePendingProduct(fd).then(function(suc){
             $scope.alert.success("Pending product grouped successfully.");
         }, function(er){

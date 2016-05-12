@@ -77,19 +77,18 @@
                 nc-label="Logo File">
                   <button
                   type="button"
-                  name="BrandImage"
                   class="btn btn-default"
+                  name="BrandImage"
                   ngf-accept="'.png,.jpg,.jpeg'"
                   ngf-select="uploadLogo($file)"
                   ng-model="formData.brandImage"
-                  ng-class="{'has-error-btn' : isInvalid(form.BrandImage)}"
-                  required>Choose File</button>
+                  ng-class="{'has-error-btn' : isInvalid(form.BrandImage)}">Choose File</button>
               </div>
-              <div ng-show="formData.BrandImage"
+              <div ng-show="formData.BrandImage && formData.BrandImage.Url != ''"
                 nc-template="common/input/form-group-with-label"
                 nc-label="Logo Preview">
                   <img
-                    ng-src="{{formData.BrandImage.url}}"
+                    ng-src="{{formData.BrandImage.Url}}"
                     width="160"
                     />
                   <a style="display:block;" class="margin-top-5" ng-click="formData.BrandImage=null"><i class="fa-trash fa"></i> Delete this image</a>
@@ -171,6 +170,28 @@
           <div class="form-section">
             <div class="form-section-header"><h2>SEO</h2></div>
             <div class="form-section-content">
+              <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.SEO_En"
+                nc-label="SEO (English)"
+                >
+                <input
+                  class="form-control"
+                  name="SEO_En"
+                  ng-model="formData.SEO.SeoEn"
+                  maxlength="60"
+                   />
+              </div>
+              <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.SEO_Th"
+                nc-label="SEO (ไทย)"
+                >
+                <input
+                  class="form-control"
+                  name="SEO_Th"
+                  ng-model="formData.SEO.SeoTh"
+                  maxlength="60"
+                   />
+              </div>
               <div nc-template="common/input/form-group-with-label"
                 nc-template-form="form.SEO_MetaTitleEn"
                 nc-label="Meta Title (English)"

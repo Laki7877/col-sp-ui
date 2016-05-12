@@ -15,13 +15,17 @@ module.exports = function ($cookies) {
     };
 
     service.put = function(key, obj, flag) {
-        //Always use local storage
-        flag = true;
         sessionStorage.setItem('central.seller.portal.shared.' + key, obj);
-        if (flag) {
-            localStorage.setItem('central.seller.portal.shared.' + key, obj);
-        }
+        localStorage.setItem('central.seller.portal.shared.' + key, obj);
     };
+
+    service.getObject = function(key) {
+        return angular.fromJson(service.get(key));
+    }
+
+    service.putObject = function(key, obj) {
+        service.put(key, angular.toJson(obj));
+    }
 
     service.remove = function(key) {
         sessionStorage.removeItem('central.seller.portal.shared.' + key);
@@ -83,14 +87,19 @@ module.exports = function ($cookies) {
      * should also be stored in localStorage
      */
     service.storeCurrentUserProfile = function (profile, flag) {
+        if(_.has(profile, 'Shop.ShopId')){
+            $cookies.put('central.seller.portal.auth.profile.shop', profile.Shop.ShopId, {path: '/'});
+        }
+        
         profile = angular.toJson(profile);
         sessionStorage.setItem('central.seller.portal.auth.profile', profile);
-        if (flag) {
-            localStorage.setItem('central.seller.portal.auth.profile', profile);
-        }
+        localStorage.setItem('central.seller.portal.auth.profile', profile);
     };
 
     service.storeImposterProfile = function(profile){
+        if(_.has(profile, 'Shop.ShopId')){
+            $cookies.put('central.seller.portal.auth.profile.shop', profile.Shop.ShopId, {path: '/'});
+        }
 	    profile = angular.toJson(profile);
         sessionStorage.setItem('central.seller.portal.auth.imposter', profile);
     };
@@ -102,16 +111,18 @@ module.exports = function ($cookies) {
     
     service.clearImposterProfile = function () {
          sessionStorage.removeItem('central.seller.portal.auth.imposter');
+        $cookies.remove('central.seller.portal.auth.profile.shop', {path: '/'});
     };
 
     /**
      * Utility method to clear the sessionStorage
      */
     service.clear = function () {
-        sessionStorage.removeItem('central.seller.portal.auth.token');
-        sessionStorage.removeItem('central.seller.portal.auth.profile');
         $cookies.remove('central.seller.portal.auth.token', {path: '/'});
         $cookies.remove('central.seller.portal.auth.profile', {path: '/'});
+        $cookies.remove('central.seller.portal.auth.profile.shop', {path: '/'});
+        sessionStorage.removeItem('central.seller.portal.auth.token');
+        sessionStorage.removeItem('central.seller.portal.auth.profile');
 	    sessionStorage.removeItem('central.seller.portal.auth.imposter');
         localStorage.removeItem('central.seller.portal.auth.token');
         localStorage.removeItem('central.seller.portal.auth.actions');

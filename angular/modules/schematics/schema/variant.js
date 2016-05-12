@@ -104,6 +104,12 @@ module.exports =  {
     "Images": {
       "$ref": "#/defs/Image"
     },
+    "PurchasePrice": {
+      "type": "number"
+    },
+    "UnitPrice": {
+      "type": "number"
+    },
     "Installment": {
       "enum": ["Y", "N"]
     },
@@ -138,6 +144,6 @@ module.exports =  {
   },
   "required": ["ShippingMethod", "ProductNameEn", "ProductNameTh",
     "StockType", "DimensionUnit", "SEO", "VideoLinks", "Images", "GiftWrap",
-    "FirstAttribute", "SecondAttribute",
+    "FirstAttribute", "SecondAttribute", 
     "Installment", "PrepareDay", "LimitIndividualDay", "Display"]
 };

@@ -15,7 +15,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
               </button>
               <ul class="dropdown-menu">
                 <li><a href="/products/import">Add New Products</a></li>
-                <li><a href="/products/import/update">Update Existing Products</a></li>
+                <li><a href="/products/update">Update Existing Products</a></li>
               </ul>
             </div>
        </nc-page-title>
@@ -31,7 +31,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
 		            <tr class="table-head">
 		                <th></th>
 		                <th nc-sort="ProductNameEn">Product Name</th>
-		                <th nc-sort="Pid">Product ID</th>
+		                <th nc-sort="Pid">PID</th>
 		                <th nc-sort="Sku">SKU</th>
 		                <th nc-sort="AvailableStock" class="inventory-column">Available</th>
 		                <th nc-sort="Status"><span class="margin-left-10">Status</span></th>

@@ -2,40 +2,58 @@
     <div class="form-section-header">
         <h2>Price</h2></div>
     <div class="form-section-content">
-        <div nc-template="common/input/form-group-with-label" nc-template-form="form.SalePrice" nc-label="Sale Price"
+        <div nc-template="common/input/form-group-with-label" nc-template-form="form.SalePrice" nc-label="Sale Price" ng-cloack
         nc-template-options-path="addProductForm/SalePrice">
-            <input autocomplete="off" type="text" class="form-control width-field-normal" maxlength="20" name="SalePrice"
+            <input autocomplete="off" ng-pattern-restrict="^[0-9]*$" type="text" class="form-control width-field-normal" maxlength="20" name="SalePrice"
             ng-model="variantPtr.SalePrice" required/>
         </div>
 
         <div nc-template="common/input/form-group-with-label" nc-label="Original Price" nc-template-options-path="addProductForm/OriginalPrice"
         nc-template-form="form.OriginalPrice">
             <input autocomplete="off" class="form-control width-field-normal" type="text" name="OriginalPrice" ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="20"
-            ng-model="variantPtr.OriginalPrice" />
+            ng-model="variantPtr.OriginalPrice" ng-pattern-restrict="^[0-9]*$"/>
         </div>
 
         <div nc-template="common/input/form-group-with-label" nc-label="Installment" nc-template-options-path="addProductForm/Installment"
         nc-template-form="form.Installment">
-            <select ng-if="(variantPtr.SalePrice || 0) > 5000" class="form-control" ng-model="variantPtr.Installment">
-                <option value="Y">Yes</option>
-                <option value="N" selected>No</option>
-            </select>
-
-             <select disabled ng-if="(variantPtr.SalePrice || 0) <= 5000" class="form-control">
-                 <option value="No" selected>Available when price is more than 5,000</option>
+            <select ng-disabled="disableInstallment()" ng-cloak class="form-control" ng-model="variantPtr.Installment">
+                <option ng-if="disableInstallment()" value="N" selected>Available when price is more than 5,000</option>
+                <option ng-if="!disableInstallment()" value="Y">Yes</option>
+                <option ng-if="!disableInstallment()" value="N" selected>No</option>
             </select>
         </div>
 
-        <div nc-template="common/input/form-group-with-label" nc-label="Unit Price" nc-template-options-path="addProductForm/OriginalPrice"
+        <div nc-template="common/input/form-group-with-label" ng-show="ShopGroupPolicy(['IN'])" nc-label="Unit Price" nc-template-options-path="addProductForm/NonRequiredSystemField"
         nc-template-form="form.UnitPrice">
             <input autocomplete="off" class="form-control width-field-normal" type="text" name="UnitPrice" ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="20"
             ng-model="variantPtr.UnitPrice" />
         </div>
 
-        <div nc-template="common/input/form-group-with-label" nc-label="Purchase Price" nc-template-options-path="addProductForm/OriginalPrice"
+        <div nc-template="common/input/form-group-with-label" ng-show="ShopGroupPolicy(['IN'])" nc-label="Purchase Price" nc-template-options-path="addProductForm/NonRequiredSystemField"
         nc-template-form="form.PurchasePrice">
             <input autocomplete="off" class="form-control width-field-normal" type="text" name="PurchasePrice" ng-pattern="/^\d+(\.\d{1,2})?$/" maxlength="20"
             ng-model="variantPtr.PurchasePrice" />
+        </div>
+
+        <div nc-template="common/input/form-group-with-label" ng-show="ShopGroupPolicy(['IN', 'BU'])" nc-label="Sale Unit (English)" nc-template-options-path="addProductForm/NonRequiredSystemField"
+        nc-template-form="form.SaleUnitEn">
+            <input autocomplete="off" class="form-control width-field-normal" type="text" name="SaleUnitEn" maxlength="20"
+            ng-model="variantPtr.SaleUnitEn" />
+        </div>
+
+        <div nc-template="common/input/form-group-with-label" ng-show="ShopGroupPolicy(['IN', 'BU'])" nc-label="Sale Unit (ไทย)" nc-template-options-path="addProductForm/NonRequiredSystemField"
+        nc-template-form="form.SaleUnitTh">
+            <input autocomplete="off" class="form-control width-field-normal" type="text" name="SaleUnitTh" maxlength="20"
+            ng-model="variantPtr.SaleUnitTh" />
+        </div>
+
+        <div nc-template="common/input/form-group-with-label" nc-template-form="form.IsVat"
+        nc-template-options-path="addProductForm/NonRequiredSystemField"
+        nc-label="Is VAT">
+            <select ng-model="variantPtr.IsVat" class="form-control" name="IsVat">
+                <option value="N">No</option>
+                <option value="Y">Yes</option>
+            </select>
         </div>
 
     </div>

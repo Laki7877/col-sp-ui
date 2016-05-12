@@ -13,6 +13,7 @@ module.exports = function($scope, $controller, BrandService, Product, AdminMaste
 	$scope.childProducts = [];
 	$scope.products = [];
 	$scope.brands = [];
+	
 	$scope.getProducts = function(search) {
 		var brands = !_.isEmpty($scope.formData.FilterBy) ? [$scope.formData.FilterBy] : [];
 		Product.advanceList({

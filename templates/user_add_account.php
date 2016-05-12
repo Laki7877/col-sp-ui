@@ -28,7 +28,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 										  	}"
 										  	ng-show="formData.UserId"
 										  	>
-										  	{{formData.UserId | leadingzero: 2}}
+										  	{{formData.UserId}}
 										  </div>
 							              <!-- Email -->
 							              <div ng-template="common/input/text2"
@@ -102,15 +102,15 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 							              	nc-label="Brand"
 							              	>
 							              	<ui-select ng-model="formData.Brands" multiple>
-							              		<ui-select-match placeholder="Search Brand">{{$select.selected.BrandNameEn}}</ui-select-match>
+							              		<ui-select-match placeholder="Search Brand">{{$item.BrandNameEn}}</ui-select-match>
 							              		<ui-select-choices repeat="item in brands" refresh="getBrands($select.search)" refresh-delay="1">{{item.BrandNameEn}}</ui-select-choices>
 							              	</ui-select>
 							              </div>
 							              <!-- Old Password -->
-							              <div ng-show="id != 0" 
+							              <!-- <div ng-show="id != 0"
 							              	ng-template="common/input/password"
 							                ng-template-options="{
-							                  'label': 'OldPassword',
+							                  'label': 'Old Password',
 							                  'formGroupClass': 'margin-top-30'
 							                }">
 							                <input
@@ -120,7 +120,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 							                  ng-model="formData.OldPassword"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.OldPassword) }"
 							                  />
-							              </div>
+							              </div> -->
 							              <!-- Password -->
 							              <div ng-template="common/input/password"
 							                ng-template-options="{

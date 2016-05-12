@@ -10,7 +10,10 @@ class ProductController extends Controller
     public static function export($params)
     {
       return View::render('seller_export_products', [
-          'viewBag' => $_POST['selected_products'],
+          'viewBag' => array(
+            'selectedProducts' =>  $_POST['selected_products'],
+            'searchCriteria' => $_POST['search_criteria']
+            ),
       ]);
     }
     

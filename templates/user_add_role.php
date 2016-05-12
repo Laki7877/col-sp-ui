@@ -29,7 +29,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Account'])
 										  	}"
 										  	ng-show="formData.GroupId"
 										  	>
-										  	{{formData.GroupId | leadingzero: 2}}
+										  	{{formData.GroupId}}
 										  </div>
 							              <!-- Name -->
 							              <div ng-template="common/input/text2"

@@ -22,6 +22,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 			filters: [{
 	            name: 'imageFilter',
 	            fn: function(item /*{File|FileLikeObject}*/, options) {
+	            	console.log('item', item);
 	                var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
 	                return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
 	            }}]
@@ -39,7 +40,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 			onFail(item, filter);
 		};
 		uploader.onAfterAddingFile = function(item) {
-			var obj = { url: '' };
+			var obj = { Url: '' };
 			if(images.length == uploader.queueLimit) {
 				//Callback for queueLimit reached
 				if(queueLimit) {

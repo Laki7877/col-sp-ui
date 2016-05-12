@@ -204,12 +204,8 @@ class AdminController extends Controller
 	{
 		return View::render('admin_newsletters');
 	}
-
-
-
-	// Create By Col Dev (Natee)
-	// CMS Category
-	public static function listCMSCategory($params)
+	//Newsletter
+	public static function reviewProduct($params)
 	{
 		return View::render('admin_cms_category');
 	}
@@ -248,6 +244,8 @@ class AdminController extends Controller
 		return View::render('admin_add_cms_group', ['params' => json_encode_n($params), 'title' => 'Admin CMS Group Detail']);
 	}
     
+    
+    
     // CMS Get All iOath
     public static function export($params)
     {
@@ -268,10 +266,21 @@ class AdminController extends Controller
         ]);
     }
     
+    
     public static function images($params)
     {
         return View::render('image_management');
     }
+    
+    //public static function editCMSMaster($params)
+    //{
+    //    return View::render('add_product', [
+    //    'title' => 'Product Detail',
+    //    'viewBag' => array(
+    //    'productId' => $params['productid'],
+    //    ),
+    //    ]);
+    //}
     
     public static function import($params)
     {
@@ -287,6 +296,22 @@ class AdminController extends Controller
         'update' => true
         ]);
     }
+        //Oath buy 1 get 1
+       public static function listBuy1Get1($params){
+            return View::render('admin_buy1get1_list');
+    
+       }
+    
+       public static function addBuy1Get1($params){
+            return View::render('admin_add_buy1get1', ['title' => 'Add Buy 1 Get 1']);
+    
+       } 
+    
+       public static function editBuy1Get1($params){
+    
+            return View::render('admin_add_buy1get1', ['params' => json_encode_n($params), 'title' => 'Detail']);
+       }
+       //Oath
     
     public static function reviews($params)
     {

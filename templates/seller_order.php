@@ -58,13 +58,18 @@
           <div class="container-fluid">
             <span class="float-left"><p class="color-red">Debug Mode</p></span>
             <span class="float-right">
+              <button class="btn btn-blue btn-width-xl" ng-click="debug.change()">Change</button>
+            </span>
+            <span class="float-right" style="width:200px; margin-right:30px">
               <input class="form-control" placeholder="Order ID" ng-model="debug.id" />
+            </span>
+            <span class="float-right" style="width:200px; margin-right:30px">
               <ui-select ng-model="debug.status" search-enabled="false">
                 <ui-select-match>{{$select.selected.name}}</ui-select-match>
                 <ui-select-choices repeat="i.value as i in status">{{i.name}}</ui-select-choices>
               </ui-select>
-              <button class="btn btn-blue btn-width-xl float-right" ng-click="debug.change()">Change</button>
-            </span> 
+            </span>
+
           </div>
         </div>
       </form>

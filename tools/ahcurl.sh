@@ -15,9 +15,7 @@ then
 fi
 
 HOST=colsp-dev.azurewebsites.net
-echo "Paste your CURL Command: "
 read RAWCURL
-
 REPLACE_HOST=$4
 if (( $# == 4 ));
 then

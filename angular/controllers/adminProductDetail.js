@@ -7,7 +7,8 @@ module.exports = function ($scope, $controller) {
         $scope: $scope,
         options: {
             maxImageUploadQueueLimit: 25,
-            adminMode : true
+            adminMode : true,
+            listingUrl: '/admin/products'
         }
     });
 

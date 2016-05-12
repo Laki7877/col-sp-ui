@@ -15,6 +15,13 @@ module.exports = function(common, config, util) {
 		return processed;
 	};
 
+	service.getLocalCategories = function(ShopId){
+		return common.makeRequest({
+				method: 'GET',
+				url: '/Shops/' + ShopId + '/LocalCategories'
+		});
+	}
+
 	service.deserialize = function(data) {
 		var processed = _.merge({}, data);
 		_.remove(processed.Users, function(e) {

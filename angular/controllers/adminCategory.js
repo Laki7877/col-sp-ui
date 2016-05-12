@@ -174,10 +174,10 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				};
 				$scope.uploadBannerFail = function(e, response) {
 					if(e == 'onmaxsize') {
-						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one', true);
 					}
 					else {
-						$scope.alert.error(common.getError(response.data));
+						$scope.alert.error(common.getError(response.data), true);
 					}
 				};
 
@@ -185,7 +185,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 					if(!closeType) {
 						if ($scope.saving) e.preventDefault();
 						if ($scope.form.$dirty) {
-							if(!confirm('Your changes will not be saved.')) {
+							if(!confirm('Are you sure you want to leave this page?')) {
 								e.preventDefault();
 							}
 						} else {
@@ -195,10 +195,11 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				});
 				$scope.save = function() {
 					$scope.alert.close();
-					$scope.saving = true;
+					$scope.form.$setSubmitted();
 
 					if($scope.form.$valid) {
 						var processed = GlobalCategoryService.serialize($scope.formData);
+						$scope.saving = true;
 						if(id == 0) {
 							GlobalCategoryService.create(processed)
 								.then(function(data) {
@@ -217,10 +218,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 								});
 						}
 					} else {
-						$scope.alert.error(config.DEFAULT_ERROR_MESSAGE);
-						$timeout(function() {
-							$scope.saving = false;
-						},0);
+						$scope.alert.error(config.DEFAULT_ERROR_MESSAGE, true);
 					}
 				};
 			},

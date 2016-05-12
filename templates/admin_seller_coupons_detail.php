@@ -74,7 +74,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
                               <input readonly disabled type="text" class="form-control" ng-model="formData.Action.DiscountAmount" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"/>
                           </div>
 
-                          <div nc-template="common/input/form-group-with-label" nc-label="Maximum Amount" nc-template-options-path="couponForm/MaximumAmount">
+                          <div nc-template="common/input/form-group-with-label" nc-label="Max. Discount Amount" nc-template-options-path="couponForm/MaximumAmount">
                               <input readonly disabled type="text" class="form-control" ng-model="formData.Action.MaximumAmount" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"/>
                           </div>
 
@@ -83,11 +83,11 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
                   <div class="form-section">
                     <div class="form-section-header"><h2>More Options</h2></div>
                     <div class="form-section-content">
+                      <div nc-template="common/input/form-group-with-label" nc-label="Maximum Usage" nc-template-options-path="couponForm/MaximumUsers">
+                          <input readonly disabled type="text" class="form-control" ng-model="formData.MaximumUser" ng-pattern-restrict="^[0-9]*$" required/>
+                      </div>
                       <div nc-template="common/input/form-group-with-label" nc-label="Usage per Customer" nc-template-options-path="couponForm/UsagePerCustomer">
                           <input readonly disabled type="text" class="form-control" ng-model="formData.UsagePerCustomer" ng-pattern-restrict="^[0-9]*$"/>
-                      </div>
-                      <div nc-template="common/input/form-group-with-label" nc-label="Maximum Users" nc-template-options-path="couponForm/MaximumUsers">
-                          <input readonly disabled type="text" class="form-control" ng-model="formData.MaximumUser" ng-pattern-restrict="^[0-9]*$"/>
                       </div>
                     </div>
                   </div>

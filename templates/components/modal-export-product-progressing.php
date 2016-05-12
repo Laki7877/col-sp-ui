@@ -11,19 +11,14 @@ if (isset($percent)) $progress = $percent;
 	        </div>
 			<div class="modal-body confirmation-modal no-margin">
 				<div class="row">
-					<div class="col-xs-12 margin-bottom-30">
-						<h2 class="font-size-20 text-centerx text-normal margin-bottom-20">{{ exporter.title }}</h2>
-						<div class="progress">
-						  <div class="progress-bar" role="progressbar" aria-valuenow="<?=$progress?>" aria-valuemin="0" aria-valuemax="100" style="width: {{ exporter.progress }}%;">
-						    <span class="sr-only"><?=$progress?>% Complete</span>
-						  </div>
-						</div>
+					<div class="col-xs-12">
+						<h2 class="font-size-20 text-centerx text-normal margin-bottom-20">{{exporter.title}}</h2>
+						<div nc-loading-small="Processing..."></div>
 					</div>
 					<div class="confirmation-action no-margin">
-						<button class="btn btn-white" data-dismiss="modal">Cancel</button>
+						<!--button class="btn btn-white" data-dismiss="modal">Cancel</button-->
 
-						<a id="export_download_btn" download="ProductExport.csv" class="btn btn-blue"
-                         ng-disabled="exporter.progress < 100">Download</a>
+						<a id="export_download_btn" download="ProductExport.csv"></a>
 						<!-- <button type="button" disabled class="btn btn-grey">Download</button> -->
 					</div> <!-- end .col-xs-12 -->
 				</div> <!-- end .row -->

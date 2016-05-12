@@ -1,13 +1,13 @@
 <div class="form-section">
     <div class="form-section-header">
-        <h2>Other Attributes</h2></div>
+        <h2>Default Attributes</h2></div>
     <div class="form-section-content">
 
         <!-- for each attribute in attribute set -->
-        <div class="form-group" ng-repeat="da in defaultAttributes">
+        <div class="form-group" ng-repeat="da in defaultAttributes" ng-if="isVisibleTo(da.VisibleTo)">
             <div class="width-label">
                 <label class="control-label" ng-class="{'required': da.Required}">
-                    {{ da.AttributeNameEn }}
+                    {{ da.DisplayNameEn || da.AttributeNameEn }}
                 </label>
             </div>
             <div ng-class="{'width-field-normal': !isHtmlInput(da.DataType), 'width-field-xxl': isHtmlInput(da.DataType)}">
