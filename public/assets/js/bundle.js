@@ -1046,9 +1046,11 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
         console.log("fd", fd);
         //Post to server
         $scope.alert.close();
-        
+		$scope.loading = true;
+         
 		Product.savePendingProduct(fd).then(function(suc){
             $scope.alert.success("Pending product grouped successfully.");
+			$scope.loading = false;
         }, function(er){
             console.log(er);
             $scope.alert.error("Unable to group product because " + (er.Message || er.message));
