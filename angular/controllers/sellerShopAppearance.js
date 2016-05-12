@@ -43,7 +43,7 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 				$scope.thumbUploader = ImageService.getUploaderFn('/ShopImages');
 
 				// Readjust components if any
-				if($scope.hasComponent('Banner')) {
+				/*if($scope.hasComponent('Banner')) {
 					var diff = $scope.formData.Banner.Images.length - $scope.getComponent('Banner').Count;
 					for (var i = 0; i < diff; i++) {
 						$scope.formData.Banner.Images.pop();
@@ -62,9 +62,10 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 					for (var i = 0; i < $scope.getComponent('Video').Count; i++) {
 						$scope.formData.Videos.push(videos[i] || {});
 					};
-				}
+				}*/
 			});
 	};
+	/*
 	$scope.hasComponent = function(name) {
 		if(_.isNil($scope.theme)) {
 			return false;
@@ -82,7 +83,7 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 				return e.ComponentName == name;
 			});
 		}
-	};
+	};*/
 	$scope.save = function() {
 		if($scope.saving) return;
 		
@@ -94,7 +95,6 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 			ShopAppearanceService.updateAll(ShopAppearanceService.serialize($scope.formData))
 				.then(function(data) {
 					$scope.formData = ShopAppearanceService.deserialize(data);
-					$scope.alert.success('Successfully Saved.');
 					$scope.form.$setPristine(true);
 				}, function(err) {
 					$scope.alert.error(common.getError(err));

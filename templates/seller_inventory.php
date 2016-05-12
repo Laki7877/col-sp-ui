@@ -5,7 +5,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Inventor
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerInventoryListCtrl">
-       <nc-page-title nc-title="Inventory" icon="fa-archive">
+		<nc-alert nc-model="alert"></nc-alert>
+       	<nc-page-title nc-title="Inventory" icon="fa-archive">
             <a ng-href="/products/export" class="btn ng-scope btn-white btn-width-xxl">
 	            <span class="">Export All Products</span>
           	</a>
@@ -18,7 +19,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Inventor
                 <li><a href="/products/update">Update Existing Products</a></li>
               </ul>
             </div>
-       </nc-page-title>
+       	</nc-page-title>
 	    <div class="row search-section-wrapper">
       		<nc-search nc-model="params.searchText" nc-search-event="onSearch" nc-search-placeholder="'Search by Product Name, PID, or SKU'"></nc-search>
 		  	<nc-advance-search-button nc-model="advanceSearch"></nc-advance-search-button>

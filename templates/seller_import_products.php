@@ -123,7 +123,7 @@
 													nc-template-options-path="productImport/BrandValue"
 													nc-label="">
 													<ul class="scrollable-content">
-														<li ng-repeat="brand in ctrl.Brands | filter: ctrl.BrandSearch track by $index">{{brand}}</li>
+														<li ng-repeat="brand in ctrl.Brands track by $index">{{brand}}</li>
 													</ul>
 												</div>
 											</div>

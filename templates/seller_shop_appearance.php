@@ -16,6 +16,7 @@
 						<div id="shop-setting-content">
 						    <div class="row">
         						<div class="col-xs-12">
+        							<!-- theme -->
 						            <div class="form-section">
 						                <div class="form-section-header">
 						                    <h2>Shop Theme</h2>
@@ -33,7 +34,14 @@
 											</div>
 										</div>
 						            </div>
-	          						<nc-image-banner2 ng-if="hasComponent('Banner')"  name="Banner" nc-model="formData.Banner.Images" source="formData" title="Banner Upload" uploader="bannerUploader" on-fail="uploadBannerFail" size="getComponent('Banner')"></nc-image-banner2>
+						            <!-- templates -->
+						            <div ng-switch="formData.ThemeId">
+						            	<div ng-switch-when="0"></div>
+						            	<div ng-switch-when="1"></div>
+						            	<div ng-switch-when="2"></div>
+						            	<div ng-switch-default></div>
+						            </div>
+	          						<!--nc-image-banner2 ng-if="hasComponent('Banner')"  name="Banner" nc-model="formData.Banner.Images" source="formData" title="Banner Upload" uploader="bannerUploader" on-fail="uploadBannerFail" size="getComponent('Banner')"></nc-image-banner2>
 						            <div ng-if="hasComponent('Layout')" class="form-section">
 						                <div class="form-section-header">
 						                    <h2><input style="margin-right:10px" type="checkbox" ng-model="formData.IsLayout" />Layouts</h2>
@@ -90,7 +98,7 @@
 									            </div>
 						                    </div>
 						                </div>
-						            </div>
+						            </div-->
 							    </div>
 							</div>
 						</div>

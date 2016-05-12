@@ -57,13 +57,14 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 			$scope.popoverItem = _.extend({}, item);
 			$scope.popoverItem.Quantity = _.toInteger(item.Quantity);
 			$scope.popoverItem.LastQuantity = item.Quantity;
+			$scope.popoverItem.UpdateQuantity = 0
 		}
 	};
 	$scope.updateStock = function(item) {
 		$scope.alert.close();
 		// cast to int
 		var i = _.pick(item, ['UpdateQuantity']);
-		if(_.isEmpty(i.UpdateQuantity)) {
+		if(_.isNil(i.UpdateQuantity)) {
 			i.UpdateQuantity = 0
 		}
 		i.UpdateQuantity = _.toInteger(i.UpdateQuantity);
@@ -72,7 +73,7 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 		InventoryService.update(item.Pid, i)
 			.then(function(data) {
 				$scope.lastEdit = item.Pid;
-				$scope.popoverItemOriginal.Quantity = item.Quantity;
+				$scope.popoverItemOriginal.Quantity = data;
 			}, function(err) {
 				$scope.lastEdit = null;
 				$scope.alert.error(common.getError(err));

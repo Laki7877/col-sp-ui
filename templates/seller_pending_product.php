@@ -1,9 +1,9 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Pending Products']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Product Grouping']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="SellerPendingProductCtrl">
     <nc-page-title nc-title="Pending Products" icon="fa-tag">
-      <a class="btn btn-blue btn-width-xxl" ng-href="{{url}}/add">Create Group Variant</a>
+      Product Grouping
     </nc-page-title>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="{{id}}"></nc-bulk>
