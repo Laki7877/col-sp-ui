@@ -102,7 +102,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
 	};
 	$scope.dirty = false;
     $scope.uploader = ImageService.getUploader('/ProductImages', {
-    	data: { Type: 'Image' }
+    	formData: { Type: 'Image' }
     });
     $scope.productStatus = config.PRODUCT_STATUS;
 
