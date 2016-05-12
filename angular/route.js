@@ -30,21 +30,16 @@ var seller = {
 	  	'Image Management': '/products/images',
 	  	'Pending Products': '/products/groups'
 	},
-
 	'Inventory|fa-archive': {
 		'View Inventory': '/inventory'
 	},
-
 	'Promotion|fa-bookmark': {
 		'Coupons': '/coupons'
 	},
-
 	'Shop Setting|fa-sliders': {
 		'Shop Profile': '/shops/settings',
 		'Shop Appearance': '/shops/appearance'
 	},
-
-
 	'Account|fa-user': {
 		'User Accounts': '/accounts',
 		'User Roles': '/roles'

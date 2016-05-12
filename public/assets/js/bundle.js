@@ -3823,7 +3823,9 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
 		]
 	};
 	$scope.dirty = false;
-    $scope.uploader = ImageService.getUploader('/ProductImages');
+    $scope.uploader = ImageService.getUploader('/ProductImages', {
+    	formData: { Type: 'Image' }
+    });
     $scope.productStatus = config.PRODUCT_STATUS;
 
     $scope.onEvent = function(product, eventName) {
@@ -5400,11 +5402,11 @@ module.exports = ["$scope", "$controller", "$window", "InventoryService", "confi
 	$scope.updateStock = function(item) {
 		$scope.alert.close();
 		// cast to int
-		var i = _.pick(item, ['Update']);
-		if(_.isEmpty(i.Update)) {
-			i.Update = 0
+		var i = _.pick(item, ['UpdateQuantity']);
+		if(_.isEmpty(i.UpdateQuantity)) {
+			i.UpdateQuantity = 0
 		}
-		i.Update = _.toInteger(i.Update);
+		i.UpdateQuantity = _.toInteger(i.UpdateQuantity);
 
 		// save
 		InventoryService.update(item.Pid, i)
@@ -10422,7 +10424,7 @@ angular.module('nc')
 			replace: true,
 			scope: {
 				model: '=ncModel',
-				uploader: '=ncImageUploader',
+				originalUploader: '=ncImageUploader',
 				options: '=?ncImageDropzoneOptions',
 				onEvent: '&?ncImageDropzoneOnEvent',
 				onError: '&?ncImageDropzoneOnError',
@@ -10465,21 +10467,6 @@ angular.module('nc')
 
 				//Upload
 				scope.uploader.onAfterAddingFile = function(item) {
-					if (scope.uploader.queueLimit == scope.model.length) {
-						scope.onError({$response: { name: 'queueFilter' }})
-						item.cancel();
-						item.remove();
-					} else {
-						var obj = {};
-						obj[scope.options.urlKey] = '';
-						scope.model.push(obj);
-						item.obj = obj;
-						item.indx = scope.model.length - 1;
-						item.onProgress = function(progress) {
-							obj.progress = progress;
-						};
-					}
-
 					var url = URL.createObjectURL(item._file);
 					var img = new Image;
 
@@ -10497,7 +10484,6 @@ angular.module('nc')
 							//min width error
 							item.remove();
 							item.cancel();
-							scope.model.splice(scope.model.indexOf(item.obj));
 							scope.onError({
 								$response: {name: 'dimensionFilter'}
 							});
@@ -10508,7 +10494,6 @@ angular.module('nc')
 							//min width error
 							item.remove();
 							item.cancel();
-							scope.model.splice(scope.model.indexOf(item.obj));
 							scope.onError({
 								$response: {name:'dimensionFilter'}
 							});
@@ -10519,12 +10504,26 @@ angular.module('nc')
 							//min width error
 							item.remove();
 							item.cancel();
-							scope.model.splice(scope.model.indexOf(item.obj));
 							scope.onError({
 								$response: {name: 'ratioFilter'}
 							});
 							return;
 						}
+						if (scope.uploader.queueLimit == scope.model.length) {
+							item.cancel();
+							item.remove();
+							scope.onError({$response: { name: 'queueFilter' }});
+							return;
+						}
+
+						var obj = {};
+						obj[scope.options.urlKey] = '';
+						scope.model.push(obj);
+						item.obj = obj;
+						item.indx = scope.model.length - 1;
+						item.onProgress = function(progress) {
+							obj.progress = progress;
+						};
 					};
 
 					img.src = url;
@@ -14092,21 +14091,16 @@ var seller = {
 	  	'Image Management': '/products/images',
 	  	'Pending Products': '/products/groups'
 	},
-
 	'Inventory|fa-archive': {
 		'View Inventory': '/inventory'
 	},
-
 	'Promotion|fa-bookmark': {
 		'Coupons': '/coupons'
 	},
-
 	'Shop Setting|fa-sliders': {
 		'Shop Profile': '/shops/settings',
 		'Shop Appearance': '/shops/appearance'
 	},
-
-
 	'Account|fa-user': {
 		'User Accounts': '/accounts',
 		'User Roles': '/roles'
@@ -16420,6 +16414,10 @@ module.exports = ["util", function(util) {
 				}
 			});
 		});
+
+		_.forEach(result, function(e) {
+			_.unset(e, ['Children']);
+		})
 		return result;
 	};
 
@@ -18677,7 +18675,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('inventory/stockPopover',
-    "<form ng-submit=updateStock(popoverItem) id=inventory-tab-content class=content><span class=\"col-xs-8 padding-left-0 margin-bottom-15 margin-top-10\">In Stock</span> <span class=\"text-right col-xs-4\">{{popoverItem.Quantity || '0'}}</span> <span class=\"col-xs-6 padding-left-0 margin-bottom-15\">In Stock</span> <input class=\"margin-top-10 text-right col-xs-6\" type=number ng-model=popoverItem.Update ng-pattern-restrict=^[0-9]*$ maxlength=\"6\"> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Defect</span> <span class=\"text-right col-xs-4\">{{popoverItem.Defect || '0'}}</span><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15\">On Hold</span> <span class=\"text-right col-xs-4\">{{popoverItem.OnHold || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15 border_modal\">Reserved</span> <span class=\"text-right col-xs-4 border_modal\">{{popoverItem.Reserve || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 available_inventory\">Available</span><span class=\"text-right col-xs-4 available_inventory\">{{ getAvailableStock(popoverItem) }}</span></div><div class=text-center><button class=\"btn btn-blue btn-width-100 text-center\">Save</button></div></form>"
+    "<form ng-submit=updateStock(popoverItem) id=inventory-tab-content class=content><span class=\"col-xs-8 padding-left-0 margin-bottom-15 margin-top-10\">In Stock</span> <span class=\"text-right col-xs-4\">{{popoverItem.Quantity || '0'}}</span> <span class=\"col-xs-6 padding-left-0 margin-bottom-15\">In Stock</span> <input class=\"margin-top-10 text-right col-xs-6\" type=number ng-model=popoverItem.UpdateQuantity ng-pattern-restrict=^[0-9]*$ maxlength=\"6\"> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Defect</span> <span class=\"text-right col-xs-4\">{{popoverItem.Defect || '0'}}</span><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15\">On Hold</span> <span class=\"text-right col-xs-4\">{{popoverItem.OnHold || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15 border_modal\">Reserved</span> <span class=\"text-right col-xs-4 border_modal\">{{popoverItem.Reserve || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 available_inventory\">Available</span><span class=\"text-right col-xs-4 available_inventory\">{{ getAvailableStock(popoverItem) }}</span></div><div class=text-center><button class=\"btn btn-blue btn-width-100 text-center\">Save</button></div></form>"
   );
 
 
@@ -18715,7 +18713,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('order/modalReadyToShipMerchant',
-    "<nc-alert nc-model=alert></nc-alert><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=col-xs-12><div class=\"radio multiple-radio multiline\"><label><input type=radio name=IsOwnCarrier ng-model=formData.IsOwnCarrier ng-value=\"false\"> Merchant Own Fleet</label><label class=margin-top-10><input type=radio class=float-left name=IsOwnCarrier ng-model=formData.IsOwnCarrier ng-value=\"true\"><div class=float-left>Other Carrier <input class=form-control name=Carrier ng-model=formData.OtherCarrier ng-disabled=\"!formData.IsOwnCarrier\"></div></label></div><p class=margin-top-20>Tracking Number</p><input class=form-control ng-model=\"model.TrackingNumber\"></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white\" ng-click=no()>Cancel</button> <button type=button class=\"btn btn-blue\" ng-click=yes()>Confirm</button></div></div></div>"
+    "<nc-alert nc-model=alert></nc-alert><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-20\"><div class=\"radio multiple-radio multiline\"><label><input type=radio name=IsOwnCarrier ng-model=formData.IsOwnCarrier ng-value=\"false\"> Merchant Own Fleet</label><label class=margin-top-10><input type=radio class=float-left name=IsOwnCarrier ng-model=formData.IsOwnCarrier ng-value=\"true\"><div class=float-left>Other Carrier <input class=\"form-control margin-top-5\" name=Carrier ng-model=formData.OtherCarrier ng-disabled=\"!formData.IsOwnCarrier\"></div></label></div><p class=margin-top-20>Tracking Number</p><input class=form-control ng-model=\"model.TrackingNumber\"></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white\" ng-click=no()>Cancel</button> <button type=button class=\"btn btn-blue\" ng-click=yes()>Confirm</button></div></div></div>"
   );
 
 

@@ -19,6 +19,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
             <th class="width_100">Order Date</th>
             <th class="width_100">Order ID</th>
             <th class="width_150">Customer Name</th>
+            <th class="width_120">Shipping Type</th>
+            <th class="width_100">Carrier</th>
+            <th class="width_100">Payment</th>
             <th>Remark</th>
           </tr>
         </thead>
@@ -27,6 +30,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
             <td>{{order.OrderDate | dateTh}}</td>
             <td>{{order.OrderId}}</td>
             <td>{{order.CustomerName}}</td>
+            <td>{{order.ShippingType}}</td>
+            <td>{{order.Carrier}}</td>
+            <td>{{order.Payment}}</td>
             <td>{{order.Remark}}</td>
           </tr>
         </tbody>

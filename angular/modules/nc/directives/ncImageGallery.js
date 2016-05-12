@@ -437,7 +437,7 @@ angular.module('nc')
 			replace: true,
 			scope: {
 				model: '=ncModel',
-				uploader: '=ncImageUploader',
+				originalUploader: '=ncImageUploader',
 				options: '=?ncImageDropzoneOptions',
 				onEvent: '&?ncImageDropzoneOnEvent',
 				onError: '&?ncImageDropzoneOnError',
@@ -480,21 +480,6 @@ angular.module('nc')
 
 				//Upload
 				scope.uploader.onAfterAddingFile = function(item) {
-					if (scope.uploader.queueLimit == scope.model.length) {
-						scope.onError({$response: { name: 'queueFilter' }})
-						item.cancel();
-						item.remove();
-					} else {
-						var obj = {};
-						obj[scope.options.urlKey] = '';
-						scope.model.push(obj);
-						item.obj = obj;
-						item.indx = scope.model.length - 1;
-						item.onProgress = function(progress) {
-							obj.progress = progress;
-						};
-					}
-
 					var url = URL.createObjectURL(item._file);
 					var img = new Image;
 
@@ -512,7 +497,6 @@ angular.module('nc')
 							//min width error
 							item.remove();
 							item.cancel();
-							scope.model.splice(scope.model.indexOf(item.obj));
 							scope.onError({
 								$response: {name: 'dimensionFilter'}
 							});
@@ -523,7 +507,6 @@ angular.module('nc')
 							//min width error
 							item.remove();
 							item.cancel();
-							scope.model.splice(scope.model.indexOf(item.obj));
 							scope.onError({
 								$response: {name:'dimensionFilter'}
 							});
@@ -534,12 +517,26 @@ angular.module('nc')
 							//min width error
 							item.remove();
 							item.cancel();
-							scope.model.splice(scope.model.indexOf(item.obj));
 							scope.onError({
 								$response: {name: 'ratioFilter'}
 							});
 							return;
 						}
+						if (scope.uploader.queueLimit == scope.model.length) {
+							item.cancel();
+							item.remove();
+							scope.onError({$response: { name: 'queueFilter' }});
+							return;
+						}
+
+						var obj = {};
+						obj[scope.options.urlKey] = '';
+						scope.model.push(obj);
+						item.obj = obj;
+						item.indx = scope.model.length - 1;
+						item.onProgress = function(progress) {
+							obj.progress = progress;
+						};
 					};
 
 					img.src = url;

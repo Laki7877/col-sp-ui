@@ -14,6 +14,10 @@ module.exports = function(util) {
 				}
 			});
 		});
+
+		_.forEach(result, function(e) {
+			_.unset(e, ['Children']);
+		})
 		return result;
 	};
 
