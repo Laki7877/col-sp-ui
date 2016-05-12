@@ -12,6 +12,12 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       $scope.unlockedFields = data;
     });
 
+    $scope.xspermit = function(id) {
+      //Seller permit function (inverted)
+      if($scope.adminMode) return false;
+      return !$rootScope.hasPermission(id);
+    };
+  
     var MAX_FILESIZE = (options.maxImageUploadSize || 5000000);
     var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
 
@@ -207,6 +213,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     //Open modal for cat selector
     $scope.openCategorySelectorModal = function (ith, key, title) {
+      
+      if($scope.xspermit(41)){
+        return $scope.alert.error('You have no permission to modify category (41).');
+      }
+      
       if (!key) {
         key = 'GlobalCategories';
       }
@@ -534,6 +545,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
       if ($scope.readOnly) {
         return $scope.alert.error('This view is read-only.');
+      }
+      
+      if ($scope.xspermit(45)) {
+        return $scope.alert.error('You have no permission to publish (45).');
       }
 
       if ($scope.uploader.isUploading) {

@@ -153,6 +153,8 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
     //return true;
     return $rootScope.hasPermission(id);
   };
+  
+  
 
   //Check url access permission
   $rootScope.permitUrl = function(url) {

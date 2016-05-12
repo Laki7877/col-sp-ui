@@ -19,8 +19,7 @@ angular.module('umeSelect')
                 initialChoices: '=?initialChoices',
                 hideIcon: '=?hideIcon',
                 disabled: '&?ngDisabled',
-                strictMode: '=?strictMode',
-                policyPermit: '@?policyPermit'
+                strictMode: '=?strictMode'
             },
             replace: true,
             priority: 1010,
@@ -33,15 +32,7 @@ angular.module('umeSelect')
                 return templateHTML;
             },
             link: function (scope, element, attrs, ngModel, transclude) {                
-                
-                scope.disableByPolicy = function(){
-                    if(!scope.policyPermit){
-                        return false;
-                    }else{
-                        return !$rootScope.permit(Number(scope.policyPermit))
-                    }
-                }
-                
+
                 //text user types in searchbox
                 scope.searchText = "";
                 //index of currently highlighted choice

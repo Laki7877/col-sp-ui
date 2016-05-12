@@ -1,6 +1,6 @@
 <div class="selectize-control single" >
 	<div class="selectize-input items has-options full has-items" ng-class="{'ume-plain': hideIcon, 'ume-search' : !loading && !hideIcon, 'ume-loading': loading, 'input-active': true}" style="min-height: 34px">
-		<input ume-focus="focusObtained" ng-disabled="disabled() || disableByPolicy()" ume-blur="focusLost" ume-id="{{ _id }}" type="text" autocomplete="off" 
+		<input ume-focus="focusObtained" ng-disabled="disabled()" ume-blur="focusLost" ume-id="{{ _id }}" type="text" autocomplete="off" 
 		tabindex="" ng-model="searchText" ng-focus="focus()" ng-blur="blur()"
 		placeholder="{{ placeholder }}" ng-keydown="keyDown($event)" ng-show="focused || !itemValue(model)" style="width: 100%;"/>
 
