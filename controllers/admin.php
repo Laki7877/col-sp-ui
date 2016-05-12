@@ -191,6 +191,9 @@ class AdminController extends Controller
 	public static function addPendingProduct($param){
 		return View::render('admin_pending_product_group_add');
 	}
+	public static function addGroupingProduct($param){
+		return View::render('admin_product_grouping');
+	}
 
 	//On top credit
 	public static function listOntopcredit($params)

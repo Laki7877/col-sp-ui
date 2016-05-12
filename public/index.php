@@ -49,7 +49,7 @@ Route::add('/products/export', 'ProductController::export');
 Route::add('/products/update', 'ProductController::importUpdate');
 Route::add('/products/import', 'ProductController::import');
 Route::add('/products/groups', 'ProductController::group');
-Route::add('/products/groups/add', 'ProductController::groupCreate');
+//Route::add('/products/groups/add', 'ProductController::groupCreate');
 Route::add('/products/:productid', 'ProductController::edit');
 
 //category routing
@@ -122,8 +122,8 @@ Route::add('/admin/newsletters', 'AdminController::listNewsletter');
 Route::add('/admin/masters', 'AdminController::listMaster');
 Route::add('/admin/masters/add', 'AdminController::addMaster');
 Route::add('/admin/masters/:id', 'AdminController::editMaster');
-Route::add('/admin/products/groups', 'AdminController::listPendingProduct');
-Route::add('/admin/products/groups/add', 'AdminController::addPendingProduct');
+Route::add('/admin/products/groups', 'AdminController::addGroupingProduct');
+//Route::add('/admin/products/groups/add', 'AdminController::addPendingProduct');
 Route::add('/admin/products/:id', 'AdminController::detail');
 // Route::add('/admin/products/groups/:id', 'AdminController::editPendingProduct');
 

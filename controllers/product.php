@@ -18,7 +18,7 @@ class ProductController extends Controller
     }
     
     public static function group($params) {
-        return View::render('seller_pending_product');
+        return View::render('seller_product_grouping');
     }
 
     public static function groupCreate($param){
