@@ -1,0 +1,38 @@
+<div class="form-section">
+	<div class="form-section-header">
+		<h2><input type="checkbox" style="margin-right: 10px" ng-model="source.Status"/>{{title}}</h2>
+	</div>
+
+	<div ng-show="source.Status">
+		<nc-image-block template="common/ncImageBanner4_1" nc-model="source.BannerEn" on-fail="onFail" uploader="uploader" options="options" size="{{size}}">
+		<h4>Banner (English) guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>The width must be {{width}}px</li><li>The height must be {{height}}px</li></span></li></ul>
+		</nc-image-block>
+
+		<nc-image-block template="common/ncImageBanner4_1" nc-model="source.BannerTh" on-fail="onFail" uploader="uploader" options="options" size="{{size}}">
+		<h4>Banner (ไทย) guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>The width must be {{width}}px</li><li>The height must be {{height}}px</li></span></li></ul>
+		</nc-image-block>
+		<div class="section-break"></div>
+		<div class="form-section-content no-margin padding-left-15 padding-right-15" style="margin-top:15px;">
+			<div nc-template="common/input/form-group-with-label" nc-label="Auto Play">
+				<select ng-model="source.AutoPlay" class="form-control" ng-options="o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]"></select>
+			</div>
+			<div nc-template="common/input/form-group-with-label" nc-label="Slide Duration">
+				<div class="width-field-normal">
+					<input class="form-control width-field-normal" 
+						ng-model="source.SlideDuration" 
+						ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"/>
+					<span class="input-with-unit">
+						<span class="input-unit">Seconds</span>
+					</span>
+				</div>
+			</div>
+			<div ng-repeat="link in source.BannerLinks track by $index" class="form-group">
+				<div class="width-label">
+					<label class="control-label"> Banner {{$index+1}} Link</label>
+				</div>
+				<div class="width-field-normal">
+					<input class="form-control width-field-normal" ng-model="link" />
+				</div>
+			</div>
+		</div>
+	</div>

@@ -1,4 +1,45 @@
 angular.module('nc')
+	.directive('ncImageBanner4', function($templateCache) {
+		return {
+			restrict: 'E',
+			scope: {
+				onFail: '=',
+				uploader: '=',
+				size: '@',
+				title: '@',
+				source: '=',
+				height: '@',
+				width: '@'
+			},
+			transclude: true,
+			template: $templateCache.get('common/ncImageBanner4'),
+			link: function(scope) {
+				var update = function() {
+					scope.options = {
+						height: 256 * (scope.height/scope.width),
+						width: 256,
+						validateDimensionMin: [scope.width, scope.height],
+						validateDimensionMax: [scope.width, scope.height]
+					};
+				}
+				update();
+				scope.$watch('width', update);
+				scope.$watch('height', update);
+				scope.$watch('source', function() {
+					var m = _.max(source.BannerEn.length, source.BannerTh.length)
+					if(source.BannerLinks.length < m ) {
+						for (var i = 0; i < source.BannerLinks.length - m; i++) {
+							source.BannerLinks.push('');
+						};
+					} else if(source.BannerLinks.length > m) {
+						for (var i = 0; i < m - source.BannerLinks.length; i++) {
+							source.BannerLinks.pop();
+						};
+					}
+				}, true);
+			}
+		};
+	})
 	.directive('ncImageBanner', function() {
 		return {
 			restrict: 'E',
