@@ -7,10 +7,10 @@ module.exports = function ($scope, $controller, CMSGroupService, config) {
             url: '/admin/cms/group',
             service: CMSGroupService,
             item: 'CMSGroup',
-            order: 'UpdateDate',
+            order: 'UpdateOn',
             id: 'CMSGroupId',
             actions: ['View', 'Delete'],
-            bulks: ['Delete'],
+            bulks: ['Delete', 'Show', 'Hide'],
             filters: [
 				{ name: "All", value: 'All' },
 				{ name: "Approved", value: 'Approved' },

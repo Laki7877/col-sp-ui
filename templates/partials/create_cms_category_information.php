@@ -12,12 +12,12 @@
                     <div nc-template="common/input/form-group-with-label" nc-label="Category Name(EN)" nc-template-form="formData.CMSCategoryNameEN" nc-template-options-path="CMSCategoryForm/NameEN">
                         <input class="form-control width-field-large" name="CMSCategoryNameEN" ng-model="formData.CMSCategoryNameEN" ng-pattern="/^[^<>]+$/" maxlength="300" required />
                     </div>
-                  
-                    <div nc-template="common/input/form-group-with-label" nc-label="Active">
+
+                    <div nc-template="common/input/form-group-with-label" nc-label="Visibility">
                       <div class="ah-select2-dropdown">
-                        <select ng-model="formData.IsActive" class="form-control width-field-large" required="">
-                          <option value="true" ng-selected="formData.IsActive"> Active</option>
-                          <option value="false" ng-selected="!formData.IsActive"> In Active</option>
+                        <select ng-model="formData.Visibility" class="form-control width-field-large" required="">
+                          <option value="true" ng-selected="formData.Visibility"> Visible</option>
+                          <option value="false" ng-selected="!formData.Visibility"> Not Visible</option>
                         </select>
                       </div>
                     </div>

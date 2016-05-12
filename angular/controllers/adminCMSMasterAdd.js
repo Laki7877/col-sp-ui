@@ -1,15 +1,18 @@
 module.exports = function ($scope, $controller, CMSMasterService, config, $uibModal, $timeout) {
     'ngInject';
 
-    $scope.formData = {};
+    $scope.formData         = {};
+    $scope.products         = [];
+    $scope.product          = {};
+    $scope.featureProducts  = [];
+    $scope.CategoryList     = [];
 
     $scope.Schedule = {
         EffectiveDate: null,
         ExpiryDate: null,
-        CategoryList: []
+        //CategoryList: []
     };
 
- 
     var sortableEle;
 
     $scope.dragStart = function (e, ui) {
@@ -19,8 +22,8 @@ module.exports = function ($scope, $controller, CMSMasterService, config, $uibMo
         var start = ui.item.data('start'),
             end = ui.item.index();
 
-         $scope.Schedule.CategoryList.splice(end, 0,
-             $scope.Schedule.CategoryList.splice(start, 1)[0]);
+         $scope.CategoryList.splice(end, 0,
+             $scope.CategoryList.splice(start, 1)[0]);
 
         $scope.$apply();
 
@@ -38,8 +41,8 @@ module.exports = function ($scope, $controller, CMSMasterService, config, $uibMo
     $scope.moveUp = function (start, end) {
 
         // swap object
-         $scope.Schedule.CategoryList.splice(end, 0,
-            $scope.Schedule.CategoryList.splice(start, 1)[0]);
+         $scope.CategoryList.splice(end, 0,
+            $scope.CategoryList.splice(start, 1)[0]);
 
         // update seq
         $timeout(function () {
@@ -50,8 +53,8 @@ module.exports = function ($scope, $controller, CMSMasterService, config, $uibMo
     $scope.moveDown = function (start, end) {
 
         // swap object
-         $scope.Schedule.CategoryList.splice(end, 0,
-            $scope.Schedule.CategoryList.splice(start, 1)[0]);
+         $scope.CategoryList.splice(end, 0,
+            $scope.CategoryList.splice(start, 1)[0]);
 
         // update seq
         $timeout(function () {
@@ -64,7 +67,7 @@ module.exports = function ($scope, $controller, CMSMasterService, config, $uibMo
 
         var seq = 0;
 
-        angular.forEach( $scope.Schedule.CategoryList, function (item) {
+        angular.forEach( $scope.CategoryList, function (item) {
             seq++;
             item.Sequence = seq;
         });
@@ -81,12 +84,12 @@ module.exports = function ($scope, $controller, CMSMasterService, config, $uibMo
         $scope.isCheckedAll != isChecked;
 
         if (!isChecked) {
-            angular.forEach( $scope.Schedule.CategoryList, function (item) {
+            angular.forEach( $scope.CategoryList, function (item) {
                 item.IsChecked = false;
             });
         }
         else {
-            angular.forEach( $scope.Schedule.CategoryList, function (item) {
+            angular.forEach( $scope.CategoryList, function (item) {
                 item.IsChecked = true;
             });
         }
@@ -111,7 +114,7 @@ module.exports = function ($scope, $controller, CMSMasterService, config, $uibMo
 
         var sum = 0;
 
-        angular.forEach( $scope.Schedule.CategoryList, function (item) {
+        angular.forEach( $scope.CategoryList, function (item) {
             if (item.IsChecked) {
                 sum++;
             }
@@ -137,11 +140,67 @@ module.exports = function ($scope, $controller, CMSMasterService, config, $uibMo
         if (type == 'ST') {
             $('#collections').hide();
             $('#add_cms_master_body ul.nav li:nth-child(2)').hide();
+            $scope.formData.CMSMasterType = 'ST';
         }
         else {
             $('#add_cms_master_body ul.nav li:nth-child(2)').show();
+            $scope.formData.CMSMasterType = 'CT';
         }
     };
+
+    $scope.$watch('formData.CMSMasterURLKey', function (newVal, oldVal) {
+        if (newVal === undefined)
+            return;
+
+        $scope.formData.CMSMasterLink = 'http://www.thecentral.com/collections/' + newVal;
+    });
+
+    $scope.copyFieldValue = function(e, id) {
+        var field = document.getElementById(id)
+        field.focus()
+        field.setSelectionRange(0, field.value.length)
+        var copySuccess = copySelectionText()
+        if (copySuccess) {
+            showTooltip(e)
+        }
+    }
+
+    function copySelectionText() {
+        var copysuccess;
+        try {
+            copysuccess = document.execCommand("copy");
+        } catch (e) {
+            copysuccess = false
+        }
+        return copysuccess
+    }
+
+    var tooltip, // global variables oh my! Refactor when deploying!
+	hidetooltiptimer
+
+    function createTooltip() { // call this function ONCE at the end of page to create tool tip object
+        tooltip = document.createElement('div')
+        tooltip.style.cssText =
+            'position:absolute; background:black; color:white; padding:4px;z-index:10000;'
+            + 'border-radius:2px; font-size:12px;box-shadow:3px 3px 3px rgba(0,0,0,.4);'
+            + 'opacity:0;transition:opacity 0.3s'
+        tooltip.innerHTML = 'Copied!'
+        document.body.appendChild(tooltip)
+    }
+
+    function showTooltip(e) {
+        var evt = e || event
+        clearTimeout(hidetooltiptimer)
+        tooltip.style.left = evt.pageX - 10 + 'px'
+        tooltip.style.top = evt.pageY + 15 + 'px'
+        tooltip.style.opacity = 1
+        hidetooltiptimer = setTimeout(function () {
+            tooltip.style.opacity = 0
+        }, 500)
+    }
+
+    createTooltip();
+
 
     // add category to collection
     $scope.addCategoryItem = function () {
@@ -246,8 +305,8 @@ module.exports = function ($scope, $controller, CMSMasterService, config, $uibMo
         })
         .result.then(function (result) {
 
-            if ( $scope.Schedule.CategoryList === undefined) {
-                 $scope.Schedule.CategoryList = [];
+            if ( $scope.CategoryList === undefined) {
+                 $scope.CategoryList = [];
             }
 
             if ($scope.formData.ScheduleList === undefined) {
@@ -257,19 +316,17 @@ module.exports = function ($scope, $controller, CMSMasterService, config, $uibMo
             angular.forEach(result, function (category) {
                 if (!isDuplicateCategory(category.CMSCategoryId)) {
                     category.Sequence = getNewCategorySequence();
-                     $scope.Schedule.CategoryList.push(category);
+                     $scope.CategoryList.push(category);
                 }
             })
 
-            $scope.formData.ScheduleList.push($scope.Schedule);
-            console.log($scope.formData)
         });
     };
 
     // check product duplicate before add to list
     function isDuplicateCategory(cId) {
         var isDuplicate = false;
-        angular.forEach( $scope.Schedule.CategoryList, function (category) {
+        angular.forEach( $scope.CategoryList, function (category) {
             if (category.CMSCategoryId == cId)
                 isDuplicate = true;
         });
@@ -279,19 +336,19 @@ module.exports = function ($scope, $controller, CMSMasterService, config, $uibMo
 
     // gen category seq
     function getNewCategorySequence() {
-        return  $scope.Schedule.CategoryList.length + 1;
+        return  $scope.CategoryList.length + 1;
     }
 
     // remove product item
     $scope.removeOnceItem = function (index) {
-         $scope.Schedule.CategoryList.splice(index, 1);
+         $scope.CategoryList.splice(index, 1);
     }
 
     // remove multiple product
     $scope.removeMultiItem = function () {
-        for (var i =  $scope.Schedule.CategoryList.length - 1; i >= 0; i--) {
-            if ( $scope.Schedule.CategoryList[i].IsChecked) {
-                 $scope.Schedule.CategoryList.splice(i, 1);
+        for (var i =  $scope.CategoryList.length - 1; i >= 0; i--) {
+            if ( $scope.CategoryList[i].IsChecked) {
+                 $scope.CategoryList.splice(i, 1);
             }
         }
 
@@ -300,8 +357,69 @@ module.exports = function ($scope, $controller, CMSMasterService, config, $uibMo
 
     // get total product items
     $scope.getTotalItems = function () {
-        return  $scope.Schedule.CategoryList === undefined ? 0 :  $scope.Schedule.CategoryList.length;
+        return  $scope.CategoryList === undefined ? 0 :  $scope.CategoryList.length;
     };
+
+    // load product
+    CMSMasterService.searchProduct({ SearchBy: 'ProductName' })
+    .then(function (data) {
+        console.log(data)
+        $scope.products = data;
+    });
+
+    // search product
+    $('#form-master :input[type=text]').keyup(function () {
+
+        var val = $(this).val();
+        console.log(val)
+        var param = {
+            SearchText: val,
+            CMSCategoryIds: getCMSCategoryIds($scope.CategoryList)
+        };
+
+        CMSMasterService.searchProduct(param)
+        .then(function (data) {
+            $scope.products = data;
+        });
+    });
+
+    
+    function getCMSCategoryIds(categories) {
+        var ids = [];
+        angular.forEach(categories, function (c) {
+            ids.push(c.CMSCategoryId);
+        });
+        return ids;
+    }
+        
+    // when select product
+    $scope.$watch('product.selected', function (newValue, oldValue) {
+        if (newValue === undefined || newValue == oldValue)
+            return;
+
+        console.log(newValue)
+        angular.forEach(newValue, function(item){
+            var featureProduct = {
+                ProductId: item.Pid,
+                CMSMasterId: $scope.formData.CMSMasterId
+            };
+
+            if (!isDuplicationPid(item.Pid)) {
+                $scope.featureProducts.push(featureProduct);
+            }
+        });
+        
+    });
+
+    function isDuplicationPid(pid) {
+        var isDuplication = false;
+        angular.forEach($scope.featureProducts, function (item) {
+            if (item.ProductId === pid) {
+                isDuplication = true;
+            }
+        });
+        return isDuplication;
+    }
 
     $controller('AbstractAddCtrl', {
         $scope: $scope,
@@ -312,13 +430,56 @@ module.exports = function ($scope, $controller, CMSMasterService, config, $uibMo
             order: 'UpdateDate',
             id: 'CMSMasterId',
             init: function (scope) {
-                
+
             },
             onLoad: function (scope, load) {
-                $scope.Schedule = scope.formData.ScheduleList[0];
+                
+                $scope.Schedule             = scope.formData.ScheduleList[0];
+                $scope.featureProducts      = scope.formData.FeatureProductList;
+                setProducts(getProductIds($scope.featureProducts));
+
+
+                if (scope.formData.CMSMasterType == 'ST') {
+                    $('#collections').hide();
+                    $('#add_cms_master_body ul.nav li:nth-child(2)').hide();
+                }
+                else {
+                    $('#add_cms_master_body ul.nav li:nth-child(2)').show();
+                }
+
+                $scope.product = {};
+
+                function setProducts(params) {
+                    CMSMasterService.searchProduct({ ProductIds: params })
+                    .then(function (data) {
+                        console.log(data)
+                        $scope.products = data;
+                        $scope.product.selected = data;
+                    });
+                }
+
+                function getProductIds(featureProducts) {
+                    var ids = [];
+                    angular.forEach(featureProducts, function (p) {
+                        ids.push(p.ProductId);
+                    });
+                    return ids;
+                }
+
             },
             onSave: function (scope) {
+                if ($scope.formData.ScheduleList === undefined)
+                    $scope.formData.ScheduleList = [];
 
+                if ($scope.formData.FeatureProductList === undefined || $scope.formData.FeatureProductList == null)
+                    $scope.formData.FeatureProductList = [];
+
+                if ($scope.formData.CategoryList === undefined || $scope.formData.CategoryList == null)
+                    $scope.formData.CategoryList = [];
+
+                $scope.formData.FeatureProductList = $scope.featureProducts;
+                $scope.formData.ScheduleList.push($scope.Schedule);
+                $scope.formData.CategoryList = $scope.CategoryList;
             }
         }
     });

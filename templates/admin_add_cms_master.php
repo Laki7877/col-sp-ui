@@ -26,17 +26,17 @@
 
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
-                    <? $this->insert('partials/create_cms_information') ?>
+                    <? $this->insert('partials/create_cms_master_information') ?>
                 </div>
 				<div role="tabpanel" class="tab-pane margin-top-20" id="collections">
-                    <? $this->insert('partials/create_cms_collections') ?>
+                    <? $this->insert('partials/create_cms_master_collections') ?>
                 </div>
                 <div role="tabpanel" class="tab-pane margin-top-20" id="schedulers">
-                    <? $this->insert('partials/create_cms_schedulers') ?>
+                    <? $this->insert('partials/create_cms_master_schedulers') ?>
                 </div>
 			   <!--
                <div role="tabpanel" class="tab-pane margin-top-20" id="conditions">
-                    <? $this->insert('partials/create_cms_conditions') ?>
+                    <? $this->insert('partials/create_cms_master_conditions') ?>
                 </div>
 				-->
             </div>

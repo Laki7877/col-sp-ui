@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-xs-12">
       <button class="btn btn-sm btn-primary" ng-click="addCMSMasterItem()">
-        <i class="fa fa-plus-circle"></i>
+        <i class="fa fa-plus-circle"></i> Add CMS Item
       </button>
     </div>
   </div>

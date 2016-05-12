@@ -131,9 +131,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
     // Col Dev (Natee)
   .factory('CMSCategoryService', services.cmsCategoryService)
   .factory('CMSGroupService', services.cmsGroupService)
-.factory('CMSService', services.cmsService)
-.factory('CMSMasterService', services.adminCMSMasterService)
-//.factory('CMSCollectionService', services.cmsCollectionService)
+  .factory('CMSMasterService', services.cmsMasterService)
 
   // Directives
   .directive('ncTradableSelect', directives.ncTradableSelect)
@@ -162,7 +160,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .filter('leadingzero', filters.leadingzero)
   .filter('variantValue', filters.variantValue)
   .filter('importGuidelineExample', filters.importGuidelineExample)
-    .filter('propsFilter', filters.propsFilter) // Col Dev (Natee)
+  .filter('propsFilter', filters.propsFilter) // Col Dev (Natee)
+  .filter('statusValue', filters.statusValue) // Col Dev (Natee)
   // Controllers
   .controller('RootCtrl', controllers.root)
   .controller('IndexCtrl', controllers.index)
@@ -195,7 +194,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('SellerOrderAddCtrl', controllers.sellerOrderAdd)
   .controller('SellerPendingProductCtrl', controllers.sellerPendingProduct)
   .controller('SellerPendingProductsGroupCtrl', controllers.sellerPendingProductsGroup)
-
+  .controller('SellerReportCtrl', controllers.sellerReport)
 
   .controller('AdminAttributeCtrl', controllers.adminAttribute)
   .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)
@@ -238,17 +237,13 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
 
     // Create By Col Dev (Natee)
-.controller('AdminCMSCategoryListCtrl', controllers.adminCMSCategoryList)
-.controller('AdminCMSCategoryAddCtrl', controllers.adminCMSCategoryAdd)
-.controller('AdminCMSCollectionListCtrl', controllers.adminCMSCollectionList)
-.controller('AdminCMSCollectionAddCtrl', controllers.adminCMSCollectionAdd)
+    .controller('AdminCMSCategoryListCtrl', controllers.adminCMSCategoryList)
+    .controller('AdminCMSCategoryAddCtrl', controllers.adminCMSCategoryAdd)
 
     .controller('AdminCMSGroupListCtrl', controllers.adminCMSGroupList)
     .controller('AdminCMSGroupAddCtrl', controllers.adminCMSGroupAdd)
 
-.controller('AdminCMSGroupController', controllers.adminCMSGroupController)
-  //iOATH
-  .controller('AdminCMSMasterListCtrl', controllers.adminCMSMasterList)
-  //.controller('AdminCMSMasterAddSelectTypeCtrl', controllers.adminCMSMasterAddSelect)
-  .controller('AdminCMSMasterAddCtrl', controllers.adminCMSMasterAdd)
+    .controller('AdminCMSMasterListCtrl', controllers.adminCMSMasterList)
+    .controller('AdminCMSMasterAddCtrl', controllers.adminCMSMasterAdd)
+
   .controller('TestCtrl', controllers.test)

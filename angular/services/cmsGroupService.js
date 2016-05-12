@@ -56,6 +56,17 @@ module.exports = ['$q', 'common', function ($q, common) {
             });
         };
 
+        service.visible = function (obj) {
+            return common.makeRequest({
+                method: 'PUT',
+                url: '/CMS/CMSGroup/Visibility',
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            });
+        };
+
         service.searchCMSMaster = function (parameters) {
             var req = {
                 method: 'GET',

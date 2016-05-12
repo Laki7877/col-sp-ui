@@ -23,7 +23,7 @@
 		                <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
 		                <th nc-sort="CMSGroupNameEN">Name(EN)</th>
 		                <th nc-sort="CMSGroupNameTH">Name(TH)</th>
-		                <th>Status</th>
+		                <th>Visibility</th>
 		                <th nc-sort="UpdateDate" class="modified-column">Modified</th>
 		                <th>Action</th>
 		            </tr>
@@ -37,7 +37,9 @@
 		                <td class="column-text-ellipsis" nc-link="/admin/cms/group/{{row.CMSGroupId}}">
                       {{row.CMSGroupNameTH}}
                     </td>
-		                <td>{{row.Status}}</td>
+                    <td class="visible-column">
+                      <nc-eye nc-model="row.Visibility" nc-eye-on-toggle="toggleEye(row)"></nc-eye>
+                    </td>
 		                <td>{{row.UpdateDate | dateTh}}</td>
 		                <td>
 		                    <nc-action nc-model="row" nc-action-fn="actions"></nc-action>

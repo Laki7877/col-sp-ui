@@ -77,7 +77,7 @@ Route::add('/onboarding', 'SellerController::onboarding');
 Route::add('/dashboard', 'SellerController::dashboard');
 Route::add('/orders', 'SellerController::listOrder');
 Route::add('/orders/:id', 'SellerController::editOrder');
-
+Route::add('/reports', 'SellerController::report');
 
 //admin routing
 Route::add('/admin/attributes/add','AdminController::addAttribute');
@@ -136,7 +136,6 @@ Route::add('/admin/cms/group/:id', 'AdminController::editCMSGroup');
 Route::add('/admin/cms/master', 'AdminController::listCMSMaster');
 Route::add('/admin/cms/master/create', 'AdminController::addCMSMaster');
 Route::add('/admin/cms/master/:id', 'AdminController::editCMSMaster');
-
 
 Route::add('/buy1get1', 'Buy1Get1Controller::index');
 Route::add('/buy1get1/add', 'Buy1Get1Controller::add');

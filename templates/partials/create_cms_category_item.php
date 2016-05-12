@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-xs-12">
       <button class="btn btn-sm btn-primary" ng-click="addProductItem()">
-        <i class="fa fa-plus-circle"></i>
+        <i class="fa fa-plus-circle"></i> Add Product Item
       </button>
     </div>
   </div>
@@ -98,7 +98,7 @@
 <script type="text/ng-template" id="templates/admin-cms-category-manage-add-item.html">
   
   <div class="modal-header">
-    <h3 class="modal-title">Add Category Item</h3>
+    <h3 class="modal-title">Add Product Item</h3>
   </div>
   <div class="modal-body" ng-init="init()">
     

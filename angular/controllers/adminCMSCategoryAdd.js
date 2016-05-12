@@ -5,9 +5,6 @@
 
     $scope.loading      = false;
     $scope.isEmpty      = true;
-    //$scope.products     = [];
-    //$scope.categorys    = [];
-
 
     var sortableEle;
 

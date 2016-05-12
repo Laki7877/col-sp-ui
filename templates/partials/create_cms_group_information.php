@@ -13,14 +13,14 @@
                         <input class="form-control width-field-large" name="CMSGroupNameEN" ng-model="formData.CMSGroupNameEN" ng-pattern="/^[^<>]+$/" maxlength="300" required />
                     </div>
                   
-                    <div nc-template="common/input/form-group-with-label" nc-label="Status">
+                    <!--<div nc-template="common/input/form-group-with-label" nc-label="Status">
                       <div class="ah-select2-dropdown">
                         <select ng-model="formData.Status" class="form-control width-field-large" required="">
                           <option value="true" ng-selected="formData.Status"> Active</option>
                           <option value="false" ng-selected="!formData.Status"> In Active</option>
                         </select>
                       </div>
-                    </div>
+                    </div>-->
 
                     <div nc-template="common/input/form-group-with-label" nc-label="Visibility">
                       <div class="ah-select2-dropdown">

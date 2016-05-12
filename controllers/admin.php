@@ -224,7 +224,7 @@ class AdminController extends Controller
 	// CMS Master(Static & Collection)
 	public static function listCMSMaster($params)
 	{
-		return View::render('admin_cms_master_list');
+		return View::render('admin_cms_master');
 	}
 	public static function addCMSMaster($params)
 	{
@@ -249,25 +249,6 @@ class AdminController extends Controller
 	}
     
     // CMS Get All iOath
-    //public static function cmsMasterList($params) 
-    //{
-    //    return View::render('admin_cms_master_list');
-    //}
-    
-    /// public static function addCMSMaster($params)
-    //{
-    //    return View::render('admin_add_cms_master', ['title' => 'Create CMS Master']);
-    //}
-    // public static function editCMSMaster($params)
-    //{
-    //   return View::render('admin_add_cms_master',  ['params' => json_encode_n($params), 'title' => 'View/Edit CMS Master']);
-    //}
-    
-    //public static function cmsMasterList($params)
-    //{
-    //    return View::render('admin_cms_master_list');
-    //}
-    
     public static function export($params)
     {
         return View::render('seller_export_products', [
@@ -287,27 +268,10 @@ class AdminController extends Controller
         ]);
     }
     
-    //public static function addCMSMaster($params)
-    //{
-    //    return View::render('admin_add_cms_master', [
-    //    'title' => 'Create CMS Master'
-    //    ]);
-    //}
-    
     public static function images($params)
     {
         return View::render('image_management');
     }
-    
-    //public static function editCMSMaster($params)
-    //{
-    //    return View::render('add_product', [
-    //    'title' => 'Product Detail',
-    //    'viewBag' => array(
-    //    'productId' => $params['productid'],
-    //    ),
-    //    ]);
-    //}
     
     public static function import($params)
     {
@@ -315,6 +279,7 @@ class AdminController extends Controller
         'title' => 'Import Product',
         ]);
     }
+
     public static function importUpdate($params)
     {
         return View::render('seller_import_products', [
@@ -322,11 +287,6 @@ class AdminController extends Controller
         'update' => true
         ]);
     }
-    
-    //public static function selectCMSMasterType($params)
-    //{
-    //    return View::render('admin_cms_master_select');
-	//}
     
     public static function reviews($params)
     {

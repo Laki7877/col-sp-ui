@@ -93,6 +93,10 @@ var seller = {
 	'Account|fa-user': {
 		'User Accounts': '/accounts',
 		'User Roles': '/roles'
+	},
+
+	'Report|fa-file-o': {
+	    'View Report': '/reports',
 	}
 };
 var admin = {

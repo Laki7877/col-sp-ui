@@ -56,6 +56,39 @@ module.exports = ['$q', 'common', function ($q, common) {
             });
         };
 
+        service.visible = function (obj) {
+            return common.makeRequest({
+                method: 'PUT',
+                url: '/CMS/CMSCategory/Visibility',
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            });
+        };
+
+        service.approve = function (obj) {
+            return common.makeRequest({
+                method: 'PUT',
+                url: '/CMS/CMSCategory/Approve',
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            })
+        }
+
+        service.reject = function (obj) {
+            return common.makeRequest({
+                method: 'PUT',
+                url: '/CMS/CMSCategory/Reject',
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            })
+        }
+
         service.getBrand = function (cateId) {
             return common.makeRequest({
                 method: 'GET',
