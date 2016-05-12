@@ -9,7 +9,7 @@
                 <div class="form-section-content">
                     <div nc-template="common/input/form-group-with-label" nc-label="Related Products" nc-template-form="form.RelatedProducts"
                     nc-template-options-path="addProductForm/RelatedProducts">
-                        <you-me display-by="ProductNameEn" placeholder="Search by Product" in-relationship="true"
+                        <you-me display-by="ProductNameEn" ng-disabled="xspermit(42)" placeholder="Search by Product" in-relationship="true"
                         ng-model="formData.RelatedProducts" refresh="refresher.RelatedProducts" strict-mode="true"
                         choices="dataset.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' "></you-me>
 
@@ -38,7 +38,8 @@
                         <div class="width-field-normal">
                             <div class="dropdown">
                                 <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
-                                    <input readonly style="background-color:white" type="text" ng-class="{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }"
+                                    <input ng-disabled="xspermit(42)" readonly style="background-color:white" type="text" 
+                                    ng-class="{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }"
                                     placeholder="Select date and time when product will go online" class="input-icon-calendar form-control"
                                     value="{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}" />
                                 </a>
@@ -61,7 +62,7 @@
                         <div class="width-field-normal">
                             <div class="dropdown">
                                 <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="#">
-                                    <input readonly style="background-color:white" type="text" placeholder="Select date and time when product will go offline"
+                                    <input ng-disabled="xspermit(42)" readonly style="background-color:white" type="text" placeholder="Select date and time when product will go offline"
                                     class="input-icon-calendar form-control" name="ExpireDate" ng-class="{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }"
                                     value="{{ formData.ExpireDate | date: 'dd/MM/yy HH:mm' }}">
                                 </a>
@@ -89,7 +90,7 @@
                         <div class="width-field-normal">
                             <div class="dropdown">
                                 <a class="dropdown-toggle" id="dropdown4" role="button" data-toggle="dropdown" data-target="#" href="#">
-                                    <input readonly style="background-color:white" type="text" placeholder="Select date and time for New Arrival"
+                                    <input ng-disabled="xspermit(42)" readonly style="background-color:white" type="text" placeholder="Select date and time for New Arrival"
                                     class="input-icon-calendar form-control" name="NewArrivalDate" 
                                     value="{{ formData.NewArrivalDate | date: 'dd/MM/yy HH:mm' }}">
                                 </a>
@@ -111,7 +112,7 @@
 
                     <div nc-template="common/input/form-group-with-label" nc-template-options-path="addProductForm/Nothing" nc-template-form="form.GiftWrap"
                     nc-label="Gift Wrap">
-                        <select class="form-control" ng-model="formData.GiftWrap">
+                        <select class="form-control" ng-disabled="xspermit(42)" ng-model="formData.GiftWrap">
                             <option value="N">No</option>
                             <option value="Y">Yes</option>
                         </select>
@@ -125,22 +126,22 @@
                             <div class="checkbox multiple-checkbox">
 
                                 <label>
-                                    <input type="checkbox" ng-model="formData.ControlFlags.IsNew">New</label>
+                                    <input ng-disabled="xspermit(42)" type="checkbox" ng-model="formData.ControlFlags.IsNew">New</label>
                                 <label>
-                                    <input type="checkbox" ng-model="formData.ControlFlags.IsClearance">Clearance</label>
+                                    <input ng-disabled="xspermit(42)" type="checkbox" ng-model="formData.ControlFlags.IsClearance">Clearance</label>
                                 <label>
-                                    <input type="checkbox" ng-model="formData.ControlFlags.IsBestSeller">Best Seller</label>
+                                    <input ng-disabled="xspermit(42)" type="checkbox" ng-model="formData.ControlFlags.IsBestSeller">Best Seller</label>
                                 <label>
-                                    <input type="checkbox" ng-model="formData.ControlFlags.IsOnlineExclusive">Online Exclusive</label>
+                                    <input ng-disabled="xspermit(42)" type="checkbox" ng-model="formData.ControlFlags.IsOnlineExclusive">Online Exclusive</label>
                                 <label>
-                                    <input type="checkbox" ng-model="formData.ControlFlags.IsOnlyAt">Only @</label>
+                                    <input ng-disabled="xspermit(42)" type="checkbox" ng-model="formData.ControlFlags.IsOnlyAt">Only @</label>
                             </div>
                         </div>
                     </div>
 
                     <div nc-template="common/input/form-group-with-label" nc-template-options-path="addProductForm/Remark" nc-template-form="form.Remark"
                     nc-label="Remark">
-                        <textarea class="form-control" ng-pattern="/^[^<>]+$/" maxlength="2000" name="Remark" ng-model="formData.Remark">
+                        <textarea ng-disabled="xspermit(42)" class="form-control" ng-pattern="/^[^<>]+$/" maxlength="2000" name="Remark" ng-model="formData.Remark">
                         </textarea>
                     </div>
 
@@ -172,7 +173,7 @@
                                     <td>{{ row.SubmitOn | date: 'dd/MM/yyyy HH:mm' }}</td>
                                     <td>{{ row.SubmitBy }}</td>
                                     <td>
-                                        <a ng-click="TimeMachine.preview(row.HistoryId, row.ApproveOn)" class="btn btn-white btn-width-xxl">Preview This Version</a>
+                                        <button nc-policy-permit="43" type="button" ng-click="TimeMachine.preview(row.HistoryId, row.ApproveOn)" class="btn btn-white btn-width-xxl">Preview This Version</button>
                                     </td>
                                 </tr>
 

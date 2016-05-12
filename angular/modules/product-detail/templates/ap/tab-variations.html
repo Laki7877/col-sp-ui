@@ -13,7 +13,7 @@
                             variation cannot be disabled.
                             <strong>Please select attribute set before enabling variation.</strong>
                         </p>
-                        <a class="btn btn-width-xxl btn-blue margin-top-20" ng-disabled="!formData.AttributeSet.AttributeSetId" ng-click="enableVariation()">
+                        <a class="btn btn-width-xxl btn-blue margin-top-20" ng-disabled="!formData.AttributeSet.AttributeSetId || xspermit(44)" ng-click="enableVariation()">
                             Enable Variation
                         </a>
                     </div>
@@ -23,7 +23,7 @@
     </div>
     <div class="row" ng-show="controlFlags.variation == 'enable'">
         <div class="col-xs-12">
-
+            <!--missing perm-->
             <ap-variation-option form-data="formData" control-flags="controlFlags"
                 generator="variationFactorIndices" dataset="dataset">
             </ap-variation-option>
