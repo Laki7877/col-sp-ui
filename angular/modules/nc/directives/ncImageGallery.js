@@ -9,9 +9,10 @@ angular.module('nc')
 				options: '=?',
 				size: '@',
 				title: '@',
-				source: '='
+				source: '=',
+				key: '@'
 			},
-			template: '<nc-image-block template="common/ncImageBanner3" data-source="source" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>Image ratio 16:9</li></ul></nc-image-block>',
+			template: '<nc-image-block template="common/ncImageBanner3" data-source="source" data-key="{{key}}" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>Image ratio 16:9</li></ul></nc-image-block>',
 			link: function(scope) {
 				scope.options = _.defaults(scope.options, {
 					height: '144px',
@@ -20,7 +21,6 @@ angular.module('nc')
 					validateDimensionMax: [2000, 2000],
 					validateFileSize: 5000000
 				});
-				source = source && true;
 			}
 		}
 	})
@@ -46,6 +46,9 @@ angular.module('nc')
 					scope.options.height = (data.Height/data.Width)*256 + 'px';
 					scope.options.width =  '256px';
 				});
+				scope.$watch('source', function() {
+					console.log(scope.source);
+				})
 			}
 		}
 	})
@@ -60,7 +63,8 @@ angular.module('nc')
 				onfail: '=onFail',
 				uploader: '=uploader',
 				options: '=?options',
-				source: '=?source',
+				source: '=?',
+				key: '@?',
 				size: '@size',
 				title: '@title'
 			},
@@ -108,19 +112,19 @@ angular.module('nc')
 									var maxW = Number(maxDim[0]);
 									var maxH = Number(maxDim[1]);
 
-									if (img.width < minW || img.height < minH) {
+									if (scope.options.validateDimensionMin && (img.width < minW || img.height < minH)) {
 										//min width error
 										scope.onfail('ondimension', [img.width, img.height]);
 										return;
 									}
 
-									if (img.width > maxW || img.height > maxH) {
+									if (scope.options.validateDimensionMax && (img.width > maxW || img.height > maxH)) {
 										//min width error
 										scope.onfail('ondimension', [img.width, img.height]);
 										return;
 									}
 
-									if (scope.options.validateRatio && img.width != scope.options.validateRatio * img.height) {
+									if (scope.options.validateRatio && img.width != ratio * img.height) {
 										//ratio error
 										scope.onfail('onratio', [img.width, img.height]);
 										return;
@@ -176,28 +180,28 @@ angular.module('nc')
 								var maxDim = scope.options.validateDimensionMax;
 								var ratio = scope.options.validateRatio;
 
+								var minW = Number(minDim[0]);
+								var minH = Number(minDim[1]);
+								var maxW = Number(maxDim[0]);
+								var maxH = Number(maxDim[1]);
 
-								if (scope.options.validateDimensionMin && (img.width < Number(minDim[0]) || img.height < Number(minDim[1]))) {
+								if (scope.options.validateDimensionMin && (img.width < minW || img.height < minH)) {
 									//min width error
-									scope.onfail('ondimension', [img.width, img.height], minDim, maxDim);
+									scope.onfail('ondimension', [img.width, img.height]);
+									console.log(img.width, img.height, minW, minH);
 									return;
 								}
 
-								if (scope.options.validateDimensionMax && (img.width > Number(maxDim[0]) || img.height > Number(maxDim[1]))) {
+								if (scope.options.validateDimensionMax && (img.width > maxW || img.height > maxH)) {
 									//min width error
-									scope.onfail('ondimension', [img.width, img.height], minDim, maxDim);
+									scope.onfail('ondimension', [img.width, img.height]);
+									console.log(img.width, img.height, maxW, maxH);
 									return;
 								}
 
-								if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
-									//file size error
-									scope.onfail('onfilesize', file.size, scope.options.validateFileSize);
-									return;
-								}
-
-								if (scope.options.validateRatio && img.width * Number(ratio[1]) != Number(ratio[0]) * img.height) {
+								if (scope.options.validateRatio && img.width != ratio * img.height) {
 									//ratio error
-									scope.onfail('onratio', [img.width, img.height], ratio);
+									scope.onfail('onratio', [img.width, img.height]);
 									return;
 								}
 
@@ -493,7 +497,7 @@ angular.module('nc')
 						var maxW = Number(maxDim[0]);
 						var maxH = Number(maxDim[1]);
 
-						if (img.width < minW || img.height < minH) {
+						if (minDim && (img.width < minW || img.height < minH) ) {
 							//min width error
 							item.remove();
 							item.cancel();
@@ -503,7 +507,7 @@ angular.module('nc')
 							return;
 						}
 
-						if (img.width > maxW || img.height > maxH) {
+						if (maxDim && (img.width > maxW || img.height > maxH)) {
 							//min width error
 							item.remove();
 							item.cancel();
@@ -513,7 +517,7 @@ angular.module('nc')
 							return;
 						}
 
-						if (scope.options.validateRatio && img.width != scope.options.validateRatio * img.height) {
+						if (ratio && img.width != ratio * img.height) {
 							//min width error
 							item.remove();
 							item.cancel();

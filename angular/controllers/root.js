@@ -135,14 +135,17 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   }
 
   $rootScope.hasPermission = function(id) {
-    return _.findIndex($rootScope.Profile.Permission, function(item) {
-      if(item.PermissionId == id) {
-        return permitParent(id);
-      }
-      else {
-        return false;
-      }
-    }) >= 0;
+    if($rootScope.Profile) {
+      return _.findIndex($rootScope.Profile.Permission, function(item) {
+        if(item.PermissionId == id) {
+          return permitParent(id);
+        }
+        else {
+          return false;
+        }
+      }) >= 0;
+    }
+    return false;
   };
 
   //Handle permission

@@ -149,6 +149,9 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .directive('ngPermission', directives.ngPermission)
   .directive('ngSlideToggle', directives.ngSlideToggle)
   .directive('ngTemplate', directives.ngTemplate)
+  .directive('ngUppercase', directives.ngUppercase)
+  .directive('ngLowercase', directives.ngLowercase)
+
 
   // Filters
   .filter('capitalize', filters.capitalize)

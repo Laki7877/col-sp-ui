@@ -24,10 +24,11 @@
                 nc-template-options-path="addBrandForm/BrandNameEn"
                 nc-label="Brand Name" >
                 <input
-                  class="form-control text-lowercase"
+                  class="form-control"
                   name="BrandNameEn"
                   ng-model="formData.BrandNameEn"
                   ng-pattern="/^[0-9a-z_]+$/"
+                  ng-lowercase
                   maxlength="255"
                   required />
               </div>
@@ -60,10 +61,11 @@
                 nc-template-options-path="addBrandForm/UrlKeyEn"
                 nc-label="URL (English)">
                 <input
-                  class="form-control text-lowercase"
+                  class="form-control"
                   name="SEO_ProductUrlKeyEn"
                   ng-model="formData.SEO.ProductUrlKeyEn"
                   ng-pattern="/^[a-z0-9_\-]+$/"
+                  ng-lowercase
                   placeholder="{{formData.BrandNameEn}}"
                   maxlength="100"
                   />
@@ -123,10 +125,10 @@
               </div>
             </div>
           </div>
-          <nc-image-banner name="BrandBannerEn" options="bannerOptions" data-source="formData.BannerStatusEn" nc-model="formData.BrandBannerEn" title="Upload Banner (English)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
-          <nc-image-banner name="BrandBannerTh" options="bannerOptions" data-source="formData.BannerStatusTh" nc-model="formData.BrandBannerTh" title="Upload Banner (ไทย)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
-          <nc-image-banner name="BrandBannerEn" options="bannerSmOptions" data-source="formData.BannerSmallStatusEn" nc-model="formData.BrandSmallBannerEn" title="Upload Small Banner (English)" uploader="bannerSmUploader" on-fail="uploadBannerSmFail" size="8"></nc-image-banner>
-          <nc-image-banner name="BrandBannerTh" options="bannerSmOptions" data-source="formData.BannerSmallStatusTh" nc-model="formData.BrandSmallBannerTh" title="Upload Small Banner (ไทย)" uploader="bannerSmUploader" on-fail="uploadBannerSmFail" size="8"></nc-image-banner>
+          <nc-image-banner name="BrandBannerEn" options="bannerOptions" data-source="formData" data-key="BannerStatusEn" nc-model="formData.BrandBannerEn" title="Upload Banner (English)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
+          <nc-image-banner name="BrandBannerTh" options="bannerOptions" data-source="formData" data-key="BannerStatusTh" nc-model="formData.BrandBannerTh" title="Upload Banner (ไทย)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
+          <nc-image-banner name="BrandBannerEn" options="bannerSmOptions" data-source="formData" data-key="BannerSmallStatusEn" nc-model="formData.BrandSmallBannerEn" title="Upload Small Banner (English)" uploader="bannerSmUploader" on-fail="uploadBannerSmFail" size="8"></nc-image-banner>
+          <nc-image-banner name="BrandBannerTh" options="bannerSmOptions" data-source="formData" data-key="BannerSmallStatusTh" nc-model="formData.BrandSmallBannerTh" title="Upload Small Banner (ไทย)" uploader="bannerSmUploader" on-fail="uploadBannerSmFail" size="8"></nc-image-banner>
           <!-- Description -->
           <div class="form-section">
             <div class="form-section-header">

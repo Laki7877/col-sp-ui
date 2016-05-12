@@ -1,4 +1,13 @@
 module.exports = {
+	Logo: {
+		error: {
+			messages: {
+				dimensions: 'Image must be between 500x500 to 1000x1000 pixels',
+				ratio: 'Image must be a square (1:1 ratio)',
+				maxSize: 'Image file size must not exceed 5MB'
+			}
+		}
+	},
 	TaxPayerId: {
 		inputSize: 'large',
 		labelClass: 'required',

@@ -22,10 +22,11 @@
                 nc-template-options-path="addAttributeForm/AttributeNameEn"
                 nc-label="Attribute Name">
                 <input
-                  class="form-control text-lowercase"
+                  class="form-control"
                   name="AttributeNameEn"
                   ng-model="formData.AttributeNameEn"
                   ng-pattern="/^[a-z0-9_\-]+$/"
+                  ng-lowercase
                   maxlength="255"
                   required />
               </div>
@@ -152,7 +153,7 @@
                           <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['ltChoiceTh' + $index])}" maxlength="100" ng-pattern-restrict="[^<>]*" required/>
                         </div>
                         <div class="input-column input-l">
-                          <input name="ltChoicePos{{$index}}" type="number" class="form-control" ng-model="choice.Position" ng-class="{'has-error': isInvalid(form['ltChoicePos' + $index])}" required/>
+                          <input name="ltChoicePos{{$index}}" type="number" class="form-control" ng-model="choice.Position" placeholder="Position" ng-class="{'has-error': isInvalid(form['ltChoicePos' + $index])}"/>
                         </div>
                         <img class="image-wrapper"
                           ng-if="choice.Image.Url"
@@ -229,7 +230,7 @@
                           <input name="cbChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['cbChoiceTh' + $index])}" maxlength="100" ng-pattern-restrict="[^<>]*" required/>
                         </div>
                         <div class="input-column input-l">
-                          <input name="cbChoicePos{{$index}}" type="number" class="form-control" ng-model="choice.Position" ng-class="{'has-error': isInvalid(form['cbChoicePos' + $index])}" required/>
+                          <input name="cbChoicePos{{$index}}" type="number" class="form-control" placeholder="Position" ng-model="choice.Position" ng-class="{'has-error': isInvalid(form['cbChoicePos' + $index])}"/>
                         </div>
                         <i class="clickable fa fa-trash margin-left-10 color-dark-grey icon-size-20" ng-click="formData.CB.AttributeValues.splice($index,1)" style="margin-top:6px;"></i>
                       </div>
@@ -266,7 +267,7 @@
               <div
                 nc-template="common/input/form-group-with-label"
                 nc-label="Set As Variation">
-                <ui-select ng-model="formData.VariantStatus" search-enabled="false" ng-disabled="formData.DataType == 'HB'|| formData.DataType == 'ST'">
+                <ui-select ng-model="formData.VariantStatus" search-enabled="false" ng-disabled="formData.DataType == 'HB'|| formData.DataType == 'ST' || alreadyVariant">
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>

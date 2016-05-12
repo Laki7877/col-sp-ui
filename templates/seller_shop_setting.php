@@ -35,7 +35,7 @@
 											</div>
 						                    <!-- Shop Logo -->
 								            <div nc-template="common/input/form-group-with-label"
-								            	nc-template-options-path=""
+								            	nc-template-options-path="addShopAccountForm/Logo"
 								              nc-template-form="form.Logo"
 								              nc-label="Shop Logo file">
 								                <button
@@ -49,14 +49,14 @@
 								                ngf-select="uploadLogo($file)"
 								                ng-class="{'has-error-btn' : isInvalid(form.Logo)}"
 						               			ng-model="formData._dummy"
-								                required>Choose File</button>
+								                >Choose File</button>
 								            </div>
 								            <div ng-show="formData.ShopImage.Url"
 								              nc-template="common/input/form-group-with-label"
 								              nc-label="Logo Preview">
 								                <img
 								                  ng-src="{{formData.ShopImage.Url}}"
-								                  width="160"
+								                  width="160
 								                  />
 								                <a style="display:block;" class="margin-top-5" ng-click="formData.Logo=null"><i class="fa-trash fa"></i> Delete this image</a>
 								            </div>
@@ -83,9 +83,10 @@
 												'show': $root.isInvalid(form.UrlKey),
 												'conditions' : form.UrlKey.$error
 												}">
-												<input class="form-control text-lowercase"
+												<input class="form-control"
 													name="UrlKey"
 													ng-model="formData.UrlKey"
+													ng-lowercase
 													ng-class="{ 'has-error' : $root.isInvalid(form.UrlKey) }"
 													ng-pattern-restrict="[0-9a-z]*"
 													placeholder="{{formData.ShopNameEn}}"

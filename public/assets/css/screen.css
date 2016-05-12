@@ -13246,246 +13246,250 @@ label.css-label {
   text-align: center;
   width: 50px;
 }
-/* line 128, ../../../assets/_components.scss */
+/* line 126, ../../../assets/_components.scss */
+.table .live-column .color-green {
+  text-shadow: 0 0 0.3em #8F7;
+}
+/* line 131, ../../../assets/_components.scss */
 .table .visible-column {
   width: 50px;
   text-align: center;
 }
-/* line 133, ../../../assets/_components.scss */
+/* line 136, ../../../assets/_components.scss */
 .table .action-column {
   width: 50px;
   text-align: center;
 }
-/* line 138, ../../../assets/_components.scss */
+/* line 141, ../../../assets/_components.scss */
 .table .action-column-lg {
   width: 80px;
   text-align: center;
 }
-/* line 143, ../../../assets/_components.scss */
+/* line 146, ../../../assets/_components.scss */
 .table .modified-column {
   width: 88px;
 }
-/* line 147, ../../../assets/_components.scss */
+/* line 150, ../../../assets/_components.scss */
 .table .submitted-column {
   width: 100px;
 }
-/* line 151, ../../../assets/_components.scss */
+/* line 154, ../../../assets/_components.scss */
 .table .approve-column {
   text-align: center;
   width: 70px;
 }
-/* line 156, ../../../assets/_components.scss */
+/* line 159, ../../../assets/_components.scss */
 .table .inventory-column {
   text-align: right;
   width: 200px;
 }
-/* line 159, ../../../assets/_components.scss */
+/* line 162, ../../../assets/_components.scss */
 .table .inventory-column .inventory-available {
   color: #32343C;
   text-decoration: none;
 }
-/* line 165, ../../../assets/_components.scss */
+/* line 168, ../../../assets/_components.scss */
 .table .width_date {
   width: 160px;
 }
-/* line 169, ../../../assets/_components.scss */
+/* line 172, ../../../assets/_components.scss */
 .table .width_number {
   width: 70px;
 }
-/* line 173, ../../../assets/_components.scss */
+/* line 176, ../../../assets/_components.scss */
 .table .width_action_wide {
   width: 150px;
 }
-/* line 177, ../../../assets/_components.scss */
+/* line 180, ../../../assets/_components.scss */
 .table .width_100 {
   width: 100px;
 }
-/* line 181, ../../../assets/_components.scss */
+/* line 184, ../../../assets/_components.scss */
 .table .width_120 {
   width: 120px;
 }
-/* line 185, ../../../assets/_components.scss */
+/* line 188, ../../../assets/_components.scss */
 .table .width_150 {
   width: 150px;
 }
-/* line 189, ../../../assets/_components.scss */
+/* line 192, ../../../assets/_components.scss */
 .table .width_200 {
   width: 200px;
 }
-/* line 193, ../../../assets/_components.scss */
+/* line 196, ../../../assets/_components.scss */
 .table .width_300 {
   width: 300px;
 }
-/* line 197, ../../../assets/_components.scss */
+/* line 200, ../../../assets/_components.scss */
 .table tbody .action-column {
   width: 60px;
   padding-top: 14px;
   padding-bottom: 14px;
 }
-/* line 203, ../../../assets/_components.scss */
+/* line 206, ../../../assets/_components.scss */
 .table .action-gear {
   text-decoration: none;
 }
-/* line 205, ../../../assets/_components.scss */
+/* line 208, ../../../assets/_components.scss */
 .table .action-gear:hover, .table .action-gear:focus, .table .action-gear:active, .table .action-gear:visited {
   text-decoration: none;
   outline: 0;
 }
 
-/* line 214, ../../../assets/_components.scss */
+/* line 217, ../../../assets/_components.scss */
 .table-section {
   margin-top: 30px;
 }
-/* line 218, ../../../assets/_components.scss */
+/* line 221, ../../../assets/_components.scss */
 .table-section table.table.table-curved.product-list-table {
   border-color: #BCC7D5;
 }
-/* line 222, ../../../assets/_components.scss */
+/* line 225, ../../../assets/_components.scss */
 .table-section table > tbody > tr > td, .table-section table > thead > tr > th {
   border-color: #BCC7D5;
 }
-/* line 228, ../../../assets/_components.scss */
+/* line 231, ../../../assets/_components.scss */
 .table-section .table > tbody > tr:first-child > td {
   border-top: none;
 }
-/* line 233, ../../../assets/_components.scss */
+/* line 236, ../../../assets/_components.scss */
 .table-section .table > thead > tr > th {
   border-bottom-width: 1px;
 }
-/* line 237, ../../../assets/_components.scss */
+/* line 240, ../../../assets/_components.scss */
 .table-section .table > tbody > tr:hover {
   background: #fffdeb;
 }
-/* line 241, ../../../assets/_components.scss */
+/* line 244, ../../../assets/_components.scss */
 .table-section .table {
   border: solid 1px #BCC7D5;
 }
-/* line 245, ../../../assets/_components.scss */
+/* line 248, ../../../assets/_components.scss */
 .table-section .caret-grey {
   color: #BCC7D5;
 }
-/* line 249, ../../../assets/_components.scss */
+/* line 252, ../../../assets/_components.scss */
 .table-section .icon-size-18px {
   font-size: 18px;
 }
-/* line 253, ../../../assets/_components.scss */
+/* line 256, ../../../assets/_components.scss */
 .table-section .red-message {
   color: #ec0000;
 }
-/* line 257, ../../../assets/_components.scss */
+/* line 260, ../../../assets/_components.scss */
 .table-section .green-message {
   color: #33bb5b;
 }
-/* line 261, ../../../assets/_components.scss */
+/* line 264, ../../../assets/_components.scss */
 .table-section .grey-message {
   color: #BCC7D5;
 }
-/* line 265, ../../../assets/_components.scss */
+/* line 268, ../../../assets/_components.scss */
 .table-section .background_light_yellow {
   background-color: #fffdeb;
 }
-/* line 269, ../../../assets/_components.scss */
+/* line 272, ../../../assets/_components.scss */
 .table-section .eye-icon {
   font-size: 20px;
 }
-/* line 274, ../../../assets/_components.scss */
+/* line 277, ../../../assets/_components.scss */
 .table-section .display-column .img-holder {
   height: 40px;
   line-height: 40px;
   text-align: center;
 }
-/* line 279, ../../../assets/_components.scss */
+/* line 282, ../../../assets/_components.scss */
 .table-section .display-column img {
   max-height: 40px;
   max-width: 40px;
   border-radius: 3px;
 }
-/* line 287, ../../../assets/_components.scss */
+/* line 290, ../../../assets/_components.scss */
 .table-section a.header-link {
   color: #32343C;
 }
-/* line 289, ../../../assets/_components.scss */
+/* line 292, ../../../assets/_components.scss */
 .table-section a.header-link span.active-underline {
   border-bottom: 3px solid #4891d2;
   padding-bottom: 4px;
 }
-/* line 293, ../../../assets/_components.scss */
+/* line 296, ../../../assets/_components.scss */
 .table-section a.header-link:focus {
   text-decoration: none;
 }
-/* line 298, ../../../assets/_components.scss */
+/* line 301, ../../../assets/_components.scss */
 .table-section .table-curved {
   border-collapse: separate;
   border-radius: 3px;
 }
-/* line 305, ../../../assets/_components.scss */
+/* line 308, ../../../assets/_components.scss */
 .table-section .table > thead > tr > th {
   padding-top: 6px;
   padding-bottom: 4px;
   font-weight: normal;
 }
-/* line 309, ../../../assets/_components.scss */
+/* line 312, ../../../assets/_components.scss */
 .table-section .table > thead > tr > th a {
   color: #32343C;
 }
-/* line 315, ../../../assets/_components.scss */
+/* line 318, ../../../assets/_components.scss */
 .table-section .table > tbody > tr > td {
   vertical-align: middle;
 }
-/* line 319, ../../../assets/_components.scss */
+/* line 322, ../../../assets/_components.scss */
 .table-section td.info-column, .table-section td.image-columnm, .table-section td.live-column, .table-section td.visible-column {
   text-align: center;
 }
-/* line 323, ../../../assets/_components.scss */
+/* line 326, ../../../assets/_components.scss */
 .table-section .table-checkbox {
   margin-top: 0px;
   margin-bottom: 0;
 }
-/* line 328, ../../../assets/_components.scss */
+/* line 331, ../../../assets/_components.scss */
 .table-section .table-head {
   background: #edf2f9;
   color: #32343C;
   border-top-left-radius: 10px;
 }
-/* line 336, ../../../assets/_components.scss */
+/* line 339, ../../../assets/_components.scss */
 .table-section.table_order th:first-child {
   padding-left: 20px;
 }
-/* line 340, ../../../assets/_components.scss */
+/* line 343, ../../../assets/_components.scss */
 .table-section.table_order td:first-child {
   padding-left: 15px;
 }
-/* line 344, ../../../assets/_components.scss */
+/* line 347, ../../../assets/_components.scss */
 .table-section.table_order td {
   line-height: 40px;
 }
-/* line 348, ../../../assets/_components.scss */
+/* line 351, ../../../assets/_components.scss */
 .table-section.table_order .small {
   line-height: 14px;
   margin-top: -10px;
 }
 
-/* line 356, ../../../assets/_components.scss */
+/* line 359, ../../../assets/_components.scss */
 .page-navigation {
   float: right;
 }
-/* line 359, ../../../assets/_components.scss */
+/* line 362, ../../../assets/_components.scss */
 .page-navigation .grey-chevron {
   color: #BCC7D5;
   cursor: not-allowed;
 }
-/* line 364, ../../../assets/_components.scss */
+/* line 367, ../../../assets/_components.scss */
 .page-navigation .blue-chevron {
   color: #4899DD;
 }
-/* line 368, ../../../assets/_components.scss */
+/* line 371, ../../../assets/_components.scss */
 .page-navigation .view-page-separator {
   border-left: solid 1px #BCC7D5;
   padding-left: 15px;
   padding-right: 5px;
 }
 
-/* line 379, ../../../assets/_components.scss */
+/* line 382, ../../../assets/_components.scss */
 .filter-section .filter-container {
   position: relative;
   padding: 12px 17px 12px;
@@ -13495,11 +13499,11 @@ label.css-label {
   border-width: 1px;
   border-radius: 4px;
 }
-/* line 389, ../../../assets/_components.scss */
+/* line 392, ../../../assets/_components.scss */
 .filter-section .filter-container-input {
   padding: 12px 17px 12px;
 }
-/* line 393, ../../../assets/_components.scss */
+/* line 396, ../../../assets/_components.scss */
 .filter-section .filter-seperator {
   text-decoration: none;
   cursor: pointer;
@@ -13508,191 +13512,191 @@ label.css-label {
   padding-left: 9px;
   margin-left: 9px;
 }
-/* line 402, ../../../assets/_components.scss */
+/* line 405, ../../../assets/_components.scss */
 .filter-section .filter-seperator:hover {
   color: #4899DD;
 }
-/* line 406, ../../../assets/_components.scss */
+/* line 409, ../../../assets/_components.scss */
 .filter-section .filter-first-option {
   text-decoration: none;
   cursor: pointer;
   margin-left: 20px;
 }
-/* line 412, ../../../assets/_components.scss */
+/* line 415, ../../../assets/_components.scss */
 .filter-section .filter-first-option.first-label {
   margin-left: 14px;
 }
-/* line 416, ../../../assets/_components.scss */
+/* line 419, ../../../assets/_components.scss */
 .filter-section .filter-active {
   color: #32343C;
 }
 
-/* line 421, ../../../assets/_components.scss */
+/* line 424, ../../../assets/_components.scss */
 .filter-section.filter-input {
   padding-left: 110px;
 }
 
-/* line 426, ../../../assets/_components.scss */
+/* line 429, ../../../assets/_components.scss */
 .search-section-wrapper {
   margin: 15px 0px -10px -10px;
 }
-/* line 430, ../../../assets/_components.scss */
+/* line 433, ../../../assets/_components.scss */
 .search-section-wrapper .search-section-item {
   float: left;
   display: table;
   border-spacing: 10px;
 }
-/* line 434, ../../../assets/_components.scss */
+/* line 437, ../../../assets/_components.scss */
 .search-section-wrapper .search-section-item button {
   height: 30px;
   color: #4899DD;
 }
-/* line 438, ../../../assets/_components.scss */
+/* line 441, ../../../assets/_components.scss */
 .search-section-wrapper .search-section-item .btn-action {
   min-width: 80px;
 }
-/* line 441, ../../../assets/_components.scss */
+/* line 444, ../../../assets/_components.scss */
 .search-section-wrapper .search-section-item .form-control {
   height: 30px;
 }
-/* line 444, ../../../assets/_components.scss */
+/* line 447, ../../../assets/_components.scss */
 .search-section-wrapper .search-section-item .bulk-action-dropdown {
   color: #32343C;
   width: 180px;
   text-align: left;
 }
-/* line 448, ../../../assets/_components.scss */
+/* line 451, ../../../assets/_components.scss */
 .search-section-wrapper .search-section-item .bulk-action-dropdown .caret {
   float: right;
   margin-top: 8px;
 }
-/* line 453, ../../../assets/_components.scss */
+/* line 456, ../../../assets/_components.scss */
 .search-section-wrapper .search-section-item .search-box {
   width: 380px;
   border-spacing: 0px;
 }
-/* line 457, ../../../assets/_components.scss */
+/* line 460, ../../../assets/_components.scss */
 .search-section-wrapper .search-section-item .filter-checkbox {
   line-height: 30px;
   margin-right: -10px;
 }
-/* line 460, ../../../assets/_components.scss */
+/* line 463, ../../../assets/_components.scss */
 .search-section-wrapper .search-section-item .filter-checkbox input {
   margin-top: 0px;
   margin-right: 6px;
 }
-/* line 468, ../../../assets/_components.scss */
+/* line 471, ../../../assets/_components.scss */
 .search-section-wrapper .body-dropdown-button {
   height: 30px;
   width: 180px;
 }
-/* line 472, ../../../assets/_components.scss */
+/* line 475, ../../../assets/_components.scss */
 .search-section-wrapper .body-dropdown-button .dropdown-text {
   width: 135px;
   display: inline-block;
 }
-/* line 478, ../../../assets/_components.scss */
+/* line 481, ../../../assets/_components.scss */
 .search-section-wrapper .dropdown-text {
   text-align: left;
 }
-/* line 482, ../../../assets/_components.scss */
+/* line 485, ../../../assets/_components.scss */
 .search-section-wrapper .search-box {
   height: 30px;
 }
-/* line 486, ../../../assets/_components.scss */
+/* line 489, ../../../assets/_components.scss */
 .search-section-wrapper .checkbox-wrapper {
   margin-top: 5px;
 }
 
-/* line 491, ../../../assets/_components.scss */
+/* line 494, ../../../assets/_components.scss */
 .product-search-section .search-section-wrapper {
   margin-top: 0;
 }
-/* line 494, ../../../assets/_components.scss */
+/* line 497, ../../../assets/_components.scss */
 .product-search-section .search-section-wrapper .search-section {
   padding-left: 0;
 }
 
-/* line 501, ../../../assets/_components.scss */
+/* line 504, ../../../assets/_components.scss */
 .table.ah-table {
   margin-bottom: 0px;
 }
-/* line 503, ../../../assets/_components.scss */
+/* line 506, ../../../assets/_components.scss */
 .table.ah-table > thead > tr > th {
   border-bottom: 1px solid #BCC7D5;
 }
-/* line 505, ../../../assets/_components.scss */
+/* line 508, ../../../assets/_components.scss */
 .table.ah-table > thead > tr > th, .table.ah-table > thead > tr > th > * {
   vertical-align: middle;
 }
-/* line 510, ../../../assets/_components.scss */
+/* line 513, ../../../assets/_components.scss */
 .table.ah-table > tbody > tr > td {
   border-top: none;
 }
-/* line 515, ../../../assets/_components.scss */
+/* line 518, ../../../assets/_components.scss */
 .table.ah-table.ah-table-extra-padding > tbody > tr > td {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-/* line 522, ../../../assets/_components.scss */
+/* line 525, ../../../assets/_components.scss */
 .table.ah-table.ah-table-line > tbody > tr:first-child > td {
   border-top: none;
 }
-/* line 526, ../../../assets/_components.scss */
+/* line 529, ../../../assets/_components.scss */
 .table.ah-table.ah-table-line > tbody > tr > td {
   border-top: 1px solid #BCC7D5;
 }
 
-/* line 533, ../../../assets/_components.scss */
+/* line 536, ../../../assets/_components.scss */
 .table .column-text-ellipsis {
   max-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 539, ../../../assets/_components.scss */
+/* line 542, ../../../assets/_components.scss */
 .table .text-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-/* line 547, ../../../assets/_components.scss */
+/* line 550, ../../../assets/_components.scss */
 .table > thead > tr > th {
   border-color: #EDF2F9;
 }
 
 /*---- Button ----*/
-/* line 554, ../../../assets/_components.scss */
+/* line 557, ../../../assets/_components.scss */
 .btn, .btn:hover, .btn:active, .btn:focus {
   outline: none;
 }
 
-/* line 559, ../../../assets/_components.scss */
+/* line 562, ../../../assets/_components.scss */
 .link-btn-plain {
   width: 80px;
   display: inline-block;
 }
-/* line 563, ../../../assets/_components.scss */
+/* line 566, ../../../assets/_components.scss */
 .link-btn-plain.width-lg {
   width: 100px;
 }
-/* line 567, ../../../assets/_components.scss */
+/* line 570, ../../../assets/_components.scss */
 .link-btn-plain.width-xl {
   width: 120px;
 }
-/* line 571, ../../../assets/_components.scss */
+/* line 574, ../../../assets/_components.scss */
 .link-btn-plain.width-xxl {
   width: 180px;
 }
 
-/* line 576, ../../../assets/_components.scss */
+/* line 579, ../../../assets/_components.scss */
 .btn-default {
   color: #32343C;
   border-color: #BCC7D5;
 }
 
-/* line 581, ../../../assets/_components.scss */
+/* line 584, ../../../assets/_components.scss */
 .btn-white {
   width: 80px;
   color: #4899DD;
@@ -13738,7 +13742,7 @@ label.css-label {
   background-color: #4899DD;
 }
 
-/* line 586, ../../../assets/_components.scss */
+/* line 589, ../../../assets/_components.scss */
 .btn-blue {
   width: 80px;
   color: #ffffff;
@@ -13784,7 +13788,7 @@ label.css-label {
   background-color: #ffffff;
 }
 
-/* line 591, ../../../assets/_components.scss */
+/* line 594, ../../../assets/_components.scss */
 .btn-grey {
   width: 80px;
   color: #ffffff;
@@ -13830,7 +13834,7 @@ label.css-label {
   background-color: #ffffff;
 }
 
-/* line 596, ../../../assets/_components.scss */
+/* line 599, ../../../assets/_components.scss */
 .btn-green {
   width: 80px;
   color: #ffffff;
@@ -13876,7 +13880,7 @@ label.css-label {
   background-color: #ffffff;
 }
 
-/* line 601, ../../../assets/_components.scss */
+/* line 604, ../../../assets/_components.scss */
 .btn-red {
   width: 80px;
   color: #ffffff;
@@ -13922,125 +13926,125 @@ label.css-label {
   background-color: #ffffff;
 }
 
-/* line 606, ../../../assets/_components.scss */
+/* line 609, ../../../assets/_components.scss */
 .btn_disabled:disabled {
   color: #BCC7D5;
 }
 
-/* line 610, ../../../assets/_components.scss */
+/* line 613, ../../../assets/_components.scss */
 .btn.btn-width-xl {
   width: 120px;
 }
 
-/* line 614, ../../../assets/_components.scss */
+/* line 617, ../../../assets/_components.scss */
 .btn.btn-width-xxl {
   width: 180px;
 }
 
-/* line 618, ../../../assets/_components.scss */
+/* line 621, ../../../assets/_components.scss */
 .btn.btn-width-xxxl {
   width: 200px;
 }
 
-/* line 622, ../../../assets/_components.scss */
+/* line 625, ../../../assets/_components.scss */
 .btn.btn-width-100 {
   width: 100%;
 }
 
-/* line 627, ../../../assets/_components.scss */
+/* line 630, ../../../assets/_components.scss */
 .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
   pointer-events: none;
 }
 
-/* line 631, ../../../assets/_components.scss */
+/* line 634, ../../../assets/_components.scss */
 .btn-white.disabled, .btn-white[disabled], fieldset[disabled] .btn-white {
   color: #BCC7D5;
 }
 
 /*---- Modal Custom ----*/
-/* line 638, ../../../assets/_components.scss */
+/* line 641, ../../../assets/_components.scss */
 .modal-custom input.form-control.has-error {
   border-color: #ec0000;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
-/* line 645, ../../../assets/_components.scss */
+/* line 648, ../../../assets/_components.scss */
 .modal-custom .forget-modal-width {
   width: 435px;
 }
-/* line 649, ../../../assets/_components.scss */
+/* line 652, ../../../assets/_components.scss */
 .modal-custom .change-password-modal {
   width: 505px;
 }
-/* line 651, ../../../assets/_components.scss */
+/* line 654, ../../../assets/_components.scss */
 .modal-custom .change-password-modal .ah-form .form-group {
   margin-left: -15px;
   margin-right: -15px;
 }
-/* line 657, ../../../assets/_components.scss */
+/* line 660, ../../../assets/_components.scss */
 .modal-custom .modal-change-password {
   width: 505px;
 }
-/* line 659, ../../../assets/_components.scss */
+/* line 662, ../../../assets/_components.scss */
 .modal-custom .modal-change-password .ah-form .form-group {
   margin-left: -15px;
   margin-right: -15px;
 }
 
-/* line 667, ../../../assets/_components.scss */
+/* line 670, ../../../assets/_components.scss */
 .modal .trim-form-group .ah-form .form-group {
   margin-left: -15px;
   margin-right: -15px;
 }
 
-/* line 677, ../../../assets/_components.scss */
+/* line 680, ../../../assets/_components.scss */
 .modal .modal-content .modal-header {
   border-bottom: 0px;
   padding-bottom: 0px;
 }
-/* line 680, ../../../assets/_components.scss */
+/* line 683, ../../../assets/_components.scss */
 .modal .modal-content .modal-header h3 {
   font-size: 20px;
 }
-/* line 684, ../../../assets/_components.scss */
+/* line 687, ../../../assets/_components.scss */
 .modal .modal-content button.close > span {
   line-height: 1;
   font-size: 36px;
   margin-top: -6px;
 }
-/* line 689, ../../../assets/_components.scss */
+/* line 692, ../../../assets/_components.scss */
 .modal .modal-content .modal_title_abosolute {
   position: absolute;
 }
-/* line 692, ../../../assets/_components.scss */
+/* line 695, ../../../assets/_components.scss */
 .modal .modal-content .title_relative {
   position: relative;
 }
 
 /*---- Search Section ----*/
-/* line 700, ../../../assets/_components.scss */
+/* line 703, ../../../assets/_components.scss */
 .search-section .border_blue {
   border-color: #4899DD;
 }
 
 /*---- Tradable List ----*/
-/* line 707, ../../../assets/_components.scss */
+/* line 710, ../../../assets/_components.scss */
 .tradable-list .left-column {
   margin-left: 30px;
   float: left;
   width: 300px;
 }
-/* line 711, ../../../assets/_components.scss */
+/* line 714, ../../../assets/_components.scss */
 .tradable-list .left-column .search-box {
   height: 33px;
 }
-/* line 715, ../../../assets/_components.scss */
+/* line 718, ../../../assets/_components.scss */
 .tradable-list .center-column {
   float: left;
   padding-top: 145px;
   margin-left: 30px;
 }
-/* line 719, ../../../assets/_components.scss */
+/* line 722, ../../../assets/_components.scss */
 .tradable-list .center-column .trade-button {
   padding: 8px 10px 5px 10px;
   margin-bottom: 15px;
@@ -14049,39 +14053,39 @@ label.css-label {
   color: #BCC7D5;
   border: 1px solid #BCC7D5;
 }
-/* line 726, ../../../assets/_components.scss */
+/* line 729, ../../../assets/_components.scss */
 .tradable-list .center-column .trade-button.active {
   cursor: pointer;
   color: #4899DD;
 }
-/* line 732, ../../../assets/_components.scss */
+/* line 735, ../../../assets/_components.scss */
 .tradable-list .right-column {
   float: left;
   width: 300px;
   margin-left: 30px;
 }
-/* line 736, ../../../assets/_components.scss */
+/* line 739, ../../../assets/_components.scss */
 .tradable-list .right-column .list-header {
   margin-top: 9px;
   margin-bottom: 5px;
 }
-/* line 739, ../../../assets/_components.scss */
+/* line 742, ../../../assets/_components.scss */
 .tradable-list .right-column .list-header .column-1 {
   margin-left: 15px;
 }
-/* line 742, ../../../assets/_components.scss */
+/* line 745, ../../../assets/_components.scss */
 .tradable-list .right-column .list-header .column-2 {
   margin-left: 120px;
 }
-/* line 745, ../../../assets/_components.scss */
+/* line 748, ../../../assets/_components.scss */
 .tradable-list .right-column .list-header .column-3 {
   margin-left: 30px;
 }
-/* line 750, ../../../assets/_components.scss */
+/* line 753, ../../../assets/_components.scss */
 .tradable-list .clickable-list {
   overflow: hidden;
 }
-/* line 752, ../../../assets/_components.scss */
+/* line 755, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column {
   margin-top: 15px;
   -webkit-padding-start: 0px;
@@ -14091,14 +14095,14 @@ label.css-label {
   border: 1px solid #BCC7D5;
   border-radius: 3px;
 }
-/* line 760, ../../../assets/_components.scss */
+/* line 763, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li {
   padding-left: 15px;
   padding-right: 15px;
   line-height: 30px;
   cursor: pointer;
 }
-/* line 765, ../../../assets/_components.scss */
+/* line 768, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li .column-1 {
   margin-left: 15px;
   display: inline-block;
@@ -14108,68 +14112,68 @@ label.css-label {
   text-overflow: ellipsis;
   float: left;
 }
-/* line 774, ../../../assets/_components.scss */
+/* line 777, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li .column-2 {
   margin-left: 40px;
   display: inline-block;
   float: left;
 }
-/* line 779, ../../../assets/_components.scss */
+/* line 782, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li .column-3 {
   margin-left: 90px;
   display: inline-block;
   float: left;
 }
-/* line 785, ../../../assets/_components.scss */
+/* line 788, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li.disabled {
   cursor: not-allowed !important;
   background: #EDF2F9 !important;
   color: #BCC7D5 !important;
 }
-/* line 790, ../../../assets/_components.scss */
+/* line 793, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li.active {
   background: #4899DD;
   color: #FFFFFF;
 }
 
 /*----- Newsletter Header -----*/
-/* line 801, ../../../assets/_components.scss */
+/* line 804, ../../../assets/_components.scss */
 .modal .modal-content .newsletter-modal-header {
   border-bottom: 1px solid #BCC7D5;
   padding-bottom: 15px;
   margin-bottom: 15px;
 }
-/* line 805, ../../../assets/_components.scss */
+/* line 808, ../../../assets/_components.scss */
 .modal .modal-content .newsletter-modal-header button.close > span {
   margin-top: -14px;
   color: #32343C;
 }
 
 /*---- Export List ----*/
-/* line 814, ../../../assets/_components.scss */
+/* line 817, ../../../assets/_components.scss */
 .export-list {
   margin-left: 30px;
   margin-bottom: 15px;
   list-style-type: none;
   -webkit-padding-start: 0px;
 }
-/* line 819, ../../../assets/_components.scss */
+/* line 822, ../../../assets/_components.scss */
 .export-list li {
   margin-bottom: 5px;
 }
-/* line 822, ../../../assets/_components.scss */
+/* line 825, ../../../assets/_components.scss */
 .export-list .group-label {
   font-weight: bold;
   margin: 20px 0px 5px 0px;
 }
 
-/* line 827, ../../../assets/_components.scss */
+/* line 830, ../../../assets/_components.scss */
 .export-select-all {
   margin-left: 30px;
 }
 
 /*---- Empty Section ----*/
-/* line 832, ../../../assets/_components.scss */
+/* line 835, ../../../assets/_components.scss */
 .empty-section {
   border: 1px solid;
   border-color: #BCC7D5;
@@ -14177,7 +14181,7 @@ label.css-label {
   height: 80px;
   line-height: 80px;
 }
-/* line 838, ../../../assets/_components.scss */
+/* line 841, ../../../assets/_components.scss */
 .empty-section .loading-img {
   width: 40px;
   height: 40px;

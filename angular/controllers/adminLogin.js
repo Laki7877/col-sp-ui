@@ -48,6 +48,7 @@
           redir = Credential.getRedirPath(r);
         }
         $window.location.href = redir;
+        console.log(redir);
       }, function (err) {
         storage.clear();
         $scope.error = true;

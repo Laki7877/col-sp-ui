@@ -84,10 +84,11 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 											}
 										}">
 										<input
-										class="form-control text-lowercase"
+										class="form-control"
 										name="UrlKey"
+										ng-lowercase
 										ng-model="formData.UrlKey"
-										ng-pattern="=\^[0-9a-z\-]$\"
+										ng-pattern="/^[0-9a-z\-]$/"
 										ng-class="{ 'has-error' : $root.isInvalid(form.UrlKey) }"
 										placeholder="formData.ShopNameEn"
 										maxlength="100"
@@ -509,9 +510,9 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 				                <div class="form-section-content">
 						                    <!-- Shop Logo -->
 						            <div nc-template="common/input/form-group-with-label"
-						            	nc-template-options-path=""
+						            	nc-template-options-path="addShopAccountForm/Logo"
 						              nc-template-form="form.Logo"
-						              nc-label="Shop Logo file">
+						              nc-label="Shop Logo">
 						                <button
 						                type="button"
 						                name="Logo"
@@ -523,7 +524,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 						                ngf-select="uploadLogo($file)"
 						                ng-class="{'has-error-btn' : isInvalid(form.Logo)}"
 						                ng-model="formData._dummy"
-						                required>Choose File</button>
+						                >Choose File</button>
 						            </div>
 						            <div ng-show="formData.ShopImage.Url"
 						              nc-template="common/input/form-group-with-label"

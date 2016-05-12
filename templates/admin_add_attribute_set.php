@@ -22,10 +22,11 @@
                 nc-template-options-path="addAttributeSetForm/AttributeSetNameEn"
                 nc-label="Attribute Set Name">
                 <input
-                  class="form-control text-lowercase"
+                  class="form-control"
                   name="AttributeSetNameEn"
                   ng-model="formData.AttributeSetNameEn"
                   ng-pattern="/^[0-9a-z_\-]+$/"
+                  ng-lowercase
                   maxlength="255"
                   required />
               </div>
