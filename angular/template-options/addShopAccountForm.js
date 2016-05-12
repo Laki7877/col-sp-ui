@@ -1,6 +1,5 @@
 module.exports = {
 	Logo: {
-		labelClass: 'required',
 		error: {
 			messages: {
 				dimensions: 'Image must be between 500x500 to 1000x1000 pixels',
