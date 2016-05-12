@@ -461,7 +461,7 @@ module.exports = {
 		state: 1
 	},
 	{
-		name: 'Preparing',
+		name: 'Processing',
 		value: 'PE',
 		color: 'color-yellow',
 		icon: 'fa-check-circle-o',
@@ -1433,6 +1433,14 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 	$scope.bannerSmUploader = ImageService.getUploaderFn('/BrandImages', {
 		data: { Type: 'SmallBanner' }
 	});
+	$scope.bannerOptions = {
+		validateDimensionMin: [1920, 1920],
+		validateDimensionMax: [1080, 1080]
+	};
+	$scope.bannerSmOptions = {
+		validateDimensionMin: [1600, 1600],
+		validateDimensionMax: [900, 900]
+	};
 	$scope.uploadLogo = function(file) {
 		if(_.isNil(file)) {
 			return;
@@ -1450,16 +1458,27 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 	};
 	$scope.uploadBannerFail = function(e, response, min, max) {
 		if(e == 'onmaxsize') {
-			$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+			$scope.alert.error('Cannot exceed 8 images');
 		}
 		else if(e == 'ondimension') {
-			$scope.alert.error('Banner size should be between ' + min[0] + 'x' + min[1] + ' and ' + max[0] + 'x' + max[1]);
-		}
-		else if(e == 'onratio') {
-			$scope.alert.error('Banner size ratio should be ' + min[0] + ':' + min[1]);
+			$scope.alert.error('Image must be 1920x1080 pixels');
 		}
 		else if(e == 'onfilesize') {
-			$scope.alert.error('Banner file size should not exceed ' + (min/1000000) + ' MB')
+			$scope.alert.error('Each image file size must not exceed 5MB')
+		}
+		else {
+			$scope.alert.error(common.getError(response.data));
+		}
+	};
+	$scope.uploadBannerSmFail = function(e, response, min, max) {
+		if(e == 'onmaxsize') {
+			$scope.alert.error('Cannot exceed 8 images');
+		}
+		else if(e == 'ondimension') {
+			$scope.alert.error('Image must be 1600x900 pixels');
+		}
+		else if(e == 'onfilesize') {
+			$scope.alert.error('Each image file size must not exceed 5MB')
 		}
 		else {
 			$scope.alert.error(common.getError(response.data));
@@ -1634,6 +1653,14 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				$scope.bannerSmUploader = ImageService.getUploaderFn('/GlobalCategoryImages', {
 					data: { Type: 'SmallBanner' }
 				});				
+				$scope.bannerOptions = {
+					validateDimensionMin: [1920, 1920],
+					validateDimensionMax: [1080, 1080]
+				};
+				$scope.bannerSmOptions = {
+					validateDimensionMin: [1600, 1600],
+					validateDimensionMax: [900, 900]
+				};
 				$scope.formData = {};
 				$scope.saving = false;
 				$scope.loading = false;
@@ -1694,13 +1721,24 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
 					}
 					else if(e == 'ondimension') {
-						$scope.alert.error('Banner size should be between ' + min[0] + 'x' + min[1] + ' and ' + max[0] + 'x' + max[1]);
-					}
-					else if(e == 'onratio') {
-						$scope.alert.error('Banner size ratio should be ' + min[0] + ':' + min[1]);
+						$scope.alert.error('Image must be 1920x1080 pixels');
 					}
 					else if(e == 'onfilesize') {
-						$scope.alert.error('Banner file size should not exceed ' + (min/1000000) + ' MB')
+						$scope.alert.error('Image file size should not exceed 5MB')
+					}
+					else {
+						$scope.alert.error(common.getError(response.data));
+					}
+				};
+				$scope.uploadBannerSmFail = function(e, response, min, max) {
+					if(e == 'onmaxsize') {
+						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+					}
+					else if(e == 'ondimension') {
+						$scope.alert.error('Image must be 1600x900 pixels');
+					}
+					else if(e == 'onfilesize') {
+						$scope.alert.error('Image file size should not exceed 5MB')
 					}
 					else {
 						$scope.alert.error(common.getError(response.data));
@@ -2311,6 +2349,11 @@ module.exports = ["$scope", "$controller", "ProductTempService", "config", funct
 				name: 'Create Single Product',
 				fn: function(arr, cb, cat) {
 					//WFENDPOINT
+					$scope.alert.close();
+					if(arr.length == 0) {
+						$scope.alert.error('Action failed. Please select Product for this action.')
+						return;
+					}
 				},
 				modal: {
 					size: 'category-section modal-lg column-4',
@@ -2534,6 +2577,23 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", functi
     };
     $scope.getTag = function(tags) {
         return _.join(tags, ', ');
+    }
+    $scope.exportSelected = function(){
+        $scope.alert.close();
+        if($scope.bulkContainer.length == 0) {
+            $scope.alert.error('Unable to Export. Please select Product for this action.');
+        }
+        document.getElementById('exportForm').submit();
+    };
+    $scope.exportSearchResult = function(){
+        var K = _.extend({}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams));
+        K._limit = 2147483647;
+        $scope.searchCriteria = $base64.encode(JSON.stringify(K));
+
+        $timeout(function(){
+            console.log('searchCriteria', $scope.searchCriteria);
+            document.getElementById('exportForm').submit();
+        });
     }
 }];
 },{}],30:[function(require,module,exports){
@@ -3190,6 +3250,14 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				$scope.bannerSmUploader = ImageService.getUploaderFn('/LocalCategoryImages', {
 					data: { Type: 'SmallBanner' }
 				});
+				$scope.bannerOptions = {
+					validateDimensionMin: [1920, 1920],
+					validateDimensionMax: [1080, 1080]
+				};
+				$scope.bannerSmOptions = {
+					validateDimensionMin: [1600, 1600],
+					validateDimensionMax: [900, 900]
+				};
 				$scope.formData = {};
 				$scope.saving = false;
 				$scope.loading = false;
@@ -3243,13 +3311,24 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
 					}
 					else if(e == 'ondimension') {
-						$scope.alert.error('Banner size should be between ' + min[0] + 'x' + min[1] + ' and ' + max[0] + 'x' + max[1]);
-					}
-					else if(e == 'onratio') {
-						$scope.alert.error('Banner size ratio should be ' + min[0] + ':' + min[1]);
+						$scope.alert.error('Image must be 1920x1080 pixels');
 					}
 					else if(e == 'onfilesize') {
-						$scope.alert.error('Banner file size should not exceed ' + (min/1000000) + ' MB')
+						$scope.alert.error('Image file size should not exceed 5MB')
+					}
+					else {
+						$scope.alert.error(common.getError(response.data));
+					}
+				};
+				$scope.uploadBannerSmFail = function(e, response, min, max) {
+					if(e == 'onmaxsize') {
+						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+					}
+					else if(e == 'ondimension') {
+						$scope.alert.error('Image must be 1600x900 pixels');
+					}
+					else if(e == 'onfilesize') {
+						$scope.alert.error('Image file size should not exceed 5MB')
 					}
 					else {
 						$scope.alert.error(common.getError(response.data));
@@ -3464,7 +3543,7 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 		}
 
 	});
-	
+
 	$scope.onSearch = function(q){
 		console.log(q, $scope.dataSet.attributeSets);
 		$scope.dataSet.attributeSets = $filter('filter')($scope.dataSet._attributeSets, q);
@@ -3483,7 +3562,8 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 		if($scope.SELECT_ALL){
 			AttributeSet.getAll().then(function(data){
 				$scope.dataSet.attributeSets = data.map(function(m){
-					m.Display = m.AttributeSetNameEn + " (" + m.ProductCount + ")";
+					//m.Display = m.AttributeSetNameEn + " (" + m.ProductCount + ")";
+					m.Display = m.AttributeSetNameEn;
 					$scope.sumProductAttributeSet += Number(m.ProductCount);
 					$scope.loading.push(true);
 					return m;
@@ -3494,7 +3574,8 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 		}else{
 			Product.getAllAttributeSetsForProducts($scope.ProductList).then(function(data){
 				$scope.dataSet.attributeSets = data.map(function(m){
-					m.Display = m.AttributeSetNameEn + " (" + m.ProductCount.length + ")";
+					// m.Display = m.AttributeSetNameEn + " (" + m.ProductCount.length + ")";
+					m.Display = m.AttributeSetNameEn;
 					$scope.sumProductAttributeSet += Number(m.ProductCount.length);
 					$scope.loading.push(true);
 					return m;
@@ -3744,14 +3825,20 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
     	}
     }
     $scope.onError = function(item, response) {
-    	if(response.name == 'sizeFilter') {
-    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + config.ERROR_MESSAGE.WRONG_IMAGE_SIZE);
+    	item.alert.close();
+    	if(response.name == 'queueFilter') {
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Cannot exceed 10 images for each product');
     	}
-    	else if(response.name == 'imageFilter') {
-    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + config.ERROR_MESSAGE.WRONG_IMAGE_FORMAT);
+    	else if(response.name == 'sizeFilter') {
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Each image file size must not exceed 5MB');
+    	}
+    	else if(response.name == 'dimensionFilter') {
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Image dimension must be between 1500x1500 to 2000x2000 pixels');
+    	} 
+    	else if(response.name == 'ratioFilter') {
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Image must be a square (1:1 ratio)');
     	} else {
     		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + common.getError(response));
-            console.log(response);
 		}
 	};
     $scope.isDisabled = function(product) {
@@ -3918,7 +4005,7 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
 		$scope.uploader = FileService.getUploader('/ProductStages/Import', {
 			method: $scope.method
 		});
-		$scope.uploader.filters.push({ name: 'sizeFilter', fn:function(item) { return item.size <= 5000000; } });
+		$scope.uploader.filters.push({ name: 'sizeFilter', fn:function(item) { return item.size <= config.MAX_IMAGE_UPLOAD_SIZE; } });
 		$scope.uploader.onSuccessItem = function(item, response) {
 			$scope.importingFile = null;
 			storage.put('import.success', response);
@@ -5306,11 +5393,11 @@ module.exports = ["$scope", "$controller", "$window", "InventoryService", "confi
 	$scope.updateStock = function(item) {
 		$scope.alert.close();
 		// cast to int
-		var i = _.pick(item, ['Quantity']);
-		if(_.isEmpty(i.Quantity)) {
-			i.Quantity = 0
+		var i = _.pick(item, ['Update']);
+		if(_.isEmpty(i.Update)) {
+			i.Update = 0
 		}
-		i.Quantity = _.toInteger(i.Quantity);
+		i.Update = _.toInteger(i.Update);
 
 		// save
 		InventoryService.update(item.Pid, i)
@@ -5536,7 +5623,7 @@ module.exports = ["$scope", "$window", "$controller", "OrderService", "config", 
 				{ name: "All", value: 'All'},
 				{ name: "Payment Pending", value: 'PaymentPending'},
 				{ name: "Payment Confirmed", value: 'PaymentConfirmed'},
-				{ name: "Preparing", value: 'Preparing'},
+				{ name: "Processing", value: 'Preparing'},
 				{ name: "Ready to Ship", value: 'ReadytoShip'},
 				{ name: "Shipping", value: 'Shipping'},
 				{ name: "Delivered", value: 'Delivered'},
@@ -5581,6 +5668,13 @@ module.exports = ["$scope", "$window", "$controller", "OrderService", "config", 
 				disabled: true
 			};
 		}
+		if(item.Status == 'SH' && item.ShippingType == 'Merchant Fleet')
+		{
+			return {
+				text: 'Delivered',
+				disabled: false
+			};
+		}
 		return {
 			text: 'Ready to Ship',
 			disabled: true
@@ -5593,7 +5687,7 @@ module.exports = ["$scope", "$window", "$controller", "OrderService", "config", 
 }]
 
 },{}],61:[function(require,module,exports){
-module.exports = function($scope, $window, $filter, $controller, OrderService, util, config) {
+module.exports = function($scope, $window, $filter, $controller, OrderService, util, config, $uibModal) {
   $scope.status = config.ORDER_STATUS;
   $scope.addressIter = [1,2,3,4]; //Amount of AddressX (ie, Address1, Address2)
   //Abstract Add Ctrl
@@ -5641,19 +5735,49 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
     $scope.form.$setSubmitted();
     if($scope.saving) return;
     if($scope.form.$valid) {
-      util.confirm(
-        'Are you ready to ship?',
-        'Shipping quantity cannot be changed after this.',
-        'Confirm',
-        'Cancel',
-        'btn-blue'
-      ).result.then(function() {    
-        save({
-         InvoiceNumber: $scope.formData.InvoiceNumber,
-         Status: 'RS',
-         Products: $scope.formData.Products
+      if($scope.formData.ShippingType == 'Merchant Fleet') {
+        $uibModal.open({
+            size: 'size-warning',
+            templateUrl: 'order/modalReadyToShipMerchant',
+            controller: ["$scope", "$uibModalInstance", "NcAlert", function($scope, $uibModalInstance, NcAlert) {
+              'ngInject';
+              $scope.alert = new NcAlert();
+              $scope.form = {};
+              $scope.formData = {
+                IsOwnCarrier: false
+              };
+              $scope.no = function() {
+                $uibModalInstance.dismiss();
+              };
+              $scope.yes = function() {
+                $uibModalInstance.close($scope.formData);
+              }
+            }]
+        }).result.then(function() {
+          save({
+           InvoiceNumber: $scope.formData.InvoiceNumber,
+           Status: 'RS',
+           Products: $scope.formData.Products ,
+           IsOwnCarrier: $scope.formData.IsOwnCarrier,
+           OtherCarrier: $scope.formData.OtherCarrier,
+           TrackingNumber: $scope.formData.TrackingNumber
+         });
+        })
+      } else {
+        util.confirm(
+          'Are you ready to ship?',
+          'Shipping quantity cannot be changed after this.',
+          'Confirm',
+          'Cancel',
+          'btn-blue'
+        ).result.then(function() {    
+          save({
+           InvoiceNumber: $scope.formData.InvoiceNumber,
+           Status: 'RS',
+           Products: $scope.formData.Products
+          });
         });
-      });
+      }
     } else {
       $scope.alert.error(util.saveAlertError());
     }
@@ -5713,6 +5837,9 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   $scope.getState = function() {
     return $filter('mapDropdown')($scope.formData.Status, $scope.status, 'state');
   };
+  $scope.getInvoiceState = function() {
+    return !( $scope.formData.ShippingType == 'BU Dropship' || $scope.formData.ShippingType == 'COL Fulfillment' );
+  };
 };
 },{}],62:[function(require,module,exports){
 module.exports = function($scope, $window, storage) {
@@ -5743,7 +5870,12 @@ module.exports = ["$scope", "$controller", "ProductTempService", "config", "NcAl
 			bulks: [{
 				name: 'Create Single Product',
 				fn: function(arr, cb, cat) {
-					console.log(arr, cb, cat);
+					//WFENDPOINT
+					$scope.alert.close();
+					if(arr.length == 0) {
+						$scope.alert.error('Action failed. Please select Product for this action.')
+						return;
+					}
 				},
 				modal: {
 					size: 'category-section modal-lg column-4',
@@ -7983,8 +8115,8 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
                     //success
                 }, function (err) {
                     alert.error(common.getError(err));
-                })
-                .finally(scope.reload);
+                    item.Visibility = !item.Visibility;
+                });
         };
     };
 
@@ -9445,7 +9577,7 @@ angular.module('nc')
 				tree: '=ncBreadcrumbSelectTree',
 				options: '=?ncBreadcrumbSelectOptions',
 				name: '@name',
-				placeholder: '@',
+				placeholder: '@'
 			},
 			template: $templateCache.get('common/ncBreadcrumbSelect'),
 			link: function(scope, elem, attrs) {
@@ -9866,6 +9998,7 @@ angular.module('nc')
 					validateDimensionMax: [2000, 2000],
 					validateFileSize: 5000000
 				});
+				source = source && true;
 			}
 		}
 	})
@@ -9940,74 +10073,73 @@ angular.module('nc')
 					if (fileUploader) {
 						_.forEach(files, function(file) {
 
-							var url = URL.createObjectURL(file);
-							var img = new Image;
+								var url = URL.createObjectURL(file);
+								var img = new Image;
 
-							img.onload = function() {
-								var minDim = scope.options.validateDimensionMin;
-								var maxDim = scope.options.validateDimensionMax;
-								var ratio = scope.options.validateRatio;
+								img.onload = function() {
+									var minDim = scope.options.validateDimensionMin;
+									var maxDim = scope.options.validateDimensionMax;
+									var ratio = scope.options.validateRatio;
 
-								var minW = Number(minDim[0]);
-								var minH = Number(minDim[1]);
-								var maxW = Number(maxDim[0]);
-								var maxH = Number(maxDim[1]);
+									var minW = Number(minDim[0]);
+									var minH = Number(minDim[1]);
+									var maxW = Number(maxDim[0]);
+									var maxH = Number(maxDim[1]);
 
-								if (img.width < minW || img.height < minH) {
-									//min width error
-									scope.onfail('ondimension', [img.width, img.height]);
-									return;
-								}
-
-								if (img.width > maxW || img.height > maxH) {
-									//min width error
-									scope.onfail('ondimension', [img.width, img.height]);
-									return;
-								}
-
-								if (scope.options.validateRatio && img.width != scope.options.validateRatio * img.height) {
-									//ratio error
-									scope.onfail('onratio', [img.width, img.height]);
-									return;
-								}
-
-								if (img.width != img.height && scope.options.validateSquare) {
-									//square error
-									scope.onfail('onsquare', [img.width, img.height]);
-									return;
-								}
-
-								//max size
-								if (scope.images.length >= _.toInteger(scope.size)) {
-									scope.onfail('onmaxsize', scope.images.length);
-									return;
-								}
-
-								var obj = {
-									progress: 0,
-									SlideDuration: 1
-								};
-								scope.images.push(obj);
-								var f = new FileItem(scope.uploader, file, {
-									onSuccess: function(response) {
-										_.extend(obj, response);
-									},
-									onError: function(response, status, headers) {
-										scope.onfail('onerror', response, status, headers);
-										_.remove(scope.images, function(n) {
-											return n === obj;
-										});
-									},
-									onProgress: function(progress) {
-										obj.progress = progress;
+									if (img.width < minW || img.height < minH) {
+										//min width error
+										scope.onfail('ondimension', [img.width, img.height]);
+										return;
 									}
-								});
-								scope.uploader.queue.push(f);
-								f.upload();
 
-							};
+									if (img.width > maxW || img.height > maxH) {
+										//min width error
+										scope.onfail('ondimension', [img.width, img.height]);
+										return;
+									}
 
-							img.src = url;
+									if (scope.options.validateRatio && img.width != scope.options.validateRatio * img.height) {
+										//ratio error
+										scope.onfail('onratio', [img.width, img.height]);
+										return;
+									}
+
+									if (img.width != img.height && scope.options.validateSquare) {
+										//square error
+										scope.onfail('onsquare', [img.width, img.height]);
+										return;
+									}
+
+									//max size
+									if (scope.images.length >= _.toInteger(scope.size)) {
+										scope.onfail('onmaxsize', scope.images.length);
+										return;
+									}
+
+									var obj = {
+										progress: 0,
+										SlideDuration: 1
+									};
+									scope.images.push(obj);
+									var f = new FileItem(scope.uploader, file, {
+										onSuccess: function(response) {
+											_.extend(obj, response);
+										},
+										onError: function(response, status, headers) {
+											scope.onfail('onerror', response, status, headers);
+											_.remove(scope.images, function(n) {
+												return n === obj;
+											});
+										},
+										onProgress: function(progress) {
+											obj.progress = progress;
+										}
+									});
+									scope.uploader.queue.push(f);
+									f.upload();
+								};
+
+								img.src = url;
 
 						});
 					} else {
@@ -10283,7 +10415,7 @@ angular.module('nc')
 			replace: true,
 			scope: {
 				model: '=ncModel',
-				originalUploader: '=ncImageUploader',
+				uploader: '=ncImageUploader',
 				options: '=?ncImageDropzoneOptions',
 				onEvent: '&?ncImageDropzoneOnEvent',
 				onError: '&?ncImageDropzoneOnError',
@@ -10301,7 +10433,10 @@ angular.module('nc')
 					onResponse: function(item) {
 						return item;
 					},
-					onUpload: function(item) {}
+					onUpload: function(item) {},
+					ratio:1,
+					min:[1500, 1500],
+					max:[2000, 2000]
 				});
 				scope.onError = scope.onError || _.noop;
 				scope.onSuccess = scope.onSuccess || _.noop;
@@ -10324,9 +10459,7 @@ angular.module('nc')
 				//Upload
 				scope.uploader.onAfterAddingFile = function(item) {
 					if (scope.uploader.queueLimit == scope.model.length) {
-						if (scope.options.onQueueLimit) {
-							scope.options.onQueueLimit(item, scope.model);
-						}
+						scope.onError({$response: { name: 'queueFilter' }})
 						item.cancel();
 						item.remove();
 					} else {
@@ -10339,6 +10472,55 @@ angular.module('nc')
 							obj.progress = progress;
 						};
 					}
+
+					var url = URL.createObjectURL(item._file);
+					var img = new Image;
+
+					img.onload = function() {
+						var minDim = scope.options.min;
+						var maxDim = scope.options.max;
+						var ratio = scope.options.ratio;
+
+						var minW = Number(minDim[0]);
+						var minH = Number(minDim[1]);
+						var maxW = Number(maxDim[0]);
+						var maxH = Number(maxDim[1]);
+
+						if (img.width < minW || img.height < minH) {
+							//min width error
+							item.remove();
+							item.cancel();
+							scope.model.splice(scope.model.indexOf(item.obj));
+							scope.onError({
+								$response: {name: 'dimensionFilter'}
+							});
+							return;
+						}
+
+						if (img.width > maxW || img.height > maxH) {
+							//min width error
+							item.remove();
+							item.cancel();
+							scope.model.splice(scope.model.indexOf(item.obj));
+							scope.onError({
+								$response: {name:'dimensionFilter'}
+							});
+							return;
+						}
+
+						if (scope.options.validateRatio && img.width != scope.options.validateRatio * img.height) {
+							//min width error
+							item.remove();
+							item.cancel();
+							scope.model.splice(scope.model.indexOf(item.obj));
+							scope.onError({
+								$response: {name: 'ratioFilter'}
+							});
+							return;
+						}
+					};
+
+					img.src = url;
 				};
 				scope.uploader.onWhenAddingFileFailed = function(item, filter) {
 					scope.onError({
@@ -10587,7 +10769,7 @@ angular.module('nc')
 				}
 			}
 		}
-	}])
+	}]);
 },{}],124:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncSearch', ["$templateCache", function($templateCache) {
@@ -11205,7 +11387,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncAdvanceSearch',
-    "<div class=\"row margin-top-30\" ng-show=open><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Advance Search</h2></div><div class=form-section-content><form name=form class=ah-form novalidate><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductName nc-label=\"Product Name\" nc-template-options-path=searchForm/ProductName><input class=form-control name=ProductName ng-pattern-restrict=\"[^<>]*\" maxlength=255 ng-model=\"formData.ProductName\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Pids nc-label=PID nc-template-options-path=searchForm/Pid><ui-select ng-model=formData.Pids name=Pids nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field><ui-select-match ng-pattern-restrict=[0-9]* maxlength=7>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Pids\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Skus nc-label=SKU nc-template-options-path=searchForm/Sku><ui-select ng-model=formData.Skus name=Skus nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field><ui-select-match ng-pattern-restrict=\"[^<>]*\" maxlength=255>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Skus\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Brands nc-label=\"Brand Name\" nc-template-options-path=searchForm/Brands><ui-select ng-model=formData.Brands name=Brands nc-tag-validator multiple tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match ng-pattern-restrict=\"[^<>]*\" maxlength=255>{{$item.BrandNameEn}}</ui-select-match><ui-select-choices repeat=\"item in options.Brands | filter:{BrandNameEn: $select.search} track by $index\">{{item.BrandNameEn}}</ui-select-choices></ui-select></div><div ng-show=options.Admin nc-template=common/input/form-group-with-label nc-template-form=form.Shop nc-label=\"Shop Name\" nc-template-options-path=searchForm/Shops><ui-select ng-model=formData.Shops name=Shops nc-tag-validator multiple tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices repeat=\"item in options.Shops | filter:{ShopNameEn: $select.search} track by $index\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.GlobalCategories nc-label=\"Global Category Name\" nc-template-options-path=searchForm/GlobalCategories><nc-breadcrumb-select name=GlobalCategories nc-model=formData.GlobalCategories nc-breadcrumb-select-tree=options.GlobalCategories></nc-breadcrumb-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.LocalCategories nc-label=\"Local Category Name\" nc-template-options-path=searchForm/LocalCategories ng-show=!options.Admin><nc-breadcrumb-select name=LocalCategories nc-model=formData.LocalCategories nc-breadcrumb-select-tree=options.LocalCategories></nc-breadcrumb-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Tags nc-label=\"Search Tag\" nc-template-options-path=searchForm/Tags class=ui-select-dropdown-hide><ui-select ng-model=formData.Tags name=Tags nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field nc-max-tag-count=20 nc-max-tag-length=30><ui-select-match>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Tags\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.Price nc-label=\"Sale Price\" nc-template-options-path=searchForm/Price><div class=width-field-small-input><input name=Price ng-maxnumber={{formData.PriceTo}} ng-model=formData.PriceFrom class=form-control ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ maxlength=\"20\"></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><input ng-model=formData.PriceTo class=form-control ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ maxlength=\"20\"></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.CreatedDate nc-label=\"Created date\" nc-template-options-path=searchForm/CreatedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDtFrom | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=CreatedDate ng-date-before={{formData.CreatedDtTo}} data-ng-model=formData.CreatedDtFrom data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'hour' }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDtTo | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.CreatedDtTo data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'hour' }\"></ul></div></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.ModifiedDate nc-label=\"Modified Date\" nc-template-options-path=searchForm/ModifiedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.ModifyDtFrom | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ModifyDtFrom name=ModifiedDate ng-date-before={{formData.ModifiedDtTo}} data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'hour' }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown4 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.ModifyDtTo | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ModifyDtTo data-datetimepicker-config=\"{ dropdownSelector: '#dropdown4', minView: 'hour' }\"></ul></div></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=button-size-normal><button class=\"button-size-normal btn btn-blue btn-width-xl\" ng-click=search()>Search</button></div><div class=button-size-normal><a class=\"button-size-normal margin-left-10 btn btn-white btn-width-xl\" ng-click=clear()>Clear</a></div></div></form></div></div></div></div>"
+    "<div class=\"row margin-top-30\" ng-show=open><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Advance Search</h2></div><div class=form-section-content><form name=form class=ah-form novalidate><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductName nc-label=\"Product Name\" nc-template-options-path=searchForm/ProductName><input class=form-control name=ProductName ng-pattern-restrict=\"[^<>]*\" maxlength=255 ng-model=\"formData.ProductName\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Pids nc-label=PID nc-template-options-path=searchForm/Pid><ui-select ng-model=formData.Pids name=Pids nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field><ui-select-match ng-pattern-restrict=[0-9]* maxlength=7>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Pids\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Skus nc-label=SKU nc-template-options-path=searchForm/Sku><ui-select ng-model=formData.Skus name=Skus nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field><ui-select-match ng-pattern-restrict=\"[^<>]*\" maxlength=255>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Skus\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Brands nc-label=\"Brand Name\" nc-template-options-path=searchForm/Brands><ui-select ng-model=formData.Brands name=Brands nc-tag-validator multiple tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match ng-pattern-restrict=\"[^<>]*\" maxlength=255>{{$item.BrandNameEn}}</ui-select-match><ui-select-choices repeat=\"item in options.Brands | filter:{BrandNameEn: $select.search} track by $index\">{{item.BrandNameEn}}</ui-select-choices></ui-select></div><div ng-show=options.Admin nc-template=common/input/form-group-with-label nc-template-form=form.Shop nc-label=\"Shop Name\" nc-template-options-path=searchForm/Shops><ui-select ng-model=formData.Shops name=Shops nc-tag-validator multiple tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match maxlength=255>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices repeat=\"item in options.Shops | filter:{ShopNameEn: $select.search} track by $index\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.GlobalCategories nc-label=\"Global Category Name\" nc-template-options-path=searchForm/GlobalCategories><nc-breadcrumb-select name=GlobalCategories nc-model=formData.GlobalCategories nc-breadcrumb-select-tree=options.GlobalCategories></nc-breadcrumb-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.LocalCategories nc-label=\"Local Category Name\" nc-template-options-path=searchForm/LocalCategories ng-show=!options.Admin><nc-breadcrumb-select name=LocalCategories nc-model=formData.LocalCategories nc-breadcrumb-select-tree=options.LocalCategories></nc-breadcrumb-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Tags nc-label=\"Search Tag\" nc-template-options-path=searchForm/Tags class=ui-select-dropdown-hide><ui-select ng-model=formData.Tags name=Tags nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field nc-max-tag-count=20 nc-max-tag-length=30><ui-select-match>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Tags\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.Price nc-label=Price nc-template-options-path=searchForm/Price><div class=width-field-small-input><input name=Price ng-maxnumber={{formData.PriceTo}} ng-model=formData.PriceFrom class=form-control ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ maxlength=\"20\"></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><input ng-model=formData.PriceTo class=form-control ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ maxlength=\"20\"></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.CreatedDate nc-label=\"Created date\" nc-template-options-path=searchForm/CreatedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDtFrom | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=CreatedDate ng-date-before={{formData.CreatedDtTo}} data-ng-model=formData.CreatedDtFrom data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'hour' }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDtTo | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.CreatedDtTo data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'hour' }\"></ul></div></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.ModifiedDate nc-label=\"Modified Date\" nc-template-options-path=searchForm/ModifiedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.ModifyDtFrom | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ModifyDtFrom name=ModifiedDate ng-date-before={{formData.ModifiedDtTo}} data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'hour' }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown4 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.ModifyDtTo | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ModifyDtTo data-datetimepicker-config=\"{ dropdownSelector: '#dropdown4', minView: 'hour' }\"></ul></div></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=button-size-normal><button class=\"button-size-normal btn btn-blue btn-width-xl\" ng-click=search()>Search</button></div><div class=button-size-normal><a class=\"button-size-normal margin-left-10 btn btn-white btn-width-xl\" ng-click=clear()>Clear</a></div></div></form></div></div></div></div>"
   );
 
 
@@ -11276,12 +11458,12 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncImageBanner3',
-    "<div class=form-section><div class=form-section-header><h2>{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p><p><a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">or select images from your computer</a></p></div></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center;margin-top:35px\" class=color-grey><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\">Processing..</span></h4></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div><div class=section-break></div><div class=\"form-section-content no-margin padding-left-15 padding-right-15\" style=margin-top:15px><div nc-template=common/input/form-group-with-label nc-label=\"Banner Status\"><select ng-model=source class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]\"></select></div><div ng-repeat=\"image in images track by $index\" class=form-group><div class=width-label><label class=control-label>Banner Link {{$index+1}}</label></div><div class=width-field-normal><input class=\"form-control width-field-normal\" ng-model=\"image.Link\"></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p><p><a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.jpg,.jpeg'\">or select images from your computer</a></p></div></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center;margin-top:35px\" class=color-grey><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\">Processing..</span></h4></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div><div class=section-break></div><div class=\"form-section-content no-margin padding-left-15 padding-right-15\" style=margin-top:15px><div nc-template=common/input/form-group-with-label nc-label=\"Banner Status\"><select ng-model=source class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]\"></select></div><div ng-repeat=\"image in images track by $index\" class=form-group><div class=width-label><label class=control-label>Banner Link {{$index+1}}</label></div><div class=width-field-normal><input class=\"form-control width-field-normal\" ng-model=image.Link ng-pattern-restrict=\"[^<>]*\" maxlength=\"512\"></div></div></div></div>"
   );
 
 
   $templateCache.put('common/ncImageDropzone',
-    "<div class=image-drop-wrapper><input nv-file-select=\"\" uploader=uploader accept=\".png, .jpg, .jpeg\" type=file multiple><div nv-file-drop=\"\" uploader=uploader class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p></div></div></div>"
+    "<div class=image-drop-wrapper><input nv-file-select=\"\" uploader=uploader accept=\".jpg, .jpeg\" type=file multiple><div nv-file-drop=\"\" uploader=uploader class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p></div></div></div>"
   );
 
 
@@ -11291,7 +11473,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncImageDropzoneTemplate',
-    "<div class=image-drop-wrapper><input nv-file-select uploader=uploader type=file multiple><div nv-file-drop uploader=uploader class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p></div></div></div>"
+    "<div class=image-drop-wrapper><input nv-file-select uploader=uploader accept=.jpg,.jpeg type=file multiple><div nv-file-drop uploader=uploader class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p></div></div></div>"
   );
 
 
@@ -11584,7 +11766,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         resolve: {
           imageBlockOptions: function(){
               return $scope.imageBlockOptions;
-          }, 
+          },
           model: function () {
             return $scope.formData[key][ith];
           },
@@ -11739,7 +11921,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       if (!form.SalePrice) return;
       if ($scope.variantPtr.SalePrice == '') return;
       if ($scope.variantPtr.OriginalPrice == '') return;
-      
+
       if (Number($scope.variantPtr.SalePrice) > Number($scope.variantPtr.OriginalPrice)) {
         if (form.SalePrice) form.SalePrice.$setValidity('min', false)
         form.SalePrice.$error['min'] = 'Sale Price must not exceed Original Price'
@@ -11831,7 +12013,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
         }
       });
-      
+
       modalInstance.result.then(function (selectedItem) {
         if (selectedItem == 'yes') {
           $scope.publish('DF');
@@ -11942,7 +12124,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       if (Number($scope.formData.MasterVariant.OriginalPrice) == 0 || _.isNaN(Number($scope.formData.MasterVariant.OriginalPrice))) {
         $scope.formData.MasterVariant.OriginalPrice = $scope.formData.MasterVariant.SalePrice;
       }
-      
+
 
       $scope.pageState.load('Applying changes..');
 
@@ -12025,7 +12207,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 // console.log('adminMode', $scope.adminMode, $scope.formData.Status);
                 if (!$scope.adminMode && $scope.formData.Status == 'RJ') {
                   //Show rejection from admin
-                  $scope.adminAlert.error("<strong>Message from Admin</strong><br>" + $scope.formData.AdminApprove.RejectReason);
+                  $scope.adminAlert.error("<strong>This product has been rejected by Admin.</strong><br>" + $scope.formData.AdminApprove.RejectReason);
                 } else if (!$scope.adminMode && $scope.formData.Status == 'AP') {
                   $scope.adminAlert.success("This product has been approved. Click 'Edit Product' to make changes.");
                 } else if (!$scope.adminMode && $scope.formData.Status == 'WA') {
@@ -12158,7 +12340,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             resolve: {
               imageBlockOptions: function(){
                 return $scope.imageBlockOptions;
-              }, 
+              },
               uploader: function () {
                 return ImageService.getUploader('/ProductImages', {
                   queueLimit: QUEUE_LIMIT
@@ -12319,6 +12501,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
 
   }])
+
 },{"angular":272}],138:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
@@ -15995,7 +16178,7 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
         fn: function(item /*{File|FileLikeObject}*/ , options) {
           return item.size <= config.MAX_IMAGE_UPLOAD_SIZE;
         }
-      }, ]
+      }]
     }, opt);
     
     var uploader = new FileUploader(options);
@@ -16143,7 +16326,8 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 			Visibility: true,
 			CategoryBannerTh: [],
 			CategoryBannerEn: [],
-			TitleShowcase: false
+			TitleShowcase: false,
+			FeatureProductStatus: true
 		}, extend);
 	};
 	service.deserialize = function(data) {
@@ -17279,7 +17463,7 @@ module.exports = {
         'error' : {
               'messages': {
                 'required': 'This is a required field',
-                'pattern': 'Only English letters and numbers allowed'
+                'pattern': 'Only 0-9 a-z - _ are allowed (no spaces)'
               }
          }		
   	},
@@ -17289,7 +17473,6 @@ module.exports = {
       'error' : {
             'messages': {
               'required': 'This is a required field',
-              'pattern': 'Only English letters and numbers allowed'
             }
        }
     },
@@ -17299,7 +17482,6 @@ module.exports = {
       'error' : {
             'messages': {
               'required': 'This is a required field',
-              'pattern': 'Only letters and numbers allowed'
             }
        }
     },
@@ -17323,7 +17505,7 @@ module.exports = {
 	  'error' : {
 	        'messages': {
 	          'required': 'This is a required field',
-	          'pattern': 'Only English letters and numbers allowed'
+	          'pattern': 'Only 0-9 a-z - _ are allowed (no spaces)'
 	        }
 	   }
 	},
@@ -17335,9 +17517,7 @@ module.exports = {
       'error' : {
         'messages': {
           'tagcount': 'Cannot exceed 100 tags',
-          'taglength': 'Tag must contain 30 characters or less',
-          'pattern': 'Only letters and numbers'
-        }
+          'taglength': 'Tag must contain 30 characters or less'        }
       }
     }
 }
@@ -17350,7 +17530,7 @@ module.exports = {
       'error' : {
             'messages': {
               'required': 'This is a required field',
-              'pattern': 'Only English allowed'
+              'pattern': 'Only 0-9 a-z _ are allowed (no spaces)'
               }
        }
     },
@@ -17365,7 +17545,7 @@ module.exports = {
     UrlKeyEn: {
         'error': {
             'messages': {
-                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'
+                'pattern': 'Only 0-9 a-z - are allowed (no spaces or underscores)'
             }
         }
     },
@@ -17374,6 +17554,14 @@ module.exports = {
     },
     Status: {
       
+    },
+    BrandImage: {
+      error: {
+        messages: {
+          dimensions: 'Image must be between 500x500 to 1000x1000 pixels',
+          ratio: 'Image must be a square (1:1 ratio)'
+        }
+      }
     }
 };
 
@@ -17384,7 +17572,6 @@ module.exports = {
         'error': {
             'messages': {
                 'required': 'This is a required field',
-                'pattern': 'Only English allowed'
             }
         }
     },
@@ -17399,8 +17586,8 @@ module.exports = {
     UrlKeyEn: {
         'error': {
             'messages': {
-                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'
-            },
+                'pattern': 'Only 0-9 a-z - are allowed (no spaces or underscores)'
+            }
         }
     },
     Commission: {
@@ -17408,7 +17595,6 @@ module.exports = {
         'error': {
             'messages': {
                 'required': 'This is a required field',
-                'pattern': 'Only numbers and decimals (up to 2 digits) allowed',
                 'minnumber': 'Please enter between 0% and 100%',
                 'maxnumber': 'Please enter between 0% and 100%'
             }
@@ -17707,35 +17893,75 @@ module.exports = {
 module.exports = {
 	TaxPayerId: {
 		inputSize: 'large',
-		labelClass: 'required'
+		labelClass: 'required',
+		error: {
+			messages: {
+				required: 'This is a required field'
+			}
+		}
 	},
 	TermOfPayment: {
 		inputSize: 'large',
-		labelClass: 'required'
+		labelClass: 'required',
+		error: {
+			messages: {
+				required: 'This is a required field'
+			}
+		}
 	},
 	Payment: {
 		inputSize: 'large',
-		labelClass: 'required'
+		labelClass: 'required',
+		error: {
+			messages: {
+				required: 'This is a required field'
+			}
+		}
 	},
 	VendorTaxRate: {
 		inputSize: 'large',
-		labelClass: 'required'
+		labelClass: 'required',
+		error: {
+			messages: {
+				required: 'This is a required field'
+			}
+		}
 	},
 	WithholdingTax: {
 		inputSize: 'large',
-		labelClass: 'required'
+		labelClass: 'required',
+		error: {
+			messages: {
+				required: 'This is a required field'
+			}
+		}
 	},
 	BankName: {
         inputSize: 'large',
-        labelClass: 'required'
+        labelClass: 'required',
+		error: {
+			messages: {
+				required: 'This is a required field'
+			}
+		}
 	},
 	BankAccountNumber: {
         inputSize: 'large',
-        labelClass: 'required'
+        labelClass: 'required',
+		error: {
+			messages: {
+				required: 'This is a required field'
+			}
+		}
 	},
 	BankAccountName: {
         inputSize: 'large',
-        labelClass: 'required'
+        labelClass: 'required',
+		error: {
+			messages: {
+				required: 'This is a required field'
+			}
+		}
 	},
 	Commission: {
 		inputSize: 'large'
@@ -17976,7 +18202,7 @@ module.exports = {
         inputClass: 'large',
         error: {
             messages: {
-                maxtagcount: 'Only maximum of 20 feature products are allowed'
+                maxtagcount: 'Cannot exceed 20 featured products'
             }
         }
     },
@@ -18098,10 +18324,7 @@ module.exports = {
     Logo: {
         error: {
             messages: {
-                minHeight: 'Image must be between 500x500 to 1000x1000 pixels',
-                maxHeight: 'Image must be between 500x500 to 1000x1000 pixels',
-                minWidth: 'Image must be between 500x500 to 1000x1000 pixels',
-                maxWidth: 'Image must be between 500x500 to 1000x1000 pixels',
+                dimensions: 'Image must be between 500x500 to 1000x1000 pixels',
                 ratio: 'Image must be a square (1:1 ratio)',
                 maxSize: ' Image file size must not exceed 5MB'
             }
@@ -18351,34 +18574,34 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "              'show': isInvalid(form.Password),\n" +
     "              'conditions' : form.Password.$error\n" +
     "              }\n" +
-    "              }\"><input class=form-control type={{$parent.inputType}} name=Password ng-model=formData.Password ng-class=\"{ 'has-error' : isInvalid(form.Password) || (form.$pristine && formData.error) }\" required></div></div><div ng-template=common/input/password ng-template-options=\"{\n" +
+    "              }\"><input class=form-control type={{$parent.inputType}} name=Password ng-model=formData.Password ng-pattern-restrict=\"[^<>]*\" ng-class=\"{ 'has-error' : isInvalid(form.Password) || (form.$pristine && formData.error) }\" required></div></div><div ng-template=common/input/password ng-template-options=\"{\n" +
     "              'label': 'New Password',\n" +
     "              'labelClass': 'required',\n" +
     "              'inputSize': 'small',\n" +
     "              'formGroupClass': oldPassword ? 'margin-top-30': '',\n" +
     "              'error' : {\n" +
-    "              'messages': {\n" +
-    "              'required': 'This is a required field',\n" +
-    "              'pattern': 'Your password must contain letters and numbers',\n" +
-    "              'minlength': 'Your password must be 8-20 characters long',\n" +
-    "              'maxlength': 'Your password must be 8-20 characters long'\n" +
-    "              },\n" +
-    "              'show': isInvalid(form.NewPassword),\n" +
-    "              'conditions' : form.NewPassword.$error\n" +
+    "                'messages': {\n" +
+    "                  'required': 'This is a required field',\n" +
+    "                  'pattern': 'Your password must contain letters and numbers',\n" +
+    "                  'minlength': 'Your password must be 8-20 characters long',\n" +
+    "                  'maxlength': 'Your password must be 8-20 characters long'\n" +
+    "                },\n" +
+    "                'show': isInvalid(form.NewPassword),\n" +
+    "                'conditions' : form.NewPassword.$error\n" +
     "              }\n" +
-    "              }\"><input class=form-control type={{$parent.inputType}} name=NewPassword ng-model=formData.NewPassword ng-class=\"{ 'has-error' : isInvalid(form.NewPassword) || (form.$pristine && formData.error) }\" ng-pattern=\"/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/\" ng-pattern-restrict=^[0-9a-zA-Z]*$ ng-maxlength=20 ng-minlength=8 required></div><div ng-template=common/input/password ng-template-options=\"{\n" +
+    "              }\"><input class=form-control type={{$parent.inputType}} name=NewPassword ng-model=formData.NewPassword ng-class=\"{ 'has-error' : isInvalid(form.NewPassword) || (form.$pristine && formData.error) }\" ng-pattern=\"/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/\" ng-pattern-restrict=\"[^<>]*\" ng-maxlength=20 ng-minlength=8 required></div><div ng-template=common/input/password ng-template-options=\"{\n" +
     "              'label': 'Confirm Password',\n" +
     "              'labelClass': 'required',\n" +
     "              'inputSize': 'small',\n" +
     "              'error' : {\n" +
-    "              'messages': {\n" +
-    "                'required': 'This is a required field',\n" +
-    "                'match': 'Your password and password confirmation do not match'\n" +
-    "              },\n" +
-    "              'show': isInvalid(form.ConfirmPassword),\n" +
-    "              'conditions' : form.ConfirmPassword.$error\n" +
-    "              }\n" +
-    "              }\"><input class=form-control type={{$parent.inputType}} name=ConfirmPassword ng-model=formData.ConfirmPassword ng-class=\"{ 'has-error' : isInvalid(form.ConfirmPassword) || (form.$pristine && formData.error) }\" ng-match={{formData.NewPassword}} required></div></div><div class=\"container-fluid no-padding margin-top-20\"><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()><span class=login-loading ng-cloak ng-show=saving><i class=\"fa fa-spinner fa-spin\"></i></span>Save</button></div></div></div></div></form></div>"
+    "                  'messages': {\n" +
+    "                    'required': 'This is a required field',\n" +
+    "                    'match': 'Your password and password confirmation do not match'\n" +
+    "                  },\n" +
+    "                  'show': isInvalid(form.ConfirmPassword),\n" +
+    "                  'conditions' : form.ConfirmPassword.$error\n" +
+    "                }\n" +
+    "              }\"><input class=form-control type={{$parent.inputType}} name=ConfirmPassword ng-model=formData.ConfirmPassword ng-class=\"{'has-error' : isInvalid(form.ConfirmPassword) || (form.$pristine && formData.error)}\" ng-match={{formData.NewPassword}} required></div></div><div class=\"container-fluid no-padding margin-top-20\"><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()><span class=login-loading ng-cloak ng-show=saving><i class=\"fa fa-spinner fa-spin\"></i></span>Save</button></div></div></div></div></form></div>"
   );
 
 
@@ -18393,13 +18616,13 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('global_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading && true\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKey nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL Key\"><input class=form-control name=UrlKey ng-model=formData.UrlKey ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" maxlength=\"300\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SortBy nc-label=\"Default Sort By\" nc-template-options-path=addBrandForm/SortBy><ui-select ng-model=formData.SortBy name=SortBy search-enabled=false required><ui-select-match placeholder=\"- Select Sort By -\">{{$select.selected.SortByName}}</ui-select-match><ui-select-choices repeat=\"item in sortBy\">{{item.SortByName}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Commission nc-template-options-path=addCategoryForm/Commission nc-label=\"Commission (%)\"><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ maxlength=20 ng-maxnumber=100 ng-minnumber=0 required></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions column-header=\"Attribute Set in this Category\" search-placeholder=\"Search Attribute Set\" nc-text=AttributeSetNameEn nc-id=AttributeSetId on-search=loadAttributeSets></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\">* Changing attribute set mapping may affect products under this category</p></div></div></div><nc-image-banner name=CategoryBannerEn data-source=formData.BannerStatusEn nc-model=formData.CategoryBannerEn title=\"Upload Banner (English)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData.BannerStatusTh nc-model=formData.CategoryBannerTh title=\"Upload Banner (ไทย)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerEn data-source=formData.BannerSmallStatusEn nc-model=formData.CategorySmallBannerEn title=\"Upload Small Banner (English)\" uploader=bannerSmUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData.BannerSmallStatusTh nc-model=formData.CategorySmallBannerTh title=\"Upload Small Banner (ไทย)\" uploader=bannerSmUploader on-fail=uploadBannerFail size=8></nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\n" +
-    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\n" +
-    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (English)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionMobileEn ng-model=formData.DescriptionMobileEn>\n" +
-    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (ไทย)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionMobileTh ng-model=formData.DescriptionMobileTh>\n" +
-    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=formData.DescriptionShortEn>\n" +
-    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\n" +
-    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Featured Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Featured Products\"><span class=form-text>will be available after adding product into this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"formData.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"formData.TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-label=\"Feature Product Status\"><select ng-model=formData.FeatureProductStatus class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]\"></select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading && true\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern-restrict=\"[^<>]*\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-pattern-restrict=\"[^<>]*\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKey nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL Key\"><input class=\"form-control text-lowercase\" name=UrlKey ng-model=formData.UrlKey ng-pattern=[0-9a-z\\-]* placeholder={{formData.NameEn}}-{{formData.CategoryId}} maxlength=\"100\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SortBy nc-label=\"Default Sort By\" nc-template-options-path=addBrandForm/SortBy><ui-select ng-model=formData.SortBy name=SortBy search-enabled=false required><ui-select-match placeholder=\"- Select Default Sort -\">{{$select.selected.SortByName}}</ui-select-match><ui-select-choices repeat=\"item in sortBy\">{{item.SortByName}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Commission nc-template-options-path=addCategoryForm/Commission nc-label=\"Commission (%)\"><div class=input-with-unit><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ maxlength=10 ng-maxnumber=100 ng-minnumber=0 required> <span class=input-unit>%</span></div></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions column-header=\"Attribute Set in this Category\" search-placeholder=\"Search Attribute Set\" nc-text=AttributeSetNameEn nc-id=AttributeSetId on-search=loadAttributeSets></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\">* Changing attribute set mapping may affect products under this category</p></div></div></div><nc-image-banner name=CategoryBannerEn data-source=formData.BannerStatusEn nc-model=formData.CategoryBannerEn title=\"Upload Banner (English)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData.BannerStatusTh nc-model=formData.CategoryBannerTh title=\"Upload Banner (ไทย)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerEn data-source=formData.BannerSmallStatusEn nc-model=formData.CategorySmallBannerEn title=\"Upload Small Banner (English)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData.BannerSmallStatusTh nc-model=formData.CategorySmallBannerTh title=\"Upload Small Banner (ไทย)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8></nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"[^<>]*\" name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\n" +
+    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"[^<>]*\" name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\n" +
+    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (English)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"[^<>]*\" name=DescriptionMobileEn ng-model=formData.DescriptionMobileEn>\n" +
+    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (ไทย)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"[^<>]*\" name=DescriptionMobileTh ng-model=formData.DescriptionMobileTh>\n" +
+    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-pattern-restrict=\"[^<>]*\" ng-model=formData.DescriptionShortEn>\n" +
+    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-pattern-restrict=\"[^<>]*\" ng-model=formData.DescriptionShortTh>\n" +
+    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Featured Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Featured Products\"><span class=form-text>will be available after adding product into this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"formData.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"formData.TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product Name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-label=\"Feature Product Status\"><select ng-model=formData.FeatureProductStatus class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]\"></select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
@@ -18411,18 +18634,18 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('inventory/stockPopover',
-    "<form ng-submit=updateStock(popoverItem) id=inventory-tab-content class=content><span class=\"col-xs-6 padding-left-0 margin-bottom-15 margin-top-10\">In Stock</span> <input class=\"margin-top-10 text-right col-xs-6\" type=number ng-model=popoverItem.Quantity ng-pattern-restrict=^[0-9]*$ maxlength=\"6\"> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Defect</span> <span class=\"text-right col-xs-4\">{{popoverItem.Defect || '0'}}</span><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15\">On Hold</span> <span class=\"text-right col-xs-4\">{{popoverItem.OnHold || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15 border_modal\">Reserved</span> <span class=\"text-right col-xs-4 border_modal\">{{popoverItem.Reserve || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 available_inventory\">Available</span><span class=\"text-right col-xs-4 available_inventory\">{{ getAvailableStock(popoverItem) }}</span></div><div class=text-center><button class=\"btn btn-blue btn-width-100 text-center\">Save</button></div></form>"
+    "<form ng-submit=updateStock(popoverItem) id=inventory-tab-content class=content><span class=\"col-xs-8 padding-left-0 margin-bottom-15 margin-top-10\">In Stock</span> <span class=\"text-right col-xs-4\">{{popoverItem.Quantity || '0'}}</span> <span class=\"col-xs-6 padding-left-0 margin-bottom-15\">In Stock</span> <input class=\"margin-top-10 text-right col-xs-6\" type=number ng-model=popoverItem.Update ng-pattern-restrict=^[0-9]*$ maxlength=\"6\"> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Defect</span> <span class=\"text-right col-xs-4\">{{popoverItem.Defect || '0'}}</span><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15\">On Hold</span> <span class=\"text-right col-xs-4\">{{popoverItem.OnHold || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15 border_modal\">Reserved</span> <span class=\"text-right col-xs-4 border_modal\">{{popoverItem.Reserve || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 available_inventory\">Available</span><span class=\"text-right col-xs-4 available_inventory\">{{ getAvailableStock(popoverItem) }}</span></div><div class=text-center><button class=\"btn btn-blue btn-width-100 text-center\">Save</button></div></form>"
   );
 
 
   $templateCache.put('local_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading && true\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern=\"/^[^ก-๙]+$/\" maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh maxlength=100 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKey nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL Key\"><input class=form-control name=UrlKey ng-model=formData.UrlKey ng-pattern=\"/^[A-Za-z0-9_\\-]+$/\" maxlength=\"300\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SortBy nc-label=\"Default Sort By\" nc-template-options-path=addBrandForm/SortBy><ui-select ng-model=formData.SortBy name=SortBy search-enabled=false required><ui-select-match placeholder=\"- Select Sort By -\">{{$select.selected.SortByName}}</ui-select-match><ui-select-choices repeat=\"item in sortBy\">{{item.SortByName}}</ui-select-choices></ui-select></div></div></div><nc-image-banner name=CategoryBannerEn data-source=formData.BannerStatusEn nc-model=formData.CategoryBannerEn title=\"Upload Banner (English)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData.BannerStatusTh nc-model=formData.CategoryBannerTh title=\"Upload Banner (ไทย)\" uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerEn data-source=formData.BannerSmallStatusEn nc-model=formData.CategorySmallBannerEn title=\"Upload Small Banner (English)\" uploader=bannerSmUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData.BannerSmallStatusTh nc-model=formData.CategorySmallBannerTh title=\"Upload Small Banner (ไทย)\" uploader=bannerSmUploader on-fail=uploadBannerFail size=8></nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\n" +
-    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\n" +
-    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (English)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionMobileEn ng-model=formData.DescriptionMobileEn>\n" +
-    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (ไทย)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=500 name=DescriptionMobileTh ng-model=formData.DescriptionMobileTh>\n" +
-    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=formData.DescriptionShortEn>\n" +
-    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\n" +
-    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Featured Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Featured Products\"><span class=form-text>will be available after adding product into this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"formData.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"formData.TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-label=\"Feature Product Status\"><select ng-model=formData.FeatureProductStatus class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]\"></select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading && true\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern-restrict=\"[^<>]*\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-pattern-restrict=\"[^<>]*\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKey nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL Key\"><input class=\"form-control text-lowercase\" name=UrlKey ng-model=formData.UrlKey ng-pattern=[0-9a-z\\-]* placeholder={{formData.NameEn}}-{{formData.CategoryId}} maxlength=\"100\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SortBy nc-label=\"Default Sort By\" nc-template-options-path=addBrandForm/SortBy><ui-select ng-model=formData.SortBy name=SortBy search-enabled=false required><ui-select-match placeholder=\"- Select Default Sort -\">{{$select.selected.SortByName}}</ui-select-match><ui-select-choices repeat=\"item in sortBy\">{{item.SortByName}}</ui-select-choices></ui-select></div></div></div><nc-image-banner name=CategoryBannerEn data-source=formData.BannerStatusEn nc-model=formData.CategoryBannerEn title=\"Upload Banner (English)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData.BannerStatusTh nc-model=formData.CategoryBannerTh title=\"Upload Banner (ไทย)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerEn data-source=formData.BannerSmallStatusEn nc-model=formData.CategorySmallBannerEn title=\"Upload Small Banner (English)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData.BannerSmallStatusTh nc-model=formData.CategorySmallBannerTh title=\"Upload Small Banner (ไทย)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8></nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"[^<>]*\" name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\n" +
+    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"[^<>]*\" name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\n" +
+    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (English)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"[^<>]*\" name=DescriptionMobileEn ng-model=formData.DescriptionMobileEn>\n" +
+    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (ไทย)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"[^<>]*\" name=DescriptionMobileTh ng-model=formData.DescriptionMobileTh>\n" +
+    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-pattern-restrict=\"[^<>]*\" ng-model=formData.DescriptionShortEn>\n" +
+    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-pattern-restrict=\"[^<>]*\" ng-model=formData.DescriptionShortTh>\n" +
+    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Featured Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Featured Products\"><span class=form-text>will be available after adding product into this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"formData.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"formData.TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product Name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-label=\"Feature Product Status\"><select ng-model=formData.FeatureProductStatus class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]\"></select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
@@ -18445,6 +18668,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('order/modalAcceptReturn',
     "<div class=\"modal-header no-border\"><button type=button class=close aria-label=Close ng-click=$dismiss()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">Accept Return</h2><input class=form-control ng-model=model placeholder=\"CN Number\"></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white\" ng-click=$dismiss()>Cancel</button> <button type=button class=\"btn btn-blue\" ng-click=close()>Confirm</button></div></div></div>"
+  );
+
+
+  $templateCache.put('order/modalReadyToShipMerchant',
+    "<nc-alert nc-model=alert></nc-alert><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=col-xs-12><div class=\"radio multiple-radio multiline\"><label><input type=radio name=IsOwnCarrier ng-model=formData.IsOwnCarrier ng-value=\"false\"> Merchant Own Fleet</label><label class=margin-top-10><input type=radio class=float-left name=IsOwnCarrier ng-model=formData.IsOwnCarrier ng-value=\"true\"><div class=float-left>Other Carrier <input class=form-control name=Carrier ng-model=formData.OtherCarrier ng-disabled=\"!formData.IsOwnCarrier\"></div></label></div><p class=margin-top-20>Tracking Number</p><input class=form-control ng-model=\"model.TrackingNumber\"></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white\" ng-click=no()>Cancel</button> <button type=button class=\"btn btn-blue\" ng-click=yes()>Confirm</button></div></div></div>"
   );
 
 

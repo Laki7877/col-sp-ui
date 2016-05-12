@@ -1,35 +1,75 @@
 module.exports = {
 	TaxPayerId: {
 		inputSize: 'large',
-		labelClass: 'required'
+		labelClass: 'required',
+		error: {
+			messages: {
+				required: 'This is a required field'
+			}
+		}
 	},
 	TermOfPayment: {
 		inputSize: 'large',
-		labelClass: 'required'
+		labelClass: 'required',
+		error: {
+			messages: {
+				required: 'This is a required field'
+			}
+		}
 	},
 	Payment: {
 		inputSize: 'large',
-		labelClass: 'required'
+		labelClass: 'required',
+		error: {
+			messages: {
+				required: 'This is a required field'
+			}
+		}
 	},
 	VendorTaxRate: {
 		inputSize: 'large',
-		labelClass: 'required'
+		labelClass: 'required',
+		error: {
+			messages: {
+				required: 'This is a required field'
+			}
+		}
 	},
 	WithholdingTax: {
 		inputSize: 'large',
-		labelClass: 'required'
+		labelClass: 'required',
+		error: {
+			messages: {
+				required: 'This is a required field'
+			}
+		}
 	},
 	BankName: {
         inputSize: 'large',
-        labelClass: 'required'
+        labelClass: 'required',
+		error: {
+			messages: {
+				required: 'This is a required field'
+			}
+		}
 	},
 	BankAccountNumber: {
         inputSize: 'large',
-        labelClass: 'required'
+        labelClass: 'required',
+		error: {
+			messages: {
+				required: 'This is a required field'
+			}
+		}
 	},
 	BankAccountName: {
         inputSize: 'large',
-        labelClass: 'required'
+        labelClass: 'required',
+		error: {
+			messages: {
+				required: 'This is a required field'
+			}
+		}
 	},
 	Commission: {
 		inputSize: 'large'

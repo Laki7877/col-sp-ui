@@ -29,7 +29,7 @@ angular.module('nc')
 				tree: '=ncBreadcrumbSelectTree',
 				options: '=?ncBreadcrumbSelectOptions',
 				name: '@name',
-				placeholder: '@',
+				placeholder: '@'
 			},
 			template: $templateCache.get('common/ncBreadcrumbSelect'),
 			link: function(scope, elem, attrs) {

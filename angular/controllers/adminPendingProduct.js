@@ -12,6 +12,11 @@ module.exports = function($scope, $controller, ProductTempService, config) {
 				name: 'Create Single Product',
 				fn: function(arr, cb, cat) {
 					//WFENDPOINT
+					$scope.alert.close();
+					if(arr.length == 0) {
+						$scope.alert.error('Action failed. Please select Product for this action.')
+						return;
+					}
 				},
 				modal: {
 					size: 'category-section modal-lg column-4',

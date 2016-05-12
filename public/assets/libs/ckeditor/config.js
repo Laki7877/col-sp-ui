@@ -1,5 +1,5 @@
 /**
- * @license Copyright (c) 2003-2016, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2015, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md or http://ckeditor.com/license
  */
 
@@ -11,18 +11,17 @@ CKEDITOR.editorConfig = function( config ) {
 	// The toolbar groups arrangement, optimized for two toolbar rows.
 	config.toolbarGroups = [
 		{ name: 'insert' },
-		{ name: 'links' },
+		{ name: 'editing',     groups: [ 'find', 'selection' ] },
 		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-		{ name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
+		{ name: 'colors' },
+		{ name: 'links' },
 		{ name: 'forms' },
 		{ name: 'others' },
-		{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
-		'/',
-		{ name: 'styles' },
-		{ name: 'colors' },
-		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
 		{ name: 'document',	   groups: [ 'mode', 'document', 'doctools' ] },
-		{ name: 'tools' }
+		{ name: 'tools' },
+		'/',
+		{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+		{ name: 'styles' },
 	];
 
 	// Remove some buttons provided by the standard plugins, which are

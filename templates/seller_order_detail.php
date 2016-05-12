@@ -33,9 +33,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
           </div>
           <div class="color-dark-grey margin-top-5">
             <div>Order Date: {{formData.OrderDate | dateTh}}</div>
-            <div>Shipping Type: [Shipping Type]</div>
-            <div>Payment Type: [Payment Type]</div>
-            <div>Carrier: {{formData.ShippingType}}</div>
+            <div>Shipping Type: {{formData.ShippingType}}</div>
+            <div>Payment Type: {{formData.Payment}}</div>
+            <div>Carrier: {{formData.Carrier}}</div>
             <div>Tracking Number: {{getTrackingNumber()}}</div>
           </div>
         </div>
@@ -43,7 +43,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
             <div class="form-group">
               <label class="font-size-20 padding-right-5" for="invoiceInput">Invoice #<span print-only>{{formData.InvoiceNumber}}</span></label>
               <span class="width-field-small-input" print-hide>
-                <input type="text" name="InvoiceNumber" ng-model="formData.InvoiceNumber" ng-class="{'has-error' : isInvalid(form.InvoiceNumber)}" class="form-control width-field-small-input" placeholder="Invoice Number (Required)" required>
+                <input type="text" name="InvoiceNumber" ng-model="formData.InvoiceNumber" ng-class="{'has-error' : isInvalid(form.InvoiceNumber)}" class="form-control width-field-small-input" ng-placeholder="{{getInvoiceState() ? '' : 'Invoice Number (Required)'}}" ng-disabled="!getInvoiceState()" ng-required="getInvoiceState()">
               </span>
             </div>
         </div>
@@ -89,9 +89,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
       <table class="table table-curved product-list-table">
         <thead>
           <tr class="table-head">
-            <th>Product Name</th>
             <th class="width_100 ">PID</th>
             <th class="width_100 ">SKU</th>
+            <th>Product Name</th>
             <th class="width_100 ">Price / Unit</th>
             <th class="width_100 text-align-center">Order Qty</th>
             <th class="width_100 text-align-center" ng-if="getState() >= 2 ">Shipping Qty</th>
@@ -101,12 +101,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
         <tbody>
           <!-- ng-if="(getState() >= 3 && product.ShipQuantity != 0) || (getState() < 3)" -->
           <tr ng-repeat="product in formData.Products track by $index">
+            <td>{{product.Pid}}</td>
+            <td>{{product.Sku}}</td>
             <td class="column-text-ellipsis">
               <span print-only>{{product.ProductNameEn}}</span><a ng-href="/products/{{product.ProductId}}" print-hide>{{product.ProductNameEn}}</a>
-              <div class="color-grey small">X / X</div>
             </td>
-            <td>1234567</td>
-            <td>1234567</td>
             <td ng-class="getRedText(product)" class="text-align-center">{{product.UnitPrice | currency:' ':2}}</td>
             <td ng-class="getRedText(product)" class="text-align-center">{{product.Quantity}}</td>
             <td ng-class="getRedText(product)" class="text-align-center" ng-if="getState() >= 2">

@@ -1,7 +1,6 @@
 <?php
 	    $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - All Products'])
 ?>
-
 <?php $this->start('page-body') ?>
 	<div ng-controller="AdminProductListCtrl">
 		<nc-alert nc-model="alert"></nc-alert>
@@ -22,7 +21,7 @@
        </nc-page-title>
 	    <div class="row search-section-wrapper">
   			<nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="ProductId"></nc-bulk>
-      		<nc-search nc-model="params.searchText" nc-search-event="onSearch" nc-search-placeholder="'Search for Product Name or Tag'"></nc-search>
+      		<nc-search nc-model="params.searchText" nc-search-event="onSearch" nc-search-placeholder="'Search by Product Name or Tag'"></nc-search>
 		  	<nc-advance-search-button nc-model="advanceSearch"></nc-advance-search-button>
 		</div>
 		<nc-advance-search nc-model="advanceSearchParams" nc-advance-search-toggle="advanceSearch" nc-advance-search-event="onAdvanceSearch" nc-advance-search-options="advanceSearchOptions"></nc-advance-search>
@@ -33,9 +32,9 @@
 		            <tr class="table-head">
 	                  <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
 	                  <th class="display-column"></th>
-	                  <th nc-sort="ProductNameEn">Product Name</th>
-	                  <th>Shop Name</th>
-	                  <th class="tag-column">Tag</th>
+	                  <th nc-sort="ProductNameEn" class="product-name-column">Product Name</th>
+	                  <th class="shop-name-column">Shop Name</th>
+	                  <th class="width_120">Tag</th>
 	                  <th class="price-column" nc-sort="SalePrice">Sale Price</th>
 	                  <th><span>Info</span></th>
 	                  <th><span>Image</span></th>
@@ -56,9 +55,9 @@
 	                    </div>
 	                  </td>
 	                  <td class="column-text-ellipsis">
-	                    <div><a href="/admin/products/{{ row.ProductId }}">{{ row.ProductNameEn || '(Untitled Product)' }}</a></div>
-	                    <div class="color-grey" ng-if="row.VariantCount > 0">({{row.VariantCount}} variants)</div>
-									 	  <div class="color-grey">{{row.Pid}}</div>
+	                    <div class="text-ellipsis"><a href="/admin/products/{{ row.ProductId }}">{{ row.ProductNameEn || '(Untitled Product)' }}</a></div>
+											<div class="color-grey" ng-if="row.VariantCount > 0">({{row.VariantCount}} variants)</div>
+											<div class="color-grey" ng-hide="row.VariantCount > 0">PID: {{row.Pid}}</div>
 	                  </td>
 	                  <td>{{row.Shop.ShopNameEn}}</td>
 	                  <td class="column-text-ellipsis">{{getTag(row.Tags)}}</td>

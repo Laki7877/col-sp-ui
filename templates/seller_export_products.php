@@ -79,7 +79,7 @@
 										<div class="form-group" style="margin:0px; padding:0px" ng-show="!selectAllAttributeSets">
 												<nc-tradable-select
 												nc-test="lockAS"
-												on-search="onSearch" 
+												on-search="onSearch"
 												nc-model="ctrl.tradedAS"
 												search-placeholder="Search Attribute Set"
 												nc-select-options="dataSet.attributeSets"
@@ -90,8 +90,9 @@
 										 </div>
 										 	<div class="form-group">
 												<div class="checkbox">
-	 										 		<label><input type="checkbox" ng-model="selectAllAttributeSets">Select All Attribute Sets ({{ sumProductAttributeSet }})</label>
-	 										 </div>
+	 										 		<!-- <label><input type="checkbox" ng-model="selectAllAttributeSets">Select All Attribute Sets ({{ sumProductAttributeSet }})</label> -->
+													<label><input type="checkbox" ng-model="selectAllAttributeSets">Select All Attribute Sets</label>
+											 </div>
 										 </div>
 										</div>
 									</div>

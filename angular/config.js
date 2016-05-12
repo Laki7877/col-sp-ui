@@ -204,7 +204,7 @@ module.exports = {
 		state: 1
 	},
 	{
-		name: 'Preparing',
+		name: 'Processing',
 		value: 'PE',
 		color: 'color-yellow',
 		icon: 'fa-check-circle-o',

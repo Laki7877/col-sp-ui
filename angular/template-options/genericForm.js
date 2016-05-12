@@ -42,7 +42,7 @@ module.exports = {
         inputClass: 'large',
         error: {
             messages: {
-                maxtagcount: 'Only maximum of 20 feature products are allowed'
+                maxtagcount: 'Cannot exceed 20 featured products'
             }
         }
     },

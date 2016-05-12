@@ -43,14 +43,12 @@
 								                name="Logo"
 								                class="btn btn-default"
 								                ngf-accept="'.jpg,.jpeg'"
-								                ngf-min-height="500"
-								                ngf-min-width="500"
-								                ngf-max-height="1000"
-								                ngf-max-width="1000"
+							                	ngf-dimensions="$width >= 500 && $width <= 1000 && $height >= 500 && $height <= 1000"
 								                ngf-ratio="1:1"
-								                ngf-max-size="5MB"
+								                ngf-max-size="'5MB'"
 								                ngf-select="uploadLogo($file)"
 								                ng-class="{'has-error-btn' : isInvalid(form.Logo)}"
+						               			ng-model="formData._dummy"
 								                required>Choose File</button>
 								            </div>
 								            <div ng-show="formData.ShopImage.Url"

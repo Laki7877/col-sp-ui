@@ -37,7 +37,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Type'
 							                <input class="form-control"
 							                  name="ShopTypeNameEn"
 							                  ng-model="formData.ShopTypeNameEn"
-							                  maxlength="100"
+							                  maxlength="255"
+							                  ng-pattern-restrict="[^<>]*"
 							                  required />
 							              </div>
 									</div>

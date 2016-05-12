@@ -7,7 +7,7 @@
     </nc-page-title>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="{{id}}"></nc-bulk>
-      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Product Name'"></nc-search>
+      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search by Product Name or PID'"></nc-search>
       <nc-advance-search-button nc-model="advanceSearch"></nc-advance-search-button>
     </div>
     <nc-advance-search nc-model="advanceSearchParams" nc-advance-search-toggle="advanceSearch" nc-advance-search-event="onAdvanceSearch" nc-advance-search-options="advanceSearchOptions"></nc-advance-search>

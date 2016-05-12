@@ -62,7 +62,7 @@ module.exports = function($scope, $window, $controller, OrderService, config, st
 				{ name: "All", value: 'All'},
 				{ name: "Payment Pending", value: 'PaymentPending'},
 				{ name: "Payment Confirmed", value: 'PaymentConfirmed'},
-				{ name: "Preparing", value: 'Preparing'},
+				{ name: "Processing", value: 'Preparing'},
 				{ name: "Ready to Ship", value: 'ReadytoShip'},
 				{ name: "Shipping", value: 'Shipping'},
 				{ name: "Delivered", value: 'Delivered'},
@@ -105,6 +105,13 @@ module.exports = function($scope, $window, $controller, OrderService, config, st
 			return {
 				text: 'Acknowledge',
 				disabled: true
+			};
+		}
+		if(item.Status == 'SH' && item.ShippingType == 'Merchant Fleet')
+		{
+			return {
+				text: 'Delivered',
+				disabled: false
 			};
 		}
 		return {

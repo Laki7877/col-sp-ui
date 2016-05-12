@@ -8,7 +8,7 @@
     </nc-page-title>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="{{id}}"></nc-bulk>
-      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Brand Name'"></nc-search>
+      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Brand Name or ID'"></nc-search>
     </div>
     <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="isSearching()" >
       <table class="table table-curved">
