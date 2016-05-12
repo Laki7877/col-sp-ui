@@ -79,23 +79,24 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 	}, true);
 
 	$scope.refresher.Products = function(q){
-		return ProductTempService.list({
-			searchText: q,
-			_limit: 8,
-			_offset: 0,
-			_direction: 'asc'
-		}).then(function(ds) {
+		return Product.getUngrouped(q, 
+		$scope.formData.AttributeSet.AttributeSetId, 
+		$scope.formData.Shop.ShopId,
+		$scope.formData.Category.CategoryId)
+		.then(function(ds) {
 		  $scope.dataset.Products = ds.data;
 		});
 	};
 	
-	ProductTempService.list({
-		_limit: 8,
-		_offset: 0,
-		_direction: 'asc'
-	}).then(function(ds) {
-		$scope.dataset.Products = ds.data;
-	});
+	$scope.$watch('formData.AttributeSet', function(x){
+		Product.getUngrouped(null, 
+			$scope.formData.AttributeSet.AttributeSetId, 
+			$scope.formData.Shop.ShopId,
+			$scope.formData.Category.CategoryId)
+		.then(function(ds) {
+			$scope.dataset.Products = ds.data;
+		});
+	}, true);
 
 	$scope.refresher.Shops = function(q){
 		return AdminShopService.list({

@@ -19,7 +19,8 @@ angular.module('umeSelect')
                 initialChoices: '=?initialChoices',
                 hideIcon: '=?hideIcon',
                 disabled: '&?ngDisabled',
-                strictMode: '=?strictMode'
+                strictMode: '=?strictMode',
+                policyPermit: '@?policyPermit'
             },
             replace: true,
             priority: 1010,
@@ -31,7 +32,16 @@ angular.module('umeSelect')
                 var templateHTML = $templateCache.get(tmpl);
                 return templateHTML;
             },
-            link: function (scope, element, attrs, ngModel, transclude) {
+            link: function (scope, element, attrs, ngModel, transclude) {                
+                
+                scope.disableByPolicy = function(){
+                    if(!scope.policyPermit){
+                        return false;
+                    }else{
+                        return !$rootScope.permit(Number(scope.policyPermit))
+                    }
+                }
+                
                 //text user types in searchbox
                 scope.searchText = "";
                 //index of currently highlighted choice
@@ -301,7 +311,7 @@ angular.module('umeSelect')
                 scope.pickItem = function(item){
 
                     //Action to perform when user select a choice
-                    //if inlove (such as inrelationship or its-complicated)
+                    //if in love (such as in relationship or its-complicated)
                     var finishListModel = function(){
                         scope.focus(true);
                         scope.searchText = "";

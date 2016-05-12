@@ -143,6 +143,27 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			return common.makeRequest(req)
 		}
 
+		service.getUngrouped = function(q, attributeSetId, shopId, categoryId){
+			var x =  {
+					AttributeSetId: attributeSetId,
+					ShopId: shopId,
+					CategoryId: categoryId,
+					_limit: 8,
+					_offset: 0,
+					_direction: 'asc'
+			};
+			if(q){
+				x.searchText = q;
+			}
+			var req = {
+				method: 'GET',
+				url: '/ProductStages/UnGroup/',
+				params: x
+			}
+
+			return common.makeRequest(req)
+		}
+
 		service.getAll = function (parameters) {
 			var req = {
 				method: 'GET',

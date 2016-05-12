@@ -4,8 +4,10 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
 	$rootScope._ = _;
   $rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
+  
+  console.log('PROFILE', $rootScope.Profile);
+  console.log('IMPOSTER', $rootScope.Imposter);
 
- 
   /*
   *  range {array} - set of shop group that is permitted in the current shop group policy 
   */ 

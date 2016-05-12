@@ -52,7 +52,8 @@ module.exports = function ($http, $q, storage, config, $window) {
                                 storage.put('session_timeout');
                                 storage.clear();
                                 
-                                $window.location.href = "/login";
+                                // $window.location.href = "/login";
+                                console.log("failed")
                             }
 
                             if(status == 403 && !onLoginPage) {

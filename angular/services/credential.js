@@ -62,7 +62,7 @@ module.exports = function(common, $base64, storage, $q, $rootScope) {
 		return deferred.promise;
 	};
 
-	service.loginAs= function(User){
+	service.loginAs = function(User){
 		var deferred = $q.defer();
 	 	common.makeRequest({
 			method: 'GET',

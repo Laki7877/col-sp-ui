@@ -1096,23 +1096,24 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 	}, true);
 
 	$scope.refresher.Products = function(q){
-		return ProductTempService.list({
-			searchText: q,
-			_limit: 8,
-			_offset: 0,
-			_direction: 'asc'
-		}).then(function(ds) {
+		return Product.getUngrouped(q, 
+		$scope.formData.AttributeSet.AttributeSetId, 
+		$scope.formData.Shop.ShopId,
+		$scope.formData.Category.CategoryId)
+		.then(function(ds) {
 		  $scope.dataset.Products = ds.data;
 		});
 	};
 	
-	ProductTempService.list({
-		_limit: 8,
-		_offset: 0,
-		_direction: 'asc'
-	}).then(function(ds) {
-		$scope.dataset.Products = ds.data;
-	});
+	$scope.$watch('formData.AttributeSet', function(x){
+		Product.getUngrouped(null, 
+			$scope.formData.AttributeSet.AttributeSetId, 
+			$scope.formData.Shop.ShopId,
+			$scope.formData.Category.CategoryId)
+		.then(function(ds) {
+			$scope.dataset.Products = ds.data;
+		});
+	}, true);
 
 	$scope.refresher.Shops = function(q){
 		return AdminShopService.list({
@@ -2347,7 +2348,7 @@ module.exports = ["$scope", "$controller", "ProductTempService", "config", funct
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
 		options: {
-			url: '/admin/products/groups',
+			url: '/admin/products/groups', 
 			service: ProductTempService,
 			item: 'Pending Product',
 			order: 'UpdatedDt',
@@ -4494,8 +4495,10 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
 	$rootScope._ = _;
   $rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
+  
+  console.log('PROFILE', $rootScope.Profile);
+  console.log('IMPOSTER', $rootScope.Imposter);
 
- 
   /*
   *  range {array} - set of shop group that is permitted in the current shop group policy 
   */ 
@@ -7456,7 +7459,8 @@ module.exports = ["$http", "$q", "storage", "config", "$window", function ($http
                                 storage.put('session_timeout');
                                 storage.clear();
                                 
-                                $window.location.href = "/login";
+                                // $window.location.href = "/login";
+                                console.log("failed")
                             }
 
                             if(status == 403 && !onLoginPage) {
@@ -13091,7 +13095,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-vital-information',
-    "<div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label ng-init=\"form = addProductForm\" nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=variantPtr.ProductNameEn maxlength=255 ng-pattern=\"/^([^<>ก-๙])+$/\" nc-policy-permit=35 required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh nc-policy-permit=35 ng-model=variantPtr.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-policy-indy-bu nc-label=\"Short Product Name (Eng)\" nc-template-form=form.ProdTDNameEn nc-template-options-path=addProductForm/NonRequiredSystemField><input class=\"form-control width-field-large\" name=ProdTDNameEn nc-policy-permit=35 ng-model=variantPtr.ProdTDNameEn ng-pattern=\"/^[^<>]+$/\" maxlength=\"55\"></div><div nc-template=common/input/form-group-with-label nc-policy-indy-bu nc-label=\"Short Product Name (ไทย)\" nc-template-form=form.ProdTDNameTh nc-template-options-path=addProductForm/NonRequiredSystemField><input class=\"form-control width-field-large\" name=ProdTDNameTh nc-policy-permit=35 ng-model=variantPtr.ProdTDNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=\"55\"></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku nc-policy-permit=35 ng-model=variantPtr.Sku maxlength=255 ng-required=onPublishing ng-pattern-restrict=\"^[a-zA-Z0-9]*$\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" nc-policy-permit=35 ng-pattern-restrict=^[a-zA-Z0-9]*$ name=Upc maxlength=13 ng-model=\"variantPtr.Upc\"></div><div ng-if=variantPtr.MasterVariant.Pid><div nc-template=common/input/form-group-with-label nc-template-form=form.Pid nc-label=\"{{ (formData.Variants || []).length > 0 ? 'Group ID' : 'PID' }}\" nc-template-options-path=addProductForm/Pid><input class=\"form-control width-field-large\" nc-policy-permit=35 name=Pid disabled ng-model=\"variantPtr.Pid\"></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Brand Name</label></div><div class=width-field-normal><div class=ah-select2-dropdown><you-me display-by=BrandNameEn placeholder=\"Search Brand\" required auto-clear-search=true group-by=_group ng-model=formData.Brand refresh=refresher.Brands choices=dataset.Brands></you-me></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label ng-init=\"form = addProductForm\" nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=variantPtr.ProductNameEn maxlength=255 ng-pattern=\"/^([^<>ก-๙])+$/\" nc-policy-permit=35 required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh nc-policy-permit=35 ng-model=variantPtr.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-policy-indy-bu nc-label=\"Short Product Name (Eng)\" nc-template-form=form.ProdTDNameEn nc-template-options-path=addProductForm/NonRequiredSystemField><input class=\"form-control width-field-large\" name=ProdTDNameEn nc-policy-permit=35 ng-model=variantPtr.ProdTDNameEn ng-pattern=\"/^[^<>]+$/\" maxlength=\"55\"></div><div nc-template=common/input/form-group-with-label nc-policy-indy-bu nc-label=\"Short Product Name (ไทย)\" nc-template-form=form.ProdTDNameTh nc-template-options-path=addProductForm/NonRequiredSystemField><input class=\"form-control width-field-large\" name=ProdTDNameTh nc-policy-permit=35 ng-model=variantPtr.ProdTDNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=\"55\"></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku nc-policy-permit=35 ng-model=variantPtr.Sku maxlength=255 ng-required=onPublishing ng-pattern-restrict=\"^[a-zA-Z0-9]*$\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" nc-policy-permit=35 ng-pattern-restrict=^[a-zA-Z0-9]*$ name=Upc maxlength=13 ng-model=\"variantPtr.Upc\"></div><div ng-if=variantPtr.MasterVariant.Pid><div nc-template=common/input/form-group-with-label nc-template-form=form.Pid nc-label=\"{{ (formData.Variants || []).length > 0 ? 'Group ID' : 'PID' }}\" nc-template-options-path=addProductForm/Pid><input class=\"form-control width-field-large\" nc-policy-permit=35 name=Pid disabled ng-model=\"variantPtr.Pid\"></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Brand Name</label></div><div class=width-field-normal><div class=ah-select2-dropdown><you-me display-by=BrandNameEn placeholder=\"Search Brand\" required auto-clear-search=true group-by=_group policy-permit=351 ng-model=formData.Brand refresh=refresher.Brands choices=dataset.Brands></you-me></div></div></div></div></div>"
   );
 
 
@@ -13695,7 +13699,8 @@ angular.module('umeSelect')
                 initialChoices: '=?initialChoices',
                 hideIcon: '=?hideIcon',
                 disabled: '&?ngDisabled',
-                strictMode: '=?strictMode'
+                strictMode: '=?strictMode',
+                policyPermit: '@?policyPermit'
             },
             replace: true,
             priority: 1010,
@@ -13707,7 +13712,16 @@ angular.module('umeSelect')
                 var templateHTML = $templateCache.get(tmpl);
                 return templateHTML;
             },
-            link: function (scope, element, attrs, ngModel, transclude) {
+            link: function (scope, element, attrs, ngModel, transclude) {                
+                
+                scope.disableByPolicy = function(){
+                    if(!scope.policyPermit){
+                        return false;
+                    }else{
+                        return !$rootScope.permit(Number(scope.policyPermit))
+                    }
+                }
+                
                 //text user types in searchbox
                 scope.searchText = "";
                 //index of currently highlighted choice
@@ -13977,7 +13991,7 @@ angular.module('umeSelect')
                 scope.pickItem = function(item){
 
                     //Action to perform when user select a choice
-                    //if inlove (such as inrelationship or its-complicated)
+                    //if in love (such as in relationship or its-complicated)
                     var finishListModel = function(){
                         scope.focus(true);
                         scope.searchText = "";
@@ -14050,12 +14064,12 @@ angular.module("umeSelect").run(["$templateCache", function($templateCache) {  '
 
 
   $templateCache.put('ume/multiple',
-    "<div class=\"selectize-control single\"><div ng-click=forceFocus() class=\"selectize-input items not-full has-options has-items\" ng-class=\"{ 'ume-plain': hideIcon, 'ume-search' : !loading && !hideIcon, 'ume-loading': loading, 'input-active': focused}\"><div ng-repeat=\"item in (model) track by $index\" style=\"margin-right: 5px\" class=\"item btn btn-primary btn-xs\" aria-hidden=true>{{ itemValue(item) }} <a ng-click=breakUp($index) class=\"glyphicon glyphicon-remove\" style=\"color:white !important; opacity: 0.7; font-size: x-small\"></a></div><input ng-focus=focus() ng-keydown=keyDown($event) ume-id=\"{{ _id }}\" ume-focus=focusObtained ume-blur=focusLost autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" class=\"btn btn-xs\" style=\"max-width: 150px !important;text-align: left\"></div><div ng-include=\"'ume/choicelist'\"></div></div>"
+    "<div class=\"selectize-control single\"><div ng-click=forceFocus() class=\"selectize-input items not-full has-options has-items\" ng-class=\"{ 'ume-plain': hideIcon, 'ume-search' : !loading && !hideIcon, 'ume-loading': loading, 'input-active': focused}\"><div ng-repeat=\"item in (model) track by $index\" style=\"margin-right: 5px\" class=\"item btn btn-primary btn-xs\" aria-hidden=true>{{ itemValue(item) }} <a ng-click=breakUp($index) class=\"glyphicon glyphicon-remove\" style=\"color:white !important; opacity: 0.7; font-size: x-small\"></a></div><input ng-focus=focus() ng-keydown=keyDown($event) ume-id=\"{{ _id }}\" ng-disabled=\"disabled() || disableByPolicy()\" ume-focus=focusObtained ume-blur=focusLost autocomplete=off tabindex=\"\" ng-model=searchText placeholder=\"{{ placeholder }}\" class=\"btn btn-xs\" style=\"max-width: 150px !important;text-align: left\"></div><div ng-include=\"'ume/choicelist'\"></div></div>"
   );
 
 
   $templateCache.put('ume/single',
-    "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-plain': hideIcon, 'ume-search' : !loading && !hideIcon, 'ume-loading': loading, 'input-active': true}\" style=\"min-height: 34px\"><input ume-focus=focusObtained ng-disabled=disabled() ume-blur=focusLost ume-id=\"{{ _id }}\" autocomplete=off tabindex=\"\" ng-model=searchText ng-focus=focus() ng-blur=blur() placeholder=\"{{ placeholder }}\" ng-keydown=keyDown($event) ng-show=\"focused || !itemValue(model)\" style=\"width: 100%\"><div ng-show=\"!focused && itemValue(model)\" class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ itemValue(model) || placeholder }}</div></div><div ng-include=\"'ume/choicelist'\"></div></div>"
+    "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-plain': hideIcon, 'ume-search' : !loading && !hideIcon, 'ume-loading': loading, 'input-active': true}\" style=\"min-height: 34px\"><input ume-focus=focusObtained ng-disabled=\"disabled() || disableByPolicy()\" ume-blur=focusLost ume-id=\"{{ _id }}\" autocomplete=off tabindex=\"\" ng-model=searchText ng-focus=focus() ng-blur=blur() placeholder=\"{{ placeholder }}\" ng-keydown=keyDown($event) ng-show=\"focused || !itemValue(model)\" style=\"width: 100%\"><div ng-show=\"!focused && itemValue(model)\" class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ itemValue(model) || placeholder }}</div></div><div ng-include=\"'ume/choicelist'\"></div></div>"
   );
  }]);
 },{}],160:[function(require,module,exports){
@@ -15789,7 +15803,7 @@ module.exports = ["common", "$base64", "storage", "$q", "$rootScope", function(c
 		return deferred.promise;
 	};
 
-	service.loginAs= function(User){
+	service.loginAs = function(User){
 		var deferred = $q.defer();
 	 	common.makeRequest({
 			method: 'GET',
@@ -16618,6 +16632,27 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			var req = {
 				method: 'POST',
 				url: '/ProductStages/' + ProductId
+			}
+
+			return common.makeRequest(req)
+		}
+
+		service.getUngrouped = function(q, attributeSetId, shopId, categoryId){
+			var x =  {
+					AttributeSetId: attributeSetId,
+					ShopId: shopId,
+					CategoryId: categoryId,
+					_limit: 8,
+					_offset: 0,
+					_direction: 'asc'
+			};
+			if(q){
+				x.searchText = q;
+			}
+			var req = {
+				method: 'GET',
+				url: '/ProductStages/UnGroup/',
+				params: x
 			}
 
 			return common.makeRequest(req)

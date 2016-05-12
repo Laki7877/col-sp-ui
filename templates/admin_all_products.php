@@ -79,7 +79,8 @@
 	                    </span>
 	                  </td>
 	                  <td class="live-column">
-	                    <i class="fa fa-circle color-grey"></i>
+											 <i class="fa fa-circle color-green" ng-if="row.OnlineFlag"></i>
+	                    <i class="fa fa-circle color-grey" ng-if="!row.OnlineFlag"></i>
 	                  </td>
 	                  <td class="visible-column">
 	                    <nc-eye nc-model="row.Visibility" nc-eye-on-toggle="toggleEye(row)"></nc-eye>
