@@ -13,12 +13,12 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 		data: { Type: 'SmallBanner' }
 	});
 	$scope.bannerOptions = {
-		validateDimensionMin: [1920, 1920],
-		validateDimensionMax: [1080, 1080]
+		validateDimensionMin: [1920, 1080],
+		validateDimensionMax: [1920, 1080]
 	};
 	$scope.bannerSmOptions = {
-		validateDimensionMin: [1600, 1600],
-		validateDimensionMax: [900, 900]
+		validateDimensionMin: [1600, 900],
+		validateDimensionMax: [1600, 900]
 	};
 	$scope.uploadLogo = function(file) {
 		if(_.isNil(file)) {

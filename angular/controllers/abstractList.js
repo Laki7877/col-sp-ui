@@ -136,13 +136,8 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 	var init = false;
 
 	$scope.$watch('params', function(a,b) {
-		if(init)
+		if(!$scope.advanceSearchMode) {
 			$scope.reload(a,b);
+		}
 	}, true);
-
-	$timeout(function() {
-		$scope.reload();
-		init = true;
-		(options.onInit || _.noop)($scope);
-	}, 0);
 };

@@ -863,7 +863,8 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 
 	//Watch for advanceSearchParams
 	$scope.$watch('advanceSearchParams', function(newObj, oldObj) {
-		$scope.reload();
+		console.log('advanceparam')
+		$scope.reload(newObj, oldObj);
 	});
 }]
 
@@ -1006,15 +1007,10 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 	var init = false;
 
 	$scope.$watch('params', function(a,b) {
-		if(init)
+		if(!$scope.advanceSearchMode) {
 			$scope.reload(a,b);
+		}
 	}, true);
-
-	$timeout(function() {
-		$scope.reload();
-		init = true;
-		(options.onInit || _.noop)($scope);
-	}, 0);
 }];
 
 },{}],6:[function(require,module,exports){
@@ -1439,12 +1435,12 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 		data: { Type: 'SmallBanner' }
 	});
 	$scope.bannerOptions = {
-		validateDimensionMin: [1920, 1920],
-		validateDimensionMax: [1080, 1080]
+		validateDimensionMin: [1920, 1080],
+		validateDimensionMax: [1920, 1080]
 	};
 	$scope.bannerSmOptions = {
-		validateDimensionMin: [1600, 1600],
-		validateDimensionMax: [900, 900]
+		validateDimensionMin: [1600, 900],
+		validateDimensionMax: [1600, 900]
 	};
 	$scope.uploadLogo = function(file) {
 		if(_.isNil(file)) {
@@ -1657,14 +1653,14 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				});
 				$scope.bannerSmUploader = ImageService.getUploaderFn('/GlobalCategoryImages', {
 					data: { Type: 'SmallBanner' }
-				});				
+				});		
 				$scope.bannerOptions = {
-					validateDimensionMin: [1920, 1920],
-					validateDimensionMax: [1080, 1080]
+					validateDimensionMin: [1920, 1080],
+					validateDimensionMax: [1920, 1080]
 				};
 				$scope.bannerSmOptions = {
-					validateDimensionMin: [1600, 1600],
-					validateDimensionMax: [900, 900]
+					validateDimensionMin: [1600, 900],
+					validateDimensionMax: [1600, 900]
 				};
 				$scope.formData = {};
 				$scope.saving = false;
@@ -3268,12 +3264,12 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 					data: { Type: 'SmallBanner' }
 				});
 				$scope.bannerOptions = {
-					validateDimensionMin: [1920, 1920],
-					validateDimensionMax: [1080, 1080]
+					validateDimensionMin: [1920, 1080],
+					validateDimensionMax: [1920, 1080]
 				};
 				$scope.bannerSmOptions = {
-					validateDimensionMin: [1600, 1600],
-					validateDimensionMax: [900, 900]
+					validateDimensionMin: [1600, 900],
+					validateDimensionMax: [1600, 900]
 				};
 				$scope.formData = {};
 				$scope.saving = false;
@@ -10156,19 +10152,19 @@ angular.module('nc')
 									var maxW = Number(maxDim[0]);
 									var maxH = Number(maxDim[1]);
 
-									if (img.width < minW || img.height < minH) {
+									if (scope.options.validateDimensionMin && (img.width < minW || img.height < minH)) {
 										//min width error
 										scope.onfail('ondimension', [img.width, img.height]);
 										return;
 									}
 
-									if (img.width > maxW || img.height > maxH) {
+									if (scope.options.validateDimensionMax && (img.width > maxW || img.height > maxH)) {
 										//min width error
 										scope.onfail('ondimension', [img.width, img.height]);
 										return;
 									}
 
-									if (scope.options.validateRatio && img.width != scope.options.validateRatio * img.height) {
+									if (scope.options.validateRatio && img.width != ratio * img.height) {
 										//ratio error
 										scope.onfail('onratio', [img.width, img.height]);
 										return;
@@ -10224,28 +10220,28 @@ angular.module('nc')
 								var maxDim = scope.options.validateDimensionMax;
 								var ratio = scope.options.validateRatio;
 
+								var minW = Number(minDim[0]);
+								var minH = Number(minDim[1]);
+								var maxW = Number(maxDim[0]);
+								var maxH = Number(maxDim[1]);
 
-								if (scope.options.validateDimensionMin && (img.width < Number(minDim[0]) || img.height < Number(minDim[1]))) {
+								if (scope.options.validateDimensionMin && (img.width < minW || img.height < minH)) {
 									//min width error
-									scope.onfail('ondimension', [img.width, img.height], minDim, maxDim);
+									scope.onfail('ondimension', [img.width, img.height]);
+									console.log(img.width, img.height, minW, minH);
 									return;
 								}
 
-								if (scope.options.validateDimensionMax && (img.width > Number(maxDim[0]) || img.height > Number(maxDim[1]))) {
+								if (scope.options.validateDimensionMax && (img.width > maxW || img.height > maxH)) {
 									//min width error
-									scope.onfail('ondimension', [img.width, img.height], minDim, maxDim);
+									scope.onfail('ondimension', [img.width, img.height]);
+									console.log(img.width, img.height, maxW, maxH);
 									return;
 								}
 
-								if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
-									//file size error
-									scope.onfail('onfilesize', file.size, scope.options.validateFileSize);
-									return;
-								}
-
-								if (scope.options.validateRatio && img.width * Number(ratio[1]) != Number(ratio[0]) * img.height) {
+								if (scope.options.validateRatio && img.width != ratio * img.height) {
 									//ratio error
-									scope.onfail('onratio', [img.width, img.height], ratio);
+									scope.onfail('onratio', [img.width, img.height]);
 									return;
 								}
 
@@ -10541,7 +10537,7 @@ angular.module('nc')
 						var maxW = Number(maxDim[0]);
 						var maxH = Number(maxDim[1]);
 
-						if (img.width < minW || img.height < minH) {
+						if (minDim && (img.width < minW || img.height < minH) ) {
 							//min width error
 							item.remove();
 							item.cancel();
@@ -10551,7 +10547,7 @@ angular.module('nc')
 							return;
 						}
 
-						if (img.width > maxW || img.height > maxH) {
+						if (maxDim && (img.width > maxW || img.height > maxH)) {
 							//min width error
 							item.remove();
 							item.cancel();
@@ -10561,7 +10557,7 @@ angular.module('nc')
 							return;
 						}
 
-						if (scope.options.validateRatio && img.width != scope.options.validateRatio * img.height) {
+						if (ratio && img.width != ratio * img.height) {
 							//min width error
 							item.remove();
 							item.cancel();
@@ -18051,6 +18047,17 @@ module.exports = {
 }
 },{}],220:[function(require,module,exports){
 module.exports = {
+	Logo: {
+		labelClass: 'required',
+		error: {
+			messages: {
+				required: 'This is required field',
+				dimensions: 'Image must be between 500x500 to 1000x1000 pixels',
+				ratio: 'Image must be a square (1:1 ratio)',
+				maxSize: 'Image file size must not exceed 5MB'
+			}
+		}
+	},
 	TaxPayerId: {
 		inputSize: 'large',
 		labelClass: 'required',

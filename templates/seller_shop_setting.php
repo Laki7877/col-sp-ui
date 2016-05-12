@@ -35,7 +35,7 @@
 											</div>
 						                    <!-- Shop Logo -->
 								            <div nc-template="common/input/form-group-with-label"
-								            	nc-template-options-path=""
+								            	nc-template-options-path="addShopAccountForm/Logo"
 								              nc-template-form="form.Logo"
 								              nc-label="Shop Logo file">
 								                <button
@@ -49,7 +49,7 @@
 								                ngf-select="uploadLogo($file)"
 								                ng-class="{'has-error-btn' : isInvalid(form.Logo)}"
 						               			ng-model="formData._dummy"
-								                required>Choose File</button>
+								                >Choose File</button>
 								            </div>
 								            <div ng-show="formData.ShopImage.Url"
 								              nc-template="common/input/form-group-with-label"
