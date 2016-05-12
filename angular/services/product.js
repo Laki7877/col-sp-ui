@@ -239,6 +239,19 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 			var clean = {}
 			var serializer = {
+				Variants: {
+					serialize: function (data) {
+						return data.map(function (v) {
+							var ts = util.variant.toString(v.FirstAttribute, v.SecondAttribute);
+							var rs = util.variant.toString(fd.DefaultVariant.FirstAttribute, fd.DefaultVariant.SecondAttribute);
+							v.DefaultVariant = (ts == rs);
+							return v;
+						});
+					},
+					fallback: function (data) {
+						throw new KnownException("No serialization fallback for Variants");
+					}
+				},
 				GlobalCategories: {
 					serialize: function (data) {
 						return data.map(function (lcat) {

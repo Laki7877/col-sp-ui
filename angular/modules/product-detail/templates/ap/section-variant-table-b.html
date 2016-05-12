@@ -2,7 +2,7 @@
 	<thead>
 		<tr>
 			<th class="column-variant" style="width:150px">Variant</th>
-			<th class="column-mapped-product" style="width:400px">Mapped Product</th>
+			<th class="column-mapped-product" style="width:400px">Product</th>
 			<th class="column-visibility">Visibility</th>
 		</tr>
 	</thead>
@@ -27,7 +27,7 @@
 				</ui-select>-->
 				
 				<you-me ng-model="pair.MappedProduct" display-by="ProductNameEn"
-				 refresh="refresher.Products" initial-choices="dataset.Products" placeholder="Search from pending product list."
+				 refresh="refresher.Products" initial-choices="dataset.Products" placeholder="Product under selected attribute set."
 				 strict-mode="true" choices="dataset.Products" ng-disabled="!pair.Visibility" name="pair_MappedProduct">
 					
 				</you-me>

@@ -1,5 +1,4 @@
 <form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
-            {{options}}
             <div ng-if="pageState.loading.state" nc-loading="{{ pageState.loading.message }}.."></div>
             <div class="add-product-body" ng-if="!pageState.loading.state || pageState.halt">
                     <ng-transclude></ng-transclude>

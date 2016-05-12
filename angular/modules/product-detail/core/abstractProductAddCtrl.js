@@ -140,7 +140,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         StockType: 'Stock',
         Images: [],
         Installment: 'N',
-        ShippingMethod: '1',
+        ShippingMethod: {
+          ShippingId : "1"
+        },
         VideoLinks: [],
         Visibility: true,
         SEO: {
@@ -167,6 +169,17 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         RejectReason: ''
       }
     }
+
+    //Adjust Limit Individual Day check box when 
+    //prepare days are non zero
+    $scope.$watch('variantPtr.PrepareMon+variantPtr.PrepareTue+variantPtr.PrepareWed+variantPtr.PrepareThu+variantPtr.PrepareFri',
+    function(value){
+        var variantPtr = $scope.variantPtr;
+        var x  = Number(variantPtr.PrepareMon)+Number(variantPtr.PrepareTue)+Number(variantPtr.PrepareWed)+Number(variantPtr.PrepareThu)+Number(variantPtr.PrepareFri);
+        if(x > 0){
+          $scope.formData.LimitIndividualDay = true;
+        }
+    });
 
     //Initialize Pointers
     $scope.variantPtr = $scope.formData.MasterVariant;
@@ -371,7 +384,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.$watch('variantPtr.OriginalPrice+variantPtr.SalePrice', function () {
       var form = $scope.addProductForm;
       if (form.SalePrice) form.SalePrice.$setValidity('min', true);
-      if (!form.SalePrice) return;
+      if (!form.SalePrice) return; 
       if ($scope.variantPtr.SalePrice == '') return;
       if ($scope.variantPtr.OriginalPrice == '') return;
 
@@ -380,7 +393,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         form.SalePrice.$error['min'] = 'Sale Price must not exceed Original Price'
       }
     });
-
+    
     $scope.$watch('formData.ExpireDate', function () {
       // TODO: refactor use nctemplate
       var form = $scope.addProductForm;

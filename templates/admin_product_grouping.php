@@ -1,5 +1,5 @@
 <?php
-	$this->layout('layouts/page-with-sidebar', ['title' => 'Admin - Pending Products'])
+	$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Pending Products'])
 ?>
 <?php $this->start('page-body') ?>
 <div ng-controller="AdminPendingProductGroupAddCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>

@@ -8,6 +8,8 @@ module.exports = {
       }
     }
   },
+  MinQtyAllowInCart: {},
+  MaxQtyAllowInCart: {},
   KillerPointEn: {
     'divClass': 'col-xs-6',
     'error': {

@@ -38,7 +38,9 @@
 									</span>
 								</td>
 								<td class="live-column">
-									<i class="fa fa-circle color-grey"></i>
+									<!--<i class="fa fa-circle color-grey"></i>-->
+									 <i class="fa fa-circle color-green" ng-if="formData.OnlineFlag"></i>
+                      				 <i class="fa fa-circle color-grey" ng-if="!formData.OnlineFlag"></i>
 								</td>
 								<td class="visible-column">
 									<a ng-click="formData.MasterVariant.Visibility = !formData.MasterVariant.Visibility" 
