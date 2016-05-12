@@ -80,16 +80,19 @@
 											<div ng-template="common/input/text2"
 												ng-template-options="{
 												'label': 'URL Key',
+												'error': {
+												'messages': {
+													'pattern': 'Only 0-9 a-z - are allowed (no spaces or underscores)'
+												},
 												'show': $root.isInvalid(form.UrlKey),
 												'conditions' : form.UrlKey.$error
-												}">
+												}}">
 												<input class="form-control"
 													name="UrlKey"
 													ng-model="formData.UrlKey"
 													ng-lowercase
 													ng-class="{ 'has-error' : $root.isInvalid(form.UrlKey) }"
-													ng-pattern-restrict="[0-9a-z]*"
-													placeholder="{{formData.ShopNameEn}}"
+													ng-pattern-restrict="/^[0-9a-z\-]+$/"
 													maxlength="100"
 												/>
 											</div>

@@ -105,7 +105,6 @@ module.exports = function($scope, $controller, options, Product, LocalCategorySe
 
 	//Watch for advanceSearchParams
 	$scope.$watch('advanceSearchParams', function(newObj, oldObj) {
-		console.log('advanceparam')
 		$scope.reload(newObj, oldObj);
 	});
 }

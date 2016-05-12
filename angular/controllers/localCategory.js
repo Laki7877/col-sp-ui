@@ -182,30 +182,30 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				};
 				$scope.uploadBannerFail = function(e, response, min, max) {
 					if(e == 'onmaxsize') {
-						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one', true);
 					}
 					else if(e == 'ondimension') {
-						$scope.alert.error('Image must be 1920x1080 pixels');
+						$scope.alert.error('Image must be 1920x1080 pixels', true);
 					}
 					else if(e == 'onfilesize') {
-						$scope.alert.error('Image file size should not exceed 5MB')
+						$scope.alert.error('Image file size should not exceed 5MB', true)
 					}
 					else {
-						$scope.alert.error(common.getError(response.data));
+						$scope.alert.error(common.getError(response.data), true);
 					}
 				};
 				$scope.uploadBannerSmFail = function(e, response, min, max) {
 					if(e == 'onmaxsize') {
-						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one', true);
 					}
 					else if(e == 'ondimension') {
-						$scope.alert.error('Image must be 1600x900 pixels');
+						$scope.alert.error('Image must be 1600x900 pixels', true);
 					}
 					else if(e == 'onfilesize') {
-						$scope.alert.error('Image file size should not exceed 5MB')
+						$scope.alert.error('Image file size should not exceed 5MB', true)
 					}
 					else {
-						$scope.alert.error(common.getError(response.data));
+						$scope.alert.error(common.getError(response.data), true);
 					}
 				};
 

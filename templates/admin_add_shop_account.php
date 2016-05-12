@@ -75,20 +75,20 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 									<div ng-template="common/input/text2"
 										ng-template-options="{
 										'label': 'URL Key',
-										'show': $root.isInvalid(form.UrlKey),
-										'conditions' : form.UrlKey.$error,
 										'error' : {
 											'messages': {
 													'pattern': 'Only 0-9 a-z - are allowed (no spaces or underscores)'
-												}
-											}
+												},
+											'show': isInvalid(form.UrlKey),
+											'conditions' : form.UrlKey.$error
+										}
 										}">
 										<input
 										class="form-control"
 										name="UrlKey"
 										ng-lowercase
 										ng-model="formData.UrlKey"
-										ng-pattern="/^[0-9a-z\-]$/"
+										ng-pattern="/^[0-9a-z\-]+$/"
 										ng-class="{ 'has-error' : $root.isInvalid(form.UrlKey) }"
 										placeholder="formData.ShopNameEn"
 										maxlength="100"
@@ -99,13 +99,13 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 										ng-template-options="{
 										'label' : 'Shop Group',
 										'labelClass' : 'required',
-										'error' : {
-										'messages': {
-										'required': 'This is a required field',
-										},
-										'show': isInvalid(form.ShopGroup),
-										'conditions' : form.ShopGroup.$error
-										}
+											'error' : {
+												'messages': {
+												'required': 'This is a required field',
+												},
+												'show': isInvalid(form.ShopGroup),
+												'conditions' : form.ShopGroup.$error
+											}
 										}">
 										<ui-select name="ShopGroup" ng-model="formData.ShopGroup" search-enabled="false" required>
 											<ui-select-match placeholder="- Select Shop Group -">

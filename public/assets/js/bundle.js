@@ -863,7 +863,6 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 
 	//Watch for advanceSearchParams
 	$scope.$watch('advanceSearchParams', function(newObj, oldObj) {
-		console.log('advanceparam')
 		$scope.reload(newObj, oldObj);
 	});
 }]
@@ -1719,30 +1718,30 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				};
 				$scope.uploadBannerFail = function(e, response, min, max) {
 					if(e == 'onmaxsize') {
-						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one', true);
 					}
 					else if(e == 'ondimension') {
-						$scope.alert.error('Image must be 1920x1080 pixels');
+						$scope.alert.error('Image must be 1920x1080 pixels', true);
 					}
 					else if(e == 'onfilesize') {
-						$scope.alert.error('Image file size should not exceed 5MB')
+						$scope.alert.error('Image file size should not exceed 5MB', true)
 					}
 					else {
-						$scope.alert.error(common.getError(response.data));
+						$scope.alert.error(common.getError(response.data), true);
 					}
 				};
 				$scope.uploadBannerSmFail = function(e, response, min, max) {
 					if(e == 'onmaxsize') {
-						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one', true);
 					}
 					else if(e == 'ondimension') {
-						$scope.alert.error('Image must be 1600x900 pixels');
+						$scope.alert.error('Image must be 1600x900 pixels', true);
 					}
 					else if(e == 'onfilesize') {
-						$scope.alert.error('Image file size should not exceed 5MB')
+						$scope.alert.error('Image file size should not exceed 5MB', true)
 					}
 					else {
-						$scope.alert.error(common.getError(response.data));
+						$scope.alert.error(common.getError(response.data), true);
 					}
 				};
 
@@ -2103,7 +2102,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "Im
 						return;
 					}
 					$scope.formData.Image = {
-						url: '/assets/img/loader.gif'
+						Url: '/assets/img/loader.gif'
 					};
 					uploader.upload($file)
 						.then(function(response) {
@@ -3321,30 +3320,30 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				};
 				$scope.uploadBannerFail = function(e, response, min, max) {
 					if(e == 'onmaxsize') {
-						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one', true);
 					}
 					else if(e == 'ondimension') {
-						$scope.alert.error('Image must be 1920x1080 pixels');
+						$scope.alert.error('Image must be 1920x1080 pixels', true);
 					}
 					else if(e == 'onfilesize') {
-						$scope.alert.error('Image file size should not exceed 5MB')
+						$scope.alert.error('Image file size should not exceed 5MB', true)
 					}
 					else {
-						$scope.alert.error(common.getError(response.data));
+						$scope.alert.error(common.getError(response.data), true);
 					}
 				};
 				$scope.uploadBannerSmFail = function(e, response, min, max) {
 					if(e == 'onmaxsize') {
-						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one', true);
 					}
 					else if(e == 'ondimension') {
-						$scope.alert.error('Image must be 1600x900 pixels');
+						$scope.alert.error('Image must be 1600x900 pixels', true);
 					}
 					else if(e == 'onfilesize') {
-						$scope.alert.error('Image file size should not exceed 5MB')
+						$scope.alert.error('Image file size should not exceed 5MB', true)
 					}
 					else {
-						$scope.alert.error(common.getError(response.data));
+						$scope.alert.error(common.getError(response.data), true);
 					}
 				};
 
@@ -3484,6 +3483,10 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
       if (!redir || redir == '/') {
         redir = Credential.getRedirPath(r);
       }
+
+      //login flag
+      storage.put('login', true);
+
       $window.location.href = redir;
     }, function (err) {
       storage.clear();
@@ -4678,9 +4681,14 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
     $rootScope.DisablePage = true;
     
     if($window.location.pathname == '/dashboard' && !$rootScope.permit(29)) {
-      $window.location.href = "/onboarding";
+        $window.location.href = "/onboarding";
     } else {
-      util.page404();
+      if(storage.poke('login')) {
+        $window.location.href = "/onboarding";
+      }
+      else {
+        util.page404();
+      }
     }
   }
 
@@ -10052,13 +10060,12 @@ angular.module('nc')
 				source: '=',
 				key: '@'
 			},
-			template: '<nc-image-block template="common/ncImageBanner3" data-source="source" data-key="{{key}}" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>Image ratio 16:9</li></ul></nc-image-block>',
+			transclude: true,
+			template: '<nc-image-block template="common/ncImageBanner3" data-source="source" data-key="{{key}}" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>Image size <span ng-transclude></span></li></ul></nc-image-block>',
 			link: function(scope) {
 				scope.options = _.defaults(scope.options, {
 					height: '144px',
 					width: '256px',
-					validateDimensionMin: [1500, 1500],
-					validateDimensionMax: [2000, 2000],
 					validateFileSize: 5000000
 				});
 			}
@@ -10117,10 +10124,16 @@ angular.module('nc')
 			},
 			link: function(scope, element, attrs, form) {
 				var fileUploader = false;
-
-				scope.options = _.defaults(scope.options, {
-					height: '150px',
-					width: '150px'
+				scope.$watch('options', function() {
+					if(!scope.options) {
+						return;
+					}
+					if(!scope.options.height) {
+						scope.options.height = '150px'
+					}
+					if(!scope.options.width) {
+						scope.options.width = '150px'
+					}
 				});
 
 				scope.images = scope.images || [];
@@ -14261,18 +14274,19 @@ var permission = {
 	7: ['/admin/attributes', '/admin/attributes/add', '/admin/attributesets', '/admin/attributesets/add'],
 	8: '/admin/categories',
 	9: '/admin/sellers',
-	10: ['/admin/shops', '/admin/shops/add'],
-	11: ['/admin/accounts', '/admin/accounts/add'],
+	10: ['/admin/shops', '/admin/shops/add', '/admin/shoptypes', '/admin/shoptypes/add'],
+	11: ['/admin/accounts', '/admin/accounts/add', '/admin/roles', '/admin/roles/add'],
 	12: '/admin/coupons/global',
 	13: '/admin/coupons/seller',
 	21: '/admin/newsletters',
+	70: '/admin/products/reviews',
 
 	//Seller
 	29: '/dashboard',
 	30: '/orders',
 	32: '/returns',
 	33: '/products',
-	34: ['/products/select', '/products/add'],
+	34: ['/products/select', '/products/add', '/products/export', '/products/import', '/products/update'],
 	46: '/categories',
 	47: '/products/reviews',
 	48: '/products/images',
@@ -14280,8 +14294,8 @@ var permission = {
 	50: '/inventory',
 	52: '/coupons',
 	53: '/coupons/add',
-	55: '/shop/settings',
-	56: '/shop/appearance',
+	55: '/shops/settings',
+	56: '/shops/appearance',
 	57: ['/roles', '/accounts'],
 
 	//Shop
@@ -17806,6 +17820,14 @@ module.exports = {
             }
         }
     },
+    ExpiredDt: {
+        'labelClass': 'required',
+        'error': {
+            'messages': {
+                'required': 'This is a required field',
+            }
+        }
+    },
     VisibleShopGroup: {
 
     },
@@ -18048,7 +18070,6 @@ module.exports = {
 },{}],220:[function(require,module,exports){
 module.exports = {
 	Logo: {
-		labelClass: 'required',
 		error: {
 			messages: {
 				dimensions: 'Image must be between 500x500 to 1000x1000 pixels',
@@ -18821,7 +18842,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('global_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading && true\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern-restrict=\"[^<>]*\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-pattern-restrict=\"[^<>]*\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKey nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL Key\"><input class=form-control name=UrlKey ng-lowercase ng-model=formData.UrlKey ng-pattern=\"/^[0-9a-z\\-]*$/\" maxlength=\"100\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SortBy nc-label=\"Default Sort By\" nc-template-options-path=addBrandForm/SortBy><ui-select ng-model=formData.SortBy name=SortBy search-enabled=false required><ui-select-match placeholder=\"- Select Default Sort -\">{{$select.selected.SortByName}}</ui-select-match><ui-select-choices repeat=\"item in sortBy\">{{item.SortByName}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Commission nc-template-options-path=addCategoryForm/Commission nc-label=\"Commission (%)\"><div class=input-with-unit><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ maxlength=10 ng-maxnumber=100 ng-minnumber=0 required> <span class=input-unit>%</span></div></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions column-header=\"Attribute Set in this Category\" search-placeholder=\"Search Attribute Set\" nc-text=AttributeSetNameEn nc-id=AttributeSetId on-search=loadAttributeSets></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\">* Changing attribute set mapping may affect products under this category</p></div></div></div><nc-image-banner name=CategoryBannerEn data-source=formData data-key=BannerStatusEn nc-model=formData.CategoryBannerEn title=\"Upload Banner (English)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData data-key=BannerStatusTh nc-model=formData.CategoryBannerTh title=\"Upload Banner (ไทย)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerEn data-source=formData data-key=BannerSmallStatusEn nc-model=formData.CategorySmallBannerEn title=\"Upload Small Banner (English)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData data-key=BannerSmallStatusTh nc-model=formData.CategorySmallBannerTh title=\"Upload Small Banner (ไทย)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8></nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"[^<>]*\" name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\r" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading && true\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern-restrict=\"[^<>]*\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-pattern-restrict=\"[^<>]*\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKey nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL Key\"><input class=form-control name=UrlKey ng-lowercase ng-model=formData.UrlKey ng-pattern=\"/^[0-9a-z\\-]+*$/\" maxlength=\"100\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SortBy nc-label=\"Default Sort By\" nc-template-options-path=addBrandForm/SortBy><ui-select ng-model=formData.SortBy name=SortBy search-enabled=false required><ui-select-match placeholder=\"- Select Default Sort -\">{{$select.selected.SortByName}}</ui-select-match><ui-select-choices repeat=\"item in sortBy\">{{item.SortByName}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Commission nc-template-options-path=addCategoryForm/Commission nc-label=\"Commission (%)\"><div class=input-with-unit><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ maxlength=10 ng-maxnumber=100 ng-minnumber=0 required> <span class=input-unit>%</span></div></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions column-header=\"Attribute Set in this Category\" search-placeholder=\"Search Attribute Set\" nc-text=AttributeSetNameEn nc-id=AttributeSetId on-search=loadAttributeSets></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\">* Changing attribute set mapping may affect products under this category</p></div></div></div><nc-image-banner name=CategoryBannerEn data-source=formData data-key=BannerStatusEn nc-model=formData.CategoryBannerEn title=\"Upload Banner (English)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8>1920x1080</nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData data-key=BannerStatusTh nc-model=formData.CategoryBannerTh title=\"Upload Banner (ไทย)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8>1920x1080</nc-image-banner><nc-image-banner name=CategoryBannerEn data-source=formData data-key=BannerSmallStatusEn nc-model=formData.CategorySmallBannerEn title=\"Upload Small Banner (English)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8>1600x900</nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData data-key=BannerSmallStatusTh nc-model=formData.CategorySmallBannerTh title=\"Upload Small Banner (ไทย)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8>1600x900</nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"[^<>]*\" name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\r" +
     "\n" +
     "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"[^<>]*\" name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\r" +
     "\n" +
@@ -18852,7 +18873,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('local_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading && true\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern-restrict=\"[^<>]*\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-pattern-restrict=\"[^<>]*\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKey nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL Key\"><input class=form-control name=UrlKey ng-model=formData.UrlKey ng-lowercase ng-pattern=\"/^[0-9a-z\\-]*$/\" placeholder={{formData.NameEn}}-{{formData.CategoryId}} maxlength=\"100\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SortBy nc-label=\"Default Sort By\" nc-template-options-path=addBrandForm/SortBy><ui-select ng-model=formData.SortBy name=SortBy search-enabled=false required><ui-select-match placeholder=\"- Select Default Sort -\">{{$select.selected.SortByName}}</ui-select-match><ui-select-choices repeat=\"item in sortBy\">{{item.SortByName}}</ui-select-choices></ui-select></div></div></div><nc-image-banner name=CategoryBannerEn data-source=formData data-key=BannerStatusEn nc-model=formData.CategoryBannerEn title=\"Upload Banner (English)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData data-key=BannerStatusTh nc-model=formData.CategoryBannerTh title=\"Upload Banner (ไทย)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerEn data-source=formData data-key=BannerSmallStatusEn nc-model=formData.CategorySmallBannerEn title=\"Upload Small Banner (English)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8></nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData data-key=BannerSmallStatusTh nc-model=formData.CategorySmallBannerTh title=\"Upload Small Banner (ไทย)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8></nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"[^<>]*\" name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\r" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\" ng-cloak><form ng-show=\"!saving && !loading && true\" class=ah-form name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern-restrict=\"[^<>]*\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-pattern-restrict=\"[^<>]*\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKey nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL Key\"><input class=form-control name=UrlKey ng-model=formData.UrlKey ng-lowercase ng-pattern=\"/^[0-9a-z\\-]+$/\" maxlength=\"100\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SortBy nc-label=\"Default Sort By\" nc-template-options-path=addBrandForm/SortBy><ui-select ng-model=formData.SortBy name=SortBy search-enabled=false required><ui-select-match placeholder=\"- Select Default Sort -\">{{$select.selected.SortByName}}</ui-select-match><ui-select-choices repeat=\"item in sortBy\">{{item.SortByName}}</ui-select-choices></ui-select></div></div></div><nc-image-banner name=CategoryBannerEn data-source=formData data-key=BannerStatusEn nc-model=formData.CategoryBannerEn title=\"Upload Banner (English)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8>1920x1080</nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData data-key=BannerStatusTh nc-model=formData.CategoryBannerTh title=\"Upload Banner (ไทย)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8>1920x1080</nc-image-banner><nc-image-banner name=CategoryBannerEn data-source=formData data-key=BannerSmallStatusEn nc-model=formData.CategorySmallBannerEn title=\"Upload Small Banner (English)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8>1600x900</nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData data-key=BannerSmallStatusTh nc-model=formData.CategorySmallBannerTh title=\"Upload Small Banner (ไทย)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8>1600x900</nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"[^<>]*\" name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\r" +
     "\n" +
     "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"[^<>]*\" name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\r" +
     "\n" +
@@ -18878,7 +18899,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('newsletter/modalAdmin',
-    "<nc-alert nc-model=alert></nc-alert><div class=\"modal-header newsletter-modal-header\"><h3 class=\"modal-title modal_title_abosolute\">Newsletter Detail</h3><div class=title_relative><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></div></div></div><div class=modal-body><form ng-show=\"!saving && !loading\" name=form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Subject nc-template-form=form.Subject nc-label=Subject><input class=form-control ng-model=formData.Subject required></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Image nc-template-form=form.Image nc-label=Image><button type=button name=Image class=\"btn btn-default\" ngf-accept=\"'.png,.jpg,.jpeg'\" ngf-select=upload($file)>Choose File</button></div><div ng-show=formData.Image nc-template=common/input/form-group-with-label nc-label=\"Image Preview\"><img ng-src={{formData.Image.Url}} class=\"img-responsive\"> <a style=display:block class=margin-top-5 ng-click=\"formData.Image=null\"><i class=\"fa-trash fa\"></i> Delete this image</a></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Description nc-template-form=form.Description nc-label=Content><textarea class=form-control ng-model=formData.Description required></textarea></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/PublishedDt nc-template-form=form.PublishedDt nc-label=\"Published Date\"><div><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.PublishedDt | datetimeTh }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=PublishedDt ng-date-before={{formData.PublishedDt}} data-ng-model=formData.PublishedDt data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'hour' }\"></ul></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/VisibleShopGroup nc-template-form=form.VisibleShopGroup nc-label=\"Allow Reader\"><ui-select ng-model=formData.VisibleShopGroup><ui-select-match>{{$select.selected.name}}</ui-select-match><ui-select-choices repeat=\"item.value as item in shopGroupOptions\">{{item.name}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/IncludeShop nc-template-form=form.IncludeShop nc-label=\"Include Shop\"><ui-select ng-model=formData.IncludeShop multiple tagging-label=\"\"><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'include')\" repeat=\"item in shops.include.data\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/ExcludeShop nc-template-form=form.ExcludeShop nc-label=\"Exclude Shop\"><ui-select ng-model=formData.ExcludeShop multiple tagging-label=\"\"><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'exclude')\" repeat=\"item in shops.exclude.data\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div></div></div><div class=col-xs-12><hr><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "<nc-alert nc-model=alert></nc-alert><div class=\"modal-header newsletter-modal-header\"><h3 class=\"modal-title modal_title_abosolute\">Newsletter Detail</h3><div class=title_relative><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></div></div></div><div class=modal-body><form ng-show=\"!saving && !loading\" name=form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Subject nc-template-form=form.Subject nc-label=Subject><input class=form-control ng-model=formData.Subject required></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Image nc-template-form=form.Image nc-label=Image><button type=button name=Image class=\"btn btn-default\" ngf-accept=\"'.png,.jpg,.jpeg'\" ngf-select=upload($file)>Choose File</button></div><div ng-show=formData.Image nc-template=common/input/form-group-with-label nc-label=\"Image Preview\"><img ng-src={{formData.Image.Url}} class=\"img-responsive\"> <a style=display:block class=margin-top-5 ng-click=\"formData.Image=null\"><i class=\"fa-trash fa\"></i> Delete this image</a></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Description nc-template-form=form.Description nc-label=Content><textarea class=form-control ng-model=formData.Description required></textarea></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/PublishedDt nc-template-form=form.PublishedDt nc-label=\"Published Date\"><div><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.PublishedDt | datetimeTh }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=PublishedDt ng-date-before={{formData.PublishedDt}} data-ng-model=formData.PublishedDt data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'hour' }\"></ul></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/ExpiredDt nc-template-form=form.ExpiredDt nc-label=\"Expired Date\"><div><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.ExpiredDt | datetimeTh }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=ExpiredDt ng-date-before={{formData.ExpiredDt}} data-ng-model=formData.ExpiredDt data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'hour' }\"></ul></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/VisibleShopGroup nc-template-form=form.VisibleShopGroup nc-label=\"Allow Reader\"><ui-select ng-model=formData.VisibleShopGroup><ui-select-match>{{$select.selected.name}}</ui-select-match><ui-select-choices repeat=\"item.value as item in shopGroupOptions\">{{item.name}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/IncludeShop nc-template-form=form.IncludeShop nc-label=\"Include Shop\"><ui-select ng-model=formData.IncludeShop multiple tagging-label=\"\"><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'include')\" repeat=\"item in shops.include.data\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/ExcludeShop nc-template-form=form.ExcludeShop nc-label=\"Exclude Shop\"><ui-select ng-model=formData.ExcludeShop multiple tagging-label=\"\"><ui-select-match>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'exclude')\" repeat=\"item in shops.exclude.data\">{{item.ShopNameEn}}</ui-select-choices></ui-select></div></div></div><div class=col-xs-12><hr><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 

@@ -73,7 +73,7 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService, Ima
 						return;
 					}
 					$scope.formData.Image = {
-						url: '/assets/img/loader.gif'
+						Url: '/assets/img/loader.gif'
 					};
 					uploader.upload($file)
 						.then(function(response) {

@@ -85,18 +85,19 @@ var permission = {
 	7: ['/admin/attributes', '/admin/attributes/add', '/admin/attributesets', '/admin/attributesets/add'],
 	8: '/admin/categories',
 	9: '/admin/sellers',
-	10: ['/admin/shops', '/admin/shops/add'],
-	11: ['/admin/accounts', '/admin/accounts/add'],
+	10: ['/admin/shops', '/admin/shops/add', '/admin/shoptypes', '/admin/shoptypes/add'],
+	11: ['/admin/accounts', '/admin/accounts/add', '/admin/roles', '/admin/roles/add'],
 	12: '/admin/coupons/global',
 	13: '/admin/coupons/seller',
 	21: '/admin/newsletters',
+	70: '/admin/products/reviews',
 
 	//Seller
 	29: '/dashboard',
 	30: '/orders',
 	32: '/returns',
 	33: '/products',
-	34: ['/products/select', '/products/add'],
+	34: ['/products/select', '/products/add', '/products/export', '/products/import', '/products/update'],
 	46: '/categories',
 	47: '/products/reviews',
 	48: '/products/images',
@@ -104,8 +105,8 @@ var permission = {
 	50: '/inventory',
 	52: '/coupons',
 	53: '/coupons/add',
-	55: '/shop/settings',
-	56: '/shop/appearance',
+	55: '/shops/settings',
+	56: '/shops/appearance',
 	57: ['/roles', '/accounts'],
 
 	//Shop
