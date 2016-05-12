@@ -1,17 +1,129 @@
 angular.module('nc')
-	.directive('ncImageBanner4', function($templateCache) {
+	.directive('ncImageBannerIcon', function($templateCache) {
 		return {
 			restrict: 'E',
 			scope: {
-				onFail: '=',
+				onFail: '=fail',
 				uploader: '=',
 				size: '@',
 				title: '@',
 				source: '=',
 				height: '@',
-				width: '@'
+				width: '@',
+				letter: '@',
+				letterx: '@',
+				subtitle: '@?'
 			},
-			transclude: true,
+			template: $templateCache.get('common/ncImageBanner6'),
+			link: function(scope) {
+				var update = function() {
+					scope.options = {
+						height: 256 * (scope.height/scope.width),
+						width: 256,
+						validateDimensionMin: [scope.width, scope.height],
+						validateDimensionMax: [scope.width, scope.height]
+					};
+				}
+				var updateSource = function() {
+					var m = scope.source.ImageEn.length;
+					var len = scope.source.Links.length;
+					if(len > m ) {
+						for (var i = 0; i < len - m; i++) {
+							scope.source.Links.pop();
+						};
+					} else if(len < m) {
+						for (var i = 0; i < m - len; i++) {
+							scope.source.Links.push({});
+						};
+					}
+				}
+				update();
+				scope.$watch('width', update);
+				scope.$watch('height', update);
+				scope.$watch('source', function() {
+					scope.source = _.defaults(scope.source, { 
+						Enabled: true,
+						ImageEn: [],
+						Links:[] 
+					});
+				});
+				scope.$watch('source.ImageEn', updateSource, true);
+			}
+		};
+	})
+	.directive('ncImageBannerVideo', function($templateCache) {
+		return {
+			restrict: 'E',
+			scope: {
+				onFail: '=fail',
+				uploader: '=',
+				size: '@',
+				title: '@',
+				source: '=',
+				height: '@',
+				width: '@',
+				letter: '@',
+				letterx: '@',
+				subtitle: '@?',
+				linktitle: '@?'
+			},
+			template: $templateCache.get('common/ncImageBanner5'),
+			link: function(scope) {
+				var update = function() {
+					scope.options = {
+						height: 256 * (scope.height/scope.width),
+						width: 256,
+						validateDimensionMin: [scope.width, scope.height],
+						validateDimensionMax: [scope.width, scope.height]
+					};
+				}
+				var updateSource = function() {
+					var m = _.max([scope.source.ImageEn.length, scope.source.ImageTh.length]);
+					var len = scope.source.Videos.length;
+					if(len > m ) {
+						for (var i = 0; i < len - m; i++) {
+							scope.source.Videos.pop();
+						};
+					} else if(len < m) {
+						for (var i = 0; i < m - len; i++) {
+							scope.source.Videos.push({});
+						};
+					}
+				}
+				update();
+				scope.$watch('width', update);
+				scope.$watch('height', update);
+				scope.$watch('source', function() {
+					scope.source = _.defaults(scope.source, { 
+						ShowPopup: false,
+						Enabled: true,
+						ImageEn:[], 
+						ImageTh:[], 
+						Videos:[] 
+					});
+				});
+				scope.$watch('source.ImageEn', updateSource, true);
+				scope.$watch('source.ImageTh', updateSource, true);
+			}
+		};
+	})
+	.directive('ncImageBannerLink', function($templateCache) {
+		return {
+			restrict: 'E',
+			scope: {
+				onFail: '=fail',
+				uploader: '=',
+				size: '@',
+				title: '@',
+				source: '=',
+				height: '@',
+				width: '@',
+				letter: '@',
+				letterx: '@',
+				noauto: '@?',
+				subtitle: '@?',
+				heading: '@?'
+			},
 			template: $templateCache.get('common/ncImageBanner4'),
 			link: function(scope) {
 				var update = function() {
@@ -22,21 +134,35 @@ angular.module('nc')
 						validateDimensionMax: [scope.width, scope.height]
 					};
 				}
+				var updateSource = function() {
+					var m = _.max([scope.source.ImageEn.length, scope.source.ImageTh.length]);
+					var len = scope.source.Links.length;
+					if(len > m ) {
+						for (var i = 0; i < len - m; i++) {
+							scope.source.Links.pop();
+						};
+					} else if(len < m) {
+						for (var i = 0; i < m - len; i++) {
+							scope.source.Links.push('');
+						};
+					}
+				}
+
 				update();
 				scope.$watch('width', update);
 				scope.$watch('height', update);
 				scope.$watch('source', function() {
-					var m = _.max(source.BannerEn.length, source.BannerTh.length)
-					if(source.BannerLinks.length < m ) {
-						for (var i = 0; i < source.BannerLinks.length - m; i++) {
-							source.BannerLinks.push('');
-						};
-					} else if(source.BannerLinks.length > m) {
-						for (var i = 0; i < m - source.BannerLinks.length; i++) {
-							source.BannerLinks.pop();
-						};
-					}
-				}, true);
+					scope.source = _.defaults(scope.source, { 
+						AutoPlay: true,
+						Enabled: true,
+						SlideDuration: 5,
+						ImageEn:[], 
+						ImageTh:[], 
+						Links: [] 
+					});
+				});
+				scope.$watch('source.ImageEn', updateSource, true);
+				scope.$watch('source.ImageTh', updateSource, true);
 			}
 		};
 	})
@@ -160,13 +286,13 @@ angular.module('nc')
 
 									if (scope.options.validateDimensionMin && (img.width < minW || img.height < minH)) {
 										//min width error
-										scope.onfail('ondimension', [img.width, img.height]);
+										scope.onfail('ondimension', [img.width, img.height], [minW, minH]);
 										return;
 									}
 
 									if (scope.options.validateDimensionMax && (img.width > maxW || img.height > maxH)) {
 										//min width error
-										scope.onfail('ondimension', [img.width, img.height]);
+										scope.onfail('ondimension', [img.width, img.height], [maxW, maxH]);
 										return;
 									}
 
@@ -233,14 +359,14 @@ angular.module('nc')
 
 								if (scope.options.validateDimensionMin && (img.width < minW || img.height < minH)) {
 									//min width error
-									scope.onfail('ondimension', [img.width, img.height]);
+									scope.onfail('ondimension', [img.width, img.height], [minW, minH]);
 									console.log(img.width, img.height, minW, minH);
 									return;
 								}
 
 								if (scope.options.validateDimensionMax && (img.width > maxW || img.height > maxH)) {
 									//min width error
-									scope.onfail('ondimension', [img.width, img.height]);
+									scope.onfail('ondimension', [img.width, img.height], [maxW, maxH]);
 									console.log(img.width, img.height, maxW, maxH);
 									return;
 								}

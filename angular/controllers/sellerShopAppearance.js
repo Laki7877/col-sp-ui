@@ -1,38 +1,48 @@
-module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, config, util, common) {
+module.exports = function($scope, ShopAppearanceService, Product, ImageService, NcAlert, config, util, common, $timeout, $q) {
+	'ngInject';
 	$scope.form = {};
-	$scope.formData = {};
+	$scope.formData = { data: {} };
 	$scope.alert = new NcAlert();
 	$scope.saving = false;
 	$scope.loading = true;
-	$scope.themes = [];
-
+	$scope.products = [];
+	$scope.X = {  //P'M's requested X
+		width: 1920,
+		height: 1080
+	};
+	$scope.Y = {  //P'M's requested Y
+		width: 1000,
+		height: 1000
+	};
+	$scope.themes = [{
+		ThemeName: 'Basic Template',
+		ThemeId: 0
+	}, {
+		ThemeName: 'Robinson',
+		ThemeId: 1
+	}, {
+		ThemeName: 'Supersport',
+		ThemeId: 2
+	}];
+/*
+	$timeout(function() {
+		$scope.formData.data.BannerA.ImageEn.push({});
+		$scope.formData.data.BannerA.ImageEn.push({});
+		$scope.formData.data.VideoI.ImageEn.push({});
+		$scope.formData.data.VideoI.ImageEn.push({});
+		$scope.formData.data.VideoI.ImageTh.push({});
+	}, 1000);
+*/
 	//Load theme
-	ShopAppearanceService.getThemes()
+	/*ShopAppearanceService.getThemes()
 		.then(function(data) {
 			$scope.themes = data;
+			console.log(data);
 		});
+	*/
 
-	//Load ShopAppearance
-	ShopAppearanceService.list()
-		.then(function(data) {
-			$scope.formData = data;
-			$scope.selectTheme($scope.formData.ThemeId);
-		});
 
-	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
-		data: { IsLogo: true }
-	});
-
-	$scope.init = function() {
-		$scope.loading = true;
-		ShopAppearanceService.list()
-			.then(function(data) {
-				$scope.formData = ShopAppearanceService.deserialize(data);
-			})
-			.finally(function() {
-				$scope.loading = false;
-			});
-	};
+	/*
 	$scope.selectTheme = function(id) {
 		ShopAppearanceService.getTheme(id)
 			.then(function(data) {
@@ -43,7 +53,7 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 				$scope.thumbUploader = ImageService.getUploaderFn('/ShopImages');
 
 				// Readjust components if any
-				/*if($scope.hasComponent('Banner')) {
+				if($scope.hasComponent('Banner')) {
 					var diff = $scope.formData.Banner.Images.length - $scope.getComponent('Banner').Count;
 					for (var i = 0; i < diff; i++) {
 						$scope.formData.Banner.Images.pop();
@@ -62,9 +72,9 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 					for (var i = 0; i < $scope.getComponent('Video').Count; i++) {
 						$scope.formData.Videos.push(videos[i] || {});
 					};
-				}*/
+				}
 			});
-	};
+	};*/
 	/*
 	$scope.hasComponent = function(name) {
 		if(_.isNil($scope.theme)) {
@@ -84,6 +94,34 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 			});
 		}
 	};*/
+
+	$scope.uploader = ImageService.getUploaderFn('/ShopImages');
+
+	$scope.init = function() {
+		$scope.loading = true;
+		ShopAppearanceService.list()
+			.then(function(data) {
+				$scope.formData = ShopAppearanceService.deserialize(data);
+			})
+			.finally(function() {
+				$scope.loading = false;
+			});
+	};
+	$scope.getProducts = function(search) {
+		Product.list({
+			_limit: 16,
+			searchText: search
+		}).then(function(data) {
+			$scope.products = data.data;
+		});
+	}
+	$scope.init();
+	$scope.getProducts('');
+	$scope.$watch('formData.themeId', function(a,b) {
+		if(a != b) {
+			$scope.formData.data = {};
+		}
+	})
 	$scope.save = function() {
 		if($scope.saving) return;
 		
@@ -107,12 +145,10 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 			$scope.alert.error(util.saveAlertError());
 		}
 	}
-	$scope.uploadThumbnail = function(file, video) {
+	$scope.upload = function(file, video) {
 		if(_.isNil(file)) {
 			return;
 		}
-		video.Thumbnail = '/assets/img/loader.gif';
-
 		$scope.thumbUploader.upload(file)
 			.then(function(response) {
 				video.Thumbnail = response.data.Url;
@@ -136,12 +172,13 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 				$scope.alert.error(common.getError(err.data));
 			});
 	};
-	$scope.uploadBannerFail = function(e, response) {
-		if(e == 'onmaxsize') {
-			$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+	$scope.uploadFail = function(e, arg1, arg2) {
+		$scope.alert.close();
+		if(e == 'ondimension') {
+			$scope.alert.error('Image must be ' + arg2[0] + 'x' + arg2[1] + ' pixels');
 		}
 		else {
-			$scope.alert.error(common.getError(response.data));
+			$scope.alert.error('Fail to upload photo');
 		}
 	};
 };

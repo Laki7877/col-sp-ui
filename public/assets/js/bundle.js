@@ -257,7 +257,7 @@ var _rollbarConfig = {
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\abstractPendingProductGroup.js":6,"./controllers\\adminAccount.js":7,"./controllers\\adminAccountAdd.js":8,"./controllers\\adminAttribute.js":9,"./controllers\\adminAttributeAdd.js":10,"./controllers\\adminAttributeSet.js":11,"./controllers\\adminAttributeSetAdd.js":12,"./controllers\\adminBrand.js":13,"./controllers\\adminBrandAdd.js":14,"./controllers\\adminCategory.js":15,"./controllers\\adminGlobalCoupon.js":16,"./controllers\\adminGlobalCouponAdd.js":17,"./controllers\\adminLogin.js":18,"./controllers\\adminMasterProduct.js":19,"./controllers\\adminMasterProductAdd.js":20,"./controllers\\adminNewsletter.js":21,"./controllers\\adminOnTopCreditAdd.js":22,"./controllers\\adminOnTopCreditList.js":23,"./controllers\\adminPendingProduct.js":24,"./controllers\\adminPendingProductGroupAdd.js":25,"./controllers\\adminProductApprovalDetail.js":26,"./controllers\\adminProductApprovalList.js":27,"./controllers\\adminProductDetail.js":28,"./controllers\\adminProductList.js":29,"./controllers\\adminProductReview.js":30,"./controllers\\adminRole.js":31,"./controllers\\adminRoleAdd.js":32,"./controllers\\adminSellerAccount.js":33,"./controllers\\adminSellerCoupon.js":34,"./controllers\\adminSellerCouponAdd.js":35,"./controllers\\adminShop.js":36,"./controllers\\adminShopAdd.js":37,"./controllers\\adminShoptype.js":38,"./controllers\\adminShoptypeAdd.js":39,"./controllers\\index.js":40,"./controllers\\localCategory.js":41,"./controllers\\login.js":42,"./controllers\\productAddSelectCategory.js":43,"./controllers\\productExport.js":44,"./controllers\\productImageList.js":45,"./controllers\\productImageManagement.js":46,"./controllers\\productImport.js":47,"./controllers\\productList.js":48,"./controllers\\productListLocalCategory.js":49,"./controllers\\productReview.js":50,"./controllers\\root.js":51,"./controllers\\sellerAccount.js":52,"./controllers\\sellerAccountAdd.js":53,"./controllers\\sellerCoupon.js":54,"./controllers\\sellerCouponAdd.js":55,"./controllers\\sellerDashboard.js":56,"./controllers\\sellerInventoryList.js":57,"./controllers\\sellerNewsletter.js":58,"./controllers\\sellerOnboarding.js":59,"./controllers\\sellerOrder.js":60,"./controllers\\sellerOrderAdd.js":61,"./controllers\\sellerOrderShippingList.js":62,"./controllers\\sellerPendingProduct.js":63,"./controllers\\sellerPendingProductGroupAdd.js":64,"./controllers\\sellerProductDetail.js":65,"./controllers\\sellerReturnRequest.js":66,"./controllers\\sellerReturnRequestAdd.js":67,"./controllers\\sellerRole.js":68,"./controllers\\sellerRoleAdd.js":69,"./controllers\\sellerShopAppearance.js":70,"./controllers\\sellerShopSetting.js":71,"./controllers\\test.js":72,"./directives\\ncTradableSelect.js":73,"./directives\\ngCkeditor.js":74,"./directives\\ngDateBefore.js":75,"./directives\\ngDelegate.js":76,"./directives\\ngLowercase.js":77,"./directives\\ngMatch.js":78,"./directives\\ngMaxnumber.js":79,"./directives\\ngMinnumber.js":80,"./directives\\ngPatternRestrict.js":81,"./directives\\ngPermission.js":82,"./directives\\ngSlideToggle.js":83,"./directives\\ngTemplate.js":84,"./directives\\ngUppercase.js":85,"./directives\\popoverAny.js":86,"./filters\\capitalize.js":87,"./filters\\exclude.js":88,"./filters\\excludeCategory.js":89,"./filters\\html.js":90,"./filters\\importGuidelineExample.js":91,"./filters\\leadingzero.js":92,"./filters\\ordinal.js":93,"./filters\\slice.js":94,"./filters\\truncate.js":95,"./filters\\truth.js":96,"./filters\\variantValue.js":97,"./helpers\\base64.js":98,"./helpers\\common.js":99,"./helpers\\storage.js":100,"./helpers\\util.js":101,"./helpers\\variantPair.js":102,"./iefix.js":103,"./modules/angular-draggable":104,"./modules/angular-print":105,"./modules/angular-scroll":106,"./modules/nc":137,"./modules/product-detail":146,"./modules/schematics":148,"./modules/ume-select":160,"./route":162,"./services\\Dashboard.js":163,"./services\\OnTopCredit.js":164,"./services\\OnTopCreditService.js":165,"./services\\Onboarding.js":166,"./services\\adminAccountService.js":167,"./services\\adminMasterProductService.js":168,"./services\\adminPermissionService.js":169,"./services\\adminRoleService.js":170,"./services\\adminShopService.js":171,"./services\\adminShoptypeService.js":172,"./services\\attribute.js":173,"./services\\attributeService.js":174,"./services\\attributeSet.js":175,"./services\\attributeSetService.js":176,"./services\\blocker.js":177,"./services\\brand.js":178,"./services\\brandService.js":179,"./services\\category.js":180,"./services\\coupon.js":181,"./services\\credential.js":182,"./services\\exceptionHandler.js":183,"./services\\fileService.js":184,"./services\\globalCategory.js":185,"./services\\globalCategoryService.js":186,"./services\\globalCouponService.js":187,"./services\\image.js":188,"./services\\imageService.js":189,"./services\\inventoryService.js":190,"./services\\knownException.js":191,"./services\\localCategory.js":192,"./services\\localCategoryService.js":193,"./services\\newsletterService.js":194,"./services\\orderService.js":195,"./services\\permissionService.js":196,"./services\\product.js":197,"./services\\productReviewService.js":198,"./services\\productTempService.js":199,"./services\\returnRequestService.js":200,"./services\\sellerAccountService.js":201,"./services\\sellerCouponService.js":202,"./services\\sellerPermissionService.js":203,"./services\\sellerRoleService.js":204,"./services\\shippingService.js":205,"./services\\shop.js":206,"./services\\shopAppearanceService.js":207,"./services\\shopPermissionService.js":208,"./services\\shopProfileService.js":209,"./services\\shopService.js":210,"./template":231,"./template-options\\PromotionForm.js":211,"./template-options\\addAttributeForm.js":212,"./template-options\\addAttributeSetForm.js":213,"./template-options\\addBrandForm.js":214,"./template-options\\addCategoryForm.js":215,"./template-options\\addMasterProductForm.js":216,"./template-options\\addNewsletterForm.js":217,"./template-options\\addProductForm.js":218,"./template-options\\addRoleForm.js":219,"./template-options\\addShopAccountForm.js":220,"./template-options\\addShopAppearanceForm.js":221,"./template-options\\addShopTypeForm.js":222,"./template-options\\adminApproveForm.js":223,"./template-options\\couponForm.js":224,"./template-options\\createGroupVariant.js":225,"./template-options\\genericForm.js":226,"./template-options\\productExport.js":227,"./template-options\\productImport.js":228,"./template-options\\searchForm.js":229,"./template-options\\shopSettingForm.js":230,"angular":279,"angular-animate":233,"angular-base64":234,"angular-bootstrap-datetimepicker":236,"angular-chart.js":237,"angular-clipboard":239,"angular-cookies":241,"angular-drag-and-drop-lists":242,"angular-file-upload":243,"angular-input-masks":244,"angular-sanitize":271,"angular-scroll":273,"angular-ui-bootstrap":275,"angular-ui-tree":277,"lodash":282,"ng-file-upload":284,"pluralize":285,"skeemas":286,"ui-select/dist/select.js":300}],2:[function(require,module,exports){
+},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\abstractPendingProductGroup.js":6,"./controllers\\adminAccount.js":7,"./controllers\\adminAccountAdd.js":8,"./controllers\\adminAttribute.js":9,"./controllers\\adminAttributeAdd.js":10,"./controllers\\adminAttributeSet.js":11,"./controllers\\adminAttributeSetAdd.js":12,"./controllers\\adminBrand.js":13,"./controllers\\adminBrandAdd.js":14,"./controllers\\adminCategory.js":15,"./controllers\\adminGlobalCoupon.js":16,"./controllers\\adminGlobalCouponAdd.js":17,"./controllers\\adminLogin.js":18,"./controllers\\adminMasterProduct.js":19,"./controllers\\adminMasterProductAdd.js":20,"./controllers\\adminNewsletter.js":21,"./controllers\\adminOnTopCreditAdd.js":22,"./controllers\\adminOnTopCreditList.js":23,"./controllers\\adminPendingProduct.js":24,"./controllers\\adminPendingProductGroupAdd.js":25,"./controllers\\adminProductApprovalDetail.js":26,"./controllers\\adminProductApprovalList.js":27,"./controllers\\adminProductDetail.js":28,"./controllers\\adminProductList.js":29,"./controllers\\adminProductReview.js":30,"./controllers\\adminRole.js":31,"./controllers\\adminRoleAdd.js":32,"./controllers\\adminSellerAccount.js":33,"./controllers\\adminSellerCoupon.js":34,"./controllers\\adminSellerCouponAdd.js":35,"./controllers\\adminShop.js":36,"./controllers\\adminShopAdd.js":37,"./controllers\\adminShoptype.js":38,"./controllers\\adminShoptypeAdd.js":39,"./controllers\\index.js":40,"./controllers\\localCategory.js":41,"./controllers\\login.js":42,"./controllers\\productAddSelectCategory.js":43,"./controllers\\productExport.js":44,"./controllers\\productImageList.js":45,"./controllers\\productImageManagement.js":46,"./controllers\\productImport.js":47,"./controllers\\productList.js":48,"./controllers\\productListLocalCategory.js":49,"./controllers\\productReview.js":50,"./controllers\\root.js":51,"./controllers\\sellerAccount.js":52,"./controllers\\sellerAccountAdd.js":53,"./controllers\\sellerCoupon.js":54,"./controllers\\sellerCouponAdd.js":55,"./controllers\\sellerDashboard.js":56,"./controllers\\sellerInventoryList.js":57,"./controllers\\sellerNewsletter.js":58,"./controllers\\sellerOnboarding.js":59,"./controllers\\sellerOrder.js":60,"./controllers\\sellerOrderAdd.js":61,"./controllers\\sellerOrderShippingList.js":62,"./controllers\\sellerPendingProduct.js":63,"./controllers\\sellerPendingProductGroupAdd.js":64,"./controllers\\sellerProductDetail.js":65,"./controllers\\sellerReturnRequest.js":66,"./controllers\\sellerReturnRequestAdd.js":67,"./controllers\\sellerRole.js":68,"./controllers\\sellerRoleAdd.js":69,"./controllers\\sellerShopAppearance.js":70,"./controllers\\sellerShopSetting.js":71,"./controllers\\test.js":72,"./directives\\ncTradableSelect.js":73,"./directives\\ngCkeditor.js":74,"./directives\\ngDateBefore.js":75,"./directives\\ngDelegate.js":76,"./directives\\ngLowercase.js":77,"./directives\\ngMatch.js":78,"./directives\\ngMaxnumber.js":79,"./directives\\ngMinnumber.js":80,"./directives\\ngPatternRestrict.js":81,"./directives\\ngPermission.js":82,"./directives\\ngSlideToggle.js":83,"./directives\\ngTemplate.js":84,"./directives\\ngUppercase.js":85,"./directives\\popoverAny.js":86,"./filters\\capitalize.js":87,"./filters\\exclude.js":88,"./filters\\excludeCategory.js":89,"./filters\\html.js":90,"./filters\\importGuidelineExample.js":91,"./filters\\leadingzero.js":92,"./filters\\ordinal.js":93,"./filters\\slice.js":94,"./filters\\truncate.js":95,"./filters\\truth.js":96,"./filters\\variantValue.js":97,"./helpers\\base64.js":98,"./helpers\\common.js":99,"./helpers\\storage.js":100,"./helpers\\util.js":101,"./helpers\\variantPair.js":102,"./iefix.js":103,"./modules/angular-draggable":104,"./modules/angular-print":105,"./modules/angular-scroll":106,"./modules/nc":138,"./modules/product-detail":147,"./modules/schematics":149,"./modules/ume-select":161,"./route":163,"./services\\Dashboard.js":164,"./services\\OnTopCredit.js":165,"./services\\OnTopCreditService.js":166,"./services\\Onboarding.js":167,"./services\\adminAccountService.js":168,"./services\\adminMasterProductService.js":169,"./services\\adminPermissionService.js":170,"./services\\adminRoleService.js":171,"./services\\adminShopService.js":172,"./services\\adminShoptypeService.js":173,"./services\\attribute.js":174,"./services\\attributeService.js":175,"./services\\attributeSet.js":176,"./services\\attributeSetService.js":177,"./services\\blocker.js":178,"./services\\brand.js":179,"./services\\brandService.js":180,"./services\\category.js":181,"./services\\coupon.js":182,"./services\\credential.js":183,"./services\\exceptionHandler.js":184,"./services\\fileService.js":185,"./services\\globalCategory.js":186,"./services\\globalCategoryService.js":187,"./services\\globalCouponService.js":188,"./services\\image.js":189,"./services\\imageService.js":190,"./services\\inventoryService.js":191,"./services\\knownException.js":192,"./services\\localCategory.js":193,"./services\\localCategoryService.js":194,"./services\\newsletterService.js":195,"./services\\orderService.js":196,"./services\\permissionService.js":197,"./services\\product.js":198,"./services\\productReviewService.js":199,"./services\\productTempService.js":200,"./services\\returnRequestService.js":201,"./services\\sellerAccountService.js":202,"./services\\sellerCouponService.js":203,"./services\\sellerPermissionService.js":204,"./services\\sellerRoleService.js":205,"./services\\shippingService.js":206,"./services\\shop.js":207,"./services\\shopAppearanceService.js":208,"./services\\shopPermissionService.js":209,"./services\\shopProfileService.js":210,"./services\\shopService.js":211,"./template":232,"./template-options\\PromotionForm.js":212,"./template-options\\addAttributeForm.js":213,"./template-options\\addAttributeSetForm.js":214,"./template-options\\addBrandForm.js":215,"./template-options\\addCategoryForm.js":216,"./template-options\\addMasterProductForm.js":217,"./template-options\\addNewsletterForm.js":218,"./template-options\\addProductForm.js":219,"./template-options\\addRoleForm.js":220,"./template-options\\addShopAccountForm.js":221,"./template-options\\addShopAppearanceForm.js":222,"./template-options\\addShopTypeForm.js":223,"./template-options\\adminApproveForm.js":224,"./template-options\\couponForm.js":225,"./template-options\\createGroupVariant.js":226,"./template-options\\genericForm.js":227,"./template-options\\productExport.js":228,"./template-options\\productImport.js":229,"./template-options\\searchForm.js":230,"./template-options\\shopSettingForm.js":231,"angular":280,"angular-animate":234,"angular-base64":235,"angular-bootstrap-datetimepicker":237,"angular-chart.js":238,"angular-clipboard":240,"angular-cookies":242,"angular-drag-and-drop-lists":243,"angular-file-upload":244,"angular-input-masks":245,"angular-sanitize":272,"angular-scroll":274,"angular-ui-bootstrap":276,"angular-ui-tree":278,"lodash":283,"ng-file-upload":285,"pluralize":286,"skeemas":287,"ui-select/dist/select.js":301}],2:[function(require,module,exports){
 module.exports = {
 	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
@@ -2449,7 +2449,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "NCConfirm", function ($
     }
 
 }];
-},{"angular":279}],27:[function(require,module,exports){
+},{"angular":280}],27:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "config", "util", function($scope, $controller, Product, config, util) {
 	'ngInject';
     $scope.asStatus = Product.getStatus;
@@ -2529,7 +2529,7 @@ module.exports = ["$scope", "$controller", function ($scope, $controller) {
     });
 
 }];
-},{"angular":279}],29:[function(require,module,exports){
+},{"angular":280}],29:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "common", "config", function($scope, $controller, Product, common, config) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
@@ -3525,7 +3525,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	});
 }];
 
-},{"angular":279}],44:[function(require,module,exports){
+},{"angular":280}],44:[function(require,module,exports){
 module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$filter", function ($scope, Product, AttributeSet, NcAlert, $base64, $filter) {
 	'ngInject';
 	$scope.ProductList = [];
@@ -4512,6 +4512,10 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
 	$rootScope._ = _;
   $rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
+  
+  console.log('PROFILE', $rootScope.Profile);
+  console.log('IMPOSTER', $rootScope.Imposter);
+
   /*
   *  range {array} - set of shop group that is permitted in the current shop group policy 
   */ 
@@ -6015,7 +6019,7 @@ module.exports = ["$scope", "$controller", "storage", function($scope, $controll
 
 }];
 
-},{"angular":279}],66:[function(require,module,exports){
+},{"angular":280}],66:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "$uibModal", "ReturnRequestService", "config", function($scope, $controller, $uibModal, ReturnRequestService, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -6179,41 +6183,51 @@ module.exports = ["$scope", "$controller", "SellerRoleService", "SellerPermissio
 	};
 }];
 },{}],70:[function(require,module,exports){
-module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, config, util, common) {
+module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", "NcAlert", "config", "util", "common", "$timeout", "$q", function($scope, ShopAppearanceService, Product, ImageService, NcAlert, config, util, common, $timeout, $q) {
+	'ngInject';
 	$scope.form = {};
-	$scope.formData = {};
+	$scope.formData = { data: {} };
 	$scope.alert = new NcAlert();
 	$scope.saving = false;
 	$scope.loading = true;
-	$scope.themes = [];
-
+	$scope.products = [];
+	$scope.X = {  //P'M's requested X
+		width: 1920,
+		height: 1080
+	};
+	$scope.Y = {  //P'M's requested Y
+		width: 1000,
+		height: 1000
+	};
+	$scope.themes = [{
+		ThemeName: 'Basic Template',
+		ThemeId: 0
+	}, {
+		ThemeName: 'Robinson',
+		ThemeId: 1
+	}, {
+		ThemeName: 'Supersport',
+		ThemeId: 2
+	}];
+/*
+	$timeout(function() {
+		$scope.formData.data.BannerA.ImageEn.push({});
+		$scope.formData.data.BannerA.ImageEn.push({});
+		$scope.formData.data.VideoI.ImageEn.push({});
+		$scope.formData.data.VideoI.ImageEn.push({});
+		$scope.formData.data.VideoI.ImageTh.push({});
+	}, 1000);
+*/
 	//Load theme
-	ShopAppearanceService.getThemes()
+	/*ShopAppearanceService.getThemes()
 		.then(function(data) {
 			$scope.themes = data;
+			console.log(data);
 		});
+	*/
 
-	//Load ShopAppearance
-	ShopAppearanceService.list()
-		.then(function(data) {
-			$scope.formData = data;
-			$scope.selectTheme($scope.formData.ThemeId);
-		});
 
-	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
-		data: { IsLogo: true }
-	});
-
-	$scope.init = function() {
-		$scope.loading = true;
-		ShopAppearanceService.list()
-			.then(function(data) {
-				$scope.formData = ShopAppearanceService.deserialize(data);
-			})
-			.finally(function() {
-				$scope.loading = false;
-			});
-	};
+	/*
 	$scope.selectTheme = function(id) {
 		ShopAppearanceService.getTheme(id)
 			.then(function(data) {
@@ -6245,7 +6259,8 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 					};
 				}
 			});
-	};
+	};*/
+	/*
 	$scope.hasComponent = function(name) {
 		if(_.isNil($scope.theme)) {
 			return false;
@@ -6263,7 +6278,35 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 				return e.ComponentName == name;
 			});
 		}
+	};*/
+
+	$scope.uploader = ImageService.getUploaderFn('/ShopImages');
+
+	$scope.init = function() {
+		$scope.loading = true;
+		ShopAppearanceService.list()
+			.then(function(data) {
+				$scope.formData = ShopAppearanceService.deserialize(data);
+			})
+			.finally(function() {
+				$scope.loading = false;
+			});
 	};
+	$scope.getProducts = function(search) {
+		Product.list({
+			_limit: 16,
+			searchText: search
+		}).then(function(data) {
+			$scope.products = data.data;
+		});
+	}
+	$scope.init();
+	$scope.getProducts('');
+	$scope.$watch('formData.themeId', function(a,b) {
+		if(a != b) {
+			$scope.formData.data = {};
+		}
+	})
 	$scope.save = function() {
 		if($scope.saving) return;
 		
@@ -6275,7 +6318,6 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 			ShopAppearanceService.updateAll(ShopAppearanceService.serialize($scope.formData))
 				.then(function(data) {
 					$scope.formData = ShopAppearanceService.deserialize(data);
-					$scope.alert.success('Successfully Saved.');
 					$scope.form.$setPristine(true);
 				}, function(err) {
 					$scope.alert.error(common.getError(err));
@@ -6288,12 +6330,10 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 			$scope.alert.error(util.saveAlertError());
 		}
 	}
-	$scope.uploadThumbnail = function(file, video) {
+	$scope.upload = function(file, video) {
 		if(_.isNil(file)) {
 			return;
 		}
-		video.Thumbnail = '/assets/img/loader.gif';
-
 		$scope.thumbUploader.upload(file)
 			.then(function(response) {
 				video.Thumbnail = response.data.Url;
@@ -6317,15 +6357,16 @@ module.exports = function($scope, ShopAppearanceService, ImageService, NcAlert, 
 				$scope.alert.error(common.getError(err.data));
 			});
 	};
-	$scope.uploadBannerFail = function(e, response) {
-		if(e == 'onmaxsize') {
-			$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+	$scope.uploadFail = function(e, arg1, arg2) {
+		$scope.alert.close();
+		if(e == 'ondimension') {
+			$scope.alert.error('Image must be ' + arg2[0] + 'x' + arg2[1] + ' pixels');
 		}
 		else {
-			$scope.alert.error(common.getError(response.data));
+			$scope.alert.error('Fail to upload photo');
 		}
 	};
-};
+}];
 },{}],71:[function(require,module,exports){
 module.exports = function($rootScope, $scope, $controller, ShopService, ShopProfileService, ImageService, Onboarding, NcAlert, common, config, util, storage) {
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
@@ -6661,7 +6702,7 @@ module.exports = [function() {
 		}
 	};
 }];
-},{"angular":279}],77:[function(require,module,exports){
+},{"angular":280}],77:[function(require,module,exports){
 module.exports = ["$parse", function ($parse) {
     'ngInject';
     return {
@@ -7163,7 +7204,7 @@ module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownE
         }
     };
 }];
-},{"angular":279}],85:[function(require,module,exports){
+},{"angular":280}],85:[function(require,module,exports){
 module.exports = ["$parse", function ($parse) {
     'ngInject';
     return {
@@ -7215,7 +7256,7 @@ module.exports = ['$document', '$window', function($document, $window) {
 		}
 	};
 }];
-},{"angular":279}],87:[function(require,module,exports){
+},{"angular":280}],87:[function(require,module,exports){
 module.exports = [function() {
   return function(input, scope) {
     if (input!=null)
@@ -7258,7 +7299,7 @@ module.exports = [function() {
      });
   }
 }];
-},{"angular":279}],89:[function(require,module,exports){
+},{"angular":280}],89:[function(require,module,exports){
 module.exports = [function() {
   
 var search = function(catId, tmp) {
@@ -7388,7 +7429,7 @@ module.exports = [function() {
   	return input;
   }
 }];
-},{"angular":279}],94:[function(require,module,exports){
+},{"angular":280}],94:[function(require,module,exports){
 /*
  * Get slice or subarray of array
  */
@@ -7445,7 +7486,7 @@ module.exports = [function() {
      return i;
   }
 }];
-},{"angular":279}],97:[function(require,module,exports){
+},{"angular":280}],97:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return function(value) {
@@ -9891,6 +9932,123 @@ angular.module('nc')
 	}])
 },{}],113:[function(require,module,exports){
 angular.module('nc')
+	.directive('ncTextareas', ["$templateCache", function($templateCache) {
+		return {
+			restrict: 'E',
+			scope: {
+				source: '=',
+				title: '@',
+				letter: '@',
+				size: '@'
+			},
+			template: $templateCache.get('common/ncTextareas'),
+			link: function(scope) {
+				scope.$watch('source', function() {
+					if(!scope.source) {
+						scope.source = _.defaults(scope.source, {
+							Enabled: true
+						})
+					}
+				})
+				scope.$watch('size', function(d) {
+					if(!_.isNil(d)) {
+						scope.source.Texts = [];
+						for (var i = 0; i < d; i++) {
+							scope.source.Texts.push({});
+						};
+					}
+				})
+			}
+		}
+	}])
+	.directive('ncProductLayout', ["$templateCache", function($templateCache) {
+		return {
+			restrict: 'E',
+			scope: {
+				source: '=',
+				products: '=',
+				refresh: '=',
+				title: '@',
+				letter: '@',
+				letterx: '@?',
+				subtitle: '@?'
+			},
+			template: $templateCache.get('common/ncProductLayout'),
+			link: function(scope) {
+				scope.$watch('source', function() {
+					if(!scope.source) {
+						scope.source = _.defaults(scope.source, {
+							Enabled: true
+						})
+					}
+				})
+			}
+		}
+	}])
+	.directive('ncTextLink', ["$templateCache", function($templateCache) {
+		return {
+			restrict: 'E',
+			scope: {
+				source: '=',
+				title: '@',
+				letter: '@',
+				letterx: '@'
+			},
+			template: $templateCache.get('common/ncTextLink'),
+			link: function(scope) {
+				scope.$watch('source', function() {
+					if(!scope.source) {
+						scope.source = _.defaults(scope.source, {
+							Enabled: true
+						})
+					}
+				})
+			}
+		}
+	}])
+	.directive('ncImageLinks', ["$templateCache", function($templateCache) {
+		return {
+			restrict: 'E',
+			scope: {
+				source: '=',
+				title: '@',
+				letter: '@',
+				uploader: '=', //return promise
+				fail: '=',
+				size: '@'
+			},
+			template: $templateCache.get('common/ncImageLinks'),
+			link: function(scope) {
+				scope.$watch('source', function() {
+					if(!scope.source) {
+						scope.source = _.defaults(scope.source, {
+							Enabled: true
+						})
+					}
+				});
+				scope.$watch('size', function(d) {
+					if(!_.isNil(d)) {
+						scope.source.Images = [];
+						for (var i = 0; i < d; i++) {
+							scope.source.Images.push({
+								ImageEn: {},
+								ImageTh: {}
+							});
+						};
+					}
+				})
+				scope.upload = function($file, image) {
+					scope.uploader.upload($file).then(function(data) {
+						image = _.extend(image, data.data);
+					}, function(err) {
+						scope.fail(err);
+					});
+				}
+			}
+		}
+	}])
+},{}],114:[function(require,module,exports){
+angular.module('nc')
 	.factory('NCConfirm', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		var ConfirmationDialog = function (line1, line2, yesAction, noAction) {
             var modalInstance = $uibModal.open({
@@ -9924,7 +10082,7 @@ angular.module('nc')
         
         return ConfirmationDialog;
 	}]);
-},{}],114:[function(require,module,exports){
+},{}],115:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncDateRange', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse) {
@@ -9986,7 +10144,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":279}],115:[function(require,module,exports){
+},{"angular":280}],116:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncDefaultValue', function() {
 		return {
@@ -10003,7 +10161,7 @@ angular.module('nc')
 			}
 		};
 	});
-},{}],116:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEmpty', ["$templateCache", function($templateCache) {
 		return {
@@ -10017,7 +10175,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],117:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEye', ["$templateCache", function($templateCache) {
 		return {
@@ -10035,7 +10193,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],118:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncFilter', ["$templateCache", function($templateCache) {
 		return {
@@ -10057,8 +10215,175 @@ angular.module('nc')
 			}
 		}
 	}])
-},{}],119:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 angular.module('nc')
+	.directive('ncImageBannerIcon', ["$templateCache", function($templateCache) {
+		return {
+			restrict: 'E',
+			scope: {
+				onFail: '=fail',
+				uploader: '=',
+				size: '@',
+				title: '@',
+				source: '=',
+				height: '@',
+				width: '@',
+				letter: '@',
+				letterx: '@',
+				subtitle: '@?'
+			},
+			template: $templateCache.get('common/ncImageBanner6'),
+			link: function(scope) {
+				var update = function() {
+					scope.options = {
+						height: 256 * (scope.height/scope.width),
+						width: 256,
+						validateDimensionMin: [scope.width, scope.height],
+						validateDimensionMax: [scope.width, scope.height]
+					};
+				}
+				var updateSource = function() {
+					var m = scope.source.ImageEn.length;
+					var len = scope.source.Links.length;
+					if(len > m ) {
+						for (var i = 0; i < len - m; i++) {
+							scope.source.Links.pop();
+						};
+					} else if(len < m) {
+						for (var i = 0; i < m - len; i++) {
+							scope.source.Links.push({});
+						};
+					}
+				}
+				update();
+				scope.$watch('width', update);
+				scope.$watch('height', update);
+				scope.$watch('source', function() {
+					scope.source = _.defaults(scope.source, { 
+						Enabled: true,
+						ImageEn: [],
+						Links:[] 
+					});
+				});
+				scope.$watch('source.ImageEn', updateSource, true);
+			}
+		};
+	}])
+	.directive('ncImageBannerVideo', ["$templateCache", function($templateCache) {
+		return {
+			restrict: 'E',
+			scope: {
+				onFail: '=fail',
+				uploader: '=',
+				size: '@',
+				title: '@',
+				source: '=',
+				height: '@',
+				width: '@',
+				letter: '@',
+				letterx: '@',
+				subtitle: '@?',
+				linktitle: '@?'
+			},
+			template: $templateCache.get('common/ncImageBanner5'),
+			link: function(scope) {
+				var update = function() {
+					scope.options = {
+						height: 256 * (scope.height/scope.width),
+						width: 256,
+						validateDimensionMin: [scope.width, scope.height],
+						validateDimensionMax: [scope.width, scope.height]
+					};
+				}
+				var updateSource = function() {
+					var m = _.max([scope.source.ImageEn.length, scope.source.ImageTh.length]);
+					var len = scope.source.Videos.length;
+					if(len > m ) {
+						for (var i = 0; i < len - m; i++) {
+							scope.source.Videos.pop();
+						};
+					} else if(len < m) {
+						for (var i = 0; i < m - len; i++) {
+							scope.source.Videos.push({});
+						};
+					}
+				}
+				update();
+				scope.$watch('width', update);
+				scope.$watch('height', update);
+				scope.$watch('source', function() {
+					scope.source = _.defaults(scope.source, { 
+						ShowPopup: false,
+						Enabled: true,
+						ImageEn:[], 
+						ImageTh:[], 
+						Videos:[] 
+					});
+				});
+				scope.$watch('source.ImageEn', updateSource, true);
+				scope.$watch('source.ImageTh', updateSource, true);
+			}
+		};
+	}])
+	.directive('ncImageBannerLink', ["$templateCache", function($templateCache) {
+		return {
+			restrict: 'E',
+			scope: {
+				onFail: '=fail',
+				uploader: '=',
+				size: '@',
+				title: '@',
+				source: '=',
+				height: '@',
+				width: '@',
+				letter: '@',
+				letterx: '@',
+				noauto: '@?',
+				subtitle: '@?',
+				heading: '@?'
+			},
+			template: $templateCache.get('common/ncImageBanner4'),
+			link: function(scope) {
+				var update = function() {
+					scope.options = {
+						height: 256 * (scope.height/scope.width),
+						width: 256,
+						validateDimensionMin: [scope.width, scope.height],
+						validateDimensionMax: [scope.width, scope.height]
+					};
+				}
+				var updateSource = function() {
+					var m = _.max([scope.source.ImageEn.length, scope.source.ImageTh.length]);
+					var len = scope.source.Links.length;
+					if(len > m ) {
+						for (var i = 0; i < len - m; i++) {
+							scope.source.Links.pop();
+						};
+					} else if(len < m) {
+						for (var i = 0; i < m - len; i++) {
+							scope.source.Links.push('');
+						};
+					}
+				}
+
+				update();
+				scope.$watch('width', update);
+				scope.$watch('height', update);
+				scope.$watch('source', function() {
+					scope.source = _.defaults(scope.source, { 
+						AutoPlay: true,
+						Enabled: true,
+						SlideDuration: 5,
+						ImageEn:[], 
+						ImageTh:[], 
+						Links: [] 
+					});
+				});
+				scope.$watch('source.ImageEn', updateSource, true);
+				scope.$watch('source.ImageTh', updateSource, true);
+			}
+		};
+	}])
 	.directive('ncImageBanner', function() {
 		return {
 			restrict: 'E',
@@ -10179,13 +10504,13 @@ angular.module('nc')
 
 									if (scope.options.validateDimensionMin && (img.width < minW || img.height < minH)) {
 										//min width error
-										scope.onfail('ondimension', [img.width, img.height]);
+										scope.onfail('ondimension', [img.width, img.height], [minW, minH]);
 										return;
 									}
 
 									if (scope.options.validateDimensionMax && (img.width > maxW || img.height > maxH)) {
 										//min width error
-										scope.onfail('ondimension', [img.width, img.height]);
+										scope.onfail('ondimension', [img.width, img.height], [maxW, maxH]);
 										return;
 									}
 
@@ -10252,14 +10577,14 @@ angular.module('nc')
 
 								if (scope.options.validateDimensionMin && (img.width < minW || img.height < minH)) {
 									//min width error
-									scope.onfail('ondimension', [img.width, img.height]);
+									scope.onfail('ondimension', [img.width, img.height], [minW, minH]);
 									console.log(img.width, img.height, minW, minH);
 									return;
 								}
 
 								if (scope.options.validateDimensionMax && (img.width > maxW || img.height > maxH)) {
 									//min width error
-									scope.onfail('ondimension', [img.width, img.height]);
+									scope.onfail('ondimension', [img.width, img.height], [maxW, maxH]);
 									console.log(img.width, img.height, maxW, maxH);
 									return;
 								}
@@ -10633,7 +10958,7 @@ angular.module('nc')
 			}
 		};
 	}])
-},{}],120:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 angular.module('nc')
 .directive('ncImageIntegrity', function() {
     //Only show if image loaded by <img> integrity is OK (100% finished loading)
@@ -10653,7 +10978,7 @@ angular.module('nc')
             }
         };
     })
-},{}],121:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncLoading', ["$templateCache", function($templateCache) {
 		return {
@@ -10679,7 +11004,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],122:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncPageTitle', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "$parse", "KnownException", function ($rootScope, $templateCache, $compile, $templateOptionsCache, $parse, KnownException) {
@@ -10712,7 +11037,7 @@ angular.module('nc')
         };
     }]);
 
-},{"angular":279}],123:[function(require,module,exports){
+},{"angular":280}],124:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncPagination', function() {
 		this.paginationSizes = [10,20,30];
@@ -10779,7 +11104,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],124:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 angular.module('nc')
 	.provider('ncPermissionProvider', function() {
 		this.permission = function() {
@@ -10800,7 +11125,7 @@ angular.module('nc')
 	.directive('ncShowPermission', function() {
 		
 	});
-},{}],125:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncPolicyAdmin', ["$rootScope", function ($rootScope) {
 		return {
@@ -10858,7 +11183,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],126:[function(require,module,exports){
+},{}],127:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncSearch', ["$templateCache", function($templateCache) {
 		return {
@@ -10880,7 +11205,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],127:[function(require,module,exports){
+},{}],128:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncTable', function() {
 		this.tableOptions = {
@@ -10969,7 +11294,7 @@ angular.module('nc')
 			template: '<a ng-href="{{link}}" ng-transclude></a>',
 		}
 	});
-},{}],128:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncTemplate', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse) {
@@ -11028,7 +11353,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":279}],129:[function(require,module,exports){
+},{"angular":280}],130:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncTreeSelect', ["$interpolate", "$templateCache", function($interpolate, $templateCache) {
 		/**
@@ -11257,7 +11582,7 @@ angular.module('nc')
 		};
 	}]);
 
-},{}],130:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 angular.module('nc')
     .directive('ncTagValidator', function () {
         return {
@@ -11317,14 +11642,14 @@ angular.module('nc')
         }
     });
 
-},{}],131:[function(require,module,exports){
+},{}],132:[function(require,module,exports){
 angular.module('nc')
 	.filter('compact', function() {
 		return function(input) {
 			return _.compact(input);
 		};
 	});
-},{}],132:[function(require,module,exports){
+},{}],133:[function(require,module,exports){
 angular.module('nc')
 	.filter('dateTh', ["$filter", function($filter) {
 		return function(input) {
@@ -11342,7 +11667,7 @@ angular.module('nc')
 			return $filter('date')(input, 'H:mm');
 		}
 	}]);
-},{}],133:[function(require,module,exports){
+},{}],134:[function(require,module,exports){
 angular.module('nc')
     .filter('escapeHtml', function () {
         var entityMap = {
@@ -11360,7 +11685,7 @@ angular.module('nc')
             });
         }
     });
-},{}],134:[function(require,module,exports){
+},{}],135:[function(require,module,exports){
 /*
  Return dropdown[value] if input == dropdown[name]
  */
@@ -11383,7 +11708,7 @@ angular.module('nc')
 			return _.isUndefined(find) ? input : find[name];
 		}
 	});
-},{}],135:[function(require,module,exports){
+},{}],136:[function(require,module,exports){
 var angular = require('angular');
 
 angular.module('nc')
@@ -11420,14 +11745,14 @@ angular.module('nc')
     }
   });
 
-},{"angular":279}],136:[function(require,module,exports){
+},{"angular":280}],137:[function(require,module,exports){
 angular.module('nc')
 	.filter('replace', function() {
 		return function(input, from, to) {
 			return input.replace(from, to);
 		};
 	});
-},{}],137:[function(require,module,exports){
+},{}],138:[function(require,module,exports){
 (function (global){
 var angular = require('angular');
 
@@ -11449,11 +11774,11 @@ angular.module('nc', ['ngSanitize', 'ui.bootstrap', 'ui.select', 'duScroll', 'sm
 		'clickanystart' : 'clickanyend'
 	});
 }]);
-(function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives\\ncAction.js"),"ncAdvanceSearch":require("./directives\\ncAdvanceSearch.js"),"ncAlert":require("./directives\\ncAlert.js"),"ncBindCompile":require("./directives\\ncBindCompile.js"),"ncBreadcrumpSelect":require("./directives\\ncBreadcrumpSelect.js"),"ncBulk":require("./directives\\ncBulk.js"),"ncConfirm":require("./directives\\ncConfirm.js"),"ncDateRange":require("./directives\\ncDateRange.js"),"ncDefaultValue":require("./directives\\ncDefaultValue.js"),"ncEmpty":require("./directives\\ncEmpty.js"),"ncEye":require("./directives\\ncEye.js"),"ncFilter":require("./directives\\ncFilter.js"),"ncImageGallery":require("./directives\\ncImageGallery.js"),"ncImageIntegrity":require("./directives\\ncImageIntegrity.js"),"ncLoading":require("./directives\\ncLoading.js"),"ncPageTitle":require("./directives\\ncPageTitle.js"),"ncPagination":require("./directives\\ncPagination.js"),"ncPermission":require("./directives\\ncPermission.js"),"ncPolicy":require("./directives\\ncPolicy.js"),"ncSearch":require("./directives\\ncSearch.js"),"ncTable":require("./directives\\ncTable.js"),"ncTemplate":require("./directives\\ncTemplate.js"),"ncTreeSelect":require("./directives\\ncTreeSelect.js"),"ncUiSelect":require("./directives\\ncUiSelect.js")});f["filters"]=({"compact":require("./filters\\compact.js"),"date":require("./filters\\date.js"),"escapeHtml":require("./filters\\escapeHtml.js"),"map":require("./filters\\map.js"),"ncexclude":require("./filters\\ncexclude.js"),"replace":require("./filters\\replace.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
+(function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives\\ncAction.js"),"ncAdvanceSearch":require("./directives\\ncAdvanceSearch.js"),"ncAlert":require("./directives\\ncAlert.js"),"ncBindCompile":require("./directives\\ncBindCompile.js"),"ncBreadcrumpSelect":require("./directives\\ncBreadcrumpSelect.js"),"ncBulk":require("./directives\\ncBulk.js"),"ncComponent":require("./directives\\ncComponent.js"),"ncConfirm":require("./directives\\ncConfirm.js"),"ncDateRange":require("./directives\\ncDateRange.js"),"ncDefaultValue":require("./directives\\ncDefaultValue.js"),"ncEmpty":require("./directives\\ncEmpty.js"),"ncEye":require("./directives\\ncEye.js"),"ncFilter":require("./directives\\ncFilter.js"),"ncImageGallery":require("./directives\\ncImageGallery.js"),"ncImageIntegrity":require("./directives\\ncImageIntegrity.js"),"ncLoading":require("./directives\\ncLoading.js"),"ncPageTitle":require("./directives\\ncPageTitle.js"),"ncPagination":require("./directives\\ncPagination.js"),"ncPermission":require("./directives\\ncPermission.js"),"ncPolicy":require("./directives\\ncPolicy.js"),"ncSearch":require("./directives\\ncSearch.js"),"ncTable":require("./directives\\ncTable.js"),"ncTemplate":require("./directives\\ncTemplate.js"),"ncTreeSelect":require("./directives\\ncTreeSelect.js"),"ncUiSelect":require("./directives\\ncUiSelect.js")});f["filters"]=({"compact":require("./filters\\compact.js"),"date":require("./filters\\date.js"),"escapeHtml":require("./filters\\escapeHtml.js"),"map":require("./filters\\map.js"),"ncexclude":require("./filters\\ncexclude.js"),"replace":require("./filters\\replace.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../angular-scroll":106,"./directives\\ncAction.js":107,"./directives\\ncAdvanceSearch.js":108,"./directives\\ncAlert.js":109,"./directives\\ncBindCompile.js":110,"./directives\\ncBreadcrumpSelect.js":111,"./directives\\ncBulk.js":112,"./directives\\ncConfirm.js":113,"./directives\\ncDateRange.js":114,"./directives\\ncDefaultValue.js":115,"./directives\\ncEmpty.js":116,"./directives\\ncEye.js":117,"./directives\\ncFilter.js":118,"./directives\\ncImageGallery.js":119,"./directives\\ncImageIntegrity.js":120,"./directives\\ncLoading.js":121,"./directives\\ncPageTitle.js":122,"./directives\\ncPagination.js":123,"./directives\\ncPermission.js":124,"./directives\\ncPolicy.js":125,"./directives\\ncSearch.js":126,"./directives\\ncTable.js":127,"./directives\\ncTemplate.js":128,"./directives\\ncTreeSelect.js":129,"./directives\\ncUiSelect.js":130,"./filters\\compact.js":131,"./filters\\date.js":132,"./filters\\escapeHtml.js":133,"./filters\\map.js":134,"./filters\\ncexclude.js":135,"./filters\\replace.js":136,"./index.js":137,"./template.js":138,"angular":279,"angular-file-upload":243,"angular-sanitize":271,"angular-scroll":273,"angular-ui-bootstrap":275,"jquery":281,"lodash":282,"ui-select":301}],138:[function(require,module,exports){
+},{"../angular-scroll":106,"./directives\\ncAction.js":107,"./directives\\ncAdvanceSearch.js":108,"./directives\\ncAlert.js":109,"./directives\\ncBindCompile.js":110,"./directives\\ncBreadcrumpSelect.js":111,"./directives\\ncBulk.js":112,"./directives\\ncComponent.js":113,"./directives\\ncConfirm.js":114,"./directives\\ncDateRange.js":115,"./directives\\ncDefaultValue.js":116,"./directives\\ncEmpty.js":117,"./directives\\ncEye.js":118,"./directives\\ncFilter.js":119,"./directives\\ncImageGallery.js":120,"./directives\\ncImageIntegrity.js":121,"./directives\\ncLoading.js":122,"./directives\\ncPageTitle.js":123,"./directives\\ncPagination.js":124,"./directives\\ncPermission.js":125,"./directives\\ncPolicy.js":126,"./directives\\ncSearch.js":127,"./directives\\ncTable.js":128,"./directives\\ncTemplate.js":129,"./directives\\ncTreeSelect.js":130,"./directives\\ncUiSelect.js":131,"./filters\\compact.js":132,"./filters\\date.js":133,"./filters\\escapeHtml.js":134,"./filters\\map.js":135,"./filters\\ncexclude.js":136,"./filters\\replace.js":137,"./index.js":138,"./template.js":139,"angular":280,"angular-file-upload":244,"angular-sanitize":272,"angular-scroll":274,"angular-ui-bootstrap":276,"jquery":282,"lodash":283,"ui-select":302}],139:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -11551,6 +11876,26 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
   );
 
 
+  $templateCache.put('common/ncImageBanner4',
+    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.Enabled\">{{letter}}.) {{title}}</h2></div><div ng-show=source.Enabled><div ng-if=heading class=\"form-section-content padding-left-15 padding-right-15\"><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleEn\"></div></div><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleTh\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Subtitle (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.SubtitleEn\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Subtitle (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.SubtitleTh\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.Link\"></div></div></div><div class=section-break ng-if=heading></div><nc-image-block template=common/ncImageBanner4_1 nc-model=source.ImageEn on-fail=onFail uploader=uploader options=options size={{size}}><h4>{{letterx}} {{subtitle ? subtitle : 'Banner'}} (English) guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>The width must be {{width}}px</li><li>The height must be {{height}}px</li></ul></nc-image-block><div class=section-break></div><nc-image-block template=common/ncImageBanner4_1 nc-model=source.ImageTh on-fail=onFail uploader=uploader options=options size={{size}}><h4>{{letterx}} {{subtitle ? subtitle : 'Banner'}} (ไทย) guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>The width must be {{width}}px</li><li>The height must be {{height}}px</li></ul></nc-image-block><div ng-if=\"!noauto || (source.Links && source.Links.length > 0)\" class=section-break></div><div ng-if=\"!noauto || (source.Links && source.Links.length > 0)\" class=\"form-section-content padding-left-15 padding-right-15\"><div ng-show=!noauto nc-template=common/input/form-group-with-label nc-label=\"Auto Play\"><select ng-model=source.AutoPlay class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]\"></select></div><div ng-show=!noauto class=form-group><div class=width-label><label class=control-label>Slide Duration</label></div><div class=width-field-normal><input class=\"form-control width-field-normal-input\" ng-model=source.SlideDuration ng-pattern-restrict=\"^[0-9]*(\\.[0-9]*)?$\"> <span class=input-with-unit><span class=input-unit>Seconds</span></span></div></div><div ng-repeat=\"link in source.Links track by $index\" class=form-group><div class=width-label><label class=control-label>Banner {{$index+1}} Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"link\"></div></div></div></div></div>"
+  );
+
+
+  $templateCache.put('common/ncImageBanner4_1',
+    "<div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.png,.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p><p><a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.png,.jpg,.jpeg'\">or select images from your computer</a></p></div></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center;margin-top:35px\" class=color-grey><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\">Processing..</span></h4></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div></div>"
+  );
+
+
+  $templateCache.put('common/ncImageBanner5',
+    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.Enabled\">{{letter}}.) {{title}}</h2></div><div ng-show=source.Enabled><nc-image-block template=common/ncImageBanner4_1 nc-model=source.ImageEn on-fail=onFail uploader=uploader options=options size={{size}}><h4>{{letterx}} {{subtitle ? subtitle : 'Video Thumbnail'}} (English) guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>The width must be {{width}}px</li><li>The height must be {{height}}px</li></ul></nc-image-block><div class=section-break></div><nc-image-block template=common/ncImageBanner4_1 nc-model=source.ImageTh on-fail=onFail uploader=uploader options=options size={{size}}><h4>{{letterx}} {{subtitle ? subtitle : 'Video Thumbnail'}} (ไทย) guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>The width must be {{width}}px</li><li>The height must be {{height}}px</li></ul></nc-image-block><div class=section-break></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div nc-template=common/input/form-group-with-label nc-label=\"Show Popup\"><select ng-model=source.ShowPopup class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]\"></select></div><div class=form-group><div class=width-label><label class=control-label>Title (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleEn\"></div></div><div class=form-group><div class=width-label><label class=control-label>Title (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleTh\"></div></div><div class=form-group><div class=width-label><label class=control-label>Title Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleLink\"></div></div><div ng-repeat=\"video in source.Videos track by $index\"><div class=form-group><div class=width-label><label class=control-label>{{linktitle ? linktitle : 'Video'}} {{$index+1}} Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"video.Link\"></div></div><div class=form-group><div class=width-label><label class=control-label>{{linktitle ? linktitle : 'Video'}} {{$index+1}} Description (Eng)</label></div><div class=width-field-normal><textarea class=form-control ng-model=video.DescriptionEn></textarea></div></div><div class=form-group><div class=width-label><label class=control-label>{{linktitle ? linktitle : 'Video'}} {{$index+1}} Description (ไทย)</label></div><div class=width-field-normal><textarea class=form-control ng-model=video.DescriptionTh></textarea></div></div></div></div></div></div>"
+  );
+
+
+  $templateCache.put('common/ncImageBanner6',
+    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.Enabled\">{{letter}}.) {{title}}</h2></div><div ng-show=source.Enabled><nc-image-block template=common/ncImageBanner4_1 nc-model=source.ImageEn on-fail=onFail uploader=uploader options=options size={{size}}><h4>{{letterx}} {{subtitle ? subtitle : 'Banner'}} (English) guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>The width must be {{width}}px</li><li>The height must be {{height}}px</li></ul></nc-image-block><div class=section-break ng-if=\"(source.Links && source.Links.length > 0)\"></div><div class=\"form-section-content padding-left-15 padding-right-15\" ng-if=\"(source.Links && source.Links.length > 0)\"><div ng-repeat=\"link in source.Links track by $index\" class=form-group><div class=width-label><label class=control-label>Icon {{$index+1}} Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"link\"></div></div></div></div></div>"
+  );
+
+
   $templateCache.put('common/ncImageDropzone',
     "<div class=image-drop-wrapper><input nv-file-select=\"\" uploader=uploader accept=\".jpg, .jpeg\" type=file multiple><div nv-file-drop=\"\" uploader=uploader class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p></div></div></div>"
   );
@@ -11571,6 +11916,11 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
   );
 
 
+  $templateCache.put('common/ncImageLinks',
+    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.Enabled\">{{letter}}.) {{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\" ng-if=source.Enabled><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleEn\"></div></div><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleTh\"></div></div><div ng-repeat=\"image in source.Images track by $index\"><div nc-template=common/input/form-group-with-label nc-label=\"{{letter}}{{$index+1}} Image (Eng)\" class=margin-top-5><button type=button class=\"btn btn-default\" ngf-accept=\"'.jpg,.jpeg'\" ngf-select=\"upload($file, image.ImageEn)\">Choose File</button></div><div ng-show=image.ImageEn.Url nc-template=common/input/form-group-with-label nc-label=Preview><img ng-src={{image.ImageEn.Url}} width=\"160\"></div><div nc-template=common/input/form-group-with-label nc-label=\"{{letter}}{{$index+1}} Image (ไทย)\"><button type=button class=\"btn btn-default\" ngf-accept=\"'.jpg,.jpeg'\" ngf-select=\"upload($file, image.ImageTh)\">Choose File</button></div><div ng-show=image.ImageTh.Url nc-template=common/input/form-group-with-label nc-label=Preview><img ng-src={{image.ImageTh.Url}} width=\"160\"></div><div class=form-group><div class=width-label><label class=control-label>{{letter}}{{$index+1}} Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"image.Link\"> <span class=\"help-block color-grey\">Example: https//www.thecentral.co.th</span></div></div></div></div></div>"
+  );
+
+
   $templateCache.put('common/ncLoading',
     "<div class=\"empty-section margin-top-20 margin-bottom-20\"><span></span> <img class=loading-img src=\"/assets/img/loader.gif\">{{ message }}</div>"
   );
@@ -11583,6 +11933,11 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
   $templateCache.put('common/ncPagination',
     "<div class=page-navigation><span><a ng-click=nextPage(-1)><i class=\"fa fa-chevron-left\" ng-class=\"{'grey-chevron': page() <= 1, 'blue-chevron' : page() > 1}\"></i></a> <span>Page {{ page() }} of {{ totalPage() }}</span> <a ng-click=nextPage(1)><i class=\"fa fa-chevron-right padding-right-15\" ng-class=\"{'grey-chevron': page() >= totalPage(), 'blue-chevron' : page() < totalPage() }\"></i></a> <span class=\"view-page-separator margin-right-10\">View per page</span><div class=btn-group uib-dropdown><button type=button class=\"btn btn-default\">{{ pageSize() }}</button> <button type=button class=\"btn btn-default\" uib-dropdown-toggle><span class=caret></span> <span class=sr-only>Toggle Dropdown</span></button><ul uib-dropdown-menu role=menu class=dropdown-menu-right><li ng-repeat=\"size in paginationOptions\"><a ng-click=setPageSize(size)>{{size}}</a></li></ul></div></span></div>"
+  );
+
+
+  $templateCache.put('common/ncProductLayout',
+    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.Enabled\">{{letter}}.) {{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\" ng-if=source.Enabled><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleEn\"></div></div><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleTh\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Subtitle (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.SubtitleEn\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Subtitle (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.SubtitleTh\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.Link\"></div></div><div class=form-group><div class=width-label><label class=control-label>Select Product</label></div><div class=width-field-normal><ui-select multiple ng-model=source.Products><ui-select-match placeholder=\"Search by Product Name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=refresh($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=width-field-normal><input class=form-inline type=checkbox ng-model=\"source.DisplayCountTime\"> Display Countdown Time</div></div></div></div>"
   );
 
 
@@ -11604,6 +11959,16 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
     "'fa fa-caret-up' : isCurrent() && !direction, \r" +
     "\n" +
     "'fa fa-caret-down color-grey' : !isCurrent() }\" ng-click=click()></i>"
+  );
+
+
+  $templateCache.put('common/ncTextLink',
+    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.Enabled\">{{letter}}.) {{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\" ng-if=source.Enabled><div class=form-group><div class=width-label><label class=control-label>{{letterx}} Text (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TextEn\"></div></div><div class=form-group><div class=width-label><label class=control-label>{{letterx}} Text (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TextTh\"></div></div><div class=form-group><div class=width-label><label class=control-label>{{letterx}} Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.Link\"> <span class=\"help-block color-grey\">Example: https//www.thecentral.co.th</span></div></div></div></div>"
+  );
+
+
+  $templateCache.put('common/ncTextareas',
+    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.Enabled\">{{letter}}.) {{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\" ng-if=source.Enabled><div ng-repeat=\"text in source.Texts track by $index\"><div class=form-group><div class=width-label><label class=control-label>{{letter}}{{$index+1}} Text (Eng)</label></div><div class=width-field-normal><textarea class=form-control ng-model=text.TextEn></textarea></div></div><div class=form-group><div class=width-label><label class=control-label>{{letter}}{{$index+1}} Text (ไทย)</label></div><div class=width-field-normal><textarea class=form-control ng-model=text.TextTh></textarea></div></div></div></div></div>"
   );
 
 
@@ -11636,7 +12001,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
     "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title ah-breadcrumb\"><a ng-if=\"icon && breads.length != 1\" ng-href=\"{{ngTopLink() || topLink}}\"><i class=\"fa {{icon}} page-header-icon\"></i></a> <i ng-if=\"icon && breads.length == 1\" class=\"fa {{icon}} page-header-icon\"></i> <span ng-repeat=\"b in breads\" class=ah-breadcrumb><a ng-if=\"$index == 0 && breads.length > 1\" class=ah-breadcrumb-path ng-href=\"{{ngTopLink()  || topLink}}\">{{b}}</a><span ng-if=\"$index > 0 || breads.length == 1\" class=ah-breadcrumb-path>{{b}}</span><span ng-if=\"$index == 0 && breads.length > 1\" class=ah-breadcrumb-splitter>/</span></span></h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
   );
  }]);
-},{}],139:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 var angular = require('angular');
 
 angular.module('productDetail').controller('AbstractProductAddCtrl',
@@ -12622,7 +12987,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
   }])
 
-},{"angular":279}],140:[function(require,module,exports){
+},{"angular":280}],141:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
 factory('AttributeOptions', function() {
@@ -12644,7 +13009,7 @@ factory('AttributeOptions', function() {
     }
 
 });
-},{"angular":279}],141:[function(require,module,exports){
+},{"angular":280}],142:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
 factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "ImageService", "GlobalCategory", "$q", "Category", "util", function(Product, AttributeSet, AttributeSetService, ImageService, GlobalCategory, $q, Category, util) {
@@ -12896,7 +13261,7 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
   return $productAdd;
 }]);
 
-},{"angular":279}],142:[function(require,module,exports){
+},{"angular":280}],143:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
 factory('VariationFactorIndices', function() {
@@ -12921,7 +13286,7 @@ factory('VariationFactorIndices', function() {
 
 });
 
-},{"angular":279}],143:[function(require,module,exports){
+},{"angular":280}],144:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
     .directive('apComponent', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", "Product", "util", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse, Product, util) {
@@ -12972,7 +13337,7 @@ angular.module('productDetail')
             }
         };
     }]);
-},{"angular":279}],144:[function(require,module,exports){
+},{"angular":280}],145:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
     .directive('apMultipliedVariants', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "util", function ($rootScope, 
@@ -12993,7 +13358,7 @@ angular.module('productDetail')
         };
     }]);
 
-},{"angular":279}],145:[function(require,module,exports){
+},{"angular":280}],146:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
     .directive('apVariationOption', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "util", function ($rootScope, 
@@ -13038,7 +13403,7 @@ angular.module('productDetail')
         };
     }]);
 
-},{"angular":279}],146:[function(require,module,exports){
+},{"angular":280}],147:[function(require,module,exports){
 var angular = require('angular');
 
 
@@ -13046,7 +13411,7 @@ angular.module('productDetail', []);
 
 (function () {var f = require("./index.js");f["core"]=({"abstractProductAddCtrl":require("./core\\abstractProductAddCtrl.js"),"attributeOptions":require("./core\\attributeOptions.js"),"productLoader":require("./core\\productLoader.js"),"variationFactorIndices":require("./core\\variationFactorIndices.js")});f["directives"]=({"apComponent":require("./directives\\apComponent.js"),"apMultipliedVariants":require("./directives\\apMultipliedVariants.js"),"apVariationOption":require("./directives\\apVariationOption.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
-},{"./core\\abstractProductAddCtrl.js":139,"./core\\attributeOptions.js":140,"./core\\productLoader.js":141,"./core\\variationFactorIndices.js":142,"./directives\\apComponent.js":143,"./directives\\apMultipliedVariants.js":144,"./directives\\apVariationOption.js":145,"./index.js":146,"./template.js":147,"angular":279}],147:[function(require,module,exports){
+},{"./core\\abstractProductAddCtrl.js":140,"./core\\attributeOptions.js":141,"./core\\productLoader.js":142,"./core\\variationFactorIndices.js":143,"./directives\\apComponent.js":144,"./directives\\apMultipliedVariants.js":145,"./directives\\apVariationOption.js":146,"./index.js":147,"./template.js":148,"angular":280}],148:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -13274,7 +13639,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "<div id=add-product-variation-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row ng-if=\"controlFlags.variation != 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content><div class=form-group><p class=form-control-static>Variation will allow you to create a group of products with different attributes such as size and color. Once you enable variation, information from other tabs will be copied into variants that you will create, and variation cannot be disabled. <strong>Please select attribute set before enabling variation.</strong></p><a class=\"btn btn-width-xxl btn-blue margin-top-20\" ng-disabled=\"!formData.AttributeSet.AttributeSetId || xspermit(44)\" ng-click=enableVariation()>Enable Variation</a></div></div></div></div></div><div class=row ng-show=\"controlFlags.variation == 'enable'\"><div class=col-xs-12><ap-variation-option form-data=formData control-flags=controlFlags generator=variationFactorIndices dataset=dataset></ap-variation-option><ap-multiplied-variants ng-show=\"formData.Variants.length > 0\"><div ng-include=\"'ap/section-variant-table-a'\"></div></ap-multiplied-variants></div></div></div>"
   );
  }]);
-},{}],148:[function(require,module,exports){
+},{}],149:[function(require,module,exports){
 var angular = require('angular');
 var bulk = {};
 angular.module('schematics', []).
@@ -13289,7 +13654,7 @@ factory('JSONCache', function(){
     }
   }
 });
-},{"./schema\\attribute.js":149,"./schema\\attributeSet.js":150,"./schema\\attributeValue.js":151,"./schema\\attributeValueMap.js":152,"./schema\\nthAttribute.js":153,"./schema\\productStages.js":154,"./schema\\revisionObject.js":155,"./schema\\seo.js":156,"./schema\\variant.js":157,"angular":279}],149:[function(require,module,exports){
+},{"./schema\\attribute.js":150,"./schema\\attributeSet.js":151,"./schema\\attributeValue.js":152,"./schema\\attributeValueMap.js":153,"./schema\\nthAttribute.js":154,"./schema\\productStages.js":155,"./schema\\revisionObject.js":156,"./schema\\seo.js":157,"./schema\\variant.js":158,"angular":280}],150:[function(require,module,exports){
 module.exports = {
   "title": "Attribute Schema V9",
   "type": "object",
@@ -13322,7 +13687,7 @@ module.exports = {
   ]
 };
 
-},{"./attributeValue":151,"./attributeValueMap":152}],150:[function(require,module,exports){
+},{"./attributeValue":152,"./attributeValueMap":153}],151:[function(require,module,exports){
 module.exports = {
   "title": "Attribute Set Schema V4",
   "type": "object",
@@ -13370,7 +13735,7 @@ module.exports = {
   }
 };
 
-},{"./attribute":149}],151:[function(require,module,exports){
+},{"./attribute":150}],152:[function(require,module,exports){
 module.exports = {
     "title": "Attribute Value Schema V4",
     "type": "object",
@@ -13388,7 +13753,7 @@ module.exports = {
     "required": ["AttributeValueId"]
 };
 
-},{}],152:[function(require,module,exports){
+},{}],153:[function(require,module,exports){
 module.exports = {
   "title": "Attribute Value Map Schema V4",
   "type": "object",
@@ -13399,7 +13764,7 @@ module.exports = {
   }
 };
 
-},{"./attributeValue":151}],153:[function(require,module,exports){
+},{"./attributeValue":152}],154:[function(require,module,exports){
 module.exports = {
   "title": "Nth Attribute Schema V9",
   "type": "object",
@@ -13421,7 +13786,7 @@ module.exports = {
   "required": ["ValueEn", "AttributeId", "AttributeValues"]
 }
 
-},{"./attributeValue":151}],154:[function(require,module,exports){
+},{"./attributeValue":152}],155:[function(require,module,exports){
 module.exports = {
   "title": "Product Stage Schema V9",
   "type": "object",
@@ -13563,7 +13928,7 @@ module.exports = {
   }
 };
 
-},{"./attribute":149,"./revisionObject":155,"./variant":157}],155:[function(require,module,exports){
+},{"./attribute":150,"./revisionObject":156,"./variant":158}],156:[function(require,module,exports){
 module.exports = {
   "title": "Revisions V9",
   "type": "object",
@@ -13575,7 +13940,7 @@ module.exports = {
   }
 }
 
-},{}],156:[function(require,module,exports){
+},{}],157:[function(require,module,exports){
 module.exports = {
   "title": "SEO Schema V9",
   "type": "object",
@@ -13601,7 +13966,7 @@ module.exports = {
    "MetaKeywordEn", "MetaKeywordTh", "ProductUrlKeyEn", "ProductBoostingWeight", "GlobalProductBoostingWeight"]
 }
 
-},{}],157:[function(require,module,exports){
+},{}],158:[function(require,module,exports){
 module.exports =  {
   "title": "Variant Schema V9",
   "type": "object",
@@ -13800,7 +14165,7 @@ module.exports =  {
     "Installment", "PrepareDay", "LimitIndividualDay", "Display"]
 };
 
-},{"./nthAttribute":153,"./seo":156}],158:[function(require,module,exports){
+},{"./nthAttribute":154,"./seo":157}],159:[function(require,module,exports){
 angular.module('umeSelect')
 .directive('umeFocus', ["$timeout", function($timeout) {
   return {
@@ -13827,7 +14192,7 @@ angular.module('umeSelect')
   };
 }]);
 
-},{}],159:[function(require,module,exports){
+},{}],160:[function(require,module,exports){
 var angular = require('angular');
 angular.module('umeSelect')
     .directive('youMe', ["$rootScope", "$templateCache", "$compile", "$timeout", "$filter", function ($rootScope, $templateCache, $compile, $timeout, $filter) {
@@ -14185,7 +14550,7 @@ angular.module('umeSelect')
         };
     }]);
 
-},{"angular":279}],160:[function(require,module,exports){
+},{"angular":280}],161:[function(require,module,exports){
 var angular = require('angular');
 
 
@@ -14193,7 +14558,7 @@ angular.module('umeSelect', []);
 
 (function () {var f = require("./index.js");f["directives"]=({"ume-focus":require("./directives\\ume-focus.js"),"ume-select":require("./directives\\ume-select.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
-},{"./directives\\ume-focus.js":158,"./directives\\ume-select.js":159,"./index.js":160,"./template.js":161,"angular":279}],161:[function(require,module,exports){
+},{"./directives\\ume-focus.js":159,"./directives\\ume-select.js":160,"./index.js":161,"./template.js":162,"angular":280}],162:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -14213,7 +14578,7 @@ angular.module("umeSelect").run(["$templateCache", function($templateCache) {  '
     "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-plain': hideIcon, 'ume-search' : !loading && !hideIcon, 'ume-loading': loading, 'input-active': true}\" style=\"min-height: 34px\"><input ume-focus=focusObtained ng-disabled=disabled() ume-blur=focusLost ume-id=\"{{ _id }}\" autocomplete=off tabindex=\"\" ng-model=searchText ng-focus=focus() ng-blur=blur() placeholder=\"{{ placeholder }}\" ng-keydown=keyDown($event) ng-show=\"focused || !itemValue(model)\" style=\"width: 100%\"><div ng-show=\"!focused && itemValue(model)\" class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ itemValue(model) || placeholder }}</div></div><div ng-include=\"'ume/choicelist'\"></div></div>"
   );
  }]);
-},{}],162:[function(require,module,exports){
+},{}],163:[function(require,module,exports){
 /**
  * Collection of Route ID (Object key) with route string
  *
@@ -14386,7 +14751,7 @@ module.exports = {
   permission: permission
 }
 
-},{"lodash":282}],163:[function(require,module,exports){
+},{"lodash":283}],164:[function(require,module,exports){
 module.exports = ["common", "config", "util", "$log", "$window", function (common, config, util, $log, $window) {
     'ngInject';
     'use strict';
@@ -14496,7 +14861,7 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
     return service;
 }];
 
-},{}],164:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 //Products Service
 module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     function ($http, common, util, config, KnownException) {
@@ -14589,13 +14954,13 @@ module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     }
 ];
 
-},{}],165:[function(require,module,exports){
+},{}],166:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Promotion/Ontopcreate');
 	return service;
 }];
-},{}],166:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 module.exports = ["common", "config", "util", "$log", "$window", function (common, config, util, $log, $window) {
     'ngInject';
     'use strict';
@@ -14619,7 +14984,7 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
     return service;
 }];
 
-},{}],167:[function(require,module,exports){
+},{}],168:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Admin');
@@ -14656,7 +15021,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],168:[function(require,module,exports){
+},{}],169:[function(require,module,exports){
 module.exports = ["common", function (common) {
 	'ngInject';
 	var service = common.Rest('/Products/Master');
@@ -14686,13 +15051,13 @@ module.exports = ["common", function (common) {
 
 	
 }];
-},{}],169:[function(require,module,exports){
+},{}],170:[function(require,module,exports){
 module.exports = ["common", "$q", function(common, $q) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Admin');
 	return service;
 }]
-},{}],170:[function(require,module,exports){
+},{}],171:[function(require,module,exports){
 module.exports = ["common", "AdminPermissionService", function(common, AdminPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Admin');
@@ -14715,7 +15080,7 @@ module.exports = ["common", "AdminPermissionService", function(common, AdminPerm
 	};
 	return service;	
 }]
-},{}],171:[function(require,module,exports){
+},{}],172:[function(require,module,exports){
 module.exports = ["common", "config", "util", function(common, config, util) {
 	'ngInject';
 	var service = common.Rest('/Shops');
@@ -14762,7 +15127,7 @@ module.exports = ["common", "config", "util", function(common, config, util) {
 	};
 	return service;	
 }]
-},{}],172:[function(require,module,exports){
+},{}],173:[function(require,module,exports){
 module.exports = ["common", "ShopPermissionService", function(common, ShopPermissionService) {
 	'ngInject';
 	var service = common.Rest('/Shoptypes');
@@ -14785,7 +15150,7 @@ module.exports = ["common", "ShopPermissionService", function(common, ShopPermis
 	};
 	return service;	
 }]
-},{}],173:[function(require,module,exports){
+},{}],174:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common){
 	'use strict';
@@ -15040,7 +15405,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{"angular":279}],174:[function(require,module,exports){
+},{"angular":280}],175:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/Attributes');
@@ -15156,7 +15521,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }];
-},{}],175:[function(require,module,exports){
+},{}],176:[function(require,module,exports){
 module.exports = ['common', function(common){
 	'use strict';
 	var service = {};
@@ -15304,7 +15669,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{}],176:[function(require,module,exports){
+},{}],177:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/AttributeSets');
@@ -15395,7 +15760,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }]
-},{}],177:[function(require,module,exports){
+},{}],178:[function(require,module,exports){
 module.exports = ['$window', function($window) {
 	return function(fn, close) {
 		var vm = this;
@@ -15431,7 +15796,7 @@ module.exports = ['$window', function($window) {
 		};
 	};
 }];
-},{}],178:[function(require,module,exports){
+},{}],179:[function(require,module,exports){
 module.exports = ['$q', 'common', function($q, common){
 	var service = {};
 	//TODO: change searchText -> q
@@ -15516,7 +15881,7 @@ module.exports = ['$q', 'common', function($q, common){
 	};
 	return service;
 }];
-},{}],179:[function(require,module,exports){
+},{}],180:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	service = common.Rest('/Brands');
@@ -15546,7 +15911,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }]
-},{}],180:[function(require,module,exports){
+},{}],181:[function(require,module,exports){
 /**
  * Util class for category
  * @author poonwu
@@ -15873,14 +16238,14 @@ module.exports = ['config', function(config) {
     return service;
 }];
 
-},{"angular":279}],181:[function(require,module,exports){
+},{"angular":280}],182:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common) {
 	var service = common.Rest('/Coupons');
 	return service;
 }];
 
-},{"angular":279}],182:[function(require,module,exports){
+},{"angular":280}],183:[function(require,module,exports){
 //TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in poon's local)
 module.exports = ["common", "$base64", "storage", "$q", "$rootScope", function(common, $base64, storage, $q, $rootScope) {
     'ngInject';
@@ -15992,7 +16357,7 @@ module.exports = ["common", "$base64", "storage", "$q", "$rootScope", function(c
 	return service;
 }];
 
-},{}],183:[function(require,module,exports){
+},{}],184:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$window', '$base64', 'config', function($window, $base64, config) {
@@ -16009,7 +16374,7 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
     };
 }];
 
-},{"angular":279}],184:[function(require,module,exports){
+},{"angular":280}],185:[function(require,module,exports){
 module.exports = ["config", "storage", "FileUploader", function(config, storage, FileUploader) {
 	'ngInject';
 	var service = {};
@@ -16029,7 +16394,7 @@ module.exports = ["config", "storage", "FileUploader", function(config, storage,
 	};
 	return service;
 }];
-},{}],185:[function(require,module,exports){
+},{}],186:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/GlobalCategories');
@@ -16097,7 +16462,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],186:[function(require,module,exports){
+},{}],187:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	service = common.Rest('/GlobalCategories');
@@ -16172,7 +16537,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],187:[function(require,module,exports){
+},{}],188:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Coupons');
@@ -16210,7 +16575,7 @@ module.exports = ["common", function(common) {
     };
 	return service;
 }]
-},{}],188:[function(require,module,exports){
+},{}],189:[function(require,module,exports){
 var angular = require('angular');
 //Image Service
 //Note: this file is not used anywhere (legacy!!! dOnt edit )
@@ -16302,7 +16667,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	return service;
 }];
 
-},{"angular":279}],189:[function(require,module,exports){
+},{"angular":280}],190:[function(require,module,exports){
 //Image Service
 module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", "Upload", function($q, $http, common, storage, config, FileUploader, Upload) {
   'ngInject';
@@ -16428,12 +16793,12 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
   return service;
 }];
 
-},{}],190:[function(require,module,exports){
+},{}],191:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Inventories');
 	return service;
 };
-},{}],191:[function(require,module,exports){
+},{}],192:[function(require,module,exports){
 module.exports = [function() {
 	'use strict';
 
@@ -16441,7 +16806,7 @@ module.exports = [function() {
         this.message = "Known Exception - " + msg;   
     };
 }];
-},{}],192:[function(require,module,exports){
+},{}],193:[function(require,module,exports){
 module.exports = ['common', function(common) {
 	'use strict';
 	var service = {};
@@ -16480,7 +16845,7 @@ module.exports = ['common', function(common) {
 
 	return service;
 }];
-},{}],193:[function(require,module,exports){
+},{}],194:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/LocalCategories');
@@ -16524,7 +16889,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	};
 	return service;
 }];
-},{}],194:[function(require,module,exports){
+},{}],195:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Newsletters');
 
@@ -16539,7 +16904,7 @@ module.exports = function(common) {
 
 	return service;
 };
-},{}],195:[function(require,module,exports){
+},{}],196:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	service = common.Rest('/Orders');
@@ -16553,7 +16918,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }]
-},{}],196:[function(require,module,exports){
+},{}],197:[function(require,module,exports){
 module.exports = ["util", function(util) {
 	'ngInject';
 	var service = {};
@@ -16633,7 +16998,7 @@ module.exports = ["util", function(util) {
 
 	return service;
 }]
-},{}],197:[function(require,module,exports){
+},{}],198:[function(require,module,exports){
 // Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config', 'KnownException',
 	function ($http, common, util, LocalCategory, Brand, config, KnownException) {
@@ -17274,7 +17639,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 	}
 ]
 
-},{}],198:[function(require,module,exports){
+},{}],199:[function(require,module,exports){
 module.exports = ["common", "util", function(common, util) {
 	'ngInject';
 	var service = common.Rest('/ProductReviews');
@@ -17310,7 +17675,7 @@ module.exports = ["common", "util", function(common, util) {
 	};	
 	return service;
 }];
-},{}],199:[function(require,module,exports){
+},{}],200:[function(require,module,exports){
 module.exports = ["common", "util", function(common, util) {
 	'ngInject';
 	var service = common.Rest('/ProductTemps');
@@ -17318,12 +17683,12 @@ module.exports = ["common", "util", function(common, util) {
 	return service;
 }];
 
-},{}],200:[function(require,module,exports){
+},{}],201:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Returns');
 	return service;
 };
-},{}],201:[function(require,module,exports){
+},{}],202:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Seller');
@@ -17358,7 +17723,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],202:[function(require,module,exports){
+},{}],203:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Coupons');
@@ -17387,13 +17752,13 @@ module.exports = ["common", function(common) {
     };
 	return service;
 }]
-},{}],203:[function(require,module,exports){
+},{}],204:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Seller');
 	return service;
 }]
-},{}],204:[function(require,module,exports){
+},{}],205:[function(require,module,exports){
 module.exports = ["common", "SellerPermissionService", function(common, SellerPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Seller');
@@ -17416,13 +17781,13 @@ module.exports = ["common", "SellerPermissionService", function(common, SellerPe
 	};
 	return service;	
 }]
-},{}],205:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/Shippings');
 	return service;
 }];
-},{}],206:[function(require,module,exports){
+},{}],207:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     'use strict';
@@ -17481,7 +17846,7 @@ module.exports = ["common", "config", "util", function (common, config, util) {
     return service;
 }];
 
-},{}],207:[function(require,module,exports){
+},{}],208:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     var service = common.Rest('/Shops/ShopAppearance');
@@ -17506,19 +17871,19 @@ module.exports = ["common", "config", "util", function (common, config, util) {
 
     return service;
 }];
-},{}],208:[function(require,module,exports){
+},{}],209:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Shop');
 	return service;
 }]
-},{}],209:[function(require,module,exports){
+},{}],210:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     var service = common.Rest('/Shops/Profile');
     return service;
 }];
-},{}],210:[function(require,module,exports){
+},{}],211:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Shops');
@@ -17532,7 +17897,7 @@ module.exports = ["common", function(common) {
 
 	return service;
 }]
-},{}],211:[function(require,module,exports){
+},{}],212:[function(require,module,exports){
 module.exports = {
     NameTH: {
         labelClass: "required",
@@ -17671,7 +18036,7 @@ module.exports = {
     }
 }
 
-},{}],212:[function(require,module,exports){
+},{}],213:[function(require,module,exports){
 module.exports = {
   	AttributeNameEn: {
         'labelClass': 'required',
@@ -17713,7 +18078,7 @@ module.exports = {
     }
     
 };
-},{}],213:[function(require,module,exports){
+},{}],214:[function(require,module,exports){
 module.exports = {
 	AttributeSetNameEn: {
 	  'labelClass': 'required',
@@ -17737,7 +18102,7 @@ module.exports = {
       }
     }
 }
-},{}],214:[function(require,module,exports){
+},{}],215:[function(require,module,exports){
 module.exports = {
     BrandImage: {
     },
@@ -17781,7 +18146,7 @@ module.exports = {
     }
 };
 
-},{}],215:[function(require,module,exports){
+},{}],216:[function(require,module,exports){
 module.exports = {
     NameEn: {
         'labelClass': 'required',
@@ -17819,7 +18184,7 @@ module.exports = {
 
 }
 
-},{}],216:[function(require,module,exports){
+},{}],217:[function(require,module,exports){
 module.exports = {
 	ChildProducts: {
 		labelClass: 'required',
@@ -17839,7 +18204,7 @@ module.exports = {
 	    }
 	}
 };
-},{}],217:[function(require,module,exports){
+},{}],218:[function(require,module,exports){
 module.exports = {
     Image: {
 
@@ -17886,7 +18251,7 @@ module.exports = {
 
     }
 }
-},{}],218:[function(require,module,exports){
+},{}],219:[function(require,module,exports){
 module.exports = {
   KillerPointTh: {
     divClass: 'col-xs-6',
@@ -18103,7 +18468,7 @@ module.exports = {
   }
 }
 
-},{}],219:[function(require,module,exports){
+},{}],220:[function(require,module,exports){
 module.exports = {
 	GroupNameEn: {
       'labelClass': 'required',
@@ -18115,7 +18480,7 @@ module.exports = {
     }
 
 }
-},{}],220:[function(require,module,exports){
+},{}],221:[function(require,module,exports){
 module.exports = {
 	Logo: {
 		error: {
@@ -18244,7 +18609,7 @@ module.exports = {
 		input: 'large'
 	}
 }
-},{}],221:[function(require,module,exports){
+},{}],222:[function(require,module,exports){
 module.exports = {
     Layout: {
         // tooltip: "Please select 'Available' if you can provide gift wrapping service to your customer",
@@ -18262,7 +18627,7 @@ module.exports = {
     }
 }
 
-},{}],222:[function(require,module,exports){
+},{}],223:[function(require,module,exports){
 module.exports = {
 	ShopTypeNameEn: {
       'labelClass': 'required',
@@ -18273,7 +18638,7 @@ module.exports = {
        }
     }
 }
-},{}],223:[function(require,module,exports){
+},{}],224:[function(require,module,exports){
 module.exports = {
     'NothingSpecial': {
         
@@ -18283,7 +18648,7 @@ module.exports = {
     }
 };
 
-},{}],224:[function(require,module,exports){
+},{}],225:[function(require,module,exports){
 module.exports = {
   Status: {
     labelClass: "required",
@@ -18384,7 +18749,7 @@ module.exports = {
   }
 }
 
-},{}],225:[function(require,module,exports){
+},{}],226:[function(require,module,exports){
 module.exports = {
     Required: {
         'labelClass': 'required'
@@ -18392,7 +18757,7 @@ module.exports = {
 
 }
 
-},{}],226:[function(require,module,exports){
+},{}],227:[function(require,module,exports){
 module.exports = {
   // Description
     DescriptionFull: {
@@ -18445,14 +18810,14 @@ module.exports = {
         inputClass: 'large'
     }
 }
-},{}],227:[function(require,module,exports){
+},{}],228:[function(require,module,exports){
 module.exports = {
   MultiCheckbox: {
     transcludeClasses:  "checkbox multiple-checkbox multiline"
   }
 }
 
-},{}],228:[function(require,module,exports){
+},{}],229:[function(require,module,exports){
 module.exports = {
 	ColumnSearch: {
 
@@ -18508,7 +18873,7 @@ module.exports = {
 	}
 }
 
-},{}],229:[function(require,module,exports){
+},{}],230:[function(require,module,exports){
 module.exports = {
   ProductName: {},
   Pid: {},
@@ -18548,7 +18913,7 @@ module.exports = {
   }
 }
 
-},{}],230:[function(require,module,exports){
+},{}],231:[function(require,module,exports){
 module.exports = {
     GiftWrap: {
         tooltip: "Please select 'Available' if you can provide gift wrapping service to your customer"
@@ -18640,7 +19005,7 @@ module.exports = {
     }
 }
 
-},{}],231:[function(require,module,exports){
+},{}],232:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -19040,7 +19405,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "<div class=modal-header><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Add Commission Rule</h3></div><div class=modal-body style=\"padding-top: 15px\"><div class=\"category-section column-4 ah-form\"><nc-tree-select nc-model=model nc-tree-select-tree=tree nc-tree-select-title=\"Global Category\"></nc-tree-select><div class=\"category-footer no-padding form-group\" style=\"margin: 30px 0px 0px 0px\"><div class=float-right><span class=float-left>Commission (%)</span><form name=form class=width-field-normal><input class=form-control ng-class=\"{ 'has-error' : $root.isInvalid(form.Commission) }\" name=Commission ng-model=Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-maxnumber=100 ng-minnumber=\"0\"><div class=\"help-block color-red float-left\"><div ng-if=\"form.Commission.$error.maxnumber || form.Commission.$error.minnumber\">Please enter between 0% and 100%</div><div ng-if=form.Commission.$error.pattern>Only numbers and decimals (up to 2 digits) allowed</div></div></form><button class=\"btn btn-blue btn-width-xl float-left\" ng-click=select() ng-disabled=\"form.$invalid || _.isEmpty(Commission) || _.isEmpty(model)\">Set</button></div></div></div></div>"
   );
  }];
-},{}],232:[function(require,module,exports){
+},{}],233:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -22972,11 +23337,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-},{}],233:[function(require,module,exports){
+},{}],234:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":232}],234:[function(require,module,exports){
+},{"./angular-animate":233}],235:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -23144,7 +23509,9561 @@ module.exports = 'ngAnimate';
 
 })();
 
-},{}],235:[function(require,module,exports){
+},{}],236:[function(require,module,exports){
+//! moment.js
+//! version : 2.11.1
+//! authors : Tim Wood, Iskren Chernev, Moment.js contributors
+//! license : MIT
+//! momentjs.com
+
+;(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+    typeof define === 'function' && define.amd ? define(factory) :
+    global.moment = factory()
+}(this, function () { 'use strict';
+
+    var hookCallback;
+
+    function utils_hooks__hooks () {
+        return hookCallback.apply(null, arguments);
+    }
+
+    // This is done to register the method called with moment()
+    // without creating circular dependencies.
+    function setHookCallback (callback) {
+        hookCallback = callback;
+    }
+
+    function isArray(input) {
+        return Object.prototype.toString.call(input) === '[object Array]';
+    }
+
+    function isDate(input) {
+        return input instanceof Date || Object.prototype.toString.call(input) === '[object Date]';
+    }
+
+    function map(arr, fn) {
+        var res = [], i;
+        for (i = 0; i < arr.length; ++i) {
+            res.push(fn(arr[i], i));
+        }
+        return res;
+    }
+
+    function hasOwnProp(a, b) {
+        return Object.prototype.hasOwnProperty.call(a, b);
+    }
+
+    function extend(a, b) {
+        for (var i in b) {
+            if (hasOwnProp(b, i)) {
+                a[i] = b[i];
+            }
+        }
+
+        if (hasOwnProp(b, 'toString')) {
+            a.toString = b.toString;
+        }
+
+        if (hasOwnProp(b, 'valueOf')) {
+            a.valueOf = b.valueOf;
+        }
+
+        return a;
+    }
+
+    function create_utc__createUTC (input, format, locale, strict) {
+        return createLocalOrUTC(input, format, locale, strict, true).utc();
+    }
+
+    function defaultParsingFlags() {
+        // We need to deep clone this object.
+        return {
+            empty           : false,
+            unusedTokens    : [],
+            unusedInput     : [],
+            overflow        : -2,
+            charsLeftOver   : 0,
+            nullInput       : false,
+            invalidMonth    : null,
+            invalidFormat   : false,
+            userInvalidated : false,
+            iso             : false
+        };
+    }
+
+    function getParsingFlags(m) {
+        if (m._pf == null) {
+            m._pf = defaultParsingFlags();
+        }
+        return m._pf;
+    }
+
+    function valid__isValid(m) {
+        if (m._isValid == null) {
+            var flags = getParsingFlags(m);
+            m._isValid = !isNaN(m._d.getTime()) &&
+                flags.overflow < 0 &&
+                !flags.empty &&
+                !flags.invalidMonth &&
+                !flags.invalidWeekday &&
+                !flags.nullInput &&
+                !flags.invalidFormat &&
+                !flags.userInvalidated;
+
+            if (m._strict) {
+                m._isValid = m._isValid &&
+                    flags.charsLeftOver === 0 &&
+                    flags.unusedTokens.length === 0 &&
+                    flags.bigHour === undefined;
+            }
+        }
+        return m._isValid;
+    }
+
+    function valid__createInvalid (flags) {
+        var m = create_utc__createUTC(NaN);
+        if (flags != null) {
+            extend(getParsingFlags(m), flags);
+        }
+        else {
+            getParsingFlags(m).userInvalidated = true;
+        }
+
+        return m;
+    }
+
+    function isUndefined(input) {
+        return input === void 0;
+    }
+
+    // Plugins that add properties should also add the key here (null value),
+    // so we can properly clone ourselves.
+    var momentProperties = utils_hooks__hooks.momentProperties = [];
+
+    function copyConfig(to, from) {
+        var i, prop, val;
+
+        if (!isUndefined(from._isAMomentObject)) {
+            to._isAMomentObject = from._isAMomentObject;
+        }
+        if (!isUndefined(from._i)) {
+            to._i = from._i;
+        }
+        if (!isUndefined(from._f)) {
+            to._f = from._f;
+        }
+        if (!isUndefined(from._l)) {
+            to._l = from._l;
+        }
+        if (!isUndefined(from._strict)) {
+            to._strict = from._strict;
+        }
+        if (!isUndefined(from._tzm)) {
+            to._tzm = from._tzm;
+        }
+        if (!isUndefined(from._isUTC)) {
+            to._isUTC = from._isUTC;
+        }
+        if (!isUndefined(from._offset)) {
+            to._offset = from._offset;
+        }
+        if (!isUndefined(from._pf)) {
+            to._pf = getParsingFlags(from);
+        }
+        if (!isUndefined(from._locale)) {
+            to._locale = from._locale;
+        }
+
+        if (momentProperties.length > 0) {
+            for (i in momentProperties) {
+                prop = momentProperties[i];
+                val = from[prop];
+                if (!isUndefined(val)) {
+                    to[prop] = val;
+                }
+            }
+        }
+
+        return to;
+    }
+
+    var updateInProgress = false;
+
+    // Moment prototype object
+    function Moment(config) {
+        copyConfig(this, config);
+        this._d = new Date(config._d != null ? config._d.getTime() : NaN);
+        // Prevent infinite loop in case updateOffset creates new moment
+        // objects.
+        if (updateInProgress === false) {
+            updateInProgress = true;
+            utils_hooks__hooks.updateOffset(this);
+            updateInProgress = false;
+        }
+    }
+
+    function isMoment (obj) {
+        return obj instanceof Moment || (obj != null && obj._isAMomentObject != null);
+    }
+
+    function absFloor (number) {
+        if (number < 0) {
+            return Math.ceil(number);
+        } else {
+            return Math.floor(number);
+        }
+    }
+
+    function toInt(argumentForCoercion) {
+        var coercedNumber = +argumentForCoercion,
+            value = 0;
+
+        if (coercedNumber !== 0 && isFinite(coercedNumber)) {
+            value = absFloor(coercedNumber);
+        }
+
+        return value;
+    }
+
+    // compare two arrays, return the number of differences
+    function compareArrays(array1, array2, dontConvert) {
+        var len = Math.min(array1.length, array2.length),
+            lengthDiff = Math.abs(array1.length - array2.length),
+            diffs = 0,
+            i;
+        for (i = 0; i < len; i++) {
+            if ((dontConvert && array1[i] !== array2[i]) ||
+                (!dontConvert && toInt(array1[i]) !== toInt(array2[i]))) {
+                diffs++;
+            }
+        }
+        return diffs + lengthDiff;
+    }
+
+    function Locale() {
+    }
+
+    // internal storage for locale config files
+    var locales = {};
+    var globalLocale;
+
+    function normalizeLocale(key) {
+        return key ? key.toLowerCase().replace('_', '-') : key;
+    }
+
+    // pick the locale from the array
+    // try ['en-au', 'en-gb'] as 'en-au', 'en-gb', 'en', as in move through the list trying each
+    // substring from most specific to least, but move to the next array item if it's a more specific variant than the current root
+    function chooseLocale(names) {
+        var i = 0, j, next, locale, split;
+
+        while (i < names.length) {
+            split = normalizeLocale(names[i]).split('-');
+            j = split.length;
+            next = normalizeLocale(names[i + 1]);
+            next = next ? next.split('-') : null;
+            while (j > 0) {
+                locale = loadLocale(split.slice(0, j).join('-'));
+                if (locale) {
+                    return locale;
+                }
+                if (next && next.length >= j && compareArrays(split, next, true) >= j - 1) {
+                    //the next array item is better than a shallower substring of this one
+                    break;
+                }
+                j--;
+            }
+            i++;
+        }
+        return null;
+    }
+
+    function loadLocale(name) {
+        var oldLocale = null;
+        // TODO: Find a better way to register and load all the locales in Node
+        if (!locales[name] && (typeof module !== 'undefined') &&
+                module && module.exports) {
+            try {
+                oldLocale = globalLocale._abbr;
+                require('./locale/' + name);
+                // because defineLocale currently also sets the global locale, we
+                // want to undo that for lazy loaded locales
+                locale_locales__getSetGlobalLocale(oldLocale);
+            } catch (e) { }
+        }
+        return locales[name];
+    }
+
+    // This function will load locale and then set the global locale.  If
+    // no arguments are passed in, it will simply return the current global
+    // locale key.
+    function locale_locales__getSetGlobalLocale (key, values) {
+        var data;
+        if (key) {
+            if (isUndefined(values)) {
+                data = locale_locales__getLocale(key);
+            }
+            else {
+                data = defineLocale(key, values);
+            }
+
+            if (data) {
+                // moment.duration._locale = moment._locale = data;
+                globalLocale = data;
+            }
+        }
+
+        return globalLocale._abbr;
+    }
+
+    function defineLocale (name, values) {
+        if (values !== null) {
+            values.abbr = name;
+            locales[name] = locales[name] || new Locale();
+            locales[name].set(values);
+
+            // backwards compat for now: also set the locale
+            locale_locales__getSetGlobalLocale(name);
+
+            return locales[name];
+        } else {
+            // useful for testing
+            delete locales[name];
+            return null;
+        }
+    }
+
+    // returns locale data
+    function locale_locales__getLocale (key) {
+        var locale;
+
+        if (key && key._locale && key._locale._abbr) {
+            key = key._locale._abbr;
+        }
+
+        if (!key) {
+            return globalLocale;
+        }
+
+        if (!isArray(key)) {
+            //short-circuit everything else
+            locale = loadLocale(key);
+            if (locale) {
+                return locale;
+            }
+            key = [key];
+        }
+
+        return chooseLocale(key);
+    }
+
+    var aliases = {};
+
+    function addUnitAlias (unit, shorthand) {
+        var lowerCase = unit.toLowerCase();
+        aliases[lowerCase] = aliases[lowerCase + 's'] = aliases[shorthand] = unit;
+    }
+
+    function normalizeUnits(units) {
+        return typeof units === 'string' ? aliases[units] || aliases[units.toLowerCase()] : undefined;
+    }
+
+    function normalizeObjectUnits(inputObject) {
+        var normalizedInput = {},
+            normalizedProp,
+            prop;
+
+        for (prop in inputObject) {
+            if (hasOwnProp(inputObject, prop)) {
+                normalizedProp = normalizeUnits(prop);
+                if (normalizedProp) {
+                    normalizedInput[normalizedProp] = inputObject[prop];
+                }
+            }
+        }
+
+        return normalizedInput;
+    }
+
+    function isFunction(input) {
+        return input instanceof Function || Object.prototype.toString.call(input) === '[object Function]';
+    }
+
+    function makeGetSet (unit, keepTime) {
+        return function (value) {
+            if (value != null) {
+                get_set__set(this, unit, value);
+                utils_hooks__hooks.updateOffset(this, keepTime);
+                return this;
+            } else {
+                return get_set__get(this, unit);
+            }
+        };
+    }
+
+    function get_set__get (mom, unit) {
+        return mom.isValid() ?
+            mom._d['get' + (mom._isUTC ? 'UTC' : '') + unit]() : NaN;
+    }
+
+    function get_set__set (mom, unit, value) {
+        if (mom.isValid()) {
+            mom._d['set' + (mom._isUTC ? 'UTC' : '') + unit](value);
+        }
+    }
+
+    // MOMENTS
+
+    function getSet (units, value) {
+        var unit;
+        if (typeof units === 'object') {
+            for (unit in units) {
+                this.set(unit, units[unit]);
+            }
+        } else {
+            units = normalizeUnits(units);
+            if (isFunction(this[units])) {
+                return this[units](value);
+            }
+        }
+        return this;
+    }
+
+    function zeroFill(number, targetLength, forceSign) {
+        var absNumber = '' + Math.abs(number),
+            zerosToFill = targetLength - absNumber.length,
+            sign = number >= 0;
+        return (sign ? (forceSign ? '+' : '') : '-') +
+            Math.pow(10, Math.max(0, zerosToFill)).toString().substr(1) + absNumber;
+    }
+
+    var formattingTokens = /(\[[^\[]*\])|(\\)?([Hh]mm(ss)?|Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Qo?|YYYYYY|YYYYY|YYYY|YY|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|mm?|ss?|S{1,9}|x|X|zz?|ZZ?|.)/g;
+
+    var localFormattingTokens = /(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g;
+
+    var formatFunctions = {};
+
+    var formatTokenFunctions = {};
+
+    // token:    'M'
+    // padded:   ['MM', 2]
+    // ordinal:  'Mo'
+    // callback: function () { this.month() + 1 }
+    function addFormatToken (token, padded, ordinal, callback) {
+        var func = callback;
+        if (typeof callback === 'string') {
+            func = function () {
+                return this[callback]();
+            };
+        }
+        if (token) {
+            formatTokenFunctions[token] = func;
+        }
+        if (padded) {
+            formatTokenFunctions[padded[0]] = function () {
+                return zeroFill(func.apply(this, arguments), padded[1], padded[2]);
+            };
+        }
+        if (ordinal) {
+            formatTokenFunctions[ordinal] = function () {
+                return this.localeData().ordinal(func.apply(this, arguments), token);
+            };
+        }
+    }
+
+    function removeFormattingTokens(input) {
+        if (input.match(/\[[\s\S]/)) {
+            return input.replace(/^\[|\]$/g, '');
+        }
+        return input.replace(/\\/g, '');
+    }
+
+    function makeFormatFunction(format) {
+        var array = format.match(formattingTokens), i, length;
+
+        for (i = 0, length = array.length; i < length; i++) {
+            if (formatTokenFunctions[array[i]]) {
+                array[i] = formatTokenFunctions[array[i]];
+            } else {
+                array[i] = removeFormattingTokens(array[i]);
+            }
+        }
+
+        return function (mom) {
+            var output = '';
+            for (i = 0; i < length; i++) {
+                output += array[i] instanceof Function ? array[i].call(mom, format) : array[i];
+            }
+            return output;
+        };
+    }
+
+    // format date using native date object
+    function formatMoment(m, format) {
+        if (!m.isValid()) {
+            return m.localeData().invalidDate();
+        }
+
+        format = expandFormat(format, m.localeData());
+        formatFunctions[format] = formatFunctions[format] || makeFormatFunction(format);
+
+        return formatFunctions[format](m);
+    }
+
+    function expandFormat(format, locale) {
+        var i = 5;
+
+        function replaceLongDateFormatTokens(input) {
+            return locale.longDateFormat(input) || input;
+        }
+
+        localFormattingTokens.lastIndex = 0;
+        while (i >= 0 && localFormattingTokens.test(format)) {
+            format = format.replace(localFormattingTokens, replaceLongDateFormatTokens);
+            localFormattingTokens.lastIndex = 0;
+            i -= 1;
+        }
+
+        return format;
+    }
+
+    var match1         = /\d/;            //       0 - 9
+    var match2         = /\d\d/;          //      00 - 99
+    var match3         = /\d{3}/;         //     000 - 999
+    var match4         = /\d{4}/;         //    0000 - 9999
+    var match6         = /[+-]?\d{6}/;    // -999999 - 999999
+    var match1to2      = /\d\d?/;         //       0 - 99
+    var match3to4      = /\d\d\d\d?/;     //     999 - 9999
+    var match5to6      = /\d\d\d\d\d\d?/; //   99999 - 999999
+    var match1to3      = /\d{1,3}/;       //       0 - 999
+    var match1to4      = /\d{1,4}/;       //       0 - 9999
+    var match1to6      = /[+-]?\d{1,6}/;  // -999999 - 999999
+
+    var matchUnsigned  = /\d+/;           //       0 - inf
+    var matchSigned    = /[+-]?\d+/;      //    -inf - inf
+
+    var matchOffset    = /Z|[+-]\d\d:?\d\d/gi; // +00:00 -00:00 +0000 -0000 or Z
+    var matchShortOffset = /Z|[+-]\d\d(?::?\d\d)?/gi; // +00 -00 +00:00 -00:00 +0000 -0000 or Z
+
+    var matchTimestamp = /[+-]?\d+(\.\d{1,3})?/; // 123456789 123456789.123
+
+    // any word (or two) characters or numbers including two/three word month in arabic.
+    // includes scottish gaelic two word and hyphenated months
+    var matchWord = /[0-9]*['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+|[\u0600-\u06FF\/]+(\s*?[\u0600-\u06FF]+){1,2}/i;
+
+
+    var regexes = {};
+
+    function addRegexToken (token, regex, strictRegex) {
+        regexes[token] = isFunction(regex) ? regex : function (isStrict, localeData) {
+            return (isStrict && strictRegex) ? strictRegex : regex;
+        };
+    }
+
+    function getParseRegexForToken (token, config) {
+        if (!hasOwnProp(regexes, token)) {
+            return new RegExp(unescapeFormat(token));
+        }
+
+        return regexes[token](config._strict, config._locale);
+    }
+
+    // Code from http://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
+    function unescapeFormat(s) {
+        return regexEscape(s.replace('\\', '').replace(/\\(\[)|\\(\])|\[([^\]\[]*)\]|\\(.)/g, function (matched, p1, p2, p3, p4) {
+            return p1 || p2 || p3 || p4;
+        }));
+    }
+
+    function regexEscape(s) {
+        return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    }
+
+    var tokens = {};
+
+    function addParseToken (token, callback) {
+        var i, func = callback;
+        if (typeof token === 'string') {
+            token = [token];
+        }
+        if (typeof callback === 'number') {
+            func = function (input, array) {
+                array[callback] = toInt(input);
+            };
+        }
+        for (i = 0; i < token.length; i++) {
+            tokens[token[i]] = func;
+        }
+    }
+
+    function addWeekParseToken (token, callback) {
+        addParseToken(token, function (input, array, config, token) {
+            config._w = config._w || {};
+            callback(input, config._w, config, token);
+        });
+    }
+
+    function addTimeToArrayFromToken(token, input, config) {
+        if (input != null && hasOwnProp(tokens, token)) {
+            tokens[token](input, config._a, config, token);
+        }
+    }
+
+    var YEAR = 0;
+    var MONTH = 1;
+    var DATE = 2;
+    var HOUR = 3;
+    var MINUTE = 4;
+    var SECOND = 5;
+    var MILLISECOND = 6;
+    var WEEK = 7;
+    var WEEKDAY = 8;
+
+    function daysInMonth(year, month) {
+        return new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+    }
+
+    // FORMATTING
+
+    addFormatToken('M', ['MM', 2], 'Mo', function () {
+        return this.month() + 1;
+    });
+
+    addFormatToken('MMM', 0, 0, function (format) {
+        return this.localeData().monthsShort(this, format);
+    });
+
+    addFormatToken('MMMM', 0, 0, function (format) {
+        return this.localeData().months(this, format);
+    });
+
+    // ALIASES
+
+    addUnitAlias('month', 'M');
+
+    // PARSING
+
+    addRegexToken('M',    match1to2);
+    addRegexToken('MM',   match1to2, match2);
+    addRegexToken('MMM',  function (isStrict, locale) {
+        return locale.monthsShortRegex(isStrict);
+    });
+    addRegexToken('MMMM', function (isStrict, locale) {
+        return locale.monthsRegex(isStrict);
+    });
+
+    addParseToken(['M', 'MM'], function (input, array) {
+        array[MONTH] = toInt(input) - 1;
+    });
+
+    addParseToken(['MMM', 'MMMM'], function (input, array, config, token) {
+        var month = config._locale.monthsParse(input, token, config._strict);
+        // if we didn't find a month name, mark the date as invalid.
+        if (month != null) {
+            array[MONTH] = month;
+        } else {
+            getParsingFlags(config).invalidMonth = input;
+        }
+    });
+
+    // LOCALES
+
+    var MONTHS_IN_FORMAT = /D[oD]?(\[[^\[\]]*\]|\s+)+MMMM?/;
+    var defaultLocaleMonths = 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_');
+    function localeMonths (m, format) {
+        return isArray(this._months) ? this._months[m.month()] :
+            this._months[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
+    }
+
+    var defaultLocaleMonthsShort = 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_');
+    function localeMonthsShort (m, format) {
+        return isArray(this._monthsShort) ? this._monthsShort[m.month()] :
+            this._monthsShort[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
+    }
+
+    function localeMonthsParse (monthName, format, strict) {
+        var i, mom, regex;
+
+        if (!this._monthsParse) {
+            this._monthsParse = [];
+            this._longMonthsParse = [];
+            this._shortMonthsParse = [];
+        }
+
+        for (i = 0; i < 12; i++) {
+            // make the regex if we don't have it already
+            mom = create_utc__createUTC([2000, i]);
+            if (strict && !this._longMonthsParse[i]) {
+                this._longMonthsParse[i] = new RegExp('^' + this.months(mom, '').replace('.', '') + '$', 'i');
+                this._shortMonthsParse[i] = new RegExp('^' + this.monthsShort(mom, '').replace('.', '') + '$', 'i');
+            }
+            if (!strict && !this._monthsParse[i]) {
+                regex = '^' + this.months(mom, '') + '|^' + this.monthsShort(mom, '');
+                this._monthsParse[i] = new RegExp(regex.replace('.', ''), 'i');
+            }
+            // test the regex
+            if (strict && format === 'MMMM' && this._longMonthsParse[i].test(monthName)) {
+                return i;
+            } else if (strict && format === 'MMM' && this._shortMonthsParse[i].test(monthName)) {
+                return i;
+            } else if (!strict && this._monthsParse[i].test(monthName)) {
+                return i;
+            }
+        }
+    }
+
+    // MOMENTS
+
+    function setMonth (mom, value) {
+        var dayOfMonth;
+
+        if (!mom.isValid()) {
+            // No op
+            return mom;
+        }
+
+        // TODO: Move this out of here!
+        if (typeof value === 'string') {
+            value = mom.localeData().monthsParse(value);
+            // TODO: Another silent failure?
+            if (typeof value !== 'number') {
+                return mom;
+            }
+        }
+
+        dayOfMonth = Math.min(mom.date(), daysInMonth(mom.year(), value));
+        mom._d['set' + (mom._isUTC ? 'UTC' : '') + 'Month'](value, dayOfMonth);
+        return mom;
+    }
+
+    function getSetMonth (value) {
+        if (value != null) {
+            setMonth(this, value);
+            utils_hooks__hooks.updateOffset(this, true);
+            return this;
+        } else {
+            return get_set__get(this, 'Month');
+        }
+    }
+
+    function getDaysInMonth () {
+        return daysInMonth(this.year(), this.month());
+    }
+
+    var defaultMonthsShortRegex = matchWord;
+    function monthsShortRegex (isStrict) {
+        if (this._monthsParseExact) {
+            if (!hasOwnProp(this, '_monthsRegex')) {
+                computeMonthsParse.call(this);
+            }
+            if (isStrict) {
+                return this._monthsShortStrictRegex;
+            } else {
+                return this._monthsShortRegex;
+            }
+        } else {
+            return this._monthsShortStrictRegex && isStrict ?
+                this._monthsShortStrictRegex : this._monthsShortRegex;
+        }
+    }
+
+    var defaultMonthsRegex = matchWord;
+    function monthsRegex (isStrict) {
+        if (this._monthsParseExact) {
+            if (!hasOwnProp(this, '_monthsRegex')) {
+                computeMonthsParse.call(this);
+            }
+            if (isStrict) {
+                return this._monthsStrictRegex;
+            } else {
+                return this._monthsRegex;
+            }
+        } else {
+            return this._monthsStrictRegex && isStrict ?
+                this._monthsStrictRegex : this._monthsRegex;
+        }
+    }
+
+    function computeMonthsParse () {
+        function cmpLenRev(a, b) {
+            return b.length - a.length;
+        }
+
+        var shortPieces = [], longPieces = [], mixedPieces = [],
+            i, mom;
+        for (i = 0; i < 12; i++) {
+            // make the regex if we don't have it already
+            mom = create_utc__createUTC([2000, i]);
+            shortPieces.push(this.monthsShort(mom, ''));
+            longPieces.push(this.months(mom, ''));
+            mixedPieces.push(this.months(mom, ''));
+            mixedPieces.push(this.monthsShort(mom, ''));
+        }
+        // Sorting makes sure if one month (or abbr) is a prefix of another it
+        // will match the longer piece.
+        shortPieces.sort(cmpLenRev);
+        longPieces.sort(cmpLenRev);
+        mixedPieces.sort(cmpLenRev);
+        for (i = 0; i < 12; i++) {
+            shortPieces[i] = regexEscape(shortPieces[i]);
+            longPieces[i] = regexEscape(longPieces[i]);
+            mixedPieces[i] = regexEscape(mixedPieces[i]);
+        }
+
+        this._monthsRegex = new RegExp('^(' + mixedPieces.join('|') + ')', 'i');
+        this._monthsShortRegex = this._monthsRegex;
+        this._monthsStrictRegex = new RegExp('^(' + longPieces.join('|') + ')$', 'i');
+        this._monthsShortStrictRegex = new RegExp('^(' + shortPieces.join('|') + ')$', 'i');
+    }
+
+    function checkOverflow (m) {
+        var overflow;
+        var a = m._a;
+
+        if (a && getParsingFlags(m).overflow === -2) {
+            overflow =
+                a[MONTH]       < 0 || a[MONTH]       > 11  ? MONTH :
+                a[DATE]        < 1 || a[DATE]        > daysInMonth(a[YEAR], a[MONTH]) ? DATE :
+                a[HOUR]        < 0 || a[HOUR]        > 24 || (a[HOUR] === 24 && (a[MINUTE] !== 0 || a[SECOND] !== 0 || a[MILLISECOND] !== 0)) ? HOUR :
+                a[MINUTE]      < 0 || a[MINUTE]      > 59  ? MINUTE :
+                a[SECOND]      < 0 || a[SECOND]      > 59  ? SECOND :
+                a[MILLISECOND] < 0 || a[MILLISECOND] > 999 ? MILLISECOND :
+                -1;
+
+            if (getParsingFlags(m)._overflowDayOfYear && (overflow < YEAR || overflow > DATE)) {
+                overflow = DATE;
+            }
+            if (getParsingFlags(m)._overflowWeeks && overflow === -1) {
+                overflow = WEEK;
+            }
+            if (getParsingFlags(m)._overflowWeekday && overflow === -1) {
+                overflow = WEEKDAY;
+            }
+
+            getParsingFlags(m).overflow = overflow;
+        }
+
+        return m;
+    }
+
+    function warn(msg) {
+        if (utils_hooks__hooks.suppressDeprecationWarnings === false &&
+                (typeof console !==  'undefined') && console.warn) {
+            console.warn('Deprecation warning: ' + msg);
+        }
+    }
+
+    function deprecate(msg, fn) {
+        var firstTime = true;
+
+        return extend(function () {
+            if (firstTime) {
+                warn(msg + '\nArguments: ' + Array.prototype.slice.call(arguments).join(', ') + '\n' + (new Error()).stack);
+                firstTime = false;
+            }
+            return fn.apply(this, arguments);
+        }, fn);
+    }
+
+    var deprecations = {};
+
+    function deprecateSimple(name, msg) {
+        if (!deprecations[name]) {
+            warn(msg);
+            deprecations[name] = true;
+        }
+    }
+
+    utils_hooks__hooks.suppressDeprecationWarnings = false;
+
+    // iso 8601 regex
+    // 0000-00-00 0000-W00 or 0000-W00-0 + T + 00 or 00:00 or 00:00:00 or 00:00:00.000 + +00:00 or +0000 or +00)
+    var extendedIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})-(?:\d\d-\d\d|W\d\d-\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?::\d\d(?::\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?/;
+    var basicIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})(?:\d\d\d\d|W\d\d\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?:\d\d(?:\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?/;
+
+    var tzRegex = /Z|[+-]\d\d(?::?\d\d)?/;
+
+    var isoDates = [
+        ['YYYYYY-MM-DD', /[+-]\d{6}-\d\d-\d\d/],
+        ['YYYY-MM-DD', /\d{4}-\d\d-\d\d/],
+        ['GGGG-[W]WW-E', /\d{4}-W\d\d-\d/],
+        ['GGGG-[W]WW', /\d{4}-W\d\d/, false],
+        ['YYYY-DDD', /\d{4}-\d{3}/],
+        ['YYYY-MM', /\d{4}-\d\d/, false],
+        ['YYYYYYMMDD', /[+-]\d{10}/],
+        ['YYYYMMDD', /\d{8}/],
+        // YYYYMM is NOT allowed by the standard
+        ['GGGG[W]WWE', /\d{4}W\d{3}/],
+        ['GGGG[W]WW', /\d{4}W\d{2}/, false],
+        ['YYYYDDD', /\d{7}/]
+    ];
+
+    // iso time formats and regexes
+    var isoTimes = [
+        ['HH:mm:ss.SSSS', /\d\d:\d\d:\d\d\.\d+/],
+        ['HH:mm:ss,SSSS', /\d\d:\d\d:\d\d,\d+/],
+        ['HH:mm:ss', /\d\d:\d\d:\d\d/],
+        ['HH:mm', /\d\d:\d\d/],
+        ['HHmmss.SSSS', /\d\d\d\d\d\d\.\d+/],
+        ['HHmmss,SSSS', /\d\d\d\d\d\d,\d+/],
+        ['HHmmss', /\d\d\d\d\d\d/],
+        ['HHmm', /\d\d\d\d/],
+        ['HH', /\d\d/]
+    ];
+
+    var aspNetJsonRegex = /^\/?Date\((\-?\d+)/i;
+
+    // date from iso format
+    function configFromISO(config) {
+        var i, l,
+            string = config._i,
+            match = extendedIsoRegex.exec(string) || basicIsoRegex.exec(string),
+            allowTime, dateFormat, timeFormat, tzFormat;
+
+        if (match) {
+            getParsingFlags(config).iso = true;
+
+            for (i = 0, l = isoDates.length; i < l; i++) {
+                if (isoDates[i][1].exec(match[1])) {
+                    dateFormat = isoDates[i][0];
+                    allowTime = isoDates[i][2] !== false;
+                    break;
+                }
+            }
+            if (dateFormat == null) {
+                config._isValid = false;
+                return;
+            }
+            if (match[3]) {
+                for (i = 0, l = isoTimes.length; i < l; i++) {
+                    if (isoTimes[i][1].exec(match[3])) {
+                        // match[2] should be 'T' or space
+                        timeFormat = (match[2] || ' ') + isoTimes[i][0];
+                        break;
+                    }
+                }
+                if (timeFormat == null) {
+                    config._isValid = false;
+                    return;
+                }
+            }
+            if (!allowTime && timeFormat != null) {
+                config._isValid = false;
+                return;
+            }
+            if (match[4]) {
+                if (tzRegex.exec(match[4])) {
+                    tzFormat = 'Z';
+                } else {
+                    config._isValid = false;
+                    return;
+                }
+            }
+            config._f = dateFormat + (timeFormat || '') + (tzFormat || '');
+            configFromStringAndFormat(config);
+        } else {
+            config._isValid = false;
+        }
+    }
+
+    // date from iso format or fallback
+    function configFromString(config) {
+        var matched = aspNetJsonRegex.exec(config._i);
+
+        if (matched !== null) {
+            config._d = new Date(+matched[1]);
+            return;
+        }
+
+        configFromISO(config);
+        if (config._isValid === false) {
+            delete config._isValid;
+            utils_hooks__hooks.createFromInputFallback(config);
+        }
+    }
+
+    utils_hooks__hooks.createFromInputFallback = deprecate(
+        'moment construction falls back to js Date. This is ' +
+        'discouraged and will be removed in upcoming major ' +
+        'release. Please refer to ' +
+        'https://github.com/moment/moment/issues/1407 for more info.',
+        function (config) {
+            config._d = new Date(config._i + (config._useUTC ? ' UTC' : ''));
+        }
+    );
+
+    function createDate (y, m, d, h, M, s, ms) {
+        //can't just apply() to create a date:
+        //http://stackoverflow.com/questions/181348/instantiating-a-javascript-object-by-calling-prototype-constructor-apply
+        var date = new Date(y, m, d, h, M, s, ms);
+
+        //the date constructor remaps years 0-99 to 1900-1999
+        if (y < 100 && y >= 0 && isFinite(date.getFullYear())) {
+            date.setFullYear(y);
+        }
+        return date;
+    }
+
+    function createUTCDate (y) {
+        var date = new Date(Date.UTC.apply(null, arguments));
+
+        //the Date.UTC function remaps years 0-99 to 1900-1999
+        if (y < 100 && y >= 0 && isFinite(date.getUTCFullYear())) {
+            date.setUTCFullYear(y);
+        }
+        return date;
+    }
+
+    // FORMATTING
+
+    addFormatToken('Y', 0, 0, function () {
+        var y = this.year();
+        return y <= 9999 ? '' + y : '+' + y;
+    });
+
+    addFormatToken(0, ['YY', 2], 0, function () {
+        return this.year() % 100;
+    });
+
+    addFormatToken(0, ['YYYY',   4],       0, 'year');
+    addFormatToken(0, ['YYYYY',  5],       0, 'year');
+    addFormatToken(0, ['YYYYYY', 6, true], 0, 'year');
+
+    // ALIASES
+
+    addUnitAlias('year', 'y');
+
+    // PARSING
+
+    addRegexToken('Y',      matchSigned);
+    addRegexToken('YY',     match1to2, match2);
+    addRegexToken('YYYY',   match1to4, match4);
+    addRegexToken('YYYYY',  match1to6, match6);
+    addRegexToken('YYYYYY', match1to6, match6);
+
+    addParseToken(['YYYYY', 'YYYYYY'], YEAR);
+    addParseToken('YYYY', function (input, array) {
+        array[YEAR] = input.length === 2 ? utils_hooks__hooks.parseTwoDigitYear(input) : toInt(input);
+    });
+    addParseToken('YY', function (input, array) {
+        array[YEAR] = utils_hooks__hooks.parseTwoDigitYear(input);
+    });
+    addParseToken('Y', function (input, array) {
+        array[YEAR] = parseInt(input, 10);
+    });
+
+    // HELPERS
+
+    function daysInYear(year) {
+        return isLeapYear(year) ? 366 : 365;
+    }
+
+    function isLeapYear(year) {
+        return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+    }
+
+    // HOOKS
+
+    utils_hooks__hooks.parseTwoDigitYear = function (input) {
+        return toInt(input) + (toInt(input) > 68 ? 1900 : 2000);
+    };
+
+    // MOMENTS
+
+    var getSetYear = makeGetSet('FullYear', false);
+
+    function getIsLeapYear () {
+        return isLeapYear(this.year());
+    }
+
+    // start-of-first-week - start-of-year
+    function firstWeekOffset(year, dow, doy) {
+        var // first-week day -- which january is always in the first week (4 for iso, 1 for other)
+            fwd = 7 + dow - doy,
+            // first-week day local weekday -- which local weekday is fwd
+            fwdlw = (7 + createUTCDate(year, 0, fwd).getUTCDay() - dow) % 7;
+
+        return -fwdlw + fwd - 1;
+    }
+
+    //http://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_year.2C_week_number_and_weekday
+    function dayOfYearFromWeeks(year, week, weekday, dow, doy) {
+        var localWeekday = (7 + weekday - dow) % 7,
+            weekOffset = firstWeekOffset(year, dow, doy),
+            dayOfYear = 1 + 7 * (week - 1) + localWeekday + weekOffset,
+            resYear, resDayOfYear;
+
+        if (dayOfYear <= 0) {
+            resYear = year - 1;
+            resDayOfYear = daysInYear(resYear) + dayOfYear;
+        } else if (dayOfYear > daysInYear(year)) {
+            resYear = year + 1;
+            resDayOfYear = dayOfYear - daysInYear(year);
+        } else {
+            resYear = year;
+            resDayOfYear = dayOfYear;
+        }
+
+        return {
+            year: resYear,
+            dayOfYear: resDayOfYear
+        };
+    }
+
+    function weekOfYear(mom, dow, doy) {
+        var weekOffset = firstWeekOffset(mom.year(), dow, doy),
+            week = Math.floor((mom.dayOfYear() - weekOffset - 1) / 7) + 1,
+            resWeek, resYear;
+
+        if (week < 1) {
+            resYear = mom.year() - 1;
+            resWeek = week + weeksInYear(resYear, dow, doy);
+        } else if (week > weeksInYear(mom.year(), dow, doy)) {
+            resWeek = week - weeksInYear(mom.year(), dow, doy);
+            resYear = mom.year() + 1;
+        } else {
+            resYear = mom.year();
+            resWeek = week;
+        }
+
+        return {
+            week: resWeek,
+            year: resYear
+        };
+    }
+
+    function weeksInYear(year, dow, doy) {
+        var weekOffset = firstWeekOffset(year, dow, doy),
+            weekOffsetNext = firstWeekOffset(year + 1, dow, doy);
+        return (daysInYear(year) - weekOffset + weekOffsetNext) / 7;
+    }
+
+    // Pick the first defined of two or three arguments.
+    function defaults(a, b, c) {
+        if (a != null) {
+            return a;
+        }
+        if (b != null) {
+            return b;
+        }
+        return c;
+    }
+
+    function currentDateArray(config) {
+        // hooks is actually the exported moment object
+        var nowValue = new Date(utils_hooks__hooks.now());
+        if (config._useUTC) {
+            return [nowValue.getUTCFullYear(), nowValue.getUTCMonth(), nowValue.getUTCDate()];
+        }
+        return [nowValue.getFullYear(), nowValue.getMonth(), nowValue.getDate()];
+    }
+
+    // convert an array to a date.
+    // the array should mirror the parameters below
+    // note: all values past the year are optional and will default to the lowest possible value.
+    // [year, month, day , hour, minute, second, millisecond]
+    function configFromArray (config) {
+        var i, date, input = [], currentDate, yearToUse;
+
+        if (config._d) {
+            return;
+        }
+
+        currentDate = currentDateArray(config);
+
+        //compute day of the year from weeks and weekdays
+        if (config._w && config._a[DATE] == null && config._a[MONTH] == null) {
+            dayOfYearFromWeekInfo(config);
+        }
+
+        //if the day of the year is set, figure out what it is
+        if (config._dayOfYear) {
+            yearToUse = defaults(config._a[YEAR], currentDate[YEAR]);
+
+            if (config._dayOfYear > daysInYear(yearToUse)) {
+                getParsingFlags(config)._overflowDayOfYear = true;
+            }
+
+            date = createUTCDate(yearToUse, 0, config._dayOfYear);
+            config._a[MONTH] = date.getUTCMonth();
+            config._a[DATE] = date.getUTCDate();
+        }
+
+        // Default to current date.
+        // * if no year, month, day of month are given, default to today
+        // * if day of month is given, default month and year
+        // * if month is given, default only year
+        // * if year is given, don't default anything
+        for (i = 0; i < 3 && config._a[i] == null; ++i) {
+            config._a[i] = input[i] = currentDate[i];
+        }
+
+        // Zero out whatever was not defaulted, including time
+        for (; i < 7; i++) {
+            config._a[i] = input[i] = (config._a[i] == null) ? (i === 2 ? 1 : 0) : config._a[i];
+        }
+
+        // Check for 24:00:00.000
+        if (config._a[HOUR] === 24 &&
+                config._a[MINUTE] === 0 &&
+                config._a[SECOND] === 0 &&
+                config._a[MILLISECOND] === 0) {
+            config._nextDay = true;
+            config._a[HOUR] = 0;
+        }
+
+        config._d = (config._useUTC ? createUTCDate : createDate).apply(null, input);
+        // Apply timezone offset from input. The actual utcOffset can be changed
+        // with parseZone.
+        if (config._tzm != null) {
+            config._d.setUTCMinutes(config._d.getUTCMinutes() - config._tzm);
+        }
+
+        if (config._nextDay) {
+            config._a[HOUR] = 24;
+        }
+    }
+
+    function dayOfYearFromWeekInfo(config) {
+        var w, weekYear, week, weekday, dow, doy, temp, weekdayOverflow;
+
+        w = config._w;
+        if (w.GG != null || w.W != null || w.E != null) {
+            dow = 1;
+            doy = 4;
+
+            // TODO: We need to take the current isoWeekYear, but that depends on
+            // how we interpret now (local, utc, fixed offset). So create
+            // a now version of current config (take local/utc/offset flags, and
+            // create now).
+            weekYear = defaults(w.GG, config._a[YEAR], weekOfYear(local__createLocal(), 1, 4).year);
+            week = defaults(w.W, 1);
+            weekday = defaults(w.E, 1);
+            if (weekday < 1 || weekday > 7) {
+                weekdayOverflow = true;
+            }
+        } else {
+            dow = config._locale._week.dow;
+            doy = config._locale._week.doy;
+
+            weekYear = defaults(w.gg, config._a[YEAR], weekOfYear(local__createLocal(), dow, doy).year);
+            week = defaults(w.w, 1);
+
+            if (w.d != null) {
+                // weekday -- low day numbers are considered next week
+                weekday = w.d;
+                if (weekday < 0 || weekday > 6) {
+                    weekdayOverflow = true;
+                }
+            } else if (w.e != null) {
+                // local weekday -- counting starts from begining of week
+                weekday = w.e + dow;
+                if (w.e < 0 || w.e > 6) {
+                    weekdayOverflow = true;
+                }
+            } else {
+                // default to begining of week
+                weekday = dow;
+            }
+        }
+        if (week < 1 || week > weeksInYear(weekYear, dow, doy)) {
+            getParsingFlags(config)._overflowWeeks = true;
+        } else if (weekdayOverflow != null) {
+            getParsingFlags(config)._overflowWeekday = true;
+        } else {
+            temp = dayOfYearFromWeeks(weekYear, week, weekday, dow, doy);
+            config._a[YEAR] = temp.year;
+            config._dayOfYear = temp.dayOfYear;
+        }
+    }
+
+    // constant that refers to the ISO standard
+    utils_hooks__hooks.ISO_8601 = function () {};
+
+    // date from string and format string
+    function configFromStringAndFormat(config) {
+        // TODO: Move this to another part of the creation flow to prevent circular deps
+        if (config._f === utils_hooks__hooks.ISO_8601) {
+            configFromISO(config);
+            return;
+        }
+
+        config._a = [];
+        getParsingFlags(config).empty = true;
+
+        // This array is used to make a Date, either with `new Date` or `Date.UTC`
+        var string = '' + config._i,
+            i, parsedInput, tokens, token, skipped,
+            stringLength = string.length,
+            totalParsedInputLength = 0;
+
+        tokens = expandFormat(config._f, config._locale).match(formattingTokens) || [];
+
+        for (i = 0; i < tokens.length; i++) {
+            token = tokens[i];
+            parsedInput = (string.match(getParseRegexForToken(token, config)) || [])[0];
+            // console.log('token', token, 'parsedInput', parsedInput,
+            //         'regex', getParseRegexForToken(token, config));
+            if (parsedInput) {
+                skipped = string.substr(0, string.indexOf(parsedInput));
+                if (skipped.length > 0) {
+                    getParsingFlags(config).unusedInput.push(skipped);
+                }
+                string = string.slice(string.indexOf(parsedInput) + parsedInput.length);
+                totalParsedInputLength += parsedInput.length;
+            }
+            // don't parse if it's not a known token
+            if (formatTokenFunctions[token]) {
+                if (parsedInput) {
+                    getParsingFlags(config).empty = false;
+                }
+                else {
+                    getParsingFlags(config).unusedTokens.push(token);
+                }
+                addTimeToArrayFromToken(token, parsedInput, config);
+            }
+            else if (config._strict && !parsedInput) {
+                getParsingFlags(config).unusedTokens.push(token);
+            }
+        }
+
+        // add remaining unparsed input length to the string
+        getParsingFlags(config).charsLeftOver = stringLength - totalParsedInputLength;
+        if (string.length > 0) {
+            getParsingFlags(config).unusedInput.push(string);
+        }
+
+        // clear _12h flag if hour is <= 12
+        if (getParsingFlags(config).bigHour === true &&
+                config._a[HOUR] <= 12 &&
+                config._a[HOUR] > 0) {
+            getParsingFlags(config).bigHour = undefined;
+        }
+        // handle meridiem
+        config._a[HOUR] = meridiemFixWrap(config._locale, config._a[HOUR], config._meridiem);
+
+        configFromArray(config);
+        checkOverflow(config);
+    }
+
+
+    function meridiemFixWrap (locale, hour, meridiem) {
+        var isPm;
+
+        if (meridiem == null) {
+            // nothing to do
+            return hour;
+        }
+        if (locale.meridiemHour != null) {
+            return locale.meridiemHour(hour, meridiem);
+        } else if (locale.isPM != null) {
+            // Fallback
+            isPm = locale.isPM(meridiem);
+            if (isPm && hour < 12) {
+                hour += 12;
+            }
+            if (!isPm && hour === 12) {
+                hour = 0;
+            }
+            return hour;
+        } else {
+            // this is not supposed to happen
+            return hour;
+        }
+    }
+
+    // date from string and array of format strings
+    function configFromStringAndArray(config) {
+        var tempConfig,
+            bestMoment,
+
+            scoreToBeat,
+            i,
+            currentScore;
+
+        if (config._f.length === 0) {
+            getParsingFlags(config).invalidFormat = true;
+            config._d = new Date(NaN);
+            return;
+        }
+
+        for (i = 0; i < config._f.length; i++) {
+            currentScore = 0;
+            tempConfig = copyConfig({}, config);
+            if (config._useUTC != null) {
+                tempConfig._useUTC = config._useUTC;
+            }
+            tempConfig._f = config._f[i];
+            configFromStringAndFormat(tempConfig);
+
+            if (!valid__isValid(tempConfig)) {
+                continue;
+            }
+
+            // if there is any input that was not parsed add a penalty for that format
+            currentScore += getParsingFlags(tempConfig).charsLeftOver;
+
+            //or tokens
+            currentScore += getParsingFlags(tempConfig).unusedTokens.length * 10;
+
+            getParsingFlags(tempConfig).score = currentScore;
+
+            if (scoreToBeat == null || currentScore < scoreToBeat) {
+                scoreToBeat = currentScore;
+                bestMoment = tempConfig;
+            }
+        }
+
+        extend(config, bestMoment || tempConfig);
+    }
+
+    function configFromObject(config) {
+        if (config._d) {
+            return;
+        }
+
+        var i = normalizeObjectUnits(config._i);
+        config._a = map([i.year, i.month, i.day || i.date, i.hour, i.minute, i.second, i.millisecond], function (obj) {
+            return obj && parseInt(obj, 10);
+        });
+
+        configFromArray(config);
+    }
+
+    function createFromConfig (config) {
+        var res = new Moment(checkOverflow(prepareConfig(config)));
+        if (res._nextDay) {
+            // Adding is smart enough around DST
+            res.add(1, 'd');
+            res._nextDay = undefined;
+        }
+
+        return res;
+    }
+
+    function prepareConfig (config) {
+        var input = config._i,
+            format = config._f;
+
+        config._locale = config._locale || locale_locales__getLocale(config._l);
+
+        if (input === null || (format === undefined && input === '')) {
+            return valid__createInvalid({nullInput: true});
+        }
+
+        if (typeof input === 'string') {
+            config._i = input = config._locale.preparse(input);
+        }
+
+        if (isMoment(input)) {
+            return new Moment(checkOverflow(input));
+        } else if (isArray(format)) {
+            configFromStringAndArray(config);
+        } else if (format) {
+            configFromStringAndFormat(config);
+        } else if (isDate(input)) {
+            config._d = input;
+        } else {
+            configFromInput(config);
+        }
+
+        if (!valid__isValid(config)) {
+            config._d = null;
+        }
+
+        return config;
+    }
+
+    function configFromInput(config) {
+        var input = config._i;
+        if (input === undefined) {
+            config._d = new Date(utils_hooks__hooks.now());
+        } else if (isDate(input)) {
+            config._d = new Date(+input);
+        } else if (typeof input === 'string') {
+            configFromString(config);
+        } else if (isArray(input)) {
+            config._a = map(input.slice(0), function (obj) {
+                return parseInt(obj, 10);
+            });
+            configFromArray(config);
+        } else if (typeof(input) === 'object') {
+            configFromObject(config);
+        } else if (typeof(input) === 'number') {
+            // from milliseconds
+            config._d = new Date(input);
+        } else {
+            utils_hooks__hooks.createFromInputFallback(config);
+        }
+    }
+
+    function createLocalOrUTC (input, format, locale, strict, isUTC) {
+        var c = {};
+
+        if (typeof(locale) === 'boolean') {
+            strict = locale;
+            locale = undefined;
+        }
+        // object construction must be done this way.
+        // https://github.com/moment/moment/issues/1423
+        c._isAMomentObject = true;
+        c._useUTC = c._isUTC = isUTC;
+        c._l = locale;
+        c._i = input;
+        c._f = format;
+        c._strict = strict;
+
+        return createFromConfig(c);
+    }
+
+    function local__createLocal (input, format, locale, strict) {
+        return createLocalOrUTC(input, format, locale, strict, false);
+    }
+
+    var prototypeMin = deprecate(
+         'moment().min is deprecated, use moment.min instead. https://github.com/moment/moment/issues/1548',
+         function () {
+             var other = local__createLocal.apply(null, arguments);
+             if (this.isValid() && other.isValid()) {
+                 return other < this ? this : other;
+             } else {
+                 return valid__createInvalid();
+             }
+         }
+     );
+
+    var prototypeMax = deprecate(
+        'moment().max is deprecated, use moment.max instead. https://github.com/moment/moment/issues/1548',
+        function () {
+            var other = local__createLocal.apply(null, arguments);
+            if (this.isValid() && other.isValid()) {
+                return other > this ? this : other;
+            } else {
+                return valid__createInvalid();
+            }
+        }
+    );
+
+    // Pick a moment m from moments so that m[fn](other) is true for all
+    // other. This relies on the function fn to be transitive.
+    //
+    // moments should either be an array of moment objects or an array, whose
+    // first element is an array of moment objects.
+    function pickBy(fn, moments) {
+        var res, i;
+        if (moments.length === 1 && isArray(moments[0])) {
+            moments = moments[0];
+        }
+        if (!moments.length) {
+            return local__createLocal();
+        }
+        res = moments[0];
+        for (i = 1; i < moments.length; ++i) {
+            if (!moments[i].isValid() || moments[i][fn](res)) {
+                res = moments[i];
+            }
+        }
+        return res;
+    }
+
+    // TODO: Use [].sort instead?
+    function min () {
+        var args = [].slice.call(arguments, 0);
+
+        return pickBy('isBefore', args);
+    }
+
+    function max () {
+        var args = [].slice.call(arguments, 0);
+
+        return pickBy('isAfter', args);
+    }
+
+    var now = function () {
+        return Date.now ? Date.now() : +(new Date());
+    };
+
+    function Duration (duration) {
+        var normalizedInput = normalizeObjectUnits(duration),
+            years = normalizedInput.year || 0,
+            quarters = normalizedInput.quarter || 0,
+            months = normalizedInput.month || 0,
+            weeks = normalizedInput.week || 0,
+            days = normalizedInput.day || 0,
+            hours = normalizedInput.hour || 0,
+            minutes = normalizedInput.minute || 0,
+            seconds = normalizedInput.second || 0,
+            milliseconds = normalizedInput.millisecond || 0;
+
+        // representation for dateAddRemove
+        this._milliseconds = +milliseconds +
+            seconds * 1e3 + // 1000
+            minutes * 6e4 + // 1000 * 60
+            hours * 36e5; // 1000 * 60 * 60
+        // Because of dateAddRemove treats 24 hours as different from a
+        // day when working around DST, we need to store them separately
+        this._days = +days +
+            weeks * 7;
+        // It is impossible translate months into days without knowing
+        // which months you are are talking about, so we have to store
+        // it separately.
+        this._months = +months +
+            quarters * 3 +
+            years * 12;
+
+        this._data = {};
+
+        this._locale = locale_locales__getLocale();
+
+        this._bubble();
+    }
+
+    function isDuration (obj) {
+        return obj instanceof Duration;
+    }
+
+    // FORMATTING
+
+    function offset (token, separator) {
+        addFormatToken(token, 0, 0, function () {
+            var offset = this.utcOffset();
+            var sign = '+';
+            if (offset < 0) {
+                offset = -offset;
+                sign = '-';
+            }
+            return sign + zeroFill(~~(offset / 60), 2) + separator + zeroFill(~~(offset) % 60, 2);
+        });
+    }
+
+    offset('Z', ':');
+    offset('ZZ', '');
+
+    // PARSING
+
+    addRegexToken('Z',  matchShortOffset);
+    addRegexToken('ZZ', matchShortOffset);
+    addParseToken(['Z', 'ZZ'], function (input, array, config) {
+        config._useUTC = true;
+        config._tzm = offsetFromString(matchShortOffset, input);
+    });
+
+    // HELPERS
+
+    // timezone chunker
+    // '+10:00' > ['10',  '00']
+    // '-1530'  > ['-15', '30']
+    var chunkOffset = /([\+\-]|\d\d)/gi;
+
+    function offsetFromString(matcher, string) {
+        var matches = ((string || '').match(matcher) || []);
+        var chunk   = matches[matches.length - 1] || [];
+        var parts   = (chunk + '').match(chunkOffset) || ['-', 0, 0];
+        var minutes = +(parts[1] * 60) + toInt(parts[2]);
+
+        return parts[0] === '+' ? minutes : -minutes;
+    }
+
+    // Return a moment from input, that is local/utc/zone equivalent to model.
+    function cloneWithOffset(input, model) {
+        var res, diff;
+        if (model._isUTC) {
+            res = model.clone();
+            diff = (isMoment(input) || isDate(input) ? +input : +local__createLocal(input)) - (+res);
+            // Use low-level api, because this fn is low-level api.
+            res._d.setTime(+res._d + diff);
+            utils_hooks__hooks.updateOffset(res, false);
+            return res;
+        } else {
+            return local__createLocal(input).local();
+        }
+    }
+
+    function getDateOffset (m) {
+        // On Firefox.24 Date#getTimezoneOffset returns a floating point.
+        // https://github.com/moment/moment/pull/1871
+        return -Math.round(m._d.getTimezoneOffset() / 15) * 15;
+    }
+
+    // HOOKS
+
+    // This function will be called whenever a moment is mutated.
+    // It is intended to keep the offset in sync with the timezone.
+    utils_hooks__hooks.updateOffset = function () {};
+
+    // MOMENTS
+
+    // keepLocalTime = true means only change the timezone, without
+    // affecting the local hour. So 5:31:26 +0300 --[utcOffset(2, true)]-->
+    // 5:31:26 +0200 It is possible that 5:31:26 doesn't exist with offset
+    // +0200, so we adjust the time as needed, to be valid.
+    //
+    // Keeping the time actually adds/subtracts (one hour)
+    // from the actual represented time. That is why we call updateOffset
+    // a second time. In case it wants us to change the offset again
+    // _changeInProgress == true case, then we have to adjust, because
+    // there is no such time in the given timezone.
+    function getSetOffset (input, keepLocalTime) {
+        var offset = this._offset || 0,
+            localAdjust;
+        if (!this.isValid()) {
+            return input != null ? this : NaN;
+        }
+        if (input != null) {
+            if (typeof input === 'string') {
+                input = offsetFromString(matchShortOffset, input);
+            } else if (Math.abs(input) < 16) {
+                input = input * 60;
+            }
+            if (!this._isUTC && keepLocalTime) {
+                localAdjust = getDateOffset(this);
+            }
+            this._offset = input;
+            this._isUTC = true;
+            if (localAdjust != null) {
+                this.add(localAdjust, 'm');
+            }
+            if (offset !== input) {
+                if (!keepLocalTime || this._changeInProgress) {
+                    add_subtract__addSubtract(this, create__createDuration(input - offset, 'm'), 1, false);
+                } else if (!this._changeInProgress) {
+                    this._changeInProgress = true;
+                    utils_hooks__hooks.updateOffset(this, true);
+                    this._changeInProgress = null;
+                }
+            }
+            return this;
+        } else {
+            return this._isUTC ? offset : getDateOffset(this);
+        }
+    }
+
+    function getSetZone (input, keepLocalTime) {
+        if (input != null) {
+            if (typeof input !== 'string') {
+                input = -input;
+            }
+
+            this.utcOffset(input, keepLocalTime);
+
+            return this;
+        } else {
+            return -this.utcOffset();
+        }
+    }
+
+    function setOffsetToUTC (keepLocalTime) {
+        return this.utcOffset(0, keepLocalTime);
+    }
+
+    function setOffsetToLocal (keepLocalTime) {
+        if (this._isUTC) {
+            this.utcOffset(0, keepLocalTime);
+            this._isUTC = false;
+
+            if (keepLocalTime) {
+                this.subtract(getDateOffset(this), 'm');
+            }
+        }
+        return this;
+    }
+
+    function setOffsetToParsedOffset () {
+        if (this._tzm) {
+            this.utcOffset(this._tzm);
+        } else if (typeof this._i === 'string') {
+            this.utcOffset(offsetFromString(matchOffset, this._i));
+        }
+        return this;
+    }
+
+    function hasAlignedHourOffset (input) {
+        if (!this.isValid()) {
+            return false;
+        }
+        input = input ? local__createLocal(input).utcOffset() : 0;
+
+        return (this.utcOffset() - input) % 60 === 0;
+    }
+
+    function isDaylightSavingTime () {
+        return (
+            this.utcOffset() > this.clone().month(0).utcOffset() ||
+            this.utcOffset() > this.clone().month(5).utcOffset()
+        );
+    }
+
+    function isDaylightSavingTimeShifted () {
+        if (!isUndefined(this._isDSTShifted)) {
+            return this._isDSTShifted;
+        }
+
+        var c = {};
+
+        copyConfig(c, this);
+        c = prepareConfig(c);
+
+        if (c._a) {
+            var other = c._isUTC ? create_utc__createUTC(c._a) : local__createLocal(c._a);
+            this._isDSTShifted = this.isValid() &&
+                compareArrays(c._a, other.toArray()) > 0;
+        } else {
+            this._isDSTShifted = false;
+        }
+
+        return this._isDSTShifted;
+    }
+
+    function isLocal () {
+        return this.isValid() ? !this._isUTC : false;
+    }
+
+    function isUtcOffset () {
+        return this.isValid() ? this._isUTC : false;
+    }
+
+    function isUtc () {
+        return this.isValid() ? this._isUTC && this._offset === 0 : false;
+    }
+
+    // ASP.NET json date format regex
+    var aspNetRegex = /(\-)?(?:(\d*)[. ])?(\d+)\:(\d+)(?:\:(\d+)\.?(\d{3})?)?/;
+
+    // from http://docs.closure-library.googlecode.com/git/closure_goog_date_date.js.source.html
+    // somewhat more in line with 4.4.3.2 2004 spec, but allows decimal anywhere
+    var isoRegex = /^(-)?P(?:(?:([0-9,.]*)Y)?(?:([0-9,.]*)M)?(?:([0-9,.]*)D)?(?:T(?:([0-9,.]*)H)?(?:([0-9,.]*)M)?(?:([0-9,.]*)S)?)?|([0-9,.]*)W)$/;
+
+    function create__createDuration (input, key) {
+        var duration = input,
+            // matching against regexp is expensive, do it on demand
+            match = null,
+            sign,
+            ret,
+            diffRes;
+
+        if (isDuration(input)) {
+            duration = {
+                ms : input._milliseconds,
+                d  : input._days,
+                M  : input._months
+            };
+        } else if (typeof input === 'number') {
+            duration = {};
+            if (key) {
+                duration[key] = input;
+            } else {
+                duration.milliseconds = input;
+            }
+        } else if (!!(match = aspNetRegex.exec(input))) {
+            sign = (match[1] === '-') ? -1 : 1;
+            duration = {
+                y  : 0,
+                d  : toInt(match[DATE])        * sign,
+                h  : toInt(match[HOUR])        * sign,
+                m  : toInt(match[MINUTE])      * sign,
+                s  : toInt(match[SECOND])      * sign,
+                ms : toInt(match[MILLISECOND]) * sign
+            };
+        } else if (!!(match = isoRegex.exec(input))) {
+            sign = (match[1] === '-') ? -1 : 1;
+            duration = {
+                y : parseIso(match[2], sign),
+                M : parseIso(match[3], sign),
+                d : parseIso(match[4], sign),
+                h : parseIso(match[5], sign),
+                m : parseIso(match[6], sign),
+                s : parseIso(match[7], sign),
+                w : parseIso(match[8], sign)
+            };
+        } else if (duration == null) {// checks for null or undefined
+            duration = {};
+        } else if (typeof duration === 'object' && ('from' in duration || 'to' in duration)) {
+            diffRes = momentsDifference(local__createLocal(duration.from), local__createLocal(duration.to));
+
+            duration = {};
+            duration.ms = diffRes.milliseconds;
+            duration.M = diffRes.months;
+        }
+
+        ret = new Duration(duration);
+
+        if (isDuration(input) && hasOwnProp(input, '_locale')) {
+            ret._locale = input._locale;
+        }
+
+        return ret;
+    }
+
+    create__createDuration.fn = Duration.prototype;
+
+    function parseIso (inp, sign) {
+        // We'd normally use ~~inp for this, but unfortunately it also
+        // converts floats to ints.
+        // inp may be undefined, so careful calling replace on it.
+        var res = inp && parseFloat(inp.replace(',', '.'));
+        // apply sign while we're at it
+        return (isNaN(res) ? 0 : res) * sign;
+    }
+
+    function positiveMomentsDifference(base, other) {
+        var res = {milliseconds: 0, months: 0};
+
+        res.months = other.month() - base.month() +
+            (other.year() - base.year()) * 12;
+        if (base.clone().add(res.months, 'M').isAfter(other)) {
+            --res.months;
+        }
+
+        res.milliseconds = +other - +(base.clone().add(res.months, 'M'));
+
+        return res;
+    }
+
+    function momentsDifference(base, other) {
+        var res;
+        if (!(base.isValid() && other.isValid())) {
+            return {milliseconds: 0, months: 0};
+        }
+
+        other = cloneWithOffset(other, base);
+        if (base.isBefore(other)) {
+            res = positiveMomentsDifference(base, other);
+        } else {
+            res = positiveMomentsDifference(other, base);
+            res.milliseconds = -res.milliseconds;
+            res.months = -res.months;
+        }
+
+        return res;
+    }
+
+    // TODO: remove 'name' arg after deprecation is removed
+    function createAdder(direction, name) {
+        return function (val, period) {
+            var dur, tmp;
+            //invert the arguments, but complain about it
+            if (period !== null && !isNaN(+period)) {
+                deprecateSimple(name, 'moment().' + name  + '(period, number) is deprecated. Please use moment().' + name + '(number, period).');
+                tmp = val; val = period; period = tmp;
+            }
+
+            val = typeof val === 'string' ? +val : val;
+            dur = create__createDuration(val, period);
+            add_subtract__addSubtract(this, dur, direction);
+            return this;
+        };
+    }
+
+    function add_subtract__addSubtract (mom, duration, isAdding, updateOffset) {
+        var milliseconds = duration._milliseconds,
+            days = duration._days,
+            months = duration._months;
+
+        if (!mom.isValid()) {
+            // No op
+            return;
+        }
+
+        updateOffset = updateOffset == null ? true : updateOffset;
+
+        if (milliseconds) {
+            mom._d.setTime(+mom._d + milliseconds * isAdding);
+        }
+        if (days) {
+            get_set__set(mom, 'Date', get_set__get(mom, 'Date') + days * isAdding);
+        }
+        if (months) {
+            setMonth(mom, get_set__get(mom, 'Month') + months * isAdding);
+        }
+        if (updateOffset) {
+            utils_hooks__hooks.updateOffset(mom, days || months);
+        }
+    }
+
+    var add_subtract__add      = createAdder(1, 'add');
+    var add_subtract__subtract = createAdder(-1, 'subtract');
+
+    function moment_calendar__calendar (time, formats) {
+        // We want to compare the start of today, vs this.
+        // Getting start-of-today depends on whether we're local/utc/offset or not.
+        var now = time || local__createLocal(),
+            sod = cloneWithOffset(now, this).startOf('day'),
+            diff = this.diff(sod, 'days', true),
+            format = diff < -6 ? 'sameElse' :
+                diff < -1 ? 'lastWeek' :
+                diff < 0 ? 'lastDay' :
+                diff < 1 ? 'sameDay' :
+                diff < 2 ? 'nextDay' :
+                diff < 7 ? 'nextWeek' : 'sameElse';
+
+        var output = formats && (isFunction(formats[format]) ? formats[format]() : formats[format]);
+
+        return this.format(output || this.localeData().calendar(format, this, local__createLocal(now)));
+    }
+
+    function clone () {
+        return new Moment(this);
+    }
+
+    function isAfter (input, units) {
+        var localInput = isMoment(input) ? input : local__createLocal(input);
+        if (!(this.isValid() && localInput.isValid())) {
+            return false;
+        }
+        units = normalizeUnits(!isUndefined(units) ? units : 'millisecond');
+        if (units === 'millisecond') {
+            return +this > +localInput;
+        } else {
+            return +localInput < +this.clone().startOf(units);
+        }
+    }
+
+    function isBefore (input, units) {
+        var localInput = isMoment(input) ? input : local__createLocal(input);
+        if (!(this.isValid() && localInput.isValid())) {
+            return false;
+        }
+        units = normalizeUnits(!isUndefined(units) ? units : 'millisecond');
+        if (units === 'millisecond') {
+            return +this < +localInput;
+        } else {
+            return +this.clone().endOf(units) < +localInput;
+        }
+    }
+
+    function isBetween (from, to, units) {
+        return this.isAfter(from, units) && this.isBefore(to, units);
+    }
+
+    function isSame (input, units) {
+        var localInput = isMoment(input) ? input : local__createLocal(input),
+            inputMs;
+        if (!(this.isValid() && localInput.isValid())) {
+            return false;
+        }
+        units = normalizeUnits(units || 'millisecond');
+        if (units === 'millisecond') {
+            return +this === +localInput;
+        } else {
+            inputMs = +localInput;
+            return +(this.clone().startOf(units)) <= inputMs && inputMs <= +(this.clone().endOf(units));
+        }
+    }
+
+    function isSameOrAfter (input, units) {
+        return this.isSame(input, units) || this.isAfter(input,units);
+    }
+
+    function isSameOrBefore (input, units) {
+        return this.isSame(input, units) || this.isBefore(input,units);
+    }
+
+    function diff (input, units, asFloat) {
+        var that,
+            zoneDelta,
+            delta, output;
+
+        if (!this.isValid()) {
+            return NaN;
+        }
+
+        that = cloneWithOffset(input, this);
+
+        if (!that.isValid()) {
+            return NaN;
+        }
+
+        zoneDelta = (that.utcOffset() - this.utcOffset()) * 6e4;
+
+        units = normalizeUnits(units);
+
+        if (units === 'year' || units === 'month' || units === 'quarter') {
+            output = monthDiff(this, that);
+            if (units === 'quarter') {
+                output = output / 3;
+            } else if (units === 'year') {
+                output = output / 12;
+            }
+        } else {
+            delta = this - that;
+            output = units === 'second' ? delta / 1e3 : // 1000
+                units === 'minute' ? delta / 6e4 : // 1000 * 60
+                units === 'hour' ? delta / 36e5 : // 1000 * 60 * 60
+                units === 'day' ? (delta - zoneDelta) / 864e5 : // 1000 * 60 * 60 * 24, negate dst
+                units === 'week' ? (delta - zoneDelta) / 6048e5 : // 1000 * 60 * 60 * 24 * 7, negate dst
+                delta;
+        }
+        return asFloat ? output : absFloor(output);
+    }
+
+    function monthDiff (a, b) {
+        // difference in months
+        var wholeMonthDiff = ((b.year() - a.year()) * 12) + (b.month() - a.month()),
+            // b is in (anchor - 1 month, anchor + 1 month)
+            anchor = a.clone().add(wholeMonthDiff, 'months'),
+            anchor2, adjust;
+
+        if (b - anchor < 0) {
+            anchor2 = a.clone().add(wholeMonthDiff - 1, 'months');
+            // linear across the month
+            adjust = (b - anchor) / (anchor - anchor2);
+        } else {
+            anchor2 = a.clone().add(wholeMonthDiff + 1, 'months');
+            // linear across the month
+            adjust = (b - anchor) / (anchor2 - anchor);
+        }
+
+        return -(wholeMonthDiff + adjust);
+    }
+
+    utils_hooks__hooks.defaultFormat = 'YYYY-MM-DDTHH:mm:ssZ';
+
+    function toString () {
+        return this.clone().locale('en').format('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
+    }
+
+    function moment_format__toISOString () {
+        var m = this.clone().utc();
+        if (0 < m.year() && m.year() <= 9999) {
+            if (isFunction(Date.prototype.toISOString)) {
+                // native implementation is ~50x faster, use it when we can
+                return this.toDate().toISOString();
+            } else {
+                return formatMoment(m, 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
+            }
+        } else {
+            return formatMoment(m, 'YYYYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
+        }
+    }
+
+    function format (inputString) {
+        var output = formatMoment(this, inputString || utils_hooks__hooks.defaultFormat);
+        return this.localeData().postformat(output);
+    }
+
+    function from (time, withoutSuffix) {
+        if (this.isValid() &&
+                ((isMoment(time) && time.isValid()) ||
+                 local__createLocal(time).isValid())) {
+            return create__createDuration({to: this, from: time}).locale(this.locale()).humanize(!withoutSuffix);
+        } else {
+            return this.localeData().invalidDate();
+        }
+    }
+
+    function fromNow (withoutSuffix) {
+        return this.from(local__createLocal(), withoutSuffix);
+    }
+
+    function to (time, withoutSuffix) {
+        if (this.isValid() &&
+                ((isMoment(time) && time.isValid()) ||
+                 local__createLocal(time).isValid())) {
+            return create__createDuration({from: this, to: time}).locale(this.locale()).humanize(!withoutSuffix);
+        } else {
+            return this.localeData().invalidDate();
+        }
+    }
+
+    function toNow (withoutSuffix) {
+        return this.to(local__createLocal(), withoutSuffix);
+    }
+
+    // If passed a locale key, it will set the locale for this
+    // instance.  Otherwise, it will return the locale configuration
+    // variables for this instance.
+    function locale (key) {
+        var newLocaleData;
+
+        if (key === undefined) {
+            return this._locale._abbr;
+        } else {
+            newLocaleData = locale_locales__getLocale(key);
+            if (newLocaleData != null) {
+                this._locale = newLocaleData;
+            }
+            return this;
+        }
+    }
+
+    var lang = deprecate(
+        'moment().lang() is deprecated. Instead, use moment().localeData() to get the language configuration. Use moment().locale() to change languages.',
+        function (key) {
+            if (key === undefined) {
+                return this.localeData();
+            } else {
+                return this.locale(key);
+            }
+        }
+    );
+
+    function localeData () {
+        return this._locale;
+    }
+
+    function startOf (units) {
+        units = normalizeUnits(units);
+        // the following switch intentionally omits break keywords
+        // to utilize falling through the cases.
+        switch (units) {
+        case 'year':
+            this.month(0);
+            /* falls through */
+        case 'quarter':
+        case 'month':
+            this.date(1);
+            /* falls through */
+        case 'week':
+        case 'isoWeek':
+        case 'day':
+            this.hours(0);
+            /* falls through */
+        case 'hour':
+            this.minutes(0);
+            /* falls through */
+        case 'minute':
+            this.seconds(0);
+            /* falls through */
+        case 'second':
+            this.milliseconds(0);
+        }
+
+        // weeks are a special case
+        if (units === 'week') {
+            this.weekday(0);
+        }
+        if (units === 'isoWeek') {
+            this.isoWeekday(1);
+        }
+
+        // quarters are also special
+        if (units === 'quarter') {
+            this.month(Math.floor(this.month() / 3) * 3);
+        }
+
+        return this;
+    }
+
+    function endOf (units) {
+        units = normalizeUnits(units);
+        if (units === undefined || units === 'millisecond') {
+            return this;
+        }
+        return this.startOf(units).add(1, (units === 'isoWeek' ? 'week' : units)).subtract(1, 'ms');
+    }
+
+    function to_type__valueOf () {
+        return +this._d - ((this._offset || 0) * 60000);
+    }
+
+    function unix () {
+        return Math.floor(+this / 1000);
+    }
+
+    function toDate () {
+        return this._offset ? new Date(+this) : this._d;
+    }
+
+    function toArray () {
+        var m = this;
+        return [m.year(), m.month(), m.date(), m.hour(), m.minute(), m.second(), m.millisecond()];
+    }
+
+    function toObject () {
+        var m = this;
+        return {
+            years: m.year(),
+            months: m.month(),
+            date: m.date(),
+            hours: m.hours(),
+            minutes: m.minutes(),
+            seconds: m.seconds(),
+            milliseconds: m.milliseconds()
+        };
+    }
+
+    function toJSON () {
+        // JSON.stringify(new Date(NaN)) === 'null'
+        return this.isValid() ? this.toISOString() : 'null';
+    }
+
+    function moment_valid__isValid () {
+        return valid__isValid(this);
+    }
+
+    function parsingFlags () {
+        return extend({}, getParsingFlags(this));
+    }
+
+    function invalidAt () {
+        return getParsingFlags(this).overflow;
+    }
+
+    function creationData() {
+        return {
+            input: this._i,
+            format: this._f,
+            locale: this._locale,
+            isUTC: this._isUTC,
+            strict: this._strict
+        };
+    }
+
+    // FORMATTING
+
+    addFormatToken(0, ['gg', 2], 0, function () {
+        return this.weekYear() % 100;
+    });
+
+    addFormatToken(0, ['GG', 2], 0, function () {
+        return this.isoWeekYear() % 100;
+    });
+
+    function addWeekYearFormatToken (token, getter) {
+        addFormatToken(0, [token, token.length], 0, getter);
+    }
+
+    addWeekYearFormatToken('gggg',     'weekYear');
+    addWeekYearFormatToken('ggggg',    'weekYear');
+    addWeekYearFormatToken('GGGG',  'isoWeekYear');
+    addWeekYearFormatToken('GGGGG', 'isoWeekYear');
+
+    // ALIASES
+
+    addUnitAlias('weekYear', 'gg');
+    addUnitAlias('isoWeekYear', 'GG');
+
+    // PARSING
+
+    addRegexToken('G',      matchSigned);
+    addRegexToken('g',      matchSigned);
+    addRegexToken('GG',     match1to2, match2);
+    addRegexToken('gg',     match1to2, match2);
+    addRegexToken('GGGG',   match1to4, match4);
+    addRegexToken('gggg',   match1to4, match4);
+    addRegexToken('GGGGG',  match1to6, match6);
+    addRegexToken('ggggg',  match1to6, match6);
+
+    addWeekParseToken(['gggg', 'ggggg', 'GGGG', 'GGGGG'], function (input, week, config, token) {
+        week[token.substr(0, 2)] = toInt(input);
+    });
+
+    addWeekParseToken(['gg', 'GG'], function (input, week, config, token) {
+        week[token] = utils_hooks__hooks.parseTwoDigitYear(input);
+    });
+
+    // MOMENTS
+
+    function getSetWeekYear (input) {
+        return getSetWeekYearHelper.call(this,
+                input,
+                this.week(),
+                this.weekday(),
+                this.localeData()._week.dow,
+                this.localeData()._week.doy);
+    }
+
+    function getSetISOWeekYear (input) {
+        return getSetWeekYearHelper.call(this,
+                input, this.isoWeek(), this.isoWeekday(), 1, 4);
+    }
+
+    function getISOWeeksInYear () {
+        return weeksInYear(this.year(), 1, 4);
+    }
+
+    function getWeeksInYear () {
+        var weekInfo = this.localeData()._week;
+        return weeksInYear(this.year(), weekInfo.dow, weekInfo.doy);
+    }
+
+    function getSetWeekYearHelper(input, week, weekday, dow, doy) {
+        var weeksTarget;
+        if (input == null) {
+            return weekOfYear(this, dow, doy).year;
+        } else {
+            weeksTarget = weeksInYear(input, dow, doy);
+            if (week > weeksTarget) {
+                week = weeksTarget;
+            }
+            return setWeekAll.call(this, input, week, weekday, dow, doy);
+        }
+    }
+
+    function setWeekAll(weekYear, week, weekday, dow, doy) {
+        var dayOfYearData = dayOfYearFromWeeks(weekYear, week, weekday, dow, doy),
+            date = createUTCDate(dayOfYearData.year, 0, dayOfYearData.dayOfYear);
+
+        // console.log("got", weekYear, week, weekday, "set", date.toISOString());
+        this.year(date.getUTCFullYear());
+        this.month(date.getUTCMonth());
+        this.date(date.getUTCDate());
+        return this;
+    }
+
+    // FORMATTING
+
+    addFormatToken('Q', 0, 'Qo', 'quarter');
+
+    // ALIASES
+
+    addUnitAlias('quarter', 'Q');
+
+    // PARSING
+
+    addRegexToken('Q', match1);
+    addParseToken('Q', function (input, array) {
+        array[MONTH] = (toInt(input) - 1) * 3;
+    });
+
+    // MOMENTS
+
+    function getSetQuarter (input) {
+        return input == null ? Math.ceil((this.month() + 1) / 3) : this.month((input - 1) * 3 + this.month() % 3);
+    }
+
+    // FORMATTING
+
+    addFormatToken('w', ['ww', 2], 'wo', 'week');
+    addFormatToken('W', ['WW', 2], 'Wo', 'isoWeek');
+
+    // ALIASES
+
+    addUnitAlias('week', 'w');
+    addUnitAlias('isoWeek', 'W');
+
+    // PARSING
+
+    addRegexToken('w',  match1to2);
+    addRegexToken('ww', match1to2, match2);
+    addRegexToken('W',  match1to2);
+    addRegexToken('WW', match1to2, match2);
+
+    addWeekParseToken(['w', 'ww', 'W', 'WW'], function (input, week, config, token) {
+        week[token.substr(0, 1)] = toInt(input);
+    });
+
+    // HELPERS
+
+    // LOCALES
+
+    function localeWeek (mom) {
+        return weekOfYear(mom, this._week.dow, this._week.doy).week;
+    }
+
+    var defaultLocaleWeek = {
+        dow : 0, // Sunday is the first day of the week.
+        doy : 6  // The week that contains Jan 1st is the first week of the year.
+    };
+
+    function localeFirstDayOfWeek () {
+        return this._week.dow;
+    }
+
+    function localeFirstDayOfYear () {
+        return this._week.doy;
+    }
+
+    // MOMENTS
+
+    function getSetWeek (input) {
+        var week = this.localeData().week(this);
+        return input == null ? week : this.add((input - week) * 7, 'd');
+    }
+
+    function getSetISOWeek (input) {
+        var week = weekOfYear(this, 1, 4).week;
+        return input == null ? week : this.add((input - week) * 7, 'd');
+    }
+
+    // FORMATTING
+
+    addFormatToken('D', ['DD', 2], 'Do', 'date');
+
+    // ALIASES
+
+    addUnitAlias('date', 'D');
+
+    // PARSING
+
+    addRegexToken('D',  match1to2);
+    addRegexToken('DD', match1to2, match2);
+    addRegexToken('Do', function (isStrict, locale) {
+        return isStrict ? locale._ordinalParse : locale._ordinalParseLenient;
+    });
+
+    addParseToken(['D', 'DD'], DATE);
+    addParseToken('Do', function (input, array) {
+        array[DATE] = toInt(input.match(match1to2)[0], 10);
+    });
+
+    // MOMENTS
+
+    var getSetDayOfMonth = makeGetSet('Date', true);
+
+    // FORMATTING
+
+    addFormatToken('d', 0, 'do', 'day');
+
+    addFormatToken('dd', 0, 0, function (format) {
+        return this.localeData().weekdaysMin(this, format);
+    });
+
+    addFormatToken('ddd', 0, 0, function (format) {
+        return this.localeData().weekdaysShort(this, format);
+    });
+
+    addFormatToken('dddd', 0, 0, function (format) {
+        return this.localeData().weekdays(this, format);
+    });
+
+    addFormatToken('e', 0, 0, 'weekday');
+    addFormatToken('E', 0, 0, 'isoWeekday');
+
+    // ALIASES
+
+    addUnitAlias('day', 'd');
+    addUnitAlias('weekday', 'e');
+    addUnitAlias('isoWeekday', 'E');
+
+    // PARSING
+
+    addRegexToken('d',    match1to2);
+    addRegexToken('e',    match1to2);
+    addRegexToken('E',    match1to2);
+    addRegexToken('dd',   matchWord);
+    addRegexToken('ddd',  matchWord);
+    addRegexToken('dddd', matchWord);
+
+    addWeekParseToken(['dd', 'ddd', 'dddd'], function (input, week, config, token) {
+        var weekday = config._locale.weekdaysParse(input, token, config._strict);
+        // if we didn't get a weekday name, mark the date as invalid
+        if (weekday != null) {
+            week.d = weekday;
+        } else {
+            getParsingFlags(config).invalidWeekday = input;
+        }
+    });
+
+    addWeekParseToken(['d', 'e', 'E'], function (input, week, config, token) {
+        week[token] = toInt(input);
+    });
+
+    // HELPERS
+
+    function parseWeekday(input, locale) {
+        if (typeof input !== 'string') {
+            return input;
+        }
+
+        if (!isNaN(input)) {
+            return parseInt(input, 10);
+        }
+
+        input = locale.weekdaysParse(input);
+        if (typeof input === 'number') {
+            return input;
+        }
+
+        return null;
+    }
+
+    // LOCALES
+
+    var defaultLocaleWeekdays = 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_');
+    function localeWeekdays (m, format) {
+        return isArray(this._weekdays) ? this._weekdays[m.day()] :
+            this._weekdays[this._weekdays.isFormat.test(format) ? 'format' : 'standalone'][m.day()];
+    }
+
+    var defaultLocaleWeekdaysShort = 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_');
+    function localeWeekdaysShort (m) {
+        return this._weekdaysShort[m.day()];
+    }
+
+    var defaultLocaleWeekdaysMin = 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_');
+    function localeWeekdaysMin (m) {
+        return this._weekdaysMin[m.day()];
+    }
+
+    function localeWeekdaysParse (weekdayName, format, strict) {
+        var i, mom, regex;
+
+        if (!this._weekdaysParse) {
+            this._weekdaysParse = [];
+            this._minWeekdaysParse = [];
+            this._shortWeekdaysParse = [];
+            this._fullWeekdaysParse = [];
+        }
+
+        for (i = 0; i < 7; i++) {
+            // make the regex if we don't have it already
+
+            mom = local__createLocal([2000, 1]).day(i);
+            if (strict && !this._fullWeekdaysParse[i]) {
+                this._fullWeekdaysParse[i] = new RegExp('^' + this.weekdays(mom, '').replace('.', '\.?') + '$', 'i');
+                this._shortWeekdaysParse[i] = new RegExp('^' + this.weekdaysShort(mom, '').replace('.', '\.?') + '$', 'i');
+                this._minWeekdaysParse[i] = new RegExp('^' + this.weekdaysMin(mom, '').replace('.', '\.?') + '$', 'i');
+            }
+            if (!this._weekdaysParse[i]) {
+                regex = '^' + this.weekdays(mom, '') + '|^' + this.weekdaysShort(mom, '') + '|^' + this.weekdaysMin(mom, '');
+                this._weekdaysParse[i] = new RegExp(regex.replace('.', ''), 'i');
+            }
+            // test the regex
+            if (strict && format === 'dddd' && this._fullWeekdaysParse[i].test(weekdayName)) {
+                return i;
+            } else if (strict && format === 'ddd' && this._shortWeekdaysParse[i].test(weekdayName)) {
+                return i;
+            } else if (strict && format === 'dd' && this._minWeekdaysParse[i].test(weekdayName)) {
+                return i;
+            } else if (!strict && this._weekdaysParse[i].test(weekdayName)) {
+                return i;
+            }
+        }
+    }
+
+    // MOMENTS
+
+    function getSetDayOfWeek (input) {
+        if (!this.isValid()) {
+            return input != null ? this : NaN;
+        }
+        var day = this._isUTC ? this._d.getUTCDay() : this._d.getDay();
+        if (input != null) {
+            input = parseWeekday(input, this.localeData());
+            return this.add(input - day, 'd');
+        } else {
+            return day;
+        }
+    }
+
+    function getSetLocaleDayOfWeek (input) {
+        if (!this.isValid()) {
+            return input != null ? this : NaN;
+        }
+        var weekday = (this.day() + 7 - this.localeData()._week.dow) % 7;
+        return input == null ? weekday : this.add(input - weekday, 'd');
+    }
+
+    function getSetISODayOfWeek (input) {
+        if (!this.isValid()) {
+            return input != null ? this : NaN;
+        }
+        // behaves the same as moment#day except
+        // as a getter, returns 7 instead of 0 (1-7 range instead of 0-6)
+        // as a setter, sunday should belong to the previous week.
+        return input == null ? this.day() || 7 : this.day(this.day() % 7 ? input : input - 7);
+    }
+
+    // FORMATTING
+
+    addFormatToken('DDD', ['DDDD', 3], 'DDDo', 'dayOfYear');
+
+    // ALIASES
+
+    addUnitAlias('dayOfYear', 'DDD');
+
+    // PARSING
+
+    addRegexToken('DDD',  match1to3);
+    addRegexToken('DDDD', match3);
+    addParseToken(['DDD', 'DDDD'], function (input, array, config) {
+        config._dayOfYear = toInt(input);
+    });
+
+    // HELPERS
+
+    // MOMENTS
+
+    function getSetDayOfYear (input) {
+        var dayOfYear = Math.round((this.clone().startOf('day') - this.clone().startOf('year')) / 864e5) + 1;
+        return input == null ? dayOfYear : this.add((input - dayOfYear), 'd');
+    }
+
+    // FORMATTING
+
+    function hFormat() {
+        return this.hours() % 12 || 12;
+    }
+
+    addFormatToken('H', ['HH', 2], 0, 'hour');
+    addFormatToken('h', ['hh', 2], 0, hFormat);
+
+    addFormatToken('hmm', 0, 0, function () {
+        return '' + hFormat.apply(this) + zeroFill(this.minutes(), 2);
+    });
+
+    addFormatToken('hmmss', 0, 0, function () {
+        return '' + hFormat.apply(this) + zeroFill(this.minutes(), 2) +
+            zeroFill(this.seconds(), 2);
+    });
+
+    addFormatToken('Hmm', 0, 0, function () {
+        return '' + this.hours() + zeroFill(this.minutes(), 2);
+    });
+
+    addFormatToken('Hmmss', 0, 0, function () {
+        return '' + this.hours() + zeroFill(this.minutes(), 2) +
+            zeroFill(this.seconds(), 2);
+    });
+
+    function meridiem (token, lowercase) {
+        addFormatToken(token, 0, 0, function () {
+            return this.localeData().meridiem(this.hours(), this.minutes(), lowercase);
+        });
+    }
+
+    meridiem('a', true);
+    meridiem('A', false);
+
+    // ALIASES
+
+    addUnitAlias('hour', 'h');
+
+    // PARSING
+
+    function matchMeridiem (isStrict, locale) {
+        return locale._meridiemParse;
+    }
+
+    addRegexToken('a',  matchMeridiem);
+    addRegexToken('A',  matchMeridiem);
+    addRegexToken('H',  match1to2);
+    addRegexToken('h',  match1to2);
+    addRegexToken('HH', match1to2, match2);
+    addRegexToken('hh', match1to2, match2);
+
+    addRegexToken('hmm', match3to4);
+    addRegexToken('hmmss', match5to6);
+    addRegexToken('Hmm', match3to4);
+    addRegexToken('Hmmss', match5to6);
+
+    addParseToken(['H', 'HH'], HOUR);
+    addParseToken(['a', 'A'], function (input, array, config) {
+        config._isPm = config._locale.isPM(input);
+        config._meridiem = input;
+    });
+    addParseToken(['h', 'hh'], function (input, array, config) {
+        array[HOUR] = toInt(input);
+        getParsingFlags(config).bigHour = true;
+    });
+    addParseToken('hmm', function (input, array, config) {
+        var pos = input.length - 2;
+        array[HOUR] = toInt(input.substr(0, pos));
+        array[MINUTE] = toInt(input.substr(pos));
+        getParsingFlags(config).bigHour = true;
+    });
+    addParseToken('hmmss', function (input, array, config) {
+        var pos1 = input.length - 4;
+        var pos2 = input.length - 2;
+        array[HOUR] = toInt(input.substr(0, pos1));
+        array[MINUTE] = toInt(input.substr(pos1, 2));
+        array[SECOND] = toInt(input.substr(pos2));
+        getParsingFlags(config).bigHour = true;
+    });
+    addParseToken('Hmm', function (input, array, config) {
+        var pos = input.length - 2;
+        array[HOUR] = toInt(input.substr(0, pos));
+        array[MINUTE] = toInt(input.substr(pos));
+    });
+    addParseToken('Hmmss', function (input, array, config) {
+        var pos1 = input.length - 4;
+        var pos2 = input.length - 2;
+        array[HOUR] = toInt(input.substr(0, pos1));
+        array[MINUTE] = toInt(input.substr(pos1, 2));
+        array[SECOND] = toInt(input.substr(pos2));
+    });
+
+    // LOCALES
+
+    function localeIsPM (input) {
+        // IE8 Quirks Mode & IE7 Standards Mode do not allow accessing strings like arrays
+        // Using charAt should be more compatible.
+        return ((input + '').toLowerCase().charAt(0) === 'p');
+    }
+
+    var defaultLocaleMeridiemParse = /[ap]\.?m?\.?/i;
+    function localeMeridiem (hours, minutes, isLower) {
+        if (hours > 11) {
+            return isLower ? 'pm' : 'PM';
+        } else {
+            return isLower ? 'am' : 'AM';
+        }
+    }
+
+
+    // MOMENTS
+
+    // Setting the hour should keep the time, because the user explicitly
+    // specified which hour he wants. So trying to maintain the same hour (in
+    // a new timezone) makes sense. Adding/subtracting hours does not follow
+    // this rule.
+    var getSetHour = makeGetSet('Hours', true);
+
+    // FORMATTING
+
+    addFormatToken('m', ['mm', 2], 0, 'minute');
+
+    // ALIASES
+
+    addUnitAlias('minute', 'm');
+
+    // PARSING
+
+    addRegexToken('m',  match1to2);
+    addRegexToken('mm', match1to2, match2);
+    addParseToken(['m', 'mm'], MINUTE);
+
+    // MOMENTS
+
+    var getSetMinute = makeGetSet('Minutes', false);
+
+    // FORMATTING
+
+    addFormatToken('s', ['ss', 2], 0, 'second');
+
+    // ALIASES
+
+    addUnitAlias('second', 's');
+
+    // PARSING
+
+    addRegexToken('s',  match1to2);
+    addRegexToken('ss', match1to2, match2);
+    addParseToken(['s', 'ss'], SECOND);
+
+    // MOMENTS
+
+    var getSetSecond = makeGetSet('Seconds', false);
+
+    // FORMATTING
+
+    addFormatToken('S', 0, 0, function () {
+        return ~~(this.millisecond() / 100);
+    });
+
+    addFormatToken(0, ['SS', 2], 0, function () {
+        return ~~(this.millisecond() / 10);
+    });
+
+    addFormatToken(0, ['SSS', 3], 0, 'millisecond');
+    addFormatToken(0, ['SSSS', 4], 0, function () {
+        return this.millisecond() * 10;
+    });
+    addFormatToken(0, ['SSSSS', 5], 0, function () {
+        return this.millisecond() * 100;
+    });
+    addFormatToken(0, ['SSSSSS', 6], 0, function () {
+        return this.millisecond() * 1000;
+    });
+    addFormatToken(0, ['SSSSSSS', 7], 0, function () {
+        return this.millisecond() * 10000;
+    });
+    addFormatToken(0, ['SSSSSSSS', 8], 0, function () {
+        return this.millisecond() * 100000;
+    });
+    addFormatToken(0, ['SSSSSSSSS', 9], 0, function () {
+        return this.millisecond() * 1000000;
+    });
+
+
+    // ALIASES
+
+    addUnitAlias('millisecond', 'ms');
+
+    // PARSING
+
+    addRegexToken('S',    match1to3, match1);
+    addRegexToken('SS',   match1to3, match2);
+    addRegexToken('SSS',  match1to3, match3);
+
+    var token;
+    for (token = 'SSSS'; token.length <= 9; token += 'S') {
+        addRegexToken(token, matchUnsigned);
+    }
+
+    function parseMs(input, array) {
+        array[MILLISECOND] = toInt(('0.' + input) * 1000);
+    }
+
+    for (token = 'S'; token.length <= 9; token += 'S') {
+        addParseToken(token, parseMs);
+    }
+    // MOMENTS
+
+    var getSetMillisecond = makeGetSet('Milliseconds', false);
+
+    // FORMATTING
+
+    addFormatToken('z',  0, 0, 'zoneAbbr');
+    addFormatToken('zz', 0, 0, 'zoneName');
+
+    // MOMENTS
+
+    function getZoneAbbr () {
+        return this._isUTC ? 'UTC' : '';
+    }
+
+    function getZoneName () {
+        return this._isUTC ? 'Coordinated Universal Time' : '';
+    }
+
+    var momentPrototype__proto = Moment.prototype;
+
+    momentPrototype__proto.add               = add_subtract__add;
+    momentPrototype__proto.calendar          = moment_calendar__calendar;
+    momentPrototype__proto.clone             = clone;
+    momentPrototype__proto.diff              = diff;
+    momentPrototype__proto.endOf             = endOf;
+    momentPrototype__proto.format            = format;
+    momentPrototype__proto.from              = from;
+    momentPrototype__proto.fromNow           = fromNow;
+    momentPrototype__proto.to                = to;
+    momentPrototype__proto.toNow             = toNow;
+    momentPrototype__proto.get               = getSet;
+    momentPrototype__proto.invalidAt         = invalidAt;
+    momentPrototype__proto.isAfter           = isAfter;
+    momentPrototype__proto.isBefore          = isBefore;
+    momentPrototype__proto.isBetween         = isBetween;
+    momentPrototype__proto.isSame            = isSame;
+    momentPrototype__proto.isSameOrAfter     = isSameOrAfter;
+    momentPrototype__proto.isSameOrBefore    = isSameOrBefore;
+    momentPrototype__proto.isValid           = moment_valid__isValid;
+    momentPrototype__proto.lang              = lang;
+    momentPrototype__proto.locale            = locale;
+    momentPrototype__proto.localeData        = localeData;
+    momentPrototype__proto.max               = prototypeMax;
+    momentPrototype__proto.min               = prototypeMin;
+    momentPrototype__proto.parsingFlags      = parsingFlags;
+    momentPrototype__proto.set               = getSet;
+    momentPrototype__proto.startOf           = startOf;
+    momentPrototype__proto.subtract          = add_subtract__subtract;
+    momentPrototype__proto.toArray           = toArray;
+    momentPrototype__proto.toObject          = toObject;
+    momentPrototype__proto.toDate            = toDate;
+    momentPrototype__proto.toISOString       = moment_format__toISOString;
+    momentPrototype__proto.toJSON            = toJSON;
+    momentPrototype__proto.toString          = toString;
+    momentPrototype__proto.unix              = unix;
+    momentPrototype__proto.valueOf           = to_type__valueOf;
+    momentPrototype__proto.creationData      = creationData;
+
+    // Year
+    momentPrototype__proto.year       = getSetYear;
+    momentPrototype__proto.isLeapYear = getIsLeapYear;
+
+    // Week Year
+    momentPrototype__proto.weekYear    = getSetWeekYear;
+    momentPrototype__proto.isoWeekYear = getSetISOWeekYear;
+
+    // Quarter
+    momentPrototype__proto.quarter = momentPrototype__proto.quarters = getSetQuarter;
+
+    // Month
+    momentPrototype__proto.month       = getSetMonth;
+    momentPrototype__proto.daysInMonth = getDaysInMonth;
+
+    // Week
+    momentPrototype__proto.week           = momentPrototype__proto.weeks        = getSetWeek;
+    momentPrototype__proto.isoWeek        = momentPrototype__proto.isoWeeks     = getSetISOWeek;
+    momentPrototype__proto.weeksInYear    = getWeeksInYear;
+    momentPrototype__proto.isoWeeksInYear = getISOWeeksInYear;
+
+    // Day
+    momentPrototype__proto.date       = getSetDayOfMonth;
+    momentPrototype__proto.day        = momentPrototype__proto.days             = getSetDayOfWeek;
+    momentPrototype__proto.weekday    = getSetLocaleDayOfWeek;
+    momentPrototype__proto.isoWeekday = getSetISODayOfWeek;
+    momentPrototype__proto.dayOfYear  = getSetDayOfYear;
+
+    // Hour
+    momentPrototype__proto.hour = momentPrototype__proto.hours = getSetHour;
+
+    // Minute
+    momentPrototype__proto.minute = momentPrototype__proto.minutes = getSetMinute;
+
+    // Second
+    momentPrototype__proto.second = momentPrototype__proto.seconds = getSetSecond;
+
+    // Millisecond
+    momentPrototype__proto.millisecond = momentPrototype__proto.milliseconds = getSetMillisecond;
+
+    // Offset
+    momentPrototype__proto.utcOffset            = getSetOffset;
+    momentPrototype__proto.utc                  = setOffsetToUTC;
+    momentPrototype__proto.local                = setOffsetToLocal;
+    momentPrototype__proto.parseZone            = setOffsetToParsedOffset;
+    momentPrototype__proto.hasAlignedHourOffset = hasAlignedHourOffset;
+    momentPrototype__proto.isDST                = isDaylightSavingTime;
+    momentPrototype__proto.isDSTShifted         = isDaylightSavingTimeShifted;
+    momentPrototype__proto.isLocal              = isLocal;
+    momentPrototype__proto.isUtcOffset          = isUtcOffset;
+    momentPrototype__proto.isUtc                = isUtc;
+    momentPrototype__proto.isUTC                = isUtc;
+
+    // Timezone
+    momentPrototype__proto.zoneAbbr = getZoneAbbr;
+    momentPrototype__proto.zoneName = getZoneName;
+
+    // Deprecations
+    momentPrototype__proto.dates  = deprecate('dates accessor is deprecated. Use date instead.', getSetDayOfMonth);
+    momentPrototype__proto.months = deprecate('months accessor is deprecated. Use month instead', getSetMonth);
+    momentPrototype__proto.years  = deprecate('years accessor is deprecated. Use year instead', getSetYear);
+    momentPrototype__proto.zone   = deprecate('moment().zone is deprecated, use moment().utcOffset instead. https://github.com/moment/moment/issues/1779', getSetZone);
+
+    var momentPrototype = momentPrototype__proto;
+
+    function moment__createUnix (input) {
+        return local__createLocal(input * 1000);
+    }
+
+    function moment__createInZone () {
+        return local__createLocal.apply(null, arguments).parseZone();
+    }
+
+    var defaultCalendar = {
+        sameDay : '[Today at] LT',
+        nextDay : '[Tomorrow at] LT',
+        nextWeek : 'dddd [at] LT',
+        lastDay : '[Yesterday at] LT',
+        lastWeek : '[Last] dddd [at] LT',
+        sameElse : 'L'
+    };
+
+    function locale_calendar__calendar (key, mom, now) {
+        var output = this._calendar[key];
+        return isFunction(output) ? output.call(mom, now) : output;
+    }
+
+    var defaultLongDateFormat = {
+        LTS  : 'h:mm:ss A',
+        LT   : 'h:mm A',
+        L    : 'MM/DD/YYYY',
+        LL   : 'MMMM D, YYYY',
+        LLL  : 'MMMM D, YYYY h:mm A',
+        LLLL : 'dddd, MMMM D, YYYY h:mm A'
+    };
+
+    function longDateFormat (key) {
+        var format = this._longDateFormat[key],
+            formatUpper = this._longDateFormat[key.toUpperCase()];
+
+        if (format || !formatUpper) {
+            return format;
+        }
+
+        this._longDateFormat[key] = formatUpper.replace(/MMMM|MM|DD|dddd/g, function (val) {
+            return val.slice(1);
+        });
+
+        return this._longDateFormat[key];
+    }
+
+    var defaultInvalidDate = 'Invalid date';
+
+    function invalidDate () {
+        return this._invalidDate;
+    }
+
+    var defaultOrdinal = '%d';
+    var defaultOrdinalParse = /\d{1,2}/;
+
+    function ordinal (number) {
+        return this._ordinal.replace('%d', number);
+    }
+
+    function preParsePostFormat (string) {
+        return string;
+    }
+
+    var defaultRelativeTime = {
+        future : 'in %s',
+        past   : '%s ago',
+        s  : 'a few seconds',
+        m  : 'a minute',
+        mm : '%d minutes',
+        h  : 'an hour',
+        hh : '%d hours',
+        d  : 'a day',
+        dd : '%d days',
+        M  : 'a month',
+        MM : '%d months',
+        y  : 'a year',
+        yy : '%d years'
+    };
+
+    function relative__relativeTime (number, withoutSuffix, string, isFuture) {
+        var output = this._relativeTime[string];
+        return (isFunction(output)) ?
+            output(number, withoutSuffix, string, isFuture) :
+            output.replace(/%d/i, number);
+    }
+
+    function pastFuture (diff, output) {
+        var format = this._relativeTime[diff > 0 ? 'future' : 'past'];
+        return isFunction(format) ? format(output) : format.replace(/%s/i, output);
+    }
+
+    function locale_set__set (config) {
+        var prop, i;
+        for (i in config) {
+            prop = config[i];
+            if (isFunction(prop)) {
+                this[i] = prop;
+            } else {
+                this['_' + i] = prop;
+            }
+        }
+        // Lenient ordinal parsing accepts just a number in addition to
+        // number + (possibly) stuff coming from _ordinalParseLenient.
+        this._ordinalParseLenient = new RegExp(this._ordinalParse.source + '|' + (/\d{1,2}/).source);
+    }
+
+    var prototype__proto = Locale.prototype;
+
+    prototype__proto._calendar       = defaultCalendar;
+    prototype__proto.calendar        = locale_calendar__calendar;
+    prototype__proto._longDateFormat = defaultLongDateFormat;
+    prototype__proto.longDateFormat  = longDateFormat;
+    prototype__proto._invalidDate    = defaultInvalidDate;
+    prototype__proto.invalidDate     = invalidDate;
+    prototype__proto._ordinal        = defaultOrdinal;
+    prototype__proto.ordinal         = ordinal;
+    prototype__proto._ordinalParse   = defaultOrdinalParse;
+    prototype__proto.preparse        = preParsePostFormat;
+    prototype__proto.postformat      = preParsePostFormat;
+    prototype__proto._relativeTime   = defaultRelativeTime;
+    prototype__proto.relativeTime    = relative__relativeTime;
+    prototype__proto.pastFuture      = pastFuture;
+    prototype__proto.set             = locale_set__set;
+
+    // Month
+    prototype__proto.months            =        localeMonths;
+    prototype__proto._months           = defaultLocaleMonths;
+    prototype__proto.monthsShort       =        localeMonthsShort;
+    prototype__proto._monthsShort      = defaultLocaleMonthsShort;
+    prototype__proto.monthsParse       =        localeMonthsParse;
+    prototype__proto._monthsRegex      = defaultMonthsRegex;
+    prototype__proto.monthsRegex       = monthsRegex;
+    prototype__proto._monthsShortRegex = defaultMonthsShortRegex;
+    prototype__proto.monthsShortRegex  = monthsShortRegex;
+
+    // Week
+    prototype__proto.week = localeWeek;
+    prototype__proto._week = defaultLocaleWeek;
+    prototype__proto.firstDayOfYear = localeFirstDayOfYear;
+    prototype__proto.firstDayOfWeek = localeFirstDayOfWeek;
+
+    // Day of Week
+    prototype__proto.weekdays       =        localeWeekdays;
+    prototype__proto._weekdays      = defaultLocaleWeekdays;
+    prototype__proto.weekdaysMin    =        localeWeekdaysMin;
+    prototype__proto._weekdaysMin   = defaultLocaleWeekdaysMin;
+    prototype__proto.weekdaysShort  =        localeWeekdaysShort;
+    prototype__proto._weekdaysShort = defaultLocaleWeekdaysShort;
+    prototype__proto.weekdaysParse  =        localeWeekdaysParse;
+
+    // Hours
+    prototype__proto.isPM = localeIsPM;
+    prototype__proto._meridiemParse = defaultLocaleMeridiemParse;
+    prototype__proto.meridiem = localeMeridiem;
+
+    function lists__get (format, index, field, setter) {
+        var locale = locale_locales__getLocale();
+        var utc = create_utc__createUTC().set(setter, index);
+        return locale[field](utc, format);
+    }
+
+    function list (format, index, field, count, setter) {
+        if (typeof format === 'number') {
+            index = format;
+            format = undefined;
+        }
+
+        format = format || '';
+
+        if (index != null) {
+            return lists__get(format, index, field, setter);
+        }
+
+        var i;
+        var out = [];
+        for (i = 0; i < count; i++) {
+            out[i] = lists__get(format, i, field, setter);
+        }
+        return out;
+    }
+
+    function lists__listMonths (format, index) {
+        return list(format, index, 'months', 12, 'month');
+    }
+
+    function lists__listMonthsShort (format, index) {
+        return list(format, index, 'monthsShort', 12, 'month');
+    }
+
+    function lists__listWeekdays (format, index) {
+        return list(format, index, 'weekdays', 7, 'day');
+    }
+
+    function lists__listWeekdaysShort (format, index) {
+        return list(format, index, 'weekdaysShort', 7, 'day');
+    }
+
+    function lists__listWeekdaysMin (format, index) {
+        return list(format, index, 'weekdaysMin', 7, 'day');
+    }
+
+    locale_locales__getSetGlobalLocale('en', {
+        ordinalParse: /\d{1,2}(th|st|nd|rd)/,
+        ordinal : function (number) {
+            var b = number % 10,
+                output = (toInt(number % 100 / 10) === 1) ? 'th' :
+                (b === 1) ? 'st' :
+                (b === 2) ? 'nd' :
+                (b === 3) ? 'rd' : 'th';
+            return number + output;
+        }
+    });
+
+    // Side effect imports
+    utils_hooks__hooks.lang = deprecate('moment.lang is deprecated. Use moment.locale instead.', locale_locales__getSetGlobalLocale);
+    utils_hooks__hooks.langData = deprecate('moment.langData is deprecated. Use moment.localeData instead.', locale_locales__getLocale);
+
+    var mathAbs = Math.abs;
+
+    function duration_abs__abs () {
+        var data           = this._data;
+
+        this._milliseconds = mathAbs(this._milliseconds);
+        this._days         = mathAbs(this._days);
+        this._months       = mathAbs(this._months);
+
+        data.milliseconds  = mathAbs(data.milliseconds);
+        data.seconds       = mathAbs(data.seconds);
+        data.minutes       = mathAbs(data.minutes);
+        data.hours         = mathAbs(data.hours);
+        data.months        = mathAbs(data.months);
+        data.years         = mathAbs(data.years);
+
+        return this;
+    }
+
+    function duration_add_subtract__addSubtract (duration, input, value, direction) {
+        var other = create__createDuration(input, value);
+
+        duration._milliseconds += direction * other._milliseconds;
+        duration._days         += direction * other._days;
+        duration._months       += direction * other._months;
+
+        return duration._bubble();
+    }
+
+    // supports only 2.0-style add(1, 's') or add(duration)
+    function duration_add_subtract__add (input, value) {
+        return duration_add_subtract__addSubtract(this, input, value, 1);
+    }
+
+    // supports only 2.0-style subtract(1, 's') or subtract(duration)
+    function duration_add_subtract__subtract (input, value) {
+        return duration_add_subtract__addSubtract(this, input, value, -1);
+    }
+
+    function absCeil (number) {
+        if (number < 0) {
+            return Math.floor(number);
+        } else {
+            return Math.ceil(number);
+        }
+    }
+
+    function bubble () {
+        var milliseconds = this._milliseconds;
+        var days         = this._days;
+        var months       = this._months;
+        var data         = this._data;
+        var seconds, minutes, hours, years, monthsFromDays;
+
+        // if we have a mix of positive and negative values, bubble down first
+        // check: https://github.com/moment/moment/issues/2166
+        if (!((milliseconds >= 0 && days >= 0 && months >= 0) ||
+                (milliseconds <= 0 && days <= 0 && months <= 0))) {
+            milliseconds += absCeil(monthsToDays(months) + days) * 864e5;
+            days = 0;
+            months = 0;
+        }
+
+        // The following code bubbles up values, see the tests for
+        // examples of what that means.
+        data.milliseconds = milliseconds % 1000;
+
+        seconds           = absFloor(milliseconds / 1000);
+        data.seconds      = seconds % 60;
+
+        minutes           = absFloor(seconds / 60);
+        data.minutes      = minutes % 60;
+
+        hours             = absFloor(minutes / 60);
+        data.hours        = hours % 24;
+
+        days += absFloor(hours / 24);
+
+        // convert days to months
+        monthsFromDays = absFloor(daysToMonths(days));
+        months += monthsFromDays;
+        days -= absCeil(monthsToDays(monthsFromDays));
+
+        // 12 months -> 1 year
+        years = absFloor(months / 12);
+        months %= 12;
+
+        data.days   = days;
+        data.months = months;
+        data.years  = years;
+
+        return this;
+    }
+
+    function daysToMonths (days) {
+        // 400 years have 146097 days (taking into account leap year rules)
+        // 400 years have 12 months === 4800
+        return days * 4800 / 146097;
+    }
+
+    function monthsToDays (months) {
+        // the reverse of daysToMonths
+        return months * 146097 / 4800;
+    }
+
+    function as (units) {
+        var days;
+        var months;
+        var milliseconds = this._milliseconds;
+
+        units = normalizeUnits(units);
+
+        if (units === 'month' || units === 'year') {
+            days   = this._days   + milliseconds / 864e5;
+            months = this._months + daysToMonths(days);
+            return units === 'month' ? months : months / 12;
+        } else {
+            // handle milliseconds separately because of floating point math errors (issue #1867)
+            days = this._days + Math.round(monthsToDays(this._months));
+            switch (units) {
+                case 'week'   : return days / 7     + milliseconds / 6048e5;
+                case 'day'    : return days         + milliseconds / 864e5;
+                case 'hour'   : return days * 24    + milliseconds / 36e5;
+                case 'minute' : return days * 1440  + milliseconds / 6e4;
+                case 'second' : return days * 86400 + milliseconds / 1000;
+                // Math.floor prevents floating point math errors here
+                case 'millisecond': return Math.floor(days * 864e5) + milliseconds;
+                default: throw new Error('Unknown unit ' + units);
+            }
+        }
+    }
+
+    // TODO: Use this.as('ms')?
+    function duration_as__valueOf () {
+        return (
+            this._milliseconds +
+            this._days * 864e5 +
+            (this._months % 12) * 2592e6 +
+            toInt(this._months / 12) * 31536e6
+        );
+    }
+
+    function makeAs (alias) {
+        return function () {
+            return this.as(alias);
+        };
+    }
+
+    var asMilliseconds = makeAs('ms');
+    var asSeconds      = makeAs('s');
+    var asMinutes      = makeAs('m');
+    var asHours        = makeAs('h');
+    var asDays         = makeAs('d');
+    var asWeeks        = makeAs('w');
+    var asMonths       = makeAs('M');
+    var asYears        = makeAs('y');
+
+    function duration_get__get (units) {
+        units = normalizeUnits(units);
+        return this[units + 's']();
+    }
+
+    function makeGetter(name) {
+        return function () {
+            return this._data[name];
+        };
+    }
+
+    var milliseconds = makeGetter('milliseconds');
+    var seconds      = makeGetter('seconds');
+    var minutes      = makeGetter('minutes');
+    var hours        = makeGetter('hours');
+    var days         = makeGetter('days');
+    var months       = makeGetter('months');
+    var years        = makeGetter('years');
+
+    function weeks () {
+        return absFloor(this.days() / 7);
+    }
+
+    var round = Math.round;
+    var thresholds = {
+        s: 45,  // seconds to minute
+        m: 45,  // minutes to hour
+        h: 22,  // hours to day
+        d: 26,  // days to month
+        M: 11   // months to year
+    };
+
+    // helper function for moment.fn.from, moment.fn.fromNow, and moment.duration.fn.humanize
+    function substituteTimeAgo(string, number, withoutSuffix, isFuture, locale) {
+        return locale.relativeTime(number || 1, !!withoutSuffix, string, isFuture);
+    }
+
+    function duration_humanize__relativeTime (posNegDuration, withoutSuffix, locale) {
+        var duration = create__createDuration(posNegDuration).abs();
+        var seconds  = round(duration.as('s'));
+        var minutes  = round(duration.as('m'));
+        var hours    = round(duration.as('h'));
+        var days     = round(duration.as('d'));
+        var months   = round(duration.as('M'));
+        var years    = round(duration.as('y'));
+
+        var a = seconds < thresholds.s && ['s', seconds]  ||
+                minutes <= 1           && ['m']           ||
+                minutes < thresholds.m && ['mm', minutes] ||
+                hours   <= 1           && ['h']           ||
+                hours   < thresholds.h && ['hh', hours]   ||
+                days    <= 1           && ['d']           ||
+                days    < thresholds.d && ['dd', days]    ||
+                months  <= 1           && ['M']           ||
+                months  < thresholds.M && ['MM', months]  ||
+                years   <= 1           && ['y']           || ['yy', years];
+
+        a[2] = withoutSuffix;
+        a[3] = +posNegDuration > 0;
+        a[4] = locale;
+        return substituteTimeAgo.apply(null, a);
+    }
+
+    // This function allows you to set a threshold for relative time strings
+    function duration_humanize__getSetRelativeTimeThreshold (threshold, limit) {
+        if (thresholds[threshold] === undefined) {
+            return false;
+        }
+        if (limit === undefined) {
+            return thresholds[threshold];
+        }
+        thresholds[threshold] = limit;
+        return true;
+    }
+
+    function humanize (withSuffix) {
+        var locale = this.localeData();
+        var output = duration_humanize__relativeTime(this, !withSuffix, locale);
+
+        if (withSuffix) {
+            output = locale.pastFuture(+this, output);
+        }
+
+        return locale.postformat(output);
+    }
+
+    var iso_string__abs = Math.abs;
+
+    function iso_string__toISOString() {
+        // for ISO strings we do not use the normal bubbling rules:
+        //  * milliseconds bubble up until they become hours
+        //  * days do not bubble at all
+        //  * months bubble up until they become years
+        // This is because there is no context-free conversion between hours and days
+        // (think of clock changes)
+        // and also not between days and months (28-31 days per month)
+        var seconds = iso_string__abs(this._milliseconds) / 1000;
+        var days         = iso_string__abs(this._days);
+        var months       = iso_string__abs(this._months);
+        var minutes, hours, years;
+
+        // 3600 seconds -> 60 minutes -> 1 hour
+        minutes           = absFloor(seconds / 60);
+        hours             = absFloor(minutes / 60);
+        seconds %= 60;
+        minutes %= 60;
+
+        // 12 months -> 1 year
+        years  = absFloor(months / 12);
+        months %= 12;
+
+
+        // inspired by https://github.com/dordille/moment-isoduration/blob/master/moment.isoduration.js
+        var Y = years;
+        var M = months;
+        var D = days;
+        var h = hours;
+        var m = minutes;
+        var s = seconds;
+        var total = this.asSeconds();
+
+        if (!total) {
+            // this is the same as C#'s (Noda) and python (isodate)...
+            // but not other JS (goog.date)
+            return 'P0D';
+        }
+
+        return (total < 0 ? '-' : '') +
+            'P' +
+            (Y ? Y + 'Y' : '') +
+            (M ? M + 'M' : '') +
+            (D ? D + 'D' : '') +
+            ((h || m || s) ? 'T' : '') +
+            (h ? h + 'H' : '') +
+            (m ? m + 'M' : '') +
+            (s ? s + 'S' : '');
+    }
+
+    var duration_prototype__proto = Duration.prototype;
+
+    duration_prototype__proto.abs            = duration_abs__abs;
+    duration_prototype__proto.add            = duration_add_subtract__add;
+    duration_prototype__proto.subtract       = duration_add_subtract__subtract;
+    duration_prototype__proto.as             = as;
+    duration_prototype__proto.asMilliseconds = asMilliseconds;
+    duration_prototype__proto.asSeconds      = asSeconds;
+    duration_prototype__proto.asMinutes      = asMinutes;
+    duration_prototype__proto.asHours        = asHours;
+    duration_prototype__proto.asDays         = asDays;
+    duration_prototype__proto.asWeeks        = asWeeks;
+    duration_prototype__proto.asMonths       = asMonths;
+    duration_prototype__proto.asYears        = asYears;
+    duration_prototype__proto.valueOf        = duration_as__valueOf;
+    duration_prototype__proto._bubble        = bubble;
+    duration_prototype__proto.get            = duration_get__get;
+    duration_prototype__proto.milliseconds   = milliseconds;
+    duration_prototype__proto.seconds        = seconds;
+    duration_prototype__proto.minutes        = minutes;
+    duration_prototype__proto.hours          = hours;
+    duration_prototype__proto.days           = days;
+    duration_prototype__proto.weeks          = weeks;
+    duration_prototype__proto.months         = months;
+    duration_prototype__proto.years          = years;
+    duration_prototype__proto.humanize       = humanize;
+    duration_prototype__proto.toISOString    = iso_string__toISOString;
+    duration_prototype__proto.toString       = iso_string__toISOString;
+    duration_prototype__proto.toJSON         = iso_string__toISOString;
+    duration_prototype__proto.locale         = locale;
+    duration_prototype__proto.localeData     = localeData;
+
+    // Deprecations
+    duration_prototype__proto.toIsoString = deprecate('toIsoString() is deprecated. Please use toISOString() instead (notice the capitals)', iso_string__toISOString);
+    duration_prototype__proto.lang = lang;
+
+    // Side effect imports
+
+    // FORMATTING
+
+    addFormatToken('X', 0, 0, 'unix');
+    addFormatToken('x', 0, 0, 'valueOf');
+
+    // PARSING
+
+    addRegexToken('x', matchSigned);
+    addRegexToken('X', matchTimestamp);
+    addParseToken('X', function (input, array, config) {
+        config._d = new Date(parseFloat(input, 10) * 1000);
+    });
+    addParseToken('x', function (input, array, config) {
+        config._d = new Date(toInt(input));
+    });
+
+    // Side effect imports
+
+
+    utils_hooks__hooks.version = '2.11.1';
+
+    setHookCallback(local__createLocal);
+
+    utils_hooks__hooks.fn                    = momentPrototype;
+    utils_hooks__hooks.min                   = min;
+    utils_hooks__hooks.max                   = max;
+    utils_hooks__hooks.now                   = now;
+    utils_hooks__hooks.utc                   = create_utc__createUTC;
+    utils_hooks__hooks.unix                  = moment__createUnix;
+    utils_hooks__hooks.months                = lists__listMonths;
+    utils_hooks__hooks.isDate                = isDate;
+    utils_hooks__hooks.locale                = locale_locales__getSetGlobalLocale;
+    utils_hooks__hooks.invalid               = valid__createInvalid;
+    utils_hooks__hooks.duration              = create__createDuration;
+    utils_hooks__hooks.isMoment              = isMoment;
+    utils_hooks__hooks.weekdays              = lists__listWeekdays;
+    utils_hooks__hooks.parseZone             = moment__createInZone;
+    utils_hooks__hooks.localeData            = locale_locales__getLocale;
+    utils_hooks__hooks.isDuration            = isDuration;
+    utils_hooks__hooks.monthsShort           = lists__listMonthsShort;
+    utils_hooks__hooks.weekdaysMin           = lists__listWeekdaysMin;
+    utils_hooks__hooks.defineLocale          = defineLocale;
+    utils_hooks__hooks.weekdaysShort         = lists__listWeekdaysShort;
+    utils_hooks__hooks.normalizeUnits        = normalizeUnits;
+    utils_hooks__hooks.relativeTimeThreshold = duration_humanize__getSetRelativeTimeThreshold;
+    utils_hooks__hooks.prototype             = momentPrototype;
+
+    var _moment = utils_hooks__hooks;
+
+    return _moment;
+
+}));
+},{}],237:[function(require,module,exports){
+/*globals define, jQuery, module, require */
+/*jslint vars:true */
+
+/**
+ * @license angular-bootstrap-datetimepicker  version: 0.4.0
+ * Copyright 2015 Knight Rider Consulting, Inc. http://www.knightrider.com
+ * License: MIT
+ */
+
+/**
+ *
+ *    @author        Dale "Ducky" Lotts
+ *    @since        2013-Jul-8
+ */
+
+(function (factory) {
+  'use strict';
+  /* istanbul ignore if */
+  if (typeof define === 'function' && /* istanbul ignore next */ define.amd) {
+    define(['angular', 'moment'], factory); // AMD
+    /* istanbul ignore next */
+  } else if (typeof exports === 'object') {
+    module.exports = factory(require('angular'), require('moment')); // CommonJS
+  } else {
+    factory(window.angular, window.moment); // Browser global
+  }
+}(function (angular, moment) {
+  'use strict';
+  angular.module('ui.bootstrap.datetimepicker', [])
+    .constant('dateTimePickerConfig', {
+      configureOn: null,
+      dropdownSelector: null,
+      minuteStep: 5,
+      minView: 'minute',
+      renderOn: null,
+      startView: 'day'
+    })
+    .directive('datetimepicker', ['$log', 'dateTimePickerConfig', function datetimepickerDirective($log, defaultConfig) {
+
+      function DateObject() {
+
+        var tempDate = new Date();
+        var localOffset = tempDate.getTimezoneOffset() * 60000;
+        this.utcDateValue = tempDate.getTime();
+        this.selectable = true;
+
+        this.localDateValue = function () {
+          return this.utcDateValue + localOffset;
+        };
+
+        var validProperties = ['utcDateValue', 'localDateValue', 'display', 'active', 'selectable', 'past', 'future'];
+
+        for (var prop in arguments[0]) {
+          /* istanbul ignore else */
+          //noinspection JSUnfilteredForInLoop
+          if (validProperties.indexOf(prop) >= 0) {
+            //noinspection JSUnfilteredForInLoop
+            this[prop] = arguments[0][prop];
+          }
+        }
+      }
+
+      var validateConfiguration = function validateConfiguration(configuration) {
+
+        var validOptions = [
+          'configureOn',
+          'dropdownSelector',
+          'minuteStep',
+          'minView',
+          'renderOn',
+          'startView'
+        ];
+
+        for (var prop in configuration) {
+          //noinspection JSUnfilteredForInLoop
+          if (validOptions.indexOf(prop) < 0) {
+            throw ('invalid option: ' + prop);
+          }
+        }
+
+        // Order of the elements in the validViews array is significant.
+        var validViews = ['minute', 'hour', 'day', 'month', 'year'];
+
+        if (validViews.indexOf(configuration.startView) < 0) {
+          throw ('invalid startView value: ' + configuration.startView);
+        }
+
+        if (validViews.indexOf(configuration.minView) < 0) {
+          throw ('invalid minView value: ' + configuration.minView);
+        }
+
+        if (validViews.indexOf(configuration.minView) > validViews.indexOf(configuration.startView)) {
+          throw ('startView must be greater than minView');
+        }
+
+        if (!angular.isNumber(configuration.minuteStep)) {
+          throw ('minuteStep must be numeric');
+        }
+        if (configuration.minuteStep <= 0 || configuration.minuteStep >= 60) {
+          throw ('minuteStep must be greater than zero and less than 60');
+        }
+        if (configuration.configureOn !== null && !angular.isString(configuration.configureOn)) {
+          throw ('configureOn must be a string');
+        }
+        if (configuration.configureOn !== null && configuration.configureOn.length < 1) {
+          throw ('configureOn must not be an empty string');
+        }
+        if (configuration.renderOn !== null && !angular.isString(configuration.renderOn)) {
+          throw ('renderOn must be a string');
+        }
+        if (configuration.renderOn !== null && configuration.renderOn.length < 1) {
+          throw ('renderOn must not be an empty string');
+        }
+        if (configuration.dropdownSelector !== null && !angular.isString(configuration.dropdownSelector)) {
+          throw ('dropdownSelector must be a string');
+        }
+
+        /* istanbul ignore next */
+        if (configuration.dropdownSelector !== null && ((typeof jQuery === 'undefined') || (typeof jQuery().dropdown !== 'function'))) {
+          $log.error('Please DO NOT specify the dropdownSelector option unless you are using jQuery AND Bootstrap.js. ' +
+            'Please include jQuery AND Bootstrap.js, or write code to close the dropdown in the on-set-time callback. \n\n' +
+            'The dropdownSelector configuration option is being removed because it will not function properly.');
+          delete configuration.dropdownSelector;
+        }
+      };
+
+      return {
+        restrict: 'E',
+        require: 'ngModel',
+        template: '<div class="datetimepicker table-responsive">' +
+        '<table class="table table-condensed  {{ data.currentView }}-view">' +
+        '   <thead>' +
+        '       <tr>' +
+        '           <th class="left" data-ng-click="changeView(data.currentView, data.leftDate, $event)" data-ng-show="data.leftDate.selectable"><i class="glyphicon glyphicon-arrow-left"/></th>' +
+        '           <th class="switch" colspan="5" data-ng-show="data.previousViewDate.selectable" data-ng-click="changeView(data.previousView, data.previousViewDate, $event)">{{ data.previousViewDate.display }}</th>' +
+        '           <th class="right" data-ng-click="changeView(data.currentView, data.rightDate, $event)" data-ng-show="data.rightDate.selectable"><i class="glyphicon glyphicon-arrow-right"/></th>' +
+        '       </tr>' +
+        '       <tr>' +
+        '           <th class="dow" data-ng-repeat="day in data.dayNames" >{{ day }}</th>' +
+        '       </tr>' +
+        '   </thead>' +
+        '   <tbody>' +
+        '       <tr data-ng-if="data.currentView !== \'day\'" >' +
+        '           <td colspan="7" >' +
+        '              <span    class="{{ data.currentView }}" ' +
+        '                       data-ng-repeat="dateObject in data.dates"  ' +
+        '                       data-ng-class="{active: dateObject.active, past: dateObject.past, future: dateObject.future, disabled: !dateObject.selectable}" ' +
+        '                       data-ng-click="changeView(data.nextView, dateObject, $event)">{{ dateObject.display }}</span> ' +
+        '           </td>' +
+        '       </tr>' +
+        '       <tr data-ng-if="data.currentView === \'day\'" data-ng-repeat="week in data.weeks">' +
+        '           <td data-ng-repeat="dateObject in week.dates" ' +
+        '               data-ng-click="changeView(data.nextView, dateObject, $event)"' +
+        '               class="day" ' +
+        '               data-ng-class="{active: dateObject.active, past: dateObject.past, future: dateObject.future, disabled: !dateObject.selectable}" >{{ dateObject.display }}</td>' +
+        '       </tr>' +
+        '   </tbody>' +
+        '</table></div>',
+        scope: {
+          onSetTime: '&',
+          beforeRender: '&'
+        },
+        replace: true,
+        link: function link(scope, element, attrs, ngModelController) {
+
+          var configure = function configure() {
+            var directiveConfig = {};
+
+            if (attrs.datetimepickerConfig) {
+              directiveConfig = scope.$parent.$eval(attrs.datetimepickerConfig);
+            }
+
+            var configuration = {};
+
+            angular.extend(configuration, defaultConfig, directiveConfig);
+
+            validateConfiguration(configuration);
+
+            return configuration;
+          };
+
+          var configuration = configure();
+
+
+          var startOfDecade = function startOfDecade(unixDate) {
+            var startYear = (parseInt(moment.utc(unixDate).year() / 10, 10) * 10);
+            return moment.utc(unixDate).year(startYear).startOf('year');
+          };
+
+          var dataFactory = {
+            year: function year(unixDate) {
+              var selectedDate = moment.utc(unixDate).startOf('year');
+              // View starts one year before the decade starts and ends one year after the decade ends
+              // i.e. passing in a date of 1/1/2013 will give a range of 2009 to 2020
+              // Truncate the last digit from the current year and subtract 1 to get the start of the decade
+              var startDecade = (parseInt(selectedDate.year() / 10, 10) * 10);
+              var startDate = moment.utc(startOfDecade(unixDate)).subtract(1, 'year').startOf('year');
+
+              var activeYear = ngModelController.$modelValue ? moment(ngModelController.$modelValue).year() : 0;
+
+              var result = {
+                'currentView': 'year',
+                'nextView': configuration.minView === 'year' ? 'setTime' : 'month',
+                'previousViewDate': new DateObject({
+                  utcDateValue: null,
+                  display: startDecade + '-' + (startDecade + 9)
+                }),
+                'leftDate': new DateObject({utcDateValue: moment.utc(startDate).subtract(9, 'year').valueOf()}),
+                'rightDate': new DateObject({utcDateValue: moment.utc(startDate).add(11, 'year').valueOf()}),
+                'dates': []
+              };
+
+              for (var i = 0; i < 12; i += 1) {
+                var yearMoment = moment.utc(startDate).add(i, 'years');
+                var dateValue = {
+                  'utcDateValue': yearMoment.valueOf(),
+                  'display': yearMoment.format('YYYY'),
+                  'past': yearMoment.year() < startDecade,
+                  'future': yearMoment.year() > startDecade + 9,
+                  'active': yearMoment.year() === activeYear
+                };
+
+                result.dates.push(new DateObject(dateValue));
+              }
+
+              return result;
+            },
+
+            month: function month(unixDate) {
+
+              var startDate = moment.utc(unixDate).startOf('year');
+              var previousViewDate = startOfDecade(unixDate);
+              var activeDate = ngModelController.$modelValue ? moment(ngModelController.$modelValue).format('YYYY-MMM') : 0;
+
+              var result = {
+                'previousView': 'year',
+                'currentView': 'month',
+                'nextView': configuration.minView === 'month' ? 'setTime' : 'day',
+                'previousViewDate': new DateObject({
+                  utcDateValue: previousViewDate.valueOf(),
+                  display: startDate.format('YYYY')
+                }),
+                'leftDate': new DateObject({utcDateValue: moment.utc(startDate).subtract(1, 'year').valueOf()}),
+                'rightDate': new DateObject({utcDateValue: moment.utc(startDate).add(1, 'year').valueOf()}),
+                'dates': []
+              };
+
+              for (var i = 0; i < 12; i += 1) {
+                var monthMoment = moment.utc(startDate).add(i, 'months');
+                var dateValue = {
+                  'utcDateValue': monthMoment.valueOf(),
+                  'display': monthMoment.format('MMM'),
+                  'active': monthMoment.format('YYYY-MMM') === activeDate
+                };
+
+                result.dates.push(new DateObject(dateValue));
+              }
+
+              return result;
+            },
+
+            day: function day(unixDate) {
+
+              var selectedDate = moment.utc(unixDate);
+              var startOfMonth = moment.utc(selectedDate).startOf('month');
+              var previousViewDate = moment.utc(selectedDate).startOf('year');
+              var endOfMonth = moment.utc(selectedDate).endOf('month');
+
+              var startDate = moment.utc(startOfMonth).subtract(Math.abs(startOfMonth.weekday()), 'days');
+
+              var activeDate = ngModelController.$modelValue ? moment(ngModelController.$modelValue).format('YYYY-MMM-DD') : '';
+
+              var result = {
+                'previousView': 'month',
+                'currentView': 'day',
+                'nextView': configuration.minView === 'day' ? 'setTime' : 'hour',
+                'previousViewDate': new DateObject({
+                  utcDateValue: previousViewDate.valueOf(),
+                  display: startOfMonth.format('YYYY-MMM')
+                }),
+                'leftDate': new DateObject({utcDateValue: moment.utc(startOfMonth).subtract(1, 'months').valueOf()}),
+                'rightDate': new DateObject({utcDateValue: moment.utc(startOfMonth).add(1, 'months').valueOf()}),
+                'dayNames': [],
+                'weeks': []
+              };
+
+
+              for (var dayNumber = 0; dayNumber < 7; dayNumber += 1) {
+                result.dayNames.push(moment.utc().weekday(dayNumber).format('dd'));
+              }
+
+              for (var i = 0; i < 6; i += 1) {
+                var week = {dates: []};
+                for (var j = 0; j < 7; j += 1) {
+                  var monthMoment = moment.utc(startDate).add((i * 7) + j, 'days');
+                  var dateValue = {
+                    'utcDateValue': monthMoment.valueOf(),
+                    'display': monthMoment.format('D'),
+                    'active': monthMoment.format('YYYY-MMM-DD') === activeDate,
+                    'past': monthMoment.isBefore(startOfMonth),
+                    'future': monthMoment.isAfter(endOfMonth)
+                  };
+                  week.dates.push(new DateObject(dateValue));
+                }
+                result.weeks.push(week);
+              }
+
+              return result;
+            },
+
+            hour: function hour(unixDate) {
+              var selectedDate = moment.utc(unixDate).startOf('day');
+              var previousViewDate = moment.utc(selectedDate).startOf('month');
+
+              var activeFormat = ngModelController.$modelValue ? moment(ngModelController.$modelValue).format('YYYY-MM-DD H') : '';
+
+              var result = {
+                'previousView': 'day',
+                'currentView': 'hour',
+                'nextView': configuration.minView === 'hour' ? 'setTime' : 'minute',
+                'previousViewDate': new DateObject({
+                  utcDateValue: previousViewDate.valueOf(),
+                  display: selectedDate.format('ll')
+                }),
+                'leftDate': new DateObject({utcDateValue: moment.utc(selectedDate).subtract(1, 'days').valueOf()}),
+                'rightDate': new DateObject({utcDateValue: moment.utc(selectedDate).add(1, 'days').valueOf()}),
+                'dates': []
+              };
+
+              for (var i = 0; i < 24; i += 1) {
+                var hourMoment = moment.utc(selectedDate).add(i, 'hours');
+                var dateValue = {
+                  'utcDateValue': hourMoment.valueOf(),
+                  'display': hourMoment.format('LT'),
+                  'active': hourMoment.format('YYYY-MM-DD H') === activeFormat
+                };
+
+                result.dates.push(new DateObject(dateValue));
+              }
+
+              return result;
+            },
+
+            minute: function minute(unixDate) {
+              var selectedDate = moment.utc(unixDate).startOf('hour');
+              var previousViewDate = moment.utc(selectedDate).startOf('day');
+              var activeFormat = ngModelController.$modelValue ? moment(ngModelController.$modelValue).format('YYYY-MM-DD H:mm') : '';
+
+              var result = {
+                'previousView': 'hour',
+                'currentView': 'minute',
+                'nextView': 'setTime',
+                'previousViewDate': new DateObject({
+                  utcDateValue: previousViewDate.valueOf(),
+                  display: selectedDate.format('lll')
+                }),
+                'leftDate': new DateObject({utcDateValue: moment.utc(selectedDate).subtract(1, 'hours').valueOf()}),
+                'rightDate': new DateObject({utcDateValue: moment.utc(selectedDate).add(1, 'hours').valueOf()}),
+                'dates': []
+              };
+
+              var limit = 60 / configuration.minuteStep;
+
+              for (var i = 0; i < limit; i += 1) {
+                var hourMoment = moment.utc(selectedDate).add(i * configuration.minuteStep, 'minute');
+                var dateValue = {
+                  'utcDateValue': hourMoment.valueOf(),
+                  'display': hourMoment.format('LT'),
+                  'active': hourMoment.format('YYYY-MM-DD H:mm') === activeFormat
+                };
+
+                result.dates.push(new DateObject(dateValue));
+              }
+
+              return result;
+            },
+
+            setTime: function setTime(unixDate) {
+              var tempDate = new Date(unixDate);
+              var newDate = new Date(tempDate.getUTCFullYear(), tempDate.getUTCMonth(), tempDate.getUTCDate(), tempDate.getUTCHours(), tempDate.getUTCMinutes(), tempDate.getUTCSeconds(), tempDate.getUTCMilliseconds());
+
+              var oldDate = ngModelController.$modelValue;
+              ngModelController.$setViewValue(newDate);
+
+              if (configuration.dropdownSelector) {
+                jQuery(configuration.dropdownSelector).dropdown('toggle');
+              }
+
+              scope.onSetTime({newDate: newDate, oldDate: oldDate});
+
+              return dataFactory[configuration.startView](unixDate);
+            }
+          };
+
+          var getUTCTime = function getUTCTime(modelValue) {
+            var tempDate = (modelValue ? moment(modelValue).toDate() : new Date());
+            return tempDate.getTime() - (tempDate.getTimezoneOffset() * 60000);
+          };
+
+          scope.changeView = function changeView(viewName, dateObject, event) {
+            if (event) {
+              event.stopPropagation();
+              event.preventDefault();
+            }
+
+            if (viewName && (dateObject.utcDateValue > -Infinity) && dateObject.selectable && dataFactory[viewName]) {
+              var result = dataFactory[viewName](dateObject.utcDateValue);
+
+              var weekDates = [];
+              if (result.weeks) {
+                for (var i = 0; i < result.weeks.length; i += 1) {
+                  var week = result.weeks[i];
+                  for (var j = 0; j < week.dates.length; j += 1) {
+                    var weekDate = week.dates[j];
+                    weekDates.push(weekDate);
+                  }
+                }
+              }
+
+              scope.beforeRender({
+                $view: result.currentView,
+                $dates: result.dates || weekDates,
+                $leftDate: result.leftDate,
+                $upDate: result.previousViewDate,
+                $rightDate: result.rightDate
+              });
+
+              scope.data = result;
+            }
+          };
+
+          ngModelController.$render = function $render() {
+            scope.changeView(configuration.startView, new DateObject({utcDateValue: getUTCTime(ngModelController.$viewValue)}));
+          };
+
+          if (configuration.configureOn) {
+            scope.$on(configuration.configureOn, function () {
+              configuration = configure();
+              ngModelController.$render();
+            });
+          }
+          if (configuration.renderOn) {
+            scope.$on(configuration.renderOn, ngModelController.$render);
+          }
+        }
+      };
+    }]);
+}));
+
+},{"angular":280,"moment":236}],238:[function(require,module,exports){
+(function (factory) {
+  'use strict';
+  if (typeof exports === 'object') {
+    // Node/CommonJS
+    module.exports = factory(
+      typeof angular !== 'undefined' ? angular : require('angular'),
+      typeof Chart !== 'undefined' ? Chart : require('chart.js'));
+  }  else if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(['angular', 'chart'], factory);
+  } else {
+    // Browser globals
+    factory(angular, Chart);
+  }
+}(function (angular, Chart) {
+  'use strict';
+
+  Chart.defaults.global.responsive = true;
+  Chart.defaults.global.multiTooltipTemplate = '<%if (datasetLabel){%><%=datasetLabel%>: <%}%><%= value %>';
+
+  Chart.defaults.global.colours = [
+    '#97BBCD', // blue
+    '#DCDCDC', // light grey
+    '#F7464A', // red
+    '#46BFBD', // green
+    '#FDB45C', // yellow
+    '#949FB1', // grey
+    '#4D5360'  // dark grey
+  ];
+
+  var usingExcanvas = typeof window.G_vmlCanvasManager === 'object' &&
+    window.G_vmlCanvasManager !== null &&
+    typeof window.G_vmlCanvasManager.initElement === 'function';
+
+  if (usingExcanvas) Chart.defaults.global.animation = false;
+
+  return angular.module('chart.js', [])
+    .provider('ChartJs', ChartJsProvider)
+    .factory('ChartJsFactory', ['ChartJs', '$timeout', ChartJsFactory])
+    .directive('chartBase', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory(); }])
+    .directive('chartLine', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory('Line'); }])
+    .directive('chartBar', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory('Bar'); }])
+    .directive('chartRadar', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory('Radar'); }])
+    .directive('chartDoughnut', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory('Doughnut'); }])
+    .directive('chartPie', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory('Pie'); }])
+    .directive('chartPolarArea', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory('PolarArea'); }]);
+
+  /**
+   * Wrapper for chart.js
+   * Allows configuring chart js using the provider
+   *
+   * angular.module('myModule', ['chart.js']).config(function(ChartJsProvider) {
+   *   ChartJsProvider.setOptions({ responsive: true });
+   *   ChartJsProvider.setOptions('Line', { responsive: false });
+   * })))
+   */
+  function ChartJsProvider () {
+    var options = {};
+    var ChartJs = {
+      Chart: Chart,
+      getOptions: function (type) {
+        var typeOptions = type && options[type] || {};
+        return angular.extend({}, options, typeOptions);
+      }
+    };
+
+    /**
+     * Allow to set global options during configuration
+     */
+    this.setOptions = function (type, customOptions) {
+      // If no type was specified set option for the global object
+      if (! customOptions) {
+        customOptions = type;
+        options = angular.extend(options, customOptions);
+        return;
+      }
+      // Set options for the specific chart
+      options[type] = angular.extend(options[type] || {}, customOptions);
+    };
+
+    this.$get = function () {
+      return ChartJs;
+    };
+  }
+
+  function ChartJsFactory (ChartJs, $timeout) {
+    return function chart (type) {
+      return {
+        restrict: 'CA',
+        scope: {
+          data: '=?',
+          labels: '=?',
+          options: '=?',
+          series: '=?',
+          colours: '=?',
+          getColour: '=?',
+          chartType: '=',
+          legend: '@',
+          click: '=?',
+          hover: '=?',
+
+          chartData: '=?',
+          chartLabels: '=?',
+          chartOptions: '=?',
+          chartSeries: '=?',
+          chartColours: '=?',
+          chartLegend: '@',
+          chartClick: '=?',
+          chartHover: '=?'
+        },
+        link: function (scope, elem/*, attrs */) {
+          var chart, container = document.createElement('div');
+          container.className = 'chart-container';
+          elem.replaceWith(container);
+          container.appendChild(elem[0]);
+
+          if (usingExcanvas) window.G_vmlCanvasManager.initElement(elem[0]);
+
+          ['data', 'labels', 'options', 'series', 'colours', 'legend', 'click', 'hover'].forEach(deprecated);
+          function aliasVar (fromName, toName) {
+            scope.$watch(fromName, function (newVal) {
+              if (typeof newVal === 'undefined') return;
+              scope[toName] = newVal;
+            });
+          }
+          /* provide backward compatibility to "old" directive names, by
+           * having an alias point from the new names to the old names. */
+          aliasVar('chartData', 'data');
+          aliasVar('chartLabels', 'labels');
+          aliasVar('chartOptions', 'options');
+          aliasVar('chartSeries', 'series');
+          aliasVar('chartColours', 'colours');
+          aliasVar('chartLegend', 'legend');
+          aliasVar('chartClick', 'click');
+          aliasVar('chartHover', 'hover');
+
+          // Order of setting "watch" matter
+
+          scope.$watch('data', function (newVal, oldVal) {
+            if (! newVal || ! newVal.length || (Array.isArray(newVal[0]) && ! newVal[0].length)) return;
+            var chartType = type || scope.chartType;
+            if (! chartType) return;
+
+            if (chart) {
+              if (canUpdateChart(newVal, oldVal)) return updateChart(chart, newVal, scope, elem);
+              chart.destroy();
+            }
+
+            createChart(chartType);
+          }, true);
+
+          scope.$watch('series', resetChart, true);
+          scope.$watch('labels', resetChart, true);
+          scope.$watch('options', resetChart, true);
+          scope.$watch('colours', resetChart, true);
+
+          scope.$watch('chartType', function (newVal, oldVal) {
+            if (isEmpty(newVal)) return;
+            if (angular.equals(newVal, oldVal)) return;
+            if (chart) chart.destroy();
+            createChart(newVal);
+          });
+
+          scope.$on('$destroy', function () {
+            if (chart) chart.destroy();
+          });
+
+          function resetChart (newVal, oldVal) {
+            if (isEmpty(newVal)) return;
+            if (angular.equals(newVal, oldVal)) return;
+            var chartType = type || scope.chartType;
+            if (! chartType) return;
+
+            // chart.update() doesn't work for series and labels
+            // so we have to re-create the chart entirely
+            if (chart) chart.destroy();
+
+            createChart(chartType);
+          }
+
+          function createChart (type) {
+            if (isResponsive(type, scope) && elem[0].clientHeight === 0 && container.clientHeight === 0) {
+              return $timeout(function () {
+                createChart(type);
+              }, 50, false);
+            }
+            if (! scope.data || ! scope.data.length) return;
+            scope.getColour = typeof scope.getColour === 'function' ? scope.getColour : getRandomColour;
+            scope.colours = getColours(type, scope);
+            var cvs = elem[0], ctx = cvs.getContext('2d');
+            var data = Array.isArray(scope.data[0]) ?
+              getDataSets(scope.labels, scope.data, scope.series || [], scope.colours) :
+              getData(scope.labels, scope.data, scope.colours);
+            var options = angular.extend({}, ChartJs.getOptions(type), scope.options);
+            chart = new ChartJs.Chart(ctx)[type](data, options);
+            scope.$emit('create', chart);
+
+            // Bind events
+            cvs.onclick = scope.click ? getEventHandler(scope, chart, 'click', false) : angular.noop;
+            cvs.onmousemove = scope.hover ? getEventHandler(scope, chart, 'hover', true) : angular.noop;
+
+            if (scope.legend && scope.legend !== 'false') setLegend(elem, chart);
+          }
+
+          function deprecated (attr) {
+            if (typeof console !== 'undefined' && ChartJs.getOptions().env !== 'test') {
+              var warn = typeof console.warn === 'function' ? console.warn : console.log;
+              if (!! scope[attr]) {
+                warn.call(console, '"%s" is deprecated and will be removed in a future version. ' +
+                  'Please use "chart-%s" instead.', attr, attr);
+              }
+            }
+          }
+        }
+      };
+    };
+
+    function canUpdateChart (newVal, oldVal) {
+      if (newVal && oldVal && newVal.length && oldVal.length) {
+        return Array.isArray(newVal[0]) ?
+        newVal.length === oldVal.length && newVal.every(function (element, index) {
+          return element.length === oldVal[index].length; }) :
+          oldVal.reduce(sum, 0) > 0 ? newVal.length === oldVal.length : false;
+      }
+      return false;
+    }
+
+    function sum (carry, val) {
+      return carry + val;
+    }
+
+    function getEventHandler (scope, chart, action, triggerOnlyOnChange) {
+      var lastState = null;
+      return function (evt) {
+        var atEvent = chart.getPointsAtEvent || chart.getBarsAtEvent || chart.getSegmentsAtEvent;
+        if (atEvent) {
+          var activePoints = atEvent.call(chart, evt);
+          if (triggerOnlyOnChange === false || angular.equals(lastState, activePoints) === false) {
+            lastState = activePoints;
+            scope[action](activePoints, evt);
+            scope.$apply();
+          }
+        }
+      };
+    }
+
+    function getColours (type, scope) {
+      var colours = angular.copy(scope.colours ||
+        ChartJs.getOptions(type).colours ||
+        Chart.defaults.global.colours
+      );
+      while (colours.length < scope.data.length) {
+        colours.push(scope.getColour());
+      }
+      return colours.map(convertColour);
+    }
+
+    function convertColour (colour) {
+      if (typeof colour === 'object' && colour !== null) return colour;
+      if (typeof colour === 'string' && colour[0] === '#') return getColour(hexToRgb(colour.substr(1)));
+      return getRandomColour();
+    }
+
+    function getRandomColour () {
+      var colour = [getRandomInt(0, 255), getRandomInt(0, 255), getRandomInt(0, 255)];
+      return getColour(colour);
+    }
+
+    function getColour (colour) {
+      return {
+        fillColor: rgba(colour, 0.2),
+        strokeColor: rgba(colour, 1),
+        pointColor: rgba(colour, 1),
+        pointStrokeColor: '#fff',
+        pointHighlightFill: '#fff',
+        pointHighlightStroke: rgba(colour, 0.8)
+      };
+    }
+
+    function getRandomInt (min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function rgba (colour, alpha) {
+      if (usingExcanvas) {
+        // rgba not supported by IE8
+        return 'rgb(' + colour.join(',') + ')';
+      } else {
+        return 'rgba(' + colour.concat(alpha).join(',') + ')';
+      }
+    }
+
+    // Credit: http://stackoverflow.com/a/11508164/1190235
+    function hexToRgb (hex) {
+      var bigint = parseInt(hex, 16),
+        r = (bigint >> 16) & 255,
+        g = (bigint >> 8) & 255,
+        b = bigint & 255;
+
+      return [r, g, b];
+    }
+
+    function getDataSets (labels, data, series, colours) {
+      return {
+        labels: labels,
+        datasets: data.map(function (item, i) {
+          return angular.extend({}, colours[i], {
+            label: series[i],
+            data: item
+          });
+        })
+      };
+    }
+
+    function getData (labels, data, colours) {
+      return labels.map(function (label, i) {
+        return angular.extend({}, colours[i], {
+          label: label,
+          value: data[i],
+          color: colours[i].strokeColor,
+          highlight: colours[i].pointHighlightStroke
+        });
+      });
+    }
+
+    function setLegend (elem, chart) {
+      var $parent = elem.parent(),
+          $oldLegend = $parent.find('chart-legend'),
+          legend = '<chart-legend>' + chart.generateLegend() + '</chart-legend>';
+      if ($oldLegend.length) $oldLegend.replaceWith(legend);
+      else $parent.append(legend);
+    }
+
+    function updateChart (chart, values, scope, elem) {
+      if (Array.isArray(scope.data[0])) {
+        chart.datasets.forEach(function (dataset, i) {
+          (dataset.points || dataset.bars).forEach(function (dataItem, j) {
+            dataItem.value = values[i][j];
+          });
+        });
+      } else {
+        chart.segments.forEach(function (segment, i) {
+          segment.value = values[i];
+        });
+      }
+      chart.update();
+      scope.$emit('update', chart);
+      if (scope.legend && scope.legend !== 'false') setLegend(elem, chart);
+    }
+
+    function isEmpty (value) {
+      return ! value ||
+        (Array.isArray(value) && ! value.length) ||
+        (typeof value === 'object' && ! Object.keys(value).length);
+    }
+
+    function isResponsive (type, scope) {
+      var options = angular.extend({}, Chart.defaults.global, ChartJs.getOptions(type), scope.options);
+      return options.responsive;
+    }
+  }
+}));
+
+},{"angular":280,"chart.js":239}],239:[function(require,module,exports){
+/*!
+ * Chart.js
+ * http://chartjs.org/
+ * Version: 1.0.2
+ *
+ * Copyright 2015 Nick Downie
+ * Released under the MIT license
+ * https://github.com/nnnick/Chart.js/blob/master/LICENSE.md
+ */
+
+
+(function(){
+
+	"use strict";
+
+	//Declare root variable - window in the browser, global on the server
+	var root = this,
+		previous = root.Chart;
+
+	//Occupy the global variable of Chart, and create a simple base class
+	var Chart = function(context){
+		var chart = this;
+		this.canvas = context.canvas;
+
+		this.ctx = context;
+
+		//Variables global to the chart
+		var computeDimension = function(element,dimension)
+		{
+			if (element['offset'+dimension])
+			{
+				return element['offset'+dimension];
+			}
+			else
+			{
+				return document.defaultView.getComputedStyle(element).getPropertyValue(dimension);
+			}
+		}
+
+		var width = this.width = computeDimension(context.canvas,'Width');
+		var height = this.height = computeDimension(context.canvas,'Height');
+
+		// Firefox requires this to work correctly
+		context.canvas.width  = width;
+		context.canvas.height = height;
+
+		var width = this.width = context.canvas.width;
+		var height = this.height = context.canvas.height;
+		this.aspectRatio = this.width / this.height;
+		//High pixel density displays - multiply the size of the canvas height/width by the device pixel ratio, then scale.
+		helpers.retinaScale(this);
+
+		return this;
+	};
+	//Globally expose the defaults to allow for user updating/changing
+	Chart.defaults = {
+		global: {
+			// Boolean - Whether to animate the chart
+			animation: true,
+
+			// Number - Number of animation steps
+			animationSteps: 60,
+
+			// String - Animation easing effect
+			animationEasing: "easeOutQuart",
+
+			// Boolean - If we should show the scale at all
+			showScale: true,
+
+			// Boolean - If we want to override with a hard coded scale
+			scaleOverride: false,
+
+			// ** Required if scaleOverride is true **
+			// Number - The number of steps in a hard coded scale
+			scaleSteps: null,
+			// Number - The value jump in the hard coded scale
+			scaleStepWidth: null,
+			// Number - The scale starting value
+			scaleStartValue: null,
+
+			// String - Colour of the scale line
+			scaleLineColor: "rgba(0,0,0,.1)",
+
+			// Number - Pixel width of the scale line
+			scaleLineWidth: 1,
+
+			// Boolean - Whether to show labels on the scale
+			scaleShowLabels: true,
+
+			// Interpolated JS string - can access value
+			scaleLabel: "<%=value%>",
+
+			// Boolean - Whether the scale should stick to integers, and not show any floats even if drawing space is there
+			scaleIntegersOnly: true,
+
+			// Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+			scaleBeginAtZero: false,
+
+			// String - Scale label font declaration for the scale label
+			scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+			// Number - Scale label font size in pixels
+			scaleFontSize: 12,
+
+			// String - Scale label font weight style
+			scaleFontStyle: "normal",
+
+			// String - Scale label font colour
+			scaleFontColor: "#666",
+
+			// Boolean - whether or not the chart should be responsive and resize when the browser does.
+			responsive: false,
+
+			// Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+			maintainAspectRatio: true,
+
+			// Boolean - Determines whether to draw tooltips on the canvas or not - attaches events to touchmove & mousemove
+			showTooltips: true,
+
+			// Boolean - Determines whether to draw built-in tooltip or call custom tooltip function
+			customTooltips: false,
+
+			// Array - Array of string names to attach tooltip events
+			tooltipEvents: ["mousemove", "touchstart", "touchmove", "mouseout"],
+
+			// String - Tooltip background colour
+			tooltipFillColor: "rgba(0,0,0,0.8)",
+
+			// String - Tooltip label font declaration for the scale label
+			tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+			// Number - Tooltip label font size in pixels
+			tooltipFontSize: 14,
+
+			// String - Tooltip font weight style
+			tooltipFontStyle: "normal",
+
+			// String - Tooltip label font colour
+			tooltipFontColor: "#fff",
+
+			// String - Tooltip title font declaration for the scale label
+			tooltipTitleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+			// Number - Tooltip title font size in pixels
+			tooltipTitleFontSize: 14,
+
+			// String - Tooltip title font weight style
+			tooltipTitleFontStyle: "bold",
+
+			// String - Tooltip title font colour
+			tooltipTitleFontColor: "#fff",
+
+			// Number - pixel width of padding around tooltip text
+			tooltipYPadding: 6,
+
+			// Number - pixel width of padding around tooltip text
+			tooltipXPadding: 6,
+
+			// Number - Size of the caret on the tooltip
+			tooltipCaretSize: 8,
+
+			// Number - Pixel radius of the tooltip border
+			tooltipCornerRadius: 6,
+
+			// Number - Pixel offset from point x to tooltip edge
+			tooltipXOffset: 10,
+
+			// String - Template string for single tooltips
+			tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
+
+			// String - Template string for single tooltips
+			multiTooltipTemplate: "<%= value %>",
+
+			// String - Colour behind the legend colour block
+			multiTooltipKeyBackground: '#fff',
+
+			// Function - Will fire on animation progression.
+			onAnimationProgress: function(){},
+
+			// Function - Will fire on animation completion.
+			onAnimationComplete: function(){}
+
+		}
+	};
+
+	//Create a dictionary of chart types, to allow for extension of existing types
+	Chart.types = {};
+
+	//Global Chart helpers object for utility methods and classes
+	var helpers = Chart.helpers = {};
+
+		//-- Basic js utility methods
+	var each = helpers.each = function(loopable,callback,self){
+			var additionalArgs = Array.prototype.slice.call(arguments, 3);
+			// Check to see if null or undefined firstly.
+			if (loopable){
+				if (loopable.length === +loopable.length){
+					var i;
+					for (i=0; i<loopable.length; i++){
+						callback.apply(self,[loopable[i], i].concat(additionalArgs));
+					}
+				}
+				else{
+					for (var item in loopable){
+						callback.apply(self,[loopable[item],item].concat(additionalArgs));
+					}
+				}
+			}
+		},
+		clone = helpers.clone = function(obj){
+			var objClone = {};
+			each(obj,function(value,key){
+				if (obj.hasOwnProperty(key)) objClone[key] = value;
+			});
+			return objClone;
+		},
+		extend = helpers.extend = function(base){
+			each(Array.prototype.slice.call(arguments,1), function(extensionObject) {
+				each(extensionObject,function(value,key){
+					if (extensionObject.hasOwnProperty(key)) base[key] = value;
+				});
+			});
+			return base;
+		},
+		merge = helpers.merge = function(base,master){
+			//Merge properties in left object over to a shallow clone of object right.
+			var args = Array.prototype.slice.call(arguments,0);
+			args.unshift({});
+			return extend.apply(null, args);
+		},
+		indexOf = helpers.indexOf = function(arrayToSearch, item){
+			if (Array.prototype.indexOf) {
+				return arrayToSearch.indexOf(item);
+			}
+			else{
+				for (var i = 0; i < arrayToSearch.length; i++) {
+					if (arrayToSearch[i] === item) return i;
+				}
+				return -1;
+			}
+		},
+		where = helpers.where = function(collection, filterCallback){
+			var filtered = [];
+
+			helpers.each(collection, function(item){
+				if (filterCallback(item)){
+					filtered.push(item);
+				}
+			});
+
+			return filtered;
+		},
+		findNextWhere = helpers.findNextWhere = function(arrayToSearch, filterCallback, startIndex){
+			// Default to start of the array
+			if (!startIndex){
+				startIndex = -1;
+			}
+			for (var i = startIndex + 1; i < arrayToSearch.length; i++) {
+				var currentItem = arrayToSearch[i];
+				if (filterCallback(currentItem)){
+					return currentItem;
+				}
+			}
+		},
+		findPreviousWhere = helpers.findPreviousWhere = function(arrayToSearch, filterCallback, startIndex){
+			// Default to end of the array
+			if (!startIndex){
+				startIndex = arrayToSearch.length;
+			}
+			for (var i = startIndex - 1; i >= 0; i--) {
+				var currentItem = arrayToSearch[i];
+				if (filterCallback(currentItem)){
+					return currentItem;
+				}
+			}
+		},
+		inherits = helpers.inherits = function(extensions){
+			//Basic javascript inheritance based on the model created in Backbone.js
+			var parent = this;
+			var ChartElement = (extensions && extensions.hasOwnProperty("constructor")) ? extensions.constructor : function(){ return parent.apply(this, arguments); };
+
+			var Surrogate = function(){ this.constructor = ChartElement;};
+			Surrogate.prototype = parent.prototype;
+			ChartElement.prototype = new Surrogate();
+
+			ChartElement.extend = inherits;
+
+			if (extensions) extend(ChartElement.prototype, extensions);
+
+			ChartElement.__super__ = parent.prototype;
+
+			return ChartElement;
+		},
+		noop = helpers.noop = function(){},
+		uid = helpers.uid = (function(){
+			var id=0;
+			return function(){
+				return "chart-" + id++;
+			};
+		})(),
+		warn = helpers.warn = function(str){
+			//Method for warning of errors
+			if (window.console && typeof window.console.warn == "function") console.warn(str);
+		},
+		amd = helpers.amd = (typeof define == 'function' && define.amd),
+		//-- Math methods
+		isNumber = helpers.isNumber = function(n){
+			return !isNaN(parseFloat(n)) && isFinite(n);
+		},
+		max = helpers.max = function(array){
+			return Math.max.apply( Math, array );
+		},
+		min = helpers.min = function(array){
+			return Math.min.apply( Math, array );
+		},
+		cap = helpers.cap = function(valueToCap,maxValue,minValue){
+			if(isNumber(maxValue)) {
+				if( valueToCap > maxValue ) {
+					return maxValue;
+				}
+			}
+			else if(isNumber(minValue)){
+				if ( valueToCap < minValue ){
+					return minValue;
+				}
+			}
+			return valueToCap;
+		},
+		getDecimalPlaces = helpers.getDecimalPlaces = function(num){
+			if (num%1!==0 && isNumber(num)){
+				return num.toString().split(".")[1].length;
+			}
+			else {
+				return 0;
+			}
+		},
+		toRadians = helpers.radians = function(degrees){
+			return degrees * (Math.PI/180);
+		},
+		// Gets the angle from vertical upright to the point about a centre.
+		getAngleFromPoint = helpers.getAngleFromPoint = function(centrePoint, anglePoint){
+			var distanceFromXCenter = anglePoint.x - centrePoint.x,
+				distanceFromYCenter = anglePoint.y - centrePoint.y,
+				radialDistanceFromCenter = Math.sqrt( distanceFromXCenter * distanceFromXCenter + distanceFromYCenter * distanceFromYCenter);
+
+
+			var angle = Math.PI * 2 + Math.atan2(distanceFromYCenter, distanceFromXCenter);
+
+			//If the segment is in the top left quadrant, we need to add another rotation to the angle
+			if (distanceFromXCenter < 0 && distanceFromYCenter < 0){
+				angle += Math.PI*2;
+			}
+
+			return {
+				angle: angle,
+				distance: radialDistanceFromCenter
+			};
+		},
+		aliasPixel = helpers.aliasPixel = function(pixelWidth){
+			return (pixelWidth % 2 === 0) ? 0 : 0.5;
+		},
+		splineCurve = helpers.splineCurve = function(FirstPoint,MiddlePoint,AfterPoint,t){
+			//Props to Rob Spencer at scaled innovation for his post on splining between points
+			//http://scaledinnovation.com/analytics/splines/aboutSplines.html
+			var d01=Math.sqrt(Math.pow(MiddlePoint.x-FirstPoint.x,2)+Math.pow(MiddlePoint.y-FirstPoint.y,2)),
+				d12=Math.sqrt(Math.pow(AfterPoint.x-MiddlePoint.x,2)+Math.pow(AfterPoint.y-MiddlePoint.y,2)),
+				fa=t*d01/(d01+d12),// scaling factor for triangle Ta
+				fb=t*d12/(d01+d12);
+			return {
+				inner : {
+					x : MiddlePoint.x-fa*(AfterPoint.x-FirstPoint.x),
+					y : MiddlePoint.y-fa*(AfterPoint.y-FirstPoint.y)
+				},
+				outer : {
+					x: MiddlePoint.x+fb*(AfterPoint.x-FirstPoint.x),
+					y : MiddlePoint.y+fb*(AfterPoint.y-FirstPoint.y)
+				}
+			};
+		},
+		calculateOrderOfMagnitude = helpers.calculateOrderOfMagnitude = function(val){
+			return Math.floor(Math.log(val) / Math.LN10);
+		},
+		calculateScaleRange = helpers.calculateScaleRange = function(valuesArray, drawingSize, textSize, startFromZero, integersOnly){
+
+			//Set a minimum step of two - a point at the top of the graph, and a point at the base
+			var minSteps = 2,
+				maxSteps = Math.floor(drawingSize/(textSize * 1.5)),
+				skipFitting = (minSteps >= maxSteps);
+
+			var maxValue = max(valuesArray),
+				minValue = min(valuesArray);
+
+			// We need some degree of seperation here to calculate the scales if all the values are the same
+			// Adding/minusing 0.5 will give us a range of 1.
+			if (maxValue === minValue){
+				maxValue += 0.5;
+				// So we don't end up with a graph with a negative start value if we've said always start from zero
+				if (minValue >= 0.5 && !startFromZero){
+					minValue -= 0.5;
+				}
+				else{
+					// Make up a whole number above the values
+					maxValue += 0.5;
+				}
+			}
+
+			var	valueRange = Math.abs(maxValue - minValue),
+				rangeOrderOfMagnitude = calculateOrderOfMagnitude(valueRange),
+				graphMax = Math.ceil(maxValue / (1 * Math.pow(10, rangeOrderOfMagnitude))) * Math.pow(10, rangeOrderOfMagnitude),
+				graphMin = (startFromZero) ? 0 : Math.floor(minValue / (1 * Math.pow(10, rangeOrderOfMagnitude))) * Math.pow(10, rangeOrderOfMagnitude),
+				graphRange = graphMax - graphMin,
+				stepValue = Math.pow(10, rangeOrderOfMagnitude),
+				numberOfSteps = Math.round(graphRange / stepValue);
+
+			//If we have more space on the graph we'll use it to give more definition to the data
+			while((numberOfSteps > maxSteps || (numberOfSteps * 2) < maxSteps) && !skipFitting) {
+				if(numberOfSteps > maxSteps){
+					stepValue *=2;
+					numberOfSteps = Math.round(graphRange/stepValue);
+					// Don't ever deal with a decimal number of steps - cancel fitting and just use the minimum number of steps.
+					if (numberOfSteps % 1 !== 0){
+						skipFitting = true;
+					}
+				}
+				//We can fit in double the amount of scale points on the scale
+				else{
+					//If user has declared ints only, and the step value isn't a decimal
+					if (integersOnly && rangeOrderOfMagnitude >= 0){
+						//If the user has said integers only, we need to check that making the scale more granular wouldn't make it a float
+						if(stepValue/2 % 1 === 0){
+							stepValue /=2;
+							numberOfSteps = Math.round(graphRange/stepValue);
+						}
+						//If it would make it a float break out of the loop
+						else{
+							break;
+						}
+					}
+					//If the scale doesn't have to be an int, make the scale more granular anyway.
+					else{
+						stepValue /=2;
+						numberOfSteps = Math.round(graphRange/stepValue);
+					}
+
+				}
+			}
+
+			if (skipFitting){
+				numberOfSteps = minSteps;
+				stepValue = graphRange / numberOfSteps;
+			}
+
+			return {
+				steps : numberOfSteps,
+				stepValue : stepValue,
+				min : graphMin,
+				max	: graphMin + (numberOfSteps * stepValue)
+			};
+
+		},
+		/* jshint ignore:start */
+		// Blows up jshint errors based on the new Function constructor
+		//Templating methods
+		//Javascript micro templating by John Resig - source at http://ejohn.org/blog/javascript-micro-templating/
+		template = helpers.template = function(templateString, valuesObject){
+
+			// If templateString is function rather than string-template - call the function for valuesObject
+
+			if(templateString instanceof Function){
+			 	return templateString(valuesObject);
+		 	}
+
+			var cache = {};
+			function tmpl(str, data){
+				// Figure out if we're getting a template, or if we need to
+				// load the template - and be sure to cache the result.
+				var fn = !/\W/.test(str) ?
+				cache[str] = cache[str] :
+
+				// Generate a reusable function that will serve as a template
+				// generator (and which will be cached).
+				new Function("obj",
+					"var p=[],print=function(){p.push.apply(p,arguments);};" +
+
+					// Introduce the data as local variables using with(){}
+					"with(obj){p.push('" +
+
+					// Convert the template into pure JavaScript
+					str
+						.replace(/[\r\t\n]/g, " ")
+						.split("<%").join("\t")
+						.replace(/((^|%>)[^\t]*)'/g, "$1\r")
+						.replace(/\t=(.*?)%>/g, "',$1,'")
+						.split("\t").join("');")
+						.split("%>").join("p.push('")
+						.split("\r").join("\\'") +
+					"');}return p.join('');"
+				);
+
+				// Provide some basic currying to the user
+				return data ? fn( data ) : fn;
+			}
+			return tmpl(templateString,valuesObject);
+		},
+		/* jshint ignore:end */
+		generateLabels = helpers.generateLabels = function(templateString,numberOfSteps,graphMin,stepValue){
+			var labelsArray = new Array(numberOfSteps);
+			if (labelTemplateString){
+				each(labelsArray,function(val,index){
+					labelsArray[index] = template(templateString,{value: (graphMin + (stepValue*(index+1)))});
+				});
+			}
+			return labelsArray;
+		},
+		//--Animation methods
+		//Easing functions adapted from Robert Penner's easing equations
+		//http://www.robertpenner.com/easing/
+		easingEffects = helpers.easingEffects = {
+			linear: function (t) {
+				return t;
+			},
+			easeInQuad: function (t) {
+				return t * t;
+			},
+			easeOutQuad: function (t) {
+				return -1 * t * (t - 2);
+			},
+			easeInOutQuad: function (t) {
+				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t;
+				return -1 / 2 * ((--t) * (t - 2) - 1);
+			},
+			easeInCubic: function (t) {
+				return t * t * t;
+			},
+			easeOutCubic: function (t) {
+				return 1 * ((t = t / 1 - 1) * t * t + 1);
+			},
+			easeInOutCubic: function (t) {
+				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t;
+				return 1 / 2 * ((t -= 2) * t * t + 2);
+			},
+			easeInQuart: function (t) {
+				return t * t * t * t;
+			},
+			easeOutQuart: function (t) {
+				return -1 * ((t = t / 1 - 1) * t * t * t - 1);
+			},
+			easeInOutQuart: function (t) {
+				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t * t;
+				return -1 / 2 * ((t -= 2) * t * t * t - 2);
+			},
+			easeInQuint: function (t) {
+				return 1 * (t /= 1) * t * t * t * t;
+			},
+			easeOutQuint: function (t) {
+				return 1 * ((t = t / 1 - 1) * t * t * t * t + 1);
+			},
+			easeInOutQuint: function (t) {
+				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t * t * t;
+				return 1 / 2 * ((t -= 2) * t * t * t * t + 2);
+			},
+			easeInSine: function (t) {
+				return -1 * Math.cos(t / 1 * (Math.PI / 2)) + 1;
+			},
+			easeOutSine: function (t) {
+				return 1 * Math.sin(t / 1 * (Math.PI / 2));
+			},
+			easeInOutSine: function (t) {
+				return -1 / 2 * (Math.cos(Math.PI * t / 1) - 1);
+			},
+			easeInExpo: function (t) {
+				return (t === 0) ? 1 : 1 * Math.pow(2, 10 * (t / 1 - 1));
+			},
+			easeOutExpo: function (t) {
+				return (t === 1) ? 1 : 1 * (-Math.pow(2, -10 * t / 1) + 1);
+			},
+			easeInOutExpo: function (t) {
+				if (t === 0) return 0;
+				if (t === 1) return 1;
+				if ((t /= 1 / 2) < 1) return 1 / 2 * Math.pow(2, 10 * (t - 1));
+				return 1 / 2 * (-Math.pow(2, -10 * --t) + 2);
+			},
+			easeInCirc: function (t) {
+				if (t >= 1) return t;
+				return -1 * (Math.sqrt(1 - (t /= 1) * t) - 1);
+			},
+			easeOutCirc: function (t) {
+				return 1 * Math.sqrt(1 - (t = t / 1 - 1) * t);
+			},
+			easeInOutCirc: function (t) {
+				if ((t /= 1 / 2) < 1) return -1 / 2 * (Math.sqrt(1 - t * t) - 1);
+				return 1 / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1);
+			},
+			easeInElastic: function (t) {
+				var s = 1.70158;
+				var p = 0;
+				var a = 1;
+				if (t === 0) return 0;
+				if ((t /= 1) == 1) return 1;
+				if (!p) p = 1 * 0.3;
+				if (a < Math.abs(1)) {
+					a = 1;
+					s = p / 4;
+				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
+				return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));
+			},
+			easeOutElastic: function (t) {
+				var s = 1.70158;
+				var p = 0;
+				var a = 1;
+				if (t === 0) return 0;
+				if ((t /= 1) == 1) return 1;
+				if (!p) p = 1 * 0.3;
+				if (a < Math.abs(1)) {
+					a = 1;
+					s = p / 4;
+				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
+				return a * Math.pow(2, -10 * t) * Math.sin((t * 1 - s) * (2 * Math.PI) / p) + 1;
+			},
+			easeInOutElastic: function (t) {
+				var s = 1.70158;
+				var p = 0;
+				var a = 1;
+				if (t === 0) return 0;
+				if ((t /= 1 / 2) == 2) return 1;
+				if (!p) p = 1 * (0.3 * 1.5);
+				if (a < Math.abs(1)) {
+					a = 1;
+					s = p / 4;
+				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
+				if (t < 1) return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));
+				return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p) * 0.5 + 1;
+			},
+			easeInBack: function (t) {
+				var s = 1.70158;
+				return 1 * (t /= 1) * t * ((s + 1) * t - s);
+			},
+			easeOutBack: function (t) {
+				var s = 1.70158;
+				return 1 * ((t = t / 1 - 1) * t * ((s + 1) * t + s) + 1);
+			},
+			easeInOutBack: function (t) {
+				var s = 1.70158;
+				if ((t /= 1 / 2) < 1) return 1 / 2 * (t * t * (((s *= (1.525)) + 1) * t - s));
+				return 1 / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2);
+			},
+			easeInBounce: function (t) {
+				return 1 - easingEffects.easeOutBounce(1 - t);
+			},
+			easeOutBounce: function (t) {
+				if ((t /= 1) < (1 / 2.75)) {
+					return 1 * (7.5625 * t * t);
+				} else if (t < (2 / 2.75)) {
+					return 1 * (7.5625 * (t -= (1.5 / 2.75)) * t + 0.75);
+				} else if (t < (2.5 / 2.75)) {
+					return 1 * (7.5625 * (t -= (2.25 / 2.75)) * t + 0.9375);
+				} else {
+					return 1 * (7.5625 * (t -= (2.625 / 2.75)) * t + 0.984375);
+				}
+			},
+			easeInOutBounce: function (t) {
+				if (t < 1 / 2) return easingEffects.easeInBounce(t * 2) * 0.5;
+				return easingEffects.easeOutBounce(t * 2 - 1) * 0.5 + 1 * 0.5;
+			}
+		},
+		//Request animation polyfill - http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
+		requestAnimFrame = helpers.requestAnimFrame = (function(){
+			return window.requestAnimationFrame ||
+				window.webkitRequestAnimationFrame ||
+				window.mozRequestAnimationFrame ||
+				window.oRequestAnimationFrame ||
+				window.msRequestAnimationFrame ||
+				function(callback) {
+					return window.setTimeout(callback, 1000 / 60);
+				};
+		})(),
+		cancelAnimFrame = helpers.cancelAnimFrame = (function(){
+			return window.cancelAnimationFrame ||
+				window.webkitCancelAnimationFrame ||
+				window.mozCancelAnimationFrame ||
+				window.oCancelAnimationFrame ||
+				window.msCancelAnimationFrame ||
+				function(callback) {
+					return window.clearTimeout(callback, 1000 / 60);
+				};
+		})(),
+		animationLoop = helpers.animationLoop = function(callback,totalSteps,easingString,onProgress,onComplete,chartInstance){
+
+			var currentStep = 0,
+				easingFunction = easingEffects[easingString] || easingEffects.linear;
+
+			var animationFrame = function(){
+				currentStep++;
+				var stepDecimal = currentStep/totalSteps;
+				var easeDecimal = easingFunction(stepDecimal);
+
+				callback.call(chartInstance,easeDecimal,stepDecimal, currentStep);
+				onProgress.call(chartInstance,easeDecimal,stepDecimal);
+				if (currentStep < totalSteps){
+					chartInstance.animationFrame = requestAnimFrame(animationFrame);
+				} else{
+					onComplete.apply(chartInstance);
+				}
+			};
+			requestAnimFrame(animationFrame);
+		},
+		//-- DOM methods
+		getRelativePosition = helpers.getRelativePosition = function(evt){
+			var mouseX, mouseY;
+			var e = evt.originalEvent || evt,
+				canvas = evt.currentTarget || evt.srcElement,
+				boundingRect = canvas.getBoundingClientRect();
+
+			if (e.touches){
+				mouseX = e.touches[0].clientX - boundingRect.left;
+				mouseY = e.touches[0].clientY - boundingRect.top;
+
+			}
+			else{
+				mouseX = e.clientX - boundingRect.left;
+				mouseY = e.clientY - boundingRect.top;
+			}
+
+			return {
+				x : mouseX,
+				y : mouseY
+			};
+
+		},
+		addEvent = helpers.addEvent = function(node,eventType,method){
+			if (node.addEventListener){
+				node.addEventListener(eventType,method);
+			} else if (node.attachEvent){
+				node.attachEvent("on"+eventType, method);
+			} else {
+				node["on"+eventType] = method;
+			}
+		},
+		removeEvent = helpers.removeEvent = function(node, eventType, handler){
+			if (node.removeEventListener){
+				node.removeEventListener(eventType, handler, false);
+			} else if (node.detachEvent){
+				node.detachEvent("on"+eventType,handler);
+			} else{
+				node["on" + eventType] = noop;
+			}
+		},
+		bindEvents = helpers.bindEvents = function(chartInstance, arrayOfEvents, handler){
+			// Create the events object if it's not already present
+			if (!chartInstance.events) chartInstance.events = {};
+
+			each(arrayOfEvents,function(eventName){
+				chartInstance.events[eventName] = function(){
+					handler.apply(chartInstance, arguments);
+				};
+				addEvent(chartInstance.chart.canvas,eventName,chartInstance.events[eventName]);
+			});
+		},
+		unbindEvents = helpers.unbindEvents = function (chartInstance, arrayOfEvents) {
+			each(arrayOfEvents, function(handler,eventName){
+				removeEvent(chartInstance.chart.canvas, eventName, handler);
+			});
+		},
+		getMaximumWidth = helpers.getMaximumWidth = function(domNode){
+			var container = domNode.parentNode;
+			// TODO = check cross browser stuff with this.
+			return container.clientWidth;
+		},
+		getMaximumHeight = helpers.getMaximumHeight = function(domNode){
+			var container = domNode.parentNode;
+			// TODO = check cross browser stuff with this.
+			return container.clientHeight;
+		},
+		getMaximumSize = helpers.getMaximumSize = helpers.getMaximumWidth, // legacy support
+		retinaScale = helpers.retinaScale = function(chart){
+			var ctx = chart.ctx,
+				width = chart.canvas.width,
+				height = chart.canvas.height;
+
+			if (window.devicePixelRatio) {
+				ctx.canvas.style.width = width + "px";
+				ctx.canvas.style.height = height + "px";
+				ctx.canvas.height = height * window.devicePixelRatio;
+				ctx.canvas.width = width * window.devicePixelRatio;
+				ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+			}
+		},
+		//-- Canvas methods
+		clear = helpers.clear = function(chart){
+			chart.ctx.clearRect(0,0,chart.width,chart.height);
+		},
+		fontString = helpers.fontString = function(pixelSize,fontStyle,fontFamily){
+			return fontStyle + " " + pixelSize+"px " + fontFamily;
+		},
+		longestText = helpers.longestText = function(ctx,font,arrayOfStrings){
+			ctx.font = font;
+			var longest = 0;
+			each(arrayOfStrings,function(string){
+				var textWidth = ctx.measureText(string).width;
+				longest = (textWidth > longest) ? textWidth : longest;
+			});
+			return longest;
+		},
+		drawRoundedRectangle = helpers.drawRoundedRectangle = function(ctx,x,y,width,height,radius){
+			ctx.beginPath();
+			ctx.moveTo(x + radius, y);
+			ctx.lineTo(x + width - radius, y);
+			ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+			ctx.lineTo(x + width, y + height - radius);
+			ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+			ctx.lineTo(x + radius, y + height);
+			ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+			ctx.lineTo(x, y + radius);
+			ctx.quadraticCurveTo(x, y, x + radius, y);
+			ctx.closePath();
+		};
+
+
+	//Store a reference to each instance - allowing us to globally resize chart instances on window resize.
+	//Destroy method on the chart will remove the instance of the chart from this reference.
+	Chart.instances = {};
+
+	Chart.Type = function(data,options,chart){
+		this.options = options;
+		this.chart = chart;
+		this.id = uid();
+		//Add the chart instance to the global namespace
+		Chart.instances[this.id] = this;
+
+		// Initialize is always called when a chart type is created
+		// By default it is a no op, but it should be extended
+		if (options.responsive){
+			this.resize();
+		}
+		this.initialize.call(this,data);
+	};
+
+	//Core methods that'll be a part of every chart type
+	extend(Chart.Type.prototype,{
+		initialize : function(){return this;},
+		clear : function(){
+			clear(this.chart);
+			return this;
+		},
+		stop : function(){
+			// Stops any current animation loop occuring
+			cancelAnimFrame(this.animationFrame);
+			return this;
+		},
+		resize : function(callback){
+			this.stop();
+			var canvas = this.chart.canvas,
+				newWidth = getMaximumWidth(this.chart.canvas),
+				newHeight = this.options.maintainAspectRatio ? newWidth / this.chart.aspectRatio : getMaximumHeight(this.chart.canvas);
+
+			canvas.width = this.chart.width = newWidth;
+			canvas.height = this.chart.height = newHeight;
+
+			retinaScale(this.chart);
+
+			if (typeof callback === "function"){
+				callback.apply(this, Array.prototype.slice.call(arguments, 1));
+			}
+			return this;
+		},
+		reflow : noop,
+		render : function(reflow){
+			if (reflow){
+				this.reflow();
+			}
+			if (this.options.animation && !reflow){
+				helpers.animationLoop(
+					this.draw,
+					this.options.animationSteps,
+					this.options.animationEasing,
+					this.options.onAnimationProgress,
+					this.options.onAnimationComplete,
+					this
+				);
+			}
+			else{
+				this.draw();
+				this.options.onAnimationComplete.call(this);
+			}
+			return this;
+		},
+		generateLegend : function(){
+			return template(this.options.legendTemplate,this);
+		},
+		destroy : function(){
+			this.clear();
+			unbindEvents(this, this.events);
+			var canvas = this.chart.canvas;
+
+			// Reset canvas height/width attributes starts a fresh with the canvas context
+			canvas.width = this.chart.width;
+			canvas.height = this.chart.height;
+
+			// < IE9 doesn't support removeProperty
+			if (canvas.style.removeProperty) {
+				canvas.style.removeProperty('width');
+				canvas.style.removeProperty('height');
+			} else {
+				canvas.style.removeAttribute('width');
+				canvas.style.removeAttribute('height');
+			}
+
+			delete Chart.instances[this.id];
+		},
+		showTooltip : function(ChartElements, forceRedraw){
+			// Only redraw the chart if we've actually changed what we're hovering on.
+			if (typeof this.activeElements === 'undefined') this.activeElements = [];
+
+			var isChanged = (function(Elements){
+				var changed = false;
+
+				if (Elements.length !== this.activeElements.length){
+					changed = true;
+					return changed;
+				}
+
+				each(Elements, function(element, index){
+					if (element !== this.activeElements[index]){
+						changed = true;
+					}
+				}, this);
+				return changed;
+			}).call(this, ChartElements);
+
+			if (!isChanged && !forceRedraw){
+				return;
+			}
+			else{
+				this.activeElements = ChartElements;
+			}
+			this.draw();
+			if(this.options.customTooltips){
+				this.options.customTooltips(false);
+			}
+			if (ChartElements.length > 0){
+				// If we have multiple datasets, show a MultiTooltip for all of the data points at that index
+				if (this.datasets && this.datasets.length > 1) {
+					var dataArray,
+						dataIndex;
+
+					for (var i = this.datasets.length - 1; i >= 0; i--) {
+						dataArray = this.datasets[i].points || this.datasets[i].bars || this.datasets[i].segments;
+						dataIndex = indexOf(dataArray, ChartElements[0]);
+						if (dataIndex !== -1){
+							break;
+						}
+					}
+					var tooltipLabels = [],
+						tooltipColors = [],
+						medianPosition = (function(index) {
+
+							// Get all the points at that particular index
+							var Elements = [],
+								dataCollection,
+								xPositions = [],
+								yPositions = [],
+								xMax,
+								yMax,
+								xMin,
+								yMin;
+							helpers.each(this.datasets, function(dataset){
+								dataCollection = dataset.points || dataset.bars || dataset.segments;
+								if (dataCollection[dataIndex] && dataCollection[dataIndex].hasValue()){
+									Elements.push(dataCollection[dataIndex]);
+								}
+							});
+
+							helpers.each(Elements, function(element) {
+								xPositions.push(element.x);
+								yPositions.push(element.y);
+
+
+								//Include any colour information about the element
+								tooltipLabels.push(helpers.template(this.options.multiTooltipTemplate, element));
+								tooltipColors.push({
+									fill: element._saved.fillColor || element.fillColor,
+									stroke: element._saved.strokeColor || element.strokeColor
+								});
+
+							}, this);
+
+							yMin = min(yPositions);
+							yMax = max(yPositions);
+
+							xMin = min(xPositions);
+							xMax = max(xPositions);
+
+							return {
+								x: (xMin > this.chart.width/2) ? xMin : xMax,
+								y: (yMin + yMax)/2
+							};
+						}).call(this, dataIndex);
+
+					new Chart.MultiTooltip({
+						x: medianPosition.x,
+						y: medianPosition.y,
+						xPadding: this.options.tooltipXPadding,
+						yPadding: this.options.tooltipYPadding,
+						xOffset: this.options.tooltipXOffset,
+						fillColor: this.options.tooltipFillColor,
+						textColor: this.options.tooltipFontColor,
+						fontFamily: this.options.tooltipFontFamily,
+						fontStyle: this.options.tooltipFontStyle,
+						fontSize: this.options.tooltipFontSize,
+						titleTextColor: this.options.tooltipTitleFontColor,
+						titleFontFamily: this.options.tooltipTitleFontFamily,
+						titleFontStyle: this.options.tooltipTitleFontStyle,
+						titleFontSize: this.options.tooltipTitleFontSize,
+						cornerRadius: this.options.tooltipCornerRadius,
+						labels: tooltipLabels,
+						legendColors: tooltipColors,
+						legendColorBackground : this.options.multiTooltipKeyBackground,
+						title: ChartElements[0].label,
+						chart: this.chart,
+						ctx: this.chart.ctx,
+						custom: this.options.customTooltips
+					}).draw();
+
+				} else {
+					each(ChartElements, function(Element) {
+						var tooltipPosition = Element.tooltipPosition();
+						new Chart.Tooltip({
+							x: Math.round(tooltipPosition.x),
+							y: Math.round(tooltipPosition.y),
+							xPadding: this.options.tooltipXPadding,
+							yPadding: this.options.tooltipYPadding,
+							fillColor: this.options.tooltipFillColor,
+							textColor: this.options.tooltipFontColor,
+							fontFamily: this.options.tooltipFontFamily,
+							fontStyle: this.options.tooltipFontStyle,
+							fontSize: this.options.tooltipFontSize,
+							caretHeight: this.options.tooltipCaretSize,
+							cornerRadius: this.options.tooltipCornerRadius,
+							text: template(this.options.tooltipTemplate, Element),
+							chart: this.chart,
+							custom: this.options.customTooltips
+						}).draw();
+					}, this);
+				}
+			}
+			return this;
+		},
+		toBase64Image : function(){
+			return this.chart.canvas.toDataURL.apply(this.chart.canvas, arguments);
+		}
+	});
+
+	Chart.Type.extend = function(extensions){
+
+		var parent = this;
+
+		var ChartType = function(){
+			return parent.apply(this,arguments);
+		};
+
+		//Copy the prototype object of the this class
+		ChartType.prototype = clone(parent.prototype);
+		//Now overwrite some of the properties in the base class with the new extensions
+		extend(ChartType.prototype, extensions);
+
+		ChartType.extend = Chart.Type.extend;
+
+		if (extensions.name || parent.prototype.name){
+
+			var chartName = extensions.name || parent.prototype.name;
+			//Assign any potential default values of the new chart type
+
+			//If none are defined, we'll use a clone of the chart type this is being extended from.
+			//I.e. if we extend a line chart, we'll use the defaults from the line chart if our new chart
+			//doesn't define some defaults of their own.
+
+			var baseDefaults = (Chart.defaults[parent.prototype.name]) ? clone(Chart.defaults[parent.prototype.name]) : {};
+
+			Chart.defaults[chartName] = extend(baseDefaults,extensions.defaults);
+
+			Chart.types[chartName] = ChartType;
+
+			//Register this new chart type in the Chart prototype
+			Chart.prototype[chartName] = function(data,options){
+				var config = merge(Chart.defaults.global, Chart.defaults[chartName], options || {});
+				return new ChartType(data,config,this);
+			};
+		} else{
+			warn("Name not provided for this chart, so it hasn't been registered");
+		}
+		return parent;
+	};
+
+	Chart.Element = function(configuration){
+		extend(this,configuration);
+		this.initialize.apply(this,arguments);
+		this.save();
+	};
+	extend(Chart.Element.prototype,{
+		initialize : function(){},
+		restore : function(props){
+			if (!props){
+				extend(this,this._saved);
+			} else {
+				each(props,function(key){
+					this[key] = this._saved[key];
+				},this);
+			}
+			return this;
+		},
+		save : function(){
+			this._saved = clone(this);
+			delete this._saved._saved;
+			return this;
+		},
+		update : function(newProps){
+			each(newProps,function(value,key){
+				this._saved[key] = this[key];
+				this[key] = value;
+			},this);
+			return this;
+		},
+		transition : function(props,ease){
+			each(props,function(value,key){
+				this[key] = ((value - this._saved[key]) * ease) + this._saved[key];
+			},this);
+			return this;
+		},
+		tooltipPosition : function(){
+			return {
+				x : this.x,
+				y : this.y
+			};
+		},
+		hasValue: function(){
+			return isNumber(this.value);
+		}
+	});
+
+	Chart.Element.extend = inherits;
+
+
+	Chart.Point = Chart.Element.extend({
+		display: true,
+		inRange: function(chartX,chartY){
+			var hitDetectionRange = this.hitDetectionRadius + this.radius;
+			return ((Math.pow(chartX-this.x, 2)+Math.pow(chartY-this.y, 2)) < Math.pow(hitDetectionRange,2));
+		},
+		draw : function(){
+			if (this.display){
+				var ctx = this.ctx;
+				ctx.beginPath();
+
+				ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+				ctx.closePath();
+
+				ctx.strokeStyle = this.strokeColor;
+				ctx.lineWidth = this.strokeWidth;
+
+				ctx.fillStyle = this.fillColor;
+
+				ctx.fill();
+				ctx.stroke();
+			}
+
+
+			//Quick debug for bezier curve splining
+			//Highlights control points and the line between them.
+			//Handy for dev - stripped in the min version.
+
+			// ctx.save();
+			// ctx.fillStyle = "black";
+			// ctx.strokeStyle = "black"
+			// ctx.beginPath();
+			// ctx.arc(this.controlPoints.inner.x,this.controlPoints.inner.y, 2, 0, Math.PI*2);
+			// ctx.fill();
+
+			// ctx.beginPath();
+			// ctx.arc(this.controlPoints.outer.x,this.controlPoints.outer.y, 2, 0, Math.PI*2);
+			// ctx.fill();
+
+			// ctx.moveTo(this.controlPoints.inner.x,this.controlPoints.inner.y);
+			// ctx.lineTo(this.x, this.y);
+			// ctx.lineTo(this.controlPoints.outer.x,this.controlPoints.outer.y);
+			// ctx.stroke();
+
+			// ctx.restore();
+
+
+
+		}
+	});
+
+	Chart.Arc = Chart.Element.extend({
+		inRange : function(chartX,chartY){
+
+			var pointRelativePosition = helpers.getAngleFromPoint(this, {
+				x: chartX,
+				y: chartY
+			});
+
+			//Check if within the range of the open/close angle
+			var betweenAngles = (pointRelativePosition.angle >= this.startAngle && pointRelativePosition.angle <= this.endAngle),
+				withinRadius = (pointRelativePosition.distance >= this.innerRadius && pointRelativePosition.distance <= this.outerRadius);
+
+			return (betweenAngles && withinRadius);
+			//Ensure within the outside of the arc centre, but inside arc outer
+		},
+		tooltipPosition : function(){
+			var centreAngle = this.startAngle + ((this.endAngle - this.startAngle) / 2),
+				rangeFromCentre = (this.outerRadius - this.innerRadius) / 2 + this.innerRadius;
+			return {
+				x : this.x + (Math.cos(centreAngle) * rangeFromCentre),
+				y : this.y + (Math.sin(centreAngle) * rangeFromCentre)
+			};
+		},
+		draw : function(animationPercent){
+
+			var easingDecimal = animationPercent || 1;
+
+			var ctx = this.ctx;
+
+			ctx.beginPath();
+
+			ctx.arc(this.x, this.y, this.outerRadius, this.startAngle, this.endAngle);
+
+			ctx.arc(this.x, this.y, this.innerRadius, this.endAngle, this.startAngle, true);
+
+			ctx.closePath();
+			ctx.strokeStyle = this.strokeColor;
+			ctx.lineWidth = this.strokeWidth;
+
+			ctx.fillStyle = this.fillColor;
+
+			ctx.fill();
+			ctx.lineJoin = 'bevel';
+
+			if (this.showStroke){
+				ctx.stroke();
+			}
+		}
+	});
+
+	Chart.Rectangle = Chart.Element.extend({
+		draw : function(){
+			var ctx = this.ctx,
+				halfWidth = this.width/2,
+				leftX = this.x - halfWidth,
+				rightX = this.x + halfWidth,
+				top = this.base - (this.base - this.y),
+				halfStroke = this.strokeWidth / 2;
+
+			// Canvas doesn't allow us to stroke inside the width so we can
+			// adjust the sizes to fit if we're setting a stroke on the line
+			if (this.showStroke){
+				leftX += halfStroke;
+				rightX -= halfStroke;
+				top += halfStroke;
+			}
+
+			ctx.beginPath();
+
+			ctx.fillStyle = this.fillColor;
+			ctx.strokeStyle = this.strokeColor;
+			ctx.lineWidth = this.strokeWidth;
+
+			// It'd be nice to keep this class totally generic to any rectangle
+			// and simply specify which border to miss out.
+			ctx.moveTo(leftX, this.base);
+			ctx.lineTo(leftX, top);
+			ctx.lineTo(rightX, top);
+			ctx.lineTo(rightX, this.base);
+			ctx.fill();
+			if (this.showStroke){
+				ctx.stroke();
+			}
+		},
+		height : function(){
+			return this.base - this.y;
+		},
+		inRange : function(chartX,chartY){
+			return (chartX >= this.x - this.width/2 && chartX <= this.x + this.width/2) && (chartY >= this.y && chartY <= this.base);
+		}
+	});
+
+	Chart.Tooltip = Chart.Element.extend({
+		draw : function(){
+
+			var ctx = this.chart.ctx;
+
+			ctx.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
+
+			this.xAlign = "center";
+			this.yAlign = "above";
+
+			//Distance between the actual element.y position and the start of the tooltip caret
+			var caretPadding = this.caretPadding = 2;
+
+			var tooltipWidth = ctx.measureText(this.text).width + 2*this.xPadding,
+				tooltipRectHeight = this.fontSize + 2*this.yPadding,
+				tooltipHeight = tooltipRectHeight + this.caretHeight + caretPadding;
+
+			if (this.x + tooltipWidth/2 >this.chart.width){
+				this.xAlign = "left";
+			} else if (this.x - tooltipWidth/2 < 0){
+				this.xAlign = "right";
+			}
+
+			if (this.y - tooltipHeight < 0){
+				this.yAlign = "below";
+			}
+
+
+			var tooltipX = this.x - tooltipWidth/2,
+				tooltipY = this.y - tooltipHeight;
+
+			ctx.fillStyle = this.fillColor;
+
+			// Custom Tooltips
+			if(this.custom){
+				this.custom(this);
+			}
+			else{
+				switch(this.yAlign)
+				{
+				case "above":
+					//Draw a caret above the x/y
+					ctx.beginPath();
+					ctx.moveTo(this.x,this.y - caretPadding);
+					ctx.lineTo(this.x + this.caretHeight, this.y - (caretPadding + this.caretHeight));
+					ctx.lineTo(this.x - this.caretHeight, this.y - (caretPadding + this.caretHeight));
+					ctx.closePath();
+					ctx.fill();
+					break;
+				case "below":
+					tooltipY = this.y + caretPadding + this.caretHeight;
+					//Draw a caret below the x/y
+					ctx.beginPath();
+					ctx.moveTo(this.x, this.y + caretPadding);
+					ctx.lineTo(this.x + this.caretHeight, this.y + caretPadding + this.caretHeight);
+					ctx.lineTo(this.x - this.caretHeight, this.y + caretPadding + this.caretHeight);
+					ctx.closePath();
+					ctx.fill();
+					break;
+				}
+
+				switch(this.xAlign)
+				{
+				case "left":
+					tooltipX = this.x - tooltipWidth + (this.cornerRadius + this.caretHeight);
+					break;
+				case "right":
+					tooltipX = this.x - (this.cornerRadius + this.caretHeight);
+					break;
+				}
+
+				drawRoundedRectangle(ctx,tooltipX,tooltipY,tooltipWidth,tooltipRectHeight,this.cornerRadius);
+
+				ctx.fill();
+
+				ctx.fillStyle = this.textColor;
+				ctx.textAlign = "center";
+				ctx.textBaseline = "middle";
+				ctx.fillText(this.text, tooltipX + tooltipWidth/2, tooltipY + tooltipRectHeight/2);
+			}
+		}
+	});
+
+	Chart.MultiTooltip = Chart.Element.extend({
+		initialize : function(){
+			this.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
+
+			this.titleFont = fontString(this.titleFontSize,this.titleFontStyle,this.titleFontFamily);
+
+			this.height = (this.labels.length * this.fontSize) + ((this.labels.length-1) * (this.fontSize/2)) + (this.yPadding*2) + this.titleFontSize *1.5;
+
+			this.ctx.font = this.titleFont;
+
+			var titleWidth = this.ctx.measureText(this.title).width,
+				//Label has a legend square as well so account for this.
+				labelWidth = longestText(this.ctx,this.font,this.labels) + this.fontSize + 3,
+				longestTextWidth = max([labelWidth,titleWidth]);
+
+			this.width = longestTextWidth + (this.xPadding*2);
+
+
+			var halfHeight = this.height/2;
+
+			//Check to ensure the height will fit on the canvas
+			if (this.y - halfHeight < 0 ){
+				this.y = halfHeight;
+			} else if (this.y + halfHeight > this.chart.height){
+				this.y = this.chart.height - halfHeight;
+			}
+
+			//Decide whether to align left or right based on position on canvas
+			if (this.x > this.chart.width/2){
+				this.x -= this.xOffset + this.width;
+			} else {
+				this.x += this.xOffset;
+			}
+
+
+		},
+		getLineHeight : function(index){
+			var baseLineHeight = this.y - (this.height/2) + this.yPadding,
+				afterTitleIndex = index-1;
+
+			//If the index is zero, we're getting the title
+			if (index === 0){
+				return baseLineHeight + this.titleFontSize/2;
+			} else{
+				return baseLineHeight + ((this.fontSize*1.5*afterTitleIndex) + this.fontSize/2) + this.titleFontSize * 1.5;
+			}
+
+		},
+		draw : function(){
+			// Custom Tooltips
+			if(this.custom){
+				this.custom(this);
+			}
+			else{
+				drawRoundedRectangle(this.ctx,this.x,this.y - this.height/2,this.width,this.height,this.cornerRadius);
+				var ctx = this.ctx;
+				ctx.fillStyle = this.fillColor;
+				ctx.fill();
+				ctx.closePath();
+
+				ctx.textAlign = "left";
+				ctx.textBaseline = "middle";
+				ctx.fillStyle = this.titleTextColor;
+				ctx.font = this.titleFont;
+
+				ctx.fillText(this.title,this.x + this.xPadding, this.getLineHeight(0));
+
+				ctx.font = this.font;
+				helpers.each(this.labels,function(label,index){
+					ctx.fillStyle = this.textColor;
+					ctx.fillText(label,this.x + this.xPadding + this.fontSize + 3, this.getLineHeight(index + 1));
+
+					//A bit gnarly, but clearing this rectangle breaks when using explorercanvas (clears whole canvas)
+					//ctx.clearRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
+					//Instead we'll make a white filled block to put the legendColour palette over.
+
+					ctx.fillStyle = this.legendColorBackground;
+					ctx.fillRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
+
+					ctx.fillStyle = this.legendColors[index].fill;
+					ctx.fillRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
+
+
+				},this);
+			}
+		}
+	});
+
+	Chart.Scale = Chart.Element.extend({
+		initialize : function(){
+			this.fit();
+		},
+		buildYLabels : function(){
+			this.yLabels = [];
+
+			var stepDecimalPlaces = getDecimalPlaces(this.stepValue);
+
+			for (var i=0; i<=this.steps; i++){
+				this.yLabels.push(template(this.templateString,{value:(this.min + (i * this.stepValue)).toFixed(stepDecimalPlaces)}));
+			}
+			this.yLabelWidth = (this.display && this.showLabels) ? longestText(this.ctx,this.font,this.yLabels) : 0;
+		},
+		addXLabel : function(label){
+			this.xLabels.push(label);
+			this.valuesCount++;
+			this.fit();
+		},
+		removeXLabel : function(){
+			this.xLabels.shift();
+			this.valuesCount--;
+			this.fit();
+		},
+		// Fitting loop to rotate x Labels and figure out what fits there, and also calculate how many Y steps to use
+		fit: function(){
+			// First we need the width of the yLabels, assuming the xLabels aren't rotated
+
+			// To do that we need the base line at the top and base of the chart, assuming there is no x label rotation
+			this.startPoint = (this.display) ? this.fontSize : 0;
+			this.endPoint = (this.display) ? this.height - (this.fontSize * 1.5) - 5 : this.height; // -5 to pad labels
+
+			// Apply padding settings to the start and end point.
+			this.startPoint += this.padding;
+			this.endPoint -= this.padding;
+
+			// Cache the starting height, so can determine if we need to recalculate the scale yAxis
+			var cachedHeight = this.endPoint - this.startPoint,
+				cachedYLabelWidth;
+
+			// Build the current yLabels so we have an idea of what size they'll be to start
+			/*
+			 *	This sets what is returned from calculateScaleRange as static properties of this class:
+			 *
+				this.steps;
+				this.stepValue;
+				this.min;
+				this.max;
+			 *
+			 */
+			this.calculateYRange(cachedHeight);
+
+			// With these properties set we can now build the array of yLabels
+			// and also the width of the largest yLabel
+			this.buildYLabels();
+
+			this.calculateXLabelRotation();
+
+			while((cachedHeight > this.endPoint - this.startPoint)){
+				cachedHeight = this.endPoint - this.startPoint;
+				cachedYLabelWidth = this.yLabelWidth;
+
+				this.calculateYRange(cachedHeight);
+				this.buildYLabels();
+
+				// Only go through the xLabel loop again if the yLabel width has changed
+				if (cachedYLabelWidth < this.yLabelWidth){
+					this.calculateXLabelRotation();
+				}
+			}
+
+		},
+		calculateXLabelRotation : function(){
+			//Get the width of each grid by calculating the difference
+			//between x offsets between 0 and 1.
+
+			this.ctx.font = this.font;
+
+			var firstWidth = this.ctx.measureText(this.xLabels[0]).width,
+				lastWidth = this.ctx.measureText(this.xLabels[this.xLabels.length - 1]).width,
+				firstRotated,
+				lastRotated;
+
+
+			this.xScalePaddingRight = lastWidth/2 + 3;
+			this.xScalePaddingLeft = (firstWidth/2 > this.yLabelWidth + 10) ? firstWidth/2 : this.yLabelWidth + 10;
+
+			this.xLabelRotation = 0;
+			if (this.display){
+				var originalLabelWidth = longestText(this.ctx,this.font,this.xLabels),
+					cosRotation,
+					firstRotatedWidth;
+				this.xLabelWidth = originalLabelWidth;
+				//Allow 3 pixels x2 padding either side for label readability
+				var xGridWidth = Math.floor(this.calculateX(1) - this.calculateX(0)) - 6;
+
+				//Max label rotate should be 90 - also act as a loop counter
+				while ((this.xLabelWidth > xGridWidth && this.xLabelRotation === 0) || (this.xLabelWidth > xGridWidth && this.xLabelRotation <= 90 && this.xLabelRotation > 0)){
+					cosRotation = Math.cos(toRadians(this.xLabelRotation));
+
+					firstRotated = cosRotation * firstWidth;
+					lastRotated = cosRotation * lastWidth;
+
+					// We're right aligning the text now.
+					if (firstRotated + this.fontSize / 2 > this.yLabelWidth + 8){
+						this.xScalePaddingLeft = firstRotated + this.fontSize / 2;
+					}
+					this.xScalePaddingRight = this.fontSize/2;
+
+
+					this.xLabelRotation++;
+					this.xLabelWidth = cosRotation * originalLabelWidth;
+
+				}
+				if (this.xLabelRotation > 0){
+					this.endPoint -= Math.sin(toRadians(this.xLabelRotation))*originalLabelWidth + 3;
+				}
+			}
+			else{
+				this.xLabelWidth = 0;
+				this.xScalePaddingRight = this.padding;
+				this.xScalePaddingLeft = this.padding;
+			}
+
+		},
+		// Needs to be overidden in each Chart type
+		// Otherwise we need to pass all the data into the scale class
+		calculateYRange: noop,
+		drawingArea: function(){
+			return this.startPoint - this.endPoint;
+		},
+		calculateY : function(value){
+			var scalingFactor = this.drawingArea() / (this.min - this.max);
+			return this.endPoint - (scalingFactor * (value - this.min));
+		},
+		calculateX : function(index){
+			var isRotated = (this.xLabelRotation > 0),
+				// innerWidth = (this.offsetGridLines) ? this.width - offsetLeft - this.padding : this.width - (offsetLeft + halfLabelWidth * 2) - this.padding,
+				innerWidth = this.width - (this.xScalePaddingLeft + this.xScalePaddingRight),
+				valueWidth = innerWidth/Math.max((this.valuesCount - ((this.offsetGridLines) ? 0 : 1)), 1),
+				valueOffset = (valueWidth * index) + this.xScalePaddingLeft;
+
+			if (this.offsetGridLines){
+				valueOffset += (valueWidth/2);
+			}
+
+			return Math.round(valueOffset);
+		},
+		update : function(newProps){
+			helpers.extend(this, newProps);
+			this.fit();
+		},
+		draw : function(){
+			var ctx = this.ctx,
+				yLabelGap = (this.endPoint - this.startPoint) / this.steps,
+				xStart = Math.round(this.xScalePaddingLeft);
+			if (this.display){
+				ctx.fillStyle = this.textColor;
+				ctx.font = this.font;
+				each(this.yLabels,function(labelString,index){
+					var yLabelCenter = this.endPoint - (yLabelGap * index),
+						linePositionY = Math.round(yLabelCenter),
+						drawHorizontalLine = this.showHorizontalLines;
+
+					ctx.textAlign = "right";
+					ctx.textBaseline = "middle";
+					if (this.showLabels){
+						ctx.fillText(labelString,xStart - 10,yLabelCenter);
+					}
+
+					// This is X axis, so draw it
+					if (index === 0 && !drawHorizontalLine){
+						drawHorizontalLine = true;
+					}
+
+					if (drawHorizontalLine){
+						ctx.beginPath();
+					}
+
+					if (index > 0){
+						// This is a grid line in the centre, so drop that
+						ctx.lineWidth = this.gridLineWidth;
+						ctx.strokeStyle = this.gridLineColor;
+					} else {
+						// This is the first line on the scale
+						ctx.lineWidth = this.lineWidth;
+						ctx.strokeStyle = this.lineColor;
+					}
+
+					linePositionY += helpers.aliasPixel(ctx.lineWidth);
+
+					if(drawHorizontalLine){
+						ctx.moveTo(xStart, linePositionY);
+						ctx.lineTo(this.width, linePositionY);
+						ctx.stroke();
+						ctx.closePath();
+					}
+
+					ctx.lineWidth = this.lineWidth;
+					ctx.strokeStyle = this.lineColor;
+					ctx.beginPath();
+					ctx.moveTo(xStart - 5, linePositionY);
+					ctx.lineTo(xStart, linePositionY);
+					ctx.stroke();
+					ctx.closePath();
+
+				},this);
+
+				each(this.xLabels,function(label,index){
+					var xPos = this.calculateX(index) + aliasPixel(this.lineWidth),
+						// Check to see if line/bar here and decide where to place the line
+						linePos = this.calculateX(index - (this.offsetGridLines ? 0.5 : 0)) + aliasPixel(this.lineWidth),
+						isRotated = (this.xLabelRotation > 0),
+						drawVerticalLine = this.showVerticalLines;
+
+					// This is Y axis, so draw it
+					if (index === 0 && !drawVerticalLine){
+						drawVerticalLine = true;
+					}
+
+					if (drawVerticalLine){
+						ctx.beginPath();
+					}
+
+					if (index > 0){
+						// This is a grid line in the centre, so drop that
+						ctx.lineWidth = this.gridLineWidth;
+						ctx.strokeStyle = this.gridLineColor;
+					} else {
+						// This is the first line on the scale
+						ctx.lineWidth = this.lineWidth;
+						ctx.strokeStyle = this.lineColor;
+					}
+
+					if (drawVerticalLine){
+						ctx.moveTo(linePos,this.endPoint);
+						ctx.lineTo(linePos,this.startPoint - 3);
+						ctx.stroke();
+						ctx.closePath();
+					}
+
+
+					ctx.lineWidth = this.lineWidth;
+					ctx.strokeStyle = this.lineColor;
+
+
+					// Small lines at the bottom of the base grid line
+					ctx.beginPath();
+					ctx.moveTo(linePos,this.endPoint);
+					ctx.lineTo(linePos,this.endPoint + 5);
+					ctx.stroke();
+					ctx.closePath();
+
+					ctx.save();
+					ctx.translate(xPos,(isRotated) ? this.endPoint + 12 : this.endPoint + 8);
+					ctx.rotate(toRadians(this.xLabelRotation)*-1);
+					ctx.font = this.font;
+					ctx.textAlign = (isRotated) ? "right" : "center";
+					ctx.textBaseline = (isRotated) ? "middle" : "top";
+					ctx.fillText(label, 0, 0);
+					ctx.restore();
+				},this);
+
+			}
+		}
+
+	});
+
+	Chart.RadialScale = Chart.Element.extend({
+		initialize: function(){
+			this.size = min([this.height, this.width]);
+			this.drawingArea = (this.display) ? (this.size/2) - (this.fontSize/2 + this.backdropPaddingY) : (this.size/2);
+		},
+		calculateCenterOffset: function(value){
+			// Take into account half font size + the yPadding of the top value
+			var scalingFactor = this.drawingArea / (this.max - this.min);
+
+			return (value - this.min) * scalingFactor;
+		},
+		update : function(){
+			if (!this.lineArc){
+				this.setScaleSize();
+			} else {
+				this.drawingArea = (this.display) ? (this.size/2) - (this.fontSize/2 + this.backdropPaddingY) : (this.size/2);
+			}
+			this.buildYLabels();
+		},
+		buildYLabels: function(){
+			this.yLabels = [];
+
+			var stepDecimalPlaces = getDecimalPlaces(this.stepValue);
+
+			for (var i=0; i<=this.steps; i++){
+				this.yLabels.push(template(this.templateString,{value:(this.min + (i * this.stepValue)).toFixed(stepDecimalPlaces)}));
+			}
+		},
+		getCircumference : function(){
+			return ((Math.PI*2) / this.valuesCount);
+		},
+		setScaleSize: function(){
+			/*
+			 * Right, this is really confusing and there is a lot of maths going on here
+			 * The gist of the problem is here: https://gist.github.com/nnnick/696cc9c55f4b0beb8fe9
+			 *
+			 * Reaction: https://dl.dropboxusercontent.com/u/34601363/toomuchscience.gif
+			 *
+			 * Solution:
+			 *
+			 * We assume the radius of the polygon is half the size of the canvas at first
+			 * at each index we check if the text overlaps.
+			 *
+			 * Where it does, we store that angle and that index.
+			 *
+			 * After finding the largest index and angle we calculate how much we need to remove
+			 * from the shape radius to move the point inwards by that x.
+			 *
+			 * We average the left and right distances to get the maximum shape radius that can fit in the box
+			 * along with labels.
+			 *
+			 * Once we have that, we can find the centre point for the chart, by taking the x text protrusion
+			 * on each side, removing that from the size, halving it and adding the left x protrusion width.
+			 *
+			 * This will mean we have a shape fitted to the canvas, as large as it can be with the labels
+			 * and position it in the most space efficient manner
+			 *
+			 * https://dl.dropboxusercontent.com/u/34601363/yeahscience.gif
+			 */
+
+
+			// Get maximum radius of the polygon. Either half the height (minus the text width) or half the width.
+			// Use this to calculate the offset + change. - Make sure L/R protrusion is at least 0 to stop issues with centre points
+			var largestPossibleRadius = min([(this.height/2 - this.pointLabelFontSize - 5), this.width/2]),
+				pointPosition,
+				i,
+				textWidth,
+				halfTextWidth,
+				furthestRight = this.width,
+				furthestRightIndex,
+				furthestRightAngle,
+				furthestLeft = 0,
+				furthestLeftIndex,
+				furthestLeftAngle,
+				xProtrusionLeft,
+				xProtrusionRight,
+				radiusReductionRight,
+				radiusReductionLeft,
+				maxWidthRadius;
+			this.ctx.font = fontString(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily);
+			for (i=0;i<this.valuesCount;i++){
+				// 5px to space the text slightly out - similar to what we do in the draw function.
+				pointPosition = this.getPointPosition(i, largestPossibleRadius);
+				textWidth = this.ctx.measureText(template(this.templateString, { value: this.labels[i] })).width + 5;
+				if (i === 0 || i === this.valuesCount/2){
+					// If we're at index zero, or exactly the middle, we're at exactly the top/bottom
+					// of the radar chart, so text will be aligned centrally, so we'll half it and compare
+					// w/left and right text sizes
+					halfTextWidth = textWidth/2;
+					if (pointPosition.x + halfTextWidth > furthestRight) {
+						furthestRight = pointPosition.x + halfTextWidth;
+						furthestRightIndex = i;
+					}
+					if (pointPosition.x - halfTextWidth < furthestLeft) {
+						furthestLeft = pointPosition.x - halfTextWidth;
+						furthestLeftIndex = i;
+					}
+				}
+				else if (i < this.valuesCount/2) {
+					// Less than half the values means we'll left align the text
+					if (pointPosition.x + textWidth > furthestRight) {
+						furthestRight = pointPosition.x + textWidth;
+						furthestRightIndex = i;
+					}
+				}
+				else if (i > this.valuesCount/2){
+					// More than half the values means we'll right align the text
+					if (pointPosition.x - textWidth < furthestLeft) {
+						furthestLeft = pointPosition.x - textWidth;
+						furthestLeftIndex = i;
+					}
+				}
+			}
+
+			xProtrusionLeft = furthestLeft;
+
+			xProtrusionRight = Math.ceil(furthestRight - this.width);
+
+			furthestRightAngle = this.getIndexAngle(furthestRightIndex);
+
+			furthestLeftAngle = this.getIndexAngle(furthestLeftIndex);
+
+			radiusReductionRight = xProtrusionRight / Math.sin(furthestRightAngle + Math.PI/2);
+
+			radiusReductionLeft = xProtrusionLeft / Math.sin(furthestLeftAngle + Math.PI/2);
+
+			// Ensure we actually need to reduce the size of the chart
+			radiusReductionRight = (isNumber(radiusReductionRight)) ? radiusReductionRight : 0;
+			radiusReductionLeft = (isNumber(radiusReductionLeft)) ? radiusReductionLeft : 0;
+
+			this.drawingArea = largestPossibleRadius - (radiusReductionLeft + radiusReductionRight)/2;
+
+			//this.drawingArea = min([maxWidthRadius, (this.height - (2 * (this.pointLabelFontSize + 5)))/2])
+			this.setCenterPoint(radiusReductionLeft, radiusReductionRight);
+
+		},
+		setCenterPoint: function(leftMovement, rightMovement){
+
+			var maxRight = this.width - rightMovement - this.drawingArea,
+				maxLeft = leftMovement + this.drawingArea;
+
+			this.xCenter = (maxLeft + maxRight)/2;
+			// Always vertically in the centre as the text height doesn't change
+			this.yCenter = (this.height/2);
+		},
+
+		getIndexAngle : function(index){
+			var angleMultiplier = (Math.PI * 2) / this.valuesCount;
+			// Start from the top instead of right, so remove a quarter of the circle
+
+			return index * angleMultiplier - (Math.PI/2);
+		},
+		getPointPosition : function(index, distanceFromCenter){
+			var thisAngle = this.getIndexAngle(index);
+			return {
+				x : (Math.cos(thisAngle) * distanceFromCenter) + this.xCenter,
+				y : (Math.sin(thisAngle) * distanceFromCenter) + this.yCenter
+			};
+		},
+		draw: function(){
+			if (this.display){
+				var ctx = this.ctx;
+				each(this.yLabels, function(label, index){
+					// Don't draw a centre value
+					if (index > 0){
+						var yCenterOffset = index * (this.drawingArea/this.steps),
+							yHeight = this.yCenter - yCenterOffset,
+							pointPosition;
+
+						// Draw circular lines around the scale
+						if (this.lineWidth > 0){
+							ctx.strokeStyle = this.lineColor;
+							ctx.lineWidth = this.lineWidth;
+
+							if(this.lineArc){
+								ctx.beginPath();
+								ctx.arc(this.xCenter, this.yCenter, yCenterOffset, 0, Math.PI*2);
+								ctx.closePath();
+								ctx.stroke();
+							} else{
+								ctx.beginPath();
+								for (var i=0;i<this.valuesCount;i++)
+								{
+									pointPosition = this.getPointPosition(i, this.calculateCenterOffset(this.min + (index * this.stepValue)));
+									if (i === 0){
+										ctx.moveTo(pointPosition.x, pointPosition.y);
+									} else {
+										ctx.lineTo(pointPosition.x, pointPosition.y);
+									}
+								}
+								ctx.closePath();
+								ctx.stroke();
+							}
+						}
+						if(this.showLabels){
+							ctx.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
+							if (this.showLabelBackdrop){
+								var labelWidth = ctx.measureText(label).width;
+								ctx.fillStyle = this.backdropColor;
+								ctx.fillRect(
+									this.xCenter - labelWidth/2 - this.backdropPaddingX,
+									yHeight - this.fontSize/2 - this.backdropPaddingY,
+									labelWidth + this.backdropPaddingX*2,
+									this.fontSize + this.backdropPaddingY*2
+								);
+							}
+							ctx.textAlign = 'center';
+							ctx.textBaseline = "middle";
+							ctx.fillStyle = this.fontColor;
+							ctx.fillText(label, this.xCenter, yHeight);
+						}
+					}
+				}, this);
+
+				if (!this.lineArc){
+					ctx.lineWidth = this.angleLineWidth;
+					ctx.strokeStyle = this.angleLineColor;
+					for (var i = this.valuesCount - 1; i >= 0; i--) {
+						if (this.angleLineWidth > 0){
+							var outerPosition = this.getPointPosition(i, this.calculateCenterOffset(this.max));
+							ctx.beginPath();
+							ctx.moveTo(this.xCenter, this.yCenter);
+							ctx.lineTo(outerPosition.x, outerPosition.y);
+							ctx.stroke();
+							ctx.closePath();
+						}
+						// Extra 3px out for some label spacing
+						var pointLabelPosition = this.getPointPosition(i, this.calculateCenterOffset(this.max) + 5);
+						ctx.font = fontString(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily);
+						ctx.fillStyle = this.pointLabelFontColor;
+
+						var labelsCount = this.labels.length,
+							halfLabelsCount = this.labels.length/2,
+							quarterLabelsCount = halfLabelsCount/2,
+							upperHalf = (i < quarterLabelsCount || i > labelsCount - quarterLabelsCount),
+							exactQuarter = (i === quarterLabelsCount || i === labelsCount - quarterLabelsCount);
+						if (i === 0){
+							ctx.textAlign = 'center';
+						} else if(i === halfLabelsCount){
+							ctx.textAlign = 'center';
+						} else if (i < halfLabelsCount){
+							ctx.textAlign = 'left';
+						} else {
+							ctx.textAlign = 'right';
+						}
+
+						// Set the correct text baseline based on outer positioning
+						if (exactQuarter){
+							ctx.textBaseline = 'middle';
+						} else if (upperHalf){
+							ctx.textBaseline = 'bottom';
+						} else {
+							ctx.textBaseline = 'top';
+						}
+
+						ctx.fillText(this.labels[i], pointLabelPosition.x, pointLabelPosition.y);
+					}
+				}
+			}
+		}
+	});
+
+	// Attach global event to resize each chart instance when the browser resizes
+	helpers.addEvent(window, "resize", (function(){
+		// Basic debounce of resize function so it doesn't hurt performance when resizing browser.
+		var timeout;
+		return function(){
+			clearTimeout(timeout);
+			timeout = setTimeout(function(){
+				each(Chart.instances,function(instance){
+					// If the responsive flag is set in the chart instance config
+					// Cascade the resize event down to the chart.
+					if (instance.options.responsive){
+						instance.resize(instance.render, true);
+					}
+				});
+			}, 50);
+		};
+	})());
+
+
+	if (amd) {
+		define(function(){
+			return Chart;
+		});
+	} else if (typeof module === 'object' && module.exports) {
+		module.exports = Chart;
+	}
+
+	root.Chart = Chart;
+
+	Chart.noConflict = function(){
+		root.Chart = previous;
+		return Chart;
+	};
+
+}).call(this);
+
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		helpers = Chart.helpers;
+
+
+	var defaultConfig = {
+		//Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+		scaleBeginAtZero : true,
+
+		//Boolean - Whether grid lines are shown across the chart
+		scaleShowGridLines : true,
+
+		//String - Colour of the grid lines
+		scaleGridLineColor : "rgba(0,0,0,.05)",
+
+		//Number - Width of the grid lines
+		scaleGridLineWidth : 1,
+
+		//Boolean - Whether to show horizontal lines (except X axis)
+		scaleShowHorizontalLines: true,
+
+		//Boolean - Whether to show vertical lines (except Y axis)
+		scaleShowVerticalLines: true,
+
+		//Boolean - If there is a stroke on each bar
+		barShowStroke : true,
+
+		//Number - Pixel width of the bar stroke
+		barStrokeWidth : 2,
+
+		//Number - Spacing between each of the X value sets
+		barValueSpacing : 5,
+
+		//Number - Spacing between data sets within X values
+		barDatasetSpacing : 1,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+	};
+
+
+	Chart.Type.extend({
+		name: "Bar",
+		defaults : defaultConfig,
+		initialize:  function(data){
+
+			//Expose options as a scope variable here so we can access it in the ScaleClass
+			var options = this.options;
+
+			this.ScaleClass = Chart.Scale.extend({
+				offsetGridLines : true,
+				calculateBarX : function(datasetCount, datasetIndex, barIndex){
+					//Reusable method for calculating the xPosition of a given bar based on datasetIndex & width of the bar
+					var xWidth = this.calculateBaseWidth(),
+						xAbsolute = this.calculateX(barIndex) - (xWidth/2),
+						barWidth = this.calculateBarWidth(datasetCount);
+
+					return xAbsolute + (barWidth * datasetIndex) + (datasetIndex * options.barDatasetSpacing) + barWidth/2;
+				},
+				calculateBaseWidth : function(){
+					return (this.calculateX(1) - this.calculateX(0)) - (2*options.barValueSpacing);
+				},
+				calculateBarWidth : function(datasetCount){
+					//The padding between datasets is to the right of each bar, providing that there are more than 1 dataset
+					var baseWidth = this.calculateBaseWidth() - ((datasetCount - 1) * options.barDatasetSpacing);
+
+					return (baseWidth / datasetCount);
+				}
+			});
+
+			this.datasets = [];
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activeBars = (evt.type !== 'mouseout') ? this.getBarsAtEvent(evt) : [];
+
+					this.eachBars(function(bar){
+						bar.restore(['fillColor', 'strokeColor']);
+					});
+					helpers.each(activeBars, function(activeBar){
+						activeBar.fillColor = activeBar.highlightFill;
+						activeBar.strokeColor = activeBar.highlightStroke;
+					});
+					this.showTooltip(activeBars);
+				});
+			}
+
+			//Declare the extension of the default point, to cater for the options passed in to the constructor
+			this.BarClass = Chart.Rectangle.extend({
+				strokeWidth : this.options.barStrokeWidth,
+				showStroke : this.options.barShowStroke,
+				ctx : this.chart.ctx
+			});
+
+			//Iterate through each of the datasets, and build this into a property of the chart
+			helpers.each(data.datasets,function(dataset,datasetIndex){
+
+				var datasetObject = {
+					label : dataset.label || null,
+					fillColor : dataset.fillColor,
+					strokeColor : dataset.strokeColor,
+					bars : []
+				};
+
+				this.datasets.push(datasetObject);
+
+				helpers.each(dataset.data,function(dataPoint,index){
+					//Add a new point for each piece of data, passing any required data to draw.
+					datasetObject.bars.push(new this.BarClass({
+						value : dataPoint,
+						label : data.labels[index],
+						datasetLabel: dataset.label,
+						strokeColor : dataset.strokeColor,
+						fillColor : dataset.fillColor,
+						highlightFill : dataset.highlightFill || dataset.fillColor,
+						highlightStroke : dataset.highlightStroke || dataset.strokeColor
+					}));
+				},this);
+
+			},this);
+
+			this.buildScale(data.labels);
+
+			this.BarClass.prototype.base = this.scale.endPoint;
+
+			this.eachBars(function(bar, index, datasetIndex){
+				helpers.extend(bar, {
+					width : this.scale.calculateBarWidth(this.datasets.length),
+					x: this.scale.calculateBarX(this.datasets.length, datasetIndex, index),
+					y: this.scale.endPoint
+				});
+				bar.save();
+			}, this);
+
+			this.render();
+		},
+		update : function(){
+			this.scale.update();
+			// Reset any highlight colours before updating.
+			helpers.each(this.activeElements, function(activeElement){
+				activeElement.restore(['fillColor', 'strokeColor']);
+			});
+
+			this.eachBars(function(bar){
+				bar.save();
+			});
+			this.render();
+		},
+		eachBars : function(callback){
+			helpers.each(this.datasets,function(dataset, datasetIndex){
+				helpers.each(dataset.bars, callback, this, datasetIndex);
+			},this);
+		},
+		getBarsAtEvent : function(e){
+			var barsArray = [],
+				eventPosition = helpers.getRelativePosition(e),
+				datasetIterator = function(dataset){
+					barsArray.push(dataset.bars[barIndex]);
+				},
+				barIndex;
+
+			for (var datasetIndex = 0; datasetIndex < this.datasets.length; datasetIndex++) {
+				for (barIndex = 0; barIndex < this.datasets[datasetIndex].bars.length; barIndex++) {
+					if (this.datasets[datasetIndex].bars[barIndex].inRange(eventPosition.x,eventPosition.y)){
+						helpers.each(this.datasets, datasetIterator);
+						return barsArray;
+					}
+				}
+			}
+
+			return barsArray;
+		},
+		buildScale : function(labels){
+			var self = this;
+
+			var dataTotal = function(){
+				var values = [];
+				self.eachBars(function(bar){
+					values.push(bar.value);
+				});
+				return values;
+			};
+
+			var scaleOptions = {
+				templateString : this.options.scaleLabel,
+				height : this.chart.height,
+				width : this.chart.width,
+				ctx : this.chart.ctx,
+				textColor : this.options.scaleFontColor,
+				fontSize : this.options.scaleFontSize,
+				fontStyle : this.options.scaleFontStyle,
+				fontFamily : this.options.scaleFontFamily,
+				valuesCount : labels.length,
+				beginAtZero : this.options.scaleBeginAtZero,
+				integersOnly : this.options.scaleIntegersOnly,
+				calculateYRange: function(currentHeight){
+					var updatedRanges = helpers.calculateScaleRange(
+						dataTotal(),
+						currentHeight,
+						this.fontSize,
+						this.beginAtZero,
+						this.integersOnly
+					);
+					helpers.extend(this, updatedRanges);
+				},
+				xLabels : labels,
+				font : helpers.fontString(this.options.scaleFontSize, this.options.scaleFontStyle, this.options.scaleFontFamily),
+				lineWidth : this.options.scaleLineWidth,
+				lineColor : this.options.scaleLineColor,
+				showHorizontalLines : this.options.scaleShowHorizontalLines,
+				showVerticalLines : this.options.scaleShowVerticalLines,
+				gridLineWidth : (this.options.scaleShowGridLines) ? this.options.scaleGridLineWidth : 0,
+				gridLineColor : (this.options.scaleShowGridLines) ? this.options.scaleGridLineColor : "rgba(0,0,0,0)",
+				padding : (this.options.showScale) ? 0 : (this.options.barShowStroke) ? this.options.barStrokeWidth : 0,
+				showLabels : this.options.scaleShowLabels,
+				display : this.options.showScale
+			};
+
+			if (this.options.scaleOverride){
+				helpers.extend(scaleOptions, {
+					calculateYRange: helpers.noop,
+					steps: this.options.scaleSteps,
+					stepValue: this.options.scaleStepWidth,
+					min: this.options.scaleStartValue,
+					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+				});
+			}
+
+			this.scale = new this.ScaleClass(scaleOptions);
+		},
+		addData : function(valuesArray,label){
+			//Map the values array for each of the datasets
+			helpers.each(valuesArray,function(value,datasetIndex){
+				//Add a new point for each piece of data, passing any required data to draw.
+				this.datasets[datasetIndex].bars.push(new this.BarClass({
+					value : value,
+					label : label,
+					x: this.scale.calculateBarX(this.datasets.length, datasetIndex, this.scale.valuesCount+1),
+					y: this.scale.endPoint,
+					width : this.scale.calculateBarWidth(this.datasets.length),
+					base : this.scale.endPoint,
+					strokeColor : this.datasets[datasetIndex].strokeColor,
+					fillColor : this.datasets[datasetIndex].fillColor
+				}));
+			},this);
+
+			this.scale.addXLabel(label);
+			//Then re-render the chart.
+			this.update();
+		},
+		removeData : function(){
+			this.scale.removeXLabel();
+			//Then re-render the chart.
+			helpers.each(this.datasets,function(dataset){
+				dataset.bars.shift();
+			},this);
+			this.update();
+		},
+		reflow : function(){
+			helpers.extend(this.BarClass.prototype,{
+				y: this.scale.endPoint,
+				base : this.scale.endPoint
+			});
+			var newScaleProps = helpers.extend({
+				height : this.chart.height,
+				width : this.chart.width
+			});
+			this.scale.update(newScaleProps);
+		},
+		draw : function(ease){
+			var easingDecimal = ease || 1;
+			this.clear();
+
+			var ctx = this.chart.ctx;
+
+			this.scale.draw(easingDecimal);
+
+			//Draw all the bars for each dataset
+			helpers.each(this.datasets,function(dataset,datasetIndex){
+				helpers.each(dataset.bars,function(bar,index){
+					if (bar.hasValue()){
+						bar.base = this.scale.endPoint;
+						//Transition then draw
+						bar.transition({
+							x : this.scale.calculateBarX(this.datasets.length, datasetIndex, index),
+							y : this.scale.calculateY(bar.value),
+							width : this.scale.calculateBarWidth(this.datasets.length)
+						}, easingDecimal).draw();
+					}
+				},this);
+
+			},this);
+		}
+	});
+
+
+}).call(this);
+
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		//Cache a local reference to Chart.helpers
+		helpers = Chart.helpers;
+
+	var defaultConfig = {
+		//Boolean - Whether we should show a stroke on each segment
+		segmentShowStroke : true,
+
+		//String - The colour of each segment stroke
+		segmentStrokeColor : "#fff",
+
+		//Number - The width of each segment stroke
+		segmentStrokeWidth : 2,
+
+		//The percentage of the chart that we cut out of the middle.
+		percentageInnerCutout : 50,
+
+		//Number - Amount of animation steps
+		animationSteps : 100,
+
+		//String - Animation easing effect
+		animationEasing : "easeOutBounce",
+
+		//Boolean - Whether we animate the rotation of the Doughnut
+		animateRotate : true,
+
+		//Boolean - Whether we animate scaling the Doughnut from the centre
+		animateScale : false,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+
+	};
+
+
+	Chart.Type.extend({
+		//Passing in a name registers this chart in the Chart namespace
+		name: "Doughnut",
+		//Providing a defaults will also register the deafults in the chart namespace
+		defaults : defaultConfig,
+		//Initialize is fired when the chart is initialized - Data is passed in as a parameter
+		//Config is automatically merged by the core of Chart.js, and is available at this.options
+		initialize:  function(data){
+
+			//Declare segments as a static property to prevent inheriting across the Chart type prototype
+			this.segments = [];
+			this.outerRadius = (helpers.min([this.chart.width,this.chart.height]) -	this.options.segmentStrokeWidth/2)/2;
+
+			this.SegmentArc = Chart.Arc.extend({
+				ctx : this.chart.ctx,
+				x : this.chart.width/2,
+				y : this.chart.height/2
+			});
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activeSegments = (evt.type !== 'mouseout') ? this.getSegmentsAtEvent(evt) : [];
+
+					helpers.each(this.segments,function(segment){
+						segment.restore(["fillColor"]);
+					});
+					helpers.each(activeSegments,function(activeSegment){
+						activeSegment.fillColor = activeSegment.highlightColor;
+					});
+					this.showTooltip(activeSegments);
+				});
+			}
+			this.calculateTotal(data);
+
+			helpers.each(data,function(datapoint, index){
+				this.addData(datapoint, index, true);
+			},this);
+
+			this.render();
+		},
+		getSegmentsAtEvent : function(e){
+			var segmentsArray = [];
+
+			var location = helpers.getRelativePosition(e);
+
+			helpers.each(this.segments,function(segment){
+				if (segment.inRange(location.x,location.y)) segmentsArray.push(segment);
+			},this);
+			return segmentsArray;
+		},
+		addData : function(segment, atIndex, silent){
+			var index = atIndex || this.segments.length;
+			this.segments.splice(index, 0, new this.SegmentArc({
+				value : segment.value,
+				outerRadius : (this.options.animateScale) ? 0 : this.outerRadius,
+				innerRadius : (this.options.animateScale) ? 0 : (this.outerRadius/100) * this.options.percentageInnerCutout,
+				fillColor : segment.color,
+				highlightColor : segment.highlight || segment.color,
+				showStroke : this.options.segmentShowStroke,
+				strokeWidth : this.options.segmentStrokeWidth,
+				strokeColor : this.options.segmentStrokeColor,
+				startAngle : Math.PI * 1.5,
+				circumference : (this.options.animateRotate) ? 0 : this.calculateCircumference(segment.value),
+				label : segment.label
+			}));
+			if (!silent){
+				this.reflow();
+				this.update();
+			}
+		},
+		calculateCircumference : function(value){
+			return (Math.PI*2)*(Math.abs(value) / this.total);
+		},
+		calculateTotal : function(data){
+			this.total = 0;
+			helpers.each(data,function(segment){
+				this.total += Math.abs(segment.value);
+			},this);
+		},
+		update : function(){
+			this.calculateTotal(this.segments);
+
+			// Reset any highlight colours before updating.
+			helpers.each(this.activeElements, function(activeElement){
+				activeElement.restore(['fillColor']);
+			});
+
+			helpers.each(this.segments,function(segment){
+				segment.save();
+			});
+			this.render();
+		},
+
+		removeData: function(atIndex){
+			var indexToDelete = (helpers.isNumber(atIndex)) ? atIndex : this.segments.length-1;
+			this.segments.splice(indexToDelete, 1);
+			this.reflow();
+			this.update();
+		},
+
+		reflow : function(){
+			helpers.extend(this.SegmentArc.prototype,{
+				x : this.chart.width/2,
+				y : this.chart.height/2
+			});
+			this.outerRadius = (helpers.min([this.chart.width,this.chart.height]) -	this.options.segmentStrokeWidth/2)/2;
+			helpers.each(this.segments, function(segment){
+				segment.update({
+					outerRadius : this.outerRadius,
+					innerRadius : (this.outerRadius/100) * this.options.percentageInnerCutout
+				});
+			}, this);
+		},
+		draw : function(easeDecimal){
+			var animDecimal = (easeDecimal) ? easeDecimal : 1;
+			this.clear();
+			helpers.each(this.segments,function(segment,index){
+				segment.transition({
+					circumference : this.calculateCircumference(segment.value),
+					outerRadius : this.outerRadius,
+					innerRadius : (this.outerRadius/100) * this.options.percentageInnerCutout
+				},animDecimal);
+
+				segment.endAngle = segment.startAngle + segment.circumference;
+
+				segment.draw();
+				if (index === 0){
+					segment.startAngle = Math.PI * 1.5;
+				}
+				//Check to see if it's the last segment, if not get the next and update the start angle
+				if (index < this.segments.length-1){
+					this.segments[index+1].startAngle = segment.endAngle;
+				}
+			},this);
+
+		}
+	});
+
+	Chart.types.Doughnut.extend({
+		name : "Pie",
+		defaults : helpers.merge(defaultConfig,{percentageInnerCutout : 0})
+	});
+
+}).call(this);
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		helpers = Chart.helpers;
+
+	var defaultConfig = {
+
+		///Boolean - Whether grid lines are shown across the chart
+		scaleShowGridLines : true,
+
+		//String - Colour of the grid lines
+		scaleGridLineColor : "rgba(0,0,0,.05)",
+
+		//Number - Width of the grid lines
+		scaleGridLineWidth : 1,
+
+		//Boolean - Whether to show horizontal lines (except X axis)
+		scaleShowHorizontalLines: true,
+
+		//Boolean - Whether to show vertical lines (except Y axis)
+		scaleShowVerticalLines: true,
+
+		//Boolean - Whether the line is curved between points
+		bezierCurve : true,
+
+		//Number - Tension of the bezier curve between points
+		bezierCurveTension : 0.4,
+
+		//Boolean - Whether to show a dot for each point
+		pointDot : true,
+
+		//Number - Radius of each point dot in pixels
+		pointDotRadius : 4,
+
+		//Number - Pixel width of point dot stroke
+		pointDotStrokeWidth : 1,
+
+		//Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+		pointHitDetectionRadius : 20,
+
+		//Boolean - Whether to show a stroke for datasets
+		datasetStroke : true,
+
+		//Number - Pixel width of dataset stroke
+		datasetStrokeWidth : 2,
+
+		//Boolean - Whether to fill the dataset with a colour
+		datasetFill : true,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+	};
+
+
+	Chart.Type.extend({
+		name: "Line",
+		defaults : defaultConfig,
+		initialize:  function(data){
+			//Declare the extension of the default point, to cater for the options passed in to the constructor
+			this.PointClass = Chart.Point.extend({
+				strokeWidth : this.options.pointDotStrokeWidth,
+				radius : this.options.pointDotRadius,
+				display: this.options.pointDot,
+				hitDetectionRadius : this.options.pointHitDetectionRadius,
+				ctx : this.chart.ctx,
+				inRange : function(mouseX){
+					return (Math.pow(mouseX-this.x, 2) < Math.pow(this.radius + this.hitDetectionRadius,2));
+				}
+			});
+
+			this.datasets = [];
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activePoints = (evt.type !== 'mouseout') ? this.getPointsAtEvent(evt) : [];
+					this.eachPoints(function(point){
+						point.restore(['fillColor', 'strokeColor']);
+					});
+					helpers.each(activePoints, function(activePoint){
+						activePoint.fillColor = activePoint.highlightFill;
+						activePoint.strokeColor = activePoint.highlightStroke;
+					});
+					this.showTooltip(activePoints);
+				});
+			}
+
+			//Iterate through each of the datasets, and build this into a property of the chart
+			helpers.each(data.datasets,function(dataset){
+
+				var datasetObject = {
+					label : dataset.label || null,
+					fillColor : dataset.fillColor,
+					strokeColor : dataset.strokeColor,
+					pointColor : dataset.pointColor,
+					pointStrokeColor : dataset.pointStrokeColor,
+					points : []
+				};
+
+				this.datasets.push(datasetObject);
+
+
+				helpers.each(dataset.data,function(dataPoint,index){
+					//Add a new point for each piece of data, passing any required data to draw.
+					datasetObject.points.push(new this.PointClass({
+						value : dataPoint,
+						label : data.labels[index],
+						datasetLabel: dataset.label,
+						strokeColor : dataset.pointStrokeColor,
+						fillColor : dataset.pointColor,
+						highlightFill : dataset.pointHighlightFill || dataset.pointColor,
+						highlightStroke : dataset.pointHighlightStroke || dataset.pointStrokeColor
+					}));
+				},this);
+
+				this.buildScale(data.labels);
+
+
+				this.eachPoints(function(point, index){
+					helpers.extend(point, {
+						x: this.scale.calculateX(index),
+						y: this.scale.endPoint
+					});
+					point.save();
+				}, this);
+
+			},this);
+
+
+			this.render();
+		},
+		update : function(){
+			this.scale.update();
+			// Reset any highlight colours before updating.
+			helpers.each(this.activeElements, function(activeElement){
+				activeElement.restore(['fillColor', 'strokeColor']);
+			});
+			this.eachPoints(function(point){
+				point.save();
+			});
+			this.render();
+		},
+		eachPoints : function(callback){
+			helpers.each(this.datasets,function(dataset){
+				helpers.each(dataset.points,callback,this);
+			},this);
+		},
+		getPointsAtEvent : function(e){
+			var pointsArray = [],
+				eventPosition = helpers.getRelativePosition(e);
+			helpers.each(this.datasets,function(dataset){
+				helpers.each(dataset.points,function(point){
+					if (point.inRange(eventPosition.x,eventPosition.y)) pointsArray.push(point);
+				});
+			},this);
+			return pointsArray;
+		},
+		buildScale : function(labels){
+			var self = this;
+
+			var dataTotal = function(){
+				var values = [];
+				self.eachPoints(function(point){
+					values.push(point.value);
+				});
+
+				return values;
+			};
+
+			var scaleOptions = {
+				templateString : this.options.scaleLabel,
+				height : this.chart.height,
+				width : this.chart.width,
+				ctx : this.chart.ctx,
+				textColor : this.options.scaleFontColor,
+				fontSize : this.options.scaleFontSize,
+				fontStyle : this.options.scaleFontStyle,
+				fontFamily : this.options.scaleFontFamily,
+				valuesCount : labels.length,
+				beginAtZero : this.options.scaleBeginAtZero,
+				integersOnly : this.options.scaleIntegersOnly,
+				calculateYRange : function(currentHeight){
+					var updatedRanges = helpers.calculateScaleRange(
+						dataTotal(),
+						currentHeight,
+						this.fontSize,
+						this.beginAtZero,
+						this.integersOnly
+					);
+					helpers.extend(this, updatedRanges);
+				},
+				xLabels : labels,
+				font : helpers.fontString(this.options.scaleFontSize, this.options.scaleFontStyle, this.options.scaleFontFamily),
+				lineWidth : this.options.scaleLineWidth,
+				lineColor : this.options.scaleLineColor,
+				showHorizontalLines : this.options.scaleShowHorizontalLines,
+				showVerticalLines : this.options.scaleShowVerticalLines,
+				gridLineWidth : (this.options.scaleShowGridLines) ? this.options.scaleGridLineWidth : 0,
+				gridLineColor : (this.options.scaleShowGridLines) ? this.options.scaleGridLineColor : "rgba(0,0,0,0)",
+				padding: (this.options.showScale) ? 0 : this.options.pointDotRadius + this.options.pointDotStrokeWidth,
+				showLabels : this.options.scaleShowLabels,
+				display : this.options.showScale
+			};
+
+			if (this.options.scaleOverride){
+				helpers.extend(scaleOptions, {
+					calculateYRange: helpers.noop,
+					steps: this.options.scaleSteps,
+					stepValue: this.options.scaleStepWidth,
+					min: this.options.scaleStartValue,
+					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+				});
+			}
+
+
+			this.scale = new Chart.Scale(scaleOptions);
+		},
+		addData : function(valuesArray,label){
+			//Map the values array for each of the datasets
+
+			helpers.each(valuesArray,function(value,datasetIndex){
+				//Add a new point for each piece of data, passing any required data to draw.
+				this.datasets[datasetIndex].points.push(new this.PointClass({
+					value : value,
+					label : label,
+					x: this.scale.calculateX(this.scale.valuesCount+1),
+					y: this.scale.endPoint,
+					strokeColor : this.datasets[datasetIndex].pointStrokeColor,
+					fillColor : this.datasets[datasetIndex].pointColor
+				}));
+			},this);
+
+			this.scale.addXLabel(label);
+			//Then re-render the chart.
+			this.update();
+		},
+		removeData : function(){
+			this.scale.removeXLabel();
+			//Then re-render the chart.
+			helpers.each(this.datasets,function(dataset){
+				dataset.points.shift();
+			},this);
+			this.update();
+		},
+		reflow : function(){
+			var newScaleProps = helpers.extend({
+				height : this.chart.height,
+				width : this.chart.width
+			});
+			this.scale.update(newScaleProps);
+		},
+		draw : function(ease){
+			var easingDecimal = ease || 1;
+			this.clear();
+
+			var ctx = this.chart.ctx;
+
+			// Some helper methods for getting the next/prev points
+			var hasValue = function(item){
+				return item.value !== null;
+			},
+			nextPoint = function(point, collection, index){
+				return helpers.findNextWhere(collection, hasValue, index) || point;
+			},
+			previousPoint = function(point, collection, index){
+				return helpers.findPreviousWhere(collection, hasValue, index) || point;
+			};
+
+			this.scale.draw(easingDecimal);
+
+
+			helpers.each(this.datasets,function(dataset){
+				var pointsWithValues = helpers.where(dataset.points, hasValue);
+
+				//Transition each point first so that the line and point drawing isn't out of sync
+				//We can use this extra loop to calculate the control points of this dataset also in this loop
+
+				helpers.each(dataset.points, function(point, index){
+					if (point.hasValue()){
+						point.transition({
+							y : this.scale.calculateY(point.value),
+							x : this.scale.calculateX(index)
+						}, easingDecimal);
+					}
+				},this);
+
+
+				// Control points need to be calculated in a seperate loop, because we need to know the current x/y of the point
+				// This would cause issues when there is no animation, because the y of the next point would be 0, so beziers would be skewed
+				if (this.options.bezierCurve){
+					helpers.each(pointsWithValues, function(point, index){
+						var tension = (index > 0 && index < pointsWithValues.length - 1) ? this.options.bezierCurveTension : 0;
+						point.controlPoints = helpers.splineCurve(
+							previousPoint(point, pointsWithValues, index),
+							point,
+							nextPoint(point, pointsWithValues, index),
+							tension
+						);
+
+						// Prevent the bezier going outside of the bounds of the graph
+
+						// Cap puter bezier handles to the upper/lower scale bounds
+						if (point.controlPoints.outer.y > this.scale.endPoint){
+							point.controlPoints.outer.y = this.scale.endPoint;
+						}
+						else if (point.controlPoints.outer.y < this.scale.startPoint){
+							point.controlPoints.outer.y = this.scale.startPoint;
+						}
+
+						// Cap inner bezier handles to the upper/lower scale bounds
+						if (point.controlPoints.inner.y > this.scale.endPoint){
+							point.controlPoints.inner.y = this.scale.endPoint;
+						}
+						else if (point.controlPoints.inner.y < this.scale.startPoint){
+							point.controlPoints.inner.y = this.scale.startPoint;
+						}
+					},this);
+				}
+
+
+				//Draw the line between all the points
+				ctx.lineWidth = this.options.datasetStrokeWidth;
+				ctx.strokeStyle = dataset.strokeColor;
+				ctx.beginPath();
+
+				helpers.each(pointsWithValues, function(point, index){
+					if (index === 0){
+						ctx.moveTo(point.x, point.y);
+					}
+					else{
+						if(this.options.bezierCurve){
+							var previous = previousPoint(point, pointsWithValues, index);
+
+							ctx.bezierCurveTo(
+								previous.controlPoints.outer.x,
+								previous.controlPoints.outer.y,
+								point.controlPoints.inner.x,
+								point.controlPoints.inner.y,
+								point.x,
+								point.y
+							);
+						}
+						else{
+							ctx.lineTo(point.x,point.y);
+						}
+					}
+				}, this);
+
+				ctx.stroke();
+
+				if (this.options.datasetFill && pointsWithValues.length > 0){
+					//Round off the line by going to the base of the chart, back to the start, then fill.
+					ctx.lineTo(pointsWithValues[pointsWithValues.length - 1].x, this.scale.endPoint);
+					ctx.lineTo(pointsWithValues[0].x, this.scale.endPoint);
+					ctx.fillStyle = dataset.fillColor;
+					ctx.closePath();
+					ctx.fill();
+				}
+
+				//Now draw the points over the line
+				//A little inefficient double looping, but better than the line
+				//lagging behind the point positions
+				helpers.each(pointsWithValues,function(point){
+					point.draw();
+				});
+			},this);
+		}
+	});
+
+
+}).call(this);
+
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		//Cache a local reference to Chart.helpers
+		helpers = Chart.helpers;
+
+	var defaultConfig = {
+		//Boolean - Show a backdrop to the scale label
+		scaleShowLabelBackdrop : true,
+
+		//String - The colour of the label backdrop
+		scaleBackdropColor : "rgba(255,255,255,0.75)",
+
+		// Boolean - Whether the scale should begin at zero
+		scaleBeginAtZero : true,
+
+		//Number - The backdrop padding above & below the label in pixels
+		scaleBackdropPaddingY : 2,
+
+		//Number - The backdrop padding to the side of the label in pixels
+		scaleBackdropPaddingX : 2,
+
+		//Boolean - Show line for each value in the scale
+		scaleShowLine : true,
+
+		//Boolean - Stroke a line around each segment in the chart
+		segmentShowStroke : true,
+
+		//String - The colour of the stroke on each segement.
+		segmentStrokeColor : "#fff",
+
+		//Number - The width of the stroke value in pixels
+		segmentStrokeWidth : 2,
+
+		//Number - Amount of animation steps
+		animationSteps : 100,
+
+		//String - Animation easing effect.
+		animationEasing : "easeOutBounce",
+
+		//Boolean - Whether to animate the rotation of the chart
+		animateRotate : true,
+
+		//Boolean - Whether to animate scaling the chart from the centre
+		animateScale : false,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+	};
+
+
+	Chart.Type.extend({
+		//Passing in a name registers this chart in the Chart namespace
+		name: "PolarArea",
+		//Providing a defaults will also register the deafults in the chart namespace
+		defaults : defaultConfig,
+		//Initialize is fired when the chart is initialized - Data is passed in as a parameter
+		//Config is automatically merged by the core of Chart.js, and is available at this.options
+		initialize:  function(data){
+			this.segments = [];
+			//Declare segment class as a chart instance specific class, so it can share props for this instance
+			this.SegmentArc = Chart.Arc.extend({
+				showStroke : this.options.segmentShowStroke,
+				strokeWidth : this.options.segmentStrokeWidth,
+				strokeColor : this.options.segmentStrokeColor,
+				ctx : this.chart.ctx,
+				innerRadius : 0,
+				x : this.chart.width/2,
+				y : this.chart.height/2
+			});
+			this.scale = new Chart.RadialScale({
+				display: this.options.showScale,
+				fontStyle: this.options.scaleFontStyle,
+				fontSize: this.options.scaleFontSize,
+				fontFamily: this.options.scaleFontFamily,
+				fontColor: this.options.scaleFontColor,
+				showLabels: this.options.scaleShowLabels,
+				showLabelBackdrop: this.options.scaleShowLabelBackdrop,
+				backdropColor: this.options.scaleBackdropColor,
+				backdropPaddingY : this.options.scaleBackdropPaddingY,
+				backdropPaddingX: this.options.scaleBackdropPaddingX,
+				lineWidth: (this.options.scaleShowLine) ? this.options.scaleLineWidth : 0,
+				lineColor: this.options.scaleLineColor,
+				lineArc: true,
+				width: this.chart.width,
+				height: this.chart.height,
+				xCenter: this.chart.width/2,
+				yCenter: this.chart.height/2,
+				ctx : this.chart.ctx,
+				templateString: this.options.scaleLabel,
+				valuesCount: data.length
+			});
+
+			this.updateScaleRange(data);
+
+			this.scale.update();
+
+			helpers.each(data,function(segment,index){
+				this.addData(segment,index,true);
+			},this);
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activeSegments = (evt.type !== 'mouseout') ? this.getSegmentsAtEvent(evt) : [];
+					helpers.each(this.segments,function(segment){
+						segment.restore(["fillColor"]);
+					});
+					helpers.each(activeSegments,function(activeSegment){
+						activeSegment.fillColor = activeSegment.highlightColor;
+					});
+					this.showTooltip(activeSegments);
+				});
+			}
+
+			this.render();
+		},
+		getSegmentsAtEvent : function(e){
+			var segmentsArray = [];
+
+			var location = helpers.getRelativePosition(e);
+
+			helpers.each(this.segments,function(segment){
+				if (segment.inRange(location.x,location.y)) segmentsArray.push(segment);
+			},this);
+			return segmentsArray;
+		},
+		addData : function(segment, atIndex, silent){
+			var index = atIndex || this.segments.length;
+
+			this.segments.splice(index, 0, new this.SegmentArc({
+				fillColor: segment.color,
+				highlightColor: segment.highlight || segment.color,
+				label: segment.label,
+				value: segment.value,
+				outerRadius: (this.options.animateScale) ? 0 : this.scale.calculateCenterOffset(segment.value),
+				circumference: (this.options.animateRotate) ? 0 : this.scale.getCircumference(),
+				startAngle: Math.PI * 1.5
+			}));
+			if (!silent){
+				this.reflow();
+				this.update();
+			}
+		},
+		removeData: function(atIndex){
+			var indexToDelete = (helpers.isNumber(atIndex)) ? atIndex : this.segments.length-1;
+			this.segments.splice(indexToDelete, 1);
+			this.reflow();
+			this.update();
+		},
+		calculateTotal: function(data){
+			this.total = 0;
+			helpers.each(data,function(segment){
+				this.total += segment.value;
+			},this);
+			this.scale.valuesCount = this.segments.length;
+		},
+		updateScaleRange: function(datapoints){
+			var valuesArray = [];
+			helpers.each(datapoints,function(segment){
+				valuesArray.push(segment.value);
+			});
+
+			var scaleSizes = (this.options.scaleOverride) ?
+				{
+					steps: this.options.scaleSteps,
+					stepValue: this.options.scaleStepWidth,
+					min: this.options.scaleStartValue,
+					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+				} :
+				helpers.calculateScaleRange(
+					valuesArray,
+					helpers.min([this.chart.width, this.chart.height])/2,
+					this.options.scaleFontSize,
+					this.options.scaleBeginAtZero,
+					this.options.scaleIntegersOnly
+				);
+
+			helpers.extend(
+				this.scale,
+				scaleSizes,
+				{
+					size: helpers.min([this.chart.width, this.chart.height]),
+					xCenter: this.chart.width/2,
+					yCenter: this.chart.height/2
+				}
+			);
+
+		},
+		update : function(){
+			this.calculateTotal(this.segments);
+
+			helpers.each(this.segments,function(segment){
+				segment.save();
+			});
+			
+			this.reflow();
+			this.render();
+		},
+		reflow : function(){
+			helpers.extend(this.SegmentArc.prototype,{
+				x : this.chart.width/2,
+				y : this.chart.height/2
+			});
+			this.updateScaleRange(this.segments);
+			this.scale.update();
+
+			helpers.extend(this.scale,{
+				xCenter: this.chart.width/2,
+				yCenter: this.chart.height/2
+			});
+
+			helpers.each(this.segments, function(segment){
+				segment.update({
+					outerRadius : this.scale.calculateCenterOffset(segment.value)
+				});
+			}, this);
+
+		},
+		draw : function(ease){
+			var easingDecimal = ease || 1;
+			//Clear & draw the canvas
+			this.clear();
+			helpers.each(this.segments,function(segment, index){
+				segment.transition({
+					circumference : this.scale.getCircumference(),
+					outerRadius : this.scale.calculateCenterOffset(segment.value)
+				},easingDecimal);
+
+				segment.endAngle = segment.startAngle + segment.circumference;
+
+				// If we've removed the first segment we need to set the first one to
+				// start at the top.
+				if (index === 0){
+					segment.startAngle = Math.PI * 1.5;
+				}
+
+				//Check to see if it's the last segment, if not get the next and update the start angle
+				if (index < this.segments.length - 1){
+					this.segments[index+1].startAngle = segment.endAngle;
+				}
+				segment.draw();
+			}, this);
+			this.scale.draw();
+		}
+	});
+
+}).call(this);
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		helpers = Chart.helpers;
+
+
+
+	Chart.Type.extend({
+		name: "Radar",
+		defaults:{
+			//Boolean - Whether to show lines for each scale point
+			scaleShowLine : true,
+
+			//Boolean - Whether we show the angle lines out of the radar
+			angleShowLineOut : true,
+
+			//Boolean - Whether to show labels on the scale
+			scaleShowLabels : false,
+
+			// Boolean - Whether the scale should begin at zero
+			scaleBeginAtZero : true,
+
+			//String - Colour of the angle line
+			angleLineColor : "rgba(0,0,0,.1)",
+
+			//Number - Pixel width of the angle line
+			angleLineWidth : 1,
+
+			//String - Point label font declaration
+			pointLabelFontFamily : "'Arial'",
+
+			//String - Point label font weight
+			pointLabelFontStyle : "normal",
+
+			//Number - Point label font size in pixels
+			pointLabelFontSize : 10,
+
+			//String - Point label font colour
+			pointLabelFontColor : "#666",
+
+			//Boolean - Whether to show a dot for each point
+			pointDot : true,
+
+			//Number - Radius of each point dot in pixels
+			pointDotRadius : 3,
+
+			//Number - Pixel width of point dot stroke
+			pointDotStrokeWidth : 1,
+
+			//Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+			pointHitDetectionRadius : 20,
+
+			//Boolean - Whether to show a stroke for datasets
+			datasetStroke : true,
+
+			//Number - Pixel width of dataset stroke
+			datasetStrokeWidth : 2,
+
+			//Boolean - Whether to fill the dataset with a colour
+			datasetFill : true,
+
+			//String - A legend template
+			legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+		},
+
+		initialize: function(data){
+			this.PointClass = Chart.Point.extend({
+				strokeWidth : this.options.pointDotStrokeWidth,
+				radius : this.options.pointDotRadius,
+				display: this.options.pointDot,
+				hitDetectionRadius : this.options.pointHitDetectionRadius,
+				ctx : this.chart.ctx
+			});
+
+			this.datasets = [];
+
+			this.buildScale(data);
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activePointsCollection = (evt.type !== 'mouseout') ? this.getPointsAtEvent(evt) : [];
+
+					this.eachPoints(function(point){
+						point.restore(['fillColor', 'strokeColor']);
+					});
+					helpers.each(activePointsCollection, function(activePoint){
+						activePoint.fillColor = activePoint.highlightFill;
+						activePoint.strokeColor = activePoint.highlightStroke;
+					});
+
+					this.showTooltip(activePointsCollection);
+				});
+			}
+
+			//Iterate through each of the datasets, and build this into a property of the chart
+			helpers.each(data.datasets,function(dataset){
+
+				var datasetObject = {
+					label: dataset.label || null,
+					fillColor : dataset.fillColor,
+					strokeColor : dataset.strokeColor,
+					pointColor : dataset.pointColor,
+					pointStrokeColor : dataset.pointStrokeColor,
+					points : []
+				};
+
+				this.datasets.push(datasetObject);
+
+				helpers.each(dataset.data,function(dataPoint,index){
+					//Add a new point for each piece of data, passing any required data to draw.
+					var pointPosition;
+					if (!this.scale.animation){
+						pointPosition = this.scale.getPointPosition(index, this.scale.calculateCenterOffset(dataPoint));
+					}
+					datasetObject.points.push(new this.PointClass({
+						value : dataPoint,
+						label : data.labels[index],
+						datasetLabel: dataset.label,
+						x: (this.options.animation) ? this.scale.xCenter : pointPosition.x,
+						y: (this.options.animation) ? this.scale.yCenter : pointPosition.y,
+						strokeColor : dataset.pointStrokeColor,
+						fillColor : dataset.pointColor,
+						highlightFill : dataset.pointHighlightFill || dataset.pointColor,
+						highlightStroke : dataset.pointHighlightStroke || dataset.pointStrokeColor
+					}));
+				},this);
+
+			},this);
+
+			this.render();
+		},
+		eachPoints : function(callback){
+			helpers.each(this.datasets,function(dataset){
+				helpers.each(dataset.points,callback,this);
+			},this);
+		},
+
+		getPointsAtEvent : function(evt){
+			var mousePosition = helpers.getRelativePosition(evt),
+				fromCenter = helpers.getAngleFromPoint({
+					x: this.scale.xCenter,
+					y: this.scale.yCenter
+				}, mousePosition);
+
+			var anglePerIndex = (Math.PI * 2) /this.scale.valuesCount,
+				pointIndex = Math.round((fromCenter.angle - Math.PI * 1.5) / anglePerIndex),
+				activePointsCollection = [];
+
+			// If we're at the top, make the pointIndex 0 to get the first of the array.
+			if (pointIndex >= this.scale.valuesCount || pointIndex < 0){
+				pointIndex = 0;
+			}
+
+			if (fromCenter.distance <= this.scale.drawingArea){
+				helpers.each(this.datasets, function(dataset){
+					activePointsCollection.push(dataset.points[pointIndex]);
+				});
+			}
+
+			return activePointsCollection;
+		},
+
+		buildScale : function(data){
+			this.scale = new Chart.RadialScale({
+				display: this.options.showScale,
+				fontStyle: this.options.scaleFontStyle,
+				fontSize: this.options.scaleFontSize,
+				fontFamily: this.options.scaleFontFamily,
+				fontColor: this.options.scaleFontColor,
+				showLabels: this.options.scaleShowLabels,
+				showLabelBackdrop: this.options.scaleShowLabelBackdrop,
+				backdropColor: this.options.scaleBackdropColor,
+				backdropPaddingY : this.options.scaleBackdropPaddingY,
+				backdropPaddingX: this.options.scaleBackdropPaddingX,
+				lineWidth: (this.options.scaleShowLine) ? this.options.scaleLineWidth : 0,
+				lineColor: this.options.scaleLineColor,
+				angleLineColor : this.options.angleLineColor,
+				angleLineWidth : (this.options.angleShowLineOut) ? this.options.angleLineWidth : 0,
+				// Point labels at the edge of each line
+				pointLabelFontColor : this.options.pointLabelFontColor,
+				pointLabelFontSize : this.options.pointLabelFontSize,
+				pointLabelFontFamily : this.options.pointLabelFontFamily,
+				pointLabelFontStyle : this.options.pointLabelFontStyle,
+				height : this.chart.height,
+				width: this.chart.width,
+				xCenter: this.chart.width/2,
+				yCenter: this.chart.height/2,
+				ctx : this.chart.ctx,
+				templateString: this.options.scaleLabel,
+				labels: data.labels,
+				valuesCount: data.datasets[0].data.length
+			});
+
+			this.scale.setScaleSize();
+			this.updateScaleRange(data.datasets);
+			this.scale.buildYLabels();
+		},
+		updateScaleRange: function(datasets){
+			var valuesArray = (function(){
+				var totalDataArray = [];
+				helpers.each(datasets,function(dataset){
+					if (dataset.data){
+						totalDataArray = totalDataArray.concat(dataset.data);
+					}
+					else {
+						helpers.each(dataset.points, function(point){
+							totalDataArray.push(point.value);
+						});
+					}
+				});
+				return totalDataArray;
+			})();
+
+
+			var scaleSizes = (this.options.scaleOverride) ?
+				{
+					steps: this.options.scaleSteps,
+					stepValue: this.options.scaleStepWidth,
+					min: this.options.scaleStartValue,
+					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+				} :
+				helpers.calculateScaleRange(
+					valuesArray,
+					helpers.min([this.chart.width, this.chart.height])/2,
+					this.options.scaleFontSize,
+					this.options.scaleBeginAtZero,
+					this.options.scaleIntegersOnly
+				);
+
+			helpers.extend(
+				this.scale,
+				scaleSizes
+			);
+
+		},
+		addData : function(valuesArray,label){
+			//Map the values array for each of the datasets
+			this.scale.valuesCount++;
+			helpers.each(valuesArray,function(value,datasetIndex){
+				var pointPosition = this.scale.getPointPosition(this.scale.valuesCount, this.scale.calculateCenterOffset(value));
+				this.datasets[datasetIndex].points.push(new this.PointClass({
+					value : value,
+					label : label,
+					x: pointPosition.x,
+					y: pointPosition.y,
+					strokeColor : this.datasets[datasetIndex].pointStrokeColor,
+					fillColor : this.datasets[datasetIndex].pointColor
+				}));
+			},this);
+
+			this.scale.labels.push(label);
+
+			this.reflow();
+
+			this.update();
+		},
+		removeData : function(){
+			this.scale.valuesCount--;
+			this.scale.labels.shift();
+			helpers.each(this.datasets,function(dataset){
+				dataset.points.shift();
+			},this);
+			this.reflow();
+			this.update();
+		},
+		update : function(){
+			this.eachPoints(function(point){
+				point.save();
+			});
+			this.reflow();
+			this.render();
+		},
+		reflow: function(){
+			helpers.extend(this.scale, {
+				width : this.chart.width,
+				height: this.chart.height,
+				size : helpers.min([this.chart.width, this.chart.height]),
+				xCenter: this.chart.width/2,
+				yCenter: this.chart.height/2
+			});
+			this.updateScaleRange(this.datasets);
+			this.scale.setScaleSize();
+			this.scale.buildYLabels();
+		},
+		draw : function(ease){
+			var easeDecimal = ease || 1,
+				ctx = this.chart.ctx;
+			this.clear();
+			this.scale.draw();
+
+			helpers.each(this.datasets,function(dataset){
+
+				//Transition each point first so that the line and point drawing isn't out of sync
+				helpers.each(dataset.points,function(point,index){
+					if (point.hasValue()){
+						point.transition(this.scale.getPointPosition(index, this.scale.calculateCenterOffset(point.value)), easeDecimal);
+					}
+				},this);
+
+
+
+				//Draw the line between all the points
+				ctx.lineWidth = this.options.datasetStrokeWidth;
+				ctx.strokeStyle = dataset.strokeColor;
+				ctx.beginPath();
+				helpers.each(dataset.points,function(point,index){
+					if (index === 0){
+						ctx.moveTo(point.x,point.y);
+					}
+					else{
+						ctx.lineTo(point.x,point.y);
+					}
+				},this);
+				ctx.closePath();
+				ctx.stroke();
+
+				ctx.fillStyle = dataset.fillColor;
+				ctx.fill();
+
+				//Now draw the points over the line
+				//A little inefficient double looping, but better than the line
+				//lagging behind the point positions
+				helpers.each(dataset.points,function(point){
+					if (point.hasValue()){
+						point.draw();
+					}
+				});
+
+			},this);
+
+		}
+
+	});
+
+
+
+
+
+}).call(this);
+},{}],240:[function(require,module,exports){
+(function (root, factory) {
+    /* istanbul ignore next */
+    if (typeof define === 'function' && define.amd) {
+        define(['angular'], factory);
+    } else if (typeof module === 'object' && module.exports) {
+        module.exports = factory(require('angular'));
+    } else {
+        root.angularClipboard = factory(root.angular);
+  }
+}(this, function (angular) {
+
+return angular.module('angular-clipboard', [])
+    .factory('clipboard', ['$document', function ($document) {
+        function createNode(text) {
+            var node = $document[0].createElement('textarea');
+            node.style.position = 'absolute';
+            node.style.left = '-10000px';
+            node.textContent = text;
+            return node;
+        }
+
+        function copyNode(node) {
+            try {
+                // Set inline style to override css styles
+                $document[0].body.style.webkitUserSelect = 'initial';
+
+                var selection = $document[0].getSelection();
+                selection.removeAllRanges();
+                node.select();
+
+                if(!$document[0].execCommand('copy')) {
+                    throw('failure copy');
+                }
+                selection.removeAllRanges();
+            } finally {
+                // Reset inline style
+                $document[0].body.style.webkitUserSelect = '';
+            }
+        }
+
+        function copyText(text) {
+            var node = createNode(text);
+            $document[0].body.appendChild(node);
+            copyNode(node);
+            $document[0].body.removeChild(node);
+        }
+
+        return {
+            copyText: copyText
+        };
+    }])
+    .directive('clipboard', ['clipboard', function (clipboard) {
+        return {
+            restrict: 'A',
+            scope: {
+                onCopied: '&',
+                onError: '&',
+                text: '='
+            },
+            link: function (scope, element) {
+                element.on('click', function (event) {
+                    try {
+                        clipboard.copyText(scope.text);
+                        if (angular.isFunction(scope.onCopied)) {
+                            scope.$evalAsync(scope.onCopied());
+                        }
+                    } catch (err) {
+                        if (angular.isFunction(scope.onError)) {
+                            scope.$evalAsync(scope.onError({err: err}));
+                        }
+                    }
+                });
+            }
+        };
+    }]);
+
+}));
+},{"angular":280}],241:[function(require,module,exports){
+/**
+ * @license AngularJS v1.5.0
+ * (c) 2010-2016 Google, Inc. http://angularjs.org
+ * License: MIT
+ */
+(function(window, angular, undefined) {'use strict';
+
+/**
+ * @ngdoc module
+ * @name ngCookies
+ * @description
+ *
+ * # ngCookies
+ *
+ * The `ngCookies` module provides a convenient wrapper for reading and writing browser cookies.
+ *
+ *
+ * <div doc-module-components="ngCookies"></div>
+ *
+ * See {@link ngCookies.$cookies `$cookies`} for usage.
+ */
+
+
+angular.module('ngCookies', ['ng']).
+  /**
+   * @ngdoc provider
+   * @name $cookiesProvider
+   * @description
+   * Use `$cookiesProvider` to change the default behavior of the {@link ngCookies.$cookies $cookies} service.
+   * */
+   provider('$cookies', [function $CookiesProvider() {
+    /**
+     * @ngdoc property
+     * @name $cookiesProvider#defaults
+     * @description
+     *
+     * Object containing default options to pass when setting cookies.
+     *
+     * The object may have following properties:
+     *
+     * - **path** - `{string}` - The cookie will be available only for this path and its
+     *   sub-paths. By default, this is the URL that appears in your `<base>` tag.
+     * - **domain** - `{string}` - The cookie will be available only for this domain and
+     *   its sub-domains. For security reasons the user agent will not accept the cookie
+     *   if the current domain is not a sub-domain of this domain or equal to it.
+     * - **expires** - `{string|Date}` - String of the form "Wdy, DD Mon YYYY HH:MM:SS GMT"
+     *   or a Date object indicating the exact date/time this cookie will expire.
+     * - **secure** - `{boolean}` - If `true`, then the cookie will only be available through a
+     *   secured connection.
+     *
+     * Note: By default, the address that appears in your `<base>` tag will be used as the path.
+     * This is important so that cookies will be visible for all routes when html5mode is enabled.
+     *
+     **/
+    var defaults = this.defaults = {};
+
+    function calcOptions(options) {
+      return options ? angular.extend({}, defaults, options) : defaults;
+    }
+
+    /**
+     * @ngdoc service
+     * @name $cookies
+     *
+     * @description
+     * Provides read/write access to browser's cookies.
+     *
+     * <div class="alert alert-info">
+     * Up until Angular 1.3, `$cookies` exposed properties that represented the
+     * current browser cookie values. In version 1.4, this behavior has changed, and
+     * `$cookies` now provides a standard api of getters, setters etc.
+     * </div>
+     *
+     * Requires the {@link ngCookies `ngCookies`} module to be installed.
+     *
+     * @example
+     *
+     * ```js
+     * angular.module('cookiesExample', ['ngCookies'])
+     *   .controller('ExampleController', ['$cookies', function($cookies) {
+     *     // Retrieving a cookie
+     *     var favoriteCookie = $cookies.get('myFavorite');
+     *     // Setting a cookie
+     *     $cookies.put('myFavorite', 'oatmeal');
+     *   }]);
+     * ```
+     */
+    this.$get = ['$$cookieReader', '$$cookieWriter', function($$cookieReader, $$cookieWriter) {
+      return {
+        /**
+         * @ngdoc method
+         * @name $cookies#get
+         *
+         * @description
+         * Returns the value of given cookie key
+         *
+         * @param {string} key Id to use for lookup.
+         * @returns {string} Raw cookie value.
+         */
+        get: function(key) {
+          return $$cookieReader()[key];
+        },
+
+        /**
+         * @ngdoc method
+         * @name $cookies#getObject
+         *
+         * @description
+         * Returns the deserialized value of given cookie key
+         *
+         * @param {string} key Id to use for lookup.
+         * @returns {Object} Deserialized cookie value.
+         */
+        getObject: function(key) {
+          var value = this.get(key);
+          return value ? angular.fromJson(value) : value;
+        },
+
+        /**
+         * @ngdoc method
+         * @name $cookies#getAll
+         *
+         * @description
+         * Returns a key value object with all the cookies
+         *
+         * @returns {Object} All cookies
+         */
+        getAll: function() {
+          return $$cookieReader();
+        },
+
+        /**
+         * @ngdoc method
+         * @name $cookies#put
+         *
+         * @description
+         * Sets a value for given cookie key
+         *
+         * @param {string} key Id for the `value`.
+         * @param {string} value Raw value to be stored.
+         * @param {Object=} options Options object.
+         *    See {@link ngCookies.$cookiesProvider#defaults $cookiesProvider.defaults}
+         */
+        put: function(key, value, options) {
+          $$cookieWriter(key, value, calcOptions(options));
+        },
+
+        /**
+         * @ngdoc method
+         * @name $cookies#putObject
+         *
+         * @description
+         * Serializes and sets a value for given cookie key
+         *
+         * @param {string} key Id for the `value`.
+         * @param {Object} value Value to be stored.
+         * @param {Object=} options Options object.
+         *    See {@link ngCookies.$cookiesProvider#defaults $cookiesProvider.defaults}
+         */
+        putObject: function(key, value, options) {
+          this.put(key, angular.toJson(value), options);
+        },
+
+        /**
+         * @ngdoc method
+         * @name $cookies#remove
+         *
+         * @description
+         * Remove given cookie
+         *
+         * @param {string} key Id of the key-value pair to delete.
+         * @param {Object=} options Options object.
+         *    See {@link ngCookies.$cookiesProvider#defaults $cookiesProvider.defaults}
+         */
+        remove: function(key, options) {
+          $$cookieWriter(key, undefined, calcOptions(options));
+        }
+      };
+    }];
+  }]);
+
+angular.module('ngCookies').
+/**
+ * @ngdoc service
+ * @name $cookieStore
+ * @deprecated
+ * @requires $cookies
+ *
+ * @description
+ * Provides a key-value (string-object) storage, that is backed by session cookies.
+ * Objects put or retrieved from this storage are automatically serialized or
+ * deserialized by angular's toJson/fromJson.
+ *
+ * Requires the {@link ngCookies `ngCookies`} module to be installed.
+ *
+ * <div class="alert alert-danger">
+ * **Note:** The $cookieStore service is **deprecated**.
+ * Please use the {@link ngCookies.$cookies `$cookies`} service instead.
+ * </div>
+ *
+ * @example
+ *
+ * ```js
+ * angular.module('cookieStoreExample', ['ngCookies'])
+ *   .controller('ExampleController', ['$cookieStore', function($cookieStore) {
+ *     // Put cookie
+ *     $cookieStore.put('myFavorite','oatmeal');
+ *     // Get cookie
+ *     var favoriteCookie = $cookieStore.get('myFavorite');
+ *     // Removing a cookie
+ *     $cookieStore.remove('myFavorite');
+ *   }]);
+ * ```
+ */
+ factory('$cookieStore', ['$cookies', function($cookies) {
+
+    return {
+      /**
+       * @ngdoc method
+       * @name $cookieStore#get
+       *
+       * @description
+       * Returns the value of given cookie key
+       *
+       * @param {string} key Id to use for lookup.
+       * @returns {Object} Deserialized cookie value, undefined if the cookie does not exist.
+       */
+      get: function(key) {
+        return $cookies.getObject(key);
+      },
+
+      /**
+       * @ngdoc method
+       * @name $cookieStore#put
+       *
+       * @description
+       * Sets a value for given cookie key
+       *
+       * @param {string} key Id for the `value`.
+       * @param {Object} value Value to be stored.
+       */
+      put: function(key, value) {
+        $cookies.putObject(key, value);
+      },
+
+      /**
+       * @ngdoc method
+       * @name $cookieStore#remove
+       *
+       * @description
+       * Remove given cookie
+       *
+       * @param {string} key Id of the key-value pair to delete.
+       */
+      remove: function(key) {
+        $cookies.remove(key);
+      }
+    };
+
+  }]);
+
+/**
+ * @name $$cookieWriter
+ * @requires $document
+ *
+ * @description
+ * This is a private service for writing cookies
+ *
+ * @param {string} name Cookie name
+ * @param {string=} value Cookie value (if undefined, cookie will be deleted)
+ * @param {Object=} options Object with options that need to be stored for the cookie.
+ */
+function $$CookieWriter($document, $log, $browser) {
+  var cookiePath = $browser.baseHref();
+  var rawDocument = $document[0];
+
+  function buildCookieString(name, value, options) {
+    var path, expires;
+    options = options || {};
+    expires = options.expires;
+    path = angular.isDefined(options.path) ? options.path : cookiePath;
+    if (angular.isUndefined(value)) {
+      expires = 'Thu, 01 Jan 1970 00:00:00 GMT';
+      value = '';
+    }
+    if (angular.isString(expires)) {
+      expires = new Date(expires);
+    }
+
+    var str = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+    str += path ? ';path=' + path : '';
+    str += options.domain ? ';domain=' + options.domain : '';
+    str += expires ? ';expires=' + expires.toUTCString() : '';
+    str += options.secure ? ';secure' : '';
+
+    // per http://www.ietf.org/rfc/rfc2109.txt browser must allow at minimum:
+    // - 300 cookies
+    // - 20 cookies per unique domain
+    // - 4096 bytes per cookie
+    var cookieLength = str.length + 1;
+    if (cookieLength > 4096) {
+      $log.warn("Cookie '" + name +
+        "' possibly not set or overflowed because it was too large (" +
+        cookieLength + " > 4096 bytes)!");
+    }
+
+    return str;
+  }
+
+  return function(name, value, options) {
+    rawDocument.cookie = buildCookieString(name, value, options);
+  };
+}
+
+$$CookieWriter.$inject = ['$document', '$log', '$browser'];
+
+angular.module('ngCookies').provider('$$cookieWriter', function $$CookieWriterProvider() {
+  this.$get = $$CookieWriter;
+});
+
+
+})(window, window.angular);
+
+},{}],242:[function(require,module,exports){
+require('./angular-cookies');
+module.exports = 'ngCookies';
+
+},{"./angular-cookies":241}],243:[function(require,module,exports){
+/**
+ * angular-drag-and-drop-lists v1.4.0
+ *
+ * Copyright (c) 2014 Marcel Juenemann marcel@juenemann.cc
+ * Copyright (c) 2014-2016 Google Inc.
+ * https://github.com/marceljuenemann/angular-drag-and-drop-lists
+ *
+ * License: MIT
+ */
+angular.module('dndLists', [])
+
+  /**
+   * Use the dnd-draggable attribute to make your element draggable
+   *
+   * Attributes:
+   * - dnd-draggable      Required attribute. The value has to be an object that represents the data
+   *                      of the element. In case of a drag and drop operation the object will be
+   *                      serialized and unserialized on the receiving end.
+   * - dnd-selected       Callback that is invoked when the element was clicked but not dragged.
+   *                      The original click event will be provided in the local event variable.
+   * - dnd-effect-allowed Use this attribute to limit the operations that can be performed. Options:
+   *                      - "move": The drag operation will move the element. This is the default.
+   *                      - "copy": The drag operation will copy the element. Shows a copy cursor.
+   *                      - "copyMove": The user can choose between copy and move by pressing the
+   *                        ctrl or shift key. *Not supported in IE:* In Internet Explorer this
+   *                        option will be the same as "copy". *Not fully supported in Chrome on
+   *                        Windows:* In the Windows version of Chrome the cursor will always be the
+   *                        move cursor. However, when the user drops an element and has the ctrl
+   *                        key pressed, we will perform a copy anyways.
+   *                      - HTML5 also specifies the "link" option, but this library does not
+   *                        actively support it yet, so use it at your own risk.
+   * - dnd-moved          Callback that is invoked when the element was moved. Usually you will
+   *                      remove your element from the original list in this callback, since the
+   *                      directive is not doing that for you automatically. The original dragend
+   *                      event will be provided in the local event variable.
+   * - dnd-canceled       Callback that is invoked if the element was dragged, but the operation was
+   *                      canceled and the element was not dropped. The original dragend event will
+   *                      be provided in the local event variable.
+   * - dnd-copied         Same as dnd-moved, just that it is called when the element was copied
+   *                      instead of moved. The original dragend event will be provided in the local
+   *                      event variable.
+   * - dnd-dragstart      Callback that is invoked when the element was dragged. The original
+   *                      dragstart event will be provided in the local event variable.
+   * - dnd-dragend        Callback that is invoked when the drag operation ended. Available local
+   *                      variables are event and dropEffect.
+   * - dnd-type           Use this attribute if you have different kinds of items in your
+   *                      application and you want to limit which items can be dropped into which
+   *                      lists. Combine with dnd-allowed-types on the dnd-list(s). This attribute
+   *                      should evaluate to a string, although this restriction is not enforced.
+   * - dnd-disable-if     You can use this attribute to dynamically disable the draggability of the
+   *                      element. This is useful if you have certain list items that you don't want
+   *                      to be draggable, or if you want to disable drag & drop completely without
+   *                      having two different code branches (e.g. only allow for admins).
+   *                      **Note**: If your element is not draggable, the user is probably able to
+   *                      select text or images inside of it. Since a selection is always draggable,
+   *                      this breaks your UI. You most likely want to disable user selection via
+   *                      CSS (see user-select).
+   *
+   * CSS classes:
+   * - dndDragging        This class will be added to the element while the element is being
+   *                      dragged. It will affect both the element you see while dragging and the
+   *                      source element that stays at it's position. Do not try to hide the source
+   *                      element with this class, because that will abort the drag operation.
+   * - dndDraggingSource  This class will be added to the element after the drag operation was
+   *                      started, meaning it only affects the original element that is still at
+   *                      it's source position, and not the "element" that the user is dragging with
+   *                      his mouse pointer.
+   */
+  .directive('dndDraggable', ['$parse', '$timeout', 'dndDropEffectWorkaround', 'dndDragTypeWorkaround',
+                      function($parse,   $timeout,   dndDropEffectWorkaround,   dndDragTypeWorkaround) {
+    return function(scope, element, attr) {
+      // Set the HTML5 draggable attribute on the element
+      element.attr("draggable", "true");
+
+      // If the dnd-disable-if attribute is set, we have to watch that
+      if (attr.dndDisableIf) {
+        scope.$watch(attr.dndDisableIf, function(disabled) {
+          element.attr("draggable", !disabled);
+        });
+      }
+
+      /**
+       * When the drag operation is started we have to prepare the dataTransfer object,
+       * which is the primary way we communicate with the target element
+       */
+      element.on('dragstart', function(event) {
+        event = event.originalEvent || event;
+
+        // Check whether the element is draggable, since dragstart might be triggered on a child.
+        if (element.attr('draggable') == 'false') return true;
+
+        // Serialize the data associated with this element. IE only supports the Text drag type
+        event.dataTransfer.setData("Text", angular.toJson(scope.$eval(attr.dndDraggable)));
+
+        // Only allow actions specified in dnd-effect-allowed attribute
+        event.dataTransfer.effectAllowed = attr.dndEffectAllowed || "move";
+
+        // Add CSS classes. See documentation above
+        element.addClass("dndDragging");
+        $timeout(function() { element.addClass("dndDraggingSource"); }, 0);
+
+        // Workarounds for stupid browsers, see description below
+        dndDropEffectWorkaround.dropEffect = "none";
+        dndDragTypeWorkaround.isDragging = true;
+
+        // Save type of item in global state. Usually, this would go into the dataTransfer
+        // typename, but we have to use "Text" there to support IE
+        dndDragTypeWorkaround.dragType = attr.dndType ? scope.$eval(attr.dndType) : undefined;
+
+        // Try setting a proper drag image if triggered on a dnd-handle (won't work in IE).
+        if (event._dndHandle && event.dataTransfer.setDragImage) {
+          event.dataTransfer.setDragImage(element[0], 0, 0);
+        }
+
+        // Invoke callback
+        $parse(attr.dndDragstart)(scope, {event: event});
+
+        event.stopPropagation();
+      });
+
+      /**
+       * The dragend event is triggered when the element was dropped or when the drag
+       * operation was aborted (e.g. hit escape button). Depending on the executed action
+       * we will invoke the callbacks specified with the dnd-moved or dnd-copied attribute.
+       */
+      element.on('dragend', function(event) {
+        event = event.originalEvent || event;
+
+        // Invoke callbacks. Usually we would use event.dataTransfer.dropEffect to determine
+        // the used effect, but Chrome has not implemented that field correctly. On Windows
+        // it always sets it to 'none', while Chrome on Linux sometimes sets it to something
+        // else when it's supposed to send 'none' (drag operation aborted).
+        var dropEffect = dndDropEffectWorkaround.dropEffect;
+        scope.$apply(function() {
+          switch (dropEffect) {
+            case "move":
+              $parse(attr.dndMoved)(scope, {event: event});
+              break;
+            case "copy":
+              $parse(attr.dndCopied)(scope, {event: event});
+              break;
+            case "none":
+              $parse(attr.dndCanceled)(scope, {event: event});
+              break;
+          }
+          $parse(attr.dndDragend)(scope, {event: event, dropEffect: dropEffect});
+        });
+
+        // Clean up
+        element.removeClass("dndDragging");
+        $timeout(function() { element.removeClass("dndDraggingSource"); }, 0);
+        dndDragTypeWorkaround.isDragging = false;
+        event.stopPropagation();
+      });
+
+      /**
+       * When the element is clicked we invoke the callback function
+       * specified with the dnd-selected attribute.
+       */
+      element.on('click', function(event) {
+        if (!attr.dndSelected) return;
+
+        event = event.originalEvent || event;
+        scope.$apply(function() {
+          $parse(attr.dndSelected)(scope, {event: event});
+        });
+
+        // Prevent triggering dndSelected in parent elements.
+        event.stopPropagation();
+      });
+
+      /**
+       * Workaround to make element draggable in IE9
+       */
+      element.on('selectstart', function() {
+        if (this.dragDrop) this.dragDrop();
+      });
+    };
+  }])
+
+  /**
+   * Use the dnd-list attribute to make your list element a dropzone. Usually you will add a single
+   * li element as child with the ng-repeat directive. If you don't do that, we will not be able to
+   * position the dropped element correctly. If you want your list to be sortable, also add the
+   * dnd-draggable directive to your li element(s). Both the dnd-list and it's direct children must
+   * have position: relative CSS style, otherwise the positioning algorithm will not be able to
+   * determine the correct placeholder position in all browsers.
+   *
+   * Attributes:
+   * - dnd-list             Required attribute. The value has to be the array in which the data of
+   *                        the dropped element should be inserted.
+   * - dnd-allowed-types    Optional array of allowed item types. When used, only items that had a
+   *                        matching dnd-type attribute will be dropable.
+   * - dnd-disable-if       Optional boolean expresssion. When it evaluates to true, no dropping
+   *                        into the list is possible. Note that this also disables rearranging
+   *                        items inside the list.
+   * - dnd-horizontal-list  Optional boolean expresssion. When it evaluates to true, the positioning
+   *                        algorithm will use the left and right halfs of the list items instead of
+   *                        the upper and lower halfs.
+   * - dnd-dragover         Optional expression that is invoked when an element is dragged over the
+   *                        list. If the expression is set, but does not return true, the element is
+   *                        not allowed to be dropped. The following variables will be available:
+   *                        - event: The original dragover event sent by the browser.
+   *                        - index: The position in the list at which the element would be dropped.
+   *                        - type: The dnd-type set on the dnd-draggable, or undefined if unset.
+   *                        - external: Whether the element was dragged from an external source.
+   * - dnd-drop             Optional expression that is invoked when an element is dropped on the
+   *                        list. The following variables will be available:
+   *                        - event: The original drop event sent by the browser.
+   *                        - index: The position in the list at which the element would be dropped.
+   *                        - item: The transferred object.
+   *                        - type: The dnd-type set on the dnd-draggable, or undefined if unset.
+   *                        - external: Whether the element was dragged from an external source.
+   *                        The return value determines the further handling of the drop:
+   *                        - false: The drop will be canceled and the element won't be inserted.
+   *                        - true: Signalises that the drop is allowed, but the dnd-drop
+   *                          callback already took care of inserting the element.
+   *                        - otherwise: All other return values will be treated as the object to
+   *                          insert into the array. In most cases you want to simply return the
+   *                          item parameter, but there are no restrictions on what you can return.
+   * - dnd-inserted         Optional expression that is invoked after a drop if the element was
+   *                        actually inserted into the list. The same local variables as for
+   *                        dnd-drop will be available. Note that for reorderings inside the same
+   *                        list the old element will still be in the list due to the fact that
+   *                        dnd-moved was not called yet.
+   * - dnd-external-sources Optional boolean expression. When it evaluates to true, the list accepts
+   *                        drops from sources outside of the current browser tab. This allows to
+   *                        drag and drop accross different browser tabs. Note that this will allow
+   *                        to drop arbitrary text into the list, thus it is highly recommended to
+   *                        implement the dnd-drop callback to check the incoming element for
+   *                        sanity. Furthermore, the dnd-type of external sources can not be
+   *                        determined, therefore do not rely on restrictions of dnd-allowed-type.
+   *
+   * CSS classes:
+   * - dndPlaceholder       When an element is dragged over the list, a new placeholder child
+   *                        element will be added. This element is of type li and has the class
+   *                        dndPlaceholder set. Alternatively, you can define your own placeholder
+   *                        by creating a child element with dndPlaceholder class.
+   * - dndDragover          Will be added to the list while an element is dragged over the list.
+   */
+  .directive('dndList', ['$parse', '$timeout', 'dndDropEffectWorkaround', 'dndDragTypeWorkaround',
+                 function($parse,   $timeout,   dndDropEffectWorkaround,   dndDragTypeWorkaround) {
+    return function(scope, element, attr) {
+      // While an element is dragged over the list, this placeholder element is inserted
+      // at the location where the element would be inserted after dropping
+      var placeholder = getPlaceholderElement();
+      var placeholderNode = placeholder[0];
+      var listNode = element[0];
+      placeholder.remove();
+
+      var horizontal = attr.dndHorizontalList && scope.$eval(attr.dndHorizontalList);
+      var externalSources = attr.dndExternalSources && scope.$eval(attr.dndExternalSources);
+
+      /**
+       * The dragenter event is fired when a dragged element or text selection enters a valid drop
+       * target. According to the spec, we either need to have a dropzone attribute or listen on
+       * dragenter events and call preventDefault(). It should be noted though that no browser seems
+       * to enforce this behaviour.
+       */
+      element.on('dragenter', function (event) {
+        event = event.originalEvent || event;
+        if (!isDropAllowed(event)) return true;
+        event.preventDefault();
+      });
+
+      /**
+       * The dragover event is triggered "every few hundred milliseconds" while an element
+       * is being dragged over our list, or over an child element.
+       */
+      element.on('dragover', function(event) {
+        event = event.originalEvent || event;
+
+        if (!isDropAllowed(event)) return true;
+
+        // First of all, make sure that the placeholder is shown
+        // This is especially important if the list is empty
+        if (placeholderNode.parentNode != listNode) {
+          element.append(placeholder);
+        }
+
+        if (event.target !== listNode) {
+          // Try to find the node direct directly below the list node.
+          var listItemNode = event.target;
+          while (listItemNode.parentNode !== listNode && listItemNode.parentNode) {
+            listItemNode = listItemNode.parentNode;
+          }
+
+          if (listItemNode.parentNode === listNode && listItemNode !== placeholderNode) {
+            // If the mouse pointer is in the upper half of the child element,
+            // we place it before the child element, otherwise below it.
+            if (isMouseInFirstHalf(event, listItemNode)) {
+              listNode.insertBefore(placeholderNode, listItemNode);
+            } else {
+              listNode.insertBefore(placeholderNode, listItemNode.nextSibling);
+            }
+          }
+        } else {
+          // This branch is reached when we are dragging directly over the list element.
+          // Usually we wouldn't need to do anything here, but the IE does not fire it's
+          // events for the child element, only for the list directly. Therefore, we repeat
+          // the positioning algorithm for IE here.
+          if (isMouseInFirstHalf(event, placeholderNode, true)) {
+            // Check if we should move the placeholder element one spot towards the top.
+            // Note that display none elements will have offsetTop and offsetHeight set to
+            // zero, therefore we need a special check for them.
+            while (placeholderNode.previousElementSibling
+                 && (isMouseInFirstHalf(event, placeholderNode.previousElementSibling, true)
+                 || placeholderNode.previousElementSibling.offsetHeight === 0)) {
+              listNode.insertBefore(placeholderNode, placeholderNode.previousElementSibling);
+            }
+          } else {
+            // Check if we should move the placeholder element one spot towards the bottom
+            while (placeholderNode.nextElementSibling &&
+                 !isMouseInFirstHalf(event, placeholderNode.nextElementSibling, true)) {
+              listNode.insertBefore(placeholderNode,
+                  placeholderNode.nextElementSibling.nextElementSibling);
+            }
+          }
+        }
+
+        // At this point we invoke the callback, which still can disallow the drop.
+        // We can't do this earlier because we want to pass the index of the placeholder.
+        if (attr.dndDragover && !invokeCallback(attr.dndDragover, event, getPlaceholderIndex())) {
+          return stopDragover();
+        }
+
+        element.addClass("dndDragover");
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+      });
+
+      /**
+       * When the element is dropped, we use the position of the placeholder element as the
+       * position where we insert the transferred data. This assumes that the list has exactly
+       * one child element per array element.
+       */
+      element.on('drop', function(event) {
+        event = event.originalEvent || event;
+
+        if (!isDropAllowed(event)) return true;
+
+        // The default behavior in Firefox is to interpret the dropped element as URL and
+        // forward to it. We want to prevent that even if our drop is aborted.
+        event.preventDefault();
+
+        // Unserialize the data that was serialized in dragstart. According to the HTML5 specs,
+        // the "Text" drag type will be converted to text/plain, but IE does not do that.
+        var data = event.dataTransfer.getData("Text") || event.dataTransfer.getData("text/plain");
+        var transferredObject;
+        try {
+          transferredObject = JSON.parse(data);
+        } catch(e) {
+          return stopDragover();
+        }
+
+        // Invoke the callback, which can transform the transferredObject and even abort the drop.
+        var index = getPlaceholderIndex();
+        if (attr.dndDrop) {
+          transferredObject = invokeCallback(attr.dndDrop, event, index, transferredObject);
+          if (!transferredObject) {
+            return stopDragover();
+          }
+        }
+
+        // Insert the object into the array, unless dnd-drop took care of that (returned true).
+        if (transferredObject !== true) {
+          scope.$apply(function() {
+            scope.$eval(attr.dndList).splice(index, 0, transferredObject);
+          });
+        }
+        invokeCallback(attr.dndInserted, event, index, transferredObject);
+
+        // In Chrome on Windows the dropEffect will always be none...
+        // We have to determine the actual effect manually from the allowed effects
+        if (event.dataTransfer.dropEffect === "none") {
+          if (event.dataTransfer.effectAllowed === "copy" ||
+              event.dataTransfer.effectAllowed === "move") {
+            dndDropEffectWorkaround.dropEffect = event.dataTransfer.effectAllowed;
+          } else {
+            dndDropEffectWorkaround.dropEffect = event.ctrlKey ? "copy" : "move";
+          }
+        } else {
+          dndDropEffectWorkaround.dropEffect = event.dataTransfer.dropEffect;
+        }
+
+        // Clean up
+        stopDragover();
+        event.stopPropagation();
+        return false;
+      });
+
+      /**
+       * We have to remove the placeholder when the element is no longer dragged over our list. The
+       * problem is that the dragleave event is not only fired when the element leaves our list,
+       * but also when it leaves a child element -- so practically it's fired all the time. As a
+       * workaround we wait a few milliseconds and then check if the dndDragover class was added
+       * again. If it is there, dragover must have been called in the meantime, i.e. the element
+       * is still dragging over the list. If you know a better way of doing this, please tell me!
+       */
+      element.on('dragleave', function(event) {
+        event = event.originalEvent || event;
+
+        element.removeClass("dndDragover");
+        $timeout(function() {
+          if (!element.hasClass("dndDragover")) {
+            placeholder.remove();
+          }
+        }, 100);
+      });
+
+      /**
+       * Checks whether the mouse pointer is in the first half of the given target element.
+       *
+       * In Chrome we can just use offsetY, but in Firefox we have to use layerY, which only
+       * works if the child element has position relative. In IE the events are only triggered
+       * on the listNode instead of the listNodeItem, therefore the mouse positions are
+       * relative to the parent element of targetNode.
+       */
+      function isMouseInFirstHalf(event, targetNode, relativeToParent) {
+        var mousePointer = horizontal ? (event.offsetX || event.layerX)
+                                      : (event.offsetY || event.layerY);
+        var targetSize = horizontal ? targetNode.offsetWidth : targetNode.offsetHeight;
+        var targetPosition = horizontal ? targetNode.offsetLeft : targetNode.offsetTop;
+        targetPosition = relativeToParent ? targetPosition : 0;
+        return mousePointer < targetPosition + targetSize / 2;
+      }
+
+      /**
+       * Tries to find a child element that has the dndPlaceholder class set. If none was found, a
+       * new li element is created.
+       */
+      function getPlaceholderElement() {
+        var placeholder;
+        angular.forEach(element.children(), function(childNode) {
+          var child = angular.element(childNode);
+          if (child.hasClass('dndPlaceholder')) {
+            placeholder = child;
+          }
+        });
+        return placeholder || angular.element("<li class='dndPlaceholder'></li>");
+      }
+
+      /**
+       * We use the position of the placeholder node to determine at which position of the array the
+       * object needs to be inserted
+       */
+      function getPlaceholderIndex() {
+        return Array.prototype.indexOf.call(listNode.children, placeholderNode);
+      }
+
+      /**
+       * Checks various conditions that must be fulfilled for a drop to be allowed
+       */
+      function isDropAllowed(event) {
+        // Disallow drop from external source unless it's allowed explicitly.
+        if (!dndDragTypeWorkaround.isDragging && !externalSources) return false;
+
+        // Check mimetype. Usually we would use a custom drag type instead of Text, but IE doesn't
+        // support that.
+        if (!hasTextMimetype(event.dataTransfer.types)) return false;
+
+        // Now check the dnd-allowed-types against the type of the incoming element. For drops from
+        // external sources we don't know the type, so it will need to be checked via dnd-drop.
+        if (attr.dndAllowedTypes && dndDragTypeWorkaround.isDragging) {
+          var allowed = scope.$eval(attr.dndAllowedTypes);
+          if (angular.isArray(allowed) && allowed.indexOf(dndDragTypeWorkaround.dragType) === -1) {
+            return false;
+          }
+        }
+
+        // Check whether droping is disabled completely
+        if (attr.dndDisableIf && scope.$eval(attr.dndDisableIf)) return false;
+
+        return true;
+      }
+
+      /**
+       * Small helper function that cleans up if we aborted a drop.
+       */
+      function stopDragover() {
+        placeholder.remove();
+        element.removeClass("dndDragover");
+        return true;
+      }
+
+      /**
+       * Invokes a callback with some interesting parameters and returns the callbacks return value.
+       */
+      function invokeCallback(expression, event, index, item) {
+        return $parse(expression)(scope, {
+          event: event,
+          index: index,
+          item: item || undefined,
+          external: !dndDragTypeWorkaround.isDragging,
+          type: dndDragTypeWorkaround.isDragging ? dndDragTypeWorkaround.dragType : undefined
+        });
+      }
+
+      /**
+       * Check if the dataTransfer object contains a drag type that we can handle. In old versions
+       * of IE the types collection will not even be there, so we just assume a drop is possible.
+       */
+      function hasTextMimetype(types) {
+        if (!types) return true;
+        for (var i = 0; i < types.length; i++) {
+          if (types[i] === "Text" || types[i] === "text/plain") return true;
+        }
+
+        return false;
+      }
+    };
+  }])
+
+  /**
+   * Use the dnd-nodrag attribute inside of dnd-draggable elements to prevent them from starting
+   * drag operations. This is especially useful if you want to use input elements inside of
+   * dnd-draggable elements or create specific handle elements. Note: This directive does not work
+   * in Internet Explorer 9.
+   */
+  .directive('dndNodrag', function() {
+    return function(scope, element, attr) {
+      // Set as draggable so that we can cancel the events explicitly
+      element.attr("draggable", "true");
+
+      /**
+       * Since the element is draggable, the browser's default operation is to drag it on dragstart.
+       * We will prevent that and also stop the event from bubbling up.
+       */
+      element.on('dragstart', function(event) {
+        event = event.originalEvent || event;
+
+        if (!event._dndHandle) {
+          // If a child element already reacted to dragstart and set a dataTransfer object, we will
+          // allow that. For example, this is the case for user selections inside of input elements.
+          if (!(event.dataTransfer.types && event.dataTransfer.types.length)) {
+            event.preventDefault();
+          }
+          event.stopPropagation();
+        }
+      });
+
+      /**
+       * Stop propagation of dragend events, otherwise dnd-moved might be triggered and the element
+       * would be removed.
+       */
+      element.on('dragend', function(event) {
+        event = event.originalEvent || event;
+        if (!event._dndHandle) {
+          event.stopPropagation();
+        }
+      });
+    };
+  })
+
+  /**
+   * Use the dnd-handle directive within a dnd-nodrag element in order to allow dragging with that
+   * element after all. Therefore, by combining dnd-nodrag and dnd-handle you can allow
+   * dnd-draggable elements to only be dragged via specific "handle" elements. Note that Internet
+   * Explorer will show the handle element as drag image instead of the dnd-draggable element. You
+   * can work around this by styling the handle element differently when it is being dragged. Use
+   * the CSS selector .dndDragging:not(.dndDraggingSource) [dnd-handle] for that.
+   */
+  .directive('dndHandle', function() {
+    return function(scope, element, attr) {
+      element.attr("draggable", "true");
+
+      element.on('dragstart dragend', function(event) {
+        event = event.originalEvent || event;
+        event._dndHandle = true;
+      });
+    };
+  })
+
+  /**
+   * This workaround handles the fact that Internet Explorer does not support drag types other than
+   * "Text" and "URL". That means we can not know whether the data comes from one of our elements or
+   * is just some other data like a text selection. As a workaround we save the isDragging flag in
+   * here. When a dropover event occurs, we only allow the drop if we are already dragging, because
+   * that means the element is ours.
+   */
+  .factory('dndDragTypeWorkaround', function(){ return {} })
+
+  /**
+   * Chrome on Windows does not set the dropEffect field, which we need in dragend to determine
+   * whether a drag operation was successful. Therefore we have to maintain it in this global
+   * variable. The bug report for that has been open for years:
+   * https://code.google.com/p/chromium/issues/detail?id=39399
+   */
+  .factory('dndDropEffectWorkaround', function(){ return {} });
+
+},{}],244:[function(require,module,exports){
+/*
+ angular-file-upload v2.2.0
+ https://github.com/nervgh/angular-file-upload
+*/
+
+!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["angular-file-upload"]=t():e["angular-file-upload"]=t()}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return e[r].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=r(n(1)),o=r(n(2)),s=r(n(3)),a=r(n(4)),u=r(n(5)),l=r(n(6)),c=r(n(7)),f=r(n(8)),p=r(n(9)),d=r(n(10)),v=r(n(11)),h=r(n(12));angular.module(i.name,[]).value("fileUploaderOptions",o).factory("FileUploader",s).factory("FileLikeObject",a).factory("FileItem",u).factory("FileDirective",l).factory("FileSelect",c).factory("FileDrop",f).factory("FileOver",p).directive("nvFileSelect",d).directive("nvFileDrop",v).directive("nvFileOver",h).run(["FileUploader","FileLikeObject","FileItem","FileDirective","FileSelect","FileDrop","FileOver",function(e,t,n,r,i,o,s){e.FileLikeObject=t,e.FileItem=n,e.FileDirective=r,e.FileSelect=i,e.FileDrop=o,e.FileOver=s}])},function(e,t){e.exports={name:"angularFileUpload"}},function(e,t){"use strict";e.exports={url:"/",alias:"file",headers:{},queue:[],progress:0,autoUpload:!1,removeAfterUpload:!1,method:"POST",filters:[],formData:[],queueLimit:Number.MAX_VALUE,withCredentials:!1}},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.forEach,l=angular.isObject,c=angular.isNumber,f=angular.isDefined,p=angular.isArray,d=angular.element;e.exports=function(e,t,n,r,v,h){var m=r.File,g=r.FormData,_=function(){function r(t){o(this,r);var n=s(e);a(this,n,t,{isUploading:!1,_nextIndex:0,_failFilterIndex:-1,_directives:{select:[],drop:[],over:[]}}),this.filters.unshift({name:"queueLimit",fn:this._queueLimitFilter}),this.filters.unshift({name:"folder",fn:this._folderFilter})}return i(r,{addToQueue:{value:function(e,t,n){var r=this,i=this.isArrayLikeObject(e)?e:[e],o=this._getFilters(n),s=this.queue.length,a=[];u(i,function(e){var n=new v(e);if(r._isValidFile(n,o,t)){var i=new h(r,e,t);a.push(i),r.queue.push(i),r._onAfterAddingFile(i)}else{var s=o[r._failFilterIndex];r._onWhenAddingFileFailed(n,s,t)}}),this.queue.length!==s&&(this._onAfterAddingAll(a),this.progress=this._getTotalProgress()),this._render(),this.autoUpload&&this.uploadAll()}},removeFromQueue:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t];n.isUploading&&n.cancel(),this.queue.splice(t,1),n._destroy(),this.progress=this._getTotalProgress()}},clearQueue:{value:function(){for(;this.queue.length;)this.queue[0].remove();this.progress=0}},uploadItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhrTransport":"_iframeTransport";n._prepareToUploading(),this.isUploading||(this.isUploading=!0,this[r](n))}},cancelItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhr":"_form";n&&n.isUploading&&n[r].abort()}},uploadAll:{value:function(){var e=this.getNotUploadedItems().filter(function(e){return!e.isUploading});e.length&&(u(e,function(e){return e._prepareToUploading()}),e[0].upload())}},cancelAll:{value:function(){var e=this.getNotUploadedItems();u(e,function(e){return e.cancel()})}},isFile:{value:function(e){return this.constructor.isFile(e)}},isFileLikeObject:{value:function(e){return this.constructor.isFileLikeObject(e)}},isArrayLikeObject:{value:function(e){return this.constructor.isArrayLikeObject(e)}},getIndexOfItem:{value:function(e){return c(e)?e:this.queue.indexOf(e)}},getNotUploadedItems:{value:function(){return this.queue.filter(function(e){return!e.isUploaded})}},getReadyItems:{value:function(){return this.queue.filter(function(e){return e.isReady&&!e.isUploading}).sort(function(e,t){return e.index-t.index})}},destroy:{value:function(){var e=this;u(this._directives,function(t){u(e._directives[t],function(e){e.destroy()})})}},onAfterAddingAll:{value:function(e){}},onAfterAddingFile:{value:function(e){}},onWhenAddingFileFailed:{value:function(e,t,n){}},onBeforeUploadItem:{value:function(e){}},onProgressItem:{value:function(e,t){}},onProgressAll:{value:function(e){}},onSuccessItem:{value:function(e,t,n,r){}},onErrorItem:{value:function(e,t,n,r){}},onCancelItem:{value:function(e,t,n,r){}},onCompleteItem:{value:function(e,t,n,r){}},onCompleteAll:{value:function(){}},_getTotalProgress:{value:function(e){if(this.removeAfterUpload)return e||0;var t=this.getNotUploadedItems().length,n=t?this.queue.length-t:this.queue.length,r=100/this.queue.length,i=(e||0)*r/100;return Math.round(n*r+i)}},_getFilters:{value:function(e){if(!e)return this.filters;if(p(e))return e;var t=e.match(/[^\s,]+/g);return this.filters.filter(function(e){return-1!==t.indexOf(e.name)})}},_render:{value:function(){t.$$phase||t.$apply()}},_folderFilter:{value:function(e){return!(!e.size&&!e.type)}},_queueLimitFilter:{value:function(){return this.queue.length<this.queueLimit}},_isValidFile:{value:function(e,t,n){var r=this;return this._failFilterIndex=-1,t.length?t.every(function(t){return r._failFilterIndex++,t.fn.call(r,e,n)}):!0}},_isSuccessCode:{value:function(e){return e>=200&&300>e||304===e}},_transformResponse:{value:function(e,t){var r=this._headersGetter(t);return u(n.defaults.transformResponse,function(t){e=t(e,r)}),e}},_parseHeaders:{value:function(e){var t,n,r,i={};return e?(u(e.split("\n"),function(e){r=e.indexOf(":"),t=e.slice(0,r).trim().toLowerCase(),n=e.slice(r+1).trim(),t&&(i[t]=i[t]?i[t]+", "+n:n)}),i):i}},_headersGetter:{value:function(e){return function(t){return t?e[t.toLowerCase()]||null:e}}},_xhrTransport:{value:function(e){var t=this,n=e._xhr=new XMLHttpRequest,r=new g;if(this._onBeforeUploadItem(e),u(e.formData,function(e){u(e,function(e,t){r.append(t,e)})}),"number"!=typeof e._file.size)throw new TypeError("The file specified is no longer valid");r.append(e.alias,e._file,e.file.name),n.upload.onprogress=function(n){var r=Math.round(n.lengthComputable?100*n.loaded/n.total:0);t._onProgressItem(e,r)},n.onload=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r),o=t._isSuccessCode(n.status)?"Success":"Error",s="_on"+o+"Item";t[s](e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onerror=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onErrorItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onabort=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onCancelItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.open(e.method,e.url,!0),n.withCredentials=e.withCredentials,u(e.headers,function(e,t){n.setRequestHeader(t,e)}),n.send(r),this._render()}},_iframeTransport:{value:function(e){var t=this,n=d('<form style="display: none;" />'),r=d('<iframe name="iframeTransport'+Date.now()+'">'),i=e._input;e._form&&e._form.replaceWith(i),e._form=n,this._onBeforeUploadItem(e),i.prop("name",e.alias),u(e.formData,function(e){u(e,function(e,t){var r=d('<input type="hidden" name="'+t+'" />');r.val(e),n.append(r)})}),n.prop({action:e.url,method:"POST",target:r.prop("name"),enctype:"multipart/form-data",encoding:"multipart/form-data"}),r.bind("load",function(){var n="",i=200;try{n=r[0].contentDocument.body.innerHTML}catch(o){i=500}var s={response:n,status:i,dummy:!0},a={},u=t._transformResponse(s.response,a);t._onSuccessItem(e,u,s.status,a),t._onCompleteItem(e,u,s.status,a)}),n.abort=function(){var o,s={status:0,dummy:!0},a={};r.unbind("load").prop("src","javascript:false;"),n.replaceWith(i),t._onCancelItem(e,o,s.status,a),t._onCompleteItem(e,o,s.status,a)},i.after(n),n.append(i).append(r),n[0].submit(),this._render()}},_onWhenAddingFileFailed:{value:function(e,t,n){this.onWhenAddingFileFailed(e,t,n)}},_onAfterAddingFile:{value:function(e){this.onAfterAddingFile(e)}},_onAfterAddingAll:{value:function(e){this.onAfterAddingAll(e)}},_onBeforeUploadItem:{value:function(e){e._onBeforeUpload(),this.onBeforeUploadItem(e)}},_onProgressItem:{value:function(e,t){var n=this._getTotalProgress(t);this.progress=n,e._onProgress(t),this.onProgressItem(e,t),this.onProgressAll(n),this._render()}},_onSuccessItem:{value:function(e,t,n,r){e._onSuccess(t,n,r),this.onSuccessItem(e,t,n,r)}},_onErrorItem:{value:function(e,t,n,r){e._onError(t,n,r),this.onErrorItem(e,t,n,r)}},_onCancelItem:{value:function(e,t,n,r){e._onCancel(t,n,r),this.onCancelItem(e,t,n,r)}},_onCompleteItem:{value:function(e,t,n,r){e._onComplete(t,n,r),this.onCompleteItem(e,t,n,r);var i=this.getReadyItems()[0];return this.isUploading=!1,f(i)?void i.upload():(this.onCompleteAll(),this.progress=this._getTotalProgress(),void this._render())}}},{isFile:{value:function(e){return m&&e instanceof m}},isFileLikeObject:{value:function(e){return e instanceof v}},isArrayLikeObject:{value:function(e){return l(e)&&"length"in e}},inherit:{value:function(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,e.super_=t}}}),r}();return _.prototype.isHTML5=!(!m||!g),_.isHTML5=_.prototype.isHTML5,_},e.exports.$inject=["fileUploaderOptions","$rootScope","$http","$window","FileLikeObject","FileItem"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.isElement,u=angular.isString;e.exports=function(){var e=function(){function e(t){o(this,e);var n=a(t),r=n?t.value:t,i=u(r)?"FakePath":"Object",s="_createFrom"+i;this[s](r)}return i(e,{_createFromFakePath:{value:function(e){this.lastModifiedDate=null,this.size=null,this.type="like/"+e.slice(e.lastIndexOf(".")+1).toLowerCase(),this.name=e.slice(e.lastIndexOf("/")+e.lastIndexOf("\\")+2)}},_createFromObject:{value:function(e){this.lastModifiedDate=s(e.lastModifiedDate),this.size=e.size,this.type=e.type,this.name=e.name}}}),e}();return e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.element,l=angular.isElement;e.exports=function(e,t){var n=function(){function n(e,r,i){o(this,n);var c=l(r),f=c?u(r):null,p=c?null:r;a(this,{url:e.url,alias:e.alias,headers:s(e.headers),formData:s(e.formData),removeAfterUpload:e.removeAfterUpload,withCredentials:e.withCredentials,method:e.method},i,{uploader:e,file:new t(r),isReady:!1,isUploading:!1,isUploaded:!1,isSuccess:!1,isCancel:!1,isError:!1,progress:0,index:null,_file:p,_input:f}),f&&this._replaceNode(f)}return i(n,{upload:{value:function(){try{this.uploader.uploadItem(this)}catch(e){this.uploader._onCompleteItem(this,"",0,[]),this.uploader._onErrorItem(this,"",0,[])}}},cancel:{value:function(){this.uploader.cancelItem(this)}},remove:{value:function(){this.uploader.removeFromQueue(this)}},onBeforeUpload:{value:function(){}},onProgress:{value:function(e){}},onSuccess:{value:function(e,t,n){}},onError:{value:function(e,t,n){}},onCancel:{value:function(e,t,n){}},onComplete:{value:function(e,t,n){}},_onBeforeUpload:{value:function(){this.isReady=!0,this.isUploading=!0,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!1,this.isError=!1,this.progress=0,this.onBeforeUpload()}},_onProgress:{value:function(e){this.progress=e,this.onProgress(e)}},_onSuccess:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!0,this.isCancel=!1,this.isError=!1,this.progress=100,this.index=null,this.onSuccess(e,t,n)}},_onError:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!1,this.isCancel=!1,this.isError=!0,this.progress=0,this.index=null,this.onError(e,t,n)}},_onCancel:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!0,this.isError=!1,this.progress=0,this.index=null,this.onCancel(e,t,n)}},_onComplete:{value:function(e,t,n){this.onComplete(e,t,n),this.removeAfterUpload&&this.remove()}},_destroy:{value:function(){this._input&&this._input.remove(),this._form&&this._form.remove(),delete this._form,delete this._input}},_prepareToUploading:{value:function(){this.index=this.index||++this.uploader._nextIndex,this.isReady=!0}},_replaceNode:{value:function(t){var n=e(t.clone())(t.scope());n.prop("value",null),t.css("display","none"),t.after(n)}}}),n}();return n},e.exports.$inject=["$compile","FileLikeObject"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.extend);e.exports=function(){var e=function(){function e(t){o(this,e),s(this,t),this.uploader._directives[this.prop].push(this),this._saveLinks(),this.bind()}return i(e,{bind:{value:function(){for(var e in this.events){var t=this.events[e];this.element.bind(e,this[t])}}},unbind:{value:function(){for(var e in this.events)this.element.unbind(e,this.events[e])}},destroy:{value:function(){var e=this.uploader._directives[this.prop].indexOf(this);this.uploader._directives[this.prop].splice(e,1),this.unbind()}},_saveLinks:{value:function(){for(var e in this.events){var t=this.events[e];this[t]=this[t].bind(this)}}}}),e}();return e.prototype.events={},e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",change:"onChange"},prop:"select"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n),this.uploader.isHTML5||this.element.removeAttr("multiple"),this.element.prop("value",null)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},isEmptyAfterSelection:{value:function(){return!!this.element.attr("multiple")}},onChange:{value:function(){var e=this.uploader.isHTML5?this.element[0].files:this.element[0],t=this.getOptions(),n=this.getFilters();this.uploader.isHTML5||this.destroy(),this.uploader.addToQueue(e,t,n),this.isEmptyAfterSelection()&&(this.element.prop("value",null),this.element.replaceWith(this.element=this.element.clone(!0)))}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function c(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:c(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend),l=angular.forEach;e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",drop:"onDrop",dragover:"onDragOver",dragleave:"onDragLeave"},prop:"drop"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},onDrop:{value:function(e){var t=this._getTransfer(e);if(t){var n=this.getOptions(),r=this.getFilters();this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this),this.uploader.addToQueue(t.files,n,r)}}},onDragOver:{value:function(e){var t=this._getTransfer(e);this._haveFiles(t.types)&&(t.dropEffect="copy",this._preventAndStop(e),l(this.uploader._directives.over,this._addOverClass,this))}},onDragLeave:{value:function(e){e.currentTarget!==this.element[0]&&(this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this))}},_getTransfer:{value:function(e){return e.dataTransfer?e.dataTransfer:e.originalEvent.dataTransfer}},_preventAndStop:{value:function(e){e.preventDefault(),e.stopPropagation()}},_haveFiles:{value:function(e){return e?e.indexOf?-1!==e.indexOf("Files"):e.contains?e.contains("Files"):!1:!1}},_addOverClass:{value:function(e){e.addOverClass()}},_removeOverClass:{value:function(e){e.removeOverClass()}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy"},prop:"over",overClass:"nv-file-over"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{addOverClass:{value:function(){this.element.addClass(this.getOverClass())}},removeOverClass:{value:function(){this.element.removeClass(this.getOverClass())}},getOverClass:{value:function(){return this.overClass}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}},e.exports.$inject=["$parse","FileUploader","FileSelect"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');if(s.isHTML5){var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}}},e.exports.$inject=["$parse","FileUploader","FileDrop"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t){return{link:function(n,r,i){var o=n.$eval(i.uploader);if(!(o instanceof e))throw new TypeError('"Uploader" must be an instance of FileUploader');var s=new t({uploader:o,element:r});s.getOverClass=function(){return i.overClass||s.overClass}}}},e.exports.$inject=["FileUploader","FileOver"]}])});
+
+},{}],245:[function(require,module,exports){
+var moduleName = require('./src/angular-input-masks.js');
+
+module.exports = moduleName;
+
+},{"./src/angular-input-masks.js":249}],246:[function(require,module,exports){
+/**
+ * br-validations
+ * A library of validations applicable to several Brazilian data like I.E., CNPJ, CPF and others
+ * @version v0.2.4
+ * @link http://github.com/the-darc/br-validations
+ * @license MIT
+ */
+(function (root, factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD. Register as an anonymous module.
+		define([], factory);
+	} else if (typeof exports === 'object') {
+		// Node. Does not work with strict CommonJS, but
+		// only CommonJS-like environments that support module.exports,
+		// like Node.
+		module.exports = factory();
+	} else {
+		// Browser globals (root is window)
+		root.BrV = factory();
+	}
+}(this, function () {
+var CNPJ = {};
+
+CNPJ.validate = function(c) {
+	var b = [6,5,4,3,2,9,8,7,6,5,4,3,2];
+	c = c.replace(/[^\d]/g,'');
+
+	var r = /^(0{14}|1{14}|2{14}|3{14}|4{14}|5{14}|6{14}|7{14}|8{14}|9{14})$/;
+	if (!c || c.length !== 14 || r.test(c)) {
+		return false;
+	}
+	c = c.split('');
+
+	for (var i = 0, n = 0; i < 12; i++) {
+		n += c[i] * b[i+1];
+	}
+	n = 11 - n%11;
+	n = n >= 10 ? 0 : n;
+	if (parseInt(c[12]) !== n)  {
+		return false;
+	}
+
+	for (i = 0, n = 0; i <= 12; i++) {
+		n += c[i] * b[i];
+	}
+	n = 11 - n%11;
+	n = n >= 10 ? 0 : n;
+	if (parseInt(c[13]) !== n)  {
+		return false;
+	}
+	return true;
+};
+
+
+var CPF = {};
+
+CPF.validate = function(cpf) {
+	cpf = cpf.replace(/[^\d]+/g,'');
+	var r = /^(0{11}|1{11}|2{11}|3{11}|4{11}|5{11}|6{11}|7{11}|8{11}|9{11})$/;
+	if (!cpf || cpf.length !== 11 || r.test(cpf)) {
+		return false;
+	}
+	function validateDigit(digit) {
+		var add = 0;
+		var init = digit - 9;
+		for (var i = 0; i < 9; i ++) {
+			add += parseInt(cpf.charAt(i + init)) * (i+1);
+		}
+		return (add%11)%10 === parseInt(cpf.charAt(digit));
+	}
+	return validateDigit(9) && validateDigit(10);
+};
+
+var IE = function(uf) {
+	if (!(this instanceof IE)) {
+		return new IE(uf);
+	}
+
+	this.rules = IErules[uf] || [];
+	this.rule;
+	IE.prototype._defineRule = function(value) {
+		this.rule = undefined;
+		for (var r = 0; r < this.rules.length && this.rule === undefined; r++) {
+			var str = value.replace(/[^\d]/g,'');
+			var ruleCandidate = this.rules[r];
+			if (str.length === ruleCandidate.chars && (!ruleCandidate.match || ruleCandidate.match.test(value))) {
+				this.rule = ruleCandidate;
+			}
+		}
+		return !!this.rule;
+	};
+
+	IE.prototype.validate = function(value) {
+		if (!value || !this._defineRule(value)) {
+			return false;
+		}
+		return this.rule.validate(value);
+	};
+};
+
+var IErules = {};
+
+var algorithmSteps = {
+	handleStr: {
+		onlyNumbers: function(str) {
+			return str.replace(/[^\d]/g,'').split('');
+		},
+		mgSpec: function(str) {
+			var s = str.replace(/[^\d]/g,'');
+			s = s.substr(0,3)+'0'+s.substr(3, s.length);
+			return s.split('');
+		}
+	},
+	sum: {
+		normalSum: function(handledStr, pesos) {
+			var nums = handledStr;
+			var sum = 0;
+			for (var i = 0; i < pesos.length; i++) {
+				sum += parseInt(nums[i]) * pesos[i];
+			}
+			return sum;
+		},
+		individualSum: function(handledStr, pesos) {
+			var nums = handledStr;
+			var sum = 0;
+			for (var i = 0; i < pesos.length; i++) {
+				var mult = parseInt(nums[i]) * pesos[i];
+				sum += mult%10 + parseInt(mult/10);
+			}
+			return sum;
+		},
+		apSpec: function(handledStr, pesos) {
+			var sum = this.normalSum(handledStr, pesos);
+			var ref = handledStr.join('');
+			if (ref >= '030000010' && ref <= '030170009') {
+				return sum + 5;
+			}
+			if (ref >= '030170010' && ref <= '030190229') {
+				return sum + 9;
+			}
+			return sum;
+		}
+	},
+	rest: {
+		mod11: function(sum) {
+			return sum%11;
+		},
+		mod10: function(sum) {
+			return sum%10;
+		},
+		mod9: function(sum) {
+			return sum%9;
+		}
+	},
+	expectedDV: {
+		minusRestOf11: function(rest) {
+			return rest < 2 ? 0 : 11 - rest;
+		},
+		minusRestOf11v2: function(rest) {
+			return rest < 2 ? 11 - rest - 10 : 11 - rest;
+		},
+		minusRestOf10: function(rest) {
+			return rest < 1 ? 0 : 10 - rest;
+		},
+		mod10: function(rest) {
+			return rest%10;
+		},
+		goSpec: function(rest, handledStr) {
+			var ref = handledStr.join('');
+			if (rest === 1) {
+				return ref >= '101031050' && ref <= '101199979' ? 1 : 0;
+			}
+			return rest === 0 ? 0 : 11 - rest;
+		},
+		apSpec: function(rest, handledStr) {
+			var ref = handledStr.join('');
+			if (rest === 0) {
+				return ref >= '030170010' && ref <= '030190229' ? 1 : 0;
+			}
+			return rest === 1 ? 0 : 11 - rest;
+		},
+		voidFn: function(rest) {
+			return rest;
+		}
+	}
+};
+
+
+/**
+ * options {
+ *     pesos: Array of values used to operate in sum step
+ *     dvPos: Position of the DV to validate considering the handledStr
+ *     algorithmSteps: The four DV's validation algorithm steps names
+ * }
+ */
+function validateDV(value, options) {
+	var steps = options.algorithmSteps;
+
+	// Step 01: Handle String
+	var handledStr = algorithmSteps.handleStr[steps[0]](value);
+
+	// Step 02: Sum chars
+	var sum = algorithmSteps.sum[steps[1]](handledStr, options.pesos);
+
+	// Step 03: Rest calculation
+	var rest = algorithmSteps.rest[steps[2]](sum);
+
+	// Fixed Step: Get current DV
+	var currentDV = parseInt(handledStr[options.dvpos]);
+
+	// Step 04: Expected DV calculation
+	var expectedDV = algorithmSteps.expectedDV[steps[3]](rest, handledStr);
+
+	// Fixed step: DV verification
+	return currentDV === expectedDV;
+}
+
+function validateIE(value, rule) {
+	if (rule.match && !rule.match.test(value)) {
+		return false;
+	}
+	for (var i = 0; i < rule.dvs.length; i++) {
+		// console.log('>> >> dv'+i);
+		if (!validateDV(value, rule.dvs[i])) {
+			return false;
+		}
+	}
+	return true;
+}
+
+IErules.PE = [{
+	//mask: new StringMask('0000000-00'),
+	chars: 9,
+	dvs: [{
+		dvpos: 7,
+		pesos: [8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	},{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+},{
+	// mask: new StringMask('00.0.000.0000000-0'),
+	chars: 14,
+	pesos: [[1,2,3,4,5,9,8,7,6,5,4,3,2]],
+	dvs: [{
+		dvpos: 13,
+		pesos: [5,4,3,2,1,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11v2']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.RS = [{
+	// mask: new StringMask('000/0000000'),
+	chars: 10,
+	dvs: [{
+		dvpos: 9,
+		pesos: [2,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.AC = [{
+	// mask: new StringMask('00.000.000/000-00'),
+	chars: 13,
+	match: /^01/,
+	dvs: [{
+		dvpos: 11,
+		pesos: [4,3,2,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	},{
+		dvpos: 12,
+		pesos: [5,4,3,2,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.MG = [{
+	// mask: new StringMask('000.000.000/0000'),
+	chars: 13,
+	dvs: [{
+		dvpos: 12,
+		pesos: [1,2,1,2,1,2,1,2,1,2,1,2],
+		algorithmSteps: ['mgSpec', 'individualSum', 'mod10', 'minusRestOf10']
+	},{
+		dvpos: 12,
+		pesos: [3,2,11,10,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.SP = [{
+	// mask: new StringMask('000.000.000.000'),
+	chars: 12,
+	match: /^[0-9]/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [1,3,4,5,6,7,8,10],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'mod10']
+	},{
+		dvpos: 11,
+		pesos: [3,2,10,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'mod10']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+},{
+	// mask: new StringMask('P-00000000.0/000')
+	chars: 12,
+	match: /^P/i,
+	dvs: [{
+		dvpos: 8,
+		pesos: [1,3,4,5,6,7,8,10],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'mod10']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.DF = [{
+	// mask: new StringMask('00000000000-00'),
+	chars: 13,
+	dvs: [{
+		dvpos: 11,
+		pesos: [4,3,2,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	},{
+		dvpos: 12,
+		pesos: [5,4,3,2,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.ES = [{
+	// mask: new StringMask('000.000.00-0')
+	chars: 9,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.BA = [{
+	// mask: new StringMask('000000-00')
+	chars: 8,
+	match: /^[0123458]/,
+	dvs: [{
+		dvpos: 7,
+		pesos: [7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod10', 'minusRestOf10']
+	},{
+		dvpos: 6,
+		pesos: [8,7,6,5,4,3,0,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod10', 'minusRestOf10']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+},{
+	chars: 8,
+	match: /^[679]/,
+	dvs: [{
+		dvpos: 7,
+		pesos: [7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	},{
+		dvpos: 6,
+		pesos: [8,7,6,5,4,3,0,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+},{
+	// mask: new StringMask('0000000-00')
+	chars: 9,
+	match: /^[0-9][0123458]/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod10', 'minusRestOf10']
+	},{
+		dvpos: 7,
+		pesos: [9,8,7,6,5,4,3,0,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod10', 'minusRestOf10']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+},{
+	chars: 9,
+	match: /^[0-9][679]/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	},{
+		dvpos: 7,
+		pesos: [9,8,7,6,5,4,3,0,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.AM = [{
+	//mask: new StringMask('00.000.000-0')
+	chars: 9,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.RN = [{
+	// {mask: new StringMask('00.000.000-0')
+	chars: 9,
+	match: /^20/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+},{
+	// {mask: new StringMask('00.0.000.000-0'), chars: 10}
+	chars: 10,
+	match: /^20/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [10,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.RO = [{
+	// mask: new StringMask('0000000000000-0')
+	chars: 14,
+	dvs: [{
+		dvpos: 13,
+		pesos: [6,5,4,3,2,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.PR = [{
+	// mask: new StringMask('00000000-00')
+	chars: 10,
+	dvs: [{
+		dvpos: 8,
+		pesos: [3,2,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	},{
+		dvpos: 9,
+		pesos: [4,3,2,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.SC = [{
+	// {mask: new StringMask('000.000.000'), uf: 'SANTA CATARINA'}
+	chars: 9,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.RJ = [{
+	// {mask: new StringMask('00.000.00-0'), uf: 'RIO DE JANEIRO'}
+	chars: 8,
+	dvs: [{
+		dvpos: 7,
+		pesos: [2,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.PA = [{
+	// {mask: new StringMask('00-000000-0')
+	chars: 9,
+	match: /^15/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.SE = [{
+	// {mask: new StringMask('00000000-0')
+	chars: 9,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.PB = [{
+	// {mask: new StringMask('00000000-0')
+	chars: 9,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.CE = [{
+	// {mask: new StringMask('00000000-0')
+	chars: 9,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.PI = [{
+	// {mask: new StringMask('000000000')
+	chars: 9,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.MA = [{
+	// {mask: new StringMask('000000000')
+	chars: 9,
+	match: /^12/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.MT = [{
+	// {mask: new StringMask('0000000000-0')
+	chars: 11,
+	dvs: [{
+		dvpos: 10,
+		pesos: [3,2,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.MS = [{
+	// {mask: new StringMask('000000000')
+	chars: 9,
+	match: /^28/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.TO = [{
+	// {mask: new StringMask('00000000000'),
+	chars: 11,
+	match: /^[0-9]{2}((0[123])|(99))/,
+	dvs: [{
+		dvpos: 10,
+		pesos: [9,8,0,0,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.AL = [{
+	// {mask: new StringMask('000000000')
+	chars: 9,
+	match: /^24[03578]/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.RR = [{
+	// {mask: new StringMask('00000000-0')
+	chars: 9,
+	match: /^24/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [1,2,3,4,5,6,7,8],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod9', 'voidFn']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.GO = [{
+	// {mask: new StringMask('00.000.000-0')
+	chars: 9,
+	match: /^1[015]/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'goSpec']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.AP = [{
+	// {mask: new StringMask('000000000')
+	chars: 9,
+	match: /^03/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'apSpec', 'mod11', 'apSpec']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+	return {
+		ie: IE,
+		cpf: CPF,
+		cnpj: CNPJ
+	};
+}));
+},{}],247:[function(require,module,exports){
 //! moment.js
 //! version : 2.12.0
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -26833,5956 +36752,7 @@ module.exports = 'ngAnimate';
     return _moment;
 
 }));
-},{}],236:[function(require,module,exports){
-/*globals define, jQuery, module, require */
-/*jslint vars:true */
-
-/**
- * @license angular-bootstrap-datetimepicker  version: 0.4.0
- * Copyright 2015 Knight Rider Consulting, Inc. http://www.knightrider.com
- * License: MIT
- */
-
-/**
- *
- *    @author        Dale "Ducky" Lotts
- *    @since        2013-Jul-8
- */
-
-(function (factory) {
-  'use strict';
-  /* istanbul ignore if */
-  if (typeof define === 'function' && /* istanbul ignore next */ define.amd) {
-    define(['angular', 'moment'], factory); // AMD
-    /* istanbul ignore next */
-  } else if (typeof exports === 'object') {
-    module.exports = factory(require('angular'), require('moment')); // CommonJS
-  } else {
-    factory(window.angular, window.moment); // Browser global
-  }
-}(function (angular, moment) {
-  'use strict';
-  angular.module('ui.bootstrap.datetimepicker', [])
-    .constant('dateTimePickerConfig', {
-      configureOn: null,
-      dropdownSelector: null,
-      minuteStep: 5,
-      minView: 'minute',
-      renderOn: null,
-      startView: 'day'
-    })
-    .directive('datetimepicker', ['$log', 'dateTimePickerConfig', function datetimepickerDirective($log, defaultConfig) {
-
-      function DateObject() {
-
-        var tempDate = new Date();
-        var localOffset = tempDate.getTimezoneOffset() * 60000;
-        this.utcDateValue = tempDate.getTime();
-        this.selectable = true;
-
-        this.localDateValue = function () {
-          return this.utcDateValue + localOffset;
-        };
-
-        var validProperties = ['utcDateValue', 'localDateValue', 'display', 'active', 'selectable', 'past', 'future'];
-
-        for (var prop in arguments[0]) {
-          /* istanbul ignore else */
-          //noinspection JSUnfilteredForInLoop
-          if (validProperties.indexOf(prop) >= 0) {
-            //noinspection JSUnfilteredForInLoop
-            this[prop] = arguments[0][prop];
-          }
-        }
-      }
-
-      var validateConfiguration = function validateConfiguration(configuration) {
-
-        var validOptions = [
-          'configureOn',
-          'dropdownSelector',
-          'minuteStep',
-          'minView',
-          'renderOn',
-          'startView'
-        ];
-
-        for (var prop in configuration) {
-          //noinspection JSUnfilteredForInLoop
-          if (validOptions.indexOf(prop) < 0) {
-            throw ('invalid option: ' + prop);
-          }
-        }
-
-        // Order of the elements in the validViews array is significant.
-        var validViews = ['minute', 'hour', 'day', 'month', 'year'];
-
-        if (validViews.indexOf(configuration.startView) < 0) {
-          throw ('invalid startView value: ' + configuration.startView);
-        }
-
-        if (validViews.indexOf(configuration.minView) < 0) {
-          throw ('invalid minView value: ' + configuration.minView);
-        }
-
-        if (validViews.indexOf(configuration.minView) > validViews.indexOf(configuration.startView)) {
-          throw ('startView must be greater than minView');
-        }
-
-        if (!angular.isNumber(configuration.minuteStep)) {
-          throw ('minuteStep must be numeric');
-        }
-        if (configuration.minuteStep <= 0 || configuration.minuteStep >= 60) {
-          throw ('minuteStep must be greater than zero and less than 60');
-        }
-        if (configuration.configureOn !== null && !angular.isString(configuration.configureOn)) {
-          throw ('configureOn must be a string');
-        }
-        if (configuration.configureOn !== null && configuration.configureOn.length < 1) {
-          throw ('configureOn must not be an empty string');
-        }
-        if (configuration.renderOn !== null && !angular.isString(configuration.renderOn)) {
-          throw ('renderOn must be a string');
-        }
-        if (configuration.renderOn !== null && configuration.renderOn.length < 1) {
-          throw ('renderOn must not be an empty string');
-        }
-        if (configuration.dropdownSelector !== null && !angular.isString(configuration.dropdownSelector)) {
-          throw ('dropdownSelector must be a string');
-        }
-
-        /* istanbul ignore next */
-        if (configuration.dropdownSelector !== null && ((typeof jQuery === 'undefined') || (typeof jQuery().dropdown !== 'function'))) {
-          $log.error('Please DO NOT specify the dropdownSelector option unless you are using jQuery AND Bootstrap.js. ' +
-            'Please include jQuery AND Bootstrap.js, or write code to close the dropdown in the on-set-time callback. \n\n' +
-            'The dropdownSelector configuration option is being removed because it will not function properly.');
-          delete configuration.dropdownSelector;
-        }
-      };
-
-      return {
-        restrict: 'E',
-        require: 'ngModel',
-        template: '<div class="datetimepicker table-responsive">' +
-        '<table class="table table-condensed  {{ data.currentView }}-view">' +
-        '   <thead>' +
-        '       <tr>' +
-        '           <th class="left" data-ng-click="changeView(data.currentView, data.leftDate, $event)" data-ng-show="data.leftDate.selectable"><i class="glyphicon glyphicon-arrow-left"/></th>' +
-        '           <th class="switch" colspan="5" data-ng-show="data.previousViewDate.selectable" data-ng-click="changeView(data.previousView, data.previousViewDate, $event)">{{ data.previousViewDate.display }}</th>' +
-        '           <th class="right" data-ng-click="changeView(data.currentView, data.rightDate, $event)" data-ng-show="data.rightDate.selectable"><i class="glyphicon glyphicon-arrow-right"/></th>' +
-        '       </tr>' +
-        '       <tr>' +
-        '           <th class="dow" data-ng-repeat="day in data.dayNames" >{{ day }}</th>' +
-        '       </tr>' +
-        '   </thead>' +
-        '   <tbody>' +
-        '       <tr data-ng-if="data.currentView !== \'day\'" >' +
-        '           <td colspan="7" >' +
-        '              <span    class="{{ data.currentView }}" ' +
-        '                       data-ng-repeat="dateObject in data.dates"  ' +
-        '                       data-ng-class="{active: dateObject.active, past: dateObject.past, future: dateObject.future, disabled: !dateObject.selectable}" ' +
-        '                       data-ng-click="changeView(data.nextView, dateObject, $event)">{{ dateObject.display }}</span> ' +
-        '           </td>' +
-        '       </tr>' +
-        '       <tr data-ng-if="data.currentView === \'day\'" data-ng-repeat="week in data.weeks">' +
-        '           <td data-ng-repeat="dateObject in week.dates" ' +
-        '               data-ng-click="changeView(data.nextView, dateObject, $event)"' +
-        '               class="day" ' +
-        '               data-ng-class="{active: dateObject.active, past: dateObject.past, future: dateObject.future, disabled: !dateObject.selectable}" >{{ dateObject.display }}</td>' +
-        '       </tr>' +
-        '   </tbody>' +
-        '</table></div>',
-        scope: {
-          onSetTime: '&',
-          beforeRender: '&'
-        },
-        replace: true,
-        link: function link(scope, element, attrs, ngModelController) {
-
-          var configure = function configure() {
-            var directiveConfig = {};
-
-            if (attrs.datetimepickerConfig) {
-              directiveConfig = scope.$parent.$eval(attrs.datetimepickerConfig);
-            }
-
-            var configuration = {};
-
-            angular.extend(configuration, defaultConfig, directiveConfig);
-
-            validateConfiguration(configuration);
-
-            return configuration;
-          };
-
-          var configuration = configure();
-
-
-          var startOfDecade = function startOfDecade(unixDate) {
-            var startYear = (parseInt(moment.utc(unixDate).year() / 10, 10) * 10);
-            return moment.utc(unixDate).year(startYear).startOf('year');
-          };
-
-          var dataFactory = {
-            year: function year(unixDate) {
-              var selectedDate = moment.utc(unixDate).startOf('year');
-              // View starts one year before the decade starts and ends one year after the decade ends
-              // i.e. passing in a date of 1/1/2013 will give a range of 2009 to 2020
-              // Truncate the last digit from the current year and subtract 1 to get the start of the decade
-              var startDecade = (parseInt(selectedDate.year() / 10, 10) * 10);
-              var startDate = moment.utc(startOfDecade(unixDate)).subtract(1, 'year').startOf('year');
-
-              var activeYear = ngModelController.$modelValue ? moment(ngModelController.$modelValue).year() : 0;
-
-              var result = {
-                'currentView': 'year',
-                'nextView': configuration.minView === 'year' ? 'setTime' : 'month',
-                'previousViewDate': new DateObject({
-                  utcDateValue: null,
-                  display: startDecade + '-' + (startDecade + 9)
-                }),
-                'leftDate': new DateObject({utcDateValue: moment.utc(startDate).subtract(9, 'year').valueOf()}),
-                'rightDate': new DateObject({utcDateValue: moment.utc(startDate).add(11, 'year').valueOf()}),
-                'dates': []
-              };
-
-              for (var i = 0; i < 12; i += 1) {
-                var yearMoment = moment.utc(startDate).add(i, 'years');
-                var dateValue = {
-                  'utcDateValue': yearMoment.valueOf(),
-                  'display': yearMoment.format('YYYY'),
-                  'past': yearMoment.year() < startDecade,
-                  'future': yearMoment.year() > startDecade + 9,
-                  'active': yearMoment.year() === activeYear
-                };
-
-                result.dates.push(new DateObject(dateValue));
-              }
-
-              return result;
-            },
-
-            month: function month(unixDate) {
-
-              var startDate = moment.utc(unixDate).startOf('year');
-              var previousViewDate = startOfDecade(unixDate);
-              var activeDate = ngModelController.$modelValue ? moment(ngModelController.$modelValue).format('YYYY-MMM') : 0;
-
-              var result = {
-                'previousView': 'year',
-                'currentView': 'month',
-                'nextView': configuration.minView === 'month' ? 'setTime' : 'day',
-                'previousViewDate': new DateObject({
-                  utcDateValue: previousViewDate.valueOf(),
-                  display: startDate.format('YYYY')
-                }),
-                'leftDate': new DateObject({utcDateValue: moment.utc(startDate).subtract(1, 'year').valueOf()}),
-                'rightDate': new DateObject({utcDateValue: moment.utc(startDate).add(1, 'year').valueOf()}),
-                'dates': []
-              };
-
-              for (var i = 0; i < 12; i += 1) {
-                var monthMoment = moment.utc(startDate).add(i, 'months');
-                var dateValue = {
-                  'utcDateValue': monthMoment.valueOf(),
-                  'display': monthMoment.format('MMM'),
-                  'active': monthMoment.format('YYYY-MMM') === activeDate
-                };
-
-                result.dates.push(new DateObject(dateValue));
-              }
-
-              return result;
-            },
-
-            day: function day(unixDate) {
-
-              var selectedDate = moment.utc(unixDate);
-              var startOfMonth = moment.utc(selectedDate).startOf('month');
-              var previousViewDate = moment.utc(selectedDate).startOf('year');
-              var endOfMonth = moment.utc(selectedDate).endOf('month');
-
-              var startDate = moment.utc(startOfMonth).subtract(Math.abs(startOfMonth.weekday()), 'days');
-
-              var activeDate = ngModelController.$modelValue ? moment(ngModelController.$modelValue).format('YYYY-MMM-DD') : '';
-
-              var result = {
-                'previousView': 'month',
-                'currentView': 'day',
-                'nextView': configuration.minView === 'day' ? 'setTime' : 'hour',
-                'previousViewDate': new DateObject({
-                  utcDateValue: previousViewDate.valueOf(),
-                  display: startOfMonth.format('YYYY-MMM')
-                }),
-                'leftDate': new DateObject({utcDateValue: moment.utc(startOfMonth).subtract(1, 'months').valueOf()}),
-                'rightDate': new DateObject({utcDateValue: moment.utc(startOfMonth).add(1, 'months').valueOf()}),
-                'dayNames': [],
-                'weeks': []
-              };
-
-
-              for (var dayNumber = 0; dayNumber < 7; dayNumber += 1) {
-                result.dayNames.push(moment.utc().weekday(dayNumber).format('dd'));
-              }
-
-              for (var i = 0; i < 6; i += 1) {
-                var week = {dates: []};
-                for (var j = 0; j < 7; j += 1) {
-                  var monthMoment = moment.utc(startDate).add((i * 7) + j, 'days');
-                  var dateValue = {
-                    'utcDateValue': monthMoment.valueOf(),
-                    'display': monthMoment.format('D'),
-                    'active': monthMoment.format('YYYY-MMM-DD') === activeDate,
-                    'past': monthMoment.isBefore(startOfMonth),
-                    'future': monthMoment.isAfter(endOfMonth)
-                  };
-                  week.dates.push(new DateObject(dateValue));
-                }
-                result.weeks.push(week);
-              }
-
-              return result;
-            },
-
-            hour: function hour(unixDate) {
-              var selectedDate = moment.utc(unixDate).startOf('day');
-              var previousViewDate = moment.utc(selectedDate).startOf('month');
-
-              var activeFormat = ngModelController.$modelValue ? moment(ngModelController.$modelValue).format('YYYY-MM-DD H') : '';
-
-              var result = {
-                'previousView': 'day',
-                'currentView': 'hour',
-                'nextView': configuration.minView === 'hour' ? 'setTime' : 'minute',
-                'previousViewDate': new DateObject({
-                  utcDateValue: previousViewDate.valueOf(),
-                  display: selectedDate.format('ll')
-                }),
-                'leftDate': new DateObject({utcDateValue: moment.utc(selectedDate).subtract(1, 'days').valueOf()}),
-                'rightDate': new DateObject({utcDateValue: moment.utc(selectedDate).add(1, 'days').valueOf()}),
-                'dates': []
-              };
-
-              for (var i = 0; i < 24; i += 1) {
-                var hourMoment = moment.utc(selectedDate).add(i, 'hours');
-                var dateValue = {
-                  'utcDateValue': hourMoment.valueOf(),
-                  'display': hourMoment.format('LT'),
-                  'active': hourMoment.format('YYYY-MM-DD H') === activeFormat
-                };
-
-                result.dates.push(new DateObject(dateValue));
-              }
-
-              return result;
-            },
-
-            minute: function minute(unixDate) {
-              var selectedDate = moment.utc(unixDate).startOf('hour');
-              var previousViewDate = moment.utc(selectedDate).startOf('day');
-              var activeFormat = ngModelController.$modelValue ? moment(ngModelController.$modelValue).format('YYYY-MM-DD H:mm') : '';
-
-              var result = {
-                'previousView': 'hour',
-                'currentView': 'minute',
-                'nextView': 'setTime',
-                'previousViewDate': new DateObject({
-                  utcDateValue: previousViewDate.valueOf(),
-                  display: selectedDate.format('lll')
-                }),
-                'leftDate': new DateObject({utcDateValue: moment.utc(selectedDate).subtract(1, 'hours').valueOf()}),
-                'rightDate': new DateObject({utcDateValue: moment.utc(selectedDate).add(1, 'hours').valueOf()}),
-                'dates': []
-              };
-
-              var limit = 60 / configuration.minuteStep;
-
-              for (var i = 0; i < limit; i += 1) {
-                var hourMoment = moment.utc(selectedDate).add(i * configuration.minuteStep, 'minute');
-                var dateValue = {
-                  'utcDateValue': hourMoment.valueOf(),
-                  'display': hourMoment.format('LT'),
-                  'active': hourMoment.format('YYYY-MM-DD H:mm') === activeFormat
-                };
-
-                result.dates.push(new DateObject(dateValue));
-              }
-
-              return result;
-            },
-
-            setTime: function setTime(unixDate) {
-              var tempDate = new Date(unixDate);
-              var newDate = new Date(tempDate.getUTCFullYear(), tempDate.getUTCMonth(), tempDate.getUTCDate(), tempDate.getUTCHours(), tempDate.getUTCMinutes(), tempDate.getUTCSeconds(), tempDate.getUTCMilliseconds());
-
-              var oldDate = ngModelController.$modelValue;
-              ngModelController.$setViewValue(newDate);
-
-              if (configuration.dropdownSelector) {
-                jQuery(configuration.dropdownSelector).dropdown('toggle');
-              }
-
-              scope.onSetTime({newDate: newDate, oldDate: oldDate});
-
-              return dataFactory[configuration.startView](unixDate);
-            }
-          };
-
-          var getUTCTime = function getUTCTime(modelValue) {
-            var tempDate = (modelValue ? moment(modelValue).toDate() : new Date());
-            return tempDate.getTime() - (tempDate.getTimezoneOffset() * 60000);
-          };
-
-          scope.changeView = function changeView(viewName, dateObject, event) {
-            if (event) {
-              event.stopPropagation();
-              event.preventDefault();
-            }
-
-            if (viewName && (dateObject.utcDateValue > -Infinity) && dateObject.selectable && dataFactory[viewName]) {
-              var result = dataFactory[viewName](dateObject.utcDateValue);
-
-              var weekDates = [];
-              if (result.weeks) {
-                for (var i = 0; i < result.weeks.length; i += 1) {
-                  var week = result.weeks[i];
-                  for (var j = 0; j < week.dates.length; j += 1) {
-                    var weekDate = week.dates[j];
-                    weekDates.push(weekDate);
-                  }
-                }
-              }
-
-              scope.beforeRender({
-                $view: result.currentView,
-                $dates: result.dates || weekDates,
-                $leftDate: result.leftDate,
-                $upDate: result.previousViewDate,
-                $rightDate: result.rightDate
-              });
-
-              scope.data = result;
-            }
-          };
-
-          ngModelController.$render = function $render() {
-            scope.changeView(configuration.startView, new DateObject({utcDateValue: getUTCTime(ngModelController.$viewValue)}));
-          };
-
-          if (configuration.configureOn) {
-            scope.$on(configuration.configureOn, function () {
-              configuration = configure();
-              ngModelController.$render();
-            });
-          }
-          if (configuration.renderOn) {
-            scope.$on(configuration.renderOn, ngModelController.$render);
-          }
-        }
-      };
-    }]);
-}));
-
-},{"angular":279,"moment":235}],237:[function(require,module,exports){
-(function (factory) {
-  'use strict';
-  if (typeof exports === 'object') {
-    // Node/CommonJS
-    module.exports = factory(
-      typeof angular !== 'undefined' ? angular : require('angular'),
-      typeof Chart !== 'undefined' ? Chart : require('chart.js'));
-  }  else if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['angular', 'chart'], factory);
-  } else {
-    // Browser globals
-    factory(angular, Chart);
-  }
-}(function (angular, Chart) {
-  'use strict';
-
-  Chart.defaults.global.responsive = true;
-  Chart.defaults.global.multiTooltipTemplate = '<%if (datasetLabel){%><%=datasetLabel%>: <%}%><%= value %>';
-
-  Chart.defaults.global.colours = [
-    '#97BBCD', // blue
-    '#DCDCDC', // light grey
-    '#F7464A', // red
-    '#46BFBD', // green
-    '#FDB45C', // yellow
-    '#949FB1', // grey
-    '#4D5360'  // dark grey
-  ];
-
-  var usingExcanvas = typeof window.G_vmlCanvasManager === 'object' &&
-    window.G_vmlCanvasManager !== null &&
-    typeof window.G_vmlCanvasManager.initElement === 'function';
-
-  if (usingExcanvas) Chart.defaults.global.animation = false;
-
-  return angular.module('chart.js', [])
-    .provider('ChartJs', ChartJsProvider)
-    .factory('ChartJsFactory', ['ChartJs', '$timeout', ChartJsFactory])
-    .directive('chartBase', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory(); }])
-    .directive('chartLine', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory('Line'); }])
-    .directive('chartBar', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory('Bar'); }])
-    .directive('chartRadar', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory('Radar'); }])
-    .directive('chartDoughnut', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory('Doughnut'); }])
-    .directive('chartPie', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory('Pie'); }])
-    .directive('chartPolarArea', ['ChartJsFactory', function (ChartJsFactory) { return new ChartJsFactory('PolarArea'); }]);
-
-  /**
-   * Wrapper for chart.js
-   * Allows configuring chart js using the provider
-   *
-   * angular.module('myModule', ['chart.js']).config(function(ChartJsProvider) {
-   *   ChartJsProvider.setOptions({ responsive: true });
-   *   ChartJsProvider.setOptions('Line', { responsive: false });
-   * })))
-   */
-  function ChartJsProvider () {
-    var options = {};
-    var ChartJs = {
-      Chart: Chart,
-      getOptions: function (type) {
-        var typeOptions = type && options[type] || {};
-        return angular.extend({}, options, typeOptions);
-      }
-    };
-
-    /**
-     * Allow to set global options during configuration
-     */
-    this.setOptions = function (type, customOptions) {
-      // If no type was specified set option for the global object
-      if (! customOptions) {
-        customOptions = type;
-        options = angular.extend(options, customOptions);
-        return;
-      }
-      // Set options for the specific chart
-      options[type] = angular.extend(options[type] || {}, customOptions);
-    };
-
-    this.$get = function () {
-      return ChartJs;
-    };
-  }
-
-  function ChartJsFactory (ChartJs, $timeout) {
-    return function chart (type) {
-      return {
-        restrict: 'CA',
-        scope: {
-          data: '=?',
-          labels: '=?',
-          options: '=?',
-          series: '=?',
-          colours: '=?',
-          getColour: '=?',
-          chartType: '=',
-          legend: '@',
-          click: '=?',
-          hover: '=?',
-
-          chartData: '=?',
-          chartLabels: '=?',
-          chartOptions: '=?',
-          chartSeries: '=?',
-          chartColours: '=?',
-          chartLegend: '@',
-          chartClick: '=?',
-          chartHover: '=?'
-        },
-        link: function (scope, elem/*, attrs */) {
-          var chart, container = document.createElement('div');
-          container.className = 'chart-container';
-          elem.replaceWith(container);
-          container.appendChild(elem[0]);
-
-          if (usingExcanvas) window.G_vmlCanvasManager.initElement(elem[0]);
-
-          ['data', 'labels', 'options', 'series', 'colours', 'legend', 'click', 'hover'].forEach(deprecated);
-          function aliasVar (fromName, toName) {
-            scope.$watch(fromName, function (newVal) {
-              if (typeof newVal === 'undefined') return;
-              scope[toName] = newVal;
-            });
-          }
-          /* provide backward compatibility to "old" directive names, by
-           * having an alias point from the new names to the old names. */
-          aliasVar('chartData', 'data');
-          aliasVar('chartLabels', 'labels');
-          aliasVar('chartOptions', 'options');
-          aliasVar('chartSeries', 'series');
-          aliasVar('chartColours', 'colours');
-          aliasVar('chartLegend', 'legend');
-          aliasVar('chartClick', 'click');
-          aliasVar('chartHover', 'hover');
-
-          // Order of setting "watch" matter
-
-          scope.$watch('data', function (newVal, oldVal) {
-            if (! newVal || ! newVal.length || (Array.isArray(newVal[0]) && ! newVal[0].length)) return;
-            var chartType = type || scope.chartType;
-            if (! chartType) return;
-
-            if (chart) {
-              if (canUpdateChart(newVal, oldVal)) return updateChart(chart, newVal, scope, elem);
-              chart.destroy();
-            }
-
-            createChart(chartType);
-          }, true);
-
-          scope.$watch('series', resetChart, true);
-          scope.$watch('labels', resetChart, true);
-          scope.$watch('options', resetChart, true);
-          scope.$watch('colours', resetChart, true);
-
-          scope.$watch('chartType', function (newVal, oldVal) {
-            if (isEmpty(newVal)) return;
-            if (angular.equals(newVal, oldVal)) return;
-            if (chart) chart.destroy();
-            createChart(newVal);
-          });
-
-          scope.$on('$destroy', function () {
-            if (chart) chart.destroy();
-          });
-
-          function resetChart (newVal, oldVal) {
-            if (isEmpty(newVal)) return;
-            if (angular.equals(newVal, oldVal)) return;
-            var chartType = type || scope.chartType;
-            if (! chartType) return;
-
-            // chart.update() doesn't work for series and labels
-            // so we have to re-create the chart entirely
-            if (chart) chart.destroy();
-
-            createChart(chartType);
-          }
-
-          function createChart (type) {
-            if (isResponsive(type, scope) && elem[0].clientHeight === 0 && container.clientHeight === 0) {
-              return $timeout(function () {
-                createChart(type);
-              }, 50, false);
-            }
-            if (! scope.data || ! scope.data.length) return;
-            scope.getColour = typeof scope.getColour === 'function' ? scope.getColour : getRandomColour;
-            scope.colours = getColours(type, scope);
-            var cvs = elem[0], ctx = cvs.getContext('2d');
-            var data = Array.isArray(scope.data[0]) ?
-              getDataSets(scope.labels, scope.data, scope.series || [], scope.colours) :
-              getData(scope.labels, scope.data, scope.colours);
-            var options = angular.extend({}, ChartJs.getOptions(type), scope.options);
-            chart = new ChartJs.Chart(ctx)[type](data, options);
-            scope.$emit('create', chart);
-
-            // Bind events
-            cvs.onclick = scope.click ? getEventHandler(scope, chart, 'click', false) : angular.noop;
-            cvs.onmousemove = scope.hover ? getEventHandler(scope, chart, 'hover', true) : angular.noop;
-
-            if (scope.legend && scope.legend !== 'false') setLegend(elem, chart);
-          }
-
-          function deprecated (attr) {
-            if (typeof console !== 'undefined' && ChartJs.getOptions().env !== 'test') {
-              var warn = typeof console.warn === 'function' ? console.warn : console.log;
-              if (!! scope[attr]) {
-                warn.call(console, '"%s" is deprecated and will be removed in a future version. ' +
-                  'Please use "chart-%s" instead.', attr, attr);
-              }
-            }
-          }
-        }
-      };
-    };
-
-    function canUpdateChart (newVal, oldVal) {
-      if (newVal && oldVal && newVal.length && oldVal.length) {
-        return Array.isArray(newVal[0]) ?
-        newVal.length === oldVal.length && newVal.every(function (element, index) {
-          return element.length === oldVal[index].length; }) :
-          oldVal.reduce(sum, 0) > 0 ? newVal.length === oldVal.length : false;
-      }
-      return false;
-    }
-
-    function sum (carry, val) {
-      return carry + val;
-    }
-
-    function getEventHandler (scope, chart, action, triggerOnlyOnChange) {
-      var lastState = null;
-      return function (evt) {
-        var atEvent = chart.getPointsAtEvent || chart.getBarsAtEvent || chart.getSegmentsAtEvent;
-        if (atEvent) {
-          var activePoints = atEvent.call(chart, evt);
-          if (triggerOnlyOnChange === false || angular.equals(lastState, activePoints) === false) {
-            lastState = activePoints;
-            scope[action](activePoints, evt);
-            scope.$apply();
-          }
-        }
-      };
-    }
-
-    function getColours (type, scope) {
-      var colours = angular.copy(scope.colours ||
-        ChartJs.getOptions(type).colours ||
-        Chart.defaults.global.colours
-      );
-      while (colours.length < scope.data.length) {
-        colours.push(scope.getColour());
-      }
-      return colours.map(convertColour);
-    }
-
-    function convertColour (colour) {
-      if (typeof colour === 'object' && colour !== null) return colour;
-      if (typeof colour === 'string' && colour[0] === '#') return getColour(hexToRgb(colour.substr(1)));
-      return getRandomColour();
-    }
-
-    function getRandomColour () {
-      var colour = [getRandomInt(0, 255), getRandomInt(0, 255), getRandomInt(0, 255)];
-      return getColour(colour);
-    }
-
-    function getColour (colour) {
-      return {
-        fillColor: rgba(colour, 0.2),
-        strokeColor: rgba(colour, 1),
-        pointColor: rgba(colour, 1),
-        pointStrokeColor: '#fff',
-        pointHighlightFill: '#fff',
-        pointHighlightStroke: rgba(colour, 0.8)
-      };
-    }
-
-    function getRandomInt (min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    function rgba (colour, alpha) {
-      if (usingExcanvas) {
-        // rgba not supported by IE8
-        return 'rgb(' + colour.join(',') + ')';
-      } else {
-        return 'rgba(' + colour.concat(alpha).join(',') + ')';
-      }
-    }
-
-    // Credit: http://stackoverflow.com/a/11508164/1190235
-    function hexToRgb (hex) {
-      var bigint = parseInt(hex, 16),
-        r = (bigint >> 16) & 255,
-        g = (bigint >> 8) & 255,
-        b = bigint & 255;
-
-      return [r, g, b];
-    }
-
-    function getDataSets (labels, data, series, colours) {
-      return {
-        labels: labels,
-        datasets: data.map(function (item, i) {
-          return angular.extend({}, colours[i], {
-            label: series[i],
-            data: item
-          });
-        })
-      };
-    }
-
-    function getData (labels, data, colours) {
-      return labels.map(function (label, i) {
-        return angular.extend({}, colours[i], {
-          label: label,
-          value: data[i],
-          color: colours[i].strokeColor,
-          highlight: colours[i].pointHighlightStroke
-        });
-      });
-    }
-
-    function setLegend (elem, chart) {
-      var $parent = elem.parent(),
-          $oldLegend = $parent.find('chart-legend'),
-          legend = '<chart-legend>' + chart.generateLegend() + '</chart-legend>';
-      if ($oldLegend.length) $oldLegend.replaceWith(legend);
-      else $parent.append(legend);
-    }
-
-    function updateChart (chart, values, scope, elem) {
-      if (Array.isArray(scope.data[0])) {
-        chart.datasets.forEach(function (dataset, i) {
-          (dataset.points || dataset.bars).forEach(function (dataItem, j) {
-            dataItem.value = values[i][j];
-          });
-        });
-      } else {
-        chart.segments.forEach(function (segment, i) {
-          segment.value = values[i];
-        });
-      }
-      chart.update();
-      scope.$emit('update', chart);
-      if (scope.legend && scope.legend !== 'false') setLegend(elem, chart);
-    }
-
-    function isEmpty (value) {
-      return ! value ||
-        (Array.isArray(value) && ! value.length) ||
-        (typeof value === 'object' && ! Object.keys(value).length);
-    }
-
-    function isResponsive (type, scope) {
-      var options = angular.extend({}, Chart.defaults.global, ChartJs.getOptions(type), scope.options);
-      return options.responsive;
-    }
-  }
-}));
-
-},{"angular":279,"chart.js":238}],238:[function(require,module,exports){
-/*!
- * Chart.js
- * http://chartjs.org/
- * Version: 1.0.2
- *
- * Copyright 2015 Nick Downie
- * Released under the MIT license
- * https://github.com/nnnick/Chart.js/blob/master/LICENSE.md
- */
-
-
-(function(){
-
-	"use strict";
-
-	//Declare root variable - window in the browser, global on the server
-	var root = this,
-		previous = root.Chart;
-
-	//Occupy the global variable of Chart, and create a simple base class
-	var Chart = function(context){
-		var chart = this;
-		this.canvas = context.canvas;
-
-		this.ctx = context;
-
-		//Variables global to the chart
-		var computeDimension = function(element,dimension)
-		{
-			if (element['offset'+dimension])
-			{
-				return element['offset'+dimension];
-			}
-			else
-			{
-				return document.defaultView.getComputedStyle(element).getPropertyValue(dimension);
-			}
-		}
-
-		var width = this.width = computeDimension(context.canvas,'Width');
-		var height = this.height = computeDimension(context.canvas,'Height');
-
-		// Firefox requires this to work correctly
-		context.canvas.width  = width;
-		context.canvas.height = height;
-
-		var width = this.width = context.canvas.width;
-		var height = this.height = context.canvas.height;
-		this.aspectRatio = this.width / this.height;
-		//High pixel density displays - multiply the size of the canvas height/width by the device pixel ratio, then scale.
-		helpers.retinaScale(this);
-
-		return this;
-	};
-	//Globally expose the defaults to allow for user updating/changing
-	Chart.defaults = {
-		global: {
-			// Boolean - Whether to animate the chart
-			animation: true,
-
-			// Number - Number of animation steps
-			animationSteps: 60,
-
-			// String - Animation easing effect
-			animationEasing: "easeOutQuart",
-
-			// Boolean - If we should show the scale at all
-			showScale: true,
-
-			// Boolean - If we want to override with a hard coded scale
-			scaleOverride: false,
-
-			// ** Required if scaleOverride is true **
-			// Number - The number of steps in a hard coded scale
-			scaleSteps: null,
-			// Number - The value jump in the hard coded scale
-			scaleStepWidth: null,
-			// Number - The scale starting value
-			scaleStartValue: null,
-
-			// String - Colour of the scale line
-			scaleLineColor: "rgba(0,0,0,.1)",
-
-			// Number - Pixel width of the scale line
-			scaleLineWidth: 1,
-
-			// Boolean - Whether to show labels on the scale
-			scaleShowLabels: true,
-
-			// Interpolated JS string - can access value
-			scaleLabel: "<%=value%>",
-
-			// Boolean - Whether the scale should stick to integers, and not show any floats even if drawing space is there
-			scaleIntegersOnly: true,
-
-			// Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-			scaleBeginAtZero: false,
-
-			// String - Scale label font declaration for the scale label
-			scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-
-			// Number - Scale label font size in pixels
-			scaleFontSize: 12,
-
-			// String - Scale label font weight style
-			scaleFontStyle: "normal",
-
-			// String - Scale label font colour
-			scaleFontColor: "#666",
-
-			// Boolean - whether or not the chart should be responsive and resize when the browser does.
-			responsive: false,
-
-			// Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-			maintainAspectRatio: true,
-
-			// Boolean - Determines whether to draw tooltips on the canvas or not - attaches events to touchmove & mousemove
-			showTooltips: true,
-
-			// Boolean - Determines whether to draw built-in tooltip or call custom tooltip function
-			customTooltips: false,
-
-			// Array - Array of string names to attach tooltip events
-			tooltipEvents: ["mousemove", "touchstart", "touchmove", "mouseout"],
-
-			// String - Tooltip background colour
-			tooltipFillColor: "rgba(0,0,0,0.8)",
-
-			// String - Tooltip label font declaration for the scale label
-			tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-
-			// Number - Tooltip label font size in pixels
-			tooltipFontSize: 14,
-
-			// String - Tooltip font weight style
-			tooltipFontStyle: "normal",
-
-			// String - Tooltip label font colour
-			tooltipFontColor: "#fff",
-
-			// String - Tooltip title font declaration for the scale label
-			tooltipTitleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-
-			// Number - Tooltip title font size in pixels
-			tooltipTitleFontSize: 14,
-
-			// String - Tooltip title font weight style
-			tooltipTitleFontStyle: "bold",
-
-			// String - Tooltip title font colour
-			tooltipTitleFontColor: "#fff",
-
-			// Number - pixel width of padding around tooltip text
-			tooltipYPadding: 6,
-
-			// Number - pixel width of padding around tooltip text
-			tooltipXPadding: 6,
-
-			// Number - Size of the caret on the tooltip
-			tooltipCaretSize: 8,
-
-			// Number - Pixel radius of the tooltip border
-			tooltipCornerRadius: 6,
-
-			// Number - Pixel offset from point x to tooltip edge
-			tooltipXOffset: 10,
-
-			// String - Template string for single tooltips
-			tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
-
-			// String - Template string for single tooltips
-			multiTooltipTemplate: "<%= value %>",
-
-			// String - Colour behind the legend colour block
-			multiTooltipKeyBackground: '#fff',
-
-			// Function - Will fire on animation progression.
-			onAnimationProgress: function(){},
-
-			// Function - Will fire on animation completion.
-			onAnimationComplete: function(){}
-
-		}
-	};
-
-	//Create a dictionary of chart types, to allow for extension of existing types
-	Chart.types = {};
-
-	//Global Chart helpers object for utility methods and classes
-	var helpers = Chart.helpers = {};
-
-		//-- Basic js utility methods
-	var each = helpers.each = function(loopable,callback,self){
-			var additionalArgs = Array.prototype.slice.call(arguments, 3);
-			// Check to see if null or undefined firstly.
-			if (loopable){
-				if (loopable.length === +loopable.length){
-					var i;
-					for (i=0; i<loopable.length; i++){
-						callback.apply(self,[loopable[i], i].concat(additionalArgs));
-					}
-				}
-				else{
-					for (var item in loopable){
-						callback.apply(self,[loopable[item],item].concat(additionalArgs));
-					}
-				}
-			}
-		},
-		clone = helpers.clone = function(obj){
-			var objClone = {};
-			each(obj,function(value,key){
-				if (obj.hasOwnProperty(key)) objClone[key] = value;
-			});
-			return objClone;
-		},
-		extend = helpers.extend = function(base){
-			each(Array.prototype.slice.call(arguments,1), function(extensionObject) {
-				each(extensionObject,function(value,key){
-					if (extensionObject.hasOwnProperty(key)) base[key] = value;
-				});
-			});
-			return base;
-		},
-		merge = helpers.merge = function(base,master){
-			//Merge properties in left object over to a shallow clone of object right.
-			var args = Array.prototype.slice.call(arguments,0);
-			args.unshift({});
-			return extend.apply(null, args);
-		},
-		indexOf = helpers.indexOf = function(arrayToSearch, item){
-			if (Array.prototype.indexOf) {
-				return arrayToSearch.indexOf(item);
-			}
-			else{
-				for (var i = 0; i < arrayToSearch.length; i++) {
-					if (arrayToSearch[i] === item) return i;
-				}
-				return -1;
-			}
-		},
-		where = helpers.where = function(collection, filterCallback){
-			var filtered = [];
-
-			helpers.each(collection, function(item){
-				if (filterCallback(item)){
-					filtered.push(item);
-				}
-			});
-
-			return filtered;
-		},
-		findNextWhere = helpers.findNextWhere = function(arrayToSearch, filterCallback, startIndex){
-			// Default to start of the array
-			if (!startIndex){
-				startIndex = -1;
-			}
-			for (var i = startIndex + 1; i < arrayToSearch.length; i++) {
-				var currentItem = arrayToSearch[i];
-				if (filterCallback(currentItem)){
-					return currentItem;
-				}
-			}
-		},
-		findPreviousWhere = helpers.findPreviousWhere = function(arrayToSearch, filterCallback, startIndex){
-			// Default to end of the array
-			if (!startIndex){
-				startIndex = arrayToSearch.length;
-			}
-			for (var i = startIndex - 1; i >= 0; i--) {
-				var currentItem = arrayToSearch[i];
-				if (filterCallback(currentItem)){
-					return currentItem;
-				}
-			}
-		},
-		inherits = helpers.inherits = function(extensions){
-			//Basic javascript inheritance based on the model created in Backbone.js
-			var parent = this;
-			var ChartElement = (extensions && extensions.hasOwnProperty("constructor")) ? extensions.constructor : function(){ return parent.apply(this, arguments); };
-
-			var Surrogate = function(){ this.constructor = ChartElement;};
-			Surrogate.prototype = parent.prototype;
-			ChartElement.prototype = new Surrogate();
-
-			ChartElement.extend = inherits;
-
-			if (extensions) extend(ChartElement.prototype, extensions);
-
-			ChartElement.__super__ = parent.prototype;
-
-			return ChartElement;
-		},
-		noop = helpers.noop = function(){},
-		uid = helpers.uid = (function(){
-			var id=0;
-			return function(){
-				return "chart-" + id++;
-			};
-		})(),
-		warn = helpers.warn = function(str){
-			//Method for warning of errors
-			if (window.console && typeof window.console.warn == "function") console.warn(str);
-		},
-		amd = helpers.amd = (typeof define == 'function' && define.amd),
-		//-- Math methods
-		isNumber = helpers.isNumber = function(n){
-			return !isNaN(parseFloat(n)) && isFinite(n);
-		},
-		max = helpers.max = function(array){
-			return Math.max.apply( Math, array );
-		},
-		min = helpers.min = function(array){
-			return Math.min.apply( Math, array );
-		},
-		cap = helpers.cap = function(valueToCap,maxValue,minValue){
-			if(isNumber(maxValue)) {
-				if( valueToCap > maxValue ) {
-					return maxValue;
-				}
-			}
-			else if(isNumber(minValue)){
-				if ( valueToCap < minValue ){
-					return minValue;
-				}
-			}
-			return valueToCap;
-		},
-		getDecimalPlaces = helpers.getDecimalPlaces = function(num){
-			if (num%1!==0 && isNumber(num)){
-				return num.toString().split(".")[1].length;
-			}
-			else {
-				return 0;
-			}
-		},
-		toRadians = helpers.radians = function(degrees){
-			return degrees * (Math.PI/180);
-		},
-		// Gets the angle from vertical upright to the point about a centre.
-		getAngleFromPoint = helpers.getAngleFromPoint = function(centrePoint, anglePoint){
-			var distanceFromXCenter = anglePoint.x - centrePoint.x,
-				distanceFromYCenter = anglePoint.y - centrePoint.y,
-				radialDistanceFromCenter = Math.sqrt( distanceFromXCenter * distanceFromXCenter + distanceFromYCenter * distanceFromYCenter);
-
-
-			var angle = Math.PI * 2 + Math.atan2(distanceFromYCenter, distanceFromXCenter);
-
-			//If the segment is in the top left quadrant, we need to add another rotation to the angle
-			if (distanceFromXCenter < 0 && distanceFromYCenter < 0){
-				angle += Math.PI*2;
-			}
-
-			return {
-				angle: angle,
-				distance: radialDistanceFromCenter
-			};
-		},
-		aliasPixel = helpers.aliasPixel = function(pixelWidth){
-			return (pixelWidth % 2 === 0) ? 0 : 0.5;
-		},
-		splineCurve = helpers.splineCurve = function(FirstPoint,MiddlePoint,AfterPoint,t){
-			//Props to Rob Spencer at scaled innovation for his post on splining between points
-			//http://scaledinnovation.com/analytics/splines/aboutSplines.html
-			var d01=Math.sqrt(Math.pow(MiddlePoint.x-FirstPoint.x,2)+Math.pow(MiddlePoint.y-FirstPoint.y,2)),
-				d12=Math.sqrt(Math.pow(AfterPoint.x-MiddlePoint.x,2)+Math.pow(AfterPoint.y-MiddlePoint.y,2)),
-				fa=t*d01/(d01+d12),// scaling factor for triangle Ta
-				fb=t*d12/(d01+d12);
-			return {
-				inner : {
-					x : MiddlePoint.x-fa*(AfterPoint.x-FirstPoint.x),
-					y : MiddlePoint.y-fa*(AfterPoint.y-FirstPoint.y)
-				},
-				outer : {
-					x: MiddlePoint.x+fb*(AfterPoint.x-FirstPoint.x),
-					y : MiddlePoint.y+fb*(AfterPoint.y-FirstPoint.y)
-				}
-			};
-		},
-		calculateOrderOfMagnitude = helpers.calculateOrderOfMagnitude = function(val){
-			return Math.floor(Math.log(val) / Math.LN10);
-		},
-		calculateScaleRange = helpers.calculateScaleRange = function(valuesArray, drawingSize, textSize, startFromZero, integersOnly){
-
-			//Set a minimum step of two - a point at the top of the graph, and a point at the base
-			var minSteps = 2,
-				maxSteps = Math.floor(drawingSize/(textSize * 1.5)),
-				skipFitting = (minSteps >= maxSteps);
-
-			var maxValue = max(valuesArray),
-				minValue = min(valuesArray);
-
-			// We need some degree of seperation here to calculate the scales if all the values are the same
-			// Adding/minusing 0.5 will give us a range of 1.
-			if (maxValue === minValue){
-				maxValue += 0.5;
-				// So we don't end up with a graph with a negative start value if we've said always start from zero
-				if (minValue >= 0.5 && !startFromZero){
-					minValue -= 0.5;
-				}
-				else{
-					// Make up a whole number above the values
-					maxValue += 0.5;
-				}
-			}
-
-			var	valueRange = Math.abs(maxValue - minValue),
-				rangeOrderOfMagnitude = calculateOrderOfMagnitude(valueRange),
-				graphMax = Math.ceil(maxValue / (1 * Math.pow(10, rangeOrderOfMagnitude))) * Math.pow(10, rangeOrderOfMagnitude),
-				graphMin = (startFromZero) ? 0 : Math.floor(minValue / (1 * Math.pow(10, rangeOrderOfMagnitude))) * Math.pow(10, rangeOrderOfMagnitude),
-				graphRange = graphMax - graphMin,
-				stepValue = Math.pow(10, rangeOrderOfMagnitude),
-				numberOfSteps = Math.round(graphRange / stepValue);
-
-			//If we have more space on the graph we'll use it to give more definition to the data
-			while((numberOfSteps > maxSteps || (numberOfSteps * 2) < maxSteps) && !skipFitting) {
-				if(numberOfSteps > maxSteps){
-					stepValue *=2;
-					numberOfSteps = Math.round(graphRange/stepValue);
-					// Don't ever deal with a decimal number of steps - cancel fitting and just use the minimum number of steps.
-					if (numberOfSteps % 1 !== 0){
-						skipFitting = true;
-					}
-				}
-				//We can fit in double the amount of scale points on the scale
-				else{
-					//If user has declared ints only, and the step value isn't a decimal
-					if (integersOnly && rangeOrderOfMagnitude >= 0){
-						//If the user has said integers only, we need to check that making the scale more granular wouldn't make it a float
-						if(stepValue/2 % 1 === 0){
-							stepValue /=2;
-							numberOfSteps = Math.round(graphRange/stepValue);
-						}
-						//If it would make it a float break out of the loop
-						else{
-							break;
-						}
-					}
-					//If the scale doesn't have to be an int, make the scale more granular anyway.
-					else{
-						stepValue /=2;
-						numberOfSteps = Math.round(graphRange/stepValue);
-					}
-
-				}
-			}
-
-			if (skipFitting){
-				numberOfSteps = minSteps;
-				stepValue = graphRange / numberOfSteps;
-			}
-
-			return {
-				steps : numberOfSteps,
-				stepValue : stepValue,
-				min : graphMin,
-				max	: graphMin + (numberOfSteps * stepValue)
-			};
-
-		},
-		/* jshint ignore:start */
-		// Blows up jshint errors based on the new Function constructor
-		//Templating methods
-		//Javascript micro templating by John Resig - source at http://ejohn.org/blog/javascript-micro-templating/
-		template = helpers.template = function(templateString, valuesObject){
-
-			// If templateString is function rather than string-template - call the function for valuesObject
-
-			if(templateString instanceof Function){
-			 	return templateString(valuesObject);
-		 	}
-
-			var cache = {};
-			function tmpl(str, data){
-				// Figure out if we're getting a template, or if we need to
-				// load the template - and be sure to cache the result.
-				var fn = !/\W/.test(str) ?
-				cache[str] = cache[str] :
-
-				// Generate a reusable function that will serve as a template
-				// generator (and which will be cached).
-				new Function("obj",
-					"var p=[],print=function(){p.push.apply(p,arguments);};" +
-
-					// Introduce the data as local variables using with(){}
-					"with(obj){p.push('" +
-
-					// Convert the template into pure JavaScript
-					str
-						.replace(/[\r\t\n]/g, " ")
-						.split("<%").join("\t")
-						.replace(/((^|%>)[^\t]*)'/g, "$1\r")
-						.replace(/\t=(.*?)%>/g, "',$1,'")
-						.split("\t").join("');")
-						.split("%>").join("p.push('")
-						.split("\r").join("\\'") +
-					"');}return p.join('');"
-				);
-
-				// Provide some basic currying to the user
-				return data ? fn( data ) : fn;
-			}
-			return tmpl(templateString,valuesObject);
-		},
-		/* jshint ignore:end */
-		generateLabels = helpers.generateLabels = function(templateString,numberOfSteps,graphMin,stepValue){
-			var labelsArray = new Array(numberOfSteps);
-			if (labelTemplateString){
-				each(labelsArray,function(val,index){
-					labelsArray[index] = template(templateString,{value: (graphMin + (stepValue*(index+1)))});
-				});
-			}
-			return labelsArray;
-		},
-		//--Animation methods
-		//Easing functions adapted from Robert Penner's easing equations
-		//http://www.robertpenner.com/easing/
-		easingEffects = helpers.easingEffects = {
-			linear: function (t) {
-				return t;
-			},
-			easeInQuad: function (t) {
-				return t * t;
-			},
-			easeOutQuad: function (t) {
-				return -1 * t * (t - 2);
-			},
-			easeInOutQuad: function (t) {
-				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t;
-				return -1 / 2 * ((--t) * (t - 2) - 1);
-			},
-			easeInCubic: function (t) {
-				return t * t * t;
-			},
-			easeOutCubic: function (t) {
-				return 1 * ((t = t / 1 - 1) * t * t + 1);
-			},
-			easeInOutCubic: function (t) {
-				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t;
-				return 1 / 2 * ((t -= 2) * t * t + 2);
-			},
-			easeInQuart: function (t) {
-				return t * t * t * t;
-			},
-			easeOutQuart: function (t) {
-				return -1 * ((t = t / 1 - 1) * t * t * t - 1);
-			},
-			easeInOutQuart: function (t) {
-				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t * t;
-				return -1 / 2 * ((t -= 2) * t * t * t - 2);
-			},
-			easeInQuint: function (t) {
-				return 1 * (t /= 1) * t * t * t * t;
-			},
-			easeOutQuint: function (t) {
-				return 1 * ((t = t / 1 - 1) * t * t * t * t + 1);
-			},
-			easeInOutQuint: function (t) {
-				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t * t * t;
-				return 1 / 2 * ((t -= 2) * t * t * t * t + 2);
-			},
-			easeInSine: function (t) {
-				return -1 * Math.cos(t / 1 * (Math.PI / 2)) + 1;
-			},
-			easeOutSine: function (t) {
-				return 1 * Math.sin(t / 1 * (Math.PI / 2));
-			},
-			easeInOutSine: function (t) {
-				return -1 / 2 * (Math.cos(Math.PI * t / 1) - 1);
-			},
-			easeInExpo: function (t) {
-				return (t === 0) ? 1 : 1 * Math.pow(2, 10 * (t / 1 - 1));
-			},
-			easeOutExpo: function (t) {
-				return (t === 1) ? 1 : 1 * (-Math.pow(2, -10 * t / 1) + 1);
-			},
-			easeInOutExpo: function (t) {
-				if (t === 0) return 0;
-				if (t === 1) return 1;
-				if ((t /= 1 / 2) < 1) return 1 / 2 * Math.pow(2, 10 * (t - 1));
-				return 1 / 2 * (-Math.pow(2, -10 * --t) + 2);
-			},
-			easeInCirc: function (t) {
-				if (t >= 1) return t;
-				return -1 * (Math.sqrt(1 - (t /= 1) * t) - 1);
-			},
-			easeOutCirc: function (t) {
-				return 1 * Math.sqrt(1 - (t = t / 1 - 1) * t);
-			},
-			easeInOutCirc: function (t) {
-				if ((t /= 1 / 2) < 1) return -1 / 2 * (Math.sqrt(1 - t * t) - 1);
-				return 1 / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1);
-			},
-			easeInElastic: function (t) {
-				var s = 1.70158;
-				var p = 0;
-				var a = 1;
-				if (t === 0) return 0;
-				if ((t /= 1) == 1) return 1;
-				if (!p) p = 1 * 0.3;
-				if (a < Math.abs(1)) {
-					a = 1;
-					s = p / 4;
-				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
-				return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));
-			},
-			easeOutElastic: function (t) {
-				var s = 1.70158;
-				var p = 0;
-				var a = 1;
-				if (t === 0) return 0;
-				if ((t /= 1) == 1) return 1;
-				if (!p) p = 1 * 0.3;
-				if (a < Math.abs(1)) {
-					a = 1;
-					s = p / 4;
-				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
-				return a * Math.pow(2, -10 * t) * Math.sin((t * 1 - s) * (2 * Math.PI) / p) + 1;
-			},
-			easeInOutElastic: function (t) {
-				var s = 1.70158;
-				var p = 0;
-				var a = 1;
-				if (t === 0) return 0;
-				if ((t /= 1 / 2) == 2) return 1;
-				if (!p) p = 1 * (0.3 * 1.5);
-				if (a < Math.abs(1)) {
-					a = 1;
-					s = p / 4;
-				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
-				if (t < 1) return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));
-				return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p) * 0.5 + 1;
-			},
-			easeInBack: function (t) {
-				var s = 1.70158;
-				return 1 * (t /= 1) * t * ((s + 1) * t - s);
-			},
-			easeOutBack: function (t) {
-				var s = 1.70158;
-				return 1 * ((t = t / 1 - 1) * t * ((s + 1) * t + s) + 1);
-			},
-			easeInOutBack: function (t) {
-				var s = 1.70158;
-				if ((t /= 1 / 2) < 1) return 1 / 2 * (t * t * (((s *= (1.525)) + 1) * t - s));
-				return 1 / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2);
-			},
-			easeInBounce: function (t) {
-				return 1 - easingEffects.easeOutBounce(1 - t);
-			},
-			easeOutBounce: function (t) {
-				if ((t /= 1) < (1 / 2.75)) {
-					return 1 * (7.5625 * t * t);
-				} else if (t < (2 / 2.75)) {
-					return 1 * (7.5625 * (t -= (1.5 / 2.75)) * t + 0.75);
-				} else if (t < (2.5 / 2.75)) {
-					return 1 * (7.5625 * (t -= (2.25 / 2.75)) * t + 0.9375);
-				} else {
-					return 1 * (7.5625 * (t -= (2.625 / 2.75)) * t + 0.984375);
-				}
-			},
-			easeInOutBounce: function (t) {
-				if (t < 1 / 2) return easingEffects.easeInBounce(t * 2) * 0.5;
-				return easingEffects.easeOutBounce(t * 2 - 1) * 0.5 + 1 * 0.5;
-			}
-		},
-		//Request animation polyfill - http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
-		requestAnimFrame = helpers.requestAnimFrame = (function(){
-			return window.requestAnimationFrame ||
-				window.webkitRequestAnimationFrame ||
-				window.mozRequestAnimationFrame ||
-				window.oRequestAnimationFrame ||
-				window.msRequestAnimationFrame ||
-				function(callback) {
-					return window.setTimeout(callback, 1000 / 60);
-				};
-		})(),
-		cancelAnimFrame = helpers.cancelAnimFrame = (function(){
-			return window.cancelAnimationFrame ||
-				window.webkitCancelAnimationFrame ||
-				window.mozCancelAnimationFrame ||
-				window.oCancelAnimationFrame ||
-				window.msCancelAnimationFrame ||
-				function(callback) {
-					return window.clearTimeout(callback, 1000 / 60);
-				};
-		})(),
-		animationLoop = helpers.animationLoop = function(callback,totalSteps,easingString,onProgress,onComplete,chartInstance){
-
-			var currentStep = 0,
-				easingFunction = easingEffects[easingString] || easingEffects.linear;
-
-			var animationFrame = function(){
-				currentStep++;
-				var stepDecimal = currentStep/totalSteps;
-				var easeDecimal = easingFunction(stepDecimal);
-
-				callback.call(chartInstance,easeDecimal,stepDecimal, currentStep);
-				onProgress.call(chartInstance,easeDecimal,stepDecimal);
-				if (currentStep < totalSteps){
-					chartInstance.animationFrame = requestAnimFrame(animationFrame);
-				} else{
-					onComplete.apply(chartInstance);
-				}
-			};
-			requestAnimFrame(animationFrame);
-		},
-		//-- DOM methods
-		getRelativePosition = helpers.getRelativePosition = function(evt){
-			var mouseX, mouseY;
-			var e = evt.originalEvent || evt,
-				canvas = evt.currentTarget || evt.srcElement,
-				boundingRect = canvas.getBoundingClientRect();
-
-			if (e.touches){
-				mouseX = e.touches[0].clientX - boundingRect.left;
-				mouseY = e.touches[0].clientY - boundingRect.top;
-
-			}
-			else{
-				mouseX = e.clientX - boundingRect.left;
-				mouseY = e.clientY - boundingRect.top;
-			}
-
-			return {
-				x : mouseX,
-				y : mouseY
-			};
-
-		},
-		addEvent = helpers.addEvent = function(node,eventType,method){
-			if (node.addEventListener){
-				node.addEventListener(eventType,method);
-			} else if (node.attachEvent){
-				node.attachEvent("on"+eventType, method);
-			} else {
-				node["on"+eventType] = method;
-			}
-		},
-		removeEvent = helpers.removeEvent = function(node, eventType, handler){
-			if (node.removeEventListener){
-				node.removeEventListener(eventType, handler, false);
-			} else if (node.detachEvent){
-				node.detachEvent("on"+eventType,handler);
-			} else{
-				node["on" + eventType] = noop;
-			}
-		},
-		bindEvents = helpers.bindEvents = function(chartInstance, arrayOfEvents, handler){
-			// Create the events object if it's not already present
-			if (!chartInstance.events) chartInstance.events = {};
-
-			each(arrayOfEvents,function(eventName){
-				chartInstance.events[eventName] = function(){
-					handler.apply(chartInstance, arguments);
-				};
-				addEvent(chartInstance.chart.canvas,eventName,chartInstance.events[eventName]);
-			});
-		},
-		unbindEvents = helpers.unbindEvents = function (chartInstance, arrayOfEvents) {
-			each(arrayOfEvents, function(handler,eventName){
-				removeEvent(chartInstance.chart.canvas, eventName, handler);
-			});
-		},
-		getMaximumWidth = helpers.getMaximumWidth = function(domNode){
-			var container = domNode.parentNode;
-			// TODO = check cross browser stuff with this.
-			return container.clientWidth;
-		},
-		getMaximumHeight = helpers.getMaximumHeight = function(domNode){
-			var container = domNode.parentNode;
-			// TODO = check cross browser stuff with this.
-			return container.clientHeight;
-		},
-		getMaximumSize = helpers.getMaximumSize = helpers.getMaximumWidth, // legacy support
-		retinaScale = helpers.retinaScale = function(chart){
-			var ctx = chart.ctx,
-				width = chart.canvas.width,
-				height = chart.canvas.height;
-
-			if (window.devicePixelRatio) {
-				ctx.canvas.style.width = width + "px";
-				ctx.canvas.style.height = height + "px";
-				ctx.canvas.height = height * window.devicePixelRatio;
-				ctx.canvas.width = width * window.devicePixelRatio;
-				ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-			}
-		},
-		//-- Canvas methods
-		clear = helpers.clear = function(chart){
-			chart.ctx.clearRect(0,0,chart.width,chart.height);
-		},
-		fontString = helpers.fontString = function(pixelSize,fontStyle,fontFamily){
-			return fontStyle + " " + pixelSize+"px " + fontFamily;
-		},
-		longestText = helpers.longestText = function(ctx,font,arrayOfStrings){
-			ctx.font = font;
-			var longest = 0;
-			each(arrayOfStrings,function(string){
-				var textWidth = ctx.measureText(string).width;
-				longest = (textWidth > longest) ? textWidth : longest;
-			});
-			return longest;
-		},
-		drawRoundedRectangle = helpers.drawRoundedRectangle = function(ctx,x,y,width,height,radius){
-			ctx.beginPath();
-			ctx.moveTo(x + radius, y);
-			ctx.lineTo(x + width - radius, y);
-			ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
-			ctx.lineTo(x + width, y + height - radius);
-			ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
-			ctx.lineTo(x + radius, y + height);
-			ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
-			ctx.lineTo(x, y + radius);
-			ctx.quadraticCurveTo(x, y, x + radius, y);
-			ctx.closePath();
-		};
-
-
-	//Store a reference to each instance - allowing us to globally resize chart instances on window resize.
-	//Destroy method on the chart will remove the instance of the chart from this reference.
-	Chart.instances = {};
-
-	Chart.Type = function(data,options,chart){
-		this.options = options;
-		this.chart = chart;
-		this.id = uid();
-		//Add the chart instance to the global namespace
-		Chart.instances[this.id] = this;
-
-		// Initialize is always called when a chart type is created
-		// By default it is a no op, but it should be extended
-		if (options.responsive){
-			this.resize();
-		}
-		this.initialize.call(this,data);
-	};
-
-	//Core methods that'll be a part of every chart type
-	extend(Chart.Type.prototype,{
-		initialize : function(){return this;},
-		clear : function(){
-			clear(this.chart);
-			return this;
-		},
-		stop : function(){
-			// Stops any current animation loop occuring
-			cancelAnimFrame(this.animationFrame);
-			return this;
-		},
-		resize : function(callback){
-			this.stop();
-			var canvas = this.chart.canvas,
-				newWidth = getMaximumWidth(this.chart.canvas),
-				newHeight = this.options.maintainAspectRatio ? newWidth / this.chart.aspectRatio : getMaximumHeight(this.chart.canvas);
-
-			canvas.width = this.chart.width = newWidth;
-			canvas.height = this.chart.height = newHeight;
-
-			retinaScale(this.chart);
-
-			if (typeof callback === "function"){
-				callback.apply(this, Array.prototype.slice.call(arguments, 1));
-			}
-			return this;
-		},
-		reflow : noop,
-		render : function(reflow){
-			if (reflow){
-				this.reflow();
-			}
-			if (this.options.animation && !reflow){
-				helpers.animationLoop(
-					this.draw,
-					this.options.animationSteps,
-					this.options.animationEasing,
-					this.options.onAnimationProgress,
-					this.options.onAnimationComplete,
-					this
-				);
-			}
-			else{
-				this.draw();
-				this.options.onAnimationComplete.call(this);
-			}
-			return this;
-		},
-		generateLegend : function(){
-			return template(this.options.legendTemplate,this);
-		},
-		destroy : function(){
-			this.clear();
-			unbindEvents(this, this.events);
-			var canvas = this.chart.canvas;
-
-			// Reset canvas height/width attributes starts a fresh with the canvas context
-			canvas.width = this.chart.width;
-			canvas.height = this.chart.height;
-
-			// < IE9 doesn't support removeProperty
-			if (canvas.style.removeProperty) {
-				canvas.style.removeProperty('width');
-				canvas.style.removeProperty('height');
-			} else {
-				canvas.style.removeAttribute('width');
-				canvas.style.removeAttribute('height');
-			}
-
-			delete Chart.instances[this.id];
-		},
-		showTooltip : function(ChartElements, forceRedraw){
-			// Only redraw the chart if we've actually changed what we're hovering on.
-			if (typeof this.activeElements === 'undefined') this.activeElements = [];
-
-			var isChanged = (function(Elements){
-				var changed = false;
-
-				if (Elements.length !== this.activeElements.length){
-					changed = true;
-					return changed;
-				}
-
-				each(Elements, function(element, index){
-					if (element !== this.activeElements[index]){
-						changed = true;
-					}
-				}, this);
-				return changed;
-			}).call(this, ChartElements);
-
-			if (!isChanged && !forceRedraw){
-				return;
-			}
-			else{
-				this.activeElements = ChartElements;
-			}
-			this.draw();
-			if(this.options.customTooltips){
-				this.options.customTooltips(false);
-			}
-			if (ChartElements.length > 0){
-				// If we have multiple datasets, show a MultiTooltip for all of the data points at that index
-				if (this.datasets && this.datasets.length > 1) {
-					var dataArray,
-						dataIndex;
-
-					for (var i = this.datasets.length - 1; i >= 0; i--) {
-						dataArray = this.datasets[i].points || this.datasets[i].bars || this.datasets[i].segments;
-						dataIndex = indexOf(dataArray, ChartElements[0]);
-						if (dataIndex !== -1){
-							break;
-						}
-					}
-					var tooltipLabels = [],
-						tooltipColors = [],
-						medianPosition = (function(index) {
-
-							// Get all the points at that particular index
-							var Elements = [],
-								dataCollection,
-								xPositions = [],
-								yPositions = [],
-								xMax,
-								yMax,
-								xMin,
-								yMin;
-							helpers.each(this.datasets, function(dataset){
-								dataCollection = dataset.points || dataset.bars || dataset.segments;
-								if (dataCollection[dataIndex] && dataCollection[dataIndex].hasValue()){
-									Elements.push(dataCollection[dataIndex]);
-								}
-							});
-
-							helpers.each(Elements, function(element) {
-								xPositions.push(element.x);
-								yPositions.push(element.y);
-
-
-								//Include any colour information about the element
-								tooltipLabels.push(helpers.template(this.options.multiTooltipTemplate, element));
-								tooltipColors.push({
-									fill: element._saved.fillColor || element.fillColor,
-									stroke: element._saved.strokeColor || element.strokeColor
-								});
-
-							}, this);
-
-							yMin = min(yPositions);
-							yMax = max(yPositions);
-
-							xMin = min(xPositions);
-							xMax = max(xPositions);
-
-							return {
-								x: (xMin > this.chart.width/2) ? xMin : xMax,
-								y: (yMin + yMax)/2
-							};
-						}).call(this, dataIndex);
-
-					new Chart.MultiTooltip({
-						x: medianPosition.x,
-						y: medianPosition.y,
-						xPadding: this.options.tooltipXPadding,
-						yPadding: this.options.tooltipYPadding,
-						xOffset: this.options.tooltipXOffset,
-						fillColor: this.options.tooltipFillColor,
-						textColor: this.options.tooltipFontColor,
-						fontFamily: this.options.tooltipFontFamily,
-						fontStyle: this.options.tooltipFontStyle,
-						fontSize: this.options.tooltipFontSize,
-						titleTextColor: this.options.tooltipTitleFontColor,
-						titleFontFamily: this.options.tooltipTitleFontFamily,
-						titleFontStyle: this.options.tooltipTitleFontStyle,
-						titleFontSize: this.options.tooltipTitleFontSize,
-						cornerRadius: this.options.tooltipCornerRadius,
-						labels: tooltipLabels,
-						legendColors: tooltipColors,
-						legendColorBackground : this.options.multiTooltipKeyBackground,
-						title: ChartElements[0].label,
-						chart: this.chart,
-						ctx: this.chart.ctx,
-						custom: this.options.customTooltips
-					}).draw();
-
-				} else {
-					each(ChartElements, function(Element) {
-						var tooltipPosition = Element.tooltipPosition();
-						new Chart.Tooltip({
-							x: Math.round(tooltipPosition.x),
-							y: Math.round(tooltipPosition.y),
-							xPadding: this.options.tooltipXPadding,
-							yPadding: this.options.tooltipYPadding,
-							fillColor: this.options.tooltipFillColor,
-							textColor: this.options.tooltipFontColor,
-							fontFamily: this.options.tooltipFontFamily,
-							fontStyle: this.options.tooltipFontStyle,
-							fontSize: this.options.tooltipFontSize,
-							caretHeight: this.options.tooltipCaretSize,
-							cornerRadius: this.options.tooltipCornerRadius,
-							text: template(this.options.tooltipTemplate, Element),
-							chart: this.chart,
-							custom: this.options.customTooltips
-						}).draw();
-					}, this);
-				}
-			}
-			return this;
-		},
-		toBase64Image : function(){
-			return this.chart.canvas.toDataURL.apply(this.chart.canvas, arguments);
-		}
-	});
-
-	Chart.Type.extend = function(extensions){
-
-		var parent = this;
-
-		var ChartType = function(){
-			return parent.apply(this,arguments);
-		};
-
-		//Copy the prototype object of the this class
-		ChartType.prototype = clone(parent.prototype);
-		//Now overwrite some of the properties in the base class with the new extensions
-		extend(ChartType.prototype, extensions);
-
-		ChartType.extend = Chart.Type.extend;
-
-		if (extensions.name || parent.prototype.name){
-
-			var chartName = extensions.name || parent.prototype.name;
-			//Assign any potential default values of the new chart type
-
-			//If none are defined, we'll use a clone of the chart type this is being extended from.
-			//I.e. if we extend a line chart, we'll use the defaults from the line chart if our new chart
-			//doesn't define some defaults of their own.
-
-			var baseDefaults = (Chart.defaults[parent.prototype.name]) ? clone(Chart.defaults[parent.prototype.name]) : {};
-
-			Chart.defaults[chartName] = extend(baseDefaults,extensions.defaults);
-
-			Chart.types[chartName] = ChartType;
-
-			//Register this new chart type in the Chart prototype
-			Chart.prototype[chartName] = function(data,options){
-				var config = merge(Chart.defaults.global, Chart.defaults[chartName], options || {});
-				return new ChartType(data,config,this);
-			};
-		} else{
-			warn("Name not provided for this chart, so it hasn't been registered");
-		}
-		return parent;
-	};
-
-	Chart.Element = function(configuration){
-		extend(this,configuration);
-		this.initialize.apply(this,arguments);
-		this.save();
-	};
-	extend(Chart.Element.prototype,{
-		initialize : function(){},
-		restore : function(props){
-			if (!props){
-				extend(this,this._saved);
-			} else {
-				each(props,function(key){
-					this[key] = this._saved[key];
-				},this);
-			}
-			return this;
-		},
-		save : function(){
-			this._saved = clone(this);
-			delete this._saved._saved;
-			return this;
-		},
-		update : function(newProps){
-			each(newProps,function(value,key){
-				this._saved[key] = this[key];
-				this[key] = value;
-			},this);
-			return this;
-		},
-		transition : function(props,ease){
-			each(props,function(value,key){
-				this[key] = ((value - this._saved[key]) * ease) + this._saved[key];
-			},this);
-			return this;
-		},
-		tooltipPosition : function(){
-			return {
-				x : this.x,
-				y : this.y
-			};
-		},
-		hasValue: function(){
-			return isNumber(this.value);
-		}
-	});
-
-	Chart.Element.extend = inherits;
-
-
-	Chart.Point = Chart.Element.extend({
-		display: true,
-		inRange: function(chartX,chartY){
-			var hitDetectionRange = this.hitDetectionRadius + this.radius;
-			return ((Math.pow(chartX-this.x, 2)+Math.pow(chartY-this.y, 2)) < Math.pow(hitDetectionRange,2));
-		},
-		draw : function(){
-			if (this.display){
-				var ctx = this.ctx;
-				ctx.beginPath();
-
-				ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
-				ctx.closePath();
-
-				ctx.strokeStyle = this.strokeColor;
-				ctx.lineWidth = this.strokeWidth;
-
-				ctx.fillStyle = this.fillColor;
-
-				ctx.fill();
-				ctx.stroke();
-			}
-
-
-			//Quick debug for bezier curve splining
-			//Highlights control points and the line between them.
-			//Handy for dev - stripped in the min version.
-
-			// ctx.save();
-			// ctx.fillStyle = "black";
-			// ctx.strokeStyle = "black"
-			// ctx.beginPath();
-			// ctx.arc(this.controlPoints.inner.x,this.controlPoints.inner.y, 2, 0, Math.PI*2);
-			// ctx.fill();
-
-			// ctx.beginPath();
-			// ctx.arc(this.controlPoints.outer.x,this.controlPoints.outer.y, 2, 0, Math.PI*2);
-			// ctx.fill();
-
-			// ctx.moveTo(this.controlPoints.inner.x,this.controlPoints.inner.y);
-			// ctx.lineTo(this.x, this.y);
-			// ctx.lineTo(this.controlPoints.outer.x,this.controlPoints.outer.y);
-			// ctx.stroke();
-
-			// ctx.restore();
-
-
-
-		}
-	});
-
-	Chart.Arc = Chart.Element.extend({
-		inRange : function(chartX,chartY){
-
-			var pointRelativePosition = helpers.getAngleFromPoint(this, {
-				x: chartX,
-				y: chartY
-			});
-
-			//Check if within the range of the open/close angle
-			var betweenAngles = (pointRelativePosition.angle >= this.startAngle && pointRelativePosition.angle <= this.endAngle),
-				withinRadius = (pointRelativePosition.distance >= this.innerRadius && pointRelativePosition.distance <= this.outerRadius);
-
-			return (betweenAngles && withinRadius);
-			//Ensure within the outside of the arc centre, but inside arc outer
-		},
-		tooltipPosition : function(){
-			var centreAngle = this.startAngle + ((this.endAngle - this.startAngle) / 2),
-				rangeFromCentre = (this.outerRadius - this.innerRadius) / 2 + this.innerRadius;
-			return {
-				x : this.x + (Math.cos(centreAngle) * rangeFromCentre),
-				y : this.y + (Math.sin(centreAngle) * rangeFromCentre)
-			};
-		},
-		draw : function(animationPercent){
-
-			var easingDecimal = animationPercent || 1;
-
-			var ctx = this.ctx;
-
-			ctx.beginPath();
-
-			ctx.arc(this.x, this.y, this.outerRadius, this.startAngle, this.endAngle);
-
-			ctx.arc(this.x, this.y, this.innerRadius, this.endAngle, this.startAngle, true);
-
-			ctx.closePath();
-			ctx.strokeStyle = this.strokeColor;
-			ctx.lineWidth = this.strokeWidth;
-
-			ctx.fillStyle = this.fillColor;
-
-			ctx.fill();
-			ctx.lineJoin = 'bevel';
-
-			if (this.showStroke){
-				ctx.stroke();
-			}
-		}
-	});
-
-	Chart.Rectangle = Chart.Element.extend({
-		draw : function(){
-			var ctx = this.ctx,
-				halfWidth = this.width/2,
-				leftX = this.x - halfWidth,
-				rightX = this.x + halfWidth,
-				top = this.base - (this.base - this.y),
-				halfStroke = this.strokeWidth / 2;
-
-			// Canvas doesn't allow us to stroke inside the width so we can
-			// adjust the sizes to fit if we're setting a stroke on the line
-			if (this.showStroke){
-				leftX += halfStroke;
-				rightX -= halfStroke;
-				top += halfStroke;
-			}
-
-			ctx.beginPath();
-
-			ctx.fillStyle = this.fillColor;
-			ctx.strokeStyle = this.strokeColor;
-			ctx.lineWidth = this.strokeWidth;
-
-			// It'd be nice to keep this class totally generic to any rectangle
-			// and simply specify which border to miss out.
-			ctx.moveTo(leftX, this.base);
-			ctx.lineTo(leftX, top);
-			ctx.lineTo(rightX, top);
-			ctx.lineTo(rightX, this.base);
-			ctx.fill();
-			if (this.showStroke){
-				ctx.stroke();
-			}
-		},
-		height : function(){
-			return this.base - this.y;
-		},
-		inRange : function(chartX,chartY){
-			return (chartX >= this.x - this.width/2 && chartX <= this.x + this.width/2) && (chartY >= this.y && chartY <= this.base);
-		}
-	});
-
-	Chart.Tooltip = Chart.Element.extend({
-		draw : function(){
-
-			var ctx = this.chart.ctx;
-
-			ctx.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
-
-			this.xAlign = "center";
-			this.yAlign = "above";
-
-			//Distance between the actual element.y position and the start of the tooltip caret
-			var caretPadding = this.caretPadding = 2;
-
-			var tooltipWidth = ctx.measureText(this.text).width + 2*this.xPadding,
-				tooltipRectHeight = this.fontSize + 2*this.yPadding,
-				tooltipHeight = tooltipRectHeight + this.caretHeight + caretPadding;
-
-			if (this.x + tooltipWidth/2 >this.chart.width){
-				this.xAlign = "left";
-			} else if (this.x - tooltipWidth/2 < 0){
-				this.xAlign = "right";
-			}
-
-			if (this.y - tooltipHeight < 0){
-				this.yAlign = "below";
-			}
-
-
-			var tooltipX = this.x - tooltipWidth/2,
-				tooltipY = this.y - tooltipHeight;
-
-			ctx.fillStyle = this.fillColor;
-
-			// Custom Tooltips
-			if(this.custom){
-				this.custom(this);
-			}
-			else{
-				switch(this.yAlign)
-				{
-				case "above":
-					//Draw a caret above the x/y
-					ctx.beginPath();
-					ctx.moveTo(this.x,this.y - caretPadding);
-					ctx.lineTo(this.x + this.caretHeight, this.y - (caretPadding + this.caretHeight));
-					ctx.lineTo(this.x - this.caretHeight, this.y - (caretPadding + this.caretHeight));
-					ctx.closePath();
-					ctx.fill();
-					break;
-				case "below":
-					tooltipY = this.y + caretPadding + this.caretHeight;
-					//Draw a caret below the x/y
-					ctx.beginPath();
-					ctx.moveTo(this.x, this.y + caretPadding);
-					ctx.lineTo(this.x + this.caretHeight, this.y + caretPadding + this.caretHeight);
-					ctx.lineTo(this.x - this.caretHeight, this.y + caretPadding + this.caretHeight);
-					ctx.closePath();
-					ctx.fill();
-					break;
-				}
-
-				switch(this.xAlign)
-				{
-				case "left":
-					tooltipX = this.x - tooltipWidth + (this.cornerRadius + this.caretHeight);
-					break;
-				case "right":
-					tooltipX = this.x - (this.cornerRadius + this.caretHeight);
-					break;
-				}
-
-				drawRoundedRectangle(ctx,tooltipX,tooltipY,tooltipWidth,tooltipRectHeight,this.cornerRadius);
-
-				ctx.fill();
-
-				ctx.fillStyle = this.textColor;
-				ctx.textAlign = "center";
-				ctx.textBaseline = "middle";
-				ctx.fillText(this.text, tooltipX + tooltipWidth/2, tooltipY + tooltipRectHeight/2);
-			}
-		}
-	});
-
-	Chart.MultiTooltip = Chart.Element.extend({
-		initialize : function(){
-			this.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
-
-			this.titleFont = fontString(this.titleFontSize,this.titleFontStyle,this.titleFontFamily);
-
-			this.height = (this.labels.length * this.fontSize) + ((this.labels.length-1) * (this.fontSize/2)) + (this.yPadding*2) + this.titleFontSize *1.5;
-
-			this.ctx.font = this.titleFont;
-
-			var titleWidth = this.ctx.measureText(this.title).width,
-				//Label has a legend square as well so account for this.
-				labelWidth = longestText(this.ctx,this.font,this.labels) + this.fontSize + 3,
-				longestTextWidth = max([labelWidth,titleWidth]);
-
-			this.width = longestTextWidth + (this.xPadding*2);
-
-
-			var halfHeight = this.height/2;
-
-			//Check to ensure the height will fit on the canvas
-			if (this.y - halfHeight < 0 ){
-				this.y = halfHeight;
-			} else if (this.y + halfHeight > this.chart.height){
-				this.y = this.chart.height - halfHeight;
-			}
-
-			//Decide whether to align left or right based on position on canvas
-			if (this.x > this.chart.width/2){
-				this.x -= this.xOffset + this.width;
-			} else {
-				this.x += this.xOffset;
-			}
-
-
-		},
-		getLineHeight : function(index){
-			var baseLineHeight = this.y - (this.height/2) + this.yPadding,
-				afterTitleIndex = index-1;
-
-			//If the index is zero, we're getting the title
-			if (index === 0){
-				return baseLineHeight + this.titleFontSize/2;
-			} else{
-				return baseLineHeight + ((this.fontSize*1.5*afterTitleIndex) + this.fontSize/2) + this.titleFontSize * 1.5;
-			}
-
-		},
-		draw : function(){
-			// Custom Tooltips
-			if(this.custom){
-				this.custom(this);
-			}
-			else{
-				drawRoundedRectangle(this.ctx,this.x,this.y - this.height/2,this.width,this.height,this.cornerRadius);
-				var ctx = this.ctx;
-				ctx.fillStyle = this.fillColor;
-				ctx.fill();
-				ctx.closePath();
-
-				ctx.textAlign = "left";
-				ctx.textBaseline = "middle";
-				ctx.fillStyle = this.titleTextColor;
-				ctx.font = this.titleFont;
-
-				ctx.fillText(this.title,this.x + this.xPadding, this.getLineHeight(0));
-
-				ctx.font = this.font;
-				helpers.each(this.labels,function(label,index){
-					ctx.fillStyle = this.textColor;
-					ctx.fillText(label,this.x + this.xPadding + this.fontSize + 3, this.getLineHeight(index + 1));
-
-					//A bit gnarly, but clearing this rectangle breaks when using explorercanvas (clears whole canvas)
-					//ctx.clearRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
-					//Instead we'll make a white filled block to put the legendColour palette over.
-
-					ctx.fillStyle = this.legendColorBackground;
-					ctx.fillRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
-
-					ctx.fillStyle = this.legendColors[index].fill;
-					ctx.fillRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
-
-
-				},this);
-			}
-		}
-	});
-
-	Chart.Scale = Chart.Element.extend({
-		initialize : function(){
-			this.fit();
-		},
-		buildYLabels : function(){
-			this.yLabels = [];
-
-			var stepDecimalPlaces = getDecimalPlaces(this.stepValue);
-
-			for (var i=0; i<=this.steps; i++){
-				this.yLabels.push(template(this.templateString,{value:(this.min + (i * this.stepValue)).toFixed(stepDecimalPlaces)}));
-			}
-			this.yLabelWidth = (this.display && this.showLabels) ? longestText(this.ctx,this.font,this.yLabels) : 0;
-		},
-		addXLabel : function(label){
-			this.xLabels.push(label);
-			this.valuesCount++;
-			this.fit();
-		},
-		removeXLabel : function(){
-			this.xLabels.shift();
-			this.valuesCount--;
-			this.fit();
-		},
-		// Fitting loop to rotate x Labels and figure out what fits there, and also calculate how many Y steps to use
-		fit: function(){
-			// First we need the width of the yLabels, assuming the xLabels aren't rotated
-
-			// To do that we need the base line at the top and base of the chart, assuming there is no x label rotation
-			this.startPoint = (this.display) ? this.fontSize : 0;
-			this.endPoint = (this.display) ? this.height - (this.fontSize * 1.5) - 5 : this.height; // -5 to pad labels
-
-			// Apply padding settings to the start and end point.
-			this.startPoint += this.padding;
-			this.endPoint -= this.padding;
-
-			// Cache the starting height, so can determine if we need to recalculate the scale yAxis
-			var cachedHeight = this.endPoint - this.startPoint,
-				cachedYLabelWidth;
-
-			// Build the current yLabels so we have an idea of what size they'll be to start
-			/*
-			 *	This sets what is returned from calculateScaleRange as static properties of this class:
-			 *
-				this.steps;
-				this.stepValue;
-				this.min;
-				this.max;
-			 *
-			 */
-			this.calculateYRange(cachedHeight);
-
-			// With these properties set we can now build the array of yLabels
-			// and also the width of the largest yLabel
-			this.buildYLabels();
-
-			this.calculateXLabelRotation();
-
-			while((cachedHeight > this.endPoint - this.startPoint)){
-				cachedHeight = this.endPoint - this.startPoint;
-				cachedYLabelWidth = this.yLabelWidth;
-
-				this.calculateYRange(cachedHeight);
-				this.buildYLabels();
-
-				// Only go through the xLabel loop again if the yLabel width has changed
-				if (cachedYLabelWidth < this.yLabelWidth){
-					this.calculateXLabelRotation();
-				}
-			}
-
-		},
-		calculateXLabelRotation : function(){
-			//Get the width of each grid by calculating the difference
-			//between x offsets between 0 and 1.
-
-			this.ctx.font = this.font;
-
-			var firstWidth = this.ctx.measureText(this.xLabels[0]).width,
-				lastWidth = this.ctx.measureText(this.xLabels[this.xLabels.length - 1]).width,
-				firstRotated,
-				lastRotated;
-
-
-			this.xScalePaddingRight = lastWidth/2 + 3;
-			this.xScalePaddingLeft = (firstWidth/2 > this.yLabelWidth + 10) ? firstWidth/2 : this.yLabelWidth + 10;
-
-			this.xLabelRotation = 0;
-			if (this.display){
-				var originalLabelWidth = longestText(this.ctx,this.font,this.xLabels),
-					cosRotation,
-					firstRotatedWidth;
-				this.xLabelWidth = originalLabelWidth;
-				//Allow 3 pixels x2 padding either side for label readability
-				var xGridWidth = Math.floor(this.calculateX(1) - this.calculateX(0)) - 6;
-
-				//Max label rotate should be 90 - also act as a loop counter
-				while ((this.xLabelWidth > xGridWidth && this.xLabelRotation === 0) || (this.xLabelWidth > xGridWidth && this.xLabelRotation <= 90 && this.xLabelRotation > 0)){
-					cosRotation = Math.cos(toRadians(this.xLabelRotation));
-
-					firstRotated = cosRotation * firstWidth;
-					lastRotated = cosRotation * lastWidth;
-
-					// We're right aligning the text now.
-					if (firstRotated + this.fontSize / 2 > this.yLabelWidth + 8){
-						this.xScalePaddingLeft = firstRotated + this.fontSize / 2;
-					}
-					this.xScalePaddingRight = this.fontSize/2;
-
-
-					this.xLabelRotation++;
-					this.xLabelWidth = cosRotation * originalLabelWidth;
-
-				}
-				if (this.xLabelRotation > 0){
-					this.endPoint -= Math.sin(toRadians(this.xLabelRotation))*originalLabelWidth + 3;
-				}
-			}
-			else{
-				this.xLabelWidth = 0;
-				this.xScalePaddingRight = this.padding;
-				this.xScalePaddingLeft = this.padding;
-			}
-
-		},
-		// Needs to be overidden in each Chart type
-		// Otherwise we need to pass all the data into the scale class
-		calculateYRange: noop,
-		drawingArea: function(){
-			return this.startPoint - this.endPoint;
-		},
-		calculateY : function(value){
-			var scalingFactor = this.drawingArea() / (this.min - this.max);
-			return this.endPoint - (scalingFactor * (value - this.min));
-		},
-		calculateX : function(index){
-			var isRotated = (this.xLabelRotation > 0),
-				// innerWidth = (this.offsetGridLines) ? this.width - offsetLeft - this.padding : this.width - (offsetLeft + halfLabelWidth * 2) - this.padding,
-				innerWidth = this.width - (this.xScalePaddingLeft + this.xScalePaddingRight),
-				valueWidth = innerWidth/Math.max((this.valuesCount - ((this.offsetGridLines) ? 0 : 1)), 1),
-				valueOffset = (valueWidth * index) + this.xScalePaddingLeft;
-
-			if (this.offsetGridLines){
-				valueOffset += (valueWidth/2);
-			}
-
-			return Math.round(valueOffset);
-		},
-		update : function(newProps){
-			helpers.extend(this, newProps);
-			this.fit();
-		},
-		draw : function(){
-			var ctx = this.ctx,
-				yLabelGap = (this.endPoint - this.startPoint) / this.steps,
-				xStart = Math.round(this.xScalePaddingLeft);
-			if (this.display){
-				ctx.fillStyle = this.textColor;
-				ctx.font = this.font;
-				each(this.yLabels,function(labelString,index){
-					var yLabelCenter = this.endPoint - (yLabelGap * index),
-						linePositionY = Math.round(yLabelCenter),
-						drawHorizontalLine = this.showHorizontalLines;
-
-					ctx.textAlign = "right";
-					ctx.textBaseline = "middle";
-					if (this.showLabels){
-						ctx.fillText(labelString,xStart - 10,yLabelCenter);
-					}
-
-					// This is X axis, so draw it
-					if (index === 0 && !drawHorizontalLine){
-						drawHorizontalLine = true;
-					}
-
-					if (drawHorizontalLine){
-						ctx.beginPath();
-					}
-
-					if (index > 0){
-						// This is a grid line in the centre, so drop that
-						ctx.lineWidth = this.gridLineWidth;
-						ctx.strokeStyle = this.gridLineColor;
-					} else {
-						// This is the first line on the scale
-						ctx.lineWidth = this.lineWidth;
-						ctx.strokeStyle = this.lineColor;
-					}
-
-					linePositionY += helpers.aliasPixel(ctx.lineWidth);
-
-					if(drawHorizontalLine){
-						ctx.moveTo(xStart, linePositionY);
-						ctx.lineTo(this.width, linePositionY);
-						ctx.stroke();
-						ctx.closePath();
-					}
-
-					ctx.lineWidth = this.lineWidth;
-					ctx.strokeStyle = this.lineColor;
-					ctx.beginPath();
-					ctx.moveTo(xStart - 5, linePositionY);
-					ctx.lineTo(xStart, linePositionY);
-					ctx.stroke();
-					ctx.closePath();
-
-				},this);
-
-				each(this.xLabels,function(label,index){
-					var xPos = this.calculateX(index) + aliasPixel(this.lineWidth),
-						// Check to see if line/bar here and decide where to place the line
-						linePos = this.calculateX(index - (this.offsetGridLines ? 0.5 : 0)) + aliasPixel(this.lineWidth),
-						isRotated = (this.xLabelRotation > 0),
-						drawVerticalLine = this.showVerticalLines;
-
-					// This is Y axis, so draw it
-					if (index === 0 && !drawVerticalLine){
-						drawVerticalLine = true;
-					}
-
-					if (drawVerticalLine){
-						ctx.beginPath();
-					}
-
-					if (index > 0){
-						// This is a grid line in the centre, so drop that
-						ctx.lineWidth = this.gridLineWidth;
-						ctx.strokeStyle = this.gridLineColor;
-					} else {
-						// This is the first line on the scale
-						ctx.lineWidth = this.lineWidth;
-						ctx.strokeStyle = this.lineColor;
-					}
-
-					if (drawVerticalLine){
-						ctx.moveTo(linePos,this.endPoint);
-						ctx.lineTo(linePos,this.startPoint - 3);
-						ctx.stroke();
-						ctx.closePath();
-					}
-
-
-					ctx.lineWidth = this.lineWidth;
-					ctx.strokeStyle = this.lineColor;
-
-
-					// Small lines at the bottom of the base grid line
-					ctx.beginPath();
-					ctx.moveTo(linePos,this.endPoint);
-					ctx.lineTo(linePos,this.endPoint + 5);
-					ctx.stroke();
-					ctx.closePath();
-
-					ctx.save();
-					ctx.translate(xPos,(isRotated) ? this.endPoint + 12 : this.endPoint + 8);
-					ctx.rotate(toRadians(this.xLabelRotation)*-1);
-					ctx.font = this.font;
-					ctx.textAlign = (isRotated) ? "right" : "center";
-					ctx.textBaseline = (isRotated) ? "middle" : "top";
-					ctx.fillText(label, 0, 0);
-					ctx.restore();
-				},this);
-
-			}
-		}
-
-	});
-
-	Chart.RadialScale = Chart.Element.extend({
-		initialize: function(){
-			this.size = min([this.height, this.width]);
-			this.drawingArea = (this.display) ? (this.size/2) - (this.fontSize/2 + this.backdropPaddingY) : (this.size/2);
-		},
-		calculateCenterOffset: function(value){
-			// Take into account half font size + the yPadding of the top value
-			var scalingFactor = this.drawingArea / (this.max - this.min);
-
-			return (value - this.min) * scalingFactor;
-		},
-		update : function(){
-			if (!this.lineArc){
-				this.setScaleSize();
-			} else {
-				this.drawingArea = (this.display) ? (this.size/2) - (this.fontSize/2 + this.backdropPaddingY) : (this.size/2);
-			}
-			this.buildYLabels();
-		},
-		buildYLabels: function(){
-			this.yLabels = [];
-
-			var stepDecimalPlaces = getDecimalPlaces(this.stepValue);
-
-			for (var i=0; i<=this.steps; i++){
-				this.yLabels.push(template(this.templateString,{value:(this.min + (i * this.stepValue)).toFixed(stepDecimalPlaces)}));
-			}
-		},
-		getCircumference : function(){
-			return ((Math.PI*2) / this.valuesCount);
-		},
-		setScaleSize: function(){
-			/*
-			 * Right, this is really confusing and there is a lot of maths going on here
-			 * The gist of the problem is here: https://gist.github.com/nnnick/696cc9c55f4b0beb8fe9
-			 *
-			 * Reaction: https://dl.dropboxusercontent.com/u/34601363/toomuchscience.gif
-			 *
-			 * Solution:
-			 *
-			 * We assume the radius of the polygon is half the size of the canvas at first
-			 * at each index we check if the text overlaps.
-			 *
-			 * Where it does, we store that angle and that index.
-			 *
-			 * After finding the largest index and angle we calculate how much we need to remove
-			 * from the shape radius to move the point inwards by that x.
-			 *
-			 * We average the left and right distances to get the maximum shape radius that can fit in the box
-			 * along with labels.
-			 *
-			 * Once we have that, we can find the centre point for the chart, by taking the x text protrusion
-			 * on each side, removing that from the size, halving it and adding the left x protrusion width.
-			 *
-			 * This will mean we have a shape fitted to the canvas, as large as it can be with the labels
-			 * and position it in the most space efficient manner
-			 *
-			 * https://dl.dropboxusercontent.com/u/34601363/yeahscience.gif
-			 */
-
-
-			// Get maximum radius of the polygon. Either half the height (minus the text width) or half the width.
-			// Use this to calculate the offset + change. - Make sure L/R protrusion is at least 0 to stop issues with centre points
-			var largestPossibleRadius = min([(this.height/2 - this.pointLabelFontSize - 5), this.width/2]),
-				pointPosition,
-				i,
-				textWidth,
-				halfTextWidth,
-				furthestRight = this.width,
-				furthestRightIndex,
-				furthestRightAngle,
-				furthestLeft = 0,
-				furthestLeftIndex,
-				furthestLeftAngle,
-				xProtrusionLeft,
-				xProtrusionRight,
-				radiusReductionRight,
-				radiusReductionLeft,
-				maxWidthRadius;
-			this.ctx.font = fontString(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily);
-			for (i=0;i<this.valuesCount;i++){
-				// 5px to space the text slightly out - similar to what we do in the draw function.
-				pointPosition = this.getPointPosition(i, largestPossibleRadius);
-				textWidth = this.ctx.measureText(template(this.templateString, { value: this.labels[i] })).width + 5;
-				if (i === 0 || i === this.valuesCount/2){
-					// If we're at index zero, or exactly the middle, we're at exactly the top/bottom
-					// of the radar chart, so text will be aligned centrally, so we'll half it and compare
-					// w/left and right text sizes
-					halfTextWidth = textWidth/2;
-					if (pointPosition.x + halfTextWidth > furthestRight) {
-						furthestRight = pointPosition.x + halfTextWidth;
-						furthestRightIndex = i;
-					}
-					if (pointPosition.x - halfTextWidth < furthestLeft) {
-						furthestLeft = pointPosition.x - halfTextWidth;
-						furthestLeftIndex = i;
-					}
-				}
-				else if (i < this.valuesCount/2) {
-					// Less than half the values means we'll left align the text
-					if (pointPosition.x + textWidth > furthestRight) {
-						furthestRight = pointPosition.x + textWidth;
-						furthestRightIndex = i;
-					}
-				}
-				else if (i > this.valuesCount/2){
-					// More than half the values means we'll right align the text
-					if (pointPosition.x - textWidth < furthestLeft) {
-						furthestLeft = pointPosition.x - textWidth;
-						furthestLeftIndex = i;
-					}
-				}
-			}
-
-			xProtrusionLeft = furthestLeft;
-
-			xProtrusionRight = Math.ceil(furthestRight - this.width);
-
-			furthestRightAngle = this.getIndexAngle(furthestRightIndex);
-
-			furthestLeftAngle = this.getIndexAngle(furthestLeftIndex);
-
-			radiusReductionRight = xProtrusionRight / Math.sin(furthestRightAngle + Math.PI/2);
-
-			radiusReductionLeft = xProtrusionLeft / Math.sin(furthestLeftAngle + Math.PI/2);
-
-			// Ensure we actually need to reduce the size of the chart
-			radiusReductionRight = (isNumber(radiusReductionRight)) ? radiusReductionRight : 0;
-			radiusReductionLeft = (isNumber(radiusReductionLeft)) ? radiusReductionLeft : 0;
-
-			this.drawingArea = largestPossibleRadius - (radiusReductionLeft + radiusReductionRight)/2;
-
-			//this.drawingArea = min([maxWidthRadius, (this.height - (2 * (this.pointLabelFontSize + 5)))/2])
-			this.setCenterPoint(radiusReductionLeft, radiusReductionRight);
-
-		},
-		setCenterPoint: function(leftMovement, rightMovement){
-
-			var maxRight = this.width - rightMovement - this.drawingArea,
-				maxLeft = leftMovement + this.drawingArea;
-
-			this.xCenter = (maxLeft + maxRight)/2;
-			// Always vertically in the centre as the text height doesn't change
-			this.yCenter = (this.height/2);
-		},
-
-		getIndexAngle : function(index){
-			var angleMultiplier = (Math.PI * 2) / this.valuesCount;
-			// Start from the top instead of right, so remove a quarter of the circle
-
-			return index * angleMultiplier - (Math.PI/2);
-		},
-		getPointPosition : function(index, distanceFromCenter){
-			var thisAngle = this.getIndexAngle(index);
-			return {
-				x : (Math.cos(thisAngle) * distanceFromCenter) + this.xCenter,
-				y : (Math.sin(thisAngle) * distanceFromCenter) + this.yCenter
-			};
-		},
-		draw: function(){
-			if (this.display){
-				var ctx = this.ctx;
-				each(this.yLabels, function(label, index){
-					// Don't draw a centre value
-					if (index > 0){
-						var yCenterOffset = index * (this.drawingArea/this.steps),
-							yHeight = this.yCenter - yCenterOffset,
-							pointPosition;
-
-						// Draw circular lines around the scale
-						if (this.lineWidth > 0){
-							ctx.strokeStyle = this.lineColor;
-							ctx.lineWidth = this.lineWidth;
-
-							if(this.lineArc){
-								ctx.beginPath();
-								ctx.arc(this.xCenter, this.yCenter, yCenterOffset, 0, Math.PI*2);
-								ctx.closePath();
-								ctx.stroke();
-							} else{
-								ctx.beginPath();
-								for (var i=0;i<this.valuesCount;i++)
-								{
-									pointPosition = this.getPointPosition(i, this.calculateCenterOffset(this.min + (index * this.stepValue)));
-									if (i === 0){
-										ctx.moveTo(pointPosition.x, pointPosition.y);
-									} else {
-										ctx.lineTo(pointPosition.x, pointPosition.y);
-									}
-								}
-								ctx.closePath();
-								ctx.stroke();
-							}
-						}
-						if(this.showLabels){
-							ctx.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
-							if (this.showLabelBackdrop){
-								var labelWidth = ctx.measureText(label).width;
-								ctx.fillStyle = this.backdropColor;
-								ctx.fillRect(
-									this.xCenter - labelWidth/2 - this.backdropPaddingX,
-									yHeight - this.fontSize/2 - this.backdropPaddingY,
-									labelWidth + this.backdropPaddingX*2,
-									this.fontSize + this.backdropPaddingY*2
-								);
-							}
-							ctx.textAlign = 'center';
-							ctx.textBaseline = "middle";
-							ctx.fillStyle = this.fontColor;
-							ctx.fillText(label, this.xCenter, yHeight);
-						}
-					}
-				}, this);
-
-				if (!this.lineArc){
-					ctx.lineWidth = this.angleLineWidth;
-					ctx.strokeStyle = this.angleLineColor;
-					for (var i = this.valuesCount - 1; i >= 0; i--) {
-						if (this.angleLineWidth > 0){
-							var outerPosition = this.getPointPosition(i, this.calculateCenterOffset(this.max));
-							ctx.beginPath();
-							ctx.moveTo(this.xCenter, this.yCenter);
-							ctx.lineTo(outerPosition.x, outerPosition.y);
-							ctx.stroke();
-							ctx.closePath();
-						}
-						// Extra 3px out for some label spacing
-						var pointLabelPosition = this.getPointPosition(i, this.calculateCenterOffset(this.max) + 5);
-						ctx.font = fontString(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily);
-						ctx.fillStyle = this.pointLabelFontColor;
-
-						var labelsCount = this.labels.length,
-							halfLabelsCount = this.labels.length/2,
-							quarterLabelsCount = halfLabelsCount/2,
-							upperHalf = (i < quarterLabelsCount || i > labelsCount - quarterLabelsCount),
-							exactQuarter = (i === quarterLabelsCount || i === labelsCount - quarterLabelsCount);
-						if (i === 0){
-							ctx.textAlign = 'center';
-						} else if(i === halfLabelsCount){
-							ctx.textAlign = 'center';
-						} else if (i < halfLabelsCount){
-							ctx.textAlign = 'left';
-						} else {
-							ctx.textAlign = 'right';
-						}
-
-						// Set the correct text baseline based on outer positioning
-						if (exactQuarter){
-							ctx.textBaseline = 'middle';
-						} else if (upperHalf){
-							ctx.textBaseline = 'bottom';
-						} else {
-							ctx.textBaseline = 'top';
-						}
-
-						ctx.fillText(this.labels[i], pointLabelPosition.x, pointLabelPosition.y);
-					}
-				}
-			}
-		}
-	});
-
-	// Attach global event to resize each chart instance when the browser resizes
-	helpers.addEvent(window, "resize", (function(){
-		// Basic debounce of resize function so it doesn't hurt performance when resizing browser.
-		var timeout;
-		return function(){
-			clearTimeout(timeout);
-			timeout = setTimeout(function(){
-				each(Chart.instances,function(instance){
-					// If the responsive flag is set in the chart instance config
-					// Cascade the resize event down to the chart.
-					if (instance.options.responsive){
-						instance.resize(instance.render, true);
-					}
-				});
-			}, 50);
-		};
-	})());
-
-
-	if (amd) {
-		define(function(){
-			return Chart;
-		});
-	} else if (typeof module === 'object' && module.exports) {
-		module.exports = Chart;
-	}
-
-	root.Chart = Chart;
-
-	Chart.noConflict = function(){
-		root.Chart = previous;
-		return Chart;
-	};
-
-}).call(this);
-
-(function(){
-	"use strict";
-
-	var root = this,
-		Chart = root.Chart,
-		helpers = Chart.helpers;
-
-
-	var defaultConfig = {
-		//Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-		scaleBeginAtZero : true,
-
-		//Boolean - Whether grid lines are shown across the chart
-		scaleShowGridLines : true,
-
-		//String - Colour of the grid lines
-		scaleGridLineColor : "rgba(0,0,0,.05)",
-
-		//Number - Width of the grid lines
-		scaleGridLineWidth : 1,
-
-		//Boolean - Whether to show horizontal lines (except X axis)
-		scaleShowHorizontalLines: true,
-
-		//Boolean - Whether to show vertical lines (except Y axis)
-		scaleShowVerticalLines: true,
-
-		//Boolean - If there is a stroke on each bar
-		barShowStroke : true,
-
-		//Number - Pixel width of the bar stroke
-		barStrokeWidth : 2,
-
-		//Number - Spacing between each of the X value sets
-		barValueSpacing : 5,
-
-		//Number - Spacing between data sets within X values
-		barDatasetSpacing : 1,
-
-		//String - A legend template
-		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-
-	};
-
-
-	Chart.Type.extend({
-		name: "Bar",
-		defaults : defaultConfig,
-		initialize:  function(data){
-
-			//Expose options as a scope variable here so we can access it in the ScaleClass
-			var options = this.options;
-
-			this.ScaleClass = Chart.Scale.extend({
-				offsetGridLines : true,
-				calculateBarX : function(datasetCount, datasetIndex, barIndex){
-					//Reusable method for calculating the xPosition of a given bar based on datasetIndex & width of the bar
-					var xWidth = this.calculateBaseWidth(),
-						xAbsolute = this.calculateX(barIndex) - (xWidth/2),
-						barWidth = this.calculateBarWidth(datasetCount);
-
-					return xAbsolute + (barWidth * datasetIndex) + (datasetIndex * options.barDatasetSpacing) + barWidth/2;
-				},
-				calculateBaseWidth : function(){
-					return (this.calculateX(1) - this.calculateX(0)) - (2*options.barValueSpacing);
-				},
-				calculateBarWidth : function(datasetCount){
-					//The padding between datasets is to the right of each bar, providing that there are more than 1 dataset
-					var baseWidth = this.calculateBaseWidth() - ((datasetCount - 1) * options.barDatasetSpacing);
-
-					return (baseWidth / datasetCount);
-				}
-			});
-
-			this.datasets = [];
-
-			//Set up tooltip events on the chart
-			if (this.options.showTooltips){
-				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
-					var activeBars = (evt.type !== 'mouseout') ? this.getBarsAtEvent(evt) : [];
-
-					this.eachBars(function(bar){
-						bar.restore(['fillColor', 'strokeColor']);
-					});
-					helpers.each(activeBars, function(activeBar){
-						activeBar.fillColor = activeBar.highlightFill;
-						activeBar.strokeColor = activeBar.highlightStroke;
-					});
-					this.showTooltip(activeBars);
-				});
-			}
-
-			//Declare the extension of the default point, to cater for the options passed in to the constructor
-			this.BarClass = Chart.Rectangle.extend({
-				strokeWidth : this.options.barStrokeWidth,
-				showStroke : this.options.barShowStroke,
-				ctx : this.chart.ctx
-			});
-
-			//Iterate through each of the datasets, and build this into a property of the chart
-			helpers.each(data.datasets,function(dataset,datasetIndex){
-
-				var datasetObject = {
-					label : dataset.label || null,
-					fillColor : dataset.fillColor,
-					strokeColor : dataset.strokeColor,
-					bars : []
-				};
-
-				this.datasets.push(datasetObject);
-
-				helpers.each(dataset.data,function(dataPoint,index){
-					//Add a new point for each piece of data, passing any required data to draw.
-					datasetObject.bars.push(new this.BarClass({
-						value : dataPoint,
-						label : data.labels[index],
-						datasetLabel: dataset.label,
-						strokeColor : dataset.strokeColor,
-						fillColor : dataset.fillColor,
-						highlightFill : dataset.highlightFill || dataset.fillColor,
-						highlightStroke : dataset.highlightStroke || dataset.strokeColor
-					}));
-				},this);
-
-			},this);
-
-			this.buildScale(data.labels);
-
-			this.BarClass.prototype.base = this.scale.endPoint;
-
-			this.eachBars(function(bar, index, datasetIndex){
-				helpers.extend(bar, {
-					width : this.scale.calculateBarWidth(this.datasets.length),
-					x: this.scale.calculateBarX(this.datasets.length, datasetIndex, index),
-					y: this.scale.endPoint
-				});
-				bar.save();
-			}, this);
-
-			this.render();
-		},
-		update : function(){
-			this.scale.update();
-			// Reset any highlight colours before updating.
-			helpers.each(this.activeElements, function(activeElement){
-				activeElement.restore(['fillColor', 'strokeColor']);
-			});
-
-			this.eachBars(function(bar){
-				bar.save();
-			});
-			this.render();
-		},
-		eachBars : function(callback){
-			helpers.each(this.datasets,function(dataset, datasetIndex){
-				helpers.each(dataset.bars, callback, this, datasetIndex);
-			},this);
-		},
-		getBarsAtEvent : function(e){
-			var barsArray = [],
-				eventPosition = helpers.getRelativePosition(e),
-				datasetIterator = function(dataset){
-					barsArray.push(dataset.bars[barIndex]);
-				},
-				barIndex;
-
-			for (var datasetIndex = 0; datasetIndex < this.datasets.length; datasetIndex++) {
-				for (barIndex = 0; barIndex < this.datasets[datasetIndex].bars.length; barIndex++) {
-					if (this.datasets[datasetIndex].bars[barIndex].inRange(eventPosition.x,eventPosition.y)){
-						helpers.each(this.datasets, datasetIterator);
-						return barsArray;
-					}
-				}
-			}
-
-			return barsArray;
-		},
-		buildScale : function(labels){
-			var self = this;
-
-			var dataTotal = function(){
-				var values = [];
-				self.eachBars(function(bar){
-					values.push(bar.value);
-				});
-				return values;
-			};
-
-			var scaleOptions = {
-				templateString : this.options.scaleLabel,
-				height : this.chart.height,
-				width : this.chart.width,
-				ctx : this.chart.ctx,
-				textColor : this.options.scaleFontColor,
-				fontSize : this.options.scaleFontSize,
-				fontStyle : this.options.scaleFontStyle,
-				fontFamily : this.options.scaleFontFamily,
-				valuesCount : labels.length,
-				beginAtZero : this.options.scaleBeginAtZero,
-				integersOnly : this.options.scaleIntegersOnly,
-				calculateYRange: function(currentHeight){
-					var updatedRanges = helpers.calculateScaleRange(
-						dataTotal(),
-						currentHeight,
-						this.fontSize,
-						this.beginAtZero,
-						this.integersOnly
-					);
-					helpers.extend(this, updatedRanges);
-				},
-				xLabels : labels,
-				font : helpers.fontString(this.options.scaleFontSize, this.options.scaleFontStyle, this.options.scaleFontFamily),
-				lineWidth : this.options.scaleLineWidth,
-				lineColor : this.options.scaleLineColor,
-				showHorizontalLines : this.options.scaleShowHorizontalLines,
-				showVerticalLines : this.options.scaleShowVerticalLines,
-				gridLineWidth : (this.options.scaleShowGridLines) ? this.options.scaleGridLineWidth : 0,
-				gridLineColor : (this.options.scaleShowGridLines) ? this.options.scaleGridLineColor : "rgba(0,0,0,0)",
-				padding : (this.options.showScale) ? 0 : (this.options.barShowStroke) ? this.options.barStrokeWidth : 0,
-				showLabels : this.options.scaleShowLabels,
-				display : this.options.showScale
-			};
-
-			if (this.options.scaleOverride){
-				helpers.extend(scaleOptions, {
-					calculateYRange: helpers.noop,
-					steps: this.options.scaleSteps,
-					stepValue: this.options.scaleStepWidth,
-					min: this.options.scaleStartValue,
-					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
-				});
-			}
-
-			this.scale = new this.ScaleClass(scaleOptions);
-		},
-		addData : function(valuesArray,label){
-			//Map the values array for each of the datasets
-			helpers.each(valuesArray,function(value,datasetIndex){
-				//Add a new point for each piece of data, passing any required data to draw.
-				this.datasets[datasetIndex].bars.push(new this.BarClass({
-					value : value,
-					label : label,
-					x: this.scale.calculateBarX(this.datasets.length, datasetIndex, this.scale.valuesCount+1),
-					y: this.scale.endPoint,
-					width : this.scale.calculateBarWidth(this.datasets.length),
-					base : this.scale.endPoint,
-					strokeColor : this.datasets[datasetIndex].strokeColor,
-					fillColor : this.datasets[datasetIndex].fillColor
-				}));
-			},this);
-
-			this.scale.addXLabel(label);
-			//Then re-render the chart.
-			this.update();
-		},
-		removeData : function(){
-			this.scale.removeXLabel();
-			//Then re-render the chart.
-			helpers.each(this.datasets,function(dataset){
-				dataset.bars.shift();
-			},this);
-			this.update();
-		},
-		reflow : function(){
-			helpers.extend(this.BarClass.prototype,{
-				y: this.scale.endPoint,
-				base : this.scale.endPoint
-			});
-			var newScaleProps = helpers.extend({
-				height : this.chart.height,
-				width : this.chart.width
-			});
-			this.scale.update(newScaleProps);
-		},
-		draw : function(ease){
-			var easingDecimal = ease || 1;
-			this.clear();
-
-			var ctx = this.chart.ctx;
-
-			this.scale.draw(easingDecimal);
-
-			//Draw all the bars for each dataset
-			helpers.each(this.datasets,function(dataset,datasetIndex){
-				helpers.each(dataset.bars,function(bar,index){
-					if (bar.hasValue()){
-						bar.base = this.scale.endPoint;
-						//Transition then draw
-						bar.transition({
-							x : this.scale.calculateBarX(this.datasets.length, datasetIndex, index),
-							y : this.scale.calculateY(bar.value),
-							width : this.scale.calculateBarWidth(this.datasets.length)
-						}, easingDecimal).draw();
-					}
-				},this);
-
-			},this);
-		}
-	});
-
-
-}).call(this);
-
-(function(){
-	"use strict";
-
-	var root = this,
-		Chart = root.Chart,
-		//Cache a local reference to Chart.helpers
-		helpers = Chart.helpers;
-
-	var defaultConfig = {
-		//Boolean - Whether we should show a stroke on each segment
-		segmentShowStroke : true,
-
-		//String - The colour of each segment stroke
-		segmentStrokeColor : "#fff",
-
-		//Number - The width of each segment stroke
-		segmentStrokeWidth : 2,
-
-		//The percentage of the chart that we cut out of the middle.
-		percentageInnerCutout : 50,
-
-		//Number - Amount of animation steps
-		animationSteps : 100,
-
-		//String - Animation easing effect
-		animationEasing : "easeOutBounce",
-
-		//Boolean - Whether we animate the rotation of the Doughnut
-		animateRotate : true,
-
-		//Boolean - Whether we animate scaling the Doughnut from the centre
-		animateScale : false,
-
-		//String - A legend template
-		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
-
-	};
-
-
-	Chart.Type.extend({
-		//Passing in a name registers this chart in the Chart namespace
-		name: "Doughnut",
-		//Providing a defaults will also register the deafults in the chart namespace
-		defaults : defaultConfig,
-		//Initialize is fired when the chart is initialized - Data is passed in as a parameter
-		//Config is automatically merged by the core of Chart.js, and is available at this.options
-		initialize:  function(data){
-
-			//Declare segments as a static property to prevent inheriting across the Chart type prototype
-			this.segments = [];
-			this.outerRadius = (helpers.min([this.chart.width,this.chart.height]) -	this.options.segmentStrokeWidth/2)/2;
-
-			this.SegmentArc = Chart.Arc.extend({
-				ctx : this.chart.ctx,
-				x : this.chart.width/2,
-				y : this.chart.height/2
-			});
-
-			//Set up tooltip events on the chart
-			if (this.options.showTooltips){
-				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
-					var activeSegments = (evt.type !== 'mouseout') ? this.getSegmentsAtEvent(evt) : [];
-
-					helpers.each(this.segments,function(segment){
-						segment.restore(["fillColor"]);
-					});
-					helpers.each(activeSegments,function(activeSegment){
-						activeSegment.fillColor = activeSegment.highlightColor;
-					});
-					this.showTooltip(activeSegments);
-				});
-			}
-			this.calculateTotal(data);
-
-			helpers.each(data,function(datapoint, index){
-				this.addData(datapoint, index, true);
-			},this);
-
-			this.render();
-		},
-		getSegmentsAtEvent : function(e){
-			var segmentsArray = [];
-
-			var location = helpers.getRelativePosition(e);
-
-			helpers.each(this.segments,function(segment){
-				if (segment.inRange(location.x,location.y)) segmentsArray.push(segment);
-			},this);
-			return segmentsArray;
-		},
-		addData : function(segment, atIndex, silent){
-			var index = atIndex || this.segments.length;
-			this.segments.splice(index, 0, new this.SegmentArc({
-				value : segment.value,
-				outerRadius : (this.options.animateScale) ? 0 : this.outerRadius,
-				innerRadius : (this.options.animateScale) ? 0 : (this.outerRadius/100) * this.options.percentageInnerCutout,
-				fillColor : segment.color,
-				highlightColor : segment.highlight || segment.color,
-				showStroke : this.options.segmentShowStroke,
-				strokeWidth : this.options.segmentStrokeWidth,
-				strokeColor : this.options.segmentStrokeColor,
-				startAngle : Math.PI * 1.5,
-				circumference : (this.options.animateRotate) ? 0 : this.calculateCircumference(segment.value),
-				label : segment.label
-			}));
-			if (!silent){
-				this.reflow();
-				this.update();
-			}
-		},
-		calculateCircumference : function(value){
-			return (Math.PI*2)*(Math.abs(value) / this.total);
-		},
-		calculateTotal : function(data){
-			this.total = 0;
-			helpers.each(data,function(segment){
-				this.total += Math.abs(segment.value);
-			},this);
-		},
-		update : function(){
-			this.calculateTotal(this.segments);
-
-			// Reset any highlight colours before updating.
-			helpers.each(this.activeElements, function(activeElement){
-				activeElement.restore(['fillColor']);
-			});
-
-			helpers.each(this.segments,function(segment){
-				segment.save();
-			});
-			this.render();
-		},
-
-		removeData: function(atIndex){
-			var indexToDelete = (helpers.isNumber(atIndex)) ? atIndex : this.segments.length-1;
-			this.segments.splice(indexToDelete, 1);
-			this.reflow();
-			this.update();
-		},
-
-		reflow : function(){
-			helpers.extend(this.SegmentArc.prototype,{
-				x : this.chart.width/2,
-				y : this.chart.height/2
-			});
-			this.outerRadius = (helpers.min([this.chart.width,this.chart.height]) -	this.options.segmentStrokeWidth/2)/2;
-			helpers.each(this.segments, function(segment){
-				segment.update({
-					outerRadius : this.outerRadius,
-					innerRadius : (this.outerRadius/100) * this.options.percentageInnerCutout
-				});
-			}, this);
-		},
-		draw : function(easeDecimal){
-			var animDecimal = (easeDecimal) ? easeDecimal : 1;
-			this.clear();
-			helpers.each(this.segments,function(segment,index){
-				segment.transition({
-					circumference : this.calculateCircumference(segment.value),
-					outerRadius : this.outerRadius,
-					innerRadius : (this.outerRadius/100) * this.options.percentageInnerCutout
-				},animDecimal);
-
-				segment.endAngle = segment.startAngle + segment.circumference;
-
-				segment.draw();
-				if (index === 0){
-					segment.startAngle = Math.PI * 1.5;
-				}
-				//Check to see if it's the last segment, if not get the next and update the start angle
-				if (index < this.segments.length-1){
-					this.segments[index+1].startAngle = segment.endAngle;
-				}
-			},this);
-
-		}
-	});
-
-	Chart.types.Doughnut.extend({
-		name : "Pie",
-		defaults : helpers.merge(defaultConfig,{percentageInnerCutout : 0})
-	});
-
-}).call(this);
-(function(){
-	"use strict";
-
-	var root = this,
-		Chart = root.Chart,
-		helpers = Chart.helpers;
-
-	var defaultConfig = {
-
-		///Boolean - Whether grid lines are shown across the chart
-		scaleShowGridLines : true,
-
-		//String - Colour of the grid lines
-		scaleGridLineColor : "rgba(0,0,0,.05)",
-
-		//Number - Width of the grid lines
-		scaleGridLineWidth : 1,
-
-		//Boolean - Whether to show horizontal lines (except X axis)
-		scaleShowHorizontalLines: true,
-
-		//Boolean - Whether to show vertical lines (except Y axis)
-		scaleShowVerticalLines: true,
-
-		//Boolean - Whether the line is curved between points
-		bezierCurve : true,
-
-		//Number - Tension of the bezier curve between points
-		bezierCurveTension : 0.4,
-
-		//Boolean - Whether to show a dot for each point
-		pointDot : true,
-
-		//Number - Radius of each point dot in pixels
-		pointDotRadius : 4,
-
-		//Number - Pixel width of point dot stroke
-		pointDotStrokeWidth : 1,
-
-		//Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-		pointHitDetectionRadius : 20,
-
-		//Boolean - Whether to show a stroke for datasets
-		datasetStroke : true,
-
-		//Number - Pixel width of dataset stroke
-		datasetStrokeWidth : 2,
-
-		//Boolean - Whether to fill the dataset with a colour
-		datasetFill : true,
-
-		//String - A legend template
-		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-
-	};
-
-
-	Chart.Type.extend({
-		name: "Line",
-		defaults : defaultConfig,
-		initialize:  function(data){
-			//Declare the extension of the default point, to cater for the options passed in to the constructor
-			this.PointClass = Chart.Point.extend({
-				strokeWidth : this.options.pointDotStrokeWidth,
-				radius : this.options.pointDotRadius,
-				display: this.options.pointDot,
-				hitDetectionRadius : this.options.pointHitDetectionRadius,
-				ctx : this.chart.ctx,
-				inRange : function(mouseX){
-					return (Math.pow(mouseX-this.x, 2) < Math.pow(this.radius + this.hitDetectionRadius,2));
-				}
-			});
-
-			this.datasets = [];
-
-			//Set up tooltip events on the chart
-			if (this.options.showTooltips){
-				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
-					var activePoints = (evt.type !== 'mouseout') ? this.getPointsAtEvent(evt) : [];
-					this.eachPoints(function(point){
-						point.restore(['fillColor', 'strokeColor']);
-					});
-					helpers.each(activePoints, function(activePoint){
-						activePoint.fillColor = activePoint.highlightFill;
-						activePoint.strokeColor = activePoint.highlightStroke;
-					});
-					this.showTooltip(activePoints);
-				});
-			}
-
-			//Iterate through each of the datasets, and build this into a property of the chart
-			helpers.each(data.datasets,function(dataset){
-
-				var datasetObject = {
-					label : dataset.label || null,
-					fillColor : dataset.fillColor,
-					strokeColor : dataset.strokeColor,
-					pointColor : dataset.pointColor,
-					pointStrokeColor : dataset.pointStrokeColor,
-					points : []
-				};
-
-				this.datasets.push(datasetObject);
-
-
-				helpers.each(dataset.data,function(dataPoint,index){
-					//Add a new point for each piece of data, passing any required data to draw.
-					datasetObject.points.push(new this.PointClass({
-						value : dataPoint,
-						label : data.labels[index],
-						datasetLabel: dataset.label,
-						strokeColor : dataset.pointStrokeColor,
-						fillColor : dataset.pointColor,
-						highlightFill : dataset.pointHighlightFill || dataset.pointColor,
-						highlightStroke : dataset.pointHighlightStroke || dataset.pointStrokeColor
-					}));
-				},this);
-
-				this.buildScale(data.labels);
-
-
-				this.eachPoints(function(point, index){
-					helpers.extend(point, {
-						x: this.scale.calculateX(index),
-						y: this.scale.endPoint
-					});
-					point.save();
-				}, this);
-
-			},this);
-
-
-			this.render();
-		},
-		update : function(){
-			this.scale.update();
-			// Reset any highlight colours before updating.
-			helpers.each(this.activeElements, function(activeElement){
-				activeElement.restore(['fillColor', 'strokeColor']);
-			});
-			this.eachPoints(function(point){
-				point.save();
-			});
-			this.render();
-		},
-		eachPoints : function(callback){
-			helpers.each(this.datasets,function(dataset){
-				helpers.each(dataset.points,callback,this);
-			},this);
-		},
-		getPointsAtEvent : function(e){
-			var pointsArray = [],
-				eventPosition = helpers.getRelativePosition(e);
-			helpers.each(this.datasets,function(dataset){
-				helpers.each(dataset.points,function(point){
-					if (point.inRange(eventPosition.x,eventPosition.y)) pointsArray.push(point);
-				});
-			},this);
-			return pointsArray;
-		},
-		buildScale : function(labels){
-			var self = this;
-
-			var dataTotal = function(){
-				var values = [];
-				self.eachPoints(function(point){
-					values.push(point.value);
-				});
-
-				return values;
-			};
-
-			var scaleOptions = {
-				templateString : this.options.scaleLabel,
-				height : this.chart.height,
-				width : this.chart.width,
-				ctx : this.chart.ctx,
-				textColor : this.options.scaleFontColor,
-				fontSize : this.options.scaleFontSize,
-				fontStyle : this.options.scaleFontStyle,
-				fontFamily : this.options.scaleFontFamily,
-				valuesCount : labels.length,
-				beginAtZero : this.options.scaleBeginAtZero,
-				integersOnly : this.options.scaleIntegersOnly,
-				calculateYRange : function(currentHeight){
-					var updatedRanges = helpers.calculateScaleRange(
-						dataTotal(),
-						currentHeight,
-						this.fontSize,
-						this.beginAtZero,
-						this.integersOnly
-					);
-					helpers.extend(this, updatedRanges);
-				},
-				xLabels : labels,
-				font : helpers.fontString(this.options.scaleFontSize, this.options.scaleFontStyle, this.options.scaleFontFamily),
-				lineWidth : this.options.scaleLineWidth,
-				lineColor : this.options.scaleLineColor,
-				showHorizontalLines : this.options.scaleShowHorizontalLines,
-				showVerticalLines : this.options.scaleShowVerticalLines,
-				gridLineWidth : (this.options.scaleShowGridLines) ? this.options.scaleGridLineWidth : 0,
-				gridLineColor : (this.options.scaleShowGridLines) ? this.options.scaleGridLineColor : "rgba(0,0,0,0)",
-				padding: (this.options.showScale) ? 0 : this.options.pointDotRadius + this.options.pointDotStrokeWidth,
-				showLabels : this.options.scaleShowLabels,
-				display : this.options.showScale
-			};
-
-			if (this.options.scaleOverride){
-				helpers.extend(scaleOptions, {
-					calculateYRange: helpers.noop,
-					steps: this.options.scaleSteps,
-					stepValue: this.options.scaleStepWidth,
-					min: this.options.scaleStartValue,
-					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
-				});
-			}
-
-
-			this.scale = new Chart.Scale(scaleOptions);
-		},
-		addData : function(valuesArray,label){
-			//Map the values array for each of the datasets
-
-			helpers.each(valuesArray,function(value,datasetIndex){
-				//Add a new point for each piece of data, passing any required data to draw.
-				this.datasets[datasetIndex].points.push(new this.PointClass({
-					value : value,
-					label : label,
-					x: this.scale.calculateX(this.scale.valuesCount+1),
-					y: this.scale.endPoint,
-					strokeColor : this.datasets[datasetIndex].pointStrokeColor,
-					fillColor : this.datasets[datasetIndex].pointColor
-				}));
-			},this);
-
-			this.scale.addXLabel(label);
-			//Then re-render the chart.
-			this.update();
-		},
-		removeData : function(){
-			this.scale.removeXLabel();
-			//Then re-render the chart.
-			helpers.each(this.datasets,function(dataset){
-				dataset.points.shift();
-			},this);
-			this.update();
-		},
-		reflow : function(){
-			var newScaleProps = helpers.extend({
-				height : this.chart.height,
-				width : this.chart.width
-			});
-			this.scale.update(newScaleProps);
-		},
-		draw : function(ease){
-			var easingDecimal = ease || 1;
-			this.clear();
-
-			var ctx = this.chart.ctx;
-
-			// Some helper methods for getting the next/prev points
-			var hasValue = function(item){
-				return item.value !== null;
-			},
-			nextPoint = function(point, collection, index){
-				return helpers.findNextWhere(collection, hasValue, index) || point;
-			},
-			previousPoint = function(point, collection, index){
-				return helpers.findPreviousWhere(collection, hasValue, index) || point;
-			};
-
-			this.scale.draw(easingDecimal);
-
-
-			helpers.each(this.datasets,function(dataset){
-				var pointsWithValues = helpers.where(dataset.points, hasValue);
-
-				//Transition each point first so that the line and point drawing isn't out of sync
-				//We can use this extra loop to calculate the control points of this dataset also in this loop
-
-				helpers.each(dataset.points, function(point, index){
-					if (point.hasValue()){
-						point.transition({
-							y : this.scale.calculateY(point.value),
-							x : this.scale.calculateX(index)
-						}, easingDecimal);
-					}
-				},this);
-
-
-				// Control points need to be calculated in a seperate loop, because we need to know the current x/y of the point
-				// This would cause issues when there is no animation, because the y of the next point would be 0, so beziers would be skewed
-				if (this.options.bezierCurve){
-					helpers.each(pointsWithValues, function(point, index){
-						var tension = (index > 0 && index < pointsWithValues.length - 1) ? this.options.bezierCurveTension : 0;
-						point.controlPoints = helpers.splineCurve(
-							previousPoint(point, pointsWithValues, index),
-							point,
-							nextPoint(point, pointsWithValues, index),
-							tension
-						);
-
-						// Prevent the bezier going outside of the bounds of the graph
-
-						// Cap puter bezier handles to the upper/lower scale bounds
-						if (point.controlPoints.outer.y > this.scale.endPoint){
-							point.controlPoints.outer.y = this.scale.endPoint;
-						}
-						else if (point.controlPoints.outer.y < this.scale.startPoint){
-							point.controlPoints.outer.y = this.scale.startPoint;
-						}
-
-						// Cap inner bezier handles to the upper/lower scale bounds
-						if (point.controlPoints.inner.y > this.scale.endPoint){
-							point.controlPoints.inner.y = this.scale.endPoint;
-						}
-						else if (point.controlPoints.inner.y < this.scale.startPoint){
-							point.controlPoints.inner.y = this.scale.startPoint;
-						}
-					},this);
-				}
-
-
-				//Draw the line between all the points
-				ctx.lineWidth = this.options.datasetStrokeWidth;
-				ctx.strokeStyle = dataset.strokeColor;
-				ctx.beginPath();
-
-				helpers.each(pointsWithValues, function(point, index){
-					if (index === 0){
-						ctx.moveTo(point.x, point.y);
-					}
-					else{
-						if(this.options.bezierCurve){
-							var previous = previousPoint(point, pointsWithValues, index);
-
-							ctx.bezierCurveTo(
-								previous.controlPoints.outer.x,
-								previous.controlPoints.outer.y,
-								point.controlPoints.inner.x,
-								point.controlPoints.inner.y,
-								point.x,
-								point.y
-							);
-						}
-						else{
-							ctx.lineTo(point.x,point.y);
-						}
-					}
-				}, this);
-
-				ctx.stroke();
-
-				if (this.options.datasetFill && pointsWithValues.length > 0){
-					//Round off the line by going to the base of the chart, back to the start, then fill.
-					ctx.lineTo(pointsWithValues[pointsWithValues.length - 1].x, this.scale.endPoint);
-					ctx.lineTo(pointsWithValues[0].x, this.scale.endPoint);
-					ctx.fillStyle = dataset.fillColor;
-					ctx.closePath();
-					ctx.fill();
-				}
-
-				//Now draw the points over the line
-				//A little inefficient double looping, but better than the line
-				//lagging behind the point positions
-				helpers.each(pointsWithValues,function(point){
-					point.draw();
-				});
-			},this);
-		}
-	});
-
-
-}).call(this);
-
-(function(){
-	"use strict";
-
-	var root = this,
-		Chart = root.Chart,
-		//Cache a local reference to Chart.helpers
-		helpers = Chart.helpers;
-
-	var defaultConfig = {
-		//Boolean - Show a backdrop to the scale label
-		scaleShowLabelBackdrop : true,
-
-		//String - The colour of the label backdrop
-		scaleBackdropColor : "rgba(255,255,255,0.75)",
-
-		// Boolean - Whether the scale should begin at zero
-		scaleBeginAtZero : true,
-
-		//Number - The backdrop padding above & below the label in pixels
-		scaleBackdropPaddingY : 2,
-
-		//Number - The backdrop padding to the side of the label in pixels
-		scaleBackdropPaddingX : 2,
-
-		//Boolean - Show line for each value in the scale
-		scaleShowLine : true,
-
-		//Boolean - Stroke a line around each segment in the chart
-		segmentShowStroke : true,
-
-		//String - The colour of the stroke on each segement.
-		segmentStrokeColor : "#fff",
-
-		//Number - The width of the stroke value in pixels
-		segmentStrokeWidth : 2,
-
-		//Number - Amount of animation steps
-		animationSteps : 100,
-
-		//String - Animation easing effect.
-		animationEasing : "easeOutBounce",
-
-		//Boolean - Whether to animate the rotation of the chart
-		animateRotate : true,
-
-		//Boolean - Whether to animate scaling the chart from the centre
-		animateScale : false,
-
-		//String - A legend template
-		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
-	};
-
-
-	Chart.Type.extend({
-		//Passing in a name registers this chart in the Chart namespace
-		name: "PolarArea",
-		//Providing a defaults will also register the deafults in the chart namespace
-		defaults : defaultConfig,
-		//Initialize is fired when the chart is initialized - Data is passed in as a parameter
-		//Config is automatically merged by the core of Chart.js, and is available at this.options
-		initialize:  function(data){
-			this.segments = [];
-			//Declare segment class as a chart instance specific class, so it can share props for this instance
-			this.SegmentArc = Chart.Arc.extend({
-				showStroke : this.options.segmentShowStroke,
-				strokeWidth : this.options.segmentStrokeWidth,
-				strokeColor : this.options.segmentStrokeColor,
-				ctx : this.chart.ctx,
-				innerRadius : 0,
-				x : this.chart.width/2,
-				y : this.chart.height/2
-			});
-			this.scale = new Chart.RadialScale({
-				display: this.options.showScale,
-				fontStyle: this.options.scaleFontStyle,
-				fontSize: this.options.scaleFontSize,
-				fontFamily: this.options.scaleFontFamily,
-				fontColor: this.options.scaleFontColor,
-				showLabels: this.options.scaleShowLabels,
-				showLabelBackdrop: this.options.scaleShowLabelBackdrop,
-				backdropColor: this.options.scaleBackdropColor,
-				backdropPaddingY : this.options.scaleBackdropPaddingY,
-				backdropPaddingX: this.options.scaleBackdropPaddingX,
-				lineWidth: (this.options.scaleShowLine) ? this.options.scaleLineWidth : 0,
-				lineColor: this.options.scaleLineColor,
-				lineArc: true,
-				width: this.chart.width,
-				height: this.chart.height,
-				xCenter: this.chart.width/2,
-				yCenter: this.chart.height/2,
-				ctx : this.chart.ctx,
-				templateString: this.options.scaleLabel,
-				valuesCount: data.length
-			});
-
-			this.updateScaleRange(data);
-
-			this.scale.update();
-
-			helpers.each(data,function(segment,index){
-				this.addData(segment,index,true);
-			},this);
-
-			//Set up tooltip events on the chart
-			if (this.options.showTooltips){
-				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
-					var activeSegments = (evt.type !== 'mouseout') ? this.getSegmentsAtEvent(evt) : [];
-					helpers.each(this.segments,function(segment){
-						segment.restore(["fillColor"]);
-					});
-					helpers.each(activeSegments,function(activeSegment){
-						activeSegment.fillColor = activeSegment.highlightColor;
-					});
-					this.showTooltip(activeSegments);
-				});
-			}
-
-			this.render();
-		},
-		getSegmentsAtEvent : function(e){
-			var segmentsArray = [];
-
-			var location = helpers.getRelativePosition(e);
-
-			helpers.each(this.segments,function(segment){
-				if (segment.inRange(location.x,location.y)) segmentsArray.push(segment);
-			},this);
-			return segmentsArray;
-		},
-		addData : function(segment, atIndex, silent){
-			var index = atIndex || this.segments.length;
-
-			this.segments.splice(index, 0, new this.SegmentArc({
-				fillColor: segment.color,
-				highlightColor: segment.highlight || segment.color,
-				label: segment.label,
-				value: segment.value,
-				outerRadius: (this.options.animateScale) ? 0 : this.scale.calculateCenterOffset(segment.value),
-				circumference: (this.options.animateRotate) ? 0 : this.scale.getCircumference(),
-				startAngle: Math.PI * 1.5
-			}));
-			if (!silent){
-				this.reflow();
-				this.update();
-			}
-		},
-		removeData: function(atIndex){
-			var indexToDelete = (helpers.isNumber(atIndex)) ? atIndex : this.segments.length-1;
-			this.segments.splice(indexToDelete, 1);
-			this.reflow();
-			this.update();
-		},
-		calculateTotal: function(data){
-			this.total = 0;
-			helpers.each(data,function(segment){
-				this.total += segment.value;
-			},this);
-			this.scale.valuesCount = this.segments.length;
-		},
-		updateScaleRange: function(datapoints){
-			var valuesArray = [];
-			helpers.each(datapoints,function(segment){
-				valuesArray.push(segment.value);
-			});
-
-			var scaleSizes = (this.options.scaleOverride) ?
-				{
-					steps: this.options.scaleSteps,
-					stepValue: this.options.scaleStepWidth,
-					min: this.options.scaleStartValue,
-					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
-				} :
-				helpers.calculateScaleRange(
-					valuesArray,
-					helpers.min([this.chart.width, this.chart.height])/2,
-					this.options.scaleFontSize,
-					this.options.scaleBeginAtZero,
-					this.options.scaleIntegersOnly
-				);
-
-			helpers.extend(
-				this.scale,
-				scaleSizes,
-				{
-					size: helpers.min([this.chart.width, this.chart.height]),
-					xCenter: this.chart.width/2,
-					yCenter: this.chart.height/2
-				}
-			);
-
-		},
-		update : function(){
-			this.calculateTotal(this.segments);
-
-			helpers.each(this.segments,function(segment){
-				segment.save();
-			});
-			
-			this.reflow();
-			this.render();
-		},
-		reflow : function(){
-			helpers.extend(this.SegmentArc.prototype,{
-				x : this.chart.width/2,
-				y : this.chart.height/2
-			});
-			this.updateScaleRange(this.segments);
-			this.scale.update();
-
-			helpers.extend(this.scale,{
-				xCenter: this.chart.width/2,
-				yCenter: this.chart.height/2
-			});
-
-			helpers.each(this.segments, function(segment){
-				segment.update({
-					outerRadius : this.scale.calculateCenterOffset(segment.value)
-				});
-			}, this);
-
-		},
-		draw : function(ease){
-			var easingDecimal = ease || 1;
-			//Clear & draw the canvas
-			this.clear();
-			helpers.each(this.segments,function(segment, index){
-				segment.transition({
-					circumference : this.scale.getCircumference(),
-					outerRadius : this.scale.calculateCenterOffset(segment.value)
-				},easingDecimal);
-
-				segment.endAngle = segment.startAngle + segment.circumference;
-
-				// If we've removed the first segment we need to set the first one to
-				// start at the top.
-				if (index === 0){
-					segment.startAngle = Math.PI * 1.5;
-				}
-
-				//Check to see if it's the last segment, if not get the next and update the start angle
-				if (index < this.segments.length - 1){
-					this.segments[index+1].startAngle = segment.endAngle;
-				}
-				segment.draw();
-			}, this);
-			this.scale.draw();
-		}
-	});
-
-}).call(this);
-(function(){
-	"use strict";
-
-	var root = this,
-		Chart = root.Chart,
-		helpers = Chart.helpers;
-
-
-
-	Chart.Type.extend({
-		name: "Radar",
-		defaults:{
-			//Boolean - Whether to show lines for each scale point
-			scaleShowLine : true,
-
-			//Boolean - Whether we show the angle lines out of the radar
-			angleShowLineOut : true,
-
-			//Boolean - Whether to show labels on the scale
-			scaleShowLabels : false,
-
-			// Boolean - Whether the scale should begin at zero
-			scaleBeginAtZero : true,
-
-			//String - Colour of the angle line
-			angleLineColor : "rgba(0,0,0,.1)",
-
-			//Number - Pixel width of the angle line
-			angleLineWidth : 1,
-
-			//String - Point label font declaration
-			pointLabelFontFamily : "'Arial'",
-
-			//String - Point label font weight
-			pointLabelFontStyle : "normal",
-
-			//Number - Point label font size in pixels
-			pointLabelFontSize : 10,
-
-			//String - Point label font colour
-			pointLabelFontColor : "#666",
-
-			//Boolean - Whether to show a dot for each point
-			pointDot : true,
-
-			//Number - Radius of each point dot in pixels
-			pointDotRadius : 3,
-
-			//Number - Pixel width of point dot stroke
-			pointDotStrokeWidth : 1,
-
-			//Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-			pointHitDetectionRadius : 20,
-
-			//Boolean - Whether to show a stroke for datasets
-			datasetStroke : true,
-
-			//Number - Pixel width of dataset stroke
-			datasetStrokeWidth : 2,
-
-			//Boolean - Whether to fill the dataset with a colour
-			datasetFill : true,
-
-			//String - A legend template
-			legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-
-		},
-
-		initialize: function(data){
-			this.PointClass = Chart.Point.extend({
-				strokeWidth : this.options.pointDotStrokeWidth,
-				radius : this.options.pointDotRadius,
-				display: this.options.pointDot,
-				hitDetectionRadius : this.options.pointHitDetectionRadius,
-				ctx : this.chart.ctx
-			});
-
-			this.datasets = [];
-
-			this.buildScale(data);
-
-			//Set up tooltip events on the chart
-			if (this.options.showTooltips){
-				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
-					var activePointsCollection = (evt.type !== 'mouseout') ? this.getPointsAtEvent(evt) : [];
-
-					this.eachPoints(function(point){
-						point.restore(['fillColor', 'strokeColor']);
-					});
-					helpers.each(activePointsCollection, function(activePoint){
-						activePoint.fillColor = activePoint.highlightFill;
-						activePoint.strokeColor = activePoint.highlightStroke;
-					});
-
-					this.showTooltip(activePointsCollection);
-				});
-			}
-
-			//Iterate through each of the datasets, and build this into a property of the chart
-			helpers.each(data.datasets,function(dataset){
-
-				var datasetObject = {
-					label: dataset.label || null,
-					fillColor : dataset.fillColor,
-					strokeColor : dataset.strokeColor,
-					pointColor : dataset.pointColor,
-					pointStrokeColor : dataset.pointStrokeColor,
-					points : []
-				};
-
-				this.datasets.push(datasetObject);
-
-				helpers.each(dataset.data,function(dataPoint,index){
-					//Add a new point for each piece of data, passing any required data to draw.
-					var pointPosition;
-					if (!this.scale.animation){
-						pointPosition = this.scale.getPointPosition(index, this.scale.calculateCenterOffset(dataPoint));
-					}
-					datasetObject.points.push(new this.PointClass({
-						value : dataPoint,
-						label : data.labels[index],
-						datasetLabel: dataset.label,
-						x: (this.options.animation) ? this.scale.xCenter : pointPosition.x,
-						y: (this.options.animation) ? this.scale.yCenter : pointPosition.y,
-						strokeColor : dataset.pointStrokeColor,
-						fillColor : dataset.pointColor,
-						highlightFill : dataset.pointHighlightFill || dataset.pointColor,
-						highlightStroke : dataset.pointHighlightStroke || dataset.pointStrokeColor
-					}));
-				},this);
-
-			},this);
-
-			this.render();
-		},
-		eachPoints : function(callback){
-			helpers.each(this.datasets,function(dataset){
-				helpers.each(dataset.points,callback,this);
-			},this);
-		},
-
-		getPointsAtEvent : function(evt){
-			var mousePosition = helpers.getRelativePosition(evt),
-				fromCenter = helpers.getAngleFromPoint({
-					x: this.scale.xCenter,
-					y: this.scale.yCenter
-				}, mousePosition);
-
-			var anglePerIndex = (Math.PI * 2) /this.scale.valuesCount,
-				pointIndex = Math.round((fromCenter.angle - Math.PI * 1.5) / anglePerIndex),
-				activePointsCollection = [];
-
-			// If we're at the top, make the pointIndex 0 to get the first of the array.
-			if (pointIndex >= this.scale.valuesCount || pointIndex < 0){
-				pointIndex = 0;
-			}
-
-			if (fromCenter.distance <= this.scale.drawingArea){
-				helpers.each(this.datasets, function(dataset){
-					activePointsCollection.push(dataset.points[pointIndex]);
-				});
-			}
-
-			return activePointsCollection;
-		},
-
-		buildScale : function(data){
-			this.scale = new Chart.RadialScale({
-				display: this.options.showScale,
-				fontStyle: this.options.scaleFontStyle,
-				fontSize: this.options.scaleFontSize,
-				fontFamily: this.options.scaleFontFamily,
-				fontColor: this.options.scaleFontColor,
-				showLabels: this.options.scaleShowLabels,
-				showLabelBackdrop: this.options.scaleShowLabelBackdrop,
-				backdropColor: this.options.scaleBackdropColor,
-				backdropPaddingY : this.options.scaleBackdropPaddingY,
-				backdropPaddingX: this.options.scaleBackdropPaddingX,
-				lineWidth: (this.options.scaleShowLine) ? this.options.scaleLineWidth : 0,
-				lineColor: this.options.scaleLineColor,
-				angleLineColor : this.options.angleLineColor,
-				angleLineWidth : (this.options.angleShowLineOut) ? this.options.angleLineWidth : 0,
-				// Point labels at the edge of each line
-				pointLabelFontColor : this.options.pointLabelFontColor,
-				pointLabelFontSize : this.options.pointLabelFontSize,
-				pointLabelFontFamily : this.options.pointLabelFontFamily,
-				pointLabelFontStyle : this.options.pointLabelFontStyle,
-				height : this.chart.height,
-				width: this.chart.width,
-				xCenter: this.chart.width/2,
-				yCenter: this.chart.height/2,
-				ctx : this.chart.ctx,
-				templateString: this.options.scaleLabel,
-				labels: data.labels,
-				valuesCount: data.datasets[0].data.length
-			});
-
-			this.scale.setScaleSize();
-			this.updateScaleRange(data.datasets);
-			this.scale.buildYLabels();
-		},
-		updateScaleRange: function(datasets){
-			var valuesArray = (function(){
-				var totalDataArray = [];
-				helpers.each(datasets,function(dataset){
-					if (dataset.data){
-						totalDataArray = totalDataArray.concat(dataset.data);
-					}
-					else {
-						helpers.each(dataset.points, function(point){
-							totalDataArray.push(point.value);
-						});
-					}
-				});
-				return totalDataArray;
-			})();
-
-
-			var scaleSizes = (this.options.scaleOverride) ?
-				{
-					steps: this.options.scaleSteps,
-					stepValue: this.options.scaleStepWidth,
-					min: this.options.scaleStartValue,
-					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
-				} :
-				helpers.calculateScaleRange(
-					valuesArray,
-					helpers.min([this.chart.width, this.chart.height])/2,
-					this.options.scaleFontSize,
-					this.options.scaleBeginAtZero,
-					this.options.scaleIntegersOnly
-				);
-
-			helpers.extend(
-				this.scale,
-				scaleSizes
-			);
-
-		},
-		addData : function(valuesArray,label){
-			//Map the values array for each of the datasets
-			this.scale.valuesCount++;
-			helpers.each(valuesArray,function(value,datasetIndex){
-				var pointPosition = this.scale.getPointPosition(this.scale.valuesCount, this.scale.calculateCenterOffset(value));
-				this.datasets[datasetIndex].points.push(new this.PointClass({
-					value : value,
-					label : label,
-					x: pointPosition.x,
-					y: pointPosition.y,
-					strokeColor : this.datasets[datasetIndex].pointStrokeColor,
-					fillColor : this.datasets[datasetIndex].pointColor
-				}));
-			},this);
-
-			this.scale.labels.push(label);
-
-			this.reflow();
-
-			this.update();
-		},
-		removeData : function(){
-			this.scale.valuesCount--;
-			this.scale.labels.shift();
-			helpers.each(this.datasets,function(dataset){
-				dataset.points.shift();
-			},this);
-			this.reflow();
-			this.update();
-		},
-		update : function(){
-			this.eachPoints(function(point){
-				point.save();
-			});
-			this.reflow();
-			this.render();
-		},
-		reflow: function(){
-			helpers.extend(this.scale, {
-				width : this.chart.width,
-				height: this.chart.height,
-				size : helpers.min([this.chart.width, this.chart.height]),
-				xCenter: this.chart.width/2,
-				yCenter: this.chart.height/2
-			});
-			this.updateScaleRange(this.datasets);
-			this.scale.setScaleSize();
-			this.scale.buildYLabels();
-		},
-		draw : function(ease){
-			var easeDecimal = ease || 1,
-				ctx = this.chart.ctx;
-			this.clear();
-			this.scale.draw();
-
-			helpers.each(this.datasets,function(dataset){
-
-				//Transition each point first so that the line and point drawing isn't out of sync
-				helpers.each(dataset.points,function(point,index){
-					if (point.hasValue()){
-						point.transition(this.scale.getPointPosition(index, this.scale.calculateCenterOffset(point.value)), easeDecimal);
-					}
-				},this);
-
-
-
-				//Draw the line between all the points
-				ctx.lineWidth = this.options.datasetStrokeWidth;
-				ctx.strokeStyle = dataset.strokeColor;
-				ctx.beginPath();
-				helpers.each(dataset.points,function(point,index){
-					if (index === 0){
-						ctx.moveTo(point.x,point.y);
-					}
-					else{
-						ctx.lineTo(point.x,point.y);
-					}
-				},this);
-				ctx.closePath();
-				ctx.stroke();
-
-				ctx.fillStyle = dataset.fillColor;
-				ctx.fill();
-
-				//Now draw the points over the line
-				//A little inefficient double looping, but better than the line
-				//lagging behind the point positions
-				helpers.each(dataset.points,function(point){
-					if (point.hasValue()){
-						point.draw();
-					}
-				});
-
-			},this);
-
-		}
-
-	});
-
-
-
-
-
-}).call(this);
-},{}],239:[function(require,module,exports){
-(function (root, factory) {
-    /* istanbul ignore next */
-    if (typeof define === 'function' && define.amd) {
-        define(['angular'], factory);
-    } else if (typeof module === 'object' && module.exports) {
-        module.exports = factory(require('angular'));
-    } else {
-        root.angularClipboard = factory(root.angular);
-  }
-}(this, function (angular) {
-
-return angular.module('angular-clipboard', [])
-    .factory('clipboard', ['$document', function ($document) {
-        function createNode(text) {
-            var node = $document[0].createElement('textarea');
-            node.style.position = 'absolute';
-            node.style.left = '-10000px';
-            node.textContent = text;
-            return node;
-        }
-
-        function copyNode(node) {
-            try {
-                // Set inline style to override css styles
-                $document[0].body.style.webkitUserSelect = 'initial';
-
-                var selection = $document[0].getSelection();
-                selection.removeAllRanges();
-                node.select();
-
-                if(!$document[0].execCommand('copy')) {
-                    throw('failure copy');
-                }
-                selection.removeAllRanges();
-            } finally {
-                // Reset inline style
-                $document[0].body.style.webkitUserSelect = '';
-            }
-        }
-
-        function copyText(text) {
-            var node = createNode(text);
-            $document[0].body.appendChild(node);
-            copyNode(node);
-            $document[0].body.removeChild(node);
-        }
-
-        return {
-            copyText: copyText
-        };
-    }])
-    .directive('clipboard', ['clipboard', function (clipboard) {
-        return {
-            restrict: 'A',
-            scope: {
-                onCopied: '&',
-                onError: '&',
-                text: '='
-            },
-            link: function (scope, element) {
-                element.on('click', function (event) {
-                    try {
-                        clipboard.copyText(scope.text);
-                        if (angular.isFunction(scope.onCopied)) {
-                            scope.$evalAsync(scope.onCopied());
-                        }
-                    } catch (err) {
-                        if (angular.isFunction(scope.onError)) {
-                            scope.$evalAsync(scope.onError({err: err}));
-                        }
-                    }
-                });
-            }
-        };
-    }]);
-
-}));
-},{"angular":279}],240:[function(require,module,exports){
-/**
- * @license AngularJS v1.5.0
- * (c) 2010-2016 Google, Inc. http://angularjs.org
- * License: MIT
- */
-(function(window, angular, undefined) {'use strict';
-
-/**
- * @ngdoc module
- * @name ngCookies
- * @description
- *
- * # ngCookies
- *
- * The `ngCookies` module provides a convenient wrapper for reading and writing browser cookies.
- *
- *
- * <div doc-module-components="ngCookies"></div>
- *
- * See {@link ngCookies.$cookies `$cookies`} for usage.
- */
-
-
-angular.module('ngCookies', ['ng']).
-  /**
-   * @ngdoc provider
-   * @name $cookiesProvider
-   * @description
-   * Use `$cookiesProvider` to change the default behavior of the {@link ngCookies.$cookies $cookies} service.
-   * */
-   provider('$cookies', [function $CookiesProvider() {
-    /**
-     * @ngdoc property
-     * @name $cookiesProvider#defaults
-     * @description
-     *
-     * Object containing default options to pass when setting cookies.
-     *
-     * The object may have following properties:
-     *
-     * - **path** - `{string}` - The cookie will be available only for this path and its
-     *   sub-paths. By default, this is the URL that appears in your `<base>` tag.
-     * - **domain** - `{string}` - The cookie will be available only for this domain and
-     *   its sub-domains. For security reasons the user agent will not accept the cookie
-     *   if the current domain is not a sub-domain of this domain or equal to it.
-     * - **expires** - `{string|Date}` - String of the form "Wdy, DD Mon YYYY HH:MM:SS GMT"
-     *   or a Date object indicating the exact date/time this cookie will expire.
-     * - **secure** - `{boolean}` - If `true`, then the cookie will only be available through a
-     *   secured connection.
-     *
-     * Note: By default, the address that appears in your `<base>` tag will be used as the path.
-     * This is important so that cookies will be visible for all routes when html5mode is enabled.
-     *
-     **/
-    var defaults = this.defaults = {};
-
-    function calcOptions(options) {
-      return options ? angular.extend({}, defaults, options) : defaults;
-    }
-
-    /**
-     * @ngdoc service
-     * @name $cookies
-     *
-     * @description
-     * Provides read/write access to browser's cookies.
-     *
-     * <div class="alert alert-info">
-     * Up until Angular 1.3, `$cookies` exposed properties that represented the
-     * current browser cookie values. In version 1.4, this behavior has changed, and
-     * `$cookies` now provides a standard api of getters, setters etc.
-     * </div>
-     *
-     * Requires the {@link ngCookies `ngCookies`} module to be installed.
-     *
-     * @example
-     *
-     * ```js
-     * angular.module('cookiesExample', ['ngCookies'])
-     *   .controller('ExampleController', ['$cookies', function($cookies) {
-     *     // Retrieving a cookie
-     *     var favoriteCookie = $cookies.get('myFavorite');
-     *     // Setting a cookie
-     *     $cookies.put('myFavorite', 'oatmeal');
-     *   }]);
-     * ```
-     */
-    this.$get = ['$$cookieReader', '$$cookieWriter', function($$cookieReader, $$cookieWriter) {
-      return {
-        /**
-         * @ngdoc method
-         * @name $cookies#get
-         *
-         * @description
-         * Returns the value of given cookie key
-         *
-         * @param {string} key Id to use for lookup.
-         * @returns {string} Raw cookie value.
-         */
-        get: function(key) {
-          return $$cookieReader()[key];
-        },
-
-        /**
-         * @ngdoc method
-         * @name $cookies#getObject
-         *
-         * @description
-         * Returns the deserialized value of given cookie key
-         *
-         * @param {string} key Id to use for lookup.
-         * @returns {Object} Deserialized cookie value.
-         */
-        getObject: function(key) {
-          var value = this.get(key);
-          return value ? angular.fromJson(value) : value;
-        },
-
-        /**
-         * @ngdoc method
-         * @name $cookies#getAll
-         *
-         * @description
-         * Returns a key value object with all the cookies
-         *
-         * @returns {Object} All cookies
-         */
-        getAll: function() {
-          return $$cookieReader();
-        },
-
-        /**
-         * @ngdoc method
-         * @name $cookies#put
-         *
-         * @description
-         * Sets a value for given cookie key
-         *
-         * @param {string} key Id for the `value`.
-         * @param {string} value Raw value to be stored.
-         * @param {Object=} options Options object.
-         *    See {@link ngCookies.$cookiesProvider#defaults $cookiesProvider.defaults}
-         */
-        put: function(key, value, options) {
-          $$cookieWriter(key, value, calcOptions(options));
-        },
-
-        /**
-         * @ngdoc method
-         * @name $cookies#putObject
-         *
-         * @description
-         * Serializes and sets a value for given cookie key
-         *
-         * @param {string} key Id for the `value`.
-         * @param {Object} value Value to be stored.
-         * @param {Object=} options Options object.
-         *    See {@link ngCookies.$cookiesProvider#defaults $cookiesProvider.defaults}
-         */
-        putObject: function(key, value, options) {
-          this.put(key, angular.toJson(value), options);
-        },
-
-        /**
-         * @ngdoc method
-         * @name $cookies#remove
-         *
-         * @description
-         * Remove given cookie
-         *
-         * @param {string} key Id of the key-value pair to delete.
-         * @param {Object=} options Options object.
-         *    See {@link ngCookies.$cookiesProvider#defaults $cookiesProvider.defaults}
-         */
-        remove: function(key, options) {
-          $$cookieWriter(key, undefined, calcOptions(options));
-        }
-      };
-    }];
-  }]);
-
-angular.module('ngCookies').
-/**
- * @ngdoc service
- * @name $cookieStore
- * @deprecated
- * @requires $cookies
- *
- * @description
- * Provides a key-value (string-object) storage, that is backed by session cookies.
- * Objects put or retrieved from this storage are automatically serialized or
- * deserialized by angular's toJson/fromJson.
- *
- * Requires the {@link ngCookies `ngCookies`} module to be installed.
- *
- * <div class="alert alert-danger">
- * **Note:** The $cookieStore service is **deprecated**.
- * Please use the {@link ngCookies.$cookies `$cookies`} service instead.
- * </div>
- *
- * @example
- *
- * ```js
- * angular.module('cookieStoreExample', ['ngCookies'])
- *   .controller('ExampleController', ['$cookieStore', function($cookieStore) {
- *     // Put cookie
- *     $cookieStore.put('myFavorite','oatmeal');
- *     // Get cookie
- *     var favoriteCookie = $cookieStore.get('myFavorite');
- *     // Removing a cookie
- *     $cookieStore.remove('myFavorite');
- *   }]);
- * ```
- */
- factory('$cookieStore', ['$cookies', function($cookies) {
-
-    return {
-      /**
-       * @ngdoc method
-       * @name $cookieStore#get
-       *
-       * @description
-       * Returns the value of given cookie key
-       *
-       * @param {string} key Id to use for lookup.
-       * @returns {Object} Deserialized cookie value, undefined if the cookie does not exist.
-       */
-      get: function(key) {
-        return $cookies.getObject(key);
-      },
-
-      /**
-       * @ngdoc method
-       * @name $cookieStore#put
-       *
-       * @description
-       * Sets a value for given cookie key
-       *
-       * @param {string} key Id for the `value`.
-       * @param {Object} value Value to be stored.
-       */
-      put: function(key, value) {
-        $cookies.putObject(key, value);
-      },
-
-      /**
-       * @ngdoc method
-       * @name $cookieStore#remove
-       *
-       * @description
-       * Remove given cookie
-       *
-       * @param {string} key Id of the key-value pair to delete.
-       */
-      remove: function(key) {
-        $cookies.remove(key);
-      }
-    };
-
-  }]);
-
-/**
- * @name $$cookieWriter
- * @requires $document
- *
- * @description
- * This is a private service for writing cookies
- *
- * @param {string} name Cookie name
- * @param {string=} value Cookie value (if undefined, cookie will be deleted)
- * @param {Object=} options Object with options that need to be stored for the cookie.
- */
-function $$CookieWriter($document, $log, $browser) {
-  var cookiePath = $browser.baseHref();
-  var rawDocument = $document[0];
-
-  function buildCookieString(name, value, options) {
-    var path, expires;
-    options = options || {};
-    expires = options.expires;
-    path = angular.isDefined(options.path) ? options.path : cookiePath;
-    if (angular.isUndefined(value)) {
-      expires = 'Thu, 01 Jan 1970 00:00:00 GMT';
-      value = '';
-    }
-    if (angular.isString(expires)) {
-      expires = new Date(expires);
-    }
-
-    var str = encodeURIComponent(name) + '=' + encodeURIComponent(value);
-    str += path ? ';path=' + path : '';
-    str += options.domain ? ';domain=' + options.domain : '';
-    str += expires ? ';expires=' + expires.toUTCString() : '';
-    str += options.secure ? ';secure' : '';
-
-    // per http://www.ietf.org/rfc/rfc2109.txt browser must allow at minimum:
-    // - 300 cookies
-    // - 20 cookies per unique domain
-    // - 4096 bytes per cookie
-    var cookieLength = str.length + 1;
-    if (cookieLength > 4096) {
-      $log.warn("Cookie '" + name +
-        "' possibly not set or overflowed because it was too large (" +
-        cookieLength + " > 4096 bytes)!");
-    }
-
-    return str;
-  }
-
-  return function(name, value, options) {
-    rawDocument.cookie = buildCookieString(name, value, options);
-  };
-}
-
-$$CookieWriter.$inject = ['$document', '$log', '$browser'];
-
-angular.module('ngCookies').provider('$$cookieWriter', function $$CookieWriterProvider() {
-  this.$get = $$CookieWriter;
-});
-
-
-})(window, window.angular);
-
-},{}],241:[function(require,module,exports){
-require('./angular-cookies');
-module.exports = 'ngCookies';
-
-},{"./angular-cookies":240}],242:[function(require,module,exports){
-/**
- * angular-drag-and-drop-lists v1.4.0
- *
- * Copyright (c) 2014 Marcel Juenemann marcel@juenemann.cc
- * Copyright (c) 2014-2016 Google Inc.
- * https://github.com/marceljuenemann/angular-drag-and-drop-lists
- *
- * License: MIT
- */
-angular.module('dndLists', [])
-
-  /**
-   * Use the dnd-draggable attribute to make your element draggable
-   *
-   * Attributes:
-   * - dnd-draggable      Required attribute. The value has to be an object that represents the data
-   *                      of the element. In case of a drag and drop operation the object will be
-   *                      serialized and unserialized on the receiving end.
-   * - dnd-selected       Callback that is invoked when the element was clicked but not dragged.
-   *                      The original click event will be provided in the local event variable.
-   * - dnd-effect-allowed Use this attribute to limit the operations that can be performed. Options:
-   *                      - "move": The drag operation will move the element. This is the default.
-   *                      - "copy": The drag operation will copy the element. Shows a copy cursor.
-   *                      - "copyMove": The user can choose between copy and move by pressing the
-   *                        ctrl or shift key. *Not supported in IE:* In Internet Explorer this
-   *                        option will be the same as "copy". *Not fully supported in Chrome on
-   *                        Windows:* In the Windows version of Chrome the cursor will always be the
-   *                        move cursor. However, when the user drops an element and has the ctrl
-   *                        key pressed, we will perform a copy anyways.
-   *                      - HTML5 also specifies the "link" option, but this library does not
-   *                        actively support it yet, so use it at your own risk.
-   * - dnd-moved          Callback that is invoked when the element was moved. Usually you will
-   *                      remove your element from the original list in this callback, since the
-   *                      directive is not doing that for you automatically. The original dragend
-   *                      event will be provided in the local event variable.
-   * - dnd-canceled       Callback that is invoked if the element was dragged, but the operation was
-   *                      canceled and the element was not dropped. The original dragend event will
-   *                      be provided in the local event variable.
-   * - dnd-copied         Same as dnd-moved, just that it is called when the element was copied
-   *                      instead of moved. The original dragend event will be provided in the local
-   *                      event variable.
-   * - dnd-dragstart      Callback that is invoked when the element was dragged. The original
-   *                      dragstart event will be provided in the local event variable.
-   * - dnd-dragend        Callback that is invoked when the drag operation ended. Available local
-   *                      variables are event and dropEffect.
-   * - dnd-type           Use this attribute if you have different kinds of items in your
-   *                      application and you want to limit which items can be dropped into which
-   *                      lists. Combine with dnd-allowed-types on the dnd-list(s). This attribute
-   *                      should evaluate to a string, although this restriction is not enforced.
-   * - dnd-disable-if     You can use this attribute to dynamically disable the draggability of the
-   *                      element. This is useful if you have certain list items that you don't want
-   *                      to be draggable, or if you want to disable drag & drop completely without
-   *                      having two different code branches (e.g. only allow for admins).
-   *                      **Note**: If your element is not draggable, the user is probably able to
-   *                      select text or images inside of it. Since a selection is always draggable,
-   *                      this breaks your UI. You most likely want to disable user selection via
-   *                      CSS (see user-select).
-   *
-   * CSS classes:
-   * - dndDragging        This class will be added to the element while the element is being
-   *                      dragged. It will affect both the element you see while dragging and the
-   *                      source element that stays at it's position. Do not try to hide the source
-   *                      element with this class, because that will abort the drag operation.
-   * - dndDraggingSource  This class will be added to the element after the drag operation was
-   *                      started, meaning it only affects the original element that is still at
-   *                      it's source position, and not the "element" that the user is dragging with
-   *                      his mouse pointer.
-   */
-  .directive('dndDraggable', ['$parse', '$timeout', 'dndDropEffectWorkaround', 'dndDragTypeWorkaround',
-                      function($parse,   $timeout,   dndDropEffectWorkaround,   dndDragTypeWorkaround) {
-    return function(scope, element, attr) {
-      // Set the HTML5 draggable attribute on the element
-      element.attr("draggable", "true");
-
-      // If the dnd-disable-if attribute is set, we have to watch that
-      if (attr.dndDisableIf) {
-        scope.$watch(attr.dndDisableIf, function(disabled) {
-          element.attr("draggable", !disabled);
-        });
-      }
-
-      /**
-       * When the drag operation is started we have to prepare the dataTransfer object,
-       * which is the primary way we communicate with the target element
-       */
-      element.on('dragstart', function(event) {
-        event = event.originalEvent || event;
-
-        // Check whether the element is draggable, since dragstart might be triggered on a child.
-        if (element.attr('draggable') == 'false') return true;
-
-        // Serialize the data associated with this element. IE only supports the Text drag type
-        event.dataTransfer.setData("Text", angular.toJson(scope.$eval(attr.dndDraggable)));
-
-        // Only allow actions specified in dnd-effect-allowed attribute
-        event.dataTransfer.effectAllowed = attr.dndEffectAllowed || "move";
-
-        // Add CSS classes. See documentation above
-        element.addClass("dndDragging");
-        $timeout(function() { element.addClass("dndDraggingSource"); }, 0);
-
-        // Workarounds for stupid browsers, see description below
-        dndDropEffectWorkaround.dropEffect = "none";
-        dndDragTypeWorkaround.isDragging = true;
-
-        // Save type of item in global state. Usually, this would go into the dataTransfer
-        // typename, but we have to use "Text" there to support IE
-        dndDragTypeWorkaround.dragType = attr.dndType ? scope.$eval(attr.dndType) : undefined;
-
-        // Try setting a proper drag image if triggered on a dnd-handle (won't work in IE).
-        if (event._dndHandle && event.dataTransfer.setDragImage) {
-          event.dataTransfer.setDragImage(element[0], 0, 0);
-        }
-
-        // Invoke callback
-        $parse(attr.dndDragstart)(scope, {event: event});
-
-        event.stopPropagation();
-      });
-
-      /**
-       * The dragend event is triggered when the element was dropped or when the drag
-       * operation was aborted (e.g. hit escape button). Depending on the executed action
-       * we will invoke the callbacks specified with the dnd-moved or dnd-copied attribute.
-       */
-      element.on('dragend', function(event) {
-        event = event.originalEvent || event;
-
-        // Invoke callbacks. Usually we would use event.dataTransfer.dropEffect to determine
-        // the used effect, but Chrome has not implemented that field correctly. On Windows
-        // it always sets it to 'none', while Chrome on Linux sometimes sets it to something
-        // else when it's supposed to send 'none' (drag operation aborted).
-        var dropEffect = dndDropEffectWorkaround.dropEffect;
-        scope.$apply(function() {
-          switch (dropEffect) {
-            case "move":
-              $parse(attr.dndMoved)(scope, {event: event});
-              break;
-            case "copy":
-              $parse(attr.dndCopied)(scope, {event: event});
-              break;
-            case "none":
-              $parse(attr.dndCanceled)(scope, {event: event});
-              break;
-          }
-          $parse(attr.dndDragend)(scope, {event: event, dropEffect: dropEffect});
-        });
-
-        // Clean up
-        element.removeClass("dndDragging");
-        $timeout(function() { element.removeClass("dndDraggingSource"); }, 0);
-        dndDragTypeWorkaround.isDragging = false;
-        event.stopPropagation();
-      });
-
-      /**
-       * When the element is clicked we invoke the callback function
-       * specified with the dnd-selected attribute.
-       */
-      element.on('click', function(event) {
-        if (!attr.dndSelected) return;
-
-        event = event.originalEvent || event;
-        scope.$apply(function() {
-          $parse(attr.dndSelected)(scope, {event: event});
-        });
-
-        // Prevent triggering dndSelected in parent elements.
-        event.stopPropagation();
-      });
-
-      /**
-       * Workaround to make element draggable in IE9
-       */
-      element.on('selectstart', function() {
-        if (this.dragDrop) this.dragDrop();
-      });
-    };
-  }])
-
-  /**
-   * Use the dnd-list attribute to make your list element a dropzone. Usually you will add a single
-   * li element as child with the ng-repeat directive. If you don't do that, we will not be able to
-   * position the dropped element correctly. If you want your list to be sortable, also add the
-   * dnd-draggable directive to your li element(s). Both the dnd-list and it's direct children must
-   * have position: relative CSS style, otherwise the positioning algorithm will not be able to
-   * determine the correct placeholder position in all browsers.
-   *
-   * Attributes:
-   * - dnd-list             Required attribute. The value has to be the array in which the data of
-   *                        the dropped element should be inserted.
-   * - dnd-allowed-types    Optional array of allowed item types. When used, only items that had a
-   *                        matching dnd-type attribute will be dropable.
-   * - dnd-disable-if       Optional boolean expresssion. When it evaluates to true, no dropping
-   *                        into the list is possible. Note that this also disables rearranging
-   *                        items inside the list.
-   * - dnd-horizontal-list  Optional boolean expresssion. When it evaluates to true, the positioning
-   *                        algorithm will use the left and right halfs of the list items instead of
-   *                        the upper and lower halfs.
-   * - dnd-dragover         Optional expression that is invoked when an element is dragged over the
-   *                        list. If the expression is set, but does not return true, the element is
-   *                        not allowed to be dropped. The following variables will be available:
-   *                        - event: The original dragover event sent by the browser.
-   *                        - index: The position in the list at which the element would be dropped.
-   *                        - type: The dnd-type set on the dnd-draggable, or undefined if unset.
-   *                        - external: Whether the element was dragged from an external source.
-   * - dnd-drop             Optional expression that is invoked when an element is dropped on the
-   *                        list. The following variables will be available:
-   *                        - event: The original drop event sent by the browser.
-   *                        - index: The position in the list at which the element would be dropped.
-   *                        - item: The transferred object.
-   *                        - type: The dnd-type set on the dnd-draggable, or undefined if unset.
-   *                        - external: Whether the element was dragged from an external source.
-   *                        The return value determines the further handling of the drop:
-   *                        - false: The drop will be canceled and the element won't be inserted.
-   *                        - true: Signalises that the drop is allowed, but the dnd-drop
-   *                          callback already took care of inserting the element.
-   *                        - otherwise: All other return values will be treated as the object to
-   *                          insert into the array. In most cases you want to simply return the
-   *                          item parameter, but there are no restrictions on what you can return.
-   * - dnd-inserted         Optional expression that is invoked after a drop if the element was
-   *                        actually inserted into the list. The same local variables as for
-   *                        dnd-drop will be available. Note that for reorderings inside the same
-   *                        list the old element will still be in the list due to the fact that
-   *                        dnd-moved was not called yet.
-   * - dnd-external-sources Optional boolean expression. When it evaluates to true, the list accepts
-   *                        drops from sources outside of the current browser tab. This allows to
-   *                        drag and drop accross different browser tabs. Note that this will allow
-   *                        to drop arbitrary text into the list, thus it is highly recommended to
-   *                        implement the dnd-drop callback to check the incoming element for
-   *                        sanity. Furthermore, the dnd-type of external sources can not be
-   *                        determined, therefore do not rely on restrictions of dnd-allowed-type.
-   *
-   * CSS classes:
-   * - dndPlaceholder       When an element is dragged over the list, a new placeholder child
-   *                        element will be added. This element is of type li and has the class
-   *                        dndPlaceholder set. Alternatively, you can define your own placeholder
-   *                        by creating a child element with dndPlaceholder class.
-   * - dndDragover          Will be added to the list while an element is dragged over the list.
-   */
-  .directive('dndList', ['$parse', '$timeout', 'dndDropEffectWorkaround', 'dndDragTypeWorkaround',
-                 function($parse,   $timeout,   dndDropEffectWorkaround,   dndDragTypeWorkaround) {
-    return function(scope, element, attr) {
-      // While an element is dragged over the list, this placeholder element is inserted
-      // at the location where the element would be inserted after dropping
-      var placeholder = getPlaceholderElement();
-      var placeholderNode = placeholder[0];
-      var listNode = element[0];
-      placeholder.remove();
-
-      var horizontal = attr.dndHorizontalList && scope.$eval(attr.dndHorizontalList);
-      var externalSources = attr.dndExternalSources && scope.$eval(attr.dndExternalSources);
-
-      /**
-       * The dragenter event is fired when a dragged element or text selection enters a valid drop
-       * target. According to the spec, we either need to have a dropzone attribute or listen on
-       * dragenter events and call preventDefault(). It should be noted though that no browser seems
-       * to enforce this behaviour.
-       */
-      element.on('dragenter', function (event) {
-        event = event.originalEvent || event;
-        if (!isDropAllowed(event)) return true;
-        event.preventDefault();
-      });
-
-      /**
-       * The dragover event is triggered "every few hundred milliseconds" while an element
-       * is being dragged over our list, or over an child element.
-       */
-      element.on('dragover', function(event) {
-        event = event.originalEvent || event;
-
-        if (!isDropAllowed(event)) return true;
-
-        // First of all, make sure that the placeholder is shown
-        // This is especially important if the list is empty
-        if (placeholderNode.parentNode != listNode) {
-          element.append(placeholder);
-        }
-
-        if (event.target !== listNode) {
-          // Try to find the node direct directly below the list node.
-          var listItemNode = event.target;
-          while (listItemNode.parentNode !== listNode && listItemNode.parentNode) {
-            listItemNode = listItemNode.parentNode;
-          }
-
-          if (listItemNode.parentNode === listNode && listItemNode !== placeholderNode) {
-            // If the mouse pointer is in the upper half of the child element,
-            // we place it before the child element, otherwise below it.
-            if (isMouseInFirstHalf(event, listItemNode)) {
-              listNode.insertBefore(placeholderNode, listItemNode);
-            } else {
-              listNode.insertBefore(placeholderNode, listItemNode.nextSibling);
-            }
-          }
-        } else {
-          // This branch is reached when we are dragging directly over the list element.
-          // Usually we wouldn't need to do anything here, but the IE does not fire it's
-          // events for the child element, only for the list directly. Therefore, we repeat
-          // the positioning algorithm for IE here.
-          if (isMouseInFirstHalf(event, placeholderNode, true)) {
-            // Check if we should move the placeholder element one spot towards the top.
-            // Note that display none elements will have offsetTop and offsetHeight set to
-            // zero, therefore we need a special check for them.
-            while (placeholderNode.previousElementSibling
-                 && (isMouseInFirstHalf(event, placeholderNode.previousElementSibling, true)
-                 || placeholderNode.previousElementSibling.offsetHeight === 0)) {
-              listNode.insertBefore(placeholderNode, placeholderNode.previousElementSibling);
-            }
-          } else {
-            // Check if we should move the placeholder element one spot towards the bottom
-            while (placeholderNode.nextElementSibling &&
-                 !isMouseInFirstHalf(event, placeholderNode.nextElementSibling, true)) {
-              listNode.insertBefore(placeholderNode,
-                  placeholderNode.nextElementSibling.nextElementSibling);
-            }
-          }
-        }
-
-        // At this point we invoke the callback, which still can disallow the drop.
-        // We can't do this earlier because we want to pass the index of the placeholder.
-        if (attr.dndDragover && !invokeCallback(attr.dndDragover, event, getPlaceholderIndex())) {
-          return stopDragover();
-        }
-
-        element.addClass("dndDragover");
-        event.preventDefault();
-        event.stopPropagation();
-        return false;
-      });
-
-      /**
-       * When the element is dropped, we use the position of the placeholder element as the
-       * position where we insert the transferred data. This assumes that the list has exactly
-       * one child element per array element.
-       */
-      element.on('drop', function(event) {
-        event = event.originalEvent || event;
-
-        if (!isDropAllowed(event)) return true;
-
-        // The default behavior in Firefox is to interpret the dropped element as URL and
-        // forward to it. We want to prevent that even if our drop is aborted.
-        event.preventDefault();
-
-        // Unserialize the data that was serialized in dragstart. According to the HTML5 specs,
-        // the "Text" drag type will be converted to text/plain, but IE does not do that.
-        var data = event.dataTransfer.getData("Text") || event.dataTransfer.getData("text/plain");
-        var transferredObject;
-        try {
-          transferredObject = JSON.parse(data);
-        } catch(e) {
-          return stopDragover();
-        }
-
-        // Invoke the callback, which can transform the transferredObject and even abort the drop.
-        var index = getPlaceholderIndex();
-        if (attr.dndDrop) {
-          transferredObject = invokeCallback(attr.dndDrop, event, index, transferredObject);
-          if (!transferredObject) {
-            return stopDragover();
-          }
-        }
-
-        // Insert the object into the array, unless dnd-drop took care of that (returned true).
-        if (transferredObject !== true) {
-          scope.$apply(function() {
-            scope.$eval(attr.dndList).splice(index, 0, transferredObject);
-          });
-        }
-        invokeCallback(attr.dndInserted, event, index, transferredObject);
-
-        // In Chrome on Windows the dropEffect will always be none...
-        // We have to determine the actual effect manually from the allowed effects
-        if (event.dataTransfer.dropEffect === "none") {
-          if (event.dataTransfer.effectAllowed === "copy" ||
-              event.dataTransfer.effectAllowed === "move") {
-            dndDropEffectWorkaround.dropEffect = event.dataTransfer.effectAllowed;
-          } else {
-            dndDropEffectWorkaround.dropEffect = event.ctrlKey ? "copy" : "move";
-          }
-        } else {
-          dndDropEffectWorkaround.dropEffect = event.dataTransfer.dropEffect;
-        }
-
-        // Clean up
-        stopDragover();
-        event.stopPropagation();
-        return false;
-      });
-
-      /**
-       * We have to remove the placeholder when the element is no longer dragged over our list. The
-       * problem is that the dragleave event is not only fired when the element leaves our list,
-       * but also when it leaves a child element -- so practically it's fired all the time. As a
-       * workaround we wait a few milliseconds and then check if the dndDragover class was added
-       * again. If it is there, dragover must have been called in the meantime, i.e. the element
-       * is still dragging over the list. If you know a better way of doing this, please tell me!
-       */
-      element.on('dragleave', function(event) {
-        event = event.originalEvent || event;
-
-        element.removeClass("dndDragover");
-        $timeout(function() {
-          if (!element.hasClass("dndDragover")) {
-            placeholder.remove();
-          }
-        }, 100);
-      });
-
-      /**
-       * Checks whether the mouse pointer is in the first half of the given target element.
-       *
-       * In Chrome we can just use offsetY, but in Firefox we have to use layerY, which only
-       * works if the child element has position relative. In IE the events are only triggered
-       * on the listNode instead of the listNodeItem, therefore the mouse positions are
-       * relative to the parent element of targetNode.
-       */
-      function isMouseInFirstHalf(event, targetNode, relativeToParent) {
-        var mousePointer = horizontal ? (event.offsetX || event.layerX)
-                                      : (event.offsetY || event.layerY);
-        var targetSize = horizontal ? targetNode.offsetWidth : targetNode.offsetHeight;
-        var targetPosition = horizontal ? targetNode.offsetLeft : targetNode.offsetTop;
-        targetPosition = relativeToParent ? targetPosition : 0;
-        return mousePointer < targetPosition + targetSize / 2;
-      }
-
-      /**
-       * Tries to find a child element that has the dndPlaceholder class set. If none was found, a
-       * new li element is created.
-       */
-      function getPlaceholderElement() {
-        var placeholder;
-        angular.forEach(element.children(), function(childNode) {
-          var child = angular.element(childNode);
-          if (child.hasClass('dndPlaceholder')) {
-            placeholder = child;
-          }
-        });
-        return placeholder || angular.element("<li class='dndPlaceholder'></li>");
-      }
-
-      /**
-       * We use the position of the placeholder node to determine at which position of the array the
-       * object needs to be inserted
-       */
-      function getPlaceholderIndex() {
-        return Array.prototype.indexOf.call(listNode.children, placeholderNode);
-      }
-
-      /**
-       * Checks various conditions that must be fulfilled for a drop to be allowed
-       */
-      function isDropAllowed(event) {
-        // Disallow drop from external source unless it's allowed explicitly.
-        if (!dndDragTypeWorkaround.isDragging && !externalSources) return false;
-
-        // Check mimetype. Usually we would use a custom drag type instead of Text, but IE doesn't
-        // support that.
-        if (!hasTextMimetype(event.dataTransfer.types)) return false;
-
-        // Now check the dnd-allowed-types against the type of the incoming element. For drops from
-        // external sources we don't know the type, so it will need to be checked via dnd-drop.
-        if (attr.dndAllowedTypes && dndDragTypeWorkaround.isDragging) {
-          var allowed = scope.$eval(attr.dndAllowedTypes);
-          if (angular.isArray(allowed) && allowed.indexOf(dndDragTypeWorkaround.dragType) === -1) {
-            return false;
-          }
-        }
-
-        // Check whether droping is disabled completely
-        if (attr.dndDisableIf && scope.$eval(attr.dndDisableIf)) return false;
-
-        return true;
-      }
-
-      /**
-       * Small helper function that cleans up if we aborted a drop.
-       */
-      function stopDragover() {
-        placeholder.remove();
-        element.removeClass("dndDragover");
-        return true;
-      }
-
-      /**
-       * Invokes a callback with some interesting parameters and returns the callbacks return value.
-       */
-      function invokeCallback(expression, event, index, item) {
-        return $parse(expression)(scope, {
-          event: event,
-          index: index,
-          item: item || undefined,
-          external: !dndDragTypeWorkaround.isDragging,
-          type: dndDragTypeWorkaround.isDragging ? dndDragTypeWorkaround.dragType : undefined
-        });
-      }
-
-      /**
-       * Check if the dataTransfer object contains a drag type that we can handle. In old versions
-       * of IE the types collection will not even be there, so we just assume a drop is possible.
-       */
-      function hasTextMimetype(types) {
-        if (!types) return true;
-        for (var i = 0; i < types.length; i++) {
-          if (types[i] === "Text" || types[i] === "text/plain") return true;
-        }
-
-        return false;
-      }
-    };
-  }])
-
-  /**
-   * Use the dnd-nodrag attribute inside of dnd-draggable elements to prevent them from starting
-   * drag operations. This is especially useful if you want to use input elements inside of
-   * dnd-draggable elements or create specific handle elements. Note: This directive does not work
-   * in Internet Explorer 9.
-   */
-  .directive('dndNodrag', function() {
-    return function(scope, element, attr) {
-      // Set as draggable so that we can cancel the events explicitly
-      element.attr("draggable", "true");
-
-      /**
-       * Since the element is draggable, the browser's default operation is to drag it on dragstart.
-       * We will prevent that and also stop the event from bubbling up.
-       */
-      element.on('dragstart', function(event) {
-        event = event.originalEvent || event;
-
-        if (!event._dndHandle) {
-          // If a child element already reacted to dragstart and set a dataTransfer object, we will
-          // allow that. For example, this is the case for user selections inside of input elements.
-          if (!(event.dataTransfer.types && event.dataTransfer.types.length)) {
-            event.preventDefault();
-          }
-          event.stopPropagation();
-        }
-      });
-
-      /**
-       * Stop propagation of dragend events, otherwise dnd-moved might be triggered and the element
-       * would be removed.
-       */
-      element.on('dragend', function(event) {
-        event = event.originalEvent || event;
-        if (!event._dndHandle) {
-          event.stopPropagation();
-        }
-      });
-    };
-  })
-
-  /**
-   * Use the dnd-handle directive within a dnd-nodrag element in order to allow dragging with that
-   * element after all. Therefore, by combining dnd-nodrag and dnd-handle you can allow
-   * dnd-draggable elements to only be dragged via specific "handle" elements. Note that Internet
-   * Explorer will show the handle element as drag image instead of the dnd-draggable element. You
-   * can work around this by styling the handle element differently when it is being dragged. Use
-   * the CSS selector .dndDragging:not(.dndDraggingSource) [dnd-handle] for that.
-   */
-  .directive('dndHandle', function() {
-    return function(scope, element, attr) {
-      element.attr("draggable", "true");
-
-      element.on('dragstart dragend', function(event) {
-        event = event.originalEvent || event;
-        event._dndHandle = true;
-      });
-    };
-  })
-
-  /**
-   * This workaround handles the fact that Internet Explorer does not support drag types other than
-   * "Text" and "URL". That means we can not know whether the data comes from one of our elements or
-   * is just some other data like a text selection. As a workaround we save the isDragging flag in
-   * here. When a dropover event occurs, we only allow the drop if we are already dragging, because
-   * that means the element is ours.
-   */
-  .factory('dndDragTypeWorkaround', function(){ return {} })
-
-  /**
-   * Chrome on Windows does not set the dropEffect field, which we need in dragend to determine
-   * whether a drag operation was successful. Therefore we have to maintain it in this global
-   * variable. The bug report for that has been open for years:
-   * https://code.google.com/p/chromium/issues/detail?id=39399
-   */
-  .factory('dndDropEffectWorkaround', function(){ return {} });
-
-},{}],243:[function(require,module,exports){
-/*
- angular-file-upload v2.2.0
- https://github.com/nervgh/angular-file-upload
-*/
-
-!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["angular-file-upload"]=t():e["angular-file-upload"]=t()}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return e[r].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=r(n(1)),o=r(n(2)),s=r(n(3)),a=r(n(4)),u=r(n(5)),l=r(n(6)),c=r(n(7)),f=r(n(8)),p=r(n(9)),d=r(n(10)),v=r(n(11)),h=r(n(12));angular.module(i.name,[]).value("fileUploaderOptions",o).factory("FileUploader",s).factory("FileLikeObject",a).factory("FileItem",u).factory("FileDirective",l).factory("FileSelect",c).factory("FileDrop",f).factory("FileOver",p).directive("nvFileSelect",d).directive("nvFileDrop",v).directive("nvFileOver",h).run(["FileUploader","FileLikeObject","FileItem","FileDirective","FileSelect","FileDrop","FileOver",function(e,t,n,r,i,o,s){e.FileLikeObject=t,e.FileItem=n,e.FileDirective=r,e.FileSelect=i,e.FileDrop=o,e.FileOver=s}])},function(e,t){e.exports={name:"angularFileUpload"}},function(e,t){"use strict";e.exports={url:"/",alias:"file",headers:{},queue:[],progress:0,autoUpload:!1,removeAfterUpload:!1,method:"POST",filters:[],formData:[],queueLimit:Number.MAX_VALUE,withCredentials:!1}},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.forEach,l=angular.isObject,c=angular.isNumber,f=angular.isDefined,p=angular.isArray,d=angular.element;e.exports=function(e,t,n,r,v,h){var m=r.File,g=r.FormData,_=function(){function r(t){o(this,r);var n=s(e);a(this,n,t,{isUploading:!1,_nextIndex:0,_failFilterIndex:-1,_directives:{select:[],drop:[],over:[]}}),this.filters.unshift({name:"queueLimit",fn:this._queueLimitFilter}),this.filters.unshift({name:"folder",fn:this._folderFilter})}return i(r,{addToQueue:{value:function(e,t,n){var r=this,i=this.isArrayLikeObject(e)?e:[e],o=this._getFilters(n),s=this.queue.length,a=[];u(i,function(e){var n=new v(e);if(r._isValidFile(n,o,t)){var i=new h(r,e,t);a.push(i),r.queue.push(i),r._onAfterAddingFile(i)}else{var s=o[r._failFilterIndex];r._onWhenAddingFileFailed(n,s,t)}}),this.queue.length!==s&&(this._onAfterAddingAll(a),this.progress=this._getTotalProgress()),this._render(),this.autoUpload&&this.uploadAll()}},removeFromQueue:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t];n.isUploading&&n.cancel(),this.queue.splice(t,1),n._destroy(),this.progress=this._getTotalProgress()}},clearQueue:{value:function(){for(;this.queue.length;)this.queue[0].remove();this.progress=0}},uploadItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhrTransport":"_iframeTransport";n._prepareToUploading(),this.isUploading||(this.isUploading=!0,this[r](n))}},cancelItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhr":"_form";n&&n.isUploading&&n[r].abort()}},uploadAll:{value:function(){var e=this.getNotUploadedItems().filter(function(e){return!e.isUploading});e.length&&(u(e,function(e){return e._prepareToUploading()}),e[0].upload())}},cancelAll:{value:function(){var e=this.getNotUploadedItems();u(e,function(e){return e.cancel()})}},isFile:{value:function(e){return this.constructor.isFile(e)}},isFileLikeObject:{value:function(e){return this.constructor.isFileLikeObject(e)}},isArrayLikeObject:{value:function(e){return this.constructor.isArrayLikeObject(e)}},getIndexOfItem:{value:function(e){return c(e)?e:this.queue.indexOf(e)}},getNotUploadedItems:{value:function(){return this.queue.filter(function(e){return!e.isUploaded})}},getReadyItems:{value:function(){return this.queue.filter(function(e){return e.isReady&&!e.isUploading}).sort(function(e,t){return e.index-t.index})}},destroy:{value:function(){var e=this;u(this._directives,function(t){u(e._directives[t],function(e){e.destroy()})})}},onAfterAddingAll:{value:function(e){}},onAfterAddingFile:{value:function(e){}},onWhenAddingFileFailed:{value:function(e,t,n){}},onBeforeUploadItem:{value:function(e){}},onProgressItem:{value:function(e,t){}},onProgressAll:{value:function(e){}},onSuccessItem:{value:function(e,t,n,r){}},onErrorItem:{value:function(e,t,n,r){}},onCancelItem:{value:function(e,t,n,r){}},onCompleteItem:{value:function(e,t,n,r){}},onCompleteAll:{value:function(){}},_getTotalProgress:{value:function(e){if(this.removeAfterUpload)return e||0;var t=this.getNotUploadedItems().length,n=t?this.queue.length-t:this.queue.length,r=100/this.queue.length,i=(e||0)*r/100;return Math.round(n*r+i)}},_getFilters:{value:function(e){if(!e)return this.filters;if(p(e))return e;var t=e.match(/[^\s,]+/g);return this.filters.filter(function(e){return-1!==t.indexOf(e.name)})}},_render:{value:function(){t.$$phase||t.$apply()}},_folderFilter:{value:function(e){return!(!e.size&&!e.type)}},_queueLimitFilter:{value:function(){return this.queue.length<this.queueLimit}},_isValidFile:{value:function(e,t,n){var r=this;return this._failFilterIndex=-1,t.length?t.every(function(t){return r._failFilterIndex++,t.fn.call(r,e,n)}):!0}},_isSuccessCode:{value:function(e){return e>=200&&300>e||304===e}},_transformResponse:{value:function(e,t){var r=this._headersGetter(t);return u(n.defaults.transformResponse,function(t){e=t(e,r)}),e}},_parseHeaders:{value:function(e){var t,n,r,i={};return e?(u(e.split("\n"),function(e){r=e.indexOf(":"),t=e.slice(0,r).trim().toLowerCase(),n=e.slice(r+1).trim(),t&&(i[t]=i[t]?i[t]+", "+n:n)}),i):i}},_headersGetter:{value:function(e){return function(t){return t?e[t.toLowerCase()]||null:e}}},_xhrTransport:{value:function(e){var t=this,n=e._xhr=new XMLHttpRequest,r=new g;if(this._onBeforeUploadItem(e),u(e.formData,function(e){u(e,function(e,t){r.append(t,e)})}),"number"!=typeof e._file.size)throw new TypeError("The file specified is no longer valid");r.append(e.alias,e._file,e.file.name),n.upload.onprogress=function(n){var r=Math.round(n.lengthComputable?100*n.loaded/n.total:0);t._onProgressItem(e,r)},n.onload=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r),o=t._isSuccessCode(n.status)?"Success":"Error",s="_on"+o+"Item";t[s](e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onerror=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onErrorItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onabort=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onCancelItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.open(e.method,e.url,!0),n.withCredentials=e.withCredentials,u(e.headers,function(e,t){n.setRequestHeader(t,e)}),n.send(r),this._render()}},_iframeTransport:{value:function(e){var t=this,n=d('<form style="display: none;" />'),r=d('<iframe name="iframeTransport'+Date.now()+'">'),i=e._input;e._form&&e._form.replaceWith(i),e._form=n,this._onBeforeUploadItem(e),i.prop("name",e.alias),u(e.formData,function(e){u(e,function(e,t){var r=d('<input type="hidden" name="'+t+'" />');r.val(e),n.append(r)})}),n.prop({action:e.url,method:"POST",target:r.prop("name"),enctype:"multipart/form-data",encoding:"multipart/form-data"}),r.bind("load",function(){var n="",i=200;try{n=r[0].contentDocument.body.innerHTML}catch(o){i=500}var s={response:n,status:i,dummy:!0},a={},u=t._transformResponse(s.response,a);t._onSuccessItem(e,u,s.status,a),t._onCompleteItem(e,u,s.status,a)}),n.abort=function(){var o,s={status:0,dummy:!0},a={};r.unbind("load").prop("src","javascript:false;"),n.replaceWith(i),t._onCancelItem(e,o,s.status,a),t._onCompleteItem(e,o,s.status,a)},i.after(n),n.append(i).append(r),n[0].submit(),this._render()}},_onWhenAddingFileFailed:{value:function(e,t,n){this.onWhenAddingFileFailed(e,t,n)}},_onAfterAddingFile:{value:function(e){this.onAfterAddingFile(e)}},_onAfterAddingAll:{value:function(e){this.onAfterAddingAll(e)}},_onBeforeUploadItem:{value:function(e){e._onBeforeUpload(),this.onBeforeUploadItem(e)}},_onProgressItem:{value:function(e,t){var n=this._getTotalProgress(t);this.progress=n,e._onProgress(t),this.onProgressItem(e,t),this.onProgressAll(n),this._render()}},_onSuccessItem:{value:function(e,t,n,r){e._onSuccess(t,n,r),this.onSuccessItem(e,t,n,r)}},_onErrorItem:{value:function(e,t,n,r){e._onError(t,n,r),this.onErrorItem(e,t,n,r)}},_onCancelItem:{value:function(e,t,n,r){e._onCancel(t,n,r),this.onCancelItem(e,t,n,r)}},_onCompleteItem:{value:function(e,t,n,r){e._onComplete(t,n,r),this.onCompleteItem(e,t,n,r);var i=this.getReadyItems()[0];return this.isUploading=!1,f(i)?void i.upload():(this.onCompleteAll(),this.progress=this._getTotalProgress(),void this._render())}}},{isFile:{value:function(e){return m&&e instanceof m}},isFileLikeObject:{value:function(e){return e instanceof v}},isArrayLikeObject:{value:function(e){return l(e)&&"length"in e}},inherit:{value:function(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,e.super_=t}}}),r}();return _.prototype.isHTML5=!(!m||!g),_.isHTML5=_.prototype.isHTML5,_},e.exports.$inject=["fileUploaderOptions","$rootScope","$http","$window","FileLikeObject","FileItem"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.isElement,u=angular.isString;e.exports=function(){var e=function(){function e(t){o(this,e);var n=a(t),r=n?t.value:t,i=u(r)?"FakePath":"Object",s="_createFrom"+i;this[s](r)}return i(e,{_createFromFakePath:{value:function(e){this.lastModifiedDate=null,this.size=null,this.type="like/"+e.slice(e.lastIndexOf(".")+1).toLowerCase(),this.name=e.slice(e.lastIndexOf("/")+e.lastIndexOf("\\")+2)}},_createFromObject:{value:function(e){this.lastModifiedDate=s(e.lastModifiedDate),this.size=e.size,this.type=e.type,this.name=e.name}}}),e}();return e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.element,l=angular.isElement;e.exports=function(e,t){var n=function(){function n(e,r,i){o(this,n);var c=l(r),f=c?u(r):null,p=c?null:r;a(this,{url:e.url,alias:e.alias,headers:s(e.headers),formData:s(e.formData),removeAfterUpload:e.removeAfterUpload,withCredentials:e.withCredentials,method:e.method},i,{uploader:e,file:new t(r),isReady:!1,isUploading:!1,isUploaded:!1,isSuccess:!1,isCancel:!1,isError:!1,progress:0,index:null,_file:p,_input:f}),f&&this._replaceNode(f)}return i(n,{upload:{value:function(){try{this.uploader.uploadItem(this)}catch(e){this.uploader._onCompleteItem(this,"",0,[]),this.uploader._onErrorItem(this,"",0,[])}}},cancel:{value:function(){this.uploader.cancelItem(this)}},remove:{value:function(){this.uploader.removeFromQueue(this)}},onBeforeUpload:{value:function(){}},onProgress:{value:function(e){}},onSuccess:{value:function(e,t,n){}},onError:{value:function(e,t,n){}},onCancel:{value:function(e,t,n){}},onComplete:{value:function(e,t,n){}},_onBeforeUpload:{value:function(){this.isReady=!0,this.isUploading=!0,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!1,this.isError=!1,this.progress=0,this.onBeforeUpload()}},_onProgress:{value:function(e){this.progress=e,this.onProgress(e)}},_onSuccess:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!0,this.isCancel=!1,this.isError=!1,this.progress=100,this.index=null,this.onSuccess(e,t,n)}},_onError:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!1,this.isCancel=!1,this.isError=!0,this.progress=0,this.index=null,this.onError(e,t,n)}},_onCancel:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!0,this.isError=!1,this.progress=0,this.index=null,this.onCancel(e,t,n)}},_onComplete:{value:function(e,t,n){this.onComplete(e,t,n),this.removeAfterUpload&&this.remove()}},_destroy:{value:function(){this._input&&this._input.remove(),this._form&&this._form.remove(),delete this._form,delete this._input}},_prepareToUploading:{value:function(){this.index=this.index||++this.uploader._nextIndex,this.isReady=!0}},_replaceNode:{value:function(t){var n=e(t.clone())(t.scope());n.prop("value",null),t.css("display","none"),t.after(n)}}}),n}();return n},e.exports.$inject=["$compile","FileLikeObject"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.extend);e.exports=function(){var e=function(){function e(t){o(this,e),s(this,t),this.uploader._directives[this.prop].push(this),this._saveLinks(),this.bind()}return i(e,{bind:{value:function(){for(var e in this.events){var t=this.events[e];this.element.bind(e,this[t])}}},unbind:{value:function(){for(var e in this.events)this.element.unbind(e,this.events[e])}},destroy:{value:function(){var e=this.uploader._directives[this.prop].indexOf(this);this.uploader._directives[this.prop].splice(e,1),this.unbind()}},_saveLinks:{value:function(){for(var e in this.events){var t=this.events[e];this[t]=this[t].bind(this)}}}}),e}();return e.prototype.events={},e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",change:"onChange"},prop:"select"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n),this.uploader.isHTML5||this.element.removeAttr("multiple"),this.element.prop("value",null)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},isEmptyAfterSelection:{value:function(){return!!this.element.attr("multiple")}},onChange:{value:function(){var e=this.uploader.isHTML5?this.element[0].files:this.element[0],t=this.getOptions(),n=this.getFilters();this.uploader.isHTML5||this.destroy(),this.uploader.addToQueue(e,t,n),this.isEmptyAfterSelection()&&(this.element.prop("value",null),this.element.replaceWith(this.element=this.element.clone(!0)))}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function c(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:c(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend),l=angular.forEach;e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",drop:"onDrop",dragover:"onDragOver",dragleave:"onDragLeave"},prop:"drop"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},onDrop:{value:function(e){var t=this._getTransfer(e);if(t){var n=this.getOptions(),r=this.getFilters();this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this),this.uploader.addToQueue(t.files,n,r)}}},onDragOver:{value:function(e){var t=this._getTransfer(e);this._haveFiles(t.types)&&(t.dropEffect="copy",this._preventAndStop(e),l(this.uploader._directives.over,this._addOverClass,this))}},onDragLeave:{value:function(e){e.currentTarget!==this.element[0]&&(this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this))}},_getTransfer:{value:function(e){return e.dataTransfer?e.dataTransfer:e.originalEvent.dataTransfer}},_preventAndStop:{value:function(e){e.preventDefault(),e.stopPropagation()}},_haveFiles:{value:function(e){return e?e.indexOf?-1!==e.indexOf("Files"):e.contains?e.contains("Files"):!1:!1}},_addOverClass:{value:function(e){e.addOverClass()}},_removeOverClass:{value:function(e){e.removeOverClass()}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy"},prop:"over",overClass:"nv-file-over"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{addOverClass:{value:function(){this.element.addClass(this.getOverClass())}},removeOverClass:{value:function(){this.element.removeClass(this.getOverClass())}},getOverClass:{value:function(){return this.overClass}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}},e.exports.$inject=["$parse","FileUploader","FileSelect"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');if(s.isHTML5){var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}}},e.exports.$inject=["$parse","FileUploader","FileDrop"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t){return{link:function(n,r,i){var o=n.$eval(i.uploader);if(!(o instanceof e))throw new TypeError('"Uploader" must be an instance of FileUploader');var s=new t({uploader:o,element:r});s.getOverClass=function(){return i.overClass||s.overClass}}}},e.exports.$inject=["FileUploader","FileOver"]}])});
-
-},{}],244:[function(require,module,exports){
-var moduleName = require('./src/angular-input-masks.js');
-
-module.exports = moduleName;
-
-},{"./src/angular-input-masks.js":248}],245:[function(require,module,exports){
-/**
- * br-validations
- * A library of validations applicable to several Brazilian data like I.E., CNPJ, CPF and others
- * @version v0.2.4
- * @link http://github.com/the-darc/br-validations
- * @license MIT
- */
-(function (root, factory) {
-	if (typeof define === 'function' && define.amd) {
-		// AMD. Register as an anonymous module.
-		define([], factory);
-	} else if (typeof exports === 'object') {
-		// Node. Does not work with strict CommonJS, but
-		// only CommonJS-like environments that support module.exports,
-		// like Node.
-		module.exports = factory();
-	} else {
-		// Browser globals (root is window)
-		root.BrV = factory();
-	}
-}(this, function () {
-var CNPJ = {};
-
-CNPJ.validate = function(c) {
-	var b = [6,5,4,3,2,9,8,7,6,5,4,3,2];
-	c = c.replace(/[^\d]/g,'');
-
-	var r = /^(0{14}|1{14}|2{14}|3{14}|4{14}|5{14}|6{14}|7{14}|8{14}|9{14})$/;
-	if (!c || c.length !== 14 || r.test(c)) {
-		return false;
-	}
-	c = c.split('');
-
-	for (var i = 0, n = 0; i < 12; i++) {
-		n += c[i] * b[i+1];
-	}
-	n = 11 - n%11;
-	n = n >= 10 ? 0 : n;
-	if (parseInt(c[12]) !== n)  {
-		return false;
-	}
-
-	for (i = 0, n = 0; i <= 12; i++) {
-		n += c[i] * b[i];
-	}
-	n = 11 - n%11;
-	n = n >= 10 ? 0 : n;
-	if (parseInt(c[13]) !== n)  {
-		return false;
-	}
-	return true;
-};
-
-
-var CPF = {};
-
-CPF.validate = function(cpf) {
-	cpf = cpf.replace(/[^\d]+/g,'');
-	var r = /^(0{11}|1{11}|2{11}|3{11}|4{11}|5{11}|6{11}|7{11}|8{11}|9{11})$/;
-	if (!cpf || cpf.length !== 11 || r.test(cpf)) {
-		return false;
-	}
-	function validateDigit(digit) {
-		var add = 0;
-		var init = digit - 9;
-		for (var i = 0; i < 9; i ++) {
-			add += parseInt(cpf.charAt(i + init)) * (i+1);
-		}
-		return (add%11)%10 === parseInt(cpf.charAt(digit));
-	}
-	return validateDigit(9) && validateDigit(10);
-};
-
-var IE = function(uf) {
-	if (!(this instanceof IE)) {
-		return new IE(uf);
-	}
-
-	this.rules = IErules[uf] || [];
-	this.rule;
-	IE.prototype._defineRule = function(value) {
-		this.rule = undefined;
-		for (var r = 0; r < this.rules.length && this.rule === undefined; r++) {
-			var str = value.replace(/[^\d]/g,'');
-			var ruleCandidate = this.rules[r];
-			if (str.length === ruleCandidate.chars && (!ruleCandidate.match || ruleCandidate.match.test(value))) {
-				this.rule = ruleCandidate;
-			}
-		}
-		return !!this.rule;
-	};
-
-	IE.prototype.validate = function(value) {
-		if (!value || !this._defineRule(value)) {
-			return false;
-		}
-		return this.rule.validate(value);
-	};
-};
-
-var IErules = {};
-
-var algorithmSteps = {
-	handleStr: {
-		onlyNumbers: function(str) {
-			return str.replace(/[^\d]/g,'').split('');
-		},
-		mgSpec: function(str) {
-			var s = str.replace(/[^\d]/g,'');
-			s = s.substr(0,3)+'0'+s.substr(3, s.length);
-			return s.split('');
-		}
-	},
-	sum: {
-		normalSum: function(handledStr, pesos) {
-			var nums = handledStr;
-			var sum = 0;
-			for (var i = 0; i < pesos.length; i++) {
-				sum += parseInt(nums[i]) * pesos[i];
-			}
-			return sum;
-		},
-		individualSum: function(handledStr, pesos) {
-			var nums = handledStr;
-			var sum = 0;
-			for (var i = 0; i < pesos.length; i++) {
-				var mult = parseInt(nums[i]) * pesos[i];
-				sum += mult%10 + parseInt(mult/10);
-			}
-			return sum;
-		},
-		apSpec: function(handledStr, pesos) {
-			var sum = this.normalSum(handledStr, pesos);
-			var ref = handledStr.join('');
-			if (ref >= '030000010' && ref <= '030170009') {
-				return sum + 5;
-			}
-			if (ref >= '030170010' && ref <= '030190229') {
-				return sum + 9;
-			}
-			return sum;
-		}
-	},
-	rest: {
-		mod11: function(sum) {
-			return sum%11;
-		},
-		mod10: function(sum) {
-			return sum%10;
-		},
-		mod9: function(sum) {
-			return sum%9;
-		}
-	},
-	expectedDV: {
-		minusRestOf11: function(rest) {
-			return rest < 2 ? 0 : 11 - rest;
-		},
-		minusRestOf11v2: function(rest) {
-			return rest < 2 ? 11 - rest - 10 : 11 - rest;
-		},
-		minusRestOf10: function(rest) {
-			return rest < 1 ? 0 : 10 - rest;
-		},
-		mod10: function(rest) {
-			return rest%10;
-		},
-		goSpec: function(rest, handledStr) {
-			var ref = handledStr.join('');
-			if (rest === 1) {
-				return ref >= '101031050' && ref <= '101199979' ? 1 : 0;
-			}
-			return rest === 0 ? 0 : 11 - rest;
-		},
-		apSpec: function(rest, handledStr) {
-			var ref = handledStr.join('');
-			if (rest === 0) {
-				return ref >= '030170010' && ref <= '030190229' ? 1 : 0;
-			}
-			return rest === 1 ? 0 : 11 - rest;
-		},
-		voidFn: function(rest) {
-			return rest;
-		}
-	}
-};
-
-
-/**
- * options {
- *     pesos: Array of values used to operate in sum step
- *     dvPos: Position of the DV to validate considering the handledStr
- *     algorithmSteps: The four DV's validation algorithm steps names
- * }
- */
-function validateDV(value, options) {
-	var steps = options.algorithmSteps;
-
-	// Step 01: Handle String
-	var handledStr = algorithmSteps.handleStr[steps[0]](value);
-
-	// Step 02: Sum chars
-	var sum = algorithmSteps.sum[steps[1]](handledStr, options.pesos);
-
-	// Step 03: Rest calculation
-	var rest = algorithmSteps.rest[steps[2]](sum);
-
-	// Fixed Step: Get current DV
-	var currentDV = parseInt(handledStr[options.dvpos]);
-
-	// Step 04: Expected DV calculation
-	var expectedDV = algorithmSteps.expectedDV[steps[3]](rest, handledStr);
-
-	// Fixed step: DV verification
-	return currentDV === expectedDV;
-}
-
-function validateIE(value, rule) {
-	if (rule.match && !rule.match.test(value)) {
-		return false;
-	}
-	for (var i = 0; i < rule.dvs.length; i++) {
-		// console.log('>> >> dv'+i);
-		if (!validateDV(value, rule.dvs[i])) {
-			return false;
-		}
-	}
-	return true;
-}
-
-IErules.PE = [{
-	//mask: new StringMask('0000000-00'),
-	chars: 9,
-	dvs: [{
-		dvpos: 7,
-		pesos: [8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	},{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-},{
-	// mask: new StringMask('00.0.000.0000000-0'),
-	chars: 14,
-	pesos: [[1,2,3,4,5,9,8,7,6,5,4,3,2]],
-	dvs: [{
-		dvpos: 13,
-		pesos: [5,4,3,2,1,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11v2']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.RS = [{
-	// mask: new StringMask('000/0000000'),
-	chars: 10,
-	dvs: [{
-		dvpos: 9,
-		pesos: [2,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.AC = [{
-	// mask: new StringMask('00.000.000/000-00'),
-	chars: 13,
-	match: /^01/,
-	dvs: [{
-		dvpos: 11,
-		pesos: [4,3,2,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	},{
-		dvpos: 12,
-		pesos: [5,4,3,2,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.MG = [{
-	// mask: new StringMask('000.000.000/0000'),
-	chars: 13,
-	dvs: [{
-		dvpos: 12,
-		pesos: [1,2,1,2,1,2,1,2,1,2,1,2],
-		algorithmSteps: ['mgSpec', 'individualSum', 'mod10', 'minusRestOf10']
-	},{
-		dvpos: 12,
-		pesos: [3,2,11,10,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.SP = [{
-	// mask: new StringMask('000.000.000.000'),
-	chars: 12,
-	match: /^[0-9]/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [1,3,4,5,6,7,8,10],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'mod10']
-	},{
-		dvpos: 11,
-		pesos: [3,2,10,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'mod10']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-},{
-	// mask: new StringMask('P-00000000.0/000')
-	chars: 12,
-	match: /^P/i,
-	dvs: [{
-		dvpos: 8,
-		pesos: [1,3,4,5,6,7,8,10],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'mod10']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.DF = [{
-	// mask: new StringMask('00000000000-00'),
-	chars: 13,
-	dvs: [{
-		dvpos: 11,
-		pesos: [4,3,2,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	},{
-		dvpos: 12,
-		pesos: [5,4,3,2,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.ES = [{
-	// mask: new StringMask('000.000.00-0')
-	chars: 9,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.BA = [{
-	// mask: new StringMask('000000-00')
-	chars: 8,
-	match: /^[0123458]/,
-	dvs: [{
-		dvpos: 7,
-		pesos: [7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod10', 'minusRestOf10']
-	},{
-		dvpos: 6,
-		pesos: [8,7,6,5,4,3,0,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod10', 'minusRestOf10']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-},{
-	chars: 8,
-	match: /^[679]/,
-	dvs: [{
-		dvpos: 7,
-		pesos: [7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	},{
-		dvpos: 6,
-		pesos: [8,7,6,5,4,3,0,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-},{
-	// mask: new StringMask('0000000-00')
-	chars: 9,
-	match: /^[0-9][0123458]/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod10', 'minusRestOf10']
-	},{
-		dvpos: 7,
-		pesos: [9,8,7,6,5,4,3,0,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod10', 'minusRestOf10']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-},{
-	chars: 9,
-	match: /^[0-9][679]/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	},{
-		dvpos: 7,
-		pesos: [9,8,7,6,5,4,3,0,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.AM = [{
-	//mask: new StringMask('00.000.000-0')
-	chars: 9,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.RN = [{
-	// {mask: new StringMask('00.000.000-0')
-	chars: 9,
-	match: /^20/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-},{
-	// {mask: new StringMask('00.0.000.000-0'), chars: 10}
-	chars: 10,
-	match: /^20/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [10,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.RO = [{
-	// mask: new StringMask('0000000000000-0')
-	chars: 14,
-	dvs: [{
-		dvpos: 13,
-		pesos: [6,5,4,3,2,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.PR = [{
-	// mask: new StringMask('00000000-00')
-	chars: 10,
-	dvs: [{
-		dvpos: 8,
-		pesos: [3,2,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	},{
-		dvpos: 9,
-		pesos: [4,3,2,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.SC = [{
-	// {mask: new StringMask('000.000.000'), uf: 'SANTA CATARINA'}
-	chars: 9,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.RJ = [{
-	// {mask: new StringMask('00.000.00-0'), uf: 'RIO DE JANEIRO'}
-	chars: 8,
-	dvs: [{
-		dvpos: 7,
-		pesos: [2,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.PA = [{
-	// {mask: new StringMask('00-000000-0')
-	chars: 9,
-	match: /^15/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.SE = [{
-	// {mask: new StringMask('00000000-0')
-	chars: 9,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.PB = [{
-	// {mask: new StringMask('00000000-0')
-	chars: 9,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.CE = [{
-	// {mask: new StringMask('00000000-0')
-	chars: 9,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.PI = [{
-	// {mask: new StringMask('000000000')
-	chars: 9,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.MA = [{
-	// {mask: new StringMask('000000000')
-	chars: 9,
-	match: /^12/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.MT = [{
-	// {mask: new StringMask('0000000000-0')
-	chars: 11,
-	dvs: [{
-		dvpos: 10,
-		pesos: [3,2,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.MS = [{
-	// {mask: new StringMask('000000000')
-	chars: 9,
-	match: /^28/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.TO = [{
-	// {mask: new StringMask('00000000000'),
-	chars: 11,
-	match: /^[0-9]{2}((0[123])|(99))/,
-	dvs: [{
-		dvpos: 10,
-		pesos: [9,8,0,0,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.AL = [{
-	// {mask: new StringMask('000000000')
-	chars: 9,
-	match: /^24[03578]/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.RR = [{
-	// {mask: new StringMask('00000000-0')
-	chars: 9,
-	match: /^24/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [1,2,3,4,5,6,7,8],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod9', 'voidFn']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.GO = [{
-	// {mask: new StringMask('00.000.000-0')
-	chars: 9,
-	match: /^1[015]/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'goSpec']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.AP = [{
-	// {mask: new StringMask('000000000')
-	chars: 9,
-	match: /^03/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'apSpec', 'mod11', 'apSpec']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-	return {
-		ie: IE,
-		cpf: CPF,
-		cnpj: CNPJ
-	};
-}));
-},{}],246:[function(require,module,exports){
-arguments[4][235][0].apply(exports,arguments)
-},{"dup":235}],247:[function(require,module,exports){
+},{}],248:[function(require,module,exports){
 (function (root, factory) {
 	if (typeof define === 'function' && define.amd) {
 		// AMD. Register as an anonymous module.
@@ -32976,14 +36946,14 @@ arguments[4][235][0].apply(exports,arguments)
 	return StringMask;
 }));
 
-},{}],248:[function(require,module,exports){
+},{}],249:[function(require,module,exports){
 module.exports = angular.module('ui.utils.masks', [
 	require('./global/global-masks'),
 	require('./br/br-masks'),
 	require('./us/us-masks')
 ]).name;
 
-},{"./br/br-masks":250,"./global/global-masks":259,"./us/us-masks":269}],249:[function(require,module,exports){
+},{"./br/br-masks":251,"./global/global-masks":260,"./us/us-masks":270}],250:[function(require,module,exports){
 var StringMask = require('string-mask');
 var maskFactory = require('mask-factory');
 
@@ -33007,7 +36977,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":266,"string-mask":247}],250:[function(require,module,exports){
+},{"mask-factory":267,"string-mask":248}],251:[function(require,module,exports){
 var m = angular.module('ui.utils.masks.br', [
 	require('../helpers'),
 ])
@@ -33022,7 +36992,7 @@ var m = angular.module('ui.utils.masks.br', [
 
 module.exports = m.name;
 
-},{"../helpers":265,"./boleto-bancario/boleto-bancario":249,"./cep/cep":251,"./cnpj/cnpj":252,"./cpf-cnpj/cpf-cnpj":253,"./cpf/cpf":254,"./inscricao-estadual/ie":255,"./nfe/nfe":256,"./phone/br-phone":257}],251:[function(require,module,exports){
+},{"../helpers":266,"./boleto-bancario/boleto-bancario":250,"./cep/cep":252,"./cnpj/cnpj":253,"./cpf-cnpj/cpf-cnpj":254,"./cpf/cpf":255,"./inscricao-estadual/ie":256,"./nfe/nfe":257,"./phone/br-phone":258}],252:[function(require,module,exports){
 var StringMask = require('string-mask');
 var maskFactory = require('mask-factory');
 
@@ -33042,7 +37012,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":266,"string-mask":247}],252:[function(require,module,exports){
+},{"mask-factory":267,"string-mask":248}],253:[function(require,module,exports){
 var StringMask = require('string-mask');
 var BrV = require('br-validations');
 var maskFactory = require('mask-factory');
@@ -33063,7 +37033,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"br-validations":245,"mask-factory":266,"string-mask":247}],253:[function(require,module,exports){
+},{"br-validations":246,"mask-factory":267,"string-mask":248}],254:[function(require,module,exports){
 var StringMask = require('string-mask');
 var BrV = require('br-validations');
 var maskFactory = require('mask-factory');
@@ -33096,7 +37066,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"br-validations":245,"mask-factory":266,"string-mask":247}],254:[function(require,module,exports){
+},{"br-validations":246,"mask-factory":267,"string-mask":248}],255:[function(require,module,exports){
 var StringMask = require('string-mask');
 var BrV = require('br-validations');
 var maskFactory = require('mask-factory');
@@ -33117,7 +37087,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"br-validations":245,"mask-factory":266,"string-mask":247}],255:[function(require,module,exports){
+},{"br-validations":246,"mask-factory":267,"string-mask":248}],256:[function(require,module,exports){
 var StringMask = require('string-mask');
 var BrV = require('br-validations');
 
@@ -33254,7 +37224,7 @@ BrIeMaskDirective.$inject = ['$parse'];
 
 module.exports = BrIeMaskDirective;
 
-},{"br-validations":245,"string-mask":247}],256:[function(require,module,exports){
+},{"br-validations":246,"string-mask":248}],257:[function(require,module,exports){
 var StringMask = require('string-mask');
 var maskFactory = require('mask-factory');
 
@@ -33275,7 +37245,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":266,"string-mask":247}],257:[function(require,module,exports){
+},{"mask-factory":267,"string-mask":248}],258:[function(require,module,exports){
 var StringMask = require('string-mask');
 var maskFactory = require('mask-factory');
 
@@ -33316,7 +37286,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":266,"string-mask":247}],258:[function(require,module,exports){
+},{"mask-factory":267,"string-mask":248}],259:[function(require,module,exports){
 var moment = require('moment');
 var StringMask = require('string-mask');
 
@@ -33380,7 +37350,7 @@ DateMaskDirective.$inject = ['$locale'];
 
 module.exports = DateMaskDirective;
 
-},{"moment":246,"string-mask":247}],259:[function(require,module,exports){
+},{"moment":247,"string-mask":248}],260:[function(require,module,exports){
 var m = angular.module('ui.utils.masks.global', [
 	require('../helpers'),
 ])
@@ -33393,7 +37363,7 @@ var m = angular.module('ui.utils.masks.global', [
 
 module.exports = m.name;
 
-},{"../helpers":265,"./date/date":258,"./money/money":260,"./number/number":261,"./percentage/percentage":262,"./scientific-notation/scientific-notation":263,"./time/time":264}],260:[function(require,module,exports){
+},{"../helpers":266,"./date/date":259,"./money/money":261,"./number/number":262,"./percentage/percentage":263,"./scientific-notation/scientific-notation":264,"./time/time":265}],261:[function(require,module,exports){
 var StringMask = require('string-mask');
 var validators = require('validators');
 
@@ -33505,7 +37475,7 @@ MoneyMaskDirective.$inject = ['$locale', '$parse', 'PreFormatters'];
 
 module.exports = MoneyMaskDirective;
 
-},{"string-mask":247,"validators":267}],261:[function(require,module,exports){
+},{"string-mask":248,"validators":268}],262:[function(require,module,exports){
 var validators = require('validators');
 
 function NumberMaskDirective($locale, $parse, PreFormatters, NumberMasks) {
@@ -33612,7 +37582,7 @@ NumberMaskDirective.$inject = ['$locale', '$parse', 'PreFormatters', 'NumberMask
 
 module.exports = NumberMaskDirective;
 
-},{"validators":267}],262:[function(require,module,exports){
+},{"validators":268}],263:[function(require,module,exports){
 var validators = require('validators');
 
 function PercentageMaskDirective($locale, $parse, PreFormatters, NumberMasks) {
@@ -33731,7 +37701,7 @@ PercentageMaskDirective.$inject = ['$locale', '$parse', 'PreFormatters', 'Number
 
 module.exports = PercentageMaskDirective;
 
-},{"validators":267}],263:[function(require,module,exports){
+},{"validators":268}],264:[function(require,module,exports){
 var StringMask = require('string-mask');
 
 function ScientificNotationMaskDirective($locale, $parse) {
@@ -33851,7 +37821,7 @@ ScientificNotationMaskDirective.$inject = ['$locale', '$parse'];
 
 module.exports = ScientificNotationMaskDirective;
 
-},{"string-mask":247}],264:[function(require,module,exports){
+},{"string-mask":248}],265:[function(require,module,exports){
 var StringMask = require('string-mask');
 
 module.exports = function TimeMaskDirective() {
@@ -33916,7 +37886,7 @@ module.exports = function TimeMaskDirective() {
 	};
 };
 
-},{"string-mask":247}],265:[function(require,module,exports){
+},{"string-mask":248}],266:[function(require,module,exports){
 var StringMask = require('string-mask');
 
 var m = angular.module('ui.utils.masks.helpers', []);
@@ -33991,7 +37961,7 @@ m.factory('PreFormatters', [function(){
 	};
 }]);
 
-},{"string-mask":247}],266:[function(require,module,exports){
+},{"string-mask":248}],267:[function(require,module,exports){
 module.exports = function maskFactory(maskDefinition) {
 	return function MaskDirective() {
 		return {
@@ -34038,7 +38008,7 @@ module.exports = function maskFactory(maskDefinition) {
 	};
 };
 
-},{}],267:[function(require,module,exports){
+},{}],268:[function(require,module,exports){
 module.exports = {
 	maxNumber: function(ctrl, value, limit) {
 		var max = parseFloat(limit, 10);
@@ -34050,7 +38020,7 @@ module.exports = {
 	}
 };
 
-},{}],268:[function(require,module,exports){
+},{}],269:[function(require,module,exports){
 var StringMask = require('string-mask');
 var maskFactory = require('mask-factory');
 
@@ -34079,7 +38049,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":266,"string-mask":247}],269:[function(require,module,exports){
+},{"mask-factory":267,"string-mask":248}],270:[function(require,module,exports){
 var m = angular.module('ui.utils.masks.us', [
 	require('../helpers')
 ])
@@ -34087,7 +38057,7 @@ var m = angular.module('ui.utils.masks.us', [
 
 module.exports = m.name;
 
-},{"../helpers":265,"./phone/us-phone":268}],270:[function(require,module,exports){
+},{"../helpers":266,"./phone/us-phone":269}],271:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -34772,11 +38742,11 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],271:[function(require,module,exports){
+},{}],272:[function(require,module,exports){
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":270}],272:[function(require,module,exports){
+},{"./angular-sanitize":271}],273:[function(require,module,exports){
 /**
   * x is a value between 0 and 1, indicating where in the animation you are.
   */
@@ -35405,13 +39375,13 @@ angular.module('duScroll.scrollspy', ['duScroll.spyAPI'])
   };
 }]);
 
-},{}],273:[function(require,module,exports){
+},{}],274:[function(require,module,exports){
 require('angular');
 require('./angular-scroll');
 
 module.exports = 'duScroll';
 
-},{"./angular-scroll":272,"angular":279}],274:[function(require,module,exports){
+},{"./angular-scroll":273,"angular":280}],275:[function(require,module,exports){
 /*
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
@@ -42491,12 +46461,12 @@ angular.module('ui.bootstrap.carousel').run(function() {!angular.$$csp().noInlin
 angular.module('ui.bootstrap.datepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-datepicker-popup.dropdown-menu{display:block;}.uib-button-bar{padding:10px 9px 2px;}</style>'); });
 angular.module('ui.bootstrap.timepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-time input{width:50px;}</style>'); });
 angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); });
-},{}],275:[function(require,module,exports){
+},{}],276:[function(require,module,exports){
 require('./dist/ui-bootstrap-tpls');
 
 module.exports = 'ui.bootstrap';
 
-},{"./dist/ui-bootstrap-tpls":274}],276:[function(require,module,exports){
+},{"./dist/ui-bootstrap-tpls":275}],277:[function(require,module,exports){
 /**
  * @license Angular UI Tree v2.15.0
  * (c) 2010-2016. https://github.com/angular-ui-tree/angular-ui-tree
@@ -44067,11 +48037,11 @@ module.exports = 'ui.bootstrap';
 
 })();
 
-},{}],277:[function(require,module,exports){
+},{}],278:[function(require,module,exports){
 require('./dist/angular-ui-tree');
 module.exports = 'ui.tree';
 
-},{"./dist/angular-ui-tree":276}],278:[function(require,module,exports){
+},{"./dist/angular-ui-tree":277}],279:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.9
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -73729,11 +77699,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],279:[function(require,module,exports){
+},{}],280:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":278}],280:[function(require,module,exports){
+},{"./angular":279}],281:[function(require,module,exports){
 (function (global){
 /*! https://mths.be/punycode v1.4.0 by @mathias */
 ;(function(root) {
@@ -74270,7 +78240,7 @@ module.exports = angular;
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],281:[function(require,module,exports){
+},{}],282:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.0
  * http://jquery.com/
@@ -84103,7 +88073,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],282:[function(require,module,exports){
+},{}],283:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -98537,7 +102507,7 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],283:[function(require,module,exports){
+},{}],284:[function(require,module,exports){
 /**!
  * AngularJS file upload directives and services. Supoorts: file upload/drop/paste, resume, cancel/abort,
  * progress, resize, thumbnail, preview, validation and CORS
@@ -101316,10 +105286,10 @@ ngFileUpload.service('UploadExif', ['UploadResize', '$q', function (UploadResize
 }]);
 
 
-},{}],284:[function(require,module,exports){
+},{}],285:[function(require,module,exports){
 require('./dist/ng-file-upload-all');
 module.exports = 'ngFileUpload';
-},{"./dist/ng-file-upload-all":283}],285:[function(require,module,exports){
+},{"./dist/ng-file-upload-all":284}],286:[function(require,module,exports){
 /* global define */
 
 (function (root, pluralize) {
@@ -101754,7 +105724,7 @@ module.exports = 'ngFileUpload';
   return pluralize;
 });
 
-},{}],286:[function(require,module,exports){
+},{}],287:[function(require,module,exports){
 var validators = require('./validators'),
 	validationContext = require('./validation-context'),
 	jsonRefs = require('skeemas-json-refs');
@@ -101824,7 +105794,7 @@ module.exports.use = function(plugin) {
 	return this;
 };
 
-},{"./validation-context":289,"./validators":295,"skeemas-json-refs":288}],287:[function(require,module,exports){
+},{"./validation-context":290,"./validators":296,"skeemas-json-refs":289}],288:[function(require,module,exports){
 function fastMap(array, fn) {
 	var len = array.length,
 		result = new Array(len);
@@ -101894,7 +105864,7 @@ module.exports = function(sPointer) {
 	});
 };
 
-},{}],288:[function(require,module,exports){
+},{}],289:[function(require,module,exports){
 var jsonPointer = require('skeemas-json-pointer');
 
 var protoJsonRefs = {
@@ -101942,7 +105912,7 @@ module.exports = function() {
 	});
 };
 
-},{"skeemas-json-pointer":287}],289:[function(require,module,exports){
+},{"skeemas-json-pointer":288}],290:[function(require,module,exports){
 var validationResult = require('./validation-result'),
 	jsonRefs = require('skeemas-json-refs');
 
@@ -101994,7 +105964,7 @@ var makeContext = module.exports = function(schema, context, forceNewResult) {
 	});
 };
 
-},{"./validation-result":290,"skeemas-json-refs":288}],290:[function(require,module,exports){
+},{"./validation-result":291,"skeemas-json-refs":289}],291:[function(require,module,exports){
 function errorToString() {
 	return this.message + ' (pointer: ' + this.context + ')';
 }
@@ -102022,7 +105992,7 @@ module.exports = function(instance) {
 	});
 };
 
-},{}],291:[function(require,module,exports){
+},{}],292:[function(require,module,exports){
 var validateBase = require('./base'),
 	deepEqual = require('./deep-equal');
 
@@ -102164,7 +106134,7 @@ module.exports = function(context, subject, schema) {
 	return valid;
 };
 
-},{"./base":292,"./deep-equal":294}],292:[function(require,module,exports){
+},{"./base":293,"./deep-equal":295}],293:[function(require,module,exports){
 var validators = require('./'),
 	formats = {
 		'date-time': /^\d{4}-(0[0-9]{1}|1[0-2]{1})-[0-9]{2}[t ]\d{2}:\d{2}:\d{2}(\.\d+)?([zZ]|[+-]\d{2}:\d{2})$/i,
@@ -102425,7 +106395,7 @@ function validateBase(context, subject, schema) {
 
 module.exports = validateBase;
 
-},{"./":295}],293:[function(require,module,exports){
+},{"./":296}],294:[function(require,module,exports){
 function validateBoolean(context, subject, schema) {
 	if(typeof subject !== 'boolean') {
 		context.addError('Failed type:boolean criteria', subject, schema);
@@ -102439,7 +106409,7 @@ function validateBoolean(context, subject, schema) {
 
 module.exports = validateBoolean;
 
-},{}],294:[function(require,module,exports){
+},{}],295:[function(require,module,exports){
 function getType(subject) {
 	var type = typeof subject;
 
@@ -102488,7 +106458,7 @@ var deepEqual = module.exports = function(a, b) {
 	return false;
 };
 
-},{}],295:[function(require,module,exports){
+},{}],296:[function(require,module,exports){
 exports.types = {
 	'any': function() { return true; },
 	'array': require('./array'),
@@ -102505,7 +106475,7 @@ exports.deepEqual = require('./deep-equal');
 // base cannot be required until other validators are added
 exports.base = require('./base');
 
-},{"./array":291,"./base":292,"./boolean":293,"./deep-equal":294,"./null":296,"./number":297,"./object":298,"./string":299}],296:[function(require,module,exports){
+},{"./array":292,"./base":293,"./boolean":294,"./deep-equal":295,"./null":297,"./number":298,"./object":299,"./string":300}],297:[function(require,module,exports){
 function validateNull(context, subject, schema) {
 	if(subject !== null) {
 		context.addError('Failed type:null criteria', subject, schema);
@@ -102519,7 +106489,7 @@ function validateNull(context, subject, schema) {
 
 module.exports = validateNull;
 
-},{}],297:[function(require,module,exports){
+},{}],298:[function(require,module,exports){
 function validateNumber(context, subject, schema) {
 	if(typeof subject !== 'number') {
 		context.addError('Failed type:number criteria', subject, schema);
@@ -102587,7 +106557,7 @@ module.exports = function(context, subject, schema) {
 	], subject, schema);
 };
 
-},{}],298:[function(require,module,exports){
+},{}],299:[function(require,module,exports){
 var validateBase = require('./base');
 
 function properties(context, subject, schema, handledProps) {
@@ -102782,7 +106752,7 @@ function validateObject(context, subject, schema) {
 
 module.exports = validateObject;
 
-},{"./base":292}],299:[function(require,module,exports){
+},{"./base":293}],300:[function(require,module,exports){
 var decode = require('punycode').ucs2.decode;
 
 
@@ -102834,11 +106804,11 @@ function validateString(context, subject, schema) {
 
 module.exports = validateString;
 
-},{"punycode":280}],300:[function(require,module,exports){
+},{"punycode":281}],301:[function(require,module,exports){
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
- * Version: 0.14.2 - 2016-03-08T08:15:30.053Z
+ * Version: 0.14.2 - 2016-02-18T10:06:20.436Z
  * License: MIT
  */
 
@@ -103616,7 +107586,7 @@ uis.controller('uiSelectCtrl',
     if (data && data.length > 0 && ctrl.taggingTokens.isActivated) {
       // split by first token only
       var separator = KEY.toSeparator(ctrl.taggingTokens.tokens[0]);
-      var items = data.split(separator);
+      var items = data.split(separator); 
       if (items && items.length > 0) {
         var oldsearch = ctrl.search;
         angular.forEach(items, function (item) {
@@ -103740,14 +107710,6 @@ uis.directive('uiSelect',
 
         $select.onSelectCallback = $parse(attrs.onSelect);
         $select.onRemoveCallback = $parse(attrs.onRemove);
-
-        if(attrs.loading){
-          scope.$watch(function(){
-            return scope.$eval(attrs.loading);
-          }, function(value){
-              $select.loading = value;
-          });
-        }
 
         //Limit the number of selections allowed
         $select.limit = (angular.isDefined(attrs.limit)) ? parseInt(attrs.limit, 10) : undefined;
@@ -104865,16 +108827,16 @@ $templateCache.put("bootstrap/match-multiple.tpl.html","<span class=\"ui-select-
 $templateCache.put("bootstrap/match.tpl.html","<div class=\"ui-select-match\" ng-hide=\"$select.open\" ng-disabled=\"$select.disabled\" ng-class=\"{\'btn-default-focus\':$select.focus}\"><span tabindex=\"-1\" class=\"btn btn-default form-control ui-select-toggle\" aria-label=\"{{ $select.baseTitle }} activate\" ng-disabled=\"$select.disabled\" ng-click=\"$select.activate()\" style=\"outline: 0;\"><span ng-show=\"$select.isEmpty()\" class=\"ui-select-placeholder text-muted\">{{$select.placeholder}}</span> <span ng-hide=\"$select.isEmpty()\" class=\"ui-select-match-text pull-left\" ng-class=\"{\'ui-select-allow-clear\': $select.allowClear && !$select.isEmpty()}\" ng-transclude=\"\"></span> <i class=\"caret pull-right\" ng-click=\"$select.toggle($event)\"></i> <a ng-show=\"$select.allowClear && !$select.isEmpty()\" aria-label=\"{{ $select.baseTitle }} clear\" style=\"margin-right: 10px\" ng-click=\"$select.clear($event)\" class=\"btn btn-xs btn-link pull-right\"><i class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></i></a></span></div>");
 $templateCache.put("bootstrap/select-multiple.tpl.html","<div class=\"ui-select-container ui-select-multiple ui-select-bootstrap dropdown form-control\" ng-class=\"{open: $select.open}\"><div><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" class=\"ui-select-search input-xs\" placeholder=\"{{$selectMultiple.getPlaceholder()}}\" ng-disabled=\"$select.disabled\" ng-hide=\"$select.disabled\" ng-click=\"$select.activate()\" ng-model=\"$select.search\" role=\"combobox\" aria-label=\"{{ $select.baseTitle }}\" ondrop=\"return false;\"></div><div class=\"ui-select-choices\"></div></div>");
 $templateCache.put("bootstrap/select.tpl.html","<div class=\"ui-select-container ui-select-bootstrap dropdown\" ng-class=\"{open: $select.open}\"><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" tabindex=\"-1\" aria-expanded=\"true\" aria-label=\"{{ $select.baseTitle }}\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"form-control ui-select-search\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-show=\"$select.searchEnabled && $select.open\"><div class=\"ui-select-choices\"></div></div>");
+$templateCache.put("selectize/choices.tpl.html","<div ng-show=\"$select.open\" class=\"ui-select-choices ui-select-dropdown selectize-dropdown single\"><div class=\"ui-select-choices-content selectize-dropdown-content\"><div class=\"ui-select-choices-group optgroup\" role=\"listbox\"><div ng-show=\"$select.isGrouped\" class=\"ui-select-choices-group-label optgroup-header\" ng-bind=\"$group.name\"></div><div role=\"option\" class=\"ui-select-choices-row\" ng-class=\"{active: $select.isActive(this), disabled: $select.isDisabled(this)}\"><div class=\"option ui-select-choices-row-inner\" data-selectable=\"\"></div></div></div></div></div>");
+$templateCache.put("selectize/match.tpl.html","<div ng-hide=\"($select.open || $select.isEmpty())\" class=\"ui-select-match\" ng-transclude=\"\"></div>");
+$templateCache.put("selectize/select.tpl.html","<div class=\"ui-select-container selectize-control single\" ng-class=\"{\'open\': $select.open}\"><div class=\"selectize-input\" ng-class=\"{\'focus\': $select.open, \'disabled\': $select.disabled, \'selectize-focus\' : $select.focus}\" ng-click=\"$select.open && !$select.searchEnabled ? $select.toggle($event) : $select.activate()\"><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" tabindex=\"-1\" class=\"ui-select-search ui-select-toggle\" ng-click=\"$select.toggle($event)\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-hide=\"!$select.searchEnabled || ($select.selected && !$select.open)\" ng-disabled=\"$select.disabled\" aria-label=\"{{ $select.baseTitle }}\"></div><div class=\"ui-select-choices\"></div></div>");
 $templateCache.put("select2/choices.tpl.html","<ul class=\"ui-select-choices ui-select-choices-content select2-results\"><li class=\"ui-select-choices-group\" ng-class=\"{\'select2-result-with-children\': $select.choiceGrouped($group) }\"><div ng-show=\"$select.choiceGrouped($group)\" class=\"ui-select-choices-group-label select2-result-label\" ng-bind=\"$group.name\"></div><ul role=\"listbox\" id=\"ui-select-choices-{{ $select.generatedId }}\" ng-class=\"{\'select2-result-sub\': $select.choiceGrouped($group), \'select2-result-single\': !$select.choiceGrouped($group) }\"><li role=\"option\" id=\"ui-select-choices-row-{{ $select.generatedId }}-{{$index}}\" class=\"ui-select-choices-row\" ng-class=\"{\'select2-highlighted\': $select.isActive(this), \'select2-disabled\': $select.isDisabled(this)}\"><div class=\"select2-result-label ui-select-choices-row-inner\"></div></li></ul></li></ul>");
 $templateCache.put("select2/match-multiple.tpl.html","<span class=\"ui-select-match\"><li class=\"ui-select-match-item select2-search-choice\" ng-repeat=\"$item in $select.selected\" ng-class=\"{\'select2-search-choice-focus\':$selectMultiple.activeMatchIndex === $index, \'select2-locked\':$select.isLocked(this, $index)}\" ui-select-sort=\"$select.selected\"><span uis-transclude-append=\"\"></span> <a href=\"javascript:;\" class=\"ui-select-match-close select2-search-choice-close\" ng-click=\"$selectMultiple.removeChoice($index)\" tabindex=\"-1\"></a></li></span>");
 $templateCache.put("select2/match.tpl.html","<a class=\"select2-choice ui-select-match\" ng-class=\"{\'select2-default\': $select.isEmpty()}\" ng-click=\"$select.toggle($event)\" aria-label=\"{{ $select.baseTitle }} select\"><span ng-show=\"$select.isEmpty()\" class=\"select2-chosen\">{{$select.placeholder}}</span> <span ng-hide=\"$select.isEmpty()\" class=\"select2-chosen\" ng-transclude=\"\"></span> <abbr ng-if=\"$select.allowClear && !$select.isEmpty()\" class=\"select2-search-choice-close\" ng-click=\"$select.clear($event)\"></abbr> <span class=\"select2-arrow ui-select-toggle\"><b></b></span></a>");
 $templateCache.put("select2/select-multiple.tpl.html","<div class=\"ui-select-container ui-select-multiple select2 select2-container select2-container-multi\" ng-class=\"{\'select2-container-active select2-dropdown-open open\': $select.open, \'select2-container-disabled\': $select.disabled}\"><ul class=\"select2-choices\"><span class=\"ui-select-match\"></span><li class=\"select2-search-field\"><input type=\"text\" autocomplete=\"false\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" role=\"combobox\" aria-expanded=\"true\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-label=\"{{ $select.baseTitle }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"select2-input ui-select-search\" placeholder=\"{{$selectMultiple.getPlaceholder()}}\" ng-disabled=\"$select.disabled\" ng-hide=\"$select.disabled\" ng-model=\"$select.search\" ng-click=\"$select.activate()\" style=\"width: 34px;\" ondrop=\"return false;\"></li></ul><div class=\"ui-select-dropdown select2-drop select2-with-searchbox select2-drop-active\" ng-class=\"{\'select2-display-none\': !$select.open}\"><div class=\"ui-select-choices\"></div></div></div>");
-$templateCache.put("select2/select.tpl.html","<div class=\"ui-select-container select2 select2-container\" ng-class=\"{\'select2-container-active select2-dropdown-open open\': $select.open, \'select2-container-disabled\': $select.disabled, \'select2-container-active\': $select.focus, \'select2-allowclear\': $select.allowClear && !$select.isEmpty()}\"><div class=\"ui-select-match\"></div><div class=\"ui-select-dropdown select2-drop select2-with-searchbox select2-drop-active\" ng-class=\"{\'select2-display-none\': !$select.open}\"><div class=\"select2-search\" ng-show=\"$select.searchEnabled\"><input type=\"text\" autocomplete=\"false\" autocorrect=\"false\" autocapitalize=\"off\" spellcheck=\"false\" role=\"combobox\" aria-expanded=\"true\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-label=\"{{ $select.baseTitle }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"ui-select-search select2-input\" ng-model=\"$select.search\"></div><div class=\"ui-select-choices\"></div></div></div>");
-$templateCache.put("selectize/choices.tpl.html","<div ng-show=\"$select.open\" class=\"ui-select-choices ui-select-dropdown selectize-dropdown single\"><div class=\"ui-select-choices-content selectize-dropdown-content\"><div class=\"ui-select-choices-group optgroup\" role=\"listbox\"><div ng-show=\"$select.isGrouped\" class=\"ui-select-choices-group-label optgroup-header\" ng-bind=\"$group.name\"></div><div role=\"option\" class=\"ui-select-choices-row\" ng-class=\"{active: $select.isActive(this), disabled: $select.isDisabled(this)}\"><div class=\"option ui-select-choices-row-inner\" data-selectable=\"\"></div></div></div></div></div>");
-$templateCache.put("selectize/match.tpl.html","<div ng-hide=\"($select.open || $select.isEmpty())\" class=\"ui-select-match\" ng-transclude=\"\"></div>");
-$templateCache.put("selectize/select.tpl.html","<div class=\"ui-select-container selectize-control single\" ng-class=\"{\'open\': $select.open}\"><div class=\"row\"><div class=\"col-md-11\"><div class=\"selectize-input\" ng-class=\"{\'focus\': $select.open, \'disabled\': $select.disabled, \'selectize-focus\' : $select.focus}\" ng-click=\"$select.open && !$select.searchEnabled ? $select.toggle($event) : $select.activate()\"><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" tabindex=\"-1\" class=\"ui-select-search ui-select-toggle\" ng-click=\"$select.toggle($event)\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-hide=\"!$select.searchEnabled || ($select.selected && !$select.open)\" ng-disabled=\"$select.disabled\" aria-label=\"{{ $select.baseTitle }}\"></div></div><div class=\"col-md-1\"><img ng-if=\"$select.loading\" width=\"30\" src=\"data:image/gif;base64,R0lGODlhlACUAPeAAEuW34q76prE7Wem5GWl5G6q5Wqo5Xyz6FCZ4E6Y4Hmx53Cr5lme4pTA7Fqf4nKt5lyg4kyX30qW31Sb4abL71id4eDt+YK26Y2960yX4LHS8anM8Nnp+K7Q8fz9/k2X4MHa9I++60+Y4EqV38Xd9Xiw58rg9rjV8nav51Wc4aTK72up5WOk41Ka4NPl94a56p7G7rXU8oS46fn7/v3+/lKa4ZfC7GGj41+i4+zz+/r8/n606PD2/HWv5t7r+bzX80yW32Ci44O36c7i9mCj412h41Sc4cPc9NHk9+Tv+r7Z86vO8Obw+rvX89bn9/T4/ejy+6LI7lac4Z/H7lie4e71/H+16FGZ4JC/6/7+/l6h4/X5/Vug4uz0/FGa4KPJ79Xm+Nzq+LnW88/i9snf9vb6/efx+7PT8ePu+ZXC7czh9vL3/azO8PH3/Mje9ery+9zr+ZzF7uLt+s/j97fU8v7+/7TS8qDH7srg9fj7/evz/Njn9+fw+vj6/vr7/f///////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NzQ4RDczNjVBRDM0MTFFNTg0ODlGMDgwQkJDRjVCMDAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NzQ4RDczNjZBRDM0MTFFNTg0ODlGMDgwQkJDRjVCMDAiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3NDhENzM2M0FEMzQxMUU1ODQ4OUYwODBCQkNGNUIwMCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo3NDhENzM2NEFEMzQxMUU1ODQ4OUYwODBCQkNGNUIwMCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAUFAIAALAAAAACUAJQAAAj/AAEJHEiwoMGDCBMqXMiwocOHECNKnEixosWLGDNq3Mixo8ePIEOKHEmypMmTKFOqXMmypcuXMGPKnEmzps2bOHPq3Mmzp8+fQIMKHUq0qNGjSJMqXcq0qdOnUKNKnUq1qtWrWLNq3cq1q9evYMOKHUu2rNmzaNOqXcu2rdu3Kv/InUu3rt27ePPqzUt1r98/PJwo0WDjxYUDJQ5ceAFDA5k3f/f2jWy3C4koIV5ovsAZ8QEFKEqgWIDiggoOlO1OTv3HyRIbIUJg0Gy4c2LQohcUWGBgxYUYHlj/WR3ZhQoBAhrExsC89uHEB1BIX7CCN4EVBAqomJGa+N4kHaII/4Bho4Fy5rM5P/88WvqK6gauEyCwgARl73g9kFGhAgYMATYkF1tmi9n2WQkLkMZbb/MZEAQBEGDwxF/42fXECfxFEcV/5JnXwGy0radAbgliZ0B880EAYQGoSTbVXnLEsMQS/PX3nw3lydacgSOOtsJu2BHg4IMQBOFAEDG4KJVeMXbQwRIbqKDhf8gpp2NtiJXQIwoFnLhCfA8GUeSRFUCwhF4VypXECRpo4OQGUWooXnlWpvdcCaJN92WDEEIYRBBllrkBXy/e9cYPJ7Dp5pMZUpkjiIdlOV2Jez7oJwQOQFCmEWbiVeEWJPyAaAxtPgmllHOeRxsGsV0AGnUnxv9KgJgQZhqoA0Y44MRd+NEwhBJKiBrDsG5CGaWjAmjgQhU01FUFCQIocOKsYUJg7aYQ5GpEEFWoVihdcJBAArDCEvtknFF0wEGzfpFwAYpFWmsrrrhWgMAB3i5JFw9kkCEuuaPG4CSN6gr3wwJFGjlvBRUYYa+9J9RFnAdO9Ovvv6ImuigZ3An3xxMYKKypAw0bYbIRCHBaBl3EveHCEENYjLESGu/qMV1RyFtBvQg0nDICCDTA8retuWA0zP3+G+wJSdxslwYk1+vwzz9X0PFw31bBgRNGv4z0xUrI4fRdMJBscsooo/yzDXOtxsTWW3f9NQktjm3XBQ6frbbaCAT/we5kOsAhOAdbc300zDrYfdcT2VLNdwQZIDCEXJM9Icflgg/uhOFdKI5XB3sDjUAEomeAL9b6dsFEEklgnjnhcGThOV4EAM03AhmQ3jPlL9LwxhtMBL+663BMOPtdHYwOdO6jZ+B8BKj1pUMX1P8u/PBNH4+XA7pDzrzzGQwqPQ88VGF+9b+/0a32d5Xg/PLge38B6lH9ocMT+ONPfhVd8H81+3TZQPy8B74MrIB+UPmDB2bAwDKUYQsQ1F9wAFgXOTwvdwR0nhEQ+JQ/0IAGHgihDkbIwBmsjIJ2KaAKn8dBp8glCzCM4QdniEK74G6FBWxhU2ooHCPgMIdp4mFeyTKIQx0yRYipueEPM2DEpSCRNRxQwhJeUAIIGQFyTVTKE48XxC2ypotevA/RwngzMJLRL2Y8I5rGqMbusLGNkUkjHPNVvzl+8Y12XKO+8hhHPPKRV378o8QCKci2EbKQWUwKIpVUx0V66pCFlOMfJclHSubRknbE5Bw1CUdOttGTagTlGUVJRriY8pSoTKUqV8nKVrrylbCMpSxnScta2vKWuMylLnfJy1768pfADKYwh0nMYhrzmMhMpjKXycxmOvOZ0IymNI8SEAAh+QQFBQCAACwrACsAPgAsAAAI/wD/CBxIsKBBgVt8DDlBIUoDLFgwNJhCQYyTGQczatyoscocOyqmTBFAEmLEABhkXFDZwI4cjjBjCrSgZMMGFThHloSIIYDPC0APCMXgBqPMowOTiLGjgc1NFVF0CsDysOdPKxcOKND64IISpDKruDlxgqmGDRQaihTwsKrPADKsWNG69YHdCy7AaqTBAYQYMSc0CLapdmSDwydlKJ47V4FjuwUKCCijt2CZISSUKPlbtunTkGwR91SsUqtQuw8KPFhRQEGYygJ5mHBDAgQIzYEHpwV92K1KoFYcP4b8wABrE5U9DpldezPgwWijhq6a8oJcoQpQRy5goMAAAwPEgP/l4WLOchMkmivpfLZw6IijswrPDpn1gBUEDBCwc3QLByflzWECerdxxhRaUOlEHVxZcfWAAtutcF9+BAwQBAkxzWABB/+Vd556nTlVWBQUqDBVAMBhl1pqBhhHoYUWcsBRFkxY4EMYHZrHnGaAmUVCGDzQUJBHG1zwWHYrsAaefhYSEAQBK2yxEQ9JyGEjjgDOIWB6folBggVCwjQHBqltt2SFTj4JAQEBaOQBFFAwIYccN+a4XHpuQKGXG1ZENsCEA6QZBARBOBAECBnxUEUOcc7pgw92msCBB7B5IIBxTDqZJgSEMrACpQXNoGgXjEJR5aM5QpEFbAPZUQABFar/WWihDATBgAoGlfHEE6PGKeeVHHTBakEn/BnEsYNCUKsDDBBKGUEzzLDFrjzkwCgTSdjIw7AGaXAsAYY6AAGzylbgwAYF0eBBtNPywAOpTDAhLLcGBTCoA+I2ywADDkghxQAFZUGDujpIy2sVVXQRJr0ElbGCofry6y+zNcxxkMA0FNzuswwXJEa++EpRAQNS1CAFAxhwpO4MOnScUQHMnsyAySTXUAMBM2Ls8kEa7OtvzSJXUAMCeu5cmQe2llyB0AiYXDIFRsMmQwVSNO1vDQkkYHObUeulwdUIWD101gV0rZccJg/dtM1sO2C2XkJjHcHcCTSNgNtvI+WAzWEjiTD33xHkjRQBfRce9tyCHxVE3YYXnrhMFfidwN8ARABA5Y/HJLnlEnTeOQA1ZM5RGHQD4Hnlc+MtekYUVH65BJbPbTrOq2e0wuWm4+65BAfUntHuEph+OgC4+l6QG8DvLrwFxhs0xwrJex568wdVcQECya9A/UZTQLA7G9tz5EQBEkwfPkceCRQQACH5BAUFAIAALC4AKwA7ADQAAAj/AP8IHEiwYEEPUDiYOBKjw4aHGzo0OQInj8GLGDNq3GJBDYgmMU5o6ODw4ZcpceIIaLDhSBWNMGP+8dCFA4kjID6eiDGy5JeTAlQ2aBAiwBQ1HmQqHVhTjYmFOJuA7GkSqNAQDQJoDXAky1KYHDkgQeL0JgglTUSOrDpFgFuiWwPIkNGAw1eMXSxwcDLW6cKzU9du+IlyJVytc2XskPHlyd2BCNFYgMNBLFmoZ2Pw9Dml8NCsW+fuGB0AzWM/XaCgkUyZLxITZtNuNtn5alG5ohXvUKDAxFcPVVIzWa3XslOcaHdyVmk4dOLRvEuUUKLUw5M2waEMn7z38k20swe3/30boujz0SV2lFDQowcJmX7yXBe+nXLf2JqXr7yNW7SCHT2U0N4CPagBEw0exNdGG6mphkZrlx1xBEgnnJBWB19chdh5ALLXwwIglmDBgTTokMeCwrHW3VMcoPGEVwS14cQJAoQ22m7rtfchiAbs4JhGWZQoH4Nd1OcEHF3QEBMNcEzxHG8e7gjiAgY0EFOQJs6nnWQv3uVECNBFSSCPBhgwABIyIXgig0wk+ZhAeUyxm44EGkDlAgOUucAWV6p5HZ9vEtSEgDvaWWaeAxBgwAZLeaBDUoEWdISUhpapKAE3LKCDUjBGalATPOJpAAEDDMBCojdo4OmqcVBpZqksjP96AwEE9KDkqoHq0IOZo8pqKg4sEIAmroGCMOoAsyLLAgs3cMGFlcQGukOwBADLgrM3sIDDANEGGkO22nJxQ7Nc4GAuE90+5oEBOIyLLQ5cUEEFFzGk+1gI5cI7b7nOUhGAvXedkK+++zpbAsBfoeHswlRI4bC83CK8FLwLxyvFBBhzIfFSLMjr8ccNb6zUAiCXLLJMBmA8QQsst8zyyTHh4DLLKk8gBcwwUcFyAi3UjDEOOGdkwco896xyAgloHPRFHbSAdM8tI52AAUtfpEALERSdQAQRQC1D1QdNsDXPY7ccAaNgDxTD1lmXzXYC6KYtEBcRAJG13Uhn3QLQcv9l0YHdQCQAROB1Zx3B13K3McHggHON9+BO9E0F44PXbXfhSqcdAuWUW263AH1DIQXnlTcOqNxb4EA65SH0TdAAqwMhxemu/1HC6mjXPtAUnEesO0EaUG7a7wWBMHi9xBvEQe4EBQQAIfkEBQUAgAAsMgArADcAOgAACP8A/wgcSLDgHxpPoFhw4sLEkYcg3JhwImeGwYsYMxr0sIaJBQ4Mh5hweATEDzExNGjoIGZIFY0wNc6oAiWJnI8hR0I8ibJDhyUqVMQA4yGm0T86nlTRU/MmHA4u5ojciXLlz6BfpqgYouNoRhoz1vBgysQpVKkkTaKM0WHDBhVfsqaZMkWOV4NZwJZZs7TpUzBoqaps6zbrlDSIQ4ixeHcgDQ8znoyFUnYhwzlpT1p9a3gu4jQhpkBp7FjHXrI3QbqYWvJHDLZLCtM9DDpEiAAhnJD+kwWy5CpMkliAk5MqW7dwZ4NOg6F5AAxzdtPQEZZm2b8i3Rw5mfLnBsO0a2P/CBDgxQs3u32voSycA5js26t675z49njzQoREb9y7enA5xEU1xxxuuOZdcuGF4Bx++QnBBGlgSaYHE1CswRhBZSRhQgf0gdaceS80mF8AZZDmQRlP6JCFUXBoQJttIYAoRIj5KaDAF6StSBoHhylIXog0KiCEjQrst1tjNIixoIhCEqlAAF0dSZoJGNDYoJM2PiCGlLvNIeKQTj5AZFFcNgbClUSKqcACDzzwQ5mkfRGmjWw+UEABL8DZWBkvOFlnAW2usEISet41B51tAlrACgUssMIGhd4VwAMLsCnoAosyqkCkXs2BaaOCMroCAQSsoAenRmWhwKJ3jhoqqW+i/xpTGgWUKiippAo6hawxHTGqrb8SQQQBefKqERS/4oqrsAsYC1OtwhIwrLIFOKvRAtJCoC0EOAg7rLUZKSAsDjhsay64GInr7breonvRCtyyS6627hpULrfbOkDFvjjUS1ASVOS778AQrODvQBpI4YC2VEih8LabHvyHEFLs67DCDugrRQASewBBxVS0ULEDF1PRgcQbtCCyFC3sqzIV+tp1MAEqs+xwzQ1DIHEHNfe8ssrF1lsGyyp/oLLIR1NhwsEKtGC00U4XLTIRNPibxgdYRw311rvWO8UHEWD9tNROQ1CiuwEAEAEAAHzQttEZOG10CO5CQQTbarMN9gdxZ2EtxRPoQpEB3mxnMLjbYreQQazoOkA422sPbjjfD/jrxOOET56BA6P5q8DjgxcOQAtLH/wE5pK3fbLEf4SAOd5dsz7D6wCkwTpBU2CO4+0EOc426bwXdPnocARvUABLHBUQACH5BAUFAIAALDkAKwAwAD4AAAj/AP8IHEjwD40ta6pAQYMmjEMLTKroKEixokWKNDzMeFKly8KGHPa4GDLExBALTy6qVJmFxkYeXZgwASkSSckjR0C4seBhpU+CLrfAhDIzTEgXNk3gBNGkiZIwP322nIHQY1GRI02QyKmkaRMNTaBEVUlDR5mERBvWLLn1iFcNcDW4mTiWYhYdM9ZYVYv0Zs63cJcs0dClLsazCq8iNeHmb9O4giksoWDBMFAdHNOGEVmyMdPHgSlQ+PIFxh7LA3UI1cxZq2PIk0nDuGPjtOUsHlYzsRAyqeOvGiKPvgOjuA2olnMnjImGgwvGf+MGF/3lDnEYNrKLRU1RRxULbroC/588urrx7DZg0OVO0QMTEl8jk76OHr0G9iqZNIltHnt9GwEEgBx+FXlAwnDn1RdgADD0RKBFe5TmH3oLLmjCgxftMWEAAFYowws2zIChRUhQ6OELAVxwwRAjWtREhwG+IOMFMshghQ0tFgjDgijSKMMOVthYWY4F7RFAjy/YKMMFOyiww31EFgRDjVbQuMOVViigQABRFhnkBU42qaWYVXRJ0AtXjtnkAw9oeaGZAlGQZptaKsDmA0vAKdAQdd7Z5wM46tlFnwsUeucDL+gpkJ13FuroAgoo+scOhz66wgoLSCrDo5wWqmmhl4a6ggGkSqrApaQaMMCqrEq6AKkExP8a6wCkPqAoFKsSwAIBtKY6gK16KsErC7uySiwLieppg6447MosDrzCoKcHBrCAQ7PEXjtsE3pqwAUO31rLxbHXFgbnAuB+C26z6QJrZhNUcCEvF/Gm22ygXW5BQAr04lAvFVRcy4ULcO6QAsDx8gswuFRkauYXKRxcAxUKx7twnl1CnEINEUdMMb31phSlDSlcwfEVVEw8ccRcpPBFlGU8kIDJJtfAscr8pjCAgy0uwcUVVySQQA01c+zxxErkqAEOAAABBNBBE72xzRtTscOIPicAwNZCAzGz0CkMfUXJ/PIwIhVbNw0E10J/XUMCYW+MRIsvpJ12Ak53/fbeCXBb27PdTnPt9RVPD53AyzlCYXfaa3sNxNtAU9BlDYA3rjXeM0MZJQGLb7325VS82WUAnTe+9QNmwzlE52mn4LeirKcQoqQCpWB3DTasQftACmxNAAi7F2TBkOwFBAAh+QQFBQCAACxCACsAJwA+AAAI/wD/CBxIkIaOGToSElzIsKFDgVlozNjSpkqOKm10PNy4MYuHGU8qmkkix4KcKhxTEvQIskqVkXJ8hOHgBAoNlRw9lmmTI4eZkj5ouhiKEqdDlhWh/JTpZKgLMmTCeDDKMIuOnS/NoAna9CnUI2S2UF2og6LPJBZmOv16RIkSM2MFStxikWRQDkPZuv0hRk5ciUnRcs1L5kjbHz/o0LEwVuKTKlDQqvVqWAlixXZiMDZKA+tSoU8r88Vs50yMNnFntEETputXy4nplD5zhkKMGXEFPvFB+bAY2TFoUxhOJvfAKi4qK/kdXPjw4X6N/6ERxjJz58+Hn5kq/Y+F37RrZ/8fHidO8e5/koQfT6F8eQo30YcRn919eQEu0AskU9++DRsCUKDfHzrUdp8AcQAoQAMMwqWfD/4JYAODE2Lww4B/nCHAhv9NyCCDcWAYhocNYIBBiSaaWJR+cZyIYooYyCCDExjSAeONMSqBoQs3yugjBgIO+ISPRMpgxZE2YPiHkUXKeKQMSmJw5JRT+qhkAwdkqeWWB1xZwpdghlmCkjKAqcCZCmyppAI9oIACmnBagWEVPTzQQwkofNnDnj1ggOERDxRgJwp1PvBAniEOGEcBghrK6KAPnIGhAgYIymijgRZwHnpHGFBpAZVm+qiD6FnhKaifnvqAnPr9YAABnsL/+mqlniba3RMFEHDDq7DCCioBBXCgHwYQ6KrrrLwWcEAW6FFwww1aQEuAsdO+Kml3Z0AAgRbRakGAt9UCq5F0cTCghblaQHBDsc8aG2RubcjAQAXmMrBtt8VG+wBuuZ2hhRH0MmDvwOmu+62OcZ1hgBEM12CEwAQzcIPEEPhplBwUlMAAAgjU0DHDD88LQQXnplvAig59AIARCAAAwAcwA/CxETXUwADD82pBssTCcjTCzz+//AHHNXMMcA30GgGBETprYUdKHAA9gsswc1w1zQhUgLPSSr+70RFASyA0zDAXjQDNR98MgdcbUQD02FRb7fDHNtewtlENhO0yACMMX43A0B7PTfMN+Rllhd4fSEB21UMb8QHLB+QwFgFSq6y4ykOX3bEWMeSmxdt8963y3x/U8EEFDTxhnBGgT/1B338joIUA/Br3utR98336AWTE193tIyhuRAEyUEBjdwEBACH5BAUFAIAALD0AKwAsAD4AAAj/AP8IHEiwoMGDCBMqXMiwocOHECMKzEJjRhkdEjMKpOFhxhoeazxojFhxy8ccOXiIHMkwS8cnPFDmSJIEI0uFNHSYjDkziQULW24mrLhmDUqaFsJw4MBD6EGdPHuGUerERQ6nAyl6jIk0KQcwSJCMaYrVpcmjPqm6GMPWRFCnFWFKVQpWrIm7JlberMg1LYeqdvGa4ID1j46ZXp2EHSP4h+OrhXOobYvXsWMThQXy4OAi8F3LjmNYyPyHB5LGoGOo/qEXa47KqVVriBGG9B8OJmLHmN2hww/bNHL/UL1bQ+8ObDZAzpyDuAbjvTdI3zDG9h8TMY532JB8gwoVMaxb/4g+/bt5FW9Ja/B+vj1h2ybafxcg4Dtm22HM01dBv39420/w19+A+1n3B4EIqmCggAI04OCDDhq4AYQUYoHFghZmaCGEBgqAARYYhCiiiAZiEQAGAaT4woorNmBdDiy+IMOML6SIgQDWISHEjEJcQCOLG1i3wQU9XuCjDEVe8B9pRSpgZJI+VkfaGCgoYKWTVhppJFmZYXHll0ZaeSFpJqCwgAJVovmlAh2Q5sEFC6Agp5p0KjBaZgIsUICeZlY5pwIBqDdAAYQuwGecaKJwH1YxFGCAAY7yuWefQqQnVAcDEGDAAJBCWuikvznVRwAEDJDppo8+6qiZQrQ20g8F3P+Aww2ZlqrpoAMsACkSCYW6kAcdLMAAA7PKaqsBtzpaAI4IjTGCBAao4IKrSWjwAg4VQAABDtriQMANtp7KqQJPJFTACOgCkUACFcwKQQUTTFBBBcPOu+22BHg7AK2lFuBEQjkk8CwQ6q6bAAI11BDvwvRqS+wNENwALgGlDrDoQRegKwHBBh+McA0IICBvvcRqK6u3tN7gK0I1PJtuwSEjsC7C9MLLgMPczoqyBgttgO7Az84s88EKw1sDyTgQy+23KyOEg8YEAyGB0OsqPEHC9E5w87Dc3mCACwy58DO6607tcdVXIzBvvO8SS6wMlia0wNgjqAvECGcnkLDeFSRSzIDW7xrQNMASQE22wAcbPIHM8daw9rYquKqQCxO4vHHdAgMxNMJ6L+54DQOosEZGGiwwAcFBEzw0yHqDTAAGUt6UQwcK5FtD4gncXEAAyt0UEAAh+QQFBQCAACw1AC4ANAA7AAAI/wD/CBxIsKDBgwgTKlzIsKHDhxAjSpxIsWJEGhYzFqThQQdGjRaz0NDRZ40HkBRFknzCg4cOlBJH9nmypovNkzAbivRQZk3NLm+C5mzIcebPoBYsvBm60MNMHkCRJrXQh+nBLDxpRn0z1QIYC1YP6tAqdSqYs13CFtQBtazXs0jO4lQrsIzbs2DiDhmylO5AHmbxIkGy1wSYLH4FZkkqmPAQE2TIkFiTWOAauHsfRybBGWzlPxYKb+ZMmsznP10gk17N+UTVyh5MsCZxonbtvpXBkLbN+wSY0296Czf9uYxwDciRnzj9p3by58qZn4CefIN16daza79++gSF7+DDU/9gvkFFFBXo06v4ztw8DBhR4ptHv+E0j/cCBLyHH+V9/c8WCNBAfjDol19+y312QgMMHthgfiR8RoMAIYTA4IUO/laZBRV2aCGDHz7xGQwBlBhCAB5aqMJnYMgQgIsmnthhhIn1EYIVMuQII4onBpBWYiocYAWOOL5YYokwVHbCAUIKSaSLMJqQGAklMFmCFU4+WeJcBr0RwEsWnYDCmCVUyWSTRNJ40BMpZMAAbhHpIMADD4yJwgFVXunkAQ2AeRAOGQQqwgZcNkRlAQU8kOiYeOKJpZAaHjRAoJRGwIAGfibkwZIGGDCAAYnWSeadZq6IkBWUphqBCCmgoIIFHw3/FFwIBuDAAgufFgCqonaWcOcBMoh4EAypFvuBCKymwAAOoLKAAwQMQGDrp56CiiidvVbpmUEaFOttBKsim4Ky0Upr6623dtqponSKigJxBpHgrarIinBssgyUi8O++7Lgqb+6XoutmgWBMW8GEVBa78LkQiCtw9Om62nAvBJcULcHZyCCoOOmIG6+Dufbr63/FpCrASXAi9AJ3wZ676odI5vvzOZCgGu6/nZ6wLYKdWGAtx9ozLDHIsys7L7SojsArp428KNDGjCQ6gcfhHvsuDJDMO6y0d6Kw9IADzGRBw1QLWjVRMec77gh22qzsw9QsIVFcrKQwbEap+3x2lwvLeswCw9oICxIFgSAg7ji7s1ACiE7PEADQ8Q6VBcbyFDAs3szPkAJAWgA50QBAQAh+QQFBQCAACwvADIAOgA3AAAI/wD/CBxIsKDBgwgTKlzIsKHDhxAjSpxIsaLFixgzatzIsePFOh411qnjIaTFkR5mzChpUiJJlTO2bGkJ8aXKLTx4VJlBs6FNnDqr5KjSU+HPnFWEQuFjhmXRgzGRCjVDNUkSHk8R4lTKh49VNGCTZIWaY2kSsGB9qPVBY6xBq2fXquVAF6tbgjnk0t1L18xdgjz48h1D2MffgR72El68mMPhgYwjkyH8WOAYMpgzayZT+c9lEqBDi+48BoTp06hBdCbx4/SP1qg7/2hCu8ns169VP95Cp7fv3010H0bTQYPx4785PyazpINz58bpGHf8uMOS69efP0fzmIOK7yqwZ/93PvNwBxjgw3/HrmGh35AcYMiXnx688oMcGAAw3NEDDAEC/DdffTkctEUJACR4g0dNNNAAgAEGSJ8K7RU0AwxAJKhhAByREcKHDkIooHzUDaRChhpq+IEAGo0RQgAfhhAigPIJoIJT+aWoIwAfhOAURSC8EMCQMYYgwIM0jjFQADumCMSTHzxgl0QzqHDBlULCCKOMIcLAk0BNNJngB2N+UEMKHUg0RgAHHHDBCxcMqWWMDnJHkH4pkvmBnnuaWcMAKnxp1JoltNnmm2/KWSQdBkFRg5gfAOFnDX4WcUEHHIBEkBkgCFDCAw+UIKqbbsIpp5xeHjQGihpKCkANlML/moKsKaTAwA0DfLrAAgYYsOuuobZZ6AUHmJplA+8dtMSYPPa5J6xm1srAtEVUe8O1A2Q7gK+gflrooYgG8EIIJSIkQIaR7gkEtGfSykC11lqLq68LPFCvqN+6Ga6SDKnAp5l+RjtrrfAWca3B2/ra6wKfBlsCsViS8BAdlPYZ66xn1mrruwcXkW2v29bb7agPX8nvQ/kBDHC7ZzIgrcE3VJtwtr+K/MAB3wYglkQ8lKDyxS27zHHMHmtLrwGgMjwqDOVRRMKsk9Zaw7vT3hozrtryyi3DoAZwskUzCFDEBxi7nEK10x6M9Q0gK9wtHT9i5IEKNzDQsq1FUHv1ANeCKaz1BU0I6hEZAdTtMtoGI9z3tgeoYOdTfGgQwgEGXO1xvS8I0ESBFgUEACH5BAUFAIAALCsAOQA+ADAAAAj/AP8IHEiwoMGDCBMqXMiwocOHECNKnEixosWLGDNq3Mixo8ePIEOKpJjlTxYaIyuepMHSQ0qIJVnqmElTx8uGHjzMLMOTZ5s2ZW4uzNKzzM+jR4UuRJqjqdOmShU6NUO1atWoCXNQTcK1a1esCM1YGEvWApqzaMAetBAmjI+3cOGqNeiEA4e6du06cTuXoA4kSFwEduGksF0fYdm8cBAlZQ41aoYABuyisgsLBIeEGOBlhOcRFVL6IEOaTOTIkpFQVVDhs+sRAD7YDOmBzJEjJEiUhgw5h47XngEEH8FGpBklyJXcxq1bDRmbH14DmA57BASXIEmI2Z58+e0hAgt8/6Y+4kPs2CpAmrEjhr2Y5N0R/1EjPPh08+dTtPHoQQwbO+y5xx1y+wnU2nTnnffBByI84BEJbLChgQZ2UCigEmQQpIJw+Jm3IINeiCAARxyooMIGG0gI4IrspTWQDincN50IDH7ghY0pwKCRE1GYiGKKE04IoBLYDSSAeeUtSGOIIqQgghcwoGTREDAIAEMUUWygAhtA/meHfAVVcB6NIjxpZgpoKlCgRP3ZYKWVWPoIpAZiIKSEkjYCEGKIaHqRQgUs2CGRCzCE0EADbsLZ44lcsmFGQgoseOOeTXrhZwUVpOBAARrMtpATMLwQQACI2mBDlVeaaCIbGSZUhgNL2v9YqReZ/gkBBDhAMEAIYqBREkGPbfCCFUKIGsKxpp5q5ZU9droQEpbKmoKl02qKqQO4ssDCAAMUgIIQQhxwAAriEvvCuQEca6gAysIAg4k5NCSGpWb6+SeaDuSKLQ7bDmCAAQUU8AAKKChwgBUIFzsqqYeyK8CyLjbERpOzVkCrA5riisPG/QIsMMEKhHxwscam27CyLkSkQqVoapqxAxXwy4LM/gY88MDkEguuqOke27AATkwkxp/2VgABpvryO4C2LHj8wNMFH3zwuTz3bCqYEjmBg8UYY+tAvrn2u7THNkdtMLgKvxBCujA8alEZQmR6dMxGz8zvv9va/LECBSNubG7Vdnh60REGGF1Bvvna7W/eAX9MsNQ6nytAGB5tMHPMYc/cNLcCB1zwAwafTWwDahTZkQcaPOAAC7gu3bQBNQNMMOgHKIBwA8+9xIEADyj9euzePj1uCBpghlUOYqjwAsE1F3DACw2wGq9FAQEAIfkEBQUAgAAsKwBCAD4AJwAACP8A/wgcSLCgwYMIEypcyLChw4cQI0qcSLGixYsYFUYAMIHLgB1YNohxMSOjSQAoU6oEgMAkxpUwAbi8GFPlhJkWa6ZsiRMhjZ80/mQZSvTPRpRHV3roebDMDB1PdejwQPWnFJURsm7MyoGpwTZP2mzZUqbsjLM6HiQFoFVrFK8EZ+To0oUHjzZ4n+jV8aLt0QgIsj6AO7ANFCZQoNCla7eNjg5ItbJFEFjKUsJMkmhGnFgxXQ8WAiMNDBgByw2En4RZbUFzEs6Il3KhnJWybcoDCFvgwGF1GAutN3cReKF2YAQTKCefgJopjzEuXPD2Dbw1D4FjSNNOjhx5kBw9aYz/MTEGuvTprHUMZJE8AvflE6RMuNAzDAkT+M2f752EIIzu3U2QnBQIUEGFADNZoAQIJNxHnn7SXTeQB1QAOGB8UnBhYAcmJSGGGAs2iN+D0XVVkADKCUggFRNQIQUVQXCB4EUcxGAjiEo06OCDUBjkQRDwtfiigVwUGUQAbVCkgwkddHAjiCAwuKMLCImBAIFSvJghjFRwEUSMK4iRRURhdEDBBh1ooMGTIYo4HEIXFCikhnR+GQQLAxhwgBJjMlQmDFFQcGaaNsagBI4NhqHQEwO02NGWRXrJwqR5roCCACD0WFAbLsQQhQ0CwADomWiqyaYSJqinUBhcPBoEjJJ+/5nnAJUW8MADKFyAhQ0YBOArBlhgEWoUxJKa5poxfAjCEw1pwMWWr37JBZ54GrBCAdjaiisKB+xwwQsBAAuqAMMKiuaxNzLxUAfRwnpnELOyYIC226LA7QUXhAvsrjaIWuyg6FoQEbvuejlAtSsYMG+99h7wrb4YYDBuqBQECnAMAksUAwteTnsnrQNcu8IK2x7Q8MO/8guqv+ZuoEHGE1lQgMcHh2zAALZii+sBJjv8ArjhBrsrucRGsQEFMUhY0RMYvAtywgvbym3P3/4MsbArAxoFCWWYRMIDeK6QZwHW3roz1S98G7G4NowbRQcwm6TDBgWEHHIBJKNwK8/34kb7wtpCC2BDFKl65UEMOyT8ALb2PsC3w/j6GrTEFIwRFGEChRHFBYvj6jjVkf8qgBjqYn5QFyRoAEMAO6BtwwZKcPBmRQEBACH5BAUFAIAALCsAPQA+ACwAAAj/AP/8GQJFoMGDCBMqXMiwYUIHAAqAcEixokWFYkZoHOHgy8WPIBU+2LgRwY6CIVNadDACgEuSIwwMUUlz4QyXOFvCVFKzp0E6AEjiDKpxhk+fQjbm1OjSwFGfBFwmSPByqMenNbVMpTp0KxisNY0QbSl1q1GwKrlS3brVAVqaCBAkiEt3q5a3abfS3csCb0q2bOO2cOsXpIMWcgEjaGGERuGPDha3mIw4AWMjYR5fLDB1sREjiBF83qDZIobJUy8j/ryjdMUNqj1/NuJAy1nXDKHEnc3YwWcHDjo8pkEjSxaHBCbP/k3bQYHHM2Z48FCcIQbfv30Dr+2Ajl8da9Zs/5mhg/jxhGAGY9+uhbuBNXiryBc/Xrr58wINfG5vpD13LUQI8VYVTDCRQw5VhFcfdQhtAFx/wLVHBIBEsCAcVmtYkEQSTEBxYHjiRYeQBxNGWJsWFBJBAAHeHZUDBxxYoGGHHiIYXh8JOegfEQ5MSIAWKxJggAY+QTEEEmDEOGOHB+awhg4KFdCjhA6woOKKBmSZBo4p0cCBCUeCkWQYMnIIBRTyLeQGjxNqYWWQBghZwAM7gICfRVC4AYIbYA4hJhhhkGkmEx4wFAALPRJRIZZyFuAoChgMcSdDFrhBhxIg7AkmkmOWmUQVDfVRwJtwymlAASig8EAJKOxAAUGOHf+0hQUmaNCBBnSIIYYSbvAZpphkWsAERWGwQICKLBjAQgFZPvDAnCUccMAOOwgRAAZpfEHBFzDAoO0Gt+KqBKYgmLAppzHe1pAbxgq57KmOPqAqCtFWa+21DTSQhgDeUkABuLjqmmm5m4rJwRYX0eFunMzOCe0BJZRg77UY5Ltvt9+Gm+u4mfqKBBKgfqRElgQw+yyq8kpMbbUB4KvvxV9sIPOtG5PLpwlI5JCSCcyeaoCzqx6AwrQTu5wGzP4CHLDNfMKnkgUHxIvy0BDbK4S1FVvM7xcZ07xxpkM4TZMOMMS7Kr3TTns11vnqu/W3StcMRqFHgSHEvBCrzHLLWbtQjXHSHXjths5oKXF3tBILsbfLbm8N+K1iWFCYB25gkHbRLbe979v/bqBEGHRrloQGDViNAeMCwPyFBkOEjJtBW4BBBwUwpNG3tnSYcHBPAQEAIfkEBQUAgAAsKwA1ADwANAAACP8A/wgc+GfDEIIIEypcyLDhwiYAAPxwSLGiRYRtIkZUcbGjx4QrNEYU8LHkxTMZREY8YLIlQw8MVGokkselzYENZIpksOWmyzwJAKTUCUBKEp8mBWRIuZQoBqQliTCN2HRnTagdOaRM8EEo06FXoGD1GCDBlaAJEiz9umGsRyJXPmQwK5crgA8Mrrqt2ObKUrNq02b4kKDD3otNCF85OzdtWillDluUsTiu4sUfrvSQbLHHWbOLpcQ1y5EzRSJpQ4uufIWDaYoQpMiWvRg0AxqvHa5mzRpCboe8K89e8bshg+PIkzMoUJxhcgfKGRBpvjD2bAYOHEDITgQ3dYQLoDP/mK0dwnY43xEeMA8hOXsGhtPjPF6+vQMiRCA8lS+wSfvjEOR3H34DzMDfH20ESAR3+RExAH5nHPhHePiZV+EADx7gwYECWHjhgxiuAMKBYDwY4IMOErHCACv00BN/PWDoIIgrrlgASfydMaODNa7g4wIFRIhVFhfp0AOPIQ5QwAoLNNnDiD7poMOGF7GxIoss+liAkz30cAKRLulQxRNleEADmA7psICPSg6wZg8LdNnDAQfc8YRJWVQBhR5tPDGDmRaV6COTLcbZJZ10YoAEmha1YYEFSezZ5ww6nFmRAFpuaeiccx5wwQUyCMCBdw15oAccYMDxKBNQVNFnGZUy/7rQFgcwySWniIIaAAYYCHACGFUkVAYTHLihxhBIcACHqqzy2QasZsqaUBIHbIornaDKIAOvDTQggAAqsHHCD02ccEITIJDgBrJgKAvpnq62McOfpDKEhJxyHjDnpxfsymsI3gpwhwoqbNDBGeOma+wQ7apqQbNjkmlgRWrgi6in2m4LcLfeDlzwweeCkO6xSDQMKcRttFGvQyAcmuunAcSMAcDfCjzwBmwg3AS66g7BMAfuPtxqFVRehMTFFxyQMa8zB3yHxzifgfAPCpPcsMN76lASFAFgCzMGu3L87dMERz11uiSoQTLQqkZa9EdlqJC0DAHQza3YZBfMBshUV2zNLttQrFwSBw30G3MITQvQsQo3s5HzuVSrS3KycLzoUxZu8Bp2tzV7rDfITfSd9rFgiOWWB2qogIHYY0O9N8IhKwyGHm/vVQUJKnAuMMGfwx66G3C0IS1nZXBAwgkdsLGB3mf8oAYYTERmUkAAIfkEBQUAgAAsKwAvADcAOgAACP8A/wgcSJDgDxkFEypcyLBhwhwMJEgw4bCiRYsuREiUUOGix48D2QDYKFEAyJMOBUQgKTFCFZQwC1KIMJKlBIQxY8bQCKAnS5c5UTpp0XOkz5oSFgQFyQNCBBEAVkrwSZLi0oslnkbY2pMmUo5XLR55ChUqza1TawKwELbhjAotRGiVazYtACI+2jYUMEGEiBZk6Z6N8MKDXoYeiPjt6xdAWbkRTB5mSOFv3xaA4/qVG2JyQwITLl/W7LiEYc8KXVToG9ry378VXqJWGALzBLgtJtj+22H2wgEVGOBeLaI1ARq+E1ZhIDx389u6vyRP+INB6ODCb6+GMGN6wRDBIUD/yM5c+AXvBQ+IF18h/PgJbNATXMAe+/rxHOQPJFJePBEi6xGBnH5/APjfgQdCMACBAiHo4H8lMPjHffcdGCGDBBDw4IFKMbhAhgMMkGGGRBCwQhYMlvAfASGGCKIBaDD4goYlDmDAjRka8AODcdxowIgGrLDCACtIpp8JLAZpQIgLLGDAAiXoQOAWQxLZZJBNQmmVfhcsMGSWK2RZwgsDysdGmF5C2WQJUJawJXpMCJmlmiXUecALTxD4gphtlnCAnwdMQeAPdfZp5wE7HHDBjvLR8GedkP65ww4XXCDDm9MR6iegiFIqwwUvvOBGmcllEYKdJSR6wQ6fhvpCCDGc/zadCwf8eYGilsrgagghNDBFfiehCBIFiOLaaqi89ipAHB04QSpDOmwxg6wezRBCpZaCiiyvDQjg7RRfdOCGBXkWpMMTOTCRAw/SPmsRFJ8e+2qvDXQbB7hfbMBGBzH8cMQQSCDhggscWIAGFFXwMIMOwn7khLzcKvvtFxToy+8PP4BwhAkCO+EDGupW8cQM7lrkxgsyhDCvxPeCS8G+F2e88RAueGwwwiPrUHJFLqicbL3eCuByxfz2K7MJNHv8MRTrjrxzRT408LO3LedrcQz9gqAx0kg4wcHHIef8tEM5TEHvskJ/QTHMWGe8NcA1g800DyN7MLZbMXT7LbgbEG9dtNszD2zzwTi32/BJTHwRh9Aub7BB0Vlr7AbHNRcMcg4J1x0UDUOwge/L+2Id+RGTC8zB1yAzXcUW1AblRAx9s9221qTD7fXHB1fR3WQ5DBFDB38DPrntPjDBw91XbYGGEyYcofXWXVtgfOsOBQQAIfkEBQUAgAAsKwArADAAPgAACP8A/wgcSLCgQYEzkhxcyLAhwyEFEgDo4bCiRYIzKFQAwBFAgosgG8LY2LHjjJAoByohWbJjk5Qhy5SQSLMlgB0wLyJhUFOiTRw5KzaZkKCox5olPwZl2MGLl6JQPdoEwGHpQQpOEzx9alRqSQpWC57wQpQoV58+S6IIOxDMhLIJzEJFW3IC2z9bcFQgG7fv3K4cKwi4u4OBl70T+BLV2rVIh5N3jxiu8DbxW76MK8CAfPfPgAkMKIsmW/ZpjzWdB2oMDdoLgwmILQ9OLdADiyIMGBQBXaF3bBi0B2rArTv36+NvZwf/UyA3ceKhQ5eos/wPhyJFcDjfXqQCAR7V/8D/YKE9O27sxWOE/9MDexHyussXKbC+Cw4cBAjgwE7evIb1TbCQ32343fbeADqsR8EABJAnYIPvsRDAen8EwMKDAzB4YX4nUNhDhiAOsGGGFlBYAoj5pZhhAdStx6CKIBZQQAkUejaAjDjmiBOFOfYo447r+VhAD0T2AGR4O/jYAwpMluABhQEsSSSOS5ZQgkLrpUGklVZuaSUeFMZQJAol7FACmTvsANZ6YJh5ZpluprnDk+F5YKWbcMq5AxgUpnGnnmkGsIMALVanAaCB7hDAokisxweggi4qqQCcLZeGopFKKmkDHYaHRKCabtpAGkPU2UCoizagagMCCMBndUOg/6pqGqy2CsOry8EQwKmrpuErDALAQAEFRyQYnA+87jpqGsAKO2wHMWBJ2wmrsspssDA42wG0JPBRKFsewECrANdmq20HGsTQRBMkcNBFpQJ9C1IXrZbrLAXbapBuEyAcgccQSIDhAx9ddPHEFnSiZEGw2A6Lb74nrNvvvwH7YAEfb/CwhQ7yXsRBww7jq6+6SoBAAsUCW5BExk/AGxIH9z6LbgwR93tywCmv3MUaM3QMkgUObzszyRMPMQQYHFis8xplJAwTDxp08HC6EZfsL8BIK/3GzjN44DNIHuCRbwzq8nvEyVgnrTLBTHMc1htKpEs0CWgHrHYSBGvc89co+TiwbhNW/4t1znlv0XNqSZDQ79V2J50E3jvz7DVtW1iABMoc3J13y24vp0MXfFjgw+gqZ7zGxg4FBAAh+QQFBQCAACwrACsAJwA+AAAI/wD/CBxIsKBBgRY6vHiQIsGIhyMAHJxI8Y+TFxCuRHQIAABEiRVDehBw40qCBB5RRvT4sEVIiiMrXGlx8gqAkxIiQhzh4OXBEyUT0Exg8mYCCRIA5HxIwCfBLUJa0Gxh0uTJo0mPQuzhVKAPAldkprgys6bJrB0hvuh6BkILsWTH1kR5Mi1ECk6XuHXQIgXVsTOtXlUJ8YTPJTdS8HWQIoVMqYKtJt3p5GWMGxUgKH47tgLVwFbtQpwR0gKBzJkVN/Z8xS/Zuh1vtgBwJeSWBQ4wQ0DtoMLqz2QrPKDAwUNXDBBu5Eat2QFjzi1ubCDdVSCIGwSSQ4DgYPfuCr1bQP9YYry6QB09st/Yvn57994OhLwxT3AJAew3sCd//14AfYIeFHDDAPdlp95+DnTwH0ExELDCfQPkV2ByN/i34EBCPOggAQREOCEGFw5kQQEdrkDgACdit0IXIQpEwQArFPDgCg+i2KFhLf4hxAILmBgjij4qoEOOXfQg4wo8mlhAATCCkOMfYyy5wAMPyFjAAjIqUF6LZzzQQw8PYDlllStYmKMAX4Y5ZZpTOvkkBl/GqcCcYD5gxpM6zqmnnl8qUAeeewaqQA9C4PmHoIFiYSiieyqKpxCQRiqpECDi+UKkl75wKaQv0ICnAJJq+kIAAYzK4pMKlaopqRhgEAAGLuD/CQKrrtLa6hl4cmBrqxhg4auZLfKABa+9DouFAMdygCcFvhrbrADQLiFrr8geC+21FITxpBnVXoutABR0QF2LS3jrLQXoUoDHky6YC266FCzRgbI5UnAuuhvE20EHZ1iQY7vvUpDvBhvse0YMJ/iQYwfwbrCEvBqcccLEIBQXYhICC/xwBxEjDMLHIIxx6oJ4xCsvxwdT/DEeY7jgwxYLehBDwSjH4PHKLLvAQRhJ8DDDlk61cQa/EscAwgkg5+yCEz5YYMYbPJTxZ1dJxFC0yiDgkfPOTZvRRRszTN2VBScgjDTOY7TMtAVJvPG1DmJTjXXWaevMgQ9JPM3DFmH/XWcGyFnn7ATXeXexN9wLboFH4HUP3nThh4dYRxhat7x0GHi3/XUZiIfIgwtq383201//HHfMb3DA9eiG8+3B6Z5bkLnXPID9uqHn8fCG23uHDTueHuigwwxw/y5QQAAh+QQFBQCAACwrACsALAA+AAAI/wD/CBxIsKBBgWbYhCjgwEEEESIitChC4AKbJwczavzDIcSAFi1SiAD5UAQAABEkSDhZ4cGJjRo9sDGQogLIFC1GtigJQEKEnj1VSqhgAmbBDTcc1LSZQqQIkSVTRkgpVKgZowJJFKhQpEIKByFtjoQKsefUoEILYC0TggBXBxWU1hQZcmdUlT+rSgBh1EIBAg6KNOz6FWfdnRDL+qSq0oFREgQIFLkhWDBXpl5zloTIGC0MmCcIDJhcZHJcwU0riE3MmrFKERg1ghB9I/KNpKVVN2yqE2RrtBJ2bDQxwADt26S5om7K3DfnvFY1+h1AwMAN6rVLU9YN12tTB7crRP9Ea0CjjgMGilcXTaB20sCWi+zYwEFHQQ4UDKgcoxFGAQMFqGccdZNR1pABbNhn1EsZufDfAwMEmN6AA9x2gwEMYgXTBQU8AKABIE4oWoUyrKGhUSA88ECHBbT4YXEDDMAGDSfC5IEMKpaw4or/SYhhjUaZoKOOKrbI438ZAqlRCCUcMOSKJbBYgA1KwmTGATuU0OSTD0S5Q2xVZnRClk06eYCTRPIVpkY2YHlBlmeaWUIIHqyZkQcX5LnDmReY6aQadmbEgQxv7rCDnlgeWmegBoGQ5wUyRPrmoxQwetAGMgSgqaSQEgqopQXdEYKmAUQaKalXgUqQDaS2GkAIsC7/qqpAsNZqK6xUzjrQrbx+oeuutdog7LA2bPCrQMQmK6yvx36hrLAw2HDHsX9QAC0M2GZ7xx08HHtCtjBsewe2X1DAwbEmbIvtHeV+US4FJBzLwR0UUOBuuRvku8EJNOpahrv1BqwvG2xY4G29+bKxAcEEnxDvr3MsvDDDbJxg8QmpzsrDxA1fbDEIJMiqKggdewzCySCcq6sFHn98wskkkGBCxqq2jDLIMqsxRg4rX4xyzDnPgQQH3c5Kws0xm2DCGHO4wAEHFuQgcqA5/Czz0k07bYEFZuRQhqocAK000y44DTXXOfCgQ7+B0jDG1WMgYfbWaPOwxgxsB1rG2EjIX/301l2n/YQHWajKg9Bl/81113bPMDWjOSR+9uI5rFHG2r/yoDjljdNQ+K9P0G3G6JVfnreuM5hB+Rp3E06tQFmsEfgaT+D9OkE68NC4B6ffrkMZeH9++0HCD2/88QEBACH5BAUFAIAALCsAKwA0ADwAAAj/AP8IHEiwoEGBa5pgObCgCAMGXhgUKfLgwpkcBzNq1OhDwIIgDos4mPDQy4QJIkSg9BJEho+NMA3qOKGAQJEgQRg4cEgS4smUKAF4EQGgiIAtMTfqWIIiCAEWRaBKLHLSgc8JQ714AZASgFcAWDwkNejigQEWBGzidLBzpM6rWEUM9SpCglcJDJaMFbjFxgADaQcEYQH1psOHVrWeHCqXKFG7ACRIGAAlKZMLAwoY+Iv26c0gVtkmNvmTK9GvdiVLPgPThQIDmjMTGDCAxWCpO0VCVIyV7uO7kVXrzWgCRYEFmgv8PTu78ESRVrFq1doVdWrVEoZkBKFgwQPkCzID/6atFudEqwykp6Qe/C52CU0yukaBYoH94wZgD3j61Db0h4vNlVJ110kWRUZQHICCAvR990ABENK22VMgsRVVfiLFdRpk79mQURkYKCAigyg4mNyEhA0QwBI+6FCQD0sogNKG2KGg0RIHHKCAggqWaN8C+eWnwBllxOTBGUVYJwELeWTkwwU56qggid/d9wAIYu31xxITqMZAkwdl0cAFZB5wwY4L0lffAjYgpeVAPDAgwQRPaOQGmVBCmaOIPaJwRhZvGoQFExp5gEUAMlyQaJln5oiCEoEGOkQAiMqQ6KJ7HnBCpIFGQSmlll5a5hSAcrpXFRgEgEGqoCJKJgZ1mv+6FwlYYLHqqp/KgKgLsmq5RAO21poqqwHEkWWvMelgQ60NAIuBsKvyimxSPtggwLXANgssFgIcO+1GJMQRhw3kWiuAtpt+G1MTcVwrgLjtmiutuhudMcW9+E4BbxxV0AvTElEEHMUUA+N7oL8bASzwwgEPh3BGDDe8BMDpPnzQxBhnPHF8Fl+sMcZnLFFxxwSdkPEZKKc8MskCgZDyyyfEfEKsLAtkgsw4N6FzE5XVLJAPMeusxM5KgADCvDXnsHMTRRsNAgkkmOCzQB4o0fTTUJPghgkmYDT1EFhD7cbWJgwxhA+l1oyG2FyXbbYLcPMw9RNtuz0E3C74oPfUf7iKYPbbcOutNxr9+pzD3XgHPjgTUBRZswc+JC44GmgwXgUP3nacQ96C+0A5FFBUscYTM0zdOeWMQ5EDD2uU4UHaJJcxeOWqX/6E63z/UcXntY8+gwc05P4H6L23rgMNsPvsQQ5VVPGE8cELL9AMzt9+fPK5e9D679gL78Hv0UtvEPLil2/++ein/21AACH5BAUFAIAALCsAKwA6ADcAAAj/AP8IHEiwoEGBZdRMCYBiAQsHQSIuOIAhBo+DGDNqLGhmiZACLFawCDIgCEQtFbRokeKgwgAMSDbK1OjhR4ACKwoMGCCSpMkgKB2sZDkBgRQWU8rMXPonyw8FDQssWMFzAIudP4NUcMB1QoUKCCZM+OAAyxOmGpFgeMC2wAOcOVlcHaAFosmtDqRM0BsWQdgJP9AaLEPhAAoUChawzYlzLou6EVGydCCWb9EPCCI8yCFYoBkMB6AeeHB4gWmqVR9riVxBylawRv2O9RvBQUy0Tl5YOcAbhWHFb3muoKo6csu9rWUjwBzhw4cICDQwJaF7txUFoUlHzUkc6GqVdfWK/y3aFzqA5+enzEQSQIgQK9ahQgW+oLHciJFVti4qdjlt9AAAEIENG/mAwQvtvScEb9mh8EB9qFk1kndctVQBeWE5h8B5EQQYIAUZ5WBDAAEgKMQLB+yG3W+mQZjTAoiV1JoU4vWH2XMfBNihh2ocpMMUGGBAIoknwnfdYQ7CaIMYFnhQkBwxWKEFhn7hqKOHASLwhkEnYIFFkEIS+V6KvQWghg4yeUABC5fdGMGOWAY4QUFMYGHDl1+GmSB8B7yghpNodQDbc2/GiWUHA9EQhQ134hnkkO4JMcVZnf2RhwLNCWgolkIMhIQAjDbq5aNE/pBFpQTZAOCmUpBA0BICxP8aqp0Y5IlBj6gWNMWmAtqQB0FOTCFsrKAK4OWoruZqEAZxRmDFlgXFEEUUwk5BLKNexkCDsgcF4eEC0BaUAwUUTEvtsKDaMAWa3Br0RgStZoQEueSae26sYbSLERO/ZvTDEgDTW+60UyCqb2d5aNABwAwLHIUTB3eWhMIdVLxww0sAGjFTTmgQQwwaUGzxEsluzJQaJ6R8QsgsK+yDyWiRIIbKNJ/wMaUwz0TCDzz3zLMYYgSW81I77+xzzyUPvREJTDftNAm3Kb30009HLXVGapCgxtZcc2311Qch0fXYSHwNdkFOqCF22WyX7QS7ZxtkQdtIOGG33WFcFLe7d9+IHUYYPvhgQbh7D/SEE38HrrgFciTBxKmFE7Q4440nYYYZb/QbuUBMyOG540xgnkMOPOC8OQ9yMBG66KSXnse2m//hweVvvDE6D67n4QHksY9++xNPlJGHDrDHLlAeuAMvPPG8Gy+Q8sPTULzzA+mQh+7TU0+Q9NlrT1Dz3ocv/vjkl2/++ZsHBAAh+QQFBQCAACwrACsAPgAwAAAI/wD/CBxIsKBBgR7AxEgT4MCCBSsI9OjxAkaTHAczatyokUmMBgcUTOyxYgVEAgMG3BjAQssCAU44ypz5x4OaNFasKFBwYCTEkylvECCgxcENBys2bKHJlKCaBhesXDhAdaLInxEHRBRKwIGWolpuqKDRdKYPGAFeXFB7QGePnT0eniSwVWjRo14rDDhSVqOHGCECpA0QNerOkHLnpmx5o6VXB5CNOLDCo2/BHFECB057oXPIqolXDBg6+usNvEUlT6igZY5lgRYENAjRIEDgF7hzWgkZNy7E0UMJOP4K2YGRChVWT4hhOYyANA3ShJguWG1ntz4hRiTQmMWNoo8lG/8Zj8AIAhVlncCAkUY2dOq4X+wOCfdhydHfTWtB7iB5BfMTIBDgBkxZEEUUArAnWwO1VRdVTvT5dt9ojnmVGnITGBHghggwJxMPG6gAA4LPPTfdZpzttpMCUl2ggGhDnVZUBZEpNwGHAqrBkQcaqBCFiCSm8R588r0QhRtMeFAQE0o0MABx/a2W3I0CRoCAlRVUppEJIfroY5BDCgYDGEruGMMC/SFXgYAbRjCBlVb2oFEOHWxgpwp4HpggdNAJMEeZTDVBQHLl4QjnlRE0kZESHdR5Z54wJChbDDO8tsUB/+GIwJUIANBpBZUW5IMGGjTqaIgHRgqDjq8NpIJ55m3/CmcEEQBQaxoGKRHDrqWe+mUUYLRa0KsBcuqprbVGYISWAjHRxK689mpniMEKW5AAstIKhK3IAgAADASZ0MS40MZAaqMb8GWtQT0Ym2ytAGw7wUBbHHGEEuM+C22pMeiwrkFbOAAErbR6u623AKhrgb1K3JuvvjFY8O9BHXgLL8IYDyCQC/Z23DC+47oxcUZaHIzxyX/oYMLKbrhhr8tKxMzEyBSfbDMAPuQwhxors2yCy0e4QRbNBl1sMwILOMHEHEwzrQbPPcNB9EEOYBzBDQc0EeofFrjgtddNO43R1AVtMMECKjixNUFwOOEEGHCD8bXXa5NNExxh5O323nvbdd0XHIAHHgbgPoThg99lWaD44oxbMDPiTDEh+eSUMzE25DPlUHkOnHeOOU08dC56DjyU/vlMpaee+hasbzH06RqxzgPrM8ywRe06AAp7Rh7UjrsHHpCVxe4y5U7D8cMTT9PQySvv/PPQRy/99NRXb/312DsfEAA7\"></div></div><div class=\"ui-select-choices\"></div></div>");}]);
-},{}],301:[function(require,module,exports){
+$templateCache.put("select2/select.tpl.html","<div class=\"ui-select-container select2 select2-container\" ng-class=\"{\'select2-container-active select2-dropdown-open open\': $select.open, \'select2-container-disabled\': $select.disabled, \'select2-container-active\': $select.focus, \'select2-allowclear\': $select.allowClear && !$select.isEmpty()}\"><div class=\"ui-select-match\"></div><div class=\"ui-select-dropdown select2-drop select2-with-searchbox select2-drop-active\" ng-class=\"{\'select2-display-none\': !$select.open}\"><div class=\"select2-search\" ng-show=\"$select.searchEnabled\"><input type=\"text\" autocomplete=\"false\" autocorrect=\"false\" autocapitalize=\"off\" spellcheck=\"false\" role=\"combobox\" aria-expanded=\"true\" aria-owns=\"ui-select-choices-{{ $select.generatedId }}\" aria-label=\"{{ $select.baseTitle }}\" aria-activedescendant=\"ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}\" class=\"ui-select-search select2-input\" ng-model=\"$select.search\"></div><div class=\"ui-select-choices\"></div></div></div>");}]);
+},{}],302:[function(require,module,exports){
 require('./dist/select.js');
 module.exports = 'ui.select';
 
-},{"./dist/select.js":300}]},{},[1]);
+},{"./dist/select.js":301}]},{},[1]);
