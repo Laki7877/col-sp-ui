@@ -183,14 +183,14 @@ class AdminController extends Controller
 	}
 
 	//Pending product
-	public static function listPendingProduct($params) 
-	{
-		return View::render('admin_pending_product');
-	}
+	// public static function listPendingProduct($params) 
+	// {
+	// 	return View::render('admin_pending_product');
+	// }
 
-	public static function addPendingProduct($param){
-		return View::render('admin_pending_product_group_add');
-	}
+	// public static function addPendingProduct($param){
+	// 	return View::render('admin_pending_product_group_add');
+	// }
 	public static function addGroupingProduct($param){
 		return View::render('admin_product_grouping');
 	}

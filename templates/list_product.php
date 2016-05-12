@@ -52,7 +52,7 @@
               <tr class="table-head">
                   <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
                   <th class="display-column"></th>
-                  <th nc-sort="ProductNameEn">Product Name</th>
+                  <th class="product-name-column" nc-sort="ProductNameEn">Product Name</th>
                   <th>Tag</th>
                   <th class="price-column" nc-sort="SalePrice">Sale Price</th>
                   <th class="info-column"><span>Info</span></th>
@@ -74,11 +74,11 @@
                     </div>
                   </td>
                   <td class="column-text-ellipsis">
-                    <div><a href="/products/{{ row.ProductId }}">{{ row.ProductNameEn || '(Untitled Product)' }}</a></div>
+                    <div class="text-ellipsis"><a href="/products/{{ row.ProductId }}">{{ row.ProductNameEn || '(Untitled Product)' }}</a></div>
                     <div class="color-grey" ng-if="row.VariantCount > 0">({{row.VariantCount}} variants)</div>
-                    <div class="color-grey">{{row.Pid}}</div>
+                    <div class="color-grey" ng-hide="row.VariantCount > 0">PID: {{row.Pid}}</div>
                   </td>
-                  <td class="tag-column column-text-ellipsis">
+                  <td class="column-text-ellipsis">
                     {{getTag(row.Tags)}}
                   </td>
                   <td class="price-column">

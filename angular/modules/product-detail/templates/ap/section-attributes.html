@@ -10,14 +10,15 @@
             </div>
             <div class="width-field-normal">
                 <div class="ah-select2-dropdown">
-
+                    
                     <select ng-show="controlFlags.variation == 'enable'" class="form-control" disabled>
                         <option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option>
                     </select>
 
                     <you-me display-by="AttributeSetNameEn" placeholder="Search Attribute Set" ng-show="controlFlags.variation != 'enable'" auto-clear-search="true"
                         group-by="_group" ng-model="formData.AttributeSet" refresh="refresher.AttributeSets" initial-choices="dataset.AttributeSets"
-                        choices="dataset.CombinedAttributeSets"></you-me>
+                        choices="dataset.CombinedAttributeSets">
+                    </you-me>
 
                 </div>
 

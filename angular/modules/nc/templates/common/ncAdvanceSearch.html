@@ -62,7 +62,7 @@
 	                                <ui-select-choices repeat="item in options.Tags">{{item}}</ui-select-choices>
 	                            </ui-select>
 						</div>
-						<div nc-template="common/input/form-group-with-label-multiple" nc-template-form="form.Price" nc-label="Sale Price" nc-template-options-path="searchForm/Price">
+						<div nc-template="common/input/form-group-with-label-multiple" nc-template-form="form.Price" nc-label="Price" nc-template-options-path="searchForm/Price">
 							<div class="width-field-small-input">
 								<input type="text" name="Price" ng-maxnumber="{{formData.PriceTo}}" ng-model="formData.PriceFrom" class="form-control" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$" maxlength="20"/>
 							</div>

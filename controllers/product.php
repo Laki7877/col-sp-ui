@@ -71,6 +71,6 @@ class ProductController extends Controller
 
     public static function reviews($params)
     {
-        return View::render('product_review');
+        return View::render('seller_product_review');
     }
 }
