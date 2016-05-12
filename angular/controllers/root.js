@@ -186,9 +186,14 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
     $rootScope.DisablePage = true;
     
     if($window.location.pathname == '/dashboard' && !$rootScope.permit(29)) {
-      $window.location.href = "/onboarding";
+        $window.location.href = "/onboarding";
     } else {
-      util.page404();
+      if(storage.poke('login')) {
+        $window.location.href = "/onboarding";
+      }
+      else {
+        util.page404();
+      }
     }
   }
 

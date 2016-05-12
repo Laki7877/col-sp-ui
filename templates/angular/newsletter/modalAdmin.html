@@ -71,6 +71,25 @@
             </div>
           </div>
           <div nc-template="common/input/form-group-with-label"
+            nc-template-options-path="addNewsletterForm/ExpiredDt"
+            nc-template-form="form.ExpiredDt"
+            nc-label="Expired Date">
+              <div>
+              <div class="dropdown">
+                  <a class="dropdown-toggle" id="dropdown" role="button" data-toggle="dropdown" data-target="#" href="#">
+                      <input readonly style="background-color:white" type="text"
+                       class="input-icon-calendar form-control" value="{{ formData.ExpiredDt | datetimeTh }}" />
+                  </a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                      <datetimepicker name="ExpiredDt"
+                      ng-date-before="{{formData.ExpiredDt}}"
+                      data-ng-model="formData.ExpiredDt"
+                      data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'hour' }" />
+                  </ul>
+              </div>
+            </div>
+          </div>
+          <div nc-template="common/input/form-group-with-label"
             nc-template-options-path="addNewsletterForm/VisibleShopGroup"
             nc-template-form="form.VisibleShopGroup"
             nc-label="Allow Reader">

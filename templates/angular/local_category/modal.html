@@ -49,8 +49,7 @@
 	                        name="UrlKey"
 	                        ng-model="formData.UrlKey"
 	                        ng-lowercase
-	                        ng-pattern="/^[0-9a-z\-]*$/"
-	                        placeholder="{{formData.NameEn}}-{{formData.CategoryId}}"
+	                        ng-pattern="/^[0-9a-z\-]+$/"
 	                        maxlength="100"
 	                        />
 	                    </div>
@@ -66,10 +65,10 @@
 					</div>
 				</div>
 				<!-- Banner -->
-		        <nc-image-banner name="CategoryBannerEn" data-source="formData" data-key="BannerStatusEn" nc-model="formData.CategoryBannerEn" title="Upload Banner (English)" options="bannerOptions" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
-		        <nc-image-banner name="CategoryBannerTh" data-source="formData" data-key="BannerStatusTh" nc-model="formData.CategoryBannerTh" title="Upload Banner (ไทย)" options="bannerOptions" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
-		        <nc-image-banner name="CategoryBannerEn" data-source="formData" data-key="BannerSmallStatusEn" nc-model="formData.CategorySmallBannerEn" title="Upload Small Banner (English)" options="bannerSmOptions" uploader="bannerSmUploader" on-fail="uploadBannerSmFail" size="8"></nc-image-banner>
-		        <nc-image-banner name="CategoryBannerTh" data-source="formData" data-key="BannerSmallStatusTh" nc-model="formData.CategorySmallBannerTh" title="Upload Small Banner (ไทย)" options="bannerSmOptions" uploader="bannerSmUploader" on-fail="uploadBannerSmFail" size="8"></nc-image-banner>
+		        <nc-image-banner name="CategoryBannerEn" data-source="formData" data-key="BannerStatusEn" nc-model="formData.CategoryBannerEn" title="Upload Banner (English)" options="bannerOptions" uploader="bannerUploader" on-fail="uploadBannerFail" size="8">1920x1080</nc-image-banner>
+		        <nc-image-banner name="CategoryBannerTh" data-source="formData" data-key="BannerStatusTh" nc-model="formData.CategoryBannerTh" title="Upload Banner (ไทย)" options="bannerOptions" uploader="bannerUploader" on-fail="uploadBannerFail" size="8">1920x1080</nc-image-banner>
+		        <nc-image-banner name="CategoryBannerEn" data-source="formData" data-key="BannerSmallStatusEn" nc-model="formData.CategorySmallBannerEn" title="Upload Small Banner (English)" options="bannerSmOptions" uploader="bannerSmUploader" on-fail="uploadBannerSmFail" size="8">1600x900</nc-image-banner>
+		        <nc-image-banner name="CategoryBannerTh" data-source="formData" data-key="BannerSmallStatusTh" nc-model="formData.CategorySmallBannerTh" title="Upload Small Banner (ไทย)" options="bannerSmOptions" uploader="bannerSmUploader" on-fail="uploadBannerSmFail" size="8">1600x900</nc-image-banner>
 		        <!-- Description -->
 		        <div class="form-section">
 		          <div class="form-section-header">

@@ -12,13 +12,12 @@ angular.module('nc')
 				source: '=',
 				key: '@'
 			},
-			template: '<nc-image-block template="common/ncImageBanner3" data-source="source" data-key="{{key}}" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>Image ratio 16:9</li></ul></nc-image-block>',
+			transclude: true,
+			template: '<nc-image-block template="common/ncImageBanner3" data-source="source" data-key="{{key}}" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>Image size <span ng-transclude></span></li></ul></nc-image-block>',
 			link: function(scope) {
 				scope.options = _.defaults(scope.options, {
 					height: '144px',
 					width: '256px',
-					validateDimensionMin: [1500, 1500],
-					validateDimensionMax: [2000, 2000],
 					validateFileSize: 5000000
 				});
 			}
@@ -77,10 +76,16 @@ angular.module('nc')
 			},
 			link: function(scope, element, attrs, form) {
 				var fileUploader = false;
-
-				scope.options = _.defaults(scope.options, {
-					height: '150px',
-					width: '150px'
+				scope.$watch('options', function() {
+					if(!scope.options) {
+						return;
+					}
+					if(!scope.options.height) {
+						scope.options.height = '150px'
+					}
+					if(!scope.options.width) {
+						scope.options.width = '150px'
+					}
 				});
 
 				scope.images = scope.images || [];

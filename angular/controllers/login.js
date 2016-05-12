@@ -50,6 +50,10 @@
       if (!redir || redir == '/') {
         redir = Credential.getRedirPath(r);
       }
+
+      //login flag
+      storage.put('login', true);
+
       $window.location.href = redir;
     }, function (err) {
       storage.clear();
