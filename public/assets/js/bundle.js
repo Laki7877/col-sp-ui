@@ -10532,31 +10532,62 @@ angular.module('nc')
 	});
 },{}],123:[function(require,module,exports){
 angular.module('nc')
-.directive('ncPolicyAdmin', ["$rootScope", function($rootScope) {
+	.directive('ncPolicyAdmin', ["$rootScope", function ($rootScope) {
 		return {
 			restrict: 'A',
-			link: function(scope, element, attrs) {
-				  if(!_.get($rootScope.Profile, 'User.IsAdmin')){
-				  		$(element).hide();
-				  }
+			link: function (scope, element, attrs) {
+				if (!_.get($rootScope.Profile, 'User.IsAdmin')) {
+					$(element).hide();
+				}
 			}
 		}
-}])
-.directive('ncPolicyIndy', ["$rootScope", function($rootScope) {
-		if(!$rootScope.ShopGroupPolicy('IN')){
-			$(element).hide();
+	}])
+	.directive('ncPolicyIndy', ["$rootScope", function ($rootScope) {
+
+		return {
+			restrict: 'A',
+			link: function (scope, element, attrs) {
+				if (!$rootScope.ShopGroupPolicy('IN')) {
+					$(element).hide();
+				}
+			}
 		}
-}])
-.directive('ncPolicyBu', ["$rootScope", function($rootScope) {
-		if(!$rootScope.ShopGroupPolicy('BU')){
-			$(element).hide();
+	}])
+	.directive('ncPolicyBu', ["$rootScope", function ($rootScope) {
+		return {
+			restrict: 'A',
+			link: function (scope, element, attrs) {
+				if (!$rootScope.ShopGroupPolicy('BU')) {
+					$(element).hide();
+				}
+			}
 		}
-}])
-.directive('ncPolicyIndyBu', ["$rootScope", function($rootScope) {
-		if(!$rootScope.ShopGroupPolicy(['BU', 'IN'])){
-			$(element).hide();
+	}])
+	.directive('ncPolicyIndyBu', ["$rootScope", function ($rootScope) {
+		return {
+			restrict: 'A',
+			link: function (scope, element, attrs) {
+				if (!$rootScope.ShopGroupPolicy(['BU', 'IN'])) {
+					$(element).hide();
+				}
+			}
 		}
-}])
+	}])
+	.directive('ncPolicyPermit', ["$rootScope", function ($rootScope) {
+		return {
+			restrict: 'A',
+			scope: {
+				permId: '@ncPolicyPermit'
+			},
+			link: function (scope, element, attrs) {
+				console.log('scope.permId', scope.permId);
+				var k = !$rootScope.permit(Number(scope.permId));
+				if (k) {
+					$(element).prop("disabled", true);
+				}
+			}
+		}
+	}])
 },{}],124:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncSearch', ["$templateCache", function($templateCache) {
@@ -12858,7 +12889,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-vital-information',
-    "<div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label ng-init=\"form = addProductForm\" nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=variantPtr.ProductNameEn maxlength=255 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=variantPtr.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-policy-indy-bu nc-label=\"Short Product Name (Eng)\" nc-template-form=form.ProdTDNameEn nc-template-options-path=addProductForm/NonRequiredSystemField><input class=\"form-control width-field-large\" name=ProdTDNameEn ng-model=variantPtr.ProdTDNameEn ng-pattern=\"/^[^<>]+$/\" maxlength=\"55\"></div><div nc-template=common/input/form-group-with-label nc-policy-indy-bu nc-label=\"Short Product Name (ไทย)\" nc-template-form=form.ProdTDNameTh nc-template-options-path=addProductForm/NonRequiredSystemField><input class=\"form-control width-field-large\" name=ProdTDNameTh ng-model=variantPtr.ProdTDNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=\"55\"></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=variantPtr.Sku maxlength=255 ng-required=onPublishing ng-pattern-restrict=\"^[a-zA-Z0-9]*$\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern-restrict=^[a-zA-Z0-9]*$ name=Upc maxlength=13 ng-model=\"variantPtr.Upc\"></div><div ng-if=variantPtr.MasterVariant.Pid><div nc-template=common/input/form-group-with-label nc-template-form=form.Pid nc-label=\"{{ (formData.Variants || []).length > 0 ? 'Group ID' : 'PID' }}\" nc-template-options-path=addProductForm/Pid><input class=\"form-control width-field-large\" name=Pid disabled ng-model=\"variantPtr.Pid\"></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Brand Name</label></div><div class=width-field-normal><div class=ah-select2-dropdown><you-me display-by=BrandNameEn placeholder=\"Search Brand\" required auto-clear-search=true group-by=_group ng-model=formData.Brand refresh=refresher.Brands choices=dataset.Brands></you-me></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label ng-init=\"form = addProductForm\" nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=variantPtr.ProductNameEn maxlength=255 ng-pattern=\"/^([^<>ก-๙])+$/\" nc-policy-permit=35 required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh nc-policy-permit=35 ng-model=variantPtr.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-policy-indy-bu nc-label=\"Short Product Name (Eng)\" nc-template-form=form.ProdTDNameEn nc-template-options-path=addProductForm/NonRequiredSystemField><input class=\"form-control width-field-large\" name=ProdTDNameEn nc-policy-permit=35 ng-model=variantPtr.ProdTDNameEn ng-pattern=\"/^[^<>]+$/\" maxlength=\"55\"></div><div nc-template=common/input/form-group-with-label nc-policy-indy-bu nc-label=\"Short Product Name (ไทย)\" nc-template-form=form.ProdTDNameTh nc-template-options-path=addProductForm/NonRequiredSystemField><input class=\"form-control width-field-large\" name=ProdTDNameTh nc-policy-permit=35 ng-model=variantPtr.ProdTDNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=\"55\"></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku nc-policy-permit=35 ng-model=variantPtr.Sku maxlength=255 ng-required=onPublishing ng-pattern-restrict=\"^[a-zA-Z0-9]*$\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" nc-policy-permit=35 ng-pattern-restrict=^[a-zA-Z0-9]*$ name=Upc maxlength=13 ng-model=\"variantPtr.Upc\"></div><div ng-if=variantPtr.MasterVariant.Pid><div nc-template=common/input/form-group-with-label nc-template-form=form.Pid nc-label=\"{{ (formData.Variants || []).length > 0 ? 'Group ID' : 'PID' }}\" nc-template-options-path=addProductForm/Pid><input class=\"form-control width-field-large\" nc-policy-permit=35 name=Pid disabled ng-model=\"variantPtr.Pid\"></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Brand Name</label></div><div class=width-field-normal><div class=ah-select2-dropdown><you-me display-by=BrandNameEn placeholder=\"Search Brand\" required auto-clear-search=true group-by=_group ng-model=formData.Brand refresh=refresher.Brands choices=dataset.Brands></you-me></div></div></div></div></div>"
   );
 
 
