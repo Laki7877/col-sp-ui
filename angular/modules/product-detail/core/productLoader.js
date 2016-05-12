@@ -184,7 +184,6 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
         if (ivFormData) {
           pageLoader.load('Indexing Attribute Set');
 
-
           var parse = function(ivFormData, FullAttributeSet) {
             // pageLoader.load('Loading product data..');
             var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);

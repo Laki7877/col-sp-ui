@@ -2950,8 +2950,8 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 	$scope.loginAs = function(user){
 		$scope.alert.close();
 		Credential.loginAs(user).then(function(r){
-				// $window.location.href = "/dashboard";
-				console.log("got", r);
+				$window.location.href = "/dashboard";
+				// console.log("got", r);
 		}, function(err){
     		$scope.alert.error(common.getError(err));
     });
@@ -12826,7 +12826,6 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
         if (ivFormData) {
           pageLoader.load('Indexing Attribute Set');
 
-
           var parse = function(ivFormData, FullAttributeSet) {
             // pageLoader.load('Loading product data..');
             var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
@@ -15979,7 +15978,7 @@ module.exports = ["common", "$base64", "storage", "$q", "$rootScope", function(c
             deferred.resolve(r);
 		}, function() {
 			storage.clear();
-			deferred.reject(r);
+			deferred.reject();
 		});
 
 		return deferred.promise;
@@ -18948,7 +18947,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('newsletter/modalSeller',
-    "<div class=\"modal-header newsletter-modal-header\"><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>{{ item.Subject }}</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section-content><p class=\"margin-top-15 text-align-center\"><img ng-if=item.Image.Url ng-src=\"{{item.Image.Url}}\"></p><p class=margin-top-5>{{ item.Description }}</p><hr><div class=color-dark-grey>Publish Date: {{ item.PublishedDt | datetimeTh }}</div></div></div></div></form></div>"
+    "<div class=\"modal-header newsletter-modal-header\"><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>{{ item.Subject }}</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section-content><p class=\"margin-top-15 text-align-center\"><img class=img-responsive ng-if=item.Image.Url ng-src=\"{{item.Image.Url}}\"></p><p class=margin-top-5>{{ item.Description }}</p><hr><div class=color-dark-grey>Publish Date: {{ item.PublishedDt | datetimeTh }}</div></div></div></div></form></div>"
   );
 
 

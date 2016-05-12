@@ -309,7 +309,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('newsletter/modalSeller',
-    "<div class=\"modal-header newsletter-modal-header\"><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>{{ item.Subject }}</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section-content><p class=\"margin-top-15 text-align-center\"><img ng-if=item.Image.Url ng-src=\"{{item.Image.Url}}\"></p><p class=margin-top-5>{{ item.Description }}</p><hr><div class=color-dark-grey>Publish Date: {{ item.PublishedDt | datetimeTh }}</div></div></div></div></form></div>"
+    "<div class=\"modal-header newsletter-modal-header\"><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>{{ item.Subject }}</h3></div><div class=modal-body><form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section-content><p class=\"margin-top-15 text-align-center\"><img class=img-responsive ng-if=item.Image.Url ng-src=\"{{item.Image.Url}}\"></p><p class=margin-top-5>{{ item.Description }}</p><hr><div class=color-dark-grey>Publish Date: {{ item.PublishedDt | datetimeTh }}</div></div></div></div></form></div>"
   );
 
 

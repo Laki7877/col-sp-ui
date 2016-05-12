@@ -100,7 +100,7 @@ module.exports = function(common, $base64, storage, $q, $rootScope) {
             deferred.resolve(r);
 		}, function() {
 			storage.clear();
-			deferred.reject(r);
+			deferred.reject();
 		});
 
 		return deferred.promise;
