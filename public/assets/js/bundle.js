@@ -1045,9 +1045,11 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
         console.log("fd", fd);
         //Post to server
         $scope.alert.close();
-        
+		$scope.loading = true;
+         
 		Product.savePendingProduct(fd).then(function(suc){
             $scope.alert.success("Pending product grouped successfully.");
+			$scope.loading = false;
         }, function(er){
             console.log(er);
             $scope.alert.error("Unable to group product because " + (er.Message || er.message));
@@ -4510,10 +4512,6 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
 	$rootScope._ = _;
   $rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
-  
-  console.log('PROFILE', $rootScope.Profile);
-  console.log('IMPOSTER', $rootScope.Imposter);
-
   /*
   *  range {array} - set of shop group that is permitted in the current shop group policy 
   */ 
@@ -14246,7 +14244,7 @@ var seller = {
 	  	'Local Category|margin-top-30': '/categories',
 	  	'Product Reviews': '/products/reviews',
 	  	'Image Management': '/products/images',
-	  	'Grouping Products': '/products/groups'
+	  	'Product Grouping': '/products/groups'
 	},
 	'Inventory|fa-archive': {
 		'View Inventory': '/inventory'
@@ -14270,7 +14268,7 @@ var admin = {
 	'Products|fa-tag': {
 		'View All Products': '/admin/products',
 		'Approve Products': '/admin/approve',
-		'Grouping Products': '/admin/products/groups',
+		'Product Grouping': '/admin/products/groups',
 		'Master Products': ['/admin/masters', '/admin/masters/add'],
 		'Product Reviews': '/admin/products/reviews',
 		'Brands|margin-top-30': ['/admin/brands', '/admin/brands/add'],
