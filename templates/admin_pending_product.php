@@ -1,9 +1,9 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Pending Products']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Product Grouping']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminPendingProductCtrl">
     <nc-page-title nc-title="Pending Products">
-      <a class="btn btn-blue btn-width-xxl" ng-href="{{url}}/add">Create Group Variant</a>
+      Product Grouping
     </nc-page-title>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="{{id}}"></nc-bulk>
