@@ -9,9 +9,10 @@ angular.module('nc')
 				options: '=?',
 				size: '@',
 				title: '@',
-				source: '='
+				source: '=',
+				key: '@'
 			},
-			template: '<nc-image-block template="common/ncImageBanner3" data-source="source" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>Image ratio 16:9</li></ul></nc-image-block>',
+			template: '<nc-image-block template="common/ncImageBanner3" data-source="source" data-key="{{key}}" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>Image ratio 16:9</li></ul></nc-image-block>',
 			link: function(scope) {
 				scope.options = _.defaults(scope.options, {
 					height: '144px',
@@ -20,7 +21,6 @@ angular.module('nc')
 					validateDimensionMax: [2000, 2000],
 					validateFileSize: 5000000
 				});
-				source = source && true;
 			}
 		}
 	})
@@ -46,6 +46,9 @@ angular.module('nc')
 					scope.options.height = (data.Height/data.Width)*256 + 'px';
 					scope.options.width =  '256px';
 				});
+				scope.$watch('source', function() {
+					console.log(scope.source);
+				})
 			}
 		}
 	})
@@ -60,7 +63,8 @@ angular.module('nc')
 				onfail: '=onFail',
 				uploader: '=uploader',
 				options: '=?options',
-				source: '=?source',
+				source: '=?',
+				key: '@?',
 				size: '@size',
 				title: '@title'
 			},

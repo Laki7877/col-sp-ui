@@ -56,7 +56,7 @@
 								              nc-label="Logo Preview">
 								                <img
 								                  ng-src="{{formData.ShopImage.Url}}"
-								                  width="160"
+								                  width="160
 								                  />
 								                <a style="display:block;" class="margin-top-5" ng-click="formData.Logo=null"><i class="fa-trash fa"></i> Delete this image</a>
 								            </div>
@@ -83,9 +83,10 @@
 												'show': $root.isInvalid(form.UrlKey),
 												'conditions' : form.UrlKey.$error
 												}">
-												<input class="form-control text-lowercase"
+												<input class="form-control"
 													name="UrlKey"
 													ng-model="formData.UrlKey"
+													ng-lowercase
 													ng-class="{ 'has-error' : $root.isInvalid(form.UrlKey) }"
 													ng-pattern-restrict="[0-9a-z]*"
 													placeholder="{{formData.ShopNameEn}}"

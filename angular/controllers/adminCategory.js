@@ -138,7 +138,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				};
 				$scope.formData = {};
 				$scope.saving = false;
-				$scope.loading = false;
+				$scope.loading = true;
 				$scope.products = [];
 				$scope.availableProducts = -1;
 				$scope.id = id;

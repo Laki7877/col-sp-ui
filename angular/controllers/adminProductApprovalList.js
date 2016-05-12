@@ -41,6 +41,10 @@ module.exports = function($scope, $controller, Product, config, util) {
 			value: 'Image'
 		},
 		{
+			name: 'Category',
+			value: 'Category'
+		},
+		{
 			name: 'Variation',
 			value: 'Variation'
 		},

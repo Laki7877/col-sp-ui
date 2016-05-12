@@ -84,8 +84,9 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 											}
 										}">
 										<input
-										class="form-control text-lowercase"
+										class="form-control"
 										name="UrlKey"
+										ng-lowercase
 										ng-model="formData.UrlKey"
 										ng-pattern="=\^[0-9a-z\-]$\"
 										ng-class="{ 'has-error' : $root.isInvalid(form.UrlKey) }"

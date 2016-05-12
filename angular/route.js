@@ -28,7 +28,7 @@ var seller = {
 	  	'Local Category|margin-top-30': '/categories',
 	  	'Product Reviews': '/products/reviews',
 	  	'Image Management': '/products/images',
-	  	'Pending Products': '/products/groups'
+	  	'Grouping Products': '/products/groups'
 	},
 	'Inventory|fa-archive': {
 		'View Inventory': '/inventory'
@@ -52,7 +52,7 @@ var admin = {
 	'Products|fa-tag': {
 		'View All Products': '/admin/products',
 		'Approve Products': '/admin/approve',
-		'Pending Products': ['/admin/products/groups', '/admin/products/groups/add'],
+		'Grouping Products': '/admin/products/groups',
 		'Master Products': ['/admin/masters', '/admin/masters/add'],
 		'Product Reviews': '/admin/products/reviews',
 		'Brands|margin-top-30': ['/admin/brands', '/admin/brands/add'],
