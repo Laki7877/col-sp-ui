@@ -3816,7 +3816,9 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
 		]
 	};
 	$scope.dirty = false;
-    $scope.uploader = ImageService.getUploader('/ProductImages');
+    $scope.uploader = ImageService.getUploader('/ProductImages', {
+    	data: { Type: 'Image' }
+    });
     $scope.productStatus = config.PRODUCT_STATUS;
 
     $scope.onEvent = function(product, eventName) {
@@ -16218,6 +16220,7 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
       headers: {
         Authorization: 'Bearer ' + accessToken
       },
+      formData: opt.data || null,
       queueLimit: 10,
       removeAfterUpload : true,
       filters: [{
@@ -16445,6 +16448,10 @@ module.exports = ["util", function(util) {
 				}
 			});
 		});
+
+		_.forEach(result, function(e) {
+			_.unset(e, ['Children']);
+		})
 		return result;
 	};
 

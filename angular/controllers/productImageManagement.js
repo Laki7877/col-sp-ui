@@ -101,7 +101,9 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
 		]
 	};
 	$scope.dirty = false;
-    $scope.uploader = ImageService.getUploader('/ProductImages');
+    $scope.uploader = ImageService.getUploader('/ProductImages', {
+    	data: { Type: 'Image' }
+    });
     $scope.productStatus = config.PRODUCT_STATUS;
 
     $scope.onEvent = function(product, eventName) {
