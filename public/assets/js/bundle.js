@@ -2483,28 +2483,28 @@ module.exports = ["$scope", "$controller", "Product", "config", "util", function
 			value: 'None'
 		},
 		{
-			name: 'Information',
+			name: 'Ready for Action',
+			value: 'ReadyForAction'
+		},
+		{
+			name: 'Wait for Information',
 			value: 'Information'
 		},
 		{
-			name: 'Image',
+			name: 'Wait for Image',
 			value: 'Image'
 		},
 		{
-			name: 'Category',
+			name: 'Wait for Category',
 			value: 'Category'
 		},
 		{
-			name: 'Variation',
+			name: 'Wait for Variation',
 			value: 'Variation'
 		},
 		{
-			name: 'More',
+			name: 'Wait for More',
 			value: 'More'
-		},
-		{
-			name: 'Ready for Action',
-			value: 'ReadyForAction'
 		}
 	];
 	$scope.params._filter = $scope.filterOptions[2].value;
@@ -18051,7 +18051,6 @@ module.exports = {
 		labelClass: 'required',
 		error: {
 			messages: {
-				required: 'This is required field',
 				dimensions: 'Image must be between 500x500 to 1000x1000 pixels',
 				ratio: 'Image must be a square (1:1 ratio)',
 				maxSize: 'Image file size must not exceed 5MB'
