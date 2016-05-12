@@ -3,7 +3,7 @@
     <tr>
       <th class="column-variant">Variant</th>
       <th class="column-pid" ng-if="formData.Variants.length > 0 && formData.Variants[0].Pid">PID</th>
-      <th class="column-sku">SKU</th>
+      <th class="column-sku">SKU <span class="color-red">*</span></th>
       <th class="column-sale-price">
         Sale Price <span class="color-red">*</span>
       </th>
@@ -29,7 +29,7 @@
         }
         }">
         <input type="text" ng-disabled='!pair.Visibility' class="form-control" name="pair_Sku{{ $index }}" maxlength="300" ng-pattern="/^[^<>]+$/"
-        ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }"
+        ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }" required="onPublishing"
         ng-model="pair.Sku"/>
       </td>
       <td ng-template="common/input/text-td" ng-template-options="{
@@ -55,7 +55,7 @@
         }">
         <input type="text" ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }"
         name="pair_OriginalPrice{{$index}}" ng-model="pair.OriginalPrice"
-        ng-disabled='!pair.Visibility' class="form-control" />
+        ng-disabled='!pair.Visibility' class="form-control" /> 
       </td>
       <td ng-template="common/input/text-td" ng-template-options="{
         'error' : {

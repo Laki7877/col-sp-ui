@@ -17,8 +17,12 @@ module.exports = function($scope, $controller, BrandService, Product, AdminMaste
 	
 	$scope.getProducts = function(search) {
 		var brands = !_.isEmpty($scope.formData.FilterBy) ? [$scope.formData.FilterBy] : [];
-		return Product.advanceList({
-			searchText: search
+		return AdminMasterProductService.customList({
+			searchText: search,
+			_limit: 8,
+			_order: 'Pid',
+			_offset: 0,
+			_direction: 'asc'
 		})
 		.then(function(data) {
 			return $scope.products = data.data.map(function(X){
@@ -29,9 +33,12 @@ module.exports = function($scope, $controller, BrandService, Product, AdminMaste
 	};
 		
 	$scope.getChildProducts = function(search) {
-		return Product.list({
+		return AdminMasterProductService.customList({
 			searchText: search,
-			_limit: 8
+			_limit: 8,
+			_order: 'Pid',
+			_offset: 0,
+			_direction: 'asc'
 		})
 		.then(function(data) {
 			return $scope.childProducts = data.data.map(function(X){
