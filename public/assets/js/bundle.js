@@ -2951,8 +2951,8 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 	$scope.loginAs = function(user){
 		$scope.alert.close();
 		Credential.loginAs(user).then(function(r){
-				// $window.location.href = "/dashboard";
-				console.log("got", r);
+				$window.location.href = "/dashboard";
+				// console.log("got", r);
 		}, function(err){
     		$scope.alert.error(common.getError(err));
     });
@@ -12809,7 +12809,6 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
         if (ivFormData) {
           pageLoader.load('Indexing Attribute Set');
 
-
           var parse = function(ivFormData, FullAttributeSet) {
             // pageLoader.load('Loading product data..');
             var inverseResult = Product.deserialize(ivFormData, FullAttributeSet);
@@ -15907,7 +15906,7 @@ module.exports = ["common", "$base64", "storage", "$q", "$rootScope", function(c
             deferred.resolve(r);
 		}, function() {
 			storage.clear();
-			deferred.reject(r);
+			deferred.reject();
 		});
 
 		return deferred.promise;
