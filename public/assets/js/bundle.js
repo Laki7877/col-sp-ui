@@ -4200,12 +4200,17 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
 			$scope.ctrl.LocalCategoryTree = Category.transformNestedSetToUITree(data);
 		});
 
-	BrandService.list()
+	$scope.$watch('ctrl.BrandSearch', function() {
+		BrandService.list({
+			searchText: $scope.ctrl.BrandSearch,
+			_limit: 16
+		})
 		.then(function(data) {
-			$scope.ctrl.Brands = _.map(data, function(e) {
+			$scope.ctrl.Brands = _.map(data.data, function(e) {
 				return e.BrandNameEn;
 			});
 		});
+	});
 }];
 
 },{}],48:[function(require,module,exports){
@@ -4909,6 +4914,7 @@ module.exports = function($scope, $controller, BrandService, SellerAccountServic
 	};
 	$scope.getBrands = function(search) {
 		BrandService.list({
+			_limit: 16,
 			searchText: search
 		})
 		.then(function(data) {
@@ -5420,13 +5426,14 @@ module.exports = ["$scope", "$controller", "$window", "InventoryService", "confi
 			$scope.popoverItem = _.extend({}, item);
 			$scope.popoverItem.Quantity = _.toInteger(item.Quantity);
 			$scope.popoverItem.LastQuantity = item.Quantity;
+			$scope.popoverItem.UpdateQuantity = 0
 		}
 	};
 	$scope.updateStock = function(item) {
 		$scope.alert.close();
 		// cast to int
 		var i = _.pick(item, ['UpdateQuantity']);
-		if(_.isEmpty(i.UpdateQuantity)) {
+		if(_.isNil(i.UpdateQuantity)) {
 			i.UpdateQuantity = 0
 		}
 		i.UpdateQuantity = _.toInteger(i.UpdateQuantity);
@@ -5435,7 +5442,7 @@ module.exports = ["$scope", "$controller", "$window", "InventoryService", "confi
 		InventoryService.update(item.Pid, i)
 			.then(function(data) {
 				$scope.lastEdit = item.Pid;
-				$scope.popoverItemOriginal.Quantity = item.Quantity;
+				$scope.popoverItemOriginal.Quantity = data;
 			}, function(err) {
 				$scope.lastEdit = null;
 				$scope.alert.error(common.getError(err));
@@ -5458,7 +5465,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", fun
 			url: '/newsletters',
 			service: NewsletterService,
 			item: 'Newsletter',
-			order: 'UpdatedDt',
+			order: 'PublishedDt',
 			id: 'NewsletterId'
 		}
 	});
@@ -18911,7 +18918,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('inventory/stockPopover',
-    "<form ng-submit=updateStock(popoverItem) id=inventory-tab-content class=content><span class=\"col-xs-8 padding-left-0 margin-bottom-15 margin-top-10\">In Stock</span> <span class=\"text-right col-xs-4\">{{popoverItem.Quantity || '0'}}</span> <span class=\"col-xs-6 padding-left-0 margin-bottom-15\">In Stock</span> <input class=\"margin-top-10 text-right col-xs-6\" type=number ng-model=popoverItem.UpdateQuantity ng-pattern-restrict=^[0-9]*$ maxlength=\"6\"> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Defect</span> <span class=\"text-right col-xs-4\">{{popoverItem.Defect || '0'}}</span><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15\">On Hold</span> <span class=\"text-right col-xs-4\">{{popoverItem.OnHold || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15 border_modal\">Reserved</span> <span class=\"text-right col-xs-4 border_modal\">{{popoverItem.Reserve || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 available_inventory\">Available</span><span class=\"text-right col-xs-4 available_inventory\">{{ getAvailableStock(popoverItem) }}</span></div><div class=text-center><button class=\"btn btn-blue btn-width-100 text-center\">Save</button></div></form>"
+    "<form ng-submit=updateStock(popoverItem) id=inventory-tab-content class=content><span class=\"col-xs-8 padding-left-0 margin-bottom-15 margin-top-10\">In Stock</span> <span class=\"text-right col-xs-4 margin-top-10 margin-bottom-15\">{{popoverItem.Quantity || '0'}}</span> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Update</span> <input class=\"text-right col-xs-4\" type=number ng-model=popoverItem.UpdateQuantity ng-pattern-restrict=[0-9]* maxlength=\"6\"> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Defect</span> <span class=\"text-right col-xs-4\">{{popoverItem.Defect || '0'}}</span><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15\">On Hold</span> <span class=\"text-right col-xs-4\">{{popoverItem.OnHold || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15 border_modal\">Reserved</span> <span class=\"text-right col-xs-4 border_modal\">{{popoverItem.Reserve || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 available_inventory\">Available</span><span class=\"text-right col-xs-4 available_inventory\">{{ getAvailableStock(popoverItem) }}</span></div><div class=text-center><button class=\"btn btn-blue btn-width-100 text-center\">Save</button></div></form>"
   );
 
 
@@ -18992,7 +18999,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('product/modalAddTags',
-    "<nc-alert nc-model=alert></nc-alert><div class=\"modal-header no-border\"><button type=button class=close aria-label=Close ng-click=$dismiss()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">Add Tag</h2><div><ui-select name=Tags ng-model=model.tags tagging-label=\"\" tagging-tokens=,|ENTER multiple tagging><ui-select-match placeholder=\"Separated by a comma\">{{$item}}</ui-select-match><ui-select-choices repeat=\"item in []\">{{item}}</ui-select-choices></ui-select></div><div><span class=help-block ng-if=\"isInvalid(form.Tags) && form.Tags.$error.maxtaglength\">Tag must contain 30 characters or less</span></div></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white\" ng-click=$dismiss()>Cancel</button> <button type=button class=\"btn btn-blue\" ng-click=close()>Confirm</button></div></div></div>"
+    "<nc-alert nc-model=alert></nc-alert><div class=\"modal-header no-border\"><button type=button class=close aria-label=Close ng-click=$dismiss()><span class=padding-left-15 aria-hidden=true>&times;</span></button></div><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20\">Add Tag</h2><div><ui-select name=Tags ng-model=model.tags tagging-label=\"\" tagging-tokens=ENTER multiple tagging><ui-select-match placeholder=\"Separated by a comma\">{{$item}}</ui-select-match><ui-select-choices repeat=\"item in []\">{{item}}</ui-select-choices></ui-select></div><div><span class=help-block ng-if=\"isInvalid(form.Tags) && form.Tags.$error.maxtaglength\">Tag must contain 30 characters or less</span></div></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white\" ng-click=$dismiss()>Cancel</button> <button type=button class=\"btn btn-blue\" ng-click=close()>Confirm</button></div></div></div>"
   );
 
 

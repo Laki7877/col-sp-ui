@@ -251,10 +251,15 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
 			$scope.ctrl.LocalCategoryTree = Category.transformNestedSetToUITree(data);
 		});
 
-	BrandService.list()
+	$scope.$watch('ctrl.BrandSearch', function() {
+		BrandService.list({
+			searchText: $scope.ctrl.BrandSearch,
+			_limit: 16
+		})
 		.then(function(data) {
-			$scope.ctrl.Brands = _.map(data, function(e) {
+			$scope.ctrl.Brands = _.map(data.data, function(e) {
 				return e.BrandNameEn;
 			});
 		});
+	});
 };

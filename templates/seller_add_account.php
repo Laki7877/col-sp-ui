@@ -102,10 +102,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Accounts
 							              <div ng-show="formData.ShopGroup != 'ME'"
 							              	nc-template="common/input/form-group-with-label"
 							              	nc-template-form="form.Brands"
-							              	nc-template-options-path="genericForm/BrandVisibilitys"
+							              	nc-template-options-path="genericForm/BrandVisibility"
 							              	nc-label="Brand">
-							              	<ui-select name="Brands" ng-model="formData.Brands" multiple>
-							              		<ui-select-match placeholder="Search by Brand Name" nc-tag-validator nc-max-tag-count="20">{{$item.BrandNameEn}}</ui-select-match>
+							              	<ui-select name="Brands" ng-model="formData.Brands" nc-tag-validator nc-max-tag-count="20" multiple>
+							              		<ui-select-match placeholder="Search by Brand Name">{{$item.BrandNameEn}}</ui-select-match>
 							              		<ui-select-choices repeat="item in brands" refresh="getBrands($select.search)" refresh-delay="1">{{item.BrandNameEn}}</ui-select-choices>
 							              	</ui-select>
 							              </div>

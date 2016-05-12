@@ -30,6 +30,7 @@ module.exports = function($scope, $controller, BrandService, SellerAccountServic
 	};
 	$scope.getBrands = function(search) {
 		BrandService.list({
+			_limit: 16,
 			searchText: search
 		})
 		.then(function(data) {
