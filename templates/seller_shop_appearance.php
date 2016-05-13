@@ -39,7 +39,7 @@
 						            	<!-- basic template -->
 						            	<div ng-switch-when="1">
 						            		<nc-image-banner-link
-						            			source="formData.data.A_Banner"
+						            			source="formData.Data.A_Banner"
 						            		 	letter="A"
 						            		 	letterx="A1"
 						            		 	title="Banner"
@@ -50,28 +50,28 @@
 						            		 	fail="uploadFail">
 						            		</nc-image-banner-link>
 						            		<nc-product-layout 
-						            			source="formData.data.B_ProductLayout1"
+						            			source="formData.Data.B_ProductLayout1"
 						            			letter="B"
 						            			title="Product Layout 1"
 						            			refresh="getProducts"
 						            			products="products">
 						            		</nc-product-layout>
 						            		<nc-product-layout 
-						            			source="formData.data.C_ProductLayout2"
+						            			source="formData.Data.C_ProductLayout2"
 						            			letter="C"
 						            			title="Product Layout 2"
 						            			refresh="getProducts"
 						            			products="products">
 						            		</nc-product-layout>
 						            		<nc-product-layout 
-						            			source="formData.data.D_ProductLayout3"
+						            			source="formData.Data.D_ProductLayout3"
 						            			letter="D"
 						            			title="Product Layout 3"
 						            			refresh="getProducts"
 						            			products="products">
 						            		</nc-product-layout>
 						            		<nc-image-banner-video
-						            			source="formData.data.I_Video"
+						            			source="formData.Data.I_Video"
 						            		 	letter="I"
 						            		 	letterx="I1"
 						            		 	title="Video"
@@ -85,13 +85,13 @@
 						            	<!-- robinson -->
 						            	<div ng-switch-when="2">
 						            		<nc-text-link 
-						            			source="formData.data.A_TopMenu1"
+						            			source="formData.Data.A_TopMenu1"
 						            			letter="A"
 						            			letterx="A1"
 						            			title="Top Menu 1">
 						            		</nc-text-link>
 						            		<nc-image-links 
-						            			source="formData.data.B_TopMenu2"
+						            			source="formData.Data.B_TopMenu2"
 						            			letter="B"
 						            			title="Top Menu 2"
 						            			uploader="uploader"
@@ -99,7 +99,7 @@
 						            			size="1">
 						            		</nc-image-links>
 						            		<nc-image-banner-link
-						            			source="formData.data.C_Banner"
+						            			source="formData.Data.C_Banner"
 						            		 	letter="C"
 						            		 	letterx="C1"
 						            		 	title="Banner"
@@ -110,7 +110,7 @@
 						            		 	fail="uploadFail">
 						            		 </nc-image-banner-link>
 						            		<nc-image-links 
-						            			source="formData.data.D_SubBanner1"
+						            			source="formData.Data.D_SubBanner1"
 						            			letter="D"
 						            			title="Sub Banner 1"
 						            			uploader="uploader"
@@ -118,7 +118,7 @@
 						            			size="5">
 						            		</nc-image-links>
 						            		<nc-image-banner-link
-						            			source="formData.data.E_Banner"
+						            			source="formData.Data.E_Banner"
 						            		 	letter="E"
 						            		 	letterx="E1"
 						            		 	title="Banner"
@@ -132,14 +132,14 @@
 						            		 	noauto="true">
 						            		</nc-image-banner-link>
 						            		<nc-product-layout 
-						            			source="formData.data.F_ProductLayout1"
+						            			source="formData.Data.F_ProductLayout1"
 						            			letter="F"
 						            			title="Product Layout 1"
 						            			refresh="getProducts"
 						            			products="products">
 						            		</nc-product-layout>
 						            		<nc-product-layout 
-						            			source="formData.data.G_ProductLayout2"
+						            			source="formData.Data.G_ProductLayout2"
 						            			letter="G"
 						            			letterx="G1"
 						            			title="Product Layout 2"
@@ -148,7 +148,7 @@
 						            			products="products">
 						            		</nc-product-layout>
 						            		<nc-product-layout 
-						            			source="formData.data.H_ProductLayout3"
+						            			source="formData.Data.H_ProductLayout3"
 						            			letter="H"
 						            			letterx="H1"
 						            			title="Product Layout 3"
@@ -157,7 +157,7 @@
 						            			products="products">
 						            		</nc-product-layout>
 						            		<nc-image-links 
-						            			source="formData.data.I_SubBanner3"
+						            			source="formData.Data.I_SubBanner3"
 						            			letter="I"
 						            			title="Sub Banner 3"
 						            			uploader="uploader"
@@ -166,7 +166,7 @@
 						            			size="1">
 						            		</nc-image-links>
 						            		<nc-image-links 
-						            			source="formData.data.J_SubBanner4"
+						            			source="formData.Data.J_SubBanner4"
 						            			letter="J"
 						            			title="Sub Banner 4"
 						            			uploader="uploader"
@@ -175,7 +175,7 @@
 						            			size="1">
 						            		</nc-image-links>
 						            		<nc-image-banner-icon
-						            			source="formData.data.K_SocialNetworkIcons"
+						            			source="formData.Data.K_SocialNetworkIcons"
 						            		 	letter="K"
 						            		 	letterx="K1"
 						            		 	title="Social Network Icons"
@@ -187,7 +187,7 @@
 						            		 	subtitle="Icon Type">
 						            		 </nc-image-banner-icon>
 						            		 <nc-textareas
-						            		 	source="formData.data.L_FooterText"
+						            		 	source="formData.Data.L_FooterText"
 						            		 	letter="L"
 						            		 	title="Footer Text"
 						            		 	size="2">
@@ -195,13 +195,13 @@
 						            	</div>
 						            	<div ng-switch-when="3">
 						            		<nc-text-link 
-						            			source="formData.data.A_TopMenu1"
+						            			source="formData.Data.A_TopMenu1"
 						            			letter="A"
 						            			letterx="A1"
 						            			title="Top Menu 1">
 						            		</nc-text-link>
 						            		<nc-image-links 
-						            			source="formData.data.B_TopMenu2"
+						            			source="formData.Data.B_TopMenu2"
 						            			letter="B"
 						            			title="Top Menu 2"
 						            			uploader="uploader"
@@ -209,7 +209,7 @@
 						            			size="1">
 						            		</nc-image-links>
 						            		<nc-image-banner-link
-						            			source="formData.data.C_Banner"
+						            			source="formData.Data.C_Banner"
 						            		 	letter="C"
 						            		 	letterx="C1"
 						            		 	title="Banner"
@@ -220,7 +220,7 @@
 						            		 	fail="uploadFail">
 						            		 </nc-image-banner-link>
 						            		<nc-image-banner-link
-						            			source="formData.data.D_SubBanner1"
+						            			source="formData.Data.D_SubBanner1"
 						            		 	letter="D"
 						            		 	letterx="D1"
 						            		 	title="Sub Banner 1"
@@ -234,7 +234,7 @@
 						            		 	noauto="true">
 						            		 </nc-image-banner-link>
 						            		<nc-image-banner-link
-						            			source="formData.data.E_SubBanner2"
+						            			source="formData.Data.E_SubBanner2"
 						            		 	letter="E"
 						            		 	letterx="E1"
 						            		 	title="Sub Banner 2"
@@ -248,7 +248,7 @@
 						            		 	noauto="true">
 						            		 </nc-image-banner-link>
 						            		<nc-product-layout 
-						            			source="formData.data.F_ProductLayout1"
+						            			source="formData.Data.F_ProductLayout1"
 						            			letter="F"
 						            			title="Product Layout 1"
 						            			refresh="getProducts"
@@ -256,7 +256,7 @@
 						            			products="products">
 						            		</nc-product-layout>
 						            		<nc-product-layout 
-						            			source="formData.data.G_ProductLayout2"
+						            			source="formData.Data.G_ProductLayout2"
 						            			letter="G"
 						            			letterx="G1"
 						            			title="Product Layout 2"
@@ -265,7 +265,7 @@
 						            			products="products">
 						            		</nc-product-layout>
 						            		<nc-image-banner-link
-						            			source="formData.data.G_SubBanner3"
+						            			source="formData.Data.G_SubBanner3"
 						            		 	letter="H"
 						            		 	letterx="H1"
 						            		 	title="Sub Banner 3"
@@ -279,7 +279,7 @@
 						            		 	noauto="true">
 						            		 </nc-image-banner-link>
 						            		<nc-image-banner-video
-						            			source="formData.data.I_Video"
+						            			source="formData.Data.I_Video"
 						            		 	letter="I"
 						            		 	letterx="I1"
 						            		 	title="Video"
@@ -290,7 +290,7 @@
 						            		 	fail="uploadFail">
 						            		 </nc-image-banner-video>
 						            		<nc-image-banner-link
-						            			source="formData.data.J_SubBanner4"
+						            			source="formData.Data.J_SubBanner4"
 						            		 	letter="J"
 						            		 	letterx="J1"
 						            		 	title="Sub Banner 4"
@@ -302,7 +302,7 @@
 						            		 	noauto="true">
 						            		 </nc-image-banner-link>
 						            		<nc-image-links 
-						            			source="formData.data.K_SubBanner5"
+						            			source="formData.Data.K_SubBanner5"
 						            			letter="K"
 						            			title="Sub Banner 5"
 						            			uploader="uploader"
@@ -310,7 +310,7 @@
 						            			size="1">
 						            		</nc-image-links>
 						            		<nc-image-banner-icon
-						            			source="formData.data.L_SocialNetworkIcons"
+						            			source="formData.Data.L_SocialNetworkIcons"
 						            		 	letter="L"
 						            		 	letterx="L1"
 						            		 	title="Social Network Icons"
@@ -322,7 +322,7 @@
 						            		 	subtitle="Icon Type">
 						            		 </nc-image-banner-icon>
 						            		 <nc-textareas
-						            		 	source="formData.data.M_FooterText"
+						            		 	source="formData.Data.M_FooterText"
 						            		 	letter="M"
 						            		 	title="Footer Text"
 						            		 	size="2">

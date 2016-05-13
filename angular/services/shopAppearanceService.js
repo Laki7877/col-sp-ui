@@ -15,8 +15,15 @@ module.exports = function (common, config, util) {
     	});
     };
 
+    service.deserialize = function(data) {
+        var processed = _.cloneDeep(data);
+        processed.Data = angular.toJson(processed.Data || '');
+        return;
+    }
+
     service.serialize = function(data) {
         var processed = _.cloneDeep(data);
+        processed.Data = angular.fromJson(processed.Data || {});
         return processed;
     }
 

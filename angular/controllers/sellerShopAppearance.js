@@ -1,7 +1,7 @@
 module.exports = function($scope, ShopAppearanceService, Product, ImageService, NcAlert, config, util, common, $timeout, $q) {
 	'ngInject';
 	$scope.form = {};
-	$scope.formData = { data: {} };
+	$scope.formData = { Data: {} };
 	$scope.alert = new NcAlert();
 	$scope.saving = false;
 	$scope.loading = true;
@@ -15,12 +15,6 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 		width: 1000,
 		height: 1000
 	};
-
-	//Load theme
-	ShopAppearanceService.getThemes()
-		.then(function(data) {
-			$scope.themes = data;
-		});
 
 	/*
 	$scope.selectTheme = function(id) {
@@ -79,6 +73,11 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 
 	$scope.init = function() {
 		$scope.loading = true;
+		//Load theme
+		ShopAppearanceService.getThemes()
+			.then(function(data) {
+				$scope.themes = data;
+			});
 		ShopAppearanceService.list()
 			.then(function(data) {
 				$scope.formData = ShopAppearanceService.deserialize(data);
@@ -99,7 +98,7 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 	$scope.getProducts('');
 	$scope.$watch('formData.themeId', function(a,b) {
 		if(a != b) {
-			$scope.formData.data = {};
+			$scope.formData.Data = {};
 		}
 	})
 	$scope.save = function() {
@@ -125,40 +124,13 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 			$scope.alert.error(util.saveAlertError());
 		}
 	}
-	$scope.upload = function(file, video) {
-		if(_.isNil(file)) {
-			return;
-		}
-		$scope.thumbUploader.upload(file)
-			.then(function(response) {
-				video.Thumbnail = response.data.Url;
-			}, function(err) {
-				video.Thumbnail = '';
-				$scope.alert.error(common.getError(err.data));
-			});
-	};
-	$scope.uploadLogo = function(file) {
-		if(_.isNil(file)) {
-			return;
-		}
-		$scope.formData.ShopImage = {
-			Url: '/assets/img/loader.gif'
-		};
-		$scope.logoUploader.upload(file)
-			.then(function(response) {
-				$scope.formData.ShopImage = response.data;
-			}, function(err) {
-				$scope.formData.ShopImage = null;
-				$scope.alert.error(common.getError(err.data));
-			});
-	};
 	$scope.uploadFail = function(e, arg1, arg2) {
 		$scope.alert.close();
 		if(e == 'ondimension') {
 			$scope.alert.error('Image must be ' + arg2[0] + 'x' + arg2[1] + ' pixels');
 		}
 		else {
-			$scope.alert.error('Fail to upload photo<br>' + common.getError(arg1.data));
+			$scope.alert.error('<strong>Fail to upload photo</strong><br>' + common.getError(arg1.data));
 		}
 	};
 };

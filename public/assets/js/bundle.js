@@ -6022,7 +6022,7 @@ module.exports = ["$scope", "$controller", "storage", function($scope, $controll
 }];
 
 },{"angular":280}],66:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "$uibModal", "ReturnRequestService", "config", function($scope, $controller, $uibModal, ReturnRequestService, config) {
+module.exports = ["$scope", "$window", "$controller", "$uibModal", "ReturnRequestService", "config", function($scope, $window, $controller, $uibModal, ReturnRequestService, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
@@ -6045,17 +6045,19 @@ module.exports = ["$scope", "$controller", "$uibModal", "ReturnRequestService", 
 		return row.Status == 'AP';
 	};
 	$scope.accept = function(row) {
+		$window.location.href = '/returns/' + row.ReturnId;
 		//Enter CN Number
+		/*
 		var modal = $uibModal.open({
 			size: 'size-warning',
 			templateUrl: 'order/modalAcceptReturn',
-			controller: ["$scope", "$uibModalInstance", function($scope, $uibModalInstance) {
+			controller: function($scope, $uibModalInstance) {
 				$scope.model = '';
 				$scope.close = function() {
 					if(_.isEmpty($scope.model)) return;
 					$uibModalInstance.close($scope.model);
 				};
-			}],
+			},
 		});
 
 		modal.result.then(function(data) {
@@ -6070,7 +6072,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "ReturnRequestService", 
 			}, function(err) {
 				$scope.alert.error(common.getError(err));
 			});
-		});
+		});*/
 	};
 }]
 
@@ -6095,7 +6097,8 @@ module.exports = ["$scope", "$controller", "ReturnRequestService", "util", "conf
 			$scope.alert.close();
 			ReturnRequestService.update($scope.formData.ReturnId, {
 				Status: 'AP',
-				CnNumber: $scope.formData.CnNumber
+				CnNumber: $scope.formData.CnNumber,
+				CnAmount: $scope.formData.CnAmount
 			})
 			.then(function(data) {
 				$scope.formData = ReturnRequestService.deserialize(data);
@@ -6188,7 +6191,7 @@ module.exports = ["$scope", "$controller", "SellerRoleService", "SellerPermissio
 module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", "NcAlert", "config", "util", "common", "$timeout", "$q", function($scope, ShopAppearanceService, Product, ImageService, NcAlert, config, util, common, $timeout, $q) {
 	'ngInject';
 	$scope.form = {};
-	$scope.formData = { data: {} };
+	$scope.formData = { Data: {} };
 	$scope.alert = new NcAlert();
 	$scope.saving = false;
 	$scope.loading = true;
@@ -6202,12 +6205,6 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 		width: 1000,
 		height: 1000
 	};
-
-	//Load theme
-	ShopAppearanceService.getThemes()
-		.then(function(data) {
-			$scope.themes = data;
-		});
 
 	/*
 	$scope.selectTheme = function(id) {
@@ -6266,6 +6263,11 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 
 	$scope.init = function() {
 		$scope.loading = true;
+		//Load theme
+		ShopAppearanceService.getThemes()
+			.then(function(data) {
+				$scope.themes = data;
+			});
 		ShopAppearanceService.list()
 			.then(function(data) {
 				$scope.formData = ShopAppearanceService.deserialize(data);
@@ -6286,7 +6288,7 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 	$scope.getProducts('');
 	$scope.$watch('formData.themeId', function(a,b) {
 		if(a != b) {
-			$scope.formData.data = {};
+			$scope.formData.Data = {};
 		}
 	})
 	$scope.save = function() {
@@ -6312,40 +6314,13 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 			$scope.alert.error(util.saveAlertError());
 		}
 	}
-	$scope.upload = function(file, video) {
-		if(_.isNil(file)) {
-			return;
-		}
-		$scope.thumbUploader.upload(file)
-			.then(function(response) {
-				video.Thumbnail = response.data.Url;
-			}, function(err) {
-				video.Thumbnail = '';
-				$scope.alert.error(common.getError(err.data));
-			});
-	};
-	$scope.uploadLogo = function(file) {
-		if(_.isNil(file)) {
-			return;
-		}
-		$scope.formData.ShopImage = {
-			Url: '/assets/img/loader.gif'
-		};
-		$scope.logoUploader.upload(file)
-			.then(function(response) {
-				$scope.formData.ShopImage = response.data;
-			}, function(err) {
-				$scope.formData.ShopImage = null;
-				$scope.alert.error(common.getError(err.data));
-			});
-	};
 	$scope.uploadFail = function(e, arg1, arg2) {
 		$scope.alert.close();
 		if(e == 'ondimension') {
 			$scope.alert.error('Image must be ' + arg2[0] + 'x' + arg2[1] + ' pixels');
 		}
 		else {
-			$scope.alert.error('Fail to upload photo<br>' + common.getError(arg1.data));
+			$scope.alert.error('<strong>Fail to upload photo</strong><br>' + common.getError(arg1.data));
 		}
 	};
 }];
@@ -17845,8 +17820,15 @@ module.exports = ["common", "config", "util", function (common, config, util) {
     	});
     };
 
+    service.deserialize = function(data) {
+        var processed = _.cloneDeep(data);
+        processed.Data = angular.toJson(processed.Data || '');
+        return;
+    }
+
     service.serialize = function(data) {
         var processed = _.cloneDeep(data);
+        processed.Data = angular.fromJson(processed.Data || {});
         return processed;
     }
 
