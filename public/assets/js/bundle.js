@@ -6262,7 +6262,7 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 		}
 	};*/
 
-	$scope.uploader = ImageService.getUploaderFn('/ShopImages/Theme');
+	$scope.uploader = ImageService.getUploaderFn('/ThemeImages');
 
 	$scope.init = function() {
 		$scope.loading = true;
