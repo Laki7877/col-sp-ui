@@ -22,6 +22,7 @@ angular.module('nc')
                 },
                 link: function (scope, element, attrs, ctrl, transclude) {
                     scope.isInvalid = function(form) {
+                        if(angular.isDefined(form) && form.$error.required && form.$dirty) return true;
                         if(angular.isDefined(form) &&
                             angular.isDefined(form.$invalid) &&
                             angular.isDefined(form.$dirty)) {

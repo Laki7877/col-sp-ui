@@ -11283,6 +11283,7 @@ angular.module('nc')
                 },
                 link: function (scope, element, attrs, ctrl, transclude) {
                     scope.isInvalid = function(form) {
+                        if(angular.isDefined(form) && form.$error.required && form.$dirty) return true;
                         if(angular.isDefined(form) &&
                             angular.isDefined(form.$invalid) &&
                             angular.isDefined(form.$dirty)) {
@@ -12508,7 +12509,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
      * @param  {String} Status (WA or DF or other enum sent to server)
      */
     $scope.publish = function (Status) {
-
+      //Trigger red validation
+      angular.forEach($scope.addProductForm.$error.required, function(field) {
+          field.$setDirty();
+      });
+      
       $scope.pageState.reset();
 
       if ($scope.readOnly) {
@@ -12559,6 +12564,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           if ($scope.addProductForm.SalePrice.$invalid) {
             errorList.push('Sale Price');
           }
+          
+          if (_.get($scope.formData.Brand, 'BrandId') == null) {
+            errorList.push('Brand');
+          }
 
           $scope.alert.error('Unable to save. Please make sure that ' + errorList.join(' and ') + ' are filled correctly.')
         } else if (Status == 'WA' && requiredMissing) {
@@ -12581,7 +12590,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       // checkSchema(apiRequest, 'productStages', '(TX)');
 
       Product.publish(apiRequest, Status).then(function (res) {
-
         $scope.pageState.reset();
 
         if (res.ProductId) {
@@ -14178,7 +14186,8 @@ angular.module('umeSelect')
                 initialChoices: '=?initialChoices',
                 hideIcon: '=?hideIcon',
                 disabled: '&?ngDisabled',
-                strictMode: '=?strictMode'
+                strictMode: '=?strictMode',
+                required: '&?required'
             },
             replace: true,
             priority: 1010,
@@ -14191,7 +14200,14 @@ angular.module('umeSelect')
                 return templateHTML;
             },
             link: function (scope, element, attrs, ngModel, transclude) {                
-
+                
+                ngModel.$validators.required = function(modelValue, viewValue) {
+                   if(scope.required && scope.required() && !modelValue){
+                       return false;
+                   }
+                   return true;
+                };
+            
                 //text user types in searchbox
                 scope.searchText = "";
                 //index of currently highlighted choice
@@ -14253,7 +14269,7 @@ angular.module('umeSelect')
                     maxTagCount = val;
                     ngModel.$validate();
                 });
-
+ 
                 attrs.$observe('maxLengthPerTag', function(val) {
                     maxLengthPerTag = val;
                     ngModel.$validate();
