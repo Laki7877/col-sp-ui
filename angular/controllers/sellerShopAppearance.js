@@ -15,13 +15,13 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 		height: 1000
 	};
 	$scope.themes = [{
-		ThemeName: 'Basic Template',
+		ThemeName: 'Basic Theme 1',
 		ThemeId: 0
 	}, {
-		ThemeName: 'Robinson',
+		ThemeName: 'Basic Theme 2',
 		ThemeId: 1
 	}, {
-		ThemeName: 'Supersport',
+		ThemeName: 'Basic Theme 3',
 		ThemeId: 2
 	}];
 /*
@@ -124,7 +124,7 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 	})
 	$scope.save = function() {
 		if($scope.saving) return;
-		
+
 		//Activate form submission
 		$scope.form.$setSubmitted();
 
