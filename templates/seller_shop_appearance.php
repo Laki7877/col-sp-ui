@@ -27,7 +27,7 @@
 													<div class="radio multiple-radio">
 														<label class="label_width" ng-repeat="t in themes track by $index">
 															<input type="radio" name="theme{{$index+1}}" ng-model="formData.ThemeId" ng-value="t.ThemeId">{{t.ThemeName}}
-															<img class="image_radion_thumbnail" ng-src="{{ t.ThemeImage.Url }}" >
+															<img class="image_radion_thumbnail" ng-src="{{ t.ThemeImage }}" >
 														</label>
 													</div>
 												</div>
