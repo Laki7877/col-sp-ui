@@ -64,15 +64,17 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
                 $uibModalInstance.close($scope.formData);
               }
             }
-        }).result.then(function() {
-          save({
+        }).result.then(function(data) {
+          var o = {
            InvoiceNumber: $scope.formData.InvoiceNumber,
            Status: 'RS',
-           Products: $scope.formData.Products ,
-           IsOwnCarrier: $scope.formData.IsOwnCarrier,
-           OtherCarrier: $scope.formData.OtherCarrier,
-           TrackingNumber: $scope.formData.TrackingNumber
-         });
+           Products: $scope.formData.Products,
+           TrackingNumber: data.TrackingNumber
+          };
+          if(!data.IsOwnCarrier) {
+            o.Carrier = data.OtherCarrier;
+          }
+          save(o);
         })
       } else {
         util.confirm(
