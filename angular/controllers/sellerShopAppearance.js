@@ -6,6 +6,7 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 	$scope.saving = false;
 	$scope.loading = true;
 	$scope.products = [];
+	$scope.themes = [];
 	$scope.X = {  //P'M's requested X
 		width: 1920,
 		height: 1080
@@ -14,33 +15,12 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 		width: 1000,
 		height: 1000
 	};
-	$scope.themes = [{
-		ThemeName: 'Basic Theme 1',
-		ThemeId: 0
-	}, {
-		ThemeName: 'Basic Theme 2',
-		ThemeId: 1
-	}, {
-		ThemeName: 'Basic Theme 3',
-		ThemeId: 2
-	}];
-/*
-	$timeout(function() {
-		$scope.formData.data.BannerA.ImageEn.push({});
-		$scope.formData.data.BannerA.ImageEn.push({});
-		$scope.formData.data.VideoI.ImageEn.push({});
-		$scope.formData.data.VideoI.ImageEn.push({});
-		$scope.formData.data.VideoI.ImageTh.push({});
-	}, 1000);
-*/
+
 	//Load theme
-	/*ShopAppearanceService.getThemes()
+	ShopAppearanceService.getThemes()
 		.then(function(data) {
 			$scope.themes = data;
-			console.log(data);
 		});
-	*/
-
 
 	/*
 	$scope.selectTheme = function(id) {
@@ -95,7 +75,7 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 		}
 	};*/
 
-	$scope.uploader = ImageService.getUploaderFn('/ShopImages');
+	$scope.uploader = ImageService.getUploaderFn('/ShopImages/Theme');
 
 	$scope.init = function() {
 		$scope.loading = true;
@@ -178,7 +158,7 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 			$scope.alert.error('Image must be ' + arg2[0] + 'x' + arg2[1] + ' pixels');
 		}
 		else {
-			$scope.alert.error('Fail to upload photo');
+			$scope.alert.error('Fail to upload photo<br>' + common.getError(arg1.data));
 		}
 	};
 };

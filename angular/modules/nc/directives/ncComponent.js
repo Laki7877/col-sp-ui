@@ -82,7 +82,8 @@ angular.module('nc')
 				letter: '@',
 				uploader: '=', //return promise
 				fail: '=',
-				size: '@'
+				size: '@',
+				notitle: '@?'
 			},
 			template: $templateCache.get('common/ncImageLinks'),
 			link: function(scope) {

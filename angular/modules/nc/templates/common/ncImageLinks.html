@@ -3,13 +3,13 @@
 		<h2><input type="checkbox" style="margin-right: 10px" ng-model="source.Enabled"/>{{letter}}.) {{title}}</h2>
 	</div>
 	<div class="form-section-content padding-left-15 padding-right-15" ng-if="source.Enabled">
-        <div class="form-group">
+        <div ng-if="!notitle" class="form-group">
             <div class="width-label"><label class="control-label">{{letter}} Title (Eng)</label></div>
             <div class="width-field-normal">
                 <input type="text" class="form-control" ng-model="source.TitleEn" />
             </div>
         </div>
-        <div class="form-group">
+        <div ng-if="!notitle" class="form-group">
             <div class="width-label"><label class="control-label">{{letter}} Title (ไทย)</label></div>
             <div class="width-field-normal">
                 <input type="text" class="form-control" ng-model="source.TitleTh" />

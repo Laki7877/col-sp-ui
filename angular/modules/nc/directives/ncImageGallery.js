@@ -212,9 +212,6 @@ angular.module('nc')
 					scope.options.height = (data.Height/data.Width)*256 + 'px';
 					scope.options.width =  '256px';
 				});
-				scope.$watch('source', function() {
-					console.log(scope.source);
-				})
 			}
 		}
 	})

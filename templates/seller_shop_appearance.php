@@ -10,7 +10,7 @@
 		<div ng-show="loading" nc-loading="Loading.."></div>
 		<div ng-show="saving" nc-loading="Saving.."></div>
         <form class="ah-form sticky-mainform-action" name="form" ng-submit="save()" ng-show="!loading && !saving">
-		    <div>
+	    <div>
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
 						<div id="shop-setting-content">
@@ -27,7 +27,7 @@
 													<div class="radio multiple-radio">
 														<label class="label_width" ng-repeat="t in themes track by $index">
 															<input type="radio" name="theme{{$index+1}}" ng-model="formData.ThemeId" ng-value="t.ThemeId">{{t.ThemeName}}
-															<img class="image_radion_thumbnail" ng-src="{{ t.ThemeImage }}" >
+															<img class="image_radion_thumbnail" ng-src="{{ t.ThemeImage.Url }}" >
 														</label>
 													</div>
 												</div>
@@ -37,11 +37,11 @@
 						            <!-- templates -->
 						            <div ng-switch="formData.ThemeId">
 						            	<!-- basic template -->
-						            	<div ng-switch-when="0">
+						            	<div ng-switch-when="1">
 						            		<nc-image-banner-link
 						            			source="formData.data.A_Banner"
 						            		 	letter="A"
-						            		 	letterx="C1"
+						            		 	letterx="A1"
 						            		 	title="Banner"
 						            		 	uploader="uploader" 
 						            		 	size="8" 
@@ -83,7 +83,7 @@
 						            		</nc-image-banner-video>
 						            	</div>
 						            	<!-- robinson -->
-						            	<div ng-switch-when="1">
+						            	<div ng-switch-when="2">
 						            		<nc-text-link 
 						            			source="formData.data.A_TopMenu1"
 						            			letter="A"
@@ -128,6 +128,7 @@
 						            		 	height="{{X.height}}" 
 						            		 	fail="uploadFail"
 						            		 	subtitle="Sub Banner"
+						            		 	heading="true"
 						            		 	noauto="true">
 						            		</nc-image-banner-link>
 						            		<nc-product-layout 
@@ -161,6 +162,7 @@
 						            			title="Sub Banner 3"
 						            			uploader="uploader"
 						            			fail="uploadFail"
+						            			notitle="true"
 						            			size="1">
 						            		</nc-image-links>
 						            		<nc-image-links 
@@ -169,6 +171,7 @@
 						            			title="Sub Banner 4"
 						            			uploader="uploader"
 						            			fail="uploadFail"
+						            			notitle="true"
 						            			size="1">
 						            		</nc-image-links>
 						            		<nc-image-banner-icon
@@ -190,7 +193,7 @@
 						            		 	size="2">
 						            		 </nc-textareas>
 						            	</div>
-						            	<div ng-switch-when="2">
+						            	<div ng-switch-when="3">
 						            		<nc-text-link 
 						            			source="formData.data.A_TopMenu1"
 						            			letter="A"
@@ -249,6 +252,7 @@
 						            			letter="F"
 						            			title="Product Layout 1"
 						            			refresh="getProducts"
+						            			subtitle="true"
 						            			products="products">
 						            		</nc-product-layout>
 						            		<nc-product-layout 
@@ -262,8 +266,8 @@
 						            		</nc-product-layout>
 						            		<nc-image-banner-link
 						            			source="formData.data.G_SubBanner3"
-						            		 	letter="G"
-						            		 	letterx="G1"
+						            		 	letter="H"
+						            		 	letterx="H1"
 						            		 	title="Sub Banner 3"
 						            		 	uploader="uploader" 
 						            		 	size="8" 
@@ -285,7 +289,7 @@
 						            		 	height="{{X.height}}" 
 						            		 	fail="uploadFail">
 						            		 </nc-image-banner-video>
-						            		<nc-image-banner-video
+						            		<nc-image-banner-link
 						            			source="formData.data.J_SubBanner4"
 						            		 	letter="J"
 						            		 	letterx="J1"
@@ -295,9 +299,8 @@
 						            		 	width="{{X.width}}" 
 						            		 	height="{{X.height}}" 
 						            		 	fail="uploadFail"
-						            		 	linktitle="Banner"
-						            		 	subtitle="Banner">
-						            		 </nc-image-banner-video>
+						            		 	noauto="true">
+						            		 </nc-image-banner-link>
 						            		<nc-image-links 
 						            			source="formData.data.K_SubBanner5"
 						            			letter="K"
