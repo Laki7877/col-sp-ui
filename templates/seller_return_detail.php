@@ -9,6 +9,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Return R
       <div class="page-header">
         <a class="btn btn-white btn-width-xl" ng-click="cancel()">Close</a>
         <button ng-if="formData.Status != 'AP'"  class="btn btn-green btn-width-xl" ng-click="save()">Accept</button>
+        <button ng-if="formData.Status == 'AP'" class="btn btn-green btn-width-xl" ng-click="update()">Save</button>
       </div>
     </nc-page-title>
     <div ng-show="loading" nc-loading="{{loadingMessage}}"></div>
@@ -105,13 +106,13 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Return R
                         <div nc-template="common/input/form-group-with-label" nc-label="Reason for Return" nc-template-options="{ inputSize: 'xxl' }">
                           <p class="form-control-static noPrintMargin">{{formData.ReasonForReturn}}</p>
                         </div>
-                        <div nc-template="common/input/form-group-with-label" nc-template-form="form.CnNumber"nc-template-options="{ labelClass: 'required' }"nc-label="CN Number">
+                        <div nc-template="common/input/form-group-with-label" nc-template-form="form.CnNumber" nc-template-options="{ labelClass: 'required' }"nc-label="CN Number">
                           <label class="control-label" print-only>{{formData.CnNumber}}</label>
-                          <input ng-disabled="formData.Status == 'AP'" name="CnNumber" ng-model="formData.CnNumber" class="form-control" required print-hide/>
+                          <input name="CnNumber" ng-model="formData.CnNumber" class="form-control" required print-hide/>
                         </div>
-                        <div nc-template="common/input/form-group-with-label" nc-template-form="form.CnAmount"nc-template-options="{ labelClass: 'required' }"nc-label="CN Amount">
+                        <div nc-template="common/input/form-group-with-label" nc-template-form="form.CnAmount" nc-template-options="{ labelClass: 'required' }"nc-label="CN Amount">
                           <label class="control-label" print-only>{{formData.CnAmount}}</label>
-                          <input ng-disabled="formData.Status == 'AP'" name="CnAmount" ng-model="formData.CnAmount" class="form-control" required print-hide/>
+                          <input name="CnAmount" ng-model="formData.CnAmount" class="form-control" ng-pattern-restrict="[0-9]*" required print-hide/>
                         </div>
                       </div>
                     </div>
@@ -125,6 +126,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Return R
               <div class="float-right">
                 <button class="btn btn-white btn-width-xl" ng-click="cancel()">Close</button>
                 <button ng-if="formData.Status != 'AP'" class="btn btn-green btn-width-xl" ng-click="save()">Accept</button>
+                <button ng-if="formData.Status == 'AP'" class="btn btn-green btn-width-xl" ng-click="update()">Save</button>
               </div>
             </div>
           </div>

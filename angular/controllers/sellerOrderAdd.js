@@ -80,6 +80,8 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
           };
           if(data.IsOwnCarrier) {
             o.Carrier = data.OtherCarrier;
+          } else {
+            o.Carrier = 'Merchant Own Fleet';
           }
           save(o);
         })

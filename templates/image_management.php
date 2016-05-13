@@ -61,6 +61,7 @@
                                 nc-image-gallery-disabled="isDisabled(product)"></nc-image-gallery>
                           </div>
                         </div>
+                        {{product.isUploading ? 'UPLOADING' : 'FINISHED'}}
                         <div class="drop-zone-container {{ getContainer(product) }}">
                           <nc-image-dropzone
                             ng-if="product.IsVariant"

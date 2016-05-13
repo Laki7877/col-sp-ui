@@ -15,10 +15,10 @@
             <th nc-sort="ModifiedDt">Date</th>
             <th nc-sort="ReturnId">Return ID</th>
             <th nc-sort="OrderId">Order ID</th>
-            <th>Customer Name</th>
-            <th>Total Price</th>
-            <th>Carrier</th>
-            <th>Status</th>
+            <th nc-sort="CustomerName">Customer Name</th>
+            <th nc-sort="GrandTotalAmt">Total Price</th>
+            <th nc-sort="Carrier">Carrier</th>
+            <th nc-sort="Status">Status</th>
             <th>Accept</th>
             <th>Action</th>
           </tr>

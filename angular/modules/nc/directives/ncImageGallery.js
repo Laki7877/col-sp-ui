@@ -712,7 +712,6 @@ angular.module('nc')
 					img.src = url;
 				};
 				scope.uploader.onWhenAddingFileFailed = function(item, filter) {
-					console.log('onFail', item, filter);
 					scope.onError({
 						$response: filter
 					});
@@ -722,7 +721,6 @@ angular.module('nc')
 				};
 				scope.uploader.onErrorItem = function(item, response, status, headers) {
 					scope.model.splice(scope.model.indexOf(item.obj), 1);
-					console.log('onErrotItem', item, response, status, headers);
 					scope.onError({
 						$response: response
 					});
@@ -731,6 +729,7 @@ angular.module('nc')
 				scope.update();
 				scope.$watch('template', scope.update);
 				scope.$watch('uploader.isUploading', function(val) {
+					console.log(val);
 					scope.isUploading = val;
 				});
 			}
