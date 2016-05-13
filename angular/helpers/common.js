@@ -32,11 +32,11 @@ module.exports = function ($http, $q, storage, config, $window) {
                     $http(options)
                     .success(function (data) {
                         //IN production, remove this on-success
-                        if(_.has(options, 'rollbar')){
-                            Rollbar.log(options.rollbar, {
-                                'curl': curlCmd
-                            });
-                        }
+                        // if(_.has(options, 'rollbar')){
+                        //     Rollbar.log(options.rollbar, {
+                        //         'curl': curlCmd
+                        //     });
+                        // }
 
                         deferred.resolve(data);
                     })

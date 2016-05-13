@@ -68,6 +68,12 @@ module.exports = function(common, $base64, storage, $q, $rootScope) {
 			method: 'GET',
 			url: '/Users/Admin/Login/' + User.UserId
 		}).then(function(r){
+			//retain token
+			var cup = storage.getCurrentUserProfile();
+			var token = cup.User.Token;
+			r.User.Token = token;
+			console.log(token, 'token');
+			
 			storage.storeCurrentUserProfile(r, true);
 			storage.storeImposterProfile(User);
 			deferred.resolve(r);

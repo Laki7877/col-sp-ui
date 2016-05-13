@@ -2952,8 +2952,8 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 	$scope.loginAs = function(user){
 		$scope.alert.close();
 		Credential.loginAs(user).then(function(r){
-				$window.location.href = "/dashboard";
-				// console.log("got", r);
+				// $window.location.href = "/dashboard";
+				console.log("got", r, user);
 		}, function(err){
     		$scope.alert.error(common.getError(err));
     });
@@ -4691,7 +4691,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
   };
 
   //Check url acccess permission for this page
-  if(!$rootScope.permitUrl($window.location.pathname) && $window.location.pathname.indexOf("/login") == -1) {
+  if(!$rootScope.permitUrl($window.location.pathname) && $window.location.pathname.indexOf("/login") == -1 && !$rootScope.Imposter) {
     $rootScope.DisablePage = true;
     
     if($window.location.pathname == '/dashboard' && !$rootScope.permit(29)) {
@@ -4701,6 +4701,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
         $window.location.href = "/onboarding";
       }
       else {
+        console.log("redirecting to 404 due to poermission")
         util.page404();
       }
     }
@@ -7542,11 +7543,11 @@ module.exports = ["$http", "$q", "storage", "config", "$window", function ($http
                     $http(options)
                     .success(function (data) {
                         //IN production, remove this on-success
-                        if(_.has(options, 'rollbar')){
-                            Rollbar.log(options.rollbar, {
-                                'curl': curlCmd
-                            });
-                        }
+                        // if(_.has(options, 'rollbar')){
+                        //     Rollbar.log(options.rollbar, {
+                        //         'curl': curlCmd
+                        //     });
+                        // }
 
                         deferred.resolve(data);
                     })
@@ -12541,7 +12542,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         return $scope.alert.error('This view is read-only.');
       }
       
-      if ($scope.xspermit(45)) {
+      if (Status == 'WA' && $scope.xspermit(45)) {
         return $scope.alert.error('You have no permission to publish (45).');
       }
 
@@ -16270,6 +16271,12 @@ module.exports = ["common", "$base64", "storage", "$q", "$rootScope", function(c
 			method: 'GET',
 			url: '/Users/Admin/Login/' + User.UserId
 		}).then(function(r){
+			//retain token
+			var cup = storage.getCurrentUserProfile();
+			var token = cup.User.Token;
+			r.User.Token = token;
+			console.log(token, 'token');
+			
 			storage.storeCurrentUserProfile(r, true);
 			storage.storeImposterProfile(User);
 			deferred.resolve(r);

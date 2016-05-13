@@ -182,7 +182,7 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   };
 
   //Check url acccess permission for this page
-  if(!$rootScope.permitUrl($window.location.pathname) && $window.location.pathname.indexOf("/login") == -1) {
+  if(!$rootScope.permitUrl($window.location.pathname) && $window.location.pathname.indexOf("/login") == -1 && !$rootScope.Imposter) {
     $rootScope.DisablePage = true;
     
     if($window.location.pathname == '/dashboard' && !$rootScope.permit(29)) {
@@ -192,6 +192,7 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
         $window.location.href = "/onboarding";
       }
       else {
+        console.log("redirecting to 404 due to poermission")
         util.page404();
       }
     }

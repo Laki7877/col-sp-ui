@@ -551,7 +551,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         return $scope.alert.error('This view is read-only.');
       }
       
-      if ($scope.xspermit(45)) {
+      if (Status == 'WA' && $scope.xspermit(45)) {
         return $scope.alert.error('You have no permission to publish (45).');
       }
 
