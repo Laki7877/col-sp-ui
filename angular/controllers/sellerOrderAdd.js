@@ -71,7 +71,7 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
            Products: $scope.formData.Products,
            TrackingNumber: data.TrackingNumber
           };
-          if(!data.IsOwnCarrier) {
+          if(data.IsOwnCarrier) {
             o.Carrier = data.OtherCarrier;
           }
           save(o);

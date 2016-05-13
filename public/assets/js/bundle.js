@@ -3848,7 +3848,7 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
     }
     $scope.onError = function(item, response) {
     	item.alert.close();
-    	if(response.name == 'queueFilter') {
+    	if(response.name == 'queueFilter' || response.name == 'queueLimit') {
     		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Cannot exceed 10 images for each product');
     	}
     	else if(response.name == 'sizeFilter') {
@@ -3860,7 +3860,8 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
     	else if(response.name == 'ratioFilter') {
     		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Image must be a square (1:1 ratio)');
     	} else {
-    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + common.getError(response));
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + response);
+    		console.log(response);
 		}
 	};
     $scope.isDisabled = function(product) {
@@ -5801,7 +5802,7 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
            Products: $scope.formData.Products,
            TrackingNumber: data.TrackingNumber
           };
-          if(!data.IsOwnCarrier) {
+          if(data.IsOwnCarrier) {
             o.Carrier = data.OtherCarrier;
           }
           save(o);
@@ -10444,7 +10445,6 @@ angular.module('nc')
 					}
 					if (fileUploader) {
 						_.forEach(files, function(file) {
-
 								var url = URL.createObjectURL(file);
 								var img = new Image;
 
@@ -10512,7 +10512,6 @@ angular.module('nc')
 								};
 
 								img.src = url;
-
 						});
 					} else {
 						//newer version
@@ -10578,7 +10577,6 @@ angular.module('nc')
 									}, function(evt) {
 										obj.progress = _.parseInt(100.0 * evt.loaded / evt.total);
 									});
-
 							};
 
 							img.src = url;
@@ -10793,14 +10791,14 @@ angular.module('nc')
 				onError: '&?ncImageDropzoneOnError',
 				onSuccess: '&?ncImageDropzoneOnSuccess',
 				isUploading: '=?isUploading',
-				template: '@ncImageTemplate'
+				template: '@ncImageTemplate',
+				size: '@'
 			},
 			link: function(scope, element) {
 				scope.uploader = new FileUploader(scope.originalUploader);
 				scope.template = scope.template || 'common/ncImageDropzoneTemplate';
 				scope.options = _.defaults(scope.options, {
 					urlKey: 'Url',
-					onQueueLimit: _.noop,
 					onEvent: _.noop,
 					onResponse: function(item) {
 						return item;
@@ -10872,7 +10870,7 @@ angular.module('nc')
 							});
 							return;
 						}
-						if (scope.uploader.queueLimit == scope.model.length) {
+						if (scope.size == scope.model.length) {
 							item.cancel();
 							item.remove();
 							scope.onError({$response: { name: 'queueFilter' }});
@@ -10892,6 +10890,7 @@ angular.module('nc')
 					img.src = url;
 				};
 				scope.uploader.onWhenAddingFileFailed = function(item, filter) {
+					console.log('onFail', item, filter);
 					scope.onError({
 						$response: filter
 					});
@@ -10901,6 +10900,7 @@ angular.module('nc')
 				};
 				scope.uploader.onErrorItem = function(item, response, status, headers) {
 					scope.model.splice(scope.model.indexOf(item.obj), 1);
+					console.log('onErrotItem', item, response, status, headers);
 					scope.onError({
 						$response: response
 					});
@@ -16664,7 +16664,6 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
       headers: {
         Authorization: 'Bearer ' + accessToken
       },
-      queueLimit: 10,
       removeAfterUpload : true,
       filters: [{
         name: 'imageFilter',
