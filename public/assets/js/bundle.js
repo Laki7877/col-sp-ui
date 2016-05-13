@@ -5766,9 +5766,6 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   };
   //Override save
   $scope.save = function() {
-    if($scope.merchantFleet()) {
-
-    }
     save({ 
       InvoiceNumber: $scope.formData.InvoiceNumber,
       Carrier: $scope.formData.Carrier,
@@ -19302,7 +19299,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('order/modalReadyToShipMerchant',
-    "<nc-alert nc-model=alert></nc-alert><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-20\"><div class=\"radio multiple-radio multiline\"><label><input type=radio name=IsOwnCarrier ng-model=formData.IsOwnCarrier ng-value=\"false\"> Merchant Own Fleet</label><label class=margin-top-10><input type=radio class=float-left name=IsOwnCarrier ng-model=formData.IsOwnCarrier ng-value=\"true\"><div class=float-left>Other Carrier <input class=\"form-control margin-top-5\" name=Carrier ng-model=formData.OtherCarrier ng-disabled=\"!formData.IsOwnCarrier\"></div></label></div><p class=margin-top-20>Tracking Number</p><input class=form-control ng-model=\"model.TrackingNumber\"></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white\" ng-click=no()>Cancel</button> <button type=button class=\"btn btn-blue\" ng-click=yes()>Confirm</button></div></div></div>"
+    "<nc-alert nc-model=alert></nc-alert><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-20\"><div class=\"radio multiple-radio multiline\"><label><input type=radio name=IsOwnCarrier ng-model=formData.IsOwnCarrier ng-value=\"false\"> Merchant Own Fleet</label><label class=margin-top-10><input type=radio class=float-left name=IsOwnCarrier ng-model=formData.IsOwnCarrier ng-value=\"true\"><div class=float-left>Other Carrier <input class=\"form-control margin-top-5\" name=Carrier ng-model=formData.OtherCarrier ng-disabled=\"!formData.IsOwnCarrier\"></div></label></div><p class=margin-top-20>Tracking Number</p><input class=form-control ng-model=\"formData.TrackingNumber\"></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white\" ng-click=no()>Cancel</button> <button type=button class=\"btn btn-blue\" ng-click=yes()>Confirm</button></div></div></div>"
   );
 
 
