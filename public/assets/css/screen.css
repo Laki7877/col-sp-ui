@@ -12277,7 +12277,7 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 /* line 8, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-red hr {
-  border-top-color: #ffa6a6;
+  border-top-color: #ffa7a7;
 }
 /* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-red .alert-link {
@@ -12292,7 +12292,7 @@ a.like-text, a.like-text:hover, a.like-text:focus, a.like-text:active {
 }
 /* line 8, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-yellow hr {
-  border-top-color: #fffad1;
+  border-top-color: #fffad2;
 }
 /* line 11, ../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
 .alert-yellow .alert-link {
@@ -12337,7 +12337,7 @@ textarea {
 
 /*---- Override CK Editor ----*/
 /* line 141, ../../../assets/_override.scss */
-.cke_toolbox .cke_button__cut, .cke_toolbox .cke_button__copy, .cke_toolbox .cke_button__paste, .cke_toolbox .cke_button__anchor {
+.cke_toolbox .cke_button__cut, .cke_toolbox .cke_button__copy, .cke_toolbox .cke_button__paste, .cke_toolbox .cke_button__anchor, .cke_toolbox .cke_button__horizontalrule {
   display: none !important;
 }
 

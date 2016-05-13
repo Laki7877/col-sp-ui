@@ -138,7 +138,7 @@ textarea{
 /*---- Override CK Editor ----*/
 
 .cke_toolbox{
-	.cke_button__cut, .cke_button__copy, .cke_button__paste, .cke_button__anchor{
+	.cke_button__cut, .cke_button__copy, .cke_button__paste, .cke_button__anchor, .cke_button__horizontalrule{
 		display: none !important;
 	}
 }
