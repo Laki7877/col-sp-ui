@@ -119,7 +119,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         IsOnlyAt: false
       },
       Brand: {
-        id: null
+        BrandId: 0
       },
       TheOneCardEarn: 1,
       GiftWrap: 'N',
@@ -596,11 +596,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             errorList.push('Sale Price');
           }
           
-          if (_.get($scope.formData.Brand, 'BrandId') == null) {
+          if (_.get($scope.formData.Brand, 'BrandId') == null || _.get($scope.formData.Brand, 'BrandId') == 0) {
             errorList.push('Brand');
           }
 
-          $scope.alert.error('Unable to save. Please make sure that ' + errorList.join(' and ') + ' are filled correctly.')
+          $scope.alert.error('Unable to save. Please make sure that ' + errorList.join(' and ') + (errorList.length > 1 ? ' are ' : ' is ') + 'filled correctly.')
         } else if (Status == 'WA' && requiredMissing) {
           $scope.alert.error('Unable to publish because you are missing required fields')
         } else {

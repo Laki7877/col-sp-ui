@@ -20,7 +20,7 @@ angular.module('umeSelect')
                 hideIcon: '=?hideIcon',
                 disabled: '&?ngDisabled',
                 strictMode: '=?strictMode',
-                required: '&?required'
+                required: '=?ncRequired'
             },
             replace: true,
             priority: 1010,
@@ -35,12 +35,17 @@ angular.module('umeSelect')
             link: function (scope, element, attrs, ngModel, transclude) {                
                 
                 ngModel.$validators.required = function(modelValue, viewValue) {
-                   if(scope.required && scope.required() && !modelValue){
+                   console.log(scope.required , 'scope.required');
+                   if(scope.required && (!modelValue || modelValue.BrandId == 0 || !modelValue.BrandId)){
                        return false;
                    }
-                   return true;
+                   return true; 
                 };
-            
+                
+                attrs.$observe('required', function(val) {
+                    ngModel.$validate();
+                });
+
                 //text user types in searchbox
                 scope.searchText = "";
                 //index of currently highlighted choice
