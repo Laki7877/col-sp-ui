@@ -33,7 +33,7 @@
               <div nc-template="common/input/form-group-with-label"
                 nc-template-options-path="addAttributeSetForm/LargeInput"
                 nc-label="Attribute Set Description">
-                  <textarea class="form-control" ng-model="formData.AttributeSetDescriptionEn" ng-pattern-restrict="[^<>]*" maxlength="1000"></textarea>
+                  <textarea class="form-control" ng-model="formData.AttributeSetDescriptionEn" ng-pattern-restrict="^[^<>]*$" maxlength="1000"></textarea>
               </div>
               <div ng-show="id != 0"
                   nc-template="common/input/form-group-with-label"

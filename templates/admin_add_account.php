@@ -51,7 +51,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Admin Acco
 							                  ng-model="formData.Email"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Email) }"
 							                  type="email"
-							                  maxlength="50"
+							                  maxlength="255"
+							                  ng-pattern-restrict="^[^<>]*$"
 							                  required />
 							              </div>
 							              <!-- Name -->
@@ -72,7 +73,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Admin Acco
 							                  name="NameEn"
 							                  ng-model="formData.NameEn"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.NameEn) }"
-							                  maxlength="100"
+							                  ng-pattern-restrict="^[^<>]*$"
+							                  maxlength="255"
 							                  required />
 							              </div>
 							              <!-- Phone Number -->
@@ -114,7 +116,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Admin Acco
 							                  name="EmployeeId"
 							                  ng-model="formData.EmployeeId"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.EmployeeId) }"
-							                  maxlength="50"
+							                  ng-pattern-restrict="^[^<>]*$"
+							                  maxlength="255"
 							                 />
 							              </div>
 							              <!-- Position -->
@@ -134,7 +137,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Admin Acco
 							                  name="Position"
 							                  ng-model="formData.Position"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Position) }"
-							                  maxlength="100"
+							                  ng-pattern-restrict="^[^<>]*$"
+							                  maxlength="255"
 							                  />
 							              </div>
 							              <!-- Division / BU -->
@@ -154,7 +158,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Admin Acco
 							                  name="Division"
 							                  ng-model="formData.Division"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Division) }"
-							                  maxlength="100"
+							                  ng-pattern-restrict="^[^<>]*$"
+							                  maxlength="255"
 							                />
 							              </div>
 							              <!-- Password -->
@@ -181,7 +186,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Admin Acco
 							                  ng-model="formData.Password"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Password) }"
 							                  ng-pattern="/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/"
-                							  ng-pattern-restrict="[^<>]*"
+                							  ng-pattern-restrict="^[^<>]*$"
 							                  ng-maxlength="20"
 							                  ng-minlength="8"
 							                  ng-required="!(id > 0)" />

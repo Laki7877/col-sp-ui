@@ -21,6 +21,8 @@
               type="text"
               class="form-control"
               ng-model="formData.Subject"
+              ng-pattern-restrict="^[^<>]*$"
+              maxlength="255"
               required
               />
           </div>
@@ -32,8 +34,10 @@
               type="button"
               name="Image"
               class="btn btn-default"
-              ngf-accept="'.png,.jpg,.jpeg'"
+              ngf-accept="'.jpg,.jpeg'"
               ngf-select="upload($file)"
+              ngf-max-size="'5MB'"
+              ng-model="dummy"
               >Choose File</button>
           </div>
           <div ng-show="formData.Image"
@@ -49,6 +53,8 @@
             <textarea
               class="form-control"
               ng-model="formData.Description"
+              ng-pattern-restrict="^[^<>]*$"
+              maxlength="2000"
               required></textarea>
           </div>
           <div nc-template="common/input/form-group-with-label"
@@ -56,18 +62,19 @@
             nc-template-form="form.PublishedDt"
             nc-label="Published Date">
               <div>
-              <div class="dropdown">
-                  <a class="dropdown-toggle" id="dropdown" role="button" data-toggle="dropdown" data-target="#" href="#">
-                      <input readonly style="background-color:white" type="text"
-                       class="input-icon-calendar form-control" value="{{ formData.PublishedDt | datetimeTh }}" />
-                  </a>
-                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                      <datetimepicker name="PublishedDt"
-                      ng-date-before="{{formData.PublishedDt}}"
-                      data-ng-model="formData.PublishedDt"
-                      data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'hour' }" />
-                  </ul>
-              </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="dropdown" role="button" data-toggle="dropdown" data-target="#" href="#">
+                        <input readonly style="background-color:white" type="text"
+                         class="input-icon-calendar form-control" value="{{ formData.PublishedDt | datetimeTh }}" />
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker name="PublishedDt"
+                        ng-date-before="{{formData.PublishedDt}}"
+                        data-ng-model="formData.PublishedDt"
+                        data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'hour' }" 
+                        required />
+                    </ul>
+                </div>
             </div>
           </div>
           <div nc-template="common/input/form-group-with-label"
@@ -75,18 +82,18 @@
             nc-template-form="form.ExpiredDt"
             nc-label="Expired Date">
               <div>
-              <div class="dropdown">
-                  <a class="dropdown-toggle" id="dropdown" role="button" data-toggle="dropdown" data-target="#" href="#">
-                      <input readonly style="background-color:white" type="text"
-                       class="input-icon-calendar form-control" value="{{ formData.ExpiredDt | datetimeTh }}" />
-                  </a>
-                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                      <datetimepicker name="ExpiredDt"
-                      ng-date-before="{{formData.ExpiredDt}}"
-                      data-ng-model="formData.ExpiredDt"
-                      data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'hour' }" />
-                  </ul>
-              </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="dropdown" role="button" data-toggle="dropdown" data-target="#" href="#">
+                        <input readonly style="background-color:white" type="text"
+                         class="input-icon-calendar form-control" value="{{ formData.ExpiredDt | datetimeTh }}" />
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker name="ExpiredDt"
+                        ng-date-before="{{formData.ExpiredDt}}"
+                        data-ng-model="formData.ExpiredDt"
+                        data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'hour' }" />
+                    </ul>
+                </div>
             </div>
           </div>
           <div nc-template="common/input/form-group-with-label"
@@ -102,18 +109,18 @@
             nc-template-options-path="addNewsletterForm/IncludeShop"
             nc-template-form="form.IncludeShop"
             nc-label="Include Shop">
-            <ui-select ng-model="formData.IncludeShop" multiple tagging-label="">
-              <ui-select-match>{{$item.ShopNameEn}}</ui-select-match>
-              <ui-select-choices refresh="getShops($select.search, 'include')" repeat="item in shops.include.data">{{item.ShopNameEn}}</ui-select-choices>
+            <ui-select ng-model="formData.IncludeShop" multiple tagging-label="" nc-tag-validator nc-max-tag-count="100">
+              <ui-select-match placeholder="Search by Shop Name or ID">{{$item.ShopNameEn}} ({{$item.ShopId}})</ui-select-match>
+              <ui-select-choices refresh="getShops($select.search, 'include')" repeat="item in shops.include.data">{{item.ShopNameEn}} ({{item.ShopId}})</ui-select-choices>
             </ul-select>
           </div>
           <div nc-template="common/input/form-group-with-label"
             nc-template-options-path="addNewsletterForm/ExcludeShop"
             nc-template-form="form.ExcludeShop"
             nc-label="Exclude Shop">
-            <ui-select ng-model="formData.ExcludeShop" multiple tagging-label="">
-              <ui-select-match>{{$item.ShopNameEn}}</ui-select-match>
-              <ui-select-choices refresh="getShops($select.search, 'exclude')" repeat="item in shops.exclude.data">{{item.ShopNameEn}}</ui-select-choices>
+            <ui-select ng-model="formData.ExcludeShop" multiple tagging-label="" nc-tag-validator nc-max-tag-count="100">
+              <ui-select-match placeholder="Search by Shop Name or ID">{{$item.ShopNameEn}} ({{$item.ShopId}})</ui-select-match>
+              <ui-select-choices refresh="getShops($select.search, 'exclude')" repeat="item in shops.exclude.data">{{item.ShopNameEn}} ({{item.ShopId}})</ui-select-choices>
             </ul-select>
           </div>
         </div>

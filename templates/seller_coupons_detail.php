@@ -34,13 +34,13 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                         nc-label="Coupon Name" 
                         nc-template-form="form.CouponName" 
                         nc-template-options-path="couponForm/CouponName">
-                          <input class="form-control width-field-large" name="CouponName" ng-model="formData.CouponName" ng-pattern-restrict="[^<>]*" maxlength="255" required ng-disabled="manageable" />
+                          <input class="form-control width-field-large" name="CouponName" ng-model="formData.CouponName" ng-pattern-restrict="^[^<>]*$" maxlength="255" required ng-disabled="manageable" />
                       </div>
                       <div nc-template="common/input/form-group-with-label" 
                         nc-label="Coupon Code" 
                         nc-template-form="form.CouponCode" 
                         nc-template-options-path="couponForm/CouponCode">
-                          <input class="form-control width-field-large text-uppercase" name="CouponCode" ng-model="formData.CouponCode" ng-pattern-restrict="[a-zA-Z0-9]*" maxlength="10" required ng-disabled="manageable" required/>
+                          <input class="form-control width-field-large" ng-uppercase name="CouponCode" ng-model="formData.CouponCode" ng-pattern-restrict="^[a-zA-Z0-9]*$" maxlength="10" required ng-disabled="manageable" required/>
                       </div>
                       <!-- Datetime Expiration -->
                       <div nc-date-range="components/date-range-vertical2"

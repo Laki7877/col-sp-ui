@@ -59,7 +59,7 @@
 		<div ng-repeat="image in images track by $index" class="form-group">
 			<div class="width-label"><label class="control-label">Banner Link {{$index+1}}</label></div>
 			<div class="width-field-normal">
-				<input class="form-control width-field-normal" ng-model="image.Link" ng-pattern-restrict="[^<>]*" maxlength="512"/>
+				<input class="form-control width-field-normal" ng-model="image.Link" ng-pattern-restrict="^[^<>]*$" maxlength="512"/>
 			</div>
 		</div>
 	</div>

@@ -5,11 +5,11 @@
 			<div class="form-section-content">
 				<form name="form" class="ah-form" novalidate>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.ProductName" nc-label="Product Name" nc-template-options-path="searchForm/ProductName">
-		                    <input class="form-control" name="ProductName" ng-pattern-restrict="[^<>]*" maxlength="255" ng-model="formData.ProductName"/>
+		                    <input class="form-control" name="ProductName" ng-pattern-restrict="^[^<>]*$" maxlength="255" ng-model="formData.ProductName"/>
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Pids" nc-label="PID" nc-template-options-path="searchForm/Pid">
 							    <ui-select ng-model="formData.Pids" name="Pids" nc-tag-validator tagging tagging-label="" multiple nc-tag-field>
-	                                <ui-select-match ng-pattern-restrict="[0-9]*" maxlength="7">
+	                                <ui-select-match ng-pattern-restrict="^[0-9]*$" maxlength="7">
 	                                    {{$item}}
 	                                </ui-select-match>
 	                                <ui-select-choices repeat="item in options.Pids">{{item}}
@@ -18,7 +18,7 @@
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Skus" nc-label="SKU" nc-template-options-path="searchForm/Sku">
 							    <ui-select ng-model="formData.Skus" name="Skus" nc-tag-validator tagging tagging-label="" multiple nc-tag-field>
-	                                <ui-select-match ng-pattern-restrict="[^<>]*" maxlength="255">
+	                                <ui-select-match ng-pattern-restrict="^[^<>]*$" maxlength="255">
 	                                    {{$item}}
 	                                </ui-select-match>
 	                                <ui-select-choices repeat="item in options.Skus">
@@ -28,7 +28,7 @@
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Brands" nc-label="Brand Name" nc-template-options-path="searchForm/Brands">
 							    <ui-select ng-model="formData.Brands" name="Brands" nc-tag-validator multiple tagging-tokens=",|ENTER" tagging-label="" nc-tag-field>
-	                                <ui-select-match ng-pattern-restrict="[^<>]*" maxlength="255">
+	                                <ui-select-match ng-pattern-restrict="^[^<>]*$" maxlength="255">
 	                                    {{$item.BrandNameEn}}
 	                                </ui-select-match>
 	                                <ui-select-choices repeat="item in options.Brands | filter:{BrandNameEn: $select.search} track by $index">

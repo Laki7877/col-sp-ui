@@ -38,7 +38,7 @@
                   class="form-control"
                   name="DisplayNameEn"
                   ng-model="formData.DisplayNameEn"
-                  ng-pattern-restrict="[^<>]*"
+                  ng-pattern-restrict="^[^<>]*$"
                   maxlength="255"
                   required />
               </div>
@@ -50,7 +50,7 @@
                   class="form-control"
                   name="DisplayNameTh"
                   ng-model="formData.DisplayNameTh"
-                  ng-pattern-restrict="[^<>]*"
+                  ng-pattern-restrict="^[^<>]*$"
                   maxlength="255"
                   required />
               </div>
@@ -127,7 +127,7 @@
                       class="form-control"
                       name="ST_DefaultValue"
                       ng-model="formData.ST.DefaultValue"
-                      ng-pattern-restrict="[^<>]*"
+                      ng-pattern-restrict="^[^<>]*$"
                       maxlength="255"
                       />
                   </div>
@@ -140,7 +140,7 @@
                     <div class="width-field-xxl">
                       <div class="multiple-input">
                         <div class="input-column input-xxl">
-                          <input name="ltChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['ltChoiceEn' + $index])}" maxlength="100" ng-pattern-restrict="[^<>]*" required/>
+                          <input name="ltChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['ltChoiceEn' + $index])}" maxlength="100" ng-pattern-restrict="^[^<>]*$" required/>
                           <!-- Required -->
                           <div class="help-block color-red" ng-show="isInvalid(form['ltChoiceEn' + $index]) || isInvalid(form['ltChoiceTh' + $index])">
                               <span ng-show="form['ltChoiceTh' + $index].$error.required || form['ltChoiceEn' + $index].$error.required">This is a required field</span>
@@ -150,7 +150,7 @@
                           </div>
                         </div>
                         <div class="input-column input-xxl">
-                          <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['ltChoiceTh' + $index])}" maxlength="100" ng-pattern-restrict="[^<>]*" required/>
+                          <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['ltChoiceTh' + $index])}" maxlength="100" ng-pattern-restrict="^[^<>]*$" required/>
                         </div>
                         <div class="input-column input-l">
                           <input name="ltChoicePos{{$index}}" type="number" class="form-control" ng-model="choice.Position" placeholder="Position" ng-class="{'has-error': isInvalid(form['ltChoicePos' + $index])}"/>
@@ -207,7 +207,7 @@
                       class="form-control"
                       name="HB_DefaultValue"
                       ng-model="formData.HB.DefaultValue"
-                      ng-pattern-restrict="[^<>]*"
+                      ng-pattern-restrict="^[^<>]*$"
                       maxlength="255"
                       />
                   </div>
@@ -220,14 +220,14 @@
                     <div class="width-field-xxl">
                       <div class="multiple-input">
                         <div class="input-column input-xxl">
-                          <input name="cbChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['cbChoiceEn' + $index])}" maxlength="100" ng-pattern-restrict="[^<>]*" required/>
+                          <input name="cbChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['cbChoiceEn' + $index])}" maxlength="100" ng-pattern-restrict="^[^<>]*$" required/>
                           <!-- Required -->
                           <div class="help-block color-red" ng-show="isInvalid(form['cbChoiceEn' + $index]) || isInvalid(form['cbChoiceTh' + $index])">
                               <span ng-show="form['cbChoiceTh' + $index].$error.required || form['cbChoiceEn' + $index].$error.required">This is a required field</span>
                           </div>
                         </div>
                         <div class="input-column input-xxl">
-                          <input name="cbChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['cbChoiceTh' + $index])}" maxlength="100" ng-pattern-restrict="[^<>]*" required/>
+                          <input name="cbChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['cbChoiceTh' + $index])}" maxlength="100" ng-pattern-restrict="^[^<>]*$" required/>
                         </div>
                         <div class="input-column input-l">
                           <input name="cbChoicePos{{$index}}" type="number" class="form-control" placeholder="Position" ng-model="choice.Position" ng-class="{'has-error': isInvalid(form['cbChoicePos' + $index])}"/>
