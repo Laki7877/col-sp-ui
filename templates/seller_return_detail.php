@@ -68,16 +68,22 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Return R
               <td>Sub Total</td>
               <td></td>
               <td></td>
+              <td></td>
+              <td></td>
               <td class="text-align-right">{{formData.Order.TotalAmt | currency:' ':2}}</td>
             </tr>
             <tr ng-if="formData.Order.OrdDiscAmt > 0" class="color-red">
               <td>Discount</td>
               <td></td>
               <td></td>
+              <td></td>
+              <td></td>
               <td class="text-align-right">- {{formData.Order.OrdDiscAmt | currency:' ':2}}</td>
             </tr>
             <tr class="background_light_yellow ">
               <td>Total Order Price</td>
+              <td></td>
+              <td></td>
               <td></td>
               <td></td>
               <td class="text-align-right"><strong>{{formData.Order.GrandTotalAmt | currency:' ':2}}</strong></td>

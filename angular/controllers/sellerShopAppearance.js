@@ -1,7 +1,7 @@
 module.exports = function($scope, ShopAppearanceService, Product, ImageService, NcAlert, config, util, common, $timeout, $q) {
 	'ngInject';
 	$scope.form = {};
-	$scope.formData = { Data: {} };
+	$scope.formData = { ThemeId: 0, Data: {} };
 	$scope.alert = new NcAlert();
 	$scope.saving = false;
 	$scope.loading = true;
@@ -81,6 +81,7 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 		ShopAppearanceService.list()
 			.then(function(data) {
 				$scope.formData = ShopAppearanceService.deserialize(data);
+				console.log($scope.formData);
 			})
 			.finally(function() {
 				$scope.loading = false;

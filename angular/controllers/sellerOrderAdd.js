@@ -35,12 +35,19 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   };
   //Override save
   $scope.save = function() {
-    save({ InvoiceNumber: $scope.formData.InvoiceNumber });
+    save({ 
+      InvoiceNumber: $scope.formData.InvoiceNumber,
+      Carrier: $scope.formData.Carrier,
+
+    });
   };
   //Acknowledge
   $scope.acknowledge = function() {
     save({Status: 'PE'});
   };
+  $scope.merchantFleet = function() {
+    return $scope.formData.ShippingType == 'Merchant Fleet';
+  }
   //Ready to ship
   $scope.readyShip = function() {
     $scope.form.$setSubmitted();

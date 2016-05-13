@@ -5766,12 +5766,19 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   };
   //Override save
   $scope.save = function() {
-    save({ InvoiceNumber: $scope.formData.InvoiceNumber });
+    save({ 
+      InvoiceNumber: $scope.formData.InvoiceNumber,
+      Carrier: $scope.formData.Carrier,
+
+    });
   };
   //Acknowledge
   $scope.acknowledge = function() {
     save({Status: 'PE'});
   };
+  $scope.merchantFleet = function() {
+    return $scope.formData.ShippingType == 'Merchant Fleet';
+  }
   //Ready to ship
   $scope.readyShip = function() {
     $scope.form.$setSubmitted();
@@ -6192,7 +6199,7 @@ module.exports = ["$scope", "$controller", "SellerRoleService", "SellerPermissio
 module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", "NcAlert", "config", "util", "common", "$timeout", "$q", function($scope, ShopAppearanceService, Product, ImageService, NcAlert, config, util, common, $timeout, $q) {
 	'ngInject';
 	$scope.form = {};
-	$scope.formData = { Data: {} };
+	$scope.formData = { ThemeId: 0, Data: {} };
 	$scope.alert = new NcAlert();
 	$scope.saving = false;
 	$scope.loading = true;
@@ -6272,6 +6279,7 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 		ShopAppearanceService.list()
 			.then(function(data) {
 				$scope.formData = ShopAppearanceService.deserialize(data);
+				console.log($scope.formData);
 			})
 			.finally(function() {
 				$scope.loading = false;
@@ -6300,6 +6308,7 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 
 		if($scope.form.$valid) {
 			$scope.saving = true;
+			console.log($scope.formData.Data);
 			ShopAppearanceService.updateAll(ShopAppearanceService.serialize($scope.formData))
 				.then(function(data) {
 					$scope.formData = ShopAppearanceService.deserialize(data);
@@ -17821,13 +17830,13 @@ module.exports = ["common", "config", "util", function (common, config, util) {
 
     service.deserialize = function(data) {
         var processed = _.cloneDeep(data);
-        processed.Data = angular.toJson(processed.Data || '');
-        return;
+        processed.Data = angular.fromJson(processed.Data || '{}');
+        return processed;
     }
 
     service.serialize = function(data) {
         var processed = _.cloneDeep(data);
-        processed.Data = angular.fromJson(processed.Data || {});
+        processed.Data = angular.toJson(processed.Data || {});
         return processed;
     }
 

@@ -18,9 +18,9 @@
             <th nc-sort="OrderDate">Date</th>
             <th nc-sort="OrderId">Order ID</th>
             <th nc-sort="CustomerName">Customer Name</th>
-            <th>Shipping Type</th>
-            <th>Carrier</th>
-            <th>Payment</th>
+            <th nc-sort="ShippingType">Shipping Type</th>
+            <th nc-sort="Carrier">Carrier</th>
+            <th nc-sort="Payment">Payment</th>
             <th class="price-column">Total Price</th>
             <th>Status</th>
             <th>Action</th>
