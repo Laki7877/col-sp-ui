@@ -1,6 +1,6 @@
 <?php $this->layout('layouts/simple', get_defined_vars()) ?>
 
-<div id="sidebar-wrapper">
+<div id="sidebar-wrapper" class="sidebar-admin">
 	<?= $this->section('sidebar', ['title' => 'sidebar hello']); ?>
 </div>
 <div id="page-content-wrapper">

@@ -12898,7 +12898,7 @@ html, body {
 }
 
 /*---- Side Bar ----*/
-/* line 118, ../../../assets/_layout.scss */
+/* line 117, ../../../assets/_layout.scss */
 #sidebar-wrapper {
   width: 60px;
   background: #252d40;
@@ -12909,76 +12909,81 @@ html, body {
   min-height: 600px;
 }
 
-/* line 128, ../../../assets/_layout.scss */
+/* line 127, ../../../assets/_layout.scss */
+#sidebar-wrapper.sidebar-admin {
+  background: #252d40;
+}
+
+/* line 131, ../../../assets/_layout.scss */
 ul.sidebar-nav {
   padding-left: 0px;
 }
 
-/* line 133, ../../../assets/_layout.scss */
+/* line 136, ../../../assets/_layout.scss */
 .sidebar-nav li {
   padding-left: 20px;
   line-height: 50px;
   list-style: none;
 }
-/* line 137, ../../../assets/_layout.scss */
+/* line 140, ../../../assets/_layout.scss */
 .sidebar-nav li a {
   color: #7b7f8f;
   text-decoration: none;
 }
-/* line 141, ../../../assets/_layout.scss */
+/* line 144, ../../../assets/_layout.scss */
 .sidebar-nav li i {
   color: #7b7f8f;
   font-size: 16px;
   margin-right: 20px;
 }
-/* line 147, ../../../assets/_layout.scss */
+/* line 150, ../../../assets/_layout.scss */
 .sidebar-nav li:hover {
   cursor: pointer;
   background: #1e2534;
 }
-/* line 150, ../../../assets/_layout.scss */
+/* line 153, ../../../assets/_layout.scss */
 .sidebar-nav li:hover a {
   color: #ffffff;
 }
-/* line 153, ../../../assets/_layout.scss */
+/* line 156, ../../../assets/_layout.scss */
 .sidebar-nav li:hover i {
   color: #ffffff;
 }
-/* line 157, ../../../assets/_layout.scss */
+/* line 160, ../../../assets/_layout.scss */
 .sidebar-nav li.forced-active {
   background: #1e2534;
 }
-/* line 159, ../../../assets/_layout.scss */
+/* line 162, ../../../assets/_layout.scss */
 .sidebar-nav li.forced-active a {
   color: #ffffff;
 }
-/* line 162, ../../../assets/_layout.scss */
+/* line 165, ../../../assets/_layout.scss */
 .sidebar-nav li.forced-active i {
   color: #ffffff;
 }
-/* line 166, ../../../assets/_layout.scss */
+/* line 169, ../../../assets/_layout.scss */
 .sidebar-nav li.active {
   background: #1e2534;
 }
-/* line 168, ../../../assets/_layout.scss */
+/* line 171, ../../../assets/_layout.scss */
 .sidebar-nav li.active a {
   color: #ffffff;
 }
-/* line 171, ../../../assets/_layout.scss */
+/* line 174, ../../../assets/_layout.scss */
 .sidebar-nav li.active i {
   color: #ffffff;
 }
 
-/* line 177, ../../../assets/_layout.scss */
+/* line 180, ../../../assets/_layout.scss */
 #sidebar-wrapper .logo-img-wrapper {
   padding: 20px;
 }
-/* line 180, ../../../assets/_layout.scss */
+/* line 183, ../../../assets/_layout.scss */
 #sidebar-wrapper .logo-img-wrapper .logo-img {
   width: 100%;
 }
 
-/* line 185, ../../../assets/_layout.scss */
+/* line 188, ../../../assets/_layout.scss */
 ul.sub-sidebar {
   width: 240px;
   position: absolute;
@@ -12994,30 +12999,30 @@ ul.sub-sidebar {
   -webkit-box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.3);
   box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.3);
 }
-/* line 200, ../../../assets/_layout.scss */
+/* line 203, ../../../assets/_layout.scss */
 ul.sub-sidebar .sub-sidebar-header {
   font-size: 24px;
 }
-/* line 204, ../../../assets/_layout.scss */
+/* line 207, ../../../assets/_layout.scss */
 ul.sub-sidebar .margin-first-submenu {
   margin-top: 18px;
 }
-/* line 208, ../../../assets/_layout.scss */
+/* line 211, ../../../assets/_layout.scss */
 ul.sub-sidebar .item {
   color: #7B7F8F;
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 213, ../../../assets/_layout.scss */
+/* line 216, ../../../assets/_layout.scss */
 ul.sub-sidebar .item.active {
   color: #32343C;
   font-weight: bold;
 }
-/* line 218, ../../../assets/_layout.scss */
+/* line 221, ../../../assets/_layout.scss */
 ul.sub-sidebar .item:hover {
   color: #4899DD;
 }
-/* line 222, ../../../assets/_layout.scss */
+/* line 225, ../../../assets/_layout.scss */
 ul.sub-sidebar .item > a {
   color: inherit;
   font-weight: inherit;
@@ -13025,7 +13030,7 @@ ul.sub-sidebar .item > a {
 }
 
 /* -- Collaspable Menu -- */
-/* line 232, ../../../assets/_layout.scss */
+/* line 235, ../../../assets/_layout.scss */
 #sidebar-wrapper {
   position: fixed;
   top: 0;
@@ -13033,76 +13038,76 @@ ul.sub-sidebar .item > a {
   width: 60px;
   z-index: 10;
 }
-/* line 238, ../../../assets/_layout.scss */
+/* line 241, ../../../assets/_layout.scss */
 #sidebar-wrapper .logo-img-wrapper {
   display: none;
 }
-/* line 241, ../../../assets/_layout.scss */
+/* line 244, ../../../assets/_layout.scss */
 #sidebar-wrapper .logo-img-wrapper-collased {
   display: block;
 }
-/* line 243, ../../../assets/_layout.scss */
+/* line 246, ../../../assets/_layout.scss */
 #sidebar-wrapper .logo-img-wrapper-collased img {
   width: 20px;
   height: 20px;
   margin: 66px 20px 0px 20px;
 }
-/* line 249, ../../../assets/_layout.scss */
+/* line 252, ../../../assets/_layout.scss */
 #sidebar-wrapper .sidebar-nav {
   margin-top: 19px;
 }
-/* line 251, ../../../assets/_layout.scss */
+/* line 254, ../../../assets/_layout.scss */
 #sidebar-wrapper .sidebar-nav li {
   line-height: 0px;
   padding: 0px;
   border-bottom: 1px solid #252d40;
 }
-/* line 256, ../../../assets/_layout.scss */
+/* line 259, ../../../assets/_layout.scss */
 #sidebar-wrapper .sidebar-nav li a i {
   padding: 17px 0px;
   margin: 0px;
   width: 60px;
   text-align: center;
 }
-/* line 264, ../../../assets/_layout.scss */
+/* line 267, ../../../assets/_layout.scss */
 #sidebar-wrapper .sidebar-nav li:hover {
   background: #1e2534 !important;
 }
-/* line 266, ../../../assets/_layout.scss */
+/* line 269, ../../../assets/_layout.scss */
 #sidebar-wrapper .sidebar-nav li:hover i {
   color: #FFFFFF !important;
 }
 
-/* line 275, ../../../assets/_layout.scss */
+/* line 278, ../../../assets/_layout.scss */
 #sidebar-wrapper:hover .logo-img-wrapper-collased {
   display: block;
 }
-/* line 279, ../../../assets/_layout.scss */
+/* line 282, ../../../assets/_layout.scss */
 #sidebar-wrapper:hover .sidebar-nav li.active {
   background: #252d40;
 }
-/* line 281, ../../../assets/_layout.scss */
+/* line 284, ../../../assets/_layout.scss */
 #sidebar-wrapper:hover .sidebar-nav li.active i {
   color: #7b7f8f;
 }
 
-/* line 299, ../../../assets/_layout.scss */
+/* line 302, ../../../assets/_layout.scss */
 ul.sub-sidebar {
   left: 60px;
   padding-top: 58px;
   background-color: #1e2534;
   color: #FFFFFF;
 }
-/* line 304, ../../../assets/_layout.scss */
+/* line 307, ../../../assets/_layout.scss */
 ul.sub-sidebar .item {
   color: #FFFFFF;
 }
-/* line 306, ../../../assets/_layout.scss */
+/* line 309, ../../../assets/_layout.scss */
 ul.sub-sidebar .item.active {
   font-weight: normal;
   color: #ec0000;
 }
-/* line 310, ../../../assets/_layout.scss */
+/* line 313, ../../../assets/_layout.scss */
 ul.sub-sidebar .item:hover {
   color: #ec0000;
 }
