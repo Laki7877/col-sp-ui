@@ -8228,8 +8228,10 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
         return function (item) {
             item.Visibility = !item.Visibility;
             options.service.visible([_.pick(item, [options.id, 'Visibility'])])
-                .then(function () {
-                    //success
+                .then(function (data) {
+                    if(data.OnlineFlag) {
+                        item.OnlineFlag = data.OnlineFlag;
+                    }
                 }, function (err) {
                     alert.error(common.getError(err));
                     item.Visibility = !item.Visibility;
