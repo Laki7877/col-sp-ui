@@ -5766,10 +5766,13 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   };
   //Override save
   $scope.save = function() {
+    if($scope.merchantFleet()) {
+
+    }
     save({ 
       InvoiceNumber: $scope.formData.InvoiceNumber,
       Carrier: $scope.formData.Carrier,
-
+      TrackingNumber: $scope.formData.TrackingNumber
     });
   };
   //Acknowledge
@@ -6308,7 +6311,6 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 
 		if($scope.form.$valid) {
 			$scope.saving = true;
-			console.log($scope.formData.Data);
 			ShopAppearanceService.updateAll(ShopAppearanceService.serialize($scope.formData))
 				.then(function(data) {
 					$scope.formData = ShopAppearanceService.deserialize(data);
@@ -17837,6 +17839,8 @@ module.exports = ["common", "config", "util", function (common, config, util) {
     service.serialize = function(data) {
         var processed = _.cloneDeep(data);
         processed.Data = angular.toJson(processed.Data || {});
+        
+        console.log(processed);
         return processed;
     }
 

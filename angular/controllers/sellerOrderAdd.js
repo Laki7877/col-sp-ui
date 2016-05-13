@@ -35,10 +35,13 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   };
   //Override save
   $scope.save = function() {
+    if($scope.merchantFleet()) {
+
+    }
     save({ 
       InvoiceNumber: $scope.formData.InvoiceNumber,
       Carrier: $scope.formData.Carrier,
-
+      TrackingNumber: $scope.formData.TrackingNumber
     });
   };
   //Acknowledge
