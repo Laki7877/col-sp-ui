@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Master Products']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminMasterProductAddCtrl" ng-init="init(<?=$params?>)">
@@ -9,6 +9,7 @@
         <button class="btn btn-blue btn-width-xl margin-left-10" ng-click="save()">Save</button>
       </div>
     </nc-page-title>
+    
     <div ng-show="loading" nc-loading="{{loadingMessage}}"></div>
     <div ng-show="saving" nc-loading="{{savingMessage}}"></div>
     <form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
@@ -21,14 +22,17 @@
             </div>
             <div class="form-section-content">
               <div nc-template="common/input/form-group-with-label"
+              nc-template-options-path="addMasterProductForm/ChildProducts"
                 nc-label="Select Master Product" >
-                <ui-select ng-model="formData.MasterProduct">
-                  <ui-select-match placeholder="Search Master Product">{{$select.selected.ProductNameEn}}</ui-select-match>
-                  <ui-select-choices repeat="item in products" refresh="getProducts($select.search)" refresh-delay="1">{{ item.ProductNameEn }}</ui-select-choices>
-                </ui-select>
+
+                <you-me display-by="CustomName" placeholder="Search Master Product"
+                        auto-clear-search="true"
+                        ng-model="formData.MasterProduct" refresh="getProducts" choices="products"></you-me>
+
               </div>
             </div>
           </div>
+           
           <!-- Child Product -->
           <div class="form-section">
             <div class="form-section-header"><h2>Child Product</h2></div>
@@ -37,12 +41,13 @@
                 nc-label="Select Child Products"
                 nc-template-form="form.ChildProducts"
                 nc-template-options-path="addMasterProductForm/ChildProducts">
-                <ui-select ng-model="formData.ChildProducts" name="ChildProducts" multiple>
-                  <ui-select-match placeholder="Search Product">
-                    <span>{{ $item.ProductNameEn }}</span>
-                  </ui-select-match>
-                  <ui-select-choices repeat="item in (childProducts | exclude: formData.ChildProducts : 'ProductId' | exclude: formData.MasterProduct : 'ProductId' ) track by item.Pid" refresh="getChildProducts($select.search)" refresh-delay="1">{{ item.ProductNameEn }}</ui-select-choices>
-                </ui-select>
+
+             <you-me display-by="CustomName" placeholder="Search Product"
+                        name="ChildProducts"
+                        ng-model="formData.ChildProducts" refresh="getChildProducts" in-relationship="true"
+                        choices="childProducts | exclude: formData.ChildProducts : 'ProductId' | exclude: formData.MasterProduct : 'ProductId' "></you-me>
+
+
               </div>
             </div>
           </div>

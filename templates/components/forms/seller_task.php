@@ -17,24 +17,24 @@
          $type = 'normal';
       ?>
       <? if($type == 'launch'): ?>
-        <button class="btn btn-white btn-width-xxl" ng-click='launchShop()' ng-disabled='!checkBeforeLaunch' type="button"><?=$button_text?></button>
+        <a class="btn btn-white btn-width-xxl" ng-click='launchShop()' ng-disabled='!checkBeforeLaunch' type="button"><?=$button_text?></a>
       <? elseif($type == 'changePassword'): ?>
-        <button class="btn btn-white btn-width-xxl" ng-click='changePassword()' type="button"><?=$button_text?></button>
+        <a class="btn btn-white btn-width-xxl" ng-click='changePassword()' type="button"><?=$button_text?></a>
       <? elseif($type == 'redirectProduct'): ?>
-        <button class="btn btn-white btn-width-xxl" ng-click='redirectToProducts()' type="button"><?=$button_text?></button>
+        <a class="btn btn-white btn-width-xxl" ng-click='redirectToProducts()' type="button"><?=$button_text?></a>
       <? elseif($type == 'redirectShopSetting'): ?>
-        <button class="btn btn-white btn-width-xxl" ng-click='redirectToShopSetting()' type="button"><?=$button_text?></button>
+        <a class="btn btn-white btn-width-xxl" ng-click='redirectToShopSetting()' type="button"><?=$button_text?></a>
       <? elseif($type == 'redirectShopAppearance'): ?>
-        <button class="btn btn-white btn-width-xxl" ng-click='redirectToShopAppearance()' type="button"><?=$button_text?></button>
+        <a class="btn btn-white btn-width-xxl" ng-click='redirectToShopAppearance()' type="button"><?=$button_text?></a>
       <? elseif($type == 'redirectUserAccounts'): ?>
-        <button class="btn btn-white btn-width-xxl" ng-click='redirectToUserAccounts()' type="button"><?=$button_text?></button>
+        <a class="btn btn-white btn-width-xxl" ng-click='redirectToUserAccounts()' type="button"><?=$button_text?></a>
       <? elseif($type == 'redirectDashboard'): ?>
-        <button class="btn btn-white btn-width-xxl" ng-click='redirectToDashboard()' type="button"><?=$button_text?></button>
+        <a class="btn btn-white btn-width-xxl" ng-click='redirectToDashboard()' type="button"><?=$button_text?></a>
       <? elseif($type == 'redirectStore'): ?>
-        <button class="btn btn-white btn-width-xxl" ng-click='redirectToStore()' type="button"><?=$button_text?></button>
+        <a class="btn btn-white btn-width-xxl" ng-click='redirectToStore()' type="button"><?=$button_text?></a>
 
       <? else: ?>
-        <button class="btn btn-white btn-width-xxl" <?=$disble_status?> type="button"><?=$button_text?></button>
+        <a class="btn btn-white btn-width-xxl" <?=$disble_status?> type="button"><?=$button_text?></a>
       <? endif; ?>
     </div>
   </div>

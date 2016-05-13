@@ -9,10 +9,16 @@
 		    	<span>Local Category</span>
 					<small>
 		    		<span ng-show="!saving && pristine" class="margin-left-10">All changes were saved</span>
-						<span ng-show="saving && pristine" class="margin-left-10" nc-loading-small="Saving..." style="display: inline-block; margin-bottom: -20px; margin-top: -5px;"></span>
+						<span ng-show="saving && pristine" class="margin-left-10" nc-loading-small="Saving..." style="display: inline-block; margin-bottom: -20px; margin-top: -5px; font-size: 14px;"></span>
 					</small>
 				</h1>
 		    <span class="float-right page-header-action">
+				<button type="button" class="btn-white btn btn-width-xl margin-right-10" ng-click="expandAll()">
+					Expand All
+				</button>
+				<button type="button" class="btn-white btn btn-width-xl margin-right-10" ng-click="collapseAll()">
+					Collapse All
+				</button>
 		        <button type="button" class="btn-blue btn btn-width-xxl" ng-click="open()">
 		          Add Category
 		        </button>

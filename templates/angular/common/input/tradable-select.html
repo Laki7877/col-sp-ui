@@ -1,20 +1,26 @@
 <div class="tradable-list">
   <div class="left-column">
     <div class="search-section section-search">
-      <input type="text" ng-model="search" class="form-control input-search-icon search-box" placeholder="{{ searchPlaceholder }}" aria-describedby="basic-addon2">
+      <input type="text" ng-model="search" class="form-control input-search-icon search-box" placeholder="{{searchPlaceholder}}" aria-describedby="basic-addon2">
     </div>
     <div class="clickable-list">
       <ul class="content-column">
-        <li ng-repeat="item in selectable track by $index" ng-class="{ 'active' : activeLeft == selectable.indexOf(item) }" ng-click="select(selectable.indexOf(item), true)" ng-if="!contain(item)">{{ options.map.text == null ? item : item[options.map.text] }}</li>
+        <li ng-repeat="item in selectable track by $index"
+          ng-class="{ 'active' : activeLeft == $index }" 
+          ng-click="select($index, true)" >{{ item[text] }}</li>
       </ul>
     </div>
   </div>
 
   <div class="center-column">
-    <div class="trade-button" ng-class="active(false)" ng-click="transfer(true)">
+    <div class="trade-button" 
+      ng-class="active(true)" 
+      ng-click="transfer(true)">
        <i class="fa fa-chevron-right"></i>
     </div>
-    <div class="trade-button" ng-class="active(true)" ng-click="transfer(false)">
+    <div class="trade-button" 
+      ng-class="active(false)" 
+      ng-click="transfer(false)">
       <i class="fa fa-chevron-left"></i>
     </div>
   </div>
@@ -24,9 +30,14 @@
       <span class="column-1">{{ header }}</span>
     </div>
     <div class="clickable-list">
-      <ul class="content-column">
-        <li ng-repeat="item in model track by $index" ng-class="{ 'active' : activeRight == model.indexOf(item), 'disabled' : test(item) }" ng-click="select(model.indexOf(item), false)">
-          {{ options.map.text == null ? item : item[options.map.text] }}
+      <ul dnd-list="model" 
+          class="content-column">
+        <li ng-repeat="item in model" 
+          ng-class="{ 'active' : activeRight == $index, 'disabled' : test(item) }"
+          dnd-draggable="item"
+          dnd-moved="onDrag($index, item)"
+          ng-click="select($index, false)">
+          {{ item[text] }}
         </li>
       </ul>
     </div>

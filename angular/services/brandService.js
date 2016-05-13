@@ -4,7 +4,12 @@ module.exports = function(common) {
 	service.generate = function(data) {
 		return {
 			BrandBannerEn: [],
-			BrandBannerTh: []
+			BrandBannerTh: [],
+			IsBannerEn: false,
+			IsBannerTh: false,
+			IsSmallBannerEn: false,
+			IsSmallBannerTh: false,
+			Status: 'NA'
 		};
 	}
 	service.deserialize = function(data) {

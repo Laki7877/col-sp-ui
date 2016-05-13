@@ -18,11 +18,11 @@ class ProductController extends Controller
     }
     
     public static function group($params) {
-        return View::render('seller_pending_product');
+        return View::render('seller_product_grouping');
     }
 
     public static function groupCreate($param){
-      return View::render('seller_pending_products_group', [
+      return View::render('seller_pending_products_group_add', [
           'viewBag' => $_POST['selected_products'],
       ]);
     }
@@ -71,6 +71,6 @@ class ProductController extends Controller
 
     public static function reviews($params)
     {
-        return View::render('product_review');
+        return View::render('seller_product_review');
     }
 }

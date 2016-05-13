@@ -1,5 +1,6 @@
 <div>
-    <nc-image-block options="{height: '150px', width: '150px'}" name="Images" nc-model="variantPtr.Images"
+    <nc-image-block options="imageBlockOptions" 
+    name="Images" nc-model="variantPtr.Images"
     title="Product Images" uploader="uploader" on-fail="onImageUploadFail" size="10">
     <div>Choose images that clearly  represent your product. Images must meet the following requirements:</div>
     <ul class="margin-top-10">
@@ -9,7 +10,7 @@
       <li>File format must be JPG or PNG.</li>
     </ul>
     </nc-image-block>
-
+ 
     <div class="form-section" ng-show="variantPtr.Images.length > 0">
         <div class="form-section-header">
             Embed Video
@@ -19,7 +20,7 @@
                 <div nc-template="common/input/form-group-with-label"
                 nc-label="Video Link {{$index + 1}}"
                 nc-template-form="form['VideoLinks' + $index]" nc-template-options-path="addProductForm/VideoLink">
-                    <input class="form-control width-field-normal"
+                    <input class="form-control width-field-normal" ng-disabled="xspermit(40)"
                     name="VideoLinks{{$index}}" type="url"
 		                  ng-init="initializeVideoLink($index)"
                     maxlength="500" ng-model="variantPtr.VideoLinks[$index].Url"/>

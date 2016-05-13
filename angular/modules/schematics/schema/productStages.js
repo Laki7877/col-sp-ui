@@ -1,9 +1,13 @@
 module.exports = {
-  "title": "Product Stage Schema V4",
+  "title": "Product Stage Schema V9",
   "type": "object",
   "properties": {
     "ProductId": {
       "type": "integer"
+    },
+    "Revisions": {
+      "type": "array",
+      "item": require("./revisionObject") 
     },
     "MasterVariant": require('./variant'),
     "Variants": {
@@ -80,6 +84,9 @@ module.exports = {
         }
       ]
     },
+    "ShippingMethod": {
+      "type": "integer"
+    },
     "ExpireDate": {
       "oneOf": [
         {
@@ -117,7 +124,7 @@ module.exports = {
     },
     "ControlFlags": {
       "properties": {
-        "required": ["Flag1", "Flag2", "Flag3"],
+        "required": ["IsNew", "IsClearance", "IsBestSeller", "IsOnlineExclusive", "IsOnlyAt"],
         "Flag1": {
           "type": "boolean"
         },

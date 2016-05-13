@@ -4,17 +4,7 @@
 	<div class="form-section-content">
 
 		<div nc-template="common/input/form-group-with-label" nc-label="Search Tags" nc-template-form="form.Keywords" nc-template-options-path="addProductForm/Keywords">
-<!-- 			<ui-select ng-model="formData.Tags" name="Keywords" nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30" nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$"
-															    multiple tagging tagging-tokens=",|ENTER" tagging-label="" nc-tag-field>
-				<ui-select-match placeholder="Input keywords">
-					{{$item}}
-				</ui-select-match>
-				<ui-select-choices repeat="item in formData.AttributeSet.AttributeSetTagMaps">
-					{{item}}
-				</ui-select-choices>
-			</ui-select>
- -->
-			<you-me its-complicated="true" in-rel placeholder="Input keywords" 
+			<you-me its-complicated="true" hide-icon="true" placeholder="Enter keyword" freedom-of-speech="true" max-tag-count="20" 
 						ng-model="formData.Tags" choices="formData.AttributeSet.AttributeSetTagMaps"></you-me>
 		</div>
 

@@ -1,5 +1,5 @@
 <?php
-$this->layout('layouts/page-with-sidebar', ['title' => 'Return Requests'])
+$this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Return Requests'])
 ?>
 
 <?php $this->start('page-body') ?>
@@ -9,6 +9,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Return Requests'])
       <div class="page-header">
         <a class="btn btn-white btn-width-xl" ng-click="cancel()">Close</a>
         <button ng-if="formData.Status != 'AP'"  class="btn btn-green btn-width-xl" ng-click="save()">Accept</button>
+        <button ng-if="formData.Status == 'AP'" class="btn btn-green btn-width-xl" ng-click="update()">Save</button>
       </div>
     </nc-page-title>
     <div ng-show="loading" nc-loading="{{loadingMessage}}"></div>
@@ -47,6 +48,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Return Requests'])
         <table class="table table-curved product-list-table">
           <thead>
             <tr class="table-head">
+              <th class="width_100 ">PID</th>
+              <th class="width_100 ">SKU</th>
               <th>Product Name</th>
               <th class="width_100 ">Price / Unit</th>
               <th class="width_100 text-align-center">Quantity</th>
@@ -55,6 +58,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Return Requests'])
           </thead>
           <tbody>
             <tr ng-repeat="product in formData.Order.Products track by $index">
+              <td>{{product.Pid}}</td>
+              <td>{{product.Sku}}</td>
               <td class="column-text-ellipsis"><span print-only>{{product.ProductNameEn}}</span><a ng-href="/products/{{product.ProductId}}" print-hide>{{product.ProductNameEn}}</a></td>
               <td class="text-align-center">{{product.UnitPrice | currency:' ':2}}</td>
               <td class="text-align-center">{{product.Quantity}}</td>
@@ -64,16 +69,22 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Return Requests'])
               <td>Sub Total</td>
               <td></td>
               <td></td>
+              <td></td>
+              <td></td>
               <td class="text-align-right">{{formData.Order.TotalAmt | currency:' ':2}}</td>
             </tr>
             <tr ng-if="formData.Order.OrdDiscAmt > 0" class="color-red">
               <td>Discount</td>
               <td></td>
               <td></td>
+              <td></td>
+              <td></td>
               <td class="text-align-right">- {{formData.Order.OrdDiscAmt | currency:' ':2}}</td>
             </tr>
             <tr class="background_light_yellow ">
               <td>Total Order Price</td>
+              <td></td>
+              <td></td>
               <td></td>
               <td></td>
               <td class="text-align-right"><strong>{{formData.Order.GrandTotalAmt | currency:' ':2}}</strong></td>
@@ -95,9 +106,13 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Return Requests'])
                         <div nc-template="common/input/form-group-with-label" nc-label="Reason for Return" nc-template-options="{ inputSize: 'xxl' }">
                           <p class="form-control-static noPrintMargin">{{formData.ReasonForReturn}}</p>
                         </div>
-                        <div nc-template="common/input/form-group-with-label" nc-template-form="form.CnNumber"nc-template-options="{ labelClass: 'required' }"nc-label="CN Number">
+                        <div nc-template="common/input/form-group-with-label" nc-template-form="form.CnNumber" nc-template-options="{ labelClass: 'required' }"nc-label="CN Number">
                           <label class="control-label" print-only>{{formData.CnNumber}}</label>
-                          <input ng-disabled="formData.Status == 'AP'" name="CnNumber" ng-model="formData.CnNumber" class="form-control" required print-hide/>
+                          <input name="CnNumber" ng-model="formData.CnNumber" class="form-control" required print-hide/>
+                        </div>
+                        <div nc-template="common/input/form-group-with-label" nc-template-form="form.CnAmount" nc-template-options="{ labelClass: 'required' }"nc-label="CN Amount">
+                          <label class="control-label" print-only>{{formData.CnAmount}}</label>
+                          <input name="CnAmount" ng-model="formData.CnAmount" class="form-control" ng-pattern-restrict="[0-9]*" required print-hide/>
                         </div>
                       </div>
                     </div>
@@ -111,6 +126,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Return Requests'])
               <div class="float-right">
                 <button class="btn btn-white btn-width-xl" ng-click="cancel()">Close</button>
                 <button ng-if="formData.Status != 'AP'" class="btn btn-green btn-width-xl" ng-click="save()">Accept</button>
+                <button ng-if="formData.Status == 'AP'" class="btn btn-green btn-width-xl" ng-click="update()">Save</button>
               </div>
             </div>
           </div>

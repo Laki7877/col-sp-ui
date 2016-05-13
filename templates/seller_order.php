@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Orders']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="SellerOrderCtrl">
@@ -18,11 +18,12 @@
             <th nc-sort="OrderDate">Date</th>
             <th nc-sort="OrderId">Order ID</th>
             <th nc-sort="CustomerName">Customer Name</th>
-            <th>Carrier</th>
+            <th nc-sort="ShippingType">Shipping Type</th>
+            <th nc-sort="Carrier">Carrier</th>
+            <th nc-sort="Payment">Payment</th>
             <th class="price-column">Total Price</th>
             <th>Status</th>
             <th>Action</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -31,7 +32,9 @@
             <td class="width_120">{{row.OrderDate | dateTh}}</td>
             <td class="width_100" nc-link="{{url}}/{{row.OrderId}}">{{row.OrderId}}</td>
             <td class="column-text-ellipsis">{{row.CustomerName}}</td>
-            <td class="width_100">{{ row.ShippingType }}</td>
+            <td class="width_120">{{ row.ShippingType }}</td>
+            <td class="width_100">{{ row.Carrier}}</td>
+            <td class="width_100">{{ row.Payment}}</td>
             <td class="price-column">{{ row.TotalAmt | currency: ' ': 2 }}</td>
             <td class="width_200">
               <span class="{{row.Status | mapDropdown: status:'color'}}">
@@ -44,9 +47,7 @@
             <td class="width_100">
               <button ng-disabled="getButtonState(row).disabled" class="btn btn-white btn-width-xl margin-right-15" ng-click="onButtonClick(row)">{{getButtonState(row).text}}</button>
             </td>
-            <td class="action-column">
-              <nc-action nc-model="row" nc-action-fn="actions"></nc-action>
-            </td>
+            
           </tr>
         </tbody>
       </table>

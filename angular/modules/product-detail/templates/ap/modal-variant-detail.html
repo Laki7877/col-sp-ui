@@ -1,4 +1,4 @@
-<form class="ah-form sticky-mainform-action" name="addProductVariantForm">
+<form class="ah-form" name="addProductVariantForm">
     <div class="modal-header">
         <h3 class="float-left modal-title" ng-init="form = addProductVariantForm">Variant: {{ pair.text }}</h3>
 
@@ -11,8 +11,8 @@
     <div class="modal-body margin-top-20">
         <div class="row">
             <div class="col-xs-12">
-                <div ng-if="form.$invalid" class="alert alert-red" ng-cloak>
-                    Please make sure all fields have no error.
+                <div ng-if="form.$invalid && form.$dirty" class="alert alert-red" ng-cloak>
+                    Please make sure all required fields are filled and has no error.
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
                         </div>
 
                         <div nc-template="common/input/form-group-with-label" nc-label="SKU" nc-template-form="form.Sku" nc-template-options-path="addProductForm/Sku">
-                            <input class="form-control width-field-large" name="Sku" ng-model="pair.Sku" maxlength="300" ng-pattern="/^[^<>]+$/" />
+                            <input class="form-control width-field-large" name="Sku" ng-model="pair.Sku" maxlength="300" required ng-pattern="/^[^<>]+$/" />
                         </div>
 
 
@@ -64,8 +64,10 @@
                     </div>
                 </div>
 
+                <div ap-component="ap/section-price"></div>
                 <div ap-component="ap/section-image-video"></div>
                 <div ap-component="ap/section-description"></div>
+                <div ap-component="ap/section-inventory"></div>
                 <div ap-component="ap/section-shipping"></div>
                 <div ap-component="ap/section-seo"></div>
 

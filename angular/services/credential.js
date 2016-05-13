@@ -62,12 +62,18 @@ module.exports = function(common, $base64, storage, $q, $rootScope) {
 		return deferred.promise;
 	};
 
-	service.loginAs= function(User){
+	service.loginAs = function(User){
 		var deferred = $q.defer();
 	 	common.makeRequest({
 			method: 'GET',
 			url: '/Users/Admin/Login/' + User.UserId
 		}).then(function(r){
+			//retain token
+			var cup = storage.getCurrentUserProfile();
+			var token = cup.User.Token;
+			r.User.Token = token;
+			console.log(token, 'token');
+			
 			storage.storeCurrentUserProfile(r, true);
 			storage.storeImposterProfile(User);
 			deferred.resolve(r);
@@ -100,7 +106,7 @@ module.exports = function(common, $base64, storage, $q, $rootScope) {
             deferred.resolve(r);
 		}, function() {
 			storage.clear();
-			deferred.reject(r);
+			deferred.reject();
 		});
 
 		return deferred.promise;

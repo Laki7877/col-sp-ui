@@ -16,7 +16,7 @@
                         </div>
                         <div class="width-field-normal" ng-if="item != null">
                             <a class="form-text" ng-click="openCategorySelectorModal($index)">{{item.NameEn}}</a>  
-                            <i ng-if="!formData.GlobalCategories[$index + 1]"
+                            <i ng-if="!formData.GlobalCategories[$index + 1] " ng-show="$index > 0" 
                             ng-click="$emit('deleteGlobalCat', $index)" class="clickable color-dark-grey fa fa-trash margin-left-10"></i>
                         </div>
                         <div class="width-field-normal" ng-if="$index != 0 && item == null && formData.GlobalCategories[$index - 1] != null">

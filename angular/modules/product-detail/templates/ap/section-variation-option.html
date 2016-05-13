@@ -9,7 +9,7 @@
             <div class="width-label">
                 <select class="form-control"
                     ng-disabled="variationFactorLocked() && dataset.attributeOptions[jth].Attribute"
-                    ng-options="i as i.Attribute.AttributeNameEn
+                    ng-options="i as i.Attribute.DisplayNameEn
                     for i in formData.AttributeSet.AttributeSetMaps |
                     exclude: dataset.attributeOptions[1 - jth].Attribute : 'AttributeId' |
                     truth: 'Attribute.VariantStatus'
@@ -74,7 +74,8 @@
             </div>
             <div class="width-field-normal">
                 <div class="ah-select2-dropdown">
-                    <select ng-model="formData.DefaultVariant" class="form-control" ng-options="i as i.text for i in formData.Variants track by i.text"
+                    <select ng-model="formData.DefaultVariant" class="form-control" 
+                    ng-options="i as i.text for i in formData.Variants track by i.text"
                         required>
                     </select>
                 </div>

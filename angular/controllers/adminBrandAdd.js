@@ -4,9 +4,22 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 	$scope.products = [];
 	$scope.availableProducts = -1;
 	$scope.logoUploader = ImageService.getUploaderFn('/BrandImages', {
-		data: { IsLogo: true }
+		data: { Type: 'Logo' }
 	});
-	$scope.bannerUploader = ImageService.getUploaderFn('/BrandImages');
+	$scope.bannerUploader = ImageService.getUploaderFn('/BrandImages', {
+		data: { Type: 'Banner' }
+	});
+	$scope.bannerSmUploader = ImageService.getUploaderFn('/BrandImages', {
+		data: { Type: 'SmallBanner' }
+	});
+	$scope.bannerOptions = {
+		validateDimensionMin: [1920, 1080],
+		validateDimensionMax: [1920, 1080]
+	};
+	$scope.bannerSmOptions = {
+		validateDimensionMin: [1600, 900],
+		validateDimensionMax: [1600, 900]
+	};
 	$scope.uploadLogo = function(file) {
 		if(_.isNil(file)) {
 			return;
@@ -22,9 +35,29 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 				$scope.alert.error(common.getError(err.data));
 			});
 	};
-	$scope.uploadBannerFail = function(e, response) {
+	$scope.uploadBannerFail = function(e, response, min, max) {
 		if(e == 'onmaxsize') {
-			$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+			$scope.alert.error('Cannot exceed 8 images');
+		}
+		else if(e == 'ondimension') {
+			$scope.alert.error('Image must be 1920x1080 pixels');
+		}
+		else if(e == 'onfilesize') {
+			$scope.alert.error('Each image file size must not exceed 5MB')
+		}
+		else {
+			$scope.alert.error(common.getError(response.data));
+		}
+	};
+	$scope.uploadBannerSmFail = function(e, response, min, max) {
+		if(e == 'onmaxsize') {
+			$scope.alert.error('Cannot exceed 8 images');
+		}
+		else if(e == 'ondimension') {
+			$scope.alert.error('Image must be 1600x900 pixels');
+		}
+		else if(e == 'onfilesize') {
+			$scope.alert.error('Each image file size must not exceed 5MB')
 		}
 		else {
 			$scope.alert.error(common.getError(response.data));
@@ -39,6 +72,9 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 			$scope.products = response.data;
 		});	
 	};
+	$scope.status = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
+	$scope.sortby = [];
+	
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
 		options: {
@@ -47,6 +83,10 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 			item: 'Brand',
 			service: BrandService,
 			onLoad: function(scope, flag) {
+				common.getSortBy().then(function(data) {
+					$scope.sortBy = data;
+				});
+
 				if(flag) {
 					//Check if product exist for this brand
 					Product.advanceList({

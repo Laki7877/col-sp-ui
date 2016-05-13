@@ -18,7 +18,32 @@ module.exports = function($scope, $controller, ReturnRequestService, util, confi
 			$scope.alert.close();
 			ReturnRequestService.update($scope.formData.ReturnId, {
 				Status: 'AP',
-				CnNumber: $scope.formData.CnNumber
+				CnNumber: $scope.formData.CnNumber,
+				CnAmount: $scope.formData.CnAmount
+			})
+			.then(function(data) {
+				$scope.formData = ReturnRequestService.deserialize(data);
+				$scope.alert.success(util.saveAlertSuccess('Return Request', $scope.url));
+				$scope.form.$setPristine(true);
+			}, function(err) {
+				$scope.alert.error(common.getError(err));
+			})
+			.finally(function() {
+				$scope.saving = false;
+			});
+		} else {
+          $scope.alert.error(util.saveAlertError());
+		}
+	}
+	$scope.update = function() {
+		if($scope.saving) return;
+		$scope.form.$setSubmitted();
+		if($scope.form.$valid) {
+			$scope.saving = true;
+			$scope.alert.close();
+			ReturnRequestService.update($scope.formData.ReturnId, {
+				CnNumber: $scope.formData.CnNumber,
+				CnAmount: $scope.formData.CnAmount
 			})
 			.then(function(data) {
 				$scope.formData = ReturnRequestService.deserialize(data);

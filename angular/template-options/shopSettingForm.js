@@ -5,6 +5,15 @@ module.exports = {
     TaxInvoice: {
         tooltip: "Please select 'Available' if you can issue Tax Invoice to your customer"
     },
+    Logo: {
+        error: {
+            messages: {
+                dimensions: 'Image must be between 500x500 to 1000x1000 pixels',
+                ratio: 'Image must be a square (1:1 ratio)',
+                maxSize: ' Image file size must not exceed 5MB'
+            }
+        }
+    },
     ShopId: {},
     ShopNameEn: {
         labelClass: 'required',
@@ -59,8 +68,23 @@ module.exports = {
     Instagram: {
         inputSize: 'large'
     },
+    SocialMediaLink: {
+        inputSize: 'large',
+        error: {
+            messages: {
+                url: 'Please enter a valid URL'
+            }
+        }
+    },
     StockAlert: {
         inputSize: 'small',
         tooltip: "Input number of stock before customer will get alerted when they visit your product page"
+    },
+    Email: {
+        error: {
+            messages: {
+                email: 'Please enter a valid Email'
+            }
+        }
     }
 }

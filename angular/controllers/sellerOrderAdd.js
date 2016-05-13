@@ -1,4 +1,4 @@
-module.exports = function($scope, $window, $filter, $controller, OrderService, util, config) {
+module.exports = function($scope, $window, $filter, $controller, OrderService, util, config, $uibModal) {
   $scope.status = config.ORDER_STATUS;
   $scope.addressIter = [1,2,3,4]; //Amount of AddressX (ie, Address1, Address2)
   //Abstract Add Ctrl
@@ -35,30 +35,71 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   };
   //Override save
   $scope.save = function() {
-    save({ InvoiceNumber: $scope.formData.InvoiceNumber });
+    save({ 
+      InvoiceNumber: $scope.formData.InvoiceNumber,
+      Carrier: $scope.formData.Carrier,
+      TrackingNumber: $scope.formData.TrackingNumber
+    });
   };
   //Acknowledge
   $scope.acknowledge = function() {
     save({Status: 'PE'});
   };
+  $scope.merchantFleet = function() {
+    return $scope.formData.ShippingType == 'Merchant Fleet';
+  }
   //Ready to ship
   $scope.readyShip = function() {
     $scope.form.$setSubmitted();
     if($scope.saving) return;
     if($scope.form.$valid) {
-      util.confirm(
-        'Are you ready to ship?',
-        'Shipping quantity cannot be changed after this.',
-        'Confirm',
-        'Cancel',
-        'btn-blue'
-      ).result.then(function() {    
-        save({
-         InvoiceNumber: $scope.formData.InvoiceNumber,
-         Status: 'RS',
-         Products: $scope.formData.Products
+      if($scope.formData.ShippingType == 'Merchant Fleet') {
+        $uibModal.open({
+            size: 'size-warning',
+            templateUrl: 'order/modalReadyToShipMerchant',
+            controller: function($scope, $uibModalInstance, NcAlert) {
+              'ngInject';
+              $scope.alert = new NcAlert();
+              $scope.form = {};
+              $scope.formData = {
+                IsOwnCarrier: false
+              };
+              $scope.no = function() {
+                $uibModalInstance.dismiss();
+              };
+              $scope.yes = function() {
+                $uibModalInstance.close($scope.formData);
+              }
+            }
+        }).result.then(function(data) {
+          var o = {
+           InvoiceNumber: $scope.formData.InvoiceNumber,
+           Status: 'RS',
+           Products: $scope.formData.Products,
+           TrackingNumber: data.TrackingNumber
+          };
+          if(data.IsOwnCarrier) {
+            o.Carrier = data.OtherCarrier;
+          } else {
+            o.Carrier = 'Merchant Own Fleet';
+          }
+          save(o);
+        })
+      } else {
+        util.confirm(
+          'Are you ready to ship?',
+          'Shipping quantity cannot be changed after this.',
+          'Confirm',
+          'Cancel',
+          'btn-blue'
+        ).result.then(function() {    
+          save({
+           InvoiceNumber: $scope.formData.InvoiceNumber,
+           Status: 'RS',
+           Products: $scope.formData.Products
+          });
         });
-      });
+      }
     } else {
       $scope.alert.error(util.saveAlertError());
     }
@@ -117,5 +158,8 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   };
   $scope.getState = function() {
     return $filter('mapDropdown')($scope.formData.Status, $scope.status, 'state');
+  };
+  $scope.getInvoiceState = function() {
+    return !( $scope.formData.ShippingType == 'BU Dropship' || $scope.formData.ShippingType == 'COL Fulfillment' );
   };
 };

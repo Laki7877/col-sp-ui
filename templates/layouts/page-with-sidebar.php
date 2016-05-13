@@ -16,7 +16,7 @@
 
     <ul ng-if="menuItem.submenu.length > 0" ng-repeat="menuItem in menu track by $index" class="sub-sidebar" ng-show="menuItem.hover" ng-mouseenter="menuItem.hover=true" ng-mouseleave="menuItem.hover=false">
         <li class="sub-sidebar-header">{{menuItem.header}}</li>
-        <li ng-repeat="submenuItem in menuItem.submenu track by $index" class="{{ activeSubmenuItem(submenuItem) }} {{ submenuItem.css }} {{ $index == 0 ? 'margin-first-submenu' : '' }} item" ng-if="permitUrl(submenuItem.url)">
+        <li ng-repeat="submenuItem in menuItem.submenu track by $index" class="{{ activeSubmenuItem(submenuItem) }} {{ submenuItem.css }} {{ $index == 0 ? 'margin-first-submenu' : '' }} item">
             <a ng-if="submenuItem.url.length > 0" ng-href="{{ submenuItem.url }}">{{ submenuItem.header }}</a>
         </li>
     </ul>

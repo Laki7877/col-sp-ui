@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, options, Product, LocalCategoryService, GlobalCategoryService, BrandService, Category) {
+module.exports = function($scope, $controller, options, Product, LocalCategoryService, GlobalCategoryService, BrandService, Category, ShopService) {
 	'ngInject';
 	var overrideReload = function(newObj, oldObj) {
 		if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
@@ -85,6 +85,12 @@ module.exports = function($scope, $controller, options, Product, LocalCategorySe
 			$scope.advanceSearchOptions.Brands = data;
 		});
 
+	//Load all Shops
+	ShopService.list()
+		.then(function(data) {
+			$scope.advanceSearchOptions.Shops = data;
+		});
+
 	//Load Global category
 	GlobalCategoryService.list()
 		.then(function(data) {
@@ -99,6 +105,6 @@ module.exports = function($scope, $controller, options, Product, LocalCategorySe
 
 	//Watch for advanceSearchParams
 	$scope.$watch('advanceSearchParams', function(newObj, oldObj) {
-		$scope.reload();
+		$scope.reload(newObj, oldObj);
 	});
 }

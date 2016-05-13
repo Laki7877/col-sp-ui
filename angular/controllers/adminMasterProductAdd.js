@@ -10,25 +10,41 @@ module.exports = function($scope, $controller, BrandService, Product, AdminMaste
 			service: AdminMasterProductService
 		}
 	});
+	
 	$scope.childProducts = [];
 	$scope.products = [];
 	$scope.brands = [];
+	
 	$scope.getProducts = function(search) {
 		var brands = !_.isEmpty($scope.formData.FilterBy) ? [$scope.formData.FilterBy] : [];
-		Product.advanceList({
-			searchText: search
-		})
-		.then(function(data) {
-			$scope.products = data.data;
-		});
-	};
-	$scope.getChildProducts = function(search) {
-		Product.list({
+		return AdminMasterProductService.customList({
 			searchText: search,
 			_limit: 8,
+			_order: 'Pid',
+			_offset: 0,
+			_direction: 'asc'
 		})
 		.then(function(data) {
-			$scope.childProducts = data.data;
+			return $scope.products = data.data.map(function(X){
+				X.CustomName = X.ProductNameEn + " (" + X.Pid + ")";
+				return X;
+			});
+		});
+	};
+		
+	$scope.getChildProducts = function(search) {
+		return AdminMasterProductService.customList({
+			searchText: search,
+			_limit: 8,
+			_order: 'Pid',
+			_offset: 0,
+			_direction: 'asc'
+		})
+		.then(function(data) {
+			return $scope.childProducts = data.data.map(function(X){
+				X.CustomName = X.ProductNameEn + " (" + X.Pid + ")";
+				return X;
+			});
 		});
 	};
 

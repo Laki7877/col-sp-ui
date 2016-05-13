@@ -2,23 +2,38 @@
     <div class="form-section-header">
         <h2>Shipping Detail</h2></div>
     <div class="form-section-content">
-        <div class="form-group">
+        <div class="form-group" ng-if="variantPtr == formData.MasterVariant">
             <div class="width-label">
                 <label class="control-label">Shipping Method</label>
             </div>
             <div class="width-field-normal">
                 <div class="radio multiple-radio multiline">
-                    <label>
-                        <input type="radio" name="shipping_method" ng-value="1" ng-model="variantPtr.ShippingMethod" /> Dropship by 3PL</label>
-                    <label>
-                        <input type="radio" name="shipping_method" ng-value="2" ng-model="variantPtr.ShippingMethod" /> Central Fulfillment</label>
+                    <label ng-repeat="shi in dataset.ShippingList">
+                        <input type="radio" name="shipping_method" ng-disabled="xspermit(38)" ng-value="{{shi.ShippingId}}" ng-model="formData.ShippingMethod" /> {{ shi.ShippingMethodEn }} </label>
                 </div>
             </div>
         </div>
 
+
+        <div nc-template="common/input/form-group-with-label" nc-template-form="form.ExpressDelivery" nc-template-options-path="addProductForm/SafetyStock"
+        nc-label="Express Delivery">
+            <select ng-disabled="xspermit(38)" ng-model="variantPtr.ExpressDelivery" class="form-control" name="ExpressDelivery">
+                <option selected value="-" disabled>- Select Express Delivery Option -</option>
+                <option value="Y">Enable</option>
+                <option value="N">Disable</option>
+            </select>
+        </div>
+
+        <div nc-template="common/input/form-group-with-label" nc-template-form="form.ExpressDelivery" nc-template-options-path="addProductForm/SafetyStock"
+        nc-label="Delivery Fee">
+           <input  ng-disabled="xspermit(38)" class="form-control" name="DeliveryFee" type="text" 
+            maxlength="5" ng-pattern-restrict="^[0-9]*(\\.[0-9]*)?$"  ng-model="variantPtr.DeliveryFee"/>
+        </div>
+
+
         <div nc-template="common/input/form-group-with-label" nc-label="Preparation Time" nc-template-form="form.PrepareDay"
         nc-template-options-path="addProductForm/PrepareDay" style="margin-bottom: 0px;">
-            <input class="form-control width-field-normal" name="PrepareDay" type="text" ng-required="onPublishing"
+            <input  ng-disabled="xspermit(38)" class="form-control width-field-normal" name="PrepareDay" type="text" ng-required="onPublishing"
             maxlength="5" ng-model="variantPtr.PrepareDay"/>
         </div>
 
@@ -29,7 +44,7 @@
             <div class="width-field-xxl">
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" ng-model="variantPtr.LimitIndividualDay"> Set preparation time for individual day
+                  <input  ng-disabled="xspermit(38)" type="checkbox" ng-model="variantPtr.LimitIndividualDay"> Set preparation time for individual day
                 </label>
               </div>
             </div>
@@ -44,49 +59,49 @@
                     <div class="input-column margin-bottom-10">
                         <div nc-template="common/input/div-with-label" nc-label="Monday" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.PrepareMon">
-                            <input type="text" class="form-control" maxlength="3" name="PrepareMon"
+                            <input  ng-disabled="xspermit(38)" type="text" class="form-control" maxlength="3" name="PrepareMon"
                             ng-model="variantPtr.PrepareMon" />
                         </div>
                     </div>
                     <div class="input-column margin-bottom-10">
                         <div nc-template="common/input/div-with-label" nc-label="Tuesday" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.PrepareTue">
-                            <input type="text" class="form-control" maxlength="3" name="PrepareTue"
+                            <input  ng-disabled="xspermit(38)" type="text" class="form-control" maxlength="3" name="PrepareTue"
                             ng-model="variantPtr.PrepareTue" />
                         </div>
                     </div>
                     <div class="input-column margin-bottom-10">
                         <div nc-template="common/input/div-with-label" nc-label="Wednesday" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.PrepareWed">
-                            <input type="text" class="form-control" maxlength="3" name="PrepareWed"
+                            <input  ng-disabled="xspermit(38)" type="text" class="form-control" maxlength="3" name="PrepareWed"
                             ng-model="variantPtr.PrepareWed" />
                         </div>
                     </div>
                     <div class="input-column margin-bottom-10">
                         <div nc-template="common/input/div-with-label" nc-label="Thursday" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.PrepareThu">
-                            <input type="text" class="form-control" maxlength="3" name="PrepareThu"
+                            <input  ng-disabled="xspermit(38)" type="text" class="form-control" maxlength="3" name="PrepareThu"
                             ng-model="variantPtr.PrepareThu" />
                         </div>
                     </div>
                     <div class="input-column margin-bottom-10">
                         <div nc-template="common/input/div-with-label" nc-label="Friday" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.PrepareFri">
-                            <input type="text" class="form-control" maxlength="3" name="PrepareFri"
+                            <input  ng-disabled="xspermit(38)" type="text" class="form-control" maxlength="3" name="PrepareFri"
                             ng-model="variantPtr.PrepareFri" />
                         </div>
                     </div>
                     <div class="input-column margin-bottom-10">
                         <div nc-template="common/input/div-with-label" nc-label="Saturday" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.PrepareSat">
-                            <input type="text" class="form-control" maxlength="3" name="PrepareSat"
+                            <input  ng-disabled="xspermit(38)" type="text" class="form-control" maxlength="3" name="PrepareSat"
                             ng-model="variantPtr.PrepareSat" />
                         </div>
                     </div>
                     <div class="input-column margin-bottom-10">
                         <div nc-template="common/input/div-with-label" nc-label="Sunday" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.PrepareSun">
-                            <input type="text" class="form-control" maxlength="3" name="PrepareSun"
+                            <input  ng-disabled="xspermit(38)" type="text" class="form-control" maxlength="3" name="PrepareSun"
                             ng-model="variantPtr.PrepareSun" />
                         </div>
                     </div>
@@ -105,7 +120,7 @@
                     <div class="input-column">
                         <div nc-template="common/input/div-with-label" nc-label="Length" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.Length">
-                            <input type="text" class="form-control" maxlength="11" ng-required="onPublishing" name="Length"
+                            <input ng-disabled="xspermit(38)" type="text" class="form-control" maxlength="11" ng-required="onPublishing" name="Length"
                             ng-model="variantPtr.Length" />
                         </div>
                     </div>
@@ -113,7 +128,7 @@
                     <div class="input-column">
                         <div nc-template="common/input/div-with-label" nc-label="Height" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.Height">
-                            <input type="text" class="form-control" maxlength="11" ng-required="onPublishing" name="Height"
+                            <input ng-disabled="xspermit(38)" type="text" class="form-control" maxlength="11" ng-required="onPublishing" name="Height"
                             ng-model="variantPtr.Height" />
                         </div>
                     </div>
@@ -121,13 +136,13 @@
                     <div class="input-column">
                         <div nc-template="common/input/div-with-label" nc-label="Width" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.Width">
-                            <input type="text" class="form-control" maxlength="11" ng-required="onPublishing" name="Width"
+                            <input ng-disabled="xspermit(38)" type="text" class="form-control" maxlength="11" ng-required="onPublishing" name="Width"
                             ng-model="variantPtr.Width" />
                         </div>
                     </div>
 
                     <div class="input-column no-label select input-xl" style="padding-top: 24px">
-                        <select ng-model="variantPtr.DimensionUnit" class="form-control">
+                        <select ng-disabled="xspermit(38)" ng-model="variantPtr.DimensionUnit" class="form-control">
                             <option value="MM"> Millimeter </option>
                             <option value="CM"> Centimeter </option>
                             <option value="M"> Meter </option>
@@ -148,14 +163,14 @@
 
                     <div nc-template="common/input/text-column-no-label" nc-label="" nc-template-options-path="addProductForm/Dimension"
                     nc-template-form="form.Weight">
-                        <input type="text" class="form-control" maxlength="11" ng-required="onPublishing" name="Weight"
+                        <input ng-disabled="xspermit(38)" type="text" class="form-control" maxlength="11" ng-required="onPublishing" name="Weight"
                         ng-model="variantPtr.Weight" />
                     </div>
 
 
                     <div class="input-column select input-xl">
                         <div class="ah-select2-dropdown">
-                            <select class="form-control" ng-model="variantPtr.WeightUnit">
+                            <select ng-disabled="xspermit(38)" class="form-control" ng-model="variantPtr.WeightUnit">
                                 <option value="G"> Grams </option>
                                 <option value="KG"> Kilograms </option>
                             </select>

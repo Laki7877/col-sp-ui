@@ -2,11 +2,12 @@
 
 <?php $this->start('page-body') ?>
   <div ng-controller="SellerCouponCtrl">
+    <nc-alert nc-model="alert"></nc-alert>
     <nc-page-title nc-title="Coupons" icon="fa-bookmark">
-        <a ng-href="/coupons/add" class="btn ng-scope btn-blue btn-width-xxl">Add Coupon</a>
+        <a ng-if="$root.permit(53)" ng-href="/coupons/add" class="btn ng-scope btn-blue btn-width-xxl">Add Coupon</a>
     </nc-page-title>
     <div class="row search-section-wrapper">
-        <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Coupon Code'"></nc-search>
+        <nc-search nc-model="params.searchText" nc-search-placeholder="'Search by Coupon Code or Name'"></nc-search>
     </div>
     <div class="table-section">
       <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="isSearching()">
@@ -28,15 +29,21 @@
                             {{row.CouponCode}}
                         </td>
                         <td>{{row.CouponName}}</td>
-                        <td class="width_150 text-align-center">{{row.Remaining}} / {{row.MaximumUser}}</td>
+                        <td class="width_150 text-align-center">
+                            {{row.Remaining}} / {{row.MaximumUser}}
+                        </td>
                         <td class="width_150">
                            {{ row.StartDate | datetimeTh }}
                         </td>
-                        <td class="width_150">{{ row.ExpireDate | datetimeTh }}</td>
+                        <td class="width_150">
+                            {{ row.ExpireDate | datetimeTh }}
+                        </td>
                         <td class="width_100">
                             {{ row.Status | mapDropdown: statusDropdown}}
                         </td>
-                      <td class="action-column-lg"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
+                      <td class="action-column-lg">
+                          <nc-action nc-model="row" nc-action-fn="actions"></nc-action>
+                      </td>
                     </tr>
                 </tbody>
             </table>

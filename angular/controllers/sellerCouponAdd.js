@@ -1,9 +1,10 @@
-module.exports = function($scope, $controller, SellerCouponService, LocalCategoryService, Category, config, Category) {
+module.exports = function($scope, $rootScope, $controller, SellerCouponService, LocalCategoryService, Category, config, Category) {
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
   $scope.filters = config.DROPDOWN.COUPON_SELLER_FILTER;
   $scope.discount = config.DROPDOWN.COUPON_DISCOUNT;
-
+  $scope.manageable = !$rootScope.permit(53);
+  
   //Abstract Add Ctrl
   $controller('AbstractAddCtrl', {
     $scope: $scope,

@@ -1,12 +1,12 @@
 <?php
-$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products']);
+$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Product Approval']);
 ?>
 <?php $this->start('page-body') ?>
 <script type="text/ng-template" id="page-btn-controls">
 <div class="float-right" ng-if="!_loading.state && adminMode">
 			<a class="btn btn-white btn-width-xl" ng-href="/admin/approve">Cancel</a>
-				<button ng-show="formData.Status != 'WA'" class="btn btn-white margin-left-10 btn-width-xl" ng-click="preview()">Preview</button>
-					<button type="submit" class="btn btn-blue margin-left-10 btn-width-xl" ng-click="saveAsIs()">Save</button>
+				<!--<button class="btn btn-white margin-left-10 btn-width-xl" ng-click="preview()">Preview</button>-->
+					<button type="submit" class="btn btn-blue margin-left-10 btn-width-xxl" ng-click="publish('WA')">Save & Wait for Approval</button>
 	</div>
 </script>
 <script type="text/ng-template" id="admin-panel">
@@ -88,20 +88,20 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products']);
 																					nc-template-options-path="adminApproveForm/NothingSpecial"
 																	nc-template-form="form.AdminApproveRejectReason">
 																	<textarea placeholder="Reason why you do not approve this product"
-																	class="form-control" name="AdminApproveRejectReason" ng-model="formData.AdminApprove.RejectReason">
+																	class="form-control" name="AdminApproveRejectReason" ng-model="formData.AdminApprove.RejectReason" ng-pattern-restrict="[^<>]*" maxlength="1000">
 																	</textarea>
 																</div>
 																				<div class="form-group">
 																						<div class="width-label"><label class="control-label"></label></div>
 																						<div class="button-size-normal">
 																								<a ng-disabled="!canApprove()"
-																								class="button-size-normal btn btn-green btn-width-xl" ng-click="publish('AP')">Approve</a>
+																								class="button-size-normal btn btn-green btn-width-xl" ng-click="confirmAP()">Approve</a>
 																						</div>
 																						<div class="button-size-normal margin-left-10">
-																								<a class="button-size-normal btn btn-green btn-width-xl" ng-click="publish('AP')">Force Approve</a>
+																								<a class="button-size-normal btn btn-green btn-width-xl" ng-click="confirmFA()">Force Approve</a>
 																						</div>
 																						<div class="button-size-normal margin-left-10">
-																								<a class="button-size-normal btn btn-red btn-width-xl" ng-click="publish('RJ')">Reject</a>
+																								<a class="button-size-normal btn btn-red btn-width-xl" ng-click="confirmRJ()">Reject</a>
 																						</div>
 																				</div>
 																		</div>
@@ -115,6 +115,10 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Products']);
 </script>
 <div ng-controller="AdminProductApprovalDetailCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
 	<nc-alert nc-model="alert"></nc-alert>
+	  <nc-page-title nc-title="Product Approval/Product Detail" ng-link="listingUrl || '/admin/approve'" icon="fa-tag">
+             <div ng-include="'page-btn-controls'"></div>
+         </nc-page-title>
+
 	<div ap-component="ap/form-product-add">
 		<div ng-include="'admin-panel'"></div>
 	</div>

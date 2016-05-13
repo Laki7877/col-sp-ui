@@ -12,7 +12,12 @@ module.exports = function($scope, $controller, ProductTempService, config, NcAle
 			bulks: [{
 				name: 'Create Single Product',
 				fn: function(arr, cb, cat) {
-					console.log(arr, cb, cat);
+					//WFENDPOINT
+					$scope.alert.close();
+					if(arr.length == 0) {
+						$scope.alert.error('Action failed. Please select Product for this action.')
+						return;
+					}
 				},
 				modal: {
 					size: 'category-section modal-lg column-4',

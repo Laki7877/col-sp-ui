@@ -5,25 +5,33 @@ module.exports = {
   Brands: {},
   GlobalCategories: {},
   LocalCategories: {},
-  Tags: {},
+  Shops: {},
+  Tags: {
+    error: {
+      messages: {
+        maxtagcount: 'Tag must contain 30 characters or less',
+        maxtaglength: 'Cannot exceed 20 tags'
+      }
+    }
+  },
   Price: {
     'error': {
       'messages': {
-        'maxnumber': 'Minimum price should not be greater maximum price'
+        'maxnumber': 'Please enter a valid price range'
       }
     }
   },
   CreatedDate: {
     'error': {
       'messages': {
-        'datebefore': 'Before date should not be greater after date'
+        'datebefore': 'Please enter a valid date/time range'
       }
     }
   },
   ModifiedDate: {
     'error': {
       'messages': {
-        'datebefore': 'Before date should not be greater after date'
+        'datebefore': 'Please enter a valid date/time range'
       }
     }
   }

@@ -360,8 +360,8 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
                     //success
                 }, function (err) {
                     alert.error(common.getError(err));
-                })
-                .finally(scope.reload);
+                    item.Visibility = !item.Visibility;
+                });
         };
     };
 
@@ -423,6 +423,22 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
                 }
             }
         });
+    };
+
+    service.traverse = function(arr, childKey, cb) {
+        for (var i = arr.length - 1; i >= 0; i--) {
+            cb(arr[i]);
+            if(_.has(arr[i], childKey)) {
+                service.traverse(arr[i][childKey], childKey, cb);
+            }
+        };
+        return arr;
+    };
+    
+    service.unflatten = function(arr, childKey) {
+        for (var i = arr.length - 1; i >= 0; i--) {
+            arr[i]
+        };
     };
     return service;
 };

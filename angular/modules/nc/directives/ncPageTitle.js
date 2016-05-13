@@ -8,7 +8,8 @@ angular.module('nc')
             priority: 1010,
             scope: {
                 title: '@ncTitle',
-                topLink: '@link',
+                topLink: '@?link',
+                ngTopLink: '&?ngLink',
                 icon: '@icon'
             },
             template: function (element, attrs) {

@@ -1,4 +1,4 @@
-r<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']) ?>
+r<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Master Products']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminMasterProductCtrl">
@@ -23,7 +23,7 @@ r<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administrat
           <tr ng-repeat="row in list.data">
             <td class="width_100">{{row.Pid}}</td>
             <td class="column-text-ellipsis">
-              <div><a href="{{url}}/{{ row.ProductId }}">{{ row.ProductNameEn || '(Untitled Product)' }}</a></div>
+              <div>{{ row.ProductNameEn || '(Untitled Product)' }}</div>
               <div class="color-grey">{{row.MasterPid}}</div>
             </td>
             <td>{{ getChildProducts(row.ChildPids) }}</td>

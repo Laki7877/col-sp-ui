@@ -138,17 +138,17 @@ textarea{
 /*---- Override CK Editor ----*/
 
 .cke_toolbox{
-	.cke_button__cut, .cke_button__copy, .cke_button__paste, .cke_button__anchor{
+	.cke_button__cut, .cke_button__copy, .cke_button__paste, .cke_button__anchor, .cke_button__horizontalrule{
 		display: none !important;
 	}
 }
-.cke_toolbox {
-	.cke_toolbar:nth-child(7){
-		.cke_toolbar_separator{
-			display:none;
-		}
-	}
-}
+// .cke_toolbox {
+// 	.cke_toolbar:nth-child(7){
+// 		.cke_toolbar_separator{
+// 			display:none;
+// 		}
+// 	}
+// }
 
 
 
@@ -175,6 +175,10 @@ textarea{
 }
 .ui-select-multiple.ui-select-bootstrap input.ui-select-search {
     //width: 100% !important;
+}
+
+.ui-select-choices{
+	max-height: 200px !important;
 }
 
 
@@ -210,4 +214,52 @@ md-autocomplete{
 //Hide unuse tab in Image Upload
 a.cke_dialog_tab{
 	display: none !important;
+}
+
+
+//Override UME select
+
+.selectize-control.has-error selectize-input{
+  border-color: $color-red;
+}
+
+.selectize-dropdown,
+.selectize-input,
+.selectize-input input {
+  color: $color-black;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 18px;
+  -webkit-font-smoothing: inherit;
+}
+
+.selectize-control.single{
+	.selectize-input{
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		background-color: $color-white;
+		color: $color-black;
+	  border-color: $color-grey;
+		min-height: 34px;
+		input::-webkit-input-placeholder{
+			color: $color-dark-grey;
+		}
+	}
+	.selectize-input:after{
+		display: none;
+	}
+}
+.selectize-control{
+	.btn-primary{
+		background-color: $color-theme;
+		border-color: $color-theme;
+		margin-top: 2px;
+		margin-bottom: 2px;
+	}
+}
+.selectize-dropdown{
+	margin-top: -7px;
+	.single{
+		color: $color-black;
+		border-color: $color-grey;
+	}
 }

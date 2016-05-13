@@ -4,6 +4,19 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
 	$rootScope._ = _;
   $rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
+  
+  console.log('PROFILE', $rootScope.Profile);
+  console.log('IMPOSTER', $rootScope.Imposter);
+
+  /*
+  *  range {array} - set of shop group that is permitted in the current shop group policy 
+  */ 
+  $rootScope.ShopGroupPolicy = function(range){
+    var mySG = _.get($rootScope.Profile, 'Shop.ShopGroup');
+    if(mySG == range) return true;
+    
+    return range.includes(mySG);
+  }
 
    //Prevent image dragdrop on other elements   
     $window.addEventListener("dragover", function(e) {    
@@ -43,15 +56,15 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   //In case local storage expire before cookie
   if(!_.isNil(storage.getSessionToken())) {
     if(!_.isNil($rootScope.Profile)) {
-      // Credential.checkToken()
-      //   .then(function() {
-      //     $rootScope.DisablePage = false;
-      //   }, function() {
-      //     console.log('check token failed');
-      //     storage.put('session_timeout');
-      //     storage.clear();
-      //     $window.location.reload();
-      //   });
+      $rootScope.DisablePage = true;
+      Credential.checkToken()
+        .then(function() {
+          $rootScope.DisablePage = false;
+        }, function() {
+          storage.put('session_timeout');
+          storage.clear();
+          $window.location.reload();
+        });
     } else {
       $rootScope.DisablePage = true;
       Credential.loginWithToken(storage.getSessionToken(), true)
@@ -82,32 +95,79 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
     }
   } 
 
-  //Handle permission
-  $rootScope.permit = function(name) {
-    return true;
-    return _.findIndex($rootScope.Profile.Permission, function(item) {
-      if(item.Permission === name) {
-        return true;
+  var permitParent = function(p) {
+    var parent = false; 
+    var oparent = false;
+
+    if(p.Parent > 0) {
+      //has perm?
+      var i = _.findIndex($rootScope.Profile.Permission, function(item) {
+        if(item.PermissionId == p.Parent) {
+          return true;
+        }
+      });
+      if(i >= 0) {
+        parent = permitParent($rootScope.Profile.Permission[i]);
+      } else {
+        parent = false;
       }
-      else {
-        return false;
+    } else {
+      parent = true;
+    }
+
+    if(p.OverrideParent > 0) {
+      //has perm?
+      var i = _.findIndex($rootScope.Profile.Permission, function(item) {
+        if(item.PermissionId == p.OverrideParent) {
+          return true;
+        }
+      });
+      if(i >= 0) {
+        oparent = permitParent($rootScope.Profile.Permission[i]);
+      } else {
+        oparent = false;
       }
-    }) >= 0;
+    } else {
+      oparent = true
+    }
+
+    return oparent ? parent : false;
+  }
+
+  $rootScope.hasPermission = function(id) {
+    if($rootScope.Profile) {
+      return _.findIndex($rootScope.Profile.Permission, function(item) {
+        if(item.PermissionId == id) {
+          return permitParent(id);
+        }
+        else {
+          return false;
+        }
+      }) >= 0;
+    }
+    return false;
   };
+
+  //Handle permission
+  $rootScope.permit = function(id) {
+    //return true;
+    return $rootScope.hasPermission(id);
+  };
+  
+  
 
   //Check url access permission
   $rootScope.permitUrl = function(url) {
     var result = true;
-    return true;
     _.forEach(route.permission, function(v, k) {
       if(_.isArray(v)) {
         for (var i = 0; i < v.length; i++) {
           if(isActive(v[i], url) == 'active') {
-            result = $rootScope.permit(k);
+            result = result && $rootScope.permit(k);
           }
         }
       } else if(isActive(v, url) == 'active') {
-          result = $rootScope.permit(k);
+          result = result && $rootScope.permit(k);
       }
     });
     return result;
@@ -115,17 +175,27 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
 
   $rootScope.permitMenuItem = function(menuItem) {
     var result = false;
-    return true;
     _.forEach(menuItem.submenu, function(u) {
       result = result || $rootScope.permitUrl(u.url);
     });
     return result;
-  }
+  };
 
   //Check url acccess permission for this page
-  if(!$rootScope.permitUrl()) {
-    //$rootScope.DisablePage = true;
-    console.log($rootScope.Profile.Permission);
+  if(!$rootScope.permitUrl($window.location.pathname) && $window.location.pathname.indexOf("/login") == -1 && !$rootScope.Imposter) {
+    $rootScope.DisablePage = true;
+    
+    if($window.location.pathname == '/dashboard' && !$rootScope.permit(29)) {
+        $window.location.href = "/onboarding";
+    } else {
+      if(storage.poke('login')) {
+        $window.location.href = "/onboarding";
+      }
+      else {
+        console.log("redirecting to 404 due to poermission")
+        util.page404();
+      }
+    }
   }
 
   //Get Shop activity
@@ -153,10 +223,14 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
         if (R.User.IsAdmin) {
           $window.location.href = "/admin";
         } else {
-          $window.location.href = "/products";
+          if($rootScope.permit(29)) {
+            $window.location.href = "/dashboard";
+          } else {
+            $window.location.href = "/onboarding";
+          }
         }
       }, function() {
-        alert("Fetal error while logging out.");
+        //alert("Fatal error while logging out.");
       });
     }
     else {  
@@ -222,7 +296,19 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   //new version of route handler
   $rootScope.menu = [];
   $rootScope.initMenu = function(id) {
-    $rootScope.menu = route[id];
+    var menu = route[id];
+    $rootScope.menu = _.compact(_.map(menu, function(menuItem) {
+      if($rootScope.permitMenuItem(menuItem)) {
+        menuItem.submenu = _.compact(_.map(menuItem.submenu, function(submenuItem) {
+          if($rootScope.permitUrl(submenuItem.url)) {
+            return submenuItem;
+          }
+          return null;
+        }));
+        return menuItem;
+      }
+      return null; 
+    }));
   };
   //Active class for sub menu
   $rootScope.activeSubmenuItem = function(item) {
@@ -252,4 +338,25 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
     }
     return '';
   };
+
+  //For permission navigator
+  var traverseFalse = function(arr) {
+    for (var i = arr.length - 1; i >= 0; i--) {
+      arr[i].check = false;
+      traverseFalse(arr[i].Children);
+    };
+  }
+  $rootScope.checkRecursive = function(permObj, value) {
+    if(value) {
+      var parent = permObj.ParentNode;
+      while(!_.isNil(parent)) {
+        parent.check = true;
+        parent = parent.ParentNode;
+      }
+    }
+    else {
+      if(permObj.Children.length > 0)
+        traverseFalse(permObj.Children);
+    }
+  }
 };

@@ -1,0 +1,69 @@
+<div class="form-section">
+	<div class="form-section-header">
+		<h2><input type="checkbox" style="margin-right: 10px" ng-model="source.Enabled"/>{{letter}}.) {{title}}</h2>
+	</div>
+	<div ng-show="source.Enabled">
+		<nc-image-block template="common/ncImageBanner4_1" nc-model="source.ImageEn" on-fail="onFail" uploader="uploader" options="options" size="{{size}}">
+		<h4>{{letterx}} {{subtitle ? subtitle : 'Video Thumbnail'}} (English) guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>The width must be {{width}}px</li><li>The height must be {{height}}px</li></span></li></ul>
+		</nc-image-block>
+		<div class="section-break"></div>
+		<nc-image-block template="common/ncImageBanner4_1" nc-model="source.ImageTh" on-fail="onFail" uploader="uploader" options="options" size="{{size}}">
+		<h4>{{letterx}} {{subtitle ? subtitle : 'Video Thumbnail'}} (ไทย) guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>The width must be {{width}}px</li><li>The height must be {{height}}px</li></span></li></ul>
+		</nc-image-block>
+		<div class="section-break"></div>
+		<div class="form-section-content padding-left-15 padding-right-15">
+			<div nc-template="common/input/form-group-with-label" nc-label="Show Popup">
+				<select ng-model="source.ShowPopup" class="form-control" ng-options="o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]"></select>
+			</div>
+			<div class="form-group"> 
+				<div class="width-label">
+					<label class="control-label"> Title (Eng)</label>
+				</div>
+				<div class="width-field-normal">
+					<input class="form-control" ng-model="source.TitleEn" />
+				</div>
+			</div>
+			<div class="form-group"> 
+				<div class="width-label">
+					<label class="control-label"> Title (ไทย)</label>
+				</div>
+				<div class="width-field-normal">
+					<input class="form-control" ng-model="source.TitleTh" />
+				</div>
+			</div>
+			<div class="form-group"> 
+				<div class="width-label">
+					<label class="control-label"> Title Link</label>
+				</div>
+				<div class="width-field-normal">
+					<input class="form-control" ng-model="source.TitleLink" />
+				</div>
+			</div>
+			<div ng-repeat="video in source.Videos track by $index">
+				<div class="form-group"> 
+					<div class="width-label">
+						<label class="control-label"> {{linktitle ? linktitle : 'Video'}} {{$index+1}} Link</label>
+					</div>
+					<div class="width-field-normal">
+						<input class="form-control" ng-model="video.Link" />
+					</div>
+				</div>
+				<div class="form-group"> 
+					<div class="width-label">
+						<label class="control-label"> {{linktitle ? linktitle : 'Video'}} {{$index+1}} Description (Eng)</label>
+					</div>
+					<div class="width-field-normal">
+						<textarea class="form-control" ng-model="video.DescriptionEn"></textarea>
+					</div>
+				</div>
+				<div class="form-group"> 
+					<div class="width-label">
+						<label class="control-label"> {{linktitle ? linktitle : 'Video'}} {{$index+1}} Description (ไทย)</label>
+					</div>
+					<div class="width-field-normal">
+						<textarea class="form-control" ng-model="video.DescriptionTh"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

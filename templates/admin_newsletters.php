@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Newsletter']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminNewsletterCtrl">
@@ -11,6 +11,7 @@
         <thead>
           <tr class="table-head">
             <th class="width_150" nc-sort="PublishedDt">Published Date</th>
+            <th class="width_150" nc-sort="ExpiredDt">Expired Date</th>
             <th nc-sort="Subject">Subject</th>
             <th class="text-align-center">Action</th>
           </tr>
@@ -18,6 +19,7 @@
         <tbody>
           <tr ng-repeat="row in list.data">
             <td class="date-column">{{ row.PublishedDt | datetimeTh }}</td>
+            <td class="date-column">{{ row.ExpiredDt | datetimeTh }}</td>
             <td><a ng-click="open(row)">{{ row.Subject }}</a></td>
             <td class="action-column text-align-center"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td>
           </tr>

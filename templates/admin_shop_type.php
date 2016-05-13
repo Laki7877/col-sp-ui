@@ -1,14 +1,14 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Types']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminShoptypeCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <nc-page-title nc-title="Shop Type" icon="fa-user">
+    <nc-page-title nc-title="Shop Types" icon="fa-user">
       <a class="btn btn-blue btn-width-xxl" ng-href="{{url}}/add">Add {{item}}</a>
     </nc-page-title>
     <div class="row search-section-wrapper">
       <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="{{id}}"></nc-bulk>
-      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Shop Type'"></nc-search>
+      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search by Shop Type'"></nc-search>
     </div>
     <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="isSearching()" >
       <table class="table table-curved">

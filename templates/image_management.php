@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Product - Image Management']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Image Management']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="ProductImageManagementCtrl">
@@ -39,7 +39,8 @@
                     </div>
                     <div class="form-section-content">
                       <div class="content-text">
-                        <div><h4>{{ product.ProductNameEn }}</h4>
+                        <div>
+                          <h4><a ng-href="/products/{{product.ProductId}}">{{ product.ProductNameEn }}</a></h4>
                           <span ng-if="product.IsVariant">{{ product.VariantAttribute | variantValue }}</span>
                           <span ng-if="product.VariantCount > 0">Parent Product</span>
                         </div>
@@ -50,8 +51,14 @@
                       </div>
                         <div class="picture-container">
                           <div class="col-xs-12 padding-left-0">
-                            <nc-image-gallery ng-if="product.IsVariant" nc-model="product.VariantImg" nc-image-gallery-options="imageGalleryOptions" nc-image-gallery-disabled="isDisabled(product)"></nc-image-gallery>
-                            <nc-image-gallery ng-if="!product.IsVariant" nc-model="product.MasterImg" nc-image-gallery-options="imageGalleryOptions" nc-image-gallery-disabled="isDisabled(product)"></nc-image-gallery>
+                            <nc-image-gallery ng-if="product.IsVariant" 
+                                nc-model="product.VariantImg" 
+                                nc-image-gallery-options="imageGalleryOptions"
+                                nc-image-gallery-disabled="isDisabled(product)"></nc-image-gallery>
+                            <nc-image-gallery ng-if="!product.IsVariant" 
+                                nc-model="product.MasterImg" 
+                                nc-image-gallery-options="imageGalleryOptions"
+                                nc-image-gallery-disabled="isDisabled(product)"></nc-image-gallery>
                           </div>
                         </div>
                         <div class="drop-zone-container {{ getContainer(product) }}">
@@ -63,6 +70,7 @@
                             nc-image-dropzone-options="imageDropzoneOptions"
                             nc-image-dropzone-on-error="onError(product, $response)"
                             nc-image-dropzone-on-event="onEvent(product, $eventName)"
+                            size="10"
                             is-uploading="product.isUploading"
                             ></nc-image-dropzone>
                           <nc-image-dropzone
@@ -73,6 +81,7 @@
                             nc-image-dropzone-options="imageDropzoneOptions"
                             nc-image-dropzone-on-error="onError(product, $response)"
                             nc-image-dropzone-on-event="onEvent(product, $eventName)"
+                            size="10"
                             is-uploading="product.isUploading"
                             ></nc-image-dropzone>
                         </div>

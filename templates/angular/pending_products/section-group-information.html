@@ -2,6 +2,16 @@
     <div class="form-section-header">
     <h2>Group Information</h2></div>
     <div class="form-section-content">
+        <div ng-show="adminMode" nc-template="common/input/form-group-with-label" nc-template-form="form.Category"
+            nc-template-options-path="createGroupVariant/Required"
+            nc-label="Shop">
+               <you-me display-by="ShopNameEn" placeholder="Search Shop"  
+                        auto-clear-search="true"
+                        ng-model="formData.Shop" 
+                        refresh="refresher.Shops" 
+                        choices="dataset.Shops"></you-me>
+        </div>
+
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.Category"
             nc-template-options-path="createGroupVariant/Required"
             nc-label="Category">
@@ -13,24 +23,16 @@
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.AttributeSet"
             nc-template-options-path="createGroupVariant/Required"
             nc-label="Attribute Set">
-            <ui-select ng-model="formData.AttributeSet" theme="selectize" loading="refresher.AttributeSetLoading">
-                <ui-select-match>
-                    <span ng-bind-html="$select.selected.AttributeSetNameEn"></span>
-                    <span ng-show="!$select.selected.AttributeSetNameEn"><span class="color-grey">
-                        <i class="fa fa-search"></i> Search Attribute Set</span>
-                    </span>
-                </ui-select-match>
-                <ui-select-choices group-by="'_group'" ui-disable-choice="item.disabled" refresh-delay="1000" 
-                refresh="refresher.AttributeSets($select.search)" 
-                repeat="item in dataset.CombinedAttributeSets | filter: $select.search  track by item.AttributeSetId">
-                    <span ng-bind-html="item.AttributeSetNameEn | highlight: $select.search"></span>
-                </ui-select-choices>
-            </ui-select>
+            
+           <you-me display-by="AttributeSetNameEn" placeholder="Search Attribute Set"  
+                        auto-clear-search="true" group-by="_group"
+                        ng-model="formData.AttributeSet" 
+                        refresh="refresher.AttributeSets" 
+                        initial-choices="dataset.AttributeSets"
+                        choices="dataset.CombinedAttributeSets"></you-me>
+            
         </div>
 
-        <div nc-template="common/input/form-group-with-label" nc-label="">
-            <button class="btn btn-blue btn-width-xxl" ng-click="createVariationOption()">Create Variation Option
-            </button>
-        </div>
+      
     </div>
 </div>

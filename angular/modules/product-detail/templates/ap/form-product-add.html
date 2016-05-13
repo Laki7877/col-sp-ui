@@ -1,18 +1,13 @@
 <form name="addProductForm" class="ah-form sticky-mainform-action" novalidate>
-            <nc-page-title nc-title="Products/Product Detail" link="/products" icon="fa-tag">
-                 <div ng-include="'page-btn-controls'"></div>
-            </nc-page-title>
-
-
             <div ng-if="pageState.loading.state" nc-loading="{{ pageState.loading.message }}.."></div>
-            <div class="add-product-body" ng-if="!pageState.loading.state">
+            <div class="add-product-body" ng-if="!pageState.loading.state || pageState.halt">
                     <ng-transclude></ng-transclude>
                     <ul class="nav nav-tabs" role="tablist">
                             <li ng-repeat="item in _apNavTabs" role="presentation" ng-class="item.class">
                                 <a ng-href="#{{item.id}}" data-id="{{item.id}}" aria-controls="item.id" role="tab" data-toggle="tab">{{item.name}}</a>
                             </li>
                     </ul>
-                    <fieldset ng-disabled="(formData.Status == 'WA' || formData.Status == 'AP' || readOnly) && !adminMode">
+                    <fieldset ap-fieldset-unlock='unlockedFields' ap-fieldset-lock-on="(formData.Status == 'WA' || formData.Status == 'AP' || readOnly) && !adminMode">
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
                              <div ng-include="'ap/tab-information'"></div>
@@ -23,7 +18,7 @@
                         <div role="tabpanel" class="tab-pane margin-top-20" id="category">
                             <div ng-include="'ap/tab-category'"></div>
                         </div>
-    					<div role="tabpanel" class="tab-pane margin-top-20" id="more_option">
+    					<div role="tabpanel" class="tab-pane margin-top-20" id="moreoption">
                              <div ng-include="'ap/tab-more-option'"></div>
     					</div>
                         <div role="tabpanel" class="tab-pane margin-top-20" id="variation">

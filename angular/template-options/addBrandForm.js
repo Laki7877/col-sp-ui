@@ -6,7 +6,7 @@ module.exports = {
       'error' : {
             'messages': {
               'required': 'This is a required field',
-              'pattern': 'Only English allowed'
+              'pattern': 'Only 0-9 a-z _ are allowed (no spaces)'
               }
        }
     },
@@ -21,8 +21,22 @@ module.exports = {
     UrlKeyEn: {
         'error': {
             'messages': {
-                'pattern': 'Only English letters, numbers,  &quot;- &quot;, and   &quot;_&quot;; allowed. Space is not allowed'
+                'pattern': 'Only 0-9 a-z - are allowed (no spaces or underscores)'
             }
         }
+    },
+    SortBy: {
+      'labelClass': 'required'
+    },
+    Status: {
+      
+    },
+    BrandImage: {
+      error: {
+        messages: {
+          dimensions: 'Image must be between 500x500 to 1000x1000 pixels',
+          ratio: 'Image must be a square (1:1 ratio)'
+        }
+      }
     }
 };

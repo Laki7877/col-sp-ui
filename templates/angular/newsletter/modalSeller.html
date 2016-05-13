@@ -7,9 +7,9 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="form-section-content">
-          <p class="margin-top-15">
-            <img ng-if="item.ImageUrl" src="item.ImageUrl" />
-            {{ item.Description }}
+          <p class="margin-top-15 text-align-center ">
+            <img class="img-responsive" ng-if="item.Image.Url" ng-src="{{item.Image.Url}}" />
+            <p class="margin-top-5">{{ item.Description }}</p>
           </p>
           <hr>
           <div class="color-dark-grey">Publish Date: {{ item.PublishedDt | datetimeTh }}</div>

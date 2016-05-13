@@ -38,7 +38,6 @@ module.exports = function($q, $http, common, storage, config, FileUploader, Uplo
       headers: {
         Authorization: 'Bearer ' + accessToken
       },
-      queueLimit: 10,
       removeAfterUpload : true,
       filters: [{
         name: 'imageFilter',
@@ -51,8 +50,9 @@ module.exports = function($q, $http, common, storage, config, FileUploader, Uplo
         fn: function(item /*{File|FileLikeObject}*/ , options) {
           return item.size <= config.MAX_IMAGE_UPLOAD_SIZE;
         }
-      }, ]
+      }]
     }, opt);
+    
     var uploader = new FileUploader(options);
 
     return uploader;
@@ -69,7 +69,7 @@ module.exports = function($q, $http, common, storage, config, FileUploader, Uplo
     };
     uploader.onAfterAddingFile = function(item) {
       var obj = {
-        url: ''
+        Url: ''
       };
       if (images.length == uploader.queueLimit) {
         //Callback for queueLimit reached

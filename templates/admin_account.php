@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Admin Accounts']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminAccountCtrl">

@@ -2,12 +2,11 @@
     <div class="form-section-header">
         <h2>Default Attributes</h2></div>
     <div class="form-section-content">
-
         <!-- for each attribute in attribute set -->
-        <div class="form-group" ng-repeat="da in defaultAttributes" ng-if="isVisibleTo(da.VisibleTo)">
+        <div class="form-group" ng-repeat-start="da in defaultAttributes" ng-if="isVisibleTo(da.VisibleTo)">
             <div class="width-label">
                 <label class="control-label" ng-class="{'required': da.Required}">
-                    {{ da.AttributeNameEn }}
+                    {{ da.DisplayNameEn || da.AttributeNameEn }}
                 </label>
             </div>
             <div ng-class="{'width-field-normal': !isHtmlInput(da.DataType), 'width-field-xxl': isHtmlInput(da.DataType)}">
@@ -20,14 +19,14 @@
 
                 <div ng-if="isHtmlInput(da.DataType)">
                     <textarea ng-required="da.Required && onPublishing" ng-class="{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }"
-                    ng-model="formData.MasterAttribute[da.AttributeId]" name="DAInput{{$index}}" class="form-control"
-                    ng-ckeditor="ckOptions"></textarea>
+                        ng-model="formData.MasterAttribute[da.AttributeId]" name="DAInput{{$index}}" class="form-control"
+                        ng-ckeditor="ckOptions"></textarea>
                 </div>
 
                 <input ng-if="isFreeTextInput(da.DataType)" ng-class="{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }"
                 ng-required="da.Required && onPublishing" type="text" class="form-control" name="DAInput{{$index}}"
-                ng-model="formData.MasterAttribute[da.AttributeId]" />
-
+                ng-model="formData.MasterAttribute[da.AttributeId].ValueEn" />
+                
             		<div ng-if="isCheckboxInput(da.DataType)">
             			<div class="checkbox" ng-repeat="vmap in da.AttributeValueMaps">
               			<label>
@@ -38,6 +37,21 @@
               			</label>
             			</div>
             		</div>
+
+            </div>
+        </div>
+        
+        <div class="form-group" ng-repeat-end ng-if="isVisibleTo(da.VisibleTo) && isFreeTextInput(da.DataType)">
+            <div class="width-label">
+                <label class="control-label" ng-class="{'required': da.Required}">
+                    {{ da.DisplayNameTh || da.AttributeNameTh || ((da.DisplayNameEn || da.AttributeNameEn)  + " (ไทย)") }}
+                </label>
+            </div>
+            <div ng-class="{'width-field-normal': !isHtmlInput(da.DataType), 'width-field-xxl': isHtmlInput(da.DataType)}">
+
+                <input ng-if="isFreeTextInput(da.DataType)" ng-class="{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }"
+                ng-required="da.Required && onPublishing" type="text" class="form-control" name="DAInput{{$index}}"
+                ng-model="formData.MasterAttribute[da.AttributeId].ValueTh" />
 
             </div>
         </div>

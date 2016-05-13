@@ -113,6 +113,7 @@ form
 			width: 170px
 			padding-left: 0
 			padding-right: 0
+			padding-bottom: 8px
 			> *
 				float: right
 		.width-label-extend
@@ -128,6 +129,9 @@ form
 		.width-field-small
 			@extend .col-xs-7
 			width: 300px
+		.width-field-normal-input
+			@extend .col-xs-7
+			width: 370px
 		.width-field-normal
 			@extend .col-xs-7
 			width: 400px
@@ -173,6 +177,9 @@ form
 
 	.control-label
 		padding-top: 8px
+
+	.two-lines-label .control-label
+		padding-top: 0px
 
 	.form-text
 		@extend .control-label

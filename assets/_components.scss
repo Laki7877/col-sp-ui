@@ -50,10 +50,44 @@ background-image:url(http://csscheckbox.com/checkboxes/u/csscheckbox_7875fc1239d
 user-select: none;
 }
 
+.multiple-checkbox{
+	label{
+		margin-bottom: 1px;
+	}
+	.child-checkbox-enter{
+			display: none;
+	}
+	.margin-left-30{
+		.child-checkbox-enter{
+			display: block;
+		}
+	}
+}
+
+.child-checkbox-enter{
+	margin-left: -37px;
+	margin-top: 1px;
+	position: absolute;
+	color: $color-grey;
+}
+
 /*---- Table ----*/
 .table {
 	.checkbox-column {
 		width: 14px;
+	}
+
+	.product-name-column{
+		min-width: 160px;
+	}
+
+	.shop-name-column{
+		min-width: 140px;
+	}
+
+	.status-column {
+		width: 140px;
+		padding-right: 0px;
 	}
 
 	.display-column {
@@ -89,6 +123,9 @@ user-select: none;
 	.live-column {
 		text-align: center;
 		width: 50px;
+		.color-green{
+			text-shadow: 0 0 0.3em #8F7;
+		}
 	}
 
 	.visible-column {
@@ -310,6 +347,11 @@ user-select: none;
     td {
       line-height: 40px;
     }
+
+		.small{
+			line-height: 14px;
+			margin-top: -10px;
+		}
   }
 }
 
@@ -493,6 +535,11 @@ user-select: none;
 .table {
   .column-text-ellipsis {
     max-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+	.text-ellipsis {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

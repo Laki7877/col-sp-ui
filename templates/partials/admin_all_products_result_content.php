@@ -44,7 +44,10 @@
                       {{ asStatus(row.Status).name }}
                     </span>
                 </td>
-                <td><i class="fa fa-circle color-grey"></i></td>
+                <td>
+                    <i class="fa fa-circle color-green" ng-if="row.OnlineFlag"></i>
+                    <i class="fa fa-circle color-grey" ng-if="!row.OnlineFlag"></i> 
+                </td>
                 <td>
                     <nc-eye nc-model="row.Visibility" nc-eye-on-toggle="toggleEye(row)"></nc-eye>
                 </td>

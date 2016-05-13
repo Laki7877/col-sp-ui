@@ -21,9 +21,7 @@ module.exports = function($scope, $controller, Product, config, util) {
 				}),
 			],
 			filters: [
-				{ name: "All", value: 'All'},
 				{ name: "Approved", value: 'Approved'},
-				{ name: "Draft", value: 'Draft'},
 				{ name: "Not Approved", value: 'NotApproved'},
 				{ name: "Wait for Approval", value: 'WaitForApproval'}
 			]
@@ -35,26 +33,30 @@ module.exports = function($scope, $controller, Product, config, util) {
 			value: 'None'
 		},
 		{
-			name: 'Information',
+			name: 'Ready for Action',
+			value: 'ReadyForAction'
+		},
+		{
+			name: 'Wait for Information',
 			value: 'Information'
 		},
 		{
-			name: 'Image',
+			name: 'Wait for Image',
 			value: 'Image'
 		},
 		{
-			name: 'Variation',
+			name: 'Wait for Category',
+			value: 'Category'
+		},
+		{
+			name: 'Wait for Variation',
 			value: 'Variation'
 		},
 		{
-			name: 'More',
+			name: 'Wait for More',
 			value: 'More'
-		},
-		{
-			name: 'Ready for Action',
-			value: 'ReadyForAction'
 		}
 	];
-	$scope.params._filter = $scope.filterOptions[4].value;
+	$scope.params._filter = $scope.filterOptions[2].value;
 	$scope.params._filter2 = 'None';
 };

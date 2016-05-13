@@ -9,6 +9,114 @@
  */
 var _ = require('lodash');
 
+var seller = {
+	'Home|fa-home': {
+		'Onboarding': '/onboarding',
+		'Dashboard': '/dashboard',
+		'Newsletters': '/newsletters'
+	},
+	'Order|fa-inbox': {
+		'View Orders': ['/orders', '/orders/shippinglist'],
+		'Return Request': '/returns'
+	},
+	'Product|fa-tag': {
+	  	'View Products': '/products',
+	  	'Add Product': ['/products/select', '/products/add'],
+	  	'Import - Add Products': '/products/import',
+			'Import - Update Products': '/products/update',
+	  	'Export Products': '/products/export',
+	  	'Local Category|margin-top-30': '/categories',
+	  	'Product Reviews': '/products/reviews',
+	  	'Image Management': '/products/images',
+	  	'Product Grouping': '/products/groups'
+	},
+	'Inventory|fa-archive': {
+		'View Inventory': '/inventory'
+	},
+	'Promotion|fa-bookmark': {
+		'Coupons': '/coupons'
+	},
+	'Shop Setting|fa-sliders': {
+		'Shop Profile': '/shops/settings',
+		'Shop Appearance': '/shops/appearance'
+	},
+	'Account|fa-user': {
+		'User Accounts': '/accounts',
+		'User Roles': '/roles'
+	}
+};
+var admin = {
+	'Home|fa-home': {
+		'Onboarding': '/admin/onboarding'
+	},
+	'Products|fa-tag': {
+		'View All Products': '/admin/products',
+		'Approve Products': '/admin/approve',
+		'Product Grouping': '/admin/products/groups',
+		'Master Products': ['/admin/masters', '/admin/masters/add'],
+		'Product Reviews': '/admin/products/reviews',
+		'Brands|margin-top-30': ['/admin/brands', '/admin/brands/add'],
+		'Attributes': ['/admin/attributes', '/admin/attributes/add'],
+		'Attribute Sets': ['/admin/attributesets', '/admin/attributesets/add'],
+		'Global Category': '/admin/categories'
+	},
+	'Accounts|fa-user': {
+		'Seller Accounts': '/admin/sellers',
+		'Shop Accounts': ['/admin/shops', '/admin/shops/add'],
+		'Shop Types': ['/admin/shoptypes', '/admin/shoptypes/add'],
+		'Admin Accounts': ['/admin/accounts', '/admin/accounts/add'],
+		'Admin Roles': ['/admin/roles', '/admin/roles/add']
+	},
+	'Promotion|fa-bookmark': {
+		'Global Coupons': '/admin/coupons/global',
+		'All Seller Coupons': '/admin/coupons/seller'
+	},
+	'Others|fa-sliders': {
+		'Newsletters': '/admin/newsletters'
+	}
+};
+var permission = {
+	//Admin
+	1: '/admin/products',
+	3: '/admin/approve',
+	4: ['/admin/products/groups', '/admin/products/groups/add'],
+	5: ['/admin/masters', '/admin/masters/add'],
+	6: ['/admin/brands', '/admin/brands/add'],
+	7: ['/admin/attributes', '/admin/attributes/add', '/admin/attributesets', '/admin/attributesets/add'],
+	8: '/admin/categories',
+	9: '/admin/sellers',
+	10: ['/admin/shops', '/admin/shops/add', '/admin/shoptypes', '/admin/shoptypes/add'],
+	11: ['/admin/accounts', '/admin/accounts/add', '/admin/roles', '/admin/roles/add'],
+	12: '/admin/coupons/global',
+	13: '/admin/coupons/seller',
+	21: '/admin/newsletters',
+	70: '/admin/products/reviews',
+
+	//Seller
+	29: '/dashboard',
+	30: '/orders',
+	32: '/returns',
+	33: '/products',
+	34: ['/products/select', '/products/add', '/products/export', '/products/import', '/products/update'],
+	46: '/categories',
+	47: '/products/reviews',
+	48: '/products/images',
+	49: '/products/groups',
+	50: '/inventory',
+	52: '/coupons',
+	53: '/coupons/add',
+	55: '/shops/settings',
+	56: '/shops/appearance',
+	57: ['/roles', '/accounts'],
+
+	//Shop
+	64: '/dashboard',
+	65: '/products/groups',
+	66: '/products/images',
+	68: '/inventory',
+	69: ['/coupons', '/coupons/add']
+};
+
 function generateRouteArray(obj) {
 	var menu = [];
 	_.forOwn(obj, function(object, header) {
@@ -55,94 +163,9 @@ function generateRouteArray(obj) {
 	return menu;
 }
 
-var seller = {
-	'Home|fa-home': {
-		'Onboarding': '/onboarding',
-		'Dashboard': '/dashboard',
-		'Newsletters': '/newsletters'
-	},
-	'Order|fa-inbox': {
-		'View Orders': '/orders',
-		'Return Request': '/returns'
-	},
-	'Product|fa-tag': {
-	  	'View Products': '/products',
-	  	'Add Product': ['/products/select', '/products/add'],
-	  	'Import - Add Products': '/products/import',
-			'Import - Update Products': '/products/update',
-	  	'Export Products': '/products/export',
-	  	'Local Category|margin-top-30': '/categories',
-	  	'Product Reviews': '/products/reviews',
-	  	'Image Management': '/products/images',
-	  	'Pending Products': '/products/groups'
-	},
-
-	'Inventory|fa-archive': {
-		'View Inventory': '/inventory'
-	},
-
-	'Promotion|fa-bookmark': {
-		'Coupons': '/coupons'
-	},
-
-	'Shop Setting|fa-sliders': {
-		'Shop Profile': '/shops/settings',
-		'Shop Appearance': '/shops/appearance'
-	},
-
-
-	'Account|fa-user': {
-		'User Accounts': '/accounts',
-		'User Roles': '/roles'
-	}
-};
-var admin = {
-	'Products|fa-tag': {
-		'View All Products': '/admin/products',
-		'Approve Products': '/admin/approve',
-		'Pending Products': ['/admin/groups', '/admin/groups/add'],
-		'Master Products': ['/admin/masters', '/admin/masters/add'],
-		'Brands': ['/admin/brands', '/admin/brands/add'],
-		'Attributes': ['/admin/attributes', '/admin/attributes/add'],
-		'Attribute Sets': ['/admin/attributesets', '/admin/attributesets/add'],
-		'Global Category': '/admin/categories'
-	},
-	'Accounts|fa-user': {
-		'Seller Accounts': '/admin/sellers',
-		'Shop Accounts': ['/admin/shops', '/admin/shops/add'],
-		'Shop Types': ['/admin/shoptypes', '/admin/shoptypes/add'],
-		'Admin Accounts': ['/admin/accounts', '/admin/accounts/add'],
-		'Admin Roles': ['/admin/roles', '/admin/roles/add']
-	},
-	'Promotion|fa-bookmark': {
-		'Global Coupons': '/admin/coupons/global',
-		'Seller Coupons': '/admin/coupons/seller'
-	},
-	'Others|fa-sliders': {
-		'Newsletters': '/admin/newsletters'
-	}
-};
-var permission = {
-	//Admin
-	'View All Products': '/admin/products',
-	'Approve Products': '/admin/approve',
-	'Manage Pending Products': '/admin/groups',
-	'Manage Master Products': '/admin/masters',
-	'Manage Brands': '/admin/brands',
-	'Manage Attribute & Attribute Sets': ['/admin/attributes', '/admin/attributesets'],
-	'Manage Global Categories': '/admin/categories',
-	'Manage Seller Accounts': '/admin/sellers',
-	'Manage Shops': ['/admin/shops', '/admin/shoptypes'],
-	'Manage Admin': ['/admin/accounts', '/admin/roles'],
-	'Manage Global Coupons': '/admin/coupons/global',
-	'Manage Seller Coupons': '/admin/coupons/seller',
-	'Manage Newsletter': '/admin/newsletters'
-
-};
-
 module.exports = {
   seller: generateRouteArray(seller),
   admin: generateRouteArray(admin),
-  reserve: ['add', 'select', 'import', 'update', 'export', 'reviews', 'images'],
+  reserve: ['add', 'select', 'import', 'update', 'export', 'reviews', 'images', 'shippinglist', 'groups'],
   permission: permission
 }

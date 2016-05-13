@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-plain', ['title' => 'Login']) ?>
+<?php	$this->layout('layouts/page-plain', ['title' => 'Admin - Login', 'loginType' => 'login-admin']);?>
 
 <?php $this->start('page-body') ?>
 <div class="login-page" ng-controller="AdminLoginCtrl">
@@ -19,6 +19,7 @@
 				ng-model="uform.user"
 				ng-class="{ 'has-error' : (events.user === false && loginForm.user.$invalid) || (error && loginForm.$pristine) }"
 				maxlength="300"
+				ng-pattern-restrict="[^<>]*"
 				ng-focus="events.user=true"
 				ng-blur="events.user=false"
 				required />
@@ -35,6 +36,7 @@
 				ng-model="uform.pass"
 				ng-class="{ 'has-error' : (events.pass === false && loginForm.pass.$invalid) || (error && loginForm.$pristine)  }"
 				maxlength="300"
+				ng-pattern-restrict="[^<>]*"
 				ng-focus="events.pass=true"
 				ng-blur="events.pass=false"
 				required />

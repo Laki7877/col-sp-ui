@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Product - Import']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Import Products']) ?>
 
 <?php $this->start('page-body') ?>
 	<div class="import-page" ng-controller="ProductImportCtrl" ng-init="init(<?=$update?>)">
@@ -93,6 +93,8 @@
 											nc-template-options-path="productImport/ColumnSearch">
 											<input type="text"
 												ng-model="ctrl.columnSearch"
+												ng-pattern-restrict="[^<>]*"
+												maxlength="255"
 												uib-typeahead="item as item.HeaderName for item in getGuideline($viewValue)"
 												class="form-control input-icon-right-search"
 												placeholder="Search column header for more detail"
@@ -121,7 +123,7 @@
 													nc-template-options-path="productImport/BrandValue"
 													nc-label="">
 													<ul class="scrollable-content">
-														<li ng-repeat="brand in ctrl.Brands | filter: ctrl.BrandSearch track by $index">{{brand}}</li>
+														<li ng-repeat="brand in ctrl.Brands track by $index">{{brand}}</li>
 													</ul>
 												</div>
 											</div>
@@ -185,6 +187,9 @@
 														nc-template-options-path="productImport/Name"
 														nc-label="Name">{{ctrl.columnSearch.HeaderName}}</div>
 													<div nc-template="common/input/form-group-with-label"
+														nc-template-options-path="productImport/Description"
+														nc-label="Description">{{ctrl.columnSearch.Description}}</div>
+													<div nc-template="common/input/form-group-with-label"
 														nc-template-options-path="productImport/EnableVariation"
 														nc-label="Enable Variation">{{ctrl.columnSearch.IsVariant | mapDropdown: yesNoOptions}}</div>
 													<div nc-template="common/input/form-group-with-label"
@@ -212,7 +217,7 @@
 														nc-label="Description">{{ctrl.columnSearch.Description}}</div>
 													<div nc-template="common/input/form-group-with-label"
 														nc-template-options-path="productImport/AcceptedValue"
-														nc-label="Accepted Value">{{ctrl.columnSearch.AcceptedValue}}</div>
+														nc-label="Accepted Value"><span ng-bind-html="ctrl.columnSearch.AcceptedValue"></span></div>
 													<div nc-template="common/input/form-group-with-label"
 														nc-template-options-path="productImport/Example"
 														nc-label="Example"><span ng-bind-html="ctrl.columnSearch.Example"></span></div>
@@ -235,12 +240,17 @@
 											nc-template-form="form.Upload"
 											nc-label="Choose File (.csv)"
 											nc-template-options-path="productImport/Upload">
-											<div type="text" class="width-100-percent form-control get_file" nv-file-select uploader="uploader" accept=".csv">
+											<div type="text" class="width-100-percent form-control get_file" ng-delegate="up">
 												<span ng-if="uploader.queue.length == 0" class="color-grey">Browse file to upload</span>
 												<span ng-if="uploader.queue.length > 0">{{ uploader.queue[uploader.queue.length-1].file.name }}</span>
 											</div>
 											<i class="fa fa-folder-open fa-lg color-dark-grey fa-input-icon"></i>
-											<input nv-file-select uploader="uploader" accept=".csv" type="file" class="my_file"/>
+											<input nv-file-select
+												uploader="uploader" 
+												type="file" 
+												accept=".csv"
+												class="my_file" 
+												ng-delegatee="up"/>
 										</div>
 										<div nc-template="common/input/form-group-with-label" nc-label="">
 											<button ng-click="import()" class="button-size-large btn btn-blue btn-width-xl" ng-disabled="uploader.queue.length == 0" type="button">Import Product</button>

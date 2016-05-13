@@ -1,5 +1,5 @@
 module.exports = {
-  "title": "SEO Schema V4",
+  "title": "SEO Schema V9",
   "type": "object",
   "properties": {
     "MetaTitleEn": {"type": "string"},
@@ -13,9 +13,12 @@ module.exports = {
     },
     "ProductBoostingWeight": {
       "type": "integer"
+    },
+    "GlobalProductBoostingWeight": {
+      "type": "integer"
     }
   },
-  "required": ["MetaTitleTh",
+  "required": ["MetaTitleTh", "MetaTitleEn",
   "MetaDescriptionTh", "MetaDescriptionEn",
-   "MetaKeywordEn", "MetaKeywordTh", "ProductUrlKeyEn", "ProductBoostingWeight"]
+   "MetaKeywordEn", "MetaKeywordTh", "ProductUrlKeyEn", "ProductBoostingWeight", "GlobalProductBoostingWeight"]
 }

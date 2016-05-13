@@ -55,3 +55,26 @@ ng-transclude.has-error .form-control{
     border-radius: 3px;
     background-color:#EDF2F9;
 }
+
+.signature-box {
+  border-bottom: 1px solid rgb(50, 52, 60);
+  min-height: 88px;
+}
+.signature-provider {
+  margin-top: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+ul[dnd-list] .dndPlaceholder {
+    display:block;
+    padding-left: 15px;
+    padding-right: 15px;
+    line-height: 30px;
+    height:30px;
+    cursor: pointer;
+    background: white;
+}
+ul[dnd-list] .dndDraggingSource {
+    display: none !important;
+}

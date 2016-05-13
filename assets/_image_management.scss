@@ -1,6 +1,10 @@
 .image-management {
 	$feature-text-height: 20px;
 
+	.content-text h4 {
+    font-size: 12px;
+	}
+
 	.form-section-content {
 		display: flex;
 		margin-top: 30px - $feature-text-height;

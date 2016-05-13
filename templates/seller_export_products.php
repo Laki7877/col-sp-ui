@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Export Products']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Export Products']) ?>
 
 <?php $this->start('page-body') ?>
 	<div class="seller-export-page" ng-init="init(<?= json_encode_n($viewBag) ?>)" ng-controller="ProductExportCtrl">
@@ -21,7 +21,7 @@
 		        </a>
 					</div>
 				</nc-page-title>
-				
+
 		</div>
 
 			<form class="ah-form sticky-mainform-action" ng-show="loading.length >= 2">
@@ -47,7 +47,7 @@
 											<div class="row">
 												<div class="col-sm-12 export-select-all">
 													<label>
-														<input type="checkbox" ng-click="toggleSelectAll()" ng-model="ctrl.selectAll"/> Select All 
+														<input type="checkbox" ng-click="toggleSelectAll()" ng-model="ctrl.selectAll"/> Select All
 													</label>
 												</div>
 												<div class="col-sm-{{12/columnCount}}" ng-repeat="col in _.range(columnCount)">
@@ -79,16 +79,20 @@
 										<div class="form-group" style="margin:0px; padding:0px" ng-show="!selectAllAttributeSets">
 												<nc-tradable-select
 												nc-test="lockAS"
+												on-search="onSearch"
 												nc-model="ctrl.tradedAS"
+												search-placeholder="Search Attribute Set"
 												nc-select-options="dataSet.attributeSets"
-												nc-options="{ 'map' : { 'text': 'Display', 'value' : 'AttributeSetId' } }">
+												nc-id="AttributeSetId"
+												nc-text="Display">
 										 	 </nc-tradable-select>
 
 										 </div>
 										 	<div class="form-group">
 												<div class="checkbox">
-	 										 		<label><input type="checkbox" ng-model="selectAllAttributeSets">Select All Attribute Sets ({{ sumProductAttributeSet }})</label>
-	 										 </div>
+	 										 		<!-- <label><input type="checkbox" ng-model="selectAllAttributeSets">Select All Attribute Sets ({{ sumProductAttributeSet }})</label> -->
+													<label><input type="checkbox" ng-model="selectAllAttributeSets">Select All Attribute Sets</label>
+											 </div>
 										 </div>
 										</div>
 									</div>

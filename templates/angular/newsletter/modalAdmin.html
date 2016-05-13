@@ -1,6 +1,6 @@
 <nc-alert nc-model="alert"></nc-alert>
 <div class="modal-header newsletter-modal-header">
-  <h3 class="modal-title modal_title_abosolute">Add Newsletter</h3>
+  <h3 class="modal-title modal_title_abosolute">Newsletter Detail</h3>
   <div class="title_relative">
     <div class="float-right">
       <a href="#" class="link-btn-plain" ng-click="$dismiss()">Cancel</a>
@@ -39,7 +39,7 @@
           <div ng-show="formData.Image"
             nc-template="common/input/form-group-with-label"
             nc-label="Image Preview">
-              <img ng-src="{{formData.Image.url}}" class="img-responsive" />
+              <img ng-src="{{formData.Image.Url}}" class="img-responsive" />
               <a style="display:block;" class="margin-top-5" ng-click="formData.Image=null"><i class="fa-trash fa"></i> Delete this image</a>
           </div>
           <div nc-template="common/input/form-group-with-label"
@@ -65,6 +65,25 @@
                       <datetimepicker name="PublishedDt"
                       ng-date-before="{{formData.PublishedDt}}"
                       data-ng-model="formData.PublishedDt"
+                      data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'hour' }" />
+                  </ul>
+              </div>
+            </div>
+          </div>
+          <div nc-template="common/input/form-group-with-label"
+            nc-template-options-path="addNewsletterForm/ExpiredDt"
+            nc-template-form="form.ExpiredDt"
+            nc-label="Expired Date">
+              <div>
+              <div class="dropdown">
+                  <a class="dropdown-toggle" id="dropdown" role="button" data-toggle="dropdown" data-target="#" href="#">
+                      <input readonly style="background-color:white" type="text"
+                       class="input-icon-calendar form-control" value="{{ formData.ExpiredDt | datetimeTh }}" />
+                  </a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                      <datetimepicker name="ExpiredDt"
+                      ng-date-before="{{formData.ExpiredDt}}"
+                      data-ng-model="formData.ExpiredDt"
                       data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'hour' }" />
                   </ul>
               </div>

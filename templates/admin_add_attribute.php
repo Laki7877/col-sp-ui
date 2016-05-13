@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attribute']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Attributes']) ?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminAttributeAddCtrl" ng-init="init(<?=$params?>)">
@@ -17,80 +17,53 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Information</h2></div>
             <div class="form-section-content">
-              <div ng-template="common/input/text2"
-                ng-template-options="{
-                  'label': 'Attribute Name',
-                  'labelClass': 'required',
-                  'inputSize': 'large',
-                  'error' : {
-                        'messages': {
-                          'required': 'This is a required field',
-                          'pattern': 'Only English letters and numbers allowed'
-                        },
-                        'show': isInvalid(form.AttributeNameEn),
-                        'conditions' : form.AttributeNameEn.$error
-                   }
-                }">
+              <div  nc-template="common/input/form-group-with-label"
+                nc-template-form="form.AttributeNameEn"
+                nc-template-options-path="addAttributeForm/AttributeNameEn"
+                nc-label="Attribute Name">
                 <input
                   class="form-control"
                   name="AttributeNameEn"
                   ng-model="formData.AttributeNameEn"
-                  ng-class="{ 'has-error' : isInvalid(form.AttributeNameEn) }"
-                  ng-pattern="/^[A-Za-z0-9_\-\s]+$/"
-                  maxlength="100"
+                  ng-pattern="/^[a-z0-9_\-]+$/"
+                  ng-lowercase
+                  maxlength="255"
                   required />
               </div>
-              <div ng-template="common/input/text2"
-                ng-template-options="{
-                  'label': 'Display Name (English)',
-                  'labelClass': 'required',
-                  'inputSize': 'large',
-                  'error' : {
-                        'messages': {
-                          'required': 'This is a required field',
-                          'pattern': 'Only English letters and numbers allowed'
-                        },
-                        'show': isInvalid(form.DisplayNameEn),
-                        'conditions' : form.DisplayNameEn.$error
-                   }
-                }">
+              <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.DisplayNameEn"
+                nc-template-options-path="addAttributeForm/DisplayNameEn"
+                nc-label="Display Name (English)">
                 <input
                   class="form-control"
                   name="DisplayNameEn"
                   ng-model="formData.DisplayNameEn"
-                  ng-class="{ 'has-error' : isInvalid(form.DisplayNameEn) }"
-                  ng-pattern="/^[A-Za-z0-9_\-\(\)\*\s\.]+$/"
-                  maxlength="100"
+                  ng-pattern-restrict="[^<>]*"
+                  maxlength="255"
                   required />
               </div>
-              <div ng-template="common/input/text2"
-                ng-template-options="{
-                  'label': 'Display Name (ไทย)',
-                  'labelClass': 'required',
-                  'inputSize': 'large',
-                  'error' : {
-                        'messages': {
-                          'required': 'This is a required field',
-                          'pattern': 'Only letters and numbers allowed'
-                        },
-                        'show': isInvalid(form.DisplayNameTh),
-                        'conditions' : form.DisplayNameTh.$error
-                   }
-                }">
+              <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.DisplayNameTh"
+                nc-template-options-path="addAttributeForm/DisplayNameTh"
+                nc-label="Display Name (ไทย)">
                 <input
                   class="form-control"
                   name="DisplayNameTh"
                   ng-model="formData.DisplayNameTh"
-                  ng-class="{ 'has-error' : isInvalid(form.DisplayNameTh) }"
-                  ng-pattern="/^[ก-๙A-Za-z0-9_\-\(\)\*\s\.]+$/"
-                  maxlength="100"
+                  ng-pattern-restrict="[^<>]*"
+                  maxlength="255"
                   required />
               </div>
-              <div
-                ng-template="common/input/dropdown"
-                ng-template-options="{
-                  'label' : 'Required'
-                }">
+              <div nc-template="common/input/form-group-with-label"
+                nc-template-form="form.DescriptionEn"
+                nc-template-options-path="addAttributeForm/DescriptionEn"
+                nc-label="Description">
+                <textarea class="form-control"
+                  name="AttributeDescriptionEn"
+                  ng-model="formData.AttributeDescriptionEn"></textarea>
+              </div>
+              <div nc-template="common/input/form-group-with-label"
+                nc-label="Required">
                 <ui-select ng-model="formData.Required" ng-disabled="formData.VisibleTo == 'AD'" search-enabled="false">
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
@@ -105,10 +78,8 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Input</h2></div>
             <div class="form-section-content">
-              <div ng-template="common/input/dropdown"
-                ng-template-options="{
-                  'label' : 'Default Attribute'
-                }">
+              <div nc-template="common/input/form-group-with-label"
+                nc-label="Default Attribute">
                 <ui-select ng-model="formData.DefaultAttribute" search-enabled="false" ng-disabled="alreadyDefault">
                   <ui-select-match placeholder="- Select Default Attribute -">
                       <span ng-bind="$select.selected.name"></span>
@@ -119,10 +90,8 @@
                 </ui-select>
               </div>
               <div ng-show="formData.DefaultAttribute"
-                ng-template="common/input/dropdown"
-                ng-template-options="{
-                  'label' : 'Visible to'
-                }">
+                  nc-template="common/input/form-group-with-label"
+                nc-label="Visible To">
                 <ui-select ng-model="formData.VisibleTo" search-enabled="false">
                   <ui-select-match placeholder="- Select Visible to -">
                       <span ng-bind="$select.selected.name"></span>
@@ -137,10 +106,8 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Attribute Input</h2></div>
             <div class="form-section-content">
-              <div ng-template="common/input/dropdown"
-                ng-template-options="{
-                  'label' : 'Attribute Input Type'
-                }">
+              <div nc-template="common/input/form-group-with-label"
+                nc-label="Attribute Input Type">
                 <ui-select ng-model="formData.DataType" search-enabled="false">
                   <ui-select-match placeholder="- Select Input Type -">
                       <span ng-bind="$select.selected.name"></span>
@@ -152,24 +119,16 @@
               </div>
               <div ng-switch="formData.DataType">
                 <div ng-switch-when="ST">
-                  <div ng-template="common/input/text2"
-                    ng-template-options="{
-                      'label': 'If empty, value equals',
-                      'error' : {
-                            'messages': {
-                              'pattern': 'Only letters and numbers allowed'
-                            },
-                            'show': isInvalid(form.ST_DefaultValue),
-                            'conditions' : form.ST_DefaultValue.$error
-                       }
-                    }">
+                  <div nc-template="common/input/form-group-with-label"
+                    nc-template-form="form.ST_DefaultValue"
+                    nc-template-options-path="addAttributeForm/DefaultValue"
+                    nc-label="If empty, value equals">
                     <input
                       class="form-control"
                       name="ST_DefaultValue"
                       ng-model="formData.ST.DefaultValue"
-                      ng-class="{ 'has-error' : isInvalid(form.ST_DefaultValue) }"
-                      ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
-                      maxlength="100"
+                      ng-pattern-restrict="[^<>]*"
+                      maxlength="255"
                       />
                   </div>
                 </div>
@@ -181,31 +140,36 @@
                     <div class="width-field-xxl">
                       <div class="multiple-input">
                         <div class="input-column input-xxl">
-                          <input name="ltChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['ltChoiceEn' + $index])}" maxlength="100" ng-pattern="/^[^ก-๙]+$/" required/>
+                          <input name="ltChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['ltChoiceEn' + $index])}" maxlength="100" ng-pattern-restrict="[^<>]*" required/>
                           <!-- Required -->
                           <div class="help-block color-red" ng-show="isInvalid(form['ltChoiceEn' + $index]) || isInvalid(form['ltChoiceTh' + $index])">
                               <span ng-show="form['ltChoiceTh' + $index].$error.required || form['ltChoiceEn' + $index].$error.required">This is a required field</span>
                           </div>
-                          <!-- Pattern -->
-                          <div class="help-block color-red" ng-show="isInvalid(form['ltChoiceEn' + $index])">
-                              <span ng-show="form['ltChoiceEn' + $index].$error.pattern">Only English allowed</span>
+                          <div class="help-block color-red" ng-show="isInvalid(form['ltChoiceImg' + $index])">
+                               <span ng-show="form['ltChoiceImg' + $index].$error.dimensions">Image must be 100x100 pixels</span>
                           </div>
                         </div>
                         <div class="input-column input-xxl">
-                          <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['ltChoiceTh' + $index])}" maxlength="100" required/>
+                          <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['ltChoiceTh' + $index])}" maxlength="100" ng-pattern-restrict="[^<>]*" required/>
+                        </div>
+                        <div class="input-column input-l">
+                          <input name="ltChoicePos{{$index}}" type="number" class="form-control" ng-model="choice.Position" placeholder="Position" ng-class="{'has-error': isInvalid(form['ltChoicePos' + $index])}"/>
                         </div>
                         <img class="image-wrapper"
-                          ng-if="choice.Image.url"
+                          ng-if="choice.Image.Url"
                           style="cursor: pointer;margin-top:-4px;"
-                          ng-src="{{choice.Image.url}}"
-                          ng-click="preview(choice.Image.url)"
+                          ng-src="{{choice.Image.Url}}"
+                          ng-click="preview(choice.Image.Url)"
                           width="34" />
                         <i uib-tooltip="Upload dropdown image"
-                          tooltip-placement="top"
+                          name="ltChoiceImg{{$index}}"
+                          tooltip-placement="top" 
                           tooltip-popup-delay="200"
                           tooltip-append-to-body="true"
                           ngf-select="upload($file, choice)"
-                          ngf-accept="'.png,.jpg,.jpeg'"
+                          ngf-accept="'.jpg,.jpeg'"
+                          ngf-dimensions="$width == 100 && $height == 100"
+                          ng-model="choice._dummy"
                           class="clickable fa fa-upload margin-left-10 color-dark-grey icon-size-20" ng-click="open(choice)"
                           style="margin-top:6px;"
                           ></i>
@@ -222,46 +186,29 @@
                       </a>
                     </div>
                   </div>
-                  <div ng-template="common/input/text2"
-                    ng-template-options="{
-                      'label': 'If empty, value equals',
-                      'error' : {
-                            'messages': {
-                              'pattern': 'Only letters and numbers allowed'
-                            },
-                            'show': isInvalid(form.LT_DefaultValue),
-                            'conditions' : form.LT_DefaultValue.$error
-                       }
-                    }">
+                  <!--div nc-template="common/input/form-group-with-label"
+                    nc-template-form="form.LT_DefaultValue"
+                    nc-template-options-path="addAttributeForm/DefaultValue"
+                    nc-label="If empty, value equals">
                     <input
                       class="form-control"
                       name="LT_DefaultValue"
                       ng-model="formData.LT.DefaultValue"
-                      ng-class="{ 'has-error' : isInvalid(form.LT_DefaultValue) }"
                       ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
                       maxlength="100"
                       />
-                  </div>
+                  </div-->
                 </div>
                 <div ng-switch-when="HB">
-                  <div ng-template="common/input/text2"
-                    ng-template-options="{
-                      'label': 'If empty, value equals',
-                      'error' : {
-                            'messages': {
-                              'pattern': 'Only letters and numbers allowed'
-                            },
-                            'show': isInvalid(form.HB_DefaultValue),
-                            'conditions' : form.HB_DefaultValue.$error
-                       }
-                    }">
+                  <div nc-template="common/input/form-group-with-label"
+                    nc-template-options-path="addAttributeForm/DefaultValue"
+                    nc-label="If empty, value equals">
                     <input
                       class="form-control"
                       name="HB_DefaultValue"
                       ng-model="formData.HB.DefaultValue"
-                      ng-class="{ 'has-error' : isInvalid(form.HB_DefaultValue) }"
-                      ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
-                      maxlength="100"
+                      ng-pattern-restrict="[^<>]*"
+                      maxlength="255"
                       />
                   </div>
                 </div>
@@ -273,18 +220,17 @@
                     <div class="width-field-xxl">
                       <div class="multiple-input">
                         <div class="input-column input-xxl">
-                          <input name="cbChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['cbChoiceEn' + $index])}" maxlength="100" ng-pattern="/^[^ก-๙]+$/" required/>
+                          <input name="cbChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['cbChoiceEn' + $index])}" maxlength="100" ng-pattern-restrict="[^<>]*" required/>
                           <!-- Required -->
                           <div class="help-block color-red" ng-show="isInvalid(form['cbChoiceEn' + $index]) || isInvalid(form['cbChoiceTh' + $index])">
                               <span ng-show="form['cbChoiceTh' + $index].$error.required || form['cbChoiceEn' + $index].$error.required">This is a required field</span>
                           </div>
-                          <!-- Pattern -->
-                          <div class="help-block color-red" ng-show="isInvalid(form['cbChoiceEn' + $index])">
-                              <span ng-show="form['cbChoiceEn' + $index].$error.pattern">Only English allowed</span>
-                          </div>
                         </div>
                         <div class="input-column input-xxl">
-                          <input name="cbChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['cbChoiceTh' + $index])}" maxlength="100" required/>
+                          <input name="cbChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['cbChoiceTh' + $index])}" maxlength="100" ng-pattern-restrict="[^<>]*" required/>
+                        </div>
+                        <div class="input-column input-l">
+                          <input name="cbChoicePos{{$index}}" type="number" class="form-control" placeholder="Position" ng-model="choice.Position" ng-class="{'has-error': isInvalid(form['cbChoicePos' + $index])}"/>
                         </div>
                         <i class="clickable fa fa-trash margin-left-10 color-dark-grey icon-size-20" ng-click="formData.CB.AttributeValues.splice($index,1)" style="margin-top:6px;"></i>
                       </div>
@@ -299,26 +245,18 @@
                       </a>
                     </div>
                   </div>
-                  <div ng-template="common/input/text2"
-                    ng-template-options="{
-                      'label': 'If empty, value equals',
-                      'error' : {
-                            'messages': {
-                              'pattern': 'Only letters and numbers allowed'
-                            },
-                            'show': isInvalid(form.CB_DefaultValue),
-                            'conditions' : form.CB_DefaultValue.$error
-                       }
-                    }">
+                  <!--div nc-template="common/input/form-group-with-label"
+                    nc-template-form="form.CB_DefaultValue"
+                    nc-template-options-path="addAttributeForm/DefaultValue"
+                    nc-label="If empty, value equals">
                     <input
                       class="form-control"
                       name="CB_DefaultValue"
                       ng-model="formData.CB.DefaultValue"
-                      ng-class="{ 'has-error' : isInvalid(form.CB_DefaultValue) }"
                       ng-pattern="/^[ก-๙A-Za-z0-9\s]+$/"
                       maxlength="100"
                       />
-                  </div>
+                  </div-->
                 </div>
               </div>
             </div>
@@ -327,11 +265,9 @@
             <div class="form-section-header"><h2>Variation</h2></div>
             <div class="form-section-content">
               <div
-                ng-template="common/input/dropdown"
-                ng-template-options="{
-                  'label' : 'Set as Variation'
-                }">
-                <ui-select ng-model="formData.VariantStatus" search-enabled="false" ng-disabled="formData.DataType == 'HB'|| formData.DataType == 'ST'">
+                nc-template="common/input/form-group-with-label"
+                nc-label="Set As Variation">
+                <ui-select ng-model="formData.VariantStatus" search-enabled="false" ng-disabled="formData.DataType == 'HB'|| formData.DataType == 'ST' || alreadyVariant">
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>
@@ -342,10 +278,8 @@
               </div>
               <div
                 ng-show="formData.VariantStatus && formData.DataType != 'HB'"
-                ng-template="common/input/dropdown"
-                ng-template-options="{
-                  'label' : 'Variant Display Type'
-                }">
+                nc-template="common/input/form-group-with-label"
+                nc-label="Variant Display Type">
                 <ui-select ng-model="formData.VariantDataType" search-enabled="false">
                   <ui-select-match placeholder="- Select Display Type -">
                       <span ng-bind="$select.selected.name"></span>
@@ -360,10 +294,8 @@
           <div class="form-section">
             <div class="form-section-header"><h2>Search Property</h2></div>
             <div class="form-section-content">
-              <div ng-template="common/input/dropdown"
-                ng-template-options="{
-                  'label' : 'Use in Global <br> Advanced Search'
-                }">
+              <div class="two-lines-label" nc-template="common/input/form-group-with-label"
+                nc-label="Use in Global <br> Advanced Search">
                 <ui-select ng-model="formData.ShowGlobalSearchFlag" search-enabled="false">
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
@@ -373,10 +305,8 @@
                   </ui-select-choices>
                 </ui-select>
               </div>
-              <div ng-template="common/input/dropdown"
-                ng-template-options="{
-                  'label' : 'Use in Local <br> Advanced Search'
-                }">
+              <div class="two-lines-label" nc-template="common/input/form-group-with-label"
+                nc-label="Use in Local <br> Advanced Search">
                 <ui-select ng-model="formData.ShowLocalSearchFlag" search-enabled="false">
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
@@ -386,11 +316,34 @@
                   </ui-select-choices>
                 </ui-select>
              </div>
-              <div
-                ng-template="common/input/dropdown"
-                ng-template-options="{
-                  'label' : 'Filterable'
-                }">
+
+			 <div ng-show="formData.Filterable" class="two-lines-label" nc-template="common/input/form-group-with-label"
+                nc-label="Show Filter in <br> Global">
+                <ui-select ng-model="formData.ShowGlobalFilterFlag" search-enabled="false">
+                  <ui-select-match>
+                      <span ng-bind="$select.selected.name"></span>
+                  </ui-select-match>
+                  <ui-select-choices repeat="item.value as item in boolOptions">
+                      <span ng-bind="item.name"></span>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+
+
+			  <div  ng-show="formData.Filterable" class="two-lines-label" nc-template="common/input/form-group-with-label"
+                nc-label="Show Filter in <br> Local">
+                <ui-select ng-model="formData.ShowLocalFilterFlag" search-enabled="false">
+                  <ui-select-match>
+                      <span ng-bind="$select.selected.name"></span>
+                  </ui-select-match>
+                  <ui-select-choices repeat="item.value as item in boolOptions">
+                      <span ng-bind="item.name"></span>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+
+              <div nc-template="common/input/form-group-with-label"
+                nc-label="Filterable">
                 <ui-select ng-model="formData.Filterable" search-enabled="false" ng-disabled="formData.DataType == 'HB'">
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>

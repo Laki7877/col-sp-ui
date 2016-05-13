@@ -8,8 +8,13 @@
   storage.remove('redirect');
   
   var profile = storage.getCurrentUserProfile();
-  if (profile) {
-    $window.location.href = Credential.getRedirPath(profile)
+  if (profile && !profile.User.IsAdmin) {
+        Credential.checkToken()
+        .then(function() {
+          $window.location.href = Credential.getRedirPath(profile)
+        }, function() {
+          storage.clear();
+        });
   }
   
   if(storage.poke('session_timeout')) {
@@ -33,10 +38,22 @@
     var user = $scope.uform.user;
     var pass = $scope.uform.pass;
     Credential.login(user, pass, false).then(function (r) {
+      if(r.User.IsAdmin){
+          storage.clear();
+          $scope.error = true;
+          $scope.loading = false;
+          $scope.loginForm.$setPristine();
+          return;
+      }
+
       $scope.loading = false;
       if (!redir || redir == '/') {
         redir = Credential.getRedirPath(r);
       }
+
+      //login flag
+      storage.put('login', true);
+
       $window.location.href = redir;
     }, function (err) {
       storage.clear();

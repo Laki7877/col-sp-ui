@@ -3,7 +3,7 @@ module.exports = function($scope, $controller, ProductTempService, config) {
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
 		options: {
-			url: '/admin/groups',
+			url: '/admin/products/groups', 
 			service: ProductTempService,
 			item: 'Pending Product',
 			order: 'UpdatedDt',
@@ -11,7 +11,12 @@ module.exports = function($scope, $controller, ProductTempService, config) {
 			bulks: [{
 				name: 'Create Single Product',
 				fn: function(arr, cb, cat) {
-					console.log(arr, cb, cat);
+					//WFENDPOINT
+					$scope.alert.close();
+					if(arr.length == 0) {
+						$scope.alert.error('Action failed. Please select Product for this action.')
+						return;
+					}
 				},
 				modal: {
 					size: 'category-section modal-lg column-4',

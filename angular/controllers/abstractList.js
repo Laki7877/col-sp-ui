@@ -133,12 +133,11 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 		return !_.isEmpty($scope.params.searchText) || ( _.isUndefined($scope.params._filter) ? false :  $scope.params._filter != options.filters[0].value);
 	};
 
-	$scope.$watch('params', function(a,b) {
-		$scope.reload(a,b);
-	}, true);
+	var init = false;
 
-	$timeout(function() {
-		$scope.reload();
-		(options.onInit || _.noop)($scope);
-	}, 0);
+	$scope.$watch('params', function(a,b) {
+		if(!$scope.advanceSearchMode) {
+			$scope.reload(a,b);
+		}
+	}, true);
 };

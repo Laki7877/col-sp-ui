@@ -5,6 +5,11 @@ module.exports = {
         'formGroupClass': 'margin-top-40',
         'inputSize': 'xxl'
     },
+    DescriptionMobile: {
+        'divClass': 'col-sm-6',
+        'formGroupClass': 'margin-top-40',
+        'inputSize': 'xxl'
+    },
     DescriptionShortTh: {
         'divClass': 'col-sm-6',
         'inputSize': 'xxl',
@@ -25,12 +30,19 @@ module.exports = {
             }
         }
     },
+    BrandVisibility: {
+        error: {
+            messages: {
+                maxtagcount: 'Maximum number of Brands reached'
+            }
+        }
+    },
     // Feature products
     FeatureProducts: {
         inputClass: 'large',
         error: {
             messages: {
-                maxtagcount: 'Only maximum of 20 feature products are allowed'
+                maxtagcount: 'Cannot exceed 20 featured products'
             }
         }
     },

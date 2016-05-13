@@ -2,6 +2,9 @@
 
 class AdminController extends Controller
 {
+	public static function onboarding($params) {
+		return View::render('admin_onboarding');
+	}
 	public static function category($params)
 	{
 		return View::render('admin_category');
@@ -180,9 +183,16 @@ class AdminController extends Controller
 	}
 
 	//Pending product
-	public static function listPendingProduct($params) 
-	{
-		return View::render('admin_pending_product');
+	// public static function listPendingProduct($params) 
+	// {
+	// 	return View::render('admin_pending_product');
+	// }
+
+	// public static function addPendingProduct($param){
+	// 	return View::render('admin_pending_product_group_add');
+	// }
+	public static function addGroupingProduct($param){
+		return View::render('admin_product_grouping');
 	}
 
 	//On top credit
@@ -203,5 +213,10 @@ class AdminController extends Controller
 	public static function listNewsletter($params)
 	{
 		return View::render('admin_newsletters');
+	}
+	//Newsletter
+	public static function reviewProduct($params)
+	{
+		return View::render('admin_product_review');
 	}
 }

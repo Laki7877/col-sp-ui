@@ -1,4 +1,4 @@
-module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64) {
+module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $filter) {
 	'ngInject';
 	$scope.ProductList = [];
 	$scope.SELECT_ALL = false;
@@ -36,6 +36,11 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64) {
 
 	});
 
+	$scope.onSearch = function(q){
+		console.log(q, $scope.dataSet.attributeSets);
+		$scope.dataSet.attributeSets = $filter('filter')($scope.dataSet._attributeSets, q);
+	}
+
 	var normalFlow = function(){
 		if(productIds.length == 0){
 			$scope.SELECT_ALL = true;
@@ -49,21 +54,25 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64) {
 		if($scope.SELECT_ALL){
 			AttributeSet.getAll().then(function(data){
 				$scope.dataSet.attributeSets = data.map(function(m){
-					m.Display = m.AttributeSetNameEn + " (" + m.ProductCount + ")";
+					//m.Display = m.AttributeSetNameEn + " (" + m.ProductCount + ")";
+					m.Display = m.AttributeSetNameEn;
 					$scope.sumProductAttributeSet += Number(m.ProductCount);
 					$scope.loading.push(true);
 					return m;
 				});
+				$scope.dataSet._attributeSets = $scope.dataSet.attributeSets;
 				console.log(data);
 			});
 		}else{
 			Product.getAllAttributeSetsForProducts($scope.ProductList).then(function(data){
 				$scope.dataSet.attributeSets = data.map(function(m){
-					m.Display = m.AttributeSetNameEn + " (" + m.ProductCount.length + ")";
+					// m.Display = m.AttributeSetNameEn + " (" + m.ProductCount.length + ")";
+					m.Display = m.AttributeSetNameEn;
 					$scope.sumProductAttributeSet += Number(m.ProductCount.length);
 					$scope.loading.push(true);
 					return m;
 				});
+				$scope.dataSet._attributeSets = $scope.dataSet.attributeSets;
 				console.log(data);
 			});
 		}

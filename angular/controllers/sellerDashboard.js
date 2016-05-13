@@ -1,5 +1,5 @@
 
-module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window, $uibModal, NewsletterService){
+module.exports = function($scope, $rootScope, Dashboard, $log, $filter, storage, $window, $uibModal, NewsletterService){
 	'ngInject';
 
 	//---------------- Begin Graph section ----------------
@@ -174,6 +174,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	// get Newslterr data and set it to $scope
 	Dashboard.getNewsLetter()
 		.then(function(query) {
+			$scope.totalNews = query.total;
 			return $scope.newsLettersData = query.data;
 		});
 
@@ -184,6 +185,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 			// set max data for table to 10
 			$scope.maxLowStockAlert = 10;
 			$scope.lowStockAlertData = query.data;
+			$scope.totalLowStockAlert = query.total;
 
 			for (var i = $scope.lowStockAlertData.length - 1; i >= 0; i--) {
 				$scope.lowStockAlertData[i].PidText = 'PID: ' + $scope.lowStockAlertData[i].Pid;
@@ -196,6 +198,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	Dashboard.getOutOfStock()
 		.then(function(query) {
 			$scope.outOfStockData = query.data;
+			$scope.totalOutStockAlert = query.total;
 
 			for (var i = $scope.outOfStockData.length - 1; i >= 0; i--) {
 				$scope.outOfStockData[i].PidText = 'PID: ' + $scope.outOfStockData[i].Pid;
@@ -211,6 +214,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 	Dashboard.getOrders()
 		.then(function(query) {
 			$scope.newOrdersData = query.data;
+			$scope.totalOrders = query.total;
 
 			for (var i = $scope.newOrdersData.length - 1; i >= 0; i--) {
 				$scope.newOrdersData[i].OrderIdText = 'ID: ' + $scope.newOrdersData[i].OrderId;
@@ -284,14 +288,17 @@ module.exports = function($scope, $rootScope, Dashboard, $log, storage, $window,
 
 	// call end-point Product Rating
 	Dashboard.getProductRating()
-		.then(function(data){
-			if (data != 'N/A') {
-				$scope.productRatingScore = data + ' / 5.0';
-				$scope.productRatingRank = getColoredRank('Product Rating', data);
-			}
-			else {
-				$scope.productRatingScore = 'N/A';
-			}
+		.then(function(data){	
+			$scope.rating = {};		
+			_.forOwn(data, function(v, k) {
+				if (v != 'N/A') {
+					v = _.round(v, 1);
+					$scope.rating[k] = '<div class="font-size-16 color-' + getColoredRank('Product Rating', v) + '">' + $filter('currency')(v, ' ', 1) + ' / 5.0' + '</div>';
+				} else {
+					$scope.rating[k] = '<div class="font-size-16 color-grey">' + v  + '</div>';
+
+				}
+			});
 		});
 
 	// Ontime Delivery mockup

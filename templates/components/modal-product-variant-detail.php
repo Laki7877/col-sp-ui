@@ -76,70 +76,9 @@
 
                             </div>
                         </div>
-                        <? $this->insert('components/forms/form-section-upload-new-product-image',
-                        ["uploader" => "uploaderModal",
-                        "model" => $model,
-                        "images" => $model .".Images"]) ?>
-
-                            <div class="form-section">
-                                <div class="form-section-header">
-                                    Embed Video
-                                </div>
-                                <div class="form-section-content">
-                                    <div ng-template="common/input/text2" ng-template-options="{
-				                        'label': 'Video Link 1',
-				                        'hint': {
-				                        	'show': true,
-				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
-				                        },
-				                        'error' : {
-				                              'messages': {
-				                              	'url': 'Please enter valid URL'
-				                              },
-				                              'show': $root.isInvalid(addProductVariantForm.Modal_VideoLinks0),
-				                              'conditions' : addProductVariantForm.Modal_VideoLinks0.$error
-				                         }
-				                      }">
-                                        <input class="form-control width-field-normal" name="Modal_VideoLinks0" type="url" maxlength="500" ng-model="<?=$model?>.VideoLinks[0]" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_VideoLinks0) }" />
-                                    </div>
-
-
-                                    <div ng-template="common/input/text2" ng-template-options="{
-				                        'label': 'Video Link 2',
-				                        'hint': {
-				                        	'show': true,
-				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
-				                        },
-				                        'error' : {
-				                              'messages': {
-				                              	'url': 'Please enter valid URL'
-				                              },
-				                              'show': $root.isInvalid(addProductVariantForm.Modal_VideoLinks1),
-				                              'conditions' : addProductVariantForm.Modal_VideoLinks1.$error
-				                         }
-				                      }">
-                                        <input class="form-control width-field-normal" name="Modal_VideoLinks1" type="url" maxlength="500" ng-model="<?=$model?>.VideoLinks[1]" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_VideoLinks1) }" />
-                                    </div>
-
-
-                                    <div ng-template="common/input/text2" ng-template-options="{
-				                        'label': 'Video Link 3',
-				                        'hint': {
-				                        	'show': true,
-				                        	'message': 'Example: https://www.youtube.com/watch?v=f78M4nKW1Ms'
-				                        },
-				                        'error' : {
-				                              'messages': {
-				                              	'url': 'Please enter valid URL'
-				                              },
-				                              'show': $root.isInvalid(addProductVariantForm.Modal_VideoLinks2),
-				                              'conditions' : addProductVariantForm.Modal_VideoLinks2.$error
-				                         }
-				                      }">
-                                        <input type="url" class="form-control width-field-normal" name="Modal_VideoLinks2" maxlength="500" ng-model="<?=$model?>.VideoLinks[2]" ng-class="{ 'has-error' : $root.isInvalid(addProductVariantForm.Modal_VideoLinks2) }" />
-                                    </div>
-                                </div>
-                            </div>
+                             <nc-alert nc-model="image_alert"></nc-alert>
+                            <div ap-component="ap/section-image-video"></div>
+                            
                             <div class="form-section">
                                 <div class="form-section-header">
                                     Description

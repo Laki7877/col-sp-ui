@@ -1,6 +1,6 @@
 <?php
 
-$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System'])
+$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Type'])
 ?>
 
 <?php $this->start('page-body') ?>
@@ -23,33 +23,22 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 								<div class="form-section">
 									<div class="form-section-header"><h2>Admin Account Information</h2></div>
 									<div class="form-section-content">
-										  <div ng-template="common/input/label"
-										  	ng-template-options="{
-										  		'label': 'Shop Type ID'
-										  	}"
-										  	ng-show="formData.ShopTypeId"
-										  	>
-										  	{{formData.ShopTypeId | leadingzero:2}}
+										  <div nc-template="common/input/form-group-with-label"
+										  	nc-label="Shop Type ID"
+										  	ng-show="formData.ShopTypeId">
+												<div class="text-result">
+													{{formData.ShopTypeId}}
+												</div>
 										  </div>
 							              <!-- Name -->
-							              <div ng-template="common/input/text2"
-							                ng-template-options="{
-							                  'label': 'Type Name',
-							                  'labelClass': 'required',
-							                  'error' : {
-							                        'messages': {
-							                          'required': 'This is a required field'
-							                        },
-							                        'show': $root.isInvalid(form.ShopTypeNameEn),
-							                        'conditions' : form.ShopTypeNameEn.$error
-							                   }
-							                }">
-							                <input
-							                  class="form-control"
+							              <div nc-template="common/input/form-group-with-label"
+							                nc-template-options-path="addShopTypeForm/ShopTypeNameEn"
+							                nc-label="Type Name">
+							                <input class="form-control"
 							                  name="ShopTypeNameEn"
 							                  ng-model="formData.ShopTypeNameEn"
-							                  ng-class="{ 'has-error' : $root.isInvalid(form.ShopTypeNameEn) }"
-							                  maxlength="100"
+							                  maxlength="255"
+							                  ng-pattern-restrict="[^<>]*"
 							                  required />
 							              </div>
 									</div>
@@ -62,19 +51,14 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration Sys
 									<div class="form-section-header"><h2>Shop Type Permission</h2></div>
 									<div class="form-section-content">
 										<div ng-template="common/input/multiline-checkbox"
-											ng-template-options="{
-												'label' : 'Shop Type Permission'
-											}">
-											<label><input ng-model="selectAll.ShopTypePermission" ng-change="checkAll(selectAll.ShopTypePermission, 'ShopTypePermission')" type="checkbox">Select All</label>
-											<label ng-repeat="permission in formData.Permission | slice:0:4"><input name="permission{{permission.PermissionId}}" ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
+											ng-template-options="{ 'label' : 'All Features' }">
+											<label><input ng-model="selectAll" ng-change="checkAll(selectAll)" type="checkbox">Select All</label>
 										</div>
-										<div ng-template="common/input/multiline-checkbox"
-											ng-template-options="{
-												'label' : 'Appearance Setting'
-											}"
-											ng-show="formData.Permission[3].check">
-											<label><input ng-model="selectAll.AppearanceSetting" ng-change="checkAll(selectAll.AppearanceSetting, 'AppearanceSetting')" type="checkbox">Select All</label>
-											<label ng-repeat="permission in formData.Permission | slice:4:8"><input name="permission{{permission.PermissionId}}" ng-model="permission.check" type="checkbox">{{ permission.PermissionName }}</label>
+										<div ng-repeat="name in group">
+											<div ng-template="common/input/multiline-checkbox"
+												ng-template-options="{ 'label' : name }">
+												<div ng-include="'common/roleNode'" ng-repeat="p in formData.Permissions[name]"></div>
+											</div>
 										</div>
 									</div>
 								</div>

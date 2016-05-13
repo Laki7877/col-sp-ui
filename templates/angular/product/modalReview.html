@@ -10,16 +10,29 @@
           <div class="form-section-header"><h2>Review Detail</h2></div>
           <div class="form-section-content modal-custom">
             <div nc-template="common/input/form-group-with-label"
-              nc-label="Date & Time :">
-              <p class="form-control-static">{{UpdatedDt | dateTh}} at {{UpdatedDt | timeTh}}</p>
+              nc-label="Date & Time">
+              <p class="form-control-static">{{formData.UpdatedDt | dateTh}} at {{formData.UpdatedDt | timeTh}}</p>
             </div>
             <div nc-template="common/input/form-group-with-label"
-              nc-label="Customer :">
-              <p class="form-control-static">{{Customer}}</p>
+              nc-label="Customer Name">
+              <p class="form-control-static">{{formData.Customer.Name}}</p>
+            </div>
+            <div class="margin-top-5"
+              nc-template="common/input/form-group-with-label"
+              nc-label="Delivery Speed">
+              <p class="form-control-static">{{formData.DeliverySpeed | currency: '': 1}} / {{maxRating | currency: ' ': 1}}</p>
             </div>
             <div nc-template="common/input/form-group-with-label"
-              nc-label="Comment :">
-              <p class="form-control-static">{{Comment}}</p>
+              nc-label="Product Content">
+              <p class="form-control-static">{{formData.ProductContent | currency: '': 1}} / {{maxRating | currency: ' ': 1}}</p>
+            </div>
+            <div nc-template="common/input/form-group-with-label"
+              nc-label="Product Validity">
+              <p class="form-control-static">{{formData.ProductValidity | currency: '': 1}} / {{maxRating | currency: ' ': 1}}</p>
+            </div>
+            <div nc-template="common/input/form-group-with-label"
+              nc-label="Packaging">
+              <p class="form-control-static">{{formData.Packaging | currency: '': 1}} / {{maxRating | currency: ' ': 1}}</p>
             </div>
           </div>
         </div>
@@ -27,20 +40,20 @@
           <div class="form-section-header"><h2>Product Information</h2></div>
           <div class="form-section-content modal-custom">
             <div nc-template="common/input/form-group-with-label"
-              nc-label="PID :">
-              <p class="form-control-static">{{Pid}}</p>
+              nc-label="PID">
+              <p class="form-control-static">{{formData.Pid}}</p>
             </div>
             <div nc-template="common/input/form-group-with-label"
-              nc-label="Product Name (English) :">
-              <p class="form-control-static">{{ProductNameEn}}</p>
+              nc-label="Product Name (English)">
+              <p class="form-control-static">{{formData.ProductNameEn}}</p>
             </div>
             <div nc-template="common/input/form-group-with-label"
-              nc-label="Product Name (ไทย) :">
-              <p class="form-control-static">{{ProductNameTh}}</p>
+              nc-label="Product Name (ไทย)">
+              <p class="form-control-static">{{formData.ProductNameTh}}</p>
             </div>
             <div nc-template="common/input/form-group-with-label"
-              nc-label="Brand :">
-              <p class="form-control-static">{{BrandNameEn}}</p>
+              nc-label="Brand">
+              <p class="form-control-static">{{formData.Brand.BrandNameEn}}</p>
             </div>
           </div>
         </div>

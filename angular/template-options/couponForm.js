@@ -1,4 +1,13 @@
 module.exports = {
+  Status: {
+    labelClass: "required",
+    inputSize: "large",
+    error: {
+      messages: {
+        required: 'This is a required field'
+      }
+    }
+  },
   CouponName: {
     labelClass: "required",
     inputSize: "large",
@@ -39,6 +48,20 @@ module.exports = {
       }
     }
   },
+  DiscountPercent: {
+    labelClass: "required",
+    hint: {
+      show: true,
+      message: 'Example: 50 or 75'
+    },
+    error: {
+      messages: {
+        maxnumber: 'Please enter a valid discount percent between 0% and 100%',
+        minnumber: 'Please enter a valid discount percent between 0% and 100%',
+        required: 'This is a required field'
+      }
+    }
+  },
   MaximumAmount: {},
   MaximumUsers: {
     labelClass: "required",
@@ -49,12 +72,28 @@ module.exports = {
     }
   },
   UsagePerCustomer: {},
-  ConditionValue: {
+  Condition_Order: {
+
+  },
+  Condition_Value: {
+    labelClass: 'required',
+    error: {
+      messages: {
+        required: 'This is a required field'
+      }
+    },
     hint: {
       show: true,
-      message: 'Example: 200 or 125.50'
+      message: 'Example: 200 or 125.50' 
     }
   },
   FilterByValue: {
+    labelClass: 'required',
+    error: {
+      messages: {
+        required: 'This is a required field',
+        maxtagcount: 'Maximum tags exceeded'
+      }
+    }
   }
 }

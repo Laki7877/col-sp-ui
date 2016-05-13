@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, SellerRoleService) {
+module.exports = function($scope, $controller, SellerRoleService, SellerPermissionService, PermissionService, util) {
 	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -6,73 +6,50 @@ module.exports = function($scope, $controller, SellerRoleService) {
 		options: {
 			id: 'GroupId',
 			url: '/roles',
-			item: 'User Role',
-			service: SellerRoleService
-		}
-	});	
-	$scope.selectAll = {
-		AllFeatures: false,
-		EditProduct: false,
-		EditInformation: false
-	};
-	$scope.test = function(min, max) {
-		if($scope.formData.Permission.length > 0) {
-			var test = true;
-			for(var i = min; i < max; i++) {
-				test = test && $scope.formData.Permission[i].check;
+		item: 'User Role',
+			service: SellerRoleService,
+			onLoad: function(scope, load) {
+				scope.loading = true;
+				SellerPermissionService.listAll()
+					.then(function(data) {
+					scope.permissions = data;
+					if(load) {		
+						scope.formData.Permissions = PermissionService.deserialize(scope.formData.Permission, scope.permissions);
+					} else {				
+						scope.formData.Permissions = PermissionService.generate(scope.permissions);
+					}
+
+					$scope.selectAll = true;
+					_.forOwn($scope.formData.Permissions, function(v,k) {
+						util.traverse(v, 'Children', function(e) {
+							$scope.selectAll = $scope.selectAll && e.check;
+						});
+					});
+
+				}).finally(function() {
+					scope.loading = false;
+				});
+			},
+			onSave: function(scope) {
+				scope.formData.Permission = PermissionService.serialize(scope.formData.Permissions);
+			},
+			onAfterSave: function(scope) {
+				scope.formData.Permissions = PermissionService.deserialize(scope.formData.Permission, scope.permissions);
+				$scope.selectAll = true;
+				_.forOwn($scope.formData.Permissions, function(v,k) {
+					util.traverse(v, 'Children', function(e) {
+						$scope.selectAll = $scope.selectAll && e.check;
+					});
+				});
 			}
-			return test;
 		}
-		return false;
-	};
-	$scope.same = function(newObj, oldObj, min, max) {
-		if($scope.formData.Permission.length > 0) {
-			var test = true;
-			for(var i = min; i < max; i++) {
-				test = test || newObj[i].check != oldObj.check;
-			}
-			return test;
-		}
-		return false;
-	};
-	$scope.check = function(val, min, max) {
-		if($scope.formData.Permission.length > 0) {
-			for(var i = min; i <= max; i++) {
-				$scope.formData.Permission[i].check = val;
-			}
-		}
-	}
+	});
+	$scope.group = ['Dashboard', 'Orders', 'Products', 'Inventory', 'Promotions', 'Shop Setting', 'Account', 'Report', 'CMS'];
 	$scope.checkAll = function(val) {
-		if(_.isNil($scope.formData.Permission)) return;
-		for(var i = 0; i < $scope.formData.Permission.length; i++) {
-			if($scope.formData.Permission[i]) {
-				$scope.formData.Permission[i].check = val;
-			}
-		}
-		$scope.selectAll.EditProduct = val;
-		$scope.selectAll.EditInformation = val;
+		_.forOwn($scope.formData.Permissions, function(v,k) {
+			util.traverse(v, 'Children', function(e) {
+				e.check = val;
+			});
+		});
 	};
-	$scope.$watch('selectAll.EditProduct', function() {		
-		if($scope.selectAll.EditProduct == false) {
-			$scope.check(false, 4, 9);
-		}
-	});
-	$scope.$watch('selectAll.EditInformation', function() {		
-		if($scope.selectAll.EditInformation == false) {
-			$scope.check(false, 4, 6);
-		}
-	});
-	$scope.$watch('formData.Permission', function(val, val2) {
-		if(!_.isNil(val)) {
-			$scope.recheck();
-			$scope.selectAll.AllFeatures = $scope.test(0, $scope.formData.Permission.length);
-			if(!$scope.same(val, val2, 4, 6)) {
-				$scope.selectAll.EditInformation = $scope.test(4, 6);
-			}
-			if(!$scope.same(val, val2, 4, 9)) {
-				$scope.selectAll.EditProduct = $scope.test(4, 9);
-				$scope.selectAll.EditInformation = $scope.selectAll.EditProduct;
-			}
-		}
-	}, true);
 };

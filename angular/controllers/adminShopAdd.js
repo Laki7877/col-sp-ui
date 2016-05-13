@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, $uibModal, AdminShopService, AdminShoptypeService, GlobalCategoryService, ImageService, Category, config, common, Credential, $window) {
+module.exports = function($scope, $controller, $uibModal, AdminShopService, AdminShoptypeService, GlobalCategoryService, ShopService, ImageService, Category, config, common, Credential, $window) {
 	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -14,6 +14,9 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 						scope.shoptypes = data;
 					});
 			},
+			onSave: function(scope) {
+				console.log(scope.form);
+			},
 			onLoad: function(scope, flag) {	
 				//Load global cat
 				scope.globalCategory = [];
@@ -23,6 +26,22 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 						_.forEach(scope.formData.Commissions, function(item) {
 							item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
 						});
+				});
+
+				$scope.$watch('formData.Province', function(data, old) {
+					if(_.isNil(data) || data == old) {
+						return;
+					}
+					_.unset($scope.formData, ['City']);
+					$scope.getCities(data.ProvinceId);
+				});
+
+				$scope.$watch('formData.City', function(data, old) {
+					if(_.isNil(data) || data == old) {
+						return;
+					}
+					_.unset($scope.formData, ['District']);
+					$scope.getDistricts(data.CityId);
 				});
 			},
 			onAfterSave: function(scope) {			
@@ -50,15 +69,62 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 				$scope.formData.ShopImage = null;
 				$scope.alert.error(common.getError(err.data));
 			});
-	};	
+	};
+
+	$scope.getCities = function(id) {
+		ShopService.get('Cities', id)
+			.then(function(data) {
+				$scope.cities = data;
+			});
+	};
+
+	$scope.getDistricts = function(id) {
+		ShopService.get('Districts', id)
+			.then(function(data) {
+				$scope.districts = data;
+			});
+	};
+
+	$scope.fetchAllList = function() {
+		ShopService.get('TermPayments')
+			.then(function(data) {
+				$scope.termOfPayments = data;
+			});
+		ShopService.get('VendorTaxRates')
+			.then(function(data) {
+				$scope.vendorTaxRates = data;
+			});
+		ShopService.get('WithholdingTaxes')
+			.then(function(data) {
+				$scope.withholdingTaxes = data;
+			});
+		ShopService.get('BankNames')
+			.then(function(data) {
+				$scope.bankNames = data;
+			});
+		ShopService.get('Provinces')
+			.then(function(data) {
+				$scope.provinces = data;
+			});
+		ShopService.get('Overseas')
+			.then(function(data) {
+				$scope.overseas = data;
+			});
+		ShopService.get('Countries')
+			.then(function(data) {
+				$scope.countries = data;
+			});
+	};
+	$scope.fetchAllList();
 
 	$scope.loginAs = function(user){
 		$scope.alert.close();
-		Credential.loginAs(user).then(function(){
-			$window.location.href = "/products";
+		Credential.loginAs(user).then(function(r){
+				// $window.location.href = "/dashboard";
+				console.log("got", r, user);
 		}, function(err){
-           $scope.alert.error(common.getError(err));
-        });
+    		$scope.alert.error(common.getError(err));
+    });
 	};
 
 	$scope.resetPassword = function(user) {
@@ -150,5 +216,12 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 	    });
 	};
 	$scope.shopGroupDropdown = config.SHOP_GROUP;
+	$scope.yesNoDropdown = config.DROPDOWN.YES_NO_DROPDOWN;
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
+
+	$scope.$watch('formData.CloneGlobalCategory', function(val) {
+		if(val) {
+			$scope.formData.MaximumLocalCategory = 99;
+		}
+	});
 };

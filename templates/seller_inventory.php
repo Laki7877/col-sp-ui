@@ -1,11 +1,12 @@
 <?php
 
-$this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
+$this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Inventory'])
 ?>
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerInventoryListCtrl">
-       <nc-page-title nc-title="Inventory" icon="fa-archive">
+		<nc-alert nc-model="alert"></nc-alert>
+       	<nc-page-title nc-title="Inventory" icon="fa-archive">
             <a ng-href="/products/export" class="btn ng-scope btn-white btn-width-xxl">
 	            <span class="">Export All Products</span>
           	</a>
@@ -18,9 +19,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Inventory'])
                 <li><a href="/products/update">Update Existing Products</a></li>
               </ul>
             </div>
-       </nc-page-title>
+       	</nc-page-title>
 	    <div class="row search-section-wrapper">
-      		<nc-search nc-model="params.searchText" nc-search-event="onSearch" nc-search-placeholder="'Search for Product SKU, Name, ...'"></nc-search>
+      		<nc-search nc-model="params.searchText" nc-search-event="onSearch" nc-search-placeholder="'Search by Product Name, PID, or SKU'"></nc-search>
 		  	<nc-advance-search-button nc-model="advanceSearch"></nc-advance-search-button>
 		</div>
 		<nc-advance-search nc-model="advanceSearchParams" nc-advance-search-toggle="advanceSearch" nc-advance-search-event="onAdvanceSearch" nc-advance-search-options="advanceSearchOptions"></nc-advance-search>

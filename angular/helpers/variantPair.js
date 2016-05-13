@@ -1,3 +1,4 @@
+//DEPRECATED
 module.exports = ['util', function (util) {
 	
 	//Struct for Variant Pair

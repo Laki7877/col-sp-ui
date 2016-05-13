@@ -11,10 +11,15 @@ module.exports = function($scope, Product) {
             _filter: 'ALL',
             _offset: 0
         }).then(function(res) {
+            res.data.map(function(item){
+                item._group = item.ProductNameEn[0];
+                return item;
+            });
             $scope.choices = res.data;
             return res.data || [];
         });
     };
+
 
     $scope.multiModel = [];
     $scope.tagModel = [];

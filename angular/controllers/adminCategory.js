@@ -120,15 +120,33 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				'ngInject';
 				$scope.$parent.modalScope = $scope;
 				$scope.alert = new NcAlert();
-				$scope.statusOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
 				$scope.attributeSetOptions = [];
-				$scope.bannerUploader = ImageService.getUploaderFn('/GlobalCategoryImages');
+				$scope.statusOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
+				$scope.bannerUploader = ImageService.getUploaderFn('/GlobalCategoryImages', {
+					data: { Type: 'Banner' }
+				});
+				$scope.bannerSmUploader = ImageService.getUploaderFn('/GlobalCategoryImages', {
+					data: { Type: 'SmallBanner' }
+				});		
+				$scope.bannerOptions = {
+					validateDimensionMin: [1920, 1080],
+					validateDimensionMax: [1920, 1080]
+				};
+				$scope.bannerSmOptions = {
+					validateDimensionMin: [1600, 900],
+					validateDimensionMax: [1600, 900]
+				};
 				$scope.formData = {};
 				$scope.saving = false;
 				$scope.loading = true;
 				$scope.products = [];
 				$scope.availableProducts = -1;
 				$scope.id = id;
+				$scope.sortBy = [];
+				
+				common.getSortBy().then(function(data) {
+					$scope.sortBy = data;
+				});
 
 				//For searching feature prod
 				var search = {};
@@ -138,6 +156,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 					$scope.loading = false;
 				} else {
 					//Load cat
+					$scope.loading = true;
 					GlobalCategoryService.get(id)
 						.then(function(data) {
 							$scope.formData = GlobalCategoryService.deserialize(data);
@@ -158,7 +177,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				$scope.loadAttributeSets = function($search) {
 					AttributeSetService.list({
 						searchText: $search,
-						_limit: 8
+						_limit: 12
 					}).then(function(data) {
 						$scope.attributeSetOptions = data.data;
 					});
@@ -172,9 +191,29 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 						$scope.products = response.data;
 					});
 				};
-				$scope.uploadBannerFail = function(e, response) {
+				$scope.uploadBannerFail = function(e, response, min, max) {
 					if(e == 'onmaxsize') {
 						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one', true);
+					}
+					else if(e == 'ondimension') {
+						$scope.alert.error('Image must be 1920x1080 pixels', true);
+					}
+					else if(e == 'onfilesize') {
+						$scope.alert.error('Image file size should not exceed 5MB', true)
+					}
+					else {
+						$scope.alert.error(common.getError(response.data), true);
+					}
+				};
+				$scope.uploadBannerSmFail = function(e, response, min, max) {
+					if(e == 'onmaxsize') {
+						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one', true);
+					}
+					else if(e == 'ondimension') {
+						$scope.alert.error('Image must be 1600x900 pixels', true);
+					}
+					else if(e == 'onfilesize') {
+						$scope.alert.error('Image file size should not exceed 5MB', true)
 					}
 					else {
 						$scope.alert.error(common.getError(response.data), true);

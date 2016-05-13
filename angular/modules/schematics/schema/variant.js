@@ -1,7 +1,28 @@
 module.exports =  {
-  "title": "Variant Schema V4",
+  "title": "Variant Schema V9",
   "type": "object",
   "properties": {
+    "IsHasExpiryDate":{
+      "enum": ["Y", "N"]
+    },
+    "MinimumAllowedInCart":{
+      "type": "number"
+    },
+    "MaximumAllowedInCart": {
+      "type": "number"
+    },
+    "MaximumAllowedPreOrder": {
+      "type": "number"
+    },
+    "Pid": {
+      "type": "number"
+    },
+    "IsVat":{
+       "enum": ["Y", "N"]
+    },
+    "Sku": {
+      "type": "string"
+    },
     "Length": {
       "type": "number"
     },
@@ -13,6 +34,12 @@ module.exports =  {
     },
     "Weight": {
       "type": "number"
+    },
+    "ProdTDNameEn":{
+       "type": "string"
+    },
+    "ProdTDNameTh":{
+       "type": "string"
     },
     "ProductNameEn": {
       "type": "string"
@@ -43,6 +70,15 @@ module.exports =  {
     },
     "SalePrice": {
       "type": "number"
+    },
+    "PromotionPrice":{
+      "type": "number"
+    },
+    "EffectiveDatePromotion":{
+      "type": ["string", "null"]
+    },
+    "ExpireDatePromotion":{
+      "type": ["string", "null"]
     },
     "Quantity": {
       "type": "integer"
@@ -110,12 +146,21 @@ module.exports =  {
     "UnitPrice": {
       "type": "number"
     },
+    "SaleUnitTh": {
+      "type": ["string", "null"]
+    },
+    "SaleUnitEn": {
+      "type": ["string", "null"]
+    },
+    "ExpressDelivery":{
+      "type": ["string", "null"],
+      "enum": ["Y", "N", null]
+    },
+    "DeliveryFee":{
+      "type": "number"
+    },
     "Installment": {
       "enum": ["Y", "N"]
-    },
-    "ShippingMethod": {
-      "type": "integer",
-      "enum": [1,2]
     },
     "VideoLinks": {
       "type" : "array",
@@ -140,10 +185,13 @@ module.exports =  {
     },
     "IsVariant": {
       "type": "boolean"
+    },
+    "DefaultVariant": {
+      "type": "boolean"
     }
   },
-  "required": ["ShippingMethod", "ProductNameEn", "ProductNameTh",
-    "StockType", "DimensionUnit", "SEO", "VideoLinks", "Images", "GiftWrap",
-    "FirstAttribute", "SecondAttribute", 
+  "required": ["ProductNameEn", "ProductNameTh",
+    "StockType", "DimensionUnit", "SEO", "VideoLinks", "Images",
+    "FirstAttribute", "SecondAttribute", "DefaultVariant",
     "Installment", "PrepareDay", "LimitIndividualDay", "Display"]
 };

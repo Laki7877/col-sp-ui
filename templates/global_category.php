@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Global Category']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Add Product']) ?>
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="ProductAddSelectCategoryCtrl" class="global-category-page">

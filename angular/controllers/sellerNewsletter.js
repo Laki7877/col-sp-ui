@@ -6,7 +6,7 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService) {
 			url: '/newsletters',
 			service: NewsletterService,
 			item: 'Newsletter',
-			order: 'UpdatedDt',
+			order: 'PublishedDt',
 			id: 'NewsletterId'
 		}
 	});

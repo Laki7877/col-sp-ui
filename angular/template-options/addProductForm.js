@@ -8,6 +8,8 @@ module.exports = {
       }
     }
   },
+  MinQtyAllowInCart: {},
+  MaxQtyAllowInCart: {},
   KillerPointEn: {
     'divClass': 'col-xs-6',
     'error': {
@@ -21,6 +23,9 @@ module.exports = {
 
   },
   Installment: {
+
+  },
+  NonRequiredSystemField: {
 
   },
   VideoLink: {
@@ -60,6 +65,7 @@ module.exports = {
     }
   },
   Sku: {
+    'labelClass': 'required',
     'error': {
       'messages': {
         'pattern': 'Special characters are not allowed'
@@ -88,6 +94,7 @@ module.exports = {
     'labelClass': 'required',
     'error': {
       'messages': {
+        'required': 'This is a required field',
         'min': 'Sale price must be lower than the original price',
         'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
       }
@@ -119,6 +126,7 @@ module.exports = {
     'error': {
       'messages': {
         'maxtagcount': 'Cannot exceed 20 tags',
+        'maxTagCount': 'Cannot exceed 20 tags',
         'maxtaglength': 'Tag must contain 30 characters or less',
         'pattern': 'Only letters and numbers allowed'
       }
@@ -127,6 +135,17 @@ module.exports = {
   Quantity: {
     'hint': {
       'message': 'Example: 100',
+      'show': true
+    },
+    'error': {
+      'messages': {
+        'pattern': 'Only numbers allowed'
+      }
+    }
+  },
+  UpdateAmount: {
+    'hint': {
+      'message': 'Example: 10 or -10',
       'show': true
     },
     'error': {
