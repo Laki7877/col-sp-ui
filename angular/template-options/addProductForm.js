@@ -94,6 +94,7 @@ module.exports = {
     'labelClass': 'required',
     'error': {
       'messages': {
+        'required': 'This is a required field',
         'min': 'Sale price must be lower than the original price',
         'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
       }
