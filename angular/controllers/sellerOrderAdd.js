@@ -35,12 +35,19 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   };
   //Override save
   $scope.save = function() {
-    save({ InvoiceNumber: $scope.formData.InvoiceNumber });
+    save({ 
+      InvoiceNumber: $scope.formData.InvoiceNumber,
+      Carrier: $scope.formData.Carrier,
+      TrackingNumber: $scope.formData.TrackingNumber
+    });
   };
   //Acknowledge
   $scope.acknowledge = function() {
     save({Status: 'PE'});
   };
+  $scope.merchantFleet = function() {
+    return $scope.formData.ShippingType == 'Merchant Fleet';
+  }
   //Ready to ship
   $scope.readyShip = function() {
     $scope.form.$setSubmitted();
@@ -64,15 +71,17 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
                 $uibModalInstance.close($scope.formData);
               }
             }
-        }).result.then(function() {
-          save({
+        }).result.then(function(data) {
+          var o = {
            InvoiceNumber: $scope.formData.InvoiceNumber,
            Status: 'RS',
-           Products: $scope.formData.Products ,
-           IsOwnCarrier: $scope.formData.IsOwnCarrier,
-           OtherCarrier: $scope.formData.OtherCarrier,
-           TrackingNumber: $scope.formData.TrackingNumber
-         });
+           Products: $scope.formData.Products,
+           TrackingNumber: data.TrackingNumber
+          };
+          if(data.IsOwnCarrier) {
+            o.Carrier = data.OtherCarrier;
+          }
+          save(o);
         })
       } else {
         util.confirm(

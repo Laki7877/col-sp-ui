@@ -113,7 +113,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     }
     $scope.onError = function(item, response) {
     	item.alert.close();
-    	if(response.name == 'queueFilter') {
+    	if(response.name == 'queueFilter' || response.name == 'queueLimit') {
     		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Cannot exceed 10 images for each product');
     	}
     	else if(response.name == 'sizeFilter') {
@@ -125,7 +125,8 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     	else if(response.name == 'ratioFilter') {
     		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Image must be a square (1:1 ratio)');
     	} else {
-    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + common.getError(response));
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + response);
+    		console.log(response);
 		}
 	};
     $scope.isDisabled = function(product) {

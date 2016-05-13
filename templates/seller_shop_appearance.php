@@ -10,7 +10,7 @@
 		<div ng-show="loading" nc-loading="Loading.."></div>
 		<div ng-show="saving" nc-loading="Saving.."></div>
         <form class="ah-form sticky-mainform-action" name="form" ng-submit="save()" ng-show="!loading && !saving">
-		    <div>
+	    <div>
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
 						<div id="shop-setting-content">
@@ -22,12 +22,12 @@
 						                    <h2>Shop Theme</h2>
 						                </div>
 						                <div class="form-section-content image_preview">
-											<div class="form-group <?=$form_group_class?>">
+											<div class="form-group">
 											 	<div class="col-xs-12 no-padding">
 													<div class="radio multiple-radio">
 														<label class="label_width" ng-repeat="t in themes track by $index">
 															<input type="radio" name="theme{{$index+1}}" ng-model="formData.ThemeId" ng-value="t.ThemeId">{{t.ThemeName}}
-															<img class="image_radion_thumbnail" ng-src="{{ t.ThemeImage }}" >
+															<img class="image_radion_thumbnail" ng-src="{{ t.ThemeImage.Url }}" >
 														</label>
 													</div>
 												</div>
@@ -36,9 +36,298 @@
 						            </div>
 						            <!-- templates -->
 						            <div ng-switch="formData.ThemeId">
-						            	<div ng-switch-when="0"></div>
-						            	<div ng-switch-when="1"></div>
-						            	<div ng-switch-when="2"></div>
+						            	<!-- basic template -->
+						            	<div ng-switch-when="1">
+						            		<nc-image-banner-link
+						            			source="formData.Data.A_Banner"
+						            		 	letter="A"
+						            		 	letterx="A1"
+						            		 	title="Banner"
+						            		 	uploader="uploader" 
+						            		 	size="8" 
+						            		 	width="{{X.width}}" 
+						            		 	height="{{X.height}}" 
+						            		 	fail="uploadFail">
+						            		</nc-image-banner-link>
+						            		<nc-product-layout 
+						            			source="formData.Data.B_ProductLayout1"
+						            			letter="B"
+						            			title="Product Layout 1"
+						            			refresh="getProducts"
+						            			products="products">
+						            		</nc-product-layout>
+						            		<nc-product-layout 
+						            			source="formData.Data.C_ProductLayout2"
+						            			letter="C"
+						            			title="Product Layout 2"
+						            			refresh="getProducts"
+						            			products="products">
+						            		</nc-product-layout>
+						            		<nc-product-layout 
+						            			source="formData.Data.D_ProductLayout3"
+						            			letter="D"
+						            			title="Product Layout 3"
+						            			refresh="getProducts"
+						            			products="products">
+						            		</nc-product-layout>
+						            		<nc-image-banner-video
+						            			source="formData.Data.I_Video"
+						            		 	letter="I"
+						            		 	letterx="I1"
+						            		 	title="Video"
+						            		 	uploader="uploader" 
+						            		 	size="8" 
+						            		 	width="{{X.width}}" 
+						            		 	height="{{X.height}}"
+						            		 	fail="uploadFail">
+						            		</nc-image-banner-video>
+						            	</div>
+						            	<!-- robinson -->
+						            	<div ng-switch-when="2">
+						            		<nc-text-link 
+						            			source="formData.Data.A_TopMenu1"
+						            			letter="A"
+						            			letterx="A1"
+						            			title="Top Menu 1">
+						            		</nc-text-link>
+						            		<nc-image-links 
+						            			source="formData.Data.B_TopMenu2"
+						            			letter="B"
+						            			title="Top Menu 2"
+						            			uploader="uploader"
+						            			fail="uploadFail"
+						            			size="1">
+						            		</nc-image-links>
+						            		<nc-image-banner-link
+						            			source="formData.Data.C_Banner"
+						            		 	letter="C"
+						            		 	letterx="C1"
+						            		 	title="Banner"
+						            		 	uploader="uploader" 
+						            		 	size="8" 
+						            		 	width="{{X.width}}" 
+						            		 	height="{{X.height}}" 
+						            		 	fail="uploadFail">
+						            		 </nc-image-banner-link>
+						            		<nc-image-links 
+						            			source="formData.Data.D_SubBanner1"
+						            			letter="D"
+						            			title="Sub Banner 1"
+						            			uploader="uploader"
+						            			fail="uploadFail"
+						            			size="5">
+						            		</nc-image-links>
+						            		<nc-image-banner-link
+						            			source="formData.Data.E_Banner"
+						            		 	letter="E"
+						            		 	letterx="E1"
+						            		 	title="Banner"
+						            		 	uploader="uploader" 
+						            		 	size="8" 
+						            		 	width="{{X.width}}" 
+						            		 	height="{{X.height}}" 
+						            		 	fail="uploadFail"
+						            		 	subtitle="Sub Banner"
+						            		 	heading="true"
+						            		 	noauto="true">
+						            		</nc-image-banner-link>
+						            		<nc-product-layout 
+						            			source="formData.Data.F_ProductLayout1"
+						            			letter="F"
+						            			title="Product Layout 1"
+						            			refresh="getProducts"
+						            			products="products">
+						            		</nc-product-layout>
+						            		<nc-product-layout 
+						            			source="formData.Data.G_ProductLayout2"
+						            			letter="G"
+						            			letterx="G1"
+						            			title="Product Layout 2"
+						            			subtitle="true"
+						            			refresh="getProducts"
+						            			products="products">
+						            		</nc-product-layout>
+						            		<nc-product-layout 
+						            			source="formData.Data.H_ProductLayout3"
+						            			letter="H"
+						            			letterx="H1"
+						            			title="Product Layout 3"
+						            			subtitle="true"
+						            			refresh="getProducts"
+						            			products="products">
+						            		</nc-product-layout>
+						            		<nc-image-links 
+						            			source="formData.Data.I_SubBanner3"
+						            			letter="I"
+						            			title="Sub Banner 3"
+						            			uploader="uploader"
+						            			fail="uploadFail"
+						            			notitle="true"
+						            			size="1">
+						            		</nc-image-links>
+						            		<nc-image-links 
+						            			source="formData.Data.J_SubBanner4"
+						            			letter="J"
+						            			title="Sub Banner 4"
+						            			uploader="uploader"
+						            			fail="uploadFail"
+						            			notitle="true"
+						            			size="1">
+						            		</nc-image-links>
+						            		<nc-image-banner-icon
+						            			source="formData.Data.K_SocialNetworkIcons"
+						            		 	letter="K"
+						            		 	letterx="K1"
+						            		 	title="Social Network Icons"
+						            		 	uploader="uploader" 
+						            		 	size="8" 
+						            		 	width="{{Y.width}}" 
+						            		 	height="{{Y.height}}" 
+						            		 	fail="uploadFail"
+						            		 	subtitle="Icon Type">
+						            		 </nc-image-banner-icon>
+						            		 <nc-textareas
+						            		 	source="formData.Data.L_FooterText"
+						            		 	letter="L"
+						            		 	title="Footer Text"
+						            		 	size="2">
+						            		 </nc-textareas>
+						            	</div>
+						            	<div ng-switch-when="3">
+						            		<nc-text-link 
+						            			source="formData.Data.A_TopMenu1"
+						            			letter="A"
+						            			letterx="A1"
+						            			title="Top Menu 1">
+						            		</nc-text-link>
+						            		<nc-image-links 
+						            			source="formData.Data.B_TopMenu2"
+						            			letter="B"
+						            			title="Top Menu 2"
+						            			uploader="uploader"
+						            			fail="uploadFail"
+						            			size="1">
+						            		</nc-image-links>
+						            		<nc-image-banner-link
+						            			source="formData.Data.C_Banner"
+						            		 	letter="C"
+						            		 	letterx="C1"
+						            		 	title="Banner"
+						            		 	uploader="uploader" 
+						            		 	size="8" 
+						            		 	width="{{X.width}}" 
+						            		 	height="{{X.height}}" 
+						            		 	fail="uploadFail">
+						            		 </nc-image-banner-link>
+						            		<nc-image-banner-link
+						            			source="formData.Data.D_SubBanner1"
+						            		 	letter="D"
+						            		 	letterx="D1"
+						            		 	title="Sub Banner 1"
+						            		 	uploader="uploader" 
+						            		 	size="8" 
+						            		 	width="{{X.width}}" 
+						            		 	height="{{X.height}}" 
+						            		 	fail="uploadFail"
+						            		 	subtitle="Sub Banner"
+						            		 	heading="true"
+						            		 	noauto="true">
+						            		 </nc-image-banner-link>
+						            		<nc-image-banner-link
+						            			source="formData.Data.E_SubBanner2"
+						            		 	letter="E"
+						            		 	letterx="E1"
+						            		 	title="Sub Banner 2"
+						            		 	uploader="uploader" 
+						            		 	size="8" 
+						            		 	width="{{X.width}}" 
+						            		 	height="{{X.height}}" 
+						            		 	fail="uploadFail"
+						            		 	subtitle="Sub Banner"
+						            		 	heading="true"
+						            		 	noauto="true">
+						            		 </nc-image-banner-link>
+						            		<nc-product-layout 
+						            			source="formData.Data.F_ProductLayout1"
+						            			letter="F"
+						            			title="Product Layout 1"
+						            			refresh="getProducts"
+						            			subtitle="true"
+						            			products="products">
+						            		</nc-product-layout>
+						            		<nc-product-layout 
+						            			source="formData.Data.G_ProductLayout2"
+						            			letter="G"
+						            			letterx="G1"
+						            			title="Product Layout 2"
+						            			subtitle="true"
+						            			refresh="getProducts"
+						            			products="products">
+						            		</nc-product-layout>
+						            		<nc-image-banner-link
+						            			source="formData.Data.G_SubBanner3"
+						            		 	letter="H"
+						            		 	letterx="H1"
+						            		 	title="Sub Banner 3"
+						            		 	uploader="uploader" 
+						            		 	size="8" 
+						            		 	width="{{X.width}}" 
+						            		 	height="{{X.height}}" 
+						            		 	fail="uploadFail"
+						            		 	subtitle="Sub Banner"
+						            		 	heading="true"
+						            		 	noauto="true">
+						            		 </nc-image-banner-link>
+						            		<nc-image-banner-video
+						            			source="formData.Data.I_Video"
+						            		 	letter="I"
+						            		 	letterx="I1"
+						            		 	title="Video"
+						            		 	uploader="uploader" 
+						            		 	size="8" 
+						            		 	width="{{X.width}}" 
+						            		 	height="{{X.height}}" 
+						            		 	fail="uploadFail">
+						            		 </nc-image-banner-video>
+						            		<nc-image-banner-link
+						            			source="formData.Data.J_SubBanner4"
+						            		 	letter="J"
+						            		 	letterx="J1"
+						            		 	title="Sub Banner 4"
+						            		 	uploader="uploader" 
+						            		 	size="8" 
+						            		 	width="{{X.width}}" 
+						            		 	height="{{X.height}}" 
+						            		 	fail="uploadFail"
+						            		 	noauto="true">
+						            		 </nc-image-banner-link>
+						            		<nc-image-links 
+						            			source="formData.Data.K_SubBanner5"
+						            			letter="K"
+						            			title="Sub Banner 5"
+						            			uploader="uploader"
+						            			fail="uploadFail"
+						            			size="1">
+						            		</nc-image-links>
+						            		<nc-image-banner-icon
+						            			source="formData.Data.L_SocialNetworkIcons"
+						            		 	letter="L"
+						            		 	letterx="L1"
+						            		 	title="Social Network Icons"
+						            		 	uploader="uploader" 
+						            		 	size="8" 
+						            		 	width="{{Y.width}}" 
+						            		 	height="{{Y.height}}" 
+						            		 	fail="uploadFail"
+						            		 	subtitle="Icon Type">
+						            		 </nc-image-banner-icon>
+						            		 <nc-textareas
+						            		 	source="formData.Data.M_FooterText"
+						            		 	letter="M"
+						            		 	title="Footer Text"
+						            		 	size="2">
+						            		 </nc-textareas>
+						            	</div>
 						            	<div ng-switch-default></div>
 						            </div>
 	          						<!--nc-image-banner2 ng-if="hasComponent('Banner')"  name="Banner" nc-model="formData.Banner.Images" source="formData" title="Banner Upload" uploader="bannerUploader" on-fail="uploadBannerFail" size="getComponent('Banner')"></nc-image-banner2>

@@ -35,9 +35,15 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
             <div>Order Date: {{formData.OrderDate | dateTh}}</div>
             <div>Shipping Type: {{formData.ShippingType}}</div>
             <div>Payment Type: {{formData.Payment}}</div>
-            <div>Carrier: {{formData.Carrier}}</div>
-            <div>Tracking Number: {{getTrackingNumber()}}</div>
-          </div>
+            <div>Carrier: 
+              <span ng-if="!(getState() >= 3 && merchantFleet())">{{formData.Carrier}}</span>
+              <input ng-if="getState() >= 3 && merchantFleet()" class="form-control margin-top-5 margin-bottom-5 width-input-small" type="text" ng-model="formData.Carrier" />
+            </div>
+            <div>Tracking Number: 
+              <span ng-if="!(getState() >= 3 && merchantFleet())">{{formData.TrackingNumber}}</span>
+              <input ng-if="getState() >= 3 && merchantFleet()" class="form-control margin-top-5 margin-bottom-5 width-input-small" type="text" ng-model="formData.TrackingNumber" />
+            </div>
+          </div>       
         </div>
         <div ng-if="getState() >= 2" class="col-xs-6 no-padding text-align-right ">
             <div class="form-group">

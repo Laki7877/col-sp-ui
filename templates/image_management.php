@@ -70,6 +70,7 @@
                             nc-image-dropzone-options="imageDropzoneOptions"
                             nc-image-dropzone-on-error="onError(product, $response)"
                             nc-image-dropzone-on-event="onEvent(product, $eventName)"
+                            size="10"
                             is-uploading="product.isUploading"
                             ></nc-image-dropzone>
                           <nc-image-dropzone
@@ -80,6 +81,7 @@
                             nc-image-dropzone-options="imageDropzoneOptions"
                             nc-image-dropzone-on-error="onError(product, $response)"
                             nc-image-dropzone-on-event="onEvent(product, $eventName)"
+                            size="10"
                             is-uploading="product.isUploading"
                             ></nc-image-dropzone>
                         </div>

@@ -114,7 +114,6 @@ html, body {
 }
 
 /*---- Side Bar ----*/
-
 #sidebar-wrapper {
   width: $sidebar-width;
   background: $sidebar-color;
@@ -123,6 +122,10 @@ html, body {
   top: 0;
   bottom: 0;
   min-height: 600px;
+}
+
+#sidebar-wrapper.sidebar-admin{
+  background: $sidebar-color;
 }
 
 ul.sidebar-nav {

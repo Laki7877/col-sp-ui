@@ -1,0 +1,56 @@
+<div class="form-section">
+	<div class="form-section-header">
+		<h2><input type="checkbox" style="margin-right: 10px" ng-model="source.Enabled"/>{{letter}}.) {{title}}</h2>
+	</div>
+	<div class="form-section-content padding-left-15 padding-right-15" ng-if="source.Enabled">
+    	<div class="form-group">
+    		<div class="width-label"><label class="control-label">{{letter}} Title (Eng)</label></div>
+    		<div class="width-field-normal">
+    			<input type="text" class="form-control" ng-model="source.TitleEn" />
+    		</div>
+    	</div>
+        <div class="form-group">
+            <div class="width-label"><label class="control-label">{{letter}} Title (ไทย)</label></div>
+            <div class="width-field-normal">
+                <input type="text" class="form-control" ng-model="source.TitleTh" />
+            </div>
+        </div>
+        <div class="form-group" ng-if="subtitle">
+            <div class="width-label"><label class="control-label">{{letterx}} Subtitle (Eng)</label></div>
+            <div class="width-field-normal">
+                <input type="text" class="form-control" ng-model="source.SubtitleEn" />
+            </div>
+        </div>
+        <div class="form-group" ng-if="subtitle">
+            <div class="width-label"><label class="control-label">{{letterx}} Subtitle (ไทย)</label></div>
+            <div class="width-field-normal">
+                <input type="text" class="form-control" ng-model="source.SubtitleTh" />
+            </div>
+        </div>
+        <div class="form-group" ng-if="subtitle">
+            <div class="width-label"><label class="control-label">{{letterx}} Link</label></div>
+            <div class="width-field-normal">
+                <input type="text" class="form-control" ng-model="source.Link" />
+            </div>
+        </div>
+    	<div class="form-group">
+    		<div class="width-label"><label class="control-label">Select Product</label></div>
+    		<div class="width-field-normal">
+                <ui-select multiple ng-model="source.Products">
+                    <ui-select-match placeholder="Search by Product Name or PID">
+                        {{ $item.ProductNameEn }}
+                    </ui-select-match>
+                    <ui-select-choices placeholder="Search result" refresh="refresh($select.search)" refresh-delay="150" repeat="i in products">
+                        {{ i.ProductNameEn }}
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+    	</div>
+        <div class="form-group">
+            <div class="width-label"><label class="control-label"></label></div>
+            <div class="width-field-normal">
+                <input class="form-inline" type="checkbox" ng-model="source.DisplayCountTime"/> Display Countdown Time
+            </div>
+        </div>
+	</div>
+</div>

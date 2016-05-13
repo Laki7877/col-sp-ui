@@ -38,7 +38,6 @@ module.exports = function($q, $http, common, storage, config, FileUploader, Uplo
       headers: {
         Authorization: 'Bearer ' + accessToken
       },
-      queueLimit: 10,
       removeAfterUpload : true,
       filters: [{
         name: 'imageFilter',

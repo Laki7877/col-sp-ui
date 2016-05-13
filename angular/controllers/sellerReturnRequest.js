@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, $uibModal, ReturnRequestService, config) {
+module.exports = function($scope, $window, $controller, $uibModal, ReturnRequestService, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
@@ -21,7 +21,9 @@ module.exports = function($scope, $controller, $uibModal, ReturnRequestService, 
 		return row.Status == 'AP';
 	};
 	$scope.accept = function(row) {
+		$window.location.href = '/returns/' + row.ReturnId;
 		//Enter CN Number
+		/*
 		var modal = $uibModal.open({
 			size: 'size-warning',
 			templateUrl: 'order/modalAcceptReturn',
@@ -46,6 +48,6 @@ module.exports = function($scope, $controller, $uibModal, ReturnRequestService, 
 			}, function(err) {
 				$scope.alert.error(common.getError(err));
 			});
-		});
+		});*/
 	};
 }
