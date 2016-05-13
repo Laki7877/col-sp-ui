@@ -19,7 +19,8 @@ angular.module('umeSelect')
                 initialChoices: '=?initialChoices',
                 hideIcon: '=?hideIcon',
                 disabled: '&?ngDisabled',
-                strictMode: '=?strictMode'
+                strictMode: '=?strictMode',
+                required: '&?required'
             },
             replace: true,
             priority: 1010,
@@ -32,7 +33,14 @@ angular.module('umeSelect')
                 return templateHTML;
             },
             link: function (scope, element, attrs, ngModel, transclude) {                
-
+                
+                ngModel.$validators.required = function(modelValue, viewValue) {
+                   if(scope.required && scope.required() && !modelValue){
+                       return false;
+                   }
+                   return true;
+                };
+            
                 //text user types in searchbox
                 scope.searchText = "";
                 //index of currently highlighted choice
@@ -94,7 +102,7 @@ angular.module('umeSelect')
                     maxTagCount = val;
                     ngModel.$validate();
                 });
-
+ 
                 attrs.$observe('maxLengthPerTag', function(val) {
                     maxLengthPerTag = val;
                     ngModel.$validate();
