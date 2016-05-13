@@ -5811,6 +5811,8 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
           };
           if(data.IsOwnCarrier) {
             o.Carrier = data.OtherCarrier;
+          } else {
+            o.Carrier = 'Merchant Own Fleet';
           }
           save(o);
         })
@@ -6105,6 +6107,30 @@ module.exports = ["$scope", "$controller", "ReturnRequestService", "util", "conf
 			$scope.alert.close();
 			ReturnRequestService.update($scope.formData.ReturnId, {
 				Status: 'AP',
+				CnNumber: $scope.formData.CnNumber,
+				CnAmount: $scope.formData.CnAmount
+			})
+			.then(function(data) {
+				$scope.formData = ReturnRequestService.deserialize(data);
+				$scope.alert.success(util.saveAlertSuccess('Return Request', $scope.url));
+				$scope.form.$setPristine(true);
+			}, function(err) {
+				$scope.alert.error(common.getError(err));
+			})
+			.finally(function() {
+				$scope.saving = false;
+			});
+		} else {
+          $scope.alert.error(util.saveAlertError());
+		}
+	}
+	$scope.update = function() {
+		if($scope.saving) return;
+		$scope.form.$setSubmitted();
+		if($scope.form.$valid) {
+			$scope.saving = true;
+			$scope.alert.close();
+			ReturnRequestService.update($scope.formData.ReturnId, {
 				CnNumber: $scope.formData.CnNumber,
 				CnAmount: $scope.formData.CnAmount
 			})
@@ -10898,7 +10924,6 @@ angular.module('nc')
 					img.src = url;
 				};
 				scope.uploader.onWhenAddingFileFailed = function(item, filter) {
-					console.log('onFail', item, filter);
 					scope.onError({
 						$response: filter
 					});
@@ -10908,7 +10933,6 @@ angular.module('nc')
 				};
 				scope.uploader.onErrorItem = function(item, response, status, headers) {
 					scope.model.splice(scope.model.indexOf(item.obj), 1);
-					console.log('onErrotItem', item, response, status, headers);
 					scope.onError({
 						$response: response
 					});
@@ -10917,6 +10941,7 @@ angular.module('nc')
 				scope.update();
 				scope.$watch('template', scope.update);
 				scope.$watch('uploader.isUploading', function(val) {
+					console.log(val);
 					scope.isUploading = val;
 				});
 			}
