@@ -108,7 +108,9 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
       }
     }
 
-    formData.DefaultVariant = formData.Variants[0];
+    if(!formData.DefaultVariant){
+      formData.DefaultVariant = formData.Variants[0];
+    }
     deferred.resolve();
 
     return deferred.promise;

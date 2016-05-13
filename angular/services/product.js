@@ -538,15 +538,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			// if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; // TODO: Hardcode
 			
 			//Find which variant is default
-			try {
-				var DefaultVariantIndex = (invFd.Variants || []).map(function (o) {
-					return o.DefaultVariant || false;
-				}).indexOf(true);
-				invFd.DefaultVariant = invFd.Variants[DefaultVariantIndex];
-				console.log('DefaultVariant' , invFd.DefaultVariant);
-			} catch (er) {
-				console.warn('Unable to set DefaultVariant, will not set', er);
-			}
+			
 			
 			var transformed = {
 				formData: invFd
@@ -630,6 +622,12 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				}
 
 			}
+			
+			var DefaultVariantIndex = (invFd.Variants || []).map(function (o) {
+					return o.DefaultVariant || false;
+			}).indexOf(true);
+			invFd.DefaultVariant = invFd.Variants[DefaultVariantIndex];
+			console.log('DefaultVariant' , invFd.DefaultVariant);
 
 			console.log('Deserialized Wrapper', transformed);
 
