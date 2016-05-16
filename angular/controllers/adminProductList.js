@@ -11,6 +11,34 @@ module.exports = function($scope, $controller, Product, common, config) {
 			actions: ['View'],
 			bulks: ['Show', 'Hide',
             {
+                name: 'Publish',
+                fn: function(arr, cb) {
+                    $scope.alert.close();
+
+                    if(arr.length == 0) {
+                        $scope.alert.error('Unable to Publish. Please select Product for this action.');
+                        return;
+                    }
+
+                    Product.bulkPublish(_.map(arr, function(e) {
+                        return _.pick(e, ['ProductId']);
+                    })).then(function() {
+                        cb();
+                        $scope.alert.success('Successfully published ' + arr.length + ' products')
+                    }, function(resp) {
+                        $scope.alert.error(common.getError(resp));
+                    }).finally(function() {
+                        $scope.reload();
+                    });
+                },
+                confirmation: {
+                    title: 'Confirm to publish',
+                    message: 'Are you sure you want to publish {{model.length}} products?',
+                    btnConfirm: 'Publish',
+                    btnClass: 'btn-green'
+                }
+            },
+            {
 		        name: 'Add Tags',
 		        fn: function(add, cb, model) {
 		            $scope.alert.close();

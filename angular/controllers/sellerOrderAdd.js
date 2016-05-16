@@ -41,13 +41,16 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
       TrackingNumber: $scope.formData.TrackingNumber
     });
   };
+  $scope.delivered = function() {
+    save({Status: 'DE'});
+  };
   //Acknowledge
   $scope.acknowledge = function() {
     save({Status: 'PE'});
   };
   $scope.merchantFleet = function() {
     return $scope.formData.ShippingType == 'Merchant Fleet';
-  }
+  };
   //Ready to ship
   $scope.readyShip = function() {
     $scope.form.$setSubmitted();

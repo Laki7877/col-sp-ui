@@ -12,6 +12,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
         <button ng-if="getState() == 1" class="btn btn-blue btn-width-xl margin-left-10" ng-click="acknowledge()">Acknowledge</button>
         <button ng-if="getState() == 2" class="btn btn-blue btn-width-xxl margin-left-10" ng-click="readyShip()">Ready to Ship</button>
         <button ng-if="getState() >= 3" class="btn btn-blue btn-width-xl margin-left-10" ng-click="save()">Save</button>
+        <button ng-if="getState() == 3 && merchantFleet()" class="btn btn-blue btn-width-xl margin-left-10" ng-click="delivered()">Delivered</button>
       </span>
     </nc-page-title>
     <div>

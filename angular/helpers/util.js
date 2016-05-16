@@ -357,7 +357,7 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
             item.Visibility = !item.Visibility;
             options.service.visible([_.pick(item, [options.id, 'Visibility'])])
                 .then(function (data) {
-                    if(data.OnlineFlag) {
+                    if(!_.isNil(data.OnlineFlag)) {
                         item.OnlineFlag = data.OnlineFlag;
                     }
                 }, function (err) {

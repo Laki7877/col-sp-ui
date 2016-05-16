@@ -90,7 +90,7 @@ var permission = {
 	12: '/admin/coupons/global',
 	13: '/admin/coupons/seller',
 	21: '/admin/newsletters',
-	70: '/admin/products/reviews',
+	81: '/admin/products/reviews',
 
 	//Seller
 	29: '/dashboard',
