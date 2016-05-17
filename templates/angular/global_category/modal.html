@@ -7,7 +7,7 @@
 	<h3 class="modal-title">Global Category Detail</h3>
 </div>
 <div class="modal-body margin-top-20">
-	<form ng-show="!saving && !loading && true" class="ah-form" name="form" novalidate>
+	<form ng-show="!saving && !loading && true" class="ah-form ng-hide" name="form" novalidate>
 		<div class="row">
 			<div class="col-xs-12">
 				<!-- Info -->
@@ -208,6 +208,6 @@
 			</div> <!-- end .col-xs-12 -->
 		</div> <!-- end .row -->
 	</form>
-	<div ng-show="saving" nc-loading="Saving.."></div>
+	<div ng-show="saving" class="ng-hide" nc-loading="Saving.."></div>
 	<div ng-show="loading" nc-loading="Loading.."></div>
 </div> <!-- end .modal-body -->
