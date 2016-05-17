@@ -7,7 +7,7 @@
         <div class="form-group" ng-repeat="jth in variationFactorIndices.iterator"
         ng-show="(dataset.attributeOptions[0].options.length > 0) || (jth == 0)">
             <div class="width-label">
-                <select class="form-control" ng-disabled="xspermit(44)"
+                <select class="form-control" ng-disabled="disabled()"
                     ng-disabled="variationFactorLocked() && dataset.attributeOptions[jth].Attribute"
                     ng-options="i as i.Attribute.DisplayNameEn
                     for i in formData.AttributeSet.AttributeSetMaps |
@@ -32,7 +32,7 @@
                 <ui-select
                 ng-if="isListInput(dataset.attributeOptions[jth].Attribute.DataType)"
                 multiple ng-model="dataset.attributeOptions[jth].options">
-                    <ui-select-match ui-lock-choice="$item._locked" placeholder="Select variant" ng-disabled="xspermit(44)">
+                    <ui-select-match ui-lock-choice="$item._locked" placeholder="Select variant" ng-disabled="disabled()">
                     {{ $item.AttributeValue.AttributeValueEn }}
                     </ui-select-match>
                     <ui-select-choices repeat="i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataset.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search">
@@ -41,7 +41,7 @@
                 </ui-select>
 
                 <ui-select ng-if="isFreeTextInput(dataset.attributeOptions[jth].Attribute.DataType)" 
-                    ng-disabled="xspermit(44)"
+                    ng-disabled="disabled()"
                     nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30"
                     nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$"
                     multiple tagging="tagTransform" tagging-label="" tagging-tokens=",|ENTER"
@@ -75,7 +75,7 @@
             </div>
             <div class="width-field-normal">
                 <div class="ah-select2-dropdown">
-                    <select ng-model="formData.DefaultVariant" class="form-control"  ng-disabled="xspermit(44)"
+                    <select ng-model="formData.DefaultVariant" class="form-control" ng-disabled="disabled()"
                     ng-options="i as i.text for i in formData.Variants track by i.text"
                         required>
                     </select>

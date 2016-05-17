@@ -233,7 +233,8 @@ angular.module('nc')
 				source: '=?',
 				key: '@?',
 				size: '@size',
-				title: '@title'
+				title: '@title',
+				disabled: '=?ngDisabled'
 			},
 			template: function(elem, attrs) {
 				if (attrs.template) {
@@ -266,6 +267,12 @@ angular.module('nc')
 					}
 				});
 				scope.upload = function(files) {
+					
+					if (scope.disabled) {
+						scope.onfail('ondisable');
+						return;
+					}
+									
 					if (!_.isNil(form) && !_.isNil(attrs.name)) {
 						form.$setDirty();
 					}

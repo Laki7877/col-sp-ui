@@ -123,11 +123,14 @@ module.exports = function($scope, $window, $controller, OrderService, config, st
 		if(item.Status == 'RS' && item.ShippingType == 'Merchant Fleet') {
 			$scope.alert.close();
 			OrderService.update(item.OrderId, {
-				Status: 'DE'
+				Status: 'DE',
+				Carrier: item.Carrier,
+				InvoiceNumber: item.InvoiceNumber,
+				TrackingNumber: item.TrackingNumber
 			})
-			.then(function() {
+			.then(function(data) {
 				$scope.alert.success('Successfully Delivered.');
-				item.Status = 'DE';
+				item = data;
 			}, function(err) {
 				$scope.alert.error(common.getError(err));
 			})

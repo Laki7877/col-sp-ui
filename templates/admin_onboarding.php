@@ -5,9 +5,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Onboarding
 <?php $this->start('page-body') ?>
   <!-- <div ng-controller="SellerOnboardingCtrl"> -->
   <div>
-    <div class="onboarding_wrapper">
+    <div class="onboarding_wrapper onboarding_admin">
       <div class="text-align-center welcome_text_big">Administration System's Homepage</div>
-      <div class="text-align-center welcome_text_small">Highlight Features</div>
     </div>
     <div>
       <div class="onboarding_content">

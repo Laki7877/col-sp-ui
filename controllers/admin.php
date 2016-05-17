@@ -18,6 +18,17 @@ class AdminController extends Controller
 		]);
 	}
 
+	public static function export($params)
+    {
+      return View::render('admin_export_products', [
+          'viewBag' => array(
+            'selectedProducts' =>  $_POST['selected_products'],
+            'searchCriteria' => $_POST['search_criteria']
+            ),
+      ]);
+    }
+
+
 	public static function approveDetail($params){
 		return View::render('admin_product_approval_detail',  [
 			'title' => 'Product Detail',

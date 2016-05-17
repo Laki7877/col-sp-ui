@@ -22,12 +22,14 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 		});
 
 		var groupList = Object.keys($scope.availableFields);
-			for(var i = 0; i <= $scope.columnCount; i++){
+		
+		for(var i = 0; i < $scope.columnCount; i++){
 				var dct = {};
-				var keyPerColumn = Math.ceil(groupList.length / $scope.columnCount);
+				var keyPerColumn = Math.ceil(groupList.length / $scope.columnCount) + 1;
 
-				for(var j = 0 ; j < keyPerColumn; j++){
+				for(var j = 0 ; j <= keyPerColumn; j++){
 					var moveKey = groupList.shift();
+					if(!moveKey) continue;
 					dct[moveKey] = ($scope.availableFields[moveKey]);
 				}
 
