@@ -12,7 +12,7 @@ module.exports = function(common) {
      };
     service.serialize = function(data) {
         var processed = _.merge({}, data);
-
+        console.log(processed);
         if(_.isArray(processed.Conditions.FilterBy.GlobalCategories)) {
             processed.Conditions.FilterBy.GlobalCategories = _.map(processed.Conditions.FilterBy.GlobalCategories, function(e) {
                 return _.pick(e, ['CategoryId']);

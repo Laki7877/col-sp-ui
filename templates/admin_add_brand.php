@@ -64,7 +64,8 @@
                   class="form-control"
                   name="SEO_ProductUrlKeyEn"
                   ng-model="formData.SEO.ProductUrlKeyEn"
-                  ng-pattern="/^[a-z0-9_\-]+$/"
+                  ng-pattern="/^[a-z0-9\-]*$/"
+                  ng-pattern-restrict="^[^\s_]$"
                   ng-lowercase
                   maxlength="100"
                   />
@@ -105,7 +106,7 @@
                   type="button"
                   class="btn btn-default"
                   name="BrandImage"
-                  ngf-accept="'.png,.jpg,.jpeg'"
+                  ngf-accept="'.jpg,.jpeg'"
                   ngf-select="uploadLogo($file)"
                   ngf-dimensions="$width >= 500 && $width <= 1000 && $height >= 500 && $height <= 1000"
                   ngf-max-size="'5MB'"

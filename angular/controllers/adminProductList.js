@@ -94,7 +94,9 @@ module.exports = function($scope, $controller, Product, common, config) {
         if($scope.bulkContainer.length == 0) {
             $scope.alert.error('Unable to Export. Please select Product for this action.');
         }
-        document.getElementById('exportForm').submit();
+        else {
+        	document.getElementById('exportForm').submit();
+    	}
     };
     $scope.exportSearchResult = function(){
         var K = _.extend({}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams));

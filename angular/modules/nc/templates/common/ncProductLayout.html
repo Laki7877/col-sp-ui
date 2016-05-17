@@ -40,7 +40,7 @@
                     <ui-select-match placeholder="Search by Product Name or PID">
                         {{ $item.ProductNameEn }}
                     </ui-select-match>
-                    <ui-select-choices placeholder="Search result" refresh="refresh($select.search)" refresh-delay="150" repeat="i in products">
+                    <ui-select-choices placeholder="Search result" refresh="refresh($select.search)" refresh-delay="150" repeat="i.Pid as i in products">
                         {{ i.ProductNameEn }}
                     </ui-select-choices>
                 </ui-select>

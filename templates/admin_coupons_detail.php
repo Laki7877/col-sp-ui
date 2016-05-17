@@ -171,7 +171,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Coupons'])
                         nc-template-options-path="couponForm/FilterByValue"
                         nc-template-form="form.FilterByValue" 
                         nc-label="Include">
-                        <nc-breadcrumb-select placeholder="Search for Global Category Name or ID" nc-breadcrumb-select-options="{ tagCount: 50 }" name="FilterByValue" nc-model="formData.Conditions.FilterBy.LocalCategories" nc-breadcrumb-select-tree="categories" required></nc-breadcrumb-select>
+                        <nc-breadcrumb-select placeholder="Search for Global Category Name or ID" nc-breadcrumb-select-options="{ tagCount: 50 }" name="FilterByValue" nc-model="formData.Conditions.FilterBy.GlobalCategories" nc-breadcrumb-select-tree="categories" required></nc-breadcrumb-select>
                       </div>
                     </div>
                   </div>
