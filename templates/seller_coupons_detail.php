@@ -145,7 +145,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                             <ui-select-choices repeat="i.value as i in criteria">{{ i.name }}</ui-select-choices>
                         </ui-select>
                       </div>
-                      <div ng-if="formData.Conditions.Order[0].Type != 'No filter'">
+                      <div ng-if="formData.Conditions.Order[0].Type != 'NoFilter'">
                         <div nc-template="common/input/form-group-with-label" 
                           nc-label="Price"
                           nc-template-options-path="couponForm/Condition_Value">
