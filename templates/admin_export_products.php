@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Export Products']) ?>
+<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Seller Portal - Export Products']) ?>
 
 <?php $this->start('page-body') ?>
 	<div class="seller-export-page" ng-init="init(<?= json_encode_n($viewBag) ?>)" ng-controller="ProductExportCtrl">
