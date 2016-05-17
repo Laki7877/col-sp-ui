@@ -107,7 +107,7 @@ module.exports = function($scope, $window, $controller, OrderService, config, st
 				disabled: true
 			};
 		}
-		if(item.Status == 'SH' && item.ShippingType == 'Merchant Fleet')
+		if(item.Status == 'RS' && item.ShippingType == 'Merchant Fleet')
 		{
 			return {
 				text: 'Delivered',

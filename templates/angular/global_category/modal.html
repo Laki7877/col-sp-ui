@@ -50,15 +50,15 @@
 	                        name="UrlKey"
 	                        ng-lowercase
 	                        ng-model="formData.UrlKey"
-	                        ng-pattern="/^[0-9a-z\-]+*$/"
+	                        ng-pattern="/^[0-9a-z\-]*$/"
 	                        maxlength="100"
 	                        />
 	                    </div>
 	                    <div nc-template="common/input/form-group-with-label" 
 		                  nc-template-form="form.SortBy" 
 		                  nc-label="Default Sort By" 
-		                  nc-template-options-path="addBrandForm/SortBy">
-		                  <ui-select ng-model="formData.SortBy" name="SortBy" search-enabled="false" required>
+		                  nc-template-options-path="addCategoryForm/SortBy">
+		                  <ui-select ng-model="formData.SortBy" name="SortBy" search-enabled="false">
 		                      <ui-select-match placeholder="- Select Default Sort -">{{$select.selected.SortByName}}</ui-select-match>
 		                      <ui-select-choices repeat="item in sortBy">{{item.SortByName}}</ui-select-choices>
 		                  </ui-select>
