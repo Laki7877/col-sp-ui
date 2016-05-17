@@ -14,6 +14,9 @@ angular.module('nc')
 		return {
 			restrict: 'A',
 			link: function (scope, element, attrs) {
+				if (_.get($rootScope.Profile, 'User.IsAdmin')) {
+					return;
+				}
 				if (!$rootScope.ShopGroupPolicy('IN')) {
 					$(element).hide();
 				}
@@ -24,6 +27,9 @@ angular.module('nc')
 		return {
 			restrict: 'A',
 			link: function (scope, element, attrs) {
+				if (_.get($rootScope.Profile, 'User.IsAdmin')) {
+					return;
+				}
 				if (!$rootScope.ShopGroupPolicy('BU')) {
 					$(element).hide();
 				}
@@ -34,6 +40,9 @@ angular.module('nc')
 		return {
 			restrict: 'A',
 			link: function (scope, element, attrs) {
+				if (_.get($rootScope.Profile, 'User.IsAdmin')) {
+					return;
+				}
 				if (!$rootScope.ShopGroupPolicy(['BU', 'IN'])) {
 					$(element).hide();
 				}
@@ -47,6 +56,9 @@ angular.module('nc')
 				permId: '@ncPolicyPermit'
 			},
 			link: function (scope, element, attrs) {
+				if (_.get($rootScope.Profile, 'User.IsAdmin')) {
+					return;
+				}
 				console.log('scope.permId', scope.permId);
 				var k = !$rootScope.permit(Number(scope.permId));
 				if (k) {
