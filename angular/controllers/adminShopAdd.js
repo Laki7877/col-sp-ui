@@ -69,7 +69,7 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 				$scope.formData.ShopImage = null;
 				$scope.alert.error(common.getError(err.data));
 			});
-	};
+	};	
 
 	$scope.getCities = function(id) {
 		ShopService.get('Cities', id)

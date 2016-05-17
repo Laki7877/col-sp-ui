@@ -5,5 +5,5 @@ module.exports = function($scope, $controller, Product) {
 		$scope: $scope,
 		options: {}
 	});
-	
+
 }

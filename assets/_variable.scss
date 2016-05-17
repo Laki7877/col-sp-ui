@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 $container-spacing-size: 40px;
 
 $sidebar-width: 60px;
@@ -61,3 +62,71 @@ $icon-font-path: '/assets/fonts/';
 // ****************** OVERRIDE DEFAULT FONT AWESOME VARIABLE *******************
 $fa-font-path: '/assets/fonts';
 // ****************************** END OVERRIDE *********************************
+=======
+$container-spacing-size: 40px;
+
+$sidebar-width: 60px;
+$sub-sidebar-width: 240px;
+
+
+// Color
+$white:	#ffffff;
+
+$header-border-grey:	#bcc7d5;
+
+$sidebar-color:	#252d40;
+$sidebar-bg-color-active:	#1e2534;
+$sidebar-font-color-active:	$white;
+
+$header-bg-color:	#edf2f9;
+
+$font-color-grey:	#7b7f8f;
+
+
+$color-black: #32343C;
+$color-dark-grey: #7B7F8F;
+$color-grey: #BCC7D5;
+$color-light-grey: #EDF2F9;
+$color-white: #FFFFFF;
+
+$color-theme: #4899DD;
+$color-light-theme: #b4ddff;
+$color-green: #33bb5b;
+$color-dark-green:	#68d485;
+$color-light-green: #BEEEBB;
+$color-red: #ec0000;
+$color-light-red: #ffc0c0;
+$color-yellow: #f5a623;
+$color-light-yellow: #fffdeb;
+$color-blue:	$color-theme;
+$color-light-blue:	#edf2f9;
+$color-soft-blue:	#4891d2;
+
+$color-disabled: #DEE3E7;
+
+$font-breadcrumb-color: $color-dark-grey;
+$font-breadcrumb-color-current: $color-black;
+
+
+$button-width-default: 80px;
+$button-width-lg: 100px;
+$button-width-xl: 120px;
+$button-width-xxl: 180px;
+$button-width-xxxl: 200px;
+
+
+$category-selection-column-size: 236px;
+
+
+
+
+// ******************* OVERRIDE DEFAULT BOOTSTRAP VARIABLE *********************
+$border-radius-base: 3px;
+$link-color: $color-theme;
+$icon-font-path: '/assets/fonts/';
+// ****************************** END OVERRIDE *********************************
+
+// ****************** OVERRIDE DEFAULT FONT AWESOME VARIABLE *******************
+$fa-font-path: '/assets/fonts';
+// ****************************** END OVERRIDE *********************************
+>>>>>>> col-cms-dev

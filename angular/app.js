@@ -33,6 +33,11 @@ require('angular-ui-bootstrap')
 require('angular-ui-tree')
 require('ng-file-upload')
 require('ui-select/dist/select.js')
+require('angular-ui-sortable/jquery-ui.js')
+require('angular-ui-sortable/sortable.js')
+require('angular-drag-and-drop-list/angular-drag-and-drop-lists.js')
+require('angular-chart.js')
+require('angular-input-masks')
 
 // Nc package
 require('./modules/angular-print')
@@ -60,7 +65,9 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   'duScroll', 'smoothScroll', 'ngSanitize', 'ngAnimate',
   'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select',
   'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload',
-  'schematics', 'AngularPrint', 'ui.utils.masks', 'umeSelect'
+  'schematics', 'AngularPrint', 'ui.utils.masks', 'umeSelect',
+  'ui.sortable',
+  'dndLists'
 ])
 
   // App config
@@ -138,6 +145,15 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .factory('ProductTempService', services.productTempService)
   .factory('PermissionService', services.permissionService)
 
+    // Col Dev (Natee)
+  .factory('CMSCategoryService', services.cmsCategoryService)
+  .factory('CMSGroupService', services.cmsGroupService)
+  .factory('CMSService', services.cmsService)
+  .factory('CMSMasterService', services.adminCMSMasterService)
+  .factory('Buy1Get1Service', services.Buy1Get1Service)
+  //.factory('CMSCollectionService', services.cmsCollectionService)
+  .factory('CMSMasterService', services.cmsMasterService)
+
   // Directives
   .directive('ncTradableSelect', directives.ncTradableSelect)
   .directive('ngCkeditor', directives.ngCkeditor)
@@ -151,8 +167,10 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .directive('ngTemplate', directives.ngTemplate)
   .directive('ngUppercase', directives.ngUppercase)
   .directive('ngLowercase', directives.ngLowercase)
-
-
+    .directive('ngMatch', directives.ngMatch)
+.directive('ngMinnumber', directives.ngMinnumber)
+.directive('ngMaxnumber', directives.ngMaxnumber)
+.directive('ngDateBefore', directives.ngDateBefore)
   // Filters
   .filter('capitalize', filters.capitalize)
   .filter('ordinal', filters.ordinal)
@@ -165,7 +183,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .filter('leadingzero', filters.leadingzero)
   .filter('variantValue', filters.variantValue)
   .filter('importGuidelineExample', filters.importGuidelineExample)
-
+    .filter('propsFilter', filters.propsFilter) // Col Dev (Natee)
+  .filter('statusValue', filters.statusValue) // Col Dev (Natee)
   // Controllers
   .controller('RootCtrl', controllers.root)
   .controller('IndexCtrl', controllers.index)
@@ -199,7 +218,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('SellerOrderAddCtrl', controllers.sellerOrderAdd)
   .controller('SellerPendingProductCtrl', controllers.sellerPendingProduct)
   .controller('SellerPendingProductGroupAddCtrl', controllers.sellerPendingProductGroupAdd)
-
+  .controller('SellerPendingProductsGroupCtrl', controllers.sellerPendingProductsGroup)
+  .controller('SellerReportCtrl', controllers.sellerReport)
 
   .controller('AdminAttributeCtrl', controllers.adminAttribute)
   .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)
@@ -242,6 +262,22 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
 
   .controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
   .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
+
+    // Create By Col Dev (Natee)
+  .controller('AdminCMSCategoryListCtrl', controllers.adminCMSCategoryList)
+  .controller('AdminCMSCategoryAddCtrl', controllers.adminCMSCategoryAdd)
+
+  .controller('AdminCMSGroupListCtrl', controllers.adminCMSGroupList)
+  .controller('AdminCMSGroupAddCtrl', controllers.adminCMSGroupAdd)
+
+  .controller('AdminCMSMasterListCtrl', controllers.adminCMSMasterList)
+  .controller('AdminCMSMasterAddCtrl', controllers.adminCMSMasterAdd)
+
+  .controller('AdminStdSaleReportSellerCtrl', controllers.adminStdSaleReportSellerList)
+
+  //iOATH
+  .controller('AdminBuy1Get1AddCtrl',controllers.adminBuy1Get1Add)
+  .controller('AdminBuy1Get1ListCtrl',controllers.adminBuy1Get1List)
 
   .controller('TestCtrl', controllers.test)
 
