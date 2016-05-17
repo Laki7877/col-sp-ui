@@ -21,7 +21,7 @@ module.exports = function($scope, $controller, AttributeService, ImageService, c
 					scope.alreadyVariant = scope.formData.VariantStatus;
 				}
 			},
-			onAfterSave: function(scope) { 
+			onAfterSave: function(scope) {
 				scope.alreadyDefault = scope.formData.DefaultAttribute;
 				scope.alreadyVariant = scope.formData.VariantStatus;
 			}

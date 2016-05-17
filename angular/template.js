@@ -18,6 +18,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
   );
 
 
+  $templateCache.put('collection/action',
+    "<div><a ng-click=\"actions.edit(row, true)\">View / Edit</a></div><div><a ng-click=actions.duplicate(row)>Duplicate</a></div><div><a ng-click=\"actions.delete(row, true)\">Delete</a></div>"
+  );
+
+
   $templateCache.put('common/abstractConfirmationModal',
     "<div class=\"modal-header no-border ng-scope\"><button type=button class=close aria-label=Close ng-click=no()><span class=padding-left-15 aria-hidden=true>×</span></button></div><div class=\"modal-body confirmation-modal no-margin ng-scope\"><div class=row><div class=\"col-xs-12 margin-bottom-30\"><h2 class=\"font-size-20 text-centerx text-normal margin-bottom-20 ng-binding\">{{ line1 }}</h2><div>{{ line2 }}</div></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white ng-binding\" ng-click=no()>Cancel</button> <button type=button class=\"btn btn-green\" ng-click=yes()>Confirm</button></div></div></div>"
   );
@@ -243,6 +248,16 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('common/roleNode',
     "<label><i class=\"fa fa-level-up fa-rotate-90 child-checkbox-enter\" aria-hidden=true></i><input ng-model=p.check ng-change=\"$root.checkRecursive(p, p.check)\" type=checkbox>{{ p.PermissionName }}</label><div class=margin-left-30 ng-repeat=\"p in p.Children\" ng-include=\"'common/roleNode'\"></div>"
+  );
+
+
+  $templateCache.put('general/action',
+    "<div><a ng-click=\"actions.edit(row, true)\">View / Edit</a></div><div><a ng-click=actions.duplicate(row)>Duplicate</a></div><div><a ng-click=\"actions.delete(row, true)\">Delete</a></div>"
+  );
+
+
+  $templateCache.put('general/remove_row_add_list_item',
+    "<div><a ng-click=\"actions.remove($index,row, true)\">Remove</a></div>"
   );
 
 
