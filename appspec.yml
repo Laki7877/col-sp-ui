@@ -1,0 +1,25 @@
+version: 0.0
+os: linux
+files:
+  - source: /public
+    destination: /var/www
+  - source: /templates
+    destination: /var/www
+  - source: /controllers
+    destination: /var/www
+  - source: /codedeploy/nginx/default.conf
+    destination: /etc/nginx/conf.d
+  - source: /codedeploy/nginx/php-fpm.conf
+    destination: /etc/nginx/conf.d
+
+hooks:
+  ApplicationStart:
+    - location: codedeploy/scripts/start_nginx.sh
+      timeout: 300
+  ApplicationStop:
+    - location: codedeploy/scripts/deregister_from_elb.sh
+    - location: codedeploy/scripts/stop_nginx.sh
+      timeout: 300
+  ValidateService:
+    - location: codedeploy/scripts/verify.sh
+    - location: codedeploy/scripts/register_with_elb.sh
