@@ -15,7 +15,7 @@
 
 # ELB_LIST defines which Elastic Load Balancers this instance should be part of.
 # The elements in ELB_LIST should be seperated by space.
-LOWER_APP_NAME==$(echo "$APPLICATION_NAME" | tr '[:upper:]' '[:lower:]')
+LOWER_APP_NAME=$(echo "$APPLICATION_NAME" | tr '[:upper:]' '[:lower:]')
 ELB_LIST="seller-$LOWER_APP_NAME-central"
 
 # Under normal circumstances, you shouldn't need to change anything below this line.
