@@ -1,4 +1,4 @@
-﻿<div id="add-product-information-tab-content">
+<div id="add-product-information-tab-content">
 	<? 
 	// $this->insert('partials/add-product-inner-tab-breadcrumb') 
 	?>

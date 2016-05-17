@@ -1,4 +1,4 @@
-﻿<?
+<?
 $progress = "0";
 if (isset($percent)) $progress = $percent;
 ?>

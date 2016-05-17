@@ -1,4 +1,4 @@
-﻿<div class="modal fade" tabindex="-1" role="dialog" id="<?= $id ?>">
+<div class="modal fade" tabindex="-1" role="dialog" id="<?= $id ?>">
 	<div class="modal-dialog modal-size-warning">
 		<div class="modal-content">
 			<div class="modal-header no-border">
