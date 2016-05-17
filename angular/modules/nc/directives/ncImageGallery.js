@@ -137,7 +137,8 @@ angular.module('nc')
 				var updateSource = function() {
 					var m = _.max([scope.source.ImageEn.length, scope.source.ImageTh.length]);
 					var len = scope.source.Links.length;
-					if(len > m ) {
+					console.log(len, m);
+					if(len > m) {
 						for (var i = 0; i < len - m; i++) {
 							scope.source.Links.pop();
 						};
@@ -149,6 +150,9 @@ angular.module('nc')
 				}
 
 				update();
+				scope.$watch('source.Links', function() {
+					console.log(scope.Links);
+				})
 				scope.$watch('width', update);
 				scope.$watch('height', update);
 				scope.$watch('source', function() {
@@ -161,8 +165,8 @@ angular.module('nc')
 						Links: [] 
 					});
 				});
-				scope.$watch('source.ImageEn', updateSource, true);
-				scope.$watch('source.ImageTh', updateSource, true);
+				scope.$watchCollection('source.ImageEn', updateSource);
+				scope.$watchCollection('source.ImageTh', updateSource);
 			}
 		};
 	})
