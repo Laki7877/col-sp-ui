@@ -8,11 +8,11 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 	$scope.selectAllAttributeSets = false;
 	$scope.columnCount = 3;
 	$scope.availableFieldsColumn = [];
-	Product.getExportableFields().then(function(data){
-		data.forEach(function(record){
+	Product.getExportableFields().then(function (data) {
+		data.forEach(function (record) {
 			var groupName = record.GroupName;
 			var headerName = record.HeaderName;
-			if(!_.has($scope.availableFields, groupName)){
+			if (!_.has($scope.availableFields, groupName)) {
 				$scope.availableFields[groupName] = [];
 			}
 
@@ -22,38 +22,40 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 		});
 
 		var groupList = Object.keys($scope.availableFields);
-			for(var i = 0; i < $scope.columnCount; i++){
-				var dct = {};
-				var keyPerColumn = Math.ceil(groupList.length / $scope.columnCount);
+		for (var i = 0; i < $scope.columnCount; i++) {
+			var dct = {};
+			var keyPerColumn = Math.ceil(groupList.length / $scope.columnCount);
 
-				for(var j = 0 ; j < keyPerColumn; j++){
-					var moveKey = groupList.shift();
-					dct[moveKey] = ($scope.availableFields[moveKey]);
-				}
+			for (var j = 0; j <= keyPerColumn; j++) {
+				var moveKey = groupList.shift();
+				dct[moveKey] = ($scope.availableFields[moveKey]);
+			}
 
-				$scope.availableFieldsColumn.push(dct);
+			$scope.availableFieldsColumn.push(dct);
 		}
+		
+		console.log('allowed', $scope.availableFieldsColumn);
 
 	});
 
-	$scope.onSearch = function(q){
+	$scope.onSearch = function (q) {
 		console.log(q, $scope.dataSet.attributeSets);
 		$scope.dataSet.attributeSets = $filter('filter')($scope.dataSet._attributeSets, q);
 	}
 
-	var normalFlow = function(){
-		if(productIds.length == 0){
+	var normalFlow = function () {
+		if (productIds.length == 0) {
 			$scope.SELECT_ALL = true;
 		}
 
-		$scope.ProductList = productIds.map(function(p){
+		$scope.ProductList = productIds.map(function (p) {
 			return { ProductId: p }
 		});
 
 		$scope.dataSet.attributeSets = {};
-		if($scope.SELECT_ALL){
-			AttributeSet.getAll().then(function(data){
-				$scope.dataSet.attributeSets = data.map(function(m){
+		if ($scope.SELECT_ALL) {
+			AttributeSet.getAll().then(function (data) {
+				$scope.dataSet.attributeSets = data.map(function (m) {
 					//m.Display = m.AttributeSetNameEn + " (" + m.ProductCount + ")";
 					m.Display = m.AttributeSetNameEn;
 					$scope.sumProductAttributeSet += Number(m.ProductCount);
@@ -63,9 +65,9 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 				$scope.dataSet._attributeSets = $scope.dataSet.attributeSets;
 				console.log(data);
 			});
-		}else{
-			Product.getAllAttributeSetsForProducts($scope.ProductList).then(function(data){
-				$scope.dataSet.attributeSets = data.map(function(m){
+		} else {
+			Product.getAllAttributeSetsForProducts($scope.ProductList).then(function (data) {
+				$scope.dataSet.attributeSets = data.map(function (m) {
 					// m.Display = m.AttributeSetNameEn + " (" + m.ProductCount.length + ")";
 					m.Display = m.AttributeSetNameEn;
 					$scope.sumProductAttributeSet += Number(m.ProductCount.length);
@@ -79,24 +81,24 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 	}
 
 	var productIds = [];
-	$scope.init = function(viewBag){
+	$scope.init = function (viewBag) {
 		productIds = viewBag.selectedProducts || [];
 		var searchCriteriaObject = (viewBag.searchCriteria != "" && viewBag.searchCriteria != null) ? JSON.parse($base64.decode(viewBag.searchCriteria)) : null;
 
 		console.log(viewBag, searchCriteriaObject, productIds);
 
-		if(searchCriteriaObject){
-			return Product.advanceList(searchCriteriaObject).then(function(data) {
-	          	console.log(data, 'recv data advanced list');
-	          	$scope.SELECT_ALL = false;
+		if (searchCriteriaObject) {
+			return Product.advanceList(searchCriteriaObject).then(function (data) {
+				console.log(data, 'recv data advanced list');
+				$scope.SELECT_ALL = false;
 
-	          	//restructure into normal flow
-	          	productIds = data.data.map(function(i){
-	          		return i.ProductId;
-	          	});
+				//restructure into normal flow
+				productIds = data.data.map(function (i) {
+					return i.ProductId;
+				});
 
-	          	normalFlow();
-	        });
+				normalFlow();
+			});
 		}
 
 
@@ -113,7 +115,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 	};
 
 	$scope.alert = new NcAlert();
-	$scope.confirmExportProducts = function(){
+	$scope.confirmExportProducts = function () {
 
 		$("#export-product").modal('hide');
 
@@ -123,7 +125,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 		var error = function (r) {
 			$(".modal").modal('hide');
 			$scope.exporter.title = 'Error'
-				$scope.alert.error('Unable to Export Product');
+			$scope.alert.error('Unable to Export Product');
 			$scope.reloadData();
 		};
 
@@ -131,37 +133,37 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 		var blobs = [];
 
 		var body = {};
-		body.Options  = [];
+		body.Options = [];
 		body.ProductList = $scope.ProductList;
 		body.AttributeSets = $scope.ctrl.tradedAS;
 
-		Object.keys($scope.fields).forEach(function(fieldKey){
-			if($scope.fields[fieldKey] == true){
+		Object.keys($scope.fields).forEach(function (fieldKey) {
+			if ($scope.fields[fieldKey] == true) {
 				body.Options.push(fieldKey);
 			}
 		});
 
-		if($scope.selectAllAttributeSets){
+		if ($scope.selectAllAttributeSets) {
 			body.AttributeSets = $scope.dataSet.attributeSets;
 		}
 
 		Product.export(body).then(function (result) {
 
 			blobs.push(result);
-			var file = new Blob(blobs, {type: 'application/csv'});
+			var file = new Blob(blobs, { type: 'application/csv' });
 			var fileURL = URL.createObjectURL(file);
 			$scope.exporter.href = fileURL;
 			$scope.exporter.download = fileName;
 			$scope.exporter.progress = 100;
 			//$scope.exporter.title = 'Export Complete'
-				a.href = fileURL;
+			a.href = fileURL;
 			a.click();
 
 			$("#export-product-progressing").modal('hide');
 		}, error);
 	}
 
-	$scope.lockAS = function(){
+	$scope.lockAS = function () {
 		return false
 	}
 
@@ -172,18 +174,18 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 		selectAll: false,
 		tradedAS: []
 	};
-	$scope.toggleSelectAll = function(){
-		Object.keys($scope.fields).forEach(function(key){
+	$scope.toggleSelectAll = function () {
+		Object.keys($scope.fields).forEach(function (key) {
 			$scope.fields[key] = $scope.ctrl.selectAll;
 		});
 		$scope.fields.PID = true;
 	};
 
 
-	$scope.$watch('fields', function(){
-		var m = Object.keys($scope.fields).map(function(k){
+	$scope.$watch('fields', function () {
+		var m = Object.keys($scope.fields).map(function (k) {
 			return $scope.fields[k];
-		}).reduce(function(prev,cur){
+		}).reduce(function (prev, cur) {
 			return prev && cur;
 		}, true);
 		$scope.ctrl.selectAll = m;

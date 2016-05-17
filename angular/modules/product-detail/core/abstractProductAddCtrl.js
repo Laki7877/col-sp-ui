@@ -78,7 +78,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       return $scope.adminMode || $rootScope.ShopGroupPolicy(range);
     }
 
-
     $scope.isVisibleTo = function (abbrev) {
       if (abbrev == "AD" && $scope.adminMode) return true;
       if (abbrev == "ME") return true;
