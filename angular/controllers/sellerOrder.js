@@ -1,4 +1,4 @@
-module.exports = function($scope, $window, $controller, OrderService, config, storage) {
+module.exports = function($scope, $window, $controller, OrderService, config, storage, common) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
@@ -120,7 +120,20 @@ module.exports = function($scope, $window, $controller, OrderService, config, st
 		};
 	};
 	$scope.onButtonClick = function(item) {
-		$window.location.href = $scope.url + '/' + item.OrderId;
+		if(item.Status == 'RS' && item.ShippingType == 'Merchant Fleet') {
+			$scope.alert.close();
+			OrderService.update(item.OrderId, {
+				Status: 'DE'
+			})
+			.then(function() {
+				$scope.alert.success('Successfully Delivered.');
+				item.Status = 'DE';
+			}, function(err) {
+				$scope.alert.error(common.getError(err));
+			})
+		} else {
+			$window.location.href = $scope.url + '/' + item.OrderId;
+		}
 	}
 	$scope.status = config.ORDER_STATUS;
 }
