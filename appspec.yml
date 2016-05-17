@@ -2,11 +2,11 @@ version: 0.0
 os: linux
 files:
   - source: /public
-    destination: /var/www
+    destination: /var/www/public
   - source: /templates
-    destination: /var/www
+    destination: /var/www/templates
   - source: /controllers
-    destination: /var/www
+    destination: /var/www/controllers
   - source: /codedeploy/nginx/default.conf
     destination: /etc/nginx/conf.d
   - source: /codedeploy/nginx/php-fpm.conf
