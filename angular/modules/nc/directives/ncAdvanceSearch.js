@@ -63,5 +63,4 @@ angular.module('nc')
 				};
 			}
 		};
-
 	});

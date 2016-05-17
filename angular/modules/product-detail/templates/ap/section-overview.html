@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="row" ng-if="formData.ProductId">
 	<div class="col-xs-12">
 		<div class="form-section">
@@ -56,58 +55,3 @@
 		</div>
 	</div>
 </div>
-=======
-<div class="row" ng-if="formData.ProductId">
-	<div class="col-xs-12">
-		<div class="form-section">
-			<div class="form-section-header">
-				<h2>Overview</h2></div>
-			<div class="form-section-content">
-				<div class="container-fluid" style="margin: -15px">
-					<table class="table">
-						<thead>
-							<th>Product Name</th>
-							<th>{{ (formData.Variants || []).length == 0 ? 'PID' : 'PID of Parent Product' }}</th>
-							<th>Shop Name / Shop ID</th>
-							<th>Sale Price</th>
-							<th class="info-column">Info</th>
-							<th class="image-column">Image</th>
-							<th class="status-column">Status</th>
-							<th class="live-column">Live</th>
-							<th class="visible-column">Visible</th>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="column-text-ellipsis">{{ formData.MasterVariant.ProductNameEn }}</td>
-								<td>{{ formData.MasterVariant.Pid }}</td>
-								<td>{{ formData.ShopName }} / {{ formData.ShopId }}</td>
-								<td>{{ formData.MasterVariant.SalePrice | number: 2 }}</td>
-								<td class="info-column">
-									<i ng-if="!formData.InfoFlag" class="fa fa-minus color-grey icon-size-18px"></i>
-									<i ng-if="formData.InfoFlag" class="fa fa-check color-green icon-size-18px"></i>
-								</td>
-								<td class="image-column">
-									<i ng-if="!formData.ImageFlag" class="fa fa-minus color-grey icon-size-18px"></i>
-									<i ng-if="formData.ImageFlag" class="fa fa-check color-green icon-size-18px"></i>
-								</td>
-								<td class="status-column">
-									<span class="{{ asStatus(formData.Status).color }}">
-										<i class="fa {{ asStatus(formData.Status).icon }}"></i>
-										{{ asStatus(formData.Status).name }}
-									</span>
-								</td>
-								<td class="live-column">
-									<i class="fa fa-circle color-grey"></i>
-								</td>
-								<td class="visible-column">
-									<a ng-click="formData.Visibility = !formData.Visibility" ng-class="{'fa fa-eye-slash color-grey eye-icon font-size-16' : !formData.Visibility, 'fa fa-eye color-dark-grey eye-icon font-size-16' : formData.Visibility}"></a>
-								</td>
-							</tr>
-							<tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
->>>>>>> col-cms-dev

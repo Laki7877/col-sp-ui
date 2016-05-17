@@ -9,11 +9,7 @@
   To save the content created with CKEditor you need to read the POST data on the server
   side and write it to a file or the database.
 
-<<<<<<< HEAD
   Copyright (c) 2003-2016, CKSource - Frederico Knabben. All rights reserved.
-=======
-  Copyright (c) 2003-2015, CKSource - Frederico Knabben. All rights reserved.
->>>>>>> col-cms-dev
   For licensing, see LICENSE.md or http://ckeditor.com/license
 -------------------------------------------------------------------------------------------
 

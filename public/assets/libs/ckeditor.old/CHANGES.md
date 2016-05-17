@@ -1,7 +1,6 @@
 CKEditor 4 Changelog
 ====================
 
-<<<<<<< HEAD
 ## CKEditor 4.5.7
 
 New Features:
@@ -18,8 +17,6 @@ Other Changes:
 * [#13884](http://dev.ckeditor.com/ticket/13884): Fixed: Copy/paste table in Firefox results in just first cell being pasted.
 * [#14234](http://dev.ckeditor.com/ticket/14234): Fixed: URL input field is not marked as required in the [Embed](http://ckeditor.com/addon/embed) dialog.
 
-=======
->>>>>>> col-cms-dev
 ## CKEditor 4.5.6
 
 New Features:
@@ -101,11 +98,7 @@ Other Changes:
 
 New Features:
 
-<<<<<<< HEAD
 * [#13501](http://dev.ckeditor.com/ticket/13501): Added the [`config.fileTools_defaultFileName`](http://docs.ckeditor.com/#!/api/CKEDITOR.config-cfg-fileTools_defaultFileName) option to allow setting a default file name for paste uploads.
-=======
-* [#13501](http://dev.ckeditor.com/ticket/13501): Added the [`config.fileTools_defaultFileName`](http://docs.ckeditor.com/#!/api/CKEDITOR.config-cfg-fileTools_defaultFileName) option to allow setting a default filen ame for paste uploads.
->>>>>>> col-cms-dev
 * [#13603](http://dev.ckeditor.com/ticket/13603): Added support for uploading dropped BMP images.
 
 Fixed Issues:

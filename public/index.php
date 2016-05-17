@@ -129,25 +129,21 @@ Route::add('/admin/products/export', 'AdminController::export');
 Route::add('/admin/products/:id', 'AdminController::detail');
 // Route::add('/admin/products/groups/:id', 'AdminController::editPendingProduct');
 
-
 // Create By Col Dev (Natee)
 Route::add('/admin/cms/category', 'AdminController::listCMSCategory');
 Route::add('/admin/cms/category/create', 'AdminController::addCMSCategory');
 Route::add('/admin/cms/category/:id', 'AdminController::editCMSCategory');
-
 Route::add('/admin/cms/group', 'AdminController::listCMSGroup');
 Route::add('/admin/cms/group/create', 'AdminController::addCMSGroup');
 Route::add('/admin/cms/group/:id', 'AdminController::editCMSGroup');
-
 Route::add('/admin/cms/master', 'AdminController::listCMSMaster');
 Route::add('/admin/cms/master/create', 'AdminController::addCMSMaster');
 Route::add('/admin/cms/master/:id', 'AdminController::editCMSMaster');
-
 Route::add('/admin/buy1get1','AdminController::listBuy1Get1');
 Route::add('/admin/buy1get1/create','AdminController::addBuy1Get1');
 Route::add('/admin/buy1get1/:id','AdminController::editBuy1Get1');
-
 Route::add('/admin/reports/std/saleforseller', 'AdminController::listStandardReport');
+
 
 //test route
 Route::add('/test/:name', 'TestController::any');
