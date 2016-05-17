@@ -31,7 +31,7 @@
 	                                <ui-select-match ng-pattern-restrict="^[^<>]*$" maxlength="255">
 	                                    {{$item.BrandNameEn}}
 	                                </ui-select-match>
-	                                <ui-select-choices repeat="item in options.Brands | filter:{BrandNameEn: $select.search} track by $index">
+	                                <ui-select-choices repeat="item in options.Brands" refresh="options.refreshBrands($select.search)" refresh-delay="100">
 	                                    {{item.BrandNameEn}}
 	                                </ui-select-choices>
 	                            </ui-select>
@@ -45,7 +45,7 @@
 	                                <ui-select-match maxlength="255">
 	                                    {{$item.ShopNameEn}}
 	                                </ui-select-match>
-	                                <ui-select-choices repeat="item in options.Shops | filter:{ShopNameEn: $select.search} track by $index">
+	                                <ui-select-choices repeat="item in options.Shops" refresh="options.refreshShops($select.search)" refresh-delay="100">
 	                                    {{item.ShopNameEn}}
 	                                </ui-select-choices>
 	                            </ui-select>

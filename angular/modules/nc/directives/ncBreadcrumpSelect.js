@@ -39,7 +39,7 @@ angular.module('nc')
 				if(!_.isNil(attrs.disabled)) {
 					scope.disabled = true;
 				}
-				/* 
+				
 				scope.options = _.defaults(scope.options, {
 					nameKey: 'NameEn',
 					childrenKey: 'nodes',
@@ -48,7 +48,7 @@ angular.module('nc')
 					limit: 10,
 					tagCount: 5,
 					seperator: ' <span class="fa fa-angle-right"></span> '
-				});*/
+				});
 
 				scope.$watch('options', function() {
 					scope.options = _.defaults(scope.options, {

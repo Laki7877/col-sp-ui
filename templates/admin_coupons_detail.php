@@ -21,7 +21,14 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Coupons'])
     <div ng-show="saving" nc-loading="{{savingMessage}}"></div>
     <form class="ah-form sticky-mainform-action" name="form" ng-show="!loading && !saving" novalidate>
     <div class="add-product-body">
-      <? $this->insert('components/tab-nav', ["items" => $menus]) ?>
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="require active">
+            <a href="#information" data-id="information" aria-controls="information" role="tab" data-toggle="tab">Information</a>
+          </li>
+          <li role="presentation">
+            <a href="#conditions" data-id="conditions" aria-controls="conditions" role="tab" data-toggle="tab">Conditions</a>
+          </li>
+        </ul>
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane margin-top-30 active" id="information">
             <div id="create_coupon_information_tab_content">
@@ -119,14 +126,13 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Coupons'])
                           <input type="text" name="UsagePerCustomer" class="form-control" ng-model="formData.UsagePerCustomer" ng-pattern-restrict="^[0-9]*$" maxlength="10" placeholder="1"/>
                       </div>
                     </div>
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div role="tabpanel" class="tab-pane margin-top-30" id="conditions">
-            <div id="create_coupon_information_tab_content">
+            <div id="create_coupon_condition_tab_content">
               <div class="row">
                 <div class="col-xs-12">
                   <div class="form-section">
@@ -160,12 +166,12 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Coupons'])
                             <ui-select-choices repeat="i.value as i in filters">{{ i.name }}</ui-select-choices>
                         </ui-select>
                       </div>
-                      <div ng-show="formData.Conditions.FilterBy.Type == 'LocalCategory'"
+                      <div ng-show="formData.Conditions.FilterBy.Type == 'GlobalCategory'"
                         nc-template="common/input/form-group-with-label"
                         nc-template-options-path="couponForm/FilterByValue"
                         nc-template-form="form.FilterByValue" 
                         nc-label="Include">
-                        <nc-breadcrumb-select placeholder="Search for Local Category Name or ID" nc-breadcrumb-select-options="{ tagCount: 50 }" name="FilterByValue" nc-model="formData.Conditions.FilterBy.LocalCategories" nc-breadcrumb-select-tree="categories" required></nc-breadcrumb-select>
+                        <nc-breadcrumb-select placeholder="Search for Global Category Name or ID" nc-breadcrumb-select-options="{ tagCount: 50 }" name="FilterByValue" nc-model="formData.Conditions.FilterBy.LocalCategories" nc-breadcrumb-select-tree="categories" required></nc-breadcrumb-select>
                       </div>
                     </div>
                   </div>

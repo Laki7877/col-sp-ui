@@ -28,7 +28,9 @@ angular.module('nc')
 					Shops: [],
 					LocalCategories: [],
 					GlobalCategories: [],
-					Admin: true
+					Admin: true,
+					refreshBrands: _.noop,
+					refreshShops: _.noop
 				});
 				scope.search = function() {
 					if(scope.callback(scope.formData, true)) return;
