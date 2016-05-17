@@ -6597,7 +6597,12 @@ module.exports = ["$templateCache", "$filter", function($templateCache, $filter)
 				(scope.callback || _.noop)(newObj);
 			});
 			scope.$watch('selectable', function() {
+				if(_.isNil(scope.selectable))
+					return;
 				_.pullAllBy(scope.selectable, scope.model, scope.id);
+				scope.selectable.sort(function(a,b) {
+					return a[scope.id] - b[scope.id];
+				});
 			});
 
 			//Drag event
@@ -6606,6 +6611,9 @@ module.exports = ["$templateCache", "$filter", function($templateCache, $filter)
 				scope.select(_.findIndex(scope.model, function(e) { return e[scope.id] == item[scope.id] }), false);
 			};
 			scope.transfer = function(direction) {
+				if(_.isNil(scope.active(direction))) {
+					return;
+				}
 				if(direction) {
 					var removed = scope.selectable[scope.activeLeft];
 					scope.selectable.splice(scope.activeLeft, 1);
@@ -6619,7 +6627,10 @@ module.exports = ["$templateCache", "$filter", function($templateCache, $filter)
 					if(scope.activeRight >= scope.model.length) {
 						scope.activeRight--;
 					}
-					scope.selectable.push(removed);
+					scope.selectable.push(removed)
+					scope.selectable.sort(function(a,b) {
+						return a[scope.id] - b[scope.id];
+					});
 				}
 			};
 			scope.active = function(direction) {
@@ -13492,7 +13503,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-description',
-    "<div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-disabled=\"xspermit(35) || xspermit(392)\" ng-ckeditor=ckOptions class=form-control name=DescriptionFullEn ng-model=variantPtr.DescriptionFullEn>\n" +
+    "<div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-disabled=\"xspermit(35) || xspermit(39)\" ng-ckeditor=ckOptions class=form-control name=DescriptionFullEn ng-model=variantPtr.DescriptionFullEn>\n" +
     "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-disabled=xspermit(35) ng-ckeditor=ckOptions class=form-control name=DescriptionFullTh ng-model=variantPtr.DescriptionFullTh>\n" +
     "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (English)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.MobileDescriptionEn><textarea ng-ckeditor=ckOptions class=form-control name=MobileDescriptionEn ng-disabled=\"xspermit(35) || xspermit(39)\" ng-model=variantPtr.MobileDescriptionEn>\n" +
     "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.MobileDescriptionTh><textarea ng-ckeditor=ckOptions class=form-control name=MobileDescriptionTh ng-disabled=xspermit(35) ng-model=variantPtr.MobileDescriptionTh>\n" +
@@ -13552,7 +13563,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "        'show': $root.isInvalid(addProductForm['pair_Sku' + $index]),\n" +
     "        'conditions' : addProductForm['pair_Sku' + $index].$error\n" +
     "        }\n" +
-    "        }\"><input ng-disabled=!pair.Visibility class=form-control name=\"pair_Sku{{ $index }}\" maxlength=300 ng-pattern=\"/^[^<>]+$/\" ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }\" ng-required=\"onPublishing && pair.Visibility\" ng-model=\"pair.Sku\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
+    "        }\"><input ng-disabled=\"!pair.Visibility || xspermit(44)\" class=form-control name=\"pair_Sku{{ $index }}\" maxlength=300 ng-pattern=\"/^[^<>]+$/\" ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }\" ng-required=\"onPublishing && pair.Visibility\" ng-model=\"pair.Sku\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
     "        'error' : {\n" +
     "        'messages': {\n" +
     "        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\n" +
@@ -13560,7 +13571,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "        'show': $root.isInvalid(addProductForm['pair_SalePrice' + $index]),\n" +
     "        'conditions' : addProductForm['pair_SalePrice' + $index].$error\n" +
     "        }\n" +
-    "        }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }\" ng-model=pair.SalePrice name=\"pair_SalePrice{{ $index }}\" ng-disabled=!pair.Visibility ng-required=pair.Visibility class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
+    "        }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }\" ng-model=pair.SalePrice name=\"pair_SalePrice{{ $index }}\" ng-disabled=\"!pair.Visibility || xspermit(44)\" ng-required=pair.Visibility class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
     "        'error' : {\n" +
     "        'messages': {\n" +
     "        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\n" +
@@ -13568,7 +13579,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "        'show': $root.isInvalid(addProductForm['pair_OriginalPrice' + $index]),\n" +
     "        'conditions' : addProductForm['pair_OriginalPrice' + $index].$error\n" +
     "        }\n" +
-    "        }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }\" name=pair_OriginalPrice{{$index}} ng-model=pair.OriginalPrice ng-disabled=!pair.Visibility class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
+    "        }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }\" name=pair_OriginalPrice{{$index}} ng-model=pair.OriginalPrice ng-disabled=\"!pair.Visibility || xspermit(44)\" class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
     "        'error' : {\n" +
     "        'messages': {\n" +
     "        'pattern': 'Only numbers allowed'\n" +
@@ -13576,7 +13587,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "        'show': $root.isInvalid(addProductForm['pair_Quantity' + $index]),\n" +
     "        'conditions' : addProductForm['pair_Quantity' + $index].$error\n" +
     "        }\n" +
-    "        }\"><input ng-model=pair.Quantity maxlength=5 ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }\" ng-disabled=!pair.Visibility ng-pattern=\"/^[0-9]+$/\" ng-disabled=formData.ProductId name=pair_Quantity{{$index}} class=\"form-control\"></td><td><a class=\"btn btn-white btn-width-xl\" ng-disabled=!pair.Visibility ng-click=\"openVariantDetail(pair, formData.Variants, $index)\">More Detail</a></td><td><a class=\"btn btn-white\" ng-click=\"pair.Visibility = !pair.Visibility\"><span ng-if=pair.Visibility>Hide</span> <span ng-if=!pair.Visibility>Show</span></a></td></tr></tbody></table>"
+    "        }\"><input ng-model=pair.Quantity maxlength=5 ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }\" ng-disabled=\"!pair.Visibility || xspermit(44)\" ng-pattern=\"/^[0-9]+$/\" ng-disabled=formData.ProductId name=pair_Quantity{{$index}} class=\"form-control\"></td><td><a class=\"btn btn-white btn-width-xl\" ng-disabled=!pair.Visibility ng-click=\"if(xspermit(44)) openVariantDetail(pair, formData.Variants, $index)\">More Detail</a></td><td><a class=\"btn btn-white\" ng-click=\"if(xspermit(44)) pair.Visibility = !pair.Visibility\"><span ng-if=pair.Visibility>Hide</span> <span ng-if=!pair.Visibility>Show</span></a></td></tr></tbody></table>"
   );
 
 
@@ -13591,7 +13602,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-variation-option',
-    "<div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content ng-if=\"!(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) && controlFlags.variation == 'enable'\"><div class=form-group ng-repeat=\"jth in variationFactorIndices.iterator\" ng-show=\"(dataset.attributeOptions[0].options.length > 0) || (jth == 0)\"><div class=width-label><select class=form-control ng-disabled=\"variationFactorLocked() && dataset.attributeOptions[jth].Attribute\" ng-options=\"i as i.Attribute.DisplayNameEn\n" +
+    "<div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content ng-if=\"!(formData.AttributeSet && !formData.AttributeSet['AttributeSetId']) && controlFlags.variation == 'enable'\"><div class=form-group ng-repeat=\"jth in variationFactorIndices.iterator\" ng-show=\"(dataset.attributeOptions[0].options.length > 0) || (jth == 0)\"><div class=width-label><select class=form-control ng-disabled=xspermit(44) ng-disabled=\"variationFactorLocked() && dataset.attributeOptions[jth].Attribute\" ng-options=\"i as i.Attribute.DisplayNameEn\n" +
     "                    for i in formData.AttributeSet.AttributeSetMaps |\n" +
     "                    exclude: dataset.attributeOptions[1 - jth].Attribute : 'AttributeId' |\n" +
     "                    truth: 'Attribute.VariantStatus'\n" +
@@ -13605,7 +13616,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "                'show': true,\n" +
     "                'conditions' :  addProductForm['attributeOptions' + jth].$error\n" +
     "                }\n" +
-    "                }\"><ui-select ng-if=isListInput(dataset.attributeOptions[jth].Attribute.DataType) multiple ng-model=dataset.attributeOptions[jth].options><ui-select-match ui-lock-choice=$item._locked placeholder=\"Select variant\">{{ $item.AttributeValue.AttributeValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataset.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search\">{{ i.AttributeValue.AttributeValueEn }}</ui-select-choices></ui-select><ui-select ng-if=isFreeTextInput(dataset.attributeOptions[jth].Attribute.DataType) nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ multiple tagging=tagTransform tagging-label=\"\" tagging-tokens=,|ENTER name=attributeOptions{{jth}} ng-model=dataset.attributeOptions[jth].options><ui-select-match ui-lock-choice=$item._locked placeholder=\"Input variant\">{{ $item.ValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search\">{{ i.ValueEn }}</ui-select-choices></ui-select><input ng-if=!dataset.attributeOptions[jth].Attribute.DataType disabled class=\"form-control\"></div><a class=\"like-text form-text\" ng-show=!variationFactorLocked() ng-click=variationFactorIndices.pushSecond() ng-if=\"dataset.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1\"><i class=\"fa fa-plus-circle color-theme\"></i> Add another option</a> <a ng-show=!variationFactorLocked() class=\"like-text form-text\" ng-click=variationFactorIndices.popSecond() ng-if=\"variationFactorIndices.length() == 2 && jth == 1\"><i class=\"fa fa-trash color-theme icon-size-20\"></i></a></div><div class=form-group ng-show=\"formData.Variants.length > 0\"><div class=width-label><label class=control-label>Default Variant</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-model=formData.DefaultVariant class=form-control ng-options=\"i as i.text for i in formData.Variants track by i.text\" required></select></div></div></div></div></div>"
+    "                }\"><ui-select ng-if=isListInput(dataset.attributeOptions[jth].Attribute.DataType) multiple ng-model=dataset.attributeOptions[jth].options><ui-select-match ui-lock-choice=$item._locked placeholder=\"Select variant\" ng-disabled=xspermit(44)>{{ $item.AttributeValue.AttributeValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataset.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search\">{{ i.AttributeValue.AttributeValueEn }}</ui-select-choices></ui-select><ui-select ng-if=isFreeTextInput(dataset.attributeOptions[jth].Attribute.DataType) ng-disabled=xspermit(44) nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ multiple tagging=tagTransform tagging-label=\"\" tagging-tokens=,|ENTER name=attributeOptions{{jth}} ng-model=dataset.attributeOptions[jth].options><ui-select-match ui-lock-choice=$item._locked placeholder=\"Input variant\">{{ $item.ValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search\">{{ i.ValueEn }}</ui-select-choices></ui-select><input ng-if=!dataset.attributeOptions[jth].Attribute.DataType disabled class=\"form-control\"></div><a class=\"like-text form-text\" ng-show=!variationFactorLocked() ng-click=variationFactorIndices.pushSecond() ng-if=\"dataset.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1\"><i class=\"fa fa-plus-circle color-theme\"></i> Add another option</a> <a ng-show=!variationFactorLocked() class=\"like-text form-text\" ng-click=variationFactorIndices.popSecond() ng-if=\"variationFactorIndices.length() == 2 && jth == 1\"><i class=\"fa fa-trash color-theme icon-size-20\"></i></a></div><div class=form-group ng-show=\"formData.Variants.length > 0\"><div class=width-label><label class=control-label>Default Variant</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-model=formData.DefaultVariant class=form-control ng-disabled=xspermit(44) ng-options=\"i as i.text for i in formData.Variants track by i.text\" required></select></div></div></div></div></div>"
   );
 
 
