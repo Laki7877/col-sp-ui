@@ -79,17 +79,26 @@ module.exports = function($scope, $controller, options, Product, LocalCategorySe
 		return false;
 	};
 
-	//Load all Brands
-	BrandService.list()
-		.then(function(data) {
-			$scope.advanceSearchOptions.Brands = data;
-		});
-
-	//Load all Shops
-	ShopService.list()
-		.then(function(data) {
-			$scope.advanceSearchOptions.Shops = data;
-		});
+	$scope.advanceSearchOptions.refreshBrands = function(t) {
+			console.log(t);
+			BrandService.list({
+				_limit: 16,
+				searchText: t
+			})
+			.then(function(data) {
+				$scope.advanceSearchOptions.Brands = data.data;
+			});
+		};
+	$scope.advanceSearchOptions.refreshShops = function(t) {
+			//Load all Shops
+			ShopService.list({
+				_limit: 16,
+				searchText: t
+			})
+			.then(function(data) {
+				$scope.advanceSearchOptions.Shops = data.data
+			});
+		};
 
 	//Load Global category
 	GlobalCategoryService.list()

@@ -734,10 +734,10 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 											<input name="ContactPersonLastName" class="form-control" ng-model="formData.ContactPersonLastName" ng-pattern-restrict="^[^<>]*$" maxlength="20" />
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
-				                    	nc-template-form="form.Email"
+				                    	nc-template-form="form.ShopEmail"
 				                    	nc-template-options-path="addShopAccountForm/Email"
 				                    	nc-label="Email Address">
-											<input type="email" name="Email" class="form-control" ng-model="formData.Email" ng-pattern-restrict="^[^<>]*$" maxlength="50" />
+											<input type="email" name="ShopEmail" class="form-control" ng-model="formData.Email" ng-pattern-restrict="^[^<>]*$" maxlength="50" />
 				                    </div>
 				                </div>
 				            </div>

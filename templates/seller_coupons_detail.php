@@ -70,8 +70,6 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                       </div>
                     </div>
                   </div>
-
-
                   <div class="form-section">
                     <div class="form-section-header"><h2>Action</h2></div>
                     <div class="form-section-content">
@@ -111,7 +109,6 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                           </div>
                     </div>
                   </div>
-
                   <div class="form-section">
                     <div class="form-section-header"><h2>More Options</h2></div>
                     <div class="form-section-content">
