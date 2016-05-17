@@ -113,7 +113,7 @@ var permission = {
 	64: '/dashboard',
 	65: '/products/groups',
 	66: '/products/images',
-	68: '/inventory',
+	//68: '/inventory',
 	69: ['/coupons', '/coupons/add']
 };
 
