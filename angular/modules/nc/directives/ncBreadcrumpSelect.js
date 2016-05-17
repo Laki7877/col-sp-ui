@@ -39,6 +39,7 @@ angular.module('nc')
 				if(!_.isNil(attrs.disabled)) {
 					scope.disabled = true;
 				}
+				/* 
 				scope.options = _.defaults(scope.options, {
 					nameKey: 'NameEn',
 					childrenKey: 'nodes',
@@ -47,7 +48,19 @@ angular.module('nc')
 					limit: 10,
 					tagCount: 5,
 					seperator: ' <span class="fa fa-angle-right"></span> '
-				});
+				});*/
+
+				scope.$watch('options', function() {
+					scope.options = _.defaults(scope.options, {
+						nameKey: 'NameEn',
+						childrenKey: 'nodes',
+						idKey: 'CategoryId',
+						placeholder: '',
+						limit: 10,
+						tagCount: 5,
+						seperator: ' <span class="fa fa-angle-right"></span> '
+					});
+				})
 				_globalOptions = scope.options;
 				scope.encodedSeparator = encodedSeparator;
 				scope.$watchCollection('model.ptr', function(newObj, oldObj) {
