@@ -72,9 +72,9 @@
       </td>
       <!--$emit('openPairModal', pair, formData.Variants, $index)-->
       <td><a class="btn btn-white btn-width-xl" ng-disabled='!pair.Visibility'
-      ng-click="if(xspermit(44)) openVariantDetail(pair, formData.Variants, $index)">More Detail</a></td>
+      ng-click="if(!xspermit(44)) openVariantDetail(pair, formData.Variants, $index)">More Detail</a></td>
       <td>
-        <a class="btn btn-white" ng-click='if(xspermit(44)) pair.Visibility = !pair.Visibility'>
+        <a class="btn btn-white" ng-click='if(!xspermit(44)) pair.Visibility = !pair.Visibility'>
           <span ng-if='pair.Visibility'>Hide</span>
           <span ng-if='!pair.Visibility'>Show</span>
         </a>
