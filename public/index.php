@@ -143,6 +143,7 @@ Route::add('/admin/buy1get1','AdminController::listBuy1Get1');
 Route::add('/admin/buy1get1/create','AdminController::addBuy1Get1');
 Route::add('/admin/buy1get1/:id','AdminController::editBuy1Get1');
 
+Route::add('/admin/reports/std/saleforseller', 'AdminController::listStandardReport');
 
 //test route
 Route::add('/test/:name', 'TestController::any');

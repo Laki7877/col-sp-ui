@@ -256,14 +256,16 @@ var app = angular.module('colspApp', ['ngPatternRestrict',
   .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
 
     // Create By Col Dev (Natee)
-.controller('AdminCMSCategoryListCtrl', controllers.adminCMSCategoryList)
-.controller('AdminCMSCategoryAddCtrl', controllers.adminCMSCategoryAdd)
+  .controller('AdminCMSCategoryListCtrl', controllers.adminCMSCategoryList)
+  .controller('AdminCMSCategoryAddCtrl', controllers.adminCMSCategoryAdd)
 
-    .controller('AdminCMSGroupListCtrl', controllers.adminCMSGroupList)
-    .controller('AdminCMSGroupAddCtrl', controllers.adminCMSGroupAdd)
+  .controller('AdminCMSGroupListCtrl', controllers.adminCMSGroupList)
+  .controller('AdminCMSGroupAddCtrl', controllers.adminCMSGroupAdd)
 
   .controller('AdminCMSMasterListCtrl', controllers.adminCMSMasterList)
   .controller('AdminCMSMasterAddCtrl', controllers.adminCMSMasterAdd)
+
+  .controller('AdminStdSaleReportSellerCtrl', controllers.adminStdSaleReportSellerList)
 
   //iOATH
   .controller('AdminBuy1Get1AddCtrl',controllers.adminBuy1Get1Add)

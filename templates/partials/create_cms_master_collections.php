@@ -74,7 +74,7 @@
           <div class="form-group">
             <label class="col-md-2 text-right">Featured Product Title</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" ng-model="formData.FeatureTitle"></input>
+              <input type="text" class="form-control" ng-model="formData.FeatureTitle" />
             </div>
           </div>
 

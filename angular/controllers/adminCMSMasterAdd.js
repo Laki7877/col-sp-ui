@@ -1,6 +1,7 @@
-module.exports = function ($scope, $controller, CMSMasterService, config, $uibModal, $timeout) {
+module.exports = function ($scope, $controller, CMSMasterService, ImageService, NcAlert, common, config, $uibModal, $timeout) {
     'ngInject';
 
+    $scope.alert            = new NcAlert();
     $scope.formData         = {};
     $scope.products         = [];
     $scope.product          = {};
@@ -11,6 +12,18 @@ module.exports = function ($scope, $controller, CMSMasterService, config, $uibMo
         EffectiveDate: null,
         ExpiryDate: null,
         //CategoryList: []
+    };
+
+    $scope.formData         = CMSMasterService.generate();
+    $scope.bannerUploader   = ImageService.getUploaderFn('/CMS/CMSMaster/CMSImage');
+    
+    $scope.uploadBannerFail = function (e, response) {
+        if (e == 'onmaxsize') {
+            $scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+        }
+        else {
+            $scope.alert.error(common.getError(response.data));
+        }
     };
 
     var sortableEle;
@@ -436,6 +449,7 @@ module.exports = function ($scope, $controller, CMSMasterService, config, $uibMo
                 
                 $scope.Schedule             = scope.formData.ScheduleList[0];
                 $scope.featureProducts      = scope.formData.FeatureProductList;
+                $scope.CategoryList         = scope.formData.CategoryList;
                 setProducts(getProductIds($scope.featureProducts));
 
 

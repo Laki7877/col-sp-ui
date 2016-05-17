@@ -322,5 +322,13 @@ class AdminController extends Controller
     {
         return View::render('product_review');
     }
+
+	// Reports
+	public static function listStandardReport($params) 
+	{
+		return View::render('admin_report_std_saleforseller');
+	}
+
+
 }
     

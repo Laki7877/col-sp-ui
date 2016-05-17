@@ -127,10 +127,13 @@ var admin = {
 	},
     // Create By Col Dev (Natee)
 	'CMS|fa fa-contao': {
-        //'CMS View':'/admin/cms/master',
 	    'CMS Category': '/admin/cms/category',
 	    'CMS Static & Collection': '/admin/cms/master',
 	    'CMS Group': '/admin/cms/group'
+	},
+	'Reports|fa-file': {
+	    'Sale Report For Seller': '/admin/reports/std/saleforseller',
+        'Stok Status Report': '/admin/reports/std/stokstatus'
 	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'

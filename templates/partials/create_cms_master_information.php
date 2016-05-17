@@ -82,6 +82,9 @@
                 </div>
             </div>
 
+          <nc-image-banner name="CMSBannerEN" nc-model="formData.CMSBannerEN" title="Banner Upload (English)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
+          <nc-image-banner name="CMSBannerTH" nc-model="formData.CMSBannerTH" title="Banner Upload (ไทย)" uploader="bannerUploader" on-fail="uploadBannerFail" size="8"></nc-image-banner>
+
           <!-- Descript for Desktop -->
           <div class="form-section">
             <div class="form-section-header">

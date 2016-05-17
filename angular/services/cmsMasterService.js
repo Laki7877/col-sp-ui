@@ -4,6 +4,19 @@ module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
         'use strict';
         var service = common.Rest('/CMS/CMSMaster');
 
+        //Generate empty template
+        service.generate = function (extend) {
+            return angular.extend({
+                CMSBannerTH: [],
+                CMSBannerEN: [],
+                TitleShowcase: false
+            }, extend);
+        };
+
+        service.deserialize = function (data) {
+            return _.extend(service.generate(), data);
+        };
+
         service.getAll = function (parameters) {
             var req = {
                 method: 'GET',
