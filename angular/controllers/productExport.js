@@ -22,7 +22,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 		});
 
 		var groupList = Object.keys($scope.availableFields);
-			for(var i = 0; i < $scope.columnCount; i++){
+			for(var i = 0; i <= $scope.columnCount; i++){
 				var dct = {};
 				var keyPerColumn = Math.ceil(groupList.length / $scope.columnCount);
 
