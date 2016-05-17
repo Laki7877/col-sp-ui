@@ -1,4 +1,4 @@
-﻿
+
 var angular = require('angular');
 module.exports = ['$q', 'common', function ($q, common) {
 

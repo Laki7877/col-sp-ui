@@ -1,4 +1,4 @@
-﻿module.exports = function ($scope, $controller, CMSCategoryService, config, $uibModal, $timeout) {
+module.exports = function ($scope, $controller, CMSCategoryService, config, $uibModal, $timeout) {
     'ngInject';
 
     $scope.formData     = {};

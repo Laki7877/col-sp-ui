@@ -1,4 +1,4 @@
-﻿module.exports = function () {
+module.exports = function () {
     'ngInject';
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {

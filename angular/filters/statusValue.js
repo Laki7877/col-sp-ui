@@ -1,4 +1,4 @@
-﻿module.exports = [function () {
+module.exports = [function () {
     return function (data) {
         if (!data) return data;
 
