@@ -285,6 +285,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       } else if (kwd == "ondimension") {
         $scope.image_alert.error('Dimension must be greater than ' + IMAGE_DIM_BOUND[0][0] + 'x' +
           IMAGE_DIM_BOUND[0][1] + '.' + ' and not larger than ' + IMAGE_DIM_BOUND[1][0] + 'x' + IMAGE_DIM_BOUND[1][1] + '. <strong>Your Image Size is ' + data[0] + "x" + data[1] + '</strong>');
+      } else if (kwd == "ondisable") {
+        $scope.image_alert.error('You do not have permission to upload images.');
       } else if (kwd == "onsquare") {
         $scope.image_alert.error('Image must be square.');
       } else {
@@ -790,8 +792,19 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             return item.size <= MAX_FILESIZE
           }
         });
+        
+        $scope.toggleVisibility = function(p){
+          if($scope.xspermit(44)){
+            return $scope.alert.error('You have no permission to modify variation (44).');
+          }
+          p.Visibility = !p.Visibility
+        }
 
         $scope.openVariantDetail = function (pair, array, index) {
+          if($scope.xspermit(44)){
+            return $scope.alert.error('You have no permission to modify variation (44).');
+          }
+          
           if (angular.isUndefined(pair.Images)) {
             pair.Images = [];
           }
