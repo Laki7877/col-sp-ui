@@ -1,12 +1,14 @@
-module.exports = function($scope, $controller, options, Product, LocalCategoryService, GlobalCategoryService, BrandService, Category, ShopService) {
+module.exports = function($scope, $controller, options, Product,
+	LocalCategoryService, GlobalCategoryService, BrandService, Category,
+	ShopService) {
 	'ngInject';
 	var overrideReload = function(newObj, oldObj) {
-		if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
-			if(newObj.searchText !== oldObj.searchText) {
+		if (!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
+			if (newObj.searchText !== oldObj.searchText) {
 				$scope.params._offset = 0;
 				$scope.bulkContainer.length = 0;
 			}
-			if(newObj._filter !== oldObj._filter) {
+			if (newObj._filter !== oldObj._filter) {
 				$scope.params._offset = 0;
 				$scope.bulkContainer.length = 0;
 			}
@@ -15,52 +17,66 @@ module.exports = function($scope, $controller, options, Product, LocalCategorySe
 		$scope.loading = true;
 
 		//Advance search mode on/off
-		if(!$scope.advanceSearchMode) {
+		if (!$scope.advanceSearchMode) {
 			options.service.list($scope.params)
 				.then(function(data) {
 					$scope.list = data;
 				})
-			.finally(function() {
-				$scope.loading = false;
-			});
+				.finally(function() {
+					$scope.loading = false;
+				});
 		} else {
-			options.service.advanceList(_.extend({searchText: ''}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams)))
+			options.service.advanceList(_.extend({
+					searchText: ''
+				}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams)))
 				.then(function(data) {
 					$scope.list = data;
 				})
-			.finally(function() {
-				$scope.loading = false;
-			});
+				.finally(function() {
+					$scope.loading = false;
+				});
 		}
 	};
 
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
-		options: _.extend({}, options, { reload: overrideReload })
+		options: _.extend({}, options, {
+			reload: overrideReload
+		})
 	});
 	$scope.advanceSearchOptions = {};
-	$scope.advanceSearch = false;  //toggling advance search form state
+	$scope.advanceSearch = false; //toggling advance search form state
 	$scope.advanceSearchMode = false; //search type
 	var isSearchingList = $scope.isSearching;
 	$scope.isSearching = function() {
-		return $scope.advanceSearchMode ? ( isSearchingList() ) : ( !_.isEmpty($scope.params.searchText ) );
+		return $scope.advanceSearchMode ? (isSearchingList()) : (!_.isEmpty($scope.params
+			.searchText));
 	};
 	$scope.serializeAdvanceSearch = function(formData) {
 		var processed = _.extend({}, formData);
 		processed.ProductNames = _.compact([processed.ProductName]);
-		processed.Brands = _.map(processed.Brands, function(e) { return _.pick(e, ['BrandId']); });
-		processed.GlobalCategories = _.map(processed.GlobalCategories, function(e) { return _.pick(e, ['Lft', 'Rgt']); });
-		processed.LocalCategories = _.map(processed.LocalCategories, function(e) { return _.pick(e, ['Lft', 'Rgt']); });
-
-		if(!_.isEmpty(processed.PriceTo)) processed.PriceTo = _.toInteger(processed.PriceTo);
-		if(!_.isEmpty(processed.PriceFrom)) processed.PriceFrom = _.toInteger(processed.PriceFrom);
-
-		processed = _.omitBy(_.omit(processed, ['ProductName', 'GlobalCategory']), function(e) {
-			if(_.isArrayLike(e)) return _.isEmpty(e);
-			if(_.isObjectLike(e)) return false; //don't omit
-			if(_.isNumber(e)) return _.isNaN(e);
-			return false;
+		processed.Brands = _.map(processed.Brands, function(e) {
+			return _.pick(e, ['BrandId']);
 		});
+		processed.GlobalCategories = _.map(processed.GlobalCategories, function(e) {
+			return _.pick(e, ['Lft', 'Rgt']);
+		});
+		processed.LocalCategories = _.map(processed.LocalCategories, function(e) {
+			return _.pick(e, ['Lft', 'Rgt']);
+		});
+
+		if (!_.isEmpty(processed.PriceTo)) processed.PriceTo = _.toInteger(
+			processed.PriceTo);
+		if (!_.isEmpty(processed.PriceFrom)) processed.PriceFrom = _.toInteger(
+			processed.PriceFrom);
+
+		processed = _.omitBy(_.omit(processed, ['ProductName', 'GlobalCategory']),
+			function(e) {
+				if (_.isArrayLike(e)) return _.isEmpty(e);
+				if (_.isObjectLike(e)) return false; //don't omit
+				if (_.isNumber(e)) return _.isNaN(e);
+				return false;
+			});
 
 		return processed;
 	};
@@ -69,7 +85,7 @@ module.exports = function($scope, $controller, options, Product, LocalCategorySe
 		return false;
 	};
 	$scope.onAdvanceSearch = function(item, flag) {
-		if(flag) {
+		if (flag) {
 			$scope.advanceSearchMode = true;
 			$scope.advanceSearch = false;
 			$scope.params.searchText = '';
@@ -80,36 +96,38 @@ module.exports = function($scope, $controller, options, Product, LocalCategorySe
 	};
 
 	$scope.advanceSearchOptions.refreshBrands = function(t) {
-			console.log(t);
-			BrandService.list({
+		console.log(t);
+		BrandService.list({
 				_limit: 16,
 				searchText: t
 			})
 			.then(function(data) {
 				$scope.advanceSearchOptions.Brands = data.data;
 			});
-		};
+	};
 	$scope.advanceSearchOptions.refreshShops = function(t) {
-			//Load all Shops
-			ShopService.list({
+		//Load all Shops
+		ShopService.list({
 				_limit: 16,
 				searchText: t
 			})
 			.then(function(data) {
 				$scope.advanceSearchOptions.Shops = data.data
 			});
-		};
+	};
 
 	//Load Global category
 	GlobalCategoryService.list()
 		.then(function(data) {
-			$scope.advanceSearchOptions.GlobalCategories = Category.transformNestedSetToUITree(data);
+			$scope.advanceSearchOptions.GlobalCategories = Category.transformNestedSetToUITree(
+				data);
 		});
 
 	//Load Global category
 	LocalCategoryService.list()
 		.then(function(data) {
-			$scope.advanceSearchOptions.LocalCategories = Category.transformNestedSetToUITree(data);
+			$scope.advanceSearchOptions.LocalCategories = Category.transformNestedSetToUITree(
+				data);
 		});
 
 	//Watch for advanceSearchParams

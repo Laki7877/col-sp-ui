@@ -3,7 +3,7 @@
         <h2>Price</h2></div>
     <div class="form-section-content">
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.SalePrice" nc-label="Sale Price" ng-cloack nc-template-options-path="addProductForm/SalePrice">
-            <input autocomplete="off" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$" 
+            <input autocomplete="off" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"
             type="text" class="form-control" maxlength="12" name="SalePrice" ng-disabled="xspermit(36) || xspermit(35)"
                 ng-model="variantPtr.SalePrice" required/>
         </div>
@@ -23,8 +23,13 @@
             </select>
         </div>
 
-        <div nc-template="common/input/form-group-with-label" nc-label="Promotion Price" nc-template-form="form.PromotionPrice" nc-template-options-path="addProductForm/NonRequiredSystemField">
-            <input class="form-control" name="PromotionPrice" ng-disabled="xspermit(36) || xspermit(35)" ng-model="variantPtr.PromotionPrice" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$" maxlength="12"
+        <div nc-template="common/input/form-group-with-label" nc-label="Promotion Price"
+        nc-template-form="form.PromotionPrice"
+        nc-template-options-path="addProductForm/PromotionPrice">
+            <input class="form-control" name="PromotionPrice"
+            ng-disabled="xspermit(36) || xspermit(35)"
+            ng-model="variantPtr.PromotionPrice"
+            ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$" maxlength="12"
             />
         </div>
 
@@ -35,20 +40,23 @@
             <div class="width-field-normal">
                 <div class="dropdown">
                     <a class="dropdown-toggle" id="dropdown_promotion_effective_date" role="button" data-toggle="dropdown" data-target="#" href="#">
-                        <input readonly style="background-color:white" type="text" ng-class="{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }"
-                            ng-disabled="xspermit(36) || xspermit(35)" 
+                        <input readonly style="background-color:white" type="text"
+                            ng-disabled="xspermit(36) || xspermit(35)"
+                            ng-class="{'has-error': variantPtr.ExpireDatePromotion && variantPtr.ExpireDatePromotion <= variantPtr.EffectiveDatePromotion }"
                             placeholder="Select date and time when promotion will go online" class="input-icon-calendar form-control"
                             value="{{ variantPtr.EffectiveDatePromotion | date: 'dd/MM/yy HH:mm' }}" />
                     </a>
-                    
+
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" ng-show="!xspermit(35) && !xspermit(36)">
-                        <datetimepicker data-ng-model="variantPtr.EffectiveDatePromotion" 
+                        <datetimepicker data-ng-model="variantPtr.EffectiveDatePromotion"
                         data-datetimepicker-config="{ dropdownSelector: '#dropdown_promotion_effective_date', minView: 'hour' }"/>
-                        
-                        
+
+
                     </ul>
                 </div>
-                <span class="help-block"></span>
+                <span class="help-block color-red" ng-if="variantPtr.ExpireDatePromotion && variantPtr.ExpireDatePromotion <= variantPtr.EffectiveDatePromotion">
+                    <span>Effective date/time must come before expire date/time</span>
+                </span>
             </div>
         </div>
 
@@ -59,9 +67,10 @@
             <div class="width-field-normal">
                 <div class="dropdown">
                     <a class="dropdown-toggle" id="dropdown_promotion_expire_date" role="button" data-toggle="dropdown" data-target="#" href="#">
-                        <input readonly style="background-color:white" type="text" ng-class="{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }"
+                        <input readonly style="background-color:white" type="text"
                             placeholder="Select date and time when promotion will go online" class="input-icon-calendar form-control"
                             ng-disabled="xspermit(36) || xspermit(35)"
+                            ng-class="{'has-error': variantPtr.ExpireDatePromotion && variantPtr.ExpireDatePromotion <= variantPtr.EffectiveDatePromotion }"
                             value="{{ variantPtr.ExpireDatePromotion | date: 'dd/MM/yy HH:mm' }}" />
                     </a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" ng-show="!xspermit(35) && !xspermit(36)">
@@ -69,35 +78,42 @@
                         />
                     </ul>
                 </div>
-                <span class="help-block"></span>
+                <span class="help-block color-red" ng-if="variantPtr.ExpireDatePromotion && variantPtr.ExpireDatePromotion <= variantPtr.EffectiveDatePromotion">
+                    <span>Effective date/time must come before expire date/time</span>
+                </span>
             </div>
         </div>
-        
-        
+
+
         <div nc-template="common/input/form-group-with-label" nc-policy-indy nc-label="Unit Price" nc-template-options-path="addProductForm/NonRequiredSystemField"
             nc-template-form="form.UnitPrice">
-            <input autocomplete="off" ng-disabled="xspermit(36)"class="form-control" type="text" name="UnitPrice" 
-            ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$" 
+            <input autocomplete="off" ng-disabled="xspermit(36)"
+            class="form-control" type="text" name="UnitPrice"
+            ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$" nc-default-value="0"
             maxlength="12" ng-model="variantPtr.UnitPrice" />
         </div>
 
         <div nc-template="common/input/form-group-with-label" nc-policy-indy nc-label="Purchase Price" nc-template-options-path="addProductForm/NonRequiredSystemField"
             nc-template-form="form.PurchasePrice">
-            <input ng-disabled="xspermit(36)"autocomplete="off" class="form-control" type="text" name="PurchasePrice" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"
+            <input ng-disabled="xspermit(36)"
+            autocomplete="off" class="form-control" type="text" name="PurchasePrice"
+            ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"
                 maxlength="12" ng-model="variantPtr.PurchasePrice" />
         </div>
 
-        <div nc-template="common/input/form-group-with-label" nc-policy-indy-bu nc-label="Sale Unit (English)" nc-template-options-path="addProductForm/NonRequiredSystemField"
+        <div nc-template="common/input/form-group-with-label" nc-policy-indy-bu
+        nc-label="Sale Unit (English)" nc-template-options-path="addProductForm/NonRequiredSystemField"
             nc-template-form="form.SaleUnitEn">
             <input autocomplete="off" ng-disabled="xspermit(36)"
-            class="form-control" type="text" name="SaleUnitEn" 
+            class="form-control" type="text" name="SaleUnitEn" nc-default-value="'Piece'"
             maxlength="255" ng-model="variantPtr.SaleUnitEn" ng-pattern-restrict="^[^<>]*$"
             />
         </div>
 
-        <div nc-template="common/input/form-group-with-label" nc-policy-indy-bu nc-label="Sale Unit (ไทย)" nc-template-options-path="addProductForm/NonRequiredSystemField"
+        <div nc-template="common/input/form-group-with-label" nc-policy-indy-bu
+        nc-label="Sale Unit (ไทย)" nc-template-options-path="addProductForm/NonRequiredSystemField"
             nc-template-form="form.SaleUnitTh">
-            <input autocomplete="off" class="form-control" ng-disabled="xspermit(36)"
+            <input autocomplete="off" class="form-control" ng-disabled="xspermit(36)" nc-default-value="'ชิ้น'"
             type="text" name="SaleUnitTh" maxlength="255" ng-model="variantPtr.SaleUnitTh" ng-pattern-restrict="^[^<>]*$"
             />
         </div>

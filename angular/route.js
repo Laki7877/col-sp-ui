@@ -108,6 +108,7 @@ var permission = {
 	55: '/shops/settings',
 	56: '/shops/appearance',
 	57: ['/roles', '/accounts'],
+	82: '/cms',
 
 	//Shop
 	64: '/dashboard',

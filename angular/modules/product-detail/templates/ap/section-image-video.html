@@ -10,7 +10,7 @@
       <li>File format must be JPG or PNG.</li>
     </ul>
     </nc-image-block>
- 
+
     <div class="form-section" ng-show="variantPtr.Images.length > 0">
         <div class="form-section-header">
             Embed Video
@@ -22,7 +22,7 @@
                 nc-template-form="form['VideoLinks' + $index]" nc-template-options-path="addProductForm/VideoLink">
                     <input class="form-control width-field-normal" ng-disabled="xspermit(40)"
                     name="VideoLinks{{$index}}" type="url"
-		                  ng-init="initializeVideoLink($index)"
+		                ng-init="initializeVideoLink($index)"
                     maxlength="500" ng-model="variantPtr.VideoLinks[$index].Url"/>
                 </div>
             </div>
