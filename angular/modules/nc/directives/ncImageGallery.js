@@ -191,6 +191,11 @@ angular.module('nc')
 					width: '256px',
 					validateFileSize: 5000000
 				});
+				scope.$watch('source', function() {
+					if(_.isNil(source)) {
+						source = true;
+					}
+				})
 			}
 		}
 	})

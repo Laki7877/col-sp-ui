@@ -35,7 +35,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 		if(!_.isUndefined($scope.id)) {
 			$scope.loading = true;
 			$scope.title = util.getTitle($scope.id,options.item);
-
+			
 			//Get by id
 			options.service.get($scope.id)
 				.then(function(data) {

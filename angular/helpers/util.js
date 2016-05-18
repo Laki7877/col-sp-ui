@@ -263,7 +263,7 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
                     i.Visibility = false;
                     return i;
                 });
-                
+
                 //On launch endpoint
                 (onload || _.noop)();
 
