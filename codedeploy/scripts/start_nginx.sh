@@ -1,5 +1,5 @@
 #!/bin/bash
 # enforce passive selinux
-sudo setenforce permissive
-sudo systemctl restart php-fpm.service
-sudo systemctl start nginx.service
+setenforce permissive
+systemctl restart php-fpm.service
+systemctl start nginx.service
