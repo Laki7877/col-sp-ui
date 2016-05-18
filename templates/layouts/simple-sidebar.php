@@ -3,7 +3,7 @@
 <div id="sidebar-wrapper">
 	<?= $this->section('sidebar', ['title' => 'sidebar hello']); ?>
 </div>
-<div id="page-content-wrapper" class="noPrintMargin">
+<div id="page-content-wrapper" class="noPrintMargin <?=$pageClass?>">
 	<?= $this->section('page-header', $this->fetch('components/header')); ?>
 	<div class="container-fluid">
 		<?= $this->section('page-content'); ?>

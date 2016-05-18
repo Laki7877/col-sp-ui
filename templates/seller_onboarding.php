@@ -1,5 +1,5 @@
 <?php
-$this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - On Boarding'])
+$this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - On Boarding','pageClass'=>'seller-onboarding'])
 ?>
 
 <?php $this->start('page-body') ?>
