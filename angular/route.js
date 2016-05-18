@@ -45,7 +45,7 @@ var seller = {
 		'User Roles': '/roles'
 	},
 
-	'Report|fa-file-o': {
+	'Report|fa-file': {
 	    'View Report': '/reports',
 	}
 };
