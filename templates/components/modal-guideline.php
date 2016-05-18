@@ -14,7 +14,7 @@
                 <li>Image width or height must be between at least <strong>1500px</strong> but not larger than <strong>2000px</strong></li>
                 <li>Image portion must be in square format.</li>
                 <li>File size must not be larger than 5MB and.</li>
-                <li>File format must be JPG or PNG.</li>
+                <li>File format must be JPG.</li>
         			</ul>
 
             </div>
