@@ -18,11 +18,9 @@ hooks:
   ApplicationStart:
     - location: codedeploy/scripts/start_nginx.sh
       timeout: 300
-      runas: root
   ApplicationStop:
     - location: codedeploy/scripts/deregister_from_elb.sh
     - location: codedeploy/scripts/stop_nginx.sh
-      runas: root
       timeout: 300
   ValidateService:
     - location: codedeploy/scripts/verify.sh
