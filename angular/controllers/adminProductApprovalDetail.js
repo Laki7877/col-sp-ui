@@ -2,7 +2,7 @@ var angular = require('angular');
 
 module.exports = function ($scope, $controller, $uibModal, NCConfirm) {
     'ngInject';
-
+    
     $controller('AbstractProductAddCtrl', {
         $scope: $scope,
         options: {

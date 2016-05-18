@@ -9,7 +9,7 @@ module.exports = function($scope, $controller, ProductReviewService, config, $ui
 			item: 'Product Review',
 			order: 'UpdatedDt',
 			id: 'ProductReviewId'
-		}
+					}
 	});
 	$scope.open = function(item) {
 		$uibModal.open({

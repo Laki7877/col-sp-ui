@@ -82,16 +82,16 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                                   </select>
                               </div>
                           </div>
-                          <div ng-show="formData.Action.Type == 'AMOUNT'"
-                            nc-template="common/input/form-group-with-label"
+                          <div ng-if="formData.Action.Type == 'AMOUNT'">
+                          <div nc-template="common/input/form-group-with-label"
                             nc-template-form="form.DiscountAmount" 
                             nc-template-options-path="couponForm/DiscountAmount"
                             nc-label="Discount Amount">
                                 <input type="text" name="DiscountAmount" class="form-control" ng-model="formData.Action.DiscountAmount" ng-disabled="manageable" ng-pattern-restrict="^[0-9]*(\.[0-9]{0,2})?$" required/>
                           </div>
-
-                          <div ng-show="formData.Action.Type != 'AMOUNT'" 
-                            nc-template="common/input/form-group-with-label"
+                          </div>
+                          <div ng-if="formData.Action.Type != 'AMOUNT'">
+                          <div nc-template="common/input/form-group-with-label"
                             nc-template-form="form.DiscountPercent"   
                             nc-template-options-path="couponForm/DiscountPercent"
                             nc-label="Discount Percent">
@@ -100,12 +100,12 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                                 <span class="input-unit">%</span>
                               </div>
                           </div>
-                          <div ng-show="formData.Action.Type != 'AMOUNT'" 
-                            nc-template="common/input/form-group-with-label" 
+                          <div nc-template="common/input/form-group-with-label" 
                             nc-template-form="form.MaximumAmount" 
                             nc-label="Max. Discount Amount" 
                             nc-template-options-path="couponForm/MaximumAmount">
                               <input type="text" name="MaximumAmount" class="form-control" ng-model="formData.Action.MaximumAmount" ng-disabled="manageable" ng-pattern-restrict="^[0-9]*(\.[0-9]{0,2})?$" maxlength="10" placeholder="9999999"/>
+                          </div>
                           </div>
                     </div>
                   </div>
@@ -145,7 +145,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                             <ui-select-choices repeat="i.value as i in criteria">{{ i.name }}</ui-select-choices>
                         </ui-select>
                       </div>
-                      <div ng-if="formData.Conditions.Order[0].Type != 'No filter'">
+                      <div ng-if="formData.Conditions.Order[0].Type != 'NoFilter'">
                         <div nc-template="common/input/form-group-with-label" 
                           nc-label="Price"
                           nc-template-options-path="couponForm/Condition_Value">

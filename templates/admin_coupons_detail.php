@@ -77,22 +77,22 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Coupons'])
                           <div nc-template="common/input/form-group-with-label" 
                             nc-label="Action">
                               <div class="ah-select2-dropdown">
-                                  <select ng-model="formData.Action" class="form-control"
+                                  <select ng-model="formData.Action" class="form-control" ng-disabled="manageable"
                                   ng-init="formData.Action = {Type: 'PERCENT'}"
                                   ng-options="i as i.display for i in discount track by i.Type" required>
                                   </select>
                               </div>
                           </div>
-                          <div ng-show="formData.Action.Type == 'AMOUNT'"
-                            nc-template="common/input/form-group-with-label"
+                          <div ng-if="formData.Action.Type == 'AMOUNT'">
+                          <div nc-template="common/input/form-group-with-label"
                             nc-template-form="form.DiscountAmount" 
                             nc-template-options-path="couponForm/DiscountAmount"
                             nc-label="Discount Amount">
                                 <input type="text" name="DiscountAmount" class="form-control" ng-model="formData.Action.DiscountAmount" ng-pattern-restrict="^[0-9]*(\.[0-9]{0,2})?$" required/>
                           </div>
-
-                          <div ng-show="formData.Action.Type != 'AMOUNT'" 
-                            nc-template="common/input/form-group-with-label"
+                          </div>
+                          <div ng-if="formData.Action.Type != 'AMOUNT'">
+                          <div nc-template="common/input/form-group-with-label"
                             nc-template-form="form.DiscountPercent"   
                             nc-template-options-path="couponForm/DiscountPercent"
                             nc-label="Discount Percent">
@@ -101,12 +101,12 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Coupons'])
                                 <span class="input-unit">%</span>
                               </div>
                           </div>
-                          <div ng-show="formData.Action.Type != 'AMOUNT'" 
-                            nc-template="common/input/form-group-with-label" 
+                          <div nc-template="common/input/form-group-with-label" 
                             nc-template-form="form.MaximumAmount" 
                             nc-label="Max. Discount Amount" 
                             nc-template-options-path="couponForm/MaximumAmount">
                               <input type="text" name="MaximumAmount" class="form-control" ng-model="formData.Action.MaximumAmount" ng-pattern-restrict="^[0-9]*(\.[0-9]{0,2})?$" maxlength="10" placeholder="9999999"/>
+                          </div>
                           </div>
                     </div>
                   </div>
@@ -146,7 +146,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Coupons'])
                             <ui-select-choices repeat="i.value as i in criteria">{{ i.name }}</ui-select-choices>
                         </ui-select>
                       </div>
-                      <div ng-if="formData.Conditions.Order[0].Type != 'No filter'">
+                      <div ng-if="formData.Conditions.Order[0].Type != 'NoFilter'">
                         <div nc-template="common/input/form-group-with-label" 
                           nc-label="Price"
                           nc-template-options-path="couponForm/Condition_Value">
@@ -171,7 +171,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Coupons'])
                         nc-template-options-path="couponForm/FilterByValue"
                         nc-template-form="form.FilterByValue" 
                         nc-label="Include">
-                        <nc-breadcrumb-select placeholder="Search for Global Category Name or ID" nc-breadcrumb-select-options="{ tagCount: 50 }" name="FilterByValue" nc-model="formData.Conditions.FilterBy.LocalCategories" nc-breadcrumb-select-tree="categories" required></nc-breadcrumb-select>
+                        <nc-breadcrumb-select placeholder="Search for Global Category Name or ID" nc-breadcrumb-select-options="{ tagCount: 50 }" name="FilterByValue" nc-model="formData.Conditions.FilterBy.GlobalCategories" nc-breadcrumb-select-tree="categories" required></nc-breadcrumb-select>
                       </div>
                     </div>
                   </div>

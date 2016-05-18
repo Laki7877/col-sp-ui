@@ -1,0 +1,1090 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"plac",
+				"placeholder"
+			],
+			[
+				"len",
+				"length"
+			],
+			[
+				"fn",
+				"function"
+			],
+			[
+				"old",
+				"oldValue"
+			],
+			[
+				"new",
+				"newVal〔variable〕"
+			],
+			[
+				"eleme",
+				"element"
+			],
+			[
+				"Ui",
+				"UiSortableComponent	class"
+			],
+			[
+				"on",
+				"onInit	var"
+			],
+			[
+				"onI",
+				"OnInit	interface"
+			],
+			[
+				"req",
+				"requirejsConfig〔variable〕"
+			],
+			[
+				"item",
+				"itemPromises"
+			],
+			[
+				"key",
+				"key"
+			],
+			[
+				"prop",
+				"propFn〔argument〕"
+			],
+			[
+				"val",
+				"valueFn"
+			],
+			[
+				"ke",
+				"keyFn"
+			],
+			[
+				"type",
+				"typeof〔keyword〕"
+			],
+			[
+				"local",
+				"localforageInstane"
+			],
+			[
+				"get",
+				"getItemsGeneric"
+			],
+			[
+				"loca",
+				"localstorage"
+			],
+			[
+				"use",
+				"useExtraElements"
+			],
+			[
+				"elemen",
+				"elements"
+			],
+			[
+				"a",
+				"after"
+			],
+			[
+				"ex",
+				"extra"
+			],
+			[
+				"before",
+				"beforeLiElement"
+			],
+			[
+				"befo",
+				"beforeLiElement"
+			],
+			[
+				"after",
+				"afterLiElement"
+			],
+			[
+				"bef",
+				"beforeLiElement"
+			],
+			[
+				"extra",
+				"extradx"
+			],
+			[
+				"ol",
+				"olddari"
+			],
+			[
+				"dar",
+				"dari〔variable〕"
+			],
+			[
+				"lo",
+				"lockY"
+			],
+			[
+				"x",
+				"xaxis"
+			],
+			[
+				"hidde",
+				"hiddenGraphs"
+			],
+			[
+				"ser",
+				"seriesPlotTypes"
+			],
+			[
+				"in",
+				"inline-block〔value〕"
+			],
+			[
+				"to",
+				"toArray"
+			],
+			[
+				"ng",
+				"ngModelItem"
+			],
+			[
+				"tem",
+				"templateUrl"
+			],
+			[
+				"an",
+				"angular"
+			],
+			[
+				"is",
+				"isObject"
+			],
+			[
+				"par",
+				"parse"
+			],
+			[
+				"res",
+				"resolve"
+			],
+			[
+				"seri",
+				"serializedString"
+			],
+			[
+				"wr",
+				"wrapperTop"
+			],
+			[
+				"wra",
+				"wrapperBottom"
+			],
+			[
+				"ca",
+				"callback"
+			],
+			[
+				"exec",
+				"executeCallback"
+			],
+			[
+				"pro",
+				"promise"
+			],
+			[
+				"va",
+				"value"
+			],
+			[
+				"sort",
+				"sortableOptions"
+			],
+			[
+				"sorta",
+				"sortable-item"
+			],
+			[
+				"spli",
+				"splicedModels"
+			],
+			[
+				"si",
+				"siblingModels"
+			],
+			[
+				"dra",
+				"draggedElement"
+			],
+			[
+				"dr",
+				"draggedElementIndexes"
+			],
+			[
+				"se",
+				"selectedModels"
+			],
+			[
+				"drage",
+				"draggedElementIndexes"
+			],
+			[
+				"sta",
+				"stats"
+			],
+			[
+				"set",
+				"setupGrid"
+			],
+			[
+				"fun",
+				"function"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/sortable.js",
+			"settings":
+			{
+				"buffer_size": 19271,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 138.0,
+		"last_filter": "gitg",
+		"selected_items":
+		[
+			[
+				"gitg",
+				"Git GUI Clients: Gitg"
+			],
+			[
+				"clos",
+				"File: Close All"
+			],
+			[
+				"close",
+				"File: Close All"
+			],
+			[
+				"git",
+				"Git GUI Clients: Gitg"
+			],
+			[
+				"side",
+				"View: Toggle Side Bar"
+			],
+			[
+				"prett",
+				"HTMLPrettify"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"gig",
+				"Git GUI Clients: Gitg"
+			],
+			[
+				"package",
+				"Package Control: Remove Package"
+			],
+			[
+				"space",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"spaces",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"rever",
+				"Permute Lines: Reverse"
+			],
+			[
+				"reve",
+				"Permute Lines: Reverse"
+			],
+			[
+				"save",
+				"File: Save All"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"te",
+				"Text Pastry: Filter selection"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"clo",
+				"File: Close All"
+			],
+			[
+				"markd",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"mark",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"lint",
+				"SublimeLinter: Next Error"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"pakcage reo",
+				"Package Control: Remove Package"
+			],
+			[
+				"reove",
+				"Package Control: Remove Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"over",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"mar",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"",
+				"DocBlockr: Reparse comment block"
+			],
+			[
+				"packa",
+				"Package Control: List Packages"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"togg",
+				"TypeScript: Toggle Watch Mode"
+			],
+			[
+				"brow",
+				"Preferences: Browse Packages"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"type",
+				"Set Syntax: TypeScript"
+			],
+			[
+				"typesc",
+				"Set Syntax: TypeScript"
+			],
+			[
+				"pastr",
+				"Text Pastry: From 1 To X"
+			],
+			[
+				"c#",
+				"Set Syntax: C#"
+			],
+			[
+				"cs",
+				"Convert Case: Swap Case"
+			],
+			[
+				"xml",
+				"Set Syntax: XML"
+			],
+			[
+				"toggl",
+				"View: Toggle Side Bar"
+			],
+			[
+				"save all",
+				"File: Save All"
+			],
+			[
+				"toggle",
+				"View: Toggle Side Bar"
+			],
+			[
+				"prev",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"preview",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"sort",
+				"Sort Lines"
+			],
+			[
+				"un	",
+				"Permute Lines: Unique"
+			],
+			[
+				"wrap",
+				"Word Wrap: Toggle"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"pakage",
+				"Package Control: Remove Package"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 593.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/teo/Desktop/ui-sortable",
+		"/home/teo/Desktop/ui-sortable/src",
+		"/home/teo/Desktop/ui-sortable/test",
+		"/home/teo/Dropbox/ui-sortable-multiselect files"
+	],
+	"file_history":
+	[
+		"/home/teo/Desktop/ui-sortable/test/sortable.e2e.spec.js",
+		"/home/teo/Desktop/ui-sortable/test/sortable.test-helper.js",
+		"/home/teo/Desktop/ui-sortable/test/sortable.e2e.directiveoptions.spec.js",
+		"/home/teo/Desktop/ui-sortable/test/sortable.e2e.callbacks.spec.js",
+		"/home/teo/Desktop/ui-sortable/test/sortable.e2e.directives.spec.js",
+		"/home/teo/Desktop/ui-sortable/test/.jshintrc",
+		"/home/teo/Desktop/ui-sortable/test/sortable.spec.js",
+		"/home/teo/Desktop/do/parseFiles.js",
+		"/home/teo/Desktop/ui-sortable/test/sortable.e2e.multi.spec.js",
+		"/home/teo/Desktop/ui-sortable/src/sortable.js",
+		"/home/teo/Desktop/localForage related/babel related/babel-plugin-version-inline/package.json",
+		"/home/teo/Desktop/ui-sortable/.jshintrc",
+		"/home/teo/Desktop/ui-sortable/test/karma.conf.js",
+		"/home/teo/Desktop/ui-sortable/bower_components/jquery-ui/package.json",
+		"/home/teo/Desktop/ui-sortable/gruntFile.js",
+		"/home/teo/Desktop/ui-sortable/bower.json",
+		"/home/teo/Desktop/ui-sortable/package.json",
+		"/home/teo/Desktop/ui-sortable/node_modules/grunt-karma/package.json",
+		"/home/teo/Desktop/ui-sortable/node_modules/karma/package.json",
+		"/home/teo/Dropbox/ui-sortable-multiselect files/ui-sortable-multiselection/src/ui.sortable.multiselection.js",
+		"/home/teo/Dropbox/ui-sortable-multiselect files/ui-sortable-multiselection/bower_components/angular-ui-sortable/sortable.js",
+		"/home/teo/Dropbox/ui-sortable-multiselect files/ui-sortable-multiselection/demo/js/demo-handle.js",
+		"/home/teo/Dropbox/ui-sortable-multiselect files/ui-sortable-multiselection/demo/demo-handle.html",
+		"/home/teo/Dropbox/ui-sortable-multiselect files/ui-sortable-multiselection/package.json",
+		"/home/teo/Dropbox/ui-sortable-multiselect files/ui-sortable-multiselection/bower.json",
+		"/home/teo/Dropbox/ui-sortable-multiselect files/ui-sortable-multiselection/demo/js/demo-connected.js",
+		"/home/teo/Dropbox/ui-sortable-multiselect files/ui-sortable-multiselection/README.md",
+		"/home/teo/Desktop/ui-sortable/README.md",
+		"/home/teo/Dropbox/ui-sortable-multiselect files/ui-sortable-multiselection/demo/demo.html",
+		"/home/teo/Dropbox/ui-sortable-multiselect files/ui-sortable-multiselection/demo/demo-connected.html",
+		"/home/teo/Dropbox/ui-sortable-multiselect files/ui-sortable-multiselection/demo/js/demo.js",
+		"/home/teo/Desktop/ui2-sortable/src/directive.ts",
+		"/home/teo/Desktop/ui2-sortable/src/static methods.txt",
+		"/home/teo/Desktop/ui2-sortable/src/sortable.ts",
+		"/home/teo/Dropbox/athens ng meetup/sortable.ts",
+		"/home/teo/Desktop/ui2-sortable/src/constructor.txt",
+		"/home/teo/Dropbox/athens ng meetup/sortable v1.js",
+		"/home/teo/Desktop/ui2-sortable/demo/src/list.html",
+		"/home/teo/Desktop/ui2-sortable/gulpfile.js",
+		"/home/teo/Desktop/ui2-sortable/demo/src/app.ts",
+		"/home/teo/Dropbox/athens ng meetup/sortable.js",
+		"/home/teo/Desktop/ui2-sortable/demo/dist/app.js",
+		"/home/teo/Desktop/ui2-sortable/demo/src/list.css",
+		"/home/teo/Desktop/ui2-sortable/src/equals.txt",
+		"/home/teo/Desktop/ui2-sortable/src/directive.txt",
+		"/home/teo/Desktop/sortable.ts",
+		"/home/teo/Desktop/ServiceLogin.html",
+		"/home/teo/Dropbox/athens ng meetup/Migrating UI-Sortable to Angular 2.odp",
+		"/home/teo/Desktop/angular.js/package.json",
+		"/home/teo/Desktop/localForage/src/drivers/webSQLStorage.js",
+		"/home/teo/Desktop/localForage/src/drivers/localStorageWrapper.js",
+		"/home/teo/Desktop/localForage/Gruntfile.js",
+		"/home/teo/Desktop/localForage/src/drivers/asyncStorage.js",
+		"/home/teo/Desktop/localForage/src/localforage.js",
+		"/home/teo/Desktop/localForage/package.json",
+		"/home/teo/Desktop/localForage/node_modules/grunt-jscs/package.json",
+		"/home/teo/Dropbox/localForage-extensions/localForage-setItems/src/localforage-setitems.js",
+		"/home/teo/Desktop/ui-sortable/bower_components/angular/package.json",
+		"/home/teo/Dropbox/localForage-extensions/localForage-setItems/examples/index.html",
+		"/home/teo/Dropbox/localForage-extensions/localForage-getItems/src/localforage-getitems.js",
+		"/home/teo/Dropbox/localForage-extensions/bower_components/localforage/src/utils/serializer.js",
+		"/home/teo/Dropbox/localForage-bulk/src/drivers/indexeddb.js",
+		"/home/teo/Dropbox/localForage-bulk/src/drivers/websql.js",
+		"/home/teo/Dropbox/thgreasi.github.io/testmd.md",
+		"/home/teo/Dropbox/localForage-extensions/localForage-getItems/examples/index.html",
+		"/home/teo/Dropbox/localForage-extensions/localForage-startsWith/src/localforage-startswith.js",
+		"/home/teo/Dropbox/localForage-extensions/localForage-getItems/examples/index2.html",
+		"/home/teo/Dropbox/localForage-extensions/getitems jsperf.js",
+		"/home/teo/Dropbox/localForage-startsWith/README.md",
+		"/home/teo/Dropbox/localForage-setItems/README.md",
+		"/home/teo/Dropbox/localForage-extensions/localForage-startsWith/LICENSE",
+		"/home/teo/Dropbox/localForage-extensions/localForage-setItems/LICENSE",
+		"/home/teo/Dropbox/localForage-extensions/localForage-getItems/LICENSE",
+		"/home/teo/Dropbox/localForage-getItems/README.md",
+		"/home/teo/Dropbox/localForage-extensions/localForage-startsWith/package.json",
+		"/home/teo/Dropbox/localForage-extensions/localForage-setItems/package.json",
+		"/home/teo/Dropbox/localForage-extensions/localForage-getItems/examples/main.js",
+		"/home/teo/Dropbox/localForage-extensions/localForage-getItems/package.json",
+		"/home/teo/Dropbox/localForage-extensions/localForage-startsWith/examples/index.html",
+		"/home/teo/Dropbox/localForage-extensions/localForage-setItems/README.md",
+		"/home/teo/Dropbox/localForage-extensions/localForage-setItems/bower.json",
+		"/home/teo/Dropbox/localForage-extensions/localForage-setItems/component.json",
+		"/home/teo/Dropbox/localForage-extensions/localForage-setItems/examples/main.js",
+		"/home/teo/Dropbox/localForage-extensions/localForage-setItems/examples/require.html",
+		"/home/teo/Dropbox/localForage-extensions/localForage-setItems/npm-debug.log",
+		"/home/teo/Dropbox/localForage-extensions/localForage-setItems/src/localforage-getitems.js",
+		"/home/teo/Dropbox/localForage-extensions/localForage-startsWith/examples/require.html",
+		"/home/teo/Dropbox/localForage-extensions/localForage-getItems/README.md",
+		"/home/teo/Dropbox/localForage-extensions/localForage-getItems/bower.json",
+		"/home/teo/Dropbox/localForage-extensions/localForage-getItems/component.json",
+		"/home/teo/Dropbox/localForage-extensions/localForage-getItems/examples/require.html",
+		"/home/teo/Dropbox/localForage-extensions/localForage-getItems/npm-debug.log",
+		"/home/teo/Dropbox/localForage-extensions/localForage-startsWith/examples/main.js",
+		"/home/teo/Dropbox/localForage-startsWith/src/localforage-startswith.js",
+		"/home/teo/Dropbox/localForage-startsWith/src/localforage-getitems.js",
+		"/home/teo/Dropbox/localForage-bulk/src/drivers/localstorage.js",
+		"/home/teo/Desktop/localForage/dist/es5src/drivers/localStorageWrapper.js",
+		"/home/teo/Desktop/localForage/dist/es5src/drivers/webSQLStorage.js",
+		"/home/teo/Desktop/localForage/dist/es5src/localforage.js",
+		"/home/teo/Desktop/localForage/src/drivers/websql.js",
+		"/home/teo/Desktop/localForage/src/drivers/localstorage.js",
+		"/home/teo/Desktop/localForage/src/drivers/indexeddb.js",
+		"/home/teo/Desktop/localForage/src/utils/localforageSerializer.js",
+		"/home/teo/Desktop/localForage/src/utils/serializer.js",
+		"/home/teo/Desktop/localForage/test/runner.js",
+		"/home/teo/Desktop/localForage/dist/es5src/drivers/asyncStorage.js",
+		"/home/teo/Desktop/localForage/dist/es5src/utils/localforageSerializer.js",
+		"/home/teo/Desktop/localForage/component.json",
+		"/home/teo/Desktop/localForage/dist/es5src/drivers/websql.js",
+		"/home/teo/Desktop/localForage/test/test.drivers.js",
+		"/home/teo/Desktop/localForage/test/test.main.html",
+		"/home/teo/Desktop/localForage/test/test.api.js",
+		"/home/teo/Desktop/ui-sortable/test/sortable.e2e.nested.spec.js",
+		"/home/teo/Desktop/ui-sortable/test/sortable.e2e.extraElements.spec.js",
+		"/home/teo/Dropbox/WSDSI/WSDSI phase7/WSDSI.html",
+		"/home/teo/Desktop/XMLParser/top-stories.rss",
+		"/home/teo/Desktop/metrites/node_modules/protractor/node_modules/selenium-webdriver/node_modules/xml2js/node_modules/xmlbuilder/node_modules/lodash/lang/toPlainObject.js",
+		"/home/teo/Desktop/ui-sortable/node_modules/karma-coverage/node_modules/ibrik/node_modules/coffee-script-redux/node_modules/esmangle/lib/pass/transform-dynamic-to-static-property-definition.js",
+		"/home/teo/Desktop/ui-sortable/node_modules/karma-coveralls/node_modules/coveralls/node_modules/request/tests/test-oauth.js",
+		"/home/teo/Desktop/XMLParser/src/xmlparser/gr/uth/inf/ce325/xml_parser/DocumentBuilder.java",
+		"/home/teo/Desktop/XMLParser/Possible cases.rss",
+		"/home/teo/Desktop/XMLParser/src/xmlparser/gr/uth/inf/ce325/xml_parser/check/XMLParserCheck.java",
+		"/home/teo/Desktop/XMLParser/src/XMLParserTest01.java",
+		"/home/teo/Desktop/ui-sortable/node_modules/karma/node_modules/socket.io/node_modules/redis/lib/parser/javascript.js",
+		"/home/teo/Desktop/ui-sortable/node_modules/karma/node_modules/socket.io/lib/parser.js",
+		"/home/teo/Desktop/ui-sortable/bower_components/jquery/src/ajax/parseJSON.js",
+		"/home/teo/Desktop/ui-sortable/node_modules/grunt-conventional-changelog/node_modules/qq/node_modules/q/promiseAllResolved.emaker",
+		"/home/teo/Desktop/metrites/node_modules/protractor/node_modules/accessibility-developer-tools/scripts/parse_aria_schemas.py"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/home/teo/Desktop/ui-sortable/test",
+			"/home/teo/Dropbox/localForage-extensions",
+			"/home/teo/Dropbox/localForage-extensions/localForage-setItems,-*/bower_*,-*/node_*",
+			"/home/teo/Dropbox/localForage-extensions/localForage-startsWith,-*/bower_*,-*/node_*",
+			"/home/teo/Dropbox/localForage-extensions/localForage-getItems,-*/bower_*,-*/node_*",
+			"/home/teo/Desktop/localForage/dist",
+			"/home/teo/Desktop/localForage/src",
+			"/home/teo/Desktop/ui-sortable/test",
+			"/home/teo/Desktop/XMLParser",
+			"/home/teo/Desktop/localForage/test",
+			"/home/teo/Desktop/ui-sortable/src",
+			"/home/teo/Desktop/ui-sortable/test",
+			"/home/teo/Desktop/ui-sortable",
+			"/home/teo/Desktop/ui-sortable/test",
+			"/home/teo/Desktop/ng-watchcollection-polyfill",
+			"/home/teo/Desktop/localForage",
+			"/home/teo/Desktop/ui-sortable/node_modules",
+			"/home/teo/Desktop/ui-sortable",
+			"/home/teo/Desktop/localForage/test",
+			"/home/teo/Desktop/ui-sortable/bower_components/jquery-ui",
+			"/home/teo/Desktop/ui-sortable/bower_components",
+			"/home/teo/Desktop/angular-ui-publisher",
+			"/home/teo/Desktop/wiredep",
+			"/home/teo/Desktop/ui-sortable/node_modules/wiredep"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"appendto",
+			"var dy = (1 + EXTRA_DY_PERCENTAGE) * li.outerHeight();[\\s]+\nli.simulate('drag', { dy: dy });[\\s]+\nexpect($rootScope.items).toEqual(['One', 'Three', 'Two']);[\\s]+\nexpect($rootScope.items).toEqual(listContent(element));[\\s]+",
+			").toEqual(['One', 'Three', 'Two']);",
+			"(element, itemsSelector));",
+			"fit",
+			".replace('<li>', '<li ng-repeat=\"item in items\"",
+			"replace",
+			"fit",
+			".items",
+			"getItemIndex",
+			"ui-model-items",
+			"class",
+			"model-items",
+			".items",
+			"items",
+			"ng-re",
+			"ngre",
+			"[ui-sortable-item]",
+			"ui-sortable-item",
+			".ui-sortable-item",
+			"ui-model-item",
+			"uiSortableConfig.item",
+			"repeat",
+			".ui-sortable-item",
+			"ui-sortable-item",
+			"[ui-sortable-item]",
+			"ui-sortable-item",
+			"fit",
+			"          $timeout(function () {\n            expect(angular.element.fn.sortable).toHaveBeenCalled();\n          });",
+			"\n          $timeout(function () {\n            expect(angular.element.fn.sortable).toHaveBeenCalled();\n          });",
+			"cancelLazyInitWatcher",
+			"stopDisabledWatcher",
+			"startIfEnabled",
+			"initialize",
+			"startIfEnabled",
+			"stopDisabledWatcher",
+			"$timeout",
+			"$timeout.flush();",
+			"refres",
+			"notCssSelector",
+			"notCssClass",
+			"ng-rep",
+			"'ui-model-items'",
+			"[ng-repeat]",
+			"ui-model-items",
+			"uiSortableConfig.items",
+			"ui-model-items",
+			"items:",
+			"class=",
+			"beforeeac",
+			"afterLiElement",
+			"beforeLiElement",
+			"[ng-repeat]",
+			"beforeEach,",
+			"afterLiElement",
+			"beforeEach",
+			"ui-flo",
+			"3204",
+			"pre>",
+			"pre",
+			"and.callThrough",
+			"spy",
+			"ui-sortable=\"opts\"",
+			"init",
+			"startIfEnabled",
+			"jasmi",
+			"scope.uiSortable",
+			"hould update model when order changes",
+			"uiSortableConfig.items",
+			"items",
+			"getitem",
+			"uiSortableConfig.items",
+			"directiveOpts",
+			"ui-fl",
+			"uiSortableConfig",
+			"once",
+			"patchUISortableOptions",
+			"scope.uiSortable && !scope.uiSortable.disabled",
+			"init",
+			"initia",
+			"watch",
+			"disabled",
+			"scope.uiSortable",
+			".after",
+			"andCallThrough()",
+			"andCallThrough",
+			"jasmi",
+			"$rootScope",
+			"jasmine",
+			"@",
+			"peer",
+			"chr",
+			"cr",
+			"firefo",
+			"test",
+			".sortable(",
+			".sortable",
+			"$apply",
+			"appl",
+			"update",
+			"update:",
+			"element",
+			"scope",
+			".scope",
+			"scope",
+			"floatleft",
+			".scope()",
+			"sortableMultiSelectState",
+			".sortableMultiSelect",
+			"sortableMultiSelect",
+			"scope",
+			"$compileProvider",
+			"splice",
+			"scope()",
+			"selectedIndexes",
+			"$(",
+			"$",
+			"|| {}",
+			"() =>",
+			"equals",
+			"          function ",
+			"function",
+			"      function ",
+			"static",
+			"getPlaceholderExcludesludes",
+			"= getPlaceholderElement",
+			"patchUISortableOptions(new",
+			"Object.keys("
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": true,
+		"regex": true,
+		"replace_history":
+		[
+			"and.callThrough()",
+			"SetItems",
+			"Setitems",
+			"setitems",
+			"setItems",
+			"GetItems",
+			"getitems",
+			"getItems",
+			"GetItems",
+			"[ng-repeat]:eq(4)",
+			"[ng-repeat]:eq(3)",
+			"[ng-repeat]:eq(2)",
+			"[ng-repeat]:eq(1)",
+			"[ng-repeat]:eq(0)",
+			"var x = x || []; // $compileProvider.debugInfoEnabled(",
+			"var x = x || [];// $compileProvider.debugInfoEnabled(",
+			"// $compileProvider.debugInfoEnabled(",
+			"  \\n"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/sortable.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19271,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6810,
+								6818
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1981.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.markdown":
+	{
+		"height": 100.0
+	},
+	"pinned_build_system": "",
+	"project": "ui-sortable.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"sortable.e2e.callbacks.spec",
+				"ui-sortable/test/sortable.e2e.callbacks.spec.js"
+			],
+			[
+				"read",
+				"ui-sortable/README.md"
+			],
+			[
+				"gu",
+				"ui2-sortable/gulpfile.js"
+			],
+			[
+				"grunt",
+				"Gruntfile.js"
+			],
+			[
+				"serializer",
+				"localForage-extensions/bower_components/localforage/src/utils/serializer.js"
+			],
+			[
+				"runner",
+				"localForage/test/runner.js"
+			],
+			[
+				"websqlstor",
+				"localForage/dist/es5src/drivers/webSQLStorage.js"
+			],
+			[
+				"test.driver",
+				"localForage/test/test.drivers.js"
+			],
+			[
+				"localstor",
+				"localForage/src/drivers/localstorage.js"
+			],
+			[
+				"src/driver",
+				"localForage/src/drivers/indexeddb.js"
+			],
+			[
+				"src/drivers",
+				"localForage/src/drivers/indexeddb.js"
+			],
+			[
+				"testhtml",
+				"localForage/test/test.main.html"
+			],
+			[
+				"test.",
+				"localForage/test/test.api.js"
+			],
+			[
+				"topsto",
+				"XMLParser/top-stories.rss"
+			],
+			[
+				"1761",
+				"ffos-list-detail-master/node_modules/bower/test/assets/package-repo/git_repo/objects/6c/1354ad5764e71a3bf30650013f0f0e9a897450"
+			],
+			[
+				"websq",
+				"localForage/src/drivers/websql.js"
+			],
+			[
+				"indexed",
+				"localForage/src/drivers/indexeddb.js"
+			],
+			[
+				"dataty",
+				"localForage/test/test.datatypes.js"
+			],
+			[
+				"local",
+				"localForage/dist/localforage.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "local",
+		"selected_items":
+		[
+			[
+				"local",
+				"~/Desktop/localForage/localForage.sublime-project"
+			],
+			[
+				"",
+				"~/Desktop/localForage/localForage.sublime-project"
+			],
+			[
+				"loc",
+				"~/Desktop/localForage/localForage.sublime-project"
+			],
+			[
+				"localf",
+				"~/Desktop/localForage/localForage.sublime-project"
+			],
+			[
+				"jq",
+				"~/Desktop/jQuery Patterns/Learning jQuery Patterns.sublime-project"
+			],
+			[
+				"loca",
+				"~/Desktop/localForage/localForage.sublime-project"
+			],
+			[
+				"jqu",
+				"~/Desktop/jQuery Patterns/untitled.sublime-project"
+			],
+			[
+				"an",
+				"~/Dropbox/Angular 2 Series/Angular 2 Series.sublime-project"
+			],
+			[
+				"jque",
+				"~/Desktop/jQuery Patterns/untitled.sublime-project"
+			],
+			[
+				"ng",
+				"~/Dropbox/Angular 2 Series/Angular 2 Series.sublime-project"
+			],
+			[
+				"ang",
+				"~/Dropbox/Angular 2 Series/Angular 2 Series.sublime-project"
+			],
+			[
+				"ui-s",
+				"~/Desktop/ui-sortable/ui-sortable.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 243.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 755.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 241.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
