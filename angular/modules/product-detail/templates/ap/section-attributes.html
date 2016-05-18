@@ -10,7 +10,7 @@
             </div>
             <div class="width-field-normal">
                 <div class="ah-select2-dropdown">
-                    
+
                     <select ng-show="controlFlags.variation == 'enable'" class="form-control" disabled>
                         <option disabled>{{ formData.AttributeSet.AttributeSetNameEn }}</option>
                     </select>
@@ -51,9 +51,12 @@
                         ng-ckeditor="ckOptions"></textarea>
                 </div>
 
-                <input ng-if="isFreeTextInput(amap.Attribute.DataType)" ng-class="{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }" ng-disabled="xspermit(35)"
-                    ng-required="amap.Attribute.Required && onPublishing" type="text" class="form-control" name="AmapInput{{$index}}"
-                    nc-default-value="''"
+                <input ng-if="isFreeTextInput(amap.Attribute.DataType)"
+                ng-class="{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }"
+                ng-disabled="xspermit(35)"
+                    ng-required="amap.Attribute.Required && onPublishing" type="text"
+                    class="form-control" name="AmapInput{{$index}}"
+                    nc-default-value="''" maxlength="255"
                     ng-model="formData.MasterAttribute[amap.Attribute.AttributeId].ValueEn" />
 
                 <div ng-if="isCheckboxInput(amap.Attribute.DataType)">
@@ -69,7 +72,7 @@
 
             </div>
         </div>
-        
+
         <!-- additional +1 iteration for Freetext -->
         <div class="form-group" ng-if="isFreeTextInput(amap.Attribute.DataType)" ng-repeat-end>
               <div class="width-label">
@@ -80,8 +83,8 @@
              <div class="width-field-normal">
                 <input ng-if="isFreeTextInput(amap.Attribute.DataType)" ng-disabled="xspermit(35)"
                     ng-class="{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }"
-                    nc-default-value="''"
-                    ng-required="amap.Attribute.Required && onPublishing" 
+                    nc-default-value="''" maxlength="255"
+                    ng-required="amap.Attribute.Required && onPublishing"
                     type="text" class="form-control" name="AmapInput{{$index}}"
                     ng-model="formData.MasterAttribute[amap.Attribute.AttributeId].ValueTh" />
             </div>
