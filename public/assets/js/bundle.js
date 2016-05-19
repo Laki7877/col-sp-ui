@@ -17021,9 +17021,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     }
 
     var loadOverview = function(res) {
-      Shop.get(res.ShopId).then(function(x) {
-        $scope.formData.ShopName = x.ShopNameEn;
-      })
+      // Shop.get(res.ShopId).then(function(x) {
+      //   $scope.formData.ShopName = x.ShopNameEn;
+      // })
     };
 
     $scope.adminAlert = new NcAlert();
@@ -17550,6 +17550,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
      * @param  {String} Status (WA or DF or other enum sent to server)
      */
     $scope.publish = function(Status) {
+
+      $scope.onPublishing = (Status == 'WA');
       //Trigger red validation
       angular.forEach($scope.addProductForm.$error.required, function(field) {
         field.$setDirty();
@@ -17582,7 +17584,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         $scope.formData.Variants = [];
       }
 
-      $scope.onPublishing = (Status == 'WA');
       // On click validation
       var validateMat = manualValidate(Status);
       if (validateMat.length > 0) {
@@ -18703,7 +18704,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-vital-information',
-    "<div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label ng-init=\"form = addProductForm\" nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=variantPtr.ProductNameEn maxlength=255 ng-pattern=\"/^([^<>ก-๙])+$/\" ng-disabled=xspermit(35) required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-disabled=xspermit(35) ng-model=variantPtr.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-policy-indy-bu nc-label=\"Short Product Name (Eng)\" nc-template-form=form.ProdTDNameEn nc-template-options-path=addProductForm/NonRequiredSystemField><input class=\"form-control width-field-large\" name=ProdTDNameEn ng-disabled=xspermit(35) ng-model=variantPtr.ProdTDNameEn ng-pattern=\"/^[^<>]+$/\" maxlength=\"55\"></div><div nc-template=common/input/form-group-with-label nc-policy-indy-bu nc-label=\"Short Product Name (ไทย)\" nc-template-form=form.ProdTDNameTh nc-template-options-path=addProductForm/NonRequiredSystemField><input class=\"form-control width-field-large\" name=ProdTDNameTh ng-disabled=xspermit(35) ng-model=variantPtr.ProdTDNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=\"55\"></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-disabled=xspermit(35) ng-model=variantPtr.Sku maxlength=255 ng-required=onPublishing ng-pattern-restrict=\"^[a-zA-Z0-9]*$\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-disabled=xspermit(35) ng-pattern-restrict=^[a-zA-Z0-9]*$ name=Upc maxlength=13 ng-model=\"variantPtr.Upc\"></div><div ng-if=variantPtr.MasterVariant.Pid><div nc-template=common/input/form-group-with-label nc-template-form=form.Pid nc-label=\"{{ (formData.Variants || []).length > 0 ? 'Group ID' : 'PID' }}\" nc-template-options-path=addProductForm/Pid><input class=\"form-control width-field-large\" name=Pid disabled ng-model=\"variantPtr.Pid\"></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Brand Name</label></div><div class=width-field-normal><div class=ah-select2-dropdown><you-me display-by=BrandNameEn placeholder=\"Search Brand\" nc-required=true auto-clear-search=true group-by=_group ng-disabled=xspermit(35) ng-model=formData.Brand refresh=refresher.Brands choices=dataset.Brands></you-me></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label ng-init=\"form = addProductForm\" nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=variantPtr.ProductNameEn maxlength=255 ng-pattern=\"/^([^<>ก-๙])+$/\" ng-disabled=xspermit(35) required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-disabled=xspermit(35) ng-model=variantPtr.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-policy-indy-bu nc-label=\"Short Product Name (Eng)\" nc-template-form=form.ProdTDNameEn nc-template-options-path=addProductForm/NonRequiredSystemField><input class=\"form-control width-field-large\" name=ProdTDNameEn ng-disabled=xspermit(35) ng-model=variantPtr.ProdTDNameEn ng-pattern=\"/^[^<>]+$/\" maxlength=\"55\"></div><div nc-template=common/input/form-group-with-label nc-policy-indy-bu nc-label=\"Short Product Name (ไทย)\" nc-template-form=form.ProdTDNameTh nc-template-options-path=addProductForm/NonRequiredSystemField><input class=\"form-control width-field-large\" name=ProdTDNameTh ng-disabled=xspermit(35) ng-model=variantPtr.ProdTDNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=\"55\"></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-disabled=xspermit(35) ng-model=variantPtr.Sku maxlength=255 ng-required=true ng-pattern-restrict=\"^[a-zA-Z0-9]*$\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-disabled=xspermit(35) ng-pattern-restrict=^[a-zA-Z0-9]*$ name=Upc maxlength=13 ng-model=\"variantPtr.Upc\"></div><div ng-if=variantPtr.MasterVariant.Pid><div nc-template=common/input/form-group-with-label nc-template-form=form.Pid nc-label=\"{{ (formData.Variants || []).length > 0 ? 'Group ID' : 'PID' }}\" nc-template-options-path=addProductForm/Pid><input class=\"form-control width-field-large\" name=Pid disabled ng-model=\"variantPtr.Pid\"></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Brand Name</label></div><div class=width-field-normal><div class=ah-select2-dropdown><you-me display-by=BrandNameEn placeholder=\"Search Brand\" nc-required=true auto-clear-search=true group-by=_group ng-disabled=xspermit(35) ng-model=formData.Brand refresh=refresher.Brands choices=dataset.Brands></you-me></div></div></div></div></div>"
   );
 
 
@@ -24835,6 +24836,7 @@ module.exports = {
     'labelClass': 'required',
     'error': {
       'messages': {
+	 'required': 'This is a required field',
         'pattern': 'Special characters are not allowed'
       }
     }
