@@ -519,9 +519,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         mat.push('Effective date/time must come before expire date/time.')
       }
 
-      if (!$scope.formData.GlobalCategories.CategoryId) {
-        mat.push('Global Category');
-      }
 
       return mat
     };
