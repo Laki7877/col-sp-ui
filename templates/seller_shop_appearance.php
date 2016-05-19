@@ -328,7 +328,9 @@
 						            		 	size="2">
 						            		 </nc-textareas>
 						            	</div>
-						            	<div ng-switch-default></div>
+						            	<div ng-switch-default>
+						            		<p class="text-center">You have no templates.</p>
+						            	</div>
 						            </div>
 	          						<!--nc-image-banner2 ng-if="hasComponent('Banner')"  name="Banner" nc-model="formData.Banner.Images" source="formData" title="Banner Upload" uploader="bannerUploader" on-fail="uploadBannerFail" size="getComponent('Banner')"></nc-image-banner2>
 						            <div ng-if="hasComponent('Layout')" class="form-section">
