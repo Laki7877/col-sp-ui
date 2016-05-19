@@ -267,7 +267,7 @@ ul.sub-sidebar {
         }
       }
 		}
-		li:hover{
+		li.active{
 			background: $sidebar-bg-color-active !important;
 			a{
 				color: $color-white;
@@ -311,6 +311,7 @@ ul.sub-sidebar {
 				background: $sidebar-color !important;
 				color: $font-color-grey;
 				a{
+					color: $font-color-grey;
 					i{
 						color: $font-color-grey;
 					}

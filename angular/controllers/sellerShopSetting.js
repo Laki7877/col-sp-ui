@@ -24,22 +24,30 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 					}).finally(function() {
 						$scope.loading = false;
 					});
-
-
-				$scope.$watch('formData.Province', function(newData, oldData) {
-					if(_.isNil(newData) || newData == oldData) {
+					
+				$scope.$watch('formData.Province', function(data, old) {
+					if(_.isNil(data)) {
 						return;
 					}
 					_.unset($scope.formData, ['City']);
-					$scope.getCities(newData.ProvinceId);
+					$scope.getCities(data.ProvinceId);
 				});
 
-				$scope.$watch('formData.City', function(newData, oldData) {
-					if(_.isNil(newData) || newData == oldData) {
+				$scope.$watch('formData.City', function(data, old) {
+					if(_.isNil(data)) {
 						return;
 					}
 					_.unset($scope.formData, ['District']);
-					$scope.getDistricts(newData.CityId);
+					$scope.getDistricts(data.CityId);
+				});
+
+
+				$scope.$watch('formData.District', function(data, old) {
+					if(_.isNil(data)) {
+						return;
+					}
+					_.unset($scope.formData, ['PostalCode']);
+					$scope.getPostals(data.DistrictId);
 				});
 
 			});

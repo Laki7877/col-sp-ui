@@ -29,7 +29,7 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 				});
 
 				$scope.$watch('formData.Province', function(data, old) {
-					if(_.isNil(data) || data == old) {
+					if(_.isNil(data)) {
 						return;
 					}
 					_.unset($scope.formData, ['City']);
@@ -37,11 +37,20 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 				});
 
 				$scope.$watch('formData.City', function(data, old) {
-					if(_.isNil(data) || data == old) {
+					if(_.isNil(data)) {
 						return;
 					}
 					_.unset($scope.formData, ['District']);
 					$scope.getDistricts(data.CityId);
+				});
+
+
+				$scope.$watch('formData.District', function(data, old) {
+					if(_.isNil(data)) {
+						return;
+					}
+					_.unset($scope.formData, ['PostalCode']);
+					$scope.getPostals(data.DistrictId);
 				});
 			},
 			onAfterSave: function(scope) {			
@@ -84,6 +93,12 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 				$scope.districts = data;
 			});
 	};
+	$scope.getPostals = function(id) {
+		ShopService.get('PostCodes', id)
+			.then(function(data) {
+				$scope.postals = data;
+			});
+	}
 
 	$scope.fetchAllList = function() {
 		ShopService.get('TermPayments')
