@@ -81,6 +81,7 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 		ShopAppearanceService.list()
 			.then(function(data) {
 				$scope.formData = ShopAppearanceService.deserialize(data);
+				console.log($scope.formData);
 			})
 			.finally(function() {
 				$scope.loading = false;

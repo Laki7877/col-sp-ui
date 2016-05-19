@@ -11119,6 +11119,7 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 		ShopAppearanceService.list()
 			.then(function(data) {
 				$scope.formData = ShopAppearanceService.deserialize(data);
+				console.log($scope.formData);
 			})
 			.finally(function() {
 				$scope.loading = false;
@@ -24141,7 +24142,6 @@ module.exports = ["common", "config", "util", function (common, config, util) {
         var processed = _.cloneDeep(data);
         processed.Data = angular.toJson(processed.Data || {});
         
-        console.log(processed);
         return processed;
     }
 
