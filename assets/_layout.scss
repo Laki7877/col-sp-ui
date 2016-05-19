@@ -257,7 +257,9 @@ ul.sub-sidebar {
     	padding: 0px;
       border-bottom: 1px solid $sidebar-color;
       a{
+				color: $font-color-grey;
         i{
+					color: $font-color-grey;
           padding: 17px 0px;
           margin: 0px;
           width: 60px;
@@ -267,8 +269,19 @@ ul.sub-sidebar {
 		}
 		li:hover{
 			background: $sidebar-bg-color-active !important;
+			a{
+				color: $color-white;
+				i{
+					color: $color-white;
+				}
+			}
+		}
+	}
+	li.current{
+		color: $color-white;
+		a{
 			i{
-				color: $color-white !important;
+				color: $color-white;
 			}
 		}
 	}
@@ -296,6 +309,12 @@ ul.sub-sidebar {
 		}
 		li.current{
 				background: $sidebar-color !important;
+				color: $font-color-grey;
+				a{
+					i{
+						color: $font-color-grey;
+					}
+				}
 		}
 	}
 	.sidebar-nav-text{
