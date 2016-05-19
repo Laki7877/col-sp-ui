@@ -17529,7 +17529,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
      */
     $scope.publish = function(Status) {
 
-      
       //Trigger red validation
       angular.forEach($scope.addProductForm.$error.required, function(field) {
         field.$setDirty();
@@ -17664,6 +17663,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.init = function(viewBag) {
       if (!angular.isObject(viewBag)) throw new KnownException(
         'View bag is corrupted');
+        
+      $scope.onPublishing = false;
 
       var _editMode = ('productId' in viewBag);
       for (var page in tabPage) {
