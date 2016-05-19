@@ -132,6 +132,7 @@ angular.module('umeSelect')
 
                     //Create grouping if groupby is present
                     if(scope.groupBy){
+                        console.log("Evaluating Groupby");
                         seenGroup.clear();
                         sortedData = _.sortBy(data, function(o) { return _.get(o, scope.groupBy); });
                         sortedData = sortedData.map(function(d){
