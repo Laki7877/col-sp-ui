@@ -102,6 +102,10 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
     service.page404 = function () {
         $window.location.href = "/error";
     };
+    //Goto 401
+    service.page401 = function (admin) {
+        $window.location.href = admin ? "/admin/unauthorized" : "/unauthorized";
+    };
     service.warningOnLeave = function (fn) {
         $window.onbeforeunload = function () {
             if (!fn()) {

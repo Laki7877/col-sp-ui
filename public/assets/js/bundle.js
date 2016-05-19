@@ -9476,8 +9476,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
         $window.location.href = "/onboarding";
       }
       else {
-        console.log("redirecting to 404 due to poermission")
-        util.page404();
+        util.page401();
       }
     }
   }
@@ -12864,6 +12863,10 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
     //Goto 404
     service.page404 = function () {
         $window.location.href = "/error";
+    };
+    //Goto 401
+    service.page401 = function (admin) {
+        $window.location.href = admin ? "/admin/unauthorized" : "/unauthorized";
     };
     service.warningOnLeave = function (fn) {
         $window.onbeforeunload = function () {
