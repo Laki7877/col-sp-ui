@@ -13044,86 +13044,99 @@ ul.sub-sidebar .item > a {
 }
 /* line 244, ../../../assets/_layout.scss */
 #sidebar-wrapper .logo-img-wrapper-collased {
+  position: relative;
   display: block;
 }
-/* line 246, ../../../assets/_layout.scss */
+/* line 247, ../../../assets/_layout.scss */
 #sidebar-wrapper .logo-img-wrapper-collased img {
   width: 20px;
   height: 20px;
   margin: 66px 20px 0px 20px;
 }
-/* line 252, ../../../assets/_layout.scss */
+/* line 253, ../../../assets/_layout.scss */
 #sidebar-wrapper .sidebar-nav {
   margin-top: 19px;
 }
-/* line 254, ../../../assets/_layout.scss */
+/* line 255, ../../../assets/_layout.scss */
 #sidebar-wrapper .sidebar-nav li {
   line-height: 0px;
   padding: 0px;
   border-bottom: 1px solid #252d40;
 }
-/* line 259, ../../../assets/_layout.scss */
+/* line 260, ../../../assets/_layout.scss */
 #sidebar-wrapper .sidebar-nav li a i {
   padding: 17px 0px;
   margin: 0px;
   width: 60px;
   text-align: center;
 }
-/* line 267, ../../../assets/_layout.scss */
+/* line 268, ../../../assets/_layout.scss */
 #sidebar-wrapper .sidebar-nav li:hover {
   background: #1e2534 !important;
 }
-/* line 269, ../../../assets/_layout.scss */
+/* line 270, ../../../assets/_layout.scss */
 #sidebar-wrapper .sidebar-nav li:hover i {
   color: #FFFFFF !important;
 }
-/* line 274, ../../../assets/_layout.scss */
+/* line 275, ../../../assets/_layout.scss */
 #sidebar-wrapper .sidebar-nav-text {
   display: none;
 }
+/* line 278, ../../../assets/_layout.scss */
+#sidebar-wrapper .logo-text {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  color: #ffffff;
+  margin-left: 4px;
+}
 
-/* line 279, ../../../assets/_layout.scss */
+/* line 287, ../../../assets/_layout.scss */
 #sidebar-wrapper:hover {
   width: 180px;
 }
-/* line 281, ../../../assets/_layout.scss */
+/* line 289, ../../../assets/_layout.scss */
 #sidebar-wrapper:hover .logo-img-wrapper-collased {
   display: block;
 }
-/* line 284, ../../../assets/_layout.scss */
+/* line 292, ../../../assets/_layout.scss */
 #sidebar-wrapper:hover .sidebar-nav {
   width: 180px;
 }
-/* line 286, ../../../assets/_layout.scss */
+/* line 294, ../../../assets/_layout.scss */
 #sidebar-wrapper:hover .sidebar-nav a {
   width: 300px;
 }
-/* line 289, ../../../assets/_layout.scss */
+/* line 297, ../../../assets/_layout.scss */
 #sidebar-wrapper:hover .sidebar-nav li.current {
   background: #252d40 !important;
 }
-/* line 293, ../../../assets/_layout.scss */
+/* line 301, ../../../assets/_layout.scss */
 #sidebar-wrapper:hover .sidebar-nav-text {
   display: inline;
 }
+/* line 304, ../../../assets/_layout.scss */
+#sidebar-wrapper:hover .logo-text {
+  display: inline;
+}
 
-/* line 309, ../../../assets/_layout.scss */
+/* line 320, ../../../assets/_layout.scss */
 ul.sub-sidebar {
   left: 180px;
   padding-top: 58px;
   background-color: #1e2534;
   color: #FFFFFF;
 }
-/* line 314, ../../../assets/_layout.scss */
+/* line 325, ../../../assets/_layout.scss */
 ul.sub-sidebar .item {
   color: #FFFFFF;
 }
-/* line 316, ../../../assets/_layout.scss */
+/* line 327, ../../../assets/_layout.scss */
 ul.sub-sidebar .item.active {
   font-weight: normal;
   color: #ec0000;
 }
-/* line 320, ../../../assets/_layout.scss */
+/* line 331, ../../../assets/_layout.scss */
 ul.sub-sidebar .item:hover {
   color: #ec0000;
 }

@@ -4,6 +4,7 @@
 
     <div class="logo-img-wrapper-collased">
         <img class="logo-img" src="<?= $this->asset('/assets/img/seller_logo_small.png') ?>" />
+        <span class="logo-text">Seller Portal</span>
     </div>
 
 

@@ -242,6 +242,7 @@ ul.sub-sidebar {
 		display: none;
 	}
   .logo-img-wrapper-collased{
+		position: relative;
     display: block;
     img{
       width: 20px;
@@ -274,6 +275,13 @@ ul.sub-sidebar {
 	.sidebar-nav-text{
 		display: none;
 	}
+	.logo-text{
+		display: none;
+		position: absolute;
+		bottom: 0;
+		color: #ffffff;
+		margin-left: 4px;
+	}
 }
 
 #sidebar-wrapper:hover{
@@ -292,6 +300,9 @@ ul.sub-sidebar {
 	}
 	.sidebar-nav-text{
 		display:inline;
+	}
+	.logo-text{
+		display: inline;
 	}
 	// .logo-img-wrapper{
 	// 	display: block;
