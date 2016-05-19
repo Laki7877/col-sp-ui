@@ -36,9 +36,9 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShopPermiss
 				$q.all([ShopPermissionService.listAll(), ShopAppearanceService.getThemes()]).then(function(res) {
 					var data = res[0]
 					$scope.permissions = data;
-					if(load) {		
+					if(load) {
 						$scope.formData.Permissions = PermissionService.deserialize($scope.formData.Permission, $scope.permissions);
-					} else {				
+					} else {
 						$scope.formData.Permissions = PermissionService.generate($scope.permissions);
 					}
 
@@ -88,7 +88,7 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShopPermiss
 			}
 		}
 	});
-	$scope.group = ['Dashboard', 'Products', 'Promotion', 'Report', 'Local Category', 'Local Brand', 'Home Template', 'CMS'];
+	$scope.group = ['Dashboard', 'Products', 'Promotion', 'Report', 'Local Category', 'Local Brand', 'CMS'];
 	$scope.checkAll = function(val) {
 		_.forOwn($scope.formData.Permissions, function(v,k) {
 			util.traverse(v, 'Children', function(e) {
