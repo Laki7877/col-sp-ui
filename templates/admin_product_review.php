@@ -5,7 +5,7 @@
     <nc-alert nc-model="alert"></nc-alert>
     <nc-page-title nc-title="Product Reviews" icon="fa-tag"></nc-page-title>
     <div class="row search-section-wrapper">
-      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for PID or Customer'"></nc-search>
+      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search by PID or Customer'"></nc-search>
     </div>
     <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="isSearching()" >
       <table class="table table-curved">

@@ -77,11 +77,13 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 	$scope.fetchAllList();
 	$scope.save = function() {
 		if($scope.saving) return;
+		$scope.alert.close();
 		
 		//Activate form submission
 		$scope.form.$setSubmitted();
 
 		if($scope.form.$valid) {
+			$scope.saving = true;
 			ShopProfileService.updateAll(ShopProfileService.serialize($scope.formData))
 				.then(function(data) {
 					$scope.formData = ShopProfileService.deserialize(data);

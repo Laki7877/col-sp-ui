@@ -52,4 +52,12 @@ module.exports = function($scope, $controller, SellerRoleService, SellerPermissi
 			});
 		});
 	};
+	$scope.$watch('formData.Permissions', function(e) {		
+		$scope.selectAll = true;
+		_.forOwn($scope.formData.Permissions, function(v,k) {
+			util.traverse(v, 'Children', function(e) {
+				$scope.selectAll = $scope.selectAll && e.check;
+			});
+		});
+	}, true);
 };
