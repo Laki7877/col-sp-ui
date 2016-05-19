@@ -11,7 +11,7 @@ var template = require('./template');
 var skeemas = require('skeemas');
 
 // IE fix
-require('./iefix.js')
+require('./iefix.js');
 
 // External dependencies
 global._ = require('lodash');
@@ -11347,6 +11347,7 @@ module.exports = ["$templateCache", "$filter", function($templateCache, $filter)
 				scope.model.splice($index, 1);
 				scope.select(_.findIndex(scope.model, function(e) { return e[scope.id] == item[scope.id] }), false);
 			};
+			
 			scope.transfer = function(direction) {
 				if(_.isNil(scope.active(direction))) {
 					return;
@@ -17397,9 +17398,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         mat.push('Effective date/time must come before expire date/time.')
       }
 
-      if (!$scope.formData.GlobalCategories.CategoryId) {
-        mat.push('Global Category');
-      }
 
       return mat
     };
@@ -18531,7 +18529,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-variant-table-b',
-    "<table class=\"table variation-table\"><thead><tr><th class=column-variant style=width:150px>Variant</th><th class=column-mapped-product style=width:400px>Product</th><th class=column-visibility>Visibility</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td><you-me ng-model=pair.MappedProduct display-by=ProductNameEn refresh=refresher.Products initial-choices=dataset.Products placeholder=\"Search for a single product under the selected category and attribute set\" strict-mode=true choices=dataset.Products ng-disabled=!pair.Visibility name=pair_MappedProduct></you-me></td><td><a class=\"btn btn-white\" ng-click=\"pair.Visibility = !pair.Visibility\"><span ng-if=pair.Visibility>Hide</span> <span ng-if=!pair.Visibility>Show</span></a></td></tr></tbody></table>"
+    "<table class=\"table variation-table\"><thead><tr><th class=column-variant style=width:150px>Variant</th><th class=column-mapped-product style=width:400px>Product</th><th class=column-visibility>Visibility</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td><you-me ng-model=pair.MappedProduct display-by=ProductNameEn refresh=refresher.Products initial-choices=dataset.Products placeholder=\"Search for a single product under the selected category and attribute set\" choices=dataset.Products ng-disabled=!pair.Visibility name=pair_MappedProduct></you-me></td><td><a class=\"btn btn-white\" ng-click=\"pair.Visibility = !pair.Visibility\"><span ng-if=pair.Visibility>Hide</span> <span ng-if=!pair.Visibility>Show</span></a></td></tr></tbody></table>"
   );
 
 
@@ -19277,6 +19275,7 @@ angular.module('umeSelect')
 
                     //Create grouping if groupby is present
                     if(scope.groupBy){
+                        console.log("Evaluating Groupby");
                         seenGroup.clear();
                         sortedData = _.sortBy(data, function(o) { return _.get(o, scope.groupBy); });
                         sortedData = sortedData.map(function(d){
