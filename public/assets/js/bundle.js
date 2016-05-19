@@ -4700,7 +4700,7 @@ module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$u
 						});
 				};
 
-				for (var i = 0; i < 10; i++) {
+				for (var i = 0; i <= 10; i++) {
 					$scope.ratings.push(i*0.5);
 				};
 			}],
@@ -5128,8 +5128,30 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", function($sco
 	});
 }];
 },{}],49:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissionService", "PermissionService", "util", function($scope, $controller, AdminShoptypeService, ShopPermissionService, PermissionService, util) {
+module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissionService", "ShopAppearanceService", "PermissionService", "util", "$q", function($scope, $controller, AdminShoptypeService, ShopPermissionService, ShopAppearanceService, PermissionService, util, $q) {
 	'ngInject';
+
+	var deserializeTheme = function(load) {
+		if(load) {
+			var themes = $scope.formData.Themes;
+			$scope.formData.Themes = [];
+			_.forEach($scope.themes, function(t) {
+				if(_.findIndex(themes, function(e) {
+					return t.ThemeId == e.ThemeId;
+				}) >= 0) {
+					t.check = true;
+				} else {
+					t.check = false;
+				}
+				$scope.formData.Themes.push(t);
+			});
+		} else {
+			$scope.formData.Themes = $scope.themes;
+			_.forEach($scope.formData.Themes, function(t) {
+				t.check = false;
+			});
+		}
+	}
 	//Inherit from parent
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
@@ -5139,14 +5161,15 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissi
 			item: 'Shop Type',
 			service: AdminShoptypeService,
 			onLoad: function(scope, load) {
-				scope.loading = true;
-				ShopPermissionService.listAll()
-					.then(function(data) {
-					scope.permissions = data;
+				$scope.loading = true;
+
+				$q.all([ShopPermissionService.listAll(), ShopAppearanceService.getThemes()]).then(function(res) {
+					var data = res[0]
+					$scope.permissions = data;
 					if(load) {		
-						scope.formData.Permissions = PermissionService.deserialize(scope.formData.Permission, scope.permissions);
+						$scope.formData.Permissions = PermissionService.deserialize($scope.formData.Permission, $scope.permissions);
 					} else {				
-						scope.formData.Permissions = PermissionService.generate(scope.permissions);
+						$scope.formData.Permissions = PermissionService.generate($scope.permissions);
 					}
 
 					$scope.selectAll = true;
@@ -5156,12 +5179,29 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissi
 						});
 					});
 
+					//All theme
+					$scope.themes = res[1];
+					deserializeTheme(load);
+
+					_.forEach($scope.formData.Themes, function(e) {
+						$scope.selectAll = $scope.selectAll && e.check;
+					})
+
 				}).finally(function() {
-					scope.loading = false;
+					$scope.loading = false;
 				});
 			},
 			onSave: function(scope) {
 				scope.formData.Permission = PermissionService.serialize(scope.formData.Permissions);
+				scope.formData.Themes = _.compact(_.map(scope.formData.Themes, function(e){
+					var check = e.check;
+					_.unset(e, ['check']);
+					if(check) {
+						return e;
+					} else {
+						return null;
+					}
+				}));
 			},
 			onAfterSave: function(scope) {
 				scope.formData.Permissions = PermissionService.deserialize(scope.formData.Permission, scope.permissions);
@@ -5171,6 +5211,10 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissi
 						$scope.selectAll = $scope.selectAll && e.check;
 					});
 				});
+				deserializeTheme(true);
+				_.forEach($scope.formData.Themes, function(e) {
+					$scope.selectAll = $scope.selectAll && e.check;
+				})
 			}
 		}
 	});
@@ -5181,6 +5225,9 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissi
 				e.check = val;
 			});
 		});
+		_.forEach($scope.formData.Themes, function(e) {
+			e.check = val;
+		})
 	};
 }];
 },{}],50:[function(require,module,exports){
@@ -9241,28 +9288,28 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
 	$rootScope._ = _;
   $rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
-  
+
   console.log('PROFILE', $rootScope.Profile);
   console.log('IMPOSTER', $rootScope.Imposter);
 
   /*
-  *  range {array} - set of shop group that is permitted in the current shop group policy 
-  */ 
+  *  range {array} - set of shop group that is permitted in the current shop group policy
+  */
   $rootScope.ShopGroupPolicy = function(range){
     var mySG = _.get($rootScope.Profile, 'Shop.ShopGroup');
     if(mySG == range) return true;
-    
+
     return range.includes(mySG);
   }
 
-   //Prevent image dragdrop on other elements   
-    $window.addEventListener("dragover", function(e) {    
-      e = e || event;   
-      e.preventDefault();   
-    }, false);    
-    $window.addEventListener("drop", function(e) {    
-      e = e || event;   
-      e.preventDefault();   
+   //Prevent image dragdrop on other elements
+    $window.addEventListener("dragover", function(e) {
+      e = e || event;
+      e.preventDefault();
+    }, false);
+    $window.addEventListener("drop", function(e) {
+      e = e || event;
+      e.preventDefault();
     }, false);
 
   //Handle route menu item active-ness
@@ -9279,7 +9326,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
           if(_.findIndex(route.reserve, function(o) { return o == id; }) >= 0) {
             return '';
           }
-          return 'active';  
+          return 'active';
         }
         return 'active';
       } else {
@@ -9330,10 +9377,10 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
       //User
       $window.location.href = "/login";
     }
-  } 
+  }
 
   var permitParent = function(p) {
-    var parent = false; 
+    var parent = false;
     var oparent = false;
 
     if(p.Parent > 0) {
@@ -9390,8 +9437,8 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
     //return true;
     return $rootScope.hasPermission(id);
   };
-  
-  
+
+
 
   //Check url access permission
   $rootScope.permitUrl = function(url) {
@@ -9421,7 +9468,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
   //Check url acccess permission for this page
   if(!$rootScope.permitUrl($window.location.pathname) && $window.location.pathname.indexOf("/login") == -1 && !$rootScope.Imposter) {
     $rootScope.DisablePage = true;
-    
+
     if($window.location.pathname == '/dashboard' && !$rootScope.permit(29)) {
         $window.location.href = "/onboarding";
     } else {
@@ -9470,11 +9517,11 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
         //alert("Fatal error while logging out.");
       });
     }
-    else {  
+    else {
       //Normal logout
         Credential.logout().finally(function() {
           $window.location.href = isAdmin ? "/admin/login" : "/login";
-        });   
+        });
     }
   };
 
@@ -9544,7 +9591,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
         }));
         return menuItem;
       }
-      return null; 
+      return null;
     }));
   };
   //Active class for sub menu
@@ -9570,7 +9617,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
     //Check if is one of the submenu url
     for (var i = 0; i < item.submenu.length; i++) {
       if($rootScope.activeSubmenuItem(item.submenu[i]).length > 0) {
-        return 'active';
+        return 'active current';
       }
     }
     return '';
@@ -9597,6 +9644,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
     }
   }
 }];
+
 },{}],71:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerAccountService", "config", function($scope, $controller, SellerAccountService, config) {
 	'ngInject';
@@ -11071,7 +11119,6 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 		ShopAppearanceService.list()
 			.then(function(data) {
 				$scope.formData = ShopAppearanceService.deserialize(data);
-				console.log($scope.formData);
 			})
 			.finally(function() {
 				$scope.loading = false;
@@ -13071,13 +13118,13 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
         return function (item) {
             item.Visibility = !item.Visibility;
             options.service.visible([_.pick(item, [options.id, 'Visibility'])])
-                .then(function (data) {
-                    if(_.isArray(data) && data.length > 0) {
-                        item.OnlineFlag = data[0];
-                    }
+                .then(function () {
                 }, function (err) {
                     alert.error(common.getError(err));
                     item.Visibility = !item.Visibility;
+                })
+                .finally(function() {
+                    scope.reload();
                 });
         };
     };
@@ -15091,8 +15138,8 @@ angular.module('nc')
 			link: function(scope) {
 				var update = function() {
 					scope.options = {
-						height: 256 * (scope.height/scope.width),
-						width: 256,
+						height: '144px',
+						width: _.round(144 * (scope.width/scope.height)) + 'px',
 						validateDimensionMin: [scope.width, scope.height],
 						validateDimensionMax: [scope.width, scope.height]
 					};
@@ -15106,7 +15153,7 @@ angular.module('nc')
 						};
 					} else if(len < m) {
 						for (var i = 0; i < m - len; i++) {
-							scope.source.Links.push({});
+							scope.source.Links.push('');
 						};
 					}
 				}
@@ -15144,8 +15191,8 @@ angular.module('nc')
 			link: function(scope) {
 				var update = function() {
 					scope.options = {
-						height: 256 * (scope.height/scope.width),
-						width: 256,
+						height: '144px',
+						width: _.round(144 * (scope.width/scope.height)) + 'px',
 						validateDimensionMin: [scope.width, scope.height],
 						validateDimensionMax: [scope.width, scope.height]
 					};
@@ -15201,8 +15248,8 @@ angular.module('nc')
 			link: function(scope) {
 				var update = function() {
 					scope.options = {
-						height: 256 * (scope.height/scope.width),
-						width: 256,
+						height: '144px',
+						width: _.round(144 * (scope.width/scope.height)) + 'px',
 						validateDimensionMin: [scope.width, scope.height],
 						validateDimensionMax: [scope.width, scope.height]
 					};
@@ -15291,8 +15338,8 @@ angular.module('nc')
 					width: '256px'
 				});
 				scope.$watch('size', function(data) {
-					scope.options.height = (data.Height/data.Width)*256 + 'px';
-					scope.options.width =  '256px';
+					scope.options.height = '144px';
+					scope.options.width = (144 * (data.Width/data.Height)) + 'px';
 				});
 			}
 		}
@@ -23776,8 +23823,8 @@ module.exports = ['Product', 'Collection', 'Brand', 'AttributeSet', 'ImageServic
         return $productCollectionAdd;
     }];
 },{}],230:[function(require,module,exports){
-module.exports = ['Product', 'Collection', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
-    function (Product,  Collection, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
+module.exports = ["Product", "Collection", "Brand", "AttributeSet", "ImageService", "GlobalCategory", "$q", "Category", function (Product,  Collection, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
+        'ngInject';
         var $productCollectionAddListItem = {};
         
         /*
@@ -25628,15 +25675,15 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('inventory/stockPopover',
-    "<form ng-submit=updateStock(popoverItem) id=inventory-tab-content class=content><span class=\"col-xs-8 padding-left-0 margin-bottom-15 margin-top-10\">In Stock</span> <span class=\"text-right col-xs-4 margin-top-10 margin-bottom-15\">{{popoverItem.Quantity || '0'}}</span> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Update</span> <input class=\"text-right col-xs-4\" type=number ng-model=popoverItem.UpdateQuantity ng-pattern-restrict=^[0-9\\-]*$ maxlength=\"6\"> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Defect</span> <span class=\"text-right col-xs-4\">{{popoverItem.Defect || '0'}}</span><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15\">On Hold</span> <span class=\"text-right col-xs-4\">{{popoverItem.OnHold || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15 border_modal\">Reserved</span> <span class=\"text-right col-xs-4 border_modal\">{{popoverItem.Reserve || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 available_inventory\">Available</span><span class=\"text-right col-xs-4 available_inventory\">{{ getAvailableStock(popoverItem) }}</span></div><div class=text-center><button class=\"btn btn-blue btn-width-100 text-center\">Save</button></div></form>"
+    "<form ng-submit=updateStock(popoverItem) id=inventory-tab-content class=content><span class=\"col-xs-8 padding-left-0 margin-bottom-15 margin-top-10\">In Stock</span> <span class=\"text-right col-xs-4 margin-top-10 margin-bottom-15\">{{popoverItem.Quantity || '0'}}</span> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Update</span> <input class=\"text-right col-xs-4\" ng-model=popoverItem.UpdateQuantity ng-pattern-restrict=^([\\-]){0,1}[0-9]*$ maxlength=\"6\"> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Defect</span> <span class=\"text-right col-xs-4\">{{popoverItem.Defect || '0'}}</span><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15\">On Hold</span> <span class=\"text-right col-xs-4\">{{popoverItem.OnHold || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15 border_modal\">Reserved</span> <span class=\"text-right col-xs-4 border_modal\">{{popoverItem.Reserve || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 available_inventory\">Available</span><span class=\"text-right col-xs-4 available_inventory\">{{ getAvailableStock(popoverItem) }}</span></div><div class=text-center><button class=\"btn btn-blue btn-width-100 text-center\">Save</button></div></form>"
   );
 
 
   $templateCache.put('local_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\"><form ng-show=\"!saving && !loading && true\" class=\"ah-form ng-hide\" name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern-restrict=\"^[^<>]*$\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-pattern-restrict=\"^[^<>]*$\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKey nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL Key\"><input class=form-control name=UrlKey ng-model=formData.UrlKey ng-lowercase ng-pattern=\"/^[0-9a-z\\-]+$/\" maxlength=\"100\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SortBy nc-label=\"Default Sort By\" nc-template-options-path=addBrandForm/SortBy><ui-select ng-model=formData.SortBy name=SortBy search-enabled=false required><ui-select-match placeholder=\"- Select Default Sort -\">{{$select.selected.SortByName}}</ui-select-match><ui-select-choices repeat=\"item in sortBy\">{{item.SortByName}}</ui-select-choices></ui-select></div></div></div><nc-image-banner name=CategoryBannerEn data-source=formData data-key=BannerStatusEn nc-model=formData.CategoryBannerEn title=\"Upload Banner (English)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8>1920x1080</nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData data-key=BannerStatusTh nc-model=formData.CategoryBannerTh title=\"Upload Banner (ไทย)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8>1920x1080</nc-image-banner><nc-image-banner name=CategoryBannerEn data-source=formData data-key=BannerSmallStatusEn nc-model=formData.CategorySmallBannerEn title=\"Upload Small Banner (English)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8>1600x900</nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData data-key=BannerSmallStatusTh nc-model=formData.CategorySmallBannerTh title=\"Upload Small Banner (ไทย)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8>1600x900</nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"^[^<>]*$\" name=DescriptionFullEn ng-model=formData.DescriptionFullEn ng-disabled=!$root.permit(72)>\n" +
-    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"^[^<>]*$\" name=DescriptionFullTh ng-model=formData.DescriptionFullTh ng-disabled=!$root.permit(72)>\n" +
-    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (English)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"^[^<>]*$\" name=DescriptionMobileEn ng-model=formData.DescriptionMobileEn ng-disabled=!$root.permit(72)>\n" +
-    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (ไทย)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"^[^<>]*$\" name=DescriptionMobileTh ng-model=formData.DescriptionMobileTh ng-disabled=!$root.permit(72)>\n" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\"><form ng-show=\"!saving && !loading && true\" class=\"ah-form ng-hide\" name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern-restrict=\"^[^<>]*$\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-pattern-restrict=\"^[^<>]*$\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKey nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL Key\"><input class=form-control name=UrlKey ng-model=formData.UrlKey ng-lowercase ng-pattern=\"/^[0-9a-z\\-]+$/\" maxlength=\"100\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SortBy nc-label=\"Default Sort By\" nc-template-options-path=addBrandForm/SortBy><ui-select ng-model=formData.SortBy name=SortBy search-enabled=false required><ui-select-match placeholder=\"- Select Default Sort -\">{{$select.selected.SortByName}}</ui-select-match><ui-select-choices repeat=\"item in sortBy\">{{item.SortByName}}</ui-select-choices></ui-select></div></div></div><nc-image-banner name=CategoryBannerEn data-source=formData data-key=BannerStatusEn nc-model=formData.CategoryBannerEn title=\"Upload Banner (English)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8>1920x1080</nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData data-key=BannerStatusTh nc-model=formData.CategoryBannerTh title=\"Upload Banner (ไทย)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8>1920x1080</nc-image-banner><nc-image-banner name=CategoryBannerEn data-source=formData data-key=BannerSmallStatusEn nc-model=formData.CategorySmallBannerEn title=\"Upload Small Banner (English)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8>1600x900</nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData data-key=BannerSmallStatusTh nc-model=formData.CategorySmallBannerTh title=\"Upload Small Banner (ไทย)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8>1600x900</nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row ng-if=$root.permit(72)><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"^[^<>]*$\" name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\n" +
+    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"^[^<>]*$\" name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\n" +
+    "\t                            </textarea></div></div><div class=\"row margin-top-30\" ng-if=$root.permit(72)><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (English)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"^[^<>]*$\" name=DescriptionMobileEn ng-model=formData.DescriptionMobileEn>\n" +
+    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (ไทย)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"^[^<>]*$\" name=DescriptionMobileTh ng-model=formData.DescriptionMobileTh>\n" +
     "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-pattern-restrict=\"^[^<>]*$\" ng-model=formData.DescriptionShortEn>\n" +
     "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-pattern-restrict=\"^[^<>]*$\" ng-model=formData.DescriptionShortTh>\n" +
     "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Featured Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Featured Products\"><span class=form-text>will be available after adding product into this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=\"formData.FeatureTitle\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"formData.TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product Name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-label=\"Feature Product Status\"><select ng-model=formData.FeatureProductStatus class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]\"></select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving class=ng-hide nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"

@@ -75,28 +75,28 @@
 		              <h2>Description</h2></div>
 		          <div class="form-section-content">
 		              <div class="two-columns">
-	                    <div class="row">
+	                    <div class="row" ng-if="$root.permit(72)">
 	                        <div nc-template="common/input/div-with-label" nc-label="Description (English)" nc-template-options-path="genericForm/DescriptionFull"
 	                        nc-template-form="form.DescriptionFullEn">
-	                            <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="250000" ng-pattern-restrict="^[^<>]*$" name="DescriptionFullEn" ng-model="formData.DescriptionFullEn" ng-disabled="!$root.permit(72)">
+	                            <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="250000" ng-pattern-restrict="^[^<>]*$" name="DescriptionFullEn" ng-model="formData.DescriptionFullEn">
 	                            </textarea>
 	                        </div>
 	                        <div nc-template="common/input/div-with-label" nc-label="Description (ไทย)" nc-template-options-path="genericForm/DescriptionFull"
 	                        nc-template-form="form.DescriptionFullTh">
-	                            <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="250000" ng-pattern-restrict="^[^<>]*$" name="DescriptionFullTh" ng-model="formData.DescriptionFullTh" ng-disabled="!$root.permit(72)">
+	                            <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="250000" ng-pattern-restrict="^[^<>]*$" name="DescriptionFullTh" ng-model="formData.DescriptionFullTh">
 	                            </textarea>
 	                        </div>
 
 	                    </div>
-	                    <div class="row margin-top-30">
+	                    <div class="row margin-top-30" ng-if="$root.permit(72)">
 	                        <div nc-template="common/input/div-with-label" nc-label="Mobile Description (English)" nc-template-options-path="genericForm/DescriptionMobile"
 	                        nc-template-form="form.DescriptionMobileEn">
-	                            <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="250000" ng-pattern-restrict="^[^<>]*$" name="DescriptionMobileEn" ng-model="formData.DescriptionMobileEn" ng-disabled="!$root.permit(72)">
+	                            <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="250000" ng-pattern-restrict="^[^<>]*$" name="DescriptionMobileEn" ng-model="formData.DescriptionMobileEn">
 	                            </textarea>
 	                        </div>
 	                        <div nc-template="common/input/div-with-label" nc-label="Mobile Description (ไทย)" nc-template-options-path="genericForm/DescriptionMobile"
 	                        nc-template-form="form.DescriptionMobileTh">
-	                            <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="250000" ng-pattern-restrict="^[^<>]*$" name="DescriptionMobileTh" ng-model="formData.DescriptionMobileTh" ng-disabled="!$root.permit(72)">
+	                            <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="250000" ng-pattern-restrict="^[^<>]*$" name="DescriptionMobileTh" ng-model="formData.DescriptionMobileTh">
 	                            </textarea>
 	                        </div>
 

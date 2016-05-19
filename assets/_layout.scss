@@ -283,11 +283,11 @@ ul.sub-sidebar {
   }
 	.sidebar-nav{
 		width: 180px;
-		li.active{
-			background: $sidebar-color;
-		}
 		a{
 			width: 300px;
+		}
+		li.current{
+				background: $sidebar-color !important;
 		}
 	}
 	.sidebar-nav-text{

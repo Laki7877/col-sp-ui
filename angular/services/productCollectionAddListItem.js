@@ -1,5 +1,5 @@
-module.exports = ['Product', 'Collection', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
-    function (Product,  Collection, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
+module.exports = function (Product,  Collection, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
+        'ngInject';
         var $productCollectionAddListItem = {};
         
         /*
@@ -29,4 +29,4 @@ module.exports = ['Product', 'Collection', 'Brand', 'AttributeSet', 'ImageServic
         };
 
         return $productCollectionAddListItem;
-    }];
+    };

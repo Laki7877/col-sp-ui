@@ -13095,12 +13095,12 @@ ul.sub-sidebar .item > a {
   width: 180px;
 }
 /* line 286, ../../../assets/_layout.scss */
-#sidebar-wrapper:hover .sidebar-nav li.active {
-  background: #252d40;
-}
-/* line 289, ../../../assets/_layout.scss */
 #sidebar-wrapper:hover .sidebar-nav a {
   width: 300px;
+}
+/* line 289, ../../../assets/_layout.scss */
+#sidebar-wrapper:hover .sidebar-nav li.current {
+  background: #252d40 !important;
 }
 /* line 293, ../../../assets/_layout.scss */
 #sidebar-wrapper:hover .sidebar-nav-text {
