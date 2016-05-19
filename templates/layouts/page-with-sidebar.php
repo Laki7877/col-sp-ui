@@ -10,7 +10,7 @@
     <ul ng-init="initMenu('seller')" class="sidebar-nav no-padding">
         <li ng-repeat="menuItem in menu track by $index" class="sidebar-brand {{activeMenuItem(menuItem)}}" ng-mouseenter="menuItem.hover=true" ng-mouseleave="menuItem.hover=false">
             <a ng-href="{{menuItem.url}}"><i class="fa fa-fw sidebar-font-awesome {{menuItem.icon}}"></i></a>
-            <!-- <a ng-href="{{menuItem.url}}" class="sidebar-nav-text">{{menuItem.header}}</a> -->
+            <a ng-href="{{menuItem.url}}" class="sidebar-nav-text">{{menuItem.header}}</a>
         </li>
     </ul>
 
