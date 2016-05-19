@@ -271,20 +271,27 @@ ul.sub-sidebar {
 			}
 		}
 	}
+	.sidebar-nav-text{
+		display: none;
+	}
 }
 
 #sidebar-wrapper:hover{
-	// width: 180px;
+	width: 180px;
   .logo-img-wrapper-collased{
     display: block;
   }
 	.sidebar-nav{
-		li.active{
-			background: $sidebar-color;
-			i{
-				color: $font-color-grey;
-			}
+		width: 180px;
+		a{
+			width: 300px;
 		}
+		li.current{
+				background: $sidebar-color !important;
+		}
+	}
+	.sidebar-nav-text{
+		display:inline;
 	}
 	// .logo-img-wrapper{
 	// 	display: block;
@@ -300,7 +307,7 @@ ul.sub-sidebar {
 }
 
 ul.sub-sidebar {
-  left: 60px;
+  left: 180px;
   padding-top: 58px;
   background-color: $sidebar-bg-color-active;
   color: $color-white;

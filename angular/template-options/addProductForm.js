@@ -8,6 +8,39 @@ module.exports = {
       }
     }
   },
+  PromotionPrice: {
+    divClass: 'col-xs-6',
+    error: {
+      messages: {
+        max: 'Promotion Price must be lower than Sale Price'
+      }
+    }
+  },
+  UrlKey: {
+    divClass: 'col-xs-6',
+    error: {
+      messages: {
+        pattern: 'Only 0-9 a-z - are allowed (no spaces or underscores)'
+      }
+    }
+  },
+  MetaTitle: {
+    divClass: 'col-xs-6',
+    error: {
+      messages: {
+        pattern: 'Special characters are not allowed'
+      }
+    }
+  },
+  SEO: {
+    divClass: 'col-xs-6',
+    inputSize: 'xxl',
+    error: {
+      messages: {
+        pattern: 'Special characters are not allowed'
+      }
+    }
+  },
   MinQtyAllowInCart: {},
   MaxQtyAllowInCart: {},
   KillerPointEn: {

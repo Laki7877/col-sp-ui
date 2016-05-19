@@ -32,7 +32,7 @@ module.exports = function($scope, $controller, ProductReviewService, config, $ui
 						});
 				};
 
-				for (var i = 0; i < 10; i++) {
+				for (var i = 0; i <= 10; i++) {
 					$scope.ratings.push(i*0.5);
 				};
 			},

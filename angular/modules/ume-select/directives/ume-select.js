@@ -141,11 +141,12 @@ angular.module('umeSelect')
                             }else{
                                 delete d[scope.groupBy];
                             }
-
+                            console.log('rturning d', d);
                             return d;
                         });
                     }
-
+                    
+                    console.log('sortedData', sortedData);
                     if(scope.strictMode){
                         //strictly filter by search text
                         var searchObj = {};
