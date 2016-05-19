@@ -5,7 +5,7 @@
 		<nc-alert nc-model="alert"></nc-alert>
         <nc-page-title nc-title="Shop Appearance" icon="fa-sliders">
             <button type="button" class="btn btn-white btn-width-xl margin-right-10">Preview</button>
-            <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+            <button class="btn btn-blue btn-width-xl" ng-if="themes.length > 0" ng-click="save()">Save</button>
         </nc-page-title>
 		<div ng-show="loading" nc-loading="Loading.."></div>
 		<div ng-show="saving" nc-loading="Saving.."></div>
@@ -24,11 +24,14 @@
 						                <div class="form-section-content image_preview">
 											<div class="form-group">
 											 	<div class="col-xs-12 no-padding">
-													<div class="radio multiple-radio">
+													<div class="radio multiple-radio" ng-if="themes.length > 0">
 														<label class="label_width" ng-repeat="t in themes track by $index">
 															<input type="radio" name="theme{{$index+1}}" ng-model="formData.ThemeId" ng-value="t.ThemeId">{{t.ThemeName}}
 															<img class="image_radion_thumbnail" ng-src="{{ t.ThemeImage }}" >
 														</label>
+													</div>
+													<div ng-if="themes.length == 0">
+									            		<p class="text-center">This shop has no theme</p>
 													</div>
 												</div>
 											</div>
@@ -329,7 +332,6 @@
 						            		 </nc-textareas>
 						            	</div>
 						            	<div ng-switch-default>
-						            		<p class="text-center">You have no templates.</p>
 						            	</div>
 						            </div>
 	          						<!--nc-image-banner2 ng-if="hasComponent('Banner')"  name="Banner" nc-model="formData.Banner.Images" source="formData" title="Banner Upload" uploader="bannerUploader" on-fail="uploadBannerFail" size="getComponent('Banner')"></nc-image-banner2>
@@ -397,7 +399,7 @@
 					<div class="add-product-form-action main-form-action full-width-row">
 						<div class="container-fluid">
 							<div class="float-right">
-								<button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+								<button class="btn btn-blue btn-width-xl" ng-if="themes.length > 0" ng-click="save()">Save</button>
 							</div>
 						</div>
 					</div>
