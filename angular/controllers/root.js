@@ -212,7 +212,6 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   //Create global logout function
   $rootScope.logout = function() {
     //console.log('Logging out of Profile', JSON.stringify($rootScope.Profile));
-
     var isAdmin = $rootScope.Profile.User.IsAdmin;
 
     //Logout-as
