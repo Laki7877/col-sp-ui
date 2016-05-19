@@ -18,8 +18,8 @@ angular.module('nc')
 			link: function(scope) {
 				var update = function() {
 					scope.options = {
-						height: 256 * (scope.height/scope.width),
-						width: 256,
+						height: '' + (256 * (scope.height/scope.width)) + 'px',
+						width: '256px',
 						validateDimensionMin: [scope.width, scope.height],
 						validateDimensionMax: [scope.width, scope.height]
 					};
@@ -71,8 +71,8 @@ angular.module('nc')
 			link: function(scope) {
 				var update = function() {
 					scope.options = {
-						height: 256 * (scope.height/scope.width),
-						width: 256,
+						height: '' + (256 * (scope.height/scope.width)) + 'px',
+						width: '256px',
 						validateDimensionMin: [scope.width, scope.height],
 						validateDimensionMax: [scope.width, scope.height]
 					};
@@ -128,8 +128,8 @@ angular.module('nc')
 			link: function(scope) {
 				var update = function() {
 					scope.options = {
-						height: 256 * (scope.height/scope.width),
-						width: 256,
+						height: '' + (256 * (scope.height/scope.width)) + 'px',
+						width: '256px',
 						validateDimensionMin: [scope.width, scope.height],
 						validateDimensionMax: [scope.width, scope.height]
 					};

@@ -5127,8 +5127,30 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", function($sco
 	});
 }];
 },{}],49:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissionService", "PermissionService", "util", function($scope, $controller, AdminShoptypeService, ShopPermissionService, PermissionService, util) {
+module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissionService", "ShopAppearanceService", "PermissionService", "util", "$q", function($scope, $controller, AdminShoptypeService, ShopPermissionService, ShopAppearanceService, PermissionService, util, $q) {
 	'ngInject';
+
+	var deserializeTheme = function(load) {
+		if(load) {
+			var themes = $scope.formData.Themes;
+			$scope.formData.Themes = [];
+			_.forEach($scope.themes, function(t) {
+				if(_.findIndex(themes, function(e) {
+					return t.ThemeId == e.ThemeId;
+				}) >= 0) {
+					t.check = true;
+				} else {
+					t.check = false;
+				}
+				$scope.formData.Themes.push(t);
+			});
+		} else {
+			$scope.formData.Themes = $scope.themes;
+			_.forEach($scope.formData.Themes, function(t) {
+				t.check = false;
+			});
+		}
+	}
 	//Inherit from parent
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
@@ -5138,14 +5160,15 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissi
 			item: 'Shop Type',
 			service: AdminShoptypeService,
 			onLoad: function(scope, load) {
-				scope.loading = true;
-				ShopPermissionService.listAll()
-					.then(function(data) {
-					scope.permissions = data;
+				$scope.loading = true;
+
+				$q.all([ShopPermissionService.listAll(), ShopAppearanceService.getThemes()]).then(function(res) {
+					var data = res[0]
+					$scope.permissions = data;
 					if(load) {		
-						scope.formData.Permissions = PermissionService.deserialize(scope.formData.Permission, scope.permissions);
+						$scope.formData.Permissions = PermissionService.deserialize($scope.formData.Permission, $scope.permissions);
 					} else {				
-						scope.formData.Permissions = PermissionService.generate(scope.permissions);
+						$scope.formData.Permissions = PermissionService.generate($scope.permissions);
 					}
 
 					$scope.selectAll = true;
@@ -5155,12 +5178,29 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissi
 						});
 					});
 
+					//All theme
+					$scope.themes = res[1];
+					deserializeTheme(load);
+
+					_.forEach($scope.formData.Themes, function(e) {
+						$scope.selectAll = $scope.selectAll && e.check;
+					})
+
 				}).finally(function() {
-					scope.loading = false;
+					$scope.loading = false;
 				});
 			},
 			onSave: function(scope) {
 				scope.formData.Permission = PermissionService.serialize(scope.formData.Permissions);
+				scope.formData.Themes = _.compact(_.map(scope.formData.Themes, function(e){
+					var check = e.check;
+					_.unset(e, ['check']);
+					if(check) {
+						return e;
+					} else {
+						return null;
+					}
+				}));
 			},
 			onAfterSave: function(scope) {
 				scope.formData.Permissions = PermissionService.deserialize(scope.formData.Permission, scope.permissions);
@@ -5170,6 +5210,10 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissi
 						$scope.selectAll = $scope.selectAll && e.check;
 					});
 				});
+				deserializeTheme(true);
+				_.forEach($scope.formData.Themes, function(e) {
+					$scope.selectAll = $scope.selectAll && e.check;
+				})
 			}
 		}
 	});
@@ -5180,6 +5224,9 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissi
 				e.check = val;
 			});
 		});
+		_.forEach($scope.formData.Themes, function(e) {
+			e.check = val;
+		})
 	};
 }];
 },{}],50:[function(require,module,exports){
@@ -11070,7 +11117,6 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 		ShopAppearanceService.list()
 			.then(function(data) {
 				$scope.formData = ShopAppearanceService.deserialize(data);
-				console.log($scope.formData);
 			})
 			.finally(function() {
 				$scope.loading = false;
@@ -15089,8 +15135,8 @@ angular.module('nc')
 			link: function(scope) {
 				var update = function() {
 					scope.options = {
-						height: 256 * (scope.height/scope.width),
-						width: 256,
+						height: '' + (256 * (scope.height/scope.width)) + 'px',
+						width: '256px',
 						validateDimensionMin: [scope.width, scope.height],
 						validateDimensionMax: [scope.width, scope.height]
 					};
@@ -15142,8 +15188,8 @@ angular.module('nc')
 			link: function(scope) {
 				var update = function() {
 					scope.options = {
-						height: 256 * (scope.height/scope.width),
-						width: 256,
+						height: '' + (256 * (scope.height/scope.width)) + 'px',
+						width: '256px',
 						validateDimensionMin: [scope.width, scope.height],
 						validateDimensionMax: [scope.width, scope.height]
 					};
@@ -15199,8 +15245,8 @@ angular.module('nc')
 			link: function(scope) {
 				var update = function() {
 					scope.options = {
-						height: 256 * (scope.height/scope.width),
-						width: 256,
+						height: '' + (256 * (scope.height/scope.width)) + 'px',
+						width: '256px',
 						validateDimensionMin: [scope.width, scope.height],
 						validateDimensionMax: [scope.width, scope.height]
 					};
@@ -23827,8 +23873,8 @@ module.exports = ['Product', 'Collection', 'Brand', 'AttributeSet', 'ImageServic
         return $productCollectionAdd;
     }];
 },{}],230:[function(require,module,exports){
-module.exports = ['Product', 'Collection', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
-    function (Product,  Collection, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
+module.exports = ["Product", "Collection", "Brand", "AttributeSet", "ImageService", "GlobalCategory", "$q", "Category", function (Product,  Collection, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
+        'ngInject';
         var $productCollectionAddListItem = {};
         
         /*
@@ -25724,7 +25770,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('inventory/stockPopover',
-    "<form ng-submit=updateStock(popoverItem) id=inventory-tab-content class=content><span class=\"col-xs-8 padding-left-0 margin-bottom-15 margin-top-10\">In Stock</span> <span class=\"text-right col-xs-4 margin-top-10 margin-bottom-15\">{{popoverItem.Quantity || '0'}}</span> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Update</span> <input class=\"text-right col-xs-4\" type=number ng-model=popoverItem.UpdateQuantity ng-pattern-restrict=^[0-9\\-]*$ maxlength=\"6\"> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Defect</span> <span class=\"text-right col-xs-4\">{{popoverItem.Defect || '0'}}</span><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15\">On Hold</span> <span class=\"text-right col-xs-4\">{{popoverItem.OnHold || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15 border_modal\">Reserved</span> <span class=\"text-right col-xs-4 border_modal\">{{popoverItem.Reserve || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 available_inventory\">Available</span><span class=\"text-right col-xs-4 available_inventory\">{{ getAvailableStock(popoverItem) }}</span></div><div class=text-center><button class=\"btn btn-blue btn-width-100 text-center\">Save</button></div></form>"
+    "<form ng-submit=updateStock(popoverItem) id=inventory-tab-content class=content><span class=\"col-xs-8 padding-left-0 margin-bottom-15 margin-top-10\">In Stock</span> <span class=\"text-right col-xs-4 margin-top-10 margin-bottom-15\">{{popoverItem.Quantity || '0'}}</span> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Update</span> <input class=\"text-right col-xs-4\" ng-model=popoverItem.UpdateQuantity ng-pattern-restrict=^([\\-]){0,1}[0-9]*$ maxlength=\"6\"> <span class=\"col-xs-8 padding-left-0 margin-bottom-15\">Defect</span> <span class=\"text-right col-xs-4\">{{popoverItem.Defect || '0'}}</span><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15\">On Hold</span> <span class=\"text-right col-xs-4\">{{popoverItem.OnHold || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 margin-bottom-15 border_modal\">Reserved</span> <span class=\"text-right col-xs-4 border_modal\">{{popoverItem.Reserve || '0'}}</span></div><div><span class=\"col-xs-8 padding-left-0 available_inventory\">Available</span><span class=\"text-right col-xs-4 available_inventory\">{{ getAvailableStock(popoverItem) }}</span></div><div class=text-center><button class=\"btn btn-blue btn-width-100 text-center\">Save</button></div></form>"
   );
 
 
