@@ -4919,7 +4919,12 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 					if(_.isNil(data)) {
 						return;
 					}
-					_.unset($scope.formData, ['City']);
+					if(_.isNil(old)) {
+
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['City']);
+					}
 					$scope.getCities(data.ProvinceId);
 				});
 
@@ -4927,7 +4932,12 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 					if(_.isNil(data)) {
 						return;
 					}
-					_.unset($scope.formData, ['District']);
+					if(_.isNil(old)) {
+						
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['District']);
+					}
 					$scope.getDistricts(data.CityId);
 				});
 
@@ -4936,7 +4946,12 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 					if(_.isNil(data)) {
 						return;
 					}
-					_.unset($scope.formData, ['PostalCode']);
+					if(_.isNil(old)) {
+						
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['PostalCode']);
+					}
 					$scope.getPostals(data.DistrictId);
 				});
 			},
@@ -11219,12 +11234,17 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 					}).finally(function() {
 						$scope.loading = false;
 					});
-					
+
 				$scope.$watch('formData.Province', function(data, old) {
 					if(_.isNil(data)) {
 						return;
 					}
-					_.unset($scope.formData, ['City']);
+					if(_.isNil(old)) {
+
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['City']);
+					}
 					$scope.getCities(data.ProvinceId);
 				});
 
@@ -11232,7 +11252,12 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 					if(_.isNil(data)) {
 						return;
 					}
-					_.unset($scope.formData, ['District']);
+					if(_.isNil(old)) {
+						
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['District']);
+					}
 					$scope.getDistricts(data.CityId);
 				});
 
@@ -11241,7 +11266,12 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 					if(_.isNil(data)) {
 						return;
 					}
-					_.unset($scope.formData, ['PostalCode']);
+					if(_.isNil(old)) {
+						
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['PostalCode']);
+					}
 					$scope.getPostals(data.DistrictId);
 				});
 
