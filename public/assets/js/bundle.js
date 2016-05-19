@@ -9288,28 +9288,28 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
 	$rootScope._ = _;
   $rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
-  
+
   console.log('PROFILE', $rootScope.Profile);
   console.log('IMPOSTER', $rootScope.Imposter);
 
   /*
-  *  range {array} - set of shop group that is permitted in the current shop group policy 
-  */ 
+  *  range {array} - set of shop group that is permitted in the current shop group policy
+  */
   $rootScope.ShopGroupPolicy = function(range){
     var mySG = _.get($rootScope.Profile, 'Shop.ShopGroup');
     if(mySG == range) return true;
-    
+
     return range.includes(mySG);
   }
 
-   //Prevent image dragdrop on other elements   
-    $window.addEventListener("dragover", function(e) {    
-      e = e || event;   
-      e.preventDefault();   
-    }, false);    
-    $window.addEventListener("drop", function(e) {    
-      e = e || event;   
-      e.preventDefault();   
+   //Prevent image dragdrop on other elements
+    $window.addEventListener("dragover", function(e) {
+      e = e || event;
+      e.preventDefault();
+    }, false);
+    $window.addEventListener("drop", function(e) {
+      e = e || event;
+      e.preventDefault();
     }, false);
 
   //Handle route menu item active-ness
@@ -9326,7 +9326,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
           if(_.findIndex(route.reserve, function(o) { return o == id; }) >= 0) {
             return '';
           }
-          return 'active';  
+          return 'active';
         }
         return 'active';
       } else {
@@ -9377,10 +9377,10 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
       //User
       $window.location.href = "/login";
     }
-  } 
+  }
 
   var permitParent = function(p) {
-    var parent = false; 
+    var parent = false;
     var oparent = false;
 
     if(p.Parent > 0) {
@@ -9437,8 +9437,8 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
     //return true;
     return $rootScope.hasPermission(id);
   };
-  
-  
+
+
 
   //Check url access permission
   $rootScope.permitUrl = function(url) {
@@ -9468,7 +9468,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
   //Check url acccess permission for this page
   if(!$rootScope.permitUrl($window.location.pathname) && $window.location.pathname.indexOf("/login") == -1 && !$rootScope.Imposter) {
     $rootScope.DisablePage = true;
-    
+
     if($window.location.pathname == '/dashboard' && !$rootScope.permit(29)) {
         $window.location.href = "/onboarding";
     } else {
@@ -9517,11 +9517,11 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
         //alert("Fatal error while logging out.");
       });
     }
-    else {  
+    else {
       //Normal logout
         Credential.logout().finally(function() {
           $window.location.href = isAdmin ? "/admin/login" : "/login";
-        });   
+        });
     }
   };
 
@@ -9591,7 +9591,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
         }));
         return menuItem;
       }
-      return null; 
+      return null;
     }));
   };
   //Active class for sub menu
@@ -9617,7 +9617,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
     //Check if is one of the submenu url
     for (var i = 0; i < item.submenu.length; i++) {
       if($rootScope.activeSubmenuItem(item.submenu[i]).length > 0) {
-        return 'active';
+        return 'active current';
       }
     }
     return '';
@@ -9644,6 +9644,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
     }
   }
 }];
+
 },{}],71:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerAccountService", "config", function($scope, $controller, SellerAccountService, config) {
 	'ngInject';
