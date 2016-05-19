@@ -67,9 +67,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     }
 
     var loadOverview = function(res) {
-      Shop.get(res.ShopId).then(function(x) {
-        $scope.formData.ShopName = x.ShopNameEn;
-      })
+      // Shop.get(res.ShopId).then(function(x) {
+      //   $scope.formData.ShopName = x.ShopNameEn;
+      // })
     };
 
     $scope.adminAlert = new NcAlert();
@@ -596,6 +596,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
      * @param  {String} Status (WA or DF or other enum sent to server)
      */
     $scope.publish = function(Status) {
+
+      $scope.onPublishing = (Status == 'WA');
       //Trigger red validation
       angular.forEach($scope.addProductForm.$error.required, function(field) {
         field.$setDirty();
@@ -628,7 +630,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         $scope.formData.Variants = [];
       }
 
-      $scope.onPublishing = (Status == 'WA');
       // On click validation
       var validateMat = manualValidate(Status);
       if (validateMat.length > 0) {
