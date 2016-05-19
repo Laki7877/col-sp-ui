@@ -73,7 +73,7 @@
         <input type="text" ng-model="pair.Quantity" maxlength="5"
          nc-default-value="0"
          ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }"
-         disabled ng-pattern="/^[0-9]+$/"  name="pair_Quantity{{$index}}"
+         ng-disabled="formData.ProductId || xspermit(44)" ng-pattern="/^[0-9]+$/"  name="pair_Quantity{{$index}}"
         class="form-control" />
       </td>
       <td ng-template="common/input/text-td" ng-template-options="{
@@ -87,7 +87,8 @@
         }">
         <input type="text" ng-model="pair.UpdateAmount" maxlength="5" 
         ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_UpdateAmount{{$index}}) }"
-        ng-disabled='!pair.Visibility || xspermit(44)' disabled ng-pattern-restrict="^-?[0-9]*$" name="pair_UpdateAmount{{$index}}"
+        ng-disabled='!pair.Visibility || xspermit(44) || !formData.ProductId'
+        disabled ng-pattern-restrict="^-?[0-9]*$" name="pair_UpdateAmount{{$index}}"
         class="form-control" />
       </td>
       <!--$emit('openPairModal', pair, formData.Variants, $index)-->
