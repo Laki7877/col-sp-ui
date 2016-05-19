@@ -172,6 +172,13 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                         nc-label="Include">
                         <nc-breadcrumb-select placeholder="Search for Local Category Name or ID" nc-breadcrumb-select-options="{ tagCount: 50 }" name="FilterByValue" nc-model="formData.Conditions.FilterBy.LocalCategories" ng-disabled="manageable" nc-breadcrumb-select-tree="categories" required></nc-breadcrumb-select>
                       </div>
+					  <div ng-show="formData.Conditions.FilterBy.Type == 'Product'"
+                        nc-template="common/input/form-group-with-label"
+                        nc-template-options-path="couponForm/FilterByValue"
+                        nc-template-form="form.FilterByValue" 
+                        nc-label="Include">
+                        <nc-breadcrumb-select placeholder="Search for Product Name or PID" nc-breadcrumb-select-options="{ tagCount: 50 }" name="FilterByValue" nc-model="formData.Conditions.FilterBy.Products" ng-disabled="manageable" nc-breadcrumb-select-tree="categories" required></nc-breadcrumb-select>
+                      </div>
                     </div>
                   </div>
                 </div>
