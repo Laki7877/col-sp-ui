@@ -43,6 +43,15 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 					_.unset($scope.formData, ['District']);
 					$scope.getDistricts(data.CityId);
 				});
+
+
+				$scope.$watch('formData.District', function(data, old) {
+					if(_.isNil(data) || data == old) {
+						return;
+					}
+					_.unset($scope.formData, ['PostalCode']);
+					$scope.getPostals(data.DistrictId);
+				});
 			},
 			onAfterSave: function(scope) {			
 				_.forEach(scope.formData.Commissions, function(item) {
@@ -84,6 +93,12 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 				$scope.districts = data;
 			});
 	};
+	$scope.getPostals = function(id) {
+		ShopService.get('PostCodes', id)
+			.then(function(data) {
+				$scope.postals = data;
+			});
+	}
 
 	$scope.fetchAllList = function() {
 		ShopService.get('TermPayments')

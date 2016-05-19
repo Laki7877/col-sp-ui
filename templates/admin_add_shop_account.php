@@ -693,7 +693,14 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 				                    	nc-template-form="form.PostalCode"
 				                    	nc-template-options-path="addShopAccountForm/PostalCode"
 				                    	nc-label="Postal Code">
-											<input name="PostalCode" class="form-control" ng-model="formData.PostalCode"  />
+											<ui-select name="PostalCode" ng-model="formData.PostalCode" search-enabled="false">
+												<ui-select-match placeholder="- Select Postal Code -">
+													<span ng-bind="$select.selected.PostCode"></span>
+												</ui-select-match>
+												<ui-select-choices style="max-height:300px;" position="down" repeat="item in postals">
+													<span ng-bind="item.PostCode"></span>
+												</ui-select-choices>
+											</ui-select>
 				                    </div>
 				                    <div class="margin-top-40"
 				                    	nc-template="common/input/form-group-with-label"

@@ -4930,6 +4930,15 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 					_.unset($scope.formData, ['District']);
 					$scope.getDistricts(data.CityId);
 				});
+
+
+				$scope.$watch('formData.District', function(data, old) {
+					if(_.isNil(data) || data == old) {
+						return;
+					}
+					_.unset($scope.formData, ['PostalCode']);
+					$scope.getPostals(data.DistrictId);
+				});
 			},
 			onAfterSave: function(scope) {			
 				_.forEach(scope.formData.Commissions, function(item) {
@@ -4971,6 +4980,12 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 				$scope.districts = data;
 			});
 	};
+	$scope.getPostals = function(id) {
+		ShopService.get('PostCodes', id)
+			.then(function(data) {
+				$scope.postals = data;
+			});
+	}
 
 	$scope.fetchAllList = function() {
 		ShopService.get('TermPayments')
@@ -11035,14 +11050,6 @@ module.exports = ["$scope", "$controller", "SellerRoleService", "SellerPermissio
 			});
 		});
 	};
-	$scope.$watch('formData.Permissions', function(e) {		
-		$scope.selectAll = true;
-		_.forOwn($scope.formData.Permissions, function(v,k) {
-			util.traverse(v, 'Children', function(e) {
-				$scope.selectAll = $scope.selectAll && e.check;
-			});
-		});
-	}, true);
 }];
 },{}],90:[function(require,module,exports){
 module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", "NcAlert", "config", "util", "common", "$timeout", "$q", function($scope, ShopAppearanceService, Product, ImageService, NcAlert, config, util, common, $timeout, $q) {
