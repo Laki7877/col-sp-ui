@@ -36,7 +36,7 @@
         }
 
         img{
-          margin-top: 250px;
+          margin-top: 280px;
         }
 
         @media screen and (max-width:772px) {
@@ -53,12 +53,11 @@
 
 <body>
     <img src="/assets/img/login_logo_horizontal.png" height="50"/><br><br>
-    <h3>No Permission</h3>
+    <h3><i class="fa fa-ban"></i> No Permission</h3>
     <p>You do not have the permission to enter <ins><?= parse_url($_SERVER['REQUEST_URI'])['path'] ?></ins>
     </br>
     please contact Central administration team.
     </p>
-    <a class='btn btn-primary' href="javascript:history.go(-1)">Go Back</a>
 </body>
 
 </html>
