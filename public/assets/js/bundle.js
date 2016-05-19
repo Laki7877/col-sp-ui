@@ -4630,7 +4630,8 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", functi
 				{ name: "Approved", value: 'Approved'},
 				{ name: "Not Approved", value: 'NotApproved'},
 				{ name: "Wait For Approval", value: 'WaitForApproval'},
-				{ name: "Draft", value: 'Draft'}
+				{ name: "Draft", value: 'Draft'},
+                { name: "Master Product", value: 'MasterProduct'}
 			]
 		}
 	});
@@ -5218,7 +5219,7 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissi
 			}
 		}
 	});
-	$scope.group = ['Dashboard', 'Products', 'Promotion', 'Report', 'Local Category', 'Local Brand', 'Home Template', 'CMS'];
+	$scope.group = ['Dashboard', 'Products', 'Promotion', 'Report', 'Local Category', 'Local Brand', 'CMS'];
 	$scope.checkAll = function(val) {
 		_.forOwn($scope.formData.Permissions, function(v,k) {
 			util.traverse(v, 'Children', function(e) {
@@ -11033,6 +11034,14 @@ module.exports = ["$scope", "$controller", "SellerRoleService", "SellerPermissio
 			});
 		});
 	};
+	$scope.$watch('formData.Permissions', function(e) {		
+		$scope.selectAll = true;
+		_.forOwn($scope.formData.Permissions, function(v,k) {
+			util.traverse(v, 'Children', function(e) {
+				$scope.selectAll = $scope.selectAll && e.check;
+			});
+		});
+	}, true);
 }];
 },{}],90:[function(require,module,exports){
 module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", "NcAlert", "config", "util", "common", "$timeout", "$q", function($scope, ShopAppearanceService, Product, ImageService, NcAlert, config, util, common, $timeout, $q) {
@@ -11256,11 +11265,13 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 	$scope.fetchAllList();
 	$scope.save = function() {
 		if($scope.saving) return;
+		$scope.alert.close();
 		
 		//Activate form submission
 		$scope.form.$setSubmitted();
 
 		if($scope.form.$valid) {
+			$scope.saving = true;
 			ShopProfileService.updateAll(ShopProfileService.serialize($scope.formData))
 				.then(function(data) {
 					$scope.formData = ShopProfileService.deserialize(data);
@@ -14572,7 +14583,7 @@ angular.module('nc')
 			if(_.isArray(tree) && tree.length > 0) {
 				_.forEach(tree, function(item) {
 					var encodedName = $filter('escapeHtml')(item[_globalOptions.nameKey]);
-					var name = _.isUndefined(parentObj) ? encodedName : parentObj.name + encodedSeparator + encodedName;
+					var name = _.isUndefined(parentObj) ? encodedName + ' (' + (item[_globalOptions.idKey]) + ')' : parentObj.name + encodedSeparator + encodedName;
 					var obj = {
 						displayName: name,
 						name: item[_globalOptions.nameKey],
@@ -14592,7 +14603,9 @@ angular.module('nc')
 				tree: '=ncBreadcrumbSelectTree',
 				options: '=?ncBreadcrumbSelectOptions',
 				name: '@name',
-				placeholder: '@'
+				placeholder: '@',
+				ngDisabled: '=',
+				ngRequired: '='
 			},
 			template: $templateCache.get('common/ncBreadcrumbSelect'),
 			link: function(scope, elem, attrs) {
@@ -16534,16 +16547,22 @@ angular.module('nc')
                     if (array.length > maxTagCount) {
                         $model.$error.maxtagcount = true;
                         _pass = false;
-                    };
+                    } else {
+                        $model.$error.maxtagcount = false;
+                    }
 
                     if (item.length > maxTagLength) {
                         $model.$error.maxtaglength = true;
                         _pass = false;
-                    };
+                    } else {
+                        $model.$error.maxtaglength = false;
+                    }
 
                     if (tagPattern && !item.ValueEn.match(tagPattern)) {
                         $model.$error.pattern = true;
                         _pass = false;
+                    } else {
+                        $model.$error.pattern = false;
                     }
 
                     if (!_pass) {
@@ -16750,7 +16769,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncBreadcrumbSelect',
-    "<ui-select name={{name}} ng-model=model.ptr nc-tag-validator nc-max-tag-count={{options.tagCount}} ng-disabled=disabled multiple><ui-select-match placeholder={{placeholder}}><span ng-bind-html=$item.item[options.nameKey]></span></ui-select-match><ui-select-choices repeat=\"value in searchable | filter: { name: $select.search } | limitTo: options.limit track by $index\"><div ng-bind-html=\"value.displayName | highlight: $select.search | replace: encodedSeparator: options.seperator\"></div></ui-select-choices></ui-select>"
+    "<ui-select name={{name}} ng-model=model.ptr nc-tag-validator nc-max-tag-count={{options.tagCount}} ng-disabled=disabled ng-disabled=ngDisabled ng-required=ngRequired multiple><ui-select-match placeholder={{placeholder}}><span ng-bind-html=$item.item[options.nameKey]></span> ({{$item.item[options.idKey]}})</ui-select-match><ui-select-choices repeat=\"value in searchable | filter: { name: $select.search } | limitTo: options.limit track by $index\"><div ng-bind-html=\"value.displayName | highlight: $select.search | replace: encodedSeparator: options.seperator\"></div></ui-select-choices></ui-select>"
   );
 
 

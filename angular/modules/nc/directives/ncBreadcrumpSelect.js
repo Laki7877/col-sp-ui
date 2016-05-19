@@ -9,7 +9,7 @@ angular.module('nc')
 			if(_.isArray(tree) && tree.length > 0) {
 				_.forEach(tree, function(item) {
 					var encodedName = $filter('escapeHtml')(item[_globalOptions.nameKey]);
-					var name = _.isUndefined(parentObj) ? encodedName : parentObj.name + encodedSeparator + encodedName;
+					var name = _.isUndefined(parentObj) ? encodedName + ' (' + (item[_globalOptions.idKey]) + ')' : parentObj.name + encodedSeparator + encodedName;
 					var obj = {
 						displayName: name,
 						name: item[_globalOptions.nameKey],
@@ -29,7 +29,9 @@ angular.module('nc')
 				tree: '=ncBreadcrumbSelectTree',
 				options: '=?ncBreadcrumbSelectOptions',
 				name: '@name',
-				placeholder: '@'
+				placeholder: '@',
+				ngDisabled: '=',
+				ngRequired: '='
 			},
 			template: $templateCache.get('common/ncBreadcrumbSelect'),
 			link: function(scope, elem, attrs) {

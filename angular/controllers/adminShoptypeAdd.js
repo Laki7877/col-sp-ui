@@ -88,7 +88,7 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShopPermiss
 			}
 		}
 	});
-	$scope.group = ['Dashboard', 'Products', 'Promotion', 'Report', 'Local Category', 'Local Brand', 'Home Template', 'CMS'];
+	$scope.group = ['Dashboard', 'Products', 'Promotion', 'Report', 'Local Category', 'Local Brand', 'CMS'];
 	$scope.checkAll = function(val) {
 		_.forOwn($scope.formData.Permissions, function(v,k) {
 			util.traverse(v, 'Children', function(e) {

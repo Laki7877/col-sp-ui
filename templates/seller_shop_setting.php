@@ -2,8 +2,9 @@
 
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerShopSettingCtrl" ng-init='init()'>
-			  <div ng-show="loading" nc-loading="Loading Shop Settings.."></div>
-				<nc-alert nc-model="alert"></nc-alert>
+		<div ng-show="loading" nc-loading="Loading Shop Settings.."></div>
+		<div ng-show="saving" nc-loading="Saving Shop Settings.."></div>
+		<nc-alert nc-model="alert"></nc-alert>
         <form class="ah-form sticky-mainform-action" name="form" ng-submit="save()" ng-show="!loading">
             <nc-page-title nc-title="Shop Profile" icon="fa-sliders">
                 <button class="btn btn-blue btn-width-xl">Save</button>
@@ -93,6 +94,7 @@
 													ng-lowercase
 													ng-class="{ 'has-error' : $root.isInvalid(form.UrlKey) }"
 													ng-pattern="/^[0-9a-z\-]+$/"
+													ng-pattern-restrict="^[^_\s]$"
 													maxlength="100"
 												/>
 											</div>
@@ -114,7 +116,7 @@
 						                        <input class="form-control" type="text" ng-model="formData.FloatMessageTh" ng-pattern-restrict="^[^<>]*$" maxlength="255"/>
 						                    </div>
 
-						                    <div nc-template="common/input/form-group-with-label" nc-label="Shop Address" nc-template-options-path="shopSettingForm/ShopAddress">
+						                    <div nc-template="common/input/form-group-with-label" nc-label="Company Address" nc-template-options-path="shopSettingForm/ShopAddress">
 						                        <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopAddress" ng-pattern-restrict="^[^<>]*$" maxlength="500" /></textarea>
 						                    </div>
 
@@ -175,7 +177,7 @@
 						                            <option value='Y'>Available</option>
 						                        </select>
 						                    </div>
-						                    <div nc-template="common/input/form-group-with-label" nc-label="Stock Alert" nc-template-options-path="shopSettingForm/StockAlert">
+						                    <div nc-template="common/input/form-group-with-label" nc-label="Customer Stock Alert" nc-template-options-path="shopSettingForm/StockAlert">
 						                        <input class="form-control" type="text" ng-model="formData.StockAlert" ng-pattern-restrict="^[0-9]*$" maxlength="10"/>
 						                    </div>
 

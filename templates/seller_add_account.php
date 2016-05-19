@@ -99,7 +99,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Accounts
 							                  required />
 							              </div>
 							              <!-- Brand -->
-							              <div ng-show="formData.ShopGroup != 'ME'"
+							              <div ng-show="$root.Profile.Shop.ShopGroup != 'ME'"
 							              	nc-template="common/input/form-group-with-label"
 							              	nc-template-form="form.Brands"
 							              	nc-template-options-path="genericForm/BrandVisibility"
@@ -151,6 +151,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Accounts
 							                  ng-pattern-restrict="^[0-9a-zA-Z]*$"
 							                  ng-maxlength="20"
 							                  ng-minlength="8"
+							                  maxlength="20"
 							                  ng-required="!(id > 0)" />
 							              </div>
 							              <!-- Confirm Password -->
@@ -174,6 +175,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Accounts
 							                  ng-model="formData.ConfirmPassword"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.ConfirmPassword) }"
 							                  ng-match="{{formData.Password}}"
+							                  maxlength="20"
 							                  ng-required="!(id > 0)" />
 							              </div>
 									</div>

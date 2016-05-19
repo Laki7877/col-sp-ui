@@ -178,6 +178,8 @@ textarea{
 }
 
 .ui-select-choices{
+	width: inherit !important;
+	min-width:100% !important;
 	max-height: 200px !important;
 }
 

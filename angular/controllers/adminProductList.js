@@ -74,7 +74,8 @@ module.exports = function($scope, $controller, Product, common, config) {
 				{ name: "Approved", value: 'Approved'},
 				{ name: "Not Approved", value: 'NotApproved'},
 				{ name: "Wait For Approval", value: 'WaitForApproval'},
-				{ name: "Draft", value: 'Draft'}
+				{ name: "Draft", value: 'Draft'},
+                { name: "Master Product", value: 'MasterProduct'}
 			]
 		}
 	});
