@@ -192,8 +192,7 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
         $window.location.href = "/onboarding";
       }
       else {
-        console.log("redirecting to 404 due to poermission")
-        util.page404();
+        util.page401();
       }
     }
   }

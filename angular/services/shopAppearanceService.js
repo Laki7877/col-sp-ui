@@ -25,7 +25,6 @@ module.exports = function (common, config, util) {
         var processed = _.cloneDeep(data);
         processed.Data = angular.toJson(processed.Data || {});
         
-        console.log(processed);
         return processed;
     }
 
