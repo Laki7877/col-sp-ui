@@ -90,7 +90,7 @@ angular.module("productDetail").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('ap/section-variant-table-a',
-    "<table class=\"table variation-table\"><thead><tr><th class=column-variant>Variant</th><th class=column-pid ng-if=\"formData.Variants.length > 0 && formData.Variants[0].Pid\">PID</th><th class=column-sku>SKU <span class=color-red>*</span></th><th class=column-sale-price>Sale Price <span class=color-red>*</span></th><th class=column-price>Original Price</th><th class=column-inventory>Inventory</th><th class=column-detail>More Detail</th><th class=column-visibility>Visibility</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td ng-if=\"formData.Variants.length > 0 && formData.Variants[0].Pid\">{{pair.Pid }}</td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
+    "<table class=\"table variation-table\"><thead><tr><th class=column-variant>Variant</th><th class=column-pid ng-if=\"formData.Variants.length > 0 && formData.Variants[0].Pid\">PID</th><th class=column-sku>SKU <span class=color-red>*</span></th><th class=column-sale-price>Sale Price <span class=color-red>*</span></th><th class=column-price>Original Price</th><th class=column-inventory>Inventory</th><th class=column-update>Update Amount</th><th class=column-detail>More Detail</th><th class=column-visibility>Visibility</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td ng-if=\"formData.Variants.length > 0 && formData.Variants[0].Pid\">{{pair.Pid }}</td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
     "\n" +
     "        'error' : {\r" +
     "\n" +
@@ -154,7 +154,23 @@ angular.module("productDetail").run(function($templateCache) {  'use strict';
     "\n" +
     "        }\r" +
     "\n" +
-    "        }\"><input ng-model=pair.Quantity maxlength=5 ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }\" ng-disabled=\"!pair.Visibility || xspermit(44)\" ng-pattern=\"/^[0-9]+$/\" ng-disabled=formData.ProductId name=pair_Quantity{{$index}} class=\"form-control\"></td><td><a class=\"btn btn-white btn-width-xl\" ng-disabled=!pair.Visibility ng-click=\"openVariantDetail(pair, formData.Variants, $index)\">More Detail</a></td><td><a class=\"btn btn-white\" ng-click=toggleVisibility(pair)><span ng-if=pair.Visibility>Hide</span> <span ng-if=!pair.Visibility>Show</span></a></td></tr></tbody></table>"
+    "        }\"><input ng-model=pair.Quantity maxlength=5 nc-default-value=0 ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }\" disabled ng-pattern=\"/^[0-9]+$/\" name=pair_Quantity{{$index}} class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
+    "\n" +
+    "        'error' : {\r" +
+    "\n" +
+    "        'messages': {\r" +
+    "\n" +
+    "        'pattern': 'Only numbers allowed'\r" +
+    "\n" +
+    "        },\r" +
+    "\n" +
+    "        'show': $root.isInvalid(addProductForm['pair_UpdateAmount' + $index]),\r" +
+    "\n" +
+    "        'conditions' : addProductForm['pair_UpdateAmount' + $index].$error\r" +
+    "\n" +
+    "        }\r" +
+    "\n" +
+    "        }\"><input ng-model=pair.UpdateAmount maxlength=5 ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_UpdateAmount{{$index}}) }\" ng-disabled=\"!pair.Visibility || xspermit(44)\" disabled ng-pattern-restrict=^-?[0-9]*$ name=pair_UpdateAmount{{$index}} class=\"form-control\"></td><td><a class=\"btn btn-white btn-width-xl\" ng-disabled=!pair.Visibility ng-click=\"openVariantDetail(pair, formData.Variants, $index)\">More Detail</a></td><td><a class=\"btn btn-white\" ng-click=toggleVisibility(pair)><span ng-if=pair.Visibility>Hide</span> <span ng-if=!pair.Visibility>Show</span></a></td></tr></tbody></table>"
   );
 
 
