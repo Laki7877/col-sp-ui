@@ -18,8 +18,8 @@ angular.module('nc')
 			link: function(scope) {
 				var update = function() {
 					scope.options = {
-						height: '' + (256 * (scope.height/scope.width)) + 'px',
-						width: '256px',
+						height: '144px',
+						width: _.round(144 * (scope.width/scope.height)) + 'px',
 						validateDimensionMin: [scope.width, scope.height],
 						validateDimensionMax: [scope.width, scope.height]
 					};
@@ -33,7 +33,7 @@ angular.module('nc')
 						};
 					} else if(len < m) {
 						for (var i = 0; i < m - len; i++) {
-							scope.source.Links.push({});
+							scope.source.Links.push('');
 						};
 					}
 				}
@@ -71,8 +71,8 @@ angular.module('nc')
 			link: function(scope) {
 				var update = function() {
 					scope.options = {
-						height: '' + (256 * (scope.height/scope.width)) + 'px',
-						width: '256px',
+						height: '144px',
+						width: _.round(144 * (scope.width/scope.height)) + 'px',
 						validateDimensionMin: [scope.width, scope.height],
 						validateDimensionMax: [scope.width, scope.height]
 					};
@@ -128,8 +128,8 @@ angular.module('nc')
 			link: function(scope) {
 				var update = function() {
 					scope.options = {
-						height: '' + (256 * (scope.height/scope.width)) + 'px',
-						width: '256px',
+						height: '144px',
+						width: _.round(144 * (scope.width/scope.height)) + 'px',
 						validateDimensionMin: [scope.width, scope.height],
 						validateDimensionMax: [scope.width, scope.height]
 					};
@@ -218,8 +218,8 @@ angular.module('nc')
 					width: '256px'
 				});
 				scope.$watch('size', function(data) {
-					scope.options.height = (data.Height/data.Width)*256 + 'px';
-					scope.options.width =  '256px';
+					scope.options.height = '144px';
+					scope.options.width = (144 * (data.Width/data.Height)) + 'px';
 				});
 			}
 		}
