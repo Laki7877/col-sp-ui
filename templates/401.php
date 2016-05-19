@@ -53,10 +53,10 @@
 
 <body>
     <img src="/assets/img/login_logo_horizontal.png" height="50"/><br><br>
-    <h3>404 Page not found</h3>
-    <p>The page or resource you requested <ins><?= parse_url($_SERVER['REQUEST_URI'])['path'] ?></ins>
+    <h3>No Permission</h3>
+    <p>You do not have the permission to enter <ins><?= parse_url($_SERVER['REQUEST_URI'])['path'] ?></ins>
     </br>
-    does not exist.
+    please contact Central administration team.
     </p>
     <a class='btn btn-primary' href="javascript:history.go(-1)">Go Back</a>
 </body>
