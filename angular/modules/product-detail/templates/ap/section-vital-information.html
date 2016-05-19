@@ -40,7 +40,7 @@
 	     nc-template-form="form.Sku" nc-template-options-path="addProductForm/Sku">
             <input class="form-control width-field-large" name="Sku"
             ng-disabled="xspermit(35)"
-            ng-model="variantPtr.Sku" maxlength="255" ng-required="true"
+            ng-model="variantPtr.Sku" maxlength="255" ng-required="onPublishing"
             ng-pattern-restrict="^[a-zA-Z0-9]*$" />
     </div>
 
