@@ -2,7 +2,7 @@
 	$this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Product Grouping'])
 ?>
 <?php $this->start('page-body') ?>
-<div ng-controller="AdminPendingProductGroupAddCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
+<div ng-controller="AdminProductGroupAddCtrl" ng-init='init(<?= json_encode($viewBag) ?>)'>
     <nc-alert nc-model="alert"></nc-alert>
 
 

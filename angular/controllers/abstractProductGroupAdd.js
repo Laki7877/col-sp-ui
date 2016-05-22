@@ -5,11 +5,14 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
     
     $scope.adminMode = (options.adminMode);
     $scope.alert = new NcAlert();
+	
     $scope.create = function(){
         
+		if(!$scope.formData.DefaultVariant){
+			
+		}
+		
         var fd = angular.copy($scope.formData);
-        
-        //One-way serialize
         
         //Find default Varaint
         var text_defaultVariant = $scope.formData.DefaultVariant.text;
@@ -27,7 +30,6 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
         
         delete fd.MasterVariant;
         delete fd.DefaultVariant;
-        console.log("fd", fd);
         //Post to server
         $scope.alert.close();
 		$scope.loading = true;

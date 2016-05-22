@@ -141,12 +141,12 @@ angular.module('umeSelect')
                             }else{
                                 delete d[scope.groupBy];
                             }
-                            console.log('rturning d', d);
+                            // console.log('rturning d', d);
                             return d;
                         });
                     }
                     
-                    console.log('sortedData', sortedData);
+                    // console.log('sortedData', sortedData);
                     if(scope.strictMode){
                         //strictly filter by search text
                         var searchObj = {};
@@ -308,6 +308,8 @@ angular.module('umeSelect')
                             });
                         }catch(ex){
                             //Ugh
+                            console.log("ugh");
+                            scope.loading = false;
                         }
 
                     }, 500); // delay 250 ms

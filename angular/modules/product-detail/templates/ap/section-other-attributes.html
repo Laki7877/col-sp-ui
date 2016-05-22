@@ -6,7 +6,7 @@
         <div class="form-group" ng-repeat-start="da in defaultAttributes" ng-if="isVisibleTo(da.VisibleTo)">
             <div class="width-label">
                 <label class="control-label" ng-class="{'required': da.Required}">
-                    {{ da.DisplayNameEn || da.AttributeNameEn }}
+                    {{ da.DisplayNameEn || da.AttributeNameEn }} 
                 </label>
             </div>
             <div ng-class="{'width-field-normal': !isHtmlInput(da.DataType), 'width-field-xxl': isHtmlInput(da.DataType)}">

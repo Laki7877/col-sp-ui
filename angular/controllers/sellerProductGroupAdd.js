@@ -1,11 +1,9 @@
 module.exports = function($scope, $controller, Product) {
 	'ngInject';
     
-	$controller('AbstractPendingProductGroupCtrl', {
+	$controller('AbstractProductGroupAddCtrl', {
 		$scope: $scope,
-		options: {
-			adminMode : true
-		}
+		options: {}
 	});
-	
+
 }
