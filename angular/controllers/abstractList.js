@@ -136,7 +136,8 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 	var init = false;
 
 	$scope.$watch('params', function(a,b) {
-		if(!$scope.advanceSearchMode) {
+		if($scope.advanceSearchMode && (a.searchText != b.searchText)) {
+		} else {
 			$scope.reload(a,b);
 		}
 	}, true);

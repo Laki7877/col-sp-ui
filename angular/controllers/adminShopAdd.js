@@ -32,7 +32,12 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 					if(_.isNil(data)) {
 						return;
 					}
-					_.unset($scope.formData, ['City']);
+					if(_.isNil(old)) {
+
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['City']);
+					}
 					$scope.getCities(data.ProvinceId);
 				});
 
@@ -40,7 +45,12 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 					if(_.isNil(data)) {
 						return;
 					}
-					_.unset($scope.formData, ['District']);
+					if(_.isNil(old)) {
+						
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['District']);
+					}
 					$scope.getDistricts(data.CityId);
 				});
 
@@ -49,7 +59,12 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 					if(_.isNil(data)) {
 						return;
 					}
-					_.unset($scope.formData, ['PostalCode']);
+					if(_.isNil(old)) {
+						
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['PostalCode']);
+					}
 					$scope.getPostals(data.DistrictId);
 				});
 			},
