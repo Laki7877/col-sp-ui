@@ -7922,7 +7922,7 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 			}
 
 			$scope.availableFields[groupName].push(record);
-			$scope.fields[record.MapName] = (record.MapName == 'PID');
+			$scope.fields[record.MapName] = (record.MapName == 'AAD');
 			$scope.loading.push(true);
 		});
 
@@ -8083,7 +8083,7 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 		Object.keys($scope.fields).forEach(function(key){
 			$scope.fields[key] = $scope.ctrl.selectAll;
 		});
-		$scope.fields.PID = true;
+		$scope.fields.AAD = true;
 	};
 
 
@@ -8097,7 +8097,7 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 	}, true);
 
 	$scope.fields = {
-		PID: true
+		AAD: true
 	};
 }];
 

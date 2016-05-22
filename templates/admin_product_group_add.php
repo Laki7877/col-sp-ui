@@ -7,7 +7,7 @@
 
 
 	<nc-page-title nc-title="Product Grouping" link="/products/groups" icon="fa-tag">
-	<div class="page-actions float-right">
+	<div class="page-actions float-right" ng-show="!loading">
 		<button class="btn btn-white btn-width-xl">Cancel</button>
 		<button class="btn btn-blue btn-width-xl" ng-click="create()">Create</button>
 	</div>
