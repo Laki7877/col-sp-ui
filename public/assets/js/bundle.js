@@ -25664,11 +25664,6 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
   );
 
 
-  $templateCache.put('pending_products/section-group-information',
-    "<div class=form-section><div class=form-section-header><h2>Group Information</h2></div><div class=form-section-content><div ng-show=adminMode nc-template=common/input/form-group-with-label nc-template-form=form.Category nc-template-options-path=createGroupVariant/Required nc-label=Shop><you-me display-by=ShopNameEn placeholder=\"Search Shop\" auto-clear-search=true ng-model=formData.Shop refresh=refresher.Shops choices=dataset.Shops></you-me></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Category nc-template-options-path=createGroupVariant/Required nc-label=Category><a class=form-text ng-click=openCategorySelectorModal()>{{ formData.Category.NameEn || 'Select Category' }}</a></div><div nc-template=common/input/form-group-with-label nc-template-form=form.AttributeSet nc-template-options-path=createGroupVariant/Required nc-label=\"Attribute Set\"><you-me display-by=AttributeSetNameEn placeholder=\"Search Attribute Set\" auto-clear-search=true group-by=_group ng-model=formData.AttributeSet refresh=refresher.AttributeSets initial-choices=dataset.AttributeSets choices=dataset.CombinedAttributeSets></you-me></div></div></div>"
-  );
-
-
   $templateCache.put('product/action',
     "<div><a ng-click=\"actions.edit(row, true)\">View / Edit</a></div><div><a ng-click=actions.duplicate(row)>Duplicate</a></div><div><a ng-click=\"actions.delete(row, true)\">Delete</a></div>"
   );
@@ -25731,6 +25726,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('product/typeahead',
     "<a><span ng-bind-html=\"match.label.HeaderName | uibTypeaheadHighlight:query\"></span></a>"
+  );
+
+
+  $templateCache.put('product_group/section-group-information',
+    "<div class=form-section><div class=form-section-header><h2>Group Information</h2></div><div class=form-section-content><div ng-show=adminMode nc-template=common/input/form-group-with-label nc-template-form=form.Category nc-template-options-path=createGroupVariant/Required nc-label=Shop><you-me display-by=ShopNameEn placeholder=\"Search Shop\" auto-clear-search=true ng-model=formData.Shop refresh=refresher.Shops choices=dataset.Shops></you-me></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Category nc-template-options-path=createGroupVariant/Required nc-label=Category><a class=form-text ng-click=openCategorySelectorModal()>{{ formData.Category.NameEn || 'Select Category' }}</a></div><div nc-template=common/input/form-group-with-label nc-template-form=form.AttributeSet nc-template-options-path=createGroupVariant/Required nc-label=\"Attribute Set\"><you-me display-by=AttributeSetNameEn placeholder=\"Search Attribute Set\" auto-clear-search=true group-by=_group ng-model=formData.AttributeSet refresh=refresher.AttributeSets initial-choices=dataset.AttributeSets choices=dataset.CombinedAttributeSets></you-me></div></div></div>"
   );
 
 
