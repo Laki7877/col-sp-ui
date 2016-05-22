@@ -14,9 +14,9 @@ hooks:
       timeout: 300
       runas: root
   AfterInstall:
-    - location: codedeploy/script/after_install.sh
+    - location: codedeploy/scripts/after_install.sh
       timeout: 300
-      runas: root      
+      runas: root
   ApplicationStop:
     - location: codedeploy/scripts/deregister_from_elb.sh
     - location: codedeploy/scripts/stop_nginx.sh
