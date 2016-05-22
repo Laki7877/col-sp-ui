@@ -44,6 +44,7 @@ module.exports = function($templateCache, $filter) {
 				scope.model.splice($index, 1);
 				scope.select(_.findIndex(scope.model, function(e) { return e[scope.id] == item[scope.id] }), false);
 			};
+			
 			scope.transfer = function(direction) {
 				if(_.isNil(scope.active(direction))) {
 					return;

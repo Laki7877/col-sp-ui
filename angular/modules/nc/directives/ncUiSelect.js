@@ -19,16 +19,22 @@ angular.module('nc')
                     if (array.length > maxTagCount) {
                         $model.$error.maxtagcount = true;
                         _pass = false;
-                    };
+                    } else {
+                        $model.$error.maxtagcount = false;
+                    }
 
                     if (item.length > maxTagLength) {
                         $model.$error.maxtaglength = true;
                         _pass = false;
-                    };
+                    } else {
+                        $model.$error.maxtaglength = false;
+                    }
 
                     if (tagPattern && !item.ValueEn.match(tagPattern)) {
                         $model.$error.pattern = true;
                         _pass = false;
+                    } else {
+                        $model.$error.pattern = false;
                     }
 
                     if (!_pass) {

@@ -25,21 +25,44 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 						$scope.loading = false;
 					});
 
-
-				$scope.$watch('formData.Province', function(newData, oldData) {
-					if(_.isNil(newData) || newData == oldData) {
+				$scope.$watch('formData.Province', function(data, old) {
+					if(_.isNil(data)) {
 						return;
 					}
-					_.unset($scope.formData, ['City']);
-					$scope.getCities(newData.ProvinceId);
+					if(_.isNil(old)) {
+
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['City']);
+					}
+					$scope.getCities(data.ProvinceId);
 				});
 
-				$scope.$watch('formData.City', function(newData, oldData) {
-					if(_.isNil(newData) || newData == oldData) {
+				$scope.$watch('formData.City', function(data, old) {
+					if(_.isNil(data)) {
 						return;
 					}
-					_.unset($scope.formData, ['District']);
-					$scope.getDistricts(newData.CityId);
+					if(_.isNil(old)) {
+						
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['District']);
+					}
+					$scope.getDistricts(data.CityId);
+				});
+
+
+				$scope.$watch('formData.District', function(data, old) {
+					if(_.isNil(data)) {
+						return;
+					}
+					if(_.isNil(old)) {
+						
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['PostalCode']);
+					}
+					$scope.getPostals(data.DistrictId);
 				});
 
 			});
@@ -77,11 +100,13 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 	$scope.fetchAllList();
 	$scope.save = function() {
 		if($scope.saving) return;
+		$scope.alert.close();
 		
 		//Activate form submission
 		$scope.form.$setSubmitted();
 
 		if($scope.form.$valid) {
+			$scope.saving = true;
 			ShopProfileService.updateAll(ShopProfileService.serialize($scope.formData))
 				.then(function(data) {
 					$scope.formData = ShopProfileService.deserialize(data);

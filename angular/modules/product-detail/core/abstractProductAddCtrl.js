@@ -67,9 +67,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     }
 
     var loadOverview = function(res) {
-      Shop.get(res.ShopId).then(function(x) {
-        $scope.formData.ShopName = x.ShopNameEn;
-      })
+      // Shop.get(res.ShopId).then(function(x) {
+      //   $scope.formData.ShopName = x.ShopNameEn;
+      // })
     };
 
     $scope.adminAlert = new NcAlert();
@@ -519,9 +519,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         mat.push('Effective date/time must come before expire date/time.')
       }
 
-      if (!$scope.formData.GlobalCategories.CategoryId) {
-        mat.push('Global Category');
-      }
 
       return mat
     };
@@ -565,6 +562,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
      * Show dialog to ask if user really want to publish
      */
     $scope.prePublishWA = function() {
+      $scope.onPublishing = true;
       var modalInstance = $uibModal.open({
         animation: $scope.animationsEnabled,
         templateUrl: 'product/modalConfirmPublish',
@@ -599,6 +597,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
      * @param  {String} Status (WA or DF or other enum sent to server)
      */
     $scope.publish = function(Status) {
+
       //Trigger red validation
       angular.forEach($scope.addProductForm.$error.required, function(field) {
         field.$setDirty();
@@ -631,7 +630,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         $scope.formData.Variants = [];
       }
 
-      $scope.onPublishing = (Status == 'WA');
       // On click validation
       var validateMat = manualValidate(Status);
       if (validateMat.length > 0) {
@@ -734,6 +732,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.init = function(viewBag) {
       if (!angular.isObject(viewBag)) throw new KnownException(
         'View bag is corrupted');
+        
+      $scope.onPublishing = false;
 
       var _editMode = ('productId' in viewBag);
       for (var page in tabPage) {

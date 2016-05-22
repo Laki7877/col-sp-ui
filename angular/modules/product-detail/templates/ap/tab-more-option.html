@@ -44,7 +44,8 @@
                                     value="{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}" />
                                 </a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <datetimepicker data-ng-model="formData.EffectiveDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'hour' }"
+                                    <datetimepicker data-ng-model="formData.EffectiveDate" 
+                                    data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'minute', minuteStep: 30 }"
                                     />
                                 </ul>
                             </div>
@@ -55,7 +56,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" ng-show="formData.EffectiveDate">
                         <div class="width-label">
                             <label class="control-label">Expire On</label>
                         </div>
@@ -68,13 +69,14 @@
                                     value="{{ formData.ExpireDate | date: 'dd/MM/yy HH:mm' }}">
                                 </a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <datetimepicker data-ng-model="formData.ExpireDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'hour' }"
+                                    <datetimepicker data-ng-model="formData.ExpireDate" 
+                                    data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'minute', minuteStep: 30 }"
                                     />
                                 </ul>
                             </div>
                             <div class="width-field-large">
                                 <span class="help-block color-red" ng-if="formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate">
-									                         <span>Effective date/time must come before expire date/time</span>
+									<span>Effective date/time must come before expire date/time</span>
                                 </span>
                             </div>
 
@@ -96,7 +98,7 @@
                                     value="{{ formData.NewArrivalDate | date: 'dd/MM/yy HH:mm' }}">
                                 </a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <datetimepicker data-ng-model="formData.NewArrivalDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown4', minView: 'hour' }"
+                                    <datetimepicker data-ng-model="formData.NewArrivalDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown4', minView: 'minute', minuteStep: 30 }"
                                     />
                                 </ul>
                             </div>
@@ -152,8 +154,6 @@
                            name="Remark" ng-model="formData.Remark">
                         </textarea>
                     </div>
-
-
 
                 </div>
             </div>

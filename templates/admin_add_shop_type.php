@@ -60,6 +60,18 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Type'
 												<div ng-include="'common/roleNode'" ng-repeat="p in formData.Permissions[name]"></div>
 											</div>
 										</div>
+										<!-- template -->
+										<div>
+											<div ng-template="common/input/multiline-checkbox"
+												ng-template-options="{ 'label' : 'Template' }">
+												<div ng-repeat="p in formData.Themes">
+												 <label>
+												 	<i class="fa fa-level-up fa-rotate-90 child-checkbox-enter" aria-hidden="true"></i>
+													<input ng-model="p.check" type="checkbox">{{ p.ThemeName }}
+												</label>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>

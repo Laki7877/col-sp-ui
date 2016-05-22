@@ -58,7 +58,7 @@
 														<li ng-repeat="item in items">
 															<label>
 																<input type="checkbox" name="fieldfilter"
-																 ng-disabled="item.MapName == 'PID'"
+																 ng-disabled="item.MapName == 'AAD'"
 																 ng-model="fields[item.MapName]"> 	{{ item.HeaderName }}
 															</label>
 														</li>

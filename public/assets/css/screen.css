@@ -12366,11 +12366,13 @@ textarea {
 
 /* line 180, ../../../assets/_override.scss */
 .ui-select-choices {
+  width: inherit !important;
+  min-width: 100% !important;
   max-height: 200px !important;
 }
 
 /*---- Override Angular Material Design ----*/
-/* line 187, ../../../assets/_override.scss */
+/* line 189, ../../../assets/_override.scss */
 md-autocomplete {
   background: #FFFFFF;
   border: 1px #BCC7D5 solid;
@@ -12379,44 +12381,44 @@ md-autocomplete {
   line-height: 34px;
   height: 34px;
 }
-/* line 194, ../../../assets/_override.scss */
+/* line 196, ../../../assets/_override.scss */
 md-autocomplete input:not(.md-input) {
   line-height: 34px;
   height: 34px;
 }
-/* line 198, ../../../assets/_override.scss */
+/* line 200, ../../../assets/_override.scss */
 md-autocomplete md-autocomplete-wrap {
   height: 36px;
 }
-/* line 201, ../../../assets/_override.scss */
+/* line 203, ../../../assets/_override.scss */
 md-autocomplete button {
   margin: 1px 0px 0px 0px;
 }
-/* line 203, ../../../assets/_override.scss */
+/* line 205, ../../../assets/_override.scss */
 md-autocomplete button md-icon {
   color: #BCC7D5;
 }
-/* line 205, ../../../assets/_override.scss */
+/* line 207, ../../../assets/_override.scss */
 md-autocomplete button md-icon path {
   fill: #BCC7D5;
 }
 
-/* line 211, ../../../assets/_override.scss */
+/* line 213, ../../../assets/_override.scss */
 .md-whiteframe-1dp, .md-whiteframe-z1 {
   box-shadow: none;
 }
 
-/* line 215, ../../../assets/_override.scss */
+/* line 217, ../../../assets/_override.scss */
 a.cke_dialog_tab {
   display: none !important;
 }
 
-/* line 222, ../../../assets/_override.scss */
+/* line 224, ../../../assets/_override.scss */
 .selectize-control.has-error selectize-input {
   border-color: #ec0000;
 }
 
-/* line 226, ../../../assets/_override.scss */
+/* line 228, ../../../assets/_override.scss */
 .selectize-dropdown,
 .selectize-input,
 .selectize-input input {
@@ -12427,7 +12429,7 @@ a.cke_dialog_tab {
   -webkit-font-smoothing: inherit;
 }
 
-/* line 237, ../../../assets/_override.scss */
+/* line 239, ../../../assets/_override.scss */
 .selectize-control.single .selectize-input {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   background-color: #FFFFFF;
@@ -12435,16 +12437,16 @@ a.cke_dialog_tab {
   border-color: #BCC7D5;
   min-height: 34px;
 }
-/* line 243, ../../../assets/_override.scss */
+/* line 245, ../../../assets/_override.scss */
 .selectize-control.single .selectize-input input::-webkit-input-placeholder {
   color: #7B7F8F;
 }
-/* line 247, ../../../assets/_override.scss */
+/* line 249, ../../../assets/_override.scss */
 .selectize-control.single .selectize-input:after {
   display: none;
 }
 
-/* line 252, ../../../assets/_override.scss */
+/* line 254, ../../../assets/_override.scss */
 .selectize-control .btn-primary {
   background-color: #4899DD;
   border-color: #4899DD;
@@ -12452,11 +12454,11 @@ a.cke_dialog_tab {
   margin-bottom: 2px;
 }
 
-/* line 259, ../../../assets/_override.scss */
+/* line 261, ../../../assets/_override.scss */
 .selectize-dropdown {
   margin-top: -7px;
 }
-/* line 261, ../../../assets/_override.scss */
+/* line 263, ../../../assets/_override.scss */
 .selectize-dropdown .single {
   color: #32343C;
   border-color: #BCC7D5;
@@ -13044,70 +13046,125 @@ ul.sub-sidebar .item > a {
 }
 /* line 244, ../../../assets/_layout.scss */
 #sidebar-wrapper .logo-img-wrapper-collased {
+  position: relative;
   display: block;
 }
-/* line 246, ../../../assets/_layout.scss */
+/* line 247, ../../../assets/_layout.scss */
 #sidebar-wrapper .logo-img-wrapper-collased img {
   width: 20px;
   height: 20px;
   margin: 66px 20px 0px 20px;
 }
-/* line 252, ../../../assets/_layout.scss */
+/* line 253, ../../../assets/_layout.scss */
 #sidebar-wrapper .sidebar-nav {
   margin-top: 19px;
 }
-/* line 254, ../../../assets/_layout.scss */
+/* line 255, ../../../assets/_layout.scss */
 #sidebar-wrapper .sidebar-nav li {
   line-height: 0px;
   padding: 0px;
   border-bottom: 1px solid #252d40;
 }
 /* line 259, ../../../assets/_layout.scss */
+#sidebar-wrapper .sidebar-nav li a {
+  color: #7b7f8f;
+}
+/* line 261, ../../../assets/_layout.scss */
 #sidebar-wrapper .sidebar-nav li a i {
+  color: #7b7f8f;
   padding: 17px 0px;
   margin: 0px;
   width: 60px;
   text-align: center;
 }
-/* line 267, ../../../assets/_layout.scss */
-#sidebar-wrapper .sidebar-nav li:hover {
+/* line 270, ../../../assets/_layout.scss */
+#sidebar-wrapper .sidebar-nav li.active {
   background: #1e2534 !important;
 }
-/* line 269, ../../../assets/_layout.scss */
-#sidebar-wrapper .sidebar-nav li:hover i {
-  color: #FFFFFF !important;
+/* line 272, ../../../assets/_layout.scss */
+#sidebar-wrapper .sidebar-nav li.active a {
+  color: #FFFFFF;
+}
+/* line 274, ../../../assets/_layout.scss */
+#sidebar-wrapper .sidebar-nav li.active a i {
+  color: #FFFFFF;
+}
+/* line 280, ../../../assets/_layout.scss */
+#sidebar-wrapper li.current {
+  color: #FFFFFF;
+}
+/* line 283, ../../../assets/_layout.scss */
+#sidebar-wrapper li.current a i {
+  color: #FFFFFF;
+}
+/* line 288, ../../../assets/_layout.scss */
+#sidebar-wrapper .sidebar-nav-text {
+  display: none;
+}
+/* line 291, ../../../assets/_layout.scss */
+#sidebar-wrapper .logo-text {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  color: #ffffff;
+  margin-left: 4px;
 }
 
-/* line 278, ../../../assets/_layout.scss */
+/* line 300, ../../../assets/_layout.scss */
+#sidebar-wrapper:hover {
+  width: 180px;
+}
+/* line 302, ../../../assets/_layout.scss */
 #sidebar-wrapper:hover .logo-img-wrapper-collased {
   display: block;
 }
-/* line 282, ../../../assets/_layout.scss */
-#sidebar-wrapper:hover .sidebar-nav li.active {
-  background: #252d40;
+/* line 305, ../../../assets/_layout.scss */
+#sidebar-wrapper:hover .sidebar-nav {
+  width: 180px;
 }
-/* line 284, ../../../assets/_layout.scss */
-#sidebar-wrapper:hover .sidebar-nav li.active i {
+/* line 307, ../../../assets/_layout.scss */
+#sidebar-wrapper:hover .sidebar-nav a {
+  width: 300px;
+}
+/* line 310, ../../../assets/_layout.scss */
+#sidebar-wrapper:hover .sidebar-nav li.current {
+  background: #252d40 !important;
   color: #7b7f8f;
 }
+/* line 313, ../../../assets/_layout.scss */
+#sidebar-wrapper:hover .sidebar-nav li.current a {
+  color: #7b7f8f;
+}
+/* line 315, ../../../assets/_layout.scss */
+#sidebar-wrapper:hover .sidebar-nav li.current a i {
+  color: #7b7f8f;
+}
+/* line 321, ../../../assets/_layout.scss */
+#sidebar-wrapper:hover .sidebar-nav-text {
+  display: inline;
+}
+/* line 324, ../../../assets/_layout.scss */
+#sidebar-wrapper:hover .logo-text {
+  display: inline;
+}
 
-/* line 302, ../../../assets/_layout.scss */
+/* line 340, ../../../assets/_layout.scss */
 ul.sub-sidebar {
-  left: 60px;
+  left: 180px;
   padding-top: 58px;
   background-color: #1e2534;
   color: #FFFFFF;
 }
-/* line 307, ../../../assets/_layout.scss */
+/* line 345, ../../../assets/_layout.scss */
 ul.sub-sidebar .item {
   color: #FFFFFF;
 }
-/* line 309, ../../../assets/_layout.scss */
+/* line 347, ../../../assets/_layout.scss */
 ul.sub-sidebar .item.active {
   font-weight: normal;
   color: #ec0000;
 }
-/* line 313, ../../../assets/_layout.scss */
+/* line 351, ../../../assets/_layout.scss */
 ul.sub-sidebar .item:hover {
   color: #ec0000;
 }

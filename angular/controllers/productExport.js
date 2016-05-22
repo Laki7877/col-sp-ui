@@ -17,7 +17,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 			}
 
 			$scope.availableFields[groupName].push(record);
-			$scope.fields[record.MapName] = (record.MapName == 'PID');
+			$scope.fields[record.MapName] = (record.MapName == 'AAD');
 			$scope.loading.push(true);
 		});
 
@@ -178,7 +178,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 		Object.keys($scope.fields).forEach(function(key){
 			$scope.fields[key] = $scope.ctrl.selectAll;
 		});
-		$scope.fields.PID = true;
+		$scope.fields.AAD = true;
 	};
 
 
@@ -192,6 +192,6 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 	}, true);
 
 	$scope.fields = {
-		PID: true
+		AAD: true
 	};
 };

@@ -102,6 +102,10 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
     service.page404 = function () {
         $window.location.href = "/error";
     };
+    //Goto 401
+    service.page401 = function (admin) {
+        $window.location.href = admin ? "/admin/unauthorized" : "/unauthorized";
+    };
     service.warningOnLeave = function (fn) {
         $window.onbeforeunload = function () {
             if (!fn()) {
@@ -356,13 +360,13 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
         return function (item) {
             item.Visibility = !item.Visibility;
             options.service.visible([_.pick(item, [options.id, 'Visibility'])])
-                .then(function (data) {
-                    if(_.isArray(data) && data.length > 0) {
-                        item.OnlineFlag = data[0];
-                    }
+                .then(function () {
                 }, function (err) {
                     alert.error(common.getError(err));
                     item.Visibility = !item.Visibility;
+                })
+                .finally(function() {
+                    scope.reload();
                 });
         };
     };

@@ -21,7 +21,7 @@
                     <i class="fa fa-angle-down"></i>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#" ng-click="$root.logout()">Log Out of {{ Imposter.NameEn }}</a></li>
+                    <li><a ng-click="$root.logout()">Log Out of {{ Imposter.NameEn }}</a></li>
                 </ul>
             </li>
         </ul>
