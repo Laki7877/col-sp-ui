@@ -127,7 +127,7 @@ angular.module("productDetail").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('ap/section-variant-table-b',
-    "<table class=\"table variation-table\"><thead><tr><th class=column-variant style=width:150px>Variant</th><th class=column-mapped-product style=width:400px>Product</th><th class=column-visibility>Visibility</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td><you-me ng-model=pair.MappedProduct display-by=ProductNameEn refresh=refresher.Products initial-choices=dataset.Products placeholder=\"Search for a single product under the selected category and attribute set\" choices=dataset.Products ng-disabled=!pair.Visibility name=pair_MappedProduct></you-me></td><td><a class=\"btn btn-white\" ng-click=\"pair.Visibility = !pair.Visibility\"><span ng-if=pair.Visibility>Hide</span> <span ng-if=!pair.Visibility>Show</span></a></td></tr></tbody></table>"
+    "<table class=\"table variation-table\"><thead><tr><th class=column-variant style=width:150px>Variant</th><th class=column-mapped-product style=width:400px>Product</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td><you-me ng-model=pair.MappedProduct display-by=ProductNameEn refresh=refresher.Products initial-choices=dataset.Products placeholder=\"Search for a single product under the selected category and attribute set\" choices=dataset.Products ng-disabled=!pair.Visibility name=pair_MappedProduct></you-me></td></tr></tbody></table>"
   );
 
 

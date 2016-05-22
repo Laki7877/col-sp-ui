@@ -1075,50 +1075,64 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 
 },{}],6:[function(require,module,exports){
 module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$uibModal", "GlobalCategory", "Category", "AttributeSet", "Product", "ProductTempService", "options", "VariationFactorIndices", "AttributeSetService", "AttributeOptions", "$productAdd", "AdminShopService", function($scope, $rootScope, $controller, NcAlert,
-		config, $uibModal, GlobalCategory, Category, AttributeSet, Product, ProductTempService, options,
-		VariationFactorIndices, AttributeSetService, AttributeOptions, $productAdd, AdminShopService) {
+	config, $uibModal, GlobalCategory, Category, AttributeSet, Product,
+	ProductTempService, options,
+	VariationFactorIndices, AttributeSetService, AttributeOptions, $productAdd,
+	AdminShopService) {
 	'ngInject';
-    
-    $scope.adminMode = (options.adminMode);
-    $scope.alert = new NcAlert();
-	
-    $scope.create = function(){
-        
-		if(!$scope.formData.DefaultVariant){
-			
+
+	$scope.adminMode = (options.adminMode);
+	$scope.alert = new NcAlert();
+	$scope.loading = false;
+	$scope.create = function() {
+
+		if (!$scope.formData.DefaultVariant) {
+			return $scope.alert.error("Please fill in the form.");
 		}
-		
-        var fd = angular.copy($scope.formData);
-        
-        //Find default Varaint
-        var text_defaultVariant = $scope.formData.DefaultVariant.text;
-        var idx_defaultVariant = _.findIndex($scope.formData.Variants, function(o){ return o.text == text_defaultVariant }); 
-        fd.Variants[idx_defaultVariant].DefaultVariant = true;
-        fd.Category = {
-            CategoryId: fd.Category.CategoryId
-        }
-        
-        fd.Variants.map(function(o){
-           o.Pid = o.MappedProduct.Pid;
-           delete o.MappedProduct;
-           return o;
-        });
-        
-        delete fd.MasterVariant;
-        delete fd.DefaultVariant;
-        //Post to server
-        $scope.alert.close();
-		$scope.loading = true;
-         
-		Product.savePendingProduct(fd).then(function(suc){
-            $scope.alert.success("Pending product grouped successfully.");
+
+		try {
+			var fd = angular.copy($scope.formData);
+
+			//Find default Varaint
+			var text_defaultVariant = $scope.formData.DefaultVariant.text;
+			var idx_defaultVariant = _.findIndex($scope.formData.Variants, function(o) {
+				return o.text == text_defaultVariant
+			});
+			fd.Variants[idx_defaultVariant].DefaultVariant = true;
+			fd.Category = {
+				CategoryId: fd.Category.CategoryId
+			}
+
+			fd.Variants.map(function(o) {
+				o.Pid = o.MappedProduct.Pid;
+				delete o.MappedProduct;
+				return o;
+			});
+
+			delete fd.MasterVariant;
+			delete fd.DefaultVariant;
+			//Post to server
+			$scope.alert.close();
+			$scope.loading = true;
+
+			Product.savePendingProduct(fd).then(function(suc) {
+				var productLink = options.adminMode ? '/admin/products' : '/products';
+				$scope.alert.success("Pending product grouped successfully. <a href='" +
+					productLink + "'>View Product List</a>");
+				$scope.loading = false;
+			}, function(er) {
+				console.log(er);
+				$scope.alert.error("Unable to group product because " + (er.Message ||
+					er.message));
+				$scope.loading = false;
+			});
+		} catch (ex) {
+			return $scope.alert.error(
+				"Please make sure all fields are filled correctly.");
 			$scope.loading = false;
-        }, function(er){
-            console.log(er);
-            $scope.alert.error("Unable to group product because " + (er.Message || er.message));
-        });
+		}
 	};
-    
+
 	$scope.formData = {
 		Category: {
 			CategoryId: null
@@ -1149,7 +1163,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 
 	$scope.groupInfoSelected = false;
 
-	$scope.createVariationOption = function(){
+	$scope.createVariationOption = function() {
 		$scope.groupInfoSelected = true;
 	}
 
@@ -1158,34 +1172,34 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 		$productAdd.generateVariants($scope.formData, $scope.dataset);
 	}, true);
 
-	$scope.refresher.Products = function(q){
-		return Product.getUngrouped(q, 
-		$scope.formData.AttributeSet.AttributeSetId, 
-		$scope.formData.Shop.ShopId,
-		$scope.formData.Category.CategoryId)
-		.then(function(ds) {
-		  $scope.dataset.Products = ds.data;
-		});
+	$scope.refresher.Products = function(q) {
+		return Product.getUngrouped(q,
+				$scope.formData.AttributeSet.AttributeSetId,
+				$scope.formData.Shop.ShopId,
+				$scope.formData.Category.CategoryId)
+			.then(function(ds) {
+				$scope.dataset.Products = ds.data;
+			});
 	};
-	
-	$scope.$watch('formData.AttributeSet', function(x){
-		Product.getUngrouped(null, 
-			$scope.formData.AttributeSet.AttributeSetId, 
-			$scope.formData.Shop.ShopId,
-			$scope.formData.Category.CategoryId)
-		.then(function(ds) {
-			$scope.dataset.Products = ds.data;
-		});
+
+	$scope.$watch('formData.AttributeSet', function(x) {
+		Product.getUngrouped(null,
+				$scope.formData.AttributeSet.AttributeSetId,
+				$scope.formData.Shop.ShopId,
+				$scope.formData.Category.CategoryId)
+			.then(function(ds) {
+				$scope.dataset.Products = ds.data;
+			});
 	}, true);
 
-	$scope.refresher.Shops = function(q){
+	$scope.refresher.Shops = function(q) {
 		return AdminShopService.list({
 			searchText: q,
 			_limit: 8,
 			_offset: 0,
 			_direction: 'asc'
 		}).then(function(ds) {
-		  $scope.dataset.Shops = ds.data;
+			$scope.dataset.Shops = ds.data;
 		});
 	};
 
@@ -1201,12 +1215,14 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 				d._group = 'Search Results';
 				return d;
 			});
-			$scope.dataset.CombinedAttributeSets = _.unionBy(searchRes, $scope.dataset.AttributeSets, 'AttributeSetId');
+			$scope.dataset.CombinedAttributeSets = _.unionBy(searchRes, $scope.dataset
+				.AttributeSets, 'AttributeSetId');
 		})
 	};
 
 	GlobalCategory.list().then(function(data) {
-		$scope.dataset.GlobalCategoryTree = Category.transformNestedSetToUITree(data);
+		$scope.dataset.GlobalCategoryTree = Category.transformNestedSetToUITree(
+			data);
 	});
 
 	$scope.openCategorySelectorModal = function() {
@@ -18558,7 +18574,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-variant-table-b',
-    "<table class=\"table variation-table\"><thead><tr><th class=column-variant style=width:150px>Variant</th><th class=column-mapped-product style=width:400px>Product</th><th class=column-visibility>Visibility</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td><you-me ng-model=pair.MappedProduct display-by=ProductNameEn refresh=refresher.Products initial-choices=dataset.Products placeholder=\"Search for a single product under the selected category and attribute set\" choices=dataset.Products ng-disabled=!pair.Visibility name=pair_MappedProduct></you-me></td><td><a class=\"btn btn-white\" ng-click=\"pair.Visibility = !pair.Visibility\"><span ng-if=pair.Visibility>Hide</span> <span ng-if=!pair.Visibility>Show</span></a></td></tr></tbody></table>"
+    "<table class=\"table variation-table\"><thead><tr><th class=column-variant style=width:150px>Variant</th><th class=column-mapped-product style=width:400px>Product</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td><you-me ng-model=pair.MappedProduct display-by=ProductNameEn refresh=refresher.Products initial-choices=dataset.Products placeholder=\"Search for a single product under the selected category and attribute set\" choices=dataset.Products ng-disabled=!pair.Visibility name=pair_MappedProduct></you-me></td></tr></tbody></table>"
   );
 
 
@@ -25761,7 +25777,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('product_group/section-group-information',
-    "<div class=form-section><div class=form-section-header><h2>Group Information</h2></div><div class=form-section-content><div ng-show=adminMode nc-template=common/input/form-group-with-label nc-template-form=form.Category nc-template-options-path=createGroupVariant/Required nc-label=Shop><you-me display-by=ShopNameEn placeholder=\"Search Shop\" auto-clear-search=true ng-model=formData.Shop refresh=refresher.Shops choices=dataset.Shops></you-me></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Category nc-template-options-path=createGroupVariant/Required nc-label=Category><a class=form-text ng-click=openCategorySelectorModal()>{{ formData.Category.NameEn || 'Select Category' }}</a></div><div nc-template=common/input/form-group-with-label nc-template-form=form.AttributeSet nc-template-options-path=createGroupVariant/Required nc-label=\"Attribute Set\"><you-me display-by=AttributeSetNameEn placeholder=\"Search Attribute Set\" auto-clear-search=true group-by=_group ng-model=formData.AttributeSet refresh=refresher.AttributeSets initial-choices=dataset.AttributeSets choices=dataset.CombinedAttributeSets></you-me></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Group Information</h2></div><div class=form-section-content><div ng-show=adminMode nc-template=common/input/form-group-with-label nc-template-form=form.Category nc-template-options-path=createGroupVariant/Required nc-label=Shop><you-me display-by=ShopNameEn placeholder=\"Search Shop\" auto-clear-search=true ng-model=formData.Shop refresh=refresher.Shops choices=dataset.Shops></you-me></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Category nc-template-options-path=createGroupVariant/Required nc-label=Category><a class=form-text ng-click=openCategorySelectorModal()>{{ formData.Category.NameEn || 'Select Category' }}</a></div><div nc-template=common/input/form-group-with-label nc-template-form=form.AttributeSet nc-template-options-path=createGroupVariant/Required nc-label=\"Attribute Set\" ng-show=formData.Category.NameEn><you-me display-by=AttributeSetNameEn placeholder=\"Search Attribute Set\" auto-clear-search=true group-by=_group ng-model=formData.AttributeSet refresh=refresher.AttributeSets initial-choices=dataset.AttributeSets choices=dataset.CombinedAttributeSets></you-me></div></div></div>"
   );
 
 
