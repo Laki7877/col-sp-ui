@@ -42,7 +42,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         $scope.pageState.load("Loading Product Revision");
         Product.getRevision(historyId).then(function(res) {
           checkSchema(res);
-          loadOverview(res);
+          // loadOverview(res);
           res.Status = 'DF';
           $scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions); // will trigger watchvariantchange
           var catId = Number(res.MainGlobalCategory.CategoryId);
@@ -66,11 +66,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
     }
 
-    var loadOverview = function(res) {
+    // var loadOverview = function(res) {
       // Shop.get(res.ShopId).then(function(x) {
       //   $scope.formData.ShopName = x.ShopNameEn;
       // })
-    };
+    // };
 
     $scope.adminAlert = new NcAlert();
     $scope.alert = new NcAlert();
@@ -692,7 +692,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
         if (res.ProductId) {
 
-          loadOverview(res);
+          // loadOverview(res);
           $scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions); // will trigger watchvariantchange
           var catId = Number(res.MainGlobalCategory.CategoryId);
 
@@ -746,7 +746,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
         Product.getOne(productId)
           .then(function(inverseFormData) {
-            loadOverview(angular.copy(inverseFormData));
+            // loadOverview(angular.copy(inverseFormData));
             var catId = Number(inverseFormData.MainGlobalCategory.CategoryId);
 
             //Fill the page with data

@@ -512,9 +512,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				}
 			}
 
-			invFd.GlobalCategories.unshift({
-				CategoryId: invFd.MainGlobalCategory
-			})
+			invFd.GlobalCategories.unshift(invFd.MainGlobalCategory)
 
 			if (invFd.GlobalCategories.length > 3) {
 				invFd.GlobalCategories.pop()
