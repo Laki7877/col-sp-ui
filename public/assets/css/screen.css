@@ -12464,6 +12464,12 @@ a.cke_dialog_tab {
   border-color: #BCC7D5;
 }
 
+/* line 269, ../../../assets/_override.scss */
+.ume-placeholder {
+  width: 50% !important;
+  text-align: left;
+}
+
 /* line 1, ../../../assets/_atomic.scss */
 .margin-right-20 {
   margin-right: 20px;

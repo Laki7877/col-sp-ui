@@ -9,7 +9,7 @@
         <button class="btn btn-blue btn-width-xl margin-left-10" ng-click="save()">Save</button>
       </div>
     </nc-page-title>
-    
+
     <div ng-show="loading" nc-loading="{{loadingMessage}}"></div>
     <div ng-show="saving" nc-loading="{{savingMessage}}"></div>
     <form ng-show="!saving && !loading" name="form" class="ah-form sticky-mainform-action" novalidate>
@@ -25,14 +25,14 @@
               nc-template-options-path="addMasterProductForm/ChildProducts"
                 nc-label="Select Master Product" >
 
-                <you-me display-by="CustomName" placeholder="Search Master Product"
+                <you-me display-by="CustomName" placeholder="Search 'Approved' Product"
                         auto-clear-search="true"
                         ng-model="formData.MasterProduct" refresh="getProducts" choices="products"></you-me>
 
               </div>
             </div>
           </div>
-           
+
           <!-- Child Product -->
           <div class="form-section">
             <div class="form-section-header"><h2>Child Product</h2></div>
@@ -42,7 +42,7 @@
                 nc-template-form="form.ChildProducts"
                 nc-template-options-path="addMasterProductForm/ChildProducts">
 
-             <you-me display-by="CustomName" placeholder="Search Product"
+             <you-me display-by="CustomName" placeholder="Search 'Approved' Product"
                         name="ChildProducts"
                         ng-model="formData.ChildProducts" refresh="getChildProducts" in-relationship="true"
                         choices="childProducts | exclude: formData.ChildProducts : 'ProductId' | exclude: formData.MasterProduct : 'ProductId' "></you-me>
