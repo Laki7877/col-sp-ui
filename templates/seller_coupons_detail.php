@@ -165,12 +165,13 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                             <ui-select-choices repeat="i.value as i in filters">{{ i.name }}</ui-select-choices>
                         </ui-select>
                       </div>
-                      <div ng-show="formData.Conditions.FilterBy.Type == 'LocalCategory'"
-                        nc-template="common/input/form-group-with-label"
-                        nc-template-options-path="couponForm/FilterByValue"
-                        nc-template-form="form.FilterByValue"
-                        nc-label="Include">
-                        <nc-breadcrumb-select placeholder="Search for Local Category" nc-breadcrumb-select-options="{ tagCount: 50 }" name="FilterByValue" nc-model="formData.Conditions.FilterBy.LocalCategories" ng-disabled="manageable" nc-breadcrumb-select-tree="categories" required></nc-breadcrumb-select>
+                      <div ng-if="formData.Conditions.FilterBy.Type == 'LocalCategory'">
+                        <div nc-template="common/input/form-group-with-label"
+                          nc-template-options-path="couponForm/FilterByValue"
+                          nc-template-form="form.FilterByValue"
+                          nc-label="Include">
+                          <nc-breadcrumb-select placeholder="Search for Local Category" nc-breadcrumb-select-options="{ tagCount: 50 }" name="FilterByValue" nc-model="formData.Conditions.FilterBy.LocalCategories" ng-disabled="manageable" nc-breadcrumb-select-tree="categories" ng-required="true" required></nc-breadcrumb-select>
+                        </div>
                       </div>
                     </div>
                   </div>

@@ -20,21 +20,21 @@ angular.module('nc')
                         $model.$error.maxtagcount = true;
                         _pass = false;
                     } else {
-                        $model.$error.maxtagcount = false;
+                        _.unset($model.$error, ['maxtagcount']);
                     }
 
                     if (item.length > maxTagLength) {
                         $model.$error.maxtaglength = true;
                         _pass = false;
                     } else {
-                        $model.$error.maxtaglength = false;
+                        _.unset($model.$error, ['maxtaglength']);
                     }
 
                     if (tagPattern && !item.ValueEn.match(tagPattern)) {
                         $model.$error.pattern = true;
                         _pass = false;
                     } else {
-                        $model.$error.pattern = false;
+                        _.unset($model.$error, ['pattern']);
                     }
 
                     if (!_pass) {

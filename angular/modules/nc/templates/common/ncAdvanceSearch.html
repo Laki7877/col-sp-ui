@@ -8,8 +8,8 @@
 		                    <input class="form-control" name="ProductName" ng-pattern-restrict="^[^<>]*$" maxlength="255" ng-model="formData.ProductName"/>
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Pids" nc-label="PID" nc-template-options-path="searchForm/Pid">
-							    <ui-select ng-model="formData.Pids" name="Pids" nc-tag-validator tagging tagging-label="" multiple nc-tag-field>
-	                                <ui-select-match ng-pattern-restrict="^[0-9]*$" maxlength="7">
+							    <ui-select ng-model="formData.Pids" pattern-restrict="^[^<>]*$" name="Pids" nc-tag-validator tagging tagging-label="" multiple nc-tag-field>
+	                                <ui-select-match maxlength="7">
 	                                    {{$item}}
 	                                </ui-select-match>
 	                                <ui-select-choices repeat="item in options.Pids">{{item}}
@@ -17,8 +17,8 @@
 	                            </ui-select>
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Skus" nc-label="SKU" nc-template-options-path="searchForm/Sku">
-							    <ui-select ng-model="formData.Skus" name="Skus" nc-tag-validator tagging tagging-label="" multiple nc-tag-field>
-	                                <ui-select-match ng-pattern-restrict="^[^<>]*$" maxlength="255">
+							    <ui-select ng-model="formData.Skus" pattern-restrict="^[^<>]*$" name="Skus" nc-tag-validator tagging tagging-label="" multiple nc-tag-field>
+	                                <ui-select-match maxlength="255">
 	                                    {{$item}}
 	                                </ui-select-match>
 	                                <ui-select-choices repeat="item in options.Skus">
@@ -62,7 +62,10 @@
 	                                <ui-select-choices repeat="item in options.Tags">{{item}}</ui-select-choices>
 	                            </ui-select>
 						</div>
-						<div nc-template="common/input/form-group-with-label-multiple" nc-template-form="form.Price" nc-label="Price" nc-template-options-path="searchForm/Price">
+						<div nc-template="common/input/form-group-with-label-multiple" 
+							nc-template-form="form.Price" 
+							nc-label="Price" 
+							nc-template-options-path="searchForm/Price">
 							<div class="width-field-small-input">
 								<input type="text" name="Price" ng-maxnumber="{{formData.PriceTo}}" ng-model="formData.PriceFrom" class="form-control" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$" maxlength="20"/>
 							</div>

@@ -269,6 +269,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Dashboar
           <span class="font-size-18 header_name_space">Top Selling This Month</span>
         </div>
 
+        <div ng-if="topSellingItemsData.length == 0"></div>
         <div ng-repeat="product in topSellingItemsData  | limitTo:maxTopSellingItems" ng-show="topSellingItemsData != 'N/A'" class="group_container top_selling_field">
             <img ng-show="product.FeatureImgUrl ==''" class="logo-img" src="<?= $this->asset('/assets/img/placeholder-no-image.png') ?>" />
             <img class="logo-img" src="{{product.FeatureImgUrl}}" />
