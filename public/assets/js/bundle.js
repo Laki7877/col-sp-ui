@@ -4887,9 +4887,6 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 					if(_.isNil(data)) {
 						return;
 					}
-					if(_.isNil(old)) {
-
-					}
 					else if(data != old) {
 						_.unset($scope.formData, ['City']);
 					}
@@ -4899,9 +4896,6 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 				$scope.$watch('formData.City', function(data, old) {
 					if(_.isNil(data)) {
 						return;
-					}
-					if(_.isNil(old)) {
-						
 					}
 					else if(data != old) {
 						_.unset($scope.formData, ['District']);
@@ -4913,9 +4907,6 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 				$scope.$watch('formData.District', function(data, old) {
 					if(_.isNil(data)) {
 						return;
-					}
-					if(_.isNil(old)) {
-						
 					}
 					else if(data != old) {
 						_.unset($scope.formData, ['PostalCode']);
@@ -15632,7 +15623,7 @@ angular.module('nc')
 							}],
 							resolve: {
 								url: function() {
-									return item.url;
+									return item.Url;
 								}
 							}
 						});

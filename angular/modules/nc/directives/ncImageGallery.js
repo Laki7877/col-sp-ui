@@ -503,7 +503,7 @@ angular.module('nc')
 							},
 							resolve: {
 								url: function() {
-									return item.url;
+									return item.Url;
 								}
 							}
 						});

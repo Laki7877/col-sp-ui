@@ -664,8 +664,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 												</ui-select-choices>
 											</ui-select>
 				                    </div>
-				                    <div ng-show="formData.Province"
-				                    	nc-template="common/input/form-group-with-label"
+				                    <div ng-if="formData.Province">
+				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.City"
 				                    	nc-label="City"
 				                    	nc-template-options-path="addShopAccountForm/City">
@@ -678,8 +678,9 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 												</ui-select-choices>
 											</ui-select>
 				                    </div>
-				                    <div ng-show="formData.City"
-				                    	nc-template="common/input/form-group-with-label"
+					                </div>
+				                    <div ng-if="formData.City">
+				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.District"
 				                    	nc-label="District"
 				                    	nc-template-options-path="addShopAccountForm/District">
@@ -692,8 +693,9 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 												</ui-select-choices>
 											</ui-select>
 				                    </div>
-									<div ng-show="formData.City"
-				                    	nc-template="common/input/form-group-with-label"
+					                </div>
+									<div ng-if="formData.District">
+				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.PostalCode"
 				                    	nc-template-options-path="addShopAccountForm/PostalCode"
 				                    	nc-label="Postal Code">
@@ -706,6 +708,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 												</ui-select-choices>
 											</ui-select>
 				                    </div>
+				          		    </div>
 				                    <div class="margin-top-40"
 				                    	nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.PhoneNumber"
