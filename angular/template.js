@@ -349,7 +349,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('product/dropzone/normal',
-    "<div class=image-drop-wrapper><input nv-file-select=\"\" uploader=uploader type=file multiple><div nv-file-drop=\"\" uploader=uploader class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p></div></div></div>"
+    "<div class=image-drop-wrapper><input nv-file-select=\"\" uploader=uploader accept=.jpg,.jpeg type=file multiple><div nv-file-drop=\"\" uploader=uploader accept=.jpg,.jpeg class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload() accept=.jpg,.jpeg>or select images</a></p></div></div></div>"
   );
 
 

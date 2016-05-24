@@ -290,7 +290,7 @@
 						            			products="products">
 						            		</nc-product-layout>
 						            		<nc-image-banner-link
-						            			source="formData.Data.G_Banner"
+						            			source="formData.Data.H_Banner"
 						            		 	letter="H"
 						            		 	letterx="H1"
 						            		 	title="Sub Banner 3"
@@ -351,7 +351,7 @@
 						            		 	subtitle="Icon Type">
 						            		 </nc-image-banner-icon>
 						            		 <nc-textareas
-						            		 	source="formData.Data.M_FooterText"
+						            		 	source="formData.Data.M_Textarea"
 						            		 	letter="M"
 						            		 	title="Footer Text"
 						            		 	size="2">
