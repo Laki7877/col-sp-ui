@@ -321,18 +321,18 @@
 
 			 <div ng-show="formData.Filterable" class="two-lines-label" nc-template="common/input/form-group-with-label"
                 nc-label="Show Filter in <br> Global">
-                <ui-select ng-model="formData.ShowGlobalFilterFlag" search-enabled="false">
-                  <ui-select-match>
-                      <span ng-bind="$select.selected.name"></span>
-                  </ui-select-match>
-                  <ui-select-choices repeat="item.value as item in boolOptions">
-                      <span ng-bind="item.name"></span>
-                  </ui-select-choices>
-                </ui-select>
-              </div>
+          <ui-select ng-model="formData.ShowGlobalFilterFlag" search-enabled="false">
+            <ui-select-match>
+                <span ng-bind="$select.selected.name"></span>
+            </ui-select-match>
+            <ui-select-choices repeat="item.value as item in boolOptions">
+                <span ng-bind="item.name"></span>
+            </ui-select-choices>
+          </ui-select>
+        </div>
 
 
-			  <div  ng-show="formData.Filterable" class="two-lines-label" nc-template="common/input/form-group-with-label"
+			  <div ng-show="formData.Filterable" class="two-lines-label" nc-template="common/input/form-group-with-label"
                 nc-label="Show Filter in <br> Local">
                 <ui-select ng-model="formData.ShowLocalFilterFlag" search-enabled="false">
                   <ui-select-match>
