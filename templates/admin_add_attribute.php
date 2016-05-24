@@ -263,13 +263,12 @@
               </div>
             </div>
           </div>
-          <div class="form-section" ng-if="formData.DataType != 'CB' && !formData.DefaultAttribute">
+          <div class="form-section" ng-if="!formData.DefaultAttribute">
             <div class="form-section-header"><h2>Variation</h2></div>
             <div class="form-section-content">
-              <div
-                nc-template="common/input/form-group-with-label"
+              <div nc-template="common/input/form-group-with-label"
                 nc-label="Set As Variation">
-                <ui-select ng-model="formData.VariantStatus" search-enabled="false" ng-disabled="formData.DataType == 'HB'|| formData.DataType == 'ST' || alreadyVariant">
+                <ui-select ng-model="formData.VariantStatus" search-enabled="false" ng-disabled="formData.DataType == 'CB' || formData.DataType == 'HB'|| formData.DataType == 'ST' || alreadyVariant">
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>
@@ -319,6 +318,18 @@
                 </ui-select>
              </div>
 
+
+      <div nc-template="common/input/form-group-with-label"
+        nc-label="Filterable">
+        <ui-select ng-model="formData.Filterable" search-enabled="false" ng-disabled="formData.DataType == 'HB'">
+          <ui-select-match>
+              <span ng-bind="$select.selected.name"></span>
+          </ui-select-match>
+          <ui-select-choices repeat="item.value as item in boolOptions">
+              <span ng-bind="item.name"></span>
+          </ui-select-choices>
+        </ui-select>
+      </div>
 			 <div ng-show="formData.Filterable" class="two-lines-label" nc-template="common/input/form-group-with-label"
                 nc-label="Show Filter in <br> Global">
           <ui-select ng-model="formData.ShowGlobalFilterFlag" search-enabled="false">
@@ -342,19 +353,7 @@
                       <span ng-bind="item.name"></span>
                   </ui-select-choices>
                 </ui-select>
-              </div>
-
-              <div nc-template="common/input/form-group-with-label"
-                nc-label="Filterable">
-                <ui-select ng-model="formData.Filterable" search-enabled="false" ng-disabled="formData.DataType == 'HB'">
-                  <ui-select-match>
-                      <span ng-bind="$select.selected.name"></span>
-                  </ui-select-match>
-                  <ui-select-choices repeat="item.value as item in boolOptions">
-                      <span ng-bind="item.name"></span>
-                  </ui-select-choices>
-                </ui-select>
-              </div>
+        </div>
             </div>
           </div>
         </div>
