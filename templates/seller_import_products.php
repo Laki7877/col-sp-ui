@@ -93,7 +93,7 @@
 											nc-template-options-path="productImport/ColumnSearch">
 											<input type="text"
 												ng-model="ctrl.columnSearch"
-												ng-pattern-restrict="^[^<>]*$"
+												 
 												maxlength="255"
 												uib-typeahead="item as item.HeaderName for item in getGuideline($viewValue)"
 												class="form-control input-icon-right-search"

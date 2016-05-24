@@ -65,7 +65,7 @@
 						                    	nc-label="Shop Name" 
 						                    	nc-template-form="form.ShopNameEn"
 						                    	nc-template-options-path="shopSettingForm/ShopNameEn">
-						                        <input name="ShopNameEn" class="form-control" type="text" ng-model="formData.ShopNameEn" ng-pattern-restrict="^[^<>]*$" maxlength="255" required/>
+						                        <input name="ShopNameEn" class="form-control" type="text" ng-model="formData.ShopNameEn"   maxlength="255" required/>
 						                    </div>
 											<!-- Domain Name -->
 											<div ng-template="common/input/text2"
@@ -101,23 +101,23 @@
 						                    <div nc-template="common/input/form-group-with-label" 
 						                    	nc-label="Shop Description (English)" 
 						                    	nc-template-options-path="shopSettingForm/ShopDescriptionEn">
-						                        <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopDescriptionEn" ng-pattern-restrict="^[^<>]*$" maxlength="500"></textarea>
+						                        <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopDescriptionEn"   maxlength="500"></textarea>
 						                    </div>
 
 						                    <div nc-template="common/input/form-group-with-label" nc-label="Shop Description (ไทย)" nc-template-options-path="shopSettingForm/ShopDescriptionTh">
-						                        <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopDescriptionTh" ng-pattern-restrict="^[^<>]*$" maxlength="500"></textarea>
+						                        <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopDescriptionTh"   maxlength="500"></textarea>
 						                    </div>
 
 						                    <div nc-template="common/input/form-group-with-label" nc-label="Float Message (English)" nc-template-options-path="shopSettingForm/FloatMessageEn">
-						                        <input class="form-control" type="text" ng-model="formData.FloatMessageEn" ng-pattern-restrict="^[^<>]*$" maxlength="255"/>
+						                        <input class="form-control" type="text" ng-model="formData.FloatMessageEn"   maxlength="255"/>
 						                    </div>
 
 						                    <div nc-template="common/input/form-group-with-label" nc-label="Float Message (ไทย)" nc-template-options-path="shopSettingForm/FloatMessageTh">
-						                        <input class="form-control" type="text" ng-model="formData.FloatMessageTh" ng-pattern-restrict="^[^<>]*$" maxlength="255"/>
+						                        <input class="form-control" type="text" ng-model="formData.FloatMessageTh"   maxlength="255"/>
 						                    </div>
 
 						                    <div nc-template="common/input/form-group-with-label" nc-label="Company Address" nc-template-options-path="shopSettingForm/ShopAddress">
-						                        <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopAddress" ng-pattern-restrict="^[^<>]*$" maxlength="500" /></textarea>
+						                        <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopAddress"   maxlength="500" /></textarea>
 						                    </div>
 
 						                </div>
@@ -133,27 +133,27 @@
 						                    <div nc-template="common/input/form-group-with-label" nc-label="Facebook" 
 						                    	nc-template-options-path="shopSettingForm/SocialMediaLink"
 						                    	nc-template-form="form.Facebook">
-						                        <input class="form-control" type="url" ng-model="formData.Facebook"  ng-pattern-restrict="^[^<>]*$" maxlength="255" />
+						                        <input class="form-control" type="url" ng-model="formData.Facebook"    maxlength="255" />
 						                    </div>
 						                    <div nc-template="common/input/form-group-with-label" nc-label="YouTube" 
 						                    	nc-template-options-path="shopSettingForm/SocialMediaLink"
 						                    	nc-template-form="form.YouTube">
-						                        <input class="form-control" type="url" ng-model="formData.YouTube"  ng-pattern-restrict="^[^<>]*$" maxlength="255"/>
+						                        <input class="form-control" type="url" ng-model="formData.YouTube"    maxlength="255"/>
 						                    </div>
 						                    <div nc-template="common/input/form-group-with-label" nc-label="Twitter" 
 						                    	nc-template-options-path="shopSettingForm/SocialMediaLink"
 						                    	nc-template-form="form.Twitter">
-						                        <input class="form-control" type="url" ng-model="formData.Twitter"  ng-pattern-restrict="^[^<>]*$" maxlength="255"/>
+						                        <input class="form-control" type="url" ng-model="formData.Twitter"    maxlength="255"/>
 						                    </div>
 						                    <div nc-template="common/input/form-group-with-label" nc-label="Instagram" 
 						                    	nc-template-options-path="shopSettingForm/SocialMediaLink"
 						                    	nc-template-form="form.Instagram">
-						                        <input class="form-control" type="url" ng-model="formData.Instagram"  ng-pattern-restrict="^[^<>]*$" maxlength="255"/>
+						                        <input class="form-control" type="url" ng-model="formData.Instagram"    maxlength="255"/>
 						                    </div>
 						                    <div nc-template="common/input/form-group-with-label" nc-label="Pinterest"
 						                     	nc-template-options-path="shopSettingForm/SocialMediaLink"
 						                     	nc-template-form="form.Pinterest">
-						                        <input class="form-control" type="url" ng-model="formData.Pinterest"  ng-pattern-restrict="^[^<>]*$" maxlength="255"/>
+						                        <input class="form-control" type="url" ng-model="formData.Pinterest"    maxlength="255"/>
 						                    </div>
 						                </div>
 						            </div>
@@ -193,15 +193,15 @@
 						                <div class="form-section-content">
 						                    <div nc-template="common/input/form-group-with-label"
 						                    	nc-label="Address 1">
-						                        <input class="form-control" ng-model="formData.Address1" ng-disabled="true" ng-pattern-restrict="^[^<>]*$" maxlength="35"/>
+						                        <input class="form-control" ng-model="formData.Address1" ng-disabled="true"   maxlength="35"/>
 						                    </div>
 						                    <div nc-template="common/input/form-group-with-label"
 						                    	nc-label="Address 2">
-						                        <input class="form-control" ng-model="formData.Address2" ng-disabled="true" ng-pattern-restrict="^[^<>]*$" maxlength="35"/>
+						                        <input class="form-control" ng-model="formData.Address2" ng-disabled="true"   maxlength="35"/>
 						                    </div>
 						                    <div nc-template="common/input/form-group-with-label"
 						                    	nc-label="Address 3">
-						                        <input class="form-control" ng-model="formData.Address3" ng-disabled="true" ng-pattern-restrict="^[^<>]*$" maxlength="35"/>
+						                        <input class="form-control" ng-model="formData.Address3" ng-disabled="true"   maxlength="35"/>
 						                    </div>
 						                    <div nc-template="common/input/form-group-with-label"
 						                    	nc-template-form="form.OverseaShop"
@@ -320,19 +320,19 @@
 						                    	nc-template-form="form.ContactPersonFirstName"
 						                    	nc-template-options-path="addShopAccountForm/ContactPersonFirstName"
 						                    	nc-label="Contact Person First Name">
-													<input name="ContactPersonFirstName" class="form-control" ng-model="formData.ContactPersonFirstName" ng-pattern-restrict="^[^<>]*$" maxlength="15" ng-disabled="true"/>
+													<input name="ContactPersonFirstName" class="form-control" ng-model="formData.ContactPersonFirstName"   maxlength="15" ng-disabled="true"/>
 						                    </div>
 						                    <div nc-template="common/input/form-group-with-label"
 						                    	nc-template-form="form.ContactPersonLastName"
 						                    	nc-template-options-path="addShopAccountForm/ContactPersonLastName"
 						                    	nc-label="Contact Person Last Name">
-													<input name="ContactPersonLastName" class="form-control" ng-model="formData.ContactPersonLastName" ng-pattern-restrict="^[^<>]*$" maxlength="20" ng-disabled="true"/>
+													<input name="ContactPersonLastName" class="form-control" ng-model="formData.ContactPersonLastName"   maxlength="20" ng-disabled="true"/>
 						                    </div>
 						                    <div nc-template="common/input/form-group-with-label"
 						                    	nc-template-form="form.Email"
 						                    	nc-template-options-path="addShopAccountForm/Email"
 						                    	nc-label="Email Address">
-													<input type="email" name="Email" class="form-control" ng-model="formData.Email" ng-pattern-restrict="^[^<>]*$" maxlength="50" ng-disabled="true"/>
+													<input type="email" name="Email" class="form-control" ng-model="formData.Email"   maxlength="50" ng-disabled="true"/>
 						                    </div>
 						                </div>
 						            </div>

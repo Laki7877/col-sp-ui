@@ -40,7 +40,7 @@
                   class="form-control"
                   name="DisplayNameEn"
                   ng-model="formData.DisplayNameEn"
-                  ng-pattern-restrict="^[^<>]*$"
+                   
                   maxlength="255"
                   required />
               </div>
@@ -52,7 +52,7 @@
                   class="form-control"
                   name="DisplayNameTh"
                   ng-model="formData.DisplayNameTh"
-                  ng-pattern-restrict="^[^<>]*$"
+                   
                   maxlength="255"
                   required />
               </div>
@@ -138,12 +138,12 @@
                       <div class="row">
                           <div nc-template="common/input/div-with-label" nc-label="Description (English)" nc-template-options-path="genericForm/DescriptionFull"
                           nc-template-form="form.DescriptionFullEn">
-                              <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="250000" ng-pattern-restrict="^[^<>]*$" name="DescriptionFullEn" ng-model="formData.DescriptionFullEn">
+                              <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="250000"   name="DescriptionFullEn" ng-model="formData.DescriptionFullEn">
                               </textarea>
                           </div>
                           <div nc-template="common/input/div-with-label" nc-label="Description (ไทย)" nc-template-options-path="genericForm/DescriptionFull"
                           nc-template-form="form.DescriptionFullTh">
-                              <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="250000" ng-pattern-restrict="^[^<>]*$" name="DescriptionFullTh" ng-model="formData.DescriptionFullTh">
+                              <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="250000"   name="DescriptionFullTh" ng-model="formData.DescriptionFullTh">
                               </textarea>
                           </div>
 
@@ -151,12 +151,12 @@
                       <div class="row margin-top-30">
                           <div nc-template="common/input/div-with-label" nc-label="Mobile Description (English)" nc-template-options-path="genericForm/DescriptionMobile"
                           nc-template-form="form.DescriptionMobileEn">
-                              <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="250000" ng-pattern-restrict="^[^<>]*$" name="DescriptionMobileEn" ng-model="formData.DescriptionMobileEn">
+                              <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="250000"   name="DescriptionMobileEn" ng-model="formData.DescriptionMobileEn">
                               </textarea>
                           </div>
                           <div nc-template="common/input/div-with-label" nc-label="Mobile Description (ไทย)" nc-template-options-path="genericForm/DescriptionMobile"
                           nc-template-form="form.DescriptionMobileTh">
-                              <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="250000" ng-pattern-restrict="^[^<>]*$" name="DescriptionMobileTh" ng-model="formData.DescriptionMobileTh">
+                              <textarea ng-ckeditor="$root.ckOptions" class="form-control" maxlength="250000"   name="DescriptionMobileTh" ng-model="formData.DescriptionMobileTh">
                               </textarea>
                           </div>
 
@@ -164,12 +164,12 @@
                       <div class="row margin-top-30">
                           <div nc-template="common/input/div-with-label" nc-label="Short Description (English)" nc-template-options-path="genericForm/DescriptionShortEn"
                           nc-template-form="form.DescriptionShortEn">
-                              <textarea ng-pattern="/^[^<>ก-๙]+$/" class="form-control" maxlength="500" name="DescriptionShortEn" ng-pattern-restrict="^[^<>]*$" ng-model="formData.DescriptionShortEn">
+                              <textarea ng-pattern="/^[^<>ก-๙]+$/" class="form-control" maxlength="500" name="DescriptionShortEn"   ng-model="formData.DescriptionShortEn">
                               </textarea>
                           </div>
                           <div nc-template="common/input/div-with-label" nc-label="Short Description (ไทย)" nc-template-options-path="genericForm/DescriptionShortTh"
                           nc-template-form="form.DescriptionShortTh">
-                              <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="DescriptionShortTh" ng-pattern-restrict="^[^<>]*$" ng-model="formData.DescriptionShortTh">
+                              <textarea ng-pattern="/^[^<>]+$/" class="form-control" maxlength="500" name="DescriptionShortTh"   ng-model="formData.DescriptionShortTh">
                               </textarea>
                           </div>
                       </div>
@@ -225,7 +225,7 @@
                 <textarea class="form-control"
                   name="SEO_En"
                   ng-model="formData.SEO.SeoEn"
-                  ng-pattern-restrict="^[^<>]*$"
+                   
                   maxlength="1000">
                 </textarea>
               </div>
@@ -236,7 +236,7 @@
                 <textarea class="form-control"
                   name="SEO_Th"
                   ng-model="formData.SEO.SeoTh"
-                  ng-pattern-restrict="^[^<>]*$"
+                   
                   maxlength="1000">
                 </textarea>
               </div>
@@ -248,7 +248,7 @@
                   class="form-control"
                   name="SEO_MetaTitleEn"
                   ng-model="formData.SEO.MetaTitleEn"
-                  ng-pattern-restrict="^[^<>]*$"
+                   
                   maxlength="60"
                    />
               </div>
@@ -259,7 +259,7 @@
                   class="form-control"
                   name="SEO_MetaTitleTh"
                   ng-model="formData.SEO.MetaTitleTh"
-                  ng-pattern-restrict="^[^<>]*$"
+                   
                   maxlength="60"
                    />
               </div>
@@ -270,7 +270,7 @@
                   class="form-control"
                   name="SEO_MetaDescriptionEn"
                   ng-model="formData.SEO.MetaDescriptionEn"
-                  ng-pattern-restrict="^[^<>]*$"
+                   
                   maxlength="150"
                    />
               </div>
@@ -281,7 +281,7 @@
                   class="form-control"
                   name="SEO_MetaDescriptionTh"
                   ng-model="formData.SEO.MetaDescriptionTh"
-                  ng-pattern-restrict="^[^<>]*$"
+                   
                   maxlength="150"
                    />
               </div>
@@ -292,7 +292,7 @@
                   class="form-control"
                   name="SEO_MetaKeywordEn"
                   ng-model="formData.SEO.MetaKeywordEn"
-                  ng-pattern-restrict="^[^<>]*$"
+                   
                   maxlength="1000"
                   placeholder="Keywords seperated by comma"
                   />
@@ -304,7 +304,7 @@
                   class="form-control"
                   name="SEO_MetaKeywordTh"
                   ng-model="formData.SEO.MetaKeywordTh"
-                  ng-pattern-restrict="^[^<>]*$"
+                   
                   maxlength="1000"
                   placeholder="Keywords seperated by comma"
                   />

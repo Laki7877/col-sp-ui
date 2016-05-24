@@ -34,7 +34,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                         nc-label="Coupon Name"
                         nc-template-form="form.CouponName"
                         nc-template-options-path="couponForm/CouponName">
-                          <input class="form-control width-field-large" name="CouponName" ng-model="formData.CouponName" ng-pattern-restrict="^[^<>]*$" maxlength="255" required ng-disabled="manageable" />
+                          <input class="form-control width-field-large" name="CouponName" ng-model="formData.CouponName"   maxlength="255" required ng-disabled="manageable" />
                       </div>
                       <div nc-template="common/input/form-group-with-label"
                         nc-label="Coupon Code"

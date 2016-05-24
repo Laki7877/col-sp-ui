@@ -5,7 +5,7 @@
 			<div class="form-section-content">
 				<form name="form" class="ah-form" novalidate>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.ProductName" nc-label="Product Name" nc-template-options-path="searchForm/ProductName">
-		                    <input class="form-control" name="ProductName" ng-pattern-restrict="^[^<>]*$" maxlength="255" ng-model="formData.ProductName"/>
+		                    <input class="form-control" name="ProductName"   maxlength="255" ng-model="formData.ProductName"/>
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Pids" nc-label="PID" nc-template-options-path="searchForm/Pid">
 							    <ui-select ng-model="formData.Pids" pattern-restrict="^[^<>]*$" name="Pids" nc-tag-validator tagging tagging-label="" multiple nc-tag-field>
@@ -28,7 +28,7 @@
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Brands" nc-label="Brand Name" nc-template-options-path="searchForm/Brands">
 							    <ui-select ng-model="formData.Brands" name="Brands" nc-tag-validator multiple tagging-tokens=",|ENTER" tagging-label="" nc-tag-field>
-	                                <ui-select-match ng-pattern-restrict="^[^<>]*$" maxlength="255">
+	                                <ui-select-match   maxlength="255">
 	                                    {{$item.BrandNameEn}}
 	                                </ui-select-match>
 	                                <ui-select-choices repeat="item in options.Brands" refresh="options.refreshBrands($select.search)" refresh-delay="100">

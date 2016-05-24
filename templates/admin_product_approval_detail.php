@@ -88,7 +88,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Product Ap
 																					nc-template-options-path="adminApproveForm/NothingSpecial"
 																	nc-template-form="form.AdminApproveRejectReason">
 																	<textarea placeholder="Reason why you do not approve this product"
-																	class="form-control" name="AdminApproveRejectReason" ng-model="formData.AdminApprove.RejectReason" ng-pattern-restrict="^[^<>]*$" maxlength="1000">
+																	class="form-control" name="AdminApproveRejectReason" ng-model="formData.AdminApprove.RejectReason"   maxlength="1000">
 																	</textarea>
 																</div>
 																				<div class="form-group">
