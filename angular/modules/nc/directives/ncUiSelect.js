@@ -10,6 +10,7 @@ angular.module('nc')
 
                 var $select = ctrl[1];
                 var $model = ctrl[0];
+                
                 $select.onSelectCallback = function () {
                     var array = ($model.$modelValue || []);
                     var item = (array[array.length - 1] || "");
@@ -41,8 +42,13 @@ angular.module('nc')
                         $model.$modelValue.pop();
                         $model.$viewValue = $model.$modelValue;
                     }
-
                 };
+
+                attrs.$observe('ngModel', function(val) {
+                    $scope.$watch(val, function() {
+                        $select.onSelectCallback();
+                    });
+                });
 
                 attrs.$observe('ncMaxTagCount', function (val) {
                     if (!val) return;
