@@ -19,13 +19,17 @@
             <div nc-template="common/input/form-group-with-label"
                 nc-label="{{letter}}{{$index+1}} Image (Eng)"
                 class="margin-top-5">
-                  <button
-                  type="button"
-                  class="btn btn-default"
-                  ngf-accept="accept"
-                  ngf-select="upload($file, image.ImageEn, $index, $invalidFiles)"
-                  ngf-dimensions="validate($file, $width, $height, $index)"
-                  >Choose File</button>
+                  <div>
+                    <button
+                    type="button"
+                    class="btn btn-default"
+                    ngf-accept="accept"
+                    ngf-select="upload($file, image.ImageEn, $index, $invalidFiles)"
+                    ngf-dimensions="validate($file, $width, $height, $index)"
+                    >Choose File</button>
+                  </div>
+                  <div ng-if="width && width.length > $index">{{width[$index]}}x{{height[$index]}} pixels</div>
+                  <div ng-if="minWidth && minWidth.length > $index">width must be greater than {{minWidth[$index]}}</div>
             </div>
             <div ng-show="image.ImageEn.Url"
                 nc-template="common/input/form-group-with-label"
@@ -34,13 +38,17 @@
             </div>
             <div nc-template="common/input/form-group-with-label"
                 nc-label="{{letter}}{{$index+1}} Image (ไทย)">
-                  <button
-                  type="button"
-                  class="btn btn-default"
-                  ngf-accept="accept"
-                  ngf-select="upload($file, image.ImageTh, $index, $invalidFiles)"
-                  ngf-dimensions="validate($file, $width, $height, $index)"
-                  >Choose File</button>
+                  <div>
+                    <button
+                    type="button"
+                    class="btn btn-default"
+                    ngf-accept="accept"
+                    ngf-select="upload($file, image.ImageTh, $index, $invalidFiles)"
+                    ngf-dimensions="validate($file, $width, $height, $index)"
+                    >Choose File</button>
+                  </div>
+                  <div ng-if="width && width.length > $index">{{width[$index]}}x{{height[$index]}} pixels</div>
+                  <div ng-if="minWidth && minWidth.length > $index">width must be greater than {{minWidth[$index]}}</div>
             </div>
             <div ng-show="image.ImageTh.Url"
                 nc-template="common/input/form-group-with-label"

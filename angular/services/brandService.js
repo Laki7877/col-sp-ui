@@ -10,6 +10,7 @@ module.exports = function(common) {
 			BannerStatusTh: true,
 			BannerSmallStatusEn: true,
 			BannerSmallStatusTh: true,
+			FeatureProductStatus: true,
 			Status: 'NA'
 		};
 	}

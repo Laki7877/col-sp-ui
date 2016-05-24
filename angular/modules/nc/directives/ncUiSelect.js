@@ -39,8 +39,8 @@ angular.module('nc')
                     }
 
                     if (!_pass) {
-                        $model.$modelValue.pop();
-                        $model.$viewValue = $model.$modelValue;
+                        //$model.$modelValue.pop();
+                        //$model.$viewValue = $model.$modelValue;
                     }
                 };
 
