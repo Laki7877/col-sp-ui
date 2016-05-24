@@ -240,7 +240,8 @@ angular.module('umeSelect')
                     //but long enough to trigger a blur which deactivates choices
                     $timeout(function(){
                         scope.focused = false;
-                    }, 500)
+                        scope.searchText = "";
+                    }, 350)
                 }
 
                 scope.focus = function(broadcast){
