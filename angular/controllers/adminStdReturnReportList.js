@@ -1,17 +1,11 @@
 
-module.exports = function ($scope, $controller, StdReportSaleService, config) {
+module.exports = function ($scope, $controller, StdReportReturnService, config) {
     'ngInject';
-   $scope.formData = {
-        PID: null,
-        Brands: null,
-        ItemStatus: null,
-        CreatedDtFrom: null,
-        CreatedDtTo: null
-        };
+
     $scope.exportCsv = function() { 
         debugger;
-        var params = $scope.formData;
-        StdReportSaleService.exportCsv(params)
+        var params = {};
+        StdReportReturnService.exportCsv(params)
         .then(function(data){
 
             var csv = '';
@@ -25,7 +19,7 @@ module.exports = function ($scope, $controller, StdReportSaleService, config) {
 
             var filename, link;
 
-            filename = 'STDSale.csv';
+            filename = 'STDReturn.csv';
 
             link = document.createElement('a');
             link.setAttribute('href', 'data:attachment/csv,' + encodeURIComponent(csv));
@@ -42,9 +36,9 @@ module.exports = function ($scope, $controller, StdReportSaleService, config) {
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
-            url: '/admin/reports/std/saleforseller',
-            service: StdReportSaleService,
-            item: 'SaleReportForSeller',
+            url: '/admin/reports/std/return',
+            service: StdReportReturnService,
+            item: 'ReturnReport',
             order: 'OrderId',
             id: 'OrderId',
             actions: ['View', 'Delete'],

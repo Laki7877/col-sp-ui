@@ -1,21 +1,17 @@
 
-module.exports = function ($scope, $controller, StdReportSaleService, config) {
+module.exports = function ($scope, $controller, StdReportStockService, config) {
     'ngInject';
-   $scope.formData = {
-        PID: null,
-        Brands: null,
-        ItemStatus: null,
-        CreatedDtFrom: null,
-        CreatedDtTo: null
-        };
+    
     $scope.exportCsv = function() { 
         debugger;
-        var params = $scope.formData;
-        StdReportSaleService.exportCsv(params)
+        var params = {};
+
+        StdReportStockService.exportCsv(params)
         .then(function(data){
 
             var csv = '';
             var headers = data.split('\n')[0];
+
             csv += headers;
 
             for (var i = 1; i < data.split('\n').length; i++) {
@@ -25,7 +21,7 @@ module.exports = function ($scope, $controller, StdReportSaleService, config) {
 
             var filename, link;
 
-            filename = 'STDSale.csv';
+            filename = 'STDStock.csv';
 
             link = document.createElement('a');
             link.setAttribute('href', 'data:attachment/csv,' + encodeURIComponent(csv));
@@ -39,14 +35,15 @@ module.exports = function ($scope, $controller, StdReportSaleService, config) {
             // saveAs(blob, "Report.xls");
         })
     };
+        
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
-            url: '/admin/reports/std/saleforseller',
-            service: StdReportSaleService,
-            item: 'SaleReportForSeller',
-            order: 'OrderId',
-            id: 'OrderId',
+            url: '/admin/reports/std/stockstatus',
+            service: StdReportStockService,
+            item: 'StockStatusReport',
+            order: 'PID',
+            id: 'PID',
             actions: ['View', 'Delete'],
             bulks: ['Delete', 'Show', 'Hide'],
             filters: [

@@ -1,14 +1,25 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']) ?>
 
 <?php $this->start('page-body') ?>
-  <div ng-controller="AdminStdSaleReportSellerCtrl">
+  <div ng-controller="AdminStdStockReportCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <nc-page-title nc-title="Admin Standard Report" icon="fa-user">
+    <nc-page-title nc-title="Admin Standard Stock Report" icon="fa-user">
       <a class="btn btn-blue btn-width-xxl" ng-click="exportCsv()">Export CSV</a>
     </nc-page-title>
+    <div class="row search-section-wrapper">
+      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="{{id}}"></nc-bulk>
+      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Admin Name and Email'"></nc-search>
+      <!-- <nc-advance-search-button nc-model="advanceSearch"></nc-advance-search-button> -->
+      <button ng-click="filter_form = !filter_form" class="btn btn-default btn-toggle" type="button" style="margin-top:8px;margin-left:10px;color:#4899DD;">Advanced Search</button>
+    </div>
+  
+    <!-- <nc-filter nc-model="params._filter" nc-filter-options="filterOptions">
+    </nc-filter> -->
+
+    <!-- <nc-advance-search nc-model="advanceSearchParams" nc-advance-search-toggle="advanceSearch" nc-advance-search-event="onAdvanceSearch" nc-advance-search-options="advanceSearchOptions"></nc-advance-search> -->
     <div class="wrapper" style="margin-top:20px;">
-      <div class="form-section" >
-        <div class="form-section-header"><h2> Search</h2></div>
+      <div class="form-section" ng-show="filter_form">
+        <div class="form-section-header"><h2>Advance Search</h2></div>
         <div class="form-section-content">
           <form name="form" class="ah-form" novalidate>
             <!--id-->
@@ -64,7 +75,7 @@
                 <button class="button-size-normal btn btn-blue btn-width-xl" ng-click="search()">Search</button>
               </div>
               <div class="button-size-normal">
-                <button class="button-size-normal btn btn-green btn-width-xl" ng-click="exportCsv()" style="margin-left:10px;">Export Search</button>
+                <button class="button-size-normal btn btn-green btn-width-xl" ng-click="export_search()" style="margin-left:10px;">Export Search</button>
               </div>
               <div class="button-size-normal">
                 <a class="button-size-normal btn btn-white btn-width-xl" ng-click="clear()" style="margin-left:20px;">Clear</a>
@@ -80,28 +91,42 @@
         <thead>
           <tr class="table-head">
             <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
-            <th nc-sort="OrderId">Order ID</th>
-            <th nc-sort="OrderDate">Order Date</th>
-            <th nc-sort="TimeOfOrderDate">Time of Order Date</th>
-            <th nc-sort="ItemStatus">Item Status</th>
-            <th nc-sort="PID">Product ID</th>
-            <th nc-sort="ItemNameEN">Product Name</th>
-            <th nc-sort="QTY">Qty</th>
-            
+            <!-- <th nc-sort="NameEn">Admin Name</th>
+            <th nc-sort="Email">Email</th>
+            <th nc-sort="UserGroup.GroupNameEn">Role</th>
+            <th nc-sort="UpdatedDt">Modified</th>
+            <th class="action-column-lg">Action</th> -->
+            <th nc-sort="Pid">Product ID</th>
+            <th nc-sort="ProductNameEn">Product Name</th>
+            <th nc-sort="variant1">Variant1</th>
+            <th nc-sort="variant2">Variant2</th>
+            <th nc-sort="OnHand">OnHand</th>
+            <th nc-sort="Reserve">Reserve</th>
+            <th nc-sort="OnHold">OnHold</th>
+            <th nc-sort="StockAvailable">Stock Available</th>
+            <th nc-sort="Defect">Defect</th>
+            <th nc-sort="FirstReceiveQTY">First Receive</th>
             <!-- <th class="action-column-lg">Action</th> -->
         </tr>
         </thead>
         <tbody>
           <tr ng-repeat="row in list.data">
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
-            <td class="width_200">{{row.OrderId}}</td>
-            <td class="width_150">{{row.OrderDate}}</td>
-            <td class="width_200">{{row.TimeOfOrderDate}}</td>
-            <td class="width_150">{{row.ItemStatus}}</td>
-            <td class="width_120">{{row.PID}}</td>
-            <td class="width_300">{{row.ItemNameEN}}</td>
-            <td class="width_100">{{row.QTY}}</td>
-            
+            <!-- <td nc-link="/admin/accounts/{{row.UserId}}">{{row.NameEn}}</td>
+            <td class="width_200">{{row.Email}}</td>
+            <td class="width_300">{{row.UserGroup[0].GroupNameEn}}</td>
+            <td class="modified-column">{{row.UpdatedDt | dateTh}}</td>
+            <td class="action-column-lg"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td> -->
+            <td class="width_150">{{row.Pid}}</td>
+            <td class="width_200">{{row.ProductNameEn}}</td>
+            <td class="width_120">{{row.variant1}}</td>
+            <td class="width_120">{{row.variant2}}</td>
+            <td class="width_120">{{row.OnHand}}</td>
+            <td class="width_120">{{row.Reserve}}</td>
+            <td class="width_120">{{row.OnHold}}</td>
+            <td class="width_120">{{row.StockAvailable}}</td>
+            <td class="width_100">{{row.Defect}}</td>
+            <td class="width_100">{{row.FirstReceiveQTY}}</td>
             <!-- <td class="action-column-lg"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td> -->
           </tr>
         </tbody>

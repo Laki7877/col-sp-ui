@@ -14,13 +14,6 @@ class Redirect {
     public static function exception($params) {
 		return View::render('exception');
 	}
-	public static function permission($params) {
-		return View::render('401');
-	}
-	public static function adminPermission($params) {
-		return View::render('401');
-	}
-	
 	/*
 	public static function handleAuth($route) {
 		if(strpos($route['method'], 'Login') === FALSE && !isset($_COOKIE[__COOKIE_AUTH_KEY__])) {
@@ -67,7 +60,6 @@ Route::add('/shops/settings', 'ShopController::settings');
 Route::add('/shops/appearance', 'ShopController::appearance');
 
 //seller routing
-Route::add('/unauthorized', 'Redirect::permission');
 Route::add('/accounts', 'SellerController::listAccount');
 Route::add('/accounts/add', 'SellerController::addAccount');
 Route::add('/accounts/:id', 'SellerController::editAccount');
@@ -89,7 +81,6 @@ Route::add('/orders/:id', 'SellerController::editOrder');
 
 
 //admin routing 
-Route::add('/admin/unauthorized', 'Redirect::adminPermission');
 Route::add('/admin/onboarding', 'AdminController::onboarding');
 Route::add('/admin/attributes/add','AdminController::addAttribute');
 Route::add('/admin/attributes/:id','AdminController::editAttribute');
@@ -152,6 +143,9 @@ Route::add('/admin/buy1get1','AdminController::listBuy1Get1');
 Route::add('/admin/buy1get1/create','AdminController::addBuy1Get1');
 Route::add('/admin/buy1get1/:id','AdminController::editBuy1Get1');
 Route::add('/admin/reports/std/saleforseller', 'AdminController::listStandardReport');
+Route::add('/admin/reports/std/stockstatus', 'AdminController::listStockReport');
+Route::add('/admin/reports/std/onhold', 'AdminController::listOnHoldReport');
+Route::add('/admin/reports/std/return', 'AdminController::listReturnReport');
 
 
 //test route

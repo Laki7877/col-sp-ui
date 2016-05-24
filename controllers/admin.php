@@ -203,7 +203,7 @@ class AdminController extends Controller
 	// 	return View::render('admin_pending_product_group_add');
 	// }
 	public static function addGroupingProduct($param){
-		return View::render('admin_product_group_add');
+		return View::render('admin_product_grouping');
 	}
 
 	//On top credit
@@ -350,4 +350,18 @@ class AdminController extends Controller
 		return View::render('admin_report_std_saleforseller');
 	}
 
+	public static function listStockReport($params) 
+	{
+		return View::render('admin_report_std_stockstatus');
+	}
+
+	public static function listOnHoldReport($params) 
+	{
+		return View::render('admin_report_std_itemonhold');
+	}
+
+	public static function listReturnReport($params) 
+	{
+		return View::render('admin_report_std_return');
+	}
 }
