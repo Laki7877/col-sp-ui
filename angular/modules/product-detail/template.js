@@ -114,7 +114,7 @@ angular.module("productDetail").run(function($templateCache) {  'use strict';
     "        'show': $root.isInvalid(addProductForm['pair_Quantity' + $index]),\n" +
     "        'conditions' : addProductForm['pair_Quantity' + $index].$error\n" +
     "        }\n" +
-    "        }\"><input ng-model=pair.Quantity maxlength=5 nc-default-value=0 ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }\" ng-disabled=\"formData.ProductId || xspermit(44)\" ng-pattern=\"/^[0-9]+$/\" name=pair_Quantity{{$index}} class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
+    "        }\"><input ng-model=pair.Quantity maxlength=5 nc-default-value=0 ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }\" ng-disabled=\"!pair.Visibility || formData.ProductId || xspermit(44)\" ng-pattern=\"/^[0-9]+$/\" name=pair_Quantity{{$index}} class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
     "        'error' : {\n" +
     "        'messages': {\n" +
     "        'pattern': 'Only numbers allowed'\n" +
