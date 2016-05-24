@@ -73,6 +73,7 @@
                 nc-template-options-path="addAttributeSetForm/Tags"
                 nc-label="Search Tag">
                   <ui-select
+                  name="Tags"
                   ng-model="formData.Tags"
                   on-select="onKeywordAdded($item, $model)"
                   multiple
