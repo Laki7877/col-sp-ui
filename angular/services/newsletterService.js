@@ -3,7 +3,7 @@ module.exports = function(common) {
 
 	service.generate = function() {
 		return {
-			VisibleShopGroup: 'All'
+			VisibleShopGroup: 'AL'
 		};
 	};
 	service.deserialize = function(data) {
