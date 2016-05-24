@@ -18214,7 +18214,9 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
             GlobalCategory.getAll().then(function(data) {
               sharedDataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
               // console.log("Looking for ID ", globalCatId, sharedDataSet.GlobalCategories);
-              // sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
+              if(!_.has(sharedFormData.GlobalCategories[0], 'NameEn')){
+                  sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
+              }
               // console.log("Got ", sharedFormData.GlobalCategories[0]);
               breadcrumbs.globalCategory = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);
               // console.log(breadcrumbs, "breadcrumb");
@@ -19574,7 +19576,7 @@ require('./template.js');
 angular.module("umeSelect").run(["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('ume/choicelist',
-    "<div class=\"selectize-dropdown single demo-default\" ng-show=\"(searchText.length > 0 && focused) || (initialChoices && focused)\" style=\"width: 100%\"><div class=selectize-dropdown-content><div data-group=Default class=optgroup><div ng-show=item[groupBy] ng-repeat-start=\"item in (searchText.length > 0 ? choices : choices) track by $index\" class=optgroup-header>{{ item[groupBy] }}</div><div ng-repeat-end ng-click=pickItem(item) data-value={{item}} ng-class=\"{'ume-highlighted' : $index == highlightedIndex}\" data-selectable class=option>{{ itemValue(item) }}</div><div ng-if=\"(choices | filter : searchText).length == 0 && notFound && !loading\" data-selectable class=option>No result for search term '{{ searchText }}'</div></div></div></div>"
+    "<div class=\"selectize-dropdown single demo-default\" ng-show=\"(searchText.length > 0 && focused) || (initialChoices && focused)\" style=\"width: 100%\"><div class=selectize-dropdown-content><div data-group=Default class=optgroup><div ng-show=item[groupBy] ng-repeat-start=\"item in (searchText.length > 0 ? choices : choices) track by $index\" class=optgroup-header>{{ item[groupBy] }}</div><div ng-repeat-end ng-click=pickItem(item) data-value={{item}} ng-class=\"{'ume-highlighted' : $index == highlightedIndex}\" data-selectable class=option>{{ itemValue(item) }}</div><div ng-if=\"(choices | filter : searchText).length == 0 && notFound && !loading && searchText != ''\" data-selectable class=option>No result for search term '{{ searchText }}'</div></div></div></div>"
   );
 
 
