@@ -87,7 +87,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                             nc-template-form="form.DiscountAmount"
                             nc-template-options-path="couponForm/DiscountAmount"
                             nc-label="Discount Amount">
-                                <input type="text" name="DiscountAmount" class="form-control" ng-model="formData.Action.DiscountAmount" ng-disabled="manageable" ng-pattern-restrict="^[0-9]*(\.[0-9]{0,2})?$" required/>
+                                <input type="text" name="DiscountAmount" class="form-control" ng-model="formData.Action.DiscountAmount" ng-disabled="manageable" ng-pattern-restrict="^[0-9]*(\.[0-9]{0,2})?$" maxlength="10" required/>
                           </div>
                           </div>
                           <div ng-if="formData.Action.Type != 'AMOUNT'">
