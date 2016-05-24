@@ -18,6 +18,11 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 
 	//Pop up javascript warning message on leave
 	util.warningOnLeave(function() {
+		
+		if(options.freeToLeave){
+			return false;
+		}
+
 		return $scope.form.$dirty;
 	});
 

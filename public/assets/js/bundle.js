@@ -667,6 +667,11 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 
 	//Pop up javascript warning message on leave
 	util.warningOnLeave(function() {
+		
+		if(options.freeToLeave){
+			return false;
+		}
+
 		return $scope.form.$dirty;
 	});
 
@@ -4013,7 +4018,7 @@ module.exports = ["$scope", "$controller", "$window", "AdminMasterProductService
 	};
 }];
 },{}],30:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "BrandService", "Product", "AdminMasterProductService", "config", "util", "common", function($scope, $controller, BrandService, Product, AdminMasterProductService, config, util, common) {
+module.exports = ["$scope", "$controller", "BrandService", "$window", "Product", "AdminMasterProductService", "config", "util", "common", function($scope, $controller, BrandService, $window, Product, AdminMasterProductService, config, util, common) {
 	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -4022,7 +4027,11 @@ module.exports = ["$scope", "$controller", "BrandService", "Product", "AdminMast
 			id: 'ProductId',
 			url: '/admin/masters',
 			item: 'Master Product',
-			service: AdminMasterProductService
+			service: AdminMasterProductService,
+			freeToLeave: true,
+			onAfterSave: function(){
+				$window.location.href = '/admin/masters?success=true';
+			}
 		}
 	});
 	
@@ -16623,39 +16632,38 @@ angular.module('nc')
 var angular = require('angular');
 
 angular.module('nc')
-	.filter('nexclude', function() {
+  .filter('nexclude', function() {
     return function(arr, other, trackBy) {
-       if(!arr) arr = [];
-       return arr.filter(function(elem){
-          if(other == null || other === undefined) return true;
-          if(other instanceof Array){
-          	//throw away if elem matches any of the given other list
-          	var p = true;
-          	for(var j = 0; j < other.length; j++){
-                  var k = (elem == ((other[j] || null ) || null));
-          		if(angular.isDefined(trackBy)){
-                      var deepOther = _.get(other[j], trackBy, null);
-                      k = (_.get(elem, trackBy, null) == deepOther);
-                  }
-          		//matched atleast one, stop and throw away
-          		if(k){
-          			p = false;
-          			break;
-          		}
-          	}
-          	return p;
-          }else{
-          	//return true to keep
-          	if(!angular.isDefined(trackBy)){
-                  return elem != (other || null);
-              }
-
-              return elem[trackBy] != (other[trackBy] || null);
+      if (!arr) arr = [];
+      return arr.filter(function(elem) {
+        if (other == null || other === undefined) return true;
+        if (other instanceof Array) {
+          //throw away if elem matches any of the given other list
+          var p = true;
+          for (var j = 0; j < other.length; j++) {
+            var k = (elem == ((other[j] || null) || null));
+            if (angular.isDefined(trackBy)) {
+              var deepOther = _.get(other[j], trackBy, null);
+              k = (_.get(elem, trackBy, null) == deepOther);
+            }
+            //matched atleast one, stop and throw away
+            if (k) {
+              p = false;
+              break;
+            }
           }
-       });
+          return p;
+        } else {
+          //return true to keep
+          if (!angular.isDefined(trackBy)) {
+            return elem != (other || null);
+          }
+
+          return elem[trackBy] != (other[trackBy] || null);
+        }
+      });
     }
   });
-
 },{"angular":309}],158:[function(require,module,exports){
 angular.module('nc')
 	.filter('replace', function() {
@@ -18505,7 +18513,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-keywords',
-    "<div class=form-section><div class=form-section-header><h2>Search Tags</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Search Tags\" nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><you-me its-complicated=true hide-icon=true placeholder=\"Enter keyword\" freedom-of-speech=true max-tag-count=20 ng-disabled=xspermit(35) ng-model=formData.Tags choices=formData.AttributeSet.AttributeSetTagMaps></you-me></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags).length > 1\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | exclude: formData.Tags\" ng-click=\"(formData.Tags.indexOf(tag) == -1) && formData.Tags.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Search Tags</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Search Tags\" nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><you-me its-complicated=true hide-icon=true placeholder=\"Enter keyword\" freedom-of-speech=true max-tag-count=20 ng-disabled=xspermit(35) ng-model=formData.Tags choices=formData.AttributeSet.AttributeSetTagMaps></you-me></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | nexclude: formData.Tags).length > 0\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | nexclude: formData.Tags\" ng-click=\"(formData.Tags.indexOf(tag) == -1) && formData.Tags.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
   );
 
 
