@@ -60,7 +60,7 @@
 																							<td>23/06/2016  12:30</td>
 																							<td><strong class="color-green">90%</strong></td>
 																							<td>
-																									<button type="button" class="btn btn-white btn-width-xxl disabled">Download File</button>&nbsp;&nbsp;
+																									<button type="button" class="btn btn-primary btn-width-xxl disabled">Download File</button>&nbsp;&nbsp;
 																									<button type="button" class="btn btn-white btn-width-xl">Cancel</button>
 																							</td>
 																					</tr>
