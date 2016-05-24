@@ -1,11 +1,11 @@
 
-module.exports = function ($scope, $controller, StdReportSaleService, config) {
+module.exports = function ($scope, $controller, StdReportOnHoldService, config) {
     'ngInject';
-
+    
     $scope.exportCsv = function() { 
         debugger;
         var params = {};
-        StdReportSaleService.exportCsv(params)
+        StdReportOnHoldService.exportCsv(params)
         .then(function(data){
 
             var csv = '';
@@ -19,7 +19,7 @@ module.exports = function ($scope, $controller, StdReportSaleService, config) {
 
             var filename, link;
 
-            filename = 'STDSale.xlsx';
+            filename = 'STDOnHold.xlsx';
 
             link = document.createElement('a');
             link.setAttribute('href', 'data:attachment/csv,' + encodeURIComponent(csv));
@@ -36,9 +36,9 @@ module.exports = function ($scope, $controller, StdReportSaleService, config) {
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
-            url: '/admin/reports/std/saleforseller',
-            service: StdReportSaleService,
-            item: 'SaleReportForSeller',
+            url: '/admin/reports/std/onhold',
+            service: StdReportOnHoldService,
+            item: 'OnHoldReport',
             order: 'OrderId',
             id: 'OrderId',
             actions: ['View', 'Delete'],
