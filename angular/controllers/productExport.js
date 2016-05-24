@@ -1,4 +1,4 @@
-module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $filter) {
+module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $filter, $interval) {
 	'ngInject';
 	$scope.ProductList = [];
 	$scope.SELECT_ALL = false;
@@ -8,6 +8,8 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 	$scope.selectAllAttributeSets = false;
 	$scope.columnCount = 3;
 	$scope.availableFieldsColumn = [];
+	var exportProgressInterval;
+
 	Product.getExportableFields().then(function(data){
 		data.forEach(function(record){
 			var groupName = record.GroupName;
@@ -106,12 +108,13 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 	}
 
 	$scope.startExportProducts = function () {
-		$scope.exporter = {
-			progress: 10,
-			title: 'Exporting Product...'
-		};
+		// $scope.exporter = {
+		// 	progress: 10,
+		// 	title: 'Requesting product export...'
+		// };
 
-		$("#export-product").modal('show');
+		// $("#export-product").modal('show');
+		$scope.confirmExportProducts();
 	};
 
 	$scope.alert = new NcAlert();
@@ -129,7 +132,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 			$scope.reloadData();
 		};
 
-		$scope.exporter.progress = 15;
+		// $scope.exporter.progress = 15;
 		var blobs = [];
 
 		var body = {};
@@ -149,17 +152,35 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 
 		Product.export(body).then(function (result) {
 
-			blobs.push(result);
-			var file = new Blob(blobs, {type: 'application/csv'});
-			var fileURL = URL.createObjectURL(file);
-			$scope.exporter.href = fileURL;
-			$scope.exporter.download = fileName;
-			$scope.exporter.progress = 100;
-			//$scope.exporter.title = 'Export Complete'
-				a.href = fileURL;
-			a.click();
+			// $("#export-product").modal('hide');
+			$scope.exportAsyncDelegate = {
+				active: true,
+				progress: 0,
+				requestDate: new Date(),
+				endDate: null
+			}
 
-			$("#export-product-progressing").modal('hide');
+			exportProgressInterval = $interval(function(){
+				Product.exportProgress().then(function(result){
+					$scope.exportAsyncDelegate.progress = result;
+				}, function(){
+					$interval.cancel(exportProgressInterval);
+					$scope.alert.error("An error has occurred while exporting products.");
+					$scope.exportAsyncDelegate.active = false;
+				});
+			}, 5000);
+			// blobs.push(result);
+			// var file = new Blob(blobs, {type: 'application/csv'});
+			// var fileURL = URL.createObjectURL(file);
+			// $scope.exporter.href = fileURL;
+			// $scope.exporter.download = fileName;
+			// $scope.exporter.progress = 100;
+			// //$scope.exporter.title = 'Export Complete'
+			// 	a.href = fileURL;
+			// a.click();
+
+			// $("#export-product-progressing").modal('hide');
+
 		}, error);
 	}
 

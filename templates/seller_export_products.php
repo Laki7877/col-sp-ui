@@ -38,7 +38,7 @@
 								<span>Number of products selected: </span> <i>ALL PRODUCTS</i>
 							</div>
 
-							<div class="row">
+							<div class="row" ng-show="exportAsyncDelegate.active">
 									<div class="col-xs-12">
 											<div class="form-section">
 													<div class="form-section-header">
@@ -56,9 +56,10 @@
 																			</thead>
 																			<tbody>
 																					<tr>
-																							<td>23/06/2016  10:30</td>
-																							<td>23/06/2016  12:30</td>
-																							<td><strong class="color-green">90%</strong></td>
+																							<td>{{ exportAsyncDelegate.requestDate | datetimeTh }}</td>
+																							<td ng-if="exportAsyncDelegate.progress >= 100">{{ exportAsyncDelegate.endDate | datetimeTh }}</td>
+																							<td ng-if="exportAsyncDelegate.progress < 100">In Progress..</td>
+																							<td><strong class="color-green">{{ exportAsyncDelegate.progress }} %</strong></td>
 																							<td>
 																									<button type="button" class="btn btn-primary btn-width-xxl disabled">Download File</button>&nbsp;&nbsp;
 																									<button type="button" class="btn btn-white btn-width-xl">Cancel</button>
