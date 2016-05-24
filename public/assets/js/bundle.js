@@ -1109,6 +1109,9 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 			}
 
 			fd.Variants.map(function(o) {
+				if(!o.MappedProduct){
+					return o;
+				}
 				o.Pid = o.MappedProduct.Pid;
 				delete o.MappedProduct;
 				return o;
@@ -1132,6 +1135,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 				$scope.loading = false;
 			});
 		} catch (ex) {
+			//EASY FIX
 			return $scope.alert.error(
 				"Please make sure all fields are filled correctly.");
 			$scope.loading = false;
@@ -8067,6 +8071,7 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 				Product.exportProgress().then(function(result){
 					$scope.exportAsyncDelegate.progress = result;
 					$interval.cancel(exportProgressInterval);
+					$scope.exportAsyncDelegate.endDate = new Date();
 				}, function(){
 					$interval.cancel(exportProgressInterval);
 					$scope.alert.error("An error has occurred while exporting products.");

@@ -162,6 +162,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 				Product.exportProgress().then(function(result){
 					$scope.exportAsyncDelegate.progress = result;
 					$interval.cancel(exportProgressInterval);
+					$scope.exportAsyncDelegate.endDate = new Date();
 				}, function(){
 					$interval.cancel(exportProgressInterval);
 					$scope.alert.error("An error has occurred while exporting products.");

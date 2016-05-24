@@ -28,6 +28,9 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 			}
 
 			fd.Variants.map(function(o) {
+				if(!o.MappedProduct){
+					return o;
+				}
 				o.Pid = o.MappedProduct.Pid;
 				delete o.MappedProduct;
 				return o;
@@ -51,6 +54,7 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 				$scope.loading = false;
 			});
 		} catch (ex) {
+			//EASY FIX
 			return $scope.alert.error(
 				"Please make sure all fields are filled correctly.");
 			$scope.loading = false;
