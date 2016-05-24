@@ -635,6 +635,12 @@ user-select: none;
   color: $color-grey;
 }
 
+.btn-primary.disabled{
+	color: $color-light-grey;
+	background: $color-dark-grey;
+	border-color: $color-dark-grey;
+}
+
 
 /*---- Modal Custom ----*/
 .modal-custom {
