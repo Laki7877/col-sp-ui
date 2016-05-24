@@ -9,7 +9,7 @@
   </div>
 </div>
 <div class="modal-body">
-  <form ng-show="!saving && !loading" name="form" class="ah-form margin-top-20">
+  <form ng-show="!saving && !loading" name="form" class="ah-form margin-top-20" novalidate>
     <div class="row">
       <div class="col-xs-12">
         <div class="form-section-content">
@@ -21,10 +21,8 @@
               type="text"
               class="form-control"
               ng-model="formData.Subject"
-               
               maxlength="255"
-              required
-              />
+              required/>
           </div>
           <div nc-template="common/input/form-group-with-label"
             nc-template-options-path="addNewsletterForm/Image"
@@ -53,7 +51,6 @@
             <textarea
               class="form-control"
               ng-model="formData.Description"
-               
               maxlength="2000"
               required></textarea>
           </div>

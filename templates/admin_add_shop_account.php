@@ -69,6 +69,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 										class="form-control"
 										name="DomainName"
 										ng-model="formData.DomainName"
+										maxlength="255"
 										/>
 									</div>
 									<!-- URL Key -->
@@ -195,7 +196,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 										name="MaxLocalCategory"
 										ng-model="formData.MaxLocalCategory"
 										ng-pattern-restrict="^[0-9]*$"
-										placeholder="8"
+										placeholder="50"
 										maxlength="5"
 										/>
 									</div>
@@ -425,6 +426,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 										ng-pattern-restrict="^[0-9a-zA-Z]*$"
 										ng-maxlength="20"
 										ng-minlength="8"
+										maxlength="20"
 										ng-required="!(id > 0)" />
 									</div>
 									<!-- Confirm Password -->
@@ -448,6 +450,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 										ng-model="formData.ShopOwner.ConfirmPassword"
 										ng-class="{ 'has-error' : $root.isInvalid(form.ConfirmPassword) }"
 										ng-match="{{formData.ShopOwner.Password}}"
+										maxlength="20"
 										ng-required="!(id > 0)" />
 									</div>
 								</div>

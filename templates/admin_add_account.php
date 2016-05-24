@@ -186,7 +186,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Admin Acco
 							                  ng-model="formData.Password"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Password) }"
 							                  ng-pattern="/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/"
-                							   
+                							  maxlength="20"
 							                  ng-maxlength="20"
 							                  ng-minlength="8"
 							                  ng-required="!(id > 0)" />
@@ -210,6 +210,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Admin Acco
 							                  type="{{$parent.inputType}}"
 							                  name="ConfirmPassword"
 							                  ng-model="formData.ConfirmPassword"
+							                  maxlength="20"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.ConfirmPassword) }"
 							                  ng-match="{{formData.Password}}"
 							                  ng-required="!(id > 0)" />

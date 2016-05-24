@@ -148,6 +148,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Coupons'])
                       </div>
                       <div ng-if="formData.Conditions.Order[0].Type != 'NoFilter'">
                         <div nc-template="common/input/form-group-with-label"
+                          nc-template-form="form.Condition_Value"
                           nc-label="Price"
                           nc-template-options-path="couponForm/Condition_Value">
                           <input name="Condition_Value" class="form-control" ng-model="formData.Conditions.Order[0].Value" ng-pattern-restrict="^[0-9]*(\.[0-9]{0,2})?$" maxlength="10" placeholder="0" required/>
@@ -166,12 +167,13 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Coupons'])
                             <ui-select-choices repeat="i.value as i in filters">{{ i.name }}</ui-select-choices>
                         </ui-select>
                       </div>
-                      <div ng-show="formData.Conditions.FilterBy.Type == 'GlobalCategory'"
-                        nc-template="common/input/form-group-with-label"
-                        nc-template-options-path="couponForm/FilterByValue"
-                        nc-template-form="form.FilterByValue"
-                        nc-label="Include">
-                        <nc-breadcrumb-select placeholder="Search for Global Category" nc-breadcrumb-select-options="{ tagCount: 50 }" name="FilterByValue" nc-model="formData.Conditions.FilterBy.GlobalCategories" nc-breadcrumb-select-tree="categories" required></nc-breadcrumb-select>
+                      <div ng-if="formData.Conditions.FilterBy.Type == 'GlobalCategory'">
+                        <div nc-template="common/input/form-group-with-label"
+                          nc-template-options-path="couponForm/FilterByValue"
+                          nc-template-form="form.FilterByValue"
+                          nc-label="Include">
+                          <nc-breadcrumb-select placeholder="Search for Global Category" nc-breadcrumb-select-options="{ tagCount: 50 }" name="FilterByValue" nc-model="formData.Conditions.FilterBy.GlobalCategories" nc-breadcrumb-select-tree="categories" ng-required="true"></nc-breadcrumb-select>
+                        </div>
                       </div>
                     </div>
                   </div>
