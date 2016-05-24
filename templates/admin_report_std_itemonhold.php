@@ -4,21 +4,10 @@
   <div ng-controller="AdminStdOnHoldReportCtrl">
     <nc-alert nc-model="alert"></nc-alert>
     <nc-page-title nc-title="Admin Item On Hold Report" icon="fa-user">
-      <a class="btn btn-blue btn-width-xxl" ng-click="exportCsv()">Export CSV</a>
+      <!-- <a class="btn btn-blue btn-width-xxl" ng-click="exportCsv()">Export CSV</a> -->
     </nc-page-title>
-    <div class="row search-section-wrapper">
-      <nc-bulk nc-model="bulkContainer" nc-bulk-fn="bulks" nc-bulk-track-by="{{id}}"></nc-bulk>
-      <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Admin Name and Email'"></nc-search>
-      <!-- <nc-advance-search-button nc-model="advanceSearch"></nc-advance-search-button> -->
-      <button ng-click="filter_form = !filter_form" class="btn btn-default btn-toggle" type="button" style="margin-top:8px;margin-left:10px;color:#4899DD;">Advanced Search</button>
-    </div>
-  
-    <!-- <nc-filter nc-model="params._filter" nc-filter-options="filterOptions">
-    </nc-filter> -->
-
-    <!-- <nc-advance-search nc-model="advanceSearchParams" nc-advance-search-toggle="advanceSearch" nc-advance-search-event="onAdvanceSearch" nc-advance-search-options="advanceSearchOptions"></nc-advance-search> -->
     <div class="wrapper" style="margin-top:20px;">
-      <div class="form-section" ng-show="filter_form">
+      <div class="form-section">
         <div class="form-section-header"><h2>Advance Search</h2></div>
         <div class="form-section-content">
           <form name="form" class="ah-form" novalidate>
@@ -68,14 +57,14 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="form-group">
               <div class="width-label"><label class="control-label"></label></div>
               <div class="button-size-normal">
                 <button class="button-size-normal btn btn-blue btn-width-xl" ng-click="search()">Search</button>
               </div>
               <div class="button-size-normal">
-                <button class="button-size-normal btn btn-green btn-width-xl" ng-click="export_search()" style="margin-left:10px;">Export Search</button>
+                <button class="button-size-normal btn btn-green btn-width-xl" ng-click="exportCsv()" style="margin-left:10px;">Export Search</button>
               </div>
               <div class="button-size-normal">
                 <a class="button-size-normal btn btn-white btn-width-xl" ng-click="clear()" style="margin-left:20px;">Clear</a>
@@ -90,7 +79,7 @@
       <table class="table table-curved">
         <thead>
           <tr class="table-head">
-            <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
+            <!-- <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th> -->
             <th nc-sort="PID">Product ID</th>
             <th nc-sort="Itemname">Product Name</th>
             <th nc-sort="OnHoldDate">On Hold Date</th>
@@ -99,7 +88,7 @@
         </thead>
         <tbody>
           <tr ng-repeat="row in list.data">
-            <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
+            <!-- <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td> -->
             <td class="width_150">{{row.PID}}</td>
             <td class="width_200">{{row.Itemname}}</td>
             <td class="width_120">{{row.OnHoldDate}}</td>

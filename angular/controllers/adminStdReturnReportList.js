@@ -1,10 +1,16 @@
 
 module.exports = function ($scope, $controller, StdReportReturnService, config) {
     'ngInject';
-
+    $scope.formData = {
+        PID: null,
+        Brands: null,
+        ItemStatus: null,
+        CreatedDtFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        CreatedDtTo: new Date()
+        };
     $scope.exportCsv = function() { 
         debugger;
-        var params = {};
+        var params = $scope.formData;
         StdReportReturnService.exportCsv(params)
         .then(function(data){
 

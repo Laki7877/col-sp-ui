@@ -1,12 +1,12 @@
 
 module.exports = function ($scope, $controller, StdReportSaleService, config) {
     'ngInject';
-   $scope.formData = {
+    $scope.formData = {
         PID: null,
         Brands: null,
         ItemStatus: null,
-        CreatedDtFrom: null,
-        CreatedDtTo: null
+        CreatedDtFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        CreatedDtTo: new Date()
         };
     $scope.exportCsv = function() { 
         debugger;
@@ -39,6 +39,7 @@ module.exports = function ($scope, $controller, StdReportSaleService, config) {
             // saveAs(blob, "Report.xls");
         })
     };
+
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {

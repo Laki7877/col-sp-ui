@@ -1,10 +1,16 @@
 
 module.exports = function ($scope, $controller, StdReportOnHoldService, config) {
     'ngInject';
-    
+    $scope.formData = {
+        PID: null,
+        Brands: null,
+        ItemStatus: null,
+        CreatedDtFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        CreatedDtTo: new Date()
+        };
     $scope.exportCsv = function() { 
         debugger;
-        var params = {};
+        var params = $scope.formData;
         StdReportOnHoldService.exportCsv(params)
         .then(function(data){
 
@@ -33,6 +39,7 @@ module.exports = function ($scope, $controller, StdReportOnHoldService, config) 
             // saveAs(blob, "Report.xls");
         })
     };
+
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {

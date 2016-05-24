@@ -4,58 +4,11 @@
   <div ng-controller="AdminStdSaleReportSellerCtrl">
     <nc-alert nc-model="alert"></nc-alert>
     <nc-page-title nc-title="Admin Standard Report" icon="fa-user">
-      <a class="btn btn-blue btn-width-xxl" ng-click="exportCsv()">Export CSV</a>
+      <!-- <a class="btn btn-blue btn-width-xxl" ng-click="exportCsv()">Export CSV</a> -->
     </nc-page-title>
-    <div class="wrapper" style="margin-top:20px;">
-      <div class="form-section" >
-        <div class="form-section-header"><h2> Search</h2></div>
-        <div class="form-section-content">
-          <form name="form" class="ah-form" novalidate>
-            <!--id-->
-            <div nc-template="common/input/form-group-with-label" nc-label="PID" nc-template-form="form.Pids">
-              <input class="form-control width-field-large" name="Pids" ng-model="formData.PID">
-    </div>
-            <!--Brand Name-->
-            <div nc-template="common/input/form-group-with-label" nc-label="Brand Name" nc-template-form="form.Brands">
-              <input class="form-control width-field-large" name="Brands" ng-model="formData.Brands">
-            </div>
-            <!--Global Category Name-->
-            <div nc-template="common/input/form-group-with-label" nc-label="Global Categories" nc-template-form="form.GlobalCategories">
-              <input class="form-control width-field-large" name="GlobalCategories" ng-model="formData.GlobalCategories">
-            </div>
-            <!--Item Status-->
-            <div nc-template="common/input/form-group-with-label" nc-template-form="form.ItemStatus" nc-label="Item Status">
-              <select ng-model="formData.ItemStatus" class="form-control" name="ItemStatus">
-                <option selected value="-" disabled>- Select Status Option -</option>
-                <option value="Procressing">Procressing</option>
-                <option value="Delivered">Delivered</option>
-                <option value="New">New</option>
-              </select>
-            </div>
-            <!--Time Of Order Date-->
-            <div nc-template="common/input/form-group-with-label-multiple" nc-template-form="form.CreatedDate" nc-label="Time Of Order Date" nc-template-options-path="searchForm/CreatedDate">
-              <div class="width-field-small-input">
-                <div class="dropdown">
-                  <a class="dropdown-toggle" id="dropdown" role="button" data-toggle="dropdown" data-target="#" href="#">
-                    <input readonly style="background-color:white" type="text" class="input-icon-calendar form-control" value="{{ formData.CreatedDtFrom | date: 'dd/MM/yy HH:mm' }}" />
-                  </a>
-                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <datetimepicker name="CreatedDate" ng-date-before="{{formData.CreatedDtTo}}" data-ng-model="formData.CreatedDtFrom" data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'hour' }" />
-                  </ul>
-                </div>
-              </div>
-  
-    <!-- <nc-advance-search nc-model="advanceSearchParams" nc-advance-search-toggle="advanceSearch" nc-advance-search-event="onAdvanceSearch" nc-advance-search-options="advanceSearchOptions"></nc-advance-search> -->
-
-   <!--  <div ng-hide="filter_form">
-      <div class="form-section-header"><h2>SEO</h2></div>
-        <div class="form-section-content">
-        </div>
-      </div>
-    </div> -->
 
     <div class="wrapper" style="margin-top:20px;">
-      <div class="form-section" ng-show="filter_form">
+      <div class="form-section">
         <div class="form-section-header"><h2>Advance Search</h2></div>
         <div class="form-section-content">
           <form name="form" class="ah-form" novalidate>
@@ -127,7 +80,7 @@
       <table class="table table-curved">
         <thead>
           <tr class="table-head">
-            <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
+            <!-- <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th> -->
             <th nc-sort="OrderId">Order ID</th>
             <th nc-sort="OrderDate">Order Date</th>
             <th nc-sort="TimeOfOrderDate">Time of Order Date</th>
@@ -141,7 +94,7 @@
         </thead>
         <tbody>
           <tr ng-repeat="row in list.data">
-            <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
+            <!-- <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td> -->
             <td class="width_200">{{row.OrderId}}</td>
             <td class="width_150">{{row.OrderDate}}</td>
             <td class="width_200">{{row.TimeOfOrderDate}}</td>
