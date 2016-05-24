@@ -32,9 +32,6 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 					if(_.isNil(data)) {
 						return;
 					}
-					if(_.isNil(old)) {
-
-					}
 					else if(data != old) {
 						_.unset($scope.formData, ['City']);
 					}
@@ -44,9 +41,6 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 				$scope.$watch('formData.City', function(data, old) {
 					if(_.isNil(data)) {
 						return;
-					}
-					if(_.isNil(old)) {
-						
 					}
 					else if(data != old) {
 						_.unset($scope.formData, ['District']);
@@ -58,9 +52,6 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 				$scope.$watch('formData.District', function(data, old) {
 					if(_.isNil(data)) {
 						return;
-					}
-					if(_.isNil(old)) {
-						
 					}
 					else if(data != old) {
 						_.unset($scope.formData, ['PostalCode']);

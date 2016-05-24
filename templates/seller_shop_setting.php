@@ -255,12 +255,12 @@
 														</ui-select-choices>
 													</ui-select>
 						                    </div>
-						                    <div ng-show="formData.Province"
-						                    	nc-template="common/input/form-group-with-label"
+						                    <div ng-if="formData.Province">
+						                    <div nc-template="common/input/form-group-with-label"
 						                    	nc-template-form="form.City"
 						                    	nc-label="City"
 						                    	nc-template-options-path="addShopAccountForm/City">
-													<ui-select name="City" ng-model="formData.City" search-enabled="false" ng-disabled="true">
+													<ui-select name="City" ng-model="formData.City" search-enabled="false">
 														<ui-select-match placeholder="- Select City -">
 															<span ng-bind="$select.selected.CityName"></span>
 														</ui-select-match>
@@ -269,12 +269,13 @@
 														</ui-select-choices>
 													</ui-select>
 						                    </div>
-						                    <div ng-show="formData.City"
-						                    	nc-template="common/input/form-group-with-label"
+							                </div>
+						                    <div ng-if="formData.City">
+						                    <div nc-template="common/input/form-group-with-label"
 						                    	nc-template-form="form.District"
 						                    	nc-label="District"
 						                    	nc-template-options-path="addShopAccountForm/District">
-													<ui-select name="District" ng-model="formData.District" search-enabled="false" ng-disabled="true">
+													<ui-select name="District" ng-model="formData.District" search-enabled="false">
 														<ui-select-match placeholder="- Select District -">
 															<span ng-bind="$select.selected.DistrictName"></span>
 														</ui-select-match>
@@ -283,13 +284,22 @@
 														</ui-select-choices>
 													</ui-select>
 						                    </div>
-						                    <div ng-show="formData.City"
-						                    	nc-template="common/input/form-group-with-label"
+							                </div>
+											<div ng-if="formData.District">
+						                    <div nc-template="common/input/form-group-with-label"
 						                    	nc-template-form="form.PostalCode"
 						                    	nc-template-options-path="addShopAccountForm/PostalCode"
 						                    	nc-label="Postal Code">
-													<input name="PostalCode" class="form-control" ng-model="formData.PostalCode"  ng-disabled="true"/>
+													<ui-select name="PostalCode" ng-model="formData.PostalCode" search-enabled="false">
+														<ui-select-match placeholder="- Select Postal Code -">
+															<span ng-bind="$select.selected.PostCode"></span>
+														</ui-select-match>
+														<ui-select-choices style="max-height:300px;" position="down" repeat="item in postals">
+															<span ng-bind="item.PostCode"></span>
+														</ui-select-choices>
+													</ui-select>
 						                    </div>
+						          		    </div>
 						                    <div class="margin-top-40"
 						                    	nc-template="common/input/form-group-with-label"
 						                    	nc-template-form="form.PhoneNumber"

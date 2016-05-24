@@ -4636,7 +4636,7 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", functi
         var K = _.extend({}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams));
         K._limit = 2147483647;
         $scope.searchCriteria = $base64.encode(JSON.stringify(K));
-
+        
         $timeout(function(){
             console.log('searchCriteria', $scope.searchCriteria);
             document.getElementById('exportForm').submit();
@@ -4896,9 +4896,6 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 					if(_.isNil(data)) {
 						return;
 					}
-					if(_.isNil(old)) {
-
-					}
 					else if(data != old) {
 						_.unset($scope.formData, ['City']);
 					}
@@ -4908,9 +4905,6 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 				$scope.$watch('formData.City', function(data, old) {
 					if(_.isNil(data)) {
 						return;
-					}
-					if(_.isNil(old)) {
-						
 					}
 					else if(data != old) {
 						_.unset($scope.formData, ['District']);
@@ -4922,9 +4916,6 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 				$scope.$watch('formData.District', function(data, old) {
 					if(_.isNil(data)) {
 						return;
-					}
-					if(_.isNil(old)) {
-						
 					}
 					else if(data != old) {
 						_.unset($scope.formData, ['PostalCode']);
@@ -15473,7 +15464,7 @@ angular.module('nc')
 
 								console.log(file);
 
-								if (scope.options.validateFileSize && file.size < scope.options.validateFileSize) {
+								if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
 									scope.onfail('onfilesize');
 									return;
 								}
@@ -15552,7 +15543,7 @@ angular.module('nc')
 								
 								console.log(file);
 
-								if (scope.options.validateFileSize && file.size < scope.options.validateFileSize) {
+								if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
 									scope.onfail('onfilesize');
 									return;
 								}
@@ -15663,6 +15654,7 @@ angular.module('nc')
 				scope.actions = [{
 					//Zoom
 					fn: function(item, array, index) {
+						console.log(item);
 						$uibModal.open({
 							size: 'product-image',
 							template: '<img ng-src="{{url}}" alt=""/>',
@@ -15671,7 +15663,7 @@ angular.module('nc')
 							}],
 							resolve: {
 								url: function() {
-									return item.url;
+									return item.Url;
 								}
 							}
 						});
@@ -15870,7 +15862,7 @@ angular.module('nc')
 
 						console.log(file);
 
-						if (scope.options.validateFileSize && file.size < scope.options.validateFileSize) {
+						if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
 							scope.onfail('onfilesize');
 							return;
 						}
@@ -16602,8 +16594,8 @@ angular.module('nc')
                 var $select = ctrl[1];
                 var $model = ctrl[0];
                 
-                $select.onSelectCallback = function () {
-                    var array = ($model.$modelValue || []);
+                $select.onSelectCallback = function (array) {
+                    var array = array ? array : ($model.$modelValue || []);
                     var item = (array[array.length - 1] || "");
                     var _pass = true;
                     $model.$error = {};
@@ -16611,22 +16603,15 @@ angular.module('nc')
                     if (array.length > maxTagCount) {
                         $model.$error.maxtagcount = true;
                         _pass = false;
-                    } else {
-                        _.unset($model.$error, ['maxtagcount']);
                     }
-
                     if (item.length > maxTagLength) {
                         $model.$error.maxtaglength = true;
                         _pass = false;
-                    } else {
-                        _.unset($model.$error, ['maxtaglength']);
                     }
 
                     if (tagPattern && !item.ValueEn.match(tagPattern)) {
                         $model.$error.pattern = true;
                         _pass = false;
-                    } else {
-                        _.unset($model.$error, ['pattern']);
                     }
 
                     if (!_pass) {
@@ -16636,8 +16621,8 @@ angular.module('nc')
                 };
 
                 attrs.$observe('ngModel', function(val) {
-                    $scope.$watch(val, function() {
-                        $select.onSelectCallback();
+                    $scope.$watch(val, function(o) {
+                        $select.onSelectCallback(o);
                     });
                 });
 

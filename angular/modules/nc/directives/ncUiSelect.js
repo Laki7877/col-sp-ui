@@ -11,8 +11,8 @@ angular.module('nc')
                 var $select = ctrl[1];
                 var $model = ctrl[0];
                 
-                $select.onSelectCallback = function () {
-                    var array = ($model.$modelValue || []);
+                $select.onSelectCallback = function (array) {
+                    var array = array ? array : ($model.$modelValue || []);
                     var item = (array[array.length - 1] || "");
                     var _pass = true;
                     $model.$error = {};
@@ -20,22 +20,15 @@ angular.module('nc')
                     if (array.length > maxTagCount) {
                         $model.$error.maxtagcount = true;
                         _pass = false;
-                    } else {
-                        _.unset($model.$error, ['maxtagcount']);
                     }
-
                     if (item.length > maxTagLength) {
                         $model.$error.maxtaglength = true;
                         _pass = false;
-                    } else {
-                        _.unset($model.$error, ['maxtaglength']);
                     }
 
                     if (tagPattern && !item.ValueEn.match(tagPattern)) {
                         $model.$error.pattern = true;
                         _pass = false;
-                    } else {
-                        _.unset($model.$error, ['pattern']);
                     }
 
                     if (!_pass) {
@@ -45,8 +38,8 @@ angular.module('nc')
                 };
 
                 attrs.$observe('ngModel', function(val) {
-                    $scope.$watch(val, function() {
-                        $select.onSelectCallback();
+                    $scope.$watch(val, function(o) {
+                        $select.onSelectCallback(o);
                     });
                 });
 

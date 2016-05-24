@@ -305,7 +305,7 @@ angular.module('nc')
 
 								console.log(file);
 
-								if (scope.options.validateFileSize && file.size < scope.options.validateFileSize) {
+								if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
 									scope.onfail('onfilesize');
 									return;
 								}
@@ -384,7 +384,7 @@ angular.module('nc')
 								
 								console.log(file);
 
-								if (scope.options.validateFileSize && file.size < scope.options.validateFileSize) {
+								if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
 									scope.onfail('onfilesize');
 									return;
 								}
@@ -495,6 +495,7 @@ angular.module('nc')
 				scope.actions = [{
 					//Zoom
 					fn: function(item, array, index) {
+						console.log(item);
 						$uibModal.open({
 							size: 'product-image',
 							template: '<img ng-src="{{url}}" alt=""/>',
@@ -503,7 +504,7 @@ angular.module('nc')
 							},
 							resolve: {
 								url: function() {
-									return item.url;
+									return item.Url;
 								}
 							}
 						});
@@ -702,7 +703,7 @@ angular.module('nc')
 
 						console.log(file);
 
-						if (scope.options.validateFileSize && file.size < scope.options.validateFileSize) {
+						if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
 							scope.onfail('onfilesize');
 							return;
 						}
