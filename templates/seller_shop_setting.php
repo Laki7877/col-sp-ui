@@ -94,7 +94,7 @@
 													ng-lowercase
 													ng-class="{ 'has-error' : $root.isInvalid(form.UrlKey) }"
 													ng-pattern="/^[0-9a-z\-]+$/"
-													ng-pattern-restrict="^[^_\s]$"
+													ng-pattern-restrict="^[^_\s]*$"
 													maxlength="100"
 												/>
 											</div>
