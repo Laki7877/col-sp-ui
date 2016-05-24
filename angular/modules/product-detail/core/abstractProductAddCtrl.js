@@ -934,6 +934,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                     if(confirm("Your changes will not be saved, are you sure you want to close this modal?")){
                       $uibModalInstance.close();
                     }
+                }else{
+                   $uibModalInstance.close();
                 }
                 
               }
