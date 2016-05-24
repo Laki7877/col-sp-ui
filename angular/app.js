@@ -147,11 +147,15 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
     // Col Dev (Natee)
   .factory('CMSCategoryService', services.cmsCategoryService)
   .factory('CMSGroupService', services.cmsGroupService)
-  .factory('CMSService', services.cmsService)
-  .factory('CMSMasterService', services.adminCMSMasterService)
+  // .factory('CMSService', services.cmsService)
+  // .factory('CMSMasterService', services.adminCMSMasterService)
   .factory('Buy1Get1Service', services.Buy1Get1Service)
   //.factory('CMSCollectionService', services.cmsCollectionService)
   .factory('CMSMasterService', services.cmsMasterService)
+  .factory('StdReportSaleService', services.stdSaleReportService)
+  .factory('StdReportStockService', services.stdStockReportService)
+  .factory('StdReportOnHoldService', services.stdOnHoldReportService)
+  .factory('StdReportReturnService', services.stdReturnReportService)
 
   // Directives
   .directive('ncTradableSelect', directives.ncTradableSelect)
@@ -166,10 +170,10 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .directive('ngTemplate', directives.ngTemplate)
   .directive('ngUppercase', directives.ngUppercase)
   .directive('ngLowercase', directives.ngLowercase)
-    .directive('ngMatch', directives.ngMatch)
-.directive('ngMinnumber', directives.ngMinnumber)
-.directive('ngMaxnumber', directives.ngMaxnumber)
-.directive('ngDateBefore', directives.ngDateBefore)
+  .directive('ngMatch', directives.ngMatch)
+  .directive('ngMinnumber', directives.ngMinnumber)
+  .directive('ngMaxnumber', directives.ngMaxnumber)
+  .directive('ngDateBefore', directives.ngDateBefore)
   // Filters
   .filter('capitalize', filters.capitalize)
   .filter('ordinal', filters.ordinal)
@@ -182,7 +186,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .filter('leadingzero', filters.leadingzero)
   .filter('variantValue', filters.variantValue)
   .filter('importGuidelineExample', filters.importGuidelineExample)
-    .filter('propsFilter', filters.propsFilter) // Col Dev (Natee)
+  .filter('propsFilter', filters.propsFilter) // Col Dev (Natee)
   .filter('statusValue', filters.statusValue) // Col Dev (Natee)
   // Controllers
   .controller('RootCtrl', controllers.root)
@@ -256,6 +260,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   
   .controller('AbstractListCtrl', controllers.abstractList)
   .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
+  // .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
   .controller('AbstractAddCtrl', controllers.abstractAdd)
   .controller('AbstractPendingProductGroupCtrl', controllers.abstractPendingProductGroup)
 
@@ -273,6 +278,9 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('AdminCMSMasterAddCtrl', controllers.adminCMSMasterAdd)
 
   .controller('AdminStdSaleReportSellerCtrl', controllers.adminStdSaleReportSellerList)
+  .controller('AdminStdStockReportCtrl', controllers.adminStdStockReportList)
+  .controller('AdminStdOnHoldReportCtrl', controllers.adminStdOnHoldReportList)
+  .controller('AdminStdReturnReportCtrl', controllers.adminStdReturnReportList)
 
   //iOATH
   .controller('AdminBuy1Get1AddCtrl',controllers.adminBuy1Get1Add)

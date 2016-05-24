@@ -86,7 +86,9 @@ var admin = {
 	},
 	'Reports|fa-file': {
 	    'Sale Report For Seller': '/admin/reports/std/saleforseller',
-        'Stok Status Report': '/admin/reports/std/stokstatus'
+        'Stock Status Report': '/admin/reports/std/stockstatus',
+        'On Hold Report' : '/admin/reports/std/onhold',
+        'Return Report' : '/admin/reports/std/return'
 	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'

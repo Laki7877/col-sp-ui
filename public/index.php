@@ -143,6 +143,9 @@ Route::add('/admin/buy1get1','AdminController::listBuy1Get1');
 Route::add('/admin/buy1get1/create','AdminController::addBuy1Get1');
 Route::add('/admin/buy1get1/:id','AdminController::editBuy1Get1');
 Route::add('/admin/reports/std/saleforseller', 'AdminController::listStandardReport');
+Route::add('/admin/reports/std/stockstatus', 'AdminController::listStockReport');
+Route::add('/admin/reports/std/onhold', 'AdminController::listOnHoldReport');
+Route::add('/admin/reports/std/return', 'AdminController::listReturnReport');
 
 
 //test route

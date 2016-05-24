@@ -1,18 +1,19 @@
 module.exports = function(common, config, util) {
     'ngInject';
-    var service = common.Rest('/StandardReport/GetSaleReportForSeller');
-    
-	service.getSaleReport = function (params) {
+
+	var service = common.Rest('/StandardReport/GetReturnReport');
+
+	service.getReturnReport = function (params) {
 	    return common.makeRequest({
 	        method: 'GET',
-	        url: '/StandardReport/GetSaleReportForSeller/' + params
+	        url: '/StandardReport/GetReturnReport/' + params
 	    });
 	};
 
 	service.exportCsv = function (params) {
 	    return common.makeRequest({
 	        method: 'GET',
-	        url: '/StandardReport/ExportSaleReportForSeller/',
+	        url: '/StandardReport/ExportReturnReport',
 	        params: params
 	    });
 	};
