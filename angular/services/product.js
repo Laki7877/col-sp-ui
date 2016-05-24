@@ -90,6 +90,14 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			return common.makeRequest(req)
 		}
 
+		service.exportGet = function (ps) {
+			var req = {
+				method: 'GET',
+				url: '/ProductStages/Export'
+			}
+			return common.makeRequest(req)
+		}
+
 		service.guideline = function (params) {
 			var req = {
 				method: 'GET',

@@ -8022,10 +8022,10 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 	}
 
 	$scope.startExportProducts = function () {
-		// $scope.exporter = {
-		// 	progress: 10,
-		// 	title: 'Requesting product export...'
-		// };
+		$scope.exporter = {
+			progress: 0,
+			title: 'Requesting product export...'
+		};
 
 		// $("#export-product").modal('show');
 		$scope.confirmExportProducts();
@@ -8036,8 +8036,7 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 
 		$("#export-product").modal('hide');
 
-		var fileName = "ProductExport.csv";
-		var a = document.getElementById("export_download_btn");
+		
 
 		var error = function (r) {
 			$(".modal").modal('hide');
@@ -8047,7 +8046,6 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 		};
 
 		// $scope.exporter.progress = 15;
-		var blobs = [];
 
 		var body = {};
 		body.Options  = [];
@@ -8077,25 +8075,36 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 			exportProgressInterval = $interval(function(){
 				Product.exportProgress().then(function(result){
 					$scope.exportAsyncDelegate.progress = result;
+					$interval.cancel(exportProgressInterval);
 				}, function(){
 					$interval.cancel(exportProgressInterval);
 					$scope.alert.error("An error has occurred while exporting products.");
 					$scope.exportAsyncDelegate.active = false;
 				});
-			}, 5000);
-			// blobs.push(result);
-			// var file = new Blob(blobs, {type: 'application/csv'});
-			// var fileURL = URL.createObjectURL(file);
-			// $scope.exporter.href = fileURL;
-			// $scope.exporter.download = fileName;
-			// $scope.exporter.progress = 100;
-			// //$scope.exporter.title = 'Export Complete'
-			// 	a.href = fileURL;
-			// a.click();
+			}, 3000);
+
 
 			// $("#export-product-progressing").modal('hide');
 
 		}, error);
+	}
+
+	$scope.downloadFile = function(){
+			Product.exportGet().then(function(rx){
+				var fileName = "ProductExport.csv";
+				var a = document.getElementById("export_download_btn");
+				var blobs = [];
+				blobs.push(rx);
+				var file = new Blob(blobs, {type: 'application/csv'});
+				var fileURL = URL.createObjectURL(file);
+				$scope.exporter.href = fileURL;
+				$scope.exporter.download = fileName;
+				$scope.exporter.progress = 100;
+				//$scope.exporter.title = 'Export Complete'
+					a.href = fileURL;
+				a.click();
+
+			});
 	}
 
 	$scope.lockAS = function(){
@@ -22929,6 +22938,14 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			var req = {
 				method: 'GET',
 				url: '/ProductStages/Export/Progress'
+			}
+			return common.makeRequest(req)
+		}
+
+		service.exportGet = function (ps) {
+			var req = {
+				method: 'GET',
+				url: '/ProductStages/Export'
 			}
 			return common.makeRequest(req)
 		}
