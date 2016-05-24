@@ -91,19 +91,19 @@
         <thead>
           <tr class="table-head">
             <th class="checkbox-column"><nc-bulk-checkbox nc-model="list.data"></nc-bulk-checkbox></th>
-            <th nc-sort="Pid">Product ID</th>
-            <th nc-sort="ProductNameEn">Product Name</th>
-            <th nc-sort="OnHold">On Hold</th>
-            <th nc-sort="variant2">Remark</th>
+            <th nc-sort="PID">Product ID</th>
+            <th nc-sort="Itemname">Product Name</th>
+            <th nc-sort="OnHoldDate">On Hold Date</th>
+            <th nc-sort="OnHoldRemark">Remark</th>
         </tr>
         </thead>
         <tbody>
           <tr ng-repeat="row in list.data">
             <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
-            <td class="width_150">{{row.Pid}}</td>
-            <td class="width_200">{{row.ProductNameEn}}</td>
-            <td class="width_120">{{row.OnHold}}</td>
-            <td class="width_120">{{row.StockAvailable}}</td>
+            <td class="width_150">{{row.PID}}</td>
+            <td class="width_200">{{row.Itemname}}</td>
+            <td class="width_120">{{row.OnHoldDate}}</td>
+            <td class="width_120">{{row.OnHoldRemark}}</td>
           </tr>
         </tbody>
       </table>

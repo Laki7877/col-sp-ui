@@ -1,10 +1,16 @@
 
 module.exports = function ($scope, $controller, StdReportSaleService, config) {
     'ngInject';
-
+   $scope.formData = {
+        PID: null,
+        Brands: null,
+        ItemStatus: null,
+        CreatedDtFrom: null,
+        CreatedDtTo: null
+        };
     $scope.exportCsv = function() { 
         debugger;
-        var params = {};
+        var params = $scope.formData;
         StdReportSaleService.exportCsv(params)
         .then(function(data){
 
@@ -19,7 +25,7 @@ module.exports = function ($scope, $controller, StdReportSaleService, config) {
 
             var filename, link;
 
-            filename = 'STDSale.xlsx';
+            filename = 'STDSale.csv';
 
             link = document.createElement('a');
             link.setAttribute('href', 'data:attachment/csv,' + encodeURIComponent(csv));

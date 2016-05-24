@@ -21,7 +21,7 @@ module.exports = function ($scope, $controller, StdReportStockService, config) {
 
             var filename, link;
 
-            filename = 'STDStock.xlsx';
+            filename = 'STDStock.csv';
 
             link = document.createElement('a');
             link.setAttribute('href', 'data:attachment/csv,' + encodeURIComponent(csv));

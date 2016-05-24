@@ -14,13 +14,6 @@ class Redirect {
     public static function exception($params) {
 		return View::render('exception');
 	}
-	public static function permission($params) {
-		return View::render('401');
-	}
-	public static function adminPermission($params) {
-		return View::render('401');
-	}
-	
 	/*
 	public static function handleAuth($route) {
 		if(strpos($route['method'], 'Login') === FALSE && !isset($_COOKIE[__COOKIE_AUTH_KEY__])) {
@@ -67,7 +60,6 @@ Route::add('/shops/settings', 'ShopController::settings');
 Route::add('/shops/appearance', 'ShopController::appearance');
 
 //seller routing
-Route::add('/unauthorized', 'Redirect::permission');
 Route::add('/accounts', 'SellerController::listAccount');
 Route::add('/accounts/add', 'SellerController::addAccount');
 Route::add('/accounts/:id', 'SellerController::editAccount');
@@ -89,7 +81,6 @@ Route::add('/orders/:id', 'SellerController::editOrder');
 
 
 //admin routing 
-Route::add('/admin/unauthorized', 'Redirect::adminPermission');
 Route::add('/admin/onboarding', 'AdminController::onboarding');
 Route::add('/admin/attributes/add','AdminController::addAttribute');
 Route::add('/admin/attributes/:id','AdminController::editAttribute');

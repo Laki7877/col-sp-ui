@@ -45,7 +45,7 @@ var seller = {
 		'User Roles': '/roles'
 	},
 
-	'Report|fa-file': {
+	'Report|fa-file-o': {
 	    'View Report': '/reports',
 	}
 };
@@ -127,7 +127,6 @@ var permission = {
 	55: '/shops/settings',
 	56: '/shops/appearance',
 	57: ['/roles', '/accounts'],
-	82: '/cms',
 
 	//Shop
 	64: '/dashboard',

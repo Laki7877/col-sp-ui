@@ -19,7 +19,7 @@ module.exports = function ($scope, $controller, StdReportReturnService, config) 
 
             var filename, link;
 
-            filename = 'STDReturn.xlsx';
+            filename = 'STDReturn.csv';
 
             link = document.createElement('a');
             link.setAttribute('href', 'data:attachment/csv,' + encodeURIComponent(csv));

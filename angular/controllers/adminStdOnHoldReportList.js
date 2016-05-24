@@ -19,7 +19,7 @@ module.exports = function ($scope, $controller, StdReportOnHoldService, config) 
 
             var filename, link;
 
-            filename = 'STDOnHold.xlsx';
+            filename = 'STDOnHold.csv';
 
             link = document.createElement('a');
             link.setAttribute('href', 'data:attachment/csv,' + encodeURIComponent(csv));
