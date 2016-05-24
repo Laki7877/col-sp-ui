@@ -9,7 +9,9 @@
             <div class="width-field-normal">
                 <div class="radio multiple-radio multiline">
                     <label ng-repeat="shi in dataset.ShippingList">
-                        <input type="radio" name="shipping_method" ng-disabled="xspermit(38)" ng-value="{{shi.ShippingId}}" ng-model="formData.ShippingMethod" /> {{ shi.ShippingMethodEn }} </label>
+                        <input type="radio" name="shipping_method" ng-disabled="xspermit(38)" 
+                        ng-init="formData.ShippingMethod = 1"
+                        ng-value="{{shi.ShippingId}}" ng-model="formData.ShippingMethod" /> {{ shi.ShippingMethodEn }} </label>
                 </div>
             </div>
         </div>

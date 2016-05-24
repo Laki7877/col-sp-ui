@@ -147,6 +147,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                       </div>
                       <div ng-if="formData.Conditions.Order[0].Type != 'NoFilter'">
                         <div nc-template="common/input/form-group-with-label"
+                          nc-template-form="form.Condition_Value"
                           nc-label="Price"
                           nc-template-options-path="couponForm/Condition_Value">
                           <input name="Condition_Value" class="form-control" ng-model="formData.Conditions.Order[0].Value" ng-disabled="manageable" ng-pattern-restrict="^[0-9]*(\.[0-9]{0,2})?$" maxlength="10" placeholder="0" required/>
