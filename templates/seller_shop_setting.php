@@ -5,7 +5,7 @@
 		<div ng-show="loading" nc-loading="Loading Shop Settings.."></div>
 		<div ng-show="saving" nc-loading="Saving Shop Settings.."></div>
 		<nc-alert nc-model="alert"></nc-alert>
-        <form class="ah-form sticky-mainform-action" name="form" ng-submit="save()" ng-show="!loading">
+        <form class="ah-form sticky-mainform-action" name="form" ng-submit="save()" ng-show="!loading" novalidate>
             <nc-page-title nc-title="Shop Profile" icon="fa-sliders">
                 <button class="btn btn-blue btn-width-xl">Save</button>
             </nc-page-title>
