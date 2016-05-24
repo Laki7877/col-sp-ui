@@ -205,7 +205,8 @@ module.exports = {
     'error': {
       'messages': {
         'required': 'This is a required field',
-        'pattern': 'Only numbers allowed'
+        'pattern': 'Only numbers allowed',
+        'maxnumber': 'Products in stock cannot take more than 24 days to prepare'
       }
     },
     'unit': 'Day'

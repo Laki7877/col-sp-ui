@@ -9,7 +9,7 @@
             <div class="width-field-normal">
                 <div class="radio multiple-radio multiline">
                     <label ng-repeat="shi in dataset.ShippingList">
-                        <input type="radio" name="shipping_method" ng-disabled="xspermit(38)" 
+                        <input type="radio" name="shipping_method" ng-disabled="!$root.ShopGroupPolicy(shi.VisibleTo.split(',')) || xspermit(38)" 
                         ng-init="formData.ShippingMethod = 1"
                         ng-value="{{shi.ShippingId}}" ng-model="formData.ShippingMethod" /> {{ shi.ShippingMethodEn }} </label>
                 </div>
@@ -19,7 +19,7 @@
 
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.ExpressDelivery" nc-template-options-path="addProductForm/SafetyStock"
         nc-label="Express Delivery">
-            <select ng-disabled="xspermit(38)" ng-model="variantPtr.ExpressDelivery" class="form-control" name="ExpressDelivery">
+            <select ng-disabled="xspermit(38)" nc-default-value="'Y'"  ng-model="variantPtr.ExpressDelivery" class="form-control" name="ExpressDelivery">
                 <option selected value="-" disabled>- Select Express Delivery Option -</option>
                 <option value="Y">Enable</option>
                 <option value="N">Disable</option>
@@ -29,15 +29,15 @@
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.ExpressDelivery" nc-template-options-path="addProductForm/SafetyStock"
         nc-label="Delivery Fee">
            <input  ng-disabled="xspermit(38)" class="form-control" name="DeliveryFee" type="text"
-            maxlength="12" ng-pattern-restrict="^[0-9]*(\\.[0-9]*)?$"  ng-model="variantPtr.DeliveryFee"/>
+            maxlength="12" ng-pattern-restrict="^[0-9]{0,10}(\.[0-9]{0,2})?$" ng-model="variantPtr.DeliveryFee"/>
         </div>
 
 
         <div nc-template="common/input/form-group-with-label" nc-label="Preparation Time" nc-template-form="form.PrepareDay"
         nc-template-options-path="addProductForm/PrepareDay" style="margin-bottom: 0px;">
             <input  ng-disabled="xspermit(38)" class="form-control width-field-normal" name="PrepareDay"
-            ng-pattern-restrict="^[0-9]*$"
-            type="text" ng-required="onPublishing"
+            ng-pattern-restrict="^[0-9]*$" nc-default-value="3"
+            type="text" ng-required="onPublishing" ng-max-number="24"
             maxlength="3" ng-model="variantPtr.PrepareDay"/>
         </div>
 
@@ -136,7 +136,7 @@
                     <div class="input-column">
                         <div nc-template="common/input/div-with-label" nc-label="Length" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.Length">
-                            <input ng-disabled="xspermit(38)" type="text" class="form-control" maxlength="11" ng-required="onPublishing" name="Length"
+                            <input ng-disabled="xspermit(38)" ng-pattern-restrict="^[0-9]{0,10}(\.[0-9]{0,2})?$" type="text" class="form-control" ng-required="onPublishing" name="Length"
                             ng-model="variantPtr.Length" />
                         </div>
                     </div>
@@ -144,7 +144,7 @@
                     <div class="input-column">
                         <div nc-template="common/input/div-with-label" nc-label="Height" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.Height">
-                            <input ng-disabled="xspermit(38)" type="text" class="form-control" maxlength="11" ng-required="onPublishing" name="Height"
+                            <input ng-disabled="xspermit(38)" type="text" class="form-control" ng-pattern-restrict="^[0-9]{0,10}(\.[0-9]{0,2})?$" ng-required="onPublishing" name="Height"
                             ng-model="variantPtr.Height" />
                         </div>
                     </div>
@@ -152,7 +152,7 @@
                     <div class="input-column">
                         <div nc-template="common/input/div-with-label" nc-label="Width" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.Width">
-                            <input ng-disabled="xspermit(38)" type="text" class="form-control" maxlength="11" ng-required="onPublishing" name="Width"
+                            <input ng-disabled="xspermit(38)" type="text" class="form-control" ng-pattern-restrict="^[0-9]{0,10}(\.[0-9]{0,2})?$" ng-required="onPublishing" name="Width"
                             ng-model="variantPtr.Width" />
                         </div>
                     </div>
@@ -182,10 +182,9 @@
                         <input ng-disabled="xspermit(38)"
                         type="text"
                         class="form-control"
-                        maxlength="12"
                         ng-required="onPublishing"
                         name="Weight"
-                        ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"
+                        ng-pattern-restrict="^[0-9]{0,10}(\.[0-9]{0,2})?$" 
                         ng-model="variantPtr.Weight" />
                     </div>
 

@@ -305,7 +305,7 @@ angular.module('nc')
 
 								console.log(file);
 
-								if (scope.options.validateFileSize && file.size < scope.options.validateFileSize) {
+								if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
 									scope.onfail('onfilesize');
 									return;
 								}
@@ -384,7 +384,7 @@ angular.module('nc')
 								
 								console.log(file);
 
-								if (scope.options.validateFileSize && file.size < scope.options.validateFileSize) {
+								if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
 									scope.onfail('onfilesize');
 									return;
 								}
@@ -703,7 +703,7 @@ angular.module('nc')
 
 						console.log(file);
 
-						if (scope.options.validateFileSize && file.size < scope.options.validateFileSize) {
+						if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
 							scope.onfail('onfilesize');
 							return;
 						}
