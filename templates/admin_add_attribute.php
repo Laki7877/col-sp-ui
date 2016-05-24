@@ -26,6 +26,7 @@
                   name="AttributeNameEn"
                   ng-model="formData.AttributeNameEn"
                   ng-pattern="/^[a-z0-9_\-]+$/"
+                  ng-pattern-restrict="^[^\s]*$"
                   ng-lowercase
                   maxlength="255"
                   required />
@@ -60,7 +61,8 @@
                 nc-label="Description">
                 <textarea class="form-control"
                   name="AttributeDescriptionEn"
-                  ng-model="formData.AttributeDescriptionEn"></textarea>
+                  ng-model="formData.AttributeDescriptionEn"
+                  maxlength="255"></textarea>
               </div>
               <div nc-template="common/input/form-group-with-label"
                 nc-label="Required">

@@ -124,7 +124,7 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 					$scope.saving = false;
 				});
 		} else {
-			//Form id
+			//Form id	
 			$scope.alert.error(util.saveAlertError());
 		}
 	}

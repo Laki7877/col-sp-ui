@@ -17,7 +17,8 @@ module.exports = function(common, $q, util) {
 			BannerStatusEn: true,
 			BannerStatusTh: true,
 			BannerSmallStatusEn: true,
-			BannerSmallStatusTh: true
+			BannerSmallStatusTh: true,
+			FeatureProductStatus: true
 		}, extend);
 	};
 	service.deserialize = function(data) {
