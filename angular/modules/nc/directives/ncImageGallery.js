@@ -12,7 +12,8 @@ angular.module('nc')
 				width: '@',
 				letter: '@',
 				letterx: '@',
-				subtitle: '@?'
+				subtitle: '@?',
+				accept: '=?'
 			},
 			template: $templateCache.get('common/ncImageBanner6'),
 			link: function(scope) {
@@ -65,7 +66,8 @@ angular.module('nc')
 				letter: '@',
 				letterx: '@',
 				subtitle: '@?',
-				linktitle: '@?'
+				linktitle: '@?',
+				accept: '=?'
 			},
 			template: $templateCache.get('common/ncImageBanner5'),
 			link: function(scope) {
@@ -122,7 +124,8 @@ angular.module('nc')
 				letterx: '@',
 				noauto: '@?',
 				subtitle: '@?',
-				heading: '@?'
+				heading: '@?',
+				accept: '=?'
 			},
 			template: $templateCache.get('common/ncImageBanner4'),
 			link: function(scope) {
@@ -181,7 +184,8 @@ angular.module('nc')
 				size: '@',
 				title: '@',
 				source: '=',
-				key: '@'
+				key: '@',
+				accept: '=?'
 			},
 			transclude: true,
 			template: '<nc-image-block template="common/ncImageBanner3" data-source="source" data-key="{{key}}" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>Image size <span ng-transclude></span></li></ul></nc-image-block>',
@@ -207,7 +211,8 @@ angular.module('nc')
 				options: '=?',
 				source: '=',
 				size: '=',
-				title: '@'
+				title: '@',
+				accept: '=?'
 			},
 			template: '<nc-image-block template="common/ncImageBanner2" data-source="source" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size.Count}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size.Count}} images</li><li>The width must be {{size.Width}}px</li><li>The height must be {{size.Height}}px</li></ul></nc-image-block>',
 			link: function(scope) {
@@ -238,7 +243,8 @@ angular.module('nc')
 				key: '@?',
 				size: '@size',
 				title: '@title',
-				disabled: '=?ngDisabled'
+				disabled: '=?ngDisabled',
+				accept: '=?'
 			},
 			template: function(elem, attrs) {
 				if (attrs.template) {
@@ -260,8 +266,8 @@ angular.module('nc')
 						scope.options.width = '150px'
 					}
 				});
-				scope.$watch('source', function(o) {
-					console.log(o);
+				scope.$watch('accept', function(o) {
+					scope.accept = o || '.jpg,.jpeg';
 				})
 
 				scope.images = scope.images || [];

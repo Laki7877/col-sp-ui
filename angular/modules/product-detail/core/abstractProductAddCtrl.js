@@ -918,6 +918,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
           var variantModal = $uibModal.open({
             animation: false,
+            backdrop: 'static',
             templateUrl: 'ap/modal-variant-detail',
             controller: function($scope, $uibModalInstance,
               $timeout, pair, dataset, uploader,
@@ -929,7 +930,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
               $scope.variantPtr = pair;
               $scope.uploader = uploader;
               $scope.no = function() {
-                $uibModalInstance.close();
+                if($scope.form.$dirty){
+                    if(confirm("Your changes will not be saved, are you sure you want to close this modal?")){
+                      $uibModalInstance.close();
+                    }
+                }else{
+                   $uibModalInstance.close();
+                }
+                
               }
               $scope.yes = function() {
                 $uibModalInstance.close($scope.pair);

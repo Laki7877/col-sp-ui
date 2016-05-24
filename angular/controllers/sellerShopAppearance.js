@@ -128,10 +128,15 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 			$scope.alert.error(util.saveAlertError());
 		}
 	}
-	$scope.uploadFail = function(e, arg1, arg2) {
+	$scope.uploadFail = function(e, arg1, arg2, arg3) {
 		$scope.alert.close();
 		if(e == 'ondimension') {
-			$scope.alert.error('Image must be ' + arg2[0] + 'x' + arg2[1] + ' pixels');
+			if(arg3) {
+				$scope.alert.error('Image width must be greater than ' + arg2 + ' pixels');
+			}
+			else {
+				$scope.alert.error('Image must be ' + arg2[0] + 'x' + arg2[1] + ' pixels');
+			}
 		}
 		else {
 			$scope.alert.error('<strong>Fail to upload photo</strong><br>' + common.getError(arg1.data));

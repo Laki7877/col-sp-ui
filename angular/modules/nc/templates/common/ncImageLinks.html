@@ -22,8 +22,9 @@
                   <button
                   type="button"
                   class="btn btn-default"
-                  ngf-accept="'.jpg,.jpeg'"
-                  ngf-select="upload($file, image.ImageEn)"
+                  ngf-accept="accept"
+                  ngf-select="upload($file, image.ImageEn, $index, $invalidFiles)"
+                  ngf-dimensions="validate($file, $width, $height, $index)"
                   >Choose File</button>
             </div>
             <div ng-show="image.ImageEn.Url"
@@ -36,8 +37,9 @@
                   <button
                   type="button"
                   class="btn btn-default"
-                  ngf-accept="'.jpg,.jpeg'"
-                  ngf-select="upload($file, image.ImageTh)"
+                  ngf-accept="accept"
+                  ngf-select="upload($file, image.ImageTh, $index, $invalidFiles)"
+                  ngf-dimensions="validate($file, $width, $height, $index)"
                   >Choose File</button>
             </div>
             <div ng-show="image.ImageTh.Url"
