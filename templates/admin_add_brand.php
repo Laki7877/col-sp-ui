@@ -201,10 +201,10 @@
                     nc-label="Featured Product">
                     <ui-select name="FeatureProducts" multiple ng-model="formData.FeatureProducts" nc-tag-validator nc-max-tag-count="20">
                         <ui-select-match placeholder="Search for Product Name or PID">
-                            {{ $item.ProductNameEn }}
+                            {{ $item.ProductNameEn }} ({{$item.Pid}})
                         </ui-select-match>
                         <ui-select-choices placeholder="Search result" refresh="getFeatureProduct($select.search)" refresh-delay="150" repeat="i in products">
-                            {{ i.ProductNameEn }}
+                            {{ i.ProductNameEn }} ({{i.Pid}})
                         </ui-select-choices>
                     </ui-select>
                   </div>    

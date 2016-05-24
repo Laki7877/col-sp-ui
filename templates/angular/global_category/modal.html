@@ -59,7 +59,7 @@
 		                  nc-template-form="form.SortBy" 
 		                  nc-label="Default Sort By" 
 		                  nc-template-options-path="addCategoryForm/SortBy">
-		                  <ui-select ng-model="formData.SortBy" name="SortBy" search-enabled="false">
+		                  <ui-select ng-model="formData.SortBy" name="SortBy" search-enabled="false" required>
 		                      <ui-select-match placeholder="- Select Default Sort -">{{$select.selected.SortByName}}</ui-select-match>
 		                      <ui-select-choices repeat="item in sortBy">{{item.SortByName}}</ui-select-choices>
 		                  </ui-select>
@@ -174,10 +174,10 @@
 		                nc-label="Featured Product">
 		                <ui-select name="FeatureProducts" multiple ng-model="formData.FeatureProducts" nc-tag-validator nc-max-tag-count="20">
 		                    <ui-select-match placeholder="Search for Product Name or PID">
-		                        {{ $item.ProductNameEn }}
+		                        {{ $item.ProductNameEn }} ({{$item.Pid}})
 		                    </ui-select-match>
 		                    <ui-select-choices placeholder="Search result" refresh="getFeatureProduct($select.search)" refresh-delay="150" repeat="i in products">
-		                        {{ i.ProductNameEn }}
+		                        {{ i.ProductNameEn }} ({{i.Pid}})
 		                    </ui-select-choices>
 		                </ui-select>
 		              </div>    

@@ -54,7 +54,7 @@
 	                        maxlength="100"
 	                        />
 	                    </div>
-	                    <div nc-template="common/input/form-group-with-label" 
+                    <div nc-template="common/input/form-group-with-label" 
 		                  nc-template-form="form.SortBy" 
 		                  nc-label="Default Sort By" 
 		                  nc-template-options-path="addBrandForm/SortBy">
@@ -68,7 +68,7 @@
 				<!-- Banner -->
 		        <nc-image-banner name="CategoryBannerEn" data-source="formData" data-key="BannerStatusEn" nc-model="formData.CategoryBannerEn" title="Upload Banner (English)" options="bannerOptions" uploader="bannerUploader" on-fail="uploadBannerFail" size="8">1920x1080</nc-image-banner>
 		        <nc-image-banner name="CategoryBannerTh" data-source="formData" data-key="BannerStatusTh" nc-model="formData.CategoryBannerTh" title="Upload Banner (ไทย)" options="bannerOptions" uploader="bannerUploader" on-fail="uploadBannerFail" size="8">1920x1080</nc-image-banner>
-		        <nc-image-banner name="CategoryBannerEn" data-source="formData" data-key="BannerSmallStatusEn" nc-model="formData.CategorySmallBannerEn" title="Upload Small Banner (English)" options="bannerSmOptions" uploader="bannerSmUploader" on-fail="uploadBannerSmFail" size="8">1600x900</nc-image-banner>
+		        <nc-image-banner name="CategoryBannerEn" data-source="formData" data-key="c" nc-model="formData.CategorySmallBannerEn" title="Upload Small Banner (English)" options="bannerSmOptions" uploader="bannerSmUploader" on-fail="uploadBannerSmFail" size="8">1600x900</nc-image-banner>
 		        <nc-image-banner name="CategoryBannerTh" data-source="formData" data-key="BannerSmallStatusTh" nc-model="formData.CategorySmallBannerTh" title="Upload Small Banner (ไทย)" options="bannerSmOptions" uploader="bannerSmUploader" on-fail="uploadBannerSmFail" size="8">1600x900</nc-image-banner>
 		        <!-- Description -->
 		        <div class="form-section">
@@ -142,10 +142,10 @@
 		                nc-label="Featured Product">
 		                <ui-select name="FeatureProducts" multiple ng-model="formData.FeatureProducts" nc-tag-validator nc-max-tag-count="20">
 		                    <ui-select-match placeholder="Search for Product Name or PID">
-		                        {{ $item.ProductNameEn }}
+		                        {{ $item.ProductNameEn }} ({{$item.Pid}})
 		                    </ui-select-match>
 		                    <ui-select-choices placeholder="Search result" refresh="getFeatureProduct($select.search)" refresh-delay="150" repeat="i in products">
-		                        {{ i.ProductNameEn }}
+		                        {{ i.ProductNameEn }} ({{i.Pid}})
 		                    </ui-select-choices>
 		                </ui-select>
 		              </div>    
