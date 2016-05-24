@@ -9,6 +9,7 @@ module.exports = function(common) {
 			IsBannerTh: false,
 			IsSmallBannerEn: false,
 			IsSmallBannerTh: false,
+			IsDescription: false,
 			Status: 'NA'
 		};
 	}

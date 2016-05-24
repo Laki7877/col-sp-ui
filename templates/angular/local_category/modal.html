@@ -49,7 +49,8 @@
 	                        name="UrlKey"
 	                        ng-model="formData.UrlKey"
 	                        ng-lowercase
-	                        ng-pattern="/^[0-9a-z\-]+$/"
+                			ng-pattern="/^[a-z0-9\-]*$/"
+                			ng-pattern-restrict="^[^\s]*$"
 	                        maxlength="100"
 	                        />
 	                    </div>
@@ -72,8 +73,8 @@
 		        <!-- Description -->
 		        <div class="form-section">
 		          <div class="form-section-header">
-		              <h2>Description</h2></div>
-		          <div class="form-section-content">
+		              <h2><input type="checkbox" style="margin-right: 10px" ng-model="formData.IsLandingPage"/>Enable Landing Page</h2></div>
+		          <div class="form-section-content" ng-show="formData.IsLandingPage">
 		              <div class="two-columns">
 	                    <div class="row" ng-if="$root.permit(72)">
 	                        <div nc-template="common/input/div-with-label" nc-label="Description (English)" nc-template-options-path="genericForm/DescriptionFull"

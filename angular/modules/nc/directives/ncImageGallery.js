@@ -267,7 +267,6 @@ angular.module('nc')
 					}
 				});
 				scope.upload = function(files) {
-					
 					if (scope.disabled) {
 						scope.onfail('ondisable');
 						return;
