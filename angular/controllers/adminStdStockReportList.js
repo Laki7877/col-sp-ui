@@ -1,5 +1,5 @@
 
-module.exports = function ($scope, $controller, StdReportStockService, config) {
+module.exports = function ($scope, $controller, StdReportStockService, config, util) {
     'ngInject';
     $scope.formData = {
         PID: null,
@@ -10,35 +10,13 @@ module.exports = function ($scope, $controller, StdReportStockService, config) {
         };
     $scope.exportCsv = function() { 
         debugger;
-        // var params = {};
+
         var params = $scope.formData;
         StdReportStockService.exportCsv(params)
         .then(function(data){
 
-            var csv = '';
-            var headers = data.split('\n')[0];
+            util.csv(data,'STDStock.csv');
 
-            csv += headers;
-
-            for (var i = 1; i < data.split('\n').length; i++) {
-                var row = data.split('\n')[i];
-                csv += row;
-            }
-
-            var filename, link;
-
-            filename = 'STDStock.csv';
-
-            link = document.createElement('a');
-            link.setAttribute('href', 'data:attachment/csv,' + encodeURIComponent(csv));
-            link.setAttribute('download', filename);
-            link.click();
-
-            //debugger;
-            // var blob = new Blob([document.getElementById('report-std-tab-content').innerHTML], {
-            //     type: "vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
-            // });
-            // saveAs(blob, "Report.xls");
         })
     };
         

@@ -1,5 +1,5 @@
 
-module.exports = function ($scope, $controller, StdReportSaleService, config) {
+module.exports = function ($scope, $controller, StdReportSaleService, config, util) {
     'ngInject';
     $scope.formData = {
         PID: null,
@@ -8,35 +8,47 @@ module.exports = function ($scope, $controller, StdReportSaleService, config) {
         CreatedDtFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
         CreatedDtTo: new Date()
         };
+    // $scope.exportCsv = function() { 
+    //     debugger;
+    //     var params = $scope.formData;
+    //     StdReportSaleService.exportCsv(params)
+    //     .then(function(data){
+
+    //         var csv = '';
+    //         var headers = data.split('\n')[0];
+    //         csv += headers;
+
+    //         for (var i = 1; i < data.split('\n').length; i++) {
+    //             var row = data.split('\n')[i];
+    //             csv += row;
+    //         }
+
+    //         var filename, link;
+
+    //         filename = 'STDSale.csv';
+
+    //         link = document.createElement('a');
+    //         link.setAttribute('href', 'data:attachment/csv,' + encodeURIComponent(csv));
+    //         link.setAttribute('download', filename);
+    //         link.click();
+
+    //         //debugger;
+    //         // var blob = new Blob([document.getElementById('report-std-tab-content').innerHTML], {
+    //         //     type: "vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+    //         // });
+    //         // saveAs(blob, "Report.xls");
+    //     })
+    // };
+
     $scope.exportCsv = function() { 
         debugger;
+
         var params = $scope.formData;
-        StdReportSaleService.exportCsv(params)
+        StdReportStockService.exportCsv(params)
         .then(function(data){
 
-            var csv = '';
-            var headers = data.split('\n')[0];
-            csv += headers;
+            util.csv(data,'STDSale.csv');
 
-            for (var i = 1; i < data.split('\n').length; i++) {
-                var row = data.split('\n')[i];
-                csv += row;
-            }
-
-            var filename, link;
-
-            filename = 'STDSale.csv';
-
-            link = document.createElement('a');
-            link.setAttribute('href', 'data:attachment/csv,' + encodeURIComponent(csv));
-            link.setAttribute('download', filename);
-            link.click();
-
-            //debugger;
-            // var blob = new Blob([document.getElementById('report-std-tab-content').innerHTML], {
-            //     type: "vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
-            // });
-            // saveAs(blob, "Report.xls");
         })
     };
 
