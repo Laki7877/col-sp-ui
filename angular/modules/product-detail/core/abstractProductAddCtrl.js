@@ -298,12 +298,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.onImageUploadFail = function(kwd, data) {
       // console.log(kwd, data);
       if (kwd == "onmaxsize") {
-        $scope.image_alert.error('Maximum ' + data +
-          ' images can be uploaded.');
+        $scope.image_alert.error('Maximum ' + data + ' images can be uploaded.');
       } else if (kwd == "ondimension") {
-        $scope.image_alert.error('Dimension must be greater than ' +
+        $scope.image_alert.error('Image dimension must be between ' +
           IMAGE_DIM_BOUND[0][0] + 'x' +
-          IMAGE_DIM_BOUND[0][1] + '.' + ' and not larger than ' +
+          IMAGE_DIM_BOUND[0][1] + '.' + ' and ' +
           IMAGE_DIM_BOUND[1][0] + 'x' + IMAGE_DIM_BOUND[1][1] +
           '. <strong>Your Image Size is ' + data[0] + "x" + data[1] +
           '</strong>');
@@ -311,7 +310,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         $scope.image_alert.error(
           'You do not have permission to upload images.');
       } else if (kwd == "onsquare") {
-        $scope.image_alert.error('Image must be square.');
+        $scope.image_alert.error('Image must be a square (1:1 ratio).');
       } else {
         $scope.image_alert.error(data);
       }
