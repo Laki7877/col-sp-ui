@@ -15615,6 +15615,7 @@ angular.module('nc')
 				scope.actions = [{
 					//Zoom
 					fn: function(item, array, index) {
+						console.log(item);
 						$uibModal.open({
 							size: 'product-image',
 							template: '<img ng-src="{{url}}" alt=""/>',
