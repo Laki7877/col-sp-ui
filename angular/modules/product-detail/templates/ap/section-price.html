@@ -3,15 +3,15 @@
         <h2>Price</h2></div>
     <div class="form-section-content">
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.SalePrice" nc-label="Sale Price" ng-cloack nc-template-options-path="addProductForm/SalePrice">
-            <input autocomplete="off" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"
-            type="text" class="form-control" maxlength="12" name="SalePrice" ng-disabled="xspermit(36) || xspermit(35)"
+            <input autocomplete="off" ng-pattern-restrict="^[0-9]{0,10}(\.[0-9]{0,2})?$" 
+            type="text" class="form-control" name="SalePrice" ng-disabled="xspermit(36) || xspermit(35)"
                 ng-model="variantPtr.SalePrice" required/>
         </div>
 
         <div nc-template="common/input/form-group-with-label" nc-label="Original Price" nc-template-options-path="addProductForm/OriginalPrice"
             nc-template-form="form.OriginalPrice">
-            <input autocomplete="off" class="form-control" type="text" name="OriginalPrice" maxlength="12" ng-disabled="xspermit(36) || xspermit(35)"
-                ng-model="variantPtr.OriginalPrice" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$" />
+            <input autocomplete="off" class="form-control" type="text" name="OriginalPrice" ng-disabled="xspermit(36) || xspermit(35)"
+                ng-model="variantPtr.OriginalPrice" ng-pattern-restrict="^[0-9]{0,10}(\.[0-9]{0,2})?$" />
         </div>
 
         <div nc-template="common/input/form-group-with-label" nc-label="Installment" nc-template-options-path="addProductForm/Installment"
@@ -29,7 +29,7 @@
             <input class="form-control" name="PromotionPrice"
             ng-disabled="xspermit(36) || xspermit(35)"
             ng-model="variantPtr.PromotionPrice"
-            ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$" maxlength="12"
+            ng-pattern-restrict="^[0-9]{0,10}(\.[0-9]{0,2})?$" 
             />
         </div>
 
@@ -68,7 +68,7 @@
                 <div class="dropdown">
                     <a class="dropdown-toggle" id="dropdown_promotion_expire_date" role="button" data-toggle="dropdown" data-target="#" href="#">
                         <input readonly style="background-color:white" type="text"
-                            placeholder="Select date and time when promotion will go online" class="input-icon-calendar form-control"
+                            placeholder="Select date and time when promotion will go offline" class="input-icon-calendar form-control"
                             ng-disabled="xspermit(36) || xspermit(35)"
                             ng-class="{'has-error': variantPtr.ExpireDatePromotion && variantPtr.ExpireDatePromotion <= variantPtr.EffectiveDatePromotion }"
                             value="{{ variantPtr.ExpireDatePromotion | date: 'dd/MM/yy HH:mm' }}" />
@@ -89,16 +89,16 @@
             nc-template-form="form.UnitPrice">
             <input autocomplete="off" ng-disabled="xspermit(36)"
             class="form-control" type="text" name="UnitPrice"
-            ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$" nc-default-value="0"
-            maxlength="12" ng-model="variantPtr.UnitPrice" />
+            ng-pattern-restrict="^[0-9]{0,10}(\.[0-9]{0,2})?$" nc-default-value="0"
+            ng-model="variantPtr.UnitPrice" />
         </div>
 
         <div nc-template="common/input/form-group-with-label" nc-policy-indy nc-label="Purchase Price" nc-template-options-path="addProductForm/NonRequiredSystemField"
             nc-template-form="form.PurchasePrice">
             <input ng-disabled="xspermit(36)"
             autocomplete="off" class="form-control" type="text" name="PurchasePrice"
-            ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"
-                maxlength="12" ng-model="variantPtr.PurchasePrice" />
+            ng-pattern-restrict="^[0-9]{0,10}(\.[0-9]{0,2})?$" 
+            ng-model="variantPtr.PurchasePrice" />
         </div>
 
         <div nc-template="common/input/form-group-with-label" nc-policy-indy-bu

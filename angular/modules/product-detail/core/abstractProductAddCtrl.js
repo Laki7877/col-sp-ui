@@ -426,15 +426,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     $scope.$watch('variantPtr.OriginalPrice+variantPtr.SalePrice', function() {
       var form = $scope.addProductForm;
-      if (form.SalePrice) form.SalePrice.$setValidity('min', true);
-      if (!form.SalePrice) return;
+      if (form.OriginalPrice) form.OriginalPrice.$setValidity('min', true);
+      if (!form.OriginalPrice) return;
       if ($scope.variantPtr.SalePrice == '') return;
       if ($scope.variantPtr.OriginalPrice == '') return;
 
       if (Number($scope.variantPtr.SalePrice) > Number($scope.variantPtr.OriginalPrice)) {
-        if (form.SalePrice) form.SalePrice.$setValidity('min', false)
-        form.SalePrice.$error['min'] =
-          'Sale Price must not exceed Original Price'
+        if (form.OriginalPrice) form.OriginalPrice.$setValidity('min', false)
+        form.OriginalPrice.$error['min'] = 'Original Price must be higher than Sale Price'
       }
     });
 
