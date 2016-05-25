@@ -48,10 +48,10 @@
 																	<table class="table" id="add-product-approve-versions">
 																			<thead>
 																					<tr>
-																							<th class="width_200">Export Request on</th>
-																							<th>Export Finish on</th>
+																							<th class="width_200">Request On</th>
+																							<th>Finish On</th>
 																							<th class="width_100">Status</th>
-																							<th style="width:330px;"></th>
+																							<th class="export-action-column">Action</th>
 																					</tr>
 																			</thead>
 																			<tbody>
@@ -61,12 +61,13 @@
 																							<td ng-if="exportAsyncDelegate.progress < 100">In Progress..</td>
 																							<td><strong class="color-green">{{ exportAsyncDelegate.progress | number: 2 }} %</strong></td>
 																							<td>
-																									<button type="button" class="btn btn-white btn-width-xl">Cancel</button>
-																									&nbsp;
-																									<button type="button" class="btn btn-blue btn-width-xxl" ng-click="downloadFile()"
+																									<button type="button" class="btn btn-white btn-width-xl"
+																										ng-hide="exportAsyncDelegate.progress >= 100">
+																										Cancel</button>
+																									<button type="button" class="btn btn-blue btn-width-xl" ng-click="downloadFile()"
 																										ng-class="{ 'disabled' : exportAsyncDelegate.progress < 100 }"
-																										ng-disabled="exportAsyncDelegate.progress < 100">
-																										Download File
+																										ng-hide="exportAsyncDelegate.progress < 100">
+																										Download
 																									</button>
 																							</td>
 																					</tr>
