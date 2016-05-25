@@ -14,12 +14,32 @@ module.exports = function ($scope, $controller, CMSMasterService, ImageService, 
         //CategoryList: []
     };
 
+    $scope.bannerUploader = ImageService.getUploaderFn('/CMS/CMSImage', {
+        data: { Type: 'Banner' }
+    });
+    $scope.bannerOptions = {
+        validateDimensionMin: [1920, 1080],
+        validateDimensionMax: [1920, 1080]
+    };
+
     $scope.formData         = CMSMasterService.generate();
-    $scope.bannerUploader   = ImageService.getUploaderFn('/CMS/CMSMaster/CMSImage');
     
     $scope.uploadBannerFail = function (e, response) {
-        if (e == 'onmaxsize') {
-            $scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+        // if (e == 'onmaxsize') {
+        //     $scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+        // }
+        // else {
+        //     $scope.alert.error(common.getError(response.data));
+        // }
+        debugger;
+        if(e == 'onmaxsize') {
+            $scope.alert.error('Cannot exceed 8 images');
+        }
+        else if(e == 'ondimension') {
+            $scope.alert.error('Image must be 1920x1080 pixels');
+        }
+        else if(e == 'onfilesize') {
+            $scope.alert.error('Each image file size must not exceed 5MB')
         }
         else {
             $scope.alert.error(common.getError(response.data));
