@@ -9,7 +9,7 @@
             <div class="width-field-normal">
                 <div class="radio multiple-radio multiline">
                     <label ng-repeat="shi in dataset.ShippingList">
-                        <input type="radio" name="shipping_method" ng-disabled="!$root.ShopGroupPolicy(shi.VisibleTo.split(',')) || xspermit(38)" 
+                        <input type="radio" name="shipping_method" ng-disabled="!$root.ShopGroupPolicy(shi.VisibleTo.split(',')) || xspermit(38)"
                         ng-init="formData.ShippingMethod = 1"
                         ng-value="{{shi.ShippingId}}" ng-model="formData.ShippingMethod" /> {{ shi.ShippingMethodEn }} </label>
                 </div>
@@ -17,7 +17,7 @@
         </div>
 
 
-        <div nc-template="common/input/form-group-with-label" nc-template-form="form.ExpressDelivery" nc-template-options-path="addProductForm/SafetyStock"
+        <div nc-template="common/input/form-group-with-label" nc-template-form="form.ExpressDelivery"
         nc-label="Express Delivery">
             <select ng-disabled="xspermit(38)" nc-default-value="'Y'"  ng-model="variantPtr.ExpressDelivery" class="form-control" name="ExpressDelivery">
                 <option selected value="-" disabled>- Select Express Delivery Option -</option>
@@ -26,7 +26,7 @@
             </select>
         </div>
 
-        <div nc-template="common/input/form-group-with-label" nc-template-form="form.ExpressDelivery" nc-template-options-path="addProductForm/SafetyStock"
+        <div nc-template="common/input/form-group-with-label" nc-template-form="form.ExpressDelivery"
         nc-label="Delivery Fee">
            <input  ng-disabled="xspermit(38)" class="form-control" name="DeliveryFee" type="text"
             maxlength="12" ng-pattern-restrict="^[0-9]{0,10}(\.[0-9]{0,2})?$" ng-model="variantPtr.DeliveryFee"/>
@@ -184,7 +184,7 @@
                         class="form-control"
                         ng-required="onPublishing"
                         name="Weight"
-                        ng-pattern-restrict="^[0-9]{0,10}(\.[0-9]{0,2})?$" 
+                        ng-pattern-restrict="^[0-9]{0,10}(\.[0-9]{0,2})?$"
                         ng-model="variantPtr.Weight" />
                     </div>
 

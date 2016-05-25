@@ -165,6 +165,11 @@ user-select: none;
 		}
 	}
 
+	.export-action-column{
+		width:136px;
+		text-align: center;
+	}
+
   .width_date {
     width: 160px;
   }
@@ -220,6 +225,7 @@ user-select: none;
   // Set border-table's color to $color-grey
   table.table.table-curved.product-list-table {
     border-color: $color-grey;
+		box-shadow: $global-shadow;
   }
 
   table > tbody > tr > td, table > thead > tr > th {
@@ -243,6 +249,7 @@ user-select: none;
 
   .table {
     border: solid 1px $color-grey;
+		box-shadow: $global-shadow;
   }
 
   .caret-grey {
@@ -635,7 +642,7 @@ user-select: none;
   color: $color-grey;
 }
 
-.btn-primary.disabled{
+.btn-blue.disabled{
 	color: $color-light-grey;
 	background: $color-dark-grey;
 	border-color: $color-dark-grey;
