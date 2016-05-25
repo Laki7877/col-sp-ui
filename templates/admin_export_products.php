@@ -11,9 +11,9 @@
 
 		<div class="page-header with-border" ng-show="loading.length >= 2">
 
-				<nc-page-title nc-title="Products/Export" link="/products" icon="fa-tag">
+				<nc-page-title nc-title="Products/Export" link="/admin/products" icon="fa-tag">
 					<div class="page-header">
-						<a href="/products" class="btn margin-left-10 btn-white btn-width-xl">
+						<a href="/admin/products" class="btn margin-left-10 btn-white btn-width-xl">
 		          	<span class="">Cancel</span>
 		        </a>
 		        <a href="#" class="btn margin-left-10 btn-blue  btn-width-xl" ng-click="startExportProducts()">
