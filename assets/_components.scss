@@ -225,6 +225,7 @@ user-select: none;
   // Set border-table's color to $color-grey
   table.table.table-curved.product-list-table {
     border-color: $color-grey;
+		box-shadow: $global-shadow;
   }
 
   table > tbody > tr > td, table > thead > tr > th {
@@ -248,6 +249,7 @@ user-select: none;
 
   .table {
     border: solid 1px $color-grey;
+		box-shadow: $global-shadow;
   }
 
   .caret-grey {
