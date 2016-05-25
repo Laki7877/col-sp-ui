@@ -8,8 +8,8 @@
                 ng-model="variantPtr.SalePrice" required/>
         </div>
 
-        <div nc-template="common/input/form-group-with-label" nc-label="Original Price" nc-template-options-path="addProductForm/OriginalPrice"
-            nc-template-form="form.OriginalPrice">
+        <div nc-template="common/input/form-group-with-label" nc-label="Original Price" 
+        nc-template-options-path="addProductForm/OriginalPrice" nc-template-form="form.OriginalPrice">
             <input autocomplete="off" class="form-control" type="text" name="OriginalPrice" ng-disabled="xspermit(36) || xspermit(35)"
                 ng-model="variantPtr.OriginalPrice" ng-pattern-restrict="^[0-9]{0,10}(\.[0-9]{0,2})?$" />
         </div>

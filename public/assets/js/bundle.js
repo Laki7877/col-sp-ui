@@ -17220,6 +17220,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     }
 
     var checkSchema = function(data, schemaName) {
+      return true;
       //Perform schema check
       var schema = JSONCache.get(schemaName || 'productStages');
       var validation = skeemas.validate(data, schema);
@@ -17433,13 +17434,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.$watch('variantPtr.OriginalPrice+variantPtr.SalePrice', function() {
       var form = $scope.addProductForm;
       if (form.OriginalPrice) form.OriginalPrice.$setValidity('min', true);
-      if (!form.OriginalPrice) return;
       if ($scope.variantPtr.SalePrice == '') return;
       if ($scope.variantPtr.OriginalPrice == '') return;
 
       if (Number($scope.variantPtr.SalePrice) > Number($scope.variantPtr.OriginalPrice)) {
         if (form.OriginalPrice) form.OriginalPrice.$setValidity('min', false)
-        form.OriginalPrice.$error['min'] = 'Original Price must be higher than Sale Price'
+        form.OriginalPrice.$error['min'] = 'Original Price must be higher than Sale Price';
+        form.OriginalPrice.$setDirty(true);
       }
     });
 
