@@ -9812,6 +9812,7 @@ module.exports = ["$scope", "$controller", "BrandService", "SellerAccountService
 module.exports = ["$scope", "$controller", "SellerCouponService", "config", function($scope, $controller, SellerCouponService, config) {
   'ngInject';
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
+  $scope.manageable = $rootScope.permit(53);
   $controller('AbstractListCtrl', {
     $scope: $scope,
     options: {
@@ -10306,6 +10307,9 @@ module.exports = ["$scope", "$rootScope", "$controller", "$window", "InventorySe
 		return $scope.statusDropdown[0];
 	};
 	$scope.popoverStock = function(item) {
+		if(!$rootScope.permit(51)) {
+			return;
+		}
 		if(!item.open) {
 			//Is popover open, load popovers
 			$scope.popoverItemOriginal = item;

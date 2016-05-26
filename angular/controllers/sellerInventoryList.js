@@ -51,6 +51,9 @@ module.exports = function($scope, $rootScope, $controller, $window, InventorySer
 		return $scope.statusDropdown[0];
 	};
 	$scope.popoverStock = function(item) {
+		if(!$rootScope.permit(51)) {
+			return;
+		}
 		if(!item.open) {
 			//Is popover open, load popovers
 			$scope.popoverItemOriginal = item;
