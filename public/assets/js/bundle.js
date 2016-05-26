@@ -15013,6 +15013,11 @@ angular.module('nc')
 							Enabled: true
 						})
 					}
+					else {
+						if(scope.source.Products) {
+							scope.source.Products = _.compact(scope.source.Products);
+						}
+					}
 				})
 			}
 		}
