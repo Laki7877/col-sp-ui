@@ -16,7 +16,7 @@
 						<a href="/products" class="btn margin-left-10 btn-white btn-width-xl">
 		          		<span class="">Cancel</span>
 		        </a>
-		        <a href="#" class="btn margin-left-10 btn-blue  btn-width-xl" 
+		        <a href="#" class="btn margin-left-10 btn-blue  btn-width-xl"
 				ng-class="{'disabled': !allowExport() }"
 				ng-disabled="!allowExport()"
 				ng-click="startExportProducts()">
@@ -116,7 +116,7 @@
 			        <div class="container-fluid">
 			          <div class="float-right">
 			            <a href="/products" class="link-btn-plain">Cancel</a>
-			            <button class="btn btn-blue btn-width-xl" 
+			            <button class="btn btn-blue btn-width-xl"
 						ng-class="{'disabled': !allowExport() }"
 						ng-disabled="!allowExport()"
 						ng-click="startExportProducts()">Export</button>
