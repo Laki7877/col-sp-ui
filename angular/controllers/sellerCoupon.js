@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, SellerCouponService, config) {
+module.exports = function($scope, $rootScope, $controller, SellerCouponService, config) {
   'ngInject';
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.manageable = $rootScope.permit(53);

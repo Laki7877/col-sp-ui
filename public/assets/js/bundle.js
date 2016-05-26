@@ -9809,7 +9809,7 @@ module.exports = ["$scope", "$controller", "BrandService", "SellerAccountService
 }]
 
 },{}],72:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "SellerCouponService", "config", function($scope, $controller, SellerCouponService, config) {
+module.exports = ["$scope", "$rootScope", "$controller", "SellerCouponService", "config", function($scope, $rootScope, $controller, SellerCouponService, config) {
   'ngInject';
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.manageable = $rootScope.permit(53);
@@ -10148,16 +10148,17 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$filter", "stora
 	// call end-point Product Rating
 	Dashboard.getProductRating()
 		.then(function(data){	
-			$scope.rating = {};		
-			_.forOwn(data, function(v, k) {
-				if (v != 'N/A') {
-					v = _.round(v, 1);
+			$scope.rating = {
+				DeliverySpeed: '<div class="font-size-16 color-grey">n/a</div>',
+				ProductContent: '<div class="font-size-16 color-grey">n/a</div>',
+				ProductValidity: '<div class="font-size-16 color-grey">n/a</div>',
+				Packaging: '<div class="font-size-16 color-grey">n/a</div>'
+			};	
+			if(_.isPlainObject(data)) {
+				_.forOwn(data, function(v, k) {
 					$scope.rating[k] = '<div class="font-size-16 color-' + getColoredRank('Product Rating', v) + '">' + $filter('currency')(v, ' ', 1) + ' / 5.0' + '</div>';
-				} else {
-					$scope.rating[k] = '<div class="font-size-16 color-grey">' + v  + '</div>';
-
-				}
-			});
+				});
+			}
 		});
 
 	// Ontime Delivery mockup
