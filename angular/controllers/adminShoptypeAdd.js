@@ -25,10 +25,10 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShippingSer
 
 	var deserializeShip = function(load) {
 		if(load) {
-			var shipping = $scope.formData.Shippings;
+			var shippings = $scope.formData.Shippings;
 			$scope.formData.Shippings = [];
-			_.forEach($scope.Shippings, function(t) {
-				if(_.findIndex(Shippings, function(e) {
+			_.forEach($scope.shippings, function(t) {
+				if(_.findIndex(shippings, function(e) {
 					return t.ShippingId == e.ShippingId;
 				}) >= 0) {
 					t.check = true;
@@ -38,7 +38,7 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShippingSer
 				$scope.formData.Shippings.push(t);
 			});
 		} else {
-			$scope.formData.Shippings = $scope.Shippings;
+			$scope.formData.Shippings = $scope.shippings;
 			_.forEach($scope.formData.Shippings, function(t) {
 				t.check = false;
 			});
