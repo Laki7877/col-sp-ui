@@ -14,9 +14,12 @@
 				<nc-page-title nc-title="Products/Export" link="/products" icon="fa-tag">
 					<div class="page-header">
 						<a href="/products" class="btn margin-left-10 btn-white btn-width-xl">
-		          	<span class="">Cancel</span>
+		          		<span class="">Cancel</span>
 		        </a>
-		        <a href="#" class="btn margin-left-10 btn-blue  btn-width-xl" ng-click="startExportProducts()">
+		        <a href="#" class="btn margin-left-10 btn-blue  btn-width-xl" 
+				ng-class="{'disabled': !allowExport() }"
+				ng-disabled="!allowExport()"
+				ng-click="startExportProducts()">
 		          	<span class="">Export</span>
 		        </a>
 					</div>
@@ -113,9 +116,10 @@
 			        <div class="container-fluid">
 			          <div class="float-right">
 			            <a href="/products" class="link-btn-plain">Cancel</a>
-			            <button class="btn btn-blue btn-width-xl"
-									ng-click="startExportProducts()"
-									>Export</button>
+			            <button class="btn btn-blue btn-width-xl" 
+						ng-class="{'disabled': !allowExport() }"
+						ng-disabled="!allowExport()"
+						ng-click="startExportProducts()">Export</button>
 			          </div>
 			        </div>
 			     </div>

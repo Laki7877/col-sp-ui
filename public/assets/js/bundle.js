@@ -7982,6 +7982,13 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 		}
 	}
 
+	$scope.exportAsyncDelegate = {
+			active: false,
+			progress: 0,
+			requestDate: null,
+			endDate: null
+	};
+		
 	//TODO: Optimization required
 	var productIds = [];
 	$scope.init = function (viewBag) {
@@ -8020,6 +8027,12 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 
 	$scope.alert = new NcAlert();
 
+	$scope.allowExport = function(){
+		if(!$scope.exportAsyncDelegate.active) return true;
+		if(!$scope.exportAsyncDelegate.requestDate) return true;
+		if($scope.exportAsyncDelegate.requestDate && $scope.exportAsyncDelegate.progress == 0) return false;
+		return !($scope.exportAsyncDelegate.progress > 0 && $scope.exportAsyncDelegate.progress < 100);
+	}
 
 
 	function startIntervalCheck() {
@@ -8039,13 +8052,14 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 	}
 
 	$scope.abortExport = function () {
-		Product.exportAbort().then(function (result) {
-			NCConfirm('Cancel Export', 'Are you sure you want to cancel this ongoing export?', function () {
+		
+		NCConfirm('Cancel Export', 'Are you sure you want to cancel this ongoing export?', function () {
+			Product.exportAbort().then(function (result) {
 				$interval.cancel(exportProgressInterval);
-				$scope.alert.error("Export has been cancelled.");
-				$scope.exportAsyncDelegate.active = false;
+					$scope.alert.error("Export has been cancelled.");
+					$scope.exportAsyncDelegate.active = false;
+				});
 			});
-		});
 	}
 
 	//Ping server once for existing queue
@@ -8117,8 +8131,11 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 				endDate: null
 			}
 
-			startIntervalCheck();
-
+			$timeout(function(){
+				startIntervalCheck();
+			}, 5000);
+			
+			
 
 		}, error);
 	}
