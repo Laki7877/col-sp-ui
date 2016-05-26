@@ -21,6 +21,13 @@ module.exports = function ($scope, $controller, StdReportOnHoldService, config, 
         })
     };
 
+    $scope.resetSearch = function () {
+        PID = null;
+        ItemName = null;
+        OrderDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
+        OrderDateTo = new Date();
+    };
+
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
