@@ -303,7 +303,7 @@ angular.module('nc')
 								var maxW = Number(maxDim[0]);
 								var maxH = Number(maxDim[1]);
 
-								console.log(file);
+								
 
 								if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
 									scope.onfail('onfilesize');
@@ -382,7 +382,7 @@ angular.module('nc')
 								var maxW = Number(maxDim[0]);
 								var maxH = Number(maxDim[1]);
 								
-								console.log(file);
+								
 
 								if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
 									scope.onfail('onfilesize');
@@ -701,6 +701,7 @@ angular.module('nc')
 						var maxW = Number(maxDim[0]);
 						var maxH = Number(maxDim[1]);
 
+						var file = item._file;
 						console.log(file);
 
 						if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
