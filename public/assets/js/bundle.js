@@ -11593,8 +11593,8 @@ module.exports = ["$templateCache", "$filter", function($templateCache, $filter)
 },{}],92:[function(require,module,exports){
 module.exports = [function () {
     return {
-	priority: 1010,
-	require: '?ngModel',
+        priority: 1010,
+        require: '?ngModel',
         link: function ($scope, elm, attr, ngModel) {
             var ck = CKEDITOR.replace(elm[0], attr.ngCkeditor || {});
             CKFinder.setupCKEditor(ck, '../')
@@ -11603,10 +11603,19 @@ module.exports = [function () {
                     ngModel.$setViewValue(ck.getData());
                 });
             });
-	    ck.on('instanceReady' , function(){
-	    	ck.setData(ngModel.$modelValue);
-	    });
-	
+            
+            ck.on('change', function () {
+                debugger;
+                $scope.$apply(function () {
+                    ngModel.$setViewValue(ck.getData());
+                });
+            });
+                        
+            
+            ck.on('instanceReady', function () {
+                ck.setData(ngModel.$modelValue);
+            });
+
             ngModel.$render = function (value) {
                 ck.setData(ngModel.$modelValue);
             };
@@ -18691,7 +18700,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
   $templateCache.put('ap/section-description',
     "<div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-disabled=\"xspermit(35) || xspermit(39)\" ng-ckeditor=ckOptions class=form-control name=DescriptionFullEn ng-model=variantPtr.DescriptionFullEn>\r" +
     "\n" +
-    "                    </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-disabled=xspermit(35) ng-ckeditor=ckOptions class=form-control name=DescriptionFullTh ng-model=variantPtr.DescriptionFullTh>\r" +
+    "                    </textarea></div><pre>{{ variantPtr.DescriptionFullEn }}</pre><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-disabled=xspermit(35) ng-ckeditor=ckOptions class=form-control name=DescriptionFullTh ng-model=variantPtr.DescriptionFullTh>\r" +
     "\n" +
     "                    </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (English)\" nc-template-options-path=addProductForm/DescriptionFull nc-template-form=form.MobileDescriptionEn><textarea ng-ckeditor=ckOptions class=form-control maxlength=50000 name=MobileDescriptionEn ng-disabled=\"xspermit(35) || xspermit(39)\" ng-model=variantPtr.MobileDescriptionEn>\r" +
     "\n" +
