@@ -8,7 +8,7 @@
         nc-template-form="form.ProductNameEn"
         nc-label="Product Name (English)" nc-template-options-path="addProductForm/ProductNameEn">
             <input class="form-control width-field-large" name="ProductNameEn" ng-model="variantPtr.ProductNameEn"
-            maxlength="255" ng-pattern-restrict="^([^<>ก-๙])*$" ng-disabled="xspermit(35)"
+            maxlength="255"  ng-disabled="xspermit(35)"
             required />
         </div>
 
@@ -16,14 +16,14 @@
         nc-label="Product Name (ไทย)" nc-template-form="form.ProductNameTh"
         nc-template-options-path="addProductForm/ProductNameTh">
             <input class="form-control width-field-large" name="ProductNameTh" ng-disabled="xspermit(35)" ng-model="variantPtr.ProductNameTh"
-            ng-pattern-restrict="^([^<>])*$" maxlength="255" required />
+             maxlength="255" required />
         </div>
 
         <div nc-template="common/input/form-group-with-label" nc-policy-indy-bu
         nc-label="Short Product Name (Eng)" nc-template-form="form.ProdTDNameEn"
         nc-template-options-path="addProductForm/NonRequiredSystemField">
             <input class="form-control width-field-large" name="ProdTDNameEn" ng-disabled="xspermit(35)" ng-model="variantPtr.ProdTDNameEn"
-            ng-pattern-restrict="^([^<>])*$" maxlength="55" />
+             maxlength="55" />
         </div>
 
         <div nc-template="common/input/form-group-with-label" nc-policy-indy-bu
@@ -33,7 +33,7 @@
             name="ProdTDNameTh"
             ng-disabled="xspermit(35)"
             ng-model="variantPtr.ProdTDNameTh"
-            ng-pattern-restrict="^([^<>])*$" maxlength="55"  />
+             maxlength="55"  />
         </div>
 
 	<div nc-template="common/input/form-group-with-label" nc-label="SKU" 
