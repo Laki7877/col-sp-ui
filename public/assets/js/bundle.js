@@ -15111,7 +15111,8 @@ angular.module('nc')
                     endDate: '=ncModelEnd',
                     startMinView: '@ncStartMinView',
                     endMinView: '@ncEndMinView',
-                    errorText: '@ncErrorText'
+                    errorText: '@ncErrorText',
+                    disabled: '=ngDisabled'
                 },
                 template: function (element, attrs) {
                     var templateHTML = $templateCache.get(attrs.ncDateRange);
@@ -15123,10 +15124,7 @@ angular.module('nc')
                 link: function (scope, element, attrs, ctrl, transclude) {
                     var pathComp
                     var opt = {};
-                    scope.disabled = false;
-                    if(!_.isNil(attrs.disabled)) {
-                        scope.disabled = true;
-                    }
+
                     if(scope.optionsPath){
                         pathComp = scope.optionsPath.split('/');
                         opt = $templateOptionsCache[pathComp[0]][pathComp[1]];

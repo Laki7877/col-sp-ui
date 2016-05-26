@@ -52,7 +52,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                         nc-model-end="formData.ExpireDate"
                         nc-error-text="Expire date must come after start date"
                         nc-template-form="form"
-                        nc-template-options-path="couponForm/DateRange">
+                        nc-template-options-path="couponForm/DateRange"
+                        ng-disabled="manageable" >
                       </div>
                       <!-- Shop Status -->
                       <div nc-template="common/input/form-group-with-label"
