@@ -1,4 +1,5 @@
 module.exports = function($rootScope, $scope, $controller, ShopService, ShopProfileService, ImageService, Onboarding, NcAlert, common, config, util, storage) {
+	'ngInject';
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 	$scope.shopGroupDropdown = config.DROPDOWN.SHOP_GROUP_DROPDOWN;
 	$scope.form = {};
@@ -112,7 +113,7 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 					$scope.formData = ShopProfileService.deserialize(data);
 					$rootScope.Profile.Shop = $scope.formData;
 					storage.storeCurrentUserProfile($rootScope.Profile);
-					$scope.alert.success('Successfully Saved.');
+					$scope.alert.success('Your changes has been saved successfully.');
 					$scope.form.$setPristine(true);
 				}, function(err) {
 					$scope.alert.error(common.getError(err));

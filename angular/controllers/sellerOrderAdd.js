@@ -1,4 +1,5 @@
 module.exports = function($scope, $window, $filter, $controller, OrderService, util, config, $uibModal) {
+  'ngInject';
   $scope.status = config.ORDER_STATUS;
   $scope.addressIter = [1,2,3,4]; //Amount of AddressX (ie, Address1, Address2)
   //Abstract Add Ctrl

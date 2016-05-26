@@ -16,7 +16,8 @@
                     </select>
 
                     <you-me display-by="AttributeSetNameEn" ng-disabled="xspermit(35)" placeholder="Search Attribute Set" ng-show="controlFlags.variation != 'enable'" auto-clear-search="true"
-                        group-by="_group" ng-model="formData.AttributeSet" refresh="refresher.AttributeSets" initial-choices="dataset.AttributeSets"
+                        group-by="_group" ng-model="formData.AttributeSet" refresh="refresher.AttributeSets" 
+                        initial-choices="dataset.AttributeSets"
                         choices="dataset.CombinedAttributeSets">
                     </you-me>
 
@@ -52,6 +53,7 @@
                 </div>
 
                 <input ng-if="isFreeTextInput(amap.Attribute.DataType)"
+                ng-pattern-restrict="^([^<>ก-๙])*$"
                 ng-class="{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }"
                 ng-disabled="xspermit(35)"
                     ng-required="amap.Attribute.Required && onPublishing" type="text"
@@ -84,6 +86,7 @@
                 <input ng-if="isFreeTextInput(amap.Attribute.DataType)" ng-disabled="xspermit(35)"
                     ng-class="{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }"
                     nc-default-value="''" maxlength="255"
+                    ng-pattern-restrict="^([^<>])*$"
                     ng-required="amap.Attribute.Required && onPublishing"
                     type="text" class="form-control" name="AmapInput{{$index}}"
                     ng-model="formData.MasterAttribute[amap.Attribute.AttributeId].ValueTh" />

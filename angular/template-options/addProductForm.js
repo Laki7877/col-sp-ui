@@ -85,7 +85,6 @@ module.exports = {
   DescriptionFull: {
     'divClass': 'col-xs-6',
     'formGroupClass': 'margin-top-40',
-    'labelClass': 'required',
     'inputSize': 'xxl'
   },
   ProductNameTh: {
@@ -120,6 +119,7 @@ module.exports = {
     'error': {
       'messages': {
         'required': 'This is a required field',
+        'min': 'Original Price must be higher than Sale Price',
         'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
       }
     }
@@ -205,7 +205,8 @@ module.exports = {
     'error': {
       'messages': {
         'required': 'This is a required field',
-        'pattern': 'Only numbers allowed'
+        'pattern': 'Only numbers allowed',
+        'maxnumber': 'Products in stock cannot take more than 24 days to prepare'
       }
     },
     'unit': 'Day'
