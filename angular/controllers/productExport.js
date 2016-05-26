@@ -1,4 +1,4 @@
-module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $filter, $interval, NCConfirm) {
+module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $filter, $interval, NCConfirm, smoothScroll, $timeout) {
 	'ngInject';
 	$scope.ProductList = [];
 	$scope.SELECT_ALL = false;
@@ -176,8 +176,12 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 
 	$scope.confirmExportProducts = function () {
 
-		$("#export-product").modal('hide');
-
+		// $("#export-product").modal('hide');
+		$timeout(function() {
+			smoothScroll(document.body, {
+				container: null
+			});
+		}, 10);
 
 
 		var error = function (r) {
