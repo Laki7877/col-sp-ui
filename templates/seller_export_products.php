@@ -50,7 +50,7 @@
 																					<tr>
 																							<th class="width_200">Request On</th>
 																							<th>Finish On</th>
-																							<th class="width_100">Status</th>
+																							<th class="width_150">Status</th>
 																							<th class="export-action-column">Action</th>
 																					</tr>
 																			</thead>
@@ -58,11 +58,12 @@
 																					<tr>
 																							<td>{{ exportAsyncDelegate.requestDate | datetimeTh }}</td>
 																							<td ng-if="exportAsyncDelegate.progress >= 100">{{ exportAsyncDelegate.endDate | datetimeTh }}</td>
-																							<td ng-if="exportAsyncDelegate.progress < 100">In Progress..</td>
-																							<td><strong class="color-green">{{ exportAsyncDelegate.progress | number: 2 }} %</strong></td>
+																							<td ng-if="exportAsyncDelegate.progress < 100">-</td>
+																							<td ng-if="exportAsyncDelegate.progress > 0"><strong class="color-green">{{ exportAsyncDelegate.progress | number: 2 }} %</strong></td>
+																							<td  ng-if="exportAsyncDelegate.progress == 0"><strong class="color-green">Preparing..</strong></td>
 																							<td>
 																									<button type="button" class="btn btn-white btn-width-xl"
-																										ng-hide="exportAsyncDelegate.progress >= 100">
+																										ng-hide="exportAsyncDelegate.progress >= 100" ng-click="abortExport()">
 																										Cancel</button>
 																									<button type="button" class="btn btn-blue btn-width-xl" ng-click="downloadFile()"
 																										ng-class="{ 'disabled' : exportAsyncDelegate.progress < 100 }"

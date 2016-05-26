@@ -79,7 +79,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   // App template cache load
   .run(template)
   .run([function () {
-    Rollbar.configure({ logLevel: "warning" });
+    
   }])
 
   // Configuration
@@ -275,19 +275,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('AdminBuy1Get1ListCtrl', controllers.adminBuy1Get1List)
 
   .controller('TestCtrl', controllers.test)
-
-
-//Rollbar
-var _rollbarConfig = {
-  accessToken: config.ROLLBAR.token,
-  captureUncaught: true,
-  payload: {
-    environment: config.ROLLBAR.environment
-  }
-};
-
-!function (r) { function o(e) { if (t[e]) return t[e].exports; var n = t[e] = { exports: {}, id: e, loaded: !1 }; return r[e].call(n.exports, n, n.exports, o), n.loaded = !0, n.exports } var t = {}; return o.m = r, o.c = t, o.p = "", o(0) } ([function (r, o, t) { "use strict"; var e = t(1).Rollbar, n = t(2); _rollbarConfig.rollbarJsUrl = _rollbarConfig.rollbarJsUrl || "https://d37gvrvc0wt4s1.cloudfront.net/js/v1.8/rollbar.min.js"; var a = e.init(window, _rollbarConfig), i = n(a, _rollbarConfig); a.loadFull(window, document, !_rollbarConfig.async, _rollbarConfig, i) }, function (r, o) { "use strict"; function t(r) { return function () { try { return r.apply(this, arguments) } catch (o) { try { console.error("[Rollbar]: Internal error", o) } catch (t) { } } } } function e(r, o, t) { window._rollbarWrappedError && (t[4] || (t[4] = window._rollbarWrappedError), t[5] || (t[5] = window._rollbarWrappedError._rollbarContext), window._rollbarWrappedError = null), r.uncaughtError.apply(r, t), o && o.apply(window, t) } function n(r) { var o = function () { var o = Array.prototype.slice.call(arguments, 0); e(r, r._rollbarOldOnError, o) }; return o.belongsToShim = !0, o } function a(r) { this.shimId = ++s, this.notifier = null, this.parentShim = r, this._rollbarOldOnError = null } function i(r) { var o = a; return t(function () { if (this.notifier) return this.notifier[r].apply(this.notifier, arguments); var t = this, e = "scope" === r; e && (t = new o(this)); var n = Array.prototype.slice.call(arguments, 0), a = { shim: t, method: r, args: n, ts: new Date }; return window._rollbarShimQueue.push(a), e ? t : void 0 }) } function l(r, o) { if (o.hasOwnProperty && o.hasOwnProperty("addEventListener")) { var t = o.addEventListener; o.addEventListener = function (o, e, n) { t.call(this, o, r.wrap(e), n) }; var e = o.removeEventListener; o.removeEventListener = function (r, o, t) { e.call(this, r, o && o._wrapped ? o._wrapped : o, t) } } } var s = 0; a.init = function (r, o) { var e = o.globalAlias || "Rollbar"; if ("object" == typeof r[e]) return r[e]; r._rollbarShimQueue = [], r._rollbarWrappedError = null, o = o || {}; var i = new a; return t(function () { if (i.configure(o), o.captureUncaught) { i._rollbarOldOnError = r.onerror, r.onerror = n(i); var t, a, s = "EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(","); for (t = 0; t < s.length; ++t)a = s[t], r[a] && r[a].prototype && l(i, r[a].prototype) } return r[e] = i, i })() }, a.prototype.loadFull = function (r, o, e, n, a) { var i = function () { var o; if (void 0 === r._rollbarPayloadQueue) { var t, e, n, i; for (o = new Error("rollbar.js did not load"); t = r._rollbarShimQueue.shift();)for (n = t.args, i = 0; i < n.length; ++i)if (e = n[i], "function" == typeof e) { e(o); break } } "function" == typeof a && a(o) }, l = !1, s = o.createElement("script"), u = o.getElementsByTagName("script")[0], p = u.parentNode; s.crossOrigin = "", s.src = n.rollbarJsUrl, s.async = !e, s.onload = s.onreadystatechange = t(function () { if (!(l || this.readyState && "loaded" !== this.readyState && "complete" !== this.readyState)) { s.onload = s.onreadystatechange = null; try { p.removeChild(s) } catch (r) { } l = !0, i() } }), p.insertBefore(s, u) }, a.prototype.wrap = function (r, o) { try { var t; if (t = "function" == typeof o ? o : function () { return o || {} }, "function" != typeof r) return r; if (r._isWrap) return r; if (!r._wrapped) { r._wrapped = function () { try { return r.apply(this, arguments) } catch (o) { throw o._rollbarContext = t() || {}, o._rollbarContext._wrappedSource = r.toString(), window._rollbarWrappedError = o, o } }, r._wrapped._isWrap = !0; for (var e in r) r.hasOwnProperty(e) && (r._wrapped[e] = r[e]) } return r._wrapped } catch (n) { return r } }; for (var u = "log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","), p = 0; p < u.length; ++p)a.prototype[u[p]] = i(u[p]); r.exports = { Rollbar: a, _rollbarWindowOnError: e } }, function (r, o) { "use strict"; r.exports = function (r, o) { return function (t) { if (!t && !window._rollbarInitialized) { var e = window.RollbarNotifier, n = o || {}, a = n.globalAlias || "Rollbar", i = window.Rollbar.init(n, r); i._processShimQueue(window._rollbarShimQueue || []), window[a] = i, window._rollbarInitialized = !0, e.processPayloads() } } } }]);
-
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./config":2,"./controllers/abstractAdd.js":3,"./controllers/abstractAdvanceList.js":4,"./controllers/abstractList.js":5,"./controllers/abstractProductGroupAdd.js":6,"./controllers/adminAccount.js":7,"./controllers/adminAccountAdd.js":8,"./controllers/adminAddCMSMaster.js":9,"./controllers/adminAttribute.js":10,"./controllers/adminAttributeAdd.js":11,"./controllers/adminAttributeSet.js":12,"./controllers/adminAttributeSetAdd.js":13,"./controllers/adminBrand.js":14,"./controllers/adminBrandAdd.js":15,"./controllers/adminBuy1Get1Add.js":16,"./controllers/adminBuy1Get1List.js":17,"./controllers/adminCMS.js":18,"./controllers/adminCMSCategoryAdd.js":19,"./controllers/adminCMSCategoryList.js":20,"./controllers/adminCMSGroupAdd.js":21,"./controllers/adminCMSGroupList.js":22,"./controllers/adminCMSMasterAdd.js":23,"./controllers/adminCMSMasterList.js":24,"./controllers/adminCategory.js":25,"./controllers/adminGlobalCoupon.js":26,"./controllers/adminGlobalCouponAdd.js":27,"./controllers/adminLogin.js":28,"./controllers/adminMasterProduct.js":29,"./controllers/adminMasterProductAdd.js":30,"./controllers/adminNewsletter.js":31,"./controllers/adminOnTopCreditAdd.js":32,"./controllers/adminOnTopCreditList.js":33,"./controllers/adminProductApprovalDetail.js":34,"./controllers/adminProductApprovalList.js":35,"./controllers/adminProductDetail.js":36,"./controllers/adminProductGroupAdd.js":37,"./controllers/adminProductList.js":38,"./controllers/adminProductReview.js":39,"./controllers/adminRole.js":40,"./controllers/adminRoleAdd.js":41,"./controllers/adminSellerAccount.js":42,"./controllers/adminSellerCoupon.js":43,"./controllers/adminSellerCouponAdd.js":44,"./controllers/adminShop.js":45,"./controllers/adminShopAdd.js":46,"./controllers/adminShoptype.js":47,"./controllers/adminShoptypeAdd.js":48,"./controllers/adminStdSaleReportSellerList.js":49,"./controllers/buy1get1Add.js":50,"./controllers/buy1get1Import.js":51,"./controllers/buy1get1List.js":52,"./controllers/index.js":53,"./controllers/localCategory.js":54,"./controllers/login.js":55,"./controllers/productAddSelectCategory.js":56,"./controllers/productCollectionAdd.js":57,"./controllers/productCollectionAddListItem.js":58,"./controllers/productCollectionImport.js":59,"./controllers/productCollectionList.js":60,"./controllers/productExport.js":61,"./controllers/productGroupCollectionList.js":62,"./controllers/productImageList.js":63,"./controllers/productImageManagement.js":64,"./controllers/productImport.js":65,"./controllers/productList.js":66,"./controllers/productListLocalCategory.js":67,"./controllers/productReview.js":68,"./controllers/root.js":69,"./controllers/sellerAccount.js":70,"./controllers/sellerAccountAdd.js":71,"./controllers/sellerCoupon.js":72,"./controllers/sellerCouponAdd.js":73,"./controllers/sellerDashboard.js":74,"./controllers/sellerInventoryList.js":75,"./controllers/sellerNewsletter.js":76,"./controllers/sellerOnboarding.js":77,"./controllers/sellerOrder.js":78,"./controllers/sellerOrderAdd.js":79,"./controllers/sellerOrderShippingList.js":80,"./controllers/sellerProductDetail.js":81,"./controllers/sellerProductGroupAdd.js":82,"./controllers/sellerReport.js":83,"./controllers/sellerReturnRequest.js":84,"./controllers/sellerReturnRequestAdd.js":85,"./controllers/sellerRole.js":86,"./controllers/sellerRoleAdd.js":87,"./controllers/sellerShopAppearance.js":88,"./controllers/sellerShopSetting.js":89,"./controllers/test.js":90,"./directives/ncTradableSelect.js":91,"./directives/ngCkeditor.js":92,"./directives/ngDateBefore.js":93,"./directives/ngDelegate.js":94,"./directives/ngEnter.js":95,"./directives/ngLowercase.js":96,"./directives/ngMatch.js":97,"./directives/ngMaxnumber.js":98,"./directives/ngMinnumber.js":99,"./directives/ngPatternRestrict.js":100,"./directives/ngPermission.js":101,"./directives/ngSlideToggle.js":102,"./directives/ngTemplate.js":103,"./directives/ngUppercase.js":104,"./directives/popoverAny.js":105,"./filters/capitalize.js":106,"./filters/exclude.js":107,"./filters/excludeCategory.js":108,"./filters/html.js":109,"./filters/importGuidelineExample.js":110,"./filters/leadingzero.js":111,"./filters/ordinal.js":112,"./filters/propsFilter.js":113,"./filters/slice.js":114,"./filters/statusValue.js":115,"./filters/truncate.js":116,"./filters/truth.js":117,"./filters/variantValue.js":118,"./helpers/base64.js":119,"./helpers/common.js":120,"./helpers/storage.js":121,"./helpers/util.js":122,"./helpers/variantPair.js":123,"./iefix.js":124,"./modules/angular-draggable":125,"./modules/angular-print":126,"./modules/angular-scroll":127,"./modules/nc":159,"./modules/product-detail":168,"./modules/schematics":170,"./modules/ume-select":182,"./route":184,"./services/Buy1Get1Service.js":185,"./services/Dashboard.js":186,"./services/OnTopCredit.js":187,"./services/OnTopCreditService.js":188,"./services/Onboarding.js":189,"./services/adminAccountService.js":190,"./services/adminMasterProductService.js":191,"./services/adminPermissionService.js":192,"./services/adminRoleService.js":193,"./services/adminShopService.js":194,"./services/adminShoptypeService.js":195,"./services/attribute.js":196,"./services/attributeService.js":197,"./services/attributeSet.js":198,"./services/attributeSetService.js":199,"./services/blocker.js":200,"./services/brand.js":201,"./services/brandService.js":202,"./services/buy1get1.js":203,"./services/buy1get1Add.js":204,"./services/category.js":205,"./services/cmsCategoryService.js":206,"./services/cmsGroupService.js":207,"./services/cmsMasterService.js":208,"./services/coupon.js":209,"./services/credential.js":210,"./services/exceptionHandler.js":211,"./services/fileService.js":212,"./services/globalCategory.js":213,"./services/globalCategoryService.js":214,"./services/globalCouponService.js":215,"./services/image.js":216,"./services/imageService.js":217,"./services/inventoryService.js":218,"./services/knownException.js":219,"./services/localCategory.js":220,"./services/localCategoryService.js":221,"./services/newsletterService.js":222,"./services/orderService.js":223,"./services/permissionService.js":224,"./services/product.js":225,"./services/productCollection.js":226,"./services/productCollectionAdd.js":227,"./services/productCollectionAddListItem.js":228,"./services/productReviewService.js":229,"./services/productTempService.js":230,"./services/returnRequestService.js":231,"./services/sellerAccountService.js":232,"./services/sellerCouponService.js":233,"./services/sellerPermissionService.js":234,"./services/sellerRoleService.js":235,"./services/shippingService.js":236,"./services/shop.js":237,"./services/shopAppearanceService.js":238,"./services/shopPermissionService.js":239,"./services/shopProfileService.js":240,"./services/shopService.js":241,"./services/stdSaleReportService.js":242,"./template":265,"./template-options/PromotionForm.js":243,"./template-options/addAttributeForm.js":244,"./template-options/addAttributeSetForm.js":245,"./template-options/addBrandForm.js":246,"./template-options/addBuy1Get1Form.js":247,"./template-options/addCMSMasterForm.js":248,"./template-options/addCategoryForm.js":249,"./template-options/addMasterProductForm.js":250,"./template-options/addNewsletterForm.js":251,"./template-options/addProductForm.js":252,"./template-options/addRoleForm.js":253,"./template-options/addShopAccountForm.js":254,"./template-options/addShopAppearanceForm.js":255,"./template-options/addShopTypeForm.js":256,"./template-options/adminApproveForm.js":257,"./template-options/couponForm.js":258,"./template-options/createGroupVariant.js":259,"./template-options/genericForm.js":260,"./template-options/productExport.js":261,"./template-options/productImport.js":262,"./template-options/searchForm.js":263,"./template-options/shopSettingForm.js":264,"angular":309,"angular-animate":267,"angular-base64":268,"angular-bootstrap-datetimepicker":269,"angular-chart.js":270,"angular-clipboard":271,"angular-cookies":273,"angular-drag-and-drop-lists":274,"angular-file-upload":275,"angular-input-masks":276,"angular-sanitize":300,"angular-scroll":302,"angular-ui-bootstrap":304,"angular-ui-sortable":305,"angular-ui-tree":307,"lodash":313,"ng-file-upload":316,"pluralize":317,"skeemas":321,"ui-select/dist/select.js":334}],2:[function(require,module,exports){
 module.exports = {
@@ -305,7 +292,7 @@ module.exports = {
 	},
 	TYPEAHEAD_IMPORT_GUIDELINE_LIMIT: 8,
 	TYPEAHEAD_DELAY: 150,
-	ROLLBAR: {
+	xROLLBAR: {
 		token: '3f012de90d9247c0a19ae95ac6ed9daf',
 		environment: 'development'
 	},
@@ -7907,7 +7894,7 @@ module.exports = ['$scope', 'Product', 'Collection', 'util', 'Alert', '$window',
 }];
 
 },{}],61:[function(require,module,exports){
-module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$filter", "$interval", function ($scope, Product, AttributeSet, NcAlert, $base64, $filter, $interval) {
+module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$filter", "$interval", "NCConfirm", function ($scope, Product, AttributeSet, NcAlert, $base64, $filter, $interval, NCConfirm) {
 	'ngInject';
 	$scope.ProductList = [];
 	$scope.SELECT_ALL = false;
@@ -7919,11 +7906,11 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 	$scope.availableFieldsColumn = [];
 	var exportProgressInterval;
 
-	Product.getExportableFields().then(function(data){
-		data.forEach(function(record){
+	Product.getExportableFields().then(function (data) {
+		data.forEach(function (record) {
 			var groupName = record.GroupName;
 			var headerName = record.HeaderName;
-			if(!_.has($scope.availableFields, groupName)){
+			if (!_.has($scope.availableFields, groupName)) {
 				$scope.availableFields[groupName] = [];
 			}
 
@@ -7933,40 +7920,40 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 		});
 
 		var groupList = Object.keys($scope.availableFields);
-		
-		for(var i = 0; i < $scope.columnCount; i++){
-				var dct = {};
-				var keyPerColumn = Math.ceil(groupList.length / $scope.columnCount) + 1;
 
-				for(var j = 0 ; j <= keyPerColumn; j++){
-					var moveKey = groupList.shift();
-					if(!moveKey) continue;
-					dct[moveKey] = ($scope.availableFields[moveKey]);
-				}
+		for (var i = 0; i < $scope.columnCount; i++) {
+			var dct = {};
+			var keyPerColumn = Math.ceil(groupList.length / $scope.columnCount) + 1;
 
-				$scope.availableFieldsColumn.push(dct);
+			for (var j = 0; j <= keyPerColumn; j++) {
+				var moveKey = groupList.shift();
+				if (!moveKey) continue;
+				dct[moveKey] = ($scope.availableFields[moveKey]);
+			}
+
+			$scope.availableFieldsColumn.push(dct);
 		}
 
 	});
 
-	$scope.onSearch = function(q){
+	$scope.onSearch = function (q) {
 		console.log(q, $scope.dataSet.attributeSets);
 		$scope.dataSet.attributeSets = $filter('filter')($scope.dataSet._attributeSets, q);
 	}
 
-	var normalFlow = function(){
-		if(productIds.length == 0){
+	var normalFlow = function () {
+		if (productIds.length == 0) {
 			$scope.SELECT_ALL = true;
 		}
 
-		$scope.ProductList = productIds.map(function(p){
+		$scope.ProductList = productIds.map(function (p) {
 			return { ProductId: p }
 		});
 
 		$scope.dataSet.attributeSets = {};
-		if($scope.SELECT_ALL){
-			AttributeSet.getAll().then(function(data){
-				$scope.dataSet.attributeSets = data.map(function(m){
+		if ($scope.SELECT_ALL) {
+			AttributeSet.getAll().then(function (data) {
+				$scope.dataSet.attributeSets = data.map(function (m) {
 					//m.Display = m.AttributeSetNameEn + " (" + m.ProductCount + ")";
 					m.Display = m.AttributeSetNameEn;
 					$scope.sumProductAttributeSet += Number(m.ProductCount);
@@ -7976,9 +7963,9 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 				$scope.dataSet._attributeSets = $scope.dataSet.attributeSets;
 				console.log(data);
 			});
-		}else{
-			Product.getAllAttributeSetsForProducts($scope.ProductList).then(function(data){
-				$scope.dataSet.attributeSets = data.map(function(m){
+		} else {
+			Product.getAllAttributeSetsForProducts($scope.ProductList).then(function (data) {
+				$scope.dataSet.attributeSets = data.map(function (m) {
 					// m.Display = m.AttributeSetNameEn + " (" + m.ProductCount.length + ")";
 					m.Display = m.AttributeSetNameEn;
 					$scope.sumProductAttributeSet += Number(m.ProductCount.length);
@@ -7991,25 +7978,26 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 		}
 	}
 
+	//TODO: Optimization required
 	var productIds = [];
-	$scope.init = function(viewBag){
+	$scope.init = function (viewBag) {
 		productIds = viewBag.selectedProducts || [];
 		var searchCriteriaObject = (viewBag.searchCriteria != "" && viewBag.searchCriteria != null) ? JSON.parse($base64.decode(viewBag.searchCriteria)) : null;
 
 		console.log(viewBag, searchCriteriaObject, productIds);
 
-		if(searchCriteriaObject){
-			return Product.advanceList(searchCriteriaObject).then(function(data) {
-	          	console.log(data, 'recv data advanced list');
-	          	$scope.SELECT_ALL = false;
+		if (searchCriteriaObject) {
+			return Product.advanceList(searchCriteriaObject).then(function (data) {
+				console.log(data, 'recv data advanced list');
+				$scope.SELECT_ALL = false;
 
-	          	//restructure into normal flow
-	          	productIds = data.data.map(function(i){
-	          		return i.ProductId;
-	          	});
+				//restructure into normal flow
+				productIds = data.data.map(function (i) {
+					return i.ProductId;
+				});
 
-	          	normalFlow();
-	        });
+				normalFlow();
+			});
 		}
 
 
@@ -8027,39 +8015,93 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 	};
 
 	$scope.alert = new NcAlert();
-	$scope.confirmExportProducts = function(){
+
+
+
+	function startIntervalCheck() {
+		exportProgressInterval = $interval(function () {
+			Product.exportProgress().then(function (result) {
+				$scope.exportAsyncDelegate.progress = result;
+				if (result >= 100) {
+					$interval.cancel(exportProgressInterval);
+					$scope.exportAsyncDelegate.endDate = new Date();
+				}
+			}, function () {
+				$interval.cancel(exportProgressInterval);
+				$scope.alert.error("An error has occurred while exporting products.");
+				$scope.exportAsyncDelegate.active = false;
+			});
+		}, 3000);
+	}
+
+	$scope.abortExport = function () {
+		Product.exportAbort().then(function (result) {
+			NCConfirm('Cancel Export', 'Are you sure you want to cancel this ongoing export?', function () {
+				$interval.cancel(exportProgressInterval);
+				$scope.alert.error("Export has been cancelled.");
+				$scope.exportAsyncDelegate.active = false;
+			});
+		});
+	}
+
+	//Ping server once for existing queue
+	Product.exportProgress().then(function (result) {
+		//If success
+		$scope.exportAsyncDelegate = {
+			active: true,
+			progress: result,
+			requestDate: new Date(),
+			endDate: null
+		}
+
+		if (result >= 100) {
+			$interval.cancel(exportProgressInterval);
+			$scope.exportAsyncDelegate.endDate = new Date();
+		} else {
+			startIntervalCheck();
+		}
+
+	}, function () {
+		$scope.exportAsyncDelegate = {
+			active: false,
+			progress: 0,
+			requestDate: null,
+			endDate: null
+		}
+	});
+
+	$scope.confirmExportProducts = function () {
 
 		$("#export-product").modal('hide');
 
-		
+
 
 		var error = function (r) {
 			$(".modal").modal('hide');
 			$scope.exporter.title = 'Error'
-				$scope.alert.error('Unable to Export Product');
+			$scope.alert.error('Unable to Export Product');
 			$scope.reloadData();
 		};
 
 		// $scope.exporter.progress = 15;
 
 		var body = {};
-		body.Options  = [];
+		body.Options = [];
 		body.ProductList = $scope.ProductList;
 		body.AttributeSets = $scope.ctrl.tradedAS;
 
-		Object.keys($scope.fields).forEach(function(fieldKey){
-			if($scope.fields[fieldKey] == true){
+		Object.keys($scope.fields).forEach(function (fieldKey) {
+			if ($scope.fields[fieldKey] == true) {
 				body.Options.push(fieldKey);
 			}
 		});
 
-		if($scope.selectAllAttributeSets){
+		if ($scope.selectAllAttributeSets) {
 			body.AttributeSets = $scope.dataSet.attributeSets;
 		}
 
 		Product.export(body).then(function (result) {
 
-			// $("#export-product").modal('hide');
 			$scope.exportAsyncDelegate = {
 				active: true,
 				progress: 0,
@@ -8067,43 +8109,31 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 				endDate: null
 			}
 
-			exportProgressInterval = $interval(function(){
-				Product.exportProgress().then(function(result){
-					$scope.exportAsyncDelegate.progress = result;
-					$interval.cancel(exportProgressInterval);
-					$scope.exportAsyncDelegate.endDate = new Date();
-				}, function(){
-					$interval.cancel(exportProgressInterval);
-					$scope.alert.error("An error has occurred while exporting products.");
-					$scope.exportAsyncDelegate.active = false;
-				});
-			}, 3000);
+			startIntervalCheck();
 
-
-			// $("#export-product-progressing").modal('hide');
 
 		}, error);
 	}
 
-	$scope.downloadFile = function(){
-			Product.exportGet().then(function(rx){
-				var fileName = "ProductExport.csv";
-				var a = document.getElementById("export_download_btn");
-				var blobs = [];
-				blobs.push(rx);
-				var file = new Blob(blobs, {type: 'application/csv'});
-				var fileURL = URL.createObjectURL(file);
-				$scope.exporter.href = fileURL;
-				$scope.exporter.download = fileName;
-				$scope.exporter.progress = 100;
-				//$scope.exporter.title = 'Export Complete'
-					a.href = fileURL;
-				a.click();
 
-			});
+	$scope.downloadFile = function () {
+		Product.exportGet().then(function (rx) {
+			var fileName = "ProductExport.csv";
+			var a = document.getElementById("export_download_btn");
+			var blobs = [];
+			blobs.push(rx);
+			var file = new Blob(blobs, { type: 'application/csv' });
+			var fileURL = URL.createObjectURL(file);
+			$scope.exporter.href = fileURL;
+			$scope.exporter.download = fileName;
+			$scope.exporter.progress = 100;
+			a.href = fileURL;
+			a.click();
+
+		});
 	}
 
-	$scope.lockAS = function(){
+	$scope.lockAS = function () {
 		return false
 	}
 
@@ -8114,18 +8144,18 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 		selectAll: false,
 		tradedAS: []
 	};
-	$scope.toggleSelectAll = function(){
-		Object.keys($scope.fields).forEach(function(key){
+	$scope.toggleSelectAll = function () {
+		Object.keys($scope.fields).forEach(function (key) {
 			$scope.fields[key] = $scope.ctrl.selectAll;
 		});
 		$scope.fields.AAD = true;
 	};
 
 
-	$scope.$watch('fields', function(){
-		var m = Object.keys($scope.fields).map(function(k){
+	$scope.$watch('fields', function () {
+		var m = Object.keys($scope.fields).map(function (k) {
 			return $scope.fields[k];
-		}).reduce(function(prev,cur){
+		}).reduce(function (prev, cur) {
 			return prev && cur;
 		}, true);
 		$scope.ctrl.selectAll = m;
@@ -12447,13 +12477,6 @@ module.exports = ["$http", "$q", "storage", "config", "$window", function ($http
 
                     $http(options)
                     .success(function (data) {
-                        //IN production, remove this on-success
-                        // if(_.has(options, 'rollbar')){
-                        //     Rollbar.log(options.rollbar, {
-                        //         'curl': curlCmd
-                        //     });
-                        // }
-
                         deferred.resolve(data);
                     })
                     .error(function (data, status, headers, config) {
@@ -12478,13 +12501,6 @@ module.exports = ["$http", "$q", "storage", "config", "$window", function ($http
                                 storage.clear();
                                 
                                 $window.location.href = "/login";
-                            }
-
-
-                            if(_.has(options, 'rollbar')){
-                                Rollbar.error(options.rollbar, {
-                                    'curl': curlCmd
-                                });
                             }
 
                             deferred.reject(data || {"error": "Unknown error"});
@@ -22193,7 +22209,7 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
         //     'message': exception.message
         // }));
         // $window.location = '/exception?e=' + encMsg;
-        Rollbar.error("Uncaught Exception", exception);
+        // Rollbar.error("Uncaught Exception", exception);
     };
 }];
 
@@ -23070,8 +23086,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			return common.makeRequest({
 				method: mode,
 				url: path,
-				data: tobj,
-				rollbar: 'AP: Product publish or save'
+				data: tobj
 			})
 		}
 
