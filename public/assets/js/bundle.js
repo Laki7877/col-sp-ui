@@ -5137,7 +5137,7 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", function($sco
 	});
 }];
 },{}],48:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissionService", "ShopAppearanceService", "PermissionService", "util", "$q", function($scope, $controller, AdminShoptypeService, ShopPermissionService, ShopAppearanceService, PermissionService, util, $q) {
+module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShippingService", "ShopPermissionService", "ShopAppearanceService", "PermissionService", "util", "$q", function($scope, $controller, AdminShoptypeService, ShippingService, ShopPermissionService, ShopAppearanceService, PermissionService, util, $q) {
 	'ngInject';
 
 	var deserializeTheme = function(load) {
@@ -5161,6 +5161,28 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissi
 			});
 		}
 	}
+
+	var deserializeShip = function(load) {
+		if(load) {
+			var shipping = $scope.formData.Shippings;
+			$scope.formData.Shippings = [];
+			_.forEach($scope.Shippings, function(t) {
+				if(_.findIndex(Shippings, function(e) {
+					return t.ShippingId == e.ShippingId;
+				}) >= 0) {
+					t.check = true;
+				} else {
+					t.check = false;
+				}
+				$scope.formData.Shippings.push(t);
+			});
+		} else {
+			$scope.formData.Shippings = $scope.Shippings;
+			_.forEach($scope.formData.Shippings, function(t) {
+				t.check = false;
+			});
+		}
+	}
 	//Inherit from parent
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
@@ -5172,7 +5194,7 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissi
 			onLoad: function(scope, load) {
 				$scope.loading = true;
 
-				$q.all([ShopPermissionService.listAll(), ShopAppearanceService.getThemes()]).then(function(res) {
+				$q.all([ShopPermissionService.listAll(), ShopAppearanceService.getThemes(), ShippingService.listAll()]).then(function(res) {
 					var data = res[0]
 					$scope.permissions = data;
 					if(load) {
@@ -5196,6 +5218,14 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissi
 						$scope.selectAll = $scope.selectAll && e.check;
 					})
 
+					//All shippings
+					$scope.shippings = res[2];
+					deserializeShip(load);
+
+					_.forEach($scope.formData.Shippings, function(e) {
+						$scope.selectAll = $scope.selectAll && e.check;
+					})
+
 				}).finally(function() {
 					$scope.loading = false;
 				});
@@ -5203,6 +5233,15 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissi
 			onSave: function(scope) {
 				scope.formData.Permission = PermissionService.serialize(scope.formData.Permissions);
 				scope.formData.Themes = _.compact(_.map(scope.formData.Themes, function(e){
+					var check = e.check;
+					_.unset(e, ['check']);
+					if(check) {
+						return e;
+					} else {
+						return null;
+					}
+				}));
+				scope.formData.Shippings = _.compact(_.map(scope.formData.Shippings, function(e){
 					var check = e.check;
 					_.unset(e, ['check']);
 					if(check) {
@@ -5223,7 +5262,11 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissi
 				deserializeTheme(true);
 				_.forEach($scope.formData.Themes, function(e) {
 					$scope.selectAll = $scope.selectAll && e.check;
-				})
+				});
+				deserializeShip(true);
+				_.forEach($scope.formData.Shippings, function(e) {
+					$scope.selectAll = $scope.selectAll && e.check;
+				});
 			}
 		}
 	});
@@ -5236,7 +5279,10 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissi
 		});
 		_.forEach($scope.formData.Themes, function(e) {
 			e.check = val;
-		})
+		});
+		_.forEach($scope.formData.Shippings, function(e) {
+			e.check = val;
+		});
 	};
 }];
 
