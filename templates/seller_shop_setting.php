@@ -207,11 +207,11 @@
 						                    	nc-template-form="form.OverseaShop"
 						                    	nc-label="Oversea Shop"
 						                    	nc-template-options-path="addShopAccountForm/OverseaShop">
-													<ui-select name="OverseaShop" ng-model="formData.OverseaVendorIndicator" search-enabled="false" ng-disabled="true">
+													<ui-select name="OverseaShop" ng-model="formData.OverseasVendorIndicator" search-enabled="false" ng-disabled="true">
 														<ui-select-match placeholder="- Select Oversea Shop -">
 															<span ng-bind="$select.selected.Value"></span>
 														</ui-select-match>
-														<ui-select-choices repeat="item.Value as item in overseas">
+														<ui-select-choices repeat="item.Key as item in overseas">
 															<span ng-bind="item.Value"></span>
 														</ui-select-choices>
 													</ui-select>
