@@ -10253,7 +10253,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$filter", "stora
 }];
 
 },{}],75:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "$window", "InventoryService", "config", "common", "storage", function($scope, $controller, $window, InventoryService, config, common, storage) {
+module.exports = ["$scope", "$rootScope", "$controller", "$window", "InventoryService", "config", "common", "storage", function($scope, $rootScope, $controller, $window, InventoryService, config, common, storage) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
@@ -10315,6 +10315,9 @@ module.exports = ["$scope", "$controller", "$window", "InventoryService", "confi
 			$scope.popoverItem.UpdateQuantity = 0
 		}
 	};
+	$scope.isUpdate = function(item) {
+		return $rootScope.permit(51);
+	}
 	$scope.updateStock = function(item) {
 		$scope.alert.close();
 		// cast to int

@@ -45,7 +45,7 @@
 
 
             <td class="width_100">
-              <button ng-disabled="getButtonState(row).disabled" class="btn btn-white btn-width-xl margin-right-15" ng-click="onButtonClick(row)">{{getButtonState(row).text}}</button>
+              <button ng-disabled="$root.permit(31) && getButtonState(row).disabled" class="btn btn-white btn-width-xl margin-right-15" ng-click="onButtonClick(row)">{{getButtonState(row).text}}</button>
             </td>   
           </tr>
         </tbody>
