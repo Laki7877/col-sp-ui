@@ -602,15 +602,15 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 				                <div class="form-section-content">
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-label="Address 1">
-				                        <input class="form-control" ng-model="formData.Address1"   maxlength="35" />
+				                        <input class="form-control" ng-model="formData.VendorAddressLine1"   maxlength="35" />
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-label="Address 2">
-				                        <input class="form-control" ng-model="formData.Address2"   maxlength="35"/>
+				                        <input class="form-control" ng-model="formData.VendorAddressLine2"   maxlength="35"/>
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-label="Address 3">
-				                        <input class="form-control" ng-model="formData.Address3"   maxlength="35"/>
+				                        <input class="form-control" ng-model="formData.VendorAddressLine3"   maxlength="35"/>
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.OverseaShop"
