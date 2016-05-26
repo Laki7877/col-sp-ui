@@ -93,6 +93,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 
 			if($scope.id > 0) {
 				//Edit mode
+				(options.onBeforeSave || _.noop)($scope, true);
 				options.service.update($scope.id, data)
 					.then(function(result) {
 						$scope.formData = options.service.deserialize(result);
@@ -111,7 +112,8 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 						}
 					});
 			} else {
-				//Save mode
+				//Save mode]
+				(options.onBeforeSave || _.noop)($scope, false);
 				options.service.create(data)
 					.then(function(result) {
 						//Set both id and formData[id]

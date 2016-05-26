@@ -602,25 +602,25 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 				                <div class="form-section-content">
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-label="Address 1">
-				                        <input class="form-control" ng-model="formData.Address1"   maxlength="35" />
+				                        <input class="form-control" ng-model="formData.VendorAddressLine1"   maxlength="35" />
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-label="Address 2">
-				                        <input class="form-control" ng-model="formData.Address2"   maxlength="35"/>
+				                        <input class="form-control" ng-model="formData.VendorAddressLine2"   maxlength="35"/>
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-label="Address 3">
-				                        <input class="form-control" ng-model="formData.Address3"   maxlength="35"/>
+				                        <input class="form-control" ng-model="formData.VendorAddressLine3"   maxlength="35"/>
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.OverseaShop"
 				                    	nc-label="Oversea Shop"
 				                    	nc-template-options-path="addShopAccountForm/OverseaShop">
-											<ui-select name="OverseaShop" ng-model="formData.OverseaShop" search-enabled="false">
+											<ui-select name="OverseaShop" ng-model="formData.OverseasVendorIndicator" search-enabled="false">
 												<ui-select-match placeholder="- Select Oversea Shop -">
 													<span ng-bind="$select.selected.Value"></span>
 												</ui-select-match>
-												<ui-select-choices repeat="item in overseas">
+												<ui-select-choices repeat="item.Key as item in overseas">
 													<span ng-bind="item.Value"></span>
 												</ui-select-choices>
 											</ui-select>

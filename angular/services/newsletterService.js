@@ -1,4 +1,5 @@
 module.exports = function(common) {
+	'ngInject';
 	var service = common.Rest('/Newsletters');
 
 	service.generate = function() {

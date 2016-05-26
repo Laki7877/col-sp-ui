@@ -1,4 +1,5 @@
 module.exports = function($rootScope, $scope, $controller, ShopService, ShopProfileService, ImageService, Onboarding, NcAlert, common, config, util, storage) {
+	'ngInject';
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 	$scope.shopGroupDropdown = config.DROPDOWN.SHOP_GROUP_DROPDOWN;
 	$scope.form = {};

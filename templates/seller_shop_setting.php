@@ -193,25 +193,25 @@
 						                <div class="form-section-content">
 						                    <div nc-template="common/input/form-group-with-label"
 						                    	nc-label="Address 1">
-						                        <input class="form-control" ng-model="formData.Address1" ng-disabled="true"   maxlength="35"/>
+						                        <input class="form-control" ng-model="formData.VendorAddressLine1" ng-disabled="true"   maxlength="35"/>
 						                    </div>
 						                    <div nc-template="common/input/form-group-with-label"
 						                    	nc-label="Address 2">
-						                        <input class="form-control" ng-model="formData.Address2" ng-disabled="true"   maxlength="35"/>
+						                        <input class="form-control" ng-model="formData.VendorAddressLine2" ng-disabled="true"   maxlength="35"/>
 						                    </div>
 						                    <div nc-template="common/input/form-group-with-label"
 						                    	nc-label="Address 3">
-						                        <input class="form-control" ng-model="formData.Address3" ng-disabled="true"   maxlength="35"/>
+						                        <input class="form-control" ng-model="formData.VendorAddressLine3" ng-disabled="true"   maxlength="35"/>
 						                    </div>
 						                    <div nc-template="common/input/form-group-with-label"
 						                    	nc-template-form="form.OverseaShop"
 						                    	nc-label="Oversea Shop"
 						                    	nc-template-options-path="addShopAccountForm/OverseaShop">
-													<ui-select name="OverseaShop" ng-model="formData.OverseaShop" search-enabled="false" ng-disabled="true">
+													<ui-select name="OverseaShop" ng-model="formData.OverseasVendorIndicator" search-enabled="false" ng-disabled="true">
 														<ui-select-match placeholder="- Select Oversea Shop -">
 															<span ng-bind="$select.selected.Value"></span>
 														</ui-select-match>
-														<ui-select-choices repeat="item in overseas">
+														<ui-select-choices repeat="item.Key as item in overseas">
 															<span ng-bind="item.Value"></span>
 														</ui-select-choices>
 													</ui-select>
