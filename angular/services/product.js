@@ -20,6 +20,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		}
 
 
+		//TODO: PendingProduct is now called ProductGrouping
 		service.savePendingProduct = function (apgp) {
 			return common.makeRequest({
 				method: 'POST',

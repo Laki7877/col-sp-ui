@@ -44,8 +44,7 @@
         }">
         <input type="text" ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }"
         ng-model="pair.SalePrice" name="pair_SalePrice{{ $index }}"
-        ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$"
-        maxlength="12"
+        ng-pattern-restrict="^[0-9]{0,10}(\.[0-9]{0,2})?$" maxlength="10"
         ng-disabled='!pair.Visibility || xspermit(44)' ng-required="pair.Visibility" class="form-control" />
       </td>
       <td ng-template="common/input/text-td" ng-template-options="{
@@ -59,6 +58,7 @@
         }">
         <input type="text" ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }"
         name="pair_OriginalPrice{{$index}}" ng-model="pair.OriginalPrice"
+        ng-pattern-restrict="^[0-9]{0,10}(\.[0-9]{0,2})?$" maxlength="10"
         ng-disabled='!pair.Visibility || xspermit(44)' class="form-control" />
       </td>
       <td ng-template="common/input/text-td" ng-template-options="{
@@ -73,7 +73,9 @@
         <input type="text" ng-model="pair.Quantity" maxlength="5"
          nc-default-value="0"
          ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Quantity{{$index}}) }"
-         ng-disabled="!pair.Visibility || formData.ProductId || xspermit(44)" ng-pattern="/^[0-9]+$/"  name="pair_Quantity{{$index}}"
+         ng-disabled="!pair.Visibility || formData.ProductId || xspermit(44)" 
+         ng-pattern-restrict="^[0-9]*$" maxlength="10"
+        name="pair_Quantity{{$index}}"
         class="form-control" />
       </td>
       <td ng-template="common/input/text-td" ng-template-options="{
