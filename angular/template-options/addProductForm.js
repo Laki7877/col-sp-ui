@@ -100,7 +100,6 @@ module.exports = {
     'labelClass': 'required',
     'error': {
       'messages': {
-	 'required': 'This is a required field',
         'pattern': 'Special characters are not allowed'
       }
     }
