@@ -7,7 +7,7 @@
 		<?php $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
 		<?php $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
 		<?php $this->insert('components/modal-export-product-complete', ['id' => 'export-product-complete']) ?>
-       <nc-alert nc-model="alert"></nc-alert>
+        <nc-alert nc-model="alert"></nc-alert>
 
 		<div class="page-header with-border" ng-show="loading.length >= 2">
 

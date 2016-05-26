@@ -153,6 +153,7 @@ module.exports = function ($scope, $controller, common, Product, util, $window, 
     $scope.getTag = function(tags) {
         return _.join(tags, ', ');
     }
+
     $scope.exportSelected = function(){
         $scope.alert.close();
         if($scope.bulkContainer.length == 0) {

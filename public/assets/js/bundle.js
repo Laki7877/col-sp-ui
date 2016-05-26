@@ -4522,7 +4522,7 @@ module.exports = ["$scope", "$controller", "Product", function($scope, $controll
 }]
 
 },{}],38:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "Product", "common", "config", function($scope, $controller, Product, common, config) {
+module.exports = ["$scope", "$controller", "Product", "common", "config", "$base64", "$timeout", function($scope, $controller, Product, common, config, $base64, $timeout) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
@@ -4608,12 +4608,14 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", functi
 	config.PRODUCT_STATUS.forEach(function(object){
        $scope.statusLookup[object.value] = object;
     });
+	
     $scope.asStatus = function (ab) {
         return $scope.statusLookup[ab];
     };
     $scope.getTag = function(tags) {
         return _.join(tags, ', ');
     }
+	
     $scope.exportSelected = function(){
         $scope.alert.close();
         if($scope.bulkContainer.length == 0) {
@@ -4633,6 +4635,8 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", functi
             document.getElementById('exportForm').submit();
         });
     }
+	
+	
 }];
 },{}],39:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$uibModal", "util", "common", function($scope, $controller, ProductReviewService, config, $uibModal, util, common) {
@@ -9216,6 +9220,7 @@ module.exports = ["$scope", "$controller", "common", "Product", "util", "$window
     $scope.getTag = function(tags) {
         return _.join(tags, ', ');
     }
+
     $scope.exportSelected = function(){
         $scope.alert.close();
         if($scope.bulkContainer.length == 0) {

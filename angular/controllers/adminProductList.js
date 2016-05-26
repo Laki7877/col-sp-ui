@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, Product, common, config) {
+module.exports = function($scope, $controller, Product, common, config, $base64, $timeout) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
@@ -84,12 +84,14 @@ module.exports = function($scope, $controller, Product, common, config) {
 	config.PRODUCT_STATUS.forEach(function(object){
        $scope.statusLookup[object.value] = object;
     });
+	
     $scope.asStatus = function (ab) {
         return $scope.statusLookup[ab];
     };
     $scope.getTag = function(tags) {
         return _.join(tags, ', ');
     }
+	
     $scope.exportSelected = function(){
         $scope.alert.close();
         if($scope.bulkContainer.length == 0) {
@@ -109,4 +111,6 @@ module.exports = function($scope, $controller, Product, common, config) {
             document.getElementById('exportForm').submit();
         });
     }
+	
+	
 };
