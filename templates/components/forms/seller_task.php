@@ -32,7 +32,7 @@
         <a class="btn btn-white btn-width-xxl" ng-click='redirectToDashboard()' type="button"><?=$button_text?></a>
       <? elseif($type == 'redirectStore'): ?>
         <!-- <a class="btn btn-white btn-width-xxl" ng-click='redirectToStore()' type="button"><?=$button_text?></a> -->
-        <a class="btn btn-white btn-width-xxl" ng-click='redirectToStore()' type="button" disabled="disabled">Launch</a>
+        <a class="btn btn-white btn-width-xxl" type="button" disabled="disabled">Launch</a>
       <? else: ?>
         <a class="btn btn-white btn-width-xxl" <?=$disble_status?> type="button"><?=$button_text?></a>
       <? endif; ?>
