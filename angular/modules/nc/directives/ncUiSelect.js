@@ -18,16 +18,16 @@ angular.module('nc')
                     $model.$error = {};
 
                     if (array.length > maxTagCount) {
-                        $model.$error.maxtagcount = true;
+                        //$model.$error.maxtagcount = true;
                         _pass = false;
                     }
                     if (item.length > maxTagLength) {
-                        $model.$error.maxtaglength = true;
+                        //$model.$error.maxtaglength = true;
                         _pass = false;
                     }
 
                     if (tagPattern && !item.ValueEn.match(tagPattern)) {
-                        $model.$error.pattern = true;
+                        //$model.$error.pattern = true;
                         _pass = false;
                     }
 

@@ -107,7 +107,7 @@
             nc-template-options-path="addNewsletterForm/IncludeShop"
             nc-template-form="form.IncludeShop"
             nc-label="Include Shop">
-            <ui-select ng-model="formData.IncludeShop" multiple tagging-label="" nc-tag-validator nc-max-tag-count="1">
+            <ui-select ng-model="formData.IncludeShop" multiple tagging-label="" nc-tag-validator nc-max-tag-count="100">
               <ui-select-match placeholder="Search by Shop Name or ID">{{$item.ShopNameEn}} ({{$item.ShopId}})</ui-select-match>
               <ui-select-choices refresh="getShops($select.search, 'include')" repeat="item in shops.include.data">{{item.ShopNameEn}} ({{item.ShopId}})</ui-select-choices>
             </ul-select>
