@@ -37,6 +37,8 @@
 							<div class="margin-bottom-20" ng-if="SELECT_ALL">
 								<span>Number of products selected: </span> <i>ALL PRODUCTS</i>
 							</div>
+							
+							<div ng-include="'product/exportResult'"></div>
 
 							<div class="row">
 								<div class="col-xs-12">
