@@ -7,12 +7,12 @@ module.exports = function ($scope, $controller, StdReportReturnService, config, 
         ItemStatus: null,
         CreatedDtFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
         CreatedDtTo: new Date()
-        };
+    };
+
+    var params = $scope.formData;
 
     $scope.exportCsv = function () {
-        debugger;
 
-        var params = $scope.formData;
         StdReportReturnService.exportCsv(params)
         .then(function (data) {
 

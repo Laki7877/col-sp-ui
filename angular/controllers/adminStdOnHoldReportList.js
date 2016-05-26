@@ -7,16 +7,15 @@ module.exports = function ($scope, $controller, StdReportOnHoldService, config, 
         ItemStatus: null,
         CreatedDtFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
         CreatedDtTo: new Date()
-        };
+    };
 
-    $scope.exportCsv = function() { 
-        debugger;
+    var params = $scope.formData;
 
-        var params = $scope.formData;
+    $scope.exportCsv = function () {
         StdReportStockService.exportCsv(params)
-        .then(function(data){
+        .then(function (data) {
 
-            util.csv(data,'STDOnHold.csv');
+            util.csv(data, 'STDOnHold.csv');
 
         })
     };
