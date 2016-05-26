@@ -98,7 +98,7 @@
 <script type="text/ng-template" id="templates/admin-cms-category-manage-add-item.html">
   
   <div class="modal-header">
-    <h3 class="modal-title">Add Product Item</h3>
+    <h3 class="modal-title" style="margin-bottom:10px;">Add Product Item</h3>
   </div>
   <div class="modal-body" ng-init="init()">
     

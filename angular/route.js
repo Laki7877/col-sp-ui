@@ -36,6 +36,11 @@ var seller = {
 	'Promotion|fa-bookmark': {
 		'Coupons': '/coupons'
 	},
+	'CMS|fa fa-contao': {
+	    'CMS Category': '/cms/category',
+	    'CMS Static & Collection': '/cms/master',
+	    'CMS Group': '/cms/group'
+	},
 	'Shop Setting|fa-sliders': {
 		'Shop Profile': '/shops/settings',
 		'Shop Appearance': '/shops/appearance'

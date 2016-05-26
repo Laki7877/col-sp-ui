@@ -90,7 +90,7 @@
 <!-- modal temaplate -->
 <script type="text/ng-template" id="templates/admin-cms-group-add-item.html">
   
-  <div class="modal-header">
+  <div class="modal-header" style="margin-bottom:10px;">
     <h3 class="modal-title">Add CMS Master Item</h3>
   </div>
   <div class="modal-body">

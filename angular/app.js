@@ -288,7 +288,18 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
 
   .controller('TestCtrl', controllers.test)
 
+  //CMS Seller
+  .controller('SellerCMSMasterListCtrl', controllers.sellerCMSMasterList)
+  .controller('SellerCMSMasterAddCtrl', controllers.sellerCMSMasterAdd)
 
+  .controller('SellerCMSGroupListCtrl', controllers.sellerCMSGroupList)
+  .controller('SellerCMSGroupAddCtrl', controllers.sellerCMSGroupAdd)
+
+  .controller('SellerCMSCollectionListCtrl', controllers.sellerCMSGroupList)
+
+  .controller('SellerCMSCategoryListCtrl', controllers.sellerCMSCategoryList)
+  .controller('SellerCMSCategoryAddCtrl', controllers.sellerCMSCategoryAdd)
+  
 var _rollbarConfig = {
     accessToken: config.ROLLBAR.token,
     captureUncaught: true,

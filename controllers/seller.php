@@ -88,4 +88,42 @@ class SellerController extends Controller
     {
         return View::render('seller_report',  ['params' => json_encode_n($params)]);
     }
+
+    //CMS
+    public static function listCMSCategory($params)
+    {
+        return View::render('seller_cms_category');
+    }
+    public static function addCMSCategory($params)
+    {
+        return View::render('seller_add_cms_category', ['title' => 'Add Category']);
+    }
+    public static function editCMSCategory($params)
+    {
+        return View::render('seller_add_cms_category', ['params' => json_encode_n($params), 'title' => 'Detail']);
+    }
+     public static function listCMSGroup($params)
+    {
+        return View::render('seller_cms_group');
+    }
+    public static function addCMSGroup($params)
+    {
+        return View::render('seller_add_cms_group', ['title' => 'Add CMS Group']);
+    }
+    public static function editCMSGroup($params)
+    {
+        return View::render('seller_add_cms_group', ['params' => json_encode_n($params), 'title' => 'CMS Group Detail']);
+    }
+    public static function listCMSMaster($params)
+    {
+        return View::render('seller_cms_master');
+    }
+    public static function addCMSMaster($params)
+    {
+        return View::render('seller_add_cms_master', ['title' => 'Add CMS Static & Collection']);
+    }
+    public static function editCMSMaster($params)
+    {
+        return View::render('seller_add_cms_master', ['params' => json_encode_n($params), 'title' => 'Detail']);
+    }
 }

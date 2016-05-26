@@ -79,6 +79,17 @@ Route::add('/orders', 'SellerController::listOrder');
 Route::add('/orders/shippinglist', 'SellerController::shipOrder');
 Route::add('/orders/:id', 'SellerController::editOrder');
 
+//CMS
+Route::add('/cms/category', 'SellerController::listCMSCategory');
+Route::add('/cms/category/create', 'SellerController::addCMSCategory');
+Route::add('/cms/category/:id', 'SellerController::editCMSCategory');
+Route::add('/cms/group', 'SellerController::listCMSGroup');
+Route::add('/cms/group/create', 'SellerController::addCMSGroup');
+Route::add('/cms/group/:id', 'SellerController::editCMSGroup');
+Route::add('/cms/master', 'SellerController::listCMSMaster');
+Route::add('/cms/master/create', 'SellerController::addCMSMaster');
+Route::add('/cms/master/:id', 'SellerController::editCMSMaster');
+
 
 //admin routing 
 Route::add('/admin/onboarding', 'AdminController::onboarding');
