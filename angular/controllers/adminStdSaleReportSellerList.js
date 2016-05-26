@@ -61,7 +61,8 @@ module.exports = function ($scope, $controller, StdReportSaleService, config, ut
 
 
     $scope.resetSearch = function () {
-
+        $scope.categorys = [];
+        $scope.brands = [];
         $scope.formData.PID = null;
         $scope.formData.Brands = null;
         $scope.formData.ItemStatus = null;

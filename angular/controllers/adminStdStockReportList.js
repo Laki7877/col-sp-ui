@@ -13,23 +13,23 @@ module.exports = function ($scope, $controller, StdReportStockService, config, u
     $scope.categorys = [];
     $scope.brands = [];
     StdReportSaleService.getAllCategory({})
-                .then(function (data) {
-                    $scope.categorys = data;
-                });
+    .then(function (data) {
+    $scope.categorys = data;
+    });
     $scope.$watch('formData.GlobalCategoryId', function (newValue, oldValue) {
-        if (newValue === undefined)
-            return;
-        // get brand by category id
-        StdReportSaleService.getBrand(newValue)
-                    .then(function (data) {
-                        $scope.brands = data;
-                    });
+    if (newValue === undefined)
+    return;
+    // get brand by category id
+    StdReportSaleService.getBrand(newValue)
+    .then(function (data) {
+    $scope.brands = data;
+    });
 
     });
 
     $scope.$watch('formData.BrandId', function (newValue, oldValue) {
-        if (newValue === undefined)
-            return;
+    if (newValue === undefined)
+    return;
 
     });
     */
@@ -50,6 +50,14 @@ module.exports = function ($scope, $controller, StdReportStockService, config, u
             util.csv(data, 'STDStock.csv');
 
         })
+    };
+
+    $scope.resetSearch = function () {
+        Pid = null;
+        ProductName = null;
+        variant = null;
+        LastSoldDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
+        LastSoldDateTo = new Date();
     };
 
     $controller('AbstractAdvanceListCtrl', {
