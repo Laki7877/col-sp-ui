@@ -115,6 +115,10 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 		normalFlow();
 	}
 
+	$scope.exporter = {
+			progress: 0
+	};
+	
 	$scope.startExportProducts = function () {
 		$scope.exporter = {
 			progress: 0,
@@ -190,7 +194,6 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 
 	$scope.confirmExportProducts = function () {
 
-		// $("#export-product").modal('hide');
 		$timeout(function() {
 			smoothScroll(document.body, {
 				container: null
@@ -205,7 +208,6 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 			$scope.reloadData();
 		};
 
-		// $scope.exporter.progress = 15;
 
 		var body = {};
 		body.Options = [];
