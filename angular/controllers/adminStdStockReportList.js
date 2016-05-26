@@ -2,24 +2,56 @@
 module.exports = function ($scope, $controller, StdReportStockService, config, util) {
     'ngInject';
     $scope.formData = {
-        PID: null,
-        Brands: null,
-        ItemStatus: null,
-        CreatedDtFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
-        CreatedDtTo: new Date()
-        };
-    $scope.exportCsv = function() { 
+        Pid: null,
+        ProductName: null,
+        variant: null,
+        LastSoldDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        LastSoldDateTo: new Date()
+    };
+
+    /*
+    $scope.categorys = [];
+    $scope.brands = [];
+    StdReportSaleService.getAllCategory({})
+                .then(function (data) {
+                    $scope.categorys = data;
+                });
+    $scope.$watch('formData.GlobalCategoryId', function (newValue, oldValue) {
+        if (newValue === undefined)
+            return;
+        // get brand by category id
+        StdReportSaleService.getBrand(newValue)
+                    .then(function (data) {
+                        $scope.brands = data;
+                    });
+
+    });
+
+    $scope.$watch('formData.BrandId', function (newValue, oldValue) {
+        if (newValue === undefined)
+            return;
+
+    });
+    */
+    var params = $scope.formData;
+
+    $scope.search = function () {
+        StdReportStockService.getStockReport(params)
+        .then(function (data) {
+            $scope.list.data = data;
+        });
+
+    };
+    $scope.exportCsv = function () {
         debugger;
-
-        var params = $scope.formData;
         StdReportStockService.exportCsv(params)
-        .then(function(data){
+        .then(function (data) {
 
-            util.csv(data,'STDStock.csv');
+            util.csv(data, 'STDStock.csv');
 
         })
     };
-        
+
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {

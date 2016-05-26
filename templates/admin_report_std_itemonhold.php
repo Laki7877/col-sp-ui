@@ -15,32 +15,20 @@
             <div nc-template="common/input/form-group-with-label" nc-label="PID" nc-template-form="form.Pids">
               <input class="form-control width-field-large" name="Pids" ng-model="formData.PID">
             </div>
-            <!--Brand Name-->
-            <div nc-template="common/input/form-group-with-label" nc-label="Brand Name" nc-template-form="form.Brands">
-              <input class="form-control width-field-large" name="Brands" ng-model="formData.Brands">
+            <!--Product Name-->
+            <div nc-template="common/input/form-group-with-label" nc-label="Product Name" nc-template-form="form.ItemName">
+              <input class="form-control width-field-large" name="Brands" ng-model="formData.ItemName">
             </div>
-            <!--Global Category Name-->
-            <div nc-template="common/input/form-group-with-label" nc-label="Global Categories" nc-template-form="form.GlobalCategories">
-              <input class="form-control width-field-large" name="GlobalCategories" ng-model="formData.GlobalCategories">
-            </div>
-            <!--Item Status-->
-            <div nc-template="common/input/form-group-with-label" nc-template-form="form.ItemStatus" nc-label="Item Status">
-              <select ng-model="formData.ItemStatus" class="form-control" name="ItemStatus">
-                <option selected value="-" disabled>- Select Status Option -</option>
-                <option value="Procressing">Procressing</option>
-                <option value="Delivered">Delivered</option>
-                <option value="New">New</option>
-              </select>
-            </div>
+          
             <!--Time Of Order Date-->
             <div nc-template="common/input/form-group-with-label-multiple" nc-template-form="form.CreatedDate" nc-label="Time Of Order Date" nc-template-options-path="searchForm/CreatedDate">
               <div class="width-field-small-input">
                 <div class="dropdown">
                   <a class="dropdown-toggle" id="dropdown" role="button" data-toggle="dropdown" data-target="#" href="#">
-                    <input readonly style="background-color:white" type="text" class="input-icon-calendar form-control" value="{{ formData.CreatedDtFrom | date: 'dd/MM/yy HH:mm' }}" />
+                    <input readonly style="background-color:white" type="text" class="input-icon-calendar form-control" value="{{ formData.OrderDateFrom | date: 'dd/MM/yy HH:mm' }}" />
                   </a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <datetimepicker name="CreatedDate" ng-date-before="{{formData.CreatedDtTo}}" data-ng-model="formData.CreatedDtFrom" data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'hour' }" />
+                    <datetimepicker name="CreatedDate" ng-date-before="{{formData.OrderDateTo}}" data-ng-model="formData.OrderDateFrom" data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'hour' }" />
                   </ul>
                 </div>
               </div>
@@ -49,10 +37,10 @@
               <div class="width-field-small-input">
                 <div class="dropdown">
                   <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
-                    <input readonly style="background-color:white" type="text" class="input-icon-calendar form-control" value="{{ formData.CreatedDtTo | date: 'dd/MM/yy HH:mm' }}" />
+                    <input readonly style="background-color:white" type="text" class="input-icon-calendar form-control" value="{{ formData.OrderDateTo | date: 'dd/MM/yy HH:mm' }}" />
                   </a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <datetimepicker data-ng-model="formData.CreatedDtTo" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'hour' }" />
+                    <datetimepicker data-ng-model="formData.OrderDateTo" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'hour' }" />
                   </ul>
                 </div>
               </div>

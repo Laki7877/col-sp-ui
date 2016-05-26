@@ -5,51 +5,69 @@ module.exports = function ($scope, $controller, StdReportSaleService, config, ut
         PID: null,
         Brands: null,
         ItemStatus: null,
+        GlobalCategoryId: 0,
+        BrandId: 0,
         CreatedDtFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
         CreatedDtTo: new Date()
-        };
-    // $scope.exportCsv = function() { 
-    //     debugger;
-    //     var params = $scope.formData;
-    //     StdReportSaleService.exportCsv(params)
-    //     .then(function(data){
+    };
 
-    //         var csv = '';
-    //         var headers = data.split('\n')[0];
-    //         csv += headers;
 
-    //         for (var i = 1; i < data.split('\n').length; i++) {
-    //             var row = data.split('\n')[i];
-    //             csv += row;
-    //         }
+    $scope.categorys = [];
+    $scope.brands = [];
+    StdReportSaleService.getAllCategory({})
+                .then(function (data) {
+                    $scope.categorys = data;
+                });
+    $scope.$watch('formData.GlobalCategoryId', function (newValue, oldValue) {
+        if (newValue === undefined)
+            return;
+        // get brand by category id
+        StdReportSaleService.getBrand(newValue)
+                    .then(function (data) {
+                        $scope.brands = data;
+                    });
 
-    //         var filename, link;
+    });
 
-    //         filename = 'STDSale.csv';
+    $scope.$watch('formData.BrandId', function (newValue, oldValue) {
+        if (newValue === undefined)
+            return;
 
-    //         link = document.createElement('a');
-    //         link.setAttribute('href', 'data:attachment/csv,' + encodeURIComponent(csv));
-    //         link.setAttribute('download', filename);
-    //         link.click();
+    });
 
-    //         //debugger;
-    //         // var blob = new Blob([document.getElementById('report-std-tab-content').innerHTML], {
-    //         //     type: "vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
-    //         // });
-    //         // saveAs(blob, "Report.xls");
-    //     })
-    // };
+    var params = $scope.formData;
 
-    $scope.exportCsv = function() { 
-        debugger;
+    $scope.search = function () {
+        StdReportSaleService.getSaleReport(params)
+        .then(function (data) {
+            $scope.list.data = data;
+        });
 
-        var params = $scope.formData;
-        StdReportStockService.exportCsv(params)
-        .then(function(data){
+    };
 
-            util.csv(data,'STDSale.csv');
+
+    $scope.exportCsv = function () {
+        //debugger;
+
+        StdReportSaleService.exportCsv(params)
+        .then(function (data) {
+
+            util.csv(data, 'STDSale.csv');
 
         })
+    };
+
+
+
+
+    $scope.resetSearch = function () {
+
+        $scope.formData.PID = null;
+        $scope.formData.Brands = null;
+        $scope.formData.ItemStatus = null;
+        $scope.formData.CreatedDtFrom = new Date(new Date().setDate(new Date().getDate() - 30));
+        $scope.formData.CreatedDtTo = new Date();
+
     };
 
     $controller('AbstractAdvanceListCtrl', {
@@ -58,17 +76,10 @@ module.exports = function ($scope, $controller, StdReportSaleService, config, ut
             url: '/admin/reports/std/saleforseller',
             service: StdReportSaleService,
             item: 'SaleReportForSeller',
-            order: 'OrderId',
-            id: 'OrderId',
-            actions: ['View', 'Delete'],
-            bulks: ['Delete', 'Show', 'Hide'],
-            filters: [
-				{ name: "All", value: 'All' },
-				{ name: "Approved", value: 'Approved' },
-				{ name: "Not Approved", value: 'NotApproved' },
-				{ name: "Wait For Approved", value: 'WaitForApproved' },
-				{ name: "Draft", value: 'Draft' }
-            ]
+            order: 'PID',
+            id: 'PID'
+
+
         }
     });
 

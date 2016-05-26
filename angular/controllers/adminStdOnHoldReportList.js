@@ -3,20 +3,25 @@ module.exports = function ($scope, $controller, StdReportOnHoldService, config, 
     'ngInject';
     $scope.formData = {
         PID: null,
-        Brands: null,
-        ItemStatus: null,
-        CreatedDtFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
-        CreatedDtTo: new Date()
-        };
+        ItemName: null,
+        OrderDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        OrderDateTo: new Date()
+    };
 
-    $scope.exportCsv = function() { 
-        debugger;
+    var params = $scope.formData;
 
-        var params = $scope.formData;
-        StdReportStockService.exportCsv(params)
-        .then(function(data){
+    $scope.search = function () {
+        StdReportStockService.getStockReport(params)
+        .then(function (data) {
+            $scope.list.data = data;
+        });
 
-            util.csv(data,'STDOnHold.csv');
+    };
+    $scope.exportCsv = function () {
+        StdReportOnHoldService.exportCsv(params)
+        .then(function (data) {
+
+            util.csv(data, 'STDOnHold.csv');
 
         })
     };

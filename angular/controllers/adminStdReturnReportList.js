@@ -13,7 +13,7 @@ module.exports = function ($scope, $controller, StdReportReturnService, config, 
         debugger;
 
         var params = $scope.formData;
-        StdReportStockService.exportCsv(params)
+        StdReportReturnService.exportCsv(params)
         .then(function(data){
 
             util.csv(data,'STDReturn.csv');
