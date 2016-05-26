@@ -4528,7 +4528,7 @@ module.exports = ["$scope", "$controller", "Product", function($scope, $controll
 }]
 
 },{}],38:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "Product", "common", "config", function($scope, $controller, Product, common, config) {
+module.exports = ["$scope", "$controller", "Product", "common", "config", "$base64", "$timeout", function($scope, $controller, Product, common, config, $base64, $timeout) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
@@ -4614,12 +4614,14 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", functi
 	config.PRODUCT_STATUS.forEach(function(object){
        $scope.statusLookup[object.value] = object;
     });
+	
     $scope.asStatus = function (ab) {
         return $scope.statusLookup[ab];
     };
     $scope.getTag = function(tags) {
         return _.join(tags, ', ');
     }
+	
     $scope.exportSelected = function(){
         $scope.alert.close();
         if($scope.bulkContainer.length == 0) {
@@ -4639,6 +4641,8 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", functi
             document.getElementById('exportForm').submit();
         });
     }
+	
+	
 }];
 },{}],39:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$uibModal", "util", "common", function($scope, $controller, ProductReviewService, config, $uibModal, util, common) {
@@ -7993,6 +7997,13 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 		}
 	}
 
+	$scope.exportAsyncDelegate = {
+			active: false,
+			progress: 0,
+			requestDate: null,
+			endDate: null
+	};
+		
 	//TODO: Optimization required
 	var productIds = [];
 	$scope.init = function (viewBag) {
@@ -8031,6 +8042,12 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 
 	$scope.alert = new NcAlert();
 
+	$scope.allowExport = function(){
+		if(!$scope.exportAsyncDelegate.active) return true;
+		if(!$scope.exportAsyncDelegate.requestDate) return true;
+		if($scope.exportAsyncDelegate.requestDate && $scope.exportAsyncDelegate.progress == 0) return false;
+		return !($scope.exportAsyncDelegate.progress > 0 && $scope.exportAsyncDelegate.progress < 100);
+	}
 
 
 	function startIntervalCheck() {
@@ -8050,13 +8067,14 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 	}
 
 	$scope.abortExport = function () {
-		Product.exportAbort().then(function (result) {
-			NCConfirm('Cancel Export', 'Are you sure you want to cancel this ongoing export?', function () {
+		
+		NCConfirm('Cancel Export', 'Are you sure you want to cancel this ongoing export?', function () {
+			Product.exportAbort().then(function (result) {
 				$interval.cancel(exportProgressInterval);
-				$scope.alert.error("Export has been cancelled.");
-				$scope.exportAsyncDelegate.active = false;
+					$scope.alert.error("Export has been cancelled.");
+					$scope.exportAsyncDelegate.active = false;
+				});
 			});
-		});
 	}
 
 	//Ping server once for existing queue
@@ -8128,8 +8146,11 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 				endDate: null
 			}
 
-			startIntervalCheck();
-
+			$timeout(function(){
+				startIntervalCheck();
+			}, 5000);
+			
+			
 
 		}, error);
 	}
@@ -9231,6 +9252,7 @@ module.exports = ["$scope", "$controller", "common", "Product", "util", "$window
     $scope.getTag = function(tags) {
         return _.join(tags, ', ');
     }
+
     $scope.exportSelected = function(){
         $scope.alert.close();
         if($scope.bulkContainer.length == 0) {

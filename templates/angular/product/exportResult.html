@@ -19,7 +19,9 @@
                                 <td>{{ exportAsyncDelegate.requestDate | datetimeTh }}</td>
                                 <td ng-if="exportAsyncDelegate.progress >= 100">{{ exportAsyncDelegate.endDate | datetimeTh }}</td>
                                 <td ng-if="exportAsyncDelegate.progress < 100">-</td>
-                                <td ng-if="exportAsyncDelegate.progress > 0 && exportAsyncDelegate.progress < 100"><strong class="color-green">{{ exportAsyncDelegate.progress | number: 2 }} %</strong></td>
+                                <td ng-if="exportAsyncDelegate.progress > 0 && exportAsyncDelegate.progress < 100">
+                                    <strong class="color-green">{{ exportAsyncDelegate.progress | number: 2 }} %</strong>
+                                </td>
                                 <td ng-if="exportAsyncDelegate.progress >= 100"><strong class="color-green">Completed</strong></td>
                                 <td ng-if="exportAsyncDelegate.progress == 0"><strong class="color-yellow">Preparing..</strong></td>
                                 <td>

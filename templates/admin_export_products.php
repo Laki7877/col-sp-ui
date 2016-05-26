@@ -17,8 +17,8 @@
 		          	<span class="">Cancel</span>
 		        </a>
 		        <a href="#" class="btn margin-left-10 btn-blue  btn-width-xl" 
-				ng-class="{'disabled': exportAsyncDelegate.active }"
-				ng-disabled="exportAsyncDelegate.active"
+				ng-class="{'disabled': !allowExport() }"
+				ng-disabled="!allowExport()"
 				ng-click="startExportProducts()">
 		          	<span class="">Export</span>
 		        </a>
@@ -117,8 +117,8 @@
 			          <div class="float-right">
 			            <a href="/products" class="link-btn-plain">Cancel</a>
 			            <button class="btn btn-blue btn-width-xl" ng-click="startExportProducts()" 
-						ng-class="{'disabled': exportAsyncDelegate.active }"
-						ng-disabled="exportAsyncDelegate.active">Export</button>
+						ng-class="{'disabled': !allowExport() }"
+						ng-disabled="!allowExport()">Export</button>
 			          </div>
 			        </div>
 			     </div>
