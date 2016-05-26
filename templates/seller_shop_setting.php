@@ -211,7 +211,7 @@
 														<ui-select-match placeholder="- Select Oversea Shop -">
 															<span ng-bind="$select.selected.Value"></span>
 														</ui-select-match>
-														<ui-select-choices repeat="item in overseas">
+														<ui-select-choices repeat="item.Value as item in overseas">
 															<span ng-bind="item.Value"></span>
 														</ui-select-choices>
 													</ui-select>

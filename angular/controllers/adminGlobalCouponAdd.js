@@ -1,4 +1,5 @@
 module.exports = function($scope, $controller, GlobalCouponService, GlobalCategoryService, config, Category) {
+  'ngInject';
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
   $scope.filters = config.DROPDOWN.COUPON_GLOBAL_FILTER;

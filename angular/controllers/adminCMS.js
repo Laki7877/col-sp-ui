@@ -1,4 +1,5 @@
 module.exports = function($scope, $controller, CouponService, config, $uibModal) {
+  'ngInject';
   $controller('AbstractListCtrl', {
     $scope: $scope,
     options: {

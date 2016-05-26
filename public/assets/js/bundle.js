@@ -729,6 +729,7 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 
 			if($scope.id > 0) {
 				//Edit mode
+				(options.onBeforeSave || _.noop)($scope, true);
 				options.service.update($scope.id, data)
 					.then(function(result) {
 						$scope.formData = options.service.deserialize(result);
@@ -747,7 +748,8 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 						}
 					});
 			} else {
-				//Save mode
+				//Save mode]
+				(options.onBeforeSave || _.noop)($scope, false);
 				options.service.create(data)
 					.then(function(result) {
 						//Set both id and formData[id]
@@ -1306,7 +1308,8 @@ module.exports = ["$scope", "$controller", "AdminAccountService", "AdminRoleServ
    
 }];
 },{}],9:[function(require,module,exports){
-module.exports = function ($scope, $controller, CMSMasterService, config) {
+module.exports = ["$scope", "$controller", "CMSMasterService", "config", function ($scope, $controller, CMSMasterService, config) {
+    'ngInject';
     $scope.formData = {
         OnTopCreditCardId: null,
         NameTH: null,
@@ -1463,7 +1466,7 @@ module.exports = function ($scope, $controller, CMSMasterService, config) {
             }
         }
     });
-};
+}];
 
 },{}],10:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeService", "config", function($scope, $controller, AttributeService, config) {
@@ -2157,7 +2160,8 @@ module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", function
 }];
 
 },{}],18:[function(require,module,exports){
-module.exports = function($scope, $controller, CouponService, config, $uibModal) {
+module.exports = ["$scope", "$controller", "CouponService", "config", "$uibModal", function($scope, $controller, CouponService, config, $uibModal) {
+  'ngInject';
   $controller('AbstractListCtrl', {
     $scope: $scope,
     options: {
@@ -2229,7 +2233,7 @@ module.exports = function($scope, $controller, CouponService, config, $uibModal)
                 '</div>',
       size: 'md',
       scope: $scope,
-      controller: function($scope, $uibModalInstance) {
+      controller: ["$scope", "$uibModalInstance", function($scope, $uibModalInstance) {
 
 
         $scope.save = function(groupName) {
@@ -2241,7 +2245,7 @@ module.exports = function($scope, $controller, CouponService, config, $uibModal)
         };
 
         
-      }
+      }]
     })
     .result.then(function(data) {
       console.log(data)
@@ -2252,7 +2256,7 @@ module.exports = function($scope, $controller, CouponService, config, $uibModal)
   $scope.AddToList = function() {
     console.log($scope.formData)
   };
-}
+}]
 
 },{}],19:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "$uibModal", "$timeout", function ($scope, $controller, CMSCategoryService, config, $uibModal, $timeout) {
@@ -3889,7 +3893,8 @@ module.exports = ["$scope", "$controller", "GlobalCouponService", "config", func
 }]
 
 },{}],27:[function(require,module,exports){
-module.exports = function($scope, $controller, GlobalCouponService, GlobalCategoryService, config, Category) {
+module.exports = ["$scope", "$controller", "GlobalCouponService", "GlobalCategoryService", "config", "Category", function($scope, $controller, GlobalCouponService, GlobalCategoryService, config, Category) {
+  'ngInject';
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
   $scope.filters = config.DROPDOWN.COUPON_GLOBAL_FILTER;
@@ -3918,7 +3923,7 @@ module.exports = function($scope, $controller, GlobalCouponService, GlobalCatego
     }
   });
 
-};
+}];
 },{}],28:[function(require,module,exports){
   module.exports = ["$scope", "Credential", "$window", "NcAlert", "$uibModal", "storage", "config", function ($scope, Credential, $window, NcAlert, $uibModal, storage, config) {
     'ngInject';
@@ -4201,7 +4206,8 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "Im
 	};
 }];
 },{}],32:[function(require,module,exports){
-module.exports = function ($scope, $controller, OnTopCredit, config) {
+module.exports = ["$scope", "$controller", "OnTopCredit", "config", function ($scope, $controller, OnTopCredit, config) {
+    'ngInject';
     $scope.formData = {
         OnTopCreditCardId: null,
         NameTH: null,
@@ -4359,7 +4365,7 @@ module.exports = function ($scope, $controller, OnTopCredit, config) {
             }
         }
     });
-};
+}];
 
 },{}],33:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "OnTopCredit", "config", function($scope, $controller, OnTopCredit, config) {
@@ -4814,7 +4820,8 @@ module.exports = ["$scope", "$controller", "SellerCouponService", "config", func
 }]
 
 },{}],44:[function(require,module,exports){
-module.exports = function($scope, $controller, SellerCouponService, config, Category) {
+module.exports = ["$scope", "$controller", "SellerCouponService", "config", "Category", function($scope, $controller, SellerCouponService, config, Category) {
+  'ngInject';
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
   $scope.filters = config.DROPDOWN.COUPON_SELLER_FILTER;
@@ -4835,7 +4842,7 @@ module.exports = function($scope, $controller, SellerCouponService, config, Cate
     }
   });
 
-};
+}];
 },{}],45:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminShopService", "config", function($scope, $controller, AdminShopService, config) {
 	'ngInject';
@@ -4855,6 +4862,43 @@ module.exports = ["$scope", "$controller", "AdminShopService", "config", functio
 },{}],46:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "AdminShoptypeService", "GlobalCategoryService", "ShopService", "ImageService", "Category", "config", "common", "Credential", "$window", function($scope, $controller, $uibModal, AdminShopService, AdminShoptypeService, GlobalCategoryService, ShopService, ImageService, Category, config, common, Credential, $window) {
 	'ngInject';
+
+	var v = [];
+	var watch = function() {		
+		v.push($scope.$watch('formData.Province', function(data, old) {
+			if(_.isNil(data)) {
+				return;
+			}
+			else if(data != old) {
+				_.unset($scope.formData, ['City']);
+			}
+			$scope.getCities(data.ProvinceId);
+		}));
+		v.push($scope.$watch('formData.City', function(data, old) {
+			if(_.isNil(data)) {
+				return;
+			}
+			else if(data != old) {
+				_.unset($scope.formData, ['District']);
+			}
+			$scope.getDistricts(data.CityId);
+		}));
+		v.push($scope.$watch('formData.District', function(data, old) {
+			if(_.isNil(data)) {
+				return;
+			}
+			else if(data != old) {
+				_.unset($scope.formData, ['PostalCode']);
+			}
+			$scope.getPostals(data.DistrictId);
+		}));
+	};
+	var unwatch = function() {
+		while(v.length > 0) {
+			v.pop()();
+		}
+	};
+
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
@@ -4869,9 +4913,6 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 						scope.shoptypes = data;
 					});
 			},
-			onSave: function(scope) {
-				console.log(scope.form);
-			},
 			onLoad: function(scope, flag) {	
 				//Load global cat
 				scope.globalCategory = [];
@@ -4882,42 +4923,16 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 							item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
 						});
 				});
-
-				$scope.$watch('formData.Province', function(data, old) {
-					if(_.isNil(data)) {
-						return;
-					}
-					else if(data != old) {
-						_.unset($scope.formData, ['City']);
-					}
-					$scope.getCities(data.ProvinceId);
-				});
-
-				$scope.$watch('formData.City', function(data, old) {
-					if(_.isNil(data)) {
-						return;
-					}
-					else if(data != old) {
-						_.unset($scope.formData, ['District']);
-					}
-					$scope.getDistricts(data.CityId);
-				});
-
-
-				$scope.$watch('formData.District', function(data, old) {
-					if(_.isNil(data)) {
-						return;
-					}
-					else if(data != old) {
-						_.unset($scope.formData, ['PostalCode']);
-					}
-					$scope.getPostals(data.DistrictId);
-				});
+				watch();
+			},
+			onBeforeSave: function(scope) {
+				unwatch();
 			},
 			onAfterSave: function(scope) {			
 				_.forEach(scope.formData.Commissions, function(item) {
 					item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
 				});
+				watch();
 			}
 		}
 	});
@@ -7894,7 +7909,7 @@ module.exports = ['$scope', 'Product', 'Collection', 'util', 'Alert', '$window',
 }];
 
 },{}],61:[function(require,module,exports){
-module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$filter", "$interval", "NCConfirm", function ($scope, Product, AttributeSet, NcAlert, $base64, $filter, $interval, NCConfirm) {
+module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$filter", "$interval", "NCConfirm", "smoothScroll", "$timeout", function ($scope, Product, AttributeSet, NcAlert, $base64, $filter, $interval, NCConfirm, smoothScroll, $timeout) {
 	'ngInject';
 	$scope.ProductList = [];
 	$scope.SELECT_ALL = false;
@@ -8072,8 +8087,12 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 
 	$scope.confirmExportProducts = function () {
 
-		$("#export-product").modal('hide');
-
+		// $("#export-product").modal('hide');
+		$timeout(function() {
+			smoothScroll(document.body, {
+				container: null
+			});
+		}, 10);
 
 
 		var error = function (r) {
@@ -9725,7 +9744,8 @@ module.exports = ["$scope", "$controller", "SellerAccountService", "config", fun
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
 },{}],71:[function(require,module,exports){
-module.exports = function($scope, $controller, BrandService, SellerAccountService, SellerRoleService) {
+module.exports = ["$scope", "$controller", "BrandService", "SellerAccountService", "SellerRoleService", function($scope, $controller, BrandService, SellerAccountService, SellerRoleService) {
+	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
@@ -9764,7 +9784,7 @@ module.exports = function($scope, $controller, BrandService, SellerAccountServic
 			$scope.brands = data.data;
 		});
 	};
-}
+}]
 
 },{}],72:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerCouponService", "config", function($scope, $controller, SellerCouponService, config) {
@@ -9784,7 +9804,8 @@ module.exports = ["$scope", "$controller", "SellerCouponService", "config", func
 }]
 
 },{}],73:[function(require,module,exports){
-module.exports = function($scope, $rootScope, $controller, SellerCouponService, LocalCategoryService, Category, config, Category) {
+module.exports = ["$scope", "$rootScope", "$controller", "SellerCouponService", "LocalCategoryService", "Category", "config", "Category", function($scope, $rootScope, $controller, SellerCouponService, LocalCategoryService, Category, config, Category) {
+  'ngInject';
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
   $scope.filters = config.DROPDOWN.COUPON_SELLER_FILTER;
@@ -9811,7 +9832,7 @@ module.exports = function($scope, $rootScope, $controller, SellerCouponService, 
     }
   });
 
-};
+}];
 },{}],74:[function(require,module,exports){
 
 module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$filter", "storage", "$window", "$uibModal", "NewsletterService", function($scope, $rootScope, Dashboard, $log, $filter, storage, $window, $uibModal, NewsletterService){
@@ -10585,7 +10606,8 @@ module.exports = ["$scope", "$window", "$controller", "OrderService", "config", 
 }]
 
 },{}],79:[function(require,module,exports){
-module.exports = function($scope, $window, $filter, $controller, OrderService, util, config, $uibModal) {
+module.exports = ["$scope", "$window", "$filter", "$controller", "OrderService", "util", "config", "$uibModal", function($scope, $window, $filter, $controller, OrderService, util, config, $uibModal) {
+  'ngInject';
   $scope.status = config.ORDER_STATUS;
   $scope.addressIter = [1,2,3,4]; //Amount of AddressX (ie, Address1, Address2)
   //Abstract Add Ctrl
@@ -10753,9 +10775,10 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   $scope.getInvoiceState = function() {
     return !( $scope.formData.ShippingType == 'BU Dropship' || $scope.formData.ShippingType == 'COL Fulfillment' );
   };
-};
+}];
 },{}],80:[function(require,module,exports){
-module.exports = function($scope, $window, storage) {
+module.exports = ["$scope", "$window", "storage", function($scope, $window, storage) {
+	'ngInject';
 	$scope.orders = [];
 	$scope.cancel = function() {
 		$window.location.href = '/orders';
@@ -10767,7 +10790,7 @@ module.exports = function($scope, $window, storage) {
 	} else {
 		$window.location.href = '/orders';
 	}
-};
+}];
 },{}],81:[function(require,module,exports){
 var angular = require('angular');
 
@@ -11197,7 +11220,8 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 }];
 
 },{}],89:[function(require,module,exports){
-module.exports = function($rootScope, $scope, $controller, ShopService, ShopProfileService, ImageService, Onboarding, NcAlert, common, config, util, storage) {
+module.exports = ["$rootScope", "$scope", "$controller", "ShopService", "ShopProfileService", "ImageService", "Onboarding", "NcAlert", "common", "config", "util", "storage", function($rootScope, $scope, $controller, ShopService, ShopProfileService, ImageService, Onboarding, NcAlert, common, config, util, storage) {
+	'ngInject';
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 	$scope.shopGroupDropdown = config.DROPDOWN.SHOP_GROUP_DROPDOWN;
 	$scope.form = {};
@@ -11340,7 +11364,7 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 				$scope.alert.error(common.getError(err.data));
 			});
 	};
-};
+}];
 
 },{}],90:[function(require,module,exports){
 module.exports = ["$scope", "Product", function($scope, Product) {
@@ -22704,10 +22728,11 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
 }];
 
 },{}],218:[function(require,module,exports){
-module.exports = function(common) {
+module.exports = ["common", function(common) {
+	'ngInject';
 	var service = common.Rest('/Inventories');
 	return service;
-};
+}];
 },{}],219:[function(require,module,exports){
 module.exports = [function() {
 	'use strict';
@@ -22805,7 +22830,8 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 },{}],222:[function(require,module,exports){
-module.exports = function(common) {
+module.exports = ["common", function(common) {
+	'ngInject';
 	var service = common.Rest('/Newsletters');
 
 	service.generate = function() {
@@ -22828,7 +22854,7 @@ module.exports = function(common) {
 	};
 
 	return service;
-};
+}];
 },{}],223:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
@@ -26033,7 +26059,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('product/exportResult',
-    "<div class=row ng-show=exportAsyncDelegate.active><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Export Result</h2></div><div class=form-section-content><div class=table-wrapper><table class=table id=add-product-approve-versions><thead><tr><th class=width_200>Request On</th><th>Finish On</th><th class=width_150>Status</th><th class=export-action-column>Action</th></tr></thead><tbody><tr><td>{{ exportAsyncDelegate.requestDate | datetimeTh }}</td><td ng-if=\"exportAsyncDelegate.progress >= 100\">{{ exportAsyncDelegate.endDate | datetimeTh }}</td><td ng-if=\"exportAsyncDelegate.progress < 100\">-</td><td ng-if=\"exportAsyncDelegate.progress > 0\"><strong class=color-green>{{ exportAsyncDelegate.progress | number: 2 }} %</strong></td><td ng-if=\"exportAsyncDelegate.progress == 0\"><strong class=color-green>Preparing..</strong></td><td><button type=button class=\"btn btn-white btn-width-xl\" ng-hide=\"exportAsyncDelegate.progress >= 100\" ng-click=abortExport()>Cancel</button> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=downloadFile() ng-class=\"{ 'disabled' : exportAsyncDelegate.progress < 100 }\" ng-hide=\"exportAsyncDelegate.progress < 100\">Download</button></td></tr></tbody></table></div></div></div></div></div>"
+    "<div class=row ng-show=exportAsyncDelegate.active><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Export Result</h2></div><div class=form-section-content><div class=table-wrapper><table class=table id=add-product-approve-versions><thead><tr><th class=width_200>Request On</th><th>Finish On</th><th class=width_150>Status</th><th class=export-action-column>Action</th></tr></thead><tbody><tr><td>{{ exportAsyncDelegate.requestDate | datetimeTh }}</td><td ng-if=\"exportAsyncDelegate.progress >= 100\">{{ exportAsyncDelegate.endDate | datetimeTh }}</td><td ng-if=\"exportAsyncDelegate.progress < 100\">-</td><td ng-if=\"exportAsyncDelegate.progress > 0 && exportAsyncDelegate.progress < 100\"><strong class=color-green>{{ exportAsyncDelegate.progress | number: 2 }} %</strong></td><td ng-if=\"exportAsyncDelegate.progress >= 100\"><strong class=color-green>Completed</strong></td><td ng-if=\"exportAsyncDelegate.progress == 0\"><strong class=color-yellow>Preparing..</strong></td><td><button type=button class=\"btn btn-white btn-width-xl\" ng-hide=\"exportAsyncDelegate.progress >= 100\" ng-click=abortExport()>Cancel</button> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=downloadFile() ng-class=\"{ 'disabled' : exportAsyncDelegate.progress < 100 }\" ng-hide=\"exportAsyncDelegate.progress < 100\">Download</button></td></tr></tbody></table></div></div></div></div></div>"
   );
 
 
