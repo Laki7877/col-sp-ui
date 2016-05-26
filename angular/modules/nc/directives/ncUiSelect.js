@@ -11,8 +11,8 @@ angular.module('nc')
                 var $select = ctrl[1];
                 var $model = ctrl[0];
                 
-                $select.onSelectCallback = function (array) {
-                    var array = array ? array : ($model.$modelValue || []);
+                $select.onSelectCallback = function () {
+                    var array = $model.$modelValue || [];
                     var item = (array[array.length - 1] || "");
                     var _pass = true;
                     $model.$error = {};
@@ -39,7 +39,7 @@ angular.module('nc')
 
                 attrs.$observe('ngModel', function(val) {
                     $scope.$watch(val, function(o) {
-                        $select.onSelectCallback(o);
+                        $select.onSelectCallback();
                     });
                 });
 
