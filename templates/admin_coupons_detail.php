@@ -38,10 +38,10 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Coupons'])
                     <div class="form-section-header"><h2>Coupon Information</h2></div>
                     <div class="form-section-content">
                       <div nc-template="common/input/form-group-with-label" nc-label="Coupon Name" nc-template-form="form.CouponName" nc-template-options-path="couponForm/CouponName">
-                          <input class="form-control width-field-large" name="CouponName" ng-model="formData.CouponName" ng-pattern-restrict="^[^<>]+$" maxlength="255" required/>
+                          <input class="form-control width-field-large" name="CouponName" ng-model="formData.CouponName" ng-pattern-restrict="^[^<>]*$" maxlength="255" required/>
                       </div>
                       <div nc-template="common/input/form-group-with-label" nc-label="Coupon Code" nc-template-form="form.CouponCode" nc-template-options-path="couponForm/CouponCode">
-                          <input class="form-control width-field-large" ng-uppercase name="CouponCode" ng-model="formData.CouponCode" ng-pattern-restrict="^[0-9a-zA-Z]+$" maxlength="10" required/>
+                          <input class="form-control width-field-large" ng-uppercase name="CouponCode" ng-model="formData.CouponCode" ng-pattern-restrict="^[0-9a-zA-Z]*$" maxlength="10" required/>
                       </div>
                       <!-- Datetime Expiration -->
                       <div nc-date-range="components/date-range-vertical2"
