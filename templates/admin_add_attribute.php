@@ -93,7 +93,7 @@
               </div>
               <div ng-show="formData.DefaultAttribute"
                   nc-template="common/input/form-group-with-label"
-                nc-label="Visible To">
+                  nc-label="Visible To">
                 <ui-select ng-model="formData.VisibleTo" search-enabled="false">
                   <ui-select-match placeholder="- Select Visible to -">
                       <span ng-bind="$select.selected.name"></span>

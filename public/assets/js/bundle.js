@@ -1557,8 +1557,10 @@ module.exports = ["$scope", "$controller", "AttributeService", "ImageService", "
 		}
 	}, true);
 
-	$scope.$watch('formData.VisibleTo', function() {
-		$scope.formData.Required = false;
+	$scope.$watch('formData.VisibleTo', function(n, o) {
+		if(n == 'AD') {
+			$scope.formData.Required = false;
+		}
 	});
 }];
 },{}],12:[function(require,module,exports){
