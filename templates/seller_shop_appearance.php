@@ -75,20 +75,20 @@
 						            		</nc-product-layout>
 						            		<nc-image-banner-video
 						            			source="formData.Data.E_Video"
-						            		 	letter="I"
-						            		 	letterx="I1"
+						            		 	letter="E"
+						            		 	letterx="E1"
 						            		 	title="Video"
 						            		 	uploader="uploader" 
 						            		 	size="8" 
 						            		 	width="530" 
-						            		 	height="306"
+						            		 	height="300"
 						            		 	accept="'.jpg,.jpeg,.png'"
 						            		 	fail="uploadFail">
 						            		</nc-image-banner-video>
 						            		<nc-image-banner-icon
-						            			source="formData.Data.K_Icon"
-						            		 	letter="K"
-						            		 	letterx="K1"
+						            			source="formData.Data.F_Icon"
+						            		 	letter="F"
+						            		 	letterx="F1"
 						            		 	title="Social Network Icons"
 						            		 	uploader="uploader" 
 						            		 	size="8" 
@@ -98,6 +98,12 @@
 						            		 	subtitle="Icon Type"
 						            		 	accept="'.png'">
 						            		 </nc-image-banner-icon>
+						            		 <nc-textareas
+						            		 	source="formData.Data.G_Textarea"
+						            		 	letter="G"
+						            		 	title="Footer Text"
+						            		 	size="2">
+						            		 </nc-textareas>
 						            	</div>
 						            	<!-- robinson -->
 						            	<div ng-switch-when="2">
