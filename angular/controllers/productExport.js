@@ -56,7 +56,9 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 
 		$scope.dataSet.attributeSets = {};
 		if ($scope.SELECT_ALL) {
-			AttributeSet.getAll().then(function (data) {
+			AttributeSet.getAll({
+				byShop: true
+			}).then(function (data) {
 				$scope.dataSet.attributeSets = data.map(function (m) {
 					//m.Display = m.AttributeSetNameEn + " (" + m.ProductCount + ")";
 					m.Display = m.AttributeSetNameEn;

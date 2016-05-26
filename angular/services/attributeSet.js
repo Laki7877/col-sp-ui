@@ -85,6 +85,7 @@ module.exports = ['common', function(common){
 				method: 'GET',
 				url: '/AttributeSets',
 				params: {
+					byShop: parameters.byShop || false,
 					_order: parameters.orderBy || 'AttributeSetId',
 					_limit: parameters.pageSize || 0,
 					_offset: parameters.page * parameters.pageSize || 0,
