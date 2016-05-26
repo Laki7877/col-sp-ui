@@ -14050,10 +14050,10 @@ label.css-label {
 }
 
 /* line 645, ../../../assets/_components.scss */
-.btn-blue.disabled {
-  color: #EDF2F9;
-  background: #7B7F8F;
-  border-color: #7B7F8F;
+.btn-blue.disabled, .btn-blue[disabled], .btn-blue:disabled, fieldset[disabled] .btn-blue {
+  color: #EDF2F9 !important;
+  background: #7B7F8F !important;
+  border-color: #7B7F8F !important;
 }
 
 /*---- Modal Custom ----*/

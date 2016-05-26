@@ -642,10 +642,10 @@ user-select: none;
   color: $color-grey;
 }
 
-.btn-blue.disabled{
-	color: $color-light-grey;
-	background: $color-dark-grey;
-	border-color: $color-dark-grey;
+.btn-blue.disabled, .btn-blue[disabled], .btn-blue:disabled, fieldset[disabled] .btn-blue{
+	color: $color-light-grey !important;
+	background: $color-dark-grey !important;
+	border-color: $color-dark-grey !important;
 }
 
 
