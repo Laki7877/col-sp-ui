@@ -54,7 +54,8 @@
                 nc-label="Short Description (English)"
                 nc-template-options-path="addProductForm/DescriptionShortEn"
                 nc-template-form="form.DescriptionShortEn">
-                    <textarea ng-pattern="/^[^<>]+$/"
+                    <textarea 
+                      
                       class="form-control" maxlength="500"
                       ng-disabled="xspermit(35) || xspermit(39)"
                       name="DescriptionShortEn"
@@ -64,7 +65,7 @@
                 <div nc-template="common/input/div-with-label" nc-label="Short Description (ไทย)"
 							       nc-template-options-path="addProductForm/DescriptionShortTh"
                      nc-template-form="form.DescriptionShortTh">
-                    <textarea ng-pattern="/^[^<>]+$/"
+                    <textarea 
                       class="form-control"
                       maxlength="500"
                       name="DescriptionShortTh"
@@ -80,7 +81,7 @@
                 nc-template-options-path="addProductForm/KillerPointEn">
                     <input class="form-control width-field-large" name="KillerPoint1En"
                     ng-model="variantPtr.KillerPoint1En" ng-disabled="xspermit(35) || xspermit(39)"
-                    maxlength="50" ng-pattern="/^([^<>])+$/" />
+                    maxlength="50" />
                 </div>
 
                 <div nc-template="common/input/div-with-label"
@@ -89,7 +90,7 @@
                 nc-template-options-path="addProductForm/KillerPointTh">
                     <input class="form-control width-field-large" name="KillerPoint1Th"
                     ng-model="variantPtr.KillerPoint1Th" ng-disabled="xspermit(35)"
-                    maxlength="50" ng-pattern="/^([^<>])+$/" />
+                    maxlength="50"  />
                 </div>
             </div>
             <div class="row margin-top-30">
@@ -99,7 +100,7 @@
                 nc-template-options-path="addProductForm/KillerPointEn">
                     <input class="form-control width-field-large" name="KillerPoint2En"
                     ng-model="variantPtr.KillerPoint2En" ng-disabled="xspermit(35) || xspermit(39)"
-                    maxlength="50" ng-pattern="/^([^<>])+$/" />
+                    maxlength="50"   />
                 </div>
                 <div nc-template="common/input/div-with-label"
                 nc-template-form="form.KillerPoint2Th"
@@ -107,7 +108,7 @@
                 nc-template-options-path="addProductForm/KillerPointTh">
                     <input class="form-control width-field-large" name="KillerPoint2Th"
                     ng-model="variantPtr.KillerPoint2Th" ng-disabled="xspermit(35)"
-                    maxlength="50" ng-pattern="/^([^<>])+$/" />
+                    maxlength="50"  />
                 </div>
             </div>
             <div class="row margin-top-30">
@@ -117,7 +118,7 @@
                 nc-template-options-path="addProductForm/KillerPointEn">
                     <input class="form-control width-field-large" name="KillerPoint3En"
                     ng-model="variantPtr.KillerPoint3En" ng-disabled="xspermit(35) || xspermit(39)"
-                    maxlength="50" ng-pattern="/^([^<>])+$/" />
+                    maxlength="50"  />
                 </div>
                 <div nc-template="common/input/div-with-label"
                 nc-template-form="form.KillerPoint3Th"
@@ -125,7 +126,7 @@
                 nc-template-options-path="addProductForm/KillerPointTh">
                     <input class="form-control width-field-large" name="KillerPoint3Th"
                     ng-model="variantPtr.KillerPoint3Th" ng-disabled="xspermit(35)"
-                    maxlength="50" ng-pattern="/^([^<>])+$/" />
+                    maxlength="50"  />
                 </div>
             </div>
 

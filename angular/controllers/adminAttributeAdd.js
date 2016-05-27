@@ -59,7 +59,9 @@ module.exports = function($scope, $controller, AttributeService, ImageService, c
 		}
 	}, true);
 
-	$scope.$watch('formData.VisibleTo', function() {
-		$scope.formData.Required = false;
+	$scope.$watch('formData.VisibleTo', function(n, o) {
+		if(n == 'AD') {
+			$scope.formData.Required = false;
+		}
 	});
 };
