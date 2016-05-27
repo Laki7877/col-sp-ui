@@ -2,7 +2,7 @@
 module.exports = function ($scope, $controller, StdReportSaleService, config, util,$rootScope) {
     'ngInject';
     $scope.StdManageable = !$rootScope.permit(71);
-
+// debugger;
     $scope.formData = {
         PID: null,
         Brands: null,
@@ -46,7 +46,7 @@ module.exports = function ($scope, $controller, StdReportSaleService, config, ut
         debugger;
 
         var params = $scope.formData;
-        StdReportStockService.exportCsv(params)
+        StdReportSaleService.exportCsv(params)
         .then(function(data){
 
             util.csv(data,'STDSale.csv');
@@ -57,7 +57,7 @@ module.exports = function ($scope, $controller, StdReportSaleService, config, ut
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
-            url: '/admin/reports/std/saleforseller',
+            url: '/reports/std/saleforseller',
             service: StdReportSaleService,
             item: 'SaleReportForSeller',
             order: 'OrderId',
