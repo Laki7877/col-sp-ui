@@ -50,7 +50,7 @@ angular.module('nc')
 					}
 					else {
 						if(scope.source.Products) {
-							scope.source.Products = _.compact(scope.source.Products);
+							_.remove(scope.source.Products, _.isEmpty);
 						}
 					}
 				})
