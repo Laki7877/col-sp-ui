@@ -738,8 +738,8 @@ angular.module('nc')
 							return;
 						}
 						if (scope.size == scope.model.length) {
-							item.cancel();
 							item.remove();
+							item.cancel();
 							scope.onError({$response: { name: 'queueFilter' }});
 							return;
 						}
@@ -762,9 +762,9 @@ angular.module('nc')
 					});
 				};
 				scope.uploader.onProgressItem = function(item, progress) {
-					if(_.findIndex(scope.model,item) < 0) {
-						item.cancel();
+					if(_.findIndex(scope.model, item.obj) < 0) {
 						item.remove();
+						item.cancel();
 					}
 				}
 				scope.uploader.onSuccessItem = function(item, response, status, headers) {
