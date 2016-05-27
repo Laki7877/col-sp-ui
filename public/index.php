@@ -18,7 +18,7 @@ class Redirect {
 		return View::render('401');
 	}
 	public static function adminPermission($params) {
-		return View::render('401');
+		return View::render('401-admin');
 	}
 	
 	/*

@@ -5,9 +5,6 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
   $rootScope.Profile = storage.getCurrentUserProfile();
   $rootScope.Imposter = storage.getImposterProfile();
 
-  console.log('PROFILE', $rootScope.Profile);
-  console.log('IMPOSTER', $rootScope.Imposter);
-
   /*
   *  range {array} - set of shop group that is permitted in the current shop group policy
   */
@@ -192,7 +189,8 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
         $window.location.href = "/onboarding";
       }
       else {
-        util.page401();
+        var isAdmin = $rootScope.Profile.User.IsAdmin;
+        util.page401(isAdmin);
       }
     }
   }
