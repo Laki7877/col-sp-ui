@@ -8021,7 +8021,7 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 			AttributeSet.getAll({
 				byShop: true
 			}).then(function (data) {
-				$scope.dataSet.attributeSets = data.map(function (m) {
+				$scope.dataSet.attributeSets = data.data.map(function (m) {
 					//m.Display = m.AttributeSetNameEn + " (" + m.ProductCount + ")";
 					m.Display = m.AttributeSetNameEn;
 					$scope.sumProductAttributeSet += Number(m.ProductCount);
