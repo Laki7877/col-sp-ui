@@ -153,14 +153,21 @@ module.exports = {
       }
     }
   },
+  ProductBoosting:{
+    error: {
+      messages: {
+        'maxnumber': 'Only numbers between 1-10000 are allowed',
+        'minnumber': 'Only numbers between 1-10000 are allowed'
+      }
+    }
+  },
   Keywords: {
     'inputSize': 'large',
     'tooltip': 'Search Tag will help your product easier to be discovered',
     'error': {
       'messages': {
-        'maxtagcount': 'Cannot exceed 20 tags',
-        'maxTagCount': 'Cannot exceed 20 tags',
-        'maxtaglength': 'Tag must contain 30 characters or less',
+        'maxTagCount': 'Cannot exceed 30 tags',
+        'maxLengthPerTag': 'Tag must contain 30 characters or less',
         'pattern': 'Only letters and numbers allowed'
       }
     }
@@ -222,7 +229,7 @@ module.exports = {
     'inputSize': 'xxl',
     'error': {
       'messages': {
-        'maxtagcount': 'Cannot exceed 10 related products'
+        'maxTagCount': 'Maximum number of related products has been reached'
       }
     }
   },

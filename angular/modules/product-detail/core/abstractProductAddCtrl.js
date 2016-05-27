@@ -2,12 +2,9 @@ var angular = require('angular');
 
 angular.module('productDetail').controller('AbstractProductAddCtrl',
   function($scope, $uibModal, $window, util, config, Product, ImageService,
-    AttributeService,
-    AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category,
-    $rootScope,
+    AttributeService, $timeout, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
     KnownException, NcAlert, $productAdd, options, AttributeSetService,
-    JSONCache, skeemas, AdminShopService,
-    VariationFactorIndices, AttributeOptions, ShippingService) {
+    AdminShopService, VariationFactorIndices, AttributeOptions, ShippingService) {
     'ngInject';
 
     $scope.unlockedFields = [];
@@ -47,7 +44,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions); // will trigger watchvariantchange
           var catId = Number(res.MainGlobalCategory.CategoryId);
 
-          $productAdd.fill(checkSchema, catId, $scope.pageState,
+          $productAdd.fill(catId, $scope.pageState,
             $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory,
             $scope.controlFlags, $scope.variationFactorIndices, res
           ).then(function() {
@@ -67,9 +64,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     }
 
     // var loadOverview = function(res) {
-      // Shop.get(res.ShopId).then(function(x) {
-      //   $scope.formData.ShopName = x.ShopNameEn;
-      // })
+    // Shop.get(res.ShopId).then(function(x) {
+    //   $scope.formData.ShopName = x.ShopNameEn;
+    // })
     // };
 
     $scope.adminAlert = new NcAlert();
@@ -138,7 +135,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       ExpireDate: null,
       LimitIndividualDay: false,
       MasterVariant: {
-        ExpressDelivery: 'N',
         IsHasExpiryDate: 'N',
         IsVat: 'Y',
         Display: 'GROUP',
@@ -215,14 +211,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     var checkSchema = function(data, schemaName) {
       return true;
       //Perform schema check
-      var schema = JSONCache.get(schemaName || 'productStages');
-      var validation = skeemas.validate(data, schema);
-      console.log("Schema validation result: ", schemaName, validation);
-      if (!validation.valid) {
-        $scope.devAlert.error(
-          '<strong>Warning </strong> Ahancer Product Add Exchange Protocol (A-PAEP) not enforced.'
-        );
-      }
+      // var schema = JSONCache.get(schemaName || 'productStages');
+      // var validation = skeemas.validate(data, schema);
+      // console.log("Schema validation result: ", schemaName, validation);
+      // if (!validation.valid) {
+      //   $scope.devAlert.error(
+      //     '<strong>Warning </strong> Ahancer Product Add Exchange Protocol (A-PAEP) not enforced.'
+      //   );
+      // }
     };
 
     //Open modal for cat selector
@@ -628,6 +624,52 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         return;
       }
 
+      //default values
+      var defaultValueCheck = _.merge([$scope.formData.MasterVariant], $scope.formData.Variants);
+      for (var vari in defaultValueCheck) {
+        if (_.isEmpty(vari.SafetyStock)) {
+          vari.SafetyStock = 0;
+        }
+        if (_.isEmpty(vari.UpdateAmount)) {
+          vari.UpdateAmount = 0;
+        }
+
+        if (_.isEmpty(vari.PrepareMon)) {
+          vari.PrepareMon = vari.PrepareDay;
+        }
+
+        if (_.isEmpty(vari.PrepareTue)) {
+          vari.PrepareTue = vari.PrepareDay;
+        }
+
+        if (_.isEmpty(vari.PrepareWed)) {
+          vari.PrepareWed = vari.PrepareDay;
+        }
+
+        if (_.isEmpty(vari.PrepareThu)) {
+          vari.PrepareThu = vari.PrepareDay;
+        }
+
+        if (_.isEmpty(vari.PrepareFri)) {
+          vari.PrepareFri = vari.PrepareDay;
+        }
+
+        if (_.isEmpty(vari.PrepareSat)) {
+          vari.PrepareSat = vari.PrepareDay;
+        }
+
+        if (_.isEmpty(vari.PrepareSun)) {
+          vari.PrepareSun = vari.PrepareDay;
+        }
+
+        if (_.isEmpty(vari.NewArrivalDate)) {
+          vari.NewArrivalDate = $scope.formData.UpdateOn;
+        }
+
+      }
+
+
+
       if ($scope.addProductForm.$invalid) {
         $scope.pageState.reset();
         console.log($scope.addProductForm.$error);
@@ -686,7 +728,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions); // will trigger watchvariantchange
           var catId = Number(res.MainGlobalCategory.CategoryId);
 
-          $productAdd.fill(checkSchema, catId, $scope.pageState, $scope
+          $productAdd.fill(catId, $scope.pageState, $scope
             .dataset, $scope.formData, $scope.breadcrumb.globalCategory,
             $scope.controlFlags, $scope.variationFactorIndices, res).then(
             function() {
@@ -722,7 +764,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.init = function(viewBag) {
       if (!angular.isObject(viewBag)) throw new KnownException(
         'View bag is corrupted');
-        
+
       $scope.onPublishing = false;
 
       var _editMode = ('productId' in viewBag);
@@ -740,7 +782,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             var catId = Number(inverseFormData.MainGlobalCategory.CategoryId);
 
             //Fill the page with data
-            $productAdd.fill(checkSchema, catId,
+            $productAdd.fill(catId,
                 $scope.pageState, $scope.dataset,
                 $scope.formData, $scope.breadcrumb, $scope.controlFlags,
                 $scope.variationFactorIndices, inverseFormData)
@@ -807,7 +849,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         });
 
         var catId = Number(viewBag.catId);
-        $productAdd.fill(checkSchema, catId, $scope.pageState, $scope.dataset,
+        $productAdd.fill(catId, $scope.pageState, $scope.dataset,
           $scope.formData, $scope.breadcrumb,
           $scope.controlFlags, $scope.variationFactorIndices).then(
           function() {
@@ -920,14 +962,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
               $scope.variantPtr = pair;
               $scope.uploader = uploader;
               $scope.no = function() {
-                if($scope.form.$dirty){
-                    if(confirm("Your changes will not be saved, are you sure you want to close this modal?")){
-                      $uibModalInstance.close();
-                    }
-                }else{
-                   $uibModalInstance.close();
+                if ($scope.form.$dirty) {
+                  if (confirm("Your changes will not be saved, are you sure you want to close this modal?")) {
+                    $uibModalInstance.close();
+                  }
+                } else {
+                  $uibModalInstance.close();
                 }
-                
+
               }
               $scope.yes = function() {
                 $uibModalInstance.close($scope.pair);
@@ -1099,5 +1141,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     // for ng-repeat in variation tab
     $scope.variationFactorIndices = new VariationFactorIndices($scope.dataset);
 
+    //Initialize form pointer
+    $timeout(function() {
+      $scope.form = $scope.addProductForm;
+    });
 
   })

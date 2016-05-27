@@ -20,7 +20,8 @@ angular.module('umeSelect')
                 hideIcon: '=?hideIcon',
                 disabled: '&?ngDisabled',
                 strictMode: '=?strictMode',
-                required: '=?ncRequired'
+                required: '=?ncRequired',
+                uniqueTag: '=?uniqueTag'
             },
             replace: true,
             priority: 1010,
@@ -36,6 +37,7 @@ angular.module('umeSelect')
                 
                 ngModel.$validators.required = function(modelValue, viewValue) {
                    console.log(scope.required , 'scope.required');
+                   //TODO: erm wtf
                    if(scope.required && (!modelValue || modelValue.BrandId == 0 || !modelValue.BrandId)){
                        return false;
                    }
@@ -63,6 +65,7 @@ angular.module('umeSelect')
                 //It is not conventional because, who knows.
                 scope.E_STATE = null; 
                 var STATE_MAXTAGBLOCKED = 1;
+                var STATE_MAXLENGTHBLOCK = 2;
                 scope.focused = false;
                 scope.loading = false;
 
@@ -122,8 +125,17 @@ angular.module('umeSelect')
 
                     var value = modelValue || viewValue;
                     if(scope.E_STATE == STATE_MAXTAGBLOCKED) return false;
-                    return !maxTagCount || !value || (value.length <= maxTagCount);
+                    return true;
                 };
+
+                ngModel.$validators.maxLengthPerTag = function(modelValue, viewValue) {
+
+                    var value = modelValue || viewValue;
+                    console.log('maxLengthPerTag', scope.E_STATE);
+                    if(scope.E_STATE == STATE_MAXLENGTHBLOCK) return false;
+                    return true;
+                };
+
 
                 //Watch change on input choices
                 scope.$watchCollection('originalChoices()', function(data){
@@ -337,11 +349,37 @@ angular.module('umeSelect')
                     }
 
                     if(!item) return false;
+                    scope.E_STATE = null;
                     if(_.isArray(scope.model) && maxTagCount){
-                        if(scope.model.length >= maxTagCount){
+
+                        if(scope.model.length >= Number(maxTagCount)){
                             finishListModel();
                             scope.E_STATE = STATE_MAXTAGBLOCKED; //error state
-                            console.log('scope.E_STATE', scope.E_STATE);
+                            ngModel.$setDirty();
+                            ngModel.$validate();
+
+                            $timeout(function(){
+                                scope.E_STATE = null;
+                                ngModel.$validate();
+                            }, 3000);
+
+                            return true;
+                        }
+
+                    }
+
+                    if(maxLengthPerTag){
+                        if(!_.isObject(item) && item.length > Number(maxLengthPerTag)){
+                            finishListModel();
+                            scope.E_STATE = STATE_MAXLENGTHBLOCK; //error state
+                            ngModel.$setDirty();
+                            ngModel.$validate();
+
+                            $timeout(function(){
+                                scope.E_STATE = null;
+                                ngModel.$validate();
+                            }, 3000);
+
                             return true;
                         }
                     }

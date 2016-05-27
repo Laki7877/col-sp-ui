@@ -4,8 +4,9 @@
 	<div class="form-section-content">
 
 		<div nc-template="common/input/form-group-with-label" nc-label="Search Tags" nc-template-form="form.Keywords" nc-template-options-path="addProductForm/Keywords">
-			<you-me its-complicated="true" hide-icon="true" placeholder="Separate with Enter" freedom-of-speech="true" max-tag-count="30" ng-disabled="xspermit(35)"
-				ng-model="formData.Tags" choices="formData.AttributeSet.AttributeSetTagMaps"></you-me>
+			<you-me its-complicated="true" hide-icon="true" name="Keywords" placeholder="Separate with Enter" 
+			max-tag-count="30" ng-disabled="xspermit(35)" max-length-per-tag="30" ng-model="formData.Tags"
+			choices="formData.AttributeSet.AttributeSetTagMaps"></you-me>
 		</div>
 
 		<div class="form-group" ng-if="(formData.AttributeSet.AttributeSetTagMaps | nexclude: formData.Tags).length > 0">
@@ -20,7 +21,5 @@
 				</div>
 			</div>
 		</div>
-
-
 	</div>
 </div>

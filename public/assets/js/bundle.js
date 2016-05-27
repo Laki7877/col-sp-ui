@@ -1075,13 +1075,29 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 	AdminShopService) {
 	'ngInject';
 
+	function cleanFormData() {
+		return {
+			AttributeSet: null,
+			MasterVariant: {
+				Pid: null,
+				FirstAttribute: {},
+				SecondAttribute: {},
+				Visibility: true,
+				DefaultVariant: false
+			},
+			Variants: [],
+			Shop: {
+				ShopId: options.adminMode ? null : $rootScope.Profile.Shop.ShopId
+			}
+		};
+	}
 	$scope.adminMode = (options.adminMode);
 	$scope.alert = new NcAlert();
 	$scope.loading = false;
 	$scope.create = function() {
 
 		if (!$scope.formData.DefaultVariant) {
-			return $scope.alert.error("Please fill in the form.");
+			return $scope.alert.error("Please select DefaultVariant.");
 		}
 
 		try {
@@ -1098,7 +1114,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 			}
 
 			fd.Variants.map(function(o) {
-				if(!o.MappedProduct){
+				if (!o.MappedProduct) {
 					delete o.Pid;
 					return o;
 				}
@@ -1130,23 +1146,12 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 		}
 	};
 
-	$scope.formData = {
-		Category: {
-			CategoryId: null
-		},
-		AttributeSet: null,
-		MasterVariant: {
-			Pid: null,
-			FirstAttribute: {},
-			SecondAttribute: {},
-			Visibility: true,
-			DefaultVariant: false
-		},
-		Variants: [],
-		Shop: {
-			ShopId: options.adminMode ? null : $rootScope.Profile.Shop.ShopId
-		}
+
+	$scope.formData = cleanFormData();
+	$scope.formData.Category = {
+		CategoryId: null
 	};
+
 
 	$scope.dataset = {
 		Products: [],
@@ -1170,6 +1175,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 	}, true);
 
 	$scope.refresher.Products = function(q) {
+		if(!$scope.formData.AttributeSet.AttributeSetId) return;
 		return Product.getUngrouped(q,
 				$scope.formData.AttributeSet.AttributeSetId,
 				$scope.formData.Shop.ShopId,
@@ -1222,17 +1228,25 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 			data);
 	});
 
+	$scope.$watch('formData.Category.CategoryId', function(){
+		var bc = cleanFormData();
+		$scope.formData.AttributeSet = angular.copy(bc.AttributeSet);
+		$scope.formData.MasterVariant =  angular.copy(bc.MasterVariant);
+		$scope.formData.Variants = angular.copy(bc.Variants);
+	});
+
 	$scope.openCategorySelectorModal = function() {
 
 		var modalInstance = $uibModal.open({
 			size: 'category-section modal-lg column-4',
 			keyboard: false,
 			templateUrl: 'product/modalCategorySelector',
-			controller: ["$scope", "$uibModalInstance", "tree", "model", function($scope, $uibModalInstance, tree, model) {
+			controller: ["$scope", "$uibModalInstance", "tree", "model", "disable", function($scope, $uibModalInstance, tree, model, disable) {
 				'ngInject';
 				$scope.model = model;
 				$scope.tree = tree;
-				$scope.title = 'Select Category';
+				$scope.disabledOn = disable;
+				$scope.title = 'Select Global Category';
 				$scope.categoryHeaderText = '';
 
 				$scope.select = function() {
@@ -1245,6 +1259,12 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 				},
 				tree: function() {
 					return $scope.dataset.GlobalCategoryTree;
+				},
+				disable: function() {
+					return function(m) {
+						if (m.nodes.length == 0) return false;
+						return true;
+					}
 				}
 			}
 		});
@@ -1264,7 +1284,6 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 
 	};
 }]
-
 },{}],7:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminAccountService", "config", function($scope, $controller, AdminAccountService, config) {
 	'ngInject';
@@ -4614,6 +4633,9 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", "$base
     	}
     };
     $scope.exportSearchResult = function(){
+    	if(!$scope.advanceSearchParams){
+            return $scope.alert.error("Unable to Export. There are no products in your search result.");
+        }
         var K = _.extend({}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams));
         K._limit = 2147483647;
         $scope.searchCriteria = $base64.encode(JSON.stringify(K));
@@ -9313,6 +9335,10 @@ module.exports = ["$scope", "$controller", "common", "Product", "util", "$window
 
     $scope.searchCriteria = null;
     $scope.exportSearchResult = function() {
+        if(!$scope.advanceSearchParams){
+            return $scope.alert.error("Unable to Export. There are no products in your search result.");
+        }
+
         var K = _.extend({}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams));
         K._limit = 2147483647;
         $scope.searchCriteria = $base64.encode(JSON.stringify(K));
@@ -17161,13 +17187,10 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 var angular = require('angular');
 
 angular.module('productDetail').controller('AbstractProductAddCtrl',
-  ["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "AttributeService", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "$rootScope", "KnownException", "NcAlert", "$productAdd", "options", "AttributeSetService", "JSONCache", "skeemas", "AdminShopService", "VariationFactorIndices", "AttributeOptions", "ShippingService", function($scope, $uibModal, $window, util, config, Product, ImageService,
-    AttributeService,
-    AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category,
-    $rootScope,
+  ["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "AttributeService", "$timeout", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "$rootScope", "KnownException", "NcAlert", "$productAdd", "options", "AttributeSetService", "AdminShopService", "VariationFactorIndices", "AttributeOptions", "ShippingService", function($scope, $uibModal, $window, util, config, Product, ImageService,
+    AttributeService, $timeout, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
     KnownException, NcAlert, $productAdd, options, AttributeSetService,
-    JSONCache, skeemas, AdminShopService,
-    VariationFactorIndices, AttributeOptions, ShippingService) {
+    AdminShopService, VariationFactorIndices, AttributeOptions, ShippingService) {
     'ngInject';
 
     $scope.unlockedFields = [];
@@ -17207,7 +17230,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions); // will trigger watchvariantchange
           var catId = Number(res.MainGlobalCategory.CategoryId);
 
-          $productAdd.fill(checkSchema, catId, $scope.pageState,
+          $productAdd.fill(catId, $scope.pageState,
             $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory,
             $scope.controlFlags, $scope.variationFactorIndices, res
           ).then(function() {
@@ -17227,9 +17250,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     }
 
     // var loadOverview = function(res) {
-      // Shop.get(res.ShopId).then(function(x) {
-      //   $scope.formData.ShopName = x.ShopNameEn;
-      // })
+    // Shop.get(res.ShopId).then(function(x) {
+    //   $scope.formData.ShopName = x.ShopNameEn;
+    // })
     // };
 
     $scope.adminAlert = new NcAlert();
@@ -17298,7 +17321,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       ExpireDate: null,
       LimitIndividualDay: false,
       MasterVariant: {
-        ExpressDelivery: 'N',
         IsHasExpiryDate: 'N',
         IsVat: 'Y',
         Display: 'GROUP',
@@ -17375,14 +17397,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     var checkSchema = function(data, schemaName) {
       return true;
       //Perform schema check
-      var schema = JSONCache.get(schemaName || 'productStages');
-      var validation = skeemas.validate(data, schema);
-      console.log("Schema validation result: ", schemaName, validation);
-      if (!validation.valid) {
-        $scope.devAlert.error(
-          '<strong>Warning </strong> Ahancer Product Add Exchange Protocol (A-PAEP) not enforced.'
-        );
-      }
+      // var schema = JSONCache.get(schemaName || 'productStages');
+      // var validation = skeemas.validate(data, schema);
+      // console.log("Schema validation result: ", schemaName, validation);
+      // if (!validation.valid) {
+      //   $scope.devAlert.error(
+      //     '<strong>Warning </strong> Ahancer Product Add Exchange Protocol (A-PAEP) not enforced.'
+      //   );
+      // }
     };
 
     //Open modal for cat selector
@@ -17459,7 +17481,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.onImageUploadFail = function(kwd, data) {
       // console.log(kwd, data);
       if (kwd == "onmaxsize") {
-        $scope.image_alert.error('Maximum ' + data + ' images can be uploaded.');
+        $scope.image_alert.error('Cannot exceed ' + data + ' images for each product.');
       } else if (kwd == "ondimension") {
         $scope.image_alert.error('Image dimension must be between ' +
           IMAGE_DIM_BOUND[0][0] + 'x' +
@@ -17788,6 +17810,52 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         return;
       }
 
+      //default values
+      var defaultValueCheck = _.merge([$scope.formData.MasterVariant], $scope.formData.Variants);
+      for (var vari in defaultValueCheck) {
+        if (_.isEmpty(vari.SafetyStock)) {
+          vari.SafetyStock = 0;
+        }
+        if (_.isEmpty(vari.UpdateAmount)) {
+          vari.UpdateAmount = 0;
+        }
+
+        if (_.isEmpty(vari.PrepareMon)) {
+          vari.PrepareMon = vari.PrepareDay;
+        }
+
+        if (_.isEmpty(vari.PrepareTue)) {
+          vari.PrepareTue = vari.PrepareDay;
+        }
+
+        if (_.isEmpty(vari.PrepareWed)) {
+          vari.PrepareWed = vari.PrepareDay;
+        }
+
+        if (_.isEmpty(vari.PrepareThu)) {
+          vari.PrepareThu = vari.PrepareDay;
+        }
+
+        if (_.isEmpty(vari.PrepareFri)) {
+          vari.PrepareFri = vari.PrepareDay;
+        }
+
+        if (_.isEmpty(vari.PrepareSat)) {
+          vari.PrepareSat = vari.PrepareDay;
+        }
+
+        if (_.isEmpty(vari.PrepareSun)) {
+          vari.PrepareSun = vari.PrepareDay;
+        }
+
+        if (_.isEmpty(vari.NewArrivalDate)) {
+          vari.NewArrivalDate = $scope.formData.UpdateOn;
+        }
+
+      }
+
+
+
       if ($scope.addProductForm.$invalid) {
         $scope.pageState.reset();
         console.log($scope.addProductForm.$error);
@@ -17846,7 +17914,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions); // will trigger watchvariantchange
           var catId = Number(res.MainGlobalCategory.CategoryId);
 
-          $productAdd.fill(checkSchema, catId, $scope.pageState, $scope
+          $productAdd.fill(catId, $scope.pageState, $scope
             .dataset, $scope.formData, $scope.breadcrumb.globalCategory,
             $scope.controlFlags, $scope.variationFactorIndices, res).then(
             function() {
@@ -17882,7 +17950,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.init = function(viewBag) {
       if (!angular.isObject(viewBag)) throw new KnownException(
         'View bag is corrupted');
-        
+
       $scope.onPublishing = false;
 
       var _editMode = ('productId' in viewBag);
@@ -17900,7 +17968,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             var catId = Number(inverseFormData.MainGlobalCategory.CategoryId);
 
             //Fill the page with data
-            $productAdd.fill(checkSchema, catId,
+            $productAdd.fill(catId,
                 $scope.pageState, $scope.dataset,
                 $scope.formData, $scope.breadcrumb, $scope.controlFlags,
                 $scope.variationFactorIndices, inverseFormData)
@@ -17967,7 +18035,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         });
 
         var catId = Number(viewBag.catId);
-        $productAdd.fill(checkSchema, catId, $scope.pageState, $scope.dataset,
+        $productAdd.fill(catId, $scope.pageState, $scope.dataset,
           $scope.formData, $scope.breadcrumb,
           $scope.controlFlags, $scope.variationFactorIndices).then(
           function() {
@@ -18080,14 +18148,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
               $scope.variantPtr = pair;
               $scope.uploader = uploader;
               $scope.no = function() {
-                if($scope.form.$dirty){
-                    if(confirm("Your changes will not be saved, are you sure you want to close this modal?")){
-                      $uibModalInstance.close();
-                    }
-                }else{
-                   $uibModalInstance.close();
+                if ($scope.form.$dirty) {
+                  if (confirm("Your changes will not be saved, are you sure you want to close this modal?")) {
+                    $uibModalInstance.close();
+                  }
+                } else {
+                  $uibModalInstance.close();
                 }
-                
+
               }
               $scope.yes = function() {
                 $uibModalInstance.close($scope.pair);
@@ -18259,9 +18327,12 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     // for ng-repeat in variation tab
     $scope.variationFactorIndices = new VariationFactorIndices($scope.dataset);
 
+    //Initialize form pointer
+    $timeout(function() {
+      $scope.form = $scope.addProductForm;
+    });
 
   }])
-
 },{"angular":309}],162:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
@@ -18432,7 +18503,6 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
    *
    * Fill product add page with data of related dependencies
    *
-   * @param  {function} checkSchema
    * @param  {Integer} globalCatId
    * @param  {AddProductPageLoader} pageLoader
    * @param  {DataSet} sharedDataSet
@@ -18442,15 +18512,15 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
    * @param  {object} variationFactorIndices
    * @param  {InverseFormData} ivFormData (Optional)
    */
-  $productAdd.fill = function(checkSchema, globalCatId, pageLoader, sharedDataSet,
+  $productAdd.fill = function(globalCatId, pageLoader, sharedDataSet,
     sharedFormData, breadcrumbs, controlFlags, variationFactorIndices, ivFormData) {
 
     var deferred = $q.defer();
     pageLoader.load('Downloading Attribute Sets..');
 
     AttributeSet.getByCategory(globalCatId).then(function(data) {
-        pageLoader.load('Validating Schema..');
-        if(data.length > 0) checkSchema(data[0], 'attributeSet');
+        // pageLoader.load('Validating Schema..');
+        // if(data.length > 0) checkSchema(data[0], 'attributeSet');
 
         $productAdd.loadSuggestedAttributeSets(sharedDataSet, data);
 
@@ -18511,8 +18581,8 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
           AttributeSetService.get(ivFormData.AttributeSet.AttributeSetId).then(function(as){
             //Do hacky post-procesisng because this endpoint is not APEAP compliant
             var asComply = AttributeSetService.complyAPEAP(as);
-            pageLoader.load('Validating Schema..');
-            checkSchema(asComply, 'attributeSet');
+            // pageLoader.load('Validating Schema..');
+            // checkSchema(asComply, 'attributeSet');
             //Flatten Tag
             asComply.AttributeSetTagMaps = $productAdd.flatten.AttributeSetTagMap(asComply.AttributeSetTagMaps);
             sharedFormData.AttributeSet = asComply;
@@ -18708,7 +18778,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/modal-variant-detail',
-    "<form class=ah-form name=addProductVariantForm><div class=modal-header><h3 class=\"float-left modal-title\" ng-init=\"form = addProductVariantForm\">Variant: {{ pair.text }}</h3><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=\"form.$invalid || uploader.isUploading\" class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div><div class=\"modal-body margin-top-20\"><div class=row><div class=col-xs-12><div ng-if=\"form.$invalid && form.$dirty\" class=\"alert alert-red\" ng-cloak>Please make sure all required fields are filled and has no error.</div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=pair.ProductNameEn maxlength=300 ng-pattern=\"/^([^<>ก-๙])+$/\" required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=pair.ProductNameTh ng-pattern=\"/^[^<>]+$/\" maxlength=300 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=pair.Sku maxlength=300 required ng-pattern=\"/^[^<>]+$/\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern=\"/^[^<>]+$/\" name=Upc maxlength=300 ng-model=\"pair.Upc\"></div><div class=form-group><div class=width-label><label class=control-label>Display</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select class=form-control ng-model=pair.Display><option value={{op.value}} ng-repeat=\"op in dataset.VariantDisplayOption\">{{ op.text }}</option></select></div></div></div></div></div><div ap-component=ap/section-price></div><div ap-component=ap/section-image-video></div><div ap-component=ap/section-description></div><div ap-component=ap/section-inventory></div><div ap-component=ap/section-shipping></div><div ap-component=ap/section-seo></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=\"form.$invalid || uploader.isUploading\" class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div></div></div><form></form></form>"
+    "<form class=ah-form name=addProductVariantForm><div class=modal-header><h3 class=\"float-left modal-title\" ng-init=\"form = addProductVariantForm\">Variant: {{ pair.text }}</h3><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=\"form.$invalid || uploader.isUploading\" class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div><div class=\"modal-body margin-top-20\"><div class=row><div class=col-xs-12><div ng-if=\"form.$invalid && form.$dirty\" class=\"alert alert-red\" ng-cloak>Please make sure all required fields are filled and has no error.</div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=pair.ProductNameEn maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=pair.ProductNameTh maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=pair.Sku required maxlength=255 ng-pattern-restrict=\"^[a-zA-Z0-9]*$\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern-restrict=^[0-9]*$ maxlength=13 name=Upc ng-model=\"pair.Upc\"></div><div class=form-group><div class=width-label><label class=control-label>Display</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select class=form-control ng-model=pair.Display><option value={{op.value}} ng-repeat=\"op in dataset.VariantDisplayOption\">{{ op.text }}</option></select></div></div></div></div></div><div ap-component=ap/section-price></div><div ap-component=ap/section-image-video></div><div ap-component=ap/section-description></div><div ap-component=ap/section-inventory></div><div ap-component=ap/section-shipping></div><div ap-component=ap/section-seo></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=\"form.$invalid || uploader.isUploading\" class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div></div></div><form></form></form>"
   );
 
 
@@ -18744,7 +18814,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-keywords',
-    "<div class=form-section><div class=form-section-header><h2>Search Tags</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Search Tags\" nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><you-me its-complicated=true hide-icon=true placeholder=\"Separate with Enter\" freedom-of-speech=true max-tag-count=30 ng-disabled=xspermit(35) ng-model=formData.Tags choices=formData.AttributeSet.AttributeSetTagMaps></you-me></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | nexclude: formData.Tags).length > 0\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | nexclude: formData.Tags\" ng-click=\"(formData.Tags.indexOf(tag) == -1) && formData.Tags.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Search Tags</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Search Tags\" nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><you-me its-complicated=true hide-icon=true name=Keywords placeholder=\"Separate with Enter\" max-tag-count=30 ng-disabled=xspermit(35) max-length-per-tag=30 ng-model=formData.Tags choices=formData.AttributeSet.AttributeSetTagMaps></you-me></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | nexclude: formData.Tags).length > 0\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | nexclude: formData.Tags\" ng-click=\"(formData.Tags.indexOf(tag) == -1) && formData.Tags.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
   );
 
 
@@ -18760,18 +18830,19 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-price',
-    "<div class=form-section><div class=form-section-header><h2>Price</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SalePrice nc-label=\"Sale Price\" ng-cloack nc-template-options-path=addProductForm/SalePrice><input autocomplete=off ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 class=form-control name=SalePrice ng-disabled=\"xspermit(36) || xspermit(35)\" ng-model=variantPtr.SalePrice required></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.OriginalPrice><input autocomplete=off class=form-control name=OriginalPrice ng-disabled=\"xspermit(36) || xspermit(35)\" ng-model=variantPtr.OriginalPrice ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=\"10\"></div><div nc-template=common/input/form-group-with-label nc-label=Installment nc-template-options-path=addProductForm/Installment nc-template-form=form.Installment><select ng-disabled=\"disableInstallment() || xspermit(36) || xspermit(35)\" nc-default-value=\"'N'\" ng-cloak class=form-control ng-model=variantPtr.Installment><option ng-if=disableInstallment() value=N selected>Available when sale price is more than 5,000</option><option ng-if=!disableInstallment() value=Y>Yes</option><option ng-if=!disableInstallment() value=N selected>No</option></select></div><div nc-template=common/input/form-group-with-label nc-label=\"Promotion Price\" nc-template-form=form.PromotionPrice nc-template-options-path=addProductForm/PromotionPrice><input class=form-control name=PromotionPrice ng-disabled=\"xspermit(36) || xspermit(35)\" ng-model=variantPtr.PromotionPrice ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=\"10\"></div><div class=form-group><div class=width-label><label class=control-label>Promotion Effective Date</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown_promotion_effective_date role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-disabled=\"xspermit(36) || xspermit(35)\" ng-class=\"{'has-error': variantPtr.ExpireDatePromotion && variantPtr.ExpireDatePromotion <= variantPtr.EffectiveDatePromotion }\" placeholder=\"Select date and time when promotion will go online\" class=\"input-icon-calendar form-control\" value=\"{{ variantPtr.EffectiveDatePromotion | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel ng-show=\"!xspermit(35) && !xspermit(36)\"><datetimepicker data-ng-model=variantPtr.EffectiveDatePromotion data-datetimepicker-config=\"{ dropdownSelector: '#dropdown_promotion_effective_date', minView: 'minute', minuteStep: 30 }\"></ul></div><span class=\"help-block color-red\" ng-if=\"variantPtr.ExpireDatePromotion && variantPtr.ExpireDatePromotion <= variantPtr.EffectiveDatePromotion\"><span>Effective date/time must come before expire date/time</span></span></div></div><div class=form-group><div class=width-label><label class=control-label>Promotion Expire Date</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown_promotion_expire_date role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white placeholder=\"Select date and time when promotion will go offline\" class=\"input-icon-calendar form-control\" ng-disabled=\"xspermit(36) || xspermit(35)\" ng-class=\"{'has-error': variantPtr.ExpireDatePromotion && variantPtr.ExpireDatePromotion <= variantPtr.EffectiveDatePromotion }\" value=\"{{ variantPtr.ExpireDatePromotion | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel ng-show=\"!xspermit(35) && !xspermit(36)\"><datetimepicker data-ng-model=variantPtr.ExpireDatePromotion data-datetimepicker-config=\"{ dropdownSelector: '#dropdown_promotion_expire_date', minView: 'minute', minuteStep: 30 }\"></ul></div><span class=\"help-block color-red\" ng-if=\"variantPtr.ExpireDatePromotion && variantPtr.ExpireDatePromotion <= variantPtr.EffectiveDatePromotion\"><span>Effective date/time must come before expire date/time</span></span></div></div><div nc-template=common/input/form-group-with-label nc-policy-indy nc-label=\"Unit Price\" nc-template-options-path=addProductForm/NonRequiredSystemField nc-template-form=form.UnitPrice><input autocomplete=off ng-disabled=xspermit(36) class=form-control name=UnitPrice ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 nc-default-value=0 ng-model=\"variantPtr.UnitPrice\"></div><div nc-template=common/input/form-group-with-label nc-policy-indy nc-label=\"Purchase Price\" nc-template-options-path=addProductForm/NonRequiredSystemField nc-template-form=form.PurchasePrice><input ng-disabled=xspermit(36) nc-default-value=0 autocomplete=off class=form-control name=PurchasePrice ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-model=\"variantPtr.PurchasePrice\"></div><div nc-template=common/input/form-group-with-label nc-policy-indy-bu nc-label=\"Sale Unit (English)\" nc-template-options-path=addProductForm/NonRequiredSystemField nc-template-form=form.SaleUnitEn><input autocomplete=off ng-disabled=xspermit(36) class=form-control name=SaleUnitEn nc-default-value=\"'Piece'\" maxlength=255 ng-model=\"variantPtr.SaleUnitEn\"></div><div nc-template=common/input/form-group-with-label nc-policy-indy-bu nc-label=\"Sale Unit (ไทย)\" nc-template-options-path=addProductForm/NonRequiredSystemField nc-template-form=form.SaleUnitTh><input autocomplete=off class=form-control ng-disabled=xspermit(36) nc-default-value=\"'ชิ้น'\" name=SaleUnitTh maxlength=255 ng-model=\"variantPtr.SaleUnitTh\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.IsVat nc-template-options-path=addProductForm/NonRequiredSystemField nc-label=\"Include VAT\"><select ng-model=variantPtr.IsVat ng-disabled=!$root.permit(36) nc-default-value=\"'Y'\" class=form-control name=IsVat><option value=N>No</option><option value=Y>Yes</option></select></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Price</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SalePrice nc-label=\"Sale Price\" ng-cloack nc-template-options-path=addProductForm/SalePrice><input autocomplete=off ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 class=form-control name=SalePrice ng-disabled=\"xspermit(36) || xspermit(35)\" ng-model=variantPtr.SalePrice required></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.OriginalPrice><input autocomplete=off class=form-control name=OriginalPrice ng-disabled=\"xspermit(36) || xspermit(35)\" ng-model=variantPtr.OriginalPrice ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=\"10\"></div><div nc-template=common/input/form-group-with-label nc-label=Installment nc-template-options-path=addProductForm/Installment nc-template-form=form.Installment><select ng-disabled=\"disableInstallment() || xspermit(36) || xspermit(35)\" ng-cloak class=form-control ng-model=variantPtr.Installment><option ng-if=disableInstallment() value=N selected>Available when sale price is more than 5,000</option><option ng-if=!disableInstallment() value=N>No</option><option ng-if=!disableInstallment() value=Y>Yes</option></select></div><div nc-template=common/input/form-group-with-label nc-label=\"Promotion Price\" nc-template-form=form.PromotionPrice nc-template-options-path=addProductForm/PromotionPrice><input class=form-control name=PromotionPrice ng-disabled=\"xspermit(36) || xspermit(35)\" ng-model=variantPtr.PromotionPrice ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=\"10\"></div><div class=form-group><div class=width-label><label class=control-label>Promotion Effective Date</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown_promotion_effective_date role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-disabled=\"xspermit(36) || xspermit(35)\" ng-class=\"{'has-error': variantPtr.ExpireDatePromotion && variantPtr.ExpireDatePromotion <= variantPtr.EffectiveDatePromotion }\" placeholder=\"Select date and time when promotion will go online\" class=\"input-icon-calendar form-control\" value=\"{{ variantPtr.EffectiveDatePromotion | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel ng-show=\"!xspermit(35) && !xspermit(36)\"><datetimepicker data-ng-model=variantPtr.EffectiveDatePromotion data-datetimepicker-config=\"{ dropdownSelector: '#dropdown_promotion_effective_date', \n" +
+    "                        minView: 'minute', minuteStep: 30 }\"></ul></div><span class=\"help-block color-red\" ng-if=\"variantPtr.ExpireDatePromotion && variantPtr.ExpireDatePromotion <= variantPtr.EffectiveDatePromotion\"><span>Effective date/time must come before expire date/time</span></span></div></div><div class=form-group><div class=width-label><label class=control-label>Promotion Expire Date</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown_promotion_expire_date role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white placeholder=\"Select date and time when promotion will go offline\" class=\"input-icon-calendar form-control\" ng-disabled=\"xspermit(36) || xspermit(35)\" ng-class=\"{'has-error': variantPtr.ExpireDatePromotion && variantPtr.ExpireDatePromotion <= variantPtr.EffectiveDatePromotion }\" value=\"{{ variantPtr.ExpireDatePromotion | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel ng-show=\"!xspermit(35) && !xspermit(36)\"><datetimepicker data-ng-model=variantPtr.ExpireDatePromotion data-datetimepicker-config=\"{ dropdownSelector: '#dropdown_promotion_expire_date', minView: 'minute', minuteStep: 30 }\"></ul></div><span class=\"help-block color-red\" ng-if=\"variantPtr.ExpireDatePromotion && variantPtr.ExpireDatePromotion <= variantPtr.EffectiveDatePromotion\"><span>Effective date/time must come before expire date/time</span></span></div></div><div nc-template=common/input/form-group-with-label nc-policy-indy nc-label=\"Unit Price\" nc-template-options-path=addProductForm/NonRequiredSystemField nc-template-form=form.UnitPrice><input autocomplete=off ng-disabled=xspermit(36) class=form-control name=UnitPrice ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 nc-default-value=0 ng-model=\"variantPtr.UnitPrice\"></div><div nc-template=common/input/form-group-with-label nc-policy-indy nc-label=\"Purchase Price\" nc-template-options-path=addProductForm/NonRequiredSystemField nc-template-form=form.PurchasePrice><input ng-disabled=xspermit(36) nc-default-value=0 autocomplete=off class=form-control name=PurchasePrice ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-model=\"variantPtr.PurchasePrice\"></div><div nc-template=common/input/form-group-with-label nc-policy-indy-bu nc-label=\"Sale Unit (English)\" nc-template-options-path=addProductForm/NonRequiredSystemField nc-template-form=form.SaleUnitEn><input autocomplete=off ng-disabled=xspermit(36) class=form-control name=SaleUnitEn nc-default-value=\"'Piece'\" maxlength=255 ng-model=\"variantPtr.SaleUnitEn\"></div><div nc-template=common/input/form-group-with-label nc-policy-indy-bu nc-label=\"Sale Unit (ไทย)\" nc-template-options-path=addProductForm/NonRequiredSystemField nc-template-form=form.SaleUnitTh><input autocomplete=off class=form-control ng-disabled=xspermit(36) nc-default-value=\"'ชิ้น'\" name=SaleUnitTh maxlength=255 ng-model=\"variantPtr.SaleUnitTh\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.IsVat nc-template-options-path=addProductForm/NonRequiredSystemField nc-label=\"Include VAT\"><select ng-model=variantPtr.IsVat ng-disabled=!$root.permit(36) nc-default-value=\"'Y'\" class=form-control name=IsVat><option value=N>No</option><option value=Y>Yes</option></select></div></div></div>"
   );
 
 
   $templateCache.put('ap/section-seo',
     "<div class=form-section><div class=form-section-header><h2>SEO</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaTitleEn nc-label=\"SEO (English)\" nc-template-options-path=addProductForm/SEO><textarea class=form-control ng-disabled=xspermit(42) ng-pattern=\"/^[^<>]+$/\" name=SEO_En ng-model=variantPtr.SEO.SeoEn maxlength=1000></textarea></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaTitleEn nc-label=\"SEO (ไทย)\" nc-template-options-path=addProductForm/SEO><textarea class=form-control ng-disabled=xspermit(42) ng-pattern=\"/^[^<>]+$/\" name=SEO_Th ng-model=variantPtr.SEO.SeoTh maxlength=1000>\n" +
-    "            </textarea></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaTitleEn nc-label=\"Meta Title (English)\" nc-template-options-path=addProductForm/MetaTitle><input class=\"form-control width-field-normal\" ng-disabled=xspermit(42) ng-pattern=\"/^[^<>]+$/\" name=SEO_MetaTitleEn ng-model=variantPtr.SEO.MetaTitleEn maxlength=\"60\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaTitleTh nc-label=\"Meta Title (ไทย)\" nc-template-options-path=addProductForm/MetaTitle><input class=\"form-control width-field-normal\" ng-disabled=xspermit(42) name=SEO_MetaTitleTh ng-pattern=\"/^[^<>]+$/\" ng-model=variantPtr.SEO.MetaTitleTh maxlength=\"60\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaDescriptionEn nc-label=\"Meta Description (English)\" nc-template-options-path=addProductForm/Nothing><input maxlength=150 class=\"form-control width-field-normal\" ng-pattern=\"/^[^<>]+$/\" ng-disabled=xspermit(42) name=SEO_MetaDescriptionEn ng-model=\"variantPtr.SEO.MetaDescriptionEn\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaDescriptionTh nc-label=\"Meta Description (ไทย)\" nc-template-options-path=addProductForm/Nothing><input maxlength=150 class=\"form-control width-field-normal\" ng-pattern=\"/^[^<>]+$/\" ng-disabled=xspermit(42) name=SEO_MetaDescriptionTh ng-model=\"variantPtr.SEO.MetaDescriptionTh\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaKeywordsEn nc-label=\"Meta Keywords (English)\" nc-template-options-path=addProductForm/Nothing><input placeholder=\"Keywords separated by comma\" ng-disabled=xspermit(42) maxlength=1000 ng-pattern=\"/^[^<>]+$/\" class=\"form-control width-field-normal\" name=SEO_MetaKeywordsEn ng-model=\"variantPtr.SEO.MetaKeywordEn\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaKeywordsTh nc-label=\"Meta Keywords (ไทย)\" nc-template-options-path=addProductForm/Nothing><input placeholder=\"Keywords separated by comma\" ng-disabled=xspermit(42) ng-pattern=\"/^[^<>]+$/\" maxlength=1000 class=\"form-control width-field-normal\" name=SEO_MetaKeywordsTh ng-model=\"variantPtr.SEO.MetaKeywordTh\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_ProductUrlKeyEn nc-label=\"Product URL Key\" nc-template-options-path=addProductForm/UrlKey><input maxlength=100 class=\"form-control width-field-normal\" ng-disabled=xspermit(42) ng-pattern-restrict=^[A-Za-z0-9\\-]*$ name=SEO_ProductUrlKeyEn ng-model=\"variantPtr.SEO.ProductUrlKeyEn\"></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Nothing nc-template-form=form.SEO_ProductBoostingWeight ng-pattern-restrict=^[0-9]*$ nc-label=\"Product Boosting\"><input class=\"form-control width-field-normal\" ng-disabled=xspermit(42) nc-default-value=5000 ng-pattern-restrict=^[0-9]*$ name=SEO_ProductBoostingWeight ng-model=\"variantPtr.SEO.ProductBoostingWeight\"></div><div nc-template=common/input/form-group-with-label nc-policy-admin nc-template-options-path=addProductForm/Nothing nc-template-form=form.SEO_GlobalProductBoostingWeight nc-label=\"Global Product Boosting\"><input class=\"form-control width-field-normal\" nc-default-value=5000 ng-pattern-restrict=^[0-9]*$ name=SEO_GlobalProductBoostingWeight ng-model=\"variantPtr.SEO.GlobalProductBoostingWeight\"></div></div></div>"
+    "            </textarea></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaTitleEn nc-label=\"Meta Title (English)\" nc-template-options-path=addProductForm/MetaTitle><input class=\"form-control width-field-normal\" ng-disabled=xspermit(42) ng-pattern=\"/^[^<>]+$/\" name=SEO_MetaTitleEn ng-model=variantPtr.SEO.MetaTitleEn maxlength=\"60\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaTitleTh nc-label=\"Meta Title (ไทย)\" nc-template-options-path=addProductForm/MetaTitle><input class=\"form-control width-field-normal\" ng-disabled=xspermit(42) name=SEO_MetaTitleTh ng-pattern=\"/^[^<>]+$/\" ng-model=variantPtr.SEO.MetaTitleTh maxlength=\"60\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaDescriptionEn nc-label=\"Meta Description (English)\" nc-template-options-path=addProductForm/Nothing><input maxlength=150 class=\"form-control width-field-normal\" ng-pattern=\"/^[^<>]+$/\" ng-disabled=xspermit(42) name=SEO_MetaDescriptionEn ng-model=\"variantPtr.SEO.MetaDescriptionEn\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaDescriptionTh nc-label=\"Meta Description (ไทย)\" nc-template-options-path=addProductForm/Nothing><input maxlength=150 class=\"form-control width-field-normal\" ng-pattern=\"/^[^<>]+$/\" ng-disabled=xspermit(42) name=SEO_MetaDescriptionTh ng-model=\"variantPtr.SEO.MetaDescriptionTh\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaKeywordsEn nc-label=\"Meta Keywords (English)\" nc-template-options-path=addProductForm/Nothing><input placeholder=\"Keywords separated by comma\" ng-disabled=xspermit(42) maxlength=1000 ng-pattern=\"/^[^<>]+$/\" class=\"form-control width-field-normal\" name=SEO_MetaKeywordsEn ng-model=\"variantPtr.SEO.MetaKeywordEn\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaKeywordsTh nc-label=\"Meta Keywords (ไทย)\" nc-template-options-path=addProductForm/Nothing><input placeholder=\"Keywords separated by comma\" ng-disabled=xspermit(42) ng-pattern=\"/^[^<>]+$/\" maxlength=1000 class=\"form-control width-field-normal\" name=SEO_MetaKeywordsTh ng-model=\"variantPtr.SEO.MetaKeywordTh\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_ProductUrlKeyEn nc-label=\"Product URL Key\" nc-template-options-path=addProductForm/UrlKey><input maxlength=100 class=\"form-control width-field-normal\" ng-disabled=xspermit(42) ng-pattern-restrict=^[A-Za-z0-9\\-]*$ name=SEO_ProductUrlKeyEn ng-model=\"variantPtr.SEO.ProductUrlKeyEn\"></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/ProductBoosting nc-template-form=form.SEO_ProductBoostingWeight ng-pattern-restrict=^[0-9]*$ nc-label=\"Product Boosting\"><input class=\"form-control width-field-normal\" ng-disabled=xspermit(42) nc-default-value=5000 ng-pattern-restrict=^[0-9]*$ name=SEO_ProductBoostingWeight ng-maxnumber=10000 ng-minnumber=1 ng-model=\"variantPtr.SEO.ProductBoostingWeight\"></div><div nc-template=common/input/form-group-with-label nc-policy-admin nc-template-options-path=addProductForm/ProductBoosting nc-template-form=form.SEO_GlobalProductBoostingWeight nc-label=\"Global Product Boosting\"><input class=\"form-control width-field-normal\" nc-default-value=5000 ng-maxnumber=10000 ng-minnumber=1 ng-pattern-restrict=^[0-9]*$ name=SEO_GlobalProductBoostingWeight ng-model=\"variantPtr.SEO.GlobalProductBoostingWeight\"></div></div></div>"
   );
 
 
   $templateCache.put('ap/section-shipping',
-    "<div class=form-section><div class=form-section-header><h2>Shipping Detail</h2></div><div class=form-section-content><div class=form-group ng-if=\"variantPtr == formData.MasterVariant\"><div class=width-label><label class=control-label>Shipping Method</label></div><div class=width-field-normal><div class=\"radio multiple-radio multiline\"><label ng-repeat=\"shi in dataset.ShippingList\"><input type=radio name=shipping_method ng-disabled=xspermit(38) nc-default-value=1 ng-value={{shi.ShippingId}} ng-model=\"formData.ShippingMethod\"> {{ shi.ShippingMethodEn }}</label></div></div></div><div nc-template=common/input/form-group-with-label nc-template-form=form.ExpressDelivery nc-label=\"Express Delivery\"><select ng-disabled=xspermit(38) nc-default-value=\"'Y'\" ng-model=variantPtr.ExpressDelivery class=form-control name=ExpressDelivery><option selected value=- disabled>- Select Express Delivery Option -</option><option value=Y>Enable</option><option value=N>Disable</option></select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.ExpressDelivery nc-label=\"Delivery Fee\"><input ng-disabled=xspermit(38) class=form-control name=DeliveryFee ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-model=\"variantPtr.DeliveryFee\"></div><div nc-template=common/input/form-group-with-label nc-label=\"Preparation Time\" nc-template-form=form.PrepareDay nc-template-options-path=addProductForm/PrepareDay style=\"margin-bottom: 0px\"><input ng-disabled=xspermit(38) class=\"form-control width-field-normal\" name=PrepareDay ng-pattern-restrict=^[0-9]*$ nc-default-value=3 ng-required=onPublishing ng-max-number=24 maxlength=3 ng-model=\"variantPtr.PrepareDay\"></div><div class=\"form-group margin-bottom-20\"><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=checkbox><label><input ng-disabled=xspermit(38) type=checkbox ng-model=variantPtr.LimitIndividualDay> Set preparation time for individual day</label></div></div></div><div class=form-group ng-show=variantPtr.LimitIndividualDay><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=multiple-input><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Monday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareMon><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareMon ng-model=\"variantPtr.PrepareMon\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Tuesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareTue><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareTue ng-model=\"variantPtr.PrepareTue\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Wednesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareWed><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareWed ng-model=\"variantPtr.PrepareWed\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Thursday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareThu><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareThu ng-model=\"variantPtr.PrepareThu\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Friday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareFri><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareFri ng-model=\"variantPtr.PrepareFri\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Saturday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSat><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareSat ng-model=\"variantPtr.PrepareSat\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Sunday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSun><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareSun ng-model=\"variantPtr.PrepareSun\"></div></div></div></div></div><div class=\"form-group margin-top-20\"><div class=width-label><label class=\"control-label required\" style=margin-top:-8px>Package Dimension</label></div><div class=width-field-xxl><div class=multiple-input><div class=input-column><div nc-template=common/input/div-with-label nc-label=Length nc-template-options-path=addProductForm/Dimension nc-template-form=form.Length><input ng-disabled=xspermit(38) ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 class=form-control ng-required=onPublishing name=Length ng-model=\"variantPtr.Length\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Height nc-template-options-path=addProductForm/Dimension nc-template-form=form.Height><input ng-disabled=xspermit(38) class=form-control ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-required=onPublishing name=Height ng-model=\"variantPtr.Height\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Width nc-template-options-path=addProductForm/Dimension nc-template-form=form.Width><input ng-disabled=xspermit(38) class=form-control ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-required=onPublishing name=Width ng-model=\"variantPtr.Width\"></div></div><div class=\"input-column no-label select input-xl\" style=\"padding-top: 24px\"><select ng-disabled=xspermit(38) ng-model=variantPtr.DimensionUnit class=form-control><option value=MM>Millimeter</option><option value=CM>Centimeter</option><option value=M>Meter</option></select></div></div></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Weight</label></div><div class=width-field-xxl><div class=multiple-input><div nc-template=common/input/text-column-no-label nc-label=\"\" nc-template-options-path=addProductForm/Dimension nc-template-form=form.Weight><input ng-disabled=xspermit(38) class=form-control ng-required=onPublishing name=Weight ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-model=\"variantPtr.Weight\"></div><div class=\"input-column select input-xl\"><div class=ah-select2-dropdown><select ng-disabled=xspermit(38) class=form-control ng-model=variantPtr.WeightUnit><option value=G>Grams</option><option value=KG>Kilograms</option></select></div></div></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Shipping Detail</h2></div><div class=form-section-content><div class=form-group ng-if=\"variantPtr == formData.MasterVariant\"><div class=width-label><label class=control-label>Shipping Method</label></div><div class=width-field-normal><div class=\"radio multiple-radio multiline\"><label ng-repeat=\"shi in dataset.ShippingList\"><input type=radio name=shipping_method ng-required=onPublishing ng-disabled=xspermit(38) nc-default-value=1 ng-value={{shi.ShippingId}} ng-model=\"formData.ShippingMethod\"> {{ shi.ShippingMethodEn }}</label></div></div></div><div nc-template=common/input/form-group-with-label nc-template-form=form.ExpressDelivery nc-label=\"Express Delivery\"><select ng-disabled=xspermit(38) nc-default-value=\"'Y'\" ng-model=variantPtr.ExpressDelivery class=form-control name=ExpressDelivery><option selected value=- disabled>- Select Express Delivery Option -</option><option value=Y>Enable</option><option value=N>Disable</option></select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.ExpressDelivery nc-label=\"Delivery Fee\"><input ng-disabled=xspermit(38) class=form-control name=DeliveryFee ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-model=\"variantPtr.DeliveryFee\"></div><div nc-template=common/input/form-group-with-label nc-label=\"Preparation Time\" nc-template-form=form.PrepareDay nc-template-options-path=addProductForm/PrepareDay style=\"margin-bottom: 0px\"><input ng-disabled=xspermit(38) class=\"form-control width-field-normal\" name=PrepareDay ng-pattern-restrict=^[0-9]*$ nc-default-value=3 ng-required=onPublishing ng-max-number=24 maxlength=3 ng-model=\"variantPtr.PrepareDay\"></div><div class=\"form-group margin-bottom-20\"><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=checkbox><label><input ng-disabled=xspermit(38) type=checkbox ng-model=variantPtr.LimitIndividualDay> Set preparation time for individual day</label></div></div></div><div class=form-group ng-show=variantPtr.LimitIndividualDay><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=multiple-input><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Monday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareMon><input ng-disabled=xspermit(38) ng-pattern-restrict=^[0-9]*$ class=form-control maxlength=3 name=PrepareMon ng-model=\"variantPtr.PrepareMon\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Tuesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareTue><input ng-disabled=xspermit(38) ng-pattern-restrict=^[0-9]*$ class=form-control maxlength=3 name=PrepareTue ng-model=\"variantPtr.PrepareTue\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Wednesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareWed><input ng-disabled=xspermit(38) ng-pattern-restrict=^[0-9]*$ class=form-control maxlength=3 name=PrepareWed ng-model=\"variantPtr.PrepareWed\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Thursday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareThu><input ng-disabled=xspermit(38) class=form-control ng-pattern-restrict=^[0-9]*$ maxlength=3 name=PrepareThu ng-model=\"variantPtr.PrepareThu\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Friday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareFri><input ng-disabled=xspermit(38) ng-pattern-restrict=^[0-9]*$ class=form-control maxlength=3 name=PrepareFri ng-model=\"variantPtr.PrepareFri\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Saturday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSat><input ng-disabled=xspermit(38) class=form-control maxlength=3 ng-pattern-restrict=^[0-9]*$ name=PrepareSat ng-model=\"variantPtr.PrepareSat\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Sunday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSun><input ng-disabled=xspermit(38) class=form-control ng-pattern-restrict=^[0-9]*$ maxlength=3 name=PrepareSun ng-model=\"variantPtr.PrepareSun\"></div></div></div></div></div><div class=\"form-group margin-top-20\"><div class=width-label><label class=\"control-label required\" style=margin-top:-8px>Package Dimension</label></div><div class=width-field-xxl><div class=multiple-input><div class=input-column><div nc-template=common/input/div-with-label nc-label=Length nc-template-options-path=addProductForm/Dimension nc-template-form=form.Length><input ng-disabled=xspermit(38) ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 class=form-control ng-required=onPublishing name=Length ng-model=\"variantPtr.Length\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Height nc-template-options-path=addProductForm/Dimension nc-template-form=form.Height><input ng-disabled=xspermit(38) class=form-control ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-required=onPublishing name=Height ng-model=\"variantPtr.Height\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Width nc-template-options-path=addProductForm/Dimension nc-template-form=form.Width><input ng-disabled=xspermit(38) class=form-control ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-required=onPublishing name=Width ng-model=\"variantPtr.Width\"></div></div><div class=\"input-column no-label select input-xl\" style=\"padding-top: 24px\"><select ng-disabled=xspermit(38) ng-model=variantPtr.DimensionUnit class=form-control><option value=MM>Millimeter</option><option value=CM>Centimeter</option><option value=M>Meter</option></select></div></div></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Weight</label></div><div class=width-field-xxl><div class=multiple-input><div nc-template=common/input/text-column-no-label nc-label=\"\" nc-template-options-path=addProductForm/Dimension nc-template-form=form.Weight><input ng-disabled=xspermit(38) class=form-control ng-required=onPublishing name=Weight ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-model=\"variantPtr.Weight\"></div><div class=\"input-column select input-xl\"><div class=ah-select2-dropdown><select ng-disabled=xspermit(38) class=form-control ng-model=variantPtr.WeightUnit><option value=G>Grams</option><option value=KG>Kilograms</option></select></div></div></div></div></div></div></div>"
   );
 
 
@@ -18784,7 +18855,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "        'show': $root.isInvalid(addProductForm['pair_Sku' + $index]),\n" +
     "        'conditions' : addProductForm['pair_Sku' + $index].$error\n" +
     "        }\n" +
-    "        }\"><input ng-disabled=\"!pair.Visibility || xspermit(44)\" class=form-control name=\"pair_Sku{{ $index }}\" maxlength=300 ng-pattern=\"/^[^<>]+$/\" ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }\" ng-required=\"onPublishing && pair.Visibility\" ng-model=\"pair.Sku\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
+    "        }\"><input ng-disabled=\"!pair.Visibility || xspermit(44)\" class=form-control name=\"pair_Sku{{ $index }}\" maxlength=255 ng-pattern=\"/^[^<>]+$/\" ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }\" ng-required=\"onPublishing && pair.Visibility\" ng-model=\"pair.Sku\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
     "        'error' : {\n" +
     "        'messages': {\n" +
     "        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\n" +
@@ -18821,7 +18892,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-variant-table-b',
-    "<table class=\"table variation-table\"><thead><tr><th class=column-variant style=width:150px>Variant</th><th class=column-mapped-product style=width:400px>Product</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td><you-me ng-model=pair.MappedProduct display-by=ProductNameEn refresh=refresher.Products initial-choices=dataset.Products placeholder=\"Search for a single product under the selected category and attribute set\" choices=dataset.Products ng-disabled=!pair.Visibility name=pair_MappedProduct></you-me></td></tr></tbody></table>"
+    "<table class=\"table variation-table\"><thead><tr><th class=column-variant style=width:150px>Variant</th><th class=column-mapped-product style=width:400px>Product</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td><you-me ng-model=pair.MappedProduct display-by=ProductNameEn refresh=refresher.Products initial-choices=dataset.Products placeholder=\"Search by Product Name or PID\" choices=dataset.Products ng-disabled=!pair.Visibility name=pair_MappedProduct></you-me></td></tr></tbody></table>"
   );
 
 
@@ -18845,7 +18916,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "                'show': true,\n" +
     "                'conditions' :  addProductForm['attributeOptions' + jth].$error\n" +
     "                }\n" +
-    "                }\"><ui-select ng-if=isListInput(dataset.attributeOptions[jth].Attribute.DataType) multiple ng-model=dataset.attributeOptions[jth].options><ui-select-match ui-lock-choice=$item._locked placeholder=\"Select variant\" ng-disabled=disabled()>{{ $item.AttributeValue.AttributeValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataset.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search\">{{ i.AttributeValue.AttributeValueEn }}</ui-select-choices></ui-select><ui-select ng-if=isFreeTextInput(dataset.attributeOptions[jth].Attribute.DataType) ng-disabled=disabled() nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ multiple tagging=tagTransform tagging-label=\"\" tagging-tokens=,|ENTER name=attributeOptions{{jth}} ng-model=dataset.attributeOptions[jth].options><ui-select-match ui-lock-choice=$item._locked placeholder=\"Input variant\">{{ $item.ValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search\">{{ i.ValueEn }}</ui-select-choices></ui-select><input ng-if=!dataset.attributeOptions[jth].Attribute.DataType disabled class=\"form-control\"></div><a class=\"like-text form-text\" ng-show=!variationFactorLocked() ng-click=variationFactorIndices.pushSecond() ng-if=\"dataset.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1\"><i class=\"fa fa-plus-circle color-theme\"></i> Add another option</a> <a ng-show=!variationFactorLocked() class=\"like-text form-text\" ng-click=variationFactorIndices.popSecond() ng-if=\"variationFactorIndices.length() == 2 && jth == 1\"><i class=\"fa fa-trash color-theme icon-size-20\"></i></a></div><div class=form-group ng-show=\"formData.Variants.length > 0\"><div class=width-label><label class=control-label>Default Variant</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-model=formData.DefaultVariant class=form-control ng-disabled=disabled() ng-options=\"i as i.text for i in formData.Variants track by i.text\" required></select></div></div></div></div></div>"
+    "                }\"><ui-select ng-if=isListInput(dataset.attributeOptions[jth].Attribute.DataType) multiple ng-model=dataset.attributeOptions[jth].options><ui-select-match ui-lock-choice=$item._locked placeholder=\"Select variant\" ng-disabled=disabled()>{{ $item.AttributeValue.AttributeValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataset.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search\">{{ i.AttributeValue.AttributeValueEn }}</ui-select-choices></ui-select><ui-select ng-if=isFreeTextInput(dataset.attributeOptions[jth].Attribute.DataType) ng-disabled=disabled() nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ multiple tagging=tagTransform tagging-label=\"\" tagging-tokens=,|ENTER name=attributeOptions{{jth}} ng-model=dataset.attributeOptions[jth].options><ui-select-match ui-lock-choice=$item._locked placeholder=\"Input variant\">{{ $item.ValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search\">{{ i.ValueEn }}</ui-select-choices></ui-select><input ng-if=!dataset.attributeOptions[jth].Attribute.DataType disabled class=\"form-control\"></div><a class=\"like-text form-text\" ng-show=!variationFactorLocked() ng-click=variationFactorIndices.pushSecond() ng-if=\"dataset.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1\"><i class=\"fa fa-plus-circle color-theme\"></i> Add another option</a> <a ng-show=!variationFactorLocked() class=\"like-text form-text\" ng-click=variationFactorIndices.popSecond() ng-if=\"variationFactorIndices.length() == 2 && jth == 1\"><i class=\"fa fa-trash color-theme icon-size-20\"></i></a></div><div class=form-group ng-show=\"formData.Variants.length > 0\"><div class=width-label><label class=control-label>Default Variant</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-model=formData.DefaultVariant class=form-control ng-disabled=disabled() ng-options=\"i as i.text for i in (formData.Variants | truth: 'Visibility') track by i.text\" required></select></div></div></div></div></div>"
   );
 
 
@@ -18870,7 +18941,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/tab-more-option',
-    "<div id=add-product-more-option-tab-content><div ap-component=ap/inner-tab-breadcrumb></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Relationship</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Related Products\" nc-template-form=form.RelatedProducts nc-template-options-path=addProductForm/RelatedProducts><you-me display-by=ProductNameEn ng-disabled=xspermit(42) placeholder=\"Search by Product\" in-relationship=true ng-model=formData.RelatedProducts refresh=refresher.RelatedProducts strict-mode=true choices=\"dataset.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' \"></you-me></div></div></div></div></div><div class=row><div class=col-xs-12><div ap-component=ap/section-seo></div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>More Details</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Effective On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input ng-disabled=xspermit(42) readonly style=background-color:white ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" placeholder=\"Select date and time when product will go online\" class=\"input-icon-calendar form-control\" value=\"{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.EffectiveDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'minute', minuteStep: 30 }\"></ul></div><span class=help-block></span></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go online\"></i></div></div><div class=form-group ng-show=formData.EffectiveDate><div class=width-label><label class=control-label>Expire On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input ng-disabled=xspermit(42) readonly style=background-color:white placeholder=\"Select date and time when product will go offline\" class=\"input-icon-calendar form-control\" name=ExpireDate ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" value=\"{{ formData.ExpireDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ExpireDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'minute', minuteStep: 30 }\"></ul></div><div class=width-field-large><span class=\"help-block color-red\" ng-if=\"formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate\"><span>Effective date/time must come before expire date/time</span></span></div></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go offline\"></i></div></div><div class=form-group><div class=width-label><label class=control-label>New Arrival Date</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown4 role=button data-toggle=dropdown data-target=# href=#><input ng-disabled=xspermit(42) readonly style=background-color:white placeholder=\"Select date and time for New Arrival\" class=\"input-icon-calendar form-control\" name=NewArrivalDate value=\"{{ formData.NewArrivalDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.NewArrivalDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown4', minView: 'minute', minuteStep: 30 }\"></ul></div></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go offline\"></i></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/TheOneCardEarn nc-template-form=form.TheOneCardEarn nc-label=\"The 1 Card earn\"><input disabled class=form-control name=TheOneCardEarn maxlength=5 nc-default-value=1 ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-model=\"formData.TheOneCardEarn\"></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Nothing nc-template-form=form.GiftWrap nc-label=\"Gift Wrap\"><select class=form-control ng-disabled=xspermit(42) nc-default-value=\"'N'\" ng-model=formData.GiftWrap><option value=N>No</option><option value=Y>Yes</option></select></div><div class=form-group><div class=width-label><label class=control-label>Control Flag</label></div><div class=width-field-xl><div class=\"checkbox multiple-checkbox\"><label><input ng-disabled=xspermit(42) type=checkbox ng-model=formData.ControlFlags.IsNew>New</label><label><input ng-disabled=xspermit(42) type=checkbox ng-model=formData.ControlFlags.IsClearance>Clearance</label><label><input ng-disabled=xspermit(42) type=checkbox ng-model=formData.ControlFlags.IsBestSeller>Best Seller</label><label><input ng-disabled=xspermit(42) type=checkbox ng-model=formData.ControlFlags.IsOnlineExclusive>Online Exclusive</label><label><input ng-disabled=xspermit(42) type=checkbox ng-model=formData.ControlFlags.IsOnlyAt>Only @</label></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Remark nc-template-form=form.Remark nc-label=Remark><textarea ng-disabled=xspermit(42) class=form-control ng-pattern=\"/^[^<>]+$/\" maxlength=5000 name=Remark ng-model=formData.Remark>\n" +
+    "<div id=add-product-more-option-tab-content><div ap-component=ap/inner-tab-breadcrumb></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Relationship</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Related Products\" nc-template-form=form.RelatedProducts nc-template-options-path=addProductForm/RelatedProducts><you-me display-by=ProductNameEn ng-disabled=xspermit(42) placeholder=\"Search by Product\" in-relationship=true max-tag-count=20 ng-model=formData.RelatedProducts refresh=refresher.RelatedProducts strict-mode=true choices=\"dataset.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' \"></you-me></div></div></div></div></div><div class=row><div class=col-xs-12><div ng-include=\"'ap/section-seo'\"></div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>More Details</h2></div><div class=form-section-content><div class=form-group><div class=width-label><label class=control-label>Effective On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input ng-disabled=xspermit(42) readonly style=background-color:white ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" placeholder=\"Select date and time when product will go online\" class=\"input-icon-calendar form-control\" value=\"{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.EffectiveDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'minute', minuteStep: 30 }\"></ul></div><div class=width-field-large><span class=\"help-block color-red\" ng-if=\"formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate\"><span>Effective date/time must come before expire date/time</span></span></div><span class=help-block></span></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go online\"></i></div></div><div class=form-group ng-show=formData.EffectiveDate><div class=width-label><label class=control-label>Expire On</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input ng-disabled=xspermit(42) readonly style=background-color:white placeholder=\"Select date and time when product will go offline\" class=\"input-icon-calendar form-control\" name=ExpireDate ng-class=\"{'has-error': formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate }\" value=\"{{ formData.ExpireDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ExpireDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'minute', minuteStep: 30 }\"></ul></div><div class=width-field-large><span class=\"help-block color-red\" ng-if=\"formData.ExpireDate && formData.ExpireDate <= formData.EffectiveDate\"><span>Effective date/time must come before expire date/time</span></span></div></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go offline\"></i></div></div><div class=form-group><div class=width-label><label class=control-label>New Arrival Date</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown4 role=button data-toggle=dropdown data-target=# href=#><input ng-disabled=xspermit(42) readonly style=background-color:white placeholder=\"Select date and time for New Arrival\" class=\"input-icon-calendar form-control\" name=NewArrivalDate value=\"{{ formData.NewArrivalDate | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.NewArrivalDate data-datetimepicker-config=\"{ dropdownSelector: '#dropdown4', minView: 'minute', minuteStep: 30 }\"></ul></div></div><div class=\"width-field-tooltip no-padding-left\"><i class=\"fa fa-2x fa-question-circle color-grey\" tooltip-trigger=mouseenter uib-tooltip=\"Date when your product will go offline\"></i></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/TheOneCardEarn nc-template-form=form.TheOneCardEarn nc-label=\"The 1 Card earn\"><input disabled class=form-control name=TheOneCardEarn maxlength=5 nc-default-value=1 ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-model=\"formData.TheOneCardEarn\"></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Nothing nc-template-form=form.GiftWrap nc-label=\"Gift Wrap\"><select class=form-control ng-disabled=xspermit(42) nc-default-value=\"'N'\" ng-model=formData.GiftWrap><option value=N>No</option><option value=Y>Yes</option></select></div><div class=form-group><div class=width-label><label class=control-label>Control Flag</label></div><div class=width-field-xl><div class=\"checkbox multiple-checkbox\"><label><input ng-disabled=xspermit(42) type=checkbox ng-model=formData.ControlFlags.IsNew>New</label><label><input ng-disabled=xspermit(42) type=checkbox ng-model=formData.ControlFlags.IsClearance>Clearance</label><label><input ng-disabled=xspermit(42) type=checkbox ng-model=formData.ControlFlags.IsBestSeller>Best Seller</label><label><input ng-disabled=xspermit(42) type=checkbox ng-model=formData.ControlFlags.IsOnlineExclusive>Online Exclusive</label><label><input ng-disabled=xspermit(42) type=checkbox ng-model=formData.ControlFlags.IsOnlyAt>Only @</label></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/Remark nc-template-form=form.Remark nc-label=Remark><textarea ng-disabled=xspermit(42) class=form-control ng-pattern=\"/^[^<>]+$/\" maxlength=5000 name=Remark ng-model=formData.Remark>\n" +
     "                        </textarea></div></div></div></div></div><div class=row ng-if=\"formData.Revisions.length > 0 && !TimeMachine.active\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Approve Versions</h2></div><div class=form-section-content><div class=table-wrapper><table class=table id=add-product-approve-versions><thead><tr><th class=thead-approved-date>Approved Date</th><th class=thead-submitted-date>Submitted Date</th><th class=thead-submitted-by>Submitted By</th><th class=thead-actions>Action</th></tr></thead><tbody><tr ng-repeat=\"row in formData.Revisions\"><td>{{ row.ApproveOn | date: 'dd/MM/yyyy HH:mm' }}</td><td>{{ row.SubmitOn | date: 'dd/MM/yyyy HH:mm' }}</td><td>{{ row.SubmitBy }}</td><td><button nc-policy-permit=43 type=button ng-click=\"TimeMachine.preview(row.HistoryId, row.ApproveOn)\" class=\"btn btn-white btn-width-xxl\">Preview This Version</button></td></tr></tbody></table></div></div></div></div></div></div>"
   );
 
@@ -19455,7 +19526,8 @@ angular.module('umeSelect')
                 hideIcon: '=?hideIcon',
                 disabled: '&?ngDisabled',
                 strictMode: '=?strictMode',
-                required: '=?ncRequired'
+                required: '=?ncRequired',
+                uniqueTag: '=?uniqueTag'
             },
             replace: true,
             priority: 1010,
@@ -19471,6 +19543,7 @@ angular.module('umeSelect')
                 
                 ngModel.$validators.required = function(modelValue, viewValue) {
                    console.log(scope.required , 'scope.required');
+                   //TODO: erm wtf
                    if(scope.required && (!modelValue || modelValue.BrandId == 0 || !modelValue.BrandId)){
                        return false;
                    }
@@ -19498,6 +19571,7 @@ angular.module('umeSelect')
                 //It is not conventional because, who knows.
                 scope.E_STATE = null; 
                 var STATE_MAXTAGBLOCKED = 1;
+                var STATE_MAXLENGTHBLOCK = 2;
                 scope.focused = false;
                 scope.loading = false;
 
@@ -19557,8 +19631,17 @@ angular.module('umeSelect')
 
                     var value = modelValue || viewValue;
                     if(scope.E_STATE == STATE_MAXTAGBLOCKED) return false;
-                    return !maxTagCount || !value || (value.length <= maxTagCount);
+                    return true;
                 };
+
+                ngModel.$validators.maxLengthPerTag = function(modelValue, viewValue) {
+
+                    var value = modelValue || viewValue;
+                    console.log('maxLengthPerTag', scope.E_STATE);
+                    if(scope.E_STATE == STATE_MAXLENGTHBLOCK) return false;
+                    return true;
+                };
+
 
                 //Watch change on input choices
                 scope.$watchCollection('originalChoices()', function(data){
@@ -19772,11 +19855,37 @@ angular.module('umeSelect')
                     }
 
                     if(!item) return false;
+                    scope.E_STATE = null;
                     if(_.isArray(scope.model) && maxTagCount){
-                        if(scope.model.length >= maxTagCount){
+
+                        if(scope.model.length >= Number(maxTagCount)){
                             finishListModel();
                             scope.E_STATE = STATE_MAXTAGBLOCKED; //error state
-                            console.log('scope.E_STATE', scope.E_STATE);
+                            ngModel.$setDirty();
+                            ngModel.$validate();
+
+                            $timeout(function(){
+                                scope.E_STATE = null;
+                                ngModel.$validate();
+                            }, 3000);
+
+                            return true;
+                        }
+
+                    }
+
+                    if(maxLengthPerTag){
+                        if(!_.isObject(item) && item.length > Number(maxLengthPerTag)){
+                            finishListModel();
+                            scope.E_STATE = STATE_MAXLENGTHBLOCK; //error state
+                            ngModel.$setDirty();
+                            ngModel.$validate();
+
+                            $timeout(function(){
+                                scope.E_STATE = null;
+                                ngModel.$validate();
+                            }, 3000);
+
                             return true;
                         }
                     }
@@ -25098,14 +25207,21 @@ module.exports = {
       }
     }
   },
+  ProductBoosting:{
+    error: {
+      messages: {
+        'maxnumber': 'Only numbers between 1-10000 are allowed',
+        'minnumber': 'Only numbers between 1-10000 are allowed'
+      }
+    }
+  },
   Keywords: {
     'inputSize': 'large',
     'tooltip': 'Search Tag will help your product easier to be discovered',
     'error': {
       'messages': {
-        'maxtagcount': 'Cannot exceed 20 tags',
-        'maxTagCount': 'Cannot exceed 20 tags',
-        'maxtaglength': 'Tag must contain 30 characters or less',
+        'maxTagCount': 'Cannot exceed 30 tags',
+        'maxLengthPerTag': 'Tag must contain 30 characters or less',
         'pattern': 'Only letters and numbers allowed'
       }
     }
@@ -25167,7 +25283,7 @@ module.exports = {
     'inputSize': 'xxl',
     'error': {
       'messages': {
-        'maxtagcount': 'Cannot exceed 10 related products'
+        'maxTagCount': 'Maximum number of related products has been reached'
       }
     }
   },
@@ -26092,7 +26208,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('product_group/section-group-information',
-    "<div class=form-section><div class=form-section-header><h2>Group Information</h2></div><div class=form-section-content><div ng-show=adminMode nc-template=common/input/form-group-with-label nc-template-form=form.Category nc-template-options-path=createGroupVariant/Required nc-label=Shop><you-me display-by=ShopNameEn placeholder=\"Search Shop\" auto-clear-search=true ng-model=formData.Shop refresh=refresher.Shops choices=dataset.Shops></you-me></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Category nc-template-options-path=createGroupVariant/Required nc-label=Category><a class=form-text ng-click=openCategorySelectorModal()>{{ formData.Category.NameEn || 'Select Category' }}</a></div><div nc-template=common/input/form-group-with-label nc-template-form=form.AttributeSet nc-template-options-path=createGroupVariant/Required nc-label=\"Attribute Set\" ng-show=formData.Category.NameEn><you-me display-by=AttributeSetNameEn placeholder=\"Search Attribute Set\" auto-clear-search=true group-by=_group ng-model=formData.AttributeSet refresh=refresher.AttributeSets initial-choices=dataset.AttributeSets choices=dataset.CombinedAttributeSets></you-me></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Group Information</h2></div><div class=form-section-content><div ng-show=adminMode nc-template=common/input/form-group-with-label nc-template-form=form.Category nc-template-options-path=createGroupVariant/Required nc-label=Shop><you-me display-by=ShopNameEn placeholder=\"Search Shop\" auto-clear-search=true ng-model=formData.Shop refresh=refresher.Shops choices=dataset.Shops></you-me></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Category nc-template-options-path=createGroupVariant/Required nc-label=Category><a class=form-text ng-click=openCategorySelectorModal()>{{ formData.Category.NameEn || 'Select Global Category' }}</a></div><div nc-template=common/input/form-group-with-label nc-template-form=form.AttributeSet nc-template-options-path=createGroupVariant/Required nc-label=\"Attribute Set\" ng-show=formData.Category.NameEn><you-me display-by=AttributeSetNameEn placeholder=\"Search Attribute Set\" auto-clear-search=true group-by=_group ng-model=formData.AttributeSet refresh=refresher.AttributeSets initial-choices=dataset.AttributeSets choices=dataset.CombinedAttributeSets></you-me></div></div></div>"
   );
 
 

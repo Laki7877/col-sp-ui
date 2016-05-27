@@ -9,7 +9,8 @@
             <div class="width-field-normal">
                 <div class="radio multiple-radio multiline">
                     <label ng-repeat="shi in dataset.ShippingList">
-                        <input type="radio" name="shipping_method" 
+                        <input type="radio" name="shipping_method"  
+                        ng-required="onPublishing"
                         ng-disabled="xspermit(38)"
                         nc-default-value="1"
                         ng-value="{{shi.ShippingId}}" ng-model="formData.ShippingMethod" /> {{ shi.ShippingMethodEn }} </label>
@@ -20,7 +21,8 @@
 
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.ExpressDelivery"
         nc-label="Express Delivery">
-            <select ng-disabled="xspermit(38)" nc-default-value="'Y'"  ng-model="variantPtr.ExpressDelivery" class="form-control" name="ExpressDelivery">
+            <select ng-disabled="xspermit(38)" nc-default-value="'Y'"  
+            ng-model="variantPtr.ExpressDelivery" class="form-control" name="ExpressDelivery">
                 <option selected value="-" disabled>- Select Express Delivery Option -</option>
                 <option value="Y">Enable</option>
                 <option value="N">Disable</option>
