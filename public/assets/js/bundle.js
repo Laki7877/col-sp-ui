@@ -4,7 +4,7 @@
 
 // App Start here
 var angular = require('angular')
-var bulk = ({"controllers":(function () {var f = require("./controllers\\index.js");f["abstractAdd"]=require("./controllers\\abstractAdd.js");f["abstractAdvanceList"]=require("./controllers\\abstractAdvanceList.js");f["abstractList"]=require("./controllers\\abstractList.js");f["abstractProductGroupAdd"]=require("./controllers\\abstractProductGroupAdd.js");f["adminAccount"]=require("./controllers\\adminAccount.js");f["adminAccountAdd"]=require("./controllers\\adminAccountAdd.js");f["adminAddCMSMaster"]=require("./controllers\\adminAddCMSMaster.js");f["adminAttribute"]=require("./controllers\\adminAttribute.js");f["adminAttributeAdd"]=require("./controllers\\adminAttributeAdd.js");f["adminAttributeSet"]=require("./controllers\\adminAttributeSet.js");f["adminAttributeSetAdd"]=require("./controllers\\adminAttributeSetAdd.js");f["adminBrand"]=require("./controllers\\adminBrand.js");f["adminBrandAdd"]=require("./controllers\\adminBrandAdd.js");f["adminBuy1Get1Add"]=require("./controllers\\adminBuy1Get1Add.js");f["adminBuy1Get1List"]=require("./controllers\\adminBuy1Get1List.js");f["adminCMS"]=require("./controllers\\adminCMS.js");f["adminCMSCategoryAdd"]=require("./controllers\\adminCMSCategoryAdd.js");f["adminCMSCategoryList"]=require("./controllers\\adminCMSCategoryList.js");f["adminCMSGroupAdd"]=require("./controllers\\adminCMSGroupAdd.js");f["adminCMSGroupList"]=require("./controllers\\adminCMSGroupList.js");f["adminCMSMasterAdd"]=require("./controllers\\adminCMSMasterAdd.js");f["adminCMSMasterList"]=require("./controllers\\adminCMSMasterList.js");f["adminCategory"]=require("./controllers\\adminCategory.js");f["adminGlobalCoupon"]=require("./controllers\\adminGlobalCoupon.js");f["adminGlobalCouponAdd"]=require("./controllers\\adminGlobalCouponAdd.js");f["adminLogin"]=require("./controllers\\adminLogin.js");f["adminMasterProduct"]=require("./controllers\\adminMasterProduct.js");f["adminMasterProductAdd"]=require("./controllers\\adminMasterProductAdd.js");f["adminNewsletter"]=require("./controllers\\adminNewsletter.js");f["adminOnTopCreditAdd"]=require("./controllers\\adminOnTopCreditAdd.js");f["adminOnTopCreditList"]=require("./controllers\\adminOnTopCreditList.js");f["adminProductApprovalDetail"]=require("./controllers\\adminProductApprovalDetail.js");f["adminProductApprovalList"]=require("./controllers\\adminProductApprovalList.js");f["adminProductDetail"]=require("./controllers\\adminProductDetail.js");f["adminProductGroupAdd"]=require("./controllers\\adminProductGroupAdd.js");f["adminProductList"]=require("./controllers\\adminProductList.js");f["adminProductReview"]=require("./controllers\\adminProductReview.js");f["adminRole"]=require("./controllers\\adminRole.js");f["adminRoleAdd"]=require("./controllers\\adminRoleAdd.js");f["adminSellerAccount"]=require("./controllers\\adminSellerAccount.js");f["adminSellerCoupon"]=require("./controllers\\adminSellerCoupon.js");f["adminSellerCouponAdd"]=require("./controllers\\adminSellerCouponAdd.js");f["adminShop"]=require("./controllers\\adminShop.js");f["adminShopAdd"]=require("./controllers\\adminShopAdd.js");f["adminShoptype"]=require("./controllers\\adminShoptype.js");f["adminShoptypeAdd"]=require("./controllers\\adminShoptypeAdd.js");f["adminStdOnHoldReportList"]=require("./controllers\\adminStdOnHoldReportList.js");f["adminStdReturnReportList"]=require("./controllers\\adminStdReturnReportList.js");f["adminStdSaleReportSellerList"]=require("./controllers\\adminStdSaleReportSellerList.js");f["adminStdStockReportList"]=require("./controllers\\adminStdStockReportList.js");f["buy1get1Add"]=require("./controllers\\buy1get1Add.js");f["buy1get1Import"]=require("./controllers\\buy1get1Import.js");f["buy1get1List"]=require("./controllers\\buy1get1List.js");f["index"]=require("./controllers\\index.js");f["localCategory"]=require("./controllers\\localCategory.js");f["login"]=require("./controllers\\login.js");f["productAddSelectCategory"]=require("./controllers\\productAddSelectCategory.js");f["productCollectionAdd"]=require("./controllers\\productCollectionAdd.js");f["productCollectionAddListItem"]=require("./controllers\\productCollectionAddListItem.js");f["productCollectionImport"]=require("./controllers\\productCollectionImport.js");f["productCollectionList"]=require("./controllers\\productCollectionList.js");f["productExport"]=require("./controllers\\productExport.js");f["productGroupCollectionList"]=require("./controllers\\productGroupCollectionList.js");f["productImageList"]=require("./controllers\\productImageList.js");f["productImageManagement"]=require("./controllers\\productImageManagement.js");f["productImport"]=require("./controllers\\productImport.js");f["productList"]=require("./controllers\\productList.js");f["productListLocalCategory"]=require("./controllers\\productListLocalCategory.js");f["productReview"]=require("./controllers\\productReview.js");f["root"]=require("./controllers\\root.js");f["sellerAccount"]=require("./controllers\\sellerAccount.js");f["sellerAccountAdd"]=require("./controllers\\sellerAccountAdd.js");f["sellerCMS"]=require("./controllers\\sellerCMS.js");f["sellerCMSCategoryAdd"]=require("./controllers\\sellerCMSCategoryAdd.js");f["sellerCMSCategoryList"]=require("./controllers\\sellerCMSCategoryList.js");f["sellerCMSGroupAdd"]=require("./controllers\\sellerCMSGroupAdd.js");f["sellerCMSGroupList"]=require("./controllers\\sellerCMSGroupList.js");f["sellerCMSMasterAdd"]=require("./controllers\\sellerCMSMasterAdd.js");f["sellerCMSMasterList"]=require("./controllers\\sellerCMSMasterList.js");f["sellerCoupon"]=require("./controllers\\sellerCoupon.js");f["sellerCouponAdd"]=require("./controllers\\sellerCouponAdd.js");f["sellerDashboard"]=require("./controllers\\sellerDashboard.js");f["sellerInventoryList"]=require("./controllers\\sellerInventoryList.js");f["sellerNewsletter"]=require("./controllers\\sellerNewsletter.js");f["sellerOnboarding"]=require("./controllers\\sellerOnboarding.js");f["sellerOrder"]=require("./controllers\\sellerOrder.js");f["sellerOrderAdd"]=require("./controllers\\sellerOrderAdd.js");f["sellerOrderShippingList"]=require("./controllers\\sellerOrderShippingList.js");f["sellerProductDetail"]=require("./controllers\\sellerProductDetail.js");f["sellerProductGroupAdd"]=require("./controllers\\sellerProductGroupAdd.js");f["sellerReport"]=require("./controllers\\sellerReport.js");f["sellerReturnRequest"]=require("./controllers\\sellerReturnRequest.js");f["sellerReturnRequestAdd"]=require("./controllers\\sellerReturnRequestAdd.js");f["sellerRole"]=require("./controllers\\sellerRole.js");f["sellerRoleAdd"]=require("./controllers\\sellerRoleAdd.js");f["sellerShopAppearance"]=require("./controllers\\sellerShopAppearance.js");f["sellerShopSetting"]=require("./controllers\\sellerShopSetting.js");f["test"]=require("./controllers\\test.js");return f;})(),"services":({"Buy1Get1Service":require("./services\\Buy1Get1Service.js"),"Dashboard":require("./services\\Dashboard.js"),"OnTopCredit":require("./services\\OnTopCredit.js"),"OnTopCreditService":require("./services\\OnTopCreditService.js"),"Onboarding":require("./services\\Onboarding.js"),"adminAccountService":require("./services\\adminAccountService.js"),"adminMasterProductService":require("./services\\adminMasterProductService.js"),"adminPermissionService":require("./services\\adminPermissionService.js"),"adminRoleService":require("./services\\adminRoleService.js"),"adminShopService":require("./services\\adminShopService.js"),"adminShoptypeService":require("./services\\adminShoptypeService.js"),"attribute":require("./services\\attribute.js"),"attributeService":require("./services\\attributeService.js"),"attributeSet":require("./services\\attributeSet.js"),"attributeSetService":require("./services\\attributeSetService.js"),"blocker":require("./services\\blocker.js"),"brand":require("./services\\brand.js"),"brandService":require("./services\\brandService.js"),"buy1get1":require("./services\\buy1get1.js"),"buy1get1Add":require("./services\\buy1get1Add.js"),"category":require("./services\\category.js"),"cmsCategoryService":require("./services\\cmsCategoryService.js"),"cmsGroupService":require("./services\\cmsGroupService.js"),"cmsMasterService":require("./services\\cmsMasterService.js"),"coupon":require("./services\\coupon.js"),"credential":require("./services\\credential.js"),"exceptionHandler":require("./services\\exceptionHandler.js"),"fileService":require("./services\\fileService.js"),"globalCategory":require("./services\\globalCategory.js"),"globalCategoryService":require("./services\\globalCategoryService.js"),"globalCouponService":require("./services\\globalCouponService.js"),"image":require("./services\\image.js"),"imageService":require("./services\\imageService.js"),"inventoryService":require("./services\\inventoryService.js"),"knownException":require("./services\\knownException.js"),"localCategory":require("./services\\localCategory.js"),"localCategoryService":require("./services\\localCategoryService.js"),"newsletterService":require("./services\\newsletterService.js"),"orderService":require("./services\\orderService.js"),"permissionService":require("./services\\permissionService.js"),"product":require("./services\\product.js"),"productCollection":require("./services\\productCollection.js"),"productCollectionAdd":require("./services\\productCollectionAdd.js"),"productCollectionAddListItem":require("./services\\productCollectionAddListItem.js"),"productReviewService":require("./services\\productReviewService.js"),"productTempService":require("./services\\productTempService.js"),"returnRequestService":require("./services\\returnRequestService.js"),"sellerAccountService":require("./services\\sellerAccountService.js"),"sellerCouponService":require("./services\\sellerCouponService.js"),"sellerPermissionService":require("./services\\sellerPermissionService.js"),"sellerRoleService":require("./services\\sellerRoleService.js"),"shippingService":require("./services\\shippingService.js"),"shop":require("./services\\shop.js"),"shopAppearanceService":require("./services\\shopAppearanceService.js"),"shopPermissionService":require("./services\\shopPermissionService.js"),"shopProfileService":require("./services\\shopProfileService.js"),"shopService":require("./services\\shopService.js"),"stdOnHoldReportService":require("./services\\stdOnHoldReportService.js"),"stdReturnReportService":require("./services\\stdReturnReportService.js"),"stdSaleReportService":require("./services\\stdSaleReportService.js"),"stdStockReportService":require("./services\\stdStockReportService.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDateBefore":require("./directives\\ngDateBefore.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngEnter":require("./directives\\ngEnter.js"),"ngLowercase":require("./directives\\ngLowercase.js"),"ngMatch":require("./directives\\ngMatch.js"),"ngMaxnumber":require("./directives\\ngMaxnumber.js"),"ngMinnumber":require("./directives\\ngMinnumber.js"),"ngPatternRestrict":require("./directives\\ngPatternRestrict.js"),"ngPermission":require("./directives\\ngPermission.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"ngUppercase":require("./directives\\ngUppercase.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"exclude":require("./filters\\exclude.js"),"excludeCategory":require("./filters\\excludeCategory.js"),"html":require("./filters\\html.js"),"importGuidelineExample":require("./filters\\importGuidelineExample.js"),"leadingzero":require("./filters\\leadingzero.js"),"ordinal":require("./filters\\ordinal.js"),"propsFilter":require("./filters\\propsFilter.js"),"slice":require("./filters\\slice.js"),"statusValue":require("./filters\\statusValue.js"),"truncate":require("./filters\\truncate.js"),"truth":require("./filters\\truth.js"),"variantValue":require("./filters\\variantValue.js")}),"template-options":({"PromotionForm":require("./template-options\\PromotionForm.js"),"addAttributeForm":require("./template-options\\addAttributeForm.js"),"addAttributeSetForm":require("./template-options\\addAttributeSetForm.js"),"addBrandForm":require("./template-options\\addBrandForm.js"),"addBuy1Get1Form":require("./template-options\\addBuy1Get1Form.js"),"addCMSMasterForm":require("./template-options\\addCMSMasterForm.js"),"addCategoryForm":require("./template-options\\addCategoryForm.js"),"addMasterProductForm":require("./template-options\\addMasterProductForm.js"),"addNewsletterForm":require("./template-options\\addNewsletterForm.js"),"addProductForm":require("./template-options\\addProductForm.js"),"addRoleForm":require("./template-options\\addRoleForm.js"),"addShopAccountForm":require("./template-options\\addShopAccountForm.js"),"addShopAppearanceForm":require("./template-options\\addShopAppearanceForm.js"),"addShopTypeForm":require("./template-options\\addShopTypeForm.js"),"adminApproveForm":require("./template-options\\adminApproveForm.js"),"couponForm":require("./template-options\\couponForm.js"),"createGroupVariant":require("./template-options\\createGroupVariant.js"),"genericForm":require("./template-options\\genericForm.js"),"productExport":require("./template-options\\productExport.js"),"productImport":require("./template-options\\productImport.js"),"searchForm":require("./template-options\\searchForm.js"),"shopSettingForm":require("./template-options\\shopSettingForm.js")})})
+var bulk = ({"controllers":(function () {var f = require("./controllers\\index.js");f["StdSaleReportSellerList"]=require("./controllers\\StdSaleReportSellerList.js");f["abstractAdd"]=require("./controllers\\abstractAdd.js");f["abstractAdvanceList"]=require("./controllers\\abstractAdvanceList.js");f["abstractList"]=require("./controllers\\abstractList.js");f["abstractProductGroupAdd"]=require("./controllers\\abstractProductGroupAdd.js");f["adminAccount"]=require("./controllers\\adminAccount.js");f["adminAccountAdd"]=require("./controllers\\adminAccountAdd.js");f["adminAddCMSMaster"]=require("./controllers\\adminAddCMSMaster.js");f["adminAttribute"]=require("./controllers\\adminAttribute.js");f["adminAttributeAdd"]=require("./controllers\\adminAttributeAdd.js");f["adminAttributeSet"]=require("./controllers\\adminAttributeSet.js");f["adminAttributeSetAdd"]=require("./controllers\\adminAttributeSetAdd.js");f["adminBrand"]=require("./controllers\\adminBrand.js");f["adminBrandAdd"]=require("./controllers\\adminBrandAdd.js");f["adminBuy1Get1Add"]=require("./controllers\\adminBuy1Get1Add.js");f["adminBuy1Get1List"]=require("./controllers\\adminBuy1Get1List.js");f["adminCMS"]=require("./controllers\\adminCMS.js");f["adminCMSCategoryAdd"]=require("./controllers\\adminCMSCategoryAdd.js");f["adminCMSCategoryList"]=require("./controllers\\adminCMSCategoryList.js");f["adminCMSGroupAdd"]=require("./controllers\\adminCMSGroupAdd.js");f["adminCMSGroupList"]=require("./controllers\\adminCMSGroupList.js");f["adminCMSMasterAdd"]=require("./controllers\\adminCMSMasterAdd.js");f["adminCMSMasterList"]=require("./controllers\\adminCMSMasterList.js");f["adminCategory"]=require("./controllers\\adminCategory.js");f["adminGlobalCoupon"]=require("./controllers\\adminGlobalCoupon.js");f["adminGlobalCouponAdd"]=require("./controllers\\adminGlobalCouponAdd.js");f["adminLogin"]=require("./controllers\\adminLogin.js");f["adminMasterProduct"]=require("./controllers\\adminMasterProduct.js");f["adminMasterProductAdd"]=require("./controllers\\adminMasterProductAdd.js");f["adminNewsletter"]=require("./controllers\\adminNewsletter.js");f["adminOnTopCreditAdd"]=require("./controllers\\adminOnTopCreditAdd.js");f["adminOnTopCreditList"]=require("./controllers\\adminOnTopCreditList.js");f["adminProductApprovalDetail"]=require("./controllers\\adminProductApprovalDetail.js");f["adminProductApprovalList"]=require("./controllers\\adminProductApprovalList.js");f["adminProductDetail"]=require("./controllers\\adminProductDetail.js");f["adminProductGroupAdd"]=require("./controllers\\adminProductGroupAdd.js");f["adminProductList"]=require("./controllers\\adminProductList.js");f["adminProductReview"]=require("./controllers\\adminProductReview.js");f["adminRole"]=require("./controllers\\adminRole.js");f["adminRoleAdd"]=require("./controllers\\adminRoleAdd.js");f["adminSellerAccount"]=require("./controllers\\adminSellerAccount.js");f["adminSellerCoupon"]=require("./controllers\\adminSellerCoupon.js");f["adminSellerCouponAdd"]=require("./controllers\\adminSellerCouponAdd.js");f["adminShop"]=require("./controllers\\adminShop.js");f["adminShopAdd"]=require("./controllers\\adminShopAdd.js");f["adminShoptype"]=require("./controllers\\adminShoptype.js");f["adminShoptypeAdd"]=require("./controllers\\adminShoptypeAdd.js");f["adminStdOnHoldReportList"]=require("./controllers\\adminStdOnHoldReportList.js");f["adminStdReturnReportList"]=require("./controllers\\adminStdReturnReportList.js");f["adminStdStockReportList"]=require("./controllers\\adminStdStockReportList.js");f["buy1get1Add"]=require("./controllers\\buy1get1Add.js");f["buy1get1Import"]=require("./controllers\\buy1get1Import.js");f["buy1get1List"]=require("./controllers\\buy1get1List.js");f["index"]=require("./controllers\\index.js");f["localCategory"]=require("./controllers\\localCategory.js");f["login"]=require("./controllers\\login.js");f["productAddSelectCategory"]=require("./controllers\\productAddSelectCategory.js");f["productCollectionAdd"]=require("./controllers\\productCollectionAdd.js");f["productCollectionAddListItem"]=require("./controllers\\productCollectionAddListItem.js");f["productCollectionImport"]=require("./controllers\\productCollectionImport.js");f["productCollectionList"]=require("./controllers\\productCollectionList.js");f["productExport"]=require("./controllers\\productExport.js");f["productGroupCollectionList"]=require("./controllers\\productGroupCollectionList.js");f["productImageList"]=require("./controllers\\productImageList.js");f["productImageManagement"]=require("./controllers\\productImageManagement.js");f["productImport"]=require("./controllers\\productImport.js");f["productList"]=require("./controllers\\productList.js");f["productListLocalCategory"]=require("./controllers\\productListLocalCategory.js");f["productReview"]=require("./controllers\\productReview.js");f["root"]=require("./controllers\\root.js");f["sellerAccount"]=require("./controllers\\sellerAccount.js");f["sellerAccountAdd"]=require("./controllers\\sellerAccountAdd.js");f["sellerCMS"]=require("./controllers\\sellerCMS.js");f["sellerCMSCategoryAdd"]=require("./controllers\\sellerCMSCategoryAdd.js");f["sellerCMSCategoryList"]=require("./controllers\\sellerCMSCategoryList.js");f["sellerCMSGroupAdd"]=require("./controllers\\sellerCMSGroupAdd.js");f["sellerCMSGroupList"]=require("./controllers\\sellerCMSGroupList.js");f["sellerCMSMasterAdd"]=require("./controllers\\sellerCMSMasterAdd.js");f["sellerCMSMasterList"]=require("./controllers\\sellerCMSMasterList.js");f["sellerCoupon"]=require("./controllers\\sellerCoupon.js");f["sellerCouponAdd"]=require("./controllers\\sellerCouponAdd.js");f["sellerDashboard"]=require("./controllers\\sellerDashboard.js");f["sellerInventoryList"]=require("./controllers\\sellerInventoryList.js");f["sellerNewsletter"]=require("./controllers\\sellerNewsletter.js");f["sellerOnboarding"]=require("./controllers\\sellerOnboarding.js");f["sellerOrder"]=require("./controllers\\sellerOrder.js");f["sellerOrderAdd"]=require("./controllers\\sellerOrderAdd.js");f["sellerOrderShippingList"]=require("./controllers\\sellerOrderShippingList.js");f["sellerProductDetail"]=require("./controllers\\sellerProductDetail.js");f["sellerProductGroupAdd"]=require("./controllers\\sellerProductGroupAdd.js");f["sellerReport"]=require("./controllers\\sellerReport.js");f["sellerReturnRequest"]=require("./controllers\\sellerReturnRequest.js");f["sellerReturnRequestAdd"]=require("./controllers\\sellerReturnRequestAdd.js");f["sellerRole"]=require("./controllers\\sellerRole.js");f["sellerRoleAdd"]=require("./controllers\\sellerRoleAdd.js");f["sellerShopAppearance"]=require("./controllers\\sellerShopAppearance.js");f["sellerShopSetting"]=require("./controllers\\sellerShopSetting.js");f["test"]=require("./controllers\\test.js");return f;})(),"services":({"Buy1Get1Service":require("./services\\Buy1Get1Service.js"),"Dashboard":require("./services\\Dashboard.js"),"OnTopCredit":require("./services\\OnTopCredit.js"),"OnTopCreditService":require("./services\\OnTopCreditService.js"),"Onboarding":require("./services\\Onboarding.js"),"adminAccountService":require("./services\\adminAccountService.js"),"adminMasterProductService":require("./services\\adminMasterProductService.js"),"adminPermissionService":require("./services\\adminPermissionService.js"),"adminRoleService":require("./services\\adminRoleService.js"),"adminShopService":require("./services\\adminShopService.js"),"adminShoptypeService":require("./services\\adminShoptypeService.js"),"attribute":require("./services\\attribute.js"),"attributeService":require("./services\\attributeService.js"),"attributeSet":require("./services\\attributeSet.js"),"attributeSetService":require("./services\\attributeSetService.js"),"blocker":require("./services\\blocker.js"),"brand":require("./services\\brand.js"),"brandService":require("./services\\brandService.js"),"buy1get1":require("./services\\buy1get1.js"),"buy1get1Add":require("./services\\buy1get1Add.js"),"category":require("./services\\category.js"),"cmsCategoryService":require("./services\\cmsCategoryService.js"),"cmsGroupService":require("./services\\cmsGroupService.js"),"cmsMasterService":require("./services\\cmsMasterService.js"),"coupon":require("./services\\coupon.js"),"credential":require("./services\\credential.js"),"exceptionHandler":require("./services\\exceptionHandler.js"),"fileService":require("./services\\fileService.js"),"globalCategory":require("./services\\globalCategory.js"),"globalCategoryService":require("./services\\globalCategoryService.js"),"globalCouponService":require("./services\\globalCouponService.js"),"image":require("./services\\image.js"),"imageService":require("./services\\imageService.js"),"inventoryService":require("./services\\inventoryService.js"),"knownException":require("./services\\knownException.js"),"localCategory":require("./services\\localCategory.js"),"localCategoryService":require("./services\\localCategoryService.js"),"newsletterService":require("./services\\newsletterService.js"),"orderService":require("./services\\orderService.js"),"permissionService":require("./services\\permissionService.js"),"product":require("./services\\product.js"),"productCollection":require("./services\\productCollection.js"),"productCollectionAdd":require("./services\\productCollectionAdd.js"),"productCollectionAddListItem":require("./services\\productCollectionAddListItem.js"),"productReviewService":require("./services\\productReviewService.js"),"productTempService":require("./services\\productTempService.js"),"returnRequestService":require("./services\\returnRequestService.js"),"sellerAccountService":require("./services\\sellerAccountService.js"),"sellerCouponService":require("./services\\sellerCouponService.js"),"sellerPermissionService":require("./services\\sellerPermissionService.js"),"sellerRoleService":require("./services\\sellerRoleService.js"),"shippingService":require("./services\\shippingService.js"),"shop":require("./services\\shop.js"),"shopAppearanceService":require("./services\\shopAppearanceService.js"),"shopPermissionService":require("./services\\shopPermissionService.js"),"shopProfileService":require("./services\\shopProfileService.js"),"shopService":require("./services\\shopService.js"),"stdOnHoldReportService":require("./services\\stdOnHoldReportService.js"),"stdReturnReportService":require("./services\\stdReturnReportService.js"),"stdSaleReportService":require("./services\\stdSaleReportService.js"),"stdStockReportService":require("./services\\stdStockReportService.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDateBefore":require("./directives\\ngDateBefore.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngEnter":require("./directives\\ngEnter.js"),"ngLowercase":require("./directives\\ngLowercase.js"),"ngMatch":require("./directives\\ngMatch.js"),"ngMaxnumber":require("./directives\\ngMaxnumber.js"),"ngMinnumber":require("./directives\\ngMinnumber.js"),"ngPatternRestrict":require("./directives\\ngPatternRestrict.js"),"ngPermission":require("./directives\\ngPermission.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"ngUppercase":require("./directives\\ngUppercase.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"exclude":require("./filters\\exclude.js"),"excludeCategory":require("./filters\\excludeCategory.js"),"html":require("./filters\\html.js"),"importGuidelineExample":require("./filters\\importGuidelineExample.js"),"leadingzero":require("./filters\\leadingzero.js"),"ordinal":require("./filters\\ordinal.js"),"propsFilter":require("./filters\\propsFilter.js"),"slice":require("./filters\\slice.js"),"statusValue":require("./filters\\statusValue.js"),"truncate":require("./filters\\truncate.js"),"truth":require("./filters\\truth.js"),"variantValue":require("./filters\\variantValue.js")}),"template-options":({"PromotionForm":require("./template-options\\PromotionForm.js"),"addAttributeForm":require("./template-options\\addAttributeForm.js"),"addAttributeSetForm":require("./template-options\\addAttributeSetForm.js"),"addBrandForm":require("./template-options\\addBrandForm.js"),"addBuy1Get1Form":require("./template-options\\addBuy1Get1Form.js"),"addCMSMasterForm":require("./template-options\\addCMSMasterForm.js"),"addCategoryForm":require("./template-options\\addCategoryForm.js"),"addMasterProductForm":require("./template-options\\addMasterProductForm.js"),"addNewsletterForm":require("./template-options\\addNewsletterForm.js"),"addProductForm":require("./template-options\\addProductForm.js"),"addRoleForm":require("./template-options\\addRoleForm.js"),"addShopAccountForm":require("./template-options\\addShopAccountForm.js"),"addShopAppearanceForm":require("./template-options\\addShopAppearanceForm.js"),"addShopTypeForm":require("./template-options\\addShopTypeForm.js"),"adminApproveForm":require("./template-options\\adminApproveForm.js"),"couponForm":require("./template-options\\couponForm.js"),"createGroupVariant":require("./template-options\\createGroupVariant.js"),"genericForm":require("./template-options\\genericForm.js"),"productExport":require("./template-options\\productExport.js"),"productImport":require("./template-options\\productImport.js"),"searchForm":require("./template-options\\searchForm.js"),"shopSettingForm":require("./template-options\\shopSettingForm.js")})})
 var config = require('./config')
 var route = require('./route')
 var template = require('./template')
@@ -222,7 +222,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('SellerPendingProductCtrl', controllers.sellerPendingProduct)
   .controller('SellerPendingProductGroupAddCtrl', controllers.sellerPendingProductGroupAdd)
   .controller('SellerPendingProductsGroupCtrl', controllers.sellerPendingProductsGroup)
-  .controller('SellerReportCtrl', controllers.sellerReport)
+  // .controller('SellerReportCtrl', controllers.sellerReport)
+  .controller('StdSaleReportSellerCtrl', controllers.StdSaleReportSellerList)
 
   .controller('AdminAttributeCtrl', controllers.adminAttribute)
   .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)
@@ -277,7 +278,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('AdminCMSMasterListCtrl', controllers.adminCMSMasterList)
   .controller('AdminCMSMasterAddCtrl', controllers.adminCMSMasterAdd)
 
-  .controller('AdminStdSaleReportSellerCtrl', controllers.adminStdSaleReportSellerList)
   .controller('AdminStdStockReportCtrl', controllers.adminStdStockReportList)
   .controller('AdminStdOnHoldReportCtrl', controllers.adminStdOnHoldReportList)
   .controller('AdminStdReturnReportCtrl', controllers.adminStdReturnReportList)
@@ -311,12 +311,12 @@ var _rollbarConfig = {
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\abstractProductGroupAdd.js":6,"./controllers\\adminAccount.js":7,"./controllers\\adminAccountAdd.js":8,"./controllers\\adminAddCMSMaster.js":9,"./controllers\\adminAttribute.js":10,"./controllers\\adminAttributeAdd.js":11,"./controllers\\adminAttributeSet.js":12,"./controllers\\adminAttributeSetAdd.js":13,"./controllers\\adminBrand.js":14,"./controllers\\adminBrandAdd.js":15,"./controllers\\adminBuy1Get1Add.js":16,"./controllers\\adminBuy1Get1List.js":17,"./controllers\\adminCMS.js":18,"./controllers\\adminCMSCategoryAdd.js":19,"./controllers\\adminCMSCategoryList.js":20,"./controllers\\adminCMSGroupAdd.js":21,"./controllers\\adminCMSGroupList.js":22,"./controllers\\adminCMSMasterAdd.js":23,"./controllers\\adminCMSMasterList.js":24,"./controllers\\adminCategory.js":25,"./controllers\\adminGlobalCoupon.js":26,"./controllers\\adminGlobalCouponAdd.js":27,"./controllers\\adminLogin.js":28,"./controllers\\adminMasterProduct.js":29,"./controllers\\adminMasterProductAdd.js":30,"./controllers\\adminNewsletter.js":31,"./controllers\\adminOnTopCreditAdd.js":32,"./controllers\\adminOnTopCreditList.js":33,"./controllers\\adminProductApprovalDetail.js":34,"./controllers\\adminProductApprovalList.js":35,"./controllers\\adminProductDetail.js":36,"./controllers\\adminProductGroupAdd.js":37,"./controllers\\adminProductList.js":38,"./controllers\\adminProductReview.js":39,"./controllers\\adminRole.js":40,"./controllers\\adminRoleAdd.js":41,"./controllers\\adminSellerAccount.js":42,"./controllers\\adminSellerCoupon.js":43,"./controllers\\adminSellerCouponAdd.js":44,"./controllers\\adminShop.js":45,"./controllers\\adminShopAdd.js":46,"./controllers\\adminShoptype.js":47,"./controllers\\adminShoptypeAdd.js":48,"./controllers\\adminStdOnHoldReportList.js":49,"./controllers\\adminStdReturnReportList.js":50,"./controllers\\adminStdSaleReportSellerList.js":51,"./controllers\\adminStdStockReportList.js":52,"./controllers\\buy1get1Add.js":53,"./controllers\\buy1get1Import.js":54,"./controllers\\buy1get1List.js":55,"./controllers\\index.js":56,"./controllers\\localCategory.js":57,"./controllers\\login.js":58,"./controllers\\productAddSelectCategory.js":59,"./controllers\\productCollectionAdd.js":60,"./controllers\\productCollectionAddListItem.js":61,"./controllers\\productCollectionImport.js":62,"./controllers\\productCollectionList.js":63,"./controllers\\productExport.js":64,"./controllers\\productGroupCollectionList.js":65,"./controllers\\productImageList.js":66,"./controllers\\productImageManagement.js":67,"./controllers\\productImport.js":68,"./controllers\\productList.js":69,"./controllers\\productListLocalCategory.js":70,"./controllers\\productReview.js":71,"./controllers\\root.js":72,"./controllers\\sellerAccount.js":73,"./controllers\\sellerAccountAdd.js":74,"./controllers\\sellerCMS.js":75,"./controllers\\sellerCMSCategoryAdd.js":76,"./controllers\\sellerCMSCategoryList.js":77,"./controllers\\sellerCMSGroupAdd.js":78,"./controllers\\sellerCMSGroupList.js":79,"./controllers\\sellerCMSMasterAdd.js":80,"./controllers\\sellerCMSMasterList.js":81,"./controllers\\sellerCoupon.js":82,"./controllers\\sellerCouponAdd.js":83,"./controllers\\sellerDashboard.js":84,"./controllers\\sellerInventoryList.js":85,"./controllers\\sellerNewsletter.js":86,"./controllers\\sellerOnboarding.js":87,"./controllers\\sellerOrder.js":88,"./controllers\\sellerOrderAdd.js":89,"./controllers\\sellerOrderShippingList.js":90,"./controllers\\sellerProductDetail.js":91,"./controllers\\sellerProductGroupAdd.js":92,"./controllers\\sellerReport.js":93,"./controllers\\sellerReturnRequest.js":94,"./controllers\\sellerReturnRequestAdd.js":95,"./controllers\\sellerRole.js":96,"./controllers\\sellerRoleAdd.js":97,"./controllers\\sellerShopAppearance.js":98,"./controllers\\sellerShopSetting.js":99,"./controllers\\test.js":100,"./directives\\ncTradableSelect.js":101,"./directives\\ngCkeditor.js":102,"./directives\\ngDateBefore.js":103,"./directives\\ngDelegate.js":104,"./directives\\ngEnter.js":105,"./directives\\ngLowercase.js":106,"./directives\\ngMatch.js":107,"./directives\\ngMaxnumber.js":108,"./directives\\ngMinnumber.js":109,"./directives\\ngPatternRestrict.js":110,"./directives\\ngPermission.js":111,"./directives\\ngSlideToggle.js":112,"./directives\\ngTemplate.js":113,"./directives\\ngUppercase.js":114,"./directives\\popoverAny.js":115,"./filters\\capitalize.js":116,"./filters\\exclude.js":117,"./filters\\excludeCategory.js":118,"./filters\\html.js":119,"./filters\\importGuidelineExample.js":120,"./filters\\leadingzero.js":121,"./filters\\ordinal.js":122,"./filters\\propsFilter.js":123,"./filters\\slice.js":124,"./filters\\statusValue.js":125,"./filters\\truncate.js":126,"./filters\\truth.js":127,"./filters\\variantValue.js":128,"./helpers\\base64.js":129,"./helpers\\common.js":130,"./helpers\\storage.js":131,"./helpers\\util.js":132,"./helpers\\variantPair.js":133,"./iefix.js":134,"./modules/angular-draggable":135,"./modules/angular-print":136,"./modules/angular-scroll":137,"./modules/nc":169,"./modules/product-detail":178,"./modules/schematics":180,"./modules/ume-select":192,"./route":194,"./services\\Buy1Get1Service.js":195,"./services\\Dashboard.js":196,"./services\\OnTopCredit.js":197,"./services\\OnTopCreditService.js":198,"./services\\Onboarding.js":199,"./services\\adminAccountService.js":200,"./services\\adminMasterProductService.js":201,"./services\\adminPermissionService.js":202,"./services\\adminRoleService.js":203,"./services\\adminShopService.js":204,"./services\\adminShoptypeService.js":205,"./services\\attribute.js":206,"./services\\attributeService.js":207,"./services\\attributeSet.js":208,"./services\\attributeSetService.js":209,"./services\\blocker.js":210,"./services\\brand.js":211,"./services\\brandService.js":212,"./services\\buy1get1.js":213,"./services\\buy1get1Add.js":214,"./services\\category.js":215,"./services\\cmsCategoryService.js":216,"./services\\cmsGroupService.js":217,"./services\\cmsMasterService.js":218,"./services\\coupon.js":219,"./services\\credential.js":220,"./services\\exceptionHandler.js":221,"./services\\fileService.js":222,"./services\\globalCategory.js":223,"./services\\globalCategoryService.js":224,"./services\\globalCouponService.js":225,"./services\\image.js":226,"./services\\imageService.js":227,"./services\\inventoryService.js":228,"./services\\knownException.js":229,"./services\\localCategory.js":230,"./services\\localCategoryService.js":231,"./services\\newsletterService.js":232,"./services\\orderService.js":233,"./services\\permissionService.js":234,"./services\\product.js":235,"./services\\productCollection.js":236,"./services\\productCollectionAdd.js":237,"./services\\productCollectionAddListItem.js":238,"./services\\productReviewService.js":239,"./services\\productTempService.js":240,"./services\\returnRequestService.js":241,"./services\\sellerAccountService.js":242,"./services\\sellerCouponService.js":243,"./services\\sellerPermissionService.js":244,"./services\\sellerRoleService.js":245,"./services\\shippingService.js":246,"./services\\shop.js":247,"./services\\shopAppearanceService.js":248,"./services\\shopPermissionService.js":249,"./services\\shopProfileService.js":250,"./services\\shopService.js":251,"./services\\stdOnHoldReportService.js":252,"./services\\stdReturnReportService.js":253,"./services\\stdSaleReportService.js":254,"./services\\stdStockReportService.js":255,"./template":278,"./template-options\\PromotionForm.js":256,"./template-options\\addAttributeForm.js":257,"./template-options\\addAttributeSetForm.js":258,"./template-options\\addBrandForm.js":259,"./template-options\\addBuy1Get1Form.js":260,"./template-options\\addCMSMasterForm.js":261,"./template-options\\addCategoryForm.js":262,"./template-options\\addMasterProductForm.js":263,"./template-options\\addNewsletterForm.js":264,"./template-options\\addProductForm.js":265,"./template-options\\addRoleForm.js":266,"./template-options\\addShopAccountForm.js":267,"./template-options\\addShopAppearanceForm.js":268,"./template-options\\addShopTypeForm.js":269,"./template-options\\adminApproveForm.js":270,"./template-options\\couponForm.js":271,"./template-options\\createGroupVariant.js":272,"./template-options\\genericForm.js":273,"./template-options\\productExport.js":274,"./template-options\\productImport.js":275,"./template-options\\searchForm.js":276,"./template-options\\shopSettingForm.js":277,"angular":330,"angular-animate":280,"angular-base64":281,"angular-bootstrap-datetimepicker":283,"angular-chart.js":284,"angular-clipboard":286,"angular-cookies":288,"angular-drag-and-drop-lists":289,"angular-file-upload":290,"angular-input-masks":291,"angular-sanitize":321,"angular-scroll":323,"angular-ui-bootstrap":325,"angular-ui-sortable":326,"angular-ui-tree":328,"lodash":333,"ng-file-upload":335,"pluralize":336,"skeemas":337,"ui-select/dist/select.js":351}],2:[function(require,module,exports){
+},{"./config":2,"./controllers\\StdSaleReportSellerList.js":3,"./controllers\\abstractAdd.js":4,"./controllers\\abstractAdvanceList.js":5,"./controllers\\abstractList.js":6,"./controllers\\abstractProductGroupAdd.js":7,"./controllers\\adminAccount.js":8,"./controllers\\adminAccountAdd.js":9,"./controllers\\adminAddCMSMaster.js":10,"./controllers\\adminAttribute.js":11,"./controllers\\adminAttributeAdd.js":12,"./controllers\\adminAttributeSet.js":13,"./controllers\\adminAttributeSetAdd.js":14,"./controllers\\adminBrand.js":15,"./controllers\\adminBrandAdd.js":16,"./controllers\\adminBuy1Get1Add.js":17,"./controllers\\adminBuy1Get1List.js":18,"./controllers\\adminCMS.js":19,"./controllers\\adminCMSCategoryAdd.js":20,"./controllers\\adminCMSCategoryList.js":21,"./controllers\\adminCMSGroupAdd.js":22,"./controllers\\adminCMSGroupList.js":23,"./controllers\\adminCMSMasterAdd.js":24,"./controllers\\adminCMSMasterList.js":25,"./controllers\\adminCategory.js":26,"./controllers\\adminGlobalCoupon.js":27,"./controllers\\adminGlobalCouponAdd.js":28,"./controllers\\adminLogin.js":29,"./controllers\\adminMasterProduct.js":30,"./controllers\\adminMasterProductAdd.js":31,"./controllers\\adminNewsletter.js":32,"./controllers\\adminOnTopCreditAdd.js":33,"./controllers\\adminOnTopCreditList.js":34,"./controllers\\adminProductApprovalDetail.js":35,"./controllers\\adminProductApprovalList.js":36,"./controllers\\adminProductDetail.js":37,"./controllers\\adminProductGroupAdd.js":38,"./controllers\\adminProductList.js":39,"./controllers\\adminProductReview.js":40,"./controllers\\adminRole.js":41,"./controllers\\adminRoleAdd.js":42,"./controllers\\adminSellerAccount.js":43,"./controllers\\adminSellerCoupon.js":44,"./controllers\\adminSellerCouponAdd.js":45,"./controllers\\adminShop.js":46,"./controllers\\adminShopAdd.js":47,"./controllers\\adminShoptype.js":48,"./controllers\\adminShoptypeAdd.js":49,"./controllers\\adminStdOnHoldReportList.js":50,"./controllers\\adminStdReturnReportList.js":51,"./controllers\\adminStdStockReportList.js":52,"./controllers\\buy1get1Add.js":53,"./controllers\\buy1get1Import.js":54,"./controllers\\buy1get1List.js":55,"./controllers\\index.js":56,"./controllers\\localCategory.js":57,"./controllers\\login.js":58,"./controllers\\productAddSelectCategory.js":59,"./controllers\\productCollectionAdd.js":60,"./controllers\\productCollectionAddListItem.js":61,"./controllers\\productCollectionImport.js":62,"./controllers\\productCollectionList.js":63,"./controllers\\productExport.js":64,"./controllers\\productGroupCollectionList.js":65,"./controllers\\productImageList.js":66,"./controllers\\productImageManagement.js":67,"./controllers\\productImport.js":68,"./controllers\\productList.js":69,"./controllers\\productListLocalCategory.js":70,"./controllers\\productReview.js":71,"./controllers\\root.js":72,"./controllers\\sellerAccount.js":73,"./controllers\\sellerAccountAdd.js":74,"./controllers\\sellerCMS.js":75,"./controllers\\sellerCMSCategoryAdd.js":76,"./controllers\\sellerCMSCategoryList.js":77,"./controllers\\sellerCMSGroupAdd.js":78,"./controllers\\sellerCMSGroupList.js":79,"./controllers\\sellerCMSMasterAdd.js":80,"./controllers\\sellerCMSMasterList.js":81,"./controllers\\sellerCoupon.js":82,"./controllers\\sellerCouponAdd.js":83,"./controllers\\sellerDashboard.js":84,"./controllers\\sellerInventoryList.js":85,"./controllers\\sellerNewsletter.js":86,"./controllers\\sellerOnboarding.js":87,"./controllers\\sellerOrder.js":88,"./controllers\\sellerOrderAdd.js":89,"./controllers\\sellerOrderShippingList.js":90,"./controllers\\sellerProductDetail.js":91,"./controllers\\sellerProductGroupAdd.js":92,"./controllers\\sellerReport.js":93,"./controllers\\sellerReturnRequest.js":94,"./controllers\\sellerReturnRequestAdd.js":95,"./controllers\\sellerRole.js":96,"./controllers\\sellerRoleAdd.js":97,"./controllers\\sellerShopAppearance.js":98,"./controllers\\sellerShopSetting.js":99,"./controllers\\test.js":100,"./directives\\ncTradableSelect.js":101,"./directives\\ngCkeditor.js":102,"./directives\\ngDateBefore.js":103,"./directives\\ngDelegate.js":104,"./directives\\ngEnter.js":105,"./directives\\ngLowercase.js":106,"./directives\\ngMatch.js":107,"./directives\\ngMaxnumber.js":108,"./directives\\ngMinnumber.js":109,"./directives\\ngPatternRestrict.js":110,"./directives\\ngPermission.js":111,"./directives\\ngSlideToggle.js":112,"./directives\\ngTemplate.js":113,"./directives\\ngUppercase.js":114,"./directives\\popoverAny.js":115,"./filters\\capitalize.js":116,"./filters\\exclude.js":117,"./filters\\excludeCategory.js":118,"./filters\\html.js":119,"./filters\\importGuidelineExample.js":120,"./filters\\leadingzero.js":121,"./filters\\ordinal.js":122,"./filters\\propsFilter.js":123,"./filters\\slice.js":124,"./filters\\statusValue.js":125,"./filters\\truncate.js":126,"./filters\\truth.js":127,"./filters\\variantValue.js":128,"./helpers\\base64.js":129,"./helpers\\common.js":130,"./helpers\\storage.js":131,"./helpers\\util.js":132,"./helpers\\variantPair.js":133,"./iefix.js":134,"./modules/angular-draggable":135,"./modules/angular-print":136,"./modules/angular-scroll":137,"./modules/nc":169,"./modules/product-detail":178,"./modules/schematics":180,"./modules/ume-select":192,"./route":194,"./services\\Buy1Get1Service.js":195,"./services\\Dashboard.js":196,"./services\\OnTopCredit.js":197,"./services\\OnTopCreditService.js":198,"./services\\Onboarding.js":199,"./services\\adminAccountService.js":200,"./services\\adminMasterProductService.js":201,"./services\\adminPermissionService.js":202,"./services\\adminRoleService.js":203,"./services\\adminShopService.js":204,"./services\\adminShoptypeService.js":205,"./services\\attribute.js":206,"./services\\attributeService.js":207,"./services\\attributeSet.js":208,"./services\\attributeSetService.js":209,"./services\\blocker.js":210,"./services\\brand.js":211,"./services\\brandService.js":212,"./services\\buy1get1.js":213,"./services\\buy1get1Add.js":214,"./services\\category.js":215,"./services\\cmsCategoryService.js":216,"./services\\cmsGroupService.js":217,"./services\\cmsMasterService.js":218,"./services\\coupon.js":219,"./services\\credential.js":220,"./services\\exceptionHandler.js":221,"./services\\fileService.js":222,"./services\\globalCategory.js":223,"./services\\globalCategoryService.js":224,"./services\\globalCouponService.js":225,"./services\\image.js":226,"./services\\imageService.js":227,"./services\\inventoryService.js":228,"./services\\knownException.js":229,"./services\\localCategory.js":230,"./services\\localCategoryService.js":231,"./services\\newsletterService.js":232,"./services\\orderService.js":233,"./services\\permissionService.js":234,"./services\\product.js":235,"./services\\productCollection.js":236,"./services\\productCollectionAdd.js":237,"./services\\productCollectionAddListItem.js":238,"./services\\productReviewService.js":239,"./services\\productTempService.js":240,"./services\\returnRequestService.js":241,"./services\\sellerAccountService.js":242,"./services\\sellerCouponService.js":243,"./services\\sellerPermissionService.js":244,"./services\\sellerRoleService.js":245,"./services\\shippingService.js":246,"./services\\shop.js":247,"./services\\shopAppearanceService.js":248,"./services\\shopPermissionService.js":249,"./services\\shopProfileService.js":250,"./services\\shopService.js":251,"./services\\stdOnHoldReportService.js":252,"./services\\stdReturnReportService.js":253,"./services\\stdSaleReportService.js":254,"./services\\stdStockReportService.js":255,"./template":278,"./template-options\\PromotionForm.js":256,"./template-options\\addAttributeForm.js":257,"./template-options\\addAttributeSetForm.js":258,"./template-options\\addBrandForm.js":259,"./template-options\\addBuy1Get1Form.js":260,"./template-options\\addCMSMasterForm.js":261,"./template-options\\addCategoryForm.js":262,"./template-options\\addMasterProductForm.js":263,"./template-options\\addNewsletterForm.js":264,"./template-options\\addProductForm.js":265,"./template-options\\addRoleForm.js":266,"./template-options\\addShopAccountForm.js":267,"./template-options\\addShopAppearanceForm.js":268,"./template-options\\addShopTypeForm.js":269,"./template-options\\adminApproveForm.js":270,"./template-options\\couponForm.js":271,"./template-options\\createGroupVariant.js":272,"./template-options\\genericForm.js":273,"./template-options\\productExport.js":274,"./template-options\\productImport.js":275,"./template-options\\searchForm.js":276,"./template-options\\shopSettingForm.js":277,"angular":330,"angular-animate":280,"angular-base64":281,"angular-bootstrap-datetimepicker":283,"angular-chart.js":284,"angular-clipboard":286,"angular-cookies":288,"angular-drag-and-drop-lists":289,"angular-file-upload":290,"angular-input-masks":291,"angular-sanitize":321,"angular-scroll":323,"angular-ui-bootstrap":325,"angular-ui-sortable":326,"angular-ui-tree":328,"lodash":333,"ng-file-upload":335,"pluralize":336,"skeemas":337,"ui-select/dist/select.js":351}],2:[function(require,module,exports){
 module.exports = {
     // REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	// REST_SERVICE_BASE_URL: 'http://27.254.48.174/sellerportal/api',
-    // REST_SERVICE_BASE_URL: 'http://localhost:58127/api',
-    REST_SERVICE_BASE_URL: 'http://devmkp-colspapi.cenergy.co.th/api',
+    REST_SERVICE_BASE_URL: 'http://localhost:58127/api',
+    // REST_SERVICE_BASE_URL: 'http://devmkp-colspapi.cenergy.co.th/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
 	MAX_IMAGE_UPLOAD_SIZE: 5242880,
 	CK_DEFAULT_OPTIONS: {
@@ -671,6 +671,85 @@ module.exports = {
 };
 
 },{}],3:[function(require,module,exports){
+
+module.exports = ["$scope", "$controller", "StdReportSaleService", "config", "util", "$rootScope", function ($scope, $controller, StdReportSaleService, config, util,$rootScope) {
+    'ngInject';
+    $scope.StdManageable = !$rootScope.permit(71);
+
+    $scope.formData = {
+        PID: null,
+        Brands: null,
+        ItemStatus: null,
+        CreatedDtFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        CreatedDtTo: new Date()
+        };
+    // $scope.exportCsv = function() { 
+    //     debugger;
+    //     var params = $scope.formData;
+    //     StdReportSaleService.exportCsv(params)
+    //     .then(function(data){
+
+    //         var csv = '';
+    //         var headers = data.split('\n')[0];
+    //         csv += headers;
+
+    //         for (var i = 1; i < data.split('\n').length; i++) {
+    //             var row = data.split('\n')[i];
+    //             csv += row;
+    //         }
+
+    //         var filename, link;
+
+    //         filename = 'STDSale.csv';
+
+    //         link = document.createElement('a');
+    //         link.setAttribute('href', 'data:attachment/csv,' + encodeURIComponent(csv));
+    //         link.setAttribute('download', filename);
+    //         link.click();
+
+    //         //debugger;
+    //         // var blob = new Blob([document.getElementById('report-std-tab-content').innerHTML], {
+    //         //     type: "vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+    //         // });
+    //         // saveAs(blob, "Report.xls");
+    //     })
+    // };
+
+    $scope.exportCsv = function() { 
+        debugger;
+
+        var params = $scope.formData;
+        StdReportStockService.exportCsv(params)
+        .then(function(data){
+
+            util.csv(data,'STDSale.csv');
+
+        })
+    };
+
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/admin/reports/std/saleforseller',
+            service: StdReportSaleService,
+            item: 'SaleReportForSeller',
+            order: 'OrderId',
+            id: 'OrderId',
+            actions: ['View', 'Delete'],
+            bulks: ['Delete', 'Show', 'Hide'],
+            filters: [
+				{ name: "All", value: 'All' },
+				{ name: "Approved", value: 'Approved' },
+				{ name: "Not Approved", value: 'NotApproved' },
+				{ name: "Wait For Approved", value: 'WaitForApproved' },
+				{ name: "Draft", value: 'Draft' }
+            ]
+        }
+    });
+
+}];
+
+},{}],4:[function(require,module,exports){
 module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", function($scope, $window, NcAlert, util, common, options) {
 	'ngInject';
 	$scope.formData = {};
@@ -812,7 +891,7 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 	});
 }];
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryService", "GlobalCategoryService", "BrandService", "Category", "ShopService", function($scope, $controller, options, Product,
 	LocalCategoryService, GlobalCategoryService, BrandService, Category,
 	ShopService) {
@@ -951,7 +1030,7 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 	});
 }]
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options", function($scope, $window, $timeout, NcAlert, util, options) {
 	'ngInject';
 	var a = _.includes(['a','e','i','o','u'], _.lowerCase(options.item.charAt(0))) ? 'an' : 'a';
@@ -1097,7 +1176,7 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 	}, true);
 }];
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$uibModal", "GlobalCategory", "Category", "AttributeSet", "Product", "ProductTempService", "options", "VariationFactorIndices", "AttributeSetService", "AttributeOptions", "$productAdd", "AdminShopService", function($scope, $rootScope, $controller, NcAlert,
 	config, $uibModal, GlobalCategory, Category, AttributeSet, Product,
 	ProductTempService, options,
@@ -1292,7 +1371,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 	};
 }]
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminAccountService", "config", function($scope, $controller, AdminAccountService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -1308,7 +1387,7 @@ module.exports = ["$scope", "$controller", "AdminAccountService", "config", func
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminAccountService", "AdminRoleService", "Credential", function($scope, $controller, AdminAccountService, AdminRoleService, Credential) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -1333,7 +1412,7 @@ module.exports = ["$scope", "$controller", "AdminAccountService", "AdminRoleServ
 	});
    
 }];
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 module.exports = function ($scope, $controller, CMSMasterService, config) {
     $scope.formData = {
         OnTopCreditCardId: null,
@@ -1493,7 +1572,7 @@ module.exports = function ($scope, $controller, CMSMasterService, config) {
     });
 };
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeService", "config", function($scope, $controller, AttributeService, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -1520,7 +1599,7 @@ module.exports = ["$scope", "$controller", "AttributeService", "config", functio
 	$scope.dataTypeDropdown = config.DROPDOWN.DATA_TYPE_DROPDOWN;
 }]
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeService", "ImageService", "config", "util", "common", function($scope, $controller, AttributeService, ImageService, config, util, common) {
 	'ngInject';
 	$scope.dataTypeOptions = config.DROPDOWN.DATA_TYPE_DROPDOWN;
@@ -1586,7 +1665,7 @@ module.exports = ["$scope", "$controller", "AttributeService", "ImageService", "
 		$scope.formData.Required = false;
 	});
 }];
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeSetService", "util", "config", function($scope, $controller, AttributeSetService, util, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -1607,7 +1686,7 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "util", "confi
 		}
 	});
 }]
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeService", "config", function($scope, $controller, AttributeSetService, AttributeService, config) {
 	'ngInject';
 	$scope.visibleOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
@@ -1668,7 +1747,7 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeServ
 		});
 	}
 }]
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "BrandService", "config", function($scope, $controller, BrandService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -1684,7 +1763,7 @@ module.exports = ["$scope", "$controller", "BrandService", "config", function($s
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageService", "common", "config", function($scope, $controller, Product, BrandService, ImageService, common, config) {
 	'ngInject';
 	$scope.TYPEAHEAD_DELAY = config.TYPEAHEAD_DELAY;
@@ -1787,7 +1866,7 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 		}
 	});
 }];
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$uibModal", "$timeout", function ($scope, $controller, Buy1Get1Service, config, $uibModal, $timeout) {
     'ngInject';
 
@@ -2157,7 +2236,7 @@ module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$uibMod
 
 }];
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 
 module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", function ($scope, $controller, Buy1Get1Service, config) {
     'ngInject';
@@ -2184,7 +2263,7 @@ module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", function
 
 }];
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 module.exports = function($scope, $controller, CouponService, config, $uibModal) {
   $controller('AbstractListCtrl', {
     $scope: $scope,
@@ -2282,10 +2361,11 @@ module.exports = function($scope, $controller, CouponService, config, $uibModal)
   };
 }
 
-},{}],19:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "$uibModal", "$timeout", function ($scope, $controller, CMSCategoryService, config, $uibModal, $timeout) {
+},{}],20:[function(require,module,exports){
+module.exports = ["$scope", "$rootScope", "$controller", "CMSCategoryService", "config", "$uibModal", "$timeout", function ($scope,$rootScope, $controller, CMSCategoryService, config, $uibModal, $timeout) {
     'ngInject';
 
+    $scope.adCMSadd = !$rootScope.permit(24);
     $scope.formData     = {};
 
     $scope.loading      = false;
@@ -2662,10 +2742,14 @@ module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "$uib
 
 }];
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 
-module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "util", function ($scope, $controller, CMSCategoryService, config, util) {
+module.exports = ["$scope", "$rootScope", "$controller", "CMSCategoryService", "config", "util", function ($scope, $rootScope, $controller, CMSCategoryService, config, util) {
     'ngInject';
+    $scope.adCMSview = !$rootScope.permit(23);  
+    $scope.adCMSadd = !$rootScope.permit(24);
+    $scope.adCMSedit = !$rootScope.permit(25);
+    debugger;
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
@@ -2700,10 +2784,10 @@ module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "util
 
 }];
 
-},{}],21:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "CMSGroupService", "config", "$uibModal", "$timeout", function ($scope, $controller, CMSGroupService, config, $uibModal, $timeout) {
-    'ngInject';
-
+},{}],22:[function(require,module,exports){
+module.exports = ["$scope", "$controller", "$rootScope", "CMSGroupService", "config", "$uibModal", "$timeout", function ($scope, $controller,$rootScope, CMSGroupService, config, $uibModal, $timeout) {
+    'ngInject'; 
+    $scope.adCMSadd = !$rootScope.permit(24);
     $scope.formData     = {};
 
     $scope.loading      = false;
@@ -2999,10 +3083,13 @@ module.exports = ["$scope", "$controller", "CMSGroupService", "config", "$uibMod
 
 }];
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 
-module.exports = ["$scope", "$controller", "CMSGroupService", "config", function ($scope, $controller, CMSGroupService, config) {
+module.exports = ["$scope", "$rootScope", "$controller", "CMSGroupService", "config", function ($scope,$rootScope, $controller, CMSGroupService, config) {
     'ngInject';
+    $scope.adCMSview = !$rootScope.permit(23);  
+    $scope.adCMSadd = !$rootScope.permit(24);
+    $scope.adCMSedit = !$rootScope.permit(25);
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
@@ -3026,9 +3113,10 @@ module.exports = ["$scope", "$controller", "CMSGroupService", "config", function
 
 }];
 
-},{}],23:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "CMSMasterService", "ImageService", "NcAlert", "common", "config", "$uibModal", "$timeout", function ($scope, $controller, CMSMasterService, ImageService, NcAlert, common, config, $uibModal, $timeout) {
+},{}],24:[function(require,module,exports){
+module.exports = ["$scope", "$rootScope", "$controller", "CMSMasterService", "ImageService", "NcAlert", "common", "config", "$uibModal", "$timeout", function ($scope,$rootScope, $controller, CMSMasterService, ImageService, NcAlert, common, config, $uibModal, $timeout) {
     'ngInject';
+    $scope.adCMSadd = !$rootScope.permit(24);
 
     $scope.alert            = new NcAlert();
     $scope.formData         = {};
@@ -3548,9 +3636,12 @@ module.exports = ["$scope", "$controller", "CMSMasterService", "ImageService", "
     });
 }];
 
-},{}],24:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "common", "CMSMasterService", "util", "$window", "$rootScope", "config", "storage", function ($scope, $controller, common, CMSMasterService, util, $window, $rootScope, config, storage) {
+},{}],25:[function(require,module,exports){
+module.exports = ["$scope", "$rootScope", "$controller", "common", "CMSMasterService", "util", "$window", "$rootScope", "config", "storage", function ($scope,$rootScope, $controller, common, CMSMasterService, util, $window, $rootScope, config, storage) {
     'ngInject';
+    $scope.adCMSview = !$rootScope.permit(23);  
+    $scope.adCMSadd = !$rootScope.permit(24);
+    $scope.adCMSedit = !$rootScope.permit(25);
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
@@ -3609,7 +3700,7 @@ module.exports = ["$scope", "$controller", "common", "CMSMasterService", "util",
     }
 }];
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 
 module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Category", "GlobalCategoryService", "AttributeSetService", "NcAlert", "util", "config", function($scope, $rootScope, $uibModal, $timeout, common, Category, GlobalCategoryService, AttributeSetService, NcAlert, util, config){
 	'ngInject';
@@ -3919,7 +4010,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 
 }];
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "GlobalCouponService", "config", function($scope, $controller, GlobalCouponService, config) {
 	'ngInject';
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
@@ -3936,7 +4027,7 @@ module.exports = ["$scope", "$controller", "GlobalCouponService", "config", func
 	});
 }]
 
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 module.exports = function($scope, $controller, GlobalCouponService, GlobalCategoryService, config, Category) {
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
@@ -3967,7 +4058,7 @@ module.exports = function($scope, $controller, GlobalCouponService, GlobalCatego
   });
 
 };
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
   module.exports = ["$scope", "Credential", "$window", "NcAlert", "$uibModal", "storage", "config", function ($scope, Credential, $window, NcAlert, $uibModal, storage, config) {
     'ngInject';
     $scope.uform = {};
@@ -4028,7 +4119,7 @@ module.exports = function($scope, $controller, GlobalCouponService, GlobalCatego
     }
 }];
 
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "$window", "AdminMasterProductService", "config", function($scope, $controller, $window, AdminMasterProductService, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -4056,7 +4147,7 @@ module.exports = ["$scope", "$controller", "$window", "AdminMasterProductService
 		return _.join(_.map(list, function(e) { return e.Pid }), ', ');
 	};
 }];
-},{}],30:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "BrandService", "Product", "AdminMasterProductService", "config", "util", "common", function($scope, $controller, BrandService, Product, AdminMasterProductService, config, util, common) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -4113,7 +4204,7 @@ module.exports = ["$scope", "$controller", "BrandService", "Product", "AdminMast
 		}
 	});
 }];
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "ImageService", function($scope, $controller, $uibModal, NewsletterService, ImageService) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -4244,7 +4335,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "Im
 		});
 	};
 }];
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 module.exports = function ($scope, $controller, OnTopCredit, config) {
     $scope.formData = {
         OnTopCreditCardId: null,
@@ -4405,7 +4496,7 @@ module.exports = function ($scope, $controller, OnTopCredit, config) {
     });
 };
 
-},{}],33:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "OnTopCredit", "config", function($scope, $controller, OnTopCredit, config) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
@@ -4429,7 +4520,7 @@ module.exports = ["$scope", "$controller", "OnTopCredit", "config", function($sc
 	});
 	$scope.statusDropdown = config.PRODUCT_STATUS;
 }];
-},{}],34:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ["$scope", "$controller", "$uibModal", "NCConfirm", function ($scope, $controller, $uibModal, NCConfirm) {
@@ -4472,7 +4563,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "NCConfirm", function ($
     }
 
 }];
-},{"angular":330}],35:[function(require,module,exports){
+},{"angular":330}],36:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "config", "util", function($scope, $controller, Product, config, util) {
 	'ngInject';
     $scope.asStatus = Product.getStatus;
@@ -4536,7 +4627,7 @@ module.exports = ["$scope", "$controller", "Product", "config", "util", function
 	$scope.params._filter2 = 'None';
 }];
 
-},{}],36:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ["$scope", "$controller", function ($scope, $controller) {
@@ -4552,7 +4643,7 @@ module.exports = ["$scope", "$controller", function ($scope, $controller) {
     });
 
 }];
-},{"angular":330}],37:[function(require,module,exports){
+},{"angular":330}],38:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", function($scope, $controller, Product) {
 	'ngInject';
     
@@ -4565,7 +4656,7 @@ module.exports = ["$scope", "$controller", "Product", function($scope, $controll
 	
 }]
 
-},{}],38:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "common", "config", function($scope, $controller, Product, common, config) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
@@ -4678,7 +4769,7 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", functi
         });
     }
 }];
-},{}],39:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$uibModal", "util", "common", function($scope, $controller, ProductReviewService, config, $uibModal, util, common) {
 	'ngInject';
 	//Inherit from parent
@@ -4728,7 +4819,7 @@ module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$u
 	};
 }];
 
-},{}],40:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminRoleService", "config", function($scope, $controller, AdminRoleService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -4744,7 +4835,7 @@ module.exports = ["$scope", "$controller", "AdminRoleService", "config", functio
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }]
-},{}],41:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminRoleService", "AdminPermissionService", "PermissionService", "util", function($scope, $controller, AdminRoleService, AdminPermissionService, PermissionService, util) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -4799,7 +4890,7 @@ module.exports = ["$scope", "$controller", "AdminRoleService", "AdminPermissionS
 		});
 	};
 }];
-},{}],42:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerAccountService", "config", function($scope, $controller, SellerAccountService, config) {
 	'ngInject';
 	$scope.yesNoDropdown = config.DROPDOWN.YES_NO_DROPDOWN;
@@ -4840,7 +4931,7 @@ module.exports = ["$scope", "$controller", "SellerAccountService", "config", fun
 		}
 	});
 }]
-},{}],43:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerCouponService", "config", function($scope, $controller, SellerCouponService, config) {
   'ngInject';
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
@@ -4857,7 +4948,7 @@ module.exports = ["$scope", "$controller", "SellerCouponService", "config", func
   });
 }]
 
-},{}],44:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 module.exports = function($scope, $controller, SellerCouponService, config, Category) {
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
@@ -4880,7 +4971,7 @@ module.exports = function($scope, $controller, SellerCouponService, config, Cate
   });
 
 };
-},{}],45:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminShopService", "config", function($scope, $controller, AdminShopService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -4896,7 +4987,7 @@ module.exports = ["$scope", "$controller", "AdminShopService", "config", functio
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-},{}],46:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "AdminShoptypeService", "GlobalCategoryService", "ShopService", "ImageService", "Category", "config", "common", "Credential", "$window", function($scope, $controller, $uibModal, AdminShopService, AdminShoptypeService, GlobalCategoryService, ShopService, ImageService, Category, config, common, Credential, $window) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -5155,7 +5246,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 	});
 }];
 
-},{}],47:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminShoptypeService", function($scope, $controller, AdminShoptypeService) {
 	'ngInject';
 	//Inherit from parent
@@ -5170,7 +5261,7 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", function($sco
 		}
 	});
 }];
-},{}],48:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissionService", "ShopAppearanceService", "PermissionService", "util", "$q", function($scope, $controller, AdminShoptypeService, ShopPermissionService, ShopAppearanceService, PermissionService, util, $q) {
 	'ngInject';
 
@@ -5274,10 +5365,11 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShopPermissi
 	};
 }];
 
-},{}],49:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 
-module.exports = ["$scope", "$controller", "StdReportOnHoldService", "config", "util", function ($scope, $controller, StdReportOnHoldService, config, util) {
+module.exports = ["$scope", "$controller", "StdReportOnHoldService", "config", "util", "$rootScope", function ($scope, $controller, StdReportOnHoldService, config, util,$rootScope) {
     'ngInject';
+    $scope.adminStdManageable = !$rootScope.permit(27);
     $scope.formData = {
         PID: null,
         Brands: null,
@@ -5320,10 +5412,11 @@ module.exports = ["$scope", "$controller", "StdReportOnHoldService", "config", "
 
 }];
 
-},{}],50:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 
-module.exports = ["$scope", "$controller", "StdReportReturnService", "config", "util", function ($scope, $controller, StdReportReturnService, config, util) {
+module.exports = ["$scope", "$controller", "StdReportReturnService", "config", "util", "$rootScope", function ($scope, $controller, StdReportReturnService, config, util,$rootScope) {
     'ngInject';
+    $scope.adminStdManageable = !$rootScope.permit(27);
     $scope.formData = {
         PID: null,
         Brands: null,
@@ -5366,87 +5459,11 @@ module.exports = ["$scope", "$controller", "StdReportReturnService", "config", "
 
 }];
 
-},{}],51:[function(require,module,exports){
-
-module.exports = ["$scope", "$controller", "StdReportSaleService", "config", "util", function ($scope, $controller, StdReportSaleService, config, util) {
-    'ngInject';
-    $scope.formData = {
-        PID: null,
-        Brands: null,
-        ItemStatus: null,
-        CreatedDtFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
-        CreatedDtTo: new Date()
-        };
-    // $scope.exportCsv = function() { 
-    //     debugger;
-    //     var params = $scope.formData;
-    //     StdReportSaleService.exportCsv(params)
-    //     .then(function(data){
-
-    //         var csv = '';
-    //         var headers = data.split('\n')[0];
-    //         csv += headers;
-
-    //         for (var i = 1; i < data.split('\n').length; i++) {
-    //             var row = data.split('\n')[i];
-    //             csv += row;
-    //         }
-
-    //         var filename, link;
-
-    //         filename = 'STDSale.csv';
-
-    //         link = document.createElement('a');
-    //         link.setAttribute('href', 'data:attachment/csv,' + encodeURIComponent(csv));
-    //         link.setAttribute('download', filename);
-    //         link.click();
-
-    //         //debugger;
-    //         // var blob = new Blob([document.getElementById('report-std-tab-content').innerHTML], {
-    //         //     type: "vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
-    //         // });
-    //         // saveAs(blob, "Report.xls");
-    //     })
-    // };
-
-    $scope.exportCsv = function() { 
-        debugger;
-
-        var params = $scope.formData;
-        StdReportStockService.exportCsv(params)
-        .then(function(data){
-
-            util.csv(data,'STDSale.csv');
-
-        })
-    };
-
-    $controller('AbstractAdvanceListCtrl', {
-        $scope: $scope,
-        options: {
-            url: '/admin/reports/std/saleforseller',
-            service: StdReportSaleService,
-            item: 'SaleReportForSeller',
-            order: 'OrderId',
-            id: 'OrderId',
-            actions: ['View', 'Delete'],
-            bulks: ['Delete', 'Show', 'Hide'],
-            filters: [
-				{ name: "All", value: 'All' },
-				{ name: "Approved", value: 'Approved' },
-				{ name: "Not Approved", value: 'NotApproved' },
-				{ name: "Wait For Approved", value: 'WaitForApproved' },
-				{ name: "Draft", value: 'Draft' }
-            ]
-        }
-    });
-
-}];
-
 },{}],52:[function(require,module,exports){
 
-module.exports = ["$scope", "$controller", "StdReportStockService", "config", "util", function ($scope, $controller, StdReportStockService, config, util) {
+module.exports = ["$scope", "$controller", "StdReportStockService", "config", "util", "$rootScope", function ($scope, $controller, StdReportStockService, config, util, $rootScope) {
     'ngInject';
+    $scope.adminStdManageable = !$rootScope.permit(27);
     $scope.formData = {
         PID: null,
         Brands: null,
@@ -10032,9 +10049,10 @@ module.exports = function($scope, $controller, CouponService, config, $uibModal)
 }
 
 },{}],76:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "$uibModal", "$timeout", function ($scope, $controller, CMSCategoryService, config, $uibModal, $timeout) {
+module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "$uibModal", "$timeout", "$rootScope", function ($scope, $controller, CMSCategoryService, config, $uibModal, $timeout, $rootScope) {
     'ngInject';
 
+    $scope.CMSadd = !$rootScope.permit(62);
     $scope.formData     = {};
 
     $scope.loading      = false;
@@ -10413,8 +10431,12 @@ module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "$uib
 
 },{}],77:[function(require,module,exports){
 
-module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "util", function ($scope, $controller, CMSCategoryService, config, util) {
+module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "util", "$rootScope", function ($scope, $controller, CMSCategoryService, config, util,$rootScope) {
     'ngInject';
+    $scope.CMSview = !$rootScope.permit(61);  
+    $scope.CMSadd = !$rootScope.permit(62);
+    $scope.CMSedit = !$rootScope.permit(63);
+    
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
@@ -10442,8 +10464,9 @@ module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "util
 }];
 
 },{}],78:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "CMSGroupService", "config", "$uibModal", "$timeout", function ($scope, $controller, CMSGroupService, config, $uibModal, $timeout) {
-    'ngInject';
+module.exports = ["$scope", "$controller", "CMSGroupService", "config", "$uibModal", "$timeout", "$rootScope", function ($scope, $controller, CMSGroupService, config, $uibModal, $timeout,$rootScope) {
+    'ngInject'; 
+    $scope.CMSadd = !$rootScope.permit(62);
 
     $scope.formData     = {};
 
@@ -10742,8 +10765,11 @@ module.exports = ["$scope", "$controller", "CMSGroupService", "config", "$uibMod
 
 },{}],79:[function(require,module,exports){
 
-module.exports = ["$scope", "$controller", "CMSGroupService", "config", function ($scope, $controller, CMSGroupService, config) {
+module.exports = ["$scope", "$controller", "CMSGroupService", "config", "$rootScope", function ($scope, $controller, CMSGroupService, config, $rootScope) {
     'ngInject';
+    $scope.CMSview = !$rootScope.permit(61);  
+    $scope.CMSadd = !$rootScope.permit(62);
+    $scope.CMSedit = !$rootScope.permit(63);
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
@@ -10768,8 +10794,9 @@ module.exports = ["$scope", "$controller", "CMSGroupService", "config", function
 }];
 
 },{}],80:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "CMSMasterService", "ImageService", "NcAlert", "common", "config", "$uibModal", "$timeout", function ($scope, $controller, CMSMasterService, ImageService, NcAlert, common, config, $uibModal, $timeout) {
+module.exports = ["$scope", "$rootScope", "$controller", "CMSMasterService", "ImageService", "NcAlert", "common", "config", "$uibModal", "$timeout", function ($scope, $rootScope, $controller, CMSMasterService, ImageService, NcAlert, common, config, $uibModal, $timeout) {
     'ngInject';
+    $scope.CMSadd = !$rootScope.permit(62);
 
     $scope.alert            = new NcAlert();
     $scope.formData         = {};
@@ -11290,8 +11317,11 @@ module.exports = ["$scope", "$controller", "CMSMasterService", "ImageService", "
 }];
 
 },{}],81:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "common", "CMSMasterService", "util", "$window", "$rootScope", "config", "storage", function ($scope, $controller, common, CMSMasterService, util, $window, $rootScope, config, storage) {
+module.exports = ["$scope", "$rootScope", "$controller", "common", "CMSMasterService", "util", "$window", "$rootScope", "config", "storage", function ($scope, $rootScope, $controller, common, CMSMasterService, util, $window, $rootScope, config, storage) {
     'ngInject';
+    $scope.CMSview = !$rootScope.permit(61);  
+    $scope.CMSadd = !$rootScope.permit(62);
+    $scope.CMSedit = !$rootScope.permit(63);
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
@@ -20162,7 +20192,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-inventory',
-    "<div class=form-section><div class=form-section-header><h2>Inventory</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.Quantity nc-template-options-path=addProductForm/Quantity nc-label=\"Inventory Amount\"><input class=form-control ng-pattern-restrict=^-?[0-9]*$ ng-disabled=formData.ProductId name=Quantity maxlength=10 ng-model=\"variantPtr.Quantity\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UpdateAmount nc-template-options-path=addProductForm/UpdateAmount nc-label=\"Update Amount\"><input class=form-control ng-pattern-restrict=^-?[0-9]*$ ng-disabled=\"xspermit(37) || !formData.ProductId\" name=UpdateAmount maxlength=10 ng-model=\"variantPtr.UpdateAmount\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SafetyStock nc-template-options-path=addProductForm/SafetyStock nc-label=\"Safety Stock Amount\"><input class=form-control name=SafetyStock ng-disabled=xspermit(37) ng-pattern-restrict=^-?[0-9]*$ nc-default-value=0 maxlength=10 maxlength=10 ng-model=\"variantPtr.SafetyStock\"></div><div nc-template=common/input/form-group-with-label nc-policy-admin nc-template-form=form.OnHold nc-template-options-path=addProductForm/SafetyStock nc-label=\"On Hold Amount\"><input class=form-control name=OnHold ng-disabled=xspermit(37) ng-pattern-restrict=^-?[0-9]*$ maxlength=10 ng-model=\"variantPtr.OnHold\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Reserve nc-template-options-path=addProductForm/SafetyStock nc-policy-admin nc-label=\"Reserve Amount\"><input class=form-control name=Reserve ng-disabled=xspermit(37) ng-pattern-restrict=^-?[0-9]*$ maxlength=10 ng-model=\"variantPtr.Reserve\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Defect nc-template-options-path=addProductForm/SafetyStock nc-policy-admin nc-label=\"Defect Amount\"><input class=form-control name=Defect ng-disabled=xspermit(37) ng-pattern-restrict=^-?[0-9]*$ maxlength=10 ng-model=\"variantPtr.Defect\"></div><div class=two-lines-label nc-template=common/input/form-group-with-label nc-template-form=form.MinQtyAllowInCart nc-template-options-path=addProductForm/MinQtyAllowInCart nc-label=\"Minimum Quantity<br> Allowed in Cart\"><input class=form-control name=MinQtyAllowInCart ng-disabled=xspermit(37) ng-pattern-restrict=^[0-9]*$ maxlength=5 nc-default-value=1 ng-model=\"variantPtr.MinQtyAllowInCart\"></div><div class=two-lines-label nc-template=common/input/form-group-with-label nc-template-form=form.MaxQtyAllowInCart nc-template-options-path=addProductForm/MaxQtyAllowInCart nc-label=\"Maximum Quantity<br> Allowed in Cart\"><input class=form-control name=MaxQtyAllowInCart ng-pattern-restrict=^[0-9]*$ maxlength=5 ng-disabled=xspermit(37) nc-default-value=100 maxlength=10 ng-model=\"variantPtr.MaxQtyAllowInCart\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.StockType nc-template-options-path=addProductForm/StockType nc-label=\"Stock Type\"><select ng-model=variantPtr.StockType class=form-control ng-disabled=xspermit(37) name=StockType><option selected value=- disabled>- Select Stock Type -</option><option value=Stock>Stock</option><option value=Pre-Order>Pre-Order</option></select></div><div nc-template=common/input/form-group-with-label ng-show=\"variantPtr.StockType == 'Pre-Order'\" nc-template-form=form.MaxQtyPreOrder nc-template-options-path=addProductForm/MaxQtyAllowInCart nc-label=\"Maximum Quantity Allowed for Pre-Order\"><input class=form-control name=MaxQtyPreOrder ng-disabled=xspermit(37) ng-pattern-restrict=^[0-9]*$ nc-default-value=100 maxlength=5 ng-model=\"variantPtr.MaxQtyPreOrder\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.IsHasExpiryDate nc-template-options-path=addProductForm/StockType nc-policy-indy-bu nc-label=\"Has Expiry Date\"><select ng-model=variantPtr.IsHasExpiryDate ng-disabled=xspermit(37) nc-default-value=\"'N'\" class=form-control name=IsHasExpiryDate><option value=N>No</option><option value=Y>Yes</option></select></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Inventory</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.Quantity nc-template-options-path=addProductForm/Quantity nc-label=\"Inventory Amount\"><input class=form-control ng-pattern-restrict=^-?[0-9]*$ ng-disabled=formData.ProductId name=Quantity maxlength=10 ng-model=\"variantPtr.Quantity\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UpdateAmount nc-template-options-path=addProductForm/UpdateAmount nc-label=\"Update Amount\"><input class=form-control ng-pattern-restrict=^-?[0-9]*$ ng-disabled=\"xspermit(37) || !formData.ProductId\" name=UpdateAmount maxlength=10 ng-model=\"variantPtr.UpdateAmount\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SafetyStock nc-template-options-path=addProductForm/SafetyStock nc-label=\"Safety Stock Amount\"><input class=form-control name=SafetyStock ng-disabled=xspermit(37) ng-pattern-restrict=^-?[0-9]*$ nc-default-value=0 maxlength=10 maxlength=10 ng-model=\"variantPtr.SafetyStock\"></div><div nc-template=common/input/form-group-with-label nc-policy-admin nc-template-form=form.OnHold nc-template-options-path=addProductForm/SafetyStock nc-label=\"On Hold Amount\"><input class=form-control name=OnHold ng-disabled=xspermit(37) ng-pattern-restrict=^-?[0-9]*$ maxlength=10 ng-model=\"variantPtr.OnHold\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Reserve nc-template-options-path=addProductForm/SafetyStock nc-policy-admin nc-label=\"Reserve Amount\"><input class=form-control name=Reserve ng-disabled=xspermit(37) ng-pattern-restrict=^-?[0-9]*$ maxlength=10 ng-model=\"variantPtr.Reserve\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Defect nc-template-options-path=addProductForm/SafetyStock nc-policy-admin nc-label=\"Defect Amount\"><input class=form-control name=Defect ng-disabled=xspermit(37) ng-pattern-restrict=^-?[0-9]*$ maxlength=10 ng-model=\"variantPtr.Defect\"></div><div class=two-lines-label nc-template=common/input/form-group-with-label nc-template-form=form.MinQtyAllowInCart nc-template-options-path=addProductForm/MinQtyAllowInCart nc-label=\"Minimum Quantity<br> Allowed in Cart\"><input class=form-control name=MinQtyAllowInCart ng-disabled=xspermit(37) ng-pattern-restrict=^[0-9]*$ maxlength=5 nc-default-value=1 ng-model=\"variantPtr.MinQtyAllowInCart\"></div><div class=two-lines-label nc-template=common/input/form-group-with-label nc-template-form=form.MaxQtyAllowInCart nc-template-options-path=addProductForm/MaxQtyAllowInCart nc-label=\"Maximum Quantity<br> Allowed in Cart\"><input class=form-control name=MaxQtyAllowInCart ng-pattern-restrict=^[0-9]*$ maxlength=5 ng-disabled=xspermit(37) nc-default-value=100 maxlength=10 ng-model=\"variantPtr.MaxQtyAllowInCart\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.StockType nc-template-options-path=addProductForm/StockType nc-label=\"Stock Type\"><select ng-model=variantPtr.StockType class=form-control ng-disabled=xspermit(37) name=StockType><option selected value=- disabled>- Select Stock Type -</option><option value=Stock>Stock</option><option value=Pre-Order>Pre-Order</option><option value=ByOrder>By Order</option></select></div><div nc-template=common/input/form-group-with-label ng-show=\"variantPtr.StockType == 'Pre-Order'\" nc-template-form=form.MaxQtyPreOrder nc-template-options-path=addProductForm/MaxQtyAllowInCart nc-label=\"Maximum Quantity Allowed for Pre-Order\"><input class=form-control name=MaxQtyPreOrder ng-disabled=xspermit(37) ng-pattern-restrict=^[0-9]*$ nc-default-value=100 maxlength=5 ng-model=\"variantPtr.MaxQtyPreOrder\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.IsHasExpiryDate nc-template-options-path=addProductForm/StockType nc-policy-indy-bu nc-label=\"Has Expiry Date\"><select ng-model=variantPtr.IsHasExpiryDate ng-disabled=xspermit(37) nc-default-value=\"'N'\" class=form-control name=IsHasExpiryDate><option value=N>No</option><option value=Y>Yes</option></select></div></div></div>"
   );
 
 
@@ -20196,7 +20226,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-shipping',
-    "<div class=form-section><div class=form-section-header><h2>Shipping Detail</h2></div><div class=form-section-content><div class=form-group ng-if=\"variantPtr == formData.MasterVariant\"><div class=width-label><label class=control-label>Shipping Method</label></div><div class=width-field-normal><div class=\"radio multiple-radio multiline\"><label ng-repeat=\"shi in dataset.ShippingList\"><input type=radio name=shipping_method ng-disabled=xspermit(38) ng-value={{shi.ShippingId}} ng-model=\"formData.ShippingMethod\"> {{ shi.ShippingMethodEn }}</label></div></div></div><div nc-template=common/input/form-group-with-label nc-template-form=form.ExpressDelivery nc-template-options-path=addProductForm/SafetyStock nc-label=\"Express Delivery\"><select ng-disabled=xspermit(38) ng-model=variantPtr.ExpressDelivery class=form-control name=ExpressDelivery><option selected value=- disabled>- Select Express Delivery Option -</option><option value=Y>Enable</option><option value=N>Disable</option></select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.ExpressDelivery nc-template-options-path=addProductForm/SafetyStock nc-label=\"Delivery Fee\"><input ng-disabled=xspermit(38) class=form-control name=DeliveryFee maxlength=12 ng-pattern-restrict=^[0-9]*(\\\\.[0-9]*)?$ ng-model=\"variantPtr.DeliveryFee\"></div><div nc-template=common/input/form-group-with-label nc-label=\"Preparation Time\" nc-template-form=form.PrepareDay nc-template-options-path=addProductForm/PrepareDay style=\"margin-bottom: 0px\"><input ng-disabled=xspermit(38) class=\"form-control width-field-normal\" name=PrepareDay ng-pattern-restrict=^[0-9]*$ ng-required=onPublishing maxlength=3 ng-model=\"variantPtr.PrepareDay\"></div><div class=\"form-group margin-bottom-20\"><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=checkbox><label><input ng-disabled=xspermit(38) type=checkbox ng-model=variantPtr.LimitIndividualDay> Set preparation time for individual day</label></div></div></div><div class=form-group ng-show=variantPtr.LimitIndividualDay><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=multiple-input><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Monday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareMon><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareMon ng-model=\"variantPtr.PrepareMon\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Tuesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareTue><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareTue ng-model=\"variantPtr.PrepareTue\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Wednesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareWed><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareWed ng-model=\"variantPtr.PrepareWed\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Thursday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareThu><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareThu ng-model=\"variantPtr.PrepareThu\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Friday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareFri><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareFri ng-model=\"variantPtr.PrepareFri\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Saturday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSat><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareSat ng-model=\"variantPtr.PrepareSat\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Sunday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSun><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareSun ng-model=\"variantPtr.PrepareSun\"></div></div></div></div></div><div class=\"form-group margin-top-20\"><div class=width-label><label class=\"control-label required\" style=margin-top:-8px>Package Dimension</label></div><div class=width-field-xxl><div class=multiple-input><div class=input-column><div nc-template=common/input/div-with-label nc-label=Length nc-template-options-path=addProductForm/Dimension nc-template-form=form.Length><input ng-disabled=xspermit(38) class=form-control maxlength=11 ng-required=onPublishing name=Length ng-model=\"variantPtr.Length\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Height nc-template-options-path=addProductForm/Dimension nc-template-form=form.Height><input ng-disabled=xspermit(38) class=form-control maxlength=11 ng-required=onPublishing name=Height ng-model=\"variantPtr.Height\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Width nc-template-options-path=addProductForm/Dimension nc-template-form=form.Width><input ng-disabled=xspermit(38) class=form-control maxlength=11 ng-required=onPublishing name=Width ng-model=\"variantPtr.Width\"></div></div><div class=\"input-column no-label select input-xl\" style=\"padding-top: 24px\"><select ng-disabled=xspermit(38) ng-model=variantPtr.DimensionUnit class=form-control><option value=MM>Millimeter</option><option value=CM>Centimeter</option><option value=M>Meter</option></select></div></div></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Weight</label></div><div class=width-field-xxl><div class=multiple-input><div nc-template=common/input/text-column-no-label nc-label=\"\" nc-template-options-path=addProductForm/Dimension nc-template-form=form.Weight><input ng-disabled=xspermit(38) class=form-control maxlength=12 ng-required=onPublishing name=Weight ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-model=\"variantPtr.Weight\"></div><div class=\"input-column select input-xl\"><div class=ah-select2-dropdown><select ng-disabled=xspermit(38) class=form-control ng-model=variantPtr.WeightUnit><option value=G>Grams</option><option value=KG>Kilograms</option></select></div></div></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Shipping Detail</h2></div><div class=form-section-content><div class=form-group ng-if=\"variantPtr == formData.MasterVariant\"><div class=width-label><label class=control-label>Shipping Method</label></div><div class=width-field-normal><div class=\"radio multiple-radio multiline\"><label ng-repeat=\"shi in dataset.ShippingList\"><input type=radio name=shipping_method ng-disabled=xspermit(38) ng-value={{shi.ShippingId}} ng-model=\"formData.ShippingMethod\"> {{ shi.ShippingMethodEn }}</label></div></div></div><div nc-template=common/input/form-group-with-label nc-template-form=form.ExpressDelivery nc-template-options-path=addProductForm/SafetyStock nc-label=\"Express Delivery\"><select ng-disabled=xspermit(38) ng-model=variantPtr.ExpressDelivery class=form-control name=ExpressDelivery><option selected value=- disabled>- Select Express Delivery Option -</option><option value=Y>Enable</option><option value=N>Disable</option></select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.ExpressDelivery nc-template-options-path=addProductForm/SafetyStock nc-label=\"Delivery Fee\"><input ng-disabled=xspermit(38) class=form-control name=DeliveryFee maxlength=12 ng-pattern-restrict=^[0-9]*(\\\\.[0-9]*)?$ ng-model=\"variantPtr.DeliveryFee\"></div><div nc-template=common/input/form-group-with-label nc-label=\"Preparation Time\" nc-template-form=form.PrepareDay nc-template-options-path=addProductForm/PrepareDay style=\"margin-bottom: 0px\"><input ng-disabled=xspermit(38) class=\"form-control width-field-normal\" name=PrepareDay ng-pattern-restrict=^[0-9]*$ ng-required=onPublishing maxlength=3 ng-model=variantPtr.PrepareDay nc-default-value=\"2\"></div><div class=\"form-group margin-bottom-20\"><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=checkbox><label><input ng-disabled=xspermit(38) type=checkbox ng-model=variantPtr.LimitIndividualDay> Set preparation time for individual day</label></div></div></div><div class=form-group ng-show=variantPtr.LimitIndividualDay><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=multiple-input><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Monday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareMon><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareMon ng-model=\"variantPtr.PrepareMon\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Tuesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareTue><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareTue ng-model=\"variantPtr.PrepareTue\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Wednesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareWed><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareWed ng-model=\"variantPtr.PrepareWed\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Thursday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareThu><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareThu ng-model=\"variantPtr.PrepareThu\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Friday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareFri><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareFri ng-model=\"variantPtr.PrepareFri\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Saturday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSat><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareSat ng-model=\"variantPtr.PrepareSat\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Sunday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSun><input ng-disabled=xspermit(38) class=form-control maxlength=3 name=PrepareSun ng-model=\"variantPtr.PrepareSun\"></div></div></div></div></div><div class=\"form-group margin-top-20\"><div class=width-label><label class=\"control-label required\" style=margin-top:-8px>Package Dimension</label></div><div class=width-field-xxl><div class=multiple-input><div class=input-column><div nc-template=common/input/div-with-label nc-label=Length nc-template-options-path=addProductForm/Dimension nc-template-form=form.Length><input ng-disabled=xspermit(38) class=form-control maxlength=11 ng-required=onPublishing name=Length ng-model=\"variantPtr.Length\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Height nc-template-options-path=addProductForm/Dimension nc-template-form=form.Height><input ng-disabled=xspermit(38) class=form-control maxlength=11 ng-required=onPublishing name=Height ng-model=\"variantPtr.Height\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Width nc-template-options-path=addProductForm/Dimension nc-template-form=form.Width><input ng-disabled=xspermit(38) class=form-control maxlength=11 ng-required=onPublishing name=Width ng-model=\"variantPtr.Width\"></div></div><div class=\"input-column no-label select input-xl\" style=\"padding-top: 24px\"><select ng-disabled=xspermit(38) ng-model=variantPtr.DimensionUnit class=form-control><option value=MM>Millimeter</option><option value=CM>Centimeter</option><option value=M>Meter</option></select></div></div></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Weight</label></div><div class=width-field-xxl><div class=multiple-input><div nc-template=common/input/text-column-no-label nc-label=\"\" nc-template-options-path=addProductForm/Dimension nc-template-form=form.Weight><input ng-disabled=xspermit(38) class=form-control maxlength=12 ng-required=onPublishing name=Weight ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-model=\"variantPtr.Weight\"></div><div class=\"input-column select input-xl\"><div class=ah-select2-dropdown><select ng-disabled=xspermit(38) class=form-control ng-model=variantPtr.WeightUnit><option value=G>Grams</option><option value=KG>Kilograms</option></select></div></div></div></div></div></div></div>"
   );
 
 
@@ -21368,7 +21398,7 @@ var seller = {
 	},
 
 	'Report|fa-file-o': {
-	    'View Report': '/reports',
+	    'View Report': '/reports/std/saleforseller'
 	}
 };
 var admin = {
@@ -21407,7 +21437,6 @@ var admin = {
 	    'CMS Group': '/admin/cms/group'
 	},
 	'Reports|fa-file': {
-	    'Sale Report For Seller': '/admin/reports/std/saleforseller',
         'Stock Status Report': '/admin/reports/std/stockstatus',
         'On Hold Report' : '/admin/reports/std/onhold',
         'Return Report' : '/admin/reports/std/return'
@@ -21432,6 +21461,9 @@ var permission = {
 	13: '/admin/coupons/seller',
 	21: '/admin/newsletters',
 	81: '/admin/products/reviews',
+	22: '/admin/cms',
+	27: ['/admin/reports/std/stockstatus', '/admin/reports/std/onhold', '/admin/reports/std/return'],
+	// 24: ['/admin/cms/category/create', '/admin/cms/master/create', '/admin/cms/group/create'],
 
 	//Seller
 	29: '/dashboard',
@@ -21449,6 +21481,9 @@ var permission = {
 	55: '/shops/settings',
 	56: '/shops/appearance',
 	57: ['/roles', '/accounts'],
+	60: '/cms',
+	71: '/reports/std/saleforseller', 
+	// 62: ['/cms/category/create', '/cms/master/create', '/cms/group/create'],
 
 	//Shop
 	64: '/dashboard',
@@ -27593,6 +27628,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('product/dropzone/waitForApproval',
     "<div class=image-drop-wrapper><div class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-ban fa-3x color-dark-grey\"></i></p><p>Cannot upload</p><p>Wait for Approval</p></div></div></div>"
+  );
+
+
+  $templateCache.put('product/exportResult',
+    "<div class=row ng-show=exportAsyncDelegate.active><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Export Result</h2></div><div class=form-section-content><div class=table-wrapper><table class=table id=add-product-approve-versions><thead><tr><th class=width_200>Request On</th><th>Finish On</th><th class=width_150>Status</th><th class=export-action-column>Action</th></tr></thead><tbody><tr><td>{{ exportAsyncDelegate.requestDate | datetimeTh }}</td><td ng-if=\"exportAsyncDelegate.progress >= 100\">{{ exportAsyncDelegate.endDate | datetimeTh }}</td><td ng-if=\"exportAsyncDelegate.progress < 100\">-</td><td ng-if=\"exportAsyncDelegate.progress > 0 && exportAsyncDelegate.progress < 100\"><strong class=color-green>{{ exportAsyncDelegate.progress | number: 2 }} %</strong></td><td ng-if=\"exportAsyncDelegate.progress >= 100\"><strong class=color-green>Completed</strong></td><td ng-if=\"exportAsyncDelegate.progress == 0\"><strong class=color-yellow>Preparing..</strong></td><td><button type=button class=\"btn btn-white btn-width-xl\" ng-hide=\"exportAsyncDelegate.progress >= 100\" ng-click=abortExport()>Cancel</button> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=downloadFile() ng-class=\"{ 'disabled' : exportAsyncDelegate.progress < 100 }\" ng-hide=\"exportAsyncDelegate.progress < 100\">Download</button></td></tr></tbody></table></div></div></div></div></div>"
   );
 
 

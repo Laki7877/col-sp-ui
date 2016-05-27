@@ -222,7 +222,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('SellerPendingProductCtrl', controllers.sellerPendingProduct)
   .controller('SellerPendingProductGroupAddCtrl', controllers.sellerPendingProductGroupAdd)
   .controller('SellerPendingProductsGroupCtrl', controllers.sellerPendingProductsGroup)
-  .controller('SellerReportCtrl', controllers.sellerReport)
+  // .controller('SellerReportCtrl', controllers.sellerReport)
+  .controller('StdSaleReportSellerCtrl', controllers.StdSaleReportSellerList)
 
   .controller('AdminAttributeCtrl', controllers.adminAttribute)
   .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)
@@ -277,7 +278,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('AdminCMSMasterListCtrl', controllers.adminCMSMasterList)
   .controller('AdminCMSMasterAddCtrl', controllers.adminCMSMasterAdd)
 
-  .controller('AdminStdSaleReportSellerCtrl', controllers.adminStdSaleReportSellerList)
   .controller('AdminStdStockReportCtrl', controllers.adminStdStockReportList)
   .controller('AdminStdOnHoldReportCtrl', controllers.adminStdOnHoldReportList)
   .controller('AdminStdReturnReportCtrl', controllers.adminStdReturnReportList)

@@ -9,7 +9,7 @@
 ?>
 
 <?php $this->start('page-body') ?>
-<div ng-controller="SellerCMSCategoryAddCtrl" ng-init="init(<?=$params?>)">
+<div ng-controller="SellerCMSCategoryAddCtrl" ng-init="init(<?=$params?>)" ng-disabled="CMSview">
     <nc-alert nc-model="alert"></nc-alert>
     <div ng-show="loading" nc-loading="Loading CMS Category.."></div>
     <div ng-show="saving" nc-loading="Saving CMS Category.."></div>
@@ -36,7 +36,7 @@
                 <div class="container-fluid">
                     <div class="float-right">
                         <button class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</button>
-                        <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+                        <button class="btn btn-blue btn-width-xl" ng-click="save()" ng-disabled="CMSadd">Save</button>
                     </div>
                 </div>
             </div>

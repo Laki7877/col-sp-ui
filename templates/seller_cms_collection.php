@@ -4,9 +4,9 @@
 ?>
 
 <?php $this->start('page-body') ?>
-<div ng-controller="SellerCMSCollectionListCtrl">
+<div ng-controller="SellerCMSCollectionListCtrl" ng-disabled="CMSview">
   <nc-page-title nc-title="All CMS Static & Collection">
-    <a ng-href="/cms/collection/create" class="btn margin-right-10 ng-scope btn-primary btn-width-xl">
+    <a ng-href="/cms/collection/create" class="btn margin-right-10 ng-scope btn-primary btn-width-xl" ng-disabled="CMSadd">
       <span class="">Create</span>
     </a>
   </nc-page-title>
@@ -31,7 +31,7 @@
           <th>Live</th>
           <th>Visible</th>
           <th nc-sort="UpdateDate" class="modified-column">Modified</th>
-          <th>Action</th>
+          <th ng-disabled="CMSedit">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -53,7 +53,7 @@
             <nc-eye nc-model="row.Visibility" nc-eye-on-toggle="toggleEye(row)"></nc-eye>
           </td>
           <td>{{row.UpdateDate | dateTh}}</td>
-          <td>
+          <td ng-disabled="CMSedit">
             <nc-action nc-model="row" nc-action-fn="actions"></nc-action>
           </td>
         </tr>

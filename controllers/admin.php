@@ -345,10 +345,6 @@ class AdminController extends Controller
     }
 
 	// Reports
-	public static function listStandardReport($params) 
-	{
-		return View::render('admin_report_std_saleforseller');
-	}
 
 	public static function listStockReport($params) 
 	{

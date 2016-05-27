@@ -1,6 +1,8 @@
 
-module.exports = function ($scope, $controller, StdReportSaleService, config, util) {
+module.exports = function ($scope, $controller, StdReportSaleService, config, util,$rootScope) {
     'ngInject';
+    $scope.StdManageable = !$rootScope.permit(71);
+
     $scope.formData = {
         PID: null,
         Brands: null,

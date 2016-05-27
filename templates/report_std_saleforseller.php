@@ -1,9 +1,10 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']) ?>
+
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller System']) ?>
 
 <?php $this->start('page-body') ?>
-  <div ng-controller="AdminStdSaleReportSellerCtrl">
+  <div ng-controller="StdSaleReportSellerCtrl" ng-disabled="StdManageable">
     <nc-alert nc-model="alert"></nc-alert>
-    <nc-page-title nc-title="Admin Standard Report" icon="fa-user">
+    <nc-page-title nc-title="Standard Report" icon="fa-user">
       <!-- <a class="btn btn-blue btn-width-xxl" ng-click="exportCsv()">Export CSV</a> -->
     </nc-page-title>
 

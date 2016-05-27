@@ -1,6 +1,7 @@
 
-module.exports = function ($scope, $controller, StdReportOnHoldService, config, util) {
+module.exports = function ($scope, $controller, StdReportOnHoldService, config, util,$rootScope) {
     'ngInject';
+    $scope.adminStdManageable = !$rootScope.permit(27);
     $scope.formData = {
         PID: null,
         Brands: null,

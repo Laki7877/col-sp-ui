@@ -51,7 +51,7 @@ var seller = {
 	},
 
 	'Report|fa-file-o': {
-	    'View Report': '/reports',
+	    'View Report': '/reports/std/saleforseller'
 	}
 };
 var admin = {
@@ -90,7 +90,6 @@ var admin = {
 	    'CMS Group': '/admin/cms/group'
 	},
 	'Reports|fa-file': {
-	    'Sale Report For Seller': '/admin/reports/std/saleforseller',
         'Stock Status Report': '/admin/reports/std/stockstatus',
         'On Hold Report' : '/admin/reports/std/onhold',
         'Return Report' : '/admin/reports/std/return'
@@ -115,6 +114,9 @@ var permission = {
 	13: '/admin/coupons/seller',
 	21: '/admin/newsletters',
 	81: '/admin/products/reviews',
+	22: '/admin/cms',
+	27: ['/admin/reports/std/stockstatus', '/admin/reports/std/onhold', '/admin/reports/std/return'],
+	// 24: ['/admin/cms/category/create', '/admin/cms/master/create', '/admin/cms/group/create'],
 
 	//Seller
 	29: '/dashboard',
@@ -132,6 +134,9 @@ var permission = {
 	55: '/shops/settings',
 	56: '/shops/appearance',
 	57: ['/roles', '/accounts'],
+	60: '/cms',
+	71: '/reports/std/saleforseller', 
+	// 62: ['/cms/category/create', '/cms/master/create', '/cms/group/create'],
 
 	//Shop
 	64: '/dashboard',

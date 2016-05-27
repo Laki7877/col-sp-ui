@@ -1,5 +1,6 @@
-module.exports = function ($scope, $controller, CMSMasterService, ImageService, NcAlert, common, config, $uibModal, $timeout) {
+module.exports = function ($scope,$rootScope, $controller, CMSMasterService, ImageService, NcAlert, common, config, $uibModal, $timeout) {
     'ngInject';
+    $scope.adCMSadd = !$rootScope.permit(24);
 
     $scope.alert            = new NcAlert();
     $scope.formData         = {};

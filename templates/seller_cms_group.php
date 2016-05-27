@@ -6,7 +6,7 @@
 <?php $this->start('page-body') ?>
 	<div ng-controller="SellerCMSGroupListCtrl">
        <nc-page-title nc-title="CMS Group">
-            <a ng-href="/cms/group/create" class="btn margin-right-10 ng-scope btn-primary btn-width-xl">
+            <a ng-href="/cms/group/create" class="btn margin-right-10 ng-scope btn-primary btn-width-xl" ng-disabled="CMSadd">
           	  <span class="">Create</span>
           </a>
        </nc-page-title>
@@ -25,7 +25,7 @@
 		                <th nc-sort="CMSGroupNameTH">Name(TH)</th>
 		                <th>Visibility</th>
 		                <th nc-sort="UpdateDate" class="modified-column">Modified</th>
-		                <th>Action</th>
+		                <th ng-disabled="CMSedit">Action</th>
 		            </tr>
 		        </thead>
 		        <tbody>
@@ -41,7 +41,7 @@
                       <nc-eye nc-model="row.Visibility" nc-eye-on-toggle="toggleEye(row)"></nc-eye>
                     </td>
 		                <td>{{row.UpdateDate | dateTh}}</td>
-		                <td>
+		                <td ng-disabled="CMSedit">
 		                    <nc-action nc-model="row" nc-action-fn="actions"></nc-action>
 		                </td>
 		            </tr>

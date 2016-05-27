@@ -1,7 +1,7 @@
 <?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']) ?>
 
 <?php $this->start('page-body') ?>
-  <div ng-controller="AdminStdStockReportCtrl">
+  <div ng-controller="AdminStdStockReportCtrl" ng-disabled="adminStdManageable">
     <nc-alert nc-model="alert"></nc-alert>
     <nc-page-title nc-title="Admin Standard Stock Report" icon="fa-user">
       <!-- <a class="btn btn-blue btn-width-xxl" ng-click="exportCsv()">Export CSV</a> -->
