@@ -7,6 +7,7 @@ angular.module('nc')
                 var maxTagCount = 1000;
                 var maxTagLength = 30;
                 var tagPattern = false;
+                var maxTagLengthKey;
 
                 var $select = ctrl[1];
                 var $model = ctrl[0];
@@ -17,6 +18,11 @@ angular.module('nc')
                     var _pass = true;
                     $model.$error = {};
                     
+                    if(maxTagLengthKey && _.isPlainObject(item)) {
+                        console.log(maxTagLengthKey, item, item[maxTagLengthKey]);
+                        item = item[maxTagLengthKey] || "";
+                    }
+
                     if (array.length > maxTagCount) {
                         //$model.$error.maxtagcount = true;
                         _pass = false;
@@ -48,6 +54,10 @@ angular.module('nc')
                     maxTagCount = Number(val);
                 });
 
+                attrs.$observe('ncMaxTagLengthKey', function (val) {
+                    if (!val) return;
+                    maxTagLengthKey = val;
+                });
                 attrs.$observe('ncTagPattern', function (val) {
                     if (!val) return;
                     tagPattern = val;
