@@ -227,6 +227,7 @@ module.exports = function($rootScope, $uibModal, $window, storage, Credential, r
         }
       }, function() {
         //alert("Fatal error while logging out.");
+        $window.location.href = "/login";
       });
     }
     else {

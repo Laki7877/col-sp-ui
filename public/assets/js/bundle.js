@@ -4869,13 +4869,16 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 	'ngInject';
 
 	var v = [];
-	var watch = function() {		
+	var watch = function() {	
+		console.log('watch');	
 		v.push($scope.$watch('formData.Province', function(data, old) {
 			if(_.isNil(data)) {
 				return;
 			}
 			else if(data != old) {
 				_.unset($scope.formData, ['City']);
+				_.unset($scope.formData, ['District']);
+				_.unset($scope.formData, ['PostalCode']);
 			}
 			$scope.getCities(data.ProvinceId);
 		}));
@@ -4885,6 +4888,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 			}
 			else if(data != old) {
 				_.unset($scope.formData, ['District']);
+				_.unset($scope.formData, ['PostalCode']);
 			}
 			$scope.getDistricts(data.CityId);
 		}));
@@ -9681,6 +9685,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
         }
       }, function() {
         //alert("Fatal error while logging out.");
+        $window.location.href = "/login";
       });
     }
     else {
