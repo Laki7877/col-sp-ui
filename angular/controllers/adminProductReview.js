@@ -26,7 +26,7 @@ module.exports = function($scope, $controller, ProductReviewService, config, $ui
 					//Save this data..
 					ProductReviewService.update($scope.formData.ProductReviewId, $scope.formData)
 						.then(function() {
-							$uibModalInstance.close($scope.formData);
+							$scope.alert.success('Successfully Saved.');
 						}, function(err) {
 							$scope.alert.error(common.getError(err));
 						});

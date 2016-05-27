@@ -4674,7 +4674,7 @@ module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$u
 					//Save this data..
 					ProductReviewService.update($scope.formData.ProductReviewId, $scope.formData)
 						.then(function() {
-							$uibModalInstance.close($scope.formData);
+							$scope.alert.success('Successfully Saved.');
 						}, function(err) {
 							$scope.alert.error(common.getError(err));
 						});
