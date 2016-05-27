@@ -15052,9 +15052,10 @@ angular.module('nc')
 									Pids: scope.source.Products
 								}).then(function(data) {
 									scope.source.Products = _.map(scope.source.Products, function(e) {
-										e = data.data[_.findIndex(data.data, function(d) {
+										e = _.find(data.data, function(d) {
 											return d.Pid == e;
-										})];
+										});
+										return e;
 									});
 									scope.source.Products = _.compact(scope.source.Products);
 								});
@@ -16767,8 +16768,7 @@ angular.module('nc')
                     var item = (array[array.length - 1] || "");
                     var _pass = true;
                     $model.$error = {};
-                    console.log(item, item.length, maxTagLength);
-
+                    
                     if (array.length > maxTagCount) {
                         //$model.$error.maxtagcount = true;
                         _pass = false;

@@ -16,8 +16,7 @@ angular.module('nc')
                     var item = (array[array.length - 1] || "");
                     var _pass = true;
                     $model.$error = {};
-                    console.log(item, item.length, maxTagLength);
-
+                    
                     if (array.length > maxTagCount) {
                         //$model.$error.maxtagcount = true;
                         _pass = false;

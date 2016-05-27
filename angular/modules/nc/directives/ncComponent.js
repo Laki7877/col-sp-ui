@@ -58,9 +58,10 @@ angular.module('nc')
 									Pids: scope.source.Products
 								}).then(function(data) {
 									scope.source.Products = _.map(scope.source.Products, function(e) {
-										e = data.data[_.findIndex(data.data, function(d) {
+										e = _.find(data.data, function(d) {
 											return d.Pid == e;
-										})];
+										});
+										return e;
 									});
 									scope.source.Products = _.compact(scope.source.Products);
 								});
