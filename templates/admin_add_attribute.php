@@ -62,7 +62,7 @@
                 <textarea class="form-control"
                   name="AttributeDescriptionEn"
                   ng-model="formData.AttributeDescriptionEn"
-                  maxlength="255"></textarea>
+                  maxlength="1000"></textarea>
               </div>
               <div nc-template="common/input/form-group-with-label"
                 nc-label="Required">

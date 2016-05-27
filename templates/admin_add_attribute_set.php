@@ -26,6 +26,7 @@
                   name="AttributeSetNameEn"
                   ng-model="formData.AttributeSetNameEn"
                   ng-pattern="/^[0-9a-z_\-]+$/"
+                  ng-pattern-restrict="^[^\s]*$"
                   ng-lowercase
                   maxlength="255"
                   required />
