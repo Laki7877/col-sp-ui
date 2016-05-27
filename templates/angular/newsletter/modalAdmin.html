@@ -70,7 +70,7 @@
                         <datetimepicker name="PublishedDt"
                         ng-date-before="{{formData.PublishedDt}}"
                         data-ng-model="formData.PublishedDt"
-                        data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'hour' }" 
+                        data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'minute', minuteStep: 30 }" 
                         required />
                     </ul>
                 </div>
@@ -90,7 +90,7 @@
                         <datetimepicker name="ExpiredDt"
                         ng-date-before="{{formData.ExpiredDt}}"
                         data-ng-model="formData.ExpiredDt"
-                        data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'hour' }" 
+                        data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'minute', minuteStep: 30 }" 
                         required/>
                     </ul>
                 </div>

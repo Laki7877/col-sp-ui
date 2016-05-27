@@ -78,7 +78,7 @@
                   ng-model="formData.Tags"
                   multiple
                   nc-tag-validator
-                  nc-max-tag-length-key="TagName"
+                  nc-max-tag-length-key="TagName" 
                   nc-max-tag-count="100"
                   nc-max-tag-length="30"
                   tagging="tagTransform"
