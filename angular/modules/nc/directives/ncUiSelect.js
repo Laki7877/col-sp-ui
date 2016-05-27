@@ -19,7 +19,6 @@ angular.module('nc')
                     $model.$error = {};
                     
                     if(maxTagLengthKey && _.isPlainObject(item)) {
-                        console.log(maxTagLengthKey, item, item[maxTagLengthKey]);
                         item = item[maxTagLengthKey] || "";
                     }
 
@@ -42,7 +41,6 @@ angular.module('nc')
                         $model.$viewValue = $model.$modelValue;
                     }
                 };
-
                 attrs.$observe('ngModel', function(val) {
                     $scope.$watch(val, function(o) {
                         $select.onSelectCallback();
