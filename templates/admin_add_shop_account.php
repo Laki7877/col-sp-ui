@@ -726,7 +726,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 				                    	nc-template-form="form.RemittanceFaxNumber"
 				                    	nc-template-options-path="addShopAccountForm/RemittanceFaxNumber"
 				                    	nc-label="Remittance Fax Number">
-											<input name="RemittanceFaxNumber" class="form-control" ng-model="formData.RemittanceFaxNumber" ng-pattern-restrict="^[0-9]*$" maxlength="15" />
+											<input name="RemittanceFaxNumber" class="form-control" ng-model="formData.RemittanceFaxNumber" ng-pattern-restrict="^[0-9]*$" maxlength="18" />
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.Telex"

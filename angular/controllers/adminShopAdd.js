@@ -2,13 +2,16 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 	'ngInject';
 
 	var v = [];
-	var watch = function() {		
+	var watch = function() {	
+		console.log('watch');	
 		v.push($scope.$watch('formData.Province', function(data, old) {
 			if(_.isNil(data)) {
 				return;
 			}
 			else if(data != old) {
 				_.unset($scope.formData, ['City']);
+				_.unset($scope.formData, ['District']);
+				_.unset($scope.formData, ['PostalCode']);
 			}
 			$scope.getCities(data.ProvinceId);
 		}));
@@ -18,6 +21,7 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 			}
 			else if(data != old) {
 				_.unset($scope.formData, ['District']);
+				_.unset($scope.formData, ['PostalCode']);
 			}
 			$scope.getDistricts(data.CityId);
 		}));
