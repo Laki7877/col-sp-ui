@@ -21,7 +21,6 @@ module.exports = function ($scope, $controller, StdReportSaleService, config, ut
     $scope.$watch('formData.GlobalCategoryId', function (newValue, oldValue) {
         if (newValue === undefined)
             return;
-        // get brand by category id
         StdReportSaleService.getBrand(newValue)
                     .then(function (data) {
                         $scope.brands = data;
@@ -47,17 +46,11 @@ module.exports = function ($scope, $controller, StdReportSaleService, config, ut
 
 
     $scope.exportCsv = function () {
-        //debugger;
-
         StdReportSaleService.exportCsv(params)
         .then(function (data) {
-
             util.csv(data, 'STDSale.csv');
-
         })
     };
-
-
 
 
     $scope.resetSearch = function () {

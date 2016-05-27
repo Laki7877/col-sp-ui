@@ -4,8 +4,12 @@ module.exports = function (common, config, util) {
 
 	service.getSaleReport = function (params) {
 	    return common.makeRequest({
-	        method: 'GET',
-	        url: '/StandardReport/GetSaleReportForSeller/' + params
+	        method: 'POST',
+	        url: '/StandardReport/GetSearchSaleReportForSeller/',
+	        data: params,
+	        headers: {
+	            'Content-Type': 'application/json;charset=UTF-8'
+	        }
 	    });
 	};
 

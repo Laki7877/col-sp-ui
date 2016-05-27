@@ -7,26 +7,18 @@ module.exports = function ($scope, $controller, StdReportReturnService, config, 
         ItemStatus: null,
         CreatedDtFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
         CreatedDtTo: new Date()
-    };
+        };
 
-    $scope.exportCsv = function () {
+    $scope.exportCsv = function() { 
         debugger;
 
         var params = $scope.formData;
         StdReportReturnService.exportCsv(params)
-        .then(function (data) {
+        .then(function(data){
 
-            util.csv(data, 'STDReturn.csv');
+            util.csv(data,'STDReturn.csv');
 
         })
-    };
-
-    $scope.resetSearch = function () {
-        PID = null;
-        Brands = null;
-        ItemStatus = null;
-        CreatedDtFrom = new Date(new Date().setDate(new Date().getDate() - 30));
-        CreatedDtTo = new Date();
     };
 
     $controller('AbstractAdvanceListCtrl', {
