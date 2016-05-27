@@ -64,21 +64,27 @@
                     <div class="input-column margin-bottom-10">
                         <div nc-template="common/input/div-with-label" nc-label="Monday" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.PrepareMon">
-                            <input  ng-disabled="xspermit(38)" type="text" class="form-control" maxlength="3" name="PrepareMon"
+                            <input  ng-disabled="xspermit(38)" type="text" 
+                            ng-pattern-restrict="^[0-9]*$" 
+                            class="form-control" maxlength="3" name="PrepareMon"
                             ng-model="variantPtr.PrepareMon" />
                         </div>
                     </div>
                     <div class="input-column margin-bottom-10">
                         <div nc-template="common/input/div-with-label" nc-label="Tuesday" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.PrepareTue">
-                            <input  ng-disabled="xspermit(38)" type="text" class="form-control" maxlength="3" name="PrepareTue"
+                            <input  ng-disabled="xspermit(38)" type="text" 
+                            ng-pattern-restrict="^[0-9]*$" 
+                            class="form-control" maxlength="3" name="PrepareTue"
                             ng-model="variantPtr.PrepareTue" />
                         </div>
                     </div>
                     <div class="input-column margin-bottom-10">
                         <div nc-template="common/input/div-with-label" nc-label="Wednesday" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.PrepareWed">
-                            <input  ng-disabled="xspermit(38)" type="text" class="form-control" maxlength="3" name="PrepareWed"
+                            <input  ng-disabled="xspermit(38)" type="text" 
+                            ng-pattern-restrict="^[0-9]*$" 
+                            class="form-control" maxlength="3" name="PrepareWed"
                             ng-model="variantPtr.PrepareWed" />
                         </div>
                     </div>
@@ -87,6 +93,7 @@
                         nc-template-form="form.PrepareThu">
                             <input  ng-disabled="xspermit(38)"
                             type="text" class="form-control"
+                            ng-pattern-restrict="^[0-9]*$" 
                             maxlength="3" name="PrepareThu"
                             ng-model="variantPtr.PrepareThu" />
                         </div>
@@ -95,6 +102,7 @@
                         <div nc-template="common/input/div-with-label" nc-label="Friday" nc-template-options-path="addProductForm/Dimension"
                         nc-template-form="form.PrepareFri">
                             <input  ng-disabled="xspermit(38)"
+                            ng-pattern-restrict="^[0-9]*$" 
                             type="text" class="form-control"
                             maxlength="3" name="PrepareFri"
                             ng-model="variantPtr.PrepareFri" />
@@ -105,7 +113,7 @@
                         nc-template-form="form.PrepareSat">
                             <input  ng-disabled="xspermit(38)"
                             type="text" class="form-control"
-                            maxlength="3"
+                            maxlength="3" ng-pattern-restrict="^[0-9]*$" 
                             name="PrepareSat"
                             ng-model="variantPtr.PrepareSat" />
                         </div>
@@ -116,7 +124,7 @@
                             <input
                             ng-disabled="xspermit(38)"
                             type="text"
-                            class="form-control"
+                            class="form-control" ng-pattern-restrict="^[0-9]*$" 
                             maxlength="3"
                             name="PrepareSun"
                             ng-model="variantPtr.PrepareSun" />

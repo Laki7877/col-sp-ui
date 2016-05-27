@@ -299,7 +299,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.onImageUploadFail = function(kwd, data) {
       // console.log(kwd, data);
       if (kwd == "onmaxsize") {
-        $scope.image_alert.error('Maximum ' + data + ' images can be uploaded.');
+        $scope.image_alert.error('Cannot exceed ' + data + ' images for each product.');
       } else if (kwd == "ondimension") {
         $scope.image_alert.error('Image dimension must be between ' +
           IMAGE_DIM_BOUND[0][0] + 'x' +
