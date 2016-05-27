@@ -28,7 +28,7 @@ angular.module('nc')
 			}
 		}
 	})
-	.directive('ncProductLayout', function($templateCache) {
+	.directive('ncProductLayout', function($templateCache, Product) {
 		return {
 			restrict: 'E',
 			scope: {
@@ -42,15 +42,29 @@ angular.module('nc')
 			},
 			template: $templateCache.get('common/ncProductLayout'),
 			link: function(scope) {
-				scope.$watch('source', function() {
+				scope.$watch('source', function(n, o) {
+					console.log(scope.source);
 					if(!scope.source) {
 						scope.source = _.defaults(scope.source, {
 							Enabled: true
 						})
 					}
 					else {
-						if(scope.source.Products) {
+						if(scope.source.Products && scope.source.Products.length > 0) {
 							_.remove(scope.source.Products, _.isEmpty);
+							if(scope.source.Products.length > 0 && scope.source.Products[0]) {
+								Product.advanceList({
+									_limit: scope.source.Products.length,
+									Pids: scope.source.Products
+								}).then(function(data) {
+									scope.source.Products = _.map(scope.source.Products, function(e) {
+										e = data.data[_.findIndex(data.data, function(d) {
+											return d.Pid == e;
+										})];
+									});
+									scope.source.Products = _.compact(scope.source.Products);
+								});
+							}
 						}
 					}
 				})
