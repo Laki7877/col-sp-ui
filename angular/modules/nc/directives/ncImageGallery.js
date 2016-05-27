@@ -763,7 +763,6 @@ angular.module('nc')
 				};
 				scope.uploader.onProgressItem = function(item, progress) {
 					if(_.findIndex(scope.model, item.obj) < 0) {
-						item.remove();
 						item.cancel();
 					}
 				}
