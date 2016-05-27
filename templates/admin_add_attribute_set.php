@@ -76,7 +76,6 @@
                   <ui-select
                   name="Tags"
                   ng-model="formData.Tags"
-                  on-select="onKeywordAdded($item, $model)"
                   multiple
                   nc-tag-validator
                   nc-max-tag-count="100"
