@@ -103,15 +103,9 @@
 									</div>
 								</div>
 							</div>
-
-
-
-
 						</div>
-
 					</div>
 				</div>
-
 				 <div class="main-form-action full-width-row">
 			        <div class="container-fluid">
 			          <div class="float-right">
@@ -123,11 +117,7 @@
 			          </div>
 			        </div>
 			     </div>
-
 			</form>
-
-
-
 	</div>
 
 <?php $this->stop() ?>

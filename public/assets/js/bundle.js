@@ -8021,7 +8021,7 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 			AttributeSet.getAll({
 				byShop: true
 			}).then(function (data) {
-				$scope.dataSet.attributeSets = data.map(function (m) {
+				$scope.dataSet.attributeSets = data.data.map(function (m) {
 					//m.Display = m.AttributeSetNameEn + " (" + m.ProductCount + ")";
 					m.Display = m.AttributeSetNameEn;
 					$scope.sumProductAttributeSet += Number(m.ProductCount);
@@ -21032,7 +21032,7 @@ module.exports = ['common', function(common){
 				params: {
 					byShop: parameters.byShop || false,
 					_order: parameters.orderBy || 'AttributeSetId',
-					_limit: parameters.pageSize || 0,
+					_limit: parameters.pageSize || 10,
 					_offset: parameters.page * parameters.pageSize || 0,
 					_direction: parameters.direction || 'asc',
 					_filter: parameters.filter || 'All',
