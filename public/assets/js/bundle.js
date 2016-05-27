@@ -20959,7 +20959,7 @@ module.exports = ['common', function(common){
 				params: {
 					byShop: parameters.byShop || false,
 					_order: parameters.orderBy || 'AttributeSetId',
-					_limit: parameters.pageSize || 0,
+					_limit: parameters.pageSize || 10,
 					_offset: parameters.page * parameters.pageSize || 0,
 					_direction: parameters.direction || 'asc',
 					_filter: parameters.filter || 'All',
