@@ -9,10 +9,10 @@ module.exports = function ($scope, $controller, StdReportReturnService, config, 
         CreatedDtTo: new Date()
     };
 
-    var params = $scope.formData;
-
     $scope.exportCsv = function () {
+        debugger;
 
+        var params = $scope.formData;
         StdReportReturnService.exportCsv(params)
         .then(function (data) {
 

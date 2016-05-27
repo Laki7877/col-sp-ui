@@ -8,14 +8,15 @@ module.exports = function ($scope, $controller, StdReportStockService, config, u
         LastSoldDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
         LastSoldDateTo: new Date()
     };
-    $scope.exportCsv = function() { 
+
+    $scope.exportCsv = function () {
         debugger;
 
-    var params = $scope.formData;
+        var params = $scope.formData;
         StdReportStockService.exportCsv(params)
-        .then(function(data){
+        .then(function (data) {
 
-            util.csv(data,'STDStock.csv');
+            util.csv(data, 'STDStock.csv');
 
         })
     };
