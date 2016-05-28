@@ -17294,7 +17294,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       validateDimensionMin: IMAGE_DIM_BOUND[0],
       validateDimensionMax: IMAGE_DIM_BOUND[1],
       validateSquare: true,
-      validateFileSize: true
+      validateFileSize: 5000000
     };
 
     $scope.formData = {
@@ -18058,7 +18058,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     }
 
     var tabPage = {};
-
     tabPage.images = {
       angular: function() {
         $scope.$on('left', function(evt, item, array, index) {
@@ -18191,7 +18190,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
               $scope.formData.Variants[$scope.pairIndex] =
                 pairModal
             }
-
 
             // Restore pointers
             $scope.form = $scope.addProductForm;
