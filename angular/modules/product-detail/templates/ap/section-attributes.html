@@ -55,9 +55,7 @@
                 <input ng-if="isFreeTextInput(amap.Attribute.DataType)"
                 
                 ng-class="{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }"
-                ng-disabled="xspermit(35)"
-                    ng-required="amap.Attribute.Required && onPublishing" type="text"
-                    class="form-control" name="AmapInput{{$index}}"
+                ng-disabled="xspermit(35)" ng-required="amap.Attribute.Required && onPublishing" type="text" class="form-control" name="AmapInput{{$index}}"
                     nc-default-value="''" maxlength="255"
                     ng-model="formData.MasterAttribute[amap.Attribute.AttributeId].ValueEn" />
 

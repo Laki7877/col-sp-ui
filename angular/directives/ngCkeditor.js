@@ -10,6 +10,8 @@ module.exports = [function () {
                     ngModel.$setViewValue(ck.getData());
                 });
             });
+
+            var changeCount = 0;
             
             ck.on('change', function () {
                 $scope.$apply(function () {

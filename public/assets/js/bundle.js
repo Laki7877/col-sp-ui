@@ -11633,6 +11633,8 @@ module.exports = [function () {
                     ngModel.$setViewValue(ck.getData());
                 });
             });
+
+            var changeCount = 0;
             
             ck.on('change', function () {
                 $scope.$apply(function () {
@@ -17197,106 +17199,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     AdminShopService, VariationFactorIndices, AttributeOptions, ShippingService) {
     'ngInject';
 
-    $scope.unlockedFields = [];
-    Product.getUnlockedFields().then(function(data) {
-      $scope.unlockedFields = data;
-    });
-
-    $scope.xspermit = function(id) {
-      //Seller permit function (inverted)
-      if ($scope.adminMode) return false;
-      return !$rootScope.hasPermission(id);
-    };
-
-    var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
-
-    //allow from 1500x1500 but no greater than 2000x2000
-    var IMAGE_DIM_BOUND = [
-      [1500, 1500],
-      [2000, 2000]
-    ];
-
     $scope.readOnly = options.readOnly;
     $scope.adminMode = options.adminMode;
     $scope.approveMode = options.approveMode;
-
     $scope.listingUrl = options.listingUrl;
 
-    $scope.TimeMachine = {
-      active: false,
-      preview: function(historyId, historyDate) {
-        $scope.pageState.load("Loading Product Revision");
-        Product.getRevision(historyId).then(function(res) {
-          checkSchema(res);
-          // loadOverview(res);
-          res.Status = 'DF';
-          $scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions); // will trigger watchvariantchange
-          var catId = Number(res.MainGlobalCategory.CategoryId);
-
-          $productAdd.fill(catId, $scope.pageState,
-            $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory,
-            $scope.controlFlags, $scope.variationFactorIndices, res
-          ).then(function() {
-            $scope.formData.ProductId = Number(res.ProductId);
-            $scope.pageState.reset();
-            $scope.alert.success(
-              'This is a preview of revision history on ' +
-              moment(historyDate).format("d/MM/YY"));
-            $scope.variantPtr = $scope.formData.MasterVariant;
-            $scope.addProductForm.$setPristine(true);
-            $scope.TimeMachine.active = true;
-          });
-
-          $scope.addProductForm.$setPristine(true);
-        });
-      }
-    }
-
-    // var loadOverview = function(res) {
-    // Shop.get(res.ShopId).then(function(x) {
-    //   $scope.formData.ShopName = x.ShopNameEn;
-    // })
-    // };
-
-    $scope.adminAlert = new NcAlert();
-    $scope.alert = new NcAlert();
-    $scope.devAlert = new NcAlert();
-    $scope.image_alert = new NcAlert();
-
+    //Default attributes to be populated in UI
     $scope.defaultAttributes = [];
-    AttributeService.getDefaultAttributes().then(function(res) {
-      $scope.defaultAttributes = res;
-    });
-
-    $scope.ShopGroupPolicy = function(range) {
-      return $scope.adminMode || $rootScope.ShopGroupPolicy(range);
-    }
-
-
-    $scope.isVisibleTo = function(abbrev) {
-      if (abbrev == "AD" && $scope.adminMode) return true;
-      if (abbrev == "ME") return true;
-      return false;
-    }
-
-    $scope.cancel = function() {
-      $scope.addProductForm.$dirty = false;
-      if (!$scope.adminMode) {
-        $window.location.href = "/products";
-      } else {
-        $window.location.href = "/admin/products";
-      }
-    }
-
-    $scope.imageBlockOptions = {
-      height: '150px',
-      width: '150px',
-      validateDimensionMin: IMAGE_DIM_BOUND[0],
-      validateDimensionMax: IMAGE_DIM_BOUND[1],
-      validateSquare: true,
-      validateFileSize: 5000000
-    };
-
+    //Form data to be posted and received
     $scope.formData = {
       Status: 'DF',
       ShopId: null,
@@ -17340,9 +17250,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         StockType: 'Stock',
         Images: [],
         Installment: 'N',
-        ShippingMethod: {
-          ShippingId: "1"
-        },
+        ShippingMethod: "1",
         VideoLinks: [],
         Visibility: true,
         SEO: {
@@ -17359,6 +17267,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       Variants: []
     };
 
+    //Breadcrumb Component
+    $scope.breadcrumb = {
+      globalCategory: null
+    };
+    //Approve panel component
     if ($scope.approveMode) {
       $scope.formData.AdminApprove = {
         Information: 'WA',
@@ -17369,6 +17282,164 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         RejectReason: ''
       }
     }
+
+    //Data Set (will be populated)
+    $scope.dataset = {
+      CombinedAttributeSets: [],
+      Brands: []
+    };
+    $scope.dataset.AttributeSets = [{
+      AttributeSetId: null,
+      disabled: true,
+      AttributeSetNameEn: 'No Attribute Set'
+    }];
+    $scope.dataset.GlobalCategories = [];
+    $scope.dataset.LocalCategories = [];
+    $scope.dataset.BrandsEmpty = [{
+      BrandId: null,
+      _group: 'Search by Brand Name or Brand ID...',
+      BrandNameEn: 'No Result',
+      disabled: true
+    }];
+    $scope.dataset.Brands = [];
+    $scope.dataset.attributeOptions = angular.copy(AttributeOptions.proto());
+
+
+    //All the refresher functions
+    $scope.refresher = {
+      AttributeSets: function(q) {
+        if (!q) return;
+        return AttributeSetService.list({
+          _order: 'AttributeSetId',
+          _limit: 5,
+          _offset: 0,
+          _direction: 'asc',
+          searchText: q
+        }).then(function(ds) {
+
+          var searchRes = ds.data.map(function(d) {
+            d._group = 'Search Results';
+            d.AttributeSetTagMaps = $productAdd.flatten.AttributeSetTagMap(d.AttributeSetTagMaps);
+            return d;
+          });
+
+          $scope.dataset.CombinedAttributeSets = _.unionBy(searchRes, $scope.dataset.AttributeSets, 'AttributeSetId');
+        })
+      },
+      RelatedProducts: function(q) {
+        return Product.getAll({
+          searchText: q,
+          pageSize: 8
+        }).then(function(ds) {
+          $scope.dataset.RelatedProducts = ds.data;
+        })
+      },
+      Brands: function(q) {
+        if (!q) return;
+        $scope.dataset.Brands = [];
+        return Brand.getAll({
+          pageSize: 10,
+          searchText: q
+        }).then(function(ds) {
+          $scope.dataset.Brands = ds.data; // _.unionBy($scope.dataset.Brands, ds.data, 'BrandId');
+          $scope.dataset.Brands = $scope.dataset.Brands.map(function(m) {
+            m._group = "Search Results";
+            return m;
+          });
+          // return $scope.dataset.Brands;
+        });
+      }
+    };
+
+    // CK editor options
+    $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
+
+
+    //All the alert bar on the page
+    $scope.adminAlert = new NcAlert();
+    $scope.alert = new NcAlert();
+    $scope.devAlert = new NcAlert();
+    $scope.image_alert = new NcAlert();
+
+    //Fields that will be exempt from locking (always editable fields)
+    //See top level <fieldset> "ap-fieldset-lock-on" attribute
+    $scope.unlockedFields = [];
+    Product.getUnlockedFields().then(function(data) {
+      $scope.unlockedFields = data;
+    });
+
+
+    //Image Upload Configs
+    var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
+    //allow from 1500x1500 but no greater than 2000x2000
+    var IMAGE_DIM_BOUND = [
+      [1500, 1500],
+      [2000, 2000]
+    ];
+    $scope.imageBlockOptions = {
+      height: '150px',
+      width: '150px',
+      validateDimensionMin: IMAGE_DIM_BOUND[0],
+      validateDimensionMax: IMAGE_DIM_BOUND[1],
+      validateSquare: true,
+      validateFileSize: 5000000
+    };
+    $scope.onImageUploadFail = function(kwd, data) {
+      console.log(kwd, 'kwd');
+      if (kwd == "onmaxsize") {
+        $scope.image_alert.error('Cannot exceed ' + data + ' images for each product.');
+      } else if (kwd == "ondimension") {
+        $scope.image_alert.error('Image dimension must be between ' +
+          IMAGE_DIM_BOUND[0][0] + 'x' +
+          IMAGE_DIM_BOUND[0][1] + '.' + ' and ' +
+          IMAGE_DIM_BOUND[1][0] + 'x' + IMAGE_DIM_BOUND[1][1] +
+          '. <strong>Your Image Size is ' + data[0] + "x" + data[1] +
+          '</strong>');
+      } else if (kwd == "ondisable") {
+        $scope.image_alert.error(
+          'You do not have permission to upload images.');
+      } else if (kwd == "onsquare") {
+        $scope.image_alert.error('Image must be a square (1:1 ratio).');
+      } else if (kwd == 'onfilesize') {
+        $scope.image_alert.error('Each image file size must not exceed 5MB')
+      } else {
+        $scope.image_alert.error(common.getError(response.data));
+      }
+    }
+    $scope.onImageUploadSuccess = function() {
+      $scope.image_alert.close();
+    }
+    $scope.onImageUploadQueueLimit = _.noop;
+
+    //Revision control 
+    $scope.TimeMachine = {
+      active: false,
+      preview: function(historyId, historyDate) {
+        $scope.pageState.load("Loading Product Revision");
+        Product.getRevision(historyId).then(function(res) {
+          res.Status = 'DF';
+          $scope.dataset.attributeOptions = angular.copy(AttributeOptions.proto()); // will trigger watchvariantchange
+          var catId = Number(res.MainGlobalCategory.CategoryId);
+
+          $productAdd.fill(catId, $scope.pageState,
+            $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory,
+            $scope.controlFlags, $scope.variationFactorIndices, res
+          ).then(function() {
+            $scope.formData.ProductId = Number(res.ProductId);
+            $scope.pageState.reset();
+            $scope.alert.success(
+              'This is a preview of revision history on ' +
+              moment(historyDate).format("d/MM/YY"));
+            $scope.variantPtr = $scope.formData.MasterVariant;
+            $scope.addProductForm.$setPristine(true);
+            $scope.TimeMachine.active = true;
+          });
+
+          $scope.addProductForm.$setPristine(true);
+        });
+      }
+    }
+
 
     //Adjust Limit Individual Day check box when
     //prepare days are non zero
@@ -17393,14 +17464,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
     };
 
-    $scope.disableInstallment = function() {
-      if (!$scope.variantPtr.SalePrice) return true;
-      return (Number($scope.variantPtr.SalePrice) || 0) < 5000;
-    }
-
-    var checkSchema = function(data, schemaName) {
-      return true;
-    };
 
     //Open modal for cat selector
     $scope.openCategorySelectorModal = function(ith, key, title) {
@@ -17473,66 +17536,12 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     };
 
 
-    $scope.onImageUploadFail = function(kwd, data) {
-      console.log(kwd, 'kwd');
-      if (kwd == "onmaxsize") {
-        $scope.image_alert.error('Cannot exceed ' + data + ' images for each product.');
-      } else if (kwd == "ondimension") {
-        $scope.image_alert.error('Image dimension must be between ' +
-          IMAGE_DIM_BOUND[0][0] + 'x' +
-          IMAGE_DIM_BOUND[0][1] + '.' + ' and ' +
-          IMAGE_DIM_BOUND[1][0] + 'x' + IMAGE_DIM_BOUND[1][1] +
-          '. <strong>Your Image Size is ' + data[0] + "x" + data[1] +
-          '</strong>');
-      } else if (kwd == "ondisable") {
-        $scope.image_alert.error(
-          'You do not have permission to upload images.');
-      } else if (kwd == "onsquare") {
-        $scope.image_alert.error('Image must be a square (1:1 ratio).');
-      } else if(kwd == 'onfilesize') {
-        $scope.image_alert.error('Each image file size must not exceed 5MB')
-      } else {
-        $scope.image_alert.error(common.getError(response.data));
-      }
-    }
-
-    $scope.onImageUploadSuccess = function() {
-      $scope.image_alert.close();
-    }
-
-    $scope.onImageUploadQueueLimit = function() {
-      //nop
-    };
-    $scope.asStatus = Product.getStatus;
-    $scope.refresher = {};
 
     var watchVariantFactorChanges = function() {
       $scope.$watch('dataset.attributeOptions', function() {
         $productAdd.generateVariants($scope.formData, $scope.dataset)
       }, true);
     };
-
-
-    // CK editor options
-    $scope.ckOptions = config.CK_DEFAULT_OPTIONS;
-    $scope.dataset = {
-      CombinedAttributeSets: [],
-      Brands: []
-    };
-    $scope.dataset.AttributeSets = [{
-      AttributeSetId: null,
-      disabled: true,
-      AttributeSetNameEn: 'No Attribute Set'
-    }];
-    $scope.dataset.GlobalCategories = [];
-    $scope.dataset.LocalCategories = [];
-    $scope.dataset.BrandsEmpty = [{
-      BrandId: null,
-      _group: 'Search by Brand Name or Brand ID...',
-      BrandNameEn: 'No Result',
-      disabled: true
-    }];
-    $scope.dataset.Brands = [];
 
     $scope.enableVariation = function() {
       if ($scope.uploader.isUploading) {
@@ -17569,40 +17578,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       value: 'INDIVIDUAL'
     }];
 
-    $scope.pageState = {
-      loading: {
-        state: true,
-        message: 'Loading..'
-      },
-      load: function(msg) {
-        $scope.pageState.loading.message = msg;
-        $scope.pageState.loading.state = true;
-      },
-      reset: function() {
-        $scope.alert.close();
-        $scope.devAlert.close();
-        $scope.adminAlert.close();
-        $scope.pageState.loading.state = false;
-        $scope.TimeMachine.active = false;
-      }
-    };
 
-    $scope.breadcrumb = {
-      globalCategory: null
-    };
 
     $scope.updateBreadcrumb = function(globalCatId) {
       $scope.breadcrumb.globalCategory = Category.createCatStringById(
         globalCatId, $scope.dataset.GlobalCategories);
     };
 
-    $scope.preview = function() {
-      console.log("Before Serialization", $scope.formData);
-      var serialized = Product.serialize($scope.formData);
-      console.log("After Serialization", serialized);
-      checkSchema(serialized);
-    };
-
+    //Watches
     $scope.$watch('variantPtr.OriginalPrice+variantPtr.SalePrice', function() {
       var form = $scope.addProductForm;
       if (form.OriginalPrice) form.OriginalPrice.$setValidity('min', true);
@@ -17654,17 +17637,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
      */
     var manualValidate = function(Status) {
       var mat = []
-
       if (Status == 'WA') {
-
-        if (!$scope.formData.Brand.BrandId) {
-          mat.push('Brand');
-        }
-
-        if ($scope.formData.MasterVariant.Images.length == 0) {
-          mat.push('At least one image');
-        }
-
+        if (!$scope.formData.Brand.BrandId) mat.push('Brand');
+        if ($scope.formData.MasterVariant.Images.length == 0) mat.push('At least one image');
         $scope.formData.Variants.forEach(function(variant) {
           if (!variant.Visibility) return;
           if (variant.Images.length == 0) {
@@ -17672,22 +17647,12 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
               variant.text + "'");
           }
         })
-
       }
-
-      // var cnt = $scope.formData.Variants.reduce(function (total, x) {
-      //   return x.Visibility ? total + 1 : total
-      // }, 0)
-
-      // if (cnt == 0 && $scope.formData.Variants.length > 0) {
-      //   mat.push('At least one variant need to be visible. Use visible feature in Overview Panel to hide all variants.')
-      // }
 
       if ($scope.formData.ExpireDate && $scope.formData.ExpireDate <=
         $scope.formData.EffectiveDate) {
         mat.push('Effective date/time must come before expire date/time.')
       }
-
 
       return mat
     };
@@ -17711,19 +17676,25 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           }
         }],
         size: 'size-warning',
-        resolve: {
-
-        }
+        resolve: {}
       });
 
       modalInstance.result.then(function(selectedItem) {
         if (selectedItem == 'yes') {
           $scope.publish('DF');
         }
-      }, function() {
-        // console.log('Modal dismissed at: ' + new Date())
-      })
+      });
 
+    }
+
+    //When user presses cancel
+    $scope.cancel = function() {
+      $scope.addProductForm.$dirty = false;
+      if (!$scope.adminMode) {
+        $window.location.href = "/products";
+      } else {
+        $window.location.href = "/admin/products";
+      }
     }
 
     /**
@@ -17746,18 +17717,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           }
         }],
         size: 'size-warning',
-        resolve: {
-
-        }
+        resolve: {}
       })
       modalInstance.result.then(function(selectedItem) {
         // console.log(selectedItem)
         if (selectedItem == 'yes') {
           $scope.publish('WA')
         }
-      }, function() {
-        // console.log('Modal dismissed at: ' + new Date())
-      })
+      });
 
     }
 
@@ -17807,7 +17774,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         return;
       }
 
-      function defaultOnEmpty(vari){
+      function defaultOnEmpty(vari) {
         if (_.isEmpty(vari.SafetyStock)) {
           vari.SafetyStock = 0;
         }
@@ -17855,10 +17822,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
 
       var errorList = [];
-      if(Status == 'WA'){
-        if (!(_.get($scope.formData.ShippingMethod, 'ShippingId') > 0)) {
-            errorList.push('Shipping Method');
-          }
+      if (Status == 'WA') {
+        if (!(Number($scope.formData.ShippingMethod) > 0)) {
+          errorList.push('Shipping Method');
+        }
       }
 
       //Tell user which fields are invalid
@@ -17866,8 +17833,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         $scope.pageState.reset();
         console.log($scope.addProductForm.$error);
         var requiredMissing = ('required' in $scope.addProductForm.$error);
+        
         if (Status == 'DF' && requiredMissing) {
-          
+
           if ($scope.addProductForm.ProductNameEn.$invalid) {
             errorList.push('Product Name (English)');
           }
@@ -17885,42 +17853,37 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             errorList.push('Brand');
           }
 
-          
         } else if (Status == 'WA' && requiredMissing) {
-          $scope.alert.error(
-            'Unable to publish because you are missing required fields')
+          return $scope.alert.error('Unable to publish because required fields are missing or incorrect.');
         } else {
-          console.warn($scope.addProductForm.$error)
-          $scope.alert.error(
-            'Unable to save. Please make sure all fields have no error.')
+          return $scope.alert.error('Unable to save. Please make sure all fields have no error.');
         }
-        return
+
       }
 
-      if(errorList.length > 0){
-        return $scope.alert.error('Unable to save. Please make sure that ' +
-            errorList.join(' and ') + (errorList.length > 1 ? ' are ' :
-              ' is ') + 'filled correctly.');
+      if (errorList.length > 0) {
+        return $scope.alert.error('Unable to save because ' +
+          errorList.join(' and ') + (errorList.length > 1 ? ' are ' :
+            ' is ') + ' are missing or incorrect.');
       }
 
       //TODO: move this to default value
       if (Number($scope.formData.MasterVariant.OriginalPrice) == 0 || _.isNaN(
           Number($scope.formData.MasterVariant.OriginalPrice))) {
-          $scope.formData.MasterVariant.OriginalPrice = $scope.formData.MasterVariant.SalePrice;
+        $scope.formData.MasterVariant.OriginalPrice = $scope.formData.MasterVariant.SalePrice;
       }
 
 
       $scope.pageState.load('Applying changes..');
 
       var apiRequest = Product.serialize($scope.formData);
-      // checkSchema(apiRequest, 'productStages', '(TX)');
 
       Product.publish(apiRequest, Status).then(function(res) {
         $scope.pageState.reset();
 
         if (res.ProductId) {
           // loadOverview(res);
-          $scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions); // will trigger watchvariantchange
+          $scope.dataset.attributeOptions = angular.copy(AttributeOptions.proto()); // will trigger watchvariantchange
           var catId = Number(res.MainGlobalCategory.CategoryId);
 
           $productAdd.fill(catId, $scope.pageState, $scope
@@ -17929,11 +17892,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             function() {
               $scope.formData.ProductId = Number(res.ProductId);
               $scope.pageState.reset();
-              $scope.alert.success(
-                'Your product has been saved successfully. <a href="' +
-                (options.listingUrl || '/products') +
-                '">View Product List</a>');
-              // console.log("MVAR after save", $scope.formData.MasterVariant);
+              var successText = 'Your product has been saved successfully.';
+              if (Status == 'WA') {
+                successText = 'Your product has been sent for approval. It will be published automatically if approved';
+              }
+              $scope.alert.success(successText + ' <a href="' + (options.listingUrl || '/products') + '">View Product List</a>');
               $scope.variantPtr = $scope.formData.MasterVariant;
               $scope.addProductForm.$setPristine(true);
             });
@@ -17956,6 +17919,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       });
 
     }
+
+    /*
+     * On controller initialize
+     */
     $scope.init = function(viewBag) {
       if (!angular.isObject(viewBag)) throw new KnownException(
         'View bag is corrupted');
@@ -17966,6 +17933,17 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       for (var page in tabPage) {
         tabPage[page].angular()
       }
+
+      //Load default attributes to be displayed on page
+      AttributeService.getDefaultAttributes().then(function(res) {
+        $scope.defaultAttributes = res;
+      });
+
+      //Load shipping methods to be displayed on UI
+      ShippingService.list().then(function(data) {
+        $scope.dataset.ShippingList = data;
+      });
+
 
       if (_editMode) {
         var productId = viewBag.productId;
@@ -18010,17 +17988,12 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                     $scope.formData.AdminApprove.RejectReason);
                 } else if (!$scope.adminMode && $scope.formData.Status ==
                   'AP') {
-                  $scope.adminAlert.success(
-                    "This product has been approved. Click 'Edit Product' to make changes."
-                  );
+                  $scope.adminAlert.success("This product has been approved. Click 'Edit Product' to make changes.");
                 } else if (!$scope.adminMode && $scope.formData.Status ==
                   'WA') {
-                  $scope.adminAlert.open(false,
-                    "This product is waiting for approval for the admin. You cannot edit any product detail now.",
-                    "yellow");
+                  $scope.adminAlert.open(false, "This product is waiting for approval for the admin. You cannot edit any product detail now.", "yellow");
                 }
 
-                checkSchema(inverseFormData);
 
               });
 
@@ -18046,8 +18019,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         var catId = Number(viewBag.catId);
         $productAdd.fill(catId, $scope.pageState, $scope.dataset,
           $scope.formData, $scope.breadcrumb,
-          $scope.controlFlags, $scope.variationFactorIndices).then(
-          function() {
+          $scope.controlFlags, $scope.variationFactorIndices).then(function() {
             $scope.pageState.reset();
             watchVariantFactorChanges();
           })
@@ -18057,6 +18029,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     }
 
+
+    //TODO: tagPage paradigm is outdated
+    //change!
     var tabPage = {};
     tabPage.images = {
       angular: function() {
@@ -18204,117 +18179,85 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
     }
 
-    $scope.protoAttributeOptions = AttributeOptions.proto();
-
     $scope.uploader = ImageService.getUploader('/ProductImages', {
       queueLimit: QUEUE_LIMIT
     });
 
 
-    $scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions);
-
-    $scope.refresher.AttributeSetsLoading = false;
-    $scope.refresher.AttributeSets = function(q) {
-      if (!q) return;
-      $scope.refresher.AttributeSetsLoading = true;
-      return AttributeSetService.list({
-        _order: 'AttributeSetId',
-        _limit: 5,
-        _offset: 0,
-        _direction: 'asc',
-        searchText: q
-      }).then(function(ds) {
-        $scope.refresher.AttributeSetsLoading = false;
-
-        var searchRes = ds.data.map(function(d) {
-          d._group = 'Search Results';
-          d.AttributeSetTagMaps = $productAdd.flatten.AttributeSetTagMap(
-            d.AttributeSetTagMaps);
-          return d;
-        });
-
-        $scope.dataset.CombinedAttributeSets = _.unionBy(searchRes,
-          $scope.dataset.AttributeSets, 'AttributeSetId');
-        // console.log($scope.dataset.CombinedAttributeSets, 'scope.dataset.CombinedAttributeSets');
-      })
-    };
-
-
-    ShippingService.list().then(function(data) {
-      $scope.dataset.ShippingList = data;
-    });
-
-    /**
-     * Refresh Related Product Data
-     * @param  {String} q
-     */
-    $scope.refresher.RelatedProducts = function(q) {
-      return Product.getAll({
-        searchText: q,
-        pageSize: 8
-      }).then(function(ds) {
-        $scope.dataset.RelatedProducts = ds.data;
-      })
-    }
-
-    $scope.controlFlags = {
-      variation: 'disable',
-      enableSections: {
-        embedVideo: false,
-        embed360: false
-      }
-    };
-
-    /**
-     * Refresh Brand Data Set used for searching
-     * @param  {String} q
-     */
-    $scope.refresher.BrandLoading = false;
-    $scope.refresher.Brands = function(q) {
-      // TODO: too slow
-      if (!q) return;
-      $scope.dataset.Brands = []; //searching
-
-      $scope.refresher.BrandLoading = true;
-
-      return Brand.getAll({
-        pageSize: 10,
-        searchText: q
-      }).then(function(ds) {
-        $scope.refresher.BrandLoading = false;
-        $scope.dataset.Brands = ds.data; // _.unionBy($scope.dataset.Brands, ds.data, 'BrandId');
-        $scope.dataset.Brands = $scope.dataset.Brands.map(function(m) {
-          m._group = "Search Results";
-          return m;
-        });
-        // return $scope.dataset.Brands;
-      });
-
-
-    }
-
+    //Warning when page changes
     $window.onbeforeunload = function(e) {
-        if (!$scope.addProductForm.$dirty) {
-          // only warn when form is dirty
-          return null;
-        }
-        console.log($scope.addProductForm);
-        var message = 'Your changes will not be saved.',
-          e = e || window.event
-          // For IE and Firefox
-        if (e) {
-          e.returnValue = message
-        }
+      if (!$scope.addProductForm.$dirty) {
+        // only warn when form is dirty
+        return null;
+      }
+      console.log($scope.addProductForm);
+      var message = 'Your changes will not be saved.',
+        e = e || window.event
+        // For IE and Firefox
+      if (e) {
+        e.returnValue = message
+      }
 
-        // For Safari
-        return message
-      } // end onbeforeunload
+      // For Safari
+      return message
+    }
 
+
+    //Other UI helpers
     $scope.asStatus = Product.getStatus;
     $scope.isFreeTextInput = util.isFreeTextDataType;
     $scope.isListInput = util.isListDataType;
     $scope.isHtmlInput = util.isHtmlDataType;
     $scope.isCheckboxInput = util.isCheckboxDataType;
+    //Show field if shop group matches
+    $scope.ShopGroupPolicy = function(range) {
+        return $scope.adminMode || $rootScope.ShopGroupPolicy(range);
+      }
+      //Show field if visibleTo matches
+    $scope.isVisibleTo = function(abbrev) {
+        if (abbrev == "AD" && $scope.adminMode) return true;
+        if (abbrev == "ME") return true;
+        return false;
+      }
+      //Seller permit function (inverted)
+    $scope.xspermit = function(id) {
+      if ($scope.adminMode) return false;
+      return !$rootScope.hasPermission(id);
+    };
+    //Should installment field be disabled or not
+    $scope.disableInstallment = function() {
+      if (!$scope.variantPtr.SalePrice) return true;
+      return (Number($scope.variantPtr.SalePrice) || 0) < 5000;
+    }
+
+    //UI Switches
+    //Variables that control ng-show for some compoennts
+    $scope.controlFlags = {
+        variation: 'disable',
+        enableSections: {
+          embedVideo: false,
+          embed360: false
+        }
+    };
+
+    //Manage loading status and so on
+    $scope.pageState = {
+      loading: {
+        state: true,
+        message: 'Loading..'
+      },
+      load: function(msg) {
+        $scope.pageState.loading.message = msg;
+        $scope.pageState.loading.state = true;
+      },
+      reset: function() {
+        $scope.alert.close();
+        $scope.devAlert.close();
+        $scope.adminAlert.close();
+        $scope.pageState.loading.state = false;
+        $scope.TimeMachine.active = false;
+      }
+    };
 
     // Variation Factor (lhs) Indices are used as index
     // for ng-repeat in variation tab
