@@ -290,6 +290,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 			var clean = {}
 			var serializer = {
+				SEO: function (seo){
+					seo.ProductUrlKeyEn = seo.ProductUrlKeyEn.toLowerCase();
+					return seo;
+				},
 				Variants: {
 					serialize: function (data) {
 						return data.map(function (v) {

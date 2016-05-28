@@ -1,7 +1,7 @@
 var angular = require('angular');
 
 angular.module('productDetail').controller('AbstractProductAddCtrl',
-  function($scope, $uibModal, $window, util, config, Product, ImageService,
+  function($scope, $uibModal, $window, util, config, Product, ImageService, common,
     AttributeService, $timeout, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
     KnownException, NcAlert, $productAdd, options, AttributeSetService,
     AdminShopService, VariationFactorIndices, AttributeOptions, ShippingService) {
@@ -18,7 +18,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       return !$rootScope.hasPermission(id);
     };
 
-    var MAX_FILESIZE = (options.maxImageUploadSize || 5000000);
     var QUEUE_LIMIT = (options.maxImageUploadQueueLimit || 20);
 
     //allow from 1500x1500 but no greater than 2000x2000
@@ -104,7 +103,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       width: '150px',
       validateDimensionMin: IMAGE_DIM_BOUND[0],
       validateDimensionMax: IMAGE_DIM_BOUND[1],
-      'validateSquare': true
+      validateSquare: true,
+      validateFileSize: true
     };
 
     $scope.formData = {
@@ -210,15 +210,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     var checkSchema = function(data, schemaName) {
       return true;
-      //Perform schema check
-      // var schema = JSONCache.get(schemaName || 'productStages');
-      // var validation = skeemas.validate(data, schema);
-      // console.log("Schema validation result: ", schemaName, validation);
-      // if (!validation.valid) {
-      //   $scope.devAlert.error(
-      //     '<strong>Warning </strong> Ahancer Product Add Exchange Protocol (A-PAEP) not enforced.'
-      //   );
-      // }
     };
 
     //Open modal for cat selector
@@ -293,7 +284,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
 
     $scope.onImageUploadFail = function(kwd, data) {
-      // console.log(kwd, data);
+      console.log(kwd, 'kwd');
       if (kwd == "onmaxsize") {
         $scope.image_alert.error('Cannot exceed ' + data + ' images for each product.');
       } else if (kwd == "ondimension") {
@@ -308,8 +299,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           'You do not have permission to upload images.');
       } else if (kwd == "onsquare") {
         $scope.image_alert.error('Image must be a square (1:1 ratio).');
+      } else if(kwd == 'onfilesize') {
+        $scope.image_alert.error('Each image file size must not exceed 5MB')
       } else {
-        $scope.image_alert.error(data);
+        $scope.image_alert.error(common.getError(response.data));
       }
     }
 
@@ -671,13 +664,20 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       defaultOnEmpty($scope.formData.MasterVariant);
 
 
+      var errorList = [];
+      if(Status == 'WA'){
+        if (!(_.get($scope.formData.ShippingMethod, 'ShippingId') > 0)) {
+            errorList.push('Shipping Method');
+          }
+      }
 
+      //Tell user which fields are invalid
       if ($scope.addProductForm.$invalid) {
         $scope.pageState.reset();
         console.log($scope.addProductForm.$error);
         var requiredMissing = ('required' in $scope.addProductForm.$error);
         if (Status == 'DF' && requiredMissing) {
-          var errorList = []
+          
           if ($scope.addProductForm.ProductNameEn.$invalid) {
             errorList.push('Product Name (English)');
           }
@@ -695,9 +695,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             errorList.push('Brand');
           }
 
-          $scope.alert.error('Unable to save. Please make sure that ' +
-            errorList.join(' and ') + (errorList.length > 1 ? ' are ' :
-              ' is ') + 'filled correctly.')
+          
         } else if (Status == 'WA' && requiredMissing) {
           $scope.alert.error(
             'Unable to publish because you are missing required fields')
@@ -709,10 +707,16 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         return
       }
 
+      if(errorList.length > 0){
+        return $scope.alert.error('Unable to save. Please make sure that ' +
+            errorList.join(' and ') + (errorList.length > 1 ? ' are ' :
+              ' is ') + 'filled correctly.');
+      }
+
+      //TODO: move this to default value
       if (Number($scope.formData.MasterVariant.OriginalPrice) == 0 || _.isNaN(
           Number($scope.formData.MasterVariant.OriginalPrice))) {
-        $scope.formData.MasterVariant.OriginalPrice = $scope.formData.MasterVariant
-          .SalePrice;
+          $scope.formData.MasterVariant.OriginalPrice = $scope.formData.MasterVariant.SalePrice;
       }
 
 
@@ -725,7 +729,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         $scope.pageState.reset();
 
         if (res.ProductId) {
-
           // loadOverview(res);
           $scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions); // will trigger watchvariantchange
           var catId = Number(res.MainGlobalCategory.CategoryId);
@@ -914,13 +917,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           queueLimit: QUEUE_LIMIT
         });
 
-        $scope.uploaderModal.filters.push({
-          'name': 'enforceMaxFileSize',
-          'fn': function(item) {
-            return item.size <= MAX_FILESIZE
-          }
-        });
-
         $scope.toggleVisibility = function(p) {
           if ($scope.xspermit(44)) {
             return $scope.alert.error(
@@ -1026,13 +1022,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       queueLimit: QUEUE_LIMIT
     });
 
-    $scope.uploader.filters.push({
-      'name': 'enforceMaxFileSize',
-      'fn': function(item) {
-        // console.log('iterm', item);
-        return item.size <= MAX_FILESIZE
-      }
-    });
 
     $scope.dataset.attributeOptions = angular.copy($scope.protoAttributeOptions);
 

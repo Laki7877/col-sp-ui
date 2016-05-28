@@ -4,7 +4,7 @@
     <div class="form-section-content">
         <div class="form-group" ng-if="variantPtr == formData.MasterVariant">
             <div class="width-label">
-                <label class="control-label">Shipping Method</label>
+                <label class="control-label required">Shipping Method</label>
             </div>
             <div class="width-field-normal">
                 <div class="radio multiple-radio multiline">
@@ -16,7 +16,7 @@
                         ng-value="{{shi.ShippingId}}" ng-model="formData.ShippingMethod" /> {{ shi.ShippingMethodEn }} </label>
                 </div>
             </div>
-        </div>
+        </div> 
 
 
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.ExpressDelivery"
