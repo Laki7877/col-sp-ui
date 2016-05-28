@@ -17856,7 +17856,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
       //default values      
       for (var vari in $scope.formData.Variants) {
-        defaultOnEmpty(defaultOnEmpty(vari))
+        defaultOnEmpty(vari);
       }
       defaultOnEmpty($scope.formData.MasterVariant);
 
