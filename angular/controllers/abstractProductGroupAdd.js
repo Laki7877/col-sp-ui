@@ -21,6 +21,11 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 			}
 		};
 	}
+
+	$scope.unmapProduct = function(pair){
+		delete pair.MappedProduct;
+	};
+
 	$scope.adminMode = (options.adminMode);
 	$scope.alert = new NcAlert();
 	$scope.loading = false;
@@ -108,8 +113,7 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 		if(!$scope.formData.AttributeSet.AttributeSetId) return;
 		return Product.getUngrouped(q,
 				$scope.formData.AttributeSet.AttributeSetId,
-				$scope.formData.Shop.ShopId,
-				$scope.formData.Category.CategoryId)
+				$scope.formData.Shop.ShopId)
 			.then(function(ds) {
 				$scope.dataset.Products = ds.data;
 			});
@@ -118,8 +122,7 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 	$scope.$watch('formData.AttributeSet', function(x) {
 		Product.getUngrouped(null,
 				$scope.formData.AttributeSet.AttributeSetId,
-				$scope.formData.Shop.ShopId,
-				$scope.formData.Category.CategoryId)
+				$scope.formData.Shop.ShopId)
 			.then(function(ds) {
 				$scope.dataset.Products = ds.data;
 			});
@@ -192,6 +195,7 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 				},
 				disable: function() {
 					return function(m) {
+						if (!m || !m.nodes) return false;
 						if (m.nodes.length == 0) return false;
 						return true;
 					}

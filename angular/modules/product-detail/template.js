@@ -128,7 +128,7 @@ angular.module("productDetail").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('ap/section-variant-table-b',
-    "<table class=\"table variation-table\"><thead><tr><th class=column-variant style=width:150px>Variant</th><th class=column-mapped-product style=width:400px>Product</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td><you-me ng-model=pair.MappedProduct display-by=ProductNameEn refresh=refresher.Products initial-choices=dataset.Products placeholder=\"Search by Product Name or PID\" choices=dataset.Products ng-disabled=!pair.Visibility name=pair_MappedProduct></you-me></td></tr></tbody></table>"
+    "<table class=\"table variation-table\"><thead><tr><th class=column-variant style=width:250px>Variant</th><th class=column-mapped-product>Product</th><th style=\"width: 150px\"></th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td><you-me ng-model=pair.MappedProduct display-by=ProductNameEn refresh=refresher.Products initial-choices=dataset.Products placeholder=\"Search by Product Name or PID\" choices=dataset.Products ng-disabled=!pair.Visibility name=pair_MappedProduct></you-me></td><td><button class=\"btn btn-white\" ng-click=unmapProduct(pair) ng-show=pair.MappedProduct>Unmap</button></td></tr></tbody></table>"
   );
 
 

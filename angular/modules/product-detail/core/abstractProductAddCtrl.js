@@ -624,9 +624,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         return;
       }
 
-      //default values
-      var defaultValueCheck = _.merge([$scope.formData.MasterVariant], $scope.formData.Variants);
-      for (var vari in defaultValueCheck) {
+      function defaultOnEmpty(vari){
         if (_.isEmpty(vari.SafetyStock)) {
           vari.SafetyStock = 0;
         }
@@ -665,8 +663,12 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         if (_.isEmpty(vari.NewArrivalDate)) {
           vari.NewArrivalDate = $scope.formData.UpdateOn;
         }
-
       }
+      //default values      
+      for (var vari in $scope.formData.Variants) {
+        defaultOnEmpty(defaultOnEmpty(vari))
+      }
+      defaultOnEmpty($scope.formData.MasterVariant);
 
 
 

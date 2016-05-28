@@ -1,8 +1,9 @@
 <table class="table variation-table">
 	<thead>
 		<tr>
-			<th class="column-variant" style="width:150px">Variant</th>
-			<th class="column-mapped-product" style="width:400px">Product</th>
+			<th class="column-variant" style="width:250px">Variant</th>
+			<th class="column-mapped-product">Product</th>
+			<th style="width: 150px"></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -31,6 +32,11 @@
 
 				</you-me>
 
+			</td>
+			<td>
+				<button class="btn btn-white" 
+				ng-click="unmapProduct(pair)"
+				ng-show="pair.MappedProduct">Unmap</button>
 			</td>
 		</tr>
 	</tbody>

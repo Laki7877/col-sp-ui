@@ -1091,6 +1091,11 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 			}
 		};
 	}
+
+	$scope.unmapProduct = function(pair){
+		delete pair.MappedProduct;
+	};
+
 	$scope.adminMode = (options.adminMode);
 	$scope.alert = new NcAlert();
 	$scope.loading = false;
@@ -1178,8 +1183,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 		if(!$scope.formData.AttributeSet.AttributeSetId) return;
 		return Product.getUngrouped(q,
 				$scope.formData.AttributeSet.AttributeSetId,
-				$scope.formData.Shop.ShopId,
-				$scope.formData.Category.CategoryId)
+				$scope.formData.Shop.ShopId)
 			.then(function(ds) {
 				$scope.dataset.Products = ds.data;
 			});
@@ -1188,8 +1192,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 	$scope.$watch('formData.AttributeSet', function(x) {
 		Product.getUngrouped(null,
 				$scope.formData.AttributeSet.AttributeSetId,
-				$scope.formData.Shop.ShopId,
-				$scope.formData.Category.CategoryId)
+				$scope.formData.Shop.ShopId)
 			.then(function(ds) {
 				$scope.dataset.Products = ds.data;
 			});
@@ -1262,6 +1265,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 				},
 				disable: function() {
 					return function(m) {
+						if (!m || !m.nodes) return false;
 						if (m.nodes.length == 0) return false;
 						return true;
 					}
@@ -17810,9 +17814,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         return;
       }
 
-      //default values
-      var defaultValueCheck = _.merge([$scope.formData.MasterVariant], $scope.formData.Variants);
-      for (var vari in defaultValueCheck) {
+      function defaultOnEmpty(vari){
         if (_.isEmpty(vari.SafetyStock)) {
           vari.SafetyStock = 0;
         }
@@ -17851,8 +17853,12 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         if (_.isEmpty(vari.NewArrivalDate)) {
           vari.NewArrivalDate = $scope.formData.UpdateOn;
         }
-
       }
+      //default values      
+      for (var vari in $scope.formData.Variants) {
+        defaultOnEmpty(defaultOnEmpty(vari))
+      }
+      defaultOnEmpty($scope.formData.MasterVariant);
 
 
 
@@ -18892,7 +18898,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-variant-table-b',
-    "<table class=\"table variation-table\"><thead><tr><th class=column-variant style=width:150px>Variant</th><th class=column-mapped-product style=width:400px>Product</th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td><you-me ng-model=pair.MappedProduct display-by=ProductNameEn refresh=refresher.Products initial-choices=dataset.Products placeholder=\"Search by Product Name or PID\" choices=dataset.Products ng-disabled=!pair.Visibility name=pair_MappedProduct></you-me></td></tr></tbody></table>"
+    "<table class=\"table variation-table\"><thead><tr><th class=column-variant style=width:250px>Variant</th><th class=column-mapped-product>Product</th><th style=\"width: 150px\"></th></tr></thead><tbody><tr ng-repeat=\"pair in formData.Variants track by $index\"><td class=column-text-ellipsis ng-class=\"{'opacity-50': !pair.Visibility}\">{{ pair.text }}</td><td><you-me ng-model=pair.MappedProduct display-by=ProductNameEn refresh=refresher.Products initial-choices=dataset.Products placeholder=\"Search by Product Name or PID\" choices=dataset.Products ng-disabled=!pair.Visibility name=pair_MappedProduct></you-me></td><td><button class=\"btn btn-white\" ng-click=unmapProduct(pair) ng-show=pair.MappedProduct>Unmap</button></td></tr></tbody></table>"
   );
 
 
@@ -19542,7 +19548,7 @@ angular.module('umeSelect')
             link: function (scope, element, attrs, ngModel, transclude) {                
                 
                 ngModel.$validators.required = function(modelValue, viewValue) {
-                   console.log(scope.required , 'scope.required');
+                   // console.log(scope.required , 'scope.required');
                    //TODO: erm wtf
                    if(scope.required && (!modelValue || modelValue.BrandId == 0 || !modelValue.BrandId)){
                        return false;
@@ -19637,7 +19643,7 @@ angular.module('umeSelect')
                 ngModel.$validators.maxLengthPerTag = function(modelValue, viewValue) {
 
                     var value = modelValue || viewValue;
-                    console.log('maxLengthPerTag', scope.E_STATE);
+                    // console.log('maxLengthPerTag', scope.E_STATE);
                     if(scope.E_STATE == STATE_MAXLENGTHBLOCK) return false;
                     return true;
                 };
@@ -23273,11 +23279,16 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			var x =  {
 					AttributeSetId: attributeSetId,
 					ShopId: shopId,
-					CategoryId: categoryId,
+					EmptyAttributeSet: true,
 					_limit: 8,
 					_offset: 0,
 					_direction: 'asc'
 			};
+
+			if(categoryId){
+				x.CategoryId =  categoryId;
+			}
+
 			if(q){
 				x.searchText = q;
 			}

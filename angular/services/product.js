@@ -173,11 +173,16 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			var x =  {
 					AttributeSetId: attributeSetId,
 					ShopId: shopId,
-					CategoryId: categoryId,
+					EmptyAttributeSet: true,
 					_limit: 8,
 					_offset: 0,
 					_direction: 'asc'
 			};
+
+			if(categoryId){
+				x.CategoryId =  categoryId;
+			}
+
 			if(q){
 				x.searchText = q;
 			}

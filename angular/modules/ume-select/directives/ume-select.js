@@ -36,7 +36,7 @@ angular.module('umeSelect')
             link: function (scope, element, attrs, ngModel, transclude) {                
                 
                 ngModel.$validators.required = function(modelValue, viewValue) {
-                   console.log(scope.required , 'scope.required');
+                   // console.log(scope.required , 'scope.required');
                    //TODO: erm wtf
                    if(scope.required && (!modelValue || modelValue.BrandId == 0 || !modelValue.BrandId)){
                        return false;
@@ -131,7 +131,7 @@ angular.module('umeSelect')
                 ngModel.$validators.maxLengthPerTag = function(modelValue, viewValue) {
 
                     var value = modelValue || viewValue;
-                    console.log('maxLengthPerTag', scope.E_STATE);
+                    // console.log('maxLengthPerTag', scope.E_STATE);
                     if(scope.E_STATE == STATE_MAXLENGTHBLOCK) return false;
                     return true;
                 };
