@@ -21,7 +21,8 @@ angular.module('umeSelect')
                 disabled: '&?ngDisabled',
                 strictMode: '=?strictMode',
                 required: '=?ncRequired',
-                uniqueTag: '=?uniqueTag'
+                uniqueTag: '=?uniqueTag',
+                blockDuplicateTag: '=?blockDuplicateTag'
             },
             replace: true,
             priority: 1010,
@@ -66,6 +67,8 @@ angular.module('umeSelect')
                 scope.E_STATE = null; 
                 var STATE_MAXTAGBLOCKED = 1;
                 var STATE_MAXLENGTHBLOCK = 2;
+                var STATE_DUPLICATE_BLOCKED = 3;
+
                 scope.focused = false;
                 scope.loading = false;
 
@@ -122,19 +125,20 @@ angular.module('umeSelect')
                 });
 
                 ngModel.$validators.maxTagCount = function(modelValue, viewValue) {
-
-                    var value = modelValue || viewValue;
                     if(scope.E_STATE == STATE_MAXTAGBLOCKED) return false;
                     return true;
                 };
 
                 ngModel.$validators.maxLengthPerTag = function(modelValue, viewValue) {
-
-                    var value = modelValue || viewValue;
-                    // console.log('maxLengthPerTag', scope.E_STATE);
                     if(scope.E_STATE == STATE_MAXLENGTHBLOCK) return false;
                     return true;
                 };
+
+                ngModel.$validators.duplicateTagBlock = function(modelValue, viewValue){
+                    
+                    if(scope.E_STATE == STATE_DUPLICATE_BLOCKED) return false;
+                    return true;
+                }
 
 
                 //Watch change on input choices
@@ -332,6 +336,26 @@ angular.module('umeSelect')
 
                 scope.pickItem = function(item){
 
+                    if(scope.blockDuplicateTag){
+                        //check for dupe
+                        var found = false;
+                        if(scope.itsComplicated){
+                            //check shallow
+                            found =  _.find(scope.model, function(o) { return o == item; });
+
+                        }else{
+                            //check deep
+                            found =  _.find(scope.model, function(o) { return o[scope.displayBy] == item[scope.displayBy]; });
+                        }
+
+                        if(found){
+                            scope.E_STATE = STATE_DUPLICATE_BLOCKED;
+                            ngModel.$setDirty();
+                            ngModel.$validate();
+                            return false;
+                        }
+                    }
+
                     //Action to perform when user select a choice
                     //if in love (such as in relationship or its-complicated)
                     var finishListModel = function(){
@@ -358,6 +382,7 @@ angular.module('umeSelect')
                             ngModel.$setDirty();
                             ngModel.$validate();
 
+                            //Clear error message after 3 seconds
                             $timeout(function(){
                                 scope.E_STATE = null;
                                 ngModel.$validate();

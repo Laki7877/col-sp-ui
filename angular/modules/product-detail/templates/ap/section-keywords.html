@@ -5,6 +5,7 @@
 
 		<div nc-template="common/input/form-group-with-label" nc-label="Search Tags" nc-template-form="form.Keywords" nc-template-options-path="addProductForm/Keywords">
 			<you-me its-complicated="true" hide-icon="true" name="Keywords" placeholder="Separate with Enter" 
+			block-duplicate-tag="true"
 			max-tag-count="30" ng-disabled="xspermit(35)" max-length-per-tag="30" ng-model="formData.Tags"
 			choices="formData.AttributeSet.AttributeSetTagMaps"></you-me>
 		</div>

@@ -18750,7 +18750,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-keywords',
-    "<div class=form-section><div class=form-section-header><h2>Search Tags</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Search Tags\" nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><you-me its-complicated=true hide-icon=true name=Keywords placeholder=\"Separate with Enter\" max-tag-count=30 ng-disabled=xspermit(35) max-length-per-tag=30 ng-model=formData.Tags choices=formData.AttributeSet.AttributeSetTagMaps></you-me></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | nexclude: formData.Tags).length > 0\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | nexclude: formData.Tags\" ng-click=\"(formData.Tags.indexOf(tag) == -1) && formData.Tags.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Search Tags</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-label=\"Search Tags\" nc-template-form=form.Keywords nc-template-options-path=addProductForm/Keywords><you-me its-complicated=true hide-icon=true name=Keywords placeholder=\"Separate with Enter\" block-duplicate-tag=true max-tag-count=30 ng-disabled=xspermit(35) max-length-per-tag=30 ng-model=formData.Tags choices=formData.AttributeSet.AttributeSetTagMaps></you-me></div><div class=form-group ng-if=\"(formData.AttributeSet.AttributeSetTagMaps | nexclude: formData.Tags).length > 0\"><div class=width-label><label class=control-label>Suggested Search Tag</label></div><div class=width-field-xl><div class=\"bootstrap-tagsinput tagsinput-plain\"><a class=\"tag label label-info\" ng-repeat=\"tag in formData.AttributeSet.AttributeSetTagMaps | nexclude: formData.Tags\" ng-click=\"(formData.Tags.indexOf(tag) == -1) && formData.Tags.push(tag)\">{{ tag }}</a></div></div></div></div></div>"
   );
 
 
@@ -19463,7 +19463,8 @@ angular.module('umeSelect')
                 disabled: '&?ngDisabled',
                 strictMode: '=?strictMode',
                 required: '=?ncRequired',
-                uniqueTag: '=?uniqueTag'
+                uniqueTag: '=?uniqueTag',
+                blockDuplicateTag: '=?blockDuplicateTag'
             },
             replace: true,
             priority: 1010,
@@ -19508,6 +19509,8 @@ angular.module('umeSelect')
                 scope.E_STATE = null; 
                 var STATE_MAXTAGBLOCKED = 1;
                 var STATE_MAXLENGTHBLOCK = 2;
+                var STATE_DUPLICATE_BLOCKED = 3;
+
                 scope.focused = false;
                 scope.loading = false;
 
@@ -19564,19 +19567,20 @@ angular.module('umeSelect')
                 });
 
                 ngModel.$validators.maxTagCount = function(modelValue, viewValue) {
-
-                    var value = modelValue || viewValue;
                     if(scope.E_STATE == STATE_MAXTAGBLOCKED) return false;
                     return true;
                 };
 
                 ngModel.$validators.maxLengthPerTag = function(modelValue, viewValue) {
-
-                    var value = modelValue || viewValue;
-                    // console.log('maxLengthPerTag', scope.E_STATE);
                     if(scope.E_STATE == STATE_MAXLENGTHBLOCK) return false;
                     return true;
                 };
+
+                ngModel.$validators.duplicateTagBlock = function(modelValue, viewValue){
+                    
+                    if(scope.E_STATE == STATE_DUPLICATE_BLOCKED) return false;
+                    return true;
+                }
 
 
                 //Watch change on input choices
@@ -19774,6 +19778,26 @@ angular.module('umeSelect')
 
                 scope.pickItem = function(item){
 
+                    if(scope.blockDuplicateTag){
+                        //check for dupe
+                        var found = false;
+                        if(scope.itsComplicated){
+                            //check shallow
+                            found =  _.find(scope.model, function(o) { return o == item; });
+
+                        }else{
+                            //check deep
+                            found =  _.find(scope.model, function(o) { return o[scope.displayBy] == item[scope.displayBy]; });
+                        }
+
+                        if(found){
+                            scope.E_STATE = STATE_DUPLICATE_BLOCKED;
+                            ngModel.$setDirty();
+                            ngModel.$validate();
+                            return false;
+                        }
+                    }
+
                     //Action to perform when user select a choice
                     //if in love (such as in relationship or its-complicated)
                     var finishListModel = function(){
@@ -19800,6 +19824,7 @@ angular.module('umeSelect')
                             ngModel.$setDirty();
                             ngModel.$validate();
 
+                            //Clear error message after 3 seconds
                             $timeout(function(){
                                 scope.E_STATE = null;
                                 ngModel.$validate();
