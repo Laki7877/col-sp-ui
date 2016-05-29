@@ -4,7 +4,7 @@
   <div ng-controller="AdminSellerCouponCtrl">
     <nc-page-title nc-title="All Seller Coupons" icon="fa-bookmark"></nc-page-title>
     <div class="row search-section-wrapper">
-        <nc-search nc-model="params.searchText" nc-search-placeholder="'Search for Coupon Code'"></nc-search>
+        <nc-search nc-model="params.searchText" nc-search-placeholder="'Search by Coupon Code'"></nc-search>
     </div>
     <div class="table-section">
       <nc-table nc-model="list" nc-table-params="params" nc-table-options="tableOptions" nc-is-loading="loading" nc-is-searching="isSearching()">

@@ -36,7 +36,7 @@
         }
 
         img{
-          margin-top: 200px;
+          margin-top: 250px;
         }
 
         @media screen and (max-width:772px) {
@@ -52,14 +52,13 @@
 </head>
 
 <body>
-    <img src="/assets/img/seller_logo.png" height="85"/><br><br>
-    <p><b>404 Page not found</b>
-    </p>
+    <img src="/assets/img/login_logo_horizontal.png" height="50"/><br><br>
+    <h3>404 Page not found</h3>
     <p>The page or resource you requested <ins><?= parse_url($_SERVER['REQUEST_URI'])['path'] ?></ins>
     </br>
     does not exist.
     </p>
-    <a class='btn btn-primary' href="/">Go Home</a>
+    <a class='btn btn-primary' href="javascript:history.go(-1)">Go Back</a>
 </body>
 
 </html>

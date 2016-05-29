@@ -1,4 +1,4 @@
-module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $filter) {
+module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $filter, $interval, NCConfirm, smoothScroll, $timeout) {
 	'ngInject';
 	$scope.ProductList = [];
 	$scope.SELECT_ALL = false;
@@ -8,6 +8,8 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 	$scope.selectAllAttributeSets = false;
 	$scope.columnCount = 3;
 	$scope.availableFieldsColumn = [];
+	var exportProgressInterval;
+
 	Product.getExportableFields().then(function (data) {
 		data.forEach(function (record) {
 			var groupName = record.GroupName;
@@ -17,17 +19,19 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 			}
 
 			$scope.availableFields[groupName].push(record);
-			$scope.fields[record.MapName] = (record.MapName == 'PID');
+			$scope.fields[record.MapName] = (record.MapName == 'AAD');
 			$scope.loading.push(true);
 		});
 
 		var groupList = Object.keys($scope.availableFields);
+
 		for (var i = 0; i < $scope.columnCount; i++) {
 			var dct = {};
-			var keyPerColumn = Math.ceil(groupList.length / $scope.columnCount);
+			var keyPerColumn = Math.ceil(groupList.length / $scope.columnCount) + 1;
 
 			for (var j = 0; j <= keyPerColumn; j++) {
 				var moveKey = groupList.shift();
+				if (!moveKey) continue;
 				dct[moveKey] = ($scope.availableFields[moveKey]);
 			}
 
@@ -54,8 +58,10 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 
 		$scope.dataSet.attributeSets = {};
 		if ($scope.SELECT_ALL) {
-			AttributeSet.getAll().then(function (data) {
-				$scope.dataSet.attributeSets = data.map(function (m) {
+			AttributeSet.getAll({
+				byShop: true
+			}).then(function (data) {
+				$scope.dataSet.attributeSets = data.data.map(function (m) {
 					//m.Display = m.AttributeSetNameEn + " (" + m.ProductCount + ")";
 					m.Display = m.AttributeSetNameEn;
 					$scope.sumProductAttributeSet += Number(m.ProductCount);
@@ -80,6 +86,14 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 		}
 	}
 
+	$scope.exportAsyncDelegate = {
+			active: false,
+			progress: 0,
+			requestDate: null,
+			endDate: null
+	};
+		
+	//TODO: Optimization required
 	var productIds = [];
 	$scope.init = function (viewBag) {
 		productIds = viewBag.selectedProducts || [];
@@ -105,22 +119,91 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 		normalFlow();
 	}
 
+	$scope.exporter = {
+			progress: 0
+	};
+	
 	$scope.startExportProducts = function () {
 		$scope.exporter = {
-			progress: 10,
-			title: 'Exporting Product...'
+			progress: 0,
+			title: 'Requesting product export...'
 		};
 
-		$("#export-product").modal('show');
+		// $("#export-product").modal('show');
+		$scope.confirmExportProducts();
 	};
 
 	$scope.alert = new NcAlert();
+
+	$scope.allowExport = function(){
+		if(!$scope.exportAsyncDelegate.active) return true;
+		if(!$scope.exportAsyncDelegate.requestDate) return true;
+		if($scope.exportAsyncDelegate.requestDate && $scope.exportAsyncDelegate.progress == 0) return false;
+		return !($scope.exportAsyncDelegate.progress > 0 && $scope.exportAsyncDelegate.progress < 100);
+	}
+
+
+	function startIntervalCheck() {
+		exportProgressInterval = $interval(function () {
+			Product.exportProgress().then(function (result) {
+				$scope.exportAsyncDelegate.progress = result;
+				if (result >= 100) {
+					$interval.cancel(exportProgressInterval);
+					$scope.exportAsyncDelegate.endDate = new Date();
+				}
+			}, function () {
+				$interval.cancel(exportProgressInterval);
+				$scope.alert.error("An error has occurred while exporting products.");
+				$scope.exportAsyncDelegate.active = false;
+			});
+		}, 3000);
+	}
+
+	$scope.abortExport = function () {
+		
+		NCConfirm('Cancel Export', 'Are you sure you want to cancel this ongoing export?', function () {
+			Product.exportAbort().then(function (result) {
+				$interval.cancel(exportProgressInterval);
+					$scope.alert.error("Export has been cancelled.");
+					$scope.exportAsyncDelegate.active = false;
+				});
+			});
+	}
+
+	//Ping server once for existing queue
+	Product.exportProgress().then(function (result) {
+		//If success
+		$scope.exportAsyncDelegate = {
+			active: true,
+			progress: result,
+			requestDate: new Date(),
+			endDate: null
+		}
+
+		if (result >= 100) {
+			$interval.cancel(exportProgressInterval);
+			$scope.exportAsyncDelegate.endDate = new Date();
+		} else {
+			startIntervalCheck();
+		}
+
+	}, function () {
+		$scope.exportAsyncDelegate = {
+			active: false,
+			progress: 0,
+			requestDate: null,
+			endDate: null
+		}
+	});
+
 	$scope.confirmExportProducts = function () {
 
-		$("#export-product").modal('hide');
+		$timeout(function() {
+			smoothScroll(document.body, {
+				container: null
+			});
+		}, 10);
 
-		var fileName = "ProductExport.csv";
-		var a = document.getElementById("export_download_btn");
 
 		var error = function (r) {
 			$(".modal").modal('hide');
@@ -129,8 +212,6 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 			$scope.reloadData();
 		};
 
-		$scope.exporter.progress = 15;
-		var blobs = [];
 
 		var body = {};
 		body.Options = [];
@@ -149,18 +230,38 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 
 		Product.export(body).then(function (result) {
 
-			blobs.push(result);
+			$scope.exportAsyncDelegate = {
+				active: true,
+				progress: 0,
+				requestDate: new Date(),
+				endDate: null
+			}
+
+			$timeout(function(){
+				startIntervalCheck();
+			}, 5000);
+			
+			
+
+		}, error);
+	}
+
+
+	$scope.downloadFile = function () {
+		Product.exportGet().then(function (rx) {
+			var fileName = "ProductExport.csv";
+			var a = document.getElementById("export_download_btn");
+			var blobs = [];
+			blobs.push(rx);
 			var file = new Blob(blobs, { type: 'application/csv' });
 			var fileURL = URL.createObjectURL(file);
 			$scope.exporter.href = fileURL;
 			$scope.exporter.download = fileName;
 			$scope.exporter.progress = 100;
-			//$scope.exporter.title = 'Export Complete'
 			a.href = fileURL;
 			a.click();
 
-			$("#export-product-progressing").modal('hide');
-		}, error);
+		});
 	}
 
 	$scope.lockAS = function () {
@@ -178,7 +279,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 		Object.keys($scope.fields).forEach(function (key) {
 			$scope.fields[key] = $scope.ctrl.selectAll;
 		});
-		$scope.fields.PID = true;
+		$scope.fields.AAD = true;
 	};
 
 
@@ -192,6 +293,6 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 	}, true);
 
 	$scope.fields = {
-		PID: true
+		AAD: true
 	};
 };

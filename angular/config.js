@@ -1,5 +1,6 @@
 module.exports = {
-	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
+    REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
+    // REST_SERVICE_BASE_URL: 'http://localhost:58127/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
 	MAX_IMAGE_UPLOAD_SIZE: 5242880,
 	CK_DEFAULT_OPTIONS: {
@@ -12,7 +13,7 @@ module.exports = {
 	},
 	TYPEAHEAD_IMPORT_GUIDELINE_LIMIT: 8,
 	TYPEAHEAD_DELAY: 150,
-	ROLLBAR: {
+	xROLLBAR: {
 		token: '3f012de90d9247c0a19ae95ac6ed9daf',
 		environment: 'development'
 	},

@@ -30,17 +30,17 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                   <div class="form-section">
                     <div class="form-section-header"><h2>Coupon Information</h2></div>
                     <div class="form-section-content">
-                      <div nc-template="common/input/form-group-with-label" 
-                        nc-label="Coupon Name" 
-                        nc-template-form="form.CouponName" 
+                      <div nc-template="common/input/form-group-with-label"
+                        nc-label="Coupon Name"
+                        nc-template-form="form.CouponName"
                         nc-template-options-path="couponForm/CouponName">
-                          <input class="form-control width-field-large" name="CouponName" ng-model="formData.CouponName" ng-pattern-restrict="[^<>]*" maxlength="255" required ng-disabled="manageable" />
+                          <input class="form-control width-field-large" name="CouponName" ng-model="formData.CouponName"   maxlength="255" required ng-disabled="manageable" />
                       </div>
-                      <div nc-template="common/input/form-group-with-label" 
-                        nc-label="Coupon Code" 
-                        nc-template-form="form.CouponCode" 
+                      <div nc-template="common/input/form-group-with-label"
+                        nc-label="Coupon Code"
+                        nc-template-form="form.CouponCode"
                         nc-template-options-path="couponForm/CouponCode">
-                          <input class="form-control width-field-large text-uppercase" name="CouponCode" ng-model="formData.CouponCode" ng-pattern-restrict="[a-zA-Z0-9]*" maxlength="10" required ng-disabled="manageable" required/>
+                          <input class="form-control width-field-large" ng-uppercase name="CouponCode" ng-model="formData.CouponCode" ng-pattern-restrict="^[a-zA-Z0-9]*$" maxlength="10" required ng-disabled="manageable" required/>
                       </div>
                       <!-- Datetime Expiration -->
                       <div nc-date-range="components/date-range-vertical2"
@@ -52,12 +52,13 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                         nc-model-end="formData.ExpireDate"
                         nc-error-text="Expire date must come after start date"
                         nc-template-form="form"
-                        nc-template-options-path="couponForm/DateRange">
+                        nc-template-options-path="couponForm/DateRange"
+                        ng-disabled="manageable" >
                       </div>
                       <!-- Shop Status -->
                       <div nc-template="common/input/form-group-with-label"
                         nc-template-options-path="couponForm/Status"
-                        nc-template-form="form.Status" 
+                        nc-template-form="form.Status"
                         nc-label="Status">
                         <ui-select ng-model="formData.Status" search-enabled="false" ng-disabled="manageable" required>
                           <ui-select-match placeholder="- Select Status -">
@@ -70,12 +71,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                       </div>
                     </div>
                   </div>
-
-
                   <div class="form-section">
                     <div class="form-section-header"><h2>Action</h2></div>
                     <div class="form-section-content">
-                          <div nc-template="common/input/form-group-with-label" 
+                          <div nc-template="common/input/form-group-with-label"
                             nc-label="Action">
                               <div class="ah-select2-dropdown">
                                   <select ng-model="formData.Action" class="form-control" ng-disabled="manageable"
@@ -84,17 +83,17 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                                   </select>
                               </div>
                           </div>
-                          <div ng-show="formData.Action.Type == 'AMOUNT'"
-                            nc-template="common/input/form-group-with-label"
-                            nc-template-form="form.DiscountAmount" 
+                          <div ng-if="formData.Action.Type == 'AMOUNT'">
+                          <div nc-template="common/input/form-group-with-label"
+                            nc-template-form="form.DiscountAmount"
                             nc-template-options-path="couponForm/DiscountAmount"
                             nc-label="Discount Amount">
-                                <input type="text" name="DiscountAmount" class="form-control" ng-model="formData.Action.DiscountAmount" ng-disabled="manageable" ng-pattern-restrict="^[0-9]*(\.[0-9]{0,2})?$" required/>
+                                <input type="text" name="DiscountAmount" class="form-control" ng-model="formData.Action.DiscountAmount" ng-disabled="manageable" ng-pattern-restrict="^[0-9]*(\.[0-9]{0,2})?$" maxlength="10" required/>
                           </div>
-
-                          <div ng-show="formData.Action.Type != 'AMOUNT'" 
-                            nc-template="common/input/form-group-with-label"
-                            nc-template-form="form.DiscountPercent"   
+                          </div>
+                          <div ng-if="formData.Action.Type != 'AMOUNT'">
+                          <div nc-template="common/input/form-group-with-label"
+                            nc-template-form="form.DiscountPercent"
                             nc-template-options-path="couponForm/DiscountPercent"
                             nc-label="Discount Percent">
                               <div class="input-with-unit">
@@ -102,28 +101,27 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                                 <span class="input-unit">%</span>
                               </div>
                           </div>
-                          <div ng-show="formData.Action.Type != 'AMOUNT'" 
-                            nc-template="common/input/form-group-with-label" 
-                            nc-template-form="form.MaximumAmount" 
-                            nc-label="Max. Discount Amount" 
+                          <div nc-template="common/input/form-group-with-label"
+                            nc-template-form="form.MaximumAmount"
+                            nc-label="Max. Discount Amount"
                             nc-template-options-path="couponForm/MaximumAmount">
                               <input type="text" name="MaximumAmount" class="form-control" ng-model="formData.Action.MaximumAmount" ng-disabled="manageable" ng-pattern-restrict="^[0-9]*(\.[0-9]{0,2})?$" maxlength="10" placeholder="9999999"/>
                           </div>
+                          </div>
                     </div>
                   </div>
-
                   <div class="form-section">
                     <div class="form-section-header"><h2>More Options</h2></div>
                     <div class="form-section-content">
-                      <div nc-template="common/input/form-group-with-label" 
-                        nc-template-form="form.MaximumUsers" 
-                        nc-label="Maximum Usage" 
+                      <div nc-template="common/input/form-group-with-label"
+                        nc-template-form="form.MaximumUsers"
+                        nc-label="Maximum Usage"
                         nc-template-options-path="couponForm/MaximumUsers">
                           <input type="text" name="MaximumUsers" class="form-control" ng-model="formData.MaximumUser" ng-disabled="manageable" ng-pattern-restrict="^[0-9]*$" maxlength="10" placeholder="10" required/>
                       </div>
                       <div nc-template="common/input/form-group-with-label"
-                        nc-template-form="form.UsagePerCustomer" 
-                        nc-label="Usage per Customer" 
+                        nc-template-form="form.UsagePerCustomer"
+                        nc-label="Usage per Customer"
                         nc-template-options-path="couponForm/UsagePerCustomer">
                           <input type="text" name="UsagePerCustomer" class="form-control" ng-model="formData.UsagePerCustomer" ng-disabled="manageable" ng-pattern-restrict="^[0-9]*$" maxlength="10" placeholder="1"/>
                       </div>
@@ -141,15 +139,16 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                     <div class="form-section-header"><h2>Order Condition</h2></div>
                     <div class="form-section-content">
                       <div nc-template="common/input/form-group-with-label"
-                        nc-template-form="form.Condition_Order" 
+                        nc-template-form="form.Condition_Order"
                         nc-label="Criteria">
                         <ui-select name="Condition_Order" ng-model="formData.Conditions.Order[0].Type" ng-disabled="manageable" search-enabled="false">
                             <ui-select-match placeholder="-- Select Criteria --">{{ $select.selected.name }}</ui-select-match>
                             <ui-select-choices repeat="i.value as i in criteria">{{ i.name }}</ui-select-choices>
                         </ui-select>
                       </div>
-                      <div ng-if="formData.Conditions.Order[0].Type != 'No filter'">
-                        <div nc-template="common/input/form-group-with-label" 
+                      <div ng-if="formData.Conditions.Order[0].Type != 'NoFilter'">
+                        <div nc-template="common/input/form-group-with-label"
+                          nc-template-form="form.Condition_Value"
                           nc-label="Price"
                           nc-template-options-path="couponForm/Condition_Value">
                           <input name="Condition_Value" class="form-control" ng-model="formData.Conditions.Order[0].Value" ng-disabled="manageable" ng-pattern-restrict="^[0-9]*(\.[0-9]{0,2})?$" maxlength="10" placeholder="0" required/>
@@ -160,20 +159,21 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                   <div class="form-section">
                     <div class="form-section-header"><h2>Filter</h2></div>
                     <div class="form-section-content">
-                      <div nc-template="common/input/form-group-with-label" 
-                        nc-template-form="form.Conditions_Criteria" 
+                      <div nc-template="common/input/form-group-with-label"
+                        nc-template-form="form.Conditions_Criteria"
                         nc-label="Filter by">
                         <ui-select name="Conditions_Criteria" ng-model="formData.Conditions.FilterBy.Type" ng-disabled="manageable" search-enabled="false">
                             <ui-select-match placeholder="-- Select Filter --">{{ $select.selected.name }}</ui-select-match>
                             <ui-select-choices repeat="i.value as i in filters">{{ i.name }}</ui-select-choices>
                         </ui-select>
                       </div>
-                      <div ng-show="formData.Conditions.FilterBy.Type == 'LocalCategory'"
-                        nc-template="common/input/form-group-with-label"
-                        nc-template-options-path="couponForm/FilterByValue"
-                        nc-template-form="form.FilterByValue" 
-                        nc-label="Include">
-                        <nc-breadcrumb-select placeholder="Search for Local Category Name or ID" nc-breadcrumb-select-options="{ tagCount: 50 }" name="FilterByValue" nc-model="formData.Conditions.FilterBy.LocalCategories" ng-disabled="manageable" nc-breadcrumb-select-tree="categories" required></nc-breadcrumb-select>
+                      <div ng-if="formData.Conditions.FilterBy.Type == 'LocalCategory'">
+                        <div nc-template="common/input/form-group-with-label"
+                          nc-template-options-path="couponForm/FilterByValue"
+                          nc-template-form="form.FilterByValue"
+                          nc-label="Include">
+                          <nc-breadcrumb-select placeholder="Search for Local Category" nc-breadcrumb-select-options="{ tagCount: 50 }" name="FilterByValue" nc-model="formData.Conditions.FilterBy.LocalCategories" ng-disabled="manageable" nc-breadcrumb-select-tree="categories" ng-required="true"></nc-breadcrumb-select>
+                        </div>
                       </div>
                     </div>
                   </div>

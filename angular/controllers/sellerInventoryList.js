@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, $window, InventoryService, config, common, storage) {
+module.exports = function($scope, $rootScope, $controller, $window, InventoryService, config, common, storage) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
@@ -51,6 +51,9 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 		return $scope.statusDropdown[0];
 	};
 	$scope.popoverStock = function(item) {
+		if(!$rootScope.permit(51)) {
+			return;
+		}
 		if(!item.open) {
 			//Is popover open, load popovers
 			$scope.popoverItemOriginal = item;
@@ -60,6 +63,9 @@ module.exports = function($scope, $controller, $window, InventoryService, config
 			$scope.popoverItem.UpdateQuantity = 0
 		}
 	};
+	$scope.isUpdate = function(item) {
+		return $rootScope.permit(51);
+	}
 	$scope.updateStock = function(item) {
 		$scope.alert.close();
 		// cast to int

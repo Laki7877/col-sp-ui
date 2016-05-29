@@ -9,9 +9,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
       <span class="float-right page-header-action">
         <button class="btn btn-white btn-width-xl" ng-click="cancel()">Close</a>
         <button ng-if="getState() == 2 || getState() == 3" class="btn btn-white btn-width-xxl  margin-left-10" print-btn>Print Shipping Label</button>
-        <button ng-if="getState() == 1" class="btn btn-blue btn-width-xl margin-left-10" ng-click="acknowledge()">Acknowledge</button>
-        <button ng-if="getState() == 2" class="btn btn-blue btn-width-xxl margin-left-10" ng-click="readyShip()">Ready to Ship</button>
-        <button ng-if="getState() >= 3" class="btn btn-blue btn-width-xl margin-left-10" ng-click="save()">Save</button>
+        <button ng-if="$root.permit(31) && getState() == 1" class="btn btn-blue btn-width-xl margin-left-10" ng-click="acknowledge()">Acknowledge</button>
+        <button ng-if="$root.permit(31) && getState() == 2" class="btn btn-blue btn-width-xxl margin-left-10" ng-click="readyShip()">Ready to Ship</button>
+        <button ng-if="$root.permit(31) && getState() >= 3" class="btn btn-blue btn-width-xl margin-left-10" ng-click="save()">Save</button>
+        <button ng-if="$root.permit(31) && getState() == 3 && merchantFleet()" class="btn btn-blue btn-width-xl margin-left-10" ng-click="delivered()">Delivered</button>
       </span>
     </nc-page-title>
     <div>
@@ -156,7 +157,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
     <!-- Cancel Order -->
     <div class="add-product-body">
       <form class="ah-form sticky-mainform-action">
-        <div ng-if="getState() >= 0" class="tab-content">
+        <div ng-if="getState() >= 0 && $root.permit(31)" class="tab-content">
           <div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
             <div class="row">
               <div class="col-xs-12">
@@ -181,9 +182,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
             <span class="float-right">
               <button class="btn btn-white btn-width-xl" ng-click="cancel()">Close</a>
               <button ng-if="getState() == 2 || getState() == 3" class="btn btn-white btn-width-xxl" print-btn>Print Shipping Label</button>
-              <button ng-if="getState() == 1" class="btn btn-blue btn-width-xl" ng-click="acknowledge()">Acknowledge</button>
-              <button ng-if="getState() == 2" class="btn btn-blue btn-width-xxl" ng-click="readyShip()">Ready to Ship</button>
-              <button ng-if="getState() >= 3" class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+              <button ng-if="$root.permit(31) && getState() == 1" class="btn btn-blue btn-width-xl" ng-click="acknowledge()">Acknowledge</button>
+              <button ng-if="$root.permit(31) && getState() == 2" class="btn btn-blue btn-width-xxl" ng-click="readyShip()">Ready to Ship</button>
+              <button ng-if="$root.permit(31) && getState() >= 3" class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+              <button ng-if="$root.permit(31) && getState() == 3 && merchantFleet()" class="btn btn-blue btn-width-xl margin-left-10" ng-click="delivered()">Delivered</button>
             </span>
           </div>
         </div>

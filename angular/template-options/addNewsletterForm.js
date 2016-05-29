@@ -1,5 +1,10 @@
 module.exports = {
     Image: {
+        'error': {
+            'messages': {
+                'maxSize': ' Image file size must not exceed 5MB',
+            }
+        }
 
     },
     Subject: {
@@ -38,9 +43,19 @@ module.exports = {
 
     },
     IncludeShop: {
+        'error': {
+            'messages': {
+                'maxtagcount': 'Cannot exceed 100 shops',
+            }
+        }
 
     },
     ExcludeShop: {
+        'error': {
+            'messages': {
+                'maxtagcount': 'Cannot exceed 100 shops',
+            }
+        }
 
     }
 }

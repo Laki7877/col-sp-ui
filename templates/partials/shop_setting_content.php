@@ -222,19 +222,19 @@
                         nc-template-form="form.PhoneNumber"
                         nc-template-options-path="addShopAccountForm/PhoneNumber"
                         nc-label="Phone Number">
-                            <input name="PhoneNumber" ng-model="formData.PhoneNumber" ng-pattern-restrict="[0-9]*"/>
+                            <input name="PhoneNumber" ng-model="formData.PhoneNumber" ng-pattern-restrict="^[0-9]*$"/>
                     </div>
                     <div nc-template="common/input/form-group-with-label"
                         nc-template-form="form.FaxNumber"
                         nc-template-options-path="addShopAccountForm/FaxNumber"
                         nc-label="Fax Number">
-                            <input name="FaxNumber" ng-model="formData.FaxNumber" ng-pattern-restrict="[0-9]*"/>
+                            <input name="FaxNumber" ng-model="formData.FaxNumber" ng-pattern-restrict="^[0-9]*$"/>
                     </div>
                     <div nc-template="common/input/form-group-with-label"
                         nc-template-form="form.RemittanceFaxNumber"
                         nc-template-options-path="addShopAccountForm/RemittanceFaxNumber"
                         nc-label="Remittance Fax Number">
-                            <input name="RemittanceFaxNumber" ng-model="formData.RemittanceFaxNumber" ng-pattern-restrict="[0-9]*"/>
+                            <input name="RemittanceFaxNumber" ng-model="formData.RemittanceFaxNumber" ng-pattern-restrict="^[0-9]*$"/>
                     </div>
                     <div nc-template="common/input/form-group-with-label"
                         nc-template-form="form.Telex"

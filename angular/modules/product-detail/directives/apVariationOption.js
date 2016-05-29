@@ -8,7 +8,8 @@ angular.module('productDetail')
                 variationFactorIndices: '=generator',
                 formData: '=formData',
                 dataset: '=dataset',
-                controlFlags: '=?controlFlags'
+                controlFlags: '=?controlFlags',
+                disabled: '&?ngDisabled'
             },
             replace: true,
             priority: 1010,
@@ -22,7 +23,7 @@ angular.module('productDetail')
                         variation: 'enable'
                     }
                 }
-
+                
                 var gmz = angular.copy(scope.formData.Variants);
 
                 scope.variationFactorLocked = function(){

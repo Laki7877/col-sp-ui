@@ -1,4 +1,4 @@
-module.exports = function($scope, $window, $controller, OrderService, config, storage) {
+module.exports = function($scope, $window, $controller, OrderService, config, storage, common) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
@@ -107,7 +107,7 @@ module.exports = function($scope, $window, $controller, OrderService, config, st
 				disabled: true
 			};
 		}
-		if(item.Status == 'SH' && item.ShippingType == 'Merchant Fleet')
+		if(item.Status == 'RS' && item.ShippingType == 'Merchant Fleet')
 		{
 			return {
 				text: 'Delivered',
@@ -120,7 +120,23 @@ module.exports = function($scope, $window, $controller, OrderService, config, st
 		};
 	};
 	$scope.onButtonClick = function(item) {
-		$window.location.href = $scope.url + '/' + item.OrderId;
+		if(item.Status == 'RS' && item.ShippingType == 'Merchant Fleet') {
+			$scope.alert.close();
+			OrderService.update(item.OrderId, {
+				Status: 'DE',
+				Carrier: item.Carrier,
+				InvoiceNumber: item.InvoiceNumber,
+				TrackingNumber: item.TrackingNumber
+			})
+			.then(function(data) {
+				$scope.alert.success('Successfully Delivered.');
+				item = data;
+			}, function(err) {
+				$scope.alert.error(common.getError(err));
+			})
+		} else {
+			$window.location.href = $scope.url + '/' + item.OrderId;
+		}
 	}
 	$scope.status = config.ORDER_STATUS;
 }

@@ -31,7 +31,12 @@ module.exports = function($templateCache, $filter) {
 				(scope.callback || _.noop)(newObj);
 			});
 			scope.$watch('selectable', function() {
+				if(_.isNil(scope.selectable))
+					return;
 				_.pullAllBy(scope.selectable, scope.model, scope.id);
+				scope.selectable.sort(function(a,b) {
+					return a[scope.id] - b[scope.id];
+				});
 			});
 
 			//Drag event
@@ -39,7 +44,11 @@ module.exports = function($templateCache, $filter) {
 				scope.model.splice($index, 1);
 				scope.select(_.findIndex(scope.model, function(e) { return e[scope.id] == item[scope.id] }), false);
 			};
+			
 			scope.transfer = function(direction) {
+				if(_.isNil(scope.active(direction))) {
+					return;
+				}
 				if(direction) {
 					var removed = scope.selectable[scope.activeLeft];
 					scope.selectable.splice(scope.activeLeft, 1);
@@ -53,7 +62,10 @@ module.exports = function($templateCache, $filter) {
 					if(scope.activeRight >= scope.model.length) {
 						scope.activeRight--;
 					}
-					scope.selectable.push(removed);
+					scope.selectable.push(removed)
+					scope.selectable.sort(function(a,b) {
+						return a[scope.id] - b[scope.id];
+					});
 				}
 			};
 			scope.active = function(direction) {

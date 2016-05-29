@@ -105,6 +105,8 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 	$scope.save = function() {
 		if($scope.saving) return;
 
+		$scope.alert.close();
+
 		//Activate form submission
 		$scope.form.$setSubmitted();
 
@@ -114,6 +116,7 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 				.then(function(data) {
 					$scope.formData = ShopAppearanceService.deserialize(data);
 					$scope.form.$setPristine(true);
+					$scope.alert.success('Successfully saved.');
 				}, function(err) {
 					$scope.alert.error(common.getError(err));
 				})
@@ -121,14 +124,19 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 					$scope.saving = false;
 				});
 		} else {
-			//Form id
+			//Form id	
 			$scope.alert.error(util.saveAlertError());
 		}
 	}
-	$scope.uploadFail = function(e, arg1, arg2) {
+	$scope.uploadFail = function(e, arg1, arg2, arg3) {
 		$scope.alert.close();
 		if(e == 'ondimension') {
-			$scope.alert.error('Image must be ' + arg2[0] + 'x' + arg2[1] + ' pixels');
+			if(arg3) {
+				$scope.alert.error('Image width must be greater than ' + arg2 + ' pixels');
+			}
+			else {
+				$scope.alert.error('Image must be ' + arg2[0] + 'x' + arg2[1] + ' pixels');
+			}
 		}
 		else {
 			$scope.alert.error('<strong>Fail to upload photo</strong><br>' + common.getError(arg1.data));

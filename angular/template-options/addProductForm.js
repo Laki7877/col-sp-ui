@@ -8,6 +8,39 @@ module.exports = {
       }
     }
   },
+  PromotionPrice: {
+    divClass: 'col-xs-6',
+    error: {
+      messages: {
+        max: 'Promotion Price must be lower than Sale Price'
+      }
+    }
+  },
+  UrlKey: {
+    divClass: 'col-xs-6',
+    error: {
+      messages: {
+        pattern: 'Only 0-9 a-z - are allowed (no spaces or underscores)'
+      }
+    }
+  },
+  MetaTitle: {
+    divClass: 'col-xs-6',
+    error: {
+      messages: {
+        pattern: 'Special characters are not allowed'
+      }
+    }
+  },
+  SEO: {
+    divClass: 'col-xs-6',
+    inputSize: 'xxl',
+    error: {
+      messages: {
+        pattern: 'Special characters are not allowed'
+      }
+    }
+  },
   MinQtyAllowInCart: {},
   MaxQtyAllowInCart: {},
   KillerPointEn: {
@@ -52,7 +85,6 @@ module.exports = {
   DescriptionFull: {
     'divClass': 'col-xs-6',
     'formGroupClass': 'margin-top-40',
-    'labelClass': 'required',
     'inputSize': 'xxl'
   },
   ProductNameTh: {
@@ -86,6 +118,7 @@ module.exports = {
     'error': {
       'messages': {
         'required': 'This is a required field',
+        'min': 'Original Price must be higher than Sale Price',
         'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
       }
     }
@@ -120,14 +153,21 @@ module.exports = {
       }
     }
   },
+  ProductBoosting:{
+    error: {
+      messages: {
+        'maxnumber': 'Only numbers between 1-10000 are allowed',
+        'minnumber': 'Only numbers between 1-10000 are allowed'
+      }
+    }
+  },
   Keywords: {
     'inputSize': 'large',
     'tooltip': 'Search Tag will help your product easier to be discovered',
     'error': {
       'messages': {
-        'maxtagcount': 'Cannot exceed 20 tags',
-        'maxTagCount': 'Cannot exceed 20 tags',
-        'maxtaglength': 'Tag must contain 30 characters or less',
+        'maxTagCount': 'Cannot exceed 30 tags',
+        'maxLengthPerTag': 'Tag must contain 30 characters or less',
         'pattern': 'Only letters and numbers allowed'
       }
     }
@@ -171,7 +211,8 @@ module.exports = {
     'error': {
       'messages': {
         'required': 'This is a required field',
-        'pattern': 'Only numbers allowed'
+        'pattern': 'Only numbers allowed',
+        'maxnumber': 'Products in stock cannot take more than 24 days to prepare'
       }
     },
     'unit': 'Day'
@@ -188,7 +229,7 @@ module.exports = {
     'inputSize': 'xxl',
     'error': {
       'messages': {
-        'maxtagcount': 'Cannot exceed 10 related products'
+        'maxTagCount': 'Maximum number of related products has been reached'
       }
     }
   },

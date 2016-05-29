@@ -3,62 +3,94 @@
     <h2>SEO</h2></div>
     <div class="form-section-content">
          <div nc-template="common/input/form-group-with-label" nc-template-form="form.SEO_MetaTitleEn" nc-label="SEO (English)"
-            nc-template-options-path="addProductForm/Nothing">
-            <input class="form-control width-field-normal" ng-disabled="xspermit(42)" name="SEO_En" ng-model="variantPtr.SEO.SEO_En" maxlength="60" />
+            nc-template-options-path="addProductForm/SEO">
+            <textarea class="form-control"
+            ng-disabled="xspermit(42)"
+            ng-pattern="/^[^<>]+$/"
+            name="SEO_En" ng-model="variantPtr.SEO.SeoEn" maxlength="1000" ></textarea>
         </div>
          <div nc-template="common/input/form-group-with-label" nc-template-form="form.SEO_MetaTitleEn" nc-label="SEO (ไทย)"
-            nc-template-options-path="addProductForm/Nothing">
-            <input class="form-control width-field-normal" ng-disabled="xspermit(42)" name="SEO_Th" ng-model="variantPtr.SEO.SEO_Th" maxlength="60" />
+            nc-template-options-path="addProductForm/SEO">
+            <textarea class="form-control"
+            ng-disabled="xspermit(42)"
+            ng-pattern="/^[^<>]+$/"
+            name="SEO_Th" ng-model="variantPtr.SEO.SeoTh" maxlength="1000">
+            </textarea>
         </div>
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.SEO_MetaTitleEn" nc-label="Meta Title (English)"
-            nc-template-options-path="addProductForm/Nothing">
-            <input class="form-control width-field-normal" ng-disabled="xspermit(42)" name="SEO_MetaTitleEn" ng-model="variantPtr.SEO.MetaTitleEn" maxlength="60" />
+            nc-template-options-path="addProductForm/MetaTitle">
+            <input class="form-control width-field-normal" ng-disabled="xspermit(42)"
+            ng-pattern="/^[^<>]+$/"
+            name="SEO_MetaTitleEn" ng-model="variantPtr.SEO.MetaTitleEn" maxlength="60" />
         </div>
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.SEO_MetaTitleTh" nc-label="Meta Title (ไทย)"
-            nc-template-options-path="addProductForm/Nothing">
-            <input class="form-control width-field-normal" ng-disabled="xspermit(42)" name="SEO_MetaTitleTh" ng-model="variantPtr.SEO.MetaTitleTh" maxlength="60" />
+            nc-template-options-path="addProductForm/MetaTitle">
+            <input class="form-control width-field-normal" ng-disabled="xspermit(42)" name="SEO_MetaTitleTh"
+            ng-pattern="/^[^<>]+$/"
+            ng-model="variantPtr.SEO.MetaTitleTh" maxlength="60" />
         </div>
+        <!--META DESCRIPTION -->
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.SEO_MetaDescriptionEn" nc-label="Meta Description (English)"
             nc-template-options-path="addProductForm/Nothing">
-            <input maxlength="150" class="form-control width-field-normal" ng-disabled="xspermit(42)" name="SEO_MetaDescriptionEn" ng-model="variantPtr.SEO.MetaDescriptionEn" />
+            <input maxlength="150" class="form-control width-field-normal"
+            ng-pattern="/^[^<>]+$/"
+            ng-disabled="xspermit(42)" name="SEO_MetaDescriptionEn"
+            ng-model="variantPtr.SEO.MetaDescriptionEn" />
         </div>
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.SEO_MetaDescriptionTh" nc-label="Meta Description (ไทย)"
             nc-template-options-path="addProductForm/Nothing">
-            <input maxlength="150" class="form-control width-field-normal" ng-disabled="xspermit(42)" name="SEO_MetaDescriptionTh" ng-model="variantPtr.SEO.MetaDescriptionTh" />
+            <input maxlength="150" class="form-control width-field-normal"
+            ng-pattern="/^[^<>]+$/"
+            ng-disabled="xspermit(42)" name="SEO_MetaDescriptionTh"
+            ng-model="variantPtr.SEO.MetaDescriptionTh" />
         </div>
+        <!-- META KWD -->
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.SEO_MetaKeywordsEn" nc-label="Meta Keywords (English)"
             nc-template-options-path="addProductForm/Nothing">
-            <input placeholder="Keywords separated by comma" ng-disabled="xspermit(42)" class="form-control width-field-normal" name="SEO_MetaKeywordsEn" ng-model="variantPtr.SEO.MetaKeywordEn" />
+            <input placeholder="Keywords separated by comma" ng-disabled="xspermit(42)" maxlength="1000"
+            ng-pattern="/^[^<>]+$/"
+            class="form-control width-field-normal" name="SEO_MetaKeywordsEn" ng-model="variantPtr.SEO.MetaKeywordEn" />
         </div>
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.SEO_MetaKeywordsTh" nc-label="Meta Keywords (ไทย)"
             nc-template-options-path="addProductForm/Nothing">
-            <input placeholder="Keywords separated by comma" ng-disabled="xspermit(42)" class="form-control width-field-normal" name="SEO_MetaKeywordsTh" ng-model="variantPtr.SEO.MetaKeywordTh"/>
+            <input placeholder="Keywords separated by comma" ng-disabled="xspermit(42)"
+            ng-pattern="/^[^<>]+$/" maxlength="1000"
+            class="form-control width-field-normal" name="SEO_MetaKeywordsTh" ng-model="variantPtr.SEO.MetaKeywordTh"/>
         </div>
+        <!--URL KEY-->
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.SEO_ProductUrlKeyEn" nc-label="Product URL Key"
-            nc-template-options-path="addProductForm/Nothing">
-            <input maxlength="300" class="form-control width-field-normal" 
+            nc-template-options-path="addProductForm/UrlKey">
+            <input maxlength="100" class="form-control width-field-normal"
             ng-disabled="xspermit(42)"
-             ng-pattern="/^[A-Za-z0-9_\-]+$/" name="SEO_ProductUrlKeyEn"
+            ng-pattern-restrict="^[A-Za-z0-9\-]*$" name="SEO_ProductUrlKeyEn"
             ng-model="variantPtr.SEO.ProductUrlKeyEn"/>
         </div>
-        <div nc-template="common/input/form-group-with-label" 
-            nc-template-options-path="addProductForm/Nothing" 
+
+        <div nc-template="common/input/form-group-with-label"
+            nc-template-options-path="addProductForm/ProductBoosting"
             nc-template-form="form.SEO_ProductBoostingWeight"
+            ng-pattern-restrict="^[0-9]*$"
             nc-label="Product Boosting">
-            
-            <input type="text" class="form-control width-field-normal" 
-            ng-disabled="xspermit(42)"
-            min="0" max="10000" step="1" name="SEO_ProductBoostingWeight"
+
+            <input type="text" class="form-control width-field-normal"
+            ng-disabled="xspermit(42)" nc-default-value="5000"
+            ng-pattern-restrict="^[0-9]*$"
+            name="SEO_ProductBoostingWeight"
+            ng-maxnumber="10000"
+            ng-minnumber="1"
             ng-model="variantPtr.SEO.ProductBoostingWeight"/>
-        
+
         </div>
 
         <!-- todo: backend validation blocks non-admin from modifying this field -->
-        <div nc-template="common/input/form-group-with-label" nc-policy-admin 
-            nc-template-options-path="addProductForm/Nothing" nc-template-form="form.SEO_GlobalProductBoostingWeight"
+        <div nc-template="common/input/form-group-with-label" nc-policy-admin
+            nc-template-options-path="addProductForm/ProductBoosting" nc-template-form="form.SEO_GlobalProductBoostingWeight"
             nc-label="Global Product Boosting">
-            <input type="text" class="form-control width-field-normal" 
-            min="0" max="10000" step="1" name="SEO_GlobalProductBoostingWeight"
+            <input type="text" class="form-control width-field-normal"
+             nc-default-value="5000"
+            ng-maxnumber="10000"
+            ng-minnumber="1"
+            ng-pattern-restrict="^[0-9]*$" name="SEO_GlobalProductBoostingWeight"
             ng-model="variantPtr.SEO.GlobalProductBoostingWeight" />
         </div>
     </div>

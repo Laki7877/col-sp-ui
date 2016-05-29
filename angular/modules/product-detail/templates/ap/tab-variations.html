@@ -24,11 +24,11 @@
     <div class="row" ng-show="controlFlags.variation == 'enable'">
         <div class="col-xs-12">
             <!--missing perm-->
-            <ap-variation-option form-data="formData" control-flags="controlFlags"
+            <ap-variation-option form-data="formData" control-flags="controlFlags" ng-disabled="xspermit(44)"
                 generator="variationFactorIndices" dataset="dataset">
             </ap-variation-option>
 
-            <ap-multiplied-variants ng-show="formData.Variants.length > 0" >
+            <ap-multiplied-variants ng-show="formData.Variants.length > 0">
                 <div ng-include="'ap/section-variant-table-a'"></div>
             </ap-multiplied-variants>
             <!-- end .form-section -->

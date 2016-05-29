@@ -5,7 +5,7 @@
 		<nc-alert nc-model="alert"></nc-alert>
         <nc-page-title nc-title="Shop Appearance" icon="fa-sliders">
             <button type="button" class="btn btn-white btn-width-xl margin-right-10">Preview</button>
-            <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+            <button class="btn btn-blue btn-width-xl" ng-if="themes.length > 0" ng-click="save()">Save</button>
         </nc-page-title>
 		<div ng-show="loading" nc-loading="Loading.."></div>
 		<div ng-show="saving" nc-loading="Saving.."></div>
@@ -24,11 +24,14 @@
 						                <div class="form-section-content image_preview">
 											<div class="form-group">
 											 	<div class="col-xs-12 no-padding">
-													<div class="radio multiple-radio">
+													<div class="radio multiple-radio" ng-if="themes.length > 0">
 														<label class="label_width" ng-repeat="t in themes track by $index">
 															<input type="radio" name="theme{{$index+1}}" ng-model="formData.ThemeId" ng-value="t.ThemeId">{{t.ThemeName}}
 															<img class="image_radion_thumbnail" ng-src="{{ t.ThemeImage }}" >
 														</label>
+													</div>
+													<div ng-if="themes.length == 0">
+									            		<p class="text-center">This shop has no theme</p>
 													</div>
 												</div>
 											</div>
@@ -45,53 +48,73 @@
 						            		 	title="Banner"
 						            		 	uploader="uploader" 
 						            		 	size="8" 
-						            		 	width="{{X.width}}" 
-						            		 	height="{{X.height}}" 
+						            		 	width="1920" 
+						            		 	height="1080" 
 						            		 	fail="uploadFail">
 						            		</nc-image-banner-link>
 						            		<nc-product-layout 
-						            			source="formData.Data.B_ProductLayout1"
+						            			source="formData.Data.B_ProductLayout"
 						            			letter="B"
 						            			title="Product Layout 1"
 						            			refresh="getProducts"
 						            			products="products">
 						            		</nc-product-layout>
 						            		<nc-product-layout 
-						            			source="formData.Data.C_ProductLayout2"
+						            			source="formData.Data.C_ProductLayout"
 						            			letter="C"
 						            			title="Product Layout 2"
 						            			refresh="getProducts"
 						            			products="products">
 						            		</nc-product-layout>
 						            		<nc-product-layout 
-						            			source="formData.Data.D_ProductLayout3"
+						            			source="formData.Data.D_ProductLayout"
 						            			letter="D"
 						            			title="Product Layout 3"
 						            			refresh="getProducts"
 						            			products="products">
 						            		</nc-product-layout>
 						            		<nc-image-banner-video
-						            			source="formData.Data.I_Video"
-						            		 	letter="I"
-						            		 	letterx="I1"
+						            			source="formData.Data.E_Video"
+						            		 	letter="E"
+						            		 	letterx="E1"
 						            		 	title="Video"
 						            		 	uploader="uploader" 
 						            		 	size="8" 
-						            		 	width="{{X.width}}" 
-						            		 	height="{{X.height}}"
+						            		 	width="530" 
+						            		 	height="300"
+						            		 	accept="'.jpg,.jpeg,.png'"
 						            		 	fail="uploadFail">
 						            		</nc-image-banner-video>
+						            		<nc-image-banner-icon
+						            			source="formData.Data.F_Icon"
+						            		 	letter="F"
+						            		 	letterx="F1"
+						            		 	title="Social Network Icons"
+						            		 	uploader="uploader" 
+						            		 	size="8" 
+						            		 	width="64" 
+						            		 	height="64" 
+						            		 	fail="uploadFail"
+						            		 	subtitle="Icon Type"
+						            		 	accept="'.png'">
+						            		 </nc-image-banner-icon>
+						            		 <nc-textareas
+						            		 	source="formData.Data.G_Textarea"
+						            		 	letter="G"
+						            		 	title="Footer Text"
+						            		 	size="2">
+						            		 </nc-textareas>
 						            	</div>
 						            	<!-- robinson -->
 						            	<div ng-switch-when="2">
 						            		<nc-text-link 
-						            			source="formData.Data.A_TopMenu1"
+						            			source="formData.Data.A_Text"
 						            			letter="A"
 						            			letterx="A1"
 						            			title="Top Menu 1">
 						            		</nc-text-link>
 						            		<nc-image-links 
-						            			source="formData.Data.B_TopMenu2"
+						            			source="formData.Data.B_Image"
 						            			letter="B"
 						            			title="Top Menu 2"
 						            			uploader="uploader"
@@ -105,16 +128,18 @@
 						            		 	title="Banner"
 						            		 	uploader="uploader" 
 						            		 	size="8" 
-						            		 	width="{{X.width}}" 
-						            		 	height="{{X.height}}" 
+						            		 	width="1920" 
+						            		 	height="1080" 
 						            		 	fail="uploadFail">
 						            		 </nc-image-banner-link>
 						            		<nc-image-links 
-						            			source="formData.Data.D_SubBanner1"
+						            			source="formData.Data.D_Image"
 						            			letter="D"
 						            			title="Sub Banner 1"
 						            			uploader="uploader"
 						            			fail="uploadFail"
+						            			width="[1500,460,460,460,730]"
+						            			height="[600,340,340,340,1180]"
 						            			size="5">
 						            		</nc-image-links>
 						            		<nc-image-banner-link
@@ -124,22 +149,23 @@
 						            		 	title="Banner"
 						            		 	uploader="uploader" 
 						            		 	size="8" 
-						            		 	width="{{X.width}}" 
-						            		 	height="{{X.height}}" 
+						            		 	width="530" 
+						            		 	height="240" 
 						            		 	fail="uploadFail"
 						            		 	subtitle="Sub Banner"
+						            		 	accept="'.png'"
 						            		 	heading="true"
 						            		 	noauto="true">
 						            		</nc-image-banner-link>
 						            		<nc-product-layout 
-						            			source="formData.Data.F_ProductLayout1"
+						            			source="formData.Data.F_ProductLayout"
 						            			letter="F"
 						            			title="Product Layout 1"
 						            			refresh="getProducts"
 						            			products="products">
 						            		</nc-product-layout>
 						            		<nc-product-layout 
-						            			source="formData.Data.G_ProductLayout2"
+						            			source="formData.Data.G_ProductLayout"
 						            			letter="G"
 						            			letterx="G1"
 						            			title="Product Layout 2"
@@ -148,7 +174,7 @@
 						            			products="products">
 						            		</nc-product-layout>
 						            		<nc-product-layout 
-						            			source="formData.Data.H_ProductLayout3"
+						            			source="formData.Data.H_ProductLayout"
 						            			letter="H"
 						            			letterx="H1"
 						            			title="Product Layout 3"
@@ -157,37 +183,42 @@
 						            			products="products">
 						            		</nc-product-layout>
 						            		<nc-image-links 
-						            			source="formData.Data.I_SubBanner3"
+						            			source="formData.Data.I_Image"
 						            			letter="I"
 						            			title="Sub Banner 3"
 						            			uploader="uploader"
 						            			fail="uploadFail"
 						            			notitle="true"
+						            			width="[2280]"
+						            			height="[150]"
+						            			accept="'.jpg,.jpeg,.png'"
 						            			size="1">
 						            		</nc-image-links>
 						            		<nc-image-links 
-						            			source="formData.Data.J_SubBanner4"
+						            			source="formData.Data.J_Image"
 						            			letter="J"
 						            			title="Sub Banner 4"
 						            			uploader="uploader"
 						            			fail="uploadFail"
 						            			notitle="true"
+						            			min-width="[2280]"
+						            			accept="'.jpg,.jpeg,.png'"
 						            			size="1">
 						            		</nc-image-links>
 						            		<nc-image-banner-icon
-						            			source="formData.Data.K_SocialNetworkIcons"
+						            			source="formData.Data.K_Icon"
 						            		 	letter="K"
 						            		 	letterx="K1"
 						            		 	title="Social Network Icons"
 						            		 	uploader="uploader" 
 						            		 	size="8" 
-						            		 	width="{{Y.width}}" 
-						            		 	height="{{Y.height}}" 
+						            		 	width="64" 
+						            		 	height="64" 
 						            		 	fail="uploadFail"
 						            		 	subtitle="Icon Type">
 						            		 </nc-image-banner-icon>
 						            		 <nc-textareas
-						            		 	source="formData.Data.L_FooterText"
+						            		 	source="formData.Data.L_Textarea"
 						            		 	letter="L"
 						            		 	title="Footer Text"
 						            		 	size="2">
@@ -195,13 +226,13 @@
 						            	</div>
 						            	<div ng-switch-when="3">
 						            		<nc-text-link 
-						            			source="formData.Data.A_TopMenu1"
+						            			source="formData.Data.A_Text"
 						            			letter="A"
 						            			letterx="A1"
 						            			title="Top Menu 1">
 						            		</nc-text-link>
 						            		<nc-image-links 
-						            			source="formData.Data.B_TopMenu2"
+						            			source="formData.Data.B_Image"
 						            			letter="B"
 						            			title="Top Menu 2"
 						            			uploader="uploader"
@@ -215,40 +246,40 @@
 						            		 	title="Banner"
 						            		 	uploader="uploader" 
 						            		 	size="8" 
-						            		 	width="{{X.width}}" 
-						            		 	height="{{X.height}}" 
+						            		 	width="1920" 
+						            		 	height="1080" 
 						            		 	fail="uploadFail">
 						            		 </nc-image-banner-link>
 						            		<nc-image-banner-link
-						            			source="formData.Data.D_SubBanner1"
+						            			source="formData.Data.D_Banner"
 						            		 	letter="D"
 						            		 	letterx="D1"
 						            		 	title="Sub Banner 1"
 						            		 	uploader="uploader" 
 						            		 	size="8" 
-						            		 	width="{{X.width}}" 
-						            		 	height="{{X.height}}" 
+						            		 	width="520" 
+						            		 	height="520" 
 						            		 	fail="uploadFail"
 						            		 	subtitle="Sub Banner"
 						            		 	heading="true"
 						            		 	noauto="true">
 						            		 </nc-image-banner-link>
 						            		<nc-image-banner-link
-						            			source="formData.Data.E_SubBanner2"
+						            			source="formData.Data.E_Banner"
 						            		 	letter="E"
 						            		 	letterx="E1"
 						            		 	title="Sub Banner 2"
 						            		 	uploader="uploader" 
 						            		 	size="8" 
-						            		 	width="{{X.width}}" 
-						            		 	height="{{X.height}}" 
+						            		 	width="520" 
+						            		 	height="740" 
 						            		 	fail="uploadFail"
 						            		 	subtitle="Sub Banner"
 						            		 	heading="true"
 						            		 	noauto="true">
 						            		 </nc-image-banner-link>
 						            		<nc-product-layout 
-						            			source="formData.Data.F_ProductLayout1"
+						            			source="formData.Data.F_ProductLayout"
 						            			letter="F"
 						            			title="Product Layout 1"
 						            			refresh="getProducts"
@@ -256,7 +287,7 @@
 						            			products="products">
 						            		</nc-product-layout>
 						            		<nc-product-layout 
-						            			source="formData.Data.G_ProductLayout2"
+						            			source="formData.Data.G_ProductLayout"
 						            			letter="G"
 						            			letterx="G1"
 						            			title="Product Layout 2"
@@ -265,14 +296,14 @@
 						            			products="products">
 						            		</nc-product-layout>
 						            		<nc-image-banner-link
-						            			source="formData.Data.G_SubBanner3"
+						            			source="formData.Data.H_Banner"
 						            		 	letter="H"
 						            		 	letterx="H1"
 						            		 	title="Sub Banner 3"
 						            		 	uploader="uploader" 
 						            		 	size="8" 
-						            		 	width="{{X.width}}" 
-						            		 	height="{{X.height}}" 
+						            		 	width="320" 
+						            		 	height="320" 
 						            		 	fail="uploadFail"
 						            		 	subtitle="Sub Banner"
 						            		 	heading="true"
@@ -285,50 +316,55 @@
 						            		 	title="Video"
 						            		 	uploader="uploader" 
 						            		 	size="8" 
-						            		 	width="{{X.width}}" 
-						            		 	height="{{X.height}}" 
+						            		 	width="530" 
+						            		 	height="300"
+						            		 	accept="'.jpg,.jpeg,.png'" 
 						            		 	fail="uploadFail">
 						            		 </nc-image-banner-video>
 						            		<nc-image-banner-link
-						            			source="formData.Data.J_SubBanner4"
+						            			source="formData.Data.J_Banner"
 						            		 	letter="J"
 						            		 	letterx="J1"
 						            		 	title="Sub Banner 4"
 						            		 	uploader="uploader" 
 						            		 	size="8" 
-						            		 	width="{{X.width}}" 
-						            		 	height="{{X.height}}" 
+						            		 	width="530" 
+						            		 	height="300" 
+						            		 	accept="'.jpg,.jpeg,.png'"
 						            		 	fail="uploadFail"
 						            		 	noauto="true">
 						            		 </nc-image-banner-link>
 						            		<nc-image-links 
-						            			source="formData.Data.K_SubBanner5"
+						            			source="formData.Data.K_Image"
 						            			letter="K"
 						            			title="Sub Banner 5"
 						            			uploader="uploader"
 						            			fail="uploadFail"
+						            			min-width="[2280]"
+						            		 	accept="'.jpg,.jpeg,.png'"
 						            			size="1">
 						            		</nc-image-links>
 						            		<nc-image-banner-icon
-						            			source="formData.Data.L_SocialNetworkIcons"
+						            			source="formData.Data.L_Icon"
 						            		 	letter="L"
 						            		 	letterx="L1"
 						            		 	title="Social Network Icons"
 						            		 	uploader="uploader" 
 						            		 	size="8" 
-						            		 	width="{{Y.width}}" 
-						            		 	height="{{Y.height}}" 
+						            		 	width="64" 
+						            		 	height="64" 
 						            		 	fail="uploadFail"
 						            		 	subtitle="Icon Type">
 						            		 </nc-image-banner-icon>
 						            		 <nc-textareas
-						            		 	source="formData.Data.M_FooterText"
+						            		 	source="formData.Data.M_Textarea"
 						            		 	letter="M"
 						            		 	title="Footer Text"
 						            		 	size="2">
 						            		 </nc-textareas>
 						            	</div>
-						            	<div ng-switch-default></div>
+						            	<div ng-switch-default>
+						            	</div>
 						            </div>
 	          						<!--nc-image-banner2 ng-if="hasComponent('Banner')"  name="Banner" nc-model="formData.Banner.Images" source="formData" title="Banner Upload" uploader="bannerUploader" on-fail="uploadBannerFail" size="getComponent('Banner')"></nc-image-banner2>
 						            <div ng-if="hasComponent('Layout')" class="form-section">
@@ -395,7 +431,7 @@
 					<div class="add-product-form-action main-form-action full-width-row">
 						<div class="container-fluid">
 							<div class="float-right">
-								<button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+								<button class="btn btn-blue btn-width-xl" ng-if="themes.length > 0" ng-click="save()">Save</button>
 							</div>
 						</div>
 					</div>

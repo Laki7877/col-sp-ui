@@ -69,8 +69,8 @@
                   <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
                   <td class="display-column">
                     <div class="img-holder">
-                      <img ng-if='!row.ImageUrl' class="logo-img" src="<?= $this->asset('/assets/img/placeholder-no-image.png') ?>" />
-                      <img ng-if='row.ImageUrl' class="logo-img" src="{{ row.ImageUrl }}" />
+                      <img ng-if='row.ImageUrl == ""' class="logo-img" src="<?= $this->asset('/assets/img/placeholder-no-image.png') ?>" />
+                      <img ng-if='row.ImageUrl != ""' class="logo-img" src="{{ row.ImageUrl }}" />
                     </div>
                   </td>
                   <td class="column-text-ellipsis">

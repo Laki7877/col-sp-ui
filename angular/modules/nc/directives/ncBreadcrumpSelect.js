@@ -9,7 +9,7 @@ angular.module('nc')
 			if(_.isArray(tree) && tree.length > 0) {
 				_.forEach(tree, function(item) {
 					var encodedName = $filter('escapeHtml')(item[_globalOptions.nameKey]);
-					var name = _.isUndefined(parentObj) ? encodedName : parentObj.name + encodedSeparator + encodedName;
+					var name = _.isUndefined(parentObj) ? encodedName + ' (' + (item[_globalOptions.idKey]) + ')' : parentObj.name + encodedSeparator + encodedName;
 					var obj = {
 						displayName: name,
 						name: item[_globalOptions.nameKey],
@@ -29,16 +29,15 @@ angular.module('nc')
 				tree: '=ncBreadcrumbSelectTree',
 				options: '=?ncBreadcrumbSelectOptions',
 				name: '@name',
-				placeholder: '@'
+				placeholder: '@',
+				disabled: '=ngDisabled',
+				ngRequired: '='
 			},
 			template: $templateCache.get('common/ncBreadcrumbSelect'),
 			link: function(scope, elem, attrs) {
 				scope.searchable = [];
 				scope.model = {ptr: []};
-				scope.disabled = false;
-				if(!_.isNil(attrs.disabled)) {
-					scope.disabled = true;
-				}
+				
 				scope.options = _.defaults(scope.options, {
 					nameKey: 'NameEn',
 					childrenKey: 'nodes',
@@ -48,6 +47,18 @@ angular.module('nc')
 					tagCount: 5,
 					seperator: ' <span class="fa fa-angle-right"></span> '
 				});
+
+				scope.$watch('options', function() {
+					scope.options = _.defaults(scope.options, {
+						nameKey: 'NameEn',
+						childrenKey: 'nodes',
+						idKey: 'CategoryId',
+						placeholder: '',
+						limit: 10,
+						tagCount: 5,
+						seperator: ' <span class="fa fa-angle-right"></span> '
+					});
+				})
 				_globalOptions = scope.options;
 				scope.encodedSeparator = encodedSeparator;
 				scope.$watchCollection('model.ptr', function(newObj, oldObj) {

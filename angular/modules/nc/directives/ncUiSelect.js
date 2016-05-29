@@ -7,27 +7,32 @@ angular.module('nc')
                 var maxTagCount = 1000;
                 var maxTagLength = 30;
                 var tagPattern = false;
+                var maxTagLengthKey;
 
                 var $select = ctrl[1];
                 var $model = ctrl[0];
+                
                 $select.onSelectCallback = function () {
-                    var array = ($model.$modelValue || []);
+                    var array = $model.$modelValue || [];
                     var item = (array[array.length - 1] || "");
                     var _pass = true;
                     $model.$error = {};
+                    
+                    if(maxTagLengthKey && _.isPlainObject(item)) {
+                        item = item[maxTagLengthKey] || "";
+                    }
 
                     if (array.length > maxTagCount) {
-                        $model.$error.maxtagcount = true;
+                        //$model.$error.maxtagcount = true;
                         _pass = false;
-                    };
-
+                    }
                     if (item.length > maxTagLength) {
-                        $model.$error.maxtaglength = true;
+                        //$model.$error.maxtaglength = true;
                         _pass = false;
-                    };
+                    }
 
                     if (tagPattern && !item.ValueEn.match(tagPattern)) {
-                        $model.$error.pattern = true;
+                        //$model.$error.pattern = true;
                         _pass = false;
                     }
 
@@ -35,14 +40,22 @@ angular.module('nc')
                         $model.$modelValue.pop();
                         $model.$viewValue = $model.$modelValue;
                     }
-
                 };
+                attrs.$observe('ngModel', function(val) {
+                    $scope.$watch(val, function(o) {
+                        $select.onSelectCallback();
+                    });
+                });
 
                 attrs.$observe('ncMaxTagCount', function (val) {
                     if (!val) return;
                     maxTagCount = Number(val);
                 });
 
+                attrs.$observe('ncMaxTagLengthKey', function (val) {
+                    if (!val) return;
+                    maxTagLengthKey = val;
+                });
                 attrs.$observe('ncTagPattern', function (val) {
                     if (!val) return;
                     tagPattern = val;

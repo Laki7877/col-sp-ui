@@ -112,7 +112,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 	$scope.open = function(item) {
 		//Open add or edit one category
 		var modal = $uibModal.open({
-			animation: true,
+			animation: false,
 			size: 'xl',
 			keyboard: false,
 			templateUrl: 'global_category/modal',
@@ -284,7 +284,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				item.AttributeSetCount = data.AttributeSets.length;
 				Category.traverseSet(item.nodes, 'Visibility', item.Visibility);
 		}
-		$scope.alert.success(config.DEFAULT_SUCCESS_MESSAGE);
+			$scope.alert.success(config.DEFAULT_SUCCESS_MESSAGE);
 		});
 	};
 

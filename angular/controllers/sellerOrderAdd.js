@@ -1,4 +1,5 @@
 module.exports = function($scope, $window, $filter, $controller, OrderService, util, config, $uibModal) {
+  'ngInject';
   $scope.status = config.ORDER_STATUS;
   $scope.addressIter = [1,2,3,4]; //Amount of AddressX (ie, Address1, Address2)
   //Abstract Add Ctrl
@@ -41,13 +42,16 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
       TrackingNumber: $scope.formData.TrackingNumber
     });
   };
+  $scope.delivered = function() {
+    save({Status: 'DE'});
+  };
   //Acknowledge
   $scope.acknowledge = function() {
     save({Status: 'PE'});
   };
   $scope.merchantFleet = function() {
     return $scope.formData.ShippingType == 'Merchant Fleet';
-  }
+  };
   //Ready to ship
   $scope.readyShip = function() {
     $scope.form.$setSubmitted();
@@ -100,6 +104,7 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
           });
         });
       }
+
     } else {
       $scope.alert.error(util.saveAlertError());
     }

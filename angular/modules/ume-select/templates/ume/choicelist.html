@@ -4,7 +4,7 @@
 		<div class="selectize-dropdown-content">
 
 			<div data-group="Default" class="optgroup">
-				<div ng-show="item[groupBy]" ng-repeat-start="item in (searchText.length > 0 ? choices : initialChoices) track by $index" class="optgroup-header">
+				<div ng-show="item[groupBy]" ng-repeat-start="item in (searchText.length > 0 ? choices : choices) track by $index" class="optgroup-header">
 					{{ item[groupBy] }}
 				</div>
 				<div ng-repeat-end ng-click="pickItem(item)" data-value="{{item}}" 
@@ -13,7 +13,7 @@
 					{{ itemValue(item) }}
 				</div>
 				<!-- no result -->
-				<div ng-if="(choices | filter : searchText).length == 0 && notFound && !loading" data-selectable class="option">
+				<div ng-if="(choices | filter : searchText).length == 0 && notFound && !loading && searchText != ''" data-selectable class="option">
 					No result for search term '{{ searchText }}' 
 				</div>
 			</div>

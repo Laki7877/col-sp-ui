@@ -51,6 +51,10 @@ angular.module('nc')
                         opt.error = {};
                     };
 
+                    if(scope.optionsPath == 'searchForm/Price') {
+                        console.log(scope.templateField());
+                    }
+
                     scope.options = opt;
 
                 }

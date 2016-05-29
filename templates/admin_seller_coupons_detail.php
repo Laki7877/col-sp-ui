@@ -129,7 +129,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Coupons'])
                         nc-template-options-path="couponForm/FilterByValue"
                         nc-label="Include">
                         <ui-select ng-model="formData.Conditions.FilterBy.LocalCategories" multiple readonly ng-disabled="formData.Conditions.FilterBy.LocalCategories.length > 0">
-                          <ui-select-match>{{$item.NameEn}}</ui-select-match>
+                          <ui-select-match placeholder="Search for Local Category">{{$item.NameEn}} ({{$item.CategoryId}})</ui-select-match>
                           <ui-select-choices repeat="i in []"></ui-select-choices>
                         </ui-select>
                       </div>

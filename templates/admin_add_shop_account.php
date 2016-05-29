@@ -55,7 +55,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 										class="form-control"
 										name="ShopNameEn"
 										ng-model="formData.ShopNameEn"
-										ng-pattern-restrict="[^<>]*"
+										 
 										ng-class="{ 'has-error' : $root.isInvalid(form.ShopNameEn) }"
 										maxlength="255"
 										required />
@@ -69,6 +69,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 										class="form-control"
 										name="DomainName"
 										ng-model="formData.DomainName"
+										maxlength="255"
 										/>
 									</div>
 									<!-- URL Key -->
@@ -89,8 +90,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 										ng-lowercase
 										ng-model="formData.UrlKey"
 										ng-pattern="/^[0-9a-z\-]+$/"
+                  						ng-pattern-restrict="^[^\s]*$"
 										ng-class="{ 'has-error' : $root.isInvalid(form.UrlKey) }"
-										placeholder="formData.ShopNameEn"
 										maxlength="100"
 										/>
 									</div>
@@ -194,8 +195,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 										class="form-control"
 										name="MaxLocalCategory"
 										ng-model="formData.MaxLocalCategory"
-										ng-pattern-restrict="[0-9]*"
-										placeholder="8"
+										ng-pattern-restrict="^[0-9]*$"
+										placeholder="50"
 										maxlength="5"
 										/>
 									</div>
@@ -225,7 +226,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 				                    	nc-template-form="form.TaxPayerId"
 				                    	nc-label="Tax Payer ID"
 				                    	nc-template-options-path="addShopAccountForm/TaxPayerId">
-				                           <input class="form-control" name="TaxPayerId" type="text" ng-model="formData.TaxPayerId" ng-pattern-restrict="[^<>]*" maxlength="13" required/>
+				                           <input class="form-control" name="TaxPayerId" type="text" ng-model="formData.TaxPayerId"   maxlength="13" required/>
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.TermOfPayment"
@@ -292,13 +293,13 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 				                    	nc-template-form="form.BankAccountNumber"
 				                    	nc-label="Bank Account Number"
 				                    	nc-template-options-path="addShopAccountForm/BankAccountNumber">
-				                           <input class="form-control" name="BankAccountNumber" type="text" ng-model="formData.BankAccountNumber" ng-pattern-restrict="[0-9]*" maxlength="15" required/>
+				                           <input class="form-control" name="BankAccountNumber" type="text" ng-model="formData.BankAccountNumber" ng-pattern-restrict="^[0-9]*$" maxlength="15" required/>
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.BankAccountName"
 				                    	nc-label="Bank Account Name"
 				                    	nc-template-options-path="addShopAccountForm/BankAccountName">
-				                           <input class="form-control" name="BankAccountName" type="text" ng-model="formData.BankAccountName" ng-pattern-restrict="[^<>]*" maxlength="80" required/>
+				                           <input class="form-control" name="BankAccountName" type="text" ng-model="formData.BankAccountName"   maxlength="80" required/>
 				                    </div>
 								</div>
 							</div>
@@ -327,7 +328,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 											name="NameEn"
 											ng-model="formData.ShopOwner.NameEn"
 											ng-class="{ 'has-error' : $root.isInvalid(form.NameEn) }"
-											ng-pattern-restrict="[^<>]*"
+											 
 											maxlength="255"
 											required />
 									</div>
@@ -369,7 +370,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 										<input
 										class="form-control"
 										name="Email"
-										ng-pattern-restrict="[^<>]*"
+										 
 										ng-model="formData.ShopOwner.Email"
 										ng-class="{ 'has-error' : $root.isInvalid(form.Email) }"
 										type="email"
@@ -425,6 +426,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 										ng-pattern-restrict="^[0-9a-zA-Z]*$"
 										ng-maxlength="20"
 										ng-minlength="8"
+										maxlength="20"
 										ng-required="!(id > 0)" />
 									</div>
 									<!-- Confirm Password -->
@@ -448,6 +450,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 										ng-model="formData.ShopOwner.ConfirmPassword"
 										ng-class="{ 'has-error' : $root.isInvalid(form.ConfirmPassword) }"
 										ng-match="{{formData.ShopOwner.Password}}"
+										maxlength="20"
 										ng-required="!(id > 0)" />
 									</div>
 								</div>
@@ -538,19 +541,19 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 				                    <div nc-template="common/input/form-group-with-label" 
 				                    	nc-label="Shop Description (English)" 
 				                    	nc-template-options-path="shopSettingForm/ShopDescriptionEn">
-				                        <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopDescriptionEn" ng-pattern-restrict="[^<>]*" maxlength="500"></textarea>
+				                        <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopDescriptionEn"   maxlength="500"></textarea>
 				                    </div>
 
 				                    <div nc-template="common/input/form-group-with-label" nc-label="Shop Description (ไทย)" nc-template-options-path="shopSettingForm/ShopDescriptionTh">
-				                        <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopDescriptionTh" ng-pattern-restrict="[^<>]*" maxlength="500"></textarea>
+				                        <textarea class="form-control" rows="4" type="text" ng-model="formData.ShopDescriptionTh"   maxlength="500"></textarea>
 				                    </div>
 
 				                    <div nc-template="common/input/form-group-with-label" nc-label="Float Message (English)" nc-template-options-path="shopSettingForm/FloatMessageEn">
-				                        <input class="form-control" type="text" ng-model="formData.FloatMessageEn" ng-pattern-restrict="[^<>]*" maxlength="255"/>
+				                        <input class="form-control" type="text" ng-model="formData.FloatMessageEn"   maxlength="255"/>
 				                    </div>
 
 				                    <div nc-template="common/input/form-group-with-label" nc-label="Float Message (ไทย)" nc-template-options-path="shopSettingForm/FloatMessageTh">
-				                        <input class="form-control" type="text" ng-model="formData.FloatMessageTh" ng-pattern-restrict="[^<>]*" maxlength="255"/>
+				                        <input class="form-control" type="text" ng-model="formData.FloatMessageTh"   maxlength="255"/>
 				                    </div>
 				                </div>
 				            </div>
@@ -565,27 +568,27 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 				                    <div nc-template="common/input/form-group-with-label" nc-label="Facebook" 
 				                    	nc-template-options-path="shopSettingForm/SocialMediaLink"
 				                    	nc-template-form="form.Facebook">
-				                        <input class="form-control" type="url" ng-model="formData.Facebook"  ng-pattern-restrict="[^<>]*" maxlength="255" />
+				                        <input class="form-control" type="url" ng-model="formData.Facebook"    maxlength="255" />
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label" nc-label="YouTube" 
 				                    	nc-template-options-path="shopSettingForm/SocialMediaLink"
 				                    	nc-template-form="form.YouTube">
-				                        <input class="form-control" type="url" ng-model="formData.YouTube"  ng-pattern-restrict="[^<>]*" maxlength="255"/>
+				                        <input class="form-control" type="url" ng-model="formData.YouTube"    maxlength="255"/>
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label" nc-label="Twitter" 
 				                    	nc-template-options-path="shopSettingForm/SocialMediaLink"
 				                    	nc-template-form="form.Twitter">
-				                        <input class="form-control" type="url" ng-model="formData.Twitter"  ng-pattern-restrict="[^<>]*" maxlength="255"/>
+				                        <input class="form-control" type="url" ng-model="formData.Twitter"    maxlength="255"/>
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label" nc-label="Instagram" 
 				                    	nc-template-options-path="shopSettingForm/SocialMediaLink"
 				                    	nc-template-form="form.Instagram">
-				                        <input class="form-control" type="url" ng-model="formData.Instagram"  ng-pattern-restrict="[^<>]*" maxlength="255"/>
+				                        <input class="form-control" type="url" ng-model="formData.Instagram"    maxlength="255"/>
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label" nc-label="Pinterest"
 				                     	nc-template-options-path="shopSettingForm/SocialMediaLink"
 				                     	nc-template-form="form.Pinterest">
-				                        <input class="form-control" type="url" ng-model="formData.Pinterest"  ng-pattern-restrict="[^<>]*" maxlength="255"/>
+				                        <input class="form-control" type="url" ng-model="formData.Pinterest"    maxlength="255"/>
 				                    </div>
 				                </div>
 				            </div>
@@ -599,25 +602,25 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 				                <div class="form-section-content">
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-label="Address 1">
-				                        <input class="form-control" ng-model="formData.Address1" ng-pattern-restrict="[^<>]*" maxlength="35" />
+				                        <input class="form-control" ng-model="formData.VendorAddressLine1"   maxlength="35" />
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-label="Address 2">
-				                        <input class="form-control" ng-model="formData.Address2" ng-pattern-restrict="[^<>]*" maxlength="35"/>
+				                        <input class="form-control" ng-model="formData.VendorAddressLine2"   maxlength="35"/>
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-label="Address 3">
-				                        <input class="form-control" ng-model="formData.Address3" ng-pattern-restrict="[^<>]*" maxlength="35"/>
+				                        <input class="form-control" ng-model="formData.VendorAddressLine3"   maxlength="35"/>
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.OverseaShop"
 				                    	nc-label="Oversea Shop"
 				                    	nc-template-options-path="addShopAccountForm/OverseaShop">
-											<ui-select name="OverseaShop" ng-model="formData.OverseaShop" search-enabled="false">
+											<ui-select name="OverseaShop" ng-model="formData.OverseasVendorIndicator" search-enabled="false">
 												<ui-select-match placeholder="- Select Oversea Shop -">
 													<span ng-bind="$select.selected.Value"></span>
 												</ui-select-match>
-												<ui-select-choices repeat="item in overseas">
+												<ui-select-choices repeat="item.Key as item in overseas">
 													<span ng-bind="item.Value"></span>
 												</ui-select-choices>
 											</ui-select>
@@ -661,8 +664,8 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 												</ui-select-choices>
 											</ui-select>
 				                    </div>
-				                    <div ng-show="formData.Province"
-				                    	nc-template="common/input/form-group-with-label"
+				                    <div ng-if="formData.Province">
+				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.City"
 				                    	nc-label="City"
 				                    	nc-template-options-path="addShopAccountForm/City">
@@ -675,8 +678,9 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 												</ui-select-choices>
 											</ui-select>
 				                    </div>
-				                    <div ng-show="formData.City"
-				                    	nc-template="common/input/form-group-with-label"
+					                </div>
+				                    <div ng-if="formData.City">
+				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.District"
 				                    	nc-label="District"
 				                    	nc-template-options-path="addShopAccountForm/District">
@@ -689,56 +693,65 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 												</ui-select-choices>
 											</ui-select>
 				                    </div>
-									<div ng-show="formData.City"
-				                    	nc-template="common/input/form-group-with-label"
+					                </div>
+									<div ng-if="formData.District">
+				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.PostalCode"
 				                    	nc-template-options-path="addShopAccountForm/PostalCode"
 				                    	nc-label="Postal Code">
-											<input name="PostalCode" class="form-control" ng-model="formData.PostalCode"  />
+											<ui-select name="PostalCode" ng-model="formData.PostalCode" search-enabled="false">
+												<ui-select-match placeholder="- Select Postal Code -">
+													<span ng-bind="$select.selected.PostCode"></span>
+												</ui-select-match>
+												<ui-select-choices style="max-height:300px;" position="down" repeat="item in postals">
+													<span ng-bind="item.PostCode"></span>
+												</ui-select-choices>
+											</ui-select>
 				                    </div>
+				          		    </div>
 				                    <div class="margin-top-40"
 				                    	nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.PhoneNumber"
 				                    	nc-template-options-path="addShopAccountForm/PhoneNumber"
 				                    	nc-label="Phone Number">
-											<input name="PhoneNumber" class="form-control" ng-model="formData.PhoneNumber" ng-pattern-restrict="[0-9]*" maxlength="15" />
+											<input name="PhoneNumber" class="form-control" ng-model="formData.PhoneNumber" ng-pattern-restrict="^[0-9]*$" maxlength="15" />
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.FaxNumber"
 				                    	nc-template-options-path="addShopAccountForm/FaxNumber"
 				                    	nc-label="Fax Number">
-											<input name="FaxNumber" class="form-control" ng-model="formData.FaxNumber" ng-pattern-restrict="[0-9]*" maxlength="15" />
+											<input name="FaxNumber" class="form-control" ng-model="formData.FaxNumber" ng-pattern-restrict="^[0-9]*$" maxlength="15" />
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.RemittanceFaxNumber"
 				                    	nc-template-options-path="addShopAccountForm/RemittanceFaxNumber"
 				                    	nc-label="Remittance Fax Number">
-											<input name="RemittanceFaxNumber" class="form-control" ng-model="formData.RemittanceFaxNumber" ng-pattern-restrict="[0-9]*" maxlength="15" />
+											<input name="RemittanceFaxNumber" class="form-control" ng-model="formData.RemittanceFaxNumber" ng-pattern-restrict="^[0-9]*$" maxlength="18" />
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.Telex"
 				                    	nc-template-options-path="addShopAccountForm/Telex"
 				                    	nc-label="Telex">
-											<input name="Telex" class="form-control" ng-model="formData.Telex" ng-pattern-restrict="[0-9]*" maxlength="15" />
+											<input name="Telex" class="form-control" ng-model="formData.Telex" ng-pattern-restrict="^[0-9]*$" maxlength="15" />
 				                    </div>
 				                    <div class="margin-top-40"
 				                    	nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.ContactPersonFirstName"
 				                    	nc-template-options-path="addShopAccountForm/ContactPersonFirstName"
 				                    	nc-label="Contact Person First Name">
-											<input name="ContactPersonFirstName" class="form-control" ng-model="formData.ContactPersonFirstName" ng-pattern-restrict="[^<>]*" maxlength="15" />
+											<input name="ContactPersonFirstName" class="form-control" ng-model="formData.ContactPersonFirstName"   maxlength="15" />
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
 				                    	nc-template-form="form.ContactPersonLastName"
 				                    	nc-template-options-path="addShopAccountForm/ContactPersonLastName"
 				                    	nc-label="Contact Person Last Name">
-											<input name="ContactPersonLastName" class="form-control" ng-model="formData.ContactPersonLastName" ng-pattern-restrict="[^<>]*" maxlength="20" />
+											<input name="ContactPersonLastName" class="form-control" ng-model="formData.ContactPersonLastName"   maxlength="20" />
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label"
-				                    	nc-template-form="form.Email"
+				                    	nc-template-form="form.ShopEmail"
 				                    	nc-template-options-path="addShopAccountForm/Email"
 				                    	nc-label="Email Address">
-											<input type="email" name="Email" class="form-control" ng-model="formData.Email" ng-pattern-restrict="[^<>]*" maxlength="50" />
+											<input type="email" name="ShopEmail" class="form-control" ng-model="formData.Email"   maxlength="50" />
 				                    </div>
 				                </div>
 				            </div>

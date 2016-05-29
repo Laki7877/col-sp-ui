@@ -49,7 +49,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Accounts
 							                  name="Email"
 							                  ng-model="formData.Email"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Email) }"
-											  ng-pattern-restrict="[^<>]*"
+											   
 							                  type="email"
 							                  maxlength="255"
 							                  required />
@@ -72,7 +72,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Accounts
 							                  name="NameEn"
 							                  ng-model="formData.NameEn"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.NameEn) }"
-											  ng-pattern-restrict="[^<>]*"
+											   
 							                  maxlength="255"
 							                  required />
 							              </div>
@@ -99,11 +99,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Accounts
 							                  required />
 							              </div>
 							              <!-- Brand -->
-							              <div ng-show="formData.ShopGroup != 'ME'"
+							              <div ng-show="$root.Profile.Shop.ShopGroup != 'ME'"
 							              	nc-template="common/input/form-group-with-label"
 							              	nc-template-form="form.Brands"
 							              	nc-template-options-path="genericForm/BrandVisibility"
-							              	nc-label="Brand">
+							              	nc-label="Brand Visibility">
 							              	<ui-select name="Brands" ng-model="formData.Brands" nc-tag-validator nc-max-tag-count="20" multiple>
 							              		<ui-select-match placeholder="Search by Brand Name">{{$item.BrandNameEn}}</ui-select-match>
 							              		<ui-select-choices repeat="item in brands" refresh="getBrands($select.search)" refresh-delay="1">{{item.BrandNameEn}}</ui-select-choices>
@@ -151,6 +151,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Accounts
 							                  ng-pattern-restrict="^[0-9a-zA-Z]*$"
 							                  ng-maxlength="20"
 							                  ng-minlength="8"
+							                  maxlength="20"
 							                  ng-required="!(id > 0)" />
 							              </div>
 							              <!-- Confirm Password -->
@@ -174,6 +175,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Accounts
 							                  ng-model="formData.ConfirmPassword"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.ConfirmPassword) }"
 							                  ng-match="{{formData.Password}}"
+							                  maxlength="20"
 							                  ng-required="!(id > 0)" />
 							              </div>
 									</div>

@@ -43,6 +43,10 @@ var seller = {
 	'Account|fa-user': {
 		'User Accounts': '/accounts',
 		'User Roles': '/roles'
+	},
+
+	'Report|fa-file': {
+	    'View Report': '/reports',
 	}
 };
 var admin = {
@@ -69,7 +73,20 @@ var admin = {
 	},
 	'Promotion|fa-bookmark': {
 		'Global Coupons': '/admin/coupons/global',
-		'All Seller Coupons': '/admin/coupons/seller'
+		'All Seller Coupons': '/admin/coupons/seller',
+		'Seller Coupons': '/admin/coupons/seller',
+        'On Top Credit Card':'/admin/ontopcredit',
+        'Buy 1 Get 1':'/admin/buy1get1'
+	},
+    // Create By Col Dev (Natee)
+	'CMS|fa fa-contao': {
+	    'CMS Category': '/admin/cms/category',
+	    'CMS Static & Collection': '/admin/cms/master',
+	    'CMS Group': '/admin/cms/group'
+	},
+	'Reports|fa-file': {
+	    'Sale Report For Seller': '/admin/reports/std/saleforseller',
+        'Stok Status Report': '/admin/reports/std/stokstatus'
 	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'
@@ -90,7 +107,7 @@ var permission = {
 	12: '/admin/coupons/global',
 	13: '/admin/coupons/seller',
 	21: '/admin/newsletters',
-	70: '/admin/products/reviews',
+	81: '/admin/products/reviews',
 
 	//Seller
 	29: '/dashboard',
@@ -108,12 +125,13 @@ var permission = {
 	55: '/shops/settings',
 	56: '/shops/appearance',
 	57: ['/roles', '/accounts'],
+	82: '/cms',
 
 	//Shop
 	64: '/dashboard',
 	65: '/products/groups',
 	66: '/products/images',
-	68: '/inventory',
+	//68: '/inventory',
 	69: ['/coupons', '/coupons/add']
 };
 

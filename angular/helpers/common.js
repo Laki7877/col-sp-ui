@@ -31,13 +31,6 @@ module.exports = function ($http, $q, storage, config, $window) {
 
                     $http(options)
                     .success(function (data) {
-                        //IN production, remove this on-success
-                        // if(_.has(options, 'rollbar')){
-                        //     Rollbar.log(options.rollbar, {
-                        //         'curl': curlCmd
-                        //     });
-                        // }
-
                         deferred.resolve(data);
                     })
                     .error(function (data, status, headers, config) {
@@ -62,13 +55,6 @@ module.exports = function ($http, $q, storage, config, $window) {
                                 storage.clear();
                                 
                                 $window.location.href = "/login";
-                            }
-
-
-                            if(_.has(options, 'rollbar')){
-                                Rollbar.error(options.rollbar, {
-                                    'curl': curlCmd
-                                });
                             }
 
                             deferred.reject(data || {"error": "Unknown error"});

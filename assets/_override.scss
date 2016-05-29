@@ -178,6 +178,8 @@ textarea{
 }
 
 .ui-select-choices{
+	width: inherit !important;
+	min-width:100% !important;
 	max-height: 200px !important;
 }
 
@@ -240,6 +242,9 @@ a.cke_dialog_tab{
 		color: $color-black;
 	  border-color: $color-grey;
 		min-height: 34px;
+		input{
+			height: 24px;
+		}
 		input::-webkit-input-placeholder{
 			color: $color-dark-grey;
 		}
@@ -249,6 +254,13 @@ a.cke_dialog_tab{
 	}
 }
 .selectize-control{
+	.ume-btn{
+		padding-top: 3px;
+	}
+	.has-items{
+		padding-top: 4px;
+		padding-bottom: 4px;
+	}
 	.btn-primary{
 		background-color: $color-theme;
 		border-color: $color-theme;
@@ -262,4 +274,9 @@ a.cke_dialog_tab{
 		color: $color-black;
 		border-color: $color-grey;
 	}
+}
+
+.ume-placeholder{
+	width: 50% !important;
+	text-align: left;
 }

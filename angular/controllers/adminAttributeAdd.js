@@ -21,7 +21,7 @@ module.exports = function($scope, $controller, AttributeService, ImageService, c
 					scope.alreadyVariant = scope.formData.VariantStatus;
 				}
 			},
-			onAfterSave: function(scope) { 
+			onAfterSave: function(scope) {
 				scope.alreadyDefault = scope.formData.DefaultAttribute;
 				scope.alreadyVariant = scope.formData.VariantStatus;
 			}
@@ -59,7 +59,9 @@ module.exports = function($scope, $controller, AttributeService, ImageService, c
 		}
 	}, true);
 
-	$scope.$watch('formData.VisibleTo', function() {
-		$scope.formData.Required = false;
+	$scope.$watch('formData.VisibleTo', function(n, o) {
+		if(n == 'AD') {
+			$scope.formData.Required = false;
+		}
 	});
 };

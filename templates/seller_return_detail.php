@@ -112,7 +112,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Return R
                         </div>
                         <div nc-template="common/input/form-group-with-label" nc-template-form="form.CnAmount" nc-template-options="{ labelClass: 'required' }"nc-label="CN Amount">
                           <label class="control-label" print-only>{{formData.CnAmount}}</label>
-                          <input name="CnAmount" ng-model="formData.CnAmount" class="form-control" ng-pattern-restrict="[0-9]*" required print-hide/>
+                          <input name="CnAmount" ng-model="formData.CnAmount" class="form-control" ng-pattern-restrict="^[0-9]*$" required print-hide/>
                         </div>
                       </div>
                     </div>

@@ -18,7 +18,6 @@ angular.module('nc')
 			},
 			link: function(scope, elem, attrs) {
 				scope.formData = {};
-				scope.form = {};
 				scope.callback = scope.callback || function() { return false };
 				scope.options = _.defaults(scope.options, {
 					Tags: [],
@@ -28,7 +27,9 @@ angular.module('nc')
 					Shops: [],
 					LocalCategories: [],
 					GlobalCategories: [],
-					Admin: true
+					Admin: true,
+					refreshBrands: _.noop,
+					refreshShops: _.noop
 				});
 				scope.search = function() {
 					if(scope.callback(scope.formData, true)) return;

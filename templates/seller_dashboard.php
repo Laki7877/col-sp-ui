@@ -246,12 +246,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Dashboar
             </div>
           </div>
         </div> -->
-        <div class="group_container">
+        <!--div class="group_container">
           <div class="row_container">
             <div class="width_150">
               Return Rate
             </div>
-            <!-- <div class="font-size-16 color-green">0%</div> -->
             <div ng-switch on="returnRank">
               <div class="font-size-16 color-green" ng-switch-when="green">{{returnScore}}</div>
               <div class="font-size-16 color-yellow" ng-switch-when="yellow">{{returnScore}}</div>
@@ -259,7 +258,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Dashboar
               <div class="font-size-16 color-grey" ng-switch-default>N/A</div>
             </div>
           </div>
-        </div>
+        </div-->
       </div>
 
       <div class="space_column with_border">
@@ -270,6 +269,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Dashboar
           <span class="font-size-18 header_name_space">Top Selling This Month</span>
         </div>
 
+        <div ng-if="topSellingItemsData.length == 0"></div>
         <div ng-repeat="product in topSellingItemsData  | limitTo:maxTopSellingItems" ng-show="topSellingItemsData != 'N/A'" class="group_container top_selling_field">
             <img ng-show="product.FeatureImgUrl ==''" class="logo-img" src="<?= $this->asset('/assets/img/placeholder-no-image.png') ?>" />
             <img class="logo-img" src="{{product.FeatureImgUrl}}" />

@@ -20,6 +20,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		}
 
 
+		//TODO: PendingProduct is now called ProductGrouping
 		service.savePendingProduct = function (apgp) {
 			return common.makeRequest({
 				method: 'POST',
@@ -69,6 +70,31 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				method: 'POST',
 				url: '/ProductStages/Export',
 				data: ps
+			}
+			return common.makeRequest(req)
+		}
+
+		service.exportAbort = function (ps) {
+			var req = {
+				method: 'POST',
+				url: '/ProductStages/Export/Abort'
+			}
+			return common.makeRequest(req)
+		}
+
+
+		service.exportProgress = function (ps) {
+			var req = {
+				method: 'GET',
+				url: '/ProductStages/Export/Progress'
+			}
+			return common.makeRequest(req)
+		}
+
+		service.exportGet = function (ps) {
+			var req = {
+				method: 'GET',
+				url: '/ProductStages/Export'
 			}
 			return common.makeRequest(req)
 		}
@@ -147,11 +173,16 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			var x =  {
 					AttributeSetId: attributeSetId,
 					ShopId: shopId,
-					CategoryId: categoryId,
+					EmptyAttributeSet: true,
 					_limit: 8,
 					_offset: 0,
 					_direction: 'asc'
 			};
+
+			if(categoryId){
+				x.CategoryId =  categoryId;
+			}
+
 			if(q){
 				x.searchText = q;
 			}
@@ -202,8 +233,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			return common.makeRequest({
 				method: mode,
 				url: path,
-				data: tobj,
-				rollbar: 'AP: Product publish or save'
+				data: tobj
 			})
 		}
 
@@ -260,6 +290,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 			var clean = {}
 			var serializer = {
+				SEO: function (seo){
+					seo.ProductUrlKeyEn = seo.ProductUrlKeyEn.toLowerCase();
+					return seo;
+				},
 				Variants: {
 					serialize: function (data) {
 						return data.map(function (v) {
@@ -512,9 +546,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				}
 			}
 
-			invFd.GlobalCategories.unshift({
-				CategoryId: invFd.MainGlobalCategory
-			})
+			invFd.GlobalCategories.unshift(invFd.MainGlobalCategory)
 
 			if (invFd.GlobalCategories.length > 3) {
 				invFd.GlobalCategories.pop()

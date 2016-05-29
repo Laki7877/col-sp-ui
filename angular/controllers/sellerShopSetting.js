@@ -1,4 +1,5 @@
 module.exports = function($rootScope, $scope, $controller, ShopService, ShopProfileService, ImageService, Onboarding, NcAlert, common, config, util, storage) {
+	'ngInject';
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 	$scope.shopGroupDropdown = config.DROPDOWN.SHOP_GROUP_DROPDOWN;
 	$scope.form = {};
@@ -25,21 +26,44 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 						$scope.loading = false;
 					});
 
-
-				$scope.$watch('formData.Province', function(newData, oldData) {
-					if(_.isNil(newData) || newData == oldData) {
+				$scope.$watch('formData.Province', function(data, old) {
+					if(_.isNil(data)) {
 						return;
 					}
-					_.unset($scope.formData, ['City']);
-					$scope.getCities(newData.ProvinceId);
+					if(_.isNil(old)) {
+
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['City']);
+					}
+					$scope.getCities(data.ProvinceId);
 				});
 
-				$scope.$watch('formData.City', function(newData, oldData) {
-					if(_.isNil(newData) || newData == oldData) {
+				$scope.$watch('formData.City', function(data, old) {
+					if(_.isNil(data)) {
 						return;
 					}
-					_.unset($scope.formData, ['District']);
-					$scope.getDistricts(newData.CityId);
+					if(_.isNil(old)) {
+						
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['District']);
+					}
+					$scope.getDistricts(data.CityId);
+				});
+
+
+				$scope.$watch('formData.District', function(data, old) {
+					if(_.isNil(data)) {
+						return;
+					}
+					if(_.isNil(old)) {
+						
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['PostalCode']);
+					}
+					$scope.getPostals(data.DistrictId);
 				});
 
 			});
@@ -77,17 +101,19 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 	$scope.fetchAllList();
 	$scope.save = function() {
 		if($scope.saving) return;
+		$scope.alert.close();
 		
 		//Activate form submission
 		$scope.form.$setSubmitted();
 
 		if($scope.form.$valid) {
+			$scope.saving = true;
 			ShopProfileService.updateAll(ShopProfileService.serialize($scope.formData))
 				.then(function(data) {
 					$scope.formData = ShopProfileService.deserialize(data);
 					$rootScope.Profile.Shop = $scope.formData;
 					storage.storeCurrentUserProfile($rootScope.Profile);
-					$scope.alert.success('Successfully Saved.');
+					$scope.alert.success('Your changes has been saved successfully.');
 					$scope.form.$setPristine(true);
 				}, function(err) {
 					$scope.alert.error(common.getError(err));
