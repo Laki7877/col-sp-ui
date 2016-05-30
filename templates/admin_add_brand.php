@@ -183,14 +183,14 @@
                 <div ng-if="availableProducts == 0  || id == 0">
                   <div nc-template="common/input/form-group-with-label"
                     nc-label="Featured Products">
-                    <span class="form-text">will be available after adding product into this category</span>
+                    <span class="form-text">will be available after adding product with this brand</span>
                   </div>
                 </div>
                 <div ng-if="availableProducts > 0">
                   <div nc-template="common/input/form-group-with-label"
                     nc-template-options-path="genericForm/FeatureTitle"
                     nc-label="Featured Product Title">
-                    <input type="text" class="form-control" ng-model="formData.FeatureTitle"/>
+                    <input type="text" class="form-control" ng-model="formData.FeatureTitle" maxlength="255"/>
                   </div>
                   <div nc-template="common/input/form-group-with-label"
                     nc-label=""><input type="checkbox" ng-model="formData.TitleShowcase"/> Title = Showcase

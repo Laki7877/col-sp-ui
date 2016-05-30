@@ -37,6 +37,8 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 
 			$scope.availableFieldsColumn.push(dct);
 		}
+		
+		console.log('allowed', $scope.availableFieldsColumn);
 
 	});
 
@@ -59,7 +61,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 			AttributeSet.getAll({
 				byShop: true
 			}).then(function (data) {
-				$scope.dataSet.attributeSets = data.map(function (m) {
+				$scope.dataSet.attributeSets = data.data.map(function (m) {
 					//m.Display = m.AttributeSetNameEn + " (" + m.ProductCount + ")";
 					m.Display = m.AttributeSetNameEn;
 					$scope.sumProductAttributeSet += Number(m.ProductCount);

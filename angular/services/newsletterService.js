@@ -5,7 +5,8 @@ module.exports = function(common) {
 	service.generate = function() {
 		return {
 			VisibleShopGroup: 'AL',
-			PublishedDt: moment(new Date()).add(30, 'minutes').date()
+			PublishedDt: moment(new Date()).add(30, 'minutes').date(),
+			ExpiredDt: moment(new Date()).add(20, 'years').date()
 		};
 	};
 	service.serialize = function(data) {

@@ -29,7 +29,7 @@
         'conditions' : addProductForm['pair_Sku' + $index].$error
         }
         }">
-        <input type="text" ng-disabled='!pair.Visibility || xspermit(44)' class="form-control" name="pair_Sku{{ $index }}" maxlength="300" ng-pattern="/^[^<>]+$/"
+        <input type="text" ng-disabled='!pair.Visibility || xspermit(44)' class="form-control" name="pair_Sku{{ $index }}" maxlength="255" ng-pattern="/^[^<>]+$/"
         ng-class="{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }" ng-required="onPublishing && pair.Visibility"
         ng-model="pair.Sku"/>
       </td>

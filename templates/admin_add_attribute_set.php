@@ -26,6 +26,7 @@
                   name="AttributeSetNameEn"
                   ng-model="formData.AttributeSetNameEn"
                   ng-pattern="/^[0-9a-z_\-]+$/"
+                  ng-pattern-restrict="^[^\s]*$"
                   ng-lowercase
                   maxlength="255"
                   required />
@@ -75,9 +76,9 @@
                   <ui-select
                   name="Tags"
                   ng-model="formData.Tags"
-                  on-select="onKeywordAdded($item, $model)"
                   multiple
                   nc-tag-validator
+                  nc-max-tag-length-key="TagName" 
                   nc-max-tag-count="100"
                   nc-max-tag-length="30"
                   tagging="tagTransform"

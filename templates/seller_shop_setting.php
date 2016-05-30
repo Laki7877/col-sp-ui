@@ -317,7 +317,7 @@
 						                    	nc-template-form="form.RemittanceFaxNumber"
 						                    	nc-template-options-path="addShopAccountForm/RemittanceFaxNumber"
 						                    	nc-label="Remittance Fax Number">
-													<input name="RemittanceFaxNumber" class="form-control" ng-model="formData.RemittanceFaxNumber" ng-pattern-restrict="^[0-9]*$" maxlength="15" ng-disabled="true"/>
+													<input name="RemittanceFaxNumber" class="form-control" ng-model="formData.RemittanceFaxNumber" ng-pattern-restrict="^[0-9]*$" maxlength="18" ng-disabled="true"/>
 						                    </div>
 						                    <div nc-template="common/input/form-group-with-label"
 						                    	nc-template-form="form.Telex"

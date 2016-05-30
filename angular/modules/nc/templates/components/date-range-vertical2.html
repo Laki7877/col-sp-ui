@@ -14,7 +14,7 @@
                ng-disabled="disabled" />
           </a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" ng-show="!disabled">
-              <datetimepicker data-ng-model="startDate" data-datetimepicker-config="{ dropdownSelector: '#date_range_vertical_dropdown1', minView: 'minute' }" name="startDate"
+              <datetimepicker data-ng-model="startDate" data-datetimepicker-config="{ dropdownSelector: '#date_range_vertical_dropdown1', minView: 'minute', minuteStep: 30 }" name="startDate"
               required/>
           </ul>
       </div>
@@ -39,7 +39,7 @@
                ng-disabled="disabled" />
           </a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel2" ng-show="!disabled">
-              <datetimepicker data-ng-model="endDate" data-datetimepicker-config="{ dropdownSelector: '#date_range_vertical_dropdown2', minView: 'minute' }" name="endDate" required/>
+              <datetimepicker data-ng-model="endDate" data-datetimepicker-config="{ dropdownSelector: '#date_range_vertical_dropdown2', minView: 'minute',  minuteStep: 30 }" name="endDate" required/>
           </ul>
       </div>
       <div class="width-field-large">

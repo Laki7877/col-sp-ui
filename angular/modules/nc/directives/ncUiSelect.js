@@ -7,6 +7,7 @@ angular.module('nc')
                 var maxTagCount = undefined;
                 var maxTagLength = undefined;
                 var tagPattern = false;
+                var maxTagLengthKey;
 
                 var $select = ctrl[1];
                 var $model = ctrl[0];
@@ -16,6 +17,10 @@ angular.module('nc')
                     var item = (array[array.length - 1] || "");
                     var _pass = true;
                     $model.$error = {};
+                    
+                    if(maxTagLengthKey && _.isPlainObject(item)) {
+                        item = item[maxTagLengthKey] || "";
+                    }
 
                     if (maxTagCount && array.length > maxTagCount) {
                         //$model.$error.maxtagcount = true;
@@ -36,7 +41,6 @@ angular.module('nc')
                         $model.$viewValue = $model.$modelValue;
                     }
                 };
-
                 attrs.$observe('ngModel', function(val) {
                     $scope.$watch(val, function(o) {
                         $select.onSelectCallback();
@@ -48,6 +52,10 @@ angular.module('nc')
                     maxTagCount = Number(val);
                 });
 
+                attrs.$observe('ncMaxTagLengthKey', function (val) {
+                    if (!val) return;
+                    maxTagLengthKey = val;
+                });
                 attrs.$observe('ncTagPattern', function (val) {
                     if (!val) return;
                     tagPattern = val;

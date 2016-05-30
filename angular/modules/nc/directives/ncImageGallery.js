@@ -702,7 +702,6 @@ angular.module('nc')
 						var maxH = Number(maxDim[1]);
 
 						var file = item._file;
-						console.log(file);
 
 						if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
 							scope.onfail('onfilesize');
@@ -739,8 +738,8 @@ angular.module('nc')
 							return;
 						}
 						if (scope.size == scope.model.length) {
-							item.cancel();
 							item.remove();
+							item.cancel();
 							scope.onError({$response: { name: 'queueFilter' }});
 							return;
 						}
@@ -762,8 +761,15 @@ angular.module('nc')
 						$response: filter
 					});
 				};
+				scope.uploader.onProgressItem = function(item, progress) {
+					if(_.findIndex(scope.model, item.obj) < 0) {
+						item.cancel();
+					}
+				}
 				scope.uploader.onSuccessItem = function(item, response, status, headers) {
-					scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];
+					if(response) {
+						scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];
+					}
 				};
 				scope.uploader.onErrorItem = function(item, response, status, headers) {
 					scope.model.splice(scope.model.indexOf(item.obj), 1);
@@ -775,7 +781,6 @@ angular.module('nc')
 				scope.update();
 				scope.$watch('template', scope.update);
 				scope.$watch('uploader.isUploading', function(val) {
-					console.log(val);
 					scope.isUploading = val;
 				});
 			}

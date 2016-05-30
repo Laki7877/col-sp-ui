@@ -17,11 +17,10 @@
         <div nc-template="common/input/form-group-with-label" nc-label="Installment" nc-template-options-path="addProductForm/Installment"
             nc-template-form="form.Installment">
             <select ng-disabled="disableInstallment() || xspermit(36) || xspermit(35)" 
-            nc-default-value="'N'"
             ng-cloak class="form-control" ng-model="variantPtr.Installment">
                 <option ng-if="disableInstallment()" value="N" selected>Available when sale price is more than 5,000</option>
+                <option ng-if="!disableInstallment()" value="N">No</option>
                 <option ng-if="!disableInstallment()" value="Y">Yes</option>
-                <option ng-if="!disableInstallment()" value="N" selected>No</option>
             </select>
         </div>
 
@@ -51,7 +50,8 @@
 
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" ng-show="!xspermit(35) && !xspermit(36)">
                         <datetimepicker data-ng-model="variantPtr.EffectiveDatePromotion"
-                        data-datetimepicker-config="{ dropdownSelector: '#dropdown_promotion_effective_date', minView: 'minute', minuteStep: 30 }"/>
+                        data-datetimepicker-config="{ dropdownSelector: '#dropdown_promotion_effective_date', 
+                        minView: 'minute', minuteStep: 30 }"/>
 
 
                     </ul>
