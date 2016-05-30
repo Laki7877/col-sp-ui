@@ -74,9 +74,8 @@ var admin = {
 	'Promotion|fa-bookmark': {
 		'Global Coupons': '/admin/coupons/global',
 		'All Seller Coupons': '/admin/coupons/seller',
-		'Seller Coupons': '/admin/coupons/seller',
-        'On Top Credit Card':'/admin/ontopcredit',
-        'Buy 1 Get 1':'/admin/buy1get1'
+    'On Top Credit Card':'/admin/ontopcredit',
+    'Buy 1 Get 1':'/admin/buy1get1'
 	},
     // Create By Col Dev (Natee)
 	'CMS|fa fa-contao': {
