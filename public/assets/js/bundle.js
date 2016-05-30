@@ -16770,8 +16770,8 @@ angular.module('nc')
             restrict: 'A',
             require: ['ngModel', 'uiSelect'],
             link: function ($scope, element, attrs, ctrl) {
-                var maxTagCount = 1000;
-                var maxTagLength = 30;
+                var maxTagCount = undefined;
+                var maxTagLength = undefined;
                 var tagPattern = false;
                 var maxTagLengthKey;
 
@@ -16788,11 +16788,11 @@ angular.module('nc')
                         item = item[maxTagLengthKey] || "";
                     }
 
-                    if (array.length > maxTagCount) {
+                    if (maxTagCount && array.length > maxTagCount) {
                         //$model.$error.maxtagcount = true;
                         _pass = false;
                     }
-                    if (item.length > maxTagLength) {
+                    if (maxTagLength && item.length > maxTagLength) {
                         //$model.$error.maxtaglength = true;
                         _pass = false;
                     }
@@ -19986,9 +19986,8 @@ var admin = {
 	'Promotion|fa-bookmark': {
 		'Global Coupons': '/admin/coupons/global',
 		'All Seller Coupons': '/admin/coupons/seller',
-		'Seller Coupons': '/admin/coupons/seller',
-        'On Top Credit Card':'/admin/ontopcredit',
-        'Buy 1 Get 1':'/admin/buy1get1'
+    'On Top Credit Card':'/admin/ontopcredit',
+    'Buy 1 Get 1':'/admin/buy1get1'
 	},
     // Create By Col Dev (Natee)
 	'CMS|fa fa-contao': {
@@ -22915,7 +22914,6 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 			CategoryBannerTh: [],
 			CategoryBannerEn: [],
 			TitleShowcase: false,
-			FeatureProductStatus: true,
 			BannerStatusEn: true,
 			BannerStatusTh: true,
 			BannerSmallStatusEn: true,

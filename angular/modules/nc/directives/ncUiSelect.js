@@ -4,8 +4,8 @@ angular.module('nc')
             restrict: 'A',
             require: ['ngModel', 'uiSelect'],
             link: function ($scope, element, attrs, ctrl) {
-                var maxTagCount = 1000;
-                var maxTagLength = 30;
+                var maxTagCount = undefined;
+                var maxTagLength = undefined;
                 var tagPattern = false;
                 var maxTagLengthKey;
 
@@ -22,11 +22,11 @@ angular.module('nc')
                         item = item[maxTagLengthKey] || "";
                     }
 
-                    if (array.length > maxTagCount) {
+                    if (maxTagCount && array.length > maxTagCount) {
                         //$model.$error.maxtagcount = true;
                         _pass = false;
                     }
-                    if (item.length > maxTagLength) {
+                    if (maxTagLength && item.length > maxTagLength) {
                         //$model.$error.maxtaglength = true;
                         _pass = false;
                     }
