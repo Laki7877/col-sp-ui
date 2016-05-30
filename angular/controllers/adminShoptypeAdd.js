@@ -131,6 +131,24 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShippingSer
 			}
 		}
 	});
+
+	var cj = require('circular-json');
+	$scope.$watch(function() {
+		return cj.stringify($scope.formData)
+	}, function() {
+		$scope.selectAll = true;
+		_.forOwn($scope.formData.Permissions, function(v,k) {
+			util.traverse(v, 'Children', function(e) {
+			$scope.selectAll = $scope.selectAll && e.check;
+			});
+		});
+		_.forEach($scope.formData.Themes, function(e) {
+			$scope.selectAll = $scope.selectAll && e.check;
+		});
+		_.forEach($scope.formData.Shippings, function(e) {
+			$scope.selectAll = $scope.selectAll && e.check;
+		});
+	});
 	$scope.group = ['Dashboard', 'Products', 'Promotion', 'Report', 'Local Category', 'Local Brand', 'CMS'];
 	$scope.checkAll = function(val) {
 		_.forOwn($scope.formData.Permissions, function(v,k) {

@@ -43,8 +43,8 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Inventor
 		            <tr ng-repeat="row in list.data">
 		                <td class="display-column">
 		                    <div class="img-holder">
-		                        <img ng-if='!row.ImageUrl' class="logo-img" src="<?= $this->asset('/assets/img/placeholder-no-image.png') ?>" />
-		                        <img ng-if='row.ImageUrl' class="logo-img" src="{{ row.ImageUrl }}" />
+		                        <img ng-if='row.ImageUrl == ""' class="logo-img" src="<?= $this->asset('/assets/img/placeholder-no-image.png') ?>" />
+		                        <img ng-if='row.ImageUrl != ""' class="logo-img" src="{{ row.ImageUrl }}" />
 		                    </div>
 		                </td>
 		                <td class="width_300 column-text-ellipsis">
