@@ -199,7 +199,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       } else if (kwd == "ondimension") {
         $scope.image_alert.error('Image dimension must be between ' +
           IMAGE_DIM_BOUND[0][0] + 'x' +
-          IMAGE_DIM_BOUND[0][1] + '.' + ' and ' +
+          IMAGE_DIM_BOUND[0][1] + ' and ' +
           IMAGE_DIM_BOUND[1][0] + 'x' + IMAGE_DIM_BOUND[1][1] +
           '. <strong>Your Image Size is ' + data[0] + "x" + data[1] +
           '</strong>');
@@ -219,7 +219,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     }
     $scope.onImageUploadQueueLimit = _.noop;
 
-    //Revision control 
+    //Revision control
     $scope.TimeMachine = {
       active: false,
       preview: function(historyId, historyDate) {
@@ -622,7 +622,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           vari.NewArrivalDate = $scope.formData.UpdateOn;
         }
       }
-      //default values      
+      //default values
       for (var vari in $scope.formData.Variants) {
         defaultOnEmpty(vari);
       }
@@ -641,7 +641,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         $scope.pageState.reset();
         console.log($scope.addProductForm.$error);
         var requiredMissing = ('required' in $scope.addProductForm.$error);
-        
+
         if (Status == 'DF' && requiredMissing) {
 
           if ($scope.addProductForm.ProductNameEn.$invalid) {
@@ -672,7 +672,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       if (errorList.length > 0) {
         return $scope.alert.error('Unable to save because ' +
           errorList.join(' and ') + (errorList.length > 1 ? ' are ' :
-            ' is ') + ' are missing or incorrect.');
+            ' is ') + ' missing or incorrect.');
       }
 
       //TODO: move this to default value
