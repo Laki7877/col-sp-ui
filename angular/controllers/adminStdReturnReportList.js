@@ -1,19 +1,17 @@
 
-module.exports = function ($scope, $controller, StdReportReturnService, config, util,$rootScope) {
+module.exports = function ($scope, $controller, StdReportReturnService, config, util) {
     'ngInject';
-    $scope.adminStdManageable = !$rootScope.permit(27);
     $scope.formData = {
+        OrderId: null,
         PID: null,
-        Brands: null,
+        ItemName: null,
         ItemStatus: null,
-        CreatedDtFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
-        CreatedDtTo: new Date()
+        OrderDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        OrderDateTo: new Date()
     };
-
     var params = $scope.formData;
 
     $scope.exportCsv = function () {
-
         StdReportReturnService.exportCsv(params)
         .then(function (data) {
 
@@ -22,18 +20,29 @@ module.exports = function ($scope, $controller, StdReportReturnService, config, 
         })
     };
 
-    $scope.resetSearch = function () {
-        PID = null;
-        Brands = null;
-        ItemStatus = null;
-        CreatedDtFrom = new Date(new Date().setDate(new Date().getDate() - 30));
-        CreatedDtTo = new Date();
+    $scope.search = function () {
+        StdReportSaleService.getReturnReport(params)
+        .then(function (data) {
+            $scope.list.data = data;
+        });
+
     };
 
+
+    $scope.resetSearch = function () {
+
+        $scope.formData.OrderId = null;
+        $scope.formData.PID = null;
+        $scope.formData.ItemName = null;
+        $scope.formData.ItemStatus = null;
+        $scope.formData.OrderDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
+        $scope.formData.OrderDateTo = new Date();
+
+    };
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
-            url: '/admin/reports/std/return',
+            url: '/reports/std/return',
             service: StdReportReturnService,
             item: 'ReturnReport',
             order: 'OrderId',

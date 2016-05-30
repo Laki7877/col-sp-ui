@@ -478,15 +478,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       var mat = []
 
       if (Status == 'WA') {
-        if (!$scope.formData.MasterVariant.DescriptionFullTh || $scope.formData
-          .MasterVariant.DescriptionFullTh == '') {
-          mat.push('Description (Thai)');
-        }
-
-        if (!$scope.formData.MasterVariant.DescriptionFullEn || $scope.formData
-          .MasterVariant.DescriptionFullEn == '') {
-          mat.push('Description (English)');
-        }
 
         if (!$scope.formData.Brand.BrandId) {
           mat.push('Brand');

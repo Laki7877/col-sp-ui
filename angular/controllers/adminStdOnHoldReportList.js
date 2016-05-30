@@ -1,19 +1,24 @@
 
-module.exports = function ($scope, $controller, StdReportOnHoldService, config, util,$rootScope) {
+module.exports = function ($scope, $controller, StdReportOnHoldService, config, util) {
     'ngInject';
-    $scope.adminStdManageable = !$rootScope.permit(27);
     $scope.formData = {
         PID: null,
-        Brands: null,
-        ItemStatus: null,
-        CreatedDtFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
-        CreatedDtTo: new Date()
+        ItemName: null,
+        OrderDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        OrderDateTo: new Date()
     };
 
     var params = $scope.formData;
 
+    $scope.search = function () {
+        StdReportStockService.getStockReport(params)
+        .then(function (data) {
+            $scope.list.data = data;
+        });
+
+    };
     $scope.exportCsv = function () {
-        StdReportStockService.exportCsv(params)
+        StdReportOnHoldService.exportCsv(params)
         .then(function (data) {
 
             util.csv(data, 'STDOnHold.csv');
@@ -22,16 +27,17 @@ module.exports = function ($scope, $controller, StdReportOnHoldService, config, 
     };
 
     $scope.resetSearch = function () {
-        PID = null;
-        ItemName = null;
-        OrderDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
-        OrderDateTo = new Date();
+        $scope.formData.PID = null;
+        $scope.formData.ItemName = null;
+        $scope.formData.OrderDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
+        $scope.formData.OrderDateTo = new Date();
+
     };
 
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
-            url: '/admin/reports/std/onhold',
+            url: '/reports/std/onhold',
             service: StdReportOnHoldService,
             item: 'OnHoldReport',
             order: 'OrderId',

@@ -1,4 +1,4 @@
-<ui-select name="{{name}}" ng-model="model.ptr" nc-tag-validator nc-max-tag-count="{{options.tagCount}}" ng-disabled="disabled" ng-disabled="ngDisabled" ng-required="ngRequired" multiple>
+<ui-select name="{{name}}" ng-model="model.ptr" nc-tag-validator nc-max-tag-count="{{options.tagCount}}" ng-disabled="disabled" ng-required="ngRequired" multiple>
 	<ui-select-match placeholder="{{placeholder}}"><span ng-bind-html="$item.item[options.nameKey]"></span> ({{$item.item[options.idKey]}})</ui-select-match>
 	<ui-select-choices repeat="value in searchable | filter: { name: $select.search } | limitTo: options.limit track by $index">
 		<div ng-bind-html="value.displayName | highlight: $select.search | replace: encodedSeparator: options.seperator"></div>
