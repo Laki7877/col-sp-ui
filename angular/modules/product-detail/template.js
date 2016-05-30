@@ -91,7 +91,7 @@ angular.module("productDetail").run(function($templateCache) {  'use strict';
     "        'show': $root.isInvalid(addProductForm['pair_Sku' + $index]),\n" +
     "        'conditions' : addProductForm['pair_Sku' + $index].$error\n" +
     "        }\n" +
-    "        }\"><input ng-disabled=\"!pair.Visibility || xspermit(44)\" class=form-control name=\"pair_Sku{{ $index }}\" maxlength=255 ng-pattern=\"/^[^<>]+$/\" ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }\" ng-required=\"onPublishing && pair.Visibility\" ng-model=\"pair.Sku\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
+    "        }\"><input ng-disabled=\"!pair.Visibility || xspermit(44)\" class=form-control name=\"pair_Sku{{ $index }}\" maxlength=255 ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }\" ng-required=\"onPublishing && pair.Visibility\" ng-pattern-restrict=^[a-zA-Z0-9]*$ ng-model=\"pair.Sku\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
     "        'error' : {\n" +
     "        'messages': {\n" +
     "        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\n" +
