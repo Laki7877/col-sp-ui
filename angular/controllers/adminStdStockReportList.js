@@ -3,16 +3,16 @@ module.exports = function ($scope, $controller, StdReportStockService, config, u
     'ngInject';
     $scope.adminStdManageable = !$rootScope.permit(27);
     $scope.formData = {
-        PID: null,
-        Brands: null,
-        ItemStatus: null,
-        CreatedDtFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
-        CreatedDtTo: new Date()
-        };
+        Pid: null,
+        ProductName: null,
+        variant: null,
+        LastSoldDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        LastSoldDateTo: new Date()
+    };
     $scope.exportCsv = function() { 
         debugger;
 
-        var params = $scope.formData;
+    var params = $scope.formData;
         StdReportStockService.exportCsv(params)
         .then(function(data){
 
@@ -20,7 +20,15 @@ module.exports = function ($scope, $controller, StdReportStockService, config, u
 
         })
     };
-        
+
+    $scope.resetSearch = function () {
+        Pid = null;
+        ProductName = null;
+        variant = null;
+        LastSoldDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
+        LastSoldDateTo = new Date();
+    };
+
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
