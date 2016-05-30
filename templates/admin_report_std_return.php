@@ -27,7 +27,7 @@
             <div nc-template="common/input/form-group-with-label" nc-template-form="form.ItemStatus" nc-label="Item Status">
               <select ng-model="formData.ItemStatus" class="form-control" name="ItemStatus">
                 <option selected value="-" disabled>- Select Status Option -</option>
-                <option value="Procressing">Procressing</option>
+                <option value="Processing">Processing</option>
                 <option value="Delivered">Delivered</option>
                 <option value="New">New</option>
               </select>
