@@ -26,10 +26,18 @@ module.exports = function ($scope, $controller, StdReportOnHoldService, config, 
         })
     };
 
+    $scope.resetSearch = function () {
+        $scope.formData.PID = null;
+        $scope.formData.ItemName = null;
+        $scope.formData.OrderDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
+        $scope.formData.OrderDateTo = new Date();
+
+    };
+
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
-            url: '/admin/reports/std/onhold',
+            url: '/reports/std/onhold',
             service: StdReportOnHoldService,
             item: 'OnHoldReport',
             order: 'OrderId',

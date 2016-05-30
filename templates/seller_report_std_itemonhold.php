@@ -1,9 +1,9 @@
-<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System']) ?>
+<?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller System'])?>
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminStdOnHoldReportCtrl">
     <nc-alert nc-model="alert"></nc-alert>
-    <nc-page-title nc-title="Admin Item On Hold Report" icon="fa-user">
+    <nc-page-title nc-title="Seller Item On Hold Report" icon="fa-user">
       <!-- <a class="btn btn-blue btn-width-xxl" ng-click="exportCsv()">Export CSV</a> -->
     </nc-page-title>
     <div class="wrapper" style="margin-top:20px;">
@@ -55,7 +55,7 @@
                 <button class="button-size-normal btn btn-green btn-width-xl" ng-click="exportCsv()" style="margin-left:10px;">Export Search</button>
               </div>
               <div class="button-size-normal">
-                <input type="reset" class="button-size-normal btn btn-white btn-width-xl" value="Reset" style="margin-left:20px;"/>
+               <input type="reset" class="button-size-normal btn btn-white btn-width-xl" value="Reset" style="margin-left:20px;" ng-click="resetSearch()" />
               </div>
             </div>
           </form>

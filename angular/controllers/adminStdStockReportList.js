@@ -9,30 +9,7 @@ module.exports = function ($scope, $controller, StdReportStockService, config, u
         LastSoldDateTo: new Date()
     };
 
-    /*
-    $scope.categorys = [];
-    $scope.brands = [];
-    StdReportSaleService.getAllCategory({})
-                .then(function (data) {
-                    $scope.categorys = data;
-                });
-    $scope.$watch('formData.GlobalCategoryId', function (newValue, oldValue) {
-        if (newValue === undefined)
-            return;
-        // get brand by category id
-        StdReportSaleService.getBrand(newValue)
-                    .then(function (data) {
-                        $scope.brands = data;
-                    });
 
-    });
-
-    $scope.$watch('formData.BrandId', function (newValue, oldValue) {
-        if (newValue === undefined)
-            return;
-
-    });
-    */
     var params = $scope.formData;
 
     $scope.search = function () {
@@ -52,10 +29,18 @@ module.exports = function ($scope, $controller, StdReportStockService, config, u
         })
     };
 
+    $scope.resetSearch = function () {
+        $scope.formData.Pid = null;
+        $scope.formData.ProductName = null;
+        $scope.formData.variant = null;
+        $scope.formData.LastSoldDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
+        $scope.formData.LastSoldDateTo = new Date();
+    };
+
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
-            url: '/admin/reports/std/stockstatus',
+            url: '/reports/std/stockstatus',
             service: StdReportStockService,
             item: 'StockStatusReport',
             order: 'PID',
