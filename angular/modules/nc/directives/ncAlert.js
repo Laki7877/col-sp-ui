@@ -52,6 +52,7 @@ angular.module('nc')
 							smoothScroll(toElm ? vm.element[0] : $document[0].body, {
 								container: toElm ? '.modal': null
 							});
+						
 					} else {
 						smoothScroll(toElm ? vm.element[0] : $document[0].body, {
 							container: toElm ? '.modal': null

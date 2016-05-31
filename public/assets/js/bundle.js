@@ -1844,7 +1844,15 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 	};
 	$scope.status = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 	$scope.sortby = [];
-	
+
+	var isUploading = function(images) {
+		var i = true;
+		_.forEach(images, function(e) {
+			i = i && (e.progress >= 100.0);
+		});
+		return !i;
+	}
+
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
 		options: {
@@ -1852,6 +1860,15 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 			url: '/admin/brands',
 			item: 'Brand',
 			service: BrandService,
+			onSave: function(scope) {
+				if(isUploading($scope.formData.BrandBannerEn) ||
+					isUploading($scope.formData.BrandBannerTh) ||
+					isUploading($scope.formData.BrandSmallBannerEn) ||
+					isUploading($scope.formData.BrandSmallBannerTh) ) {
+		    		$scope.alert.error('Please wait for every images to be uploaded before saving');
+					return true;
+				}
+			},
 			onLoad: function(scope, flag) {
 				common.getSortBy().then(function(data) {
 					$scope.sortBy = data;
@@ -3938,10 +3955,24 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 						}
 					}
 				});
+				var isUploading = function(images) {
+					var i = true;
+					_.forEach(images, function(e) {
+						i = i && (e.progress >= 100.0);
+					});
+					return !i;
+				}
 				$scope.save = function() {
 					$scope.alert.close();
 					$scope.form.$setSubmitted();
 
+					if(isUploading($scope.formData.CategoryBannerEn) ||
+						isUploading($scope.formData.CategoryBannerTh) ||
+						isUploading($scope.formData.CategorySmallBannerEn) ||
+						isUploading($scope.formData.CategorySmallBannerTh) ) {
+						$scope.alert.error('Please wait for every images to be uploaded before saving', true)
+						return;
+					}
 					if($scope.form.$valid) {
 						var processed = GlobalCategoryService.serialize($scope.formData);
 						$scope.saving = true;
@@ -6556,10 +6587,25 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 						}
 					}
 				});
+
+				var isUploading = function(images) {
+					var i = true;
+					_.forEach(images, function(e) {
+						i = i && (e.progress >= 100.0);
+					});
+					return !i;
+				}
 				$scope.save = function() {
 					$scope.alert.close();
 					$scope.form.$setSubmitted();
 
+					if(isUploading($scope.formData.CategoryBannerEn) ||
+						isUploading($scope.formData.CategoryBannerTh) ||
+						isUploading($scope.formData.CategorySmallBannerEn) ||
+						isUploading($scope.formData.CategorySmallBannerTh) ) {
+						$scope.alert.error('Please wait for every images to be uploaded before saving', true)
+						return;
+					}
 					if($scope.form.$valid) {
 						var processed = LocalCategoryService.serialize($scope.formData);
 						$scope.saving = true;
@@ -16599,6 +16645,7 @@ angular.module('nc')
 							smoothScroll(toElm ? vm.element[0] : $document[0].body, {
 								container: toElm ? '.modal': null
 							});
+						
 					} else {
 						smoothScroll(toElm ? vm.element[0] : $document[0].body, {
 							container: toElm ? '.modal': null
