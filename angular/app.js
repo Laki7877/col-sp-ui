@@ -224,6 +224,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('SellerPendingProductsGroupCtrl', controllers.sellerPendingProductsGroup)
   // .controller('SellerReportCtrl', controllers.sellerReport)
   .controller('StdSaleReportSellerCtrl', controllers.StdSaleReportSellerList)
+  .controller('SellerBuy1Get1AddCtrl',controllers.sellerBuy1Get1Add)
+  .controller('SellerBuy1Get1ListCtrl',controllers.sellerBuy1Get1List)
 
   .controller('AdminAttributeCtrl', controllers.adminAttribute)
   .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)

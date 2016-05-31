@@ -11,7 +11,7 @@
 ?>
 
 <?php $this->start('page-body') ?>
-<div ng-controller="SellerCMSMasterAddCtrl" ng-init="init(<?=$params?>)" ng-disabled="CMSview">
+<div ng-controller="SellerCMSMasterAddCtrl" ng-init="init(<?=$params?>)" ng-disabled="CMSview || CMSviewShop">
     <nc-alert nc-model="alert"></nc-alert>
     <div ng-show="loading" nc-loading="Loading CMS Master.."></div>
     <div ng-show="saving" nc-loading="Saving CMS Master.."></div>

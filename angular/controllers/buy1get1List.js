@@ -2,6 +2,10 @@ module.exports = ['$scope',  'Buy1Get1', 'util', 'Alert', '$window', '$rootScope
 
 ($scope, Buy1Get1, util, Alert, $window, $rootScope) {
     //UI binding variables    
+    // seller
+    $scope.manageBuy1Get1SE = !$rootScope.permit(54);  
+    // shop
+    $scope.manageBuy1Get1SH = !$rootScope.permit(70);   
 
     $scope.checkBoxCache = {};
     $scope.hidCMSTypeId = {};    

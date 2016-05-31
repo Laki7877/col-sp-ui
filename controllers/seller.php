@@ -132,4 +132,20 @@ class SellerController extends Controller
     {
         return View::render('report_std_saleforseller');
     }
+
+    //buy 1 get 1
+    public static function listBuy1Get1($params){
+        return View::render('list_buy1_get1');
+    
+    }
+    
+    public static function addBuy1Get1($params){
+        return View::render('add_buy1get1', ['title' => 'Add Buy 1 Get 1']);
+    
+    } 
+    
+    public static function editBuy1Get1($params){
+    
+        return View::render('add_buy1get1', ['params' => json_encode_n($params), 'title' => 'Detail']);
+    }
 }

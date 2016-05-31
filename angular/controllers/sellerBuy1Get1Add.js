@@ -1,6 +1,9 @@
 module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibModal, $timeout, $rootScope) {
     'ngInject';
-    $scope.manageBuy1Get1AD = !$rootScope.permit(82); 
+    // seller
+    $scope.manageBuy1Get1SE = !$rootScope.permit(54);  
+    // shop
+    $scope.manageBuy1Get1SH = !$rootScope.permit(70);  
     $scope.formData     = {};
 
     $scope.loading      = false;
@@ -348,7 +351,7 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
     $controller('AbstractAddCtrl', {
         $scope: $scope,
         options: {
-            url: '/admin/buy1get1/create',
+            url: '/buy1get1/create',
             service: Buy1Get1Service,
             item: 'buy 1 get 1',
             order: 'UpdateDate',
