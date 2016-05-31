@@ -55,6 +55,7 @@ module.exports = function($scope, $controller, Product, common, config) {
 		            size: 'size-warning',
 		            templateUrl: 'product/modalAddTags',
 		            controller: function($scope, $uibModalInstance, data) {
+                        'ngInject';
 		                $scope.model = {
 		                	tags: []
 		                };

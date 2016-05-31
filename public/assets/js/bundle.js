@@ -2002,7 +2002,7 @@ module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$uibMod
             size: 'lg',
             //scope: $scope,
             controller: ["$scope", "$uibModalInstance", function ($scope, $uibModalInstance) {
-
+                'ngInject';
                 $scope.products = [];
 
                 $scope.isEmpty = true;
@@ -2340,9 +2340,8 @@ module.exports = function($scope, $controller, CouponService, config, $uibModal)
                 '</div>',
       size: 'md',
       scope: $scope,
-      controller: function($scope, $uibModalInstance) {
-
-
+      controller: ["$scope", "$uibModalInstance", function($scope, $uibModalInstance) {
+        'ngInject';
         $scope.save = function(groupName) {
           var group = {
             GroupName: groupName,
@@ -2352,7 +2351,7 @@ module.exports = function($scope, $controller, CouponService, config, $uibModal)
         };
 
         
-      }
+      }]
     })
     .result.then(function(data) {
       console.log(data)
@@ -2495,7 +2494,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "CMSCategoryService", "
             size: 'lg',
             //scope: $scope,
             controller: ["$scope", "$uibModalInstance", function ($scope, $uibModalInstance) {
-
+                'ngInject';
                 $scope.products = [];
 
                 $scope.isEmpty = true;
@@ -2918,7 +2917,7 @@ module.exports = ["$scope", "$controller", "$rootScope", "CMSGroupService", "con
             size: 'lg',
             //scope: $scope,
             controller: ["$scope", "$uibModalInstance", function ($scope, $uibModalInstance) {
-
+                'ngInject';
                 $scope.masters = [];
 
                 $scope.isEmpty = true;
@@ -3363,7 +3362,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "CMSMasterService", "Im
             templateUrl: 'templates/admin-cms-master-add-item.html',
             size: 'lg',
             controller: ["$scope", "$uibModalInstance", function ($scope, $uibModalInstance) {
-
+                'ngInject';
                 $scope.categories = [];
 
                 $scope.isEmpty = true;
@@ -4719,7 +4718,8 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", functi
 		        modal: {
 		            size: 'size-warning',
 		            templateUrl: 'product/modalAddTags',
-		            controller: function($scope, $uibModalInstance, data) {
+		            controller: ["$scope", "$uibModalInstance", "data", function($scope, $uibModalInstance, data) {
+                        'ngInject';
 		                $scope.model = {
 		                	tags: []
 		                };
@@ -4731,7 +4731,7 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", functi
 		                        Tags: $scope.model.tags
 		                    })
 		                };
-		            }
+		            }]
 		        }
 		    }],
 			filters: [
@@ -9109,6 +9109,7 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
 			backdrop: 'static',
 			templateUrl: 'product/modalImportProgress',
 			controller: ["$scope", "$uibModalInstance", "$timeout", "file", "uploader", "title", function($scope, $uibModalInstance, $timeout, file, uploader, title) {
+				'ngInject';
 				$scope.file = file;
 				$scope.file.upload();
 				$scope.server = 0;

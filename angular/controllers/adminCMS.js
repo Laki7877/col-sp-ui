@@ -71,8 +71,7 @@ module.exports = function($scope, $controller, CouponService, config, $uibModal)
       size: 'md',
       scope: $scope,
       controller: function($scope, $uibModalInstance) {
-
-
+        'ngInject';
         $scope.save = function(groupName) {
           var group = {
             GroupName: groupName,

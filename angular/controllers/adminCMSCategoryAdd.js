@@ -127,7 +127,7 @@ module.exports = function ($scope,$rootScope, $controller, CMSCategoryService, c
             size: 'lg',
             //scope: $scope,
             controller: function ($scope, $uibModalInstance) {
-
+                'ngInject';
                 $scope.products = [];
 
                 $scope.isEmpty = true;
