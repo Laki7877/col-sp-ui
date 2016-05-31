@@ -1,6 +1,9 @@
 
-module.exports = function ($scope, $controller, CMSGroupService, config) {
+module.exports = function ($scope,$rootScope, $controller, CMSGroupService, config) {
     'ngInject';
+    $scope.adCMSview = !$rootScope.permit(23);  
+    $scope.adCMSadd = !$rootScope.permit(24);
+    $scope.adCMSedit = !$rootScope.permit(25);
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {

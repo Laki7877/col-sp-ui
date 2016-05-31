@@ -1,6 +1,7 @@
-module.exports = function ($scope, $controller,$rootScope, CMSGroupService, config, $uibModal, $timeout) {
+module.exports = function ($scope, $controller, CMSGroupService, config, $uibModal, $timeout,$rootScope) {
     'ngInject'; 
-    $scope.adCMSadd = !$rootScope.permit(24);
+    $scope.CMSadd = !$rootScope.permit(62);
+
     $scope.formData     = {};
 
     $scope.loading      = false;
@@ -277,7 +278,7 @@ module.exports = function ($scope, $controller,$rootScope, CMSGroupService, conf
     $controller('AbstractAddCtrl', {
         $scope: $scope,
         options: {
-            url: '/admin/cms/group',
+            url: '/cms/group',
             service: CMSGroupService,
             item: 'CMS Group',
             order: 'UpdateDate',

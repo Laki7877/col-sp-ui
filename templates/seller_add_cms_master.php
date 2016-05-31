@@ -6,12 +6,12 @@
       //["id" => "conditions", "name" => 'Conditions'],
     ];
     
-     $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Administration System'])
+     $this->layout('layouts/page-with-sidebar', ['title' => 'Seller System'])
 
 ?>
 
 <?php $this->start('page-body') ?>
-<div ng-controller="AdminCMSMasterAddCtrl" ng-init="init(<?=$params?>)">
+<div ng-controller="SellerCMSMasterAddCtrl" ng-init="init(<?=$params?>)" ng-disabled="CMSview">
     <nc-alert nc-model="alert"></nc-alert>
     <div ng-show="loading" nc-loading="Loading CMS Master.."></div>
     <div ng-show="saving" nc-loading="Saving CMS Master.."></div>
@@ -44,7 +44,7 @@
                 <div class="container-fluid">
                     <div class="float-right">
                         <button class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</button>
-                        <button class="btn btn-blue btn-width-xl" ng-click="save()" ng-disabled="adCMSadd">Save</button>
+                        <button class="btn btn-blue btn-width-xl" ng-click="save()" ng-disabled="CMSadd">Save</button>
                     </div>
                 </div>
             </div>

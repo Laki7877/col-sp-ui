@@ -1,12 +1,12 @@
-module.exports = function ($scope,$rootScope, $controller, common, CMSMasterService, util, $window, $rootScope, config, storage) {
+module.exports = function ($scope, $rootScope, $controller, common, CMSMasterService, util, $window, $rootScope, config, storage) {
     'ngInject';
-    $scope.adCMSview = !$rootScope.permit(23);  
-    $scope.adCMSadd = !$rootScope.permit(24);
-    $scope.adCMSedit = !$rootScope.permit(25);
+    $scope.CMSview = !$rootScope.permit(61);  
+    $scope.CMSadd = !$rootScope.permit(62);
+    $scope.CMSedit = !$rootScope.permit(63);
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
-            url: '/admin/cms/master',
+            url: '/cms/master',
             service: CMSMasterService,
             item: 'CMSMaster',
             order: 'CMSMasterId',
@@ -19,15 +19,7 @@ module.exports = function ($scope,$rootScope, $controller, common, CMSMasterServ
             bulks: [
                 'Delete',
                 'Hide',
-                'Show',
-                util.bulkTemplate('Force Approve', CMSMasterService.approve, 'CMSMasterId', 'CMSMaster', {
-                    btnConfirm: 'Approve',
-                    btnClass: 'btn-green'
-                }),
-				util.bulkTemplate('Reject', CMSMasterService.reject, 'CMSMasterId', 'CMSMaster', {
-				    btnConfirm: 'Reject',
-				    btnClass: 'btn-red'
-				}),
+                'Show'
             ],
             filters: [
                 { name: "All", value: 'All' },

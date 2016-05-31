@@ -2,7 +2,7 @@ module.exports = function($scope, $controller, CouponService, config, $uibModal)
   $controller('AbstractListCtrl', {
     $scope: $scope,
     options: {
-      url: '/admin/cms',
+      url: '/cms',
       service: CouponService,
       item: 'Coupon',
       order: 'ExpireDate',
@@ -22,7 +22,7 @@ module.exports = function($scope, $controller, CouponService, config, $uibModal)
     $scope: $scope,
     options: {
       id: 'CouponId',
-      url: '/admin/cms/create',
+      url: 'cms/create',
       item: 'Coupon',
       service: CouponService,
       dateFields: ['StartDate', 'ExpireDate'],

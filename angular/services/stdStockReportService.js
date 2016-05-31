@@ -1,11 +1,13 @@
 module.exports = function (common, config, util) {
     'ngInject';
-    var service = common.Rest('/StandardReport/GetSaleReportForSeller');
 
-    service.getSaleReport = function (params) {
+    var service = common.Rest('/StandardReport/GetStockStatusReport');
+
+    service.getStockReport = function (params) {
+
         return common.makeRequest({
             method: 'POST',
-            url: '/StandardReport/GetSearchSaleReportForSeller/',
+            url: '/StandardReport/GetSearchStockStatusReport/',
             data: params,
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8'
@@ -16,7 +18,7 @@ module.exports = function (common, config, util) {
     service.exportCsv = function (params) {
         return common.makeRequest({
             method: 'POST',
-            url: '/StandardReport/ExportSaleReportForSeller/',
+            url: '/StandardReport/ExportStockStatusReport',
             data: params,
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8'

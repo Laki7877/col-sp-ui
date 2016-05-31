@@ -1,7 +1,7 @@
-module.exports = function ($scope,$rootScope, $controller, CMSCategoryService, config, $uibModal, $timeout) {
+module.exports = function ($scope, $controller, CMSCategoryService, config, $uibModal, $timeout, $rootScope) {
     'ngInject';
 
-    $scope.adCMSadd = !$rootScope.permit(24);
+    $scope.CMSadd = !$rootScope.permit(62);
     $scope.formData     = {};
 
     $scope.loading      = false;
@@ -359,7 +359,7 @@ module.exports = function ($scope,$rootScope, $controller, CMSCategoryService, c
     $controller('AbstractAddCtrl', {
         $scope: $scope,
         options: {
-            url: '/admin/cms/category',
+            url: '/cms/category',
             service: CMSCategoryService,
             item: 'CMS Category',
             order: 'UpdateDate',

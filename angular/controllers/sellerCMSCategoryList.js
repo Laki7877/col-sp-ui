@@ -1,14 +1,14 @@
 
-module.exports = function ($scope, $rootScope, $controller, CMSCategoryService, config, util) {
+module.exports = function ($scope, $controller, CMSCategoryService, config, util,$rootScope) {
     'ngInject';
-    $scope.adCMSview = !$rootScope.permit(23);  
-    $scope.adCMSadd = !$rootScope.permit(24);
-    $scope.adCMSedit = !$rootScope.permit(25);
-    debugger;
+    $scope.CMSview = !$rootScope.permit(61);  
+    $scope.CMSadd = !$rootScope.permit(62);
+    $scope.CMSedit = !$rootScope.permit(63);
+    
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
-            url: '/admin/cms/category',
+            url: '/cms/category',
             service: CMSCategoryService,
             item: 'CMSCategory',
             order: 'UpdateOn',
@@ -17,15 +17,7 @@ module.exports = function ($scope, $rootScope, $controller, CMSCategoryService, 
             bulks: [
                 'Delete',
                 'Show',
-                'Hide',
-                util.bulkTemplate('Force Approve', CMSCategoryService.approve, 'CMSCategoryId', 'CMSCategory', {
-                    btnConfirm: 'Approve',
-                    btnClass: 'btn-green'
-                }),
-				util.bulkTemplate('Reject', CMSCategoryService.reject, 'CMSCategoryId', 'CMSCategory', {
-				    btnConfirm: 'Reject',
-				    btnClass: 'btn-red'
-				})
+                'Hide'
             ],
             filters: [
 				{ name: "All", value: 'All' },

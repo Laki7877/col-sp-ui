@@ -1,5 +1,4 @@
 module.exports = function ($scope, $controller, OnTopCredit, config) {
-    'ngInject';
     $scope.formData = {
         OnTopCreditCardId: null,
         NameTH: null,
