@@ -25,7 +25,7 @@
 
                 <input ng-if="isFreeTextInput(da.DataType)" ng-class="{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }"
                 ng-required="da.Required && onPublishing" type="text" class="form-control" name="DAInput{{$index}}" ng-disabled="xspermit(35)"
-                ng-model="formData.MasterAttribute[da.AttributeId].ValueEn" />
+                ng-model="formData.MasterAttribute[da.AttributeId].ValueEn"  />
                 
             		<div ng-if="isCheckboxInput(da.DataType)">
             			<div class="checkbox" ng-repeat="vmap in da.AttributeValueMaps">
@@ -51,7 +51,7 @@
 
                 <input ng-if="isFreeTextInput(da.DataType)" ng-class="{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }"
                 ng-required="da.Required && onPublishing" type="text" class="form-control" name="DAInput{{$index}}" ng-disabled="xspermit(35)"
-                ng-model="formData.MasterAttribute[da.AttributeId].ValueTh" />
+                ng-model="formData.MasterAttribute[da.AttributeId].ValueTh"  />
 
             </div>
         </div>

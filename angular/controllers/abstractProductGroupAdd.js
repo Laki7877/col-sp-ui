@@ -28,6 +28,10 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 			}
 
 			fd.Variants.map(function(o) {
+				if(!o.MappedProduct){
+					delete o.Pid;
+					return o;
+				}
 				o.Pid = o.MappedProduct.Pid;
 				delete o.MappedProduct;
 				return o;
@@ -41,7 +45,7 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 
 			Product.savePendingProduct(fd).then(function(suc) {
 				var productLink = options.adminMode ? '/admin/products' : '/products';
-				$scope.alert.success("Pending product grouped successfully. <a href='" +
+				$scope.alert.success("Products grouped successfully. <a href='" +
 					productLink + "'>View Product List</a>");
 				$scope.loading = false;
 			}, function(er) {
@@ -51,8 +55,7 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 				$scope.loading = false;
 			});
 		} catch (ex) {
-			return $scope.alert.error(
-				"Please make sure all fields are filled correctly.");
+			return $scope.alert.error("Please make sure all fields are filled correctly.");
 			$scope.loading = false;
 		}
 	};

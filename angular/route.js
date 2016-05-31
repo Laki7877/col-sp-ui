@@ -51,8 +51,11 @@ var seller = {
 	},
 
 	'Report|fa-file-o': {
-	    'View Report': '/reports/std/saleforseller',
-	    'OI Report' : '/reports/std/oi'
+	    'View Report': '/reports',
+        'Sale Report For Seller': '/reports/std/saleforseller',
+        'Stock Status Report': '/reports/std/stockstatus',
+        'On Hold Report' : '/reports/std/onhold',
+        'Return Report' : '/reports/std/return'
 	}
 };
 var admin = {
@@ -91,9 +94,7 @@ var admin = {
 	    'CMS Group': '/admin/cms/group'
 	},
 	'Reports|fa-file': {
-        'Stock Status Report': '/admin/reports/std/stockstatus',
-        'On Hold Report' : '/admin/reports/std/onhold',
-        'Return Report' : '/admin/reports/std/return'
+	    
 	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'

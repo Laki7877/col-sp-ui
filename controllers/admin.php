@@ -344,20 +344,5 @@ class AdminController extends Controller
         return View::render('product_review');
     }
 
-	// Reports
 
-	public static function listStockReport($params) 
-	{
-		return View::render('admin_report_std_stockstatus');
-	}
-
-	public static function listOnHoldReport($params) 
-	{
-		return View::render('admin_report_std_itemonhold');
-	}
-
-	public static function listReturnReport($params) 
-	{
-		return View::render('admin_report_std_return');
-	}
 }

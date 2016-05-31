@@ -93,7 +93,7 @@ module.exports = function($scope, $controller, Product, common, config) {
     $scope.exportSelected = function(){
         $scope.alert.close();
         if($scope.bulkContainer.length == 0) {
-            $scope.alert.error('Unable to Export. Please select Product for this action.');
+           return $scope.alert.error('Unable to Export. Please select Product for this action.');
         }
         else {
         	document.getElementById('exportForm').submit();
