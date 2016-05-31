@@ -347,7 +347,13 @@ angular.module('nc')
 								scope.images.push(obj);
 								var f = new FileItem(scope.uploader, file, {
 									onSuccess: function(response) {
-										_.extend(obj, response);
+										_.mergeWith(obj, response, function(o, v) {
+											if(_.isEmpty(v)) {
+												return o;
+											} else {
+												return v;
+											}
+										});
 									},
 									onError: function(response, status, headers) {
 										scope.onfail('onerror', response, status, headers);
@@ -427,7 +433,13 @@ angular.module('nc')
 								scope.images.push(obj);
 								scope.uploader.upload(file)
 									.then(function(response) {
-										_.extend(obj, response.data);
+										_.mergeWith(obj, response.data, function(o, v) {
+											if(_.isEmpty(v)) {
+												return o;
+											} else {
+												return v;
+											}
+										});
 									}, function(response) {
 										scope.onfail('onerror', response);
 										_.remove(scope.images, function(n) {
