@@ -8,7 +8,12 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 	$scope.selectAllAttributeSets = false;
 	$scope.columnCount = 3;
 	$scope.availableFieldsColumn = [];
+	var mandatoryFields = new Set(['AAD', 'AAB', 'AAC', 'AAA']);
 	var exportProgressInterval;
+
+	$scope.shouldBeMandatory = function(mapName){
+			return mandatoryFields.has(mapName);
+	}
 
 	Product.getExportableFields().then(function (data) {
 		data.forEach(function (record) {
@@ -19,7 +24,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 			}
 
 			$scope.availableFields[groupName].push(record);
-			$scope.fields[record.MapName] = (record.MapName == 'AAD');
+			$scope.fields[record.MapName] = mandatoryFields.has(record.MapName);
 			$scope.loading.push(true);
 		});
 
@@ -37,7 +42,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 
 			$scope.availableFieldsColumn.push(dct);
 		}
-		
+
 		console.log('allowed', $scope.availableFieldsColumn);
 
 	});
@@ -92,7 +97,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 			requestDate: null,
 			endDate: null
 	};
-		
+
 	//TODO: Optimization required
 	var productIds = [];
 	$scope.init = function (viewBag) {
@@ -122,7 +127,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 	$scope.exporter = {
 			progress: 0
 	};
-	
+
 	$scope.startExportProducts = function () {
 		$scope.exporter = {
 			progress: 0,
@@ -160,7 +165,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 	}
 
 	$scope.abortExport = function () {
-		
+
 		NCConfirm('Cancel Export', 'Are you sure you want to cancel this ongoing export?', function () {
 			Product.exportAbort().then(function (result) {
 				$interval.cancel(exportProgressInterval);
@@ -240,8 +245,8 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 			$timeout(function(){
 				startIntervalCheck();
 			}, 5000);
-			
-			
+
+
 
 		}, error);
 	}
@@ -279,7 +284,12 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 		Object.keys($scope.fields).forEach(function (key) {
 			$scope.fields[key] = $scope.ctrl.selectAll;
 		});
-		$scope.fields.AAD = true;
+
+		mandatoryFields.forEach(function(mf){
+				$scope.fields[mf] = true;
+		});
+
+
 	};
 
 
