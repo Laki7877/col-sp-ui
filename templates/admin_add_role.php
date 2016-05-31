@@ -53,7 +53,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Admin Acco
 									<div class="form-section-content">
 										<div ng-template="common/input/multiline-checkbox"
 											ng-template-options="{ 'label' : 'All Features' }">
-											<label><input ng-model="selectAll" ng-change="checkAll(selectAll)" type="checkbox">Select All</label>
+											<label><input ng-model="obj.selectAll" ng-change="checkAll(obj.selectAll)" type="checkbox">Select All</label>
 										</div>
 										<div ng-repeat="name in group">
 											<div ng-template="common/input/multiline-checkbox"

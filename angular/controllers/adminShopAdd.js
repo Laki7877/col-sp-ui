@@ -80,7 +80,7 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 	});
 
 	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
-		data: { IsLogo: true }
+		data: { Type: 'Logo' }
 	});
 	$scope.uploadLogo = function(file) {
 		if(_.isNil(file)) {

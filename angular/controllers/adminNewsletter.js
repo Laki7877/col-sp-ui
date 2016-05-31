@@ -24,7 +24,6 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService, Ima
 			controller: function($scope, $uibModalInstance, AdminShopService, NcAlert, config, common, id, uploader, util) {
 				'ngInject';
 				$scope.formData = {};
-				$scope.form = {};
 				$scope.loading = false;
 				$scope.saving = false;
 				$scope.alert = new NcAlert();
