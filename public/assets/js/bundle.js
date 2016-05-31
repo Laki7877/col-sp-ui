@@ -5102,7 +5102,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 	});
 
 	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
-		data: { IsLogo: true }
+		data: { Type: 'Logo' }
 	});
 	$scope.uploadLogo = function(file) {
 		if(_.isNil(file)) {
@@ -12946,7 +12946,7 @@ module.exports = ["$rootScope", "$scope", "$controller", "ShopService", "ShopPro
 	$scope.statusChangeable = false;
 
 	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
-		data: { IsLogo: true }
+		data: { Type: 'Logo' }
 	});
 	$scope.init = function() {
 		$scope.loading = true;
