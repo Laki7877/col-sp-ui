@@ -374,7 +374,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 										ng-model="formData.ShopOwner.Email"
 										ng-class="{ 'has-error' : $root.isInvalid(form.Email) }"
 										type="email"
-										maxlength="255"
+										maxlength="100"
 										required />
 									</div>
 									<!-- Phone Number -->
