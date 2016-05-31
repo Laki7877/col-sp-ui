@@ -32,6 +32,7 @@ module.exports = function($scope, $controller, AdminRoleService, AdminPermission
 			},
 			onSave: function(scope) {
 				scope.formData.Permission = PermissionService.serialize(scope.formData.Permissions);
+				console.log(scope.formData);
 			},
 			onAfterSave: function(scope) {
 				scope.formData.Permissions = PermissionService.deserialize(scope.formData.Permission, scope.permissions);

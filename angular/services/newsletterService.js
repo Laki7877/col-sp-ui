@@ -5,16 +5,13 @@ module.exports = function(common) {
 	service.generate = function() {
 		return {
 			VisibleShopGroup: 'AL',
-			PublishedDt: moment(new Date()).add(30, 'minutes').toDate(),
+			PublishedDt: moment(new Date()).toDate(),
 			ExpiredDt: moment(new Date()).add(20, 'years').toDate()
 		};
 	};
 	service.serialize = function(data) {
 		if(!data.PublishedDt) {
-			data.PublishedDt = moment(new Date()).add(30, 'minutes').toDate();
-		}
-		if(!data.ExpiredDt) {
-			data.ExpiredDt = moment(new Date()).add(20, 'years').toDate();
+			data.PublishedDt = moment(new Date()).toDate();
 		}
 		return data;
 	};
