@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, BrandService, Product, AdminMasterProductService, config, util, common) {
+module.exports = function($scope, $controller, BrandService, $window, Product, AdminMasterProductService, config, util, common) {
 	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -7,7 +7,11 @@ module.exports = function($scope, $controller, BrandService, Product, AdminMaste
 			id: 'ProductId',
 			url: '/admin/masters',
 			item: 'Master Product',
-			service: AdminMasterProductService
+			service: AdminMasterProductService,
+			freeToLeave: true,
+			onAfterSave: function(){
+				$window.location.href = '/admin/masters?success=true';
+			}
 		}
 	});
 	

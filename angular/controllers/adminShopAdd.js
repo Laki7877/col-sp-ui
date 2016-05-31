@@ -55,10 +55,7 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 						scope.shoptypes = data;
 					});
 			},
-			onSave: function(scope) {
-				console.log(scope.form);
-			},
-			onLoad: function(scope, flag) {
+			onLoad: function(scope, flag) {	
 				//Load global cat
 				scope.globalCategory = [];
 				GlobalCategoryService.list()
@@ -68,51 +65,16 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 							item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
 						});
 				});
-
-				$scope.$watch('formData.Province', function(data, old) {
-					if(_.isNil(data)) {
-						return;
-					}
-					if(_.isNil(old)) {
-
-					}
-					else if(data != old) {
-						_.unset($scope.formData, ['City']);
-					}
-					$scope.getCities(data.ProvinceId);
-				});
-
-				$scope.$watch('formData.City', function(data, old) {
-					if(_.isNil(data)) {
-						return;
-					}
-					if(_.isNil(old)) {
-
-					}
-					else if(data != old) {
-						_.unset($scope.formData, ['District']);
-					}
-					$scope.getDistricts(data.CityId);
-				});
-
-
-				$scope.$watch('formData.District', function(data, old) {
-					if(_.isNil(data)) {
-						return;
-					}
-					if(_.isNil(old)) {
-
-					}
-					else if(data != old) {
-						_.unset($scope.formData, ['PostalCode']);
-					}
-					$scope.getPostals(data.DistrictId);
-				});
+				watch();
+			},
+			onBeforeSave: function(scope) {
+				unwatch();
 			},
 			onAfterSave: function(scope) {
 				_.forEach(scope.formData.Commissions, function(item) {
 					item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
 				});
+				watch();
 			}
 		}
 	});
