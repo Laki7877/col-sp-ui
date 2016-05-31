@@ -8125,7 +8125,12 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 	$scope.selectAllAttributeSets = false;
 	$scope.columnCount = 3;
 	$scope.availableFieldsColumn = [];
+	var mandatoryFields = new Set(['AAD', 'AAB', 'AAC', 'AAA']);
 	var exportProgressInterval;
+
+	$scope.shouldBeMandatory = function(mapName){
+			return mandatoryFields.has(mapName);
+	}
 
 	Product.getExportableFields().then(function (data) {
 		data.forEach(function (record) {
@@ -8136,7 +8141,7 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 			}
 
 			$scope.availableFields[groupName].push(record);
-			$scope.fields[record.MapName] = (record.MapName == 'AAD');
+			$scope.fields[record.MapName] = mandatoryFields.has(record.MapName);
 			$scope.loading.push(true);
 		});
 
@@ -8154,7 +8159,7 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 
 			$scope.availableFieldsColumn.push(dct);
 		}
-		
+
 		console.log('allowed', $scope.availableFieldsColumn);
 
 	});
@@ -8209,7 +8214,7 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 			requestDate: null,
 			endDate: null
 	};
-		
+
 	//TODO: Optimization required
 	var productIds = [];
 	$scope.init = function (viewBag) {
@@ -8239,7 +8244,7 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 	$scope.exporter = {
 			progress: 0
 	};
-	
+
 	$scope.startExportProducts = function () {
 		$scope.exporter = {
 			progress: 0,
@@ -8277,7 +8282,7 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 	}
 
 	$scope.abortExport = function () {
-		
+
 		NCConfirm('Cancel Export', 'Are you sure you want to cancel this ongoing export?', function () {
 			Product.exportAbort().then(function (result) {
 				$interval.cancel(exportProgressInterval);
@@ -8357,8 +8362,8 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 			$timeout(function(){
 				startIntervalCheck();
 			}, 5000);
-			
-			
+
+
 
 		}, error);
 	}
@@ -8396,7 +8401,12 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 		Object.keys($scope.fields).forEach(function (key) {
 			$scope.fields[key] = $scope.ctrl.selectAll;
 		});
-		$scope.fields.AAD = true;
+
+		mandatoryFields.forEach(function(mf){
+				$scope.fields[mf] = true;
+		});
+
+
 	};
 
 

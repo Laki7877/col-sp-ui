@@ -16,7 +16,7 @@
 						<a href="/admin/products" class="btn margin-left-10 btn-white btn-width-xl">
 		          	<span class="">Cancel</span>
 		        </a>
-		        <a href="#" class="btn margin-left-10 btn-blue  btn-width-xl" 
+		        <a href="#" class="btn margin-left-10 btn-blue  btn-width-xl"
 				ng-class="{'disabled': !allowExport() }"
 				ng-disabled="!allowExport()"
 				ng-click="startExportProducts()">
@@ -40,7 +40,7 @@
 							<div class="margin-bottom-20" ng-if="SELECT_ALL">
 								<span>Number of products selected: </span> <i>ALL PRODUCTS</i>
 							</div>
-							
+
 							<div ng-include="'product/exportResult'"></div>
 
 							<div class="row">
@@ -63,7 +63,7 @@
 														<li ng-repeat="item in items">
 															<label>
 																<input type="checkbox" name="fieldfilter"
-																 ng-disabled="item.MapName == 'AAD'"
+																 ng-disabled="shouldBeMandatory(item.MapName)"
 																 ng-model="fields[item.MapName]"> 	{{ item.HeaderName }}
 															</label>
 														</li>
@@ -116,7 +116,7 @@
 			        <div class="container-fluid">
 			          <div class="float-right">
 			            <a href="/products" class="link-btn-plain">Cancel</a>
-			            <button class="btn btn-blue btn-width-xl" ng-click="startExportProducts()" 
+			            <button class="btn btn-blue btn-width-xl" ng-click="startExportProducts()"
 						ng-class="{'disabled': !allowExport() }"
 						ng-disabled="!allowExport()">Export</button>
 			          </div>
