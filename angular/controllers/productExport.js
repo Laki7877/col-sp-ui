@@ -8,6 +8,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 	$scope.selectAllAttributeSets = false;
 	$scope.columnCount = 3;
 	$scope.availableFieldsColumn = [];
+	$scope.ready = false;
 	var mandatoryFields = new Set(['AAD', 'AAB', 'AAC', 'AAA']);
 	var exportProgressInterval;
 
@@ -116,11 +117,12 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 					return i.ProductId;
 				});
 
+				$scope.ready = true;
 				normalFlow();
 			});
 		}
 
-
+		$scope.ready = true;
 		normalFlow();
 	}
 
