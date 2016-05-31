@@ -223,6 +223,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('SellerPendingProductCtrl', controllers.sellerPendingProduct)
   .controller('SellerPendingProductGroupAddCtrl', controllers.sellerPendingProductGroupAdd)
   .controller('SellerPendingProductsGroupCtrl', controllers.sellerPendingProductsGroup)
+  .controller('SellerProductGroupAddCtrl', controllers.sellerProductGroupAdd)
   // .controller('SellerReportCtrl', controllers.sellerReport)
   .controller('StdSaleReportSellerCtrl', controllers.StdSaleReportSellerList)
 
@@ -256,6 +257,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('AdminProductDetailCtrl', controllers.adminProductDetail)
   .controller('AdminMasterProductCtrl', controllers.adminMasterProduct)
   .controller('AdminMasterProductAddCtrl', controllers.adminMasterProductAdd)
+  .controller('AdminProductGroupAddCtrl', controllers.adminProductGroupAdd)
 
   .controller('LoginCtrl', controllers.login)
   .controller('AdminLoginCtrl', controllers.adminLogin)
@@ -264,7 +266,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
   // .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
   .controller('AbstractAddCtrl', controllers.abstractAdd)
-  .controller('AbstractPendingProductGroupCtrl', controllers.abstractPendingProductGroup)
+  .controller('AbstractProductGroupAddCtrl', controllers.abstractProductGroupAdd)
 
   .controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
   .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)

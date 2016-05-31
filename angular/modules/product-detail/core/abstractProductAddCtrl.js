@@ -352,6 +352,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     };
 
     $scope.enableVariation = function() {
+
+      if ($scope.addProductForm.$invalid) {
+        return $scope.alert.error(
+          '<strong>Not allowed</strong> - Cannot create variation because you have one or more errors in your form.'
+        );
+      }
+
       if ($scope.uploader.isUploading) {
         return $scope.alert.error(
           '<strong>Please Wait</strong> - One or more image upload is in progress..'
@@ -887,6 +894,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
               $scope.variantPtr = pair;
               $scope.uploader = uploader;
 
+              $scope.disableInstallment = function() {
+                if (!$scope.variantPtr.SalePrice) return true;
+                return (Number($scope.variantPtr.SalePrice) || 0) < 5000;
+              }
+
               $scope.no = function() {
                 if ($scope.form.$dirty) {
                   if (confirm("Your changes will not be saved, are you sure you want to close this modal?")) {
@@ -989,6 +1001,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       if ($scope.adminMode) return false;
       return !$rootScope.hasPermission(id);
     };
+
     //Should installment field be disabled or not
     $scope.disableInstallment = function() {
       if (!$scope.variantPtr.SalePrice) return true;

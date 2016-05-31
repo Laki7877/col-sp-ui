@@ -223,6 +223,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('SellerPendingProductCtrl', controllers.sellerPendingProduct)
   .controller('SellerPendingProductGroupAddCtrl', controllers.sellerPendingProductGroupAdd)
   .controller('SellerPendingProductsGroupCtrl', controllers.sellerPendingProductsGroup)
+  .controller('SellerProductGroupAddCtrl', controllers.sellerProductGroupAdd)
   // .controller('SellerReportCtrl', controllers.sellerReport)
   .controller('StdSaleReportSellerCtrl', controllers.StdSaleReportSellerList)
 
@@ -256,6 +257,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('AdminProductDetailCtrl', controllers.adminProductDetail)
   .controller('AdminMasterProductCtrl', controllers.adminMasterProduct)
   .controller('AdminMasterProductAddCtrl', controllers.adminMasterProductAdd)
+  .controller('AdminProductGroupAddCtrl', controllers.adminProductGroupAdd)
 
   .controller('LoginCtrl', controllers.login)
   .controller('AdminLoginCtrl', controllers.adminLogin)
@@ -264,7 +266,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
   // .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
   .controller('AbstractAddCtrl', controllers.abstractAdd)
-  .controller('AbstractPendingProductGroupCtrl', controllers.abstractPendingProductGroup)
+  .controller('AbstractProductGroupAddCtrl', controllers.abstractProductGroupAdd)
 
   .controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
   .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
@@ -19449,6 +19451,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     };
 
     $scope.enableVariation = function() {
+
+      if ($scope.addProductForm.$invalid) {
+        return $scope.alert.error(
+          '<strong>Not allowed</strong> - Cannot create variation because you have one or more errors in your form.'
+        );
+      }
+
       if ($scope.uploader.isUploading) {
         return $scope.alert.error(
           '<strong>Please Wait</strong> - One or more image upload is in progress..'
@@ -19984,6 +19993,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
               $scope.variantPtr = pair;
               $scope.uploader = uploader;
 
+              $scope.disableInstallment = function() {
+                if (!$scope.variantPtr.SalePrice) return true;
+                return (Number($scope.variantPtr.SalePrice) || 0) < 5000;
+              }
+
               $scope.no = function() {
                 if ($scope.form.$dirty) {
                   if (confirm("Your changes will not be saved, are you sure you want to close this modal?")) {
@@ -20086,6 +20100,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       if ($scope.adminMode) return false;
       return !$rootScope.hasPermission(id);
     };
+
     //Should installment field be disabled or not
     $scope.disableInstallment = function() {
       if (!$scope.variantPtr.SalePrice) return true;
@@ -20802,7 +20817,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/tab-variations',
-    "<div id=add-product-variation-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row ng-if=\"controlFlags.variation != 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content><div class=form-group><p class=form-control-static>Variation will allow you to create a group of products with different attributes such as size and color. Once you enable variation, information from other tabs will be copied into variants that you will create, and variation cannot be disabled. <strong>Please select attribute set before enabling variation.</strong></p><a class=\"btn btn-width-xxl btn-blue margin-top-20\" ng-disabled=\"!formData.AttributeSet.AttributeSetId || xspermit(44)\" ng-click=enableVariation()>Enable Variation</a></div></div></div></div></div><div class=row ng-show=\"controlFlags.variation == 'enable'\"><div class=col-xs-12><ap-variation-option form-data=formData control-flags=controlFlags ng-disabled=xspermit(44) generator=variationFactorIndices dataset=dataset></ap-variation-option><ap-multiplied-variants ng-show=\"formData.Variants.length > 0\"><div ng-include=\"'ap/section-variant-table-a'\"></div></ap-multiplied-variants></div></div></div>"
+    "<div id=add-product-variation-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row ng-if=\"controlFlags.variation != 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content><div class=form-group><p class=form-control-static>Variation will allow you to create a group of products with different attributes such as size and color. Once you enable variation, information from other tabs will be copied into variants that you will create, and variation cannot be disabled. <strong>Please select attribute set before enabling variation.</strong></p><a class=\"btn btn-width-xxl btn-blue margin-top-20\" ng-disabled=\"!formData.AttributeSet.AttributeSetId || xspermit(44) || addProductForm.$invalid\" ng-click=enableVariation()>Enable Variation</a></div></div></div></div></div><div class=row ng-show=\"controlFlags.variation == 'enable'\"><div class=col-xs-12><ap-variation-option form-data=formData control-flags=controlFlags ng-disabled=xspermit(44) generator=variationFactorIndices dataset=dataset></ap-variation-option><ap-multiplied-variants ng-show=\"formData.Variants.length > 0\"><div ng-include=\"'ap/section-variant-table-a'\"></div></ap-multiplied-variants></div></div></div>"
   );
  }]);
 },{}],183:[function(require,module,exports){
