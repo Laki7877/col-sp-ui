@@ -47,10 +47,11 @@ angular.module('nc')
 				
 				$timeout(function() {
 					var section = vm.element || $document;
-					if(!_.isNil(scroll) && scroll) {
-						smoothScroll(toElm ? vm.element[0] : $document[0].body, {
-							container: toElm ? '.modal': null
-						});
+					if(!_.isNil(scroll)) {
+						if(scroll)
+							smoothScroll(toElm ? vm.element[0] : $document[0].body, {
+								container: toElm ? '.modal': null
+							});
 					} else {
 						smoothScroll(toElm ? vm.element[0] : $document[0].body, {
 							container: toElm ? '.modal': null
