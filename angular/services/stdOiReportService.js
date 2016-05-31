@@ -5,16 +5,17 @@ module.exports = function(common, config, util) {
 
 	service.getOiReport = function (params) {
 	    return common.makeRequest({
-	        method: 'GET',
-	        url: '/StandardReport/GetOiReport/' + params
+	        method: 'POST',
+	        url: '/StandardReport/GetOiReport/',
+	        data: params,
 	    });
 	};
 
 	service.exportCsv = function (params) {
 	    return common.makeRequest({
-	        method: 'GET',
+	        method: 'POST',
 	        url: '/StandardReport/ExportOiReport',
-	        params: params
+	        data: params,
 	    });
 	};
 

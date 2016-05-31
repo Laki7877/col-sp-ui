@@ -93,8 +93,6 @@ Route::add('/cms/master/:id', 'SellerController::editCMSMaster');
 //Report
 Route::add('/reports/std/saleforseller', 'SellerController::listStandardReport');
 
-Route::add('/reports/std/oi', 'SellerController::listOiReport');
-
 
 //admin routing 
 Route::add('/admin/onboarding', 'AdminController::onboarding');
@@ -163,6 +161,9 @@ Route::add('/reports/std/saleforseller', 'SellerController::listStandardReport')
 Route::add('/reports/std/stockstatus', 'SellerController::listStockReport');
 Route::add('/reports/std/onhold', 'SellerController::listOnHoldReport');
 Route::add('/reports/std/return', 'SellerController::listReturnReport');
+
+Route::add('/reports/std/oi', 'SellerController::listOiReport');
+Route::add('/reports/std/nonmove', 'SellerController::listNonMoveReport');
 
 //test route
 Route::add('/test/:name', 'TestController::any');

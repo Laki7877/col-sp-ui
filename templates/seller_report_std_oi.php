@@ -4,7 +4,7 @@
 	<div ng-controller="SellerStdOiReportCtrl">
 		<nc-page-title nc-title="OI Report" icon="fa-user">
 			<div class="button-size-normal">
-      <button class="button-size-normal btn btn-green btn-width-xl" ng-click="exportCsv()" style="margin-left:10px;">Export Search</button>
+      <button class="button-size-normal btn btn-green btn-width-xl" ng-click="exportCsv()" style="margin-left:10px;">Export File</button>
     </div>
 		</nc-page-title>
 

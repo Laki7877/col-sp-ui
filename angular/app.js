@@ -159,6 +159,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
 
   // Col Dev (Natcharin)
   .factory('StdOiReportService', services.stdOiReportService)
+  .factory('StdNonMoveReportService', services.stdNonMoveReportService)
 
   // Directives
   .directive('ncTradableSelect', directives.ncTradableSelect)
@@ -305,7 +306,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   
   //Natcharin
   .controller('SellerStdOiReportCtrl', controllers.sellerStdOiReportList)
-
+  .controller('SellerStdNonMoveReportCtrl', controllers.sellerStdNonMoveReportList)
 
 var _rollbarConfig = {
     accessToken: config.ROLLBAR.token,
