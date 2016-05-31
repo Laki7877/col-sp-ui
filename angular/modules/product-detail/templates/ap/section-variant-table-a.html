@@ -39,8 +39,7 @@
       <td ng-template="common/input/text-td" ng-template-options="{
         'error' : {
         'messages': {
-        'pattern': 'Only numbers and decimals (up to 2 digits) allowed',
-        'maxnumber': 'Original Price must be higher than Sale Price'
+        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
         },
         'show': $root.isInvalid(addProductForm['pair_SalePrice' + $index]),
         'conditions' : addProductForm['pair_SalePrice' + $index].$error
@@ -55,8 +54,7 @@
       <td ng-template="common/input/text-td" ng-template-options="{
         'error' : {
         'messages': {
-        'pattern': 'Only numbers and decimals (up to 2 digits) allowed',
-        'minnumber': 'Original Price must be higher than Sale Price'
+        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
         },
         'show': $root.isInvalid(addProductForm['pair_OriginalPrice' + $index]),
         'conditions' : addProductForm['pair_OriginalPrice' + $index].$error
