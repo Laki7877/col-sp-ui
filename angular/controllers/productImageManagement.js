@@ -114,19 +114,21 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     $scope.onError = function(item, response) {
     	item.alert.close();
     	if(response.name == 'queueFilter' || response.name == 'queueLimit') {
-    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Cannot exceed 10 images for each product');
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Cannot exceed 10 images for each product', null, false);
     	}
     	else if(response.name == 'sizeFilter') {
-    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Each image file size must not exceed 5MB');
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Each image file size must not exceed 5MB', null, false);
     	}
     	else if(response.name == 'dimensionFilter') {
-    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Image dimension must be between 1500x1500 to 2000x2000 pixels');
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Image dimension must be between 1500x1500 to 2000x2000 pixels', null, false);
     	} 
     	else if(response.name == 'ratioFilter') {
-    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Image must be a square (1:1 ratio)');
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Image must be a square (1:1 ratio)', null, false);
+    	} 
+    	else if(response.name == 'imageFilter') {
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Image must be a JPEGs file', null, false);
     	} else {
-    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + response);
-    		console.log(response);
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Unknown error', null, false);
 		}
 	};
     $scope.isDisabled = function(product) {
@@ -170,7 +172,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     		images = product.MasterImg;
     	}
 
-    	if(images.length < 10 && product.Status == $scope.productStatus[0].value) {
+    	if(images.length < 10 && product.Status == $scope.productStatus[0].value && product.Status == $scope.productStatus[3].value) {
     		return '';
     	}
     	return 'disabled';
@@ -206,6 +208,15 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
 			});
 		$scope.dirty = false;
 	};
+	$scope.$watch('params._filter', function(n) {
+		if(n.value == 'ImageMissing') {
+			$scope.params._order = 'UpdatedDt';
+			$scope.params._direction= 'desc';
+		} else {
+			$scope.params._order = 'ProductId';
+			$scope.params._direction= 'desc';
+		}
+	});
     $scope.$watch('watcher', function(val, val2) {
     	if(!_.isUndefined(val2) && !$scope.ignored) {
     		$scope.dirty = true;

@@ -180,6 +180,14 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $filter, storage,
 
 	//-------------- Begin Low Stock Alert section -------------
 	// get Low Stock Alert data and set it to scope
+
+	var getAvailableStock = function(item) {
+		return _.toInteger(item.Quantity) - (
+				_.toInteger(item.Defect) +
+				_.toInteger(item.OnHold) +
+				_.toInteger(item.Reserve)
+				);
+	};
 	Dashboard.getLowStockAlert()
 		.then(function(query) {
 			// set max data for table to 10
@@ -189,7 +197,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $filter, storage,
 
 			for (var i = $scope.lowStockAlertData.length - 1; i >= 0; i--) {
 				$scope.lowStockAlertData[i].PidText = 'PID: ' + $scope.lowStockAlertData[i].Pid;
-				$scope.lowStockAlertData[i].QuantityText = 'QTY: ' + $scope.lowStockAlertData[i].Quantity;
+				$scope.lowStockAlertData[i].QuantityText = 'QTY: ' + getAvailableStock($scope.lowStockAlertData[i]);
 			};
 			return $scope.lowStockAlertData;
 		});

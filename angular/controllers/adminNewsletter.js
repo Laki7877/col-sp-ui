@@ -86,7 +86,7 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService, Ima
 				$scope.save = function() {
 					$scope.alert.close();
 					if($scope.form.$invalid) {
-						$scope.alert.error(util.saveAlertError);
+						$scope.alert.error(util.saveAlertError());
 						return;
 					}
 					$scope.saving = true;
