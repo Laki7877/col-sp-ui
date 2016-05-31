@@ -4888,6 +4888,7 @@ module.exports = ["$scope", "$controller", "AdminRoleService", "AdminPermissionS
 			},
 			onSave: function(scope) {
 				scope.formData.Permission = PermissionService.serialize(scope.formData.Permissions);
+				console.log(scope.formData);
 			},
 			onAfterSave: function(scope) {
 				scope.formData.Permissions = PermissionService.deserialize(scope.formData.Permission, scope.permissions);
@@ -9045,9 +9046,9 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
 		$scope.dirty = false;
 	};
 	$scope.$watch('params._filter', function(n) {
-		if(n.value == 'ImageMissing') {
-			$scope.params._order = 'UpdatedDt';
-			$scope.params._direction= 'desc';
+		if(n == 'ImageMissing') {
+			$scope.params._order = 'CreatedDt';
+			$scope.params._direction= 'asc';
 		} else {
 			$scope.params._order = 'ProductId';
 			$scope.params._direction= 'desc';
@@ -20790,7 +20791,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/tab-information',
-    "<div><div ap-component=ap/inner-tab-breadcrumb></div><div ap-component=ap/section-overview></div><div class=row><div class=col-xs-12><div ap-component=ap/section-vital-information></div><div ap-component=ap/section-price></div><div ap-component=ap/section-description></div><div ap-component=ap/section-attributes></div><div ap-component=ap/section-other-attributes></div><div ap-component=ap/section-keywords></div><div ap-component=ap/section-inventory></div><div ap-component=ap/section-shipping></div></div></div></div>"
+    "<div><div ap-component=ap/inner-tab-breadcrumb></div><div ap-component=ap/section-overview></div><div class=row><div class=col-xs-12><div ap-component=ap/section-vital-information></div><div ap-component=ap/section-price></div><div ap-component=ap/section-attributes></div><div ap-component=ap/section-other-attributes></div><div ap-component=ap/section-description></div><div ap-component=ap/section-keywords></div><div ap-component=ap/section-inventory></div><div ap-component=ap/section-shipping></div></div></div></div>"
   );
 
 
@@ -24874,16 +24875,13 @@ module.exports = ["common", function(common) {
 	service.generate = function() {
 		return {
 			VisibleShopGroup: 'AL',
-			PublishedDt: moment(new Date()).add(30, 'minutes').toDate(),
+			PublishedDt: moment(new Date()).toDate(),
 			ExpiredDt: moment(new Date()).add(20, 'years').toDate()
 		};
 	};
 	service.serialize = function(data) {
 		if(!data.PublishedDt) {
-			data.PublishedDt = moment(new Date()).add(30, 'minutes').toDate();
-		}
-		if(!data.ExpiredDt) {
-			data.ExpiredDt = moment(new Date()).add(20, 'years').toDate();
+			data.PublishedDt = moment(new Date()).toDate();
 		}
 		return data;
 	};
@@ -24914,25 +24912,26 @@ module.exports = ["util", function(util) {
 
 	service.serialize = function(ownedPermissionsObject) {
 		var result = [];
-		var owned = _.merge({}, ownedPermissionsObject);
+		var owned = _.cloneDeep(ownedPermissionsObject);
 
 		_.forOwn(ownedPermissionsObject, function(v,k) {
 			util.traverse(v, 'Children', function(e) {
 				if(e.check) {
-					_.unset(e, ['ParentNode']);
-					result.push(e);
+					var r = _.cloneDeep(e);
+					_.unset(r, ['ParentNode']);
+					result.push(r);
 				}
 			});
 		});
 
 		_.forEach(result, function(e) {
 			_.unset(e, ['Children']);
-		})
+		});
 		return result;
 	};
 
 	service.deserialize = function(ownedPermissions, allPermissions) {
-		var data = _.merge({}, allPermissions);
+		var data = _.cloneDeep(allPermissions);
 
 		data = service.format(data);
 		
