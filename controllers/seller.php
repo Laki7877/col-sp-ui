@@ -88,6 +88,25 @@ class SellerController extends Controller
     {
         return View::render('seller_report',  ['params' => json_encode_n($params)]);
     }
+	public static function listStandardReport($params) 
+	{
+		return View::render('seller_report_std_saleforseller');
+	}
+
+	public static function listStockReport($params) 
+	{
+		return View::render('seller_report_std_stockstatus');
+	}
+
+	public static function listOnHoldReport($params) 
+	{
+		return View::render('seller_report_std_itemonhold');
+	}
+
+	public static function listReturnReport($params) 
+	{
+		return View::render('seller_report_std_return');
+	}
 
     //CMS
     public static function listCMSCategory($params)

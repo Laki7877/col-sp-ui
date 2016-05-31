@@ -30,17 +30,13 @@ angular.module('nc')
 				options: '=?ncBreadcrumbSelectOptions',
 				name: '@name',
 				placeholder: '@',
-				ngDisabled: '=',
+				disabled: '=ngDisabled',
 				ngRequired: '='
 			},
 			template: $templateCache.get('common/ncBreadcrumbSelect'),
 			link: function(scope, elem, attrs) {
 				scope.searchable = [];
 				scope.model = {ptr: []};
-				scope.disabled = false;
-				if(!_.isNil(attrs.disabled)) {
-					scope.disabled = true;
-				}
 				
 				scope.options = _.defaults(scope.options, {
 					nameKey: 'NameEn',

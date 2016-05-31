@@ -1,4 +1,4 @@
-module.exports = function ($scope, $controller, common, Product, util, $window, $rootScope, config, storage, $base64, $timeout) {
+module.exports = function($scope, $controller, common, Product, util, $window, $rootScope, config, storage, $base64, $timeout) {
     'ngInject';
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
@@ -16,13 +16,12 @@ module.exports = function ($scope, $controller, common, Product, util, $window, 
             bulks: [
                 'Delete',
                 'Hide',
-                'Show',
-                {
+                'Show', {
                     name: 'Publish',
                     fn: function(arr, cb) {
                         $scope.alert.close();
 
-                        if(arr.length == 0) {
+                        if (arr.length == 0) {
                             $scope.alert.error('Unable to Publish. Please select Product for this action.');
                             return;
                         }
@@ -44,8 +43,7 @@ module.exports = function ($scope, $controller, common, Product, util, $window, 
                         btnConfirm: 'Publish',
                         btnClass: 'btn-green'
                     }
-                },
-                {
+                }, {
                     name: 'Add Tags',
                     fn: function(add, cb, r) {
                         $scope.alert.close();
@@ -77,33 +75,47 @@ module.exports = function ($scope, $controller, common, Product, util, $window, 
                     }
                 }
             ],
-            filters: [
-                { name: "All", value: 'All' },
-                { name: "Approved", value: 'Approved' },
-                { name: 'Draft', value: 'Draft' },
-                { name: "Not Approved", value: 'NotApproved' },
-                { name: "Wait for Approval", value: 'WaitforApproval' }
-            ]
+            filters: [{
+                name: "All",
+                value: 'All'
+            }, {
+                name: "Approved",
+                value: 'Approved'
+            }, {
+                name: 'Draft',
+                value: 'Draft'
+            }, {
+                name: "Not Approved",
+                value: 'NotApproved'
+            }, {
+                name: "Wait for Approval",
+                value: 'WaitforApproval'
+            }]
         }
     });
     $scope.showOnOffStatus = {};
     $scope.showOnOffStatus.value = true;
     $scope.statusLookup = {};
     $scope.advanceSearchOptions.Admin = false;
-    config.PRODUCT_STATUS.forEach(function(object){
-       $scope.statusLookup[object.value] = object;
+    config.PRODUCT_STATUS.forEach(function(object) {
+        $scope.statusLookup[object.value] = object;
     });
-    $scope.startExportProducts = function () {
+    
+    $scope.startExportProducts = function() {
+        
         $scope.exporter = {
             progress: 10,
-        	  title: 'Exporting Product...'
+            title: 'Exporting Product...'
         };
+
         $("#export-product").modal('show');
     };
+
+
     $scope.confirmExportProducts = function() {
         $("#export-product").modal('hide');
         var arr = [];
-        Object.keys($scope.checkBoxCache).forEach(function (m) {
+        Object.keys($scope.checkBoxCache).forEach(function(m) {
             if (!$scope.checkBoxCache[m]) return;
             arr.push({
                 ProductId: Number(m)
@@ -116,7 +128,7 @@ module.exports = function ($scope, $controller, common, Product, util, $window, 
         var fileName = 'ProductExport-' + moment(new Date(), 'MM-DD-YYYY-HHmm') + ".csv";
         var a = document.getElementById("export_download_btn");
 
-        var error = function (r) {
+        var error = function(r) {
             $(".modal").modal('hide');
             $scope.exporter.title = 'Error';
             $scope.alert.error('Unable to Export Product');
@@ -128,13 +140,15 @@ module.exports = function ($scope, $controller, common, Product, util, $window, 
 
         var chunks = _.chunk(arr, 3);
 
-        chunks.forEach(function(chunk){
-            Product.export(chunk).then(function (result) {
+        chunks.forEach(function(chunk) {
+            Product.export(chunk).then(function(result) {
 
-                $scope.exporter.progress += (100/chunks);
+                $scope.exporter.progress += (100 / chunks);
                 blobs.push(result);
 
-                var file = new Blob(blobs, {type: 'application/csv'});
+                var file = new Blob(blobs, {
+                    type: 'application/csv'
+                });
                 var fileURL = URL.createObjectURL(file);
 
                 $scope.exporter.href = fileURL;
@@ -147,34 +161,35 @@ module.exports = function ($scope, $controller, common, Product, util, $window, 
             }, error);
         });
     };
-    $scope.asStatus = function (ab) {
+    $scope.asStatus = function(ab) {
         return $scope.statusLookup[ab];
     };
     $scope.getTag = function(tags) {
         return _.join(tags, ', ');
     }
-    $scope.exportSelected = function(){
+
+    $scope.exportSelected = function() {
         $scope.alert.close();
-        if($scope.bulkContainer.length == 0) {
-            $scope.alert.error('Unable to Export. Please select Product for this action.');
+        if ($scope.bulkContainer.length == 0) {
+            return $scope.alert.error('Unable to Export. Please select Product for this action.');
         }
         document.getElementById('exportForm').submit();
     };
 
     $scope.searchCriteria = null;
-    $scope.exportSearchResult = function(){
+    $scope.exportSearchResult = function() {
         var K = _.extend({}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams));
         K._limit = 2147483647;
         $scope.searchCriteria = $base64.encode(JSON.stringify(K));
 
-        $timeout(function(){
+        $timeout(function() {
             console.log('searchCriteria', $scope.searchCriteria);
             document.getElementById('exportForm').submit();
         });
     }
 
     var fromImport = storage.get('import.success');
-    if(!_.isEmpty(fromImport)) {
+    if (!_.isEmpty(fromImport)) {
         storage.remove('import.success');
         $scope.alert.success(fromImport);
     }

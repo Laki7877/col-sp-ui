@@ -1,7 +1,7 @@
 module.exports = [function () {
     return {
-	priority: 1010,
-	require: '?ngModel',
+        priority: 1010,
+        require: '?ngModel',
         link: function ($scope, elm, attr, ngModel) {
             var ck = CKEDITOR.replace(elm[0], attr.ngCkeditor || {});
             CKFinder.setupCKEditor(ck, '../')
@@ -10,10 +10,18 @@ module.exports = [function () {
                     ngModel.$setViewValue(ck.getData());
                 });
             });
-	    ck.on('instanceReady' , function(){
-	    	ck.setData(ngModel.$modelValue);
-	    });
-	
+            
+            ck.on('change', function () {
+                $scope.$apply(function () {
+                    ngModel.$setViewValue(ck.getData());
+                });
+            });
+                        
+            
+            ck.on('instanceReady', function () {
+                ck.setData(ngModel.$modelValue);
+            });
+
             ngModel.$render = function (value) {
                 ck.setData(ngModel.$modelValue);
             };

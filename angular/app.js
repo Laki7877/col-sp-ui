@@ -279,10 +279,10 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
 
   .controller('AdminCMSMasterListCtrl', controllers.adminCMSMasterList)
   .controller('AdminCMSMasterAddCtrl', controllers.adminCMSMasterAdd)
-
-  .controller('AdminStdStockReportCtrl', controllers.adminStdStockReportList)
-  .controller('AdminStdOnHoldReportCtrl', controllers.adminStdOnHoldReportList)
-  .controller('AdminStdReturnReportCtrl', controllers.adminStdReturnReportList)
+  .controller('SellerStdSaleReportSellerCtrl', controllers.sellerStdSaleReportSellerList)
+  .controller('SellerStdStockReportCtrl', controllers.sellerStdStockReportList)
+  .controller('SellerStdOnHoldReportCtrl', controllers.sellerStdOnHoldReportList)
+  .controller('SellerStdReturnReportCtrl', controllers.sellerStdReturnReportList)
 
   //iOATH
   .controller('AdminBuy1Get1AddCtrl',controllers.adminBuy1Get1Add)

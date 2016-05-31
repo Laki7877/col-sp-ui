@@ -48,6 +48,11 @@ angular.module('nc')
 							Enabled: true
 						})
 					}
+					else {
+						if(scope.source.Products) {
+							_.remove(scope.source.Products, _.isEmpty);
+						}
+					}
 				})
 			}
 		}

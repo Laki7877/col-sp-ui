@@ -23,7 +23,7 @@
           <ul class="dropdown-menu" ng-if="Profile.Shop">
             <li><a href="/shops/settings">Status: <span class="{{asShopStatus(Profile.Shop.Status).color}}">{{asShopStatus(Profile.Shop.Status).name}}</span></a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="http://www.central.co.th" target="_blank">View Storefront</a></li>
+            <!-- <li><a href="http://www.central.co.th" target="_blank">View Storefront</a></li> -->
             <li><a href="/shops/settings">View Shop Profile</a></li>
           </ul>
          </li>
