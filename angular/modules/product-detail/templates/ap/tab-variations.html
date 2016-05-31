@@ -8,13 +8,12 @@
                 <div class="form-section-content">
                     <div class="form-group ">
                         <p class="form-control-static">
-                            Variation will allow you to create a group of products with different attributes such as size and color. Once you enable
-                            variation, information from other tabs will be copied into variants that you will create, and
-                            variation cannot be disabled.
-                            <strong>Please select attribute set before enabling variation.</strong>
+                          <b ng-class="{'color-red': !formData.AttributeSet.AttributeSetId || addProductForm.$invalid}">Please make sure an attribute set is selected and all required has no error before enabling variation.</b>
+                          Variation will allow you to create a group of products with different attributes such as size and color. Once you enable
+                          variation, information from other tabs will be copied into variants that you will create, and variation cannot be disabled.
                         </p>
                         <a class="btn btn-width-xxl btn-blue margin-top-20"
-                        ng-disabled="!formData.AttributeSet.AttributeSetId || xspermit(44) || addProductForm.$invalid" 
+                        ng-disabled="!formData.AttributeSet.AttributeSetId || xspermit(44) || addProductForm.$invalid"
                         ng-click="enableVariation()">
                             Enable Variation
                         </a>

@@ -51,7 +51,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Accounts
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Email) }"
 											   
 							                  type="email"
-							                  maxlength="255"
+							                  maxlength="100"
 							                  required />
 							              </div>
 							              <!-- Name -->
