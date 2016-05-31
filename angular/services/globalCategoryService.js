@@ -13,12 +13,7 @@ module.exports = function(common, $q, util) {
 			AttributeSets: [],
 			CategoryBannerTh: [],
 			CategoryBannerEn: [],
-			TitleShowcase: false,
-			BannerStatusEn: true,
-			BannerStatusTh: true,
-			BannerSmallStatusEn: true,
-			BannerSmallStatusTh: true,
-			FeatureProductStatus: true
+			TitleShowcase: false
 		}, extend);
 	};
 	service.deserialize = function(data) {

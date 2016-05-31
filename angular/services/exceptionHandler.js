@@ -10,6 +10,6 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
         //     'message': exception.message
         // }));
         // $window.location = '/exception?e=' + encMsg;
-        // Rollbar.error("Uncaught Exception", exception);
+        Rollbar.error("Uncaught Exception", exception);
     };
 }];

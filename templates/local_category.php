@@ -37,9 +37,6 @@
 					<span class="pull-right category-column">
 						Products
 					</span>
-					<span class="pull-right category-column">
-						ID
-					</span>
 				</div>
 			</div>
 		</div>

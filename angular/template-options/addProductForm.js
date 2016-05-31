@@ -85,6 +85,7 @@ module.exports = {
   DescriptionFull: {
     'divClass': 'col-xs-6',
     'formGroupClass': 'margin-top-40',
+    'labelClass': 'required',
     'inputSize': 'xxl'
   },
   ProductNameTh: {
@@ -213,8 +214,7 @@ module.exports = {
     'error': {
       'messages': {
         'required': 'This is a required field',
-        'pattern': 'Only numbers allowed',
-        'maxnumber': 'Products in stock cannot take more than 24 days to prepare'
+        'pattern': 'Only numbers allowed'
       }
     },
     'unit': 'Day'

@@ -1,5 +1,4 @@
 module.exports = function ($scope, $controller, CMSMasterService, config) {
-    'ngInject';
     $scope.formData = {
         OnTopCreditCardId: null,
         NameTH: null,

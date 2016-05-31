@@ -7,8 +7,6 @@
 	       <nc-page-title nc-title="All Products" icon="fa-tag">
 	      <form id="exportForm" name="exportForm" action="/admin/products/export" method="post">
 	          <input type="hidden" name="selected_products[]" ng-repeat="item in bulkContainer" value="{{ item.ProductId }}"/>
-	          <input type="hidden" name="search_criteria"  value="{{ searchCriteria }}"/>
-
 	          <div class="btn-group">
 	            <button type="button" class="btn btn-white dropdown-toggle btn-width-xl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	              Export <span class="caret"></span>
@@ -16,7 +14,7 @@
 	            <ul class="dropdown-menu" style="right: 0; left: auto;">
 	              <li><a href="/admin/products/export">Export All Products</a></li>
 	              <li><a ng-click="exportSelected()">Export Selected Products</a></li>
-	              <li><a ng-click="exportSearchResult()">Export Search Results</a></li>
+	              <li><a ng-click="exportCriteria()">Export Search Results</a></li>
 	            </ul>
 	          </div>
 	      </form>

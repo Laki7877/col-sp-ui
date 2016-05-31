@@ -13,7 +13,7 @@
 					{{ itemValue(item) }}
 				</div>
 				<!-- no result -->
-				<div ng-if="(choices | filter : searchText).length == 0 && notFound && !loading && searchText != ''" data-selectable class="option">
+				<div ng-if="(choices | filter : searchText).length == 0 && notFound && !loading" data-selectable class="option">
 					No result for search term '{{ searchText }}' 
 				</div>
 			</div>

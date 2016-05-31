@@ -36,7 +36,7 @@
                 <div class="container-fluid">
                     <div class="float-right">
                         <button class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</button>
-                        <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+                        <button class="btn btn-blue btn-width-xl" ng-click="save()" ng-disabled="adCMSadd">Save</button>
                     </div>
                 </div>
             </div>

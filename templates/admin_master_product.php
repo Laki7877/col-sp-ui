@@ -2,14 +2,6 @@ r<?php $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Mas
 
 <?php $this->start('page-body') ?>
   <div ng-controller="AdminMasterProductCtrl">
-
-    <?php if($_GET['success']): ?>
-    <div class="alert alert-green alert-dismissable" role="alert" ng-show="showAlert" ng-init="showAlert = true">
-      <span class="close color opacity-1" aria-hidden="true" ng-click="showAlert = false">&times;</span>
-        Master Product updated successfully.
-    </div>
-    <?php endif; ?>
-
     <nc-page-title nc-title="Master Products" icon="fa-tag">
       <a class="btn btn-blue btn-width-xxl" ng-href="{{url}}/add">Add {{item}}</a>
     </nc-page-title>
