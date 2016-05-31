@@ -55,7 +55,9 @@ var seller = {
         'Sale Report For Seller': '/reports/std/saleforseller',
         'Stock Status Report': '/reports/std/stockstatus',
         'On Hold Report' : '/reports/std/onhold',
-        'Return Report' : '/reports/std/return'
+        'Return Report' : '/reports/std/return',
+        'OI Report' : '/reports/std/oi',
+        'Non-move Report' : '/reports/std/non-move'
 	}
 };
 var admin = {
