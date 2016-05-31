@@ -4236,7 +4236,6 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "Im
 			controller: ["$scope", "$uibModalInstance", "AdminShopService", "NcAlert", "config", "common", "id", "uploader", "util", function($scope, $uibModalInstance, AdminShopService, NcAlert, config, common, id, uploader, util) {
 				'ngInject';
 				$scope.formData = {};
-				$scope.form = {};
 				$scope.loading = false;
 				$scope.saving = false;
 				$scope.alert = new NcAlert();
@@ -8998,7 +8997,7 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
     		images = product.MasterImg;
     	}
 
-    	if(images.length < 10 && product.Status == $scope.productStatus[0].value && product.Status == $scope.productStatus[3].value) {
+    	if(images.length < 10 && (product.Status == $scope.productStatus[0].value || product.Status == $scope.productStatus[3].value)) {
     		return '';
     	}
     	return 'disabled';
