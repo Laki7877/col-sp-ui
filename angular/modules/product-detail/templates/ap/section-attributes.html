@@ -80,7 +80,7 @@
                     {{ amap.Attribute.DisplayNameEn }} (ไทย)
                 </label>
             </div>
-             <div ng-class="{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}">
+             <div class="width-field-normal">
                   <input ng-if="isFreeTextInput(amap.Attribute.DataType)" ng-disabled="xspermit(35)"
                     ng-class="{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }"
                     nc-default-value="''" maxlength="255"
