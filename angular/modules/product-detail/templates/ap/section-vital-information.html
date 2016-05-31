@@ -15,7 +15,7 @@
         <div nc-template="common/input/form-group-with-label"
         nc-label="Product Name (ไทย)" nc-template-form="form.ProductNameTh"
         nc-template-options-path="addProductForm/ProductNameTh">
-            <input class="form-control width-field-large" name="ProductNameTh" 
+            <input class="form-control width-field-large" name="ProductNameTh"
             ng-disabled="xspermit(35)" ng-model="variantPtr.ProductNameTh"
              maxlength="255" required />
         </div>
@@ -37,7 +37,7 @@
              maxlength="55"  />
         </div>
 
-	<div nc-template="common/input/form-group-with-label" nc-label="SKU" 
+	<div nc-template="common/input/form-group-with-label" nc-label="SKU"
 	     nc-template-form="form.Sku" nc-template-options-path="addProductForm/Sku">
             <input class="form-control width-field-large" name="Sku"
             ng-disabled="xspermit(35)"
@@ -67,7 +67,7 @@
 		</div>
 		<div class="width-field-normal">
 			<div class="ah-select2-dropdown">
-                <you-me display-by="BrandNameEn" placeholder="Search Brand" nc-required="true"
+                <you-me display-by="display" placeholder="Search Brand (ID)" nc-required="true"
                         auto-clear-search="true" group-by="_group" ng-disabled="xspermit(35)"
                         ng-model="formData.Brand" refresh="refresher.Brands" choices="dataset.Brands"></you-me>
 			</div>
