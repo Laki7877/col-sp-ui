@@ -1,7 +1,7 @@
 <?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller System'])?>
 
 <?php $this->start('page-body') ?>
-<div ng-controller="AdminStdReturnReportCtrl">
+<div ng-controller="SellerStdReturnReportCtrl">
     <nc-alert nc-model="alert"></nc-alert>
     <nc-page-title nc-title="Seller Return Report" icon="fa-user">
         <!-- <a class="btn btn-blue btn-width-xxl" ng-click="exportCsv()">Export CSV</a> -->

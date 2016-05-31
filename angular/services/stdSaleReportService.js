@@ -3,14 +3,14 @@ module.exports = function (common, config, util) {
     var service = common.Rest('/StandardReport/GetSaleReportForSeller');
 
     service.getSaleReport = function (params) {
-       return common.makeRequest({
+        return common.makeRequest({
             method: 'POST',
             url: '/StandardReport/GetSearchSaleReportForSeller/',
-              data: params,
+            data: params,
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8'
             }
-         });
+        });
     };
 
     service.exportCsv = function (params) {

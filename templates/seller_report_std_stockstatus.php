@@ -1,7 +1,7 @@
 <?php $this->layout('layouts/page-with-sidebar', ['title' => 'Seller System'])?>
 
 <?php $this->start('page-body') ?>
-  <div ng-controller="AdminStdStockReportCtrl">
+  <div ng-controller="SellerStdStockReportCtrl">
     <nc-alert nc-model="alert"></nc-alert>
     <nc-page-title nc-title="Seller Standard Stock Report" icon="fa-user">
     </nc-page-title>
