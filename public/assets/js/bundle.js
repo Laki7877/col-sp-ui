@@ -8129,6 +8129,7 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 	$scope.selectAllAttributeSets = false;
 	$scope.columnCount = 3;
 	$scope.availableFieldsColumn = [];
+	$scope.ready = false;
 	var mandatoryFields = new Set(['AAD', 'AAB', 'AAC', 'AAA']);
 	var exportProgressInterval;
 
@@ -8237,11 +8238,12 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 					return i.ProductId;
 				});
 
+				$scope.ready = true;
 				normalFlow();
 			});
 		}
 
-
+		$scope.ready = true;
 		normalFlow();
 	}
 
