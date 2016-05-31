@@ -59,7 +59,7 @@
 								                  ng-src="{{formData.ShopImage.Url}}"
 								                  width="160"
 								                  />
-								                <a style="display:block;" class="margin-top-5" ng-click="formData.Logo=null"><i class="fa-trash fa"></i> Delete this image</a>
+								                <a style="display:block;" class="margin-top-5" ng-click="formData.ShopImage=null"><i class="fa-trash fa"></i> Delete this image</a>
 								            </div>
 						                    <div nc-template="common/input/form-group-with-label" 
 						                    	nc-label="Shop Name" 
