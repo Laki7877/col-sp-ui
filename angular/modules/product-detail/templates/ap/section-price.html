@@ -5,18 +5,19 @@
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.SalePrice" nc-label="Sale Price" ng-cloack nc-template-options-path="addProductForm/SalePrice">
             <input autocomplete="off" ng-pattern-restrict="^[0-9]{0,10}(\.[0-9]{0,2})?$" maxlength="10"
             type="text" class="form-control" name="SalePrice" ng-disabled="xspermit(36) || xspermit(35)"
-                ng-model="variantPtr.SalePrice" required/>
+            ng-maxnumber="{{ variantPtr.OriginalPrice }}" ng-model="variantPtr.SalePrice" required/>
         </div>
 
-        <div nc-template="common/input/form-group-with-label" nc-label="Original Price" 
+        <div nc-template="common/input/form-group-with-label" nc-label="Original Price"
         nc-template-options-path="addProductForm/OriginalPrice" nc-template-form="form.OriginalPrice">
             <input autocomplete="off" class="form-control" type="text" name="OriginalPrice" ng-disabled="xspermit(36) || xspermit(35)"
+            ng-minnumber="{{ variantPtr.SalePrice }}"
                 ng-model="variantPtr.OriginalPrice" ng-pattern-restrict="^[0-9]{0,10}(\.[0-9]{0,2})?$" maxlength="10" />
         </div>
 
         <div nc-template="common/input/form-group-with-label" nc-label="Installment" nc-template-options-path="addProductForm/Installment"
             nc-template-form="form.Installment">
-            <select ng-disabled="disableInstallment() || xspermit(36) || xspermit(35)" 
+            <select ng-disabled="disableInstallment() || xspermit(36) || xspermit(35)"
             ng-cloak class="form-control" ng-model="variantPtr.Installment">
                 <option ng-if="disableInstallment()" value="N" selected>Available when sale price is more than 5,000</option>
                 <option ng-if="!disableInstallment()" value="N">No</option>
@@ -30,6 +31,7 @@
             <input class="form-control" name="PromotionPrice"
             ng-disabled="xspermit(36) || xspermit(35)"
             ng-model="variantPtr.PromotionPrice"
+            ng-maxnumber="variantPtr.SalePrice"
             ng-pattern-restrict="^[0-9]{0,10}(\.[0-9]{0,2})?$" maxlength="10"
             />
         </div>
@@ -50,7 +52,7 @@
 
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" ng-show="!xspermit(35) && !xspermit(36)">
                         <datetimepicker data-ng-model="variantPtr.EffectiveDatePromotion"
-                        data-datetimepicker-config="{ dropdownSelector: '#dropdown_promotion_effective_date', 
+                        data-datetimepicker-config="{ dropdownSelector: '#dropdown_promotion_effective_date',
                         minView: 'minute', minuteStep: 30 }"/>
 
 
@@ -109,7 +111,7 @@
             nc-template-form="form.SaleUnitEn">
             <input autocomplete="off" ng-disabled="xspermit(36)"
             class="form-control" type="text" name="SaleUnitEn" nc-default-value="'Piece'"
-            maxlength="255" ng-model="variantPtr.SaleUnitEn"  
+            maxlength="255" ng-model="variantPtr.SaleUnitEn"
             />
         </div>
 
@@ -117,7 +119,7 @@
         nc-label="Sale Unit (ไทย)" nc-template-options-path="addProductForm/NonRequiredSystemField"
             nc-template-form="form.SaleUnitTh">
             <input autocomplete="off" class="form-control" ng-disabled="xspermit(36)" nc-default-value="'ชิ้น'"
-            type="text" name="SaleUnitTh" maxlength="255" ng-model="variantPtr.SaleUnitTh"  
+            type="text" name="SaleUnitTh" maxlength="255" ng-model="variantPtr.SaleUnitTh"
             />
         </div>
 

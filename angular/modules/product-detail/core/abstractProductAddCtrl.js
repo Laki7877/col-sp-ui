@@ -4,7 +4,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
   function($scope, $uibModal, $window, util, config, Product, ImageService, common,
     AttributeService, $timeout, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
     KnownException, NcAlert, $productAdd, options, AttributeSetService,
-    AdminShopService, VariationFactorIndices, AttributeOptions, ShippingService) {
+    AdminShopService, VariationFactorIndices, AttributeOptions, ShippingService, APExpireDateChangeEvent) {
     'ngInject';
 
     $scope.readOnly = options.readOnly;
@@ -251,8 +251,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     //Adjust Limit Individual Day check box when
     //prepare days are non zero
-    $scope.$watch(
-      'variantPtr.PrepareMon+variantPtr.PrepareTue+variantPtr.PrepareWed+variantPtr.PrepareThu+variantPtr.PrepareFri',
+    $scope.$watch('variantPtr.PrepareMon+variantPtr.PrepareTue+variantPtr.PrepareWed+variantPtr.PrepareThu+variantPtr.PrepareFri',
       function(value) {
         var variantPtr = $scope.variantPtr;
         var x = Number(variantPtr.PrepareMon) + Number(variantPtr.PrepareTue) +
@@ -261,7 +260,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         if (x > 0) {
           $scope.formData.LimitIndividualDay = true;
         }
-      });
+    });
 
     //Initialize Pointers
     $scope.variantPtr = $scope.formData.MasterVariant;
@@ -387,57 +386,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     }];
 
 
-
     $scope.updateBreadcrumb = function(globalCatId) {
       $scope.breadcrumb.globalCategory = Category.createCatStringById(
         globalCatId, $scope.dataset.GlobalCategories);
     };
 
     //Watches
-    $scope.$watch('variantPtr.OriginalPrice+variantPtr.SalePrice', function() {
-      var form = $scope.addProductForm;
-      if (form.OriginalPrice) form.OriginalPrice.$setValidity('min', true);
-      if ($scope.variantPtr.SalePrice == '') return;
-      if ($scope.variantPtr.OriginalPrice == '') return;
-
-      if (Number($scope.variantPtr.SalePrice) > Number($scope.variantPtr.OriginalPrice)) {
-        if (form.OriginalPrice) form.OriginalPrice.$setValidity('min', false)
-        form.OriginalPrice.$error['min'] = 'Original Price must be higher than Sale Price';
-        form.OriginalPrice.$setDirty(true);
-      }
-    });
-
-    $scope.$watch('variantPtr.PromotionPrice', function() {
-      var form = $scope.addProductForm;
-      if (form.PromotionPrice) {
-        form.PromotionPrice.$setValidity('max', true);
-      }
-      if (!form.PromotionPrice) return;
-
-      if (Number($scope.variantPtr.SalePrice) <= Number($scope.variantPtr
-          .PromotionPrice)) {
-        if (form.PromotionPrice) {
-          form.PromotionPrice.$setValidity('max', false)
-        }
-        form.PromotionPrice.$error['max'] =
-          'Promotion Price must be lower than Sale Price'
-      }
-    });
-
-    $scope.$watch('formData.ExpireDate', function() {
-      // TODO: refactor use nctemplate
-      var form = $scope.addProductForm;
-      if (form.EffectiveDate == null) {
-        return
-      }
-      if (form.ExpireDate) form.ExpireDate.$setValidity('min', true)
-      if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
-        if (!form.ExpireDate) return;
-        if (form.ExpireDate) form.ExpireDate.$setValidity('min', false);
-        form.ExpireDate.$error['min'] =
-          'Effective date/time must come before expire date/time';
-      }
-    });
+    $scope.$watch('formData.ExpireDate', APExpireDateChangeEvent($scope));
 
     /**
      * Other additional validations
@@ -915,7 +870,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.pairModal = angular.copy(pair);
           $scope.pairModal.alert = new NcAlert();
           $scope.pairIndex = index;
-
           $scope.uploaderModal.queue = $scope.pairModal.queue;
 
           var variantModal = $uibModal.open({
@@ -931,6 +885,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
               $scope.dataset = dataset;
               $scope.variantPtr = pair;
               $scope.uploader = uploader;
+
               $scope.no = function() {
                 if ($scope.form.$dirty) {
                   if (confirm("Your changes will not be saved, are you sure you want to close this modal?")) {
@@ -976,6 +931,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
             // Restore pointers
             $scope.form = $scope.addProductForm;
+
             $scope.variantPtr = $scope.formData.MasterVariant;
 
           }, function() {
