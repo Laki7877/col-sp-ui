@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <button class="btn btn-sm btn-primary" ng-click="addProductItem()">
+      <button class="btn btn-sm btn-primary" ng-click="addProductItem()" ng-disabled="adCMSadd">
         <i class="fa fa-plus-circle"></i> Add Product Item
       </button>
     </div>
@@ -23,7 +23,7 @@
                 <span class="ng-binding">{{selectOptionText}}</span>
                 <span class="caret"></span>
               </button>
-              <ul uib-dropdown-menu="" role="menu" class="dropdown-menu">
+              <ul uib-dropdown-menu="" role="menu" class="dropdown-menu" ng-disabled="adCMSadd">
                 <li class="ng-scope">
                   <a ng-click="selectOption('- Choose Action -')" class="ng-binding">- Choose Action -</a>
                 </li>
@@ -98,7 +98,7 @@
 <script type="text/ng-template" id="templates/admin-cms-category-manage-add-item.html">
   
   <div class="modal-header">
-    <h3 class="modal-title">Add Product Item</h3>
+    <h3 class="modal-title" style="margin-bottom:10px;">Add Product Item</h3>
   </div>
   <div class="modal-body" ng-init="init()">
     
@@ -228,7 +228,7 @@
           <div class="container-fluid no-padding margin-top-20">
             <div class="float-right">
               <a href="#" class="link-btn-plain" ng-click="$dismiss()">Cancel</a>
-              <button class="btn btn-blue btn-width-xl" ng-click="ok(products)" ng-disabled="sumProductSelected() == 0">
+              <button class="btn btn-blue btn-width-xl" ng-click="ok(products)" ng-disabled="sumProductSelected() == 0" ng-disabled="adCMSadd">
                 <span class="login-loading" ng-cloak="" ng-show="saving">
                   <i class="fa fa-spinner fa-spin" ></i>
                 </span> Add ({{sumProductSelected() }})

@@ -203,7 +203,7 @@ class AdminController extends Controller
 	// 	return View::render('admin_pending_product_group_add');
 	// }
 	public static function addGroupingProduct($param){
-		return View::render('admin_product_group_add');
+		return View::render('admin_product_grouping');
 	}
 
 	//On top credit
@@ -344,10 +344,5 @@ class AdminController extends Controller
         return View::render('product_review');
     }
 
-	// Reports
-	public static function listStandardReport($params) 
-	{
-		return View::render('admin_report_std_saleforseller');
-	}
 
 }

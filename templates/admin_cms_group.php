@@ -4,9 +4,9 @@
 ?>
 
 <?php $this->start('page-body') ?>
-	<div ng-controller="AdminCMSGroupListCtrl">
+	<div ng-controller="AdminCMSGroupListCtrl" ng-disabled="adCMSview">
        <nc-page-title nc-title="CMS Group">
-            <a ng-href="/admin/cms/group/create" class="btn margin-right-10 ng-scope btn-primary btn-width-xl">
+            <a ng-href="/admin/cms/group/create" class="btn margin-right-10 ng-scope btn-primary btn-width-xl" ng-disabled="adCMSadd">
           	  <span class="">Create</span>
           </a>
        </nc-page-title>
@@ -25,23 +25,23 @@
 		                <th nc-sort="CMSGroupNameTH">Name(TH)</th>
 		                <th>Visibility</th>
 		                <th nc-sort="UpdateDate" class="modified-column">Modified</th>
-		                <th>Action</th>
+		                <th ng-disabled="adCMSedit">Action</th>
 		            </tr>
 		        </thead>
 		        <tbody>
 		            <tr ng-repeat="row in list.data">
-                    <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
-		                <td class="column-text-ellipsis" nc-link="/admin/cms/group/{{row.CMSGroupId}}">
-                      {{row.CMSGroupNameEN}}
-                    </td>
-		                <td class="column-text-ellipsis" nc-link="/admin/cms/group/{{row.CMSGroupId}}">
-                      {{row.CMSGroupNameTH}}
-                    </td>
-                    <td class="visible-column">
-                      <nc-eye nc-model="row.Visibility" nc-eye-on-toggle="toggleEye(row)"></nc-eye>
-                    </td>
+	                    <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
+			                <td class="column-text-ellipsis" nc-link="/admin/cms/group/{{row.CMSGroupId}}">
+	                      {{row.CMSGroupNameEN}}
+	                    </td>
+			                <td class="column-text-ellipsis" nc-link="/admin/cms/group/{{row.CMSGroupId}}">
+	                      {{row.CMSGroupNameTH}}
+	                    </td>
+	                    <td class="visible-column">
+	                      <nc-eye nc-model="row.Visibility" nc-eye-on-toggle="toggleEye(row)"></nc-eye>
+	                    </td>
 		                <td>{{row.UpdateDate | dateTh}}</td>
-		                <td>
+		                <td ng-disabled="adCMSedit">
 		                    <nc-action nc-model="row" nc-action-fn="actions"></nc-action>
 		                </td>
 		            </tr>

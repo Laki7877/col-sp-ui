@@ -103,11 +103,7 @@ angular.module('nc')
 				uploader: '=', //return promise
 				fail: '=',
 				size: '@',
-				notitle: '@?',
-				width: '=?',
-				height: '=?',
-				minWidth: '=?',
-				accept: '=?'
+				notitle: '@?'
 			},
 			template: $templateCache.get('common/ncImageLinks'),
 			link: function(scope) {
@@ -118,17 +114,6 @@ angular.module('nc')
 						})
 					}
 				});
-				scope.accept = scope.accept || '.jpg,.jpeg';
-				scope.validate = function(f,w,h,i) {
-					if(scope.minWidth && scope.minWidth.length > i) {
-						return w > scope.minWidth;
-					}
-					else if(scope.width && scope.width.length > i) {
-						return w == scope.width[i] && h == scope.height[i];
-					} else {
-						return true;
-					}
-				}
 				scope.$watch('size', function(d) {
 					if(!_.isNil(d)) {
 						scope.source.Images = [];
@@ -140,21 +125,12 @@ angular.module('nc')
 						};
 					}
 				})
-				scope.upload = function($file, image, $index, $ifile) {
-					if($ifile.length > 0) {
-						if(!_.isNil(scope.minWidth)) {
-							scope.fail('ondimension', null, minWidth[$index], true);
-						}
-						else {
-							scope.fail('ondimension', null, [width[$index], height[$index]]);
-						}
-					} else {
-						scope.uploader.upload($file).then(function(data) {
-							image = _.extend(image, data.data);
-						}, function(err) {
-							scope.fail(err);
-						});
-					}
+				scope.upload = function($file, image) {
+					scope.uploader.upload($file).then(function(data) {
+						image = _.extend(image, data.data);
+					}, function(err) {
+						scope.fail(err);
+					});
 				}
 			}
 		}

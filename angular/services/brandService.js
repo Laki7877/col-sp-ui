@@ -5,12 +5,10 @@ module.exports = function(common) {
 		return {
 			BrandBannerEn: [],
 			BrandBannerTh: [],
-			IsDescription: false,
-			BannerStatusEn: true,
-			BannerStatusTh: true,
-			BannerSmallStatusEn: true,
-			BannerSmallStatusTh: true,
-			FeatureProductStatus: true,
+			IsBannerEn: false,
+			IsBannerTh: false,
+			IsSmallBannerEn: false,
+			IsSmallBannerTh: false,
 			Status: 'NA'
 		};
 	}

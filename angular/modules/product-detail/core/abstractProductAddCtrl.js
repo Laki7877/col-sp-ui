@@ -4,7 +4,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
   function($scope, $uibModal, $window, util, config, Product, ImageService, common,
     AttributeService, $timeout, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
     KnownException, NcAlert, $productAdd, options, AttributeSetService,
-    AdminShopService, VariationFactorIndices, AttributeOptions, ShippingService) {
+    AdminShopService, VariationFactorIndices, AttributeOptions, ShippingService, APExpireDateChangeEvent) {
     'ngInject';
 
     $scope.readOnly = options.readOnly;
@@ -251,8 +251,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     //Adjust Limit Individual Day check box when
     //prepare days are non zero
-    $scope.$watch(
-      'variantPtr.PrepareMon+variantPtr.PrepareTue+variantPtr.PrepareWed+variantPtr.PrepareThu+variantPtr.PrepareFri',
+    $scope.$watch('variantPtr.PrepareMon+variantPtr.PrepareTue+variantPtr.PrepareWed+variantPtr.PrepareThu+variantPtr.PrepareFri',
       function(value) {
         var variantPtr = $scope.variantPtr;
         var x = Number(variantPtr.PrepareMon) + Number(variantPtr.PrepareTue) +
@@ -261,7 +260,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         if (x > 0) {
           $scope.formData.LimitIndividualDay = true;
         }
-      });
+    });
 
     //Initialize Pointers
     $scope.variantPtr = $scope.formData.MasterVariant;
@@ -272,6 +271,23 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
     };
 
+
+    $scope.disableInstallment = function() {
+      if (!$scope.variantPtr.SalePrice) return true;
+      return (Number($scope.variantPtr.SalePrice) || 0) < 5000;
+    }
+
+    var checkSchema = function(data, schemaName) {
+      //Perform schema check
+      var schema = JSONCache.get(schemaName || 'productStages');
+      var validation = skeemas.validate(data, schema);
+      console.log("Schema validation result: ", schemaName, validation);
+      if (!validation.valid) {
+        $scope.devAlert.error(
+          '<strong>Warning </strong> Ahancer Product Add Exchange Protocol (A-PAEP) not enforced.'
+        );
+      }
+    };
 
     //Open modal for cat selector
     $scope.openCategorySelectorModal = function(ith, key, title) {
@@ -345,6 +361,38 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
 
 
+    $scope.onImageUploadFail = function(kwd, data) {
+      // console.log(kwd, data);
+      if (kwd == "onmaxsize") {
+        $scope.image_alert.error('Maximum ' + data +
+          ' images can be uploaded.');
+      } else if (kwd == "ondimension") {
+        $scope.image_alert.error('Dimension must be greater than ' +
+          IMAGE_DIM_BOUND[0][0] + 'x' +
+          IMAGE_DIM_BOUND[0][1] + '.' + ' and not larger than ' +
+          IMAGE_DIM_BOUND[1][0] + 'x' + IMAGE_DIM_BOUND[1][1] +
+          '. <strong>Your Image Size is ' + data[0] + "x" + data[1] +
+          '</strong>');
+      } else if (kwd == "ondisable") {
+        $scope.image_alert.error(
+          'You do not have permission to upload images.');
+      } else if (kwd == "onsquare") {
+        $scope.image_alert.error('Image must be square.');
+      } else {
+        $scope.image_alert.error(data);
+      }
+    }
+
+    $scope.onImageUploadSuccess = function() {
+      $scope.image_alert.close();
+    }
+
+    $scope.onImageUploadQueueLimit = function() {
+      //nop
+    };
+    $scope.asStatus = Product.getStatus;
+    $scope.refresher = {};
+
     var watchVariantFactorChanges = function() {
       $scope.$watch('dataset.attributeOptions', function() {
         $productAdd.generateVariants($scope.formData, $scope.dataset)
@@ -387,57 +435,15 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     }];
 
 
-
     $scope.updateBreadcrumb = function(globalCatId) {
       $scope.breadcrumb.globalCategory = Category.createCatStringById(
         globalCatId, $scope.dataset.GlobalCategories);
     };
 
+
     //Watches
-    $scope.$watch('variantPtr.OriginalPrice+variantPtr.SalePrice', function() {
-      var form = $scope.addProductForm;
-      if (form.OriginalPrice) form.OriginalPrice.$setValidity('min', true);
-      if ($scope.variantPtr.SalePrice == '') return;
-      if ($scope.variantPtr.OriginalPrice == '') return;
+    $scope.$watch('formData.ExpireDate', APExpireDateChangeEvent($scope));
 
-      if (Number($scope.variantPtr.SalePrice) > Number($scope.variantPtr.OriginalPrice)) {
-        if (form.OriginalPrice) form.OriginalPrice.$setValidity('min', false)
-        form.OriginalPrice.$error['min'] = 'Original Price must be higher than Sale Price';
-        form.OriginalPrice.$setDirty(true);
-      }
-    });
-
-    $scope.$watch('variantPtr.PromotionPrice', function() {
-      var form = $scope.addProductForm;
-      if (form.PromotionPrice) {
-        form.PromotionPrice.$setValidity('max', true);
-      }
-      if (!form.PromotionPrice) return;
-
-      if (Number($scope.variantPtr.SalePrice) <= Number($scope.variantPtr
-          .PromotionPrice)) {
-        if (form.PromotionPrice) {
-          form.PromotionPrice.$setValidity('max', false)
-        }
-        form.PromotionPrice.$error['max'] =
-          'Promotion Price must be lower than Sale Price'
-      }
-    });
-
-    $scope.$watch('formData.ExpireDate', function() {
-      // TODO: refactor use nctemplate
-      var form = $scope.addProductForm;
-      if (form.EffectiveDate == null) {
-        return
-      }
-      if (form.ExpireDate) form.ExpireDate.$setValidity('min', true)
-      if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
-        if (!form.ExpireDate) return;
-        if (form.ExpireDate) form.ExpireDate.$setValidity('min', false);
-        form.ExpireDate.$error['min'] =
-          'Effective date/time must come before expire date/time';
-      }
-    });
 
     /**
      * Other additional validations
@@ -915,12 +921,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.pairModal = angular.copy(pair);
           $scope.pairModal.alert = new NcAlert();
           $scope.pairIndex = index;
-
           $scope.uploaderModal.queue = $scope.pairModal.queue;
 
           var variantModal = $uibModal.open({
             animation: false,
-            backdrop: 'static',
             templateUrl: 'ap/modal-variant-detail',
             controller: function($scope, $uibModalInstance,
               $timeout, pair, dataset, uploader,
@@ -931,7 +935,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
               $scope.dataset = dataset;
               $scope.variantPtr = pair;
               $scope.uploader = uploader;
+
               $scope.no = function() {
+
                 if ($scope.form.$dirty) {
                   if (confirm("Your changes will not be saved, are you sure you want to close this modal?")) {
                     $uibModalInstance.close();
@@ -976,6 +982,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
             // Restore pointers
             $scope.form = $scope.addProductForm;
+
             $scope.variantPtr = $scope.formData.MasterVariant;
 
           }, function() {

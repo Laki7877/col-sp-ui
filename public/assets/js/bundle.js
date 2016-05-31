@@ -3,60 +3,61 @@
 'use strict'
 
 // App Start here
-var angular = require('angular');
-var bulk = ({"controllers":(function () {var f = require("./controllers\\index.js");f["abstractAdd"]=require("./controllers\\abstractAdd.js");f["abstractAdvanceList"]=require("./controllers\\abstractAdvanceList.js");f["abstractList"]=require("./controllers\\abstractList.js");f["abstractProductGroupAdd"]=require("./controllers\\abstractProductGroupAdd.js");f["adminAccount"]=require("./controllers\\adminAccount.js");f["adminAccountAdd"]=require("./controllers\\adminAccountAdd.js");f["adminAddCMSMaster"]=require("./controllers\\adminAddCMSMaster.js");f["adminAttribute"]=require("./controllers\\adminAttribute.js");f["adminAttributeAdd"]=require("./controllers\\adminAttributeAdd.js");f["adminAttributeSet"]=require("./controllers\\adminAttributeSet.js");f["adminAttributeSetAdd"]=require("./controllers\\adminAttributeSetAdd.js");f["adminBrand"]=require("./controllers\\adminBrand.js");f["adminBrandAdd"]=require("./controllers\\adminBrandAdd.js");f["adminBuy1Get1Add"]=require("./controllers\\adminBuy1Get1Add.js");f["adminBuy1Get1List"]=require("./controllers\\adminBuy1Get1List.js");f["adminCMS"]=require("./controllers\\adminCMS.js");f["adminCMSCategoryAdd"]=require("./controllers\\adminCMSCategoryAdd.js");f["adminCMSCategoryList"]=require("./controllers\\adminCMSCategoryList.js");f["adminCMSGroupAdd"]=require("./controllers\\adminCMSGroupAdd.js");f["adminCMSGroupList"]=require("./controllers\\adminCMSGroupList.js");f["adminCMSMasterAdd"]=require("./controllers\\adminCMSMasterAdd.js");f["adminCMSMasterList"]=require("./controllers\\adminCMSMasterList.js");f["adminCategory"]=require("./controllers\\adminCategory.js");f["adminGlobalCoupon"]=require("./controllers\\adminGlobalCoupon.js");f["adminGlobalCouponAdd"]=require("./controllers\\adminGlobalCouponAdd.js");f["adminLogin"]=require("./controllers\\adminLogin.js");f["adminMasterProduct"]=require("./controllers\\adminMasterProduct.js");f["adminMasterProductAdd"]=require("./controllers\\adminMasterProductAdd.js");f["adminNewsletter"]=require("./controllers\\adminNewsletter.js");f["adminOnTopCreditAdd"]=require("./controllers\\adminOnTopCreditAdd.js");f["adminOnTopCreditList"]=require("./controllers\\adminOnTopCreditList.js");f["adminProductApprovalDetail"]=require("./controllers\\adminProductApprovalDetail.js");f["adminProductApprovalList"]=require("./controllers\\adminProductApprovalList.js");f["adminProductDetail"]=require("./controllers\\adminProductDetail.js");f["adminProductGroupAdd"]=require("./controllers\\adminProductGroupAdd.js");f["adminProductList"]=require("./controllers\\adminProductList.js");f["adminProductReview"]=require("./controllers\\adminProductReview.js");f["adminRole"]=require("./controllers\\adminRole.js");f["adminRoleAdd"]=require("./controllers\\adminRoleAdd.js");f["adminSellerAccount"]=require("./controllers\\adminSellerAccount.js");f["adminSellerCoupon"]=require("./controllers\\adminSellerCoupon.js");f["adminSellerCouponAdd"]=require("./controllers\\adminSellerCouponAdd.js");f["adminShop"]=require("./controllers\\adminShop.js");f["adminShopAdd"]=require("./controllers\\adminShopAdd.js");f["adminShoptype"]=require("./controllers\\adminShoptype.js");f["adminShoptypeAdd"]=require("./controllers\\adminShoptypeAdd.js");f["adminStdSaleReportSellerList"]=require("./controllers\\adminStdSaleReportSellerList.js");f["buy1get1Add"]=require("./controllers\\buy1get1Add.js");f["buy1get1Import"]=require("./controllers\\buy1get1Import.js");f["buy1get1List"]=require("./controllers\\buy1get1List.js");f["index"]=require("./controllers\\index.js");f["localCategory"]=require("./controllers\\localCategory.js");f["login"]=require("./controllers\\login.js");f["productAddSelectCategory"]=require("./controllers\\productAddSelectCategory.js");f["productCollectionAdd"]=require("./controllers\\productCollectionAdd.js");f["productCollectionAddListItem"]=require("./controllers\\productCollectionAddListItem.js");f["productCollectionImport"]=require("./controllers\\productCollectionImport.js");f["productCollectionList"]=require("./controllers\\productCollectionList.js");f["productExport"]=require("./controllers\\productExport.js");f["productGroupCollectionList"]=require("./controllers\\productGroupCollectionList.js");f["productImageList"]=require("./controllers\\productImageList.js");f["productImageManagement"]=require("./controllers\\productImageManagement.js");f["productImport"]=require("./controllers\\productImport.js");f["productList"]=require("./controllers\\productList.js");f["productListLocalCategory"]=require("./controllers\\productListLocalCategory.js");f["productReview"]=require("./controllers\\productReview.js");f["root"]=require("./controllers\\root.js");f["sellerAccount"]=require("./controllers\\sellerAccount.js");f["sellerAccountAdd"]=require("./controllers\\sellerAccountAdd.js");f["sellerCoupon"]=require("./controllers\\sellerCoupon.js");f["sellerCouponAdd"]=require("./controllers\\sellerCouponAdd.js");f["sellerDashboard"]=require("./controllers\\sellerDashboard.js");f["sellerInventoryList"]=require("./controllers\\sellerInventoryList.js");f["sellerNewsletter"]=require("./controllers\\sellerNewsletter.js");f["sellerOnboarding"]=require("./controllers\\sellerOnboarding.js");f["sellerOrder"]=require("./controllers\\sellerOrder.js");f["sellerOrderAdd"]=require("./controllers\\sellerOrderAdd.js");f["sellerOrderShippingList"]=require("./controllers\\sellerOrderShippingList.js");f["sellerProductDetail"]=require("./controllers\\sellerProductDetail.js");f["sellerProductGroupAdd"]=require("./controllers\\sellerProductGroupAdd.js");f["sellerReport"]=require("./controllers\\sellerReport.js");f["sellerReturnRequest"]=require("./controllers\\sellerReturnRequest.js");f["sellerReturnRequestAdd"]=require("./controllers\\sellerReturnRequestAdd.js");f["sellerRole"]=require("./controllers\\sellerRole.js");f["sellerRoleAdd"]=require("./controllers\\sellerRoleAdd.js");f["sellerShopAppearance"]=require("./controllers\\sellerShopAppearance.js");f["sellerShopSetting"]=require("./controllers\\sellerShopSetting.js");f["test"]=require("./controllers\\test.js");return f;})(),"services":({"Buy1Get1Service":require("./services\\Buy1Get1Service.js"),"Dashboard":require("./services\\Dashboard.js"),"OnTopCredit":require("./services\\OnTopCredit.js"),"OnTopCreditService":require("./services\\OnTopCreditService.js"),"Onboarding":require("./services\\Onboarding.js"),"adminAccountService":require("./services\\adminAccountService.js"),"adminMasterProductService":require("./services\\adminMasterProductService.js"),"adminPermissionService":require("./services\\adminPermissionService.js"),"adminRoleService":require("./services\\adminRoleService.js"),"adminShopService":require("./services\\adminShopService.js"),"adminShoptypeService":require("./services\\adminShoptypeService.js"),"attribute":require("./services\\attribute.js"),"attributeService":require("./services\\attributeService.js"),"attributeSet":require("./services\\attributeSet.js"),"attributeSetService":require("./services\\attributeSetService.js"),"blocker":require("./services\\blocker.js"),"brand":require("./services\\brand.js"),"brandService":require("./services\\brandService.js"),"buy1get1":require("./services\\buy1get1.js"),"buy1get1Add":require("./services\\buy1get1Add.js"),"category":require("./services\\category.js"),"cmsCategoryService":require("./services\\cmsCategoryService.js"),"cmsGroupService":require("./services\\cmsGroupService.js"),"cmsMasterService":require("./services\\cmsMasterService.js"),"coupon":require("./services\\coupon.js"),"credential":require("./services\\credential.js"),"exceptionHandler":require("./services\\exceptionHandler.js"),"fileService":require("./services\\fileService.js"),"globalCategory":require("./services\\globalCategory.js"),"globalCategoryService":require("./services\\globalCategoryService.js"),"globalCouponService":require("./services\\globalCouponService.js"),"image":require("./services\\image.js"),"imageService":require("./services\\imageService.js"),"inventoryService":require("./services\\inventoryService.js"),"knownException":require("./services\\knownException.js"),"localCategory":require("./services\\localCategory.js"),"localCategoryService":require("./services\\localCategoryService.js"),"newsletterService":require("./services\\newsletterService.js"),"orderService":require("./services\\orderService.js"),"permissionService":require("./services\\permissionService.js"),"product":require("./services\\product.js"),"productCollection":require("./services\\productCollection.js"),"productCollectionAdd":require("./services\\productCollectionAdd.js"),"productCollectionAddListItem":require("./services\\productCollectionAddListItem.js"),"productReviewService":require("./services\\productReviewService.js"),"productTempService":require("./services\\productTempService.js"),"returnRequestService":require("./services\\returnRequestService.js"),"sellerAccountService":require("./services\\sellerAccountService.js"),"sellerCouponService":require("./services\\sellerCouponService.js"),"sellerPermissionService":require("./services\\sellerPermissionService.js"),"sellerRoleService":require("./services\\sellerRoleService.js"),"shippingService":require("./services\\shippingService.js"),"shop":require("./services\\shop.js"),"shopAppearanceService":require("./services\\shopAppearanceService.js"),"shopPermissionService":require("./services\\shopPermissionService.js"),"shopProfileService":require("./services\\shopProfileService.js"),"shopService":require("./services\\shopService.js"),"stdSaleReportService":require("./services\\stdSaleReportService.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDateBefore":require("./directives\\ngDateBefore.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngEnter":require("./directives\\ngEnter.js"),"ngLowercase":require("./directives\\ngLowercase.js"),"ngMatch":require("./directives\\ngMatch.js"),"ngMaxnumber":require("./directives\\ngMaxnumber.js"),"ngMinnumber":require("./directives\\ngMinnumber.js"),"ngPatternRestrict":require("./directives\\ngPatternRestrict.js"),"ngPermission":require("./directives\\ngPermission.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"ngUppercase":require("./directives\\ngUppercase.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"exclude":require("./filters\\exclude.js"),"excludeCategory":require("./filters\\excludeCategory.js"),"html":require("./filters\\html.js"),"importGuidelineExample":require("./filters\\importGuidelineExample.js"),"leadingzero":require("./filters\\leadingzero.js"),"ordinal":require("./filters\\ordinal.js"),"propsFilter":require("./filters\\propsFilter.js"),"slice":require("./filters\\slice.js"),"statusValue":require("./filters\\statusValue.js"),"truncate":require("./filters\\truncate.js"),"truth":require("./filters\\truth.js"),"variantValue":require("./filters\\variantValue.js")}),"template-options":({"PromotionForm":require("./template-options\\PromotionForm.js"),"addAttributeForm":require("./template-options\\addAttributeForm.js"),"addAttributeSetForm":require("./template-options\\addAttributeSetForm.js"),"addBrandForm":require("./template-options\\addBrandForm.js"),"addBuy1Get1Form":require("./template-options\\addBuy1Get1Form.js"),"addCMSMasterForm":require("./template-options\\addCMSMasterForm.js"),"addCategoryForm":require("./template-options\\addCategoryForm.js"),"addMasterProductForm":require("./template-options\\addMasterProductForm.js"),"addNewsletterForm":require("./template-options\\addNewsletterForm.js"),"addProductForm":require("./template-options\\addProductForm.js"),"addRoleForm":require("./template-options\\addRoleForm.js"),"addShopAccountForm":require("./template-options\\addShopAccountForm.js"),"addShopAppearanceForm":require("./template-options\\addShopAppearanceForm.js"),"addShopTypeForm":require("./template-options\\addShopTypeForm.js"),"adminApproveForm":require("./template-options\\adminApproveForm.js"),"couponForm":require("./template-options\\couponForm.js"),"createGroupVariant":require("./template-options\\createGroupVariant.js"),"genericForm":require("./template-options\\genericForm.js"),"productExport":require("./template-options\\productExport.js"),"productImport":require("./template-options\\productImport.js"),"searchForm":require("./template-options\\searchForm.js"),"shopSettingForm":require("./template-options\\shopSettingForm.js")})});
-var config = require('./config');
-var route = require('./route');
-var template = require('./template');
+var angular = require('angular')
+var bulk = ({"controllers":(function () {var f = require("./controllers\\index.js");f["StdSaleReportSellerList"]=require("./controllers\\StdSaleReportSellerList.js");f["abstractAdd"]=require("./controllers\\abstractAdd.js");f["abstractAdvanceList"]=require("./controllers\\abstractAdvanceList.js");f["abstractList"]=require("./controllers\\abstractList.js");f["abstractProductGroupAdd"]=require("./controllers\\abstractProductGroupAdd.js");f["adminAccount"]=require("./controllers\\adminAccount.js");f["adminAccountAdd"]=require("./controllers\\adminAccountAdd.js");f["adminAddCMSMaster"]=require("./controllers\\adminAddCMSMaster.js");f["adminAttribute"]=require("./controllers\\adminAttribute.js");f["adminAttributeAdd"]=require("./controllers\\adminAttributeAdd.js");f["adminAttributeSet"]=require("./controllers\\adminAttributeSet.js");f["adminAttributeSetAdd"]=require("./controllers\\adminAttributeSetAdd.js");f["adminBrand"]=require("./controllers\\adminBrand.js");f["adminBrandAdd"]=require("./controllers\\adminBrandAdd.js");f["adminBuy1Get1Add"]=require("./controllers\\adminBuy1Get1Add.js");f["adminBuy1Get1List"]=require("./controllers\\adminBuy1Get1List.js");f["adminCMS"]=require("./controllers\\adminCMS.js");f["adminCMSCategoryAdd"]=require("./controllers\\adminCMSCategoryAdd.js");f["adminCMSCategoryList"]=require("./controllers\\adminCMSCategoryList.js");f["adminCMSGroupAdd"]=require("./controllers\\adminCMSGroupAdd.js");f["adminCMSGroupList"]=require("./controllers\\adminCMSGroupList.js");f["adminCMSMasterAdd"]=require("./controllers\\adminCMSMasterAdd.js");f["adminCMSMasterList"]=require("./controllers\\adminCMSMasterList.js");f["adminCategory"]=require("./controllers\\adminCategory.js");f["adminGlobalCoupon"]=require("./controllers\\adminGlobalCoupon.js");f["adminGlobalCouponAdd"]=require("./controllers\\adminGlobalCouponAdd.js");f["adminLogin"]=require("./controllers\\adminLogin.js");f["adminMasterProduct"]=require("./controllers\\adminMasterProduct.js");f["adminMasterProductAdd"]=require("./controllers\\adminMasterProductAdd.js");f["adminNewsletter"]=require("./controllers\\adminNewsletter.js");f["adminOnTopCreditAdd"]=require("./controllers\\adminOnTopCreditAdd.js");f["adminOnTopCreditList"]=require("./controllers\\adminOnTopCreditList.js");f["adminProductApprovalDetail"]=require("./controllers\\adminProductApprovalDetail.js");f["adminProductApprovalList"]=require("./controllers\\adminProductApprovalList.js");f["adminProductDetail"]=require("./controllers\\adminProductDetail.js");f["adminProductGroupAdd"]=require("./controllers\\adminProductGroupAdd.js");f["adminProductList"]=require("./controllers\\adminProductList.js");f["adminProductReview"]=require("./controllers\\adminProductReview.js");f["adminRole"]=require("./controllers\\adminRole.js");f["adminRoleAdd"]=require("./controllers\\adminRoleAdd.js");f["adminSellerAccount"]=require("./controllers\\adminSellerAccount.js");f["adminSellerCoupon"]=require("./controllers\\adminSellerCoupon.js");f["adminSellerCouponAdd"]=require("./controllers\\adminSellerCouponAdd.js");f["adminShop"]=require("./controllers\\adminShop.js");f["adminShopAdd"]=require("./controllers\\adminShopAdd.js");f["adminShoptype"]=require("./controllers\\adminShoptype.js");f["adminShoptypeAdd"]=require("./controllers\\adminShoptypeAdd.js");f["buy1get1Add"]=require("./controllers\\buy1get1Add.js");f["buy1get1Import"]=require("./controllers\\buy1get1Import.js");f["buy1get1List"]=require("./controllers\\buy1get1List.js");f["index"]=require("./controllers\\index.js");f["localCategory"]=require("./controllers\\localCategory.js");f["login"]=require("./controllers\\login.js");f["productAddSelectCategory"]=require("./controllers\\productAddSelectCategory.js");f["productCollectionAdd"]=require("./controllers\\productCollectionAdd.js");f["productCollectionAddListItem"]=require("./controllers\\productCollectionAddListItem.js");f["productCollectionImport"]=require("./controllers\\productCollectionImport.js");f["productCollectionList"]=require("./controllers\\productCollectionList.js");f["productExport"]=require("./controllers\\productExport.js");f["productGroupCollectionList"]=require("./controllers\\productGroupCollectionList.js");f["productImageList"]=require("./controllers\\productImageList.js");f["productImageManagement"]=require("./controllers\\productImageManagement.js");f["productImport"]=require("./controllers\\productImport.js");f["productList"]=require("./controllers\\productList.js");f["productListLocalCategory"]=require("./controllers\\productListLocalCategory.js");f["productReview"]=require("./controllers\\productReview.js");f["root"]=require("./controllers\\root.js");f["sellerAccount"]=require("./controllers\\sellerAccount.js");f["sellerAccountAdd"]=require("./controllers\\sellerAccountAdd.js");f["sellerCMS"]=require("./controllers\\sellerCMS.js");f["sellerCMSCategoryAdd"]=require("./controllers\\sellerCMSCategoryAdd.js");f["sellerCMSCategoryList"]=require("./controllers\\sellerCMSCategoryList.js");f["sellerCMSGroupAdd"]=require("./controllers\\sellerCMSGroupAdd.js");f["sellerCMSGroupList"]=require("./controllers\\sellerCMSGroupList.js");f["sellerCMSMasterAdd"]=require("./controllers\\sellerCMSMasterAdd.js");f["sellerCMSMasterList"]=require("./controllers\\sellerCMSMasterList.js");f["sellerCoupon"]=require("./controllers\\sellerCoupon.js");f["sellerCouponAdd"]=require("./controllers\\sellerCouponAdd.js");f["sellerDashboard"]=require("./controllers\\sellerDashboard.js");f["sellerInventoryList"]=require("./controllers\\sellerInventoryList.js");f["sellerNewsletter"]=require("./controllers\\sellerNewsletter.js");f["sellerOnboarding"]=require("./controllers\\sellerOnboarding.js");f["sellerOrder"]=require("./controllers\\sellerOrder.js");f["sellerOrderAdd"]=require("./controllers\\sellerOrderAdd.js");f["sellerOrderShippingList"]=require("./controllers\\sellerOrderShippingList.js");f["sellerProductDetail"]=require("./controllers\\sellerProductDetail.js");f["sellerProductGroupAdd"]=require("./controllers\\sellerProductGroupAdd.js");f["sellerReport"]=require("./controllers\\sellerReport.js");f["sellerReturnRequest"]=require("./controllers\\sellerReturnRequest.js");f["sellerReturnRequestAdd"]=require("./controllers\\sellerReturnRequestAdd.js");f["sellerRole"]=require("./controllers\\sellerRole.js");f["sellerRoleAdd"]=require("./controllers\\sellerRoleAdd.js");f["sellerShopAppearance"]=require("./controllers\\sellerShopAppearance.js");f["sellerShopSetting"]=require("./controllers\\sellerShopSetting.js");f["sellerStdOnHoldReportList"]=require("./controllers\\sellerStdOnHoldReportList.js");f["sellerStdReturnReportList"]=require("./controllers\\sellerStdReturnReportList.js");f["sellerStdSaleReportSellerList"]=require("./controllers\\sellerStdSaleReportSellerList.js");f["sellerStdStockReportList"]=require("./controllers\\sellerStdStockReportList.js");f["test"]=require("./controllers\\test.js");return f;})(),"services":({"Buy1Get1Service":require("./services\\Buy1Get1Service.js"),"Dashboard":require("./services\\Dashboard.js"),"OnTopCredit":require("./services\\OnTopCredit.js"),"OnTopCreditService":require("./services\\OnTopCreditService.js"),"Onboarding":require("./services\\Onboarding.js"),"adminAccountService":require("./services\\adminAccountService.js"),"adminMasterProductService":require("./services\\adminMasterProductService.js"),"adminPermissionService":require("./services\\adminPermissionService.js"),"adminRoleService":require("./services\\adminRoleService.js"),"adminShopService":require("./services\\adminShopService.js"),"adminShoptypeService":require("./services\\adminShoptypeService.js"),"attribute":require("./services\\attribute.js"),"attributeService":require("./services\\attributeService.js"),"attributeSet":require("./services\\attributeSet.js"),"attributeSetService":require("./services\\attributeSetService.js"),"blocker":require("./services\\blocker.js"),"brand":require("./services\\brand.js"),"brandService":require("./services\\brandService.js"),"buy1get1":require("./services\\buy1get1.js"),"buy1get1Add":require("./services\\buy1get1Add.js"),"category":require("./services\\category.js"),"cmsCategoryService":require("./services\\cmsCategoryService.js"),"cmsGroupService":require("./services\\cmsGroupService.js"),"cmsMasterService":require("./services\\cmsMasterService.js"),"coupon":require("./services\\coupon.js"),"credential":require("./services\\credential.js"),"exceptionHandler":require("./services\\exceptionHandler.js"),"fileService":require("./services\\fileService.js"),"globalCategory":require("./services\\globalCategory.js"),"globalCategoryService":require("./services\\globalCategoryService.js"),"globalCouponService":require("./services\\globalCouponService.js"),"image":require("./services\\image.js"),"imageService":require("./services\\imageService.js"),"inventoryService":require("./services\\inventoryService.js"),"knownException":require("./services\\knownException.js"),"localCategory":require("./services\\localCategory.js"),"localCategoryService":require("./services\\localCategoryService.js"),"newsletterService":require("./services\\newsletterService.js"),"orderService":require("./services\\orderService.js"),"permissionService":require("./services\\permissionService.js"),"product":require("./services\\product.js"),"productCollection":require("./services\\productCollection.js"),"productCollectionAdd":require("./services\\productCollectionAdd.js"),"productCollectionAddListItem":require("./services\\productCollectionAddListItem.js"),"productReviewService":require("./services\\productReviewService.js"),"productTempService":require("./services\\productTempService.js"),"returnRequestService":require("./services\\returnRequestService.js"),"sellerAccountService":require("./services\\sellerAccountService.js"),"sellerCouponService":require("./services\\sellerCouponService.js"),"sellerPermissionService":require("./services\\sellerPermissionService.js"),"sellerRoleService":require("./services\\sellerRoleService.js"),"shippingService":require("./services\\shippingService.js"),"shop":require("./services\\shop.js"),"shopAppearanceService":require("./services\\shopAppearanceService.js"),"shopPermissionService":require("./services\\shopPermissionService.js"),"shopProfileService":require("./services\\shopProfileService.js"),"shopService":require("./services\\shopService.js"),"stdOnHoldReportService":require("./services\\stdOnHoldReportService.js"),"stdReturnReportService":require("./services\\stdReturnReportService.js"),"stdSaleReportService":require("./services\\stdSaleReportService.js"),"stdStockReportService":require("./services\\stdStockReportService.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDateBefore":require("./directives\\ngDateBefore.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngEnter":require("./directives\\ngEnter.js"),"ngLowercase":require("./directives\\ngLowercase.js"),"ngMatch":require("./directives\\ngMatch.js"),"ngMaxnumber":require("./directives\\ngMaxnumber.js"),"ngMinnumber":require("./directives\\ngMinnumber.js"),"ngPatternRestrict":require("./directives\\ngPatternRestrict.js"),"ngPermission":require("./directives\\ngPermission.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"ngUppercase":require("./directives\\ngUppercase.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"exclude":require("./filters\\exclude.js"),"excludeCategory":require("./filters\\excludeCategory.js"),"html":require("./filters\\html.js"),"importGuidelineExample":require("./filters\\importGuidelineExample.js"),"leadingzero":require("./filters\\leadingzero.js"),"ordinal":require("./filters\\ordinal.js"),"propsFilter":require("./filters\\propsFilter.js"),"slice":require("./filters\\slice.js"),"statusValue":require("./filters\\statusValue.js"),"truncate":require("./filters\\truncate.js"),"truth":require("./filters\\truth.js"),"variantValue":require("./filters\\variantValue.js")}),"template-options":({"PromotionForm":require("./template-options\\PromotionForm.js"),"addAttributeForm":require("./template-options\\addAttributeForm.js"),"addAttributeSetForm":require("./template-options\\addAttributeSetForm.js"),"addBrandForm":require("./template-options\\addBrandForm.js"),"addBuy1Get1Form":require("./template-options\\addBuy1Get1Form.js"),"addCMSMasterForm":require("./template-options\\addCMSMasterForm.js"),"addCategoryForm":require("./template-options\\addCategoryForm.js"),"addMasterProductForm":require("./template-options\\addMasterProductForm.js"),"addNewsletterForm":require("./template-options\\addNewsletterForm.js"),"addProductForm":require("./template-options\\addProductForm.js"),"addRoleForm":require("./template-options\\addRoleForm.js"),"addShopAccountForm":require("./template-options\\addShopAccountForm.js"),"addShopAppearanceForm":require("./template-options\\addShopAppearanceForm.js"),"addShopTypeForm":require("./template-options\\addShopTypeForm.js"),"adminApproveForm":require("./template-options\\adminApproveForm.js"),"couponForm":require("./template-options\\couponForm.js"),"createGroupVariant":require("./template-options\\createGroupVariant.js"),"genericForm":require("./template-options\\genericForm.js"),"productExport":require("./template-options\\productExport.js"),"productImport":require("./template-options\\productImport.js"),"searchForm":require("./template-options\\searchForm.js"),"shopSettingForm":require("./template-options\\shopSettingForm.js")})})
+var config = require('./config')
+var route = require('./route')
+var template = require('./template')
 var skeemas = require('skeemas');
 
 // IE fix
-require('./iefix.js');
+require('./iefix.js')
 
 // External dependencies
-global._ = require('lodash');
+global._ = require('lodash')
 global.pluralize = require('pluralize');
-require('angular-animate');
+require('angular-animate')
 // require('angular-aria')
-require('angular-base64');
-require('angular-bootstrap-datetimepicker');
-require('angular-chart.js');
-require('angular-clipboard');
-require('angular-cookies');
-require('angular-file-upload');
-require('angular-input-masks');
-require('angular-drag-and-drop-lists');
+require('angular-base64')
+require('angular-bootstrap-datetimepicker')
+require('angular-chart.js')
+require('angular-clipboard')
+require('angular-cookies')
+require('angular-file-upload')
+require('angular-input-masks')
+require('angular-drag-and-drop-lists')
 // require('angular-material')
-require('angular-sanitize');
-require('angular-scroll');
-require('angular-ui-bootstrap');
-require('angular-ui-tree');
-require('ng-file-upload');
-require('ui-select/dist/select.js');
-require('angular-ui-sortable');
-require('angular-drag-and-drop-lists');
-require('angular-chart.js');
-require('angular-input-masks');
+require('angular-sanitize')
+require('angular-scroll')
+require('angular-ui-bootstrap')
+require('angular-ui-tree')
+require('ng-file-upload')
+require('ui-select/dist/select.js')
+require('angular-ui-sortable')
+require('angular-drag-and-drop-lists')
+require('angular-chart.js')
+require('angular-input-masks')
 
 // Nc package
-require('./modules/angular-print');
-require('./modules/angular-scroll');
-require('./modules/angular-draggable');
-require('./modules/nc');
-require('./modules/product-detail');
-require('./modules/schematics');
-require('./modules/ume-select');
+require('./modules/angular-print')
+require('./modules/angular-scroll')
+require('./modules/angular-draggable')
+require('./modules/nc')
+require('./modules/product-detail')
+require('./modules/schematics')
+require('./modules/ume-select')
 
-// String.prototype.startsWith = String.prototype.startsWith || function () {
 
-// }
+String.prototype.startsWith = String.prototype.startsWith || function() {
+  
+}
 
 // Internal dependencies
-var controllers = bulk.controllers;
-var services = bulk.services;
-var helpers = bulk.helpers;
-var directives = bulk.directives;
-var filters = bulk.filters;
+var controllers = bulk.controllers
+var services = bulk.services
+var helpers = bulk.helpers
+var directives = bulk.directives
+var filters = bulk.filters
 
 var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   'nc', 'ui.bootstrap.datetimepicker', 'ngDraggable',
@@ -69,17 +70,17 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
 ])
 
   // App config
-.config(["uiSelectConfig", "$ncPaginationProvider", "$ncAlertProvider", function (uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
-    'ngInject';
-    $ncPaginationProvider.paginationSizes = [10, 20, 50, 100];
-    uiSelectConfig.taggingTokens = '[ENTER|,]';
-  }]
+  .config(["uiSelectConfig", "$ncPaginationProvider", "$ncAlertProvider", function (uiSelectConfig, $ncPaginationProvider, $ncAlertProvider) {
+      'ngInject';
+      $ncPaginationProvider.paginationSizes = [10, 20, 50, 100];
+      uiSelectConfig.taggingTokens = '[ENTER|,]';
+    }]
   )
 
   // App template cache load
   .run(template)
-  .run([function () {
-    
+  .run([function(){
+       Rollbar.configure({logLevel: "warning"});
   }])
 
   // Configuration
@@ -143,14 +144,18 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .factory('ProductTempService', services.productTempService)
   .factory('PermissionService', services.permissionService)
 
-  // Col Dev (Natee)
+    // Col Dev (Natee)
   .factory('CMSCategoryService', services.cmsCategoryService)
   .factory('CMSGroupService', services.cmsGroupService)
-  .factory('CMSService', services.cmsService)
-  .factory('CMSMasterService', services.adminCMSMasterService)
+  // .factory('CMSService', services.cmsService)
+  // .factory('CMSMasterService', services.adminCMSMasterService)
   .factory('Buy1Get1Service', services.Buy1Get1Service)
   //.factory('CMSCollectionService', services.cmsCollectionService)
   .factory('CMSMasterService', services.cmsMasterService)
+  .factory('StdReportSaleService', services.stdSaleReportService)
+  .factory('StdReportStockService', services.stdStockReportService)
+  .factory('StdReportOnHoldService', services.stdOnHoldReportService)
+  .factory('StdReportReturnService', services.stdReturnReportService)
 
   // Directives
   .directive('ncTradableSelect', directives.ncTradableSelect)
@@ -214,8 +219,11 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('SellerOrderCtrl', controllers.sellerOrder)
   .controller('SellerOrderShippingListCtrl', controllers.sellerOrderShippingList)
   .controller('SellerOrderAddCtrl', controllers.sellerOrderAdd)
-  .controller('SellerProductGroupAddCtrl', controllers.sellerProductGroupAdd)
-  .controller('SellerReportCtrl', controllers.sellerReport)
+  .controller('SellerPendingProductCtrl', controllers.sellerPendingProduct)
+  .controller('SellerPendingProductGroupAddCtrl', controllers.sellerPendingProductGroupAdd)
+  .controller('SellerPendingProductsGroupCtrl', controllers.sellerPendingProductsGroup)
+  // .controller('SellerReportCtrl', controllers.sellerReport)
+  .controller('StdSaleReportSellerCtrl', controllers.StdSaleReportSellerList)
 
   .controller('AdminAttributeCtrl', controllers.adminAttribute)
   .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)
@@ -238,7 +246,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('AdminSellerCouponCtrl', controllers.adminSellerCoupon)
   .controller('AdminSellerCouponAddCtrl', controllers.adminSellerCouponAdd)
   .controller('AdminNewsletterCtrl', controllers.adminNewsletter)
-  .controller('AdminProductGroupAddCtrl', controllers.adminProductGroupAdd)
+  .controller('AdminPendingProductCtrl', controllers.adminPendingProduct)
+  .controller('AdminPendingProductGroupAddCtrl', controllers.adminPendingProductGroupAdd)
   .controller('AdminProductApprovalDetailCtrl', controllers.adminProductApprovalDetail)
   .controller('AdminProductApprovalListCtrl', controllers.adminProductApprovalList)
   .controller('AdminProductListCtrl', controllers.adminProductList)
@@ -249,16 +258,17 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
 
   .controller('LoginCtrl', controllers.login)
   .controller('AdminLoginCtrl', controllers.adminLogin)
-
+  
   .controller('AbstractListCtrl', controllers.abstractList)
   .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
+  // .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
   .controller('AbstractAddCtrl', controllers.abstractAdd)
-  .controller('AbstractProductGroupAddCtrl', controllers.abstractProductGroupAdd)
+  .controller('AbstractPendingProductGroupCtrl', controllers.abstractPendingProductGroup)
 
   .controller('AdminOnTopCreditCtrl', controllers.adminOnTopCreditAdd)
   .controller('AdminOnTopCreditListCtrl', controllers.adminOnTopCreditList)
 
-  // Create By Col Dev (Natee)
+    // Create By Col Dev (Natee)
   .controller('AdminCMSCategoryListCtrl', controllers.adminCMSCategoryList)
   .controller('AdminCMSCategoryAddCtrl', controllers.adminCMSCategoryAdd)
 
@@ -267,16 +277,41 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
 
   .controller('AdminCMSMasterListCtrl', controllers.adminCMSMasterList)
   .controller('AdminCMSMasterAddCtrl', controllers.adminCMSMasterAdd)
-
-  .controller('AdminStdSaleReportSellerCtrl', controllers.adminStdSaleReportSellerList)
+  .controller('SellerStdSaleReportSellerCtrl', controllers.sellerStdSaleReportSellerList)
+  .controller('SellerStdStockReportCtrl', controllers.sellerStdStockReportList)
+  .controller('SellerStdOnHoldReportCtrl', controllers.sellerStdOnHoldReportList)
+  .controller('SellerStdReturnReportCtrl', controllers.sellerStdReturnReportList)
 
   //iOATH
-  .controller('AdminBuy1Get1AddCtrl', controllers.adminBuy1Get1Add)
-  .controller('AdminBuy1Get1ListCtrl', controllers.adminBuy1Get1List)
+  .controller('AdminBuy1Get1AddCtrl',controllers.adminBuy1Get1Add)
+  .controller('AdminBuy1Get1ListCtrl',controllers.adminBuy1Get1List)
 
   .controller('TestCtrl', controllers.test)
+
+  //CMS Seller
+  .controller('SellerCMSMasterListCtrl', controllers.sellerCMSMasterList)
+  .controller('SellerCMSMasterAddCtrl', controllers.sellerCMSMasterAdd)
+
+  .controller('SellerCMSGroupListCtrl', controllers.sellerCMSGroupList)
+  .controller('SellerCMSGroupAddCtrl', controllers.sellerCMSGroupAdd)
+
+  .controller('SellerCMSCollectionListCtrl', controllers.sellerCMSGroupList)
+
+  .controller('SellerCMSCategoryListCtrl', controllers.sellerCMSCategoryList)
+  .controller('SellerCMSCategoryAddCtrl', controllers.sellerCMSCategoryAdd)
+  
+var _rollbarConfig = {
+    accessToken: config.ROLLBAR.token,
+    captureUncaught: true,
+    payload: {
+        environment: config.ROLLBAR.environment
+    }
+};
+!function(r){function o(e){if(t[e])return t[e].exports;var n=t[e]={exports:{},id:e,loaded:!1};return r[e].call(n.exports,n,n.exports,o),n.loaded=!0,n.exports}var t={};return o.m=r,o.c=t,o.p="",o(0)}([function(r,o,t){"use strict";var e=t(1).Rollbar,n=t(2);_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://d37gvrvc0wt4s1.cloudfront.net/js/v1.8/rollbar.min.js";var a=e.init(window,_rollbarConfig),i=n(a,_rollbarConfig);a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,i)},function(r,o){"use strict";function t(r){return function(){try{return r.apply(this,arguments)}catch(o){try{console.error("[Rollbar]: Internal error",o)}catch(t){}}}}function e(r,o,t){window._rollbarWrappedError&&(t[4]||(t[4]=window._rollbarWrappedError),t[5]||(t[5]=window._rollbarWrappedError._rollbarContext),window._rollbarWrappedError=null),r.uncaughtError.apply(r,t),o&&o.apply(window,t)}function n(r){var o=function(){var o=Array.prototype.slice.call(arguments,0);e(r,r._rollbarOldOnError,o)};return o.belongsToShim=!0,o}function a(r){this.shimId=++s,this.notifier=null,this.parentShim=r,this._rollbarOldOnError=null}function i(r){var o=a;return t(function(){if(this.notifier)return this.notifier[r].apply(this.notifier,arguments);var t=this,e="scope"===r;e&&(t=new o(this));var n=Array.prototype.slice.call(arguments,0),a={shim:t,method:r,args:n,ts:new Date};return window._rollbarShimQueue.push(a),e?t:void 0})}function l(r,o){if(o.hasOwnProperty&&o.hasOwnProperty("addEventListener")){var t=o.addEventListener;o.addEventListener=function(o,e,n){t.call(this,o,r.wrap(e),n)};var e=o.removeEventListener;o.removeEventListener=function(r,o,t){e.call(this,r,o&&o._wrapped?o._wrapped:o,t)}}}var s=0;a.init=function(r,o){var e=o.globalAlias||"Rollbar";if("object"==typeof r[e])return r[e];r._rollbarShimQueue=[],r._rollbarWrappedError=null,o=o||{};var i=new a;return t(function(){if(i.configure(o),o.captureUncaught){i._rollbarOldOnError=r.onerror,r.onerror=n(i);var t,a,s="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<s.length;++t)a=s[t],r[a]&&r[a].prototype&&l(i,r[a].prototype)}return r[e]=i,i})()},a.prototype.loadFull=function(r,o,e,n,a){var i=function(){var o;if(void 0===r._rollbarPayloadQueue){var t,e,n,i;for(o=new Error("rollbar.js did not load");t=r._rollbarShimQueue.shift();)for(n=t.args,i=0;i<n.length;++i)if(e=n[i],"function"==typeof e){e(o);break}}"function"==typeof a&&a(o)},l=!1,s=o.createElement("script"),u=o.getElementsByTagName("script")[0],p=u.parentNode;s.crossOrigin="",s.src=n.rollbarJsUrl,s.async=!e,s.onload=s.onreadystatechange=t(function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){s.onload=s.onreadystatechange=null;try{p.removeChild(s)}catch(r){}l=!0,i()}}),p.insertBefore(s,u)},a.prototype.wrap=function(r,o){try{var t;if(t="function"==typeof o?o:function(){return o||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._wrapped){r._wrapped=function(){try{return r.apply(this,arguments)}catch(o){throw o._rollbarContext=t()||{},o._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=o,o}},r._wrapped._isWrap=!0;for(var e in r)r.hasOwnProperty(e)&&(r._wrapped[e]=r[e])}return r._wrapped}catch(n){return r}};for(var u="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),p=0;p<u.length;++p)a.prototype[u[p]]=i(u[p]);r.exports={Rollbar:a,_rollbarWindowOnError:e}},function(r,o){"use strict";r.exports=function(r,o){return function(t){if(!t&&!window._rollbarInitialized){var e=window.RollbarNotifier,n=o||{},a=n.globalAlias||"Rollbar",i=window.Rollbar.init(n,r);i._processShimQueue(window._rollbarShimQueue||[]),window[a]=i,window._rollbarInitialized=!0,e.processPayloads()}}}}]);
+
+
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\abstractProductGroupAdd.js":6,"./controllers\\adminAccount.js":7,"./controllers\\adminAccountAdd.js":8,"./controllers\\adminAddCMSMaster.js":9,"./controllers\\adminAttribute.js":10,"./controllers\\adminAttributeAdd.js":11,"./controllers\\adminAttributeSet.js":12,"./controllers\\adminAttributeSetAdd.js":13,"./controllers\\adminBrand.js":14,"./controllers\\adminBrandAdd.js":15,"./controllers\\adminBuy1Get1Add.js":16,"./controllers\\adminBuy1Get1List.js":17,"./controllers\\adminCMS.js":18,"./controllers\\adminCMSCategoryAdd.js":19,"./controllers\\adminCMSCategoryList.js":20,"./controllers\\adminCMSGroupAdd.js":21,"./controllers\\adminCMSGroupList.js":22,"./controllers\\adminCMSMasterAdd.js":23,"./controllers\\adminCMSMasterList.js":24,"./controllers\\adminCategory.js":25,"./controllers\\adminGlobalCoupon.js":26,"./controllers\\adminGlobalCouponAdd.js":27,"./controllers\\adminLogin.js":28,"./controllers\\adminMasterProduct.js":29,"./controllers\\adminMasterProductAdd.js":30,"./controllers\\adminNewsletter.js":31,"./controllers\\adminOnTopCreditAdd.js":32,"./controllers\\adminOnTopCreditList.js":33,"./controllers\\adminProductApprovalDetail.js":34,"./controllers\\adminProductApprovalList.js":35,"./controllers\\adminProductDetail.js":36,"./controllers\\adminProductGroupAdd.js":37,"./controllers\\adminProductList.js":38,"./controllers\\adminProductReview.js":39,"./controllers\\adminRole.js":40,"./controllers\\adminRoleAdd.js":41,"./controllers\\adminSellerAccount.js":42,"./controllers\\adminSellerCoupon.js":43,"./controllers\\adminSellerCouponAdd.js":44,"./controllers\\adminShop.js":45,"./controllers\\adminShopAdd.js":46,"./controllers\\adminShoptype.js":47,"./controllers\\adminShoptypeAdd.js":48,"./controllers\\adminStdSaleReportSellerList.js":49,"./controllers\\buy1get1Add.js":50,"./controllers\\buy1get1Import.js":51,"./controllers\\buy1get1List.js":52,"./controllers\\index.js":53,"./controllers\\localCategory.js":54,"./controllers\\login.js":55,"./controllers\\productAddSelectCategory.js":56,"./controllers\\productCollectionAdd.js":57,"./controllers\\productCollectionAddListItem.js":58,"./controllers\\productCollectionImport.js":59,"./controllers\\productCollectionList.js":60,"./controllers\\productExport.js":61,"./controllers\\productGroupCollectionList.js":62,"./controllers\\productImageList.js":63,"./controllers\\productImageManagement.js":64,"./controllers\\productImport.js":65,"./controllers\\productList.js":66,"./controllers\\productListLocalCategory.js":67,"./controllers\\productReview.js":68,"./controllers\\root.js":69,"./controllers\\sellerAccount.js":70,"./controllers\\sellerAccountAdd.js":71,"./controllers\\sellerCoupon.js":72,"./controllers\\sellerCouponAdd.js":73,"./controllers\\sellerDashboard.js":74,"./controllers\\sellerInventoryList.js":75,"./controllers\\sellerNewsletter.js":76,"./controllers\\sellerOnboarding.js":77,"./controllers\\sellerOrder.js":78,"./controllers\\sellerOrderAdd.js":79,"./controllers\\sellerOrderShippingList.js":80,"./controllers\\sellerProductDetail.js":81,"./controllers\\sellerProductGroupAdd.js":82,"./controllers\\sellerReport.js":83,"./controllers\\sellerReturnRequest.js":84,"./controllers\\sellerReturnRequestAdd.js":85,"./controllers\\sellerRole.js":86,"./controllers\\sellerRoleAdd.js":87,"./controllers\\sellerShopAppearance.js":88,"./controllers\\sellerShopSetting.js":89,"./controllers\\test.js":90,"./directives\\ncTradableSelect.js":91,"./directives\\ngCkeditor.js":92,"./directives\\ngDateBefore.js":93,"./directives\\ngDelegate.js":94,"./directives\\ngEnter.js":95,"./directives\\ngLowercase.js":96,"./directives\\ngMatch.js":97,"./directives\\ngMaxnumber.js":98,"./directives\\ngMinnumber.js":99,"./directives\\ngPatternRestrict.js":100,"./directives\\ngPermission.js":101,"./directives\\ngSlideToggle.js":102,"./directives\\ngTemplate.js":103,"./directives\\ngUppercase.js":104,"./directives\\popoverAny.js":105,"./filters\\capitalize.js":106,"./filters\\exclude.js":107,"./filters\\excludeCategory.js":108,"./filters\\html.js":109,"./filters\\importGuidelineExample.js":110,"./filters\\leadingzero.js":111,"./filters\\ordinal.js":112,"./filters\\propsFilter.js":113,"./filters\\slice.js":114,"./filters\\statusValue.js":115,"./filters\\truncate.js":116,"./filters\\truth.js":117,"./filters\\variantValue.js":118,"./helpers\\base64.js":119,"./helpers\\common.js":120,"./helpers\\storage.js":121,"./helpers\\util.js":122,"./helpers\\variantPair.js":123,"./iefix.js":124,"./modules/angular-draggable":125,"./modules/angular-print":126,"./modules/angular-scroll":127,"./modules/nc":159,"./modules/product-detail":168,"./modules/schematics":170,"./modules/ume-select":182,"./route":184,"./services\\Buy1Get1Service.js":185,"./services\\Dashboard.js":186,"./services\\OnTopCredit.js":187,"./services\\OnTopCreditService.js":188,"./services\\Onboarding.js":189,"./services\\adminAccountService.js":190,"./services\\adminMasterProductService.js":191,"./services\\adminPermissionService.js":192,"./services\\adminRoleService.js":193,"./services\\adminShopService.js":194,"./services\\adminShoptypeService.js":195,"./services\\attribute.js":196,"./services\\attributeService.js":197,"./services\\attributeSet.js":198,"./services\\attributeSetService.js":199,"./services\\blocker.js":200,"./services\\brand.js":201,"./services\\brandService.js":202,"./services\\buy1get1.js":203,"./services\\buy1get1Add.js":204,"./services\\category.js":205,"./services\\cmsCategoryService.js":206,"./services\\cmsGroupService.js":207,"./services\\cmsMasterService.js":208,"./services\\coupon.js":209,"./services\\credential.js":210,"./services\\exceptionHandler.js":211,"./services\\fileService.js":212,"./services\\globalCategory.js":213,"./services\\globalCategoryService.js":214,"./services\\globalCouponService.js":215,"./services\\image.js":216,"./services\\imageService.js":217,"./services\\inventoryService.js":218,"./services\\knownException.js":219,"./services\\localCategory.js":220,"./services\\localCategoryService.js":221,"./services\\newsletterService.js":222,"./services\\orderService.js":223,"./services\\permissionService.js":224,"./services\\product.js":225,"./services\\productCollection.js":226,"./services\\productCollectionAdd.js":227,"./services\\productCollectionAddListItem.js":228,"./services\\productReviewService.js":229,"./services\\productTempService.js":230,"./services\\returnRequestService.js":231,"./services\\sellerAccountService.js":232,"./services\\sellerCouponService.js":233,"./services\\sellerPermissionService.js":234,"./services\\sellerRoleService.js":235,"./services\\shippingService.js":236,"./services\\shop.js":237,"./services\\shopAppearanceService.js":238,"./services\\shopPermissionService.js":239,"./services\\shopProfileService.js":240,"./services\\shopService.js":241,"./services\\stdSaleReportService.js":242,"./template":265,"./template-options\\PromotionForm.js":243,"./template-options\\addAttributeForm.js":244,"./template-options\\addAttributeSetForm.js":245,"./template-options\\addBrandForm.js":246,"./template-options\\addBuy1Get1Form.js":247,"./template-options\\addCMSMasterForm.js":248,"./template-options\\addCategoryForm.js":249,"./template-options\\addMasterProductForm.js":250,"./template-options\\addNewsletterForm.js":251,"./template-options\\addProductForm.js":252,"./template-options\\addRoleForm.js":253,"./template-options\\addShopAccountForm.js":254,"./template-options\\addShopAppearanceForm.js":255,"./template-options\\addShopTypeForm.js":256,"./template-options\\adminApproveForm.js":257,"./template-options\\couponForm.js":258,"./template-options\\createGroupVariant.js":259,"./template-options\\genericForm.js":260,"./template-options\\productExport.js":261,"./template-options\\productImport.js":262,"./template-options\\searchForm.js":263,"./template-options\\shopSettingForm.js":264,"angular":314,"angular-animate":267,"angular-base64":268,"angular-bootstrap-datetimepicker":270,"angular-chart.js":271,"angular-clipboard":273,"angular-cookies":275,"angular-drag-and-drop-lists":276,"angular-file-upload":277,"angular-input-masks":278,"angular-sanitize":305,"angular-scroll":307,"angular-ui-bootstrap":309,"angular-ui-sortable":310,"angular-ui-tree":312,"lodash":318,"ng-file-upload":320,"pluralize":321,"skeemas":322,"ui-select/dist/select.js":336}],2:[function(require,module,exports){
+},{"./config":2,"./controllers\\StdSaleReportSellerList.js":3,"./controllers\\abstractAdd.js":4,"./controllers\\abstractAdvanceList.js":5,"./controllers\\abstractList.js":6,"./controllers\\abstractProductGroupAdd.js":7,"./controllers\\adminAccount.js":8,"./controllers\\adminAccountAdd.js":9,"./controllers\\adminAddCMSMaster.js":10,"./controllers\\adminAttribute.js":11,"./controllers\\adminAttributeAdd.js":12,"./controllers\\adminAttributeSet.js":13,"./controllers\\adminAttributeSetAdd.js":14,"./controllers\\adminBrand.js":15,"./controllers\\adminBrandAdd.js":16,"./controllers\\adminBuy1Get1Add.js":17,"./controllers\\adminBuy1Get1List.js":18,"./controllers\\adminCMS.js":19,"./controllers\\adminCMSCategoryAdd.js":20,"./controllers\\adminCMSCategoryList.js":21,"./controllers\\adminCMSGroupAdd.js":22,"./controllers\\adminCMSGroupList.js":23,"./controllers\\adminCMSMasterAdd.js":24,"./controllers\\adminCMSMasterList.js":25,"./controllers\\adminCategory.js":26,"./controllers\\adminGlobalCoupon.js":27,"./controllers\\adminGlobalCouponAdd.js":28,"./controllers\\adminLogin.js":29,"./controllers\\adminMasterProduct.js":30,"./controllers\\adminMasterProductAdd.js":31,"./controllers\\adminNewsletter.js":32,"./controllers\\adminOnTopCreditAdd.js":33,"./controllers\\adminOnTopCreditList.js":34,"./controllers\\adminProductApprovalDetail.js":35,"./controllers\\adminProductApprovalList.js":36,"./controllers\\adminProductDetail.js":37,"./controllers\\adminProductGroupAdd.js":38,"./controllers\\adminProductList.js":39,"./controllers\\adminProductReview.js":40,"./controllers\\adminRole.js":41,"./controllers\\adminRoleAdd.js":42,"./controllers\\adminSellerAccount.js":43,"./controllers\\adminSellerCoupon.js":44,"./controllers\\adminSellerCouponAdd.js":45,"./controllers\\adminShop.js":46,"./controllers\\adminShopAdd.js":47,"./controllers\\adminShoptype.js":48,"./controllers\\adminShoptypeAdd.js":49,"./controllers\\buy1get1Add.js":50,"./controllers\\buy1get1Import.js":51,"./controllers\\buy1get1List.js":52,"./controllers\\index.js":53,"./controllers\\localCategory.js":54,"./controllers\\login.js":55,"./controllers\\productAddSelectCategory.js":56,"./controllers\\productCollectionAdd.js":57,"./controllers\\productCollectionAddListItem.js":58,"./controllers\\productCollectionImport.js":59,"./controllers\\productCollectionList.js":60,"./controllers\\productExport.js":61,"./controllers\\productGroupCollectionList.js":62,"./controllers\\productImageList.js":63,"./controllers\\productImageManagement.js":64,"./controllers\\productImport.js":65,"./controllers\\productList.js":66,"./controllers\\productListLocalCategory.js":67,"./controllers\\productReview.js":68,"./controllers\\root.js":69,"./controllers\\sellerAccount.js":70,"./controllers\\sellerAccountAdd.js":71,"./controllers\\sellerCMS.js":72,"./controllers\\sellerCMSCategoryAdd.js":73,"./controllers\\sellerCMSCategoryList.js":74,"./controllers\\sellerCMSGroupAdd.js":75,"./controllers\\sellerCMSGroupList.js":76,"./controllers\\sellerCMSMasterAdd.js":77,"./controllers\\sellerCMSMasterList.js":78,"./controllers\\sellerCoupon.js":79,"./controllers\\sellerCouponAdd.js":80,"./controllers\\sellerDashboard.js":81,"./controllers\\sellerInventoryList.js":82,"./controllers\\sellerNewsletter.js":83,"./controllers\\sellerOnboarding.js":84,"./controllers\\sellerOrder.js":85,"./controllers\\sellerOrderAdd.js":86,"./controllers\\sellerOrderShippingList.js":87,"./controllers\\sellerProductDetail.js":88,"./controllers\\sellerProductGroupAdd.js":89,"./controllers\\sellerReport.js":90,"./controllers\\sellerReturnRequest.js":91,"./controllers\\sellerReturnRequestAdd.js":92,"./controllers\\sellerRole.js":93,"./controllers\\sellerRoleAdd.js":94,"./controllers\\sellerShopAppearance.js":95,"./controllers\\sellerShopSetting.js":96,"./controllers\\sellerStdOnHoldReportList.js":97,"./controllers\\sellerStdReturnReportList.js":98,"./controllers\\sellerStdSaleReportSellerList.js":99,"./controllers\\sellerStdStockReportList.js":100,"./controllers\\test.js":101,"./directives\\ncTradableSelect.js":102,"./directives\\ngCkeditor.js":103,"./directives\\ngDateBefore.js":104,"./directives\\ngDelegate.js":105,"./directives\\ngEnter.js":106,"./directives\\ngLowercase.js":107,"./directives\\ngMatch.js":108,"./directives\\ngMaxnumber.js":109,"./directives\\ngMinnumber.js":110,"./directives\\ngPatternRestrict.js":111,"./directives\\ngPermission.js":112,"./directives\\ngSlideToggle.js":113,"./directives\\ngTemplate.js":114,"./directives\\ngUppercase.js":115,"./directives\\popoverAny.js":116,"./filters\\capitalize.js":117,"./filters\\exclude.js":118,"./filters\\excludeCategory.js":119,"./filters\\html.js":120,"./filters\\importGuidelineExample.js":121,"./filters\\leadingzero.js":122,"./filters\\ordinal.js":123,"./filters\\propsFilter.js":124,"./filters\\slice.js":125,"./filters\\statusValue.js":126,"./filters\\truncate.js":127,"./filters\\truth.js":128,"./filters\\variantValue.js":129,"./helpers\\base64.js":130,"./helpers\\common.js":131,"./helpers\\storage.js":132,"./helpers\\util.js":133,"./helpers\\variantPair.js":134,"./iefix.js":135,"./modules/angular-draggable":136,"./modules/angular-print":137,"./modules/angular-scroll":138,"./modules/nc":170,"./modules/product-detail":180,"./modules/schematics":182,"./modules/ume-select":194,"./route":196,"./services\\Buy1Get1Service.js":197,"./services\\Dashboard.js":198,"./services\\OnTopCredit.js":199,"./services\\OnTopCreditService.js":200,"./services\\Onboarding.js":201,"./services\\adminAccountService.js":202,"./services\\adminMasterProductService.js":203,"./services\\adminPermissionService.js":204,"./services\\adminRoleService.js":205,"./services\\adminShopService.js":206,"./services\\adminShoptypeService.js":207,"./services\\attribute.js":208,"./services\\attributeService.js":209,"./services\\attributeSet.js":210,"./services\\attributeSetService.js":211,"./services\\blocker.js":212,"./services\\brand.js":213,"./services\\brandService.js":214,"./services\\buy1get1.js":215,"./services\\buy1get1Add.js":216,"./services\\category.js":217,"./services\\cmsCategoryService.js":218,"./services\\cmsGroupService.js":219,"./services\\cmsMasterService.js":220,"./services\\coupon.js":221,"./services\\credential.js":222,"./services\\exceptionHandler.js":223,"./services\\fileService.js":224,"./services\\globalCategory.js":225,"./services\\globalCategoryService.js":226,"./services\\globalCouponService.js":227,"./services\\image.js":228,"./services\\imageService.js":229,"./services\\inventoryService.js":230,"./services\\knownException.js":231,"./services\\localCategory.js":232,"./services\\localCategoryService.js":233,"./services\\newsletterService.js":234,"./services\\orderService.js":235,"./services\\permissionService.js":236,"./services\\product.js":237,"./services\\productCollection.js":238,"./services\\productCollectionAdd.js":239,"./services\\productCollectionAddListItem.js":240,"./services\\productReviewService.js":241,"./services\\productTempService.js":242,"./services\\returnRequestService.js":243,"./services\\sellerAccountService.js":244,"./services\\sellerCouponService.js":245,"./services\\sellerPermissionService.js":246,"./services\\sellerRoleService.js":247,"./services\\shippingService.js":248,"./services\\shop.js":249,"./services\\shopAppearanceService.js":250,"./services\\shopPermissionService.js":251,"./services\\shopProfileService.js":252,"./services\\shopService.js":253,"./services\\stdOnHoldReportService.js":254,"./services\\stdReturnReportService.js":255,"./services\\stdSaleReportService.js":256,"./services\\stdStockReportService.js":257,"./template":280,"./template-options\\PromotionForm.js":258,"./template-options\\addAttributeForm.js":259,"./template-options\\addAttributeSetForm.js":260,"./template-options\\addBrandForm.js":261,"./template-options\\addBuy1Get1Form.js":262,"./template-options\\addCMSMasterForm.js":263,"./template-options\\addCategoryForm.js":264,"./template-options\\addMasterProductForm.js":265,"./template-options\\addNewsletterForm.js":266,"./template-options\\addProductForm.js":267,"./template-options\\addRoleForm.js":268,"./template-options\\addShopAccountForm.js":269,"./template-options\\addShopAppearanceForm.js":270,"./template-options\\addShopTypeForm.js":271,"./template-options\\adminApproveForm.js":272,"./template-options\\couponForm.js":273,"./template-options\\createGroupVariant.js":274,"./template-options\\genericForm.js":275,"./template-options\\productExport.js":276,"./template-options\\productImport.js":277,"./template-options\\searchForm.js":278,"./template-options\\shopSettingForm.js":279,"angular":329,"angular-animate":282,"angular-base64":283,"angular-bootstrap-datetimepicker":285,"angular-chart.js":286,"angular-clipboard":288,"angular-cookies":290,"angular-drag-and-drop-lists":291,"angular-file-upload":292,"angular-input-masks":293,"angular-sanitize":320,"angular-scroll":322,"angular-ui-bootstrap":324,"angular-ui-sortable":325,"angular-ui-tree":327,"lodash":333,"ng-file-upload":335,"pluralize":336,"skeemas":337,"ui-select/dist/select.js":351}],2:[function(require,module,exports){
 module.exports = {
   REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
@@ -291,7 +326,7 @@ module.exports = {
 	},
 	TYPEAHEAD_IMPORT_GUIDELINE_LIMIT: 8,
 	TYPEAHEAD_DELAY: 150,
-	xROLLBAR: {
+	ROLLBAR: {
 		token: '3f012de90d9247c0a19ae95ac6ed9daf',
 		environment: 'development'
 	},
@@ -633,6 +668,85 @@ module.exports = {
 };
 
 },{}],3:[function(require,module,exports){
+
+module.exports = ["$scope", "$controller", "StdReportSaleService", "config", "util", "$rootScope", function ($scope, $controller, StdReportSaleService, config, util,$rootScope) {
+    'ngInject';
+    $scope.StdManageable = !$rootScope.permit(71);
+// debugger;
+    $scope.formData = {
+        PID: null,
+        Brands: null,
+        ItemStatus: null,
+        CreatedDtFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        CreatedDtTo: new Date()
+        };
+    // $scope.exportCsv = function() { 
+    //     debugger;
+    //     var params = $scope.formData;
+    //     StdReportSaleService.exportCsv(params)
+    //     .then(function(data){
+
+    //         var csv = '';
+    //         var headers = data.split('\n')[0];
+    //         csv += headers;
+
+    //         for (var i = 1; i < data.split('\n').length; i++) {
+    //             var row = data.split('\n')[i];
+    //             csv += row;
+    //         }
+
+    //         var filename, link;
+
+    //         filename = 'STDSale.csv';
+
+    //         link = document.createElement('a');
+    //         link.setAttribute('href', 'data:attachment/csv,' + encodeURIComponent(csv));
+    //         link.setAttribute('download', filename);
+    //         link.click();
+
+    //         //debugger;
+    //         // var blob = new Blob([document.getElementById('report-std-tab-content').innerHTML], {
+    //         //     type: "vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+    //         // });
+    //         // saveAs(blob, "Report.xls");
+    //     })
+    // };
+
+    $scope.exportCsv = function() { 
+        debugger;
+
+        var params = $scope.formData;
+        StdReportSaleService.exportCsv(params)
+        .then(function(data){
+
+            util.csv(data,'STDSale.csv');
+
+        })
+    };
+
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/reports/std/saleforseller',
+            service: StdReportSaleService,
+            item: 'SaleReportForSeller',
+            order: 'OrderId',
+            id: 'OrderId',
+            actions: ['View', 'Delete'],
+            bulks: ['Delete', 'Show', 'Hide'],
+            filters: [
+				{ name: "All", value: 'All' },
+				{ name: "Approved", value: 'Approved' },
+				{ name: "Not Approved", value: 'NotApproved' },
+				{ name: "Wait For Approved", value: 'WaitForApproved' },
+				{ name: "Draft", value: 'Draft' }
+            ]
+        }
+    });
+
+}];
+
+},{}],4:[function(require,module,exports){
 module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", function($scope, $window, NcAlert, util, common, options) {
 	'ngInject';
 	$scope.formData = {};
@@ -653,11 +767,6 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 
 	//Pop up javascript warning message on leave
 	util.warningOnLeave(function() {
-		
-		if(options.freeToLeave){
-			return false;
-		}
-
 		return $scope.form.$dirty;
 	});
 
@@ -728,7 +837,6 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 
 			if($scope.id > 0) {
 				//Edit mode
-				(options.onBeforeSave || _.noop)($scope, true);
 				options.service.update($scope.id, data)
 					.then(function(result) {
 						$scope.formData = options.service.deserialize(result);
@@ -747,8 +855,7 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 						}
 					});
 			} else {
-				//Save mode]
-				(options.onBeforeSave || _.noop)($scope, false);
+				//Save mode
 				options.service.create(data)
 					.then(function(result) {
 						//Set both id and formData[id]
@@ -781,7 +888,7 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 	});
 }];
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryService", "GlobalCategoryService", "BrandService", "Category", "ShopService", function($scope, $controller, options, Product,
 	LocalCategoryService, GlobalCategoryService, BrandService, Category,
 	ShopService) {
@@ -920,7 +1027,7 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 	});
 }]
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options", function($scope, $window, $timeout, NcAlert, util, options) {
 	'ngInject';
 	var a = _.includes(['a','e','i','o','u'], _.lowerCase(options.item.charAt(0))) ? 'an' : 'a';
@@ -1066,7 +1173,7 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 	}, true);
 }];
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$uibModal", "GlobalCategory", "Category", "AttributeSet", "Product", "ProductTempService", "options", "VariationFactorIndices", "AttributeSetService", "AttributeOptions", "$productAdd", "AdminShopService", function($scope, $rootScope, $controller, NcAlert,
 	config, $uibModal, GlobalCategory, Category, AttributeSet, Product,
 	ProductTempService, options,
@@ -1287,7 +1394,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 
 	};
 }]
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminAccountService", "config", function($scope, $controller, AdminAccountService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -1303,7 +1410,7 @@ module.exports = ["$scope", "$controller", "AdminAccountService", "config", func
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminAccountService", "AdminRoleService", "Credential", function($scope, $controller, AdminAccountService, AdminRoleService, Credential) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -1328,9 +1435,8 @@ module.exports = ["$scope", "$controller", "AdminAccountService", "AdminRoleServ
 	});
    
 }];
-},{}],9:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "CMSMasterService", "config", function ($scope, $controller, CMSMasterService, config) {
-    'ngInject';
+},{}],10:[function(require,module,exports){
+module.exports = function ($scope, $controller, CMSMasterService, config) {
     $scope.formData = {
         OnTopCreditCardId: null,
         NameTH: null,
@@ -1487,9 +1593,9 @@ module.exports = ["$scope", "$controller", "CMSMasterService", "config", functio
             }
         }
     });
-}];
+};
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeService", "config", function($scope, $controller, AttributeService, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -1516,7 +1622,7 @@ module.exports = ["$scope", "$controller", "AttributeService", "config", functio
 	$scope.dataTypeDropdown = config.DROPDOWN.DATA_TYPE_DROPDOWN;
 }]
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeService", "ImageService", "config", "util", "common", function($scope, $controller, AttributeService, ImageService, config, util, common) {
 	'ngInject';
 	$scope.dataTypeOptions = config.DROPDOWN.DATA_TYPE_DROPDOWN;
@@ -1584,7 +1690,7 @@ module.exports = ["$scope", "$controller", "AttributeService", "ImageService", "
 		}
 	});
 }];
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeSetService", "util", "config", function($scope, $controller, AttributeSetService, util, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -1605,7 +1711,7 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "util", "confi
 		}
 	});
 }]
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeService", "config", function($scope, $controller, AttributeSetService, AttributeService, config) {
 	'ngInject';
 	$scope.visibleOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
@@ -1645,7 +1751,7 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeServ
 		});
 	}
 }]
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "BrandService", "config", function($scope, $controller, BrandService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -1661,7 +1767,7 @@ module.exports = ["$scope", "$controller", "BrandService", "config", function($s
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageService", "common", "config", function($scope, $controller, Product, BrandService, ImageService, common, config) {
 	'ngInject';
 	$scope.TYPEAHEAD_DELAY = config.TYPEAHEAD_DELAY;
@@ -1764,7 +1870,7 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 		}
 	});
 }];
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$uibModal", "$timeout", function ($scope, $controller, Buy1Get1Service, config, $uibModal, $timeout) {
     'ngInject';
 
@@ -2134,7 +2240,7 @@ module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$uibMod
 
 }];
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 
 module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", function ($scope, $controller, Buy1Get1Service, config) {
     'ngInject';
@@ -2161,9 +2267,8 @@ module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", function
 
 }];
 
-},{}],18:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "CouponService", "config", "$uibModal", function($scope, $controller, CouponService, config, $uibModal) {
-  'ngInject';
+},{}],19:[function(require,module,exports){
+module.exports = function($scope, $controller, CouponService, config, $uibModal) {
   $controller('AbstractListCtrl', {
     $scope: $scope,
     options: {
@@ -2235,7 +2340,7 @@ module.exports = ["$scope", "$controller", "CouponService", "config", "$uibModal
                 '</div>',
       size: 'md',
       scope: $scope,
-      controller: ["$scope", "$uibModalInstance", function($scope, $uibModalInstance) {
+      controller: function($scope, $uibModalInstance) {
 
 
         $scope.save = function(groupName) {
@@ -2247,7 +2352,7 @@ module.exports = ["$scope", "$controller", "CouponService", "config", "$uibModal
         };
 
         
-      }]
+      }
     })
     .result.then(function(data) {
       console.log(data)
@@ -2258,12 +2363,13 @@ module.exports = ["$scope", "$controller", "CouponService", "config", "$uibModal
   $scope.AddToList = function() {
     console.log($scope.formData)
   };
-}]
+}
 
-},{}],19:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "$uibModal", "$timeout", function ($scope, $controller, CMSCategoryService, config, $uibModal, $timeout) {
+},{}],20:[function(require,module,exports){
+module.exports = ["$scope", "$rootScope", "$controller", "CMSCategoryService", "config", "$uibModal", "$timeout", function ($scope,$rootScope, $controller, CMSCategoryService, config, $uibModal, $timeout) {
     'ngInject';
 
+    $scope.adCMSadd = !$rootScope.permit(24);
     $scope.formData     = {};
 
     $scope.loading      = false;
@@ -2640,10 +2746,14 @@ module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "$uib
 
 }];
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 
-module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "util", function ($scope, $controller, CMSCategoryService, config, util) {
+module.exports = ["$scope", "$rootScope", "$controller", "CMSCategoryService", "config", "util", function ($scope, $rootScope, $controller, CMSCategoryService, config, util) {
     'ngInject';
+    $scope.adCMSview = !$rootScope.permit(23);  
+    $scope.adCMSadd = !$rootScope.permit(24);
+    $scope.adCMSedit = !$rootScope.permit(25);
+    debugger;
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
@@ -2678,10 +2788,10 @@ module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "util
 
 }];
 
-},{}],21:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "CMSGroupService", "config", "$uibModal", "$timeout", function ($scope, $controller, CMSGroupService, config, $uibModal, $timeout) {
-    'ngInject';
-
+},{}],22:[function(require,module,exports){
+module.exports = ["$scope", "$controller", "$rootScope", "CMSGroupService", "config", "$uibModal", "$timeout", function ($scope, $controller,$rootScope, CMSGroupService, config, $uibModal, $timeout) {
+    'ngInject'; 
+    $scope.adCMSadd = !$rootScope.permit(24);
     $scope.formData     = {};
 
     $scope.loading      = false;
@@ -2977,10 +3087,13 @@ module.exports = ["$scope", "$controller", "CMSGroupService", "config", "$uibMod
 
 }];
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 
-module.exports = ["$scope", "$controller", "CMSGroupService", "config", function ($scope, $controller, CMSGroupService, config) {
+module.exports = ["$scope", "$rootScope", "$controller", "CMSGroupService", "config", function ($scope,$rootScope, $controller, CMSGroupService, config) {
     'ngInject';
+    $scope.adCMSview = !$rootScope.permit(23);  
+    $scope.adCMSadd = !$rootScope.permit(24);
+    $scope.adCMSedit = !$rootScope.permit(25);
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
@@ -3004,9 +3117,10 @@ module.exports = ["$scope", "$controller", "CMSGroupService", "config", function
 
 }];
 
-},{}],23:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "CMSMasterService", "ImageService", "NcAlert", "common", "config", "$uibModal", "$timeout", function ($scope, $controller, CMSMasterService, ImageService, NcAlert, common, config, $uibModal, $timeout) {
+},{}],24:[function(require,module,exports){
+module.exports = ["$scope", "$rootScope", "$controller", "CMSMasterService", "ImageService", "NcAlert", "common", "config", "$uibModal", "$timeout", function ($scope,$rootScope, $controller, CMSMasterService, ImageService, NcAlert, common, config, $uibModal, $timeout) {
     'ngInject';
+    $scope.adCMSadd = !$rootScope.permit(24);
 
     $scope.alert            = new NcAlert();
     $scope.formData         = {};
@@ -3021,12 +3135,32 @@ module.exports = ["$scope", "$controller", "CMSMasterService", "ImageService", "
         //CategoryList: []
     };
 
+    $scope.bannerUploader = ImageService.getUploaderFn('/CMS/CMSImage', {
+        data: { Type: 'Banner' }
+    });
+    $scope.bannerOptions = {
+        validateDimensionMin: [1920, 1080],
+        validateDimensionMax: [1920, 1080]
+    };
+
     $scope.formData         = CMSMasterService.generate();
-    $scope.bannerUploader   = ImageService.getUploaderFn('/CMS/CMSMaster/CMSImage');
     
     $scope.uploadBannerFail = function (e, response) {
-        if (e == 'onmaxsize') {
-            $scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+        // if (e == 'onmaxsize') {
+        //     $scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+        // }
+        // else {
+        //     $scope.alert.error(common.getError(response.data));
+        // }
+        debugger;
+        if(e == 'onmaxsize') {
+            $scope.alert.error('Cannot exceed 8 images');
+        }
+        else if(e == 'ondimension') {
+            $scope.alert.error('Image must be 1920x1080 pixels');
+        }
+        else if(e == 'onfilesize') {
+            $scope.alert.error('Each image file size must not exceed 5MB')
         }
         else {
             $scope.alert.error(common.getError(response.data));
@@ -3506,9 +3640,12 @@ module.exports = ["$scope", "$controller", "CMSMasterService", "ImageService", "
     });
 }];
 
-},{}],24:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "common", "CMSMasterService", "util", "$window", "$rootScope", "config", "storage", function ($scope, $controller, common, CMSMasterService, util, $window, $rootScope, config, storage) {
+},{}],25:[function(require,module,exports){
+module.exports = ["$scope", "$rootScope", "$controller", "common", "CMSMasterService", "util", "$window", "$rootScope", "config", "storage", function ($scope,$rootScope, $controller, common, CMSMasterService, util, $window, $rootScope, config, storage) {
     'ngInject';
+    $scope.adCMSview = !$rootScope.permit(23);  
+    $scope.adCMSadd = !$rootScope.permit(24);
+    $scope.adCMSedit = !$rootScope.permit(25);
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
@@ -3567,7 +3704,7 @@ module.exports = ["$scope", "$controller", "common", "CMSMasterService", "util",
     }
 }];
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 
 module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Category", "GlobalCategoryService", "AttributeSetService", "NcAlert", "util", "config", function($scope, $rootScope, $uibModal, $timeout, common, Category, GlobalCategoryService, AttributeSetService, NcAlert, util, config){
 	'ngInject';
@@ -3877,7 +4014,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 
 }];
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "GlobalCouponService", "config", function($scope, $controller, GlobalCouponService, config) {
 	'ngInject';
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
@@ -3894,9 +4031,8 @@ module.exports = ["$scope", "$controller", "GlobalCouponService", "config", func
 	});
 }]
 
-},{}],27:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "GlobalCouponService", "GlobalCategoryService", "config", "Category", function($scope, $controller, GlobalCouponService, GlobalCategoryService, config, Category) {
-  'ngInject';
+},{}],28:[function(require,module,exports){
+module.exports = function($scope, $controller, GlobalCouponService, GlobalCategoryService, config, Category) {
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
   $scope.filters = config.DROPDOWN.COUPON_GLOBAL_FILTER;
@@ -3925,8 +4061,8 @@ module.exports = ["$scope", "$controller", "GlobalCouponService", "GlobalCategor
     }
   });
 
-}];
-},{}],28:[function(require,module,exports){
+};
+},{}],29:[function(require,module,exports){
   module.exports = ["$scope", "Credential", "$window", "NcAlert", "$uibModal", "storage", "config", function ($scope, Credential, $window, NcAlert, $uibModal, storage, config) {
     'ngInject';
     $scope.uform = {};
@@ -3987,7 +4123,7 @@ module.exports = ["$scope", "$controller", "GlobalCouponService", "GlobalCategor
     }
 }];
 
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "$window", "AdminMasterProductService", "config", function($scope, $controller, $window, AdminMasterProductService, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -4015,8 +4151,8 @@ module.exports = ["$scope", "$controller", "$window", "AdminMasterProductService
 		return _.join(_.map(list, function(e) { return e.Pid }), ', ');
 	};
 }];
-},{}],30:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "BrandService", "$window", "Product", "AdminMasterProductService", "config", "util", "common", function($scope, $controller, BrandService, $window, Product, AdminMasterProductService, config, util, common) {
+},{}],31:[function(require,module,exports){
+module.exports = ["$scope", "$controller", "BrandService", "Product", "AdminMasterProductService", "config", "util", "common", function($scope, $controller, BrandService, Product, AdminMasterProductService, config, util, common) {
 	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -4025,11 +4161,7 @@ module.exports = ["$scope", "$controller", "BrandService", "$window", "Product",
 			id: 'ProductId',
 			url: '/admin/masters',
 			item: 'Master Product',
-			service: AdminMasterProductService,
-			freeToLeave: true,
-			onAfterSave: function(){
-				$window.location.href = '/admin/masters?success=true';
-			}
+			service: AdminMasterProductService
 		}
 	});
 	
@@ -4076,7 +4208,7 @@ module.exports = ["$scope", "$controller", "BrandService", "$window", "Product",
 		}
 	});
 }];
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "ImageService", function($scope, $controller, $uibModal, NewsletterService, ImageService) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -4209,9 +4341,8 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "Im
 		});
 	};
 }];
-},{}],32:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "OnTopCredit", "config", function ($scope, $controller, OnTopCredit, config) {
-    'ngInject';
+},{}],33:[function(require,module,exports){
+module.exports = function ($scope, $controller, OnTopCredit, config) {
     $scope.formData = {
         OnTopCreditCardId: null,
         NameTH: null,
@@ -4369,9 +4500,9 @@ module.exports = ["$scope", "$controller", "OnTopCredit", "config", function ($s
             }
         }
     });
-}];
+};
 
-},{}],33:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "OnTopCredit", "config", function($scope, $controller, OnTopCredit, config) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
@@ -4395,7 +4526,7 @@ module.exports = ["$scope", "$controller", "OnTopCredit", "config", function($sc
 	});
 	$scope.statusDropdown = config.PRODUCT_STATUS;
 }];
-},{}],34:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ["$scope", "$controller", "$uibModal", "NCConfirm", function ($scope, $controller, $uibModal, NCConfirm) {
@@ -4438,7 +4569,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "NCConfirm", function ($
     }
 
 }];
-},{"angular":314}],35:[function(require,module,exports){
+},{"angular":329}],36:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "config", "util", function($scope, $controller, Product, config, util) {
 	'ngInject';
     $scope.asStatus = Product.getStatus;
@@ -4502,7 +4633,7 @@ module.exports = ["$scope", "$controller", "Product", "config", "util", function
 	$scope.params._filter2 = 'None';
 }];
 
-},{}],36:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ["$scope", "$controller", function ($scope, $controller) {
@@ -4518,7 +4649,7 @@ module.exports = ["$scope", "$controller", function ($scope, $controller) {
     });
 
 }];
-},{"angular":314}],37:[function(require,module,exports){
+},{"angular":329}],38:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", function($scope, $controller, Product) {
 	'ngInject';
     
@@ -4531,8 +4662,8 @@ module.exports = ["$scope", "$controller", "Product", function($scope, $controll
 	
 }]
 
-},{}],38:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "Product", "common", "config", "$base64", "$timeout", function($scope, $controller, Product, common, config, $base64, $timeout) {
+},{}],39:[function(require,module,exports){
+module.exports = ["$scope", "$controller", "Product", "common", "config", function($scope, $controller, Product, common, config) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
@@ -4620,14 +4751,14 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", "$base
 	config.PRODUCT_STATUS.forEach(function(object){
        $scope.statusLookup[object.value] = object;
     });
-	
     $scope.asStatus = function (ab) {
         return $scope.statusLookup[ab];
     };
     $scope.getTag = function(tags) {
         return _.join(tags, ', ');
     }
-    $scope.exportSelected = function() {
+
+    $scope.exportSelected = function(){
         $scope.alert.close();
         if ($scope.bulkContainer.length == 0) {
             return $scope.alert.error('Unable to Export. Please select Product for this action.');
@@ -4645,15 +4776,14 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", "$base
         K._limit = 2147483647;
         $scope.searchCriteria = $base64.encode(JSON.stringify(K));
 
+
         $timeout(function() {
             console.log('searchCriteria', $scope.searchCriteria);
             document.getElementById('exportForm').submit();
         });
     }
-	
-	
 }];
-},{}],39:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$uibModal", "util", "common", function($scope, $controller, ProductReviewService, config, $uibModal, util, common) {
 	'ngInject';
 	//Inherit from parent
@@ -4703,7 +4833,7 @@ module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$u
 	};
 }];
 
-},{}],40:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminRoleService", "config", function($scope, $controller, AdminRoleService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -4719,7 +4849,7 @@ module.exports = ["$scope", "$controller", "AdminRoleService", "config", functio
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }]
-},{}],41:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminRoleService", "AdminPermissionService", "PermissionService", "util", function($scope, $controller, AdminRoleService, AdminPermissionService, PermissionService, util) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -4787,7 +4917,7 @@ module.exports = ["$scope", "$controller", "AdminRoleService", "AdminPermissionS
 		});
 	};
 }];
-},{"circular-json":315}],42:[function(require,module,exports){
+},{"circular-json":330}],43:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerAccountService", "config", function($scope, $controller, SellerAccountService, config) {
 	'ngInject';
 	$scope.yesNoDropdown = config.DROPDOWN.YES_NO_DROPDOWN;
@@ -4828,7 +4958,7 @@ module.exports = ["$scope", "$controller", "SellerAccountService", "config", fun
 		}
 	});
 }]
-},{}],43:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerCouponService", "config", function($scope, $controller, SellerCouponService, config) {
   'ngInject';
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
@@ -4845,9 +4975,8 @@ module.exports = ["$scope", "$controller", "SellerCouponService", "config", func
   });
 }]
 
-},{}],44:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "SellerCouponService", "config", "Category", function($scope, $controller, SellerCouponService, config, Category) {
-  'ngInject';
+},{}],45:[function(require,module,exports){
+module.exports = function($scope, $controller, SellerCouponService, config, Category) {
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
   $scope.filters = config.DROPDOWN.COUPON_SELLER_FILTER;
@@ -4868,8 +4997,8 @@ module.exports = ["$scope", "$controller", "SellerCouponService", "config", "Cat
     }
   });
 
-}];
-},{}],45:[function(require,module,exports){
+};
+},{}],46:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminShopService", "config", function($scope, $controller, AdminShopService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -4885,13 +5014,13 @@ module.exports = ["$scope", "$controller", "AdminShopService", "config", functio
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-},{}],46:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "AdminShoptypeService", "GlobalCategoryService", "ShopService", "ImageService", "Category", "config", "common", "Credential", "$window", function($scope, $controller, $uibModal, AdminShopService, AdminShoptypeService, GlobalCategoryService, ShopService, ImageService, Category, config, common, Credential, $window) {
 	'ngInject';
 
 	var v = [];
-	var watch = function() {	
-		console.log('watch');	
+	var watch = function() {
+		console.log('watch');
 		v.push($scope.$watch('formData.Province', function(data, old) {
 			if(_.isNil(data)) {
 				return;
@@ -4938,12 +5067,15 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 			item: 'Shop Account',
 			service: AdminShopService,
 			init: function(scope) {
-				AdminShoptypeService.listAll()	
+				AdminShoptypeService.listAll()
 					.then(function(data) {
 						scope.shoptypes = data;
 					});
 			},
-			onLoad: function(scope, flag) {	
+			onSave: function(scope) {
+				console.log(scope.form);
+			},
+			onLoad: function(scope, flag) {
 				//Load global cat
 				scope.globalCategory = [];
 				GlobalCategoryService.list()
@@ -4953,16 +5085,51 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 							item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
 						});
 				});
-				watch();
+
+				$scope.$watch('formData.Province', function(data, old) {
+					if(_.isNil(data)) {
+						return;
+					}
+					if(_.isNil(old)) {
+
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['City']);
+					}
+					$scope.getCities(data.ProvinceId);
+				});
+
+				$scope.$watch('formData.City', function(data, old) {
+					if(_.isNil(data)) {
+						return;
+					}
+					if(_.isNil(old)) {
+
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['District']);
+					}
+					$scope.getDistricts(data.CityId);
+				});
+
+
+				$scope.$watch('formData.District', function(data, old) {
+					if(_.isNil(data)) {
+						return;
+					}
+					if(_.isNil(old)) {
+
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['PostalCode']);
+					}
+					$scope.getPostals(data.DistrictId);
+				});
 			},
-			onBeforeSave: function(scope) {
-				unwatch();
-			},
-			onAfterSave: function(scope) {			
+			onAfterSave: function(scope) {
 				_.forEach(scope.formData.Commissions, function(item) {
 					item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
 				});
-				watch();
 			}
 		}
 	});
@@ -4984,7 +5151,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 				$scope.formData.ShopImage = null;
 				$scope.alert.error(common.getError(err.data));
 			});
-	};	
+	};
 
 	$scope.getCities = function(id) {
 		ShopService.get('Cities', id)
@@ -5120,7 +5287,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 	        }
 	      }
 	    })
-	    
+
 	    modalInstance.result.then(function(result) {
     		if(_.isNil(item)) {
 	    		//Add
@@ -5147,7 +5314,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 	});
 }];
 
-},{}],47:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminShoptypeService", function($scope, $controller, AdminShoptypeService) {
 	'ngInject';
 	//Inherit from parent
@@ -5162,7 +5329,7 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", function($sco
 		}
 	});
 }];
-},{}],48:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShippingService", "ShopPermissionService", "ShopAppearanceService", "PermissionService", "util", "$q", function($scope, $controller, AdminShoptypeService, ShippingService, ShopPermissionService, ShopAppearanceService, PermissionService, util, $q) {
 	'ngInject';
 
@@ -5335,33 +5502,7 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShippingServ
 	};
 }];
 
-},{"circular-json":315}],49:[function(require,module,exports){
-
-module.exports = ["$scope", "$controller", "CMSGroupService", "config", function ($scope, $controller, CMSGroupService, config) {
-    'ngInject';
-    $controller('AbstractAdvanceListCtrl', {
-        $scope: $scope,
-        options: {
-            url: '/admin/reports/std/saleforseller',
-            service: CMSGroupService,
-            item: 'SaleReportForSeller',
-            order: 'OrderDate',
-            id: 'OrderId',
-            actions: ['View', 'Delete'],
-            bulks: ['Delete', 'Show', 'Hide'],
-            filters: [
-				{ name: "All", value: 'All' },
-				{ name: "Approved", value: 'Approved' },
-				{ name: "Not Approved", value: 'NotApproved' },
-				{ name: "Wait For Approved", value: 'WaitForApproved' },
-				{ name: "Draft", value: 'Draft' }
-            ]
-        }
-    });
-
-}];
-
-},{}],50:[function(require,module,exports){
+},{"circular-json":330}],50:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', '$window', 'util', 'config','Product', 'Buy1Get1','Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$Buy1Get1Add',
@@ -5809,13 +5950,13 @@ $scope.GetItemSelected = function () {
    
 }];
 
-},{"angular":314}],51:[function(require,module,exports){
+},{"angular":329}],51:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($scope, Product, util, Alert, $window) {
     
 }];
-},{"angular":314}],52:[function(require,module,exports){
+},{"angular":329}],52:[function(require,module,exports){
 module.exports = ['$scope',  'Buy1Get1', 'util', 'Alert', '$window', '$rootScope', function
 
 ($scope, Buy1Get1, util, Alert, $window, $rootScope) {
@@ -6606,7 +6747,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	});
 }];
 
-},{"angular":314}],57:[function(require,module,exports){
+},{"angular":329}],57:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Collection','Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$CollectionAdd',
@@ -7163,7 +7304,7 @@ function ($scope, $window, util, config, Product, Collection, ImageService, Attr
 
 }];
 
-},{"angular":314}],58:[function(require,module,exports){
+},{"angular":329}],58:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', '$filter' ,'$window', 'util', 'config', 'Product', 'Collection','Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$CollectionAddListItem',
@@ -7603,9 +7744,9 @@ $scope.AddToList = function () {
 
 }];
 
-},{"angular":314}],59:[function(require,module,exports){
+},{"angular":329}],59:[function(require,module,exports){
 arguments[4][51][0].apply(exports,arguments)
-},{"angular":314,"dup":51}],60:[function(require,module,exports){
+},{"angular":329,"dup":51}],60:[function(require,module,exports){
 module.exports = ['$scope', 'Product', 'Collection', 'util', 'Alert', '$window', '$rootScope', function
 
 ($scope, Product,Collection, util, Alert, $window, $rootScope) {
@@ -9900,8 +10041,7 @@ module.exports = ["$scope", "$controller", "SellerAccountService", "config", fun
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
 },{}],71:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "BrandService", "SellerAccountService", "SellerRoleService", function($scope, $controller, BrandService, SellerAccountService, SellerRoleService) {
-	'ngInject';
+module.exports = function($scope, $controller, BrandService, SellerAccountService, SellerRoleService) {
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
@@ -9940,9 +10080,1431 @@ module.exports = ["$scope", "$controller", "BrandService", "SellerAccountService
 			$scope.brands = data.data;
 		});
 	};
-}]
+}
 
 },{}],72:[function(require,module,exports){
+module.exports = function($scope, $controller, CouponService, config, $uibModal) {
+  $controller('AbstractListCtrl', {
+    $scope: $scope,
+    options: {
+      url: '/cms',
+      service: CouponService,
+      item: 'Coupon',
+      order: 'ExpireDate',
+      id: 'CouponId',
+      actions: [{
+        name: 'View Detail',
+        fn: function(item) {
+          console.log(item, 'view detail')
+        }
+      }],
+      bulks: [],
+      filters: []
+    }
+  });
+
+  $controller('AbstractAddCtrl', {
+    $scope: $scope,
+    options: {
+      id: 'CouponId',
+      url: 'cms/create',
+      item: 'Coupon',
+      service: CouponService,
+      dateFields: ['StartDate', 'ExpireDate'],
+      onLoad: function(){
+        //map dropdonws
+      },
+      onSave: function(scope) {
+        //hacky speed fix
+        console.log($scope.formData)
+        //scope.formData.Conditions.Order = [scope.formData.Conditions.Order["0"]];
+      }
+    }
+  });
+
+
+  $scope.formData = {};
+  $scope.groupItemList = [];
+
+
+  $scope.loadAllCMS = function() {
+    
+  };
+
+  $scope.addNewGroup = function() {
+     $uibModal.open({
+      template: '<div class="modal-header">' +
+                '  <h3 class="modal-title">Add New Group</h3>' +
+                '</div>' +
+                '<div class="modal-body">' +
+                '  <form class="ah-form margin-top-20" name="form" novalidate>' +
+                '    <div class="row">' +
+                '      <div class="col-xs-12">' +
+                '   <div class="form-section-content">' +
+                '     <input type="text" class="form-control" ng-model="groupName" />' +
+                '   </div>' +
+                '        <div class="container-fluid no-padding margin-top-20">' +
+                '            <div class="float-right">' +
+                '              <a href="#" class="link-btn-plain" ng-click="$dismiss()">Cancel</a>' +
+                '              <button class="btn btn-blue btn-width-xl" ng-click="save(groupName)"><span class="login-loading" ng-cloak ng-show="saving"><i class="fa fa-spinner fa-spin" ></i></span>Save</button>' +
+                '            </div' +
+                '        </div' +
+                '      </div>' +
+                '    </div>' +
+                '  </form>' +
+                '</div>',
+      size: 'md',
+      scope: $scope,
+      controller: function($scope, $uibModalInstance) {
+
+
+        $scope.save = function(groupName) {
+          var group = {
+            GroupName: groupName,
+            GroupTotal: 0
+          }
+          $uibModalInstance.close(group)
+        };
+
+        
+      }
+    })
+    .result.then(function(data) {
+      console.log(data)
+      $scope.groupItemList.push(data);
+    });
+  };
+
+  $scope.AddToList = function() {
+    console.log($scope.formData)
+  };
+}
+
+},{}],73:[function(require,module,exports){
+module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "$uibModal", "$timeout", "$rootScope", function ($scope, $controller, CMSCategoryService, config, $uibModal, $timeout, $rootScope) {
+    'ngInject';
+
+    $scope.CMSadd = !$rootScope.permit(62);
+    $scope.formData     = {};
+
+    $scope.loading      = false;
+    $scope.isEmpty      = true;
+
+    var sortableEle;
+
+    $scope.dragStart = function (e, ui) {
+        ui.item.data('start', ui.item.index());
+    }
+    $scope.dragEnd = function (e, ui) {
+        var start = ui.item.data('start'),
+            end = ui.item.index();
+
+        $scope.formData.CategoryProductList.splice(end, 0,
+            $scope.formData.CategoryProductList.splice(start, 1)[0]);
+
+        $scope.$apply();
+
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+        
+    }
+
+    sortableEle = $('#sortable').sortable({
+        start: $scope.dragStart,
+        update: $scope.dragEnd
+    });
+
+    $scope.moveUp = function (start, end) {
+
+        // swap object
+        $scope.formData.CategoryProductList.splice(end, 0,
+           $scope.formData.CategoryProductList.splice(start, 1)[0]);
+
+        // update seq
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+    };
+
+    $scope.moveDown = function (start, end) {
+
+        // swap object
+        $scope.formData.CategoryProductList.splice(end, 0,
+           $scope.formData.CategoryProductList.splice(start, 1)[0]);
+
+        // update seq
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+    };
+
+    // update sequence
+    function updateSequence() {
+
+        var seq = 0;
+
+        angular.forEach($scope.formData.CategoryProductList, function (item) {
+            seq++;
+            item.Sequence = seq;
+        });
+    }
+
+    $scope.selectOptionText = '- Choose Action -';
+    $scope.selectOption = function (param) {
+        $scope.selectOptionText = param;
+    };
+
+    // check all item
+    $scope.checkAll = function (isChecked) {
+
+        $scope.isCheckedAll != isChecked;
+
+        if (!isChecked) {
+            angular.forEach($scope.formData.CategoryProductList, function (item) {
+                item.IsChecked = false;
+            });
+        }
+        else {
+            angular.forEach($scope.formData.CategoryProductList, function (item) {
+                item.IsChecked = true;
+            });
+        }
+
+        $scope.sumProductSelected();
+    };
+
+    // check once item
+    $scope.checkOnce = function (item, isChecked) {
+
+        if (!isChecked) {
+            item.IsChecked = false;
+        }
+        else {
+            item.IsChecked = true;
+        }
+
+        $scope.sumProductSelected();
+    };
+
+    $scope.sumProductSelected = function () {
+
+        var sum = 0;
+
+        angular.forEach($scope.formData.CategoryProductList, function (item) {
+            if (item.IsChecked) {
+                sum++;
+            }
+        });
+
+        return sum;
+    };
+
+
+    // Add Item to the list
+    $scope.addProductItem = function () {
+
+        // open modal
+        $uibModal.open({
+            templateUrl: 'templates/admin-cms-category-manage-add-item.html',
+            size: 'lg',
+            //scope: $scope,
+            controller: ["$scope", "$uibModalInstance", function ($scope, $uibModalInstance) {
+
+                $scope.products = [];
+
+                $scope.isEmpty = true;
+                $scope.loading = false;
+                $scope.message = 'Empty list.';
+                $scope.categorys = [];
+                $scope.brands   = [];
+                $scope.tags     = [];
+
+                $scope.init = function () {
+                    $('#form-category :input[type=text]').keyup(function () {
+
+                        var val = $(this).val();
+                        console.log(val)
+                        var param   = { SearchText: val };
+
+                        CMSCategoryService.getAllCategory(param)
+                        .then(function (data) {
+                            $scope.categorys = data;
+                        });
+                    });
+                };
+
+                // load category
+                CMSCategoryService.getAllCategory({})
+                .then(function (data) {
+                    console.log(data)
+                    $scope.categorys = data;
+                });
+
+                // load tag
+                CMSCategoryService.getAllTag()
+                .then(function (data) {
+                    console.log(data)
+                    $scope.tags = data;
+                });
+
+                // Search
+                $scope.search = function (searchText) {
+
+                    $scope.loading = true;
+                    $scope.isEmpty = false;
+
+                    var tags = '';
+
+                    angular.forEach($scope.tag.selected, function (tag) {
+                        tags += tag.Tag + ',';
+                    });
+
+                    var params = {
+                        CategoryId: $scope.category.selected.CategoryId,
+                        BrandId: $scope.brand.selected.BrandId,
+                        Tag: tags,
+                        SearchBy: $scope.searchBy,
+                        SearchText: $scope.searchText
+                    };
+
+                    // search product
+                    CMSCategoryService.searchProduct(params)
+                    .then(function (data) {
+                        console.log(data)
+                        $scope.products = data;
+                        $scope.isEmpty = false;
+                        $scope.loading = false;
+                        $scope.message = '';
+                    },
+                    function (error) {
+                        $scope.products = [];
+                        $scope.isEmpty = true;
+                        $scope.loading = false;
+                        $scope.message = 'Not Found Product';
+                    });
+
+                };
+
+                $scope.ok = function () {
+
+                    var itemSelected = [];
+
+                    angular.forEach($scope.products, function (item) {
+                        if (item.IsChecked) {
+                            itemSelected.push(item);
+                        }
+                    });
+
+                    $uibModalInstance.close(itemSelected);
+                };
+
+                // check all item
+                $scope.checkAll = function (isChecked) {
+
+                    $scope.isCheckedAll != isChecked;
+
+                    if (!isChecked) {
+                        angular.forEach($scope.products, function (item) {
+                            item.IsChecked = false;
+                        });
+                    }
+                    else {
+                        angular.forEach($scope.products, function (item) {
+                            item.IsChecked = true;
+                        });
+                    }
+
+                    $scope.sumProductSelected();
+                };
+
+                // check once item
+                $scope.checkOnce = function (item, isChecked) {
+
+                    if (!isChecked) {
+                        item.IsChecked = false;
+                    }
+                    else {
+                        item.IsChecked = true;
+                    }
+
+                    $scope.sumProductSelected();
+                };
+
+                $scope.sumProductSelected = function () {
+
+                    var sum = 0;
+
+                    angular.forEach($scope.products, function (item) {
+                        if (item.IsChecked) {
+                            sum++;
+                        }
+                    });
+
+                    return sum;
+                };
+                
+                /// Test
+                $scope.category = {};
+                $scope.brand    = {};
+                $scope.tag      = {};
+                $scope.searchBy = 'ProductName';
+
+                $scope.$watch('category.selected', function (newValue, oldValue) {
+                    if (newValue === undefined)
+                        return;
+
+                    // get brand by category id
+                    CMSCategoryService.getBrand(newValue.CategoryId)
+                    .then(function (data) {
+                        $scope.brands = data;
+                    });
+
+                });
+
+                $scope.$watch('brand.selected', function (newValue, oldValue) {
+                    if (newValue === undefined)
+                        return;
+
+                });
+
+                $scope.disabled = undefined;
+
+                $scope.enable = function () {
+                    $scope.disabled = false;
+                };
+
+                $scope.disable = function () {
+                    $scope.disabled = true;
+                };
+
+                $scope.clear = function () {
+                    $scope.category.selected = undefined;
+                };
+
+                $scope.category = {};
+
+            }]
+        })
+        .result.then(function (result) {
+            if ($scope.formData.CategoryProductList === undefined) {
+                $scope.formData.CategoryProductList = [];
+            }
+
+            angular.forEach(result, function (product) {
+                if (!isDuplicateProduct(product.Pid)) {
+                    var obj = angular.copy(product);
+                    obj.Sequence = getNewProductSequence();
+                    obj.ProductBoxBadge = product.ProductNameEn;
+                    $scope.formData.CategoryProductList.push(obj);
+                }
+            })
+        });
+    };
+
+    // check product duplicate before add to list
+    function isDuplicateProduct(pId) {
+        var isDuplicate = false;
+        angular.forEach($scope.formData.CategoryProductList, function (product) {
+            if (product.Pid == pId)
+                isDuplicate = true;
+        });
+
+        return isDuplicate;
+    }
+
+    // gen product seq
+    function getNewProductSequence() {
+        return $scope.formData.CategoryProductList.length + 1;
+    }
+
+    // remove product item
+    $scope.removeOnceItem = function (index) {
+        $scope.formData.CategoryProductList.splice(index, 1);
+    }
+
+    // remove multiple product
+    $scope.removeMultiItem = function () {
+        for (var i = $scope.formData.CategoryProductList.length - 1; i >= 0; i--) {
+            if ($scope.formData.CategoryProductList[i].IsChecked) {
+                $scope.formData.CategoryProductList.splice(i, 1);
+            }
+        }
+
+        $scope.isCheckedAll = false;
+    }
+
+    // get total product items
+    $scope.getTotalItems = function () {
+        return $scope.formData.CategoryProductList === undefined ? 0 : $scope.formData.CategoryProductList.length;
+    };
+
+    $controller('AbstractAddCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/cms/category',
+            service: CMSCategoryService,
+            item: 'CMS Category',
+            order: 'UpdateDate',
+            id: 'CMSCategoryId',
+            init: function (scope) {
+
+            },
+            onLoad: function (scope, load) {
+                
+            },
+            onSave: function (scope) {
+
+            }
+        }
+    });
+
+}];
+
+},{}],74:[function(require,module,exports){
+
+module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "util", "$rootScope", function ($scope, $controller, CMSCategoryService, config, util,$rootScope) {
+    'ngInject';
+    $scope.CMSview = !$rootScope.permit(61);  
+    $scope.CMSadd = !$rootScope.permit(62);
+    $scope.CMSedit = !$rootScope.permit(63);
+    
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/cms/category',
+            service: CMSCategoryService,
+            item: 'CMSCategory',
+            order: 'UpdateOn',
+            id: 'CMSCategoryId',
+            actions: ['View', 'Delete'],
+            bulks: [
+                'Delete',
+                'Show',
+                'Hide'
+            ],
+            filters: [
+				{ name: "All", value: 'All' },
+                { name: "Approved", value: 'Approved' },
+                { name: "Not Approved", value: 'NotApproved' },
+                { name: "Wait for Approval", value: 'WaitforApproval' }
+            ]
+        }
+    });
+    //$scope.statusDropdown = config.PRODUCT_STATUS;
+
+}];
+
+},{}],75:[function(require,module,exports){
+module.exports = ["$scope", "$controller", "CMSGroupService", "config", "$uibModal", "$timeout", "$rootScope", function ($scope, $controller, CMSGroupService, config, $uibModal, $timeout,$rootScope) {
+    'ngInject'; 
+    $scope.CMSadd = !$rootScope.permit(62);
+
+    $scope.formData     = {};
+
+    $scope.loading      = false;
+    $scope.isEmpty      = true;
+
+
+    var sortableEle;
+
+    $scope.dragStart = function (e, ui) {
+        ui.item.data('start', ui.item.index());
+    }
+    $scope.dragEnd = function (e, ui) {
+        var start = ui.item.data('start'),
+            end = ui.item.index();
+
+        $scope.formData.GroupMasterList.splice(end, 0,
+            $scope.formData.GroupMasterList.splice(start, 1)[0]);
+
+        $scope.$apply();
+
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+        
+    }
+
+    sortableEle = $('#sortable').sortable({
+        start: $scope.dragStart,
+        update: $scope.dragEnd
+    });
+
+    $scope.moveUp = function (start, end) {
+
+        // swap object
+        $scope.formData.GroupMasterList.splice(end, 0,
+           $scope.formData.GroupMasterList.splice(start, 1)[0]);
+
+        // update seq
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+    };
+
+    $scope.moveDown = function (start, end) {
+
+        // swap object
+        $scope.formData.GroupMasterList.splice(end, 0,
+           $scope.formData.GroupMasterList.splice(start, 1)[0]);
+
+        // update seq
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+    };
+
+    // update sequence
+    function updateSequence() {
+
+        var seq = 0;
+
+        angular.forEach($scope.formData.GroupMasterList, function (item) {
+            seq++;
+            item.Sequence = seq;
+        });
+    }
+
+    $scope.selectOptionText = '- Choose Action -';
+    $scope.selectOption = function (param) {
+        $scope.selectOptionText = param;
+    };
+
+    // check all item
+    $scope.checkAll = function (isChecked) {
+
+        $scope.isCheckedAll != isChecked;
+
+        if (!isChecked) {
+            angular.forEach($scope.formData.GroupMasterList, function (item) {
+                item.IsChecked = false;
+            });
+        }
+        else {
+            angular.forEach($scope.formData.GroupMasterList, function (item) {
+                item.IsChecked = true;
+            });
+        }
+
+        $scope.sumMasterSelected();
+    };
+
+    // check once item
+    $scope.checkOnce = function (item, isChecked) {
+
+        if (!isChecked) {
+            item.IsChecked = false;
+        }
+        else {
+            item.IsChecked = true;
+        }
+
+        $scope.sumMasterSelected();
+    };
+
+    $scope.sumMasterSelected = function () {
+
+        var sum = 0;
+
+        angular.forEach($scope.formData.GroupMasterList, function (item) {
+            if (item.IsChecked) {
+                sum++;
+            }
+        });
+
+        return sum;
+    };
+
+
+    // Add Item to list
+    $scope.addCMSMasterItem = function () {
+
+        // open modal
+        $uibModal.open({
+            templateUrl: 'templates/admin-cms-group-add-item.html',
+            size: 'lg',
+            //scope: $scope,
+            controller: ["$scope", "$uibModalInstance", function ($scope, $uibModalInstance) {
+
+                $scope.masters = [];
+
+                $scope.isEmpty = true;
+                $scope.loading = false;
+                $scope.message = 'Empty list.';
+
+                // Search
+                $scope.search = function (searchText) {
+
+                    $scope.loading = true;
+                    $scope.isEmpty = false;
+
+                    var params = {
+                        //SearchBy: $scope.searchBy,
+                        SearchText: $scope.searchText
+                    };
+
+                    // search product
+                    CMSGroupService.searchCMSMaster(params)
+                    .then(function (data) {
+                        console.log(data)
+                        $scope.masters = data;
+                        $scope.isEmpty = false;
+                        $scope.loading = false;
+                        $scope.message = '';
+                    },
+                    function (error) {
+                        $scope.masters = [];
+                        $scope.isEmpty = true;
+                        $scope.loading = false;
+                        $scope.message = 'Not Found CMS Master';
+                    });
+
+                };
+
+                $scope.ok = function () {
+
+                    var itemSelected = [];
+
+                    angular.forEach($scope.masters, function (item) {
+                        if (item.IsChecked) {
+                            itemSelected.push(item);
+                        }
+                    });
+
+                    $uibModalInstance.close(itemSelected);
+                };
+
+                // check all item
+                $scope.checkAll = function (isChecked) {
+
+                    $scope.isCheckedAll != isChecked;
+
+                    if (!isChecked) {
+                        angular.forEach($scope.masters, function (item) {
+                            item.IsChecked = false;
+                        });
+                    }
+                    else {
+                        angular.forEach($scope.masters, function (item) {
+                            item.IsChecked = true;
+                        });
+                    }
+
+                    $scope.sumMasterSelected();
+                };
+
+                // check once item
+                $scope.checkOnce = function (item, isChecked) {
+
+                    if (!isChecked) {
+                        item.IsChecked = false;
+                    }
+                    else {
+                        item.IsChecked = true;
+                    }
+
+                    $scope.sumMasterSelected();
+                };
+
+                $scope.sumMasterSelected = function () {
+
+                    var sum = 0;
+
+                    angular.forEach($scope.masters, function (item) {
+                        if (item.IsChecked) {
+                            sum++;
+                        }
+                    });
+
+                    return sum;
+                };
+                
+            }]
+        })
+        .result.then(function (result) {
+            if ($scope.formData.GroupMasterList === undefined) {
+                $scope.formData.GroupMasterList = [];
+            }
+
+            angular.forEach(result, function (master) {
+                if (!isDuplicateMaster(master.CMSMasterId)) {
+                    master.Sequence = getNewMasterSequence();
+                    $scope.formData.GroupMasterList.push(master);
+                }
+            })
+        });
+    };
+
+    // check product duplicate before add to list
+    function isDuplicateMaster(mId) {
+        var isDuplicate = false;
+        angular.forEach($scope.formData.GroupMasterList, function (master) {
+            if (master.CMSMasterId == mId)
+                isDuplicate = true;
+        });
+
+        return isDuplicate;
+    }
+
+    // gen product seq
+    function getNewMasterSequence() {
+        return $scope.formData.GroupMasterList.length + 1;
+    }
+
+    // remove product item
+    $scope.removeOnceItem = function (index) {
+        $scope.formData.GroupMasterList.splice(index, 1);
+    }
+
+    // remove multiple product
+    $scope.removeMultiItem = function () {
+        for (var i = $scope.formData.GroupMasterList.length - 1; i >= 0; i--) {
+            if ($scope.formData.GroupMasterList[i].IsChecked) {
+                $scope.formData.GroupMasterList.splice(i, 1);
+            }
+        }
+
+        $scope.isCheckedAll = false;
+    }
+
+    // get total product items
+    $scope.getTotalItems = function () {
+        return $scope.formData.GroupMasterList === undefined ? 0 : $scope.formData.GroupMasterList.length;
+    };
+
+    $controller('AbstractAddCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/cms/group',
+            service: CMSGroupService,
+            item: 'CMS Group',
+            order: 'UpdateDate',
+            id: 'CMSGroupId',
+            init: function (scope) {
+
+            },
+            onLoad: function (scope, load) {
+                
+            },
+            onSave: function (scope) {
+
+            }
+        }
+    });
+
+}];
+
+},{}],76:[function(require,module,exports){
+
+module.exports = ["$scope", "$controller", "CMSGroupService", "config", "$rootScope", function ($scope, $controller, CMSGroupService, config, $rootScope) {
+    'ngInject';
+    $scope.CMSview = !$rootScope.permit(61);  
+    $scope.CMSadd = !$rootScope.permit(62);
+    $scope.CMSedit = !$rootScope.permit(63);
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/cms/group',
+            service: CMSGroupService,
+            item: 'CMSGroup',
+            order: 'UpdateOn',
+            id: 'CMSGroupId',
+            actions: ['View', 'Delete'],
+            bulks: ['Delete', 'Show', 'Hide'],
+            filters: [
+				{ name: "All", value: 'All' },
+				{ name: "Approved", value: 'Approved' },
+				{ name: "Not Approved", value: 'NotApproved' },
+				{ name: "Wait For Approved", value: 'WaitForApproved' },
+				{ name: "Draft", value: 'Draft' }
+            ]
+        }
+    });
+    //$scope.statusDropdown = config.PRODUCT_STATUS;
+
+}];
+
+},{}],77:[function(require,module,exports){
+module.exports = ["$scope", "$rootScope", "$controller", "CMSMasterService", "ImageService", "NcAlert", "common", "config", "$uibModal", "$timeout", function ($scope, $rootScope, $controller, CMSMasterService, ImageService, NcAlert, common, config, $uibModal, $timeout) {
+    'ngInject';
+    $scope.CMSadd = !$rootScope.permit(62);
+
+    $scope.alert            = new NcAlert();
+    $scope.formData         = {};
+    $scope.products         = [];
+    $scope.product          = {};
+    $scope.featureProducts  = [];
+    $scope.CategoryList     = [];
+
+    $scope.Schedule = {
+        EffectiveDate: null,
+        ExpiryDate: null,
+        //CategoryList: []
+    };
+
+    $scope.bannerUploader = ImageService.getUploaderFn('/CMS/CMSImage', {
+        data: { Type: 'Banner' }
+    });
+    $scope.bannerOptions = {
+        validateDimensionMin: [1920, 1080],
+        validateDimensionMax: [1920, 1080]
+    };
+
+    $scope.formData         = CMSMasterService.generate();
+    
+    $scope.uploadBannerFail = function (e, response) {
+        // if (e == 'onmaxsize') {
+        //     $scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+        // }
+        // else {
+        //     $scope.alert.error(common.getError(response.data));
+        // }
+        debugger;
+        if(e == 'onmaxsize') {
+            $scope.alert.error('Cannot exceed 8 images');
+        }
+        else if(e == 'ondimension') {
+            $scope.alert.error('Image must be 1920x1080 pixels');
+        }
+        else if(e == 'onfilesize') {
+            $scope.alert.error('Each image file size must not exceed 5MB')
+        }
+        else {
+            $scope.alert.error(common.getError(response.data));
+        }
+    };
+
+    var sortableEle;
+
+    $scope.dragStart = function (e, ui) {
+        ui.item.data('start', ui.item.index());
+    }
+    $scope.dragEnd = function (e, ui) {
+        var start = ui.item.data('start'),
+            end = ui.item.index();
+
+         $scope.CategoryList.splice(end, 0,
+             $scope.CategoryList.splice(start, 1)[0]);
+
+        $scope.$apply();
+
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+
+    }
+
+    sortableEle = $('#sortable').sortable({
+        start: $scope.dragStart,
+        update: $scope.dragEnd
+    });
+
+    $scope.moveUp = function (start, end) {
+
+        // swap object
+         $scope.CategoryList.splice(end, 0,
+            $scope.CategoryList.splice(start, 1)[0]);
+
+        // update seq
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+    };
+
+    $scope.moveDown = function (start, end) {
+
+        // swap object
+         $scope.CategoryList.splice(end, 0,
+            $scope.CategoryList.splice(start, 1)[0]);
+
+        // update seq
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+    };
+
+    // update sequence
+    function updateSequence() {
+
+        var seq = 0;
+
+        angular.forEach( $scope.CategoryList, function (item) {
+            seq++;
+            item.Sequence = seq;
+        });
+    }
+
+    $scope.selectOptionText = '- Choose Action -';
+    $scope.selectOption = function (param) {
+        $scope.selectOptionText = param;
+    };
+
+    // check all item
+    $scope.checkAll = function (isChecked) {
+
+        $scope.isCheckedAll != isChecked;
+
+        if (!isChecked) {
+            angular.forEach( $scope.CategoryList, function (item) {
+                item.IsChecked = false;
+            });
+        }
+        else {
+            angular.forEach( $scope.CategoryList, function (item) {
+                item.IsChecked = true;
+            });
+        }
+
+        $scope.sumCategorySelected();
+    };
+
+    // check once item
+    $scope.checkOnce = function (item, isChecked) {
+
+        if (!isChecked) {
+            item.IsChecked = false;
+        }
+        else {
+            item.IsChecked = true;
+        }
+
+        $scope.sumCategorySelected();
+    };
+
+    $scope.sumCategorySelected = function () {
+
+        var sum = 0;
+
+        angular.forEach( $scope.CategoryList, function (item) {
+            if (item.IsChecked) {
+                sum++;
+            }
+        });
+
+        return sum;
+    };
+
+    $('#add_cms_master_body ul.nav li').click(function () {
+
+        var index = $('#add_cms_master_body ul.nav li').index(this);
+
+        if (index != 1) {
+            $('#collections').hide();
+        }
+        else {
+            $('#collections').show();
+        }
+    });
+
+    $scope.typeChanged = function (type) {
+
+        if (type == 'ST') {
+            $('#collections').hide();
+            $('#add_cms_master_body ul.nav li:nth-child(2)').hide();
+            $scope.formData.CMSMasterType = 'ST';
+        }
+        else {
+            $('#add_cms_master_body ul.nav li:nth-child(2)').show();
+            $scope.formData.CMSMasterType = 'CT';
+        }
+    };
+
+    $scope.$watch('formData.CMSMasterURLKey', function (newVal, oldVal) {
+        if (newVal === undefined)
+            return;
+
+        $scope.formData.CMSMasterLink = 'http://www.thecentral.com/collections/' + newVal;
+    });
+
+    $scope.copyFieldValue = function(e, id) {
+        var field = document.getElementById(id)
+        field.focus()
+        field.setSelectionRange(0, field.value.length)
+        var copySuccess = copySelectionText()
+        if (copySuccess) {
+            showTooltip(e)
+        }
+    }
+
+    function copySelectionText() {
+        var copysuccess;
+        try {
+            copysuccess = document.execCommand("copy");
+        } catch (e) {
+            copysuccess = false
+        }
+        return copysuccess
+    }
+
+    var tooltip, // global variables oh my! Refactor when deploying!
+	hidetooltiptimer
+
+    function createTooltip() { // call this function ONCE at the end of page to create tool tip object
+        tooltip = document.createElement('div')
+        tooltip.style.cssText =
+            'position:absolute; background:black; color:white; padding:4px;z-index:10000;'
+            + 'border-radius:2px; font-size:12px;box-shadow:3px 3px 3px rgba(0,0,0,.4);'
+            + 'opacity:0;transition:opacity 0.3s'
+        tooltip.innerHTML = 'Copied!'
+        document.body.appendChild(tooltip)
+    }
+
+    function showTooltip(e) {
+        var evt = e || event
+        clearTimeout(hidetooltiptimer)
+        tooltip.style.left = evt.pageX - 10 + 'px'
+        tooltip.style.top = evt.pageY + 15 + 'px'
+        tooltip.style.opacity = 1
+        hidetooltiptimer = setTimeout(function () {
+            tooltip.style.opacity = 0
+        }, 500)
+    }
+
+    createTooltip();
+
+
+    // add category to collection
+    $scope.addCategoryItem = function () {
+
+        $uibModal.open({
+            templateUrl: 'templates/admin-cms-master-add-item.html',
+            size: 'lg',
+            controller: ["$scope", "$uibModalInstance", function ($scope, $uibModalInstance) {
+
+                $scope.categories = [];
+
+                $scope.isEmpty = true;
+                $scope.loading = false;
+                $scope.message = 'Empty list.';
+
+                // Search
+                $scope.search = function (searchText) {
+
+                    $scope.loading = true;
+                    $scope.isEmpty = false;
+
+                    var params = {
+                        SearchText: $scope.searchText
+                    };
+
+                    // search product
+                    CMSMasterService.searchCMSCategory(params)
+                    .then(function (data) {
+                        console.log(data)
+                        $scope.categories = data;
+                        $scope.isEmpty = false;
+                        $scope.loading = false;
+                        $scope.message = '';
+                    },
+                    function (error) {
+                        $scope.categories = [];
+                        $scope.isEmpty = true;
+                        $scope.loading = false;
+                        $scope.message = 'Not Found CMS Category';
+                    });
+
+                };
+
+                $scope.ok = function () {
+
+                    var itemSelected = [];
+
+                    angular.forEach($scope.categories, function (item) {
+                        if (item.IsChecked) {
+                            itemSelected.push(item);
+                        }
+                    });
+
+                    $uibModalInstance.close(itemSelected);
+                };
+
+                // check all item
+                $scope.checkAll = function (isChecked) {
+
+                    $scope.isCheckedAll != isChecked;
+
+                    if (!isChecked) {
+                        angular.forEach($scope.categories, function (item) {
+                            item.IsChecked = false;
+                        });
+                    }
+                    else {
+                        angular.forEach($scope.categories, function (item) {
+                            item.IsChecked = true;
+                        });
+                    }
+
+                    $scope.sumCategorySelected();
+                };
+
+                // check once item
+                $scope.checkOnce = function (item, isChecked) {
+
+                    if (!isChecked) {
+                        item.IsChecked = false;
+                    }
+                    else {
+                        item.IsChecked = true;
+                    }
+
+                    $scope.sumCategorySelected();
+                };
+
+                $scope.sumCategorySelected = function () {
+
+                    var sum = 0;
+
+                    angular.forEach($scope.categories, function (item) {
+                        if (item.IsChecked) {
+                            sum++;
+                        }
+                    });
+
+                    return sum;
+                };
+            }]
+        })
+        .result.then(function (result) {
+
+            if ( $scope.CategoryList === undefined) {
+                 $scope.CategoryList = [];
+            }
+
+            if ($scope.formData.ScheduleList === undefined) {
+                $scope.formData.ScheduleList = [];
+            }
+
+            angular.forEach(result, function (category) {
+                if (!isDuplicateCategory(category.CMSCategoryId)) {
+                    category.Sequence = getNewCategorySequence();
+                     $scope.CategoryList.push(category);
+                }
+            })
+
+        });
+    };
+
+    // check product duplicate before add to list
+    function isDuplicateCategory(cId) {
+        var isDuplicate = false;
+        angular.forEach( $scope.CategoryList, function (category) {
+            if (category.CMSCategoryId == cId)
+                isDuplicate = true;
+        });
+
+        return isDuplicate;
+    }
+
+    // gen category seq
+    function getNewCategorySequence() {
+        return  $scope.CategoryList.length + 1;
+    }
+
+    // remove product item
+    $scope.removeOnceItem = function (index) {
+         $scope.CategoryList.splice(index, 1);
+    }
+
+    // remove multiple product
+    $scope.removeMultiItem = function () {
+        for (var i =  $scope.CategoryList.length - 1; i >= 0; i--) {
+            if ( $scope.CategoryList[i].IsChecked) {
+                 $scope.CategoryList.splice(i, 1);
+            }
+        }
+
+        $scope.isCheckedAll = false;
+    }
+
+    // get total product items
+    $scope.getTotalItems = function () {
+        return  $scope.CategoryList === undefined ? 0 :  $scope.CategoryList.length;
+    };
+
+    // load product
+    CMSMasterService.searchProduct({ SearchBy: 'ProductName' })
+    .then(function (data) {
+        console.log(data)
+        $scope.products = data;
+    });
+
+    // search product
+    $('#form-master :input[type=text]').keyup(function () {
+
+        var val = $(this).val();
+        console.log(val)
+        var param = {
+            SearchText: val,
+            CMSCategoryIds: getCMSCategoryIds($scope.CategoryList)
+        };
+
+        CMSMasterService.searchProduct(param)
+        .then(function (data) {
+            $scope.products = data;
+        });
+    });
+
+    
+    function getCMSCategoryIds(categories) {
+        var ids = [];
+        angular.forEach(categories, function (c) {
+            ids.push(c.CMSCategoryId);
+        });
+        return ids;
+    }
+        
+    // when select product
+    $scope.$watch('product.selected', function (newValue, oldValue) {
+        if (newValue === undefined || newValue == oldValue)
+            return;
+
+        console.log(newValue)
+        angular.forEach(newValue, function(item){
+            var featureProduct = {
+                ProductId: item.Pid,
+                CMSMasterId: $scope.formData.CMSMasterId
+            };
+
+            if (!isDuplicationPid(item.Pid)) {
+                $scope.featureProducts.push(featureProduct);
+            }
+        });
+        
+    });
+
+    function isDuplicationPid(pid) {
+        var isDuplication = false;
+        angular.forEach($scope.featureProducts, function (item) {
+            if (item.ProductId === pid) {
+                isDuplication = true;
+            }
+        });
+        return isDuplication;
+    }
+
+    $controller('AbstractAddCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/cms/master',
+            service: CMSMasterService,
+            item: 'CMS Master',
+            order: 'UpdateDate',
+            id: 'CMSMasterId',
+            init: function (scope) {
+
+            },
+            onLoad: function (scope, load) {
+                
+                $scope.Schedule             = scope.formData.ScheduleList[0];
+                $scope.featureProducts      = scope.formData.FeatureProductList;
+                $scope.CategoryList         = scope.formData.CategoryList;
+                setProducts(getProductIds($scope.featureProducts));
+
+
+                if (scope.formData.CMSMasterType == 'ST') {
+                    $('#collections').hide();
+                    $('#add_cms_master_body ul.nav li:nth-child(2)').hide();
+                }
+                else {
+                    $('#add_cms_master_body ul.nav li:nth-child(2)').show();
+                }
+
+                $scope.product = {};
+
+                function setProducts(params) {
+                    CMSMasterService.searchProduct({ ProductIds: params })
+                    .then(function (data) {
+                        console.log(data)
+                        $scope.products = data;
+                        $scope.product.selected = data;
+                    });
+                }
+
+                function getProductIds(featureProducts) {
+                    var ids = [];
+                    angular.forEach(featureProducts, function (p) {
+                        ids.push(p.ProductId);
+                    });
+                    return ids;
+                }
+
+            },
+            onSave: function (scope) {
+                if ($scope.formData.ScheduleList === undefined)
+                    $scope.formData.ScheduleList = [];
+
+                if ($scope.formData.FeatureProductList === undefined || $scope.formData.FeatureProductList == null)
+                    $scope.formData.FeatureProductList = [];
+
+                if ($scope.formData.CategoryList === undefined || $scope.formData.CategoryList == null)
+                    $scope.formData.CategoryList = [];
+
+                $scope.formData.FeatureProductList = $scope.featureProducts;
+                $scope.formData.ScheduleList.push($scope.Schedule);
+                $scope.formData.CategoryList = $scope.CategoryList;
+            }
+        }
+    });
+}];
+
+},{}],78:[function(require,module,exports){
+module.exports = ["$scope", "$rootScope", "$controller", "common", "CMSMasterService", "util", "$window", "$rootScope", "config", "storage", function ($scope, $rootScope, $controller, common, CMSMasterService, util, $window, $rootScope, config, storage) {
+    'ngInject';
+    $scope.CMSview = !$rootScope.permit(61);  
+    $scope.CMSadd = !$rootScope.permit(62);
+    $scope.CMSedit = !$rootScope.permit(63);
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/cms/master',
+            service: CMSMasterService,
+            item: 'CMSMaster',
+            order: 'CMSMasterId',
+            id: 'CMSMasterId',
+            actions: [
+                'View',
+                'Delete',
+                'Approve'
+            ],
+            bulks: [
+                'Delete',
+                'Hide',
+                'Show'
+            ],
+            filters: [
+                { name: "All", value: 'All' },
+                { name: "Approved", value: 'Approved' },
+                { name: "Not Approved", value: 'NotApproved' },
+                { name: "Wait for Approval", value: 'WaitforApproval' }
+            ]
+        }
+    });
+    $scope.showOnOffStatus = {};
+    $scope.showOnOffStatus.value = true;
+    $scope.statusLookup = {};
+    $scope.advanceSearchOptions.Admin = false;
+
+    config.PRODUCT_STATUS.forEach(function(object){
+       $scope.statusLookup[object.value] = object;
+    });
+
+    $scope.asStatus = function (ab) {
+        return $scope.statusLookup[ab];
+    };
+    $scope.getTag = function(tags) {
+        return _.join(tags, ', ');
+    }
+
+    var fromImport = storage.get('import.success');
+
+    if(!_.isEmpty(fromImport)) {
+        storage.remove('import.success');
+        $scope.alert.success(fromImport);
+    }
+}];
+
+},{}],79:[function(require,module,exports){
 module.exports = ["$scope", "$rootScope", "$controller", "SellerCouponService", "config", function($scope, $rootScope, $controller, SellerCouponService, config) {
   'ngInject';
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
@@ -9959,9 +11521,8 @@ module.exports = ["$scope", "$rootScope", "$controller", "SellerCouponService", 
   });
 }]
 
-},{}],73:[function(require,module,exports){
-module.exports = ["$scope", "$rootScope", "$controller", "SellerCouponService", "LocalCategoryService", "Category", "config", "Category", function($scope, $rootScope, $controller, SellerCouponService, LocalCategoryService, Category, config, Category) {
-  'ngInject';
+},{}],80:[function(require,module,exports){
+module.exports = function($scope, $rootScope, $controller, SellerCouponService, LocalCategoryService, Category, config, Category) {
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
   $scope.filters = config.DROPDOWN.COUPON_SELLER_FILTER;
@@ -9988,8 +11549,8 @@ module.exports = ["$scope", "$rootScope", "$controller", "SellerCouponService", 
     }
   });
 
-}];
-},{}],74:[function(require,module,exports){
+};
+},{}],81:[function(require,module,exports){
 
 module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$filter", "storage", "$window", "$uibModal", "NewsletterService", function($scope, $rootScope, Dashboard, $log, $filter, storage, $window, $uibModal, NewsletterService){
 	'ngInject';
@@ -10395,7 +11956,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$filter", "stora
 
 }];
 
-},{}],75:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 module.exports = ["$scope", "$rootScope", "$controller", "$window", "InventoryService", "config", "common", "storage", function($scope, $rootScope, $controller, $window, InventoryService, config, common, storage) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
@@ -10491,7 +12052,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "$window", "InventorySe
 	$scope.statusDropdown = config.INVENTORY_STATUS;
 }];
 
-},{}],76:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", function($scope, $controller, $uibModal, NewsletterService) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -10523,7 +12084,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", fun
 			});
 	};
 }];
-},{}],77:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 
 module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "storage", "$window", function($scope, $rootScope, Onboarding, $log, storage, $window){
 	'ngInject';
@@ -10632,7 +12193,7 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "storage", "$win
     $scope.load();
 }];
 
-},{}],78:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 module.exports = ["$scope", "$window", "$controller", "OrderService", "config", "storage", "common", function($scope, $window, $controller, OrderService, config, storage, common) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -10776,9 +12337,8 @@ module.exports = ["$scope", "$window", "$controller", "OrderService", "config", 
 	$scope.status = config.ORDER_STATUS;
 }]
 
-},{}],79:[function(require,module,exports){
-module.exports = ["$scope", "$window", "$filter", "$controller", "OrderService", "util", "config", "$uibModal", function($scope, $window, $filter, $controller, OrderService, util, config, $uibModal) {
-  'ngInject';
+},{}],86:[function(require,module,exports){
+module.exports = function($scope, $window, $filter, $controller, OrderService, util, config, $uibModal) {
   $scope.status = config.ORDER_STATUS;
   $scope.addressIter = [1,2,3,4]; //Amount of AddressX (ie, Address1, Address2)
   //Abstract Add Ctrl
@@ -10946,10 +12506,9 @@ module.exports = ["$scope", "$window", "$filter", "$controller", "OrderService",
   $scope.getInvoiceState = function() {
     return !( $scope.formData.ShippingType == 'BU Dropship' || $scope.formData.ShippingType == 'COL Fulfillment' );
   };
-}];
-},{}],80:[function(require,module,exports){
-module.exports = ["$scope", "$window", "storage", function($scope, $window, storage) {
-	'ngInject';
+};
+},{}],87:[function(require,module,exports){
+module.exports = function($scope, $window, storage) {
 	$scope.orders = [];
 	$scope.cancel = function() {
 		$window.location.href = '/orders';
@@ -10961,8 +12520,8 @@ module.exports = ["$scope", "$window", "storage", function($scope, $window, stor
 	} else {
 		$window.location.href = '/orders';
 	}
-}];
-},{}],81:[function(require,module,exports){
+};
+},{}],88:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ["$scope", "$controller", "storage", function($scope, $controller, storage) {
@@ -11025,7 +12584,7 @@ module.exports = ["$scope", "$controller", "storage", function($scope, $controll
 
 }];
 
-},{"angular":314}],82:[function(require,module,exports){
+},{"angular":329}],89:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", function($scope, $controller, Product) {
 	'ngInject';
     
@@ -11036,7 +12595,7 @@ module.exports = ["$scope", "$controller", "Product", function($scope, $controll
 
 }]
 
-},{}],83:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerCouponService", "config", function($scope, $controller, SellerCouponService, config) {
   'ngInject';
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
@@ -11053,7 +12612,7 @@ module.exports = ["$scope", "$controller", "SellerCouponService", "config", func
   });
 }]
 
-},{}],84:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 module.exports = ["$scope", "$window", "$controller", "$uibModal", "ReturnRequestService", "config", function($scope, $window, $controller, $uibModal, ReturnRequestService, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -11108,7 +12667,7 @@ module.exports = ["$scope", "$window", "$controller", "$uibModal", "ReturnReques
 	};
 }]
 
-},{}],85:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "ReturnRequestService", "util", "config", function($scope, $controller, ReturnRequestService, util, config) {
 	'ngInject';
 	$controller('AbstractAddCtrl', {
@@ -11171,7 +12730,7 @@ module.exports = ["$scope", "$controller", "ReturnRequestService", "util", "conf
 		}
 	}
 }];
-},{}],86:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerRoleService", "config", function($scope, $controller, SellerRoleService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -11187,7 +12746,7 @@ module.exports = ["$scope", "$controller", "SellerRoleService", "config", functi
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-},{}],87:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerRoleService", "SellerPermissionService", "PermissionService", "util", function($scope, $controller, SellerRoleService, SellerPermissionService, PermissionService, util) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -11256,7 +12815,7 @@ module.exports = ["$scope", "$controller", "SellerRoleService", "SellerPermissio
 		});
 	};
 }];
-},{"circular-json":315}],88:[function(require,module,exports){
+},{"circular-json":330}],95:[function(require,module,exports){
 module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", "NcAlert", "config", "util", "common", "$timeout", "$q", function($scope, ShopAppearanceService, Product, ImageService, NcAlert, config, util, common, $timeout, $q) {
 	'ngInject';
 	$scope.form = {};
@@ -11383,19 +12942,14 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 					$scope.saving = false;
 				});
 		} else {
-			//Form id	
+			//Form id
 			$scope.alert.error(util.saveAlertError());
 		}
 	}
-	$scope.uploadFail = function(e, arg1, arg2, arg3) {
+	$scope.uploadFail = function(e, arg1, arg2) {
 		$scope.alert.close();
 		if(e == 'ondimension') {
-			if(arg3) {
-				$scope.alert.error('Image width must be greater than ' + arg2 + ' pixels');
-			}
-			else {
-				$scope.alert.error('Image must be ' + arg2[0] + 'x' + arg2[1] + ' pixels');
-			}
+			$scope.alert.error('Image must be ' + arg2[0] + 'x' + arg2[1] + ' pixels');
 		}
 		else {
 			$scope.alert.error('<strong>Fail to upload photo</strong><br>' + common.getError(arg1.data));
@@ -11403,9 +12957,8 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 	};
 }];
 
-},{}],89:[function(require,module,exports){
-module.exports = ["$rootScope", "$scope", "$controller", "ShopService", "ShopProfileService", "ImageService", "Onboarding", "NcAlert", "common", "config", "util", "storage", function($rootScope, $scope, $controller, ShopService, ShopProfileService, ImageService, Onboarding, NcAlert, common, config, util, storage) {
-	'ngInject';
+},{}],96:[function(require,module,exports){
+module.exports = function($rootScope, $scope, $controller, ShopService, ShopProfileService, ImageService, Onboarding, NcAlert, common, config, util, storage) {
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 	$scope.shopGroupDropdown = config.DROPDOWN.SHOP_GROUP_DROPDOWN;
 	$scope.form = {};
@@ -11519,7 +13072,7 @@ module.exports = ["$rootScope", "$scope", "$controller", "ShopService", "ShopPro
 					$scope.formData = ShopProfileService.deserialize(data);
 					$rootScope.Profile.Shop = $scope.formData;
 					storage.storeCurrentUserProfile($rootScope.Profile);
-					$scope.alert.success('Your changes has been saved successfully.');
+					$scope.alert.success('Successfully Saved.');
 					$scope.form.$setPristine(true);
 				}, function(err) {
 					$scope.alert.error(common.getError(err));
@@ -11548,9 +13101,283 @@ module.exports = ["$rootScope", "$scope", "$controller", "ShopService", "ShopPro
 				$scope.alert.error(common.getError(err.data));
 			});
 	};
+};
+
+},{}],97:[function(require,module,exports){
+
+module.exports = ["$scope", "$controller", "StdReportOnHoldService", "config", "util", function ($scope, $controller, StdReportOnHoldService, config, util) {
+    'ngInject';
+    $scope.formData = {
+        PID: null,
+        ItemName: null,
+        OrderDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        OrderDateTo: new Date()
+    };
+
+    var params = $scope.formData;
+
+    $scope.search = function () {
+        StdReportStockService.getStockReport(params)
+        .then(function (data) {
+            $scope.list.data = data;
+        });
+
+    };
+    $scope.exportCsv = function () {
+        StdReportOnHoldService.exportCsv(params)
+        .then(function (data) {
+
+            util.csv(data, 'STDOnHold.csv');
+
+        })
+    };
+
+    $scope.resetSearch = function () {
+        $scope.formData.PID = null;
+        $scope.formData.ItemName = null;
+        $scope.formData.OrderDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
+        $scope.formData.OrderDateTo = new Date();
+
+    };
+
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/reports/std/onhold',
+            service: StdReportOnHoldService,
+            item: 'OnHoldReport',
+            order: 'OrderId',
+            id: 'OrderId',
+            actions: ['View', 'Delete'],
+            bulks: ['Delete', 'Show', 'Hide'],
+            filters: [
+				{ name: "All", value: 'All' },
+				{ name: "Approved", value: 'Approved' },
+				{ name: "Not Approved", value: 'NotApproved' },
+				{ name: "Wait For Approved", value: 'WaitForApproved' },
+				{ name: "Draft", value: 'Draft' }
+            ]
+        }
+    });
+
 }];
 
-},{}],90:[function(require,module,exports){
+},{}],98:[function(require,module,exports){
+
+module.exports = ["$scope", "$controller", "StdReportReturnService", "config", "util", function ($scope, $controller, StdReportReturnService, config, util) {
+    'ngInject';
+    $scope.formData = {
+        OrderId: null,
+        PID: null,
+        ItemName: null,
+        ItemStatus: null,
+        ReturnDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        ReturnDateTo: new Date()
+    };
+    var params = $scope.formData;
+
+    $scope.exportCsv = function () {
+        StdReportReturnService.exportCsv(params)
+        .then(function (data) {
+
+            util.csv(data, 'STDReturn.csv');
+
+        })
+    };
+
+    $scope.search = function () {
+        StdReportSaleService.getReturnReport(params)
+        .then(function (data) {
+            $scope.list.data = data;
+        });
+
+    };
+
+
+    $scope.resetSearch = function () {
+
+        $scope.formData.OrderId = null;
+        $scope.formData.PID = null;
+        $scope.formData.ItemName = null;
+        $scope.formData.ItemStatus = null;
+        $scope.formData.ReturnDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
+        $scope.formData.ReturnDateTo = new Date();
+
+    };
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/reports/std/return',
+            service: StdReportReturnService,
+            item: 'ReturnReport',
+            order: 'OrderId',
+            id: 'OrderId',
+            actions: ['View', 'Delete'],
+            bulks: ['Delete', 'Show', 'Hide'],
+            filters: [
+				{ name: "All", value: 'All' },
+				{ name: "Approved", value: 'Approved' },
+				{ name: "Not Approved", value: 'NotApproved' },
+				{ name: "Wait For Approved", value: 'WaitForApproved' },
+				{ name: "Draft", value: 'Draft' }
+            ]
+        }
+    });
+
+}];
+
+},{}],99:[function(require,module,exports){
+
+module.exports = ["$scope", "$controller", "StdReportSaleService", "config", "util", function ($scope, $controller, StdReportSaleService, config, util) {
+    'ngInject';
+    $scope.formData = {
+        PID: null,
+        Brands: null,
+        ItemStatus: null,
+        GlobalCategoryId: null,
+        BrandId: null,
+        OrderDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        OrderDateTo: new Date()
+    };
+
+
+    $scope.categorys = [];
+    $scope.brands = [];
+    StdReportSaleService.getAllCategory({})
+                .then(function (data) {
+                    $scope.categorys = data;
+                });
+    $scope.$watch('formData.GlobalCategoryId', function (newValue, oldValue) {
+        if (newValue === undefined)
+            return;
+        // get brand by category id
+        StdReportSaleService.getBrand(newValue)
+                    .then(function (data) {
+                        $scope.brands = data;
+                    });
+
+    });
+
+    $scope.$watch('formData.BrandId', function (newValue, oldValue) {
+        if (newValue === undefined)
+            return;
+
+    });
+
+    var params = $scope.formData;
+
+    $scope.search = function () {
+        StdReportSaleService.getSaleReport(params)
+        .then(function (data) {
+            debugger;
+            $scope.list = data
+            //$scope.list.data.total($scope.list.data.length);
+            $scope.list.reload();
+        });
+
+    };
+
+
+    $scope.exportCsv = function () {
+        //debugger;
+
+        StdReportSaleService.exportCsv(params)
+        .then(function (data) {
+
+            util.csv(data, 'STDSale.csv');
+
+        })
+    };
+
+    $scope.resetSearch = function () {
+        $scope.categorys = [];
+        $scope.brands = [];
+        $scope.formData.PID = null;
+        $scope.formData.Brands = null;
+        $scope.formData.ItemStatus = null;
+        $scope.formData.OrderDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
+        $scope.formData.OrderDateTo = new Date();
+
+    };
+
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/reports/std/saleforseller',
+            service: StdReportSaleService,
+            item: 'SaleReportForSeller',
+            order: 'PID',
+            id: 'PID'
+
+
+        }
+    });
+
+}];
+
+},{}],100:[function(require,module,exports){
+
+module.exports = ["$scope", "$controller", "StdReportStockService", "config", "util", function ($scope, $controller, StdReportStockService, config, util) {
+    'ngInject';
+    $scope.formData = {
+        Pid: null,
+        ProductName: null,
+        variant: null,
+        LastSoldDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        LastSoldDateTo: new Date()
+    };
+
+
+    var params = $scope.formData;
+
+    $scope.search = function () {
+        StdReportStockService.getStockReport(params)
+        .then(function (data) {
+            $scope.list.data = data;
+        });
+
+    };
+    $scope.exportCsv = function () {
+        debugger;
+        StdReportStockService.exportCsv(params)
+        .then(function (data) {
+
+            util.csv(data, 'STDStock.csv');
+
+        })
+    };
+
+    $scope.resetSearch = function () {
+        $scope.formData.Pid = null;
+        $scope.formData.ProductName = null;
+        $scope.formData.variant = null;
+        $scope.formData.LastSoldDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
+        $scope.formData.LastSoldDateTo = new Date();
+    };
+
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/reports/std/stockstatus',
+            service: StdReportStockService,
+            item: 'StockStatusReport',
+            order: 'PID',
+            id: 'PID',
+            actions: ['View', 'Delete'],
+            bulks: ['Delete', 'Show', 'Hide'],
+            filters: [
+				{ name: "All", value: 'All' },
+				{ name: "Approved", value: 'Approved' },
+				{ name: "Not Approved", value: 'NotApproved' },
+				{ name: "Wait For Approved", value: 'WaitForApproved' },
+				{ name: "Draft", value: 'Draft' }
+            ]
+        }
+    });
+
+}];
+
+},{}],101:[function(require,module,exports){
 module.exports = ["$scope", "Product", function($scope, Product) {
     'ngInject';
 
@@ -11600,7 +13427,7 @@ module.exports = ["$scope", "Product", function($scope, Product) {
 
 }]
 
-},{}],91:[function(require,module,exports){
+},{}],102:[function(require,module,exports){
 module.exports = ["$templateCache", "$filter", function($templateCache, $filter) {
 	'ngInject';
 	return {
@@ -11697,7 +13524,7 @@ module.exports = ["$templateCache", "$filter", function($templateCache, $filter)
 	};
 }];
 
-},{}],92:[function(require,module,exports){
+},{}],103:[function(require,module,exports){
 module.exports = [function () {
     return {
         priority: 1010,
@@ -11731,7 +13558,7 @@ module.exports = [function () {
     };
 }];
 
-},{}],93:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return {
@@ -11764,7 +13591,7 @@ module.exports = function() {
 		}
 	}
 }
-},{}],94:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 var angular = require('angular');
 module.exports = [function() {
 	'use strict';
@@ -11786,7 +13613,7 @@ module.exports = [function() {
 		}
 	};
 }];
-},{"angular":314}],95:[function(require,module,exports){
+},{"angular":329}],106:[function(require,module,exports){
 module.exports = function () {
     'ngInject';
     return function (scope, element, attrs) {
@@ -11801,7 +13628,7 @@ module.exports = function () {
         });
     };
 };
-},{}],96:[function(require,module,exports){
+},{}],107:[function(require,module,exports){
 module.exports = ["$parse", function ($parse) {
     'ngInject';
     return {
@@ -11823,7 +13650,7 @@ module.exports = ["$parse", function ($parse) {
       }
     };
 }];
-},{}],97:[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 module.exports = ["$interpolate", function($interpolate) {
 	'ngInject';
 	return {
@@ -11845,7 +13672,7 @@ module.exports = ["$interpolate", function($interpolate) {
 		}
 	}
 }]
-},{}],98:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return {
@@ -11871,7 +13698,7 @@ module.exports = function() {
 		}
 	}
 }
-},{}],99:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return {
@@ -11897,7 +13724,7 @@ module.exports = function() {
 		}
 	}
 }
-},{}],100:[function(require,module,exports){
+},{}],111:[function(require,module,exports){
 /*jslint browser: true, plusplus: true, indent: 2 */
 
 // This will be removed by uglify, along with the DEBUG code
@@ -12192,7 +14019,7 @@ angular.module('ngPatternRestrict', [])
       }
     };
   }]);
-},{}],101:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 module.exports = ["$rootScope", "$parse", "$animate", function($rootScope, $parse, $animate) {
   'ngInject';
   return {
@@ -12258,7 +14085,7 @@ module.exports = ["$rootScope", "$parse", "$animate", function($rootScope, $pars
     }
   }
 }];
-},{}],102:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 module.exports = function() {
     'ngInject';
     return {
@@ -12275,7 +14102,7 @@ module.exports = function() {
         }
     };
 };
-},{}],103:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownException', function ($templateCache, $compile, $templateOptionsCache, KnownException) {
     var originalAttr = {};
@@ -12303,7 +14130,7 @@ module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownE
         }
     };
 }];
-},{"angular":314}],104:[function(require,module,exports){
+},{"angular":329}],115:[function(require,module,exports){
 module.exports = ["$parse", function ($parse) {
     'ngInject';
     return {
@@ -12325,7 +14152,7 @@ module.exports = ["$parse", function ($parse) {
       }
     };
 }];
-},{}],105:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$document', '$window', function($document, $window) {
 	$window._globalPopoverAny = null;
@@ -12355,7 +14182,7 @@ module.exports = ['$document', '$window', function($document, $window) {
 		}
 	};
 }];
-},{"angular":314}],106:[function(require,module,exports){
+},{"angular":329}],117:[function(require,module,exports){
 module.exports = [function() {
   return function(input, scope) {
     if (input!=null)
@@ -12363,7 +14190,7 @@ module.exports = [function() {
     return input.substring(0,1).toUpperCase()+input.substring(1);
   }
 }];
-},{}],107:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = [function() {
@@ -12398,7 +14225,7 @@ module.exports = [function() {
      });
   }
 }];
-},{"angular":314}],108:[function(require,module,exports){
+},{"angular":329}],119:[function(require,module,exports){
 module.exports = [function() {
   
 var search = function(catId, tmp) {
@@ -12467,14 +14294,14 @@ return function(arr, other, include) {
     return arr;
   }
 }];
-},{}],109:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 module.exports = [function(){
    return function(data) {
 	   if (!data) return data;
 	   return data.replace(/\n\r?/g, '<br />');
  };
 }]
-},{}],110:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 module.exports = function() {
 	return function(input) {
 		var result = '<ul>';
@@ -12491,7 +14318,7 @@ module.exports = function() {
 		return result;
 	}
 };
-},{}],111:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return function(str, num) {
@@ -12512,7 +14339,7 @@ module.exports = function() {
 		return result;
 	}
 };
-},{}],112:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = [function() {
@@ -12528,7 +14355,7 @@ module.exports = [function() {
   	return input;
   }
 }];
-},{"angular":314}],113:[function(require,module,exports){
+},{"angular":329}],124:[function(require,module,exports){
 
 module.exports = [function() {
     return function (items, props) {
@@ -12560,7 +14387,7 @@ module.exports = [function() {
         return out;
     }
 }];
-},{}],114:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 /*
  * Get slice or subarray of array
  */
@@ -12576,7 +14403,7 @@ module.exports = [function() {
     return _.slice(arr, from, to);
   }
 }];
-},{}],115:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 module.exports = [function () {
     return function (data) {
         if (!data) return data;
@@ -12592,7 +14419,7 @@ module.exports = [function () {
         return ret;
     };
 }]
-},{}],116:[function(require,module,exports){
+},{}],127:[function(require,module,exports){
 module.exports = [function () {
         return function (text, length, end) {
             if (isNaN(length))
@@ -12610,7 +14437,7 @@ module.exports = [function () {
 
         };
 }];
-},{}],117:[function(require,module,exports){
+},{}],128:[function(require,module,exports){
 var angular = require('angular');
 
 /*
@@ -12633,7 +14460,7 @@ module.exports = [function() {
      return i;
   }
 }];
-},{"angular":314}],118:[function(require,module,exports){
+},{"angular":329}],129:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return function(value) {
@@ -12642,7 +14469,7 @@ module.exports = function() {
 		}), ' / ');
 	};
 };
-},{}],119:[function(require,module,exports){
+},{}],130:[function(require,module,exports){
 module.exports = [function () {
     'use strict';
     var service = {};
@@ -12661,7 +14488,7 @@ module.exports = [function () {
     };
     return service;
 }];
-},{}],120:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 module.exports = ["$http", "$q", "storage", "config", "$window", function ($http, $q, storage, config, $window) {
     'ngInject';
         var service = {};
@@ -12695,6 +14522,13 @@ module.exports = ["$http", "$q", "storage", "config", "$window", function ($http
 
                     $http(options)
                     .success(function (data) {
+                        //IN production, remove this on-success
+                        // if(_.has(options, 'rollbar')){
+                        //     Rollbar.log(options.rollbar, {
+                        //         'curl': curlCmd
+                        //     });
+                        // }
+
                         deferred.resolve(data);
                     })
                     .error(function (data, status, headers, config) {
@@ -12719,6 +14553,13 @@ module.exports = ["$http", "$q", "storage", "config", "$window", function ($http
                                 storage.clear();
                                 
                                 $window.location.href = "/login";
+                            }
+
+
+                            if(_.has(options, 'rollbar')){
+                                Rollbar.error(options.rollbar, {
+                                    'curl': curlCmd
+                                });
                             }
 
                             deferred.reject(data || {"error": "Unknown error"});
@@ -12873,7 +14714,7 @@ module.exports = ["$http", "$q", "storage", "config", "$window", function ($http
         return service;
 }];
 
-},{}],121:[function(require,module,exports){
+},{}],132:[function(require,module,exports){
 module.exports = ["$cookies", function ($cookies) {
     'ngInject';
     var service = {};
@@ -13008,7 +14849,7 @@ module.exports = ["$cookies", function ($cookies) {
     return service;
 }];
 
-},{}],122:[function(require,module,exports){
+},{}],133:[function(require,module,exports){
 module.exports = ["storage", "config", "common", "$window", "$rootScope", "$interpolate", "KnownException", "$uibModal", function (storage, config, common, $window, $rootScope, $interpolate, KnownException, $uibModal) {
     'ngInject';
     'use strict';
@@ -13457,10 +15298,31 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
             arr[i]
         };
     };
+
+    //report
+    service.csv = function(data,filename){
+        var csv = '';
+        var headers = data.split('\n')[0];
+
+        csv += headers;
+        
+        for (var i = 1; i < data.split('\n').length; i++) {
+            var row = data.split('\n')[i];
+            csv += row;
+        }
+
+        var link;
+
+        link = document.createElement('a');
+        link.setAttribute('href', 'data:attachment/csv,' + encodeURIComponent(csv));
+        link.setAttribute('download', filename);
+        link.click();
+    };
+
     return service;
 }];
 
-},{}],123:[function(require,module,exports){
+},{}],134:[function(require,module,exports){
 //DEPRECATED
 module.exports = ['util', function (util) {
 	
@@ -13474,7 +15336,7 @@ module.exports = ['util', function (util) {
 
 	return VariantPair;
 }];
-},{}],124:[function(require,module,exports){
+},{}],135:[function(require,module,exports){
 // Some common IE shims... indexOf, startsWith, trim
 
 /*
@@ -13529,7 +15391,7 @@ if (!String.prototype.trim) {
     return this.replace(/^\s+|\s+$/g, '');
   };
 }
-},{}],125:[function(require,module,exports){
+},{}],136:[function(require,module,exports){
 /*
  *
  * https://github.com/fatlinesofcode/ngDraggable
@@ -14183,7 +16045,7 @@ angular.module("ngDraggable", [])
             }
         };
     }]);
-},{}],126:[function(require,module,exports){
+},{}],137:[function(require,module,exports){
 'use strict';
 (function(){
     var lowercase = function(string){return (typeof string === 'string') ? string.toLowerCase() : string;};
@@ -14300,7 +16162,7 @@ angular.module("ngDraggable", [])
         };
     });
 })();
-},{}],127:[function(require,module,exports){
+},{}],138:[function(require,module,exports){
 /*!
  *	 Angular Smooth Scroll (ngSmoothScroll)
  *	 Animates scrolling to elements, by David Oliveros.
@@ -14572,7 +16434,7 @@ angular.module("ngDraggable", [])
 	}]);
 
 }());
-},{}],128:[function(require,module,exports){
+},{}],139:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncAction', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
@@ -14645,7 +16507,7 @@ angular.module('nc')
 		}
 	}]);
 
-},{}],129:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncAdvanceSearch', ["$templateCache", "$timeout", "$uibModal", function($templateCache, $timeout, $uibModal) {
 		return {
@@ -14711,7 +16573,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],130:[function(require,module,exports){
+},{}],141:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncAlert', function() {
 		this.defaultErrorMessage = 'Error';
@@ -14786,7 +16648,7 @@ angular.module('nc')
 			this.message = '';
 		};
 	}]);
-},{}],131:[function(require,module,exports){
+},{}],142:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBindCompile', ["$compile", "$templateCache", function($compile, $templateCache) {
        return {
@@ -14815,7 +16677,7 @@ angular.module('nc')
             }
         };
     }]);
-},{}],132:[function(require,module,exports){
+},{}],143:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBreadcrumbSelect', ["$templateCache", "$filter", "$timeout", function($templateCache, $filter, $timeout) {
 		var _globalOptions = {};
@@ -14920,7 +16782,7 @@ angular.module('nc')
 			}
 		};
 	}])
-},{}],133:[function(require,module,exports){
+},{}],144:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBulk', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
@@ -15088,7 +16950,7 @@ angular.module('nc')
 			}
 		}
 	}])
-},{}],134:[function(require,module,exports){
+},{}],145:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncTextareas', ["$templateCache", function($templateCache) {
 		return {
@@ -15194,11 +17056,7 @@ angular.module('nc')
 				uploader: '=', //return promise
 				fail: '=',
 				size: '@',
-				notitle: '@?',
-				width: '=?',
-				height: '=?',
-				minWidth: '=?',
-				accept: '=?'
+				notitle: '@?'
 			},
 			template: $templateCache.get('common/ncImageLinks'),
 			link: function(scope) {
@@ -15209,17 +17067,6 @@ angular.module('nc')
 						})
 					}
 				});
-				scope.accept = scope.accept || '.jpg,.jpeg';
-				scope.validate = function(f,w,h,i) {
-					if(scope.minWidth && scope.minWidth.length > i) {
-						return w > scope.minWidth;
-					}
-					else if(scope.width && scope.width.length > i) {
-						return w == scope.width[i] && h == scope.height[i];
-					} else {
-						return true;
-					}
-				}
 				scope.$watch('size', function(d) {
 					if(!_.isNil(d)) {
 						scope.source.Images = [];
@@ -15231,26 +17078,17 @@ angular.module('nc')
 						};
 					}
 				})
-				scope.upload = function($file, image, $index, $ifile) {
-					if($ifile.length > 0) {
-						if(!_.isNil(scope.minWidth)) {
-							scope.fail('ondimension', null, minWidth[$index], true);
-						}
-						else {
-							scope.fail('ondimension', null, [width[$index], height[$index]]);
-						}
-					} else {
-						scope.uploader.upload($file).then(function(data) {
-							image = _.extend(image, data.data);
-						}, function(err) {
-							scope.fail(err);
-						});
-					}
+				scope.upload = function($file, image) {
+					scope.uploader.upload($file).then(function(data) {
+						image = _.extend(image, data.data);
+					}, function(err) {
+						scope.fail(err);
+					});
 				}
 			}
 		}
 	}])
-},{}],135:[function(require,module,exports){
+},{}],146:[function(require,module,exports){
 angular.module('nc')
 	.factory('NCConfirm', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		var ConfirmationDialog = function (line1, line2, yesAction, noAction) {
@@ -15285,7 +17123,7 @@ angular.module('nc')
         
         return ConfirmationDialog;
 	}]);
-},{}],136:[function(require,module,exports){
+},{}],147:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncDateRange', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse) {
@@ -15345,7 +17183,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":314}],137:[function(require,module,exports){
+},{"angular":329}],148:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncDefaultValue', function() {
 		return {
@@ -15362,7 +17200,7 @@ angular.module('nc')
 			}
 		};
 	});
-},{}],138:[function(require,module,exports){
+},{}],149:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEmpty', ["$templateCache", function($templateCache) {
 		return {
@@ -15376,7 +17214,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],139:[function(require,module,exports){
+},{}],150:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEye', ["$templateCache", function($templateCache) {
 		return {
@@ -15394,7 +17232,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],140:[function(require,module,exports){
+},{}],151:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncFilter', ["$templateCache", function($templateCache) {
 		return {
@@ -15416,7 +17254,7 @@ angular.module('nc')
 			}
 		}
 	}])
-},{}],141:[function(require,module,exports){
+},{}],152:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncImageBannerIcon', ["$templateCache", function($templateCache) {
 		return {
@@ -16205,7 +18043,7 @@ angular.module('nc')
 			}
 		};
 	}])
-},{}],142:[function(require,module,exports){
+},{}],153:[function(require,module,exports){
 angular.module('nc')
 .directive('ncImageIntegrity', function() {
     //Only show if image loaded by <img> integrity is OK (100% finished loading)
@@ -16225,7 +18063,7 @@ angular.module('nc')
             }
         };
     })
-},{}],143:[function(require,module,exports){
+},{}],154:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncLoading', ["$templateCache", function($templateCache) {
 		return {
@@ -16251,7 +18089,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],144:[function(require,module,exports){
+},{}],155:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncPageTitle', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "$parse", "KnownException", function ($rootScope, $templateCache, $compile, $templateOptionsCache, $parse, KnownException) {
@@ -16284,7 +18122,7 @@ angular.module('nc')
         };
     }]);
 
-},{"angular":314}],145:[function(require,module,exports){
+},{"angular":329}],156:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncPagination', function() {
 		this.paginationSizes = [10,20,30];
@@ -16351,7 +18189,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],146:[function(require,module,exports){
+},{}],157:[function(require,module,exports){
 angular.module('nc')
 	.provider('ncPermissionProvider', function() {
 		this.permission = function() {
@@ -16372,7 +18210,7 @@ angular.module('nc')
 	.directive('ncShowPermission', function() {
 		
 	});
-},{}],147:[function(require,module,exports){
+},{}],158:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncPolicyAdmin', ["$rootScope", function ($rootScope) {
 		return {
@@ -16442,7 +18280,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],148:[function(require,module,exports){
+},{}],159:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncSearch', ["$templateCache", function($templateCache) {
 		return {
@@ -16464,7 +18302,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],149:[function(require,module,exports){
+},{}],160:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncTable', function() {
 		this.tableOptions = {
@@ -16553,7 +18391,7 @@ angular.module('nc')
 			template: '<a ng-href="{{link}}" ng-transclude></a>',
 		}
 	});
-},{}],150:[function(require,module,exports){
+},{}],161:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncTemplate', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse) {
@@ -16617,7 +18455,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":314}],151:[function(require,module,exports){
+},{"angular":329}],162:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncTreeSelect', ["$interpolate", "$templateCache", function($interpolate, $templateCache) {
 		/**
@@ -16846,7 +18684,7 @@ angular.module('nc')
 		};
 	}]);
 
-},{}],152:[function(require,module,exports){
+},{}],163:[function(require,module,exports){
 angular.module('nc')
     .directive('ncTagValidator', function () {
         return {
@@ -16919,14 +18757,14 @@ angular.module('nc')
         }
     });
 
-},{}],153:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 angular.module('nc')
 	.filter('compact', function() {
 		return function(input) {
 			return _.compact(input);
 		};
 	});
-},{}],154:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 angular.module('nc')
 	.filter('dateTh', ["$filter", function($filter) {
 		return function(input) {
@@ -16944,7 +18782,7 @@ angular.module('nc')
 			return $filter('date')(input, 'H:mm');
 		}
 	}]);
-},{}],155:[function(require,module,exports){
+},{}],166:[function(require,module,exports){
 angular.module('nc')
     .filter('escapeHtml', function () {
         var entityMap = {
@@ -16962,7 +18800,7 @@ angular.module('nc')
             });
         }
     });
-},{}],156:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 /*
  Return dropdown[value] if input == dropdown[name]
  */
@@ -16985,50 +18823,51 @@ angular.module('nc')
 			return _.isUndefined(find) ? input : find[name];
 		}
 	});
-},{}],157:[function(require,module,exports){
+},{}],168:[function(require,module,exports){
 var angular = require('angular');
 
 angular.module('nc')
-  .filter('nexclude', function() {
+	.filter('nexclude', function() {
     return function(arr, other, trackBy) {
-      if (!arr) arr = [];
-      return arr.filter(function(elem) {
-        if (other == null || other === undefined) return true;
-        if (other instanceof Array) {
-          //throw away if elem matches any of the given other list
-          var p = true;
-          for (var j = 0; j < other.length; j++) {
-            var k = (elem == ((other[j] || null) || null));
-            if (angular.isDefined(trackBy)) {
-              var deepOther = _.get(other[j], trackBy, null);
-              k = (_.get(elem, trackBy, null) == deepOther);
-            }
-            //matched atleast one, stop and throw away
-            if (k) {
-              p = false;
-              break;
-            }
-          }
-          return p;
-        } else {
-          //return true to keep
-          if (!angular.isDefined(trackBy)) {
-            return elem != (other || null);
-          }
+       if(!arr) arr = [];
+       return arr.filter(function(elem){
+          if(other == null || other === undefined) return true;
+          if(other instanceof Array){
+          	//throw away if elem matches any of the given other list
+          	var p = true;
+          	for(var j = 0; j < other.length; j++){
+                  var k = (elem == ((other[j] || null ) || null));
+          		if(angular.isDefined(trackBy)){
+                      var deepOther = _.get(other[j], trackBy, null);
+                      k = (_.get(elem, trackBy, null) == deepOther);
+                  }
+          		//matched atleast one, stop and throw away
+          		if(k){
+          			p = false;
+          			break;
+          		}
+          	}
+          	return p;
+          }else{
+          	//return true to keep
+          	if(!angular.isDefined(trackBy)){
+                  return elem != (other || null);
+              }
 
-          return elem[trackBy] != (other[trackBy] || null);
-        }
-      });
+              return elem[trackBy] != (other[trackBy] || null);
+          }
+       });
     }
   });
-},{"angular":314}],158:[function(require,module,exports){
+
+},{"angular":329}],169:[function(require,module,exports){
 angular.module('nc')
 	.filter('replace', function() {
 		return function(input, from, to) {
 			return input.replace(from, to);
 		};
 	});
-},{}],159:[function(require,module,exports){
+},{}],170:[function(require,module,exports){
 (function (global){
 var angular = require('angular');
 
@@ -17054,7 +18893,7 @@ angular.module('nc', ['ngSanitize', 'ui.bootstrap', 'ui.select', 'duScroll', 'sm
 require('./template.js');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../angular-scroll":127,"./directives\\ncAction.js":128,"./directives\\ncAdvanceSearch.js":129,"./directives\\ncAlert.js":130,"./directives\\ncBindCompile.js":131,"./directives\\ncBreadcrumpSelect.js":132,"./directives\\ncBulk.js":133,"./directives\\ncComponent.js":134,"./directives\\ncConfirm.js":135,"./directives\\ncDateRange.js":136,"./directives\\ncDefaultValue.js":137,"./directives\\ncEmpty.js":138,"./directives\\ncEye.js":139,"./directives\\ncFilter.js":140,"./directives\\ncImageGallery.js":141,"./directives\\ncImageIntegrity.js":142,"./directives\\ncLoading.js":143,"./directives\\ncPageTitle.js":144,"./directives\\ncPagination.js":145,"./directives\\ncPermission.js":146,"./directives\\ncPolicy.js":147,"./directives\\ncSearch.js":148,"./directives\\ncTable.js":149,"./directives\\ncTemplate.js":150,"./directives\\ncTreeSelect.js":151,"./directives\\ncUiSelect.js":152,"./filters\\compact.js":153,"./filters\\date.js":154,"./filters\\escapeHtml.js":155,"./filters\\map.js":156,"./filters\\ncexclude.js":157,"./filters\\replace.js":158,"./index.js":159,"./template.js":160,"angular":314,"angular-file-upload":277,"angular-sanitize":305,"angular-scroll":307,"angular-ui-bootstrap":309,"jquery":317,"lodash":318,"ui-select":337}],160:[function(require,module,exports){
+},{"../angular-scroll":138,"./directives\\ncAction.js":139,"./directives\\ncAdvanceSearch.js":140,"./directives\\ncAlert.js":141,"./directives\\ncBindCompile.js":142,"./directives\\ncBreadcrumpSelect.js":143,"./directives\\ncBulk.js":144,"./directives\\ncComponent.js":145,"./directives\\ncConfirm.js":146,"./directives\\ncDateRange.js":147,"./directives\\ncDefaultValue.js":148,"./directives\\ncEmpty.js":149,"./directives\\ncEye.js":150,"./directives\\ncFilter.js":151,"./directives\\ncImageGallery.js":152,"./directives\\ncImageIntegrity.js":153,"./directives\\ncLoading.js":154,"./directives\\ncPageTitle.js":155,"./directives\\ncPagination.js":156,"./directives\\ncPermission.js":157,"./directives\\ncPolicy.js":158,"./directives\\ncSearch.js":159,"./directives\\ncTable.js":160,"./directives\\ncTemplate.js":161,"./directives\\ncTreeSelect.js":162,"./directives\\ncUiSelect.js":163,"./filters\\compact.js":164,"./filters\\date.js":165,"./filters\\escapeHtml.js":166,"./filters\\map.js":167,"./filters\\ncexclude.js":168,"./filters\\replace.js":169,"./index.js":170,"./template.js":171,"angular":329,"angular-file-upload":292,"angular-sanitize":320,"angular-scroll":322,"angular-ui-bootstrap":324,"jquery":332,"lodash":333,"ui-select":352}],171:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -17076,7 +18915,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncAdvanceSearch',
-    "<div class=\"row margin-top-30\" ng-show=open><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Advance Search</h2></div><div class=form-section-content><form name=form class=ah-form novalidate><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductName nc-label=\"Product Name\" nc-template-options-path=searchForm/ProductName><input class=form-control name=ProductName maxlength=255 ng-model=\"formData.ProductName\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Pids nc-label=PID nc-template-options-path=searchForm/Pid><ui-select ng-model=formData.Pids pattern-restrict=\"^[^<>]*$\" name=Pids nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field><ui-select-match>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Pids\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Skus nc-label=SKU nc-template-options-path=searchForm/Sku><ui-select ng-model=formData.Skus pattern-restrict=\"^[^<>]*$\" name=Skus nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field><ui-select-match>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Skus\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Brands nc-label=\"Brand Name\" nc-template-options-path=searchForm/Brands><ui-select ng-model=formData.Brands name=Brands nc-tag-validator multiple tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match maxlength=255>{{$item.BrandNameEn}}</ui-select-match><ui-select-choices repeat=\"item in options.Brands\" refresh=options.refreshBrands($select.search) refresh-delay=100>{{item.BrandNameEn}}</ui-select-choices></ui-select></div><div ng-show=options.Admin nc-template=common/input/form-group-with-label nc-template-form=form.Shop nc-label=\"Shop Name\" nc-template-options-path=searchForm/Shops><ui-select ng-model=formData.Shops name=Shops nc-tag-validator multiple tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match maxlength=255>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices repeat=\"item in options.Shops\" refresh=options.refreshShops($select.search) refresh-delay=100>{{item.ShopNameEn}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.GlobalCategories nc-label=\"Global Category Name\" nc-template-options-path=searchForm/GlobalCategories><nc-breadcrumb-select name=GlobalCategories nc-model=formData.GlobalCategories nc-breadcrumb-select-tree=options.GlobalCategories></nc-breadcrumb-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.LocalCategories nc-label=\"Local Category Name\" nc-template-options-path=searchForm/LocalCategories ng-show=!options.Admin><nc-breadcrumb-select name=LocalCategories nc-model=formData.LocalCategories nc-breadcrumb-select-tree=options.LocalCategories></nc-breadcrumb-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Tags nc-label=\"Search Tag\" nc-template-options-path=searchForm/Tags class=ui-select-dropdown-hide><ui-select ng-model=formData.Tags name=Tags nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field nc-max-tag-count=20 nc-max-tag-length=30><ui-select-match>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Tags\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.Price nc-label=Price nc-template-options-path=searchForm/Price><div class=width-field-small-input><input name=Price ng-maxnumber={{formData.PriceTo}} ng-model=formData.PriceFrom class=form-control ng-pattern-restrict=^[0-9]*(\\.[0-9]{0,2})?$ maxlength=\"20\"></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><input ng-model=formData.PriceTo class=form-control ng-pattern-restrict=^[0-9]*(\\.[0-9]{0,2})?$ maxlength=\"20\"></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.CreatedDate nc-label=\"Created Date\" nc-template-options-path=searchForm/CreatedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': formData.CreatedDtTo <= formData.CreatedDtFrom }\" class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDtFrom | datetimeTh }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=CreatedDate ng-date-before={{formData.CreatedDtTo}} data-ng-model=formData.CreatedDtFrom data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'minute', minuteStep: 30 }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': formData.CreatedDtTo <= formData.CreatedDtFrom }\" class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDtTo | datetimeTh }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.CreatedDtTo data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'minute', minuteStep: 30 }\"></ul></div></div><div class=width-field-small-input><span class=\"help-block color-red\" ng-if=\"formData.CreatedDtTo <= formData.CreatedDtFrom\"><span>Please enter a valid date/time range.</span></span></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.ModifiedDate nc-label=\"Modified Date\" nc-template-options-path=searchForm/ModifiedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': formData.ModifyDtFrom <= formData.ModifyDtTo }\" class=\"input-icon-calendar form-control\" value=\"{{ formData.ModifyDtTo | datetimeTh }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=ModifiedDate ng-date-before={{formData.ModifyDtFrom}} data-ng-model=formData.ModifyDtTo data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'minute', minuteStep: 30 }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown4 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': formData.ModifyDtFrom <= formData.ModifyDtTo }\" class=\"input-icon-calendar form-control\" value=\"{{ formData.ModifyDtFrom | datetimeTh }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ModifyDtFrom data-datetimepicker-config=\"{ dropdownSelector: '#dropdown4', minView: 'minute', minuteStep: 30 }\"></ul></div></div><div class=width-field-small-input><span class=\"help-block color-red\" ng-if=\"formData.ModifyDtFrom <= formData.ModifyDtTo\"><span>Please enter a valid date/time range.</span></span></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=button-size-normal><button class=\"button-size-normal btn btn-blue btn-width-xl\" ng-click=search()>Search</button></div><div class=button-size-normal><a class=\"button-size-normal margin-left-10 btn btn-white btn-width-xl\" ng-click=clear()>Clear</a></div></div></form></div></div></div></div>"
+    "<div class=\"row margin-top-30\" ng-show=open><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Advance Search</h2></div><div class=form-section-content><form name=form class=ah-form novalidate><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductName nc-label=\"Product Name\" nc-template-options-path=searchForm/ProductName><input class=form-control name=ProductName ng-pattern-restrict=\"^[^<>]*$\" maxlength=255 ng-model=\"formData.ProductName\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Pids nc-label=PID nc-template-options-path=searchForm/Pid><ui-select ng-model=formData.Pids pattern-restrict=\"^[^<>]*$\" name=Pids nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field><ui-select-match maxlength=7>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Pids\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Skus nc-label=SKU nc-template-options-path=searchForm/Sku><ui-select ng-model=formData.Skus pattern-restrict=\"^[^<>]*$\" name=Skus nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field><ui-select-match maxlength=255>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Skus\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Brands nc-label=\"Brand Name\" nc-template-options-path=searchForm/Brands><ui-select ng-model=formData.Brands name=Brands nc-tag-validator multiple tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match ng-pattern-restrict=\"^[^<>]*$\" maxlength=255>{{$item.BrandNameEn}}</ui-select-match><ui-select-choices repeat=\"item in options.Brands\" refresh=options.refreshBrands($select.search) refresh-delay=100>{{item.BrandNameEn}}</ui-select-choices></ui-select></div><div ng-show=options.Admin nc-template=common/input/form-group-with-label nc-template-form=form.Shop nc-label=\"Shop Name\" nc-template-options-path=searchForm/Shops><ui-select ng-model=formData.Shops name=Shops nc-tag-validator multiple tagging-tokens=,|ENTER tagging-label=\"\" nc-tag-field><ui-select-match maxlength=255>{{$item.ShopNameEn}}</ui-select-match><ui-select-choices repeat=\"item in options.Shops\" refresh=options.refreshShops($select.search) refresh-delay=100>{{item.ShopNameEn}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.GlobalCategories nc-label=\"Global Category Name\" nc-template-options-path=searchForm/GlobalCategories><nc-breadcrumb-select name=GlobalCategories nc-model=formData.GlobalCategories nc-breadcrumb-select-tree=options.GlobalCategories></nc-breadcrumb-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.LocalCategories nc-label=\"Local Category Name\" nc-template-options-path=searchForm/LocalCategories ng-show=!options.Admin><nc-breadcrumb-select name=LocalCategories nc-model=formData.LocalCategories nc-breadcrumb-select-tree=options.LocalCategories></nc-breadcrumb-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Tags nc-label=\"Search Tag\" nc-template-options-path=searchForm/Tags class=ui-select-dropdown-hide><ui-select ng-model=formData.Tags name=Tags nc-tag-validator tagging tagging-label=\"\" multiple nc-tag-field nc-max-tag-count=20 nc-max-tag-length=30><ui-select-match>{{$item}}</ui-select-match><ui-select-choices repeat=\"item in options.Tags\">{{item}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.Price nc-label=Price nc-template-options-path=searchForm/Price><div class=width-field-small-input><input name=Price ng-maxnumber={{formData.PriceTo}} ng-model=formData.PriceFrom class=form-control ng-pattern-restrict=^[0-9]*(\\.[0-9]{0,2})?$ maxlength=\"20\"></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><input ng-model=formData.PriceTo class=form-control ng-pattern-restrict=^[0-9]*(\\.[0-9]{0,2})?$ maxlength=\"20\"></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.CreatedDate nc-label=\"Created Date\" nc-template-options-path=searchForm/CreatedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': formData.CreatedDtTo <= formData.CreatedDtFrom }\" class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDtFrom | datetimeTh }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=CreatedDate ng-date-before={{formData.CreatedDtTo}} data-ng-model=formData.CreatedDtFrom data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'minute', minuteStep: 30 }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown2 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': formData.CreatedDtTo <= formData.CreatedDtFrom }\" class=\"input-icon-calendar form-control\" value=\"{{ formData.CreatedDtTo | datetimeTh }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.CreatedDtTo data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2', minView: 'minute', minuteStep: 30 }\"></ul></div></div><div class=width-field-small-input><span class=\"help-block color-red\" ng-if=\"formData.CreatedDtTo <= formData.CreatedDtFrom\"><span>Please enter a valid date/time range.</span></span></div></div><div nc-template=common/input/form-group-with-label-multiple nc-template-form=form.ModifiedDate nc-label=\"Modified Date\" nc-template-options-path=searchForm/ModifiedDate><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown3 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': formData.ModifyDtFrom <= formData.ModifyDtTo }\" class=\"input-icon-calendar form-control\" value=\"{{ formData.ModifyDtTo | datetimeTh }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=ModifiedDate ng-date-before={{formData.ModifyDtFrom}} data-ng-model=formData.ModifyDtTo data-datetimepicker-config=\"{ dropdownSelector: '#dropdown3', minView: 'minute', minuteStep: 30 }\"></ul></div></div><div class=\"width-label-extend text-center\"><label class=control-label>To</label></div><div class=width-field-small-input><div class=dropdown><a class=dropdown-toggle id=dropdown4 role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-class=\"{'has-error': formData.ModifyDtFrom <= formData.ModifyDtTo }\" class=\"input-icon-calendar form-control\" value=\"{{ formData.ModifyDtFrom | datetimeTh }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker data-ng-model=formData.ModifyDtFrom data-datetimepicker-config=\"{ dropdownSelector: '#dropdown4', minView: 'minute', minuteStep: 30 }\"></ul></div></div><div class=width-field-small-input><span class=\"help-block color-red\" ng-if=\"formData.ModifyDtFrom <= formData.ModifyDtTo\"><span>Please enter a valid date/time range.</span></span></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=button-size-normal><button class=\"button-size-normal btn btn-blue btn-width-xl\" ng-click=search()>Search</button></div><div class=button-size-normal><a class=\"button-size-normal margin-left-10 btn btn-white btn-width-xl\" ng-click=clear()>Clear</a></div></div></form></div></div></div></div>"
   );
 
 
@@ -17148,7 +18987,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncImageBanner3',
-    "<div class=form-section><div class=form-section-header><h2>{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=accept ngf-accept=accept ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p><p><a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=accept>or select images from your computer</a></p></div></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center;margin-top:35px\" class=color-grey><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\">Processing..</span></h4></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div><div class=section-break></div><div class=\"form-section-content no-margin padding-left-15 padding-right-15\" style=margin-top:15px><div nc-template=common/input/form-group-with-label nc-label=\"Banner Status\"><select ng-model=source[key] class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]\"></select></div><div ng-repeat=\"image in images track by $index\" class=form-group><div class=width-label><label class=control-label>Banner Link {{$index+1}}</label></div><div class=width-field-normal><input class=\"form-control width-field-normal\" ng-model=image.Link maxlength=\"512\"></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>{{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div class=col-xs-7><div class=image-drop-wrapper><div ngf-drop=upload($files) ngf-pattern=\"'.jpg,.jpeg'\" ngf-multiple=true class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drag &amp; drop your product images here</p><p><a href=javascript:; ngf-select=upload($files) ngf-multiple=true ngf-accept=\"'.jpg,.jpeg'\">or select images from your computer</a></p></div></div></div></div><div class=col-xs-5 ng-transclude></div></div><div class=\"form-section-content padding-left-15 padding-right-15\" style=margin-bottom:0px><ul class=image-vertical-list><li class=list-item ng-repeat=\"image in images track by $index\"><div class=image-thumbs-actions><div class=image-thumbs-img-wrapper ng-style=options><img ng-show=getSrc(image) style=background-color:white ng-src=\"{{getSrc(image)}}\"><h4 ng-show=!getSrc(image) style=\"text-align: center;margin-top:35px\" class=color-grey><img src=/assets/img/loader.gif height=55><br><span ng-if=\"getProgress(image) < 100\">{{ getProgress(image) }}%</span> <span ng-if=\"getProgress(image) >= 100\">Processing..</span></h4></div><div class=\"actions-wrapper text-center\"><a class=action ng-repeat=\"action in actions\" ng-click=\"call(image, $parent.$index, action)\" style=\"width:37px; display:inline-block\"><i class=\"fa {{action.icon}}\"></i></a></div></div></li></ul></div><div class=section-break></div><div class=\"form-section-content no-margin padding-left-15 padding-right-15\" style=margin-top:15px><div nc-template=common/input/form-group-with-label nc-label=\"Banner Status\"><select ng-model=source[key] class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]\"></select></div><div ng-repeat=\"image in images track by $index\" class=form-group><div class=width-label><label class=control-label>Banner Link {{$index+1}}</label></div><div class=width-field-normal><input class=\"form-control width-field-normal\" ng-model=image.Link ng-pattern-restrict=\"^[^<>]*$\" maxlength=\"512\"></div></div></div></div>"
   );
 
 
@@ -17163,7 +19002,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncImageBanner5',
-    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.Enabled\">{{letter}}.) {{title}}</h2></div><div ng-show=source.Enabled><nc-image-block template=common/ncImageBanner4_1 nc-model=source.ImageEn on-fail=onFail uploader=uploader options=options size={{size}}><h4>{{letterx}} {{subtitle ? subtitle : 'Video Thumbnail'}} (English) guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li ng-if=size>Maximum {{size}} images</li><li ng-if=width>The width must be {{width}}px</li><li ng-if=height>The height must be {{height}}px</li></ul></nc-image-block><div class=section-break></div><nc-image-block template=common/ncImageBanner4_1 nc-model=source.ImageTh on-fail=onFail uploader=uploader options=options size={{size}}><h4>{{letterx}} {{subtitle ? subtitle : 'Video Thumbnail'}} (ไทย) guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li ng-if=size>Maximum {{size}} images</li><li ng-if=width>The width must be {{width}}px</li><li ng-if=height>The height must be {{height}}px</li></ul></nc-image-block><div class=section-break></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div nc-template=common/input/form-group-with-label nc-label=\"Show Popup\"><select ng-model=source.ShowPopup class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]\"></select></div><div class=form-group><div class=width-label><label class=control-label>Title (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleEn\"></div></div><div class=form-group><div class=width-label><label class=control-label>Title (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleTh\"></div></div><div class=form-group><div class=width-label><label class=control-label>Title Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleLink\"></div></div><div ng-repeat=\"video in source.Videos track by $index\"><div class=form-group><div class=width-label><label class=control-label>{{linktitle ? linktitle : 'Video'}} {{$index+1}} Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"video.Link\"></div></div><div class=form-group><div class=width-label><label class=control-label>{{linktitle ? linktitle : 'Video'}} {{$index+1}} Description (Eng)</label></div><div class=width-field-normal><textarea class=form-control ng-model=video.DescriptionEn></textarea></div></div><div class=form-group><div class=width-label><label class=control-label>{{linktitle ? linktitle : 'Video'}} {{$index+1}} Description (ไทย)</label></div><div class=width-field-normal><textarea class=form-control ng-model=video.DescriptionTh></textarea></div></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.Enabled\">{{letter}}.) {{title}}</h2></div><div ng-show=source.Enabled><nc-image-block template=common/ncImageBanner4_1 nc-model=source.ImageEn on-fail=onFail uploader=uploader options=options size={{size}}><h4>{{letterx}} {{subtitle ? subtitle : 'Video Thumbnail'}} (English) guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>The width must be {{width}}px</li><li>The height must be {{height}}px</li></ul></nc-image-block><div class=section-break></div><nc-image-block template=common/ncImageBanner4_1 nc-model=source.ImageTh on-fail=onFail uploader=uploader options=options size={{size}}><h4>{{letterx}} {{subtitle ? subtitle : 'Video Thumbnail'}} (ไทย) guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>The width must be {{width}}px</li><li>The height must be {{height}}px</li></ul></nc-image-block><div class=section-break></div><div class=\"form-section-content padding-left-15 padding-right-15\"><div nc-template=common/input/form-group-with-label nc-label=\"Show Popup\"><select ng-model=source.ShowPopup class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]\"></select></div><div class=form-group><div class=width-label><label class=control-label>Title (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleEn\"></div></div><div class=form-group><div class=width-label><label class=control-label>Title (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleTh\"></div></div><div class=form-group><div class=width-label><label class=control-label>Title Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleLink\"></div></div><div ng-repeat=\"video in source.Videos track by $index\"><div class=form-group><div class=width-label><label class=control-label>{{linktitle ? linktitle : 'Video'}} {{$index+1}} Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"video.Link\"></div></div><div class=form-group><div class=width-label><label class=control-label>{{linktitle ? linktitle : 'Video'}} {{$index+1}} Description (Eng)</label></div><div class=width-field-normal><textarea class=form-control ng-model=video.DescriptionEn></textarea></div></div><div class=form-group><div class=width-label><label class=control-label>{{linktitle ? linktitle : 'Video'}} {{$index+1}} Description (ไทย)</label></div><div class=width-field-normal><textarea class=form-control ng-model=video.DescriptionTh></textarea></div></div></div></div></div></div>"
   );
 
 
@@ -17173,7 +19012,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncImageDropzone',
-    "<div class=image-drop-wrapper><input nv-file-select=\"\" uploader=uploader accept=.jpg,.jpeg type=file multiple><div nv-file-drop=\"\" uploader=uploader accept=.jpg,.jpeg class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload() accept=.jpg,.jpeg>or select images</a></p></div></div></div>"
+    "<div class=image-drop-wrapper><input nv-file-select=\"\" uploader=uploader accept=\".jpg, .jpeg\" type=file multiple><div nv-file-drop=\"\" uploader=uploader class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p></div></div></div>"
   );
 
 
@@ -17183,7 +19022,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncImageDropzoneTemplate',
-    "<div class=image-drop-wrapper><input nv-file-select uploader=uploader accept=.jpg,.jpeg type=file multiple><div nv-file-drop uploader=uploader accept=.jpg,.jpeg class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload() accept=.jpg,.jpeg>or select images</a></p></div></div></div>"
+    "<div class=image-drop-wrapper><input nv-file-select uploader=uploader accept=.jpg,.jpeg type=file multiple><div nv-file-drop uploader=uploader class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p></div></div></div>"
   );
 
 
@@ -17193,7 +19032,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncImageLinks',
-    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.Enabled\">{{letter}}.) {{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\" ng-if=source.Enabled><div ng-if=!notitle class=form-group><div class=width-label><label class=control-label>{{letter}} Title (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleEn\"></div></div><div ng-if=!notitle class=form-group><div class=width-label><label class=control-label>{{letter}} Title (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleTh\"></div></div><div ng-repeat=\"image in source.Images track by $index\"><div nc-template=common/input/form-group-with-label nc-label=\"{{letter}}{{$index+1}} Image (Eng)\" class=margin-top-5><div><button type=button class=\"btn btn-default\" ngf-accept=accept ngf-select=\"upload($file, image.ImageEn, $index, $invalidFiles)\" ngf-dimensions=\"validate($file, $width, $height, $index)\">Choose File</button></div><div ng-if=\"width && width.length > $index\">{{width[$index]}}x{{height[$index]}} pixels</div><div ng-if=\"minWidth && minWidth.length > $index\">width must be greater than {{minWidth[$index]}}</div></div><div ng-show=image.ImageEn.Url nc-template=common/input/form-group-with-label nc-label=Preview><img ng-src={{image.ImageEn.Url}} width=\"160\"></div><div nc-template=common/input/form-group-with-label nc-label=\"{{letter}}{{$index+1}} Image (ไทย)\"><div><button type=button class=\"btn btn-default\" ngf-accept=accept ngf-select=\"upload($file, image.ImageTh, $index, $invalidFiles)\" ngf-dimensions=\"validate($file, $width, $height, $index)\">Choose File</button></div><div ng-if=\"width && width.length > $index\">{{width[$index]}}x{{height[$index]}} pixels</div><div ng-if=\"minWidth && minWidth.length > $index\">width must be greater than {{minWidth[$index]}}</div></div><div ng-show=image.ImageTh.Url nc-template=common/input/form-group-with-label nc-label=Preview><img ng-src={{image.ImageTh.Url}} width=\"160\"></div><div class=form-group><div class=width-label><label class=control-label>{{letter}}{{$index+1}} Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"image.Link\"> <span class=\"help-block color-grey\">Example: https//www.thecentral.co.th</span></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.Enabled\">{{letter}}.) {{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\" ng-if=source.Enabled><div ng-if=!notitle class=form-group><div class=width-label><label class=control-label>{{letter}} Title (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleEn\"></div></div><div ng-if=!notitle class=form-group><div class=width-label><label class=control-label>{{letter}} Title (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleTh\"></div></div><div ng-repeat=\"image in source.Images track by $index\"><div nc-template=common/input/form-group-with-label nc-label=\"{{letter}}{{$index+1}} Image (Eng)\" class=margin-top-5><button type=button class=\"btn btn-default\" ngf-accept=\"'.jpg,.jpeg'\" ngf-select=\"upload($file, image.ImageEn)\">Choose File</button></div><div ng-show=image.ImageEn.Url nc-template=common/input/form-group-with-label nc-label=Preview><img ng-src={{image.ImageEn.Url}} width=\"160\"></div><div nc-template=common/input/form-group-with-label nc-label=\"{{letter}}{{$index+1}} Image (ไทย)\"><button type=button class=\"btn btn-default\" ngf-accept=\"'.jpg,.jpeg'\" ngf-select=\"upload($file, image.ImageTh)\">Choose File</button></div><div ng-show=image.ImageTh.Url nc-template=common/input/form-group-with-label nc-label=Preview><img ng-src={{image.ImageTh.Url}} width=\"160\"></div><div class=form-group><div class=width-label><label class=control-label>{{letter}}{{$index+1}} Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"image.Link\"> <span class=\"help-block color-grey\">Example: https//www.thecentral.co.th</span></div></div></div></div></div>"
   );
 
 
@@ -17213,7 +19052,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncProductLayout',
-    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.Enabled\">{{letter}}.) {{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\" ng-if=source.Enabled><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleEn\"></div></div><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleTh\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Subtitle (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.SubtitleEn\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Subtitle (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.SubtitleTh\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.Link\"></div></div><div class=form-group><div class=width-label><label class=control-label>Select Product</label></div><div class=width-field-normal><ui-select multiple ng-model=source.Products><ui-select-match placeholder=\"Product Name\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=refresh($select.search) refresh-delay=150 repeat=\"i.Pid as i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=width-field-normal><input class=form-inline type=checkbox ng-model=\"source.DisplayCountTime\"> Display Countdown Time</div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.Enabled\">{{letter}}.) {{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\" ng-if=source.Enabled><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleEn\"></div></div><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleTh\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Subtitle (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.SubtitleEn\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Subtitle (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.SubtitleTh\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.Link\"></div></div><div class=form-group><div class=width-label><label class=control-label>Select Product</label></div><div class=width-field-normal><ui-select multiple ng-model=source.Products><ui-select-match placeholder=\"Search by Product Name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=refresh($select.search) refresh-delay=150 repeat=\"i.Pid as i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=width-field-normal><input class=form-inline type=checkbox ng-model=\"source.DisplayCountTime\"> Display Countdown Time</div></div></div></div>"
   );
 
 
@@ -17277,14 +19116,14 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
     "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title ah-breadcrumb\"><a ng-if=\"icon && breads.length != 1\" ng-href=\"{{ngTopLink() || topLink}}\"><i class=\"fa {{icon}} page-header-icon\"></i></a> <i ng-if=\"icon && breads.length == 1\" class=\"fa {{icon}} page-header-icon\"></i> <span ng-repeat=\"b in breads\" class=ah-breadcrumb><a ng-if=\"$index == 0 && breads.length > 1\" class=ah-breadcrumb-path ng-href=\"{{ngTopLink()  || topLink}}\">{{b}}</a><span ng-if=\"$index > 0 || breads.length == 1\" class=ah-breadcrumb-path>{{b}}</span><span ng-if=\"$index == 0 && breads.length > 1\" class=ah-breadcrumb-splitter>/</span></span></h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
   );
  }]);
-},{}],161:[function(require,module,exports){
+},{}],172:[function(require,module,exports){
 var angular = require('angular');
 
 angular.module('productDetail').controller('AbstractProductAddCtrl',
-  ["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "common", "AttributeService", "$timeout", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "$rootScope", "KnownException", "NcAlert", "$productAdd", "options", "AttributeSetService", "AdminShopService", "VariationFactorIndices", "AttributeOptions", "ShippingService", function($scope, $uibModal, $window, util, config, Product, ImageService, common,
+  ["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "common", "AttributeService", "$timeout", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "$rootScope", "KnownException", "NcAlert", "$productAdd", "options", "AttributeSetService", "AdminShopService", "VariationFactorIndices", "AttributeOptions", "ShippingService", "APExpireDateChangeEvent", function($scope, $uibModal, $window, util, config, Product, ImageService, common,
     AttributeService, $timeout, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
     KnownException, NcAlert, $productAdd, options, AttributeSetService,
-    AdminShopService, VariationFactorIndices, AttributeOptions, ShippingService) {
+    AdminShopService, VariationFactorIndices, AttributeOptions, ShippingService, APExpireDateChangeEvent) {
     'ngInject';
 
     $scope.readOnly = options.readOnly;
@@ -17531,8 +19370,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     //Adjust Limit Individual Day check box when
     //prepare days are non zero
-    $scope.$watch(
-      'variantPtr.PrepareMon+variantPtr.PrepareTue+variantPtr.PrepareWed+variantPtr.PrepareThu+variantPtr.PrepareFri',
+    $scope.$watch('variantPtr.PrepareMon+variantPtr.PrepareTue+variantPtr.PrepareWed+variantPtr.PrepareThu+variantPtr.PrepareFri',
       function(value) {
         var variantPtr = $scope.variantPtr;
         var x = Number(variantPtr.PrepareMon) + Number(variantPtr.PrepareTue) +
@@ -17541,7 +19379,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         if (x > 0) {
           $scope.formData.LimitIndividualDay = true;
         }
-      });
+    });
 
     //Initialize Pointers
     $scope.variantPtr = $scope.formData.MasterVariant;
@@ -17552,6 +19390,23 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
     };
 
+
+    $scope.disableInstallment = function() {
+      if (!$scope.variantPtr.SalePrice) return true;
+      return (Number($scope.variantPtr.SalePrice) || 0) < 5000;
+    }
+
+    var checkSchema = function(data, schemaName) {
+      //Perform schema check
+      var schema = JSONCache.get(schemaName || 'productStages');
+      var validation = skeemas.validate(data, schema);
+      console.log("Schema validation result: ", schemaName, validation);
+      if (!validation.valid) {
+        $scope.devAlert.error(
+          '<strong>Warning </strong> Ahancer Product Add Exchange Protocol (A-PAEP) not enforced.'
+        );
+      }
+    };
 
     //Open modal for cat selector
     $scope.openCategorySelectorModal = function(ith, key, title) {
@@ -17625,6 +19480,38 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
 
 
+    $scope.onImageUploadFail = function(kwd, data) {
+      // console.log(kwd, data);
+      if (kwd == "onmaxsize") {
+        $scope.image_alert.error('Maximum ' + data +
+          ' images can be uploaded.');
+      } else if (kwd == "ondimension") {
+        $scope.image_alert.error('Dimension must be greater than ' +
+          IMAGE_DIM_BOUND[0][0] + 'x' +
+          IMAGE_DIM_BOUND[0][1] + '.' + ' and not larger than ' +
+          IMAGE_DIM_BOUND[1][0] + 'x' + IMAGE_DIM_BOUND[1][1] +
+          '. <strong>Your Image Size is ' + data[0] + "x" + data[1] +
+          '</strong>');
+      } else if (kwd == "ondisable") {
+        $scope.image_alert.error(
+          'You do not have permission to upload images.');
+      } else if (kwd == "onsquare") {
+        $scope.image_alert.error('Image must be square.');
+      } else {
+        $scope.image_alert.error(data);
+      }
+    }
+
+    $scope.onImageUploadSuccess = function() {
+      $scope.image_alert.close();
+    }
+
+    $scope.onImageUploadQueueLimit = function() {
+      //nop
+    };
+    $scope.asStatus = Product.getStatus;
+    $scope.refresher = {};
+
     var watchVariantFactorChanges = function() {
       $scope.$watch('dataset.attributeOptions', function() {
         $productAdd.generateVariants($scope.formData, $scope.dataset)
@@ -17667,57 +19554,15 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     }];
 
 
-
     $scope.updateBreadcrumb = function(globalCatId) {
       $scope.breadcrumb.globalCategory = Category.createCatStringById(
         globalCatId, $scope.dataset.GlobalCategories);
     };
 
+
     //Watches
-    $scope.$watch('variantPtr.OriginalPrice+variantPtr.SalePrice', function() {
-      var form = $scope.addProductForm;
-      if (form.OriginalPrice) form.OriginalPrice.$setValidity('min', true);
-      if ($scope.variantPtr.SalePrice == '') return;
-      if ($scope.variantPtr.OriginalPrice == '') return;
+    $scope.$watch('formData.ExpireDate', APExpireDateChangeEvent($scope));
 
-      if (Number($scope.variantPtr.SalePrice) > Number($scope.variantPtr.OriginalPrice)) {
-        if (form.OriginalPrice) form.OriginalPrice.$setValidity('min', false)
-        form.OriginalPrice.$error['min'] = 'Original Price must be higher than Sale Price';
-        form.OriginalPrice.$setDirty(true);
-      }
-    });
-
-    $scope.$watch('variantPtr.PromotionPrice', function() {
-      var form = $scope.addProductForm;
-      if (form.PromotionPrice) {
-        form.PromotionPrice.$setValidity('max', true);
-      }
-      if (!form.PromotionPrice) return;
-
-      if (Number($scope.variantPtr.SalePrice) <= Number($scope.variantPtr
-          .PromotionPrice)) {
-        if (form.PromotionPrice) {
-          form.PromotionPrice.$setValidity('max', false)
-        }
-        form.PromotionPrice.$error['max'] =
-          'Promotion Price must be lower than Sale Price'
-      }
-    });
-
-    $scope.$watch('formData.ExpireDate', function() {
-      // TODO: refactor use nctemplate
-      var form = $scope.addProductForm;
-      if (form.EffectiveDate == null) {
-        return
-      }
-      if (form.ExpireDate) form.ExpireDate.$setValidity('min', true)
-      if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
-        if (!form.ExpireDate) return;
-        if (form.ExpireDate) form.ExpireDate.$setValidity('min', false);
-        form.ExpireDate.$error['min'] =
-          'Effective date/time must come before expire date/time';
-      }
-    });
 
     /**
      * Other additional validations
@@ -18195,12 +20040,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.pairModal = angular.copy(pair);
           $scope.pairModal.alert = new NcAlert();
           $scope.pairIndex = index;
-
           $scope.uploaderModal.queue = $scope.pairModal.queue;
 
           var variantModal = $uibModal.open({
             animation: false,
-            backdrop: 'static',
             templateUrl: 'ap/modal-variant-detail',
             controller: ["$scope", "$uibModalInstance", "$timeout", "pair", "dataset", "uploader", "imageBlockOptions", function($scope, $uibModalInstance,
               $timeout, pair, dataset, uploader,
@@ -18211,7 +20054,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
               $scope.dataset = dataset;
               $scope.variantPtr = pair;
               $scope.uploader = uploader;
+
               $scope.no = function() {
+
                 if ($scope.form.$dirty) {
                   if (confirm("Your changes will not be saved, are you sure you want to close this modal?")) {
                     $uibModalInstance.close();
@@ -18256,6 +20101,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
             // Restore pointers
             $scope.form = $scope.addProductForm;
+
             $scope.variantPtr = $scope.formData.MasterVariant;
 
           }, function() {
@@ -18358,7 +20204,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
   }])
 
-},{"angular":314}],162:[function(require,module,exports){
+},{"angular":329}],173:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
 factory('AttributeOptions', function() {
@@ -18380,7 +20226,7 @@ factory('AttributeOptions', function() {
     }
 
 });
-},{"angular":314}],163:[function(require,module,exports){
+},{"angular":329}],174:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
 factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "ImageService", "GlobalCategory", "$q", "Category", "util", function(Product, AttributeSet, AttributeSetService, ImageService, GlobalCategory, $q, Category, util) {
@@ -18556,9 +20402,7 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
             GlobalCategory.getAll().then(function(data) {
               sharedDataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
               // console.log("Looking for ID ", globalCatId, sharedDataSet.GlobalCategories);
-              if(!_.has(sharedFormData.GlobalCategories[0], 'NameEn')){
-                  sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
-              }
+              // sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
               // console.log("Got ", sharedFormData.GlobalCategories[0]);
               breadcrumbs.globalCategory = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);
               // console.log(breadcrumbs, "breadcrumb");
@@ -18635,7 +20479,7 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
   return $productAdd;
 }]);
 
-},{"angular":314}],164:[function(require,module,exports){
+},{"angular":329}],175:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
 factory('VariationFactorIndices', function() {
@@ -18660,7 +20504,7 @@ factory('VariationFactorIndices', function() {
 
 });
 
-},{"angular":314}],165:[function(require,module,exports){
+},{"angular":329}],176:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
     .directive('apComponent', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", "Product", "util", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse, Product, util) {
@@ -18711,7 +20555,7 @@ angular.module('productDetail')
             }
         };
     }]);
-},{"angular":314}],166:[function(require,module,exports){
+},{"angular":329}],177:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
     .directive('apMultipliedVariants', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "util", function ($rootScope, 
@@ -18732,7 +20576,7 @@ angular.module('productDetail')
         };
     }]);
 
-},{"angular":314}],167:[function(require,module,exports){
+},{"angular":329}],178:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
     .directive('apVariationOption', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "util", function ($rootScope, 
@@ -18778,15 +20622,71 @@ angular.module('productDetail')
         };
     }]);
 
-},{"angular":314}],168:[function(require,module,exports){
+},{"angular":329}],179:[function(require,module,exports){
+var angular = require('angular');
+angular.module('productDetail')
+.factory('APOriginalPriceChangeEvent', function() {
+  return function($scope){
+    return function(){
+      var form = $scope.form;
+      if (form.OriginalPrice) form.OriginalPrice.$setValidity('min', true);
+      if ($scope.variantPtr.SalePrice == '') return;
+      if ($scope.variantPtr.OriginalPrice == '') return;
+      if (Number($scope.variantPtr.SalePrice) > Number($scope.variantPtr.OriginalPrice)) {
+        if (form.OriginalPrice) form.OriginalPrice.$setValidity('min', false)
+        form.OriginalPrice.$error['min'] = 'Original Price must be higher than Sale Price';
+        form.OriginalPrice.$setDirty(true);
+      }
+    }
+  }
+})
+.factory('APPromotionalPriceChangeEvent', function(){
+  return function($scope){
+    return function() {
+      var form = $scope.form;
+      if (form.PromotionPrice) {
+        form.PromotionPrice.$setValidity('max', true);
+      }
+      if (!form.PromotionPrice) return;
+
+      if (Number($scope.variantPtr.SalePrice) <= Number($scope.variantPtr
+          .PromotionPrice)) {
+        if (form.PromotionPrice) {
+          form.PromotionPrice.$setValidity('max', false)
+        }
+        form.PromotionPrice.$error['max'] = 'Promotion Price must be lower than Sale Price'
+      }
+    }
+  }
+})
+.factory('APExpireDateChangeEvent', function(){
+  return function($scope){
+    return function() {
+      // TODO: refactor use nctemplate
+      var form = $scope.addProductForm;
+      if (form.EffectiveDate == null) {
+        return
+      }
+      if (form.ExpireDate) form.ExpireDate.$setValidity('min', true)
+      if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
+        if (!form.ExpireDate) return;
+        if (form.ExpireDate) form.ExpireDate.$setValidity('min', false);
+        form.ExpireDate.$error['min'] =
+          'Effective date/time must come before expire date/time';
+      }
+    };
+  }
+})
+
+},{"angular":329}],180:[function(require,module,exports){
 var angular = require('angular');
 
 
 angular.module('productDetail', []);
 
-(function () {var f = require("./index.js");f["core"]=({"abstractProductAddCtrl":require("./core\\abstractProductAddCtrl.js"),"attributeOptions":require("./core\\attributeOptions.js"),"productLoader":require("./core\\productLoader.js"),"variationFactorIndices":require("./core\\variationFactorIndices.js")});f["directives"]=({"apComponent":require("./directives\\apComponent.js"),"apMultipliedVariants":require("./directives\\apMultipliedVariants.js"),"apVariationOption":require("./directives\\apVariationOption.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
+(function () {var f = require("./index.js");f["core"]=({"abstractProductAddCtrl":require("./core\\abstractProductAddCtrl.js"),"attributeOptions":require("./core\\attributeOptions.js"),"productLoader":require("./core\\productLoader.js"),"variationFactorIndices":require("./core\\variationFactorIndices.js")});f["directives"]=({"apComponent":require("./directives\\apComponent.js"),"apMultipliedVariants":require("./directives\\apMultipliedVariants.js"),"apVariationOption":require("./directives\\apVariationOption.js")});f["events"]=({"apEvents":require("./events\\apEvents.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
-},{"./core\\abstractProductAddCtrl.js":161,"./core\\attributeOptions.js":162,"./core\\productLoader.js":163,"./core\\variationFactorIndices.js":164,"./directives\\apComponent.js":165,"./directives\\apMultipliedVariants.js":166,"./directives\\apVariationOption.js":167,"./index.js":168,"./template.js":169,"angular":314}],169:[function(require,module,exports){
+},{"./core\\abstractProductAddCtrl.js":172,"./core\\attributeOptions.js":173,"./core\\productLoader.js":174,"./core\\variationFactorIndices.js":175,"./directives\\apComponent.js":176,"./directives\\apMultipliedVariants.js":177,"./directives\\apVariationOption.js":178,"./events\\apEvents.js":179,"./index.js":180,"./template.js":181,"angular":329}],181:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -18840,7 +20740,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-inventory',
-    "<div class=form-section><div class=form-section-header><h2>Inventory</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.Quantity nc-template-options-path=addProductForm/Quantity nc-label=\"Inventory Amount\"><input class=form-control ng-pattern-restrict=^[0-9]*$ ng-disabled=\"variantPtr.Pid || xspermit(37)\" name=Quantity maxlength=10 ng-model=\"variantPtr.Quantity\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UpdateAmount nc-template-options-path=addProductForm/UpdateAmount nc-label=\"Update Amount\"><input class=form-control ng-pattern-restrict=^-?[0-9]*$ ng-disabled=\"!variantPtr.Pid || xspermit(37)\" name=UpdateAmount maxlength=10 ng-model=\"variantPtr.UpdateAmount\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SafetyStock nc-template-options-path=addProductForm/SafetyStock nc-label=\"Safety Stock Amount\"><input class=form-control name=SafetyStock ng-disabled=xspermit(37) ng-pattern-restrict=^-?[0-9]*$ maxlength=10 maxlength=10 ng-model=\"variantPtr.SafetyStock\"></div><div nc-template=common/input/form-group-with-label nc-policy-admin nc-template-form=form.OnHold nc-template-options-path=addProductForm/SafetyStock nc-label=\"On Hold Amount\"><input class=form-control name=OnHold ng-disabled=xspermit(37) ng-pattern-restrict=^-?[0-9]*$ maxlength=10 ng-model=\"variantPtr.OnHold\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Reserve nc-template-options-path=addProductForm/SafetyStock nc-policy-admin nc-label=\"Reserve Amount\"><input class=form-control name=Reserve ng-disabled=xspermit(37) ng-pattern-restrict=^-?[0-9]*$ maxlength=10 ng-model=\"variantPtr.Reserve\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Defect nc-template-options-path=addProductForm/SafetyStock nc-policy-admin nc-label=\"Defect Amount\"><input class=form-control name=Defect ng-disabled=xspermit(37) ng-pattern-restrict=^-?[0-9]*$ maxlength=10 ng-model=\"variantPtr.Defect\"></div><div class=two-lines-label nc-template=common/input/form-group-with-label nc-template-form=form.MinQtyAllowInCart nc-template-options-path=addProductForm/MinQtyAllowInCart nc-label=\"Minimum Quantity<br> Allowed in Cart\"><input class=form-control name=MinQtyAllowInCart ng-disabled=xspermit(37) ng-pattern-restrict=^[0-9]*$ maxlength=5 nc-default-value=1 ng-model=\"variantPtr.MinQtyAllowInCart\"></div><div class=two-lines-label nc-template=common/input/form-group-with-label nc-template-form=form.MaxQtyAllowInCart nc-template-options-path=addProductForm/MaxQtyAllowInCart nc-label=\"Maximum Quantity<br> Allowed in Cart\"><input class=form-control name=MaxQtyAllowInCart ng-pattern-restrict=^[0-9]*$ maxlength=5 ng-disabled=xspermit(37) nc-default-value=100 maxlength=10 ng-model=\"variantPtr.MaxQtyAllowInCart\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.StockType nc-template-options-path=addProductForm/StockType nc-label=\"Stock Type\"><select ng-model=variantPtr.StockType class=form-control ng-disabled=xspermit(37) name=StockType><option selected value=- disabled>- Select Stock Type -</option><option value=Stock>Stock</option><option value=Pre-Order>Pre-Order</option></select></div><div nc-template=common/input/form-group-with-label ng-show=\"variantPtr.StockType == 'Pre-Order'\" nc-template-form=form.MaxQtyPreOrder nc-template-options-path=addProductForm/MaxQtyAllowInCart nc-label=\"Maximum Quantity Allowed for Pre-Order\"><input class=form-control name=MaxQtyPreOrder ng-disabled=xspermit(37) ng-pattern-restrict=^[0-9]*$ nc-default-value=100 maxlength=5 ng-model=\"variantPtr.MaxQtyPreOrder\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.IsHasExpiryDate nc-template-options-path=addProductForm/StockType nc-policy-indy-bu nc-label=\"Has Expiry Date\"><select ng-model=variantPtr.IsHasExpiryDate ng-disabled=xspermit(37) nc-default-value=\"'N'\" class=form-control name=IsHasExpiryDate><option value=N>No</option><option value=Y>Yes</option></select></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Inventory</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.Quantity nc-template-options-path=addProductForm/Quantity nc-label=\"Inventory Amount\"><input class=form-control ng-pattern-restrict=^-?[0-9]*$ ng-disabled=formData.ProductId name=Quantity maxlength=10 ng-model=\"variantPtr.Quantity\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UpdateAmount nc-template-options-path=addProductForm/UpdateAmount nc-label=\"Update Amount\"><input class=form-control ng-pattern-restrict=^-?[0-9]*$ ng-disabled=\"xspermit(37) || !formData.ProductId\" name=UpdateAmount maxlength=10 ng-model=\"variantPtr.UpdateAmount\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SafetyStock nc-template-options-path=addProductForm/SafetyStock nc-label=\"Safety Stock Amount\"><input class=form-control name=SafetyStock ng-disabled=xspermit(37) ng-pattern-restrict=^-?[0-9]*$ nc-default-value=0 maxlength=10 maxlength=10 ng-model=\"variantPtr.SafetyStock\"></div><div nc-template=common/input/form-group-with-label nc-policy-admin nc-template-form=form.OnHold nc-template-options-path=addProductForm/SafetyStock nc-label=\"On Hold Amount\"><input class=form-control name=OnHold ng-disabled=xspermit(37) ng-pattern-restrict=^-?[0-9]*$ maxlength=10 ng-model=\"variantPtr.OnHold\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Reserve nc-template-options-path=addProductForm/SafetyStock nc-policy-admin nc-label=\"Reserve Amount\"><input class=form-control name=Reserve ng-disabled=xspermit(37) ng-pattern-restrict=^-?[0-9]*$ maxlength=10 ng-model=\"variantPtr.Reserve\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Defect nc-template-options-path=addProductForm/SafetyStock nc-policy-admin nc-label=\"Defect Amount\"><input class=form-control name=Defect ng-disabled=xspermit(37) ng-pattern-restrict=^-?[0-9]*$ maxlength=10 ng-model=\"variantPtr.Defect\"></div><div class=two-lines-label nc-template=common/input/form-group-with-label nc-template-form=form.MinQtyAllowInCart nc-template-options-path=addProductForm/MinQtyAllowInCart nc-label=\"Minimum Quantity<br> Allowed in Cart\"><input class=form-control name=MinQtyAllowInCart ng-disabled=xspermit(37) ng-pattern-restrict=^[0-9]*$ maxlength=5 nc-default-value=1 ng-model=\"variantPtr.MinQtyAllowInCart\"></div><div class=two-lines-label nc-template=common/input/form-group-with-label nc-template-form=form.MaxQtyAllowInCart nc-template-options-path=addProductForm/MaxQtyAllowInCart nc-label=\"Maximum Quantity<br> Allowed in Cart\"><input class=form-control name=MaxQtyAllowInCart ng-pattern-restrict=^[0-9]*$ maxlength=5 ng-disabled=xspermit(37) nc-default-value=100 maxlength=10 ng-model=\"variantPtr.MaxQtyAllowInCart\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.StockType nc-template-options-path=addProductForm/StockType nc-label=\"Stock Type\"><select ng-model=variantPtr.StockType class=form-control ng-disabled=xspermit(37) name=StockType><option selected value=- disabled>- Select Stock Type -</option><option value=Stock>Stock</option><option value=Pre-Order>Pre-Order</option><option value=ByOrder>By Order</option></select></div><div nc-template=common/input/form-group-with-label ng-show=\"variantPtr.StockType == 'Pre-Order'\" nc-template-form=form.MaxQtyPreOrder nc-template-options-path=addProductForm/MaxQtyAllowInCart nc-label=\"Maximum Quantity Allowed for Pre-Order\"><input class=form-control name=MaxQtyPreOrder ng-disabled=xspermit(37) ng-pattern-restrict=^[0-9]*$ nc-default-value=100 maxlength=5 ng-model=\"variantPtr.MaxQtyPreOrder\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.IsHasExpiryDate nc-template-options-path=addProductForm/StockType nc-policy-indy-bu nc-label=\"Has Expiry Date\"><select ng-model=variantPtr.IsHasExpiryDate ng-disabled=xspermit(37) nc-default-value=\"'N'\" class=form-control name=IsHasExpiryDate><option value=N>No</option><option value=Y>Yes</option></select></div></div></div>"
   );
 
 
@@ -18862,7 +20762,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-price',
-    "<div class=form-section><div class=form-section-header><h2>Price</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SalePrice nc-label=\"Sale Price\" ng-cloack nc-template-options-path=addProductForm/SalePrice><input autocomplete=off ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 class=form-control name=SalePrice ng-disabled=\"xspermit(36) || xspermit(35)\" ng-model=variantPtr.SalePrice required></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.OriginalPrice><input autocomplete=off class=form-control name=OriginalPrice ng-disabled=\"xspermit(36) || xspermit(35)\" ng-model=variantPtr.OriginalPrice ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=\"10\"></div><div nc-template=common/input/form-group-with-label nc-label=Installment nc-template-options-path=addProductForm/Installment nc-template-form=form.Installment><select ng-disabled=\"disableInstallment() || xspermit(36) || xspermit(35)\" ng-cloak class=form-control ng-model=variantPtr.Installment><option ng-if=disableInstallment() value=N selected>Available when sale price is more than 5,000</option><option ng-if=!disableInstallment() value=N>No</option><option ng-if=!disableInstallment() value=Y>Yes</option></select></div><div nc-template=common/input/form-group-with-label nc-label=\"Promotion Price\" nc-template-form=form.PromotionPrice nc-template-options-path=addProductForm/PromotionPrice><input class=form-control name=PromotionPrice ng-disabled=\"xspermit(36) || xspermit(35)\" ng-model=variantPtr.PromotionPrice ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=\"10\"></div><div class=form-group><div class=width-label><label class=control-label>Promotion Effective Date</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown_promotion_effective_date role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-disabled=\"xspermit(36) || xspermit(35)\" ng-class=\"{'has-error': variantPtr.ExpireDatePromotion && variantPtr.ExpireDatePromotion <= variantPtr.EffectiveDatePromotion }\" placeholder=\"Select date and time when promotion will go online\" class=\"input-icon-calendar form-control\" value=\"{{ variantPtr.EffectiveDatePromotion | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel ng-show=\"!xspermit(35) && !xspermit(36)\"><datetimepicker data-ng-model=variantPtr.EffectiveDatePromotion data-datetimepicker-config=\"{ dropdownSelector: '#dropdown_promotion_effective_date', \r" +
+    "<div class=form-section><div class=form-section-header><h2>Price</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SalePrice nc-label=\"Sale Price\" ng-cloack nc-template-options-path=addProductForm/SalePrice><input autocomplete=off ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 class=form-control name=SalePrice ng-disabled=\"xspermit(36) || xspermit(35)\" ng-maxnumber=\"{{ variantPtr.OriginalPrice }}\" ng-model=variantPtr.SalePrice required></div><div nc-template=common/input/form-group-with-label nc-label=\"Original Price\" nc-template-options-path=addProductForm/OriginalPrice nc-template-form=form.OriginalPrice><input autocomplete=off class=form-control name=OriginalPrice ng-disabled=\"xspermit(36) || xspermit(35)\" ng-minnumber=\"{{ variantPtr.SalePrice }}\" ng-model=variantPtr.OriginalPrice ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=\"10\"></div><div nc-template=common/input/form-group-with-label nc-label=Installment nc-template-options-path=addProductForm/Installment nc-template-form=form.Installment><select ng-disabled=\"disableInstallment() || xspermit(36) || xspermit(35)\" ng-cloak class=form-control ng-model=variantPtr.Installment><option ng-if=disableInstallment() value=N selected>Available when sale price is more than 5,000</option><option ng-if=!disableInstallment() value=N>No</option><option ng-if=!disableInstallment() value=Y>Yes</option></select></div><div nc-template=common/input/form-group-with-label nc-label=\"Promotion Price\" nc-template-form=form.PromotionPrice nc-template-options-path=addProductForm/PromotionPrice><input class=form-control name=PromotionPrice ng-disabled=\"xspermit(36) || xspermit(35)\" ng-model=variantPtr.PromotionPrice ng-maxnumber=variantPtr.SalePrice ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=\"10\"></div><div class=form-group><div class=width-label><label class=control-label>Promotion Effective Date</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown_promotion_effective_date role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white ng-disabled=\"xspermit(36) || xspermit(35)\" ng-class=\"{'has-error': variantPtr.ExpireDatePromotion && variantPtr.ExpireDatePromotion <= variantPtr.EffectiveDatePromotion }\" placeholder=\"Select date and time when promotion will go online\" class=\"input-icon-calendar form-control\" value=\"{{ variantPtr.EffectiveDatePromotion | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel ng-show=\"!xspermit(35) && !xspermit(36)\"><datetimepicker data-ng-model=variantPtr.EffectiveDatePromotion data-datetimepicker-config=\"{ dropdownSelector: '#dropdown_promotion_effective_date',\r" +
     "\n" +
     "                        minView: 'minute', minuteStep: 30 }\"></ul></div><span class=\"help-block color-red\" ng-if=\"variantPtr.ExpireDatePromotion && variantPtr.ExpireDatePromotion <= variantPtr.EffectiveDatePromotion\"><span>Effective date/time must come before expire date/time</span></span></div></div><div class=form-group><div class=width-label><label class=control-label>Promotion Expire Date</label></div><div class=width-field-normal><div class=dropdown><a class=dropdown-toggle id=dropdown_promotion_expire_date role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white placeholder=\"Select date and time when promotion will go offline\" class=\"input-icon-calendar form-control\" ng-disabled=\"xspermit(36) || xspermit(35)\" ng-class=\"{'has-error': variantPtr.ExpireDatePromotion && variantPtr.ExpireDatePromotion <= variantPtr.EffectiveDatePromotion }\" value=\"{{ variantPtr.ExpireDatePromotion | date: 'dd/MM/yy HH:mm' }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel ng-show=\"!xspermit(35) && !xspermit(36)\"><datetimepicker data-ng-model=variantPtr.ExpireDatePromotion data-datetimepicker-config=\"{ dropdownSelector: '#dropdown_promotion_expire_date', minView: 'minute', minuteStep: 30 }\"></ul></div><span class=\"help-block color-red\" ng-if=\"variantPtr.ExpireDatePromotion && variantPtr.ExpireDatePromotion <= variantPtr.EffectiveDatePromotion\"><span>Effective date/time must come before expire date/time</span></span></div></div><div nc-template=common/input/form-group-with-label nc-policy-indy nc-label=\"Unit Price\" nc-template-options-path=addProductForm/NonRequiredSystemField nc-template-form=form.UnitPrice><input autocomplete=off ng-disabled=xspermit(36) class=form-control name=UnitPrice ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 nc-default-value=0 ng-model=\"variantPtr.UnitPrice\"></div><div nc-template=common/input/form-group-with-label nc-policy-indy nc-label=\"Purchase Price\" nc-template-options-path=addProductForm/NonRequiredSystemField nc-template-form=form.PurchasePrice><input ng-disabled=xspermit(36) nc-default-value=0 autocomplete=off class=form-control name=PurchasePrice ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-model=\"variantPtr.PurchasePrice\"></div><div nc-template=common/input/form-group-with-label nc-policy-indy-bu nc-label=\"Sale Unit (English)\" nc-template-options-path=addProductForm/NonRequiredSystemField nc-template-form=form.SaleUnitEn><input autocomplete=off ng-disabled=xspermit(36) class=form-control name=SaleUnitEn nc-default-value=\"'Piece'\" maxlength=255 ng-model=\"variantPtr.SaleUnitEn\"></div><div nc-template=common/input/form-group-with-label nc-policy-indy-bu nc-label=\"Sale Unit (ไทย)\" nc-template-options-path=addProductForm/NonRequiredSystemField nc-template-form=form.SaleUnitTh><input autocomplete=off class=form-control ng-disabled=xspermit(36) nc-default-value=\"'ชิ้น'\" name=SaleUnitTh maxlength=255 ng-model=\"variantPtr.SaleUnitTh\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.IsVat nc-template-options-path=addProductForm/NonRequiredSystemField nc-label=\"Include VAT\"><select ng-model=variantPtr.IsVat ng-disabled=!$root.permit(36) nc-default-value=\"'Y'\" class=form-control name=IsVat><option value=N>No</option><option value=Y>Yes</option></select></div></div></div>"
   );
@@ -18876,7 +20776,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-shipping',
-    "<div class=form-section><div class=form-section-header><h2>Shipping Detail</h2></div><div class=form-section-content><div class=form-group ng-if=\"variantPtr == formData.MasterVariant\"><div class=width-label><label class=\"control-label required\">Shipping Method</label></div><div class=width-field-normal><div class=\"radio multiple-radio multiline\"><label ng-repeat=\"shi in dataset.ShippingList\"><input type=radio name=shipping_method ng-required=onPublishing ng-disabled=xspermit(38) nc-default-value=1 ng-value={{shi.ShippingId}} ng-model=\"formData.ShippingMethod\"> {{ shi.ShippingMethodEn }}</label></div></div></div><div nc-template=common/input/form-group-with-label nc-template-form=form.ExpressDelivery nc-label=\"Express Delivery\"><select ng-disabled=xspermit(38) nc-default-value=\"'Y'\" ng-model=variantPtr.ExpressDelivery class=form-control name=ExpressDelivery><option selected value=- disabled>- Select Express Delivery Option -</option><option value=Y>Enable</option><option value=N>Disable</option></select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.ExpressDelivery nc-label=\"Delivery Fee\"><input ng-disabled=xspermit(38) class=form-control name=DeliveryFee ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-model=\"variantPtr.DeliveryFee\"></div><div nc-template=common/input/form-group-with-label nc-label=\"Preparation Time\" nc-template-form=form.PrepareDay nc-template-options-path=addProductForm/PrepareDay style=\"margin-bottom: 0px\"><input ng-disabled=xspermit(38) class=\"form-control width-field-normal\" name=PrepareDay ng-pattern-restrict=^[0-9]*$ nc-default-value=3 ng-required=onPublishing ng-max-number=24 maxlength=3 ng-model=\"variantPtr.PrepareDay\"></div><div class=\"form-group margin-bottom-20\"><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=checkbox><label><input ng-disabled=xspermit(38) type=checkbox ng-model=variantPtr.LimitIndividualDay> Set preparation time for individual day</label></div></div></div><div class=form-group ng-show=variantPtr.LimitIndividualDay><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=multiple-input><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Monday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareMon><input ng-disabled=xspermit(38) ng-pattern-restrict=^[0-9]*$ class=form-control maxlength=3 name=PrepareMon ng-model=\"variantPtr.PrepareMon\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Tuesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareTue><input ng-disabled=xspermit(38) ng-pattern-restrict=^[0-9]*$ class=form-control maxlength=3 name=PrepareTue ng-model=\"variantPtr.PrepareTue\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Wednesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareWed><input ng-disabled=xspermit(38) ng-pattern-restrict=^[0-9]*$ class=form-control maxlength=3 name=PrepareWed ng-model=\"variantPtr.PrepareWed\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Thursday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareThu><input ng-disabled=xspermit(38) class=form-control ng-pattern-restrict=^[0-9]*$ maxlength=3 name=PrepareThu ng-model=\"variantPtr.PrepareThu\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Friday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareFri><input ng-disabled=xspermit(38) ng-pattern-restrict=^[0-9]*$ class=form-control maxlength=3 name=PrepareFri ng-model=\"variantPtr.PrepareFri\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Saturday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSat><input ng-disabled=xspermit(38) class=form-control maxlength=3 ng-pattern-restrict=^[0-9]*$ name=PrepareSat ng-model=\"variantPtr.PrepareSat\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Sunday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSun><input ng-disabled=xspermit(38) class=form-control ng-pattern-restrict=^[0-9]*$ maxlength=3 name=PrepareSun ng-model=\"variantPtr.PrepareSun\"></div></div></div></div></div><div class=\"form-group margin-top-20\"><div class=width-label><label class=\"control-label required\" style=margin-top:-8px>Package Dimension</label></div><div class=width-field-xxl><div class=multiple-input><div class=input-column><div nc-template=common/input/div-with-label nc-label=Length nc-template-options-path=addProductForm/Dimension nc-template-form=form.Length><input ng-disabled=xspermit(38) ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 class=form-control ng-required=onPublishing name=Length ng-model=\"variantPtr.Length\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Height nc-template-options-path=addProductForm/Dimension nc-template-form=form.Height><input ng-disabled=xspermit(38) class=form-control ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-required=onPublishing name=Height ng-model=\"variantPtr.Height\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Width nc-template-options-path=addProductForm/Dimension nc-template-form=form.Width><input ng-disabled=xspermit(38) class=form-control ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-required=onPublishing name=Width ng-model=\"variantPtr.Width\"></div></div><div class=\"input-column no-label select input-xl\" style=\"padding-top: 24px\"><select ng-disabled=xspermit(38) ng-model=variantPtr.DimensionUnit class=form-control><option value=MM>Millimeter</option><option value=CM>Centimeter</option><option value=M>Meter</option></select></div></div></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Weight</label></div><div class=width-field-xxl><div class=multiple-input><div nc-template=common/input/text-column-no-label nc-label=\"\" nc-template-options-path=addProductForm/Dimension nc-template-form=form.Weight><input ng-disabled=xspermit(38) class=form-control ng-required=onPublishing name=Weight ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-model=\"variantPtr.Weight\"></div><div class=\"input-column select input-xl\"><div class=ah-select2-dropdown><select ng-disabled=xspermit(38) class=form-control ng-model=variantPtr.WeightUnit><option value=G>Grams</option><option value=KG>Kilograms</option></select></div></div></div></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Shipping Detail</h2></div><div class=form-section-content><div class=form-group ng-if=\"variantPtr == formData.MasterVariant\"><div class=width-label><label class=\"control-label required\">Shipping Method</label></div><div class=width-field-normal><div class=\"radio multiple-radio multiline\"><label ng-repeat=\"shi in dataset.ShippingList\"><input type=radio name=shipping_method ng-required=onPublishing ng-disabled=xspermit(38) nc-default-value=1 ng-value={{shi.ShippingId}} ng-model=\"formData.ShippingMethod\"> {{ shi.ShippingMethodEn }}</label></div></div></div><div nc-template=common/input/form-group-with-label nc-template-form=form.ExpressDelivery nc-template-options-path=addProductForm/SafetyStock nc-label=\"Express Delivery\"><select ng-disabled=xspermit(38) nc-default-value=\"'Y'\" ng-model=variantPtr.ExpressDelivery class=form-control name=ExpressDelivery><option selected value=- disabled>- Select Express Delivery Option -</option><option value=Y>Enable</option><option value=N>Disable</option></select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.ExpressDelivery nc-template-options-path=addProductForm/SafetyStock nc-label=\"Delivery Fee\"><input ng-disabled=xspermit(38) class=form-control name=DeliveryFee maxlength=12 ng-pattern-restrict=^[0-9]*(\\\\.[0-9]*)?$ ng-model=\"variantPtr.DeliveryFee\"></div><div nc-template=common/input/form-group-with-label nc-label=\"Preparation Time\" nc-template-form=form.PrepareDay nc-template-options-path=addProductForm/PrepareDay style=\"margin-bottom: 0px\"><input ng-disabled=xspermit(38) class=\"form-control width-field-normal\" name=PrepareDay ng-pattern-restrict=^[0-9]*$ ng-required=onPublishing maxlength=3 ng-model=variantPtr.PrepareDay nc-default-value=\"2\"></div><div class=\"form-group margin-bottom-20\"><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=checkbox><label><input ng-disabled=xspermit(38) type=checkbox ng-model=variantPtr.LimitIndividualDay> Set preparation time for individual day</label></div></div></div><div class=form-group ng-show=variantPtr.LimitIndividualDay><div class=width-label><label class=control-label></label></div><div class=width-field-xxl><div class=multiple-input><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Monday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareMon><input ng-disabled=xspermit(38) ng-pattern-restrict=^[0-9]*$ class=form-control maxlength=3 name=PrepareMon ng-model=\"variantPtr.PrepareMon\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Tuesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareTue><input ng-disabled=xspermit(38) ng-pattern-restrict=^[0-9]*$ class=form-control maxlength=3 name=PrepareTue ng-model=\"variantPtr.PrepareTue\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Wednesday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareWed><input ng-disabled=xspermit(38) ng-pattern-restrict=^[0-9]*$ class=form-control maxlength=3 name=PrepareWed ng-model=\"variantPtr.PrepareWed\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Thursday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareThu><input ng-disabled=xspermit(38) class=form-control ng-pattern-restrict=^[0-9]*$ maxlength=3 name=PrepareThu ng-model=\"variantPtr.PrepareThu\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Friday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareFri><input ng-disabled=xspermit(38) ng-pattern-restrict=^[0-9]*$ class=form-control maxlength=3 name=PrepareFri ng-model=\"variantPtr.PrepareFri\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Saturday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSat><input ng-disabled=xspermit(38) class=form-control maxlength=3 ng-pattern-restrict=^[0-9]*$ name=PrepareSat ng-model=\"variantPtr.PrepareSat\"></div></div><div class=\"input-column margin-bottom-10\"><div nc-template=common/input/div-with-label nc-label=Sunday nc-template-options-path=addProductForm/Dimension nc-template-form=form.PrepareSun><input ng-disabled=xspermit(38) class=form-control ng-pattern-restrict=^[0-9]*$ maxlength=3 name=PrepareSun ng-model=\"variantPtr.PrepareSun\"></div></div></div></div></div><div class=\"form-group margin-top-20\"><div class=width-label><label class=\"control-label required\" style=margin-top:-8px>Package Dimension</label></div><div class=width-field-xxl><div class=multiple-input><div class=input-column><div nc-template=common/input/div-with-label nc-label=Length nc-template-options-path=addProductForm/Dimension nc-template-form=form.Length><input ng-disabled=xspermit(38) class=form-control maxlength=11 ng-required=onPublishing name=Length ng-model=\"variantPtr.Length\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Height nc-template-options-path=addProductForm/Dimension nc-template-form=form.Height><input ng-disabled=xspermit(38) class=form-control maxlength=11 ng-required=onPublishing name=Height ng-model=\"variantPtr.Height\"></div></div><div class=input-column><div nc-template=common/input/div-with-label nc-label=Width nc-template-options-path=addProductForm/Dimension nc-template-form=form.Width><input ng-disabled=xspermit(38) class=form-control maxlength=11 ng-required=onPublishing name=Width ng-model=\"variantPtr.Width\"></div></div><div class=\"input-column no-label select input-xl\" style=\"padding-top: 24px\"><select ng-disabled=xspermit(38) ng-model=variantPtr.DimensionUnit class=form-control><option value=MM>Millimeter</option><option value=CM>Centimeter</option><option value=M>Meter</option></select></div></div></div></div><div class=form-group><div class=width-label><label class=\"control-label required\">Weight</label></div><div class=width-field-xxl><div class=multiple-input><div nc-template=common/input/text-column-no-label nc-label=\"\" nc-template-options-path=addProductForm/Dimension nc-template-form=form.Weight><input ng-disabled=xspermit(38) class=form-control maxlength=12 ng-required=onPublishing name=Weight ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-model=\"variantPtr.Weight\"></div><div class=\"input-column select input-xl\"><div class=ah-select2-dropdown><select ng-disabled=xspermit(38) class=form-control ng-model=variantPtr.WeightUnit><option value=G>Grams</option><option value=KG>Kilograms</option></select></div></div></div></div></div></div></div>"
   );
 
 
@@ -18903,7 +20803,9 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "\n" +
     "        'messages': {\r" +
     "\n" +
-    "        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
+    "        'pattern': 'Only numbers and decimals (up to 2 digits) allowed',\r" +
+    "\n" +
+    "        'maxnumber': 'Original Price must be higher than Sale Price'\r" +
     "\n" +
     "        },\r" +
     "\n" +
@@ -18913,13 +20815,15 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "\n" +
     "        }\r" +
     "\n" +
-    "        }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }\" ng-model=pair.SalePrice name=\"pair_SalePrice{{ $index }}\" ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-disabled=\"!pair.Visibility || xspermit(44)\" ng-required=pair.Visibility class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
+    "        }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }\" ng-model=pair.SalePrice name=\"pair_SalePrice{{ $index }}\" ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-maxnumber=\"{{ pair.OriginalPrice }}\" ng-disabled=\"!pair.Visibility || xspermit(44)\" ng-required=pair.Visibility class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
     "\n" +
     "        'error' : {\r" +
     "\n" +
     "        'messages': {\r" +
     "\n" +
-    "        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\r" +
+    "        'pattern': 'Only numbers and decimals (up to 2 digits) allowed',\r" +
+    "\n" +
+    "        'minnumber': 'Original Price must be higher than Sale Price'\r" +
     "\n" +
     "        },\r" +
     "\n" +
@@ -18929,7 +20833,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "\n" +
     "        }\r" +
     "\n" +
-    "        }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }\" name=pair_OriginalPrice{{$index}} ng-model=pair.OriginalPrice ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-disabled=\"!pair.Visibility || xspermit(44)\" class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
+    "        }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_OriginalPrice{{$index}}) }\" name=pair_OriginalPrice{{$index}} ng-model=pair.OriginalPrice ng-minnumber=\"{{ pair.SalePrice }}\" ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-disabled=\"!pair.Visibility || xspermit(44)\" class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
     "\n" +
     "        'error' : {\r" +
     "\n" +
@@ -19039,7 +20943,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "<div id=add-product-variation-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row ng-if=\"controlFlags.variation != 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content><div class=form-group><p class=form-control-static>Variation will allow you to create a group of products with different attributes such as size and color. Once you enable variation, information from other tabs will be copied into variants that you will create, and variation cannot be disabled. <strong>Please select attribute set before enabling variation.</strong></p><a class=\"btn btn-width-xxl btn-blue margin-top-20\" ng-disabled=\"!formData.AttributeSet.AttributeSetId || xspermit(44)\" ng-click=enableVariation()>Enable Variation</a></div></div></div></div></div><div class=row ng-show=\"controlFlags.variation == 'enable'\"><div class=col-xs-12><ap-variation-option form-data=formData control-flags=controlFlags ng-disabled=xspermit(44) generator=variationFactorIndices dataset=dataset></ap-variation-option><ap-multiplied-variants ng-show=\"formData.Variants.length > 0\"><div ng-include=\"'ap/section-variant-table-a'\"></div></ap-multiplied-variants></div></div></div>"
   );
  }]);
-},{}],170:[function(require,module,exports){
+},{}],182:[function(require,module,exports){
 var angular = require('angular');
 var bulk = {};
 angular.module('schematics', []).
@@ -19054,7 +20958,7 @@ factory('JSONCache', function(){
     }
   }
 });
-},{"./schema\\attribute.js":171,"./schema\\attributeSet.js":172,"./schema\\attributeValue.js":173,"./schema\\attributeValueMap.js":174,"./schema\\nthAttribute.js":175,"./schema\\productStages.js":176,"./schema\\revisionObject.js":177,"./schema\\seo.js":178,"./schema\\variant.js":179,"angular":314}],171:[function(require,module,exports){
+},{"./schema\\attribute.js":183,"./schema\\attributeSet.js":184,"./schema\\attributeValue.js":185,"./schema\\attributeValueMap.js":186,"./schema\\nthAttribute.js":187,"./schema\\productStages.js":188,"./schema\\revisionObject.js":189,"./schema\\seo.js":190,"./schema\\variant.js":191,"angular":329}],183:[function(require,module,exports){
 module.exports = {
   "title": "Attribute Schema V9",
   "type": "object",
@@ -19087,7 +20991,7 @@ module.exports = {
   ]
 };
 
-},{"./attributeValue":173,"./attributeValueMap":174}],172:[function(require,module,exports){
+},{"./attributeValue":185,"./attributeValueMap":186}],184:[function(require,module,exports){
 module.exports = {
   "title": "Attribute Set Schema V4",
   "type": "object",
@@ -19135,7 +21039,7 @@ module.exports = {
   }
 };
 
-},{"./attribute":171}],173:[function(require,module,exports){
+},{"./attribute":183}],185:[function(require,module,exports){
 module.exports = {
     "title": "Attribute Value Schema V4",
     "type": "object",
@@ -19153,7 +21057,7 @@ module.exports = {
     "required": ["AttributeValueId"]
 };
 
-},{}],174:[function(require,module,exports){
+},{}],186:[function(require,module,exports){
 module.exports = {
   "title": "Attribute Value Map Schema V4",
   "type": "object",
@@ -19164,7 +21068,7 @@ module.exports = {
   }
 };
 
-},{"./attributeValue":173}],175:[function(require,module,exports){
+},{"./attributeValue":185}],187:[function(require,module,exports){
 module.exports = {
   "title": "Nth Attribute Schema V9",
   "type": "object",
@@ -19186,7 +21090,7 @@ module.exports = {
   "required": ["ValueEn", "AttributeId", "AttributeValues"]
 }
 
-},{"./attributeValue":173}],176:[function(require,module,exports){
+},{"./attributeValue":185}],188:[function(require,module,exports){
 module.exports = {
   "title": "Product Stage Schema V9",
   "type": "object",
@@ -19328,7 +21232,7 @@ module.exports = {
   }
 };
 
-},{"./attribute":171,"./revisionObject":177,"./variant":179}],177:[function(require,module,exports){
+},{"./attribute":183,"./revisionObject":189,"./variant":191}],189:[function(require,module,exports){
 module.exports = {
   "title": "Revisions V9",
   "type": "object",
@@ -19340,7 +21244,7 @@ module.exports = {
   }
 }
 
-},{}],178:[function(require,module,exports){
+},{}],190:[function(require,module,exports){
 module.exports = {
   "title": "SEO Schema V9",
   "type": "object",
@@ -19366,7 +21270,7 @@ module.exports = {
    "MetaKeywordEn", "MetaKeywordTh", "ProductUrlKeyEn", "ProductBoostingWeight", "GlobalProductBoostingWeight"]
 }
 
-},{}],179:[function(require,module,exports){
+},{}],191:[function(require,module,exports){
 module.exports =  {
   "title": "Variant Schema V9",
   "type": "object",
@@ -19565,7 +21469,7 @@ module.exports =  {
     "Installment", "PrepareDay", "LimitIndividualDay", "Display"]
 };
 
-},{"./nthAttribute":175,"./seo":178}],180:[function(require,module,exports){
+},{"./nthAttribute":187,"./seo":190}],192:[function(require,module,exports){
 angular.module('umeSelect')
 .directive('umeFocus', ["$timeout", function($timeout) {
   return {
@@ -19592,7 +21496,7 @@ angular.module('umeSelect')
   };
 }]);
 
-},{}],181:[function(require,module,exports){
+},{}],193:[function(require,module,exports){
 var angular = require('angular');
 angular.module('umeSelect')
     .directive('youMe', ["$rootScope", "$templateCache", "$compile", "$timeout", "$filter", function ($rootScope, $templateCache, $compile, $timeout, $filter) {
@@ -19800,7 +21704,6 @@ angular.module('umeSelect')
 
                 //In complicated mode (multiple)
                 if(scope.itsComplicated){
-                    if(!scope.choices) scope.choices = [];
                     scope.choices.unshift(scope.tagify('New Tag'));
                 }
 
@@ -19821,8 +21724,8 @@ angular.module('umeSelect')
 
                         $timeout(function (){
                             scope.$emit('focusLost', _id);
-                            // var K = $filter('filter')((scope.choices || []), scope.searchText);
-                            var K = (scope.searchText.length > 0 ? (scope.choices || []) : scope.initialChoices);
+                            // var K = $filter('filter')(scope.choices, scope.searchText);
+                            var K = (scope.searchText.length > 0 ? scope.choices : scope.initialChoices);
                             var result= scope.pickItem(K[scope.highlightedIndex]);
                             if(!result){
                                 scope.$emit('focusObtained', _id);
@@ -19836,8 +21739,8 @@ angular.module('umeSelect')
                         if(_.isArray(scope.model) && scope.model.length > 0) scope.model.pop();
                     }
 
-                    if(scope.highlightedIndex >= (scope.choices || []).length){
-                        scope.highlightedIndex = (scope.choices || []).length - 1;
+                    if(scope.highlightedIndex >= scope.choices.length){
+                        scope.highlightedIndex = scope.choices.length - 1;
                     }
 
                     if(scope.highlightedIndex <= 0){
@@ -19851,8 +21754,7 @@ angular.module('umeSelect')
                     //but long enough to trigger a blur which deactivates choices
                     $timeout(function(){
                         scope.focused = false;
-                        scope.searchText = "";
-                    }, 350)
+                    }, 500)
                 }
 
                 scope.focus = function(broadcast){
@@ -19885,7 +21787,6 @@ angular.module('umeSelect')
                     }
 
                     if(scope.itsComplicated){
-                        if(!scope.choices) scope.choices = [];
                         scope.choices[0] = scope.tagify(scope.searchText);
                     }
                     
@@ -19905,7 +21806,7 @@ angular.module('umeSelect')
                         //If this is same as previous request, dont do it
                         var curDate = new Date();
                         var tooShort = ((curDate - prevQ.ts) < 3000);
-                        var previousWasntEmpty = ((scope.choices || []).length > 0);
+                        var previousWasntEmpty = (scope.choices.length > 0);
                         if(prevQ.searchText == scope.searchText 
                             && tooShort && previousWasntEmpty) return; 
 
@@ -19918,7 +21819,7 @@ angular.module('umeSelect')
                             scope.refresh(scope.searchText).then(function(){
                                 loadQ.pop();
                                 scope.loading = false;
-                                scope.notFound = ((scope.choices || []).length == 0);
+                                scope.notFound = (scope.choices.length == 0);
                             });
                         }catch(ex){
                             //Ugh
@@ -20032,7 +21933,7 @@ angular.module('umeSelect')
         };
     }]);
 
-},{"angular":314}],182:[function(require,module,exports){
+},{"angular":329}],194:[function(require,module,exports){
 var angular = require('angular');
 
 
@@ -20040,14 +21941,14 @@ angular.module('umeSelect', []);
 
 (function () {var f = require("./index.js");f["directives"]=({"ume-focus":require("./directives\\ume-focus.js"),"ume-select":require("./directives\\ume-select.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
-},{"./directives\\ume-focus.js":180,"./directives\\ume-select.js":181,"./index.js":182,"./template.js":183,"angular":314}],183:[function(require,module,exports){
+},{"./directives\\ume-focus.js":192,"./directives\\ume-select.js":193,"./index.js":194,"./template.js":195,"angular":329}],195:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
 angular.module("umeSelect").run(["$templateCache", function($templateCache) {  'use strict';
 
   $templateCache.put('ume/choicelist',
-    "<div class=\"selectize-dropdown single demo-default\" ng-show=\"(searchText.length > 0 && focused) || (initialChoices && focused)\" style=\"width: 100%\"><div class=selectize-dropdown-content><div data-group=Default class=optgroup><div ng-show=item[groupBy] ng-repeat-start=\"item in (searchText.length > 0 ? choices : choices) track by $index\" class=optgroup-header>{{ item[groupBy] }}</div><div ng-repeat-end ng-click=pickItem(item) data-value={{item}} ng-class=\"{'ume-highlighted' : $index == highlightedIndex}\" data-selectable class=option>{{ itemValue(item) }}</div><div ng-if=\"(choices | filter : searchText).length == 0 && notFound && !loading && searchText != ''\" data-selectable class=option>No result for search term '{{ searchText }}'</div></div></div></div>"
+    "<div class=\"selectize-dropdown single demo-default\" ng-show=\"(searchText.length > 0 && focused) || (initialChoices && focused)\" style=\"width: 100%\"><div class=selectize-dropdown-content><div data-group=Default class=optgroup><div ng-show=item[groupBy] ng-repeat-start=\"item in (searchText.length > 0 ? choices : choices) track by $index\" class=optgroup-header>{{ item[groupBy] }}</div><div ng-repeat-end ng-click=pickItem(item) data-value={{item}} ng-class=\"{'ume-highlighted' : $index == highlightedIndex}\" data-selectable class=option>{{ itemValue(item) }}</div><div ng-if=\"(choices | filter : searchText).length == 0 && notFound && !loading\" data-selectable class=option>No result for search term '{{ searchText }}'</div></div></div></div>"
   );
 
 
@@ -20060,7 +21961,7 @@ angular.module("umeSelect").run(["$templateCache", function($templateCache) {  '
     "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-plain': hideIcon, 'ume-search' : !loading && !hideIcon, 'ume-loading': loading, 'input-active': true}\" style=\"min-height: 34px\"><input ume-focus=focusObtained ng-disabled=disabled() ume-blur=focusLost ume-id=\"{{ _id }}\" autocomplete=off tabindex=\"\" ng-model=searchText ng-focus=focus() ng-blur=blur() placeholder=\"{{ placeholder }}\" ng-keydown=keyDown($event) ng-show=\"focused || !itemValue(model)\" style=\"width: 100%\"><div ng-show=\"!focused && itemValue(model)\" class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ itemValue(model) || placeholder }}</div></div><div ng-include=\"'ume/choicelist'\"></div></div>"
   );
  }]);
-},{}],184:[function(require,module,exports){
+},{}],196:[function(require,module,exports){
 /**
  * Collection of Route ID (Object key) with route string
  *
@@ -20099,6 +22000,11 @@ var seller = {
 	'Promotion|fa-bookmark': {
 		'Coupons': '/coupons'
 	},
+	'CMS|fa fa-contao': {
+	    'CMS Category': '/cms/category',
+	    'CMS Static & Collection': '/cms/master',
+	    'CMS Group': '/cms/group'
+	},
 	'Shop Setting|fa-sliders': {
 		'Shop Profile': '/shops/settings',
 		'Shop Appearance': '/shops/appearance'
@@ -20108,8 +22014,12 @@ var seller = {
 		'User Roles': '/roles'
 	},
 
-	'Report|fa-file': {
+	'Report|fa-file-o': {
 	    'View Report': '/reports',
+        'Sale Report For Seller': '/reports/std/saleforseller',
+        'Stock Status Report': '/reports/std/stockstatus',
+        'On Hold Report' : '/reports/std/onhold',
+        'Return Report' : '/reports/std/return'
 	}
 };
 var admin = {
@@ -20147,8 +22057,7 @@ var admin = {
 	    'CMS Group': '/admin/cms/group'
 	},
 	'Reports|fa-file': {
-	    'Sale Report For Seller': '/admin/reports/std/saleforseller',
-        'Stok Status Report': '/admin/reports/std/stokstatus'
+	    
 	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'
@@ -20170,6 +22079,9 @@ var permission = {
 	13: '/admin/coupons/seller',
 	21: '/admin/newsletters',
 	81: '/admin/products/reviews',
+	22: '/admin/cms',
+	27: ['/admin/reports/std/stockstatus', '/admin/reports/std/onhold', '/admin/reports/std/return'],
+	// 24: ['/admin/cms/category/create', '/admin/cms/master/create', '/admin/cms/group/create'],
 
 	//Seller
 	29: '/dashboard',
@@ -20187,7 +22099,9 @@ var permission = {
 	55: '/shops/settings',
 	56: '/shops/appearance',
 	57: ['/roles', '/accounts'],
-	82: '/cms',
+	60: '/cms',
+	71: '/reports/std/saleforseller', 
+	// 62: ['/cms/category/create', '/cms/master/create', '/cms/group/create'],
 
 	//Shop
 	64: '/dashboard',
@@ -20250,7 +22164,7 @@ module.exports = {
   permission: permission
 }
 
-},{"lodash":318}],185:[function(require,module,exports){
+},{"lodash":333}],197:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$q', 'common', function ($q, common) {
 
@@ -20332,7 +22246,7 @@ module.exports = ['$q', 'common', function ($q, common) {
 }
 ];
 
-},{"angular":314}],186:[function(require,module,exports){
+},{"angular":329}],198:[function(require,module,exports){
 module.exports = ["common", "config", "util", "$log", "$window", function (common, config, util, $log, $window) {
     'ngInject';
     'use strict';
@@ -20442,7 +22356,7 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
     return service;
 }];
 
-},{}],187:[function(require,module,exports){
+},{}],199:[function(require,module,exports){
 //Products Service
 module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     function ($http, common, util, config, KnownException) {
@@ -20535,13 +22449,13 @@ module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     }
 ];
 
-},{}],188:[function(require,module,exports){
+},{}],200:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Promotion/Ontopcreate');
 	return service;
 }];
-},{}],189:[function(require,module,exports){
+},{}],201:[function(require,module,exports){
 module.exports = ["common", "config", "util", "$log", "$window", function (common, config, util, $log, $window) {
     'ngInject';
     'use strict';
@@ -20565,7 +22479,7 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
     return service;
 }];
 
-},{}],190:[function(require,module,exports){
+},{}],202:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Admin');
@@ -20602,7 +22516,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],191:[function(require,module,exports){
+},{}],203:[function(require,module,exports){
 module.exports = ["common", function (common) {
 	'ngInject';
 	var service = common.Rest('/Products/Master');
@@ -20632,13 +22546,13 @@ module.exports = ["common", function (common) {
 
 	
 }];
-},{}],192:[function(require,module,exports){
+},{}],204:[function(require,module,exports){
 module.exports = ["common", "$q", function(common, $q) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Admin');
 	return service;
 }]
-},{}],193:[function(require,module,exports){
+},{}],205:[function(require,module,exports){
 module.exports = ["common", "AdminPermissionService", function(common, AdminPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Admin');
@@ -20661,7 +22575,7 @@ module.exports = ["common", "AdminPermissionService", function(common, AdminPerm
 	};
 	return service;	
 }]
-},{}],194:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 module.exports = ["common", "config", "util", function(common, config, util) {
 	'ngInject';
 	var service = common.Rest('/Shops');
@@ -20702,14 +22616,13 @@ module.exports = ["common", "config", "util", function(common, config, util) {
 			GiftWrap: 'N',
 			TaxInvoice: 'Y',
 			StockAlert: 0,
-			Payment: 1,
 			CloneGlobalCategory: false
 		};
 		return processed;
 	};
 	return service;	
 }]
-},{}],195:[function(require,module,exports){
+},{}],207:[function(require,module,exports){
 module.exports = ["common", "ShopPermissionService", function(common, ShopPermissionService) {
 	'ngInject';
 	var service = common.Rest('/Shoptypes');
@@ -20732,7 +22645,7 @@ module.exports = ["common", "ShopPermissionService", function(common, ShopPermis
 	};
 	return service;	
 }]
-},{}],196:[function(require,module,exports){
+},{}],208:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common){
 	'use strict';
@@ -20987,7 +22900,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{"angular":314}],197:[function(require,module,exports){
+},{"angular":329}],209:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/Attributes');
@@ -21103,7 +23016,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }];
-},{}],198:[function(require,module,exports){
+},{}],210:[function(require,module,exports){
 module.exports = ['common', function(common){
 	'use strict';
 	var service = {};
@@ -21252,7 +23165,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{}],199:[function(require,module,exports){
+},{}],211:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/AttributeSets');
@@ -21343,7 +23256,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }]
-},{}],200:[function(require,module,exports){
+},{}],212:[function(require,module,exports){
 module.exports = ['$window', function($window) {
 	return function(fn, close) {
 		var vm = this;
@@ -21379,7 +23292,7 @@ module.exports = ['$window', function($window) {
 		};
 	};
 }];
-},{}],201:[function(require,module,exports){
+},{}],213:[function(require,module,exports){
 module.exports = ['$q', 'common', function($q, common){
 	var service = {};
 	//TODO: change searchText -> q
@@ -21464,7 +23377,7 @@ module.exports = ['$q', 'common', function($q, common){
 	};
 	return service;
 }];
-},{}],202:[function(require,module,exports){
+},{}],214:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	service = common.Rest('/Brands');
@@ -21472,12 +23385,10 @@ module.exports = ["common", function(common) {
 		return {
 			BrandBannerEn: [],
 			BrandBannerTh: [],
-			IsDescription: false,
-			BannerStatusEn: true,
-			BannerStatusTh: true,
-			BannerSmallStatusEn: true,
-			BannerSmallStatusTh: true,
-			FeatureProductStatus: true,
+			IsBannerEn: false,
+			IsBannerTh: false,
+			IsSmallBannerEn: false,
+			IsSmallBannerTh: false,
 			Status: 'NA'
 		};
 	}
@@ -21496,7 +23407,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }]
-},{}],203:[function(require,module,exports){
+},{}],215:[function(require,module,exports){
 //Buy 1 Get 1 Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
     function ($http, common, util, LocalCategory, Brand, config) {
@@ -21720,7 +23631,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
     }
 ];
 
-},{}],204:[function(require,module,exports){
+},{}],216:[function(require,module,exports){
 module.exports = ['Product', 'Collection', 'Buy1Get1','Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
     function (Product,  Collection, Buy1Get1 , Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
         var $buy1get1Add = {};
@@ -21753,7 +23664,7 @@ module.exports = ['Product', 'Collection', 'Buy1Get1','Brand', 'AttributeSet', '
 
         return $buy1get1Add;
     }];
-},{}],205:[function(require,module,exports){
+},{}],217:[function(require,module,exports){
 /**
  * Util class for category
  * @author poonwu
@@ -22080,7 +23991,7 @@ module.exports = ['config', function (config) {
     return service;
 } ];
 
-},{"angular":314}],206:[function(require,module,exports){
+},{"angular":329}],218:[function(require,module,exports){
 
 var angular = require('angular');
 module.exports = ['$q', 'common', function ($q, common) {
@@ -22208,7 +24119,7 @@ module.exports = ['$q', 'common', function ($q, common) {
     }
 ];
 
-},{"angular":314}],207:[function(require,module,exports){
+},{"angular":329}],219:[function(require,module,exports){
 
 var angular = require('angular');
 module.exports = ['$q', 'common', function ($q, common) {
@@ -22292,7 +24203,7 @@ module.exports = ['$q', 'common', function ($q, common) {
     }
 ];
 
-},{"angular":314}],208:[function(require,module,exports){
+},{"angular":329}],220:[function(require,module,exports){
 //Products Service
 module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     function ($http, common, util, config, KnownException) {
@@ -22423,14 +24334,14 @@ module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     }
 ];
 
-},{}],209:[function(require,module,exports){
+},{}],221:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common) {
 	var service = common.Rest('/Coupons');
 	return service;
 }];
 
-},{"angular":314}],210:[function(require,module,exports){
+},{"angular":329}],222:[function(require,module,exports){
 //TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in poon's local)
 module.exports = ["common", "$base64", "storage", "$q", "$rootScope", function(common, $base64, storage, $q, $rootScope) {
     'ngInject';
@@ -22547,7 +24458,7 @@ module.exports = ["common", "$base64", "storage", "$q", "$rootScope", function(c
 
 	return service;
 }];
-},{}],211:[function(require,module,exports){
+},{}],223:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$window', '$base64', 'config', function($window, $base64, config) {
@@ -22560,11 +24471,11 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
         //     'message': exception.message
         // }));
         // $window.location = '/exception?e=' + encMsg;
-        // Rollbar.error("Uncaught Exception", exception);
+        Rollbar.error("Uncaught Exception", exception);
     };
 }];
 
-},{"angular":314}],212:[function(require,module,exports){
+},{"angular":329}],224:[function(require,module,exports){
 module.exports = ["config", "storage", "FileUploader", function(config, storage, FileUploader) {
 	'ngInject';
 	var service = {};
@@ -22584,7 +24495,7 @@ module.exports = ["config", "storage", "FileUploader", function(config, storage,
 	};
 	return service;
 }];
-},{}],213:[function(require,module,exports){
+},{}],225:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/GlobalCategories');
@@ -22652,7 +24563,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],214:[function(require,module,exports){
+},{}],226:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	service = common.Rest('/GlobalCategories');
@@ -22668,12 +24579,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 			AttributeSets: [],
 			CategoryBannerTh: [],
 			CategoryBannerEn: [],
-			TitleShowcase: false,
-			BannerStatusEn: true,
-			BannerStatusTh: true,
-			BannerSmallStatusEn: true,
-			BannerSmallStatusTh: true,
-			FeatureProductStatus: true
+			TitleShowcase: false
 		}, extend);
 	};
 	service.deserialize = function(data) {
@@ -22732,7 +24638,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],215:[function(require,module,exports){
+},{}],227:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Coupons');
@@ -22770,7 +24676,7 @@ module.exports = ["common", function(common) {
     };
 	return service;
 }]
-},{}],216:[function(require,module,exports){
+},{}],228:[function(require,module,exports){
 var angular = require('angular');
 //Image Service
 //Note: this file is not used anywhere (legacy!!! dOnt edit )
@@ -22862,7 +24768,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	return service;
 }];
 
-},{"angular":314}],217:[function(require,module,exports){
+},{"angular":329}],229:[function(require,module,exports){
 //Image Service
 module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", "Upload", function($q, $http, common, storage, config, FileUploader, Upload) {
   'ngInject';
@@ -22987,13 +24893,12 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
   return service;
 }];
 
-},{}],218:[function(require,module,exports){
-module.exports = ["common", function(common) {
-	'ngInject';
+},{}],230:[function(require,module,exports){
+module.exports = function(common) {
 	var service = common.Rest('/Inventories');
 	return service;
-}];
-},{}],219:[function(require,module,exports){
+};
+},{}],231:[function(require,module,exports){
 module.exports = [function() {
 	'use strict';
 
@@ -23001,7 +24906,7 @@ module.exports = [function() {
         this.message = "Known Exception - " + msg;   
     };
 }];
-},{}],220:[function(require,module,exports){
+},{}],232:[function(require,module,exports){
 module.exports = ['common', function(common) {
 	'use strict';
 	var service = {};
@@ -23040,7 +24945,7 @@ module.exports = ['common', function(common) {
 
 	return service;
 }];
-},{}],221:[function(require,module,exports){
+},{}],233:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/LocalCategories');
@@ -23088,7 +24993,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	};
 	return service;
 }];
-},{}],222:[function(require,module,exports){
+},{}],234:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Newsletters');
@@ -23115,7 +25020,7 @@ module.exports = ["common", function(common) {
 
 	return service;
 }];
-},{}],223:[function(require,module,exports){
+},{}],235:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	service = common.Rest('/Orders');
@@ -23129,7 +25034,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }]
-},{}],224:[function(require,module,exports){
+},{}],236:[function(require,module,exports){
 module.exports = ["util", function(util) {
 	'ngInject';
 	var service = {};
@@ -23209,7 +25114,7 @@ module.exports = ["util", function(util) {
 
 	return service;
 }]
-},{}],225:[function(require,module,exports){
+},{}],237:[function(require,module,exports){
 // Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config', 'KnownException',
 	function ($http, common, util, LocalCategory, Brand, config, KnownException) {
@@ -23282,31 +25187,6 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				method: 'POST',
 				url: '/ProductStages/Export',
 				data: ps
-			}
-			return common.makeRequest(req)
-		}
-
-		service.exportAbort = function (ps) {
-			var req = {
-				method: 'POST',
-				url: '/ProductStages/Export/Abort'
-			}
-			return common.makeRequest(req)
-		}
-
-
-		service.exportProgress = function (ps) {
-			var req = {
-				method: 'GET',
-				url: '/ProductStages/Export/Progress'
-			}
-			return common.makeRequest(req)
-		}
-
-		service.exportGet = function (ps) {
-			var req = {
-				method: 'GET',
-				url: '/ProductStages/Export'
 			}
 			return common.makeRequest(req)
 		}
@@ -23445,7 +25325,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			return common.makeRequest({
 				method: mode,
 				url: path,
-				data: tobj
+				data: tobj,
+				rollbar: 'AP: Product publish or save'
 			})
 		}
 
@@ -23879,7 +25760,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 	}
 ]
 
-},{}],226:[function(require,module,exports){
+},{}],238:[function(require,module,exports){
 //Products Collection Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
     function ($http, common, util, LocalCategory, Brand) {
@@ -24308,7 +26189,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
     }
 ];
 
-},{}],227:[function(require,module,exports){
+},{}],239:[function(require,module,exports){
 module.exports = ['Product', 'Collection', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
     function (Product,  Collection, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
         var $productCollectionAdd = {};
@@ -24341,7 +26222,7 @@ module.exports = ['Product', 'Collection', 'Brand', 'AttributeSet', 'ImageServic
 
         return $productCollectionAdd;
     }];
-},{}],228:[function(require,module,exports){
+},{}],240:[function(require,module,exports){
 module.exports = ["Product", "Collection", "Brand", "AttributeSet", "ImageService", "GlobalCategory", "$q", "Category", function (Product,  Collection, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
         'ngInject';
         var $productCollectionAddListItem = {};
@@ -24374,7 +26255,7 @@ module.exports = ["Product", "Collection", "Brand", "AttributeSet", "ImageServic
 
         return $productCollectionAddListItem;
     }];
-},{}],229:[function(require,module,exports){
+},{}],241:[function(require,module,exports){
 module.exports = ["common", "util", function(common, util) {
 	'ngInject';
 	var service = common.Rest('/ProductReviews');
@@ -24410,7 +26291,7 @@ module.exports = ["common", "util", function(common, util) {
 	};	
 	return service;
 }];
-},{}],230:[function(require,module,exports){
+},{}],242:[function(require,module,exports){
 module.exports = ["common", "util", function(common, util) {
 	'ngInject';
 	var service = common.Rest('/ProductTemps');
@@ -24418,12 +26299,12 @@ module.exports = ["common", "util", function(common, util) {
 	return service;
 }];
 
-},{}],231:[function(require,module,exports){
+},{}],243:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Returns');
 	return service;
 };
-},{}],232:[function(require,module,exports){
+},{}],244:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Seller');
@@ -24458,7 +26339,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],233:[function(require,module,exports){
+},{}],245:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Coupons');
@@ -24487,13 +26368,13 @@ module.exports = ["common", function(common) {
     };
 	return service;
 }]
-},{}],234:[function(require,module,exports){
+},{}],246:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Seller');
 	return service;
 }]
-},{}],235:[function(require,module,exports){
+},{}],247:[function(require,module,exports){
 module.exports = ["common", "SellerPermissionService", function(common, SellerPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Seller');
@@ -24516,13 +26397,13 @@ module.exports = ["common", "SellerPermissionService", function(common, SellerPe
 	};
 	return service;	
 }]
-},{}],236:[function(require,module,exports){
+},{}],248:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/Shippings');
 	return service;
 }];
-},{}],237:[function(require,module,exports){
+},{}],249:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     'use strict';
@@ -24581,7 +26462,7 @@ module.exports = ["common", "config", "util", function (common, config, util) {
     return service;
 }];
 
-},{}],238:[function(require,module,exports){
+},{}],250:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     var service = common.Rest('/Shops/ShopAppearance');
@@ -24614,19 +26495,19 @@ module.exports = ["common", "config", "util", function (common, config, util) {
 
     return service;
 }];
-},{}],239:[function(require,module,exports){
+},{}],251:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Shop');
 	return service;
 }]
-},{}],240:[function(require,module,exports){
+},{}],252:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     var service = common.Rest('/Shops/Profile');
     return service;
 }];
-},{}],241:[function(require,module,exports){
+},{}],253:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Shops');
@@ -24640,29 +26521,171 @@ module.exports = ["common", function(common) {
 
 	return service;
 }]
-},{}],242:[function(require,module,exports){
-module.exports = ["common", "config", "util", function(common, config, util) {
+},{}],254:[function(require,module,exports){
+module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
 
-	var service = common.Rest('/StandardReport');
+    var service = common.Rest('/StandardReport/GetItemOnHoldReport');
 
-	service.getSaleReport = function (params) {
-	    return common.makeRequest({
-	        method: 'GET',
-	        url: '/StandardReport/GetSaleReportForSeller/' + params
-	    });
-	};
+    service.getOnHoldReport = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/StandardReport/GetSearchItemOnHoldReport/',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
 
-	service.exportCsv = function (params) {
-	    return common.makeRequest({
-	        method: 'GET',
-	        url: '/StandardReport/ExportSaleReportForSeller/' + params
-	    });
-	};
+    service.exportCsv = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/StandardReport/ExportItemOnHoldReport',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
 
-	return service;	
+    service.getBrand = function (cateId) {
+        return common.makeRequest({
+            method: 'GET',
+            url: '/CMS/GetBrand/' + cateId
+        });
+    };
+
+    service.getAllCategory = function (parameters) {
+        return common.makeRequest({
+            method: 'GET',
+            url: '/CMS/GetAllCategory',
+            params: parameters
+        });
+    };
+
+    return service;
 }]
-},{}],243:[function(require,module,exports){
+},{}],255:[function(require,module,exports){
+module.exports = ["common", "config", "util", function (common, config, util) {
+    'ngInject';
+
+    var service = common.Rest('/StandardReport/GetReturnReport');
+
+    service.getReturnReport = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/StandardReport/GetSearchReturnReport/',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
+
+    service.exportCsv = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/StandardReport/ExportReturnReport',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
+
+
+    return service;
+}]
+},{}],256:[function(require,module,exports){
+module.exports = ["common", "config", "util", function (common, config, util) {
+    'ngInject';
+    var service = common.Rest('/StandardReport/GetSaleReportForSeller');
+
+    service.getSaleReport = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/StandardReport/GetSearchSaleReportForSeller/',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
+
+    service.exportCsv = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/StandardReport/ExportSaleReportForSeller/',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
+
+    service.getBrand = function (cateId) {
+        return common.makeRequest({
+            method: 'GET',
+            url: '/CMS/GetBrand/' + cateId
+        });
+    };
+
+    service.getAllCategory = function (parameters) {
+        return common.makeRequest({
+            method: 'GET',
+            url: '/CMS/GetAllCategory',
+            params: parameters
+        });
+    };
+    return service;
+}]
+},{}],257:[function(require,module,exports){
+module.exports = ["common", "config", "util", function (common, config, util) {
+    'ngInject';
+
+    var service = common.Rest('/StandardReport/GetStockStatusReport');
+
+    service.getStockReport = function (params) {
+
+        return common.makeRequest({
+            method: 'POST',
+            url: '/StandardReport/GetSearchStockStatusReport/',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
+
+    service.exportCsv = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/StandardReport/ExportStockStatusReport',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
+
+    service.getBrand = function (cateId) {
+        return common.makeRequest({
+            method: 'GET',
+            url: '/CMS/GetBrand/' + cateId
+        });
+    };
+
+    service.getAllCategory = function (parameters) {
+        return common.makeRequest({
+            method: 'GET',
+            url: '/CMS/GetAllCategory',
+            params: parameters
+        });
+    };
+    return service;
+}]
+},{}],258:[function(require,module,exports){
 module.exports = {
     NameTH: {
         labelClass: "required",
@@ -24801,7 +26824,7 @@ module.exports = {
     }
 }
 
-},{}],244:[function(require,module,exports){
+},{}],259:[function(require,module,exports){
 module.exports = {
   	AttributeNameEn: {
         'labelClass': 'required',
@@ -24840,18 +26863,10 @@ module.exports = {
    	},
     DescriptionEn: {
       'inputSize': 'large'
-    },
-    Tags: {
-      error: {
-        messages: {
-          maxtagcount: 'Cannot exceed 100 tags',
-          maxtaglength: 'Tag must contain 30 characters or less'
-        }
-      }
     }
     
 };
-},{}],245:[function(require,module,exports){
+},{}],260:[function(require,module,exports){
 module.exports = {
 	AttributeSetNameEn: {
 	  'labelClass': 'required',
@@ -24875,7 +26890,7 @@ module.exports = {
       }
     }
 }
-},{}],246:[function(require,module,exports){
+},{}],261:[function(require,module,exports){
 module.exports = {
     BrandImage: {
     },
@@ -24919,7 +26934,7 @@ module.exports = {
     }
 };
 
-},{}],247:[function(require,module,exports){
+},{}],262:[function(require,module,exports){
 module.exports = {
     NameTH: {
         labelClass: "required",
@@ -25003,7 +27018,7 @@ module.exports = {
 
 }
 
-},{}],248:[function(require,module,exports){
+},{}],263:[function(require,module,exports){
 module.exports = {
     CMSMasterNameTH: {
         labelClass: "required",
@@ -25047,7 +27062,7 @@ module.exports = {
     }
 }
 
-},{}],249:[function(require,module,exports){
+},{}],264:[function(require,module,exports){
 module.exports = {
     NameEn: {
         'labelClass': 'required',
@@ -25082,12 +27097,10 @@ module.exports = {
             }
         }
     },
-    SortBy: {
-        'labelClass': 'required'
-    }
+    SortBy: {}
 }
 
-},{}],250:[function(require,module,exports){
+},{}],265:[function(require,module,exports){
 module.exports = {
 	ChildProducts: {
 		labelClass: 'required',
@@ -25107,7 +27120,7 @@ module.exports = {
 	    }
 	}
 };
-},{}],251:[function(require,module,exports){
+},{}],266:[function(require,module,exports){
 module.exports = {
     Image: {
         'error': {
@@ -25169,7 +27182,7 @@ module.exports = {
 
     }
 }
-},{}],252:[function(require,module,exports){
+},{}],267:[function(require,module,exports){
 module.exports = {
   KillerPointTh: {
     divClass: 'col-xs-6',
@@ -25184,7 +27197,7 @@ module.exports = {
     divClass: 'col-xs-6',
     error: {
       messages: {
-        max: 'Promotion Price must be lower than Sale Price'
+        maxnumber: 'Promotion Price must be lower than Sale Price'
       }
     }
   },
@@ -25257,6 +27270,7 @@ module.exports = {
   DescriptionFull: {
     'divClass': 'col-xs-6',
     'formGroupClass': 'margin-top-40',
+    'labelClass': 'required',
     'inputSize': 'xxl'
   },
   ProductNameTh: {
@@ -25290,7 +27304,8 @@ module.exports = {
     'error': {
       'messages': {
         'required': 'This is a required field',
-        'min': 'Original Price must be higher than Sale Price',
+        'maxnumber': 'Original Price must be higher than Sale Price',
+        'minnumber': 'Original Price must be higher than Sale Price',
         'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
       }
     }
@@ -25300,7 +27315,8 @@ module.exports = {
     'error': {
       'messages': {
         'required': 'This is a required field',
-        'min': 'Sale price must be lower than the original price',
+        'maxnumber': 'Original Price must be higher than Sale Price',
+        'minnumber': 'Original Price must be higher than Sale Price',
         'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
       }
     }
@@ -25383,8 +27399,7 @@ module.exports = {
     'error': {
       'messages': {
         'required': 'This is a required field',
-        'pattern': 'Only numbers allowed',
-        'maxnumber': 'Products in stock cannot take more than 24 days to prepare'
+        'pattern': 'Only numbers allowed'
       }
     },
     'unit': 'Day'
@@ -25428,7 +27443,7 @@ module.exports = {
   }
 }
 
-},{}],253:[function(require,module,exports){
+},{}],268:[function(require,module,exports){
 module.exports = {
 	GroupNameEn: {
       'labelClass': 'required',
@@ -25440,7 +27455,7 @@ module.exports = {
     }
 
 }
-},{}],254:[function(require,module,exports){
+},{}],269:[function(require,module,exports){
 module.exports = {
 	Logo: {
 		error: {
@@ -25569,7 +27584,7 @@ module.exports = {
 		input: 'large'
 	}
 }
-},{}],255:[function(require,module,exports){
+},{}],270:[function(require,module,exports){
 module.exports = {
     Layout: {
         // tooltip: "Please select 'Available' if you can provide gift wrapping service to your customer",
@@ -25587,7 +27602,7 @@ module.exports = {
     }
 }
 
-},{}],256:[function(require,module,exports){
+},{}],271:[function(require,module,exports){
 module.exports = {
 	ShopTypeNameEn: {
       'labelClass': 'required',
@@ -25598,7 +27613,7 @@ module.exports = {
        }
     }
 }
-},{}],257:[function(require,module,exports){
+},{}],272:[function(require,module,exports){
 module.exports = {
     'NothingSpecial': {
         
@@ -25608,7 +27623,7 @@ module.exports = {
     }
 };
 
-},{}],258:[function(require,module,exports){
+},{}],273:[function(require,module,exports){
 module.exports = {
   Status: {
     labelClass: "required",
@@ -25709,7 +27724,7 @@ module.exports = {
   }
 }
 
-},{}],259:[function(require,module,exports){
+},{}],274:[function(require,module,exports){
 module.exports = {
     Required: {
         'labelClass': 'required'
@@ -25717,7 +27732,7 @@ module.exports = {
 
 }
 
-},{}],260:[function(require,module,exports){
+},{}],275:[function(require,module,exports){
 module.exports = {
   // Description
     DescriptionFull: {
@@ -25770,14 +27785,14 @@ module.exports = {
         inputClass: 'large'
     }
 }
-},{}],261:[function(require,module,exports){
+},{}],276:[function(require,module,exports){
 module.exports = {
   MultiCheckbox: {
     transcludeClasses:  "checkbox multiple-checkbox multiline"
   }
 }
 
-},{}],262:[function(require,module,exports){
+},{}],277:[function(require,module,exports){
 module.exports = {
 	ColumnSearch: {
 
@@ -25833,7 +27848,7 @@ module.exports = {
 	}
 }
 
-},{}],263:[function(require,module,exports){
+},{}],278:[function(require,module,exports){
 module.exports = {
   ProductName: {},
   Pid: {},
@@ -25873,7 +27888,7 @@ module.exports = {
   }
 }
 
-},{}],264:[function(require,module,exports){
+},{}],279:[function(require,module,exports){
 module.exports = {
     GiftWrap: {
         tooltip: "Please select 'Available' if you can provide gift wrapping service to your customer"
@@ -25965,7 +27980,7 @@ module.exports = {
     }
 }
 
-},{}],265:[function(require,module,exports){
+},{}],280:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -26151,7 +28166,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "\n" +
     "              }\r" +
     "\n" +
-    "              }\"><input class=form-control type={{$parent.inputType}} name=Password ng-model=formData.Password maxlength=20 ng-class=\"{ 'has-error' : isInvalid(form.Password) || (form.$pristine && formData.error) }\" required></div></div><div ng-template=common/input/password ng-template-options=\"{\r" +
+    "              }\"><input class=form-control type={{$parent.inputType}} name=Password ng-model=formData.Password ng-pattern-restrict=\"^[^<>]*$\" ng-class=\"{ 'has-error' : isInvalid(form.Password) || (form.$pristine && formData.error) }\" required></div></div><div ng-template=common/input/password ng-template-options=\"{\r" +
     "\n" +
     "              'label': 'New Password',\r" +
     "\n" +
@@ -26181,7 +28196,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "\n" +
     "              }\r" +
     "\n" +
-    "              }\"><input class=form-control type={{$parent.inputType}} name=NewPassword ng-model=formData.NewPassword ng-class=\"{ 'has-error' : isInvalid(form.NewPassword) || (form.$pristine && formData.error) }\" ng-pattern=\"/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/\" maxlength=20 ng-maxlength=20 ng-minlength=8 required></div><div ng-template=common/input/password ng-template-options=\"{\r" +
+    "              }\"><input class=form-control type={{$parent.inputType}} name=NewPassword ng-model=formData.NewPassword ng-class=\"{ 'has-error' : isInvalid(form.NewPassword) || (form.$pristine && formData.error) }\" ng-pattern=\"/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/\" ng-pattern-restrict=\"^[^<>]*$\" ng-maxlength=20 ng-minlength=8 required></div><div ng-template=common/input/password ng-template-options=\"{\r" +
     "\n" +
     "              'label': 'Confirm Password',\r" +
     "\n" +
@@ -26205,7 +28220,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "\n" +
     "                }\r" +
     "\n" +
-    "              }\"><input class=form-control type={{$parent.inputType}} name=ConfirmPassword ng-model=formData.ConfirmPassword ng-class=\"{'has-error' : isInvalid(form.ConfirmPassword) || (form.$pristine && formData.error)}\" maxlength=20 ng-match={{formData.NewPassword}} required></div></div><div class=\"container-fluid no-padding margin-top-20\"><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()><span class=login-loading ng-cloak ng-show=saving><i class=\"fa fa-spinner fa-spin\"></i></span>Save</button></div></div></div></div></form></div>"
+    "              }\"><input class=form-control type={{$parent.inputType}} name=ConfirmPassword ng-model=formData.ConfirmPassword ng-class=\"{'has-error' : isInvalid(form.ConfirmPassword) || (form.$pristine && formData.error)}\" ng-match={{formData.NewPassword}} required></div></div><div class=\"container-fluid no-padding margin-top-20\"><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()><span class=login-loading ng-cloak ng-show=saving><i class=\"fa fa-spinner fa-spin\"></i></span>Save</button></div></div></div></div></form></div>"
   );
 
 
@@ -26230,19 +28245,27 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('global_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\"><form ng-show=\"!saving && !loading && true\" class=\"ah-form ng-hide\" name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKey nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL Key\"><input class=form-control name=UrlKey ng-lowercase ng-model=formData.UrlKey ng-pattern=\"/^[a-z0-9\\-]*$/\" ng-pattern-restrict=^[^\\s]*$ maxlength=\"100\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SortBy nc-label=\"Default Sort By\" nc-template-options-path=addCategoryForm/SortBy><ui-select ng-model=formData.SortBy name=SortBy search-enabled=false required><ui-select-match placeholder=\"- Select Default Sort -\">{{$select.selected.SortByName}}</ui-select-match><ui-select-choices repeat=\"item in sortBy\">{{item.SortByName}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Commission nc-template-options-path=addCategoryForm/Commission nc-label=\"Commission (%)\"><div class=input-with-unit><input class=form-control name=Commission ng-model=formData.Commission ng-pattern-restrict=^[0-9]*(\\.[0-9]{0,2})?$ maxlength=10 ng-maxnumber=100 ng-minnumber=0 required> <span class=input-unit>%</span></div></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions column-header=\"Attribute Set in this Category\" search-placeholder=\"Search Attribute Set\" nc-text=AttributeSetNameEn nc-id=AttributeSetId on-search=loadAttributeSets></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\">* Changing attribute set mapping may affect products under this category</p></div></div></div><nc-image-banner name=CategoryBannerEn data-source=formData data-key=BannerStatusEn nc-model=formData.CategoryBannerEn title=\"Upload Banner (English)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8>1920x1080</nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData data-key=BannerStatusTh nc-model=formData.CategoryBannerTh title=\"Upload Banner (ไทย)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8>1920x1080</nc-image-banner><nc-image-banner name=CategoryBannerEn data-source=formData data-key=BannerSmallStatusEn nc-model=formData.CategorySmallBannerEn title=\"Upload Small Banner (English)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8>1600x900</nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData data-key=BannerSmallStatusTh nc-model=formData.CategorySmallBannerTh title=\"Upload Small Banner (ไทย)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8>1600x900</nc-image-banner><div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"formData.IsLandingPage\">Enable Landing Page</h2></div><div class=form-section-content ng-show=formData.IsLandingPage><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\r" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Global Category Detail</h3></div><div class=\"modal-body margin-top-20\"><form ng-show=\"!saving && !loading && true\" class=\"ah-form ng-hide\" name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Global Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKey nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL Key\"><input class=form-control name=UrlKey ng-lowercase ng-model=formData.UrlKey ng-pattern=\"/^[0-9a-z\\- ]*$/\" maxlength=\"100\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SortBy nc-label=\"Default Sort By\" nc-template-options-path=addCategoryForm/SortBy><ui-select ng-model=formData.SortBy name=SortBy search-enabled=false><ui-select-match placeholder=\"- Select Default Sort -\">{{$select.selected.SortByName}}</ui-select-match><ui-select-choices repeat=\"item in sortBy\">{{item.SortByName}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Commission nc-template-options-path=addCategoryForm/Commission nc-label=\"Commission (%)\"><div class=input-with-unit><input class=form-control name=Commission ng-model=formData.Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ maxlength=10 ng-maxnumber=100 ng-minnumber=0 required> <span class=input-unit>%</span></div></div></div></div><div class=form-section><div class=form-section-header><h2>Map Attribute Set</h2></div><div class=\"form-section-content modal-custom\"><div nc-tradable-select nc-test=lockAttributeset nc-model=formData.AttributeSets nc-select-options=attributeSetOptions column-header=\"Attribute Set in this Category\" search-placeholder=\"Search Attribute Set\" nc-text=AttributeSetNameEn nc-id=AttributeSetId on-search=loadAttributeSets></div><div class=\"row col-xs-12\"><p style=\"margin-left: 30px; margin-top:15px\">* Changing attribute set mapping may affect products under this category</p></div></div></div><nc-image-banner name=CategoryBannerEn data-source=formData data-key=BannerStatusEn nc-model=formData.CategoryBannerEn title=\"Upload Banner (English)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8>1920x1080</nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData data-key=BannerStatusTh nc-model=formData.CategoryBannerTh title=\"Upload Banner (ไทย)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8>1920x1080</nc-image-banner><nc-image-banner name=CategoryBannerEn data-source=formData data-key=BannerSmallStatusEn nc-model=formData.CategorySmallBannerEn title=\"Upload Small Banner (English)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8>1600x900</nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData data-key=BannerSmallStatusTh nc-model=formData.CategorySmallBannerTh title=\"Upload Small Banner (ไทย)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8>1600x900</nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"^[^<>]*$\" name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\r" +
     "\n" +
-    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\r" +
+    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"^[^<>]*$\" name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\r" +
     "\n" +
-    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (English)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 name=DescriptionMobileEn ng-model=formData.DescriptionMobileEn>\r" +
+    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (English)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"^[^<>]*$\" name=DescriptionMobileEn ng-model=formData.DescriptionMobileEn>\r" +
     "\n" +
-    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (ไทย)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 name=DescriptionMobileTh ng-model=formData.DescriptionMobileTh>\r" +
+    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (ไทย)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"^[^<>]*$\" name=DescriptionMobileTh ng-model=formData.DescriptionMobileTh>\r" +
     "\n" +
     "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea class=form-control maxlength=500 name=DescriptionShortEn ng-model=formData.DescriptionShortEn>\r" +
     "\n" +
+    "\r" +
+    "\n" +
     "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\r" +
     "\n" +
-    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Featured Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Featured Products\"><span class=form-text>will be available after adding product into this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=formData.FeatureTitle maxlength=\"255\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"formData.TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product Name or PID\">{{ $item.ProductNameEn }} ({{$item.Pid}})</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }} ({{i.Pid}})</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-label=\"Feature Product Status\"><select ng-model=formData.FeatureProductStatus class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]\"></select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving class=ng-hide nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "\r" +
+    "\n" +
+    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Featured Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Featured Products\"><span class=form-text>will be available after adding product into this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=formData.FeatureTitle maxlength=\"255\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"formData.TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product Name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-label=\"Feature Product Status\"><select ng-model=formData.FeatureProductStatus class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]\"></select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div><div class=form-section><div class=form-section-header><h2>SEO</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_En nc-label=\"SEO (English)\"><textarea class=form-control name=SEO_En ng-model=formData.SEO.SeoEn ng-pattern-restrict=\"^[^<>]*$\" maxlength=1000>\r" +
+    "\n" +
+    "\t\t                </textarea></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_Th nc-label=\"SEO (ไทย)\"><textarea class=form-control name=SEO_Th ng-model=formData.SEO.SeoTh ng-pattern-restrict=\"^[^<>]*$\" maxlength=1000>\r" +
+    "\n" +
+    "\t\t                </textarea></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaTitleEn nc-label=\"Meta Title (English)\"><input class=form-control name=SEO_MetaTitleEn ng-model=formData.SEO.MetaTitleEn ng-pattern-restrict=\"^[^<>]*$\" maxlength=\"60\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaTitleTh nc-label=\"Meta Title (ไทย)\"><input class=form-control name=SEO_MetaTitleTh ng-model=formData.SEO.MetaTitleTh ng-pattern-restrict=\"^[^<>]*$\" maxlength=\"60\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaDescriptionEn nc-label=\"Meta Description (English)\"><input class=form-control name=SEO_MetaDescriptionEn ng-model=formData.SEO.MetaDescriptionEn ng-pattern-restrict=\"^[^<>]*$\" maxlength=\"150\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaDescriptionTh nc-label=\"Meta Description (ไทย)\"><input class=form-control name=SEO_MetaDescriptionTh ng-model=formData.SEO.MetaDescriptionTh ng-pattern-restrict=\"^[^<>]*$\" maxlength=\"150\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaKeywordEn nc-label=\"Meta Keywords (English)\"><input class=form-control name=SEO_MetaKeywordEn ng-model=formData.SEO.MetaKeywordEn ng-pattern-restrict=\"^[^<>]*$\" maxlength=1000 placeholder=\"Keywords seperated by comma\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaKeywordTh nc-label=\"Meta Keywords (ไทย)\"><input class=form-control name=SEO_MetaKeywordTh ng-model=formData.SEO.MetaKeywordTh ng-pattern-restrict=\"^[^<>]*$\" maxlength=1000 placeholder=\"Keywords seperated by comma\"></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving class=ng-hide nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
@@ -26261,19 +28284,21 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('local_category/modal',
-    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\"><form ng-show=\"!saving && !loading && true\" class=\"ah-form ng-hide\" name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKey nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL Key\"><input class=form-control name=UrlKey ng-model=formData.UrlKey ng-lowercase ng-pattern=\"/^[a-z0-9\\-]*$/\" ng-pattern-restrict=^[^\\s]*$ maxlength=\"100\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SortBy nc-label=\"Default Sort By\" nc-template-options-path=addBrandForm/SortBy><ui-select ng-model=formData.SortBy name=SortBy search-enabled=false required><ui-select-match placeholder=\"- Select Default Sort -\">{{$select.selected.SortByName}}</ui-select-match><ui-select-choices repeat=\"item in sortBy\">{{item.SortByName}}</ui-select-choices></ui-select></div></div></div><nc-image-banner name=CategoryBannerEn data-source=formData data-key=BannerStatusEn nc-model=formData.CategoryBannerEn title=\"Upload Banner (English)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8>1920x1080</nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData data-key=BannerStatusTh nc-model=formData.CategoryBannerTh title=\"Upload Banner (ไทย)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8>1920x1080</nc-image-banner><nc-image-banner name=CategoryBannerEn data-source=formData data-key=BannerSmallStatusEn nc-model=formData.CategorySmallBannerEn title=\"Upload Small Banner (English)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8>1600x900</nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData data-key=BannerSmallStatusTh nc-model=formData.CategorySmallBannerTh title=\"Upload Small Banner (ไทย)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8>1600x900</nc-image-banner><div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"formData.IsLandingPage\">Enable Landing Page</h2></div><div class=form-section-content ng-show=formData.IsLandingPage><div class=two-columns><div class=row ng-if=$root.permit(72)><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\r" +
+    "<nc-alert nc-model=alert></nc-alert><div class=modal-header><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span><h3 class=modal-title>Local Category Detail</h3></div><div class=\"modal-body margin-top-20\"><form ng-show=\"!saving && !loading && true\" class=\"ah-form ng-hide\" name=form novalidate><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Local Category Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.NameEn nc-template-options-path=addCategoryForm/NameEn nc-label=\"Category Name (English)\"><input class=form-control name=NameEn ng-model=formData.NameEn ng-pattern-restrict=\"^[^<>]*$\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.NameTh nc-template-options-path=addCategoryForm/NameTh nc-label=\"Category Name (ไทย)\"><input class=form-control name=NameTh ng-model=formData.NameTh ng-pattern-restrict=\"^[^<>]*$\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-form=form.UrlKey nc-template-options-path=addCategoryForm/UrlKeyEn nc-label=\"URL Key\"><input class=form-control name=UrlKey ng-model=formData.UrlKey ng-lowercase ng-pattern=\"/^[0-9a-z\\-]+$/\" maxlength=\"100\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SortBy nc-label=\"Default Sort By\" nc-template-options-path=addBrandForm/SortBy><ui-select ng-model=formData.SortBy name=SortBy search-enabled=false required><ui-select-match placeholder=\"- Select Default Sort -\">{{$select.selected.SortByName}}</ui-select-match><ui-select-choices repeat=\"item in sortBy\">{{item.SortByName}}</ui-select-choices></ui-select></div></div></div><nc-image-banner name=CategoryBannerEn data-source=formData data-key=BannerStatusEn nc-model=formData.CategoryBannerEn title=\"Upload Banner (English)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8>1920x1080</nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData data-key=BannerStatusTh nc-model=formData.CategoryBannerTh title=\"Upload Banner (ไทย)\" options=bannerOptions uploader=bannerUploader on-fail=uploadBannerFail size=8>1920x1080</nc-image-banner><nc-image-banner name=CategoryBannerEn data-source=formData data-key=BannerSmallStatusEn nc-model=formData.CategorySmallBannerEn title=\"Upload Small Banner (English)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8>1600x900</nc-image-banner><nc-image-banner name=CategoryBannerTh data-source=formData data-key=BannerSmallStatusTh nc-model=formData.CategorySmallBannerTh title=\"Upload Small Banner (ไทย)\" options=bannerSmOptions uploader=bannerSmUploader on-fail=uploadBannerSmFail size=8>1600x900</nc-image-banner><div class=form-section><div class=form-section-header><h2>Description</h2></div><div class=form-section-content><div class=two-columns><div class=row ng-if=$root.permit(72)><div nc-template=common/input/div-with-label nc-label=\"Description (English)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"^[^<>]*$\" name=DescriptionFullEn ng-model=formData.DescriptionFullEn>\r" +
     "\n" +
-    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\r" +
+    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Description (ไทย)\" nc-template-options-path=genericForm/DescriptionFull nc-template-form=form.DescriptionFullTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"^[^<>]*$\" name=DescriptionFullTh ng-model=formData.DescriptionFullTh>\r" +
     "\n" +
-    "\t                            </textarea></div></div><div class=\"row margin-top-30\" ng-if=$root.permit(72)><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (English)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 name=DescriptionMobileEn ng-model=formData.DescriptionMobileEn>\r" +
+    "\t                            </textarea></div></div><div class=\"row margin-top-30\" ng-if=$root.permit(72)><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (English)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileEn><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"^[^<>]*$\" name=DescriptionMobileEn ng-model=formData.DescriptionMobileEn>\r" +
     "\n" +
-    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (ไทย)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 name=DescriptionMobileTh ng-model=formData.DescriptionMobileTh>\r" +
+    "\t                            </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Mobile Description (ไทย)\" nc-template-options-path=genericForm/DescriptionMobile nc-template-form=form.DescriptionMobileTh><textarea ng-ckeditor=$root.ckOptions class=form-control maxlength=250000 ng-pattern-restrict=\"^[^<>]*$\" name=DescriptionMobileTh ng-model=formData.DescriptionMobileTh>\r" +
     "\n" +
-    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-model=formData.DescriptionShortEn>\r" +
+    "\t                            </textarea></div></div><div class=\"row margin-top-30\"><div nc-template=common/input/div-with-label nc-label=\"Short Description (English)\" nc-template-options-path=genericForm/DescriptionShortEn nc-template-form=form.DescriptionShortEn><textarea ng-pattern=\"/^[^<>ก-๙]+$/\" class=form-control maxlength=500 name=DescriptionShortEn ng-pattern-restrict=\"^[^<>]*$\" ng-model=formData.DescriptionShortEn>\r" +
     "\n" +
-    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-model=formData.DescriptionShortTh>\r" +
+    "\t\t                          </textarea></div><div nc-template=common/input/div-with-label nc-label=\"Short Description (ไทย)\" nc-template-options-path=genericForm/DescriptionShortTh nc-template-form=form.DescriptionShortTh><textarea ng-pattern=\"/^[^<>]+$/\" class=form-control maxlength=500 name=DescriptionShortTh ng-pattern-restrict=\"^[^<>]*$\" ng-model=formData.DescriptionShortTh>\r" +
     "\n" +
-    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Featured Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Featured Products\"><span class=form-text>will be available after adding product into this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=formData.FeatureTitle maxlength=\"255\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"formData.TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product Name or PID\">{{ $item.ProductNameEn }} ({{$item.Pid}})</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }} ({{i.Pid}})</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-label=\"Feature Product Status\"><select ng-model=formData.FeatureProductStatus class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]\"></select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving class=ng-hide nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "\t\t                          </textarea></div></div></div></div></div><div class=form-section><div class=form-section-header><h2>Featured Products</h2></div><div class=form-section-content><div ng-if=\"availableProducts == 0  || id == 0\"><div nc-template=common/input/form-group-with-label nc-label=\"Featured Products\"><span class=form-text>will be available after adding product into this category</span></div></div><div ng-if=\"availableProducts > 0\"><div nc-template=common/input/form-group-with-label nc-template-options-path=genericForm/FeatureTitle nc-label=\"Featured Product Title\"><input class=form-control ng-model=formData.FeatureTitle maxlength=\"255\"></div><div nc-template=common/input/form-group-with-label nc-label=\"\"><input type=checkbox ng-model=\"formData.TitleShowcase\"> Title = Showcase</div><div nc-template=common/input/form-group-with-label nc-template-form=form.FeatureProducts nc-template-options-path=genericForm/FeatureProducts nc-label=\"Featured Product\"><ui-select name=FeatureProducts multiple ng-model=formData.FeatureProducts nc-tag-validator nc-max-tag-count=20><ui-select-match placeholder=\"Search for Product Name or PID\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=getFeatureProduct($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-label=\"Feature Product Status\"><select ng-model=formData.FeatureProductStatus class=form-control ng-options=\"o.v as o.n for o in [{v: false, n: 'Disable'}, {v: true, n: 'Enable'}]\"></select></div></div></div></div><div class=form-section><div class=form-section-header><h2>Category Visibility</h2></div><div class=\"form-section-content modal-custom\"><div ng-template=common/input/multiline-radio ng-template-options=\"{ 'label' : 'Visibility' }\"><label ng-repeat=\"choice in statusOptions\"><input type=radio ng-model=formData.Visibility ng-value=\"choice.value\">{{choice.name}}</label></div></div></div><div class=form-section><div class=form-section-header><h2>SEO</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaTitleEn nc-label=\"SEO (English)\" nc-template-options-path=addProductForm/SEO><textarea class=form-control ng-disabled=xspermit(42) ng-pattern=\"/^[^<>]+$/\" name=SEO_En ng-model=variantPtr.SEO.SeoEn maxlength=1000></textarea></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaTitleEn nc-label=\"SEO (ไทย)\" nc-template-options-path=addProductForm/SEO><textarea class=form-control ng-disabled=xspermit(42) ng-pattern=\"/^[^<>]+$/\" name=SEO_Th ng-model=variantPtr.SEO.SeoTh maxlength=1000>\r" +
+    "\n" +
+    "\t\t\t\t            </textarea></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaTitleEn nc-label=\"Meta Title (English)\" nc-template-options-path=addProductForm/MetaTitle><input class=\"form-control width-field-normal\" ng-disabled=xspermit(42) ng-pattern=\"/^[^<>]+$/\" name=SEO_MetaTitleEn ng-model=variantPtr.SEO.MetaTitleEn maxlength=\"60\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaTitleTh nc-label=\"Meta Title (ไทย)\" nc-template-options-path=addProductForm/MetaTitle><input class=\"form-control width-field-normal\" ng-disabled=xspermit(42) name=SEO_MetaTitleTh ng-pattern=\"/^[^<>]+$/\" ng-model=variantPtr.SEO.MetaTitleTh maxlength=\"60\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaDescriptionEn nc-label=\"Meta Description (English)\" nc-template-options-path=addProductForm/Nothing><input maxlength=150 class=\"form-control width-field-normal\" ng-pattern=\"/^[^<>]+$/\" ng-disabled=xspermit(42) name=SEO_MetaDescriptionEn ng-model=\"variantPtr.SEO.MetaDescriptionEn\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaDescriptionTh nc-label=\"Meta Description (ไทย)\" nc-template-options-path=addProductForm/Nothing><input maxlength=150 class=\"form-control width-field-normal\" ng-pattern=\"/^[^<>]+$/\" ng-disabled=xspermit(42) name=SEO_MetaDescriptionTh ng-model=\"variantPtr.SEO.MetaDescriptionTh\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaKeywordsEn nc-label=\"Meta Keywords (English)\" nc-template-options-path=addProductForm/Nothing><input placeholder=\"Keywords separated by comma\" ng-disabled=xspermit(42) maxlength=1000 ng-pattern=\"/^[^<>]+$/\" class=\"form-control width-field-normal\" name=SEO_MetaKeywordsEn ng-model=\"variantPtr.SEO.MetaKeywordEn\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaKeywordsTh nc-label=\"Meta Keywords (ไทย)\" nc-template-options-path=addProductForm/Nothing><input placeholder=\"Keywords separated by comma\" ng-disabled=xspermit(42) ng-pattern=\"/^[^<>]+$/\" maxlength=1000 class=\"form-control width-field-normal\" name=SEO_MetaKeywordsTh ng-model=\"variantPtr.SEO.MetaKeywordTh\"></div></div></div></div><div class=\"col-xs-12 text-align-left\" style=\"margin-top:-15px; margin-bottom:0px\"><span class=color-red><i class=\"fa fa-asterisk\"></i></span> - Required Field</div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving class=ng-hide nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
@@ -26282,12 +28307,12 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "\n" +
     "\t\t'glyphicon-chevron-right': collapsed,\r" +
     "\n" +
-    "\t\t'glyphicon-chevron-down': !collapsed }\"></span></a> <span ng-if=\"!node.nodes || node.nodes.length == 0\"><span class=\"glyphicon glyphicon-chevron-right color-grey\"></span></span> <a ng-click=open(node) data-nodrag>{{node.NameEn}}</a> <span class=\"pull-right category-column category-action-gear\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span> <span class=\"pull-right category-column\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"pull-right category-column\">{{node.ProductCount}}</span> <span class=\"pull-right category-column\">{{node.CategoryId}}</span></div><ol ui-tree-nodes ng-model=node.nodes ng-class=\"{hidden: collapsed}\"><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'local_category/nodes'\"></li></ol>"
+    "\t\t'glyphicon-chevron-down': !collapsed }\"></span></a> <span ng-if=\"!node.nodes || node.nodes.length == 0\"><span class=\"glyphicon glyphicon-chevron-right color-grey\"></span></span> <a ng-click=open(node) data-nodrag>{{node.NameEn}}</a> <span class=\"pull-right category-column category-action-gear\" data-nodrag><nc-action nc-model=$nodeScope nc-action-fn=actions></nc-action></span> <span class=\"pull-right category-column\" data-nodrag><nc-eye nc-model=node.Visibility nc-eye-on-toggle=toggleVisibility(node)></nc-eye></span> <span class=\"pull-right category-column\">{{node.ProductCount}}</span></div><ol ui-tree-nodes ng-model=node.nodes ng-class=\"{hidden: collapsed}\"><li ng-repeat=\"node in node.nodes\" ui-tree-node ng-include=\"'local_category/nodes'\"></li></ol>"
   );
 
 
   $templateCache.put('newsletter/modalAdmin',
-    "<nc-alert nc-model=alert></nc-alert><div class=\"modal-header newsletter-modal-header\"><h3 class=\"modal-title modal_title_abosolute\">Newsletter Detail</h3><div class=title_relative><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></div></div></div><div class=modal-body><form ng-show=\"!saving && !loading\" name=form class=\"ah-form margin-top-20\" novalidate><div class=row><div class=col-xs-12><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Subject nc-template-form=form.Subject nc-label=Subject><input name=Subject class=form-control ng-model=formData.Subject maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Image nc-template-form=form.Image nc-label=Image><button type=button name=Image class=\"btn btn-default\" ngf-accept=\"'.jpg,.jpeg'\" ngf-select=upload($file) ngf-max-size=\"'5MB'\" ng-model=dummy>Choose File</button></div><div ng-show=formData.Image nc-template=common/input/form-group-with-label nc-label=\"Image Preview\"><img ng-src={{formData.Image.Url}} class=\"img-responsive\"> <a style=display:block class=margin-top-5 ng-click=\"formData.Image=null\"><i class=\"fa-trash fa\"></i> Delete this image</a></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Description nc-template-form=form.Description nc-label=Content><textarea class=form-control name=Description ng-model=formData.Description maxlength=2000 required></textarea></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/PublishedDt nc-template-form=form.PublishedDt nc-label=\"Published Date\"><div><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.PublishedDt | datetimeTh }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=PublishedDt ng-date-before={{formData.PublishedDt}} data-ng-model=formData.PublishedDt data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'minute', minuteStep: 30 }\" required></ul></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/ExpiredDt nc-template-form=form.ExpiredDt nc-label=\"Expired Date\"><div><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.ExpiredDt | datetimeTh }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=ExpiredDt ng-date-before={{formData.ExpiredDt}} data-ng-model=formData.ExpiredDt data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'minute', minuteStep: 30 }\" required></ul></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/VisibleShopGroup nc-template-form=form.VisibleShopGroup nc-label=\"Allow Reader\"><ui-select ng-model=formData.VisibleShopGroup><ui-select-match>{{$select.selected.name}}</ui-select-match><ui-select-choices repeat=\"item.value as item in shopGroupOptions\">{{item.name}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/IncludeShop nc-template-form=form.IncludeShop nc-label=\"Include Shop\"><ui-select ng-model=formData.IncludeShop multiple tagging-label=\"\" nc-tag-validator nc-max-tag-count=100><ui-select-match placeholder=\"Search by Shop Name or ID\">{{$item.ShopNameEn}} ({{$item.ShopId}})</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'include')\" repeat=\"item in shops.include.data\">{{item.ShopNameEn}} ({{item.ShopId}})</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/ExcludeShop nc-template-form=form.ExcludeShop nc-label=\"Exclude Shop\"><ui-select ng-model=formData.ExcludeShop multiple tagging-label=\"\" nc-tag-validator nc-max-tag-count=100><ui-select-match placeholder=\"Search by Shop Name or ID\">{{$item.ShopNameEn}} ({{$item.ShopId}})</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'exclude')\" repeat=\"item in shops.exclude.data\">{{item.ShopNameEn}} ({{item.ShopId}})</ui-select-choices></ui-select></div></div></div><div class=col-xs-12><hr><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
+    "<nc-alert nc-model=alert></nc-alert><div class=\"modal-header newsletter-modal-header\"><h3 class=\"modal-title modal_title_abosolute\">Newsletter Detail</h3><div class=title_relative><div class=float-right><a href=# class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></div></div></div><div class=modal-body><form ng-show=\"!saving && !loading\" name=form class=\"ah-form margin-top-20\"><div class=row><div class=col-xs-12><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Subject nc-template-form=form.Subject nc-label=Subject><input name=Subject class=form-control ng-model=formData.Subject ng-pattern-restrict=\"^[^<>]*$\" maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Image nc-template-form=form.Image nc-label=Image><button type=button name=Image class=\"btn btn-default\" ngf-accept=\"'.jpg,.jpeg'\" ngf-select=upload($file) ngf-max-size=\"'5MB'\" ng-model=dummy>Choose File</button></div><div ng-show=formData.Image nc-template=common/input/form-group-with-label nc-label=\"Image Preview\"><img ng-src={{formData.Image.Url}} class=\"img-responsive\"> <a style=display:block class=margin-top-5 ng-click=\"formData.Image=null\"><i class=\"fa-trash fa\"></i> Delete this image</a></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/Description nc-template-form=form.Description nc-label=Content><textarea class=form-control name=Description ng-model=formData.Description ng-pattern-restrict=\"^[^<>]*$\" maxlength=2000 required></textarea></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/PublishedDt nc-template-form=form.PublishedDt nc-label=\"Published Date\"><div><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.PublishedDt | datetimeTh }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=PublishedDt ng-date-before={{formData.PublishedDt}} data-ng-model=formData.PublishedDt data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'minute', minuteStep: 30 }\" required></ul></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/ExpiredDt nc-template-form=form.ExpiredDt nc-label=\"Expired Date\"><div><div class=dropdown><a class=dropdown-toggle id=dropdown role=button data-toggle=dropdown data-target=# href=#><input readonly style=background-color:white class=\"input-icon-calendar form-control\" value=\"{{ formData.ExpiredDt | datetimeTh }}\"></a><ul class=dropdown-menu role=menu aria-labelledby=dLabel><datetimepicker name=ExpiredDt ng-date-before={{formData.ExpiredDt}} data-ng-model=formData.ExpiredDt data-datetimepicker-config=\"{ dropdownSelector: '#dropdown', minView: 'minute', minuteStep: 30 }\" required></ul></div></div></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/VisibleShopGroup nc-template-form=form.VisibleShopGroup nc-label=\"Allow Reader\"><ui-select ng-model=formData.VisibleShopGroup><ui-select-match>{{$select.selected.name}}</ui-select-match><ui-select-choices repeat=\"item.value as item in shopGroupOptions\">{{item.name}}</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/IncludeShop nc-template-form=form.IncludeShop nc-label=\"Include Shop\"><ui-select ng-model=formData.IncludeShop multiple tagging-label=\"\" nc-tag-validator nc-max-tag-count=100><ui-select-match placeholder=\"Search by Shop Name or ID\">{{$item.ShopNameEn}} ({{$item.ShopId}})</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'include')\" repeat=\"item in shops.include.data\">{{item.ShopNameEn}} ({{item.ShopId}})</ui-select-choices></ui-select></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addNewsletterForm/ExcludeShop nc-template-form=form.ExcludeShop nc-label=\"Exclude Shop\"><ui-select ng-model=formData.ExcludeShop multiple tagging-label=\"\" nc-tag-validator nc-max-tag-count=100><ui-select-match placeholder=\"Search by Shop Name or ID\">{{$item.ShopNameEn}} ({{$item.ShopId}})</ui-select-match><ui-select-choices refresh=\"getShops($select.search, 'exclude')\" repeat=\"item in shops.exclude.data\">{{item.ShopNameEn}} ({{item.ShopId}})</ui-select-choices></ui-select></div></div></div><div class=col-xs-12><hr><span class=float-right><a class=link-btn-plain ng-click=$dismiss()>Cancel</a> <button class=\"btn btn-blue btn-width-xl\" ng-click=save()>Save</button></span></div></div></form><div ng-show=saving nc-loading=Saving..></div><div ng-show=loading nc-loading=Loading..></div></div>"
   );
 
 
@@ -26317,7 +28342,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('product/dropzone/normal',
-    "<div class=image-drop-wrapper><input nv-file-select=\"\" uploader=uploader accept=.jpg,.jpeg type=file multiple><div nv-file-drop=\"\" uploader=uploader accept=.jpg,.jpeg class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload() accept=.jpg,.jpeg>or select images</a></p></div></div></div>"
+    "<div class=image-drop-wrapper><input nv-file-select=\"\" uploader=uploader type=file multiple><div nv-file-drop=\"\" uploader=uploader class=image-drop-zone><div class=image-drop-zone-text><p><i class=\"fa fa-image fa-3x color-theme\"></i></p><p>Drop images here</p><p><a ng-click=upload()>or select images</a></p></div></div></div>"
   );
 
 
@@ -26385,7 +28410,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "<div class=modal-header><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Add Commission Rule</h3></div><div class=modal-body style=\"padding-top: 15px\"><div class=\"category-section column-4 ah-form\"><nc-tree-select nc-model=model nc-tree-select-tree=tree nc-tree-select-title=\"Global Category\"></nc-tree-select><div class=\"category-footer no-padding form-group\" style=\"margin: 30px 0px 0px 0px\"><div class=float-right><span class=float-left>Commission (%)</span><form name=form class=width-field-normal><input class=form-control ng-class=\"{ 'has-error' : $root.isInvalid(form.Commission) }\" name=Commission ng-model=Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-maxnumber=100 ng-minnumber=\"0\"><div class=\"help-block color-red float-left\"><div ng-if=\"form.Commission.$error.maxnumber || form.Commission.$error.minnumber\">Please enter between 0% and 100%</div><div ng-if=form.Commission.$error.pattern>Only numbers and decimals (up to 2 digits) allowed</div></div></form><button class=\"btn btn-blue btn-width-xl float-left\" ng-click=select() ng-disabled=\"form.$invalid || _.isEmpty(Commission) || _.isEmpty(model)\">Set</button></div></div></div></div>"
   );
  }];
-},{}],266:[function(require,module,exports){
+},{}],281:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -30317,11 +32342,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-},{}],267:[function(require,module,exports){
+},{}],282:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":266}],268:[function(require,module,exports){
+},{"./angular-animate":281}],283:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -30489,7 +32514,7 @@ module.exports = 'ngAnimate';
 
 })();
 
-},{}],269:[function(require,module,exports){
+},{}],284:[function(require,module,exports){
 //! moment.js
 //! version : 2.12.0
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -34178,7 +36203,7 @@ module.exports = 'ngAnimate';
     return _moment;
 
 }));
-},{}],270:[function(require,module,exports){
+},{}],285:[function(require,module,exports){
 /*globals define, jQuery, module, require */
 /*jslint vars:true */
 
@@ -34628,7 +36653,7 @@ module.exports = 'ngAnimate';
     }]);
 }));
 
-},{"angular":314,"moment":269}],271:[function(require,module,exports){
+},{"angular":329,"moment":284}],286:[function(require,module,exports){
 (function (factory) {
   'use strict';
   if (typeof exports === 'object') {
@@ -34992,7 +37017,7 @@ module.exports = 'ngAnimate';
   }
 }));
 
-},{"angular":314,"chart.js":272}],272:[function(require,module,exports){
+},{"angular":329,"chart.js":287}],287:[function(require,module,exports){
 /*!
  * Chart.js
  * http://chartjs.org/
@@ -38470,7 +40495,7 @@ module.exports = 'ngAnimate';
 
 
 }).call(this);
-},{}],273:[function(require,module,exports){
+},{}],288:[function(require,module,exports){
 (function (root, factory) {
     /* istanbul ignore next */
     if (typeof define === 'function' && define.amd) {
@@ -38548,7 +40573,7 @@ return angular.module('angular-clipboard', [])
     }]);
 
 }));
-},{"angular":314}],274:[function(require,module,exports){
+},{"angular":329}],289:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -38872,11 +40897,11 @@ angular.module('ngCookies').provider('$$cookieWriter', function $$CookieWriterPr
 
 })(window, window.angular);
 
-},{}],275:[function(require,module,exports){
+},{}],290:[function(require,module,exports){
 require('./angular-cookies');
 module.exports = 'ngCookies';
 
-},{"./angular-cookies":274}],276:[function(require,module,exports){
+},{"./angular-cookies":289}],291:[function(require,module,exports){
 /**
  * angular-drag-and-drop-lists v1.4.0
  *
@@ -39468,7 +41493,7 @@ angular.module('dndLists', [])
    */
   .factory('dndDropEffectWorkaround', function(){ return {} });
 
-},{}],277:[function(require,module,exports){
+},{}],292:[function(require,module,exports){
 /*
  angular-file-upload v2.2.0
  https://github.com/nervgh/angular-file-upload
@@ -39476,12 +41501,12 @@ angular.module('dndLists', [])
 
 !function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["angular-file-upload"]=t():e["angular-file-upload"]=t()}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return e[r].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=r(n(1)),o=r(n(2)),s=r(n(3)),a=r(n(4)),u=r(n(5)),l=r(n(6)),c=r(n(7)),f=r(n(8)),p=r(n(9)),d=r(n(10)),v=r(n(11)),h=r(n(12));angular.module(i.name,[]).value("fileUploaderOptions",o).factory("FileUploader",s).factory("FileLikeObject",a).factory("FileItem",u).factory("FileDirective",l).factory("FileSelect",c).factory("FileDrop",f).factory("FileOver",p).directive("nvFileSelect",d).directive("nvFileDrop",v).directive("nvFileOver",h).run(["FileUploader","FileLikeObject","FileItem","FileDirective","FileSelect","FileDrop","FileOver",function(e,t,n,r,i,o,s){e.FileLikeObject=t,e.FileItem=n,e.FileDirective=r,e.FileSelect=i,e.FileDrop=o,e.FileOver=s}])},function(e,t){e.exports={name:"angularFileUpload"}},function(e,t){"use strict";e.exports={url:"/",alias:"file",headers:{},queue:[],progress:0,autoUpload:!1,removeAfterUpload:!1,method:"POST",filters:[],formData:[],queueLimit:Number.MAX_VALUE,withCredentials:!1}},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.forEach,l=angular.isObject,c=angular.isNumber,f=angular.isDefined,p=angular.isArray,d=angular.element;e.exports=function(e,t,n,r,v,h){var m=r.File,g=r.FormData,_=function(){function r(t){o(this,r);var n=s(e);a(this,n,t,{isUploading:!1,_nextIndex:0,_failFilterIndex:-1,_directives:{select:[],drop:[],over:[]}}),this.filters.unshift({name:"queueLimit",fn:this._queueLimitFilter}),this.filters.unshift({name:"folder",fn:this._folderFilter})}return i(r,{addToQueue:{value:function(e,t,n){var r=this,i=this.isArrayLikeObject(e)?e:[e],o=this._getFilters(n),s=this.queue.length,a=[];u(i,function(e){var n=new v(e);if(r._isValidFile(n,o,t)){var i=new h(r,e,t);a.push(i),r.queue.push(i),r._onAfterAddingFile(i)}else{var s=o[r._failFilterIndex];r._onWhenAddingFileFailed(n,s,t)}}),this.queue.length!==s&&(this._onAfterAddingAll(a),this.progress=this._getTotalProgress()),this._render(),this.autoUpload&&this.uploadAll()}},removeFromQueue:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t];n.isUploading&&n.cancel(),this.queue.splice(t,1),n._destroy(),this.progress=this._getTotalProgress()}},clearQueue:{value:function(){for(;this.queue.length;)this.queue[0].remove();this.progress=0}},uploadItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhrTransport":"_iframeTransport";n._prepareToUploading(),this.isUploading||(this.isUploading=!0,this[r](n))}},cancelItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhr":"_form";n&&n.isUploading&&n[r].abort()}},uploadAll:{value:function(){var e=this.getNotUploadedItems().filter(function(e){return!e.isUploading});e.length&&(u(e,function(e){return e._prepareToUploading()}),e[0].upload())}},cancelAll:{value:function(){var e=this.getNotUploadedItems();u(e,function(e){return e.cancel()})}},isFile:{value:function(e){return this.constructor.isFile(e)}},isFileLikeObject:{value:function(e){return this.constructor.isFileLikeObject(e)}},isArrayLikeObject:{value:function(e){return this.constructor.isArrayLikeObject(e)}},getIndexOfItem:{value:function(e){return c(e)?e:this.queue.indexOf(e)}},getNotUploadedItems:{value:function(){return this.queue.filter(function(e){return!e.isUploaded})}},getReadyItems:{value:function(){return this.queue.filter(function(e){return e.isReady&&!e.isUploading}).sort(function(e,t){return e.index-t.index})}},destroy:{value:function(){var e=this;u(this._directives,function(t){u(e._directives[t],function(e){e.destroy()})})}},onAfterAddingAll:{value:function(e){}},onAfterAddingFile:{value:function(e){}},onWhenAddingFileFailed:{value:function(e,t,n){}},onBeforeUploadItem:{value:function(e){}},onProgressItem:{value:function(e,t){}},onProgressAll:{value:function(e){}},onSuccessItem:{value:function(e,t,n,r){}},onErrorItem:{value:function(e,t,n,r){}},onCancelItem:{value:function(e,t,n,r){}},onCompleteItem:{value:function(e,t,n,r){}},onCompleteAll:{value:function(){}},_getTotalProgress:{value:function(e){if(this.removeAfterUpload)return e||0;var t=this.getNotUploadedItems().length,n=t?this.queue.length-t:this.queue.length,r=100/this.queue.length,i=(e||0)*r/100;return Math.round(n*r+i)}},_getFilters:{value:function(e){if(!e)return this.filters;if(p(e))return e;var t=e.match(/[^\s,]+/g);return this.filters.filter(function(e){return-1!==t.indexOf(e.name)})}},_render:{value:function(){t.$$phase||t.$apply()}},_folderFilter:{value:function(e){return!(!e.size&&!e.type)}},_queueLimitFilter:{value:function(){return this.queue.length<this.queueLimit}},_isValidFile:{value:function(e,t,n){var r=this;return this._failFilterIndex=-1,t.length?t.every(function(t){return r._failFilterIndex++,t.fn.call(r,e,n)}):!0}},_isSuccessCode:{value:function(e){return e>=200&&300>e||304===e}},_transformResponse:{value:function(e,t){var r=this._headersGetter(t);return u(n.defaults.transformResponse,function(t){e=t(e,r)}),e}},_parseHeaders:{value:function(e){var t,n,r,i={};return e?(u(e.split("\n"),function(e){r=e.indexOf(":"),t=e.slice(0,r).trim().toLowerCase(),n=e.slice(r+1).trim(),t&&(i[t]=i[t]?i[t]+", "+n:n)}),i):i}},_headersGetter:{value:function(e){return function(t){return t?e[t.toLowerCase()]||null:e}}},_xhrTransport:{value:function(e){var t=this,n=e._xhr=new XMLHttpRequest,r=new g;if(this._onBeforeUploadItem(e),u(e.formData,function(e){u(e,function(e,t){r.append(t,e)})}),"number"!=typeof e._file.size)throw new TypeError("The file specified is no longer valid");r.append(e.alias,e._file,e.file.name),n.upload.onprogress=function(n){var r=Math.round(n.lengthComputable?100*n.loaded/n.total:0);t._onProgressItem(e,r)},n.onload=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r),o=t._isSuccessCode(n.status)?"Success":"Error",s="_on"+o+"Item";t[s](e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onerror=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onErrorItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onabort=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onCancelItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.open(e.method,e.url,!0),n.withCredentials=e.withCredentials,u(e.headers,function(e,t){n.setRequestHeader(t,e)}),n.send(r),this._render()}},_iframeTransport:{value:function(e){var t=this,n=d('<form style="display: none;" />'),r=d('<iframe name="iframeTransport'+Date.now()+'">'),i=e._input;e._form&&e._form.replaceWith(i),e._form=n,this._onBeforeUploadItem(e),i.prop("name",e.alias),u(e.formData,function(e){u(e,function(e,t){var r=d('<input type="hidden" name="'+t+'" />');r.val(e),n.append(r)})}),n.prop({action:e.url,method:"POST",target:r.prop("name"),enctype:"multipart/form-data",encoding:"multipart/form-data"}),r.bind("load",function(){var n="",i=200;try{n=r[0].contentDocument.body.innerHTML}catch(o){i=500}var s={response:n,status:i,dummy:!0},a={},u=t._transformResponse(s.response,a);t._onSuccessItem(e,u,s.status,a),t._onCompleteItem(e,u,s.status,a)}),n.abort=function(){var o,s={status:0,dummy:!0},a={};r.unbind("load").prop("src","javascript:false;"),n.replaceWith(i),t._onCancelItem(e,o,s.status,a),t._onCompleteItem(e,o,s.status,a)},i.after(n),n.append(i).append(r),n[0].submit(),this._render()}},_onWhenAddingFileFailed:{value:function(e,t,n){this.onWhenAddingFileFailed(e,t,n)}},_onAfterAddingFile:{value:function(e){this.onAfterAddingFile(e)}},_onAfterAddingAll:{value:function(e){this.onAfterAddingAll(e)}},_onBeforeUploadItem:{value:function(e){e._onBeforeUpload(),this.onBeforeUploadItem(e)}},_onProgressItem:{value:function(e,t){var n=this._getTotalProgress(t);this.progress=n,e._onProgress(t),this.onProgressItem(e,t),this.onProgressAll(n),this._render()}},_onSuccessItem:{value:function(e,t,n,r){e._onSuccess(t,n,r),this.onSuccessItem(e,t,n,r)}},_onErrorItem:{value:function(e,t,n,r){e._onError(t,n,r),this.onErrorItem(e,t,n,r)}},_onCancelItem:{value:function(e,t,n,r){e._onCancel(t,n,r),this.onCancelItem(e,t,n,r)}},_onCompleteItem:{value:function(e,t,n,r){e._onComplete(t,n,r),this.onCompleteItem(e,t,n,r);var i=this.getReadyItems()[0];return this.isUploading=!1,f(i)?void i.upload():(this.onCompleteAll(),this.progress=this._getTotalProgress(),void this._render())}}},{isFile:{value:function(e){return m&&e instanceof m}},isFileLikeObject:{value:function(e){return e instanceof v}},isArrayLikeObject:{value:function(e){return l(e)&&"length"in e}},inherit:{value:function(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,e.super_=t}}}),r}();return _.prototype.isHTML5=!(!m||!g),_.isHTML5=_.prototype.isHTML5,_},e.exports.$inject=["fileUploaderOptions","$rootScope","$http","$window","FileLikeObject","FileItem"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.isElement,u=angular.isString;e.exports=function(){var e=function(){function e(t){o(this,e);var n=a(t),r=n?t.value:t,i=u(r)?"FakePath":"Object",s="_createFrom"+i;this[s](r)}return i(e,{_createFromFakePath:{value:function(e){this.lastModifiedDate=null,this.size=null,this.type="like/"+e.slice(e.lastIndexOf(".")+1).toLowerCase(),this.name=e.slice(e.lastIndexOf("/")+e.lastIndexOf("\\")+2)}},_createFromObject:{value:function(e){this.lastModifiedDate=s(e.lastModifiedDate),this.size=e.size,this.type=e.type,this.name=e.name}}}),e}();return e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.element,l=angular.isElement;e.exports=function(e,t){var n=function(){function n(e,r,i){o(this,n);var c=l(r),f=c?u(r):null,p=c?null:r;a(this,{url:e.url,alias:e.alias,headers:s(e.headers),formData:s(e.formData),removeAfterUpload:e.removeAfterUpload,withCredentials:e.withCredentials,method:e.method},i,{uploader:e,file:new t(r),isReady:!1,isUploading:!1,isUploaded:!1,isSuccess:!1,isCancel:!1,isError:!1,progress:0,index:null,_file:p,_input:f}),f&&this._replaceNode(f)}return i(n,{upload:{value:function(){try{this.uploader.uploadItem(this)}catch(e){this.uploader._onCompleteItem(this,"",0,[]),this.uploader._onErrorItem(this,"",0,[])}}},cancel:{value:function(){this.uploader.cancelItem(this)}},remove:{value:function(){this.uploader.removeFromQueue(this)}},onBeforeUpload:{value:function(){}},onProgress:{value:function(e){}},onSuccess:{value:function(e,t,n){}},onError:{value:function(e,t,n){}},onCancel:{value:function(e,t,n){}},onComplete:{value:function(e,t,n){}},_onBeforeUpload:{value:function(){this.isReady=!0,this.isUploading=!0,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!1,this.isError=!1,this.progress=0,this.onBeforeUpload()}},_onProgress:{value:function(e){this.progress=e,this.onProgress(e)}},_onSuccess:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!0,this.isCancel=!1,this.isError=!1,this.progress=100,this.index=null,this.onSuccess(e,t,n)}},_onError:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!1,this.isCancel=!1,this.isError=!0,this.progress=0,this.index=null,this.onError(e,t,n)}},_onCancel:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!0,this.isError=!1,this.progress=0,this.index=null,this.onCancel(e,t,n)}},_onComplete:{value:function(e,t,n){this.onComplete(e,t,n),this.removeAfterUpload&&this.remove()}},_destroy:{value:function(){this._input&&this._input.remove(),this._form&&this._form.remove(),delete this._form,delete this._input}},_prepareToUploading:{value:function(){this.index=this.index||++this.uploader._nextIndex,this.isReady=!0}},_replaceNode:{value:function(t){var n=e(t.clone())(t.scope());n.prop("value",null),t.css("display","none"),t.after(n)}}}),n}();return n},e.exports.$inject=["$compile","FileLikeObject"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.extend);e.exports=function(){var e=function(){function e(t){o(this,e),s(this,t),this.uploader._directives[this.prop].push(this),this._saveLinks(),this.bind()}return i(e,{bind:{value:function(){for(var e in this.events){var t=this.events[e];this.element.bind(e,this[t])}}},unbind:{value:function(){for(var e in this.events)this.element.unbind(e,this.events[e])}},destroy:{value:function(){var e=this.uploader._directives[this.prop].indexOf(this);this.uploader._directives[this.prop].splice(e,1),this.unbind()}},_saveLinks:{value:function(){for(var e in this.events){var t=this.events[e];this[t]=this[t].bind(this)}}}}),e}();return e.prototype.events={},e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",change:"onChange"},prop:"select"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n),this.uploader.isHTML5||this.element.removeAttr("multiple"),this.element.prop("value",null)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},isEmptyAfterSelection:{value:function(){return!!this.element.attr("multiple")}},onChange:{value:function(){var e=this.uploader.isHTML5?this.element[0].files:this.element[0],t=this.getOptions(),n=this.getFilters();this.uploader.isHTML5||this.destroy(),this.uploader.addToQueue(e,t,n),this.isEmptyAfterSelection()&&(this.element.prop("value",null),this.element.replaceWith(this.element=this.element.clone(!0)))}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function c(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:c(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend),l=angular.forEach;e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",drop:"onDrop",dragover:"onDragOver",dragleave:"onDragLeave"},prop:"drop"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},onDrop:{value:function(e){var t=this._getTransfer(e);if(t){var n=this.getOptions(),r=this.getFilters();this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this),this.uploader.addToQueue(t.files,n,r)}}},onDragOver:{value:function(e){var t=this._getTransfer(e);this._haveFiles(t.types)&&(t.dropEffect="copy",this._preventAndStop(e),l(this.uploader._directives.over,this._addOverClass,this))}},onDragLeave:{value:function(e){e.currentTarget!==this.element[0]&&(this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this))}},_getTransfer:{value:function(e){return e.dataTransfer?e.dataTransfer:e.originalEvent.dataTransfer}},_preventAndStop:{value:function(e){e.preventDefault(),e.stopPropagation()}},_haveFiles:{value:function(e){return e?e.indexOf?-1!==e.indexOf("Files"):e.contains?e.contains("Files"):!1:!1}},_addOverClass:{value:function(e){e.addOverClass()}},_removeOverClass:{value:function(e){e.removeOverClass()}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy"},prop:"over",overClass:"nv-file-over"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{addOverClass:{value:function(){this.element.addClass(this.getOverClass())}},removeOverClass:{value:function(){this.element.removeClass(this.getOverClass())}},getOverClass:{value:function(){return this.overClass}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}},e.exports.$inject=["$parse","FileUploader","FileSelect"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');if(s.isHTML5){var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}}},e.exports.$inject=["$parse","FileUploader","FileDrop"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t){return{link:function(n,r,i){var o=n.$eval(i.uploader);if(!(o instanceof e))throw new TypeError('"Uploader" must be an instance of FileUploader');var s=new t({uploader:o,element:r});s.getOverClass=function(){return i.overClass||s.overClass}}}},e.exports.$inject=["FileUploader","FileOver"]}])});
 
-},{}],278:[function(require,module,exports){
+},{}],293:[function(require,module,exports){
 var moduleName = require('./src/angular-input-masks.js');
 
 module.exports = moduleName;
 
-},{"./src/angular-input-masks.js":282}],279:[function(require,module,exports){
+},{"./src/angular-input-masks.js":297}],294:[function(require,module,exports){
 /**
  * br-validations
  * A library of validations applicable to several Brazilian data like I.E., CNPJ, CPF and others
@@ -40125,9 +42150,9 @@ IErules.AP = [{
 		cnpj: CNPJ
 	};
 }));
-},{}],280:[function(require,module,exports){
-arguments[4][269][0].apply(exports,arguments)
-},{"dup":269}],281:[function(require,module,exports){
+},{}],295:[function(require,module,exports){
+arguments[4][284][0].apply(exports,arguments)
+},{"dup":284}],296:[function(require,module,exports){
 (function (root, factory) {
 	if (typeof define === 'function' && define.amd) {
 		// AMD. Register as an anonymous module.
@@ -40321,14 +42346,14 @@ arguments[4][269][0].apply(exports,arguments)
 	return StringMask;
 }));
 
-},{}],282:[function(require,module,exports){
+},{}],297:[function(require,module,exports){
 module.exports = angular.module('ui.utils.masks', [
 	require('./global/global-masks'),
 	require('./br/br-masks'),
 	require('./us/us-masks')
 ]).name;
 
-},{"./br/br-masks":284,"./global/global-masks":293,"./us/us-masks":303}],283:[function(require,module,exports){
+},{"./br/br-masks":299,"./global/global-masks":308,"./us/us-masks":318}],298:[function(require,module,exports){
 var StringMask = require('string-mask');
 var maskFactory = require('mask-factory');
 
@@ -40352,7 +42377,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":300,"string-mask":281}],284:[function(require,module,exports){
+},{"mask-factory":315,"string-mask":296}],299:[function(require,module,exports){
 var m = angular.module('ui.utils.masks.br', [
 	require('../helpers'),
 ])
@@ -40367,7 +42392,7 @@ var m = angular.module('ui.utils.masks.br', [
 
 module.exports = m.name;
 
-},{"../helpers":299,"./boleto-bancario/boleto-bancario":283,"./cep/cep":285,"./cnpj/cnpj":286,"./cpf-cnpj/cpf-cnpj":287,"./cpf/cpf":288,"./inscricao-estadual/ie":289,"./nfe/nfe":290,"./phone/br-phone":291}],285:[function(require,module,exports){
+},{"../helpers":314,"./boleto-bancario/boleto-bancario":298,"./cep/cep":300,"./cnpj/cnpj":301,"./cpf-cnpj/cpf-cnpj":302,"./cpf/cpf":303,"./inscricao-estadual/ie":304,"./nfe/nfe":305,"./phone/br-phone":306}],300:[function(require,module,exports){
 var StringMask = require('string-mask');
 var maskFactory = require('mask-factory');
 
@@ -40387,7 +42412,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":300,"string-mask":281}],286:[function(require,module,exports){
+},{"mask-factory":315,"string-mask":296}],301:[function(require,module,exports){
 var StringMask = require('string-mask');
 var BrV = require('br-validations');
 var maskFactory = require('mask-factory');
@@ -40408,7 +42433,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"br-validations":279,"mask-factory":300,"string-mask":281}],287:[function(require,module,exports){
+},{"br-validations":294,"mask-factory":315,"string-mask":296}],302:[function(require,module,exports){
 var StringMask = require('string-mask');
 var BrV = require('br-validations');
 var maskFactory = require('mask-factory');
@@ -40441,7 +42466,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"br-validations":279,"mask-factory":300,"string-mask":281}],288:[function(require,module,exports){
+},{"br-validations":294,"mask-factory":315,"string-mask":296}],303:[function(require,module,exports){
 var StringMask = require('string-mask');
 var BrV = require('br-validations');
 var maskFactory = require('mask-factory');
@@ -40462,7 +42487,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"br-validations":279,"mask-factory":300,"string-mask":281}],289:[function(require,module,exports){
+},{"br-validations":294,"mask-factory":315,"string-mask":296}],304:[function(require,module,exports){
 var StringMask = require('string-mask');
 var BrV = require('br-validations');
 
@@ -40599,7 +42624,7 @@ BrIeMaskDirective.$inject = ['$parse'];
 
 module.exports = BrIeMaskDirective;
 
-},{"br-validations":279,"string-mask":281}],290:[function(require,module,exports){
+},{"br-validations":294,"string-mask":296}],305:[function(require,module,exports){
 var StringMask = require('string-mask');
 var maskFactory = require('mask-factory');
 
@@ -40620,7 +42645,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":300,"string-mask":281}],291:[function(require,module,exports){
+},{"mask-factory":315,"string-mask":296}],306:[function(require,module,exports){
 var StringMask = require('string-mask');
 var maskFactory = require('mask-factory');
 
@@ -40661,7 +42686,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":300,"string-mask":281}],292:[function(require,module,exports){
+},{"mask-factory":315,"string-mask":296}],307:[function(require,module,exports){
 var moment = require('moment');
 var StringMask = require('string-mask');
 
@@ -40725,7 +42750,7 @@ DateMaskDirective.$inject = ['$locale'];
 
 module.exports = DateMaskDirective;
 
-},{"moment":280,"string-mask":281}],293:[function(require,module,exports){
+},{"moment":295,"string-mask":296}],308:[function(require,module,exports){
 var m = angular.module('ui.utils.masks.global', [
 	require('../helpers'),
 ])
@@ -40738,7 +42763,7 @@ var m = angular.module('ui.utils.masks.global', [
 
 module.exports = m.name;
 
-},{"../helpers":299,"./date/date":292,"./money/money":294,"./number/number":295,"./percentage/percentage":296,"./scientific-notation/scientific-notation":297,"./time/time":298}],294:[function(require,module,exports){
+},{"../helpers":314,"./date/date":307,"./money/money":309,"./number/number":310,"./percentage/percentage":311,"./scientific-notation/scientific-notation":312,"./time/time":313}],309:[function(require,module,exports){
 var StringMask = require('string-mask');
 var validators = require('validators');
 
@@ -40850,7 +42875,7 @@ MoneyMaskDirective.$inject = ['$locale', '$parse', 'PreFormatters'];
 
 module.exports = MoneyMaskDirective;
 
-},{"string-mask":281,"validators":301}],295:[function(require,module,exports){
+},{"string-mask":296,"validators":316}],310:[function(require,module,exports){
 var validators = require('validators');
 
 function NumberMaskDirective($locale, $parse, PreFormatters, NumberMasks) {
@@ -40957,7 +42982,7 @@ NumberMaskDirective.$inject = ['$locale', '$parse', 'PreFormatters', 'NumberMask
 
 module.exports = NumberMaskDirective;
 
-},{"validators":301}],296:[function(require,module,exports){
+},{"validators":316}],311:[function(require,module,exports){
 var validators = require('validators');
 
 function PercentageMaskDirective($locale, $parse, PreFormatters, NumberMasks) {
@@ -41076,7 +43101,7 @@ PercentageMaskDirective.$inject = ['$locale', '$parse', 'PreFormatters', 'Number
 
 module.exports = PercentageMaskDirective;
 
-},{"validators":301}],297:[function(require,module,exports){
+},{"validators":316}],312:[function(require,module,exports){
 var StringMask = require('string-mask');
 
 function ScientificNotationMaskDirective($locale, $parse) {
@@ -41196,7 +43221,7 @@ ScientificNotationMaskDirective.$inject = ['$locale', '$parse'];
 
 module.exports = ScientificNotationMaskDirective;
 
-},{"string-mask":281}],298:[function(require,module,exports){
+},{"string-mask":296}],313:[function(require,module,exports){
 var StringMask = require('string-mask');
 
 module.exports = function TimeMaskDirective() {
@@ -41261,7 +43286,7 @@ module.exports = function TimeMaskDirective() {
 	};
 };
 
-},{"string-mask":281}],299:[function(require,module,exports){
+},{"string-mask":296}],314:[function(require,module,exports){
 var StringMask = require('string-mask');
 
 var m = angular.module('ui.utils.masks.helpers', []);
@@ -41336,7 +43361,7 @@ m.factory('PreFormatters', [function(){
 	};
 }]);
 
-},{"string-mask":281}],300:[function(require,module,exports){
+},{"string-mask":296}],315:[function(require,module,exports){
 module.exports = function maskFactory(maskDefinition) {
 	return function MaskDirective() {
 		return {
@@ -41383,7 +43408,7 @@ module.exports = function maskFactory(maskDefinition) {
 	};
 };
 
-},{}],301:[function(require,module,exports){
+},{}],316:[function(require,module,exports){
 module.exports = {
 	maxNumber: function(ctrl, value, limit) {
 		var max = parseFloat(limit, 10);
@@ -41395,7 +43420,7 @@ module.exports = {
 	}
 };
 
-},{}],302:[function(require,module,exports){
+},{}],317:[function(require,module,exports){
 var StringMask = require('string-mask');
 var maskFactory = require('mask-factory');
 
@@ -41424,7 +43449,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":300,"string-mask":281}],303:[function(require,module,exports){
+},{"mask-factory":315,"string-mask":296}],318:[function(require,module,exports){
 var m = angular.module('ui.utils.masks.us', [
 	require('../helpers')
 ])
@@ -41432,7 +43457,7 @@ var m = angular.module('ui.utils.masks.us', [
 
 module.exports = m.name;
 
-},{"../helpers":299,"./phone/us-phone":302}],304:[function(require,module,exports){
+},{"../helpers":314,"./phone/us-phone":317}],319:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -42117,11 +44142,11 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],305:[function(require,module,exports){
+},{}],320:[function(require,module,exports){
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":304}],306:[function(require,module,exports){
+},{"./angular-sanitize":319}],321:[function(require,module,exports){
 /**
   * x is a value between 0 and 1, indicating where in the animation you are.
   */
@@ -42750,13 +44775,13 @@ angular.module('duScroll.scrollspy', ['duScroll.spyAPI'])
   };
 }]);
 
-},{}],307:[function(require,module,exports){
+},{}],322:[function(require,module,exports){
 require('angular');
 require('./angular-scroll');
 
 module.exports = 'duScroll';
 
-},{"./angular-scroll":306,"angular":314}],308:[function(require,module,exports){
+},{"./angular-scroll":321,"angular":329}],323:[function(require,module,exports){
 /*
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
@@ -49836,12 +51861,12 @@ angular.module('ui.bootstrap.carousel').run(function() {!angular.$$csp().noInlin
 angular.module('ui.bootstrap.datepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-datepicker-popup.dropdown-menu{display:block;}.uib-button-bar{padding:10px 9px 2px;}</style>'); });
 angular.module('ui.bootstrap.timepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-time input{width:50px;}</style>'); });
 angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); });
-},{}],309:[function(require,module,exports){
+},{}],324:[function(require,module,exports){
 require('./dist/ui-bootstrap-tpls');
 
 module.exports = 'ui.bootstrap';
 
-},{"./dist/ui-bootstrap-tpls":308}],310:[function(require,module,exports){
+},{"./dist/ui-bootstrap-tpls":323}],325:[function(require,module,exports){
 /*
  jQuery UI Sortable plugin wrapper
 
@@ -50334,7 +52359,7 @@ angular.module('ui.sortable', [])
     }
   ]);
 
-},{}],311:[function(require,module,exports){
+},{}],326:[function(require,module,exports){
 /**
  * @license Angular UI Tree v2.15.0
  * (c) 2010-2016. https://github.com/angular-ui-tree/angular-ui-tree
@@ -51905,11 +53930,11 @@ angular.module('ui.sortable', [])
 
 })();
 
-},{}],312:[function(require,module,exports){
+},{}],327:[function(require,module,exports){
 require('./dist/angular-ui-tree');
 module.exports = 'ui.tree';
 
-},{"./dist/angular-ui-tree":311}],313:[function(require,module,exports){
+},{"./dist/angular-ui-tree":326}],328:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.9
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -81567,11 +83592,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],314:[function(require,module,exports){
+},{}],329:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":313}],315:[function(require,module,exports){
+},{"./angular":328}],330:[function(require,module,exports){
 /*!
 Copyright (C) 2013 by WebReflection
 
@@ -81757,7 +83782,7 @@ function parseRecursion(text, reviver) {
 }
 this.stringify = stringifyRecursion;
 this.parse = parseRecursion;
-},{}],316:[function(require,module,exports){
+},{}],331:[function(require,module,exports){
 (function (global){
 /*! https://mths.be/punycode v1.4.0 by @mathias */
 ;(function(root) {
@@ -82294,7 +84319,7 @@ this.parse = parseRecursion;
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],317:[function(require,module,exports){
+},{}],332:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.0
  * http://jquery.com/
@@ -92127,7 +94152,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],318:[function(require,module,exports){
+},{}],333:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -106561,7 +108586,7 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],319:[function(require,module,exports){
+},{}],334:[function(require,module,exports){
 /**!
  * AngularJS file upload directives and services. Supoorts: file upload/drop/paste, resume, cancel/abort,
  * progress, resize, thumbnail, preview, validation and CORS
@@ -109340,10 +111365,10 @@ ngFileUpload.service('UploadExif', ['UploadResize', '$q', function (UploadResize
 }]);
 
 
-},{}],320:[function(require,module,exports){
+},{}],335:[function(require,module,exports){
 require('./dist/ng-file-upload-all');
 module.exports = 'ngFileUpload';
-},{"./dist/ng-file-upload-all":319}],321:[function(require,module,exports){
+},{"./dist/ng-file-upload-all":334}],336:[function(require,module,exports){
 /* global define */
 
 (function (root, pluralize) {
@@ -109778,7 +111803,7 @@ module.exports = 'ngFileUpload';
   return pluralize;
 });
 
-},{}],322:[function(require,module,exports){
+},{}],337:[function(require,module,exports){
 var validators = require('./validators'),
 	validationContext = require('./validation-context'),
 	jsonRefs = require('skeemas-json-refs');
@@ -109848,7 +111873,7 @@ module.exports.use = function(plugin) {
 	return this;
 };
 
-},{"./validation-context":325,"./validators":331,"skeemas-json-refs":324}],323:[function(require,module,exports){
+},{"./validation-context":340,"./validators":346,"skeemas-json-refs":339}],338:[function(require,module,exports){
 function fastMap(array, fn) {
 	var len = array.length,
 		result = new Array(len);
@@ -109918,7 +111943,7 @@ module.exports = function(sPointer) {
 	});
 };
 
-},{}],324:[function(require,module,exports){
+},{}],339:[function(require,module,exports){
 var jsonPointer = require('skeemas-json-pointer');
 
 var protoJsonRefs = {
@@ -109966,7 +111991,7 @@ module.exports = function() {
 	});
 };
 
-},{"skeemas-json-pointer":323}],325:[function(require,module,exports){
+},{"skeemas-json-pointer":338}],340:[function(require,module,exports){
 var validationResult = require('./validation-result'),
 	jsonRefs = require('skeemas-json-refs');
 
@@ -110018,7 +112043,7 @@ var makeContext = module.exports = function(schema, context, forceNewResult) {
 	});
 };
 
-},{"./validation-result":326,"skeemas-json-refs":324}],326:[function(require,module,exports){
+},{"./validation-result":341,"skeemas-json-refs":339}],341:[function(require,module,exports){
 function errorToString() {
 	return this.message + ' (pointer: ' + this.context + ')';
 }
@@ -110046,7 +112071,7 @@ module.exports = function(instance) {
 	});
 };
 
-},{}],327:[function(require,module,exports){
+},{}],342:[function(require,module,exports){
 var validateBase = require('./base'),
 	deepEqual = require('./deep-equal');
 
@@ -110188,7 +112213,7 @@ module.exports = function(context, subject, schema) {
 	return valid;
 };
 
-},{"./base":328,"./deep-equal":330}],328:[function(require,module,exports){
+},{"./base":343,"./deep-equal":345}],343:[function(require,module,exports){
 var validators = require('./'),
 	formats = {
 		'date-time': /^\d{4}-(0[0-9]{1}|1[0-2]{1})-[0-9]{2}[t ]\d{2}:\d{2}:\d{2}(\.\d+)?([zZ]|[+-]\d{2}:\d{2})$/i,
@@ -110449,7 +112474,7 @@ function validateBase(context, subject, schema) {
 
 module.exports = validateBase;
 
-},{"./":331}],329:[function(require,module,exports){
+},{"./":346}],344:[function(require,module,exports){
 function validateBoolean(context, subject, schema) {
 	if(typeof subject !== 'boolean') {
 		context.addError('Failed type:boolean criteria', subject, schema);
@@ -110463,7 +112488,7 @@ function validateBoolean(context, subject, schema) {
 
 module.exports = validateBoolean;
 
-},{}],330:[function(require,module,exports){
+},{}],345:[function(require,module,exports){
 function getType(subject) {
 	var type = typeof subject;
 
@@ -110512,7 +112537,7 @@ var deepEqual = module.exports = function(a, b) {
 	return false;
 };
 
-},{}],331:[function(require,module,exports){
+},{}],346:[function(require,module,exports){
 exports.types = {
 	'any': function() { return true; },
 	'array': require('./array'),
@@ -110529,7 +112554,7 @@ exports.deepEqual = require('./deep-equal');
 // base cannot be required until other validators are added
 exports.base = require('./base');
 
-},{"./array":327,"./base":328,"./boolean":329,"./deep-equal":330,"./null":332,"./number":333,"./object":334,"./string":335}],332:[function(require,module,exports){
+},{"./array":342,"./base":343,"./boolean":344,"./deep-equal":345,"./null":347,"./number":348,"./object":349,"./string":350}],347:[function(require,module,exports){
 function validateNull(context, subject, schema) {
 	if(subject !== null) {
 		context.addError('Failed type:null criteria', subject, schema);
@@ -110543,7 +112568,7 @@ function validateNull(context, subject, schema) {
 
 module.exports = validateNull;
 
-},{}],333:[function(require,module,exports){
+},{}],348:[function(require,module,exports){
 function validateNumber(context, subject, schema) {
 	if(typeof subject !== 'number') {
 		context.addError('Failed type:number criteria', subject, schema);
@@ -110611,7 +112636,7 @@ module.exports = function(context, subject, schema) {
 	], subject, schema);
 };
 
-},{}],334:[function(require,module,exports){
+},{}],349:[function(require,module,exports){
 var validateBase = require('./base');
 
 function properties(context, subject, schema, handledProps) {
@@ -110806,7 +112831,7 @@ function validateObject(context, subject, schema) {
 
 module.exports = validateObject;
 
-},{"./base":328}],335:[function(require,module,exports){
+},{"./base":343}],350:[function(require,module,exports){
 var decode = require('punycode').ucs2.decode;
 
 
@@ -110858,7 +112883,7 @@ function validateString(context, subject, schema) {
 
 module.exports = validateString;
 
-},{"punycode":316}],336:[function(require,module,exports){
+},{"punycode":331}],351:[function(require,module,exports){
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
@@ -112897,8 +114922,8 @@ $templateCache.put("select2/select.tpl.html","<div class=\"ui-select-container s
 $templateCache.put("selectize/choices.tpl.html","<div ng-show=\"$select.open\" class=\"ui-select-choices ui-select-dropdown selectize-dropdown single\"><div class=\"ui-select-choices-content selectize-dropdown-content\"><div class=\"ui-select-choices-group optgroup\" role=\"listbox\"><div ng-show=\"$select.isGrouped\" class=\"ui-select-choices-group-label optgroup-header\" ng-bind=\"$group.name\"></div><div role=\"option\" class=\"ui-select-choices-row\" ng-class=\"{active: $select.isActive(this), disabled: $select.isDisabled(this)}\"><div class=\"option ui-select-choices-row-inner\" data-selectable=\"\"></div></div></div></div></div>");
 $templateCache.put("selectize/match.tpl.html","<div ng-hide=\"($select.open || $select.isEmpty())\" class=\"ui-select-match\" ng-transclude=\"\"></div>");
 $templateCache.put("selectize/select.tpl.html","<div class=\"ui-select-container selectize-control single\" ng-class=\"{\'open\': $select.open}\"><div class=\"row\"><div class=\"col-md-11\"><div class=\"selectize-input\" ng-class=\"{\'focus\': $select.open, \'disabled\': $select.disabled, \'selectize-focus\' : $select.focus}\" ng-click=\"$select.open && !$select.searchEnabled ? $select.toggle($event) : $select.activate()\"><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" tabindex=\"-1\" class=\"ui-select-search ui-select-toggle\" ng-click=\"$select.toggle($event)\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-hide=\"!$select.searchEnabled || ($select.selected && !$select.open)\" ng-disabled=\"$select.disabled\" aria-label=\"{{ $select.baseTitle }}\"></div></div><div class=\"col-md-1\"><img ng-if=\"$select.loading\" width=\"30\" src=\"data:image/gif;base64,R0lGODlhlACUAPeAAEuW34q76prE7Wem5GWl5G6q5Wqo5Xyz6FCZ4E6Y4Hmx53Cr5lme4pTA7Fqf4nKt5lyg4kyX30qW31Sb4abL71id4eDt+YK26Y2960yX4LHS8anM8Nnp+K7Q8fz9/k2X4MHa9I++60+Y4EqV38Xd9Xiw58rg9rjV8nav51Wc4aTK72up5WOk41Ka4NPl94a56p7G7rXU8oS46fn7/v3+/lKa4ZfC7GGj41+i4+zz+/r8/n606PD2/HWv5t7r+bzX80yW32Ci44O36c7i9mCj412h41Sc4cPc9NHk9+Tv+r7Z86vO8Obw+rvX89bn9/T4/ejy+6LI7lac4Z/H7lie4e71/H+16FGZ4JC/6/7+/l6h4/X5/Vug4uz0/FGa4KPJ79Xm+Nzq+LnW88/i9snf9vb6/efx+7PT8ePu+ZXC7czh9vL3/azO8PH3/Mje9ery+9zr+ZzF7uLt+s/j97fU8v7+/7TS8qDH7srg9fj7/evz/Njn9+fw+vj6/vr7/f///////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NzQ4RDczNjVBRDM0MTFFNTg0ODlGMDgwQkJDRjVCMDAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NzQ4RDczNjZBRDM0MTFFNTg0ODlGMDgwQkJDRjVCMDAiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3NDhENzM2M0FEMzQxMUU1ODQ4OUYwODBCQkNGNUIwMCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo3NDhENzM2NEFEMzQxMUU1ODQ4OUYwODBCQkNGNUIwMCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5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\"></div></div><div class=\"ui-select-choices\"></div></div>");}]);
-},{}],337:[function(require,module,exports){
+},{}],352:[function(require,module,exports){
 require('./dist/select.js');
 module.exports = 'ui.select';
 
-},{"./dist/select.js":336}]},{},[1]);
+},{"./dist/select.js":351}]},{},[1]);

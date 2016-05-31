@@ -2,8 +2,8 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 	'ngInject';
 
 	var v = [];
-	var watch = function() {	
-		console.log('watch');	
+	var watch = function() {
+		console.log('watch');
 		v.push($scope.$watch('formData.Province', function(data, old) {
 			if(_.isNil(data)) {
 				return;
@@ -50,12 +50,15 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 			item: 'Shop Account',
 			service: AdminShopService,
 			init: function(scope) {
-				AdminShoptypeService.listAll()	
+				AdminShoptypeService.listAll()
 					.then(function(data) {
 						scope.shoptypes = data;
 					});
 			},
-			onLoad: function(scope, flag) {	
+			onSave: function(scope) {
+				console.log(scope.form);
+			},
+			onLoad: function(scope, flag) {
 				//Load global cat
 				scope.globalCategory = [];
 				GlobalCategoryService.list()
@@ -65,16 +68,51 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 							item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
 						});
 				});
-				watch();
+
+				$scope.$watch('formData.Province', function(data, old) {
+					if(_.isNil(data)) {
+						return;
+					}
+					if(_.isNil(old)) {
+
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['City']);
+					}
+					$scope.getCities(data.ProvinceId);
+				});
+
+				$scope.$watch('formData.City', function(data, old) {
+					if(_.isNil(data)) {
+						return;
+					}
+					if(_.isNil(old)) {
+
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['District']);
+					}
+					$scope.getDistricts(data.CityId);
+				});
+
+
+				$scope.$watch('formData.District', function(data, old) {
+					if(_.isNil(data)) {
+						return;
+					}
+					if(_.isNil(old)) {
+
+					}
+					else if(data != old) {
+						_.unset($scope.formData, ['PostalCode']);
+					}
+					$scope.getPostals(data.DistrictId);
+				});
 			},
-			onBeforeSave: function(scope) {
-				unwatch();
-			},
-			onAfterSave: function(scope) {			
+			onAfterSave: function(scope) {
 				_.forEach(scope.formData.Commissions, function(item) {
 					item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
 				});
-				watch();
 			}
 		}
 	});
@@ -96,7 +134,7 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 				$scope.formData.ShopImage = null;
 				$scope.alert.error(common.getError(err.data));
 			});
-	};	
+	};
 
 	$scope.getCities = function(id) {
 		ShopService.get('Cities', id)
@@ -232,7 +270,7 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 	        }
 	      }
 	    })
-	    
+
 	    modalInstance.result.then(function(result) {
     		if(_.isNil(item)) {
 	    		//Add

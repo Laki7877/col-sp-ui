@@ -1,5 +1,4 @@
 module.exports = function($scope, $window, storage) {
-	'ngInject';
 	$scope.orders = [];
 	$scope.cancel = function() {
 		$window.location.href = '/orders';

@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, Product, common, config, $base64, $timeout) {
+module.exports = function($scope, $controller, Product, common, config) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
@@ -86,14 +86,14 @@ module.exports = function($scope, $controller, Product, common, config, $base64,
 	config.PRODUCT_STATUS.forEach(function(object){
        $scope.statusLookup[object.value] = object;
     });
-	
     $scope.asStatus = function (ab) {
         return $scope.statusLookup[ab];
     };
     $scope.getTag = function(tags) {
         return _.join(tags, ', ');
     }
-    $scope.exportSelected = function() {
+
+    $scope.exportSelected = function(){
         $scope.alert.close();
         if ($scope.bulkContainer.length == 0) {
             return $scope.alert.error('Unable to Export. Please select Product for this action.');
@@ -111,11 +111,10 @@ module.exports = function($scope, $controller, Product, common, config, $base64,
         K._limit = 2147483647;
         $scope.searchCriteria = $base64.encode(JSON.stringify(K));
 
+
         $timeout(function() {
             console.log('searchCriteria', $scope.searchCriteria);
             document.getElementById('exportForm').submit();
         });
     }
-	
-	
 };

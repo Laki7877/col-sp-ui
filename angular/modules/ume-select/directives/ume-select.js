@@ -205,7 +205,6 @@ angular.module('umeSelect')
 
                 //In complicated mode (multiple)
                 if(scope.itsComplicated){
-                    if(!scope.choices) scope.choices = [];
                     scope.choices.unshift(scope.tagify('New Tag'));
                 }
 
@@ -226,8 +225,8 @@ angular.module('umeSelect')
 
                         $timeout(function (){
                             scope.$emit('focusLost', _id);
-                            // var K = $filter('filter')((scope.choices || []), scope.searchText);
-                            var K = (scope.searchText.length > 0 ? (scope.choices || []) : scope.initialChoices);
+                            // var K = $filter('filter')(scope.choices, scope.searchText);
+                            var K = (scope.searchText.length > 0 ? scope.choices : scope.initialChoices);
                             var result= scope.pickItem(K[scope.highlightedIndex]);
                             if(!result){
                                 scope.$emit('focusObtained', _id);
@@ -241,8 +240,8 @@ angular.module('umeSelect')
                         if(_.isArray(scope.model) && scope.model.length > 0) scope.model.pop();
                     }
 
-                    if(scope.highlightedIndex >= (scope.choices || []).length){
-                        scope.highlightedIndex = (scope.choices || []).length - 1;
+                    if(scope.highlightedIndex >= scope.choices.length){
+                        scope.highlightedIndex = scope.choices.length - 1;
                     }
 
                     if(scope.highlightedIndex <= 0){
@@ -256,8 +255,7 @@ angular.module('umeSelect')
                     //but long enough to trigger a blur which deactivates choices
                     $timeout(function(){
                         scope.focused = false;
-                        scope.searchText = "";
-                    }, 350)
+                    }, 500)
                 }
 
                 scope.focus = function(broadcast){
@@ -290,7 +288,6 @@ angular.module('umeSelect')
                     }
 
                     if(scope.itsComplicated){
-                        if(!scope.choices) scope.choices = [];
                         scope.choices[0] = scope.tagify(scope.searchText);
                     }
                     
@@ -310,7 +307,7 @@ angular.module('umeSelect')
                         //If this is same as previous request, dont do it
                         var curDate = new Date();
                         var tooShort = ((curDate - prevQ.ts) < 3000);
-                        var previousWasntEmpty = ((scope.choices || []).length > 0);
+                        var previousWasntEmpty = (scope.choices.length > 0);
                         if(prevQ.searchText == scope.searchText 
                             && tooShort && previousWasntEmpty) return; 
 
@@ -323,7 +320,7 @@ angular.module('umeSelect')
                             scope.refresh(scope.searchText).then(function(){
                                 loadQ.pop();
                                 scope.loading = false;
-                                scope.notFound = ((scope.choices || []).length == 0);
+                                scope.notFound = (scope.choices.length == 0);
                             });
                         }catch(ex){
                             //Ugh

@@ -18,11 +18,6 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 
 	//Pop up javascript warning message on leave
 	util.warningOnLeave(function() {
-		
-		if(options.freeToLeave){
-			return false;
-		}
-
 		return $scope.form.$dirty;
 	});
 
@@ -93,7 +88,6 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 
 			if($scope.id > 0) {
 				//Edit mode
-				(options.onBeforeSave || _.noop)($scope, true);
 				options.service.update($scope.id, data)
 					.then(function(result) {
 						$scope.formData = options.service.deserialize(result);
@@ -112,8 +106,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 						}
 					});
 			} else {
-				//Save mode]
-				(options.onBeforeSave || _.noop)($scope, false);
+				//Save mode
 				options.service.create(data)
 					.then(function(result) {
 						//Set both id and formData[id]
