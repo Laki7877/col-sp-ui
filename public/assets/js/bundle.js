@@ -13537,14 +13537,14 @@ module.exports = [function () {
             });
 
             var changeCount = 0;
-            
-            ck.on('change', function () {
+
+            ck.on('key', function () {
                 $scope.$apply(function () {
                     ngModel.$setViewValue(ck.getData());
                 });
             });
-                        
-            
+
+
             ck.on('instanceReady', function () {
                 ck.setData(ngModel.$modelValue);
             });
