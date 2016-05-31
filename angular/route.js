@@ -51,7 +51,8 @@ var seller = {
 	},
 
 	'Report|fa-file-o': {
-	    'View Report': '/reports/std/saleforseller'
+	    'View Report': '/reports/std/saleforseller',
+	    'OI Report' : '/reports/std/oi'
 	}
 };
 var admin = {

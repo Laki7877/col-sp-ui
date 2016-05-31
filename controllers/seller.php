@@ -89,6 +89,11 @@ class SellerController extends Controller
         return View::render('seller_report',  ['params' => json_encode_n($params)]);
     }
 
+    public static function listOiReport($params) 
+    {
+        return View::render('seller_report_std_oi');
+    }
+
     //CMS
     public static function listCMSCategory($params)
     {
