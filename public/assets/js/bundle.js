@@ -20706,8 +20706,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "        }\"><input ng-disabled=\"!pair.Visibility || xspermit(44)\" class=form-control name=\"pair_Sku{{ $index }}\" maxlength=255 ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }\" ng-required=\"onPublishing && pair.Visibility\" ng-pattern-restrict=^[a-zA-Z0-9]*$ ng-model=\"pair.Sku\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
     "        'error' : {\n" +
     "        'messages': {\n" +
-    "        'pattern': 'Only numbers and decimals (up to 2 digits) allowed',\n" +
-    "        'maxnumber': 'Original Price must be higher than Sale Price'\n" +
+    "        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\n" +
     "        },\n" +
     "        'show': $root.isInvalid(addProductForm['pair_SalePrice' + $index]),\n" +
     "        'conditions' : addProductForm['pair_SalePrice' + $index].$error\n" +
@@ -20715,8 +20714,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "        }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }\" ng-model=pair.SalePrice name=\"pair_SalePrice{{ $index }}\" ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-maxnumber=\"{{ pair.OriginalPrice }}\" ng-disabled=\"!pair.Visibility || xspermit(44)\" ng-required=pair.Visibility class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
     "        'error' : {\n" +
     "        'messages': {\n" +
-    "        'pattern': 'Only numbers and decimals (up to 2 digits) allowed',\n" +
-    "        'minnumber': 'Original Price must be higher than Sale Price'\n" +
+    "        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\n" +
     "        },\n" +
     "        'show': $root.isInvalid(addProductForm['pair_OriginalPrice' + $index]),\n" +
     "        'conditions' : addProductForm['pair_OriginalPrice' + $index].$error\n" +
@@ -21874,7 +21872,7 @@ var seller = {
 		'User Roles': '/roles'
 	},
 
-	'Report|fa-file-o': {
+	'Report|fa-file': {
 	    'View Report': '/reports',
         'Sale Report For Seller': '/reports/std/saleforseller',
         'Stock Status Report': '/reports/std/stockstatus',
@@ -21917,7 +21915,7 @@ var admin = {
 	    'CMS Group': '/admin/cms/group'
 	},
 	'Reports|fa-file': {
-	    
+
 	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'
@@ -21960,7 +21958,7 @@ var permission = {
 	56: '/shops/appearance',
 	57: ['/roles', '/accounts'],
 	60: '/cms',
-	71: '/reports/std/saleforseller', 
+	71: '/reports/std/saleforseller',
 	// 62: ['/cms/category/create', '/cms/master/create', '/cms/group/create'],
 
 	//Shop

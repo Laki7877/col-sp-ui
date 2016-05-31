@@ -15549,30 +15549,34 @@ form h6 {
 .variation-table .column-visibility {
   width: 96px;
 }
+/* line 165, ../../../assets/_add_product_page.sass */
+.variation-table .help-block {
+  display: none;
+}
 
-/* line 166, ../../../assets/_add_product_page.sass */
+/* line 167, ../../../assets/_add_product_page.sass */
 .modal-size-warning {
   width: 400px;
 }
 
-/* line 169, ../../../assets/_add_product_page.sass */
+/* line 170, ../../../assets/_add_product_page.sass */
 .modal-product-image .modal-content {
   padding: 0;
 }
-/* line 171, ../../../assets/_add_product_page.sass */
+/* line 172, ../../../assets/_add_product_page.sass */
 .modal-product-image img {
   width: 100%;
 }
 
-/* line 173, ../../../assets/_add_product_page.sass */
+/* line 174, ../../../assets/_add_product_page.sass */
 .confirmation-modal {
   margin-top: 20px;
 }
-/* line 176, ../../../assets/_add_product_page.sass */
+/* line 177, ../../../assets/_add_product_page.sass */
 .confirmation-modal.no-margin {
   margin-top: 0;
 }
-/* line 179, ../../../assets/_add_product_page.sass */
+/* line 180, ../../../assets/_add_product_page.sass */
 .confirmation-modal .confirmation-modal-text {
   position: relative;
   float: left;
@@ -15581,21 +15585,21 @@ form h6 {
   padding-left: 15px;
   padding-right: 15px;
 }
-/* line 183, ../../../assets/_add_product_page.sass */
+/* line 184, ../../../assets/_add_product_page.sass */
 .confirmation-modal .confirmation-modal-text .sign-icon {
   float: left;
   width: 60px;
   height: 50px;
 }
-/* line 187, ../../../assets/_add_product_page.sass */
+/* line 188, ../../../assets/_add_product_page.sass */
 .confirmation-modal .confirmation-modal-text .sign-icon > .fa {
   font-size: 50px;
 }
-/* line 190, ../../../assets/_add_product_page.sass */
+/* line 191, ../../../assets/_add_product_page.sass */
 .confirmation-modal .confirmation-modal-text .warning-text {
   display: block;
 }
-/* line 193, ../../../assets/_add_product_page.sass */
+/* line 194, ../../../assets/_add_product_page.sass */
 .confirmation-modal .confirmation-action {
   position: relative;
   float: left;
@@ -15606,16 +15610,16 @@ form h6 {
   text-align: center;
   margin-top: 30px;
 }
-/* line 197, ../../../assets/_add_product_page.sass */
+/* line 198, ../../../assets/_add_product_page.sass */
 .confirmation-modal .confirmation-action.no-margin {
   margin-top: 0;
 }
-/* line 199, ../../../assets/_add_product_page.sass */
+/* line 200, ../../../assets/_add_product_page.sass */
 .confirmation-modal .confirmation-action .btn {
   width: 160px;
   float: left;
 }
-/* line 203, ../../../assets/_add_product_page.sass */
+/* line 204, ../../../assets/_add_product_page.sass */
 .confirmation-modal .confirmation-action .btn + .btn {
   margin-left: 18px;
 }
