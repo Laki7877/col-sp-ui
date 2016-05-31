@@ -4032,7 +4032,8 @@ module.exports = ["$scope", "$controller", "GlobalCouponService", "config", func
 }]
 
 },{}],28:[function(require,module,exports){
-module.exports = function($scope, $controller, GlobalCouponService, GlobalCategoryService, config, Category) {
+module.exports = ["$scope", "$controller", "GlobalCouponService", "GlobalCategoryService", "config", "Category", function($scope, $controller, GlobalCouponService, GlobalCategoryService, config, Category) {
+  'ngInject';
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
   $scope.filters = config.DROPDOWN.COUPON_GLOBAL_FILTER;
@@ -4061,7 +4062,7 @@ module.exports = function($scope, $controller, GlobalCouponService, GlobalCatego
     }
   });
 
-};
+}];
 },{}],29:[function(require,module,exports){
   module.exports = ["$scope", "Credential", "$window", "NcAlert", "$uibModal", "storage", "config", function ($scope, Credential, $window, NcAlert, $uibModal, storage, config) {
     'ngInject';
@@ -4152,7 +4153,7 @@ module.exports = ["$scope", "$controller", "$window", "AdminMasterProductService
 	};
 }];
 },{}],31:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "BrandService", "Product", "AdminMasterProductService", "config", "util", "common", function($scope, $controller, BrandService, Product, AdminMasterProductService, config, util, common) {
+module.exports = ["$scope", "$controller", "BrandService", "$window", "Product", "AdminMasterProductService", "config", "util", "common", function($scope, $controller, BrandService, $window, Product, AdminMasterProductService, config, util, common) {
 	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -4663,7 +4664,7 @@ module.exports = ["$scope", "$controller", "Product", function($scope, $controll
 }]
 
 },{}],39:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "Product", "common", "config", function($scope, $controller, Product, common, config) {
+module.exports = ["$scope", "$controller", "Product", "common", "config", "$base64", "$timeout", function($scope, $controller, Product, common, config, $base64, $timeout) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
@@ -4963,7 +4964,8 @@ module.exports = ["$scope", "$controller", "SellerCouponService", "config", func
 }]
 
 },{}],45:[function(require,module,exports){
-module.exports = function($scope, $controller, SellerCouponService, config, Category) {
+module.exports = ["$scope", "$controller", "SellerCouponService", "config", "Category", function($scope, $controller, SellerCouponService, config, Category) {
+  'ngInject';
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
   $scope.filters = config.DROPDOWN.COUPON_SELLER_FILTER;
@@ -4984,7 +4986,7 @@ module.exports = function($scope, $controller, SellerCouponService, config, Cate
     }
   });
 
-};
+}];
 },{}],46:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "AdminShopService", "config", function($scope, $controller, AdminShopService, config) {
 	'ngInject';
@@ -11468,6 +11470,1428 @@ module.exports = ["$scope", "$rootScope", "$controller", "common", "CMSMasterSer
     }
 }];
 
+},{}],72:[function(require,module,exports){
+module.exports = function($scope, $controller, CouponService, config, $uibModal) {
+  $controller('AbstractListCtrl', {
+    $scope: $scope,
+    options: {
+      url: '/cms',
+      service: CouponService,
+      item: 'Coupon',
+      order: 'ExpireDate',
+      id: 'CouponId',
+      actions: [{
+        name: 'View Detail',
+        fn: function(item) {
+          console.log(item, 'view detail')
+        }
+      }],
+      bulks: [],
+      filters: []
+    }
+  });
+
+  $controller('AbstractAddCtrl', {
+    $scope: $scope,
+    options: {
+      id: 'CouponId',
+      url: 'cms/create',
+      item: 'Coupon',
+      service: CouponService,
+      dateFields: ['StartDate', 'ExpireDate'],
+      onLoad: function(){
+        //map dropdonws
+      },
+      onSave: function(scope) {
+        //hacky speed fix
+        console.log($scope.formData)
+        //scope.formData.Conditions.Order = [scope.formData.Conditions.Order["0"]];
+      }
+    }
+  });
+
+
+  $scope.formData = {};
+  $scope.groupItemList = [];
+
+
+  $scope.loadAllCMS = function() {
+    
+  };
+
+  $scope.addNewGroup = function() {
+     $uibModal.open({
+      template: '<div class="modal-header">' +
+                '  <h3 class="modal-title">Add New Group</h3>' +
+                '</div>' +
+                '<div class="modal-body">' +
+                '  <form class="ah-form margin-top-20" name="form" novalidate>' +
+                '    <div class="row">' +
+                '      <div class="col-xs-12">' +
+                '   <div class="form-section-content">' +
+                '     <input type="text" class="form-control" ng-model="groupName" />' +
+                '   </div>' +
+                '        <div class="container-fluid no-padding margin-top-20">' +
+                '            <div class="float-right">' +
+                '              <a href="#" class="link-btn-plain" ng-click="$dismiss()">Cancel</a>' +
+                '              <button class="btn btn-blue btn-width-xl" ng-click="save(groupName)"><span class="login-loading" ng-cloak ng-show="saving"><i class="fa fa-spinner fa-spin" ></i></span>Save</button>' +
+                '            </div' +
+                '        </div' +
+                '      </div>' +
+                '    </div>' +
+                '  </form>' +
+                '</div>',
+      size: 'md',
+      scope: $scope,
+      controller: function($scope, $uibModalInstance) {
+
+
+        $scope.save = function(groupName) {
+          var group = {
+            GroupName: groupName,
+            GroupTotal: 0
+          }
+          $uibModalInstance.close(group)
+        };
+
+        
+      }
+    })
+    .result.then(function(data) {
+      console.log(data)
+      $scope.groupItemList.push(data);
+    });
+  };
+
+  $scope.AddToList = function() {
+    console.log($scope.formData)
+  };
+}
+
+},{}],73:[function(require,module,exports){
+module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "$uibModal", "$timeout", "$rootScope", function ($scope, $controller, CMSCategoryService, config, $uibModal, $timeout, $rootScope) {
+    'ngInject';
+
+    $scope.CMSadd = !$rootScope.permit(62);
+    $scope.formData     = {};
+
+    $scope.loading      = false;
+    $scope.isEmpty      = true;
+
+    var sortableEle;
+
+    $scope.dragStart = function (e, ui) {
+        ui.item.data('start', ui.item.index());
+    }
+    $scope.dragEnd = function (e, ui) {
+        var start = ui.item.data('start'),
+            end = ui.item.index();
+
+        $scope.formData.CategoryProductList.splice(end, 0,
+            $scope.formData.CategoryProductList.splice(start, 1)[0]);
+
+        $scope.$apply();
+
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+        
+    }
+
+    sortableEle = $('#sortable').sortable({
+        start: $scope.dragStart,
+        update: $scope.dragEnd
+    });
+
+    $scope.moveUp = function (start, end) {
+
+        // swap object
+        $scope.formData.CategoryProductList.splice(end, 0,
+           $scope.formData.CategoryProductList.splice(start, 1)[0]);
+
+        // update seq
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+    };
+
+    $scope.moveDown = function (start, end) {
+
+        // swap object
+        $scope.formData.CategoryProductList.splice(end, 0,
+           $scope.formData.CategoryProductList.splice(start, 1)[0]);
+
+        // update seq
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+    };
+
+    // update sequence
+    function updateSequence() {
+
+        var seq = 0;
+
+        angular.forEach($scope.formData.CategoryProductList, function (item) {
+            seq++;
+            item.Sequence = seq;
+        });
+    }
+
+    $scope.selectOptionText = '- Choose Action -';
+    $scope.selectOption = function (param) {
+        $scope.selectOptionText = param;
+    };
+
+    // check all item
+    $scope.checkAll = function (isChecked) {
+
+        $scope.isCheckedAll != isChecked;
+
+        if (!isChecked) {
+            angular.forEach($scope.formData.CategoryProductList, function (item) {
+                item.IsChecked = false;
+            });
+        }
+        else {
+            angular.forEach($scope.formData.CategoryProductList, function (item) {
+                item.IsChecked = true;
+            });
+        }
+
+        $scope.sumProductSelected();
+    };
+
+    // check once item
+    $scope.checkOnce = function (item, isChecked) {
+
+        if (!isChecked) {
+            item.IsChecked = false;
+        }
+        else {
+            item.IsChecked = true;
+        }
+
+        $scope.sumProductSelected();
+    };
+
+    $scope.sumProductSelected = function () {
+
+        var sum = 0;
+
+        angular.forEach($scope.formData.CategoryProductList, function (item) {
+            if (item.IsChecked) {
+                sum++;
+            }
+        });
+
+        return sum;
+    };
+
+
+    // Add Item to the list
+    $scope.addProductItem = function () {
+
+        // open modal
+        $uibModal.open({
+            templateUrl: 'templates/admin-cms-category-manage-add-item.html',
+            size: 'lg',
+            //scope: $scope,
+            controller: ["$scope", "$uibModalInstance", function ($scope, $uibModalInstance) {
+
+                $scope.products = [];
+
+                $scope.isEmpty = true;
+                $scope.loading = false;
+                $scope.message = 'Empty list.';
+                $scope.categorys = [];
+                $scope.brands   = [];
+                $scope.tags     = [];
+
+                $scope.init = function () {
+                    $('#form-category :input[type=text]').keyup(function () {
+
+                        var val = $(this).val();
+                        console.log(val)
+                        var param   = { SearchText: val };
+
+                        CMSCategoryService.getAllCategory(param)
+                        .then(function (data) {
+                            $scope.categorys = data;
+                        });
+                    });
+                };
+
+                // load category
+                CMSCategoryService.getAllCategory({})
+                .then(function (data) {
+                    console.log(data)
+                    $scope.categorys = data;
+                });
+
+                // load tag
+                CMSCategoryService.getAllTag()
+                .then(function (data) {
+                    console.log(data)
+                    $scope.tags = data;
+                });
+
+                // Search
+                $scope.search = function (searchText) {
+
+                    $scope.loading = true;
+                    $scope.isEmpty = false;
+
+                    var tags = '';
+
+                    angular.forEach($scope.tag.selected, function (tag) {
+                        tags += tag.Tag + ',';
+                    });
+
+                    var params = {
+                        CategoryId: $scope.category.selected.CategoryId,
+                        BrandId: $scope.brand.selected.BrandId,
+                        Tag: tags,
+                        SearchBy: $scope.searchBy,
+                        SearchText: $scope.searchText
+                    };
+
+                    // search product
+                    CMSCategoryService.searchProduct(params)
+                    .then(function (data) {
+                        console.log(data)
+                        $scope.products = data;
+                        $scope.isEmpty = false;
+                        $scope.loading = false;
+                        $scope.message = '';
+                    },
+                    function (error) {
+                        $scope.products = [];
+                        $scope.isEmpty = true;
+                        $scope.loading = false;
+                        $scope.message = 'Not Found Product';
+                    });
+
+                };
+
+                $scope.ok = function () {
+
+                    var itemSelected = [];
+
+                    angular.forEach($scope.products, function (item) {
+                        if (item.IsChecked) {
+                            itemSelected.push(item);
+                        }
+                    });
+
+                    $uibModalInstance.close(itemSelected);
+                };
+
+                // check all item
+                $scope.checkAll = function (isChecked) {
+
+                    $scope.isCheckedAll != isChecked;
+
+                    if (!isChecked) {
+                        angular.forEach($scope.products, function (item) {
+                            item.IsChecked = false;
+                        });
+                    }
+                    else {
+                        angular.forEach($scope.products, function (item) {
+                            item.IsChecked = true;
+                        });
+                    }
+
+                    $scope.sumProductSelected();
+                };
+
+                // check once item
+                $scope.checkOnce = function (item, isChecked) {
+
+                    if (!isChecked) {
+                        item.IsChecked = false;
+                    }
+                    else {
+                        item.IsChecked = true;
+                    }
+
+                    $scope.sumProductSelected();
+                };
+
+                $scope.sumProductSelected = function () {
+
+                    var sum = 0;
+
+                    angular.forEach($scope.products, function (item) {
+                        if (item.IsChecked) {
+                            sum++;
+                        }
+                    });
+
+                    return sum;
+                };
+                
+                /// Test
+                $scope.category = {};
+                $scope.brand    = {};
+                $scope.tag      = {};
+                $scope.searchBy = 'ProductName';
+
+                $scope.$watch('category.selected', function (newValue, oldValue) {
+                    if (newValue === undefined)
+                        return;
+
+                    // get brand by category id
+                    CMSCategoryService.getBrand(newValue.CategoryId)
+                    .then(function (data) {
+                        $scope.brands = data;
+                    });
+
+                });
+
+                $scope.$watch('brand.selected', function (newValue, oldValue) {
+                    if (newValue === undefined)
+                        return;
+
+                });
+
+                $scope.disabled = undefined;
+
+                $scope.enable = function () {
+                    $scope.disabled = false;
+                };
+
+                $scope.disable = function () {
+                    $scope.disabled = true;
+                };
+
+                $scope.clear = function () {
+                    $scope.category.selected = undefined;
+                };
+
+                $scope.category = {};
+
+            }]
+        })
+        .result.then(function (result) {
+            if ($scope.formData.CategoryProductList === undefined) {
+                $scope.formData.CategoryProductList = [];
+            }
+
+            angular.forEach(result, function (product) {
+                if (!isDuplicateProduct(product.Pid)) {
+                    var obj = angular.copy(product);
+                    obj.Sequence = getNewProductSequence();
+                    obj.ProductBoxBadge = product.ProductNameEn;
+                    $scope.formData.CategoryProductList.push(obj);
+                }
+            })
+        });
+    };
+
+    // check product duplicate before add to list
+    function isDuplicateProduct(pId) {
+        var isDuplicate = false;
+        angular.forEach($scope.formData.CategoryProductList, function (product) {
+            if (product.Pid == pId)
+                isDuplicate = true;
+        });
+
+        return isDuplicate;
+    }
+
+    // gen product seq
+    function getNewProductSequence() {
+        return $scope.formData.CategoryProductList.length + 1;
+    }
+
+    // remove product item
+    $scope.removeOnceItem = function (index) {
+        $scope.formData.CategoryProductList.splice(index, 1);
+    }
+
+    // remove multiple product
+    $scope.removeMultiItem = function () {
+        for (var i = $scope.formData.CategoryProductList.length - 1; i >= 0; i--) {
+            if ($scope.formData.CategoryProductList[i].IsChecked) {
+                $scope.formData.CategoryProductList.splice(i, 1);
+            }
+        }
+
+        $scope.isCheckedAll = false;
+    }
+
+    // get total product items
+    $scope.getTotalItems = function () {
+        return $scope.formData.CategoryProductList === undefined ? 0 : $scope.formData.CategoryProductList.length;
+    };
+
+    $controller('AbstractAddCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/cms/category',
+            service: CMSCategoryService,
+            item: 'CMS Category',
+            order: 'UpdateDate',
+            id: 'CMSCategoryId',
+            init: function (scope) {
+
+            },
+            onLoad: function (scope, load) {
+                
+            },
+            onSave: function (scope) {
+
+            }
+        }
+    });
+
+}];
+
+},{}],74:[function(require,module,exports){
+
+module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "util", "$rootScope", function ($scope, $controller, CMSCategoryService, config, util,$rootScope) {
+    'ngInject';
+    $scope.CMSview = !$rootScope.permit(61);  
+    $scope.CMSadd = !$rootScope.permit(62);
+    $scope.CMSedit = !$rootScope.permit(63);
+    
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/cms/category',
+            service: CMSCategoryService,
+            item: 'CMSCategory',
+            order: 'UpdateOn',
+            id: 'CMSCategoryId',
+            actions: ['View', 'Delete'],
+            bulks: [
+                'Delete',
+                'Show',
+                'Hide'
+            ],
+            filters: [
+				{ name: "All", value: 'All' },
+                { name: "Approved", value: 'Approved' },
+                { name: "Not Approved", value: 'NotApproved' },
+                { name: "Wait for Approval", value: 'WaitforApproval' }
+            ]
+        }
+    });
+    //$scope.statusDropdown = config.PRODUCT_STATUS;
+
+}];
+
+},{}],75:[function(require,module,exports){
+module.exports = ["$scope", "$controller", "CMSGroupService", "config", "$uibModal", "$timeout", "$rootScope", function ($scope, $controller, CMSGroupService, config, $uibModal, $timeout,$rootScope) {
+    'ngInject'; 
+    $scope.CMSadd = !$rootScope.permit(62);
+
+    $scope.formData     = {};
+
+    $scope.loading      = false;
+    $scope.isEmpty      = true;
+
+
+    var sortableEle;
+
+    $scope.dragStart = function (e, ui) {
+        ui.item.data('start', ui.item.index());
+    }
+    $scope.dragEnd = function (e, ui) {
+        var start = ui.item.data('start'),
+            end = ui.item.index();
+
+        $scope.formData.GroupMasterList.splice(end, 0,
+            $scope.formData.GroupMasterList.splice(start, 1)[0]);
+
+        $scope.$apply();
+
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+        
+    }
+
+    sortableEle = $('#sortable').sortable({
+        start: $scope.dragStart,
+        update: $scope.dragEnd
+    });
+
+    $scope.moveUp = function (start, end) {
+
+        // swap object
+        $scope.formData.GroupMasterList.splice(end, 0,
+           $scope.formData.GroupMasterList.splice(start, 1)[0]);
+
+        // update seq
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+    };
+
+    $scope.moveDown = function (start, end) {
+
+        // swap object
+        $scope.formData.GroupMasterList.splice(end, 0,
+           $scope.formData.GroupMasterList.splice(start, 1)[0]);
+
+        // update seq
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+    };
+
+    // update sequence
+    function updateSequence() {
+
+        var seq = 0;
+
+        angular.forEach($scope.formData.GroupMasterList, function (item) {
+            seq++;
+            item.Sequence = seq;
+        });
+    }
+
+    $scope.selectOptionText = '- Choose Action -';
+    $scope.selectOption = function (param) {
+        $scope.selectOptionText = param;
+    };
+
+    // check all item
+    $scope.checkAll = function (isChecked) {
+
+        $scope.isCheckedAll != isChecked;
+
+        if (!isChecked) {
+            angular.forEach($scope.formData.GroupMasterList, function (item) {
+                item.IsChecked = false;
+            });
+        }
+        else {
+            angular.forEach($scope.formData.GroupMasterList, function (item) {
+                item.IsChecked = true;
+            });
+        }
+
+        $scope.sumMasterSelected();
+    };
+
+    // check once item
+    $scope.checkOnce = function (item, isChecked) {
+
+        if (!isChecked) {
+            item.IsChecked = false;
+        }
+        else {
+            item.IsChecked = true;
+        }
+
+        $scope.sumMasterSelected();
+    };
+
+    $scope.sumMasterSelected = function () {
+
+        var sum = 0;
+
+        angular.forEach($scope.formData.GroupMasterList, function (item) {
+            if (item.IsChecked) {
+                sum++;
+            }
+        });
+
+        return sum;
+    };
+
+
+    // Add Item to list
+    $scope.addCMSMasterItem = function () {
+
+        // open modal
+        $uibModal.open({
+            templateUrl: 'templates/admin-cms-group-add-item.html',
+            size: 'lg',
+            //scope: $scope,
+            controller: ["$scope", "$uibModalInstance", function ($scope, $uibModalInstance) {
+
+                $scope.masters = [];
+
+                $scope.isEmpty = true;
+                $scope.loading = false;
+                $scope.message = 'Empty list.';
+
+                // Search
+                $scope.search = function (searchText) {
+
+                    $scope.loading = true;
+                    $scope.isEmpty = false;
+
+                    var params = {
+                        //SearchBy: $scope.searchBy,
+                        SearchText: $scope.searchText
+                    };
+
+                    // search product
+                    CMSGroupService.searchCMSMaster(params)
+                    .then(function (data) {
+                        console.log(data)
+                        $scope.masters = data;
+                        $scope.isEmpty = false;
+                        $scope.loading = false;
+                        $scope.message = '';
+                    },
+                    function (error) {
+                        $scope.masters = [];
+                        $scope.isEmpty = true;
+                        $scope.loading = false;
+                        $scope.message = 'Not Found CMS Master';
+                    });
+
+                };
+
+                $scope.ok = function () {
+
+                    var itemSelected = [];
+
+                    angular.forEach($scope.masters, function (item) {
+                        if (item.IsChecked) {
+                            itemSelected.push(item);
+                        }
+                    });
+
+                    $uibModalInstance.close(itemSelected);
+                };
+
+                // check all item
+                $scope.checkAll = function (isChecked) {
+
+                    $scope.isCheckedAll != isChecked;
+
+                    if (!isChecked) {
+                        angular.forEach($scope.masters, function (item) {
+                            item.IsChecked = false;
+                        });
+                    }
+                    else {
+                        angular.forEach($scope.masters, function (item) {
+                            item.IsChecked = true;
+                        });
+                    }
+
+                    $scope.sumMasterSelected();
+                };
+
+                // check once item
+                $scope.checkOnce = function (item, isChecked) {
+
+                    if (!isChecked) {
+                        item.IsChecked = false;
+                    }
+                    else {
+                        item.IsChecked = true;
+                    }
+
+                    $scope.sumMasterSelected();
+                };
+
+                $scope.sumMasterSelected = function () {
+
+                    var sum = 0;
+
+                    angular.forEach($scope.masters, function (item) {
+                        if (item.IsChecked) {
+                            sum++;
+                        }
+                    });
+
+                    return sum;
+                };
+                
+            }]
+        })
+        .result.then(function (result) {
+            if ($scope.formData.GroupMasterList === undefined) {
+                $scope.formData.GroupMasterList = [];
+            }
+
+            angular.forEach(result, function (master) {
+                if (!isDuplicateMaster(master.CMSMasterId)) {
+                    master.Sequence = getNewMasterSequence();
+                    $scope.formData.GroupMasterList.push(master);
+                }
+            })
+        });
+    };
+
+    // check product duplicate before add to list
+    function isDuplicateMaster(mId) {
+        var isDuplicate = false;
+        angular.forEach($scope.formData.GroupMasterList, function (master) {
+            if (master.CMSMasterId == mId)
+                isDuplicate = true;
+        });
+
+        return isDuplicate;
+    }
+
+    // gen product seq
+    function getNewMasterSequence() {
+        return $scope.formData.GroupMasterList.length + 1;
+    }
+
+    // remove product item
+    $scope.removeOnceItem = function (index) {
+        $scope.formData.GroupMasterList.splice(index, 1);
+    }
+
+    // remove multiple product
+    $scope.removeMultiItem = function () {
+        for (var i = $scope.formData.GroupMasterList.length - 1; i >= 0; i--) {
+            if ($scope.formData.GroupMasterList[i].IsChecked) {
+                $scope.formData.GroupMasterList.splice(i, 1);
+            }
+        }
+
+        $scope.isCheckedAll = false;
+    }
+
+    // get total product items
+    $scope.getTotalItems = function () {
+        return $scope.formData.GroupMasterList === undefined ? 0 : $scope.formData.GroupMasterList.length;
+    };
+
+    $controller('AbstractAddCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/cms/group',
+            service: CMSGroupService,
+            item: 'CMS Group',
+            order: 'UpdateDate',
+            id: 'CMSGroupId',
+            init: function (scope) {
+
+            },
+            onLoad: function (scope, load) {
+                
+            },
+            onSave: function (scope) {
+
+            }
+        }
+    });
+
+}];
+
+},{}],76:[function(require,module,exports){
+
+module.exports = ["$scope", "$controller", "CMSGroupService", "config", "$rootScope", function ($scope, $controller, CMSGroupService, config, $rootScope) {
+    'ngInject';
+    $scope.CMSview = !$rootScope.permit(61);  
+    $scope.CMSadd = !$rootScope.permit(62);
+    $scope.CMSedit = !$rootScope.permit(63);
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/cms/group',
+            service: CMSGroupService,
+            item: 'CMSGroup',
+            order: 'UpdateOn',
+            id: 'CMSGroupId',
+            actions: ['View', 'Delete'],
+            bulks: ['Delete', 'Show', 'Hide'],
+            filters: [
+				{ name: "All", value: 'All' },
+				{ name: "Approved", value: 'Approved' },
+				{ name: "Not Approved", value: 'NotApproved' },
+				{ name: "Wait For Approved", value: 'WaitForApproved' },
+				{ name: "Draft", value: 'Draft' }
+            ]
+        }
+    });
+    //$scope.statusDropdown = config.PRODUCT_STATUS;
+
+}];
+
+},{}],77:[function(require,module,exports){
+module.exports = ["$scope", "$rootScope", "$controller", "CMSMasterService", "ImageService", "NcAlert", "common", "config", "$uibModal", "$timeout", function ($scope, $rootScope, $controller, CMSMasterService, ImageService, NcAlert, common, config, $uibModal, $timeout) {
+    'ngInject';
+    $scope.CMSadd = !$rootScope.permit(62);
+
+    $scope.alert            = new NcAlert();
+    $scope.formData         = {};
+    $scope.products         = [];
+    $scope.product          = {};
+    $scope.featureProducts  = [];
+    $scope.CategoryList     = [];
+
+    $scope.Schedule = {
+        EffectiveDate: null,
+        ExpiryDate: null,
+        //CategoryList: []
+    };
+
+    $scope.bannerUploader = ImageService.getUploaderFn('/CMS/CMSImage', {
+        data: { Type: 'Banner' }
+    });
+    $scope.bannerOptions = {
+        validateDimensionMin: [1920, 1080],
+        validateDimensionMax: [1920, 1080]
+    };
+
+    $scope.formData         = CMSMasterService.generate();
+    
+    $scope.uploadBannerFail = function (e, response) {
+        // if (e == 'onmaxsize') {
+        //     $scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one');
+        // }
+        // else {
+        //     $scope.alert.error(common.getError(response.data));
+        // }
+        debugger;
+        if(e == 'onmaxsize') {
+            $scope.alert.error('Cannot exceed 8 images');
+        }
+        else if(e == 'ondimension') {
+            $scope.alert.error('Image must be 1920x1080 pixels');
+        }
+        else if(e == 'onfilesize') {
+            $scope.alert.error('Each image file size must not exceed 5MB')
+        }
+        else {
+            $scope.alert.error(common.getError(response.data));
+        }
+    };
+
+    var sortableEle;
+
+    $scope.dragStart = function (e, ui) {
+        ui.item.data('start', ui.item.index());
+    }
+    $scope.dragEnd = function (e, ui) {
+        var start = ui.item.data('start'),
+            end = ui.item.index();
+
+         $scope.CategoryList.splice(end, 0,
+             $scope.CategoryList.splice(start, 1)[0]);
+
+        $scope.$apply();
+
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+
+    }
+
+    sortableEle = $('#sortable').sortable({
+        start: $scope.dragStart,
+        update: $scope.dragEnd
+    });
+
+    $scope.moveUp = function (start, end) {
+
+        // swap object
+         $scope.CategoryList.splice(end, 0,
+            $scope.CategoryList.splice(start, 1)[0]);
+
+        // update seq
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+    };
+
+    $scope.moveDown = function (start, end) {
+
+        // swap object
+         $scope.CategoryList.splice(end, 0,
+            $scope.CategoryList.splice(start, 1)[0]);
+
+        // update seq
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+    };
+
+    // update sequence
+    function updateSequence() {
+
+        var seq = 0;
+
+        angular.forEach( $scope.CategoryList, function (item) {
+            seq++;
+            item.Sequence = seq;
+        });
+    }
+
+    $scope.selectOptionText = '- Choose Action -';
+    $scope.selectOption = function (param) {
+        $scope.selectOptionText = param;
+    };
+
+    // check all item
+    $scope.checkAll = function (isChecked) {
+
+        $scope.isCheckedAll != isChecked;
+
+        if (!isChecked) {
+            angular.forEach( $scope.CategoryList, function (item) {
+                item.IsChecked = false;
+            });
+        }
+        else {
+            angular.forEach( $scope.CategoryList, function (item) {
+                item.IsChecked = true;
+            });
+        }
+
+        $scope.sumCategorySelected();
+    };
+
+    // check once item
+    $scope.checkOnce = function (item, isChecked) {
+
+        if (!isChecked) {
+            item.IsChecked = false;
+        }
+        else {
+            item.IsChecked = true;
+        }
+
+        $scope.sumCategorySelected();
+    };
+
+    $scope.sumCategorySelected = function () {
+
+        var sum = 0;
+
+        angular.forEach( $scope.CategoryList, function (item) {
+            if (item.IsChecked) {
+                sum++;
+            }
+        });
+
+        return sum;
+    };
+
+    $('#add_cms_master_body ul.nav li').click(function () {
+
+        var index = $('#add_cms_master_body ul.nav li').index(this);
+
+        if (index != 1) {
+            $('#collections').hide();
+        }
+        else {
+            $('#collections').show();
+        }
+    });
+
+    $scope.typeChanged = function (type) {
+
+        if (type == 'ST') {
+            $('#collections').hide();
+            $('#add_cms_master_body ul.nav li:nth-child(2)').hide();
+            $scope.formData.CMSMasterType = 'ST';
+        }
+        else {
+            $('#add_cms_master_body ul.nav li:nth-child(2)').show();
+            $scope.formData.CMSMasterType = 'CT';
+        }
+    };
+
+    $scope.$watch('formData.CMSMasterURLKey', function (newVal, oldVal) {
+        if (newVal === undefined)
+            return;
+
+        $scope.formData.CMSMasterLink = 'http://www.thecentral.com/collections/' + newVal;
+    });
+
+    $scope.copyFieldValue = function(e, id) {
+        var field = document.getElementById(id)
+        field.focus()
+        field.setSelectionRange(0, field.value.length)
+        var copySuccess = copySelectionText()
+        if (copySuccess) {
+            showTooltip(e)
+        }
+    }
+
+    function copySelectionText() {
+        var copysuccess;
+        try {
+            copysuccess = document.execCommand("copy");
+        } catch (e) {
+            copysuccess = false
+        }
+        return copysuccess
+    }
+
+    var tooltip, // global variables oh my! Refactor when deploying!
+	hidetooltiptimer
+
+    function createTooltip() { // call this function ONCE at the end of page to create tool tip object
+        tooltip = document.createElement('div')
+        tooltip.style.cssText =
+            'position:absolute; background:black; color:white; padding:4px;z-index:10000;'
+            + 'border-radius:2px; font-size:12px;box-shadow:3px 3px 3px rgba(0,0,0,.4);'
+            + 'opacity:0;transition:opacity 0.3s'
+        tooltip.innerHTML = 'Copied!'
+        document.body.appendChild(tooltip)
+    }
+
+    function showTooltip(e) {
+        var evt = e || event
+        clearTimeout(hidetooltiptimer)
+        tooltip.style.left = evt.pageX - 10 + 'px'
+        tooltip.style.top = evt.pageY + 15 + 'px'
+        tooltip.style.opacity = 1
+        hidetooltiptimer = setTimeout(function () {
+            tooltip.style.opacity = 0
+        }, 500)
+    }
+
+    createTooltip();
+
+
+    // add category to collection
+    $scope.addCategoryItem = function () {
+
+        $uibModal.open({
+            templateUrl: 'templates/admin-cms-master-add-item.html',
+            size: 'lg',
+            controller: ["$scope", "$uibModalInstance", function ($scope, $uibModalInstance) {
+
+                $scope.categories = [];
+
+                $scope.isEmpty = true;
+                $scope.loading = false;
+                $scope.message = 'Empty list.';
+
+                // Search
+                $scope.search = function (searchText) {
+
+                    $scope.loading = true;
+                    $scope.isEmpty = false;
+
+                    var params = {
+                        SearchText: $scope.searchText
+                    };
+
+                    // search product
+                    CMSMasterService.searchCMSCategory(params)
+                    .then(function (data) {
+                        console.log(data)
+                        $scope.categories = data;
+                        $scope.isEmpty = false;
+                        $scope.loading = false;
+                        $scope.message = '';
+                    },
+                    function (error) {
+                        $scope.categories = [];
+                        $scope.isEmpty = true;
+                        $scope.loading = false;
+                        $scope.message = 'Not Found CMS Category';
+                    });
+
+                };
+
+                $scope.ok = function () {
+
+                    var itemSelected = [];
+
+                    angular.forEach($scope.categories, function (item) {
+                        if (item.IsChecked) {
+                            itemSelected.push(item);
+                        }
+                    });
+
+                    $uibModalInstance.close(itemSelected);
+                };
+
+                // check all item
+                $scope.checkAll = function (isChecked) {
+
+                    $scope.isCheckedAll != isChecked;
+
+                    if (!isChecked) {
+                        angular.forEach($scope.categories, function (item) {
+                            item.IsChecked = false;
+                        });
+                    }
+                    else {
+                        angular.forEach($scope.categories, function (item) {
+                            item.IsChecked = true;
+                        });
+                    }
+
+                    $scope.sumCategorySelected();
+                };
+
+                // check once item
+                $scope.checkOnce = function (item, isChecked) {
+
+                    if (!isChecked) {
+                        item.IsChecked = false;
+                    }
+                    else {
+                        item.IsChecked = true;
+                    }
+
+                    $scope.sumCategorySelected();
+                };
+
+                $scope.sumCategorySelected = function () {
+
+                    var sum = 0;
+
+                    angular.forEach($scope.categories, function (item) {
+                        if (item.IsChecked) {
+                            sum++;
+                        }
+                    });
+
+                    return sum;
+                };
+            }]
+        })
+        .result.then(function (result) {
+
+            if ( $scope.CategoryList === undefined) {
+                 $scope.CategoryList = [];
+            }
+
+            if ($scope.formData.ScheduleList === undefined) {
+                $scope.formData.ScheduleList = [];
+            }
+
+            angular.forEach(result, function (category) {
+                if (!isDuplicateCategory(category.CMSCategoryId)) {
+                    category.Sequence = getNewCategorySequence();
+                     $scope.CategoryList.push(category);
+                }
+            })
+
+        });
+    };
+
+    // check product duplicate before add to list
+    function isDuplicateCategory(cId) {
+        var isDuplicate = false;
+        angular.forEach( $scope.CategoryList, function (category) {
+            if (category.CMSCategoryId == cId)
+                isDuplicate = true;
+        });
+
+        return isDuplicate;
+    }
+
+    // gen category seq
+    function getNewCategorySequence() {
+        return  $scope.CategoryList.length + 1;
+    }
+
+    // remove product item
+    $scope.removeOnceItem = function (index) {
+         $scope.CategoryList.splice(index, 1);
+    }
+
+    // remove multiple product
+    $scope.removeMultiItem = function () {
+        for (var i =  $scope.CategoryList.length - 1; i >= 0; i--) {
+            if ( $scope.CategoryList[i].IsChecked) {
+                 $scope.CategoryList.splice(i, 1);
+            }
+        }
+
+        $scope.isCheckedAll = false;
+    }
+
+    // get total product items
+    $scope.getTotalItems = function () {
+        return  $scope.CategoryList === undefined ? 0 :  $scope.CategoryList.length;
+    };
+
+    // load product
+    CMSMasterService.searchProduct({ SearchBy: 'ProductName' })
+    .then(function (data) {
+        console.log(data)
+        $scope.products = data;
+    });
+
+    // search product
+    $('#form-master :input[type=text]').keyup(function () {
+
+        var val = $(this).val();
+        console.log(val)
+        var param = {
+            SearchText: val,
+            CMSCategoryIds: getCMSCategoryIds($scope.CategoryList)
+        };
+
+        CMSMasterService.searchProduct(param)
+        .then(function (data) {
+            $scope.products = data;
+        });
+    });
+
+    
+    function getCMSCategoryIds(categories) {
+        var ids = [];
+        angular.forEach(categories, function (c) {
+            ids.push(c.CMSCategoryId);
+        });
+        return ids;
+    }
+        
+    // when select product
+    $scope.$watch('product.selected', function (newValue, oldValue) {
+        if (newValue === undefined || newValue == oldValue)
+            return;
+
+        console.log(newValue)
+        angular.forEach(newValue, function(item){
+            var featureProduct = {
+                ProductId: item.Pid,
+                CMSMasterId: $scope.formData.CMSMasterId
+            };
+
+            if (!isDuplicationPid(item.Pid)) {
+                $scope.featureProducts.push(featureProduct);
+            }
+        });
+        
+    });
+
+    function isDuplicationPid(pid) {
+        var isDuplication = false;
+        angular.forEach($scope.featureProducts, function (item) {
+            if (item.ProductId === pid) {
+                isDuplication = true;
+            }
+        });
+        return isDuplication;
+    }
+
+    $controller('AbstractAddCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/cms/master',
+            service: CMSMasterService,
+            item: 'CMS Master',
+            order: 'UpdateDate',
+            id: 'CMSMasterId',
+            init: function (scope) {
+
+            },
+            onLoad: function (scope, load) {
+                
+                $scope.Schedule             = scope.formData.ScheduleList[0];
+                $scope.featureProducts      = scope.formData.FeatureProductList;
+                $scope.CategoryList         = scope.formData.CategoryList;
+                setProducts(getProductIds($scope.featureProducts));
+
+
+                if (scope.formData.CMSMasterType == 'ST') {
+                    $('#collections').hide();
+                    $('#add_cms_master_body ul.nav li:nth-child(2)').hide();
+                }
+                else {
+                    $('#add_cms_master_body ul.nav li:nth-child(2)').show();
+                }
+
+                $scope.product = {};
+
+                function setProducts(params) {
+                    CMSMasterService.searchProduct({ ProductIds: params })
+                    .then(function (data) {
+                        console.log(data)
+                        $scope.products = data;
+                        $scope.product.selected = data;
+                    });
+                }
+
+                function getProductIds(featureProducts) {
+                    var ids = [];
+                    angular.forEach(featureProducts, function (p) {
+                        ids.push(p.ProductId);
+                    });
+                    return ids;
+                }
+
+            },
+            onSave: function (scope) {
+                if ($scope.formData.ScheduleList === undefined)
+                    $scope.formData.ScheduleList = [];
+
+                if ($scope.formData.FeatureProductList === undefined || $scope.formData.FeatureProductList == null)
+                    $scope.formData.FeatureProductList = [];
+
+                if ($scope.formData.CategoryList === undefined || $scope.formData.CategoryList == null)
+                    $scope.formData.CategoryList = [];
+
+                $scope.formData.FeatureProductList = $scope.featureProducts;
+                $scope.formData.ScheduleList.push($scope.Schedule);
+                $scope.formData.CategoryList = $scope.CategoryList;
+            }
+        }
+    });
+}];
+
+},{}],78:[function(require,module,exports){
+module.exports = ["$scope", "$rootScope", "$controller", "common", "CMSMasterService", "util", "$window", "$rootScope", "config", "storage", function ($scope, $rootScope, $controller, common, CMSMasterService, util, $window, $rootScope, config, storage) {
+    'ngInject';
+    $scope.CMSview = !$rootScope.permit(61);  
+    $scope.CMSadd = !$rootScope.permit(62);
+    $scope.CMSedit = !$rootScope.permit(63);
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/cms/master',
+            service: CMSMasterService,
+            item: 'CMSMaster',
+            order: 'CMSMasterId',
+            id: 'CMSMasterId',
+            actions: [
+                'View',
+                'Delete',
+                'Approve'
+            ],
+            bulks: [
+                'Delete',
+                'Hide',
+                'Show'
+            ],
+            filters: [
+                { name: "All", value: 'All' },
+                { name: "Approved", value: 'Approved' },
+                { name: "Not Approved", value: 'NotApproved' },
+                { name: "Wait for Approval", value: 'WaitforApproval' }
+            ]
+        }
+    });
+    $scope.showOnOffStatus = {};
+    $scope.showOnOffStatus.value = true;
+    $scope.statusLookup = {};
+    $scope.advanceSearchOptions.Admin = false;
+
+    config.PRODUCT_STATUS.forEach(function(object){
+       $scope.statusLookup[object.value] = object;
+    });
+
+    $scope.asStatus = function (ab) {
+        return $scope.statusLookup[ab];
+    };
+    $scope.getTag = function(tags) {
+        return _.join(tags, ', ');
+    }
+
+    var fromImport = storage.get('import.success');
+
+    if(!_.isEmpty(fromImport)) {
+        storage.remove('import.success');
+        $scope.alert.success(fromImport);
+    }
+}];
+
 },{}],79:[function(require,module,exports){
 module.exports = ["$scope", "$rootScope", "$controller", "SellerCouponService", "config", function($scope, $rootScope, $controller, SellerCouponService, config) {
   'ngInject';
@@ -11486,7 +12910,8 @@ module.exports = ["$scope", "$rootScope", "$controller", "SellerCouponService", 
 }]
 
 },{}],80:[function(require,module,exports){
-module.exports = function($scope, $rootScope, $controller, SellerCouponService, LocalCategoryService, Category, config, Category) {
+module.exports = ["$scope", "$rootScope", "$controller", "SellerCouponService", "LocalCategoryService", "Category", "config", "Category", function($scope, $rootScope, $controller, SellerCouponService, LocalCategoryService, Category, config, Category) {
+  'ngInject';
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
   $scope.filters = config.DROPDOWN.COUPON_SELLER_FILTER;
@@ -11513,7 +12938,7 @@ module.exports = function($scope, $rootScope, $controller, SellerCouponService, 
     }
   });
 
-};
+}];
 },{}],81:[function(require,module,exports){
 
 module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$filter", "storage", "$window", "$uibModal", "NewsletterService", function($scope, $rootScope, Dashboard, $log, $filter, storage, $window, $uibModal, NewsletterService){
@@ -11697,14 +13122,6 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$filter", "stora
 
 	//-------------- Begin Low Stock Alert section -------------
 	// get Low Stock Alert data and set it to scope
-
-	var getAvailableStock = function(item) {
-		return _.toInteger(item.Quantity) - (
-				_.toInteger(item.Defect) +
-				_.toInteger(item.OnHold) +
-				_.toInteger(item.Reserve)
-				);
-	};
 	Dashboard.getLowStockAlert()
 		.then(function(query) {
 			// set max data for table to 10
@@ -11714,7 +13131,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$filter", "stora
 
 			for (var i = $scope.lowStockAlertData.length - 1; i >= 0; i--) {
 				$scope.lowStockAlertData[i].PidText = 'PID: ' + $scope.lowStockAlertData[i].Pid;
-				$scope.lowStockAlertData[i].QuantityText = 'QTY: ' + getAvailableStock($scope.lowStockAlertData[i]);
+				$scope.lowStockAlertData[i].QuantityText = 'QTY: ' + $scope.lowStockAlertData[i].Quantity;
 			};
 			return $scope.lowStockAlertData;
 		});
@@ -12302,7 +13719,8 @@ module.exports = ["$scope", "$window", "$controller", "OrderService", "config", 
 }]
 
 },{}],86:[function(require,module,exports){
-module.exports = function($scope, $window, $filter, $controller, OrderService, util, config, $uibModal) {
+module.exports = ["$scope", "$window", "$filter", "$controller", "OrderService", "util", "config", "$uibModal", function($scope, $window, $filter, $controller, OrderService, util, config, $uibModal) {
+  'ngInject';
   $scope.status = config.ORDER_STATUS;
   $scope.addressIter = [1,2,3,4]; //Amount of AddressX (ie, Address1, Address2)
   //Abstract Add Ctrl
@@ -12470,9 +13888,10 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   $scope.getInvoiceState = function() {
     return !( $scope.formData.ShippingType == 'BU Dropship' || $scope.formData.ShippingType == 'COL Fulfillment' );
   };
-};
+}];
 },{}],87:[function(require,module,exports){
-module.exports = function($scope, $window, storage) {
+module.exports = ["$scope", "$window", "storage", function($scope, $window, storage) {
+	'ngInject';
 	$scope.orders = [];
 	$scope.cancel = function() {
 		$window.location.href = '/orders';
@@ -12484,7 +13903,7 @@ module.exports = function($scope, $window, storage) {
 	} else {
 		$window.location.href = '/orders';
 	}
-};
+}];
 },{}],88:[function(require,module,exports){
 var angular = require('angular');
 
@@ -12909,7 +14328,8 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 }];
 
 },{}],96:[function(require,module,exports){
-module.exports = function($rootScope, $scope, $controller, ShopService, ShopProfileService, ImageService, Onboarding, NcAlert, common, config, util, storage) {
+module.exports = ["$rootScope", "$scope", "$controller", "ShopService", "ShopProfileService", "ImageService", "Onboarding", "NcAlert", "common", "config", "util", "storage", function($rootScope, $scope, $controller, ShopService, ShopProfileService, ImageService, Onboarding, NcAlert, common, config, util, storage) {
+	'ngInject';
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 	$scope.shopGroupDropdown = config.DROPDOWN.SHOP_GROUP_DROPDOWN;
 	$scope.form = {};
@@ -13053,6 +14473,65 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 			});
 	};
 };
+
+},{}],97:[function(require,module,exports){
+
+module.exports = ["$scope", "$controller", "StdReportOnHoldService", "config", "util", function ($scope, $controller, StdReportOnHoldService, config, util) {
+    'ngInject';
+    $scope.formData = {
+        PID: null,
+        ItemName: null,
+        OrderDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        OrderDateTo: new Date()
+    };
+
+    var params = $scope.formData;
+
+    $scope.search = function () {
+        StdReportStockService.getStockReport(params)
+        .then(function (data) {
+            $scope.list.data = data;
+        });
+
+    };
+    $scope.exportCsv = function () {
+        StdReportOnHoldService.exportCsv(params)
+        .then(function (data) {
+
+            util.csv(data, 'STDOnHold.csv');
+
+        })
+    };
+
+    $scope.resetSearch = function () {
+        $scope.formData.PID = null;
+        $scope.formData.ItemName = null;
+        $scope.formData.OrderDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
+        $scope.formData.OrderDateTo = new Date();
+
+    };
+
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/reports/std/onhold',
+            service: StdReportOnHoldService,
+            item: 'OnHoldReport',
+            order: 'OrderId',
+            id: 'OrderId',
+            actions: ['View', 'Delete'],
+            bulks: ['Delete', 'Show', 'Hide'],
+            filters: [
+				{ name: "All", value: 'All' },
+				{ name: "Approved", value: 'Approved' },
+				{ name: "Not Approved", value: 'NotApproved' },
+				{ name: "Wait For Approved", value: 'WaitForApproved' },
+				{ name: "Draft", value: 'Draft' }
+            ]
+        }
+    });
+
+}];
 
 },{}],97:[function(require,module,exports){
 
@@ -18810,7 +20289,6 @@ angular.module('nc')
        });
     }
   });
-
 },{"angular":324}],169:[function(require,module,exports){
 angular.module('nc')
 	.filter('replace', function() {
@@ -24775,10 +26253,11 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
 }];
 
 },{}],230:[function(require,module,exports){
-module.exports = function(common) {
+module.exports = ["common", function(common) {
+	'ngInject';
 	var service = common.Rest('/Inventories');
 	return service;
-};
+}];
 },{}],231:[function(require,module,exports){
 module.exports = [function() {
 	'use strict';

@@ -38,7 +38,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Admin Acco
 							                  class="form-control"
 							                  name="GroupNameEn"
 							                  ng-model="formData.GroupNameEn"
-							                  ng-pattern-restrict="^[^<>]*$"
+							                   
 							                  maxlength="255"
 							                  required />
 							              </div>

@@ -12,7 +12,7 @@ module.exports = {
 	},
 	TYPEAHEAD_IMPORT_GUIDELINE_LIMIT: 8,
 	TYPEAHEAD_DELAY: 150,
-	ROLLBAR: {
+	xROLLBAR: {
 		token: '3f012de90d9247c0a19ae95ac6ed9daf',
 		environment: 'development'
 	},

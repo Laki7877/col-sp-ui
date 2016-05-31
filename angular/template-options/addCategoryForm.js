@@ -32,5 +32,7 @@ module.exports = {
             }
         }
     },
-    SortBy: {}
+    SortBy: {
+        'labelClass': 'required'
+    }
 }

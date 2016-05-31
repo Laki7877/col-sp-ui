@@ -272,23 +272,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     };
 
 
-    $scope.disableInstallment = function() {
-      if (!$scope.variantPtr.SalePrice) return true;
-      return (Number($scope.variantPtr.SalePrice) || 0) < 5000;
-    }
-
-    var checkSchema = function(data, schemaName) {
-      //Perform schema check
-      var schema = JSONCache.get(schemaName || 'productStages');
-      var validation = skeemas.validate(data, schema);
-      console.log("Schema validation result: ", schemaName, validation);
-      if (!validation.valid) {
-        $scope.devAlert.error(
-          '<strong>Warning </strong> Ahancer Product Add Exchange Protocol (A-PAEP) not enforced.'
-        );
-      }
-    };
-
     //Open modal for cat selector
     $scope.openCategorySelectorModal = function(ith, key, title) {
 
@@ -361,38 +344,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
 
 
-    $scope.onImageUploadFail = function(kwd, data) {
-      // console.log(kwd, data);
-      if (kwd == "onmaxsize") {
-        $scope.image_alert.error('Maximum ' + data +
-          ' images can be uploaded.');
-      } else if (kwd == "ondimension") {
-        $scope.image_alert.error('Dimension must be greater than ' +
-          IMAGE_DIM_BOUND[0][0] + 'x' +
-          IMAGE_DIM_BOUND[0][1] + '.' + ' and not larger than ' +
-          IMAGE_DIM_BOUND[1][0] + 'x' + IMAGE_DIM_BOUND[1][1] +
-          '. <strong>Your Image Size is ' + data[0] + "x" + data[1] +
-          '</strong>');
-      } else if (kwd == "ondisable") {
-        $scope.image_alert.error(
-          'You do not have permission to upload images.');
-      } else if (kwd == "onsquare") {
-        $scope.image_alert.error('Image must be square.');
-      } else {
-        $scope.image_alert.error(data);
-      }
-    }
-
-    $scope.onImageUploadSuccess = function() {
-      $scope.image_alert.close();
-    }
-
-    $scope.onImageUploadQueueLimit = function() {
-      //nop
-    };
-    $scope.asStatus = Product.getStatus;
-    $scope.refresher = {};
-
     var watchVariantFactorChanges = function() {
       $scope.$watch('dataset.attributeOptions', function() {
         $productAdd.generateVariants($scope.formData, $scope.dataset)
@@ -440,10 +391,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         globalCatId, $scope.dataset.GlobalCategories);
     };
 
-
     //Watches
     $scope.$watch('formData.ExpireDate', APExpireDateChangeEvent($scope));
-
 
     /**
      * Other additional validations
@@ -925,6 +874,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
           var variantModal = $uibModal.open({
             animation: false,
+            backdrop: 'static',
             templateUrl: 'ap/modal-variant-detail',
             controller: function($scope, $uibModalInstance,
               $timeout, pair, dataset, uploader,
@@ -937,7 +887,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
               $scope.uploader = uploader;
 
               $scope.no = function() {
-
                 if ($scope.form.$dirty) {
                   if (confirm("Your changes will not be saved, are you sure you want to close this modal?")) {
                     $uibModalInstance.close();

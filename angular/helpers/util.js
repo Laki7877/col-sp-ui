@@ -446,26 +446,5 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
             arr[i]
         };
     };
-
-    //report
-    service.csv = function(data,filename){
-        var csv = '';
-        var headers = data.split('\n')[0];
-
-        csv += headers;
-        
-        for (var i = 1; i < data.split('\n').length; i++) {
-            var row = data.split('\n')[i];
-            csv += row;
-        }
-
-        var link;
-
-        link = document.createElement('a');
-        link.setAttribute('href', 'data:attachment/csv,' + encodeURIComponent(csv));
-        link.setAttribute('download', filename);
-        link.click();
-    };
-
     return service;
 };
