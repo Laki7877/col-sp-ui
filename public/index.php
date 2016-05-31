@@ -161,9 +161,11 @@ Route::add('/buy1get1','SellerController::listBuy1Get1');
 Route::add('/buy1get1/create','SellerController::addBuy1Get1');
 Route::add('/buy1get1/:id','SellerController::editBuy1Get1');
 
-Route::add('/admin/reports/std/stockstatus', 'AdminController::listStockReport');
-Route::add('/admin/reports/std/onhold', 'AdminController::listOnHoldReport');
-Route::add('/admin/reports/std/return', 'AdminController::listReturnReport');
+//iOath
+Route::add('/reports/std/saleforseller', 'SellerController::listStandardReport');
+Route::add('/reports/std/stockstatus', 'SellerController::listStockReport');
+Route::add('/reports/std/onhold', 'SellerController::listOnHoldReport');
+Route::add('/reports/std/return', 'SellerController::listReturnReport');
 
 
 

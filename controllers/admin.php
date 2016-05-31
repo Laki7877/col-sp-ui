@@ -272,72 +272,28 @@ class AdminController extends Controller
 	}
     
    
-    // CMS Get All iOath
-    // public static function export($params)
-    // {
-    //     return View::render('seller_export_products', [
-    //     'viewBag' => $_POST['selected_products'],
-    //     ]);
-    // }
-    
-    // public static function group($params)
-	// {
-    //     return View::render('seller_pending_product');
-    // }
-    
-    // public static function groupCreate($param)
-    // {
-    //     return View::render('seller_pending_products_group', [
-    //     'viewBag' => $_POST['selected_products'],
-    //     ]);
-    // }
-    
     
     public static function images($params)
     {
         return View::render('image_management');
     }
-    
-    //public static function editCMSMaster($params)
-    //{
-    //    return View::render('add_product', [
-    //    'title' => 'Product Detail',
-    //    'viewBag' => array(
-    //    'productId' => $params['productid'],
-    //    ),
-    //    ]);
-    //}
-    
-    // public static function import($params)
-    // {
-    //     return View::render('seller_import_products', [
-    //     'title' => 'Import Product',
-    //     ]);
-    // }
 
-    // public static function importUpdate($params)
-    // {
-    //     return View::render('seller_import_products', [
-    //     'title' => 'Import Product',
-    //     'update' => true
-    //     ]);
-    // }
-        //Oath buy 1 get 1
-       public static function listBuy1Get1($params){
-            return View::render('admin_buy1get1_list');
+    //Oath buy 1 get 1
+    public static function listBuy1Get1($params){
+        return View::render('admin_buy1get1_list');
     
-       }
+    }
     
-       public static function addBuy1Get1($params){
-            return View::render('admin_add_buy1get1', ['title' => 'Add Buy 1 Get 1']);
+    public static function addBuy1Get1($params){
+        return View::render('admin_add_buy1get1', ['title' => 'Add Buy 1 Get 1']);
     
-       } 
+    } 
     
-       public static function editBuy1Get1($params){
+    public static function editBuy1Get1($params){
     
-            return View::render('admin_add_buy1get1', ['params' => json_encode_n($params), 'title' => 'Detail']);
-       }
-       //Oath
+        return View::render('admin_add_buy1get1', ['params' => json_encode_n($params), 'title' => 'Detail']);
+    }
+    //Oath
     
     public static function reviews($params)
     {

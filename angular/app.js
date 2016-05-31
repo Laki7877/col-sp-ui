@@ -279,6 +279,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
 
   .controller('AdminCMSMasterListCtrl', controllers.adminCMSMasterList)
   .controller('AdminCMSMasterAddCtrl', controllers.adminCMSMasterAdd)
+
+   //Report iOath
   .controller('SellerStdSaleReportSellerCtrl', controllers.sellerStdSaleReportSellerList)
   .controller('SellerStdStockReportCtrl', controllers.sellerStdStockReportList)
   .controller('SellerStdOnHoldReportCtrl', controllers.sellerStdOnHoldReportList)

@@ -146,11 +146,6 @@ class SellerController extends Controller
         return View::render('seller_add_cms_master', ['params' => json_encode_n($params), 'title' => 'Detail']);
     }
 
-    // Reports
-    public static function listStandardReport($params) 
-    {
-        return View::render('report_std_saleforseller');
-    }
 
     //buy 1 get 1
     public static function listBuy1Get1($params){

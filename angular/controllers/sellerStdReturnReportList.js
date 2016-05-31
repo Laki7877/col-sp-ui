@@ -6,8 +6,8 @@ module.exports = function ($scope, $controller, StdReportReturnService, config, 
         PID: null,
         ItemName: null,
         ItemStatus: null,
-        ReturnDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
-        ReturnDateTo: new Date()
+        OrderDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        OrderDateTo: new Date()
     };
     var params = $scope.formData;
 
@@ -35,8 +35,8 @@ module.exports = function ($scope, $controller, StdReportReturnService, config, 
         $scope.formData.PID = null;
         $scope.formData.ItemName = null;
         $scope.formData.ItemStatus = null;
-        $scope.formData.ReturnDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
-        $scope.formData.ReturnDateTo = new Date();
+        $scope.formData.OrderDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
+        $scope.formData.OrderDateTo = new Date();
 
     };
     $controller('AbstractAdvanceListCtrl', {
