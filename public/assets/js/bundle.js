@@ -24929,16 +24929,16 @@ module.exports = ["common", function(common) {
 	service.generate = function() {
 		return {
 			VisibleShopGroup: 'AL',
-			PublishedDt: moment(new Date()).add(30, 'minutes').date(),
-			ExpiredDt: moment(new Date()).add(20, 'years').date()
+			PublishedDt: moment(new Date()).add(30, 'minutes').toDate(),
+			ExpiredDt: moment(new Date()).add(20, 'years').toDate()
 		};
 	};
 	service.serialize = function(data) {
 		if(!data.PublishedDt) {
-			data.PublishedDt = moment(new Date()).add(30, 'minutes').date();
+			data.PublishedDt = moment(new Date()).add(30, 'minutes').toDate();
 		}
 		if(!data.ExpiredDt) {
-			data.ExpiredDt = moment(new Date()).add(20, 'years').date()
+			data.ExpiredDt = moment(new Date()).add(20, 'years').toDate();
 		}
 		return data;
 	};
