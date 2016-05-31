@@ -114,18 +114,21 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     $scope.onError = function(item, response) {
     	item.alert.close();
     	if(response.name == 'queueFilter' || response.name == 'queueLimit') {
-    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Cannot exceed 10 images for each product');
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Cannot exceed 10 images for each product', null, true);
     	}
     	else if(response.name == 'sizeFilter') {
-    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Each image file size must not exceed 5MB');
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Each image file size must not exceed 5MB', null, true);
     	}
     	else if(response.name == 'dimensionFilter') {
-    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Image dimension must be between 1500x1500 to 2000x2000 pixels');
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Image dimension must be between 1500x1500 to 2000x2000 pixels', null, true);
     	} 
     	else if(response.name == 'ratioFilter') {
-    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Image must be a square (1:1 ratio)');
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Image must be a square (1:1 ratio)', null, true);
+    	} 
+    	else if(response.name == 'imageFilter') {
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Image must be a JPEGs file', null, true);
     	} else {
-    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>' + response);
+    		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Unknown error', null, true);
     		console.log(response);
 		}
 	};
