@@ -209,7 +209,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
 		$scope.dirty = false;
 	};
 	$scope.$watch('params._filter', function(n) {
-		if(n.value == 'ImageMissing') {
+		if(n == 'ImageMissing') {
 			$scope.params._order = 'CreatedDt';
 			$scope.params._direction= 'asc';
 		} else {
