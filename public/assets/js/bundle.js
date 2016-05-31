@@ -23079,7 +23079,7 @@ module.exports = ["common", "config", function(common, config) {
 			return e.NameEn + ' (' + e.CategoryId + ')';
 		}), ', ');
 		if(processed.Categories.length == 0) {
-			processed.Categories = 'None'; 
+			processed.Categories = 'None';
 		}
 		if(angular.isUndefined(processed.Attributes)) {
 			processed.Attributes = [];
@@ -23137,6 +23137,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }]
+
 },{}],213:[function(require,module,exports){
 module.exports = ['$window', function($window) {
 	return function(fn, close) {
