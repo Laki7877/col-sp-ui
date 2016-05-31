@@ -50,7 +50,7 @@ var seller = {
 		'User Roles': '/roles'
 	},
 
-	'Report|fa-file-o': {
+	'Report|fa-file': {
 	    'View Report': '/reports',
         'Sale Report For Seller': '/reports/std/saleforseller',
         'Stock Status Report': '/reports/std/stockstatus',
@@ -93,7 +93,7 @@ var admin = {
 	    'CMS Group': '/admin/cms/group'
 	},
 	'Reports|fa-file': {
-	    
+
 	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'
@@ -136,7 +136,7 @@ var permission = {
 	56: '/shops/appearance',
 	57: ['/roles', '/accounts'],
 	60: '/cms',
-	71: '/reports/std/saleforseller', 
+	71: '/reports/std/saleforseller',
 	// 62: ['/cms/category/create', '/cms/master/create', '/cms/group/create'],
 
 	//Shop
