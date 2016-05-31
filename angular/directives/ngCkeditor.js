@@ -13,7 +13,7 @@ module.exports = [function () {
 
             var changeCount = 0;
 
-            ck.on('key', function () {
+            ck.on('mode', function () {
                 $scope.$apply(function () {
                     ngModel.$setViewValue(ck.getData());
                 });

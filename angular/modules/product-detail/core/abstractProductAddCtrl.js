@@ -912,6 +912,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
               $scope.yes = function() {
                 if($scope.form.$invalid || $scope.uploader.isUploading){
                     $scope.form.$setDirty(true);
+                    $scope.form.$setSubmitted(true);
                     return false;
                 }
                 $uibModalInstance.close($scope.pair);

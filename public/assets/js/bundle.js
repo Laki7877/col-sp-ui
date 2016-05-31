@@ -13538,7 +13538,7 @@ module.exports = [function () {
 
             var changeCount = 0;
 
-            ck.on('key', function () {
+            ck.on('mode', function () {
                 $scope.$apply(function () {
                     ngModel.$setViewValue(ck.getData());
                 });
@@ -18407,7 +18407,7 @@ angular.module('nc')
                         if(angular.isDefined(form) &&
                             angular.isDefined(form.$invalid) &&
                             angular.isDefined(form.$dirty)) {
-                            return form.$invalid && (form.$dirty || form.$$parentForm.$dirty  || form.$$parentForm.$submitted);
+                            return form.$invalid && (form.$dirty  || form.$$parentForm.$submitted);
                         }
                         return false;
                     };
@@ -20013,6 +20013,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
               $scope.yes = function() {
                 if($scope.form.$invalid || $scope.uploader.isUploading){
                     $scope.form.$setDirty(true);
+                    $scope.form.$setSubmitted(true);
                     return false;
                 }
                 $uibModalInstance.close($scope.pair);
