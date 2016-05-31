@@ -17591,7 +17591,13 @@ angular.module('nc')
 								scope.images.push(obj);
 								var f = new FileItem(scope.uploader, file, {
 									onSuccess: function(response) {
-										_.extend(obj, response);
+										_.mergeWith(obj, response, function(o, v) {
+											if(_.isEmpty(v)) {
+												return o;
+											} else {
+												return v;
+											}
+										});
 									},
 									onError: function(response, status, headers) {
 										scope.onfail('onerror', response, status, headers);
@@ -17671,7 +17677,13 @@ angular.module('nc')
 								scope.images.push(obj);
 								scope.uploader.upload(file)
 									.then(function(response) {
-										_.extend(obj, response.data);
+										_.mergeWith(obj, response.data, function(o, v) {
+											if(_.isEmpty(v)) {
+												return o;
+											} else {
+												return v;
+											}
+										});
 									}, function(response) {
 										scope.onfail('onerror', response);
 										_.remove(scope.images, function(n) {
@@ -28228,7 +28240,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('product/exportResult',
-    "<div class=row ng-show=exportAsyncDelegate.active><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Export Result</h2></div><div class=form-section-content><div class=table-wrapper><table class=table id=add-product-approve-versions><thead><tr><th>Status</th><th class=width_200>Request On</th><th class=width_200>Finish On</th><th class=export-action-column>Action</th></tr></thead><tbody><tr><td ng-if=\"exportAsyncDelegate.progress > 0 && exportAsyncDelegate.progress < 100\"><strong class=color-green>{{ exportAsyncDelegate.progress | number: 2 }} %</strong></td><td ng-if=\"exportAsyncDelegate.progress >= 100\"><strong class=color-green>Completed</strong></td><td ng-if=\"exportAsyncDelegate.progress == 0\"><strong class=color-yellow>Preparing..</strong></td><td>{{ exportAsyncDelegate.requestDate | datetimeTh }}</td><td ng-if=\"exportAsyncDelegate.progress >= 100\">{{ exportAsyncDelegate.endDate | datetimeTh }}</td><td ng-if=\"exportAsyncDelegate.progress < 100\">-</td><td><button type=button class=\"btn btn-white btn-width-xl\" ng-hide=\"exportAsyncDelegate.progress >= 100\" ng-click=abortExport()>Cancel</button> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=downloadFile() ng-class=\"{ 'disabled' : exportAsyncDelegate.progress < 100 }\" ng-hide=\"exportAsyncDelegate.progress < 100\">Download</button></td></tr></tbody></table></div></div></div></div></div>"
+    "<div class=row ng-show=exportAsyncDelegate.active><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Export Result</h2></div><div class=form-section-content><div class=table-wrapper><table class=table id=add-product-approve-versions><thead><tr><th>Status</th><th class=width_200>Request On</th><th class=width_200>Finish On</th><th class=export-action-column>Action</th></tr></thead><tbody><tr><td ng-if=\"exportAsyncDelegate.progress > 0 && exportAsyncDelegate.progress < 100\"><span class=color-green>{{ exportAsyncDelegate.progress | number: 2 }} %</span></td><td ng-if=\"exportAsyncDelegate.progress >= 100\"><span class=color-green>Completed</span></td><td ng-if=\"exportAsyncDelegate.progress == 0\"><span class=color-yellow>Preparing..</span></td><td>{{ exportAsyncDelegate.requestDate | datetimeTh }}</td><td ng-if=\"exportAsyncDelegate.progress >= 100\">{{ exportAsyncDelegate.endDate | datetimeTh }}</td><td ng-if=\"exportAsyncDelegate.progress < 100\">-</td><td><button type=button class=\"btn btn-white btn-width-xl\" ng-hide=\"exportAsyncDelegate.progress >= 100\" ng-click=abortExport()>Cancel</button> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=downloadFile() ng-class=\"{ 'disabled' : exportAsyncDelegate.progress < 100 }\" ng-hide=\"exportAsyncDelegate.progress < 100\">Download</button></td></tr></tbody></table></div></div></div></div></div>"
   );
 
 
