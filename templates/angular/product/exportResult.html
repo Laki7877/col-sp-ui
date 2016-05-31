@@ -17,10 +17,10 @@
                         <tbody>
                             <tr>
                                 <td ng-if="exportAsyncDelegate.progress > 0 && exportAsyncDelegate.progress < 100">
-                                    <strong class="color-green">{{ exportAsyncDelegate.progress | number: 2 }} %</strong>
+                                    <span class="color-green">{{ exportAsyncDelegate.progress | number: 2 }} %</span>
                                 </td>
-                                <td ng-if="exportAsyncDelegate.progress >= 100"><strong class="color-green">Completed</strong></td>
-                                <td ng-if="exportAsyncDelegate.progress == 0"><strong class="color-yellow">Preparing..</strong></td>
+                                <td ng-if="exportAsyncDelegate.progress >= 100"><span class="color-green">Completed</span></td>
+                                <td ng-if="exportAsyncDelegate.progress == 0"><span class="color-yellow">Preparing..</span></td>
                                 <td>{{ exportAsyncDelegate.requestDate | datetimeTh }}</td>
                                 <td ng-if="exportAsyncDelegate.progress >= 100">{{ exportAsyncDelegate.endDate | datetimeTh }}</td>
                                 <td ng-if="exportAsyncDelegate.progress < 100">-</td>
