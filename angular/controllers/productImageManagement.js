@@ -172,7 +172,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     		images = product.MasterImg;
     	}
 
-    	if(images.length < 10 && product.Status == $scope.productStatus[0].value) {
+    	if(images.length < 10 && product.Status == $scope.productStatus[0].value && product.Status == $scope.productStatus[3].value) {
     		return '';
     	}
     	return 'disabled';

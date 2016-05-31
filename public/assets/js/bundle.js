@@ -4609,7 +4609,9 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", "$base
 				{ name: "Not Approved", value: 'NotApproved'},
 				{ name: "Wait For Approval", value: 'WaitForApproval'},
 				{ name: "Draft", value: 'Draft'},
-                { name: "Master Product", value: 'MasterProduct'}
+                { name: "Master Product", value: 'MasterProduct'},
+                { name: "Single", value: 'Single'}, 
+                { name: "Variant", value: 'Variant'}
 			]
 		}
 	});
@@ -8852,7 +8854,7 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
     		images = product.MasterImg;
     	}
 
-    	if(images.length < 10 && product.Status == $scope.productStatus[0].value) {
+    	if(images.length < 10 && product.Status == $scope.productStatus[0].value && product.Status == $scope.productStatus[3].value) {
     		return '';
     	}
     	return 'disabled';
@@ -9263,6 +9265,12 @@ module.exports = ["$scope", "$controller", "common", "Product", "util", "$window
             }, {
                 name: "Wait for Approval",
                 value: 'WaitforApproval'
+            }, {
+                name: "Single",
+                value: 'Single'
+            }, {
+                name: "Variant",
+                value: 'Variant'
             }]
         }
     });
