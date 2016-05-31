@@ -8809,7 +8809,6 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
     		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Image must be a JPEGs file', null, false);
     	} else {
     		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Unknown error', null, false);
-    		console.log(response);
 		}
 	};
     $scope.isDisabled = function(product) {
@@ -8889,6 +8888,15 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
 			});
 		$scope.dirty = false;
 	};
+	$scope.$watch('params._filter', function(n) {
+		if(n.value == 'ImageMissing') {
+			$scope.params._order = 'UpdatedDt';
+			$scope.params._direction= 'desc';
+		} else {
+			$scope.params._order = 'ProductId';
+			$scope.params._direction= 'desc';
+		}
+	});
     $scope.$watch('watcher', function(val, val2) {
     	if(!_.isUndefined(val2) && !$scope.ignored) {
     		$scope.dirty = true;
