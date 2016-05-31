@@ -1,11 +1,13 @@
-
 module.exports = function ($scope, $controller, Buy1Get1Service, config, $rootScope) {
     'ngInject';
-    $scope.manageBuy1Get1AD = !$rootScope.permit(82);   
+    // seller
+    $scope.manageBuy1Get1SE = !$rootScope.permit(54);  
+    // shop
+    $scope.manageBuy1Get1SH = !$rootScope.permit(70);    
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
-            url: '/admin/buy1get1',
+            url: '/buy1get1',
             service: Buy1Get1Service,
             item: 'Buy 1 Get 1',
             order: 'UpdateDate',

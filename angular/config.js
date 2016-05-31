@@ -1,8 +1,8 @@
 module.exports = {
-    // REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
+    REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	// REST_SERVICE_BASE_URL: 'http://27.254.48.174/sellerportal/api',
     // REST_SERVICE_BASE_URL: 'http://localhost:58127/api',
-    REST_SERVICE_BASE_URL: 'http://devmkp-colspapi.cenergy.co.th/api',
+    // REST_SERVICE_BASE_URL: 'http://devmkp-colspapi.cenergy.co.th/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
 	MAX_IMAGE_UPLOAD_SIZE: 5242880,
 	CK_DEFAULT_OPTIONS: {
