@@ -9046,7 +9046,7 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
 	$scope.$watch('params._filter', function(n) {
 		if(n.value == 'ImageMissing') {
 			$scope.params._order = 'UpdatedDt';
-			$scope.params._direction= 'desc';
+			$scope.params._direction= 'asc';
 		} else {
 			$scope.params._order = 'ProductId';
 			$scope.params._direction= 'desc';
