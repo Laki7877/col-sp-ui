@@ -221,10 +221,25 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 						}
 					}
 				});
+
+				var isUploading = function(images) {
+					var i = true;
+					_.forEach(images, function(e) {
+						i = i && (e.progress >= 100.0);
+					});
+					return !i;
+				}
 				$scope.save = function() {
 					$scope.alert.close();
 					$scope.form.$setSubmitted();
 
+					if(isUploading($scope.formData.CategoryBannerEn) ||
+						isUploading($scope.formData.CategoryBannerTh) ||
+						isUploading($scope.formData.CategorySmallBannerEn) ||
+						isUploading($scope.formData.CategorySmallBannerTh) ) {
+						$scope.alert.error('Please wait for every images to be uploaded before saving')
+						return;
+					}
 					if($scope.form.$valid) {
 						var processed = LocalCategoryService.serialize($scope.formData);
 						$scope.saving = true;

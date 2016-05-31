@@ -11,15 +11,23 @@ module.exports = [function () {
                 });
             });
 
-            var changeCount = 0;
-            
+            $scope.changeCount = 0;
+
+            // ck.on('mode', function () {
+            //     $scope.$apply(function () {
+            //         ngModel.$setViewValue(ck.getData());
+            //     });
+            // });
+
             ck.on('change', function () {
+                $scope.changeCount++;
+                console.log($scope.changeCount, 'changeCount');
+                if($scope.changeCount <= 2) return;
                 $scope.$apply(function () {
                     ngModel.$setViewValue(ck.getData());
                 });
             });
-                        
-            
+
             ck.on('instanceReady', function () {
                 ck.setData(ngModel.$modelValue);
             });
