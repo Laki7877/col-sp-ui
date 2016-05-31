@@ -35,7 +35,7 @@
         <div class="form-group" ng-repeat-start="amap in formData.AttributeSet.AttributeSetMaps">
             <div class="width-label">
                 <label class="control-label" ng-class="{'required': amap.Attribute.Required}">
-                    {{ amap.Attribute.DisplayNameEn }} <span ng-show="isHtmlInput(amap.Attribute.DataType) || isFreeTextInput(amap.Attribute.DataType)">(English)</span>
+                    {{ amap.Attribute.DisplayNameEn }} <span ng-show="isFreeTextInput(amap.Attribute.DataType)">(English)</span>
                 </label>
             </div>
             <div ng-class="{'width-field-normal': !isHtmlInput(amap.Attribute.DataType), 'width-field-xxl': isHtmlInput(amap.Attribute.DataType)}">
@@ -74,7 +74,7 @@
         </div>
 
         <!-- additional +1 iteration for Freetext and HTML -->
-        <div class="form-group" ng-if="isFreeTextInput(amap.Attribute.DataType) || isHtmlInput(amap.Attribute.DataType)" ng-repeat-end>
+        <div class="form-group" ng-if="isFreeTextInput(amap.Attribute.DataType)" ng-repeat-end>
               <div class="width-label">
                 <label class="control-label" ng-class="{'required': amap.Attribute.Required}">
                     {{ amap.Attribute.DisplayNameEn }} (ไทย)
@@ -89,12 +89,6 @@
                     type="text" class="form-control" name="AmapInput{{$index}}"
                     ng-model="formData.MasterAttribute[amap.Attribute.AttributeId].ValueTh" />
 
-                    <div ng-if="isHtmlInput(amap.Attribute.DataType)">
-                        <textarea ng-required="amap.Attribute.Required && onPublishing" ng-class="{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }"
-                        ng-disabled="xspermit(35)"
-                            ng-model="formData.MasterAttribute[amap.Attribute.AttributeId].ValueTh" name="AmapInput{{$index}}" class="form-control"
-                            ng-ckeditor="ckOptions"></textarea>
-                    </div>
 
             </div>
         </div>
