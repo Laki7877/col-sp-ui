@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, AdminShoptypeService, ShopPermissionService, ShopAppearanceService, PermissionService, util, $q) {
+module.exports = function($scope, $controller, AdminShoptypeService, ShippingService, ShopPermissionService, ShopAppearanceService, PermissionService, util, $q) {
 	'ngInject';
 
 	var deserializeTheme = function(load) {
@@ -22,6 +22,31 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShopPermiss
 			});
 		}
 	}
+
+	var deserializeShip = function(load) {
+		if(load) {
+			var shippings = $scope.formData.Shippings;
+			$scope.formData.Shippings = [];
+			_.forEach($scope.shippings, function(t) {
+				if(_.findIndex(shippings, function(e) {
+					return t.ShippingId == e.ShippingId;
+				}) >= 0) {
+					t.check = true;
+				} else {
+					t.check = false;
+				}
+				$scope.formData.Shippings.push(t);
+			});
+		} else {
+			$scope.formData.Shippings = $scope.shippings;
+			_.forEach($scope.formData.Shippings, function(t) {
+				t.check = false;
+			});
+		}
+	}
+	//selectall parent obj
+	$scope.obj = {};
+
 	//Inherit from parent
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
@@ -33,7 +58,7 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShopPermiss
 			onLoad: function(scope, load) {
 				$scope.loading = true;
 
-				$q.all([ShopPermissionService.listAll(), ShopAppearanceService.getThemes()]).then(function(res) {
+				$q.all([ShopPermissionService.listAll(), ShopAppearanceService.getThemes(), ShippingService.listAll()]).then(function(res) {
 					var data = res[0]
 					$scope.permissions = data;
 					if(load) {
@@ -42,10 +67,10 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShopPermiss
 						$scope.formData.Permissions = PermissionService.generate($scope.permissions);
 					}
 
-					$scope.selectAll = true;
+					$scope.obj.selectAll = true;
 					_.forOwn($scope.formData.Permissions, function(v,k) {
 						util.traverse(v, 'Children', function(e) {
-							$scope.selectAll = $scope.selectAll && e.check;
+							$scope.obj.selectAll = $scope.obj.selectAll && e.check;
 						});
 					});
 
@@ -54,7 +79,15 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShopPermiss
 					deserializeTheme(load);
 
 					_.forEach($scope.formData.Themes, function(e) {
-						$scope.selectAll = $scope.selectAll && e.check;
+						$scope.obj.selectAll = $scope.obj.selectAll && e.check;
+					})
+
+					//All shippings
+					$scope.shippings = res[2];
+					deserializeShip(load);
+
+					_.forEach($scope.formData.Shippings, function(e) {
+						$scope.obj.selectAll = $scope.obj.selectAll && e.check;
 					})
 
 				}).finally(function() {
@@ -72,22 +105,55 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShopPermiss
 						return null;
 					}
 				}));
+				scope.formData.Shippings = _.compact(_.map(scope.formData.Shippings, function(e){
+					var check = e.check;
+					_.unset(e, ['check']);
+					if(check) {
+						return e;
+					} else {
+						return null;
+					}
+				}));
 			},
 			onAfterSave: function(scope) {
 				scope.formData.Permissions = PermissionService.deserialize(scope.formData.Permission, scope.permissions);
-				$scope.selectAll = true;
+				$scope.obj.selectAll = true;
 				_.forOwn($scope.formData.Permissions, function(v,k) {
 					util.traverse(v, 'Children', function(e) {
-						$scope.selectAll = $scope.selectAll && e.check;
+						$scope.obj.selectAll = $scope.obj.selectAll && e.check;
 					});
 				});
 				deserializeTheme(true);
 				_.forEach($scope.formData.Themes, function(e) {
-					$scope.selectAll = $scope.selectAll && e.check;
-				})
+					$scope.obj.selectAll = $scope.obj.selectAll && e.check;
+				});
+				deserializeShip(true);
+				_.forEach($scope.formData.Shippings, function(e) {
+					$scope.obj.selectAll = $scope.obj.selectAll && e.check;
+				});
 			}
 		}
 	});
+
+	var cj = require('circular-json');
+
+	$scope.$watch(function() {
+		return cj.stringify($scope.formData);
+	}, function() {
+		$scope.obj.selectAll = true;
+		_.forOwn($scope.formData.Permissions, function(v,k) {
+			util.traverse(v, 'Children', function(e) {
+				$scope.obj.selectAll = $scope.obj.selectAll && e.check;
+			});
+		});
+		_.forEach($scope.formData.Themes, function(e) {
+			$scope.obj.selectAll = $scope.obj.selectAll && e.check;
+		});
+		_.forEach($scope.formData.Shippings, function(e) {
+			$scope.obj.selectAll = $scope.obj.selectAll && e.check;
+		});
+	});
+
 	$scope.group = ['Dashboard', 'Products', 'Promotion', 'Report', 'Local Category', 'Local Brand', 'CMS'];
 	$scope.checkAll = function(val) {
 		_.forOwn($scope.formData.Permissions, function(v,k) {
@@ -97,6 +163,9 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShopPermiss
 		});
 		_.forEach($scope.formData.Themes, function(e) {
 			e.check = val;
-		})
+		});
+		_.forEach($scope.formData.Shippings, function(e) {
+			e.check = val;
+		});
 	};
 };

@@ -1,6 +1,7 @@
-module.exports = function ($scope, $controller, CMSCategoryService, config, $uibModal, $timeout) {
+module.exports = function ($scope,$rootScope, $controller, CMSCategoryService, config, $uibModal, $timeout) {
     'ngInject';
 
+    $scope.adCMSadd = !$rootScope.permit(24);
     $scope.formData     = {};
 
     $scope.loading      = false;
@@ -126,7 +127,7 @@ module.exports = function ($scope, $controller, CMSCategoryService, config, $uib
             size: 'lg',
             //scope: $scope,
             controller: function ($scope, $uibModalInstance) {
-
+                'ngInject';
                 $scope.products = [];
 
                 $scope.isEmpty = true;

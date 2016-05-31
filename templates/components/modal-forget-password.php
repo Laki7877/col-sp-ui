@@ -10,15 +10,12 @@
           <div class="row">
             <div class="col-xs-12">
               <div>
-                  Please check your email for your intitial password or contact Central administration team at 02-123-4567 to request a new one.
+                  Please check your email for your intitial password or contact Central administration team to request a new one.
               </div>
             </div>
           </div>
         </form>
       </div>
-      <!-- <div class="modal-footer">
-            
-      </div> -->
     </div>
   </div>
 </div>

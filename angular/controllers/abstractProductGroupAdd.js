@@ -5,13 +5,34 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 	AdminShopService) {
 	'ngInject';
 
+	function cleanFormData() {
+		return {
+			AttributeSet: null,
+			MasterVariant: {
+				Pid: null,
+				FirstAttribute: {},
+				SecondAttribute: {},
+				Visibility: true,
+				DefaultVariant: false
+			},
+			Variants: [],
+			Shop: {
+				ShopId: options.adminMode ? null : $rootScope.Profile.Shop.ShopId
+			}
+		};
+	}
+
+	$scope.unmapProduct = function(pair){
+		delete pair.MappedProduct;
+	};
+
 	$scope.adminMode = (options.adminMode);
 	$scope.alert = new NcAlert();
 	$scope.loading = false;
 	$scope.create = function() {
 
 		if (!$scope.formData.DefaultVariant) {
-			return $scope.alert.error("Please fill in the form.");
+			return $scope.alert.error("Please select DefaultVariant.");
 		}
 
 		try {
@@ -28,6 +49,10 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 			}
 
 			fd.Variants.map(function(o) {
+				if (!o.MappedProduct) {
+					delete o.Pid;
+					return o;
+				}
 				o.Pid = o.MappedProduct.Pid;
 				delete o.MappedProduct;
 				return o;
@@ -41,7 +66,7 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 
 			Product.savePendingProduct(fd).then(function(suc) {
 				var productLink = options.adminMode ? '/admin/products' : '/products';
-				$scope.alert.success("Pending product grouped successfully. <a href='" +
+				$scope.alert.success("Products grouped successfully. <a href='" +
 					productLink + "'>View Product List</a>");
 				$scope.loading = false;
 			}, function(er) {
@@ -51,29 +76,17 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 				$scope.loading = false;
 			});
 		} catch (ex) {
-			return $scope.alert.error(
-				"Please make sure all fields are filled correctly.");
+			return $scope.alert.error("Please make sure all fields are filled correctly.");
 			$scope.loading = false;
 		}
 	};
 
-	$scope.formData = {
-		Category: {
-			CategoryId: null
-		},
-		AttributeSet: null,
-		MasterVariant: {
-			Pid: null,
-			FirstAttribute: {},
-			SecondAttribute: {},
-			Visibility: true,
-			DefaultVariant: false
-		},
-		Variants: [],
-		Shop: {
-			ShopId: options.adminMode ? null : $rootScope.Profile.Shop.ShopId
-		}
+
+	$scope.formData = cleanFormData();
+	$scope.formData.Category = {
+		CategoryId: null
 	};
+
 
 	$scope.dataset = {
 		Products: [],
@@ -97,10 +110,10 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 	}, true);
 
 	$scope.refresher.Products = function(q) {
+		if(!$scope.formData.AttributeSet.AttributeSetId) return;
 		return Product.getUngrouped(q,
 				$scope.formData.AttributeSet.AttributeSetId,
-				$scope.formData.Shop.ShopId,
-				$scope.formData.Category.CategoryId)
+				$scope.formData.Shop.ShopId)
 			.then(function(ds) {
 				$scope.dataset.Products = ds.data;
 			});
@@ -109,8 +122,7 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 	$scope.$watch('formData.AttributeSet', function(x) {
 		Product.getUngrouped(null,
 				$scope.formData.AttributeSet.AttributeSetId,
-				$scope.formData.Shop.ShopId,
-				$scope.formData.Category.CategoryId)
+				$scope.formData.Shop.ShopId)
 			.then(function(ds) {
 				$scope.dataset.Products = ds.data;
 			});
@@ -149,17 +161,25 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 			data);
 	});
 
+	$scope.$watch('formData.Category.CategoryId', function(){
+		var bc = cleanFormData();
+		$scope.formData.AttributeSet = angular.copy(bc.AttributeSet);
+		$scope.formData.MasterVariant =  angular.copy(bc.MasterVariant);
+		$scope.formData.Variants = angular.copy(bc.Variants);
+	});
+
 	$scope.openCategorySelectorModal = function() {
 
 		var modalInstance = $uibModal.open({
 			size: 'category-section modal-lg column-4',
 			keyboard: false,
 			templateUrl: 'product/modalCategorySelector',
-			controller: function($scope, $uibModalInstance, tree, model) {
+			controller: function($scope, $uibModalInstance, tree, model, disable) {
 				'ngInject';
 				$scope.model = model;
 				$scope.tree = tree;
-				$scope.title = 'Select Category';
+				$scope.disabledOn = disable;
+				$scope.title = 'Select Global Category';
 				$scope.categoryHeaderText = '';
 
 				$scope.select = function() {
@@ -172,6 +192,13 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 				},
 				tree: function() {
 					return $scope.dataset.GlobalCategoryTree;
+				},
+				disable: function() {
+					return function(m) {
+						if (!m || !m.nodes) return false;
+						if (m.nodes.length == 0) return false;
+						return true;
+					}
 				}
 			}
 		});

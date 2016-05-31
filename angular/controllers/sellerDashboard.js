@@ -180,6 +180,14 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $filter, storage,
 
 	//-------------- Begin Low Stock Alert section -------------
 	// get Low Stock Alert data and set it to scope
+
+	var getAvailableStock = function(item) {
+		return _.toInteger(item.Quantity) - (
+				_.toInteger(item.Defect) +
+				_.toInteger(item.OnHold) +
+				_.toInteger(item.Reserve)
+				);
+	};
 	Dashboard.getLowStockAlert()
 		.then(function(query) {
 			// set max data for table to 10
@@ -189,7 +197,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $filter, storage,
 
 			for (var i = $scope.lowStockAlertData.length - 1; i >= 0; i--) {
 				$scope.lowStockAlertData[i].PidText = 'PID: ' + $scope.lowStockAlertData[i].Pid;
-				$scope.lowStockAlertData[i].QuantityText = 'QTY: ' + $scope.lowStockAlertData[i].Quantity;
+				$scope.lowStockAlertData[i].QuantityText = 'QTY: ' + getAvailableStock($scope.lowStockAlertData[i]);
 			};
 			return $scope.lowStockAlertData;
 		});
@@ -289,16 +297,17 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $filter, storage,
 	// call end-point Product Rating
 	Dashboard.getProductRating()
 		.then(function(data){	
-			$scope.rating = {};		
-			_.forOwn(data, function(v, k) {
-				if (v != 'N/A') {
-					v = _.round(v, 1);
+			$scope.rating = {
+				DeliverySpeed: '<div class="font-size-16 color-grey">n/a</div>',
+				ProductContent: '<div class="font-size-16 color-grey">n/a</div>',
+				ProductValidity: '<div class="font-size-16 color-grey">n/a</div>',
+				Packaging: '<div class="font-size-16 color-grey">n/a</div>'
+			};	
+			if(_.isPlainObject(data)) {
+				_.forOwn(data, function(v, k) {
 					$scope.rating[k] = '<div class="font-size-16 color-' + getColoredRank('Product Rating', v) + '">' + $filter('currency')(v, ' ', 1) + ' / 5.0' + '</div>';
-				} else {
-					$scope.rating[k] = '<div class="font-size-16 color-grey">' + v  + '</div>';
-
-				}
-			});
+				});
+			}
 		});
 
 	// Ontime Delivery mockup

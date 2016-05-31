@@ -1,6 +1,6 @@
-module.exports = function ($scope, $controller, CMSGroupService, config, $uibModal, $timeout) {
-    'ngInject';
-
+module.exports = function ($scope, $controller,$rootScope, CMSGroupService, config, $uibModal, $timeout) {
+    'ngInject'; 
+    $scope.adCMSadd = !$rootScope.permit(24);
     $scope.formData     = {};
 
     $scope.loading      = false;
@@ -127,7 +127,7 @@ module.exports = function ($scope, $controller, CMSGroupService, config, $uibMod
             size: 'lg',
             //scope: $scope,
             controller: function ($scope, $uibModalInstance) {
-
+                'ngInject';
                 $scope.masters = [];
 
                 $scope.isEmpty = true;

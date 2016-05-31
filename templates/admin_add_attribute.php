@@ -26,6 +26,7 @@
                   name="AttributeNameEn"
                   ng-model="formData.AttributeNameEn"
                   ng-pattern="/^[a-z0-9_\-]+$/"
+                  ng-pattern-restrict="^[^\s]*$"
                   ng-lowercase
                   maxlength="255"
                   required />
@@ -38,7 +39,7 @@
                   class="form-control"
                   name="DisplayNameEn"
                   ng-model="formData.DisplayNameEn"
-                  ng-pattern-restrict="^[^<>]*$"
+                   
                   maxlength="255"
                   required />
               </div>
@@ -50,7 +51,7 @@
                   class="form-control"
                   name="DisplayNameTh"
                   ng-model="formData.DisplayNameTh"
-                  ng-pattern-restrict="^[^<>]*$"
+                   
                   maxlength="255"
                   required />
               </div>
@@ -60,7 +61,8 @@
                 nc-label="Description">
                 <textarea class="form-control"
                   name="AttributeDescriptionEn"
-                  ng-model="formData.AttributeDescriptionEn"></textarea>
+                  ng-model="formData.AttributeDescriptionEn"
+                  maxlength="1000"></textarea>
               </div>
               <div nc-template="common/input/form-group-with-label"
                 nc-label="Required">
@@ -91,7 +93,7 @@
               </div>
               <div ng-show="formData.DefaultAttribute"
                   nc-template="common/input/form-group-with-label"
-                nc-label="Visible To">
+                  nc-label="Visible To">
                 <ui-select ng-model="formData.VisibleTo" search-enabled="false">
                   <ui-select-match placeholder="- Select Visible to -">
                       <span ng-bind="$select.selected.name"></span>
@@ -127,7 +129,7 @@
                       class="form-control"
                       name="ST_DefaultValue"
                       ng-model="formData.ST.DefaultValue"
-                      ng-pattern-restrict="^[^<>]*$"
+                       
                       maxlength="255"
                       />
                   </div>
@@ -140,7 +142,7 @@
                     <div class="width-field-xxl">
                       <div class="multiple-input">
                         <div class="input-column input-xxl">
-                          <input name="ltChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['ltChoiceEn' + $index])}" maxlength="100" ng-pattern-restrict="^[^<>]*$" required/>
+                          <input name="ltChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['ltChoiceEn' + $index])}" maxlength="100"   required/>
                           <!-- Required -->
                           <div class="help-block color-red" ng-show="isInvalid(form['ltChoiceEn' + $index]) || isInvalid(form['ltChoiceTh' + $index])">
                               <span ng-show="form['ltChoiceTh' + $index].$error.required || form['ltChoiceEn' + $index].$error.required">This is a required field</span>
@@ -150,7 +152,7 @@
                           </div>
                         </div>
                         <div class="input-column input-xxl">
-                          <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['ltChoiceTh' + $index])}" maxlength="100" ng-pattern-restrict="^[^<>]*$" required/>
+                          <input name="ltChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['ltChoiceTh' + $index])}" maxlength="100"   required/>
                         </div>
                         <div class="input-column input-l">
                           <input name="ltChoicePos{{$index}}" type="number" class="form-control" ng-model="choice.Position" placeholder="Position" ng-class="{'has-error': isInvalid(form['ltChoicePos' + $index])}"/>
@@ -207,7 +209,7 @@
                       class="form-control"
                       name="HB_DefaultValue"
                       ng-model="formData.HB.DefaultValue"
-                      ng-pattern-restrict="^[^<>]*$"
+                       
                       maxlength="255"
                       />
                   </div>
@@ -220,14 +222,14 @@
                     <div class="width-field-xxl">
                       <div class="multiple-input">
                         <div class="input-column input-xxl">
-                          <input name="cbChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['cbChoiceEn' + $index])}" maxlength="100" ng-pattern-restrict="^[^<>]*$" required/>
+                          <input name="cbChoiceEn{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueEn" placeholder="Option {{$index+1}} (English)" ng-class="{'has-error': isInvalid(form['cbChoiceEn' + $index])}" maxlength="100"   required/>
                           <!-- Required -->
                           <div class="help-block color-red" ng-show="isInvalid(form['cbChoiceEn' + $index]) || isInvalid(form['cbChoiceTh' + $index])">
                               <span ng-show="form['cbChoiceTh' + $index].$error.required || form['cbChoiceEn' + $index].$error.required">This is a required field</span>
                           </div>
                         </div>
                         <div class="input-column input-xxl">
-                          <input name="cbChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['cbChoiceTh' + $index])}" maxlength="100" ng-pattern-restrict="^[^<>]*$" required/>
+                          <input name="cbChoiceTh{{$index}}" type="text" class="form-control" ng-model="choice.AttributeValueTh" placeholder="Option {{$index+1}} (ไทย)" ng-class="{'has-error': isInvalid(form['cbChoiceTh' + $index])}" maxlength="100"   required/>
                         </div>
                         <div class="input-column input-l">
                           <input name="cbChoicePos{{$index}}" type="number" class="form-control" placeholder="Position" ng-model="choice.Position" ng-class="{'has-error': isInvalid(form['cbChoicePos' + $index])}"/>
@@ -261,13 +263,12 @@
               </div>
             </div>
           </div>
-          <div class="form-section" ng-if="formData.DataType != 'CB' && !formData.DefaultAttribute">
+          <div class="form-section" ng-if="!formData.DefaultAttribute">
             <div class="form-section-header"><h2>Variation</h2></div>
             <div class="form-section-content">
-              <div
-                nc-template="common/input/form-group-with-label"
+              <div nc-template="common/input/form-group-with-label"
                 nc-label="Set As Variation">
-                <ui-select ng-model="formData.VariantStatus" search-enabled="false" ng-disabled="formData.DataType == 'HB'|| formData.DataType == 'ST' || alreadyVariant">
+                <ui-select ng-model="formData.VariantStatus" search-enabled="false" ng-disabled="formData.DataType == 'CB' || formData.DataType == 'HB'|| formData.DataType == 'ST' || alreadyVariant">
                   <ui-select-match>
                       <span ng-bind="$select.selected.name"></span>
                   </ui-select-match>
@@ -317,20 +318,32 @@
                 </ui-select>
              </div>
 
+
+      <div nc-template="common/input/form-group-with-label"
+        nc-label="Filterable">
+        <ui-select ng-model="formData.Filterable" search-enabled="false" ng-disabled="formData.DataType == 'HB'">
+          <ui-select-match>
+              <span ng-bind="$select.selected.name"></span>
+          </ui-select-match>
+          <ui-select-choices repeat="item.value as item in boolOptions">
+              <span ng-bind="item.name"></span>
+          </ui-select-choices>
+        </ui-select>
+      </div>
 			 <div ng-show="formData.Filterable" class="two-lines-label" nc-template="common/input/form-group-with-label"
                 nc-label="Show Filter in <br> Global">
-                <ui-select ng-model="formData.ShowGlobalFilterFlag" search-enabled="false">
-                  <ui-select-match>
-                      <span ng-bind="$select.selected.name"></span>
-                  </ui-select-match>
-                  <ui-select-choices repeat="item.value as item in boolOptions">
-                      <span ng-bind="item.name"></span>
-                  </ui-select-choices>
-                </ui-select>
-              </div>
+          <ui-select ng-model="formData.ShowGlobalFilterFlag" search-enabled="false">
+            <ui-select-match>
+                <span ng-bind="$select.selected.name"></span>
+            </ui-select-match>
+            <ui-select-choices repeat="item.value as item in boolOptions">
+                <span ng-bind="item.name"></span>
+            </ui-select-choices>
+          </ui-select>
+        </div>
 
 
-			  <div  ng-show="formData.Filterable" class="two-lines-label" nc-template="common/input/form-group-with-label"
+			  <div ng-show="formData.Filterable" class="two-lines-label" nc-template="common/input/form-group-with-label"
                 nc-label="Show Filter in <br> Local">
                 <ui-select ng-model="formData.ShowLocalFilterFlag" search-enabled="false">
                   <ui-select-match>
@@ -340,19 +353,7 @@
                       <span ng-bind="item.name"></span>
                   </ui-select-choices>
                 </ui-select>
-              </div>
-
-              <div nc-template="common/input/form-group-with-label"
-                nc-label="Filterable">
-                <ui-select ng-model="formData.Filterable" search-enabled="false" ng-disabled="formData.DataType == 'HB'">
-                  <ui-select-match>
-                      <span ng-bind="$select.selected.name"></span>
-                  </ui-select-match>
-                  <ui-select-choices repeat="item.value as item in boolOptions">
-                      <span ng-bind="item.name"></span>
-                  </ui-select-choices>
-                </ui-select>
-              </div>
+        </div>
             </div>
           </div>
         </div>

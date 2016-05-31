@@ -76,8 +76,7 @@
             <div class="width-field-normal">
                 <div class="ah-select2-dropdown">
                     <select ng-model="formData.DefaultVariant" class="form-control" ng-disabled="disabled()"
-                    ng-options="i as i.text for i in formData.Variants track by i.text"
-                        required>
+                    ng-options="i as i.text for i in (formData.Variants | truth: 'Visibility') track by i.text" required>
                     </select>
                 </div>
             </div>

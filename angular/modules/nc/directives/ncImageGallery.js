@@ -12,7 +12,8 @@ angular.module('nc')
 				width: '@',
 				letter: '@',
 				letterx: '@',
-				subtitle: '@?'
+				subtitle: '@?',
+				accept: '=?'
 			},
 			template: $templateCache.get('common/ncImageBanner6'),
 			link: function(scope) {
@@ -65,7 +66,8 @@ angular.module('nc')
 				letter: '@',
 				letterx: '@',
 				subtitle: '@?',
-				linktitle: '@?'
+				linktitle: '@?',
+				accept: '=?'
 			},
 			template: $templateCache.get('common/ncImageBanner5'),
 			link: function(scope) {
@@ -122,7 +124,8 @@ angular.module('nc')
 				letterx: '@',
 				noauto: '@?',
 				subtitle: '@?',
-				heading: '@?'
+				heading: '@?',
+				accept: '=?'
 			},
 			template: $templateCache.get('common/ncImageBanner4'),
 			link: function(scope) {
@@ -181,7 +184,8 @@ angular.module('nc')
 				size: '@',
 				title: '@',
 				source: '=',
-				key: '@'
+				key: '@',
+				accept: '=?'
 			},
 			transclude: true,
 			template: '<nc-image-block template="common/ncImageBanner3" data-source="source" data-key="{{key}}" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size}} images</li><li>Image size <span ng-transclude></span></li></ul></nc-image-block>',
@@ -191,11 +195,9 @@ angular.module('nc')
 					width: '256px',
 					validateFileSize: 5000000
 				});
-				scope.$watch('source', function() {
-					if(_.isNil(source)) {
-						source = true;
-					}
-				})
+				/*scope.$watch('source', function(o) {
+					console.log(o);
+				})*/
 			}
 		}
 	})
@@ -209,13 +211,15 @@ angular.module('nc')
 				options: '=?',
 				source: '=',
 				size: '=',
-				title: '@'
+				title: '@',
+				accept: '=?'
 			},
 			template: '<nc-image-block template="common/ncImageBanner2" data-source="source" nc-model="ncModel" on-fail="onFail" uploader="uploader" options="options" size="{{size.Count}}" title="{{title}}"><h4>Banner style guideline</h4><p>Choose images that are clear, information-rich, and attractive. Images must meet the following requirements</p><ul><li>Maximum {{size.Count}} images</li><li>The width must be {{size.Width}}px</li><li>The height must be {{size.Height}}px</li></ul></nc-image-block>',
 			link: function(scope) {
 				scope.options = _.defaults(scope.options, {
 					height: '144px',
-					width: '256px'
+					width: '256px',
+					validateFileSize: 5000000
 				});
 				scope.$watch('size', function(data) {
 					scope.options.height = '144px';
@@ -239,7 +243,8 @@ angular.module('nc')
 				key: '@?',
 				size: '@size',
 				title: '@title',
-				disabled: '=?ngDisabled'
+				disabled: '=?ngDisabled',
+				accept: '=?'
 			},
 			template: function(elem, attrs) {
 				if (attrs.template) {
@@ -261,6 +266,9 @@ angular.module('nc')
 						scope.options.width = '150px'
 					}
 				});
+				scope.$watch('accept', function(o) {
+					scope.accept = o || '.jpg,.jpeg';
+				})
 
 				scope.images = scope.images || [];
 
@@ -272,7 +280,6 @@ angular.module('nc')
 					}
 				});
 				scope.upload = function(files) {
-					
 					if (scope.disabled) {
 						scope.onfail('ondisable');
 						return;
@@ -283,74 +290,87 @@ angular.module('nc')
 					}
 					if (fileUploader) {
 						_.forEach(files, function(file) {
-								var url = URL.createObjectURL(file);
-								var img = new Image;
+							var url = URL.createObjectURL(file);
+							var img = new Image;
 
-								img.onload = function() {
-									var minDim = scope.options.validateDimensionMin;
-									var maxDim = scope.options.validateDimensionMax;
-									var ratio = scope.options.validateRatio;
+							img.onload = function() {
+								var minDim = scope.options.validateDimensionMin;
+								var maxDim = scope.options.validateDimensionMax;
+								var ratio = scope.options.validateRatio;
 
-									var minW = Number(minDim[0]);
-									var minH = Number(minDim[1]);
-									var maxW = Number(maxDim[0]);
-									var maxH = Number(maxDim[1]);
+								var minW = Number(minDim[0]);
+								var minH = Number(minDim[1]);
+								var maxW = Number(maxDim[0]);
+								var maxH = Number(maxDim[1]);
 
-									if (scope.options.validateDimensionMin && (img.width < minW || img.height < minH)) {
-										//min width error
-										scope.onfail('ondimension', [img.width, img.height], [minW, minH]);
-										return;
-									}
+								
 
-									if (scope.options.validateDimensionMax && (img.width > maxW || img.height > maxH)) {
-										//min width error
-										scope.onfail('ondimension', [img.width, img.height], [maxW, maxH]);
-										return;
-									}
+								if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
+									scope.onfail('onfilesize');
+									return;
+								}
 
-									if (scope.options.validateRatio && img.width != ratio * img.height) {
-										//ratio error
-										scope.onfail('onratio', [img.width, img.height]);
-										return;
-									}
+								if (scope.options.validateDimensionMin && (img.width < minW || img.height < minH)) {
+									//min width error
+									scope.onfail('ondimension', [img.width, img.height], [minW, minH]);
+									return;
+								}
 
-									if (img.width != img.height && scope.options.validateSquare) {
-										//square error
-										scope.onfail('onsquare', [img.width, img.height]);
-										return;
-									}
+								if (scope.options.validateDimensionMax && (img.width > maxW || img.height > maxH)) {
+									//min width error
+									scope.onfail('ondimension', [img.width, img.height], [maxW, maxH]);
+									return;
+								}
 
-									//max size
-									if (scope.images.length >= _.toInteger(scope.size)) {
-										scope.onfail('onmaxsize', scope.images.length);
-										return;
-									}
+								if (scope.options.validateRatio && img.width != ratio * img.height) {
+									//ratio error
+									scope.onfail('onratio', [img.width, img.height]);
+									return;
+								}
 
-									var obj = {
-										progress: 0,
-										SlideDuration: 1
-									};
-									scope.images.push(obj);
-									var f = new FileItem(scope.uploader, file, {
-										onSuccess: function(response) {
-											_.extend(obj, response);
-										},
-										onError: function(response, status, headers) {
-											scope.onfail('onerror', response, status, headers);
-											_.remove(scope.images, function(n) {
-												return n === obj;
-											});
-										},
-										onProgress: function(progress) {
-											obj.progress = progress;
-										}
-									});
-									scope.uploader.queue.push(f);
-									f.upload();
+								if (img.width != img.height && scope.options.validateSquare) {
+									//square error
+									scope.onfail('onsquare', [img.width, img.height]);
+									return;
+								}
+
+								//max size
+								if (scope.images.length >= _.toInteger(scope.size)) {
+									scope.onfail('onmaxsize', scope.images.length);
+									return;
+								}
+
+								var obj = {
+									progress: 0,
+									SlideDuration: 1
 								};
+								scope.images.push(obj);
+								var f = new FileItem(scope.uploader, file, {
+									onSuccess: function(response) {
+										_.mergeWith(obj, response, function(o, v) {
+											if(_.isEmpty(v)) {
+												return o;
+											} else {
+												return v;
+											}
+										});
+									},
+									onError: function(response, status, headers) {
+										scope.onfail('onerror', response, status, headers);
+										_.remove(scope.images, function(n) {
+											return n === obj;
+										});
+									},
+									onProgress: function(progress) {
+										obj.progress = progress;
+									}
+								});
+								scope.uploader.queue.push(f);
+								f.upload();
+							};
 
-								img.src = url;
-						});
+							img.src = url;
+					});
 					} else {
 						//newer version
 						_.forEach(files, function(file) {
@@ -367,6 +387,13 @@ angular.module('nc')
 								var minH = Number(minDim[1]);
 								var maxW = Number(maxDim[0]);
 								var maxH = Number(maxDim[1]);
+								
+								
+
+								if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
+									scope.onfail('onfilesize');
+									return;
+								}
 
 								if (scope.options.validateDimensionMin && (img.width < minW || img.height < minH)) {
 									//min width error
@@ -406,7 +433,13 @@ angular.module('nc')
 								scope.images.push(obj);
 								scope.uploader.upload(file)
 									.then(function(response) {
-										_.extend(obj, response.data);
+										_.mergeWith(obj, response.data, function(o, v) {
+											if(_.isEmpty(v)) {
+												return o;
+											} else {
+												return v;
+											}
+										});
 									}, function(response) {
 										scope.onfail('onerror', response);
 										_.remove(scope.images, function(n) {
@@ -474,6 +507,7 @@ angular.module('nc')
 				scope.actions = [{
 					//Zoom
 					fn: function(item, array, index) {
+						console.log(item);
 						$uibModal.open({
 							size: 'product-image',
 							template: '<img ng-src="{{url}}" alt=""/>',
@@ -482,7 +516,7 @@ angular.module('nc')
 							},
 							resolve: {
 								url: function() {
-									return item.url;
+									return item.Url;
 								}
 							}
 						});
@@ -679,6 +713,13 @@ angular.module('nc')
 						var maxW = Number(maxDim[0]);
 						var maxH = Number(maxDim[1]);
 
+						var file = item._file;
+
+						if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
+							scope.onfail('onfilesize');
+							return;
+						}
+
 						if (minDim && (img.width < minW || img.height < minH) ) {
 							//min width error
 							item.remove();
@@ -709,8 +750,8 @@ angular.module('nc')
 							return;
 						}
 						if (scope.size == scope.model.length) {
-							item.cancel();
 							item.remove();
+							item.cancel();
 							scope.onError({$response: { name: 'queueFilter' }});
 							return;
 						}
@@ -732,8 +773,15 @@ angular.module('nc')
 						$response: filter
 					});
 				};
+				scope.uploader.onProgressItem = function(item, progress) {
+					if(_.findIndex(scope.model, item.obj) < 0) {
+						item.cancel();
+					}
+				}
 				scope.uploader.onSuccessItem = function(item, response, status, headers) {
-					scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];
+					if(response) {
+						scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];
+					}
 				};
 				scope.uploader.onErrorItem = function(item, response, status, headers) {
 					scope.model.splice(scope.model.indexOf(item.obj), 1);
@@ -745,7 +793,6 @@ angular.module('nc')
 				scope.update();
 				scope.$watch('template', scope.update);
 				scope.$watch('uploader.isUploading', function(val) {
-					console.log(val);
 					scope.isUploading = val;
 				});
 			}

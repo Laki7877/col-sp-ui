@@ -32,13 +32,13 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Type'
 										  </div>
 							              <!-- Name -->
 							              <div nc-template="common/input/form-group-with-label"
+							              	nc-template-form="form.ShopTypeNameEn"
 							                nc-template-options-path="addShopTypeForm/ShopTypeNameEn"
 							                nc-label="Type Name">
 							                <input class="form-control"
 							                  name="ShopTypeNameEn"
 							                  ng-model="formData.ShopTypeNameEn"
 							                  maxlength="255"
-							                  ng-pattern-restrict="^[^<>]*$"
 							                  required />
 							              </div>
 									</div>
@@ -52,7 +52,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Type'
 									<div class="form-section-content">
 										<div ng-template="common/input/multiline-checkbox"
 											ng-template-options="{ 'label' : 'All Features' }">
-											<label><input ng-model="selectAll" ng-change="checkAll(selectAll)" type="checkbox">Select All</label>
+											<label><input ng-model="obj.selectAll" ng-change="checkAll(obj.selectAll)" type="checkbox">Select All</label>
 										</div>
 										<div ng-repeat="name in group">
 											<div ng-template="common/input/multiline-checkbox"
@@ -68,6 +68,18 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Type'
 												 <label>
 												 	<i class="fa fa-level-up fa-rotate-90 child-checkbox-enter" aria-hidden="true"></i>
 													<input ng-model="p.check" type="checkbox">{{ p.ThemeName }}
+												</label>
+												</div>
+											</div>
+										</div>
+										<!-- template -->
+										<div>
+											<div ng-template="common/input/multiline-checkbox"
+												ng-template-options="{ 'label' : 'Shipping Type' }">
+												<div ng-repeat="p in formData.Shippings">
+												 <label>
+												 	<i class="fa fa-level-up fa-rotate-90 child-checkbox-enter" aria-hidden="true"></i>
+													<input ng-model="p.check" type="checkbox">{{ p.ShippingMethodEn }}
 												</label>
 												</div>
 											</div>

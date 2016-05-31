@@ -38,6 +38,7 @@ module.exports = function(common, config, util) {
 			GiftWrap: 'N',
 			TaxInvoice: 'Y',
 			StockAlert: 0,
+			Payment: 1,
 			CloneGlobalCategory: false
 		};
 		return processed;

@@ -18,7 +18,6 @@ angular.module('nc')
 			},
 			link: function(scope, elem, attrs) {
 				scope.formData = {};
-				scope.form = {};
 				scope.callback = scope.callback || function() { return false };
 				scope.options = _.defaults(scope.options, {
 					Tags: [],

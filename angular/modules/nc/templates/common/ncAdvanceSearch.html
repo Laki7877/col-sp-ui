@@ -5,11 +5,11 @@
 			<div class="form-section-content">
 				<form name="form" class="ah-form" novalidate>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.ProductName" nc-label="Product Name" nc-template-options-path="searchForm/ProductName">
-		                    <input class="form-control" name="ProductName" ng-pattern-restrict="^[^<>]*$" maxlength="255" ng-model="formData.ProductName"/>
+		                    <input class="form-control" name="ProductName"   maxlength="255" ng-model="formData.ProductName"/>
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Pids" nc-label="PID" nc-template-options-path="searchForm/Pid">
-							    <ui-select ng-model="formData.Pids" name="Pids" nc-tag-validator tagging tagging-label="" multiple nc-tag-field>
-	                                <ui-select-match ng-pattern-restrict="^[0-9]*$" maxlength="7">
+							    <ui-select ng-model="formData.Pids" pattern-restrict="^[^<>]*$" name="Pids" nc-tag-validator tagging tagging-label="" multiple nc-tag-field>
+	                                <ui-select-match>
 	                                    {{$item}}
 	                                </ui-select-match>
 	                                <ui-select-choices repeat="item in options.Pids">{{item}}
@@ -17,8 +17,8 @@
 	                            </ui-select>
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Skus" nc-label="SKU" nc-template-options-path="searchForm/Sku">
-							    <ui-select ng-model="formData.Skus" name="Skus" nc-tag-validator tagging tagging-label="" multiple nc-tag-field>
-	                                <ui-select-match ng-pattern-restrict="^[^<>]*$" maxlength="255">
+							    <ui-select ng-model="formData.Skus" pattern-restrict="^[^<>]*$" name="Skus" nc-tag-validator tagging tagging-label="" multiple nc-tag-field>
+	                                <ui-select-match>
 	                                    {{$item}}
 	                                </ui-select-match>
 	                                <ui-select-choices repeat="item in options.Skus">
@@ -28,7 +28,7 @@
 						</div>
 						<div nc-template="common/input/form-group-with-label" nc-template-form="form.Brands" nc-label="Brand Name" nc-template-options-path="searchForm/Brands">
 							    <ui-select ng-model="formData.Brands" name="Brands" nc-tag-validator multiple tagging-tokens=",|ENTER" tagging-label="" nc-tag-field>
-	                                <ui-select-match ng-pattern-restrict="^[^<>]*$" maxlength="255">
+	                                <ui-select-match   maxlength="255">
 	                                    {{$item.BrandNameEn}}
 	                                </ui-select-match>
 	                                <ui-select-choices repeat="item in options.Brands" refresh="options.refreshBrands($select.search)" refresh-delay="100">
@@ -62,24 +62,29 @@
 	                                <ui-select-choices repeat="item in options.Tags">{{item}}</ui-select-choices>
 	                            </ui-select>
 						</div>
-						<div nc-template="common/input/form-group-with-label-multiple" nc-template-form="form.Price" nc-label="Price" nc-template-options-path="searchForm/Price">
+						<div nc-template="common/input/form-group-with-label-multiple" 
+							nc-template-form="form.Price" 
+							nc-label="Price" 
+							nc-template-options-path="searchForm/Price">
 							<div class="width-field-small-input">
-								<input type="text" name="Price" ng-maxnumber="{{formData.PriceTo}}" ng-model="formData.PriceFrom" class="form-control" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$" maxlength="20"/>
+								<input type="text" name="Price" ng-maxnumber="{{formData.PriceTo}}" ng-model="formData.PriceFrom" class="form-control" ng-pattern-restrict="^[0-9]*(\.[0-9]{0,2})?$" maxlength="20"/>
 							</div>
 							<div class="width-label-extend text-center"><label class="control-label">To</label></div>
 							<div class="width-field-small-input">
-								<input type="text" ng-model="formData.PriceTo" class="form-control" ng-pattern-restrict="^[0-9]*(\.[0-9]*)?$" maxlength="20"/>
+								<input type="text" ng-model="formData.PriceTo" class="form-control" ng-pattern-restrict="^[0-9]*(\.[0-9]{0,2})?$" maxlength="20"/>
 							</div>
 						</div>
-						<div nc-template="common/input/form-group-with-label-multiple" nc-template-form="form.CreatedDate" nc-label="Created date" nc-template-options-path="searchForm/CreatedDate">
+						<div nc-template="common/input/form-group-with-label-multiple" nc-template-form="form.CreatedDate" nc-label="Created Date" nc-template-options-path="searchForm/CreatedDate">
 							<div class="width-field-small-input">
                                 <div class="dropdown">
                                     <a class="dropdown-toggle" id="dropdown" role="button" data-toggle="dropdown" data-target="#" href="#">
                                         <input readonly style="background-color:white" type="text"
-                                         class="input-icon-calendar form-control" value="{{ formData.CreatedDtFrom | date: 'dd/MM/yy HH:mm' }}" />
+                                         ng-class="{'has-error': formData.CreatedDtTo <= formData.CreatedDtFrom }"
+                                         class="input-icon-calendar form-control" 
+              							 value="{{ formData.CreatedDtFrom | datetimeTh }}"/>
                                     </a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                        <datetimepicker name="CreatedDate" ng-date-before="{{formData.CreatedDtTo}}" data-ng-model="formData.CreatedDtFrom" data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'hour' }" />
+                                        <datetimepicker name="CreatedDate" ng-date-before="{{formData.CreatedDtTo}}" data-ng-model="formData.CreatedDtFrom" data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'minute', minuteStep: 30 }" />
                                     </ul>
                                 </div>
 							</div>
@@ -88,23 +93,31 @@
                                 <div class="dropdown">
                                     <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
                                         <input readonly style="background-color:white" type="text"
-                                         class="input-icon-calendar form-control" value="{{ formData.CreatedDtTo | date: 'dd/MM/yy HH:mm' }}" />
+                                         ng-class="{'has-error': formData.CreatedDtTo <= formData.CreatedDtFrom }"
+                                         class="input-icon-calendar form-control" value="{{ formData.CreatedDtTo | datetimeTh }}" />
                                     </a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                        <datetimepicker data-ng-model="formData.CreatedDtTo" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'hour' }" />
+                                        <datetimepicker data-ng-model="formData.CreatedDtTo" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'minute', minuteStep: 30 }" />
                                     </ul>
                                 </div>
 							</div>
+						    <div class="width-field-small-input">
+						        <span class="help-block color-red" ng-if="formData.CreatedDtTo <= formData.CreatedDtFrom">
+						            <span>Please enter a valid date/time range.</span>
+						        </span>
+						    </div>
 						</div>
 						<div nc-template="common/input/form-group-with-label-multiple" nc-template-form="form.ModifiedDate" nc-label="Modified Date" nc-template-options-path="searchForm/ModifiedDate">
 							<div class="width-field-small-input">
                                 <div class="dropdown">
                                     <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="#">
                                         <input readonly style="background-color:white" type="text"
-                                         class="input-icon-calendar form-control" value="{{ formData.ModifyDtFrom | date: 'dd/MM/yy HH:mm' }}" />
+                                         ng-class="{'has-error': formData.ModifyDtFrom <= formData.ModifyDtTo }"
+                                         class="input-icon-calendar form-control" 
+              							 value="{{ formData.ModifyDtTo | datetimeTh }}"/>
                                     </a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                        <datetimepicker data-ng-model="formData.ModifyDtFrom" name="ModifiedDate" ng-date-before="{{formData.ModifiedDtTo}}" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'hour' }" />
+                                        <datetimepicker name="ModifiedDate" ng-date-before="{{formData.ModifyDtFrom}}" data-ng-model="formData.ModifyDtTo" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'minute', minuteStep: 30 }" />
                                     </ul>
                                 </div>
 							</div>
@@ -113,13 +126,19 @@
                                 <div class="dropdown">
                                     <a class="dropdown-toggle" id="dropdown4" role="button" data-toggle="dropdown" data-target="#" href="#">
                                         <input readonly style="background-color:white" type="text"
-                                         class="input-icon-calendar form-control" value="{{ formData.ModifyDtTo | date: 'dd/MM/yy HH:mm' }}" />
+                                         ng-class="{'has-error': formData.ModifyDtFrom <= formData.ModifyDtTo }"
+                                         class="input-icon-calendar form-control" value="{{ formData.ModifyDtFrom | datetimeTh }}" />
                                     </a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                        <datetimepicker data-ng-model="formData.ModifyDtTo" data-datetimepicker-config="{ dropdownSelector: '#dropdown4', minView: 'hour' }" />
+                                        <datetimepicker data-ng-model="formData.ModifyDtFrom" data-datetimepicker-config="{ dropdownSelector: '#dropdown4', minView: 'minute', minuteStep: 30 }" />
                                     </ul>
                                 </div>
 							</div>
+						    <div class="width-field-small-input">
+						        <span class="help-block color-red" ng-if="formData.ModifyDtFrom <= formData.ModifyDtTo">
+						            <span>Please enter a valid date/time range.</span>
+						        </span>
+						    </div>
 						</div>
 						<div class="form-group">
 							<div class="width-label"><label class="control-label"></label></div>

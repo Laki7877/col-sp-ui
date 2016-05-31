@@ -22,6 +22,10 @@ module.exports = function(common, $q, util) {
 			CategoryBannerTh: [],
 			CategoryBannerEn: [],
 			TitleShowcase: false,
+			BannerStatusEn: true,
+			BannerStatusTh: true,
+			BannerSmallStatusEn: true,
+			BannerSmallStatusTh: true,
 			FeatureProductStatus: true
 		}, extend);
 	};

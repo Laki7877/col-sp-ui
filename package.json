@@ -56,6 +56,7 @@
     "angular-ui-sortable": "^0.14.0",
     "angular-ui-tree": "2.15.0",
     "browserify-shim": "^3.8.12",
+    "circular-json": "^0.3.0",
     "jquery": "2.2.0",
     "ng-file-upload": "12.0.1",
     "pluralize": "^1.2.1",

@@ -7,7 +7,6 @@
       <form id="exportForm" name="exportForm" action="/products/export" method="post">
           <input type="hidden" name="selected_products[]" ng-repeat="item in bulkContainer" value="{{ item.ProductId }}"/>
           <input type="hidden" name="search_criteria"  value="{{ searchCriteria }}"/>
-
           <div class="btn-group margin-right-10">
             <button type="button" class="btn btn-white dropdown-toggle btn-width-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Export <span class="caret"></span>
@@ -69,8 +68,8 @@
                   <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
                   <td class="display-column">
                     <div class="img-holder">
-                      <img ng-if='!row.ImageUrl' class="logo-img" src="<?= $this->asset('/assets/img/placeholder-no-image.png') ?>" />
-                      <img ng-if='row.ImageUrl' class="logo-img" src="{{ row.ImageUrl }}" />
+                      <img ng-if='row.ImageUrl == ""' class="logo-img" src="<?= $this->asset('/assets/img/placeholder-no-image.png') ?>" />
+                      <img ng-if='row.ImageUrl != ""' class="logo-img" src="{{ row.ImageUrl }}" />
                     </div>
                   </td>
                   <td class="column-text-ellipsis">

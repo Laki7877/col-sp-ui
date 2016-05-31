@@ -30,7 +30,7 @@ module.exports = function(common, config) {
 			return e.NameEn + ' (' + e.CategoryId + ')';
 		}), ', ');
 		if(processed.Categories.length == 0) {
-			processed.Categories = 'None'; 
+			processed.Categories = 'None';
 		}
 		if(angular.isUndefined(processed.Attributes)) {
 			processed.Attributes = [];

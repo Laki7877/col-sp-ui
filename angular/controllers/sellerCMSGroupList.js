@@ -1,14 +1,17 @@
 
-module.exports = function ($scope, $controller, CMSGroupService, config) {
+module.exports = function ($scope, $controller, CMSGroupService, config, $rootScope) {
     'ngInject';
+    $scope.CMSview = !$rootScope.permit(61);  
+    $scope.CMSadd = !$rootScope.permit(62);
+    $scope.CMSedit = !$rootScope.permit(63);
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
-            url: '/admin/reports/std/saleforseller',
+            url: '/cms/group',
             service: CMSGroupService,
-            item: 'SaleReportForSeller',
-            order: 'OrderDate',
-            id: 'OrderId',
+            item: 'CMSGroup',
+            order: 'UpdateOn',
+            id: 'CMSGroupId',
             actions: ['View', 'Delete'],
             bulks: ['Delete', 'Show', 'Hide'],
             filters: [
@@ -20,5 +23,6 @@ module.exports = function ($scope, $controller, CMSGroupService, config) {
             ]
         }
     });
+    //$scope.statusDropdown = config.PRODUCT_STATUS;
 
 };

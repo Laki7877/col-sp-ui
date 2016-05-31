@@ -144,7 +144,7 @@
 		</div>
 
 		<div class="form-section">
-			<div class="form-section-header"><h2>Add Item List</h2></div>
+			<div class="form-section-header" style="margin-bottom:10px;"><h2>Add Item List</h2></div>
 			<div class="form-section-content">
 
 			<div class="ng-isolate-scope form-group"> 
@@ -259,7 +259,7 @@
 									class="input-icon-calendar form-control" data-ng-model="formData.EffectiveDate">
 								</a>
 								<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-									<datetimepicker data-ng-model="formData.EffectiveDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'hour' }"/>
+									<datetimepicker data-ng-model="formData.EffectiveDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'minute', minuteStep: 30 }"/>
 								</ul>
 							</div>
 							<span class="help-block"></span>
@@ -279,7 +279,7 @@
 									data-ng-model="formData.ExpiryDate">
 								</a>
 								<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-									<datetimepicker data-ng-model="formData.ExpiryDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'hour' }"/>
+									<datetimepicker data-ng-model="formData.ExpiryDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'minute', minuteStep: 30 }"/>
 								</ul>
 							</div>
 							<div class="width-field-large">

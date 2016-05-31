@@ -36,6 +36,11 @@ var seller = {
 	'Promotion|fa-bookmark': {
 		'Coupons': '/coupons'
 	},
+	'CMS|fa fa-contao': {
+	    'CMS Category': '/cms/category',
+	    'CMS Static & Collection': '/cms/master',
+	    'CMS Group': '/cms/group'
+	},
 	'Shop Setting|fa-sliders': {
 		'Shop Profile': '/shops/settings',
 		'Shop Appearance': '/shops/appearance'
@@ -47,6 +52,10 @@ var seller = {
 
 	'Report|fa-file': {
 	    'View Report': '/reports',
+        'Sale Report For Seller': '/reports/std/saleforseller',
+        'Stock Status Report': '/reports/std/stockstatus',
+        'On Hold Report' : '/reports/std/onhold',
+        'Return Report' : '/reports/std/return'
 	}
 };
 var admin = {
@@ -74,9 +83,8 @@ var admin = {
 	'Promotion|fa-bookmark': {
 		'Global Coupons': '/admin/coupons/global',
 		'All Seller Coupons': '/admin/coupons/seller',
-		'Seller Coupons': '/admin/coupons/seller',
-        'On Top Credit Card':'/admin/ontopcredit',
-        'Buy 1 Get 1':'/admin/buy1get1'
+    'On Top Credit Card':'/admin/ontopcredit',
+    'Buy 1 Get 1':'/admin/buy1get1'
 	},
     // Create By Col Dev (Natee)
 	'CMS|fa fa-contao': {
@@ -85,8 +93,7 @@ var admin = {
 	    'CMS Group': '/admin/cms/group'
 	},
 	'Reports|fa-file': {
-	    'Sale Report For Seller': '/admin/reports/std/saleforseller',
-        'Stok Status Report': '/admin/reports/std/stokstatus'
+
 	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'
@@ -108,6 +115,9 @@ var permission = {
 	13: '/admin/coupons/seller',
 	21: '/admin/newsletters',
 	81: '/admin/products/reviews',
+	22: '/admin/cms',
+	27: ['/admin/reports/std/stockstatus', '/admin/reports/std/onhold', '/admin/reports/std/return'],
+	// 24: ['/admin/cms/category/create', '/admin/cms/master/create', '/admin/cms/group/create'],
 
 	//Seller
 	29: '/dashboard',
@@ -125,7 +135,9 @@ var permission = {
 	55: '/shops/settings',
 	56: '/shops/appearance',
 	57: ['/roles', '/accounts'],
-	82: '/cms',
+	60: '/cms',
+	71: '/reports/std/saleforseller',
+	// 62: ['/cms/category/create', '/cms/master/create', '/cms/group/create'],
 
 	//Shop
 	64: '/dashboard',

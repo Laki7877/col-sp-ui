@@ -26,7 +26,7 @@ angular.module('nc')
                         if(angular.isDefined(form) &&
                             angular.isDefined(form.$invalid) &&
                             angular.isDefined(form.$dirty)) {
-                            return form.$invalid && (form.$dirty || form.$$parentForm.$submitted);
+                            return form.$invalid && (form.$dirty  || form.$$parentForm.$submitted);
                         }
                         return false;
                     };
@@ -50,6 +50,10 @@ angular.module('nc')
                     if(!('error' in opt)){
                         opt.error = {};
                     };
+
+                    if(scope.optionsPath == 'searchForm/Price') {
+                        console.log(scope.templateField());
+                    }
 
                     scope.options = opt;
 

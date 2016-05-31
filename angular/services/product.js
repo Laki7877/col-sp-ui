@@ -12,7 +12,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		}
 
 		service.getUnlockedFields = function () {
-			//Get list of fields that are always enabled (unlocked)	
+			//Get list of fields that are always enabled (unlocked)
 			return common.makeRequest({
 				method: 'GET',
 				url: '/ProductStages/IgnoreApprove'
@@ -20,6 +20,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		}
 
 
+		//TODO: PendingProduct is now called ProductGrouping
 		service.savePendingProduct = function (apgp) {
 			return common.makeRequest({
 				method: 'POST',
@@ -69,6 +70,31 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				method: 'POST',
 				url: '/ProductStages/Export',
 				data: ps
+			}
+			return common.makeRequest(req)
+		}
+
+		service.exportAbort = function (ps) {
+			var req = {
+				method: 'POST',
+				url: '/ProductStages/Export/Abort'
+			}
+			return common.makeRequest(req)
+		}
+
+
+		service.exportProgress = function (ps) {
+			var req = {
+				method: 'GET',
+				url: '/ProductStages/Export/Progress'
+			}
+			return common.makeRequest(req)
+		}
+
+		service.exportGet = function (ps) {
+			var req = {
+				method: 'GET',
+				url: '/ProductStages/Export'
 			}
 			return common.makeRequest(req)
 		}
@@ -147,11 +173,16 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			var x =  {
 					AttributeSetId: attributeSetId,
 					ShopId: shopId,
-					CategoryId: categoryId,
+					EmptyAttributeSet: true,
 					_limit: 8,
 					_offset: 0,
 					_direction: 'asc'
 			};
+
+			if(categoryId){
+				x.CategoryId =  categoryId;
+			}
+
 			if(q){
 				x.searchText = q;
 			}
@@ -202,8 +233,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			return common.makeRequest({
 				method: mode,
 				url: path,
-				data: tobj,
-				rollbar: 'AP: Product publish or save'
+				data: tobj
 			})
 		}
 
@@ -266,6 +296,9 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 							var ts = util.variant.toString(v.FirstAttribute, v.SecondAttribute);
 							var rs = util.variant.toString(fd.DefaultVariant.FirstAttribute, fd.DefaultVariant.SecondAttribute);
 							v.DefaultVariant = (ts == rs);
+							v.ExpireDatePromotion = moment(v.ExpireDatePromotion).toDate();
+							v.EffectiveDatePromotion = moment(v.EffectiveDatePromotion).toDate();
+							v.SEO.ProductUrlKeyEn = v.SEO.ProductUrlKeyEn.toLowerCase();
 							return v;
 						});
 					},
@@ -374,7 +407,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 										AttributeId: Number(key)
 									}, ma[key]));
 								} else {
-									//Legacy freetext, theoretically 
+									//Legacy freetext, theoretically
 									//this will never be reached
 									t.push({
 										AttributeValues: [],
@@ -429,7 +462,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			//Load attribute set
 			invFd.AttributeSet = FullAttributeSet;
 
-			
+			invFd.Brand.display =  (invFd.Brand.DisplayNameEn || invFd.Brand.BrandNameEn) + " (" + invFd.Brand.BrandId + ")";
 
 			var MasterAttribute = {};
 			try {
@@ -512,9 +545,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				}
 			}
 
-			invFd.GlobalCategories.unshift({
-				CategoryId: invFd.MainGlobalCategory
-			})
+			invFd.GlobalCategories.unshift(invFd.MainGlobalCategory)
 
 			if (invFd.GlobalCategories.length > 3) {
 				invFd.GlobalCategories.pop()
@@ -536,10 +567,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 			//Find out which variant is default variant
 			// if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; // TODO: Hardcode
-			
+
 			//Find which variant is default
-			
-			
+
+
 			var transformed = {
 				formData: invFd
 			};
@@ -622,7 +653,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				}
 
 			}
-			
+
 			var DefaultVariantIndex = (invFd.Variants || []).map(function (o) {
 					return o.DefaultVariant || false;
 			}).indexOf(true);
