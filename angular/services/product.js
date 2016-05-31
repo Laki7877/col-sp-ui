@@ -296,6 +296,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 							var ts = util.variant.toString(v.FirstAttribute, v.SecondAttribute);
 							var rs = util.variant.toString(fd.DefaultVariant.FirstAttribute, fd.DefaultVariant.SecondAttribute);
 							v.DefaultVariant = (ts == rs);
+							v.ExpireDatePromotion = moment(v.ExpireDatePromotion).toDate();
+							v.EffectiveDatePromotion = moment(v.EffectiveDatePromotion).toDate();
 							v.SEO.ProductUrlKeyEn = v.SEO.ProductUrlKeyEn.toLowerCase();
 							return v;
 						});

@@ -12,6 +12,7 @@ var skeemas = require('skeemas');
 
 // IE fix
 require('./iefix.js')
+require('./datefix.js')
 
 // External dependencies
 global._ = require('lodash')
@@ -49,7 +50,7 @@ require('./modules/ume-select')
 
 
 String.prototype.startsWith = String.prototype.startsWith || function() {
-  
+
 }
 
 // Internal dependencies
@@ -258,7 +259,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
 
   .controller('LoginCtrl', controllers.login)
   .controller('AdminLoginCtrl', controllers.adminLogin)
-  
+
   .controller('AbstractListCtrl', controllers.abstractList)
   .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
   // .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)

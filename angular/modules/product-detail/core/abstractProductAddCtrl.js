@@ -152,7 +152,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.dataset.Brands = ds.data; // _.unionBy($scope.dataset.Brands, ds.data, 'BrandId');
           $scope.dataset.Brands = $scope.dataset.Brands.map(function(m) {
             m._group = "Search Results";
-            m.display = m.BrandNameEn + " (" + m.BrandId + ")"
+            m.display = (m.DisplayNameEn || m.BrandNameEn) + " (" + m.BrandId + ")"
             return m;
           });
           // return $scope.dataset.Brands;
