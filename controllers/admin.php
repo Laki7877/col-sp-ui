@@ -194,7 +194,7 @@ class AdminController extends Controller
 	}
 
 	//Pending product
-	// public static function listPendingProduct($params) 
+	// public static function listPendingProduct($params)
 	// {
 	// 	return View::render('admin_pending_product');
 	// }
@@ -230,7 +230,7 @@ class AdminController extends Controller
 	{
 		return View::render('admin_product_review');
 	}
-	
+
 	// CMS Category
 	public static function listCMSCategory($params)
 	{
@@ -270,8 +270,8 @@ class AdminController extends Controller
 	{
 		return View::render('admin_add_cms_group', ['params' => json_encode_n($params), 'title' => 'Admin CMS Group Detail']);
 	}
-    
-   
+
+
     // CMS Get All iOath
     // public static function export($params)
     // {
@@ -279,75 +279,46 @@ class AdminController extends Controller
     //     'viewBag' => $_POST['selected_products'],
     //     ]);
     // }
-    
+
     // public static function group($params)
 	// {
     //     return View::render('seller_pending_product');
     // }
-    
+
     // public static function groupCreate($param)
     // {
     //     return View::render('seller_pending_products_group', [
     //     'viewBag' => $_POST['selected_products'],
     //     ]);
     // }
-    
-    
+
+
     public static function images($params)
     {
         return View::render('image_management');
     }
-    
-    //public static function editCMSMaster($params)
-    //{
-    //    return View::render('add_product', [
-    //    'title' => 'Product Detail',
-    //    'viewBag' => array(
-    //    'productId' => $params['productid'],
-    //    ),
-    //    ]);
-    //}
-    
-    // public static function import($params)
-    // {
-    //     return View::render('seller_import_products', [
-    //     'title' => 'Import Product',
-    //     ]);
-    // }
 
-    // public static function importUpdate($params)
-    // {
-    //     return View::render('seller_import_products', [
-    //     'title' => 'Import Product',
-    //     'update' => true
-    //     ]);
-    // }
-        //Oath buy 1 get 1
-       public static function listBuy1Get1($params){
-            return View::render('admin_buy1get1_list');
-    
-       }
-    
-       public static function addBuy1Get1($params){
-            return View::render('admin_add_buy1get1', ['title' => 'Add Buy 1 Get 1']);
-    
-       } 
-    
-       public static function editBuy1Get1($params){
-    
-            return View::render('admin_add_buy1get1', ['params' => json_encode_n($params), 'title' => 'Detail']);
-       }
-       //Oath
-    
-    public static function reviews($params)
-    {
-        return View::render('product_review');
-    }
 
-	// Reports
-	public static function listStandardReport($params) 
-	{
-		return View::render('admin_report_std_saleforseller');
-	}
+  	//Oath buy 1 get 1
+   public static function listBuy1Get1($params){
+        return View::render('admin_buy1get1_list');
+
+   }
+
+   public static function addBuy1Get1($params){
+        return View::render('admin_add_buy1get1', ['title' => 'Add Buy 1 Get 1']);
+
+   }
+
+   public static function editBuy1Get1($params){
+
+        return View::render('admin_add_buy1get1', ['params' => json_encode_n($params), 'title' => 'Detail']);
+   }
+   //Oath
+
+  public static function reviews($params)
+  {
+      return View::render('product_review');
+  }
 
 }
