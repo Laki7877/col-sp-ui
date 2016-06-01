@@ -15016,35 +15016,40 @@ form h6 {
   padding-left: 17px;
 }
 /* line 57, ../../../assets/_seller_page.sass */
+.onboarding_content .home_task .image-thumbs-img-wrapper img {
+  width: 30px;
+  height: 30px;
+}
+/* line 60, ../../../assets/_seller_page.sass */
 .onboarding_content .home_task .home_task_text {
   padding: 11px 17px;
   display: inline-block;
 }
-/* line 60, ../../../assets/_seller_page.sass */
+/* line 63, ../../../assets/_seller_page.sass */
 .onboarding_content .home_task .home_task_button {
   float: right;
   padding: 17px 17px;
 }
-/* line 64, ../../../assets/_seller_page.sass */
+/* line 67, ../../../assets/_seller_page.sass */
 .onboarding_content .home_task .home_task_button .btn-width-xxl {
   width: 150px;
 }
-/* line 67, ../../../assets/_seller_page.sass */
+/* line 70, ../../../assets/_seller_page.sass */
 .onboarding_content .background_blue {
   background-color: #edf2f9;
 }
-/* line 69, ../../../assets/_seller_page.sass */
+/* line 72, ../../../assets/_seller_page.sass */
 .onboarding_content .background_blue .btn-white {
   background-color: #edf2f9;
 }
-/* line 72, ../../../assets/_seller_page.sass */
+/* line 75, ../../../assets/_seller_page.sass */
 .onboarding_content .complete_line {
   margin: 40px 0px;
   border-top: solid 1px #BCC7D5;
   position: relative;
   min-height: 1px;
 }
-/* line 77, ../../../assets/_seller_page.sass */
+/* line 80, ../../../assets/_seller_page.sass */
 .onboarding_content .complete_line > .complte_line_text {
   position: absolute;
   left: 50%;
@@ -15054,7 +15059,7 @@ form h6 {
   transform: translate(-50%, -50%);
   background-color: white;
 }
-/* line 86, ../../../assets/_seller_page.sass */
+/* line 89, ../../../assets/_seller_page.sass */
 .onboarding_content .empty-section {
   border: none;
   margin: 0;
@@ -15062,17 +15067,17 @@ form h6 {
   line-height: 44px;
   padding: 0;
 }
-/* line 93, ../../../assets/_seller_page.sass */
+/* line 96, ../../../assets/_seller_page.sass */
 .onboarding_content .empty-section i {
   font-size: 25px;
   vertical-align: middle;
 }
-/* line 97, ../../../assets/_seller_page.sass */
+/* line 100, ../../../assets/_seller_page.sass */
 .onboarding_content .loading_text {
   display: inline;
 }
 
-/* line 100, ../../../assets/_seller_page.sass */
+/* line 103, ../../../assets/_seller_page.sass */
 .column-text-ellipsis {
   max-width: 100%;
   overflow: hidden;
@@ -15080,109 +15085,109 @@ form h6 {
   white-space: nowrap;
 }
 
-/* line 108, ../../../assets/_seller_page.sass */
+/* line 111, ../../../assets/_seller_page.sass */
 #dashboard_page .remark {
   font-size: 12px;
   line-height: 12px;
   color: #BCC7D5;
   float: right;
 }
-/* line 113, ../../../assets/_seller_page.sass */
+/* line 116, ../../../assets/_seller_page.sass */
 #dashboard_page .dashboard_column:first-child {
   padding-left: 0px;
 }
-/* line 116, ../../../assets/_seller_page.sass */
+/* line 119, ../../../assets/_seller_page.sass */
 #dashboard_page .dashboard_column:nth-child(2) {
   padding-right: 0px;
 }
-/* line 120, ../../../assets/_seller_page.sass */
+/* line 123, ../../../assets/_seller_page.sass */
 #dashboard_page .dashboard_graph canvas {
   width: 100%;
   height: 300px;
 }
-/* line 124, ../../../assets/_seller_page.sass */
+/* line 127, ../../../assets/_seller_page.sass */
 #dashboard_page .with_border {
   border: 1px solid #bcc7d5;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
-/* line 128, ../../../assets/_seller_page.sass */
+/* line 131, ../../../assets/_seller_page.sass */
 #dashboard_page .column-text-ellipsis {
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 134, ../../../assets/_seller_page.sass */
+/* line 137, ../../../assets/_seller_page.sass */
 #dashboard_page .space_column {
   padding: 15px 15px 15px 15px;
   margin-bottom: 20px;
   line-height: 27px;
   border-radius: 3px;
 }
-/* line 140, ../../../assets/_seller_page.sass */
+/* line 143, ../../../assets/_seller_page.sass */
 #dashboard_page .revenue_pannel {
   padding-bottom: 25px;
 }
-/* line 143, ../../../assets/_seller_page.sass */
+/* line 146, ../../../assets/_seller_page.sass */
 #dashboard_page .logo-img {
   max-width: 40px;
   max-heigh: 40px;
 }
-/* line 148, ../../../assets/_seller_page.sass */
+/* line 151, ../../../assets/_seller_page.sass */
 #dashboard_page .header-link a {
   color: #32343C;
 }
-/* line 152, ../../../assets/_seller_page.sass */
+/* line 155, ../../../assets/_seller_page.sass */
 #dashboard_page .header-link > .active-underline {
   border-bottom: 2px solid #4891d2;
   padding-bottom: 4px;
 }
-/* line 155, ../../../assets/_seller_page.sass */
+/* line 158, ../../../assets/_seller_page.sass */
 #dashboard_page .header-link:focus {
   text-decoration: none;
 }
-/* line 158, ../../../assets/_seller_page.sass */
+/* line 161, ../../../assets/_seller_page.sass */
 #dashboard_page .header_name_space {
   padding-left: 10px;
   line-height: 30px;
 }
-/* line 163, ../../../assets/_seller_page.sass */
+/* line 166, ../../../assets/_seller_page.sass */
 #dashboard_page .group_span_right span {
   margin-left: 15px;
   line-height: 30px;
 }
-/* line 167, ../../../assets/_seller_page.sass */
+/* line 170, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container {
   padding-bottom: 10px;
   padding-top: 10px;
   border-bottom: solid 1px #BCC7D5;
 }
-/* line 172, ../../../assets/_seller_page.sass */
+/* line 175, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container .price-column {
   padding-left: 50px;
 }
-/* line 176, ../../../assets/_seller_page.sass */
+/* line 179, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container .row_container > div:first-child {
   display: inline-block;
 }
-/* line 179, ../../../assets/_seller_page.sass */
+/* line 182, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container .row_container > div:nth-child(2) {
   float: right;
 }
-/* line 183, ../../../assets/_seller_page.sass */
+/* line 186, ../../../assets/_seller_page.sass */
 #dashboard_page .no_border {
   border: none;
 }
-/* line 186, ../../../assets/_seller_page.sass */
+/* line 189, ../../../assets/_seller_page.sass */
 #dashboard_page .small_field {
   padding-bottom: 10px;
   padding-top: 10px;
 }
-/* line 190, ../../../assets/_seller_page.sass */
+/* line 193, ../../../assets/_seller_page.sass */
 #dashboard_page .small_field .row:first-child {
   padding-top: 10px;
 }
-/* line 193, ../../../assets/_seller_page.sass */
+/* line 196, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field {
   padding-bottom: 5px;
   padding-top: 5px;
@@ -15190,161 +15195,161 @@ form h6 {
   position: relative;
   cursor: default;
 }
-/* line 200, ../../../assets/_seller_page.sass */
+/* line 203, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field div:first-child {
   padding-right: 0;
 }
-/* line 202, ../../../assets/_seller_page.sass */
+/* line 205, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field div:last-child {
   line-height: 40px;
 }
-/* line 206, ../../../assets/_seller_page.sass */
+/* line 209, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field .row_container > div:nth-child(2) {
   float: none;
   display: inline;
   padding-left: 10px;
 }
-/* line 211, ../../../assets/_seller_page.sass */
+/* line 214, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_field .column-text-ellipsis {
   padding-left: 50px;
   position: absolute;
   top: 0;
 }
-/* line 216, ../../../assets/_seller_page.sass */
+/* line 219, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container:first-child {
   padding-top: 0;
 }
-/* line 219, ../../../assets/_seller_page.sass */
+/* line 222, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container:last-child {
   border: none;
   padding-top: 0;
   padding-bottom: 0;
 }
-/* line 224, ../../../assets/_seller_page.sass */
+/* line 227, ../../../assets/_seller_page.sass */
 #dashboard_page .group_container:last-child.small_field {
   padding-top: 10px;
 }
-/* line 227, ../../../assets/_seller_page.sass */
+/* line 230, ../../../assets/_seller_page.sass */
 #dashboard_page .top_selling_header {
   margin-bottom: 15px;
 }
-/* line 230, ../../../assets/_seller_page.sass */
+/* line 233, ../../../assets/_seller_page.sass */
 #dashboard_page .width_100 {
   width: 100px;
 }
-/* line 233, ../../../assets/_seller_page.sass */
+/* line 236, ../../../assets/_seller_page.sass */
 #dashboard_page .width_150 {
   width: 150px;
 }
-/* line 236, ../../../assets/_seller_page.sass */
+/* line 239, ../../../assets/_seller_page.sass */
 #dashboard_page .table {
   margin-bottom: 0;
 }
-/* line 240, ../../../assets/_seller_page.sass */
+/* line 243, ../../../assets/_seller_page.sass */
 #dashboard_page .table_dashboard td {
   padding: 15px 0 15px 0;
   border-top: 0;
   border-bottom: 1px solid #BCC7D5;
 }
-/* line 245, ../../../assets/_seller_page.sass */
+/* line 248, ../../../assets/_seller_page.sass */
 #dashboard_page .table_dashboard td.column-text-ellipsis {
   max-width: 0;
 }
-/* line 249, ../../../assets/_seller_page.sass */
+/* line 252, ../../../assets/_seller_page.sass */
 #dashboard_page .table_dashboard tr:hover td {
   cursor: pointer;
   color: #4899DD;
 }
-/* line 252, ../../../assets/_seller_page.sass */
+/* line 255, ../../../assets/_seller_page.sass */
 #dashboard_page .table_dashboard tr:hover td.empty_data {
   cursor: default;
   color: #32343C;
 }
-/* line 257, ../../../assets/_seller_page.sass */
+/* line 260, ../../../assets/_seller_page.sass */
 #dashboard_page .table_dashboard tr:last-child td {
   border-bottom: 0;
   padding-bottom: 0;
 }
-/* line 262, ../../../assets/_seller_page.sass */
+/* line 265, ../../../assets/_seller_page.sass */
 #dashboard_page .table_dashboard tr:nth-last-child(2) td {
   border-bottom: 0;
   padding-bottom: 0;
 }
-/* line 267, ../../../assets/_seller_page.sass */
+/* line 270, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:first-child {
   width: 120px;
 }
-/* line 270, ../../../assets/_seller_page.sass */
+/* line 273, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:nth-child(2) {
   width: 200px;
 }
-/* line 273, ../../../assets/_seller_page.sass */
+/* line 276, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:nth-child(3) {
   width: 200px;
 }
-/* line 276, ../../../assets/_seller_page.sass */
+/* line 279, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td:nth-child(4) {
   text-align: right;
 }
-/* line 279, ../../../assets/_seller_page.sass */
+/* line 282, ../../../assets/_seller_page.sass */
 #dashboard_page .table_recent_order td.empty_data {
   text-align: center;
   padding-left: 0;
 }
-/* line 285, ../../../assets/_seller_page.sass */
+/* line 288, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:first-child {
   width: 120px;
 }
-/* line 288, ../../../assets/_seller_page.sass */
+/* line 291, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:nth-child(2) {
   width: 300px;
 }
-/* line 291, ../../../assets/_seller_page.sass */
+/* line 294, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td:nth-child(3) {
   text-align: right;
 }
-/* line 294, ../../../assets/_seller_page.sass */
+/* line 297, ../../../assets/_seller_page.sass */
 #dashboard_page .table_lsa td.empty_data {
   text-align: center;
   padding-left: 0;
 }
-/* line 300, ../../../assets/_seller_page.sass */
+/* line 303, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter td.empty_data {
   text-align: center;
   padding-left: 0;
 }
-/* line 304, ../../../assets/_seller_page.sass */
+/* line 307, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter .newsletter_date {
   font-size: 12px;
   margin-top: 5px;
   color: #7B7F8F;
 }
-/* line 308, ../../../assets/_seller_page.sass */
+/* line 311, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter td:last-child {
   padding-left: 30px;
   width: 80px;
 }
-/* line 312, ../../../assets/_seller_page.sass */
+/* line 315, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter td:last-child.empty_data {
   padding-left: 0;
 }
-/* line 316, ../../../assets/_seller_page.sass */
+/* line 319, ../../../assets/_seller_page.sass */
 #dashboard_page .table_newsletter tr:hover td {
   cursor: default;
   color: #32343C;
 }
-/* line 320, ../../../assets/_seller_page.sass */
+/* line 323, ../../../assets/_seller_page.sass */
 #dashboard_page .account_health .group_container:last-child {
   padding: 10px 0px 0px 0px;
 }
-/* line 323, ../../../assets/_seller_page.sass */
+/* line 326, ../../../assets/_seller_page.sass */
 #dashboard_page .view_all_row {
   text-align: center;
   margin-top: 15px;
   padding-top: 15px;
   border-top: solid 1px #BCC7D5;
 }
-/* line 329, ../../../assets/_seller_page.sass */
+/* line 332, ../../../assets/_seller_page.sass */
 #dashboard_page .loading_row {
   text-align: center;
   margin-top: 15px;
