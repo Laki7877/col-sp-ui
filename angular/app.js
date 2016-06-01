@@ -285,6 +285,9 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('SellerStdStockReportCtrl', controllers.sellerStdStockReportList)
   .controller('SellerStdOnHoldReportCtrl', controllers.sellerStdOnHoldReportList)
   .controller('SellerStdReturnReportCtrl', controllers.sellerStdReturnReportList)
+    //Natcharin
+  .controller('SellerStdOiReportCtrl', controllers.sellerStdOiReportList)
+  .controller('SellerStdNonMoveReportCtrl', controllers.sellerStdNonMoveReportList)
 
   //iOATH
   .controller('AdminBuy1Get1AddCtrl',controllers.adminBuy1Get1Add)
@@ -304,10 +307,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('SellerCMSCategoryListCtrl', controllers.sellerCMSCategoryList)
   .controller('SellerCMSCategoryAddCtrl', controllers.sellerCMSCategoryAdd)
   
-  //Natcharin
-  .controller('SellerStdOiReportCtrl', controllers.sellerStdOiReportList)
-  .controller('SellerStdNonMoveReportCtrl', controllers.sellerStdNonMoveReportList)
-
 var _rollbarConfig = {
     accessToken: config.ROLLBAR.token,
     captureUncaught: true,

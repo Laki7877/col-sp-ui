@@ -11,7 +11,7 @@ module.exports = function ($scope, $controller, StdReportOnHoldService, config, 
     var params = $scope.formData;
 
     $scope.search = function () {
-        StdReportStockService.getStockReport(params)
+        StdReportOnHoldService.getOnHoldReport(params)
         .then(function (data) {
             $scope.list.data = data;
         });

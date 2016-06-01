@@ -38,6 +38,7 @@ module.exports = function ($scope, $controller, StdReportSaleService, config, ut
     var params = $scope.formData;
 
     $scope.search = function () {
+
         StdReportSaleService.getSaleReport(params)
         .then(function (data) {
             debugger;
@@ -47,7 +48,6 @@ module.exports = function ($scope, $controller, StdReportSaleService, config, ut
         });
 
     };
-
 
     $scope.exportCsv = function () {
         //debugger;
@@ -83,5 +83,6 @@ module.exports = function ($scope, $controller, StdReportSaleService, config, ut
 
         }
     });
+
 
 };

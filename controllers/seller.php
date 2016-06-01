@@ -108,9 +108,14 @@ class SellerController extends Controller
 		return View::render('seller_report_std_return');
 	}
 
-    public static function listOiReport($params) 
+        public static function listOiReport($params) 
     {
         return View::render('seller_report_std_oi');
+    }
+
+        public static function listNonMoveReport($params) 
+    {
+        return View::render('seller_report_std_nonmove');
     }
 
     //CMS

@@ -2,6 +2,10 @@
 module.exports = function ($scope, $controller, StdOiReportService, config, util, $rootScope) {
     'ngInject';
 
+    $scope.formData = [];
+
+    var params = $scope.formData;
+
     $scope.exportCsv = function () {
         StdOiReportService.exportCsv(params)
         .then(function (data) {

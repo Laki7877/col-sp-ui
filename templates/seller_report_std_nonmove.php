@@ -16,8 +16,8 @@
       </div>
       
       <div class="input-group-btn">
-          <button class="btn btn-blue" ng-click="search()">Search</button>
-          <button class="btn btn-green" ng-click="exportCsv()">Export</button>
+          <button class="btn btn-blue" ng-click="search(); isDisabled=false">Search</button>
+          <button class="btn btn-green" ng-click="exportCsv()" ng-disabled="isDisabled" ng-init="isDisabled=true">Export</button>
       </div>
     </div>
 

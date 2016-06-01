@@ -57,7 +57,7 @@ var seller = {
         'On Hold Report' : '/reports/std/onhold',
         'Return Report' : '/reports/std/return',
         'OI Report' : '/reports/std/oi',
-        'Non-move Report' : '/reports/std/non-move'
+        'Non-move Report' : '/reports/std/nonmove'
 	}
 };
 var admin = {
