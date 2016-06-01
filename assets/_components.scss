@@ -243,6 +243,12 @@ user-select: none;
     border-bottom-width : 1px;
   }
 
+	// Color Code for Not Visible (Eye Closed) Row
+	.table > tbody > tr.not-visible-row{
+		background: $color-lighter-grey;
+		color: $color-grey;
+	}
+
   .table > tbody > tr:hover{
     background: $color-light-yellow;
   }
