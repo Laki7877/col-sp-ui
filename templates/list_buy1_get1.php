@@ -6,7 +6,7 @@
   <nc-page-title nc-title="Buy 1 Get 1" icon="fa-tag">
     <form id="exportForm" name="exportForm" action="/admin/buy1get1/export" method="post">
       <input type="hidden" name="selected_products[]" ng-repeat="item in bulkContainer" value="{{ item.PromotionBuy1Get1Id }}"/>
-      <a href="/buy1get1/add" class="btn-blue btn btn-width-xl">
+      <a href="/buy1get1/create" class="btn-blue btn btn-width-xl">
         <span class="">Create</span>
       </a>
     </form>
