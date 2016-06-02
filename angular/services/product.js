@@ -258,7 +258,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		 * @param  {Product Object} fd
 		 */
 		service.serialize = function (fd) {
-
+			debugger;
 			var clean = {}
 			var serializer = {
 				Variants: {
@@ -430,13 +430,14 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			//Load attribute set
 			invFd.AttributeSet = FullAttributeSet;
 
-			
+			debugger;
 
 			var MasterAttribute = {};
 			try {
 				invFd.MasterAttribute.forEach(function (ma) {
 					//Hacky AF
 					if (ma.DataType == "CB") {
+						
 						for (var i = 0; i < ma.AttributeValues.length; i++) {
 							var item = ma.AttributeValues[i];
 

@@ -78,6 +78,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.image_alert = new NcAlert();
 
     $scope.defaultAttributes = [];
+
     AttributeService.getDefaultAttributes().then(function(res) {
       $scope.defaultAttributes = res;
     });

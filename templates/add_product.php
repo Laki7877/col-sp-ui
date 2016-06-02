@@ -55,3 +55,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Products
 </div>
 
 <?php $this->stop() ?>
+<!-- 
+<script>
+    $( document ).ready(function() {
+        $("#IsSearch").prop("checked", true);
+        $("#IsLocalSearch").prop("checked", true);
+        $("#IsGlobalSearch").prop("checked", true);
+    });
+</script> -->
