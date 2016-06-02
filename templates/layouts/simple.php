@@ -36,9 +36,9 @@
 
     <?
       //Browser specific CSS Detection
-      $ie6 = (ereg("MSIE 6", $_SERVER["HTTP_USER_AGENT"])) ? true : false;
-      $ie7 = (ereg("MSIE 7", $_SERVER["HTTP_USER_AGENT"])) ? true : false;
-      $ie8 = (ereg("MSIE 8", $_SERVER["HTTP_USER_AGENT"])) ? true : false;
+      $ie6 = strpos($_SERVER["HTTP_USER_AGENT"], "MSIE 6") ? true : false;
+      $ie7 = strpos($_SERVER["HTTP_USER_AGENT"], "MSIE 7") ? true : false;
+      $ie8 = strpos($_SERVER["HTTP_USER_AGENT"], "MSIE 8") ? true : false;
       $msie = strpos($_SERVER["HTTP_USER_AGENT"], 'MSIE') ? true : false;
       $firefox = strpos($_SERVER["HTTP_USER_AGENT"], 'Firefox') ? true : false;
       $safari = strpos($_SERVER["HTTP_USER_AGENT"], 'Safari') ? true : false;
