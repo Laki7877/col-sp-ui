@@ -65,6 +65,9 @@
 
     <!-- Specific Stylesheet for each browser-->
     <link rel="stylesheet" href="/assets/css/<? echo $specificBrowser ?>.css" />
+    <!--[if IE]>
+      <link rel="stylesheet" href="/assets/css/ie.css" />
+    <![endif]-->
 
 </head>
 
