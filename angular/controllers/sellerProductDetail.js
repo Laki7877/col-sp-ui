@@ -57,15 +57,4 @@ module.exports = function($scope, $controller, storage) {
     $scope.disableDebugLoad = false;
     $scope.alert.success('<strong>Testing Kit</strong> Product data saved to your local storage.');
   };
-  console.log($scope.formData.MasterAttribute);
-  // console.log($scope.formData.defaultAttributes);
-  // $scope.$watch('formData.AttributeSet',function(data) {
-  //   console.log(data);
-  // });
-  // $scope.$watch('formData.MasterAttribute',function(data) {
-  //   console.log(data);
-  // });
-  // $scope.checkAui = function(id){
-  //   console.log(id);
-  // };
 };
