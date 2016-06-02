@@ -36,16 +36,13 @@
 
     <?
       //Browser specific CSS Detection
-      $ie6 = strpos($_SERVER["HTTP_USER_AGENT"], "MSIE 6") ? true : false;
-      $ie7 = strpos($_SERVER["HTTP_USER_AGENT"], "MSIE 7") ? true : false;
-      $ie8 = strpos($_SERVER["HTTP_USER_AGENT"], "MSIE 8") ? true : false;
       $msie = strpos($_SERVER["HTTP_USER_AGENT"], 'MSIE') ? true : false;
       $firefox = strpos($_SERVER["HTTP_USER_AGENT"], 'Firefox') ? true : false;
       $safari = strpos($_SERVER["HTTP_USER_AGENT"], 'Safari') ? true : false;
       $chrome = strpos($_SERVER["HTTP_USER_AGENT"], 'Chrome') ? true : false;
 
-      //Default = Webkit
-      $specificBrowser = 'webkit';
+      //Default = ie
+      $specificBrowser = 'ie';
 
       //Firefox
       if ($firefox) {
@@ -57,16 +54,17 @@
         $specificBrowser = 'webkit';
       }
 
-      // IE
-      if ($msie || $ie6 || $ie7 || $ie8) {
-        $specificBrowser = 'IE';
+      // IE - Not working yet
+      if ($msie) {
+        $specificBrowser = 'ie';
       }
     ?>
 
     <!-- Specific Stylesheet for each browser-->
     <link rel="stylesheet" href="/assets/css/<? echo $specificBrowser ?>.css" />
+
     <!--[if IE]>
-      <link rel="stylesheet" href="/assets/css/ie.css" />
+      <link rel="stylesheet" href="/assets/css/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <![endif]-->
 
 </head>
@@ -93,8 +91,6 @@
 
 
     <h4 style="text-align:center;">This is <? echo $specificBrowser ?> (For Test Server Only)</h4>
-
-
 
 </body>
 
