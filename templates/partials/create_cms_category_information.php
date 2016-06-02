@@ -7,6 +7,7 @@
                 <div class="form-section-content">
                     <div nc-template="common/input/form-group-with-label" nc-label="Category Name(TH)" nc-template-form="formData.CMSCategoryNameTH" nc-template-options-path="CMSCategoryForm/NameTH">
                         <input class="form-control width-field-large" name="CMSCategoryNameTH" ng-model="formData.CMSCategoryNameTH" ng-pattern="/^[^<>]+$/" maxlength="300" required />
+                         <input type="hidden" name="CreateIP" id="CreateIP" ng-model="formData.CreateIP" />
                     </div>
 
                     <div nc-template="common/input/form-group-with-label" nc-label="Category Name(EN)" nc-template-form="formData.CMSCategoryNameEN" nc-template-options-path="CMSCategoryForm/NameEN">
