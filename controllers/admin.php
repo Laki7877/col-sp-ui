@@ -362,8 +362,12 @@ class AdminController extends Controller
     {
         return View::render('admin_sum_productonweb');
     }
-     public static function sumSKUEffective($params) 
+    public static function sumSKUEffective($params) 
     {
         return View::render('admin_sum_skueffective');
+    }
+    public static function sumSKUNotEffective($params) 
+    {
+        return View::render('admin_sum_skunoteffective');
     }
 }

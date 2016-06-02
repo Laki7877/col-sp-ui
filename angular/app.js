@@ -165,6 +165,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .factory('SumProductInfoService', services.sumProductInfoService)
   .factory('SumProductOnWebService', services.sumProductOnWebService)
   .factory('SumSKUEffectiveService', services.sumSKUEffectiveService)
+  .factory('SumSKUNotEffectiveService', services.sumSKUNotEffectiveService)
 
 
   // Directives
@@ -307,6 +308,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('AdminSumProductInfoCtrl', controllers.adminSumProductInfo)
   .controller('AdminSumProductOnWebCtrl',controllers.adminSumProductOnWeb)
   .controller('AdminSumSKUEffectiveCtrl',controllers.adminSumSKUEffective)
+  .controller('AdminSumSKUNotEffectiveCtrl',controllers.adminSumSKUNotEffective)
 
   //CMS Seller
   .controller('SellerCMSMasterListCtrl', controllers.sellerCMSMasterList)

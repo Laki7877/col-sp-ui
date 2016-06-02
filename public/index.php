@@ -172,6 +172,7 @@ Route::add('/admin/summary/productstatus', 'AdminController::sumProductStatus');
 Route::add('/admin/summary/productinfo', 'AdminController::sumProductInfo');
 Route::add('/admin/summary/productonweb', 'AdminController::sumProductOnWeb');
 Route::add('/admin/summary/skueffective', 'AdminController::sumSKUEffective');
+Route::add('/admin/summary/skunoteffective', 'AdminController::sumSKUNotEffective');
 
 //test route
 Route::add('/test/:name', 'TestController::any');
