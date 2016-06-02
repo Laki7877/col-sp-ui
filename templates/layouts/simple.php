@@ -32,12 +32,43 @@
 
 
     <script src="/assets/libs/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+
+    <?
+      //Browser specific CSS Detection
+      $msie = strpos($_SERVER["HTTP_USER_AGENT"], 'MSIE') ? true : false;
+      $firefox = strpos($_SERVER["HTTP_USER_AGENT"], 'Firefox') ? true : false;
+      $safari = strpos($_SERVER["HTTP_USER_AGENT"], 'Safari') ? true : false;
+      $chrome = strpos($_SERVER["HTTP_USER_AGENT"], 'Chrome') ? true : false;
+
+      //Default = Webkit
+      $specificBrowser = 'webkit';
+
+      //Firefox
+      if ($firefox) {
+        $specificBrowser = 'firefox';
+      }
+
+      // Safari or Chrome
+      if ($safari || $chrome) {
+        $specificBrowser = 'webkit';
+      }
+
+      // IE
+      if ($msie) {
+        $specificBrowser = 'IE';
+      }
+    ?>
+
+    <!-- Specific Stylesheet for each browser-->
+    <link rel="stylesheet" href="/assets/css/<? echo $specificBrowser ?>.css" />
+
 </head>
 
 <body id="body" class="ahpt" ng-cloak ng-controller="RootCtrl" ng-strict-di>
     <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
     <div ng-if="!$root.DisablePage">
         <div id="debug">
             <?= $this->section('debug') ?>
@@ -53,6 +84,12 @@
 
     <!--<script src="/assets/libs/angular-select2/select.min.js"></script>-->
     <link rel="stylesheet" type="text/css" href="/assets/libs/angular-select2/select.css">
+
+
+    <h4 style="text-align:center;">This is <? echo $specificBrowser ?> (For Test Server Only)</h4>
+
+
+
 </body>
 
 </html>
