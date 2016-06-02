@@ -100,7 +100,15 @@ var admin = {
 	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'
-	}
+	},
+	'Content Report|fa-file-o': {
+		'Create & Approve Product' : '/admin/summary/createandapprove',
+		'Product Status': '/admin/summary/productstatus',
+		'Product Info': '/admin/summary/productinfo',
+		'Product Onweb': '/admin/summary/productonweb',
+		'SKU - Effective' : '/admin/summary/skueffective',
+		'SKU - Not Effective' : '/admin/summary/skunoteffective', 
+	},
 };
 var permission = {
 	//Admin

@@ -156,6 +156,7 @@ Route::add('/admin/cms/master/:id', 'AdminController::editCMSMaster');
 Route::add('/admin/buy1get1','AdminController::listBuy1Get1');
 Route::add('/admin/buy1get1/create','AdminController::addBuy1Get1');
 Route::add('/admin/buy1get1/:id','AdminController::editBuy1Get1');
+
 //iOath
 Route::add('/reports/std/saleforseller', 'SellerController::listStandardReport');
 Route::add('/reports/std/stockstatus', 'SellerController::listStockReport');
@@ -164,6 +165,13 @@ Route::add('/reports/std/return', 'SellerController::listReturnReport');
 
 Route::add('/reports/std/oi', 'SellerController::listOiReport');
 Route::add('/reports/std/nonmove', 'SellerController::listNonMoveReport');
+
+//Content Summary by Natcharin
+Route::add('/admin/summary/createandapprove', 'AdminController::sumCreateAndApprove');
+Route::add('/admin/summary/productstatus', 'AdminController::sumProductStatus');
+Route::add('/admin/summary/productinfo', 'AdminController::sumProductInfo');
+Route::add('/admin/summary/productonweb', 'AdminController::sumProductOnWeb');
+Route::add('/admin/summary/skueffective', 'AdminController::sumSKUEffective');
 
 //test route
 Route::add('/test/:name', 'TestController::any');

@@ -160,6 +160,12 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   // Col Dev (Natcharin)
   .factory('StdOiReportService', services.stdOiReportService)
   .factory('StdNonMoveReportService', services.stdNonMoveReportService)
+  .factory('SumCreateAndApproveService', services.sumCreateAndApproveService)
+  .factory('SumProductStatusService', services.sumProductStatusService)
+  .factory('SumProductInfoService', services.sumProductInfoService)
+  .factory('SumProductOnWebService', services.sumProductOnWebService)
+  .factory('SumSKUEffectiveService', services.sumSKUEffectiveService)
+
 
   // Directives
   .directive('ncTradableSelect', directives.ncTradableSelect)
@@ -285,7 +291,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('SellerStdStockReportCtrl', controllers.sellerStdStockReportList)
   .controller('SellerStdOnHoldReportCtrl', controllers.sellerStdOnHoldReportList)
   .controller('SellerStdReturnReportCtrl', controllers.sellerStdReturnReportList)
-    //Natcharin
+    //Report by Natcharin
   .controller('SellerStdOiReportCtrl', controllers.sellerStdOiReportList)
   .controller('SellerStdNonMoveReportCtrl', controllers.sellerStdNonMoveReportList)
 
@@ -294,6 +300,13 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('AdminBuy1Get1ListCtrl',controllers.adminBuy1Get1List)
 
   .controller('TestCtrl', controllers.test)
+
+  //Summary by Natcharin
+  .controller('AdminSumCreateAndApproveCtrl', controllers.adminSumCreateAndApprove)
+  .controller('AdminSumProductStatusCtrl', controllers.adminSumProductStatus)
+  .controller('AdminSumProductInfoCtrl', controllers.adminSumProductInfo)
+  .controller('AdminSumProductOnWebCtrl',controllers.adminSumProductOnWeb)
+  .controller('AdminSumSKUEffectiveCtrl',controllers.adminSumSKUEffective)
 
   //CMS Seller
   .controller('SellerCMSMasterListCtrl', controllers.sellerCMSMasterList)

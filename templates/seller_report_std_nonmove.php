@@ -27,7 +27,7 @@
       <table class="table table-curved">
         <thead>
           <tr class="table-head">
-          	<th nc-sort="NameEn">Category Name</th>
+          	<th nc-sort="CategoryName">Category Name</th>
           	<th nc-sort="PIDCount">PID Count</th>
           	<th nc-sort="PIDItemName">PID + Product Name</th>
           	<th nc-sort="Amount">Amount</th>
@@ -36,9 +36,9 @@
         <tbody>
           <tr ng-repeat="row in list.data">
             <!-- <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td> -->
-            <td class="width_200">{{row.NameEn}}</td>
+            <td class="width_200">{{row.CategoryName}}</td>
             <td class="width_200">{{row.PIDCount}}</td>
-            <td class="width_200">{{row.PID}} {{row.ItemNameEn}}</td>
+            <td class="width_200">{{row.PID}} {{row.ItemName}}</td>
             <td class="width_200">{{row.Amount}}</td>
 
           </tr>

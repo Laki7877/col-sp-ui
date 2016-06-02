@@ -344,5 +344,26 @@ class AdminController extends Controller
         return View::render('product_review');
     }
 
+    //Summary by Natcharin
 
+    public static function sumCreateAndApprove($params) 
+    {
+        return View::render('admin_sum_createandapprove');
+    }
+    public static function sumProductStatus($params) 
+    {
+        return View::render('admin_sum_productstatus');
+    }
+    public static function sumProductInfo($params) 
+    {
+        return View::render('admin_sum_productinfo');
+    }
+    public static function sumProductOnWeb($params) 
+    {
+        return View::render('admin_sum_productonweb');
+    }
+     public static function sumSKUEffective($params) 
+    {
+        return View::render('admin_sum_skueffective');
+    }
 }
