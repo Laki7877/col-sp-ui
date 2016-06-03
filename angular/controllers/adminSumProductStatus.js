@@ -30,7 +30,7 @@ module.exports = function ($scope, $controller, SumProductStatusService, config,
 
         SumProductStatusService.getProductStatusReport(params)
         .then(function (data) {
-            debugger;
+            // debugger;
             $scope.list = data
             //$scope.list.data.total($scope.list.data.length);
             $scope.list.reload();

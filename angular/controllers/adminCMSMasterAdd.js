@@ -32,7 +32,7 @@ module.exports = function ($scope,$rootScope, $controller, CMSMasterService, Ima
         // else {
         //     $scope.alert.error(common.getError(response.data));
         // }
-        debugger;
+        // debugger;
         if(e == 'onmaxsize') {
             $scope.alert.error('Cannot exceed 8 images');
         }

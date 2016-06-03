@@ -4,7 +4,7 @@ module.exports = function ($scope, $rootScope, $controller, CMSCategoryService, 
     $scope.adCMSview = !$rootScope.permit(23);  
     $scope.adCMSadd = !$rootScope.permit(24);
     $scope.adCMSedit = !$rootScope.permit(25);
-    debugger;
+    // debugger;
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
