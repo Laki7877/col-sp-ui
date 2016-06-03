@@ -49,15 +49,15 @@ require('./modules/ume-select')
 
 
 String.prototype.startsWith = String.prototype.startsWith || function() {
-  
+
 }
 
 // Internal dependencies
-var controllers = bulk.controllers
-var services = bulk.services
-var helpers = bulk.helpers
-var directives = bulk.directives
-var filters = bulk.filters
+var controllers = bulk.controllers;
+var services = bulk.services;
+var helpers = bulk.helpers;
+var directives = bulk.directives;
+var filters = bulk.filters;
 
 var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   'nc', 'ui.bootstrap.datetimepicker', 'ngDraggable',
@@ -80,7 +80,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   // App template cache load
   .run(template)
   .run([function(){
-      
+
   }])
 
   // Configuration
@@ -191,6 +191,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .filter('ordinal', filters.ordinal)
   .filter('html', filters.html)
   .filter('truth', filters.truth)
+  .filter('lies', filters.lies)
   .filter('exclude', filters.exclude)
   .filter('excludeCategory', filters.excludeCategory)
   .filter('truncate', filters.truncate)
@@ -200,6 +201,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .filter('importGuidelineExample', filters.importGuidelineExample)
   .filter('propsFilter', filters.propsFilter) // Col Dev (Natee)
   .filter('statusValue', filters.statusValue) // Col Dev (Natee)
+
   // Controllers
   .controller('RootCtrl', controllers.root)
   .controller('IndexCtrl', controllers.index)
@@ -274,7 +276,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
 
   .controller('LoginCtrl', controllers.login)
   .controller('AdminLoginCtrl', controllers.adminLogin)
-  
+
   .controller('AbstractListCtrl', controllers.abstractList)
   .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
   // .controller('AbstractAdvanceListCtrl', controllers.abstractAdvanceList)
@@ -328,3 +330,5 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
 
   .controller('SellerCMSCategoryListCtrl', controllers.sellerCMSCategoryList)
   .controller('SellerCMSCategoryAddCtrl', controllers.sellerCMSCategoryAdd)
+
+  
