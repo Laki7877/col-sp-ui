@@ -8,7 +8,6 @@ var bulk = require('bulk-require')(__dirname, ['controllers/*.js', 'services/*.j
 var config = require('./config');
 var route = require('./route');
 var template = require('./template');
-// var skeemas = require('skeemas');
 
 // IE fix
 require('./iefix.js');
@@ -92,7 +91,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   // Helpers
   .factory('base64', helpers.base64)
   .factory('common', helpers.common)
-  .factory('skeemas', skeemas)
   .factory('storage', helpers.storage)
   .factory('util', helpers.util)
 
