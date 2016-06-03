@@ -19732,7 +19732,7 @@ angular.module('nc')
 				}
 				scope.uploader.onSuccessItem = function(item, response, status, headers) {
 					if(response) {
-						scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];
+						item.obj[scope.options.urlKey] = response[scope.options.urlKey];
 					}
 				};
 				scope.uploader.onErrorItem = function(item, response, status, headers) {
