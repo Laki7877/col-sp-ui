@@ -169,6 +169,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .directive('ngMinnumber', directives.ngMinnumber)
   .directive('ngMaxnumber', directives.ngMaxnumber)
   .directive('ngDateBefore', directives.ngDateBefore)
+  .directive('ngEnter', directives.ngEnter)
+
   // Filters
   .filter('capitalize', filters.capitalize)
   .filter('ordinal', filters.ordinal)

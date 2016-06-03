@@ -108,6 +108,9 @@ var permission = {
 	13: '/admin/coupons/seller',
 	21: '/admin/newsletters',
 	81: '/admin/products/reviews',
+	22: '/admin/cms',
+	24: ['/admin/cms/category/create', '/admin/cms/master/create', '/admin/cms/group/create'],
+
 
 	//Seller
 	29: '/dashboard',

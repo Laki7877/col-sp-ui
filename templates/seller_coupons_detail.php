@@ -140,7 +140,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                       <div nc-template="common/input/form-group-with-label"
                         nc-template-form="form.Condition_Order" 
                         nc-label="Criteria">
-                        <ui-select name="Condition_Order" ng-model="formData.Conditions.Order[0].Type" ng-disabled="manageable" search-enabled="false">
+                        <ui-select name="Condition_Order" ng-init="formData.Conditions.Order[0].Type = 'NoFilter'" ng-model="formData.Conditions.Order[0].Type" ng-disabled="manageable" search-enabled="false">
                             <ui-select-match placeholder="-- Select Criteria --">{{ $select.selected.name }}</ui-select-match>
                             <ui-select-choices repeat="i.value as i in criteria">{{ i.name }}</ui-select-choices>
                         </ui-select>
@@ -157,28 +157,67 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                   <div class="form-section">
                     <div class="form-section-header"><h2>Filter</h2></div>
                     <div class="form-section-content">
+
                       <div nc-template="common/input/form-group-with-label" 
                         nc-template-form="form.Conditions_Criteria" 
                         nc-label="Filter by">
-                        <ui-select name="Conditions_Criteria" ng-model="formData.Conditions.FilterBy.Type" ng-disabled="manageable" search-enabled="false">
+							<ui-select name="Conditions_Criteria" ng-model="formData.Conditions.FilterBy.Type" ng-disabled="manageable" search-enabled="false">
                             <ui-select-match placeholder="-- Select Filter --">{{ $select.selected.name }}</ui-select-match>
                             <ui-select-choices repeat="i.value as i in filters">{{ i.name }}</ui-select-choices>
                         </ui-select>
                       </div>
-                      <div ng-show="formData.Conditions.FilterBy.Type == 'LocalCategory'"
+
+					  <div ng-show="formData.Conditions.FilterBy.Type == 'LocalCategory'"
                         nc-template="common/input/form-group-with-label"
                         nc-template-options-path="couponForm/FilterByValue"
                         nc-template-form="form.FilterByValue" 
-                        nc-label="Include">
-                        <nc-breadcrumb-select placeholder="Search for Local Category Name or ID" nc-breadcrumb-select-options="{ tagCount: 50 }" name="FilterByValue" nc-model="formData.Conditions.FilterBy.LocalCategories" ng-disabled="manageable" nc-breadcrumb-select-tree="categories" required></nc-breadcrumb-select>
+                        nc-label="Categories">
+							<ui-select multiple ng-model="formData.Conditions.FilterBy.LocalCategories" ng-disabled="manageable" close-on-select="false" search-enabled="true">
+								<ui-select-match ctrl-fn="exclude(arg1)" nc-click-select 
+								value="{{formData.Conditions.FilterBy.LocalCategories[$selectMultiple.activeMatchIndex]}}" 
+								ng-model="multipleDemoSelected" placeholder="-- Select Category --" 
+								title="click at the category label to exclude product in this category.">{{$item.NameEn}}</ui-select-match>
+
+								<ui-select-choices repeat="i in categories">
+								  <div ng-bind-html="i.NameEn | highlight: $select.search"></div>
+								</ui-select-choices>
+							</ui-select>
                       </div>
+
+					  <div ng-show="formData.Conditions.FilterBy.Type == 'LocalCategory'"
+                        nc-template="common/input/form-group-with-label"
+                        nc-label="Include">
+							<ui-select multiple ng-model="formData.Conditions.Include" ng-disabled="manageable" close-on-select="false" search-enabled="true">
+								<ui-select-match ng-model="includeProductSelected" placeholder="-- Select Product --">{{$item.ProductNameEn}}</ui-select-match>
+								<ui-select-choices repeat="i in products">
+								  <div ng-bind-html="i.ProductNameEn | highlight: $select.search"></div>
+								</ui-select-choices>
+							</ui-select>
+                      </div>
+
 					  <div ng-show="formData.Conditions.FilterBy.Type == 'Product'"
                         nc-template="common/input/form-group-with-label"
-                        nc-template-options-path="couponForm/FilterByValue"
-                        nc-template-form="form.FilterByValue" 
                         nc-label="Include">
-                        <nc-breadcrumb-select placeholder="Search for Product Name or PID" nc-breadcrumb-select-options="{ tagCount: 50 }" name="FilterByValue" nc-model="formData.Conditions.FilterBy.Products" ng-disabled="manageable" nc-breadcrumb-select-tree="categories" required></nc-breadcrumb-select>
+							<ui-select multiple ng-model="formData.Conditions.Include" ng-disabled="manageable" close-on-select="false" search-enabled="true">
+								<ui-select-match ng-model="includeProductSelected" placeholder="-- Select Product --">{{$item.ProductNameEn}}</ui-select-match>
+								<ui-select-choices repeat="i in products">
+								  <div ng-bind-html="i.ProductNameEn | highlight: $select.search"></div>
+								</ui-select-choices>
+							</ui-select>
                       </div>
+
+					  <div ng-show="formData.Conditions.FilterBy.Type == 'Product'"
+                        nc-template="common/input/form-group-with-label"
+                        nc-label="Exclude">
+							<ui-select multiple ng-model="formData.Conditions.Exclude" ng-disabled="manageable" close-on-select="false" search-enabled="true">
+								<ui-select-match ng-model="excludeProductSelected" placeholder="-- Select Product --">{{$item.ProductNameEn}}</ui-select-match>
+								<ui-select-choices repeat="i in products">
+								  <div ng-bind-html="i.ProductNameEn | highlight: $select.search"></div>
+								</ui-select-choices>
+							</ui-select>
+                      </div>
+
+
                     </div>
                   </div>
                 </div>
@@ -198,5 +237,100 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
     </div>
     </form>
   </div>
+
+  <!-- modal temaplate -->
+<script type="text/ng-template" id="templates/coupon-include-or-exclude.html">
+  
+  <div class="modal-header">
+    <h3 class="modal-title">Exclude Product in this Category</h3>
+  </div>
+  <div class="modal-body">
+	<form class="form-horizontal">
+		
+		<br><br>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group" style="position: fixed; width: 48%;">
+					<div class="col-md-12">
+						<input type="text" name="search" 
+							class="form-control" 
+							ng-model="searchText" 
+							ng-enter="searchProduct(searchText)"
+							placeholder="Search for Product" />
+					</div>
+				</div>
+
+				<div  style="min-height: 400px; height: 400px; margin-top: 50px; overflow-y: scroll;">
+					<table class="table">
+						<thead ng-show="products.length > 0">
+							<tr class="bg-info">
+								<!--th>PID</th-->
+								<th>Product Name</th>
+								<th class="text-right">Exclude</th>
+							<tr>
+						</thead>
+
+						<tbody ng-show="products.length > 0">
+							<tr ng-repeat="item in products">
+								<!--td>{{item.Pid}}</td-->
+								<td>{{item.ProductNameEn}}</td>
+								<td class="text-right">
+									<button class="btn btn-sm btn-info" ng-click="moveTo('product', 'exclude', item)"> 
+										<i class="fa fa-chevron-right" aria-hidden="true"></i>
+									</button>
+								</td>
+							</tr>
+						</tbody>
+
+						<tbody ng-show="products.length == 0">
+							<tr>
+								<td class="text-center" colspan="3" ng-show="empty">Empty List.</td>
+								<td class="text-center" colspan="3" ng-show="!empty && !loading && products.length == 0">Not found.</td>
+								<td class="text-center" colspan="3" ng-show="loading"><i class="fa fa-spinner fa-spin"></i></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+			
+				<div class="row">
+					<div class="form-section">
+						<div class="form-section-header" style="background-color: #d9534f; color: white;"><h2>Product Exclude</h2></div>
+						<div class="form-section-content" style="min-height: 400px; height: 400px; overflow-y: scroll;">
+							<table class="table">
+								<tbody>
+									<tr ng-repeat="item in excludes">
+										<!--td>{{item.Pid}}</td-->
+										<td>{{item.ProductNameEn}}</td>
+										<td class="text-right">
+											<button class="btn btn-sm btn-default" ng-click="removeExclude(item)">
+												<i class="fa fa-trash"></i> Remove
+											</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div class="add-product-form-action main-form-action full-width-row">
+					<div class="container-fluid">
+						<div class="float-right">
+							<button class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</button>
+							<button class="btn btn-blue btn-width-xl" ng-click="ok()">OK</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</form>
+  </div>
+</script>
 
 <?php $this->stop() ?>
