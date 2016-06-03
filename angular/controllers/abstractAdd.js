@@ -1,16 +1,17 @@
+// abstract add controller for add/detail pages
 module.exports = function($scope, $window, NcAlert, util, common, options) {
 	'ngInject';
-	$scope.formData = {};
-	$scope.form = {};
-	$scope.alert = new NcAlert();
-	$scope.saving = false; //prevent multiple saving
+	$scope.formData = {}; //form data
+	$scope.form = {}; //form validation
+	$scope.alert = new NcAlert(); //alert bar
+	$scope.saving = false;
 	$scope.loading = false;
 	
 	//Message
 	$scope.loadingMessage = 'Loading ' + pluralize(options.item);
 	$scope.savingMessage = 'Saving ' + pluralize(options.item);
 
-	//Link
+	//prefix url
 	$scope.url = options.url;
 
 	//Custom pre-init function
