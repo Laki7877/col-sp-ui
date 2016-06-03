@@ -76,9 +76,9 @@
 
                             </div>
                         </div>
-                             <nc-alert nc-model="image_alert"></nc-alert>
+                            <nc-alert nc-model="image_alert"></nc-alert>
                             <div ap-component="ap/section-image-video"></div>
-                            
+
                             <div class="form-section">
                                 <div class="form-section-header">
                                     Description
