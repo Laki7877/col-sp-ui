@@ -430,7 +430,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			//Load attribute set
 			invFd.AttributeSet = FullAttributeSet;
 
-			debugger;
+			// debugger;
 
 			var MasterAttribute = {};
 			try {

@@ -40,7 +40,7 @@ module.exports = function ($scope, $controller, StdReportSaleService, config, ut
     $scope.search = function () {
         StdReportSaleService.getSaleReport(params)
         .then(function (data) {
-            debugger;
+            // debugger;
             $scope.list = data
             //$scope.list.data.total($scope.list.data.length);
             $scope.list.reload();
