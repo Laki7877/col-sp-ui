@@ -120,7 +120,7 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
   $productAdd.flatten = {
     'AttributeSetTagMap': function(AttributeSetTagMap) {
       return AttributeSetTagMap.map(function(asti) {
-        return asti.Tag.TagName;
+        return asti.Tag;
       });
     }
   };
@@ -129,7 +129,7 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
   /*
   * Load suggested attribute sets
   * @param {DataSet} sharedDataSet
-  * @param {Array} data 
+  * @param {Array} data
   */
   $productAdd.loadSuggestedAttributeSets = function(sharedDataSet, data){
 
@@ -219,7 +219,7 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
             });
 
           }
-          
+
           AttributeSetService.get(ivFormData.AttributeSet.AttributeSetId).then(function(as){
             //Do hacky post-procesisng because this endpoint is not APEAP compliant
             var asComply = AttributeSetService.complyAPEAP(as);
@@ -229,19 +229,19 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
             asComply.AttributeSetTagMaps = $productAdd.flatten.AttributeSetTagMap(asComply.AttributeSetTagMaps);
             sharedFormData.AttributeSet = asComply;
 
-            
+
           }).finally(function(){
             parse(ivFormData, sharedFormData.AttributeSet);
             ensureVariantPidness();
             setupGlobalCat();
           });
-          
+
 
         }else{
           setupGlobalCat();
         }
 
-        
+
 
 
       });

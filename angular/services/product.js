@@ -307,6 +307,16 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 						throw new KnownException("No serialization fallback for Variants");
 					}
 				},
+				Tags: {
+					serialize: function (data) {
+						return data.map(function (tag) {
+							return tag.TagName;
+						});
+					},
+					fallback: function (data) {
+						throw new KnownException("No serialization fallback for Tags");
+					}
+				},
 				GlobalCategories: {
 					serialize: function (data) {
 						return data.map(function (lcat) {
@@ -462,7 +472,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			var invFd = angular.copy(pap);
 			//Load attribute set
 			invFd.AttributeSet = FullAttributeSet;
-			
+
 			invFd.Brand.display =  (invFd.Brand.DisplayNameEn || invFd.Brand.BrandNameEn) + " (" + invFd.Brand.BrandId + ")";
 
 			var MasterAttribute = {};
@@ -555,16 +565,22 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			delete invFd.MainGlobalCategory;
 			delete invFd.MainLocalCategory;
 
-			try {
-				var _split = invFd.Keywords.trim().split(',');
-				if (_split[0] == '') {
-					invFd.Keywords = [];
-				} else {
-					invFd.Keywords = util.uniqueSet(_split);
-				}
-			} catch (ex) {
-				invFd.Keywords = [];
-			}
+			// try {
+			// 	var _split = invFd.Keywords.trim().split(',');
+			// 	if (_split[0] == '') {
+			// 		invFd.Keywords = [];
+			// 	} else {
+			// 		invFd.Keywords = util.uniqueSet(_split);
+			// 	}
+			// } catch (ex) {
+			// 	invFd.Keywords = [];
+			// }
+
+			invFd.Tags = invFd.Tags.map(function(tag){
+				return {
+					TagName: tag
+				};
+			})
 
 			//Find out which variant is default variant
 			// if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; // TODO: Hardcode
