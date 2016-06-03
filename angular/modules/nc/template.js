@@ -64,7 +64,8 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncEye',
-    "<a ng-click=_toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\n" +
+    "<a ng-click=_toggle()><i ng-class=\"{'fa fa-eye-slash color-grey eye-icon' : !model,\r" +
+    "\n" +
     "                            'fa fa-eye color-dark-grey eye-icon' : model}\"></i></a>"
   );
 
@@ -155,7 +156,7 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncProductLayout',
-    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.Enabled\">{{letter}}.) {{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\" ng-if=source.Enabled><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleEn\"></div></div><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleTh\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Subtitle (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.SubtitleEn\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Subtitle (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.SubtitleTh\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.Link\"></div></div><div class=form-group><div class=width-label><label class=control-label>Select Product</label></div><div class=width-field-normal><ui-select multiple ng-model=source.Products><ui-select-match placeholder=\"Product Name\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=refresh($select.search) refresh-delay=150 repeat=\"i.Pid as i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=width-field-normal><input class=form-inline type=checkbox ng-model=\"source.DisplayCountTime\"> Display Countdown Time</div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.Enabled\">{{letter}}.) {{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\" ng-if=source.Enabled><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleEn\"></div></div><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleTh\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Subtitle (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.SubtitleEn\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Subtitle (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.SubtitleTh\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.Link\"></div></div><div class=form-group><div class=width-label><label class=control-label>Select Product</label></div><div class=width-field-normal><ui-select multiple ng-model=model><ui-select-match placeholder=\"Product Name\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=refresh($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=width-field-normal><input class=form-inline type=checkbox ng-model=\"source.DisplayCountTime\"> Display Countdown Time</div></div></div></div>"
   );
 
 
@@ -170,9 +171,12 @@ angular.module("nc").run(function($templateCache) {  'use strict';
 
 
   $templateCache.put('common/ncTableSort',
-    "<a class=header-link ng-click=click()><span ng-class=\"{ 'active-underline' : isCurrent() }\" ng-transclude></span></a> <i class=fa ng-class=\"{ \n" +
-    "'fa fa-caret-down' : isCurrent() && direction, \n" +
-    "'fa fa-caret-up' : isCurrent() && !direction, \n" +
+    "<a class=header-link ng-click=click()><span ng-class=\"{ 'active-underline' : isCurrent() }\" ng-transclude></span></a> <i class=fa ng-class=\"{ \r" +
+    "\n" +
+    "'fa fa-caret-down' : isCurrent() && direction, \r" +
+    "\n" +
+    "'fa fa-caret-up' : isCurrent() && !direction, \r" +
+    "\n" +
     "'fa fa-caret-down color-grey' : !isCurrent() }\" ng-click=click()></i>"
   );
 
