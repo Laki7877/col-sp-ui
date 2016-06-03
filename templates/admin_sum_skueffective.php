@@ -7,14 +7,9 @@
 		<nc-page-title nc-title="SKU - Effective Summary" icon="fa-user">
 	    <form id="exportForm" name="exportForm" action="/admin/sku/export" method="post">
 	          <div class="btn-group">
-	            <button type="button" class="btn btn-white dropdown-toggle btn-width-xl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	              Export <span class="caret"></span>
+	            <button type="button" class="btn btn-white btn-width-xl">
+	              Export </span>
 	            </button>
-	            <ul class="dropdown-menu" style="right: 0; left: auto;">
-	              <li><a ng-click="export()"href="/admin/products/export">Export All</a></li>
-	              <li><a ng-click="exportStock()">Export Stock</a></li>
-	              <li><a ng-click="exportOutOfStock()">Export Out of Stock</a></li>
-	            </ul>
 	          </div>
 	      </form>
 	  </nc-page-title>
