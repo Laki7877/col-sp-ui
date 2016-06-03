@@ -87,7 +87,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
 			{
 				//Trash
 				fn: function(item, array, index) {
-					array.splice(index, 1);
+					array.splice(array.indexOf(item), 1);
 				},
 				icon: 'fa-trash',
 				confirmation: {
