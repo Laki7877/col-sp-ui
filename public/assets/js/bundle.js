@@ -9546,7 +9546,7 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
 			{
 				//Trash
 				fn: function(item, array, index) {
-					array.splice(index, 1);
+					array.splice(array.indexOf(item), 1);
 				},
 				icon: 'fa-trash',
 				confirmation: {
@@ -13552,7 +13552,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "$window", "InventorySe
 		InventoryService.update(item.Pid, i)
 			.then(function(data) {
 				$scope.lastEdit = item.Pid;
-				$scope.popoverItemOriginal.Quantity = data;
+				$scope.popoverItemOriginal.Quantity += i.UpdateQuantity;
 			}, function(err) {
 				$scope.lastEdit = null;
 				$scope.alert.error(common.getError(err));
@@ -14480,7 +14480,10 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 				$scope.loading = false;
 			});
 	};
+	var _search = undefined;
 	$scope.getProducts = function(search) {
+		if(search == _search) return;
+		search = _search;
 		Product.list({
 			_limit: 16,
 			searchText: search
@@ -14489,7 +14492,6 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 		});
 	}
 	$scope.init();
-	$scope.getProducts('');
 	$scope.$watch('formData.themeId', function(a,b) {
 		if(a != b) {
 			$scope.formData.Data = {};
@@ -19544,7 +19546,7 @@ angular.module('nc')
 					return image.progress || 0;
 				};
 				scope.isDisabled = function(image) {
-					return _.isNull(image) || scope.lock();
+					return _.isNull(image) || scope.lock() || image.Url == "";
 				};
 				scope.call = function(action, image) {
 					if (scope.isDisabled(image)) return;
@@ -19591,6 +19593,11 @@ angular.module('nc')
 					for (var i = 0; i < scope.options.size - scope.model.length; i++) {
 						scope.images.push(null);
 					};
+					for (var i = 0; i < scope.images.length; i++) {
+						if(_.isPlainObject(scope.images[i])) {
+							scope.images[i].indx = i;
+						}
+					}
 				};
 				scope.$watch('model', load, true);
 			}
@@ -19708,6 +19715,7 @@ angular.module('nc')
 						item.indx = scope.model.length - 1;
 						item.onProgress = function(progress) {
 							obj.progress = progress;
+							console.log(obj);
 						};
 					};
 
@@ -19725,7 +19733,7 @@ angular.module('nc')
 				}
 				scope.uploader.onSuccessItem = function(item, response, status, headers) {
 					if(response) {
-						scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];
+						item.obj[scope.options.urlKey] = response[scope.options.urlKey];
 					}
 				};
 				scope.uploader.onErrorItem = function(item, response, status, headers) {
@@ -19734,7 +19742,6 @@ angular.module('nc')
 						$response: response
 					});
 				};
-
 				scope.update();
 				scope.$watch('template', scope.update);
 				scope.$watch('uploader.isUploading', function(val) {
