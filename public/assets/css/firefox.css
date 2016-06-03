@@ -12,3 +12,7 @@
 .search-section-wrapper .search-section-item button{
   padding-top: 4px !important;
 }
+
+.table .column-text-ellipsis {
+	max-width: 100% !important;
+}
