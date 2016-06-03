@@ -42,12 +42,22 @@ angular.module('nc')
 			},
 			template: $templateCache.get('common/ncProductLayout'),
 			link: function(scope) {
-				scope.$watch('source', function(n, o) {
-					console.log(scope.source);
+				scope.$watch('model', function() {
 					if(!scope.source) {
 						scope.source = _.defaults(scope.source, {
 							Enabled: true
-						})
+						});		
+					} else {
+						scope.source.Products = _.map(scope.model, function(e) {
+							return e.Pid;
+						});
+					}
+				}, true);
+				scope.$watch('source', function(n, o) {
+					if(!scope.source) {
+						scope.source = _.defaults(scope.source, {
+							Enabled: true
+						});
 					}
 					else {
 						if(scope.source.Products && scope.source.Products.length > 0) {
@@ -57,13 +67,7 @@ angular.module('nc')
 									_limit: scope.source.Products.length,
 									Pids: scope.source.Products
 								}).then(function(data) {
-									scope.source.Products = _.map(scope.source.Products, function(e) {
-										e = _.find(data.data, function(d) {
-											return d.Pid == e;
-										});
-										return e;
-									});
-									scope.source.Products = _.compact(scope.source.Products);
+									scope.model = data.data;
 								});
 							}
 						}

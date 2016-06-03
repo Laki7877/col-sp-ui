@@ -18660,12 +18660,22 @@ angular.module('nc')
 			},
 			template: $templateCache.get('common/ncProductLayout'),
 			link: function(scope) {
-				scope.$watch('source', function(n, o) {
-					console.log(scope.source);
+				scope.$watch('model', function() {
 					if(!scope.source) {
 						scope.source = _.defaults(scope.source, {
 							Enabled: true
-						})
+						});		
+					} else {
+						scope.source.Products = _.map(scope.model, function(e) {
+							return e.Pid;
+						});
+					}
+				}, true);
+				scope.$watch('source', function(n, o) {
+					if(!scope.source) {
+						scope.source = _.defaults(scope.source, {
+							Enabled: true
+						});
 					}
 					else {
 						if(scope.source.Products && scope.source.Products.length > 0) {
@@ -18675,13 +18685,7 @@ angular.module('nc')
 									_limit: scope.source.Products.length,
 									Pids: scope.source.Products
 								}).then(function(data) {
-									scope.source.Products = _.map(scope.source.Products, function(e) {
-										e = _.find(data.data, function(d) {
-											return d.Pid == e;
-										});
-										return e;
-									});
-									scope.source.Products = _.compact(scope.source.Products);
+									scope.model = data.data;
 								});
 							}
 						}
@@ -19086,7 +19090,6 @@ angular.module('nc')
 				var updateSource = function() {
 					var m = _.max([scope.source.ImageEn.length, scope.source.ImageTh.length]);
 					var len = scope.source.Links.length;
-					console.log(len, m);
 					if(len > m) {
 						for (var i = 0; i < len - m; i++) {
 							scope.source.Links.pop();
@@ -19099,9 +19102,6 @@ angular.module('nc')
 				}
 
 				update();
-				scope.$watch('source.Links', function() {
-					console.log(scope.Links);
-				})
 				scope.$watch('width', update);
 				scope.$watch('height', update);
 				scope.$watch('source', function() {
@@ -20760,7 +20760,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncProductLayout',
-    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.Enabled\">{{letter}}.) {{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\" ng-if=source.Enabled><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleEn\"></div></div><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleTh\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Subtitle (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.SubtitleEn\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Subtitle (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.SubtitleTh\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.Link\"></div></div><div class=form-group><div class=width-label><label class=control-label>Select Product</label></div><div class=width-field-normal><ui-select multiple ng-model=source.Products><ui-select-match placeholder=\"Product Name\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=refresh($select.search) refresh-delay=150 repeat=\"i.Pid as i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=width-field-normal><input class=form-inline type=checkbox ng-model=\"source.DisplayCountTime\"> Display Countdown Time</div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.Enabled\">{{letter}}.) {{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\" ng-if=source.Enabled><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleEn\"></div></div><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleTh\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Subtitle (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.SubtitleEn\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Subtitle (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.SubtitleTh\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.Link\"></div></div><div class=form-group><div class=width-label><label class=control-label>Select Product</label></div><div class=width-field-normal><ui-select multiple ng-model=model><ui-select-match placeholder=\"Product Name\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=refresh($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=width-field-normal><input class=form-inline type=checkbox ng-model=\"source.DisplayCountTime\"> Display Countdown Time</div></div></div></div>"
   );
 
 
@@ -28223,6 +28223,7 @@ module.exports = ["common", "config", "util", function (common, config, util) {
 
     service.serialize = function(data) {
         var processed = _.cloneDeep(data);
+        console.log(processed.Data);
         processed.Data = angular.toJson(processed.Data || {});
         
         return processed;
