@@ -228,9 +228,14 @@ user-select: none;
 		box-shadow: $global-shadow;
   }
 
-  table > tbody > tr > td, table > thead > tr > th {
-    border-color: $color-grey;
+	table > thead > tr > th {
+		border-color: $color-grey;
+	}
+
+  table > tbody > tr > td  {
+    border-color: $color-light-grey;
   }
+	
   // End setting border color
 
 
