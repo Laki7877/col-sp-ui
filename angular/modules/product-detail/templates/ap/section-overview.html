@@ -5,7 +5,7 @@
 				<h2>Overview</h2></div>
 			<div class="form-section-content">
 				<div class="container-fluid" style="margin: -15px">
-					<table class="table">
+					<table class="table overview-table">
 						<thead>
 							<th>Product Name</th>
 							<th>{{ (formData.Variants || []).length == 0 ? 'PID' : 'PID of Parent Product' }}</th>
@@ -43,8 +43,8 @@
                       				 <i class="fa fa-circle color-grey" ng-if="!formData.OnlineFlag"></i>
 								</td>
 								<td class="visible-column">
-									<a ng-click="formData.MasterVariant.Visibility = !formData.MasterVariant.Visibility" 
-									ng-class="{'fa fa-eye-slash color-grey eye-icon font-size-16' : !formData.MasterVariant.Visibility, 
+									<a ng-click="formData.MasterVariant.Visibility = !formData.MasterVariant.Visibility"
+									ng-class="{'fa fa-eye-slash color-grey eye-icon font-size-16' : !formData.MasterVariant.Visibility,
 									'fa fa-eye color-dark-grey eye-icon font-size-16' : formData.MasterVariant.Visibility}"></a>
 								</td>
 							</tr>
