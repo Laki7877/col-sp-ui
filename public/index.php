@@ -162,9 +162,10 @@ Route::add('/admin/cms/group/:id', 'AdminController::editCMSGroup');
 Route::add('/admin/cms/master', 'AdminController::listCMSMaster');
 Route::add('/admin/cms/master/create', 'AdminController::addCMSMaster');
 Route::add('/admin/cms/master/:id', 'AdminController::editCMSMaster');
-//Route::add('/admin/buy1get1','AdminController::listBuy1Get1');
-//Route::add('/admin/buy1get1/create','AdminController::addBuy1Get1');
-//Route::add('/admin/buy1get1/:id','AdminController::editBuy1Get1');
+// Route::add('/admin/buy1get1','AdminController::listBuy1Get1');
+// Route::add('/admin/buy1get1/create','AdminController::addBuy1Get1');
+// Route::add('/admin/buy1get1/:id','AdminController::editBuy1Get1');
+
 
 // seller buy 1 get 1
 Route::add('/buy1get1','SellerController::listBuy1Get1');
@@ -177,6 +178,16 @@ Route::add('/reports/std/stockstatus', 'SellerController::listStockReport');
 Route::add('/reports/std/onhold', 'SellerController::listOnHoldReport');
 Route::add('/reports/std/return', 'SellerController::listReturnReport');
 
+Route::add('/reports/std/oi', 'SellerController::listOiReport');
+Route::add('/reports/std/nonmove', 'SellerController::listNonMoveReport');
+
+//Content Summary by Natcharin
+Route::add('/admin/summary/createandapprove', 'AdminController::sumCreateAndApprove');
+Route::add('/admin/summary/productstatus', 'AdminController::sumProductStatus');
+Route::add('/admin/summary/productinfo', 'AdminController::sumProductInfo');
+Route::add('/admin/summary/productonweb', 'AdminController::sumProductOnWeb');
+Route::add('/admin/summary/skueffective', 'AdminController::sumSKUEffective');
+Route::add('/admin/summary/skunoteffective', 'AdminController::sumSKUNotEffective');
 
 
 //test route

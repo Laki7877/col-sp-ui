@@ -271,54 +271,59 @@ class AdminController extends Controller
 		return View::render('admin_add_cms_group', ['params' => json_encode_n($params), 'title' => 'Admin CMS Group Detail']);
 	}
 
-
-    // CMS Get All iOath
-    // public static function export($params)
-    // {
-    //     return View::render('seller_export_products', [
-    //     'viewBag' => $_POST['selected_products'],
-    //     ]);
-    // }
-
-    // public static function group($params)
-	// {
-    //     return View::render('seller_pending_product');
-    // }
-
-    // public static function groupCreate($param)
-    // {
-    //     return View::render('seller_pending_products_group', [
-    //     'viewBag' => $_POST['selected_products'],
-    //     ]);
-    // }
-
-
     public static function images($params)
     {
         return View::render('image_management');
     }
 
 
-  	//Oath buy 1 get 1
-   public static function listBuy1Get1($params){
+    //Oath buy 1 get 1
+    public static function listBuy1Get1($params){
         return View::render('admin_buy1get1_list');
-
-   }
-
-   public static function addBuy1Get1($params){
+    
+    }
+    
+    public static function addBuy1Get1($params){
         return View::render('admin_add_buy1get1', ['title' => 'Add Buy 1 Get 1']);
-
-   }
-
-   public static function editBuy1Get1($params){
-
+    
+    } 
+    
+    public static function editBuy1Get1($params){
+    
         return View::render('admin_add_buy1get1', ['params' => json_encode_n($params), 'title' => 'Detail']);
-   }
-   //Oath
+    }
+    //Oath
+    
+    public static function reviews($params)
+    {
+        return View::render('product_review');
+    }
 
-  public static function reviews($params)
-  {
-      return View::render('product_review');
-  }
+    //Summary by Natcharin
 
+
+    public static function sumCreateAndApprove($params) 
+    {
+        return View::render('admin_sum_createandapprove');
+    }
+    public static function sumProductStatus($params) 
+    {
+        return View::render('admin_sum_productstatus');
+    }
+    public static function sumProductInfo($params) 
+    {
+        return View::render('admin_sum_productinfo');
+    }
+    public static function sumProductOnWeb($params) 
+    {
+        return View::render('admin_sum_productonweb');
+    }
+    public static function sumSKUEffective($params) 
+    {
+        return View::render('admin_sum_skueffective');
+    }
+    public static function sumSKUNotEffective($params) 
+    {
+        return View::render('admin_sum_skunoteffective');
+    }
 }

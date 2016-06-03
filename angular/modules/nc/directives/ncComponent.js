@@ -158,4 +158,4 @@ angular.module('nc')
 				}
 			}
 		}
-	})
+	});

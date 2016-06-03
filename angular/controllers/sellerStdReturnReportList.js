@@ -21,7 +21,7 @@ module.exports = function ($scope, $controller, StdReportReturnService, config, 
     };
 
     $scope.search = function () {
-        StdReportSaleService.getReturnReport(params)
+        StdReportReturnService.getReturnReport(params)
         .then(function (data) {
             $scope.list.data = data;
         });

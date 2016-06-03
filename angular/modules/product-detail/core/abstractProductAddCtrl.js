@@ -1056,4 +1056,4 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       $scope.form = $scope.addProductForm;
     });
 
-  })
+  });

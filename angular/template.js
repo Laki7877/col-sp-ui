@@ -287,6 +287,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
   );
 
 
+  $templateCache.put('pending_products/section-group-information',
+    "<div class=form-section><div class=form-section-header><h2>Group Information</h2></div><div class=form-section-content><div ng-show=adminMode nc-template=common/input/form-group-with-label nc-template-form=form.Category nc-template-options-path=createGroupVariant/Required nc-label=Shop><you-me display-by=ShopNameEn placeholder=\"Search Shop\" auto-clear-search=true ng-model=formData.Shop refresh=refresher.Shops choices=dataset.Shops></you-me></div><div nc-template=common/input/form-group-with-label nc-template-form=form.Category nc-template-options-path=createGroupVariant/Required nc-label=Category><a class=form-text ng-click=openCategorySelectorModal()>{{ formData.Category.NameEn || 'Select Category' }}</a></div><div nc-template=common/input/form-group-with-label nc-template-form=form.AttributeSet nc-template-options-path=createGroupVariant/Required nc-label=\"Attribute Set\"><you-me display-by=AttributeSetNameEn placeholder=\"Search Attribute Set\" auto-clear-search=true group-by=_group ng-model=formData.AttributeSet refresh=refresher.AttributeSets initial-choices=dataset.AttributeSets choices=dataset.CombinedAttributeSets></you-me></div></div></div>"
+  );
+
+
   $templateCache.put('product/action',
     "<div><a ng-click=\"actions.edit(row, true)\">View / Edit</a></div><div><a ng-click=actions.duplicate(row)>Duplicate</a></div><div><a ng-click=\"actions.delete(row, true)\">Delete</a></div>"
   );
@@ -313,7 +318,11 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('product/exportResult',
+<<<<<<< HEAD
     "<div class=row ng-show=exportAsyncDelegate.active><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Export Result</h2></div><div class=form-section-content><div class=table-wrapper><table class=table id=add-product-approve-versions><thead><tr><th>Status</th><th class=width_200>Request On</th><th class=width_200>Finish On</th><th class=export-action-column>Action</th></tr></thead><tbody><tr><td ng-if=\"exportAsyncDelegate.progress > 0 && exportAsyncDelegate.progress < 100\"><span class=color-green>{{ exportAsyncDelegate.progress | number: 2 }} %</span></td><td ng-if=\"exportAsyncDelegate.progress >= 100\"><span class=color-green>Completed</span></td><td ng-if=\"exportAsyncDelegate.progress == 0\"><span class=color-yellow>Preparing..</span></td><td>{{ exportAsyncDelegate.requestDate | datetimeTh }}</td><td ng-if=\"exportAsyncDelegate.progress >= 100\">{{ exportAsyncDelegate.endDate | datetimeTh }}</td><td ng-if=\"exportAsyncDelegate.progress < 100\">-</td><td><button type=button class=\"btn btn-white btn-width-xl\" ng-hide=\"exportAsyncDelegate.progress >= 100\" ng-click=abortExport()>Cancel</button> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=downloadFile() ng-class=\"{ 'disabled' : exportAsyncDelegate.progress < 100 }\" ng-hide=\"exportAsyncDelegate.progress < 100\">Download</button></td></tr></tbody></table></div></div></div></div></div>"
+=======
+    "<div class=row ng-show=exportAsyncDelegate.active><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Export Result</h2></div><div class=form-section-content><div class=table-wrapper><table class=table id=add-product-approve-versions><thead><tr><th>Status</th><th class=width_200>Request On</th><th class=width_200>Finish On</th><th class=export-action-column>Action</th></tr></thead><tbody><tr><td ng-if=\"exportAsyncDelegate.progress > 0 && exportAsyncDelegate.progress < 100\"><strong class=color-green>{{ exportAsyncDelegate.progress | number: 2 }} %</strong></td><td ng-if=\"exportAsyncDelegate.progress >= 100\"><strong class=color-green>Completed</strong></td><td ng-if=\"exportAsyncDelegate.progress == 0\"><strong class=color-yellow>Preparing..</strong></td><td>{{ exportAsyncDelegate.requestDate | datetimeTh }}</td><td ng-if=\"exportAsyncDelegate.progress >= 100\">{{ exportAsyncDelegate.endDate | datetimeTh }}</td><td ng-if=\"exportAsyncDelegate.progress < 100\">-</td><td><button type=button class=\"btn btn-white btn-width-xl\" ng-hide=\"exportAsyncDelegate.progress >= 100\" ng-click=abortExport()>Cancel</button> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=downloadFile() ng-class=\"{ 'disabled' : exportAsyncDelegate.progress < 100 }\" ng-hide=\"exportAsyncDelegate.progress < 100\">Download</button></td></tr></tbody></table></div></div></div></div></div>"
+>>>>>>> col-master
   );
 
 

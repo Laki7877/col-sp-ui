@@ -20,4 +20,3 @@ module.exports = function(common) {
 	};
 
 	return service;
-};

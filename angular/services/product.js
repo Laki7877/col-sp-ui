@@ -1,3 +1,4 @@
+
 // Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config', 'KnownException',
 	function ($http, common, util, LocalCategory, Brand, config, KnownException) {
