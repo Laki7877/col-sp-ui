@@ -8,7 +8,6 @@ var bulk = ({"controllers":(function () {var f = require("./controllers/index.js
 var config = require('./config');
 var route = require('./route');
 var template = require('./template');
-// var skeemas = require('skeemas');
 
 // IE fix
 require('./iefix.js');
@@ -92,7 +91,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   // Helpers
   .factory('base64', helpers.base64)
   .factory('common', helpers.common)
- // .factory('skeemas', skeemas)
   .factory('storage', helpers.storage)
   .factory('util', helpers.util)
 
@@ -334,10 +332,15 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./config":2,"./controllers/abstractAdd.js":3,"./controllers/abstractAdvanceList.js":4,"./controllers/abstractList.js":5,"./controllers/abstractPendingProductGroup.js":6,"./controllers/abstractProductGroupAdd.js":7,"./controllers/adminAccount.js":8,"./controllers/adminAccountAdd.js":9,"./controllers/adminAddCMSMaster.js":10,"./controllers/adminAttribute.js":11,"./controllers/adminAttributeAdd.js":12,"./controllers/adminAttributeSet.js":13,"./controllers/adminAttributeSetAdd.js":14,"./controllers/adminBrand.js":15,"./controllers/adminBrandAdd.js":16,"./controllers/adminBuy1Get1Add.js":17,"./controllers/adminBuy1Get1List.js":18,"./controllers/adminCMS.js":19,"./controllers/adminCMSCategoryAdd.js":20,"./controllers/adminCMSCategoryList.js":21,"./controllers/adminCMSGroupAdd.js":22,"./controllers/adminCMSGroupList.js":23,"./controllers/adminCMSMasterAdd.js":24,"./controllers/adminCMSMasterList.js":25,"./controllers/adminCategory.js":26,"./controllers/adminGlobalCoupon.js":27,"./controllers/adminGlobalCouponAdd.js":28,"./controllers/adminLogin.js":29,"./controllers/adminMasterProduct.js":30,"./controllers/adminMasterProductAdd.js":31,"./controllers/adminNewsletter.js":32,"./controllers/adminOnTopCreditAdd.js":33,"./controllers/adminOnTopCreditList.js":34,"./controllers/adminPendingProduct.js":35,"./controllers/adminPendingProductGroupAdd.js":36,"./controllers/adminProductApprovalDetail.js":37,"./controllers/adminProductApprovalList.js":38,"./controllers/adminProductDetail.js":39,"./controllers/adminProductGroupAdd.js":40,"./controllers/adminProductList.js":41,"./controllers/adminProductReview.js":42,"./controllers/adminRole.js":43,"./controllers/adminRoleAdd.js":44,"./controllers/adminSellerAccount.js":45,"./controllers/adminSellerCoupon.js":46,"./controllers/adminSellerCouponAdd.js":47,"./controllers/adminShop.js":48,"./controllers/adminShopAdd.js":49,"./controllers/adminShoptype.js":50,"./controllers/adminShoptypeAdd.js":51,"./controllers/adminSumCreateAndApprove.js":52,"./controllers/adminSumProductInfo.js":53,"./controllers/adminSumProductOnWeb.js":54,"./controllers/adminSumProductStatus.js":55,"./controllers/adminSumSKUEffective.js":56,"./controllers/adminSumSKUNotEffective.js":57,"./controllers/buy1get1Add.js":58,"./controllers/buy1get1Import.js":59,"./controllers/buy1get1List.js":60,"./controllers/index.js":61,"./controllers/localCategory.js":62,"./controllers/login.js":63,"./controllers/productAddSelectCategory.js":64,"./controllers/productCollectionAdd.js":65,"./controllers/productCollectionAddListItem.js":66,"./controllers/productCollectionImport.js":67,"./controllers/productCollectionList.js":68,"./controllers/productExport.js":69,"./controllers/productGroupCollectionList.js":70,"./controllers/productImageList.js":71,"./controllers/productImageManagement.js":72,"./controllers/productImport.js":73,"./controllers/productList.js":74,"./controllers/productListLocalCategory.js":75,"./controllers/productReview.js":76,"./controllers/root.js":77,"./controllers/sellerAccount.js":78,"./controllers/sellerAccountAdd.js":79,"./controllers/sellerBuy1Get1Add.js":80,"./controllers/sellerBuy1Get1List.js":81,"./controllers/sellerCMS.js":82,"./controllers/sellerCMSCategoryAdd.js":83,"./controllers/sellerCMSCategoryList.js":84,"./controllers/sellerCMSGroupAdd.js":85,"./controllers/sellerCMSGroupList.js":86,"./controllers/sellerCMSMasterAdd.js":87,"./controllers/sellerCMSMasterList.js":88,"./controllers/sellerCoupon.js":89,"./controllers/sellerCouponAdd.js":90,"./controllers/sellerDashboard.js":91,"./controllers/sellerInventoryList.js":92,"./controllers/sellerNewsletter.js":93,"./controllers/sellerOnboarding.js":94,"./controllers/sellerOrder.js":95,"./controllers/sellerOrderAdd.js":96,"./controllers/sellerOrderShippingList.js":97,"./controllers/sellerPendingProduct.js":98,"./controllers/sellerPendingProductGroupAdd.js":99,"./controllers/sellerProductDetail.js":100,"./controllers/sellerProductGroupAdd.js":101,"./controllers/sellerReport.js":102,"./controllers/sellerReturnRequest.js":103,"./controllers/sellerReturnRequestAdd.js":104,"./controllers/sellerRole.js":105,"./controllers/sellerRoleAdd.js":106,"./controllers/sellerShopAppearance.js":107,"./controllers/sellerShopSetting.js":108,"./controllers/sellerStdNonMoveReportList.js":109,"./controllers/sellerStdOiReportList.js":110,"./controllers/sellerStdOnHoldReportList.js":111,"./controllers/sellerStdReturnReportList.js":112,"./controllers/sellerStdSaleReportSellerList.js":113,"./controllers/sellerStdStockReportList.js":114,"./controllers/test.js":115,"./datefix.js":116,"./directives/ncTradableSelect.js":117,"./directives/ngCkeditor.js":118,"./directives/ngDateBefore.js":119,"./directives/ngDelegate.js":120,"./directives/ngEnter.js":121,"./directives/ngLowercase.js":122,"./directives/ngMatch.js":123,"./directives/ngMaxnumber.js":124,"./directives/ngMinnumber.js":125,"./directives/ngPatternRestrict.js":126,"./directives/ngPermission.js":127,"./directives/ngSlideToggle.js":128,"./directives/ngTemplate.js":129,"./directives/ngUppercase.js":130,"./directives/popoverAny.js":131,"./filters/capitalize.js":132,"./filters/exclude.js":133,"./filters/excludeCategory.js":134,"./filters/html.js":135,"./filters/importGuidelineExample.js":136,"./filters/leadingzero.js":137,"./filters/ordinal.js":138,"./filters/propsFilter.js":139,"./filters/slice.js":140,"./filters/statusValue.js":141,"./filters/truncate.js":142,"./filters/truth.js":143,"./filters/variantValue.js":144,"./helpers/base64.js":145,"./helpers/common.js":146,"./helpers/storage.js":147,"./helpers/util.js":148,"./helpers/variantPair.js":149,"./iefix.js":150,"./modules/angular-draggable":151,"./modules/angular-print":152,"./modules/angular-scroll":153,"./modules/nc":186,"./modules/product-detail":196,"./modules/schematics":198,"./modules/ume-select":210,"./route":212,"./services/Buy1Get1Service.js":213,"./services/Dashboard.js":214,"./services/OnTopCredit.js":215,"./services/OnTopCreditService.js":216,"./services/Onboarding.js":217,"./services/adminAccountService.js":218,"./services/adminMasterProductService.js":219,"./services/adminPermissionService.js":220,"./services/adminRoleService.js":221,"./services/adminShopService.js":222,"./services/adminShoptypeService.js":223,"./services/attribute.js":224,"./services/attributeService.js":225,"./services/attributeSet.js":226,"./services/attributeSetService.js":227,"./services/blocker.js":228,"./services/brand.js":229,"./services/brandService.js":230,"./services/buy1get1.js":231,"./services/buy1get1Add.js":232,"./services/category.js":233,"./services/cmsCategoryService.js":234,"./services/cmsGroupService.js":235,"./services/cmsMasterService.js":236,"./services/coupon.js":237,"./services/credential.js":238,"./services/exceptionHandler.js":239,"./services/fileService.js":240,"./services/globalCategory.js":241,"./services/globalCategoryService.js":242,"./services/globalCouponService.js":243,"./services/image.js":244,"./services/imageService.js":245,"./services/inventoryService.js":246,"./services/knownException.js":247,"./services/localCategory.js":248,"./services/localCategoryService.js":249,"./services/newsletterService.js":250,"./services/orderService.js":251,"./services/permissionService.js":252,"./services/product.js":253,"./services/productCollection.js":254,"./services/productCollectionAdd.js":255,"./services/productCollectionAddListItem.js":256,"./services/productReviewService.js":257,"./services/productTempService.js":258,"./services/returnRequestService.js":259,"./services/sellerAccountService.js":260,"./services/sellerCouponService.js":261,"./services/sellerPermissionService.js":262,"./services/sellerRoleService.js":263,"./services/shippingService.js":264,"./services/shop.js":265,"./services/shopAppearanceService.js":266,"./services/shopPermissionService.js":267,"./services/shopProfileService.js":268,"./services/shopService.js":269,"./services/stdNonMoveReportService.js":270,"./services/stdOiReportService.js":271,"./services/stdOnHoldReportService.js":272,"./services/stdReturnReportService.js":273,"./services/stdSaleReportService.js":274,"./services/stdStockReportService.js":275,"./services/sumCreateAndApproveService.js":276,"./services/sumProductInfoService.js":277,"./services/sumProductOnWebService.js":278,"./services/sumProductStatusService.js":279,"./services/sumSKUEffectiveService.js":280,"./services/sumSKUNotEffectiveService.js":281,"./template":304,"./template-options/PromotionForm.js":282,"./template-options/addAttributeForm.js":283,"./template-options/addAttributeSetForm.js":284,"./template-options/addBrandForm.js":285,"./template-options/addBuy1Get1Form.js":286,"./template-options/addCMSMasterForm.js":287,"./template-options/addCategoryForm.js":288,"./template-options/addMasterProductForm.js":289,"./template-options/addNewsletterForm.js":290,"./template-options/addProductForm.js":291,"./template-options/addRoleForm.js":292,"./template-options/addShopAccountForm.js":293,"./template-options/addShopAppearanceForm.js":294,"./template-options/addShopTypeForm.js":295,"./template-options/adminApproveForm.js":296,"./template-options/couponForm.js":297,"./template-options/createGroupVariant.js":298,"./template-options/genericForm.js":299,"./template-options/productExport.js":300,"./template-options/productImport.js":301,"./template-options/searchForm.js":302,"./template-options/shopSettingForm.js":303,"angular":348,"angular-animate":306,"angular-base64":307,"angular-bootstrap-datetimepicker":308,"angular-chart.js":309,"angular-clipboard":310,"angular-cookies":312,"angular-drag-and-drop-lists":313,"angular-file-upload":314,"angular-input-masks":315,"angular-sanitize":339,"angular-scroll":341,"angular-ui-bootstrap":343,"angular-ui-sortable":344,"angular-ui-tree":346,"lodash":353,"ng-file-upload":356,"pluralize":357,"ui-select/dist/select.js":359}],2:[function(require,module,exports){
 module.exports = {
-    REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
-	// REST_SERVICE_BASE_URL: 'http://27.254.48.174/sellerportal/api',
-    // REST_SERVICE_BASE_URL: 'http://localhost:58127/api',
-    //REST_SERVICE_BASE_URL: 'http://devmkp-colspapi.cenergy.co.th/api',
+  REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
+	//REST_SERVICE_BASE_URL: 'http://27.254.48.174/sellerportal/api',
+  //REST_SERVICE_BASE_URL: 'http://localhost:58127/api',
+  //REST_SERVICE_BASE_URL: 'http://devmkp-colspapi.cenergy.co.th/api',
+  ROLLBAR: {
+    enable: false,
+  	token: '5b280623950e488eb6efcdc44d09c88d',
+  	environment: 'production'
+  },
 	MAX_GLOBAL_CAT_COLUMN : 4,
 	MAX_IMAGE_UPLOAD_SIZE: 5242880,
 	CK_DEFAULT_OPTIONS: {
@@ -350,10 +353,6 @@ module.exports = {
 	},
 	TYPEAHEAD_IMPORT_GUIDELINE_LIMIT: 8,
 	TYPEAHEAD_DELAY: 150,
-	xROLLBAR: {
-		token: '3f012de90d9247c0a19ae95ac6ed9daf',
-		environment: 'development'
-	},
 	DROPDOWN: {
 		COUPON_CRITERIA: [
 		{
@@ -20819,9 +20818,9 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 var angular = require('angular');
 
 angular.module('productDetail').controller('AbstractProductAddCtrl',
-  ["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "common", "AttributeService", "$timeout", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "$rootScope", "KnownException", "NcAlert", "$productAdd", "options", "AttributeSetService", "AdminShopService", "VariationFactorIndices", "AttributeOptions", "ShippingService", "APExpireDateChangeEvent", function($scope, $uibModal, $window, util, config, Product, ImageService, common,
+  ["$scope", "$uibModal", "$window", "util", "config", "Product", "ImageService", "common", "AttributeService", "$timeout", "AttributeSet", "Brand", "Shop", "LocalCategoryService", "GlobalCategory", "Category", "$rootScope", "KnownException", "NcAlert", "$productAdd", "options", "AttributeSetService", "APImageUploadFailEvent", "AdminShopService", "VariationFactorIndices", "AttributeOptions", "ShippingService", "APExpireDateChangeEvent", function($scope, $uibModal, $window, util, config, Product, ImageService, common,
     AttributeService, $timeout, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
-    KnownException, NcAlert, $productAdd, options, AttributeSetService,
+    KnownException, NcAlert, $productAdd, options, AttributeSetService, APImageUploadFailEvent,
     AdminShopService, VariationFactorIndices, AttributeOptions, ShippingService, APExpireDateChangeEvent) {
     'ngInject';
 
@@ -21011,28 +21010,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       validateSquare: true,
       validateFileSize: 5000000
     };
-    $scope.onImageUploadFail = function(kwd, data) {
-      console.log(kwd, 'kwd');
-      if (kwd == "onmaxsize") {
-        $scope.image_alert.error('Cannot exceed ' + data + ' images for each product.');
-      } else if (kwd == "ondimension") {
-        $scope.image_alert.error('Image dimension must be between ' +
-          IMAGE_DIM_BOUND[0][0] + 'x' +
-          IMAGE_DIM_BOUND[0][1] + ' and ' +
-          IMAGE_DIM_BOUND[1][0] + 'x' + IMAGE_DIM_BOUND[1][1] +
-          '. <strong>Your Image Size is ' + data[0] + "x" + data[1] +
-          '</strong>');
-      } else if (kwd == "ondisable") {
-        $scope.image_alert.error(
-          'You do not have permission to upload images.');
-      } else if (kwd == "onsquare") {
-        $scope.image_alert.error('Image must be a square (1:1 ratio).');
-      } else if (kwd == 'onfilesize') {
-        $scope.image_alert.error('Each image file size must not exceed 5MB')
-      } else {
-        $scope.image_alert.error(common.getError(response.data));
-      }
-    }
+
+    $scope.onImageUploadFail = APImageUploadFailEvent($scope.image_alert, IMAGE_DIM_BOUND);
     $scope.onImageUploadSuccess = function() {
       $scope.image_alert.close();
     }
@@ -21048,10 +21027,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.dataset.attributeOptions = angular.copy(AttributeOptions.proto()); // will trigger watchvariantchange
           var catId = Number(res.MainGlobalCategory.CategoryId);
 
-          $productAdd.fill(catId, $scope.pageState,
-            $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory,
-            $scope.controlFlags, $scope.variationFactorIndices, res
-          ).then(function() {
+          $productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory,
+            $scope.controlFlags, $scope.variationFactorIndices, res).then(function() {
             $scope.formData.ProductId = Number(res.ProductId);
             $scope.pageState.reset();
             $scope.alert.success(
@@ -21703,18 +21680,21 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             animation: false,
             backdrop: 'static',
             templateUrl: 'ap/modal-variant-detail',
-            controller: ["$scope", "$uibModalInstance", "$timeout", "pair", "dataset", "uploader", "imageBlockOptions", "onImageUploadFail", "disableInstallment", function($scope, $uibModalInstance,
-              $timeout, pair, dataset, uploader,
-              imageBlockOptions, onImageUploadFail, disableInstallment) {
+            controller: ["$scope", "$uibModalInstance", "$timeout", "pair", "dataset", "uploader", "APImageUploadFailEvent", "imageBlockOptions", "disableInstallment", function($scope, $uibModalInstance,
+              $timeout, pair, dataset, uploader, APImageUploadFailEvent,
+              imageBlockOptions, disableInstallment) {
               'ngInject';
               $scope.pair = pair;
               $scope.imageBlockOptions = imageBlockOptions;
               $scope.dataset = dataset;
               $scope.variantPtr = pair;
               $scope.uploader = uploader;
-              $scope.onImageUploadFail = onImageUploadFail;
+              $scope.image_alert = new NcAlert();
+
+              $scope.onImageUploadFail = APImageUploadFailEvent($scope.image_alert, IMAGE_DIM_BOUND);
               $scope.disableInstallment = disableInstallment;
 
+              //On No button press
               $scope.no = function() {
                 if ($scope.form.$dirty) {
                   if (confirm("Your changes will not be saved, are you sure you want to close this modal?")) {
@@ -21725,6 +21705,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 }
               }
 
+              //On Yes button press
               $scope.yes = function() {
                 if($scope.form.$invalid || $scope.uploader.isUploading){
                     $scope.form.$setDirty(true);
@@ -21747,9 +21728,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 return ImageService.getUploader('/ProductImages', {
                   queueLimit: QUEUE_LIMIT
                 });
-              },
-              onImageUploadFail: function(){
-                  return $scope.onImageUploadFail
               },
               pair: function() {
                 // console.log('resolving', $scope.pairModal)
@@ -21875,6 +21853,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     });
 
   }]);
+
 },{"angular":348}],189:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
@@ -22298,6 +22277,32 @@ angular.module('productDetail')
 },{"angular":348}],195:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
+.factory('APImageUploadFailEvent', ["common", function(common){
+  return function(image_alert, IMAGE_DIM_BOUND){
+    return function(kwd, data){
+      if (kwd == "onmaxsize") {
+        image_alert.error('Cannot exceed ' + data + ' images for each product.');
+      } else if (kwd == "ondimension") {
+        image_alert.error('Image dimension must be between ' +
+          IMAGE_DIM_BOUND[0][0] + 'x' +
+          IMAGE_DIM_BOUND[0][1] + ' and ' +
+          IMAGE_DIM_BOUND[1][0] + 'x' + IMAGE_DIM_BOUND[1][1] +
+          '. <strong>Your Image Size is ' + data[0] + "x" + data[1] +
+          '</strong>');
+      } else if (kwd == "ondisable") {
+        image_alert.error('You do not have permission to upload images.');
+      } else if (kwd == "onsquare") {
+        image_alert.error('Image must be a square (1:1 ratio).');
+      } else if (kwd == 'onfilesize') {
+        image_alert.error('Each image file size must not exceed 5MB')
+      } else {
+        image_alert.error(data);
+      }
+    };
+  }
+
+  return APEvent;
+}])
 .factory('APOriginalPriceChangeEvent', function() {
   return function($scope){
     return function(){
@@ -22376,7 +22381,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/modal-variant-detail',
-    "<form class=ah-form name=addProductVariantForm><div class=modal-header><h3 class=\"float-left modal-title\" ng-init=\"form = addProductVariantForm\">Variant: {{ pair.text }}</h3><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div><div class=\"modal-body margin-top-20\"><div class=row><div class=col-xs-12><div ng-if=\"form.$invalid && form.$dirty\" class=\"alert alert-red\" ng-cloak>Please make sure all required fields are filled and has no error.</div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=pair.ProductNameEn maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=pair.ProductNameTh maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=pair.Sku required maxlength=255 ng-pattern-restrict=\"^[a-zA-Z0-9]*$\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern-restrict=^[0-9]*$ maxlength=13 name=Upc ng-model=\"pair.Upc\"></div><div class=form-group><div class=width-label><label class=control-label>Display</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select class=form-control ng-model=pair.Display><option value={{op.value}} ng-repeat=\"op in dataset.VariantDisplayOption\">{{ op.text }}</option></select></div></div></div></div></div><div ap-component=ap/section-price></div><div ap-component=ap/section-image-video></div><div ap-component=ap/section-description></div><div ap-component=ap/section-inventory></div><div ap-component=ap/section-shipping></div><div ap-component=ap/section-seo></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=\"form.$invalid || uploader.isUploading\" class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div></div></div><form></form></form>"
+    "<form class=ah-form name=addProductVariantForm><div class=modal-header><h3 class=\"float-left modal-title\" ng-init=\"form = addProductVariantForm\">Variant: {{ pair.text }}</h3><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div><div class=\"modal-body margin-top-20\"><div class=row><div class=col-xs-12><div ng-if=\"form.$invalid && form.$dirty\" class=\"alert alert-red\" ng-cloak>Please make sure all required fields are filled and has no error.</div></div></div><div class=row><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Vital Information</h2></div><div class=\"form-section-content modal-custom\"><div nc-template=common/input/form-group-with-label nc-template-form=form.ProductNameEn nc-label=\"Product Name (English)\" nc-template-options-path=addProductForm/ProductNameEn><input class=\"form-control width-field-large\" name=ProductNameEn ng-model=pair.ProductNameEn maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-label=\"Product Name (ไทย)\" nc-template-form=form.ProductNameTh nc-template-options-path=addProductForm/ProductNameTh><input class=\"form-control width-field-large\" name=ProductNameTh ng-model=pair.ProductNameTh maxlength=255 required></div><div nc-template=common/input/form-group-with-label nc-label=SKU nc-template-form=form.Sku nc-template-options-path=addProductForm/Sku><input class=\"form-control width-field-large\" name=Sku ng-model=pair.Sku required maxlength=255 ng-pattern-restrict=\"^[a-zA-Z0-9]*$\"></div><div nc-template=common/input/form-group-with-label nc-label=UPC nc-template-form=form.Upc nc-template-options-path=addProductForm/Upc><input class=\"form-control width-field-large\" ng-pattern-restrict=^[0-9]*$ maxlength=13 name=Upc ng-model=\"pair.Upc\"></div><div class=form-group><div class=width-label><label class=control-label>Display</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select class=form-control ng-model=pair.Display><option value={{op.value}} ng-repeat=\"op in dataset.VariantDisplayOption\">{{ op.text }}</option></select></div></div></div></div></div><div ap-component=ap/section-price></div><nc-alert nc-model=image_alert></nc-alert><div ap-component=ap/section-image-video></div><div ap-component=ap/section-description></div><div ap-component=ap/section-inventory></div><div ap-component=ap/section-shipping></div><div ap-component=ap/section-seo></div></div><div class=col-xs-12><span class=float-right><a class=link-btn-plain ng-click=no()>Cancel</a> <button type=button ng-disabled=\"form.$invalid || uploader.isUploading\" class=\"btn btn-blue btn-width-xl\" ng-click=yes()>Save</button></span></div></div></div><form></form></form>"
   );
 
 
