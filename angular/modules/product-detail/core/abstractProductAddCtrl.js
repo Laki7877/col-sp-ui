@@ -860,6 +860,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           p.Visibility = !p.Visibility
         }
 
+        //Variant Detail Modal Dialog
         $scope.openVariantDetail = function(pair, array, index) {
           if ($scope.xspermit(44)) {
             return $scope.alert.error(
@@ -886,18 +887,15 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             templateUrl: 'ap/modal-variant-detail',
             controller: function($scope, $uibModalInstance,
               $timeout, pair, dataset, uploader,
-              imageBlockOptions) {
+              imageBlockOptions, onImageUploadFail, disableInstallment) {
               'ngInject';
               $scope.pair = pair;
               $scope.imageBlockOptions = imageBlockOptions;
               $scope.dataset = dataset;
               $scope.variantPtr = pair;
               $scope.uploader = uploader;
-
-              $scope.disableInstallment = function() {
-                if (!$scope.variantPtr.SalePrice) return true;
-                return (Number($scope.variantPtr.SalePrice) || 0) < 5000;
-              }
+              $scope.onImageUploadFail = onImageUploadFail;
+              $scope.disableInstallment = disableInstallment;
 
               $scope.no = function() {
                 if ($scope.form.$dirty) {
@@ -907,8 +905,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 } else {
                   $uibModalInstance.close();
                 }
-
               }
+
               $scope.yes = function() {
                 if($scope.form.$invalid || $scope.uploader.isUploading){
                     $scope.form.$setDirty(true);
@@ -917,16 +915,23 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 }
                 $uibModalInstance.close($scope.pair);
               }
+
             },
             size: 'xl',
             resolve: {
               imageBlockOptions: function() {
                 return $scope.imageBlockOptions;
               },
+              disableInstallment: function(){
+                  return $scope.disableInstallment;
+              },
               uploader: function() {
                 return ImageService.getUploader('/ProductImages', {
                   queueLimit: QUEUE_LIMIT
                 });
+              },
+              onImageUploadFail: function(){
+                  return $scope.onImageUploadFail
               },
               pair: function() {
                 // console.log('resolving', $scope.pairModal)

@@ -8,7 +8,7 @@ var bulk = require('bulk-require')(__dirname, ['controllers/*.js', 'services/*.j
 var config = require('./config')
 var route = require('./route')
 var template = require('./template')
-var skeemas = require('skeemas');
+// var skeemas = require('skeemas');
 
 // IE fix
 require('./iefix.js')
