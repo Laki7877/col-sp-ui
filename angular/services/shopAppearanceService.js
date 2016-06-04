@@ -23,7 +23,6 @@ module.exports = function (common, config, util) {
 
     service.serialize = function(data) {
         var processed = _.cloneDeep(data);
-        console.log(processed.Data);
         processed.Data = angular.toJson(processed.Data || {});
         
         return processed;

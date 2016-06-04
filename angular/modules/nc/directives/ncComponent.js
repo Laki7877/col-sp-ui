@@ -42,37 +42,38 @@ angular.module('nc')
 			},
 			template: $templateCache.get('common/ncProductLayout'),
 			link: function(scope) {
-				scope.$watch('model', function() {
+				scope.src = {};
+				scope.$watch('src.model', function(n, o) {
 					if(!scope.source) {
 						scope.source = _.defaults(scope.source, {
-							Enabled: true
+							Enabled: true,
 						});		
-					} else {
-						scope.source.Products = _.map(scope.model, function(e) {
-							return e.Pid;
-						});
 					}
+					if(_.isNil(o)) return;
+					scope.source.Products = _.map(scope.src.model, function(e) {
+						return e.Pid;
+					});
 				}, true);
 				scope.$watch('source', function(n, o) {
-					if(!scope.source) {
+					if(_.isNil(scope.source)) {
 						scope.source = _.defaults(scope.source, {
 							Enabled: true
 						});
 					}
 					else {
 						if(scope.source.Products && scope.source.Products.length > 0) {
-							_.remove(scope.source.Products, _.isEmpty);
-							if(scope.source.Products.length > 0 && scope.source.Products[0]) {
+							if(scope.source.Products.length > 0) {
 								Product.advanceList({
 									_limit: scope.source.Products.length,
 									Pids: scope.source.Products
 								}).then(function(data) {
-									scope.model = data.data;
+									scope.src.model = data.data;
+									console.log(scope.src.model, data);
 								});
 							}
 						}
 					}
-				})
+				});
 			}
 		}
 	})

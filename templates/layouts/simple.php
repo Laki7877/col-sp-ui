@@ -90,7 +90,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/libs/angular-select2/select.css">
 
 
-    <h4 style="text-align:center;">This is <? echo $specificBrowser ?> (For Test Server Only)</h4>
+    <!-- <h4 style="text-align:center;">This is <? echo $specificBrowser ?> (For Test Server Only)</h4> -->
 
 </body>
 
