@@ -21687,7 +21687,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             return $scope.alert.error(
               'You have no permission to modify variation (44).');
           }
-          p.Visibility = !p.Visibility
+          p.Visibility = !p.Visibility;
+
+          //Update Default Variant
+          var visibles = _.pickBy($scope.formData.Variants, function(o){ return o.Visibility });
+          if(visibles.length > 0) {
+            $scope.formData.DefaultVariant = visibles[0]
+          }
         }
 
         //Variant Detail Modal Dialog
@@ -22022,9 +22028,13 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
       }
     }
 
-    if(!formData.DefaultVariant){
-      formData.DefaultVariant = formData.Variants[0];
+    if(!formData.DefaultVariant || !formData.DefaultVariant.Visibility){
+      var visibles = _.pickBy(formData.Variants, function(o){ return o.Visibility });
+      if(visibles.length > 0) {
+        formData.DefaultVariant = visibles[0]
+      }
     }
+
     deferred.resolve();
 
     return deferred.promise;
