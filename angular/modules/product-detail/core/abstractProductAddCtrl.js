@@ -835,7 +835,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             return $scope.alert.error(
               'You have no permission to modify variation (44).');
           }
-          p.Visibility = !p.Visibility
+          p.Visibility = !p.Visibility;
+
+          //Update Default Variant
+          var visibles = _.pickBy($scope.formData.Variants, function(o){ return o.Visibility });
+          if(visibles.length > 0) {
+            $scope.formData.DefaultVariant = visibles[0]
+          }
         }
 
         //Variant Detail Modal Dialog

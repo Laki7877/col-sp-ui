@@ -108,9 +108,13 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
       }
     }
 
-    if(!formData.DefaultVariant){
-      formData.DefaultVariant = formData.Variants[0];
+    if(!formData.DefaultVariant || !formData.DefaultVariant.Visibility){
+      var visibles = _.pickBy(formData.Variants, function(o){ return o.Visibility });
+      if(visibles.length > 0) {
+        formData.DefaultVariant = visibles[0]
+      }
     }
+
     deferred.resolve();
 
     return deferred.promise;
