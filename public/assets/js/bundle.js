@@ -18806,7 +18806,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
   $templateCache.put('ap/section-seo',
     "<div class=form-section><div class=form-section-header><h2>SEO</h2></div><div class=form-section-content><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaTitleEn nc-label=\"SEO (English)\" nc-template-options-path=addProductForm/SEO><textarea class=form-control ng-disabled=xspermit(42) ng-pattern=\"/^[^<>]+$/\" name=SEO_En ng-model=variantPtr.SEO.SeoEn maxlength=1000></textarea></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaTitleEn nc-label=\"SEO (ไทย)\" nc-template-options-path=addProductForm/SEO><textarea class=form-control ng-disabled=xspermit(42) ng-pattern=\"/^[^<>]+$/\" name=SEO_Th ng-model=variantPtr.SEO.SeoTh maxlength=1000>\r" +
     "\n" +
-    "            </textarea></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaTitleEn nc-label=\"Meta Title (English)\" nc-template-options-path=addProductForm/MetaTitle><input class=\"form-control width-field-normal\" ng-disabled=xspermit(42) ng-pattern=\"/^[^<>]+$/\" name=SEO_MetaTitleEn ng-model=variantPtr.SEO.MetaTitleEn maxlength=\"60\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaTitleTh nc-label=\"Meta Title (ไทย)\" nc-template-options-path=addProductForm/MetaTitle><input class=\"form-control width-field-normal\" ng-disabled=xspermit(42) name=SEO_MetaTitleTh ng-pattern=\"/^[^<>]+$/\" ng-model=variantPtr.SEO.MetaTitleTh maxlength=\"60\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaDescriptionEn nc-label=\"Meta Description (English)\" nc-template-options-path=addProductForm/Nothing><input maxlength=150 class=\"form-control width-field-normal\" ng-pattern=\"/^[^<>]+$/\" ng-disabled=xspermit(42) name=SEO_MetaDescriptionEn ng-model=\"variantPtr.SEO.MetaDescriptionEn\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaDescriptionTh nc-label=\"Meta Description (ไทย)\" nc-template-options-path=addProductForm/Nothing><input maxlength=150 class=\"form-control width-field-normal\" ng-pattern=\"/^[^<>]+$/\" ng-disabled=xspermit(42) name=SEO_MetaDescriptionTh ng-model=\"variantPtr.SEO.MetaDescriptionTh\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaKeywordsEn nc-label=\"Meta Keywords (English)\" nc-template-options-path=addProductForm/Nothing><input placeholder=\"Keywords separated by comma\" ng-disabled=xspermit(42) maxlength=1000 ng-pattern=\"/^[^<>]+$/\" class=\"form-control width-field-normal\" name=SEO_MetaKeywordsEn ng-model=\"variantPtr.SEO.MetaKeywordEn\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaKeywordsTh nc-label=\"Meta Keywords (ไทย)\" nc-template-options-path=addProductForm/Nothing><input placeholder=\"Keywords separated by comma\" ng-disabled=xspermit(42) ng-pattern=\"/^[^<>]+$/\" maxlength=1000 class=\"form-control width-field-normal\" name=SEO_MetaKeywordsTh ng-model=\"variantPtr.SEO.MetaKeywordTh\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_ProductUrlKeyEn nc-label=\"Product URL Key\" nc-template-options-path=addProductForm/UrlKey><input maxlength=100 class=\"form-control width-field-normal\" ng-disabled=xspermit(42) ng-pattern-restrict=^[A-Za-z0-9\\-]*$ name=SEO_ProductUrlKeyEn ng-model=\"variantPtr.SEO.ProductUrlKeyEn\"></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/ProductBoosting nc-template-form=form.SEO_ProductBoostingWeight ng-pattern-restrict=^[0-9]*$ nc-label=\"Product Boosting\"><input class=\"form-control width-field-normal\" ng-disabled=xspermit(42) nc-default-value=5000 ng-pattern-restrict=^[0-9]*$ name=SEO_ProductBoostingWeight ng-maxnumber=10000 ng-minnumber=1 ng-model=\"variantPtr.SEO.ProductBoostingWeight\"></div><div nc-template=common/input/form-group-with-label nc-policy-admin nc-template-options-path=addProductForm/ProductBoosting nc-template-form=form.SEO_GlobalProductBoostingWeight nc-label=\"Global Product Boosting\"><input class=\"form-control width-field-normal\" nc-default-value=5000 ng-maxnumber=10000 ng-minnumber=1 ng-pattern-restrict=^[0-9]*$ name=SEO_GlobalProductBoostingWeight ng-model=\"variantPtr.SEO.GlobalProductBoostingWeight\"></div></div></div>"
+    "            </textarea></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaTitleEn nc-label=\"Meta Title (English)\" nc-template-options-path=addProductForm/MetaTitle><input class=\"form-control width-field-normal\" ng-disabled=xspermit(42) ng-pattern=\"/^[^<>]+$/\" name=SEO_MetaTitleEn ng-model=variantPtr.SEO.MetaTitleEn maxlength=\"60\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaTitleTh nc-label=\"Meta Title (ไทย)\" nc-template-options-path=addProductForm/MetaTitle><input class=\"form-control width-field-normal\" ng-disabled=xspermit(42) name=SEO_MetaTitleTh ng-pattern=\"/^[^<>]+$/\" ng-model=variantPtr.SEO.MetaTitleTh maxlength=\"60\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaDescriptionEn nc-label=\"Meta Description (English)\" nc-template-options-path=addProductForm/Nothing><input maxlength=150 class=\"form-control width-field-normal\" ng-pattern=\"/^[^<>]+$/\" ng-disabled=xspermit(42) name=SEO_MetaDescriptionEn ng-model=\"variantPtr.SEO.MetaDescriptionEn\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaDescriptionTh nc-label=\"Meta Description (ไทย)\" nc-template-options-path=addProductForm/Nothing><input maxlength=150 class=\"form-control width-field-normal\" ng-pattern=\"/^[^<>]+$/\" ng-disabled=xspermit(42) name=SEO_MetaDescriptionTh ng-model=\"variantPtr.SEO.MetaDescriptionTh\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaKeywordsEn nc-label=\"Meta Keywords (English)\" nc-template-options-path=addProductForm/Nothing><input placeholder=\"Keywords separated by comma\" ng-disabled=xspermit(42) maxlength=1000 ng-pattern=\"/^[^<>]+$/\" class=\"form-control width-field-normal\" name=SEO_MetaKeywordsEn ng-model=\"variantPtr.SEO.MetaKeywordEn\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_MetaKeywordsTh nc-label=\"Meta Keywords (ไทย)\" nc-template-options-path=addProductForm/Nothing><input placeholder=\"Keywords separated by comma\" ng-disabled=xspermit(42) ng-pattern=\"/^[^<>]+$/\" maxlength=1000 class=\"form-control width-field-normal\" name=SEO_MetaKeywordsTh ng-model=\"variantPtr.SEO.MetaKeywordTh\"></div><div nc-template=common/input/form-group-with-label nc-template-form=form.SEO_ProductUrlKeyEn nc-label=\"Product URL Key\" nc-template-options-path=addProductForm/UrlKey><input maxlength=100 class=\"form-control width-field-normal\" ng-disabled=xspermit(42) style=\"text-transform: lowercase\" ng-pattern-restrict=^[A-Za-z0-9\\-]*$ name=SEO_ProductUrlKeyEn ng-model=\"variantPtr.SEO.ProductUrlKeyEn\"></div><div nc-template=common/input/form-group-with-label nc-template-options-path=addProductForm/ProductBoosting nc-template-form=form.SEO_ProductBoostingWeight ng-pattern-restrict=^[0-9]*$ nc-label=\"Product Boosting\"><input class=\"form-control width-field-normal\" ng-disabled=xspermit(42) nc-default-value=5000 ng-pattern-restrict=^[0-9]*$ name=SEO_ProductBoostingWeight ng-maxnumber=10000 ng-minnumber=1 ng-model=\"variantPtr.SEO.ProductBoostingWeight\"></div><div nc-template=common/input/form-group-with-label nc-policy-admin nc-template-options-path=addProductForm/ProductBoosting nc-template-form=form.SEO_GlobalProductBoostingWeight nc-label=\"Global Product Boosting\"><input class=\"form-control width-field-normal\" nc-default-value=5000 ng-maxnumber=10000 ng-minnumber=1 ng-pattern-restrict=^[0-9]*$ name=SEO_GlobalProductBoostingWeight ng-model=\"variantPtr.SEO.GlobalProductBoostingWeight\"></div></div></div>"
   );
 
 
@@ -18832,7 +18832,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "\n" +
     "        }\r" +
     "\n" +
-    "        }\"><input ng-disabled=\"!pair.Visibility || xspermit(44)\" class=form-control name=\"pair_Sku{{ $index }}\" maxlength=255 ng-pattern=\"/^[^<>]+$/\" ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }\" ng-required=\"onPublishing && pair.Visibility\" ng-model=\"pair.Sku\"></td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
+    "        }\"><input ng-disabled=\"!pair.Visibility || xspermit(44)\" class=form-control name=\"pair_Sku{{ $index }}\" maxlength=255 ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_Sku{{$index}}) }\" ng-required=\"onPublishing && pair.Visibility\" ng-pattern-restrict=^[a-zA-Z0-9]*$ ng-model=\"pair.Sku\"></td><td ng-template=common/input/text-td ng-template-options=\"{\r" +
     "\n" +
     "        'error' : {\r" +
     "\n" +
@@ -23159,7 +23159,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		}
 
 		service.getUnlockedFields = function () {
-			//Get list of fields that are always enabled (unlocked)	
+			//Get list of fields that are always enabled (unlocked)
 			return common.makeRequest({
 				method: 'GET',
 				url: '/ProductStages/IgnoreApprove'
@@ -23437,16 +23437,13 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 			var clean = {}
 			var serializer = {
-				SEO: function (seo){
-					seo.ProductUrlKeyEn = seo.ProductUrlKeyEn.toLowerCase();
-					return seo;
-				},
 				Variants: {
 					serialize: function (data) {
 						return data.map(function (v) {
 							var ts = util.variant.toString(v.FirstAttribute, v.SecondAttribute);
 							var rs = util.variant.toString(fd.DefaultVariant.FirstAttribute, fd.DefaultVariant.SecondAttribute);
 							v.DefaultVariant = (ts == rs);
+							v.SEO.ProductUrlKeyEn = v.SEO.ProductUrlKeyEn.toLowerCase();
 							return v;
 						});
 					},
@@ -23555,7 +23552,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 										AttributeId: Number(key)
 									}, ma[key]));
 								} else {
-									//Legacy freetext, theoretically 
+									//Legacy freetext, theoretically
 									//this will never be reached
 									t.push({
 										AttributeValues: [],
@@ -23610,7 +23607,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			//Load attribute set
 			invFd.AttributeSet = FullAttributeSet;
 
-			
+
 
 			var MasterAttribute = {};
 			try {
@@ -23715,10 +23712,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 			//Find out which variant is default variant
 			// if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; // TODO: Hardcode
-			
+
 			//Find which variant is default
-			
-			
+
+
 			var transformed = {
 				formData: invFd
 			};
@@ -23801,7 +23798,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				}
 
 			}
-			
+
 			var DefaultVariantIndex = (invFd.Variants || []).map(function (o) {
 					return o.DefaultVariant || false;
 			}).indexOf(true);

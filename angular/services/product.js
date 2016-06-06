@@ -12,7 +12,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		}
 
 		service.getUnlockedFields = function () {
-			//Get list of fields that are always enabled (unlocked)	
+			//Get list of fields that are always enabled (unlocked)
 			return common.makeRequest({
 				method: 'GET',
 				url: '/ProductStages/IgnoreApprove'
@@ -290,16 +290,13 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 			var clean = {}
 			var serializer = {
-				SEO: function (seo){
-					seo.ProductUrlKeyEn = seo.ProductUrlKeyEn.toLowerCase();
-					return seo;
-				},
 				Variants: {
 					serialize: function (data) {
 						return data.map(function (v) {
 							var ts = util.variant.toString(v.FirstAttribute, v.SecondAttribute);
 							var rs = util.variant.toString(fd.DefaultVariant.FirstAttribute, fd.DefaultVariant.SecondAttribute);
 							v.DefaultVariant = (ts == rs);
+							v.SEO.ProductUrlKeyEn = v.SEO.ProductUrlKeyEn.toLowerCase();
 							return v;
 						});
 					},
@@ -408,7 +405,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 										AttributeId: Number(key)
 									}, ma[key]));
 								} else {
-									//Legacy freetext, theoretically 
+									//Legacy freetext, theoretically
 									//this will never be reached
 									t.push({
 										AttributeValues: [],
@@ -463,7 +460,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			//Load attribute set
 			invFd.AttributeSet = FullAttributeSet;
 
-			
+
 
 			var MasterAttribute = {};
 			try {
@@ -568,10 +565,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 			//Find out which variant is default variant
 			// if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; // TODO: Hardcode
-			
+
 			//Find which variant is default
-			
-			
+
+
 			var transformed = {
 				formData: invFd
 			};
@@ -654,7 +651,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				}
 
 			}
-			
+
 			var DefaultVariantIndex = (invFd.Variants || []).map(function (o) {
 					return o.DefaultVariant || false;
 			}).indexOf(true);
