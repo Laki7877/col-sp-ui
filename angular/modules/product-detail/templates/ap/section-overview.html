@@ -15,7 +15,7 @@
 							<th class="image-column">Image</th>
 							<th class="status-column">Status</th>
 							<th class="live-column">Live</th>
-							<th class="visible-column">Visible</th>
+							<!-- <th class="visible-column">Visible</th> -->
 						</thead>
 						<tbody>
 							<tr>
@@ -42,11 +42,11 @@
 									 <i class="fa fa-circle color-green" ng-if="formData.OnlineFlag && formData.MasterVariant.Visibility"></i>
                    <i class="fa fa-circle color-grey" ng-if="!formData.OnlineFlag || !formData.MasterVariant.Visibility"></i>
 								</td>
-								<td class="visible-column">
+								<!-- <td class="visible-column">
 									<a ng-click="formData.MasterVariant.Visibility = !formData.MasterVariant.Visibility"
 									ng-class="{'fa fa-eye-slash color-grey eye-icon font-size-16' : !formData.MasterVariant.Visibility,
 									'fa fa-eye color-dark-grey eye-icon font-size-16' : formData.MasterVariant.Visibility}"></a>
-								</td>
+								</td> -->
 							</tr>
 							<tbody>
 					</table>
