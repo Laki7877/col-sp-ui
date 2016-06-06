@@ -50,7 +50,7 @@ var seller = {
 		'User Accounts': '/accounts',
 		'User Roles': '/roles'
 	},
-	'Report|fa-file': {
+	'Report|fa-file-o': {
 	    'View Report': '/reports',
         'Sale Report For Seller': '/reports/std/saleforseller',
         'Stock Status Report': '/reports/std/stockstatus',
@@ -106,7 +106,7 @@ var admin = {
 		'Product Info': '/admin/summary/productinfo',
 		'Product Onweb': '/admin/summary/productonweb',
 		'SKU - Effective' : '/admin/summary/skueffective',
-		'SKU - Not Effective' : '/admin/summary/skunoteffective', 
+		'SKU - Not Effective' : '/admin/summary/skunoteffective',
 	},
 };
 var permission = {
