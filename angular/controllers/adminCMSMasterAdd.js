@@ -8,7 +8,12 @@ module.exports = function ($scope,$rootScope, $controller, CMSMasterService, Ima
     $scope.product          = {};
     $scope.featureProducts  = [];
     $scope.CategoryList     = [];
-
+    $scope.sortBy           = [];
+                
+    common.getSortBy().then(function(data) {
+        $scope.sortBy = data;
+    });
+    
     $scope.Schedule = {
         EffectiveDate: null,
         ExpiryDate: null,
