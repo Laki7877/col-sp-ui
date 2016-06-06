@@ -26,6 +26,14 @@
                     <div nc-template="common/input/form-group-with-label" nc-label="Campaign Name" nc-template-form="formData.CampaignName" nc-template-options-path="addBuy1Get1Form/CampaignName">
                         <input class="form-control width-field-large" name="CampaignName" ng-model="formData.CampaignName" ng-pattern="/^[^<>]+$/" maxlength="300" />
                     </div>
+
+                    <div nc-template="common/input/form-group-with-label" nc-label="Limit" nc-template-form="formData.Limit" nc-template-options-path="addBuy1Get1Form/Limit">
+                        <input class="form-control width-field-large" name="Limit" ng-model="formData.Limit" ng-pattern-restrict="^[0-9]*$" maxlength="6" />
+                    </div>
+
+                    <div nc-template="common/input/form-group-with-label" nc-label="Limit Per User" nc-template-form="formData.LimitPerUser" nc-template-options-path="addBuy1Get1Form/LimitPerUser">
+                        <input class="form-control width-field-large" name="LimitPerUser" ng-model="formData.LimitPerUser" ng-pattern-restrict="^[0-9]*$" maxlength="5" />
+                    </div>
                 </div>
 
             </div>

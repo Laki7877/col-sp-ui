@@ -87,7 +87,10 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 				$scope.loading = false;
 			});
 	};
+	var _search = undefined;
 	$scope.getProducts = function(search) {
+		if(search == _search) return;
+		search = _search;
 		Product.list({
 			_limit: 16,
 			searchText: search
@@ -96,7 +99,6 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 		});
 	}
 	$scope.init();
-	$scope.getProducts('');
 	$scope.$watch('formData.themeId', function(a,b) {
 		if(a != b) {
 			$scope.formData.Data = {};

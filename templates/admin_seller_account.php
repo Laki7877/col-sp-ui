@@ -18,7 +18,7 @@
             <th class="width_200" nc-sort="Email">Email</th>
             <th nc-sort="NameEn">Name</th>
             <th class="width_200">Shop Owner</th>
-            <th nc-sort="Shops">Shop</th>
+            <th>Shop</th>
             <th class="action-column-lg">Action</th>
           </tr>
         </thead>

@@ -74,7 +74,15 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 	};
 	$scope.status = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 	$scope.sortby = [];
-	
+
+	var isUploading = function(images) {
+		var i = true;
+		_.forEach(images, function(e) {
+			i = i && (e.progress >= 100.0);
+		});
+		return !i;
+	}
+
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
 		options: {
@@ -82,6 +90,15 @@ module.exports = function($scope, $controller, Product, BrandService, ImageServi
 			url: '/admin/brands',
 			item: 'Brand',
 			service: BrandService,
+			onSave: function(scope) {
+				if(isUploading($scope.formData.BrandBannerEn) ||
+					isUploading($scope.formData.BrandBannerTh) ||
+					isUploading($scope.formData.BrandSmallBannerEn) ||
+					isUploading($scope.formData.BrandSmallBannerTh) ) {
+		    		$scope.alert.error('Please wait for every images to be uploaded before saving');
+					return true;
+				}
+			},
 			onLoad: function(scope, flag) {
 				common.getSortBy().then(function(data) {
 					$scope.sortBy = data;

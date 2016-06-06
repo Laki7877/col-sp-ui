@@ -9,7 +9,7 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 	$scope.statusChangeable = false;
 
 	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
-		data: { IsLogo: true }
+		data: { Type: 'Logo' }
 	});
 	$scope.init = function() {
 		$scope.loading = true;

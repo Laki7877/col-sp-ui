@@ -3,3 +3,15 @@
  * <!--[if IE]>
  *   <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
  * <![endif]--> */
+
+/*.onboarding_wrapper .welcome_text_big{
+   color: #2a2ab5 !important;
+ }*/
+
+.overview-table > tbody{
+   border: none !important;
+ }
+
+.overview-table > tbody > tr > td{
+  border: none !important;
+}

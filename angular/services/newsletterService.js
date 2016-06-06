@@ -5,16 +5,13 @@ module.exports = function(common) {
 	service.generate = function() {
 		return {
 			VisibleShopGroup: 'AL',
-			PublishedDt: moment(new Date()).add(30, 'minutes').date(),
-			ExpiredDt: moment(new Date()).add(20, 'years').date()
+			PublishedDt: moment(new Date()).toDate(),
+			ExpiredDt: moment(new Date()).add(20, 'years').toDate()
 		};
 	};
 	service.serialize = function(data) {
 		if(!data.PublishedDt) {
-			data.PublishedDt = moment(new Date()).add(30, 'minutes').date();
-		}
-		if(!data.ExpiredDt) {
-			data.ExpiredDt = moment(new Date()).add(20, 'years').date()
+			data.PublishedDt = moment(new Date()).toDate();
 		}
 		return data;
 	};
@@ -23,4 +20,4 @@ module.exports = function(common) {
 	};
 
 	return service;
-};
+}

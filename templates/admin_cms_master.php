@@ -3,7 +3,7 @@
 ?>
 
 <?php $this->start('page-body') ?>
-<div ng-controller="AdminCMSMasterListCtrl">
+<div ng-controller="AdminCMSMasterListCtrl" ng-disabled="adCMSview">
   <nc-alert nc-model="alert"></nc-alert>
   <nc-page-title nc-title="CMS Master" icon="fa-tag">
     <form id="exportForm" name="exportForm" action="/cms/master/export" method="post">
@@ -27,7 +27,7 @@
               <li><a href="/cms/master/import/update">Update Existing CMS</a></li>
             </ul>
           </div>-->
-      <a href="/admin/cms/master/create" class="btn-blue btn btn-width-xl">
+      <a href="/admin/cms/master/create" class="btn-blue btn btn-width-xl" ng-disabled="adCMSadd">
         <span class="">Create</span>
       </a>
     </form>
@@ -59,7 +59,7 @@
           <th nc-sort="Status">Status</th>
           <th>Visible</th>
           <th nc-sort="UpdatedDt">Modified</th>
-          <th class="action-column">Action</th>
+          <th class="action-column" ng-disabled="adCMSedit">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -83,7 +83,7 @@
             <nc-eye nc-model="row.Visibility" nc-eye-on-toggle="toggleEye(row)"></nc-eye>
           </td>
           <td class="modified-column">{{ row.UpdateOn | dateTh }}</td>
-          <td class="action-column">
+          <td class="action-column" ng-disabled="adCMSedit">
             <nc-action nc-model="row" nc-action-fn="actions"></nc-action>
           </td>
         </tr>

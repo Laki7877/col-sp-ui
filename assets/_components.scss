@@ -228,9 +228,14 @@ user-select: none;
 		box-shadow: $global-shadow;
   }
 
-  table > tbody > tr > td, table > thead > tr > th {
-    border-color: $color-grey;
+	table > thead > tr > th {
+		border-color: $color-grey;
+	}
+
+  table > tbody > tr > td  {
+    border-color: $color-light-grey;
   }
+	
   // End setting border color
 
 
@@ -242,6 +247,12 @@ user-select: none;
   .table > thead > tr > th {
     border-bottom-width : 1px;
   }
+
+	// Color Code for Not Visible (Eye Closed) Row
+	.table > tbody > tr.not-visible-row{
+		background: $color-lighter-grey;
+		color: $color-grey;
+	}
 
   .table > tbody > tr:hover{
     background: $color-light-yellow;

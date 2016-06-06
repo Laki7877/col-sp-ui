@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <button class="btn btn-sm btn-primary" ng-click="addCMSMasterItem()">
+      <button class="btn btn-sm btn-primary" ng-click="addCMSMasterItem()" ng-disabled="adCMSadd">
         <i class="fa fa-plus-circle"></i> Add CMS Item
       </button>
     </div>
@@ -17,7 +17,7 @@
         </div>
         <div class="form-section-content" style="padding-left: 10px; padding-right: 10px;">
 
-          <div class="btn-group search-section-item" role="group">
+          <div class="btn-group search-section-item" role="group" ng-disabled="adCMSview">
             <div class="btn-group" role="group">
               <button type="button" class="btn btn-default dropdown-toggle bulk-action-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" uib-dropdown-toggle="">
                 <span class="ng-binding">{{selectOptionText}}</span>
@@ -51,7 +51,7 @@
                 <th class="col-sm-2">Name(EN)</th>
                 <th class="col-sm-2">Name(TH)</th>
                 <th class="col-sm-2">ExpiryDate</th>
-                <th class="col-sm-2">Actions</th>
+                <th class="col-sm-2" ng-disabled="adCMSedit">Actions</th>
               </tr>
             </thead>
 
@@ -64,7 +64,7 @@
                 <td>{{item.CMSMasterNameEN}}</td>
                 <td>{{item.CMSMasterNameTH}}</td>
                 <td>{{item.CMSMasterExpiryDate | dateTh}}</td>
-                <td>
+                <td ng-disabled="adCMSedit">
                   <button class="btn btn-sm btn-default" ng-disabled="$index == 0 || (formData.GroupMasterList.length == 0)" 
                           ng-click="moveUp($index, $index - 1)">
                     <i class="fa fa-chevron-up"></i>
@@ -90,7 +90,7 @@
 <!-- modal temaplate -->
 <script type="text/ng-template" id="templates/admin-cms-group-add-item.html">
   
-  <div class="modal-header">
+  <div class="modal-header" style="margin-bottom:10px;">
     <h3 class="modal-title">Add CMS Master Item</h3>
   </div>
   <div class="modal-body">
@@ -174,7 +174,7 @@
           <div class="container-fluid no-padding margin-top-20">
             <div class="float-right">
               <a href="#" class="link-btn-plain" ng-click="$dismiss()">Cancel</a>
-              <button class="btn btn-blue btn-width-xl" ng-click="ok(masters)" ng-disabled="sumMasterSelected() == 0">
+              <button class="btn btn-blue btn-width-xl" ng-click="ok(masters)" ng-disabled="sumMasterSelected() == 0" ng-disabled="adCMSadd">
                 <span class="login-loading" ng-cloak="" ng-show="saving">
                   <i class="fa fa-spinner fa-spin" ></i>
                 </span> Add ({{sumMasterSelected() }})

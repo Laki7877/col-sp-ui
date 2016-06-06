@@ -18,25 +18,25 @@
     <form class="ah-form sticky-mainform-action" name="form" ng-show="!loading && !saving" novalidate>
 
         <div>
-            <? $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "CMS Master/Create CMS Master", 'border_class' => 'no-padding']) ?>
+            <?php $this->insert('components/page-title-breadcrumb-with-cancel-save', ['text' => "CMS Master/Create CMS Master", 'border_class' => 'no-padding']) ?>
         </div>
 
         <div id="add_cms_master_body" class="add-product-body">
-            <? $this->insert('components/tab-nav', ["items" => $menus]) ?>
+            <?php $this->insert('components/tab-nav', ["items" => $menus]) ?>
 
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane margin-top-20 active" id="information">
-                    <? $this->insert('partials/create_cms_master_information') ?>
+                    <?php $this->insert('partials/create_cms_master_information') ?>
                 </div>
 				<div role="tabpanel" class="tab-pane margin-top-20" id="collections">
-                    <? $this->insert('partials/create_cms_master_collections') ?>
+                    <?php $this->insert('partials/create_cms_master_collections') ?>
                 </div>
                 <div role="tabpanel" class="tab-pane margin-top-20" id="schedulers">
-                    <? $this->insert('partials/create_cms_master_schedulers') ?>
+                    <?php $this->insert('partials/create_cms_master_schedulers') ?>
                 </div>
 			   <!--
                <div role="tabpanel" class="tab-pane margin-top-20" id="conditions">
-                    <? $this->insert('partials/create_cms_master_conditions') ?>
+                    <?php $this->insert('partials/create_cms_master_conditions') ?>
                 </div>
 				-->
             </div>
@@ -44,7 +44,7 @@
                 <div class="container-fluid">
                     <div class="float-right">
                         <button class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</button>
-                        <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+                        <button class="btn btn-blue btn-width-xl" ng-click="save()" ng-disabled="adCMSadd">Save</button>
                     </div>
                 </div>
             </div>

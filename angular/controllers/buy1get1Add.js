@@ -5,7 +5,11 @@ function ($scope, $window, util, config,Product,  Buy1Get1, ImageService, Attrib
     'use strict';
 
     //TODO: use Poons' Alert class
-
+    // seller
+    $scope.manageBuy1Get1SE = !$rootScope.permit(54);  
+    // shop
+    $scope.manageBuy1Get1SH = !$rootScope.permit(70);  
+    
     $window.onbeforeunload = function (e) {
         if (!$scope.addBuy1Get1Form.$dirty) {
             //only warn when form is dirty

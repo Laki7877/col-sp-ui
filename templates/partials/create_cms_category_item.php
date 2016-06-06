@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <button class="btn btn-sm btn-primary" ng-click="addProductItem()">
+      <button class="btn btn-sm btn-primary" ng-click="addProductItem()" ng-disabled="adCMSadd">
         <i class="fa fa-plus-circle"></i> Add Product Item
       </button>
     </div>
@@ -23,7 +23,7 @@
                 <span class="ng-binding">{{selectOptionText}}</span>
                 <span class="caret"></span>
               </button>
-              <ul uib-dropdown-menu="" role="menu" class="dropdown-menu">
+              <ul uib-dropdown-menu="" role="menu" class="dropdown-menu" ng-disabled="adCMSadd">
                 <li class="ng-scope">
                   <a ng-click="selectOption('- Choose Action -')" class="ng-binding">- Choose Action -</a>
                 </li>
@@ -87,7 +87,7 @@
               </tr>
             </tbody>
           </table>
-         
+        
         </div>
       </div>
     </div>
@@ -98,7 +98,7 @@
 <script type="text/ng-template" id="templates/admin-cms-category-manage-add-item.html">
   
   <div class="modal-header">
-    <h3 class="modal-title">Add Product Item</h3>
+    <h3 class="modal-title" style="margin-bottom:10px;">Add Product Item</h3>
   </div>
   <div class="modal-body" ng-init="init()">
     
@@ -127,7 +127,7 @@
               <!-- Brand -->
               <div class="form-group">
                   <label>Brand</label>
-                  <ui-select ng-model="brand.selected" ng-disabled="disabled" style="min-width: 300px;">
+                  <ui-select ng-model="brand.selected" ng-disabled="!category.selected" style="min-width: 300px;">
                     <ui-select-match placeholder="Select a brand in the list">{{$select.selected.BrandNameEn}}</ui-select-match>
                     <ui-select-choices repeat="b in brands | propsFilter: {BrandNameTh: $select.search, BrandNameTh: $select.search}">
                       <div ng-bind-html="b.BrandNameEn | highlight: $select.search"></div>
@@ -136,9 +136,9 @@
               </div>
 
               <!-- Tag -->
-              <div class="form-group">
+              <div class="form-group" ng-show="brand.selected">
                 <label>Tag</label>
-                  <ui-select multiple="" ng-model="tag.selected" ng-disabled="disabled" style="min-width: 300px;">
+                  <ui-select multiple="" ng-model="tag.selected" style="min-width: 300px;">
                     <ui-select-match placeholder="Select tags">{{$item.Tag}}</ui-select-match>
                     <ui-select-choices repeat="t in tags | propsFilter: {Tag: $select.search}">
                       <div ng-bind-html="t.Tag | highlight: $select.search"></div>
@@ -147,7 +147,7 @@
               </div>
 
               <!-- Search By -->
-              <div class="form-group">
+              <div class="form-group" ng-show="brand.selected">
                 <label>Search By</label>
                   <select class="form-control" ng-model="searchBy" style="min-width: 300px;">
                     <option value="ProductName">Name</option>
@@ -156,7 +156,7 @@
                   </select>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" ng-show="brand.selected">
                 <label>Search</label>
                   <div class="input-group search-box" style="min-width: 300px;">
                     <input class="form-control input-search-icon" ng-model="searchText" placeholder="Search for Product" />
@@ -176,7 +176,7 @@
             <div class="form-section-header">
               <h2>Result</h2>
             </div>
-            <div class="form-section-content" style="padding: 10px; min-height: 400px; overflow: auto;">
+            <div class="form-section-content" style="padding: 10px; min-height: 400px; overflow: scroll;width: 400px;height: 100px;">
 
               <div class="table-section" style="margin-top: 0px;" ng-show="!loading && !isEmpty">
                 <table class="table table-curved">
@@ -228,7 +228,7 @@
           <div class="container-fluid no-padding margin-top-20">
             <div class="float-right">
               <a href="#" class="link-btn-plain" ng-click="$dismiss()">Cancel</a>
-              <button class="btn btn-blue btn-width-xl" ng-click="ok(products)" ng-disabled="sumProductSelected() == 0">
+              <button class="btn btn-blue btn-width-xl" ng-click="ok(products)" ng-disabled="sumProductSelected() == 0" ng-disabled="adCMSadd">
                 <span class="login-loading" ng-cloak="" ng-show="saving">
                   <i class="fa fa-spinner fa-spin" ></i>
                 </span> Add ({{sumProductSelected() }})

@@ -3,8 +3,8 @@ var angular = require('angular');
 angular.module('productDetail').controller('AbstractProductAddCtrl',
   function($scope, $uibModal, $window, util, config, Product, ImageService, common,
     AttributeService, $timeout, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
-    KnownException, NcAlert, $productAdd, options, AttributeSetService,
-    AdminShopService, VariationFactorIndices, AttributeOptions, ShippingService) {
+    KnownException, NcAlert, $productAdd, options, AttributeSetService, APImageUploadFailEvent,
+    AdminShopService, VariationFactorIndices, AttributeOptions, ShippingService, APExpireDateChangeEvent) {
     'ngInject';
 
     $scope.readOnly = options.readOnly;
@@ -152,6 +152,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.dataset.Brands = ds.data; // _.unionBy($scope.dataset.Brands, ds.data, 'BrandId');
           $scope.dataset.Brands = $scope.dataset.Brands.map(function(m) {
             m._group = "Search Results";
+            m.display = (m.DisplayNameEn || m.BrandNameEn) + " (" + m.BrandId + ")"
             return m;
           });
           // return $scope.dataset.Brands;
@@ -192,28 +193,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       validateSquare: true,
       validateFileSize: 5000000
     };
-    $scope.onImageUploadFail = function(kwd, data) {
-      console.log(kwd, 'kwd');
-      if (kwd == "onmaxsize") {
-        $scope.image_alert.error('Cannot exceed ' + data + ' images for each product.');
-      } else if (kwd == "ondimension") {
-        $scope.image_alert.error('Image dimension must be between ' +
-          IMAGE_DIM_BOUND[0][0] + 'x' +
-          IMAGE_DIM_BOUND[0][1] + ' and ' +
-          IMAGE_DIM_BOUND[1][0] + 'x' + IMAGE_DIM_BOUND[1][1] +
-          '. <strong>Your Image Size is ' + data[0] + "x" + data[1] +
-          '</strong>');
-      } else if (kwd == "ondisable") {
-        $scope.image_alert.error(
-          'You do not have permission to upload images.');
-      } else if (kwd == "onsquare") {
-        $scope.image_alert.error('Image must be a square (1:1 ratio).');
-      } else if (kwd == 'onfilesize') {
-        $scope.image_alert.error('Each image file size must not exceed 5MB')
-      } else {
-        $scope.image_alert.error(common.getError(response.data));
-      }
-    }
+
+    $scope.onImageUploadFail = APImageUploadFailEvent($scope.image_alert, IMAGE_DIM_BOUND);
     $scope.onImageUploadSuccess = function() {
       $scope.image_alert.close();
     }
@@ -229,10 +210,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.dataset.attributeOptions = angular.copy(AttributeOptions.proto()); // will trigger watchvariantchange
           var catId = Number(res.MainGlobalCategory.CategoryId);
 
-          $productAdd.fill(catId, $scope.pageState,
-            $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory,
-            $scope.controlFlags, $scope.variationFactorIndices, res
-          ).then(function() {
+          $productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory,
+            $scope.controlFlags, $scope.variationFactorIndices, res).then(function() {
             $scope.formData.ProductId = Number(res.ProductId);
             $scope.pageState.reset();
             $scope.alert.success(
@@ -251,8 +230,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     //Adjust Limit Individual Day check box when
     //prepare days are non zero
-    $scope.$watch(
-      'variantPtr.PrepareMon+variantPtr.PrepareTue+variantPtr.PrepareWed+variantPtr.PrepareThu+variantPtr.PrepareFri',
+    $scope.$watch('variantPtr.PrepareMon+variantPtr.PrepareTue+variantPtr.PrepareWed+variantPtr.PrepareThu+variantPtr.PrepareFri',
       function(value) {
         var variantPtr = $scope.variantPtr;
         var x = Number(variantPtr.PrepareMon) + Number(variantPtr.PrepareTue) +
@@ -261,7 +239,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         if (x > 0) {
           $scope.formData.LimitIndividualDay = true;
         }
-      });
+    });
 
     //Initialize Pointers
     $scope.variantPtr = $scope.formData.MasterVariant;
@@ -352,6 +330,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     };
 
     $scope.enableVariation = function() {
+
+      if ($scope.addProductForm.$invalid) {
+        return $scope.alert.error(
+          '<strong>Not allowed</strong> - Cannot create variation because you have one or more errors in your form.'
+        );
+      }
+
       if ($scope.uploader.isUploading) {
         return $scope.alert.error(
           '<strong>Please Wait</strong> - One or more image upload is in progress..'
@@ -387,57 +372,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     }];
 
 
-
     $scope.updateBreadcrumb = function(globalCatId) {
       $scope.breadcrumb.globalCategory = Category.createCatStringById(
         globalCatId, $scope.dataset.GlobalCategories);
     };
 
     //Watches
-    $scope.$watch('variantPtr.OriginalPrice+variantPtr.SalePrice', function() {
-      var form = $scope.addProductForm;
-      if (form.OriginalPrice) form.OriginalPrice.$setValidity('min', true);
-      if ($scope.variantPtr.SalePrice == '') return;
-      if ($scope.variantPtr.OriginalPrice == '') return;
-
-      if (Number($scope.variantPtr.SalePrice) > Number($scope.variantPtr.OriginalPrice)) {
-        if (form.OriginalPrice) form.OriginalPrice.$setValidity('min', false)
-        form.OriginalPrice.$error['min'] = 'Original Price must be higher than Sale Price';
-        form.OriginalPrice.$setDirty(true);
-      }
-    });
-
-    $scope.$watch('variantPtr.PromotionPrice', function() {
-      var form = $scope.addProductForm;
-      if (form.PromotionPrice) {
-        form.PromotionPrice.$setValidity('max', true);
-      }
-      if (!form.PromotionPrice) return;
-
-      if (Number($scope.variantPtr.SalePrice) <= Number($scope.variantPtr
-          .PromotionPrice)) {
-        if (form.PromotionPrice) {
-          form.PromotionPrice.$setValidity('max', false)
-        }
-        form.PromotionPrice.$error['max'] =
-          'Promotion Price must be lower than Sale Price'
-      }
-    });
-
-    $scope.$watch('formData.ExpireDate', function() {
-      // TODO: refactor use nctemplate
-      var form = $scope.addProductForm;
-      if (form.EffectiveDate == null) {
-        return
-      }
-      if (form.ExpireDate) form.ExpireDate.$setValidity('min', true)
-      if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
-        if (!form.ExpireDate) return;
-        if (form.ExpireDate) form.ExpireDate.$setValidity('min', false);
-        form.ExpireDate.$error['min'] =
-          'Effective date/time must come before expire date/time';
-      }
-    });
+    $scope.$watch('formData.ExpireDate', APExpireDateChangeEvent($scope));
 
     /**
      * Other additional validations
@@ -894,9 +835,16 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             return $scope.alert.error(
               'You have no permission to modify variation (44).');
           }
-          p.Visibility = !p.Visibility
+          p.Visibility = !p.Visibility;
+
+          //Update Default Variant
+          var visibles = _.pickBy($scope.formData.Variants, function(o){ return o.Visibility });
+          if(visibles.length > 0) {
+            $scope.formData.DefaultVariant = visibles[0]
+          }
         }
 
+        //Variant Detail Modal Dialog
         $scope.openVariantDetail = function(pair, array, index) {
           if ($scope.xspermit(44)) {
             return $scope.alert.error(
@@ -915,7 +863,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.pairModal = angular.copy(pair);
           $scope.pairModal.alert = new NcAlert();
           $scope.pairIndex = index;
-
           $scope.uploaderModal.queue = $scope.pairModal.queue;
 
           var variantModal = $uibModal.open({
@@ -923,14 +870,20 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             backdrop: 'static',
             templateUrl: 'ap/modal-variant-detail',
             controller: function($scope, $uibModalInstance,
-              $timeout, pair, dataset, uploader,
-              imageBlockOptions) {
+              $timeout, pair, dataset, uploader, APImageUploadFailEvent,
+              imageBlockOptions, disableInstallment) {
               'ngInject';
               $scope.pair = pair;
               $scope.imageBlockOptions = imageBlockOptions;
               $scope.dataset = dataset;
               $scope.variantPtr = pair;
               $scope.uploader = uploader;
+              $scope.image_alert = new NcAlert();
+
+              $scope.onImageUploadFail = APImageUploadFailEvent($scope.image_alert, IMAGE_DIM_BOUND);
+              $scope.disableInstallment = disableInstallment;
+
+              //On No button press
               $scope.no = function() {
                 if ($scope.form.$dirty) {
                   if (confirm("Your changes will not be saved, are you sure you want to close this modal?")) {
@@ -939,16 +892,26 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 } else {
                   $uibModalInstance.close();
                 }
-
               }
+
+              //On Yes button press
               $scope.yes = function() {
+                if($scope.form.$invalid || $scope.uploader.isUploading){
+                    $scope.form.$setDirty(true);
+                    $scope.form.$setSubmitted(true);
+                    return false;
+                }
                 $uibModalInstance.close($scope.pair);
               }
+
             },
             size: 'xl',
             resolve: {
               imageBlockOptions: function() {
                 return $scope.imageBlockOptions;
+              },
+              disableInstallment: function(){
+                  return $scope.disableInstallment;
               },
               uploader: function() {
                 return ImageService.getUploader('/ProductImages', {
@@ -976,6 +939,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
             // Restore pointers
             $scope.form = $scope.addProductForm;
+
             $scope.variantPtr = $scope.formData.MasterVariant;
 
           }, function() {
@@ -1032,6 +996,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       if ($scope.adminMode) return false;
       return !$rootScope.hasPermission(id);
     };
+
     //Should installment field be disabled or not
     $scope.disableInstallment = function() {
       if (!$scope.variantPtr.SalePrice) return true;
@@ -1076,4 +1041,4 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       $scope.form = $scope.addProductForm;
     });
 
-  })
+  });

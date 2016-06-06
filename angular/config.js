@@ -1,5 +1,13 @@
 module.exports = {
   REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
+	//REST_SERVICE_BASE_URL: 'http://27.254.48.174/sellerportal/api',
+  //REST_SERVICE_BASE_URL: 'http://localhost:58127/api',
+  //REST_SERVICE_BASE_URL: 'http://devmkp-colspapi.cenergy.co.th/api',
+  ROLLBAR: {
+    enable: false,
+  	token: '5b280623950e488eb6efcdc44d09c88d',
+  	environment: 'production'
+  },
 	MAX_GLOBAL_CAT_COLUMN : 4,
 	MAX_IMAGE_UPLOAD_SIZE: 5242880,
 	CK_DEFAULT_OPTIONS: {
@@ -12,10 +20,6 @@ module.exports = {
 	},
 	TYPEAHEAD_IMPORT_GUIDELINE_LIMIT: 8,
 	TYPEAHEAD_DELAY: 150,
-	xROLLBAR: {
-		token: '3f012de90d9247c0a19ae95ac6ed9daf',
-		environment: 'development'
-	},
 	DROPDOWN: {
 		COUPON_CRITERIA: [
 		{
@@ -45,6 +49,10 @@ module.exports = {
 		{
 			name: 'Local Category',
 			value: 'LocalCategory'
+		},
+        {
+            name: 'Product',
+            value: 'Product'
 		}
 		],
 		COUPON_DISCOUNT: [

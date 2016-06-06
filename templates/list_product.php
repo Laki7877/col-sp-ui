@@ -7,7 +7,6 @@
       <form id="exportForm" name="exportForm" action="/products/export" method="post">
           <input type="hidden" name="selected_products[]" ng-repeat="item in bulkContainer" value="{{ item.ProductId }}"/>
           <input type="hidden" name="search_criteria"  value="{{ searchCriteria }}"/>
-
           <div class="btn-group margin-right-10">
             <button type="button" class="btn btn-white dropdown-toggle btn-width-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Export <span class="caret"></span>
@@ -65,7 +64,7 @@
               </tr>
           </thead>
           <tbody>
-              <tr ng-repeat="row in list.data">
+              <tr ng-repeat="row in list.data" ng-class="{'not-visible-row': !row.Visibility}">
                   <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
                   <td class="display-column">
                     <div class="img-holder">
@@ -99,7 +98,7 @@
                     </span>
                   </td>
                   <td class="live-column" ng-if="showOnOffStatus.value">
-                      <i class="fa fa-circle color-green" ng-if="row.OnlineFlag"></i> 
+                      <i class="fa fa-circle color-green" ng-if="row.OnlineFlag"></i>
                       <i class="fa fa-circle color-grey" ng-if="!row.OnlineFlag"></i>
                   </td>
                   <td class="visible-column">

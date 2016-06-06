@@ -36,11 +36,11 @@
     	<div class="form-group">
     		<div class="width-label"><label class="control-label">Select Product</label></div>
     		<div class="width-field-normal">
-                <ui-select multiple ng-model="source.Products">
+                <ui-select multiple ng-model="src.model">
                     <ui-select-match placeholder="Product Name">
                         {{ $item.ProductNameEn }}
                     </ui-select-match>
-                    <ui-select-choices placeholder="Search result" refresh="refresh($select.search)" refresh-delay="150" repeat="i.Pid as i in products">
+                    <ui-select-choices placeholder="Search result" refresh="refresh($select.search)" refresh-delay="150" repeat="i in products">
                         {{ i.ProductNameEn }}
                     </ui-select-choices>
                 </ui-select>

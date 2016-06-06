@@ -12,7 +12,7 @@ module.exports = {
     divClass: 'col-xs-6',
     error: {
       messages: {
-        max: 'Promotion Price must be lower than Sale Price'
+        maxnumber: 'Promotion Price must be lower than Sale Price'
       }
     }
   },
@@ -100,6 +100,7 @@ module.exports = {
     'labelClass': 'required',
     'error': {
       'messages': {
+        'required': 'This is a required field',
         'pattern': 'Special characters are not allowed'
       }
     }
@@ -118,7 +119,8 @@ module.exports = {
     'error': {
       'messages': {
         'required': 'This is a required field',
-        'min': 'Original Price must be higher than Sale Price',
+        'maxnumber': 'Original Price must be higher than Sale Price',
+        'minnumber': 'Original Price must be higher than Sale Price',
         'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
       }
     }
@@ -128,7 +130,8 @@ module.exports = {
     'error': {
       'messages': {
         'required': 'This is a required field',
-        'min': 'Sale price must be lower than the original price',
+        'maxnumber': 'Original Price must be higher than Sale Price',
+        'minnumber': 'Original Price must be higher than Sale Price',
         'pattern': 'Only numbers and decimals (up to 2 digits) allowed'
       }
     }

@@ -144,7 +144,7 @@
 		</div>
 
 		<div class="form-section">
-			<div class="form-section-header"><h2>Add Item List</h2></div>
+			<div class="form-section-header" style="margin-bottom:10px;"><h2>Add Item List</h2></div>
 			<div class="form-section-content">
 
 			<div class="ng-isolate-scope form-group"> 

@@ -4,8 +4,7 @@
 
         <span class="float-right">
 	   <a class="link-btn-plain" ng-click="no()">Cancel</a>
-	   <button type="button" ng-disabled="form.$invalid || uploader.isUploading" 
-       class="btn btn-blue btn-width-xl" ng-click="yes()">Save</button>
+	   <button type="button" class="btn btn-blue btn-width-xl" ng-click="yes()">Save</button>
 	</span>
     </div>
     <div class="modal-body margin-top-20">
@@ -24,8 +23,8 @@
                     <div class="form-section-content modal-custom">
                         <div nc-template="common/input/form-group-with-label" nc-template-form="form.ProductNameEn" nc-label="Product Name (English)"
                         nc-template-options-path="addProductForm/ProductNameEn">
-                            <input class="form-control width-field-large" name="ProductNameEn" 
-                            ng-model="pair.ProductNameEn" maxlength="255" 
+                            <input class="form-control width-field-large" name="ProductNameEn"
+                            ng-model="pair.ProductNameEn" maxlength="255"
                             required />
                         </div>
 
@@ -36,13 +35,13 @@
                         </div>
 
                         <div nc-template="common/input/form-group-with-label" nc-label="SKU" nc-template-form="form.Sku" nc-template-options-path="addProductForm/Sku">
-                            <input class="form-control width-field-large" name="Sku" ng-model="pair.Sku" required 
+                            <input class="form-control width-field-large" name="Sku" ng-model="pair.Sku" required
                             maxlength="255" ng-pattern-restrict="^[a-zA-Z0-9]*$" />
                         </div>
 
 
                         <div nc-template="common/input/form-group-with-label" nc-label="UPC" nc-template-form="form.Upc" nc-template-options-path="addProductForm/Upc">
-                            <input class="form-control width-field-large" 
+                            <input class="form-control width-field-large"
                             ng-pattern-restrict="^[0-9]*$" maxlength="13"
                              name="Upc" ng-model="pair.Upc" />
                         </div>
@@ -69,6 +68,7 @@
                 </div>
 
                 <div ap-component="ap/section-price"></div>
+                <nc-alert nc-model="image_alert"></nc-alert>
                 <div ap-component="ap/section-image-video"></div>
                 <div ap-component="ap/section-description"></div>
                 <div ap-component="ap/section-inventory"></div>

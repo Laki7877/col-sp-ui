@@ -42,14 +42,22 @@ angular.module('nc')
 
 				this.show = true;
 			};
-			this.error = function(obj, toElm) {
+			this.error = function(obj, toElm, scroll) {
 				this.open(false, obj);
 				
 				$timeout(function() {
 					var section = vm.element || $document;
-					smoothScroll(toElm ? vm.element[0] : $document[0].body, {
-						container: toElm ? '.modal': null
-					});
+					if(!_.isNil(scroll)) {
+						if(scroll)
+							smoothScroll(toElm ? vm.element[0] : $document[0].body, {
+								container: toElm ? '.modal': null
+							});
+						
+					} else {
+						smoothScroll(toElm ? vm.element[0] : $document[0].body, {
+							container: toElm ? '.modal': null
+						});
+					}
 				}, 10);
 			};
 			this.success = function(obj, toElm) {

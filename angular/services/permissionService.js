@@ -4,25 +4,26 @@ module.exports = function(util) {
 
 	service.serialize = function(ownedPermissionsObject) {
 		var result = [];
-		var owned = _.merge({}, ownedPermissionsObject);
+		var owned = _.cloneDeep(ownedPermissionsObject);
 
 		_.forOwn(ownedPermissionsObject, function(v,k) {
 			util.traverse(v, 'Children', function(e) {
 				if(e.check) {
-					_.unset(e, ['ParentNode']);
-					result.push(e);
+					var r = _.cloneDeep(e);
+					_.unset(r, ['ParentNode']);
+					result.push(r);
 				}
 			});
 		});
 
 		_.forEach(result, function(e) {
 			_.unset(e, ['Children']);
-		})
+		});
 		return result;
 	};
 
 	service.deserialize = function(ownedPermissions, allPermissions) {
-		var data = _.merge({}, allPermissions);
+		var data = _.cloneDeep(allPermissions);
 
 		data = service.format(data);
 		

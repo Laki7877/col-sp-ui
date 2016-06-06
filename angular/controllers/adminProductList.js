@@ -55,6 +55,7 @@ module.exports = function($scope, $controller, Product, common, config, $base64,
 		            size: 'size-warning',
 		            templateUrl: 'product/modalAddTags',
 		            controller: function($scope, $uibModalInstance, data) {
+                        'ngInject';
 		                $scope.model = {
 		                	tags: []
 		                };
@@ -75,7 +76,9 @@ module.exports = function($scope, $controller, Product, common, config, $base64,
 				{ name: "Not Approved", value: 'NotApproved'},
 				{ name: "Wait For Approval", value: 'WaitForApproval'},
 				{ name: "Draft", value: 'Draft'},
-                { name: "Master Product", value: 'MasterProduct'}
+                { name: "Master Product", value: 'MasterProduct'},
+                { name: "Single", value: 'Single'}, 
+                { name: "Variant", value: 'Variant'}
 			]
 		}
 	});
@@ -94,17 +97,18 @@ module.exports = function($scope, $controller, Product, common, config, $base64,
 	
     $scope.exportSelected = function(){
         $scope.alert.close();
-        if($scope.bulkContainer.length == 0) {
-           return $scope.alert.error('Unable to Export. Please select Product for this action.');
+        if ($scope.bulkContainer.length == 0) {
+            return $scope.alert.error('Unable to Export. Please select Product for this action.');
         }
-        else {
-        	document.getElementById('exportForm').submit();
-    	}
+        document.getElementById('exportForm').submit();
     };
-    $scope.exportSearchResult = function(){
-    	if(!$scope.advanceSearchParams){
+
+    $scope.searchCriteria = null;
+    $scope.exportSearchResult = function() {
+        if(!$scope.advanceSearchParams){
             return $scope.alert.error("Unable to Export. There are no products in your search result.");
         }
+
         var K = _.extend({}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams));
         K._limit = 2147483647;
         $scope.searchCriteria = $base64.encode(JSON.stringify(K));
@@ -114,6 +118,4 @@ module.exports = function($scope, $controller, Product, common, config, $base64,
             document.getElementById('exportForm').submit();
         });
     }
-	
-	
 };

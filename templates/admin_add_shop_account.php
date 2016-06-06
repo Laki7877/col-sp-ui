@@ -374,7 +374,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 										ng-model="formData.ShopOwner.Email"
 										ng-class="{ 'has-error' : $root.isInvalid(form.Email) }"
 										type="email"
-										maxlength="255"
+										maxlength="100"
 										required />
 									</div>
 									<!-- Phone Number -->
@@ -536,7 +536,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 						                  ng-src="{{formData.ShopImage.Url}}"
 						                  width="160"
 						                  />
-						                <a style="display:block;" class="margin-top-5" ng-click="formData.Logo=null"><i class="fa-trash fa"></i> Delete this image</a>
+						                <a style="display:block;" class="margin-top-5" ng-click="formData.ShopImage=null"><i class="fa-trash fa"></i> Delete this image</a>
 						            </div>						            
 				                    <div nc-template="common/input/form-group-with-label" 
 				                    	nc-label="Shop Description (English)" 
@@ -568,27 +568,27 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 				                    <div nc-template="common/input/form-group-with-label" nc-label="Facebook" 
 				                    	nc-template-options-path="shopSettingForm/SocialMediaLink"
 				                    	nc-template-form="form.Facebook">
-				                        <input class="form-control" type="url" ng-model="formData.Facebook"    maxlength="255" />
+				                        <input class="form-control" ng-model="formData.Facebook"    maxlength="255" />
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label" nc-label="YouTube" 
 				                    	nc-template-options-path="shopSettingForm/SocialMediaLink"
 				                    	nc-template-form="form.YouTube">
-				                        <input class="form-control" type="url" ng-model="formData.YouTube"    maxlength="255"/>
+				                        <input class="form-control" ng-model="formData.YouTube"    maxlength="255"/>
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label" nc-label="Twitter" 
 				                    	nc-template-options-path="shopSettingForm/SocialMediaLink"
 				                    	nc-template-form="form.Twitter">
-				                        <input class="form-control" type="url" ng-model="formData.Twitter"    maxlength="255"/>
+				                        <input class="form-control" ng-model="formData.Twitter"    maxlength="255"/>
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label" nc-label="Instagram" 
 				                    	nc-template-options-path="shopSettingForm/SocialMediaLink"
 				                    	nc-template-form="form.Instagram">
-				                        <input class="form-control" type="url" ng-model="formData.Instagram"    maxlength="255"/>
+				                        <input class="form-control" ng-model="formData.Instagram"    maxlength="255"/>
 				                    </div>
 				                    <div nc-template="common/input/form-group-with-label" nc-label="Pinterest"
 				                     	nc-template-options-path="shopSettingForm/SocialMediaLink"
 				                     	nc-template-form="form.Pinterest">
-				                        <input class="form-control" type="url" ng-model="formData.Pinterest"    maxlength="255"/>
+				                        <input class="form-control" ng-model="formData.Pinterest"    maxlength="255"/>
 				                    </div>
 				                </div>
 				            </div>
