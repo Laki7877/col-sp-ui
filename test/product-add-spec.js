@@ -1,11 +1,17 @@
-describe('Test Adding user account', function() {
+describe('Automated Man', function() {
 
+  var width = 1200;
+  var height = 800;
+  browser.driver.manage().window().setSize(width, height);
+
+  var random1000  =  Math.floor(Math.random()*10000);
+  var defaultSleep = 1000;
 
   it('should login', function() {
 
     browser.get('http://localhost:5000/login');
 
-    browser.sleep(1000);
+    browser.sleep(defaultSleep);
 
     var username = element(by.model('uform.user'));
     var password = element(by.model('uform.pass'));
@@ -16,47 +22,152 @@ describe('Test Adding user account', function() {
     var login_submit = element(by.xpath('//button[@type="submit"]'));
     login_submit.click();
 
-    browser.sleep(3000);
+    var EC = protractor.ExpectedConditions;
+    // Waits for the element with id 'abc' to be visible on the dom.
+    browser.wait(EC.visibilityOf($('#sidebar-wrapper')), 5000);
+    browser.sleep(500);
 
   });
 
 
-  it('should create new user role', function(){
+  xit('should create new a user role', function(){
     browser.get('http://localhost:5000/roles');
 
-    var button_add_user_role = element(by.xpath('//a[text()="Add User Role"]'));
-    button_add_user_role.click();
+    element(by.xpath('//a[text()="Add User Role"]')).click();
+    element(by.model('formData.GroupNameEn')).sendKeys('ROLE ' + timeStamp());
+    element(by.model('obj.selectAll')).click();
 
-    browser.sleep(1000);
+    saveChanges();
 
-    var input_role_name = element(by.model('formData.GroupNameEn'));
-    var name_automate  = 'Automated Role ' + Math.floor(Math.random()*1000);
-    input_role_name.sendKeys(name_automate);
+    element(by.css('.alert a')).click();
 
-    browser.sleep(1000);
+    browser.sleep(defaultSleep);
 
-    var input_checkbox_select_all = element(by.model('obj.selectAll'));
-    input_checkbox_select_all.click();
+  });
 
-    browser.sleep(1000);
+  xit('should create a new user', function(){
+    browser.get('http://localhost:5000/accounts');
 
-    var button_save = element(by.css('.main-form-action .btn-blue'));
+    element(by.xpath('//a[text()="Add User Account"]')).click();
+    element(by.model('formData.Email')).sendKeys('a' + random1000 + '@account.com');
+    element(by.model('formData.NameEn')).sendKeys('USER ' + timeStamp());
+    element(by.model('formData.Phone')).sendKeys('086' + Math.floor(Math.random()*1000000));
+
+    var text_account_password  = 'test1234';
+    element(by.model('formData.Password')).sendKeys(text_account_password);
+    element(by.model('formData.ConfirmPassword')).sendKeys(text_account_password);
+
+    element(by.model('formData.UserGroup')).click();
+    element(by.css('#ui-select-choices-row-1-0')).click();
+
+    saveChanges();
+
+    element(by.css('.alert a')).click();
+
+    browser.sleep(defaultSleep);
+
+  });
+
+  xit('should fill out shop profile', function(){
+    browser.get('http://localhost:5000/shops/settings');
+
+    browser.sleep(defaultSleep);
+
+    element(by.model('formData.ShopNameEn')).clear().sendKeys('Pokelandia ' + random1000);
+    element(by.model('formData.DomainName')).clear().sendKeys('domain_name_' + random1000);
+    element(by.model('formData.UrlKey')).clear().sendKeys('url-' + random1000);
+    element(by.model('formData.ShopDescriptionEn')).clear().sendKeys('This is written at ' + timeStamp());
+    element(by.model('formData.ShopDescriptionTh')).clear().sendKeys('เขียนตอน ' + timeStamp());
+    element(by.model('formData.FloatMessageEn')).clear().sendKeys('Hello ' + timeStamp());
+    element(by.model('formData.FloatMessageTh')).clear().sendKeys('ฮาโหล ' + timeStamp());
+    element(by.model('formData.ShopAddress')).clear().sendKeys('Shop Address ' + random1000);
+    element(by.model('formData.Facebook')).clear().sendKeys('http://www.facebook.com/' + random1000);
+    element(by.model('formData.YouTube')).clear().sendKeys('http://www.youtube.com/' + random1000);
+    element(by.model('formData.Twitter')).clear().sendKeys('http://www.twitter.com/' + random1000);
+    element(by.model('formData.Instagram')).clear().sendKeys('http://www.instagram.com/' + random1000);
+    element(by.model('formData.Pinterest')).clear().sendKeys('http://www.pinterest.com/' + random1000);
+    element(by.model('formData.StockAlert')).clear().sendKeys(random1000);
+
+    browser.sleep(defaultSleep);
+
+    saveChanges();
+
+  });
+
+
+  xit('should add local category', function(){
+    browser.get('http://localhost:5000/categories');
+
+    browser.sleep(defaultSleep);
+
+    element(by.css('.page-header-action .btn-blue')).click();
+    element(by.model('formData.NameEn')).sendKeys('Local EN ' + timeStamp());
+    element(by.model('formData.NameTh')).sendKeys('Local TH ' + timeStamp());
+    element(by.model('formData.UrlKey')).sendKeys('url' + random1000);
+    element(by.model('formData.SortBy')).click();
+    element(by.css('.ui-select-choices-row.active')).click();
+
+    browser.sleep(defaultSleep);
+
+    var button_save = element(by.css('.modal-header .btn-blue'));
     console.log(button_save)
     button_save.click();
 
-    browser.sleep(1000);
-
-
-  var EC = protractor.ExpectedConditions;
-  // Waits for the element with id 'abc' to be visible on the dom.
-  browser.wait(EC.visibilityOf($('.alert')), 5000);
-
-  browser.sleep(1000);
-
-  browser.get('http://localhost:5000/roles');
-
+    var EC = protractor.ExpectedConditions;
+    // Waits for the element with id 'abc' to be visible on the dom.
+    browser.wait(EC.visibilityOf($('.alert')), 5000);
+    browser.sleep(defaultSleep);
 
   });
+
+  it('should add new product', function(){
+    browser.get('http://localhost:5000/products');
+
+    browser.sleep(defaultSleep);
+
+    element(by.css('.page-header-action .btn-blue')).click();
+
+    element(by.xpath('//li[text()="Imaginary Land"]')).click();
+    browser.sleep(500);
+    element(by.xpath('//li[text()="Pokemon"]')).click();
+
+    element(by.css('.category-footer .btn-blue')).click();
+
+    var EC = protractor.ExpectedConditions;
+    // Waits for the element with id 'abc' to be visible on the dom.
+    browser.wait(EC.visibilityOf($('.page-header-title')), 5000);
+    element(by.model('variantPtr.ProductNameEn')).sendKeys('Product ' + timeStamp());
+    element(by.model('variantPtr.ProductNameTh')).sendKeys('สินค้า ' + timeStamp());
+    element(by.model('variantPtr.Sku')).sendKeys('SKU' + random1000);
+
+    var brand = element(by.model('formData.Brand'));
+    var selectBrand = brand.element(by.css('input'));
+    selectBrand.click();
+    selectBrand.sendKeys("NIKE");
+    selectBrand.sendKeys(protractor.Key.ENTER);
+
+    var price = random1000 + 5000;
+
+    element(by.model('variantPtr.SalePrice')).sendKeys(price);
+    element(by.model('variantPtr.OriginalPrice')).sendKeys(price + 1);
+
+    browser.sleep(defaultSleep);
+
+    var button_save = element(by.css('.main-form-action .btn-white'));
+    console.log(button_save)
+    button_save.click();
+
+    var EC = protractor.ExpectedConditions;
+    // Waits for the element with id 'abc' to be visible on the dom.
+    browser.wait(EC.visibilityOf($('.alert-green')), 10000);
+    browser.sleep(999);
+
+    browser.sleep(defaultSleep);
+
+  });
+
+
+
 
 
 
@@ -127,7 +238,7 @@ describe('Test Adding user account', function() {
         var gsubmit = element(by.css('#global-category .btn'));
         gsubmit.click();
 
-        browser.sleep(1000);
+        browser.sleep(defaultSleep);
         pluses = element.all(by.css('.fa.fa-plus-circle.color-theme'));
         pluses.get(1).click(); //lOcal cat
 
@@ -138,7 +249,7 @@ describe('Test Adding user account', function() {
         var lsubmit = element(by.css('#local-category .btn'));
         lsubmit.click();
 
-        browser.sleep(1000);
+        browser.sleep(defaultSleep);
 
     })
 
@@ -155,3 +266,54 @@ describe('Test Adding user account', function() {
 
     });
 });
+
+
+
+/**
+ * Return a timestamp with the format "m/d/yy h:MM:ss TT"
+ */
+
+function timeStamp() {
+// Create a date object with the current time
+  var now = new Date();
+
+// Create an array with the current month, day and time
+  var date = [ now.getMonth() + 1, now.getDate(), now.getFullYear() ];
+
+// Create an array with the current hour, minute and second
+  var time = [ now.getHours(), now.getMinutes(), now.getSeconds() ];
+
+// Determine AM or PM suffix based on the hour
+  var suffix = ( time[0] < 12 ) ? "AM" : "PM";
+
+// Convert hour from military time
+  time[0] = ( time[0] < 12 ) ? time[0] : time[0] - 12;
+
+// If hour is 0, set it to 12
+  time[0] = time[0] || 12;
+
+// If seconds and minutes are less than 10, add a zero
+  for ( var i = 1; i < 3; i++ ) {
+    if ( time[i] < 10 ) {
+      time[i] = "0" + time[i];
+    }
+  }
+
+// Return the formatted string
+  return date.join("-") + " " + time.join("-") + "-" + suffix;
+}
+
+/**
+ * Save Changes
+ */
+function saveChanges() {
+  var button_save = element(by.css('.main-form-action .btn-blue'));
+  console.log(button_save)
+  button_save.click();
+
+  var EC = protractor.ExpectedConditions;
+  // Waits for the element with id 'abc' to be visible on the dom.
+  browser.wait(EC.visibilityOf($('.alert')), 5000);
+  browser.sleep(999);
+
+}
