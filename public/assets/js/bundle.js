@@ -23675,7 +23675,7 @@ var seller = {
 		'User Accounts': '/accounts',
 		'User Roles': '/roles'
 	},
-	'Report|fa-file-o': {
+	'Report|fa-file': {
 	    'View Report': '/reports',
         'Sale Report For Seller': '/reports/std/saleforseller',
         'Stock Status Report': '/reports/std/stockstatus',
