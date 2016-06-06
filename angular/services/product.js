@@ -258,7 +258,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		 * @param  {Product Object} fd
 		 */
 		service.serialize = function (fd) {
-			debugger;
+			// debugger;
 			var clean = {}
 			var serializer = {
 				Variants: {

@@ -167,8 +167,16 @@ Route::add('/reports/std/stockstatus', 'SellerController::listStockReport');
 Route::add('/reports/std/onhold', 'SellerController::listOnHoldReport');
 Route::add('/reports/std/return', 'SellerController::listReturnReport');
 
+Route::add('/reports/std/oi', 'SellerController::listOiReport');
+Route::add('/reports/std/nonmove', 'SellerController::listNonMoveReport');
 
-
+//Content Summary by Natcharin
+Route::add('/admin/summary/createandapprove', 'AdminController::sumCreateAndApprove');
+Route::add('/admin/summary/productstatus', 'AdminController::sumProductStatus');
+Route::add('/admin/summary/productinfo', 'AdminController::sumProductInfo');
+Route::add('/admin/summary/productonweb', 'AdminController::sumProductOnWeb');
+Route::add('/admin/summary/skueffective', 'AdminController::sumSKUEffective');
+Route::add('/admin/summary/skunoteffective', 'AdminController::sumSKUNotEffective');
 
 //test route
 Route::add('/test/:name', 'TestController::any');

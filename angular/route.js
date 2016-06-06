@@ -39,8 +39,8 @@ var seller = {
 	},
 	'CMS|fa fa-contao': {
 	    'CMS Category': '/cms/category',
-	    'CMS Static & Collection': '/cms/master',
-	    'CMS Group': '/cms/group'
+	    'CMS Static & Collection': '/cms/master'
+	    // 'CMS Group': '/cms/group'
 	},
 	'Shop Setting|fa-sliders': {
 		'Shop Profile': '/shops/settings',
@@ -56,7 +56,9 @@ var seller = {
         'Sale Report For Seller': '/reports/std/saleforseller',
         'Stock Status Report': '/reports/std/stockstatus',
         'On Hold Report' : '/reports/std/onhold',
-        'Return Report' : '/reports/std/return'
+        'Return Report' : '/reports/std/return',
+        'OI Report' : '/reports/std/oi',
+        'Non-move Report' : '/reports/std/nonmove'
 	}
 };
 var admin = {
@@ -91,15 +93,23 @@ var admin = {
     // Create By Col Dev (Natee)
 	'CMS|fa fa-contao': {
 	    'CMS Category': '/admin/cms/category',
-	    'CMS Static & Collection': '/admin/cms/master',
-	    'CMS Group': '/admin/cms/group'
+	    'CMS Static & Collection': '/admin/cms/master'
+	    // 'CMS Group': '/admin/cms/group'
 	},
 	'Reports|fa-file': {
 	    
 	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'
-	}
+	},
+	'Content Report|fa-file-o': {
+		'Create & Approve Product' : '/admin/summary/createandapprove',
+		'Product Status': '/admin/summary/productstatus',
+		'Product Info': '/admin/summary/productinfo',
+		'Product Onweb': '/admin/summary/productonweb',
+		'SKU - Effective' : '/admin/summary/skueffective',
+		'SKU - Not Effective' : '/admin/summary/skunoteffective', 
+	},
 };
 var permission = {
 	//Admin
