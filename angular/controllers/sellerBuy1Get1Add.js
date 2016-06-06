@@ -21,8 +21,8 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
         var start = ui.item.data('start'),
             end = ui.item.index();
 
-        $scope.formData.CategoryProductListBuy.splice(end, 0,
-            $scope.formData.CategoryProductListBuy.splice(start, 1)[0]);
+        $scope.formData.ProductBuyList.splice(end, 0,
+            $scope.formData.ProductBuyList.splice(start, 1)[0]);
 
         $scope.$apply();
 
@@ -40,8 +40,8 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
     $scope.moveUp = function (start, end) {
 
         // swap object
-        $scope.formData.CategoryProductListBuy.splice(end, 0,
-           $scope.formData.CategoryProductListBuy.splice(start, 1)[0]);
+        $scope.formData.ProductBuyList.splice(end, 0,
+           $scope.formData.ProductBuyList.splice(start, 1)[0]);
 
         // update seq
         $timeout(function () {
@@ -52,8 +52,8 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
     $scope.moveDown = function (start, end) {
 
         // swap object
-        $scope.formData.CategoryProductListBuy.splice(end, 0,
-        $scope.formData.CategoryProductListBuy.splice(start, 1)[0]);
+        $scope.formData.ProductBuyList.splice(end, 0,
+        $scope.formData.ProductBuyList.splice(start, 1)[0]);
 
         // update seq
         $timeout(function () {
@@ -66,7 +66,7 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
 
         var seq = 0;
 
-        angular.forEach($scope.formData.CategoryProductListBuy, function (item) {
+        angular.forEach($scope.formData.ProductBuyList, function (item) {
             seq++;
             item.Sequence = seq;
         });
@@ -83,12 +83,12 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
         $scope.isCheckedAll != isChecked;
 
         if (!isChecked) {
-            angular.forEach($scope.formData.CategoryProductListBuy, function (item) {
+            angular.forEach($scope.formData.ProductBuyList, function (item) {
                 item.IsChecked = false;
             });
         }
         else {
-            angular.forEach($scope.formData.CategoryProductListBuy, function (item) {
+            angular.forEach($scope.formData.ProductBuyList, function (item) {
                 item.IsChecked = true;
             });
         }
@@ -113,7 +113,7 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
 
         var sum = 0;
 
-        angular.forEach($scope.formData.CategoryProductListBuy, function (item) {
+        angular.forEach($scope.formData.ProductBuyList, function (item) {
             if (item.IsChecked) {
                 sum++;
             }
@@ -296,8 +296,8 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
             }
         })
         .result.then(function (result) {
-            if ($scope.formData.CategoryProductListBuy === undefined) {
-                $scope.formData.CategoryProductListBuy = [];
+            if ($scope.formData.ProductBuyList === undefined) {
+                $scope.formData.ProductBuyList = [];
             }
 
             angular.forEach(result, function (product) {
@@ -305,7 +305,7 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
                     var obj = angular.copy(product);
                     obj.Sequence = getNewProductSequence();
                     obj.ProductBoxBadge = product.ProductNameEn;
-                    $scope.formData.CategoryProductListBuy.push(obj);
+                    $scope.formData.ProductBuyList.push(obj);
                 }
             })
         });
@@ -314,7 +314,7 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
     // check product duplicate before add to list
     function isDuplicateProduct(pId) {
         var isDuplicate = false;
-        angular.forEach($scope.formData.CategoryProductListBuy, function (product) {
+        angular.forEach($scope.formData.ProductBuyList, function (product) {
             if (product.Pid == pId)
                 isDuplicate = true;
         });
@@ -324,19 +324,19 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
 
     // gen product seq
     function getNewProductSequence() {
-        return $scope.formData.CategoryProductListBuy.length + 1;
+        return $scope.formData.ProductBuyList.length + 1;
     }
 
     // remove product item
     $scope.removeOnceItem = function (index) {
-        $scope.formData.CategoryProductListBuy.splice(index, 1);
+        $scope.formData.ProductBuyList.splice(index, 1);
     }
 
     // remove multiple product
     $scope.removeMultiItem = function () {
-        for (var i = $scope.formData.CategoryProductListBuy.length - 1; i >= 0; i--) {
-            if ($scope.formData.CategoryProductListBuy[i].IsChecked) {
-                $scope.formData.CategoryProductListBuy.splice(i, 1);
+        for (var i = $scope.formData.ProductBuyList.length - 1; i >= 0; i--) {
+            if ($scope.formData.ProductBuyList[i].IsChecked) {
+                $scope.formData.ProductBuyList.splice(i, 1);
             }
         }
 
@@ -345,7 +345,7 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
 
     // get total product items
     $scope.getTotalItems = function () {
-        return $scope.formData.CategoryProductListBuy === undefined ? 0 : $scope.formData.CategoryProductListBuy.length;
+        return $scope.formData.ProductBuyList === undefined ? 0 : $scope.formData.ProductBuyList.length;
     };
 
 
@@ -523,8 +523,8 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
             }
         })
         .result.then(function (result) {
-            if ($scope.formData.CategoryProductListGet === undefined) {
-                $scope.formData.CategoryProductListGet = [];
+            if ($scope.formData.ProductGetList === undefined) {
+                $scope.formData.ProductGetList = [];
             }
 
             angular.forEach(result, function (product) {
@@ -532,7 +532,7 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
                     var obj = angular.copy(product);
                     obj.Sequence = getNewProductSequenceGet();
                     obj.ProductBoxBadge = product.ProductNameEn;
-                    $scope.formData.CategoryProductListGet.push(obj);
+                    $scope.formData.ProductGetList.push(obj);
                 }
             })
         });
@@ -540,7 +540,7 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
     // check product duplicate before add to list
     function isDuplicateProduct(pId) {
         var isDuplicate = false;
-        angular.forEach($scope.formData.CategoryProductListGet, function (product) {
+        angular.forEach($scope.formData.ProductGetList, function (product) {
             if (product.Pid == pId)
                 isDuplicate = true;
         });
@@ -550,19 +550,19 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
 
     // gen product seq
     function getNewProductSequenceGet() {
-        return $scope.formData.CategoryProductListGet.length + 1;
+        return $scope.formData.ProductGetList.length + 1;
     }
 
     // remove product item
     $scope.removeOnceItem = function (index) {
-        $scope.formData.CategoryProductListGet.splice(index, 1);
+        $scope.formData.ProductGetList.splice(index, 1);
     }
 
     // remove multiple product
     $scope.removeMultiItem = function () {
-        for (var i = $scope.formData.CategoryProductListGet.length - 1; i >= 0; i--) {
-            if ($scope.formData.CategoryProductListGet[i].IsChecked) {
-                $scope.formData.CategoryProductListGet.splice(i, 1);
+        for (var i = $scope.formData.ProductGetList.length - 1; i >= 0; i--) {
+            if ($scope.formData.ProductGetList[i].IsChecked) {
+                $scope.formData.ProductGetList.splice(i, 1);
             }
         }
 
@@ -571,7 +571,7 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
 
     // get total product items
     $scope.getTotalItems = function () {
-        return $scope.formData.CategoryProductListGet === undefined ? 0 : $scope.formData.CategoryProductListGet.length;
+        return $scope.formData.ProductGetList === undefined ? 0 : $scope.formData.ProductGetList.length;
     };
     $scope.dragStart = function (e, ui) {
         ui.item.data('start', ui.item.index());
@@ -580,8 +580,8 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
         var start = ui.item.data('start'),
             end = ui.item.index();
 
-        $scope.formData.CategoryProductListGet.splice(end, 0,
-            $scope.formData.CategoryProductListGet.splice(start, 1)[0]);
+        $scope.formData.ProductGetList.splice(end, 0,
+            $scope.formData.ProductGetList.splice(start, 1)[0]);
 
         $scope.$apply();
 
@@ -599,8 +599,8 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
     $scope.moveUp = function (start, end) {
 
         // swap object
-        $scope.formData.CategoryProductListGet.splice(end, 0,
-           $scope.formData.CategoryProductListGet.splice(start, 1)[0]);
+        $scope.formData.ProductGetList.splice(end, 0,
+           $scope.formData.ProductGetList.splice(start, 1)[0]);
 
         // update seq
         $timeout(function () {
@@ -611,8 +611,8 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
     $scope.moveDown = function (start, end) {
 
         // swap object
-        $scope.formData.CategoryProductListGet.splice(end, 0,
-        $scope.formData.CategoryProductListGet.splice(start, 1)[0]);
+        $scope.formData.ProductGetList.splice(end, 0,
+        $scope.formData.ProductGetList.splice(start, 1)[0]);
 
         // update seq
         $timeout(function () {
@@ -625,7 +625,7 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
 
         var seq = 0;
 
-        angular.forEach($scope.formData.CategoryProductListGet, function (item) {
+        angular.forEach($scope.formData.ProductGetList, function (item) {
             seq++;
             item.Sequence = seq;
         });
@@ -642,12 +642,12 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
         $scope.isCheckedAll != isChecked;
 
         if (!isChecked) {
-            angular.forEach($scope.formData.CategoryProductListGet, function (item) {
+            angular.forEach($scope.formData.ProductGetList, function (item) {
                 item.IsChecked = false;
             });
         }
         else {
-            angular.forEach($scope.formData.CategoryProductListGet, function (item) {
+            angular.forEach($scope.formData.ProductGetList, function (item) {
                 item.IsChecked = true;
             });
         }
@@ -672,7 +672,7 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
 
         var sum = 0;
 
-        angular.forEach($scope.formData.CategoryProductListGet, function (item) {
+        angular.forEach($scope.formData.ProductGetList, function (item) {
             if (item.IsChecked) {
                 sum++;
             }

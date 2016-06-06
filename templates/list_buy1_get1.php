@@ -36,10 +36,10 @@
           <td class="checkbox-column">
             <nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox>
           </td>
-          <td class="column-text-ellipsis" nc-link="/admin/buy1get1/{{row.PromotionBuy1Get1ItemId}}">
+          <td class="column-text-ellipsis" nc-link="/buy1get1/{{row.PromotionBuy1Get1ItemId}}">
             {{row.NameEN}}
           </td>
-          <td class="column-text-ellipsis" nc-link="/admin/buy1get1/{{row.PromotionBuy1Get1ItemId}}">
+          <td class="column-text-ellipsis" nc-link="/buy1get1/{{row.PromotionBuy1Get1ItemId}}">
             {{row.NameTH}}
           </td>
           <td class="status-column">

@@ -34,7 +34,7 @@
             </div>
             <button type="button" class="btn btn-default btn-action" ng-click="removeMultiItem()">
               Confirm
-              <span ng-show="formData.CategoryProductListBuy.length > 0">({{sumProductSelected()}})</span>
+              <span ng-show="formData.ProductBuyList.length > 0">({{sumProductSelected()}})</span>
             </button>
           </div>
           
@@ -57,7 +57,7 @@
             </thead>
 
             <tbody id="sortable">
-              <tr ng-repeat="item in formData.CategoryProductListBuy | orderBy : 'Sequence'">
+              <tr ng-repeat="item in formData.ProductBuyList | orderBy : 'Sequence'">
                 <!-- <td>
                   <input type="checkbox" ng-model="item.IsChecked" ng-click="checkOnce(item, item.IsChecked)" />
                 </td> -->
@@ -72,11 +72,11 @@
                 <td>{{item.OriginalPrice | currency: '฿': 0}}</td>
                 <td>{{item.ExpireDate | dateTh}}</td>
                 <td>
-                  <button class="btn btn-sm btn-default" ng-disabled="$index == 0 || (formData.CategoryProductListBuy.length == 0)" 
+                  <button class="btn btn-sm btn-default" ng-disabled="$index == 0 || (formData.ProductBuyList.length == 0)" 
                           ng-click="moveUp($index, $index - 1)">
                     <i class="fa fa-chevron-up"></i>
                   </button>
-                  <button class="btn btn-sm btn-default" ng-disabled="$index == (formData.CategoryProductListBuy.length - 1) || (formData.CategoryProductListBuy.length == 0)" 
+                  <button class="btn btn-sm btn-default" ng-disabled="$index == (formData.ProductBuyList.length - 1) || (formData.ProductBuyList.length == 0)" 
                           ng-click="moveDown($index, $index + 1)">
                     <i class="fa fa-chevron-down"></i>
                   </button>

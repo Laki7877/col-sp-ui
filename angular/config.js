@@ -48,6 +48,10 @@ module.exports = {
 		{
 			name: 'Local Category',
 			value: 'LocalCategory'
+		},
+        {
+            name: 'Product',
+            value: 'Product'
 		}
 		],
 		COUPON_DISCOUNT: [
