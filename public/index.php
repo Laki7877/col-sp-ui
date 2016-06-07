@@ -20,7 +20,7 @@ class Redirect {
 	public static function adminPermission($params) {
 		return View::render('401-admin');
 	}
-	
+
 	/*
 	public static function handleAuth($route) {
 		if(strpos($route['method'], 'Login') === FALSE && !isset($_COOKIE[__COOKIE_AUTH_KEY__])) {
@@ -87,8 +87,22 @@ Route::add('/orders', 'SellerController::listOrder');
 Route::add('/orders/shippinglist', 'SellerController::shipOrder');
 Route::add('/orders/:id', 'SellerController::editOrder');
 
+//CMS
+Route::add('/cms/category', 'SellerController::listCMSCategory');
+Route::add('/cms/category/create', 'SellerController::addCMSCategory');
+Route::add('/cms/category/:id', 'SellerController::editCMSCategory');
+Route::add('/cms/group', 'SellerController::listCMSGroup');
+Route::add('/cms/group/create', 'SellerController::addCMSGroup');
+Route::add('/cms/group/:id', 'SellerController::editCMSGroup');
+Route::add('/cms/master', 'SellerController::listCMSMaster');
+Route::add('/cms/master/create', 'SellerController::addCMSMaster');
+Route::add('/cms/master/:id', 'SellerController::editCMSMaster');
+//Report
+Route::add('/reports/std/saleforseller', 'SellerController::listStandardReport');
 
-//admin routing 
+
+
+//admin routing
 Route::add('/admin/unauthorized', 'Redirect::adminPermission');
 Route::add('/admin/onboarding', 'AdminController::onboarding');
 Route::add('/admin/attributes/add','AdminController::addAttribute');
@@ -148,10 +162,32 @@ Route::add('/admin/cms/group/:id', 'AdminController::editCMSGroup');
 Route::add('/admin/cms/master', 'AdminController::listCMSMaster');
 Route::add('/admin/cms/master/create', 'AdminController::addCMSMaster');
 Route::add('/admin/cms/master/:id', 'AdminController::editCMSMaster');
-Route::add('/admin/buy1get1','AdminController::listBuy1Get1');
-Route::add('/admin/buy1get1/create','AdminController::addBuy1Get1');
-Route::add('/admin/buy1get1/:id','AdminController::editBuy1Get1');
-Route::add('/admin/reports/std/saleforseller', 'AdminController::listStandardReport');
+// Route::add('/admin/buy1get1','AdminController::listBuy1Get1');
+// Route::add('/admin/buy1get1/create','AdminController::addBuy1Get1');
+// Route::add('/admin/buy1get1/:id','AdminController::editBuy1Get1');
+
+
+// seller buy 1 get 1
+Route::add('/buy1get1','SellerController::listBuy1Get1');
+Route::add('/buy1get1/create','SellerController::addBuy1Get1');
+Route::add('/buy1get1/:id','SellerController::editBuy1Get1');
+
+//iOath
+Route::add('/reports/std/saleforseller', 'SellerController::listStandardReport');
+Route::add('/reports/std/stockstatus', 'SellerController::listStockReport');
+Route::add('/reports/std/onhold', 'SellerController::listOnHoldReport');
+Route::add('/reports/std/return', 'SellerController::listReturnReport');
+
+Route::add('/reports/std/oi', 'SellerController::listOiReport');
+Route::add('/reports/std/nonmove', 'SellerController::listNonMoveReport');
+
+//Content Summary by Natcharin
+Route::add('/admin/summary/createandapprove', 'AdminController::sumCreateAndApprove');
+Route::add('/admin/summary/productstatus', 'AdminController::sumProductStatus');
+Route::add('/admin/summary/productinfo', 'AdminController::sumProductInfo');
+Route::add('/admin/summary/productonweb', 'AdminController::sumProductOnWeb');
+Route::add('/admin/summary/skueffective', 'AdminController::sumSKUEffective');
+Route::add('/admin/summary/skunoteffective', 'AdminController::sumSKUNotEffective');
 
 
 //test route

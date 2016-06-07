@@ -1,4 +1,3 @@
-
 module.exports = function($scope, $rootScope, Dashboard, $log, $filter, storage, $window, $uibModal, NewsletterService){
 	'ngInject';
 

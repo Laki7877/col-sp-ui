@@ -25,7 +25,7 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 					}).finally(function() {
 						$scope.loading = false;
 					});
-
+					/*
 				$scope.$watch('formData.Province', function(data, old) {
 					if(_.isNil(data)) {
 						return;
@@ -38,7 +38,6 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 					}
 					$scope.getCities(data.ProvinceId);
 				});
-
 				$scope.$watch('formData.City', function(data, old) {
 					if(_.isNil(data)) {
 						return;
@@ -51,8 +50,6 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 					}
 					$scope.getDistricts(data.CityId);
 				});
-
-
 				$scope.$watch('formData.District', function(data, old) {
 					if(_.isNil(data)) {
 						return;
@@ -64,7 +61,7 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 						_.unset($scope.formData, ['PostalCode']);
 					}
 					$scope.getPostals(data.DistrictId);
-				});
+				});*/
 
 			});
 	};

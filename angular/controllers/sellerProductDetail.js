@@ -57,5 +57,4 @@ module.exports = function($scope, $controller, storage) {
     $scope.disableDebugLoad = false;
     $scope.alert.success('<strong>Testing Kit</strong> Product data saved to your local storage.');
   };
-
 };

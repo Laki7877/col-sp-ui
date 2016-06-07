@@ -118,6 +118,4 @@ module.exports = function($scope, $controller, Product, common, config, $base64,
             document.getElementById('exportForm').submit();
         });
     }
-	
-	
 };

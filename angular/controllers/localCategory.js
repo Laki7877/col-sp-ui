@@ -237,7 +237,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 						isUploading($scope.formData.CategoryBannerTh) ||
 						isUploading($scope.formData.CategorySmallBannerEn) ||
 						isUploading($scope.formData.CategorySmallBannerTh) ) {
-						$scope.alert.error('Please wait for every images to be uploaded before saving')
+						$scope.alert.error('Please wait for every images to be uploaded before saving', true)
 						return;
 					}
 					if($scope.form.$valid) {

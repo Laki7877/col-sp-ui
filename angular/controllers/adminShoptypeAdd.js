@@ -153,7 +153,6 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShippingSer
 			$scope.obj.selectAll = $scope.obj.selectAll && e.check;
 		});
 	});
-
 	$scope.group = ['Dashboard', 'Products', 'Promotion', 'Report', 'Local Category', 'Local Brand', 'CMS'];
 	$scope.checkAll = function(val) {
 		_.forOwn($scope.formData.Permissions, function(v,k) {

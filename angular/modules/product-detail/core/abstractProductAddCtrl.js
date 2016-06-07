@@ -1,10 +1,11 @@
 var angular = require('angular');
 
 angular.module('productDetail').controller('AbstractProductAddCtrl',
-  function($scope, $uibModal, $window, util, config, Product, ImageService, common,
-    AttributeService, $timeout, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
-    KnownException, NcAlert, $productAdd, options, AttributeSetService,
-    AdminShopService, VariationFactorIndices, AttributeOptions, ShippingService, APExpireDateChangeEvent) {
+        function ($scope, $uibModal, $window, util, config, Product, ImageService, common,
+                            AttributeService, $timeout, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
+                            KnownException, NcAlert, $productAdd, options, AttributeSetService, APImageUploadFailEvent,
+                            AdminShopService, VariationFactorIndices, AttributeOptions, ShippingService, APExpireDateChangeEvent) {
+    'use strict';
     'ngInject';
 
     $scope.readOnly = options.readOnly;
@@ -23,6 +24,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       LocalCategories: [null, null, null],
       MainGlobalCategory: null,
       MainLocalCategory: null,
+      DefaultVariant: null,
       Tags: [],
       ControlFlags: {
         IsNew: false,
@@ -193,28 +195,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       validateSquare: true,
       validateFileSize: 5000000
     };
-    $scope.onImageUploadFail = function(kwd, data) {
-      console.log(kwd, 'kwd');
-      if (kwd == "onmaxsize") {
-        $scope.image_alert.error('Cannot exceed ' + data + ' images for each product.');
-      } else if (kwd == "ondimension") {
-        $scope.image_alert.error('Image dimension must be between ' +
-          IMAGE_DIM_BOUND[0][0] + 'x' +
-          IMAGE_DIM_BOUND[0][1] + ' and ' +
-          IMAGE_DIM_BOUND[1][0] + 'x' + IMAGE_DIM_BOUND[1][1] +
-          '. <strong>Your Image Size is ' + data[0] + "x" + data[1] +
-          '</strong>');
-      } else if (kwd == "ondisable") {
-        $scope.image_alert.error(
-          'You do not have permission to upload images.');
-      } else if (kwd == "onsquare") {
-        $scope.image_alert.error('Image must be a square (1:1 ratio).');
-      } else if (kwd == 'onfilesize') {
-        $scope.image_alert.error('Each image file size must not exceed 5MB')
-      } else {
-        $scope.image_alert.error(common.getError(response.data));
-      }
-    }
+
+    $scope.onImageUploadFail = APImageUploadFailEvent($scope.image_alert, IMAGE_DIM_BOUND);
     $scope.onImageUploadSuccess = function() {
       $scope.image_alert.close();
     }
@@ -230,10 +212,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           $scope.dataset.attributeOptions = angular.copy(AttributeOptions.proto()); // will trigger watchvariantchange
           var catId = Number(res.MainGlobalCategory.CategoryId);
 
-          $productAdd.fill(catId, $scope.pageState,
-            $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory,
-            $scope.controlFlags, $scope.variationFactorIndices, res
-          ).then(function() {
+          $productAdd.fill(catId, $scope.pageState, $scope.dataset, $scope.formData, $scope.breadcrumb.globalCategory,
+            $scope.controlFlags, $scope.variationFactorIndices, res).then(function() {
             $scope.formData.ProductId = Number(res.ProductId);
             $scope.pageState.reset();
             $scope.alert.success(
@@ -546,6 +526,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
 
       function defaultOnEmpty(vari) {
+        if(!_.isObject(vari)) return;
+        
         if (_.isEmpty(vari.SafetyStock)) {
           vari.SafetyStock = 0;
         }
@@ -857,9 +839,16 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             return $scope.alert.error(
               'You have no permission to modify variation (44).');
           }
-          p.Visibility = !p.Visibility
+
+          //if is selected and was visible now will be hidden
+          var forceRecompute = (p.Visibility && $scope.formData.DefaultVariant.text == p.text); 
+          p.Visibility = !p.Visibility;
+
+          //Update Default Variant
+          $productAdd.setDefaultVariantToFirstVisibleVariant($scope.formData, forceRecompute);
         }
 
+        //Variant Detail Modal Dialog
         $scope.openVariantDetail = function(pair, array, index) {
           if ($scope.xspermit(44)) {
             return $scope.alert.error(
@@ -885,20 +874,20 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             backdrop: 'static',
             templateUrl: 'ap/modal-variant-detail',
             controller: function($scope, $uibModalInstance,
-              $timeout, pair, dataset, uploader,
-              imageBlockOptions) {
+              $timeout, pair, dataset, uploader, APImageUploadFailEvent,
+              imageBlockOptions, disableInstallment) {
               'ngInject';
               $scope.pair = pair;
               $scope.imageBlockOptions = imageBlockOptions;
               $scope.dataset = dataset;
               $scope.variantPtr = pair;
               $scope.uploader = uploader;
+              $scope.image_alert = new NcAlert();
 
-              $scope.disableInstallment = function() {
-                if (!$scope.variantPtr.SalePrice) return true;
-                return (Number($scope.variantPtr.SalePrice) || 0) < 5000;
-              }
+              $scope.onImageUploadFail = APImageUploadFailEvent($scope.image_alert, IMAGE_DIM_BOUND);
+              $scope.disableInstallment = disableInstallment;
 
+              //On No button press
               $scope.no = function() {
                 if ($scope.form.$dirty) {
                   if (confirm("Your changes will not be saved, are you sure you want to close this modal?")) {
@@ -907,8 +896,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 } else {
                   $uibModalInstance.close();
                 }
-
               }
+
+              //On Yes button press
               $scope.yes = function() {
                 if($scope.form.$invalid || $scope.uploader.isUploading){
                     $scope.form.$setDirty(true);
@@ -917,11 +907,15 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
                 }
                 $uibModalInstance.close($scope.pair);
               }
+
             },
             size: 'xl',
             resolve: {
               imageBlockOptions: function() {
                 return $scope.imageBlockOptions;
+              },
+              disableInstallment: function(){
+                  return $scope.disableInstallment;
               },
               uploader: function() {
                 return ImageService.getUploader('/ProductImages', {
@@ -1051,4 +1045,4 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       $scope.form = $scope.addProductForm;
     });
 
-  })
+  });

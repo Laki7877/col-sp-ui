@@ -16,8 +16,8 @@
         <form name="form" class="ah-form" novalidate="">
           <!--id-->
           <div nc-template="common/input/form-group-with-label" nc-label="PID" nc-template-form="form.Pids">
-            <input class="form-control width-field-large" name="Pids" ng-model="formData.PID"/>
-          </div>
+            <input class="form-control width-field-large" name="Pids" ng-model="formData.PID">
+                    </div>
           <!-- Category -->
           <div nc-template="common/input/form-group-with-label" nc-label="Category"  id="form-category">
 
@@ -84,10 +84,10 @@
               <label class="control-label"></label>
             </div>
             <div class="button-size-normal">
-              <button class="button-size-normal btn btn-blue btn-width-xl" ng-click="search()">Search</button>
+              <button id="search"class="button-size-normal btn btn-blue btn-width-xl" ng-click="search(); isDisabled=false">Search</button>
             </div>
             <div class="button-size-normal">
-              <button class="button-size-normal btn btn-green btn-width-xl" ng-click="exportCsv()" style="margin-left:10px;">Export Search</button>
+              <button class="button-size-normal btn btn-green btn-width-xl" ng-click="exportCsv()" style="margin-left:10px;" ng-disabled="isDisabled" ng-init="isDisabled=true">Export Search</button>
             </div>
             <div class="button-size-normal">
               <!-- <a class="button-size-normal btn btn-white btn-width-xl" ng-click="clear()" style="margin-left:20px;">Clear</a> -->

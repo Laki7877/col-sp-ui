@@ -34,7 +34,8 @@ var seller = {
 		'View Inventory': '/inventory'
 	},
 	'Promotion|fa-bookmark': {
-		'Coupons': '/coupons'
+		'Coupons': '/coupons',
+		'Buy 1 Get 1':'/buy1get1'
 	},
 	'CMS|fa fa-contao': {
 	    'CMS Category': '/cms/category',
@@ -49,13 +50,14 @@ var seller = {
 		'User Accounts': '/accounts',
 		'User Roles': '/roles'
 	},
-
 	'Report|fa-file': {
 	    'View Report': '/reports',
         'Sale Report For Seller': '/reports/std/saleforseller',
         'Stock Status Report': '/reports/std/stockstatus',
         'On Hold Report' : '/reports/std/onhold',
-        'Return Report' : '/reports/std/return'
+        'Return Report' : '/reports/std/return',
+        'OI Report' : '/reports/std/oi',
+        'Non-move Report' : '/reports/std/nonmove'
 	}
 };
 var admin = {
@@ -83,8 +85,8 @@ var admin = {
 	'Promotion|fa-bookmark': {
 		'Global Coupons': '/admin/coupons/global',
 		'All Seller Coupons': '/admin/coupons/seller',
-    'On Top Credit Card':'/admin/ontopcredit',
-    'Buy 1 Get 1':'/admin/buy1get1'
+        'On Top Credit Card':'/admin/ontopcredit',
+        // 'Buy 1 Get 1':'/admin/buy1get1'
 	},
     // Create By Col Dev (Natee)
 	'CMS|fa fa-contao': {
@@ -97,7 +99,15 @@ var admin = {
 	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'
-	}
+	},
+	'Content Report|fa-file-o': {
+		'Create & Approve Product' : '/admin/summary/createandapprove',
+		'Product Status': '/admin/summary/productstatus',
+		'Product Info': '/admin/summary/productinfo',
+		'Product Onweb': '/admin/summary/productonweb',
+		'SKU - Effective' : '/admin/summary/skueffective',
+		'SKU - Not Effective' : '/admin/summary/skunoteffective',
+	},
 };
 var permission = {
 	//Admin
@@ -117,6 +127,7 @@ var permission = {
 	81: '/admin/products/reviews',
 	22: '/admin/cms',
 	27: ['/admin/reports/std/stockstatus', '/admin/reports/std/onhold', '/admin/reports/std/return'],
+
 	// 24: ['/admin/cms/category/create', '/admin/cms/master/create', '/admin/cms/group/create'],
 
 	//Seller
@@ -132,6 +143,7 @@ var permission = {
 	50: '/inventory',
 	52: '/coupons',
 	53: '/coupons/add',
+	54: '/buy1get1',
 	55: '/shops/settings',
 	56: '/shops/appearance',
 	57: ['/roles', '/accounts'],
@@ -144,7 +156,9 @@ var permission = {
 	65: '/products/groups',
 	66: '/products/images',
 	//68: '/inventory',
-	69: ['/coupons', '/coupons/add']
+	69: ['/coupons', '/coupons/add'],
+	70: '/buy1get1',
+	79: '/cms/master'
 };
 
 function generateRouteArray(obj) {
