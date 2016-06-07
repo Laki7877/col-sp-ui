@@ -1382,6 +1382,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 				$scope.alert.success("Products grouped successfully. <a href='" +
 					productLink + "'>View Product List</a>");
 				$scope.loading = false;
+				$scope.formData.Category.CategoryId = null;
 			}, function(er) {
 				console.log(er);
 				$scope.alert.error("Unable to group product because " + (er.Message ||
@@ -21691,8 +21692,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             return $scope.alert.error(
               'You have no permission to modify variation (44).');
           }
-          
-          //was visible now will be hidden
+
+          //if is selected and was visible now will be hidden
           var forceRecompute = (p.Visibility && $scope.formData.DefaultVariant.text == p.text); 
           p.Visibility = !p.Visibility;
 
