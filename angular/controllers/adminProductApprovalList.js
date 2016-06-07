@@ -1,6 +1,12 @@
+/**
+ * Handle admin product approval listing page
+ */
 module.exports = function($scope, $controller, Product, config, util) {
 	'ngInject';
+    //getter for product status
     $scope.asStatus = Product.getStatus;
+
+    //inherit list ctrl
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
 		options: {
@@ -11,10 +17,12 @@ module.exports = function($scope, $controller, Product, config, util) {
 			id: 'ProductId',
 			actions: ['View Only'],
 			bulks: [
+				//force approve action
 				util.bulkTemplate('Force Approve', Product.approve, 'ProductId', 'Product', {
 					btnConfirm: 'Approve',
 					btnClass: 'btn-green'
 				}),
+				//reject action
 				util.bulkTemplate('Reject', Product.reject, 'ProductId', 'Product', {
 					btnConfirm: 'Reject',
 					btnClass: 'btn-red'
@@ -27,6 +35,7 @@ module.exports = function($scope, $controller, Product, config, util) {
 			]
 		}
 	});
+	//dropdown filter
 	$scope.filter2Options = [
 		{
 			name: 'None',

@@ -1,5 +1,9 @@
+/**
+ * Handle admin master product listing page
+ */
 module.exports = function($scope, $controller, $window, AdminMasterProductService, config) {
 	'ngInject';
+	// inherit from list ctrl
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
 		options: {
@@ -21,6 +25,7 @@ module.exports = function($scope, $controller, $window, AdminMasterProductServic
 			}]
 		}
 	});
+	// get list of child products as string
 	$scope.getChildProducts = function(list) {
 		return _.join(_.map(list, function(e) { return e.Pid }), ', ');
 	};

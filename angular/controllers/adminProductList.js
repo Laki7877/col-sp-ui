@@ -1,5 +1,9 @@
+/**
+ * Handle admin product listing
+ */
 module.exports = function($scope, $controller, Product, common, config, $base64, $timeout) {
 	'ngInject';
+    //inherit from advance list ctrl
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
 		options: {
@@ -11,6 +15,7 @@ module.exports = function($scope, $controller, Product, common, config, $base64,
 			actions: ['View'],
 			bulks: ['Show', 'Hide',
             {
+                //publish action
                 name: 'Publish',
                 fn: function(arr, cb) {
                     $scope.alert.close();
@@ -20,6 +25,7 @@ module.exports = function($scope, $controller, Product, common, config, $base64,
                         return;
                     }
 
+                    //bulk publish endpoint
                     Product.bulkPublish(_.map(arr, function(e) {
                         return _.pick(e, ['ProductId']);
                     })).then(function() {
@@ -31,6 +37,7 @@ module.exports = function($scope, $controller, Product, common, config, $base64,
                         $scope.reload();
                     });
                 },
+                //use confirmation
                 confirmation: {
                     title: 'Confirm to publish',
                     message: 'Are you sure you want to publish {{model.length}} products?',
@@ -39,6 +46,7 @@ module.exports = function($scope, $controller, Product, common, config, $base64,
                 }
             },
             {
+                //add tags action
 		        name: 'Add Tags',
 		        fn: function(add, cb, model) {
 		            $scope.alert.close();
@@ -51,6 +59,7 @@ module.exports = function($scope, $controller, Product, common, config, $base64,
 		                $scope.reload();
 		            });
 		        },
+                //add tag modal
 		        modal: {
 		            size: 'size-warning',
 		            templateUrl: 'product/modalAddTags',
@@ -60,6 +69,7 @@ module.exports = function($scope, $controller, Product, common, config, $base64,
 		                	tags: []
 		                };
 		                $scope.close = function() {
+                            //return Products and Tags to the list
 		                    $uibModalInstance.close({
 		                        Products: _.map(data, function(e) {
 		                            return _.pick(e, ['ProductId']);
@@ -82,19 +92,24 @@ module.exports = function($scope, $controller, Product, common, config, $base64,
 			]
 		}
 	});
+
+    //product status hashmap
     $scope.statusLookup = {};
 	$scope.statusDropdown = config.PRODUCT_STATUS;    
 	config.PRODUCT_STATUS.forEach(function(object){
        $scope.statusLookup[object.value] = object;
     });
-	
+
+    //get product status
     $scope.asStatus = function (ab) {
         return $scope.statusLookup[ab];
     };
+    //join tag into string
     $scope.getTag = function(tags) {
         return _.join(tags, ', ');
     }
 	
+    //export selected products
     $scope.exportSelected = function(){
         $scope.alert.close();
         if ($scope.bulkContainer.length == 0) {
@@ -104,6 +119,8 @@ module.exports = function($scope, $controller, Product, common, config, $base64,
     };
 
     $scope.searchCriteria = null;
+
+    //export search result
     $scope.exportSearchResult = function() {
         if(!$scope.advanceSearchParams){
             return $scope.alert.error("Unable to Export. There are no products in your search result.");

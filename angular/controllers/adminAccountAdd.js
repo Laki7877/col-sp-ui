@@ -1,3 +1,6 @@
+/**
+ * Handle admin account adding page
+ */
 module.exports = function($scope, $controller, AdminAccountService, AdminRoleService, Credential) {
 	'ngInject';
 	//Inherit from abstract ctrl

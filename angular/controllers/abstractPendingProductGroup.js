@@ -1,6 +1,4 @@
-module.exports = function($scope, $rootScope, $controller, NcAlert,
-		config, $uibModal, GlobalCategory, Category, AttributeSet, Product, ProductTempService, options,
-		VariationFactorIndices, AttributeSetService, AttributeOptions, $productAdd, AdminShopService) {
+module.exports = function($scope, $rootScope, $controller, NcAlert, config, $uibModal, GlobalCategory, Category, AttributeSet, Product, ProductTempService, options, VariationFactorIndices, AttributeSetService, AttributeOptions, $productAdd, AdminShopService) {
 	'ngInject';
     
     $scope.adminMode = (options.adminMode);
