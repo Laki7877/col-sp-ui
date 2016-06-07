@@ -185,6 +185,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .directive('ngMinnumber', directives.ngMinnumber)
   .directive('ngMaxnumber', directives.ngMaxnumber)
   .directive('ngDateBefore', directives.ngDateBefore)
+  .directive('ngEnter', directives.ngEnter)
+
   // Filters
   .filter('capitalize', filters.capitalize)
   .filter('ordinal', filters.ordinal)
@@ -235,6 +237,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('SellerPendingProductsGroupCtrl', controllers.sellerPendingProductsGroup)
   // .controller('SellerReportCtrl', controllers.sellerReport)
   .controller('StdSaleReportSellerCtrl', controllers.StdSaleReportSellerList)
+  .controller('SellerBuy1Get1AddCtrl',controllers.sellerBuy1Get1Add)
+  .controller('SellerBuy1Get1ListCtrl',controllers.sellerBuy1Get1List)
 
   .controller('AdminAttributeCtrl', controllers.adminAttribute)
   .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)
@@ -288,6 +292,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
 
   .controller('AdminCMSMasterListCtrl', controllers.adminCMSMasterList)
   .controller('AdminCMSMasterAddCtrl', controllers.adminCMSMasterAdd)
+
+   //Report iOath
   .controller('SellerStdSaleReportSellerCtrl', controllers.sellerStdSaleReportSellerList)
   .controller('SellerStdStockReportCtrl', controllers.sellerStdStockReportList)
   .controller('SellerStdOnHoldReportCtrl', controllers.sellerStdOnHoldReportList)

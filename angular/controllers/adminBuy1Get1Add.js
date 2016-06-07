@@ -1,6 +1,6 @@
-module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibModal, $timeout) {
+module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibModal, $timeout, $rootScope) {
     'ngInject';
-
+    $scope.manageBuy1Get1AD = !$rootScope.permit(82); 
     $scope.formData     = {};
 
     $scope.loading      = false;

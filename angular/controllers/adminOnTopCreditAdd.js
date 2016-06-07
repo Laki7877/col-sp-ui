@@ -129,7 +129,7 @@ module.exports = function ($scope, $controller, OnTopCredit, config) {
 
     //Remove
     $scope.removeItems = function (item, index) {
-        debugger;
+        // debugger;
         $scope.items.splice(index, 1);
     }
 

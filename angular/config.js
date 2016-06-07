@@ -1,5 +1,5 @@
 module.exports = {
-     REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
+    REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	// REST_SERVICE_BASE_URL: 'http://27.254.48.174/sellerportal/api',
     // REST_SERVICE_BASE_URL: 'http://localhost:58127/api',
     //REST_SERVICE_BASE_URL: 'http://devmkp-colspapi.cenergy.co.th/api',
@@ -48,6 +48,10 @@ module.exports = {
 		{
 			name: 'Local Category',
 			value: 'LocalCategory'
+		},
+        {
+            name: 'Product',
+            value: 'Product'
 		}
 		],
 		COUPON_DISCOUNT: [

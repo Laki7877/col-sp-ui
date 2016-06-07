@@ -93,7 +93,6 @@ Route::add('/cms/master/:id', 'SellerController::editCMSMaster');
 //Report
 Route::add('/reports/std/saleforseller', 'SellerController::listStandardReport');
 
-
 //admin routing 
 Route::add('/admin/onboarding', 'AdminController::onboarding');
 Route::add('/admin/attributes/add','AdminController::addAttribute');
@@ -153,9 +152,14 @@ Route::add('/admin/cms/group/:id', 'AdminController::editCMSGroup');
 Route::add('/admin/cms/master', 'AdminController::listCMSMaster');
 Route::add('/admin/cms/master/create', 'AdminController::addCMSMaster');
 Route::add('/admin/cms/master/:id', 'AdminController::editCMSMaster');
-Route::add('/admin/buy1get1','AdminController::listBuy1Get1');
-Route::add('/admin/buy1get1/create','AdminController::addBuy1Get1');
-Route::add('/admin/buy1get1/:id','AdminController::editBuy1Get1');
+// Route::add('/admin/buy1get1','AdminController::listBuy1Get1');
+// Route::add('/admin/buy1get1/create','AdminController::addBuy1Get1');
+// Route::add('/admin/buy1get1/:id','AdminController::editBuy1Get1');
+
+// seller buy 1 get 1
+Route::add('/buy1get1','SellerController::listBuy1Get1');
+Route::add('/buy1get1/create','SellerController::addBuy1Get1');
+Route::add('/buy1get1/:id','SellerController::editBuy1Get1');
 
 //iOath
 Route::add('/reports/std/saleforseller', 'SellerController::listStandardReport');

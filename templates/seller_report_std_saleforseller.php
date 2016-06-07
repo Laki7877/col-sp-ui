@@ -16,8 +16,8 @@
         <form name="form" class="ah-form" novalidate="">
           <!--id-->
           <div nc-template="common/input/form-group-with-label" nc-label="PID" nc-template-form="form.Pids">
-            <input class="form-control width-field-large" name="Pids" ng-model="formData.PID"/>
-          </div>
+            <input class="form-control width-field-large" name="Pids" ng-model="formData.PID">
+                    </div>
           <!-- Category -->
           <div nc-template="common/input/form-group-with-label" nc-label="Category"  id="form-category">
 

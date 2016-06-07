@@ -32,6 +32,8 @@
 
 
     <script src="/assets/libs/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script src='https://cdn.jsdelivr.net/jsbarcode/3.3.7/JsBarcode.all.min.js'></script>
 </head>
 
 <body id="body" class="ahpt" ng-cloak ng-controller="RootCtrl" ng-strict-di>

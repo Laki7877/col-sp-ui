@@ -34,12 +34,13 @@ var seller = {
 		'View Inventory': '/inventory'
 	},
 	'Promotion|fa-bookmark': {
-		'Coupons': '/coupons'
+		'Coupons': '/coupons',
+		'Buy 1 Get 1':'/buy1get1'
 	},
 	'CMS|fa fa-contao': {
 	    'CMS Category': '/cms/category',
-	    'CMS Static & Collection': '/cms/master',
-	    'CMS Group': '/cms/group'
+	    'CMS Static & Collection': '/cms/master'
+	    // 'CMS Group': '/cms/group'
 	},
 	'Shop Setting|fa-sliders': {
 		'Shop Profile': '/shops/settings',
@@ -87,13 +88,13 @@ var admin = {
 		'All Seller Coupons': '/admin/coupons/seller',
 		'Seller Coupons': '/admin/coupons/seller',
         'On Top Credit Card':'/admin/ontopcredit',
-        'Buy 1 Get 1':'/admin/buy1get1'
+        // 'Buy 1 Get 1':'/admin/buy1get1'
 	},
     // Create By Col Dev (Natee)
 	'CMS|fa fa-contao': {
 	    'CMS Category': '/admin/cms/category',
-	    'CMS Static & Collection': '/admin/cms/master',
-	    'CMS Group': '/admin/cms/group'
+	    'CMS Static & Collection': '/admin/cms/master'
+	    // 'CMS Group': '/admin/cms/group'
 	},
 	'Reports|fa-file': {
 	    
@@ -128,6 +129,7 @@ var permission = {
 	81: '/admin/products/reviews',
 	22: '/admin/cms',
 	27: ['/admin/reports/std/stockstatus', '/admin/reports/std/onhold', '/admin/reports/std/return'],
+
 	// 24: ['/admin/cms/category/create', '/admin/cms/master/create', '/admin/cms/group/create'],
 
 	//Seller
@@ -143,6 +145,7 @@ var permission = {
 	50: '/inventory',
 	52: '/coupons',
 	53: '/coupons/add',
+	54: '/buy1get1',
 	55: '/shops/settings',
 	56: '/shops/appearance',
 	57: ['/roles', '/accounts'],
@@ -155,7 +158,9 @@ var permission = {
 	65: '/products/groups',
 	66: '/products/images',
 	//68: '/inventory',
-	69: ['/coupons', '/coupons/add']
+	69: ['/coupons', '/coupons/add'],
+	70: '/buy1get1',
+	79: '/cms/master'
 };
 
 function generateRouteArray(obj) {

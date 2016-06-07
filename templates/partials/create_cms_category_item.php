@@ -87,7 +87,7 @@
               </tr>
             </tbody>
           </table>
-         
+        
         </div>
       </div>
     </div>
@@ -127,7 +127,7 @@
               <!-- Brand -->
               <div class="form-group">
                   <label>Brand</label>
-                  <ui-select ng-model="brand.selected" ng-disabled="disabled" style="min-width: 300px;">
+                  <ui-select ng-model="brand.selected" ng-disabled="!category.selected" style="min-width: 300px;">
                     <ui-select-match placeholder="Select a brand in the list">{{$select.selected.BrandNameEn}}</ui-select-match>
                     <ui-select-choices repeat="b in brands | propsFilter: {BrandNameTh: $select.search, BrandNameTh: $select.search}">
                       <div ng-bind-html="b.BrandNameEn | highlight: $select.search"></div>
@@ -136,9 +136,9 @@
               </div>
 
               <!-- Tag -->
-              <div class="form-group">
+              <div class="form-group" ng-show="brand.selected">
                 <label>Tag</label>
-                  <ui-select multiple="" ng-model="tag.selected" ng-disabled="disabled" style="min-width: 300px;">
+                  <ui-select multiple="" ng-model="tag.selected" style="min-width: 300px;">
                     <ui-select-match placeholder="Select tags">{{$item.Tag}}</ui-select-match>
                     <ui-select-choices repeat="t in tags | propsFilter: {Tag: $select.search}">
                       <div ng-bind-html="t.Tag | highlight: $select.search"></div>
@@ -147,7 +147,7 @@
               </div>
 
               <!-- Search By -->
-              <div class="form-group">
+              <div class="form-group" ng-show="brand.selected">
                 <label>Search By</label>
                   <select class="form-control" ng-model="searchBy" style="min-width: 300px;">
                     <option value="ProductName">Name</option>
@@ -156,7 +156,7 @@
                   </select>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" ng-show="brand.selected">
                 <label>Search</label>
                   <div class="input-group search-box" style="min-width: 300px;">
                     <input class="form-control input-search-icon" ng-model="searchText" placeholder="Search for Product" />
@@ -176,7 +176,7 @@
             <div class="form-section-header">
               <h2>Result</h2>
             </div>
-            <div class="form-section-content" style="padding: 10px; min-height: 400px; overflow: auto;">
+            <div class="form-section-content" style="padding: 10px; min-height: 400px; overflow: scroll;width: 400px;height: 100px;">
 
               <div class="table-section" style="margin-top: 0px;" ng-show="!loading && !isEmpty">
                 <table class="table table-curved">
