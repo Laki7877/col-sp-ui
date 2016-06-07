@@ -10180,8 +10180,16 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
 			var file = new Blob([data], {type: 'application/csv'});
 			var fileURL = URL.createObjectURL(file);
 			var a = document.getElementById("download_template_btn");
-			a.href = fileURL;
-			a.click();
+			
+			if(window.navigator.msSaveOrOpenBlob){
+				//Handle IE
+				window.navigator.msSaveOrOpenBlob(file, fileName);
+			}
+			else{
+				a.href = fileURL;
+				a.click();
+			}
+
 		});
 	};
 
