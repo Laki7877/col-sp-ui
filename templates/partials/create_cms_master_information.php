@@ -79,7 +79,7 @@
                       </div>
                     </div> -->
                     <div nc-template="common/input/form-group-with-label" nc-template-form="form.SortBy" nc-label="Default Sort By">
-                      <ui-select ng-model="formData.SortBy" name="SortBy" search-enabled="false" required>
+                      <ui-select ng-model="formData.SortBy" name="SortBy" search-enabled="false">
                         <ui-select-match placeholder="- Select Default Sort -">{{$select.selected.SortByName}}</ui-select-match>
                         <ui-select-choices repeat="item in sortBy">{{item.SortByName}}</ui-select-choices>
                       </ui-select>
