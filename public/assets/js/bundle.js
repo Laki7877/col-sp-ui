@@ -18692,6 +18692,7 @@ angular.module('nc')
 			template: $templateCache.get('common/ncProductLayout'),
 			link: function(scope) {
 				scope.src = {};
+				scope.loading = false;
 				scope.$watch('src.model', function(n, o) {
 					if(!scope.source) {
 						scope.source = _.defaults(scope.source, {
@@ -18712,12 +18713,13 @@ angular.module('nc')
 					else {
 						if(scope.source.Products && scope.source.Products.length > 0) {
 							if(scope.source.Products.length > 0) {
+								scope.loading = true;
 								Product.advanceList({
 									_limit: scope.source.Products.length,
 									Pids: scope.source.Products
 								}).then(function(data) {
+									scope.loading = false;
 									scope.src.model = data.data;
-									console.log(scope.src.model, data);
 								});
 							}
 						}
@@ -20791,7 +20793,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
 
 
   $templateCache.put('common/ncProductLayout',
-    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.Enabled\">{{letter}}.) {{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\" ng-if=source.Enabled><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleEn\"></div></div><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleTh\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Subtitle (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.SubtitleEn\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Subtitle (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.SubtitleTh\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.Link\"></div></div><div class=form-group><div class=width-label><label class=control-label>Select Product</label></div><div class=width-field-normal><ui-select multiple ng-model=src.model><ui-select-match placeholder=\"Product Name\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=refresh($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=width-field-normal><input class=form-inline type=checkbox ng-model=\"source.DisplayCountTime\"> Display Countdown Time</div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2><input type=checkbox style=\"margin-right: 10px\" ng-model=\"source.Enabled\">{{letter}}.) {{title}}</h2></div><div class=\"form-section-content padding-left-15 padding-right-15\" ng-if=source.Enabled><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleEn\"></div></div><div class=form-group><div class=width-label><label class=control-label>{{letter}} Title (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.TitleTh\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Subtitle (Eng)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.SubtitleEn\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Subtitle (ไทย)</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.SubtitleTh\"></div></div><div class=form-group ng-if=subtitle><div class=width-label><label class=control-label>{{letterx}} Link</label></div><div class=width-field-normal><input class=form-control ng-model=\"source.Link\"></div></div><div class=form-group><div class=width-label><label class=control-label>Select Product</label></div><div class=width-field-normal><div ng-if=!loading><ui-select multiple ng-model=src.model><ui-select-match placeholder=\"Product Name\">{{ $item.ProductNameEn }}</ui-select-match><ui-select-choices placeholder=\"Search result\" refresh=refresh($select.search) refresh-delay=150 repeat=\"i in products\">{{ i.ProductNameEn }}</ui-select-choices></ui-select></div><div ng-if=loading><img src=/assets/img/loader.gif width=40 style=margin-left:-10px>Loading</div></div></div><div class=form-group><div class=width-label><label class=control-label></label></div><div class=width-field-normal><input class=form-inline type=checkbox ng-model=\"source.DisplayCountTime\"> Display Countdown Time</div></div></div></div>"
   );
 
 
@@ -26478,7 +26480,8 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
     };
     if(!_.isNil(accessToken)) {
       options.headers = {
-        Authorization: 'Bearer ' + accessToken
+        Authorization: 'Bearer ' + accessToken,
+        Accept: 'application/json;charset=utf-8'
       };
     }
     return Upload.upload(_.merge(options, opts));
@@ -26502,7 +26505,8 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
       url: config.REST_SERVICE_BASE_URL + url,
       autoUpload: true,
       headers: {
-        Authorization: 'Bearer ' + accessToken
+        Authorization: 'Bearer ' + accessToken,
+        Accept: 'application/json;charset=utf-8'
       },
       removeAfterUpload : true,
       filters: [{

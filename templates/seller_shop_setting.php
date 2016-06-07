@@ -233,7 +233,7 @@
 						                    	nc-template-form="form.CountryCode"
 						                    	nc-label="Country Code"
 						                    	nc-template-options-path="addShopAccountForm/CountryCode">
-													<ui-select name="CountryCode" ng-model="formData.Country" search-enabled="false" ng-disabled="true">
+													<ui-select name="CountryCode" ng-model="formData.Country" search-enabled="false" ng-disabled="true" ng-disabled="true">
 														<ui-select-match placeholder="- Select Country Code -">
 															<span ng-bind="$select.selected.CountryCode"></span>
 														</ui-select-match>
@@ -260,7 +260,7 @@
 						                    	nc-template-form="form.City"
 						                    	nc-label="City"
 						                    	nc-template-options-path="addShopAccountForm/City">
-													<ui-select name="City" ng-model="formData.City" search-enabled="false">
+													<ui-select name="City" ng-model="formData.City" search-enabled="false" ng-disabled="true">
 														<ui-select-match placeholder="- Select City -">
 															<span ng-bind="$select.selected.CityName"></span>
 														</ui-select-match>
@@ -275,7 +275,7 @@
 						                    	nc-template-form="form.District"
 						                    	nc-label="District"
 						                    	nc-template-options-path="addShopAccountForm/District">
-													<ui-select name="District" ng-model="formData.District" search-enabled="false">
+													<ui-select name="District" ng-model="formData.District" search-enabled="false" ng-disabled="true">
 														<ui-select-match placeholder="- Select District -">
 															<span ng-bind="$select.selected.DistrictName"></span>
 														</ui-select-match>
@@ -290,7 +290,7 @@
 						                    	nc-template-form="form.PostalCode"
 						                    	nc-template-options-path="addShopAccountForm/PostalCode"
 						                    	nc-label="Postal Code">
-													<ui-select name="PostalCode" ng-model="formData.PostalCode" search-enabled="false">
+													<ui-select name="PostalCode" ng-model="formData.PostalCode" search-enabled="false" ng-disabled="true">
 														<ui-select-match placeholder="- Select Postal Code -">
 															<span ng-bind="$select.selected.PostCode"></span>
 														</ui-select-match>

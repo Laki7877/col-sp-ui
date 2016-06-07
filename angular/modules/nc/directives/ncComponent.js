@@ -43,6 +43,7 @@ angular.module('nc')
 			template: $templateCache.get('common/ncProductLayout'),
 			link: function(scope) {
 				scope.src = {};
+				scope.loading = false;
 				scope.$watch('src.model', function(n, o) {
 					if(!scope.source) {
 						scope.source = _.defaults(scope.source, {
@@ -63,12 +64,13 @@ angular.module('nc')
 					else {
 						if(scope.source.Products && scope.source.Products.length > 0) {
 							if(scope.source.Products.length > 0) {
+								scope.loading = true;
 								Product.advanceList({
 									_limit: scope.source.Products.length,
 									Pids: scope.source.Products
 								}).then(function(data) {
+									scope.loading = false;
 									scope.src.model = data.data;
-									console.log(scope.src.model, data);
 								});
 							}
 						}
