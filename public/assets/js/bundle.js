@@ -9314,9 +9314,15 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 			$scope.exporter.href = fileURL;
 			$scope.exporter.download = fileName;
 			$scope.exporter.progress = 100;
-			a.href = fileURL;
-			a.click();
 
+			if(window.navigator.msSaveOrOpenBlob){
+				//Handle IE
+				window.navigator.msSaveOrOpenBlob(file);
+			}
+			else{
+				a.href = fileURL;
+				a.click();
+			}
 		});
 	}
 
