@@ -14,5 +14,5 @@
 }
 
 .table .column-text-ellipsis {
-	max-width: 300px !important;
+	min-width: 300px !important;
 }
