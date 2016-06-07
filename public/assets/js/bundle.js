@@ -16557,11 +16557,11 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
     service.variant.asString = function (a, b) {
         var lft = null;
         var rght = null;
-        lft = (a.ValueEn || a.AttributeValueEn || '');
+        lft = (_.get(a, 'ValueEn') || _.get(a, 'AttributeValueEn') || '');
         if(b == null){
           rght = '';
         }else{
-          rght = (b.ValueEn || b.AttributeValueEn || '');
+          rght = (_.get(b,'ValueEn') || _.get(b, 'AttributeValueEn') || '');
         }
 
         return lft + (rght ? ", " + rght : "");
