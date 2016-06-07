@@ -1,7 +1,7 @@
 /* CSS for Firefox Only */
 /*.onboarding_wrapper .welcome_text_big{
   color: #ff0000 !important;
-}*/
+}*/ 
 
 /* Fix Bulk Action Arrow */
 .search-section-wrapper .search-section-item .bulk-action-dropdown .caret {
@@ -11,8 +11,4 @@
 /* Fix Bulk Action Text */
 .search-section-wrapper .search-section-item button{
   padding-top: 4px !important;
-}
-
-.table .column-text-ellipsis {
-	min-width: 300px !important;
 }
