@@ -9317,7 +9317,7 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 
 			if(window.navigator.msSaveOrOpenBlob){
 				//Handle IE
-				window.navigator.msSaveOrOpenBlob(file);
+				window.navigator.msSaveOrOpenBlob(file, fileName);
 			}
 			else{
 				a.href = fileURL;
