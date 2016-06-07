@@ -12,7 +12,8 @@ module.exports = function($q, $http, common, storage, config, FileUploader, Uplo
     };
     if(!_.isNil(accessToken)) {
       options.headers = {
-        Authorization: 'Bearer ' + accessToken
+        Authorization: 'Bearer ' + accessToken,
+        Accept: 'application/json;charset=utf-8'
       };
     }
     return Upload.upload(_.merge(options, opts));
