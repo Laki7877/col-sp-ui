@@ -80,7 +80,7 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
 
       kpair.FirstAttribute = firstAttribute;
       kpair.SecondAttribute = secondAttribute;
-      kpair.text = util.variant.toString(firstAttribute, secondAttribute);
+      kpair.text = util.variant.asString(firstAttribute, secondAttribute);
       if(dataSet.VariantDisplayOption) kpair.Display = dataSet.VariantDisplayOption[0].value;
       kpair.Visibility = true;
       if(kpair.SEO) kpair.SEO.ProductUrlKeyEn = "";
@@ -92,7 +92,7 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
         kpair = vHashSet[kpair.text];
       }
 
-      var hashNew = (util.variant.toString(kpair.FirstAttribute, kpair.SecondAttribute));
+      var hashNew = (util.variant.asString(kpair.FirstAttribute, kpair.SecondAttribute));
       if (!trackVariant.has(hashNew)) {
         //Only push new variant if don't exist
 
