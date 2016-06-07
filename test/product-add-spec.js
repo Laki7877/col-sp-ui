@@ -1,11 +1,11 @@
 describe('Automated Man', function() {
 
   var width = 1200;
-  var height = 800;
+  var height = 1000;
   browser.driver.manage().window().setSize(width, height);
 
   var random1000  =  Math.floor(Math.random()*10000);
-  var defaultSleep = 1000;
+  var defaultSleep = 500;
 
   it('should login', function() {
 
@@ -37,7 +37,7 @@ describe('Automated Man', function() {
     element(by.model('formData.GroupNameEn')).sendKeys('ROLE ' + timeStamp());
     element(by.model('obj.selectAll')).click();
 
-    saveChanges();
+    saveChanges('.main-form-action .btn-blue');
 
     element(by.css('.alert a')).click();
 
@@ -60,7 +60,7 @@ describe('Automated Man', function() {
     element(by.model('formData.UserGroup')).click();
     element(by.css('#ui-select-choices-row-1-0')).click();
 
-    saveChanges();
+    saveChanges('.main-form-action .btn-blue');
 
     element(by.css('.alert a')).click();
 
@@ -90,7 +90,7 @@ describe('Automated Man', function() {
 
     browser.sleep(defaultSleep);
 
-    saveChanges();
+    saveChanges('.main-form-action .btn-blue');
 
   });
 
@@ -109,42 +109,22 @@ describe('Automated Man', function() {
 
     browser.sleep(defaultSleep);
 
-    var button_save = element(by.css('.modal-header .btn-blue'));
-    console.log(button_save)
-    button_save.click();
+    saveChanges('.modal-header .btn-blue');
 
-    var EC = protractor.ExpectedConditions;
-    // Waits for the element with id 'abc' to be visible on the dom.
-    browser.wait(EC.visibilityOf($('.alert')), 5000);
     browser.sleep(defaultSleep);
 
   });
 
-  it('should add new product', function(){
+  xit('should add new minimum product and save as draft', function(){
     browser.get('http://localhost:5000/products');
 
-    browser.sleep(defaultSleep);
+    selectGlobalCategory();
 
-    element(by.css('.page-header-action .btn-blue')).click();
-
-    element(by.xpath('//li[text()="Imaginary Land"]')).click();
-    browser.sleep(500);
-    element(by.xpath('//li[text()="Pokemon"]')).click();
-
-    element(by.css('.category-footer .btn-blue')).click();
-
-    var EC = protractor.ExpectedConditions;
-    // Waits for the element with id 'abc' to be visible on the dom.
-    browser.wait(EC.visibilityOf($('.page-header-title')), 5000);
-    element(by.model('variantPtr.ProductNameEn')).sendKeys('Product ' + timeStamp());
-    element(by.model('variantPtr.ProductNameTh')).sendKeys('สินค้า ' + timeStamp());
+    element(by.model('variantPtr.ProductNameEn')).sendKeys('Product MIN ' + timeStamp());
+    element(by.model('variantPtr.ProductNameTh')).sendKeys('สินค้า MIN ' + timeStamp());
     element(by.model('variantPtr.Sku')).sendKeys('SKU' + random1000);
 
-    var brand = element(by.model('formData.Brand'));
-    var selectBrand = brand.element(by.css('input'));
-    selectBrand.click();
-    selectBrand.sendKeys("NIKE");
-    selectBrand.sendKeys(protractor.Key.ENTER);
+    selectBrand('NIKE');
 
     var price = random1000 + 5000;
 
@@ -153,25 +133,166 @@ describe('Automated Man', function() {
 
     browser.sleep(defaultSleep);
 
-    var button_save = element(by.css('.main-form-action .btn-white'));
-    console.log(button_save)
-    button_save.click();
+    saveChanges('.main-form-action .btn-white');
+
+    browser.sleep(defaultSleep);
+
+  });
+
+  it('should add new product and fill out "Vital Information" in "Information Tab"', function(){
+    browser.get('http://localhost:5000/products');
+
+    selectGlobalCategory();
+
+    element(by.model('variantPtr.ProductNameEn')).sendKeys('Product MAX ' + timeStamp());
+    element(by.model('variantPtr.ProductNameTh')).sendKeys('สินค้า MAX ' + timeStamp());
+    element(by.model('variantPtr.ProdTDNameEn')).sendKeys(randomX(10));
+    element(by.model('variantPtr.ProdTDNameTh')).sendKeys(randomX(10));
+    element(by.model('variantPtr.Sku')).sendKeys('SKU' + random1000);
+    element(by.model('variantPtr.Upc')).sendKeys(randomX(13));
+    selectBrand('NIKE');
+
+  });
+
+  it('should add new product and fill out "Price" in "Information Tab"', function(){
+    var price = random1000 + 5000;
+    browser.executeScript('window.scrollTo(0,700);');
+    element(by.model('variantPtr.SalePrice')).sendKeys(price);
+    element(by.model('variantPtr.OriginalPrice')).sendKeys(price + 1);
+
+    var input_installment = element(by.model('variantPtr.Installment'));
+    input_installment.click();
+    input_installment.element(by.css('option:nth-child(2)')).click();
+
+    browser.executeScript('window.scrollTo(0,1100);');
+
+    element(by.model('variantPtr.PromotionPrice')).sendKeys(price - 1);
+
+    element(by.css('#dropdown_promotion_effective_date')).click();
+    selectDate();
+
+    element(by.css('#dropdown_promotion_expire_date')).click();
+    element(by.css('.open .dropdown-menu .glyphicon-arrow-right')).click();
+    selectDate();
+
+    element(by.model('variantPtr.UnitPrice')).sendKeys(price - 1);
+    element(by.model('variantPtr.PurchasePrice')).sendKeys(price - 1);
+    element(by.model('variantPtr.SaleUnitEn')).clear().sendKeys(randomX(10));
+    element(by.model('variantPtr.SaleUnitTh')).clear().sendKeys(randomX(10));
+
+    var input_isvat = element(by.model('variantPtr.IsVat'));
+    selectDropdown(input_isvat,'2');
+  });
+
+  it('should add new product and fill out "Attributes" in "Information Tab"', function(){
+    browser.executeScript('window.scrollTo(0,1700);');
+
+    var attribute_set = element(by.model('formData.AttributeSet')).element(by.css('input'));
+    attribute_set.click();
+    attribute_set.clear().sendKeys('pokemon');
+    browser.sleep(500);
+    attribute_set.sendKeys(protractor.Key.ENTER);
+    browser.sleep(500);
+
+    var pokemon_type_1 = element(by.css('.form-group select[name=AmapInput0]'));
+    selectDropdown(pokemon_type_1,'2');
+
+    var pokemon_type_2 = element(by.css('.form-group select[name=AmapInput1]'));
+    selectDropdown(pokemon_type_2,'3');
+  });
+
+  it('should add new product and fill out "Default Attributes" in "Information Tab"', function(){
+    browser.executeScript('window.scrollTo(0,2300);');
+
+    var test_required_default_attribute = element(by.model('formData.MasterAttribute[da.AttributeId].ValueEn'));
+    test_required_default_attribute.sendKeys(randomX(10));
+
+    var test_required_default_attribute_th = element(by.model('formData.MasterAttribute[da.AttributeId].ValueTh'));
+    test_required_default_attribute_th.sendKeys(randomX(10));
+
+  });
+
+  it('should add new product and fill out "Description" in "Information Tab"', function(){
+    browser.executeScript('window.scrollTo(0,3000);');
+
+    element(by.model('variantPtr.DescriptionShortEn')).sendKeys(randomX(10));
+    element(by.model('variantPtr.DescriptionShortTh')).sendKeys(randomX(10));
+    element(by.model('variantPtr.KillerPoint1En')).sendKeys(randomX(10));
+    element(by.model('variantPtr.KillerPoint1Th')).sendKeys(randomX(10));
+    element(by.model('variantPtr.KillerPoint2En')).sendKeys(randomX(10));
+    element(by.model('variantPtr.KillerPoint2Th')).sendKeys(randomX(10));
+    element(by.model('variantPtr.KillerPoint3En')).sendKeys(randomX(10));
+    element(by.model('variantPtr.KillerPoint3Th')).sendKeys(randomX(10));
+
+  });
+
+  it('should add new product and fill out "Search Tag" in "Information Tab"', function(){
+    browser.executeScript('window.scrollTo(0,3600);');
+    var input_search_tags = element(by.model('formData.Tags')).element(by.css('input'));
+    input_search_tags.click();
+    input_search_tags.sendKeys('tag'+randomX(4));
+    input_search_tags.sendKeys(protractor.Key.ENTER);
+
+    input_search_tags.sendKeys('tag'+randomX(4));
+    input_search_tags.sendKeys(protractor.Key.ENTER);
+  });
+
+  xit('should add new product and fill out "Inventory" in "Information Tab"', function(){
+    element(by.model('variantPtr.Quantity')).sendKeys('100');
+    element(by.model('variantPtr.SafetyStock')).sendKeys('10');
+    element(by.model('variantPtr.MinQtyAllowInCart')).sendKeys('1');
+    element(by.model('variantPtr.MaxQtyAllowInCart')).sendKeys('100');
+
+    var input_stock_type = element(by.model('variantPtr.StockType'));
+    selectDropdown(input_stock_type,'3');
+
+    var input_max_pre_order = element(by.model('variantPtr.MaxQtyPreOrder'));
 
     var EC = protractor.ExpectedConditions;
-    // Waits for the element with id 'abc' to be visible on the dom.
-    browser.wait(EC.visibilityOf($('.alert-green')), 10000);
-    browser.sleep(999);
+    browser.wait(EC.visibilityOf(input_max_pre_order), 5000);
+
+    input_max_pre_order.clear().sendKeys(99);
+
+    var has_expiry_date = element(by.model('variantPtr.IsHasExpiryDate'));
+    selectDropdown(has_expiry_date,'2');
+  });
+
+  it('should add new product and fill out "Shipping Detail" in "Information Tab"', function(){
+    browser.executeScript('window.scrollTo(0,4800);');
+    element(by.model('variantPtr.DeliveryFee')).sendKeys(randomX(3));
+    element(by.model('variantPtr.PrepareDay')).sendKeys('5');
+    element(by.model('variantPtr.LimitIndividualDay')).click();
+    element(by.model('variantPtr.PrepareMon')).sendKeys('1');
+    element(by.model('variantPtr.PrepareTue')).sendKeys('2');
+    element(by.model('variantPtr.PrepareWed')).sendKeys('3');
+    element(by.model('variantPtr.PrepareThu')).sendKeys('4');
+    element(by.model('variantPtr.PrepareFri')).sendKeys('5');
+    element(by.model('variantPtr.PrepareSat')).sendKeys('6');
+    element(by.model('variantPtr.PrepareSun')).sendKeys('7');
+
+    element(by.model('variantPtr.Length')).sendKeys(randomX(3));
+    element(by.model('variantPtr.Height')).sendKeys(randomX(3));
+    element(by.model('variantPtr.Width')).sendKeys(randomX(3));
+
+    var dimension_unit = element(by.model('variantPtr.DimensionUnit'));
+    selectDropdown(dimension_unit,'2');
+
+    browser.executeScript('window.scrollTo(0,5200);');
+
+    element(by.model('variantPtr.Weight')).sendKeys(randomX(3));
+
+    var weight_unit = element(by.model('variantPtr.WeightUnit'));
+    selectDropdown(weight_unit,'2');
+
+
+    // saveChanges('.main-form-action .btn-white');
 
     browser.sleep(defaultSleep);
 
   });
 
 
-
-
-
-
-
+  //----- Eart Code ------//
   xit('tab2', function(){
         element(by.model('formData.MasterVariant.ProductNameEn')).sendKeys('This is Automated Test ' + Math.floor(Math.random()*10000));
         element(by.model('formData.MasterVariant.ProductNameTh')).sendKeys('เทสอัตโนมัติ ' + Math.floor(Math.random()*10000));
@@ -268,31 +389,31 @@ describe('Automated Man', function() {
 });
 
 
+//Return Random
+function randomX(x){
+  var randomNumber  =  Math.floor(Math.random() * Math.pow(10,x));
+  return randomNumber;
+}
 
-/**
- * Return a timestamp with the format "m/d/yy h:MM:ss TT"
- */
+//Select Date
+function selectDate (){
+  browser.sleep(500);
+  element(by.css('.open .dropdown-menu tr:first-child td:first-child')).click();
+  element(by.css('.open .dropdown-menu tr:first-child td:first-child .hour')).click();
+  element(by.css('.open .dropdown-menu tr:first-child td:first-child .minute')).click();
+}
 
+//Return a timestamp with the format "m/d/yy h:MM:ss TT"
 function timeStamp() {
-// Create a date object with the current time
   var now = new Date();
-
-// Create an array with the current month, day and time
   var date = [ now.getMonth() + 1, now.getDate(), now.getFullYear() ];
-
-// Create an array with the current hour, minute and second
   var time = [ now.getHours(), now.getMinutes(), now.getSeconds() ];
-
-// Determine AM or PM suffix based on the hour
   var suffix = ( time[0] < 12 ) ? "AM" : "PM";
 
-// Convert hour from military time
   time[0] = ( time[0] < 12 ) ? time[0] : time[0] - 12;
 
-// If hour is 0, set it to 12
   time[0] = time[0] || 12;
 
-// If seconds and minutes are less than 10, add a zero
   for ( var i = 1; i < 3; i++ ) {
     if ( time[i] < 10 ) {
       time[i] = "0" + time[i];
@@ -303,17 +424,50 @@ function timeStamp() {
   return date.join("-") + " " + time.join("-") + "-" + suffix;
 }
 
-/**
- * Save Changes
- */
-function saveChanges() {
-  var button_save = element(by.css('.main-form-action .btn-blue'));
+
+//Save Changes
+function saveChanges(buttonLocation) {
+  var button_save = element(by.css(buttonLocation));
   console.log(button_save)
   button_save.click();
 
   var EC = protractor.ExpectedConditions;
   // Waits for the element with id 'abc' to be visible on the dom.
-  browser.wait(EC.visibilityOf($('.alert')), 5000);
+  browser.wait(EC.visibilityOf($('.alert-green')), 5000);
+  browser.sleep(999);
+}
+
+//Select Global Categories for Adding a New Product
+function selectGlobalCategory() {
+  var globalCategoryLV1 = element(by.xpath('//li[text()="Imaginary Land"]'));
+  var globalCategoryLV2 = element(by.xpath('//li[text()="Pokemon"]'));
+
   browser.sleep(999);
 
+  element(by.css('.page-header-action .btn-blue')).click();
+
+  globalCategoryLV1.click();
+  browser.sleep(100);
+  globalCategoryLV2.click();
+
+  element(by.css('.category-footer .btn-blue')).click();
+
+  var EC = protractor.ExpectedConditions;
+  // Waits for the element with id 'abc' to be visible on the dom.
+  browser.wait(EC.visibilityOf($('.page-header-title')), 5000);
+}
+
+//Select Brand in Adding Product
+function selectBrand(BrandName) {
+  var brand = element(by.model('formData.Brand'));
+  var selectBrand = brand.element(by.css('input'));
+  selectBrand.click();
+  selectBrand.clear().sendKeys(BrandName);
+  selectBrand.sendKeys(protractor.Key.ENTER);
+}
+
+//Select Option from Dropdown
+function selectDropdown(elementX,optionNumber) {
+  elementX.click();
+  elementX.element(by.css('option:nth-child('+optionNumber+')')).click();
 }
