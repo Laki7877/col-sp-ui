@@ -26558,7 +26558,8 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
       url: config.REST_SERVICE_BASE_URL + url,
       autoUpload: true,
       headers: {
-        Authorization: 'Bearer ' + accessToken
+        Authorization: 'Bearer ' + accessToken,
+        Accept: 'application/json;charset=utf-8'
       },
       removeAfterUpload : true,
       filters: [{
