@@ -20,7 +20,7 @@ module.exports = function ($scope, $controller, StdReportStockService, config, u
 
     };
     $scope.exportCsv = function () {
-        debugger;
+        // debugger;
         StdReportStockService.exportCsv(params)
         .then(function (data) {
 
