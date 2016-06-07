@@ -1,10 +1,11 @@
 var angular = require('angular');
 
 angular.module('productDetail').controller('AbstractProductAddCtrl',
-  function($scope, $uibModal, $window, util, config, Product, ImageService, common,
-    AttributeService, $timeout, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
-    KnownException, NcAlert, $productAdd, options, AttributeSetService, APImageUploadFailEvent,
-    AdminShopService, VariationFactorIndices, AttributeOptions, ShippingService, APExpireDateChangeEvent) {
+        function ($scope, $uibModal, $window, util, config, Product, ImageService, common,
+                            AttributeService, $timeout, AttributeSet, Brand, Shop, LocalCategoryService, GlobalCategory, Category, $rootScope,
+                            KnownException, NcAlert, $productAdd, options, AttributeSetService, APImageUploadFailEvent,
+                            AdminShopService, VariationFactorIndices, AttributeOptions, ShippingService, APExpireDateChangeEvent) {
+    'use strict';
     'ngInject';
 
     $scope.readOnly = options.readOnly;
@@ -23,6 +24,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       LocalCategories: [null, null, null],
       MainGlobalCategory: null,
       MainLocalCategory: null,
+      DefaultVariant: null,
       Tags: [],
       ControlFlags: {
         IsNew: false,
@@ -524,6 +526,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
 
       function defaultOnEmpty(vari) {
+        if(!_.isObject(vari)) return;
+        
         if (_.isEmpty(vari.SafetyStock)) {
           vari.SafetyStock = 0;
         }
@@ -835,13 +839,13 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
             return $scope.alert.error(
               'You have no permission to modify variation (44).');
           }
+
+          //if is selected and was visible now will be hidden
+          var forceRecompute = (p.Visibility && $scope.formData.DefaultVariant.text == p.text); 
           p.Visibility = !p.Visibility;
 
           //Update Default Variant
-          var visibles = _.pickBy($scope.formData.Variants, function(o){ return o.Visibility });
-          if(visibles.length > 0) {
-            $scope.formData.DefaultVariant = visibles[0]
-          }
+          $productAdd.setDefaultVariantToFirstVisibleVariant($scope.formData, forceRecompute);
         }
 
         //Variant Detail Modal Dialog
