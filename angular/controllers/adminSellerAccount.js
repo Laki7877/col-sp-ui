@@ -1,7 +1,10 @@
+/**
+ * Handle admin seller account
+ */
 module.exports = function($scope, $controller, SellerAccountService, config) {
 	'ngInject';
 	$scope.yesNoDropdown = config.DROPDOWN.YES_NO_DROPDOWN;
-
+	// get shop owner from list
 	$scope.getShopOwner = function(list) {
 		var i = _.findIndex(list, function(e) { return e == 'Shop Owner' });
 		if(i >= 0) {
@@ -11,6 +14,7 @@ module.exports = function($scope, $controller, SellerAccountService, config) {
 		}
 	};
 
+	// get shop list string
 	$scope.getShop = function(shops) {
 		if(shops.length > 0) {
 			return _.join(shops, [', ']);

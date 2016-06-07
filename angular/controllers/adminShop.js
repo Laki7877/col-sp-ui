@@ -1,3 +1,6 @@
+/**
+ * Handle admin shop account
+ */
 module.exports = function($scope, $controller, AdminShopService, config) {
 	'ngInject';
 	//Inherit from parent

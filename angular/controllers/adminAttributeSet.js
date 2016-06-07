@@ -1,5 +1,9 @@
+/**
+ * Handle admin attribute set listing page
+ */
 module.exports = function($scope, $controller, AttributeSetService, util, config) {
 	'ngInject';
+	//inherit from listing ctrl
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
 		options: {

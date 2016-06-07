@@ -1,3 +1,6 @@
+/**
+ * Handle admin account listing page
+ */
 module.exports = function($scope, $controller, AdminAccountService, config) {
 	'ngInject';
 	//Inherit from parent

@@ -1,3 +1,6 @@
+/**
+ * Handle admin brand listing page
+ */
 module.exports = function($scope, $controller, BrandService, config) {
 	'ngInject';
 	//Inherit from parent

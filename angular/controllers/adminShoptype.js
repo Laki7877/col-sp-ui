@@ -1,3 +1,6 @@
+/**
+ * Handle admin shop type listing
+ */
 module.exports = function($scope, $controller, AdminShoptypeService) {
 	'ngInject';
 	//Inherit from parent
