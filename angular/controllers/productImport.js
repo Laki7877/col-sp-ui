@@ -175,6 +175,7 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
 				text: "Download",
 				disabled: false
 			};
+			var fileName = "ImportTemplate.csv";
 			var file = new Blob([data], {type: 'application/csv'});
 			var fileURL = URL.createObjectURL(file);
 			var a = document.getElementById("download_template_btn");
