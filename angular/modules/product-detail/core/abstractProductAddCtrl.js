@@ -1053,7 +1053,6 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
 
       $scope.formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId] = true;
-      console.log('$scope.formData.MasterAttribute', $scope.formData.MasterAttribute);
     }
 
     // Variation Factor (lhs) Indices are used as index
