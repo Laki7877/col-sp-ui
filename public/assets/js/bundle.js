@@ -16555,17 +16555,15 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
     service.variant = {};
 
     service.variant.asString = function (a, b) {
-        var lft = null;
-        var rght = null;
-        lft = (a.ValueEn || a.AttributeValueEn || '');
-
+        var left = null;
+        var right = null;
+        left = (a.ValueEn || a.AttributeValueEn || a.AttributeValues.length > 0 && a.AttributeValues[0].AttributeValueEn || '');
         if(b == null){
-          rght = '';
+          right = '';
         }else{
-          rght = (b.ValueEn || b.AttributeValueEn || '');
+          right = (b.ValueEn || b.AttributeValueEn || b.AttributeValues.length > 0 && b.AttributeValues[0].AttributeValueEn || '');
         }
-
-        return lft + (rght ? ", " + rght : "");
+        return left + (right ? ", " + right : "");
     };
 
     service.uniqueSet = function (a, prop) {
@@ -21987,6 +21985,9 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
     var trackVariant = new Set();
 
     var VARIANT_DUMMY_FACTOR = '';
+
+    //Function for expanding Attribute A0 and Attribute B0
+    //into list of variants
     var expand = function(A0, B0) {
 
       var AVId = null;
@@ -22049,7 +22050,8 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
         trackVariant.add(hashNew);
       }
 
-    }
+    } //End of expand()
+
 
     //Multiply out unmultiplied options
     if (dataSet.attributeOptions && Object.keys(dataSet.attributeOptions).length > 0) {
