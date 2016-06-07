@@ -4,6 +4,16 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
   'ngInject';
   var $productAdd = {};
 
+  $productAdd.setDefaultVariantToFirstVisibleVariant = function(formData, forceRecompute){
+    if(_.get(formData.DefaultVariant, 'Visibility') && !forceRecompute) return;
+    //Update Default Variant
+    var firstVisible = _.find(formData.Variants, function(o){ return o.Visibility });
+    if(firstVisible) {
+       formData.DefaultVariant = firstVisible;
+       console.log("Default Variant set to ", formData.DefaultVariant)
+    }
+  }
+
   //TODO: One day, merge this into some other class that make sense
   /**
    *
@@ -108,17 +118,17 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
       }
     }
 
+    //Set default variant
     if(!formData.DefaultVariant || !formData.DefaultVariant.Visibility){
-      var visibles = _.pickBy(formData.Variants, function(o){ return o.Visibility });
-      if(visibles.length > 0) {
-        formData.DefaultVariant = visibles[0]
-      }
+      $productAdd.setDefaultVariantToFirstVisibleVariant(formData);
     }
 
     deferred.resolve();
 
     return deferred.promise;
   };
+
+  
 
 
   $productAdd.flatten = {
