@@ -6,7 +6,7 @@ module.exports = ['util', function (util) {
 		//Variant is a cross of First and Second Attribute
 		this.FirstAttribute = a; 
 		this.SecondAttribute = b;
-		this.text = util.variant.toString(a,b);
+		this.text = util.variant.asString(a,b);
 	};
 
 	return VariantPair;

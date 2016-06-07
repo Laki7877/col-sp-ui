@@ -294,8 +294,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				Variants: {
 					serialize: function (data) {
 						return data.map(function (v) {
-							var ts = util.variant.toString(v.FirstAttribute, v.SecondAttribute);
-							var rs = util.variant.toString(fd.DefaultVariant.FirstAttribute, fd.DefaultVariant.SecondAttribute);
+							var ts = util.variant.asString(v.FirstAttribute, v.SecondAttribute);
+							var rs = util.variant.asString(fd.DefaultVariant.FirstAttribute, fd.DefaultVariant.SecondAttribute);
 							v.DefaultVariant = (ts == rs);
 							v.ExpireDatePromotion = moment(v.ExpireDatePromotion).toDate();
 							v.EffectiveDatePromotion = moment(v.EffectiveDatePromotion).toDate();
@@ -535,7 +535,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 			var invMapper = {
 				Variants: function (m) {
-					m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
+					m.text = util.variant.asString(m.FirstAttribute, m.SecondAttribute);
 					return m;
 				}
 			};

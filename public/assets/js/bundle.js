@@ -16554,30 +16554,17 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
 
     service.variant = {};
 
-    service.variant.toString = function (a, b) {
-        var left = null;
-        var right = null;
-        if(a.ValueEn){
-            left = a.ValueEn;
-        }else if(a.AttributeValueEn){
-            left = a.AttributeValueEn;
-        }else{
-            left = '';
-        }
+    service.variant.asString = function (a, b) {
+        var lft = null;
+        var rght = null;
+        lft = (a.ValueEn || a.AttributeValueEn || '');
         if(b == null){
-          right = '';
+          rght = '';
         }else{
-          right = '';
-          if(b.ValueEn){
-            right = b.ValueEn;
-          }else if(b.AttributeValueEn){
-            right = b.ValueEn;
-          }
+          rght = (b.ValueEn || b.AttributeValueEn || '');
         }
 
-        console.log(left);
-        console.log(right);
-        return left + (right ? ", " + right : "");
+        return lft + (rght ? ", " + rght : "");
     };
 
     service.uniqueSet = function (a, prop) {
@@ -17020,7 +17007,7 @@ module.exports = ['util', function (util) {
 		//Variant is a cross of First and Second Attribute
 		this.FirstAttribute = a; 
 		this.SecondAttribute = b;
-		this.text = util.variant.toString(a,b);
+		this.text = util.variant.asString(a,b);
 	};
 
 	return VariantPair;
@@ -22040,7 +22027,7 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
 
       kpair.FirstAttribute = firstAttribute;
       kpair.SecondAttribute = secondAttribute;
-      kpair.text = util.variant.toString(firstAttribute, secondAttribute);
+      kpair.text = util.variant.asString(firstAttribute, secondAttribute);
       if(dataSet.VariantDisplayOption) kpair.Display = dataSet.VariantDisplayOption[0].value;
       kpair.Visibility = true;
       if(kpair.SEO) kpair.SEO.ProductUrlKeyEn = "";
@@ -22052,7 +22039,7 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
         kpair = vHashSet[kpair.text];
       }
 
-      var hashNew = (util.variant.toString(kpair.FirstAttribute, kpair.SecondAttribute));
+      var hashNew = (util.variant.asString(kpair.FirstAttribute, kpair.SecondAttribute));
       if (!trackVariant.has(hashNew)) {
         //Only push new variant if don't exist
 
@@ -27143,8 +27130,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				Variants: {
 					serialize: function (data) {
 						return data.map(function (v) {
-							var ts = util.variant.toString(v.FirstAttribute, v.SecondAttribute);
-							var rs = util.variant.toString(fd.DefaultVariant.FirstAttribute, fd.DefaultVariant.SecondAttribute);
+							var ts = util.variant.asString(v.FirstAttribute, v.SecondAttribute);
+							var rs = util.variant.asString(fd.DefaultVariant.FirstAttribute, fd.DefaultVariant.SecondAttribute);
 							v.DefaultVariant = (ts == rs);
 							v.ExpireDatePromotion = moment(v.ExpireDatePromotion).toDate();
 							v.EffectiveDatePromotion = moment(v.EffectiveDatePromotion).toDate();
@@ -27384,7 +27371,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 			var invMapper = {
 				Variants: function (m) {
-					m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
+					m.text = util.variant.asString(m.FirstAttribute, m.SecondAttribute);
 					return m;
 				}
 			};
