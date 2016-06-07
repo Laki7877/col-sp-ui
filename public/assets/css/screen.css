@@ -13348,7 +13348,7 @@ label.css-label {
 }
 /* line 146, ../../../assets/_components.scss */
 .table .modified-column {
-  width: 88px;
+  width: 92px;
 }
 /* line 150, ../../../assets/_components.scss */
 .table .submitted-column {
@@ -13746,7 +13746,6 @@ label.css-label {
 
 /* line 554, ../../../assets/_components.scss */
 .table .column-text-ellipsis {
-  max-width: 300px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
