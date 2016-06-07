@@ -21,6 +21,7 @@
                                 </td>
                                 <td ng-if="exportAsyncDelegate.progress >= 100"><span class="color-green">Completed</span></td>
                                 <td ng-if="exportAsyncDelegate.progress == 0"><span class="color-yellow">Preparing..</span></td>
+                                <td ng-if="exportAsyncDelegate.progress == -1"><span class="color-red">Error Occurred</span></td>
                                 <td>{{ exportAsyncDelegate.requestDate | datetimeTh }}</td>
                                 <td ng-if="exportAsyncDelegate.progress >= 100">{{ exportAsyncDelegate.endDate | datetimeTh }}</td>
                                 <td ng-if="exportAsyncDelegate.progress < 100">-</td>

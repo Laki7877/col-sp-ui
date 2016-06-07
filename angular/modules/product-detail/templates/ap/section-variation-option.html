@@ -40,7 +40,7 @@
                     </ui-select-choices>
                 </ui-select>
 
-                <ui-select ng-if="isFreeTextInput(dataset.attributeOptions[jth].Attribute.DataType)"
+<!--                 <ui-select ng-if="isFreeTextInput(dataset.attributeOptions[jth].Attribute.DataType)"
                     ng-disabled="disabled()"
                     nc-tag-validator nc-max-tag-count="20" nc-max-tag-length="30"
                     nc-tag-pattern="^[a-zA-Z0-9ก-๙\s\-]+$"
@@ -53,7 +53,7 @@
                     {{ i.ValueEn }}
                     </ui-select-choices>
                 </ui-select>
-
+ -->
                 <input ng-if="!dataset.attributeOptions[jth].Attribute.DataType" type="text" disabled class="form-control" />
             </div>
             <!--</div>-->

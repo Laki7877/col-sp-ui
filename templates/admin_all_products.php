@@ -62,7 +62,7 @@
 											<div class="color-grey" ng-hide="row.VariantCount > 0">PID: {{row.Pid}}</div>
 	                  </td>
 	                  <td>{{row.Shop.ShopNameEn}}</td>
-	                  <td class="column-text-ellipsis">{{getTag(row.Tags)}}</td>
+	                  <td class="column-text-ellipsis-small">{{getTag(row.Tags)}}</td>
 	                  <td class="price-column">
 	                    <div>{{ row.SalePrice | currency: ' ' : 2 }}</div>
 	                  </td>

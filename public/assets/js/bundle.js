@@ -16856,17 +16856,18 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
 
     service.variant = {};
 
-    service.variant.toString = function (a, b) {
-        var left = null;
-        var right = null;
-        left = (a.ValueEn || a.AttributeValueEn || a.AttributeValues.length > 0 && a.AttributeValues[0].AttributeValueEn || '');
+    service.variant.asString = function (a, b) {
+        var lft = null;
+        var rght = null;
+        lft = (a.ValueEn || a.AttributeValueEn || '');
+
         if(b == null){
-          right = '';
+          rght = '';
         }else{
-          right = (b.ValueEn || b.AttributeValueEn || b.AttributeValues.length > 0 && b.AttributeValues[0].AttributeValueEn || '');
+          rght = (b.ValueEn || b.AttributeValueEn || '');
         }
 
-        return left + (right ? ", " + right : "");
+        return lft + (rght ? ", " + rght : "");
     };
 
     service.uniqueSet = function (a, prop) {
@@ -17309,7 +17310,7 @@ module.exports = ['util', function (util) {
 		//Variant is a cross of First and Second Attribute
 		this.FirstAttribute = a; 
 		this.SecondAttribute = b;
-		this.text = util.variant.toString(a,b);
+		this.text = util.variant.asString(a,b);
 	};
 
 	return VariantPair;
@@ -22198,6 +22199,25 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
     };
 
+    //Initialize default attribute fields
+    $scope.initDefaultAttributes = function(da, vmap){
+      //if edit mode don't init
+      // console.log(da, vmap, 'vv')
+      if($scope.formData.ProductId) return; 
+
+      if(!_.has($scope.formData.MasterAttribute, da.AttributeId)){
+        $scope.formData.MasterAttribute[da.AttributeId] = {};
+      }
+      
+      $scope.formData.MasterAttribute[da.AttributeId]._checkbox = true;
+
+      if(!_.has($scope.formData.MasterAttribute[da.AttributeId], vmap.AttributeValueId)){
+        $scope.formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId] = {};
+      }
+
+      $scope.formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId] = true;
+    }
+
     // Variation Factor (lhs) Indices are used as index
     // for ng-repeat in variation tab
     $scope.variationFactorIndices = new VariationFactorIndices($scope.dataset);
@@ -22259,6 +22279,7 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
   $productAdd.generateVariants = function(formData, dataSet) {
     var deferred = $q.defer();
 
+    //vHashSet is cache
     var vHashSet = {};
     var prevVariants = angular.copy(formData.Variants);
     prevVariants.forEach(function(elem, index) {
@@ -22272,29 +22293,27 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
     var trackVariant = new Set();
 
     var VARIANT_DUMMY_FACTOR = '';
+
+    //Function for expanding Attribute A0 and Attribute B0
+    //into list of variants
     var expand = function(A0, B0) {
 
       var AVId = null;
       var BVId = null;
-      var B = B0;
-      var A = A0;
+      var B,A;
 
-
-      if (_.has(A0, 'AttributeValue.AttributeValueId')) {
-        AVId = A0.AttributeValue.AttributeValueId;
-        A = A0.AttributeValue.AttributeValueEn;
-      }
+      AVId = A0.AttributeValue.AttributeValueId;
+      A = A0.AttributeValue.AttributeValueEn;
 
       if (angular.isDefined(B0)) {
-        if (_.has(B0, 'AttributeValue.AttributeValueId')) {
-          BVId = B0.AttributeValue.AttributeValueId;
-          B = B0.AttributeValue.AttributeValueEn;
-        }
+        BVId = B0.AttributeValue.AttributeValueId;
+        B = B0.AttributeValue.AttributeValueEn;
       } else {
-        //B is not defined
+        //No second option
         B = VARIANT_DUMMY_FACTOR;
       }
 
+      //Initialize Pair by basing it off Master Variant object
       var kpair = angular.copy(formData.MasterVariant);
       var firstAttribute = {
         AttributeId: !dataSet.attributeOptions[0].Attribute ? 0 : dataSet.attributeOptions[0].Attribute.AttributeId,
@@ -22311,45 +22330,54 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
         }]),
         ValueEn: B.ValueEn || B
       };
-
       kpair.FirstAttribute = firstAttribute;
       kpair.SecondAttribute = secondAttribute;
-      kpair.text = util.variant.toString(firstAttribute, secondAttribute);
-      if(dataSet.VariantDisplayOption) kpair.Display = dataSet.VariantDisplayOption[0].value;
+      kpair.text = util.variant.asString(firstAttribute, secondAttribute);
+
+      if(dataSet.VariantDisplayOption){
+        //In case Variant Display option is present, we will copy it too 
+        kpair.Display = dataSet.VariantDisplayOption[0].value;
+      }
+
       kpair.Visibility = true;
       if(kpair.SEO) kpair.SEO.ProductUrlKeyEn = "";
       kpair.Sku = "";
       kpair.Pid = null;
 
+      //If pair is seen before, don't regen, but pull it from cache
       if (kpair.text in vHashSet) {
         //Replace with value from vHashSet
         kpair = vHashSet[kpair.text];
       }
 
-      var hashNew = (util.variant.toString(kpair.FirstAttribute, kpair.SecondAttribute));
+      //Generate new hash
+      var hashNew = util.variant.asString(kpair.FirstAttribute, kpair.SecondAttribute);
       if (!trackVariant.has(hashNew)) {
         //Only push new variant if don't exist
-
         formData.Variants.push(kpair);
         trackVariant.add(hashNew);
       }
 
-    }
+    } //End of expand()
+
 
     //Multiply out unmultiplied options
     if (dataSet.attributeOptions && Object.keys(dataSet.attributeOptions).length > 0) {
-      for (var aKey in dataSet.attributeOptions[0].options) {
+      //Iterate through all attr options in first option array
+      _.forOwn (dataSet.attributeOptions[0].options, function(v, aKey) {
         var A = dataSet.attributeOptions[0].options[aKey];
 
+        //Single case
         if (angular.isDefined(dataSet.attributeOptions[1]['options']) && dataSet.attributeOptions[1].options.length == 0) {
           expand(A);
         }
 
-        for (var bKey in dataSet.attributeOptions[1].options) {
+        //Double case
+        _.forOwn(dataSet.attributeOptions[1].options, function(v, bKey) {
           var B = dataSet.attributeOptions[1].options[bKey];
           expand(A, B);
-        }
-      }
+        });
+      });
     }
 
     //Set default variant
@@ -22635,6 +22663,7 @@ angular.module('productDetail')
                 scope.isHtmlInput = util.isHtmlDataType;
                 scope.isCheckboxInput = util.isCheckboxDataType;
                 scope.tagTransform = function (newTag) {
+                    console.log('new tag', newTag)
                   return {
                     ValueEn: newTag
                   }
@@ -22797,7 +22826,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-other-attributes',
-    "<div class=form-section><div class=form-section-header><h2>Default Attributes</h2></div><div class=form-section-content><div class=form-group ng-repeat-start=\"da in defaultAttributes\" ng-if=isVisibleTo(da.VisibleTo)><div class=width-label><label class=control-label ng-class=\"{'required': da.Required}\">{{ da.DisplayNameEn || da.AttributeNameEn }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(da.DataType), 'width-field-xxl': isHtmlInput(da.DataType)}\"><select ng-if=isListInput(da.DataType) ng-required=\"da.Required && onPublishing\" class=form-control ng-disabled=xspermit(35) ng-model=formData.MasterAttribute[da.AttributeId] ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" name=DAInput{{$index}} ng-options=\"item as item.AttributeValue.AttributeValueEn for item in da.AttributeValueMaps track by item.AttributeValueId\"><option disabled value=\"\" selected>- Select option -</option>{{ da.AttributeId }}</select><div ng-if=isHtmlInput(da.DataType)><textarea ng-required=\"da.Required && onPublishing\" ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-disabled=xspermit(35) ng-model=formData.MasterAttribute[da.AttributeId] name=DAInput{{$index}} class=form-control ng-ckeditor=ckOptions></textarea></div><input ng-if=isFreeTextInput(da.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-required=\"da.Required && onPublishing\" class=form-control name=DAInput{{$index}} ng-disabled=xspermit(35) ng-model=\"formData.MasterAttribute[da.AttributeId].ValueEn\"><div ng-if=isCheckboxInput(da.DataType)><div class=checkbox ng-repeat=\"vmap in da.AttributeValueMaps\"><label><input type=checkbox ng-disabled=xspermit(35) id=\"{{ vmap.AttributeValue.AttributeValueEn }}\" ng-init=\"formData.MasterAttribute[da.AttributeId]._checkbox = true;formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId] = true;\" ng-model=\"formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId]\"> {{ vmap.AttributeValue.AttributeValueEn }}</label></div></div></div></div><div class=form-group ng-repeat-end ng-if=\"isVisibleTo(da.VisibleTo) && isFreeTextInput(da.DataType)\"><div class=width-label><label class=control-label ng-class=\"{'required': da.Required}\">{{ da.DisplayNameTh || da.AttributeNameTh || ((da.DisplayNameEn || da.AttributeNameEn) + \" (ไทย)\") }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(da.DataType), 'width-field-xxl': isHtmlInput(da.DataType)}\"><input ng-if=isFreeTextInput(da.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-required=\"da.Required && onPublishing\" class=form-control name=DAInput{{$index}} ng-disabled=xspermit(35) ng-model=\"formData.MasterAttribute[da.AttributeId].ValueTh\"></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Default Attributes</h2></div><div class=form-section-content><div class=form-group ng-repeat-start=\"da in defaultAttributes\" ng-if=isVisibleTo(da.VisibleTo)><div class=width-label><label class=control-label ng-class=\"{'required': da.Required}\">{{ da.DisplayNameEn || da.AttributeNameEn }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(da.DataType), 'width-field-xxl': isHtmlInput(da.DataType)}\"><select ng-if=isListInput(da.DataType) ng-required=\"da.Required && onPublishing\" class=form-control ng-disabled=xspermit(35) ng-model=formData.MasterAttribute[da.AttributeId] ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" name=DAInput{{$index}} ng-options=\"item as item.AttributeValue.AttributeValueEn for item in da.AttributeValueMaps track by item.AttributeValueId\"><option disabled value=\"\" selected>- Select option -</option>{{ da.AttributeId }}</select><div ng-if=isHtmlInput(da.DataType)><textarea ng-required=\"da.Required && onPublishing\" ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-disabled=xspermit(35) ng-model=formData.MasterAttribute[da.AttributeId] name=DAInput{{$index}} class=form-control ng-ckeditor=ckOptions></textarea></div><input ng-if=isFreeTextInput(da.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-required=\"da.Required && onPublishing\" class=form-control name=DAInput{{$index}} ng-disabled=xspermit(35) ng-model=\"formData.MasterAttribute[da.AttributeId].ValueEn\"><div ng-if=isCheckboxInput(da.DataType)><div class=checkbox ng-repeat=\"vmap in da.AttributeValueMaps\"><label><input type=checkbox ng-disabled=xspermit(35) id=\"{{ vmap.AttributeValue.AttributeValueEn }}\" ng-init=\"initDefaultAttributes(da, vmap)\" ng-model=\"formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId]\"> {{ vmap.AttributeValue.AttributeValueEn }}</label></div></div></div></div><div class=form-group ng-repeat-end ng-if=\"isVisibleTo(da.VisibleTo) && isFreeTextInput(da.DataType)\"><div class=width-label><label class=control-label ng-class=\"{'required': da.Required}\">{{ da.DisplayNameTh || da.AttributeNameTh || ((da.DisplayNameEn || da.AttributeNameEn) + \" (ไทย)\") }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(da.DataType), 'width-field-xxl': isHtmlInput(da.DataType)}\"><input ng-if=isFreeTextInput(da.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-required=\"da.Required && onPublishing\" class=form-control name=DAInput{{$index}} ng-disabled=xspermit(35) ng-model=\"formData.MasterAttribute[da.AttributeId].ValueTh\"></div></div></div></div>"
   );
 
 
@@ -22949,7 +22978,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "\n" +
     "                }\r" +
     "\n" +
-    "                }\"><ui-select ng-if=isListInput(dataset.attributeOptions[jth].Attribute.DataType) multiple ng-model=dataset.attributeOptions[jth].options><ui-select-match ui-lock-choice=$item._locked placeholder=\"Select variant\" ng-disabled=disabled()>{{ $item.AttributeValue.AttributeValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataset.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search\">{{ i.AttributeValue.AttributeValueEn }}</ui-select-choices></ui-select><ui-select ng-if=isFreeTextInput(dataset.attributeOptions[jth].Attribute.DataType) ng-disabled=disabled() nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ multiple tagging=tagTransform tagging-label=\"\" tagging-tokens=,|ENTER name=attributeOptions{{jth}} ng-model=dataset.attributeOptions[jth].options><ui-select-match ui-lock-choice=$item._locked placeholder=\"Input variant\">{{ $item.ValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search\">{{ i.ValueEn }}</ui-select-choices></ui-select><input ng-if=!dataset.attributeOptions[jth].Attribute.DataType disabled class=\"form-control\"></div><a class=\"like-text form-text\" ng-show=!variationFactorLocked() ng-click=variationFactorIndices.pushSecond() ng-if=\"dataset.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1\"><i class=\"fa fa-plus-circle color-theme\"></i> Add another option</a> <a ng-show=!variationFactorLocked() class=\"like-text form-text\" ng-click=variationFactorIndices.popSecond() ng-if=\"variationFactorIndices.length() == 2 && jth == 1\"><i class=\"fa fa-trash color-theme icon-size-20\"></i></a></div><div class=form-group ng-show=\"formData.Variants.length > 0\"><div class=width-label><label class=control-label>Default Variant</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-model=formData.DefaultVariant class=form-control ng-disabled=disabled() ng-options=\"i as i.text for i in (formData.Variants | truth: 'Visibility') track by i.text\" required></select></div></div></div></div></div>"
+    "                }\"><ui-select ng-if=isListInput(dataset.attributeOptions[jth].Attribute.DataType) multiple ng-model=dataset.attributeOptions[jth].options><ui-select-match ui-lock-choice=$item._locked placeholder=\"Select variant\" ng-disabled=disabled()>{{ $item.AttributeValue.AttributeValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataset.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search\">{{ i.AttributeValue.AttributeValueEn }}</ui-select-choices></ui-select><input ng-if=!dataset.attributeOptions[jth].Attribute.DataType disabled class=\"form-control\"></div><a class=\"like-text form-text\" ng-show=!variationFactorLocked() ng-click=variationFactorIndices.pushSecond() ng-if=\"dataset.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1\"><i class=\"fa fa-plus-circle color-theme\"></i> Add another option</a> <a ng-show=!variationFactorLocked() class=\"like-text form-text\" ng-click=variationFactorIndices.popSecond() ng-if=\"variationFactorIndices.length() == 2 && jth == 1\"><i class=\"fa fa-trash color-theme icon-size-20\"></i></a></div><div class=form-group ng-show=\"formData.Variants.length > 0\"><div class=width-label><label class=control-label>Default Variant</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-model=formData.DefaultVariant class=form-control ng-disabled=disabled() ng-options=\"i as i.text for i in (formData.Variants | truth: 'Visibility') track by i.text\" required></select></div></div></div></div></div>"
   );
 
 
@@ -27480,8 +27509,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				Variants: {
 					serialize: function (data) {
 						return data.map(function (v) {
-							var ts = util.variant.toString(v.FirstAttribute, v.SecondAttribute);
-							var rs = util.variant.toString(fd.DefaultVariant.FirstAttribute, fd.DefaultVariant.SecondAttribute);
+							var ts = util.variant.asString(v.FirstAttribute, v.SecondAttribute);
+							var rs = util.variant.asString(fd.DefaultVariant.FirstAttribute, fd.DefaultVariant.SecondAttribute);
 							v.DefaultVariant = (ts == rs);
 							v.ExpireDatePromotion = moment(v.ExpireDatePromotion).toDate();
 							v.EffectiveDatePromotion = moment(v.EffectiveDatePromotion).toDate();
@@ -27721,7 +27750,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 			var invMapper = {
 				Variants: function (m) {
-					m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
+					m.text = util.variant.asString(m.FirstAttribute, m.SecondAttribute);
 					return m;
 				}
 			};
@@ -30742,7 +30771,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('product/exportResult',
-    "<div class=row ng-show=exportAsyncDelegate.active><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Export Result</h2></div><div class=form-section-content><div class=table-wrapper><table class=table id=add-product-approve-versions><thead><tr><th>Status</th><th class=width_200>Request On</th><th class=width_200>Finish On</th><th class=export-action-column>Action</th></tr></thead><tbody><tr><td ng-if=\"exportAsyncDelegate.progress > 0 && exportAsyncDelegate.progress < 100\"><span class=color-green>{{ exportAsyncDelegate.progress | number: 2 }} %</span></td><td ng-if=\"exportAsyncDelegate.progress >= 100\"><span class=color-green>Completed</span></td><td ng-if=\"exportAsyncDelegate.progress == 0\"><span class=color-yellow>Preparing..</span></td><td>{{ exportAsyncDelegate.requestDate | datetimeTh }}</td><td ng-if=\"exportAsyncDelegate.progress >= 100\">{{ exportAsyncDelegate.endDate | datetimeTh }}</td><td ng-if=\"exportAsyncDelegate.progress < 100\">-</td><td><button type=button class=\"btn btn-white btn-width-xl\" ng-hide=\"exportAsyncDelegate.progress >= 100\" ng-click=abortExport()>Cancel</button> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=downloadFile() ng-class=\"{ 'disabled' : exportAsyncDelegate.progress < 100 }\" ng-hide=\"exportAsyncDelegate.progress < 100\">Download</button></td></tr></tbody></table></div></div></div></div></div>"
+    "<div class=row ng-show=exportAsyncDelegate.active><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Export Result</h2></div><div class=form-section-content><div class=table-wrapper><table class=table id=add-product-approve-versions><thead><tr><th>Status</th><th class=width_200>Request On</th><th class=width_200>Finish On</th><th class=export-action-column>Action</th></tr></thead><tbody><tr><td ng-if=\"exportAsyncDelegate.progress > 0 && exportAsyncDelegate.progress < 100\"><span class=color-green>{{ exportAsyncDelegate.progress | number: 2 }} %</span></td><td ng-if=\"exportAsyncDelegate.progress >= 100\"><span class=color-green>Completed</span></td><td ng-if=\"exportAsyncDelegate.progress == 0\"><span class=color-yellow>Preparing..</span></td><td ng-if=\"exportAsyncDelegate.progress == -1\"><span class=color-red>Error Occurred</span></td><td>{{ exportAsyncDelegate.requestDate | datetimeTh }}</td><td ng-if=\"exportAsyncDelegate.progress >= 100\">{{ exportAsyncDelegate.endDate | datetimeTh }}</td><td ng-if=\"exportAsyncDelegate.progress < 100\">-</td><td><button type=button class=\"btn btn-white btn-width-xl\" ng-hide=\"exportAsyncDelegate.progress >= 100\" ng-click=abortExport()>Cancel</button> <button type=button class=\"btn btn-blue btn-width-xl\" ng-click=downloadFile() ng-class=\"{ 'disabled' : exportAsyncDelegate.progress < 100 }\" ng-hide=\"exportAsyncDelegate.progress < 100\">Download</button></td></tr></tbody></table></div></div></div></div></div>"
   );
 
 

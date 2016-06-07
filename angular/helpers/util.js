@@ -5,17 +5,18 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
 
     service.variant = {};
 
-    service.variant.toString = function (a, b) {
-        var left = null;
-        var right = null;
-        left = (a.ValueEn || a.AttributeValueEn || a.AttributeValues.length > 0 && a.AttributeValues[0].AttributeValueEn || '');
+    service.variant.asString = function (a, b) {
+        var lft = null;
+        var rght = null;
+        lft = (a.ValueEn || a.AttributeValueEn || '');
+
         if(b == null){
-          right = '';
+          rght = '';
         }else{
-          right = (b.ValueEn || b.AttributeValueEn || b.AttributeValues.length > 0 && b.AttributeValues[0].AttributeValueEn || '');
+          rght = (b.ValueEn || b.AttributeValueEn || '');
         }
 
-        return left + (right ? ", " + right : "");
+        return lft + (rght ? ", " + rght : "");
     };
 
     service.uniqueSet = function (a, prop) {

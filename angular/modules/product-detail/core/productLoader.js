@@ -25,6 +25,7 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
   $productAdd.generateVariants = function(formData, dataSet) {
     var deferred = $q.defer();
 
+    //vHashSet is cache
     var vHashSet = {};
     var prevVariants = angular.copy(formData.Variants);
     prevVariants.forEach(function(elem, index) {
@@ -38,29 +39,27 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
     var trackVariant = new Set();
 
     var VARIANT_DUMMY_FACTOR = '';
+
+    //Function for expanding Attribute A0 and Attribute B0
+    //into list of variants
     var expand = function(A0, B0) {
 
       var AVId = null;
       var BVId = null;
-      var B = B0;
-      var A = A0;
+      var B,A;
 
-
-      if (_.has(A0, 'AttributeValue.AttributeValueId')) {
-        AVId = A0.AttributeValue.AttributeValueId;
-        A = A0.AttributeValue.AttributeValueEn;
-      }
+      AVId = A0.AttributeValue.AttributeValueId;
+      A = A0.AttributeValue.AttributeValueEn;
 
       if (angular.isDefined(B0)) {
-        if (_.has(B0, 'AttributeValue.AttributeValueId')) {
-          BVId = B0.AttributeValue.AttributeValueId;
-          B = B0.AttributeValue.AttributeValueEn;
-        }
+        BVId = B0.AttributeValue.AttributeValueId;
+        B = B0.AttributeValue.AttributeValueEn;
       } else {
-        //B is not defined
+        //No second option
         B = VARIANT_DUMMY_FACTOR;
       }
 
+      //Initialize Pair by basing it off Master Variant object
       var kpair = angular.copy(formData.MasterVariant);
       var firstAttribute = {
         AttributeId: !dataSet.attributeOptions[0].Attribute ? 0 : dataSet.attributeOptions[0].Attribute.AttributeId,
@@ -77,45 +76,54 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
         }]),
         ValueEn: B.ValueEn || B
       };
-
       kpair.FirstAttribute = firstAttribute;
       kpair.SecondAttribute = secondAttribute;
-      kpair.text = util.variant.toString(firstAttribute, secondAttribute);
-      if(dataSet.VariantDisplayOption) kpair.Display = dataSet.VariantDisplayOption[0].value;
+      kpair.text = util.variant.asString(firstAttribute, secondAttribute);
+
+      if(dataSet.VariantDisplayOption){
+        //In case Variant Display option is present, we will copy it too 
+        kpair.Display = dataSet.VariantDisplayOption[0].value;
+      }
+
       kpair.Visibility = true;
       if(kpair.SEO) kpair.SEO.ProductUrlKeyEn = "";
       kpair.Sku = "";
       kpair.Pid = null;
 
+      //If pair is seen before, don't regen, but pull it from cache
       if (kpair.text in vHashSet) {
         //Replace with value from vHashSet
         kpair = vHashSet[kpair.text];
       }
 
-      var hashNew = (util.variant.toString(kpair.FirstAttribute, kpair.SecondAttribute));
+      //Generate new hash
+      var hashNew = util.variant.asString(kpair.FirstAttribute, kpair.SecondAttribute);
       if (!trackVariant.has(hashNew)) {
         //Only push new variant if don't exist
-
         formData.Variants.push(kpair);
         trackVariant.add(hashNew);
       }
 
-    }
+    } //End of expand()
+
 
     //Multiply out unmultiplied options
     if (dataSet.attributeOptions && Object.keys(dataSet.attributeOptions).length > 0) {
-      for (var aKey in dataSet.attributeOptions[0].options) {
+      //Iterate through all attr options in first option array
+      _.forOwn (dataSet.attributeOptions[0].options, function(v, aKey) {
         var A = dataSet.attributeOptions[0].options[aKey];
 
+        //Single case
         if (angular.isDefined(dataSet.attributeOptions[1]['options']) && dataSet.attributeOptions[1].options.length == 0) {
           expand(A);
         }
 
-        for (var bKey in dataSet.attributeOptions[1].options) {
+        //Double case
+        _.forOwn(dataSet.attributeOptions[1].options, function(v, bKey) {
           var B = dataSet.attributeOptions[1].options[bKey];
           expand(A, B);
-        }
-      }
+        });
+      });
     }
 
     //Set default variant
