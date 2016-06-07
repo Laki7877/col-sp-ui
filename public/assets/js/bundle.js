@@ -16555,16 +16555,28 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
     service.variant = {};
 
     service.variant.toString = function (a, b) {
-        console.log('variant Tostring', a, b);
         var left = null;
         var right = null;
-        left = (a.ValueEn || a.AttributeValueEn || a.AttributeValues.length > 0 && a.AttributeValues[0].AttributeValueEn || '');
+        if(a.ValueEn){
+            left = a.ValueEn;
+        }else if(a.AttributeValueEn){
+            left = a.AttributeValueEn;
+        }else{
+            left = '';
+        }
         if(b == null){
           right = '';
         }else{
-          right = (b.ValueEn || b.AttributeValueEn || b.AttributeValues.length > 0 && b.AttributeValues[0].AttributeValueEn || '');
+          right = '';
+          if(b.ValueEn){
+            right = b.ValueEn;
+          }else if(b.AttributeValueEn){
+            right = b.ValueEn;
+          }
         }
 
+        console.log(left);
+        console.log(right);
         return left + (right ? ", " + right : "");
     };
 
