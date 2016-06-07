@@ -21385,6 +21385,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
 
       function defaultOnEmpty(vari) {
+        if(!_.isObject(vari)) return;
+        
         if (_.isEmpty(vari.SafetyStock)) {
           vari.SafetyStock = 0;
         }
