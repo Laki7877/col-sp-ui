@@ -13746,7 +13746,7 @@ label.css-label {
 
 /* line 554, ../../../assets/_components.scss */
 .table .column-text-ellipsis {
-  max-width: 0;
+  max-width: 300px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
