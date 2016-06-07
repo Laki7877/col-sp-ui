@@ -8,11 +8,12 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
     service.variant.asString = function (a, b) {
         var lft = null;
         var rght = null;
-        lft = (_.get(a, 'ValueEn') || _.get(a, 'AttributeValueEn') || '');
+        lft = (a.ValueEn || a.AttributeValueEn || '');
+
         if(b == null){
           rght = '';
         }else{
-          rght = (_.get(b,'ValueEn') || _.get(b, 'AttributeValueEn') || '');
+          rght = (b.ValueEn || b.AttributeValueEn || '');
         }
 
         return lft + (rght ? ", " + rght : "");

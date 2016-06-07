@@ -16557,11 +16557,12 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
     service.variant.asString = function (a, b) {
         var lft = null;
         var rght = null;
-        lft = (_.get(a, 'ValueEn') || _.get(a, 'AttributeValueEn') || '');
+        lft = (a.ValueEn || a.AttributeValueEn || '');
+
         if(b == null){
           rght = '';
         }else{
-          rght = (_.get(b,'ValueEn') || _.get(b, 'AttributeValueEn') || '');
+          rght = (b.ValueEn || b.AttributeValueEn || '');
         }
 
         return lft + (rght ? ", " + rght : "");
@@ -21972,6 +21973,7 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
   $productAdd.generateVariants = function(formData, dataSet) {
     var deferred = $q.defer();
 
+    //vHashSet is cache
     var vHashSet = {};
     var prevVariants = angular.copy(formData.Variants);
     prevVariants.forEach(function(elem, index) {
@@ -21989,25 +21991,20 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
 
       var AVId = null;
       var BVId = null;
-      var B = B0;
-      var A = A0;
+      var B,A;
 
-
-      if (_.has(A0, 'AttributeValue.AttributeValueId')) {
-        AVId = A0.AttributeValue.AttributeValueId;
-        A = A0.AttributeValue.AttributeValueEn;
-      }
+      AVId = A0.AttributeValue.AttributeValueId;
+      A = A0.AttributeValue.AttributeValueEn;
 
       if (angular.isDefined(B0)) {
-        if (_.has(B0, 'AttributeValue.AttributeValueId')) {
-          BVId = B0.AttributeValue.AttributeValueId;
-          B = B0.AttributeValue.AttributeValueEn;
-        }
+        BVId = B0.AttributeValue.AttributeValueId;
+        B = B0.AttributeValue.AttributeValueEn;
       } else {
-        //B is not defined
+        //No second option
         B = VARIANT_DUMMY_FACTOR;
       }
 
+      //Initialize Pair by basing it off Master Variant object
       var kpair = angular.copy(formData.MasterVariant);
       var firstAttribute = {
         AttributeId: !dataSet.attributeOptions[0].Attribute ? 0 : dataSet.attributeOptions[0].Attribute.AttributeId,
@@ -22024,25 +22021,30 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
         }]),
         ValueEn: B.ValueEn || B
       };
-
       kpair.FirstAttribute = firstAttribute;
       kpair.SecondAttribute = secondAttribute;
       kpair.text = util.variant.asString(firstAttribute, secondAttribute);
-      if(dataSet.VariantDisplayOption) kpair.Display = dataSet.VariantDisplayOption[0].value;
+
+      if(dataSet.VariantDisplayOption){
+        //In case Variant Display option is present, we will copy it too 
+        kpair.Display = dataSet.VariantDisplayOption[0].value;
+      }
+
       kpair.Visibility = true;
       if(kpair.SEO) kpair.SEO.ProductUrlKeyEn = "";
       kpair.Sku = "";
       kpair.Pid = null;
 
+      //If pair is seen before, don't regen, but pull it from cache
       if (kpair.text in vHashSet) {
         //Replace with value from vHashSet
         kpair = vHashSet[kpair.text];
       }
 
-      var hashNew = (util.variant.asString(kpair.FirstAttribute, kpair.SecondAttribute));
+      //Generate new hash
+      var hashNew = util.variant.asString(kpair.FirstAttribute, kpair.SecondAttribute);
       if (!trackVariant.has(hashNew)) {
         //Only push new variant if don't exist
-
         formData.Variants.push(kpair);
         trackVariant.add(hashNew);
       }
@@ -22051,18 +22053,21 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
 
     //Multiply out unmultiplied options
     if (dataSet.attributeOptions && Object.keys(dataSet.attributeOptions).length > 0) {
-      for (var aKey in dataSet.attributeOptions[0].options) {
+      //Iterate through all attr options in first option array
+      _.forOwn (dataSet.attributeOptions[0].options, function(v, aKey) {
         var A = dataSet.attributeOptions[0].options[aKey];
 
+        //Single case
         if (angular.isDefined(dataSet.attributeOptions[1]['options']) && dataSet.attributeOptions[1].options.length == 0) {
           expand(A);
         }
 
-        for (var bKey in dataSet.attributeOptions[1].options) {
+        //Double case
+        _.forOwn(dataSet.attributeOptions[1].options, function(v, bKey) {
           var B = dataSet.attributeOptions[1].options[bKey];
           expand(A, B);
-        }
-      }
+        });
+      });
     }
 
     //Set default variant
@@ -22348,6 +22353,7 @@ angular.module('productDetail')
                 scope.isHtmlInput = util.isHtmlDataType;
                 scope.isCheckboxInput = util.isCheckboxDataType;
                 scope.tagTransform = function (newTag) {
+                    console.log('new tag', newTag)
                   return {
                     ValueEn: newTag
                   }
@@ -22600,7 +22606,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "                'show': true,\n" +
     "                'conditions' :  addProductForm['attributeOptions' + jth].$error\n" +
     "                }\n" +
-    "                }\"><ui-select ng-if=isListInput(dataset.attributeOptions[jth].Attribute.DataType) multiple ng-model=dataset.attributeOptions[jth].options><ui-select-match ui-lock-choice=$item._locked placeholder=\"Select variant\" ng-disabled=disabled()>{{ $item.AttributeValue.AttributeValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataset.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search\">{{ i.AttributeValue.AttributeValueEn }}</ui-select-choices></ui-select><ui-select ng-if=isFreeTextInput(dataset.attributeOptions[jth].Attribute.DataType) ng-disabled=disabled() nc-tag-validator nc-max-tag-count=20 nc-max-tag-length=30 nc-tag-pattern=^[a-zA-Z0-9ก-๙\\s\\-]+$ multiple tagging=tagTransform tagging-label=\"\" tagging-tokens=,|ENTER name=attributeOptions{{jth}} ng-model=dataset.attributeOptions[jth].options><ui-select-match ui-lock-choice=$item._locked placeholder=\"Input variant\">{{ $item.ValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps) | filter:$select.search\">{{ i.ValueEn }}</ui-select-choices></ui-select><input ng-if=!dataset.attributeOptions[jth].Attribute.DataType disabled class=\"form-control\"></div><a class=\"like-text form-text\" ng-show=!variationFactorLocked() ng-click=variationFactorIndices.pushSecond() ng-if=\"dataset.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1\"><i class=\"fa fa-plus-circle color-theme\"></i> Add another option</a> <a ng-show=!variationFactorLocked() class=\"like-text form-text\" ng-click=variationFactorIndices.popSecond() ng-if=\"variationFactorIndices.length() == 2 && jth == 1\"><i class=\"fa fa-trash color-theme icon-size-20\"></i></a></div><div class=form-group ng-show=\"formData.Variants.length > 0\"><div class=width-label><label class=control-label>Default Variant</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-model=formData.DefaultVariant class=form-control ng-disabled=disabled() ng-options=\"i as i.text for i in (formData.Variants | truth: 'Visibility') track by i.text\" required></select></div></div></div></div></div>"
+    "                }\"><ui-select ng-if=isListInput(dataset.attributeOptions[jth].Attribute.DataType) multiple ng-model=dataset.attributeOptions[jth].options><ui-select-match ui-lock-choice=$item._locked placeholder=\"Select variant\" ng-disabled=disabled()>{{ $item.AttributeValue.AttributeValueEn }}</ui-select-match><ui-select-choices repeat=\"i in (dataset.attributeOptions[jth].Attribute.AttributeValueMaps | exclude: dataset.attributeOptions[jth].options : 'AttributeValue.AttributeValueId' ) | filter:$select.search\">{{ i.AttributeValue.AttributeValueEn }}</ui-select-choices></ui-select><input ng-if=!dataset.attributeOptions[jth].Attribute.DataType disabled class=\"form-control\"></div><a class=\"like-text form-text\" ng-show=!variationFactorLocked() ng-click=variationFactorIndices.pushSecond() ng-if=\"dataset.attributeOptions[0].options.length > 0 && variationFactorIndices.length() == 1\"><i class=\"fa fa-plus-circle color-theme\"></i> Add another option</a> <a ng-show=!variationFactorLocked() class=\"like-text form-text\" ng-click=variationFactorIndices.popSecond() ng-if=\"variationFactorIndices.length() == 2 && jth == 1\"><i class=\"fa fa-trash color-theme icon-size-20\"></i></a></div><div class=form-group ng-show=\"formData.Variants.length > 0\"><div class=width-label><label class=control-label>Default Variant</label></div><div class=width-field-normal><div class=ah-select2-dropdown><select ng-model=formData.DefaultVariant class=form-control ng-disabled=disabled() ng-options=\"i as i.text for i in (formData.Variants | truth: 'Visibility') track by i.text\" required></select></div></div></div></div></div>"
   );
 
 
