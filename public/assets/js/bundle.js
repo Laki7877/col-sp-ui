@@ -699,7 +699,9 @@ module.exports = {
 };
 
 },{}],3:[function(require,module,exports){
-// abstract add controller for add/detail pages
+/**
+ * Provide template controller for add/detail page
+ */
 module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", function($scope, $window, NcAlert, util, common, options) {
 	'ngInject';
 	$scope.formData = {}; //form data
@@ -798,15 +800,18 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 				(options.onBeforeSave || _.noop)($scope, true);
 				options.service.update($scope.id, data)
 					.then(function(result) {
+						//call deserializer
 						$scope.formData = options.service.deserialize(result);
+						//show alert box
 						$scope.alert.success(options.success || util.saveAlertSuccess(options.successItem || options.item, options.url));
-						$scope.form.$setPristine(true);
+						$scope.form.$setPristine(true); //reset form
 						(options.onAfterSave || _.noop)($scope, true);
 					}, function(err) {
-						$scope.alert.error(common.getError(err));
+						$scope.alert.error(common.getError(err)); //some internal error
 					})
 					.finally(function() {
 						$scope.saving = false;
+						//optional date field reparse
 						if(options.dateFields){
 							options.dateFields.forEach(function(df){
 									$scope.formData[df] = restoreDf[df];
@@ -820,9 +825,9 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 					.then(function(result) {
 						//Set both id and formData[id]
 						$scope.id = result[options.id];
-						$scope.formData = options.service.deserialize(result);
+						$scope.formData = options.service.deserialize(result); //deserialize
 						$scope.alert.success(options.success || util.saveAlertSuccess(options.successItem || options.item, options.url));
-						$scope.form.$setPristine(true);
+						$scope.form.$setPristine(true); //reset form validator state
 						(options.onAfterSave || _.noop)($scope, false);
 					}, function(err) {
 						$scope.alert.error(common.getError(err));
@@ -849,12 +854,16 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 }];
 
 },{}],4:[function(require,module,exports){
-module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryService", "GlobalCategoryService", "BrandService", "Category", "ShopService", function($scope, $controller, options, Product,
-	LocalCategoryService, GlobalCategoryService, BrandService, Category,
-	ShopService) {
+/**
+ * Provide template ctrl for advance-search listing pages
+ */
+module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryService", "GlobalCategoryService", "BrandService", "Category", "ShopService", function($scope, $controller, options, Product, LocalCategoryService, GlobalCategoryService, BrandService, Category, ShopService) {
 	'ngInject';
+
+	//override abstractAdd reloader
 	var overrideReload = function(newObj, oldObj) {
 		if (!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
+			//reset checkbox container (switch to advance search mode)
 			if (newObj.searchText !== oldObj.searchText) {
 				$scope.params._offset = 0;
 				$scope.bulkContainer.length = 0;
@@ -869,6 +878,7 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 
 		//Advance search mode on/off
 		if (!$scope.advanceSearchMode) {
+			//normal listing
 			options.service.list($scope.params)
 				.then(function(data) {
 					$scope.list = data;
@@ -877,6 +887,7 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 					$scope.loading = false;
 				});
 		} else {
+			//advance listing
 			options.service.advanceList(_.extend({
 					searchText: ''
 				}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams)))
@@ -889,26 +900,31 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 		}
 	};
 
+	//inherit from list ctrl
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
 		options: _.extend({}, options, {
 			reload: overrideReload
 		})
 	});
-	$scope.advanceSearchOptions = {};
+	$scope.advanceSearchOptions = {}; //advance search params
 	$scope.advanceSearch = false; //toggling advance search form state
 	$scope.advanceSearchMode = false; //search type
+
 	var isSearchingList = $scope.isSearching;
+	//If searchText is filled
 	$scope.isSearching = function() {
 		return $scope.advanceSearchMode ? (isSearchingList()) : (!_.isEmpty($scope.params
 			.searchText));
 	};
+	// convert advance data to query endpoint
 	$scope.serializeAdvanceSearch = function(formData) {
 		var processed = _.extend({}, formData);
 		processed.ProductNames = _.compact([processed.ProductName]);
 		processed.Brands = _.map(processed.Brands, function(e) {
 			return _.pick(e, ['BrandId']);
 		});
+		//Get lft rgt of cat
 		processed.GlobalCategories = _.map(processed.GlobalCategories, function(e) {
 			return _.pick(e, ['Lft', 'Rgt']);
 		});
@@ -916,6 +932,7 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 			return _.pick(e, ['Lft', 'Rgt']);
 		});
 
+		//toInt price
 		if (!_.isEmpty(processed.PriceTo)) processed.PriceTo = _.toInteger(
 			processed.PriceTo);
 		if (!_.isEmpty(processed.PriceFrom)) processed.PriceFrom = _.toInteger(
@@ -931,10 +948,12 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 
 		return processed;
 	};
+	//switch to normal when click search
 	$scope.onSearch = function() {
 		$scope.advanceSearchMode = false;
 		return false;
 	};
+	//switch to advance when click advance search
 	$scope.onAdvanceSearch = function(item, flag) {
 		if (flag) {
 			$scope.advanceSearchMode = true;
@@ -946,8 +965,8 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 		return false;
 	};
 
+	//fetch brand
 	$scope.advanceSearchOptions.refreshBrands = function(t) {
-		console.log(t);
 		BrandService.list({
 				_limit: 16,
 				searchText: t
@@ -956,6 +975,7 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 				$scope.advanceSearchOptions.Brands = data.data;
 			});
 	};
+	//fetch shops
 	$scope.advanceSearchOptions.refreshShops = function(t) {
 		//Load all Shops
 		ShopService.list({
@@ -988,10 +1008,15 @@ module.exports = ["$scope", "$controller", "options", "Product", "LocalCategoryS
 }]
 
 },{}],5:[function(require,module,exports){
+/**
+ * Provide template ctrl for listing
+ */
 module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options", function($scope, $window, $timeout, NcAlert, util, options) {
 	'ngInject';
 	var a = _.includes(['a','e','i','o','u'], _.lowerCase(options.item.charAt(0))) ? 'an' : 'a';
+	//Alert bar
 	$scope.alert = new NcAlert();
+	//table message
 	$scope.tableOptions = {
 		emptyMessage: 'You do not have any ' + _.lowerCase(options.item),
 		searchEmptyMessage: 'No ' + _.lowerCase(options.item) + ' match your search criteria'
@@ -1006,17 +1031,22 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 		_offset: 0,
 		_direction: options.direction || 'desc'
 	};
+	//Listing data
 	$scope.list = {
 		total: 0,
 		data: []
 	};
-	$scope.item = options.item;
-	$scope.url = options.url;
-	$scope.id = options.id;
+	$scope.item = options.item; //item object name (ie, "10 Product")
+	$scope.url = options.url; //url to redirect back to
+	$scope.id = options.id; //this item's id
 
+	//called when params change, should reload endpoint
 	$scope.reload = options.reload || function(newObj, oldObj) {
 		$scope.loading = true;
+		//optional reloader
 		(options.onReload || _.noop)(newObj, oldObj);
+
+		//clear checkbox container when param change
 		if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
 			if(newObj.searchText !== oldObj.searchText) {
 				$scope.params._offset = 0;
@@ -1031,7 +1061,7 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 				$scope.bulkContainer.length = 0;
 			}
 		}
-
+		//call list endpoint
 		options.service.list($scope.params)
 			.then(function(data) {
 				$scope.list = data;
@@ -1040,16 +1070,20 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 			$scope.loading = false;
 		});
 	};
+	// set loading flag
 	$scope.onLoad = function() {
 		$scope.loading = true;
 	};
+
+	// custom filters
 	if(!_.isEmpty(options.filters)) {
 		$scope.filterOptions = options.filters;
 		$scope.params._filter = options.filters[0].value;
 	}
-	$scope.bulkContainer = [];
-	$scope.toggleEye = util.eyeToggle($scope, options);
+	$scope.bulkContainer = []; //contain checked items
+	$scope.toggleEye = util.eyeToggle($scope, options); //fn for toggling visibility
 
+	//custom bulk action
 	if(_.isUndefined(options.bulks)) {
 		$scope.bulks= [
 			util.bulkDelete($scope, options)
@@ -1119,12 +1153,14 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 
 	}
 
+	//Searching flag for this listing
 	$scope.isSearching = function() {
 		return !_.isEmpty($scope.params.searchText) || ( _.isUndefined($scope.params._filter) ? false :  $scope.params._filter != options.filters[0].value);
 	};
 
 	var init = false;
 
+	//watch for param change, reload if needed
 	$scope.$watch('params', function(a,b) {
 		if($scope.advanceSearchMode && (a.searchText != b.searchText)) {
 		} else {
@@ -1134,9 +1170,7 @@ module.exports = ["$scope", "$window", "$timeout", "NcAlert", "util", "options",
 }];
 
 },{}],6:[function(require,module,exports){
-module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$uibModal", "GlobalCategory", "Category", "AttributeSet", "Product", "ProductTempService", "options", "VariationFactorIndices", "AttributeSetService", "AttributeOptions", "$productAdd", "AdminShopService", function($scope, $rootScope, $controller, NcAlert,
-		config, $uibModal, GlobalCategory, Category, AttributeSet, Product, ProductTempService, options,
-		VariationFactorIndices, AttributeSetService, AttributeOptions, $productAdd, AdminShopService) {
+module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$uibModal", "GlobalCategory", "Category", "AttributeSet", "Product", "ProductTempService", "options", "VariationFactorIndices", "AttributeSetService", "AttributeOptions", "$productAdd", "AdminShopService", function($scope, $rootScope, $controller, NcAlert, config, $uibModal, GlobalCategory, Category, AttributeSet, Product, ProductTempService, options, VariationFactorIndices, AttributeSetService, AttributeOptions, $productAdd, AdminShopService) {
 	'ngInject';
     
     $scope.adminMode = (options.adminMode);
@@ -1535,6 +1569,9 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 	};
 }]
 },{}],8:[function(require,module,exports){
+/**
+ * Handle admin account listing page
+ */
 module.exports = ["$scope", "$controller", "AdminAccountService", "config", function($scope, $controller, AdminAccountService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -1551,6 +1588,9 @@ module.exports = ["$scope", "$controller", "AdminAccountService", "config", func
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
 },{}],9:[function(require,module,exports){
+/**
+ * Handle admin account adding page
+ */
 module.exports = ["$scope", "$controller", "AdminAccountService", "AdminRoleService", "Credential", function($scope, $controller, AdminAccountService, AdminRoleService, Credential) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -1736,8 +1776,12 @@ module.exports = function ($scope, $controller, CMSMasterService, config) {
 };
 
 },{}],11:[function(require,module,exports){
+/**
+ * Handle admin attribute listing page
+ */
 module.exports = ["$scope", "$controller", "AttributeService", "config", function($scope, $controller, AttributeService, config) {
 	'ngInject';
+	//Inherit from abstractlist
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
 		options: {
@@ -1758,13 +1802,18 @@ module.exports = ["$scope", "$controller", "AttributeService", "config", functio
 			]
 		}
 	});
+	// dropdown options
 	$scope.yesNoDropdown = config.DROPDOWN.YES_NO_DROPDOWN;
 	$scope.dataTypeDropdown = config.DROPDOWN.DATA_TYPE_DROPDOWN;
 }]
 
 },{}],12:[function(require,module,exports){
+/**
+ * Handle admin attribute add page
+ */
 module.exports = ["$scope", "$controller", "AttributeService", "ImageService", "config", "util", "common", function($scope, $controller, AttributeService, ImageService, config, util, common) {
 	'ngInject';
+	//Dropdown options
 	$scope.dataTypeOptions = config.DROPDOWN.DATA_TYPE_DROPDOWN;
 	$scope.variantOptions = config.DROPDOWN.VARIANT_DROPDOWN;
 	$scope.boolOptions = config.DROPDOWN.YES_NO_DROPDOWN;
@@ -1793,6 +1842,7 @@ module.exports = ["$scope", "$controller", "AttributeService", "ImageService", "
 		}
 	});
 
+	//Upload image
 	var uploader = ImageService.getUploaderFn('/AttributeValueImages');
  	
  	//Preview image
@@ -1812,6 +1862,7 @@ module.exports = ["$scope", "$controller", "AttributeService", "ImageService", "
  		})
  	};
 
+ 	//Data type dropdown
 	$scope.$watch('formData.DataType', function() {
 		if($scope.formData.DataType == 'HB' ||
 			$scope.formData.DataType == 'ST') {
@@ -1824,6 +1875,7 @@ module.exports = ["$scope", "$controller", "AttributeService", "ImageService", "
 		}
 	}, true);
 
+	//Auto required false when admin
 	$scope.$watch('formData.VisibleTo', function(n, o) {
 		if(n == 'AD') {
 			$scope.formData.Required = false;
@@ -1831,8 +1883,12 @@ module.exports = ["$scope", "$controller", "AttributeService", "ImageService", "
 	});
 }];
 },{}],13:[function(require,module,exports){
+/**
+ * Handle admin attribute set listing page
+ */
 module.exports = ["$scope", "$controller", "AttributeSetService", "util", "config", function($scope, $controller, AttributeSetService, util, config) {
 	'ngInject';
+	//inherit from listing ctrl
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
 		options: {
@@ -1852,14 +1908,21 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "util", "confi
 	});
 }]
 },{}],14:[function(require,module,exports){
+/**
+ * Handle admin attribute set adding page
+ */
 module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeService", "config", function($scope, $controller, AttributeSetService, AttributeService, config) {
 	'ngInject';
+	// dropdown
 	$scope.visibleOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
 	$scope.attributeOptions = [];
 	$scope.tagOptions = [];
+
+	// if attribute set should be lock
 	$scope.lockAttributeset = function(i) {	
 		return false;
 	};
+	// change tag structure after keying
 	$scope.tagTransform = function(newTag) {
 		return {
 			TagName: newTag,
@@ -1870,6 +1933,7 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeServ
 			}
 		};
 	};
+	// inherit from add ctrl
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
 		options: {
@@ -1881,6 +1945,7 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeServ
 			}
 		}
 	});
+	//fetch attribute
 	$scope.onSearch = function($search) {
 		AttributeService.list({
 			searchText: $search,
@@ -1892,6 +1957,9 @@ module.exports = ["$scope", "$controller", "AttributeSetService", "AttributeServ
 	}
 }]
 },{}],15:[function(require,module,exports){
+/**
+ * Handle admin brand listing page
+ */
 module.exports = ["$scope", "$controller", "BrandService", "config", function($scope, $controller, BrandService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -1908,11 +1976,16 @@ module.exports = ["$scope", "$controller", "BrandService", "config", function($s
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
 },{}],16:[function(require,module,exports){
+/**
+ * Handle admin brand adding page
+ */
 module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageService", "common", "config", function($scope, $controller, Product, BrandService, ImageService, common, config) {
 	'ngInject';
-	$scope.TYPEAHEAD_DELAY = config.TYPEAHEAD_DELAY;
-	$scope.products = [];
+	$scope.TYPEAHEAD_DELAY = config.TYPEAHEAD_DELAY; //typeahead delay
+	$scope.products = []; //products
 	$scope.availableProducts = -1;
+
+	//Image uploader
 	$scope.logoUploader = ImageService.getUploaderFn('/BrandImages', {
 		data: { Type: 'Logo' }
 	});
@@ -1922,6 +1995,7 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 	$scope.bannerSmUploader = ImageService.getUploaderFn('/BrandImages', {
 		data: { Type: 'SmallBanner' }
 	});
+	//Validate img size
 	$scope.bannerOptions = {
 		validateDimensionMin: [1920, 1080],
 		validateDimensionMax: [1920, 1080]
@@ -1930,10 +2004,13 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 		validateDimensionMin: [1600, 900],
 		validateDimensionMax: [1600, 900]
 	};
+
+	//on upload logo
 	$scope.uploadLogo = function(file) {
 		if(_.isNil(file)) {
 			return;
 		}
+		//placeholder
 		$scope.formData.BrandImage = {
 			url: '/assets/img/loader.gif'
 		};
@@ -1945,6 +2022,7 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 				$scope.alert.error(common.getError(err.data));
 			});
 	};
+	//on validation fail
 	$scope.uploadBannerFail = function(e, response, min, max) {
 		if(e == 'onmaxsize') {
 			$scope.alert.error('Cannot exceed 8 images');
@@ -1973,6 +2051,8 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 			$scope.alert.error(common.getError(response.data));
 		}
 	};
+
+	//search feature products
 	$scope.getFeatureProduct = function(text) {
 		Product.advanceList({
 			Brands: [{BrandId: $scope.id}],
@@ -1982,9 +2062,12 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 			$scope.products = response.data;
 		});	
 	};
+
+	//status dropdown
 	$scope.status = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 	$scope.sortby = [];
 
+	//flag for image is uploading
 	var isUploading = function(images) {
 		var i = true;
 		_.forEach(images, function(e) {
@@ -1993,6 +2076,7 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 		return !i;
 	}
 
+	//inherit from add ctrl
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
 		options: {
@@ -2001,6 +2085,7 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 			item: 'Brand',
 			service: BrandService,
 			onSave: function(scope) {
+				//only allow save when uploading finished
 				if(isUploading($scope.formData.BrandBannerEn) ||
 					isUploading($scope.formData.BrandBannerTh) ||
 					isUploading($scope.formData.BrandSmallBannerEn) ||
@@ -2010,10 +2095,12 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 				}
 			},
 			onLoad: function(scope, flag) {
+				//get sortBy list
 				common.getSortBy().then(function(data) {
 					$scope.sortBy = data;
 				});
 
+				//is update
 				if(flag) {
 					//Check if product exist for this brand
 					Product.advanceList({
@@ -4192,9 +4279,14 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 }];
 
 },{}],27:[function(require,module,exports){
+/**
+ * Handle admin coupon listing
+ */
 module.exports = ["$scope", "$controller", "GlobalCouponService", "config", function($scope, $controller, GlobalCouponService, config) {
 	'ngInject';
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
+
+	//inherit from list ctrl
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
 		options: {
@@ -4209,8 +4301,12 @@ module.exports = ["$scope", "$controller", "GlobalCouponService", "config", func
 }]
 
 },{}],28:[function(require,module,exports){
+/**
+ * Handle admin coupon adding page
+ */
 module.exports = ["$scope", "$controller", "GlobalCouponService", "GlobalCategoryService", "config", "Category", function($scope, $controller, GlobalCouponService, GlobalCategoryService, config, Category) {
   'ngInject';
+  //dropdowns
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
   $scope.filters = config.DROPDOWN.COUPON_GLOBAL_FILTER;
@@ -4226,12 +4322,14 @@ module.exports = ["$scope", "$controller", "GlobalCouponService", "GlobalCategor
       service: GlobalCouponService,
       dateFields: ['StartDate', 'ExpireDate'],
       onLoad: function() {
+        //onload, get global cat list
         GlobalCategoryService.list()
           .then(function(data) {
             $scope.categories = Category.transformNestedSetToUITree(data);
           });
       },
       onSave: function(scope) {
+        //check validation
         if(scope.formData.ExpireDate < scope.formData.StartDate) {
           return true;
         }
@@ -4241,29 +4339,38 @@ module.exports = ["$scope", "$controller", "GlobalCouponService", "GlobalCategor
 
 }];
 },{}],29:[function(require,module,exports){
+/**
+ * Handle admin login page
+ */
   module.exports = ["$scope", "Credential", "$window", "NcAlert", "$uibModal", "storage", "config", function ($scope, Credential, $window, NcAlert, $uibModal, storage, config) {
     'ngInject';
+    // user form
     $scope.uform = {};
-    $scope.loginForm = {};
+    $scope.loginForm = {}; //login form
     $scope.events = {};
     $scope.alert = new NcAlert();
     var redir = storage.get('redirect');
     storage.remove('redirect');
     
+    // get stored profile, if any
     var profile = storage.getCurrentUserProfile();
     if (profile && profile.User.IsAdmin) {
       $window.location.href = Credential.getRedirPath(profile)
     }
     
+    // see if this is a redirect due to session timeout
     if(storage.poke('session_timeout')) {
       $scope.alert.open(false, 'Your session has timed out', '');
     }
 
+    // see if this is a redirect due to access deny
     if(storage.poke('access_denied')) {
       $scope.alert.error('Access denied');
     }
     
+    // login action
     $scope.doLogin = function () {
+      // form validate
       if ($scope.loginForm.$invalid) {
         if(_.isEmpty($scope.events)) {
           $scope.events.user = false;
@@ -4277,7 +4384,9 @@ module.exports = ["$scope", "$controller", "GlobalCouponService", "GlobalCategor
       var user = $scope.uform.user;
       var pass = $scope.uform.pass;
 
+      // call credential endpoint
       Credential.login(user, pass, true).then(function (r) {
+        // if is not admin, do not allow pass
         if(!r.User.IsAdmin){
             storage.clear();
             $scope.error = true;
@@ -4287,12 +4396,13 @@ module.exports = ["$scope", "$controller", "GlobalCouponService", "GlobalCategor
         }
 
         $scope.loading = false;
+        //if there's redir, redirect to that page
         if (!redir || redir == '/') {
           redir = Credential.getRedirPath(r);
         }
         $window.location.href = redir;
-        console.log(redir);
       }, function (err) {
+        //auth error
         storage.clear();
         $scope.error = true;
         $scope.loading = false;
@@ -4302,8 +4412,12 @@ module.exports = ["$scope", "$controller", "GlobalCouponService", "GlobalCategor
 }];
 
 },{}],30:[function(require,module,exports){
+/**
+ * Handle admin master product listing page
+ */
 module.exports = ["$scope", "$controller", "$window", "AdminMasterProductService", "config", function($scope, $controller, $window, AdminMasterProductService, config) {
 	'ngInject';
+	// inherit from list ctrl
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
 		options: {
@@ -4325,11 +4439,15 @@ module.exports = ["$scope", "$controller", "$window", "AdminMasterProductService
 			}]
 		}
 	});
+	// get list of child products as string
 	$scope.getChildProducts = function(list) {
 		return _.join(_.map(list, function(e) { return e.Pid }), ', ');
 	};
 }];
 },{}],31:[function(require,module,exports){
+/**
+ * Handle admin master product adding page
+ */
 module.exports = ["$scope", "$controller", "BrandService", "$window", "Product", "AdminMasterProductService", "config", "util", "common", function($scope, $controller, BrandService, $window, Product, AdminMasterProductService, config, util, common) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -4347,11 +4465,14 @@ module.exports = ["$scope", "$controller", "BrandService", "$window", "Product",
 		}
 	});
 	
+	//containers
 	$scope.childProducts = [];
 	$scope.products = [];
 	$scope.brands = [];
 	
+	//get list of products from search var
 	$scope.getProducts = function(search) {
+		//Filter by brand list
 		var brands = !_.isEmpty($scope.formData.FilterBy) ? [$scope.formData.FilterBy] : [];
 		return AdminMasterProductService.customList({
 			searchText: search,
@@ -4367,7 +4488,8 @@ module.exports = ["$scope", "$controller", "BrandService", "$window", "Product",
 			});
 		});
 	};
-		
+	
+	// get child products from search
 	$scope.getChildProducts = function(search) {
 		return AdminMasterProductService.customList({
 			searchText: search,
@@ -4383,7 +4505,7 @@ module.exports = ["$scope", "$controller", "BrandService", "$window", "Product",
 			});
 		});
 	};
-
+	// remove master products from child list
 	$scope.$watch('formData.MasterProduct', function(newVal) {
 		if(!_.isNil(newVal)) {
 			_.pullAllBy($scope.formData.ChildProducts, [$scope.formData.MasterProduct], 'ProductId');
@@ -4391,8 +4513,12 @@ module.exports = ["$scope", "$controller", "BrandService", "$window", "Product",
 	});
 }];
 },{}],32:[function(require,module,exports){
+/**
+ * Handle admin newsletter
+ */
 module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "ImageService", function($scope, $controller, $uibModal, NewsletterService, ImageService) {
 	'ngInject';
+	// inherit list ctrl
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
 		options: {
@@ -4410,6 +4536,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "Im
 		}
 	});
 
+	// open edit/add modal
 	$scope.open = function(item) {
 		var modal = $uibModal.open({
 			size: 'lg',
@@ -4444,9 +4571,10 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "Im
 						.finally(function() {
 							$scope.loading = false;
 						});
-				} else {
+				} else { //create new
 					$scope.formData = NewsletterService.generate();
 				}
+				// get all shops by search
 				$scope.getShops = function(search, key) {
 					$scope.shops[key].loading = true;
 					AdminShopService.list({
@@ -4460,13 +4588,16 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "Im
 							$scope.shops[key].loading = false;
 						})
 				};
+				// upload pic
 				$scope.upload = function($file) {
 					if(_.isNil($file)) {
 						return;
 					}
+					// placeholder loader
 					$scope.formData.Image = {
 						Url: '/assets/img/loader.gif'
 					};
+					// upload image
 					uploader.upload($file)
 						.then(function(response) {
 							$scope.formData.Image = response.data;
@@ -4475,9 +4606,10 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "Im
 							$scope.alert.error(common.getError(err.data));
 						});
 				};
+				// on save
 				$scope.save = function() {
 					$scope.alert.close();
-					if($scope.form.$invalid) {
+					if($scope.form.$invalid) { //invalid form validation
 						$scope.alert.error(util.saveAlertError());
 						return;
 					}
@@ -4509,13 +4641,17 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", "Im
 			}],
 			resolve: {
 				id: function() {
+					//opened newsletter id
 					return _.isNil(item) ? 0 : item.NewsletterId;
 				},
 				uploader: function() {
+					// image uploader
 					return ImageService.getUploaderFn('/NewsletterImages');
 				}
 			}
 		});
+
+		// on modal $close
 		modal.result.then(function(res) {
 			$scope.reload();
 			$scope.alert.success('Successfully created.')
@@ -4708,8 +4844,12 @@ module.exports = ["$scope", "$controller", "OnTopCredit", "config", function($sc
 	$scope.statusDropdown = config.PRODUCT_STATUS;
 }];
 },{}],35:[function(require,module,exports){
+/**
+ * Handle admin pending product page
+ */
 module.exports = ["$scope", "$controller", "ProductTempService", "config", function($scope, $controller, ProductTempService, config) {
 	'ngInject';
+	//inherit from advance list ctrl
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
 		options: {
@@ -4718,10 +4858,9 @@ module.exports = ["$scope", "$controller", "ProductTempService", "config", funct
 			item: 'Pending Product',
 			order: 'UpdatedDt',
 			id: 'ProductId',
-			bulks: [{
+			bulks: [{ // create single product action
 				name: 'Create Single Product',
 				fn: function(arr, cb, cat) {
-					//WFENDPOINT
 					$scope.alert.close();
 					if(arr.length == 0) {
 						$scope.alert.error('Action failed. Please select Product for this action.')
@@ -4738,15 +4877,18 @@ module.exports = ["$scope", "$controller", "ProductTempService", "config", funct
 						$scope.model = null;
 						$scope.tree = tree;
 
+						// only allow submit if nodes isn't empty
 						$scope.disabledOn = function(model) {
 							return model.nodes.length > 0;
 						};
+						// submit
 						$scope.select = function() {
 							$uibModalInstance.close($scope.model);
 						};
 					}],
 					resolve: {
 						tree: function() {
+							//past in global categories
 							return $scope.advanceSearchOptions.GlobalCategories;
 						}
 					}
@@ -4812,9 +4954,15 @@ module.exports = ["$scope", "$controller", "$uibModal", "NCConfirm", function ($
 
 }];
 },{"angular":354}],38:[function(require,module,exports){
+/**
+ * Handle admin product approval listing page
+ */
 module.exports = ["$scope", "$controller", "Product", "config", "util", function($scope, $controller, Product, config, util) {
 	'ngInject';
+    //getter for product status
     $scope.asStatus = Product.getStatus;
+
+    //inherit list ctrl
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
 		options: {
@@ -4825,10 +4973,12 @@ module.exports = ["$scope", "$controller", "Product", "config", "util", function
 			id: 'ProductId',
 			actions: ['View Only'],
 			bulks: [
+				//force approve action
 				util.bulkTemplate('Force Approve', Product.approve, 'ProductId', 'Product', {
 					btnConfirm: 'Approve',
 					btnClass: 'btn-green'
 				}),
+				//reject action
 				util.bulkTemplate('Reject', Product.reject, 'ProductId', 'Product', {
 					btnConfirm: 'Reject',
 					btnClass: 'btn-red'
@@ -4841,6 +4991,7 @@ module.exports = ["$scope", "$controller", "Product", "config", "util", function
 			]
 		}
 	});
+	//dropdown filter
 	$scope.filter2Options = [
 		{
 			name: 'None',
@@ -4876,11 +5027,12 @@ module.exports = ["$scope", "$controller", "Product", "config", "util", function
 }];
 
 },{}],39:[function(require,module,exports){
-var angular = require('angular');
-
+/**
+ * Handle admin product page
+ */
 module.exports = ["$scope", "$controller", function ($scope, $controller) {
     'ngInject';
-    
+    //inherit from product add ctrl
     $controller('AbstractProductAddCtrl', {
         $scope: $scope,
         options: {
@@ -4891,10 +5043,13 @@ module.exports = ["$scope", "$controller", function ($scope, $controller) {
     });
 
 }];
-},{"angular":354}],40:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
+/**
+ * Handle admin group adding page
+ */
 module.exports = ["$scope", "$controller", "Product", function($scope, $controller, Product) {
 	'ngInject';
-    
+    // inherit from product group ctrl
 	$controller('AbstractProductGroupAddCtrl', {
 		$scope: $scope,
 		options: {
@@ -4905,8 +5060,12 @@ module.exports = ["$scope", "$controller", "Product", function($scope, $controll
 }]
 
 },{}],41:[function(require,module,exports){
+/**
+ * Handle admin product listing
+ */
 module.exports = ["$scope", "$controller", "Product", "common", "config", "$base64", "$timeout", function($scope, $controller, Product, common, config, $base64, $timeout) {
 	'ngInject';
+    //inherit from advance list ctrl
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
 		options: {
@@ -4918,6 +5077,7 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", "$base
 			actions: ['View'],
 			bulks: ['Show', 'Hide',
             {
+                //publish action
                 name: 'Publish',
                 fn: function(arr, cb) {
                     $scope.alert.close();
@@ -4927,6 +5087,7 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", "$base
                         return;
                     }
 
+                    //bulk publish endpoint
                     Product.bulkPublish(_.map(arr, function(e) {
                         return _.pick(e, ['ProductId']);
                     })).then(function() {
@@ -4938,6 +5099,7 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", "$base
                         $scope.reload();
                     });
                 },
+                //use confirmation
                 confirmation: {
                     title: 'Confirm to publish',
                     message: 'Are you sure you want to publish {{model.length}} products?',
@@ -4946,6 +5108,7 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", "$base
                 }
             },
             {
+                //add tags action
 		        name: 'Add Tags',
 		        fn: function(add, cb, model) {
 		            $scope.alert.close();
@@ -4958,6 +5121,7 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", "$base
 		                $scope.reload();
 		            });
 		        },
+                //add tag modal
 		        modal: {
 		            size: 'size-warning',
 		            templateUrl: 'product/modalAddTags',
@@ -4967,6 +5131,7 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", "$base
 		                	tags: []
 		                };
 		                $scope.close = function() {
+                            //return Products and Tags to the list
 		                    $uibModalInstance.close({
 		                        Products: _.map(data, function(e) {
 		                            return _.pick(e, ['ProductId']);
@@ -4989,19 +5154,24 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", "$base
 			]
 		}
 	});
+
+    //product status hashmap
     $scope.statusLookup = {};
 	$scope.statusDropdown = config.PRODUCT_STATUS;    
 	config.PRODUCT_STATUS.forEach(function(object){
        $scope.statusLookup[object.value] = object;
     });
-	
+
+    //get product status
     $scope.asStatus = function (ab) {
         return $scope.statusLookup[ab];
     };
+    //join tag into string
     $scope.getTag = function(tags) {
         return _.join(tags, ', ');
     }
 	
+    //export selected products
     $scope.exportSelected = function(){
         $scope.alert.close();
         if ($scope.bulkContainer.length == 0) {
@@ -5011,6 +5181,8 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", "$base
     };
 
     $scope.searchCriteria = null;
+
+    //export search result
     $scope.exportSearchResult = function() {
         if(!$scope.advanceSearchParams){
             return $scope.alert.error("Unable to Export. There are no products in your search result.");
@@ -5027,6 +5199,9 @@ module.exports = ["$scope", "$controller", "Product", "common", "config", "$base
     }
 }];
 },{}],42:[function(require,module,exports){
+/**
+ * Handle admin product review
+ */
 module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$uibModal", "util", "common", function($scope, $controller, ProductReviewService, config, $uibModal, util, common) {
 	'ngInject';
 	//Inherit from parent
@@ -5040,6 +5215,7 @@ module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$u
 			id: 'ProductReviewId'
 		}
 	});
+	// open admin review modal
 	$scope.open = function(item) {
 		$uibModal.open({
 			size: 'lg',
@@ -5050,6 +5226,7 @@ module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$u
 				$scope.formData = _.extend({}, info);
 				$scope.ratings = [];
 
+				//on save action
 				$scope.save = function() {
 					$scope.alert.close();
 					//Save this data..
@@ -5061,6 +5238,7 @@ module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$u
 						});
 				};
 
+				// generate rating dropdown
 				for (var i = 0; i <= 10; i++) {
 					$scope.ratings.push(i*0.5);
 				};
@@ -5077,6 +5255,9 @@ module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$u
 }];
 
 },{}],43:[function(require,module,exports){
+/**
+ * Handle admin role listing
+ */
 module.exports = ["$scope", "$controller", "AdminRoleService", "config", function($scope, $controller, AdminRoleService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -5093,6 +5274,9 @@ module.exports = ["$scope", "$controller", "AdminRoleService", "config", functio
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }]
 },{}],44:[function(require,module,exports){
+/**
+ * Handle admin role adding
+ */
 module.exports = ["$scope", "$controller", "AdminRoleService", "AdminPermissionService", "PermissionService", "util", function($scope, $controller, AdminRoleService, AdminPermissionService, PermissionService, util) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -5140,8 +5324,11 @@ module.exports = ["$scope", "$controller", "AdminRoleService", "AdminPermissionS
 			}
 		}
 	});
+
+	// for serializing circular json
 	var cj = require('circular-json');
 
+	// select all update for item change
 	$scope.$watch(function() {
 		return cj.stringify($scope.formData);
 	}, function() {
@@ -5152,7 +5339,11 @@ module.exports = ["$scope", "$controller", "AdminRoleService", "AdminPermissionS
 			});
 		});		
 	});
+
+	// permission group
 	$scope.group = ['Products', 'Accounts', 'Promotions', 'Others', 'CMS', 'Report'];
+
+	// check all
 	$scope.checkAll = function(val) {
 		_.forOwn($scope.formData.Permissions, function(v,k) {
 			util.traverse(v, 'Children', function(e) {
@@ -5162,10 +5353,13 @@ module.exports = ["$scope", "$controller", "AdminRoleService", "AdminPermissionS
 	};
 }];
 },{"circular-json":355}],45:[function(require,module,exports){
+/**
+ * Handle admin seller account
+ */
 module.exports = ["$scope", "$controller", "SellerAccountService", "config", function($scope, $controller, SellerAccountService, config) {
 	'ngInject';
 	$scope.yesNoDropdown = config.DROPDOWN.YES_NO_DROPDOWN;
-
+	// get shop owner from list
 	$scope.getShopOwner = function(list) {
 		var i = _.findIndex(list, function(e) { return e == 'Shop Owner' });
 		if(i >= 0) {
@@ -5175,6 +5369,7 @@ module.exports = ["$scope", "$controller", "SellerAccountService", "config", fun
 		}
 	};
 
+	// get shop list string
 	$scope.getShop = function(shops) {
 		if(shops.length > 0) {
 			return _.join(shops, [', ']);
@@ -5203,6 +5398,9 @@ module.exports = ["$scope", "$controller", "SellerAccountService", "config", fun
 	});
 }]
 },{}],46:[function(require,module,exports){
+/**
+ * Handle admin seller coupon
+ */
 module.exports = ["$scope", "$controller", "SellerCouponService", "config", function($scope, $controller, SellerCouponService, config) {
   'ngInject';
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
@@ -5220,8 +5418,12 @@ module.exports = ["$scope", "$controller", "SellerCouponService", "config", func
 }]
 
 },{}],47:[function(require,module,exports){
+/**
+ * Handle admin seller add
+ */
 module.exports = ["$scope", "$controller", "SellerCouponService", "config", "Category", function($scope, $controller, SellerCouponService, config, Category) {
   'ngInject';
+  //dropdowns
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
   $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
   $scope.filters = config.DROPDOWN.COUPON_SELLER_FILTER;
@@ -5244,6 +5446,9 @@ module.exports = ["$scope", "$controller", "SellerCouponService", "config", "Cat
 
 }];
 },{}],48:[function(require,module,exports){
+/**
+ * Handle admin shop account
+ */
 module.exports = ["$scope", "$controller", "AdminShopService", "config", function($scope, $controller, AdminShopService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -5260,12 +5465,16 @@ module.exports = ["$scope", "$controller", "AdminShopService", "config", functio
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
 },{}],49:[function(require,module,exports){
+/**
+ * Handle admin shop account add
+ */
 module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "AdminShoptypeService", "GlobalCategoryService", "ShopService", "ImageService", "Category", "config", "common", "Credential", "$window", function($scope, $controller, $uibModal, AdminShopService, AdminShoptypeService, GlobalCategoryService, ShopService, ImageService, Category, config, common, Credential, $window) {
 	'ngInject';
 
 	var v = [];
+	//watch
 	var watch = function() {
-		console.log('watch');
+		// update  city on province change
 		v.push($scope.$watch('formData.Province', function(data, old) {
 			if(_.isNil(data)) {
 				return;
@@ -5277,6 +5486,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 			}
 			$scope.getCities(data.ProvinceId);
 		}));
+		// update district on city change
 		v.push($scope.$watch('formData.City', function(data, old) {
 			if(_.isNil(data)) {
 				return;
@@ -5287,6 +5497,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 			}
 			$scope.getDistricts(data.CityId);
 		}));
+		// update postal on city district
 		v.push($scope.$watch('formData.District', function(data, old) {
 			if(_.isNil(data)) {
 				return;
@@ -5297,6 +5508,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 			$scope.getPostals(data.DistrictId);
 		}));
 	};
+	//unwatch
 	var unwatch = function() {
 		while(v.length > 0) {
 			v.pop()();
@@ -5312,6 +5524,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 			item: 'Shop Account',
 			service: AdminShopService,
 			init: function(scope) {
+				// get all shoptype
 				AdminShoptypeService.listAll()
 					.then(function(data) {
 						scope.shoptypes = data;
@@ -5327,30 +5540,36 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 							item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
 						});
 				});
-				watch();
+				watch(); //watch for change
 			},
 			onBeforeSave: function(scope) {
-				unwatch();
+				unwatch(); //do not watch during save
 			},
 			onAfterSave: function(scope) {
+				// commissions category
 				_.forEach(scope.formData.Commissions, function(item) {
 					item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
 				});
-				watch();
+				watch(); //rewatch after save
 			}
 		}
 	});
-
+	
+	//logo uploader
 	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
 		data: { Type: 'Logo' }
 	});
+
+	//upload logo
 	$scope.uploadLogo = function(file) {
 		if(_.isNil(file)) {
 			return;
 		}
+		//loading placeholder
 		$scope.formData.ShopImage = {
 			url: '/assets/img/loader.gif'
 		};
+		//upload action
 		$scope.logoUploader.upload(file)
 			.then(function(response) {
 				$scope.formData.ShopImage = response.data;
@@ -5360,6 +5579,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 			});
 	};
 
+	//getter for cities name list
 	$scope.getCities = function(id) {
 		ShopService.get('Cities', id)
 			.then(function(data) {
@@ -5367,12 +5587,15 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 			});
 	};
 
+	//getter for districts name list
 	$scope.getDistricts = function(id) {
 		ShopService.get('Districts', id)
 			.then(function(data) {
 				$scope.districts = data;
 			});
 	};
+
+	//getter for postal name list
 	$scope.getPostals = function(id) {
 		ShopService.get('PostCodes', id)
 			.then(function(data) {
@@ -5380,6 +5603,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 			});
 	}
 
+	//get all other lists
 	$scope.fetchAllList = function() {
 		ShopService.get('TermPayments')
 			.then(function(data) {
@@ -5412,6 +5636,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 	};
 	$scope.fetchAllList();
 
+	//login as action
 	$scope.loginAs = function(user){
 		$scope.alert.close();
 		Credential.loginAs(user).then(function(r){
@@ -5422,6 +5647,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
     });
 	};
 
+	//reset user password action
 	$scope.resetPassword = function(user) {
 	    var modal = $uibModal.open({
 	      size: 'change-password',
@@ -5435,10 +5661,13 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 	        $scope.saving = false;
 	        $scope.oldPassword = false;
 
+	        //save change
 	        $scope.save = function() {
 	          if($scope.form.$valid) {
 	            $scope.saving = true;
 	            $scope.alert.close();
+
+	            //change password to new password
 	            Credential.changePassword(_.pick($scope.formData, ['Email', 'NewPassword']))
 	              .then(function() {
 	                $uibModalInstance.close();
@@ -5464,10 +5693,11 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 			$scope.alert.success('Successfully reset password.');
 		});
 	};
+	//open modal for select commission for cat
 	$scope.openCommissionSelector = function(item) {
 		var category = null;
 		if(!_.isNil(item))
-			category = Category.findByCatId(item.CategoryId, $scope.globalCategory);
+			category = Category.findByCatId(item.CategoryId, $scope.globalCategory); //get category list
 	    var modalInstance = $uibModal.open({
 	      size: 'category-section modal-lg column-4',
 	      keyboard: false,
@@ -5476,10 +5706,13 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 	        'ngInject';
 	        $scope.model = model;
 	        $scope.tree = tree;
+	        //watch for model
 	        $scope.$watch('model', function(newVal, oldVal) {
 	        	if(!_.isEmpty(newVal))
 	        		$scope.Commission = newVal.Commission;
 	        });
+
+	        //return selected cat and commission
 	        $scope.select = function() {
 	          $scope.model.Commission = _.toNumber($scope.Commission);
 	          $uibModalInstance.close($scope.model);
@@ -5487,14 +5720,15 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 	      }],
 	      resolve: {
 	        model: function() {
-	          return category;
+	          return category; //selected cat
 	        },
 	        tree: function() {
-	          return $scope.globalCategory;
+	          return $scope.globalCategory; //cat tree
 	        }
 	      }
 	    })
 
+	    //on modal finished
 	    modalInstance.result.then(function(result) {
     		if(_.isNil(item)) {
 	    		//Add
@@ -5510,10 +5744,12 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
     		});
 	    });
 	};
+	//dropdowns
 	$scope.shopGroupDropdown = config.SHOP_GROUP;
 	$scope.yesNoDropdown = config.DROPDOWN.YES_NO_DROPDOWN;
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 
+	//clone cat should be equal to max local cat
 	$scope.$watch('formData.CloneGlobalCategory', function(val) {
 		if(val) {
 			$scope.formData.MaximumLocalCategory = 99;
@@ -5522,6 +5758,9 @@ module.exports = ["$scope", "$controller", "$uibModal", "AdminShopService", "Adm
 }];
 
 },{}],50:[function(require,module,exports){
+/**
+ * Handle admin shop type listing
+ */
 module.exports = ["$scope", "$controller", "AdminShoptypeService", function($scope, $controller, AdminShoptypeService) {
 	'ngInject';
 	//Inherit from parent
@@ -5537,13 +5776,18 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", function($sco
 	});
 }];
 },{}],51:[function(require,module,exports){
+/**
+ * Handle admin shop type add
+ */
 module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShippingService", "ShopPermissionService", "ShopAppearanceService", "PermissionService", "util", "$q", function($scope, $controller, AdminShoptypeService, ShippingService, ShopPermissionService, ShopAppearanceService, PermissionService, util, $q) {
 	'ngInject';
-
+	//decode theme
 	var deserializeTheme = function(load) {
 		if(load) {
 			var themes = $scope.formData.Themes;
 			$scope.formData.Themes = [];
+			
+			//get theme checked according to formData
 			_.forEach($scope.themes, function(t) {
 				if(_.findIndex(themes, function(e) {
 					return t.ThemeId == e.ThemeId;
@@ -5555,6 +5799,7 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShippingServ
 				$scope.formData.Themes.push(t);
 			});
 		} else {
+			//get all themes and checked to false
 			$scope.formData.Themes = $scope.themes;
 			_.forEach($scope.formData.Themes, function(t) {
 				t.check = false;
@@ -5562,6 +5807,7 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShippingServ
 		}
 	}
 
+	// get shipping permissions
 	var deserializeShip = function(load) {
 		if(load) {
 			var shippings = $scope.formData.Shippings;
@@ -5597,6 +5843,8 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShippingServ
 			onLoad: function(scope, load) {
 				$scope.loading = true;
 
+				// list permissions, then list shop, then list theme
+				// results (array) is given in res
 				$q.all([ShopPermissionService.listAll(), ShopAppearanceService.getThemes(), ShippingService.listAll()]).then(function(res) {
 					var data = res[0]
 					$scope.permissions = data;
@@ -5634,7 +5882,9 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShippingServ
 				});
 			},
 			onSave: function(scope) {
+				//serialize permission
 				scope.formData.Permission = PermissionService.serialize(scope.formData.Permissions);
+				//get only themes with check true
 				scope.formData.Themes = _.compact(_.map(scope.formData.Themes, function(e){
 					var check = e.check;
 					_.unset(e, ['check']);
@@ -5644,6 +5894,7 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShippingServ
 						return null;
 					}
 				}));
+				//get only ships with check true
 				scope.formData.Shippings = _.compact(_.map(scope.formData.Shippings, function(e){
 					var check = e.check;
 					_.unset(e, ['check']);
@@ -5655,8 +5906,11 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShippingServ
 				}));
 			},
 			onAfterSave: function(scope) {
+				//deserialize permission for show
 				scope.formData.Permissions = PermissionService.deserialize(scope.formData.Permission, scope.permissions);
 				$scope.obj.selectAll = true;
+
+				//get select all flag
 				_.forOwn($scope.formData.Permissions, function(v,k) {
 					util.traverse(v, 'Children', function(e) {
 						$scope.obj.selectAll = $scope.obj.selectAll && e.check;
@@ -5673,9 +5927,11 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShippingServ
 			}
 		}
 	});
-
+	
+	//circular json stringify
 	var cj = require('circular-json');
 
+	// get select all flag
 	$scope.$watch(function() {
 		return cj.stringify($scope.formData);
 	}, function() {
@@ -5692,7 +5948,9 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShippingServ
 			$scope.obj.selectAll = $scope.obj.selectAll && e.check;
 		});
 	});
+	//list of permission group
 	$scope.group = ['Dashboard', 'Products', 'Promotion', 'Report', 'Local Category', 'Local Brand', 'CMS'];
+	//check all fn
 	$scope.checkAll = function(val) {
 		_.forOwn($scope.formData.Permissions, function(v,k) {
 			util.traverse(v, 'Children', function(e) {
@@ -6940,6 +7198,9 @@ module.exports = ["storage", "Credential", "$window", function(storage, Credenti
   }
 }]
 },{}],62:[function(require,module,exports){
+/**
+ * Handle local category listing and adding
+ */
 module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Category", "LocalCategoryService", "AttributeSetService", "NcAlert", "util", "config", function($scope, $rootScope, $uibModal, $timeout, common, Category, LocalCategoryService, AttributeSetService, NcAlert, util, config){
 	'ngInject';
 	$scope.modalScope = null;
@@ -6951,6 +7212,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 	$scope.dirty = false;
 	$scope.alert = new NcAlert();
 
+	//Prevent leaving if unsave with dirty form
 	util.warningOnLeave(function() {
 		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
 		return $scope.saving || $scope.dirty || modalDirty;
@@ -7023,6 +7285,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 		}
 		$scope.pristine = true;
 		$scope.saving = true;
+		//sync with local cat after timeout is met
 		$scope.timerPromise = $timeout(function() {
 			LocalCategoryService.upsert(Category.transformUITreeToNestedSet($scope.categories))
 				.then(function() {
@@ -7057,15 +7320,19 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 			templateUrl: 'local_category/modal',
 			controller: ["$scope", "$uibModalInstance", "$timeout", "LocalCategoryService", "NcAlert", "config", "id", "Product", "ImageService", function($scope, $uibModalInstance, $timeout, LocalCategoryService, NcAlert, config, id, Product, ImageService) {
 				'ngInject';
+				//parent scope
 				$scope.$parent.modalScope = $scope;
 				$scope.alert = new NcAlert();
 				$scope.statusOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
+
+				// image uploaders
 				$scope.bannerUploader = ImageService.getUploaderFn('/LocalCategoryImages', {
 					data: { Type: 'Banner' }
 				});
 				$scope.bannerSmUploader = ImageService.getUploaderFn('/LocalCategoryImages', {
 					data: { Type: 'SmallBanner' }
 				});
+				//validation condition for image uploader
 				$scope.bannerOptions = {
 					validateDimensionMin: [1920, 1080],
 					validateDimensionMax: [1920, 1080]
@@ -7082,6 +7349,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				$scope.id = id;
 				$scope.sortBy = [];
 				
+				//get sortBy list
 				common.getSortBy().then(function(data) {
 					$scope.sortBy = data;
 				});
@@ -7089,12 +7357,15 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				//For searching feature prod
 				var search = {};
 
+				//create
 				if(id == 0) {
 					$scope.formData = LocalCategoryService.generate();
 					$scope.loading = false;
 				} else {
-					//Check product count
+					//edit
 					$scope.loading = true;
+
+					//get local category by id
 					LocalCategoryService.get(id)
 						.then(function(data) {
 							$scope.formData = LocalCategoryService.deserialize(data);
@@ -7113,6 +7384,8 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 							$scope.loading = false;
 						});
 				};
+
+				//get product feature froms search text
 				$scope.getFeatureProduct = function(text) {
 					Product.advanceList({
 						LocalCategories: [search],
@@ -7122,6 +7395,8 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 						$scope.products = response.data;
 					});
 				};
+
+				//fail image validation
 				$scope.uploadBannerFail = function(e, response, min, max) {
 					if(e == 'onmaxsize') {
 						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one', true);
@@ -7151,6 +7426,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 					}
 				};
 
+				//on modal closing, prompt for unsaved content
 				$scope.$on('modal.closing', function(e, res, closeType) {
 					if(!closeType) {
 						if ($scope.saving) e.preventDefault();
@@ -7164,6 +7440,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 					}
 				});
 
+				// is uploading flag
 				var isUploading = function(images) {
 					var i = true;
 					_.forEach(images, function(e) {
@@ -7171,10 +7448,13 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 					});
 					return !i;
 				}
+				// save action
 				$scope.save = function() {
 					$scope.alert.close();
 					$scope.form.$setSubmitted();
 
+					// check for if image is uploading
+					// only allow save after all images are uploaded
 					if(isUploading($scope.formData.CategoryBannerEn) ||
 						isUploading($scope.formData.CategoryBannerTh) ||
 						isUploading($scope.formData.CategorySmallBannerEn) ||
@@ -7182,10 +7462,11 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 						$scope.alert.error('Please wait for every images to be uploaded before saving', true)
 						return;
 					}
+					// validate form data
 					if($scope.form.$valid) {
 						var processed = LocalCategoryService.serialize($scope.formData);
 						$scope.saving = true;
-						if(id == 0) {
+						if(id == 0) { //create
 							LocalCategoryService.create(processed)
 								.then(function(data) {
 									$uibModalInstance.close(LocalCategoryService.deserialize(data));
@@ -7194,6 +7475,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 									$scope.saving = false;
 								})
 						} else {
+							//update
 							LocalCategoryService.update(id, processed)
 								.then(function(data) {
 									$uibModalInstance.close(LocalCategoryService.deserialize(data));
@@ -7209,11 +7491,12 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 			}],
 			resolve: {
 				id: function() {
-					return _.isUndefined(item) ? 0 : item.CategoryId ;
+					return _.isUndefined(item) ? 0 : item.CategoryId ; //cat id
 				}
 			}
 		});
-
+	
+		//Update category list on save
 		modal.result.then(function(data) {
 			if(_.isUndefined(item)) {
 				data.nodes = [];
@@ -7250,16 +7533,24 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 }];
 
 },{}],63:[function(require,module,exports){
-  module.exports = ["$scope", "Credential", "$window", "NcAlert", "$uibModal", "storage", "config", function ($scope, Credential, $window, NcAlert, $uibModal, storage, config) {
+/**
+ * Handle login page
+ */
+module.exports = ["$scope", "Credential", "$window", "NcAlert", "$uibModal", "storage", "config", function ($scope, Credential, $window, NcAlert, $uibModal, storage, config) {
     'ngInject';
-  $scope.uform = {};
-  $scope.loginForm = {};
+  $scope.uform = {}; //user validation form
+  $scope.loginForm = {}; //login form
   $scope.events = {};
   $scope.alert = new NcAlert();
+
+  //get redirect
   var redir = storage.get('redirect');
   storage.remove('redirect');
   
+  //get profile from session
   var profile = storage.getCurrentUserProfile();
+
+  //profile admin
   if (profile && !profile.User.IsAdmin) {
         Credential.checkToken()
         .then(function() {
@@ -7269,15 +7560,19 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
         });
   }
   
+  //get session timeout from storage
   if(storage.poke('session_timeout')) {
     $scope.alert.open(false, 'Your session has expired', '');
   }
 
+  //get access deny from storage
   if(storage.poke('access_denied')) {
     $scope.alert.error('Access denied');
   }
 
+  //login action
   $scope.doLogin = function () {
+    //check if login is valid
     if ($scope.loginForm.$invalid) {
       if(_.isEmpty($scope.events)) {
         $scope.events.user = false;
@@ -7289,7 +7584,10 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
     $scope.error = false;
     var user = $scope.uform.user;
     var pass = $scope.uform.pass;
+
+    //call login endpoint
     Credential.login(user, pass, false).then(function (r) {
+      //allow pass only if login user is admin
       if(r.User.IsAdmin){
           storage.clear();
           $scope.error = true;
@@ -7299,6 +7597,8 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
       }
 
       $scope.loading = false;
+
+      //redirect
       if (!redir || redir == '/') {
         redir = Credential.getRedirPath(r);
       }
@@ -7316,13 +7616,15 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
   }
 }];
 },{}],64:[function(require,module,exports){
-var angular = require('angular');
-
+/**
+ * Handle selecting global for product
+ */
 module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Category, GlobalCategory) {
 	'use strict';
 	$scope.selected = null;
 	$scope.columns = [];
 	$scope.loading = true;
+	//validate if scope is selected
 	$scope.validate = function(e){
 		if(null === $scope.selected){
 			e.preventDefault();
@@ -7339,7 +7641,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	});
 }];
 
-},{"angular":354}],65:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Collection','Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$CollectionAdd',
