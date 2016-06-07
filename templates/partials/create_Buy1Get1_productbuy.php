@@ -51,6 +51,7 @@
                 <th class="col-sm-2">Picture</th>
                 <th class="col-sm-2">Name</th>
                 <th class="col-sm-2">Price</th>
+                <th class="col-sm-1">Qty</th>
                 <th class="col-sm-2">Expire Date</th>
                 <th class="col-sm-2">Actions</th>
               </tr>
@@ -70,6 +71,7 @@
                 </td>
                 <td>{{item.ProductBoxBadge}}</td>
                 <td>{{item.OriginalPrice | currency: '฿': 0}}</td>
+                <td><input type="number" class="form-control" name="buyQty" ng-model="buyQty" min="1" ng-init="buyQty=1" required disabled/></td>
                 <td>{{item.ExpireDate | dateTh}}</td>
                 <td>
                   <button class="btn btn-sm btn-default" ng-disabled="$index == 0 || (formData.CategoryProductList.length == 0)" 
