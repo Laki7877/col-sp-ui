@@ -235,23 +235,22 @@ describe('Automated Man', function() {
 
     input_search_tags.sendKeys('tag'+randomX(4));
     input_search_tags.sendKeys(protractor.Key.ENTER);
+
+    input_search_tags.sendKeys('tag'+randomX(4));
+    input_search_tags.sendKeys(protractor.Key.ENTER);
   });
 
-  xit('should add new product and fill out "Inventory" in "Information Tab"', function(){
+  it('should fill out "Inventory" in "Information Tab"', function(){
+    browser.executeScript('window.scrollTo(0,4300);');
     element(by.model('variantPtr.Quantity')).sendKeys('100');
     element(by.model('variantPtr.SafetyStock')).sendKeys('10');
     element(by.model('variantPtr.MinQtyAllowInCart')).sendKeys('1');
     element(by.model('variantPtr.MaxQtyAllowInCart')).sendKeys('100');
 
-    var input_stock_type = element(by.model('variantPtr.StockType'));
-    selectDropdown(input_stock_type,'3');
-
-    var input_max_pre_order = element(by.model('variantPtr.MaxQtyPreOrder'));
-
-    var EC = protractor.ExpectedConditions;
-    browser.wait(EC.visibilityOf(input_max_pre_order), 5000);
-
-    input_max_pre_order.clear().sendKeys(99);
+    //var input_stock_type = element(by.model('variantPtr.StockType'));
+    //selectDropdown(input_stock_type,'3');
+    //var input_max_pre_order = element(by.model('variantPtr.MaxQtyPreOrder'));
+    //input_max_pre_order.clear().sendKeys(99);
 
     var has_expiry_date = element(by.model('variantPtr.IsHasExpiryDate'));
     selectDropdown(has_expiry_date,'2');
@@ -290,6 +289,39 @@ describe('Automated Man', function() {
     browser.sleep(defaultSleep);
 
   });
+
+  it('should fill out "Product Images" in "Image Tab"', function(){
+
+    browser.executeScript('window.scrollTo(0,0);');
+    element(by.xpath('//a[@href="#images"]')).click();
+
+    var path = require('path');
+    var fileToUpload = 'images/1600x1600A.jpg';
+    var absolutePath = path.resolve(__dirname, fileToUpload);
+
+    $('input[type="file"]').sendKeys(absolutePath);
+    browser.sleep(3000);
+
+    var EC = protractor.ExpectedConditions;
+    var video_link = element(by.model('variantPtr.VideoLinks[$index].Url'));
+    browser.wait(EC.visibilityOf(video_link), 5000);
+    video_link.sendKeys('https://www.youtube.com/watch?v=f78M4nKW1Ms');
+
+    //saveChanges('.main-form-action .btn-white');
+
+    browser.sleep(defaultSleep);
+  });
+
+  it('should fill out "Global Category" in "Category"', function(){
+
+    browser.executeScript('window.scrollTo(0,0);');
+    element(by.xpath('//a[@href="#category"]')).click();
+    element(by.css('.row:first-child .fa-plus-circle')).click();
+
+    browser.sleep(defaultSleep);
+
+  });
+
 
 
   //----- Eart Code ------//
