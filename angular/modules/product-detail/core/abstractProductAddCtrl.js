@@ -1036,6 +1036,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
     };
 
+    //Initialize default attribute fields
+    $scope.initDefaultAttributes = function(da, vmap){
+      //if edit mode don't init
+      if($scope.formData.ProductId) return; 
+      $scope.formData.MasterAttribute[da.AttributeId]._checkbox = true;
+      $scope.formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId] = true;
+    }
+
     // Variation Factor (lhs) Indices are used as index
     // for ng-repeat in variation tab
     $scope.variationFactorIndices = new VariationFactorIndices($scope.dataset);
