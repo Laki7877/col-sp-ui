@@ -16563,7 +16563,7 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
         }else{
           right = (b.ValueEn || b.AttributeValueEn || b.AttributeValues.length > 0 && b.AttributeValues[0].AttributeValueEn || '');
         }
-
+        return left + 'yo';
         return left + (right ? ", " + right : "");
     };
 
@@ -21895,9 +21895,21 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     //Initialize default attribute fields
     $scope.initDefaultAttributes = function(da, vmap){
       //if edit mode don't init
+      // console.log(da, vmap, 'vv')
       if($scope.formData.ProductId) return; 
+
+      if(!_.has($scope.formData.MasterAttribute, da.AttributeId)){
+        $scope.formData.MasterAttribute[da.AttributeId] = {};
+      }
+      
       $scope.formData.MasterAttribute[da.AttributeId]._checkbox = true;
+
+      if(!_.has($scope.formData.MasterAttribute[da.AttributeId], vmap.AttributeValueId)){
+        $scope.formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId] = {};
+      }
+
       $scope.formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId] = true;
+      console.log('$scope.formData.MasterAttribute', $scope.formData.MasterAttribute);
     }
 
     // Variation Factor (lhs) Indices are used as index

@@ -14,7 +14,7 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
         }else{
           right = (b.ValueEn || b.AttributeValueEn || b.AttributeValues.length > 0 && b.AttributeValues[0].AttributeValueEn || '');
         }
-
+        return left + 'yo';
         return left + (right ? ", " + right : "");
     };
 
