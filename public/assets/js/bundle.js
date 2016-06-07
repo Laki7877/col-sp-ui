@@ -14400,6 +14400,7 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 	'ngInject';
 	$scope.form = {};
 	$scope.formData = { ThemeId: 0, Data: {} };
+	$scope.themeArray = {};
 	$scope.alert = new NcAlert();
 	$scope.saving = false;
 	$scope.loading = true;
@@ -14479,7 +14480,6 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 		ShopAppearanceService.list()
 			.then(function(data) {
 				$scope.formData = ShopAppearanceService.deserialize(data);
-				console.log($scope.formData);
 			})
 			.finally(function() {
 				$scope.loading = false;
@@ -14497,11 +14497,11 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 		});
 	}
 	$scope.init();
-	$scope.$watch('formData.themeId', function(a,b) {
-		if(a != b) {
-			$scope.formData.Data = {};
-		}
-	})
+	$scope.$watch('formData.ThemeId', function(a,b) {
+		if(_.isNil(b)) return;
+		$scope.themeArray[b] = $scope.formData.Data;
+		$scope.formData.Data = $scope.themeArray[a] || {};
+	}, true);
 	$scope.save = function() {
 		if($scope.saving) return;
 
