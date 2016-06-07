@@ -4,7 +4,7 @@
 
 // App Start here
 var angular = require('angular')
-var bulk = ({"controllers":(function () {var f = require("./controllers\\index.js");f["abstractAdd"]=require("./controllers\\abstractAdd.js");f["abstractAdvanceList"]=require("./controllers\\abstractAdvanceList.js");f["abstractList"]=require("./controllers\\abstractList.js");f["abstractPendingProductGroup"]=require("./controllers\\abstractPendingProductGroup.js");f["abstractProductGroupAdd"]=require("./controllers\\abstractProductGroupAdd.js");f["adminAccount"]=require("./controllers\\adminAccount.js");f["adminAccountAdd"]=require("./controllers\\adminAccountAdd.js");f["adminAddCMSMaster"]=require("./controllers\\adminAddCMSMaster.js");f["adminAttribute"]=require("./controllers\\adminAttribute.js");f["adminAttributeAdd"]=require("./controllers\\adminAttributeAdd.js");f["adminAttributeSet"]=require("./controllers\\adminAttributeSet.js");f["adminAttributeSetAdd"]=require("./controllers\\adminAttributeSetAdd.js");f["adminBrand"]=require("./controllers\\adminBrand.js");f["adminBrandAdd"]=require("./controllers\\adminBrandAdd.js");f["adminBuy1Get1Add"]=require("./controllers\\adminBuy1Get1Add.js");f["adminBuy1Get1List"]=require("./controllers\\adminBuy1Get1List.js");f["adminCMS"]=require("./controllers\\adminCMS.js");f["adminCMSCategoryAdd"]=require("./controllers\\adminCMSCategoryAdd.js");f["adminCMSCategoryList"]=require("./controllers\\adminCMSCategoryList.js");f["adminCMSGroupAdd"]=require("./controllers\\adminCMSGroupAdd.js");f["adminCMSGroupList"]=require("./controllers\\adminCMSGroupList.js");f["adminCMSMasterAdd"]=require("./controllers\\adminCMSMasterAdd.js");f["adminCMSMasterList"]=require("./controllers\\adminCMSMasterList.js");f["adminCategory"]=require("./controllers\\adminCategory.js");f["adminGlobalCoupon"]=require("./controllers\\adminGlobalCoupon.js");f["adminGlobalCouponAdd"]=require("./controllers\\adminGlobalCouponAdd.js");f["adminLogin"]=require("./controllers\\adminLogin.js");f["adminMasterProduct"]=require("./controllers\\adminMasterProduct.js");f["adminMasterProductAdd"]=require("./controllers\\adminMasterProductAdd.js");f["adminNewsletter"]=require("./controllers\\adminNewsletter.js");f["adminOnTopCreditAdd"]=require("./controllers\\adminOnTopCreditAdd.js");f["adminOnTopCreditList"]=require("./controllers\\adminOnTopCreditList.js");f["adminPendingProduct"]=require("./controllers\\adminPendingProduct.js");f["adminPendingProductGroupAdd"]=require("./controllers\\adminPendingProductGroupAdd.js");f["adminProductApprovalDetail"]=require("./controllers\\adminProductApprovalDetail.js");f["adminProductApprovalList"]=require("./controllers\\adminProductApprovalList.js");f["adminProductDetail"]=require("./controllers\\adminProductDetail.js");f["adminProductGroupAdd"]=require("./controllers\\adminProductGroupAdd.js");f["adminProductList"]=require("./controllers\\adminProductList.js");f["adminProductReview"]=require("./controllers\\adminProductReview.js");f["adminRole"]=require("./controllers\\adminRole.js");f["adminRoleAdd"]=require("./controllers\\adminRoleAdd.js");f["adminSellerAccount"]=require("./controllers\\adminSellerAccount.js");f["adminSellerCoupon"]=require("./controllers\\adminSellerCoupon.js");f["adminSellerCouponAdd"]=require("./controllers\\adminSellerCouponAdd.js");f["adminShop"]=require("./controllers\\adminShop.js");f["adminShopAdd"]=require("./controllers\\adminShopAdd.js");f["adminShoptype"]=require("./controllers\\adminShoptype.js");f["adminShoptypeAdd"]=require("./controllers\\adminShoptypeAdd.js");f["buy1get1Add"]=require("./controllers\\buy1get1Add.js");f["buy1get1Import"]=require("./controllers\\buy1get1Import.js");f["buy1get1List"]=require("./controllers\\buy1get1List.js");f["index"]=require("./controllers\\index.js");f["localCategory"]=require("./controllers\\localCategory.js");f["login"]=require("./controllers\\login.js");f["productAddSelectCategory"]=require("./controllers\\productAddSelectCategory.js");f["productCollectionAdd"]=require("./controllers\\productCollectionAdd.js");f["productCollectionAddListItem"]=require("./controllers\\productCollectionAddListItem.js");f["productCollectionImport"]=require("./controllers\\productCollectionImport.js");f["productCollectionList"]=require("./controllers\\productCollectionList.js");f["productExport"]=require("./controllers\\productExport.js");f["productGroupCollectionList"]=require("./controllers\\productGroupCollectionList.js");f["productImageList"]=require("./controllers\\productImageList.js");f["productImageManagement"]=require("./controllers\\productImageManagement.js");f["productImport"]=require("./controllers\\productImport.js");f["productList"]=require("./controllers\\productList.js");f["productListLocalCategory"]=require("./controllers\\productListLocalCategory.js");f["productReview"]=require("./controllers\\productReview.js");f["root"]=require("./controllers\\root.js");f["sellerAccount"]=require("./controllers\\sellerAccount.js");f["sellerAccountAdd"]=require("./controllers\\sellerAccountAdd.js");f["sellerBuy1Get1Add"]=require("./controllers\\sellerBuy1Get1Add.js");f["sellerBuy1Get1List"]=require("./controllers\\sellerBuy1Get1List.js");f["sellerCMS"]=require("./controllers\\sellerCMS.js");f["sellerCMSCategoryAdd"]=require("./controllers\\sellerCMSCategoryAdd.js");f["sellerCMSCategoryList"]=require("./controllers\\sellerCMSCategoryList.js");f["sellerCMSGroupAdd"]=require("./controllers\\sellerCMSGroupAdd.js");f["sellerCMSGroupList"]=require("./controllers\\sellerCMSGroupList.js");f["sellerCMSMasterAdd"]=require("./controllers\\sellerCMSMasterAdd.js");f["sellerCMSMasterList"]=require("./controllers\\sellerCMSMasterList.js");f["sellerCoupon"]=require("./controllers\\sellerCoupon.js");f["sellerCouponAdd"]=require("./controllers\\sellerCouponAdd.js");f["sellerDashboard"]=require("./controllers\\sellerDashboard.js");f["sellerInventoryList"]=require("./controllers\\sellerInventoryList.js");f["sellerNewsletter"]=require("./controllers\\sellerNewsletter.js");f["sellerOnboarding"]=require("./controllers\\sellerOnboarding.js");f["sellerOrder"]=require("./controllers\\sellerOrder.js");f["sellerOrderAdd"]=require("./controllers\\sellerOrderAdd.js");f["sellerOrderShippingList"]=require("./controllers\\sellerOrderShippingList.js");f["sellerPendingProduct"]=require("./controllers\\sellerPendingProduct.js");f["sellerPendingProductGroupAdd"]=require("./controllers\\sellerPendingProductGroupAdd.js");f["sellerProductDetail"]=require("./controllers\\sellerProductDetail.js");f["sellerProductGroupAdd"]=require("./controllers\\sellerProductGroupAdd.js");f["sellerReport"]=require("./controllers\\sellerReport.js");f["sellerReturnRequest"]=require("./controllers\\sellerReturnRequest.js");f["sellerReturnRequestAdd"]=require("./controllers\\sellerReturnRequestAdd.js");f["sellerRole"]=require("./controllers\\sellerRole.js");f["sellerRoleAdd"]=require("./controllers\\sellerRoleAdd.js");f["sellerShopAppearance"]=require("./controllers\\sellerShopAppearance.js");f["sellerShopSetting"]=require("./controllers\\sellerShopSetting.js");f["sellerStdOnHoldReportList"]=require("./controllers\\sellerStdOnHoldReportList.js");f["sellerStdReturnReportList"]=require("./controllers\\sellerStdReturnReportList.js");f["sellerStdSaleReportSellerList"]=require("./controllers\\sellerStdSaleReportSellerList.js");f["sellerStdStockReportList"]=require("./controllers\\sellerStdStockReportList.js");f["test"]=require("./controllers\\test.js");return f;})(),"services":({"Buy1Get1Service":require("./services\\Buy1Get1Service.js"),"Dashboard":require("./services\\Dashboard.js"),"OnTopCredit":require("./services\\OnTopCredit.js"),"OnTopCreditService":require("./services\\OnTopCreditService.js"),"Onboarding":require("./services\\Onboarding.js"),"adminAccountService":require("./services\\adminAccountService.js"),"adminMasterProductService":require("./services\\adminMasterProductService.js"),"adminPermissionService":require("./services\\adminPermissionService.js"),"adminRoleService":require("./services\\adminRoleService.js"),"adminShopService":require("./services\\adminShopService.js"),"adminShoptypeService":require("./services\\adminShoptypeService.js"),"attribute":require("./services\\attribute.js"),"attributeService":require("./services\\attributeService.js"),"attributeSet":require("./services\\attributeSet.js"),"attributeSetService":require("./services\\attributeSetService.js"),"blocker":require("./services\\blocker.js"),"brand":require("./services\\brand.js"),"brandService":require("./services\\brandService.js"),"buy1get1":require("./services\\buy1get1.js"),"buy1get1Add":require("./services\\buy1get1Add.js"),"category":require("./services\\category.js"),"cmsCategoryService":require("./services\\cmsCategoryService.js"),"cmsGroupService":require("./services\\cmsGroupService.js"),"cmsMasterService":require("./services\\cmsMasterService.js"),"coupon":require("./services\\coupon.js"),"credential":require("./services\\credential.js"),"exceptionHandler":require("./services\\exceptionHandler.js"),"fileService":require("./services\\fileService.js"),"globalCategory":require("./services\\globalCategory.js"),"globalCategoryService":require("./services\\globalCategoryService.js"),"globalCouponService":require("./services\\globalCouponService.js"),"image":require("./services\\image.js"),"imageService":require("./services\\imageService.js"),"inventoryService":require("./services\\inventoryService.js"),"knownException":require("./services\\knownException.js"),"localCategory":require("./services\\localCategory.js"),"localCategoryService":require("./services\\localCategoryService.js"),"newsletterService":require("./services\\newsletterService.js"),"orderService":require("./services\\orderService.js"),"permissionService":require("./services\\permissionService.js"),"product":require("./services\\product.js"),"productCollection":require("./services\\productCollection.js"),"productCollectionAdd":require("./services\\productCollectionAdd.js"),"productCollectionAddListItem":require("./services\\productCollectionAddListItem.js"),"productReviewService":require("./services\\productReviewService.js"),"productTempService":require("./services\\productTempService.js"),"returnRequestService":require("./services\\returnRequestService.js"),"sellerAccountService":require("./services\\sellerAccountService.js"),"sellerCouponService":require("./services\\sellerCouponService.js"),"sellerPermissionService":require("./services\\sellerPermissionService.js"),"sellerRoleService":require("./services\\sellerRoleService.js"),"shippingService":require("./services\\shippingService.js"),"shop":require("./services\\shop.js"),"shopAppearanceService":require("./services\\shopAppearanceService.js"),"shopPermissionService":require("./services\\shopPermissionService.js"),"shopProfileService":require("./services\\shopProfileService.js"),"shopService":require("./services\\shopService.js"),"stdOnHoldReportService":require("./services\\stdOnHoldReportService.js"),"stdReturnReportService":require("./services\\stdReturnReportService.js"),"stdSaleReportService":require("./services\\stdSaleReportService.js"),"stdStockReportService":require("./services\\stdStockReportService.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDateBefore":require("./directives\\ngDateBefore.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngEnter":require("./directives\\ngEnter.js"),"ngLowercase":require("./directives\\ngLowercase.js"),"ngMatch":require("./directives\\ngMatch.js"),"ngMaxnumber":require("./directives\\ngMaxnumber.js"),"ngMinnumber":require("./directives\\ngMinnumber.js"),"ngPatternRestrict":require("./directives\\ngPatternRestrict.js"),"ngPermission":require("./directives\\ngPermission.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"ngUppercase":require("./directives\\ngUppercase.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"exclude":require("./filters\\exclude.js"),"excludeCategory":require("./filters\\excludeCategory.js"),"html":require("./filters\\html.js"),"importGuidelineExample":require("./filters\\importGuidelineExample.js"),"leadingzero":require("./filters\\leadingzero.js"),"ordinal":require("./filters\\ordinal.js"),"propsFilter":require("./filters\\propsFilter.js"),"slice":require("./filters\\slice.js"),"statusValue":require("./filters\\statusValue.js"),"truncate":require("./filters\\truncate.js"),"truth":require("./filters\\truth.js"),"variantValue":require("./filters\\variantValue.js")}),"template-options":({"PromotionForm":require("./template-options\\PromotionForm.js"),"addAttributeForm":require("./template-options\\addAttributeForm.js"),"addAttributeSetForm":require("./template-options\\addAttributeSetForm.js"),"addBrandForm":require("./template-options\\addBrandForm.js"),"addBuy1Get1Form":require("./template-options\\addBuy1Get1Form.js"),"addCMSMasterForm":require("./template-options\\addCMSMasterForm.js"),"addCategoryForm":require("./template-options\\addCategoryForm.js"),"addMasterProductForm":require("./template-options\\addMasterProductForm.js"),"addNewsletterForm":require("./template-options\\addNewsletterForm.js"),"addProductForm":require("./template-options\\addProductForm.js"),"addRoleForm":require("./template-options\\addRoleForm.js"),"addShopAccountForm":require("./template-options\\addShopAccountForm.js"),"addShopAppearanceForm":require("./template-options\\addShopAppearanceForm.js"),"addShopTypeForm":require("./template-options\\addShopTypeForm.js"),"adminApproveForm":require("./template-options\\adminApproveForm.js"),"couponForm":require("./template-options\\couponForm.js"),"createGroupVariant":require("./template-options\\createGroupVariant.js"),"genericForm":require("./template-options\\genericForm.js"),"productExport":require("./template-options\\productExport.js"),"productImport":require("./template-options\\productImport.js"),"searchForm":require("./template-options\\searchForm.js"),"shopSettingForm":require("./template-options\\shopSettingForm.js")})})
+var bulk = ({"controllers":(function () {var f = require("./controllers\\index.js");f["abstractAdd"]=require("./controllers\\abstractAdd.js");f["abstractAdvanceList"]=require("./controllers\\abstractAdvanceList.js");f["abstractList"]=require("./controllers\\abstractList.js");f["abstractPendingProductGroup"]=require("./controllers\\abstractPendingProductGroup.js");f["abstractProductGroupAdd"]=require("./controllers\\abstractProductGroupAdd.js");f["adminAccount"]=require("./controllers\\adminAccount.js");f["adminAccountAdd"]=require("./controllers\\adminAccountAdd.js");f["adminAddCMSMaster"]=require("./controllers\\adminAddCMSMaster.js");f["adminAttribute"]=require("./controllers\\adminAttribute.js");f["adminAttributeAdd"]=require("./controllers\\adminAttributeAdd.js");f["adminAttributeSet"]=require("./controllers\\adminAttributeSet.js");f["adminAttributeSetAdd"]=require("./controllers\\adminAttributeSetAdd.js");f["adminBrand"]=require("./controllers\\adminBrand.js");f["adminBrandAdd"]=require("./controllers\\adminBrandAdd.js");f["adminBuy1Get1Add"]=require("./controllers\\adminBuy1Get1Add.js");f["adminBuy1Get1List"]=require("./controllers\\adminBuy1Get1List.js");f["adminCMS"]=require("./controllers\\adminCMS.js");f["adminCMSCategoryAdd"]=require("./controllers\\adminCMSCategoryAdd.js");f["adminCMSCategoryList"]=require("./controllers\\adminCMSCategoryList.js");f["adminCMSGroupAdd"]=require("./controllers\\adminCMSGroupAdd.js");f["adminCMSGroupList"]=require("./controllers\\adminCMSGroupList.js");f["adminCMSMasterAdd"]=require("./controllers\\adminCMSMasterAdd.js");f["adminCMSMasterList"]=require("./controllers\\adminCMSMasterList.js");f["adminCategory"]=require("./controllers\\adminCategory.js");f["adminGlobalCoupon"]=require("./controllers\\adminGlobalCoupon.js");f["adminGlobalCouponAdd"]=require("./controllers\\adminGlobalCouponAdd.js");f["adminLogin"]=require("./controllers\\adminLogin.js");f["adminMasterProduct"]=require("./controllers\\adminMasterProduct.js");f["adminMasterProductAdd"]=require("./controllers\\adminMasterProductAdd.js");f["adminNewsletter"]=require("./controllers\\adminNewsletter.js");f["adminOnTopCreditAdd"]=require("./controllers\\adminOnTopCreditAdd.js");f["adminOnTopCreditList"]=require("./controllers\\adminOnTopCreditList.js");f["adminPendingProduct"]=require("./controllers\\adminPendingProduct.js");f["adminPendingProductGroupAdd"]=require("./controllers\\adminPendingProductGroupAdd.js");f["adminProductApprovalDetail"]=require("./controllers\\adminProductApprovalDetail.js");f["adminProductApprovalList"]=require("./controllers\\adminProductApprovalList.js");f["adminProductDetail"]=require("./controllers\\adminProductDetail.js");f["adminProductGroupAdd"]=require("./controllers\\adminProductGroupAdd.js");f["adminProductList"]=require("./controllers\\adminProductList.js");f["adminProductReview"]=require("./controllers\\adminProductReview.js");f["adminRole"]=require("./controllers\\adminRole.js");f["adminRoleAdd"]=require("./controllers\\adminRoleAdd.js");f["adminSellerAccount"]=require("./controllers\\adminSellerAccount.js");f["adminSellerCoupon"]=require("./controllers\\adminSellerCoupon.js");f["adminSellerCouponAdd"]=require("./controllers\\adminSellerCouponAdd.js");f["adminShop"]=require("./controllers\\adminShop.js");f["adminShopAdd"]=require("./controllers\\adminShopAdd.js");f["adminShoptype"]=require("./controllers\\adminShoptype.js");f["adminShoptypeAdd"]=require("./controllers\\adminShoptypeAdd.js");f["adminSumCreateAndApprove"]=require("./controllers\\adminSumCreateAndApprove.js");f["adminSumProductInfo"]=require("./controllers\\adminSumProductInfo.js");f["adminSumProductOnWeb"]=require("./controllers\\adminSumProductOnWeb.js");f["adminSumProductStatus"]=require("./controllers\\adminSumProductStatus.js");f["adminSumSKUEffective"]=require("./controllers\\adminSumSKUEffective.js");f["adminSumSKUNotEffective"]=require("./controllers\\adminSumSKUNotEffective.js");f["buy1get1Add"]=require("./controllers\\buy1get1Add.js");f["buy1get1Import"]=require("./controllers\\buy1get1Import.js");f["buy1get1List"]=require("./controllers\\buy1get1List.js");f["index"]=require("./controllers\\index.js");f["localCategory"]=require("./controllers\\localCategory.js");f["login"]=require("./controllers\\login.js");f["productAddSelectCategory"]=require("./controllers\\productAddSelectCategory.js");f["productCollectionAdd"]=require("./controllers\\productCollectionAdd.js");f["productCollectionAddListItem"]=require("./controllers\\productCollectionAddListItem.js");f["productCollectionImport"]=require("./controllers\\productCollectionImport.js");f["productCollectionList"]=require("./controllers\\productCollectionList.js");f["productExport"]=require("./controllers\\productExport.js");f["productGroupCollectionList"]=require("./controllers\\productGroupCollectionList.js");f["productImageList"]=require("./controllers\\productImageList.js");f["productImageManagement"]=require("./controllers\\productImageManagement.js");f["productImport"]=require("./controllers\\productImport.js");f["productList"]=require("./controllers\\productList.js");f["productListLocalCategory"]=require("./controllers\\productListLocalCategory.js");f["productReview"]=require("./controllers\\productReview.js");f["root"]=require("./controllers\\root.js");f["sellerAccount"]=require("./controllers\\sellerAccount.js");f["sellerAccountAdd"]=require("./controllers\\sellerAccountAdd.js");f["sellerBuy1Get1Add"]=require("./controllers\\sellerBuy1Get1Add.js");f["sellerBuy1Get1List"]=require("./controllers\\sellerBuy1Get1List.js");f["sellerCMS"]=require("./controllers\\sellerCMS.js");f["sellerCMSCategoryAdd"]=require("./controllers\\sellerCMSCategoryAdd.js");f["sellerCMSCategoryList"]=require("./controllers\\sellerCMSCategoryList.js");f["sellerCMSGroupAdd"]=require("./controllers\\sellerCMSGroupAdd.js");f["sellerCMSGroupList"]=require("./controllers\\sellerCMSGroupList.js");f["sellerCMSMasterAdd"]=require("./controllers\\sellerCMSMasterAdd.js");f["sellerCMSMasterList"]=require("./controllers\\sellerCMSMasterList.js");f["sellerCoupon"]=require("./controllers\\sellerCoupon.js");f["sellerCouponAdd"]=require("./controllers\\sellerCouponAdd.js");f["sellerDashboard"]=require("./controllers\\sellerDashboard.js");f["sellerInventoryList"]=require("./controllers\\sellerInventoryList.js");f["sellerNewsletter"]=require("./controllers\\sellerNewsletter.js");f["sellerOnboarding"]=require("./controllers\\sellerOnboarding.js");f["sellerOrder"]=require("./controllers\\sellerOrder.js");f["sellerOrderAdd"]=require("./controllers\\sellerOrderAdd.js");f["sellerOrderShippingList"]=require("./controllers\\sellerOrderShippingList.js");f["sellerPendingProduct"]=require("./controllers\\sellerPendingProduct.js");f["sellerPendingProductGroupAdd"]=require("./controllers\\sellerPendingProductGroupAdd.js");f["sellerProductDetail"]=require("./controllers\\sellerProductDetail.js");f["sellerProductGroupAdd"]=require("./controllers\\sellerProductGroupAdd.js");f["sellerReport"]=require("./controllers\\sellerReport.js");f["sellerReturnRequest"]=require("./controllers\\sellerReturnRequest.js");f["sellerReturnRequestAdd"]=require("./controllers\\sellerReturnRequestAdd.js");f["sellerRole"]=require("./controllers\\sellerRole.js");f["sellerRoleAdd"]=require("./controllers\\sellerRoleAdd.js");f["sellerShopAppearance"]=require("./controllers\\sellerShopAppearance.js");f["sellerShopSetting"]=require("./controllers\\sellerShopSetting.js");f["sellerStdNonMoveReportList"]=require("./controllers\\sellerStdNonMoveReportList.js");f["sellerStdOiReportList"]=require("./controllers\\sellerStdOiReportList.js");f["sellerStdOnHoldReportList"]=require("./controllers\\sellerStdOnHoldReportList.js");f["sellerStdReturnReportList"]=require("./controllers\\sellerStdReturnReportList.js");f["sellerStdSaleReportSellerList"]=require("./controllers\\sellerStdSaleReportSellerList.js");f["sellerStdStockReportList"]=require("./controllers\\sellerStdStockReportList.js");f["test"]=require("./controllers\\test.js");return f;})(),"services":({"Buy1Get1Service":require("./services\\Buy1Get1Service.js"),"Dashboard":require("./services\\Dashboard.js"),"OnTopCredit":require("./services\\OnTopCredit.js"),"OnTopCreditService":require("./services\\OnTopCreditService.js"),"Onboarding":require("./services\\Onboarding.js"),"adminAccountService":require("./services\\adminAccountService.js"),"adminMasterProductService":require("./services\\adminMasterProductService.js"),"adminPermissionService":require("./services\\adminPermissionService.js"),"adminRoleService":require("./services\\adminRoleService.js"),"adminShopService":require("./services\\adminShopService.js"),"adminShoptypeService":require("./services\\adminShoptypeService.js"),"attribute":require("./services\\attribute.js"),"attributeService":require("./services\\attributeService.js"),"attributeSet":require("./services\\attributeSet.js"),"attributeSetService":require("./services\\attributeSetService.js"),"blocker":require("./services\\blocker.js"),"brand":require("./services\\brand.js"),"brandService":require("./services\\brandService.js"),"buy1get1":require("./services\\buy1get1.js"),"buy1get1Add":require("./services\\buy1get1Add.js"),"category":require("./services\\category.js"),"cmsCategoryService":require("./services\\cmsCategoryService.js"),"cmsGroupService":require("./services\\cmsGroupService.js"),"cmsMasterService":require("./services\\cmsMasterService.js"),"coupon":require("./services\\coupon.js"),"credential":require("./services\\credential.js"),"exceptionHandler":require("./services\\exceptionHandler.js"),"fileService":require("./services\\fileService.js"),"globalCategory":require("./services\\globalCategory.js"),"globalCategoryService":require("./services\\globalCategoryService.js"),"globalCouponService":require("./services\\globalCouponService.js"),"image":require("./services\\image.js"),"imageService":require("./services\\imageService.js"),"inventoryService":require("./services\\inventoryService.js"),"knownException":require("./services\\knownException.js"),"localCategory":require("./services\\localCategory.js"),"localCategoryService":require("./services\\localCategoryService.js"),"newsletterService":require("./services\\newsletterService.js"),"orderService":require("./services\\orderService.js"),"permissionService":require("./services\\permissionService.js"),"product":require("./services\\product.js"),"productCollection":require("./services\\productCollection.js"),"productCollectionAdd":require("./services\\productCollectionAdd.js"),"productCollectionAddListItem":require("./services\\productCollectionAddListItem.js"),"productReviewService":require("./services\\productReviewService.js"),"productTempService":require("./services\\productTempService.js"),"returnRequestService":require("./services\\returnRequestService.js"),"sellerAccountService":require("./services\\sellerAccountService.js"),"sellerCouponService":require("./services\\sellerCouponService.js"),"sellerPermissionService":require("./services\\sellerPermissionService.js"),"sellerRoleService":require("./services\\sellerRoleService.js"),"shippingService":require("./services\\shippingService.js"),"shop":require("./services\\shop.js"),"shopAppearanceService":require("./services\\shopAppearanceService.js"),"shopPermissionService":require("./services\\shopPermissionService.js"),"shopProfileService":require("./services\\shopProfileService.js"),"shopService":require("./services\\shopService.js"),"stdNonMoveReportService":require("./services\\stdNonMoveReportService.js"),"stdOiReportService":require("./services\\stdOiReportService.js"),"stdOnHoldReportService":require("./services\\stdOnHoldReportService.js"),"stdReturnReportService":require("./services\\stdReturnReportService.js"),"stdSaleReportService":require("./services\\stdSaleReportService.js"),"stdStockReportService":require("./services\\stdStockReportService.js"),"sumCreateAndApproveService":require("./services\\sumCreateAndApproveService.js"),"sumProductInfoService":require("./services\\sumProductInfoService.js"),"sumProductOnWebService":require("./services\\sumProductOnWebService.js"),"sumProductStatusService":require("./services\\sumProductStatusService.js"),"sumSKUEffectiveService":require("./services\\sumSKUEffectiveService.js"),"sumSKUNotEffectiveService":require("./services\\sumSKUNotEffectiveService.js")}),"helpers":({"base64":require("./helpers\\base64.js"),"common":require("./helpers\\common.js"),"storage":require("./helpers\\storage.js"),"util":require("./helpers\\util.js"),"variantPair":require("./helpers\\variantPair.js")}),"directives":({"ncTradableSelect":require("./directives\\ncTradableSelect.js"),"ngCkeditor":require("./directives\\ngCkeditor.js"),"ngDateBefore":require("./directives\\ngDateBefore.js"),"ngDelegate":require("./directives\\ngDelegate.js"),"ngEnter":require("./directives\\ngEnter.js"),"ngLowercase":require("./directives\\ngLowercase.js"),"ngMatch":require("./directives\\ngMatch.js"),"ngMaxnumber":require("./directives\\ngMaxnumber.js"),"ngMinnumber":require("./directives\\ngMinnumber.js"),"ngPatternRestrict":require("./directives\\ngPatternRestrict.js"),"ngPermission":require("./directives\\ngPermission.js"),"ngSlideToggle":require("./directives\\ngSlideToggle.js"),"ngTemplate":require("./directives\\ngTemplate.js"),"ngUppercase":require("./directives\\ngUppercase.js"),"popoverAny":require("./directives\\popoverAny.js")}),"filters":({"capitalize":require("./filters\\capitalize.js"),"exclude":require("./filters\\exclude.js"),"excludeCategory":require("./filters\\excludeCategory.js"),"html":require("./filters\\html.js"),"importGuidelineExample":require("./filters\\importGuidelineExample.js"),"leadingzero":require("./filters\\leadingzero.js"),"ordinal":require("./filters\\ordinal.js"),"propsFilter":require("./filters\\propsFilter.js"),"slice":require("./filters\\slice.js"),"statusValue":require("./filters\\statusValue.js"),"truncate":require("./filters\\truncate.js"),"truth":require("./filters\\truth.js"),"variantValue":require("./filters\\variantValue.js")}),"template-options":({"PromotionForm":require("./template-options\\PromotionForm.js"),"addAttributeForm":require("./template-options\\addAttributeForm.js"),"addAttributeSetForm":require("./template-options\\addAttributeSetForm.js"),"addBrandForm":require("./template-options\\addBrandForm.js"),"addBuy1Get1Form":require("./template-options\\addBuy1Get1Form.js"),"addCMSMasterForm":require("./template-options\\addCMSMasterForm.js"),"addCategoryForm":require("./template-options\\addCategoryForm.js"),"addMasterProductForm":require("./template-options\\addMasterProductForm.js"),"addNewsletterForm":require("./template-options\\addNewsletterForm.js"),"addProductForm":require("./template-options\\addProductForm.js"),"addRoleForm":require("./template-options\\addRoleForm.js"),"addShopAccountForm":require("./template-options\\addShopAccountForm.js"),"addShopAppearanceForm":require("./template-options\\addShopAppearanceForm.js"),"addShopTypeForm":require("./template-options\\addShopTypeForm.js"),"adminApproveForm":require("./template-options\\adminApproveForm.js"),"couponForm":require("./template-options\\couponForm.js"),"createGroupVariant":require("./template-options\\createGroupVariant.js"),"genericForm":require("./template-options\\genericForm.js"),"productExport":require("./template-options\\productExport.js"),"productImport":require("./template-options\\productImport.js"),"searchForm":require("./template-options\\searchForm.js"),"shopSettingForm":require("./template-options\\shopSettingForm.js")})})
 var config = require('./config')
 var route = require('./route')
 var template = require('./template')
@@ -157,6 +157,17 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .factory('StdReportOnHoldService', services.stdOnHoldReportService)
   .factory('StdReportReturnService', services.stdReturnReportService)
 
+  // Col Dev (Natcharin)
+  .factory('StdOiReportService', services.stdOiReportService)
+  .factory('StdNonMoveReportService', services.stdNonMoveReportService)
+  .factory('SumCreateAndApproveService', services.sumCreateAndApproveService)
+  .factory('SumProductStatusService', services.sumProductStatusService)
+  .factory('SumProductInfoService', services.sumProductInfoService)
+  .factory('SumProductOnWebService', services.sumProductOnWebService)
+  .factory('SumSKUEffectiveService', services.sumSKUEffectiveService)
+  .factory('SumSKUNotEffectiveService', services.sumSKUNotEffectiveService)
+
+
   // Directives
   .directive('ncTradableSelect', directives.ncTradableSelect)
   .directive('ngCkeditor', directives.ngCkeditor)
@@ -174,6 +185,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .directive('ngMinnumber', directives.ngMinnumber)
   .directive('ngMaxnumber', directives.ngMaxnumber)
   .directive('ngDateBefore', directives.ngDateBefore)
+  .directive('ngEnter', directives.ngEnter)
+
   // Filters
   .filter('capitalize', filters.capitalize)
   .filter('ordinal', filters.ordinal)
@@ -285,12 +298,23 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('SellerStdStockReportCtrl', controllers.sellerStdStockReportList)
   .controller('SellerStdOnHoldReportCtrl', controllers.sellerStdOnHoldReportList)
   .controller('SellerStdReturnReportCtrl', controllers.sellerStdReturnReportList)
+    //Report by Natcharin
+  .controller('SellerStdOiReportCtrl', controllers.sellerStdOiReportList)
+  .controller('SellerStdNonMoveReportCtrl', controllers.sellerStdNonMoveReportList)
 
   //iOATH
   .controller('AdminBuy1Get1AddCtrl',controllers.adminBuy1Get1Add)
   .controller('AdminBuy1Get1ListCtrl',controllers.adminBuy1Get1List)
 
   .controller('TestCtrl', controllers.test)
+
+  //Summary by Natcharin
+  .controller('AdminSumCreateAndApproveCtrl', controllers.adminSumCreateAndApprove)
+  .controller('AdminSumProductStatusCtrl', controllers.adminSumProductStatus)
+  .controller('AdminSumProductInfoCtrl', controllers.adminSumProductInfo)
+  .controller('AdminSumProductOnWebCtrl',controllers.adminSumProductOnWeb)
+  .controller('AdminSumSKUEffectiveCtrl',controllers.adminSumSKUEffective)
+  .controller('AdminSumSKUNotEffectiveCtrl',controllers.adminSumSKUNotEffective)
 
   //CMS Seller
   .controller('SellerCMSMasterListCtrl', controllers.sellerCMSMasterList)
@@ -315,12 +339,12 @@ var _rollbarConfig = {
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\abstractPendingProductGroup.js":6,"./controllers\\abstractProductGroupAdd.js":7,"./controllers\\adminAccount.js":8,"./controllers\\adminAccountAdd.js":9,"./controllers\\adminAddCMSMaster.js":10,"./controllers\\adminAttribute.js":11,"./controllers\\adminAttributeAdd.js":12,"./controllers\\adminAttributeSet.js":13,"./controllers\\adminAttributeSetAdd.js":14,"./controllers\\adminBrand.js":15,"./controllers\\adminBrandAdd.js":16,"./controllers\\adminBuy1Get1Add.js":17,"./controllers\\adminBuy1Get1List.js":18,"./controllers\\adminCMS.js":19,"./controllers\\adminCMSCategoryAdd.js":20,"./controllers\\adminCMSCategoryList.js":21,"./controllers\\adminCMSGroupAdd.js":22,"./controllers\\adminCMSGroupList.js":23,"./controllers\\adminCMSMasterAdd.js":24,"./controllers\\adminCMSMasterList.js":25,"./controllers\\adminCategory.js":26,"./controllers\\adminGlobalCoupon.js":27,"./controllers\\adminGlobalCouponAdd.js":28,"./controllers\\adminLogin.js":29,"./controllers\\adminMasterProduct.js":30,"./controllers\\adminMasterProductAdd.js":31,"./controllers\\adminNewsletter.js":32,"./controllers\\adminOnTopCreditAdd.js":33,"./controllers\\adminOnTopCreditList.js":34,"./controllers\\adminPendingProduct.js":35,"./controllers\\adminPendingProductGroupAdd.js":36,"./controllers\\adminProductApprovalDetail.js":37,"./controllers\\adminProductApprovalList.js":38,"./controllers\\adminProductDetail.js":39,"./controllers\\adminProductGroupAdd.js":40,"./controllers\\adminProductList.js":41,"./controllers\\adminProductReview.js":42,"./controllers\\adminRole.js":43,"./controllers\\adminRoleAdd.js":44,"./controllers\\adminSellerAccount.js":45,"./controllers\\adminSellerCoupon.js":46,"./controllers\\adminSellerCouponAdd.js":47,"./controllers\\adminShop.js":48,"./controllers\\adminShopAdd.js":49,"./controllers\\adminShoptype.js":50,"./controllers\\adminShoptypeAdd.js":51,"./controllers\\buy1get1Add.js":52,"./controllers\\buy1get1Import.js":53,"./controllers\\buy1get1List.js":54,"./controllers\\index.js":55,"./controllers\\localCategory.js":56,"./controllers\\login.js":57,"./controllers\\productAddSelectCategory.js":58,"./controllers\\productCollectionAdd.js":59,"./controllers\\productCollectionAddListItem.js":60,"./controllers\\productCollectionImport.js":61,"./controllers\\productCollectionList.js":62,"./controllers\\productExport.js":63,"./controllers\\productGroupCollectionList.js":64,"./controllers\\productImageList.js":65,"./controllers\\productImageManagement.js":66,"./controllers\\productImport.js":67,"./controllers\\productList.js":68,"./controllers\\productListLocalCategory.js":69,"./controllers\\productReview.js":70,"./controllers\\root.js":71,"./controllers\\sellerAccount.js":72,"./controllers\\sellerAccountAdd.js":73,"./controllers\\sellerBuy1Get1Add.js":74,"./controllers\\sellerBuy1Get1List.js":75,"./controllers\\sellerCMS.js":76,"./controllers\\sellerCMSCategoryAdd.js":77,"./controllers\\sellerCMSCategoryList.js":78,"./controllers\\sellerCMSGroupAdd.js":79,"./controllers\\sellerCMSGroupList.js":80,"./controllers\\sellerCMSMasterAdd.js":81,"./controllers\\sellerCMSMasterList.js":82,"./controllers\\sellerCoupon.js":83,"./controllers\\sellerCouponAdd.js":84,"./controllers\\sellerDashboard.js":85,"./controllers\\sellerInventoryList.js":86,"./controllers\\sellerNewsletter.js":87,"./controllers\\sellerOnboarding.js":88,"./controllers\\sellerOrder.js":89,"./controllers\\sellerOrderAdd.js":90,"./controllers\\sellerOrderShippingList.js":91,"./controllers\\sellerPendingProduct.js":92,"./controllers\\sellerPendingProductGroupAdd.js":93,"./controllers\\sellerProductDetail.js":94,"./controllers\\sellerProductGroupAdd.js":95,"./controllers\\sellerReport.js":96,"./controllers\\sellerReturnRequest.js":97,"./controllers\\sellerReturnRequestAdd.js":98,"./controllers\\sellerRole.js":99,"./controllers\\sellerRoleAdd.js":100,"./controllers\\sellerShopAppearance.js":101,"./controllers\\sellerShopSetting.js":102,"./controllers\\sellerStdOnHoldReportList.js":103,"./controllers\\sellerStdReturnReportList.js":104,"./controllers\\sellerStdSaleReportSellerList.js":105,"./controllers\\sellerStdStockReportList.js":106,"./controllers\\test.js":107,"./directives\\ncTradableSelect.js":108,"./directives\\ngCkeditor.js":109,"./directives\\ngDateBefore.js":110,"./directives\\ngDelegate.js":111,"./directives\\ngEnter.js":112,"./directives\\ngLowercase.js":113,"./directives\\ngMatch.js":114,"./directives\\ngMaxnumber.js":115,"./directives\\ngMinnumber.js":116,"./directives\\ngPatternRestrict.js":117,"./directives\\ngPermission.js":118,"./directives\\ngSlideToggle.js":119,"./directives\\ngTemplate.js":120,"./directives\\ngUppercase.js":121,"./directives\\popoverAny.js":122,"./filters\\capitalize.js":123,"./filters\\exclude.js":124,"./filters\\excludeCategory.js":125,"./filters\\html.js":126,"./filters\\importGuidelineExample.js":127,"./filters\\leadingzero.js":128,"./filters\\ordinal.js":129,"./filters\\propsFilter.js":130,"./filters\\slice.js":131,"./filters\\statusValue.js":132,"./filters\\truncate.js":133,"./filters\\truth.js":134,"./filters\\variantValue.js":135,"./helpers\\base64.js":136,"./helpers\\common.js":137,"./helpers\\storage.js":138,"./helpers\\util.js":139,"./helpers\\variantPair.js":140,"./iefix.js":141,"./modules/angular-draggable":142,"./modules/angular-print":143,"./modules/angular-scroll":144,"./modules/nc":176,"./modules/product-detail":185,"./modules/schematics":187,"./modules/ume-select":199,"./route":201,"./services\\Buy1Get1Service.js":202,"./services\\Dashboard.js":203,"./services\\OnTopCredit.js":204,"./services\\OnTopCreditService.js":205,"./services\\Onboarding.js":206,"./services\\adminAccountService.js":207,"./services\\adminMasterProductService.js":208,"./services\\adminPermissionService.js":209,"./services\\adminRoleService.js":210,"./services\\adminShopService.js":211,"./services\\adminShoptypeService.js":212,"./services\\attribute.js":213,"./services\\attributeService.js":214,"./services\\attributeSet.js":215,"./services\\attributeSetService.js":216,"./services\\blocker.js":217,"./services\\brand.js":218,"./services\\brandService.js":219,"./services\\buy1get1.js":220,"./services\\buy1get1Add.js":221,"./services\\category.js":222,"./services\\cmsCategoryService.js":223,"./services\\cmsGroupService.js":224,"./services\\cmsMasterService.js":225,"./services\\coupon.js":226,"./services\\credential.js":227,"./services\\exceptionHandler.js":228,"./services\\fileService.js":229,"./services\\globalCategory.js":230,"./services\\globalCategoryService.js":231,"./services\\globalCouponService.js":232,"./services\\image.js":233,"./services\\imageService.js":234,"./services\\inventoryService.js":235,"./services\\knownException.js":236,"./services\\localCategory.js":237,"./services\\localCategoryService.js":238,"./services\\newsletterService.js":239,"./services\\orderService.js":240,"./services\\permissionService.js":241,"./services\\product.js":242,"./services\\productCollection.js":243,"./services\\productCollectionAdd.js":244,"./services\\productCollectionAddListItem.js":245,"./services\\productReviewService.js":246,"./services\\productTempService.js":247,"./services\\returnRequestService.js":248,"./services\\sellerAccountService.js":249,"./services\\sellerCouponService.js":250,"./services\\sellerPermissionService.js":251,"./services\\sellerRoleService.js":252,"./services\\shippingService.js":253,"./services\\shop.js":254,"./services\\shopAppearanceService.js":255,"./services\\shopPermissionService.js":256,"./services\\shopProfileService.js":257,"./services\\shopService.js":258,"./services\\stdOnHoldReportService.js":259,"./services\\stdReturnReportService.js":260,"./services\\stdSaleReportService.js":261,"./services\\stdStockReportService.js":262,"./template":285,"./template-options\\PromotionForm.js":263,"./template-options\\addAttributeForm.js":264,"./template-options\\addAttributeSetForm.js":265,"./template-options\\addBrandForm.js":266,"./template-options\\addBuy1Get1Form.js":267,"./template-options\\addCMSMasterForm.js":268,"./template-options\\addCategoryForm.js":269,"./template-options\\addMasterProductForm.js":270,"./template-options\\addNewsletterForm.js":271,"./template-options\\addProductForm.js":272,"./template-options\\addRoleForm.js":273,"./template-options\\addShopAccountForm.js":274,"./template-options\\addShopAppearanceForm.js":275,"./template-options\\addShopTypeForm.js":276,"./template-options\\adminApproveForm.js":277,"./template-options\\couponForm.js":278,"./template-options\\createGroupVariant.js":279,"./template-options\\genericForm.js":280,"./template-options\\productExport.js":281,"./template-options\\productImport.js":282,"./template-options\\searchForm.js":283,"./template-options\\shopSettingForm.js":284,"angular":337,"angular-animate":287,"angular-base64":288,"angular-bootstrap-datetimepicker":290,"angular-chart.js":291,"angular-clipboard":293,"angular-cookies":295,"angular-drag-and-drop-lists":296,"angular-file-upload":297,"angular-input-masks":298,"angular-sanitize":328,"angular-scroll":330,"angular-ui-bootstrap":332,"angular-ui-sortable":333,"angular-ui-tree":335,"lodash":340,"ng-file-upload":342,"pluralize":343,"skeemas":344,"ui-select/dist/select.js":358}],2:[function(require,module,exports){
+},{"./config":2,"./controllers\\abstractAdd.js":3,"./controllers\\abstractAdvanceList.js":4,"./controllers\\abstractList.js":5,"./controllers\\abstractPendingProductGroup.js":6,"./controllers\\abstractProductGroupAdd.js":7,"./controllers\\adminAccount.js":8,"./controllers\\adminAccountAdd.js":9,"./controllers\\adminAddCMSMaster.js":10,"./controllers\\adminAttribute.js":11,"./controllers\\adminAttributeAdd.js":12,"./controllers\\adminAttributeSet.js":13,"./controllers\\adminAttributeSetAdd.js":14,"./controllers\\adminBrand.js":15,"./controllers\\adminBrandAdd.js":16,"./controllers\\adminBuy1Get1Add.js":17,"./controllers\\adminBuy1Get1List.js":18,"./controllers\\adminCMS.js":19,"./controllers\\adminCMSCategoryAdd.js":20,"./controllers\\adminCMSCategoryList.js":21,"./controllers\\adminCMSGroupAdd.js":22,"./controllers\\adminCMSGroupList.js":23,"./controllers\\adminCMSMasterAdd.js":24,"./controllers\\adminCMSMasterList.js":25,"./controllers\\adminCategory.js":26,"./controllers\\adminGlobalCoupon.js":27,"./controllers\\adminGlobalCouponAdd.js":28,"./controllers\\adminLogin.js":29,"./controllers\\adminMasterProduct.js":30,"./controllers\\adminMasterProductAdd.js":31,"./controllers\\adminNewsletter.js":32,"./controllers\\adminOnTopCreditAdd.js":33,"./controllers\\adminOnTopCreditList.js":34,"./controllers\\adminPendingProduct.js":35,"./controllers\\adminPendingProductGroupAdd.js":36,"./controllers\\adminProductApprovalDetail.js":37,"./controllers\\adminProductApprovalList.js":38,"./controllers\\adminProductDetail.js":39,"./controllers\\adminProductGroupAdd.js":40,"./controllers\\adminProductList.js":41,"./controllers\\adminProductReview.js":42,"./controllers\\adminRole.js":43,"./controllers\\adminRoleAdd.js":44,"./controllers\\adminSellerAccount.js":45,"./controllers\\adminSellerCoupon.js":46,"./controllers\\adminSellerCouponAdd.js":47,"./controllers\\adminShop.js":48,"./controllers\\adminShopAdd.js":49,"./controllers\\adminShoptype.js":50,"./controllers\\adminShoptypeAdd.js":51,"./controllers\\adminSumCreateAndApprove.js":52,"./controllers\\adminSumProductInfo.js":53,"./controllers\\adminSumProductOnWeb.js":54,"./controllers\\adminSumProductStatus.js":55,"./controllers\\adminSumSKUEffective.js":56,"./controllers\\adminSumSKUNotEffective.js":57,"./controllers\\buy1get1Add.js":58,"./controllers\\buy1get1Import.js":59,"./controllers\\buy1get1List.js":60,"./controllers\\index.js":61,"./controllers\\localCategory.js":62,"./controllers\\login.js":63,"./controllers\\productAddSelectCategory.js":64,"./controllers\\productCollectionAdd.js":65,"./controllers\\productCollectionAddListItem.js":66,"./controllers\\productCollectionImport.js":67,"./controllers\\productCollectionList.js":68,"./controllers\\productExport.js":69,"./controllers\\productGroupCollectionList.js":70,"./controllers\\productImageList.js":71,"./controllers\\productImageManagement.js":72,"./controllers\\productImport.js":73,"./controllers\\productList.js":74,"./controllers\\productListLocalCategory.js":75,"./controllers\\productReview.js":76,"./controllers\\root.js":77,"./controllers\\sellerAccount.js":78,"./controllers\\sellerAccountAdd.js":79,"./controllers\\sellerBuy1Get1Add.js":80,"./controllers\\sellerBuy1Get1List.js":81,"./controllers\\sellerCMS.js":82,"./controllers\\sellerCMSCategoryAdd.js":83,"./controllers\\sellerCMSCategoryList.js":84,"./controllers\\sellerCMSGroupAdd.js":85,"./controllers\\sellerCMSGroupList.js":86,"./controllers\\sellerCMSMasterAdd.js":87,"./controllers\\sellerCMSMasterList.js":88,"./controllers\\sellerCoupon.js":89,"./controllers\\sellerCouponAdd.js":90,"./controllers\\sellerDashboard.js":91,"./controllers\\sellerInventoryList.js":92,"./controllers\\sellerNewsletter.js":93,"./controllers\\sellerOnboarding.js":94,"./controllers\\sellerOrder.js":95,"./controllers\\sellerOrderAdd.js":96,"./controllers\\sellerOrderShippingList.js":97,"./controllers\\sellerPendingProduct.js":98,"./controllers\\sellerPendingProductGroupAdd.js":99,"./controllers\\sellerProductDetail.js":100,"./controllers\\sellerProductGroupAdd.js":101,"./controllers\\sellerReport.js":102,"./controllers\\sellerReturnRequest.js":103,"./controllers\\sellerReturnRequestAdd.js":104,"./controllers\\sellerRole.js":105,"./controllers\\sellerRoleAdd.js":106,"./controllers\\sellerShopAppearance.js":107,"./controllers\\sellerShopSetting.js":108,"./controllers\\sellerStdNonMoveReportList.js":109,"./controllers\\sellerStdOiReportList.js":110,"./controllers\\sellerStdOnHoldReportList.js":111,"./controllers\\sellerStdReturnReportList.js":112,"./controllers\\sellerStdSaleReportSellerList.js":113,"./controllers\\sellerStdStockReportList.js":114,"./controllers\\test.js":115,"./directives\\ncTradableSelect.js":116,"./directives\\ngCkeditor.js":117,"./directives\\ngDateBefore.js":118,"./directives\\ngDelegate.js":119,"./directives\\ngEnter.js":120,"./directives\\ngLowercase.js":121,"./directives\\ngMatch.js":122,"./directives\\ngMaxnumber.js":123,"./directives\\ngMinnumber.js":124,"./directives\\ngPatternRestrict.js":125,"./directives\\ngPermission.js":126,"./directives\\ngSlideToggle.js":127,"./directives\\ngTemplate.js":128,"./directives\\ngUppercase.js":129,"./directives\\popoverAny.js":130,"./filters\\capitalize.js":131,"./filters\\exclude.js":132,"./filters\\excludeCategory.js":133,"./filters\\html.js":134,"./filters\\importGuidelineExample.js":135,"./filters\\leadingzero.js":136,"./filters\\ordinal.js":137,"./filters\\propsFilter.js":138,"./filters\\slice.js":139,"./filters\\statusValue.js":140,"./filters\\truncate.js":141,"./filters\\truth.js":142,"./filters\\variantValue.js":143,"./helpers\\base64.js":144,"./helpers\\common.js":145,"./helpers\\storage.js":146,"./helpers\\util.js":147,"./helpers\\variantPair.js":148,"./iefix.js":149,"./modules/angular-draggable":150,"./modules/angular-print":151,"./modules/angular-scroll":152,"./modules/nc":185,"./modules/product-detail":195,"./modules/schematics":197,"./modules/ume-select":209,"./route":211,"./services\\Buy1Get1Service.js":212,"./services\\Dashboard.js":213,"./services\\OnTopCredit.js":214,"./services\\OnTopCreditService.js":215,"./services\\Onboarding.js":216,"./services\\adminAccountService.js":217,"./services\\adminMasterProductService.js":218,"./services\\adminPermissionService.js":219,"./services\\adminRoleService.js":220,"./services\\adminShopService.js":221,"./services\\adminShoptypeService.js":222,"./services\\attribute.js":223,"./services\\attributeService.js":224,"./services\\attributeSet.js":225,"./services\\attributeSetService.js":226,"./services\\blocker.js":227,"./services\\brand.js":228,"./services\\brandService.js":229,"./services\\buy1get1.js":230,"./services\\buy1get1Add.js":231,"./services\\category.js":232,"./services\\cmsCategoryService.js":233,"./services\\cmsGroupService.js":234,"./services\\cmsMasterService.js":235,"./services\\coupon.js":236,"./services\\credential.js":237,"./services\\exceptionHandler.js":238,"./services\\fileService.js":239,"./services\\globalCategory.js":240,"./services\\globalCategoryService.js":241,"./services\\globalCouponService.js":242,"./services\\image.js":243,"./services\\imageService.js":244,"./services\\inventoryService.js":245,"./services\\knownException.js":246,"./services\\localCategory.js":247,"./services\\localCategoryService.js":248,"./services\\newsletterService.js":249,"./services\\orderService.js":250,"./services\\permissionService.js":251,"./services\\product.js":252,"./services\\productCollection.js":253,"./services\\productCollectionAdd.js":254,"./services\\productCollectionAddListItem.js":255,"./services\\productReviewService.js":256,"./services\\productTempService.js":257,"./services\\returnRequestService.js":258,"./services\\sellerAccountService.js":259,"./services\\sellerCouponService.js":260,"./services\\sellerPermissionService.js":261,"./services\\sellerRoleService.js":262,"./services\\shippingService.js":263,"./services\\shop.js":264,"./services\\shopAppearanceService.js":265,"./services\\shopPermissionService.js":266,"./services\\shopProfileService.js":267,"./services\\shopService.js":268,"./services\\stdNonMoveReportService.js":269,"./services\\stdOiReportService.js":270,"./services\\stdOnHoldReportService.js":271,"./services\\stdReturnReportService.js":272,"./services\\stdSaleReportService.js":273,"./services\\stdStockReportService.js":274,"./services\\sumCreateAndApproveService.js":275,"./services\\sumProductInfoService.js":276,"./services\\sumProductOnWebService.js":277,"./services\\sumProductStatusService.js":278,"./services\\sumSKUEffectiveService.js":279,"./services\\sumSKUNotEffectiveService.js":280,"./template":303,"./template-options\\PromotionForm.js":281,"./template-options\\addAttributeForm.js":282,"./template-options\\addAttributeSetForm.js":283,"./template-options\\addBrandForm.js":284,"./template-options\\addBuy1Get1Form.js":285,"./template-options\\addCMSMasterForm.js":286,"./template-options\\addCategoryForm.js":287,"./template-options\\addMasterProductForm.js":288,"./template-options\\addNewsletterForm.js":289,"./template-options\\addProductForm.js":290,"./template-options\\addRoleForm.js":291,"./template-options\\addShopAccountForm.js":292,"./template-options\\addShopAppearanceForm.js":293,"./template-options\\addShopTypeForm.js":294,"./template-options\\adminApproveForm.js":295,"./template-options\\couponForm.js":296,"./template-options\\createGroupVariant.js":297,"./template-options\\genericForm.js":298,"./template-options\\productExport.js":299,"./template-options\\productImport.js":300,"./template-options\\searchForm.js":301,"./template-options\\shopSettingForm.js":302,"angular":350,"angular-animate":305,"angular-base64":306,"angular-bootstrap-datetimepicker":307,"angular-chart.js":308,"angular-clipboard":309,"angular-cookies":311,"angular-drag-and-drop-lists":312,"angular-file-upload":313,"angular-input-masks":314,"angular-sanitize":341,"angular-scroll":343,"angular-ui-bootstrap":345,"angular-ui-sortable":346,"angular-ui-tree":348,"lodash":354,"ng-file-upload":357,"pluralize":358,"skeemas":362,"ui-select/dist/select.js":375}],2:[function(require,module,exports){
 module.exports = {
-    REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
+    //REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	// REST_SERVICE_BASE_URL: 'http://27.254.48.174/sellerportal/api',
-    // REST_SERVICE_BASE_URL: 'http://localhost:58127/api',
-    // REST_SERVICE_BASE_URL: 'http://devmkp-colspapi.cenergy.co.th/api',
+    REST_SERVICE_BASE_URL: 'http://localhost:58127/api',
+    //REST_SERVICE_BASE_URL: 'http://devmkp-colspapi.cenergy.co.th/api',
 	MAX_GLOBAL_CAT_COLUMN : 4,
 	MAX_IMAGE_UPLOAD_SIZE: 5242880,
 	CK_DEFAULT_OPTIONS: {
@@ -366,6 +390,10 @@ module.exports = {
 		{
 			name: 'Local Category',
 			value: 'LocalCategory'
+		},
+        {
+            name: 'Product',
+            value: 'Product'
 		}
 		],
 		COUPON_DISCOUNT: [
@@ -2470,14 +2498,19 @@ module.exports = function($scope, $controller, CouponService, config, $uibModal)
 }
 
 },{}],20:[function(require,module,exports){
-module.exports = ["$scope", "$rootScope", "$controller", "CMSCategoryService", "config", "$uibModal", "$timeout", function ($scope,$rootScope, $controller, CMSCategoryService, config, $uibModal, $timeout) {
+module.exports = ["$scope", "$rootScope", "$controller", "CMSCategoryService", "config", "$uibModal", "$timeout", function ($scope, $rootScope, $controller, CMSCategoryService, config, $uibModal, $timeout) {
     'ngInject';
 
     $scope.adCMSadd = !$rootScope.permit(24);
-    $scope.formData     = {};
-
-    $scope.loading      = false;
-    $scope.isEmpty      = true;
+    $scope.formData = {
+        CategoryProductList:[],
+        CMSCategoryNameEN:'',
+        CMSCategoryNameTH:'',
+        Visibility:true,
+        CreateIP:''
+    };
+    $scope.loading = false;
+    $scope.isEmpty = true;
 
     var sortableEle;
 
@@ -2496,7 +2529,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "CMSCategoryService", "
         $timeout(function () {
             updateSequence();
         }, 200);
-        
+
     }
 
     sortableEle = $('#sortable').sortable({
@@ -2606,15 +2639,15 @@ module.exports = ["$scope", "$rootScope", "$controller", "CMSCategoryService", "
                 $scope.loading = false;
                 $scope.message = 'Empty list.';
                 $scope.categorys = [];
-                $scope.brands   = [];
-                $scope.tags     = [];
+                $scope.brands = [];
+                $scope.tags = [];
 
                 $scope.init = function () {
                     $('#form-category :input[type=text]').keyup(function () {
 
                         var val = $(this).val();
                         console.log(val)
-                        var param   = { SearchText: val };
+                        var param = { SearchText: val };
 
                         CMSCategoryService.getAllCategory(param)
                         .then(function (data) {
@@ -2732,11 +2765,11 @@ module.exports = ["$scope", "$rootScope", "$controller", "CMSCategoryService", "
 
                     return sum;
                 };
-                
+
                 /// Test
                 $scope.category = {};
-                $scope.brand    = {};
-                $scope.tag      = {};
+                $scope.brand = {};
+                $scope.tag = {};
                 $scope.searchBy = 'ProductName';
 
                 $scope.$watch('category.selected', function (newValue, oldValue) {
@@ -2828,6 +2861,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "CMSCategoryService", "
         return $scope.formData.CategoryProductList === undefined ? 0 : $scope.formData.CategoryProductList.length;
     };
 
+    
     $controller('AbstractAddCtrl', {
         $scope: $scope,
         options: {
@@ -2840,10 +2874,10 @@ module.exports = ["$scope", "$rootScope", "$controller", "CMSCategoryService", "
 
             },
             onLoad: function (scope, load) {
-                
+
             },
             onSave: function (scope) {
-
+                debugger;
             }
         }
     });
@@ -2857,7 +2891,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "CMSCategoryService", "
     $scope.adCMSview = !$rootScope.permit(23);  
     $scope.adCMSadd = !$rootScope.permit(24);
     $scope.adCMSedit = !$rootScope.permit(25);
-    debugger;
+    
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
@@ -3232,7 +3266,12 @@ module.exports = ["$scope", "$rootScope", "$controller", "CMSMasterService", "Im
     $scope.product          = {};
     $scope.featureProducts  = [];
     $scope.CategoryList     = [];
-
+    $scope.sortBy           = [];
+                
+    common.getSortBy().then(function(data) {
+        $scope.sortBy = data;
+    });
+    
     $scope.Schedule = {
         EffectiveDate: null,
         ExpiryDate: null,
@@ -3256,7 +3295,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "CMSMasterService", "Im
         // else {
         //     $scope.alert.error(common.getError(response.data));
         // }
-        debugger;
+        // debugger;
         if(e == 'onmaxsize') {
             $scope.alert.error('Cannot exceed 8 images');
         }
@@ -3735,6 +3774,9 @@ module.exports = ["$scope", "$rootScope", "$controller", "CMSMasterService", "Im
 
                 if ($scope.formData.CategoryList === undefined || $scope.formData.CategoryList == null)
                     $scope.formData.CategoryList = [];
+
+                // clear old schedule
+                $scope.formData.ScheduleList = [];
 
                 $scope.formData.FeatureProductList = $scope.featureProducts;
                 $scope.formData.ScheduleList.push($scope.Schedule);
@@ -4575,7 +4617,7 @@ module.exports = function ($scope, $controller, OnTopCredit, config) {
 
     //Remove
     $scope.removeItems = function (item, index) {
-        debugger;
+        // debugger;
         $scope.items.splice(index, 1);
     }
 
@@ -4732,7 +4774,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "NCConfirm", function ($
     }
 
 }];
-},{"angular":337}],38:[function(require,module,exports){
+},{"angular":350}],38:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "config", "util", function($scope, $controller, Product, config, util) {
 	'ngInject';
     $scope.asStatus = Product.getStatus;
@@ -4812,7 +4854,7 @@ module.exports = ["$scope", "$controller", function ($scope, $controller) {
     });
 
 }];
-},{"angular":337}],40:[function(require,module,exports){
+},{"angular":350}],40:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", function($scope, $controller, Product) {
 	'ngInject';
     
@@ -5581,6 +5623,366 @@ module.exports = ["$scope", "$controller", "AdminShoptypeService", "ShippingServ
 }];
 
 },{}],52:[function(require,module,exports){
+
+module.exports = ["$scope", "$controller", "SumCreateAndApproveService", "config", "util", function ($scope, $controller, SumCreateAndApproveService, config, util) {
+    'ngInject';
+    $scope.formData = {
+        category: null,
+        seller: null,
+        OrderDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        OrderDateTo: new Date()
+    };
+
+
+    $scope.categorys = [];
+    SumCreateAndApproveService.getAllCategory({})
+                .then(function (data) {
+                    $scope.categorys = data;
+                });
+    $scope.$watch('formData.GlobalCategoryId', function (newValue, oldValue) {
+        if (newValue === undefined)
+            return;
+    });
+
+    $scope.$watch('formData.SellerId', function (newValue, oldValue) {
+        if (newValue === undefined)
+            return;
+    });
+
+    var params = $scope.formData;
+
+    $scope.search = function () {
+
+        SumCreateAndApproveService.getCreateAndApproveReport(params)
+        .then(function (data) {
+            // debugger;
+            $scope.list = data
+            //$scope.list.data.total($scope.list.data.length);
+            $scope.list.reload();
+        });
+
+    };
+
+    $scope.exportCsv = function () {
+        //debugger;
+
+        SumCreateAndApproveService.exportCsv(params)
+        .then(function (data) {
+
+            util.csv(data, 'SumCreateAndApprove.csv');
+
+        })
+    };
+
+    $scope.resetSearch = function () {
+        $scope.categorys = [];
+        $scope.formData.Seller = null;
+        $scope.formData.OrderDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
+        $scope.formData.OrderDateTo = new Date();
+    };
+
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/admin/sum/createandapprove',
+            service: SumCreateAndApproveService,
+            item: 'CreateAndApprove',
+            order: 'Category',
+            id: 'Category'
+
+
+        }
+    });
+
+
+}];
+
+},{}],53:[function(require,module,exports){
+
+module.exports = ["$scope", "$controller", "SumProductInfoService", "config", "util", function ($scope, $controller, SumProductInfoService, config, util) {
+    'ngInject';
+    $scope.formData = {
+        category: null,
+        seller: null,
+        OrderDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        OrderDateTo: new Date()
+    };
+
+
+    $scope.categorys = [];
+    SumProductInfoService.getAllCategory({})
+                .then(function (data) {
+                    $scope.categorys = data;
+                });
+    $scope.$watch('formData.GlobalCategoryId', function (newValue, oldValue) {
+        if (newValue === undefined)
+            return;
+    });
+
+    $scope.$watch('formData.SellerId', function (newValue, oldValue) {
+        if (newValue === undefined)
+            return;
+    });
+
+    var params = $scope.formData;
+
+    $scope.search = function () {
+
+        SumProductInfoService.getProductInfoReport(params)
+        .then(function (data) {
+            // debugger;
+            $scope.list = data
+            //$scope.list.data.total($scope.list.data.length);
+            $scope.list.reload();
+        });
+
+    };
+
+    $scope.exportCsv = function () {
+        //debugger;
+
+        SumProductInfoService.exportCsv(params)
+        .then(function (data) {
+
+            util.csv(data, 'SumProductInfo.csv');
+
+        })
+    };
+
+    $scope.resetSearch = function () {
+        $scope.categorys = [];
+        $scope.formData.Seller = null;
+        $scope.formData.OrderDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
+        $scope.formData.OrderDateTo = new Date();
+    };
+
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/admin/sum/productinfo',
+            service: SumProductInfoService,
+            item: 'ProductInfo',
+            order: 'Category',
+            id: 'Category'
+
+
+        }
+    });
+
+
+}];
+
+},{}],54:[function(require,module,exports){
+
+module.exports = ["$scope", "$controller", "SumProductOnWebService", "config", "util", function ($scope, $controller, SumProductOnWebService, config, util) {
+    'ngInject';
+    $scope.formData = {
+        category: null,
+        seller: null,
+        OrderDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        OrderDateTo: new Date()
+    };
+
+
+    $scope.categorys = [];
+    SumProductOnWebService.getAllCategory({})
+                .then(function (data) {
+                    $scope.categorys = data;
+                });
+    $scope.$watch('formData.GlobalCategoryId', function (newValue, oldValue) {
+        if (newValue === undefined)
+            return;
+    });
+
+    $scope.$watch('formData.SellerId', function (newValue, oldValue) {
+        if (newValue === undefined)
+            return;
+    });
+
+    var params = $scope.formData;
+
+    $scope.search = function () {
+
+        SumProductOnWebService.getProductOnWebReport(params)
+        .then(function (data) {
+            // debugger;
+            $scope.list = data
+            //$scope.list.data.total($scope.list.data.length);
+            $scope.list.reload();
+        });
+
+    };
+
+    $scope.exportCsv = function () {
+        //debugger;
+
+        SumProductOnWebService.exportCsv(params)
+        .then(function (data) {
+
+            util.csv(data, 'SumProductOnWeb.csv');
+
+        })
+    };
+
+    $scope.resetSearch = function () {
+        $scope.categorys = [];
+        $scope.formData.Seller = null;
+        $scope.formData.OrderDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
+        $scope.formData.OrderDateTo = new Date();
+    };
+
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/admin/sum/ProductOnWeb',
+            service: SumProductOnWebService,
+            item: 'ProductOnWeb',
+            order: 'Category',
+            id: 'Category'
+
+
+        }
+    });
+
+
+}];
+
+},{}],55:[function(require,module,exports){
+
+module.exports = ["$scope", "$controller", "SumProductStatusService", "config", "util", function ($scope, $controller, SumProductStatusService, config, util) {
+    'ngInject';
+    $scope.formData = {
+        category: null,
+        seller: null,
+        OrderDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        OrderDateTo: new Date()
+    };
+
+
+    $scope.categorys = [];
+    SumProductStatusService.getAllCategory({})
+                .then(function (data) {
+                    $scope.categorys = data;
+                });
+    $scope.$watch('formData.GlobalCategoryId', function (newValue, oldValue) {
+        if (newValue === undefined)
+            return;
+    });
+
+    $scope.$watch('formData.SellerId', function (newValue, oldValue) {
+        if (newValue === undefined)
+            return;
+    });
+
+    var params = $scope.formData;
+
+    $scope.search = function () {
+
+        SumProductStatusService.getProductStatusReport(params)
+        .then(function (data) {
+            // debugger;
+            $scope.list = data
+            //$scope.list.data.total($scope.list.data.length);
+            $scope.list.reload();
+        });
+
+    };
+
+    $scope.exportCsv = function () {
+        //debugger;
+
+        SumProductStatusService.exportCsv(params)
+        .then(function (data) {
+
+            util.csv(data, 'SumProductStatus.csv');
+
+        })
+    };
+
+    $scope.resetSearch = function () {
+        $scope.categorys = [];
+        $scope.formData.Seller = null;
+        $scope.formData.OrderDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
+        $scope.formData.OrderDateTo = new Date();
+    };
+
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/admin/sum/productstatus',
+            service: SumProductStatusService,
+            item: 'ProductStatus',
+            order: 'Category',
+            id: 'Category'
+
+
+        }
+    });
+
+
+}];
+
+},{}],56:[function(require,module,exports){
+module.exports = ["$scope", "$controller", "SumSKUEffectiveService", "common", "config", function($scope, $controller, SumSKUEffectiveService, common, config) {
+    'ngInject';
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/admin/sum/skueffective',
+            service: SumSKUEffectiveService,
+            item: 'SKU',
+            order: 'Category',
+            id: 'Category',
+            filters: [
+                { name: "All", value: 'All'},
+                { name: "Stock", value: 'Stock'},
+                { name: "Out Of Stock", value: 'OutOfStock'},
+            ]
+        }
+    });
+    $scope.export = function () {
+        //debugger;
+
+        SumSKUEffectiveService.exportCsv(params)
+        .then(function (data) {
+
+            util.csv(data, 'SumSKUEffective.csv');
+
+        })
+    };
+    
+}];
+},{}],57:[function(require,module,exports){
+module.exports = ["$scope", "$controller", "SumSKUNotEffectiveService", "common", "config", function($scope, $controller, SumSKUNotEffectiveService, common, config) {
+    'ngInject';
+    $controller('AbstractAdvanceListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/admin/sum/skunoteffective',
+            service: SumSKUNotEffectiveService,
+            item: 'SKU',
+            order: 'Category',
+            id: 'Category',
+            filters: [
+                { name: "All", value: 'All'},
+                { name: "Stock", value: 'Stock'},
+                { name: "Out Of Stock", value: 'OutOfStock'},
+            ]
+        }
+    });
+    $scope.export = function () {
+        //debugger;
+
+        SumSKUNotEffectiveService.exportCsv(params)
+        .then(function (data) {
+
+            util.csv(data, 'SumSKUNotEffective.csv');
+
+        })
+    };
+    
+}];
+},{}],58:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', '$window', 'util', 'config','Product', 'Buy1Get1','Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$Buy1Get1Add',
@@ -6032,7 +6434,7 @@ $scope.GetItemSelected = function () {
    
 }];
 
-},{"angular":337}],53:[function(require,module,exports){
+},{"angular":350}],59:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($scope, $rootScope, Product, util, Alert, $window) {
@@ -6041,7 +6443,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($sc
     // shop
     $scope.manageBuy1Get1SH = !$rootScope.permit(70);   
 }];
-},{"angular":337}],54:[function(require,module,exports){
+},{"angular":350}],60:[function(require,module,exports){
 module.exports = ['$scope',  'Buy1Get1', 'util', 'Alert', '$window', '$rootScope', function
 
 ($scope, Buy1Get1, util, Alert, $window, $rootScope) {
@@ -6441,7 +6843,7 @@ module.exports = ['$scope',  'Buy1Get1', 'util', 'Alert', '$window', '$rootScope
     }
 }];
 
-},{}],55:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 module.exports = ["storage", "Credential", "$window", function(storage, Credential, $window) {
 	'ngInject';
   var profile = storage.getCurrentUserProfile()
@@ -6451,7 +6853,7 @@ module.exports = ["storage", "Credential", "$window", function(storage, Credenti
   	$window.location.href = '/login';
   }
 }]
-},{}],56:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Category", "LocalCategoryService", "AttributeSetService", "NcAlert", "util", "config", function($scope, $rootScope, $uibModal, $timeout, common, Category, LocalCategoryService, AttributeSetService, NcAlert, util, config){
 	'ngInject';
 	$scope.modalScope = null;
@@ -6746,7 +7148,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 
 }];
 
-},{}],57:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
   module.exports = ["$scope", "Credential", "$window", "NcAlert", "$uibModal", "storage", "config", function ($scope, Credential, $window, NcAlert, $uibModal, storage, config) {
     'ngInject';
   $scope.uform = {};
@@ -6812,7 +7214,7 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
     });
   }
 }];
-},{}],58:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Category, GlobalCategory) {
@@ -6836,7 +7238,7 @@ module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Categ
 	});
 }];
 
-},{"angular":337}],59:[function(require,module,exports){
+},{"angular":350}],65:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', '$window', 'util', 'config', 'Product', 'Collection','Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$CollectionAdd',
@@ -7393,7 +7795,7 @@ function ($scope, $window, util, config, Product, Collection, ImageService, Attr
 
 }];
 
-},{"angular":337}],60:[function(require,module,exports){
+},{"angular":350}],66:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', '$filter' ,'$window', 'util', 'config', 'Product', 'Collection','Image', 'AttributeSet', 'Brand', 'Shop', 'GlobalCategory', 'Category', 'VariantPair', '$rootScope', '$q', 'KnownException', 'NcAlert', '$CollectionAddListItem',
@@ -7833,13 +8235,13 @@ $scope.AddToList = function () {
 
 }];
 
-},{"angular":337}],61:[function(require,module,exports){
+},{"angular":350}],67:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', function ($scope, Product, util, Alert, $window) {
     
 }];
-},{"angular":337}],62:[function(require,module,exports){
+},{"angular":350}],68:[function(require,module,exports){
 module.exports = ['$scope', 'Product', 'Collection', 'util', 'Alert', '$window', '$rootScope', function
 
 ($scope, Product,Collection, util, Alert, $window, $rootScope) {
@@ -8241,7 +8643,7 @@ module.exports = ['$scope', 'Product', 'Collection', 'util', 'Alert', '$window',
     }
 }];
 
-},{}],63:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$filter", "$interval", "NCConfirm", "smoothScroll", "$timeout", function ($scope, Product, AttributeSet, NcAlert, $base64, $filter, $interval, NCConfirm, smoothScroll, $timeout) {
 	'ngInject';
 	$scope.ProductList = [];
@@ -8539,7 +8941,7 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 	};
 }];
 
-},{}],64:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 module.exports = ['$scope', 'Product', 'Collection', 'util', 'Alert', '$window', '$rootScope', function
 
 ($scope, Product,Collection, util, Alert, $window, $rootScope) {
@@ -8937,7 +9339,7 @@ module.exports = ['$scope', 'Product', 'Collection', 'util', 'Alert', '$window',
     }
 }];
 
-},{}],65:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 //Not Used
 module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader', function ($scope, Product, util, Alert, $window, FileUploader) {
     $scope.productList = [];
@@ -8947,7 +9349,7 @@ module.exports = ['$scope', 'Product', 'util', 'Alert', '$window', 'FileUploader
     });
 }];
 
-},{}],66:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$window", "FileUploader", "ImageService", "config", "common", function ($scope, $controller, Product, util, NcAlert, $window, FileUploader, ImageService, config, common) {
     'ngInject';
 	$controller('AbstractListCtrl', {
@@ -9163,7 +9565,7 @@ module.exports = ["$scope", "$controller", "Product", "util", "NcAlert", "$windo
     	$scope.ignored = false;
     }, true);
 }];
-},{}],67:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "GlobalCategoryService", "LocalCategoryService", "FileService", "Product", "GlobalCategoryService", "Category", "AttributeSet", "storage", "config", "$timeout", function($scope, $window, NcAlert, $uibModal, BrandService, GlobalCategoryService, LocalCategoryService, FileService, Product, GlobalCategoryService, Category, AttributeSet, storage, config, $timeout) {
 	'ngInject';
 	//Select Global Category
@@ -9429,7 +9831,7 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
 		});
 	});
 }];
-},{}],68:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "common", "Product", "util", "$window", "$rootScope", "config", "storage", "$base64", "$timeout", function($scope, $controller, common, Product, util, $window, $rootScope, config, storage, $base64, $timeout) {
     'ngInject';
     $controller('AbstractAdvanceListCtrl', {
@@ -9626,7 +10028,7 @@ module.exports = ["$scope", "$controller", "common", "Product", "util", "$window
         $scope.alert.success(fromImport);
     }
 }];
-},{}],69:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 module.exports = ['$scope', 'LocalCategory', function($scope, LocalCategory) {
 	//UI binding variables
 	$scope.showOnOffStatus = true;
@@ -9701,7 +10103,7 @@ module.exports = ['$scope', 'LocalCategory', function($scope, LocalCategory) {
 	});
 }];
 
-},{}],70:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$uibModal", "util", "common", function($scope, $controller, ProductReviewService, config, $uibModal, util, common) {
 	'ngInject';
 	//Inherit from parent
@@ -9733,7 +10135,7 @@ module.exports = ["$scope", "$controller", "ProductReviewService", "config", "$u
 	};
 }];
 
-},{}],71:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential", "route", "config", "util", function($rootScope, $uibModal, $window, storage, Credential, route, config, util) {
 	'ngInject';
 	//Root controller of the application
@@ -10095,7 +10497,7 @@ module.exports = ["$rootScope", "$uibModal", "$window", "storage", "Credential",
   }
 }];
 
-},{}],72:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerAccountService", "config", function($scope, $controller, SellerAccountService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -10111,7 +10513,7 @@ module.exports = ["$scope", "$controller", "SellerAccountService", "config", fun
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-},{}],73:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 module.exports = function($scope, $controller, BrandService, SellerAccountService, SellerRoleService) {
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
@@ -10153,7 +10555,7 @@ module.exports = function($scope, $controller, BrandService, SellerAccountServic
 	};
 }
 
-},{}],74:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$uibModal", "$timeout", "$rootScope", function ($scope, $controller, Buy1Get1Service, config, $uibModal, $timeout, $rootScope) {
     'ngInject';
     // seller
@@ -10177,8 +10579,8 @@ module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$uibMod
         var start = ui.item.data('start'),
             end = ui.item.index();
 
-        $scope.formData.CategoryProductList.splice(end, 0,
-            $scope.formData.CategoryProductList.splice(start, 1)[0]);
+        $scope.formData.ProductBuyList.splice(end, 0,
+            $scope.formData.ProductBuyList.splice(start, 1)[0]);
 
         $scope.$apply();
 
@@ -10196,8 +10598,8 @@ module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$uibMod
     $scope.moveUp = function (start, end) {
 
         // swap object
-        $scope.formData.CategoryProductList.splice(end, 0,
-           $scope.formData.CategoryProductList.splice(start, 1)[0]);
+        $scope.formData.ProductBuyList.splice(end, 0,
+           $scope.formData.ProductBuyList.splice(start, 1)[0]);
 
         // update seq
         $timeout(function () {
@@ -10208,8 +10610,8 @@ module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$uibMod
     $scope.moveDown = function (start, end) {
 
         // swap object
-        $scope.formData.CategoryProductList.splice(end, 0,
-           $scope.formData.CategoryProductList.splice(start, 1)[0]);
+        $scope.formData.ProductBuyList.splice(end, 0,
+        $scope.formData.ProductBuyList.splice(start, 1)[0]);
 
         // update seq
         $timeout(function () {
@@ -10222,7 +10624,7 @@ module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$uibMod
 
         var seq = 0;
 
-        angular.forEach($scope.formData.CategoryProductList, function (item) {
+        angular.forEach($scope.formData.ProductBuyList, function (item) {
             seq++;
             item.Sequence = seq;
         });
@@ -10239,12 +10641,12 @@ module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$uibMod
         $scope.isCheckedAll != isChecked;
 
         if (!isChecked) {
-            angular.forEach($scope.formData.CategoryProductList, function (item) {
+            angular.forEach($scope.formData.ProductBuyList, function (item) {
                 item.IsChecked = false;
             });
         }
         else {
-            angular.forEach($scope.formData.CategoryProductList, function (item) {
+            angular.forEach($scope.formData.ProductBuyList, function (item) {
                 item.IsChecked = true;
             });
         }
@@ -10269,7 +10671,7 @@ module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$uibMod
 
         var sum = 0;
 
-        angular.forEach($scope.formData.CategoryProductList, function (item) {
+        angular.forEach($scope.formData.ProductBuyList, function (item) {
             if (item.IsChecked) {
                 sum++;
             }
@@ -10279,12 +10681,12 @@ module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$uibMod
     };
 
 
-    // Add Item to the list
-    $scope.addProductItem = function () {
+    // Add Item to the list BUY
+    $scope.addProductBuyItem = function () {
 
         // open modal
         $uibModal.open({
-            templateUrl: 'templates/promotion-buy1get1-add-item.html',
+            templateUrl: 'templates/promotion-buy1get1-buy-item.html',
             size: 'lg',
             //scope: $scope,
             controller: ["$scope", "$uibModalInstance", function ($scope, $uibModalInstance) {
@@ -10452,8 +10854,8 @@ module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$uibMod
             }]
         })
         .result.then(function (result) {
-            if ($scope.formData.CategoryProductList === undefined) {
-                $scope.formData.CategoryProductList = [];
+            if ($scope.formData.ProductBuyList === undefined) {
+                $scope.formData.ProductBuyList = [];
             }
 
             angular.forEach(result, function (product) {
@@ -10461,7 +10863,7 @@ module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$uibMod
                     var obj = angular.copy(product);
                     obj.Sequence = getNewProductSequence();
                     obj.ProductBoxBadge = product.ProductNameEn;
-                    $scope.formData.CategoryProductList.push(obj);
+                    $scope.formData.ProductBuyList.push(obj);
                 }
             })
         });
@@ -10470,7 +10872,7 @@ module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$uibMod
     // check product duplicate before add to list
     function isDuplicateProduct(pId) {
         var isDuplicate = false;
-        angular.forEach($scope.formData.CategoryProductList, function (product) {
+        angular.forEach($scope.formData.ProductBuyList, function (product) {
             if (product.Pid == pId)
                 isDuplicate = true;
         });
@@ -10480,19 +10882,19 @@ module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$uibMod
 
     // gen product seq
     function getNewProductSequence() {
-        return $scope.formData.CategoryProductList.length + 1;
+        return $scope.formData.ProductBuyList.length + 1;
     }
 
     // remove product item
     $scope.removeOnceItem = function (index) {
-        $scope.formData.CategoryProductList.splice(index, 1);
+        $scope.formData.ProductBuyList.splice(index, 1);
     }
 
     // remove multiple product
     $scope.removeMultiItem = function () {
-        for (var i = $scope.formData.CategoryProductList.length - 1; i >= 0; i--) {
-            if ($scope.formData.CategoryProductList[i].IsChecked) {
-                $scope.formData.CategoryProductList.splice(i, 1);
+        for (var i = $scope.formData.ProductBuyList.length - 1; i >= 0; i--) {
+            if ($scope.formData.ProductBuyList[i].IsChecked) {
+                $scope.formData.ProductBuyList.splice(i, 1);
             }
         }
 
@@ -10501,13 +10903,346 @@ module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$uibMod
 
     // get total product items
     $scope.getTotalItems = function () {
-        return $scope.formData.CategoryProductList === undefined ? 0 : $scope.formData.CategoryProductList.length;
+        return $scope.formData.ProductBuyList === undefined ? 0 : $scope.formData.ProductBuyList.length;
+    };
+
+
+    //GET
+    // Add Item to the list GET
+    $scope.addProductGetItem = function () {
+
+        // open modal
+        $uibModal.open({
+            templateUrl: 'templates/promotion-buy1get1-get-item.html',
+            size: 'lg',
+            //scope: $scope,
+            controller: ["$scope", "$uibModalInstance", function ($scope, $uibModalInstance) {
+
+                $scope.products = [];
+
+                $scope.isEmpty = true;
+                $scope.loading = false;
+                $scope.message = 'Empty list.';
+                $scope.categorys = [];
+                $scope.brands   = [];
+                $scope.tags     = [];
+
+
+                // load category
+                Buy1Get1Service.getAllCategory()
+                .then(function (data) {
+                    console.log(data)
+                    $scope.categorys = data;
+                });
+
+                // load category
+                Buy1Get1Service.getAllTag()
+                .then(function (data) {
+                    console.log(data)
+                    $scope.tags = data;
+                });
+
+                // Search
+                $scope.search = function (searchText) {
+
+                    $scope.loading = true;
+                    $scope.isEmpty = false;
+
+                    var tags = '';
+
+                    angular.forEach($scope.tag.selected, function (tag) {
+                        tags += tag.Tag + ',';
+                    });
+
+                    var params = {
+                        CategoryId: $scope.category.selected.CategoryId,
+                        BrandId: $scope.brand.selected.BrandId,
+                        Tag: tags,
+                        SearchBy: $scope.searchBy,
+                        SearchText: $scope.searchText
+                    };
+
+                    // search product
+                    Buy1Get1Service.searchProduct(params)
+                    .then(function (data) {
+                        console.log(data)
+                        $scope.products = data;
+                        $scope.isEmpty = false;
+                        $scope.loading = false;
+                        $scope.message = '';
+                    },
+                    function (error) {
+                        $scope.products = [];
+                        $scope.isEmpty = true;
+                        $scope.loading = false;
+                        $scope.message = 'Not Found Product';
+                    });
+
+                };
+
+                $scope.ok = function () {
+
+                    var itemSelected = [];
+
+                    angular.forEach($scope.products, function (item) {
+                        if (item.IsChecked) {
+                            itemSelected.push(item);
+                        }
+                    });
+
+                    $uibModalInstance.close(itemSelected);
+                };
+
+                // check all item
+                $scope.checkAll = function (isChecked) {
+
+                    $scope.isCheckedAll != isChecked;
+
+                    if (!isChecked) {
+                        angular.forEach($scope.products, function (item) {
+                            item.IsChecked = false;
+                        });
+                    }
+                    else {
+                        angular.forEach($scope.products, function (item) {
+                            item.IsChecked = true;
+                        });
+                    }
+
+                    $scope.sumProductSelected();
+                };
+
+                // check once item
+                $scope.checkOnce = function (item, isChecked) {
+
+                    if (!isChecked) {
+                        item.IsChecked = false;
+                    }
+                    else {
+                        item.IsChecked = true;
+                    }
+
+                    $scope.sumProductSelected();
+                };
+
+                $scope.sumProductSelected = function () {
+
+                    var sum = 0;
+
+                    angular.forEach($scope.products, function (item) {
+                        if (item.IsChecked) {
+                            sum++;
+                        }
+                    });
+
+                    return sum;
+                };
+                
+                /// Test
+                $scope.category = {};
+                $scope.brand    = {};
+                $scope.tag      = {};
+                $scope.searchBy = 'ProductName';
+
+                $scope.$watch('category.selected', function (newValue, oldValue) {
+                    if (newValue === undefined)
+                        return;
+
+                    // get brand by category id
+                    Buy1Get1Service.getBrand(newValue.CategoryId)
+                    .then(function (data) {
+                        $scope.brands = data;
+                    });
+
+                });
+
+                $scope.$watch('brand.selected', function (newValue, oldValue) {
+                    if (newValue === undefined)
+                        return;
+
+                });
+
+                $scope.disabled = undefined;
+
+                $scope.enable = function () {
+                    $scope.disabled = false;
+                };
+
+                $scope.disable = function () {
+                    $scope.disabled = true;
+                };
+
+                $scope.clear = function () {
+                    $scope.category.selected = undefined;
+                };
+
+                $scope.category = {};
+
+            }]
+        })
+        .result.then(function (result) {
+            if ($scope.formData.ProductGetList === undefined) {
+                $scope.formData.ProductGetList = [];
+            }
+
+            angular.forEach(result, function (product) {
+                if (!isDuplicateProduct(product.Pid)) {
+                    var obj = angular.copy(product);
+                    obj.Sequence = getNewProductSequenceGet();
+                    obj.ProductBoxBadge = product.ProductNameEn;
+                    $scope.formData.ProductGetList.push(obj);
+                }
+            })
+        });
+    };
+    // check product duplicate before add to list
+    function isDuplicateProduct(pId) {
+        var isDuplicate = false;
+        angular.forEach($scope.formData.ProductGetList, function (product) {
+            if (product.Pid == pId)
+                isDuplicate = true;
+        });
+
+        return isDuplicate;
+    }
+
+    // gen product seq
+    function getNewProductSequenceGet() {
+        return $scope.formData.ProductGetList.length + 1;
+    }
+
+    // remove product item
+    $scope.removeOnceItem = function (index) {
+        $scope.formData.ProductGetList.splice(index, 1);
+    }
+
+    // remove multiple product
+    $scope.removeMultiItem = function () {
+        for (var i = $scope.formData.ProductGetList.length - 1; i >= 0; i--) {
+            if ($scope.formData.ProductGetList[i].IsChecked) {
+                $scope.formData.ProductGetList.splice(i, 1);
+            }
+        }
+
+        $scope.isCheckedAll = false;
+    }
+
+    // get total product items
+    $scope.getTotalItems = function () {
+        return $scope.formData.ProductGetList === undefined ? 0 : $scope.formData.ProductGetList.length;
+    };
+    $scope.dragStart = function (e, ui) {
+        ui.item.data('start', ui.item.index());
+    }
+    $scope.dragEnd = function (e, ui) {
+        var start = ui.item.data('start'),
+            end = ui.item.index();
+
+        $scope.formData.ProductGetList.splice(end, 0,
+            $scope.formData.ProductGetList.splice(start, 1)[0]);
+
+        $scope.$apply();
+
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+        
+    }
+
+    sortableEle = $('#sortable').sortable({
+        start: $scope.dragStart,
+        update: $scope.dragEnd
+    });
+
+    $scope.moveUp = function (start, end) {
+
+        // swap object
+        $scope.formData.ProductGetList.splice(end, 0,
+           $scope.formData.ProductGetList.splice(start, 1)[0]);
+
+        // update seq
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+    };
+
+    $scope.moveDown = function (start, end) {
+
+        // swap object
+        $scope.formData.ProductGetList.splice(end, 0,
+        $scope.formData.ProductGetList.splice(start, 1)[0]);
+
+        // update seq
+        $timeout(function () {
+            updateSequence();
+        }, 200);
+    };
+
+    // update sequence
+    function updateSequence() {
+
+        var seq = 0;
+
+        angular.forEach($scope.formData.ProductGetList, function (item) {
+            seq++;
+            item.Sequence = seq;
+        });
+    }
+
+    $scope.selectOptionText = '- Choose Action -';
+    $scope.selectOption = function (param) {
+        $scope.selectOptionText = param;
+    };
+
+    // check all item
+    $scope.checkAll = function (isChecked) {
+
+        $scope.isCheckedAll != isChecked;
+
+        if (!isChecked) {
+            angular.forEach($scope.formData.ProductGetList, function (item) {
+                item.IsChecked = false;
+            });
+        }
+        else {
+            angular.forEach($scope.formData.ProductGetList, function (item) {
+                item.IsChecked = true;
+            });
+        }
+
+        $scope.sumProductSelected();
+    };
+
+    // check once item
+    $scope.checkOnce = function (item, isChecked) {
+
+        if (!isChecked) {
+            item.IsChecked = false;
+        }
+        else {
+            item.IsChecked = true;
+        }
+
+        $scope.sumProductSelected();
+    };
+
+    $scope.sumProductSelected = function () {
+
+        var sum = 0;
+
+        angular.forEach($scope.formData.ProductGetList, function (item) {
+            if (item.IsChecked) {
+                sum++;
+            }
+        });
+
+        return sum;
     };
 
     $controller('AbstractAddCtrl', {
         $scope: $scope,
         options: {
-            url: '/buy1get1/create',
+            url: '/buy1get1/',
             service: Buy1Get1Service,
             item: 'buy 1 get 1',
             order: 'UpdateDate',
@@ -10526,7 +11261,7 @@ module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$uibMod
 
 }];
 
-},{}],75:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$rootScope", function ($scope, $controller, Buy1Get1Service, config, $rootScope) {
     'ngInject';
     // seller
@@ -10555,7 +11290,7 @@ module.exports = ["$scope", "$controller", "Buy1Get1Service", "config", "$rootSc
     //$scope.statusDropdown = config.PRODUCT_STATUS;
 
 }];
-},{}],76:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 module.exports = function($scope, $controller, CouponService, config, $uibModal) {
   $controller('AbstractListCtrl', {
     $scope: $scope,
@@ -10653,7 +11388,7 @@ module.exports = function($scope, $controller, CouponService, config, $uibModal)
   };
 }
 
-},{}],77:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "$uibModal", "$timeout", "$rootScope", function ($scope, $controller, CMSCategoryService, config, $uibModal, $timeout, $rootScope) {
     'ngInject';
 
@@ -11034,7 +11769,7 @@ module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "$uib
 
 }];
 
-},{}],78:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 
 module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "util", "$rootScope", function ($scope, $controller, CMSCategoryService, config, util,$rootScope) {
     'ngInject';
@@ -11068,7 +11803,7 @@ module.exports = ["$scope", "$controller", "CMSCategoryService", "config", "util
 
 }];
 
-},{}],79:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "CMSGroupService", "config", "$uibModal", "$timeout", "$rootScope", function ($scope, $controller, CMSGroupService, config, $uibModal, $timeout,$rootScope) {
     'ngInject'; 
     $scope.CMSadd = !$rootScope.permit(62);
@@ -11368,7 +12103,7 @@ module.exports = ["$scope", "$controller", "CMSGroupService", "config", "$uibMod
 
 }];
 
-},{}],80:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 
 module.exports = ["$scope", "$controller", "CMSGroupService", "config", "$rootScope", function ($scope, $controller, CMSGroupService, config, $rootScope) {
     'ngInject';
@@ -11398,7 +12133,7 @@ module.exports = ["$scope", "$controller", "CMSGroupService", "config", "$rootSc
 
 }];
 
-},{}],81:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 module.exports = ["$scope", "$rootScope", "$controller", "CMSMasterService", "ImageService", "NcAlert", "common", "config", "$uibModal", "$timeout", function ($scope, $rootScope, $controller, CMSMasterService, ImageService, NcAlert, common, config, $uibModal, $timeout) {
     'ngInject';
     $scope.CMSadd = !$rootScope.permit(62);
@@ -11409,6 +12144,11 @@ module.exports = ["$scope", "$rootScope", "$controller", "CMSMasterService", "Im
     $scope.product          = {};
     $scope.featureProducts  = [];
     $scope.CategoryList     = [];
+    $scope.sortBy           = [];
+                
+    common.getSortBy().then(function(data) {
+        $scope.sortBy = data;
+    });
 
     $scope.Schedule = {
         EffectiveDate: null,
@@ -11433,7 +12173,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "CMSMasterService", "Im
         // else {
         //     $scope.alert.error(common.getError(response.data));
         // }
-        debugger;
+        // debugger;
         if(e == 'onmaxsize') {
             $scope.alert.error('Cannot exceed 8 images');
         }
@@ -11913,6 +12653,9 @@ module.exports = ["$scope", "$rootScope", "$controller", "CMSMasterService", "Im
                 if ($scope.formData.CategoryList === undefined || $scope.formData.CategoryList == null)
                     $scope.formData.CategoryList = [];
 
+                // clear old schedule
+                $scope.formData.ScheduleList = [];
+                
                 $scope.formData.FeatureProductList = $scope.featureProducts;
                 $scope.formData.ScheduleList.push($scope.Schedule);
                 $scope.formData.CategoryList = $scope.CategoryList;
@@ -11921,7 +12664,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "CMSMasterService", "Im
     });
 }];
 
-},{}],82:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 module.exports = ["$scope", "$rootScope", "$controller", "common", "CMSMasterService", "util", "$window", "$rootScope", "config", "storage", function ($scope, $rootScope, $controller, common, CMSMasterService, util, $window, $rootScope, config, storage) {
     'ngInject';
     // seller
@@ -11980,7 +12723,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "common", "CMSMasterSer
     }
 }];
 
-},{}],83:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 module.exports = ["$scope", "$rootScope", "$controller", "SellerCouponService", "config", function($scope, $rootScope, $controller, SellerCouponService, config) {
   'ngInject';
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
@@ -11997,36 +12740,206 @@ module.exports = ["$scope", "$rootScope", "$controller", "SellerCouponService", 
   });
 }]
 
-},{}],84:[function(require,module,exports){
-module.exports = function($scope, $rootScope, $controller, SellerCouponService, LocalCategoryService, Category, config, Category) {
-  $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
-  $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
-  $scope.filters = config.DROPDOWN.COUPON_SELLER_FILTER;
-  $scope.discount = config.DROPDOWN.COUPON_DISCOUNT;
-  $scope.manageable = !$rootScope.permit(53);
-  
-  //Abstract Add Ctrl
-  $controller('AbstractAddCtrl', {
-    $scope: $scope,
-    options: {
-      id: 'CouponId',
-      url: '/coupons',
-      item: 'Coupon',
-      service: SellerCouponService,
-      dateFields: ['StartDate', 'ExpireDate'],
-      onLoad: function() {
-        LocalCategoryService.list()
-          .then(function(data) {
-            $scope.categories = Category.transformNestedSetToUITree(data);
-          });
-      },
-      onSave: function(scope) {
-      }
-    }
-  });
+},{}],90:[function(require,module,exports){
+module.exports = function ($scope, $rootScope, $controller, $uibModal, $window, NcAlert, SellerCouponService, LocalCategoryService, Category, Product, config) {
+    $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
+    $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
+    $scope.filters = config.DROPDOWN.COUPON_SELLER_FILTER;
+    $scope.discount = config.DROPDOWN.COUPON_DISCOUNT;
+    $scope.manageable = !$rootScope.permit(53);
+    $scope.alert = new NcAlert();
+
+
+    $scope.categories   = [];
+    $scope.formData     = SellerCouponService.generate();
+
+    // load local categories
+    LocalCategoryService.list()
+    .then(function (data) {
+        $scope.categories = data;
+    });
+
+    // load product in shop
+    Product.list({ SearchText : '' })
+    .then(function (res) {
+        $scope.products = res.data;
+    });
+
+    // exclde product
+    $scope.exclude = function (categoryId) {
+        
+        var category = categoryId; //$scope.getCategory(categoryId);
+        console.log(category)
+
+        $uibModal.open({
+            templateUrl: 'templates/coupon-include-or-exclude.html',
+            size: 'lg',
+            //scope: $scope,
+            controller: function ($scope, $uibModalInstance) {
+
+                $scope.products = [];
+                $scope.includes = [];
+                $scope.excludes = [];
+                $scope.empty    = true;
+
+                if (category.Include !== undefined && category.Include.length > 0) {
+                    $scope.includes = category.Include;
+                }
+                if (category.Exclude !== undefined && category.Exclude.length > 0) {
+                    $scope.excludes = category.Exclude;
+                }
+
+                // remove include
+                $scope.removeInclude = function (item) {
+                    var index = $scope.includes.indexOf(item);
+                    if (index > -1) {
+                        $scope.includes.splice(index, 1);
+                    }
+                };
+
+                // remove exclude
+                $scope.removeExclude = function (item) {
+                    var index = $scope.excludes.indexOf(item);
+                    if (index > -1) {
+                        $scope.excludes.splice(index, 1);
+                    }
+                };
+
+                // remove product
+                $scope.removeProduct = function (item) {
+                    var index = $scope.products.indexOf(item);
+                    if (index > -1) {
+                        $scope.products.splice(index, 1);
+                    }
+                };
+
+                // check product item
+                $scope.isItemSelected = function (pid) {
+                    var excludeIndex = $scope.excludes.map(function (i) {
+                        return i.Pid;
+                    }).indexOf(pid);
+
+                    return excludeIndex > -1;
+                };
+
+                // move item
+                $scope.moveTo = function (from, to, item) {
+                    if (from == 'product') {
+                        if ($scope.isItemSelected(item.Pid))
+                            return;
+
+                        $scope.excludes.push(item);
+                    }
+                };
+
+                // search product
+                $scope.searchProduct = function (searchText) {
+
+                    $scope.products = [];
+                    $scope.loading  = true;
+                    $scope.empty    = false;
+
+                    Product.list({ SearchText: searchText })
+                    .then(function (res) {
+                        $scope.products = [];
+                        angular.forEach(res.data, function (p) {
+                            var transformed = {
+                                Pid: p.Pid,
+                                ProductNameEn: p.ProductNameEn
+                            };
+                            $scope.products.push(transformed);
+                        });
+                        $scope.loading = false;
+
+                        if ($scope.products.length > 0)
+                            $scope.empty = false;
+                    });
+                };
+
+                $scope.ok = function () {
+
+                    category.Exclude = [];
+
+                    angular.forEach($scope.excludes, function (i) {
+                        category.Exclude.push(i);
+                    });
+
+                    $uibModalInstance.close(category);
+                };
+
+                $scope.cancel = function () {
+                    $uibModalInstance.dismiss();
+                };
+            }
+        })
+        .result.then(function (data) {
+            
+            var index = $scope.formData.Conditions.FilterBy.LocalCategories.map(function (i) {
+                return i.CategoryId;
+            }).indexOf(data.CategoryId);
+
+            // update
+            if (index > -1) {
+                $scope.formData.Conditions.FilterBy.LocalCategories[index] = data;
+            }
+
+            // add new
+            else {
+                $scope.formData.Conditions.FilterBy.LocalCategories.push(data);
+            }
+
+            console.log($scope.formData)
+
+        });
+    };
+
+    // search product
+    $scope.searchProduct = function (searchText) {
+
+        $scope.products = [];
+
+        Product.list({ SearchText: searchText })
+        .then(function (res) {
+            $scope.products = [];
+            angular.forEach(res.data, function (p) {
+                var transformed = {
+                    Pid: p.Pid,
+                    ProductNameEn: p.ProductNameEn
+                };
+                $scope.products.push(transformed);
+            });
+        });
+    };
+
+    $scope.getCategory = function (id) {
+        var category = null;
+        angular.forEach($scope.categories, function (item) {
+            if (item.CategoryId === id)
+                category = item;
+        });
+        return category;
+    };
+    
+    //Abstract Add Ctrl
+    $controller('AbstractAddCtrl', {
+        $scope: $scope,
+        options: {
+            id: 'CouponId',
+            url: '/coupons',
+            item: 'Coupon',
+            service: SellerCouponService,
+            dateFields: ['StartDate', 'ExpireDate'],
+            onLoad: function (scope, load) {
+                console.log(scope.formData)
+            },
+            onSave: function (scope) {
+                
+            }
+        }
+    });
 
 };
-},{}],85:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 
 module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$filter", "storage", "$window", "$uibModal", "NewsletterService", function($scope, $rootScope, Dashboard, $log, $filter, storage, $window, $uibModal, NewsletterService){
 	'ngInject';
@@ -12424,7 +13337,7 @@ module.exports = ["$scope", "$rootScope", "Dashboard", "$log", "$filter", "stora
 
 }];
 
-},{}],86:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 module.exports = ["$scope", "$rootScope", "$controller", "$window", "InventoryService", "config", "common", "storage", function($scope, $rootScope, $controller, $window, InventoryService, config, common, storage) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
@@ -12520,7 +13433,7 @@ module.exports = ["$scope", "$rootScope", "$controller", "$window", "InventorySe
 	$scope.statusDropdown = config.INVENTORY_STATUS;
 }];
 
-},{}],87:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", function($scope, $controller, $uibModal, NewsletterService) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -12552,7 +13465,7 @@ module.exports = ["$scope", "$controller", "$uibModal", "NewsletterService", fun
 			});
 	};
 }];
-},{}],88:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 
 module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "storage", "$window", function($scope, $rootScope, Onboarding, $log, storage, $window){
 	'ngInject';
@@ -12661,7 +13574,7 @@ module.exports = ["$scope", "$rootScope", "Onboarding", "$log", "storage", "$win
     $scope.load();
 }];
 
-},{}],89:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 module.exports = ["$scope", "$window", "$controller", "OrderService", "config", "storage", "common", function($scope, $window, $controller, OrderService, config, storage, common) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -12805,7 +13718,7 @@ module.exports = ["$scope", "$window", "$controller", "OrderService", "config", 
 	$scope.status = config.ORDER_STATUS;
 }]
 
-},{}],90:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 module.exports = function($scope, $window, $filter, $controller, OrderService, util, config, $uibModal) {
   $scope.status = config.ORDER_STATUS;
   $scope.addressIter = [1,2,3,4]; //Amount of AddressX (ie, Address1, Address2)
@@ -12974,8 +13887,29 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   $scope.getInvoiceState = function() {
     return !( $scope.formData.ShippingType == 'BU Dropship' || $scope.formData.ShippingType == 'COL Fulfillment' );
   };
+
+  // New Print
+  // var app = angular.module('myApp', []);
+
+  // app.controller('myCtrl', function($scope) {
+      JsBarcode("#code128", "DLN1605000001",{
+        format: "code128",
+        lineColor: "#000",
+        width:2,
+        height:50,
+        displayValue: true,
+        textAlign:"left"
+      });
+      $scope.printToCart = function(printSectionId) {
+          var innerContents = document.getElementById(printSectionId).innerHTML;
+          var popupWinindow = window.open('', '_blank', 'scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+          popupWinindow.document.open();
+          popupWinindow.document.write('<html><head><link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/assets/libs/shippingLabelPrint/shippingLabelPrint.css" /></head><body onload="window.print()">' + innerContents + '</body></html>');
+          popupWinindow.document.close();
+      }
+  // });
 };
-},{}],91:[function(require,module,exports){
+},{}],97:[function(require,module,exports){
 module.exports = function($scope, $window, storage) {
 	$scope.orders = [];
 	$scope.cancel = function() {
@@ -12989,7 +13923,7 @@ module.exports = function($scope, $window, storage) {
 		$window.location.href = '/orders';
 	}
 };
-},{}],92:[function(require,module,exports){
+},{}],98:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "ProductTempService", "config", "NcAlert", function($scope, $controller, ProductTempService, config, NcAlert) {
 	'ngInject';
     $scope.alert = new NcAlert();
@@ -13038,7 +13972,7 @@ module.exports = ["$scope", "$controller", "ProductTempService", "config", "NcAl
 		}
 	});
 }]
-},{}],93:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", function($scope, $controller, Product) {
 	'ngInject';
     
@@ -13049,7 +13983,7 @@ module.exports = ["$scope", "$controller", "Product", function($scope, $controll
 
 }]
 
-},{}],94:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ["$scope", "$controller", "storage", function($scope, $controller, storage) {
@@ -13109,10 +14043,9 @@ module.exports = ["$scope", "$controller", "storage", function($scope, $controll
     $scope.disableDebugLoad = false;
     $scope.alert.success('<strong>Testing Kit</strong> Product data saved to your local storage.');
   };
-
 }];
 
-},{"angular":337}],95:[function(require,module,exports){
+},{"angular":350}],101:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "Product", function($scope, $controller, Product) {
 	'ngInject';
     
@@ -13123,7 +14056,7 @@ module.exports = ["$scope", "$controller", "Product", function($scope, $controll
 
 }]
 
-},{}],96:[function(require,module,exports){
+},{}],102:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerCouponService", "config", function($scope, $controller, SellerCouponService, config) {
   'ngInject';
   $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
@@ -13140,7 +14073,7 @@ module.exports = ["$scope", "$controller", "SellerCouponService", "config", func
   });
 }]
 
-},{}],97:[function(require,module,exports){
+},{}],103:[function(require,module,exports){
 module.exports = ["$scope", "$window", "$controller", "$uibModal", "ReturnRequestService", "config", function($scope, $window, $controller, $uibModal, ReturnRequestService, config) {
 	'ngInject';
 	$controller('AbstractListCtrl', {
@@ -13195,7 +14128,7 @@ module.exports = ["$scope", "$window", "$controller", "$uibModal", "ReturnReques
 	};
 }]
 
-},{}],98:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "ReturnRequestService", "util", "config", function($scope, $controller, ReturnRequestService, util, config) {
 	'ngInject';
 	$controller('AbstractAddCtrl', {
@@ -13258,7 +14191,7 @@ module.exports = ["$scope", "$controller", "ReturnRequestService", "util", "conf
 		}
 	}
 }];
-},{}],99:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerRoleService", "config", function($scope, $controller, SellerRoleService, config) {
 	'ngInject';
 	//Inherit from parent
@@ -13274,7 +14207,7 @@ module.exports = ["$scope", "$controller", "SellerRoleService", "config", functi
 	});
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 }];
-},{}],100:[function(require,module,exports){
+},{}],106:[function(require,module,exports){
 module.exports = ["$scope", "$controller", "SellerRoleService", "SellerPermissionService", "PermissionService", "util", function($scope, $controller, SellerRoleService, SellerPermissionService, PermissionService, util) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -13330,7 +14263,7 @@ module.exports = ["$scope", "$controller", "SellerRoleService", "SellerPermissio
 		});
 	};
 }];
-},{}],101:[function(require,module,exports){
+},{}],107:[function(require,module,exports){
 module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", "NcAlert", "config", "util", "common", "$timeout", "$q", function($scope, ShopAppearanceService, Product, ImageService, NcAlert, config, util, common, $timeout, $q) {
 	'ngInject';
 	$scope.form = {};
@@ -13472,7 +14405,7 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 	};
 }];
 
-},{}],102:[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 module.exports = function($rootScope, $scope, $controller, ShopService, ShopProfileService, ImageService, Onboarding, NcAlert, common, config, util, storage) {
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 	$scope.shopGroupDropdown = config.DROPDOWN.SHOP_GROUP_DROPDOWN;
@@ -13618,7 +14551,94 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 	};
 };
 
-},{}],103:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
+
+module.exports = ["$scope", "$controller", "StdNonMoveReportService", "config", "util", "$rootScope", function ($scope, $controller, StdNonMoveReportService, config, util, $rootScope) {
+    'ngInject';
+
+    $scope.formData = {
+        GlobalCategoryId: null,
+    };
+
+    $scope.categorys = [];
+    StdNonMoveReportService.getAllCategory({})
+      .then(function (data) {
+        $scope.categorys = data;
+    });
+    $scope.$watch('formData.GlobalCategoryId', function (newValue, oldValue) {
+      if (newValue === undefined)
+        return;
+    });
+
+    var params = $scope.formData;
+
+    $scope.search = function () {
+        StdNonMoveReportService.getNonMoveReport(params)
+        .then(function (data) {
+            // debugger;
+            $scope.list = data
+            //$scope.list.data.total($scope.list.data.length);
+            $scope.list.reload();
+        });
+
+    };
+
+    $scope.exportCsv = function () {
+      StdOiReportService.exportCsv(params)
+      .then(function (data) {
+
+        util.csv(data, 'STDNonMove.csv');
+
+      })
+    };
+
+    $controller('AbstractListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/reports/std/nonmove',
+            service: StdNonMoveReportService,
+            item: 'NonMoveReport',
+            order: 'CategoryName',
+            id: 'CategoryName',
+            actions: ['View'],
+        }
+    });
+
+}];
+
+},{}],110:[function(require,module,exports){
+
+module.exports = ["$scope", "$controller", "StdOiReportService", "config", "util", "$rootScope", function ($scope, $controller, StdOiReportService, config, util, $rootScope) {
+    'ngInject';
+
+    $scope.formData = [];
+
+    var params = $scope.formData;
+
+    $scope.exportCsv = function () {
+        StdOiReportService.exportCsv(params)
+        .then(function (data) {
+
+            util.csv(data, 'STDOi.csv');
+
+        })
+    };
+
+    $controller('AbstractListCtrl', {
+        $scope: $scope,
+        options: {
+            url: '/reports/std/oi',
+            service: StdOiReportService,
+            item: 'OiReport',
+            order: 'CommissionBySale',
+            id: 'CommissionBySale',
+            actions: ['View'],
+        }
+    });
+
+}];
+
+},{}],111:[function(require,module,exports){
 
 module.exports = ["$scope", "$controller", "StdReportOnHoldService", "config", "util", function ($scope, $controller, StdReportOnHoldService, config, util) {
     'ngInject';
@@ -13632,7 +14652,7 @@ module.exports = ["$scope", "$controller", "StdReportOnHoldService", "config", "
     var params = $scope.formData;
 
     $scope.search = function () {
-        StdReportStockService.getStockReport(params)
+        StdReportOnHoldService.getOnHoldReport(params)
         .then(function (data) {
             $scope.list.data = data;
         });
@@ -13677,7 +14697,7 @@ module.exports = ["$scope", "$controller", "StdReportOnHoldService", "config", "
 
 }];
 
-},{}],104:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 
 module.exports = ["$scope", "$controller", "StdReportReturnService", "config", "util", function ($scope, $controller, StdReportReturnService, config, util) {
     'ngInject';
@@ -13686,8 +14706,8 @@ module.exports = ["$scope", "$controller", "StdReportReturnService", "config", "
         PID: null,
         ItemName: null,
         ItemStatus: null,
-        OrderDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
-        OrderDateTo: new Date()
+        ReturnDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
+        ReturnDateTo: new Date()
     };
     var params = $scope.formData;
 
@@ -13701,7 +14721,7 @@ module.exports = ["$scope", "$controller", "StdReportReturnService", "config", "
     };
 
     $scope.search = function () {
-        StdReportSaleService.getReturnReport(params)
+        StdReportReturnService.getReturnReport(params)
         .then(function (data) {
             $scope.list.data = data;
         });
@@ -13715,8 +14735,8 @@ module.exports = ["$scope", "$controller", "StdReportReturnService", "config", "
         $scope.formData.PID = null;
         $scope.formData.ItemName = null;
         $scope.formData.ItemStatus = null;
-        $scope.formData.OrderDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
-        $scope.formData.OrderDateTo = new Date();
+        $scope.formData.ReturnDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
+        $scope.formData.ReturnDateTo = new Date();
 
     };
     $controller('AbstractAdvanceListCtrl', {
@@ -13741,7 +14761,7 @@ module.exports = ["$scope", "$controller", "StdReportReturnService", "config", "
 
 }];
 
-},{}],105:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 
 module.exports = ["$scope", "$controller", "StdReportSaleService", "config", "util", function ($scope, $controller, StdReportSaleService, config, util) {
     'ngInject';
@@ -13784,7 +14804,7 @@ module.exports = ["$scope", "$controller", "StdReportSaleService", "config", "ut
     $scope.search = function () {
         StdReportSaleService.getSaleReport(params)
         .then(function (data) {
-            debugger;
+            // debugger;
             $scope.list = data
             //$scope.list.data.total($scope.list.data.length);
             $scope.list.reload();
@@ -13830,7 +14850,7 @@ module.exports = ["$scope", "$controller", "StdReportSaleService", "config", "ut
 
 }];
 
-},{}],106:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 
 module.exports = ["$scope", "$controller", "StdReportStockService", "config", "util", function ($scope, $controller, StdReportStockService, config, util) {
     'ngInject';
@@ -13853,7 +14873,7 @@ module.exports = ["$scope", "$controller", "StdReportStockService", "config", "u
 
     };
     $scope.exportCsv = function () {
-        debugger;
+        // debugger;
         StdReportStockService.exportCsv(params)
         .then(function (data) {
 
@@ -13892,7 +14912,7 @@ module.exports = ["$scope", "$controller", "StdReportStockService", "config", "u
 
 }];
 
-},{}],107:[function(require,module,exports){
+},{}],115:[function(require,module,exports){
 module.exports = ["$scope", "Product", function($scope, Product) {
     'ngInject';
 
@@ -13942,7 +14962,7 @@ module.exports = ["$scope", "Product", function($scope, Product) {
 
 }]
 
-},{}],108:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 module.exports = ["$templateCache", "$filter", function($templateCache, $filter) {
 	'ngInject';
 	return {
@@ -14039,7 +15059,7 @@ module.exports = ["$templateCache", "$filter", function($templateCache, $filter)
 	};
 }];
 
-},{}],109:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 module.exports = [function () {
     return {
         priority: 1010,
@@ -14071,7 +15091,7 @@ module.exports = [function () {
     };
 }];
 
-},{}],110:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return {
@@ -14104,7 +15124,7 @@ module.exports = function() {
 		}
 	}
 }
-},{}],111:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 var angular = require('angular');
 module.exports = [function() {
 	'use strict';
@@ -14126,7 +15146,7 @@ module.exports = [function() {
 		}
 	};
 }];
-},{"angular":337}],112:[function(require,module,exports){
+},{"angular":350}],120:[function(require,module,exports){
 module.exports = function () {
     'ngInject';
     return function (scope, element, attrs) {
@@ -14141,7 +15161,7 @@ module.exports = function () {
         });
     };
 };
-},{}],113:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 module.exports = ["$parse", function ($parse) {
     'ngInject';
     return {
@@ -14163,7 +15183,7 @@ module.exports = ["$parse", function ($parse) {
       }
     };
 }];
-},{}],114:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 module.exports = ["$interpolate", function($interpolate) {
 	'ngInject';
 	return {
@@ -14185,7 +15205,7 @@ module.exports = ["$interpolate", function($interpolate) {
 		}
 	}
 }]
-},{}],115:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return {
@@ -14211,7 +15231,7 @@ module.exports = function() {
 		}
 	}
 }
-},{}],116:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return {
@@ -14237,7 +15257,7 @@ module.exports = function() {
 		}
 	}
 }
-},{}],117:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 /*jslint browser: true, plusplus: true, indent: 2 */
 
 // This will be removed by uglify, along with the DEBUG code
@@ -14532,7 +15552,7 @@ angular.module('ngPatternRestrict', [])
       }
     };
   }]);
-},{}],118:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 module.exports = ["$rootScope", "$parse", "$animate", function($rootScope, $parse, $animate) {
   'ngInject';
   return {
@@ -14598,7 +15618,7 @@ module.exports = ["$rootScope", "$parse", "$animate", function($rootScope, $pars
     }
   }
 }];
-},{}],119:[function(require,module,exports){
+},{}],127:[function(require,module,exports){
 module.exports = function() {
     'ngInject';
     return {
@@ -14615,7 +15635,7 @@ module.exports = function() {
         }
     };
 };
-},{}],120:[function(require,module,exports){
+},{}],128:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownException', function ($templateCache, $compile, $templateOptionsCache, KnownException) {
     var originalAttr = {};
@@ -14643,7 +15663,7 @@ module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownE
         }
     };
 }];
-},{"angular":337}],121:[function(require,module,exports){
+},{"angular":350}],129:[function(require,module,exports){
 module.exports = ["$parse", function ($parse) {
     'ngInject';
     return {
@@ -14665,7 +15685,7 @@ module.exports = ["$parse", function ($parse) {
       }
     };
 }];
-},{}],122:[function(require,module,exports){
+},{}],130:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$document', '$window', function($document, $window) {
 	$window._globalPopoverAny = null;
@@ -14695,7 +15715,7 @@ module.exports = ['$document', '$window', function($document, $window) {
 		}
 	};
 }];
-},{"angular":337}],123:[function(require,module,exports){
+},{"angular":350}],131:[function(require,module,exports){
 module.exports = [function() {
   return function(input, scope) {
     if (input!=null)
@@ -14703,7 +15723,7 @@ module.exports = [function() {
     return input.substring(0,1).toUpperCase()+input.substring(1);
   }
 }];
-},{}],124:[function(require,module,exports){
+},{}],132:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = [function() {
@@ -14738,7 +15758,7 @@ module.exports = [function() {
      });
   }
 }];
-},{"angular":337}],125:[function(require,module,exports){
+},{"angular":350}],133:[function(require,module,exports){
 module.exports = [function() {
   
 var search = function(catId, tmp) {
@@ -14807,14 +15827,14 @@ return function(arr, other, include) {
     return arr;
   }
 }];
-},{}],126:[function(require,module,exports){
+},{}],134:[function(require,module,exports){
 module.exports = [function(){
    return function(data) {
 	   if (!data) return data;
 	   return data.replace(/\n\r?/g, '<br />');
  };
 }]
-},{}],127:[function(require,module,exports){
+},{}],135:[function(require,module,exports){
 module.exports = function() {
 	return function(input) {
 		var result = '<ul>';
@@ -14831,7 +15851,7 @@ module.exports = function() {
 		return result;
 	}
 };
-},{}],128:[function(require,module,exports){
+},{}],136:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return function(str, num) {
@@ -14852,7 +15872,7 @@ module.exports = function() {
 		return result;
 	}
 };
-},{}],129:[function(require,module,exports){
+},{}],137:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = [function() {
@@ -14868,7 +15888,7 @@ module.exports = [function() {
   	return input;
   }
 }];
-},{"angular":337}],130:[function(require,module,exports){
+},{"angular":350}],138:[function(require,module,exports){
 
 module.exports = [function() {
     return function (items, props) {
@@ -14900,7 +15920,7 @@ module.exports = [function() {
         return out;
     }
 }];
-},{}],131:[function(require,module,exports){
+},{}],139:[function(require,module,exports){
 /*
  * Get slice or subarray of array
  */
@@ -14916,7 +15936,7 @@ module.exports = [function() {
     return _.slice(arr, from, to);
   }
 }];
-},{}],132:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 module.exports = [function () {
     return function (data) {
         if (!data) return data;
@@ -14932,7 +15952,7 @@ module.exports = [function () {
         return ret;
     };
 }]
-},{}],133:[function(require,module,exports){
+},{}],141:[function(require,module,exports){
 module.exports = [function () {
         return function (text, length, end) {
             if (isNaN(length))
@@ -14950,7 +15970,7 @@ module.exports = [function () {
 
         };
 }];
-},{}],134:[function(require,module,exports){
+},{}],142:[function(require,module,exports){
 var angular = require('angular');
 
 /*
@@ -14973,7 +15993,7 @@ module.exports = [function() {
      return i;
   }
 }];
-},{"angular":337}],135:[function(require,module,exports){
+},{"angular":350}],143:[function(require,module,exports){
 module.exports = function() {
 	'ngInject';
 	return function(value) {
@@ -14982,7 +16002,7 @@ module.exports = function() {
 		}), ' / ');
 	};
 };
-},{}],136:[function(require,module,exports){
+},{}],144:[function(require,module,exports){
 module.exports = [function () {
     'use strict';
     var service = {};
@@ -15001,7 +16021,7 @@ module.exports = [function () {
     };
     return service;
 }];
-},{}],137:[function(require,module,exports){
+},{}],145:[function(require,module,exports){
 module.exports = ["$http", "$q", "storage", "config", "$window", function ($http, $q, storage, config, $window) {
     'ngInject';
         var service = {};
@@ -15227,7 +16247,7 @@ module.exports = ["$http", "$q", "storage", "config", "$window", function ($http
         return service;
 }];
 
-},{}],138:[function(require,module,exports){
+},{}],146:[function(require,module,exports){
 module.exports = ["$cookies", function ($cookies) {
     'ngInject';
     var service = {};
@@ -15362,7 +16382,7 @@ module.exports = ["$cookies", function ($cookies) {
     return service;
 }];
 
-},{}],139:[function(require,module,exports){
+},{}],147:[function(require,module,exports){
 module.exports = ["storage", "config", "common", "$window", "$rootScope", "$interpolate", "KnownException", "$uibModal", function (storage, config, common, $window, $rootScope, $interpolate, KnownException, $uibModal) {
     'ngInject';
     'use strict';
@@ -15835,7 +16855,7 @@ module.exports = ["storage", "config", "common", "$window", "$rootScope", "$inte
     return service;
 }];
 
-},{}],140:[function(require,module,exports){
+},{}],148:[function(require,module,exports){
 //DEPRECATED
 module.exports = ['util', function (util) {
 	
@@ -15849,7 +16869,7 @@ module.exports = ['util', function (util) {
 
 	return VariantPair;
 }];
-},{}],141:[function(require,module,exports){
+},{}],149:[function(require,module,exports){
 // Some common IE shims... indexOf, startsWith, trim
 
 /*
@@ -15904,7 +16924,7 @@ if (!String.prototype.trim) {
     return this.replace(/^\s+|\s+$/g, '');
   };
 }
-},{}],142:[function(require,module,exports){
+},{}],150:[function(require,module,exports){
 /*
  *
  * https://github.com/fatlinesofcode/ngDraggable
@@ -16558,7 +17578,7 @@ angular.module("ngDraggable", [])
             }
         };
     }]);
-},{}],143:[function(require,module,exports){
+},{}],151:[function(require,module,exports){
 'use strict';
 (function(){
     var lowercase = function(string){return (typeof string === 'string') ? string.toLowerCase() : string;};
@@ -16675,7 +17695,7 @@ angular.module("ngDraggable", [])
         };
     });
 })();
-},{}],144:[function(require,module,exports){
+},{}],152:[function(require,module,exports){
 /*!
  *	 Angular Smooth Scroll (ngSmoothScroll)
  *	 Animates scrolling to elements, by David Oliveros.
@@ -16947,7 +17967,7 @@ angular.module("ngDraggable", [])
 	}]);
 
 }());
-},{}],145:[function(require,module,exports){
+},{}],153:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncAction', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
@@ -17020,7 +18040,7 @@ angular.module('nc')
 		}
 	}]);
 
-},{}],146:[function(require,module,exports){
+},{}],154:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncAdvanceSearch', ["$templateCache", "$timeout", "$uibModal", function($templateCache, $timeout, $uibModal) {
 		return {
@@ -17086,7 +18106,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],147:[function(require,module,exports){
+},{}],155:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncAlert', function() {
 		this.defaultErrorMessage = 'Error';
@@ -17154,7 +18174,7 @@ angular.module('nc')
 			this.message = '';
 		};
 	}]);
-},{}],148:[function(require,module,exports){
+},{}],156:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBindCompile', ["$compile", "$templateCache", function($compile, $templateCache) {
        return {
@@ -17183,7 +18203,7 @@ angular.module('nc')
             }
         };
     }]);
-},{}],149:[function(require,module,exports){
+},{}],157:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBreadcrumbSelect', ["$templateCache", "$filter", "$timeout", function($templateCache, $filter, $timeout) {
 		var _globalOptions = {};
@@ -17288,7 +18308,7 @@ angular.module('nc')
 			}
 		};
 	}])
-},{}],150:[function(require,module,exports){
+},{}],158:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncBulk', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		return {
@@ -17456,7 +18476,25 @@ angular.module('nc')
 			}
 		}
 	}])
-},{}],151:[function(require,module,exports){
+},{}],159:[function(require,module,exports){
+angular.module('nc')
+.directive('ncClickSelect', function () {
+    return {
+        restrict: 'A',
+        scope: { 
+            ctrlFn: '&',
+            ngModel: '=ngModel'
+        },
+        require : '?ngModel',
+        link: function (scope, element, attrs, ngModel) {
+            element.bind('click', function () {
+                var json = angular.fromJson(attrs.value);
+                scope.ctrlFn({arg1: json});
+            });
+        }
+    };
+});
+},{}],160:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncTextareas', ["$templateCache", function($templateCache) {
 		return {
@@ -17579,7 +18617,7 @@ angular.module('nc')
 			}
 		}
 	}])
-},{}],152:[function(require,module,exports){
+},{}],161:[function(require,module,exports){
 angular.module('nc')
 	.factory('NCConfirm', ["$templateCache", "$uibModal", function($templateCache, $uibModal) {
 		var ConfirmationDialog = function (line1, line2, yesAction, noAction) {
@@ -17614,7 +18652,7 @@ angular.module('nc')
         
         return ConfirmationDialog;
 	}]);
-},{}],153:[function(require,module,exports){
+},{}],162:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncDateRange', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse) {
@@ -17674,7 +18712,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":337}],154:[function(require,module,exports){
+},{"angular":350}],163:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncDefaultValue', function() {
 		return {
@@ -17691,7 +18729,7 @@ angular.module('nc')
 			}
 		};
 	});
-},{}],155:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEmpty', ["$templateCache", function($templateCache) {
 		return {
@@ -17705,7 +18743,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],156:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncEye', ["$templateCache", function($templateCache) {
 		return {
@@ -17723,7 +18761,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],157:[function(require,module,exports){
+},{}],166:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncFilter', ["$templateCache", function($templateCache) {
 		return {
@@ -17745,7 +18783,7 @@ angular.module('nc')
 			}
 		}
 	}])
-},{}],158:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncImageBannerIcon', ["$templateCache", function($templateCache) {
 		return {
@@ -18529,7 +19567,7 @@ angular.module('nc')
 			}
 		};
 	}])
-},{}],159:[function(require,module,exports){
+},{}],168:[function(require,module,exports){
 angular.module('nc')
 .directive('ncImageIntegrity', function() {
     //Only show if image loaded by <img> integrity is OK (100% finished loading)
@@ -18549,7 +19587,7 @@ angular.module('nc')
             }
         };
     })
-},{}],160:[function(require,module,exports){
+},{}],169:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncLoading', ["$templateCache", function($templateCache) {
 		return {
@@ -18575,7 +19613,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],161:[function(require,module,exports){
+},{}],170:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncPageTitle', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "$parse", "KnownException", function ($rootScope, $templateCache, $compile, $templateOptionsCache, $parse, KnownException) {
@@ -18608,7 +19646,7 @@ angular.module('nc')
         };
     }]);
 
-},{"angular":337}],162:[function(require,module,exports){
+},{"angular":350}],171:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncPagination', function() {
 		this.paginationSizes = [10,20,30];
@@ -18675,7 +19713,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],163:[function(require,module,exports){
+},{}],172:[function(require,module,exports){
 angular.module('nc')
 	.provider('ncPermissionProvider', function() {
 		this.permission = function() {
@@ -18696,7 +19734,7 @@ angular.module('nc')
 	.directive('ncShowPermission', function() {
 		
 	});
-},{}],164:[function(require,module,exports){
+},{}],173:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncPolicyAdmin', ["$rootScope", function ($rootScope) {
 		return {
@@ -18766,7 +19804,7 @@ angular.module('nc')
 			}
 		}
 	}]);
-},{}],165:[function(require,module,exports){
+},{}],174:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncSearch', ["$templateCache", function($templateCache) {
 		return {
@@ -18788,7 +19826,7 @@ angular.module('nc')
 			}
 		};
 	}]);
-},{}],166:[function(require,module,exports){
+},{}],175:[function(require,module,exports){
 angular.module('nc')
 	.provider('$ncTable', function() {
 		this.tableOptions = {
@@ -18877,7 +19915,7 @@ angular.module('nc')
 			template: '<a ng-href="{{link}}" ng-transclude></a>',
 		}
 	});
-},{}],167:[function(require,module,exports){
+},{}],176:[function(require,module,exports){
 var angular = require('angular');
 angular.module('nc')
     .directive('ncTemplate', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse) {
@@ -18941,7 +19979,7 @@ angular.module('nc')
             };
         }]);
 
-},{"angular":337}],168:[function(require,module,exports){
+},{"angular":350}],177:[function(require,module,exports){
 angular.module('nc')
 	.directive('ncTreeSelect', ["$interpolate", "$templateCache", function($interpolate, $templateCache) {
 		/**
@@ -19170,7 +20208,7 @@ angular.module('nc')
 		};
 	}]);
 
-},{}],169:[function(require,module,exports){
+},{}],178:[function(require,module,exports){
 angular.module('nc')
     .directive('ncTagValidator', function () {
         return {
@@ -19235,14 +20273,14 @@ angular.module('nc')
         }
     });
 
-},{}],170:[function(require,module,exports){
+},{}],179:[function(require,module,exports){
 angular.module('nc')
 	.filter('compact', function() {
 		return function(input) {
 			return _.compact(input);
 		};
 	});
-},{}],171:[function(require,module,exports){
+},{}],180:[function(require,module,exports){
 angular.module('nc')
 	.filter('dateTh', ["$filter", function($filter) {
 		return function(input) {
@@ -19260,7 +20298,7 @@ angular.module('nc')
 			return $filter('date')(input, 'H:mm');
 		}
 	}]);
-},{}],172:[function(require,module,exports){
+},{}],181:[function(require,module,exports){
 angular.module('nc')
     .filter('escapeHtml', function () {
         var entityMap = {
@@ -19278,7 +20316,7 @@ angular.module('nc')
             });
         }
     });
-},{}],173:[function(require,module,exports){
+},{}],182:[function(require,module,exports){
 /*
  Return dropdown[value] if input == dropdown[name]
  */
@@ -19301,7 +20339,7 @@ angular.module('nc')
 			return _.isUndefined(find) ? input : find[name];
 		}
 	});
-},{}],174:[function(require,module,exports){
+},{}],183:[function(require,module,exports){
 var angular = require('angular');
 
 angular.module('nc')
@@ -19338,14 +20376,14 @@ angular.module('nc')
     }
   });
 
-},{"angular":337}],175:[function(require,module,exports){
+},{"angular":350}],184:[function(require,module,exports){
 angular.module('nc')
 	.filter('replace', function() {
 		return function(input, from, to) {
 			return input.replace(from, to);
 		};
 	});
-},{}],176:[function(require,module,exports){
+},{}],185:[function(require,module,exports){
 (function (global){
 var angular = require('angular');
 
@@ -19367,11 +20405,11 @@ angular.module('nc', ['ngSanitize', 'ui.bootstrap', 'ui.select', 'duScroll', 'sm
 		'clickanystart' : 'clickanyend'
 	});
 }]);
-(function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives\\ncAction.js"),"ncAdvanceSearch":require("./directives\\ncAdvanceSearch.js"),"ncAlert":require("./directives\\ncAlert.js"),"ncBindCompile":require("./directives\\ncBindCompile.js"),"ncBreadcrumpSelect":require("./directives\\ncBreadcrumpSelect.js"),"ncBulk":require("./directives\\ncBulk.js"),"ncComponent":require("./directives\\ncComponent.js"),"ncConfirm":require("./directives\\ncConfirm.js"),"ncDateRange":require("./directives\\ncDateRange.js"),"ncDefaultValue":require("./directives\\ncDefaultValue.js"),"ncEmpty":require("./directives\\ncEmpty.js"),"ncEye":require("./directives\\ncEye.js"),"ncFilter":require("./directives\\ncFilter.js"),"ncImageGallery":require("./directives\\ncImageGallery.js"),"ncImageIntegrity":require("./directives\\ncImageIntegrity.js"),"ncLoading":require("./directives\\ncLoading.js"),"ncPageTitle":require("./directives\\ncPageTitle.js"),"ncPagination":require("./directives\\ncPagination.js"),"ncPermission":require("./directives\\ncPermission.js"),"ncPolicy":require("./directives\\ncPolicy.js"),"ncSearch":require("./directives\\ncSearch.js"),"ncTable":require("./directives\\ncTable.js"),"ncTemplate":require("./directives\\ncTemplate.js"),"ncTreeSelect":require("./directives\\ncTreeSelect.js"),"ncUiSelect":require("./directives\\ncUiSelect.js")});f["filters"]=({"compact":require("./filters\\compact.js"),"date":require("./filters\\date.js"),"escapeHtml":require("./filters\\escapeHtml.js"),"map":require("./filters\\map.js"),"ncexclude":require("./filters\\ncexclude.js"),"replace":require("./filters\\replace.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
+(function () {var f = require("./index.js");f["directives"]=({"ncAction":require("./directives\\ncAction.js"),"ncAdvanceSearch":require("./directives\\ncAdvanceSearch.js"),"ncAlert":require("./directives\\ncAlert.js"),"ncBindCompile":require("./directives\\ncBindCompile.js"),"ncBreadcrumpSelect":require("./directives\\ncBreadcrumpSelect.js"),"ncBulk":require("./directives\\ncBulk.js"),"ncClickSelect":require("./directives\\ncClickSelect.js"),"ncComponent":require("./directives\\ncComponent.js"),"ncConfirm":require("./directives\\ncConfirm.js"),"ncDateRange":require("./directives\\ncDateRange.js"),"ncDefaultValue":require("./directives\\ncDefaultValue.js"),"ncEmpty":require("./directives\\ncEmpty.js"),"ncEye":require("./directives\\ncEye.js"),"ncFilter":require("./directives\\ncFilter.js"),"ncImageGallery":require("./directives\\ncImageGallery.js"),"ncImageIntegrity":require("./directives\\ncImageIntegrity.js"),"ncLoading":require("./directives\\ncLoading.js"),"ncPageTitle":require("./directives\\ncPageTitle.js"),"ncPagination":require("./directives\\ncPagination.js"),"ncPermission":require("./directives\\ncPermission.js"),"ncPolicy":require("./directives\\ncPolicy.js"),"ncSearch":require("./directives\\ncSearch.js"),"ncTable":require("./directives\\ncTable.js"),"ncTemplate":require("./directives\\ncTemplate.js"),"ncTreeSelect":require("./directives\\ncTreeSelect.js"),"ncUiSelect":require("./directives\\ncUiSelect.js")});f["filters"]=({"compact":require("./filters\\compact.js"),"date":require("./filters\\date.js"),"escapeHtml":require("./filters\\escapeHtml.js"),"map":require("./filters\\map.js"),"ncexclude":require("./filters\\ncexclude.js"),"replace":require("./filters\\replace.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../angular-scroll":144,"./directives\\ncAction.js":145,"./directives\\ncAdvanceSearch.js":146,"./directives\\ncAlert.js":147,"./directives\\ncBindCompile.js":148,"./directives\\ncBreadcrumpSelect.js":149,"./directives\\ncBulk.js":150,"./directives\\ncComponent.js":151,"./directives\\ncConfirm.js":152,"./directives\\ncDateRange.js":153,"./directives\\ncDefaultValue.js":154,"./directives\\ncEmpty.js":155,"./directives\\ncEye.js":156,"./directives\\ncFilter.js":157,"./directives\\ncImageGallery.js":158,"./directives\\ncImageIntegrity.js":159,"./directives\\ncLoading.js":160,"./directives\\ncPageTitle.js":161,"./directives\\ncPagination.js":162,"./directives\\ncPermission.js":163,"./directives\\ncPolicy.js":164,"./directives\\ncSearch.js":165,"./directives\\ncTable.js":166,"./directives\\ncTemplate.js":167,"./directives\\ncTreeSelect.js":168,"./directives\\ncUiSelect.js":169,"./filters\\compact.js":170,"./filters\\date.js":171,"./filters\\escapeHtml.js":172,"./filters\\map.js":173,"./filters\\ncexclude.js":174,"./filters\\replace.js":175,"./index.js":176,"./template.js":177,"angular":337,"angular-file-upload":297,"angular-sanitize":328,"angular-scroll":330,"angular-ui-bootstrap":332,"jquery":339,"lodash":340,"ui-select":359}],177:[function(require,module,exports){
+},{"../angular-scroll":152,"./directives\\ncAction.js":153,"./directives\\ncAdvanceSearch.js":154,"./directives\\ncAlert.js":155,"./directives\\ncBindCompile.js":156,"./directives\\ncBreadcrumpSelect.js":157,"./directives\\ncBulk.js":158,"./directives\\ncClickSelect.js":159,"./directives\\ncComponent.js":160,"./directives\\ncConfirm.js":161,"./directives\\ncDateRange.js":162,"./directives\\ncDefaultValue.js":163,"./directives\\ncEmpty.js":164,"./directives\\ncEye.js":165,"./directives\\ncFilter.js":166,"./directives\\ncImageGallery.js":167,"./directives\\ncImageIntegrity.js":168,"./directives\\ncLoading.js":169,"./directives\\ncPageTitle.js":170,"./directives\\ncPagination.js":171,"./directives\\ncPermission.js":172,"./directives\\ncPolicy.js":173,"./directives\\ncSearch.js":174,"./directives\\ncTable.js":175,"./directives\\ncTemplate.js":176,"./directives\\ncTreeSelect.js":177,"./directives\\ncUiSelect.js":178,"./filters\\compact.js":179,"./filters\\date.js":180,"./filters\\escapeHtml.js":181,"./filters\\map.js":182,"./filters\\ncexclude.js":183,"./filters\\replace.js":184,"./index.js":185,"./template.js":186,"angular":350,"angular-file-upload":313,"angular-sanitize":341,"angular-scroll":343,"angular-ui-bootstrap":345,"jquery":353,"lodash":354,"ui-select":376}],186:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -19594,7 +20632,7 @@ angular.module("nc").run(["$templateCache", function($templateCache) {  'use str
     "<div class=\"page-header with-border\"><h1 class=\"float-left page-header-title ah-breadcrumb\"><a ng-if=\"icon && breads.length != 1\" ng-href=\"{{ngTopLink() || topLink}}\"><i class=\"fa {{icon}} page-header-icon\"></i></a> <i ng-if=\"icon && breads.length == 1\" class=\"fa {{icon}} page-header-icon\"></i> <span ng-repeat=\"b in breads\" class=ah-breadcrumb><a ng-if=\"$index == 0 && breads.length > 1\" class=ah-breadcrumb-path ng-href=\"{{ngTopLink()  || topLink}}\">{{b}}</a><span ng-if=\"$index > 0 || breads.length == 1\" class=ah-breadcrumb-path>{{b}}</span><span ng-if=\"$index == 0 && breads.length > 1\" class=ah-breadcrumb-splitter>/</span></span></h1><span class=\"float-right page-header-action\"><ng-transclude></ng-transclude></span></div>"
   );
  }]);
-},{}],178:[function(require,module,exports){
+},{}],187:[function(require,module,exports){
 var angular = require('angular');
 
 angular.module('productDetail').controller('AbstractProductAddCtrl',
@@ -19675,6 +20713,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.image_alert = new NcAlert();
 
     $scope.defaultAttributes = [];
+
     AttributeService.getDefaultAttributes().then(function(res) {
       $scope.defaultAttributes = res;
     });
@@ -20692,7 +21731,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
   }])
 
-},{"angular":337}],179:[function(require,module,exports){
+},{"angular":350}],188:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
 factory('AttributeOptions', function() {
@@ -20714,7 +21753,7 @@ factory('AttributeOptions', function() {
     }
 
 });
-},{"angular":337}],180:[function(require,module,exports){
+},{"angular":350}],189:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
 factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "ImageService", "GlobalCategory", "$q", "Category", "util", function(Product, AttributeSet, AttributeSetService, ImageService, GlobalCategory, $q, Category, util) {
@@ -20968,7 +22007,7 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
   return $productAdd;
 }]);
 
-},{"angular":337}],181:[function(require,module,exports){
+},{"angular":350}],190:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail').
 factory('VariationFactorIndices', function() {
@@ -20993,7 +22032,7 @@ factory('VariationFactorIndices', function() {
 
 });
 
-},{"angular":337}],182:[function(require,module,exports){
+},{"angular":350}],191:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
     .directive('apComponent', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "$parse", "Product", "util", function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse, Product, util) {
@@ -21044,7 +22083,7 @@ angular.module('productDetail')
             }
         };
     }]);
-},{"angular":337}],183:[function(require,module,exports){
+},{"angular":350}],192:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
     .directive('apMultipliedVariants', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "util", function ($rootScope, 
@@ -21065,7 +22104,7 @@ angular.module('productDetail')
         };
     }]);
 
-},{"angular":337}],184:[function(require,module,exports){
+},{"angular":350}],193:[function(require,module,exports){
 var angular = require('angular');
 angular.module('productDetail')
     .directive('apVariationOption', ["$rootScope", "$templateCache", "$compile", "$templateOptionsCache", "KnownException", "util", function ($rootScope, 
@@ -21111,15 +22150,71 @@ angular.module('productDetail')
         };
     }]);
 
-},{"angular":337}],185:[function(require,module,exports){
+},{"angular":350}],194:[function(require,module,exports){
+var angular = require('angular');
+angular.module('productDetail')
+.factory('APOriginalPriceChangeEvent', function() {
+  return function($scope){
+    return function(){
+      var form = $scope.form;
+      if (form.OriginalPrice) form.OriginalPrice.$setValidity('min', true);
+      if ($scope.variantPtr.SalePrice == '') return;
+      if ($scope.variantPtr.OriginalPrice == '') return;
+      if (Number($scope.variantPtr.SalePrice) > Number($scope.variantPtr.OriginalPrice)) {
+        if (form.OriginalPrice) form.OriginalPrice.$setValidity('min', false)
+        form.OriginalPrice.$error['min'] = 'Original Price must be higher than Sale Price';
+        form.OriginalPrice.$setDirty(true);
+      }
+    }
+  }
+})
+.factory('APPromotionalPriceChangeEvent', function(){
+  return function($scope){
+    return function() {
+      var form = $scope.form;
+      if (form.PromotionPrice) {
+        form.PromotionPrice.$setValidity('max', true);
+      }
+      if (!form.PromotionPrice) return;
+
+      if (Number($scope.variantPtr.SalePrice) <= Number($scope.variantPtr
+          .PromotionPrice)) {
+        if (form.PromotionPrice) {
+          form.PromotionPrice.$setValidity('max', false)
+        }
+        form.PromotionPrice.$error['max'] = 'Promotion Price must be lower than Sale Price'
+      }
+    }
+  }
+})
+.factory('APExpireDateChangeEvent', function(){
+  return function($scope){
+    return function() {
+      // TODO: refactor use nctemplate
+      var form = $scope.addProductForm;
+      if (form.EffectiveDate == null) {
+        return
+      }
+      if (form.ExpireDate) form.ExpireDate.$setValidity('min', true)
+      if ($scope.formData.ExpireDate < $scope.formData.EffectiveDate) {
+        if (!form.ExpireDate) return;
+        if (form.ExpireDate) form.ExpireDate.$setValidity('min', false);
+        form.ExpireDate.$error['min'] =
+          'Effective date/time must come before expire date/time';
+      }
+    };
+  }
+})
+
+},{"angular":350}],195:[function(require,module,exports){
 var angular = require('angular');
 
 
 angular.module('productDetail', []);
 
-(function () {var f = require("./index.js");f["core"]=({"abstractProductAddCtrl":require("./core\\abstractProductAddCtrl.js"),"attributeOptions":require("./core\\attributeOptions.js"),"productLoader":require("./core\\productLoader.js"),"variationFactorIndices":require("./core\\variationFactorIndices.js")});f["directives"]=({"apComponent":require("./directives\\apComponent.js"),"apMultipliedVariants":require("./directives\\apMultipliedVariants.js"),"apVariationOption":require("./directives\\apVariationOption.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
+(function () {var f = require("./index.js");f["core"]=({"abstractProductAddCtrl":require("./core\\abstractProductAddCtrl.js"),"attributeOptions":require("./core\\attributeOptions.js"),"productLoader":require("./core\\productLoader.js"),"variationFactorIndices":require("./core\\variationFactorIndices.js")});f["directives"]=({"apComponent":require("./directives\\apComponent.js"),"apMultipliedVariants":require("./directives\\apMultipliedVariants.js"),"apVariationOption":require("./directives\\apVariationOption.js")});f["events"]=({"apEvents":require("./events\\apEvents.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
-},{"./core\\abstractProductAddCtrl.js":178,"./core\\attributeOptions.js":179,"./core\\productLoader.js":180,"./core\\variationFactorIndices.js":181,"./directives\\apComponent.js":182,"./directives\\apMultipliedVariants.js":183,"./directives\\apVariationOption.js":184,"./index.js":185,"./template.js":186,"angular":337}],186:[function(require,module,exports){
+},{"./core\\abstractProductAddCtrl.js":187,"./core\\attributeOptions.js":188,"./core\\productLoader.js":189,"./core\\variationFactorIndices.js":190,"./directives\\apComponent.js":191,"./directives\\apMultipliedVariants.js":192,"./directives\\apVariationOption.js":193,"./events\\apEvents.js":194,"./index.js":195,"./template.js":196,"angular":350}],196:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -21183,7 +22278,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
 
 
   $templateCache.put('ap/section-other-attributes',
-    "<div class=form-section><div class=form-section-header><h2>Default Attributes</h2></div><div class=form-section-content><div class=form-group ng-repeat-start=\"da in defaultAttributes\" ng-if=isVisibleTo(da.VisibleTo)><div class=width-label><label class=control-label ng-class=\"{'required': da.Required}\">{{ da.DisplayNameEn || da.AttributeNameEn }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(da.DataType), 'width-field-xxl': isHtmlInput(da.DataType)}\"><select ng-if=isListInput(da.DataType) ng-required=\"da.Required && onPublishing\" class=form-control ng-disabled=xspermit(35) ng-model=formData.MasterAttribute[da.AttributeId] ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" name=DAInput{{$index}} ng-options=\"item as item.AttributeValue.AttributeValueEn for item in da.AttributeValueMaps track by item.AttributeValueId\"><option disabled value=\"\" selected>- Select option -</option>{{ da.AttributeId }}</select><div ng-if=isHtmlInput(da.DataType)><textarea ng-required=\"da.Required && onPublishing\" ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-disabled=xspermit(35) ng-model=formData.MasterAttribute[da.AttributeId] name=DAInput{{$index}} class=form-control ng-ckeditor=ckOptions></textarea></div><input ng-if=isFreeTextInput(da.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-required=\"da.Required && onPublishing\" class=form-control name=DAInput{{$index}} ng-disabled=xspermit(35) ng-model=\"formData.MasterAttribute[da.AttributeId].ValueEn\"><div ng-if=isCheckboxInput(da.DataType)><div class=checkbox ng-repeat=\"vmap in da.AttributeValueMaps\"><label><input type=checkbox ng-disabled=xspermit(35) ng-init=\"formData.MasterAttribute[da.AttributeId]._checkbox = true\" ng-model=\"formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId]\"> {{ vmap.AttributeValue.AttributeValueEn }}</label></div></div></div></div><div class=form-group ng-repeat-end ng-if=\"isVisibleTo(da.VisibleTo) && isFreeTextInput(da.DataType)\"><div class=width-label><label class=control-label ng-class=\"{'required': da.Required}\">{{ da.DisplayNameTh || da.AttributeNameTh || ((da.DisplayNameEn || da.AttributeNameEn) + \" (ไทย)\") }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(da.DataType), 'width-field-xxl': isHtmlInput(da.DataType)}\"><input ng-if=isFreeTextInput(da.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-required=\"da.Required && onPublishing\" class=form-control name=DAInput{{$index}} ng-disabled=xspermit(35) ng-model=\"formData.MasterAttribute[da.AttributeId].ValueTh\"></div></div></div></div>"
+    "<div class=form-section><div class=form-section-header><h2>Default Attributes</h2></div><div class=form-section-content><div class=form-group ng-repeat-start=\"da in defaultAttributes\" ng-if=isVisibleTo(da.VisibleTo)><div class=width-label><label class=control-label ng-class=\"{'required': da.Required}\">{{ da.DisplayNameEn || da.AttributeNameEn }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(da.DataType), 'width-field-xxl': isHtmlInput(da.DataType)}\"><select ng-if=isListInput(da.DataType) ng-required=\"da.Required && onPublishing\" class=form-control ng-disabled=xspermit(35) ng-model=formData.MasterAttribute[da.AttributeId] ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" name=DAInput{{$index}} ng-options=\"item as item.AttributeValue.AttributeValueEn for item in da.AttributeValueMaps track by item.AttributeValueId\"><option disabled value=\"\" selected>- Select option -</option>{{ da.AttributeId }}</select><div ng-if=isHtmlInput(da.DataType)><textarea ng-required=\"da.Required && onPublishing\" ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-disabled=xspermit(35) ng-model=formData.MasterAttribute[da.AttributeId] name=DAInput{{$index}} class=form-control ng-ckeditor=ckOptions></textarea></div><input ng-if=isFreeTextInput(da.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-required=\"da.Required && onPublishing\" class=form-control name=DAInput{{$index}} ng-disabled=xspermit(35) ng-model=\"formData.MasterAttribute[da.AttributeId].ValueEn\"><div ng-if=isCheckboxInput(da.DataType)><div class=checkbox ng-repeat=\"vmap in da.AttributeValueMaps\"><label><input type=checkbox ng-disabled=xspermit(35) id=\"{{ vmap.AttributeValue.AttributeValueEn }}\" ng-init=\"formData.MasterAttribute[da.AttributeId]._checkbox = true;formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId] = true;\" ng-model=\"formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId]\"> {{ vmap.AttributeValue.AttributeValueEn }}</label></div></div></div></div><div class=form-group ng-repeat-end ng-if=\"isVisibleTo(da.VisibleTo) && isFreeTextInput(da.DataType)\"><div class=width-label><label class=control-label ng-class=\"{'required': da.Required}\">{{ da.DisplayNameTh || da.AttributeNameTh || ((da.DisplayNameEn || da.AttributeNameEn) + \" (ไทย)\") }}</label></div><div ng-class=\"{'width-field-normal': !isHtmlInput(da.DataType), 'width-field-xxl': isHtmlInput(da.DataType)}\"><input ng-if=isFreeTextInput(da.DataType) ng-class=\"{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }\" ng-required=\"da.Required && onPublishing\" class=form-control name=DAInput{{$index}} ng-disabled=xspermit(35) ng-model=\"formData.MasterAttribute[da.AttributeId].ValueTh\"></div></div></div></div>"
   );
 
 
@@ -21370,7 +22465,7 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "<div id=add-product-variation-tab-content><div ap-component=ap/inner-tab-breadcrumb form-data=formData breadcrumb=breadcrumb></div><div class=row ng-if=\"controlFlags.variation != 'enable'\"><div class=col-xs-12><div class=form-section><div class=form-section-header><h2>Variation Option</h2></div><div class=form-section-content><div class=form-group><p class=form-control-static>Variation will allow you to create a group of products with different attributes such as size and color. Once you enable variation, information from other tabs will be copied into variants that you will create, and variation cannot be disabled. <strong>Please select attribute set before enabling variation.</strong></p><a class=\"btn btn-width-xxl btn-blue margin-top-20\" ng-disabled=\"!formData.AttributeSet.AttributeSetId || xspermit(44)\" ng-click=enableVariation()>Enable Variation</a></div></div></div></div></div><div class=row ng-show=\"controlFlags.variation == 'enable'\"><div class=col-xs-12><ap-variation-option form-data=formData control-flags=controlFlags ng-disabled=xspermit(44) generator=variationFactorIndices dataset=dataset></ap-variation-option><ap-multiplied-variants ng-show=\"formData.Variants.length > 0\"><div ng-include=\"'ap/section-variant-table-a'\"></div></ap-multiplied-variants></div></div></div>"
   );
  }]);
-},{}],187:[function(require,module,exports){
+},{}],197:[function(require,module,exports){
 var angular = require('angular');
 var bulk = {};
 angular.module('schematics', []).
@@ -21385,7 +22480,7 @@ factory('JSONCache', function(){
     }
   }
 });
-},{"./schema\\attribute.js":188,"./schema\\attributeSet.js":189,"./schema\\attributeValue.js":190,"./schema\\attributeValueMap.js":191,"./schema\\nthAttribute.js":192,"./schema\\productStages.js":193,"./schema\\revisionObject.js":194,"./schema\\seo.js":195,"./schema\\variant.js":196,"angular":337}],188:[function(require,module,exports){
+},{"./schema\\attribute.js":198,"./schema\\attributeSet.js":199,"./schema\\attributeValue.js":200,"./schema\\attributeValueMap.js":201,"./schema\\nthAttribute.js":202,"./schema\\productStages.js":203,"./schema\\revisionObject.js":204,"./schema\\seo.js":205,"./schema\\variant.js":206,"angular":350}],198:[function(require,module,exports){
 module.exports = {
   "title": "Attribute Schema V9",
   "type": "object",
@@ -21418,7 +22513,7 @@ module.exports = {
   ]
 };
 
-},{"./attributeValue":190,"./attributeValueMap":191}],189:[function(require,module,exports){
+},{"./attributeValue":200,"./attributeValueMap":201}],199:[function(require,module,exports){
 module.exports = {
   "title": "Attribute Set Schema V4",
   "type": "object",
@@ -21466,7 +22561,7 @@ module.exports = {
   }
 };
 
-},{"./attribute":188}],190:[function(require,module,exports){
+},{"./attribute":198}],200:[function(require,module,exports){
 module.exports = {
     "title": "Attribute Value Schema V4",
     "type": "object",
@@ -21484,7 +22579,7 @@ module.exports = {
     "required": ["AttributeValueId"]
 };
 
-},{}],191:[function(require,module,exports){
+},{}],201:[function(require,module,exports){
 module.exports = {
   "title": "Attribute Value Map Schema V4",
   "type": "object",
@@ -21495,7 +22590,7 @@ module.exports = {
   }
 };
 
-},{"./attributeValue":190}],192:[function(require,module,exports){
+},{"./attributeValue":200}],202:[function(require,module,exports){
 module.exports = {
   "title": "Nth Attribute Schema V9",
   "type": "object",
@@ -21517,7 +22612,7 @@ module.exports = {
   "required": ["ValueEn", "AttributeId", "AttributeValues"]
 }
 
-},{"./attributeValue":190}],193:[function(require,module,exports){
+},{"./attributeValue":200}],203:[function(require,module,exports){
 module.exports = {
   "title": "Product Stage Schema V9",
   "type": "object",
@@ -21659,7 +22754,7 @@ module.exports = {
   }
 };
 
-},{"./attribute":188,"./revisionObject":194,"./variant":196}],194:[function(require,module,exports){
+},{"./attribute":198,"./revisionObject":204,"./variant":206}],204:[function(require,module,exports){
 module.exports = {
   "title": "Revisions V9",
   "type": "object",
@@ -21671,7 +22766,7 @@ module.exports = {
   }
 }
 
-},{}],195:[function(require,module,exports){
+},{}],205:[function(require,module,exports){
 module.exports = {
   "title": "SEO Schema V9",
   "type": "object",
@@ -21697,7 +22792,7 @@ module.exports = {
    "MetaKeywordEn", "MetaKeywordTh", "ProductUrlKeyEn", "ProductBoostingWeight", "GlobalProductBoostingWeight"]
 }
 
-},{}],196:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 module.exports =  {
   "title": "Variant Schema V9",
   "type": "object",
@@ -21896,7 +22991,7 @@ module.exports =  {
     "Installment", "PrepareDay", "LimitIndividualDay", "Display"]
 };
 
-},{"./nthAttribute":192,"./seo":195}],197:[function(require,module,exports){
+},{"./nthAttribute":202,"./seo":205}],207:[function(require,module,exports){
 angular.module('umeSelect')
 .directive('umeFocus', ["$timeout", function($timeout) {
   return {
@@ -21923,7 +23018,7 @@ angular.module('umeSelect')
   };
 }]);
 
-},{}],198:[function(require,module,exports){
+},{}],208:[function(require,module,exports){
 var angular = require('angular');
 angular.module('umeSelect')
     .directive('youMe', ["$rootScope", "$templateCache", "$compile", "$timeout", "$filter", function ($rootScope, $templateCache, $compile, $timeout, $filter) {
@@ -22297,7 +23392,7 @@ angular.module('umeSelect')
         };
     }]);
 
-},{"angular":337}],199:[function(require,module,exports){
+},{"angular":350}],209:[function(require,module,exports){
 var angular = require('angular');
 
 
@@ -22305,7 +23400,7 @@ angular.module('umeSelect', []);
 
 (function () {var f = require("./index.js");f["directives"]=({"ume-focus":require("./directives\\ume-focus.js"),"ume-select":require("./directives\\ume-select.js")});f["index"]=require("./index.js");f["template"]=require("./template.js");return f;})();
 require('./template.js');
-},{"./directives\\ume-focus.js":197,"./directives\\ume-select.js":198,"./index.js":199,"./template.js":200,"angular":337}],200:[function(require,module,exports){
+},{"./directives\\ume-focus.js":207,"./directives\\ume-select.js":208,"./index.js":209,"./template.js":210,"angular":350}],210:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -22325,7 +23420,7 @@ angular.module("umeSelect").run(["$templateCache", function($templateCache) {  '
     "<div class=\"selectize-control single\"><div class=\"selectize-input items has-options full has-items\" ng-class=\"{'ume-plain': hideIcon, 'ume-search' : !loading && !hideIcon, 'ume-loading': loading, 'input-active': true}\" style=\"min-height: 34px\"><input ume-focus=focusObtained ng-disabled=disabled() ume-blur=focusLost ume-id=\"{{ _id }}\" autocomplete=off tabindex=\"\" ng-model=searchText ng-focus=focus() ng-blur=blur() placeholder=\"{{ placeholder }}\" ng-keydown=keyDown($event) ng-show=\"focused || !itemValue(model)\" style=\"width: 100%\"><div ng-show=\"!focused && itemValue(model)\" class=ume-btn ng-class=\"{'ume-placeholder': !model }\" aria-hidden=true ng-click=focus(true)>{{ itemValue(model) || placeholder }}</div></div><div ng-include=\"'ume/choicelist'\"></div></div>"
   );
  }]);
-},{}],201:[function(require,module,exports){
+},{}],211:[function(require,module,exports){
 /**
  * Collection of Route ID (Object key) with route string
  *
@@ -22367,8 +23462,8 @@ var seller = {
 	},
 	'CMS|fa fa-contao': {
 	    'CMS Category': '/cms/category',
-	    'CMS Static & Collection': '/cms/master',
-	    'CMS Group': '/cms/group'
+	    'CMS Static & Collection': '/cms/master'
+	    // 'CMS Group': '/cms/group'
 	},
 	'Shop Setting|fa-sliders': {
 		'Shop Profile': '/shops/settings',
@@ -22384,7 +23479,9 @@ var seller = {
         'Sale Report For Seller': '/reports/std/saleforseller',
         'Stock Status Report': '/reports/std/stockstatus',
         'On Hold Report' : '/reports/std/onhold',
-        'Return Report' : '/reports/std/return'
+        'Return Report' : '/reports/std/return',
+        'OI Report' : '/reports/std/oi',
+        'Non-move Report' : '/reports/std/nonmove'
 	}
 };
 var admin = {
@@ -22419,15 +23516,23 @@ var admin = {
     // Create By Col Dev (Natee)
 	'CMS|fa fa-contao': {
 	    'CMS Category': '/admin/cms/category',
-	    'CMS Static & Collection': '/admin/cms/master',
-	    'CMS Group': '/admin/cms/group'
+	    'CMS Static & Collection': '/admin/cms/master'
+	    // 'CMS Group': '/admin/cms/group'
 	},
 	'Reports|fa-file': {
 	    
 	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'
-	}
+	},
+	'Content Report|fa-file-o': {
+		'Create & Approve Product' : '/admin/summary/createandapprove',
+		'Product Status': '/admin/summary/productstatus',
+		'Product Info': '/admin/summary/productinfo',
+		'Product Onweb': '/admin/summary/productonweb',
+		'SKU - Effective' : '/admin/summary/skueffective',
+		'SKU - Not Effective' : '/admin/summary/skunoteffective', 
+	},
 };
 var permission = {
 	//Admin
@@ -22534,7 +23639,7 @@ module.exports = {
   permission: permission
 }
 
-},{"lodash":340}],202:[function(require,module,exports){
+},{"lodash":354}],212:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['$q', 'common', function ($q, common) {
 
@@ -22616,7 +23721,7 @@ module.exports = ['$q', 'common', function ($q, common) {
 }
 ];
 
-},{"angular":337}],203:[function(require,module,exports){
+},{"angular":350}],213:[function(require,module,exports){
 module.exports = ["common", "config", "util", "$log", "$window", function (common, config, util, $log, $window) {
     'ngInject';
     'use strict';
@@ -22726,7 +23831,7 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
     return service;
 }];
 
-},{}],204:[function(require,module,exports){
+},{}],214:[function(require,module,exports){
 //Products Service
 module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     function ($http, common, util, config, KnownException) {
@@ -22819,13 +23924,13 @@ module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     }
 ];
 
-},{}],205:[function(require,module,exports){
+},{}],215:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Promotion/Ontopcreate');
 	return service;
 }];
-},{}],206:[function(require,module,exports){
+},{}],216:[function(require,module,exports){
 module.exports = ["common", "config", "util", "$log", "$window", function (common, config, util, $log, $window) {
     'ngInject';
     'use strict';
@@ -22849,7 +23954,7 @@ module.exports = ["common", "config", "util", "$log", "$window", function (commo
     return service;
 }];
 
-},{}],207:[function(require,module,exports){
+},{}],217:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Admin');
@@ -22886,7 +23991,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],208:[function(require,module,exports){
+},{}],218:[function(require,module,exports){
 module.exports = ["common", function (common) {
 	'ngInject';
 	var service = common.Rest('/Products/Master');
@@ -22916,13 +24021,13 @@ module.exports = ["common", function (common) {
 
 	
 }];
-},{}],209:[function(require,module,exports){
+},{}],219:[function(require,module,exports){
 module.exports = ["common", "$q", function(common, $q) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Admin');
 	return service;
 }]
-},{}],210:[function(require,module,exports){
+},{}],220:[function(require,module,exports){
 module.exports = ["common", "AdminPermissionService", function(common, AdminPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Admin');
@@ -22945,7 +24050,7 @@ module.exports = ["common", "AdminPermissionService", function(common, AdminPerm
 	};
 	return service;	
 }]
-},{}],211:[function(require,module,exports){
+},{}],221:[function(require,module,exports){
 module.exports = ["common", "config", "util", function(common, config, util) {
 	'ngInject';
 	var service = common.Rest('/Shops');
@@ -22992,7 +24097,7 @@ module.exports = ["common", "config", "util", function(common, config, util) {
 	};
 	return service;	
 }]
-},{}],212:[function(require,module,exports){
+},{}],222:[function(require,module,exports){
 module.exports = ["common", "ShopPermissionService", function(common, ShopPermissionService) {
 	'ngInject';
 	var service = common.Rest('/Shoptypes');
@@ -23015,7 +24120,7 @@ module.exports = ["common", "ShopPermissionService", function(common, ShopPermis
 	};
 	return service;	
 }]
-},{}],213:[function(require,module,exports){
+},{}],223:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common){
 	'use strict';
@@ -23270,7 +24375,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{"angular":337}],214:[function(require,module,exports){
+},{"angular":350}],224:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/Attributes');
@@ -23386,7 +24491,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }];
-},{}],215:[function(require,module,exports){
+},{}],225:[function(require,module,exports){
 module.exports = ['common', function(common){
 	'use strict';
 	var service = {};
@@ -23535,7 +24640,7 @@ module.exports = ['common', function(common){
 	return service;
 }];
 
-},{}],216:[function(require,module,exports){
+},{}],226:[function(require,module,exports){
 module.exports = ["common", "config", function(common, config) {
 	'ngInject';
 	var service = common.Rest('/AttributeSets');
@@ -23626,7 +24731,7 @@ module.exports = ["common", "config", function(common, config) {
 	};
 	return service;
 }]
-},{}],217:[function(require,module,exports){
+},{}],227:[function(require,module,exports){
 module.exports = ['$window', function($window) {
 	return function(fn, close) {
 		var vm = this;
@@ -23662,7 +24767,7 @@ module.exports = ['$window', function($window) {
 		};
 	};
 }];
-},{}],218:[function(require,module,exports){
+},{}],228:[function(require,module,exports){
 module.exports = ['$q', 'common', function($q, common){
 	var service = {};
 	//TODO: change searchText -> q
@@ -23747,7 +24852,7 @@ module.exports = ['$q', 'common', function($q, common){
 	};
 	return service;
 }];
-},{}],219:[function(require,module,exports){
+},{}],229:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	service = common.Rest('/Brands');
@@ -23777,7 +24882,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }]
-},{}],220:[function(require,module,exports){
+},{}],230:[function(require,module,exports){
 //Buy 1 Get 1 Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
     function ($http, common, util, LocalCategory, Brand, config) {
@@ -24001,7 +25106,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
     }
 ];
 
-},{}],221:[function(require,module,exports){
+},{}],231:[function(require,module,exports){
 module.exports = ['Product', 'Collection', 'Buy1Get1','Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
     function (Product,  Collection, Buy1Get1 , Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
         var $buy1get1Add = {};
@@ -24034,7 +25139,7 @@ module.exports = ['Product', 'Collection', 'Buy1Get1','Brand', 'AttributeSet', '
 
         return $buy1get1Add;
     }];
-},{}],222:[function(require,module,exports){
+},{}],232:[function(require,module,exports){
 /**
  * Util class for category
  * @author poonwu
@@ -24361,7 +25466,7 @@ module.exports = ['config', function (config) {
     return service;
 } ];
 
-},{"angular":337}],223:[function(require,module,exports){
+},{"angular":350}],233:[function(require,module,exports){
 
 var angular = require('angular');
 module.exports = ['$q', 'common', function ($q, common) {
@@ -24489,7 +25594,7 @@ module.exports = ['$q', 'common', function ($q, common) {
     }
 ];
 
-},{"angular":337}],224:[function(require,module,exports){
+},{"angular":350}],234:[function(require,module,exports){
 
 var angular = require('angular');
 module.exports = ['$q', 'common', function ($q, common) {
@@ -24573,7 +25678,7 @@ module.exports = ['$q', 'common', function ($q, common) {
     }
 ];
 
-},{"angular":337}],225:[function(require,module,exports){
+},{"angular":350}],235:[function(require,module,exports){
 //Products Service
 module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     function ($http, common, util, config, KnownException) {
@@ -24704,14 +25809,14 @@ module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
     }
 ];
 
-},{}],226:[function(require,module,exports){
+},{}],236:[function(require,module,exports){
 var angular = require('angular');
 module.exports = ['common', function(common) {
 	var service = common.Rest('/Coupons');
 	return service;
 }];
 
-},{"angular":337}],227:[function(require,module,exports){
+},{"angular":350}],237:[function(require,module,exports){
 //TODO: maybe merge this with user service? (doesnt exist yet, but probably exists in poon's local)
 module.exports = ["common", "$base64", "storage", "$q", "$rootScope", function(common, $base64, storage, $q, $rootScope) {
     'ngInject';
@@ -24828,7 +25933,7 @@ module.exports = ["common", "$base64", "storage", "$q", "$rootScope", function(c
 
 	return service;
 }];
-},{}],228:[function(require,module,exports){
+},{}],238:[function(require,module,exports){
 var angular = require('angular');
 
 module.exports = ['$window', '$base64', 'config', function($window, $base64, config) {
@@ -24845,7 +25950,7 @@ module.exports = ['$window', '$base64', 'config', function($window, $base64, con
     };
 }];
 
-},{"angular":337}],229:[function(require,module,exports){
+},{"angular":350}],239:[function(require,module,exports){
 module.exports = ["config", "storage", "FileUploader", function(config, storage, FileUploader) {
 	'ngInject';
 	var service = {};
@@ -24865,7 +25970,7 @@ module.exports = ["config", "storage", "FileUploader", function(config, storage,
 	};
 	return service;
 }];
-},{}],230:[function(require,module,exports){
+},{}],240:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/GlobalCategories');
@@ -24933,7 +26038,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],231:[function(require,module,exports){
+},{}],241:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	service = common.Rest('/GlobalCategories');
@@ -25008,7 +26113,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	return service;
 }];
 
-},{}],232:[function(require,module,exports){
+},{}],242:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Coupons');
@@ -25046,7 +26151,7 @@ module.exports = ["common", function(common) {
     };
 	return service;
 }]
-},{}],233:[function(require,module,exports){
+},{}],243:[function(require,module,exports){
 var angular = require('angular');
 //Image Service
 //Note: this file is not used anywhere (legacy!!! dOnt edit )
@@ -25138,7 +26243,7 @@ module.exports = ['$q', '$http', 'common', 'storage', 'config', 'FileUploader', 
 	return service;
 }];
 
-},{"angular":337}],234:[function(require,module,exports){
+},{"angular":350}],244:[function(require,module,exports){
 //Image Service
 module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", "Upload", function($q, $http, common, storage, config, FileUploader, Upload) {
   'ngInject';
@@ -25263,12 +26368,12 @@ module.exports = ["$q", "$http", "common", "storage", "config", "FileUploader", 
   return service;
 }];
 
-},{}],235:[function(require,module,exports){
+},{}],245:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Inventories');
 	return service;
 };
-},{}],236:[function(require,module,exports){
+},{}],246:[function(require,module,exports){
 module.exports = [function() {
 	'use strict';
 
@@ -25276,7 +26381,7 @@ module.exports = [function() {
         this.message = "Known Exception - " + msg;   
     };
 }];
-},{}],237:[function(require,module,exports){
+},{}],247:[function(require,module,exports){
 module.exports = ['common', function(common) {
 	'use strict';
 	var service = {};
@@ -25315,7 +26420,7 @@ module.exports = ['common', function(common) {
 
 	return service;
 }];
-},{}],238:[function(require,module,exports){
+},{}],248:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/LocalCategories');
@@ -25359,7 +26464,7 @@ module.exports = ["common", "$q", "util", function(common, $q, util) {
 	};
 	return service;
 }];
-},{}],239:[function(require,module,exports){
+},{}],249:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Newsletters');
@@ -25385,7 +26490,7 @@ module.exports = ["common", function(common) {
 
 	return service;
 }];
-},{}],240:[function(require,module,exports){
+},{}],250:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	service = common.Rest('/Orders');
@@ -25399,7 +26504,7 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }]
-},{}],241:[function(require,module,exports){
+},{}],251:[function(require,module,exports){
 module.exports = ["util", function(util) {
 	'ngInject';
 	var service = {};
@@ -25479,7 +26584,7 @@ module.exports = ["util", function(util) {
 
 	return service;
 }]
-},{}],242:[function(require,module,exports){
+},{}],252:[function(require,module,exports){
 // Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config', 'KnownException',
 	function ($http, common, util, LocalCategory, Brand, config, KnownException) {
@@ -25740,7 +26845,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		 * @param  {Product Object} fd
 		 */
 		service.serialize = function (fd) {
-
+			// debugger;
 			var clean = {}
 			var serializer = {
 				Variants: {
@@ -25912,13 +27017,14 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			//Load attribute set
 			invFd.AttributeSet = FullAttributeSet;
 
-			
+			// debugger;
 
 			var MasterAttribute = {};
 			try {
 				invFd.MasterAttribute.forEach(function (ma) {
 					//Hacky AF
 					if (ma.DataType == "CB") {
+						
 						for (var i = 0; i < ma.AttributeValues.length; i++) {
 							var item = ma.AttributeValues[i];
 
@@ -26118,8 +27224,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		return service
 	}
 ]
-
-},{}],243:[function(require,module,exports){
+},{}],253:[function(require,module,exports){
 //Products Collection Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
     function ($http, common, util, LocalCategory, Brand) {
@@ -26548,7 +27653,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand',
     }
 ];
 
-},{}],244:[function(require,module,exports){
+},{}],254:[function(require,module,exports){
 module.exports = ['Product', 'Collection', 'Brand', 'AttributeSet', 'ImageService', 'GlobalCategory', '$q', 'Category',
     function (Product,  Collection, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
         var $productCollectionAdd = {};
@@ -26581,7 +27686,7 @@ module.exports = ['Product', 'Collection', 'Brand', 'AttributeSet', 'ImageServic
 
         return $productCollectionAdd;
     }];
-},{}],245:[function(require,module,exports){
+},{}],255:[function(require,module,exports){
 module.exports = ["Product", "Collection", "Brand", "AttributeSet", "ImageService", "GlobalCategory", "$q", "Category", function (Product,  Collection, Brand, AttributeSet, ImageService, GlobalCategory, $q, Category) {
         'ngInject';
         var $productCollectionAddListItem = {};
@@ -26614,7 +27719,7 @@ module.exports = ["Product", "Collection", "Brand", "AttributeSet", "ImageServic
 
         return $productCollectionAddListItem;
     }];
-},{}],246:[function(require,module,exports){
+},{}],256:[function(require,module,exports){
 module.exports = ["common", "util", function(common, util) {
 	'ngInject';
 	var service = common.Rest('/ProductReviews');
@@ -26650,7 +27755,7 @@ module.exports = ["common", "util", function(common, util) {
 	};	
 	return service;
 }];
-},{}],247:[function(require,module,exports){
+},{}],257:[function(require,module,exports){
 module.exports = ["common", "util", function(common, util) {
 	'ngInject';
 	var service = common.Rest('/ProductTemps');
@@ -26658,12 +27763,12 @@ module.exports = ["common", "util", function(common, util) {
 	return service;
 }];
 
-},{}],248:[function(require,module,exports){
+},{}],258:[function(require,module,exports){
 module.exports = function(common) {
 	var service = common.Rest('/Returns');
 	return service;
 };
-},{}],249:[function(require,module,exports){
+},{}],259:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Users/Seller');
@@ -26698,42 +27803,47 @@ module.exports = ["common", function(common) {
 	};
 	return service;
 }];
-},{}],250:[function(require,module,exports){
-module.exports = ["common", function(common) {
-	'ngInject';
-	var service = common.Rest('/Coupons');
-    service.serialize = function(data) {
+},{}],260:[function(require,module,exports){
+module.exports = ["common", function (common) {
+    'ngInject';
+    var service = common.Rest('/Coupons');
+    service.serialize = function (data) {
         var processed = _.merge({}, data);
 
-        if(_.isArray(processed.Conditions.FilterBy.LocalCategories)) {
-            processed.Conditions.FilterBy.LocalCategories = _.map(processed.Conditions.FilterBy.LocalCategories, function(e) {
-                return _.pick(e, ['CategoryId']);
+        if (!_.isArray(processed.Conditions.Order)) {
+            var object = angular.copy(processed.Conditions.Order);
+            processed.Conditions.Order = [];
+            angular.forEach(object, function (value, key) {
+                processed.Conditions.Order.push(value);
             });
         }
+
         return processed;
     };
-    service.generate = function() {
+    service.generate = function () {
         return {
-        	Status: 'NA',
+            Status: 'NA',
             Conditions: {
                 Order: [{
                     Type: 'NoFilter'
                 }],
                 FilterBy: {
                     Type: 'NoFilter'
-                }
+                },
+                Include: [],
+                Exclude: []
             }
         }
     };
-	return service;
+    return service;
 }]
-},{}],251:[function(require,module,exports){
+},{}],261:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Seller');
 	return service;
 }]
-},{}],252:[function(require,module,exports){
+},{}],262:[function(require,module,exports){
 module.exports = ["common", "SellerPermissionService", function(common, SellerPermissionService) {
 	'ngInject';
 	var service = common.Rest('/UserGroups/Seller');
@@ -26756,13 +27866,13 @@ module.exports = ["common", "SellerPermissionService", function(common, SellerPe
 	};
 	return service;	
 }]
-},{}],253:[function(require,module,exports){
+},{}],263:[function(require,module,exports){
 module.exports = ["common", "$q", "util", function(common, $q, util) {
 	'ngInject';
 	var service = common.Rest('/Shippings');
 	return service;
 }];
-},{}],254:[function(require,module,exports){
+},{}],264:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     'use strict';
@@ -26821,7 +27931,7 @@ module.exports = ["common", "config", "util", function (common, config, util) {
     return service;
 }];
 
-},{}],255:[function(require,module,exports){
+},{}],265:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     var service = common.Rest('/Shops/ShopAppearance');
@@ -26854,19 +27964,19 @@ module.exports = ["common", "config", "util", function (common, config, util) {
 
     return service;
 }];
-},{}],256:[function(require,module,exports){
+},{}],266:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Permissions/Shop');
 	return service;
 }]
-},{}],257:[function(require,module,exports){
+},{}],267:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     var service = common.Rest('/Shops/Profile');
     return service;
 }];
-},{}],258:[function(require,module,exports){
+},{}],268:[function(require,module,exports){
 module.exports = ["common", function(common) {
 	'ngInject';
 	var service = common.Rest('/Shops');
@@ -26880,7 +27990,67 @@ module.exports = ["common", function(common) {
 
 	return service;
 }]
-},{}],259:[function(require,module,exports){
+},{}],269:[function(require,module,exports){
+module.exports = ["common", "config", "util", function (common, config, util) {
+    'ngInject';
+    var service = common.Rest('/StandardReport/GetNonMoveReport');
+
+    service.getNonMoveReport = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/StandardReport/GetSearchNonMoveReport/',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
+
+    service.exportCsv = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/StandardReport/ExportNonMoveReport/',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
+
+    service.getAllCategory = function (parameters) {
+        return common.makeRequest({
+            method: 'GET',
+            url: '/CMS/GetAllCategory',
+            params: parameters
+        });
+    };
+    return service;
+}]
+},{}],270:[function(require,module,exports){
+module.exports = ["common", "config", "util", function(common, config, util) {
+    'ngInject';
+
+	var service = common.Rest('/StandardReport/GetOiReport');
+
+	service.getOiReport = function (params) {
+	    return common.makeRequest({
+	        method: 'POST',
+	        url: '/StandardReport/GetOiReport/',
+	        data: params,
+	    });
+	};
+
+	service.exportCsv = function (params) {
+	    return common.makeRequest({
+	        method: 'POST',
+	        url: '/StandardReport/ExportOiReport',
+	        data: params,
+	    });
+	};
+
+	return service;	
+}]
+},{}],271:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
 
@@ -26925,7 +28095,7 @@ module.exports = ["common", "config", "util", function (common, config, util) {
 
     return service;
 }]
-},{}],260:[function(require,module,exports){
+},{}],272:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
 
@@ -26956,7 +28126,7 @@ module.exports = ["common", "config", "util", function (common, config, util) {
 
     return service;
 }]
-},{}],261:[function(require,module,exports){
+},{}],273:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
     var service = common.Rest('/StandardReport/GetSaleReportForSeller');
@@ -26999,7 +28169,7 @@ module.exports = ["common", "config", "util", function (common, config, util) {
     };
     return service;
 }]
-},{}],262:[function(require,module,exports){
+},{}],274:[function(require,module,exports){
 module.exports = ["common", "config", "util", function (common, config, util) {
     'ngInject';
 
@@ -27044,7 +28214,209 @@ module.exports = ["common", "config", "util", function (common, config, util) {
     };
     return service;
 }]
-},{}],263:[function(require,module,exports){
+},{}],275:[function(require,module,exports){
+module.exports = ["common", "config", "util", function (common, config, util) {
+    'ngInject';
+    var service = common.Rest('/SummaryReport/GetCreateAndApprove');
+
+    service.getCreateAndApproveReport = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/SummaryReport/GetCreateAndApproveReportForSeller/',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
+
+    service.exportCsv = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/SummaryReport/ExportCreateAndApproveReport/',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
+
+    service.getAllCategory = function (parameters) {
+        return common.makeRequest({
+            method: 'GET',
+            url: '/CMS/GetAllCategory',
+            params: parameters
+        });
+    };
+    return service;
+}]
+},{}],276:[function(require,module,exports){
+module.exports = ["common", "config", "util", function (common, config, util) {
+    'ngInject';
+    var service = common.Rest('/SummaryReport/GetProductInfo');
+
+    service.getProductInfoReport = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/SummaryReport/GetProductInfoReport/',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
+
+    service.exportCsv = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/SummaryReport/ExportProductInfoReport/',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
+
+    service.getAllCategory = function (parameters) {
+        return common.makeRequest({
+            method: 'GET',
+            url: '/CMS/GetAllCategory',
+            params: parameters
+        });
+    };
+    return service;
+}]
+},{}],277:[function(require,module,exports){
+module.exports = ["common", "config", "util", function (common, config, util) {
+    'ngInject';
+    var service = common.Rest('/SummaryReport/GetProductOnWeb');
+
+    service.getProductOnWebReport = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/SummaryReport/GetProductOnWebReport/',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
+
+    service.exportCsv = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/SummaryReport/ExportProductOnWebReport/',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
+
+    service.getAllCategory = function (parameters) {
+        return common.makeRequest({
+            method: 'GET',
+            url: '/CMS/GetAllCategory',
+            params: parameters
+        });
+    };
+    return service;
+}]
+},{}],278:[function(require,module,exports){
+module.exports = ["common", "config", "util", function (common, config, util) {
+    'ngInject';
+    var service = common.Rest('/SummaryReport/GetProductStatus');
+
+    service.getProductStatusReport = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/SummaryReport/GetProductStatusReport/',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
+
+    service.exportCsv = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/SummaryReport/ExportProductStatusReport/',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
+
+    service.getAllCategory = function (parameters) {
+        return common.makeRequest({
+            method: 'GET',
+            url: '/CMS/GetAllCategory',
+            params: parameters
+        });
+    };
+    return service;
+}]
+},{}],279:[function(require,module,exports){
+module.exports = ["common", "config", "util", function (common, config, util) {
+    'ngInject';
+    var service = common.Rest('/SummaryReport/GetSKUEffective');
+
+    service.getSKUEffectiveReport = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/SummaryReport/GetSKUEffectiveReport/',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
+
+    service.export = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/SummaryReport/ExportSKUEffectiveReport/',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
+
+  return service;
+}]
+},{}],280:[function(require,module,exports){
+module.exports = ["common", "config", "util", function (common, config, util) {
+    'ngInject';
+    var service = common.Rest('/SummaryReport/GetSKUNotEffective');
+
+    service.getSKUNotEffectiveReport = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/SummaryReport/GetSKUNotEffectiveReport/',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
+
+    service.export = function (params) {
+        return common.makeRequest({
+            method: 'POST',
+            url: '/SummaryReport/ExportSKUNotEffectiveReport/',
+            data: params,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+    };
+
+  return service;
+}]
+},{}],281:[function(require,module,exports){
 module.exports = {
     NameTH: {
         labelClass: "required",
@@ -27183,7 +28555,7 @@ module.exports = {
     }
 }
 
-},{}],264:[function(require,module,exports){
+},{}],282:[function(require,module,exports){
 module.exports = {
   	AttributeNameEn: {
         'labelClass': 'required',
@@ -27225,7 +28597,7 @@ module.exports = {
     }
     
 };
-},{}],265:[function(require,module,exports){
+},{}],283:[function(require,module,exports){
 module.exports = {
 	AttributeSetNameEn: {
 	  'labelClass': 'required',
@@ -27249,7 +28621,7 @@ module.exports = {
       }
     }
 }
-},{}],266:[function(require,module,exports){
+},{}],284:[function(require,module,exports){
 module.exports = {
     BrandImage: {
     },
@@ -27293,7 +28665,7 @@ module.exports = {
     }
 };
 
-},{}],267:[function(require,module,exports){
+},{}],285:[function(require,module,exports){
 module.exports = {
     NameTH: {
         labelClass: "required",
@@ -27377,7 +28749,7 @@ module.exports = {
 
 }
 
-},{}],268:[function(require,module,exports){
+},{}],286:[function(require,module,exports){
 module.exports = {
     CMSMasterNameTH: {
         labelClass: "required",
@@ -27421,7 +28793,7 @@ module.exports = {
     }
 }
 
-},{}],269:[function(require,module,exports){
+},{}],287:[function(require,module,exports){
 module.exports = {
     NameEn: {
         'labelClass': 'required',
@@ -27459,7 +28831,7 @@ module.exports = {
     SortBy: {}
 }
 
-},{}],270:[function(require,module,exports){
+},{}],288:[function(require,module,exports){
 module.exports = {
 	ChildProducts: {
 		labelClass: 'required',
@@ -27479,7 +28851,7 @@ module.exports = {
 	    }
 	}
 };
-},{}],271:[function(require,module,exports){
+},{}],289:[function(require,module,exports){
 module.exports = {
     Image: {
         'error': {
@@ -27541,7 +28913,7 @@ module.exports = {
 
     }
 }
-},{}],272:[function(require,module,exports){
+},{}],290:[function(require,module,exports){
 module.exports = {
   KillerPointTh: {
     divClass: 'col-xs-6',
@@ -27792,7 +29164,7 @@ module.exports = {
   }
 }
 
-},{}],273:[function(require,module,exports){
+},{}],291:[function(require,module,exports){
 module.exports = {
 	GroupNameEn: {
       'labelClass': 'required',
@@ -27804,7 +29176,7 @@ module.exports = {
     }
 
 }
-},{}],274:[function(require,module,exports){
+},{}],292:[function(require,module,exports){
 module.exports = {
 	Logo: {
 		error: {
@@ -27933,7 +29305,7 @@ module.exports = {
 		input: 'large'
 	}
 }
-},{}],275:[function(require,module,exports){
+},{}],293:[function(require,module,exports){
 module.exports = {
     Layout: {
         // tooltip: "Please select 'Available' if you can provide gift wrapping service to your customer",
@@ -27951,7 +29323,7 @@ module.exports = {
     }
 }
 
-},{}],276:[function(require,module,exports){
+},{}],294:[function(require,module,exports){
 module.exports = {
 	ShopTypeNameEn: {
       'labelClass': 'required',
@@ -27962,7 +29334,7 @@ module.exports = {
        }
     }
 }
-},{}],277:[function(require,module,exports){
+},{}],295:[function(require,module,exports){
 module.exports = {
     'NothingSpecial': {
         
@@ -27972,7 +29344,7 @@ module.exports = {
     }
 };
 
-},{}],278:[function(require,module,exports){
+},{}],296:[function(require,module,exports){
 module.exports = {
   Status: {
     labelClass: "required",
@@ -28073,7 +29445,7 @@ module.exports = {
   }
 }
 
-},{}],279:[function(require,module,exports){
+},{}],297:[function(require,module,exports){
 module.exports = {
     Required: {
         'labelClass': 'required'
@@ -28081,7 +29453,7 @@ module.exports = {
 
 }
 
-},{}],280:[function(require,module,exports){
+},{}],298:[function(require,module,exports){
 module.exports = {
   // Description
     DescriptionFull: {
@@ -28134,14 +29506,14 @@ module.exports = {
         inputClass: 'large'
     }
 }
-},{}],281:[function(require,module,exports){
+},{}],299:[function(require,module,exports){
 module.exports = {
   MultiCheckbox: {
     transcludeClasses:  "checkbox multiple-checkbox multiline"
   }
 }
 
-},{}],282:[function(require,module,exports){
+},{}],300:[function(require,module,exports){
 module.exports = {
 	ColumnSearch: {
 
@@ -28197,7 +29569,7 @@ module.exports = {
 	}
 }
 
-},{}],283:[function(require,module,exports){
+},{}],301:[function(require,module,exports){
 module.exports = {
   ProductName: {},
   Pid: {},
@@ -28237,7 +29609,7 @@ module.exports = {
   }
 }
 
-},{}],284:[function(require,module,exports){
+},{}],302:[function(require,module,exports){
 module.exports = {
     GiftWrap: {
         tooltip: "Please select 'Available' if you can provide gift wrapping service to your customer"
@@ -28329,7 +29701,7 @@ module.exports = {
     }
 }
 
-},{}],285:[function(require,module,exports){
+},{}],303:[function(require,module,exports){
 /**
  * Generated by grunt-angular-templates 
  */
@@ -28760,7 +30132,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
     "<div class=modal-header><button type=button class=close ng-click=$dismiss()><span aria-hidden=true>&times;</span></button><h3 class=modal-title>Add Commission Rule</h3></div><div class=modal-body style=\"padding-top: 15px\"><div class=\"category-section column-4 ah-form\"><nc-tree-select nc-model=model nc-tree-select-tree=tree nc-tree-select-title=\"Global Category\"></nc-tree-select><div class=\"category-footer no-padding form-group\" style=\"margin: 30px 0px 0px 0px\"><div class=float-right><span class=float-left>Commission (%)</span><form name=form class=width-field-normal><input class=form-control ng-class=\"{ 'has-error' : $root.isInvalid(form.Commission) }\" name=Commission ng-model=Commission ng-pattern=\"/^[\\w]+(\\.\\w{0,2})?$/\" ng-pattern-restrict=^[0-9]*(\\.[0-9]*)?$ ng-maxnumber=100 ng-minnumber=\"0\"><div class=\"help-block color-red float-left\"><div ng-if=\"form.Commission.$error.maxnumber || form.Commission.$error.minnumber\">Please enter between 0% and 100%</div><div ng-if=form.Commission.$error.pattern>Only numbers and decimals (up to 2 digits) allowed</div></div></form><button class=\"btn btn-blue btn-width-xl float-left\" ng-click=select() ng-disabled=\"form.$invalid || _.isEmpty(Commission) || _.isEmpty(model)\">Set</button></div></div></div></div>"
   );
  }];
-},{}],286:[function(require,module,exports){
+},{}],304:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -32692,11 +34064,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-},{}],287:[function(require,module,exports){
+},{}],305:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":286}],288:[function(require,module,exports){
+},{"./angular-animate":304}],306:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -32864,4048 +34236,7 @@ module.exports = 'ngAnimate';
 
 })();
 
-},{}],289:[function(require,module,exports){
-//! moment.js
-//! version : 2.13.0
-//! authors : Tim Wood, Iskren Chernev, Moment.js contributors
-//! license : MIT
-//! momentjs.com
-
-;(function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-    typeof define === 'function' && define.amd ? define(factory) :
-    global.moment = factory()
-}(this, function () { 'use strict';
-
-    var hookCallback;
-
-    function utils_hooks__hooks () {
-        return hookCallback.apply(null, arguments);
-    }
-
-    // This is done to register the method called with moment()
-    // without creating circular dependencies.
-    function setHookCallback (callback) {
-        hookCallback = callback;
-    }
-
-    function isArray(input) {
-        return input instanceof Array || Object.prototype.toString.call(input) === '[object Array]';
-    }
-
-    function isDate(input) {
-        return input instanceof Date || Object.prototype.toString.call(input) === '[object Date]';
-    }
-
-    function map(arr, fn) {
-        var res = [], i;
-        for (i = 0; i < arr.length; ++i) {
-            res.push(fn(arr[i], i));
-        }
-        return res;
-    }
-
-    function hasOwnProp(a, b) {
-        return Object.prototype.hasOwnProperty.call(a, b);
-    }
-
-    function extend(a, b) {
-        for (var i in b) {
-            if (hasOwnProp(b, i)) {
-                a[i] = b[i];
-            }
-        }
-
-        if (hasOwnProp(b, 'toString')) {
-            a.toString = b.toString;
-        }
-
-        if (hasOwnProp(b, 'valueOf')) {
-            a.valueOf = b.valueOf;
-        }
-
-        return a;
-    }
-
-    function create_utc__createUTC (input, format, locale, strict) {
-        return createLocalOrUTC(input, format, locale, strict, true).utc();
-    }
-
-    function defaultParsingFlags() {
-        // We need to deep clone this object.
-        return {
-            empty           : false,
-            unusedTokens    : [],
-            unusedInput     : [],
-            overflow        : -2,
-            charsLeftOver   : 0,
-            nullInput       : false,
-            invalidMonth    : null,
-            invalidFormat   : false,
-            userInvalidated : false,
-            iso             : false,
-            parsedDateParts : [],
-            meridiem        : null
-        };
-    }
-
-    function getParsingFlags(m) {
-        if (m._pf == null) {
-            m._pf = defaultParsingFlags();
-        }
-        return m._pf;
-    }
-
-    var some;
-    if (Array.prototype.some) {
-        some = Array.prototype.some;
-    } else {
-        some = function (fun) {
-            var t = Object(this);
-            var len = t.length >>> 0;
-
-            for (var i = 0; i < len; i++) {
-                if (i in t && fun.call(this, t[i], i, t)) {
-                    return true;
-                }
-            }
-
-            return false;
-        };
-    }
-
-    function valid__isValid(m) {
-        if (m._isValid == null) {
-            var flags = getParsingFlags(m);
-            var parsedParts = some.call(flags.parsedDateParts, function (i) {
-                return i != null;
-            });
-            m._isValid = !isNaN(m._d.getTime()) &&
-                flags.overflow < 0 &&
-                !flags.empty &&
-                !flags.invalidMonth &&
-                !flags.invalidWeekday &&
-                !flags.nullInput &&
-                !flags.invalidFormat &&
-                !flags.userInvalidated &&
-                (!flags.meridiem || (flags.meridiem && parsedParts));
-
-            if (m._strict) {
-                m._isValid = m._isValid &&
-                    flags.charsLeftOver === 0 &&
-                    flags.unusedTokens.length === 0 &&
-                    flags.bigHour === undefined;
-            }
-        }
-        return m._isValid;
-    }
-
-    function valid__createInvalid (flags) {
-        var m = create_utc__createUTC(NaN);
-        if (flags != null) {
-            extend(getParsingFlags(m), flags);
-        }
-        else {
-            getParsingFlags(m).userInvalidated = true;
-        }
-
-        return m;
-    }
-
-    function isUndefined(input) {
-        return input === void 0;
-    }
-
-    // Plugins that add properties should also add the key here (null value),
-    // so we can properly clone ourselves.
-    var momentProperties = utils_hooks__hooks.momentProperties = [];
-
-    function copyConfig(to, from) {
-        var i, prop, val;
-
-        if (!isUndefined(from._isAMomentObject)) {
-            to._isAMomentObject = from._isAMomentObject;
-        }
-        if (!isUndefined(from._i)) {
-            to._i = from._i;
-        }
-        if (!isUndefined(from._f)) {
-            to._f = from._f;
-        }
-        if (!isUndefined(from._l)) {
-            to._l = from._l;
-        }
-        if (!isUndefined(from._strict)) {
-            to._strict = from._strict;
-        }
-        if (!isUndefined(from._tzm)) {
-            to._tzm = from._tzm;
-        }
-        if (!isUndefined(from._isUTC)) {
-            to._isUTC = from._isUTC;
-        }
-        if (!isUndefined(from._offset)) {
-            to._offset = from._offset;
-        }
-        if (!isUndefined(from._pf)) {
-            to._pf = getParsingFlags(from);
-        }
-        if (!isUndefined(from._locale)) {
-            to._locale = from._locale;
-        }
-
-        if (momentProperties.length > 0) {
-            for (i in momentProperties) {
-                prop = momentProperties[i];
-                val = from[prop];
-                if (!isUndefined(val)) {
-                    to[prop] = val;
-                }
-            }
-        }
-
-        return to;
-    }
-
-    var updateInProgress = false;
-
-    // Moment prototype object
-    function Moment(config) {
-        copyConfig(this, config);
-        this._d = new Date(config._d != null ? config._d.getTime() : NaN);
-        // Prevent infinite loop in case updateOffset creates new moment
-        // objects.
-        if (updateInProgress === false) {
-            updateInProgress = true;
-            utils_hooks__hooks.updateOffset(this);
-            updateInProgress = false;
-        }
-    }
-
-    function isMoment (obj) {
-        return obj instanceof Moment || (obj != null && obj._isAMomentObject != null);
-    }
-
-    function absFloor (number) {
-        if (number < 0) {
-            return Math.ceil(number);
-        } else {
-            return Math.floor(number);
-        }
-    }
-
-    function toInt(argumentForCoercion) {
-        var coercedNumber = +argumentForCoercion,
-            value = 0;
-
-        if (coercedNumber !== 0 && isFinite(coercedNumber)) {
-            value = absFloor(coercedNumber);
-        }
-
-        return value;
-    }
-
-    // compare two arrays, return the number of differences
-    function compareArrays(array1, array2, dontConvert) {
-        var len = Math.min(array1.length, array2.length),
-            lengthDiff = Math.abs(array1.length - array2.length),
-            diffs = 0,
-            i;
-        for (i = 0; i < len; i++) {
-            if ((dontConvert && array1[i] !== array2[i]) ||
-                (!dontConvert && toInt(array1[i]) !== toInt(array2[i]))) {
-                diffs++;
-            }
-        }
-        return diffs + lengthDiff;
-    }
-
-    function warn(msg) {
-        if (utils_hooks__hooks.suppressDeprecationWarnings === false &&
-                (typeof console !==  'undefined') && console.warn) {
-            console.warn('Deprecation warning: ' + msg);
-        }
-    }
-
-    function deprecate(msg, fn) {
-        var firstTime = true;
-
-        return extend(function () {
-            if (utils_hooks__hooks.deprecationHandler != null) {
-                utils_hooks__hooks.deprecationHandler(null, msg);
-            }
-            if (firstTime) {
-                warn(msg + '\nArguments: ' + Array.prototype.slice.call(arguments).join(', ') + '\n' + (new Error()).stack);
-                firstTime = false;
-            }
-            return fn.apply(this, arguments);
-        }, fn);
-    }
-
-    var deprecations = {};
-
-    function deprecateSimple(name, msg) {
-        if (utils_hooks__hooks.deprecationHandler != null) {
-            utils_hooks__hooks.deprecationHandler(name, msg);
-        }
-        if (!deprecations[name]) {
-            warn(msg);
-            deprecations[name] = true;
-        }
-    }
-
-    utils_hooks__hooks.suppressDeprecationWarnings = false;
-    utils_hooks__hooks.deprecationHandler = null;
-
-    function isFunction(input) {
-        return input instanceof Function || Object.prototype.toString.call(input) === '[object Function]';
-    }
-
-    function isObject(input) {
-        return Object.prototype.toString.call(input) === '[object Object]';
-    }
-
-    function locale_set__set (config) {
-        var prop, i;
-        for (i in config) {
-            prop = config[i];
-            if (isFunction(prop)) {
-                this[i] = prop;
-            } else {
-                this['_' + i] = prop;
-            }
-        }
-        this._config = config;
-        // Lenient ordinal parsing accepts just a number in addition to
-        // number + (possibly) stuff coming from _ordinalParseLenient.
-        this._ordinalParseLenient = new RegExp(this._ordinalParse.source + '|' + (/\d{1,2}/).source);
-    }
-
-    function mergeConfigs(parentConfig, childConfig) {
-        var res = extend({}, parentConfig), prop;
-        for (prop in childConfig) {
-            if (hasOwnProp(childConfig, prop)) {
-                if (isObject(parentConfig[prop]) && isObject(childConfig[prop])) {
-                    res[prop] = {};
-                    extend(res[prop], parentConfig[prop]);
-                    extend(res[prop], childConfig[prop]);
-                } else if (childConfig[prop] != null) {
-                    res[prop] = childConfig[prop];
-                } else {
-                    delete res[prop];
-                }
-            }
-        }
-        return res;
-    }
-
-    function Locale(config) {
-        if (config != null) {
-            this.set(config);
-        }
-    }
-
-    var keys;
-
-    if (Object.keys) {
-        keys = Object.keys;
-    } else {
-        keys = function (obj) {
-            var i, res = [];
-            for (i in obj) {
-                if (hasOwnProp(obj, i)) {
-                    res.push(i);
-                }
-            }
-            return res;
-        };
-    }
-
-    // internal storage for locale config files
-    var locales = {};
-    var globalLocale;
-
-    function normalizeLocale(key) {
-        return key ? key.toLowerCase().replace('_', '-') : key;
-    }
-
-    // pick the locale from the array
-    // try ['en-au', 'en-gb'] as 'en-au', 'en-gb', 'en', as in move through the list trying each
-    // substring from most specific to least, but move to the next array item if it's a more specific variant than the current root
-    function chooseLocale(names) {
-        var i = 0, j, next, locale, split;
-
-        while (i < names.length) {
-            split = normalizeLocale(names[i]).split('-');
-            j = split.length;
-            next = normalizeLocale(names[i + 1]);
-            next = next ? next.split('-') : null;
-            while (j > 0) {
-                locale = loadLocale(split.slice(0, j).join('-'));
-                if (locale) {
-                    return locale;
-                }
-                if (next && next.length >= j && compareArrays(split, next, true) >= j - 1) {
-                    //the next array item is better than a shallower substring of this one
-                    break;
-                }
-                j--;
-            }
-            i++;
-        }
-        return null;
-    }
-
-    function loadLocale(name) {
-        var oldLocale = null;
-        // TODO: Find a better way to register and load all the locales in Node
-        if (!locales[name] && (typeof module !== 'undefined') &&
-                module && module.exports) {
-            try {
-                oldLocale = globalLocale._abbr;
-                require('./locale/' + name);
-                // because defineLocale currently also sets the global locale, we
-                // want to undo that for lazy loaded locales
-                locale_locales__getSetGlobalLocale(oldLocale);
-            } catch (e) { }
-        }
-        return locales[name];
-    }
-
-    // This function will load locale and then set the global locale.  If
-    // no arguments are passed in, it will simply return the current global
-    // locale key.
-    function locale_locales__getSetGlobalLocale (key, values) {
-        var data;
-        if (key) {
-            if (isUndefined(values)) {
-                data = locale_locales__getLocale(key);
-            }
-            else {
-                data = defineLocale(key, values);
-            }
-
-            if (data) {
-                // moment.duration._locale = moment._locale = data;
-                globalLocale = data;
-            }
-        }
-
-        return globalLocale._abbr;
-    }
-
-    function defineLocale (name, config) {
-        if (config !== null) {
-            config.abbr = name;
-            if (locales[name] != null) {
-                deprecateSimple('defineLocaleOverride',
-                        'use moment.updateLocale(localeName, config) to change ' +
-                        'an existing locale. moment.defineLocale(localeName, ' +
-                        'config) should only be used for creating a new locale');
-                config = mergeConfigs(locales[name]._config, config);
-            } else if (config.parentLocale != null) {
-                if (locales[config.parentLocale] != null) {
-                    config = mergeConfigs(locales[config.parentLocale]._config, config);
-                } else {
-                    // treat as if there is no base config
-                    deprecateSimple('parentLocaleUndefined',
-                            'specified parentLocale is not defined yet');
-                }
-            }
-            locales[name] = new Locale(config);
-
-            // backwards compat for now: also set the locale
-            locale_locales__getSetGlobalLocale(name);
-
-            return locales[name];
-        } else {
-            // useful for testing
-            delete locales[name];
-            return null;
-        }
-    }
-
-    function updateLocale(name, config) {
-        if (config != null) {
-            var locale;
-            if (locales[name] != null) {
-                config = mergeConfigs(locales[name]._config, config);
-            }
-            locale = new Locale(config);
-            locale.parentLocale = locales[name];
-            locales[name] = locale;
-
-            // backwards compat for now: also set the locale
-            locale_locales__getSetGlobalLocale(name);
-        } else {
-            // pass null for config to unupdate, useful for tests
-            if (locales[name] != null) {
-                if (locales[name].parentLocale != null) {
-                    locales[name] = locales[name].parentLocale;
-                } else if (locales[name] != null) {
-                    delete locales[name];
-                }
-            }
-        }
-        return locales[name];
-    }
-
-    // returns locale data
-    function locale_locales__getLocale (key) {
-        var locale;
-
-        if (key && key._locale && key._locale._abbr) {
-            key = key._locale._abbr;
-        }
-
-        if (!key) {
-            return globalLocale;
-        }
-
-        if (!isArray(key)) {
-            //short-circuit everything else
-            locale = loadLocale(key);
-            if (locale) {
-                return locale;
-            }
-            key = [key];
-        }
-
-        return chooseLocale(key);
-    }
-
-    function locale_locales__listLocales() {
-        return keys(locales);
-    }
-
-    var aliases = {};
-
-    function addUnitAlias (unit, shorthand) {
-        var lowerCase = unit.toLowerCase();
-        aliases[lowerCase] = aliases[lowerCase + 's'] = aliases[shorthand] = unit;
-    }
-
-    function normalizeUnits(units) {
-        return typeof units === 'string' ? aliases[units] || aliases[units.toLowerCase()] : undefined;
-    }
-
-    function normalizeObjectUnits(inputObject) {
-        var normalizedInput = {},
-            normalizedProp,
-            prop;
-
-        for (prop in inputObject) {
-            if (hasOwnProp(inputObject, prop)) {
-                normalizedProp = normalizeUnits(prop);
-                if (normalizedProp) {
-                    normalizedInput[normalizedProp] = inputObject[prop];
-                }
-            }
-        }
-
-        return normalizedInput;
-    }
-
-    function makeGetSet (unit, keepTime) {
-        return function (value) {
-            if (value != null) {
-                get_set__set(this, unit, value);
-                utils_hooks__hooks.updateOffset(this, keepTime);
-                return this;
-            } else {
-                return get_set__get(this, unit);
-            }
-        };
-    }
-
-    function get_set__get (mom, unit) {
-        return mom.isValid() ?
-            mom._d['get' + (mom._isUTC ? 'UTC' : '') + unit]() : NaN;
-    }
-
-    function get_set__set (mom, unit, value) {
-        if (mom.isValid()) {
-            mom._d['set' + (mom._isUTC ? 'UTC' : '') + unit](value);
-        }
-    }
-
-    // MOMENTS
-
-    function getSet (units, value) {
-        var unit;
-        if (typeof units === 'object') {
-            for (unit in units) {
-                this.set(unit, units[unit]);
-            }
-        } else {
-            units = normalizeUnits(units);
-            if (isFunction(this[units])) {
-                return this[units](value);
-            }
-        }
-        return this;
-    }
-
-    function zeroFill(number, targetLength, forceSign) {
-        var absNumber = '' + Math.abs(number),
-            zerosToFill = targetLength - absNumber.length,
-            sign = number >= 0;
-        return (sign ? (forceSign ? '+' : '') : '-') +
-            Math.pow(10, Math.max(0, zerosToFill)).toString().substr(1) + absNumber;
-    }
-
-    var formattingTokens = /(\[[^\[]*\])|(\\)?([Hh]mm(ss)?|Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Qo?|YYYYYY|YYYYY|YYYY|YY|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|kk?|mm?|ss?|S{1,9}|x|X|zz?|ZZ?|.)/g;
-
-    var localFormattingTokens = /(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g;
-
-    var formatFunctions = {};
-
-    var formatTokenFunctions = {};
-
-    // token:    'M'
-    // padded:   ['MM', 2]
-    // ordinal:  'Mo'
-    // callback: function () { this.month() + 1 }
-    function addFormatToken (token, padded, ordinal, callback) {
-        var func = callback;
-        if (typeof callback === 'string') {
-            func = function () {
-                return this[callback]();
-            };
-        }
-        if (token) {
-            formatTokenFunctions[token] = func;
-        }
-        if (padded) {
-            formatTokenFunctions[padded[0]] = function () {
-                return zeroFill(func.apply(this, arguments), padded[1], padded[2]);
-            };
-        }
-        if (ordinal) {
-            formatTokenFunctions[ordinal] = function () {
-                return this.localeData().ordinal(func.apply(this, arguments), token);
-            };
-        }
-    }
-
-    function removeFormattingTokens(input) {
-        if (input.match(/\[[\s\S]/)) {
-            return input.replace(/^\[|\]$/g, '');
-        }
-        return input.replace(/\\/g, '');
-    }
-
-    function makeFormatFunction(format) {
-        var array = format.match(formattingTokens), i, length;
-
-        for (i = 0, length = array.length; i < length; i++) {
-            if (formatTokenFunctions[array[i]]) {
-                array[i] = formatTokenFunctions[array[i]];
-            } else {
-                array[i] = removeFormattingTokens(array[i]);
-            }
-        }
-
-        return function (mom) {
-            var output = '', i;
-            for (i = 0; i < length; i++) {
-                output += array[i] instanceof Function ? array[i].call(mom, format) : array[i];
-            }
-            return output;
-        };
-    }
-
-    // format date using native date object
-    function formatMoment(m, format) {
-        if (!m.isValid()) {
-            return m.localeData().invalidDate();
-        }
-
-        format = expandFormat(format, m.localeData());
-        formatFunctions[format] = formatFunctions[format] || makeFormatFunction(format);
-
-        return formatFunctions[format](m);
-    }
-
-    function expandFormat(format, locale) {
-        var i = 5;
-
-        function replaceLongDateFormatTokens(input) {
-            return locale.longDateFormat(input) || input;
-        }
-
-        localFormattingTokens.lastIndex = 0;
-        while (i >= 0 && localFormattingTokens.test(format)) {
-            format = format.replace(localFormattingTokens, replaceLongDateFormatTokens);
-            localFormattingTokens.lastIndex = 0;
-            i -= 1;
-        }
-
-        return format;
-    }
-
-    var match1         = /\d/;            //       0 - 9
-    var match2         = /\d\d/;          //      00 - 99
-    var match3         = /\d{3}/;         //     000 - 999
-    var match4         = /\d{4}/;         //    0000 - 9999
-    var match6         = /[+-]?\d{6}/;    // -999999 - 999999
-    var match1to2      = /\d\d?/;         //       0 - 99
-    var match3to4      = /\d\d\d\d?/;     //     999 - 9999
-    var match5to6      = /\d\d\d\d\d\d?/; //   99999 - 999999
-    var match1to3      = /\d{1,3}/;       //       0 - 999
-    var match1to4      = /\d{1,4}/;       //       0 - 9999
-    var match1to6      = /[+-]?\d{1,6}/;  // -999999 - 999999
-
-    var matchUnsigned  = /\d+/;           //       0 - inf
-    var matchSigned    = /[+-]?\d+/;      //    -inf - inf
-
-    var matchOffset    = /Z|[+-]\d\d:?\d\d/gi; // +00:00 -00:00 +0000 -0000 or Z
-    var matchShortOffset = /Z|[+-]\d\d(?::?\d\d)?/gi; // +00 -00 +00:00 -00:00 +0000 -0000 or Z
-
-    var matchTimestamp = /[+-]?\d+(\.\d{1,3})?/; // 123456789 123456789.123
-
-    // any word (or two) characters or numbers including two/three word month in arabic.
-    // includes scottish gaelic two word and hyphenated months
-    var matchWord = /[0-9]*['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+|[\u0600-\u06FF\/]+(\s*?[\u0600-\u06FF]+){1,2}/i;
-
-
-    var regexes = {};
-
-    function addRegexToken (token, regex, strictRegex) {
-        regexes[token] = isFunction(regex) ? regex : function (isStrict, localeData) {
-            return (isStrict && strictRegex) ? strictRegex : regex;
-        };
-    }
-
-    function getParseRegexForToken (token, config) {
-        if (!hasOwnProp(regexes, token)) {
-            return new RegExp(unescapeFormat(token));
-        }
-
-        return regexes[token](config._strict, config._locale);
-    }
-
-    // Code from http://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
-    function unescapeFormat(s) {
-        return regexEscape(s.replace('\\', '').replace(/\\(\[)|\\(\])|\[([^\]\[]*)\]|\\(.)/g, function (matched, p1, p2, p3, p4) {
-            return p1 || p2 || p3 || p4;
-        }));
-    }
-
-    function regexEscape(s) {
-        return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-    }
-
-    var tokens = {};
-
-    function addParseToken (token, callback) {
-        var i, func = callback;
-        if (typeof token === 'string') {
-            token = [token];
-        }
-        if (typeof callback === 'number') {
-            func = function (input, array) {
-                array[callback] = toInt(input);
-            };
-        }
-        for (i = 0; i < token.length; i++) {
-            tokens[token[i]] = func;
-        }
-    }
-
-    function addWeekParseToken (token, callback) {
-        addParseToken(token, function (input, array, config, token) {
-            config._w = config._w || {};
-            callback(input, config._w, config, token);
-        });
-    }
-
-    function addTimeToArrayFromToken(token, input, config) {
-        if (input != null && hasOwnProp(tokens, token)) {
-            tokens[token](input, config._a, config, token);
-        }
-    }
-
-    var YEAR = 0;
-    var MONTH = 1;
-    var DATE = 2;
-    var HOUR = 3;
-    var MINUTE = 4;
-    var SECOND = 5;
-    var MILLISECOND = 6;
-    var WEEK = 7;
-    var WEEKDAY = 8;
-
-    var indexOf;
-
-    if (Array.prototype.indexOf) {
-        indexOf = Array.prototype.indexOf;
-    } else {
-        indexOf = function (o) {
-            // I know
-            var i;
-            for (i = 0; i < this.length; ++i) {
-                if (this[i] === o) {
-                    return i;
-                }
-            }
-            return -1;
-        };
-    }
-
-    function daysInMonth(year, month) {
-        return new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
-    }
-
-    // FORMATTING
-
-    addFormatToken('M', ['MM', 2], 'Mo', function () {
-        return this.month() + 1;
-    });
-
-    addFormatToken('MMM', 0, 0, function (format) {
-        return this.localeData().monthsShort(this, format);
-    });
-
-    addFormatToken('MMMM', 0, 0, function (format) {
-        return this.localeData().months(this, format);
-    });
-
-    // ALIASES
-
-    addUnitAlias('month', 'M');
-
-    // PARSING
-
-    addRegexToken('M',    match1to2);
-    addRegexToken('MM',   match1to2, match2);
-    addRegexToken('MMM',  function (isStrict, locale) {
-        return locale.monthsShortRegex(isStrict);
-    });
-    addRegexToken('MMMM', function (isStrict, locale) {
-        return locale.monthsRegex(isStrict);
-    });
-
-    addParseToken(['M', 'MM'], function (input, array) {
-        array[MONTH] = toInt(input) - 1;
-    });
-
-    addParseToken(['MMM', 'MMMM'], function (input, array, config, token) {
-        var month = config._locale.monthsParse(input, token, config._strict);
-        // if we didn't find a month name, mark the date as invalid.
-        if (month != null) {
-            array[MONTH] = month;
-        } else {
-            getParsingFlags(config).invalidMonth = input;
-        }
-    });
-
-    // LOCALES
-
-    var MONTHS_IN_FORMAT = /D[oD]?(\[[^\[\]]*\]|\s+)+MMMM?/;
-    var defaultLocaleMonths = 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_');
-    function localeMonths (m, format) {
-        return isArray(this._months) ? this._months[m.month()] :
-            this._months[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
-    }
-
-    var defaultLocaleMonthsShort = 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_');
-    function localeMonthsShort (m, format) {
-        return isArray(this._monthsShort) ? this._monthsShort[m.month()] :
-            this._monthsShort[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
-    }
-
-    function units_month__handleStrictParse(monthName, format, strict) {
-        var i, ii, mom, llc = monthName.toLocaleLowerCase();
-        if (!this._monthsParse) {
-            // this is not used
-            this._monthsParse = [];
-            this._longMonthsParse = [];
-            this._shortMonthsParse = [];
-            for (i = 0; i < 12; ++i) {
-                mom = create_utc__createUTC([2000, i]);
-                this._shortMonthsParse[i] = this.monthsShort(mom, '').toLocaleLowerCase();
-                this._longMonthsParse[i] = this.months(mom, '').toLocaleLowerCase();
-            }
-        }
-
-        if (strict) {
-            if (format === 'MMM') {
-                ii = indexOf.call(this._shortMonthsParse, llc);
-                return ii !== -1 ? ii : null;
-            } else {
-                ii = indexOf.call(this._longMonthsParse, llc);
-                return ii !== -1 ? ii : null;
-            }
-        } else {
-            if (format === 'MMM') {
-                ii = indexOf.call(this._shortMonthsParse, llc);
-                if (ii !== -1) {
-                    return ii;
-                }
-                ii = indexOf.call(this._longMonthsParse, llc);
-                return ii !== -1 ? ii : null;
-            } else {
-                ii = indexOf.call(this._longMonthsParse, llc);
-                if (ii !== -1) {
-                    return ii;
-                }
-                ii = indexOf.call(this._shortMonthsParse, llc);
-                return ii !== -1 ? ii : null;
-            }
-        }
-    }
-
-    function localeMonthsParse (monthName, format, strict) {
-        var i, mom, regex;
-
-        if (this._monthsParseExact) {
-            return units_month__handleStrictParse.call(this, monthName, format, strict);
-        }
-
-        if (!this._monthsParse) {
-            this._monthsParse = [];
-            this._longMonthsParse = [];
-            this._shortMonthsParse = [];
-        }
-
-        // TODO: add sorting
-        // Sorting makes sure if one month (or abbr) is a prefix of another
-        // see sorting in computeMonthsParse
-        for (i = 0; i < 12; i++) {
-            // make the regex if we don't have it already
-            mom = create_utc__createUTC([2000, i]);
-            if (strict && !this._longMonthsParse[i]) {
-                this._longMonthsParse[i] = new RegExp('^' + this.months(mom, '').replace('.', '') + '$', 'i');
-                this._shortMonthsParse[i] = new RegExp('^' + this.monthsShort(mom, '').replace('.', '') + '$', 'i');
-            }
-            if (!strict && !this._monthsParse[i]) {
-                regex = '^' + this.months(mom, '') + '|^' + this.monthsShort(mom, '');
-                this._monthsParse[i] = new RegExp(regex.replace('.', ''), 'i');
-            }
-            // test the regex
-            if (strict && format === 'MMMM' && this._longMonthsParse[i].test(monthName)) {
-                return i;
-            } else if (strict && format === 'MMM' && this._shortMonthsParse[i].test(monthName)) {
-                return i;
-            } else if (!strict && this._monthsParse[i].test(monthName)) {
-                return i;
-            }
-        }
-    }
-
-    // MOMENTS
-
-    function setMonth (mom, value) {
-        var dayOfMonth;
-
-        if (!mom.isValid()) {
-            // No op
-            return mom;
-        }
-
-        if (typeof value === 'string') {
-            if (/^\d+$/.test(value)) {
-                value = toInt(value);
-            } else {
-                value = mom.localeData().monthsParse(value);
-                // TODO: Another silent failure?
-                if (typeof value !== 'number') {
-                    return mom;
-                }
-            }
-        }
-
-        dayOfMonth = Math.min(mom.date(), daysInMonth(mom.year(), value));
-        mom._d['set' + (mom._isUTC ? 'UTC' : '') + 'Month'](value, dayOfMonth);
-        return mom;
-    }
-
-    function getSetMonth (value) {
-        if (value != null) {
-            setMonth(this, value);
-            utils_hooks__hooks.updateOffset(this, true);
-            return this;
-        } else {
-            return get_set__get(this, 'Month');
-        }
-    }
-
-    function getDaysInMonth () {
-        return daysInMonth(this.year(), this.month());
-    }
-
-    var defaultMonthsShortRegex = matchWord;
-    function monthsShortRegex (isStrict) {
-        if (this._monthsParseExact) {
-            if (!hasOwnProp(this, '_monthsRegex')) {
-                computeMonthsParse.call(this);
-            }
-            if (isStrict) {
-                return this._monthsShortStrictRegex;
-            } else {
-                return this._monthsShortRegex;
-            }
-        } else {
-            return this._monthsShortStrictRegex && isStrict ?
-                this._monthsShortStrictRegex : this._monthsShortRegex;
-        }
-    }
-
-    var defaultMonthsRegex = matchWord;
-    function monthsRegex (isStrict) {
-        if (this._monthsParseExact) {
-            if (!hasOwnProp(this, '_monthsRegex')) {
-                computeMonthsParse.call(this);
-            }
-            if (isStrict) {
-                return this._monthsStrictRegex;
-            } else {
-                return this._monthsRegex;
-            }
-        } else {
-            return this._monthsStrictRegex && isStrict ?
-                this._monthsStrictRegex : this._monthsRegex;
-        }
-    }
-
-    function computeMonthsParse () {
-        function cmpLenRev(a, b) {
-            return b.length - a.length;
-        }
-
-        var shortPieces = [], longPieces = [], mixedPieces = [],
-            i, mom;
-        for (i = 0; i < 12; i++) {
-            // make the regex if we don't have it already
-            mom = create_utc__createUTC([2000, i]);
-            shortPieces.push(this.monthsShort(mom, ''));
-            longPieces.push(this.months(mom, ''));
-            mixedPieces.push(this.months(mom, ''));
-            mixedPieces.push(this.monthsShort(mom, ''));
-        }
-        // Sorting makes sure if one month (or abbr) is a prefix of another it
-        // will match the longer piece.
-        shortPieces.sort(cmpLenRev);
-        longPieces.sort(cmpLenRev);
-        mixedPieces.sort(cmpLenRev);
-        for (i = 0; i < 12; i++) {
-            shortPieces[i] = regexEscape(shortPieces[i]);
-            longPieces[i] = regexEscape(longPieces[i]);
-            mixedPieces[i] = regexEscape(mixedPieces[i]);
-        }
-
-        this._monthsRegex = new RegExp('^(' + mixedPieces.join('|') + ')', 'i');
-        this._monthsShortRegex = this._monthsRegex;
-        this._monthsStrictRegex = new RegExp('^(' + longPieces.join('|') + ')', 'i');
-        this._monthsShortStrictRegex = new RegExp('^(' + shortPieces.join('|') + ')', 'i');
-    }
-
-    function checkOverflow (m) {
-        var overflow;
-        var a = m._a;
-
-        if (a && getParsingFlags(m).overflow === -2) {
-            overflow =
-                a[MONTH]       < 0 || a[MONTH]       > 11  ? MONTH :
-                a[DATE]        < 1 || a[DATE]        > daysInMonth(a[YEAR], a[MONTH]) ? DATE :
-                a[HOUR]        < 0 || a[HOUR]        > 24 || (a[HOUR] === 24 && (a[MINUTE] !== 0 || a[SECOND] !== 0 || a[MILLISECOND] !== 0)) ? HOUR :
-                a[MINUTE]      < 0 || a[MINUTE]      > 59  ? MINUTE :
-                a[SECOND]      < 0 || a[SECOND]      > 59  ? SECOND :
-                a[MILLISECOND] < 0 || a[MILLISECOND] > 999 ? MILLISECOND :
-                -1;
-
-            if (getParsingFlags(m)._overflowDayOfYear && (overflow < YEAR || overflow > DATE)) {
-                overflow = DATE;
-            }
-            if (getParsingFlags(m)._overflowWeeks && overflow === -1) {
-                overflow = WEEK;
-            }
-            if (getParsingFlags(m)._overflowWeekday && overflow === -1) {
-                overflow = WEEKDAY;
-            }
-
-            getParsingFlags(m).overflow = overflow;
-        }
-
-        return m;
-    }
-
-    // iso 8601 regex
-    // 0000-00-00 0000-W00 or 0000-W00-0 + T + 00 or 00:00 or 00:00:00 or 00:00:00.000 + +00:00 or +0000 or +00)
-    var extendedIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})-(?:\d\d-\d\d|W\d\d-\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?::\d\d(?::\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?/;
-    var basicIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})(?:\d\d\d\d|W\d\d\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?:\d\d(?:\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?/;
-
-    var tzRegex = /Z|[+-]\d\d(?::?\d\d)?/;
-
-    var isoDates = [
-        ['YYYYYY-MM-DD', /[+-]\d{6}-\d\d-\d\d/],
-        ['YYYY-MM-DD', /\d{4}-\d\d-\d\d/],
-        ['GGGG-[W]WW-E', /\d{4}-W\d\d-\d/],
-        ['GGGG-[W]WW', /\d{4}-W\d\d/, false],
-        ['YYYY-DDD', /\d{4}-\d{3}/],
-        ['YYYY-MM', /\d{4}-\d\d/, false],
-        ['YYYYYYMMDD', /[+-]\d{10}/],
-        ['YYYYMMDD', /\d{8}/],
-        // YYYYMM is NOT allowed by the standard
-        ['GGGG[W]WWE', /\d{4}W\d{3}/],
-        ['GGGG[W]WW', /\d{4}W\d{2}/, false],
-        ['YYYYDDD', /\d{7}/]
-    ];
-
-    // iso time formats and regexes
-    var isoTimes = [
-        ['HH:mm:ss.SSSS', /\d\d:\d\d:\d\d\.\d+/],
-        ['HH:mm:ss,SSSS', /\d\d:\d\d:\d\d,\d+/],
-        ['HH:mm:ss', /\d\d:\d\d:\d\d/],
-        ['HH:mm', /\d\d:\d\d/],
-        ['HHmmss.SSSS', /\d\d\d\d\d\d\.\d+/],
-        ['HHmmss,SSSS', /\d\d\d\d\d\d,\d+/],
-        ['HHmmss', /\d\d\d\d\d\d/],
-        ['HHmm', /\d\d\d\d/],
-        ['HH', /\d\d/]
-    ];
-
-    var aspNetJsonRegex = /^\/?Date\((\-?\d+)/i;
-
-    // date from iso format
-    function configFromISO(config) {
-        var i, l,
-            string = config._i,
-            match = extendedIsoRegex.exec(string) || basicIsoRegex.exec(string),
-            allowTime, dateFormat, timeFormat, tzFormat;
-
-        if (match) {
-            getParsingFlags(config).iso = true;
-
-            for (i = 0, l = isoDates.length; i < l; i++) {
-                if (isoDates[i][1].exec(match[1])) {
-                    dateFormat = isoDates[i][0];
-                    allowTime = isoDates[i][2] !== false;
-                    break;
-                }
-            }
-            if (dateFormat == null) {
-                config._isValid = false;
-                return;
-            }
-            if (match[3]) {
-                for (i = 0, l = isoTimes.length; i < l; i++) {
-                    if (isoTimes[i][1].exec(match[3])) {
-                        // match[2] should be 'T' or space
-                        timeFormat = (match[2] || ' ') + isoTimes[i][0];
-                        break;
-                    }
-                }
-                if (timeFormat == null) {
-                    config._isValid = false;
-                    return;
-                }
-            }
-            if (!allowTime && timeFormat != null) {
-                config._isValid = false;
-                return;
-            }
-            if (match[4]) {
-                if (tzRegex.exec(match[4])) {
-                    tzFormat = 'Z';
-                } else {
-                    config._isValid = false;
-                    return;
-                }
-            }
-            config._f = dateFormat + (timeFormat || '') + (tzFormat || '');
-            configFromStringAndFormat(config);
-        } else {
-            config._isValid = false;
-        }
-    }
-
-    // date from iso format or fallback
-    function configFromString(config) {
-        var matched = aspNetJsonRegex.exec(config._i);
-
-        if (matched !== null) {
-            config._d = new Date(+matched[1]);
-            return;
-        }
-
-        configFromISO(config);
-        if (config._isValid === false) {
-            delete config._isValid;
-            utils_hooks__hooks.createFromInputFallback(config);
-        }
-    }
-
-    utils_hooks__hooks.createFromInputFallback = deprecate(
-        'moment construction falls back to js Date. This is ' +
-        'discouraged and will be removed in upcoming major ' +
-        'release. Please refer to ' +
-        'https://github.com/moment/moment/issues/1407 for more info.',
-        function (config) {
-            config._d = new Date(config._i + (config._useUTC ? ' UTC' : ''));
-        }
-    );
-
-    function createDate (y, m, d, h, M, s, ms) {
-        //can't just apply() to create a date:
-        //http://stackoverflow.com/questions/181348/instantiating-a-javascript-object-by-calling-prototype-constructor-apply
-        var date = new Date(y, m, d, h, M, s, ms);
-
-        //the date constructor remaps years 0-99 to 1900-1999
-        if (y < 100 && y >= 0 && isFinite(date.getFullYear())) {
-            date.setFullYear(y);
-        }
-        return date;
-    }
-
-    function createUTCDate (y) {
-        var date = new Date(Date.UTC.apply(null, arguments));
-
-        //the Date.UTC function remaps years 0-99 to 1900-1999
-        if (y < 100 && y >= 0 && isFinite(date.getUTCFullYear())) {
-            date.setUTCFullYear(y);
-        }
-        return date;
-    }
-
-    // FORMATTING
-
-    addFormatToken('Y', 0, 0, function () {
-        var y = this.year();
-        return y <= 9999 ? '' + y : '+' + y;
-    });
-
-    addFormatToken(0, ['YY', 2], 0, function () {
-        return this.year() % 100;
-    });
-
-    addFormatToken(0, ['YYYY',   4],       0, 'year');
-    addFormatToken(0, ['YYYYY',  5],       0, 'year');
-    addFormatToken(0, ['YYYYYY', 6, true], 0, 'year');
-
-    // ALIASES
-
-    addUnitAlias('year', 'y');
-
-    // PARSING
-
-    addRegexToken('Y',      matchSigned);
-    addRegexToken('YY',     match1to2, match2);
-    addRegexToken('YYYY',   match1to4, match4);
-    addRegexToken('YYYYY',  match1to6, match6);
-    addRegexToken('YYYYYY', match1to6, match6);
-
-    addParseToken(['YYYYY', 'YYYYYY'], YEAR);
-    addParseToken('YYYY', function (input, array) {
-        array[YEAR] = input.length === 2 ? utils_hooks__hooks.parseTwoDigitYear(input) : toInt(input);
-    });
-    addParseToken('YY', function (input, array) {
-        array[YEAR] = utils_hooks__hooks.parseTwoDigitYear(input);
-    });
-    addParseToken('Y', function (input, array) {
-        array[YEAR] = parseInt(input, 10);
-    });
-
-    // HELPERS
-
-    function daysInYear(year) {
-        return isLeapYear(year) ? 366 : 365;
-    }
-
-    function isLeapYear(year) {
-        return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
-    }
-
-    // HOOKS
-
-    utils_hooks__hooks.parseTwoDigitYear = function (input) {
-        return toInt(input) + (toInt(input) > 68 ? 1900 : 2000);
-    };
-
-    // MOMENTS
-
-    var getSetYear = makeGetSet('FullYear', true);
-
-    function getIsLeapYear () {
-        return isLeapYear(this.year());
-    }
-
-    // start-of-first-week - start-of-year
-    function firstWeekOffset(year, dow, doy) {
-        var // first-week day -- which january is always in the first week (4 for iso, 1 for other)
-            fwd = 7 + dow - doy,
-            // first-week day local weekday -- which local weekday is fwd
-            fwdlw = (7 + createUTCDate(year, 0, fwd).getUTCDay() - dow) % 7;
-
-        return -fwdlw + fwd - 1;
-    }
-
-    //http://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_year.2C_week_number_and_weekday
-    function dayOfYearFromWeeks(year, week, weekday, dow, doy) {
-        var localWeekday = (7 + weekday - dow) % 7,
-            weekOffset = firstWeekOffset(year, dow, doy),
-            dayOfYear = 1 + 7 * (week - 1) + localWeekday + weekOffset,
-            resYear, resDayOfYear;
-
-        if (dayOfYear <= 0) {
-            resYear = year - 1;
-            resDayOfYear = daysInYear(resYear) + dayOfYear;
-        } else if (dayOfYear > daysInYear(year)) {
-            resYear = year + 1;
-            resDayOfYear = dayOfYear - daysInYear(year);
-        } else {
-            resYear = year;
-            resDayOfYear = dayOfYear;
-        }
-
-        return {
-            year: resYear,
-            dayOfYear: resDayOfYear
-        };
-    }
-
-    function weekOfYear(mom, dow, doy) {
-        var weekOffset = firstWeekOffset(mom.year(), dow, doy),
-            week = Math.floor((mom.dayOfYear() - weekOffset - 1) / 7) + 1,
-            resWeek, resYear;
-
-        if (week < 1) {
-            resYear = mom.year() - 1;
-            resWeek = week + weeksInYear(resYear, dow, doy);
-        } else if (week > weeksInYear(mom.year(), dow, doy)) {
-            resWeek = week - weeksInYear(mom.year(), dow, doy);
-            resYear = mom.year() + 1;
-        } else {
-            resYear = mom.year();
-            resWeek = week;
-        }
-
-        return {
-            week: resWeek,
-            year: resYear
-        };
-    }
-
-    function weeksInYear(year, dow, doy) {
-        var weekOffset = firstWeekOffset(year, dow, doy),
-            weekOffsetNext = firstWeekOffset(year + 1, dow, doy);
-        return (daysInYear(year) - weekOffset + weekOffsetNext) / 7;
-    }
-
-    // Pick the first defined of two or three arguments.
-    function defaults(a, b, c) {
-        if (a != null) {
-            return a;
-        }
-        if (b != null) {
-            return b;
-        }
-        return c;
-    }
-
-    function currentDateArray(config) {
-        // hooks is actually the exported moment object
-        var nowValue = new Date(utils_hooks__hooks.now());
-        if (config._useUTC) {
-            return [nowValue.getUTCFullYear(), nowValue.getUTCMonth(), nowValue.getUTCDate()];
-        }
-        return [nowValue.getFullYear(), nowValue.getMonth(), nowValue.getDate()];
-    }
-
-    // convert an array to a date.
-    // the array should mirror the parameters below
-    // note: all values past the year are optional and will default to the lowest possible value.
-    // [year, month, day , hour, minute, second, millisecond]
-    function configFromArray (config) {
-        var i, date, input = [], currentDate, yearToUse;
-
-        if (config._d) {
-            return;
-        }
-
-        currentDate = currentDateArray(config);
-
-        //compute day of the year from weeks and weekdays
-        if (config._w && config._a[DATE] == null && config._a[MONTH] == null) {
-            dayOfYearFromWeekInfo(config);
-        }
-
-        //if the day of the year is set, figure out what it is
-        if (config._dayOfYear) {
-            yearToUse = defaults(config._a[YEAR], currentDate[YEAR]);
-
-            if (config._dayOfYear > daysInYear(yearToUse)) {
-                getParsingFlags(config)._overflowDayOfYear = true;
-            }
-
-            date = createUTCDate(yearToUse, 0, config._dayOfYear);
-            config._a[MONTH] = date.getUTCMonth();
-            config._a[DATE] = date.getUTCDate();
-        }
-
-        // Default to current date.
-        // * if no year, month, day of month are given, default to today
-        // * if day of month is given, default month and year
-        // * if month is given, default only year
-        // * if year is given, don't default anything
-        for (i = 0; i < 3 && config._a[i] == null; ++i) {
-            config._a[i] = input[i] = currentDate[i];
-        }
-
-        // Zero out whatever was not defaulted, including time
-        for (; i < 7; i++) {
-            config._a[i] = input[i] = (config._a[i] == null) ? (i === 2 ? 1 : 0) : config._a[i];
-        }
-
-        // Check for 24:00:00.000
-        if (config._a[HOUR] === 24 &&
-                config._a[MINUTE] === 0 &&
-                config._a[SECOND] === 0 &&
-                config._a[MILLISECOND] === 0) {
-            config._nextDay = true;
-            config._a[HOUR] = 0;
-        }
-
-        config._d = (config._useUTC ? createUTCDate : createDate).apply(null, input);
-        // Apply timezone offset from input. The actual utcOffset can be changed
-        // with parseZone.
-        if (config._tzm != null) {
-            config._d.setUTCMinutes(config._d.getUTCMinutes() - config._tzm);
-        }
-
-        if (config._nextDay) {
-            config._a[HOUR] = 24;
-        }
-    }
-
-    function dayOfYearFromWeekInfo(config) {
-        var w, weekYear, week, weekday, dow, doy, temp, weekdayOverflow;
-
-        w = config._w;
-        if (w.GG != null || w.W != null || w.E != null) {
-            dow = 1;
-            doy = 4;
-
-            // TODO: We need to take the current isoWeekYear, but that depends on
-            // how we interpret now (local, utc, fixed offset). So create
-            // a now version of current config (take local/utc/offset flags, and
-            // create now).
-            weekYear = defaults(w.GG, config._a[YEAR], weekOfYear(local__createLocal(), 1, 4).year);
-            week = defaults(w.W, 1);
-            weekday = defaults(w.E, 1);
-            if (weekday < 1 || weekday > 7) {
-                weekdayOverflow = true;
-            }
-        } else {
-            dow = config._locale._week.dow;
-            doy = config._locale._week.doy;
-
-            weekYear = defaults(w.gg, config._a[YEAR], weekOfYear(local__createLocal(), dow, doy).year);
-            week = defaults(w.w, 1);
-
-            if (w.d != null) {
-                // weekday -- low day numbers are considered next week
-                weekday = w.d;
-                if (weekday < 0 || weekday > 6) {
-                    weekdayOverflow = true;
-                }
-            } else if (w.e != null) {
-                // local weekday -- counting starts from begining of week
-                weekday = w.e + dow;
-                if (w.e < 0 || w.e > 6) {
-                    weekdayOverflow = true;
-                }
-            } else {
-                // default to begining of week
-                weekday = dow;
-            }
-        }
-        if (week < 1 || week > weeksInYear(weekYear, dow, doy)) {
-            getParsingFlags(config)._overflowWeeks = true;
-        } else if (weekdayOverflow != null) {
-            getParsingFlags(config)._overflowWeekday = true;
-        } else {
-            temp = dayOfYearFromWeeks(weekYear, week, weekday, dow, doy);
-            config._a[YEAR] = temp.year;
-            config._dayOfYear = temp.dayOfYear;
-        }
-    }
-
-    // constant that refers to the ISO standard
-    utils_hooks__hooks.ISO_8601 = function () {};
-
-    // date from string and format string
-    function configFromStringAndFormat(config) {
-        // TODO: Move this to another part of the creation flow to prevent circular deps
-        if (config._f === utils_hooks__hooks.ISO_8601) {
-            configFromISO(config);
-            return;
-        }
-
-        config._a = [];
-        getParsingFlags(config).empty = true;
-
-        // This array is used to make a Date, either with `new Date` or `Date.UTC`
-        var string = '' + config._i,
-            i, parsedInput, tokens, token, skipped,
-            stringLength = string.length,
-            totalParsedInputLength = 0;
-
-        tokens = expandFormat(config._f, config._locale).match(formattingTokens) || [];
-
-        for (i = 0; i < tokens.length; i++) {
-            token = tokens[i];
-            parsedInput = (string.match(getParseRegexForToken(token, config)) || [])[0];
-            // console.log('token', token, 'parsedInput', parsedInput,
-            //         'regex', getParseRegexForToken(token, config));
-            if (parsedInput) {
-                skipped = string.substr(0, string.indexOf(parsedInput));
-                if (skipped.length > 0) {
-                    getParsingFlags(config).unusedInput.push(skipped);
-                }
-                string = string.slice(string.indexOf(parsedInput) + parsedInput.length);
-                totalParsedInputLength += parsedInput.length;
-            }
-            // don't parse if it's not a known token
-            if (formatTokenFunctions[token]) {
-                if (parsedInput) {
-                    getParsingFlags(config).empty = false;
-                }
-                else {
-                    getParsingFlags(config).unusedTokens.push(token);
-                }
-                addTimeToArrayFromToken(token, parsedInput, config);
-            }
-            else if (config._strict && !parsedInput) {
-                getParsingFlags(config).unusedTokens.push(token);
-            }
-        }
-
-        // add remaining unparsed input length to the string
-        getParsingFlags(config).charsLeftOver = stringLength - totalParsedInputLength;
-        if (string.length > 0) {
-            getParsingFlags(config).unusedInput.push(string);
-        }
-
-        // clear _12h flag if hour is <= 12
-        if (getParsingFlags(config).bigHour === true &&
-                config._a[HOUR] <= 12 &&
-                config._a[HOUR] > 0) {
-            getParsingFlags(config).bigHour = undefined;
-        }
-
-        getParsingFlags(config).parsedDateParts = config._a.slice(0);
-        getParsingFlags(config).meridiem = config._meridiem;
-        // handle meridiem
-        config._a[HOUR] = meridiemFixWrap(config._locale, config._a[HOUR], config._meridiem);
-
-        configFromArray(config);
-        checkOverflow(config);
-    }
-
-
-    function meridiemFixWrap (locale, hour, meridiem) {
-        var isPm;
-
-        if (meridiem == null) {
-            // nothing to do
-            return hour;
-        }
-        if (locale.meridiemHour != null) {
-            return locale.meridiemHour(hour, meridiem);
-        } else if (locale.isPM != null) {
-            // Fallback
-            isPm = locale.isPM(meridiem);
-            if (isPm && hour < 12) {
-                hour += 12;
-            }
-            if (!isPm && hour === 12) {
-                hour = 0;
-            }
-            return hour;
-        } else {
-            // this is not supposed to happen
-            return hour;
-        }
-    }
-
-    // date from string and array of format strings
-    function configFromStringAndArray(config) {
-        var tempConfig,
-            bestMoment,
-
-            scoreToBeat,
-            i,
-            currentScore;
-
-        if (config._f.length === 0) {
-            getParsingFlags(config).invalidFormat = true;
-            config._d = new Date(NaN);
-            return;
-        }
-
-        for (i = 0; i < config._f.length; i++) {
-            currentScore = 0;
-            tempConfig = copyConfig({}, config);
-            if (config._useUTC != null) {
-                tempConfig._useUTC = config._useUTC;
-            }
-            tempConfig._f = config._f[i];
-            configFromStringAndFormat(tempConfig);
-
-            if (!valid__isValid(tempConfig)) {
-                continue;
-            }
-
-            // if there is any input that was not parsed add a penalty for that format
-            currentScore += getParsingFlags(tempConfig).charsLeftOver;
-
-            //or tokens
-            currentScore += getParsingFlags(tempConfig).unusedTokens.length * 10;
-
-            getParsingFlags(tempConfig).score = currentScore;
-
-            if (scoreToBeat == null || currentScore < scoreToBeat) {
-                scoreToBeat = currentScore;
-                bestMoment = tempConfig;
-            }
-        }
-
-        extend(config, bestMoment || tempConfig);
-    }
-
-    function configFromObject(config) {
-        if (config._d) {
-            return;
-        }
-
-        var i = normalizeObjectUnits(config._i);
-        config._a = map([i.year, i.month, i.day || i.date, i.hour, i.minute, i.second, i.millisecond], function (obj) {
-            return obj && parseInt(obj, 10);
-        });
-
-        configFromArray(config);
-    }
-
-    function createFromConfig (config) {
-        var res = new Moment(checkOverflow(prepareConfig(config)));
-        if (res._nextDay) {
-            // Adding is smart enough around DST
-            res.add(1, 'd');
-            res._nextDay = undefined;
-        }
-
-        return res;
-    }
-
-    function prepareConfig (config) {
-        var input = config._i,
-            format = config._f;
-
-        config._locale = config._locale || locale_locales__getLocale(config._l);
-
-        if (input === null || (format === undefined && input === '')) {
-            return valid__createInvalid({nullInput: true});
-        }
-
-        if (typeof input === 'string') {
-            config._i = input = config._locale.preparse(input);
-        }
-
-        if (isMoment(input)) {
-            return new Moment(checkOverflow(input));
-        } else if (isArray(format)) {
-            configFromStringAndArray(config);
-        } else if (format) {
-            configFromStringAndFormat(config);
-        } else if (isDate(input)) {
-            config._d = input;
-        } else {
-            configFromInput(config);
-        }
-
-        if (!valid__isValid(config)) {
-            config._d = null;
-        }
-
-        return config;
-    }
-
-    function configFromInput(config) {
-        var input = config._i;
-        if (input === undefined) {
-            config._d = new Date(utils_hooks__hooks.now());
-        } else if (isDate(input)) {
-            config._d = new Date(input.valueOf());
-        } else if (typeof input === 'string') {
-            configFromString(config);
-        } else if (isArray(input)) {
-            config._a = map(input.slice(0), function (obj) {
-                return parseInt(obj, 10);
-            });
-            configFromArray(config);
-        } else if (typeof(input) === 'object') {
-            configFromObject(config);
-        } else if (typeof(input) === 'number') {
-            // from milliseconds
-            config._d = new Date(input);
-        } else {
-            utils_hooks__hooks.createFromInputFallback(config);
-        }
-    }
-
-    function createLocalOrUTC (input, format, locale, strict, isUTC) {
-        var c = {};
-
-        if (typeof(locale) === 'boolean') {
-            strict = locale;
-            locale = undefined;
-        }
-        // object construction must be done this way.
-        // https://github.com/moment/moment/issues/1423
-        c._isAMomentObject = true;
-        c._useUTC = c._isUTC = isUTC;
-        c._l = locale;
-        c._i = input;
-        c._f = format;
-        c._strict = strict;
-
-        return createFromConfig(c);
-    }
-
-    function local__createLocal (input, format, locale, strict) {
-        return createLocalOrUTC(input, format, locale, strict, false);
-    }
-
-    var prototypeMin = deprecate(
-         'moment().min is deprecated, use moment.max instead. https://github.com/moment/moment/issues/1548',
-         function () {
-             var other = local__createLocal.apply(null, arguments);
-             if (this.isValid() && other.isValid()) {
-                 return other < this ? this : other;
-             } else {
-                 return valid__createInvalid();
-             }
-         }
-     );
-
-    var prototypeMax = deprecate(
-        'moment().max is deprecated, use moment.min instead. https://github.com/moment/moment/issues/1548',
-        function () {
-            var other = local__createLocal.apply(null, arguments);
-            if (this.isValid() && other.isValid()) {
-                return other > this ? this : other;
-            } else {
-                return valid__createInvalid();
-            }
-        }
-    );
-
-    // Pick a moment m from moments so that m[fn](other) is true for all
-    // other. This relies on the function fn to be transitive.
-    //
-    // moments should either be an array of moment objects or an array, whose
-    // first element is an array of moment objects.
-    function pickBy(fn, moments) {
-        var res, i;
-        if (moments.length === 1 && isArray(moments[0])) {
-            moments = moments[0];
-        }
-        if (!moments.length) {
-            return local__createLocal();
-        }
-        res = moments[0];
-        for (i = 1; i < moments.length; ++i) {
-            if (!moments[i].isValid() || moments[i][fn](res)) {
-                res = moments[i];
-            }
-        }
-        return res;
-    }
-
-    // TODO: Use [].sort instead?
-    function min () {
-        var args = [].slice.call(arguments, 0);
-
-        return pickBy('isBefore', args);
-    }
-
-    function max () {
-        var args = [].slice.call(arguments, 0);
-
-        return pickBy('isAfter', args);
-    }
-
-    var now = function () {
-        return Date.now ? Date.now() : +(new Date());
-    };
-
-    function Duration (duration) {
-        var normalizedInput = normalizeObjectUnits(duration),
-            years = normalizedInput.year || 0,
-            quarters = normalizedInput.quarter || 0,
-            months = normalizedInput.month || 0,
-            weeks = normalizedInput.week || 0,
-            days = normalizedInput.day || 0,
-            hours = normalizedInput.hour || 0,
-            minutes = normalizedInput.minute || 0,
-            seconds = normalizedInput.second || 0,
-            milliseconds = normalizedInput.millisecond || 0;
-
-        // representation for dateAddRemove
-        this._milliseconds = +milliseconds +
-            seconds * 1e3 + // 1000
-            minutes * 6e4 + // 1000 * 60
-            hours * 1000 * 60 * 60; //using 1000 * 60 * 60 instead of 36e5 to avoid floating point rounding errors https://github.com/moment/moment/issues/2978
-        // Because of dateAddRemove treats 24 hours as different from a
-        // day when working around DST, we need to store them separately
-        this._days = +days +
-            weeks * 7;
-        // It is impossible translate months into days without knowing
-        // which months you are are talking about, so we have to store
-        // it separately.
-        this._months = +months +
-            quarters * 3 +
-            years * 12;
-
-        this._data = {};
-
-        this._locale = locale_locales__getLocale();
-
-        this._bubble();
-    }
-
-    function isDuration (obj) {
-        return obj instanceof Duration;
-    }
-
-    // FORMATTING
-
-    function offset (token, separator) {
-        addFormatToken(token, 0, 0, function () {
-            var offset = this.utcOffset();
-            var sign = '+';
-            if (offset < 0) {
-                offset = -offset;
-                sign = '-';
-            }
-            return sign + zeroFill(~~(offset / 60), 2) + separator + zeroFill(~~(offset) % 60, 2);
-        });
-    }
-
-    offset('Z', ':');
-    offset('ZZ', '');
-
-    // PARSING
-
-    addRegexToken('Z',  matchShortOffset);
-    addRegexToken('ZZ', matchShortOffset);
-    addParseToken(['Z', 'ZZ'], function (input, array, config) {
-        config._useUTC = true;
-        config._tzm = offsetFromString(matchShortOffset, input);
-    });
-
-    // HELPERS
-
-    // timezone chunker
-    // '+10:00' > ['10',  '00']
-    // '-1530'  > ['-15', '30']
-    var chunkOffset = /([\+\-]|\d\d)/gi;
-
-    function offsetFromString(matcher, string) {
-        var matches = ((string || '').match(matcher) || []);
-        var chunk   = matches[matches.length - 1] || [];
-        var parts   = (chunk + '').match(chunkOffset) || ['-', 0, 0];
-        var minutes = +(parts[1] * 60) + toInt(parts[2]);
-
-        return parts[0] === '+' ? minutes : -minutes;
-    }
-
-    // Return a moment from input, that is local/utc/zone equivalent to model.
-    function cloneWithOffset(input, model) {
-        var res, diff;
-        if (model._isUTC) {
-            res = model.clone();
-            diff = (isMoment(input) || isDate(input) ? input.valueOf() : local__createLocal(input).valueOf()) - res.valueOf();
-            // Use low-level api, because this fn is low-level api.
-            res._d.setTime(res._d.valueOf() + diff);
-            utils_hooks__hooks.updateOffset(res, false);
-            return res;
-        } else {
-            return local__createLocal(input).local();
-        }
-    }
-
-    function getDateOffset (m) {
-        // On Firefox.24 Date#getTimezoneOffset returns a floating point.
-        // https://github.com/moment/moment/pull/1871
-        return -Math.round(m._d.getTimezoneOffset() / 15) * 15;
-    }
-
-    // HOOKS
-
-    // This function will be called whenever a moment is mutated.
-    // It is intended to keep the offset in sync with the timezone.
-    utils_hooks__hooks.updateOffset = function () {};
-
-    // MOMENTS
-
-    // keepLocalTime = true means only change the timezone, without
-    // affecting the local hour. So 5:31:26 +0300 --[utcOffset(2, true)]-->
-    // 5:31:26 +0200 It is possible that 5:31:26 doesn't exist with offset
-    // +0200, so we adjust the time as needed, to be valid.
-    //
-    // Keeping the time actually adds/subtracts (one hour)
-    // from the actual represented time. That is why we call updateOffset
-    // a second time. In case it wants us to change the offset again
-    // _changeInProgress == true case, then we have to adjust, because
-    // there is no such time in the given timezone.
-    function getSetOffset (input, keepLocalTime) {
-        var offset = this._offset || 0,
-            localAdjust;
-        if (!this.isValid()) {
-            return input != null ? this : NaN;
-        }
-        if (input != null) {
-            if (typeof input === 'string') {
-                input = offsetFromString(matchShortOffset, input);
-            } else if (Math.abs(input) < 16) {
-                input = input * 60;
-            }
-            if (!this._isUTC && keepLocalTime) {
-                localAdjust = getDateOffset(this);
-            }
-            this._offset = input;
-            this._isUTC = true;
-            if (localAdjust != null) {
-                this.add(localAdjust, 'm');
-            }
-            if (offset !== input) {
-                if (!keepLocalTime || this._changeInProgress) {
-                    add_subtract__addSubtract(this, create__createDuration(input - offset, 'm'), 1, false);
-                } else if (!this._changeInProgress) {
-                    this._changeInProgress = true;
-                    utils_hooks__hooks.updateOffset(this, true);
-                    this._changeInProgress = null;
-                }
-            }
-            return this;
-        } else {
-            return this._isUTC ? offset : getDateOffset(this);
-        }
-    }
-
-    function getSetZone (input, keepLocalTime) {
-        if (input != null) {
-            if (typeof input !== 'string') {
-                input = -input;
-            }
-
-            this.utcOffset(input, keepLocalTime);
-
-            return this;
-        } else {
-            return -this.utcOffset();
-        }
-    }
-
-    function setOffsetToUTC (keepLocalTime) {
-        return this.utcOffset(0, keepLocalTime);
-    }
-
-    function setOffsetToLocal (keepLocalTime) {
-        if (this._isUTC) {
-            this.utcOffset(0, keepLocalTime);
-            this._isUTC = false;
-
-            if (keepLocalTime) {
-                this.subtract(getDateOffset(this), 'm');
-            }
-        }
-        return this;
-    }
-
-    function setOffsetToParsedOffset () {
-        if (this._tzm) {
-            this.utcOffset(this._tzm);
-        } else if (typeof this._i === 'string') {
-            this.utcOffset(offsetFromString(matchOffset, this._i));
-        }
-        return this;
-    }
-
-    function hasAlignedHourOffset (input) {
-        if (!this.isValid()) {
-            return false;
-        }
-        input = input ? local__createLocal(input).utcOffset() : 0;
-
-        return (this.utcOffset() - input) % 60 === 0;
-    }
-
-    function isDaylightSavingTime () {
-        return (
-            this.utcOffset() > this.clone().month(0).utcOffset() ||
-            this.utcOffset() > this.clone().month(5).utcOffset()
-        );
-    }
-
-    function isDaylightSavingTimeShifted () {
-        if (!isUndefined(this._isDSTShifted)) {
-            return this._isDSTShifted;
-        }
-
-        var c = {};
-
-        copyConfig(c, this);
-        c = prepareConfig(c);
-
-        if (c._a) {
-            var other = c._isUTC ? create_utc__createUTC(c._a) : local__createLocal(c._a);
-            this._isDSTShifted = this.isValid() &&
-                compareArrays(c._a, other.toArray()) > 0;
-        } else {
-            this._isDSTShifted = false;
-        }
-
-        return this._isDSTShifted;
-    }
-
-    function isLocal () {
-        return this.isValid() ? !this._isUTC : false;
-    }
-
-    function isUtcOffset () {
-        return this.isValid() ? this._isUTC : false;
-    }
-
-    function isUtc () {
-        return this.isValid() ? this._isUTC && this._offset === 0 : false;
-    }
-
-    // ASP.NET json date format regex
-    var aspNetRegex = /^(\-)?(?:(\d*)[. ])?(\d+)\:(\d+)(?:\:(\d+)\.?(\d{3})?\d*)?$/;
-
-    // from http://docs.closure-library.googlecode.com/git/closure_goog_date_date.js.source.html
-    // somewhat more in line with 4.4.3.2 2004 spec, but allows decimal anywhere
-    // and further modified to allow for strings containing both week and day
-    var isoRegex = /^(-)?P(?:(-?[0-9,.]*)Y)?(?:(-?[0-9,.]*)M)?(?:(-?[0-9,.]*)W)?(?:(-?[0-9,.]*)D)?(?:T(?:(-?[0-9,.]*)H)?(?:(-?[0-9,.]*)M)?(?:(-?[0-9,.]*)S)?)?$/;
-
-    function create__createDuration (input, key) {
-        var duration = input,
-            // matching against regexp is expensive, do it on demand
-            match = null,
-            sign,
-            ret,
-            diffRes;
-
-        if (isDuration(input)) {
-            duration = {
-                ms : input._milliseconds,
-                d  : input._days,
-                M  : input._months
-            };
-        } else if (typeof input === 'number') {
-            duration = {};
-            if (key) {
-                duration[key] = input;
-            } else {
-                duration.milliseconds = input;
-            }
-        } else if (!!(match = aspNetRegex.exec(input))) {
-            sign = (match[1] === '-') ? -1 : 1;
-            duration = {
-                y  : 0,
-                d  : toInt(match[DATE])        * sign,
-                h  : toInt(match[HOUR])        * sign,
-                m  : toInt(match[MINUTE])      * sign,
-                s  : toInt(match[SECOND])      * sign,
-                ms : toInt(match[MILLISECOND]) * sign
-            };
-        } else if (!!(match = isoRegex.exec(input))) {
-            sign = (match[1] === '-') ? -1 : 1;
-            duration = {
-                y : parseIso(match[2], sign),
-                M : parseIso(match[3], sign),
-                w : parseIso(match[4], sign),
-                d : parseIso(match[5], sign),
-                h : parseIso(match[6], sign),
-                m : parseIso(match[7], sign),
-                s : parseIso(match[8], sign)
-            };
-        } else if (duration == null) {// checks for null or undefined
-            duration = {};
-        } else if (typeof duration === 'object' && ('from' in duration || 'to' in duration)) {
-            diffRes = momentsDifference(local__createLocal(duration.from), local__createLocal(duration.to));
-
-            duration = {};
-            duration.ms = diffRes.milliseconds;
-            duration.M = diffRes.months;
-        }
-
-        ret = new Duration(duration);
-
-        if (isDuration(input) && hasOwnProp(input, '_locale')) {
-            ret._locale = input._locale;
-        }
-
-        return ret;
-    }
-
-    create__createDuration.fn = Duration.prototype;
-
-    function parseIso (inp, sign) {
-        // We'd normally use ~~inp for this, but unfortunately it also
-        // converts floats to ints.
-        // inp may be undefined, so careful calling replace on it.
-        var res = inp && parseFloat(inp.replace(',', '.'));
-        // apply sign while we're at it
-        return (isNaN(res) ? 0 : res) * sign;
-    }
-
-    function positiveMomentsDifference(base, other) {
-        var res = {milliseconds: 0, months: 0};
-
-        res.months = other.month() - base.month() +
-            (other.year() - base.year()) * 12;
-        if (base.clone().add(res.months, 'M').isAfter(other)) {
-            --res.months;
-        }
-
-        res.milliseconds = +other - +(base.clone().add(res.months, 'M'));
-
-        return res;
-    }
-
-    function momentsDifference(base, other) {
-        var res;
-        if (!(base.isValid() && other.isValid())) {
-            return {milliseconds: 0, months: 0};
-        }
-
-        other = cloneWithOffset(other, base);
-        if (base.isBefore(other)) {
-            res = positiveMomentsDifference(base, other);
-        } else {
-            res = positiveMomentsDifference(other, base);
-            res.milliseconds = -res.milliseconds;
-            res.months = -res.months;
-        }
-
-        return res;
-    }
-
-    function absRound (number) {
-        if (number < 0) {
-            return Math.round(-1 * number) * -1;
-        } else {
-            return Math.round(number);
-        }
-    }
-
-    // TODO: remove 'name' arg after deprecation is removed
-    function createAdder(direction, name) {
-        return function (val, period) {
-            var dur, tmp;
-            //invert the arguments, but complain about it
-            if (period !== null && !isNaN(+period)) {
-                deprecateSimple(name, 'moment().' + name  + '(period, number) is deprecated. Please use moment().' + name + '(number, period).');
-                tmp = val; val = period; period = tmp;
-            }
-
-            val = typeof val === 'string' ? +val : val;
-            dur = create__createDuration(val, period);
-            add_subtract__addSubtract(this, dur, direction);
-            return this;
-        };
-    }
-
-    function add_subtract__addSubtract (mom, duration, isAdding, updateOffset) {
-        var milliseconds = duration._milliseconds,
-            days = absRound(duration._days),
-            months = absRound(duration._months);
-
-        if (!mom.isValid()) {
-            // No op
-            return;
-        }
-
-        updateOffset = updateOffset == null ? true : updateOffset;
-
-        if (milliseconds) {
-            mom._d.setTime(mom._d.valueOf() + milliseconds * isAdding);
-        }
-        if (days) {
-            get_set__set(mom, 'Date', get_set__get(mom, 'Date') + days * isAdding);
-        }
-        if (months) {
-            setMonth(mom, get_set__get(mom, 'Month') + months * isAdding);
-        }
-        if (updateOffset) {
-            utils_hooks__hooks.updateOffset(mom, days || months);
-        }
-    }
-
-    var add_subtract__add      = createAdder(1, 'add');
-    var add_subtract__subtract = createAdder(-1, 'subtract');
-
-    function moment_calendar__calendar (time, formats) {
-        // We want to compare the start of today, vs this.
-        // Getting start-of-today depends on whether we're local/utc/offset or not.
-        var now = time || local__createLocal(),
-            sod = cloneWithOffset(now, this).startOf('day'),
-            diff = this.diff(sod, 'days', true),
-            format = diff < -6 ? 'sameElse' :
-                diff < -1 ? 'lastWeek' :
-                diff < 0 ? 'lastDay' :
-                diff < 1 ? 'sameDay' :
-                diff < 2 ? 'nextDay' :
-                diff < 7 ? 'nextWeek' : 'sameElse';
-
-        var output = formats && (isFunction(formats[format]) ? formats[format]() : formats[format]);
-
-        return this.format(output || this.localeData().calendar(format, this, local__createLocal(now)));
-    }
-
-    function clone () {
-        return new Moment(this);
-    }
-
-    function isAfter (input, units) {
-        var localInput = isMoment(input) ? input : local__createLocal(input);
-        if (!(this.isValid() && localInput.isValid())) {
-            return false;
-        }
-        units = normalizeUnits(!isUndefined(units) ? units : 'millisecond');
-        if (units === 'millisecond') {
-            return this.valueOf() > localInput.valueOf();
-        } else {
-            return localInput.valueOf() < this.clone().startOf(units).valueOf();
-        }
-    }
-
-    function isBefore (input, units) {
-        var localInput = isMoment(input) ? input : local__createLocal(input);
-        if (!(this.isValid() && localInput.isValid())) {
-            return false;
-        }
-        units = normalizeUnits(!isUndefined(units) ? units : 'millisecond');
-        if (units === 'millisecond') {
-            return this.valueOf() < localInput.valueOf();
-        } else {
-            return this.clone().endOf(units).valueOf() < localInput.valueOf();
-        }
-    }
-
-    function isBetween (from, to, units, inclusivity) {
-        inclusivity = inclusivity || '()';
-        return (inclusivity[0] === '(' ? this.isAfter(from, units) : !this.isBefore(from, units)) &&
-            (inclusivity[1] === ')' ? this.isBefore(to, units) : !this.isAfter(to, units));
-    }
-
-    function isSame (input, units) {
-        var localInput = isMoment(input) ? input : local__createLocal(input),
-            inputMs;
-        if (!(this.isValid() && localInput.isValid())) {
-            return false;
-        }
-        units = normalizeUnits(units || 'millisecond');
-        if (units === 'millisecond') {
-            return this.valueOf() === localInput.valueOf();
-        } else {
-            inputMs = localInput.valueOf();
-            return this.clone().startOf(units).valueOf() <= inputMs && inputMs <= this.clone().endOf(units).valueOf();
-        }
-    }
-
-    function isSameOrAfter (input, units) {
-        return this.isSame(input, units) || this.isAfter(input,units);
-    }
-
-    function isSameOrBefore (input, units) {
-        return this.isSame(input, units) || this.isBefore(input,units);
-    }
-
-    function diff (input, units, asFloat) {
-        var that,
-            zoneDelta,
-            delta, output;
-
-        if (!this.isValid()) {
-            return NaN;
-        }
-
-        that = cloneWithOffset(input, this);
-
-        if (!that.isValid()) {
-            return NaN;
-        }
-
-        zoneDelta = (that.utcOffset() - this.utcOffset()) * 6e4;
-
-        units = normalizeUnits(units);
-
-        if (units === 'year' || units === 'month' || units === 'quarter') {
-            output = monthDiff(this, that);
-            if (units === 'quarter') {
-                output = output / 3;
-            } else if (units === 'year') {
-                output = output / 12;
-            }
-        } else {
-            delta = this - that;
-            output = units === 'second' ? delta / 1e3 : // 1000
-                units === 'minute' ? delta / 6e4 : // 1000 * 60
-                units === 'hour' ? delta / 36e5 : // 1000 * 60 * 60
-                units === 'day' ? (delta - zoneDelta) / 864e5 : // 1000 * 60 * 60 * 24, negate dst
-                units === 'week' ? (delta - zoneDelta) / 6048e5 : // 1000 * 60 * 60 * 24 * 7, negate dst
-                delta;
-        }
-        return asFloat ? output : absFloor(output);
-    }
-
-    function monthDiff (a, b) {
-        // difference in months
-        var wholeMonthDiff = ((b.year() - a.year()) * 12) + (b.month() - a.month()),
-            // b is in (anchor - 1 month, anchor + 1 month)
-            anchor = a.clone().add(wholeMonthDiff, 'months'),
-            anchor2, adjust;
-
-        if (b - anchor < 0) {
-            anchor2 = a.clone().add(wholeMonthDiff - 1, 'months');
-            // linear across the month
-            adjust = (b - anchor) / (anchor - anchor2);
-        } else {
-            anchor2 = a.clone().add(wholeMonthDiff + 1, 'months');
-            // linear across the month
-            adjust = (b - anchor) / (anchor2 - anchor);
-        }
-
-        //check for negative zero, return zero if negative zero
-        return -(wholeMonthDiff + adjust) || 0;
-    }
-
-    utils_hooks__hooks.defaultFormat = 'YYYY-MM-DDTHH:mm:ssZ';
-    utils_hooks__hooks.defaultFormatUtc = 'YYYY-MM-DDTHH:mm:ss[Z]';
-
-    function toString () {
-        return this.clone().locale('en').format('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
-    }
-
-    function moment_format__toISOString () {
-        var m = this.clone().utc();
-        if (0 < m.year() && m.year() <= 9999) {
-            if (isFunction(Date.prototype.toISOString)) {
-                // native implementation is ~50x faster, use it when we can
-                return this.toDate().toISOString();
-            } else {
-                return formatMoment(m, 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
-            }
-        } else {
-            return formatMoment(m, 'YYYYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
-        }
-    }
-
-    function format (inputString) {
-        if (!inputString) {
-            inputString = this.isUtc() ? utils_hooks__hooks.defaultFormatUtc : utils_hooks__hooks.defaultFormat;
-        }
-        var output = formatMoment(this, inputString);
-        return this.localeData().postformat(output);
-    }
-
-    function from (time, withoutSuffix) {
-        if (this.isValid() &&
-                ((isMoment(time) && time.isValid()) ||
-                 local__createLocal(time).isValid())) {
-            return create__createDuration({to: this, from: time}).locale(this.locale()).humanize(!withoutSuffix);
-        } else {
-            return this.localeData().invalidDate();
-        }
-    }
-
-    function fromNow (withoutSuffix) {
-        return this.from(local__createLocal(), withoutSuffix);
-    }
-
-    function to (time, withoutSuffix) {
-        if (this.isValid() &&
-                ((isMoment(time) && time.isValid()) ||
-                 local__createLocal(time).isValid())) {
-            return create__createDuration({from: this, to: time}).locale(this.locale()).humanize(!withoutSuffix);
-        } else {
-            return this.localeData().invalidDate();
-        }
-    }
-
-    function toNow (withoutSuffix) {
-        return this.to(local__createLocal(), withoutSuffix);
-    }
-
-    // If passed a locale key, it will set the locale for this
-    // instance.  Otherwise, it will return the locale configuration
-    // variables for this instance.
-    function locale (key) {
-        var newLocaleData;
-
-        if (key === undefined) {
-            return this._locale._abbr;
-        } else {
-            newLocaleData = locale_locales__getLocale(key);
-            if (newLocaleData != null) {
-                this._locale = newLocaleData;
-            }
-            return this;
-        }
-    }
-
-    var lang = deprecate(
-        'moment().lang() is deprecated. Instead, use moment().localeData() to get the language configuration. Use moment().locale() to change languages.',
-        function (key) {
-            if (key === undefined) {
-                return this.localeData();
-            } else {
-                return this.locale(key);
-            }
-        }
-    );
-
-    function localeData () {
-        return this._locale;
-    }
-
-    function startOf (units) {
-        units = normalizeUnits(units);
-        // the following switch intentionally omits break keywords
-        // to utilize falling through the cases.
-        switch (units) {
-        case 'year':
-            this.month(0);
-            /* falls through */
-        case 'quarter':
-        case 'month':
-            this.date(1);
-            /* falls through */
-        case 'week':
-        case 'isoWeek':
-        case 'day':
-        case 'date':
-            this.hours(0);
-            /* falls through */
-        case 'hour':
-            this.minutes(0);
-            /* falls through */
-        case 'minute':
-            this.seconds(0);
-            /* falls through */
-        case 'second':
-            this.milliseconds(0);
-        }
-
-        // weeks are a special case
-        if (units === 'week') {
-            this.weekday(0);
-        }
-        if (units === 'isoWeek') {
-            this.isoWeekday(1);
-        }
-
-        // quarters are also special
-        if (units === 'quarter') {
-            this.month(Math.floor(this.month() / 3) * 3);
-        }
-
-        return this;
-    }
-
-    function endOf (units) {
-        units = normalizeUnits(units);
-        if (units === undefined || units === 'millisecond') {
-            return this;
-        }
-
-        // 'date' is an alias for 'day', so it should be considered as such.
-        if (units === 'date') {
-            units = 'day';
-        }
-
-        return this.startOf(units).add(1, (units === 'isoWeek' ? 'week' : units)).subtract(1, 'ms');
-    }
-
-    function to_type__valueOf () {
-        return this._d.valueOf() - ((this._offset || 0) * 60000);
-    }
-
-    function unix () {
-        return Math.floor(this.valueOf() / 1000);
-    }
-
-    function toDate () {
-        return this._offset ? new Date(this.valueOf()) : this._d;
-    }
-
-    function toArray () {
-        var m = this;
-        return [m.year(), m.month(), m.date(), m.hour(), m.minute(), m.second(), m.millisecond()];
-    }
-
-    function toObject () {
-        var m = this;
-        return {
-            years: m.year(),
-            months: m.month(),
-            date: m.date(),
-            hours: m.hours(),
-            minutes: m.minutes(),
-            seconds: m.seconds(),
-            milliseconds: m.milliseconds()
-        };
-    }
-
-    function toJSON () {
-        // new Date(NaN).toJSON() === null
-        return this.isValid() ? this.toISOString() : null;
-    }
-
-    function moment_valid__isValid () {
-        return valid__isValid(this);
-    }
-
-    function parsingFlags () {
-        return extend({}, getParsingFlags(this));
-    }
-
-    function invalidAt () {
-        return getParsingFlags(this).overflow;
-    }
-
-    function creationData() {
-        return {
-            input: this._i,
-            format: this._f,
-            locale: this._locale,
-            isUTC: this._isUTC,
-            strict: this._strict
-        };
-    }
-
-    // FORMATTING
-
-    addFormatToken(0, ['gg', 2], 0, function () {
-        return this.weekYear() % 100;
-    });
-
-    addFormatToken(0, ['GG', 2], 0, function () {
-        return this.isoWeekYear() % 100;
-    });
-
-    function addWeekYearFormatToken (token, getter) {
-        addFormatToken(0, [token, token.length], 0, getter);
-    }
-
-    addWeekYearFormatToken('gggg',     'weekYear');
-    addWeekYearFormatToken('ggggg',    'weekYear');
-    addWeekYearFormatToken('GGGG',  'isoWeekYear');
-    addWeekYearFormatToken('GGGGG', 'isoWeekYear');
-
-    // ALIASES
-
-    addUnitAlias('weekYear', 'gg');
-    addUnitAlias('isoWeekYear', 'GG');
-
-    // PARSING
-
-    addRegexToken('G',      matchSigned);
-    addRegexToken('g',      matchSigned);
-    addRegexToken('GG',     match1to2, match2);
-    addRegexToken('gg',     match1to2, match2);
-    addRegexToken('GGGG',   match1to4, match4);
-    addRegexToken('gggg',   match1to4, match4);
-    addRegexToken('GGGGG',  match1to6, match6);
-    addRegexToken('ggggg',  match1to6, match6);
-
-    addWeekParseToken(['gggg', 'ggggg', 'GGGG', 'GGGGG'], function (input, week, config, token) {
-        week[token.substr(0, 2)] = toInt(input);
-    });
-
-    addWeekParseToken(['gg', 'GG'], function (input, week, config, token) {
-        week[token] = utils_hooks__hooks.parseTwoDigitYear(input);
-    });
-
-    // MOMENTS
-
-    function getSetWeekYear (input) {
-        return getSetWeekYearHelper.call(this,
-                input,
-                this.week(),
-                this.weekday(),
-                this.localeData()._week.dow,
-                this.localeData()._week.doy);
-    }
-
-    function getSetISOWeekYear (input) {
-        return getSetWeekYearHelper.call(this,
-                input, this.isoWeek(), this.isoWeekday(), 1, 4);
-    }
-
-    function getISOWeeksInYear () {
-        return weeksInYear(this.year(), 1, 4);
-    }
-
-    function getWeeksInYear () {
-        var weekInfo = this.localeData()._week;
-        return weeksInYear(this.year(), weekInfo.dow, weekInfo.doy);
-    }
-
-    function getSetWeekYearHelper(input, week, weekday, dow, doy) {
-        var weeksTarget;
-        if (input == null) {
-            return weekOfYear(this, dow, doy).year;
-        } else {
-            weeksTarget = weeksInYear(input, dow, doy);
-            if (week > weeksTarget) {
-                week = weeksTarget;
-            }
-            return setWeekAll.call(this, input, week, weekday, dow, doy);
-        }
-    }
-
-    function setWeekAll(weekYear, week, weekday, dow, doy) {
-        var dayOfYearData = dayOfYearFromWeeks(weekYear, week, weekday, dow, doy),
-            date = createUTCDate(dayOfYearData.year, 0, dayOfYearData.dayOfYear);
-
-        this.year(date.getUTCFullYear());
-        this.month(date.getUTCMonth());
-        this.date(date.getUTCDate());
-        return this;
-    }
-
-    // FORMATTING
-
-    addFormatToken('Q', 0, 'Qo', 'quarter');
-
-    // ALIASES
-
-    addUnitAlias('quarter', 'Q');
-
-    // PARSING
-
-    addRegexToken('Q', match1);
-    addParseToken('Q', function (input, array) {
-        array[MONTH] = (toInt(input) - 1) * 3;
-    });
-
-    // MOMENTS
-
-    function getSetQuarter (input) {
-        return input == null ? Math.ceil((this.month() + 1) / 3) : this.month((input - 1) * 3 + this.month() % 3);
-    }
-
-    // FORMATTING
-
-    addFormatToken('w', ['ww', 2], 'wo', 'week');
-    addFormatToken('W', ['WW', 2], 'Wo', 'isoWeek');
-
-    // ALIASES
-
-    addUnitAlias('week', 'w');
-    addUnitAlias('isoWeek', 'W');
-
-    // PARSING
-
-    addRegexToken('w',  match1to2);
-    addRegexToken('ww', match1to2, match2);
-    addRegexToken('W',  match1to2);
-    addRegexToken('WW', match1to2, match2);
-
-    addWeekParseToken(['w', 'ww', 'W', 'WW'], function (input, week, config, token) {
-        week[token.substr(0, 1)] = toInt(input);
-    });
-
-    // HELPERS
-
-    // LOCALES
-
-    function localeWeek (mom) {
-        return weekOfYear(mom, this._week.dow, this._week.doy).week;
-    }
-
-    var defaultLocaleWeek = {
-        dow : 0, // Sunday is the first day of the week.
-        doy : 6  // The week that contains Jan 1st is the first week of the year.
-    };
-
-    function localeFirstDayOfWeek () {
-        return this._week.dow;
-    }
-
-    function localeFirstDayOfYear () {
-        return this._week.doy;
-    }
-
-    // MOMENTS
-
-    function getSetWeek (input) {
-        var week = this.localeData().week(this);
-        return input == null ? week : this.add((input - week) * 7, 'd');
-    }
-
-    function getSetISOWeek (input) {
-        var week = weekOfYear(this, 1, 4).week;
-        return input == null ? week : this.add((input - week) * 7, 'd');
-    }
-
-    // FORMATTING
-
-    addFormatToken('D', ['DD', 2], 'Do', 'date');
-
-    // ALIASES
-
-    addUnitAlias('date', 'D');
-
-    // PARSING
-
-    addRegexToken('D',  match1to2);
-    addRegexToken('DD', match1to2, match2);
-    addRegexToken('Do', function (isStrict, locale) {
-        return isStrict ? locale._ordinalParse : locale._ordinalParseLenient;
-    });
-
-    addParseToken(['D', 'DD'], DATE);
-    addParseToken('Do', function (input, array) {
-        array[DATE] = toInt(input.match(match1to2)[0], 10);
-    });
-
-    // MOMENTS
-
-    var getSetDayOfMonth = makeGetSet('Date', true);
-
-    // FORMATTING
-
-    addFormatToken('d', 0, 'do', 'day');
-
-    addFormatToken('dd', 0, 0, function (format) {
-        return this.localeData().weekdaysMin(this, format);
-    });
-
-    addFormatToken('ddd', 0, 0, function (format) {
-        return this.localeData().weekdaysShort(this, format);
-    });
-
-    addFormatToken('dddd', 0, 0, function (format) {
-        return this.localeData().weekdays(this, format);
-    });
-
-    addFormatToken('e', 0, 0, 'weekday');
-    addFormatToken('E', 0, 0, 'isoWeekday');
-
-    // ALIASES
-
-    addUnitAlias('day', 'd');
-    addUnitAlias('weekday', 'e');
-    addUnitAlias('isoWeekday', 'E');
-
-    // PARSING
-
-    addRegexToken('d',    match1to2);
-    addRegexToken('e',    match1to2);
-    addRegexToken('E',    match1to2);
-    addRegexToken('dd',   function (isStrict, locale) {
-        return locale.weekdaysMinRegex(isStrict);
-    });
-    addRegexToken('ddd',   function (isStrict, locale) {
-        return locale.weekdaysShortRegex(isStrict);
-    });
-    addRegexToken('dddd',   function (isStrict, locale) {
-        return locale.weekdaysRegex(isStrict);
-    });
-
-    addWeekParseToken(['dd', 'ddd', 'dddd'], function (input, week, config, token) {
-        var weekday = config._locale.weekdaysParse(input, token, config._strict);
-        // if we didn't get a weekday name, mark the date as invalid
-        if (weekday != null) {
-            week.d = weekday;
-        } else {
-            getParsingFlags(config).invalidWeekday = input;
-        }
-    });
-
-    addWeekParseToken(['d', 'e', 'E'], function (input, week, config, token) {
-        week[token] = toInt(input);
-    });
-
-    // HELPERS
-
-    function parseWeekday(input, locale) {
-        if (typeof input !== 'string') {
-            return input;
-        }
-
-        if (!isNaN(input)) {
-            return parseInt(input, 10);
-        }
-
-        input = locale.weekdaysParse(input);
-        if (typeof input === 'number') {
-            return input;
-        }
-
-        return null;
-    }
-
-    // LOCALES
-
-    var defaultLocaleWeekdays = 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_');
-    function localeWeekdays (m, format) {
-        return isArray(this._weekdays) ? this._weekdays[m.day()] :
-            this._weekdays[this._weekdays.isFormat.test(format) ? 'format' : 'standalone'][m.day()];
-    }
-
-    var defaultLocaleWeekdaysShort = 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_');
-    function localeWeekdaysShort (m) {
-        return this._weekdaysShort[m.day()];
-    }
-
-    var defaultLocaleWeekdaysMin = 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_');
-    function localeWeekdaysMin (m) {
-        return this._weekdaysMin[m.day()];
-    }
-
-    function day_of_week__handleStrictParse(weekdayName, format, strict) {
-        var i, ii, mom, llc = weekdayName.toLocaleLowerCase();
-        if (!this._weekdaysParse) {
-            this._weekdaysParse = [];
-            this._shortWeekdaysParse = [];
-            this._minWeekdaysParse = [];
-
-            for (i = 0; i < 7; ++i) {
-                mom = create_utc__createUTC([2000, 1]).day(i);
-                this._minWeekdaysParse[i] = this.weekdaysMin(mom, '').toLocaleLowerCase();
-                this._shortWeekdaysParse[i] = this.weekdaysShort(mom, '').toLocaleLowerCase();
-                this._weekdaysParse[i] = this.weekdays(mom, '').toLocaleLowerCase();
-            }
-        }
-
-        if (strict) {
-            if (format === 'dddd') {
-                ii = indexOf.call(this._weekdaysParse, llc);
-                return ii !== -1 ? ii : null;
-            } else if (format === 'ddd') {
-                ii = indexOf.call(this._shortWeekdaysParse, llc);
-                return ii !== -1 ? ii : null;
-            } else {
-                ii = indexOf.call(this._minWeekdaysParse, llc);
-                return ii !== -1 ? ii : null;
-            }
-        } else {
-            if (format === 'dddd') {
-                ii = indexOf.call(this._weekdaysParse, llc);
-                if (ii !== -1) {
-                    return ii;
-                }
-                ii = indexOf.call(this._shortWeekdaysParse, llc);
-                if (ii !== -1) {
-                    return ii;
-                }
-                ii = indexOf.call(this._minWeekdaysParse, llc);
-                return ii !== -1 ? ii : null;
-            } else if (format === 'ddd') {
-                ii = indexOf.call(this._shortWeekdaysParse, llc);
-                if (ii !== -1) {
-                    return ii;
-                }
-                ii = indexOf.call(this._weekdaysParse, llc);
-                if (ii !== -1) {
-                    return ii;
-                }
-                ii = indexOf.call(this._minWeekdaysParse, llc);
-                return ii !== -1 ? ii : null;
-            } else {
-                ii = indexOf.call(this._minWeekdaysParse, llc);
-                if (ii !== -1) {
-                    return ii;
-                }
-                ii = indexOf.call(this._weekdaysParse, llc);
-                if (ii !== -1) {
-                    return ii;
-                }
-                ii = indexOf.call(this._shortWeekdaysParse, llc);
-                return ii !== -1 ? ii : null;
-            }
-        }
-    }
-
-    function localeWeekdaysParse (weekdayName, format, strict) {
-        var i, mom, regex;
-
-        if (this._weekdaysParseExact) {
-            return day_of_week__handleStrictParse.call(this, weekdayName, format, strict);
-        }
-
-        if (!this._weekdaysParse) {
-            this._weekdaysParse = [];
-            this._minWeekdaysParse = [];
-            this._shortWeekdaysParse = [];
-            this._fullWeekdaysParse = [];
-        }
-
-        for (i = 0; i < 7; i++) {
-            // make the regex if we don't have it already
-
-            mom = create_utc__createUTC([2000, 1]).day(i);
-            if (strict && !this._fullWeekdaysParse[i]) {
-                this._fullWeekdaysParse[i] = new RegExp('^' + this.weekdays(mom, '').replace('.', '\.?') + '$', 'i');
-                this._shortWeekdaysParse[i] = new RegExp('^' + this.weekdaysShort(mom, '').replace('.', '\.?') + '$', 'i');
-                this._minWeekdaysParse[i] = new RegExp('^' + this.weekdaysMin(mom, '').replace('.', '\.?') + '$', 'i');
-            }
-            if (!this._weekdaysParse[i]) {
-                regex = '^' + this.weekdays(mom, '') + '|^' + this.weekdaysShort(mom, '') + '|^' + this.weekdaysMin(mom, '');
-                this._weekdaysParse[i] = new RegExp(regex.replace('.', ''), 'i');
-            }
-            // test the regex
-            if (strict && format === 'dddd' && this._fullWeekdaysParse[i].test(weekdayName)) {
-                return i;
-            } else if (strict && format === 'ddd' && this._shortWeekdaysParse[i].test(weekdayName)) {
-                return i;
-            } else if (strict && format === 'dd' && this._minWeekdaysParse[i].test(weekdayName)) {
-                return i;
-            } else if (!strict && this._weekdaysParse[i].test(weekdayName)) {
-                return i;
-            }
-        }
-    }
-
-    // MOMENTS
-
-    function getSetDayOfWeek (input) {
-        if (!this.isValid()) {
-            return input != null ? this : NaN;
-        }
-        var day = this._isUTC ? this._d.getUTCDay() : this._d.getDay();
-        if (input != null) {
-            input = parseWeekday(input, this.localeData());
-            return this.add(input - day, 'd');
-        } else {
-            return day;
-        }
-    }
-
-    function getSetLocaleDayOfWeek (input) {
-        if (!this.isValid()) {
-            return input != null ? this : NaN;
-        }
-        var weekday = (this.day() + 7 - this.localeData()._week.dow) % 7;
-        return input == null ? weekday : this.add(input - weekday, 'd');
-    }
-
-    function getSetISODayOfWeek (input) {
-        if (!this.isValid()) {
-            return input != null ? this : NaN;
-        }
-        // behaves the same as moment#day except
-        // as a getter, returns 7 instead of 0 (1-7 range instead of 0-6)
-        // as a setter, sunday should belong to the previous week.
-        return input == null ? this.day() || 7 : this.day(this.day() % 7 ? input : input - 7);
-    }
-
-    var defaultWeekdaysRegex = matchWord;
-    function weekdaysRegex (isStrict) {
-        if (this._weekdaysParseExact) {
-            if (!hasOwnProp(this, '_weekdaysRegex')) {
-                computeWeekdaysParse.call(this);
-            }
-            if (isStrict) {
-                return this._weekdaysStrictRegex;
-            } else {
-                return this._weekdaysRegex;
-            }
-        } else {
-            return this._weekdaysStrictRegex && isStrict ?
-                this._weekdaysStrictRegex : this._weekdaysRegex;
-        }
-    }
-
-    var defaultWeekdaysShortRegex = matchWord;
-    function weekdaysShortRegex (isStrict) {
-        if (this._weekdaysParseExact) {
-            if (!hasOwnProp(this, '_weekdaysRegex')) {
-                computeWeekdaysParse.call(this);
-            }
-            if (isStrict) {
-                return this._weekdaysShortStrictRegex;
-            } else {
-                return this._weekdaysShortRegex;
-            }
-        } else {
-            return this._weekdaysShortStrictRegex && isStrict ?
-                this._weekdaysShortStrictRegex : this._weekdaysShortRegex;
-        }
-    }
-
-    var defaultWeekdaysMinRegex = matchWord;
-    function weekdaysMinRegex (isStrict) {
-        if (this._weekdaysParseExact) {
-            if (!hasOwnProp(this, '_weekdaysRegex')) {
-                computeWeekdaysParse.call(this);
-            }
-            if (isStrict) {
-                return this._weekdaysMinStrictRegex;
-            } else {
-                return this._weekdaysMinRegex;
-            }
-        } else {
-            return this._weekdaysMinStrictRegex && isStrict ?
-                this._weekdaysMinStrictRegex : this._weekdaysMinRegex;
-        }
-    }
-
-
-    function computeWeekdaysParse () {
-        function cmpLenRev(a, b) {
-            return b.length - a.length;
-        }
-
-        var minPieces = [], shortPieces = [], longPieces = [], mixedPieces = [],
-            i, mom, minp, shortp, longp;
-        for (i = 0; i < 7; i++) {
-            // make the regex if we don't have it already
-            mom = create_utc__createUTC([2000, 1]).day(i);
-            minp = this.weekdaysMin(mom, '');
-            shortp = this.weekdaysShort(mom, '');
-            longp = this.weekdays(mom, '');
-            minPieces.push(minp);
-            shortPieces.push(shortp);
-            longPieces.push(longp);
-            mixedPieces.push(minp);
-            mixedPieces.push(shortp);
-            mixedPieces.push(longp);
-        }
-        // Sorting makes sure if one weekday (or abbr) is a prefix of another it
-        // will match the longer piece.
-        minPieces.sort(cmpLenRev);
-        shortPieces.sort(cmpLenRev);
-        longPieces.sort(cmpLenRev);
-        mixedPieces.sort(cmpLenRev);
-        for (i = 0; i < 7; i++) {
-            shortPieces[i] = regexEscape(shortPieces[i]);
-            longPieces[i] = regexEscape(longPieces[i]);
-            mixedPieces[i] = regexEscape(mixedPieces[i]);
-        }
-
-        this._weekdaysRegex = new RegExp('^(' + mixedPieces.join('|') + ')', 'i');
-        this._weekdaysShortRegex = this._weekdaysRegex;
-        this._weekdaysMinRegex = this._weekdaysRegex;
-
-        this._weekdaysStrictRegex = new RegExp('^(' + longPieces.join('|') + ')', 'i');
-        this._weekdaysShortStrictRegex = new RegExp('^(' + shortPieces.join('|') + ')', 'i');
-        this._weekdaysMinStrictRegex = new RegExp('^(' + minPieces.join('|') + ')', 'i');
-    }
-
-    // FORMATTING
-
-    addFormatToken('DDD', ['DDDD', 3], 'DDDo', 'dayOfYear');
-
-    // ALIASES
-
-    addUnitAlias('dayOfYear', 'DDD');
-
-    // PARSING
-
-    addRegexToken('DDD',  match1to3);
-    addRegexToken('DDDD', match3);
-    addParseToken(['DDD', 'DDDD'], function (input, array, config) {
-        config._dayOfYear = toInt(input);
-    });
-
-    // HELPERS
-
-    // MOMENTS
-
-    function getSetDayOfYear (input) {
-        var dayOfYear = Math.round((this.clone().startOf('day') - this.clone().startOf('year')) / 864e5) + 1;
-        return input == null ? dayOfYear : this.add((input - dayOfYear), 'd');
-    }
-
-    // FORMATTING
-
-    function hFormat() {
-        return this.hours() % 12 || 12;
-    }
-
-    function kFormat() {
-        return this.hours() || 24;
-    }
-
-    addFormatToken('H', ['HH', 2], 0, 'hour');
-    addFormatToken('h', ['hh', 2], 0, hFormat);
-    addFormatToken('k', ['kk', 2], 0, kFormat);
-
-    addFormatToken('hmm', 0, 0, function () {
-        return '' + hFormat.apply(this) + zeroFill(this.minutes(), 2);
-    });
-
-    addFormatToken('hmmss', 0, 0, function () {
-        return '' + hFormat.apply(this) + zeroFill(this.minutes(), 2) +
-            zeroFill(this.seconds(), 2);
-    });
-
-    addFormatToken('Hmm', 0, 0, function () {
-        return '' + this.hours() + zeroFill(this.minutes(), 2);
-    });
-
-    addFormatToken('Hmmss', 0, 0, function () {
-        return '' + this.hours() + zeroFill(this.minutes(), 2) +
-            zeroFill(this.seconds(), 2);
-    });
-
-    function meridiem (token, lowercase) {
-        addFormatToken(token, 0, 0, function () {
-            return this.localeData().meridiem(this.hours(), this.minutes(), lowercase);
-        });
-    }
-
-    meridiem('a', true);
-    meridiem('A', false);
-
-    // ALIASES
-
-    addUnitAlias('hour', 'h');
-
-    // PARSING
-
-    function matchMeridiem (isStrict, locale) {
-        return locale._meridiemParse;
-    }
-
-    addRegexToken('a',  matchMeridiem);
-    addRegexToken('A',  matchMeridiem);
-    addRegexToken('H',  match1to2);
-    addRegexToken('h',  match1to2);
-    addRegexToken('HH', match1to2, match2);
-    addRegexToken('hh', match1to2, match2);
-
-    addRegexToken('hmm', match3to4);
-    addRegexToken('hmmss', match5to6);
-    addRegexToken('Hmm', match3to4);
-    addRegexToken('Hmmss', match5to6);
-
-    addParseToken(['H', 'HH'], HOUR);
-    addParseToken(['a', 'A'], function (input, array, config) {
-        config._isPm = config._locale.isPM(input);
-        config._meridiem = input;
-    });
-    addParseToken(['h', 'hh'], function (input, array, config) {
-        array[HOUR] = toInt(input);
-        getParsingFlags(config).bigHour = true;
-    });
-    addParseToken('hmm', function (input, array, config) {
-        var pos = input.length - 2;
-        array[HOUR] = toInt(input.substr(0, pos));
-        array[MINUTE] = toInt(input.substr(pos));
-        getParsingFlags(config).bigHour = true;
-    });
-    addParseToken('hmmss', function (input, array, config) {
-        var pos1 = input.length - 4;
-        var pos2 = input.length - 2;
-        array[HOUR] = toInt(input.substr(0, pos1));
-        array[MINUTE] = toInt(input.substr(pos1, 2));
-        array[SECOND] = toInt(input.substr(pos2));
-        getParsingFlags(config).bigHour = true;
-    });
-    addParseToken('Hmm', function (input, array, config) {
-        var pos = input.length - 2;
-        array[HOUR] = toInt(input.substr(0, pos));
-        array[MINUTE] = toInt(input.substr(pos));
-    });
-    addParseToken('Hmmss', function (input, array, config) {
-        var pos1 = input.length - 4;
-        var pos2 = input.length - 2;
-        array[HOUR] = toInt(input.substr(0, pos1));
-        array[MINUTE] = toInt(input.substr(pos1, 2));
-        array[SECOND] = toInt(input.substr(pos2));
-    });
-
-    // LOCALES
-
-    function localeIsPM (input) {
-        // IE8 Quirks Mode & IE7 Standards Mode do not allow accessing strings like arrays
-        // Using charAt should be more compatible.
-        return ((input + '').toLowerCase().charAt(0) === 'p');
-    }
-
-    var defaultLocaleMeridiemParse = /[ap]\.?m?\.?/i;
-    function localeMeridiem (hours, minutes, isLower) {
-        if (hours > 11) {
-            return isLower ? 'pm' : 'PM';
-        } else {
-            return isLower ? 'am' : 'AM';
-        }
-    }
-
-
-    // MOMENTS
-
-    // Setting the hour should keep the time, because the user explicitly
-    // specified which hour he wants. So trying to maintain the same hour (in
-    // a new timezone) makes sense. Adding/subtracting hours does not follow
-    // this rule.
-    var getSetHour = makeGetSet('Hours', true);
-
-    // FORMATTING
-
-    addFormatToken('m', ['mm', 2], 0, 'minute');
-
-    // ALIASES
-
-    addUnitAlias('minute', 'm');
-
-    // PARSING
-
-    addRegexToken('m',  match1to2);
-    addRegexToken('mm', match1to2, match2);
-    addParseToken(['m', 'mm'], MINUTE);
-
-    // MOMENTS
-
-    var getSetMinute = makeGetSet('Minutes', false);
-
-    // FORMATTING
-
-    addFormatToken('s', ['ss', 2], 0, 'second');
-
-    // ALIASES
-
-    addUnitAlias('second', 's');
-
-    // PARSING
-
-    addRegexToken('s',  match1to2);
-    addRegexToken('ss', match1to2, match2);
-    addParseToken(['s', 'ss'], SECOND);
-
-    // MOMENTS
-
-    var getSetSecond = makeGetSet('Seconds', false);
-
-    // FORMATTING
-
-    addFormatToken('S', 0, 0, function () {
-        return ~~(this.millisecond() / 100);
-    });
-
-    addFormatToken(0, ['SS', 2], 0, function () {
-        return ~~(this.millisecond() / 10);
-    });
-
-    addFormatToken(0, ['SSS', 3], 0, 'millisecond');
-    addFormatToken(0, ['SSSS', 4], 0, function () {
-        return this.millisecond() * 10;
-    });
-    addFormatToken(0, ['SSSSS', 5], 0, function () {
-        return this.millisecond() * 100;
-    });
-    addFormatToken(0, ['SSSSSS', 6], 0, function () {
-        return this.millisecond() * 1000;
-    });
-    addFormatToken(0, ['SSSSSSS', 7], 0, function () {
-        return this.millisecond() * 10000;
-    });
-    addFormatToken(0, ['SSSSSSSS', 8], 0, function () {
-        return this.millisecond() * 100000;
-    });
-    addFormatToken(0, ['SSSSSSSSS', 9], 0, function () {
-        return this.millisecond() * 1000000;
-    });
-
-
-    // ALIASES
-
-    addUnitAlias('millisecond', 'ms');
-
-    // PARSING
-
-    addRegexToken('S',    match1to3, match1);
-    addRegexToken('SS',   match1to3, match2);
-    addRegexToken('SSS',  match1to3, match3);
-
-    var token;
-    for (token = 'SSSS'; token.length <= 9; token += 'S') {
-        addRegexToken(token, matchUnsigned);
-    }
-
-    function parseMs(input, array) {
-        array[MILLISECOND] = toInt(('0.' + input) * 1000);
-    }
-
-    for (token = 'S'; token.length <= 9; token += 'S') {
-        addParseToken(token, parseMs);
-    }
-    // MOMENTS
-
-    var getSetMillisecond = makeGetSet('Milliseconds', false);
-
-    // FORMATTING
-
-    addFormatToken('z',  0, 0, 'zoneAbbr');
-    addFormatToken('zz', 0, 0, 'zoneName');
-
-    // MOMENTS
-
-    function getZoneAbbr () {
-        return this._isUTC ? 'UTC' : '';
-    }
-
-    function getZoneName () {
-        return this._isUTC ? 'Coordinated Universal Time' : '';
-    }
-
-    var momentPrototype__proto = Moment.prototype;
-
-    momentPrototype__proto.add               = add_subtract__add;
-    momentPrototype__proto.calendar          = moment_calendar__calendar;
-    momentPrototype__proto.clone             = clone;
-    momentPrototype__proto.diff              = diff;
-    momentPrototype__proto.endOf             = endOf;
-    momentPrototype__proto.format            = format;
-    momentPrototype__proto.from              = from;
-    momentPrototype__proto.fromNow           = fromNow;
-    momentPrototype__proto.to                = to;
-    momentPrototype__proto.toNow             = toNow;
-    momentPrototype__proto.get               = getSet;
-    momentPrototype__proto.invalidAt         = invalidAt;
-    momentPrototype__proto.isAfter           = isAfter;
-    momentPrototype__proto.isBefore          = isBefore;
-    momentPrototype__proto.isBetween         = isBetween;
-    momentPrototype__proto.isSame            = isSame;
-    momentPrototype__proto.isSameOrAfter     = isSameOrAfter;
-    momentPrototype__proto.isSameOrBefore    = isSameOrBefore;
-    momentPrototype__proto.isValid           = moment_valid__isValid;
-    momentPrototype__proto.lang              = lang;
-    momentPrototype__proto.locale            = locale;
-    momentPrototype__proto.localeData        = localeData;
-    momentPrototype__proto.max               = prototypeMax;
-    momentPrototype__proto.min               = prototypeMin;
-    momentPrototype__proto.parsingFlags      = parsingFlags;
-    momentPrototype__proto.set               = getSet;
-    momentPrototype__proto.startOf           = startOf;
-    momentPrototype__proto.subtract          = add_subtract__subtract;
-    momentPrototype__proto.toArray           = toArray;
-    momentPrototype__proto.toObject          = toObject;
-    momentPrototype__proto.toDate            = toDate;
-    momentPrototype__proto.toISOString       = moment_format__toISOString;
-    momentPrototype__proto.toJSON            = toJSON;
-    momentPrototype__proto.toString          = toString;
-    momentPrototype__proto.unix              = unix;
-    momentPrototype__proto.valueOf           = to_type__valueOf;
-    momentPrototype__proto.creationData      = creationData;
-
-    // Year
-    momentPrototype__proto.year       = getSetYear;
-    momentPrototype__proto.isLeapYear = getIsLeapYear;
-
-    // Week Year
-    momentPrototype__proto.weekYear    = getSetWeekYear;
-    momentPrototype__proto.isoWeekYear = getSetISOWeekYear;
-
-    // Quarter
-    momentPrototype__proto.quarter = momentPrototype__proto.quarters = getSetQuarter;
-
-    // Month
-    momentPrototype__proto.month       = getSetMonth;
-    momentPrototype__proto.daysInMonth = getDaysInMonth;
-
-    // Week
-    momentPrototype__proto.week           = momentPrototype__proto.weeks        = getSetWeek;
-    momentPrototype__proto.isoWeek        = momentPrototype__proto.isoWeeks     = getSetISOWeek;
-    momentPrototype__proto.weeksInYear    = getWeeksInYear;
-    momentPrototype__proto.isoWeeksInYear = getISOWeeksInYear;
-
-    // Day
-    momentPrototype__proto.date       = getSetDayOfMonth;
-    momentPrototype__proto.day        = momentPrototype__proto.days             = getSetDayOfWeek;
-    momentPrototype__proto.weekday    = getSetLocaleDayOfWeek;
-    momentPrototype__proto.isoWeekday = getSetISODayOfWeek;
-    momentPrototype__proto.dayOfYear  = getSetDayOfYear;
-
-    // Hour
-    momentPrototype__proto.hour = momentPrototype__proto.hours = getSetHour;
-
-    // Minute
-    momentPrototype__proto.minute = momentPrototype__proto.minutes = getSetMinute;
-
-    // Second
-    momentPrototype__proto.second = momentPrototype__proto.seconds = getSetSecond;
-
-    // Millisecond
-    momentPrototype__proto.millisecond = momentPrototype__proto.milliseconds = getSetMillisecond;
-
-    // Offset
-    momentPrototype__proto.utcOffset            = getSetOffset;
-    momentPrototype__proto.utc                  = setOffsetToUTC;
-    momentPrototype__proto.local                = setOffsetToLocal;
-    momentPrototype__proto.parseZone            = setOffsetToParsedOffset;
-    momentPrototype__proto.hasAlignedHourOffset = hasAlignedHourOffset;
-    momentPrototype__proto.isDST                = isDaylightSavingTime;
-    momentPrototype__proto.isDSTShifted         = isDaylightSavingTimeShifted;
-    momentPrototype__proto.isLocal              = isLocal;
-    momentPrototype__proto.isUtcOffset          = isUtcOffset;
-    momentPrototype__proto.isUtc                = isUtc;
-    momentPrototype__proto.isUTC                = isUtc;
-
-    // Timezone
-    momentPrototype__proto.zoneAbbr = getZoneAbbr;
-    momentPrototype__proto.zoneName = getZoneName;
-
-    // Deprecations
-    momentPrototype__proto.dates  = deprecate('dates accessor is deprecated. Use date instead.', getSetDayOfMonth);
-    momentPrototype__proto.months = deprecate('months accessor is deprecated. Use month instead', getSetMonth);
-    momentPrototype__proto.years  = deprecate('years accessor is deprecated. Use year instead', getSetYear);
-    momentPrototype__proto.zone   = deprecate('moment().zone is deprecated, use moment().utcOffset instead. https://github.com/moment/moment/issues/1779', getSetZone);
-
-    var momentPrototype = momentPrototype__proto;
-
-    function moment__createUnix (input) {
-        return local__createLocal(input * 1000);
-    }
-
-    function moment__createInZone () {
-        return local__createLocal.apply(null, arguments).parseZone();
-    }
-
-    var defaultCalendar = {
-        sameDay : '[Today at] LT',
-        nextDay : '[Tomorrow at] LT',
-        nextWeek : 'dddd [at] LT',
-        lastDay : '[Yesterday at] LT',
-        lastWeek : '[Last] dddd [at] LT',
-        sameElse : 'L'
-    };
-
-    function locale_calendar__calendar (key, mom, now) {
-        var output = this._calendar[key];
-        return isFunction(output) ? output.call(mom, now) : output;
-    }
-
-    var defaultLongDateFormat = {
-        LTS  : 'h:mm:ss A',
-        LT   : 'h:mm A',
-        L    : 'MM/DD/YYYY',
-        LL   : 'MMMM D, YYYY',
-        LLL  : 'MMMM D, YYYY h:mm A',
-        LLLL : 'dddd, MMMM D, YYYY h:mm A'
-    };
-
-    function longDateFormat (key) {
-        var format = this._longDateFormat[key],
-            formatUpper = this._longDateFormat[key.toUpperCase()];
-
-        if (format || !formatUpper) {
-            return format;
-        }
-
-        this._longDateFormat[key] = formatUpper.replace(/MMMM|MM|DD|dddd/g, function (val) {
-            return val.slice(1);
-        });
-
-        return this._longDateFormat[key];
-    }
-
-    var defaultInvalidDate = 'Invalid date';
-
-    function invalidDate () {
-        return this._invalidDate;
-    }
-
-    var defaultOrdinal = '%d';
-    var defaultOrdinalParse = /\d{1,2}/;
-
-    function ordinal (number) {
-        return this._ordinal.replace('%d', number);
-    }
-
-    function preParsePostFormat (string) {
-        return string;
-    }
-
-    var defaultRelativeTime = {
-        future : 'in %s',
-        past   : '%s ago',
-        s  : 'a few seconds',
-        m  : 'a minute',
-        mm : '%d minutes',
-        h  : 'an hour',
-        hh : '%d hours',
-        d  : 'a day',
-        dd : '%d days',
-        M  : 'a month',
-        MM : '%d months',
-        y  : 'a year',
-        yy : '%d years'
-    };
-
-    function relative__relativeTime (number, withoutSuffix, string, isFuture) {
-        var output = this._relativeTime[string];
-        return (isFunction(output)) ?
-            output(number, withoutSuffix, string, isFuture) :
-            output.replace(/%d/i, number);
-    }
-
-    function pastFuture (diff, output) {
-        var format = this._relativeTime[diff > 0 ? 'future' : 'past'];
-        return isFunction(format) ? format(output) : format.replace(/%s/i, output);
-    }
-
-    var prototype__proto = Locale.prototype;
-
-    prototype__proto._calendar       = defaultCalendar;
-    prototype__proto.calendar        = locale_calendar__calendar;
-    prototype__proto._longDateFormat = defaultLongDateFormat;
-    prototype__proto.longDateFormat  = longDateFormat;
-    prototype__proto._invalidDate    = defaultInvalidDate;
-    prototype__proto.invalidDate     = invalidDate;
-    prototype__proto._ordinal        = defaultOrdinal;
-    prototype__proto.ordinal         = ordinal;
-    prototype__proto._ordinalParse   = defaultOrdinalParse;
-    prototype__proto.preparse        = preParsePostFormat;
-    prototype__proto.postformat      = preParsePostFormat;
-    prototype__proto._relativeTime   = defaultRelativeTime;
-    prototype__proto.relativeTime    = relative__relativeTime;
-    prototype__proto.pastFuture      = pastFuture;
-    prototype__proto.set             = locale_set__set;
-
-    // Month
-    prototype__proto.months            =        localeMonths;
-    prototype__proto._months           = defaultLocaleMonths;
-    prototype__proto.monthsShort       =        localeMonthsShort;
-    prototype__proto._monthsShort      = defaultLocaleMonthsShort;
-    prototype__proto.monthsParse       =        localeMonthsParse;
-    prototype__proto._monthsRegex      = defaultMonthsRegex;
-    prototype__proto.monthsRegex       = monthsRegex;
-    prototype__proto._monthsShortRegex = defaultMonthsShortRegex;
-    prototype__proto.monthsShortRegex  = monthsShortRegex;
-
-    // Week
-    prototype__proto.week = localeWeek;
-    prototype__proto._week = defaultLocaleWeek;
-    prototype__proto.firstDayOfYear = localeFirstDayOfYear;
-    prototype__proto.firstDayOfWeek = localeFirstDayOfWeek;
-
-    // Day of Week
-    prototype__proto.weekdays       =        localeWeekdays;
-    prototype__proto._weekdays      = defaultLocaleWeekdays;
-    prototype__proto.weekdaysMin    =        localeWeekdaysMin;
-    prototype__proto._weekdaysMin   = defaultLocaleWeekdaysMin;
-    prototype__proto.weekdaysShort  =        localeWeekdaysShort;
-    prototype__proto._weekdaysShort = defaultLocaleWeekdaysShort;
-    prototype__proto.weekdaysParse  =        localeWeekdaysParse;
-
-    prototype__proto._weekdaysRegex      = defaultWeekdaysRegex;
-    prototype__proto.weekdaysRegex       =        weekdaysRegex;
-    prototype__proto._weekdaysShortRegex = defaultWeekdaysShortRegex;
-    prototype__proto.weekdaysShortRegex  =        weekdaysShortRegex;
-    prototype__proto._weekdaysMinRegex   = defaultWeekdaysMinRegex;
-    prototype__proto.weekdaysMinRegex    =        weekdaysMinRegex;
-
-    // Hours
-    prototype__proto.isPM = localeIsPM;
-    prototype__proto._meridiemParse = defaultLocaleMeridiemParse;
-    prototype__proto.meridiem = localeMeridiem;
-
-    function lists__get (format, index, field, setter) {
-        var locale = locale_locales__getLocale();
-        var utc = create_utc__createUTC().set(setter, index);
-        return locale[field](utc, format);
-    }
-
-    function listMonthsImpl (format, index, field) {
-        if (typeof format === 'number') {
-            index = format;
-            format = undefined;
-        }
-
-        format = format || '';
-
-        if (index != null) {
-            return lists__get(format, index, field, 'month');
-        }
-
-        var i;
-        var out = [];
-        for (i = 0; i < 12; i++) {
-            out[i] = lists__get(format, i, field, 'month');
-        }
-        return out;
-    }
-
-    // ()
-    // (5)
-    // (fmt, 5)
-    // (fmt)
-    // (true)
-    // (true, 5)
-    // (true, fmt, 5)
-    // (true, fmt)
-    function listWeekdaysImpl (localeSorted, format, index, field) {
-        if (typeof localeSorted === 'boolean') {
-            if (typeof format === 'number') {
-                index = format;
-                format = undefined;
-            }
-
-            format = format || '';
-        } else {
-            format = localeSorted;
-            index = format;
-            localeSorted = false;
-
-            if (typeof format === 'number') {
-                index = format;
-                format = undefined;
-            }
-
-            format = format || '';
-        }
-
-        var locale = locale_locales__getLocale(),
-            shift = localeSorted ? locale._week.dow : 0;
-
-        if (index != null) {
-            return lists__get(format, (index + shift) % 7, field, 'day');
-        }
-
-        var i;
-        var out = [];
-        for (i = 0; i < 7; i++) {
-            out[i] = lists__get(format, (i + shift) % 7, field, 'day');
-        }
-        return out;
-    }
-
-    function lists__listMonths (format, index) {
-        return listMonthsImpl(format, index, 'months');
-    }
-
-    function lists__listMonthsShort (format, index) {
-        return listMonthsImpl(format, index, 'monthsShort');
-    }
-
-    function lists__listWeekdays (localeSorted, format, index) {
-        return listWeekdaysImpl(localeSorted, format, index, 'weekdays');
-    }
-
-    function lists__listWeekdaysShort (localeSorted, format, index) {
-        return listWeekdaysImpl(localeSorted, format, index, 'weekdaysShort');
-    }
-
-    function lists__listWeekdaysMin (localeSorted, format, index) {
-        return listWeekdaysImpl(localeSorted, format, index, 'weekdaysMin');
-    }
-
-    locale_locales__getSetGlobalLocale('en', {
-        ordinalParse: /\d{1,2}(th|st|nd|rd)/,
-        ordinal : function (number) {
-            var b = number % 10,
-                output = (toInt(number % 100 / 10) === 1) ? 'th' :
-                (b === 1) ? 'st' :
-                (b === 2) ? 'nd' :
-                (b === 3) ? 'rd' : 'th';
-            return number + output;
-        }
-    });
-
-    // Side effect imports
-    utils_hooks__hooks.lang = deprecate('moment.lang is deprecated. Use moment.locale instead.', locale_locales__getSetGlobalLocale);
-    utils_hooks__hooks.langData = deprecate('moment.langData is deprecated. Use moment.localeData instead.', locale_locales__getLocale);
-
-    var mathAbs = Math.abs;
-
-    function duration_abs__abs () {
-        var data           = this._data;
-
-        this._milliseconds = mathAbs(this._milliseconds);
-        this._days         = mathAbs(this._days);
-        this._months       = mathAbs(this._months);
-
-        data.milliseconds  = mathAbs(data.milliseconds);
-        data.seconds       = mathAbs(data.seconds);
-        data.minutes       = mathAbs(data.minutes);
-        data.hours         = mathAbs(data.hours);
-        data.months        = mathAbs(data.months);
-        data.years         = mathAbs(data.years);
-
-        return this;
-    }
-
-    function duration_add_subtract__addSubtract (duration, input, value, direction) {
-        var other = create__createDuration(input, value);
-
-        duration._milliseconds += direction * other._milliseconds;
-        duration._days         += direction * other._days;
-        duration._months       += direction * other._months;
-
-        return duration._bubble();
-    }
-
-    // supports only 2.0-style add(1, 's') or add(duration)
-    function duration_add_subtract__add (input, value) {
-        return duration_add_subtract__addSubtract(this, input, value, 1);
-    }
-
-    // supports only 2.0-style subtract(1, 's') or subtract(duration)
-    function duration_add_subtract__subtract (input, value) {
-        return duration_add_subtract__addSubtract(this, input, value, -1);
-    }
-
-    function absCeil (number) {
-        if (number < 0) {
-            return Math.floor(number);
-        } else {
-            return Math.ceil(number);
-        }
-    }
-
-    function bubble () {
-        var milliseconds = this._milliseconds;
-        var days         = this._days;
-        var months       = this._months;
-        var data         = this._data;
-        var seconds, minutes, hours, years, monthsFromDays;
-
-        // if we have a mix of positive and negative values, bubble down first
-        // check: https://github.com/moment/moment/issues/2166
-        if (!((milliseconds >= 0 && days >= 0 && months >= 0) ||
-                (milliseconds <= 0 && days <= 0 && months <= 0))) {
-            milliseconds += absCeil(monthsToDays(months) + days) * 864e5;
-            days = 0;
-            months = 0;
-        }
-
-        // The following code bubbles up values, see the tests for
-        // examples of what that means.
-        data.milliseconds = milliseconds % 1000;
-
-        seconds           = absFloor(milliseconds / 1000);
-        data.seconds      = seconds % 60;
-
-        minutes           = absFloor(seconds / 60);
-        data.minutes      = minutes % 60;
-
-        hours             = absFloor(minutes / 60);
-        data.hours        = hours % 24;
-
-        days += absFloor(hours / 24);
-
-        // convert days to months
-        monthsFromDays = absFloor(daysToMonths(days));
-        months += monthsFromDays;
-        days -= absCeil(monthsToDays(monthsFromDays));
-
-        // 12 months -> 1 year
-        years = absFloor(months / 12);
-        months %= 12;
-
-        data.days   = days;
-        data.months = months;
-        data.years  = years;
-
-        return this;
-    }
-
-    function daysToMonths (days) {
-        // 400 years have 146097 days (taking into account leap year rules)
-        // 400 years have 12 months === 4800
-        return days * 4800 / 146097;
-    }
-
-    function monthsToDays (months) {
-        // the reverse of daysToMonths
-        return months * 146097 / 4800;
-    }
-
-    function as (units) {
-        var days;
-        var months;
-        var milliseconds = this._milliseconds;
-
-        units = normalizeUnits(units);
-
-        if (units === 'month' || units === 'year') {
-            days   = this._days   + milliseconds / 864e5;
-            months = this._months + daysToMonths(days);
-            return units === 'month' ? months : months / 12;
-        } else {
-            // handle milliseconds separately because of floating point math errors (issue #1867)
-            days = this._days + Math.round(monthsToDays(this._months));
-            switch (units) {
-                case 'week'   : return days / 7     + milliseconds / 6048e5;
-                case 'day'    : return days         + milliseconds / 864e5;
-                case 'hour'   : return days * 24    + milliseconds / 36e5;
-                case 'minute' : return days * 1440  + milliseconds / 6e4;
-                case 'second' : return days * 86400 + milliseconds / 1000;
-                // Math.floor prevents floating point math errors here
-                case 'millisecond': return Math.floor(days * 864e5) + milliseconds;
-                default: throw new Error('Unknown unit ' + units);
-            }
-        }
-    }
-
-    // TODO: Use this.as('ms')?
-    function duration_as__valueOf () {
-        return (
-            this._milliseconds +
-            this._days * 864e5 +
-            (this._months % 12) * 2592e6 +
-            toInt(this._months / 12) * 31536e6
-        );
-    }
-
-    function makeAs (alias) {
-        return function () {
-            return this.as(alias);
-        };
-    }
-
-    var asMilliseconds = makeAs('ms');
-    var asSeconds      = makeAs('s');
-    var asMinutes      = makeAs('m');
-    var asHours        = makeAs('h');
-    var asDays         = makeAs('d');
-    var asWeeks        = makeAs('w');
-    var asMonths       = makeAs('M');
-    var asYears        = makeAs('y');
-
-    function duration_get__get (units) {
-        units = normalizeUnits(units);
-        return this[units + 's']();
-    }
-
-    function makeGetter(name) {
-        return function () {
-            return this._data[name];
-        };
-    }
-
-    var milliseconds = makeGetter('milliseconds');
-    var seconds      = makeGetter('seconds');
-    var minutes      = makeGetter('minutes');
-    var hours        = makeGetter('hours');
-    var days         = makeGetter('days');
-    var months       = makeGetter('months');
-    var years        = makeGetter('years');
-
-    function weeks () {
-        return absFloor(this.days() / 7);
-    }
-
-    var round = Math.round;
-    var thresholds = {
-        s: 45,  // seconds to minute
-        m: 45,  // minutes to hour
-        h: 22,  // hours to day
-        d: 26,  // days to month
-        M: 11   // months to year
-    };
-
-    // helper function for moment.fn.from, moment.fn.fromNow, and moment.duration.fn.humanize
-    function substituteTimeAgo(string, number, withoutSuffix, isFuture, locale) {
-        return locale.relativeTime(number || 1, !!withoutSuffix, string, isFuture);
-    }
-
-    function duration_humanize__relativeTime (posNegDuration, withoutSuffix, locale) {
-        var duration = create__createDuration(posNegDuration).abs();
-        var seconds  = round(duration.as('s'));
-        var minutes  = round(duration.as('m'));
-        var hours    = round(duration.as('h'));
-        var days     = round(duration.as('d'));
-        var months   = round(duration.as('M'));
-        var years    = round(duration.as('y'));
-
-        var a = seconds < thresholds.s && ['s', seconds]  ||
-                minutes <= 1           && ['m']           ||
-                minutes < thresholds.m && ['mm', minutes] ||
-                hours   <= 1           && ['h']           ||
-                hours   < thresholds.h && ['hh', hours]   ||
-                days    <= 1           && ['d']           ||
-                days    < thresholds.d && ['dd', days]    ||
-                months  <= 1           && ['M']           ||
-                months  < thresholds.M && ['MM', months]  ||
-                years   <= 1           && ['y']           || ['yy', years];
-
-        a[2] = withoutSuffix;
-        a[3] = +posNegDuration > 0;
-        a[4] = locale;
-        return substituteTimeAgo.apply(null, a);
-    }
-
-    // This function allows you to set a threshold for relative time strings
-    function duration_humanize__getSetRelativeTimeThreshold (threshold, limit) {
-        if (thresholds[threshold] === undefined) {
-            return false;
-        }
-        if (limit === undefined) {
-            return thresholds[threshold];
-        }
-        thresholds[threshold] = limit;
-        return true;
-    }
-
-    function humanize (withSuffix) {
-        var locale = this.localeData();
-        var output = duration_humanize__relativeTime(this, !withSuffix, locale);
-
-        if (withSuffix) {
-            output = locale.pastFuture(+this, output);
-        }
-
-        return locale.postformat(output);
-    }
-
-    var iso_string__abs = Math.abs;
-
-    function iso_string__toISOString() {
-        // for ISO strings we do not use the normal bubbling rules:
-        //  * milliseconds bubble up until they become hours
-        //  * days do not bubble at all
-        //  * months bubble up until they become years
-        // This is because there is no context-free conversion between hours and days
-        // (think of clock changes)
-        // and also not between days and months (28-31 days per month)
-        var seconds = iso_string__abs(this._milliseconds) / 1000;
-        var days         = iso_string__abs(this._days);
-        var months       = iso_string__abs(this._months);
-        var minutes, hours, years;
-
-        // 3600 seconds -> 60 minutes -> 1 hour
-        minutes           = absFloor(seconds / 60);
-        hours             = absFloor(minutes / 60);
-        seconds %= 60;
-        minutes %= 60;
-
-        // 12 months -> 1 year
-        years  = absFloor(months / 12);
-        months %= 12;
-
-
-        // inspired by https://github.com/dordille/moment-isoduration/blob/master/moment.isoduration.js
-        var Y = years;
-        var M = months;
-        var D = days;
-        var h = hours;
-        var m = minutes;
-        var s = seconds;
-        var total = this.asSeconds();
-
-        if (!total) {
-            // this is the same as C#'s (Noda) and python (isodate)...
-            // but not other JS (goog.date)
-            return 'P0D';
-        }
-
-        return (total < 0 ? '-' : '') +
-            'P' +
-            (Y ? Y + 'Y' : '') +
-            (M ? M + 'M' : '') +
-            (D ? D + 'D' : '') +
-            ((h || m || s) ? 'T' : '') +
-            (h ? h + 'H' : '') +
-            (m ? m + 'M' : '') +
-            (s ? s + 'S' : '');
-    }
-
-    var duration_prototype__proto = Duration.prototype;
-
-    duration_prototype__proto.abs            = duration_abs__abs;
-    duration_prototype__proto.add            = duration_add_subtract__add;
-    duration_prototype__proto.subtract       = duration_add_subtract__subtract;
-    duration_prototype__proto.as             = as;
-    duration_prototype__proto.asMilliseconds = asMilliseconds;
-    duration_prototype__proto.asSeconds      = asSeconds;
-    duration_prototype__proto.asMinutes      = asMinutes;
-    duration_prototype__proto.asHours        = asHours;
-    duration_prototype__proto.asDays         = asDays;
-    duration_prototype__proto.asWeeks        = asWeeks;
-    duration_prototype__proto.asMonths       = asMonths;
-    duration_prototype__proto.asYears        = asYears;
-    duration_prototype__proto.valueOf        = duration_as__valueOf;
-    duration_prototype__proto._bubble        = bubble;
-    duration_prototype__proto.get            = duration_get__get;
-    duration_prototype__proto.milliseconds   = milliseconds;
-    duration_prototype__proto.seconds        = seconds;
-    duration_prototype__proto.minutes        = minutes;
-    duration_prototype__proto.hours          = hours;
-    duration_prototype__proto.days           = days;
-    duration_prototype__proto.weeks          = weeks;
-    duration_prototype__proto.months         = months;
-    duration_prototype__proto.years          = years;
-    duration_prototype__proto.humanize       = humanize;
-    duration_prototype__proto.toISOString    = iso_string__toISOString;
-    duration_prototype__proto.toString       = iso_string__toISOString;
-    duration_prototype__proto.toJSON         = iso_string__toISOString;
-    duration_prototype__proto.locale         = locale;
-    duration_prototype__proto.localeData     = localeData;
-
-    // Deprecations
-    duration_prototype__proto.toIsoString = deprecate('toIsoString() is deprecated. Please use toISOString() instead (notice the capitals)', iso_string__toISOString);
-    duration_prototype__proto.lang = lang;
-
-    // Side effect imports
-
-    // FORMATTING
-
-    addFormatToken('X', 0, 0, 'unix');
-    addFormatToken('x', 0, 0, 'valueOf');
-
-    // PARSING
-
-    addRegexToken('x', matchSigned);
-    addRegexToken('X', matchTimestamp);
-    addParseToken('X', function (input, array, config) {
-        config._d = new Date(parseFloat(input, 10) * 1000);
-    });
-    addParseToken('x', function (input, array, config) {
-        config._d = new Date(toInt(input));
-    });
-
-    // Side effect imports
-
-
-    utils_hooks__hooks.version = '2.13.0';
-
-    setHookCallback(local__createLocal);
-
-    utils_hooks__hooks.fn                    = momentPrototype;
-    utils_hooks__hooks.min                   = min;
-    utils_hooks__hooks.max                   = max;
-    utils_hooks__hooks.now                   = now;
-    utils_hooks__hooks.utc                   = create_utc__createUTC;
-    utils_hooks__hooks.unix                  = moment__createUnix;
-    utils_hooks__hooks.months                = lists__listMonths;
-    utils_hooks__hooks.isDate                = isDate;
-    utils_hooks__hooks.locale                = locale_locales__getSetGlobalLocale;
-    utils_hooks__hooks.invalid               = valid__createInvalid;
-    utils_hooks__hooks.duration              = create__createDuration;
-    utils_hooks__hooks.isMoment              = isMoment;
-    utils_hooks__hooks.weekdays              = lists__listWeekdays;
-    utils_hooks__hooks.parseZone             = moment__createInZone;
-    utils_hooks__hooks.localeData            = locale_locales__getLocale;
-    utils_hooks__hooks.isDuration            = isDuration;
-    utils_hooks__hooks.monthsShort           = lists__listMonthsShort;
-    utils_hooks__hooks.weekdaysMin           = lists__listWeekdaysMin;
-    utils_hooks__hooks.defineLocale          = defineLocale;
-    utils_hooks__hooks.updateLocale          = updateLocale;
-    utils_hooks__hooks.locales               = locale_locales__listLocales;
-    utils_hooks__hooks.weekdaysShort         = lists__listWeekdaysShort;
-    utils_hooks__hooks.normalizeUnits        = normalizeUnits;
-    utils_hooks__hooks.relativeTimeThreshold = duration_humanize__getSetRelativeTimeThreshold;
-    utils_hooks__hooks.prototype             = momentPrototype;
-
-    var _moment = utils_hooks__hooks;
-
-    return _moment;
-
-}));
-},{}],290:[function(require,module,exports){
+},{}],307:[function(require,module,exports){
 /*globals define, jQuery, module, require */
 /*jslint vars:true */
 
@@ -37355,7 +34686,7 @@ module.exports = 'ngAnimate';
     }]);
 }));
 
-},{"angular":337,"moment":289}],291:[function(require,module,exports){
+},{"angular":350,"moment":355}],308:[function(require,module,exports){
 (function (factory) {
   'use strict';
   if (typeof exports === 'object') {
@@ -37719,3745 +35050,7 @@ module.exports = 'ngAnimate';
   }
 }));
 
-},{"angular":337,"chart.js":292}],292:[function(require,module,exports){
-/*!
- * Chart.js
- * http://chartjs.org/
- * Version: 1.1.1
- *
- * Copyright 2015 Nick Downie
- * Released under the MIT license
- * https://github.com/nnnick/Chart.js/blob/master/LICENSE.md
- */
-
-
-(function(){
-
-	"use strict";
-
-	//Declare root variable - window in the browser, global on the server
-	var root = this,
-		previous = root.Chart;
-
-	//Occupy the global variable of Chart, and create a simple base class
-	var Chart = function(context){
-		var chart = this;
-		this.canvas = context.canvas;
-
-		this.ctx = context;
-
-		//Variables global to the chart
-		var computeDimension = function(element,dimension)
-		{
-			if (element['offset'+dimension])
-			{
-				return element['offset'+dimension];
-			}
-			else
-			{
-				return document.defaultView.getComputedStyle(element).getPropertyValue(dimension);
-			}
-		};
-
-		var width = this.width = computeDimension(context.canvas,'Width') || context.canvas.width;
-		var height = this.height = computeDimension(context.canvas,'Height') || context.canvas.height;
-
-		this.aspectRatio = this.width / this.height;
-		//High pixel density displays - multiply the size of the canvas height/width by the device pixel ratio, then scale.
-		helpers.retinaScale(this);
-
-		return this;
-	};
-	//Globally expose the defaults to allow for user updating/changing
-	Chart.defaults = {
-		global: {
-			// Boolean - Whether to animate the chart
-			animation: true,
-
-			// Number - Number of animation steps
-			animationSteps: 60,
-
-			// String - Animation easing effect
-			animationEasing: "easeOutQuart",
-
-			// Boolean - If we should show the scale at all
-			showScale: true,
-
-			// Boolean - If we want to override with a hard coded scale
-			scaleOverride: false,
-
-			// ** Required if scaleOverride is true **
-			// Number - The number of steps in a hard coded scale
-			scaleSteps: null,
-			// Number - The value jump in the hard coded scale
-			scaleStepWidth: null,
-			// Number - The scale starting value
-			scaleStartValue: null,
-
-			// String - Colour of the scale line
-			scaleLineColor: "rgba(0,0,0,.1)",
-
-			// Number - Pixel width of the scale line
-			scaleLineWidth: 1,
-
-			// Boolean - Whether to show labels on the scale
-			scaleShowLabels: true,
-
-			// Interpolated JS string - can access value
-			scaleLabel: "<%=value%>",
-
-			// Boolean - Whether the scale should stick to integers, and not show any floats even if drawing space is there
-			scaleIntegersOnly: true,
-
-			// Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-			scaleBeginAtZero: false,
-
-			// String - Scale label font declaration for the scale label
-			scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-
-			// Number - Scale label font size in pixels
-			scaleFontSize: 12,
-
-			// String - Scale label font weight style
-			scaleFontStyle: "normal",
-
-			// String - Scale label font colour
-			scaleFontColor: "#666",
-
-			// Boolean - whether or not the chart should be responsive and resize when the browser does.
-			responsive: false,
-
-			// Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-			maintainAspectRatio: true,
-
-			// Boolean - Determines whether to draw tooltips on the canvas or not - attaches events to touchmove & mousemove
-			showTooltips: true,
-
-			// Boolean - Determines whether to draw built-in tooltip or call custom tooltip function
-			customTooltips: false,
-
-			// Array - Array of string names to attach tooltip events
-			tooltipEvents: ["mousemove", "touchstart", "touchmove", "mouseout"],
-
-			// String - Tooltip background colour
-			tooltipFillColor: "rgba(0,0,0,0.8)",
-
-			// String - Tooltip label font declaration for the scale label
-			tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-
-			// Number - Tooltip label font size in pixels
-			tooltipFontSize: 14,
-
-			// String - Tooltip font weight style
-			tooltipFontStyle: "normal",
-
-			// String - Tooltip label font colour
-			tooltipFontColor: "#fff",
-
-			// String - Tooltip title font declaration for the scale label
-			tooltipTitleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-
-			// Number - Tooltip title font size in pixels
-			tooltipTitleFontSize: 14,
-
-			// String - Tooltip title font weight style
-			tooltipTitleFontStyle: "bold",
-
-			// String - Tooltip title font colour
-			tooltipTitleFontColor: "#fff",
-
-			// String - Tooltip title template
-			tooltipTitleTemplate: "<%= label%>",
-
-			// Number - pixel width of padding around tooltip text
-			tooltipYPadding: 6,
-
-			// Number - pixel width of padding around tooltip text
-			tooltipXPadding: 6,
-
-			// Number - Size of the caret on the tooltip
-			tooltipCaretSize: 8,
-
-			// Number - Pixel radius of the tooltip border
-			tooltipCornerRadius: 6,
-
-			// Number - Pixel offset from point x to tooltip edge
-			tooltipXOffset: 10,
-
-			// String - Template string for single tooltips
-			tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
-
-			// String - Template string for single tooltips
-			multiTooltipTemplate: "<%= datasetLabel %>: <%= value %>",
-
-			// String - Colour behind the legend colour block
-			multiTooltipKeyBackground: '#fff',
-
-			// Array - A list of colors to use as the defaults
-			segmentColorDefault: ["#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C", "#FB9A99", "#E31A1C", "#FDBF6F", "#FF7F00", "#CAB2D6", "#6A3D9A", "#B4B482", "#B15928" ],
-
-			// Array - A list of highlight colors to use as the defaults
-			segmentHighlightColorDefaults: [ "#CEF6FF", "#47A0DC", "#DAFFB2", "#5BC854", "#FFC2C1", "#FF4244", "#FFE797", "#FFA728", "#F2DAFE", "#9265C2", "#DCDCAA", "#D98150" ],
-
-			// Function - Will fire on animation progression.
-			onAnimationProgress: function(){},
-
-			// Function - Will fire on animation completion.
-			onAnimationComplete: function(){}
-
-		}
-	};
-
-	//Create a dictionary of chart types, to allow for extension of existing types
-	Chart.types = {};
-
-	//Global Chart helpers object for utility methods and classes
-	var helpers = Chart.helpers = {};
-
-		//-- Basic js utility methods
-	var each = helpers.each = function(loopable,callback,self){
-			var additionalArgs = Array.prototype.slice.call(arguments, 3);
-			// Check to see if null or undefined firstly.
-			if (loopable){
-				if (loopable.length === +loopable.length){
-					var i;
-					for (i=0; i<loopable.length; i++){
-						callback.apply(self,[loopable[i], i].concat(additionalArgs));
-					}
-				}
-				else{
-					for (var item in loopable){
-						callback.apply(self,[loopable[item],item].concat(additionalArgs));
-					}
-				}
-			}
-		},
-		clone = helpers.clone = function(obj){
-			var objClone = {};
-			each(obj,function(value,key){
-				if (obj.hasOwnProperty(key)){
-					objClone[key] = value;
-				}
-			});
-			return objClone;
-		},
-		extend = helpers.extend = function(base){
-			each(Array.prototype.slice.call(arguments,1), function(extensionObject) {
-				each(extensionObject,function(value,key){
-					if (extensionObject.hasOwnProperty(key)){
-						base[key] = value;
-					}
-				});
-			});
-			return base;
-		},
-		merge = helpers.merge = function(base,master){
-			//Merge properties in left object over to a shallow clone of object right.
-			var args = Array.prototype.slice.call(arguments,0);
-			args.unshift({});
-			return extend.apply(null, args);
-		},
-		indexOf = helpers.indexOf = function(arrayToSearch, item){
-			if (Array.prototype.indexOf) {
-				return arrayToSearch.indexOf(item);
-			}
-			else{
-				for (var i = 0; i < arrayToSearch.length; i++) {
-					if (arrayToSearch[i] === item) return i;
-				}
-				return -1;
-			}
-		},
-		where = helpers.where = function(collection, filterCallback){
-			var filtered = [];
-
-			helpers.each(collection, function(item){
-				if (filterCallback(item)){
-					filtered.push(item);
-				}
-			});
-
-			return filtered;
-		},
-		findNextWhere = helpers.findNextWhere = function(arrayToSearch, filterCallback, startIndex){
-			// Default to start of the array
-			if (!startIndex){
-				startIndex = -1;
-			}
-			for (var i = startIndex + 1; i < arrayToSearch.length; i++) {
-				var currentItem = arrayToSearch[i];
-				if (filterCallback(currentItem)){
-					return currentItem;
-				}
-			}
-		},
-		findPreviousWhere = helpers.findPreviousWhere = function(arrayToSearch, filterCallback, startIndex){
-			// Default to end of the array
-			if (!startIndex){
-				startIndex = arrayToSearch.length;
-			}
-			for (var i = startIndex - 1; i >= 0; i--) {
-				var currentItem = arrayToSearch[i];
-				if (filterCallback(currentItem)){
-					return currentItem;
-				}
-			}
-		},
-		inherits = helpers.inherits = function(extensions){
-			//Basic javascript inheritance based on the model created in Backbone.js
-			var parent = this;
-			var ChartElement = (extensions && extensions.hasOwnProperty("constructor")) ? extensions.constructor : function(){ return parent.apply(this, arguments); };
-
-			var Surrogate = function(){ this.constructor = ChartElement;};
-			Surrogate.prototype = parent.prototype;
-			ChartElement.prototype = new Surrogate();
-
-			ChartElement.extend = inherits;
-
-			if (extensions) extend(ChartElement.prototype, extensions);
-
-			ChartElement.__super__ = parent.prototype;
-
-			return ChartElement;
-		},
-		noop = helpers.noop = function(){},
-		uid = helpers.uid = (function(){
-			var id=0;
-			return function(){
-				return "chart-" + id++;
-			};
-		})(),
-		warn = helpers.warn = function(str){
-			//Method for warning of errors
-			if (window.console && typeof window.console.warn === "function") console.warn(str);
-		},
-		amd = helpers.amd = (typeof define === 'function' && define.amd),
-		//-- Math methods
-		isNumber = helpers.isNumber = function(n){
-			return !isNaN(parseFloat(n)) && isFinite(n);
-		},
-		max = helpers.max = function(array){
-			return Math.max.apply( Math, array );
-		},
-		min = helpers.min = function(array){
-			return Math.min.apply( Math, array );
-		},
-		cap = helpers.cap = function(valueToCap,maxValue,minValue){
-			if(isNumber(maxValue)) {
-				if( valueToCap > maxValue ) {
-					return maxValue;
-				}
-			}
-			else if(isNumber(minValue)){
-				if ( valueToCap < minValue ){
-					return minValue;
-				}
-			}
-			return valueToCap;
-		},
-		getDecimalPlaces = helpers.getDecimalPlaces = function(num){
-			if (num%1!==0 && isNumber(num)){
-				var s = num.toString();
-				if(s.indexOf("e-") < 0){
-					// no exponent, e.g. 0.01
-					return s.split(".")[1].length;
-				}
-				else if(s.indexOf(".") < 0) {
-					// no decimal point, e.g. 1e-9
-					return parseInt(s.split("e-")[1]);
-				}
-				else {
-					// exponent and decimal point, e.g. 1.23e-9
-					var parts = s.split(".")[1].split("e-");
-					return parts[0].length + parseInt(parts[1]);
-				}
-			}
-			else {
-				return 0;
-			}
-		},
-		toRadians = helpers.radians = function(degrees){
-			return degrees * (Math.PI/180);
-		},
-		// Gets the angle from vertical upright to the point about a centre.
-		getAngleFromPoint = helpers.getAngleFromPoint = function(centrePoint, anglePoint){
-			var distanceFromXCenter = anglePoint.x - centrePoint.x,
-				distanceFromYCenter = anglePoint.y - centrePoint.y,
-				radialDistanceFromCenter = Math.sqrt( distanceFromXCenter * distanceFromXCenter + distanceFromYCenter * distanceFromYCenter);
-
-
-			var angle = Math.PI * 2 + Math.atan2(distanceFromYCenter, distanceFromXCenter);
-
-			//If the segment is in the top left quadrant, we need to add another rotation to the angle
-			if (distanceFromXCenter < 0 && distanceFromYCenter < 0){
-				angle += Math.PI*2;
-			}
-
-			return {
-				angle: angle,
-				distance: radialDistanceFromCenter
-			};
-		},
-		aliasPixel = helpers.aliasPixel = function(pixelWidth){
-			return (pixelWidth % 2 === 0) ? 0 : 0.5;
-		},
-		splineCurve = helpers.splineCurve = function(FirstPoint,MiddlePoint,AfterPoint,t){
-			//Props to Rob Spencer at scaled innovation for his post on splining between points
-			//http://scaledinnovation.com/analytics/splines/aboutSplines.html
-			var d01=Math.sqrt(Math.pow(MiddlePoint.x-FirstPoint.x,2)+Math.pow(MiddlePoint.y-FirstPoint.y,2)),
-				d12=Math.sqrt(Math.pow(AfterPoint.x-MiddlePoint.x,2)+Math.pow(AfterPoint.y-MiddlePoint.y,2)),
-				fa=t*d01/(d01+d12),// scaling factor for triangle Ta
-				fb=t*d12/(d01+d12);
-			return {
-				inner : {
-					x : MiddlePoint.x-fa*(AfterPoint.x-FirstPoint.x),
-					y : MiddlePoint.y-fa*(AfterPoint.y-FirstPoint.y)
-				},
-				outer : {
-					x: MiddlePoint.x+fb*(AfterPoint.x-FirstPoint.x),
-					y : MiddlePoint.y+fb*(AfterPoint.y-FirstPoint.y)
-				}
-			};
-		},
-		calculateOrderOfMagnitude = helpers.calculateOrderOfMagnitude = function(val){
-			return Math.floor(Math.log(val) / Math.LN10);
-		},
-		calculateScaleRange = helpers.calculateScaleRange = function(valuesArray, drawingSize, textSize, startFromZero, integersOnly){
-
-			//Set a minimum step of two - a point at the top of the graph, and a point at the base
-			var minSteps = 2,
-				maxSteps = Math.floor(drawingSize/(textSize * 1.5)),
-				skipFitting = (minSteps >= maxSteps);
-
-			// Filter out null values since these would min() to zero
-			var values = [];
-			each(valuesArray, function( v ){
-				v == null || values.push( v );
-			});
-			var minValue = min(values),
-			    maxValue = max(values);
-
-			// We need some degree of separation here to calculate the scales if all the values are the same
-			// Adding/minusing 0.5 will give us a range of 1.
-			if (maxValue === minValue){
-				maxValue += 0.5;
-				// So we don't end up with a graph with a negative start value if we've said always start from zero
-				if (minValue >= 0.5 && !startFromZero){
-					minValue -= 0.5;
-				}
-				else{
-					// Make up a whole number above the values
-					maxValue += 0.5;
-				}
-			}
-
-			var	valueRange = Math.abs(maxValue - minValue),
-				rangeOrderOfMagnitude = calculateOrderOfMagnitude(valueRange),
-				graphMax = Math.ceil(maxValue / (1 * Math.pow(10, rangeOrderOfMagnitude))) * Math.pow(10, rangeOrderOfMagnitude),
-				graphMin = (startFromZero) ? 0 : Math.floor(minValue / (1 * Math.pow(10, rangeOrderOfMagnitude))) * Math.pow(10, rangeOrderOfMagnitude),
-				graphRange = graphMax - graphMin,
-				stepValue = Math.pow(10, rangeOrderOfMagnitude),
-				numberOfSteps = Math.round(graphRange / stepValue);
-
-			//If we have more space on the graph we'll use it to give more definition to the data
-			while((numberOfSteps > maxSteps || (numberOfSteps * 2) < maxSteps) && !skipFitting) {
-				if(numberOfSteps > maxSteps){
-					stepValue *=2;
-					numberOfSteps = Math.round(graphRange/stepValue);
-					// Don't ever deal with a decimal number of steps - cancel fitting and just use the minimum number of steps.
-					if (numberOfSteps % 1 !== 0){
-						skipFitting = true;
-					}
-				}
-				//We can fit in double the amount of scale points on the scale
-				else{
-					//If user has declared ints only, and the step value isn't a decimal
-					if (integersOnly && rangeOrderOfMagnitude >= 0){
-						//If the user has said integers only, we need to check that making the scale more granular wouldn't make it a float
-						if(stepValue/2 % 1 === 0){
-							stepValue /=2;
-							numberOfSteps = Math.round(graphRange/stepValue);
-						}
-						//If it would make it a float break out of the loop
-						else{
-							break;
-						}
-					}
-					//If the scale doesn't have to be an int, make the scale more granular anyway.
-					else{
-						stepValue /=2;
-						numberOfSteps = Math.round(graphRange/stepValue);
-					}
-
-				}
-			}
-
-			if (skipFitting){
-				numberOfSteps = minSteps;
-				stepValue = graphRange / numberOfSteps;
-			}
-
-			return {
-				steps : numberOfSteps,
-				stepValue : stepValue,
-				min : graphMin,
-				max	: graphMin + (numberOfSteps * stepValue)
-			};
-
-		},
-		/* jshint ignore:start */
-		// Blows up jshint errors based on the new Function constructor
-		//Templating methods
-		//Javascript micro templating by John Resig - source at http://ejohn.org/blog/javascript-micro-templating/
-		template = helpers.template = function(templateString, valuesObject){
-
-			// If templateString is function rather than string-template - call the function for valuesObject
-
-			if(templateString instanceof Function){
-			 	return templateString(valuesObject);
-		 	}
-
-			var cache = {};
-			function tmpl(str, data){
-				// Figure out if we're getting a template, or if we need to
-				// load the template - and be sure to cache the result.
-				var fn = !/\W/.test(str) ?
-				cache[str] = cache[str] :
-
-				// Generate a reusable function that will serve as a template
-				// generator (and which will be cached).
-				new Function("obj",
-					"var p=[],print=function(){p.push.apply(p,arguments);};" +
-
-					// Introduce the data as local variables using with(){}
-					"with(obj){p.push('" +
-
-					// Convert the template into pure JavaScript
-					str
-						.replace(/[\r\t\n]/g, " ")
-						.split("<%").join("\t")
-						.replace(/((^|%>)[^\t]*)'/g, "$1\r")
-						.replace(/\t=(.*?)%>/g, "',$1,'")
-						.split("\t").join("');")
-						.split("%>").join("p.push('")
-						.split("\r").join("\\'") +
-					"');}return p.join('');"
-				);
-
-				// Provide some basic currying to the user
-				return data ? fn( data ) : fn;
-			}
-			return tmpl(templateString,valuesObject);
-		},
-		/* jshint ignore:end */
-		generateLabels = helpers.generateLabels = function(templateString,numberOfSteps,graphMin,stepValue){
-			var labelsArray = new Array(numberOfSteps);
-			if (templateString){
-				each(labelsArray,function(val,index){
-					labelsArray[index] = template(templateString,{value: (graphMin + (stepValue*(index+1)))});
-				});
-			}
-			return labelsArray;
-		},
-		//--Animation methods
-		//Easing functions adapted from Robert Penner's easing equations
-		//http://www.robertpenner.com/easing/
-		easingEffects = helpers.easingEffects = {
-			linear: function (t) {
-				return t;
-			},
-			easeInQuad: function (t) {
-				return t * t;
-			},
-			easeOutQuad: function (t) {
-				return -1 * t * (t - 2);
-			},
-			easeInOutQuad: function (t) {
-				if ((t /= 1 / 2) < 1){
-					return 1 / 2 * t * t;
-				}
-				return -1 / 2 * ((--t) * (t - 2) - 1);
-			},
-			easeInCubic: function (t) {
-				return t * t * t;
-			},
-			easeOutCubic: function (t) {
-				return 1 * ((t = t / 1 - 1) * t * t + 1);
-			},
-			easeInOutCubic: function (t) {
-				if ((t /= 1 / 2) < 1){
-					return 1 / 2 * t * t * t;
-				}
-				return 1 / 2 * ((t -= 2) * t * t + 2);
-			},
-			easeInQuart: function (t) {
-				return t * t * t * t;
-			},
-			easeOutQuart: function (t) {
-				return -1 * ((t = t / 1 - 1) * t * t * t - 1);
-			},
-			easeInOutQuart: function (t) {
-				if ((t /= 1 / 2) < 1){
-					return 1 / 2 * t * t * t * t;
-				}
-				return -1 / 2 * ((t -= 2) * t * t * t - 2);
-			},
-			easeInQuint: function (t) {
-				return 1 * (t /= 1) * t * t * t * t;
-			},
-			easeOutQuint: function (t) {
-				return 1 * ((t = t / 1 - 1) * t * t * t * t + 1);
-			},
-			easeInOutQuint: function (t) {
-				if ((t /= 1 / 2) < 1){
-					return 1 / 2 * t * t * t * t * t;
-				}
-				return 1 / 2 * ((t -= 2) * t * t * t * t + 2);
-			},
-			easeInSine: function (t) {
-				return -1 * Math.cos(t / 1 * (Math.PI / 2)) + 1;
-			},
-			easeOutSine: function (t) {
-				return 1 * Math.sin(t / 1 * (Math.PI / 2));
-			},
-			easeInOutSine: function (t) {
-				return -1 / 2 * (Math.cos(Math.PI * t / 1) - 1);
-			},
-			easeInExpo: function (t) {
-				return (t === 0) ? 1 : 1 * Math.pow(2, 10 * (t / 1 - 1));
-			},
-			easeOutExpo: function (t) {
-				return (t === 1) ? 1 : 1 * (-Math.pow(2, -10 * t / 1) + 1);
-			},
-			easeInOutExpo: function (t) {
-				if (t === 0){
-					return 0;
-				}
-				if (t === 1){
-					return 1;
-				}
-				if ((t /= 1 / 2) < 1){
-					return 1 / 2 * Math.pow(2, 10 * (t - 1));
-				}
-				return 1 / 2 * (-Math.pow(2, -10 * --t) + 2);
-			},
-			easeInCirc: function (t) {
-				if (t >= 1){
-					return t;
-				}
-				return -1 * (Math.sqrt(1 - (t /= 1) * t) - 1);
-			},
-			easeOutCirc: function (t) {
-				return 1 * Math.sqrt(1 - (t = t / 1 - 1) * t);
-			},
-			easeInOutCirc: function (t) {
-				if ((t /= 1 / 2) < 1){
-					return -1 / 2 * (Math.sqrt(1 - t * t) - 1);
-				}
-				return 1 / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1);
-			},
-			easeInElastic: function (t) {
-				var s = 1.70158;
-				var p = 0;
-				var a = 1;
-				if (t === 0){
-					return 0;
-				}
-				if ((t /= 1) == 1){
-					return 1;
-				}
-				if (!p){
-					p = 1 * 0.3;
-				}
-				if (a < Math.abs(1)) {
-					a = 1;
-					s = p / 4;
-				} else{
-					s = p / (2 * Math.PI) * Math.asin(1 / a);
-				}
-				return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));
-			},
-			easeOutElastic: function (t) {
-				var s = 1.70158;
-				var p = 0;
-				var a = 1;
-				if (t === 0){
-					return 0;
-				}
-				if ((t /= 1) == 1){
-					return 1;
-				}
-				if (!p){
-					p = 1 * 0.3;
-				}
-				if (a < Math.abs(1)) {
-					a = 1;
-					s = p / 4;
-				} else{
-					s = p / (2 * Math.PI) * Math.asin(1 / a);
-				}
-				return a * Math.pow(2, -10 * t) * Math.sin((t * 1 - s) * (2 * Math.PI) / p) + 1;
-			},
-			easeInOutElastic: function (t) {
-				var s = 1.70158;
-				var p = 0;
-				var a = 1;
-				if (t === 0){
-					return 0;
-				}
-				if ((t /= 1 / 2) == 2){
-					return 1;
-				}
-				if (!p){
-					p = 1 * (0.3 * 1.5);
-				}
-				if (a < Math.abs(1)) {
-					a = 1;
-					s = p / 4;
-				} else {
-					s = p / (2 * Math.PI) * Math.asin(1 / a);
-				}
-				if (t < 1){
-					return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));}
-				return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p) * 0.5 + 1;
-			},
-			easeInBack: function (t) {
-				var s = 1.70158;
-				return 1 * (t /= 1) * t * ((s + 1) * t - s);
-			},
-			easeOutBack: function (t) {
-				var s = 1.70158;
-				return 1 * ((t = t / 1 - 1) * t * ((s + 1) * t + s) + 1);
-			},
-			easeInOutBack: function (t) {
-				var s = 1.70158;
-				if ((t /= 1 / 2) < 1){
-					return 1 / 2 * (t * t * (((s *= (1.525)) + 1) * t - s));
-				}
-				return 1 / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2);
-			},
-			easeInBounce: function (t) {
-				return 1 - easingEffects.easeOutBounce(1 - t);
-			},
-			easeOutBounce: function (t) {
-				if ((t /= 1) < (1 / 2.75)) {
-					return 1 * (7.5625 * t * t);
-				} else if (t < (2 / 2.75)) {
-					return 1 * (7.5625 * (t -= (1.5 / 2.75)) * t + 0.75);
-				} else if (t < (2.5 / 2.75)) {
-					return 1 * (7.5625 * (t -= (2.25 / 2.75)) * t + 0.9375);
-				} else {
-					return 1 * (7.5625 * (t -= (2.625 / 2.75)) * t + 0.984375);
-				}
-			},
-			easeInOutBounce: function (t) {
-				if (t < 1 / 2){
-					return easingEffects.easeInBounce(t * 2) * 0.5;
-				}
-				return easingEffects.easeOutBounce(t * 2 - 1) * 0.5 + 1 * 0.5;
-			}
-		},
-		//Request animation polyfill - http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
-		requestAnimFrame = helpers.requestAnimFrame = (function(){
-			return window.requestAnimationFrame ||
-				window.webkitRequestAnimationFrame ||
-				window.mozRequestAnimationFrame ||
-				window.oRequestAnimationFrame ||
-				window.msRequestAnimationFrame ||
-				function(callback) {
-					return window.setTimeout(callback, 1000 / 60);
-				};
-		})(),
-		cancelAnimFrame = helpers.cancelAnimFrame = (function(){
-			return window.cancelAnimationFrame ||
-				window.webkitCancelAnimationFrame ||
-				window.mozCancelAnimationFrame ||
-				window.oCancelAnimationFrame ||
-				window.msCancelAnimationFrame ||
-				function(callback) {
-					return window.clearTimeout(callback, 1000 / 60);
-				};
-		})(),
-		animationLoop = helpers.animationLoop = function(callback,totalSteps,easingString,onProgress,onComplete,chartInstance){
-
-			var currentStep = 0,
-				easingFunction = easingEffects[easingString] || easingEffects.linear;
-
-			var animationFrame = function(){
-				currentStep++;
-				var stepDecimal = currentStep/totalSteps;
-				var easeDecimal = easingFunction(stepDecimal);
-
-				callback.call(chartInstance,easeDecimal,stepDecimal, currentStep);
-				onProgress.call(chartInstance,easeDecimal,stepDecimal);
-				if (currentStep < totalSteps){
-					chartInstance.animationFrame = requestAnimFrame(animationFrame);
-				} else{
-					onComplete.apply(chartInstance);
-				}
-			};
-			requestAnimFrame(animationFrame);
-		},
-		//-- DOM methods
-		getRelativePosition = helpers.getRelativePosition = function(evt){
-			var mouseX, mouseY;
-			var e = evt.originalEvent || evt,
-				canvas = evt.currentTarget || evt.srcElement,
-				boundingRect = canvas.getBoundingClientRect();
-
-			if (e.touches){
-				mouseX = e.touches[0].clientX - boundingRect.left;
-				mouseY = e.touches[0].clientY - boundingRect.top;
-
-			}
-			else{
-				mouseX = e.clientX - boundingRect.left;
-				mouseY = e.clientY - boundingRect.top;
-			}
-
-			return {
-				x : mouseX,
-				y : mouseY
-			};
-
-		},
-		addEvent = helpers.addEvent = function(node,eventType,method){
-			if (node.addEventListener){
-				node.addEventListener(eventType,method);
-			} else if (node.attachEvent){
-				node.attachEvent("on"+eventType, method);
-			} else {
-				node["on"+eventType] = method;
-			}
-		},
-		removeEvent = helpers.removeEvent = function(node, eventType, handler){
-			if (node.removeEventListener){
-				node.removeEventListener(eventType, handler, false);
-			} else if (node.detachEvent){
-				node.detachEvent("on"+eventType,handler);
-			} else{
-				node["on" + eventType] = noop;
-			}
-		},
-		bindEvents = helpers.bindEvents = function(chartInstance, arrayOfEvents, handler){
-			// Create the events object if it's not already present
-			if (!chartInstance.events) chartInstance.events = {};
-
-			each(arrayOfEvents,function(eventName){
-				chartInstance.events[eventName] = function(){
-					handler.apply(chartInstance, arguments);
-				};
-				addEvent(chartInstance.chart.canvas,eventName,chartInstance.events[eventName]);
-			});
-		},
-		unbindEvents = helpers.unbindEvents = function (chartInstance, arrayOfEvents) {
-			each(arrayOfEvents, function(handler,eventName){
-				removeEvent(chartInstance.chart.canvas, eventName, handler);
-			});
-		},
-		getMaximumWidth = helpers.getMaximumWidth = function(domNode){
-			var container = domNode.parentNode,
-			    padding = parseInt(getStyle(container, 'padding-left')) + parseInt(getStyle(container, 'padding-right'));
-			// TODO = check cross browser stuff with this.
-			return container ? container.clientWidth - padding : 0;
-		},
-		getMaximumHeight = helpers.getMaximumHeight = function(domNode){
-			var container = domNode.parentNode,
-			    padding = parseInt(getStyle(container, 'padding-bottom')) + parseInt(getStyle(container, 'padding-top'));
-			// TODO = check cross browser stuff with this.
-			return container ? container.clientHeight - padding : 0;
-		},
-		getStyle = helpers.getStyle = function (el, property) {
-			return el.currentStyle ?
-				el.currentStyle[property] :
-				document.defaultView.getComputedStyle(el, null).getPropertyValue(property);
-		},
-		getMaximumSize = helpers.getMaximumSize = helpers.getMaximumWidth, // legacy support
-		retinaScale = helpers.retinaScale = function(chart){
-			var ctx = chart.ctx,
-				width = chart.canvas.width,
-				height = chart.canvas.height;
-
-			if (window.devicePixelRatio) {
-				ctx.canvas.style.width = width + "px";
-				ctx.canvas.style.height = height + "px";
-				ctx.canvas.height = height * window.devicePixelRatio;
-				ctx.canvas.width = width * window.devicePixelRatio;
-				ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-			}
-		},
-		//-- Canvas methods
-		clear = helpers.clear = function(chart){
-			chart.ctx.clearRect(0,0,chart.width,chart.height);
-		},
-		fontString = helpers.fontString = function(pixelSize,fontStyle,fontFamily){
-			return fontStyle + " " + pixelSize+"px " + fontFamily;
-		},
-		longestText = helpers.longestText = function(ctx,font,arrayOfStrings){
-			ctx.font = font;
-			var longest = 0;
-			each(arrayOfStrings,function(string){
-				var textWidth = ctx.measureText(string).width;
-				longest = (textWidth > longest) ? textWidth : longest;
-			});
-			return longest;
-		},
-		drawRoundedRectangle = helpers.drawRoundedRectangle = function(ctx,x,y,width,height,radius){
-			ctx.beginPath();
-			ctx.moveTo(x + radius, y);
-			ctx.lineTo(x + width - radius, y);
-			ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
-			ctx.lineTo(x + width, y + height - radius);
-			ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
-			ctx.lineTo(x + radius, y + height);
-			ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
-			ctx.lineTo(x, y + radius);
-			ctx.quadraticCurveTo(x, y, x + radius, y);
-			ctx.closePath();
-		};
-
-
-	//Store a reference to each instance - allowing us to globally resize chart instances on window resize.
-	//Destroy method on the chart will remove the instance of the chart from this reference.
-	Chart.instances = {};
-
-	Chart.Type = function(data,options,chart){
-		this.options = options;
-		this.chart = chart;
-		this.id = uid();
-		//Add the chart instance to the global namespace
-		Chart.instances[this.id] = this;
-
-		// Initialize is always called when a chart type is created
-		// By default it is a no op, but it should be extended
-		if (options.responsive){
-			this.resize();
-		}
-		this.initialize.call(this,data);
-	};
-
-	//Core methods that'll be a part of every chart type
-	extend(Chart.Type.prototype,{
-		initialize : function(){return this;},
-		clear : function(){
-			clear(this.chart);
-			return this;
-		},
-		stop : function(){
-			// Stops any current animation loop occuring
-			Chart.animationService.cancelAnimation(this);
-			return this;
-		},
-		resize : function(callback){
-			this.stop();
-			var canvas = this.chart.canvas,
-				newWidth = getMaximumWidth(this.chart.canvas),
-				newHeight = this.options.maintainAspectRatio ? newWidth / this.chart.aspectRatio : getMaximumHeight(this.chart.canvas);
-
-			canvas.width = this.chart.width = newWidth;
-			canvas.height = this.chart.height = newHeight;
-
-			retinaScale(this.chart);
-
-			if (typeof callback === "function"){
-				callback.apply(this, Array.prototype.slice.call(arguments, 1));
-			}
-			return this;
-		},
-		reflow : noop,
-		render : function(reflow){
-			if (reflow){
-				this.reflow();
-			}
-			
-			if (this.options.animation && !reflow){
-				var animation = new Chart.Animation();
-				animation.numSteps = this.options.animationSteps;
-				animation.easing = this.options.animationEasing;
-				
-				// render function
-				animation.render = function(chartInstance, animationObject) {
-					var easingFunction = helpers.easingEffects[animationObject.easing];
-					var stepDecimal = animationObject.currentStep / animationObject.numSteps;
-					var easeDecimal = easingFunction(stepDecimal);
-					
-					chartInstance.draw(easeDecimal, stepDecimal, animationObject.currentStep);
-				};
-				
-				// user events
-				animation.onAnimationProgress = this.options.onAnimationProgress;
-				animation.onAnimationComplete = this.options.onAnimationComplete;
-				
-				Chart.animationService.addAnimation(this, animation);
-			}
-			else{
-				this.draw();
-				this.options.onAnimationComplete.call(this);
-			}
-			return this;
-		},
-		generateLegend : function(){
-			return helpers.template(this.options.legendTemplate, this);
-		},
-		destroy : function(){
-			this.stop();
-			this.clear();
-			unbindEvents(this, this.events);
-			var canvas = this.chart.canvas;
-
-			// Reset canvas height/width attributes starts a fresh with the canvas context
-			canvas.width = this.chart.width;
-			canvas.height = this.chart.height;
-
-			// < IE9 doesn't support removeProperty
-			if (canvas.style.removeProperty) {
-				canvas.style.removeProperty('width');
-				canvas.style.removeProperty('height');
-			} else {
-				canvas.style.removeAttribute('width');
-				canvas.style.removeAttribute('height');
-			}
-
-			delete Chart.instances[this.id];
-		},
-		showTooltip : function(ChartElements, forceRedraw){
-			// Only redraw the chart if we've actually changed what we're hovering on.
-			if (typeof this.activeElements === 'undefined') this.activeElements = [];
-
-			var isChanged = (function(Elements){
-				var changed = false;
-
-				if (Elements.length !== this.activeElements.length){
-					changed = true;
-					return changed;
-				}
-
-				each(Elements, function(element, index){
-					if (element !== this.activeElements[index]){
-						changed = true;
-					}
-				}, this);
-				return changed;
-			}).call(this, ChartElements);
-
-			if (!isChanged && !forceRedraw){
-				return;
-			}
-			else{
-				this.activeElements = ChartElements;
-			}
-			this.draw();
-			if(this.options.customTooltips){
-				this.options.customTooltips(false);
-			}
-			if (ChartElements.length > 0){
-				// If we have multiple datasets, show a MultiTooltip for all of the data points at that index
-				if (this.datasets && this.datasets.length > 1) {
-					var dataArray,
-						dataIndex;
-
-					for (var i = this.datasets.length - 1; i >= 0; i--) {
-						dataArray = this.datasets[i].points || this.datasets[i].bars || this.datasets[i].segments;
-						dataIndex = indexOf(dataArray, ChartElements[0]);
-						if (dataIndex !== -1){
-							break;
-						}
-					}
-					var tooltipLabels = [],
-						tooltipColors = [],
-						medianPosition = (function(index) {
-
-							// Get all the points at that particular index
-							var Elements = [],
-								dataCollection,
-								xPositions = [],
-								yPositions = [],
-								xMax,
-								yMax,
-								xMin,
-								yMin;
-							helpers.each(this.datasets, function(dataset){
-								dataCollection = dataset.points || dataset.bars || dataset.segments;
-								if (dataCollection[dataIndex] && dataCollection[dataIndex].hasValue()){
-									Elements.push(dataCollection[dataIndex]);
-								}
-							});
-
-							helpers.each(Elements, function(element) {
-								xPositions.push(element.x);
-								yPositions.push(element.y);
-
-
-								//Include any colour information about the element
-								tooltipLabels.push(helpers.template(this.options.multiTooltipTemplate, element));
-								tooltipColors.push({
-									fill: element._saved.fillColor || element.fillColor,
-									stroke: element._saved.strokeColor || element.strokeColor
-								});
-
-							}, this);
-
-							yMin = min(yPositions);
-							yMax = max(yPositions);
-
-							xMin = min(xPositions);
-							xMax = max(xPositions);
-
-							return {
-								x: (xMin > this.chart.width/2) ? xMin : xMax,
-								y: (yMin + yMax)/2
-							};
-						}).call(this, dataIndex);
-
-					new Chart.MultiTooltip({
-						x: medianPosition.x,
-						y: medianPosition.y,
-						xPadding: this.options.tooltipXPadding,
-						yPadding: this.options.tooltipYPadding,
-						xOffset: this.options.tooltipXOffset,
-						fillColor: this.options.tooltipFillColor,
-						textColor: this.options.tooltipFontColor,
-						fontFamily: this.options.tooltipFontFamily,
-						fontStyle: this.options.tooltipFontStyle,
-						fontSize: this.options.tooltipFontSize,
-						titleTextColor: this.options.tooltipTitleFontColor,
-						titleFontFamily: this.options.tooltipTitleFontFamily,
-						titleFontStyle: this.options.tooltipTitleFontStyle,
-						titleFontSize: this.options.tooltipTitleFontSize,
-						cornerRadius: this.options.tooltipCornerRadius,
-						labels: tooltipLabels,
-						legendColors: tooltipColors,
-						legendColorBackground : this.options.multiTooltipKeyBackground,
-						title: template(this.options.tooltipTitleTemplate,ChartElements[0]),
-						chart: this.chart,
-						ctx: this.chart.ctx,
-						custom: this.options.customTooltips
-					}).draw();
-
-				} else {
-					each(ChartElements, function(Element) {
-						var tooltipPosition = Element.tooltipPosition();
-						new Chart.Tooltip({
-							x: Math.round(tooltipPosition.x),
-							y: Math.round(tooltipPosition.y),
-							xPadding: this.options.tooltipXPadding,
-							yPadding: this.options.tooltipYPadding,
-							fillColor: this.options.tooltipFillColor,
-							textColor: this.options.tooltipFontColor,
-							fontFamily: this.options.tooltipFontFamily,
-							fontStyle: this.options.tooltipFontStyle,
-							fontSize: this.options.tooltipFontSize,
-							caretHeight: this.options.tooltipCaretSize,
-							cornerRadius: this.options.tooltipCornerRadius,
-							text: template(this.options.tooltipTemplate, Element),
-							chart: this.chart,
-							custom: this.options.customTooltips
-						}).draw();
-					}, this);
-				}
-			}
-			return this;
-		},
-		toBase64Image : function(){
-			return this.chart.canvas.toDataURL.apply(this.chart.canvas, arguments);
-		}
-	});
-
-	Chart.Type.extend = function(extensions){
-
-		var parent = this;
-
-		var ChartType = function(){
-			return parent.apply(this,arguments);
-		};
-
-		//Copy the prototype object of the this class
-		ChartType.prototype = clone(parent.prototype);
-		//Now overwrite some of the properties in the base class with the new extensions
-		extend(ChartType.prototype, extensions);
-
-		ChartType.extend = Chart.Type.extend;
-
-		if (extensions.name || parent.prototype.name){
-
-			var chartName = extensions.name || parent.prototype.name;
-			//Assign any potential default values of the new chart type
-
-			//If none are defined, we'll use a clone of the chart type this is being extended from.
-			//I.e. if we extend a line chart, we'll use the defaults from the line chart if our new chart
-			//doesn't define some defaults of their own.
-
-			var baseDefaults = (Chart.defaults[parent.prototype.name]) ? clone(Chart.defaults[parent.prototype.name]) : {};
-
-			Chart.defaults[chartName] = extend(baseDefaults,extensions.defaults);
-
-			Chart.types[chartName] = ChartType;
-
-			//Register this new chart type in the Chart prototype
-			Chart.prototype[chartName] = function(data,options){
-				var config = merge(Chart.defaults.global, Chart.defaults[chartName], options || {});
-				return new ChartType(data,config,this);
-			};
-		} else{
-			warn("Name not provided for this chart, so it hasn't been registered");
-		}
-		return parent;
-	};
-
-	Chart.Element = function(configuration){
-		extend(this,configuration);
-		this.initialize.apply(this,arguments);
-		this.save();
-	};
-	extend(Chart.Element.prototype,{
-		initialize : function(){},
-		restore : function(props){
-			if (!props){
-				extend(this,this._saved);
-			} else {
-				each(props,function(key){
-					this[key] = this._saved[key];
-				},this);
-			}
-			return this;
-		},
-		save : function(){
-			this._saved = clone(this);
-			delete this._saved._saved;
-			return this;
-		},
-		update : function(newProps){
-			each(newProps,function(value,key){
-				this._saved[key] = this[key];
-				this[key] = value;
-			},this);
-			return this;
-		},
-		transition : function(props,ease){
-			each(props,function(value,key){
-				this[key] = ((value - this._saved[key]) * ease) + this._saved[key];
-			},this);
-			return this;
-		},
-		tooltipPosition : function(){
-			return {
-				x : this.x,
-				y : this.y
-			};
-		},
-		hasValue: function(){
-			return isNumber(this.value);
-		}
-	});
-
-	Chart.Element.extend = inherits;
-
-
-	Chart.Point = Chart.Element.extend({
-		display: true,
-		inRange: function(chartX,chartY){
-			var hitDetectionRange = this.hitDetectionRadius + this.radius;
-			return ((Math.pow(chartX-this.x, 2)+Math.pow(chartY-this.y, 2)) < Math.pow(hitDetectionRange,2));
-		},
-		draw : function(){
-			if (this.display){
-				var ctx = this.ctx;
-				ctx.beginPath();
-
-				ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
-				ctx.closePath();
-
-				ctx.strokeStyle = this.strokeColor;
-				ctx.lineWidth = this.strokeWidth;
-
-				ctx.fillStyle = this.fillColor;
-
-				ctx.fill();
-				ctx.stroke();
-			}
-
-
-			//Quick debug for bezier curve splining
-			//Highlights control points and the line between them.
-			//Handy for dev - stripped in the min version.
-
-			// ctx.save();
-			// ctx.fillStyle = "black";
-			// ctx.strokeStyle = "black"
-			// ctx.beginPath();
-			// ctx.arc(this.controlPoints.inner.x,this.controlPoints.inner.y, 2, 0, Math.PI*2);
-			// ctx.fill();
-
-			// ctx.beginPath();
-			// ctx.arc(this.controlPoints.outer.x,this.controlPoints.outer.y, 2, 0, Math.PI*2);
-			// ctx.fill();
-
-			// ctx.moveTo(this.controlPoints.inner.x,this.controlPoints.inner.y);
-			// ctx.lineTo(this.x, this.y);
-			// ctx.lineTo(this.controlPoints.outer.x,this.controlPoints.outer.y);
-			// ctx.stroke();
-
-			// ctx.restore();
-
-
-
-		}
-	});
-
-	Chart.Arc = Chart.Element.extend({
-		inRange : function(chartX,chartY){
-
-			var pointRelativePosition = helpers.getAngleFromPoint(this, {
-				x: chartX,
-				y: chartY
-			});
-
-			// Normalize all angles to 0 - 2*PI (0 - 360°)
-			var pointRelativeAngle = pointRelativePosition.angle % (Math.PI * 2),
-			    startAngle = (Math.PI * 2 + this.startAngle) % (Math.PI * 2),
-			    endAngle = (Math.PI * 2 + this.endAngle) % (Math.PI * 2) || 360;
-
-			// Calculate wether the pointRelativeAngle is between the start and the end angle
-			var betweenAngles = (endAngle < startAngle) ?
-				pointRelativeAngle <= endAngle || pointRelativeAngle >= startAngle:
-				pointRelativeAngle >= startAngle && pointRelativeAngle <= endAngle;
-
-			//Check if within the range of the open/close angle
-			var withinRadius = (pointRelativePosition.distance >= this.innerRadius && pointRelativePosition.distance <= this.outerRadius);
-
-			return (betweenAngles && withinRadius);
-			//Ensure within the outside of the arc centre, but inside arc outer
-		},
-		tooltipPosition : function(){
-			var centreAngle = this.startAngle + ((this.endAngle - this.startAngle) / 2),
-				rangeFromCentre = (this.outerRadius - this.innerRadius) / 2 + this.innerRadius;
-			return {
-				x : this.x + (Math.cos(centreAngle) * rangeFromCentre),
-				y : this.y + (Math.sin(centreAngle) * rangeFromCentre)
-			};
-		},
-		draw : function(animationPercent){
-
-			var easingDecimal = animationPercent || 1;
-
-			var ctx = this.ctx;
-
-			ctx.beginPath();
-
-			ctx.arc(this.x, this.y, this.outerRadius < 0 ? 0 : this.outerRadius, this.startAngle, this.endAngle);
-
-            ctx.arc(this.x, this.y, this.innerRadius < 0 ? 0 : this.innerRadius, this.endAngle, this.startAngle, true);
-
-			ctx.closePath();
-			ctx.strokeStyle = this.strokeColor;
-			ctx.lineWidth = this.strokeWidth;
-
-			ctx.fillStyle = this.fillColor;
-
-			ctx.fill();
-			ctx.lineJoin = 'bevel';
-
-			if (this.showStroke){
-				ctx.stroke();
-			}
-		}
-	});
-
-	Chart.Rectangle = Chart.Element.extend({
-		draw : function(){
-			var ctx = this.ctx,
-				halfWidth = this.width/2,
-				leftX = this.x - halfWidth,
-				rightX = this.x + halfWidth,
-				top = this.base - (this.base - this.y),
-				halfStroke = this.strokeWidth / 2;
-
-			// Canvas doesn't allow us to stroke inside the width so we can
-			// adjust the sizes to fit if we're setting a stroke on the line
-			if (this.showStroke){
-				leftX += halfStroke;
-				rightX -= halfStroke;
-				top += halfStroke;
-			}
-
-			ctx.beginPath();
-
-			ctx.fillStyle = this.fillColor;
-			ctx.strokeStyle = this.strokeColor;
-			ctx.lineWidth = this.strokeWidth;
-
-			// It'd be nice to keep this class totally generic to any rectangle
-			// and simply specify which border to miss out.
-			ctx.moveTo(leftX, this.base);
-			ctx.lineTo(leftX, top);
-			ctx.lineTo(rightX, top);
-			ctx.lineTo(rightX, this.base);
-			ctx.fill();
-			if (this.showStroke){
-				ctx.stroke();
-			}
-		},
-		height : function(){
-			return this.base - this.y;
-		},
-		inRange : function(chartX,chartY){
-			return (chartX >= this.x - this.width/2 && chartX <= this.x + this.width/2) && (chartY >= this.y && chartY <= this.base);
-		}
-	});
-
-	Chart.Animation = Chart.Element.extend({
-		currentStep: null, // the current animation step
-		numSteps: 60, // default number of steps
-		easing: "", // the easing to use for this animation
-		render: null, // render function used by the animation service
-		
-		onAnimationProgress: null, // user specified callback to fire on each step of the animation 
-		onAnimationComplete: null, // user specified callback to fire when the animation finishes
-	});
-	
-	Chart.Tooltip = Chart.Element.extend({
-		draw : function(){
-
-			var ctx = this.chart.ctx;
-
-			ctx.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
-
-			this.xAlign = "center";
-			this.yAlign = "above";
-
-			//Distance between the actual element.y position and the start of the tooltip caret
-			var caretPadding = this.caretPadding = 2;
-
-			var tooltipWidth = ctx.measureText(this.text).width + 2*this.xPadding,
-				tooltipRectHeight = this.fontSize + 2*this.yPadding,
-				tooltipHeight = tooltipRectHeight + this.caretHeight + caretPadding;
-
-			if (this.x + tooltipWidth/2 >this.chart.width){
-				this.xAlign = "left";
-			} else if (this.x - tooltipWidth/2 < 0){
-				this.xAlign = "right";
-			}
-
-			if (this.y - tooltipHeight < 0){
-				this.yAlign = "below";
-			}
-
-
-			var tooltipX = this.x - tooltipWidth/2,
-				tooltipY = this.y - tooltipHeight;
-
-			ctx.fillStyle = this.fillColor;
-
-			// Custom Tooltips
-			if(this.custom){
-				this.custom(this);
-			}
-			else{
-				switch(this.yAlign)
-				{
-				case "above":
-					//Draw a caret above the x/y
-					ctx.beginPath();
-					ctx.moveTo(this.x,this.y - caretPadding);
-					ctx.lineTo(this.x + this.caretHeight, this.y - (caretPadding + this.caretHeight));
-					ctx.lineTo(this.x - this.caretHeight, this.y - (caretPadding + this.caretHeight));
-					ctx.closePath();
-					ctx.fill();
-					break;
-				case "below":
-					tooltipY = this.y + caretPadding + this.caretHeight;
-					//Draw a caret below the x/y
-					ctx.beginPath();
-					ctx.moveTo(this.x, this.y + caretPadding);
-					ctx.lineTo(this.x + this.caretHeight, this.y + caretPadding + this.caretHeight);
-					ctx.lineTo(this.x - this.caretHeight, this.y + caretPadding + this.caretHeight);
-					ctx.closePath();
-					ctx.fill();
-					break;
-				}
-
-				switch(this.xAlign)
-				{
-				case "left":
-					tooltipX = this.x - tooltipWidth + (this.cornerRadius + this.caretHeight);
-					break;
-				case "right":
-					tooltipX = this.x - (this.cornerRadius + this.caretHeight);
-					break;
-				}
-
-				drawRoundedRectangle(ctx,tooltipX,tooltipY,tooltipWidth,tooltipRectHeight,this.cornerRadius);
-
-				ctx.fill();
-
-				ctx.fillStyle = this.textColor;
-				ctx.textAlign = "center";
-				ctx.textBaseline = "middle";
-				ctx.fillText(this.text, tooltipX + tooltipWidth/2, tooltipY + tooltipRectHeight/2);
-			}
-		}
-	});
-
-	Chart.MultiTooltip = Chart.Element.extend({
-		initialize : function(){
-			this.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
-
-			this.titleFont = fontString(this.titleFontSize,this.titleFontStyle,this.titleFontFamily);
-
-			this.titleHeight = this.title ? this.titleFontSize * 1.5 : 0;
-			this.height = (this.labels.length * this.fontSize) + ((this.labels.length-1) * (this.fontSize/2)) + (this.yPadding*2) + this.titleHeight;
-
-			this.ctx.font = this.titleFont;
-
-			var titleWidth = this.ctx.measureText(this.title).width,
-				//Label has a legend square as well so account for this.
-				labelWidth = longestText(this.ctx,this.font,this.labels) + this.fontSize + 3,
-				longestTextWidth = max([labelWidth,titleWidth]);
-
-			this.width = longestTextWidth + (this.xPadding*2);
-
-
-			var halfHeight = this.height/2;
-
-			//Check to ensure the height will fit on the canvas
-			if (this.y - halfHeight < 0 ){
-				this.y = halfHeight;
-			} else if (this.y + halfHeight > this.chart.height){
-				this.y = this.chart.height - halfHeight;
-			}
-
-			//Decide whether to align left or right based on position on canvas
-			if (this.x > this.chart.width/2){
-				this.x -= this.xOffset + this.width;
-			} else {
-				this.x += this.xOffset;
-			}
-
-
-		},
-		getLineHeight : function(index){
-			var baseLineHeight = this.y - (this.height/2) + this.yPadding,
-				afterTitleIndex = index-1;
-
-			//If the index is zero, we're getting the title
-			if (index === 0){
-				return baseLineHeight + this.titleHeight / 3;
-			} else{
-				return baseLineHeight + ((this.fontSize * 1.5 * afterTitleIndex) + this.fontSize / 2) + this.titleHeight;
-			}
-
-		},
-		draw : function(){
-			// Custom Tooltips
-			if(this.custom){
-				this.custom(this);
-			}
-			else{
-				drawRoundedRectangle(this.ctx,this.x,this.y - this.height/2,this.width,this.height,this.cornerRadius);
-				var ctx = this.ctx;
-				ctx.fillStyle = this.fillColor;
-				ctx.fill();
-				ctx.closePath();
-
-				ctx.textAlign = "left";
-				ctx.textBaseline = "middle";
-				ctx.fillStyle = this.titleTextColor;
-				ctx.font = this.titleFont;
-
-				ctx.fillText(this.title,this.x + this.xPadding, this.getLineHeight(0));
-
-				ctx.font = this.font;
-				helpers.each(this.labels,function(label,index){
-					ctx.fillStyle = this.textColor;
-					ctx.fillText(label,this.x + this.xPadding + this.fontSize + 3, this.getLineHeight(index + 1));
-
-					//A bit gnarly, but clearing this rectangle breaks when using explorercanvas (clears whole canvas)
-					//ctx.clearRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
-					//Instead we'll make a white filled block to put the legendColour palette over.
-
-					ctx.fillStyle = this.legendColorBackground;
-					ctx.fillRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
-
-					ctx.fillStyle = this.legendColors[index].fill;
-					ctx.fillRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
-
-
-				},this);
-			}
-		}
-	});
-
-	Chart.Scale = Chart.Element.extend({
-		initialize : function(){
-			this.fit();
-		},
-		buildYLabels : function(){
-			this.yLabels = [];
-
-			var stepDecimalPlaces = getDecimalPlaces(this.stepValue);
-
-			for (var i=0; i<=this.steps; i++){
-				this.yLabels.push(template(this.templateString,{value:(this.min + (i * this.stepValue)).toFixed(stepDecimalPlaces)}));
-			}
-			this.yLabelWidth = (this.display && this.showLabels) ? longestText(this.ctx,this.font,this.yLabels) + 10 : 0;
-		},
-		addXLabel : function(label){
-			this.xLabels.push(label);
-			this.valuesCount++;
-			this.fit();
-		},
-		removeXLabel : function(){
-			this.xLabels.shift();
-			this.valuesCount--;
-			this.fit();
-		},
-		// Fitting loop to rotate x Labels and figure out what fits there, and also calculate how many Y steps to use
-		fit: function(){
-			// First we need the width of the yLabels, assuming the xLabels aren't rotated
-
-			// To do that we need the base line at the top and base of the chart, assuming there is no x label rotation
-			this.startPoint = (this.display) ? this.fontSize : 0;
-			this.endPoint = (this.display) ? this.height - (this.fontSize * 1.5) - 5 : this.height; // -5 to pad labels
-
-			// Apply padding settings to the start and end point.
-			this.startPoint += this.padding;
-			this.endPoint -= this.padding;
-
-			// Cache the starting endpoint, excluding the space for x labels
-			var cachedEndPoint = this.endPoint;
-
-			// Cache the starting height, so can determine if we need to recalculate the scale yAxis
-			var cachedHeight = this.endPoint - this.startPoint,
-				cachedYLabelWidth;
-
-			// Build the current yLabels so we have an idea of what size they'll be to start
-			/*
-			 *	This sets what is returned from calculateScaleRange as static properties of this class:
-			 *
-				this.steps;
-				this.stepValue;
-				this.min;
-				this.max;
-			 *
-			 */
-			this.calculateYRange(cachedHeight);
-
-			// With these properties set we can now build the array of yLabels
-			// and also the width of the largest yLabel
-			this.buildYLabels();
-
-			this.calculateXLabelRotation();
-
-			while((cachedHeight > this.endPoint - this.startPoint)){
-				cachedHeight = this.endPoint - this.startPoint;
-				cachedYLabelWidth = this.yLabelWidth;
-
-				this.calculateYRange(cachedHeight);
-				this.buildYLabels();
-
-				// Only go through the xLabel loop again if the yLabel width has changed
-				if (cachedYLabelWidth < this.yLabelWidth){
-					this.endPoint = cachedEndPoint;
-					this.calculateXLabelRotation();
-				}
-			}
-
-		},
-		calculateXLabelRotation : function(){
-			//Get the width of each grid by calculating the difference
-			//between x offsets between 0 and 1.
-
-			this.ctx.font = this.font;
-
-			var firstWidth = this.ctx.measureText(this.xLabels[0]).width,
-				lastWidth = this.ctx.measureText(this.xLabels[this.xLabels.length - 1]).width,
-				firstRotated,
-				lastRotated;
-
-
-			this.xScalePaddingRight = lastWidth/2 + 3;
-			this.xScalePaddingLeft = (firstWidth/2 > this.yLabelWidth) ? firstWidth/2 : this.yLabelWidth;
-
-			this.xLabelRotation = 0;
-			if (this.display){
-				var originalLabelWidth = longestText(this.ctx,this.font,this.xLabels),
-					cosRotation,
-					firstRotatedWidth;
-				this.xLabelWidth = originalLabelWidth;
-				//Allow 3 pixels x2 padding either side for label readability
-				var xGridWidth = Math.floor(this.calculateX(1) - this.calculateX(0)) - 6;
-
-				//Max label rotate should be 90 - also act as a loop counter
-				while ((this.xLabelWidth > xGridWidth && this.xLabelRotation === 0) || (this.xLabelWidth > xGridWidth && this.xLabelRotation <= 90 && this.xLabelRotation > 0)){
-					cosRotation = Math.cos(toRadians(this.xLabelRotation));
-
-					firstRotated = cosRotation * firstWidth;
-					lastRotated = cosRotation * lastWidth;
-
-					// We're right aligning the text now.
-					if (firstRotated + this.fontSize / 2 > this.yLabelWidth){
-						this.xScalePaddingLeft = firstRotated + this.fontSize / 2;
-					}
-					this.xScalePaddingRight = this.fontSize/2;
-
-
-					this.xLabelRotation++;
-					this.xLabelWidth = cosRotation * originalLabelWidth;
-
-				}
-				if (this.xLabelRotation > 0){
-					this.endPoint -= Math.sin(toRadians(this.xLabelRotation))*originalLabelWidth + 3;
-				}
-			}
-			else{
-				this.xLabelWidth = 0;
-				this.xScalePaddingRight = this.padding;
-				this.xScalePaddingLeft = this.padding;
-			}
-
-		},
-		// Needs to be overidden in each Chart type
-		// Otherwise we need to pass all the data into the scale class
-		calculateYRange: noop,
-		drawingArea: function(){
-			return this.startPoint - this.endPoint;
-		},
-		calculateY : function(value){
-			var scalingFactor = this.drawingArea() / (this.min - this.max);
-			return this.endPoint - (scalingFactor * (value - this.min));
-		},
-		calculateX : function(index){
-			var isRotated = (this.xLabelRotation > 0),
-				// innerWidth = (this.offsetGridLines) ? this.width - offsetLeft - this.padding : this.width - (offsetLeft + halfLabelWidth * 2) - this.padding,
-				innerWidth = this.width - (this.xScalePaddingLeft + this.xScalePaddingRight),
-				valueWidth = innerWidth/Math.max((this.valuesCount - ((this.offsetGridLines) ? 0 : 1)), 1),
-				valueOffset = (valueWidth * index) + this.xScalePaddingLeft;
-
-			if (this.offsetGridLines){
-				valueOffset += (valueWidth/2);
-			}
-
-			return Math.round(valueOffset);
-		},
-		update : function(newProps){
-			helpers.extend(this, newProps);
-			this.fit();
-		},
-		draw : function(){
-			var ctx = this.ctx,
-				yLabelGap = (this.endPoint - this.startPoint) / this.steps,
-				xStart = Math.round(this.xScalePaddingLeft);
-			if (this.display){
-				ctx.fillStyle = this.textColor;
-				ctx.font = this.font;
-				each(this.yLabels,function(labelString,index){
-					var yLabelCenter = this.endPoint - (yLabelGap * index),
-						linePositionY = Math.round(yLabelCenter),
-						drawHorizontalLine = this.showHorizontalLines;
-
-					ctx.textAlign = "right";
-					ctx.textBaseline = "middle";
-					if (this.showLabels){
-						ctx.fillText(labelString,xStart - 10,yLabelCenter);
-					}
-
-					// This is X axis, so draw it
-					if (index === 0 && !drawHorizontalLine){
-						drawHorizontalLine = true;
-					}
-
-					if (drawHorizontalLine){
-						ctx.beginPath();
-					}
-
-					if (index > 0){
-						// This is a grid line in the centre, so drop that
-						ctx.lineWidth = this.gridLineWidth;
-						ctx.strokeStyle = this.gridLineColor;
-					} else {
-						// This is the first line on the scale
-						ctx.lineWidth = this.lineWidth;
-						ctx.strokeStyle = this.lineColor;
-					}
-
-					linePositionY += helpers.aliasPixel(ctx.lineWidth);
-
-					if(drawHorizontalLine){
-						ctx.moveTo(xStart, linePositionY);
-						ctx.lineTo(this.width, linePositionY);
-						ctx.stroke();
-						ctx.closePath();
-					}
-
-					ctx.lineWidth = this.lineWidth;
-					ctx.strokeStyle = this.lineColor;
-					ctx.beginPath();
-					ctx.moveTo(xStart - 5, linePositionY);
-					ctx.lineTo(xStart, linePositionY);
-					ctx.stroke();
-					ctx.closePath();
-
-				},this);
-
-				each(this.xLabels,function(label,index){
-					var xPos = this.calculateX(index) + aliasPixel(this.lineWidth),
-						// Check to see if line/bar here and decide where to place the line
-						linePos = this.calculateX(index - (this.offsetGridLines ? 0.5 : 0)) + aliasPixel(this.lineWidth),
-						isRotated = (this.xLabelRotation > 0),
-						drawVerticalLine = this.showVerticalLines;
-
-					// This is Y axis, so draw it
-					if (index === 0 && !drawVerticalLine){
-						drawVerticalLine = true;
-					}
-
-					if (drawVerticalLine){
-						ctx.beginPath();
-					}
-
-					if (index > 0){
-						// This is a grid line in the centre, so drop that
-						ctx.lineWidth = this.gridLineWidth;
-						ctx.strokeStyle = this.gridLineColor;
-					} else {
-						// This is the first line on the scale
-						ctx.lineWidth = this.lineWidth;
-						ctx.strokeStyle = this.lineColor;
-					}
-
-					if (drawVerticalLine){
-						ctx.moveTo(linePos,this.endPoint);
-						ctx.lineTo(linePos,this.startPoint - 3);
-						ctx.stroke();
-						ctx.closePath();
-					}
-
-
-					ctx.lineWidth = this.lineWidth;
-					ctx.strokeStyle = this.lineColor;
-
-
-					// Small lines at the bottom of the base grid line
-					ctx.beginPath();
-					ctx.moveTo(linePos,this.endPoint);
-					ctx.lineTo(linePos,this.endPoint + 5);
-					ctx.stroke();
-					ctx.closePath();
-
-					ctx.save();
-					ctx.translate(xPos,(isRotated) ? this.endPoint + 12 : this.endPoint + 8);
-					ctx.rotate(toRadians(this.xLabelRotation)*-1);
-					ctx.font = this.font;
-					ctx.textAlign = (isRotated) ? "right" : "center";
-					ctx.textBaseline = (isRotated) ? "middle" : "top";
-					ctx.fillText(label, 0, 0);
-					ctx.restore();
-				},this);
-
-			}
-		}
-
-	});
-
-	Chart.RadialScale = Chart.Element.extend({
-		initialize: function(){
-			this.size = min([this.height, this.width]);
-			this.drawingArea = (this.display) ? (this.size/2) - (this.fontSize/2 + this.backdropPaddingY) : (this.size/2);
-		},
-		calculateCenterOffset: function(value){
-			// Take into account half font size + the yPadding of the top value
-			var scalingFactor = this.drawingArea / (this.max - this.min);
-
-			return (value - this.min) * scalingFactor;
-		},
-		update : function(){
-			if (!this.lineArc){
-				this.setScaleSize();
-			} else {
-				this.drawingArea = (this.display) ? (this.size/2) - (this.fontSize/2 + this.backdropPaddingY) : (this.size/2);
-			}
-			this.buildYLabels();
-		},
-		buildYLabels: function(){
-			this.yLabels = [];
-
-			var stepDecimalPlaces = getDecimalPlaces(this.stepValue);
-
-			for (var i=0; i<=this.steps; i++){
-				this.yLabels.push(template(this.templateString,{value:(this.min + (i * this.stepValue)).toFixed(stepDecimalPlaces)}));
-			}
-		},
-		getCircumference : function(){
-			return ((Math.PI*2) / this.valuesCount);
-		},
-		setScaleSize: function(){
-			/*
-			 * Right, this is really confusing and there is a lot of maths going on here
-			 * The gist of the problem is here: https://gist.github.com/nnnick/696cc9c55f4b0beb8fe9
-			 *
-			 * Reaction: https://dl.dropboxusercontent.com/u/34601363/toomuchscience.gif
-			 *
-			 * Solution:
-			 *
-			 * We assume the radius of the polygon is half the size of the canvas at first
-			 * at each index we check if the text overlaps.
-			 *
-			 * Where it does, we store that angle and that index.
-			 *
-			 * After finding the largest index and angle we calculate how much we need to remove
-			 * from the shape radius to move the point inwards by that x.
-			 *
-			 * We average the left and right distances to get the maximum shape radius that can fit in the box
-			 * along with labels.
-			 *
-			 * Once we have that, we can find the centre point for the chart, by taking the x text protrusion
-			 * on each side, removing that from the size, halving it and adding the left x protrusion width.
-			 *
-			 * This will mean we have a shape fitted to the canvas, as large as it can be with the labels
-			 * and position it in the most space efficient manner
-			 *
-			 * https://dl.dropboxusercontent.com/u/34601363/yeahscience.gif
-			 */
-
-
-			// Get maximum radius of the polygon. Either half the height (minus the text width) or half the width.
-			// Use this to calculate the offset + change. - Make sure L/R protrusion is at least 0 to stop issues with centre points
-			var largestPossibleRadius = min([(this.height/2 - this.pointLabelFontSize - 5), this.width/2]),
-				pointPosition,
-				i,
-				textWidth,
-				halfTextWidth,
-				furthestRight = this.width,
-				furthestRightIndex,
-				furthestRightAngle,
-				furthestLeft = 0,
-				furthestLeftIndex,
-				furthestLeftAngle,
-				xProtrusionLeft,
-				xProtrusionRight,
-				radiusReductionRight,
-				radiusReductionLeft,
-				maxWidthRadius;
-			this.ctx.font = fontString(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily);
-			for (i=0;i<this.valuesCount;i++){
-				// 5px to space the text slightly out - similar to what we do in the draw function.
-				pointPosition = this.getPointPosition(i, largestPossibleRadius);
-				textWidth = this.ctx.measureText(template(this.templateString, { value: this.labels[i] })).width + 5;
-				if (i === 0 || i === this.valuesCount/2){
-					// If we're at index zero, or exactly the middle, we're at exactly the top/bottom
-					// of the radar chart, so text will be aligned centrally, so we'll half it and compare
-					// w/left and right text sizes
-					halfTextWidth = textWidth/2;
-					if (pointPosition.x + halfTextWidth > furthestRight) {
-						furthestRight = pointPosition.x + halfTextWidth;
-						furthestRightIndex = i;
-					}
-					if (pointPosition.x - halfTextWidth < furthestLeft) {
-						furthestLeft = pointPosition.x - halfTextWidth;
-						furthestLeftIndex = i;
-					}
-				}
-				else if (i < this.valuesCount/2) {
-					// Less than half the values means we'll left align the text
-					if (pointPosition.x + textWidth > furthestRight) {
-						furthestRight = pointPosition.x + textWidth;
-						furthestRightIndex = i;
-					}
-				}
-				else if (i > this.valuesCount/2){
-					// More than half the values means we'll right align the text
-					if (pointPosition.x - textWidth < furthestLeft) {
-						furthestLeft = pointPosition.x - textWidth;
-						furthestLeftIndex = i;
-					}
-				}
-			}
-
-			xProtrusionLeft = furthestLeft;
-
-			xProtrusionRight = Math.ceil(furthestRight - this.width);
-
-			furthestRightAngle = this.getIndexAngle(furthestRightIndex);
-
-			furthestLeftAngle = this.getIndexAngle(furthestLeftIndex);
-
-			radiusReductionRight = xProtrusionRight / Math.sin(furthestRightAngle + Math.PI/2);
-
-			radiusReductionLeft = xProtrusionLeft / Math.sin(furthestLeftAngle + Math.PI/2);
-
-			// Ensure we actually need to reduce the size of the chart
-			radiusReductionRight = (isNumber(radiusReductionRight)) ? radiusReductionRight : 0;
-			radiusReductionLeft = (isNumber(radiusReductionLeft)) ? radiusReductionLeft : 0;
-
-			this.drawingArea = largestPossibleRadius - (radiusReductionLeft + radiusReductionRight)/2;
-
-			//this.drawingArea = min([maxWidthRadius, (this.height - (2 * (this.pointLabelFontSize + 5)))/2])
-			this.setCenterPoint(radiusReductionLeft, radiusReductionRight);
-
-		},
-		setCenterPoint: function(leftMovement, rightMovement){
-
-			var maxRight = this.width - rightMovement - this.drawingArea,
-				maxLeft = leftMovement + this.drawingArea;
-
-			this.xCenter = (maxLeft + maxRight)/2;
-			// Always vertically in the centre as the text height doesn't change
-			this.yCenter = (this.height/2);
-		},
-
-		getIndexAngle : function(index){
-			var angleMultiplier = (Math.PI * 2) / this.valuesCount;
-			// Start from the top instead of right, so remove a quarter of the circle
-
-			return index * angleMultiplier - (Math.PI/2);
-		},
-		getPointPosition : function(index, distanceFromCenter){
-			var thisAngle = this.getIndexAngle(index);
-			return {
-				x : (Math.cos(thisAngle) * distanceFromCenter) + this.xCenter,
-				y : (Math.sin(thisAngle) * distanceFromCenter) + this.yCenter
-			};
-		},
-		draw: function(){
-			if (this.display){
-				var ctx = this.ctx;
-				each(this.yLabels, function(label, index){
-					// Don't draw a centre value
-					if (index > 0){
-						var yCenterOffset = index * (this.drawingArea/this.steps),
-							yHeight = this.yCenter - yCenterOffset,
-							pointPosition;
-
-						// Draw circular lines around the scale
-						if (this.lineWidth > 0){
-							ctx.strokeStyle = this.lineColor;
-							ctx.lineWidth = this.lineWidth;
-
-							if(this.lineArc){
-								ctx.beginPath();
-								ctx.arc(this.xCenter, this.yCenter, yCenterOffset, 0, Math.PI*2);
-								ctx.closePath();
-								ctx.stroke();
-							} else{
-								ctx.beginPath();
-								for (var i=0;i<this.valuesCount;i++)
-								{
-									pointPosition = this.getPointPosition(i, this.calculateCenterOffset(this.min + (index * this.stepValue)));
-									if (i === 0){
-										ctx.moveTo(pointPosition.x, pointPosition.y);
-									} else {
-										ctx.lineTo(pointPosition.x, pointPosition.y);
-									}
-								}
-								ctx.closePath();
-								ctx.stroke();
-							}
-						}
-						if(this.showLabels){
-							ctx.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
-							if (this.showLabelBackdrop){
-								var labelWidth = ctx.measureText(label).width;
-								ctx.fillStyle = this.backdropColor;
-								ctx.fillRect(
-									this.xCenter - labelWidth/2 - this.backdropPaddingX,
-									yHeight - this.fontSize/2 - this.backdropPaddingY,
-									labelWidth + this.backdropPaddingX*2,
-									this.fontSize + this.backdropPaddingY*2
-								);
-							}
-							ctx.textAlign = 'center';
-							ctx.textBaseline = "middle";
-							ctx.fillStyle = this.fontColor;
-							ctx.fillText(label, this.xCenter, yHeight);
-						}
-					}
-				}, this);
-
-				if (!this.lineArc){
-					ctx.lineWidth = this.angleLineWidth;
-					ctx.strokeStyle = this.angleLineColor;
-					for (var i = this.valuesCount - 1; i >= 0; i--) {
-						var centerOffset = null, outerPosition = null;
-
-						if (this.angleLineWidth > 0 && (i % this.angleLineInterval === 0)){
-							centerOffset = this.calculateCenterOffset(this.max);
-							outerPosition = this.getPointPosition(i, centerOffset);
-							ctx.beginPath();
-							ctx.moveTo(this.xCenter, this.yCenter);
-							ctx.lineTo(outerPosition.x, outerPosition.y);
-							ctx.stroke();
-							ctx.closePath();
-						}
-
-						if (this.backgroundColors && this.backgroundColors.length == this.valuesCount) {
-							if (centerOffset == null)
-								centerOffset = this.calculateCenterOffset(this.max);
-
-							if (outerPosition == null)
-								outerPosition = this.getPointPosition(i, centerOffset);
-
-							var previousOuterPosition = this.getPointPosition(i === 0 ? this.valuesCount - 1 : i - 1, centerOffset);
-							var nextOuterPosition = this.getPointPosition(i === this.valuesCount - 1 ? 0 : i + 1, centerOffset);
-
-							var previousOuterHalfway = { x: (previousOuterPosition.x + outerPosition.x) / 2, y: (previousOuterPosition.y + outerPosition.y) / 2 };
-							var nextOuterHalfway = { x: (outerPosition.x + nextOuterPosition.x) / 2, y: (outerPosition.y + nextOuterPosition.y) / 2 };
-
-							ctx.beginPath();
-							ctx.moveTo(this.xCenter, this.yCenter);
-							ctx.lineTo(previousOuterHalfway.x, previousOuterHalfway.y);
-							ctx.lineTo(outerPosition.x, outerPosition.y);
-							ctx.lineTo(nextOuterHalfway.x, nextOuterHalfway.y);
-							ctx.fillStyle = this.backgroundColors[i];
-							ctx.fill();
-							ctx.closePath();
-						}
-						// Extra 3px out for some label spacing
-						var pointLabelPosition = this.getPointPosition(i, this.calculateCenterOffset(this.max) + 5);
-						ctx.font = fontString(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily);
-						ctx.fillStyle = this.pointLabelFontColor;
-
-						var labelsCount = this.labels.length,
-							halfLabelsCount = this.labels.length/2,
-							quarterLabelsCount = halfLabelsCount/2,
-							upperHalf = (i < quarterLabelsCount || i > labelsCount - quarterLabelsCount),
-							exactQuarter = (i === quarterLabelsCount || i === labelsCount - quarterLabelsCount);
-						if (i === 0){
-							ctx.textAlign = 'center';
-						} else if(i === halfLabelsCount){
-							ctx.textAlign = 'center';
-						} else if (i < halfLabelsCount){
-							ctx.textAlign = 'left';
-						} else {
-							ctx.textAlign = 'right';
-						}
-
-						// Set the correct text baseline based on outer positioning
-						if (exactQuarter){
-							ctx.textBaseline = 'middle';
-						} else if (upperHalf){
-							ctx.textBaseline = 'bottom';
-						} else {
-							ctx.textBaseline = 'top';
-						}
-
-						ctx.fillText(this.labels[i], pointLabelPosition.x, pointLabelPosition.y);
-					}
-				}
-			}
-		}
-	});
-
-	Chart.animationService = {
-		frameDuration: 17,
-		animations: [],
-		dropFrames: 0,
-		addAnimation: function(chartInstance, animationObject) {
-			for (var index = 0; index < this.animations.length; ++ index){
-				if (this.animations[index].chartInstance === chartInstance){
-					// replacing an in progress animation
-					this.animations[index].animationObject = animationObject;
-					return;
-				}
-			}
-			
-			this.animations.push({
-				chartInstance: chartInstance,
-				animationObject: animationObject
-			});
-
-			// If there are no animations queued, manually kickstart a digest, for lack of a better word
-			if (this.animations.length == 1) {
-				helpers.requestAnimFrame.call(window, this.digestWrapper);
-			}
-		},
-		// Cancel the animation for a given chart instance
-		cancelAnimation: function(chartInstance) {
-			var index = helpers.findNextWhere(this.animations, function(animationWrapper) {
-				return animationWrapper.chartInstance === chartInstance;
-			});
-			
-			if (index)
-			{
-				this.animations.splice(index, 1);
-			}
-		},
-		// calls startDigest with the proper context
-		digestWrapper: function() {
-			Chart.animationService.startDigest.call(Chart.animationService);
-		},
-		startDigest: function() {
-
-			var startTime = Date.now();
-			var framesToDrop = 0;
-
-			if(this.dropFrames > 1){
-				framesToDrop = Math.floor(this.dropFrames);
-				this.dropFrames -= framesToDrop;
-			}
-
-			for (var i = 0; i < this.animations.length; i++) {
-
-				if (this.animations[i].animationObject.currentStep === null){
-					this.animations[i].animationObject.currentStep = 0;
-				}
-
-				this.animations[i].animationObject.currentStep += 1 + framesToDrop;
-				if(this.animations[i].animationObject.currentStep > this.animations[i].animationObject.numSteps){
-					this.animations[i].animationObject.currentStep = this.animations[i].animationObject.numSteps;
-				}
-				
-				this.animations[i].animationObject.render(this.animations[i].chartInstance, this.animations[i].animationObject);
-				
-				// Check if executed the last frame.
-				if (this.animations[i].animationObject.currentStep == this.animations[i].animationObject.numSteps){
-					// Call onAnimationComplete
-					this.animations[i].animationObject.onAnimationComplete.call(this.animations[i].chartInstance);
-					// Remove the animation.
-					this.animations.splice(i, 1);
-					// Keep the index in place to offset the splice
-					i--;
-				}
-			}
-
-			var endTime = Date.now();
-			var delay = endTime - startTime - this.frameDuration;
-			var frameDelay = delay / this.frameDuration;
-
-			if(frameDelay > 1){
-				this.dropFrames += frameDelay;
-			}
-
-			// Do we have more stuff to animate?
-			if (this.animations.length > 0){
-				helpers.requestAnimFrame.call(window, this.digestWrapper);
-			}
-		}
-	};
-
-	// Attach global event to resize each chart instance when the browser resizes
-	helpers.addEvent(window, "resize", (function(){
-		// Basic debounce of resize function so it doesn't hurt performance when resizing browser.
-		var timeout;
-		return function(){
-			clearTimeout(timeout);
-			timeout = setTimeout(function(){
-				each(Chart.instances,function(instance){
-					// If the responsive flag is set in the chart instance config
-					// Cascade the resize event down to the chart.
-					if (instance.options.responsive){
-						instance.resize(instance.render, true);
-					}
-				});
-			}, 50);
-		};
-	})());
-
-
-	if (amd) {
-		define('Chart', [], function(){
-			return Chart;
-		});
-	} else if (typeof module === 'object' && module.exports) {
-		module.exports = Chart;
-	}
-
-	root.Chart = Chart;
-
-	Chart.noConflict = function(){
-		root.Chart = previous;
-		return Chart;
-	};
-
-}).call(this);
-
-(function(){
-	"use strict";
-
-	var root = this,
-		Chart = root.Chart,
-		helpers = Chart.helpers;
-
-
-	var defaultConfig = {
-		//Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-		scaleBeginAtZero : true,
-
-		//Boolean - Whether grid lines are shown across the chart
-		scaleShowGridLines : true,
-
-		//String - Colour of the grid lines
-		scaleGridLineColor : "rgba(0,0,0,.05)",
-
-		//Number - Width of the grid lines
-		scaleGridLineWidth : 1,
-
-		//Boolean - Whether to show horizontal lines (except X axis)
-		scaleShowHorizontalLines: true,
-
-		//Boolean - Whether to show vertical lines (except Y axis)
-		scaleShowVerticalLines: true,
-
-		//Boolean - If there is a stroke on each bar
-		barShowStroke : true,
-
-		//Number - Pixel width of the bar stroke
-		barStrokeWidth : 2,
-
-		//Number - Spacing between each of the X value sets
-		barValueSpacing : 5,
-
-		//Number - Spacing between data sets within X values
-		barDatasetSpacing : 1,
-
-		//String - A legend template
-		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span class=\"<%=name.toLowerCase()%>-legend-icon\" style=\"background-color:<%=datasets[i].fillColor%>\"></span><span class=\"<%=name.toLowerCase()%>-legend-text\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span></li><%}%></ul>"
-
-	};
-
-
-	Chart.Type.extend({
-		name: "Bar",
-		defaults : defaultConfig,
-		initialize:  function(data){
-
-			//Expose options as a scope variable here so we can access it in the ScaleClass
-			var options = this.options;
-
-			this.ScaleClass = Chart.Scale.extend({
-				offsetGridLines : true,
-				calculateBarX : function(datasetCount, datasetIndex, barIndex){
-					//Reusable method for calculating the xPosition of a given bar based on datasetIndex & width of the bar
-					var xWidth = this.calculateBaseWidth(),
-						xAbsolute = this.calculateX(barIndex) - (xWidth/2),
-						barWidth = this.calculateBarWidth(datasetCount);
-
-					return xAbsolute + (barWidth * datasetIndex) + (datasetIndex * options.barDatasetSpacing) + barWidth/2;
-				},
-				calculateBaseWidth : function(){
-					return (this.calculateX(1) - this.calculateX(0)) - (2*options.barValueSpacing);
-				},
-				calculateBarWidth : function(datasetCount){
-					//The padding between datasets is to the right of each bar, providing that there are more than 1 dataset
-					var baseWidth = this.calculateBaseWidth() - ((datasetCount - 1) * options.barDatasetSpacing);
-
-					return (baseWidth / datasetCount);
-				}
-			});
-
-			this.datasets = [];
-
-			//Set up tooltip events on the chart
-			if (this.options.showTooltips){
-				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
-					var activeBars = (evt.type !== 'mouseout') ? this.getBarsAtEvent(evt) : [];
-
-					this.eachBars(function(bar){
-						bar.restore(['fillColor', 'strokeColor']);
-					});
-					helpers.each(activeBars, function(activeBar){
-						if (activeBar) {
-							activeBar.fillColor = activeBar.highlightFill;
-							activeBar.strokeColor = activeBar.highlightStroke;
-						}
-					});
-					this.showTooltip(activeBars);
-				});
-			}
-
-			//Declare the extension of the default point, to cater for the options passed in to the constructor
-			this.BarClass = Chart.Rectangle.extend({
-				strokeWidth : this.options.barStrokeWidth,
-				showStroke : this.options.barShowStroke,
-				ctx : this.chart.ctx
-			});
-
-			//Iterate through each of the datasets, and build this into a property of the chart
-			helpers.each(data.datasets,function(dataset,datasetIndex){
-
-				var datasetObject = {
-					label : dataset.label || null,
-					fillColor : dataset.fillColor,
-					strokeColor : dataset.strokeColor,
-					bars : []
-				};
-
-				this.datasets.push(datasetObject);
-
-				helpers.each(dataset.data,function(dataPoint,index){
-					//Add a new point for each piece of data, passing any required data to draw.
-					datasetObject.bars.push(new this.BarClass({
-						value : dataPoint,
-						label : data.labels[index],
-						datasetLabel: dataset.label,
-						strokeColor : (typeof dataset.strokeColor == 'object') ? dataset.strokeColor[index] : dataset.strokeColor,
-						fillColor : (typeof dataset.fillColor == 'object') ? dataset.fillColor[index] : dataset.fillColor,
-						highlightFill : (dataset.highlightFill) ? (typeof dataset.highlightFill == 'object') ? dataset.highlightFill[index] : dataset.highlightFill : (typeof dataset.fillColor == 'object') ? dataset.fillColor[index] : dataset.fillColor,
-						highlightStroke : (dataset.highlightStroke) ? (typeof dataset.highlightStroke == 'object') ? dataset.highlightStroke[index] : dataset.highlightStroke : (typeof dataset.strokeColor == 'object') ? dataset.strokeColor[index] : dataset.strokeColor
-					}));
-				},this);
-
-			},this);
-
-			this.buildScale(data.labels);
-
-			this.BarClass.prototype.base = this.scale.endPoint;
-
-			this.eachBars(function(bar, index, datasetIndex){
-				helpers.extend(bar, {
-					width : this.scale.calculateBarWidth(this.datasets.length),
-					x: this.scale.calculateBarX(this.datasets.length, datasetIndex, index),
-					y: this.scale.endPoint
-				});
-				bar.save();
-			}, this);
-
-			this.render();
-		},
-		update : function(){
-			this.scale.update();
-			// Reset any highlight colours before updating.
-			helpers.each(this.activeElements, function(activeElement){
-				activeElement.restore(['fillColor', 'strokeColor']);
-			});
-
-			this.eachBars(function(bar){
-				bar.save();
-			});
-			this.render();
-		},
-		eachBars : function(callback){
-			helpers.each(this.datasets,function(dataset, datasetIndex){
-				helpers.each(dataset.bars, callback, this, datasetIndex);
-			},this);
-		},
-		getBarsAtEvent : function(e){
-			var barsArray = [],
-				eventPosition = helpers.getRelativePosition(e),
-				datasetIterator = function(dataset){
-					barsArray.push(dataset.bars[barIndex]);
-				},
-				barIndex;
-
-			for (var datasetIndex = 0; datasetIndex < this.datasets.length; datasetIndex++) {
-				for (barIndex = 0; barIndex < this.datasets[datasetIndex].bars.length; barIndex++) {
-					if (this.datasets[datasetIndex].bars[barIndex].inRange(eventPosition.x,eventPosition.y)){
-						helpers.each(this.datasets, datasetIterator);
-						return barsArray;
-					}
-				}
-			}
-
-			return barsArray;
-		},
-		buildScale : function(labels){
-			var self = this;
-
-			var dataTotal = function(){
-				var values = [];
-				self.eachBars(function(bar){
-					values.push(bar.value);
-				});
-				return values;
-			};
-
-			var scaleOptions = {
-				templateString : this.options.scaleLabel,
-				height : this.chart.height,
-				width : this.chart.width,
-				ctx : this.chart.ctx,
-				textColor : this.options.scaleFontColor,
-				fontSize : this.options.scaleFontSize,
-				fontStyle : this.options.scaleFontStyle,
-				fontFamily : this.options.scaleFontFamily,
-				valuesCount : labels.length,
-				beginAtZero : this.options.scaleBeginAtZero,
-				integersOnly : this.options.scaleIntegersOnly,
-				calculateYRange: function(currentHeight){
-					var updatedRanges = helpers.calculateScaleRange(
-						dataTotal(),
-						currentHeight,
-						this.fontSize,
-						this.beginAtZero,
-						this.integersOnly
-					);
-					helpers.extend(this, updatedRanges);
-				},
-				xLabels : labels,
-				font : helpers.fontString(this.options.scaleFontSize, this.options.scaleFontStyle, this.options.scaleFontFamily),
-				lineWidth : this.options.scaleLineWidth,
-				lineColor : this.options.scaleLineColor,
-				showHorizontalLines : this.options.scaleShowHorizontalLines,
-				showVerticalLines : this.options.scaleShowVerticalLines,
-				gridLineWidth : (this.options.scaleShowGridLines) ? this.options.scaleGridLineWidth : 0,
-				gridLineColor : (this.options.scaleShowGridLines) ? this.options.scaleGridLineColor : "rgba(0,0,0,0)",
-				padding : (this.options.showScale) ? 0 : (this.options.barShowStroke) ? this.options.barStrokeWidth : 0,
-				showLabels : this.options.scaleShowLabels,
-				display : this.options.showScale
-			};
-
-			if (this.options.scaleOverride){
-				helpers.extend(scaleOptions, {
-					calculateYRange: helpers.noop,
-					steps: this.options.scaleSteps,
-					stepValue: this.options.scaleStepWidth,
-					min: this.options.scaleStartValue,
-					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
-				});
-			}
-
-			this.scale = new this.ScaleClass(scaleOptions);
-		},
-		addData : function(valuesArray,label){
-			//Map the values array for each of the datasets
-			helpers.each(valuesArray,function(value,datasetIndex){
-				//Add a new point for each piece of data, passing any required data to draw.
-				this.datasets[datasetIndex].bars.push(new this.BarClass({
-					value : value,
-					label : label,
-					datasetLabel: this.datasets[datasetIndex].label,
-					x: this.scale.calculateBarX(this.datasets.length, datasetIndex, this.scale.valuesCount+1),
-					y: this.scale.endPoint,
-					width : this.scale.calculateBarWidth(this.datasets.length),
-					base : this.scale.endPoint,
-					strokeColor : this.datasets[datasetIndex].strokeColor,
-					fillColor : this.datasets[datasetIndex].fillColor
-				}));
-			},this);
-
-			this.scale.addXLabel(label);
-			//Then re-render the chart.
-			this.update();
-		},
-		removeData : function(){
-			this.scale.removeXLabel();
-			//Then re-render the chart.
-			helpers.each(this.datasets,function(dataset){
-				dataset.bars.shift();
-			},this);
-			this.update();
-		},
-		reflow : function(){
-			helpers.extend(this.BarClass.prototype,{
-				y: this.scale.endPoint,
-				base : this.scale.endPoint
-			});
-			var newScaleProps = helpers.extend({
-				height : this.chart.height,
-				width : this.chart.width
-			});
-			this.scale.update(newScaleProps);
-		},
-		draw : function(ease){
-			var easingDecimal = ease || 1;
-			this.clear();
-
-			var ctx = this.chart.ctx;
-
-			this.scale.draw(easingDecimal);
-
-			//Draw all the bars for each dataset
-			helpers.each(this.datasets,function(dataset,datasetIndex){
-				helpers.each(dataset.bars,function(bar,index){
-					if (bar.hasValue()){
-						bar.base = this.scale.endPoint;
-						//Transition then draw
-						bar.transition({
-							x : this.scale.calculateBarX(this.datasets.length, datasetIndex, index),
-							y : this.scale.calculateY(bar.value),
-							width : this.scale.calculateBarWidth(this.datasets.length)
-						}, easingDecimal).draw();
-					}
-				},this);
-
-			},this);
-		}
-	});
-
-
-}).call(this);
-
-(function(){
-	"use strict";
-
-	var root = this,
-		Chart = root.Chart,
-		//Cache a local reference to Chart.helpers
-		helpers = Chart.helpers;
-
-	var defaultConfig = {
-		//Boolean - Whether we should show a stroke on each segment
-		segmentShowStroke : true,
-
-		//String - The colour of each segment stroke
-		segmentStrokeColor : "#fff",
-
-		//Number - The width of each segment stroke
-		segmentStrokeWidth : 2,
-
-		//The percentage of the chart that we cut out of the middle.
-		percentageInnerCutout : 50,
-
-		//Number - Amount of animation steps
-		animationSteps : 100,
-
-		//String - Animation easing effect
-		animationEasing : "easeOutBounce",
-
-		//Boolean - Whether we animate the rotation of the Doughnut
-		animateRotate : true,
-
-		//Boolean - Whether we animate scaling the Doughnut from the centre
-		animateScale : false,
-
-		//String - A legend template
-		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span class=\"<%=name.toLowerCase()%>-legend-icon\" style=\"background-color:<%=segments[i].fillColor%>\"></span><span class=\"<%=name.toLowerCase()%>-legend-text\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span></li><%}%></ul>"
-
-	};
-
-	Chart.Type.extend({
-		//Passing in a name registers this chart in the Chart namespace
-		name: "Doughnut",
-		//Providing a defaults will also register the defaults in the chart namespace
-		defaults : defaultConfig,
-		//Initialize is fired when the chart is initialized - Data is passed in as a parameter
-		//Config is automatically merged by the core of Chart.js, and is available at this.options
-		initialize:  function(data){
-
-			//Declare segments as a static property to prevent inheriting across the Chart type prototype
-			this.segments = [];
-			this.outerRadius = (helpers.min([this.chart.width,this.chart.height]) -	this.options.segmentStrokeWidth/2)/2;
-
-			this.SegmentArc = Chart.Arc.extend({
-				ctx : this.chart.ctx,
-				x : this.chart.width/2,
-				y : this.chart.height/2
-			});
-
-			//Set up tooltip events on the chart
-			if (this.options.showTooltips){
-				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
-					var activeSegments = (evt.type !== 'mouseout') ? this.getSegmentsAtEvent(evt) : [];
-
-					helpers.each(this.segments,function(segment){
-						segment.restore(["fillColor"]);
-					});
-					helpers.each(activeSegments,function(activeSegment){
-						activeSegment.fillColor = activeSegment.highlightColor;
-					});
-					this.showTooltip(activeSegments);
-				});
-			}
-			this.calculateTotal(data);
-
-			helpers.each(data,function(datapoint, index){
-				if (!datapoint.color) {
-					datapoint.color = 'hsl(' + (360 * index / data.length) + ', 100%, 50%)';
-				}
-				this.addData(datapoint, index, true);
-			},this);
-
-			this.render();
-		},
-		getSegmentsAtEvent : function(e){
-			var segmentsArray = [];
-
-			var location = helpers.getRelativePosition(e);
-
-			helpers.each(this.segments,function(segment){
-				if (segment.inRange(location.x,location.y)) segmentsArray.push(segment);
-			},this);
-			return segmentsArray;
-		},
-		addData : function(segment, atIndex, silent){
-			var index = atIndex !== undefined ? atIndex : this.segments.length;
-			if ( typeof(segment.color) === "undefined" ) {
-				segment.color = Chart.defaults.global.segmentColorDefault[index % Chart.defaults.global.segmentColorDefault.length];
-				segment.highlight = Chart.defaults.global.segmentHighlightColorDefaults[index % Chart.defaults.global.segmentHighlightColorDefaults.length];				
-			}
-			this.segments.splice(index, 0, new this.SegmentArc({
-				value : segment.value,
-				outerRadius : (this.options.animateScale) ? 0 : this.outerRadius,
-				innerRadius : (this.options.animateScale) ? 0 : (this.outerRadius/100) * this.options.percentageInnerCutout,
-				fillColor : segment.color,
-				highlightColor : segment.highlight || segment.color,
-				showStroke : this.options.segmentShowStroke,
-				strokeWidth : this.options.segmentStrokeWidth,
-				strokeColor : this.options.segmentStrokeColor,
-				startAngle : Math.PI * 1.5,
-				circumference : (this.options.animateRotate) ? 0 : this.calculateCircumference(segment.value),
-				label : segment.label
-			}));
-			if (!silent){
-				this.reflow();
-				this.update();
-			}
-		},
-		calculateCircumference : function(value) {
-			if ( this.total > 0 ) {
-				return (Math.PI*2)*(value / this.total);
-			} else {
-				return 0;
-			}
-		},
-		calculateTotal : function(data){
-			this.total = 0;
-			helpers.each(data,function(segment){
-				this.total += Math.abs(segment.value);
-			},this);
-		},
-		update : function(){
-			this.calculateTotal(this.segments);
-
-			// Reset any highlight colours before updating.
-			helpers.each(this.activeElements, function(activeElement){
-				activeElement.restore(['fillColor']);
-			});
-
-			helpers.each(this.segments,function(segment){
-				segment.save();
-			});
-			this.render();
-		},
-
-		removeData: function(atIndex){
-			var indexToDelete = (helpers.isNumber(atIndex)) ? atIndex : this.segments.length-1;
-			this.segments.splice(indexToDelete, 1);
-			this.reflow();
-			this.update();
-		},
-
-		reflow : function(){
-			helpers.extend(this.SegmentArc.prototype,{
-				x : this.chart.width/2,
-				y : this.chart.height/2
-			});
-			this.outerRadius = (helpers.min([this.chart.width,this.chart.height]) -	this.options.segmentStrokeWidth/2)/2;
-			helpers.each(this.segments, function(segment){
-				segment.update({
-					outerRadius : this.outerRadius,
-					innerRadius : (this.outerRadius/100) * this.options.percentageInnerCutout
-				});
-			}, this);
-		},
-		draw : function(easeDecimal){
-			var animDecimal = (easeDecimal) ? easeDecimal : 1;
-			this.clear();
-			helpers.each(this.segments,function(segment,index){
-				segment.transition({
-					circumference : this.calculateCircumference(segment.value),
-					outerRadius : this.outerRadius,
-					innerRadius : (this.outerRadius/100) * this.options.percentageInnerCutout
-				},animDecimal);
-
-				segment.endAngle = segment.startAngle + segment.circumference;
-
-				segment.draw();
-				if (index === 0){
-					segment.startAngle = Math.PI * 1.5;
-				}
-				//Check to see if it's the last segment, if not get the next and update the start angle
-				if (index < this.segments.length-1){
-					this.segments[index+1].startAngle = segment.endAngle;
-				}
-			},this);
-
-		}
-	});
-
-	Chart.types.Doughnut.extend({
-		name : "Pie",
-		defaults : helpers.merge(defaultConfig,{percentageInnerCutout : 0})
-	});
-
-}).call(this);
-
-(function(){
-	"use strict";
-
-	var root = this,
-		Chart = root.Chart,
-		helpers = Chart.helpers;
-
-	var defaultConfig = {
-
-		///Boolean - Whether grid lines are shown across the chart
-		scaleShowGridLines : true,
-
-		//String - Colour of the grid lines
-		scaleGridLineColor : "rgba(0,0,0,.05)",
-
-		//Number - Width of the grid lines
-		scaleGridLineWidth : 1,
-
-		//Boolean - Whether to show horizontal lines (except X axis)
-		scaleShowHorizontalLines: true,
-
-		//Boolean - Whether to show vertical lines (except Y axis)
-		scaleShowVerticalLines: true,
-
-		//Boolean - Whether the line is curved between points
-		bezierCurve : true,
-
-		//Number - Tension of the bezier curve between points
-		bezierCurveTension : 0.4,
-
-		//Boolean - Whether to show a dot for each point
-		pointDot : true,
-
-		//Number - Radius of each point dot in pixels
-		pointDotRadius : 4,
-
-		//Number - Pixel width of point dot stroke
-		pointDotStrokeWidth : 1,
-
-		//Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-		pointHitDetectionRadius : 20,
-
-		//Boolean - Whether to show a stroke for datasets
-		datasetStroke : true,
-
-		//Number - Pixel width of dataset stroke
-		datasetStrokeWidth : 2,
-
-		//Boolean - Whether to fill the dataset with a colour
-		datasetFill : true,
-
-		//String - A legend template
-		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span class=\"<%=name.toLowerCase()%>-legend-icon\" style=\"background-color:<%=datasets[i].strokeColor%>\"></span><span class=\"<%=name.toLowerCase()%>-legend-text\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span></li><%}%></ul>",
-
-		//Boolean - Whether to horizontally center the label and point dot inside the grid
-		offsetGridLines : false
-
-	};
-
-
-	Chart.Type.extend({
-		name: "Line",
-		defaults : defaultConfig,
-		initialize:  function(data){
-			//Declare the extension of the default point, to cater for the options passed in to the constructor
-			this.PointClass = Chart.Point.extend({
-				offsetGridLines : this.options.offsetGridLines,
-				strokeWidth : this.options.pointDotStrokeWidth,
-				radius : this.options.pointDotRadius,
-				display: this.options.pointDot,
-				hitDetectionRadius : this.options.pointHitDetectionRadius,
-				ctx : this.chart.ctx,
-				inRange : function(mouseX){
-					return (Math.pow(mouseX-this.x, 2) < Math.pow(this.radius + this.hitDetectionRadius,2));
-				}
-			});
-
-			this.datasets = [];
-
-			//Set up tooltip events on the chart
-			if (this.options.showTooltips){
-				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
-					var activePoints = (evt.type !== 'mouseout') ? this.getPointsAtEvent(evt) : [];
-					this.eachPoints(function(point){
-						point.restore(['fillColor', 'strokeColor']);
-					});
-					helpers.each(activePoints, function(activePoint){
-						activePoint.fillColor = activePoint.highlightFill;
-						activePoint.strokeColor = activePoint.highlightStroke;
-					});
-					this.showTooltip(activePoints);
-				});
-			}
-
-			//Iterate through each of the datasets, and build this into a property of the chart
-			helpers.each(data.datasets,function(dataset){
-
-				var datasetObject = {
-					label : dataset.label || null,
-					fillColor : dataset.fillColor,
-					strokeColor : dataset.strokeColor,
-					pointColor : dataset.pointColor,
-					pointStrokeColor : dataset.pointStrokeColor,
-					points : []
-				};
-
-				this.datasets.push(datasetObject);
-
-
-				helpers.each(dataset.data,function(dataPoint,index){
-					//Add a new point for each piece of data, passing any required data to draw.
-					datasetObject.points.push(new this.PointClass({
-						value : dataPoint,
-						label : data.labels[index],
-						datasetLabel: dataset.label,
-						strokeColor : dataset.pointStrokeColor,
-						fillColor : dataset.pointColor,
-						highlightFill : dataset.pointHighlightFill || dataset.pointColor,
-						highlightStroke : dataset.pointHighlightStroke || dataset.pointStrokeColor
-					}));
-				},this);
-
-				this.buildScale(data.labels);
-
-
-				this.eachPoints(function(point, index){
-					helpers.extend(point, {
-						x: this.scale.calculateX(index),
-						y: this.scale.endPoint
-					});
-					point.save();
-				}, this);
-
-			},this);
-
-
-			this.render();
-		},
-		update : function(){
-			this.scale.update();
-			// Reset any highlight colours before updating.
-			helpers.each(this.activeElements, function(activeElement){
-				activeElement.restore(['fillColor', 'strokeColor']);
-			});
-			this.eachPoints(function(point){
-				point.save();
-			});
-			this.render();
-		},
-		eachPoints : function(callback){
-			helpers.each(this.datasets,function(dataset){
-				helpers.each(dataset.points,callback,this);
-			},this);
-		},
-		getPointsAtEvent : function(e){
-			var pointsArray = [],
-				eventPosition = helpers.getRelativePosition(e);
-			helpers.each(this.datasets,function(dataset){
-				helpers.each(dataset.points,function(point){
-					if (point.inRange(eventPosition.x,eventPosition.y)) pointsArray.push(point);
-				});
-			},this);
-			return pointsArray;
-		},
-		buildScale : function(labels){
-			var self = this;
-
-			var dataTotal = function(){
-				var values = [];
-				self.eachPoints(function(point){
-					values.push(point.value);
-				});
-
-				return values;
-			};
-
-			var scaleOptions = {
-				templateString : this.options.scaleLabel,
-				height : this.chart.height,
-				width : this.chart.width,
-				ctx : this.chart.ctx,
-				textColor : this.options.scaleFontColor,
-				offsetGridLines : this.options.offsetGridLines,
-				fontSize : this.options.scaleFontSize,
-				fontStyle : this.options.scaleFontStyle,
-				fontFamily : this.options.scaleFontFamily,
-				valuesCount : labels.length,
-				beginAtZero : this.options.scaleBeginAtZero,
-				integersOnly : this.options.scaleIntegersOnly,
-				calculateYRange : function(currentHeight){
-					var updatedRanges = helpers.calculateScaleRange(
-						dataTotal(),
-						currentHeight,
-						this.fontSize,
-						this.beginAtZero,
-						this.integersOnly
-					);
-					helpers.extend(this, updatedRanges);
-				},
-				xLabels : labels,
-				font : helpers.fontString(this.options.scaleFontSize, this.options.scaleFontStyle, this.options.scaleFontFamily),
-				lineWidth : this.options.scaleLineWidth,
-				lineColor : this.options.scaleLineColor,
-				showHorizontalLines : this.options.scaleShowHorizontalLines,
-				showVerticalLines : this.options.scaleShowVerticalLines,
-				gridLineWidth : (this.options.scaleShowGridLines) ? this.options.scaleGridLineWidth : 0,
-				gridLineColor : (this.options.scaleShowGridLines) ? this.options.scaleGridLineColor : "rgba(0,0,0,0)",
-				padding: (this.options.showScale) ? 0 : this.options.pointDotRadius + this.options.pointDotStrokeWidth,
-				showLabels : this.options.scaleShowLabels,
-				display : this.options.showScale
-			};
-
-			if (this.options.scaleOverride){
-				helpers.extend(scaleOptions, {
-					calculateYRange: helpers.noop,
-					steps: this.options.scaleSteps,
-					stepValue: this.options.scaleStepWidth,
-					min: this.options.scaleStartValue,
-					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
-				});
-			}
-
-
-			this.scale = new Chart.Scale(scaleOptions);
-		},
-		addData : function(valuesArray,label){
-			//Map the values array for each of the datasets
-
-			helpers.each(valuesArray,function(value,datasetIndex){
-				//Add a new point for each piece of data, passing any required data to draw.
-				this.datasets[datasetIndex].points.push(new this.PointClass({
-					value : value,
-					label : label,
-					datasetLabel: this.datasets[datasetIndex].label,
-					x: this.scale.calculateX(this.scale.valuesCount+1),
-					y: this.scale.endPoint,
-					strokeColor : this.datasets[datasetIndex].pointStrokeColor,
-					fillColor : this.datasets[datasetIndex].pointColor
-				}));
-			},this);
-
-			this.scale.addXLabel(label);
-			//Then re-render the chart.
-			this.update();
-		},
-		removeData : function(){
-			this.scale.removeXLabel();
-			//Then re-render the chart.
-			helpers.each(this.datasets,function(dataset){
-				dataset.points.shift();
-			},this);
-			this.update();
-		},
-		reflow : function(){
-			var newScaleProps = helpers.extend({
-				height : this.chart.height,
-				width : this.chart.width
-			});
-			this.scale.update(newScaleProps);
-		},
-		draw : function(ease){
-			var easingDecimal = ease || 1;
-			this.clear();
-
-			var ctx = this.chart.ctx;
-
-			// Some helper methods for getting the next/prev points
-			var hasValue = function(item){
-				return item.value !== null;
-			},
-			nextPoint = function(point, collection, index){
-				return helpers.findNextWhere(collection, hasValue, index) || point;
-			},
-			previousPoint = function(point, collection, index){
-				return helpers.findPreviousWhere(collection, hasValue, index) || point;
-			};
-
-			if (!this.scale) return;
-			this.scale.draw(easingDecimal);
-
-
-			helpers.each(this.datasets,function(dataset){
-				var pointsWithValues = helpers.where(dataset.points, hasValue);
-
-				//Transition each point first so that the line and point drawing isn't out of sync
-				//We can use this extra loop to calculate the control points of this dataset also in this loop
-
-				helpers.each(dataset.points, function(point, index){
-					if (point.hasValue()){
-						point.transition({
-							y : this.scale.calculateY(point.value),
-							x : this.scale.calculateX(index)
-						}, easingDecimal);
-					}
-				},this);
-
-
-				// Control points need to be calculated in a separate loop, because we need to know the current x/y of the point
-				// This would cause issues when there is no animation, because the y of the next point would be 0, so beziers would be skewed
-				if (this.options.bezierCurve){
-					helpers.each(pointsWithValues, function(point, index){
-						var tension = (index > 0 && index < pointsWithValues.length - 1) ? this.options.bezierCurveTension : 0;
-						point.controlPoints = helpers.splineCurve(
-							previousPoint(point, pointsWithValues, index),
-							point,
-							nextPoint(point, pointsWithValues, index),
-							tension
-						);
-
-						// Prevent the bezier going outside of the bounds of the graph
-
-						// Cap puter bezier handles to the upper/lower scale bounds
-						if (point.controlPoints.outer.y > this.scale.endPoint){
-							point.controlPoints.outer.y = this.scale.endPoint;
-						}
-						else if (point.controlPoints.outer.y < this.scale.startPoint){
-							point.controlPoints.outer.y = this.scale.startPoint;
-						}
-
-						// Cap inner bezier handles to the upper/lower scale bounds
-						if (point.controlPoints.inner.y > this.scale.endPoint){
-							point.controlPoints.inner.y = this.scale.endPoint;
-						}
-						else if (point.controlPoints.inner.y < this.scale.startPoint){
-							point.controlPoints.inner.y = this.scale.startPoint;
-						}
-					},this);
-				}
-
-
-				//Draw the line between all the points
-				ctx.lineWidth = this.options.datasetStrokeWidth;
-				ctx.strokeStyle = dataset.strokeColor;
-				ctx.beginPath();
-
-				helpers.each(pointsWithValues, function(point, index){
-					if (index === 0){
-						ctx.moveTo(point.x, point.y);
-					}
-					else{
-						if(this.options.bezierCurve){
-							var previous = previousPoint(point, pointsWithValues, index);
-
-							ctx.bezierCurveTo(
-								previous.controlPoints.outer.x,
-								previous.controlPoints.outer.y,
-								point.controlPoints.inner.x,
-								point.controlPoints.inner.y,
-								point.x,
-								point.y
-							);
-						}
-						else{
-							ctx.lineTo(point.x,point.y);
-						}
-					}
-				}, this);
-
-				if (this.options.datasetStroke) {
-					ctx.stroke();
-				}
-
-				if (this.options.datasetFill && pointsWithValues.length > 0){
-					//Round off the line by going to the base of the chart, back to the start, then fill.
-					ctx.lineTo(pointsWithValues[pointsWithValues.length - 1].x, this.scale.endPoint);
-					ctx.lineTo(pointsWithValues[0].x, this.scale.endPoint);
-					ctx.fillStyle = dataset.fillColor;
-					ctx.closePath();
-					ctx.fill();
-				}
-
-				//Now draw the points over the line
-				//A little inefficient double looping, but better than the line
-				//lagging behind the point positions
-				helpers.each(pointsWithValues,function(point){
-					point.draw();
-				});
-			},this);
-		}
-	});
-
-
-}).call(this);
-
-(function(){
-	"use strict";
-
-	var root = this,
-		Chart = root.Chart,
-		//Cache a local reference to Chart.helpers
-		helpers = Chart.helpers;
-
-	var defaultConfig = {
-		//Boolean - Show a backdrop to the scale label
-		scaleShowLabelBackdrop : true,
-
-		//String - The colour of the label backdrop
-		scaleBackdropColor : "rgba(255,255,255,0.75)",
-
-		// Boolean - Whether the scale should begin at zero
-		scaleBeginAtZero : true,
-
-		//Number - The backdrop padding above & below the label in pixels
-		scaleBackdropPaddingY : 2,
-
-		//Number - The backdrop padding to the side of the label in pixels
-		scaleBackdropPaddingX : 2,
-
-		//Boolean - Show line for each value in the scale
-		scaleShowLine : true,
-
-		//Boolean - Stroke a line around each segment in the chart
-		segmentShowStroke : true,
-
-		//String - The colour of the stroke on each segment.
-		segmentStrokeColor : "#fff",
-
-		//Number - The width of the stroke value in pixels
-		segmentStrokeWidth : 2,
-
-		//Number - Amount of animation steps
-		animationSteps : 100,
-
-		//String - Animation easing effect.
-		animationEasing : "easeOutBounce",
-
-		//Boolean - Whether to animate the rotation of the chart
-		animateRotate : true,
-
-		//Boolean - Whether to animate scaling the chart from the centre
-		animateScale : false,
-
-		//String - A legend template
-		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span class=\"<%=name.toLowerCase()%>-legend-icon\" style=\"background-color:<%=segments[i].fillColor%>\"></span><span class=\"<%=name.toLowerCase()%>-legend-text\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span></li><%}%></ul>"
-	};
-
-
-	Chart.Type.extend({
-		//Passing in a name registers this chart in the Chart namespace
-		name: "PolarArea",
-		//Providing a defaults will also register the defaults in the chart namespace
-		defaults : defaultConfig,
-		//Initialize is fired when the chart is initialized - Data is passed in as a parameter
-		//Config is automatically merged by the core of Chart.js, and is available at this.options
-		initialize:  function(data){
-			this.segments = [];
-			//Declare segment class as a chart instance specific class, so it can share props for this instance
-			this.SegmentArc = Chart.Arc.extend({
-				showStroke : this.options.segmentShowStroke,
-				strokeWidth : this.options.segmentStrokeWidth,
-				strokeColor : this.options.segmentStrokeColor,
-				ctx : this.chart.ctx,
-				innerRadius : 0,
-				x : this.chart.width/2,
-				y : this.chart.height/2
-			});
-			this.scale = new Chart.RadialScale({
-				display: this.options.showScale,
-				fontStyle: this.options.scaleFontStyle,
-				fontSize: this.options.scaleFontSize,
-				fontFamily: this.options.scaleFontFamily,
-				fontColor: this.options.scaleFontColor,
-				showLabels: this.options.scaleShowLabels,
-				showLabelBackdrop: this.options.scaleShowLabelBackdrop,
-				backdropColor: this.options.scaleBackdropColor,
-				backdropPaddingY : this.options.scaleBackdropPaddingY,
-				backdropPaddingX: this.options.scaleBackdropPaddingX,
-				lineWidth: (this.options.scaleShowLine) ? this.options.scaleLineWidth : 0,
-				lineColor: this.options.scaleLineColor,
-				lineArc: true,
-				width: this.chart.width,
-				height: this.chart.height,
-				xCenter: this.chart.width/2,
-				yCenter: this.chart.height/2,
-				ctx : this.chart.ctx,
-				templateString: this.options.scaleLabel,
-				valuesCount: data.length
-			});
-
-			this.updateScaleRange(data);
-
-			this.scale.update();
-
-			helpers.each(data,function(segment,index){
-				this.addData(segment,index,true);
-			},this);
-
-			//Set up tooltip events on the chart
-			if (this.options.showTooltips){
-				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
-					var activeSegments = (evt.type !== 'mouseout') ? this.getSegmentsAtEvent(evt) : [];
-					helpers.each(this.segments,function(segment){
-						segment.restore(["fillColor"]);
-					});
-					helpers.each(activeSegments,function(activeSegment){
-						activeSegment.fillColor = activeSegment.highlightColor;
-					});
-					this.showTooltip(activeSegments);
-				});
-			}
-
-			this.render();
-		},
-		getSegmentsAtEvent : function(e){
-			var segmentsArray = [];
-
-			var location = helpers.getRelativePosition(e);
-
-			helpers.each(this.segments,function(segment){
-				if (segment.inRange(location.x,location.y)) segmentsArray.push(segment);
-			},this);
-			return segmentsArray;
-		},
-		addData : function(segment, atIndex, silent){
-			var index = atIndex || this.segments.length;
-
-			this.segments.splice(index, 0, new this.SegmentArc({
-				fillColor: segment.color,
-				highlightColor: segment.highlight || segment.color,
-				label: segment.label,
-				value: segment.value,
-				outerRadius: (this.options.animateScale) ? 0 : this.scale.calculateCenterOffset(segment.value),
-				circumference: (this.options.animateRotate) ? 0 : this.scale.getCircumference(),
-				startAngle: Math.PI * 1.5
-			}));
-			if (!silent){
-				this.reflow();
-				this.update();
-			}
-		},
-		removeData: function(atIndex){
-			var indexToDelete = (helpers.isNumber(atIndex)) ? atIndex : this.segments.length-1;
-			this.segments.splice(indexToDelete, 1);
-			this.reflow();
-			this.update();
-		},
-		calculateTotal: function(data){
-			this.total = 0;
-			helpers.each(data,function(segment){
-				this.total += segment.value;
-			},this);
-			this.scale.valuesCount = this.segments.length;
-		},
-		updateScaleRange: function(datapoints){
-			var valuesArray = [];
-			helpers.each(datapoints,function(segment){
-				valuesArray.push(segment.value);
-			});
-
-			var scaleSizes = (this.options.scaleOverride) ?
-				{
-					steps: this.options.scaleSteps,
-					stepValue: this.options.scaleStepWidth,
-					min: this.options.scaleStartValue,
-					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
-				} :
-				helpers.calculateScaleRange(
-					valuesArray,
-					helpers.min([this.chart.width, this.chart.height])/2,
-					this.options.scaleFontSize,
-					this.options.scaleBeginAtZero,
-					this.options.scaleIntegersOnly
-				);
-
-			helpers.extend(
-				this.scale,
-				scaleSizes,
-				{
-					size: helpers.min([this.chart.width, this.chart.height]),
-					xCenter: this.chart.width/2,
-					yCenter: this.chart.height/2
-				}
-			);
-
-		},
-		update : function(){
-			this.calculateTotal(this.segments);
-
-			helpers.each(this.segments,function(segment){
-				segment.save();
-			});
-			
-			this.reflow();
-			this.render();
-		},
-		reflow : function(){
-			helpers.extend(this.SegmentArc.prototype,{
-				x : this.chart.width/2,
-				y : this.chart.height/2
-			});
-			this.updateScaleRange(this.segments);
-			this.scale.update();
-
-			helpers.extend(this.scale,{
-				xCenter: this.chart.width/2,
-				yCenter: this.chart.height/2
-			});
-
-			helpers.each(this.segments, function(segment){
-				segment.update({
-					outerRadius : this.scale.calculateCenterOffset(segment.value)
-				});
-			}, this);
-
-		},
-		draw : function(ease){
-			var easingDecimal = ease || 1;
-			//Clear & draw the canvas
-			this.clear();
-			helpers.each(this.segments,function(segment, index){
-				segment.transition({
-					circumference : this.scale.getCircumference(),
-					outerRadius : this.scale.calculateCenterOffset(segment.value)
-				},easingDecimal);
-
-				segment.endAngle = segment.startAngle + segment.circumference;
-
-				// If we've removed the first segment we need to set the first one to
-				// start at the top.
-				if (index === 0){
-					segment.startAngle = Math.PI * 1.5;
-				}
-
-				//Check to see if it's the last segment, if not get the next and update the start angle
-				if (index < this.segments.length - 1){
-					this.segments[index+1].startAngle = segment.endAngle;
-				}
-				segment.draw();
-			}, this);
-			this.scale.draw();
-		}
-	});
-
-}).call(this);
-
-(function(){
-	"use strict";
-
-	var root = this,
-		Chart = root.Chart,
-		helpers = Chart.helpers;
-
-
-
-	Chart.Type.extend({
-		name: "Radar",
-		defaults:{
-			//Boolean - Whether to show lines for each scale point
-			scaleShowLine : true,
-
-			//Boolean - Whether we show the angle lines out of the radar
-			angleShowLineOut : true,
-
-			//Boolean - Whether to show labels on the scale
-			scaleShowLabels : false,
-
-			// Boolean - Whether the scale should begin at zero
-			scaleBeginAtZero : true,
-
-			//String - Colour of the angle line
-			angleLineColor : "rgba(0,0,0,.1)",
-
-			//Number - Pixel width of the angle line
-			angleLineWidth : 1,
-
-			//Number - Interval at which to draw angle lines ("every Nth point")
-			angleLineInterval: 1,
-
-			//String - Point label font declaration
-			pointLabelFontFamily : "'Arial'",
-
-			//String - Point label font weight
-			pointLabelFontStyle : "normal",
-
-			//Number - Point label font size in pixels
-			pointLabelFontSize : 10,
-
-			//String - Point label font colour
-			pointLabelFontColor : "#666",
-
-			//Boolean - Whether to show a dot for each point
-			pointDot : true,
-
-			//Number - Radius of each point dot in pixels
-			pointDotRadius : 3,
-
-			//Number - Pixel width of point dot stroke
-			pointDotStrokeWidth : 1,
-
-			//Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-			pointHitDetectionRadius : 20,
-
-			//Boolean - Whether to show a stroke for datasets
-			datasetStroke : true,
-
-			//Number - Pixel width of dataset stroke
-			datasetStrokeWidth : 2,
-
-			//Boolean - Whether to fill the dataset with a colour
-			datasetFill : true,
-
-			//String - A legend template
-			legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span class=\"<%=name.toLowerCase()%>-legend-icon\" style=\"background-color:<%=datasets[i].strokeColor%>\"></span><span class=\"<%=name.toLowerCase()%>-legend-text\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span></li><%}%></ul>"
-
-		},
-
-		initialize: function(data){
-			this.PointClass = Chart.Point.extend({
-				strokeWidth : this.options.pointDotStrokeWidth,
-				radius : this.options.pointDotRadius,
-				display: this.options.pointDot,
-				hitDetectionRadius : this.options.pointHitDetectionRadius,
-				ctx : this.chart.ctx
-			});
-
-			this.datasets = [];
-
-			this.buildScale(data);
-
-			//Set up tooltip events on the chart
-			if (this.options.showTooltips){
-				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
-					var activePointsCollection = (evt.type !== 'mouseout') ? this.getPointsAtEvent(evt) : [];
-
-					this.eachPoints(function(point){
-						point.restore(['fillColor', 'strokeColor']);
-					});
-					helpers.each(activePointsCollection, function(activePoint){
-						activePoint.fillColor = activePoint.highlightFill;
-						activePoint.strokeColor = activePoint.highlightStroke;
-					});
-
-					this.showTooltip(activePointsCollection);
-				});
-			}
-
-			//Iterate through each of the datasets, and build this into a property of the chart
-			helpers.each(data.datasets,function(dataset){
-
-				var datasetObject = {
-					label: dataset.label || null,
-					fillColor : dataset.fillColor,
-					strokeColor : dataset.strokeColor,
-					pointColor : dataset.pointColor,
-					pointStrokeColor : dataset.pointStrokeColor,
-					points : []
-				};
-
-				this.datasets.push(datasetObject);
-
-				helpers.each(dataset.data,function(dataPoint,index){
-					//Add a new point for each piece of data, passing any required data to draw.
-					var pointPosition;
-					if (!this.scale.animation){
-						pointPosition = this.scale.getPointPosition(index, this.scale.calculateCenterOffset(dataPoint));
-					}
-					datasetObject.points.push(new this.PointClass({
-						value : dataPoint,
-						label : data.labels[index],
-						datasetLabel: dataset.label,
-						x: (this.options.animation) ? this.scale.xCenter : pointPosition.x,
-						y: (this.options.animation) ? this.scale.yCenter : pointPosition.y,
-						strokeColor : dataset.pointStrokeColor,
-						fillColor : dataset.pointColor,
-						highlightFill : dataset.pointHighlightFill || dataset.pointColor,
-						highlightStroke : dataset.pointHighlightStroke || dataset.pointStrokeColor
-					}));
-				},this);
-
-			},this);
-
-			this.render();
-		},
-		eachPoints : function(callback){
-			helpers.each(this.datasets,function(dataset){
-				helpers.each(dataset.points,callback,this);
-			},this);
-		},
-
-		getPointsAtEvent : function(evt){
-			var mousePosition = helpers.getRelativePosition(evt),
-				fromCenter = helpers.getAngleFromPoint({
-					x: this.scale.xCenter,
-					y: this.scale.yCenter
-				}, mousePosition);
-
-			var anglePerIndex = (Math.PI * 2) /this.scale.valuesCount,
-				pointIndex = Math.round((fromCenter.angle - Math.PI * 1.5) / anglePerIndex),
-				activePointsCollection = [];
-
-			// If we're at the top, make the pointIndex 0 to get the first of the array.
-			if (pointIndex >= this.scale.valuesCount || pointIndex < 0){
-				pointIndex = 0;
-			}
-
-			if (fromCenter.distance <= this.scale.drawingArea){
-				helpers.each(this.datasets, function(dataset){
-					activePointsCollection.push(dataset.points[pointIndex]);
-				});
-			}
-
-			return activePointsCollection;
-		},
-
-		buildScale : function(data){
-			this.scale = new Chart.RadialScale({
-				display: this.options.showScale,
-				fontStyle: this.options.scaleFontStyle,
-				fontSize: this.options.scaleFontSize,
-				fontFamily: this.options.scaleFontFamily,
-				fontColor: this.options.scaleFontColor,
-				showLabels: this.options.scaleShowLabels,
-				showLabelBackdrop: this.options.scaleShowLabelBackdrop,
-				backdropColor: this.options.scaleBackdropColor,
-				backgroundColors: this.options.scaleBackgroundColors,
-				backdropPaddingY : this.options.scaleBackdropPaddingY,
-				backdropPaddingX: this.options.scaleBackdropPaddingX,
-				lineWidth: (this.options.scaleShowLine) ? this.options.scaleLineWidth : 0,
-				lineColor: this.options.scaleLineColor,
-				angleLineColor : this.options.angleLineColor,
-				angleLineWidth : (this.options.angleShowLineOut) ? this.options.angleLineWidth : 0,
-        angleLineInterval: (this.options.angleLineInterval) ? this.options.angleLineInterval : 1,
-				// Point labels at the edge of each line
-				pointLabelFontColor : this.options.pointLabelFontColor,
-				pointLabelFontSize : this.options.pointLabelFontSize,
-				pointLabelFontFamily : this.options.pointLabelFontFamily,
-				pointLabelFontStyle : this.options.pointLabelFontStyle,
-				height : this.chart.height,
-				width: this.chart.width,
-				xCenter: this.chart.width/2,
-				yCenter: this.chart.height/2,
-				ctx : this.chart.ctx,
-				templateString: this.options.scaleLabel,
-				labels: data.labels,
-				valuesCount: data.datasets[0].data.length
-			});
-
-			this.scale.setScaleSize();
-			this.updateScaleRange(data.datasets);
-			this.scale.buildYLabels();
-		},
-		updateScaleRange: function(datasets){
-			var valuesArray = (function(){
-				var totalDataArray = [];
-				helpers.each(datasets,function(dataset){
-					if (dataset.data){
-						totalDataArray = totalDataArray.concat(dataset.data);
-					}
-					else {
-						helpers.each(dataset.points, function(point){
-							totalDataArray.push(point.value);
-						});
-					}
-				});
-				return totalDataArray;
-			})();
-
-
-			var scaleSizes = (this.options.scaleOverride) ?
-				{
-					steps: this.options.scaleSteps,
-					stepValue: this.options.scaleStepWidth,
-					min: this.options.scaleStartValue,
-					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
-				} :
-				helpers.calculateScaleRange(
-					valuesArray,
-					helpers.min([this.chart.width, this.chart.height])/2,
-					this.options.scaleFontSize,
-					this.options.scaleBeginAtZero,
-					this.options.scaleIntegersOnly
-				);
-
-			helpers.extend(
-				this.scale,
-				scaleSizes
-			);
-
-		},
-		addData : function(valuesArray,label){
-			//Map the values array for each of the datasets
-			this.scale.valuesCount++;
-			helpers.each(valuesArray,function(value,datasetIndex){
-				var pointPosition = this.scale.getPointPosition(this.scale.valuesCount, this.scale.calculateCenterOffset(value));
-				this.datasets[datasetIndex].points.push(new this.PointClass({
-					value : value,
-					label : label,
-					datasetLabel: this.datasets[datasetIndex].label,
-					x: pointPosition.x,
-					y: pointPosition.y,
-					strokeColor : this.datasets[datasetIndex].pointStrokeColor,
-					fillColor : this.datasets[datasetIndex].pointColor
-				}));
-			},this);
-
-			this.scale.labels.push(label);
-
-			this.reflow();
-
-			this.update();
-		},
-		removeData : function(){
-			this.scale.valuesCount--;
-			this.scale.labels.shift();
-			helpers.each(this.datasets,function(dataset){
-				dataset.points.shift();
-			},this);
-			this.reflow();
-			this.update();
-		},
-		update : function(){
-			this.eachPoints(function(point){
-				point.save();
-			});
-			this.reflow();
-			this.render();
-		},
-		reflow: function(){
-			helpers.extend(this.scale, {
-				width : this.chart.width,
-				height: this.chart.height,
-				size : helpers.min([this.chart.width, this.chart.height]),
-				xCenter: this.chart.width/2,
-				yCenter: this.chart.height/2
-			});
-			this.updateScaleRange(this.datasets);
-			this.scale.setScaleSize();
-			this.scale.buildYLabels();
-		},
-		draw : function(ease){
-			var easeDecimal = ease || 1,
-				ctx = this.chart.ctx;
-			this.clear();
-			this.scale.draw();
-
-			helpers.each(this.datasets,function(dataset){
-
-				//Transition each point first so that the line and point drawing isn't out of sync
-				helpers.each(dataset.points,function(point,index){
-					if (point.hasValue()){
-						point.transition(this.scale.getPointPosition(index, this.scale.calculateCenterOffset(point.value)), easeDecimal);
-					}
-				},this);
-
-
-
-				//Draw the line between all the points
-				ctx.lineWidth = this.options.datasetStrokeWidth;
-				ctx.strokeStyle = dataset.strokeColor;
-				ctx.beginPath();
-				helpers.each(dataset.points,function(point,index){
-					if (index === 0){
-						ctx.moveTo(point.x,point.y);
-					}
-					else{
-						ctx.lineTo(point.x,point.y);
-					}
-				},this);
-				ctx.closePath();
-				ctx.stroke();
-
-				ctx.fillStyle = dataset.fillColor;
-				if(this.options.datasetFill){
-					ctx.fill();
-				}
-				//Now draw the points over the line
-				//A little inefficient double looping, but better than the line
-				//lagging behind the point positions
-				helpers.each(dataset.points,function(point){
-					if (point.hasValue()){
-						point.draw();
-					}
-				});
-
-			},this);
-
-		}
-
-	});
-
-
-
-
-
-}).call(this);
-
-},{}],293:[function(require,module,exports){
+},{"angular":350,"chart.js":352}],309:[function(require,module,exports){
 (function (root, factory) {
     /* istanbul ignore next */
     if (typeof define === 'function' && define.amd) {
@@ -41535,7 +35128,7 @@ return angular.module('angular-clipboard', [])
     }]);
 
 }));
-},{"angular":337}],294:[function(require,module,exports){
+},{"angular":350}],310:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -41859,11 +35452,11 @@ angular.module('ngCookies').provider('$$cookieWriter', function $$CookieWriterPr
 
 })(window, window.angular);
 
-},{}],295:[function(require,module,exports){
+},{}],311:[function(require,module,exports){
 require('./angular-cookies');
 module.exports = 'ngCookies';
 
-},{"./angular-cookies":294}],296:[function(require,module,exports){
+},{"./angular-cookies":310}],312:[function(require,module,exports){
 /**
  * angular-drag-and-drop-lists v1.4.0
  *
@@ -42455,7 +36048,7 @@ angular.module('dndLists', [])
    */
   .factory('dndDropEffectWorkaround', function(){ return {} });
 
-},{}],297:[function(require,module,exports){
+},{}],313:[function(require,module,exports){
 /*
  angular-file-upload v2.2.0
  https://github.com/nervgh/angular-file-upload
@@ -42463,854 +36056,14 @@ angular.module('dndLists', [])
 
 !function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["angular-file-upload"]=t():e["angular-file-upload"]=t()}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return e[r].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=r(n(1)),o=r(n(2)),s=r(n(3)),a=r(n(4)),u=r(n(5)),l=r(n(6)),c=r(n(7)),f=r(n(8)),p=r(n(9)),d=r(n(10)),v=r(n(11)),h=r(n(12));angular.module(i.name,[]).value("fileUploaderOptions",o).factory("FileUploader",s).factory("FileLikeObject",a).factory("FileItem",u).factory("FileDirective",l).factory("FileSelect",c).factory("FileDrop",f).factory("FileOver",p).directive("nvFileSelect",d).directive("nvFileDrop",v).directive("nvFileOver",h).run(["FileUploader","FileLikeObject","FileItem","FileDirective","FileSelect","FileDrop","FileOver",function(e,t,n,r,i,o,s){e.FileLikeObject=t,e.FileItem=n,e.FileDirective=r,e.FileSelect=i,e.FileDrop=o,e.FileOver=s}])},function(e,t){e.exports={name:"angularFileUpload"}},function(e,t){"use strict";e.exports={url:"/",alias:"file",headers:{},queue:[],progress:0,autoUpload:!1,removeAfterUpload:!1,method:"POST",filters:[],formData:[],queueLimit:Number.MAX_VALUE,withCredentials:!1}},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.forEach,l=angular.isObject,c=angular.isNumber,f=angular.isDefined,p=angular.isArray,d=angular.element;e.exports=function(e,t,n,r,v,h){var m=r.File,g=r.FormData,_=function(){function r(t){o(this,r);var n=s(e);a(this,n,t,{isUploading:!1,_nextIndex:0,_failFilterIndex:-1,_directives:{select:[],drop:[],over:[]}}),this.filters.unshift({name:"queueLimit",fn:this._queueLimitFilter}),this.filters.unshift({name:"folder",fn:this._folderFilter})}return i(r,{addToQueue:{value:function(e,t,n){var r=this,i=this.isArrayLikeObject(e)?e:[e],o=this._getFilters(n),s=this.queue.length,a=[];u(i,function(e){var n=new v(e);if(r._isValidFile(n,o,t)){var i=new h(r,e,t);a.push(i),r.queue.push(i),r._onAfterAddingFile(i)}else{var s=o[r._failFilterIndex];r._onWhenAddingFileFailed(n,s,t)}}),this.queue.length!==s&&(this._onAfterAddingAll(a),this.progress=this._getTotalProgress()),this._render(),this.autoUpload&&this.uploadAll()}},removeFromQueue:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t];n.isUploading&&n.cancel(),this.queue.splice(t,1),n._destroy(),this.progress=this._getTotalProgress()}},clearQueue:{value:function(){for(;this.queue.length;)this.queue[0].remove();this.progress=0}},uploadItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhrTransport":"_iframeTransport";n._prepareToUploading(),this.isUploading||(this.isUploading=!0,this[r](n))}},cancelItem:{value:function(e){var t=this.getIndexOfItem(e),n=this.queue[t],r=this.isHTML5?"_xhr":"_form";n&&n.isUploading&&n[r].abort()}},uploadAll:{value:function(){var e=this.getNotUploadedItems().filter(function(e){return!e.isUploading});e.length&&(u(e,function(e){return e._prepareToUploading()}),e[0].upload())}},cancelAll:{value:function(){var e=this.getNotUploadedItems();u(e,function(e){return e.cancel()})}},isFile:{value:function(e){return this.constructor.isFile(e)}},isFileLikeObject:{value:function(e){return this.constructor.isFileLikeObject(e)}},isArrayLikeObject:{value:function(e){return this.constructor.isArrayLikeObject(e)}},getIndexOfItem:{value:function(e){return c(e)?e:this.queue.indexOf(e)}},getNotUploadedItems:{value:function(){return this.queue.filter(function(e){return!e.isUploaded})}},getReadyItems:{value:function(){return this.queue.filter(function(e){return e.isReady&&!e.isUploading}).sort(function(e,t){return e.index-t.index})}},destroy:{value:function(){var e=this;u(this._directives,function(t){u(e._directives[t],function(e){e.destroy()})})}},onAfterAddingAll:{value:function(e){}},onAfterAddingFile:{value:function(e){}},onWhenAddingFileFailed:{value:function(e,t,n){}},onBeforeUploadItem:{value:function(e){}},onProgressItem:{value:function(e,t){}},onProgressAll:{value:function(e){}},onSuccessItem:{value:function(e,t,n,r){}},onErrorItem:{value:function(e,t,n,r){}},onCancelItem:{value:function(e,t,n,r){}},onCompleteItem:{value:function(e,t,n,r){}},onCompleteAll:{value:function(){}},_getTotalProgress:{value:function(e){if(this.removeAfterUpload)return e||0;var t=this.getNotUploadedItems().length,n=t?this.queue.length-t:this.queue.length,r=100/this.queue.length,i=(e||0)*r/100;return Math.round(n*r+i)}},_getFilters:{value:function(e){if(!e)return this.filters;if(p(e))return e;var t=e.match(/[^\s,]+/g);return this.filters.filter(function(e){return-1!==t.indexOf(e.name)})}},_render:{value:function(){t.$$phase||t.$apply()}},_folderFilter:{value:function(e){return!(!e.size&&!e.type)}},_queueLimitFilter:{value:function(){return this.queue.length<this.queueLimit}},_isValidFile:{value:function(e,t,n){var r=this;return this._failFilterIndex=-1,t.length?t.every(function(t){return r._failFilterIndex++,t.fn.call(r,e,n)}):!0}},_isSuccessCode:{value:function(e){return e>=200&&300>e||304===e}},_transformResponse:{value:function(e,t){var r=this._headersGetter(t);return u(n.defaults.transformResponse,function(t){e=t(e,r)}),e}},_parseHeaders:{value:function(e){var t,n,r,i={};return e?(u(e.split("\n"),function(e){r=e.indexOf(":"),t=e.slice(0,r).trim().toLowerCase(),n=e.slice(r+1).trim(),t&&(i[t]=i[t]?i[t]+", "+n:n)}),i):i}},_headersGetter:{value:function(e){return function(t){return t?e[t.toLowerCase()]||null:e}}},_xhrTransport:{value:function(e){var t=this,n=e._xhr=new XMLHttpRequest,r=new g;if(this._onBeforeUploadItem(e),u(e.formData,function(e){u(e,function(e,t){r.append(t,e)})}),"number"!=typeof e._file.size)throw new TypeError("The file specified is no longer valid");r.append(e.alias,e._file,e.file.name),n.upload.onprogress=function(n){var r=Math.round(n.lengthComputable?100*n.loaded/n.total:0);t._onProgressItem(e,r)},n.onload=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r),o=t._isSuccessCode(n.status)?"Success":"Error",s="_on"+o+"Item";t[s](e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onerror=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onErrorItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.onabort=function(){var r=t._parseHeaders(n.getAllResponseHeaders()),i=t._transformResponse(n.response,r);t._onCancelItem(e,i,n.status,r),t._onCompleteItem(e,i,n.status,r)},n.open(e.method,e.url,!0),n.withCredentials=e.withCredentials,u(e.headers,function(e,t){n.setRequestHeader(t,e)}),n.send(r),this._render()}},_iframeTransport:{value:function(e){var t=this,n=d('<form style="display: none;" />'),r=d('<iframe name="iframeTransport'+Date.now()+'">'),i=e._input;e._form&&e._form.replaceWith(i),e._form=n,this._onBeforeUploadItem(e),i.prop("name",e.alias),u(e.formData,function(e){u(e,function(e,t){var r=d('<input type="hidden" name="'+t+'" />');r.val(e),n.append(r)})}),n.prop({action:e.url,method:"POST",target:r.prop("name"),enctype:"multipart/form-data",encoding:"multipart/form-data"}),r.bind("load",function(){var n="",i=200;try{n=r[0].contentDocument.body.innerHTML}catch(o){i=500}var s={response:n,status:i,dummy:!0},a={},u=t._transformResponse(s.response,a);t._onSuccessItem(e,u,s.status,a),t._onCompleteItem(e,u,s.status,a)}),n.abort=function(){var o,s={status:0,dummy:!0},a={};r.unbind("load").prop("src","javascript:false;"),n.replaceWith(i),t._onCancelItem(e,o,s.status,a),t._onCompleteItem(e,o,s.status,a)},i.after(n),n.append(i).append(r),n[0].submit(),this._render()}},_onWhenAddingFileFailed:{value:function(e,t,n){this.onWhenAddingFileFailed(e,t,n)}},_onAfterAddingFile:{value:function(e){this.onAfterAddingFile(e)}},_onAfterAddingAll:{value:function(e){this.onAfterAddingAll(e)}},_onBeforeUploadItem:{value:function(e){e._onBeforeUpload(),this.onBeforeUploadItem(e)}},_onProgressItem:{value:function(e,t){var n=this._getTotalProgress(t);this.progress=n,e._onProgress(t),this.onProgressItem(e,t),this.onProgressAll(n),this._render()}},_onSuccessItem:{value:function(e,t,n,r){e._onSuccess(t,n,r),this.onSuccessItem(e,t,n,r)}},_onErrorItem:{value:function(e,t,n,r){e._onError(t,n,r),this.onErrorItem(e,t,n,r)}},_onCancelItem:{value:function(e,t,n,r){e._onCancel(t,n,r),this.onCancelItem(e,t,n,r)}},_onCompleteItem:{value:function(e,t,n,r){e._onComplete(t,n,r),this.onCompleteItem(e,t,n,r);var i=this.getReadyItems()[0];return this.isUploading=!1,f(i)?void i.upload():(this.onCompleteAll(),this.progress=this._getTotalProgress(),void this._render())}}},{isFile:{value:function(e){return m&&e instanceof m}},isFileLikeObject:{value:function(e){return e instanceof v}},isArrayLikeObject:{value:function(e){return l(e)&&"length"in e}},inherit:{value:function(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,e.super_=t}}}),r}();return _.prototype.isHTML5=!(!m||!g),_.isHTML5=_.prototype.isHTML5,_},e.exports.$inject=["fileUploaderOptions","$rootScope","$http","$window","FileLikeObject","FileItem"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.isElement,u=angular.isString;e.exports=function(){var e=function(){function e(t){o(this,e);var n=a(t),r=n?t.value:t,i=u(r)?"FakePath":"Object",s="_createFrom"+i;this[s](r)}return i(e,{_createFromFakePath:{value:function(e){this.lastModifiedDate=null,this.size=null,this.type="like/"+e.slice(e.lastIndexOf(".")+1).toLowerCase(),this.name=e.slice(e.lastIndexOf("/")+e.lastIndexOf("\\")+2)}},_createFromObject:{value:function(e){this.lastModifiedDate=s(e.lastModifiedDate),this.size=e.size,this.type=e.type,this.name=e.name}}}),e}();return e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.copy),a=angular.extend,u=angular.element,l=angular.isElement;e.exports=function(e,t){var n=function(){function n(e,r,i){o(this,n);var c=l(r),f=c?u(r):null,p=c?null:r;a(this,{url:e.url,alias:e.alias,headers:s(e.headers),formData:s(e.formData),removeAfterUpload:e.removeAfterUpload,withCredentials:e.withCredentials,method:e.method},i,{uploader:e,file:new t(r),isReady:!1,isUploading:!1,isUploaded:!1,isSuccess:!1,isCancel:!1,isError:!1,progress:0,index:null,_file:p,_input:f}),f&&this._replaceNode(f)}return i(n,{upload:{value:function(){try{this.uploader.uploadItem(this)}catch(e){this.uploader._onCompleteItem(this,"",0,[]),this.uploader._onErrorItem(this,"",0,[])}}},cancel:{value:function(){this.uploader.cancelItem(this)}},remove:{value:function(){this.uploader.removeFromQueue(this)}},onBeforeUpload:{value:function(){}},onProgress:{value:function(e){}},onSuccess:{value:function(e,t,n){}},onError:{value:function(e,t,n){}},onCancel:{value:function(e,t,n){}},onComplete:{value:function(e,t,n){}},_onBeforeUpload:{value:function(){this.isReady=!0,this.isUploading=!0,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!1,this.isError=!1,this.progress=0,this.onBeforeUpload()}},_onProgress:{value:function(e){this.progress=e,this.onProgress(e)}},_onSuccess:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!0,this.isCancel=!1,this.isError=!1,this.progress=100,this.index=null,this.onSuccess(e,t,n)}},_onError:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!1,this.isCancel=!1,this.isError=!0,this.progress=0,this.index=null,this.onError(e,t,n)}},_onCancel:{value:function(e,t,n){this.isReady=!1,this.isUploading=!1,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!0,this.isError=!1,this.progress=0,this.index=null,this.onCancel(e,t,n)}},_onComplete:{value:function(e,t,n){this.onComplete(e,t,n),this.removeAfterUpload&&this.remove()}},_destroy:{value:function(){this._input&&this._input.remove(),this._form&&this._form.remove(),delete this._form,delete this._input}},_prepareToUploading:{value:function(){this.index=this.index||++this.uploader._nextIndex,this.isReady=!0}},_replaceNode:{value:function(t){var n=e(t.clone())(t.scope());n.prop("value",null),t.css("display","none"),t.after(n)}}}),n}();return n},e.exports.$inject=["$compile","FileLikeObject"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},s=(r(n(1)),angular.extend);e.exports=function(){var e=function(){function e(t){o(this,e),s(this,t),this.uploader._directives[this.prop].push(this),this._saveLinks(),this.bind()}return i(e,{bind:{value:function(){for(var e in this.events){var t=this.events[e];this.element.bind(e,this[t])}}},unbind:{value:function(){for(var e in this.events)this.element.unbind(e,this.events[e])}},destroy:{value:function(){var e=this.uploader._directives[this.prop].indexOf(this);this.uploader._directives[this.prop].splice(e,1),this.unbind()}},_saveLinks:{value:function(){for(var e in this.events){var t=this.events[e];this[t]=this[t].bind(this)}}}}),e}();return e.prototype.events={},e},e.exports.$inject=[]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",change:"onChange"},prop:"select"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n),this.uploader.isHTML5||this.element.removeAttr("multiple"),this.element.prop("value",null)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},isEmptyAfterSelection:{value:function(){return!!this.element.attr("multiple")}},onChange:{value:function(){var e=this.uploader.isHTML5?this.element[0].files:this.element[0],t=this.getOptions(),n=this.getFilters();this.uploader.isHTML5||this.destroy(),this.uploader.addToQueue(e,t,n),this.isEmptyAfterSelection()&&(this.element.prop("value",null),this.element.replaceWith(this.element=this.element.clone(!0)))}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function c(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:c(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend),l=angular.forEach;e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy",drop:"onDrop",dragover:"onDragOver",dragleave:"onDragLeave"},prop:"drop"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{getOptions:{value:function(){}},getFilters:{value:function(){}},onDrop:{value:function(e){var t=this._getTransfer(e);if(t){var n=this.getOptions(),r=this.getFilters();this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this),this.uploader.addToQueue(t.files,n,r)}}},onDragOver:{value:function(e){var t=this._getTransfer(e);this._haveFiles(t.types)&&(t.dropEffect="copy",this._preventAndStop(e),l(this.uploader._directives.over,this._addOverClass,this))}},onDragLeave:{value:function(e){e.currentTarget!==this.element[0]&&(this._preventAndStop(e),l(this.uploader._directives.over,this._removeOverClass,this))}},_getTransfer:{value:function(e){return e.dataTransfer?e.dataTransfer:e.originalEvent.dataTransfer}},_preventAndStop:{value:function(e){e.preventDefault(),e.stopPropagation()}},_haveFiles:{value:function(e){return e?e.indexOf?-1!==e.indexOf("Files"):e.contains?e.contains("Files"):!1:!1}},_addOverClass:{value:function(e){e.addOverClass()}},_removeOverClass:{value:function(e){e.removeOverClass()}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e},i=function(){function e(e,t){for(var n in t){var r=t[n];r.configurable=!0,r.value&&(r.writable=!0)}Object.defineProperties(e,t)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),o=function l(e,t,n){var r=Object.getOwnPropertyDescriptor(e,t);if(void 0===r){var i=Object.getPrototypeOf(e);return null===i?void 0:l(i,t,n)}if("value"in r&&r.writable)return r.value;var o=r.get;return void 0===o?void 0:o.call(n)},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)},a=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},u=(r(n(1)),angular.extend);e.exports=function(e){var t=function(e){function t(e){a(this,t);var n=u(e,{events:{$destroy:"destroy"},prop:"over",overClass:"nv-file-over"});o(Object.getPrototypeOf(t.prototype),"constructor",this).call(this,n)}return s(t,e),i(t,{addOverClass:{value:function(){this.element.addClass(this.getOverClass())}},removeOverClass:{value:function(){this.element.removeClass(this.getOverClass())}},getOverClass:{value:function(){return this.overClass}}}),t}(e);return t},e.exports.$inject=["FileDirective"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}},e.exports.$inject=["$parse","FileUploader","FileSelect"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t,n){return{link:function(r,i,o){var s=r.$eval(o.uploader);if(!(s instanceof t))throw new TypeError('"Uploader" must be an instance of FileUploader');if(s.isHTML5){var a=new n({uploader:s,element:i});a.getOptions=e(o.options).bind(a,r),a.getFilters=function(){return o.filters}}}}},e.exports.$inject=["$parse","FileUploader","FileDrop"]},function(e,t,n){"use strict";var r=function(e){return e&&e.__esModule?e["default"]:e};r(n(1));e.exports=function(e,t){return{link:function(n,r,i){var o=n.$eval(i.uploader);if(!(o instanceof e))throw new TypeError('"Uploader" must be an instance of FileUploader');var s=new t({uploader:o,element:r});s.getOverClass=function(){return i.overClass||s.overClass}}}},e.exports.$inject=["FileUploader","FileOver"]}])});
 
-},{}],298:[function(require,module,exports){
+},{}],314:[function(require,module,exports){
 'use strict';
 
 var moduleName = require('./src/angular-input-masks.js');
 
 module.exports = moduleName;
 
-},{"./src/angular-input-masks.js":302}],299:[function(require,module,exports){
-/**
- * br-validations
- * A library of validations applicable to several Brazilian data like I.E., CNPJ, CPF and others
- * @version v0.2.4
- * @link http://github.com/the-darc/br-validations
- * @license MIT
- */
-(function (root, factory) {
-	if (typeof define === 'function' && define.amd) {
-		// AMD. Register as an anonymous module.
-		define([], factory);
-	} else if (typeof exports === 'object') {
-		// Node. Does not work with strict CommonJS, but
-		// only CommonJS-like environments that support module.exports,
-		// like Node.
-		module.exports = factory();
-	} else {
-		// Browser globals (root is window)
-		root.BrV = factory();
-	}
-}(this, function () {
-var CNPJ = {};
-
-CNPJ.validate = function(c) {
-	var b = [6,5,4,3,2,9,8,7,6,5,4,3,2];
-	c = c.replace(/[^\d]/g,'');
-
-	var r = /^(0{14}|1{14}|2{14}|3{14}|4{14}|5{14}|6{14}|7{14}|8{14}|9{14})$/;
-	if (!c || c.length !== 14 || r.test(c)) {
-		return false;
-	}
-	c = c.split('');
-
-	for (var i = 0, n = 0; i < 12; i++) {
-		n += c[i] * b[i+1];
-	}
-	n = 11 - n%11;
-	n = n >= 10 ? 0 : n;
-	if (parseInt(c[12]) !== n)  {
-		return false;
-	}
-
-	for (i = 0, n = 0; i <= 12; i++) {
-		n += c[i] * b[i];
-	}
-	n = 11 - n%11;
-	n = n >= 10 ? 0 : n;
-	if (parseInt(c[13]) !== n)  {
-		return false;
-	}
-	return true;
-};
-
-
-var CPF = {};
-
-CPF.validate = function(cpf) {
-	cpf = cpf.replace(/[^\d]+/g,'');
-	var r = /^(0{11}|1{11}|2{11}|3{11}|4{11}|5{11}|6{11}|7{11}|8{11}|9{11})$/;
-	if (!cpf || cpf.length !== 11 || r.test(cpf)) {
-		return false;
-	}
-	function validateDigit(digit) {
-		var add = 0;
-		var init = digit - 9;
-		for (var i = 0; i < 9; i ++) {
-			add += parseInt(cpf.charAt(i + init)) * (i+1);
-		}
-		return (add%11)%10 === parseInt(cpf.charAt(digit));
-	}
-	return validateDigit(9) && validateDigit(10);
-};
-
-var IE = function(uf) {
-	if (!(this instanceof IE)) {
-		return new IE(uf);
-	}
-
-	this.rules = IErules[uf] || [];
-	this.rule;
-	IE.prototype._defineRule = function(value) {
-		this.rule = undefined;
-		for (var r = 0; r < this.rules.length && this.rule === undefined; r++) {
-			var str = value.replace(/[^\d]/g,'');
-			var ruleCandidate = this.rules[r];
-			if (str.length === ruleCandidate.chars && (!ruleCandidate.match || ruleCandidate.match.test(value))) {
-				this.rule = ruleCandidate;
-			}
-		}
-		return !!this.rule;
-	};
-
-	IE.prototype.validate = function(value) {
-		if (!value || !this._defineRule(value)) {
-			return false;
-		}
-		return this.rule.validate(value);
-	};
-};
-
-var IErules = {};
-
-var algorithmSteps = {
-	handleStr: {
-		onlyNumbers: function(str) {
-			return str.replace(/[^\d]/g,'').split('');
-		},
-		mgSpec: function(str) {
-			var s = str.replace(/[^\d]/g,'');
-			s = s.substr(0,3)+'0'+s.substr(3, s.length);
-			return s.split('');
-		}
-	},
-	sum: {
-		normalSum: function(handledStr, pesos) {
-			var nums = handledStr;
-			var sum = 0;
-			for (var i = 0; i < pesos.length; i++) {
-				sum += parseInt(nums[i]) * pesos[i];
-			}
-			return sum;
-		},
-		individualSum: function(handledStr, pesos) {
-			var nums = handledStr;
-			var sum = 0;
-			for (var i = 0; i < pesos.length; i++) {
-				var mult = parseInt(nums[i]) * pesos[i];
-				sum += mult%10 + parseInt(mult/10);
-			}
-			return sum;
-		},
-		apSpec: function(handledStr, pesos) {
-			var sum = this.normalSum(handledStr, pesos);
-			var ref = handledStr.join('');
-			if (ref >= '030000010' && ref <= '030170009') {
-				return sum + 5;
-			}
-			if (ref >= '030170010' && ref <= '030190229') {
-				return sum + 9;
-			}
-			return sum;
-		}
-	},
-	rest: {
-		mod11: function(sum) {
-			return sum%11;
-		},
-		mod10: function(sum) {
-			return sum%10;
-		},
-		mod9: function(sum) {
-			return sum%9;
-		}
-	},
-	expectedDV: {
-		minusRestOf11: function(rest) {
-			return rest < 2 ? 0 : 11 - rest;
-		},
-		minusRestOf11v2: function(rest) {
-			return rest < 2 ? 11 - rest - 10 : 11 - rest;
-		},
-		minusRestOf10: function(rest) {
-			return rest < 1 ? 0 : 10 - rest;
-		},
-		mod10: function(rest) {
-			return rest%10;
-		},
-		goSpec: function(rest, handledStr) {
-			var ref = handledStr.join('');
-			if (rest === 1) {
-				return ref >= '101031050' && ref <= '101199979' ? 1 : 0;
-			}
-			return rest === 0 ? 0 : 11 - rest;
-		},
-		apSpec: function(rest, handledStr) {
-			var ref = handledStr.join('');
-			if (rest === 0) {
-				return ref >= '030170010' && ref <= '030190229' ? 1 : 0;
-			}
-			return rest === 1 ? 0 : 11 - rest;
-		},
-		voidFn: function(rest) {
-			return rest;
-		}
-	}
-};
-
-
-/**
- * options {
- *     pesos: Array of values used to operate in sum step
- *     dvPos: Position of the DV to validate considering the handledStr
- *     algorithmSteps: The four DV's validation algorithm steps names
- * }
- */
-function validateDV(value, options) {
-	var steps = options.algorithmSteps;
-
-	// Step 01: Handle String
-	var handledStr = algorithmSteps.handleStr[steps[0]](value);
-
-	// Step 02: Sum chars
-	var sum = algorithmSteps.sum[steps[1]](handledStr, options.pesos);
-
-	// Step 03: Rest calculation
-	var rest = algorithmSteps.rest[steps[2]](sum);
-
-	// Fixed Step: Get current DV
-	var currentDV = parseInt(handledStr[options.dvpos]);
-
-	// Step 04: Expected DV calculation
-	var expectedDV = algorithmSteps.expectedDV[steps[3]](rest, handledStr);
-
-	// Fixed step: DV verification
-	return currentDV === expectedDV;
-}
-
-function validateIE(value, rule) {
-	if (rule.match && !rule.match.test(value)) {
-		return false;
-	}
-	for (var i = 0; i < rule.dvs.length; i++) {
-		// console.log('>> >> dv'+i);
-		if (!validateDV(value, rule.dvs[i])) {
-			return false;
-		}
-	}
-	return true;
-}
-
-IErules.PE = [{
-	//mask: new StringMask('0000000-00'),
-	chars: 9,
-	dvs: [{
-		dvpos: 7,
-		pesos: [8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	},{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-},{
-	// mask: new StringMask('00.0.000.0000000-0'),
-	chars: 14,
-	pesos: [[1,2,3,4,5,9,8,7,6,5,4,3,2]],
-	dvs: [{
-		dvpos: 13,
-		pesos: [5,4,3,2,1,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11v2']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.RS = [{
-	// mask: new StringMask('000/0000000'),
-	chars: 10,
-	dvs: [{
-		dvpos: 9,
-		pesos: [2,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.AC = [{
-	// mask: new StringMask('00.000.000/000-00'),
-	chars: 13,
-	match: /^01/,
-	dvs: [{
-		dvpos: 11,
-		pesos: [4,3,2,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	},{
-		dvpos: 12,
-		pesos: [5,4,3,2,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.MG = [{
-	// mask: new StringMask('000.000.000/0000'),
-	chars: 13,
-	dvs: [{
-		dvpos: 12,
-		pesos: [1,2,1,2,1,2,1,2,1,2,1,2],
-		algorithmSteps: ['mgSpec', 'individualSum', 'mod10', 'minusRestOf10']
-	},{
-		dvpos: 12,
-		pesos: [3,2,11,10,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.SP = [{
-	// mask: new StringMask('000.000.000.000'),
-	chars: 12,
-	match: /^[0-9]/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [1,3,4,5,6,7,8,10],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'mod10']
-	},{
-		dvpos: 11,
-		pesos: [3,2,10,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'mod10']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-},{
-	// mask: new StringMask('P-00000000.0/000')
-	chars: 12,
-	match: /^P/i,
-	dvs: [{
-		dvpos: 8,
-		pesos: [1,3,4,5,6,7,8,10],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'mod10']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.DF = [{
-	// mask: new StringMask('00000000000-00'),
-	chars: 13,
-	dvs: [{
-		dvpos: 11,
-		pesos: [4,3,2,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	},{
-		dvpos: 12,
-		pesos: [5,4,3,2,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.ES = [{
-	// mask: new StringMask('000.000.00-0')
-	chars: 9,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.BA = [{
-	// mask: new StringMask('000000-00')
-	chars: 8,
-	match: /^[0123458]/,
-	dvs: [{
-		dvpos: 7,
-		pesos: [7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod10', 'minusRestOf10']
-	},{
-		dvpos: 6,
-		pesos: [8,7,6,5,4,3,0,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod10', 'minusRestOf10']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-},{
-	chars: 8,
-	match: /^[679]/,
-	dvs: [{
-		dvpos: 7,
-		pesos: [7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	},{
-		dvpos: 6,
-		pesos: [8,7,6,5,4,3,0,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-},{
-	// mask: new StringMask('0000000-00')
-	chars: 9,
-	match: /^[0-9][0123458]/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod10', 'minusRestOf10']
-	},{
-		dvpos: 7,
-		pesos: [9,8,7,6,5,4,3,0,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod10', 'minusRestOf10']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-},{
-	chars: 9,
-	match: /^[0-9][679]/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	},{
-		dvpos: 7,
-		pesos: [9,8,7,6,5,4,3,0,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.AM = [{
-	//mask: new StringMask('00.000.000-0')
-	chars: 9,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.RN = [{
-	// {mask: new StringMask('00.000.000-0')
-	chars: 9,
-	match: /^20/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-},{
-	// {mask: new StringMask('00.0.000.000-0'), chars: 10}
-	chars: 10,
-	match: /^20/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [10,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.RO = [{
-	// mask: new StringMask('0000000000000-0')
-	chars: 14,
-	dvs: [{
-		dvpos: 13,
-		pesos: [6,5,4,3,2,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.PR = [{
-	// mask: new StringMask('00000000-00')
-	chars: 10,
-	dvs: [{
-		dvpos: 8,
-		pesos: [3,2,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	},{
-		dvpos: 9,
-		pesos: [4,3,2,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.SC = [{
-	// {mask: new StringMask('000.000.000'), uf: 'SANTA CATARINA'}
-	chars: 9,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.RJ = [{
-	// {mask: new StringMask('00.000.00-0'), uf: 'RIO DE JANEIRO'}
-	chars: 8,
-	dvs: [{
-		dvpos: 7,
-		pesos: [2,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.PA = [{
-	// {mask: new StringMask('00-000000-0')
-	chars: 9,
-	match: /^15/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.SE = [{
-	// {mask: new StringMask('00000000-0')
-	chars: 9,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.PB = [{
-	// {mask: new StringMask('00000000-0')
-	chars: 9,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.CE = [{
-	// {mask: new StringMask('00000000-0')
-	chars: 9,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.PI = [{
-	// {mask: new StringMask('000000000')
-	chars: 9,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.MA = [{
-	// {mask: new StringMask('000000000')
-	chars: 9,
-	match: /^12/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.MT = [{
-	// {mask: new StringMask('0000000000-0')
-	chars: 11,
-	dvs: [{
-		dvpos: 10,
-		pesos: [3,2,9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.MS = [{
-	// {mask: new StringMask('000000000')
-	chars: 9,
-	match: /^28/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.TO = [{
-	// {mask: new StringMask('00000000000'),
-	chars: 11,
-	match: /^[0-9]{2}((0[123])|(99))/,
-	dvs: [{
-		dvpos: 10,
-		pesos: [9,8,0,0,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.AL = [{
-	// {mask: new StringMask('000000000')
-	chars: 9,
-	match: /^24[03578]/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.RR = [{
-	// {mask: new StringMask('00000000-0')
-	chars: 9,
-	match: /^24/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [1,2,3,4,5,6,7,8],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod9', 'voidFn']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.GO = [{
-	// {mask: new StringMask('00.000.000-0')
-	chars: 9,
-	match: /^1[015]/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'goSpec']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-IErules.AP = [{
-	// {mask: new StringMask('000000000')
-	chars: 9,
-	match: /^03/,
-	dvs: [{
-		dvpos: 8,
-		pesos: [9,8,7,6,5,4,3,2],
-		algorithmSteps: ['onlyNumbers', 'apSpec', 'mod11', 'apSpec']
-	}],
-	validate: function(value) { return validateIE(value, this); }
-}];
-
-	return {
-		ie: IE,
-		cpf: CPF,
-		cnpj: CNPJ
-	};
-}));
-},{}],300:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],301:[function(require,module,exports){
-(function (root, factory) {
-	if (typeof define === 'function' && define.amd) {
-		// AMD. Register as an anonymous module.
-		define([], factory);
-	} else if (typeof exports === 'object') {
-		// Node. Does not work with strict CommonJS, but
-		// only CommonJS-like environments that support module.exports,
-		// like Node.
-		module.exports = factory();
-	} else {
-		// Browser globals (root is window)
-		root.StringMask = factory();
-	}
-}(this, function () {
-	var tokens = {
-		'0': {pattern: /\d/, _default: '0'},
-		'9': {pattern: /\d/, optional: true},
-		'#': {pattern: /\d/, optional: true, recursive: true},
-		'S': {pattern: /[a-zA-Z]/},
-		'U': {pattern: /[a-zA-Z]/, transform: function (c) { return c.toLocaleUpperCase(); }},
-		'L': {pattern: /[a-zA-Z]/, transform: function (c) { return c.toLocaleLowerCase(); }},
-		'$': {escape: true}
-	};
-
-	function isEscaped(pattern, pos) {
-		var count = 0;
-		var i = pos - 1;
-		var token = {escape: true};
-		while (i >= 0 && token && token.escape) {
-			token = tokens[pattern.charAt(i)];
-			count += token && token.escape ? 1 : 0;
-			i--;
-		}
-		return count > 0 && count%2 === 1;
-	}
-
-	function calcOptionalNumbersToUse(pattern, value) {
-		var numbersInP = pattern.replace(/[^0]/g,'').length;
-		var numbersInV = value.replace(/[^\d]/g,'').length;
-		return numbersInV - numbersInP;
-	}
-
-	function concatChar(text, character, options, token) {
-		if (token && typeof token.transform === 'function') character = token.transform(character);
-		if (options.reverse) return character + text;
-		return text + character;
-	}
-
-	function hasMoreTokens(pattern, pos, inc) {
-		var pc = pattern.charAt(pos);
-		var token = tokens[pc];
-		if (pc === '') return false;
-		return token && !token.escape ? true : hasMoreTokens(pattern, pos + inc, inc);
-	}
-
-	function insertChar(text, char, position) {
-		var t = text.split('');
-		t.splice(position >= 0 ? position: 0, 0, char);
-		return t.join('');
-	}
-
-	function StringMask(pattern, opt) {
-		this.options = opt || {};
-		this.options = {
-			reverse: this.options.reverse || false,
-			usedefaults: this.options.usedefaults || this.options.reverse
-		};
-		this.pattern = pattern;
-	}
-
-	StringMask.prototype.process = function proccess(value) {
-		if (!value) return '';
-		value = value + '';
-		var pattern2 = this.pattern;
-		var valid = true;
-		var formatted = '';
-		var valuePos = this.options.reverse ? value.length - 1 : 0;
-		var optionalNumbersToUse = calcOptionalNumbersToUse(pattern2, value);
-		var escapeNext = false;
-		var recursive = [];
-		var inRecursiveMode = false;
-
-		var steps = {
-			start: this.options.reverse ? pattern2.length - 1 : 0,
-			end: this.options.reverse ? -1 : pattern2.length,
-			inc: this.options.reverse ? -1 : 1
-		};
-
-		function continueCondition(options) {
-			if (!inRecursiveMode && hasMoreTokens(pattern2, i, steps.inc)) {
-				return true;
-			} else if (!inRecursiveMode) {
-				inRecursiveMode = recursive.length > 0;
-			}
-
-			if (inRecursiveMode) {
-				var pc = recursive.shift();
-				recursive.push(pc);
-				if (options.reverse && valuePos >= 0) {
-					i++;
-					pattern2 = insertChar(pattern2, pc, i);
-					return true;
-				} else if (!options.reverse && valuePos < value.length) {
-					pattern2 = insertChar(pattern2, pc, i);
-					return true;
-				}
-			}
-			return i < pattern2.length && i >= 0;
-		}
-
-		for (var i = steps.start; continueCondition(this.options); i = i + steps.inc) {
-			var pc = pattern2.charAt(i);
-			var vc = value.charAt(valuePos);
-			var token = tokens[pc];
-			if (!inRecursiveMode || vc) {
-				if (this.options.reverse && isEscaped(pattern2, i)) {
-					formatted = concatChar(formatted, pc, this.options, token);
-					i = i + steps.inc;
-					continue;
-				} else if (!this.options.reverse && escapeNext) {
-					formatted = concatChar(formatted, pc, this.options, token);
-					escapeNext = false;
-					continue;
-				} else if (!this.options.reverse && token && token.escape) {
-					escapeNext = true;
-					continue;
-				}
-			}
-
-			if (!inRecursiveMode && token && token.recursive) {
-				recursive.push(pc);
-			} else if (inRecursiveMode && !vc) {
-				if (!token || !token.recursive) formatted = concatChar(formatted, pc, this.options, token);
-				continue;
-			} else if (recursive.length > 0 && token && !token.recursive) {
-				// Recursive tokens most be the last tokens of the pattern
-				valid = false;
-				continue;
-			} else if (!inRecursiveMode && recursive.length > 0 && !vc) {
-				continue;
-			}
-
-			if (!token) {
-				formatted = concatChar(formatted, pc, this.options, token);
-				if (!inRecursiveMode && recursive.length) {
-					recursive.push(pc);
-				}
-			} else if (token.optional) {
-				if (token.pattern.test(vc) && optionalNumbersToUse) {
-					formatted = concatChar(formatted, vc, this.options, token);
-					valuePos = valuePos + steps.inc;
-					optionalNumbersToUse--;
-				} else if (recursive.length > 0 && vc) {
-					valid = false;
-					break;
-				}
-			} else if (token.pattern.test(vc)) {
-				formatted = concatChar(formatted, vc, this.options, token);
-				valuePos = valuePos + steps.inc;
-			} else if (!vc && token._default && this.options.usedefaults) {
-				formatted = concatChar(formatted, token._default, this.options, token);
-			} else {
-				valid = false;
-				break;
-			}
-		}
-
-		return {result: formatted, valid: valid};
-	};
-
-	StringMask.prototype.apply = function(value) {
-		return this.process(value).result;
-	};
-
-	StringMask.prototype.validate = function(value) {
-		return this.process(value).valid;
-	};
-
-	StringMask.process = function(value, pattern, options) {
-		return new StringMask(pattern, options).process(value);
-	};
-
-	StringMask.apply = function(value, pattern, options) {
-		return new StringMask(pattern, options).apply(value);
-	};
-
-	StringMask.validate = function(value, pattern, options) {
-		return new StringMask(pattern, options).validate(value);
-	};
-
-	return StringMask;
-}));
-
-},{}],302:[function(require,module,exports){
+},{"./src/angular-input-masks.js":315}],315:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('ui.utils.masks', [
@@ -43320,7 +36073,7 @@ module.exports = angular.module('ui.utils.masks', [
 	require('./ch/ch-masks')
 ]).name;
 
-},{"./br/br-masks":304,"./ch/ch-masks":313,"./global/global-masks":316,"./us/us-masks":326}],303:[function(require,module,exports){
+},{"./br/br-masks":317,"./ch/ch-masks":326,"./global/global-masks":329,"./us/us-masks":339}],316:[function(require,module,exports){
 'use strict';
 
 var StringMask = require('string-mask');
@@ -43346,7 +36099,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":323,"string-mask":301}],304:[function(require,module,exports){
+},{"mask-factory":336,"string-mask":374}],317:[function(require,module,exports){
 'use strict';
 
 var m = angular.module('ui.utils.masks.br', [
@@ -43364,7 +36117,7 @@ var m = angular.module('ui.utils.masks.br', [
 
 module.exports = m.name;
 
-},{"../helpers":322,"./boleto-bancario/boleto-bancario":303,"./car-plate/car-plate":305,"./cep/cep":306,"./cnpj/cnpj":307,"./cpf-cnpj/cpf-cnpj":308,"./cpf/cpf":309,"./inscricao-estadual/ie":310,"./nfe/nfe":311,"./phone/br-phone":312}],305:[function(require,module,exports){
+},{"../helpers":335,"./boleto-bancario/boleto-bancario":316,"./car-plate/car-plate":318,"./cep/cep":319,"./cnpj/cnpj":320,"./cpf-cnpj/cpf-cnpj":321,"./cpf/cpf":322,"./inscricao-estadual/ie":323,"./nfe/nfe":324,"./phone/br-phone":325}],318:[function(require,module,exports){
 'use strict';
 
 var StringMask = require('string-mask');
@@ -43386,7 +36139,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":323,"string-mask":301}],306:[function(require,module,exports){
+},{"mask-factory":336,"string-mask":374}],319:[function(require,module,exports){
 'use strict';
 
 var StringMask = require('string-mask');
@@ -43408,7 +36161,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":323,"string-mask":301}],307:[function(require,module,exports){
+},{"mask-factory":336,"string-mask":374}],320:[function(require,module,exports){
 'use strict';
 
 var StringMask = require('string-mask');
@@ -43431,7 +36184,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"br-validations":299,"mask-factory":323,"string-mask":301}],308:[function(require,module,exports){
+},{"br-validations":351,"mask-factory":336,"string-mask":374}],321:[function(require,module,exports){
 'use strict';
 
 var StringMask = require('string-mask');
@@ -43466,7 +36219,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"br-validations":299,"mask-factory":323,"string-mask":301}],309:[function(require,module,exports){
+},{"br-validations":351,"mask-factory":336,"string-mask":374}],322:[function(require,module,exports){
 'use strict';
 
 var StringMask = require('string-mask');
@@ -43489,7 +36242,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"br-validations":299,"mask-factory":323,"string-mask":301}],310:[function(require,module,exports){
+},{"br-validations":351,"mask-factory":336,"string-mask":374}],323:[function(require,module,exports){
 'use strict';
 
 var StringMask = require('string-mask');
@@ -43628,7 +36381,7 @@ BrIeMaskDirective.$inject = ['$parse'];
 
 module.exports = BrIeMaskDirective;
 
-},{"br-validations":299,"string-mask":301}],311:[function(require,module,exports){
+},{"br-validations":351,"string-mask":374}],324:[function(require,module,exports){
 'use strict';
 
 var StringMask = require('string-mask');
@@ -43651,7 +36404,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":323,"string-mask":301}],312:[function(require,module,exports){
+},{"mask-factory":336,"string-mask":374}],325:[function(require,module,exports){
 'use strict';
 
 var StringMask = require('string-mask');
@@ -43694,7 +36447,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":323,"string-mask":301}],313:[function(require,module,exports){
+},{"mask-factory":336,"string-mask":374}],326:[function(require,module,exports){
 'use strict';
 
 var m = angular.module('ui.utils.masks.ch', [
@@ -43704,7 +36457,7 @@ var m = angular.module('ui.utils.masks.ch', [
 
 module.exports = m.name;
 
-},{"../helpers":322,"./phone/ch-phone":314}],314:[function(require,module,exports){
+},{"../helpers":335,"./phone/ch-phone":327}],327:[function(require,module,exports){
 'use strict';
 
 var StringMask = require('string-mask');
@@ -43731,7 +36484,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":323,"string-mask":301}],315:[function(require,module,exports){
+},{"mask-factory":336,"string-mask":374}],328:[function(require,module,exports){
 'use strict';
 
 var moment = require('moment');
@@ -43802,7 +36555,7 @@ DateMaskDirective.$inject = ['$locale'];
 
 module.exports = DateMaskDirective;
 
-},{"moment":300,"string-mask":301}],316:[function(require,module,exports){
+},{"moment":355,"string-mask":374}],329:[function(require,module,exports){
 'use strict';
 
 var m = angular.module('ui.utils.masks.global', [
@@ -43817,7 +36570,7 @@ var m = angular.module('ui.utils.masks.global', [
 
 module.exports = m.name;
 
-},{"../helpers":322,"./date/date":315,"./money/money":317,"./number/number":318,"./percentage/percentage":319,"./scientific-notation/scientific-notation":320,"./time/time":321}],317:[function(require,module,exports){
+},{"../helpers":335,"./date/date":328,"./money/money":330,"./number/number":331,"./percentage/percentage":332,"./scientific-notation/scientific-notation":333,"./time/time":334}],330:[function(require,module,exports){
 'use strict';
 
 var StringMask = require('string-mask');
@@ -43932,7 +36685,7 @@ MoneyMaskDirective.$inject = ['$locale', '$parse', 'PreFormatters'];
 
 module.exports = MoneyMaskDirective;
 
-},{"string-mask":301,"validators":324}],318:[function(require,module,exports){
+},{"string-mask":374,"validators":337}],331:[function(require,module,exports){
 'use strict';
 
 var validators = require('validators');
@@ -44041,7 +36794,7 @@ NumberMaskDirective.$inject = ['$locale', '$parse', 'PreFormatters', 'NumberMask
 
 module.exports = NumberMaskDirective;
 
-},{"validators":324}],319:[function(require,module,exports){
+},{"validators":337}],332:[function(require,module,exports){
 'use strict';
 
 var validators = require('validators');
@@ -44170,7 +36923,7 @@ PercentageMaskDirective.$inject = ['$locale', '$parse', 'PreFormatters', 'Number
 
 module.exports = PercentageMaskDirective;
 
-},{"validators":324}],320:[function(require,module,exports){
+},{"validators":337}],333:[function(require,module,exports){
 'use strict';
 
 var StringMask = require('string-mask');
@@ -44292,7 +37045,7 @@ ScientificNotationMaskDirective.$inject = ['$locale', '$parse'];
 
 module.exports = ScientificNotationMaskDirective;
 
-},{"string-mask":301}],321:[function(require,module,exports){
+},{"string-mask":374}],334:[function(require,module,exports){
 'use strict';
 
 var StringMask = require('string-mask');
@@ -44359,7 +37112,7 @@ module.exports = function TimeMaskDirective() {
 	};
 };
 
-},{"string-mask":301}],322:[function(require,module,exports){
+},{"string-mask":374}],335:[function(require,module,exports){
 'use strict';
 
 var StringMask = require('string-mask');
@@ -44420,7 +37173,7 @@ m.factory('PreFormatters', [function() {
 	};
 }]);
 
-},{"string-mask":301}],323:[function(require,module,exports){
+},{"string-mask":374}],336:[function(require,module,exports){
 'use strict';
 
 module.exports = function maskFactory(maskDefinition) {
@@ -44469,7 +37222,7 @@ module.exports = function maskFactory(maskDefinition) {
 	};
 };
 
-},{}],324:[function(require,module,exports){
+},{}],337:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -44483,7 +37236,7 @@ module.exports = {
 	}
 };
 
-},{}],325:[function(require,module,exports){
+},{}],338:[function(require,module,exports){
 'use strict';
 
 var StringMask = require('string-mask');
@@ -44514,7 +37267,7 @@ module.exports = maskFactory({
 	}
 });
 
-},{"mask-factory":323,"string-mask":301}],326:[function(require,module,exports){
+},{"mask-factory":336,"string-mask":374}],339:[function(require,module,exports){
 'use strict';
 
 var m = angular.module('ui.utils.masks.us', [
@@ -44524,7 +37277,7 @@ var m = angular.module('ui.utils.masks.us', [
 
 module.exports = m.name;
 
-},{"../helpers":322,"./phone/us-phone":325}],327:[function(require,module,exports){
+},{"../helpers":335,"./phone/us-phone":338}],340:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -45209,11 +37962,11 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],328:[function(require,module,exports){
+},{}],341:[function(require,module,exports){
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":327}],329:[function(require,module,exports){
+},{"./angular-sanitize":340}],342:[function(require,module,exports){
 /**
   * x is a value between 0 and 1, indicating where in the animation you are.
   */
@@ -45842,13 +38595,13 @@ angular.module('duScroll.scrollspy', ['duScroll.spyAPI'])
   };
 }]);
 
-},{}],330:[function(require,module,exports){
+},{}],343:[function(require,module,exports){
 require('angular');
 require('./angular-scroll');
 
 module.exports = 'duScroll';
 
-},{"./angular-scroll":329,"angular":337}],331:[function(require,module,exports){
+},{"./angular-scroll":342,"angular":350}],344:[function(require,module,exports){
 /*
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
@@ -52928,12 +45681,12 @@ angular.module('ui.bootstrap.carousel').run(function() {!angular.$$csp().noInlin
 angular.module('ui.bootstrap.datepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-datepicker-popup.dropdown-menu{display:block;}.uib-button-bar{padding:10px 9px 2px;}</style>'); });
 angular.module('ui.bootstrap.timepicker').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">.uib-time input{width:50px;}</style>'); });
 angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); });
-},{}],332:[function(require,module,exports){
+},{}],345:[function(require,module,exports){
 require('./dist/ui-bootstrap-tpls');
 
 module.exports = 'ui.bootstrap';
 
-},{"./dist/ui-bootstrap-tpls":331}],333:[function(require,module,exports){
+},{"./dist/ui-bootstrap-tpls":344}],346:[function(require,module,exports){
 /*
  jQuery UI Sortable plugin wrapper
 
@@ -53426,7 +46179,7 @@ angular.module('ui.sortable', [])
     }
   ]);
 
-},{}],334:[function(require,module,exports){
+},{}],347:[function(require,module,exports){
 /**
  * @license Angular UI Tree v2.15.0
  * (c) 2010-2016. https://github.com/angular-ui-tree/angular-ui-tree
@@ -54997,11 +47750,11 @@ angular.module('ui.sortable', [])
 
 })();
 
-},{}],335:[function(require,module,exports){
+},{}],348:[function(require,module,exports){
 require('./dist/angular-ui-tree');
 module.exports = 'ui.tree';
 
-},{"./dist/angular-ui-tree":334}],336:[function(require,module,exports){
+},{"./dist/angular-ui-tree":347}],349:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.10
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -84821,548 +77574,4393 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],337:[function(require,module,exports){
+},{}],350:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":336}],338:[function(require,module,exports){
-(function (global){
-/*! https://mths.be/punycode v1.4.1 by @mathias */
-;(function(root) {
+},{"./angular":349}],351:[function(require,module,exports){
+/**
+ * br-validations
+ * A library of validations applicable to several Brazilian data like I.E., CNPJ, CPF and others
+ * @version v0.2.4
+ * @link http://github.com/the-darc/br-validations
+ * @license MIT
+ */
+(function (root, factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD. Register as an anonymous module.
+		define([], factory);
+	} else if (typeof exports === 'object') {
+		// Node. Does not work with strict CommonJS, but
+		// only CommonJS-like environments that support module.exports,
+		// like Node.
+		module.exports = factory();
+	} else {
+		// Browser globals (root is window)
+		root.BrV = factory();
+	}
+}(this, function () {
+var CNPJ = {};
 
-	/** Detect free variables */
-	var freeExports = typeof exports == 'object' && exports &&
-		!exports.nodeType && exports;
-	var freeModule = typeof module == 'object' && module &&
-		!module.nodeType && module;
-	var freeGlobal = typeof global == 'object' && global;
-	if (
-		freeGlobal.global === freeGlobal ||
-		freeGlobal.window === freeGlobal ||
-		freeGlobal.self === freeGlobal
-	) {
-		root = freeGlobal;
+CNPJ.validate = function(c) {
+	var b = [6,5,4,3,2,9,8,7,6,5,4,3,2];
+	c = c.replace(/[^\d]/g,'');
+
+	var r = /^(0{14}|1{14}|2{14}|3{14}|4{14}|5{14}|6{14}|7{14}|8{14}|9{14})$/;
+	if (!c || c.length !== 14 || r.test(c)) {
+		return false;
+	}
+	c = c.split('');
+
+	for (var i = 0, n = 0; i < 12; i++) {
+		n += c[i] * b[i+1];
+	}
+	n = 11 - n%11;
+	n = n >= 10 ? 0 : n;
+	if (parseInt(c[12]) !== n)  {
+		return false;
 	}
 
-	/**
-	 * The `punycode` object.
-	 * @name punycode
-	 * @type Object
-	 */
-	var punycode,
+	for (i = 0, n = 0; i <= 12; i++) {
+		n += c[i] * b[i];
+	}
+	n = 11 - n%11;
+	n = n >= 10 ? 0 : n;
+	if (parseInt(c[13]) !== n)  {
+		return false;
+	}
+	return true;
+};
 
-	/** Highest positive signed 32-bit float value */
-	maxInt = 2147483647, // aka. 0x7FFFFFFF or 2^31-1
 
-	/** Bootstring parameters */
-	base = 36,
-	tMin = 1,
-	tMax = 26,
-	skew = 38,
-	damp = 700,
-	initialBias = 72,
-	initialN = 128, // 0x80
-	delimiter = '-', // '\x2D'
+var CPF = {};
 
-	/** Regular expressions */
-	regexPunycode = /^xn--/,
-	regexNonASCII = /[^\x20-\x7E]/, // unprintable ASCII chars + non-ASCII chars
-	regexSeparators = /[\x2E\u3002\uFF0E\uFF61]/g, // RFC 3490 separators
+CPF.validate = function(cpf) {
+	cpf = cpf.replace(/[^\d]+/g,'');
+	var r = /^(0{11}|1{11}|2{11}|3{11}|4{11}|5{11}|6{11}|7{11}|8{11}|9{11})$/;
+	if (!cpf || cpf.length !== 11 || r.test(cpf)) {
+		return false;
+	}
+	function validateDigit(digit) {
+		var add = 0;
+		var init = digit - 9;
+		for (var i = 0; i < 9; i ++) {
+			add += parseInt(cpf.charAt(i + init)) * (i+1);
+		}
+		return (add%11)%10 === parseInt(cpf.charAt(digit));
+	}
+	return validateDigit(9) && validateDigit(10);
+};
 
-	/** Error messages */
-	errors = {
-		'overflow': 'Overflow: input needs wider integers to process',
-		'not-basic': 'Illegal input >= 0x80 (not a basic code point)',
-		'invalid-input': 'Invalid input'
+var IE = function(uf) {
+	if (!(this instanceof IE)) {
+		return new IE(uf);
+	}
+
+	this.rules = IErules[uf] || [];
+	this.rule;
+	IE.prototype._defineRule = function(value) {
+		this.rule = undefined;
+		for (var r = 0; r < this.rules.length && this.rule === undefined; r++) {
+			var str = value.replace(/[^\d]/g,'');
+			var ruleCandidate = this.rules[r];
+			if (str.length === ruleCandidate.chars && (!ruleCandidate.match || ruleCandidate.match.test(value))) {
+				this.rule = ruleCandidate;
+			}
+		}
+		return !!this.rule;
+	};
+
+	IE.prototype.validate = function(value) {
+		if (!value || !this._defineRule(value)) {
+			return false;
+		}
+		return this.rule.validate(value);
+	};
+};
+
+var IErules = {};
+
+var algorithmSteps = {
+	handleStr: {
+		onlyNumbers: function(str) {
+			return str.replace(/[^\d]/g,'').split('');
+		},
+		mgSpec: function(str) {
+			var s = str.replace(/[^\d]/g,'');
+			s = s.substr(0,3)+'0'+s.substr(3, s.length);
+			return s.split('');
+		}
 	},
-
-	/** Convenience shortcuts */
-	baseMinusTMin = base - tMin,
-	floor = Math.floor,
-	stringFromCharCode = String.fromCharCode,
-
-	/** Temporary variable */
-	key;
-
-	/*--------------------------------------------------------------------------*/
-
-	/**
-	 * A generic error utility function.
-	 * @private
-	 * @param {String} type The error type.
-	 * @returns {Error} Throws a `RangeError` with the applicable error message.
-	 */
-	function error(type) {
-		throw new RangeError(errors[type]);
-	}
-
-	/**
-	 * A generic `Array#map` utility function.
-	 * @private
-	 * @param {Array} array The array to iterate over.
-	 * @param {Function} callback The function that gets called for every array
-	 * item.
-	 * @returns {Array} A new array of values returned by the callback function.
-	 */
-	function map(array, fn) {
-		var length = array.length;
-		var result = [];
-		while (length--) {
-			result[length] = fn(array[length]);
+	sum: {
+		normalSum: function(handledStr, pesos) {
+			var nums = handledStr;
+			var sum = 0;
+			for (var i = 0; i < pesos.length; i++) {
+				sum += parseInt(nums[i]) * pesos[i];
+			}
+			return sum;
+		},
+		individualSum: function(handledStr, pesos) {
+			var nums = handledStr;
+			var sum = 0;
+			for (var i = 0; i < pesos.length; i++) {
+				var mult = parseInt(nums[i]) * pesos[i];
+				sum += mult%10 + parseInt(mult/10);
+			}
+			return sum;
+		},
+		apSpec: function(handledStr, pesos) {
+			var sum = this.normalSum(handledStr, pesos);
+			var ref = handledStr.join('');
+			if (ref >= '030000010' && ref <= '030170009') {
+				return sum + 5;
+			}
+			if (ref >= '030170010' && ref <= '030190229') {
+				return sum + 9;
+			}
+			return sum;
 		}
-		return result;
-	}
-
-	/**
-	 * A simple `Array#map`-like wrapper to work with domain name strings or email
-	 * addresses.
-	 * @private
-	 * @param {String} domain The domain name or email address.
-	 * @param {Function} callback The function that gets called for every
-	 * character.
-	 * @returns {Array} A new string of characters returned by the callback
-	 * function.
-	 */
-	function mapDomain(string, fn) {
-		var parts = string.split('@');
-		var result = '';
-		if (parts.length > 1) {
-			// In email addresses, only the domain name should be punycoded. Leave
-			// the local part (i.e. everything up to `@`) intact.
-			result = parts[0] + '@';
-			string = parts[1];
+	},
+	rest: {
+		mod11: function(sum) {
+			return sum%11;
+		},
+		mod10: function(sum) {
+			return sum%10;
+		},
+		mod9: function(sum) {
+			return sum%9;
 		}
-		// Avoid `split(regex)` for IE8 compatibility. See #17.
-		string = string.replace(regexSeparators, '\x2E');
-		var labels = string.split('.');
-		var encoded = map(labels, fn).join('.');
-		return result + encoded;
+	},
+	expectedDV: {
+		minusRestOf11: function(rest) {
+			return rest < 2 ? 0 : 11 - rest;
+		},
+		minusRestOf11v2: function(rest) {
+			return rest < 2 ? 11 - rest - 10 : 11 - rest;
+		},
+		minusRestOf10: function(rest) {
+			return rest < 1 ? 0 : 10 - rest;
+		},
+		mod10: function(rest) {
+			return rest%10;
+		},
+		goSpec: function(rest, handledStr) {
+			var ref = handledStr.join('');
+			if (rest === 1) {
+				return ref >= '101031050' && ref <= '101199979' ? 1 : 0;
+			}
+			return rest === 0 ? 0 : 11 - rest;
+		},
+		apSpec: function(rest, handledStr) {
+			var ref = handledStr.join('');
+			if (rest === 0) {
+				return ref >= '030170010' && ref <= '030190229' ? 1 : 0;
+			}
+			return rest === 1 ? 0 : 11 - rest;
+		},
+		voidFn: function(rest) {
+			return rest;
+		}
 	}
+};
 
-	/**
-	 * Creates an array containing the numeric code points of each Unicode
-	 * character in the string. While JavaScript uses UCS-2 internally,
-	 * this function will convert a pair of surrogate halves (each of which
-	 * UCS-2 exposes as separate characters) into a single code point,
-	 * matching UTF-16.
-	 * @see `punycode.ucs2.encode`
-	 * @see <https://mathiasbynens.be/notes/javascript-encoding>
-	 * @memberOf punycode.ucs2
-	 * @name decode
-	 * @param {String} string The Unicode input string (UCS-2).
-	 * @returns {Array} The new array of code points.
-	 */
-	function ucs2decode(string) {
-		var output = [],
-		    counter = 0,
-		    length = string.length,
-		    value,
-		    extra;
-		while (counter < length) {
-			value = string.charCodeAt(counter++);
-			if (value >= 0xD800 && value <= 0xDBFF && counter < length) {
-				// high surrogate, and there is a next character
-				extra = string.charCodeAt(counter++);
-				if ((extra & 0xFC00) == 0xDC00) { // low surrogate
-					output.push(((value & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000);
+
+/**
+ * options {
+ *     pesos: Array of values used to operate in sum step
+ *     dvPos: Position of the DV to validate considering the handledStr
+ *     algorithmSteps: The four DV's validation algorithm steps names
+ * }
+ */
+function validateDV(value, options) {
+	var steps = options.algorithmSteps;
+
+	// Step 01: Handle String
+	var handledStr = algorithmSteps.handleStr[steps[0]](value);
+
+	// Step 02: Sum chars
+	var sum = algorithmSteps.sum[steps[1]](handledStr, options.pesos);
+
+	// Step 03: Rest calculation
+	var rest = algorithmSteps.rest[steps[2]](sum);
+
+	// Fixed Step: Get current DV
+	var currentDV = parseInt(handledStr[options.dvpos]);
+
+	// Step 04: Expected DV calculation
+	var expectedDV = algorithmSteps.expectedDV[steps[3]](rest, handledStr);
+
+	// Fixed step: DV verification
+	return currentDV === expectedDV;
+}
+
+function validateIE(value, rule) {
+	if (rule.match && !rule.match.test(value)) {
+		return false;
+	}
+	for (var i = 0; i < rule.dvs.length; i++) {
+		// console.log('>> >> dv'+i);
+		if (!validateDV(value, rule.dvs[i])) {
+			return false;
+		}
+	}
+	return true;
+}
+
+IErules.PE = [{
+	//mask: new StringMask('0000000-00'),
+	chars: 9,
+	dvs: [{
+		dvpos: 7,
+		pesos: [8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	},{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+},{
+	// mask: new StringMask('00.0.000.0000000-0'),
+	chars: 14,
+	pesos: [[1,2,3,4,5,9,8,7,6,5,4,3,2]],
+	dvs: [{
+		dvpos: 13,
+		pesos: [5,4,3,2,1,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11v2']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.RS = [{
+	// mask: new StringMask('000/0000000'),
+	chars: 10,
+	dvs: [{
+		dvpos: 9,
+		pesos: [2,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.AC = [{
+	// mask: new StringMask('00.000.000/000-00'),
+	chars: 13,
+	match: /^01/,
+	dvs: [{
+		dvpos: 11,
+		pesos: [4,3,2,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	},{
+		dvpos: 12,
+		pesos: [5,4,3,2,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.MG = [{
+	// mask: new StringMask('000.000.000/0000'),
+	chars: 13,
+	dvs: [{
+		dvpos: 12,
+		pesos: [1,2,1,2,1,2,1,2,1,2,1,2],
+		algorithmSteps: ['mgSpec', 'individualSum', 'mod10', 'minusRestOf10']
+	},{
+		dvpos: 12,
+		pesos: [3,2,11,10,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.SP = [{
+	// mask: new StringMask('000.000.000.000'),
+	chars: 12,
+	match: /^[0-9]/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [1,3,4,5,6,7,8,10],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'mod10']
+	},{
+		dvpos: 11,
+		pesos: [3,2,10,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'mod10']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+},{
+	// mask: new StringMask('P-00000000.0/000')
+	chars: 12,
+	match: /^P/i,
+	dvs: [{
+		dvpos: 8,
+		pesos: [1,3,4,5,6,7,8,10],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'mod10']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.DF = [{
+	// mask: new StringMask('00000000000-00'),
+	chars: 13,
+	dvs: [{
+		dvpos: 11,
+		pesos: [4,3,2,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	},{
+		dvpos: 12,
+		pesos: [5,4,3,2,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.ES = [{
+	// mask: new StringMask('000.000.00-0')
+	chars: 9,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.BA = [{
+	// mask: new StringMask('000000-00')
+	chars: 8,
+	match: /^[0123458]/,
+	dvs: [{
+		dvpos: 7,
+		pesos: [7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod10', 'minusRestOf10']
+	},{
+		dvpos: 6,
+		pesos: [8,7,6,5,4,3,0,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod10', 'minusRestOf10']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+},{
+	chars: 8,
+	match: /^[679]/,
+	dvs: [{
+		dvpos: 7,
+		pesos: [7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	},{
+		dvpos: 6,
+		pesos: [8,7,6,5,4,3,0,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+},{
+	// mask: new StringMask('0000000-00')
+	chars: 9,
+	match: /^[0-9][0123458]/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod10', 'minusRestOf10']
+	},{
+		dvpos: 7,
+		pesos: [9,8,7,6,5,4,3,0,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod10', 'minusRestOf10']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+},{
+	chars: 9,
+	match: /^[0-9][679]/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	},{
+		dvpos: 7,
+		pesos: [9,8,7,6,5,4,3,0,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.AM = [{
+	//mask: new StringMask('00.000.000-0')
+	chars: 9,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.RN = [{
+	// {mask: new StringMask('00.000.000-0')
+	chars: 9,
+	match: /^20/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+},{
+	// {mask: new StringMask('00.0.000.000-0'), chars: 10}
+	chars: 10,
+	match: /^20/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [10,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.RO = [{
+	// mask: new StringMask('0000000000000-0')
+	chars: 14,
+	dvs: [{
+		dvpos: 13,
+		pesos: [6,5,4,3,2,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.PR = [{
+	// mask: new StringMask('00000000-00')
+	chars: 10,
+	dvs: [{
+		dvpos: 8,
+		pesos: [3,2,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	},{
+		dvpos: 9,
+		pesos: [4,3,2,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.SC = [{
+	// {mask: new StringMask('000.000.000'), uf: 'SANTA CATARINA'}
+	chars: 9,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.RJ = [{
+	// {mask: new StringMask('00.000.00-0'), uf: 'RIO DE JANEIRO'}
+	chars: 8,
+	dvs: [{
+		dvpos: 7,
+		pesos: [2,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.PA = [{
+	// {mask: new StringMask('00-000000-0')
+	chars: 9,
+	match: /^15/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.SE = [{
+	// {mask: new StringMask('00000000-0')
+	chars: 9,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.PB = [{
+	// {mask: new StringMask('00000000-0')
+	chars: 9,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.CE = [{
+	// {mask: new StringMask('00000000-0')
+	chars: 9,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.PI = [{
+	// {mask: new StringMask('000000000')
+	chars: 9,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.MA = [{
+	// {mask: new StringMask('000000000')
+	chars: 9,
+	match: /^12/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.MT = [{
+	// {mask: new StringMask('0000000000-0')
+	chars: 11,
+	dvs: [{
+		dvpos: 10,
+		pesos: [3,2,9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.MS = [{
+	// {mask: new StringMask('000000000')
+	chars: 9,
+	match: /^28/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.TO = [{
+	// {mask: new StringMask('00000000000'),
+	chars: 11,
+	match: /^[0-9]{2}((0[123])|(99))/,
+	dvs: [{
+		dvpos: 10,
+		pesos: [9,8,0,0,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.AL = [{
+	// {mask: new StringMask('000000000')
+	chars: 9,
+	match: /^24[03578]/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'minusRestOf11']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.RR = [{
+	// {mask: new StringMask('00000000-0')
+	chars: 9,
+	match: /^24/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [1,2,3,4,5,6,7,8],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod9', 'voidFn']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.GO = [{
+	// {mask: new StringMask('00.000.000-0')
+	chars: 9,
+	match: /^1[015]/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'normalSum', 'mod11', 'goSpec']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+IErules.AP = [{
+	// {mask: new StringMask('000000000')
+	chars: 9,
+	match: /^03/,
+	dvs: [{
+		dvpos: 8,
+		pesos: [9,8,7,6,5,4,3,2],
+		algorithmSteps: ['onlyNumbers', 'apSpec', 'mod11', 'apSpec']
+	}],
+	validate: function(value) { return validateIE(value, this); }
+}];
+
+	return {
+		ie: IE,
+		cpf: CPF,
+		cnpj: CNPJ
+	};
+}));
+},{}],352:[function(require,module,exports){
+/*!
+ * Chart.js
+ * http://chartjs.org/
+ * Version: 1.1.1
+ *
+ * Copyright 2015 Nick Downie
+ * Released under the MIT license
+ * https://github.com/nnnick/Chart.js/blob/master/LICENSE.md
+ */
+
+
+(function(){
+
+	"use strict";
+
+	//Declare root variable - window in the browser, global on the server
+	var root = this,
+		previous = root.Chart;
+
+	//Occupy the global variable of Chart, and create a simple base class
+	var Chart = function(context){
+		var chart = this;
+		this.canvas = context.canvas;
+
+		this.ctx = context;
+
+		//Variables global to the chart
+		var computeDimension = function(element,dimension)
+		{
+			if (element['offset'+dimension])
+			{
+				return element['offset'+dimension];
+			}
+			else
+			{
+				return document.defaultView.getComputedStyle(element).getPropertyValue(dimension);
+			}
+		};
+
+		var width = this.width = computeDimension(context.canvas,'Width') || context.canvas.width;
+		var height = this.height = computeDimension(context.canvas,'Height') || context.canvas.height;
+
+		this.aspectRatio = this.width / this.height;
+		//High pixel density displays - multiply the size of the canvas height/width by the device pixel ratio, then scale.
+		helpers.retinaScale(this);
+
+		return this;
+	};
+	//Globally expose the defaults to allow for user updating/changing
+	Chart.defaults = {
+		global: {
+			// Boolean - Whether to animate the chart
+			animation: true,
+
+			// Number - Number of animation steps
+			animationSteps: 60,
+
+			// String - Animation easing effect
+			animationEasing: "easeOutQuart",
+
+			// Boolean - If we should show the scale at all
+			showScale: true,
+
+			// Boolean - If we want to override with a hard coded scale
+			scaleOverride: false,
+
+			// ** Required if scaleOverride is true **
+			// Number - The number of steps in a hard coded scale
+			scaleSteps: null,
+			// Number - The value jump in the hard coded scale
+			scaleStepWidth: null,
+			// Number - The scale starting value
+			scaleStartValue: null,
+
+			// String - Colour of the scale line
+			scaleLineColor: "rgba(0,0,0,.1)",
+
+			// Number - Pixel width of the scale line
+			scaleLineWidth: 1,
+
+			// Boolean - Whether to show labels on the scale
+			scaleShowLabels: true,
+
+			// Interpolated JS string - can access value
+			scaleLabel: "<%=value%>",
+
+			// Boolean - Whether the scale should stick to integers, and not show any floats even if drawing space is there
+			scaleIntegersOnly: true,
+
+			// Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+			scaleBeginAtZero: false,
+
+			// String - Scale label font declaration for the scale label
+			scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+			// Number - Scale label font size in pixels
+			scaleFontSize: 12,
+
+			// String - Scale label font weight style
+			scaleFontStyle: "normal",
+
+			// String - Scale label font colour
+			scaleFontColor: "#666",
+
+			// Boolean - whether or not the chart should be responsive and resize when the browser does.
+			responsive: false,
+
+			// Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+			maintainAspectRatio: true,
+
+			// Boolean - Determines whether to draw tooltips on the canvas or not - attaches events to touchmove & mousemove
+			showTooltips: true,
+
+			// Boolean - Determines whether to draw built-in tooltip or call custom tooltip function
+			customTooltips: false,
+
+			// Array - Array of string names to attach tooltip events
+			tooltipEvents: ["mousemove", "touchstart", "touchmove", "mouseout"],
+
+			// String - Tooltip background colour
+			tooltipFillColor: "rgba(0,0,0,0.8)",
+
+			// String - Tooltip label font declaration for the scale label
+			tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+			// Number - Tooltip label font size in pixels
+			tooltipFontSize: 14,
+
+			// String - Tooltip font weight style
+			tooltipFontStyle: "normal",
+
+			// String - Tooltip label font colour
+			tooltipFontColor: "#fff",
+
+			// String - Tooltip title font declaration for the scale label
+			tooltipTitleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+			// Number - Tooltip title font size in pixels
+			tooltipTitleFontSize: 14,
+
+			// String - Tooltip title font weight style
+			tooltipTitleFontStyle: "bold",
+
+			// String - Tooltip title font colour
+			tooltipTitleFontColor: "#fff",
+
+			// String - Tooltip title template
+			tooltipTitleTemplate: "<%= label%>",
+
+			// Number - pixel width of padding around tooltip text
+			tooltipYPadding: 6,
+
+			// Number - pixel width of padding around tooltip text
+			tooltipXPadding: 6,
+
+			// Number - Size of the caret on the tooltip
+			tooltipCaretSize: 8,
+
+			// Number - Pixel radius of the tooltip border
+			tooltipCornerRadius: 6,
+
+			// Number - Pixel offset from point x to tooltip edge
+			tooltipXOffset: 10,
+
+			// String - Template string for single tooltips
+			tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
+
+			// String - Template string for single tooltips
+			multiTooltipTemplate: "<%= datasetLabel %>: <%= value %>",
+
+			// String - Colour behind the legend colour block
+			multiTooltipKeyBackground: '#fff',
+
+			// Array - A list of colors to use as the defaults
+			segmentColorDefault: ["#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C", "#FB9A99", "#E31A1C", "#FDBF6F", "#FF7F00", "#CAB2D6", "#6A3D9A", "#B4B482", "#B15928" ],
+
+			// Array - A list of highlight colors to use as the defaults
+			segmentHighlightColorDefaults: [ "#CEF6FF", "#47A0DC", "#DAFFB2", "#5BC854", "#FFC2C1", "#FF4244", "#FFE797", "#FFA728", "#F2DAFE", "#9265C2", "#DCDCAA", "#D98150" ],
+
+			// Function - Will fire on animation progression.
+			onAnimationProgress: function(){},
+
+			// Function - Will fire on animation completion.
+			onAnimationComplete: function(){}
+
+		}
+	};
+
+	//Create a dictionary of chart types, to allow for extension of existing types
+	Chart.types = {};
+
+	//Global Chart helpers object for utility methods and classes
+	var helpers = Chart.helpers = {};
+
+		//-- Basic js utility methods
+	var each = helpers.each = function(loopable,callback,self){
+			var additionalArgs = Array.prototype.slice.call(arguments, 3);
+			// Check to see if null or undefined firstly.
+			if (loopable){
+				if (loopable.length === +loopable.length){
+					var i;
+					for (i=0; i<loopable.length; i++){
+						callback.apply(self,[loopable[i], i].concat(additionalArgs));
+					}
+				}
+				else{
+					for (var item in loopable){
+						callback.apply(self,[loopable[item],item].concat(additionalArgs));
+					}
+				}
+			}
+		},
+		clone = helpers.clone = function(obj){
+			var objClone = {};
+			each(obj,function(value,key){
+				if (obj.hasOwnProperty(key)){
+					objClone[key] = value;
+				}
+			});
+			return objClone;
+		},
+		extend = helpers.extend = function(base){
+			each(Array.prototype.slice.call(arguments,1), function(extensionObject) {
+				each(extensionObject,function(value,key){
+					if (extensionObject.hasOwnProperty(key)){
+						base[key] = value;
+					}
+				});
+			});
+			return base;
+		},
+		merge = helpers.merge = function(base,master){
+			//Merge properties in left object over to a shallow clone of object right.
+			var args = Array.prototype.slice.call(arguments,0);
+			args.unshift({});
+			return extend.apply(null, args);
+		},
+		indexOf = helpers.indexOf = function(arrayToSearch, item){
+			if (Array.prototype.indexOf) {
+				return arrayToSearch.indexOf(item);
+			}
+			else{
+				for (var i = 0; i < arrayToSearch.length; i++) {
+					if (arrayToSearch[i] === item) return i;
+				}
+				return -1;
+			}
+		},
+		where = helpers.where = function(collection, filterCallback){
+			var filtered = [];
+
+			helpers.each(collection, function(item){
+				if (filterCallback(item)){
+					filtered.push(item);
+				}
+			});
+
+			return filtered;
+		},
+		findNextWhere = helpers.findNextWhere = function(arrayToSearch, filterCallback, startIndex){
+			// Default to start of the array
+			if (!startIndex){
+				startIndex = -1;
+			}
+			for (var i = startIndex + 1; i < arrayToSearch.length; i++) {
+				var currentItem = arrayToSearch[i];
+				if (filterCallback(currentItem)){
+					return currentItem;
+				}
+			}
+		},
+		findPreviousWhere = helpers.findPreviousWhere = function(arrayToSearch, filterCallback, startIndex){
+			// Default to end of the array
+			if (!startIndex){
+				startIndex = arrayToSearch.length;
+			}
+			for (var i = startIndex - 1; i >= 0; i--) {
+				var currentItem = arrayToSearch[i];
+				if (filterCallback(currentItem)){
+					return currentItem;
+				}
+			}
+		},
+		inherits = helpers.inherits = function(extensions){
+			//Basic javascript inheritance based on the model created in Backbone.js
+			var parent = this;
+			var ChartElement = (extensions && extensions.hasOwnProperty("constructor")) ? extensions.constructor : function(){ return parent.apply(this, arguments); };
+
+			var Surrogate = function(){ this.constructor = ChartElement;};
+			Surrogate.prototype = parent.prototype;
+			ChartElement.prototype = new Surrogate();
+
+			ChartElement.extend = inherits;
+
+			if (extensions) extend(ChartElement.prototype, extensions);
+
+			ChartElement.__super__ = parent.prototype;
+
+			return ChartElement;
+		},
+		noop = helpers.noop = function(){},
+		uid = helpers.uid = (function(){
+			var id=0;
+			return function(){
+				return "chart-" + id++;
+			};
+		})(),
+		warn = helpers.warn = function(str){
+			//Method for warning of errors
+			if (window.console && typeof window.console.warn === "function") console.warn(str);
+		},
+		amd = helpers.amd = (typeof define === 'function' && define.amd),
+		//-- Math methods
+		isNumber = helpers.isNumber = function(n){
+			return !isNaN(parseFloat(n)) && isFinite(n);
+		},
+		max = helpers.max = function(array){
+			return Math.max.apply( Math, array );
+		},
+		min = helpers.min = function(array){
+			return Math.min.apply( Math, array );
+		},
+		cap = helpers.cap = function(valueToCap,maxValue,minValue){
+			if(isNumber(maxValue)) {
+				if( valueToCap > maxValue ) {
+					return maxValue;
+				}
+			}
+			else if(isNumber(minValue)){
+				if ( valueToCap < minValue ){
+					return minValue;
+				}
+			}
+			return valueToCap;
+		},
+		getDecimalPlaces = helpers.getDecimalPlaces = function(num){
+			if (num%1!==0 && isNumber(num)){
+				var s = num.toString();
+				if(s.indexOf("e-") < 0){
+					// no exponent, e.g. 0.01
+					return s.split(".")[1].length;
+				}
+				else if(s.indexOf(".") < 0) {
+					// no decimal point, e.g. 1e-9
+					return parseInt(s.split("e-")[1]);
+				}
+				else {
+					// exponent and decimal point, e.g. 1.23e-9
+					var parts = s.split(".")[1].split("e-");
+					return parts[0].length + parseInt(parts[1]);
+				}
+			}
+			else {
+				return 0;
+			}
+		},
+		toRadians = helpers.radians = function(degrees){
+			return degrees * (Math.PI/180);
+		},
+		// Gets the angle from vertical upright to the point about a centre.
+		getAngleFromPoint = helpers.getAngleFromPoint = function(centrePoint, anglePoint){
+			var distanceFromXCenter = anglePoint.x - centrePoint.x,
+				distanceFromYCenter = anglePoint.y - centrePoint.y,
+				radialDistanceFromCenter = Math.sqrt( distanceFromXCenter * distanceFromXCenter + distanceFromYCenter * distanceFromYCenter);
+
+
+			var angle = Math.PI * 2 + Math.atan2(distanceFromYCenter, distanceFromXCenter);
+
+			//If the segment is in the top left quadrant, we need to add another rotation to the angle
+			if (distanceFromXCenter < 0 && distanceFromYCenter < 0){
+				angle += Math.PI*2;
+			}
+
+			return {
+				angle: angle,
+				distance: radialDistanceFromCenter
+			};
+		},
+		aliasPixel = helpers.aliasPixel = function(pixelWidth){
+			return (pixelWidth % 2 === 0) ? 0 : 0.5;
+		},
+		splineCurve = helpers.splineCurve = function(FirstPoint,MiddlePoint,AfterPoint,t){
+			//Props to Rob Spencer at scaled innovation for his post on splining between points
+			//http://scaledinnovation.com/analytics/splines/aboutSplines.html
+			var d01=Math.sqrt(Math.pow(MiddlePoint.x-FirstPoint.x,2)+Math.pow(MiddlePoint.y-FirstPoint.y,2)),
+				d12=Math.sqrt(Math.pow(AfterPoint.x-MiddlePoint.x,2)+Math.pow(AfterPoint.y-MiddlePoint.y,2)),
+				fa=t*d01/(d01+d12),// scaling factor for triangle Ta
+				fb=t*d12/(d01+d12);
+			return {
+				inner : {
+					x : MiddlePoint.x-fa*(AfterPoint.x-FirstPoint.x),
+					y : MiddlePoint.y-fa*(AfterPoint.y-FirstPoint.y)
+				},
+				outer : {
+					x: MiddlePoint.x+fb*(AfterPoint.x-FirstPoint.x),
+					y : MiddlePoint.y+fb*(AfterPoint.y-FirstPoint.y)
+				}
+			};
+		},
+		calculateOrderOfMagnitude = helpers.calculateOrderOfMagnitude = function(val){
+			return Math.floor(Math.log(val) / Math.LN10);
+		},
+		calculateScaleRange = helpers.calculateScaleRange = function(valuesArray, drawingSize, textSize, startFromZero, integersOnly){
+
+			//Set a minimum step of two - a point at the top of the graph, and a point at the base
+			var minSteps = 2,
+				maxSteps = Math.floor(drawingSize/(textSize * 1.5)),
+				skipFitting = (minSteps >= maxSteps);
+
+			// Filter out null values since these would min() to zero
+			var values = [];
+			each(valuesArray, function( v ){
+				v == null || values.push( v );
+			});
+			var minValue = min(values),
+			    maxValue = max(values);
+
+			// We need some degree of separation here to calculate the scales if all the values are the same
+			// Adding/minusing 0.5 will give us a range of 1.
+			if (maxValue === minValue){
+				maxValue += 0.5;
+				// So we don't end up with a graph with a negative start value if we've said always start from zero
+				if (minValue >= 0.5 && !startFromZero){
+					minValue -= 0.5;
+				}
+				else{
+					// Make up a whole number above the values
+					maxValue += 0.5;
+				}
+			}
+
+			var	valueRange = Math.abs(maxValue - minValue),
+				rangeOrderOfMagnitude = calculateOrderOfMagnitude(valueRange),
+				graphMax = Math.ceil(maxValue / (1 * Math.pow(10, rangeOrderOfMagnitude))) * Math.pow(10, rangeOrderOfMagnitude),
+				graphMin = (startFromZero) ? 0 : Math.floor(minValue / (1 * Math.pow(10, rangeOrderOfMagnitude))) * Math.pow(10, rangeOrderOfMagnitude),
+				graphRange = graphMax - graphMin,
+				stepValue = Math.pow(10, rangeOrderOfMagnitude),
+				numberOfSteps = Math.round(graphRange / stepValue);
+
+			//If we have more space on the graph we'll use it to give more definition to the data
+			while((numberOfSteps > maxSteps || (numberOfSteps * 2) < maxSteps) && !skipFitting) {
+				if(numberOfSteps > maxSteps){
+					stepValue *=2;
+					numberOfSteps = Math.round(graphRange/stepValue);
+					// Don't ever deal with a decimal number of steps - cancel fitting and just use the minimum number of steps.
+					if (numberOfSteps % 1 !== 0){
+						skipFitting = true;
+					}
+				}
+				//We can fit in double the amount of scale points on the scale
+				else{
+					//If user has declared ints only, and the step value isn't a decimal
+					if (integersOnly && rangeOrderOfMagnitude >= 0){
+						//If the user has said integers only, we need to check that making the scale more granular wouldn't make it a float
+						if(stepValue/2 % 1 === 0){
+							stepValue /=2;
+							numberOfSteps = Math.round(graphRange/stepValue);
+						}
+						//If it would make it a float break out of the loop
+						else{
+							break;
+						}
+					}
+					//If the scale doesn't have to be an int, make the scale more granular anyway.
+					else{
+						stepValue /=2;
+						numberOfSteps = Math.round(graphRange/stepValue);
+					}
+
+				}
+			}
+
+			if (skipFitting){
+				numberOfSteps = minSteps;
+				stepValue = graphRange / numberOfSteps;
+			}
+
+			return {
+				steps : numberOfSteps,
+				stepValue : stepValue,
+				min : graphMin,
+				max	: graphMin + (numberOfSteps * stepValue)
+			};
+
+		},
+		/* jshint ignore:start */
+		// Blows up jshint errors based on the new Function constructor
+		//Templating methods
+		//Javascript micro templating by John Resig - source at http://ejohn.org/blog/javascript-micro-templating/
+		template = helpers.template = function(templateString, valuesObject){
+
+			// If templateString is function rather than string-template - call the function for valuesObject
+
+			if(templateString instanceof Function){
+			 	return templateString(valuesObject);
+		 	}
+
+			var cache = {};
+			function tmpl(str, data){
+				// Figure out if we're getting a template, or if we need to
+				// load the template - and be sure to cache the result.
+				var fn = !/\W/.test(str) ?
+				cache[str] = cache[str] :
+
+				// Generate a reusable function that will serve as a template
+				// generator (and which will be cached).
+				new Function("obj",
+					"var p=[],print=function(){p.push.apply(p,arguments);};" +
+
+					// Introduce the data as local variables using with(){}
+					"with(obj){p.push('" +
+
+					// Convert the template into pure JavaScript
+					str
+						.replace(/[\r\t\n]/g, " ")
+						.split("<%").join("\t")
+						.replace(/((^|%>)[^\t]*)'/g, "$1\r")
+						.replace(/\t=(.*?)%>/g, "',$1,'")
+						.split("\t").join("');")
+						.split("%>").join("p.push('")
+						.split("\r").join("\\'") +
+					"');}return p.join('');"
+				);
+
+				// Provide some basic currying to the user
+				return data ? fn( data ) : fn;
+			}
+			return tmpl(templateString,valuesObject);
+		},
+		/* jshint ignore:end */
+		generateLabels = helpers.generateLabels = function(templateString,numberOfSteps,graphMin,stepValue){
+			var labelsArray = new Array(numberOfSteps);
+			if (templateString){
+				each(labelsArray,function(val,index){
+					labelsArray[index] = template(templateString,{value: (graphMin + (stepValue*(index+1)))});
+				});
+			}
+			return labelsArray;
+		},
+		//--Animation methods
+		//Easing functions adapted from Robert Penner's easing equations
+		//http://www.robertpenner.com/easing/
+		easingEffects = helpers.easingEffects = {
+			linear: function (t) {
+				return t;
+			},
+			easeInQuad: function (t) {
+				return t * t;
+			},
+			easeOutQuad: function (t) {
+				return -1 * t * (t - 2);
+			},
+			easeInOutQuad: function (t) {
+				if ((t /= 1 / 2) < 1){
+					return 1 / 2 * t * t;
+				}
+				return -1 / 2 * ((--t) * (t - 2) - 1);
+			},
+			easeInCubic: function (t) {
+				return t * t * t;
+			},
+			easeOutCubic: function (t) {
+				return 1 * ((t = t / 1 - 1) * t * t + 1);
+			},
+			easeInOutCubic: function (t) {
+				if ((t /= 1 / 2) < 1){
+					return 1 / 2 * t * t * t;
+				}
+				return 1 / 2 * ((t -= 2) * t * t + 2);
+			},
+			easeInQuart: function (t) {
+				return t * t * t * t;
+			},
+			easeOutQuart: function (t) {
+				return -1 * ((t = t / 1 - 1) * t * t * t - 1);
+			},
+			easeInOutQuart: function (t) {
+				if ((t /= 1 / 2) < 1){
+					return 1 / 2 * t * t * t * t;
+				}
+				return -1 / 2 * ((t -= 2) * t * t * t - 2);
+			},
+			easeInQuint: function (t) {
+				return 1 * (t /= 1) * t * t * t * t;
+			},
+			easeOutQuint: function (t) {
+				return 1 * ((t = t / 1 - 1) * t * t * t * t + 1);
+			},
+			easeInOutQuint: function (t) {
+				if ((t /= 1 / 2) < 1){
+					return 1 / 2 * t * t * t * t * t;
+				}
+				return 1 / 2 * ((t -= 2) * t * t * t * t + 2);
+			},
+			easeInSine: function (t) {
+				return -1 * Math.cos(t / 1 * (Math.PI / 2)) + 1;
+			},
+			easeOutSine: function (t) {
+				return 1 * Math.sin(t / 1 * (Math.PI / 2));
+			},
+			easeInOutSine: function (t) {
+				return -1 / 2 * (Math.cos(Math.PI * t / 1) - 1);
+			},
+			easeInExpo: function (t) {
+				return (t === 0) ? 1 : 1 * Math.pow(2, 10 * (t / 1 - 1));
+			},
+			easeOutExpo: function (t) {
+				return (t === 1) ? 1 : 1 * (-Math.pow(2, -10 * t / 1) + 1);
+			},
+			easeInOutExpo: function (t) {
+				if (t === 0){
+					return 0;
+				}
+				if (t === 1){
+					return 1;
+				}
+				if ((t /= 1 / 2) < 1){
+					return 1 / 2 * Math.pow(2, 10 * (t - 1));
+				}
+				return 1 / 2 * (-Math.pow(2, -10 * --t) + 2);
+			},
+			easeInCirc: function (t) {
+				if (t >= 1){
+					return t;
+				}
+				return -1 * (Math.sqrt(1 - (t /= 1) * t) - 1);
+			},
+			easeOutCirc: function (t) {
+				return 1 * Math.sqrt(1 - (t = t / 1 - 1) * t);
+			},
+			easeInOutCirc: function (t) {
+				if ((t /= 1 / 2) < 1){
+					return -1 / 2 * (Math.sqrt(1 - t * t) - 1);
+				}
+				return 1 / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1);
+			},
+			easeInElastic: function (t) {
+				var s = 1.70158;
+				var p = 0;
+				var a = 1;
+				if (t === 0){
+					return 0;
+				}
+				if ((t /= 1) == 1){
+					return 1;
+				}
+				if (!p){
+					p = 1 * 0.3;
+				}
+				if (a < Math.abs(1)) {
+					a = 1;
+					s = p / 4;
+				} else{
+					s = p / (2 * Math.PI) * Math.asin(1 / a);
+				}
+				return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));
+			},
+			easeOutElastic: function (t) {
+				var s = 1.70158;
+				var p = 0;
+				var a = 1;
+				if (t === 0){
+					return 0;
+				}
+				if ((t /= 1) == 1){
+					return 1;
+				}
+				if (!p){
+					p = 1 * 0.3;
+				}
+				if (a < Math.abs(1)) {
+					a = 1;
+					s = p / 4;
+				} else{
+					s = p / (2 * Math.PI) * Math.asin(1 / a);
+				}
+				return a * Math.pow(2, -10 * t) * Math.sin((t * 1 - s) * (2 * Math.PI) / p) + 1;
+			},
+			easeInOutElastic: function (t) {
+				var s = 1.70158;
+				var p = 0;
+				var a = 1;
+				if (t === 0){
+					return 0;
+				}
+				if ((t /= 1 / 2) == 2){
+					return 1;
+				}
+				if (!p){
+					p = 1 * (0.3 * 1.5);
+				}
+				if (a < Math.abs(1)) {
+					a = 1;
+					s = p / 4;
 				} else {
-					// unmatched surrogate; only append this code unit, in case the next
-					// code unit is the high surrogate of a surrogate pair
-					output.push(value);
-					counter--;
+					s = p / (2 * Math.PI) * Math.asin(1 / a);
 				}
+				if (t < 1){
+					return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));}
+				return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p) * 0.5 + 1;
+			},
+			easeInBack: function (t) {
+				var s = 1.70158;
+				return 1 * (t /= 1) * t * ((s + 1) * t - s);
+			},
+			easeOutBack: function (t) {
+				var s = 1.70158;
+				return 1 * ((t = t / 1 - 1) * t * ((s + 1) * t + s) + 1);
+			},
+			easeInOutBack: function (t) {
+				var s = 1.70158;
+				if ((t /= 1 / 2) < 1){
+					return 1 / 2 * (t * t * (((s *= (1.525)) + 1) * t - s));
+				}
+				return 1 / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2);
+			},
+			easeInBounce: function (t) {
+				return 1 - easingEffects.easeOutBounce(1 - t);
+			},
+			easeOutBounce: function (t) {
+				if ((t /= 1) < (1 / 2.75)) {
+					return 1 * (7.5625 * t * t);
+				} else if (t < (2 / 2.75)) {
+					return 1 * (7.5625 * (t -= (1.5 / 2.75)) * t + 0.75);
+				} else if (t < (2.5 / 2.75)) {
+					return 1 * (7.5625 * (t -= (2.25 / 2.75)) * t + 0.9375);
+				} else {
+					return 1 * (7.5625 * (t -= (2.625 / 2.75)) * t + 0.984375);
+				}
+			},
+			easeInOutBounce: function (t) {
+				if (t < 1 / 2){
+					return easingEffects.easeInBounce(t * 2) * 0.5;
+				}
+				return easingEffects.easeOutBounce(t * 2 - 1) * 0.5 + 1 * 0.5;
+			}
+		},
+		//Request animation polyfill - http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
+		requestAnimFrame = helpers.requestAnimFrame = (function(){
+			return window.requestAnimationFrame ||
+				window.webkitRequestAnimationFrame ||
+				window.mozRequestAnimationFrame ||
+				window.oRequestAnimationFrame ||
+				window.msRequestAnimationFrame ||
+				function(callback) {
+					return window.setTimeout(callback, 1000 / 60);
+				};
+		})(),
+		cancelAnimFrame = helpers.cancelAnimFrame = (function(){
+			return window.cancelAnimationFrame ||
+				window.webkitCancelAnimationFrame ||
+				window.mozCancelAnimationFrame ||
+				window.oCancelAnimationFrame ||
+				window.msCancelAnimationFrame ||
+				function(callback) {
+					return window.clearTimeout(callback, 1000 / 60);
+				};
+		})(),
+		animationLoop = helpers.animationLoop = function(callback,totalSteps,easingString,onProgress,onComplete,chartInstance){
+
+			var currentStep = 0,
+				easingFunction = easingEffects[easingString] || easingEffects.linear;
+
+			var animationFrame = function(){
+				currentStep++;
+				var stepDecimal = currentStep/totalSteps;
+				var easeDecimal = easingFunction(stepDecimal);
+
+				callback.call(chartInstance,easeDecimal,stepDecimal, currentStep);
+				onProgress.call(chartInstance,easeDecimal,stepDecimal);
+				if (currentStep < totalSteps){
+					chartInstance.animationFrame = requestAnimFrame(animationFrame);
+				} else{
+					onComplete.apply(chartInstance);
+				}
+			};
+			requestAnimFrame(animationFrame);
+		},
+		//-- DOM methods
+		getRelativePosition = helpers.getRelativePosition = function(evt){
+			var mouseX, mouseY;
+			var e = evt.originalEvent || evt,
+				canvas = evt.currentTarget || evt.srcElement,
+				boundingRect = canvas.getBoundingClientRect();
+
+			if (e.touches){
+				mouseX = e.touches[0].clientX - boundingRect.left;
+				mouseY = e.touches[0].clientY - boundingRect.top;
+
+			}
+			else{
+				mouseX = e.clientX - boundingRect.left;
+				mouseY = e.clientY - boundingRect.top;
+			}
+
+			return {
+				x : mouseX,
+				y : mouseY
+			};
+
+		},
+		addEvent = helpers.addEvent = function(node,eventType,method){
+			if (node.addEventListener){
+				node.addEventListener(eventType,method);
+			} else if (node.attachEvent){
+				node.attachEvent("on"+eventType, method);
 			} else {
-				output.push(value);
+				node["on"+eventType] = method;
 			}
-		}
-		return output;
-	}
-
-	/**
-	 * Creates a string based on an array of numeric code points.
-	 * @see `punycode.ucs2.decode`
-	 * @memberOf punycode.ucs2
-	 * @name encode
-	 * @param {Array} codePoints The array of numeric code points.
-	 * @returns {String} The new Unicode string (UCS-2).
-	 */
-	function ucs2encode(array) {
-		return map(array, function(value) {
-			var output = '';
-			if (value > 0xFFFF) {
-				value -= 0x10000;
-				output += stringFromCharCode(value >>> 10 & 0x3FF | 0xD800);
-				value = 0xDC00 | value & 0x3FF;
+		},
+		removeEvent = helpers.removeEvent = function(node, eventType, handler){
+			if (node.removeEventListener){
+				node.removeEventListener(eventType, handler, false);
+			} else if (node.detachEvent){
+				node.detachEvent("on"+eventType,handler);
+			} else{
+				node["on" + eventType] = noop;
 			}
-			output += stringFromCharCode(value);
-			return output;
-		}).join('');
-	}
+		},
+		bindEvents = helpers.bindEvents = function(chartInstance, arrayOfEvents, handler){
+			// Create the events object if it's not already present
+			if (!chartInstance.events) chartInstance.events = {};
 
-	/**
-	 * Converts a basic code point into a digit/integer.
-	 * @see `digitToBasic()`
-	 * @private
-	 * @param {Number} codePoint The basic numeric code point value.
-	 * @returns {Number} The numeric value of a basic code point (for use in
-	 * representing integers) in the range `0` to `base - 1`, or `base` if
-	 * the code point does not represent a value.
-	 */
-	function basicToDigit(codePoint) {
-		if (codePoint - 48 < 10) {
-			return codePoint - 22;
-		}
-		if (codePoint - 65 < 26) {
-			return codePoint - 65;
-		}
-		if (codePoint - 97 < 26) {
-			return codePoint - 97;
-		}
-		return base;
-	}
+			each(arrayOfEvents,function(eventName){
+				chartInstance.events[eventName] = function(){
+					handler.apply(chartInstance, arguments);
+				};
+				addEvent(chartInstance.chart.canvas,eventName,chartInstance.events[eventName]);
+			});
+		},
+		unbindEvents = helpers.unbindEvents = function (chartInstance, arrayOfEvents) {
+			each(arrayOfEvents, function(handler,eventName){
+				removeEvent(chartInstance.chart.canvas, eventName, handler);
+			});
+		},
+		getMaximumWidth = helpers.getMaximumWidth = function(domNode){
+			var container = domNode.parentNode,
+			    padding = parseInt(getStyle(container, 'padding-left')) + parseInt(getStyle(container, 'padding-right'));
+			// TODO = check cross browser stuff with this.
+			return container ? container.clientWidth - padding : 0;
+		},
+		getMaximumHeight = helpers.getMaximumHeight = function(domNode){
+			var container = domNode.parentNode,
+			    padding = parseInt(getStyle(container, 'padding-bottom')) + parseInt(getStyle(container, 'padding-top'));
+			// TODO = check cross browser stuff with this.
+			return container ? container.clientHeight - padding : 0;
+		},
+		getStyle = helpers.getStyle = function (el, property) {
+			return el.currentStyle ?
+				el.currentStyle[property] :
+				document.defaultView.getComputedStyle(el, null).getPropertyValue(property);
+		},
+		getMaximumSize = helpers.getMaximumSize = helpers.getMaximumWidth, // legacy support
+		retinaScale = helpers.retinaScale = function(chart){
+			var ctx = chart.ctx,
+				width = chart.canvas.width,
+				height = chart.canvas.height;
 
-	/**
-	 * Converts a digit/integer into a basic code point.
-	 * @see `basicToDigit()`
-	 * @private
-	 * @param {Number} digit The numeric value of a basic code point.
-	 * @returns {Number} The basic code point whose value (when used for
-	 * representing integers) is `digit`, which needs to be in the range
-	 * `0` to `base - 1`. If `flag` is non-zero, the uppercase form is
-	 * used; else, the lowercase form is used. The behavior is undefined
-	 * if `flag` is non-zero and `digit` has no uppercase form.
-	 */
-	function digitToBasic(digit, flag) {
-		//  0..25 map to ASCII a..z or A..Z
-		// 26..35 map to ASCII 0..9
-		return digit + 22 + 75 * (digit < 26) - ((flag != 0) << 5);
-	}
-
-	/**
-	 * Bias adaptation function as per section 3.4 of RFC 3492.
-	 * https://tools.ietf.org/html/rfc3492#section-3.4
-	 * @private
-	 */
-	function adapt(delta, numPoints, firstTime) {
-		var k = 0;
-		delta = firstTime ? floor(delta / damp) : delta >> 1;
-		delta += floor(delta / numPoints);
-		for (/* no initialization */; delta > baseMinusTMin * tMax >> 1; k += base) {
-			delta = floor(delta / baseMinusTMin);
-		}
-		return floor(k + (baseMinusTMin + 1) * delta / (delta + skew));
-	}
-
-	/**
-	 * Converts a Punycode string of ASCII-only symbols to a string of Unicode
-	 * symbols.
-	 * @memberOf punycode
-	 * @param {String} input The Punycode string of ASCII-only symbols.
-	 * @returns {String} The resulting string of Unicode symbols.
-	 */
-	function decode(input) {
-		// Don't use UCS-2
-		var output = [],
-		    inputLength = input.length,
-		    out,
-		    i = 0,
-		    n = initialN,
-		    bias = initialBias,
-		    basic,
-		    j,
-		    index,
-		    oldi,
-		    w,
-		    k,
-		    digit,
-		    t,
-		    /** Cached calculation results */
-		    baseMinusT;
-
-		// Handle the basic code points: let `basic` be the number of input code
-		// points before the last delimiter, or `0` if there is none, then copy
-		// the first basic code points to the output.
-
-		basic = input.lastIndexOf(delimiter);
-		if (basic < 0) {
-			basic = 0;
-		}
-
-		for (j = 0; j < basic; ++j) {
-			// if it's not a basic code point
-			if (input.charCodeAt(j) >= 0x80) {
-				error('not-basic');
+			if (window.devicePixelRatio) {
+				ctx.canvas.style.width = width + "px";
+				ctx.canvas.style.height = height + "px";
+				ctx.canvas.height = height * window.devicePixelRatio;
+				ctx.canvas.width = width * window.devicePixelRatio;
+				ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
 			}
-			output.push(input.charCodeAt(j));
+		},
+		//-- Canvas methods
+		clear = helpers.clear = function(chart){
+			chart.ctx.clearRect(0,0,chart.width,chart.height);
+		},
+		fontString = helpers.fontString = function(pixelSize,fontStyle,fontFamily){
+			return fontStyle + " " + pixelSize+"px " + fontFamily;
+		},
+		longestText = helpers.longestText = function(ctx,font,arrayOfStrings){
+			ctx.font = font;
+			var longest = 0;
+			each(arrayOfStrings,function(string){
+				var textWidth = ctx.measureText(string).width;
+				longest = (textWidth > longest) ? textWidth : longest;
+			});
+			return longest;
+		},
+		drawRoundedRectangle = helpers.drawRoundedRectangle = function(ctx,x,y,width,height,radius){
+			ctx.beginPath();
+			ctx.moveTo(x + radius, y);
+			ctx.lineTo(x + width - radius, y);
+			ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+			ctx.lineTo(x + width, y + height - radius);
+			ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+			ctx.lineTo(x + radius, y + height);
+			ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+			ctx.lineTo(x, y + radius);
+			ctx.quadraticCurveTo(x, y, x + radius, y);
+			ctx.closePath();
+		};
+
+
+	//Store a reference to each instance - allowing us to globally resize chart instances on window resize.
+	//Destroy method on the chart will remove the instance of the chart from this reference.
+	Chart.instances = {};
+
+	Chart.Type = function(data,options,chart){
+		this.options = options;
+		this.chart = chart;
+		this.id = uid();
+		//Add the chart instance to the global namespace
+		Chart.instances[this.id] = this;
+
+		// Initialize is always called when a chart type is created
+		// By default it is a no op, but it should be extended
+		if (options.responsive){
+			this.resize();
 		}
+		this.initialize.call(this,data);
+	};
 
-		// Main decoding loop: start just after the last delimiter if any basic code
-		// points were copied; start at the beginning otherwise.
+	//Core methods that'll be a part of every chart type
+	extend(Chart.Type.prototype,{
+		initialize : function(){return this;},
+		clear : function(){
+			clear(this.chart);
+			return this;
+		},
+		stop : function(){
+			// Stops any current animation loop occuring
+			Chart.animationService.cancelAnimation(this);
+			return this;
+		},
+		resize : function(callback){
+			this.stop();
+			var canvas = this.chart.canvas,
+				newWidth = getMaximumWidth(this.chart.canvas),
+				newHeight = this.options.maintainAspectRatio ? newWidth / this.chart.aspectRatio : getMaximumHeight(this.chart.canvas);
 
-		for (index = basic > 0 ? basic + 1 : 0; index < inputLength; /* no final expression */) {
+			canvas.width = this.chart.width = newWidth;
+			canvas.height = this.chart.height = newHeight;
 
-			// `index` is the index of the next character to be consumed.
-			// Decode a generalized variable-length integer into `delta`,
-			// which gets added to `i`. The overflow checking is easier
-			// if we increase `i` as we go, then subtract off its starting
-			// value at the end to obtain `delta`.
-			for (oldi = i, w = 1, k = base; /* no condition */; k += base) {
+			retinaScale(this.chart);
 
-				if (index >= inputLength) {
-					error('invalid-input');
+			if (typeof callback === "function"){
+				callback.apply(this, Array.prototype.slice.call(arguments, 1));
+			}
+			return this;
+		},
+		reflow : noop,
+		render : function(reflow){
+			if (reflow){
+				this.reflow();
+			}
+			
+			if (this.options.animation && !reflow){
+				var animation = new Chart.Animation();
+				animation.numSteps = this.options.animationSteps;
+				animation.easing = this.options.animationEasing;
+				
+				// render function
+				animation.render = function(chartInstance, animationObject) {
+					var easingFunction = helpers.easingEffects[animationObject.easing];
+					var stepDecimal = animationObject.currentStep / animationObject.numSteps;
+					var easeDecimal = easingFunction(stepDecimal);
+					
+					chartInstance.draw(easeDecimal, stepDecimal, animationObject.currentStep);
+				};
+				
+				// user events
+				animation.onAnimationProgress = this.options.onAnimationProgress;
+				animation.onAnimationComplete = this.options.onAnimationComplete;
+				
+				Chart.animationService.addAnimation(this, animation);
+			}
+			else{
+				this.draw();
+				this.options.onAnimationComplete.call(this);
+			}
+			return this;
+		},
+		generateLegend : function(){
+			return helpers.template(this.options.legendTemplate, this);
+		},
+		destroy : function(){
+			this.stop();
+			this.clear();
+			unbindEvents(this, this.events);
+			var canvas = this.chart.canvas;
+
+			// Reset canvas height/width attributes starts a fresh with the canvas context
+			canvas.width = this.chart.width;
+			canvas.height = this.chart.height;
+
+			// < IE9 doesn't support removeProperty
+			if (canvas.style.removeProperty) {
+				canvas.style.removeProperty('width');
+				canvas.style.removeProperty('height');
+			} else {
+				canvas.style.removeAttribute('width');
+				canvas.style.removeAttribute('height');
+			}
+
+			delete Chart.instances[this.id];
+		},
+		showTooltip : function(ChartElements, forceRedraw){
+			// Only redraw the chart if we've actually changed what we're hovering on.
+			if (typeof this.activeElements === 'undefined') this.activeElements = [];
+
+			var isChanged = (function(Elements){
+				var changed = false;
+
+				if (Elements.length !== this.activeElements.length){
+					changed = true;
+					return changed;
 				}
 
-				digit = basicToDigit(input.charCodeAt(index++));
+				each(Elements, function(element, index){
+					if (element !== this.activeElements[index]){
+						changed = true;
+					}
+				}, this);
+				return changed;
+			}).call(this, ChartElements);
 
-				if (digit >= base || digit > floor((maxInt - i) / w)) {
-					error('overflow');
+			if (!isChanged && !forceRedraw){
+				return;
+			}
+			else{
+				this.activeElements = ChartElements;
+			}
+			this.draw();
+			if(this.options.customTooltips){
+				this.options.customTooltips(false);
+			}
+			if (ChartElements.length > 0){
+				// If we have multiple datasets, show a MultiTooltip for all of the data points at that index
+				if (this.datasets && this.datasets.length > 1) {
+					var dataArray,
+						dataIndex;
+
+					for (var i = this.datasets.length - 1; i >= 0; i--) {
+						dataArray = this.datasets[i].points || this.datasets[i].bars || this.datasets[i].segments;
+						dataIndex = indexOf(dataArray, ChartElements[0]);
+						if (dataIndex !== -1){
+							break;
+						}
+					}
+					var tooltipLabels = [],
+						tooltipColors = [],
+						medianPosition = (function(index) {
+
+							// Get all the points at that particular index
+							var Elements = [],
+								dataCollection,
+								xPositions = [],
+								yPositions = [],
+								xMax,
+								yMax,
+								xMin,
+								yMin;
+							helpers.each(this.datasets, function(dataset){
+								dataCollection = dataset.points || dataset.bars || dataset.segments;
+								if (dataCollection[dataIndex] && dataCollection[dataIndex].hasValue()){
+									Elements.push(dataCollection[dataIndex]);
+								}
+							});
+
+							helpers.each(Elements, function(element) {
+								xPositions.push(element.x);
+								yPositions.push(element.y);
+
+
+								//Include any colour information about the element
+								tooltipLabels.push(helpers.template(this.options.multiTooltipTemplate, element));
+								tooltipColors.push({
+									fill: element._saved.fillColor || element.fillColor,
+									stroke: element._saved.strokeColor || element.strokeColor
+								});
+
+							}, this);
+
+							yMin = min(yPositions);
+							yMax = max(yPositions);
+
+							xMin = min(xPositions);
+							xMax = max(xPositions);
+
+							return {
+								x: (xMin > this.chart.width/2) ? xMin : xMax,
+								y: (yMin + yMax)/2
+							};
+						}).call(this, dataIndex);
+
+					new Chart.MultiTooltip({
+						x: medianPosition.x,
+						y: medianPosition.y,
+						xPadding: this.options.tooltipXPadding,
+						yPadding: this.options.tooltipYPadding,
+						xOffset: this.options.tooltipXOffset,
+						fillColor: this.options.tooltipFillColor,
+						textColor: this.options.tooltipFontColor,
+						fontFamily: this.options.tooltipFontFamily,
+						fontStyle: this.options.tooltipFontStyle,
+						fontSize: this.options.tooltipFontSize,
+						titleTextColor: this.options.tooltipTitleFontColor,
+						titleFontFamily: this.options.tooltipTitleFontFamily,
+						titleFontStyle: this.options.tooltipTitleFontStyle,
+						titleFontSize: this.options.tooltipTitleFontSize,
+						cornerRadius: this.options.tooltipCornerRadius,
+						labels: tooltipLabels,
+						legendColors: tooltipColors,
+						legendColorBackground : this.options.multiTooltipKeyBackground,
+						title: template(this.options.tooltipTitleTemplate,ChartElements[0]),
+						chart: this.chart,
+						ctx: this.chart.ctx,
+						custom: this.options.customTooltips
+					}).draw();
+
+				} else {
+					each(ChartElements, function(Element) {
+						var tooltipPosition = Element.tooltipPosition();
+						new Chart.Tooltip({
+							x: Math.round(tooltipPosition.x),
+							y: Math.round(tooltipPosition.y),
+							xPadding: this.options.tooltipXPadding,
+							yPadding: this.options.tooltipYPadding,
+							fillColor: this.options.tooltipFillColor,
+							textColor: this.options.tooltipFontColor,
+							fontFamily: this.options.tooltipFontFamily,
+							fontStyle: this.options.tooltipFontStyle,
+							fontSize: this.options.tooltipFontSize,
+							caretHeight: this.options.tooltipCaretSize,
+							cornerRadius: this.options.tooltipCornerRadius,
+							text: template(this.options.tooltipTemplate, Element),
+							chart: this.chart,
+							custom: this.options.customTooltips
+						}).draw();
+					}, this);
 				}
+			}
+			return this;
+		},
+		toBase64Image : function(){
+			return this.chart.canvas.toDataURL.apply(this.chart.canvas, arguments);
+		}
+	});
 
-				i += digit * w;
-				t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
+	Chart.Type.extend = function(extensions){
 
-				if (digit < t) {
+		var parent = this;
+
+		var ChartType = function(){
+			return parent.apply(this,arguments);
+		};
+
+		//Copy the prototype object of the this class
+		ChartType.prototype = clone(parent.prototype);
+		//Now overwrite some of the properties in the base class with the new extensions
+		extend(ChartType.prototype, extensions);
+
+		ChartType.extend = Chart.Type.extend;
+
+		if (extensions.name || parent.prototype.name){
+
+			var chartName = extensions.name || parent.prototype.name;
+			//Assign any potential default values of the new chart type
+
+			//If none are defined, we'll use a clone of the chart type this is being extended from.
+			//I.e. if we extend a line chart, we'll use the defaults from the line chart if our new chart
+			//doesn't define some defaults of their own.
+
+			var baseDefaults = (Chart.defaults[parent.prototype.name]) ? clone(Chart.defaults[parent.prototype.name]) : {};
+
+			Chart.defaults[chartName] = extend(baseDefaults,extensions.defaults);
+
+			Chart.types[chartName] = ChartType;
+
+			//Register this new chart type in the Chart prototype
+			Chart.prototype[chartName] = function(data,options){
+				var config = merge(Chart.defaults.global, Chart.defaults[chartName], options || {});
+				return new ChartType(data,config,this);
+			};
+		} else{
+			warn("Name not provided for this chart, so it hasn't been registered");
+		}
+		return parent;
+	};
+
+	Chart.Element = function(configuration){
+		extend(this,configuration);
+		this.initialize.apply(this,arguments);
+		this.save();
+	};
+	extend(Chart.Element.prototype,{
+		initialize : function(){},
+		restore : function(props){
+			if (!props){
+				extend(this,this._saved);
+			} else {
+				each(props,function(key){
+					this[key] = this._saved[key];
+				},this);
+			}
+			return this;
+		},
+		save : function(){
+			this._saved = clone(this);
+			delete this._saved._saved;
+			return this;
+		},
+		update : function(newProps){
+			each(newProps,function(value,key){
+				this._saved[key] = this[key];
+				this[key] = value;
+			},this);
+			return this;
+		},
+		transition : function(props,ease){
+			each(props,function(value,key){
+				this[key] = ((value - this._saved[key]) * ease) + this._saved[key];
+			},this);
+			return this;
+		},
+		tooltipPosition : function(){
+			return {
+				x : this.x,
+				y : this.y
+			};
+		},
+		hasValue: function(){
+			return isNumber(this.value);
+		}
+	});
+
+	Chart.Element.extend = inherits;
+
+
+	Chart.Point = Chart.Element.extend({
+		display: true,
+		inRange: function(chartX,chartY){
+			var hitDetectionRange = this.hitDetectionRadius + this.radius;
+			return ((Math.pow(chartX-this.x, 2)+Math.pow(chartY-this.y, 2)) < Math.pow(hitDetectionRange,2));
+		},
+		draw : function(){
+			if (this.display){
+				var ctx = this.ctx;
+				ctx.beginPath();
+
+				ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+				ctx.closePath();
+
+				ctx.strokeStyle = this.strokeColor;
+				ctx.lineWidth = this.strokeWidth;
+
+				ctx.fillStyle = this.fillColor;
+
+				ctx.fill();
+				ctx.stroke();
+			}
+
+
+			//Quick debug for bezier curve splining
+			//Highlights control points and the line between them.
+			//Handy for dev - stripped in the min version.
+
+			// ctx.save();
+			// ctx.fillStyle = "black";
+			// ctx.strokeStyle = "black"
+			// ctx.beginPath();
+			// ctx.arc(this.controlPoints.inner.x,this.controlPoints.inner.y, 2, 0, Math.PI*2);
+			// ctx.fill();
+
+			// ctx.beginPath();
+			// ctx.arc(this.controlPoints.outer.x,this.controlPoints.outer.y, 2, 0, Math.PI*2);
+			// ctx.fill();
+
+			// ctx.moveTo(this.controlPoints.inner.x,this.controlPoints.inner.y);
+			// ctx.lineTo(this.x, this.y);
+			// ctx.lineTo(this.controlPoints.outer.x,this.controlPoints.outer.y);
+			// ctx.stroke();
+
+			// ctx.restore();
+
+
+
+		}
+	});
+
+	Chart.Arc = Chart.Element.extend({
+		inRange : function(chartX,chartY){
+
+			var pointRelativePosition = helpers.getAngleFromPoint(this, {
+				x: chartX,
+				y: chartY
+			});
+
+			// Normalize all angles to 0 - 2*PI (0 - 360°)
+			var pointRelativeAngle = pointRelativePosition.angle % (Math.PI * 2),
+			    startAngle = (Math.PI * 2 + this.startAngle) % (Math.PI * 2),
+			    endAngle = (Math.PI * 2 + this.endAngle) % (Math.PI * 2) || 360;
+
+			// Calculate wether the pointRelativeAngle is between the start and the end angle
+			var betweenAngles = (endAngle < startAngle) ?
+				pointRelativeAngle <= endAngle || pointRelativeAngle >= startAngle:
+				pointRelativeAngle >= startAngle && pointRelativeAngle <= endAngle;
+
+			//Check if within the range of the open/close angle
+			var withinRadius = (pointRelativePosition.distance >= this.innerRadius && pointRelativePosition.distance <= this.outerRadius);
+
+			return (betweenAngles && withinRadius);
+			//Ensure within the outside of the arc centre, but inside arc outer
+		},
+		tooltipPosition : function(){
+			var centreAngle = this.startAngle + ((this.endAngle - this.startAngle) / 2),
+				rangeFromCentre = (this.outerRadius - this.innerRadius) / 2 + this.innerRadius;
+			return {
+				x : this.x + (Math.cos(centreAngle) * rangeFromCentre),
+				y : this.y + (Math.sin(centreAngle) * rangeFromCentre)
+			};
+		},
+		draw : function(animationPercent){
+
+			var easingDecimal = animationPercent || 1;
+
+			var ctx = this.ctx;
+
+			ctx.beginPath();
+
+			ctx.arc(this.x, this.y, this.outerRadius < 0 ? 0 : this.outerRadius, this.startAngle, this.endAngle);
+
+            ctx.arc(this.x, this.y, this.innerRadius < 0 ? 0 : this.innerRadius, this.endAngle, this.startAngle, true);
+
+			ctx.closePath();
+			ctx.strokeStyle = this.strokeColor;
+			ctx.lineWidth = this.strokeWidth;
+
+			ctx.fillStyle = this.fillColor;
+
+			ctx.fill();
+			ctx.lineJoin = 'bevel';
+
+			if (this.showStroke){
+				ctx.stroke();
+			}
+		}
+	});
+
+	Chart.Rectangle = Chart.Element.extend({
+		draw : function(){
+			var ctx = this.ctx,
+				halfWidth = this.width/2,
+				leftX = this.x - halfWidth,
+				rightX = this.x + halfWidth,
+				top = this.base - (this.base - this.y),
+				halfStroke = this.strokeWidth / 2;
+
+			// Canvas doesn't allow us to stroke inside the width so we can
+			// adjust the sizes to fit if we're setting a stroke on the line
+			if (this.showStroke){
+				leftX += halfStroke;
+				rightX -= halfStroke;
+				top += halfStroke;
+			}
+
+			ctx.beginPath();
+
+			ctx.fillStyle = this.fillColor;
+			ctx.strokeStyle = this.strokeColor;
+			ctx.lineWidth = this.strokeWidth;
+
+			// It'd be nice to keep this class totally generic to any rectangle
+			// and simply specify which border to miss out.
+			ctx.moveTo(leftX, this.base);
+			ctx.lineTo(leftX, top);
+			ctx.lineTo(rightX, top);
+			ctx.lineTo(rightX, this.base);
+			ctx.fill();
+			if (this.showStroke){
+				ctx.stroke();
+			}
+		},
+		height : function(){
+			return this.base - this.y;
+		},
+		inRange : function(chartX,chartY){
+			return (chartX >= this.x - this.width/2 && chartX <= this.x + this.width/2) && (chartY >= this.y && chartY <= this.base);
+		}
+	});
+
+	Chart.Animation = Chart.Element.extend({
+		currentStep: null, // the current animation step
+		numSteps: 60, // default number of steps
+		easing: "", // the easing to use for this animation
+		render: null, // render function used by the animation service
+		
+		onAnimationProgress: null, // user specified callback to fire on each step of the animation 
+		onAnimationComplete: null, // user specified callback to fire when the animation finishes
+	});
+	
+	Chart.Tooltip = Chart.Element.extend({
+		draw : function(){
+
+			var ctx = this.chart.ctx;
+
+			ctx.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
+
+			this.xAlign = "center";
+			this.yAlign = "above";
+
+			//Distance between the actual element.y position and the start of the tooltip caret
+			var caretPadding = this.caretPadding = 2;
+
+			var tooltipWidth = ctx.measureText(this.text).width + 2*this.xPadding,
+				tooltipRectHeight = this.fontSize + 2*this.yPadding,
+				tooltipHeight = tooltipRectHeight + this.caretHeight + caretPadding;
+
+			if (this.x + tooltipWidth/2 >this.chart.width){
+				this.xAlign = "left";
+			} else if (this.x - tooltipWidth/2 < 0){
+				this.xAlign = "right";
+			}
+
+			if (this.y - tooltipHeight < 0){
+				this.yAlign = "below";
+			}
+
+
+			var tooltipX = this.x - tooltipWidth/2,
+				tooltipY = this.y - tooltipHeight;
+
+			ctx.fillStyle = this.fillColor;
+
+			// Custom Tooltips
+			if(this.custom){
+				this.custom(this);
+			}
+			else{
+				switch(this.yAlign)
+				{
+				case "above":
+					//Draw a caret above the x/y
+					ctx.beginPath();
+					ctx.moveTo(this.x,this.y - caretPadding);
+					ctx.lineTo(this.x + this.caretHeight, this.y - (caretPadding + this.caretHeight));
+					ctx.lineTo(this.x - this.caretHeight, this.y - (caretPadding + this.caretHeight));
+					ctx.closePath();
+					ctx.fill();
+					break;
+				case "below":
+					tooltipY = this.y + caretPadding + this.caretHeight;
+					//Draw a caret below the x/y
+					ctx.beginPath();
+					ctx.moveTo(this.x, this.y + caretPadding);
+					ctx.lineTo(this.x + this.caretHeight, this.y + caretPadding + this.caretHeight);
+					ctx.lineTo(this.x - this.caretHeight, this.y + caretPadding + this.caretHeight);
+					ctx.closePath();
+					ctx.fill();
 					break;
 				}
 
-				baseMinusT = base - t;
-				if (w > floor(maxInt / baseMinusT)) {
-					error('overflow');
+				switch(this.xAlign)
+				{
+				case "left":
+					tooltipX = this.x - tooltipWidth + (this.cornerRadius + this.caretHeight);
+					break;
+				case "right":
+					tooltipX = this.x - (this.cornerRadius + this.caretHeight);
+					break;
 				}
 
-				w *= baseMinusT;
+				drawRoundedRectangle(ctx,tooltipX,tooltipY,tooltipWidth,tooltipRectHeight,this.cornerRadius);
 
-			}
+				ctx.fill();
 
-			out = output.length + 1;
-			bias = adapt(i - oldi, out, oldi == 0);
-
-			// `i` was supposed to wrap around from `out` to `0`,
-			// incrementing `n` each time, so we'll fix that now:
-			if (floor(i / out) > maxInt - n) {
-				error('overflow');
-			}
-
-			n += floor(i / out);
-			i %= out;
-
-			// Insert `n` at position `i` of the output
-			output.splice(i++, 0, n);
-
-		}
-
-		return ucs2encode(output);
-	}
-
-	/**
-	 * Converts a string of Unicode symbols (e.g. a domain name label) to a
-	 * Punycode string of ASCII-only symbols.
-	 * @memberOf punycode
-	 * @param {String} input The string of Unicode symbols.
-	 * @returns {String} The resulting Punycode string of ASCII-only symbols.
-	 */
-	function encode(input) {
-		var n,
-		    delta,
-		    handledCPCount,
-		    basicLength,
-		    bias,
-		    j,
-		    m,
-		    q,
-		    k,
-		    t,
-		    currentValue,
-		    output = [],
-		    /** `inputLength` will hold the number of code points in `input`. */
-		    inputLength,
-		    /** Cached calculation results */
-		    handledCPCountPlusOne,
-		    baseMinusT,
-		    qMinusT;
-
-		// Convert the input in UCS-2 to Unicode
-		input = ucs2decode(input);
-
-		// Cache the length
-		inputLength = input.length;
-
-		// Initialize the state
-		n = initialN;
-		delta = 0;
-		bias = initialBias;
-
-		// Handle the basic code points
-		for (j = 0; j < inputLength; ++j) {
-			currentValue = input[j];
-			if (currentValue < 0x80) {
-				output.push(stringFromCharCode(currentValue));
+				ctx.fillStyle = this.textColor;
+				ctx.textAlign = "center";
+				ctx.textBaseline = "middle";
+				ctx.fillText(this.text, tooltipX + tooltipWidth/2, tooltipY + tooltipRectHeight/2);
 			}
 		}
+	});
 
-		handledCPCount = basicLength = output.length;
+	Chart.MultiTooltip = Chart.Element.extend({
+		initialize : function(){
+			this.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
 
-		// `handledCPCount` is the number of code points that have been handled;
-		// `basicLength` is the number of basic code points.
+			this.titleFont = fontString(this.titleFontSize,this.titleFontStyle,this.titleFontFamily);
 
-		// Finish the basic string - if it is not empty - with a delimiter
-		if (basicLength) {
-			output.push(delimiter);
+			this.titleHeight = this.title ? this.titleFontSize * 1.5 : 0;
+			this.height = (this.labels.length * this.fontSize) + ((this.labels.length-1) * (this.fontSize/2)) + (this.yPadding*2) + this.titleHeight;
+
+			this.ctx.font = this.titleFont;
+
+			var titleWidth = this.ctx.measureText(this.title).width,
+				//Label has a legend square as well so account for this.
+				labelWidth = longestText(this.ctx,this.font,this.labels) + this.fontSize + 3,
+				longestTextWidth = max([labelWidth,titleWidth]);
+
+			this.width = longestTextWidth + (this.xPadding*2);
+
+
+			var halfHeight = this.height/2;
+
+			//Check to ensure the height will fit on the canvas
+			if (this.y - halfHeight < 0 ){
+				this.y = halfHeight;
+			} else if (this.y + halfHeight > this.chart.height){
+				this.y = this.chart.height - halfHeight;
+			}
+
+			//Decide whether to align left or right based on position on canvas
+			if (this.x > this.chart.width/2){
+				this.x -= this.xOffset + this.width;
+			} else {
+				this.x += this.xOffset;
+			}
+
+
+		},
+		getLineHeight : function(index){
+			var baseLineHeight = this.y - (this.height/2) + this.yPadding,
+				afterTitleIndex = index-1;
+
+			//If the index is zero, we're getting the title
+			if (index === 0){
+				return baseLineHeight + this.titleHeight / 3;
+			} else{
+				return baseLineHeight + ((this.fontSize * 1.5 * afterTitleIndex) + this.fontSize / 2) + this.titleHeight;
+			}
+
+		},
+		draw : function(){
+			// Custom Tooltips
+			if(this.custom){
+				this.custom(this);
+			}
+			else{
+				drawRoundedRectangle(this.ctx,this.x,this.y - this.height/2,this.width,this.height,this.cornerRadius);
+				var ctx = this.ctx;
+				ctx.fillStyle = this.fillColor;
+				ctx.fill();
+				ctx.closePath();
+
+				ctx.textAlign = "left";
+				ctx.textBaseline = "middle";
+				ctx.fillStyle = this.titleTextColor;
+				ctx.font = this.titleFont;
+
+				ctx.fillText(this.title,this.x + this.xPadding, this.getLineHeight(0));
+
+				ctx.font = this.font;
+				helpers.each(this.labels,function(label,index){
+					ctx.fillStyle = this.textColor;
+					ctx.fillText(label,this.x + this.xPadding + this.fontSize + 3, this.getLineHeight(index + 1));
+
+					//A bit gnarly, but clearing this rectangle breaks when using explorercanvas (clears whole canvas)
+					//ctx.clearRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
+					//Instead we'll make a white filled block to put the legendColour palette over.
+
+					ctx.fillStyle = this.legendColorBackground;
+					ctx.fillRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
+
+					ctx.fillStyle = this.legendColors[index].fill;
+					ctx.fillRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
+
+
+				},this);
+			}
 		}
+	});
 
-		// Main encoding loop:
-		while (handledCPCount < inputLength) {
+	Chart.Scale = Chart.Element.extend({
+		initialize : function(){
+			this.fit();
+		},
+		buildYLabels : function(){
+			this.yLabels = [];
 
-			// All non-basic code points < n have been handled already. Find the next
-			// larger one:
-			for (m = maxInt, j = 0; j < inputLength; ++j) {
-				currentValue = input[j];
-				if (currentValue >= n && currentValue < m) {
-					m = currentValue;
+			var stepDecimalPlaces = getDecimalPlaces(this.stepValue);
+
+			for (var i=0; i<=this.steps; i++){
+				this.yLabels.push(template(this.templateString,{value:(this.min + (i * this.stepValue)).toFixed(stepDecimalPlaces)}));
+			}
+			this.yLabelWidth = (this.display && this.showLabels) ? longestText(this.ctx,this.font,this.yLabels) + 10 : 0;
+		},
+		addXLabel : function(label){
+			this.xLabels.push(label);
+			this.valuesCount++;
+			this.fit();
+		},
+		removeXLabel : function(){
+			this.xLabels.shift();
+			this.valuesCount--;
+			this.fit();
+		},
+		// Fitting loop to rotate x Labels and figure out what fits there, and also calculate how many Y steps to use
+		fit: function(){
+			// First we need the width of the yLabels, assuming the xLabels aren't rotated
+
+			// To do that we need the base line at the top and base of the chart, assuming there is no x label rotation
+			this.startPoint = (this.display) ? this.fontSize : 0;
+			this.endPoint = (this.display) ? this.height - (this.fontSize * 1.5) - 5 : this.height; // -5 to pad labels
+
+			// Apply padding settings to the start and end point.
+			this.startPoint += this.padding;
+			this.endPoint -= this.padding;
+
+			// Cache the starting endpoint, excluding the space for x labels
+			var cachedEndPoint = this.endPoint;
+
+			// Cache the starting height, so can determine if we need to recalculate the scale yAxis
+			var cachedHeight = this.endPoint - this.startPoint,
+				cachedYLabelWidth;
+
+			// Build the current yLabels so we have an idea of what size they'll be to start
+			/*
+			 *	This sets what is returned from calculateScaleRange as static properties of this class:
+			 *
+				this.steps;
+				this.stepValue;
+				this.min;
+				this.max;
+			 *
+			 */
+			this.calculateYRange(cachedHeight);
+
+			// With these properties set we can now build the array of yLabels
+			// and also the width of the largest yLabel
+			this.buildYLabels();
+
+			this.calculateXLabelRotation();
+
+			while((cachedHeight > this.endPoint - this.startPoint)){
+				cachedHeight = this.endPoint - this.startPoint;
+				cachedYLabelWidth = this.yLabelWidth;
+
+				this.calculateYRange(cachedHeight);
+				this.buildYLabels();
+
+				// Only go through the xLabel loop again if the yLabel width has changed
+				if (cachedYLabelWidth < this.yLabelWidth){
+					this.endPoint = cachedEndPoint;
+					this.calculateXLabelRotation();
 				}
 			}
 
-			// Increase `delta` enough to advance the decoder's <n,i> state to <m,0>,
-			// but guard against overflow
-			handledCPCountPlusOne = handledCPCount + 1;
-			if (m - n > floor((maxInt - delta) / handledCPCountPlusOne)) {
-				error('overflow');
+		},
+		calculateXLabelRotation : function(){
+			//Get the width of each grid by calculating the difference
+			//between x offsets between 0 and 1.
+
+			this.ctx.font = this.font;
+
+			var firstWidth = this.ctx.measureText(this.xLabels[0]).width,
+				lastWidth = this.ctx.measureText(this.xLabels[this.xLabels.length - 1]).width,
+				firstRotated,
+				lastRotated;
+
+
+			this.xScalePaddingRight = lastWidth/2 + 3;
+			this.xScalePaddingLeft = (firstWidth/2 > this.yLabelWidth) ? firstWidth/2 : this.yLabelWidth;
+
+			this.xLabelRotation = 0;
+			if (this.display){
+				var originalLabelWidth = longestText(this.ctx,this.font,this.xLabels),
+					cosRotation,
+					firstRotatedWidth;
+				this.xLabelWidth = originalLabelWidth;
+				//Allow 3 pixels x2 padding either side for label readability
+				var xGridWidth = Math.floor(this.calculateX(1) - this.calculateX(0)) - 6;
+
+				//Max label rotate should be 90 - also act as a loop counter
+				while ((this.xLabelWidth > xGridWidth && this.xLabelRotation === 0) || (this.xLabelWidth > xGridWidth && this.xLabelRotation <= 90 && this.xLabelRotation > 0)){
+					cosRotation = Math.cos(toRadians(this.xLabelRotation));
+
+					firstRotated = cosRotation * firstWidth;
+					lastRotated = cosRotation * lastWidth;
+
+					// We're right aligning the text now.
+					if (firstRotated + this.fontSize / 2 > this.yLabelWidth){
+						this.xScalePaddingLeft = firstRotated + this.fontSize / 2;
+					}
+					this.xScalePaddingRight = this.fontSize/2;
+
+
+					this.xLabelRotation++;
+					this.xLabelWidth = cosRotation * originalLabelWidth;
+
+				}
+				if (this.xLabelRotation > 0){
+					this.endPoint -= Math.sin(toRadians(this.xLabelRotation))*originalLabelWidth + 3;
+				}
+			}
+			else{
+				this.xLabelWidth = 0;
+				this.xScalePaddingRight = this.padding;
+				this.xScalePaddingLeft = this.padding;
 			}
 
-			delta += (m - n) * handledCPCountPlusOne;
-			n = m;
+		},
+		// Needs to be overidden in each Chart type
+		// Otherwise we need to pass all the data into the scale class
+		calculateYRange: noop,
+		drawingArea: function(){
+			return this.startPoint - this.endPoint;
+		},
+		calculateY : function(value){
+			var scalingFactor = this.drawingArea() / (this.min - this.max);
+			return this.endPoint - (scalingFactor * (value - this.min));
+		},
+		calculateX : function(index){
+			var isRotated = (this.xLabelRotation > 0),
+				// innerWidth = (this.offsetGridLines) ? this.width - offsetLeft - this.padding : this.width - (offsetLeft + halfLabelWidth * 2) - this.padding,
+				innerWidth = this.width - (this.xScalePaddingLeft + this.xScalePaddingRight),
+				valueWidth = innerWidth/Math.max((this.valuesCount - ((this.offsetGridLines) ? 0 : 1)), 1),
+				valueOffset = (valueWidth * index) + this.xScalePaddingLeft;
 
-			for (j = 0; j < inputLength; ++j) {
-				currentValue = input[j];
+			if (this.offsetGridLines){
+				valueOffset += (valueWidth/2);
+			}
 
-				if (currentValue < n && ++delta > maxInt) {
-					error('overflow');
-				}
+			return Math.round(valueOffset);
+		},
+		update : function(newProps){
+			helpers.extend(this, newProps);
+			this.fit();
+		},
+		draw : function(){
+			var ctx = this.ctx,
+				yLabelGap = (this.endPoint - this.startPoint) / this.steps,
+				xStart = Math.round(this.xScalePaddingLeft);
+			if (this.display){
+				ctx.fillStyle = this.textColor;
+				ctx.font = this.font;
+				each(this.yLabels,function(labelString,index){
+					var yLabelCenter = this.endPoint - (yLabelGap * index),
+						linePositionY = Math.round(yLabelCenter),
+						drawHorizontalLine = this.showHorizontalLines;
 
-				if (currentValue == n) {
-					// Represent delta as a generalized variable-length integer
-					for (q = delta, k = base; /* no condition */; k += base) {
-						t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
-						if (q < t) {
-							break;
-						}
-						qMinusT = q - t;
-						baseMinusT = base - t;
-						output.push(
-							stringFromCharCode(digitToBasic(t + qMinusT % baseMinusT, 0))
-						);
-						q = floor(qMinusT / baseMinusT);
+					ctx.textAlign = "right";
+					ctx.textBaseline = "middle";
+					if (this.showLabels){
+						ctx.fillText(labelString,xStart - 10,yLabelCenter);
 					}
 
-					output.push(stringFromCharCode(digitToBasic(q, 0)));
-					bias = adapt(delta, handledCPCountPlusOne, handledCPCount == basicLength);
-					delta = 0;
-					++handledCPCount;
+					// This is X axis, so draw it
+					if (index === 0 && !drawHorizontalLine){
+						drawHorizontalLine = true;
+					}
+
+					if (drawHorizontalLine){
+						ctx.beginPath();
+					}
+
+					if (index > 0){
+						// This is a grid line in the centre, so drop that
+						ctx.lineWidth = this.gridLineWidth;
+						ctx.strokeStyle = this.gridLineColor;
+					} else {
+						// This is the first line on the scale
+						ctx.lineWidth = this.lineWidth;
+						ctx.strokeStyle = this.lineColor;
+					}
+
+					linePositionY += helpers.aliasPixel(ctx.lineWidth);
+
+					if(drawHorizontalLine){
+						ctx.moveTo(xStart, linePositionY);
+						ctx.lineTo(this.width, linePositionY);
+						ctx.stroke();
+						ctx.closePath();
+					}
+
+					ctx.lineWidth = this.lineWidth;
+					ctx.strokeStyle = this.lineColor;
+					ctx.beginPath();
+					ctx.moveTo(xStart - 5, linePositionY);
+					ctx.lineTo(xStart, linePositionY);
+					ctx.stroke();
+					ctx.closePath();
+
+				},this);
+
+				each(this.xLabels,function(label,index){
+					var xPos = this.calculateX(index) + aliasPixel(this.lineWidth),
+						// Check to see if line/bar here and decide where to place the line
+						linePos = this.calculateX(index - (this.offsetGridLines ? 0.5 : 0)) + aliasPixel(this.lineWidth),
+						isRotated = (this.xLabelRotation > 0),
+						drawVerticalLine = this.showVerticalLines;
+
+					// This is Y axis, so draw it
+					if (index === 0 && !drawVerticalLine){
+						drawVerticalLine = true;
+					}
+
+					if (drawVerticalLine){
+						ctx.beginPath();
+					}
+
+					if (index > 0){
+						// This is a grid line in the centre, so drop that
+						ctx.lineWidth = this.gridLineWidth;
+						ctx.strokeStyle = this.gridLineColor;
+					} else {
+						// This is the first line on the scale
+						ctx.lineWidth = this.lineWidth;
+						ctx.strokeStyle = this.lineColor;
+					}
+
+					if (drawVerticalLine){
+						ctx.moveTo(linePos,this.endPoint);
+						ctx.lineTo(linePos,this.startPoint - 3);
+						ctx.stroke();
+						ctx.closePath();
+					}
+
+
+					ctx.lineWidth = this.lineWidth;
+					ctx.strokeStyle = this.lineColor;
+
+
+					// Small lines at the bottom of the base grid line
+					ctx.beginPath();
+					ctx.moveTo(linePos,this.endPoint);
+					ctx.lineTo(linePos,this.endPoint + 5);
+					ctx.stroke();
+					ctx.closePath();
+
+					ctx.save();
+					ctx.translate(xPos,(isRotated) ? this.endPoint + 12 : this.endPoint + 8);
+					ctx.rotate(toRadians(this.xLabelRotation)*-1);
+					ctx.font = this.font;
+					ctx.textAlign = (isRotated) ? "right" : "center";
+					ctx.textBaseline = (isRotated) ? "middle" : "top";
+					ctx.fillText(label, 0, 0);
+					ctx.restore();
+				},this);
+
+			}
+		}
+
+	});
+
+	Chart.RadialScale = Chart.Element.extend({
+		initialize: function(){
+			this.size = min([this.height, this.width]);
+			this.drawingArea = (this.display) ? (this.size/2) - (this.fontSize/2 + this.backdropPaddingY) : (this.size/2);
+		},
+		calculateCenterOffset: function(value){
+			// Take into account half font size + the yPadding of the top value
+			var scalingFactor = this.drawingArea / (this.max - this.min);
+
+			return (value - this.min) * scalingFactor;
+		},
+		update : function(){
+			if (!this.lineArc){
+				this.setScaleSize();
+			} else {
+				this.drawingArea = (this.display) ? (this.size/2) - (this.fontSize/2 + this.backdropPaddingY) : (this.size/2);
+			}
+			this.buildYLabels();
+		},
+		buildYLabels: function(){
+			this.yLabels = [];
+
+			var stepDecimalPlaces = getDecimalPlaces(this.stepValue);
+
+			for (var i=0; i<=this.steps; i++){
+				this.yLabels.push(template(this.templateString,{value:(this.min + (i * this.stepValue)).toFixed(stepDecimalPlaces)}));
+			}
+		},
+		getCircumference : function(){
+			return ((Math.PI*2) / this.valuesCount);
+		},
+		setScaleSize: function(){
+			/*
+			 * Right, this is really confusing and there is a lot of maths going on here
+			 * The gist of the problem is here: https://gist.github.com/nnnick/696cc9c55f4b0beb8fe9
+			 *
+			 * Reaction: https://dl.dropboxusercontent.com/u/34601363/toomuchscience.gif
+			 *
+			 * Solution:
+			 *
+			 * We assume the radius of the polygon is half the size of the canvas at first
+			 * at each index we check if the text overlaps.
+			 *
+			 * Where it does, we store that angle and that index.
+			 *
+			 * After finding the largest index and angle we calculate how much we need to remove
+			 * from the shape radius to move the point inwards by that x.
+			 *
+			 * We average the left and right distances to get the maximum shape radius that can fit in the box
+			 * along with labels.
+			 *
+			 * Once we have that, we can find the centre point for the chart, by taking the x text protrusion
+			 * on each side, removing that from the size, halving it and adding the left x protrusion width.
+			 *
+			 * This will mean we have a shape fitted to the canvas, as large as it can be with the labels
+			 * and position it in the most space efficient manner
+			 *
+			 * https://dl.dropboxusercontent.com/u/34601363/yeahscience.gif
+			 */
+
+
+			// Get maximum radius of the polygon. Either half the height (minus the text width) or half the width.
+			// Use this to calculate the offset + change. - Make sure L/R protrusion is at least 0 to stop issues with centre points
+			var largestPossibleRadius = min([(this.height/2 - this.pointLabelFontSize - 5), this.width/2]),
+				pointPosition,
+				i,
+				textWidth,
+				halfTextWidth,
+				furthestRight = this.width,
+				furthestRightIndex,
+				furthestRightAngle,
+				furthestLeft = 0,
+				furthestLeftIndex,
+				furthestLeftAngle,
+				xProtrusionLeft,
+				xProtrusionRight,
+				radiusReductionRight,
+				radiusReductionLeft,
+				maxWidthRadius;
+			this.ctx.font = fontString(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily);
+			for (i=0;i<this.valuesCount;i++){
+				// 5px to space the text slightly out - similar to what we do in the draw function.
+				pointPosition = this.getPointPosition(i, largestPossibleRadius);
+				textWidth = this.ctx.measureText(template(this.templateString, { value: this.labels[i] })).width + 5;
+				if (i === 0 || i === this.valuesCount/2){
+					// If we're at index zero, or exactly the middle, we're at exactly the top/bottom
+					// of the radar chart, so text will be aligned centrally, so we'll half it and compare
+					// w/left and right text sizes
+					halfTextWidth = textWidth/2;
+					if (pointPosition.x + halfTextWidth > furthestRight) {
+						furthestRight = pointPosition.x + halfTextWidth;
+						furthestRightIndex = i;
+					}
+					if (pointPosition.x - halfTextWidth < furthestLeft) {
+						furthestLeft = pointPosition.x - halfTextWidth;
+						furthestLeftIndex = i;
+					}
+				}
+				else if (i < this.valuesCount/2) {
+					// Less than half the values means we'll left align the text
+					if (pointPosition.x + textWidth > furthestRight) {
+						furthestRight = pointPosition.x + textWidth;
+						furthestRightIndex = i;
+					}
+				}
+				else if (i > this.valuesCount/2){
+					// More than half the values means we'll right align the text
+					if (pointPosition.x - textWidth < furthestLeft) {
+						furthestLeft = pointPosition.x - textWidth;
+						furthestLeftIndex = i;
+					}
 				}
 			}
 
-			++delta;
-			++n;
+			xProtrusionLeft = furthestLeft;
 
-		}
-		return output.join('');
-	}
+			xProtrusionRight = Math.ceil(furthestRight - this.width);
 
-	/**
-	 * Converts a Punycode string representing a domain name or an email address
-	 * to Unicode. Only the Punycoded parts of the input will be converted, i.e.
-	 * it doesn't matter if you call it on a string that has already been
-	 * converted to Unicode.
-	 * @memberOf punycode
-	 * @param {String} input The Punycoded domain name or email address to
-	 * convert to Unicode.
-	 * @returns {String} The Unicode representation of the given Punycode
-	 * string.
-	 */
-	function toUnicode(input) {
-		return mapDomain(input, function(string) {
-			return regexPunycode.test(string)
-				? decode(string.slice(4).toLowerCase())
-				: string;
-		});
-	}
+			furthestRightAngle = this.getIndexAngle(furthestRightIndex);
 
-	/**
-	 * Converts a Unicode string representing a domain name or an email address to
-	 * Punycode. Only the non-ASCII parts of the domain name will be converted,
-	 * i.e. it doesn't matter if you call it with a domain that's already in
-	 * ASCII.
-	 * @memberOf punycode
-	 * @param {String} input The domain name or email address to convert, as a
-	 * Unicode string.
-	 * @returns {String} The Punycode representation of the given domain name or
-	 * email address.
-	 */
-	function toASCII(input) {
-		return mapDomain(input, function(string) {
-			return regexNonASCII.test(string)
-				? 'xn--' + encode(string)
-				: string;
-		});
-	}
+			furthestLeftAngle = this.getIndexAngle(furthestLeftIndex);
 
-	/*--------------------------------------------------------------------------*/
+			radiusReductionRight = xProtrusionRight / Math.sin(furthestRightAngle + Math.PI/2);
 
-	/** Define the public API */
-	punycode = {
-		/**
-		 * A string representing the current Punycode.js version number.
-		 * @memberOf punycode
-		 * @type String
-		 */
-		'version': '1.4.1',
-		/**
-		 * An object of methods to convert from JavaScript's internal character
-		 * representation (UCS-2) to Unicode code points, and back.
-		 * @see <https://mathiasbynens.be/notes/javascript-encoding>
-		 * @memberOf punycode
-		 * @type Object
-		 */
-		'ucs2': {
-			'decode': ucs2decode,
-			'encode': ucs2encode
+			radiusReductionLeft = xProtrusionLeft / Math.sin(furthestLeftAngle + Math.PI/2);
+
+			// Ensure we actually need to reduce the size of the chart
+			radiusReductionRight = (isNumber(radiusReductionRight)) ? radiusReductionRight : 0;
+			radiusReductionLeft = (isNumber(radiusReductionLeft)) ? radiusReductionLeft : 0;
+
+			this.drawingArea = largestPossibleRadius - (radiusReductionLeft + radiusReductionRight)/2;
+
+			//this.drawingArea = min([maxWidthRadius, (this.height - (2 * (this.pointLabelFontSize + 5)))/2])
+			this.setCenterPoint(radiusReductionLeft, radiusReductionRight);
+
 		},
-		'decode': decode,
-		'encode': encode,
-		'toASCII': toASCII,
-		'toUnicode': toUnicode
-	};
+		setCenterPoint: function(leftMovement, rightMovement){
 
-	/** Expose `punycode` */
-	// Some AMD build optimizers, like r.js, check for specific condition patterns
-	// like the following:
-	if (
-		typeof define == 'function' &&
-		typeof define.amd == 'object' &&
-		define.amd
-	) {
-		define('punycode', function() {
-			return punycode;
-		});
-	} else if (freeExports && freeModule) {
-		if (module.exports == freeExports) {
-			// in Node.js, io.js, or RingoJS v0.8.0+
-			freeModule.exports = punycode;
-		} else {
-			// in Narwhal or RingoJS v0.7.0-
-			for (key in punycode) {
-				punycode.hasOwnProperty(key) && (freeExports[key] = punycode[key]);
+			var maxRight = this.width - rightMovement - this.drawingArea,
+				maxLeft = leftMovement + this.drawingArea;
+
+			this.xCenter = (maxLeft + maxRight)/2;
+			// Always vertically in the centre as the text height doesn't change
+			this.yCenter = (this.height/2);
+		},
+
+		getIndexAngle : function(index){
+			var angleMultiplier = (Math.PI * 2) / this.valuesCount;
+			// Start from the top instead of right, so remove a quarter of the circle
+
+			return index * angleMultiplier - (Math.PI/2);
+		},
+		getPointPosition : function(index, distanceFromCenter){
+			var thisAngle = this.getIndexAngle(index);
+			return {
+				x : (Math.cos(thisAngle) * distanceFromCenter) + this.xCenter,
+				y : (Math.sin(thisAngle) * distanceFromCenter) + this.yCenter
+			};
+		},
+		draw: function(){
+			if (this.display){
+				var ctx = this.ctx;
+				each(this.yLabels, function(label, index){
+					// Don't draw a centre value
+					if (index > 0){
+						var yCenterOffset = index * (this.drawingArea/this.steps),
+							yHeight = this.yCenter - yCenterOffset,
+							pointPosition;
+
+						// Draw circular lines around the scale
+						if (this.lineWidth > 0){
+							ctx.strokeStyle = this.lineColor;
+							ctx.lineWidth = this.lineWidth;
+
+							if(this.lineArc){
+								ctx.beginPath();
+								ctx.arc(this.xCenter, this.yCenter, yCenterOffset, 0, Math.PI*2);
+								ctx.closePath();
+								ctx.stroke();
+							} else{
+								ctx.beginPath();
+								for (var i=0;i<this.valuesCount;i++)
+								{
+									pointPosition = this.getPointPosition(i, this.calculateCenterOffset(this.min + (index * this.stepValue)));
+									if (i === 0){
+										ctx.moveTo(pointPosition.x, pointPosition.y);
+									} else {
+										ctx.lineTo(pointPosition.x, pointPosition.y);
+									}
+								}
+								ctx.closePath();
+								ctx.stroke();
+							}
+						}
+						if(this.showLabels){
+							ctx.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
+							if (this.showLabelBackdrop){
+								var labelWidth = ctx.measureText(label).width;
+								ctx.fillStyle = this.backdropColor;
+								ctx.fillRect(
+									this.xCenter - labelWidth/2 - this.backdropPaddingX,
+									yHeight - this.fontSize/2 - this.backdropPaddingY,
+									labelWidth + this.backdropPaddingX*2,
+									this.fontSize + this.backdropPaddingY*2
+								);
+							}
+							ctx.textAlign = 'center';
+							ctx.textBaseline = "middle";
+							ctx.fillStyle = this.fontColor;
+							ctx.fillText(label, this.xCenter, yHeight);
+						}
+					}
+				}, this);
+
+				if (!this.lineArc){
+					ctx.lineWidth = this.angleLineWidth;
+					ctx.strokeStyle = this.angleLineColor;
+					for (var i = this.valuesCount - 1; i >= 0; i--) {
+						var centerOffset = null, outerPosition = null;
+
+						if (this.angleLineWidth > 0 && (i % this.angleLineInterval === 0)){
+							centerOffset = this.calculateCenterOffset(this.max);
+							outerPosition = this.getPointPosition(i, centerOffset);
+							ctx.beginPath();
+							ctx.moveTo(this.xCenter, this.yCenter);
+							ctx.lineTo(outerPosition.x, outerPosition.y);
+							ctx.stroke();
+							ctx.closePath();
+						}
+
+						if (this.backgroundColors && this.backgroundColors.length == this.valuesCount) {
+							if (centerOffset == null)
+								centerOffset = this.calculateCenterOffset(this.max);
+
+							if (outerPosition == null)
+								outerPosition = this.getPointPosition(i, centerOffset);
+
+							var previousOuterPosition = this.getPointPosition(i === 0 ? this.valuesCount - 1 : i - 1, centerOffset);
+							var nextOuterPosition = this.getPointPosition(i === this.valuesCount - 1 ? 0 : i + 1, centerOffset);
+
+							var previousOuterHalfway = { x: (previousOuterPosition.x + outerPosition.x) / 2, y: (previousOuterPosition.y + outerPosition.y) / 2 };
+							var nextOuterHalfway = { x: (outerPosition.x + nextOuterPosition.x) / 2, y: (outerPosition.y + nextOuterPosition.y) / 2 };
+
+							ctx.beginPath();
+							ctx.moveTo(this.xCenter, this.yCenter);
+							ctx.lineTo(previousOuterHalfway.x, previousOuterHalfway.y);
+							ctx.lineTo(outerPosition.x, outerPosition.y);
+							ctx.lineTo(nextOuterHalfway.x, nextOuterHalfway.y);
+							ctx.fillStyle = this.backgroundColors[i];
+							ctx.fill();
+							ctx.closePath();
+						}
+						// Extra 3px out for some label spacing
+						var pointLabelPosition = this.getPointPosition(i, this.calculateCenterOffset(this.max) + 5);
+						ctx.font = fontString(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily);
+						ctx.fillStyle = this.pointLabelFontColor;
+
+						var labelsCount = this.labels.length,
+							halfLabelsCount = this.labels.length/2,
+							quarterLabelsCount = halfLabelsCount/2,
+							upperHalf = (i < quarterLabelsCount || i > labelsCount - quarterLabelsCount),
+							exactQuarter = (i === quarterLabelsCount || i === labelsCount - quarterLabelsCount);
+						if (i === 0){
+							ctx.textAlign = 'center';
+						} else if(i === halfLabelsCount){
+							ctx.textAlign = 'center';
+						} else if (i < halfLabelsCount){
+							ctx.textAlign = 'left';
+						} else {
+							ctx.textAlign = 'right';
+						}
+
+						// Set the correct text baseline based on outer positioning
+						if (exactQuarter){
+							ctx.textBaseline = 'middle';
+						} else if (upperHalf){
+							ctx.textBaseline = 'bottom';
+						} else {
+							ctx.textBaseline = 'top';
+						}
+
+						ctx.fillText(this.labels[i], pointLabelPosition.x, pointLabelPosition.y);
+					}
+				}
 			}
 		}
-	} else {
-		// in Rhino or a web browser
-		root.punycode = punycode;
+	});
+
+	Chart.animationService = {
+		frameDuration: 17,
+		animations: [],
+		dropFrames: 0,
+		addAnimation: function(chartInstance, animationObject) {
+			for (var index = 0; index < this.animations.length; ++ index){
+				if (this.animations[index].chartInstance === chartInstance){
+					// replacing an in progress animation
+					this.animations[index].animationObject = animationObject;
+					return;
+				}
+			}
+			
+			this.animations.push({
+				chartInstance: chartInstance,
+				animationObject: animationObject
+			});
+
+			// If there are no animations queued, manually kickstart a digest, for lack of a better word
+			if (this.animations.length == 1) {
+				helpers.requestAnimFrame.call(window, this.digestWrapper);
+			}
+		},
+		// Cancel the animation for a given chart instance
+		cancelAnimation: function(chartInstance) {
+			var index = helpers.findNextWhere(this.animations, function(animationWrapper) {
+				return animationWrapper.chartInstance === chartInstance;
+			});
+			
+			if (index)
+			{
+				this.animations.splice(index, 1);
+			}
+		},
+		// calls startDigest with the proper context
+		digestWrapper: function() {
+			Chart.animationService.startDigest.call(Chart.animationService);
+		},
+		startDigest: function() {
+
+			var startTime = Date.now();
+			var framesToDrop = 0;
+
+			if(this.dropFrames > 1){
+				framesToDrop = Math.floor(this.dropFrames);
+				this.dropFrames -= framesToDrop;
+			}
+
+			for (var i = 0; i < this.animations.length; i++) {
+
+				if (this.animations[i].animationObject.currentStep === null){
+					this.animations[i].animationObject.currentStep = 0;
+				}
+
+				this.animations[i].animationObject.currentStep += 1 + framesToDrop;
+				if(this.animations[i].animationObject.currentStep > this.animations[i].animationObject.numSteps){
+					this.animations[i].animationObject.currentStep = this.animations[i].animationObject.numSteps;
+				}
+				
+				this.animations[i].animationObject.render(this.animations[i].chartInstance, this.animations[i].animationObject);
+				
+				// Check if executed the last frame.
+				if (this.animations[i].animationObject.currentStep == this.animations[i].animationObject.numSteps){
+					// Call onAnimationComplete
+					this.animations[i].animationObject.onAnimationComplete.call(this.animations[i].chartInstance);
+					// Remove the animation.
+					this.animations.splice(i, 1);
+					// Keep the index in place to offset the splice
+					i--;
+				}
+			}
+
+			var endTime = Date.now();
+			var delay = endTime - startTime - this.frameDuration;
+			var frameDelay = delay / this.frameDuration;
+
+			if(frameDelay > 1){
+				this.dropFrames += frameDelay;
+			}
+
+			// Do we have more stuff to animate?
+			if (this.animations.length > 0){
+				helpers.requestAnimFrame.call(window, this.digestWrapper);
+			}
+		}
+	};
+
+	// Attach global event to resize each chart instance when the browser resizes
+	helpers.addEvent(window, "resize", (function(){
+		// Basic debounce of resize function so it doesn't hurt performance when resizing browser.
+		var timeout;
+		return function(){
+			clearTimeout(timeout);
+			timeout = setTimeout(function(){
+				each(Chart.instances,function(instance){
+					// If the responsive flag is set in the chart instance config
+					// Cascade the resize event down to the chart.
+					if (instance.options.responsive){
+						instance.resize(instance.render, true);
+					}
+				});
+			}, 50);
+		};
+	})());
+
+
+	if (amd) {
+		define('Chart', [], function(){
+			return Chart;
+		});
+	} else if (typeof module === 'object' && module.exports) {
+		module.exports = Chart;
 	}
 
-}(this));
+	root.Chart = Chart;
 
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],339:[function(require,module,exports){
+	Chart.noConflict = function(){
+		root.Chart = previous;
+		return Chart;
+	};
+
+}).call(this);
+
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		helpers = Chart.helpers;
+
+
+	var defaultConfig = {
+		//Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+		scaleBeginAtZero : true,
+
+		//Boolean - Whether grid lines are shown across the chart
+		scaleShowGridLines : true,
+
+		//String - Colour of the grid lines
+		scaleGridLineColor : "rgba(0,0,0,.05)",
+
+		//Number - Width of the grid lines
+		scaleGridLineWidth : 1,
+
+		//Boolean - Whether to show horizontal lines (except X axis)
+		scaleShowHorizontalLines: true,
+
+		//Boolean - Whether to show vertical lines (except Y axis)
+		scaleShowVerticalLines: true,
+
+		//Boolean - If there is a stroke on each bar
+		barShowStroke : true,
+
+		//Number - Pixel width of the bar stroke
+		barStrokeWidth : 2,
+
+		//Number - Spacing between each of the X value sets
+		barValueSpacing : 5,
+
+		//Number - Spacing between data sets within X values
+		barDatasetSpacing : 1,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span class=\"<%=name.toLowerCase()%>-legend-icon\" style=\"background-color:<%=datasets[i].fillColor%>\"></span><span class=\"<%=name.toLowerCase()%>-legend-text\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span></li><%}%></ul>"
+
+	};
+
+
+	Chart.Type.extend({
+		name: "Bar",
+		defaults : defaultConfig,
+		initialize:  function(data){
+
+			//Expose options as a scope variable here so we can access it in the ScaleClass
+			var options = this.options;
+
+			this.ScaleClass = Chart.Scale.extend({
+				offsetGridLines : true,
+				calculateBarX : function(datasetCount, datasetIndex, barIndex){
+					//Reusable method for calculating the xPosition of a given bar based on datasetIndex & width of the bar
+					var xWidth = this.calculateBaseWidth(),
+						xAbsolute = this.calculateX(barIndex) - (xWidth/2),
+						barWidth = this.calculateBarWidth(datasetCount);
+
+					return xAbsolute + (barWidth * datasetIndex) + (datasetIndex * options.barDatasetSpacing) + barWidth/2;
+				},
+				calculateBaseWidth : function(){
+					return (this.calculateX(1) - this.calculateX(0)) - (2*options.barValueSpacing);
+				},
+				calculateBarWidth : function(datasetCount){
+					//The padding between datasets is to the right of each bar, providing that there are more than 1 dataset
+					var baseWidth = this.calculateBaseWidth() - ((datasetCount - 1) * options.barDatasetSpacing);
+
+					return (baseWidth / datasetCount);
+				}
+			});
+
+			this.datasets = [];
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activeBars = (evt.type !== 'mouseout') ? this.getBarsAtEvent(evt) : [];
+
+					this.eachBars(function(bar){
+						bar.restore(['fillColor', 'strokeColor']);
+					});
+					helpers.each(activeBars, function(activeBar){
+						if (activeBar) {
+							activeBar.fillColor = activeBar.highlightFill;
+							activeBar.strokeColor = activeBar.highlightStroke;
+						}
+					});
+					this.showTooltip(activeBars);
+				});
+			}
+
+			//Declare the extension of the default point, to cater for the options passed in to the constructor
+			this.BarClass = Chart.Rectangle.extend({
+				strokeWidth : this.options.barStrokeWidth,
+				showStroke : this.options.barShowStroke,
+				ctx : this.chart.ctx
+			});
+
+			//Iterate through each of the datasets, and build this into a property of the chart
+			helpers.each(data.datasets,function(dataset,datasetIndex){
+
+				var datasetObject = {
+					label : dataset.label || null,
+					fillColor : dataset.fillColor,
+					strokeColor : dataset.strokeColor,
+					bars : []
+				};
+
+				this.datasets.push(datasetObject);
+
+				helpers.each(dataset.data,function(dataPoint,index){
+					//Add a new point for each piece of data, passing any required data to draw.
+					datasetObject.bars.push(new this.BarClass({
+						value : dataPoint,
+						label : data.labels[index],
+						datasetLabel: dataset.label,
+						strokeColor : (typeof dataset.strokeColor == 'object') ? dataset.strokeColor[index] : dataset.strokeColor,
+						fillColor : (typeof dataset.fillColor == 'object') ? dataset.fillColor[index] : dataset.fillColor,
+						highlightFill : (dataset.highlightFill) ? (typeof dataset.highlightFill == 'object') ? dataset.highlightFill[index] : dataset.highlightFill : (typeof dataset.fillColor == 'object') ? dataset.fillColor[index] : dataset.fillColor,
+						highlightStroke : (dataset.highlightStroke) ? (typeof dataset.highlightStroke == 'object') ? dataset.highlightStroke[index] : dataset.highlightStroke : (typeof dataset.strokeColor == 'object') ? dataset.strokeColor[index] : dataset.strokeColor
+					}));
+				},this);
+
+			},this);
+
+			this.buildScale(data.labels);
+
+			this.BarClass.prototype.base = this.scale.endPoint;
+
+			this.eachBars(function(bar, index, datasetIndex){
+				helpers.extend(bar, {
+					width : this.scale.calculateBarWidth(this.datasets.length),
+					x: this.scale.calculateBarX(this.datasets.length, datasetIndex, index),
+					y: this.scale.endPoint
+				});
+				bar.save();
+			}, this);
+
+			this.render();
+		},
+		update : function(){
+			this.scale.update();
+			// Reset any highlight colours before updating.
+			helpers.each(this.activeElements, function(activeElement){
+				activeElement.restore(['fillColor', 'strokeColor']);
+			});
+
+			this.eachBars(function(bar){
+				bar.save();
+			});
+			this.render();
+		},
+		eachBars : function(callback){
+			helpers.each(this.datasets,function(dataset, datasetIndex){
+				helpers.each(dataset.bars, callback, this, datasetIndex);
+			},this);
+		},
+		getBarsAtEvent : function(e){
+			var barsArray = [],
+				eventPosition = helpers.getRelativePosition(e),
+				datasetIterator = function(dataset){
+					barsArray.push(dataset.bars[barIndex]);
+				},
+				barIndex;
+
+			for (var datasetIndex = 0; datasetIndex < this.datasets.length; datasetIndex++) {
+				for (barIndex = 0; barIndex < this.datasets[datasetIndex].bars.length; barIndex++) {
+					if (this.datasets[datasetIndex].bars[barIndex].inRange(eventPosition.x,eventPosition.y)){
+						helpers.each(this.datasets, datasetIterator);
+						return barsArray;
+					}
+				}
+			}
+
+			return barsArray;
+		},
+		buildScale : function(labels){
+			var self = this;
+
+			var dataTotal = function(){
+				var values = [];
+				self.eachBars(function(bar){
+					values.push(bar.value);
+				});
+				return values;
+			};
+
+			var scaleOptions = {
+				templateString : this.options.scaleLabel,
+				height : this.chart.height,
+				width : this.chart.width,
+				ctx : this.chart.ctx,
+				textColor : this.options.scaleFontColor,
+				fontSize : this.options.scaleFontSize,
+				fontStyle : this.options.scaleFontStyle,
+				fontFamily : this.options.scaleFontFamily,
+				valuesCount : labels.length,
+				beginAtZero : this.options.scaleBeginAtZero,
+				integersOnly : this.options.scaleIntegersOnly,
+				calculateYRange: function(currentHeight){
+					var updatedRanges = helpers.calculateScaleRange(
+						dataTotal(),
+						currentHeight,
+						this.fontSize,
+						this.beginAtZero,
+						this.integersOnly
+					);
+					helpers.extend(this, updatedRanges);
+				},
+				xLabels : labels,
+				font : helpers.fontString(this.options.scaleFontSize, this.options.scaleFontStyle, this.options.scaleFontFamily),
+				lineWidth : this.options.scaleLineWidth,
+				lineColor : this.options.scaleLineColor,
+				showHorizontalLines : this.options.scaleShowHorizontalLines,
+				showVerticalLines : this.options.scaleShowVerticalLines,
+				gridLineWidth : (this.options.scaleShowGridLines) ? this.options.scaleGridLineWidth : 0,
+				gridLineColor : (this.options.scaleShowGridLines) ? this.options.scaleGridLineColor : "rgba(0,0,0,0)",
+				padding : (this.options.showScale) ? 0 : (this.options.barShowStroke) ? this.options.barStrokeWidth : 0,
+				showLabels : this.options.scaleShowLabels,
+				display : this.options.showScale
+			};
+
+			if (this.options.scaleOverride){
+				helpers.extend(scaleOptions, {
+					calculateYRange: helpers.noop,
+					steps: this.options.scaleSteps,
+					stepValue: this.options.scaleStepWidth,
+					min: this.options.scaleStartValue,
+					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+				});
+			}
+
+			this.scale = new this.ScaleClass(scaleOptions);
+		},
+		addData : function(valuesArray,label){
+			//Map the values array for each of the datasets
+			helpers.each(valuesArray,function(value,datasetIndex){
+				//Add a new point for each piece of data, passing any required data to draw.
+				this.datasets[datasetIndex].bars.push(new this.BarClass({
+					value : value,
+					label : label,
+					datasetLabel: this.datasets[datasetIndex].label,
+					x: this.scale.calculateBarX(this.datasets.length, datasetIndex, this.scale.valuesCount+1),
+					y: this.scale.endPoint,
+					width : this.scale.calculateBarWidth(this.datasets.length),
+					base : this.scale.endPoint,
+					strokeColor : this.datasets[datasetIndex].strokeColor,
+					fillColor : this.datasets[datasetIndex].fillColor
+				}));
+			},this);
+
+			this.scale.addXLabel(label);
+			//Then re-render the chart.
+			this.update();
+		},
+		removeData : function(){
+			this.scale.removeXLabel();
+			//Then re-render the chart.
+			helpers.each(this.datasets,function(dataset){
+				dataset.bars.shift();
+			},this);
+			this.update();
+		},
+		reflow : function(){
+			helpers.extend(this.BarClass.prototype,{
+				y: this.scale.endPoint,
+				base : this.scale.endPoint
+			});
+			var newScaleProps = helpers.extend({
+				height : this.chart.height,
+				width : this.chart.width
+			});
+			this.scale.update(newScaleProps);
+		},
+		draw : function(ease){
+			var easingDecimal = ease || 1;
+			this.clear();
+
+			var ctx = this.chart.ctx;
+
+			this.scale.draw(easingDecimal);
+
+			//Draw all the bars for each dataset
+			helpers.each(this.datasets,function(dataset,datasetIndex){
+				helpers.each(dataset.bars,function(bar,index){
+					if (bar.hasValue()){
+						bar.base = this.scale.endPoint;
+						//Transition then draw
+						bar.transition({
+							x : this.scale.calculateBarX(this.datasets.length, datasetIndex, index),
+							y : this.scale.calculateY(bar.value),
+							width : this.scale.calculateBarWidth(this.datasets.length)
+						}, easingDecimal).draw();
+					}
+				},this);
+
+			},this);
+		}
+	});
+
+
+}).call(this);
+
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		//Cache a local reference to Chart.helpers
+		helpers = Chart.helpers;
+
+	var defaultConfig = {
+		//Boolean - Whether we should show a stroke on each segment
+		segmentShowStroke : true,
+
+		//String - The colour of each segment stroke
+		segmentStrokeColor : "#fff",
+
+		//Number - The width of each segment stroke
+		segmentStrokeWidth : 2,
+
+		//The percentage of the chart that we cut out of the middle.
+		percentageInnerCutout : 50,
+
+		//Number - Amount of animation steps
+		animationSteps : 100,
+
+		//String - Animation easing effect
+		animationEasing : "easeOutBounce",
+
+		//Boolean - Whether we animate the rotation of the Doughnut
+		animateRotate : true,
+
+		//Boolean - Whether we animate scaling the Doughnut from the centre
+		animateScale : false,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span class=\"<%=name.toLowerCase()%>-legend-icon\" style=\"background-color:<%=segments[i].fillColor%>\"></span><span class=\"<%=name.toLowerCase()%>-legend-text\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span></li><%}%></ul>"
+
+	};
+
+	Chart.Type.extend({
+		//Passing in a name registers this chart in the Chart namespace
+		name: "Doughnut",
+		//Providing a defaults will also register the defaults in the chart namespace
+		defaults : defaultConfig,
+		//Initialize is fired when the chart is initialized - Data is passed in as a parameter
+		//Config is automatically merged by the core of Chart.js, and is available at this.options
+		initialize:  function(data){
+
+			//Declare segments as a static property to prevent inheriting across the Chart type prototype
+			this.segments = [];
+			this.outerRadius = (helpers.min([this.chart.width,this.chart.height]) -	this.options.segmentStrokeWidth/2)/2;
+
+			this.SegmentArc = Chart.Arc.extend({
+				ctx : this.chart.ctx,
+				x : this.chart.width/2,
+				y : this.chart.height/2
+			});
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activeSegments = (evt.type !== 'mouseout') ? this.getSegmentsAtEvent(evt) : [];
+
+					helpers.each(this.segments,function(segment){
+						segment.restore(["fillColor"]);
+					});
+					helpers.each(activeSegments,function(activeSegment){
+						activeSegment.fillColor = activeSegment.highlightColor;
+					});
+					this.showTooltip(activeSegments);
+				});
+			}
+			this.calculateTotal(data);
+
+			helpers.each(data,function(datapoint, index){
+				if (!datapoint.color) {
+					datapoint.color = 'hsl(' + (360 * index / data.length) + ', 100%, 50%)';
+				}
+				this.addData(datapoint, index, true);
+			},this);
+
+			this.render();
+		},
+		getSegmentsAtEvent : function(e){
+			var segmentsArray = [];
+
+			var location = helpers.getRelativePosition(e);
+
+			helpers.each(this.segments,function(segment){
+				if (segment.inRange(location.x,location.y)) segmentsArray.push(segment);
+			},this);
+			return segmentsArray;
+		},
+		addData : function(segment, atIndex, silent){
+			var index = atIndex !== undefined ? atIndex : this.segments.length;
+			if ( typeof(segment.color) === "undefined" ) {
+				segment.color = Chart.defaults.global.segmentColorDefault[index % Chart.defaults.global.segmentColorDefault.length];
+				segment.highlight = Chart.defaults.global.segmentHighlightColorDefaults[index % Chart.defaults.global.segmentHighlightColorDefaults.length];				
+			}
+			this.segments.splice(index, 0, new this.SegmentArc({
+				value : segment.value,
+				outerRadius : (this.options.animateScale) ? 0 : this.outerRadius,
+				innerRadius : (this.options.animateScale) ? 0 : (this.outerRadius/100) * this.options.percentageInnerCutout,
+				fillColor : segment.color,
+				highlightColor : segment.highlight || segment.color,
+				showStroke : this.options.segmentShowStroke,
+				strokeWidth : this.options.segmentStrokeWidth,
+				strokeColor : this.options.segmentStrokeColor,
+				startAngle : Math.PI * 1.5,
+				circumference : (this.options.animateRotate) ? 0 : this.calculateCircumference(segment.value),
+				label : segment.label
+			}));
+			if (!silent){
+				this.reflow();
+				this.update();
+			}
+		},
+		calculateCircumference : function(value) {
+			if ( this.total > 0 ) {
+				return (Math.PI*2)*(value / this.total);
+			} else {
+				return 0;
+			}
+		},
+		calculateTotal : function(data){
+			this.total = 0;
+			helpers.each(data,function(segment){
+				this.total += Math.abs(segment.value);
+			},this);
+		},
+		update : function(){
+			this.calculateTotal(this.segments);
+
+			// Reset any highlight colours before updating.
+			helpers.each(this.activeElements, function(activeElement){
+				activeElement.restore(['fillColor']);
+			});
+
+			helpers.each(this.segments,function(segment){
+				segment.save();
+			});
+			this.render();
+		},
+
+		removeData: function(atIndex){
+			var indexToDelete = (helpers.isNumber(atIndex)) ? atIndex : this.segments.length-1;
+			this.segments.splice(indexToDelete, 1);
+			this.reflow();
+			this.update();
+		},
+
+		reflow : function(){
+			helpers.extend(this.SegmentArc.prototype,{
+				x : this.chart.width/2,
+				y : this.chart.height/2
+			});
+			this.outerRadius = (helpers.min([this.chart.width,this.chart.height]) -	this.options.segmentStrokeWidth/2)/2;
+			helpers.each(this.segments, function(segment){
+				segment.update({
+					outerRadius : this.outerRadius,
+					innerRadius : (this.outerRadius/100) * this.options.percentageInnerCutout
+				});
+			}, this);
+		},
+		draw : function(easeDecimal){
+			var animDecimal = (easeDecimal) ? easeDecimal : 1;
+			this.clear();
+			helpers.each(this.segments,function(segment,index){
+				segment.transition({
+					circumference : this.calculateCircumference(segment.value),
+					outerRadius : this.outerRadius,
+					innerRadius : (this.outerRadius/100) * this.options.percentageInnerCutout
+				},animDecimal);
+
+				segment.endAngle = segment.startAngle + segment.circumference;
+
+				segment.draw();
+				if (index === 0){
+					segment.startAngle = Math.PI * 1.5;
+				}
+				//Check to see if it's the last segment, if not get the next and update the start angle
+				if (index < this.segments.length-1){
+					this.segments[index+1].startAngle = segment.endAngle;
+				}
+			},this);
+
+		}
+	});
+
+	Chart.types.Doughnut.extend({
+		name : "Pie",
+		defaults : helpers.merge(defaultConfig,{percentageInnerCutout : 0})
+	});
+
+}).call(this);
+
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		helpers = Chart.helpers;
+
+	var defaultConfig = {
+
+		///Boolean - Whether grid lines are shown across the chart
+		scaleShowGridLines : true,
+
+		//String - Colour of the grid lines
+		scaleGridLineColor : "rgba(0,0,0,.05)",
+
+		//Number - Width of the grid lines
+		scaleGridLineWidth : 1,
+
+		//Boolean - Whether to show horizontal lines (except X axis)
+		scaleShowHorizontalLines: true,
+
+		//Boolean - Whether to show vertical lines (except Y axis)
+		scaleShowVerticalLines: true,
+
+		//Boolean - Whether the line is curved between points
+		bezierCurve : true,
+
+		//Number - Tension of the bezier curve between points
+		bezierCurveTension : 0.4,
+
+		//Boolean - Whether to show a dot for each point
+		pointDot : true,
+
+		//Number - Radius of each point dot in pixels
+		pointDotRadius : 4,
+
+		//Number - Pixel width of point dot stroke
+		pointDotStrokeWidth : 1,
+
+		//Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+		pointHitDetectionRadius : 20,
+
+		//Boolean - Whether to show a stroke for datasets
+		datasetStroke : true,
+
+		//Number - Pixel width of dataset stroke
+		datasetStrokeWidth : 2,
+
+		//Boolean - Whether to fill the dataset with a colour
+		datasetFill : true,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span class=\"<%=name.toLowerCase()%>-legend-icon\" style=\"background-color:<%=datasets[i].strokeColor%>\"></span><span class=\"<%=name.toLowerCase()%>-legend-text\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span></li><%}%></ul>",
+
+		//Boolean - Whether to horizontally center the label and point dot inside the grid
+		offsetGridLines : false
+
+	};
+
+
+	Chart.Type.extend({
+		name: "Line",
+		defaults : defaultConfig,
+		initialize:  function(data){
+			//Declare the extension of the default point, to cater for the options passed in to the constructor
+			this.PointClass = Chart.Point.extend({
+				offsetGridLines : this.options.offsetGridLines,
+				strokeWidth : this.options.pointDotStrokeWidth,
+				radius : this.options.pointDotRadius,
+				display: this.options.pointDot,
+				hitDetectionRadius : this.options.pointHitDetectionRadius,
+				ctx : this.chart.ctx,
+				inRange : function(mouseX){
+					return (Math.pow(mouseX-this.x, 2) < Math.pow(this.radius + this.hitDetectionRadius,2));
+				}
+			});
+
+			this.datasets = [];
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activePoints = (evt.type !== 'mouseout') ? this.getPointsAtEvent(evt) : [];
+					this.eachPoints(function(point){
+						point.restore(['fillColor', 'strokeColor']);
+					});
+					helpers.each(activePoints, function(activePoint){
+						activePoint.fillColor = activePoint.highlightFill;
+						activePoint.strokeColor = activePoint.highlightStroke;
+					});
+					this.showTooltip(activePoints);
+				});
+			}
+
+			//Iterate through each of the datasets, and build this into a property of the chart
+			helpers.each(data.datasets,function(dataset){
+
+				var datasetObject = {
+					label : dataset.label || null,
+					fillColor : dataset.fillColor,
+					strokeColor : dataset.strokeColor,
+					pointColor : dataset.pointColor,
+					pointStrokeColor : dataset.pointStrokeColor,
+					points : []
+				};
+
+				this.datasets.push(datasetObject);
+
+
+				helpers.each(dataset.data,function(dataPoint,index){
+					//Add a new point for each piece of data, passing any required data to draw.
+					datasetObject.points.push(new this.PointClass({
+						value : dataPoint,
+						label : data.labels[index],
+						datasetLabel: dataset.label,
+						strokeColor : dataset.pointStrokeColor,
+						fillColor : dataset.pointColor,
+						highlightFill : dataset.pointHighlightFill || dataset.pointColor,
+						highlightStroke : dataset.pointHighlightStroke || dataset.pointStrokeColor
+					}));
+				},this);
+
+				this.buildScale(data.labels);
+
+
+				this.eachPoints(function(point, index){
+					helpers.extend(point, {
+						x: this.scale.calculateX(index),
+						y: this.scale.endPoint
+					});
+					point.save();
+				}, this);
+
+			},this);
+
+
+			this.render();
+		},
+		update : function(){
+			this.scale.update();
+			// Reset any highlight colours before updating.
+			helpers.each(this.activeElements, function(activeElement){
+				activeElement.restore(['fillColor', 'strokeColor']);
+			});
+			this.eachPoints(function(point){
+				point.save();
+			});
+			this.render();
+		},
+		eachPoints : function(callback){
+			helpers.each(this.datasets,function(dataset){
+				helpers.each(dataset.points,callback,this);
+			},this);
+		},
+		getPointsAtEvent : function(e){
+			var pointsArray = [],
+				eventPosition = helpers.getRelativePosition(e);
+			helpers.each(this.datasets,function(dataset){
+				helpers.each(dataset.points,function(point){
+					if (point.inRange(eventPosition.x,eventPosition.y)) pointsArray.push(point);
+				});
+			},this);
+			return pointsArray;
+		},
+		buildScale : function(labels){
+			var self = this;
+
+			var dataTotal = function(){
+				var values = [];
+				self.eachPoints(function(point){
+					values.push(point.value);
+				});
+
+				return values;
+			};
+
+			var scaleOptions = {
+				templateString : this.options.scaleLabel,
+				height : this.chart.height,
+				width : this.chart.width,
+				ctx : this.chart.ctx,
+				textColor : this.options.scaleFontColor,
+				offsetGridLines : this.options.offsetGridLines,
+				fontSize : this.options.scaleFontSize,
+				fontStyle : this.options.scaleFontStyle,
+				fontFamily : this.options.scaleFontFamily,
+				valuesCount : labels.length,
+				beginAtZero : this.options.scaleBeginAtZero,
+				integersOnly : this.options.scaleIntegersOnly,
+				calculateYRange : function(currentHeight){
+					var updatedRanges = helpers.calculateScaleRange(
+						dataTotal(),
+						currentHeight,
+						this.fontSize,
+						this.beginAtZero,
+						this.integersOnly
+					);
+					helpers.extend(this, updatedRanges);
+				},
+				xLabels : labels,
+				font : helpers.fontString(this.options.scaleFontSize, this.options.scaleFontStyle, this.options.scaleFontFamily),
+				lineWidth : this.options.scaleLineWidth,
+				lineColor : this.options.scaleLineColor,
+				showHorizontalLines : this.options.scaleShowHorizontalLines,
+				showVerticalLines : this.options.scaleShowVerticalLines,
+				gridLineWidth : (this.options.scaleShowGridLines) ? this.options.scaleGridLineWidth : 0,
+				gridLineColor : (this.options.scaleShowGridLines) ? this.options.scaleGridLineColor : "rgba(0,0,0,0)",
+				padding: (this.options.showScale) ? 0 : this.options.pointDotRadius + this.options.pointDotStrokeWidth,
+				showLabels : this.options.scaleShowLabels,
+				display : this.options.showScale
+			};
+
+			if (this.options.scaleOverride){
+				helpers.extend(scaleOptions, {
+					calculateYRange: helpers.noop,
+					steps: this.options.scaleSteps,
+					stepValue: this.options.scaleStepWidth,
+					min: this.options.scaleStartValue,
+					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+				});
+			}
+
+
+			this.scale = new Chart.Scale(scaleOptions);
+		},
+		addData : function(valuesArray,label){
+			//Map the values array for each of the datasets
+
+			helpers.each(valuesArray,function(value,datasetIndex){
+				//Add a new point for each piece of data, passing any required data to draw.
+				this.datasets[datasetIndex].points.push(new this.PointClass({
+					value : value,
+					label : label,
+					datasetLabel: this.datasets[datasetIndex].label,
+					x: this.scale.calculateX(this.scale.valuesCount+1),
+					y: this.scale.endPoint,
+					strokeColor : this.datasets[datasetIndex].pointStrokeColor,
+					fillColor : this.datasets[datasetIndex].pointColor
+				}));
+			},this);
+
+			this.scale.addXLabel(label);
+			//Then re-render the chart.
+			this.update();
+		},
+		removeData : function(){
+			this.scale.removeXLabel();
+			//Then re-render the chart.
+			helpers.each(this.datasets,function(dataset){
+				dataset.points.shift();
+			},this);
+			this.update();
+		},
+		reflow : function(){
+			var newScaleProps = helpers.extend({
+				height : this.chart.height,
+				width : this.chart.width
+			});
+			this.scale.update(newScaleProps);
+		},
+		draw : function(ease){
+			var easingDecimal = ease || 1;
+			this.clear();
+
+			var ctx = this.chart.ctx;
+
+			// Some helper methods for getting the next/prev points
+			var hasValue = function(item){
+				return item.value !== null;
+			},
+			nextPoint = function(point, collection, index){
+				return helpers.findNextWhere(collection, hasValue, index) || point;
+			},
+			previousPoint = function(point, collection, index){
+				return helpers.findPreviousWhere(collection, hasValue, index) || point;
+			};
+
+			if (!this.scale) return;
+			this.scale.draw(easingDecimal);
+
+
+			helpers.each(this.datasets,function(dataset){
+				var pointsWithValues = helpers.where(dataset.points, hasValue);
+
+				//Transition each point first so that the line and point drawing isn't out of sync
+				//We can use this extra loop to calculate the control points of this dataset also in this loop
+
+				helpers.each(dataset.points, function(point, index){
+					if (point.hasValue()){
+						point.transition({
+							y : this.scale.calculateY(point.value),
+							x : this.scale.calculateX(index)
+						}, easingDecimal);
+					}
+				},this);
+
+
+				// Control points need to be calculated in a separate loop, because we need to know the current x/y of the point
+				// This would cause issues when there is no animation, because the y of the next point would be 0, so beziers would be skewed
+				if (this.options.bezierCurve){
+					helpers.each(pointsWithValues, function(point, index){
+						var tension = (index > 0 && index < pointsWithValues.length - 1) ? this.options.bezierCurveTension : 0;
+						point.controlPoints = helpers.splineCurve(
+							previousPoint(point, pointsWithValues, index),
+							point,
+							nextPoint(point, pointsWithValues, index),
+							tension
+						);
+
+						// Prevent the bezier going outside of the bounds of the graph
+
+						// Cap puter bezier handles to the upper/lower scale bounds
+						if (point.controlPoints.outer.y > this.scale.endPoint){
+							point.controlPoints.outer.y = this.scale.endPoint;
+						}
+						else if (point.controlPoints.outer.y < this.scale.startPoint){
+							point.controlPoints.outer.y = this.scale.startPoint;
+						}
+
+						// Cap inner bezier handles to the upper/lower scale bounds
+						if (point.controlPoints.inner.y > this.scale.endPoint){
+							point.controlPoints.inner.y = this.scale.endPoint;
+						}
+						else if (point.controlPoints.inner.y < this.scale.startPoint){
+							point.controlPoints.inner.y = this.scale.startPoint;
+						}
+					},this);
+				}
+
+
+				//Draw the line between all the points
+				ctx.lineWidth = this.options.datasetStrokeWidth;
+				ctx.strokeStyle = dataset.strokeColor;
+				ctx.beginPath();
+
+				helpers.each(pointsWithValues, function(point, index){
+					if (index === 0){
+						ctx.moveTo(point.x, point.y);
+					}
+					else{
+						if(this.options.bezierCurve){
+							var previous = previousPoint(point, pointsWithValues, index);
+
+							ctx.bezierCurveTo(
+								previous.controlPoints.outer.x,
+								previous.controlPoints.outer.y,
+								point.controlPoints.inner.x,
+								point.controlPoints.inner.y,
+								point.x,
+								point.y
+							);
+						}
+						else{
+							ctx.lineTo(point.x,point.y);
+						}
+					}
+				}, this);
+
+				if (this.options.datasetStroke) {
+					ctx.stroke();
+				}
+
+				if (this.options.datasetFill && pointsWithValues.length > 0){
+					//Round off the line by going to the base of the chart, back to the start, then fill.
+					ctx.lineTo(pointsWithValues[pointsWithValues.length - 1].x, this.scale.endPoint);
+					ctx.lineTo(pointsWithValues[0].x, this.scale.endPoint);
+					ctx.fillStyle = dataset.fillColor;
+					ctx.closePath();
+					ctx.fill();
+				}
+
+				//Now draw the points over the line
+				//A little inefficient double looping, but better than the line
+				//lagging behind the point positions
+				helpers.each(pointsWithValues,function(point){
+					point.draw();
+				});
+			},this);
+		}
+	});
+
+
+}).call(this);
+
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		//Cache a local reference to Chart.helpers
+		helpers = Chart.helpers;
+
+	var defaultConfig = {
+		//Boolean - Show a backdrop to the scale label
+		scaleShowLabelBackdrop : true,
+
+		//String - The colour of the label backdrop
+		scaleBackdropColor : "rgba(255,255,255,0.75)",
+
+		// Boolean - Whether the scale should begin at zero
+		scaleBeginAtZero : true,
+
+		//Number - The backdrop padding above & below the label in pixels
+		scaleBackdropPaddingY : 2,
+
+		//Number - The backdrop padding to the side of the label in pixels
+		scaleBackdropPaddingX : 2,
+
+		//Boolean - Show line for each value in the scale
+		scaleShowLine : true,
+
+		//Boolean - Stroke a line around each segment in the chart
+		segmentShowStroke : true,
+
+		//String - The colour of the stroke on each segment.
+		segmentStrokeColor : "#fff",
+
+		//Number - The width of the stroke value in pixels
+		segmentStrokeWidth : 2,
+
+		//Number - Amount of animation steps
+		animationSteps : 100,
+
+		//String - Animation easing effect.
+		animationEasing : "easeOutBounce",
+
+		//Boolean - Whether to animate the rotation of the chart
+		animateRotate : true,
+
+		//Boolean - Whether to animate scaling the chart from the centre
+		animateScale : false,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span class=\"<%=name.toLowerCase()%>-legend-icon\" style=\"background-color:<%=segments[i].fillColor%>\"></span><span class=\"<%=name.toLowerCase()%>-legend-text\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span></li><%}%></ul>"
+	};
+
+
+	Chart.Type.extend({
+		//Passing in a name registers this chart in the Chart namespace
+		name: "PolarArea",
+		//Providing a defaults will also register the defaults in the chart namespace
+		defaults : defaultConfig,
+		//Initialize is fired when the chart is initialized - Data is passed in as a parameter
+		//Config is automatically merged by the core of Chart.js, and is available at this.options
+		initialize:  function(data){
+			this.segments = [];
+			//Declare segment class as a chart instance specific class, so it can share props for this instance
+			this.SegmentArc = Chart.Arc.extend({
+				showStroke : this.options.segmentShowStroke,
+				strokeWidth : this.options.segmentStrokeWidth,
+				strokeColor : this.options.segmentStrokeColor,
+				ctx : this.chart.ctx,
+				innerRadius : 0,
+				x : this.chart.width/2,
+				y : this.chart.height/2
+			});
+			this.scale = new Chart.RadialScale({
+				display: this.options.showScale,
+				fontStyle: this.options.scaleFontStyle,
+				fontSize: this.options.scaleFontSize,
+				fontFamily: this.options.scaleFontFamily,
+				fontColor: this.options.scaleFontColor,
+				showLabels: this.options.scaleShowLabels,
+				showLabelBackdrop: this.options.scaleShowLabelBackdrop,
+				backdropColor: this.options.scaleBackdropColor,
+				backdropPaddingY : this.options.scaleBackdropPaddingY,
+				backdropPaddingX: this.options.scaleBackdropPaddingX,
+				lineWidth: (this.options.scaleShowLine) ? this.options.scaleLineWidth : 0,
+				lineColor: this.options.scaleLineColor,
+				lineArc: true,
+				width: this.chart.width,
+				height: this.chart.height,
+				xCenter: this.chart.width/2,
+				yCenter: this.chart.height/2,
+				ctx : this.chart.ctx,
+				templateString: this.options.scaleLabel,
+				valuesCount: data.length
+			});
+
+			this.updateScaleRange(data);
+
+			this.scale.update();
+
+			helpers.each(data,function(segment,index){
+				this.addData(segment,index,true);
+			},this);
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activeSegments = (evt.type !== 'mouseout') ? this.getSegmentsAtEvent(evt) : [];
+					helpers.each(this.segments,function(segment){
+						segment.restore(["fillColor"]);
+					});
+					helpers.each(activeSegments,function(activeSegment){
+						activeSegment.fillColor = activeSegment.highlightColor;
+					});
+					this.showTooltip(activeSegments);
+				});
+			}
+
+			this.render();
+		},
+		getSegmentsAtEvent : function(e){
+			var segmentsArray = [];
+
+			var location = helpers.getRelativePosition(e);
+
+			helpers.each(this.segments,function(segment){
+				if (segment.inRange(location.x,location.y)) segmentsArray.push(segment);
+			},this);
+			return segmentsArray;
+		},
+		addData : function(segment, atIndex, silent){
+			var index = atIndex || this.segments.length;
+
+			this.segments.splice(index, 0, new this.SegmentArc({
+				fillColor: segment.color,
+				highlightColor: segment.highlight || segment.color,
+				label: segment.label,
+				value: segment.value,
+				outerRadius: (this.options.animateScale) ? 0 : this.scale.calculateCenterOffset(segment.value),
+				circumference: (this.options.animateRotate) ? 0 : this.scale.getCircumference(),
+				startAngle: Math.PI * 1.5
+			}));
+			if (!silent){
+				this.reflow();
+				this.update();
+			}
+		},
+		removeData: function(atIndex){
+			var indexToDelete = (helpers.isNumber(atIndex)) ? atIndex : this.segments.length-1;
+			this.segments.splice(indexToDelete, 1);
+			this.reflow();
+			this.update();
+		},
+		calculateTotal: function(data){
+			this.total = 0;
+			helpers.each(data,function(segment){
+				this.total += segment.value;
+			},this);
+			this.scale.valuesCount = this.segments.length;
+		},
+		updateScaleRange: function(datapoints){
+			var valuesArray = [];
+			helpers.each(datapoints,function(segment){
+				valuesArray.push(segment.value);
+			});
+
+			var scaleSizes = (this.options.scaleOverride) ?
+				{
+					steps: this.options.scaleSteps,
+					stepValue: this.options.scaleStepWidth,
+					min: this.options.scaleStartValue,
+					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+				} :
+				helpers.calculateScaleRange(
+					valuesArray,
+					helpers.min([this.chart.width, this.chart.height])/2,
+					this.options.scaleFontSize,
+					this.options.scaleBeginAtZero,
+					this.options.scaleIntegersOnly
+				);
+
+			helpers.extend(
+				this.scale,
+				scaleSizes,
+				{
+					size: helpers.min([this.chart.width, this.chart.height]),
+					xCenter: this.chart.width/2,
+					yCenter: this.chart.height/2
+				}
+			);
+
+		},
+		update : function(){
+			this.calculateTotal(this.segments);
+
+			helpers.each(this.segments,function(segment){
+				segment.save();
+			});
+			
+			this.reflow();
+			this.render();
+		},
+		reflow : function(){
+			helpers.extend(this.SegmentArc.prototype,{
+				x : this.chart.width/2,
+				y : this.chart.height/2
+			});
+			this.updateScaleRange(this.segments);
+			this.scale.update();
+
+			helpers.extend(this.scale,{
+				xCenter: this.chart.width/2,
+				yCenter: this.chart.height/2
+			});
+
+			helpers.each(this.segments, function(segment){
+				segment.update({
+					outerRadius : this.scale.calculateCenterOffset(segment.value)
+				});
+			}, this);
+
+		},
+		draw : function(ease){
+			var easingDecimal = ease || 1;
+			//Clear & draw the canvas
+			this.clear();
+			helpers.each(this.segments,function(segment, index){
+				segment.transition({
+					circumference : this.scale.getCircumference(),
+					outerRadius : this.scale.calculateCenterOffset(segment.value)
+				},easingDecimal);
+
+				segment.endAngle = segment.startAngle + segment.circumference;
+
+				// If we've removed the first segment we need to set the first one to
+				// start at the top.
+				if (index === 0){
+					segment.startAngle = Math.PI * 1.5;
+				}
+
+				//Check to see if it's the last segment, if not get the next and update the start angle
+				if (index < this.segments.length - 1){
+					this.segments[index+1].startAngle = segment.endAngle;
+				}
+				segment.draw();
+			}, this);
+			this.scale.draw();
+		}
+	});
+
+}).call(this);
+
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		helpers = Chart.helpers;
+
+
+
+	Chart.Type.extend({
+		name: "Radar",
+		defaults:{
+			//Boolean - Whether to show lines for each scale point
+			scaleShowLine : true,
+
+			//Boolean - Whether we show the angle lines out of the radar
+			angleShowLineOut : true,
+
+			//Boolean - Whether to show labels on the scale
+			scaleShowLabels : false,
+
+			// Boolean - Whether the scale should begin at zero
+			scaleBeginAtZero : true,
+
+			//String - Colour of the angle line
+			angleLineColor : "rgba(0,0,0,.1)",
+
+			//Number - Pixel width of the angle line
+			angleLineWidth : 1,
+
+			//Number - Interval at which to draw angle lines ("every Nth point")
+			angleLineInterval: 1,
+
+			//String - Point label font declaration
+			pointLabelFontFamily : "'Arial'",
+
+			//String - Point label font weight
+			pointLabelFontStyle : "normal",
+
+			//Number - Point label font size in pixels
+			pointLabelFontSize : 10,
+
+			//String - Point label font colour
+			pointLabelFontColor : "#666",
+
+			//Boolean - Whether to show a dot for each point
+			pointDot : true,
+
+			//Number - Radius of each point dot in pixels
+			pointDotRadius : 3,
+
+			//Number - Pixel width of point dot stroke
+			pointDotStrokeWidth : 1,
+
+			//Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+			pointHitDetectionRadius : 20,
+
+			//Boolean - Whether to show a stroke for datasets
+			datasetStroke : true,
+
+			//Number - Pixel width of dataset stroke
+			datasetStrokeWidth : 2,
+
+			//Boolean - Whether to fill the dataset with a colour
+			datasetFill : true,
+
+			//String - A legend template
+			legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span class=\"<%=name.toLowerCase()%>-legend-icon\" style=\"background-color:<%=datasets[i].strokeColor%>\"></span><span class=\"<%=name.toLowerCase()%>-legend-text\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span></li><%}%></ul>"
+
+		},
+
+		initialize: function(data){
+			this.PointClass = Chart.Point.extend({
+				strokeWidth : this.options.pointDotStrokeWidth,
+				radius : this.options.pointDotRadius,
+				display: this.options.pointDot,
+				hitDetectionRadius : this.options.pointHitDetectionRadius,
+				ctx : this.chart.ctx
+			});
+
+			this.datasets = [];
+
+			this.buildScale(data);
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activePointsCollection = (evt.type !== 'mouseout') ? this.getPointsAtEvent(evt) : [];
+
+					this.eachPoints(function(point){
+						point.restore(['fillColor', 'strokeColor']);
+					});
+					helpers.each(activePointsCollection, function(activePoint){
+						activePoint.fillColor = activePoint.highlightFill;
+						activePoint.strokeColor = activePoint.highlightStroke;
+					});
+
+					this.showTooltip(activePointsCollection);
+				});
+			}
+
+			//Iterate through each of the datasets, and build this into a property of the chart
+			helpers.each(data.datasets,function(dataset){
+
+				var datasetObject = {
+					label: dataset.label || null,
+					fillColor : dataset.fillColor,
+					strokeColor : dataset.strokeColor,
+					pointColor : dataset.pointColor,
+					pointStrokeColor : dataset.pointStrokeColor,
+					points : []
+				};
+
+				this.datasets.push(datasetObject);
+
+				helpers.each(dataset.data,function(dataPoint,index){
+					//Add a new point for each piece of data, passing any required data to draw.
+					var pointPosition;
+					if (!this.scale.animation){
+						pointPosition = this.scale.getPointPosition(index, this.scale.calculateCenterOffset(dataPoint));
+					}
+					datasetObject.points.push(new this.PointClass({
+						value : dataPoint,
+						label : data.labels[index],
+						datasetLabel: dataset.label,
+						x: (this.options.animation) ? this.scale.xCenter : pointPosition.x,
+						y: (this.options.animation) ? this.scale.yCenter : pointPosition.y,
+						strokeColor : dataset.pointStrokeColor,
+						fillColor : dataset.pointColor,
+						highlightFill : dataset.pointHighlightFill || dataset.pointColor,
+						highlightStroke : dataset.pointHighlightStroke || dataset.pointStrokeColor
+					}));
+				},this);
+
+			},this);
+
+			this.render();
+		},
+		eachPoints : function(callback){
+			helpers.each(this.datasets,function(dataset){
+				helpers.each(dataset.points,callback,this);
+			},this);
+		},
+
+		getPointsAtEvent : function(evt){
+			var mousePosition = helpers.getRelativePosition(evt),
+				fromCenter = helpers.getAngleFromPoint({
+					x: this.scale.xCenter,
+					y: this.scale.yCenter
+				}, mousePosition);
+
+			var anglePerIndex = (Math.PI * 2) /this.scale.valuesCount,
+				pointIndex = Math.round((fromCenter.angle - Math.PI * 1.5) / anglePerIndex),
+				activePointsCollection = [];
+
+			// If we're at the top, make the pointIndex 0 to get the first of the array.
+			if (pointIndex >= this.scale.valuesCount || pointIndex < 0){
+				pointIndex = 0;
+			}
+
+			if (fromCenter.distance <= this.scale.drawingArea){
+				helpers.each(this.datasets, function(dataset){
+					activePointsCollection.push(dataset.points[pointIndex]);
+				});
+			}
+
+			return activePointsCollection;
+		},
+
+		buildScale : function(data){
+			this.scale = new Chart.RadialScale({
+				display: this.options.showScale,
+				fontStyle: this.options.scaleFontStyle,
+				fontSize: this.options.scaleFontSize,
+				fontFamily: this.options.scaleFontFamily,
+				fontColor: this.options.scaleFontColor,
+				showLabels: this.options.scaleShowLabels,
+				showLabelBackdrop: this.options.scaleShowLabelBackdrop,
+				backdropColor: this.options.scaleBackdropColor,
+				backgroundColors: this.options.scaleBackgroundColors,
+				backdropPaddingY : this.options.scaleBackdropPaddingY,
+				backdropPaddingX: this.options.scaleBackdropPaddingX,
+				lineWidth: (this.options.scaleShowLine) ? this.options.scaleLineWidth : 0,
+				lineColor: this.options.scaleLineColor,
+				angleLineColor : this.options.angleLineColor,
+				angleLineWidth : (this.options.angleShowLineOut) ? this.options.angleLineWidth : 0,
+        angleLineInterval: (this.options.angleLineInterval) ? this.options.angleLineInterval : 1,
+				// Point labels at the edge of each line
+				pointLabelFontColor : this.options.pointLabelFontColor,
+				pointLabelFontSize : this.options.pointLabelFontSize,
+				pointLabelFontFamily : this.options.pointLabelFontFamily,
+				pointLabelFontStyle : this.options.pointLabelFontStyle,
+				height : this.chart.height,
+				width: this.chart.width,
+				xCenter: this.chart.width/2,
+				yCenter: this.chart.height/2,
+				ctx : this.chart.ctx,
+				templateString: this.options.scaleLabel,
+				labels: data.labels,
+				valuesCount: data.datasets[0].data.length
+			});
+
+			this.scale.setScaleSize();
+			this.updateScaleRange(data.datasets);
+			this.scale.buildYLabels();
+		},
+		updateScaleRange: function(datasets){
+			var valuesArray = (function(){
+				var totalDataArray = [];
+				helpers.each(datasets,function(dataset){
+					if (dataset.data){
+						totalDataArray = totalDataArray.concat(dataset.data);
+					}
+					else {
+						helpers.each(dataset.points, function(point){
+							totalDataArray.push(point.value);
+						});
+					}
+				});
+				return totalDataArray;
+			})();
+
+
+			var scaleSizes = (this.options.scaleOverride) ?
+				{
+					steps: this.options.scaleSteps,
+					stepValue: this.options.scaleStepWidth,
+					min: this.options.scaleStartValue,
+					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+				} :
+				helpers.calculateScaleRange(
+					valuesArray,
+					helpers.min([this.chart.width, this.chart.height])/2,
+					this.options.scaleFontSize,
+					this.options.scaleBeginAtZero,
+					this.options.scaleIntegersOnly
+				);
+
+			helpers.extend(
+				this.scale,
+				scaleSizes
+			);
+
+		},
+		addData : function(valuesArray,label){
+			//Map the values array for each of the datasets
+			this.scale.valuesCount++;
+			helpers.each(valuesArray,function(value,datasetIndex){
+				var pointPosition = this.scale.getPointPosition(this.scale.valuesCount, this.scale.calculateCenterOffset(value));
+				this.datasets[datasetIndex].points.push(new this.PointClass({
+					value : value,
+					label : label,
+					datasetLabel: this.datasets[datasetIndex].label,
+					x: pointPosition.x,
+					y: pointPosition.y,
+					strokeColor : this.datasets[datasetIndex].pointStrokeColor,
+					fillColor : this.datasets[datasetIndex].pointColor
+				}));
+			},this);
+
+			this.scale.labels.push(label);
+
+			this.reflow();
+
+			this.update();
+		},
+		removeData : function(){
+			this.scale.valuesCount--;
+			this.scale.labels.shift();
+			helpers.each(this.datasets,function(dataset){
+				dataset.points.shift();
+			},this);
+			this.reflow();
+			this.update();
+		},
+		update : function(){
+			this.eachPoints(function(point){
+				point.save();
+			});
+			this.reflow();
+			this.render();
+		},
+		reflow: function(){
+			helpers.extend(this.scale, {
+				width : this.chart.width,
+				height: this.chart.height,
+				size : helpers.min([this.chart.width, this.chart.height]),
+				xCenter: this.chart.width/2,
+				yCenter: this.chart.height/2
+			});
+			this.updateScaleRange(this.datasets);
+			this.scale.setScaleSize();
+			this.scale.buildYLabels();
+		},
+		draw : function(ease){
+			var easeDecimal = ease || 1,
+				ctx = this.chart.ctx;
+			this.clear();
+			this.scale.draw();
+
+			helpers.each(this.datasets,function(dataset){
+
+				//Transition each point first so that the line and point drawing isn't out of sync
+				helpers.each(dataset.points,function(point,index){
+					if (point.hasValue()){
+						point.transition(this.scale.getPointPosition(index, this.scale.calculateCenterOffset(point.value)), easeDecimal);
+					}
+				},this);
+
+
+
+				//Draw the line between all the points
+				ctx.lineWidth = this.options.datasetStrokeWidth;
+				ctx.strokeStyle = dataset.strokeColor;
+				ctx.beginPath();
+				helpers.each(dataset.points,function(point,index){
+					if (index === 0){
+						ctx.moveTo(point.x,point.y);
+					}
+					else{
+						ctx.lineTo(point.x,point.y);
+					}
+				},this);
+				ctx.closePath();
+				ctx.stroke();
+
+				ctx.fillStyle = dataset.fillColor;
+				if(this.options.datasetFill){
+					ctx.fill();
+				}
+				//Now draw the points over the line
+				//A little inefficient double looping, but better than the line
+				//lagging behind the point positions
+				helpers.each(dataset.points,function(point){
+					if (point.hasValue()){
+						point.draw();
+					}
+				});
+
+			},this);
+
+		}
+
+	});
+
+
+
+
+
+}).call(this);
+
+},{}],353:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.0
  * http://jquery.com/
@@ -95195,7 +91793,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],340:[function(require,module,exports){
+},{}],354:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -109629,7 +106227,4048 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],341:[function(require,module,exports){
+},{}],355:[function(require,module,exports){
+//! moment.js
+//! version : 2.13.0
+//! authors : Tim Wood, Iskren Chernev, Moment.js contributors
+//! license : MIT
+//! momentjs.com
+
+;(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+    typeof define === 'function' && define.amd ? define(factory) :
+    global.moment = factory()
+}(this, function () { 'use strict';
+
+    var hookCallback;
+
+    function utils_hooks__hooks () {
+        return hookCallback.apply(null, arguments);
+    }
+
+    // This is done to register the method called with moment()
+    // without creating circular dependencies.
+    function setHookCallback (callback) {
+        hookCallback = callback;
+    }
+
+    function isArray(input) {
+        return input instanceof Array || Object.prototype.toString.call(input) === '[object Array]';
+    }
+
+    function isDate(input) {
+        return input instanceof Date || Object.prototype.toString.call(input) === '[object Date]';
+    }
+
+    function map(arr, fn) {
+        var res = [], i;
+        for (i = 0; i < arr.length; ++i) {
+            res.push(fn(arr[i], i));
+        }
+        return res;
+    }
+
+    function hasOwnProp(a, b) {
+        return Object.prototype.hasOwnProperty.call(a, b);
+    }
+
+    function extend(a, b) {
+        for (var i in b) {
+            if (hasOwnProp(b, i)) {
+                a[i] = b[i];
+            }
+        }
+
+        if (hasOwnProp(b, 'toString')) {
+            a.toString = b.toString;
+        }
+
+        if (hasOwnProp(b, 'valueOf')) {
+            a.valueOf = b.valueOf;
+        }
+
+        return a;
+    }
+
+    function create_utc__createUTC (input, format, locale, strict) {
+        return createLocalOrUTC(input, format, locale, strict, true).utc();
+    }
+
+    function defaultParsingFlags() {
+        // We need to deep clone this object.
+        return {
+            empty           : false,
+            unusedTokens    : [],
+            unusedInput     : [],
+            overflow        : -2,
+            charsLeftOver   : 0,
+            nullInput       : false,
+            invalidMonth    : null,
+            invalidFormat   : false,
+            userInvalidated : false,
+            iso             : false,
+            parsedDateParts : [],
+            meridiem        : null
+        };
+    }
+
+    function getParsingFlags(m) {
+        if (m._pf == null) {
+            m._pf = defaultParsingFlags();
+        }
+        return m._pf;
+    }
+
+    var some;
+    if (Array.prototype.some) {
+        some = Array.prototype.some;
+    } else {
+        some = function (fun) {
+            var t = Object(this);
+            var len = t.length >>> 0;
+
+            for (var i = 0; i < len; i++) {
+                if (i in t && fun.call(this, t[i], i, t)) {
+                    return true;
+                }
+            }
+
+            return false;
+        };
+    }
+
+    function valid__isValid(m) {
+        if (m._isValid == null) {
+            var flags = getParsingFlags(m);
+            var parsedParts = some.call(flags.parsedDateParts, function (i) {
+                return i != null;
+            });
+            m._isValid = !isNaN(m._d.getTime()) &&
+                flags.overflow < 0 &&
+                !flags.empty &&
+                !flags.invalidMonth &&
+                !flags.invalidWeekday &&
+                !flags.nullInput &&
+                !flags.invalidFormat &&
+                !flags.userInvalidated &&
+                (!flags.meridiem || (flags.meridiem && parsedParts));
+
+            if (m._strict) {
+                m._isValid = m._isValid &&
+                    flags.charsLeftOver === 0 &&
+                    flags.unusedTokens.length === 0 &&
+                    flags.bigHour === undefined;
+            }
+        }
+        return m._isValid;
+    }
+
+    function valid__createInvalid (flags) {
+        var m = create_utc__createUTC(NaN);
+        if (flags != null) {
+            extend(getParsingFlags(m), flags);
+        }
+        else {
+            getParsingFlags(m).userInvalidated = true;
+        }
+
+        return m;
+    }
+
+    function isUndefined(input) {
+        return input === void 0;
+    }
+
+    // Plugins that add properties should also add the key here (null value),
+    // so we can properly clone ourselves.
+    var momentProperties = utils_hooks__hooks.momentProperties = [];
+
+    function copyConfig(to, from) {
+        var i, prop, val;
+
+        if (!isUndefined(from._isAMomentObject)) {
+            to._isAMomentObject = from._isAMomentObject;
+        }
+        if (!isUndefined(from._i)) {
+            to._i = from._i;
+        }
+        if (!isUndefined(from._f)) {
+            to._f = from._f;
+        }
+        if (!isUndefined(from._l)) {
+            to._l = from._l;
+        }
+        if (!isUndefined(from._strict)) {
+            to._strict = from._strict;
+        }
+        if (!isUndefined(from._tzm)) {
+            to._tzm = from._tzm;
+        }
+        if (!isUndefined(from._isUTC)) {
+            to._isUTC = from._isUTC;
+        }
+        if (!isUndefined(from._offset)) {
+            to._offset = from._offset;
+        }
+        if (!isUndefined(from._pf)) {
+            to._pf = getParsingFlags(from);
+        }
+        if (!isUndefined(from._locale)) {
+            to._locale = from._locale;
+        }
+
+        if (momentProperties.length > 0) {
+            for (i in momentProperties) {
+                prop = momentProperties[i];
+                val = from[prop];
+                if (!isUndefined(val)) {
+                    to[prop] = val;
+                }
+            }
+        }
+
+        return to;
+    }
+
+    var updateInProgress = false;
+
+    // Moment prototype object
+    function Moment(config) {
+        copyConfig(this, config);
+        this._d = new Date(config._d != null ? config._d.getTime() : NaN);
+        // Prevent infinite loop in case updateOffset creates new moment
+        // objects.
+        if (updateInProgress === false) {
+            updateInProgress = true;
+            utils_hooks__hooks.updateOffset(this);
+            updateInProgress = false;
+        }
+    }
+
+    function isMoment (obj) {
+        return obj instanceof Moment || (obj != null && obj._isAMomentObject != null);
+    }
+
+    function absFloor (number) {
+        if (number < 0) {
+            return Math.ceil(number);
+        } else {
+            return Math.floor(number);
+        }
+    }
+
+    function toInt(argumentForCoercion) {
+        var coercedNumber = +argumentForCoercion,
+            value = 0;
+
+        if (coercedNumber !== 0 && isFinite(coercedNumber)) {
+            value = absFloor(coercedNumber);
+        }
+
+        return value;
+    }
+
+    // compare two arrays, return the number of differences
+    function compareArrays(array1, array2, dontConvert) {
+        var len = Math.min(array1.length, array2.length),
+            lengthDiff = Math.abs(array1.length - array2.length),
+            diffs = 0,
+            i;
+        for (i = 0; i < len; i++) {
+            if ((dontConvert && array1[i] !== array2[i]) ||
+                (!dontConvert && toInt(array1[i]) !== toInt(array2[i]))) {
+                diffs++;
+            }
+        }
+        return diffs + lengthDiff;
+    }
+
+    function warn(msg) {
+        if (utils_hooks__hooks.suppressDeprecationWarnings === false &&
+                (typeof console !==  'undefined') && console.warn) {
+            console.warn('Deprecation warning: ' + msg);
+        }
+    }
+
+    function deprecate(msg, fn) {
+        var firstTime = true;
+
+        return extend(function () {
+            if (utils_hooks__hooks.deprecationHandler != null) {
+                utils_hooks__hooks.deprecationHandler(null, msg);
+            }
+            if (firstTime) {
+                warn(msg + '\nArguments: ' + Array.prototype.slice.call(arguments).join(', ') + '\n' + (new Error()).stack);
+                firstTime = false;
+            }
+            return fn.apply(this, arguments);
+        }, fn);
+    }
+
+    var deprecations = {};
+
+    function deprecateSimple(name, msg) {
+        if (utils_hooks__hooks.deprecationHandler != null) {
+            utils_hooks__hooks.deprecationHandler(name, msg);
+        }
+        if (!deprecations[name]) {
+            warn(msg);
+            deprecations[name] = true;
+        }
+    }
+
+    utils_hooks__hooks.suppressDeprecationWarnings = false;
+    utils_hooks__hooks.deprecationHandler = null;
+
+    function isFunction(input) {
+        return input instanceof Function || Object.prototype.toString.call(input) === '[object Function]';
+    }
+
+    function isObject(input) {
+        return Object.prototype.toString.call(input) === '[object Object]';
+    }
+
+    function locale_set__set (config) {
+        var prop, i;
+        for (i in config) {
+            prop = config[i];
+            if (isFunction(prop)) {
+                this[i] = prop;
+            } else {
+                this['_' + i] = prop;
+            }
+        }
+        this._config = config;
+        // Lenient ordinal parsing accepts just a number in addition to
+        // number + (possibly) stuff coming from _ordinalParseLenient.
+        this._ordinalParseLenient = new RegExp(this._ordinalParse.source + '|' + (/\d{1,2}/).source);
+    }
+
+    function mergeConfigs(parentConfig, childConfig) {
+        var res = extend({}, parentConfig), prop;
+        for (prop in childConfig) {
+            if (hasOwnProp(childConfig, prop)) {
+                if (isObject(parentConfig[prop]) && isObject(childConfig[prop])) {
+                    res[prop] = {};
+                    extend(res[prop], parentConfig[prop]);
+                    extend(res[prop], childConfig[prop]);
+                } else if (childConfig[prop] != null) {
+                    res[prop] = childConfig[prop];
+                } else {
+                    delete res[prop];
+                }
+            }
+        }
+        return res;
+    }
+
+    function Locale(config) {
+        if (config != null) {
+            this.set(config);
+        }
+    }
+
+    var keys;
+
+    if (Object.keys) {
+        keys = Object.keys;
+    } else {
+        keys = function (obj) {
+            var i, res = [];
+            for (i in obj) {
+                if (hasOwnProp(obj, i)) {
+                    res.push(i);
+                }
+            }
+            return res;
+        };
+    }
+
+    // internal storage for locale config files
+    var locales = {};
+    var globalLocale;
+
+    function normalizeLocale(key) {
+        return key ? key.toLowerCase().replace('_', '-') : key;
+    }
+
+    // pick the locale from the array
+    // try ['en-au', 'en-gb'] as 'en-au', 'en-gb', 'en', as in move through the list trying each
+    // substring from most specific to least, but move to the next array item if it's a more specific variant than the current root
+    function chooseLocale(names) {
+        var i = 0, j, next, locale, split;
+
+        while (i < names.length) {
+            split = normalizeLocale(names[i]).split('-');
+            j = split.length;
+            next = normalizeLocale(names[i + 1]);
+            next = next ? next.split('-') : null;
+            while (j > 0) {
+                locale = loadLocale(split.slice(0, j).join('-'));
+                if (locale) {
+                    return locale;
+                }
+                if (next && next.length >= j && compareArrays(split, next, true) >= j - 1) {
+                    //the next array item is better than a shallower substring of this one
+                    break;
+                }
+                j--;
+            }
+            i++;
+        }
+        return null;
+    }
+
+    function loadLocale(name) {
+        var oldLocale = null;
+        // TODO: Find a better way to register and load all the locales in Node
+        if (!locales[name] && (typeof module !== 'undefined') &&
+                module && module.exports) {
+            try {
+                oldLocale = globalLocale._abbr;
+                require('./locale/' + name);
+                // because defineLocale currently also sets the global locale, we
+                // want to undo that for lazy loaded locales
+                locale_locales__getSetGlobalLocale(oldLocale);
+            } catch (e) { }
+        }
+        return locales[name];
+    }
+
+    // This function will load locale and then set the global locale.  If
+    // no arguments are passed in, it will simply return the current global
+    // locale key.
+    function locale_locales__getSetGlobalLocale (key, values) {
+        var data;
+        if (key) {
+            if (isUndefined(values)) {
+                data = locale_locales__getLocale(key);
+            }
+            else {
+                data = defineLocale(key, values);
+            }
+
+            if (data) {
+                // moment.duration._locale = moment._locale = data;
+                globalLocale = data;
+            }
+        }
+
+        return globalLocale._abbr;
+    }
+
+    function defineLocale (name, config) {
+        if (config !== null) {
+            config.abbr = name;
+            if (locales[name] != null) {
+                deprecateSimple('defineLocaleOverride',
+                        'use moment.updateLocale(localeName, config) to change ' +
+                        'an existing locale. moment.defineLocale(localeName, ' +
+                        'config) should only be used for creating a new locale');
+                config = mergeConfigs(locales[name]._config, config);
+            } else if (config.parentLocale != null) {
+                if (locales[config.parentLocale] != null) {
+                    config = mergeConfigs(locales[config.parentLocale]._config, config);
+                } else {
+                    // treat as if there is no base config
+                    deprecateSimple('parentLocaleUndefined',
+                            'specified parentLocale is not defined yet');
+                }
+            }
+            locales[name] = new Locale(config);
+
+            // backwards compat for now: also set the locale
+            locale_locales__getSetGlobalLocale(name);
+
+            return locales[name];
+        } else {
+            // useful for testing
+            delete locales[name];
+            return null;
+        }
+    }
+
+    function updateLocale(name, config) {
+        if (config != null) {
+            var locale;
+            if (locales[name] != null) {
+                config = mergeConfigs(locales[name]._config, config);
+            }
+            locale = new Locale(config);
+            locale.parentLocale = locales[name];
+            locales[name] = locale;
+
+            // backwards compat for now: also set the locale
+            locale_locales__getSetGlobalLocale(name);
+        } else {
+            // pass null for config to unupdate, useful for tests
+            if (locales[name] != null) {
+                if (locales[name].parentLocale != null) {
+                    locales[name] = locales[name].parentLocale;
+                } else if (locales[name] != null) {
+                    delete locales[name];
+                }
+            }
+        }
+        return locales[name];
+    }
+
+    // returns locale data
+    function locale_locales__getLocale (key) {
+        var locale;
+
+        if (key && key._locale && key._locale._abbr) {
+            key = key._locale._abbr;
+        }
+
+        if (!key) {
+            return globalLocale;
+        }
+
+        if (!isArray(key)) {
+            //short-circuit everything else
+            locale = loadLocale(key);
+            if (locale) {
+                return locale;
+            }
+            key = [key];
+        }
+
+        return chooseLocale(key);
+    }
+
+    function locale_locales__listLocales() {
+        return keys(locales);
+    }
+
+    var aliases = {};
+
+    function addUnitAlias (unit, shorthand) {
+        var lowerCase = unit.toLowerCase();
+        aliases[lowerCase] = aliases[lowerCase + 's'] = aliases[shorthand] = unit;
+    }
+
+    function normalizeUnits(units) {
+        return typeof units === 'string' ? aliases[units] || aliases[units.toLowerCase()] : undefined;
+    }
+
+    function normalizeObjectUnits(inputObject) {
+        var normalizedInput = {},
+            normalizedProp,
+            prop;
+
+        for (prop in inputObject) {
+            if (hasOwnProp(inputObject, prop)) {
+                normalizedProp = normalizeUnits(prop);
+                if (normalizedProp) {
+                    normalizedInput[normalizedProp] = inputObject[prop];
+                }
+            }
+        }
+
+        return normalizedInput;
+    }
+
+    function makeGetSet (unit, keepTime) {
+        return function (value) {
+            if (value != null) {
+                get_set__set(this, unit, value);
+                utils_hooks__hooks.updateOffset(this, keepTime);
+                return this;
+            } else {
+                return get_set__get(this, unit);
+            }
+        };
+    }
+
+    function get_set__get (mom, unit) {
+        return mom.isValid() ?
+            mom._d['get' + (mom._isUTC ? 'UTC' : '') + unit]() : NaN;
+    }
+
+    function get_set__set (mom, unit, value) {
+        if (mom.isValid()) {
+            mom._d['set' + (mom._isUTC ? 'UTC' : '') + unit](value);
+        }
+    }
+
+    // MOMENTS
+
+    function getSet (units, value) {
+        var unit;
+        if (typeof units === 'object') {
+            for (unit in units) {
+                this.set(unit, units[unit]);
+            }
+        } else {
+            units = normalizeUnits(units);
+            if (isFunction(this[units])) {
+                return this[units](value);
+            }
+        }
+        return this;
+    }
+
+    function zeroFill(number, targetLength, forceSign) {
+        var absNumber = '' + Math.abs(number),
+            zerosToFill = targetLength - absNumber.length,
+            sign = number >= 0;
+        return (sign ? (forceSign ? '+' : '') : '-') +
+            Math.pow(10, Math.max(0, zerosToFill)).toString().substr(1) + absNumber;
+    }
+
+    var formattingTokens = /(\[[^\[]*\])|(\\)?([Hh]mm(ss)?|Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Qo?|YYYYYY|YYYYY|YYYY|YY|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|kk?|mm?|ss?|S{1,9}|x|X|zz?|ZZ?|.)/g;
+
+    var localFormattingTokens = /(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g;
+
+    var formatFunctions = {};
+
+    var formatTokenFunctions = {};
+
+    // token:    'M'
+    // padded:   ['MM', 2]
+    // ordinal:  'Mo'
+    // callback: function () { this.month() + 1 }
+    function addFormatToken (token, padded, ordinal, callback) {
+        var func = callback;
+        if (typeof callback === 'string') {
+            func = function () {
+                return this[callback]();
+            };
+        }
+        if (token) {
+            formatTokenFunctions[token] = func;
+        }
+        if (padded) {
+            formatTokenFunctions[padded[0]] = function () {
+                return zeroFill(func.apply(this, arguments), padded[1], padded[2]);
+            };
+        }
+        if (ordinal) {
+            formatTokenFunctions[ordinal] = function () {
+                return this.localeData().ordinal(func.apply(this, arguments), token);
+            };
+        }
+    }
+
+    function removeFormattingTokens(input) {
+        if (input.match(/\[[\s\S]/)) {
+            return input.replace(/^\[|\]$/g, '');
+        }
+        return input.replace(/\\/g, '');
+    }
+
+    function makeFormatFunction(format) {
+        var array = format.match(formattingTokens), i, length;
+
+        for (i = 0, length = array.length; i < length; i++) {
+            if (formatTokenFunctions[array[i]]) {
+                array[i] = formatTokenFunctions[array[i]];
+            } else {
+                array[i] = removeFormattingTokens(array[i]);
+            }
+        }
+
+        return function (mom) {
+            var output = '', i;
+            for (i = 0; i < length; i++) {
+                output += array[i] instanceof Function ? array[i].call(mom, format) : array[i];
+            }
+            return output;
+        };
+    }
+
+    // format date using native date object
+    function formatMoment(m, format) {
+        if (!m.isValid()) {
+            return m.localeData().invalidDate();
+        }
+
+        format = expandFormat(format, m.localeData());
+        formatFunctions[format] = formatFunctions[format] || makeFormatFunction(format);
+
+        return formatFunctions[format](m);
+    }
+
+    function expandFormat(format, locale) {
+        var i = 5;
+
+        function replaceLongDateFormatTokens(input) {
+            return locale.longDateFormat(input) || input;
+        }
+
+        localFormattingTokens.lastIndex = 0;
+        while (i >= 0 && localFormattingTokens.test(format)) {
+            format = format.replace(localFormattingTokens, replaceLongDateFormatTokens);
+            localFormattingTokens.lastIndex = 0;
+            i -= 1;
+        }
+
+        return format;
+    }
+
+    var match1         = /\d/;            //       0 - 9
+    var match2         = /\d\d/;          //      00 - 99
+    var match3         = /\d{3}/;         //     000 - 999
+    var match4         = /\d{4}/;         //    0000 - 9999
+    var match6         = /[+-]?\d{6}/;    // -999999 - 999999
+    var match1to2      = /\d\d?/;         //       0 - 99
+    var match3to4      = /\d\d\d\d?/;     //     999 - 9999
+    var match5to6      = /\d\d\d\d\d\d?/; //   99999 - 999999
+    var match1to3      = /\d{1,3}/;       //       0 - 999
+    var match1to4      = /\d{1,4}/;       //       0 - 9999
+    var match1to6      = /[+-]?\d{1,6}/;  // -999999 - 999999
+
+    var matchUnsigned  = /\d+/;           //       0 - inf
+    var matchSigned    = /[+-]?\d+/;      //    -inf - inf
+
+    var matchOffset    = /Z|[+-]\d\d:?\d\d/gi; // +00:00 -00:00 +0000 -0000 or Z
+    var matchShortOffset = /Z|[+-]\d\d(?::?\d\d)?/gi; // +00 -00 +00:00 -00:00 +0000 -0000 or Z
+
+    var matchTimestamp = /[+-]?\d+(\.\d{1,3})?/; // 123456789 123456789.123
+
+    // any word (or two) characters or numbers including two/three word month in arabic.
+    // includes scottish gaelic two word and hyphenated months
+    var matchWord = /[0-9]*['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+|[\u0600-\u06FF\/]+(\s*?[\u0600-\u06FF]+){1,2}/i;
+
+
+    var regexes = {};
+
+    function addRegexToken (token, regex, strictRegex) {
+        regexes[token] = isFunction(regex) ? regex : function (isStrict, localeData) {
+            return (isStrict && strictRegex) ? strictRegex : regex;
+        };
+    }
+
+    function getParseRegexForToken (token, config) {
+        if (!hasOwnProp(regexes, token)) {
+            return new RegExp(unescapeFormat(token));
+        }
+
+        return regexes[token](config._strict, config._locale);
+    }
+
+    // Code from http://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
+    function unescapeFormat(s) {
+        return regexEscape(s.replace('\\', '').replace(/\\(\[)|\\(\])|\[([^\]\[]*)\]|\\(.)/g, function (matched, p1, p2, p3, p4) {
+            return p1 || p2 || p3 || p4;
+        }));
+    }
+
+    function regexEscape(s) {
+        return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    }
+
+    var tokens = {};
+
+    function addParseToken (token, callback) {
+        var i, func = callback;
+        if (typeof token === 'string') {
+            token = [token];
+        }
+        if (typeof callback === 'number') {
+            func = function (input, array) {
+                array[callback] = toInt(input);
+            };
+        }
+        for (i = 0; i < token.length; i++) {
+            tokens[token[i]] = func;
+        }
+    }
+
+    function addWeekParseToken (token, callback) {
+        addParseToken(token, function (input, array, config, token) {
+            config._w = config._w || {};
+            callback(input, config._w, config, token);
+        });
+    }
+
+    function addTimeToArrayFromToken(token, input, config) {
+        if (input != null && hasOwnProp(tokens, token)) {
+            tokens[token](input, config._a, config, token);
+        }
+    }
+
+    var YEAR = 0;
+    var MONTH = 1;
+    var DATE = 2;
+    var HOUR = 3;
+    var MINUTE = 4;
+    var SECOND = 5;
+    var MILLISECOND = 6;
+    var WEEK = 7;
+    var WEEKDAY = 8;
+
+    var indexOf;
+
+    if (Array.prototype.indexOf) {
+        indexOf = Array.prototype.indexOf;
+    } else {
+        indexOf = function (o) {
+            // I know
+            var i;
+            for (i = 0; i < this.length; ++i) {
+                if (this[i] === o) {
+                    return i;
+                }
+            }
+            return -1;
+        };
+    }
+
+    function daysInMonth(year, month) {
+        return new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+    }
+
+    // FORMATTING
+
+    addFormatToken('M', ['MM', 2], 'Mo', function () {
+        return this.month() + 1;
+    });
+
+    addFormatToken('MMM', 0, 0, function (format) {
+        return this.localeData().monthsShort(this, format);
+    });
+
+    addFormatToken('MMMM', 0, 0, function (format) {
+        return this.localeData().months(this, format);
+    });
+
+    // ALIASES
+
+    addUnitAlias('month', 'M');
+
+    // PARSING
+
+    addRegexToken('M',    match1to2);
+    addRegexToken('MM',   match1to2, match2);
+    addRegexToken('MMM',  function (isStrict, locale) {
+        return locale.monthsShortRegex(isStrict);
+    });
+    addRegexToken('MMMM', function (isStrict, locale) {
+        return locale.monthsRegex(isStrict);
+    });
+
+    addParseToken(['M', 'MM'], function (input, array) {
+        array[MONTH] = toInt(input) - 1;
+    });
+
+    addParseToken(['MMM', 'MMMM'], function (input, array, config, token) {
+        var month = config._locale.monthsParse(input, token, config._strict);
+        // if we didn't find a month name, mark the date as invalid.
+        if (month != null) {
+            array[MONTH] = month;
+        } else {
+            getParsingFlags(config).invalidMonth = input;
+        }
+    });
+
+    // LOCALES
+
+    var MONTHS_IN_FORMAT = /D[oD]?(\[[^\[\]]*\]|\s+)+MMMM?/;
+    var defaultLocaleMonths = 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_');
+    function localeMonths (m, format) {
+        return isArray(this._months) ? this._months[m.month()] :
+            this._months[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
+    }
+
+    var defaultLocaleMonthsShort = 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_');
+    function localeMonthsShort (m, format) {
+        return isArray(this._monthsShort) ? this._monthsShort[m.month()] :
+            this._monthsShort[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
+    }
+
+    function units_month__handleStrictParse(monthName, format, strict) {
+        var i, ii, mom, llc = monthName.toLocaleLowerCase();
+        if (!this._monthsParse) {
+            // this is not used
+            this._monthsParse = [];
+            this._longMonthsParse = [];
+            this._shortMonthsParse = [];
+            for (i = 0; i < 12; ++i) {
+                mom = create_utc__createUTC([2000, i]);
+                this._shortMonthsParse[i] = this.monthsShort(mom, '').toLocaleLowerCase();
+                this._longMonthsParse[i] = this.months(mom, '').toLocaleLowerCase();
+            }
+        }
+
+        if (strict) {
+            if (format === 'MMM') {
+                ii = indexOf.call(this._shortMonthsParse, llc);
+                return ii !== -1 ? ii : null;
+            } else {
+                ii = indexOf.call(this._longMonthsParse, llc);
+                return ii !== -1 ? ii : null;
+            }
+        } else {
+            if (format === 'MMM') {
+                ii = indexOf.call(this._shortMonthsParse, llc);
+                if (ii !== -1) {
+                    return ii;
+                }
+                ii = indexOf.call(this._longMonthsParse, llc);
+                return ii !== -1 ? ii : null;
+            } else {
+                ii = indexOf.call(this._longMonthsParse, llc);
+                if (ii !== -1) {
+                    return ii;
+                }
+                ii = indexOf.call(this._shortMonthsParse, llc);
+                return ii !== -1 ? ii : null;
+            }
+        }
+    }
+
+    function localeMonthsParse (monthName, format, strict) {
+        var i, mom, regex;
+
+        if (this._monthsParseExact) {
+            return units_month__handleStrictParse.call(this, monthName, format, strict);
+        }
+
+        if (!this._monthsParse) {
+            this._monthsParse = [];
+            this._longMonthsParse = [];
+            this._shortMonthsParse = [];
+        }
+
+        // TODO: add sorting
+        // Sorting makes sure if one month (or abbr) is a prefix of another
+        // see sorting in computeMonthsParse
+        for (i = 0; i < 12; i++) {
+            // make the regex if we don't have it already
+            mom = create_utc__createUTC([2000, i]);
+            if (strict && !this._longMonthsParse[i]) {
+                this._longMonthsParse[i] = new RegExp('^' + this.months(mom, '').replace('.', '') + '$', 'i');
+                this._shortMonthsParse[i] = new RegExp('^' + this.monthsShort(mom, '').replace('.', '') + '$', 'i');
+            }
+            if (!strict && !this._monthsParse[i]) {
+                regex = '^' + this.months(mom, '') + '|^' + this.monthsShort(mom, '');
+                this._monthsParse[i] = new RegExp(regex.replace('.', ''), 'i');
+            }
+            // test the regex
+            if (strict && format === 'MMMM' && this._longMonthsParse[i].test(monthName)) {
+                return i;
+            } else if (strict && format === 'MMM' && this._shortMonthsParse[i].test(monthName)) {
+                return i;
+            } else if (!strict && this._monthsParse[i].test(monthName)) {
+                return i;
+            }
+        }
+    }
+
+    // MOMENTS
+
+    function setMonth (mom, value) {
+        var dayOfMonth;
+
+        if (!mom.isValid()) {
+            // No op
+            return mom;
+        }
+
+        if (typeof value === 'string') {
+            if (/^\d+$/.test(value)) {
+                value = toInt(value);
+            } else {
+                value = mom.localeData().monthsParse(value);
+                // TODO: Another silent failure?
+                if (typeof value !== 'number') {
+                    return mom;
+                }
+            }
+        }
+
+        dayOfMonth = Math.min(mom.date(), daysInMonth(mom.year(), value));
+        mom._d['set' + (mom._isUTC ? 'UTC' : '') + 'Month'](value, dayOfMonth);
+        return mom;
+    }
+
+    function getSetMonth (value) {
+        if (value != null) {
+            setMonth(this, value);
+            utils_hooks__hooks.updateOffset(this, true);
+            return this;
+        } else {
+            return get_set__get(this, 'Month');
+        }
+    }
+
+    function getDaysInMonth () {
+        return daysInMonth(this.year(), this.month());
+    }
+
+    var defaultMonthsShortRegex = matchWord;
+    function monthsShortRegex (isStrict) {
+        if (this._monthsParseExact) {
+            if (!hasOwnProp(this, '_monthsRegex')) {
+                computeMonthsParse.call(this);
+            }
+            if (isStrict) {
+                return this._monthsShortStrictRegex;
+            } else {
+                return this._monthsShortRegex;
+            }
+        } else {
+            return this._monthsShortStrictRegex && isStrict ?
+                this._monthsShortStrictRegex : this._monthsShortRegex;
+        }
+    }
+
+    var defaultMonthsRegex = matchWord;
+    function monthsRegex (isStrict) {
+        if (this._monthsParseExact) {
+            if (!hasOwnProp(this, '_monthsRegex')) {
+                computeMonthsParse.call(this);
+            }
+            if (isStrict) {
+                return this._monthsStrictRegex;
+            } else {
+                return this._monthsRegex;
+            }
+        } else {
+            return this._monthsStrictRegex && isStrict ?
+                this._monthsStrictRegex : this._monthsRegex;
+        }
+    }
+
+    function computeMonthsParse () {
+        function cmpLenRev(a, b) {
+            return b.length - a.length;
+        }
+
+        var shortPieces = [], longPieces = [], mixedPieces = [],
+            i, mom;
+        for (i = 0; i < 12; i++) {
+            // make the regex if we don't have it already
+            mom = create_utc__createUTC([2000, i]);
+            shortPieces.push(this.monthsShort(mom, ''));
+            longPieces.push(this.months(mom, ''));
+            mixedPieces.push(this.months(mom, ''));
+            mixedPieces.push(this.monthsShort(mom, ''));
+        }
+        // Sorting makes sure if one month (or abbr) is a prefix of another it
+        // will match the longer piece.
+        shortPieces.sort(cmpLenRev);
+        longPieces.sort(cmpLenRev);
+        mixedPieces.sort(cmpLenRev);
+        for (i = 0; i < 12; i++) {
+            shortPieces[i] = regexEscape(shortPieces[i]);
+            longPieces[i] = regexEscape(longPieces[i]);
+            mixedPieces[i] = regexEscape(mixedPieces[i]);
+        }
+
+        this._monthsRegex = new RegExp('^(' + mixedPieces.join('|') + ')', 'i');
+        this._monthsShortRegex = this._monthsRegex;
+        this._monthsStrictRegex = new RegExp('^(' + longPieces.join('|') + ')', 'i');
+        this._monthsShortStrictRegex = new RegExp('^(' + shortPieces.join('|') + ')', 'i');
+    }
+
+    function checkOverflow (m) {
+        var overflow;
+        var a = m._a;
+
+        if (a && getParsingFlags(m).overflow === -2) {
+            overflow =
+                a[MONTH]       < 0 || a[MONTH]       > 11  ? MONTH :
+                a[DATE]        < 1 || a[DATE]        > daysInMonth(a[YEAR], a[MONTH]) ? DATE :
+                a[HOUR]        < 0 || a[HOUR]        > 24 || (a[HOUR] === 24 && (a[MINUTE] !== 0 || a[SECOND] !== 0 || a[MILLISECOND] !== 0)) ? HOUR :
+                a[MINUTE]      < 0 || a[MINUTE]      > 59  ? MINUTE :
+                a[SECOND]      < 0 || a[SECOND]      > 59  ? SECOND :
+                a[MILLISECOND] < 0 || a[MILLISECOND] > 999 ? MILLISECOND :
+                -1;
+
+            if (getParsingFlags(m)._overflowDayOfYear && (overflow < YEAR || overflow > DATE)) {
+                overflow = DATE;
+            }
+            if (getParsingFlags(m)._overflowWeeks && overflow === -1) {
+                overflow = WEEK;
+            }
+            if (getParsingFlags(m)._overflowWeekday && overflow === -1) {
+                overflow = WEEKDAY;
+            }
+
+            getParsingFlags(m).overflow = overflow;
+        }
+
+        return m;
+    }
+
+    // iso 8601 regex
+    // 0000-00-00 0000-W00 or 0000-W00-0 + T + 00 or 00:00 or 00:00:00 or 00:00:00.000 + +00:00 or +0000 or +00)
+    var extendedIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})-(?:\d\d-\d\d|W\d\d-\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?::\d\d(?::\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?/;
+    var basicIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})(?:\d\d\d\d|W\d\d\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?:\d\d(?:\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?/;
+
+    var tzRegex = /Z|[+-]\d\d(?::?\d\d)?/;
+
+    var isoDates = [
+        ['YYYYYY-MM-DD', /[+-]\d{6}-\d\d-\d\d/],
+        ['YYYY-MM-DD', /\d{4}-\d\d-\d\d/],
+        ['GGGG-[W]WW-E', /\d{4}-W\d\d-\d/],
+        ['GGGG-[W]WW', /\d{4}-W\d\d/, false],
+        ['YYYY-DDD', /\d{4}-\d{3}/],
+        ['YYYY-MM', /\d{4}-\d\d/, false],
+        ['YYYYYYMMDD', /[+-]\d{10}/],
+        ['YYYYMMDD', /\d{8}/],
+        // YYYYMM is NOT allowed by the standard
+        ['GGGG[W]WWE', /\d{4}W\d{3}/],
+        ['GGGG[W]WW', /\d{4}W\d{2}/, false],
+        ['YYYYDDD', /\d{7}/]
+    ];
+
+    // iso time formats and regexes
+    var isoTimes = [
+        ['HH:mm:ss.SSSS', /\d\d:\d\d:\d\d\.\d+/],
+        ['HH:mm:ss,SSSS', /\d\d:\d\d:\d\d,\d+/],
+        ['HH:mm:ss', /\d\d:\d\d:\d\d/],
+        ['HH:mm', /\d\d:\d\d/],
+        ['HHmmss.SSSS', /\d\d\d\d\d\d\.\d+/],
+        ['HHmmss,SSSS', /\d\d\d\d\d\d,\d+/],
+        ['HHmmss', /\d\d\d\d\d\d/],
+        ['HHmm', /\d\d\d\d/],
+        ['HH', /\d\d/]
+    ];
+
+    var aspNetJsonRegex = /^\/?Date\((\-?\d+)/i;
+
+    // date from iso format
+    function configFromISO(config) {
+        var i, l,
+            string = config._i,
+            match = extendedIsoRegex.exec(string) || basicIsoRegex.exec(string),
+            allowTime, dateFormat, timeFormat, tzFormat;
+
+        if (match) {
+            getParsingFlags(config).iso = true;
+
+            for (i = 0, l = isoDates.length; i < l; i++) {
+                if (isoDates[i][1].exec(match[1])) {
+                    dateFormat = isoDates[i][0];
+                    allowTime = isoDates[i][2] !== false;
+                    break;
+                }
+            }
+            if (dateFormat == null) {
+                config._isValid = false;
+                return;
+            }
+            if (match[3]) {
+                for (i = 0, l = isoTimes.length; i < l; i++) {
+                    if (isoTimes[i][1].exec(match[3])) {
+                        // match[2] should be 'T' or space
+                        timeFormat = (match[2] || ' ') + isoTimes[i][0];
+                        break;
+                    }
+                }
+                if (timeFormat == null) {
+                    config._isValid = false;
+                    return;
+                }
+            }
+            if (!allowTime && timeFormat != null) {
+                config._isValid = false;
+                return;
+            }
+            if (match[4]) {
+                if (tzRegex.exec(match[4])) {
+                    tzFormat = 'Z';
+                } else {
+                    config._isValid = false;
+                    return;
+                }
+            }
+            config._f = dateFormat + (timeFormat || '') + (tzFormat || '');
+            configFromStringAndFormat(config);
+        } else {
+            config._isValid = false;
+        }
+    }
+
+    // date from iso format or fallback
+    function configFromString(config) {
+        var matched = aspNetJsonRegex.exec(config._i);
+
+        if (matched !== null) {
+            config._d = new Date(+matched[1]);
+            return;
+        }
+
+        configFromISO(config);
+        if (config._isValid === false) {
+            delete config._isValid;
+            utils_hooks__hooks.createFromInputFallback(config);
+        }
+    }
+
+    utils_hooks__hooks.createFromInputFallback = deprecate(
+        'moment construction falls back to js Date. This is ' +
+        'discouraged and will be removed in upcoming major ' +
+        'release. Please refer to ' +
+        'https://github.com/moment/moment/issues/1407 for more info.',
+        function (config) {
+            config._d = new Date(config._i + (config._useUTC ? ' UTC' : ''));
+        }
+    );
+
+    function createDate (y, m, d, h, M, s, ms) {
+        //can't just apply() to create a date:
+        //http://stackoverflow.com/questions/181348/instantiating-a-javascript-object-by-calling-prototype-constructor-apply
+        var date = new Date(y, m, d, h, M, s, ms);
+
+        //the date constructor remaps years 0-99 to 1900-1999
+        if (y < 100 && y >= 0 && isFinite(date.getFullYear())) {
+            date.setFullYear(y);
+        }
+        return date;
+    }
+
+    function createUTCDate (y) {
+        var date = new Date(Date.UTC.apply(null, arguments));
+
+        //the Date.UTC function remaps years 0-99 to 1900-1999
+        if (y < 100 && y >= 0 && isFinite(date.getUTCFullYear())) {
+            date.setUTCFullYear(y);
+        }
+        return date;
+    }
+
+    // FORMATTING
+
+    addFormatToken('Y', 0, 0, function () {
+        var y = this.year();
+        return y <= 9999 ? '' + y : '+' + y;
+    });
+
+    addFormatToken(0, ['YY', 2], 0, function () {
+        return this.year() % 100;
+    });
+
+    addFormatToken(0, ['YYYY',   4],       0, 'year');
+    addFormatToken(0, ['YYYYY',  5],       0, 'year');
+    addFormatToken(0, ['YYYYYY', 6, true], 0, 'year');
+
+    // ALIASES
+
+    addUnitAlias('year', 'y');
+
+    // PARSING
+
+    addRegexToken('Y',      matchSigned);
+    addRegexToken('YY',     match1to2, match2);
+    addRegexToken('YYYY',   match1to4, match4);
+    addRegexToken('YYYYY',  match1to6, match6);
+    addRegexToken('YYYYYY', match1to6, match6);
+
+    addParseToken(['YYYYY', 'YYYYYY'], YEAR);
+    addParseToken('YYYY', function (input, array) {
+        array[YEAR] = input.length === 2 ? utils_hooks__hooks.parseTwoDigitYear(input) : toInt(input);
+    });
+    addParseToken('YY', function (input, array) {
+        array[YEAR] = utils_hooks__hooks.parseTwoDigitYear(input);
+    });
+    addParseToken('Y', function (input, array) {
+        array[YEAR] = parseInt(input, 10);
+    });
+
+    // HELPERS
+
+    function daysInYear(year) {
+        return isLeapYear(year) ? 366 : 365;
+    }
+
+    function isLeapYear(year) {
+        return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+    }
+
+    // HOOKS
+
+    utils_hooks__hooks.parseTwoDigitYear = function (input) {
+        return toInt(input) + (toInt(input) > 68 ? 1900 : 2000);
+    };
+
+    // MOMENTS
+
+    var getSetYear = makeGetSet('FullYear', true);
+
+    function getIsLeapYear () {
+        return isLeapYear(this.year());
+    }
+
+    // start-of-first-week - start-of-year
+    function firstWeekOffset(year, dow, doy) {
+        var // first-week day -- which january is always in the first week (4 for iso, 1 for other)
+            fwd = 7 + dow - doy,
+            // first-week day local weekday -- which local weekday is fwd
+            fwdlw = (7 + createUTCDate(year, 0, fwd).getUTCDay() - dow) % 7;
+
+        return -fwdlw + fwd - 1;
+    }
+
+    //http://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_year.2C_week_number_and_weekday
+    function dayOfYearFromWeeks(year, week, weekday, dow, doy) {
+        var localWeekday = (7 + weekday - dow) % 7,
+            weekOffset = firstWeekOffset(year, dow, doy),
+            dayOfYear = 1 + 7 * (week - 1) + localWeekday + weekOffset,
+            resYear, resDayOfYear;
+
+        if (dayOfYear <= 0) {
+            resYear = year - 1;
+            resDayOfYear = daysInYear(resYear) + dayOfYear;
+        } else if (dayOfYear > daysInYear(year)) {
+            resYear = year + 1;
+            resDayOfYear = dayOfYear - daysInYear(year);
+        } else {
+            resYear = year;
+            resDayOfYear = dayOfYear;
+        }
+
+        return {
+            year: resYear,
+            dayOfYear: resDayOfYear
+        };
+    }
+
+    function weekOfYear(mom, dow, doy) {
+        var weekOffset = firstWeekOffset(mom.year(), dow, doy),
+            week = Math.floor((mom.dayOfYear() - weekOffset - 1) / 7) + 1,
+            resWeek, resYear;
+
+        if (week < 1) {
+            resYear = mom.year() - 1;
+            resWeek = week + weeksInYear(resYear, dow, doy);
+        } else if (week > weeksInYear(mom.year(), dow, doy)) {
+            resWeek = week - weeksInYear(mom.year(), dow, doy);
+            resYear = mom.year() + 1;
+        } else {
+            resYear = mom.year();
+            resWeek = week;
+        }
+
+        return {
+            week: resWeek,
+            year: resYear
+        };
+    }
+
+    function weeksInYear(year, dow, doy) {
+        var weekOffset = firstWeekOffset(year, dow, doy),
+            weekOffsetNext = firstWeekOffset(year + 1, dow, doy);
+        return (daysInYear(year) - weekOffset + weekOffsetNext) / 7;
+    }
+
+    // Pick the first defined of two or three arguments.
+    function defaults(a, b, c) {
+        if (a != null) {
+            return a;
+        }
+        if (b != null) {
+            return b;
+        }
+        return c;
+    }
+
+    function currentDateArray(config) {
+        // hooks is actually the exported moment object
+        var nowValue = new Date(utils_hooks__hooks.now());
+        if (config._useUTC) {
+            return [nowValue.getUTCFullYear(), nowValue.getUTCMonth(), nowValue.getUTCDate()];
+        }
+        return [nowValue.getFullYear(), nowValue.getMonth(), nowValue.getDate()];
+    }
+
+    // convert an array to a date.
+    // the array should mirror the parameters below
+    // note: all values past the year are optional and will default to the lowest possible value.
+    // [year, month, day , hour, minute, second, millisecond]
+    function configFromArray (config) {
+        var i, date, input = [], currentDate, yearToUse;
+
+        if (config._d) {
+            return;
+        }
+
+        currentDate = currentDateArray(config);
+
+        //compute day of the year from weeks and weekdays
+        if (config._w && config._a[DATE] == null && config._a[MONTH] == null) {
+            dayOfYearFromWeekInfo(config);
+        }
+
+        //if the day of the year is set, figure out what it is
+        if (config._dayOfYear) {
+            yearToUse = defaults(config._a[YEAR], currentDate[YEAR]);
+
+            if (config._dayOfYear > daysInYear(yearToUse)) {
+                getParsingFlags(config)._overflowDayOfYear = true;
+            }
+
+            date = createUTCDate(yearToUse, 0, config._dayOfYear);
+            config._a[MONTH] = date.getUTCMonth();
+            config._a[DATE] = date.getUTCDate();
+        }
+
+        // Default to current date.
+        // * if no year, month, day of month are given, default to today
+        // * if day of month is given, default month and year
+        // * if month is given, default only year
+        // * if year is given, don't default anything
+        for (i = 0; i < 3 && config._a[i] == null; ++i) {
+            config._a[i] = input[i] = currentDate[i];
+        }
+
+        // Zero out whatever was not defaulted, including time
+        for (; i < 7; i++) {
+            config._a[i] = input[i] = (config._a[i] == null) ? (i === 2 ? 1 : 0) : config._a[i];
+        }
+
+        // Check for 24:00:00.000
+        if (config._a[HOUR] === 24 &&
+                config._a[MINUTE] === 0 &&
+                config._a[SECOND] === 0 &&
+                config._a[MILLISECOND] === 0) {
+            config._nextDay = true;
+            config._a[HOUR] = 0;
+        }
+
+        config._d = (config._useUTC ? createUTCDate : createDate).apply(null, input);
+        // Apply timezone offset from input. The actual utcOffset can be changed
+        // with parseZone.
+        if (config._tzm != null) {
+            config._d.setUTCMinutes(config._d.getUTCMinutes() - config._tzm);
+        }
+
+        if (config._nextDay) {
+            config._a[HOUR] = 24;
+        }
+    }
+
+    function dayOfYearFromWeekInfo(config) {
+        var w, weekYear, week, weekday, dow, doy, temp, weekdayOverflow;
+
+        w = config._w;
+        if (w.GG != null || w.W != null || w.E != null) {
+            dow = 1;
+            doy = 4;
+
+            // TODO: We need to take the current isoWeekYear, but that depends on
+            // how we interpret now (local, utc, fixed offset). So create
+            // a now version of current config (take local/utc/offset flags, and
+            // create now).
+            weekYear = defaults(w.GG, config._a[YEAR], weekOfYear(local__createLocal(), 1, 4).year);
+            week = defaults(w.W, 1);
+            weekday = defaults(w.E, 1);
+            if (weekday < 1 || weekday > 7) {
+                weekdayOverflow = true;
+            }
+        } else {
+            dow = config._locale._week.dow;
+            doy = config._locale._week.doy;
+
+            weekYear = defaults(w.gg, config._a[YEAR], weekOfYear(local__createLocal(), dow, doy).year);
+            week = defaults(w.w, 1);
+
+            if (w.d != null) {
+                // weekday -- low day numbers are considered next week
+                weekday = w.d;
+                if (weekday < 0 || weekday > 6) {
+                    weekdayOverflow = true;
+                }
+            } else if (w.e != null) {
+                // local weekday -- counting starts from begining of week
+                weekday = w.e + dow;
+                if (w.e < 0 || w.e > 6) {
+                    weekdayOverflow = true;
+                }
+            } else {
+                // default to begining of week
+                weekday = dow;
+            }
+        }
+        if (week < 1 || week > weeksInYear(weekYear, dow, doy)) {
+            getParsingFlags(config)._overflowWeeks = true;
+        } else if (weekdayOverflow != null) {
+            getParsingFlags(config)._overflowWeekday = true;
+        } else {
+            temp = dayOfYearFromWeeks(weekYear, week, weekday, dow, doy);
+            config._a[YEAR] = temp.year;
+            config._dayOfYear = temp.dayOfYear;
+        }
+    }
+
+    // constant that refers to the ISO standard
+    utils_hooks__hooks.ISO_8601 = function () {};
+
+    // date from string and format string
+    function configFromStringAndFormat(config) {
+        // TODO: Move this to another part of the creation flow to prevent circular deps
+        if (config._f === utils_hooks__hooks.ISO_8601) {
+            configFromISO(config);
+            return;
+        }
+
+        config._a = [];
+        getParsingFlags(config).empty = true;
+
+        // This array is used to make a Date, either with `new Date` or `Date.UTC`
+        var string = '' + config._i,
+            i, parsedInput, tokens, token, skipped,
+            stringLength = string.length,
+            totalParsedInputLength = 0;
+
+        tokens = expandFormat(config._f, config._locale).match(formattingTokens) || [];
+
+        for (i = 0; i < tokens.length; i++) {
+            token = tokens[i];
+            parsedInput = (string.match(getParseRegexForToken(token, config)) || [])[0];
+            // console.log('token', token, 'parsedInput', parsedInput,
+            //         'regex', getParseRegexForToken(token, config));
+            if (parsedInput) {
+                skipped = string.substr(0, string.indexOf(parsedInput));
+                if (skipped.length > 0) {
+                    getParsingFlags(config).unusedInput.push(skipped);
+                }
+                string = string.slice(string.indexOf(parsedInput) + parsedInput.length);
+                totalParsedInputLength += parsedInput.length;
+            }
+            // don't parse if it's not a known token
+            if (formatTokenFunctions[token]) {
+                if (parsedInput) {
+                    getParsingFlags(config).empty = false;
+                }
+                else {
+                    getParsingFlags(config).unusedTokens.push(token);
+                }
+                addTimeToArrayFromToken(token, parsedInput, config);
+            }
+            else if (config._strict && !parsedInput) {
+                getParsingFlags(config).unusedTokens.push(token);
+            }
+        }
+
+        // add remaining unparsed input length to the string
+        getParsingFlags(config).charsLeftOver = stringLength - totalParsedInputLength;
+        if (string.length > 0) {
+            getParsingFlags(config).unusedInput.push(string);
+        }
+
+        // clear _12h flag if hour is <= 12
+        if (getParsingFlags(config).bigHour === true &&
+                config._a[HOUR] <= 12 &&
+                config._a[HOUR] > 0) {
+            getParsingFlags(config).bigHour = undefined;
+        }
+
+        getParsingFlags(config).parsedDateParts = config._a.slice(0);
+        getParsingFlags(config).meridiem = config._meridiem;
+        // handle meridiem
+        config._a[HOUR] = meridiemFixWrap(config._locale, config._a[HOUR], config._meridiem);
+
+        configFromArray(config);
+        checkOverflow(config);
+    }
+
+
+    function meridiemFixWrap (locale, hour, meridiem) {
+        var isPm;
+
+        if (meridiem == null) {
+            // nothing to do
+            return hour;
+        }
+        if (locale.meridiemHour != null) {
+            return locale.meridiemHour(hour, meridiem);
+        } else if (locale.isPM != null) {
+            // Fallback
+            isPm = locale.isPM(meridiem);
+            if (isPm && hour < 12) {
+                hour += 12;
+            }
+            if (!isPm && hour === 12) {
+                hour = 0;
+            }
+            return hour;
+        } else {
+            // this is not supposed to happen
+            return hour;
+        }
+    }
+
+    // date from string and array of format strings
+    function configFromStringAndArray(config) {
+        var tempConfig,
+            bestMoment,
+
+            scoreToBeat,
+            i,
+            currentScore;
+
+        if (config._f.length === 0) {
+            getParsingFlags(config).invalidFormat = true;
+            config._d = new Date(NaN);
+            return;
+        }
+
+        for (i = 0; i < config._f.length; i++) {
+            currentScore = 0;
+            tempConfig = copyConfig({}, config);
+            if (config._useUTC != null) {
+                tempConfig._useUTC = config._useUTC;
+            }
+            tempConfig._f = config._f[i];
+            configFromStringAndFormat(tempConfig);
+
+            if (!valid__isValid(tempConfig)) {
+                continue;
+            }
+
+            // if there is any input that was not parsed add a penalty for that format
+            currentScore += getParsingFlags(tempConfig).charsLeftOver;
+
+            //or tokens
+            currentScore += getParsingFlags(tempConfig).unusedTokens.length * 10;
+
+            getParsingFlags(tempConfig).score = currentScore;
+
+            if (scoreToBeat == null || currentScore < scoreToBeat) {
+                scoreToBeat = currentScore;
+                bestMoment = tempConfig;
+            }
+        }
+
+        extend(config, bestMoment || tempConfig);
+    }
+
+    function configFromObject(config) {
+        if (config._d) {
+            return;
+        }
+
+        var i = normalizeObjectUnits(config._i);
+        config._a = map([i.year, i.month, i.day || i.date, i.hour, i.minute, i.second, i.millisecond], function (obj) {
+            return obj && parseInt(obj, 10);
+        });
+
+        configFromArray(config);
+    }
+
+    function createFromConfig (config) {
+        var res = new Moment(checkOverflow(prepareConfig(config)));
+        if (res._nextDay) {
+            // Adding is smart enough around DST
+            res.add(1, 'd');
+            res._nextDay = undefined;
+        }
+
+        return res;
+    }
+
+    function prepareConfig (config) {
+        var input = config._i,
+            format = config._f;
+
+        config._locale = config._locale || locale_locales__getLocale(config._l);
+
+        if (input === null || (format === undefined && input === '')) {
+            return valid__createInvalid({nullInput: true});
+        }
+
+        if (typeof input === 'string') {
+            config._i = input = config._locale.preparse(input);
+        }
+
+        if (isMoment(input)) {
+            return new Moment(checkOverflow(input));
+        } else if (isArray(format)) {
+            configFromStringAndArray(config);
+        } else if (format) {
+            configFromStringAndFormat(config);
+        } else if (isDate(input)) {
+            config._d = input;
+        } else {
+            configFromInput(config);
+        }
+
+        if (!valid__isValid(config)) {
+            config._d = null;
+        }
+
+        return config;
+    }
+
+    function configFromInput(config) {
+        var input = config._i;
+        if (input === undefined) {
+            config._d = new Date(utils_hooks__hooks.now());
+        } else if (isDate(input)) {
+            config._d = new Date(input.valueOf());
+        } else if (typeof input === 'string') {
+            configFromString(config);
+        } else if (isArray(input)) {
+            config._a = map(input.slice(0), function (obj) {
+                return parseInt(obj, 10);
+            });
+            configFromArray(config);
+        } else if (typeof(input) === 'object') {
+            configFromObject(config);
+        } else if (typeof(input) === 'number') {
+            // from milliseconds
+            config._d = new Date(input);
+        } else {
+            utils_hooks__hooks.createFromInputFallback(config);
+        }
+    }
+
+    function createLocalOrUTC (input, format, locale, strict, isUTC) {
+        var c = {};
+
+        if (typeof(locale) === 'boolean') {
+            strict = locale;
+            locale = undefined;
+        }
+        // object construction must be done this way.
+        // https://github.com/moment/moment/issues/1423
+        c._isAMomentObject = true;
+        c._useUTC = c._isUTC = isUTC;
+        c._l = locale;
+        c._i = input;
+        c._f = format;
+        c._strict = strict;
+
+        return createFromConfig(c);
+    }
+
+    function local__createLocal (input, format, locale, strict) {
+        return createLocalOrUTC(input, format, locale, strict, false);
+    }
+
+    var prototypeMin = deprecate(
+         'moment().min is deprecated, use moment.max instead. https://github.com/moment/moment/issues/1548',
+         function () {
+             var other = local__createLocal.apply(null, arguments);
+             if (this.isValid() && other.isValid()) {
+                 return other < this ? this : other;
+             } else {
+                 return valid__createInvalid();
+             }
+         }
+     );
+
+    var prototypeMax = deprecate(
+        'moment().max is deprecated, use moment.min instead. https://github.com/moment/moment/issues/1548',
+        function () {
+            var other = local__createLocal.apply(null, arguments);
+            if (this.isValid() && other.isValid()) {
+                return other > this ? this : other;
+            } else {
+                return valid__createInvalid();
+            }
+        }
+    );
+
+    // Pick a moment m from moments so that m[fn](other) is true for all
+    // other. This relies on the function fn to be transitive.
+    //
+    // moments should either be an array of moment objects or an array, whose
+    // first element is an array of moment objects.
+    function pickBy(fn, moments) {
+        var res, i;
+        if (moments.length === 1 && isArray(moments[0])) {
+            moments = moments[0];
+        }
+        if (!moments.length) {
+            return local__createLocal();
+        }
+        res = moments[0];
+        for (i = 1; i < moments.length; ++i) {
+            if (!moments[i].isValid() || moments[i][fn](res)) {
+                res = moments[i];
+            }
+        }
+        return res;
+    }
+
+    // TODO: Use [].sort instead?
+    function min () {
+        var args = [].slice.call(arguments, 0);
+
+        return pickBy('isBefore', args);
+    }
+
+    function max () {
+        var args = [].slice.call(arguments, 0);
+
+        return pickBy('isAfter', args);
+    }
+
+    var now = function () {
+        return Date.now ? Date.now() : +(new Date());
+    };
+
+    function Duration (duration) {
+        var normalizedInput = normalizeObjectUnits(duration),
+            years = normalizedInput.year || 0,
+            quarters = normalizedInput.quarter || 0,
+            months = normalizedInput.month || 0,
+            weeks = normalizedInput.week || 0,
+            days = normalizedInput.day || 0,
+            hours = normalizedInput.hour || 0,
+            minutes = normalizedInput.minute || 0,
+            seconds = normalizedInput.second || 0,
+            milliseconds = normalizedInput.millisecond || 0;
+
+        // representation for dateAddRemove
+        this._milliseconds = +milliseconds +
+            seconds * 1e3 + // 1000
+            minutes * 6e4 + // 1000 * 60
+            hours * 1000 * 60 * 60; //using 1000 * 60 * 60 instead of 36e5 to avoid floating point rounding errors https://github.com/moment/moment/issues/2978
+        // Because of dateAddRemove treats 24 hours as different from a
+        // day when working around DST, we need to store them separately
+        this._days = +days +
+            weeks * 7;
+        // It is impossible translate months into days without knowing
+        // which months you are are talking about, so we have to store
+        // it separately.
+        this._months = +months +
+            quarters * 3 +
+            years * 12;
+
+        this._data = {};
+
+        this._locale = locale_locales__getLocale();
+
+        this._bubble();
+    }
+
+    function isDuration (obj) {
+        return obj instanceof Duration;
+    }
+
+    // FORMATTING
+
+    function offset (token, separator) {
+        addFormatToken(token, 0, 0, function () {
+            var offset = this.utcOffset();
+            var sign = '+';
+            if (offset < 0) {
+                offset = -offset;
+                sign = '-';
+            }
+            return sign + zeroFill(~~(offset / 60), 2) + separator + zeroFill(~~(offset) % 60, 2);
+        });
+    }
+
+    offset('Z', ':');
+    offset('ZZ', '');
+
+    // PARSING
+
+    addRegexToken('Z',  matchShortOffset);
+    addRegexToken('ZZ', matchShortOffset);
+    addParseToken(['Z', 'ZZ'], function (input, array, config) {
+        config._useUTC = true;
+        config._tzm = offsetFromString(matchShortOffset, input);
+    });
+
+    // HELPERS
+
+    // timezone chunker
+    // '+10:00' > ['10',  '00']
+    // '-1530'  > ['-15', '30']
+    var chunkOffset = /([\+\-]|\d\d)/gi;
+
+    function offsetFromString(matcher, string) {
+        var matches = ((string || '').match(matcher) || []);
+        var chunk   = matches[matches.length - 1] || [];
+        var parts   = (chunk + '').match(chunkOffset) || ['-', 0, 0];
+        var minutes = +(parts[1] * 60) + toInt(parts[2]);
+
+        return parts[0] === '+' ? minutes : -minutes;
+    }
+
+    // Return a moment from input, that is local/utc/zone equivalent to model.
+    function cloneWithOffset(input, model) {
+        var res, diff;
+        if (model._isUTC) {
+            res = model.clone();
+            diff = (isMoment(input) || isDate(input) ? input.valueOf() : local__createLocal(input).valueOf()) - res.valueOf();
+            // Use low-level api, because this fn is low-level api.
+            res._d.setTime(res._d.valueOf() + diff);
+            utils_hooks__hooks.updateOffset(res, false);
+            return res;
+        } else {
+            return local__createLocal(input).local();
+        }
+    }
+
+    function getDateOffset (m) {
+        // On Firefox.24 Date#getTimezoneOffset returns a floating point.
+        // https://github.com/moment/moment/pull/1871
+        return -Math.round(m._d.getTimezoneOffset() / 15) * 15;
+    }
+
+    // HOOKS
+
+    // This function will be called whenever a moment is mutated.
+    // It is intended to keep the offset in sync with the timezone.
+    utils_hooks__hooks.updateOffset = function () {};
+
+    // MOMENTS
+
+    // keepLocalTime = true means only change the timezone, without
+    // affecting the local hour. So 5:31:26 +0300 --[utcOffset(2, true)]-->
+    // 5:31:26 +0200 It is possible that 5:31:26 doesn't exist with offset
+    // +0200, so we adjust the time as needed, to be valid.
+    //
+    // Keeping the time actually adds/subtracts (one hour)
+    // from the actual represented time. That is why we call updateOffset
+    // a second time. In case it wants us to change the offset again
+    // _changeInProgress == true case, then we have to adjust, because
+    // there is no such time in the given timezone.
+    function getSetOffset (input, keepLocalTime) {
+        var offset = this._offset || 0,
+            localAdjust;
+        if (!this.isValid()) {
+            return input != null ? this : NaN;
+        }
+        if (input != null) {
+            if (typeof input === 'string') {
+                input = offsetFromString(matchShortOffset, input);
+            } else if (Math.abs(input) < 16) {
+                input = input * 60;
+            }
+            if (!this._isUTC && keepLocalTime) {
+                localAdjust = getDateOffset(this);
+            }
+            this._offset = input;
+            this._isUTC = true;
+            if (localAdjust != null) {
+                this.add(localAdjust, 'm');
+            }
+            if (offset !== input) {
+                if (!keepLocalTime || this._changeInProgress) {
+                    add_subtract__addSubtract(this, create__createDuration(input - offset, 'm'), 1, false);
+                } else if (!this._changeInProgress) {
+                    this._changeInProgress = true;
+                    utils_hooks__hooks.updateOffset(this, true);
+                    this._changeInProgress = null;
+                }
+            }
+            return this;
+        } else {
+            return this._isUTC ? offset : getDateOffset(this);
+        }
+    }
+
+    function getSetZone (input, keepLocalTime) {
+        if (input != null) {
+            if (typeof input !== 'string') {
+                input = -input;
+            }
+
+            this.utcOffset(input, keepLocalTime);
+
+            return this;
+        } else {
+            return -this.utcOffset();
+        }
+    }
+
+    function setOffsetToUTC (keepLocalTime) {
+        return this.utcOffset(0, keepLocalTime);
+    }
+
+    function setOffsetToLocal (keepLocalTime) {
+        if (this._isUTC) {
+            this.utcOffset(0, keepLocalTime);
+            this._isUTC = false;
+
+            if (keepLocalTime) {
+                this.subtract(getDateOffset(this), 'm');
+            }
+        }
+        return this;
+    }
+
+    function setOffsetToParsedOffset () {
+        if (this._tzm) {
+            this.utcOffset(this._tzm);
+        } else if (typeof this._i === 'string') {
+            this.utcOffset(offsetFromString(matchOffset, this._i));
+        }
+        return this;
+    }
+
+    function hasAlignedHourOffset (input) {
+        if (!this.isValid()) {
+            return false;
+        }
+        input = input ? local__createLocal(input).utcOffset() : 0;
+
+        return (this.utcOffset() - input) % 60 === 0;
+    }
+
+    function isDaylightSavingTime () {
+        return (
+            this.utcOffset() > this.clone().month(0).utcOffset() ||
+            this.utcOffset() > this.clone().month(5).utcOffset()
+        );
+    }
+
+    function isDaylightSavingTimeShifted () {
+        if (!isUndefined(this._isDSTShifted)) {
+            return this._isDSTShifted;
+        }
+
+        var c = {};
+
+        copyConfig(c, this);
+        c = prepareConfig(c);
+
+        if (c._a) {
+            var other = c._isUTC ? create_utc__createUTC(c._a) : local__createLocal(c._a);
+            this._isDSTShifted = this.isValid() &&
+                compareArrays(c._a, other.toArray()) > 0;
+        } else {
+            this._isDSTShifted = false;
+        }
+
+        return this._isDSTShifted;
+    }
+
+    function isLocal () {
+        return this.isValid() ? !this._isUTC : false;
+    }
+
+    function isUtcOffset () {
+        return this.isValid() ? this._isUTC : false;
+    }
+
+    function isUtc () {
+        return this.isValid() ? this._isUTC && this._offset === 0 : false;
+    }
+
+    // ASP.NET json date format regex
+    var aspNetRegex = /^(\-)?(?:(\d*)[. ])?(\d+)\:(\d+)(?:\:(\d+)\.?(\d{3})?\d*)?$/;
+
+    // from http://docs.closure-library.googlecode.com/git/closure_goog_date_date.js.source.html
+    // somewhat more in line with 4.4.3.2 2004 spec, but allows decimal anywhere
+    // and further modified to allow for strings containing both week and day
+    var isoRegex = /^(-)?P(?:(-?[0-9,.]*)Y)?(?:(-?[0-9,.]*)M)?(?:(-?[0-9,.]*)W)?(?:(-?[0-9,.]*)D)?(?:T(?:(-?[0-9,.]*)H)?(?:(-?[0-9,.]*)M)?(?:(-?[0-9,.]*)S)?)?$/;
+
+    function create__createDuration (input, key) {
+        var duration = input,
+            // matching against regexp is expensive, do it on demand
+            match = null,
+            sign,
+            ret,
+            diffRes;
+
+        if (isDuration(input)) {
+            duration = {
+                ms : input._milliseconds,
+                d  : input._days,
+                M  : input._months
+            };
+        } else if (typeof input === 'number') {
+            duration = {};
+            if (key) {
+                duration[key] = input;
+            } else {
+                duration.milliseconds = input;
+            }
+        } else if (!!(match = aspNetRegex.exec(input))) {
+            sign = (match[1] === '-') ? -1 : 1;
+            duration = {
+                y  : 0,
+                d  : toInt(match[DATE])        * sign,
+                h  : toInt(match[HOUR])        * sign,
+                m  : toInt(match[MINUTE])      * sign,
+                s  : toInt(match[SECOND])      * sign,
+                ms : toInt(match[MILLISECOND]) * sign
+            };
+        } else if (!!(match = isoRegex.exec(input))) {
+            sign = (match[1] === '-') ? -1 : 1;
+            duration = {
+                y : parseIso(match[2], sign),
+                M : parseIso(match[3], sign),
+                w : parseIso(match[4], sign),
+                d : parseIso(match[5], sign),
+                h : parseIso(match[6], sign),
+                m : parseIso(match[7], sign),
+                s : parseIso(match[8], sign)
+            };
+        } else if (duration == null) {// checks for null or undefined
+            duration = {};
+        } else if (typeof duration === 'object' && ('from' in duration || 'to' in duration)) {
+            diffRes = momentsDifference(local__createLocal(duration.from), local__createLocal(duration.to));
+
+            duration = {};
+            duration.ms = diffRes.milliseconds;
+            duration.M = diffRes.months;
+        }
+
+        ret = new Duration(duration);
+
+        if (isDuration(input) && hasOwnProp(input, '_locale')) {
+            ret._locale = input._locale;
+        }
+
+        return ret;
+    }
+
+    create__createDuration.fn = Duration.prototype;
+
+    function parseIso (inp, sign) {
+        // We'd normally use ~~inp for this, but unfortunately it also
+        // converts floats to ints.
+        // inp may be undefined, so careful calling replace on it.
+        var res = inp && parseFloat(inp.replace(',', '.'));
+        // apply sign while we're at it
+        return (isNaN(res) ? 0 : res) * sign;
+    }
+
+    function positiveMomentsDifference(base, other) {
+        var res = {milliseconds: 0, months: 0};
+
+        res.months = other.month() - base.month() +
+            (other.year() - base.year()) * 12;
+        if (base.clone().add(res.months, 'M').isAfter(other)) {
+            --res.months;
+        }
+
+        res.milliseconds = +other - +(base.clone().add(res.months, 'M'));
+
+        return res;
+    }
+
+    function momentsDifference(base, other) {
+        var res;
+        if (!(base.isValid() && other.isValid())) {
+            return {milliseconds: 0, months: 0};
+        }
+
+        other = cloneWithOffset(other, base);
+        if (base.isBefore(other)) {
+            res = positiveMomentsDifference(base, other);
+        } else {
+            res = positiveMomentsDifference(other, base);
+            res.milliseconds = -res.milliseconds;
+            res.months = -res.months;
+        }
+
+        return res;
+    }
+
+    function absRound (number) {
+        if (number < 0) {
+            return Math.round(-1 * number) * -1;
+        } else {
+            return Math.round(number);
+        }
+    }
+
+    // TODO: remove 'name' arg after deprecation is removed
+    function createAdder(direction, name) {
+        return function (val, period) {
+            var dur, tmp;
+            //invert the arguments, but complain about it
+            if (period !== null && !isNaN(+period)) {
+                deprecateSimple(name, 'moment().' + name  + '(period, number) is deprecated. Please use moment().' + name + '(number, period).');
+                tmp = val; val = period; period = tmp;
+            }
+
+            val = typeof val === 'string' ? +val : val;
+            dur = create__createDuration(val, period);
+            add_subtract__addSubtract(this, dur, direction);
+            return this;
+        };
+    }
+
+    function add_subtract__addSubtract (mom, duration, isAdding, updateOffset) {
+        var milliseconds = duration._milliseconds,
+            days = absRound(duration._days),
+            months = absRound(duration._months);
+
+        if (!mom.isValid()) {
+            // No op
+            return;
+        }
+
+        updateOffset = updateOffset == null ? true : updateOffset;
+
+        if (milliseconds) {
+            mom._d.setTime(mom._d.valueOf() + milliseconds * isAdding);
+        }
+        if (days) {
+            get_set__set(mom, 'Date', get_set__get(mom, 'Date') + days * isAdding);
+        }
+        if (months) {
+            setMonth(mom, get_set__get(mom, 'Month') + months * isAdding);
+        }
+        if (updateOffset) {
+            utils_hooks__hooks.updateOffset(mom, days || months);
+        }
+    }
+
+    var add_subtract__add      = createAdder(1, 'add');
+    var add_subtract__subtract = createAdder(-1, 'subtract');
+
+    function moment_calendar__calendar (time, formats) {
+        // We want to compare the start of today, vs this.
+        // Getting start-of-today depends on whether we're local/utc/offset or not.
+        var now = time || local__createLocal(),
+            sod = cloneWithOffset(now, this).startOf('day'),
+            diff = this.diff(sod, 'days', true),
+            format = diff < -6 ? 'sameElse' :
+                diff < -1 ? 'lastWeek' :
+                diff < 0 ? 'lastDay' :
+                diff < 1 ? 'sameDay' :
+                diff < 2 ? 'nextDay' :
+                diff < 7 ? 'nextWeek' : 'sameElse';
+
+        var output = formats && (isFunction(formats[format]) ? formats[format]() : formats[format]);
+
+        return this.format(output || this.localeData().calendar(format, this, local__createLocal(now)));
+    }
+
+    function clone () {
+        return new Moment(this);
+    }
+
+    function isAfter (input, units) {
+        var localInput = isMoment(input) ? input : local__createLocal(input);
+        if (!(this.isValid() && localInput.isValid())) {
+            return false;
+        }
+        units = normalizeUnits(!isUndefined(units) ? units : 'millisecond');
+        if (units === 'millisecond') {
+            return this.valueOf() > localInput.valueOf();
+        } else {
+            return localInput.valueOf() < this.clone().startOf(units).valueOf();
+        }
+    }
+
+    function isBefore (input, units) {
+        var localInput = isMoment(input) ? input : local__createLocal(input);
+        if (!(this.isValid() && localInput.isValid())) {
+            return false;
+        }
+        units = normalizeUnits(!isUndefined(units) ? units : 'millisecond');
+        if (units === 'millisecond') {
+            return this.valueOf() < localInput.valueOf();
+        } else {
+            return this.clone().endOf(units).valueOf() < localInput.valueOf();
+        }
+    }
+
+    function isBetween (from, to, units, inclusivity) {
+        inclusivity = inclusivity || '()';
+        return (inclusivity[0] === '(' ? this.isAfter(from, units) : !this.isBefore(from, units)) &&
+            (inclusivity[1] === ')' ? this.isBefore(to, units) : !this.isAfter(to, units));
+    }
+
+    function isSame (input, units) {
+        var localInput = isMoment(input) ? input : local__createLocal(input),
+            inputMs;
+        if (!(this.isValid() && localInput.isValid())) {
+            return false;
+        }
+        units = normalizeUnits(units || 'millisecond');
+        if (units === 'millisecond') {
+            return this.valueOf() === localInput.valueOf();
+        } else {
+            inputMs = localInput.valueOf();
+            return this.clone().startOf(units).valueOf() <= inputMs && inputMs <= this.clone().endOf(units).valueOf();
+        }
+    }
+
+    function isSameOrAfter (input, units) {
+        return this.isSame(input, units) || this.isAfter(input,units);
+    }
+
+    function isSameOrBefore (input, units) {
+        return this.isSame(input, units) || this.isBefore(input,units);
+    }
+
+    function diff (input, units, asFloat) {
+        var that,
+            zoneDelta,
+            delta, output;
+
+        if (!this.isValid()) {
+            return NaN;
+        }
+
+        that = cloneWithOffset(input, this);
+
+        if (!that.isValid()) {
+            return NaN;
+        }
+
+        zoneDelta = (that.utcOffset() - this.utcOffset()) * 6e4;
+
+        units = normalizeUnits(units);
+
+        if (units === 'year' || units === 'month' || units === 'quarter') {
+            output = monthDiff(this, that);
+            if (units === 'quarter') {
+                output = output / 3;
+            } else if (units === 'year') {
+                output = output / 12;
+            }
+        } else {
+            delta = this - that;
+            output = units === 'second' ? delta / 1e3 : // 1000
+                units === 'minute' ? delta / 6e4 : // 1000 * 60
+                units === 'hour' ? delta / 36e5 : // 1000 * 60 * 60
+                units === 'day' ? (delta - zoneDelta) / 864e5 : // 1000 * 60 * 60 * 24, negate dst
+                units === 'week' ? (delta - zoneDelta) / 6048e5 : // 1000 * 60 * 60 * 24 * 7, negate dst
+                delta;
+        }
+        return asFloat ? output : absFloor(output);
+    }
+
+    function monthDiff (a, b) {
+        // difference in months
+        var wholeMonthDiff = ((b.year() - a.year()) * 12) + (b.month() - a.month()),
+            // b is in (anchor - 1 month, anchor + 1 month)
+            anchor = a.clone().add(wholeMonthDiff, 'months'),
+            anchor2, adjust;
+
+        if (b - anchor < 0) {
+            anchor2 = a.clone().add(wholeMonthDiff - 1, 'months');
+            // linear across the month
+            adjust = (b - anchor) / (anchor - anchor2);
+        } else {
+            anchor2 = a.clone().add(wholeMonthDiff + 1, 'months');
+            // linear across the month
+            adjust = (b - anchor) / (anchor2 - anchor);
+        }
+
+        //check for negative zero, return zero if negative zero
+        return -(wholeMonthDiff + adjust) || 0;
+    }
+
+    utils_hooks__hooks.defaultFormat = 'YYYY-MM-DDTHH:mm:ssZ';
+    utils_hooks__hooks.defaultFormatUtc = 'YYYY-MM-DDTHH:mm:ss[Z]';
+
+    function toString () {
+        return this.clone().locale('en').format('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
+    }
+
+    function moment_format__toISOString () {
+        var m = this.clone().utc();
+        if (0 < m.year() && m.year() <= 9999) {
+            if (isFunction(Date.prototype.toISOString)) {
+                // native implementation is ~50x faster, use it when we can
+                return this.toDate().toISOString();
+            } else {
+                return formatMoment(m, 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
+            }
+        } else {
+            return formatMoment(m, 'YYYYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
+        }
+    }
+
+    function format (inputString) {
+        if (!inputString) {
+            inputString = this.isUtc() ? utils_hooks__hooks.defaultFormatUtc : utils_hooks__hooks.defaultFormat;
+        }
+        var output = formatMoment(this, inputString);
+        return this.localeData().postformat(output);
+    }
+
+    function from (time, withoutSuffix) {
+        if (this.isValid() &&
+                ((isMoment(time) && time.isValid()) ||
+                 local__createLocal(time).isValid())) {
+            return create__createDuration({to: this, from: time}).locale(this.locale()).humanize(!withoutSuffix);
+        } else {
+            return this.localeData().invalidDate();
+        }
+    }
+
+    function fromNow (withoutSuffix) {
+        return this.from(local__createLocal(), withoutSuffix);
+    }
+
+    function to (time, withoutSuffix) {
+        if (this.isValid() &&
+                ((isMoment(time) && time.isValid()) ||
+                 local__createLocal(time).isValid())) {
+            return create__createDuration({from: this, to: time}).locale(this.locale()).humanize(!withoutSuffix);
+        } else {
+            return this.localeData().invalidDate();
+        }
+    }
+
+    function toNow (withoutSuffix) {
+        return this.to(local__createLocal(), withoutSuffix);
+    }
+
+    // If passed a locale key, it will set the locale for this
+    // instance.  Otherwise, it will return the locale configuration
+    // variables for this instance.
+    function locale (key) {
+        var newLocaleData;
+
+        if (key === undefined) {
+            return this._locale._abbr;
+        } else {
+            newLocaleData = locale_locales__getLocale(key);
+            if (newLocaleData != null) {
+                this._locale = newLocaleData;
+            }
+            return this;
+        }
+    }
+
+    var lang = deprecate(
+        'moment().lang() is deprecated. Instead, use moment().localeData() to get the language configuration. Use moment().locale() to change languages.',
+        function (key) {
+            if (key === undefined) {
+                return this.localeData();
+            } else {
+                return this.locale(key);
+            }
+        }
+    );
+
+    function localeData () {
+        return this._locale;
+    }
+
+    function startOf (units) {
+        units = normalizeUnits(units);
+        // the following switch intentionally omits break keywords
+        // to utilize falling through the cases.
+        switch (units) {
+        case 'year':
+            this.month(0);
+            /* falls through */
+        case 'quarter':
+        case 'month':
+            this.date(1);
+            /* falls through */
+        case 'week':
+        case 'isoWeek':
+        case 'day':
+        case 'date':
+            this.hours(0);
+            /* falls through */
+        case 'hour':
+            this.minutes(0);
+            /* falls through */
+        case 'minute':
+            this.seconds(0);
+            /* falls through */
+        case 'second':
+            this.milliseconds(0);
+        }
+
+        // weeks are a special case
+        if (units === 'week') {
+            this.weekday(0);
+        }
+        if (units === 'isoWeek') {
+            this.isoWeekday(1);
+        }
+
+        // quarters are also special
+        if (units === 'quarter') {
+            this.month(Math.floor(this.month() / 3) * 3);
+        }
+
+        return this;
+    }
+
+    function endOf (units) {
+        units = normalizeUnits(units);
+        if (units === undefined || units === 'millisecond') {
+            return this;
+        }
+
+        // 'date' is an alias for 'day', so it should be considered as such.
+        if (units === 'date') {
+            units = 'day';
+        }
+
+        return this.startOf(units).add(1, (units === 'isoWeek' ? 'week' : units)).subtract(1, 'ms');
+    }
+
+    function to_type__valueOf () {
+        return this._d.valueOf() - ((this._offset || 0) * 60000);
+    }
+
+    function unix () {
+        return Math.floor(this.valueOf() / 1000);
+    }
+
+    function toDate () {
+        return this._offset ? new Date(this.valueOf()) : this._d;
+    }
+
+    function toArray () {
+        var m = this;
+        return [m.year(), m.month(), m.date(), m.hour(), m.minute(), m.second(), m.millisecond()];
+    }
+
+    function toObject () {
+        var m = this;
+        return {
+            years: m.year(),
+            months: m.month(),
+            date: m.date(),
+            hours: m.hours(),
+            minutes: m.minutes(),
+            seconds: m.seconds(),
+            milliseconds: m.milliseconds()
+        };
+    }
+
+    function toJSON () {
+        // new Date(NaN).toJSON() === null
+        return this.isValid() ? this.toISOString() : null;
+    }
+
+    function moment_valid__isValid () {
+        return valid__isValid(this);
+    }
+
+    function parsingFlags () {
+        return extend({}, getParsingFlags(this));
+    }
+
+    function invalidAt () {
+        return getParsingFlags(this).overflow;
+    }
+
+    function creationData() {
+        return {
+            input: this._i,
+            format: this._f,
+            locale: this._locale,
+            isUTC: this._isUTC,
+            strict: this._strict
+        };
+    }
+
+    // FORMATTING
+
+    addFormatToken(0, ['gg', 2], 0, function () {
+        return this.weekYear() % 100;
+    });
+
+    addFormatToken(0, ['GG', 2], 0, function () {
+        return this.isoWeekYear() % 100;
+    });
+
+    function addWeekYearFormatToken (token, getter) {
+        addFormatToken(0, [token, token.length], 0, getter);
+    }
+
+    addWeekYearFormatToken('gggg',     'weekYear');
+    addWeekYearFormatToken('ggggg',    'weekYear');
+    addWeekYearFormatToken('GGGG',  'isoWeekYear');
+    addWeekYearFormatToken('GGGGG', 'isoWeekYear');
+
+    // ALIASES
+
+    addUnitAlias('weekYear', 'gg');
+    addUnitAlias('isoWeekYear', 'GG');
+
+    // PARSING
+
+    addRegexToken('G',      matchSigned);
+    addRegexToken('g',      matchSigned);
+    addRegexToken('GG',     match1to2, match2);
+    addRegexToken('gg',     match1to2, match2);
+    addRegexToken('GGGG',   match1to4, match4);
+    addRegexToken('gggg',   match1to4, match4);
+    addRegexToken('GGGGG',  match1to6, match6);
+    addRegexToken('ggggg',  match1to6, match6);
+
+    addWeekParseToken(['gggg', 'ggggg', 'GGGG', 'GGGGG'], function (input, week, config, token) {
+        week[token.substr(0, 2)] = toInt(input);
+    });
+
+    addWeekParseToken(['gg', 'GG'], function (input, week, config, token) {
+        week[token] = utils_hooks__hooks.parseTwoDigitYear(input);
+    });
+
+    // MOMENTS
+
+    function getSetWeekYear (input) {
+        return getSetWeekYearHelper.call(this,
+                input,
+                this.week(),
+                this.weekday(),
+                this.localeData()._week.dow,
+                this.localeData()._week.doy);
+    }
+
+    function getSetISOWeekYear (input) {
+        return getSetWeekYearHelper.call(this,
+                input, this.isoWeek(), this.isoWeekday(), 1, 4);
+    }
+
+    function getISOWeeksInYear () {
+        return weeksInYear(this.year(), 1, 4);
+    }
+
+    function getWeeksInYear () {
+        var weekInfo = this.localeData()._week;
+        return weeksInYear(this.year(), weekInfo.dow, weekInfo.doy);
+    }
+
+    function getSetWeekYearHelper(input, week, weekday, dow, doy) {
+        var weeksTarget;
+        if (input == null) {
+            return weekOfYear(this, dow, doy).year;
+        } else {
+            weeksTarget = weeksInYear(input, dow, doy);
+            if (week > weeksTarget) {
+                week = weeksTarget;
+            }
+            return setWeekAll.call(this, input, week, weekday, dow, doy);
+        }
+    }
+
+    function setWeekAll(weekYear, week, weekday, dow, doy) {
+        var dayOfYearData = dayOfYearFromWeeks(weekYear, week, weekday, dow, doy),
+            date = createUTCDate(dayOfYearData.year, 0, dayOfYearData.dayOfYear);
+
+        this.year(date.getUTCFullYear());
+        this.month(date.getUTCMonth());
+        this.date(date.getUTCDate());
+        return this;
+    }
+
+    // FORMATTING
+
+    addFormatToken('Q', 0, 'Qo', 'quarter');
+
+    // ALIASES
+
+    addUnitAlias('quarter', 'Q');
+
+    // PARSING
+
+    addRegexToken('Q', match1);
+    addParseToken('Q', function (input, array) {
+        array[MONTH] = (toInt(input) - 1) * 3;
+    });
+
+    // MOMENTS
+
+    function getSetQuarter (input) {
+        return input == null ? Math.ceil((this.month() + 1) / 3) : this.month((input - 1) * 3 + this.month() % 3);
+    }
+
+    // FORMATTING
+
+    addFormatToken('w', ['ww', 2], 'wo', 'week');
+    addFormatToken('W', ['WW', 2], 'Wo', 'isoWeek');
+
+    // ALIASES
+
+    addUnitAlias('week', 'w');
+    addUnitAlias('isoWeek', 'W');
+
+    // PARSING
+
+    addRegexToken('w',  match1to2);
+    addRegexToken('ww', match1to2, match2);
+    addRegexToken('W',  match1to2);
+    addRegexToken('WW', match1to2, match2);
+
+    addWeekParseToken(['w', 'ww', 'W', 'WW'], function (input, week, config, token) {
+        week[token.substr(0, 1)] = toInt(input);
+    });
+
+    // HELPERS
+
+    // LOCALES
+
+    function localeWeek (mom) {
+        return weekOfYear(mom, this._week.dow, this._week.doy).week;
+    }
+
+    var defaultLocaleWeek = {
+        dow : 0, // Sunday is the first day of the week.
+        doy : 6  // The week that contains Jan 1st is the first week of the year.
+    };
+
+    function localeFirstDayOfWeek () {
+        return this._week.dow;
+    }
+
+    function localeFirstDayOfYear () {
+        return this._week.doy;
+    }
+
+    // MOMENTS
+
+    function getSetWeek (input) {
+        var week = this.localeData().week(this);
+        return input == null ? week : this.add((input - week) * 7, 'd');
+    }
+
+    function getSetISOWeek (input) {
+        var week = weekOfYear(this, 1, 4).week;
+        return input == null ? week : this.add((input - week) * 7, 'd');
+    }
+
+    // FORMATTING
+
+    addFormatToken('D', ['DD', 2], 'Do', 'date');
+
+    // ALIASES
+
+    addUnitAlias('date', 'D');
+
+    // PARSING
+
+    addRegexToken('D',  match1to2);
+    addRegexToken('DD', match1to2, match2);
+    addRegexToken('Do', function (isStrict, locale) {
+        return isStrict ? locale._ordinalParse : locale._ordinalParseLenient;
+    });
+
+    addParseToken(['D', 'DD'], DATE);
+    addParseToken('Do', function (input, array) {
+        array[DATE] = toInt(input.match(match1to2)[0], 10);
+    });
+
+    // MOMENTS
+
+    var getSetDayOfMonth = makeGetSet('Date', true);
+
+    // FORMATTING
+
+    addFormatToken('d', 0, 'do', 'day');
+
+    addFormatToken('dd', 0, 0, function (format) {
+        return this.localeData().weekdaysMin(this, format);
+    });
+
+    addFormatToken('ddd', 0, 0, function (format) {
+        return this.localeData().weekdaysShort(this, format);
+    });
+
+    addFormatToken('dddd', 0, 0, function (format) {
+        return this.localeData().weekdays(this, format);
+    });
+
+    addFormatToken('e', 0, 0, 'weekday');
+    addFormatToken('E', 0, 0, 'isoWeekday');
+
+    // ALIASES
+
+    addUnitAlias('day', 'd');
+    addUnitAlias('weekday', 'e');
+    addUnitAlias('isoWeekday', 'E');
+
+    // PARSING
+
+    addRegexToken('d',    match1to2);
+    addRegexToken('e',    match1to2);
+    addRegexToken('E',    match1to2);
+    addRegexToken('dd',   function (isStrict, locale) {
+        return locale.weekdaysMinRegex(isStrict);
+    });
+    addRegexToken('ddd',   function (isStrict, locale) {
+        return locale.weekdaysShortRegex(isStrict);
+    });
+    addRegexToken('dddd',   function (isStrict, locale) {
+        return locale.weekdaysRegex(isStrict);
+    });
+
+    addWeekParseToken(['dd', 'ddd', 'dddd'], function (input, week, config, token) {
+        var weekday = config._locale.weekdaysParse(input, token, config._strict);
+        // if we didn't get a weekday name, mark the date as invalid
+        if (weekday != null) {
+            week.d = weekday;
+        } else {
+            getParsingFlags(config).invalidWeekday = input;
+        }
+    });
+
+    addWeekParseToken(['d', 'e', 'E'], function (input, week, config, token) {
+        week[token] = toInt(input);
+    });
+
+    // HELPERS
+
+    function parseWeekday(input, locale) {
+        if (typeof input !== 'string') {
+            return input;
+        }
+
+        if (!isNaN(input)) {
+            return parseInt(input, 10);
+        }
+
+        input = locale.weekdaysParse(input);
+        if (typeof input === 'number') {
+            return input;
+        }
+
+        return null;
+    }
+
+    // LOCALES
+
+    var defaultLocaleWeekdays = 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_');
+    function localeWeekdays (m, format) {
+        return isArray(this._weekdays) ? this._weekdays[m.day()] :
+            this._weekdays[this._weekdays.isFormat.test(format) ? 'format' : 'standalone'][m.day()];
+    }
+
+    var defaultLocaleWeekdaysShort = 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_');
+    function localeWeekdaysShort (m) {
+        return this._weekdaysShort[m.day()];
+    }
+
+    var defaultLocaleWeekdaysMin = 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_');
+    function localeWeekdaysMin (m) {
+        return this._weekdaysMin[m.day()];
+    }
+
+    function day_of_week__handleStrictParse(weekdayName, format, strict) {
+        var i, ii, mom, llc = weekdayName.toLocaleLowerCase();
+        if (!this._weekdaysParse) {
+            this._weekdaysParse = [];
+            this._shortWeekdaysParse = [];
+            this._minWeekdaysParse = [];
+
+            for (i = 0; i < 7; ++i) {
+                mom = create_utc__createUTC([2000, 1]).day(i);
+                this._minWeekdaysParse[i] = this.weekdaysMin(mom, '').toLocaleLowerCase();
+                this._shortWeekdaysParse[i] = this.weekdaysShort(mom, '').toLocaleLowerCase();
+                this._weekdaysParse[i] = this.weekdays(mom, '').toLocaleLowerCase();
+            }
+        }
+
+        if (strict) {
+            if (format === 'dddd') {
+                ii = indexOf.call(this._weekdaysParse, llc);
+                return ii !== -1 ? ii : null;
+            } else if (format === 'ddd') {
+                ii = indexOf.call(this._shortWeekdaysParse, llc);
+                return ii !== -1 ? ii : null;
+            } else {
+                ii = indexOf.call(this._minWeekdaysParse, llc);
+                return ii !== -1 ? ii : null;
+            }
+        } else {
+            if (format === 'dddd') {
+                ii = indexOf.call(this._weekdaysParse, llc);
+                if (ii !== -1) {
+                    return ii;
+                }
+                ii = indexOf.call(this._shortWeekdaysParse, llc);
+                if (ii !== -1) {
+                    return ii;
+                }
+                ii = indexOf.call(this._minWeekdaysParse, llc);
+                return ii !== -1 ? ii : null;
+            } else if (format === 'ddd') {
+                ii = indexOf.call(this._shortWeekdaysParse, llc);
+                if (ii !== -1) {
+                    return ii;
+                }
+                ii = indexOf.call(this._weekdaysParse, llc);
+                if (ii !== -1) {
+                    return ii;
+                }
+                ii = indexOf.call(this._minWeekdaysParse, llc);
+                return ii !== -1 ? ii : null;
+            } else {
+                ii = indexOf.call(this._minWeekdaysParse, llc);
+                if (ii !== -1) {
+                    return ii;
+                }
+                ii = indexOf.call(this._weekdaysParse, llc);
+                if (ii !== -1) {
+                    return ii;
+                }
+                ii = indexOf.call(this._shortWeekdaysParse, llc);
+                return ii !== -1 ? ii : null;
+            }
+        }
+    }
+
+    function localeWeekdaysParse (weekdayName, format, strict) {
+        var i, mom, regex;
+
+        if (this._weekdaysParseExact) {
+            return day_of_week__handleStrictParse.call(this, weekdayName, format, strict);
+        }
+
+        if (!this._weekdaysParse) {
+            this._weekdaysParse = [];
+            this._minWeekdaysParse = [];
+            this._shortWeekdaysParse = [];
+            this._fullWeekdaysParse = [];
+        }
+
+        for (i = 0; i < 7; i++) {
+            // make the regex if we don't have it already
+
+            mom = create_utc__createUTC([2000, 1]).day(i);
+            if (strict && !this._fullWeekdaysParse[i]) {
+                this._fullWeekdaysParse[i] = new RegExp('^' + this.weekdays(mom, '').replace('.', '\.?') + '$', 'i');
+                this._shortWeekdaysParse[i] = new RegExp('^' + this.weekdaysShort(mom, '').replace('.', '\.?') + '$', 'i');
+                this._minWeekdaysParse[i] = new RegExp('^' + this.weekdaysMin(mom, '').replace('.', '\.?') + '$', 'i');
+            }
+            if (!this._weekdaysParse[i]) {
+                regex = '^' + this.weekdays(mom, '') + '|^' + this.weekdaysShort(mom, '') + '|^' + this.weekdaysMin(mom, '');
+                this._weekdaysParse[i] = new RegExp(regex.replace('.', ''), 'i');
+            }
+            // test the regex
+            if (strict && format === 'dddd' && this._fullWeekdaysParse[i].test(weekdayName)) {
+                return i;
+            } else if (strict && format === 'ddd' && this._shortWeekdaysParse[i].test(weekdayName)) {
+                return i;
+            } else if (strict && format === 'dd' && this._minWeekdaysParse[i].test(weekdayName)) {
+                return i;
+            } else if (!strict && this._weekdaysParse[i].test(weekdayName)) {
+                return i;
+            }
+        }
+    }
+
+    // MOMENTS
+
+    function getSetDayOfWeek (input) {
+        if (!this.isValid()) {
+            return input != null ? this : NaN;
+        }
+        var day = this._isUTC ? this._d.getUTCDay() : this._d.getDay();
+        if (input != null) {
+            input = parseWeekday(input, this.localeData());
+            return this.add(input - day, 'd');
+        } else {
+            return day;
+        }
+    }
+
+    function getSetLocaleDayOfWeek (input) {
+        if (!this.isValid()) {
+            return input != null ? this : NaN;
+        }
+        var weekday = (this.day() + 7 - this.localeData()._week.dow) % 7;
+        return input == null ? weekday : this.add(input - weekday, 'd');
+    }
+
+    function getSetISODayOfWeek (input) {
+        if (!this.isValid()) {
+            return input != null ? this : NaN;
+        }
+        // behaves the same as moment#day except
+        // as a getter, returns 7 instead of 0 (1-7 range instead of 0-6)
+        // as a setter, sunday should belong to the previous week.
+        return input == null ? this.day() || 7 : this.day(this.day() % 7 ? input : input - 7);
+    }
+
+    var defaultWeekdaysRegex = matchWord;
+    function weekdaysRegex (isStrict) {
+        if (this._weekdaysParseExact) {
+            if (!hasOwnProp(this, '_weekdaysRegex')) {
+                computeWeekdaysParse.call(this);
+            }
+            if (isStrict) {
+                return this._weekdaysStrictRegex;
+            } else {
+                return this._weekdaysRegex;
+            }
+        } else {
+            return this._weekdaysStrictRegex && isStrict ?
+                this._weekdaysStrictRegex : this._weekdaysRegex;
+        }
+    }
+
+    var defaultWeekdaysShortRegex = matchWord;
+    function weekdaysShortRegex (isStrict) {
+        if (this._weekdaysParseExact) {
+            if (!hasOwnProp(this, '_weekdaysRegex')) {
+                computeWeekdaysParse.call(this);
+            }
+            if (isStrict) {
+                return this._weekdaysShortStrictRegex;
+            } else {
+                return this._weekdaysShortRegex;
+            }
+        } else {
+            return this._weekdaysShortStrictRegex && isStrict ?
+                this._weekdaysShortStrictRegex : this._weekdaysShortRegex;
+        }
+    }
+
+    var defaultWeekdaysMinRegex = matchWord;
+    function weekdaysMinRegex (isStrict) {
+        if (this._weekdaysParseExact) {
+            if (!hasOwnProp(this, '_weekdaysRegex')) {
+                computeWeekdaysParse.call(this);
+            }
+            if (isStrict) {
+                return this._weekdaysMinStrictRegex;
+            } else {
+                return this._weekdaysMinRegex;
+            }
+        } else {
+            return this._weekdaysMinStrictRegex && isStrict ?
+                this._weekdaysMinStrictRegex : this._weekdaysMinRegex;
+        }
+    }
+
+
+    function computeWeekdaysParse () {
+        function cmpLenRev(a, b) {
+            return b.length - a.length;
+        }
+
+        var minPieces = [], shortPieces = [], longPieces = [], mixedPieces = [],
+            i, mom, minp, shortp, longp;
+        for (i = 0; i < 7; i++) {
+            // make the regex if we don't have it already
+            mom = create_utc__createUTC([2000, 1]).day(i);
+            minp = this.weekdaysMin(mom, '');
+            shortp = this.weekdaysShort(mom, '');
+            longp = this.weekdays(mom, '');
+            minPieces.push(minp);
+            shortPieces.push(shortp);
+            longPieces.push(longp);
+            mixedPieces.push(minp);
+            mixedPieces.push(shortp);
+            mixedPieces.push(longp);
+        }
+        // Sorting makes sure if one weekday (or abbr) is a prefix of another it
+        // will match the longer piece.
+        minPieces.sort(cmpLenRev);
+        shortPieces.sort(cmpLenRev);
+        longPieces.sort(cmpLenRev);
+        mixedPieces.sort(cmpLenRev);
+        for (i = 0; i < 7; i++) {
+            shortPieces[i] = regexEscape(shortPieces[i]);
+            longPieces[i] = regexEscape(longPieces[i]);
+            mixedPieces[i] = regexEscape(mixedPieces[i]);
+        }
+
+        this._weekdaysRegex = new RegExp('^(' + mixedPieces.join('|') + ')', 'i');
+        this._weekdaysShortRegex = this._weekdaysRegex;
+        this._weekdaysMinRegex = this._weekdaysRegex;
+
+        this._weekdaysStrictRegex = new RegExp('^(' + longPieces.join('|') + ')', 'i');
+        this._weekdaysShortStrictRegex = new RegExp('^(' + shortPieces.join('|') + ')', 'i');
+        this._weekdaysMinStrictRegex = new RegExp('^(' + minPieces.join('|') + ')', 'i');
+    }
+
+    // FORMATTING
+
+    addFormatToken('DDD', ['DDDD', 3], 'DDDo', 'dayOfYear');
+
+    // ALIASES
+
+    addUnitAlias('dayOfYear', 'DDD');
+
+    // PARSING
+
+    addRegexToken('DDD',  match1to3);
+    addRegexToken('DDDD', match3);
+    addParseToken(['DDD', 'DDDD'], function (input, array, config) {
+        config._dayOfYear = toInt(input);
+    });
+
+    // HELPERS
+
+    // MOMENTS
+
+    function getSetDayOfYear (input) {
+        var dayOfYear = Math.round((this.clone().startOf('day') - this.clone().startOf('year')) / 864e5) + 1;
+        return input == null ? dayOfYear : this.add((input - dayOfYear), 'd');
+    }
+
+    // FORMATTING
+
+    function hFormat() {
+        return this.hours() % 12 || 12;
+    }
+
+    function kFormat() {
+        return this.hours() || 24;
+    }
+
+    addFormatToken('H', ['HH', 2], 0, 'hour');
+    addFormatToken('h', ['hh', 2], 0, hFormat);
+    addFormatToken('k', ['kk', 2], 0, kFormat);
+
+    addFormatToken('hmm', 0, 0, function () {
+        return '' + hFormat.apply(this) + zeroFill(this.minutes(), 2);
+    });
+
+    addFormatToken('hmmss', 0, 0, function () {
+        return '' + hFormat.apply(this) + zeroFill(this.minutes(), 2) +
+            zeroFill(this.seconds(), 2);
+    });
+
+    addFormatToken('Hmm', 0, 0, function () {
+        return '' + this.hours() + zeroFill(this.minutes(), 2);
+    });
+
+    addFormatToken('Hmmss', 0, 0, function () {
+        return '' + this.hours() + zeroFill(this.minutes(), 2) +
+            zeroFill(this.seconds(), 2);
+    });
+
+    function meridiem (token, lowercase) {
+        addFormatToken(token, 0, 0, function () {
+            return this.localeData().meridiem(this.hours(), this.minutes(), lowercase);
+        });
+    }
+
+    meridiem('a', true);
+    meridiem('A', false);
+
+    // ALIASES
+
+    addUnitAlias('hour', 'h');
+
+    // PARSING
+
+    function matchMeridiem (isStrict, locale) {
+        return locale._meridiemParse;
+    }
+
+    addRegexToken('a',  matchMeridiem);
+    addRegexToken('A',  matchMeridiem);
+    addRegexToken('H',  match1to2);
+    addRegexToken('h',  match1to2);
+    addRegexToken('HH', match1to2, match2);
+    addRegexToken('hh', match1to2, match2);
+
+    addRegexToken('hmm', match3to4);
+    addRegexToken('hmmss', match5to6);
+    addRegexToken('Hmm', match3to4);
+    addRegexToken('Hmmss', match5to6);
+
+    addParseToken(['H', 'HH'], HOUR);
+    addParseToken(['a', 'A'], function (input, array, config) {
+        config._isPm = config._locale.isPM(input);
+        config._meridiem = input;
+    });
+    addParseToken(['h', 'hh'], function (input, array, config) {
+        array[HOUR] = toInt(input);
+        getParsingFlags(config).bigHour = true;
+    });
+    addParseToken('hmm', function (input, array, config) {
+        var pos = input.length - 2;
+        array[HOUR] = toInt(input.substr(0, pos));
+        array[MINUTE] = toInt(input.substr(pos));
+        getParsingFlags(config).bigHour = true;
+    });
+    addParseToken('hmmss', function (input, array, config) {
+        var pos1 = input.length - 4;
+        var pos2 = input.length - 2;
+        array[HOUR] = toInt(input.substr(0, pos1));
+        array[MINUTE] = toInt(input.substr(pos1, 2));
+        array[SECOND] = toInt(input.substr(pos2));
+        getParsingFlags(config).bigHour = true;
+    });
+    addParseToken('Hmm', function (input, array, config) {
+        var pos = input.length - 2;
+        array[HOUR] = toInt(input.substr(0, pos));
+        array[MINUTE] = toInt(input.substr(pos));
+    });
+    addParseToken('Hmmss', function (input, array, config) {
+        var pos1 = input.length - 4;
+        var pos2 = input.length - 2;
+        array[HOUR] = toInt(input.substr(0, pos1));
+        array[MINUTE] = toInt(input.substr(pos1, 2));
+        array[SECOND] = toInt(input.substr(pos2));
+    });
+
+    // LOCALES
+
+    function localeIsPM (input) {
+        // IE8 Quirks Mode & IE7 Standards Mode do not allow accessing strings like arrays
+        // Using charAt should be more compatible.
+        return ((input + '').toLowerCase().charAt(0) === 'p');
+    }
+
+    var defaultLocaleMeridiemParse = /[ap]\.?m?\.?/i;
+    function localeMeridiem (hours, minutes, isLower) {
+        if (hours > 11) {
+            return isLower ? 'pm' : 'PM';
+        } else {
+            return isLower ? 'am' : 'AM';
+        }
+    }
+
+
+    // MOMENTS
+
+    // Setting the hour should keep the time, because the user explicitly
+    // specified which hour he wants. So trying to maintain the same hour (in
+    // a new timezone) makes sense. Adding/subtracting hours does not follow
+    // this rule.
+    var getSetHour = makeGetSet('Hours', true);
+
+    // FORMATTING
+
+    addFormatToken('m', ['mm', 2], 0, 'minute');
+
+    // ALIASES
+
+    addUnitAlias('minute', 'm');
+
+    // PARSING
+
+    addRegexToken('m',  match1to2);
+    addRegexToken('mm', match1to2, match2);
+    addParseToken(['m', 'mm'], MINUTE);
+
+    // MOMENTS
+
+    var getSetMinute = makeGetSet('Minutes', false);
+
+    // FORMATTING
+
+    addFormatToken('s', ['ss', 2], 0, 'second');
+
+    // ALIASES
+
+    addUnitAlias('second', 's');
+
+    // PARSING
+
+    addRegexToken('s',  match1to2);
+    addRegexToken('ss', match1to2, match2);
+    addParseToken(['s', 'ss'], SECOND);
+
+    // MOMENTS
+
+    var getSetSecond = makeGetSet('Seconds', false);
+
+    // FORMATTING
+
+    addFormatToken('S', 0, 0, function () {
+        return ~~(this.millisecond() / 100);
+    });
+
+    addFormatToken(0, ['SS', 2], 0, function () {
+        return ~~(this.millisecond() / 10);
+    });
+
+    addFormatToken(0, ['SSS', 3], 0, 'millisecond');
+    addFormatToken(0, ['SSSS', 4], 0, function () {
+        return this.millisecond() * 10;
+    });
+    addFormatToken(0, ['SSSSS', 5], 0, function () {
+        return this.millisecond() * 100;
+    });
+    addFormatToken(0, ['SSSSSS', 6], 0, function () {
+        return this.millisecond() * 1000;
+    });
+    addFormatToken(0, ['SSSSSSS', 7], 0, function () {
+        return this.millisecond() * 10000;
+    });
+    addFormatToken(0, ['SSSSSSSS', 8], 0, function () {
+        return this.millisecond() * 100000;
+    });
+    addFormatToken(0, ['SSSSSSSSS', 9], 0, function () {
+        return this.millisecond() * 1000000;
+    });
+
+
+    // ALIASES
+
+    addUnitAlias('millisecond', 'ms');
+
+    // PARSING
+
+    addRegexToken('S',    match1to3, match1);
+    addRegexToken('SS',   match1to3, match2);
+    addRegexToken('SSS',  match1to3, match3);
+
+    var token;
+    for (token = 'SSSS'; token.length <= 9; token += 'S') {
+        addRegexToken(token, matchUnsigned);
+    }
+
+    function parseMs(input, array) {
+        array[MILLISECOND] = toInt(('0.' + input) * 1000);
+    }
+
+    for (token = 'S'; token.length <= 9; token += 'S') {
+        addParseToken(token, parseMs);
+    }
+    // MOMENTS
+
+    var getSetMillisecond = makeGetSet('Milliseconds', false);
+
+    // FORMATTING
+
+    addFormatToken('z',  0, 0, 'zoneAbbr');
+    addFormatToken('zz', 0, 0, 'zoneName');
+
+    // MOMENTS
+
+    function getZoneAbbr () {
+        return this._isUTC ? 'UTC' : '';
+    }
+
+    function getZoneName () {
+        return this._isUTC ? 'Coordinated Universal Time' : '';
+    }
+
+    var momentPrototype__proto = Moment.prototype;
+
+    momentPrototype__proto.add               = add_subtract__add;
+    momentPrototype__proto.calendar          = moment_calendar__calendar;
+    momentPrototype__proto.clone             = clone;
+    momentPrototype__proto.diff              = diff;
+    momentPrototype__proto.endOf             = endOf;
+    momentPrototype__proto.format            = format;
+    momentPrototype__proto.from              = from;
+    momentPrototype__proto.fromNow           = fromNow;
+    momentPrototype__proto.to                = to;
+    momentPrototype__proto.toNow             = toNow;
+    momentPrototype__proto.get               = getSet;
+    momentPrototype__proto.invalidAt         = invalidAt;
+    momentPrototype__proto.isAfter           = isAfter;
+    momentPrototype__proto.isBefore          = isBefore;
+    momentPrototype__proto.isBetween         = isBetween;
+    momentPrototype__proto.isSame            = isSame;
+    momentPrototype__proto.isSameOrAfter     = isSameOrAfter;
+    momentPrototype__proto.isSameOrBefore    = isSameOrBefore;
+    momentPrototype__proto.isValid           = moment_valid__isValid;
+    momentPrototype__proto.lang              = lang;
+    momentPrototype__proto.locale            = locale;
+    momentPrototype__proto.localeData        = localeData;
+    momentPrototype__proto.max               = prototypeMax;
+    momentPrototype__proto.min               = prototypeMin;
+    momentPrototype__proto.parsingFlags      = parsingFlags;
+    momentPrototype__proto.set               = getSet;
+    momentPrototype__proto.startOf           = startOf;
+    momentPrototype__proto.subtract          = add_subtract__subtract;
+    momentPrototype__proto.toArray           = toArray;
+    momentPrototype__proto.toObject          = toObject;
+    momentPrototype__proto.toDate            = toDate;
+    momentPrototype__proto.toISOString       = moment_format__toISOString;
+    momentPrototype__proto.toJSON            = toJSON;
+    momentPrototype__proto.toString          = toString;
+    momentPrototype__proto.unix              = unix;
+    momentPrototype__proto.valueOf           = to_type__valueOf;
+    momentPrototype__proto.creationData      = creationData;
+
+    // Year
+    momentPrototype__proto.year       = getSetYear;
+    momentPrototype__proto.isLeapYear = getIsLeapYear;
+
+    // Week Year
+    momentPrototype__proto.weekYear    = getSetWeekYear;
+    momentPrototype__proto.isoWeekYear = getSetISOWeekYear;
+
+    // Quarter
+    momentPrototype__proto.quarter = momentPrototype__proto.quarters = getSetQuarter;
+
+    // Month
+    momentPrototype__proto.month       = getSetMonth;
+    momentPrototype__proto.daysInMonth = getDaysInMonth;
+
+    // Week
+    momentPrototype__proto.week           = momentPrototype__proto.weeks        = getSetWeek;
+    momentPrototype__proto.isoWeek        = momentPrototype__proto.isoWeeks     = getSetISOWeek;
+    momentPrototype__proto.weeksInYear    = getWeeksInYear;
+    momentPrototype__proto.isoWeeksInYear = getISOWeeksInYear;
+
+    // Day
+    momentPrototype__proto.date       = getSetDayOfMonth;
+    momentPrototype__proto.day        = momentPrototype__proto.days             = getSetDayOfWeek;
+    momentPrototype__proto.weekday    = getSetLocaleDayOfWeek;
+    momentPrototype__proto.isoWeekday = getSetISODayOfWeek;
+    momentPrototype__proto.dayOfYear  = getSetDayOfYear;
+
+    // Hour
+    momentPrototype__proto.hour = momentPrototype__proto.hours = getSetHour;
+
+    // Minute
+    momentPrototype__proto.minute = momentPrototype__proto.minutes = getSetMinute;
+
+    // Second
+    momentPrototype__proto.second = momentPrototype__proto.seconds = getSetSecond;
+
+    // Millisecond
+    momentPrototype__proto.millisecond = momentPrototype__proto.milliseconds = getSetMillisecond;
+
+    // Offset
+    momentPrototype__proto.utcOffset            = getSetOffset;
+    momentPrototype__proto.utc                  = setOffsetToUTC;
+    momentPrototype__proto.local                = setOffsetToLocal;
+    momentPrototype__proto.parseZone            = setOffsetToParsedOffset;
+    momentPrototype__proto.hasAlignedHourOffset = hasAlignedHourOffset;
+    momentPrototype__proto.isDST                = isDaylightSavingTime;
+    momentPrototype__proto.isDSTShifted         = isDaylightSavingTimeShifted;
+    momentPrototype__proto.isLocal              = isLocal;
+    momentPrototype__proto.isUtcOffset          = isUtcOffset;
+    momentPrototype__proto.isUtc                = isUtc;
+    momentPrototype__proto.isUTC                = isUtc;
+
+    // Timezone
+    momentPrototype__proto.zoneAbbr = getZoneAbbr;
+    momentPrototype__proto.zoneName = getZoneName;
+
+    // Deprecations
+    momentPrototype__proto.dates  = deprecate('dates accessor is deprecated. Use date instead.', getSetDayOfMonth);
+    momentPrototype__proto.months = deprecate('months accessor is deprecated. Use month instead', getSetMonth);
+    momentPrototype__proto.years  = deprecate('years accessor is deprecated. Use year instead', getSetYear);
+    momentPrototype__proto.zone   = deprecate('moment().zone is deprecated, use moment().utcOffset instead. https://github.com/moment/moment/issues/1779', getSetZone);
+
+    var momentPrototype = momentPrototype__proto;
+
+    function moment__createUnix (input) {
+        return local__createLocal(input * 1000);
+    }
+
+    function moment__createInZone () {
+        return local__createLocal.apply(null, arguments).parseZone();
+    }
+
+    var defaultCalendar = {
+        sameDay : '[Today at] LT',
+        nextDay : '[Tomorrow at] LT',
+        nextWeek : 'dddd [at] LT',
+        lastDay : '[Yesterday at] LT',
+        lastWeek : '[Last] dddd [at] LT',
+        sameElse : 'L'
+    };
+
+    function locale_calendar__calendar (key, mom, now) {
+        var output = this._calendar[key];
+        return isFunction(output) ? output.call(mom, now) : output;
+    }
+
+    var defaultLongDateFormat = {
+        LTS  : 'h:mm:ss A',
+        LT   : 'h:mm A',
+        L    : 'MM/DD/YYYY',
+        LL   : 'MMMM D, YYYY',
+        LLL  : 'MMMM D, YYYY h:mm A',
+        LLLL : 'dddd, MMMM D, YYYY h:mm A'
+    };
+
+    function longDateFormat (key) {
+        var format = this._longDateFormat[key],
+            formatUpper = this._longDateFormat[key.toUpperCase()];
+
+        if (format || !formatUpper) {
+            return format;
+        }
+
+        this._longDateFormat[key] = formatUpper.replace(/MMMM|MM|DD|dddd/g, function (val) {
+            return val.slice(1);
+        });
+
+        return this._longDateFormat[key];
+    }
+
+    var defaultInvalidDate = 'Invalid date';
+
+    function invalidDate () {
+        return this._invalidDate;
+    }
+
+    var defaultOrdinal = '%d';
+    var defaultOrdinalParse = /\d{1,2}/;
+
+    function ordinal (number) {
+        return this._ordinal.replace('%d', number);
+    }
+
+    function preParsePostFormat (string) {
+        return string;
+    }
+
+    var defaultRelativeTime = {
+        future : 'in %s',
+        past   : '%s ago',
+        s  : 'a few seconds',
+        m  : 'a minute',
+        mm : '%d minutes',
+        h  : 'an hour',
+        hh : '%d hours',
+        d  : 'a day',
+        dd : '%d days',
+        M  : 'a month',
+        MM : '%d months',
+        y  : 'a year',
+        yy : '%d years'
+    };
+
+    function relative__relativeTime (number, withoutSuffix, string, isFuture) {
+        var output = this._relativeTime[string];
+        return (isFunction(output)) ?
+            output(number, withoutSuffix, string, isFuture) :
+            output.replace(/%d/i, number);
+    }
+
+    function pastFuture (diff, output) {
+        var format = this._relativeTime[diff > 0 ? 'future' : 'past'];
+        return isFunction(format) ? format(output) : format.replace(/%s/i, output);
+    }
+
+    var prototype__proto = Locale.prototype;
+
+    prototype__proto._calendar       = defaultCalendar;
+    prototype__proto.calendar        = locale_calendar__calendar;
+    prototype__proto._longDateFormat = defaultLongDateFormat;
+    prototype__proto.longDateFormat  = longDateFormat;
+    prototype__proto._invalidDate    = defaultInvalidDate;
+    prototype__proto.invalidDate     = invalidDate;
+    prototype__proto._ordinal        = defaultOrdinal;
+    prototype__proto.ordinal         = ordinal;
+    prototype__proto._ordinalParse   = defaultOrdinalParse;
+    prototype__proto.preparse        = preParsePostFormat;
+    prototype__proto.postformat      = preParsePostFormat;
+    prototype__proto._relativeTime   = defaultRelativeTime;
+    prototype__proto.relativeTime    = relative__relativeTime;
+    prototype__proto.pastFuture      = pastFuture;
+    prototype__proto.set             = locale_set__set;
+
+    // Month
+    prototype__proto.months            =        localeMonths;
+    prototype__proto._months           = defaultLocaleMonths;
+    prototype__proto.monthsShort       =        localeMonthsShort;
+    prototype__proto._monthsShort      = defaultLocaleMonthsShort;
+    prototype__proto.monthsParse       =        localeMonthsParse;
+    prototype__proto._monthsRegex      = defaultMonthsRegex;
+    prototype__proto.monthsRegex       = monthsRegex;
+    prototype__proto._monthsShortRegex = defaultMonthsShortRegex;
+    prototype__proto.monthsShortRegex  = monthsShortRegex;
+
+    // Week
+    prototype__proto.week = localeWeek;
+    prototype__proto._week = defaultLocaleWeek;
+    prototype__proto.firstDayOfYear = localeFirstDayOfYear;
+    prototype__proto.firstDayOfWeek = localeFirstDayOfWeek;
+
+    // Day of Week
+    prototype__proto.weekdays       =        localeWeekdays;
+    prototype__proto._weekdays      = defaultLocaleWeekdays;
+    prototype__proto.weekdaysMin    =        localeWeekdaysMin;
+    prototype__proto._weekdaysMin   = defaultLocaleWeekdaysMin;
+    prototype__proto.weekdaysShort  =        localeWeekdaysShort;
+    prototype__proto._weekdaysShort = defaultLocaleWeekdaysShort;
+    prototype__proto.weekdaysParse  =        localeWeekdaysParse;
+
+    prototype__proto._weekdaysRegex      = defaultWeekdaysRegex;
+    prototype__proto.weekdaysRegex       =        weekdaysRegex;
+    prototype__proto._weekdaysShortRegex = defaultWeekdaysShortRegex;
+    prototype__proto.weekdaysShortRegex  =        weekdaysShortRegex;
+    prototype__proto._weekdaysMinRegex   = defaultWeekdaysMinRegex;
+    prototype__proto.weekdaysMinRegex    =        weekdaysMinRegex;
+
+    // Hours
+    prototype__proto.isPM = localeIsPM;
+    prototype__proto._meridiemParse = defaultLocaleMeridiemParse;
+    prototype__proto.meridiem = localeMeridiem;
+
+    function lists__get (format, index, field, setter) {
+        var locale = locale_locales__getLocale();
+        var utc = create_utc__createUTC().set(setter, index);
+        return locale[field](utc, format);
+    }
+
+    function listMonthsImpl (format, index, field) {
+        if (typeof format === 'number') {
+            index = format;
+            format = undefined;
+        }
+
+        format = format || '';
+
+        if (index != null) {
+            return lists__get(format, index, field, 'month');
+        }
+
+        var i;
+        var out = [];
+        for (i = 0; i < 12; i++) {
+            out[i] = lists__get(format, i, field, 'month');
+        }
+        return out;
+    }
+
+    // ()
+    // (5)
+    // (fmt, 5)
+    // (fmt)
+    // (true)
+    // (true, 5)
+    // (true, fmt, 5)
+    // (true, fmt)
+    function listWeekdaysImpl (localeSorted, format, index, field) {
+        if (typeof localeSorted === 'boolean') {
+            if (typeof format === 'number') {
+                index = format;
+                format = undefined;
+            }
+
+            format = format || '';
+        } else {
+            format = localeSorted;
+            index = format;
+            localeSorted = false;
+
+            if (typeof format === 'number') {
+                index = format;
+                format = undefined;
+            }
+
+            format = format || '';
+        }
+
+        var locale = locale_locales__getLocale(),
+            shift = localeSorted ? locale._week.dow : 0;
+
+        if (index != null) {
+            return lists__get(format, (index + shift) % 7, field, 'day');
+        }
+
+        var i;
+        var out = [];
+        for (i = 0; i < 7; i++) {
+            out[i] = lists__get(format, (i + shift) % 7, field, 'day');
+        }
+        return out;
+    }
+
+    function lists__listMonths (format, index) {
+        return listMonthsImpl(format, index, 'months');
+    }
+
+    function lists__listMonthsShort (format, index) {
+        return listMonthsImpl(format, index, 'monthsShort');
+    }
+
+    function lists__listWeekdays (localeSorted, format, index) {
+        return listWeekdaysImpl(localeSorted, format, index, 'weekdays');
+    }
+
+    function lists__listWeekdaysShort (localeSorted, format, index) {
+        return listWeekdaysImpl(localeSorted, format, index, 'weekdaysShort');
+    }
+
+    function lists__listWeekdaysMin (localeSorted, format, index) {
+        return listWeekdaysImpl(localeSorted, format, index, 'weekdaysMin');
+    }
+
+    locale_locales__getSetGlobalLocale('en', {
+        ordinalParse: /\d{1,2}(th|st|nd|rd)/,
+        ordinal : function (number) {
+            var b = number % 10,
+                output = (toInt(number % 100 / 10) === 1) ? 'th' :
+                (b === 1) ? 'st' :
+                (b === 2) ? 'nd' :
+                (b === 3) ? 'rd' : 'th';
+            return number + output;
+        }
+    });
+
+    // Side effect imports
+    utils_hooks__hooks.lang = deprecate('moment.lang is deprecated. Use moment.locale instead.', locale_locales__getSetGlobalLocale);
+    utils_hooks__hooks.langData = deprecate('moment.langData is deprecated. Use moment.localeData instead.', locale_locales__getLocale);
+
+    var mathAbs = Math.abs;
+
+    function duration_abs__abs () {
+        var data           = this._data;
+
+        this._milliseconds = mathAbs(this._milliseconds);
+        this._days         = mathAbs(this._days);
+        this._months       = mathAbs(this._months);
+
+        data.milliseconds  = mathAbs(data.milliseconds);
+        data.seconds       = mathAbs(data.seconds);
+        data.minutes       = mathAbs(data.minutes);
+        data.hours         = mathAbs(data.hours);
+        data.months        = mathAbs(data.months);
+        data.years         = mathAbs(data.years);
+
+        return this;
+    }
+
+    function duration_add_subtract__addSubtract (duration, input, value, direction) {
+        var other = create__createDuration(input, value);
+
+        duration._milliseconds += direction * other._milliseconds;
+        duration._days         += direction * other._days;
+        duration._months       += direction * other._months;
+
+        return duration._bubble();
+    }
+
+    // supports only 2.0-style add(1, 's') or add(duration)
+    function duration_add_subtract__add (input, value) {
+        return duration_add_subtract__addSubtract(this, input, value, 1);
+    }
+
+    // supports only 2.0-style subtract(1, 's') or subtract(duration)
+    function duration_add_subtract__subtract (input, value) {
+        return duration_add_subtract__addSubtract(this, input, value, -1);
+    }
+
+    function absCeil (number) {
+        if (number < 0) {
+            return Math.floor(number);
+        } else {
+            return Math.ceil(number);
+        }
+    }
+
+    function bubble () {
+        var milliseconds = this._milliseconds;
+        var days         = this._days;
+        var months       = this._months;
+        var data         = this._data;
+        var seconds, minutes, hours, years, monthsFromDays;
+
+        // if we have a mix of positive and negative values, bubble down first
+        // check: https://github.com/moment/moment/issues/2166
+        if (!((milliseconds >= 0 && days >= 0 && months >= 0) ||
+                (milliseconds <= 0 && days <= 0 && months <= 0))) {
+            milliseconds += absCeil(monthsToDays(months) + days) * 864e5;
+            days = 0;
+            months = 0;
+        }
+
+        // The following code bubbles up values, see the tests for
+        // examples of what that means.
+        data.milliseconds = milliseconds % 1000;
+
+        seconds           = absFloor(milliseconds / 1000);
+        data.seconds      = seconds % 60;
+
+        minutes           = absFloor(seconds / 60);
+        data.minutes      = minutes % 60;
+
+        hours             = absFloor(minutes / 60);
+        data.hours        = hours % 24;
+
+        days += absFloor(hours / 24);
+
+        // convert days to months
+        monthsFromDays = absFloor(daysToMonths(days));
+        months += monthsFromDays;
+        days -= absCeil(monthsToDays(monthsFromDays));
+
+        // 12 months -> 1 year
+        years = absFloor(months / 12);
+        months %= 12;
+
+        data.days   = days;
+        data.months = months;
+        data.years  = years;
+
+        return this;
+    }
+
+    function daysToMonths (days) {
+        // 400 years have 146097 days (taking into account leap year rules)
+        // 400 years have 12 months === 4800
+        return days * 4800 / 146097;
+    }
+
+    function monthsToDays (months) {
+        // the reverse of daysToMonths
+        return months * 146097 / 4800;
+    }
+
+    function as (units) {
+        var days;
+        var months;
+        var milliseconds = this._milliseconds;
+
+        units = normalizeUnits(units);
+
+        if (units === 'month' || units === 'year') {
+            days   = this._days   + milliseconds / 864e5;
+            months = this._months + daysToMonths(days);
+            return units === 'month' ? months : months / 12;
+        } else {
+            // handle milliseconds separately because of floating point math errors (issue #1867)
+            days = this._days + Math.round(monthsToDays(this._months));
+            switch (units) {
+                case 'week'   : return days / 7     + milliseconds / 6048e5;
+                case 'day'    : return days         + milliseconds / 864e5;
+                case 'hour'   : return days * 24    + milliseconds / 36e5;
+                case 'minute' : return days * 1440  + milliseconds / 6e4;
+                case 'second' : return days * 86400 + milliseconds / 1000;
+                // Math.floor prevents floating point math errors here
+                case 'millisecond': return Math.floor(days * 864e5) + milliseconds;
+                default: throw new Error('Unknown unit ' + units);
+            }
+        }
+    }
+
+    // TODO: Use this.as('ms')?
+    function duration_as__valueOf () {
+        return (
+            this._milliseconds +
+            this._days * 864e5 +
+            (this._months % 12) * 2592e6 +
+            toInt(this._months / 12) * 31536e6
+        );
+    }
+
+    function makeAs (alias) {
+        return function () {
+            return this.as(alias);
+        };
+    }
+
+    var asMilliseconds = makeAs('ms');
+    var asSeconds      = makeAs('s');
+    var asMinutes      = makeAs('m');
+    var asHours        = makeAs('h');
+    var asDays         = makeAs('d');
+    var asWeeks        = makeAs('w');
+    var asMonths       = makeAs('M');
+    var asYears        = makeAs('y');
+
+    function duration_get__get (units) {
+        units = normalizeUnits(units);
+        return this[units + 's']();
+    }
+
+    function makeGetter(name) {
+        return function () {
+            return this._data[name];
+        };
+    }
+
+    var milliseconds = makeGetter('milliseconds');
+    var seconds      = makeGetter('seconds');
+    var minutes      = makeGetter('minutes');
+    var hours        = makeGetter('hours');
+    var days         = makeGetter('days');
+    var months       = makeGetter('months');
+    var years        = makeGetter('years');
+
+    function weeks () {
+        return absFloor(this.days() / 7);
+    }
+
+    var round = Math.round;
+    var thresholds = {
+        s: 45,  // seconds to minute
+        m: 45,  // minutes to hour
+        h: 22,  // hours to day
+        d: 26,  // days to month
+        M: 11   // months to year
+    };
+
+    // helper function for moment.fn.from, moment.fn.fromNow, and moment.duration.fn.humanize
+    function substituteTimeAgo(string, number, withoutSuffix, isFuture, locale) {
+        return locale.relativeTime(number || 1, !!withoutSuffix, string, isFuture);
+    }
+
+    function duration_humanize__relativeTime (posNegDuration, withoutSuffix, locale) {
+        var duration = create__createDuration(posNegDuration).abs();
+        var seconds  = round(duration.as('s'));
+        var minutes  = round(duration.as('m'));
+        var hours    = round(duration.as('h'));
+        var days     = round(duration.as('d'));
+        var months   = round(duration.as('M'));
+        var years    = round(duration.as('y'));
+
+        var a = seconds < thresholds.s && ['s', seconds]  ||
+                minutes <= 1           && ['m']           ||
+                minutes < thresholds.m && ['mm', minutes] ||
+                hours   <= 1           && ['h']           ||
+                hours   < thresholds.h && ['hh', hours]   ||
+                days    <= 1           && ['d']           ||
+                days    < thresholds.d && ['dd', days]    ||
+                months  <= 1           && ['M']           ||
+                months  < thresholds.M && ['MM', months]  ||
+                years   <= 1           && ['y']           || ['yy', years];
+
+        a[2] = withoutSuffix;
+        a[3] = +posNegDuration > 0;
+        a[4] = locale;
+        return substituteTimeAgo.apply(null, a);
+    }
+
+    // This function allows you to set a threshold for relative time strings
+    function duration_humanize__getSetRelativeTimeThreshold (threshold, limit) {
+        if (thresholds[threshold] === undefined) {
+            return false;
+        }
+        if (limit === undefined) {
+            return thresholds[threshold];
+        }
+        thresholds[threshold] = limit;
+        return true;
+    }
+
+    function humanize (withSuffix) {
+        var locale = this.localeData();
+        var output = duration_humanize__relativeTime(this, !withSuffix, locale);
+
+        if (withSuffix) {
+            output = locale.pastFuture(+this, output);
+        }
+
+        return locale.postformat(output);
+    }
+
+    var iso_string__abs = Math.abs;
+
+    function iso_string__toISOString() {
+        // for ISO strings we do not use the normal bubbling rules:
+        //  * milliseconds bubble up until they become hours
+        //  * days do not bubble at all
+        //  * months bubble up until they become years
+        // This is because there is no context-free conversion between hours and days
+        // (think of clock changes)
+        // and also not between days and months (28-31 days per month)
+        var seconds = iso_string__abs(this._milliseconds) / 1000;
+        var days         = iso_string__abs(this._days);
+        var months       = iso_string__abs(this._months);
+        var minutes, hours, years;
+
+        // 3600 seconds -> 60 minutes -> 1 hour
+        minutes           = absFloor(seconds / 60);
+        hours             = absFloor(minutes / 60);
+        seconds %= 60;
+        minutes %= 60;
+
+        // 12 months -> 1 year
+        years  = absFloor(months / 12);
+        months %= 12;
+
+
+        // inspired by https://github.com/dordille/moment-isoduration/blob/master/moment.isoduration.js
+        var Y = years;
+        var M = months;
+        var D = days;
+        var h = hours;
+        var m = minutes;
+        var s = seconds;
+        var total = this.asSeconds();
+
+        if (!total) {
+            // this is the same as C#'s (Noda) and python (isodate)...
+            // but not other JS (goog.date)
+            return 'P0D';
+        }
+
+        return (total < 0 ? '-' : '') +
+            'P' +
+            (Y ? Y + 'Y' : '') +
+            (M ? M + 'M' : '') +
+            (D ? D + 'D' : '') +
+            ((h || m || s) ? 'T' : '') +
+            (h ? h + 'H' : '') +
+            (m ? m + 'M' : '') +
+            (s ? s + 'S' : '');
+    }
+
+    var duration_prototype__proto = Duration.prototype;
+
+    duration_prototype__proto.abs            = duration_abs__abs;
+    duration_prototype__proto.add            = duration_add_subtract__add;
+    duration_prototype__proto.subtract       = duration_add_subtract__subtract;
+    duration_prototype__proto.as             = as;
+    duration_prototype__proto.asMilliseconds = asMilliseconds;
+    duration_prototype__proto.asSeconds      = asSeconds;
+    duration_prototype__proto.asMinutes      = asMinutes;
+    duration_prototype__proto.asHours        = asHours;
+    duration_prototype__proto.asDays         = asDays;
+    duration_prototype__proto.asWeeks        = asWeeks;
+    duration_prototype__proto.asMonths       = asMonths;
+    duration_prototype__proto.asYears        = asYears;
+    duration_prototype__proto.valueOf        = duration_as__valueOf;
+    duration_prototype__proto._bubble        = bubble;
+    duration_prototype__proto.get            = duration_get__get;
+    duration_prototype__proto.milliseconds   = milliseconds;
+    duration_prototype__proto.seconds        = seconds;
+    duration_prototype__proto.minutes        = minutes;
+    duration_prototype__proto.hours          = hours;
+    duration_prototype__proto.days           = days;
+    duration_prototype__proto.weeks          = weeks;
+    duration_prototype__proto.months         = months;
+    duration_prototype__proto.years          = years;
+    duration_prototype__proto.humanize       = humanize;
+    duration_prototype__proto.toISOString    = iso_string__toISOString;
+    duration_prototype__proto.toString       = iso_string__toISOString;
+    duration_prototype__proto.toJSON         = iso_string__toISOString;
+    duration_prototype__proto.locale         = locale;
+    duration_prototype__proto.localeData     = localeData;
+
+    // Deprecations
+    duration_prototype__proto.toIsoString = deprecate('toIsoString() is deprecated. Please use toISOString() instead (notice the capitals)', iso_string__toISOString);
+    duration_prototype__proto.lang = lang;
+
+    // Side effect imports
+
+    // FORMATTING
+
+    addFormatToken('X', 0, 0, 'unix');
+    addFormatToken('x', 0, 0, 'valueOf');
+
+    // PARSING
+
+    addRegexToken('x', matchSigned);
+    addRegexToken('X', matchTimestamp);
+    addParseToken('X', function (input, array, config) {
+        config._d = new Date(parseFloat(input, 10) * 1000);
+    });
+    addParseToken('x', function (input, array, config) {
+        config._d = new Date(toInt(input));
+    });
+
+    // Side effect imports
+
+
+    utils_hooks__hooks.version = '2.13.0';
+
+    setHookCallback(local__createLocal);
+
+    utils_hooks__hooks.fn                    = momentPrototype;
+    utils_hooks__hooks.min                   = min;
+    utils_hooks__hooks.max                   = max;
+    utils_hooks__hooks.now                   = now;
+    utils_hooks__hooks.utc                   = create_utc__createUTC;
+    utils_hooks__hooks.unix                  = moment__createUnix;
+    utils_hooks__hooks.months                = lists__listMonths;
+    utils_hooks__hooks.isDate                = isDate;
+    utils_hooks__hooks.locale                = locale_locales__getSetGlobalLocale;
+    utils_hooks__hooks.invalid               = valid__createInvalid;
+    utils_hooks__hooks.duration              = create__createDuration;
+    utils_hooks__hooks.isMoment              = isMoment;
+    utils_hooks__hooks.weekdays              = lists__listWeekdays;
+    utils_hooks__hooks.parseZone             = moment__createInZone;
+    utils_hooks__hooks.localeData            = locale_locales__getLocale;
+    utils_hooks__hooks.isDuration            = isDuration;
+    utils_hooks__hooks.monthsShort           = lists__listMonthsShort;
+    utils_hooks__hooks.weekdaysMin           = lists__listWeekdaysMin;
+    utils_hooks__hooks.defineLocale          = defineLocale;
+    utils_hooks__hooks.updateLocale          = updateLocale;
+    utils_hooks__hooks.locales               = locale_locales__listLocales;
+    utils_hooks__hooks.weekdaysShort         = lists__listWeekdaysShort;
+    utils_hooks__hooks.normalizeUnits        = normalizeUnits;
+    utils_hooks__hooks.relativeTimeThreshold = duration_humanize__getSetRelativeTimeThreshold;
+    utils_hooks__hooks.prototype             = momentPrototype;
+
+    var _moment = utils_hooks__hooks;
+
+    return _moment;
+
+}));
+},{}],356:[function(require,module,exports){
 /**!
  * AngularJS file upload directives and services. Supoorts: file upload/drop/paste, resume, cancel/abort,
  * progress, resize, thumbnail, preview, validation and CORS
@@ -112408,10 +113047,10 @@ ngFileUpload.service('UploadExif', ['UploadResize', '$q', function (UploadResize
 }]);
 
 
-},{}],342:[function(require,module,exports){
+},{}],357:[function(require,module,exports){
 require('./dist/ng-file-upload-all');
 module.exports = 'ngFileUpload';
-},{"./dist/ng-file-upload-all":341}],343:[function(require,module,exports){
+},{"./dist/ng-file-upload-all":356}],358:[function(require,module,exports){
 /* global define */
 
 (function (root, pluralize) {
@@ -112846,77 +113485,544 @@ module.exports = 'ngFileUpload';
   return pluralize;
 });
 
-},{}],344:[function(require,module,exports){
-var validators = require('./validators'),
-	validationContext = require('./validation-context'),
-	jsonRefs = require('skeemas-json-refs');
+},{}],359:[function(require,module,exports){
+(function (global){
+/*! https://mths.be/punycode v1.4.1 by @mathias */
+;(function(root) {
 
-var protoValidator = {
-	addRef: function(uri, ref) {
-		if(typeof uri === 'object') {
-			ref = uri;
-			uri = null;
-		}
-		uri = uri || ref.id;
-
-		if(!uri) throw new Error('Cannot add a json schema reference without a uri/id.');
-
-		this._refs.add(uri, ref);
-
-		return this;
-	},
-	validate: function(instance, schema, options) {
-		if(instance === undefined) throw new Error('Instance undefined in call to validate.');
-		if(!schema) throw new Error('No schema specified in call to validate.');
-
-		if(typeof schema === 'string') {
-			var uri = schema;
-			schema = this._refs.get(uri);
-
-			if(!schema) throw new Error('Unable to locate schema (' + uri + '). Did you call addRef with this schema?');
-		}
-
-		var context = validationContext(schema, {
-			instance: instance,
-			refs: this._refs,
-			breakOnError: options && options.breakOnError,
-			cleanWithDefaults: options && options.cleanWithDefaults
-		});
-		validators.base(context, instance, schema);
-		if(context.result.valid) context.result.cleanInstance = context.cleanSubject;
-		return context.result;
+	/** Detect free variables */
+	var freeExports = typeof exports == 'object' && exports &&
+		!exports.nodeType && exports;
+	var freeModule = typeof module == 'object' && module &&
+		!module.nodeType && module;
+	var freeGlobal = typeof global == 'object' && global;
+	if (
+		freeGlobal.global === freeGlobal ||
+		freeGlobal.window === freeGlobal ||
+		freeGlobal.self === freeGlobal
+	) {
+		root = freeGlobal;
 	}
-};
 
-function makeValidator() {
-	return Object.create(protoValidator, {
-		_refs: { enumerable:false, writable:false, value:jsonRefs() }
-	});
-}
+	/**
+	 * The `punycode` object.
+	 * @name punycode
+	 * @type Object
+	 */
+	var punycode,
 
-module.exports = makeValidator;
+	/** Highest positive signed 32-bit float value */
+	maxInt = 2147483647, // aka. 0x7FFFFFFF or 2^31-1
 
-module.exports.validate = function(instance, schema, options) {
-	if(instance === undefined) throw new Error('Instance undefined in call to validate.');
-	if(!schema) throw new Error('No schema specified in call to validate.');
+	/** Bootstring parameters */
+	base = 36,
+	tMin = 1,
+	tMax = 26,
+	skew = 38,
+	damp = 700,
+	initialBias = 72,
+	initialN = 128, // 0x80
+	delimiter = '-', // '\x2D'
 
-	var context = validationContext(schema, {
-		instance: instance,
-		breakOnError: options && options.breakOnError,
-		cleanWithDefaults: options && options.cleanWithDefaults
-	});
-	validators.base(context, instance, schema);
-	if(context.result.valid) context.result.cleanInstance = context.cleanSubject;
-	return context.result;
-};
+	/** Regular expressions */
+	regexPunycode = /^xn--/,
+	regexNonASCII = /[^\x20-\x7E]/, // unprintable ASCII chars + non-ASCII chars
+	regexSeparators = /[\x2E\u3002\uFF0E\uFF61]/g, // RFC 3490 separators
 
-module.exports.use = function(plugin) {
-	if(typeof plugin !== 'function') throw new Error('skeemas.use called with non-function. Plugins are in the form function(skeemas){}.');
-	plugin(protoValidator);
-	return this;
-};
+	/** Error messages */
+	errors = {
+		'overflow': 'Overflow: input needs wider integers to process',
+		'not-basic': 'Illegal input >= 0x80 (not a basic code point)',
+		'invalid-input': 'Invalid input'
+	},
 
-},{"./validation-context":347,"./validators":353,"skeemas-json-refs":346}],345:[function(require,module,exports){
+	/** Convenience shortcuts */
+	baseMinusTMin = base - tMin,
+	floor = Math.floor,
+	stringFromCharCode = String.fromCharCode,
+
+	/** Temporary variable */
+	key;
+
+	/*--------------------------------------------------------------------------*/
+
+	/**
+	 * A generic error utility function.
+	 * @private
+	 * @param {String} type The error type.
+	 * @returns {Error} Throws a `RangeError` with the applicable error message.
+	 */
+	function error(type) {
+		throw new RangeError(errors[type]);
+	}
+
+	/**
+	 * A generic `Array#map` utility function.
+	 * @private
+	 * @param {Array} array The array to iterate over.
+	 * @param {Function} callback The function that gets called for every array
+	 * item.
+	 * @returns {Array} A new array of values returned by the callback function.
+	 */
+	function map(array, fn) {
+		var length = array.length;
+		var result = [];
+		while (length--) {
+			result[length] = fn(array[length]);
+		}
+		return result;
+	}
+
+	/**
+	 * A simple `Array#map`-like wrapper to work with domain name strings or email
+	 * addresses.
+	 * @private
+	 * @param {String} domain The domain name or email address.
+	 * @param {Function} callback The function that gets called for every
+	 * character.
+	 * @returns {Array} A new string of characters returned by the callback
+	 * function.
+	 */
+	function mapDomain(string, fn) {
+		var parts = string.split('@');
+		var result = '';
+		if (parts.length > 1) {
+			// In email addresses, only the domain name should be punycoded. Leave
+			// the local part (i.e. everything up to `@`) intact.
+			result = parts[0] + '@';
+			string = parts[1];
+		}
+		// Avoid `split(regex)` for IE8 compatibility. See #17.
+		string = string.replace(regexSeparators, '\x2E');
+		var labels = string.split('.');
+		var encoded = map(labels, fn).join('.');
+		return result + encoded;
+	}
+
+	/**
+	 * Creates an array containing the numeric code points of each Unicode
+	 * character in the string. While JavaScript uses UCS-2 internally,
+	 * this function will convert a pair of surrogate halves (each of which
+	 * UCS-2 exposes as separate characters) into a single code point,
+	 * matching UTF-16.
+	 * @see `punycode.ucs2.encode`
+	 * @see <https://mathiasbynens.be/notes/javascript-encoding>
+	 * @memberOf punycode.ucs2
+	 * @name decode
+	 * @param {String} string The Unicode input string (UCS-2).
+	 * @returns {Array} The new array of code points.
+	 */
+	function ucs2decode(string) {
+		var output = [],
+		    counter = 0,
+		    length = string.length,
+		    value,
+		    extra;
+		while (counter < length) {
+			value = string.charCodeAt(counter++);
+			if (value >= 0xD800 && value <= 0xDBFF && counter < length) {
+				// high surrogate, and there is a next character
+				extra = string.charCodeAt(counter++);
+				if ((extra & 0xFC00) == 0xDC00) { // low surrogate
+					output.push(((value & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000);
+				} else {
+					// unmatched surrogate; only append this code unit, in case the next
+					// code unit is the high surrogate of a surrogate pair
+					output.push(value);
+					counter--;
+				}
+			} else {
+				output.push(value);
+			}
+		}
+		return output;
+	}
+
+	/**
+	 * Creates a string based on an array of numeric code points.
+	 * @see `punycode.ucs2.decode`
+	 * @memberOf punycode.ucs2
+	 * @name encode
+	 * @param {Array} codePoints The array of numeric code points.
+	 * @returns {String} The new Unicode string (UCS-2).
+	 */
+	function ucs2encode(array) {
+		return map(array, function(value) {
+			var output = '';
+			if (value > 0xFFFF) {
+				value -= 0x10000;
+				output += stringFromCharCode(value >>> 10 & 0x3FF | 0xD800);
+				value = 0xDC00 | value & 0x3FF;
+			}
+			output += stringFromCharCode(value);
+			return output;
+		}).join('');
+	}
+
+	/**
+	 * Converts a basic code point into a digit/integer.
+	 * @see `digitToBasic()`
+	 * @private
+	 * @param {Number} codePoint The basic numeric code point value.
+	 * @returns {Number} The numeric value of a basic code point (for use in
+	 * representing integers) in the range `0` to `base - 1`, or `base` if
+	 * the code point does not represent a value.
+	 */
+	function basicToDigit(codePoint) {
+		if (codePoint - 48 < 10) {
+			return codePoint - 22;
+		}
+		if (codePoint - 65 < 26) {
+			return codePoint - 65;
+		}
+		if (codePoint - 97 < 26) {
+			return codePoint - 97;
+		}
+		return base;
+	}
+
+	/**
+	 * Converts a digit/integer into a basic code point.
+	 * @see `basicToDigit()`
+	 * @private
+	 * @param {Number} digit The numeric value of a basic code point.
+	 * @returns {Number} The basic code point whose value (when used for
+	 * representing integers) is `digit`, which needs to be in the range
+	 * `0` to `base - 1`. If `flag` is non-zero, the uppercase form is
+	 * used; else, the lowercase form is used. The behavior is undefined
+	 * if `flag` is non-zero and `digit` has no uppercase form.
+	 */
+	function digitToBasic(digit, flag) {
+		//  0..25 map to ASCII a..z or A..Z
+		// 26..35 map to ASCII 0..9
+		return digit + 22 + 75 * (digit < 26) - ((flag != 0) << 5);
+	}
+
+	/**
+	 * Bias adaptation function as per section 3.4 of RFC 3492.
+	 * https://tools.ietf.org/html/rfc3492#section-3.4
+	 * @private
+	 */
+	function adapt(delta, numPoints, firstTime) {
+		var k = 0;
+		delta = firstTime ? floor(delta / damp) : delta >> 1;
+		delta += floor(delta / numPoints);
+		for (/* no initialization */; delta > baseMinusTMin * tMax >> 1; k += base) {
+			delta = floor(delta / baseMinusTMin);
+		}
+		return floor(k + (baseMinusTMin + 1) * delta / (delta + skew));
+	}
+
+	/**
+	 * Converts a Punycode string of ASCII-only symbols to a string of Unicode
+	 * symbols.
+	 * @memberOf punycode
+	 * @param {String} input The Punycode string of ASCII-only symbols.
+	 * @returns {String} The resulting string of Unicode symbols.
+	 */
+	function decode(input) {
+		// Don't use UCS-2
+		var output = [],
+		    inputLength = input.length,
+		    out,
+		    i = 0,
+		    n = initialN,
+		    bias = initialBias,
+		    basic,
+		    j,
+		    index,
+		    oldi,
+		    w,
+		    k,
+		    digit,
+		    t,
+		    /** Cached calculation results */
+		    baseMinusT;
+
+		// Handle the basic code points: let `basic` be the number of input code
+		// points before the last delimiter, or `0` if there is none, then copy
+		// the first basic code points to the output.
+
+		basic = input.lastIndexOf(delimiter);
+		if (basic < 0) {
+			basic = 0;
+		}
+
+		for (j = 0; j < basic; ++j) {
+			// if it's not a basic code point
+			if (input.charCodeAt(j) >= 0x80) {
+				error('not-basic');
+			}
+			output.push(input.charCodeAt(j));
+		}
+
+		// Main decoding loop: start just after the last delimiter if any basic code
+		// points were copied; start at the beginning otherwise.
+
+		for (index = basic > 0 ? basic + 1 : 0; index < inputLength; /* no final expression */) {
+
+			// `index` is the index of the next character to be consumed.
+			// Decode a generalized variable-length integer into `delta`,
+			// which gets added to `i`. The overflow checking is easier
+			// if we increase `i` as we go, then subtract off its starting
+			// value at the end to obtain `delta`.
+			for (oldi = i, w = 1, k = base; /* no condition */; k += base) {
+
+				if (index >= inputLength) {
+					error('invalid-input');
+				}
+
+				digit = basicToDigit(input.charCodeAt(index++));
+
+				if (digit >= base || digit > floor((maxInt - i) / w)) {
+					error('overflow');
+				}
+
+				i += digit * w;
+				t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
+
+				if (digit < t) {
+					break;
+				}
+
+				baseMinusT = base - t;
+				if (w > floor(maxInt / baseMinusT)) {
+					error('overflow');
+				}
+
+				w *= baseMinusT;
+
+			}
+
+			out = output.length + 1;
+			bias = adapt(i - oldi, out, oldi == 0);
+
+			// `i` was supposed to wrap around from `out` to `0`,
+			// incrementing `n` each time, so we'll fix that now:
+			if (floor(i / out) > maxInt - n) {
+				error('overflow');
+			}
+
+			n += floor(i / out);
+			i %= out;
+
+			// Insert `n` at position `i` of the output
+			output.splice(i++, 0, n);
+
+		}
+
+		return ucs2encode(output);
+	}
+
+	/**
+	 * Converts a string of Unicode symbols (e.g. a domain name label) to a
+	 * Punycode string of ASCII-only symbols.
+	 * @memberOf punycode
+	 * @param {String} input The string of Unicode symbols.
+	 * @returns {String} The resulting Punycode string of ASCII-only symbols.
+	 */
+	function encode(input) {
+		var n,
+		    delta,
+		    handledCPCount,
+		    basicLength,
+		    bias,
+		    j,
+		    m,
+		    q,
+		    k,
+		    t,
+		    currentValue,
+		    output = [],
+		    /** `inputLength` will hold the number of code points in `input`. */
+		    inputLength,
+		    /** Cached calculation results */
+		    handledCPCountPlusOne,
+		    baseMinusT,
+		    qMinusT;
+
+		// Convert the input in UCS-2 to Unicode
+		input = ucs2decode(input);
+
+		// Cache the length
+		inputLength = input.length;
+
+		// Initialize the state
+		n = initialN;
+		delta = 0;
+		bias = initialBias;
+
+		// Handle the basic code points
+		for (j = 0; j < inputLength; ++j) {
+			currentValue = input[j];
+			if (currentValue < 0x80) {
+				output.push(stringFromCharCode(currentValue));
+			}
+		}
+
+		handledCPCount = basicLength = output.length;
+
+		// `handledCPCount` is the number of code points that have been handled;
+		// `basicLength` is the number of basic code points.
+
+		// Finish the basic string - if it is not empty - with a delimiter
+		if (basicLength) {
+			output.push(delimiter);
+		}
+
+		// Main encoding loop:
+		while (handledCPCount < inputLength) {
+
+			// All non-basic code points < n have been handled already. Find the next
+			// larger one:
+			for (m = maxInt, j = 0; j < inputLength; ++j) {
+				currentValue = input[j];
+				if (currentValue >= n && currentValue < m) {
+					m = currentValue;
+				}
+			}
+
+			// Increase `delta` enough to advance the decoder's <n,i> state to <m,0>,
+			// but guard against overflow
+			handledCPCountPlusOne = handledCPCount + 1;
+			if (m - n > floor((maxInt - delta) / handledCPCountPlusOne)) {
+				error('overflow');
+			}
+
+			delta += (m - n) * handledCPCountPlusOne;
+			n = m;
+
+			for (j = 0; j < inputLength; ++j) {
+				currentValue = input[j];
+
+				if (currentValue < n && ++delta > maxInt) {
+					error('overflow');
+				}
+
+				if (currentValue == n) {
+					// Represent delta as a generalized variable-length integer
+					for (q = delta, k = base; /* no condition */; k += base) {
+						t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
+						if (q < t) {
+							break;
+						}
+						qMinusT = q - t;
+						baseMinusT = base - t;
+						output.push(
+							stringFromCharCode(digitToBasic(t + qMinusT % baseMinusT, 0))
+						);
+						q = floor(qMinusT / baseMinusT);
+					}
+
+					output.push(stringFromCharCode(digitToBasic(q, 0)));
+					bias = adapt(delta, handledCPCountPlusOne, handledCPCount == basicLength);
+					delta = 0;
+					++handledCPCount;
+				}
+			}
+
+			++delta;
+			++n;
+
+		}
+		return output.join('');
+	}
+
+	/**
+	 * Converts a Punycode string representing a domain name or an email address
+	 * to Unicode. Only the Punycoded parts of the input will be converted, i.e.
+	 * it doesn't matter if you call it on a string that has already been
+	 * converted to Unicode.
+	 * @memberOf punycode
+	 * @param {String} input The Punycoded domain name or email address to
+	 * convert to Unicode.
+	 * @returns {String} The Unicode representation of the given Punycode
+	 * string.
+	 */
+	function toUnicode(input) {
+		return mapDomain(input, function(string) {
+			return regexPunycode.test(string)
+				? decode(string.slice(4).toLowerCase())
+				: string;
+		});
+	}
+
+	/**
+	 * Converts a Unicode string representing a domain name or an email address to
+	 * Punycode. Only the non-ASCII parts of the domain name will be converted,
+	 * i.e. it doesn't matter if you call it with a domain that's already in
+	 * ASCII.
+	 * @memberOf punycode
+	 * @param {String} input The domain name or email address to convert, as a
+	 * Unicode string.
+	 * @returns {String} The Punycode representation of the given domain name or
+	 * email address.
+	 */
+	function toASCII(input) {
+		return mapDomain(input, function(string) {
+			return regexNonASCII.test(string)
+				? 'xn--' + encode(string)
+				: string;
+		});
+	}
+
+	/*--------------------------------------------------------------------------*/
+
+	/** Define the public API */
+	punycode = {
+		/**
+		 * A string representing the current Punycode.js version number.
+		 * @memberOf punycode
+		 * @type String
+		 */
+		'version': '1.4.1',
+		/**
+		 * An object of methods to convert from JavaScript's internal character
+		 * representation (UCS-2) to Unicode code points, and back.
+		 * @see <https://mathiasbynens.be/notes/javascript-encoding>
+		 * @memberOf punycode
+		 * @type Object
+		 */
+		'ucs2': {
+			'decode': ucs2decode,
+			'encode': ucs2encode
+		},
+		'decode': decode,
+		'encode': encode,
+		'toASCII': toASCII,
+		'toUnicode': toUnicode
+	};
+
+	/** Expose `punycode` */
+	// Some AMD build optimizers, like r.js, check for specific condition patterns
+	// like the following:
+	if (
+		typeof define == 'function' &&
+		typeof define.amd == 'object' &&
+		define.amd
+	) {
+		define('punycode', function() {
+			return punycode;
+		});
+	} else if (freeExports && freeModule) {
+		if (module.exports == freeExports) {
+			// in Node.js, io.js, or RingoJS v0.8.0+
+			freeModule.exports = punycode;
+		} else {
+			// in Narwhal or RingoJS v0.7.0-
+			for (key in punycode) {
+				punycode.hasOwnProperty(key) && (freeExports[key] = punycode[key]);
+			}
+		}
+	} else {
+		// in Rhino or a web browser
+		root.punycode = punycode;
+	}
+
+}(this));
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],360:[function(require,module,exports){
 function fastMap(array, fn) {
 	var len = array.length,
 		result = new Array(len);
@@ -112986,7 +114092,7 @@ module.exports = function(sPointer) {
 	});
 };
 
-},{}],346:[function(require,module,exports){
+},{}],361:[function(require,module,exports){
 var jsonPointer = require('skeemas-json-pointer');
 
 var protoJsonRefs = {
@@ -113034,7 +114140,77 @@ module.exports = function() {
 	});
 };
 
-},{"skeemas-json-pointer":345}],347:[function(require,module,exports){
+},{"skeemas-json-pointer":360}],362:[function(require,module,exports){
+var validators = require('./validators'),
+	validationContext = require('./validation-context'),
+	jsonRefs = require('skeemas-json-refs');
+
+var protoValidator = {
+	addRef: function(uri, ref) {
+		if(typeof uri === 'object') {
+			ref = uri;
+			uri = null;
+		}
+		uri = uri || ref.id;
+
+		if(!uri) throw new Error('Cannot add a json schema reference without a uri/id.');
+
+		this._refs.add(uri, ref);
+
+		return this;
+	},
+	validate: function(instance, schema, options) {
+		if(instance === undefined) throw new Error('Instance undefined in call to validate.');
+		if(!schema) throw new Error('No schema specified in call to validate.');
+
+		if(typeof schema === 'string') {
+			var uri = schema;
+			schema = this._refs.get(uri);
+
+			if(!schema) throw new Error('Unable to locate schema (' + uri + '). Did you call addRef with this schema?');
+		}
+
+		var context = validationContext(schema, {
+			instance: instance,
+			refs: this._refs,
+			breakOnError: options && options.breakOnError,
+			cleanWithDefaults: options && options.cleanWithDefaults
+		});
+		validators.base(context, instance, schema);
+		if(context.result.valid) context.result.cleanInstance = context.cleanSubject;
+		return context.result;
+	}
+};
+
+function makeValidator() {
+	return Object.create(protoValidator, {
+		_refs: { enumerable:false, writable:false, value:jsonRefs() }
+	});
+}
+
+module.exports = makeValidator;
+
+module.exports.validate = function(instance, schema, options) {
+	if(instance === undefined) throw new Error('Instance undefined in call to validate.');
+	if(!schema) throw new Error('No schema specified in call to validate.');
+
+	var context = validationContext(schema, {
+		instance: instance,
+		breakOnError: options && options.breakOnError,
+		cleanWithDefaults: options && options.cleanWithDefaults
+	});
+	validators.base(context, instance, schema);
+	if(context.result.valid) context.result.cleanInstance = context.cleanSubject;
+	return context.result;
+};
+
+module.exports.use = function(plugin) {
+	if(typeof plugin !== 'function') throw new Error('skeemas.use called with non-function. Plugins are in the form function(skeemas){}.');
+	plugin(protoValidator);
+	return this;
+};
+
+},{"./validation-context":363,"./validators":369,"skeemas-json-refs":361}],363:[function(require,module,exports){
 var validationResult = require('./validation-result'),
 	jsonRefs = require('skeemas-json-refs');
 
@@ -113086,7 +114262,7 @@ var makeContext = module.exports = function(schema, context, forceNewResult) {
 	});
 };
 
-},{"./validation-result":348,"skeemas-json-refs":346}],348:[function(require,module,exports){
+},{"./validation-result":364,"skeemas-json-refs":361}],364:[function(require,module,exports){
 function errorToString() {
 	return this.message + ' (pointer: ' + this.context + ')';
 }
@@ -113114,7 +114290,7 @@ module.exports = function(instance) {
 	});
 };
 
-},{}],349:[function(require,module,exports){
+},{}],365:[function(require,module,exports){
 var validateBase = require('./base'),
 	deepEqual = require('./deep-equal');
 
@@ -113256,7 +114432,7 @@ module.exports = function(context, subject, schema) {
 	return valid;
 };
 
-},{"./base":350,"./deep-equal":352}],350:[function(require,module,exports){
+},{"./base":366,"./deep-equal":368}],366:[function(require,module,exports){
 var validators = require('./'),
 	formats = {
 		'date-time': /^\d{4}-(0[0-9]{1}|1[0-2]{1})-[0-9]{2}[t ]\d{2}:\d{2}:\d{2}(\.\d+)?([zZ]|[+-]\d{2}:\d{2})$/i,
@@ -113517,7 +114693,7 @@ function validateBase(context, subject, schema) {
 
 module.exports = validateBase;
 
-},{"./":353}],351:[function(require,module,exports){
+},{"./":369}],367:[function(require,module,exports){
 function validateBoolean(context, subject, schema) {
 	if(typeof subject !== 'boolean') {
 		context.addError('Failed type:boolean criteria', subject, schema);
@@ -113531,7 +114707,7 @@ function validateBoolean(context, subject, schema) {
 
 module.exports = validateBoolean;
 
-},{}],352:[function(require,module,exports){
+},{}],368:[function(require,module,exports){
 function getType(subject) {
 	var type = typeof subject;
 
@@ -113580,7 +114756,7 @@ var deepEqual = module.exports = function(a, b) {
 	return false;
 };
 
-},{}],353:[function(require,module,exports){
+},{}],369:[function(require,module,exports){
 exports.types = {
 	'any': function() { return true; },
 	'array': require('./array'),
@@ -113597,7 +114773,7 @@ exports.deepEqual = require('./deep-equal');
 // base cannot be required until other validators are added
 exports.base = require('./base');
 
-},{"./array":349,"./base":350,"./boolean":351,"./deep-equal":352,"./null":354,"./number":355,"./object":356,"./string":357}],354:[function(require,module,exports){
+},{"./array":365,"./base":366,"./boolean":367,"./deep-equal":368,"./null":370,"./number":371,"./object":372,"./string":373}],370:[function(require,module,exports){
 function validateNull(context, subject, schema) {
 	if(subject !== null) {
 		context.addError('Failed type:null criteria', subject, schema);
@@ -113611,7 +114787,7 @@ function validateNull(context, subject, schema) {
 
 module.exports = validateNull;
 
-},{}],355:[function(require,module,exports){
+},{}],371:[function(require,module,exports){
 function validateNumber(context, subject, schema) {
 	if(typeof subject !== 'number') {
 		context.addError('Failed type:number criteria', subject, schema);
@@ -113679,7 +114855,7 @@ module.exports = function(context, subject, schema) {
 	], subject, schema);
 };
 
-},{}],356:[function(require,module,exports){
+},{}],372:[function(require,module,exports){
 var validateBase = require('./base');
 
 function properties(context, subject, schema, handledProps) {
@@ -113874,7 +115050,7 @@ function validateObject(context, subject, schema) {
 
 module.exports = validateObject;
 
-},{"./base":350}],357:[function(require,module,exports){
+},{"./base":366}],373:[function(require,module,exports){
 var decode = require('punycode').ucs2.decode;
 
 
@@ -113926,7 +115102,201 @@ function validateString(context, subject, schema) {
 
 module.exports = validateString;
 
-},{"punycode":338}],358:[function(require,module,exports){
+},{"punycode":359}],374:[function(require,module,exports){
+(function (root, factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD. Register as an anonymous module.
+		define([], factory);
+	} else if (typeof exports === 'object') {
+		// Node. Does not work with strict CommonJS, but
+		// only CommonJS-like environments that support module.exports,
+		// like Node.
+		module.exports = factory();
+	} else {
+		// Browser globals (root is window)
+		root.StringMask = factory();
+	}
+}(this, function () {
+	var tokens = {
+		'0': {pattern: /\d/, _default: '0'},
+		'9': {pattern: /\d/, optional: true},
+		'#': {pattern: /\d/, optional: true, recursive: true},
+		'S': {pattern: /[a-zA-Z]/},
+		'U': {pattern: /[a-zA-Z]/, transform: function (c) { return c.toLocaleUpperCase(); }},
+		'L': {pattern: /[a-zA-Z]/, transform: function (c) { return c.toLocaleLowerCase(); }},
+		'$': {escape: true}
+	};
+
+	function isEscaped(pattern, pos) {
+		var count = 0;
+		var i = pos - 1;
+		var token = {escape: true};
+		while (i >= 0 && token && token.escape) {
+			token = tokens[pattern.charAt(i)];
+			count += token && token.escape ? 1 : 0;
+			i--;
+		}
+		return count > 0 && count%2 === 1;
+	}
+
+	function calcOptionalNumbersToUse(pattern, value) {
+		var numbersInP = pattern.replace(/[^0]/g,'').length;
+		var numbersInV = value.replace(/[^\d]/g,'').length;
+		return numbersInV - numbersInP;
+	}
+
+	function concatChar(text, character, options, token) {
+		if (token && typeof token.transform === 'function') character = token.transform(character);
+		if (options.reverse) return character + text;
+		return text + character;
+	}
+
+	function hasMoreTokens(pattern, pos, inc) {
+		var pc = pattern.charAt(pos);
+		var token = tokens[pc];
+		if (pc === '') return false;
+		return token && !token.escape ? true : hasMoreTokens(pattern, pos + inc, inc);
+	}
+
+	function insertChar(text, char, position) {
+		var t = text.split('');
+		t.splice(position >= 0 ? position: 0, 0, char);
+		return t.join('');
+	}
+
+	function StringMask(pattern, opt) {
+		this.options = opt || {};
+		this.options = {
+			reverse: this.options.reverse || false,
+			usedefaults: this.options.usedefaults || this.options.reverse
+		};
+		this.pattern = pattern;
+	}
+
+	StringMask.prototype.process = function proccess(value) {
+		if (!value) return '';
+		value = value + '';
+		var pattern2 = this.pattern;
+		var valid = true;
+		var formatted = '';
+		var valuePos = this.options.reverse ? value.length - 1 : 0;
+		var optionalNumbersToUse = calcOptionalNumbersToUse(pattern2, value);
+		var escapeNext = false;
+		var recursive = [];
+		var inRecursiveMode = false;
+
+		var steps = {
+			start: this.options.reverse ? pattern2.length - 1 : 0,
+			end: this.options.reverse ? -1 : pattern2.length,
+			inc: this.options.reverse ? -1 : 1
+		};
+
+		function continueCondition(options) {
+			if (!inRecursiveMode && hasMoreTokens(pattern2, i, steps.inc)) {
+				return true;
+			} else if (!inRecursiveMode) {
+				inRecursiveMode = recursive.length > 0;
+			}
+
+			if (inRecursiveMode) {
+				var pc = recursive.shift();
+				recursive.push(pc);
+				if (options.reverse && valuePos >= 0) {
+					i++;
+					pattern2 = insertChar(pattern2, pc, i);
+					return true;
+				} else if (!options.reverse && valuePos < value.length) {
+					pattern2 = insertChar(pattern2, pc, i);
+					return true;
+				}
+			}
+			return i < pattern2.length && i >= 0;
+		}
+
+		for (var i = steps.start; continueCondition(this.options); i = i + steps.inc) {
+			var pc = pattern2.charAt(i);
+			var vc = value.charAt(valuePos);
+			var token = tokens[pc];
+			if (!inRecursiveMode || vc) {
+				if (this.options.reverse && isEscaped(pattern2, i)) {
+					formatted = concatChar(formatted, pc, this.options, token);
+					i = i + steps.inc;
+					continue;
+				} else if (!this.options.reverse && escapeNext) {
+					formatted = concatChar(formatted, pc, this.options, token);
+					escapeNext = false;
+					continue;
+				} else if (!this.options.reverse && token && token.escape) {
+					escapeNext = true;
+					continue;
+				}
+			}
+
+			if (!inRecursiveMode && token && token.recursive) {
+				recursive.push(pc);
+			} else if (inRecursiveMode && !vc) {
+				if (!token || !token.recursive) formatted = concatChar(formatted, pc, this.options, token);
+				continue;
+			} else if (recursive.length > 0 && token && !token.recursive) {
+				// Recursive tokens most be the last tokens of the pattern
+				valid = false;
+				continue;
+			} else if (!inRecursiveMode && recursive.length > 0 && !vc) {
+				continue;
+			}
+
+			if (!token) {
+				formatted = concatChar(formatted, pc, this.options, token);
+				if (!inRecursiveMode && recursive.length) {
+					recursive.push(pc);
+				}
+			} else if (token.optional) {
+				if (token.pattern.test(vc) && optionalNumbersToUse) {
+					formatted = concatChar(formatted, vc, this.options, token);
+					valuePos = valuePos + steps.inc;
+					optionalNumbersToUse--;
+				} else if (recursive.length > 0 && vc) {
+					valid = false;
+					break;
+				}
+			} else if (token.pattern.test(vc)) {
+				formatted = concatChar(formatted, vc, this.options, token);
+				valuePos = valuePos + steps.inc;
+			} else if (!vc && token._default && this.options.usedefaults) {
+				formatted = concatChar(formatted, token._default, this.options, token);
+			} else {
+				valid = false;
+				break;
+			}
+		}
+
+		return {result: formatted, valid: valid};
+	};
+
+	StringMask.prototype.apply = function(value) {
+		return this.process(value).result;
+	};
+
+	StringMask.prototype.validate = function(value) {
+		return this.process(value).valid;
+	};
+
+	StringMask.process = function(value, pattern, options) {
+		return new StringMask(pattern, options).process(value);
+	};
+
+	StringMask.apply = function(value, pattern, options) {
+		return new StringMask(pattern, options).apply(value);
+	};
+
+	StringMask.validate = function(value, pattern, options) {
+		return new StringMask(pattern, options).validate(value);
+	};
+
+	return StringMask;
+}));
+
+},{}],375:[function(require,module,exports){
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
@@ -115965,8 +117335,8 @@ $templateCache.put("select2/select.tpl.html","<div class=\"ui-select-container s
 $templateCache.put("selectize/choices.tpl.html","<div ng-show=\"$select.open\" class=\"ui-select-choices ui-select-dropdown selectize-dropdown single\"><div class=\"ui-select-choices-content selectize-dropdown-content\"><div class=\"ui-select-choices-group optgroup\" role=\"listbox\"><div ng-show=\"$select.isGrouped\" class=\"ui-select-choices-group-label optgroup-header\" ng-bind=\"$group.name\"></div><div role=\"option\" class=\"ui-select-choices-row\" ng-class=\"{active: $select.isActive(this), disabled: $select.isDisabled(this)}\"><div class=\"option ui-select-choices-row-inner\" data-selectable=\"\"></div></div></div></div></div>");
 $templateCache.put("selectize/match.tpl.html","<div ng-hide=\"($select.open || $select.isEmpty())\" class=\"ui-select-match\" ng-transclude=\"\"></div>");
 $templateCache.put("selectize/select.tpl.html","<div class=\"ui-select-container selectize-control single\" ng-class=\"{\'open\': $select.open}\"><div class=\"row\"><div class=\"col-md-11\"><div class=\"selectize-input\" ng-class=\"{\'focus\': $select.open, \'disabled\': $select.disabled, \'selectize-focus\' : $select.focus}\" ng-click=\"$select.open && !$select.searchEnabled ? $select.toggle($event) : $select.activate()\"><div class=\"ui-select-match\"></div><input type=\"text\" autocomplete=\"false\" tabindex=\"-1\" class=\"ui-select-search ui-select-toggle\" ng-click=\"$select.toggle($event)\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-hide=\"!$select.searchEnabled || ($select.selected && !$select.open)\" ng-disabled=\"$select.disabled\" aria-label=\"{{ $select.baseTitle }}\"></div></div><div class=\"col-md-1\"><img ng-if=\"$select.loading\" width=\"30\" src=\"data:image/gif;base64,R0lGODlhlACUAPeAAEuW34q76prE7Wem5GWl5G6q5Wqo5Xyz6FCZ4E6Y4Hmx53Cr5lme4pTA7Fqf4nKt5lyg4kyX30qW31Sb4abL71id4eDt+YK26Y2960yX4LHS8anM8Nnp+K7Q8fz9/k2X4MHa9I++60+Y4EqV38Xd9Xiw58rg9rjV8nav51Wc4aTK72up5WOk41Ka4NPl94a56p7G7rXU8oS46fn7/v3+/lKa4ZfC7GGj41+i4+zz+/r8/n606PD2/HWv5t7r+bzX80yW32Ci44O36c7i9mCj412h41Sc4cPc9NHk9+Tv+r7Z86vO8Obw+rvX89bn9/T4/ejy+6LI7lac4Z/H7lie4e71/H+16FGZ4JC/6/7+/l6h4/X5/Vug4uz0/FGa4KPJ79Xm+Nzq+LnW88/i9snf9vb6/efx+7PT8ePu+ZXC7czh9vL3/azO8PH3/Mje9ery+9zr+ZzF7uLt+s/j97fU8v7+/7TS8qDH7srg9fj7/evz/Njn9+fw+vj6/vr7/f///////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NzQ4RDczNjVBRDM0MTFFNTg0ODlGMDgwQkJDRjVCMDAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NzQ4RDczNjZBRDM0MTFFNTg0ODlGMDgwQkJDRjVCMDAiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3NDhENzM2M0FEMzQxMUU1ODQ4OUYwODBCQkNGNUIwMCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo3NDhENzM2NEFEMzQxMUU1ODQ4OUYwODBCQkNGNUIwMCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAUFAIAALAAAAACUAJQAAAj/AAEJHEiwoMGDCBMqXMiwocOHECNKnEixosWLGDNq3Mixo8ePIEOKHEmypMmTKFOqXMmypcuXMGPKnEmzps2bOHPq3Mmzp8+fQIMKHUq0qNGjSJMqXcq0qdOnUKNKnUq1qtWrWLNq3cq1q9evYMOKHUu2rNmzaNOqXcu2rdu3Kv/InUu3rt27ePPqzUt1r98/PJwo0WDjxYUDJQ5ceAFDA5k3f/f2jWy3C4koIV5ovsAZ8QEFKEqgWIDiggoOlO1OTv3HyRIbIUJg0Gy4c2LQohcUWGBgxYUYHlj/WR3ZhQoBAhrExsC89uHEB1BIX7CCN4EVBAqomJGa+N4kHaII/4Bho4Fy5rM5P/88WvqK6gauEyCwgARl73g9kFGhAgYMATYkF1tmi9n2WQkLkMZbb/MZEAQBEGDwxF/42fXECfxFEcV/5JnXwGy0radAbgliZ0B880EAYQGoSTbVXnLEsMQS/PX3nw3lydacgSOOtsJu2BHg4IMQBOFAEDG4KJVeMXbQwRIbqKDhf8gpp2NtiJXQIwoFnLhCfA8GUeSRFUCwhF4VypXECRpo4OQGUWooXnlWpvdcCaJN92WDEEIYRBBllrkBXy/e9cYPJ7Dp5pMZUpkjiIdlOV2Jez7oJwQOQFCmEWbiVeEWJPyAaAxtPgmllHOeRxsGsV0AGnUnxv9KgJgQZhqoA0Y44MRd+NEwhBJKiBrDsG5CGaWjAmjgQhU01FUFCQIocOKsYUJg7aYQ5GpEEFWoVihdcJBAArDCEvtknFF0wEGzfpFwAYpFWmsrrrhWgMAB3i5JFw9kkCEuuaPG4CSN6gr3wwJFGjlvBRUYYa+9J9RFnAdO9Ovvv6ImuigZ3An3xxMYKKypAw0bYbIRCHBaBl3EveHCEENYjLESGu/qMV1RyFtBvQg0nDICCDTA8retuWA0zP3+G+wJSdxslwYk1+vwzz9X0PFw31bBgRNGv4z0xUrI4fRdMJBscsooo/yzDXOtxsTWW3f9NQktjm3XBQ6frbbaCAT/we5kOsAhOAdbc300zDrYfdcT2VLNdwQZIDCEXJM9Icflgg/uhOFdKI5XB3sDjUAEomeAL9b6dsFEEklgnjnhcGThOV4EAM03AhmQ3jPlL9LwxhtMBL+663BMOPtdHYwOdO6jZ+B8BKj1pUMX1P8u/PBNH4+XA7pDzrzzGQwqPQ88VGF+9b+/0a32d5Xg/PLge38B6lH9ocMT+ONPfhVd8H81+3TZQPy8B74MrIB+UPmDB2bAwDKUYQsQ1F9wAFgXOTwvdwR0nhEQ+JQ/0IAGHgihDkbIwBmsjIJ2KaAKn8dBp8glCzCM4QdniEK74G6FBWxhU2ooHCPgMIdp4mFeyTKIQx0yRYipueEPM2DEpSCRNRxQwhJeUAIIGQFyTVTKE48XxC2ypotevA/RwngzMJLRL2Y8I5rGqMbusLGNkUkjHPNVvzl+8Y12XKO+8hhHPPKRV378o8QCKci2EbKQWUwKIpVUx0V66pCFlOMfJclHSubRknbE5Bw1CUdOttGTagTlGUVJRriY8pSoTKUqV8nKVrrylbCMpSxnScta2vKWuMylLnfJy1768pfADKYwh0nMYhrzmMhMpjKXycxmOvOZ0IymNI8SEAAh+QQFBQCAACwrACsAPgAsAAAI/wD/CBxIsKBBgVt8DDlBIUoDLFgwNJhCQYyTGQczatyoscocOyqmTBFAEmLEABhkXFDZwI4cjjBjCrSgZMMGFThHloSIIYDPC0APCMXgBqPMowOTiLGjgc1NFVF0CsDysOdPKxcOKND64IISpDKruDlxgqmGDRQaihTwsKrPADKsWNG69YHdCy7AaqTBAYQYMSc0CLapdmSDwydlKJ47V4FjuwUKCCijt2CZISSUKPlbtunTkGwR91SsUqtQuw8KPFhRQEGYygJ5mHBDAgQIzYEHpwV92K1KoFYcP4b8wABrE5U9DpldezPgwWijhq6a8oJcoQpQRy5goMAAAwPEgP/l4WLOchMkmivpfLZw6IijswrPDpn1gBUEDBCwc3QLByflzWECerdxxhRaUOlEHVxZcfWAAtutcF9+BAwQBAkxzWABB/+Vd556nTlVWBQUqDBVAMBhl1pqBhhHoYUWcsBRFkxY4EMYHZrHnGaAmUVCGDzQUJBHG1zwWHYrsAaefhYSEAQBK2yxEQ9JyGEjjgDOIWB6folBggVCwjQHBqltt2SFTj4JAQEBaOQBFFAwIYccN+a4XHpuQKGXG1ZENsCEA6QZBARBOBAECBnxUEUOcc7pgw92msCBB7B5IIBxTDqZJgSEMrACpQXNoGgXjEJR5aM5QpEFbAPZUQABFar/WWihDATBgAoGlfHEE6PGKeeVHHTBakEn/BnEsYNCUKsDDBBKGUEzzLDFrjzkwCgTSdjIw7AGaXAsAYY6AAGzylbgwAYF0eBBtNPywAOpTDAhLLcGBTCoA+I2ywADDkghxQAFZUGDujpIy2sVVXQRJr0ElbGCofry6y+zNcxxkMA0FNzuswwXJEa++EpRAQNS1CAFAxhwpO4MOnScUQHMnsyAySTXUAMBM2Ls8kEa7OtvzSJXUAMCeu5cmQe2llyB0AiYXDIFRsMmQwVSNO1vDQkkYHObUeulwdUIWD101gV0rZccJg/dtM1sO2C2XkJjHcHcCTSNgNtvI+WAzWEjiTD33xHkjRQBfRce9tyCHxVE3YYXnrhMFfidwN8ARABA5Y/HJLnlEnTeOQA1ZM5RGHQD4Hnlc+MtekYUVH65BJbPbTrOq2e0wuWm4+65BAfUntHuEph+OgC4+l6QG8DvLrwFxhs0xwrJex568wdVcQECya9A/UZTQLA7G9tz5EQBEkwfPkceCRQQACH5BAUFAIAALC4AKwA7ADQAAAj/AP8IHEiwYEEPUDiYOBKjw4aHGzo0OQInj8GLGDNq3GJBDYgmMU5o6ODw4ZcpceIIaLDhSBWNMGP+8dCFA4kjID6eiDGy5JeTAlQ2aBAiwBQ1HmQqHVhTjYmFOJuA7GkSqNAQDQJoDXAky1KYHDkgQeL0JgglTUSOrDpFgFuiWwPIkNGAw1eMXSxwcDLW6cKzU9du+IlyJVytc2XskPHlyd2BCNFYgMNBLFmoZ2Pw9Dml8NCsW+fuGB0AzWM/XaCgkUyZLxITZtNuNtn5alG5ohXvUKDAxFcPVVIzWa3XslOcaHdyVmk4dOLRvEuUUKLUw5M2waEMn7z38k20swe3/30boujz0SV2lFDQowcJmX7yXBe+nXLf2JqXr7yNW7SCHT2U0N4CPagBEw0exNdGG6mphkZrlx1xBEgnnJBWB19chdh5ALLXwwIglmDBgTTokMeCwrHW3VMcoPGEVwS14cQJAoQ22m7rtfchiAbs4JhGWZQoH4Nd1OcEHF3QEBMNcEzxHG8e7gjiAgY0EFOQJs6nnWQv3uVECNBFSSCPBhgwABIyIXgig0wk+ZhAeUyxm44EGkDlAgOUucAWV6p5HZ9vEtSEgDvaWWaeAxBgwAZLeaBDUoEWdISUhpapKAE3LKCDUjBGalATPOJpAAEDDMBCojdo4OmqcVBpZqksjP96AwEE9KDkqoHq0IOZo8pqKg4sEIAmroGCMOoAsyLLAgs3cMGFlcQGukOwBADLgrM3sIDDANEGGkO22nJxQ7Nc4GAuE90+5oEBOIyLLQ5cUEEFFzGk+1gI5cI7b7nOUhGAvXedkK+++zpbAsBfoeHswlRI4bC83CK8FLwLxyvFBBhzIfFSLMjr8ccNb6zUAiCXLLJMBmA8QQsst8zyyTHh4DLLKk8gBcwwUcFyAi3UjDEOOGdkwco896xyAgloHPRFHbSAdM8tI52AAUtfpEALERSdQAQRQC1D1QdNsDXPY7ccAaNgDxTD1lmXzXYC6KYtEBcRAJG13Uhn3QLQcv9l0YHdQCQAROB1Zx3B13K3McHggHON9+BO9E0F44PXbXfhSqcdAuWUW263AH1DIQXnlTcOqNxb4EA65SH0TdAAqwMhxemu/1HC6mjXPtAUnEesO0EaUG7a7wWBMHi9xBvEQe4EBQQAIfkEBQUAgAAsMgArADcAOgAACP8A/wgcSLDgHxpPoFhw4sLEkYcg3JhwImeGwYsYMxr0sIaJBQ4Mh5hweATEDzExNGjoIGZIFY0wNc6oAiWJnI8hR0I8ibJDhyUqVMQA4yGm0T86nlTRU/MmHA4u5ojciXLlz6BfpqgYouNoRhoz1vBgysQpVKkkTaKM0WHDBhVfsqaZMkWOV4NZwJZZs7TpUzBoqaps6zbrlDSIQ4ixeHcgDQ8znoyFUnYhwzlpT1p9a3gu4jQhpkBp7FjHXrI3QbqYWvJHDLZLCtM9DDpEiAAhnJD+kwWy5CpMkliAk5MqW7dwZ4NOg6F5AAxzdtPQEZZm2b8i3Rw5mfLnBsO0a2P/CBDgxQs3u32voSycA5js26t675z49njzQoREb9y7enA5xEU1xxxuuOZdcuGF4Bx++QnBBGlgSaYHE1CswRhBZSRhQgf0gdaceS80mF8AZZDmQRlP6JCFUXBoQJttIYAoRIj5KaDAF6StSBoHhylIXog0KiCEjQrst1tjNIixoIhCEqlAAF0dSZoJGNDYoJM2PiCGlLvNIeKQTj5AZFFcNgbClUSKqcACDzzwQ5mkfRGmjWw+UEABL8DZWBkvOFlnAW2usEISet41B51tAlrACgUssMIGhd4VwAMLsCnoAosyqkCkXs2BaaOCMroCAQSsoAenRmWhwKJ3jhoqqW+i/xpTGgWUKiippAo6hawxHTGqrb8SQQQBefKqERS/4oqrsAsYC1OtwhIwrLIFOKvRAtJCoC0EOAg7rLUZKSAsDjhsay64GInr7breonvRCtyyS6627hpULrfbOkDFvjjUS1ASVOS778AQrODvQBpI4YC2VEih8LabHvyHEFLs67DCDugrRQASewBBxVS0ULEDF1PRgcQbtCCyFC3sqzIV+tp1MAEqs+xwzQ1DIHEHNfe8ssrF1lsGyyp/oLLIR1NhwsEKtGC00U4XLTIRNPibxgdYRw311rvWO8UHEWD9tNROQ1CiuwEAEAEAAHzQttEZOG10CO5CQQTbarMN9gdxZ2EtxRPoQpEB3mxnMLjbYreQQazoOkA422sPbjjfD/jrxOOET56BA6P5q8DjgxcOQAtLH/wE5pK3fbLEf4SAOd5dsz7D6wCkwTpBU2CO4+0EOc426bwXdPnocARvUABLHBUQACH5BAUFAIAALDkAKwAwAD4AAAj/AP8IHEjwD40ta6pAQYMmjEMLTKroKEixokWKNDzMeFKly8KGHPa4GDLExBALTy6qVJmFxkYeXZgwASkSSckjR0C4seBhpU+CLrfAhDIzTEgXNk3gBNGkiZIwP322nIHQY1GRI02QyKmkaRMNTaBEVUlDR5mERBvWLLn1iFcNcDW4mTiWYhYdM9ZYVYv0Zs63cJcs0dClLsazCq8iNeHmb9O4giksoWDBMFAdHNOGEVmyMdPHgSlQ+PIFxh7LA3UI1cxZq2PIk0nDuGPjtOUsHlYzsRAyqeOvGiKPvgOjuA2olnMnjImGgwvGf+MGF/3lDnEYNrKLRU1RRxULbroC/588urrx7DZg0OVO0QMTEl8jk76OHr0G9iqZNIltHnt9GwEEgBx+FXlAwnDn1RdgADD0RKBFe5TmH3oLLmjCgxftMWEAAFYowws2zIChRUhQ6OELAVxwwRAjWtREhwG+IOMFMshghQ0tFgjDgijSKMMOVthYWY4F7RFAjy/YKMMFOyiww31EFgRDjVbQuMOVViigQABRFhnkBU42qaWYVXRJ0AtXjtnkAw9oeaGZAlGQZptaKsDmA0vAKdAQdd7Z5wM46tlFnwsUeucDL+gpkJ13FuroAgoo+scOhz66wgoLSCrDo5wWqmmhl4a6ggGkSqrApaQaMMCqrEq6AKkExP8a6wCkPqAoFKsSwAIBtKY6gK16KsErC7uySiwLieppg6447MosDrzCoKcHBrCAQ7PEXjtsE3pqwAUO31rLxbHXFgbnAuB+C26z6QJrZhNUcCEvF/Gm22ygXW5BQAr04lAvFVRcy4ULcO6QAsDx8gswuFRkauYXKRxcAxUKx7twnl1CnEINEUdMMb31phSlDSlcwfEVVEw8ccRcpPBFlGU8kIDJJtfAscr8pjCAgy0uwcUVVySQQA01c+zxxErkqAEOAAABBNBBE72xzRtTscOIPicAwNZCAzGz0CkMfUXJ/PIwIhVbNw0E10J/XUMCYW+MRIsvpJ12Ak53/fbeCXBb27PdTnPt9RVPD53AyzlCYXfaa3sNxNtAU9BlDYA3rjXeM0MZJQGLb7325VS82WUAnTe+9QNmwzlE52mn4LeirKcQoqQCpWB3DTasQftACmxNAAi7F2TBkOwFBAAh+QQFBQCAACxCACsAJwA+AAAI/wD/CBxIkIaOGToSElzIsKFDgVlozNjSpkqOKm10PNy4MYuHGU8qmkkix4KcKhxTEvQIskqVkXJ8hOHgBAoNlRw9lmmTI4eZkj5ouhiKEqdDlhWh/JTpZKgLMmTCeDDKMIuOnS/NoAna9CnUI2S2UF2og6LPJBZmOv16RIkSM2MFStxikWRQDkPZuv0hRk5ciUnRcs1L5kjbHz/o0LEwVuKTKlDQqvVqWAlixXZiMDZKA+tSoU8r88Vs50yMNnFntEETputXy4nplD5zhkKMGXEFPvFB+bAY2TFoUxhOJvfAKi4qK/kdXPjw4X6N/6ERxjJz58+Hn5kq/Y+F37RrZ/8fHidO8e5/koQfT6F8eQo30YcRn919eQEu0AskU9++DRsCUKDfHzrUdp8AcQAoQAMMwqWfD/4JYAODE2Lww4B/nCHAhv9NyCCDcWAYhocNYIBBiSaaWJR+cZyIYooYyCCDExjSAeONMSqBoQs3yugjBgIO+ISPRMpgxZE2YPiHkUXKeKQMSmJw5JRT+qhkAwdkqeWWB1xZwpdghlmCkjKAqcCZCmyppAI9oIACmnBagWEVPTzQQwkofNnDnj1ggOERDxRgJwp1PvBAniEOGEcBghrK6KAPnIGhAgYIymijgRZwHnpHGFBpAZVm+qiD6FnhKaifnvqAnPr9YAABnsL/+mqlniba3RMFEHDDq7DCCioBBXCgHwYQ6KrrrLwWcEAW6FFwww1aQEuAsdO+Kml3Z0AAgRbRakGAt9UCq5F0cTCghblaQHBDsc8aG2RubcjAQAXmMrBtt8VG+wBuuZ2hhRH0MmDvwOmu+62OcZ1hgBEM12CEwAQzcIPEEPhplBwUlMAAAgjU0DHDD88LQQXnplvAig59AIARCAAAwAcwA/CxETXUwADD82pBssTCcjTCzz+//AHHNXMMcA30GgGBETprYUdKHAA9gsswc1w1zQhUgLPSSr+70RFASyA0zDAXjQDNR98MgdcbUQD02FRb7fDHNtewtlENhO0yACMMX43A0B7PTfMN+Rllhd4fSEB21UMb8QHLB+QwFgFSq6y4ykOX3bEWMeSmxdt8963y3x/U8EEFDTxhnBGgT/1B338joIUA/Br3utR98336AWTE193tIyhuRAEyUEBjdwEBACH5BAUFAIAALD0AKwAsAD4AAAj/AP8IHEiwoMGDCBMqXMiwocOHECMKzEJjRhkdEjMKpOFhxhoeazxojFhxy8ccOXiIHMkwS8cnPFDmSJIEI0uFNHSYjDkziQULW24mrLhmDUqaFsJw4MBD6EGdPHuGUerERQ6nAyl6jIk0KQcwSJCMaYrVpcmjPqm6GMPWRFCnFWFKVQpWrIm7JlberMg1LYeqdvGa4ID1j46ZXp2EHSP4h+OrhXOobYvXsWMThQXy4OAi8F3LjmNYyPyHB5LGoGOo/qEXa47KqVVriBGG9B8OJmLHmN2hww/bNHL/UL1bQ+8ObDZAzpyDuAbjvTdI3zDG9h8TMY532JB8gwoVMaxb/4g+/bt5FW9Ja/B+vj1h2ybafxcg4Dtm22HM01dBv39420/w19+A+1n3B4EIqmCggAI04OCDDhq4AYQUYoHFghZmaCGEBgqAARYYhCiiiAZiEQAGAaT4woorNmBdDiy+IMOML6SIgQDWISHEjEJcQCOLG1i3wQU9XuCjDEVe8B9pRSpgZJI+VkfaGCgoYKWTVhppJFmZYXHll0ZaeSFpJqCwgAJVovmlAh2Q5sEFC6Agp5p0KjBaZgIsUICeZlY5pwIBqDdAAYQuwGecaKJwH1YxFGCAAY7yuWefQqQnVAcDEGDAAJBCWuikvznVRwAEDJDppo8+6qiZQrQ20g8F3P+Aww2ZlqrpoAMsACkSCYW6kAcdLMAAA7PKaqsBtzpaAI4IjTGCBAao4IKrSWjwAg4VQAABDtriQMANtp7KqQJPJFTACOgCkUACFcwKQQUTTFBBBcPOu+22BHg7AK2lFuBEQjkk8CwQ6q6bAAI11BDvwvRqS+wNENwALgGlDrDoQRegKwHBBh+McA0IICBvvcRqK6u3tN7gK0I1PJtuwSEjsC7C9MLLgMPczoqyBgttgO7Az84s88EKw1sDyTgQy+23KyOEg8YEAyGB0OsqPEHC9E5w87Dc3mCACwy58DO6607tcdVXIzBvvO8SS6wMlia0wNgjqAvECGcnkLDeFSRSzIDW7xrQNMASQE22wAcbPIHM8daw9rYquKqQCxO4vHHdAgMxNMJ6L+54DQOosEZGGiwwAcFBEzw0yHqDTAAGUt6UQwcK5FtD4gncXEAAyt0UEAAh+QQFBQCAACw1AC4ANAA7AAAI/wD/CBxIsKDBgwgTKlzIsKHDhxAjSpxIsWJEGhYzFqThQQdGjRaz0NDRZ40HkBRFknzCg4cOlBJH9nmypovNkzAbivRQZk3NLm+C5mzIcebPoBYsvBm60MNMHkCRJrXQh+nBLDxpRn0z1QIYC1YP6tAqdSqYs13CFtQBtazXs0jO4lQrsIzbs2DiDhmylO5AHmbxIkGy1wSYLH4FZkkqmPAQE2TIkFiTWOAauHsfRybBGWzlPxYKb+ZMmsznP10gk17N+UTVyh5MsCZxonbtvpXBkLbN+wSY0296Czf9uYxwDciRnzj9p3by58qZn4CefIN16daza79++gSF7+DDU/9gvkFFFBXo06v4ztw8DBhR4ptHv+E0j/cCBLyHH+V9/c8WCNBAfjDol19+y312QgMMHthgfiR8RoMAIYTA4IUO/laZBRV2aCGDHz7xGQwBlBhCAB5aqMJnYMgQgIsmnthhhIn1EYIVMuQII4onBpBWYiocYAWOOL5YYokwVHbCAUIKSaSLMJqQGAklMFmCFU4+WeJcBr0RwEsWnYDCmCVUyWSTRNJ40BMpZMAAbhHpIMADD4yJwgFVXunkAQ2AeRAOGQQqwgZcNkRlAQU8kOiYeOKJpZAaHjRAoJRGwIAGfibkwZIGGDCAAYnWSeadZq6IkBWUphqBCCmgoIIFHw3/FFwIBuDAAgufFgCqonaWcOcBMoh4EAypFvuBCKymwAAOoLKAAwQMQGDrp56CiiidvVbpmUEaFOttBKsim4Ky0Upr6623dtqponSKigJxBpHgrarIinBssgyUi8O++7Lgqb+6XoutmgWBMW8GEVBa78LkQiCtw9Om62nAvBJcULcHZyCCoOOmIG6+Dufbr63/FpCrASXAi9AJ3wZ676odI5vvzOZCgGu6/nZ6wLYKdWGAtx9ozLDHIsys7L7SojsArp428KNDGjCQ6gcfhHvsuDJDMO6y0d6Kw9IADzGRBw1QLWjVRMec77gh22qzsw9QsIVFcrKQwbEap+3x2lwvLeswCw9oICxIFgSAg7ji7s1ACiE7PEADQ8Q6VBcbyFDAs3szPkAJAWgA50QBAQAh+QQFBQCAACwvADIAOgA3AAAI/wD/CBxIsKDBgwgTKlzIsKHDhxAjSpxIsaLFixgzatzIsePFOh411qnjIaTFkR5mzChpUiJJlTO2bGkJ8aXKLTx4VJlBs6FNnDqr5KjSU+HPnFWEQuFjhmXRgzGRCjVDNUkSHk8R4lTKh49VNGCTZIWaY2kSsGB9qPVBY6xBq2fXquVAF6tbgjnk0t1L18xdgjz48h1D2MffgR72El68mMPhgYwjkyH8WOAYMpgzayZT+c9lEqBDi+48BoTp06hBdCbx4/SP1qg7/2hCu8ns169VP95Cp7fv3010H0bTQYPx4785PyazpINz58bpGHf8uMOS69efP0fzmIOK7yqwZ/93PvNwBxjgw3/HrmGh35AcYMiXnx688oMcGAAw3NEDDAEC/DdffTkctEUJACR4g0dNNNAAgAEGSJ8K7RU0AwxAJKhhAByREcKHDkIooHzUDaRChhpq+IEAGo0RQgAfhhAigPIJoIJT+aWoIwAfhOAURSC8EMCQMYYgwIM0jjFQADumCMSTHzxgl0QzqHDBlULCCKOMIcLAk0BNNJngB2N+UEMKHUg0RgAHHHDBCxcMqWWMDnJHkH4pkvmBnnuaWcMAKnxp1JoltNnmm2/KWSQdBkFRg5gfAOFnDX4WcUEHHIBEkBkgCFDCAw+UIKqbbsIpp5xeHjQGihpKCkANlML/moKsKaTAwA0DfLrAAgYYsOuuobZZ6AUHmJplA+8dtMSYPPa5J6xm1srAtEVUe8O1A2Q7gK+gflrooYgG8EIIJSIkQIaR7gkEtGfSykC11lqLq68LPFCvqN+6Ga6SDKnAp5l+RjtrrfAWca3B2/ra6wKfBlsCsViS8BAdlPYZ66xn1mrruwcXkW2v29bb7agPX8nvQ/kBDHC7ZzIgrcE3VJtwtr+K/MAB3wYglkQ8lKDyxS27zHHMHmtLrwGgMjwqDOVRRMKsk9Zaw7vT3hozrtryyi3DoAZwskUzCFDEBxi7nEK10x6M9Q0gK9wtHT9i5IEKNzDQsq1FUHv1ANeCKaz1BU0I6hEZAdTtMtoGI9z3tgeoYOdTfGgQwgEGXO1xvS8I0ESBFgUEACH5BAUFAIAALCsAOQA+ADAAAAj/AP8IHEiwoMGDCBMqXMiwocOHECNKnEixosWLGDNq3Mixo8ePIEOKpJjlTxYaIyuepMHSQ0qIJVnqmElTx8uGHjzMLMOTZ5s2ZW4uzNKzzM+jR4UuRJqjqdOmShU6NUO1atWoCXNQTcK1a1esCM1YGEvWApqzaMAetBAmjI+3cOGqNeiEA4e6du06cTuXoA4kSFwEduGksF0fYdm8cBAlZQ41aoYABuyisgsLBIeEGOBlhOcRFVL6IEOaTOTIkpFQVVDhs+sRAD7YDOmBzJEjJEiUhgw5h47XngEEH8FGpBklyJXcxq1bDRmbH14DmA57BASXIEmI2Z58+e0hAgt8/6Y+4kPs2CpAmrEjhr2Y5N0R/1EjPPh08+dTtPHoQQwbO+y5xx1y+wnU2nTnnffBByI84BEJbLChgQZ2UCigEmQQpIJw+Jm3IINeiCAARxyooMIGG0gI4IrspTWQDincN50IDH7ghY0pwKCRE1GYiGKKE04IoBLYDSSAeeUtSGOIIqQgghcwoGTREDAIAEMUUWygAhtA/meHfAVVcB6NIjxpZgpoKlCgRP3ZYKWVWPoIpAZiIKSEkjYCEGKIaHqRQgUs2CGRCzCE0EADbsLZ44lcsmFGQgoseOOeTXrhZwUVpOBAARrMtpATMLwQQACI2mBDlVeaaCIbGSZUhgNL2v9YqReZ/gkBBDhAMEAIYqBREkGPbfCCFUKIGsKxpp5q5ZU9droQEpbKmoKl02qKqQO4ssDCAAMUgIIQQhxwAAriEvvCuQEca6gAysIAg4k5NCSGpWb6+SeaDuSKLQ7bDmCAAQUU8AAKKChwgBUIFzsqqYeyK8CyLjbERpOzVkCrA5riisPG/QIsMMEKhHxwscam27CyLkSkQqVoapqxAxXwy4LM/gY88MDkEguuqOke27AATkwkxp/2VgABpvryO4C2LHj8wNMFH3zwuTz3bCqYEjmBg8UYY+tAvrn2u7THNkdtMLgKvxBCujA8alEZQmR6dMxGz8zvv9va/LECBSNubG7Vdnh60REGGF1Bvvna7W/eAX9MsNQ6nytAGB5tMHPMYc/cNLcCB1zwAwafTWwDahTZkQcaPOAAC7gu3bQBNQNMMOgHKIBwA8+9xIEADyj9euzePj1uCBpghlUOYqjwAsE1F3DACw2wGq9FAQEAIfkEBQUAgAAsKwBCAD4AJwAACP8A/wgcSLCgwYMIEypcyLChw4cQI0qcSLGixYsYFUYAMIHLgB1YNohxMSOjSQAoU6oEgMAkxpUwAbi8GFPlhJkWa6ZsiRMhjZ80/mQZSvTPRpRHV3roebDMDB1PdejwQPWnFJURsm7MyoGpwTZP2mzZUqbsjLM6HiQFoFVrFK8EZ+To0oUHjzZ4n+jV8aLt0QgIsj6AO7ANFCZQoNCla7eNjg5ItbJFEFjKUsJMkmhGnFgxXQ8WAiMNDBgByw2En4RZbUFzEs6Il3KhnJWybcoDCFvgwGF1GAutN3cReKF2YAQTKCefgJopjzEuXPD2Dbw1D4FjSNNOjhx5kBw9aYz/MTEGuvTprHUMZJE8AvflE6RMuNAzDAkT+M2f752EIIzu3U2QnBQIUEGFADNZoAQIJNxHnn7SXTeQB1QAOGB8UnBhYAcmJSGGGAs2iN+D0XVVkADKCUggFRNQIQUVQXCB4EUcxGAjiEo06OCDUBjkQRDwtfiigVwUGUQAbVCkgwkddHAjiCAwuKMLCImBAIFSvJghjFRwEUSMK4iRRURhdEDBBh1ooMGTIYo4HEIXFCikhnR+GQQLAxhwgBJjMlQmDFFQcGaaNsagBI4NhqHQEwO02NGWRXrJwqR5roCCACD0WFAbLsQQhQ0CwADomWiqyaYSJqinUBhcPBoEjJJ+/5nnAJUW8MADKFyAhQ0YBOArBlhgEWoUxJKa5poxfAjCEw1pwMWWr37JBZ54GrBCAdjaiisKB+xwwQsBAAuqAMMKiuaxNzLxUAfRwnpnELOyYIC226LA7QUXhAvsrjaIWuyg6FoQEbvuejlAtSsYMG+99h7wrb4YYDBuqBQECnAMAksUAwteTnsnrQNcu8IK2x7Q8MO/8guqv+ZuoEHGE1lQgMcHh2zAALZii+sBJjv8ArjhBrsrucRGsQEFMUhY0RMYvAtywgvbym3P3/4MsbArAxoFCWWYRMIDeK6QZwHW3roz1S98G7G4NowbRQcwm6TDBgWEHHIBJKNwK8/34kb7wtpCC2BDFKl65UEMOyT8ALb2PsC3w/j6GrTEFIwRFGEChRHFBYvj6jjVkf8qgBjqYn5QFyRoAEMAO6BtwwZKcPBmRQEBACH5BAUFAIAALCsAPQA+ACwAAAj/AP/8GQJFoMGDCBMqXMiwYUIHAAqAcEixokWFYkZoHOHgy8WPIBU+2LgRwY6CIVNadDACgEuSIwwMUUlz4QyXOFvCVFKzp0E6AEjiDKpxhk+fQjbm1OjSwFGfBFwmSPByqMenNbVMpTp0KxisNY0QbSl1q1GwKrlS3brVAVqaCBAkiEt3q5a3abfS3csCb0q2bOO2cOsXpIMWcgEjaGGERuGPDha3mIw4AWMjYR5fLDB1sREjiBF83qDZIobJUy8j/ryjdMUNqj1/NuJAy1nXDKHEnc3YwWcHDjo8pkEjSxaHBCbP/k3bQYHHM2Z48FCcIQbfv30Dr+2Ajl8da9Zs/5mhg/jxhGAGY9+uhbuBNXiryBc/Xrr58wINfG5vpD13LUQI8VYVTDCRQw5VhFcfdQhtAFx/wLVHBIBEsCAcVmtYkEQSTEBxYHjiRYeQBxNGWJsWFBJBAAHeHZUDBxxYoGGHHiIYXh8JOegfEQ5MSIAWKxJggAY+QTEEEmDEOGOHB+awhg4KFdCjhA6woOKKBmSZBo4p0cCBCUeCkWQYMnIIBRTyLeQGjxNqYWWQBghZwAM7gICfRVC4AYIbYA4hJhhhkGkmEx4wFAALPRJRIZZyFuAoChgMcSdDFrhBhxIg7AkmkmOWmUQVDfVRwJtwymlAASig8EAJKOxAAUGOHf+0hQUmaNCBBnSIIYYSbvAZpphkWsAERWGwQICKLBjAQgFZPvDAnCUccMAOOwgRAAZpfEHBFzDAoO0Gt+KqBKYgmLAppzHe1pAbxgq57KmOPqAqCtFWa+21DTSQhgDeUkABuLjqmmm5m4rJwRYX0eFunMzOCe0BJZRg77UY5Ltvt9+Gm+u4mfqKBBKgfqRElgQw+yyq8kpMbbUB4KvvxV9sIPOtG5PLpwlI5JCSCcyeaoCzqx6AwrQTu5wGzP4CHLDNfMKnkgUHxIvy0BDbK4S1FVvM7xcZ07xxpkM4TZMOMMS7Kr3TTns11vnqu/W3StcMRqFHgSHEvBCrzHLLWbtQjXHSHXjths5oKXF3tBILsbfLbm8N+K1iWFCYB25gkHbRLbe979v/bqBEGHRrloQGDViNAeMCwPyFBkOEjJtBW4BBBwUwpNG3tnSYcHBPAQEAIfkEBQUAgAAsKwA1ADwANAAACP8A/wgc+GfDEIIIEypcyLDhwiYAAPxwSLGiRYRtIkZUcbGjx4QrNEYU8LHkxTMZREY8YLIlQw8MVGokkselzYENZIpksOWmyzwJAKTUCUBKEp8mBWRIuZQoBqQliTCN2HRnTagdOaRM8EEo06FXoGD1GCDBlaAJEiz9umGsRyJXPmQwK5crgA8Mrrqt2ObKUrNq02b4kKDD3otNCF85OzdtWillDluUsTiu4sUfrvSQbLHHWbOLpcQ1y5EzRSJpQ4uufIWDaYoQpMiWvRg0AxqvHa5mzRpCboe8K89e8bshg+PIkzMoUJxhcgfKGRBpvjD2bAYOHEDITgQ3dYQLoDP/mK0dwnY43xEeMA8hOXsGhtPjPF6+vQMiRCA8lS+wSfvjEOR3H34DzMDfH20ESAR3+RExAH5nHPhHePiZV+EADx7gwYECWHjhgxiuAMKBYDwY4IMOErHCACv00BN/PWDoIIgrrlgASfydMaODNa7g4wIFRIhVFhfp0AOPIQ5QwAoLNNnDiD7poMOGF7GxIoss+liAkz30cAKRLulQxRNleEADmA7psICPSg6wZg8LdNnDAQfc8YRJWVQBhR5tPDGDmRaV6COTLcbZJZ10YoAEmha1YYEFSezZ5ww6nFmRAFpuaeiccx5wwQUyCMCBdw15oAccYMDxKBNQVNFnGZUy/7rQFgcwySWniIIaAAYYCHACGFUkVAYTHLihxhBIcACHqqzy2QasZsqaUBIHbIornaDKIAOvDTQggAAqsHHCD02ccEITIJDgBrJgKAvpnq62McOfpDKEhJxyHjDnpxfsymsI3gpwhwoqbNDBGeOma+wQ7apqQbNjkmlgRWrgi6in2m4LcLfeDlzwweeCkO6xSDQMKcRttFGvQyAcmuunAcSMAcDfCjzwBmwg3AS66g7BMAfuPtxqFVRehMTFFxyQMa8zB3yHxzifgfAPCpPcsMN76lASFAFgCzMGu3L87dMERz11uiSoQTLQqkZa9EdlqJC0DAHQza3YZBfMBshUV2zNLttQrFwSBw30G3MITQvQsQo3s5HzuVSrS3KycLzoUxZu8Bp2tzV7rDfITfSd9rFgiOWWB2qogIHYY0O9N8IhKwyGHm/vVQUJKnAuMMGfwx66G3C0IS1nZXBAwgkdsLGB3mf8oAYYTERmUkAAIfkEBQUAgAAsKwAvADcAOgAACP8A/wgcSJDgDxkFEypcyLBhwhwMJEgw4bCiRYsuREiUUOGix48D2QDYKFEAyJMOBUQgKTFCFZQwC1KIMJKlBIQxY8bQCKAnS5c5UTpp0XOkz5oSFgQFyQNCBBEAVkrwSZLi0oslnkbY2pMmUo5XLR55ChUqza1TawKwELbhjAotRGiVazYtACI+2jYUMEGEiBZk6Z6N8MKDXoYeiPjt6xdAWbkRTB5mSOFv3xaA4/qVG2JyQwITLl/W7LiEYc8KXVToG9ry378VXqJWGALzBLgtJtj+22H2wgEVGOBeLaI1ARq+E1ZhIDx389u6vyRP+INB6ODCb6+GMGN6wRDBIUD/yM5c+AXvBQ+IF18h/PgJbNATXMAe+/rxHOQPJFJePBEi6xGBnH5/APjfgQdCMACBAiHo4H8lMPjHffcdGCGDBBDw4IFKMbhAhgMMkGGGRBCwQhYMlvAfASGGCKIBaDD4goYlDmDAjRka8AODcdxowIgGrLDCACtIpp8JLAZpQIgLLGDAAiXoQOAWQxLZZJBNQmmVfhcsMGSWK2RZwgsDysdGmF5C2WQJUJawJXpMCJmlmiXUecALTxD4gphtlnCAnwdMQeAPdfZp5wE7HHDBjvLR8GedkP65ww4XXCDDm9MR6iegiFIqwwUvvOBGmcllEYKdJSR6wQ6fhvpCCDGc/zadCwf8eYGilsrgagghNDBFfiehCBIFiOLaaqi89ipAHB04QSpDOmwxg6wezRBCpZaCiiyvDQjg7RRfdOCGBXkWpMMTOTCRAw/SPmsRFJ8e+2qvDXQbB7hfbMBGBzH8cMQQSCDhggscWIAGFFXwMIMOwn7khLzcKvvtFxToy+8PP4BwhAkCO+EDGupW8cQM7lrkxgsyhDCvxPeCS8G+F2e88RAueGwwwiPrUHJFLqicbL3eCuByxfz2K7MJNHv8MRTrjrxzRT408LO3LedrcQz9gqAx0kg4wcHHIef8tEM5TEHvskJ/QTHMWGe8NcA1g800DyN7MLZbMXT7LbgbEG9dtNszD2zzwTi32/BJTHwRh9Aub7BB0Vlr7AbHNRcMcg4J1x0UDUOwge/L+2Id+RGTC8zB1yAzXcUW1AblRAx9s9221qTD7fXHB1fR3WQ5DBFDB38DPrntPjDBw91XbYGGEyYcofXWXVtgfOsOBQQAIfkEBQUAgAAsKwArADAAPgAACP8A/wgcSLCgQYEzkhxcyLAhwyEFEgDo4bCiRYIzKFQAwBFAgosgG8LY2LHjjJAoByohWbJjk5Qhy5SQSLMlgB0wLyJhUFOiTRw5KzaZkKCox5olPwZl2MGLl6JQPdoEwGHpQQpOEzx9alRqSQpWC57wQpQoV58+S6IIOxDMhLIJzEJFW3IC2z9bcFQgG7fv3K4cKwi4u4OBl70T+BLV2rVIh5N3jxiu8DbxW76MK8CAfPfPgAkMKIsmW/ZpjzWdB2oMDdoLgwmILQ9OLdADiyIMGBQBXaF3bBi0B2rArTv36+NvZwf/UyA3ceKhQ5eos/wPhyJFcDjfXqQCAR7V/8D/YKE9O27sxWOE/9MDexHyussXKbC+Cw4cBAjgwE7evIb1TbCQ32343fbeADqsR8EABJAnYIPvsRDAen8EwMKDAzB4YX4nUNhDhiAOsGGGFlBYAoj5pZhhAdStx6CKIBZQQAkUejaAjDjmiBOFOfYo447r+VhAD0T2AGR4O/jYAwpMluABhQEsSSSOS5ZQgkLrpUGklVZuaSUeFMZQJAol7FACmTvsANZ6YJh5ZpluprnDk+F5YKWbcMq5AxgUpnGnnmkGsIMALVanAaCB7hDAokisxweggi4qqQCcLZeGopFKKmkDHYaHRKCabtpAGkPU2UCoizagagMCCMBndUOg/6pqGqy2CsOry8EQwKmrpuErDALAQAEFRyQYnA+87jpqGsAKO2wHMWBJ2wmrsspssDA42wG0JPBRKFsewECrANdmq20HGsTQRBMkcNBFpQJ9C1IXrZbrLAXbapBuEyAcgccQSIDhAx9ddPHEFnSiZEGw2A6Lb74nrNvvvwH7YAEfb/CwhQ7yXsRBww7jq6+6SoBAAsUCW5BExk/AGxIH9z6LbgwR93tywCmv3MUaM3QMkgUObzszyRMPMQQYHFis8xplJAwTDxp08HC6EZfsL8BIK/3GzjN44DNIHuCRbwzq8nvEyVgnrTLBTHMc1htKpEs0CWgHrHYSBGvc89co+TiwbhNW/4t1znlv0XNqSZDQ79V2J50E3jvz7DVtW1iABMoc3J13y24vp0MXfFjgw+gqZ7zGxg4FBAAh+QQFBQCAACwrACsAJwA+AAAI/wD/CBxIsKBBgRY6vHiQIsGIhyMAHJxI8Y+TFxCuRHQIAABEiRVDehBw40qCBB5RRvT4sEVIiiMrXGlx8gqAkxIiQhzh4OXBEyUT0Exg8mYCCRIA5HxIwCfBLUJa0Gxh0uTJo0mPQuzhVKAPAldkprgys6bJrB0hvuh6BkILsWTH1kR5Mi1ECk6XuHXQIgXVsTOtXlUJ8YTPJTdS8HWQIoVMqYKtJt3p5GWMGxUgKH47tgLVwFbtQpwR0gKBzJkVN/Z8xS/Zuh1vtgBwJeSWBQ4wQ0DtoMLqz2QrPKDAwUNXDBBu5Eat2QFjzi1ubCDdVSCIGwSSQ4DgYPfuCr1bQP9YYry6QB09st/Yvn57994OhLwxT3AJAew3sCd//14AfYIeFHDDAPdlp95+DnTwH0ExELDCfQPkV2ByN/i34EBCPOggAQREOCEGFw5kQQEdrkDgACdit0IXIQpEwQArFPDgCg+i2KFhLf4hxAILmBgjij4qoEOOXfQg4wo8mlhAATCCkOMfYyy5wAMPyFjAAjIqUF6LZzzQQw8PYDlllStYmKMAX4Y5ZZpTOvkkBl/GqcCcYD5gxpM6zqmnnl8qUAeeewaqQA9C4PmHoIFiYSiieyqKpxCQRiqpECDi+UKkl75wKaQv0ICnAJJq+kIAAYzK4pMKlaopqRhgEAAGLuD/CQKrrtLa6hl4cmBrqxhg4auZLfKABa+9DouFAMdygCcFvhrbrADQLiFrr8geC+21FITxpBnVXoutABR0QF2LS3jrLQXoUoDHky6YC266FCzRgbI5UnAuuhvE20EHZ1iQY7vvUpDvBhvse0YMJ/iQYwfwbrCEvBqcccLEIBQXYhICC/xwBxEjDMLHIIxx6oJ4xCsvxwdT/DEeY7jgwxYLehBDwSjH4PHKLLvAQRhJ8DDDlk61cQa/EscAwgkg5+yCEz5YYMYbPJTxZ1dJxFC0yiDgkfPOTZvRRRszTN2VBScgjDTOY7TMtAVJvPG1DmJTjXXWaevMgQ9JPM3DFmH/XWcGyFnn7ATXeXexN9wLboFH4HUP3nThh4dYRxhat7x0GHi3/XUZiIfIgwtq383201//HHfMb3DA9eiG8+3B6Z5bkLnXPID9uqHn8fCG23uHDTueHuigwwxw/y5QQAAh+QQFBQCAACwrACsALAA+AAAI/wD/CBxIsKBBgWbYhCjgwEEEESIitChC4AKbJwczavzDIcSAFi1SiAD5UAQAABEkSDhZ4cGJjRo9sDGQogLIFC1GtigJQEKEnj1VSqhgAmbBDTcc1LSZQqQIkSVTRkgpVKgZowJJFKhQpEIKByFtjoQKsefUoEILYC0TggBXBxWU1hQZcmdUlT+rSgBh1EIBAg6KNOz6FWfdnRDL+qSq0oFREgQIFLkhWDBXpl5zloTIGC0MmCcIDJhcZHJcwU0riE3MmrFKERg1ghB9I/KNpKVVN2yqE2RrtBJ2bDQxwADt26S5om7K3DfnvFY1+h1AwMAN6rVLU9YN12tTB7crRP9Ea0CjjgMGilcXTaB20sCWi+zYwEFHQQ4UDKgcoxFGAQMFqGccdZNR1pABbNhn1EsZufDfAwMEmN6AA9x2gwEMYgXTBQU8AKABIE4oWoUyrKGhUSA88ECHBbT4YXEDDMAGDSfC5IEMKpaw4or/SYhhjUaZoKOOKrbI438ZAqlRCCUcMOSKJbBYgA1KwmTGATuU0OSTD0S5Q2xVZnRClk06eYCTRPIVpkY2YHlBlmeaWUIIHqyZkQcX5LnDmReY6aQadmbEgQxv7rCDnlgeWmegBoGQ5wUyRPrmoxQwetAGMgSgqaSQEgqopQXdEYKmAUQaKalXgUqQDaS2GkAIsC7/qqpAsNZqK6xUzjrQrbx+oeuutdog7LA2bPCrQMQmK6yvx36hrLAw2HDHsX9QAC0M2GZ7xx08HHtCtjBsewe2X1DAwbEmbIvtHeV+US4FJBzLwR0UUOBuuRvku8EJNOpahrv1BqwvG2xY4G29+bKxAcEEnxDvr3MsvDDDbJxg8QmpzsrDxA1fbDEIJMiqKggdewzCySCcq6sFHn98wskkkGBCxqq2jDLIMqsxRg4rX4xyzDnPgQQH3c5Kws0xm2DCGHO4wAEHFuQgcqA5/Czz0k07bYEFZuRQhqocAK000y44DTXXOfCgQ7+B0jDG1WMgYfbWaPOwxgxsB1rG2EjIX/301l2n/YQHWajKg9Bl/81113bPMDWjOSR+9uI5rFHG2r/yoDjljdNQ+K9P0G3G6JVfnreuM5hB+Rp3E06tQFmsEfgaT+D9OkE68NC4B6ffrkMZeH9++0HCD2/88QEBACH5BAUFAIAALCsAKwA0ADwAAAj/AP8IHEiwoEGBa5pgObCgCAMGXhgUKfLgwpkcBzNq1OhDwIIgDos4mPDQy4QJIkSg9BJEho+NMA3qOKGAQJEgQRg4cEgS4smUKAF4EQGgiIAtMTfqWIIiCAEWRaBKLHLSgc8JQ714AZASgFcAWDwkNejigQEWBGzidLBzpM6rWEUM9SpCglcJDJaMFbjFxgADaQcEYQH1psOHVrWeHCqXKFG7ACRIGAAlKZMLAwoY+Iv26c0gVtkmNvmTK9GvdiVLPgPThQIDmjMTGDCAxWCpO0VCVIyV7uO7kVXrzWgCRYEFmgv8PTu78ESRVrFq1doVdWrVEoZkBKFgwQPkCzID/6atFudEqwykp6Qe/C52CU0yukaBYoH94wZgD3j61Db0h4vNlVJ110kWRUZQHICCAvR990ABENK22VMgsRVVfiLFdRpk79mQURkYKCAigyg4mNyEhA0QwBI+6FCQD0sogNKG2KGg0RIHHKCAggqWaN8C+eWnwBllxOTBGUVYJwELeWTkwwU56qggid/d9wAIYu31xxITqMZAkwdl0cAFZB5wwY4L0lffAjYgpeVAPDAgwQRPaOQGmVBCmaOIPaJwRhZvGoQFExp5gEUAMlyQaJln5oiCEoEGOkQAiMqQ6KJ7HnBCpIFGQSmlll5a5hSAcrpXFRgEgEGqoCJKJgZ1mv+6FwlYYLHqqp/KgKgLsmq5RAO21poqqwHEkWWvMelgQ60NAIuBsKvyimxSPtggwLXANgssFgIcO+1GJMQRhw3kWiuAtpt+G1MTcVwrgLjtmiutuhudMcW9+E4BbxxV0AvTElEEHMUUA+N7oL8bASzwwgEPh3BGDDe8BMDpPnzQxBhnPHF8Fl+sMcZnLFFxxwSdkPEZKKc8MskCgZDyyyfEfEKsLAtkgsw4N6FzE5XVLJAPMeusxM5KgADCvDXnsHMTRRsNAgkkmOCzQB4o0fTTUJPghgkmYDT1EFhD7cbWJgwxhA+l1oyG2FyXbbYLcPMw9RNtuz0E3C74oPfUf7iKYPbbcOutNxr9+pzD3XgHPjgTUBRZswc+JC44GmgwXgUP3nacQ96C+0A5FFBUscYTM0zdOeWMQ5EDD2uU4UHaJJcxeOWqX/6E63z/UcXntY8+gwc05P4H6L23rgMNsPvsQQ5VVPGE8cELL9AMzt9+fPK5e9D679gL78Hv0UtvEPLil2/++ein/21AACH5BAUFAIAALCsAKwA6ADcAAAj/AP8IHEiwoEGBZdRMCYBiAQsHQSIuOIAhBo+DGDNqLGhmiZACLFawCDIgCEQtFbRokeKgwgAMSDbK1OjhR4ACKwoMGCCSpMkgKB2sZDkBgRQWU8rMXPonyw8FDQssWMFzAIudP4NUcMB1QoUKCCZM+OAAyxOmGpFgeMC2wAOcOVlcHaAFosmtDqRM0BsWQdgJP9AaLEPhAAoUChawzYlzLou6EVGydCCWb9EPCCI8yCFYoBkMB6AeeHB4gWmqVR9riVxBylawRv2O9RvBQUy0Tl5YOcAbhWHFb3muoKo6csu9rWUjwBzhw4cICDQwJaF7txUFoUlHzUkc6GqVdfWK/y3aFzqA5+enzEQSQIgQK9ahQgW+oLHciJFVti4qdjlt9AAAEIENG/mAwQvtvScEb9mh8EB9qFk1kndctVQBeWE5h8B5EQQYIAUZ5WBDAAEgKMQLB+yG3W+mQZjTAoiV1JoU4vWH2XMfBNihh2ocpMMUGGBAIoknwnfdYQ7CaIMYFnhQkBwxWKEFhn7hqKOHASLwhkEnYIFFkEIS+V6KvQWghg4yeUABC5fdGMGOWAY4QUFMYGHDl1+GmSB8B7yghpNodQDbc2/GiWUHA9EQhQ134hnkkO4JMcVZnf2RhwLNCWgolkIMhIQAjDbq5aNE/pBFpQTZAOCmUpBA0BICxP8aqp0Y5IlBj6gWNMWmAtqQB0FOTCFsrKAK4OWoruZqEAZxRmDFlgXFEEUUwk5BLKNexkCDsgcF4eEC0BaUAwUUTEvtsKDaMAWa3Br0RgStZoQEueSae26sYbSLERO/ZvTDEgDTW+60UyCqb2d5aNABwAwLHIUTB3eWhMIdVLxww0sAGjFTTmgQQwwaUGzxEsluzJQaJ6R8QsgsK+yDyWiRIIbKNJ/wMaUwz0TCDzz3zLMYYgSW81I77+xzzyUPvREJTDftNAm3Kb30009HLXVGapCgxtZcc2311Qch0fXYSHwNdkFOqCF22WyX7QS7ZxtkQdtIOGG33WFcFLe7d9+IHUYYPvhgQbh7D/SEE38HrrgFciTBxKmFE7Q4440nYYYZb/QbuUBMyOG540xgnkMOPOC8OQ9yMBG66KSXnse2m//hweVvvDE6D67n4QHksY9++xNPlJGHDrDHLlAeuAMvPPG8Gy+Q8sPTULzzA+mQh+7TU0+Q9NlrT1Dz3ocv/vjkl2/++ZsHBAAh+QQFBQCAACwrACsAPgAwAAAI/wD/CBxIsKBBgR7AxEgT4MCCBSsI9OjxAkaTHAczatyokUmMBgcUTOyxYgVEAgMG3BjAQssCAU44ypz5x4OaNFasKFBwYCTEkylvECCgxcENBys2bKHJlKCaBhesXDhAdaLInxEHRBRKwIGWolpuqKDRdKYPGAFeXFB7QGePnT0eniSwVWjRo14rDDhSVqOHGCECpA0QNerOkHLnpmx5o6VXB5CNOLDCo2/BHFECB057oXPIqolXDBg6+usNvEUlT6igZY5lgRYENAjRIEDgF7hzWgkZNy7E0UMJOP4K2YGRChVWT4hhOYyANA3ShJguWG1ntz4hRiTQmMWNoo8lG/8Zj8AIAhVlncCAkUY2dOq4X+wOCfdhydHfTWtB7iB5BfMTIBDgBkxZEEUUArAnWwO1VRdVTvT5dt9ojnmVGnITGBHghggwJxMPG6gAA4LPPTfdZpzttpMCUl2ggGhDnVZUBZEpNwGHAqrBkQcaqBCFiCSm8R588r0QhRtMeFAQE0o0MABx/a2W3I0CRoCAlRVUppEJIfroY5BDCgYDGEruGMMC/SFXgYAbRjCBlVb2oFEOHWxgpwp4HpggdNAJMEeZTDVBQHLl4QjnlRE0kZESHdR5Z54wJChbDDO8tsUB/+GIwJUIANBpBZUW5IMGGjTqaIgHRgqDjq8NpIJ55m3/CmcEEQBQaxoGKRHDrqWe+mUUYLRa0KsBcuqprbVGYISWAjHRxK689mpniMEKW5AAstIKhK3IAgAADASZ0MS40MZAaqMb8GWtQT0Ym2ytAGw7wUBbHHGEEuM+C22pMeiwrkFbOAAErbR6u623AKhrgb1K3JuvvjFY8O9BHXgLL8IYDyCQC/Z23DC+47oxcUZaHIzxyX/oYMLKbrhhr8tKxMzEyBSfbDMAPuQwhxors2yCy0e4QRbNBl1sMwILOMHEHEwzrQbPPcNB9EEOYBzBDQc0EeofFrjgtddNO43R1AVtMMECKjixNUFwOOEEGHCD8bXXa5NNExxh5O323nvbdd0XHIAHHgbgPoThg99lWaD44oxbMDPiTDEh+eSUMzE25DPlUHkOnHeOOU08dC56DjyU/vlMpaee+hasbzH06RqxzgPrM8ywRe06AAp7Rh7UjrsHHpCVxe4y5U7D8cMTT9PQySvv/PPQRy/99NRXb/312DsfEAA7\"></div></div><div class=\"ui-select-choices\"></div></div>");}]);
-},{}],359:[function(require,module,exports){
+},{}],376:[function(require,module,exports){
 require('./dist/select.js');
 module.exports = 'ui.select';
 
-},{"./dist/select.js":358}]},{},[1]);
+},{"./dist/select.js":375}]},{},[1]);
