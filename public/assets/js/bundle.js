@@ -1382,7 +1382,9 @@ module.exports = ["$scope", "$rootScope", "$controller", "NcAlert", "config", "$
 				$scope.alert.success("Products grouped successfully. <a href='" +
 					productLink + "'>View Product List</a>");
 				$scope.loading = false;
-				$scope.formData.Category.CategoryId = null;
+				$scope.formData.Category = {
+					CategoryId: null
+				};
 			}, function(er) {
 				console.log(er);
 				$scope.alert.error("Unable to group product because " + (er.Message ||
@@ -22045,6 +22047,7 @@ factory('$productAdd', ["Product", "AttributeSet", "AttributeSetService", "Image
       }
     }
 
+    //Set default variant
     if(!formData.DefaultVariant || !formData.DefaultVariant.Visibility){
       $productAdd.setDefaultVariantToFirstVisibleVariant(formData);
     }

@@ -118,6 +118,7 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
       }
     }
 
+    //Set default variant
     if(!formData.DefaultVariant || !formData.DefaultVariant.Visibility){
       $productAdd.setDefaultVariantToFirstVisibleVariant(formData);
     }

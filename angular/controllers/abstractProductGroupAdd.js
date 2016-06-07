@@ -69,7 +69,9 @@ module.exports = function($scope, $rootScope, $controller, NcAlert,
 				$scope.alert.success("Products grouped successfully. <a href='" +
 					productLink + "'>View Product List</a>");
 				$scope.loading = false;
-				$scope.formData.Category.CategoryId = null;
+				$scope.formData.Category = {
+					CategoryId: null
+				};
 			}, function(er) {
 				console.log(er);
 				$scope.alert.error("Unable to group product because " + (er.Message ||
