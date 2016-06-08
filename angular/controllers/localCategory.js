@@ -1,3 +1,6 @@
+/**
+ * Handle local category listing and adding
+ */
 module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Category, LocalCategoryService, AttributeSetService, NcAlert, util, config){
 	'ngInject';
 	$scope.modalScope = null;
@@ -9,6 +12,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 	$scope.dirty = false;
 	$scope.alert = new NcAlert();
 
+	//Prevent leaving if unsave with dirty form
 	util.warningOnLeave(function() {
 		var modalDirty = $scope.modalScope == null ? false : $scope.modalScope.form.$dirty;
 		return $scope.saving || $scope.dirty || modalDirty;
@@ -81,6 +85,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 		}
 		$scope.pristine = true;
 		$scope.saving = true;
+		//sync with local cat after timeout is met
 		$scope.timerPromise = $timeout(function() {
 			LocalCategoryService.upsert(Category.transformUITreeToNestedSet($scope.categories))
 				.then(function() {
@@ -115,15 +120,19 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 			templateUrl: 'local_category/modal',
 			controller: function($scope, $uibModalInstance, $timeout, LocalCategoryService, NcAlert, config, id, Product, ImageService) {
 				'ngInject';
+				//parent scope
 				$scope.$parent.modalScope = $scope;
 				$scope.alert = new NcAlert();
 				$scope.statusOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
+
+				// image uploaders
 				$scope.bannerUploader = ImageService.getUploaderFn('/LocalCategoryImages', {
 					data: { Type: 'Banner' }
 				});
 				$scope.bannerSmUploader = ImageService.getUploaderFn('/LocalCategoryImages', {
 					data: { Type: 'SmallBanner' }
 				});
+				//validation condition for image uploader
 				$scope.bannerOptions = {
 					validateDimensionMin: [1920, 1080],
 					validateDimensionMax: [1920, 1080]
@@ -140,6 +149,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				$scope.id = id;
 				$scope.sortBy = [];
 				
+				//get sortBy list
 				common.getSortBy().then(function(data) {
 					$scope.sortBy = data;
 				});
@@ -147,12 +157,15 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				//For searching feature prod
 				var search = {};
 
+				//create
 				if(id == 0) {
 					$scope.formData = LocalCategoryService.generate();
 					$scope.loading = false;
 				} else {
-					//Check product count
+					//edit
 					$scope.loading = true;
+
+					//get local category by id
 					LocalCategoryService.get(id)
 						.then(function(data) {
 							$scope.formData = LocalCategoryService.deserialize(data);
@@ -171,6 +184,8 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 							$scope.loading = false;
 						});
 				};
+
+				//get product feature froms search text
 				$scope.getFeatureProduct = function(text) {
 					Product.advanceList({
 						LocalCategories: [search],
@@ -180,6 +195,8 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 						$scope.products = response.data;
 					});
 				};
+
+				//fail image validation
 				$scope.uploadBannerFail = function(e, response, min, max) {
 					if(e == 'onmaxsize') {
 						$scope.alert.error('Maximum number of banner reached. Please remove previous banner before adding a new one', true);
@@ -209,6 +226,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 					}
 				};
 
+				//on modal closing, prompt for unsaved content
 				$scope.$on('modal.closing', function(e, res, closeType) {
 					if(!closeType) {
 						if ($scope.saving) e.preventDefault();
@@ -221,14 +239,34 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 						}
 					}
 				});
+
+				// is uploading flag
+				var isUploading = function(images) {
+					var i = true;
+					_.forEach(images, function(e) {
+						i = i && (e.progress >= 100.0);
+					});
+					return !i;
+				}
+				// save action
 				$scope.save = function() {
 					$scope.alert.close();
 					$scope.form.$setSubmitted();
 
+					// check for if image is uploading
+					// only allow save after all images are uploaded
+					if(isUploading($scope.formData.CategoryBannerEn) ||
+						isUploading($scope.formData.CategoryBannerTh) ||
+						isUploading($scope.formData.CategorySmallBannerEn) ||
+						isUploading($scope.formData.CategorySmallBannerTh) ) {
+						$scope.alert.error('Please wait for every images to be uploaded before saving', true)
+						return;
+					}
+					// validate form data
 					if($scope.form.$valid) {
 						var processed = LocalCategoryService.serialize($scope.formData);
 						$scope.saving = true;
-						if(id == 0) {
+						if(id == 0) { //create
 							LocalCategoryService.create(processed)
 								.then(function(data) {
 									$uibModalInstance.close(LocalCategoryService.deserialize(data));
@@ -237,6 +275,7 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 									$scope.saving = false;
 								})
 						} else {
+							//update
 							LocalCategoryService.update(id, processed)
 								.then(function(data) {
 									$uibModalInstance.close(LocalCategoryService.deserialize(data));
@@ -252,11 +291,12 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 			},
 			resolve: {
 				id: function() {
-					return _.isUndefined(item) ? 0 : item.CategoryId ;
+					return _.isUndefined(item) ? 0 : item.CategoryId ; //cat id
 				}
 			}
 		});
-
+	
+		//Update category list on save
 		modal.result.then(function(data) {
 			if(_.isUndefined(item)) {
 				data.nodes = [];

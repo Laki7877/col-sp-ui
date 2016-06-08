@@ -1,8 +1,9 @@
-var angular = require('angular');
-
+/**
+ * Handle admin product page
+ */
 module.exports = function ($scope, $controller) {
     'ngInject';
-    
+    //inherit from product add ctrl
     $controller('AbstractProductAddCtrl', {
         $scope: $scope,
         options: {

@@ -90,6 +90,12 @@ module.exports = function($scope, $controller, common, Product, util, $window, $
             }, {
                 name: "Wait for Approval",
                 value: 'WaitforApproval'
+            }, {
+                name: "Single",
+                value: 'Single'
+            }, {
+                name: "Variant",
+                value: 'Variant'
             }]
         }
     });
@@ -178,6 +184,10 @@ module.exports = function($scope, $controller, common, Product, util, $window, $
 
     $scope.searchCriteria = null;
     $scope.exportSearchResult = function() {
+        if(!$scope.advanceSearchParams){
+            return $scope.alert.error("Unable to Export. There are no products in your search result.");
+        }
+
         var K = _.extend({}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams));
         K._limit = 2147483647;
         $scope.searchCriteria = $base64.encode(JSON.stringify(K));

@@ -28,7 +28,7 @@ angular.module('nc')
 			}
 		}
 	})
-	.directive('ncProductLayout', function($templateCache) {
+	.directive('ncProductLayout', function($templateCache, Product) {
 		return {
 			restrict: 'E',
 			scope: {
@@ -42,18 +42,40 @@ angular.module('nc')
 			},
 			template: $templateCache.get('common/ncProductLayout'),
 			link: function(scope) {
-				scope.$watch('source', function() {
+				scope.src = {};
+				scope.loading = false;
+				scope.$watch('src.model', function(n, o) {
 					if(!scope.source) {
 						scope.source = _.defaults(scope.source, {
+							Enabled: true,
+						});		
+					}
+					if(_.isNil(o)) return;
+					scope.source.Products = _.map(scope.src.model, function(e) {
+						return e.Pid;
+					});
+				}, true);
+				scope.$watch('source', function(n, o) {
+					if(_.isNil(scope.source)) {
+						scope.source = _.defaults(scope.source, {
 							Enabled: true
-						})
+						});
 					}
 					else {
-						if(scope.source.Products) {
-							_.remove(scope.source.Products, _.isEmpty);
+						if(scope.source.Products && scope.source.Products.length > 0) {
+							if(scope.source.Products.length > 0) {
+								scope.loading = true;
+								Product.advanceList({
+									_limit: scope.source.Products.length,
+									Pids: scope.source.Products
+								}).then(function(data) {
+									scope.loading = false;
+									scope.src.model = data.data;
+								});
+							}
 						}
 					}
-				})
+				});
 			}
 		}
 	})
@@ -88,7 +110,11 @@ angular.module('nc')
 				uploader: '=', //return promise
 				fail: '=',
 				size: '@',
-				notitle: '@?'
+				notitle: '@?',
+				width: '=?',
+				height: '=?',
+				minWidth: '=?',
+				accept: '=?'
 			},
 			template: $templateCache.get('common/ncImageLinks'),
 			link: function(scope) {
@@ -99,6 +125,17 @@ angular.module('nc')
 						})
 					}
 				});
+				scope.accept = scope.accept || '.jpg,.jpeg';
+				scope.validate = function(f,w,h,i) {
+					if(scope.minWidth && scope.minWidth.length > i) {
+						return w > scope.minWidth;
+					}
+					else if(scope.width && scope.width.length > i) {
+						return w == scope.width[i] && h == scope.height[i];
+					} else {
+						return true;
+					}
+				}
 				scope.$watch('size', function(d) {
 					if(!_.isNil(d)) {
 						scope.source.Images = [];
@@ -110,13 +147,22 @@ angular.module('nc')
 						};
 					}
 				})
-				scope.upload = function($file, image) {
-					scope.uploader.upload($file).then(function(data) {
-						image = _.extend(image, data.data);
-					}, function(err) {
-						scope.fail(err);
-					});
+				scope.upload = function($file, image, $index, $ifile) {
+					if($ifile.length > 0) {
+						if(!_.isNil(scope.minWidth)) {
+							scope.fail('ondimension', null, minWidth[$index], true);
+						}
+						else {
+							scope.fail('ondimension', null, [width[$index], height[$index]]);
+						}
+					} else {
+						scope.uploader.upload($file).then(function(data) {
+							image = _.extend(image, data.data);
+						}, function(err) {
+							scope.fail(err);
+						});
+					}
 				}
 			}
 		}
-	})
+	});

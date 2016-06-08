@@ -248,7 +248,7 @@ module.exports = function ($scope,$rootScope, $controller, CMSMasterService, Ima
             templateUrl: 'templates/admin-cms-master-add-item.html',
             size: 'lg',
             controller: function ($scope, $uibModalInstance) {
-
+                'ngInject';
                 $scope.categories = [];
 
                 $scope.isEmpty = true;

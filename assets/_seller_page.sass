@@ -49,10 +49,14 @@
 		border:	1px solid $color-grey
 		@include border-radius(3px)
 		background-color:	$color-white
+		box-shadow: $global-shadow
 
 		.image-thumbs-img-wrapper
 			display: inline-flex
 			padding-left: 17px
+			img
+				width: 30px
+				height: 30px
 		.home_task_text
 			padding: 11px 17px
 			display: inline-block
@@ -122,6 +126,7 @@
 
 	.with_border
 		border: 1px solid $header-border-grey
+		box-shadow: $global-shadow
 
 	.column-text-ellipsis
 		max-width: 100%

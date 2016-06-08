@@ -23,6 +23,7 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
 			backdrop: 'static',
 			templateUrl: 'product/modalImportProgress',
 			controller: function($scope, $uibModalInstance, $timeout, file, uploader, title) {
+				'ngInject';
 				$scope.file = file;
 				$scope.file.upload();
 				$scope.server = 0;
@@ -174,11 +175,20 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
 				text: "Download",
 				disabled: false
 			};
+			var fileName = "ImportTemplate.csv";
 			var file = new Blob([data], {type: 'application/csv'});
 			var fileURL = URL.createObjectURL(file);
 			var a = document.getElementById("download_template_btn");
-			a.href = fileURL;
-			a.click();
+			
+			if(window.navigator.msSaveOrOpenBlob){
+				//Handle IE
+				window.navigator.msSaveOrOpenBlob(file, fileName);
+			}
+			else{
+				a.href = fileURL;
+				a.click();
+			}
+
 		});
 	};
 

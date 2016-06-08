@@ -26,6 +26,7 @@
                   name="AttributeSetNameEn"
                   ng-model="formData.AttributeSetNameEn"
                   ng-pattern="/^[0-9a-z_\-]+$/"
+                  ng-pattern-restrict="^[^\s]*$"
                   ng-lowercase
                   maxlength="255"
                   required />
@@ -33,7 +34,7 @@
               <div nc-template="common/input/form-group-with-label"
                 nc-template-options-path="addAttributeSetForm/LargeInput"
                 nc-label="Attribute Set Description">
-                  <textarea class="form-control" ng-model="formData.AttributeSetDescriptionEn" ng-pattern-restrict="^[^<>]*$" maxlength="1000"></textarea>
+                  <textarea class="form-control" ng-model="formData.AttributeSetDescriptionEn"   maxlength="1000"></textarea>
               </div>
               <div ng-show="id != 0"
                   nc-template="common/input/form-group-with-label"
@@ -73,10 +74,11 @@
                 nc-template-options-path="addAttributeSetForm/Tags"
                 nc-label="Search Tag">
                   <ui-select
+                  name="Tags"
                   ng-model="formData.Tags"
-                  on-select="onKeywordAdded($item, $model)"
                   multiple
                   nc-tag-validator
+                  nc-max-tag-length-key="TagName" 
                   nc-max-tag-count="100"
                   nc-max-tag-length="30"
                   tagging="tagTransform"

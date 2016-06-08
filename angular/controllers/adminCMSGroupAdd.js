@@ -127,7 +127,7 @@ module.exports = function ($scope, $controller,$rootScope, CMSGroupService, conf
             size: 'lg',
             //scope: $scope,
             controller: function ($scope, $uibModalInstance) {
-
+                'ngInject';
                 $scope.masters = [];
 
                 $scope.isEmpty = true;

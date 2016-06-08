@@ -2,21 +2,24 @@
 
 <?php $this->start('page-body') ?>
 	<div class="seller-export-page" ng-init="init(<?= json_encode_n($viewBag) ?>)" ng-controller="ProductExportCtrl">
-
+		<div ng-show="!ready" nc-loading="Loading products.."></div>
 		<div ng-show="loading.length < 2" nc-loading="Loading Fields.."></div>
 		<?php $this->insert('components/modal-export-product', ['id' => 'export-product', 'newProductNum' => '1,500']) ?>
 		<?php $this->insert('components/modal-export-product-progressing', ['id' => 'export-product-progressing', 'percent' => '60']) ?>
 		<?php $this->insert('components/modal-export-product-complete', ['id' => 'export-product-complete']) ?>
        <nc-alert nc-model="alert"></nc-alert>
 
-		<div class="page-header with-border" ng-show="loading.length >= 2">
+		<div class="page-header with-border" ng-show="loading.length >= 2 && ready">
 
-				<nc-page-title nc-title="Products/Export" link="/products" icon="fa-tag">
+				<nc-page-title nc-title="Products/Export" link="/admin/products" icon="fa-tag">
 					<div class="page-header">
-						<a href="/products" class="btn margin-left-10 btn-white btn-width-xl">
+						<a href="/admin/products" class="btn margin-left-10 btn-white btn-width-xl">
 		          	<span class="">Cancel</span>
 		        </a>
-		        <a href="#" class="btn margin-left-10 btn-blue  btn-width-xl" ng-click="startExportProducts()">
+		        <a href="#" class="btn margin-left-10 btn-blue  btn-width-xl"
+				ng-class="{'disabled': !allowExport() }"
+				ng-disabled="!allowExport()"
+				ng-click="startExportProducts()">
 		          	<span class="">Export</span>
 		        </a>
 					</div>
@@ -24,7 +27,7 @@
 
 		</div>
 
-			<form class="ah-form sticky-mainform-action" ng-show="loading.length >= 2">
+			<form class="ah-form sticky-mainform-action" ng-show="loading.length >= 2 && ready">
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane margin-top-20 active" id="more_option">
 
@@ -37,6 +40,8 @@
 							<div class="margin-bottom-20" ng-if="SELECT_ALL">
 								<span>Number of products selected: </span> <i>ALL PRODUCTS</i>
 							</div>
+
+							<div ng-include="'product/exportResult'"></div>
 
 							<div class="row">
 								<div class="col-xs-12">
@@ -58,7 +63,7 @@
 														<li ng-repeat="item in items">
 															<label>
 																<input type="checkbox" name="fieldfilter"
-																 ng-disabled="item.MapName == 'AAD'"
+																 ng-disabled="shouldBeMandatory(item.MapName)"
 																 ng-model="fields[item.MapName]"> 	{{ item.HeaderName }}
 															</label>
 														</li>
@@ -111,9 +116,9 @@
 			        <div class="container-fluid">
 			          <div class="float-right">
 			            <a href="/products" class="link-btn-plain">Cancel</a>
-			            <button class="btn btn-blue btn-width-xl"
-									ng-click="startExportProducts()"
-									>Export</button>
+			            <button class="btn btn-blue btn-width-xl" ng-click="startExportProducts()"
+						ng-class="{'disabled': !allowExport() }"
+						ng-disabled="!allowExport()">Export</button>
 			          </div>
 			        </div>
 			     </div>

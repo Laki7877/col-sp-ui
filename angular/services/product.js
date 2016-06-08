@@ -1,3 +1,4 @@
+
 // Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config', 'KnownException',
 	function ($http, common, util, LocalCategory, Brand, config, KnownException) {
@@ -70,6 +71,31 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				method: 'POST',
 				url: '/ProductStages/Export',
 				data: ps
+			}
+			return common.makeRequest(req)
+		}
+
+		service.exportAbort = function (ps) {
+			var req = {
+				method: 'POST',
+				url: '/ProductStages/Export/Abort'
+			}
+			return common.makeRequest(req)
+		}
+
+
+		service.exportProgress = function (ps) {
+			var req = {
+				method: 'GET',
+				url: '/ProductStages/Export/Progress'
+			}
+			return common.makeRequest(req)
+		}
+
+		service.exportGet = function (ps) {
+			var req = {
+				method: 'GET',
+				url: '/ProductStages/Export'
 			}
 			return common.makeRequest(req)
 		}
@@ -148,11 +174,16 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			var x =  {
 					AttributeSetId: attributeSetId,
 					ShopId: shopId,
-					CategoryId: categoryId,
+					EmptyAttributeSet: true,
 					_limit: 8,
 					_offset: 0,
 					_direction: 'asc'
 			};
+
+			if(categoryId){
+				x.CategoryId =  categoryId;
+			}
+
 			if(q){
 				x.searchText = q;
 			}
@@ -203,8 +234,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			return common.makeRequest({
 				method: mode,
 				url: path,
-				data: tobj,
-				rollbar: 'AP: Product publish or save'
+				data: tobj
 			})
 		}
 
@@ -264,14 +294,27 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				Variants: {
 					serialize: function (data) {
 						return data.map(function (v) {
-							var ts = util.variant.toString(v.FirstAttribute, v.SecondAttribute);
-							var rs = util.variant.toString(fd.DefaultVariant.FirstAttribute, fd.DefaultVariant.SecondAttribute);
+							var ts = util.variant.asString(v.FirstAttribute, v.SecondAttribute);
+							var rs = util.variant.asString(fd.DefaultVariant.FirstAttribute, fd.DefaultVariant.SecondAttribute);
 							v.DefaultVariant = (ts == rs);
+							v.ExpireDatePromotion = moment(v.ExpireDatePromotion).toDate();
+							v.EffectiveDatePromotion = moment(v.EffectiveDatePromotion).toDate();
+							v.SEO.ProductUrlKeyEn = v.SEO.ProductUrlKeyEn.toLowerCase();
 							return v;
 						});
 					},
 					fallback: function (data) {
 						throw new KnownException("No serialization fallback for Variants");
+					}
+				},
+				Tags: {
+					serialize: function (data) {
+						return data.map(function (tag) {
+							return tag.TagName;
+						});
+					},
+					fallback: function (data) {
+						throw new KnownException("No serialization fallback for Tags");
 					}
 				},
 				GlobalCategories: {
@@ -430,14 +473,13 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			//Load attribute set
 			invFd.AttributeSet = FullAttributeSet;
 
-			// debugger;
+			invFd.Brand.display =  (invFd.Brand.DisplayNameEn || invFd.Brand.BrandNameEn) + " (" + invFd.Brand.BrandId + ")";
 
 			var MasterAttribute = {};
 			try {
 				invFd.MasterAttribute.forEach(function (ma) {
 					//Hacky AF
 					if (ma.DataType == "CB") {
-						
 						for (var i = 0; i < ma.AttributeValues.length; i++) {
 							var item = ma.AttributeValues[i];
 
@@ -493,7 +535,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 			var invMapper = {
 				Variants: function (m) {
-					m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
+					m.text = util.variant.asString(m.FirstAttribute, m.SecondAttribute);
 					return m;
 				}
 			};
@@ -523,16 +565,22 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			delete invFd.MainGlobalCategory;
 			delete invFd.MainLocalCategory;
 
-			try {
-				var _split = invFd.Keywords.trim().split(',');
-				if (_split[0] == '') {
-					invFd.Keywords = [];
-				} else {
-					invFd.Keywords = util.uniqueSet(_split);
-				}
-			} catch (ex) {
-				invFd.Keywords = [];
-			}
+			// try {
+			// 	var _split = invFd.Keywords.trim().split(',');
+			// 	if (_split[0] == '') {
+			// 		invFd.Keywords = [];
+			// 	} else {
+			// 		invFd.Keywords = util.uniqueSet(_split);
+			// 	}
+			// } catch (ex) {
+			// 	invFd.Keywords = [];
+			// }
+
+			invFd.Tags = invFd.Tags.map(function(tag){
+				return {
+					TagName: tag
+				};
+			})
 
 			//Find out which variant is default variant
 			// if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; // TODO: Hardcode

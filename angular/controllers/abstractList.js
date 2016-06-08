@@ -1,7 +1,12 @@
+/**
+ * Provide template ctrl for listing
+ */
 module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 	'ngInject';
 	var a = _.includes(['a','e','i','o','u'], _.lowerCase(options.item.charAt(0))) ? 'an' : 'a';
+	//Alert bar
 	$scope.alert = new NcAlert();
+	//table message
 	$scope.tableOptions = {
 		emptyMessage: 'You do not have any ' + _.lowerCase(options.item),
 		searchEmptyMessage: 'No ' + _.lowerCase(options.item) + ' match your search criteria'
@@ -16,17 +21,22 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 		_offset: 0,
 		_direction: options.direction || 'desc'
 	};
+	//Listing data
 	$scope.list = {
 		total: 0,
 		data: []
 	};
-	$scope.item = options.item;
-	$scope.url = options.url;
-	$scope.id = options.id;
+	$scope.item = options.item; //item object name (ie, "10 Product")
+	$scope.url = options.url; //url to redirect back to
+	$scope.id = options.id; //this item's id
 
+	//called when params change, should reload endpoint
 	$scope.reload = options.reload || function(newObj, oldObj) {
 		$scope.loading = true;
+		//optional reloader
 		(options.onReload || _.noop)(newObj, oldObj);
+
+		//clear checkbox container when param change
 		if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
 			if(newObj.searchText !== oldObj.searchText) {
 				$scope.params._offset = 0;
@@ -41,7 +51,7 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 				$scope.bulkContainer.length = 0;
 			}
 		}
-
+		//call list endpoint
 		options.service.list($scope.params)
 			.then(function(data) {
 				$scope.list = data;
@@ -50,16 +60,20 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 			$scope.loading = false;
 		});
 	};
+	// set loading flag
 	$scope.onLoad = function() {
 		$scope.loading = true;
 	};
+
+	// custom filters
 	if(!_.isEmpty(options.filters)) {
 		$scope.filterOptions = options.filters;
 		$scope.params._filter = options.filters[0].value;
 	}
-	$scope.bulkContainer = [];
-	$scope.toggleEye = util.eyeToggle($scope, options);
+	$scope.bulkContainer = []; //contain checked items
+	$scope.toggleEye = util.eyeToggle($scope, options); //fn for toggling visibility
 
+	//custom bulk action
 	if(_.isUndefined(options.bulks)) {
 		$scope.bulks= [
 			util.bulkDelete($scope, options)
@@ -129,12 +143,14 @@ module.exports = function($scope, $window, $timeout, NcAlert, util, options) {
 
 	}
 
+	//Searching flag for this listing
 	$scope.isSearching = function() {
 		return !_.isEmpty($scope.params.searchText) || ( _.isUndefined($scope.params._filter) ? false :  $scope.params._filter != options.filters[0].value);
 	};
 
 	var init = false;
 
+	//watch for param change, reload if needed
 	$scope.$watch('params', function(a,b) {
 		if($scope.advanceSearchMode && (a.searchText != b.searchText)) {
 		} else {

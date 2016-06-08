@@ -35,6 +35,7 @@ angular.module('productDetail')
                 scope.isHtmlInput = util.isHtmlDataType;
                 scope.isCheckboxInput = util.isCheckboxDataType;
                 scope.tagTransform = function (newTag) {
+                    console.log('new tag', newTag)
                   return {
                     ValueEn: newTag
                   }

@@ -1,16 +1,19 @@
+/**
+ * Provide template controller for add/detail page
+ */
 module.exports = function($scope, $window, NcAlert, util, common, options) {
 	'ngInject';
-	$scope.formData = {};
-	$scope.form = {};
-	$scope.alert = new NcAlert();
-	$scope.saving = false; //prevent multiple saving
+	$scope.formData = {}; //form data
+	$scope.form = {}; //form validation
+	$scope.alert = new NcAlert(); //alert bar
+	$scope.saving = false;
 	$scope.loading = false;
 	
 	//Message
 	$scope.loadingMessage = 'Loading ' + pluralize(options.item);
 	$scope.savingMessage = 'Saving ' + pluralize(options.item);
 
-	//Link
+	//prefix url
 	$scope.url = options.url;
 
 	//Custom pre-init function
@@ -18,6 +21,11 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 
 	//Pop up javascript warning message on leave
 	util.warningOnLeave(function() {
+		
+		if(options.freeToLeave){
+			return false;
+		}
+
 		return $scope.form.$dirty;
 	});
 
@@ -88,17 +96,21 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 
 			if($scope.id > 0) {
 				//Edit mode
+				(options.onBeforeSave || _.noop)($scope, true);
 				options.service.update($scope.id, data)
 					.then(function(result) {
+						//call deserializer
 						$scope.formData = options.service.deserialize(result);
+						//show alert box
 						$scope.alert.success(options.success || util.saveAlertSuccess(options.successItem || options.item, options.url));
-						$scope.form.$setPristine(true);
+						$scope.form.$setPristine(true); //reset form
 						(options.onAfterSave || _.noop)($scope, true);
 					}, function(err) {
-						$scope.alert.error(common.getError(err));
+						$scope.alert.error(common.getError(err)); //some internal error
 					})
 					.finally(function() {
 						$scope.saving = false;
+						//optional date field reparse
 						if(options.dateFields){
 							options.dateFields.forEach(function(df){
 									$scope.formData[df] = restoreDf[df];
@@ -106,14 +118,15 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 						}
 					});
 			} else {
-				//Save mode
+				//Save mode]
+				(options.onBeforeSave || _.noop)($scope, false);
 				options.service.create(data)
 					.then(function(result) {
 						//Set both id and formData[id]
 						$scope.id = result[options.id];
-						$scope.formData = options.service.deserialize(result);
+						$scope.formData = options.service.deserialize(result); //deserialize
 						$scope.alert.success(options.success || util.saveAlertSuccess(options.successItem || options.item, options.url));
-						$scope.form.$setPristine(true);
+						$scope.form.$setPristine(true); //reset form validator state
 						(options.onAfterSave || _.noop)($scope, false);
 					}, function(err) {
 						$scope.alert.error(common.getError(err));
