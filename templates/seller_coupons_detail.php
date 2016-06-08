@@ -290,8 +290,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
 					<div nc-empty="You do not have any cmscategory" ng-show="products.length == 0" class="ng-isolate-scope" style="">
 						<div class="local-category-page margin-bottom-20">
 							<div class="local-category-empty-section margin-top-20">
-								<span><span class="zero-category-image"></span></span> 
-								<span class="local-category-empty-text ng-binding">Empty List</span>
+								<span><span class="zero-category-image"></span>  </span>
 							</div>
 						</div>
 					</div>
