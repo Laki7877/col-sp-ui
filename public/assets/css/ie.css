@@ -15,6 +15,3 @@
 .overview-table > tbody > tr > td{
   border: none !important;
 }
-.table .column-text-ellipsis {
-  max-width: 300px !important;
-}

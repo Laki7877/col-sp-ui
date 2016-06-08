@@ -1,3 +1,6 @@
+/**
+ * Handle admin master product adding page
+ */
 module.exports = function($scope, $controller, BrandService, $window, Product, AdminMasterProductService, config, util, common) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -15,11 +18,14 @@ module.exports = function($scope, $controller, BrandService, $window, Product, A
 		}
 	});
 	
+	//containers
 	$scope.childProducts = [];
 	$scope.products = [];
 	$scope.brands = [];
 	
+	//get list of products from search var
 	$scope.getProducts = function(search) {
+		//Filter by brand list
 		var brands = !_.isEmpty($scope.formData.FilterBy) ? [$scope.formData.FilterBy] : [];
 		return AdminMasterProductService.customList({
 			searchText: search,
@@ -35,7 +41,8 @@ module.exports = function($scope, $controller, BrandService, $window, Product, A
 			});
 		});
 	};
-		
+	
+	// get child products from search
 	$scope.getChildProducts = function(search) {
 		return AdminMasterProductService.customList({
 			searchText: search,
@@ -51,7 +58,7 @@ module.exports = function($scope, $controller, BrandService, $window, Product, A
 			});
 		});
 	};
-
+	// remove master products from child list
 	$scope.$watch('formData.MasterProduct', function(newVal) {
 		if(!_.isNil(newVal)) {
 			_.pullAllBy($scope.formData.ChildProducts, [$scope.formData.MasterProduct], 'ProductId');

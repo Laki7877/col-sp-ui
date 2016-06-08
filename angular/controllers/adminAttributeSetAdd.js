@@ -1,11 +1,18 @@
+/**
+ * Handle admin attribute set adding page
+ */
 module.exports = function($scope, $controller, AttributeSetService, AttributeService, config) {
 	'ngInject';
+	// dropdown
 	$scope.visibleOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
 	$scope.attributeOptions = [];
 	$scope.tagOptions = [];
+
+	// if attribute set should be lock
 	$scope.lockAttributeset = function(i) {	
 		return false;
 	};
+	// change tag structure after keying
 	$scope.tagTransform = function(newTag) {
 		return {
 			TagName: newTag,
@@ -16,6 +23,7 @@ module.exports = function($scope, $controller, AttributeSetService, AttributeSer
 			}
 		};
 	};
+	// inherit from add ctrl
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
 		options: {
@@ -27,6 +35,7 @@ module.exports = function($scope, $controller, AttributeSetService, AttributeSer
 			}
 		}
 	});
+	//fetch attribute
 	$scope.onSearch = function($search) {
 		AttributeService.list({
 			searchText: $search,

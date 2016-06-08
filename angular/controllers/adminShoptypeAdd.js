@@ -1,10 +1,15 @@
+/**
+ * Handle admin shop type add
+ */
 module.exports = function($scope, $controller, AdminShoptypeService, ShippingService, ShopPermissionService, ShopAppearanceService, PermissionService, util, $q) {
 	'ngInject';
-
+	//decode theme
 	var deserializeTheme = function(load) {
 		if(load) {
 			var themes = $scope.formData.Themes;
 			$scope.formData.Themes = [];
+			
+			//get theme checked according to formData
 			_.forEach($scope.themes, function(t) {
 				if(_.findIndex(themes, function(e) {
 					return t.ThemeId == e.ThemeId;
@@ -16,6 +21,7 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShippingSer
 				$scope.formData.Themes.push(t);
 			});
 		} else {
+			//get all themes and checked to false
 			$scope.formData.Themes = $scope.themes;
 			_.forEach($scope.formData.Themes, function(t) {
 				t.check = false;
@@ -23,6 +29,7 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShippingSer
 		}
 	}
 
+	// get shipping permissions
 	var deserializeShip = function(load) {
 		if(load) {
 			var shippings = $scope.formData.Shippings;
@@ -58,6 +65,8 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShippingSer
 			onLoad: function(scope, load) {
 				$scope.loading = true;
 
+				// list permissions, then list shop, then list theme
+				// results (array) is given in res
 				$q.all([ShopPermissionService.listAll(), ShopAppearanceService.getThemes(), ShippingService.listAll()]).then(function(res) {
 					var data = res[0]
 					$scope.permissions = data;
@@ -95,7 +104,9 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShippingSer
 				});
 			},
 			onSave: function(scope) {
+				//serialize permission
 				scope.formData.Permission = PermissionService.serialize(scope.formData.Permissions);
+				//get only themes with check true
 				scope.formData.Themes = _.compact(_.map(scope.formData.Themes, function(e){
 					var check = e.check;
 					_.unset(e, ['check']);
@@ -105,6 +116,7 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShippingSer
 						return null;
 					}
 				}));
+				//get only ships with check true
 				scope.formData.Shippings = _.compact(_.map(scope.formData.Shippings, function(e){
 					var check = e.check;
 					_.unset(e, ['check']);
@@ -116,8 +128,11 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShippingSer
 				}));
 			},
 			onAfterSave: function(scope) {
+				//deserialize permission for show
 				scope.formData.Permissions = PermissionService.deserialize(scope.formData.Permission, scope.permissions);
 				$scope.obj.selectAll = true;
+
+				//get select all flag
 				_.forOwn($scope.formData.Permissions, function(v,k) {
 					util.traverse(v, 'Children', function(e) {
 						$scope.obj.selectAll = $scope.obj.selectAll && e.check;
@@ -134,9 +149,11 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShippingSer
 			}
 		}
 	});
-
+	
+	//circular json stringify
 	var cj = require('circular-json');
 
+	// get select all flag
 	$scope.$watch(function() {
 		return cj.stringify($scope.formData);
 	}, function() {
@@ -153,7 +170,9 @@ module.exports = function($scope, $controller, AdminShoptypeService, ShippingSer
 			$scope.obj.selectAll = $scope.obj.selectAll && e.check;
 		});
 	});
+	//list of permission group
 	$scope.group = ['Dashboard', 'Products', 'Promotion', 'Report', 'Local Category', 'Local Brand', 'CMS'];
+	//check all fn
 	$scope.checkAll = function(val) {
 		_.forOwn($scope.formData.Permissions, function(v,k) {
 			util.traverse(v, 'Children', function(e) {

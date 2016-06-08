@@ -1,3 +1,6 @@
+/**
+ * Handle admin role listing
+ */
 module.exports = function($scope, $controller, AdminRoleService, config) {
 	'ngInject';
 	//Inherit from parent
