@@ -15,12 +15,18 @@
                             <label class="control-label">{{$index | ordinal}} Alternative:</label>
                         </div>
                         <div class="width-field-normal" ng-if="item != null">
-                            <a class="form-text" ng-click="openCategorySelectorModal($index)">{{item.NameEn}}</a>
+                            <a class="form-text" 
+                            ng-class="{'opacity-50' : formData.Status !== 'DF' }"
+                            ng-click="formData.Status === 'DF' && openCategorySelectorModal($index)">{{item.NameEn}}</a>
+                            
                             <i ng-if="!formData.GlobalCategories[$index + 1] " ng-show="$index > 0"
-                            ng-click="$emit('deleteGlobalCat', $index)" class="clickable color-dark-grey fa fa-trash margin-left-10"></i>
+                            ng-class="{'opacity-50' : formData.Status !== 'DF' }"
+                            ng-click="formData.Status === 'DF' &&  $emit('deleteGlobalCat', $index)" class="clickable color-dark-grey fa fa-trash margin-left-10"></i>
                         </div>
                         <div class="width-field-normal" ng-if="$index != 0 && item == null && formData.GlobalCategories[$index - 1] != null">
-                            <a class="like-text form-text" ng-click="openCategorySelectorModal($index)">
+                            <a class="like-text form-text" 
+                             ng-class="{'opacity-50' : formData.Status !== 'DF' }"
+                            ng-click="formData.Status === 'DF' && openCategorySelectorModal($index)">
                                 <i class="fa fa-plus-circle color-theme"></i> Add Alternative Category
                             </a>
                         </div>
@@ -49,13 +55,18 @@
                             <label class="control-label">{{$index | ordinal}} Alternative:</label>
                         </div>
                         <div class="width-field-normal" ng-if="item != null">
-                            <a class="form-text" data-toggle="modal" data-target="#local-category"
-                            ng-click="openCategorySelectorModal($index, 'LocalCategories', 'Local Categories')">{{item.NameEn}}</a>
+                            <a class="form-text"
+                             ng-class="{'opacity-50' : formData.Status !== 'DF' }"
+                            ng-click="formData.Status === 'DF' && openCategorySelectorModal($index, 'LocalCategories', 'Local Categories')">{{item.NameEn}}</a>
                             <!-- can only delete bottom up -->
-                            <i ng-if="!formData.LocalCategories[$index + 1]" ng-click="$emit('deleteLocalCat', $index)" class="clickable color-dark-grey fa fa-trash margin-left-10"></i>
+                            <i ng-if="!formData.LocalCategories[$index + 1]" 
+                            ng-class="{'opacity-50' : formData.Status !== 'DF' }"
+                            ng-click="formData.Status === 'DF' &&  $emit('deleteLocalCat', $index)" class="clickable color-dark-grey fa fa-trash margin-left-10"></i>
                         </div>
                         <div class="width-field-normal" ng-if="item == null && (formData.LocalCategories[$index - 1] != null || $index == 0)">
-                            <a class="like-text form-text" ng-click="openCategorySelectorModal($index, 'LocalCategories', 'Local Categories')">
+                            <a class="like-text form-text" 
+                             ng-class="{'opacity-50' : formData.Status !== 'DF' }"
+                            ng-click="formData.Status === 'DF' && openCategorySelectorModal($index, 'LocalCategories', 'Local Categories')">
                                 <i class="fa fa-plus-circle color-theme"></i> Add
                                 <span ng-if="$index == 0">Local</span>
                                 <span ng-if="$index > 0">Alternative Local</span> Category
