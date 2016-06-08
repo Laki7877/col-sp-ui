@@ -1,4 +1,5 @@
 module.exports = {
+  //REST_SERVICE_BASE_URL: 'http://ahancer-colsp.azurewebsites.net/api',
   REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 	//REST_SERVICE_BASE_URL: 'http://27.254.48.174/sellerportal/api',
   //REST_SERVICE_BASE_URL: 'http://localhost:58127/api',
