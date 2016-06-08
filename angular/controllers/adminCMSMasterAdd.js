@@ -517,6 +517,9 @@ module.exports = function ($scope,$rootScope, $controller, CMSMasterService, Ima
                 if ($scope.formData.CategoryList === undefined || $scope.formData.CategoryList == null)
                     $scope.formData.CategoryList = [];
 
+                // clear old schedule
+                $scope.formData.ScheduleList = [];
+
                 $scope.formData.FeatureProductList = $scope.featureProducts;
                 $scope.formData.ScheduleList.push($scope.Schedule);
                 $scope.formData.CategoryList = $scope.CategoryList;
