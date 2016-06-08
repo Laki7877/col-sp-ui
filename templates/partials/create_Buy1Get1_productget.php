@@ -72,7 +72,7 @@
                 </td>
                 <td>{{item.ProductBoxBadge}}</td>
                 <td>{{item.OriginalPrice | currency: '฿': 0}}</td>
-                <td><input type="number" class="form-control" name="getQty" ng-model="buyQty" min="1" ng-init="getQty=1" required disabled/></td>
+                <td><input type="number" class="form-control" name="getQty" ng-model="getQty" min="1" ng-init="getQty=1" required disabled/></td>
                 <td>{{item.ExpireDate | dateTh}}</td>
                 <td>
                   <button class="btn btn-sm btn-default" ng-disabled="$index == 0 || (formData.ProductGetList.length == 0)" 
