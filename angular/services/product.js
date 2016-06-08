@@ -13,7 +13,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		}
 
 		service.getUnlockedFields = function () {
-			//Get list of fields that are always enabled (unlocked)	
+			//Get list of fields that are always enabled (unlocked)
 			return common.makeRequest({
 				method: 'GET',
 				url: '/ProductStages/IgnoreApprove'
@@ -288,7 +288,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		 * @param  {Product Object} fd
 		 */
 		service.serialize = function (fd) {
-			// debugger;
+
 			var clean = {}
 			var serializer = {
 				Variants: {
@@ -418,7 +418,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 										AttributeId: Number(key)
 									}, ma[key]));
 								} else {
-									//Legacy freetext, theoretically 
+									//Legacy freetext, theoretically
 									//this will never be reached
 									t.push({
 										AttributeValues: [],
@@ -584,10 +584,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 			//Find out which variant is default variant
 			// if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; // TODO: Hardcode
-			
+
 			//Find which variant is default
-			
-			
+
+
 			var transformed = {
 				formData: invFd
 			};
@@ -670,7 +670,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				}
 
 			}
-			
+
 			var DefaultVariantIndex = (invFd.Variants || []).map(function (o) {
 					return o.DefaultVariant || false;
 			}).indexOf(true);
