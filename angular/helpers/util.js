@@ -5,17 +5,17 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
 
     service.variant = {};
 
-    service.variant.toString = function (a, b) {
-        var left = null;
-        var right = null;
-        left = (a.ValueEn || a.AttributeValueEn || a.AttributeValues.length > 0 && a.AttributeValues[0].AttributeValueEn || '');
+    service.variant.asString = function (a, b) {
+        var lft = null;
+        var rght = null;
+        lft = (_.get(a, 'ValueEn') || _.get(a, 'AttributeValueEn') || '');
         if(b == null){
-          right = '';
+          rght = '';
         }else{
-          right = (b.ValueEn || b.AttributeValueEn || b.AttributeValues.length > 0 && b.AttributeValues[0].AttributeValueEn || '');
+          rght = (_.get(b,'ValueEn') || _.get(b, 'AttributeValueEn') || '');
         }
 
-        return left + (right ? ", " + right : "");
+        return lft + (rght ? ", " + rght : "");
     };
 
     service.uniqueSet = function (a, prop) {
@@ -446,26 +446,5 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
             arr[i]
         };
     };
-
-    //report
-    service.csv = function(data,filename){
-        var csv = '';
-        var headers = data.split('\n')[0];
-
-        csv += headers;
-        
-        for (var i = 1; i < data.split('\n').length; i++) {
-            var row = data.split('\n')[i];
-            csv += row;
-        }
-
-        var link;
-
-        link = document.createElement('a');
-        link.setAttribute('href', 'data:attachment/csv,' + encodeURIComponent(csv));
-        link.setAttribute('download', filename);
-        link.click();
-    };
-
     return service;
 };

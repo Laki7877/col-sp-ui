@@ -194,7 +194,7 @@ class AdminController extends Controller
 	}
 
 	//Pending product
-	// public static function listPendingProduct($params) 
+	// public static function listPendingProduct($params)
 	// {
 	// 	return View::render('admin_pending_product');
 	// }
@@ -203,7 +203,7 @@ class AdminController extends Controller
 	// 	return View::render('admin_pending_product_group_add');
 	// }
 	public static function addGroupingProduct($param){
-		return View::render('admin_product_grouping');
+		return View::render('admin_product_group_add');
 	}
 
 	//On top credit
@@ -230,7 +230,7 @@ class AdminController extends Controller
 	{
 		return View::render('admin_product_review');
 	}
-	
+
 	// CMS Category
 	public static function listCMSCategory($params)
 	{
@@ -270,13 +270,12 @@ class AdminController extends Controller
 	{
 		return View::render('admin_add_cms_group', ['params' => json_encode_n($params), 'title' => 'Admin CMS Group Detail']);
 	}
-    
-   
-    
+
     public static function images($params)
     {
         return View::render('image_management');
     }
+
 
     //Oath buy 1 get 1
     public static function listBuy1Get1($params){
@@ -301,6 +300,7 @@ class AdminController extends Controller
     }
 
     //Summary by Natcharin
+
 
     public static function sumCreateAndApprove($params) 
     {

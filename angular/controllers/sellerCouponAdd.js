@@ -1,4 +1,5 @@
 module.exports = function ($scope, $rootScope, $controller, $uibModal, $window, NcAlert, SellerCouponService, LocalCategoryService, Category, Product, config) {
+    'ngInject';
     $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
     $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
     $scope.filters = config.DROPDOWN.COUPON_SELLER_FILTER;
@@ -187,7 +188,11 @@ module.exports = function ($scope, $rootScope, $controller, $uibModal, $window, 
             service: SellerCouponService,
             dateFields: ['StartDate', 'ExpireDate'],
             onLoad: function (scope, load) {
-                console.log(scope.formData)
+                //TODO: Check Hit Weapon
+                LocalCategoryService.list()
+                .then(function(data) {
+                    $scope.categories = Category.transformNestedSetToUITree(data);
+                });
             },
             onSave: function (scope) {
                 

@@ -1,4 +1,4 @@
-module.exports = function($scope, $controller, Product, common, config) {
+module.exports = function($scope, $controller, Product, common, config, $base64, $timeout) {
 	'ngInject';
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
@@ -55,6 +55,7 @@ module.exports = function($scope, $controller, Product, common, config) {
 		            size: 'size-warning',
 		            templateUrl: 'product/modalAddTags',
 		            controller: function($scope, $uibModalInstance, data) {
+                        'ngInject';
 		                $scope.model = {
 		                	tags: []
 		                };
@@ -75,7 +76,9 @@ module.exports = function($scope, $controller, Product, common, config) {
 				{ name: "Not Approved", value: 'NotApproved'},
 				{ name: "Wait For Approval", value: 'WaitForApproval'},
 				{ name: "Draft", value: 'Draft'},
-                { name: "Master Product", value: 'MasterProduct'}
+                { name: "Master Product", value: 'MasterProduct'},
+                { name: "Single", value: 'Single'}, 
+                { name: "Variant", value: 'Variant'}
 			]
 		}
 	});
@@ -84,26 +87,32 @@ module.exports = function($scope, $controller, Product, common, config) {
 	config.PRODUCT_STATUS.forEach(function(object){
        $scope.statusLookup[object.value] = object;
     });
+	
     $scope.asStatus = function (ab) {
         return $scope.statusLookup[ab];
     };
     $scope.getTag = function(tags) {
         return _.join(tags, ', ');
     }
+	
     $scope.exportSelected = function(){
         $scope.alert.close();
-        if($scope.bulkContainer.length == 0) {
-           return $scope.alert.error('Unable to Export. Please select Product for this action.');
+        if ($scope.bulkContainer.length == 0) {
+            return $scope.alert.error('Unable to Export. Please select Product for this action.');
         }
-        else {
-        	document.getElementById('exportForm').submit();
-    	}
+        document.getElementById('exportForm').submit();
     };
-    $scope.exportSearchResult = function(){
+
+    $scope.searchCriteria = null;
+    $scope.exportSearchResult = function() {
+        if(!$scope.advanceSearchParams){
+            return $scope.alert.error("Unable to Export. There are no products in your search result.");
+        }
+
         var K = _.extend({}, $scope.params, $scope.serializeAdvanceSearch($scope.advanceSearchParams));
         K._limit = 2147483647;
         $scope.searchCriteria = $base64.encode(JSON.stringify(K));
-
+        
         $timeout(function(){
             console.log('searchCriteria', $scope.searchCriteria);
             document.getElementById('exportForm').submit();

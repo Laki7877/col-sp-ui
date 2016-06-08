@@ -144,7 +144,7 @@ user-select: none;
   }
 
 	.modified-column {
-		width: 88px;
+		width: 96px;
 	}
 
   .submitted-column {
@@ -163,6 +163,11 @@ user-select: none;
 			color: $color-black;
 			text-decoration: none;
 		}
+	}
+
+	.export-action-column{
+		width:136px;
+		text-align: center;
 	}
 
   .width_date {
@@ -220,11 +225,17 @@ user-select: none;
   // Set border-table's color to $color-grey
   table.table.table-curved.product-list-table {
     border-color: $color-grey;
+		box-shadow: $global-shadow;
   }
 
-  table > tbody > tr > td, table > thead > tr > th {
-    border-color: $color-grey;
+	table > thead > tr > th {
+		border-color: $color-grey;
+	}
+
+  table > tbody > tr > td  {
+    border-color: $color-light-grey;
   }
+
   // End setting border color
 
 
@@ -237,12 +248,19 @@ user-select: none;
     border-bottom-width : 1px;
   }
 
+	// Color Code for Not Visible (Eye Closed) Row
+	.table > tbody > tr.not-visible-row{
+		background: $color-lighter-grey;
+		color: $color-grey;
+	}
+
   .table > tbody > tr:hover{
     background: $color-light-yellow;
   }
 
   .table {
     border: solid 1px $color-grey;
+		box-shadow: $global-shadow;
   }
 
   .caret-grey {
@@ -534,11 +552,25 @@ user-select: none;
 
 .table {
   .column-text-ellipsis {
-    max-width: 0;
+    max-width: 150px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+	.column-text-ellipsis-small {
+		max-width: 100px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	@media (min-width: 1350px) {
+		.column-text-ellipsis {
+			max-width: 270px;
+		}
+		.column-text-ellipsis-small {
+			max-width: 150px;
+		}
+	}
 	.text-ellipsis {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -633,6 +665,12 @@ user-select: none;
 
 .btn-white.disabled, .btn-white[disabled], fieldset[disabled] .btn-white{
   color: $color-grey;
+}
+
+.btn-blue.disabled, .btn-blue[disabled], .btn-blue:disabled, fieldset[disabled] .btn-blue{
+	color: $color-light-grey !important;
+	background: $color-dark-grey !important;
+	border-color: $color-dark-grey !important;
 }
 
 

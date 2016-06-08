@@ -1,4 +1,5 @@
 module.exports = function($scope, $controller, BrandService, SellerAccountService, SellerRoleService) {
+	'ngInject';
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,

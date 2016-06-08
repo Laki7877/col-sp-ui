@@ -1,16 +1,17 @@
+// abstract add controller for add/detail pages
 module.exports = function($scope, $window, NcAlert, util, common, options) {
 	'ngInject';
-	$scope.formData = {};
-	$scope.form = {};
-	$scope.alert = new NcAlert();
-	$scope.saving = false; //prevent multiple saving
+	$scope.formData = {}; //form data
+	$scope.form = {}; //form validation
+	$scope.alert = new NcAlert(); //alert bar
+	$scope.saving = false;
 	$scope.loading = false;
 	
 	//Message
 	$scope.loadingMessage = 'Loading ' + pluralize(options.item);
 	$scope.savingMessage = 'Saving ' + pluralize(options.item);
 
-	//Link
+	//prefix url
 	$scope.url = options.url;
 
 	//Custom pre-init function
@@ -18,6 +19,11 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 
 	//Pop up javascript warning message on leave
 	util.warningOnLeave(function() {
+		
+		if(options.freeToLeave){
+			return false;
+		}
+
 		return $scope.form.$dirty;
 	});
 
@@ -88,6 +94,7 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 
 			if($scope.id > 0) {
 				//Edit mode
+				(options.onBeforeSave || _.noop)($scope, true);
 				options.service.update($scope.id, data)
 					.then(function(result) {
 						$scope.formData = options.service.deserialize(result);
@@ -106,7 +113,8 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 						}
 					});
 			} else {
-				//Save mode
+				//Save mode]
+				(options.onBeforeSave || _.noop)($scope, false);
 				options.service.create(data)
 					.then(function(result) {
 						//Set both id and formData[id]

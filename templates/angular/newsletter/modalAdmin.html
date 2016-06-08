@@ -9,7 +9,7 @@
   </div>
 </div>
 <div class="modal-body">
-  <form ng-show="!saving && !loading" name="form" class="ah-form margin-top-20">
+  <form ng-show="!saving && !loading" name="form" class="ah-form margin-top-20" novalidate>
     <div class="row">
       <div class="col-xs-12">
         <div class="form-section-content">
@@ -18,13 +18,12 @@
             nc-template-form="form.Subject"
             nc-label="Subject">
             <input
+              name="Subject"
               type="text"
               class="form-control"
               ng-model="formData.Subject"
-              ng-pattern-restrict="^[^<>]*$"
               maxlength="255"
-              required
-              />
+              required/>
           </div>
           <div nc-template="common/input/form-group-with-label"
             nc-template-options-path="addNewsletterForm/Image"
@@ -52,8 +51,8 @@
             nc-label="Content">
             <textarea
               class="form-control"
+              name="Description"
               ng-model="formData.Description"
-              ng-pattern-restrict="^[^<>]*$"
               maxlength="2000"
               required></textarea>
           </div>
@@ -71,7 +70,7 @@
                         <datetimepicker name="PublishedDt"
                         ng-date-before="{{formData.PublishedDt}}"
                         data-ng-model="formData.PublishedDt"
-                        data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'hour' }" 
+                        data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'minute', minuteStep: 30 }" 
                         required />
                     </ul>
                 </div>
@@ -91,7 +90,8 @@
                         <datetimepicker name="ExpiredDt"
                         ng-date-before="{{formData.ExpiredDt}}"
                         data-ng-model="formData.ExpiredDt"
-                        data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'hour' }" />
+                        data-datetimepicker-config="{ dropdownSelector: '#dropdown', minView: 'minute', minuteStep: 30 }" 
+                        required/>
                     </ul>
                 </div>
             </div>

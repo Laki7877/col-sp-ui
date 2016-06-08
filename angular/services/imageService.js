@@ -12,7 +12,8 @@ module.exports = function($q, $http, common, storage, config, FileUploader, Uplo
     };
     if(!_.isNil(accessToken)) {
       options.headers = {
-        Authorization: 'Bearer ' + accessToken
+        Authorization: 'Bearer ' + accessToken,
+        Accept: 'application/json;charset=utf-8'
       };
     }
     return Upload.upload(_.merge(options, opts));
@@ -36,7 +37,8 @@ module.exports = function($q, $http, common, storage, config, FileUploader, Uplo
       url: config.REST_SERVICE_BASE_URL + url,
       autoUpload: true,
       headers: {
-        Authorization: 'Bearer ' + accessToken
+        Authorization: 'Bearer ' + accessToken,
+        Accept: 'application/json;charset=utf-8'
       },
       removeAfterUpload : true,
       filters: [{

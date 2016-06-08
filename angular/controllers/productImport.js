@@ -23,6 +23,7 @@ module.exports = function($scope, $window, NcAlert, $uibModal, BrandService, Glo
 			backdrop: 'static',
 			templateUrl: 'product/modalImportProgress',
 			controller: function($scope, $uibModalInstance, $timeout, file, uploader, title) {
+				'ngInject';
 				$scope.file = file;
 				$scope.file.upload();
 				$scope.server = 0;

@@ -1,4 +1,5 @@
 module.exports = function($rootScope, $scope, $controller, ShopService, ShopProfileService, ImageService, Onboarding, NcAlert, common, config, util, storage) {
+	'ngInject';
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 	$scope.shopGroupDropdown = config.DROPDOWN.SHOP_GROUP_DROPDOWN;
 	$scope.form = {};
@@ -8,7 +9,7 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 	$scope.statusChangeable = false;
 
 	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
-		data: { IsLogo: true }
+		data: { Type: 'Logo' }
 	});
 	$scope.init = function() {
 		$scope.loading = true;
@@ -24,7 +25,7 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 					}).finally(function() {
 						$scope.loading = false;
 					});
-
+					/*
 				$scope.$watch('formData.Province', function(data, old) {
 					if(_.isNil(data)) {
 						return;
@@ -37,7 +38,6 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 					}
 					$scope.getCities(data.ProvinceId);
 				});
-
 				$scope.$watch('formData.City', function(data, old) {
 					if(_.isNil(data)) {
 						return;
@@ -50,8 +50,6 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 					}
 					$scope.getDistricts(data.CityId);
 				});
-
-
 				$scope.$watch('formData.District', function(data, old) {
 					if(_.isNil(data)) {
 						return;
@@ -63,7 +61,7 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 						_.unset($scope.formData, ['PostalCode']);
 					}
 					$scope.getPostals(data.DistrictId);
-				});
+				});*/
 
 			});
 	};
@@ -112,7 +110,7 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 					$scope.formData = ShopProfileService.deserialize(data);
 					$rootScope.Profile.Shop = $scope.formData;
 					storage.storeCurrentUserProfile($rootScope.Profile);
-					$scope.alert.success('Successfully Saved.');
+					$scope.alert.success('Your changes has been saved successfully.');
 					$scope.form.$setPristine(true);
 				}, function(err) {
 					$scope.alert.error(common.getError(err));

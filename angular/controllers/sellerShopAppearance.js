@@ -2,6 +2,7 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 	'ngInject';
 	$scope.form = {};
 	$scope.formData = { ThemeId: 0, Data: {} };
+	$scope.themeArray = {};
 	$scope.alert = new NcAlert();
 	$scope.saving = false;
 	$scope.loading = true;
@@ -81,13 +82,15 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 		ShopAppearanceService.list()
 			.then(function(data) {
 				$scope.formData = ShopAppearanceService.deserialize(data);
-				console.log($scope.formData);
 			})
 			.finally(function() {
 				$scope.loading = false;
 			});
 	};
+	var _search = undefined;
 	$scope.getProducts = function(search) {
+		if(search == _search) return;
+		search = _search;
 		Product.list({
 			_limit: 16,
 			searchText: search
@@ -96,12 +99,11 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 		});
 	}
 	$scope.init();
-	$scope.getProducts('');
-	$scope.$watch('formData.themeId', function(a,b) {
-		if(a != b) {
-			$scope.formData.Data = {};
-		}
-	})
+	$scope.$watch('formData.ThemeId', function(a,b) {
+		if(_.isNil(b)) return;
+		$scope.themeArray[b] = $scope.formData.Data;
+		$scope.formData.Data = $scope.themeArray[a] || {};
+	}, true);
 	$scope.save = function() {
 		if($scope.saving) return;
 
@@ -124,14 +126,19 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 					$scope.saving = false;
 				});
 		} else {
-			//Form id
+			//Form id	
 			$scope.alert.error(util.saveAlertError());
 		}
 	}
-	$scope.uploadFail = function(e, arg1, arg2) {
+	$scope.uploadFail = function(e, arg1, arg2, arg3) {
 		$scope.alert.close();
 		if(e == 'ondimension') {
-			$scope.alert.error('Image must be ' + arg2[0] + 'x' + arg2[1] + ' pixels');
+			if(arg3) {
+				$scope.alert.error('Image width must be greater than ' + arg2 + ' pixels');
+			}
+			else {
+				$scope.alert.error('Image must be ' + arg2[0] + 'x' + arg2[1] + ' pixels');
+			}
 		}
 		else {
 			$scope.alert.error('<strong>Fail to upload photo</strong><br>' + common.getError(arg1.data));

@@ -21,10 +21,9 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService, Ima
 		var modal = $uibModal.open({
 			size: 'lg',
 			templateUrl: 'newsletter/modalAdmin',
-			controller: function($scope, $uibModalInstance, AdminShopService, NcAlert, config, common, id, uploader) {
+			controller: function($scope, $uibModalInstance, AdminShopService, NcAlert, config, common, id, uploader, util) {
 				'ngInject';
 				$scope.formData = {};
-				$scope.form = {};
 				$scope.loading = false;
 				$scope.saving = false;
 				$scope.alert = new NcAlert();
@@ -84,7 +83,9 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService, Ima
 						});
 				};
 				$scope.save = function() {
+					$scope.alert.close();
 					if($scope.form.$invalid) {
+						$scope.alert.error(util.saveAlertError());
 						return;
 					}
 					$scope.saving = true;

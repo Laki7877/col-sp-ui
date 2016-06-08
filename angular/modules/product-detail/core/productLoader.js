@@ -4,6 +4,16 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
   'ngInject';
   var $productAdd = {};
 
+  $productAdd.setDefaultVariantToFirstVisibleVariant = function(formData, forceRecompute){
+    if(_.get(formData.DefaultVariant, 'Visibility') && !forceRecompute) return;
+    //Update Default Variant
+    var firstVisible = _.find(formData.Variants, function(o){ return o.Visibility });
+    if(firstVisible) {
+       formData.DefaultVariant = firstVisible;
+       console.log("Default Variant set to ", formData.DefaultVariant)
+    }
+  }
+
   //TODO: One day, merge this into some other class that make sense
   /**
    *
@@ -70,7 +80,7 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
 
       kpair.FirstAttribute = firstAttribute;
       kpair.SecondAttribute = secondAttribute;
-      kpair.text = util.variant.toString(firstAttribute, secondAttribute);
+      kpair.text = util.variant.asString(firstAttribute, secondAttribute);
       if(dataSet.VariantDisplayOption) kpair.Display = dataSet.VariantDisplayOption[0].value;
       kpair.Visibility = true;
       if(kpair.SEO) kpair.SEO.ProductUrlKeyEn = "";
@@ -82,7 +92,7 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
         kpair = vHashSet[kpair.text];
       }
 
-      var hashNew = (util.variant.toString(kpair.FirstAttribute, kpair.SecondAttribute));
+      var hashNew = (util.variant.asString(kpair.FirstAttribute, kpair.SecondAttribute));
       if (!trackVariant.has(hashNew)) {
         //Only push new variant if don't exist
 
@@ -108,19 +118,23 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
       }
     }
 
-    if(!formData.DefaultVariant){
-      formData.DefaultVariant = formData.Variants[0];
+    //Set default variant
+    if(!formData.DefaultVariant || !formData.DefaultVariant.Visibility){
+      $productAdd.setDefaultVariantToFirstVisibleVariant(formData);
     }
+
     deferred.resolve();
 
     return deferred.promise;
   };
 
+  
+
 
   $productAdd.flatten = {
     'AttributeSetTagMap': function(AttributeSetTagMap) {
       return AttributeSetTagMap.map(function(asti) {
-        return asti.Tag.TagName;
+        return asti.Tag;
       });
     }
   };
@@ -129,7 +143,7 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
   /*
   * Load suggested attribute sets
   * @param {DataSet} sharedDataSet
-  * @param {Array} data 
+  * @param {Array} data
   */
   $productAdd.loadSuggestedAttributeSets = function(sharedDataSet, data){
 
@@ -145,7 +159,6 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
    *
    * Fill product add page with data of related dependencies
    *
-   * @param  {function} checkSchema
    * @param  {Integer} globalCatId
    * @param  {AddProductPageLoader} pageLoader
    * @param  {DataSet} sharedDataSet
@@ -155,15 +168,15 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
    * @param  {object} variationFactorIndices
    * @param  {InverseFormData} ivFormData (Optional)
    */
-  $productAdd.fill = function(checkSchema, globalCatId, pageLoader, sharedDataSet,
+  $productAdd.fill = function(globalCatId, pageLoader, sharedDataSet,
     sharedFormData, breadcrumbs, controlFlags, variationFactorIndices, ivFormData) {
 
     var deferred = $q.defer();
     pageLoader.load('Downloading Attribute Sets..');
 
     AttributeSet.getByCategory(globalCatId).then(function(data) {
-        pageLoader.load('Validating Schema..');
-        if(data.length > 0) checkSchema(data[0], 'attributeSet');
+        // pageLoader.load('Validating Schema..');
+        // if(data.length > 0) checkSchema(data[0], 'attributeSet');
 
         $productAdd.loadSuggestedAttributeSets(sharedDataSet, data);
 
@@ -174,7 +187,9 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
             GlobalCategory.getAll().then(function(data) {
               sharedDataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
               // console.log("Looking for ID ", globalCatId, sharedDataSet.GlobalCategories);
-              // sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
+              if(!_.has(sharedFormData.GlobalCategories[0], 'NameEn')){
+                  sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
+              }
               // console.log("Got ", sharedFormData.GlobalCategories[0]);
               breadcrumbs.globalCategory = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);
               // console.log(breadcrumbs, "breadcrumb");
@@ -218,29 +233,29 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
             });
 
           }
-          
+
           AttributeSetService.get(ivFormData.AttributeSet.AttributeSetId).then(function(as){
             //Do hacky post-procesisng because this endpoint is not APEAP compliant
             var asComply = AttributeSetService.complyAPEAP(as);
-            pageLoader.load('Validating Schema..');
-            checkSchema(asComply, 'attributeSet');
+            // pageLoader.load('Validating Schema..');
+            // checkSchema(asComply, 'attributeSet');
             //Flatten Tag
             asComply.AttributeSetTagMaps = $productAdd.flatten.AttributeSetTagMap(asComply.AttributeSetTagMaps);
             sharedFormData.AttributeSet = asComply;
 
-            
+
           }).finally(function(){
             parse(ivFormData, sharedFormData.AttributeSet);
             ensureVariantPidness();
             setupGlobalCat();
           });
-          
+
 
         }else{
           setupGlobalCat();
         }
 
-        
+
 
 
       });

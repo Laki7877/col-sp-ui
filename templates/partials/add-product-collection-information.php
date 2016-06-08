@@ -156,7 +156,7 @@
 									class="input-icon-calendar form-control" data-ng-model="formData.EffectiveDate">
 								</a>
 								<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-									<datetimepicker data-ng-model="formData.EffectiveDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'hour' }"/>
+									<datetimepicker data-ng-model="formData.EffectiveDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'minute', minuteStep: 30 }"/>
 								</ul>
 							</div>
 							<span class="help-block"></span>
@@ -176,7 +176,7 @@
 									data-ng-model="formData.ExpiryDate">
 								</a>
 								<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-									<datetimepicker data-ng-model="formData.ExpiryDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'hour' }"/>
+									<datetimepicker data-ng-model="formData.ExpiryDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'minute', minuteStep: 30 }"/>
 								</ul>
 							</div>
 							<div class="width-field-large">

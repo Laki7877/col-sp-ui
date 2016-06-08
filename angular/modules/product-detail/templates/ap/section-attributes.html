@@ -16,7 +16,7 @@
                     </select>
 
                     <you-me display-by="AttributeSetNameEn" ng-disabled="xspermit(35)" placeholder="Search Attribute Set" ng-show="controlFlags.variation != 'enable'" auto-clear-search="true"
-                        group-by="_group" ng-model="formData.AttributeSet" refresh="refresher.AttributeSets" 
+                        group-by="_group" ng-model="formData.AttributeSet" refresh="refresher.AttributeSets"
                         initial-choices="dataset.AttributeSets"
                         choices="dataset.CombinedAttributeSets">
                     </you-me>
@@ -53,11 +53,9 @@
                 </div>
 
                 <input ng-if="isFreeTextInput(amap.Attribute.DataType)"
-                
+
                 ng-class="{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }"
-                ng-disabled="xspermit(35)"
-                    ng-required="amap.Attribute.Required && onPublishing" type="text"
-                    class="form-control" name="AmapInput{{$index}}"
+                ng-disabled="xspermit(35)" ng-required="amap.Attribute.Required && onPublishing" type="text" class="form-control" name="AmapInput{{$index}}"
                     nc-default-value="''" maxlength="255"
                     ng-model="formData.MasterAttribute[amap.Attribute.AttributeId].ValueEn" />
 
@@ -75,7 +73,7 @@
             </div>
         </div>
 
-        <!-- additional +1 iteration for Freetext -->
+        <!-- additional +1 iteration for Freetext and HTML -->
         <div class="form-group" ng-if="isFreeTextInput(amap.Attribute.DataType)" ng-repeat-end>
               <div class="width-label">
                 <label class="control-label" ng-class="{'required': amap.Attribute.Required}">
@@ -83,15 +81,18 @@
                 </label>
             </div>
              <div class="width-field-normal">
-                <input ng-if="isFreeTextInput(amap.Attribute.DataType)" ng-disabled="xspermit(35)"
+                  <input ng-if="isFreeTextInput(amap.Attribute.DataType)" ng-disabled="xspermit(35)"
                     ng-class="{'has-error' : $root.isInvalid(form.AmapInput{{ $index }}) }"
                     nc-default-value="''" maxlength="255"
-                    
+
                     ng-required="amap.Attribute.Required && onPublishing"
                     type="text" class="form-control" name="AmapInput{{$index}}"
                     ng-model="formData.MasterAttribute[amap.Attribute.AttributeId].ValueTh" />
+
+
             </div>
         </div>
 
     </div>
 </div>
+
