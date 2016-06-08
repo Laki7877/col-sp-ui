@@ -20,13 +20,27 @@
                         <input class="form-control width-field-large" name="BankNameEN" ng-model="formData.BankNameEN" ng-pattern="/^[^<>]+$/" maxlength="300" required />
                     </div>
 
-                    <div nc-template="common/input/form-group-with-label" nc-label="Payment Id" nc-template-form="formData.PaymentId" nc-template-options-path="PromotionForm/PaymentId">
+                    <!-- <div nc-template="common/input/form-group-with-label" nc-label="Payment Id" nc-template-form="formData.PaymentId" nc-template-options-path="PromotionForm/PaymentId">
                         <input class="form-control width-field-large" name="PaymentId" ng-model="formData.PaymentId" ng-pattern="/^[^<>]+$/" maxlength="300" />
+                    </div> -->
+
+                    <div nc-template="common/input/form-group-with-label" nc-template-form="form.PaymentID" nc-label="Payment Id">
+                      <ui-select ng-model="formData.PaymentID" name="PaymentID" search-enabled="false" required>
+                        <ui-select-match placeholder="- Select Payment Id -">{{$select.selected.PaymentNameEN}}</ui-select-match>
+                        <ui-select-choices repeat="item in PaymentID">{{item.PaymentNameEN}}</ui-select-choices>
+                      </ui-select>
                     </div>
 
                     <div nc-template="common/input/form-group-with-label" nc-label="Promotion Code" nc-template-form="formData.PromotionCode" nc-template-options-path="PromotionForm/PromotionCode">
                         <input class="form-control width-field-large" name="PromotionCode" ng-model="formData.PromotionCode" ng-pattern="/^[^<>]+$/" maxlength="300" />
                     </div>
+
+                    <!-- <div nc-template="common/input/form-group-with-label" nc-template-form="form.SortBy" nc-label="Promotion Code">
+                      <ui-select ng-model="formData.SortBy" name="SortBy" search-enabled="false" required>
+                        <ui-select-match placeholder="- Select Default Sort -">{{$select.selected.SortBy}}</ui-select-match>
+                        <ui-select-choices repeat="item in sortBy">{{item.SortBy}}</ui-select-choices>
+                      </ui-select>
+                    </div> -->
 
                     <div nc-template="common/input/form-group-with-label" nc-label="Status">
                         <div class="ah-select2-dropdown">

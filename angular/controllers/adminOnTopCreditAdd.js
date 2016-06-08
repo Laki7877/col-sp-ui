@@ -1,4 +1,7 @@
-module.exports = function ($scope, $controller, OnTopCredit, config) {
+module.exports = function ($scope, $controller, OnTopCredit, config,common) {
+
+    
+
     $scope.formData = {
         OnTopCreditCardId: null,
         NameTH: null,
@@ -24,6 +27,18 @@ module.exports = function ($scope, $controller, OnTopCredit, config) {
         CreateIP: null,
         CardItemList: []
     };
+
+    $scope.sortBy = [];
+                
+    // common.GetAllPaymentID().then(function(data) {
+    //     $scope.sortBy = data;
+    // });
+
+    OnTopCredit.getAllPaymentID({})
+        .then(function (data) {
+        console.log(data)
+        $scope.PaymentID = data;
+    });
   
     /*
     '*CARD TYPES            *PREFIX           *WIDTH
