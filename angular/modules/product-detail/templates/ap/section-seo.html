@@ -62,11 +62,13 @@
             nc-template-options-path="addProductForm/UrlKey">
             <input maxlength="100" class="form-control width-field-normal"
             ng-disabled="xspermit(42)"
+            style="text-transform: lowercase"
             ng-pattern-restrict="^[A-Za-z0-9\-]*$" name="SEO_ProductUrlKeyEn"
             ng-model="variantPtr.SEO.ProductUrlKeyEn"/>
         </div>
+
         <div nc-template="common/input/form-group-with-label"
-            nc-template-options-path="addProductForm/Nothing"
+            nc-template-options-path="addProductForm/ProductBoosting"
             nc-template-form="form.SEO_ProductBoostingWeight"
             ng-pattern-restrict="^[0-9]*$"
             nc-label="Product Boosting">
@@ -75,16 +77,20 @@
             ng-disabled="xspermit(42)" nc-default-value="5000"
             ng-pattern-restrict="^[0-9]*$"
             name="SEO_ProductBoostingWeight"
+            ng-maxnumber="10000"
+            ng-minnumber="1"
             ng-model="variantPtr.SEO.ProductBoostingWeight"/>
 
         </div>
 
         <!-- todo: backend validation blocks non-admin from modifying this field -->
         <div nc-template="common/input/form-group-with-label" nc-policy-admin
-            nc-template-options-path="addProductForm/Nothing" nc-template-form="form.SEO_GlobalProductBoostingWeight"
+            nc-template-options-path="addProductForm/ProductBoosting" nc-template-form="form.SEO_GlobalProductBoostingWeight"
             nc-label="Global Product Boosting">
             <input type="text" class="form-control width-field-normal"
              nc-default-value="5000"
+            ng-maxnumber="10000"
+            ng-minnumber="1"
             ng-pattern-restrict="^[0-9]*$" name="SEO_GlobalProductBoostingWeight"
             ng-model="variantPtr.SEO.GlobalProductBoostingWeight" />
         </div>

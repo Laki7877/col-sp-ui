@@ -4,6 +4,16 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
   'ngInject';
   var $productAdd = {};
 
+  $productAdd.setDefaultVariantToFirstVisibleVariant = function(formData, forceRecompute){
+    if(_.get(formData.DefaultVariant, 'Visibility') && !forceRecompute) return;
+    //Update Default Variant
+    var firstVisible = _.find(formData.Variants, function(o){ return o.Visibility });
+    if(firstVisible) {
+       formData.DefaultVariant = firstVisible;
+       console.log("Default Variant set to ", formData.DefaultVariant)
+    }
+  }
+
   //TODO: One day, merge this into some other class that make sense
   /**
    *
@@ -15,6 +25,7 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
   $productAdd.generateVariants = function(formData, dataSet) {
     var deferred = $q.defer();
 
+    //vHashSet is cache
     var vHashSet = {};
     var prevVariants = angular.copy(formData.Variants);
     prevVariants.forEach(function(elem, index) {
@@ -28,29 +39,27 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
     var trackVariant = new Set();
 
     var VARIANT_DUMMY_FACTOR = '';
+
+    //Function for expanding Attribute A0 and Attribute B0
+    //into list of variants
     var expand = function(A0, B0) {
 
       var AVId = null;
       var BVId = null;
-      var B = B0;
-      var A = A0;
+      var B,A;
 
-
-      if (_.has(A0, 'AttributeValue.AttributeValueId')) {
-        AVId = A0.AttributeValue.AttributeValueId;
-        A = A0.AttributeValue.AttributeValueEn;
-      }
+      AVId = A0.AttributeValue.AttributeValueId;
+      A = A0.AttributeValue.AttributeValueEn;
 
       if (angular.isDefined(B0)) {
-        if (_.has(B0, 'AttributeValue.AttributeValueId')) {
-          BVId = B0.AttributeValue.AttributeValueId;
-          B = B0.AttributeValue.AttributeValueEn;
-        }
+        BVId = B0.AttributeValue.AttributeValueId;
+        B = B0.AttributeValue.AttributeValueEn;
       } else {
-        //B is not defined
+        //No second option
         B = VARIANT_DUMMY_FACTOR;
       }
 
+      //Initialize Pair by basing it off Master Variant object
       var kpair = angular.copy(formData.MasterVariant);
       var firstAttribute = {
         AttributeId: !dataSet.attributeOptions[0].Attribute ? 0 : dataSet.attributeOptions[0].Attribute.AttributeId,
@@ -67,60 +76,73 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
         }]),
         ValueEn: B.ValueEn || B
       };
-
       kpair.FirstAttribute = firstAttribute;
       kpair.SecondAttribute = secondAttribute;
-      kpair.text = util.variant.toString(firstAttribute, secondAttribute);
-      if(dataSet.VariantDisplayOption) kpair.Display = dataSet.VariantDisplayOption[0].value;
+      kpair.text = util.variant.asString(firstAttribute, secondAttribute);
+
+      if(dataSet.VariantDisplayOption){
+        //In case Variant Display option is present, we will copy it too 
+        kpair.Display = dataSet.VariantDisplayOption[0].value;
+      }
+
       kpair.Visibility = true;
       if(kpair.SEO) kpair.SEO.ProductUrlKeyEn = "";
       kpair.Sku = "";
       kpair.Pid = null;
 
+      //If pair is seen before, don't regen, but pull it from cache
       if (kpair.text in vHashSet) {
         //Replace with value from vHashSet
         kpair = vHashSet[kpair.text];
       }
 
-      var hashNew = (util.variant.toString(kpair.FirstAttribute, kpair.SecondAttribute));
+      //Generate new hash
+      var hashNew = util.variant.asString(kpair.FirstAttribute, kpair.SecondAttribute);
       if (!trackVariant.has(hashNew)) {
         //Only push new variant if don't exist
-
         formData.Variants.push(kpair);
         trackVariant.add(hashNew);
       }
 
-    }
+    } //End of expand()
+
 
     //Multiply out unmultiplied options
     if (dataSet.attributeOptions && Object.keys(dataSet.attributeOptions).length > 0) {
-      for (var aKey in dataSet.attributeOptions[0].options) {
+      //Iterate through all attr options in first option array
+      _.forOwn (dataSet.attributeOptions[0].options, function(v, aKey) {
         var A = dataSet.attributeOptions[0].options[aKey];
 
+        //Single case
         if (angular.isDefined(dataSet.attributeOptions[1]['options']) && dataSet.attributeOptions[1].options.length == 0) {
           expand(A);
         }
 
-        for (var bKey in dataSet.attributeOptions[1].options) {
+        //Double case
+        _.forOwn(dataSet.attributeOptions[1].options, function(v, bKey) {
           var B = dataSet.attributeOptions[1].options[bKey];
           expand(A, B);
-        }
-      }
+        });
+      });
     }
 
-    if(!formData.DefaultVariant){
-      formData.DefaultVariant = formData.Variants[0];
+    //Set default variant
+    if(!formData.DefaultVariant || !formData.DefaultVariant.Visibility){
+      $productAdd.setDefaultVariantToFirstVisibleVariant(formData);
     }
+
     deferred.resolve();
 
     return deferred.promise;
   };
 
+  
+
 
   $productAdd.flatten = {
     'AttributeSetTagMap': function(AttributeSetTagMap) {
       return AttributeSetTagMap.map(function(asti) {
-        return asti.Tag.TagName;
+        return asti.Tag;
       });
     }
   };
@@ -129,7 +151,7 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
   /*
   * Load suggested attribute sets
   * @param {DataSet} sharedDataSet
-  * @param {Array} data 
+  * @param {Array} data
   */
   $productAdd.loadSuggestedAttributeSets = function(sharedDataSet, data){
 
@@ -145,7 +167,6 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
    *
    * Fill product add page with data of related dependencies
    *
-   * @param  {function} checkSchema
    * @param  {Integer} globalCatId
    * @param  {AddProductPageLoader} pageLoader
    * @param  {DataSet} sharedDataSet
@@ -155,15 +176,15 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
    * @param  {object} variationFactorIndices
    * @param  {InverseFormData} ivFormData (Optional)
    */
-  $productAdd.fill = function(checkSchema, globalCatId, pageLoader, sharedDataSet,
+  $productAdd.fill = function(globalCatId, pageLoader, sharedDataSet,
     sharedFormData, breadcrumbs, controlFlags, variationFactorIndices, ivFormData) {
 
     var deferred = $q.defer();
     pageLoader.load('Downloading Attribute Sets..');
 
     AttributeSet.getByCategory(globalCatId).then(function(data) {
-        pageLoader.load('Validating Schema..');
-        if(data.length > 0) checkSchema(data[0], 'attributeSet');
+        // pageLoader.load('Validating Schema..');
+        // if(data.length > 0) checkSchema(data[0], 'attributeSet');
 
         $productAdd.loadSuggestedAttributeSets(sharedDataSet, data);
 
@@ -174,7 +195,9 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
             GlobalCategory.getAll().then(function(data) {
               sharedDataSet.GlobalCategories = GlobalCategory.getAllForSeller(Category.transformNestedSetToUITree(data));
               // console.log("Looking for ID ", globalCatId, sharedDataSet.GlobalCategories);
-              // sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
+              if(!_.has(sharedFormData.GlobalCategories[0], 'NameEn')){
+                  sharedFormData.GlobalCategories[0] = Category.findByCatId(globalCatId, sharedDataSet.GlobalCategories);
+              }
               // console.log("Got ", sharedFormData.GlobalCategories[0]);
               breadcrumbs.globalCategory = Category.createCatStringById(globalCatId, sharedDataSet.GlobalCategories);
               // console.log(breadcrumbs, "breadcrumb");
@@ -218,29 +241,29 @@ factory('$productAdd', function(Product, AttributeSet, AttributeSetService, Imag
             });
 
           }
-          
+
           AttributeSetService.get(ivFormData.AttributeSet.AttributeSetId).then(function(as){
             //Do hacky post-procesisng because this endpoint is not APEAP compliant
             var asComply = AttributeSetService.complyAPEAP(as);
-            pageLoader.load('Validating Schema..');
-            checkSchema(asComply, 'attributeSet');
+            // pageLoader.load('Validating Schema..');
+            // checkSchema(asComply, 'attributeSet');
             //Flatten Tag
             asComply.AttributeSetTagMaps = $productAdd.flatten.AttributeSetTagMap(asComply.AttributeSetTagMaps);
             sharedFormData.AttributeSet = asComply;
 
-            
+
           }).finally(function(){
             parse(ivFormData, sharedFormData.AttributeSet);
             ensureVariantPidness();
             setupGlobalCat();
           });
-          
+
 
         }else{
           setupGlobalCat();
         }
 
-        
+
 
 
       });

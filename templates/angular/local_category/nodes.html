@@ -15,6 +15,7 @@
 		<nc-eye nc-model="node.Visibility" nc-eye-on-toggle="toggleVisibility(node)"></nc-eye>
 	</span>
 	<span class="pull-right category-column">{{node.ProductCount}}</span>
+	<span class="pull-right category-column">{{node.CategoryId}}</span>
 </div>
 <ol ui-tree-nodes ng-model="node.nodes" ng-class="{hidden: collapsed}">
 	<li ng-repeat="node in node.nodes" ui-tree-node ng-include="'local_category/nodes'">

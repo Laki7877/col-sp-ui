@@ -49,7 +49,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - User Rol
 							                  name="GroupNameEn"
 							                  ng-model="formData.GroupNameEn"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.GroupNameEn) }"
-							                  ng-pattern-restrict="^[^<>]*$"
+							                   
 							                  maxlength="255"
 							                  required />
 							              </div>
@@ -64,7 +64,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - User Rol
 									<div class="form-section-content">
 										<div ng-template="common/input/multiline-checkbox"
 											ng-template-options="{ 'label' : 'All Features' }">
-											<label><input ng-model="selectAll" ng-change="checkAll(selectAll)" type="checkbox">Select All</label>
+											<label><input ng-model="obj.selectAll" ng-change="checkAll(obj.selectAll)" type="checkbox">Select All</label>
 										</div>
 										<div ng-repeat="name in group">
 											<div ng-template="common/input/multiline-checkbox"

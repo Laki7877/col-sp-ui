@@ -34,7 +34,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                         nc-label="Coupon Name" 
                         nc-template-form="form.CouponName" 
                         nc-template-options-path="couponForm/CouponName">
-                          <input class="form-control width-field-large" name="CouponName" ng-model="formData.CouponName" ng-pattern-restrict="^[^<>]*$" maxlength="255" required ng-disabled="manageable" />
+                          <input class="form-control width-field-large" name="CouponName" ng-model="formData.CouponName"   maxlength="255" required ng-disabled="manageable" />
                       </div>
                       <div nc-template="common/input/form-group-with-label" 
                         nc-label="Coupon Code" 
@@ -87,7 +87,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                             nc-template-form="form.DiscountAmount" 
                             nc-template-options-path="couponForm/DiscountAmount"
                             nc-label="Discount Amount">
-                                <input type="text" name="DiscountAmount" class="form-control" ng-model="formData.Action.DiscountAmount" ng-disabled="manageable" ng-pattern-restrict="^[0-9]*(\.[0-9]{0,2})?$" required/>
+                                <input type="text" name="DiscountAmount" class="form-control" ng-model="formData.Action.DiscountAmount" ng-disabled="manageable" ng-pattern-restrict="^[0-9]*(\.[0-9]{0,2})?$" maxlength="10" required/>
                           </div>
                           </div>
                           <div ng-if="formData.Action.Type != 'AMOUNT'">
@@ -146,6 +146,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                         </ui-select>
                       </div>
                       <div ng-if="formData.Conditions.Order[0].Type != 'NoFilter'">
+
                         <div nc-template="common/input/form-group-with-label" 
                           nc-label="Price"
                           nc-template-options-path="couponForm/Condition_Value">
@@ -166,6 +167,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                             <ui-select-choices repeat="i.value as i in filters">{{ i.name }}</ui-select-choices>
                         </ui-select>
                       </div>
+
 
 					  <div ng-show="formData.Conditions.FilterBy.Type == 'LocalCategory'"
                         nc-template="common/input/form-group-with-label"

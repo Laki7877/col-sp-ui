@@ -1,5 +1,9 @@
+/**
+ * Handle admin attribute listing page
+ */
 module.exports = function($scope, $controller, AttributeService, config) {
 	'ngInject';
+	//Inherit from abstractlist
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
 		options: {
@@ -20,6 +24,7 @@ module.exports = function($scope, $controller, AttributeService, config) {
 			]
 		}
 	});
+	// dropdown options
 	$scope.yesNoDropdown = config.DROPDOWN.YES_NO_DROPDOWN;
 	$scope.dataTypeDropdown = config.DROPDOWN.DATA_TYPE_DROPDOWN;
 }

@@ -1,6 +1,10 @@
+/**
+ * Handle admin role adding
+ */
 module.exports = function($scope, $controller, AdminRoleService, AdminPermissionService, PermissionService, util) {
 	'ngInject';
 	//Inherit from abstract ctrl
+	$scope.obj = {};
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
 		options: {
@@ -19,10 +23,10 @@ module.exports = function($scope, $controller, AdminRoleService, AdminPermission
 						scope.formData.Permissions = PermissionService.generate(scope.permissions);
 					}
 
-					$scope.selectAll = true;
+					$scope.obj.selectAll = true;
 					_.forOwn($scope.formData.Permissions, function(v,k) {
 						util.traverse(v, 'Children', function(e) {
-							$scope.selectAll = $scope.selectAll && e.check;
+							$scope.obj.selectAll = $scope.obj.selectAll && e.check;
 						});
 					});					
 				}).finally(function() {
@@ -31,19 +35,39 @@ module.exports = function($scope, $controller, AdminRoleService, AdminPermission
 			},
 			onSave: function(scope) {
 				scope.formData.Permission = PermissionService.serialize(scope.formData.Permissions);
+				console.log(scope.formData);
 			},
 			onAfterSave: function(scope) {
 				scope.formData.Permissions = PermissionService.deserialize(scope.formData.Permission, scope.permissions);
-				$scope.selectAll = true;
+				$scope.obj.selectAll = true;
 				_.forOwn($scope.formData.Permissions, function(v,k) {
 					util.traverse(v, 'Children', function(e) {
-						$scope.selectAll = $scope.selectAll && e.check;
+						$scope.obj.selectAll = $scope.obj.selectAll && e.check;
 					});
 				});
 			}
 		}
 	});
+
+	// for serializing circular json
+	var cj = require('circular-json');
+
+	// select all update for item change
+	$scope.$watch(function() {
+		return cj.stringify($scope.formData);
+	}, function() {
+		$scope.obj.selectAll = true;
+		_.forOwn($scope.formData.Permissions, function(v,k) {
+			util.traverse(v, 'Children', function(e) {
+				$scope.obj.selectAll = $scope.obj.selectAll && e.check;
+			});
+		});		
+	});
+
+	// permission group
 	$scope.group = ['Products', 'Accounts', 'Promotions', 'Others', 'CMS', 'Report'];
+
+	// check all
 	$scope.checkAll = function(val) {
 		_.forOwn($scope.formData.Permissions, function(v,k) {
 			util.traverse(v, 'Children', function(e) {

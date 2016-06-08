@@ -140,7 +140,6 @@ angular.module('nc')
 				var updateSource = function() {
 					var m = _.max([scope.source.ImageEn.length, scope.source.ImageTh.length]);
 					var len = scope.source.Links.length;
-					console.log(len, m);
 					if(len > m) {
 						for (var i = 0; i < len - m; i++) {
 							scope.source.Links.pop();
@@ -153,9 +152,6 @@ angular.module('nc')
 				}
 
 				update();
-				scope.$watch('source.Links', function() {
-					console.log(scope.Links);
-				})
 				scope.$watch('width', update);
 				scope.$watch('height', update);
 				scope.$watch('source', function() {
@@ -347,7 +343,13 @@ angular.module('nc')
 								scope.images.push(obj);
 								var f = new FileItem(scope.uploader, file, {
 									onSuccess: function(response) {
-										_.extend(obj, response);
+										_.mergeWith(obj, response, function(o, v) {
+											if(_.isEmpty(v)) {
+												return o;
+											} else {
+												return v;
+											}
+										});
 									},
 									onError: function(response, status, headers) {
 										scope.onfail('onerror', response, status, headers);
@@ -427,7 +429,13 @@ angular.module('nc')
 								scope.images.push(obj);
 								scope.uploader.upload(file)
 									.then(function(response) {
-										_.extend(obj, response.data);
+										_.mergeWith(obj, response.data, function(o, v) {
+											if(_.isEmpty(v)) {
+												return o;
+											} else {
+												return v;
+											}
+										});
 									}, function(response) {
 										scope.onfail('onerror', response);
 										_.remove(scope.images, function(n) {
@@ -587,7 +595,7 @@ angular.module('nc')
 					return image.progress || 0;
 				};
 				scope.isDisabled = function(image) {
-					return _.isNull(image) || scope.lock();
+					return _.isNull(image) || scope.lock() || image.Url == "";
 				};
 				scope.call = function(action, image) {
 					if (scope.isDisabled(image)) return;
@@ -634,6 +642,11 @@ angular.module('nc')
 					for (var i = 0; i < scope.options.size - scope.model.length; i++) {
 						scope.images.push(null);
 					};
+					for (var i = 0; i < scope.images.length; i++) {
+						if(_.isPlainObject(scope.images[i])) {
+							scope.images[i].indx = i;
+						}
+					}
 				};
 				scope.$watch('model', load, true);
 			}
@@ -702,7 +715,6 @@ angular.module('nc')
 						var maxH = Number(maxDim[1]);
 
 						var file = item._file;
-						console.log(file);
 
 						if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
 							scope.onfail('onfilesize');
@@ -739,8 +751,8 @@ angular.module('nc')
 							return;
 						}
 						if (scope.size == scope.model.length) {
-							item.cancel();
 							item.remove();
+							item.cancel();
 							scope.onError({$response: { name: 'queueFilter' }});
 							return;
 						}
@@ -752,6 +764,7 @@ angular.module('nc')
 						item.indx = scope.model.length - 1;
 						item.onProgress = function(progress) {
 							obj.progress = progress;
+							console.log(obj);
 						};
 					};
 
@@ -762,8 +775,15 @@ angular.module('nc')
 						$response: filter
 					});
 				};
+				scope.uploader.onProgressItem = function(item, progress) {
+					if(_.findIndex(scope.model, item.obj) < 0) {
+						item.cancel();
+					}
+				}
 				scope.uploader.onSuccessItem = function(item, response, status, headers) {
-					scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];
+					if(response) {
+						item.obj[scope.options.urlKey] = response[scope.options.urlKey];
+					}
 				};
 				scope.uploader.onErrorItem = function(item, response, status, headers) {
 					scope.model.splice(scope.model.indexOf(item.obj), 1);
@@ -771,13 +791,12 @@ angular.module('nc')
 						$response: response
 					});
 				};
-
 				scope.update();
 				scope.$watch('template', scope.update);
 				scope.$watch('uploader.isUploading', function(val) {
-					console.log(val);
 					scope.isUploading = val;
 				});
 			}
 		};
+
 	})

@@ -36,7 +36,7 @@
         }
 
         img{
-          margin-top: 280px;
+          margin-top: 250px;
         }
 
         @media screen and (max-width:772px) {
@@ -58,6 +58,7 @@
     </br>
     please contact Central administration team.
     </p>
+    <a class='btn btn-primary' href="/">Back to Login</a>
 </body>
 
 </html>

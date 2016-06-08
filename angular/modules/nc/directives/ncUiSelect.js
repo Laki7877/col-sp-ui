@@ -1,12 +1,14 @@
+
 angular.module('nc')
     .directive('ncTagValidator', function () {
         return {
             restrict: 'A',
             require: ['ngModel', 'uiSelect'],
             link: function ($scope, element, attrs, ctrl) {
-                var maxTagCount = 1000;
-                var maxTagLength = 30;
+                var maxTagCount = undefined;
+                var maxTagLength = undefined;
                 var tagPattern = false;
+                var maxTagLengthKey;
 
                 var $select = ctrl[1];
                 var $model = ctrl[0];
@@ -16,12 +18,16 @@ angular.module('nc')
                     var item = (array[array.length - 1] || "");
                     var _pass = true;
                     $model.$error = {};
+                    
+                    if(maxTagLengthKey && _.isPlainObject(item)) {
+                        item = item[maxTagLengthKey] || "";
+                    }
 
-                    if (array.length > maxTagCount) {
+                    if (maxTagCount && array.length > maxTagCount) {
                         //$model.$error.maxtagcount = true;
                         _pass = false;
                     }
-                    if (item.length > maxTagLength) {
+                    if (maxTagLength && item.length > maxTagLength) {
                         //$model.$error.maxtaglength = true;
                         _pass = false;
                     }
@@ -36,7 +42,6 @@ angular.module('nc')
                         $model.$viewValue = $model.$modelValue;
                     }
                 };
-
                 attrs.$observe('ngModel', function(val) {
                     $scope.$watch(val, function(o) {
                         $select.onSelectCallback();
@@ -48,6 +53,10 @@ angular.module('nc')
                     maxTagCount = Number(val);
                 });
 
+                attrs.$observe('ncMaxTagLengthKey', function (val) {
+                    if (!val) return;
+                    maxTagLengthKey = val;
+                });
                 attrs.$observe('ncTagPattern', function (val) {
                     if (!val) return;
                     tagPattern = val;
@@ -61,3 +70,4 @@ angular.module('nc')
             }
         }
     });
+

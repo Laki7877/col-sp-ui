@@ -8,7 +8,7 @@
 			<h2 class="font-size-20 text-centerx text-normal margin-bottom-20">Add Tag</h2>
 			<div>
 				<ui-select name="Tags" ng-model="model.tags" tagging-label="" tagging-tokens="ENTER" multiple tagging nc-tag-validator nc-max-tag-length="30">
-					<ui-select-match placeholder="Separated by a comma">{{$item}}</ui-select-match>
+					<ui-select-match placeholder="Enter to separate">{{$item}}</ui-select-match>
 					<ui-select-choices repeat="item in []">{{item}}</ui-select-choices>
 				</ui-select>
 			</div>

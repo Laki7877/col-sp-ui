@@ -1,5 +1,31 @@
 var angular = require('angular');
 angular.module('productDetail')
+.factory('APImageUploadFailEvent', function(common){
+  return function(image_alert, IMAGE_DIM_BOUND){
+    return function(kwd, data){
+      if (kwd == "onmaxsize") {
+        image_alert.error('Cannot exceed ' + data + ' images for each product.');
+      } else if (kwd == "ondimension") {
+        image_alert.error('Image dimension must be between ' +
+          IMAGE_DIM_BOUND[0][0] + 'x' +
+          IMAGE_DIM_BOUND[0][1] + ' and ' +
+          IMAGE_DIM_BOUND[1][0] + 'x' + IMAGE_DIM_BOUND[1][1] +
+          '. <strong>Your Image Size is ' + data[0] + "x" + data[1] +
+          '</strong>');
+      } else if (kwd == "ondisable") {
+        image_alert.error('You do not have permission to upload images.');
+      } else if (kwd == "onsquare") {
+        image_alert.error('Image must be a square (1:1 ratio).');
+      } else if (kwd == 'onfilesize') {
+        image_alert.error('Each image file size must not exceed 5MB')
+      } else {
+        image_alert.error(data);
+      }
+    };
+  }
+
+  return APEvent;
+})
 .factory('APOriginalPriceChangeEvent', function() {
   return function($scope){
     return function(){

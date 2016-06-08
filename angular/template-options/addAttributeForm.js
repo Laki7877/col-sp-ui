@@ -36,6 +36,14 @@ module.exports = {
    	},
     DescriptionEn: {
       'inputSize': 'large'
+    },
+    Tags: {
+      error: {
+        messages: {
+          maxtagcount: 'Cannot exceed 100 tags',
+          maxtaglength: 'Tag must contain 30 characters or less'
+        }
+      }
     }
     
 };

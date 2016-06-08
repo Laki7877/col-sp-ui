@@ -49,9 +49,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Accounts
 							                  name="Email"
 							                  ng-model="formData.Email"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.Email) }"
-											  ng-pattern-restrict="^[^<>]*$"
+											   
 							                  type="email"
-							                  maxlength="255"
+							                  maxlength="100"
 							                  required />
 							              </div>
 							              <!-- Name -->
@@ -72,7 +72,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Accounts
 							                  name="NameEn"
 							                  ng-model="formData.NameEn"
 							                  ng-class="{ 'has-error' : $root.isInvalid(form.NameEn) }"
-											  ng-pattern-restrict="^[^<>]*$"
+											   
 							                  maxlength="255"
 							                  required />
 							              </div>

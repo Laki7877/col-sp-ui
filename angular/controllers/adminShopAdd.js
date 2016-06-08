@@ -1,5 +1,53 @@
+/**
+ * Handle admin shop account add
+ */
 module.exports = function($scope, $controller, $uibModal, AdminShopService, AdminShoptypeService, GlobalCategoryService, ShopService, ImageService, Category, config, common, Credential, $window) {
 	'ngInject';
+
+	var v = [];
+	//watch
+	var watch = function() {
+		// update  city on province change
+		v.push($scope.$watch('formData.Province', function(data, old) {
+			if(_.isNil(data)) {
+				return;
+			}
+			else if(data != old) {
+				_.unset($scope.formData, ['City']);
+				_.unset($scope.formData, ['District']);
+				_.unset($scope.formData, ['PostalCode']);
+			}
+			$scope.getCities(data.ProvinceId);
+		}));
+		// update district on city change
+		v.push($scope.$watch('formData.City', function(data, old) {
+			if(_.isNil(data)) {
+				return;
+			}
+			else if(data != old) {
+				_.unset($scope.formData, ['District']);
+				_.unset($scope.formData, ['PostalCode']);
+			}
+			$scope.getDistricts(data.CityId);
+		}));
+		// update postal on city district
+		v.push($scope.$watch('formData.District', function(data, old) {
+			if(_.isNil(data)) {
+				return;
+			}
+			else if(data != old) {
+				_.unset($scope.formData, ['PostalCode']);
+			}
+			$scope.getPostals(data.DistrictId);
+		}));
+	};
+	//unwatch
+	var unwatch = function() {
+		while(v.length > 0) {
+			v.pop()();
+		}
+	};
+
 	//Inherit from abstract ctrl
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
@@ -9,13 +57,11 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 			item: 'Shop Account',
 			service: AdminShopService,
 			init: function(scope) {
-				AdminShoptypeService.listAll()	
+				// get all shoptype
+				AdminShoptypeService.listAll()
 					.then(function(data) {
 						scope.shoptypes = data;
 					});
-			},
-			onSave: function(scope) {
-				console.log(scope.form);
 			},
 			onLoad: function(scope, flag) {	
 				//Load global cat
@@ -27,65 +73,36 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 							item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
 						});
 				});
-
-				$scope.$watch('formData.Province', function(data, old) {
-					if(_.isNil(data)) {
-						return;
-					}
-					if(_.isNil(old)) {
-
-					}
-					else if(data != old) {
-						_.unset($scope.formData, ['City']);
-					}
-					$scope.getCities(data.ProvinceId);
-				});
-
-				$scope.$watch('formData.City', function(data, old) {
-					if(_.isNil(data)) {
-						return;
-					}
-					if(_.isNil(old)) {
-						
-					}
-					else if(data != old) {
-						_.unset($scope.formData, ['District']);
-					}
-					$scope.getDistricts(data.CityId);
-				});
-
-
-				$scope.$watch('formData.District', function(data, old) {
-					if(_.isNil(data)) {
-						return;
-					}
-					if(_.isNil(old)) {
-						
-					}
-					else if(data != old) {
-						_.unset($scope.formData, ['PostalCode']);
-					}
-					$scope.getPostals(data.DistrictId);
-				});
+				watch(); //watch for change
 			},
-			onAfterSave: function(scope) {			
+			onBeforeSave: function(scope) {
+				unwatch(); //do not watch during save
+			},
+			onAfterSave: function(scope) {
+				// commissions category
 				_.forEach(scope.formData.Commissions, function(item) {
 					item.NameEn = Category.findByCatId(item.CategoryId, scope.globalCategory).NameEn;
 				});
+				watch(); //rewatch after save
 			}
 		}
 	});
-
+	
+	//logo uploader
 	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
-		data: { IsLogo: true }
+		data: { Type: 'Logo' }
 	});
+
+	//upload logo
 	$scope.uploadLogo = function(file) {
 		if(_.isNil(file)) {
 			return;
 		}
+		//loading placeholder
 		$scope.formData.ShopImage = {
 			url: '/assets/img/loader.gif'
 		};
+		//upload action
 		$scope.logoUploader.upload(file)
 			.then(function(response) {
 				$scope.formData.ShopImage = response.data;
@@ -93,8 +110,9 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 				$scope.formData.ShopImage = null;
 				$scope.alert.error(common.getError(err.data));
 			});
-	};	
+	};
 
+	//getter for cities name list
 	$scope.getCities = function(id) {
 		ShopService.get('Cities', id)
 			.then(function(data) {
@@ -102,12 +120,15 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 			});
 	};
 
+	//getter for districts name list
 	$scope.getDistricts = function(id) {
 		ShopService.get('Districts', id)
 			.then(function(data) {
 				$scope.districts = data;
 			});
 	};
+
+	//getter for postal name list
 	$scope.getPostals = function(id) {
 		ShopService.get('PostCodes', id)
 			.then(function(data) {
@@ -115,6 +136,7 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 			});
 	}
 
+	//get all other lists
 	$scope.fetchAllList = function() {
 		ShopService.get('TermPayments')
 			.then(function(data) {
@@ -147,6 +169,7 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 	};
 	$scope.fetchAllList();
 
+	//login as action
 	$scope.loginAs = function(user){
 		$scope.alert.close();
 		Credential.loginAs(user).then(function(r){
@@ -157,6 +180,7 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
     });
 	};
 
+	//reset user password action
 	$scope.resetPassword = function(user) {
 	    var modal = $uibModal.open({
 	      size: 'change-password',
@@ -170,10 +194,13 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 	        $scope.saving = false;
 	        $scope.oldPassword = false;
 
+	        //save change
 	        $scope.save = function() {
 	          if($scope.form.$valid) {
 	            $scope.saving = true;
 	            $scope.alert.close();
+
+	            //change password to new password
 	            Credential.changePassword(_.pick($scope.formData, ['Email', 'NewPassword']))
 	              .then(function() {
 	                $uibModalInstance.close();
@@ -199,10 +226,11 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 			$scope.alert.success('Successfully reset password.');
 		});
 	};
+	//open modal for select commission for cat
 	$scope.openCommissionSelector = function(item) {
 		var category = null;
 		if(!_.isNil(item))
-			category = Category.findByCatId(item.CategoryId, $scope.globalCategory);
+			category = Category.findByCatId(item.CategoryId, $scope.globalCategory); //get category list
 	    var modalInstance = $uibModal.open({
 	      size: 'category-section modal-lg column-4',
 	      keyboard: false,
@@ -211,10 +239,13 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 	        'ngInject';
 	        $scope.model = model;
 	        $scope.tree = tree;
+	        //watch for model
 	        $scope.$watch('model', function(newVal, oldVal) {
 	        	if(!_.isEmpty(newVal))
 	        		$scope.Commission = newVal.Commission;
 	        });
+
+	        //return selected cat and commission
 	        $scope.select = function() {
 	          $scope.model.Commission = _.toNumber($scope.Commission);
 	          $uibModalInstance.close($scope.model);
@@ -222,14 +253,15 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
 	      },
 	      resolve: {
 	        model: function() {
-	          return category;
+	          return category; //selected cat
 	        },
 	        tree: function() {
-	          return $scope.globalCategory;
+	          return $scope.globalCategory; //cat tree
 	        }
 	      }
 	    })
-	    
+
+	    //on modal finished
 	    modalInstance.result.then(function(result) {
     		if(_.isNil(item)) {
 	    		//Add
@@ -245,10 +277,12 @@ module.exports = function($scope, $controller, $uibModal, AdminShopService, Admi
     		});
 	    });
 	};
+	//dropdowns
 	$scope.shopGroupDropdown = config.SHOP_GROUP;
 	$scope.yesNoDropdown = config.DROPDOWN.YES_NO_DROPDOWN;
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 
+	//clone cat should be equal to max local cat
 	$scope.$watch('formData.CloneGlobalCategory', function(val) {
 		if(val) {
 			$scope.formData.MaximumLocalCategory = 99;

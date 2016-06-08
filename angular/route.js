@@ -50,8 +50,7 @@ var seller = {
 		'User Accounts': '/accounts',
 		'User Roles': '/roles'
 	},
-
-	'Report|fa-file-o': {
+	'Report|fa-file': {
 	    'View Report': '/reports',
         'Sale Report For Seller': '/reports/std/saleforseller',
         'Stock Status Report': '/reports/std/stockstatus',
@@ -86,7 +85,6 @@ var admin = {
 	'Promotion|fa-bookmark': {
 		'Global Coupons': '/admin/coupons/global',
 		'All Seller Coupons': '/admin/coupons/seller',
-		'Seller Coupons': '/admin/coupons/seller',
         'On Top Credit Card':'/admin/ontopcredit',
         // 'Buy 1 Get 1':'/admin/buy1get1'
 	},
@@ -97,7 +95,7 @@ var admin = {
 	    // 'CMS Group': '/admin/cms/group'
 	},
 	'Reports|fa-file': {
-	    
+
 	},
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'
@@ -108,7 +106,7 @@ var admin = {
 		'Product Info': '/admin/summary/productinfo',
 		'Product Onweb': '/admin/summary/productonweb',
 		'SKU - Effective' : '/admin/summary/skueffective',
-		'SKU - Not Effective' : '/admin/summary/skunoteffective', 
+		'SKU - Not Effective' : '/admin/summary/skunoteffective',
 	},
 };
 var permission = {
@@ -150,7 +148,7 @@ var permission = {
 	56: '/shops/appearance',
 	57: ['/roles', '/accounts'],
 	60: '/cms',
-	71: '/reports/std/saleforseller', 
+	71: '/reports/std/saleforseller',
 	// 62: ['/cms/category/create', '/cms/master/create', '/cms/group/create'],
 
 	//Shop

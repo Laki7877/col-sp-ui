@@ -9,7 +9,7 @@
                 <div class="form-section-content">
                     <div class="form-group" ng-repeat="item in formData.GlobalCategories track by $index" ng-cloak>
                         <div class="width-label" ng-if="$index == 0">
-                            <label class="control-label">Global Category<span style="color:red">*</span>:</label>
+                            <label class="control-label">Global Category:</label>
                         </div>
                         <div class="width-label" ng-if="$index != 0 && formData.GlobalCategories[$index - 1] != null">
                             <label class="control-label">{{$index | ordinal}} Alternative:</label>

@@ -14,6 +14,13 @@ class Redirect {
     public static function exception($params) {
 		return View::render('exception');
 	}
+	public static function permission($params) {
+		return View::render('401');
+	}
+	public static function adminPermission($params) {
+		return View::render('401-admin');
+	}
+
 	/*
 	public static function handleAuth($route) {
 		if(strpos($route['method'], 'Login') === FALSE && !isset($_COOKIE[__COOKIE_AUTH_KEY__])) {
@@ -60,6 +67,7 @@ Route::add('/shops/settings', 'ShopController::settings');
 Route::add('/shops/appearance', 'ShopController::appearance');
 
 //seller routing
+Route::add('/unauthorized', 'Redirect::permission');
 Route::add('/accounts', 'SellerController::listAccount');
 Route::add('/accounts/add', 'SellerController::addAccount');
 Route::add('/accounts/:id', 'SellerController::editAccount');
@@ -89,11 +97,13 @@ Route::add('/cms/group/:id', 'SellerController::editCMSGroup');
 Route::add('/cms/master', 'SellerController::listCMSMaster');
 Route::add('/cms/master/create', 'SellerController::addCMSMaster');
 Route::add('/cms/master/:id', 'SellerController::editCMSMaster');
-
 //Report
 Route::add('/reports/std/saleforseller', 'SellerController::listStandardReport');
 
-//admin routing 
+
+
+//admin routing
+Route::add('/admin/unauthorized', 'Redirect::adminPermission');
 Route::add('/admin/onboarding', 'AdminController::onboarding');
 Route::add('/admin/attributes/add','AdminController::addAttribute');
 Route::add('/admin/attributes/:id','AdminController::editAttribute');
@@ -156,6 +166,7 @@ Route::add('/admin/cms/master/:id', 'AdminController::editCMSMaster');
 // Route::add('/admin/buy1get1/create','AdminController::addBuy1Get1');
 // Route::add('/admin/buy1get1/:id','AdminController::editBuy1Get1');
 
+
 // seller buy 1 get 1
 Route::add('/buy1get1','SellerController::listBuy1Get1');
 Route::add('/buy1get1/create','SellerController::addBuy1Get1');
@@ -177,6 +188,7 @@ Route::add('/admin/summary/productinfo', 'AdminController::sumProductInfo');
 Route::add('/admin/summary/productonweb', 'AdminController::sumProductOnWeb');
 Route::add('/admin/summary/skueffective', 'AdminController::sumSKUEffective');
 Route::add('/admin/summary/skunoteffective', 'AdminController::sumSKUNotEffective');
+
 
 //test route
 Route::add('/test/:name', 'TestController::any');

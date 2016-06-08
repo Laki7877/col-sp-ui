@@ -1,5 +1,5 @@
 <?php
-    
+
     class SellerController extends Controller
     {
         //Account
@@ -173,3 +173,4 @@
             return View::render('seller_add_buy1get1', ['params' => json_encode_n($params), 'title' => 'Detail']);
         }
     }
+

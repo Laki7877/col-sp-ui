@@ -1,8 +1,9 @@
 <table class="table variation-table">
 	<thead>
 		<tr>
-			<th class="column-variant" style="width:150px">Variant</th>
-			<th class="column-mapped-product" style="width:400px">Product</th>
+			<th class="column-variant" style="width:250px">Variant</th>
+			<th class="column-mapped-product">Product</th>
+			<th style="width: 150px"></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -26,11 +27,16 @@
 				</ui-select>-->
 
 				<you-me ng-model="pair.MappedProduct" display-by="ProductNameEn"
-				 refresh="refresher.Products" initial-choices="dataset.Products" placeholder="Search for a single product under the selected category and attribute set"
+				 refresh="refresher.Products" initial-choices="dataset.Products" placeholder="Search by Product Name or PID"
 				 choices="dataset.Products" ng-disabled="!pair.Visibility" name="pair_MappedProduct">
 
 				</you-me>
 
+			</td>
+			<td>
+				<button class="btn btn-white" 
+				ng-click="unmapProduct(pair)"
+				ng-show="pair.MappedProduct">Unmap</button>
 			</td>
 		</tr>
 	</tbody>

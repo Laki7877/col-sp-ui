@@ -129,7 +129,7 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
             size: 'lg',
             //scope: $scope,
             controller: function ($scope, $uibModalInstance) {
-
+                'ngInject';
                 $scope.products = [];
 
                 $scope.isEmpty = true;

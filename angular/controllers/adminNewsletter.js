@@ -1,5 +1,9 @@
+/**
+ * Handle admin newsletter
+ */
 module.exports = function($scope, $controller, $uibModal, NewsletterService, ImageService) {
 	'ngInject';
+	// inherit list ctrl
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
 		options: {
@@ -17,14 +21,14 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService, Ima
 		}
 	});
 
+	// open edit/add modal
 	$scope.open = function(item) {
 		var modal = $uibModal.open({
 			size: 'lg',
 			templateUrl: 'newsletter/modalAdmin',
-			controller: function($scope, $uibModalInstance, AdminShopService, NcAlert, config, common, id, uploader) {
+			controller: function($scope, $uibModalInstance, AdminShopService, NcAlert, config, common, id, uploader, util) {
 				'ngInject';
 				$scope.formData = {};
-				$scope.form = {};
 				$scope.loading = false;
 				$scope.saving = false;
 				$scope.alert = new NcAlert();
@@ -52,9 +56,10 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService, Ima
 						.finally(function() {
 							$scope.loading = false;
 						});
-				} else {
+				} else { //create new
 					$scope.formData = NewsletterService.generate();
 				}
+				// get all shops by search
 				$scope.getShops = function(search, key) {
 					$scope.shops[key].loading = true;
 					AdminShopService.list({
@@ -68,13 +73,16 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService, Ima
 							$scope.shops[key].loading = false;
 						})
 				};
+				// upload pic
 				$scope.upload = function($file) {
 					if(_.isNil($file)) {
 						return;
 					}
+					// placeholder loader
 					$scope.formData.Image = {
 						Url: '/assets/img/loader.gif'
 					};
+					// upload image
 					uploader.upload($file)
 						.then(function(response) {
 							$scope.formData.Image = response.data;
@@ -83,8 +91,11 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService, Ima
 							$scope.alert.error(common.getError(err.data));
 						});
 				};
+				// on save
 				$scope.save = function() {
-					if($scope.form.$invalid) {
+					$scope.alert.close();
+					if($scope.form.$invalid) { //invalid form validation
+						$scope.alert.error(util.saveAlertError());
 						return;
 					}
 					$scope.saving = true;
@@ -115,13 +126,17 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService, Ima
 			},
 			resolve: {
 				id: function() {
+					//opened newsletter id
 					return _.isNil(item) ? 0 : item.NewsletterId;
 				},
 				uploader: function() {
+					// image uploader
 					return ImageService.getUploaderFn('/NewsletterImages');
 				}
 			}
 		});
+
+		// on modal $close
 		modal.result.then(function(res) {
 			$scope.reload();
 			$scope.alert.success('Successfully created.')

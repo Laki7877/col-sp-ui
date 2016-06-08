@@ -1,32 +1,18 @@
+/**
+ * Handle admin attribute set adding page
+ */
 module.exports = function($scope, $controller, AttributeSetService, AttributeService, config) {
 	'ngInject';
+	// dropdown
 	$scope.visibleOptions = config.DROPDOWN.VISIBLE_DROPDOWN;
 	$scope.attributeOptions = [];
 	$scope.tagOptions = [];
-    $scope.onKeywordAdded = function(item, model){
-		$scope.keywordValidConditions = {};
-		if(!item) return $scope.formData.Tags.pop();
 
-		if($scope.formData.Tags.length > 100){
-			$scope.keywordValidConditions['tagcount'] = true;
-		}
-
-		if(item.length > 30){
-			$scope.keywordValidConditions['taglength'] = true;
-		}
-
-		if(!item.match(/^[a-zA-Z0-9ก-ฮ\s\-]+$/)){
-			$scope.keywordValidConditions['pattern'] = true;
-		}
-
-		if(Object.keys($scope.keywordValidConditions).length > 0){
-			//if there is error, revert
-			$scope.formData.Tags.pop();
-		}
-	};
+	// if attribute set should be lock
 	$scope.lockAttributeset = function(i) {	
 		return false;
 	};
+	// change tag structure after keying
 	$scope.tagTransform = function(newTag) {
 		return {
 			TagName: newTag,
@@ -37,6 +23,7 @@ module.exports = function($scope, $controller, AttributeSetService, AttributeSer
 			}
 		};
 	};
+	// inherit from add ctrl
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
 		options: {
@@ -48,6 +35,7 @@ module.exports = function($scope, $controller, AttributeSetService, AttributeSer
 			}
 		}
 	});
+	//fetch attribute
 	$scope.onSearch = function($search) {
 		AttributeService.list({
 			searchText: $search,

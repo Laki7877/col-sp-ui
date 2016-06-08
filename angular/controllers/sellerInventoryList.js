@@ -79,7 +79,7 @@ module.exports = function($scope, $rootScope, $controller, $window, InventorySer
 		InventoryService.update(item.Pid, i)
 			.then(function(data) {
 				$scope.lastEdit = item.Pid;
-				$scope.popoverItemOriginal.Quantity = data;
+				$scope.popoverItemOriginal.Quantity += i.UpdateQuantity;
 			}, function(err) {
 				$scope.lastEdit = null;
 				$scope.alert.error(common.getError(err));

@@ -20,7 +20,9 @@ angular.module('umeSelect')
                 hideIcon: '=?hideIcon',
                 disabled: '&?ngDisabled',
                 strictMode: '=?strictMode',
-                required: '=?ncRequired'
+                required: '=?ncRequired',
+                uniqueTag: '=?uniqueTag',
+                blockDuplicateTag: '=?blockDuplicateTag'
             },
             replace: true,
             priority: 1010,
@@ -32,16 +34,17 @@ angular.module('umeSelect')
                 var templateHTML = $templateCache.get(tmpl);
                 return templateHTML;
             },
-            link: function (scope, element, attrs, ngModel, transclude) {                
-                
+            link: function (scope, element, attrs, ngModel, transclude) {
+
                 ngModel.$validators.required = function(modelValue, viewValue) {
-                   console.log(scope.required , 'scope.required');
+                   // console.log(scope.required , 'scope.required');
+                   //TODO: erm wtf
                    if(scope.required && (!modelValue || modelValue.BrandId == 0 || !modelValue.BrandId)){
                        return false;
                    }
-                   return true; 
+                   return true;
                 };
-                
+
                 attrs.$observe('required', function(val) {
                     ngModel.$validate();
                 });
@@ -57,12 +60,15 @@ angular.module('umeSelect')
                 }
 
                 //State variables
-                //E_STATE is error state that is used by 
+                //E_STATE is error state that is used by
                 //customValidation events such as tag limiting
                 //to notify $validator that there is an error
                 //It is not conventional because, who knows.
-                scope.E_STATE = null; 
+                scope.E_STATE = null;
                 var STATE_MAXTAGBLOCKED = 1;
+                var STATE_MAXLENGTHBLOCK = 2;
+                var STATE_DUPLICATE_BLOCKED = 3;
+
                 scope.focused = false;
                 scope.loading = false;
 
@@ -74,7 +80,7 @@ angular.module('umeSelect')
                 scope.$watch('model', function(value, oldValue){
 
                     //Update ng model
-                    
+
                     ngModel.$setViewValue(value);
 
                     if(!initModel || _.isEmpty(oldValue)){
@@ -89,7 +95,7 @@ angular.module('umeSelect')
                 }, true);
 
                 scope.$watch('E_STATE', function(value, oldValue){
-                    
+
                     if(!initState || _.isEmpty(oldValue)){
                         initState = true;
                         return;
@@ -107,7 +113,7 @@ angular.module('umeSelect')
                     maxTagCount = val;
                     ngModel.$validate();
                 });
- 
+
                 attrs.$observe('maxLengthPerTag', function(val) {
                     maxLengthPerTag = val;
                     ngModel.$validate();
@@ -119,11 +125,21 @@ angular.module('umeSelect')
                 });
 
                 ngModel.$validators.maxTagCount = function(modelValue, viewValue) {
-
-                    var value = modelValue || viewValue;
                     if(scope.E_STATE == STATE_MAXTAGBLOCKED) return false;
-                    return !maxTagCount || !value || (value.length <= maxTagCount);
+                    return true;
                 };
+
+                ngModel.$validators.maxLengthPerTag = function(modelValue, viewValue) {
+                    if(scope.E_STATE == STATE_MAXLENGTHBLOCK) return false;
+                    return true;
+                };
+
+                ngModel.$validators.duplicateTagBlock = function(modelValue, viewValue){
+
+                    if(scope.E_STATE == STATE_DUPLICATE_BLOCKED) return false;
+                    return true;
+                }
+
 
                 //Watch change on input choices
                 scope.$watchCollection('originalChoices()', function(data){
@@ -145,7 +161,7 @@ angular.module('umeSelect')
                             return d;
                         });
                     }
-                    
+
                     // console.log('sortedData', sortedData);
                     if(scope.strictMode){
                         //strictly filter by search text
@@ -153,7 +169,7 @@ angular.module('umeSelect')
                         searchObj[scope.displayBy] = scope.searchText;
                         sortedData = $filter('filter')(sortedData, searchObj)
                     }
-                    
+
                     scope.choices = sortedData;
                 });
 
@@ -162,11 +178,9 @@ angular.module('umeSelect')
                 var _id = (new Date()).getTime()*Math.random() + "R";
                 scope._id =  _id;
 
-                //Delete item from tag list 
+                //Delete item from tag list
                 scope.breakUp = function(index){
                     if(!scope.inRelationship && !scope.itsComplicated) {
-                        //You can only break up when you re in relationship
-                        console.log('You can only break up when you re in relationship or when its complicated')
                         return;
                     }
 
@@ -180,8 +194,11 @@ angular.module('umeSelect')
                 }
 
                 //Tokenize string into tag object
-                scope.tagify = function(tagValue){
+                scope.tagify = function(tagValue, draft){
                     var X = {};
+                    if(draft){
+                      X._draft = true;
+                    }
                     if(!scope.displayBy) return tagValue;
                     _.set(X, scope.displayBy, tagValue);
                     return X;
@@ -189,6 +206,7 @@ angular.module('umeSelect')
 
                 //In complicated mode (multiple)
                 if(scope.itsComplicated){
+                    if(!scope.choices) scope.choices = [];
                     scope.choices.unshift(scope.tagify('New Tag'));
                 }
 
@@ -209,8 +227,8 @@ angular.module('umeSelect')
 
                         $timeout(function (){
                             scope.$emit('focusLost', _id);
-                            // var K = $filter('filter')(scope.choices, scope.searchText);
-                            var K = (scope.searchText.length > 0 ? scope.choices : scope.initialChoices);
+                            // var K = $filter('filter')((scope.choices || []), scope.searchText);
+                            var K = (scope.searchText.length > 0 ? (scope.choices || []) : scope.initialChoices);
                             var result= scope.pickItem(K[scope.highlightedIndex]);
                             if(!result){
                                 scope.$emit('focusObtained', _id);
@@ -224,8 +242,8 @@ angular.module('umeSelect')
                         if(_.isArray(scope.model) && scope.model.length > 0) scope.model.pop();
                     }
 
-                    if(scope.highlightedIndex >= scope.choices.length){
-                        scope.highlightedIndex = scope.choices.length - 1;
+                    if(scope.highlightedIndex >= (scope.choices || []).length){
+                        scope.highlightedIndex = (scope.choices || []).length - 1;
                     }
 
                     if(scope.highlightedIndex <= 0){
@@ -239,7 +257,8 @@ angular.module('umeSelect')
                     //but long enough to trigger a blur which deactivates choices
                     $timeout(function(){
                         scope.focused = false;
-                    }, 500)
+                        scope.searchText = "";
+                    }, 350)
                 }
 
                 scope.focus = function(broadcast){
@@ -265,16 +284,17 @@ angular.module('umeSelect')
                 scope.$watch('searchText', function () {
 
                     if(_.isEmpty(scope.searchText)) return;
-                    
+
                     if(!scope.itsComplicated) {
                         //when its complicated, you are out of options
-                        scope.choices = []; 
+                        scope.choices = [];
                     }
 
                     if(scope.itsComplicated){
-                        scope.choices[0] = scope.tagify(scope.searchText);
+                        if(!scope.choices) scope.choices = [];
+                        scope.choices[0] = scope.tagify(scope.searchText, true);
                     }
-                    
+
                     scope.highlightedIndex = 0;
 
 
@@ -287,13 +307,13 @@ angular.module('umeSelect')
                         $timeout.cancel(scope.delay);
                     }
 
-                    searchTextTimeout = $timeout(function() {                        
+                    searchTextTimeout = $timeout(function() {
                         //If this is same as previous request, dont do it
                         var curDate = new Date();
                         var tooShort = ((curDate - prevQ.ts) < 3000);
-                        var previousWasntEmpty = (scope.choices.length > 0);
-                        if(prevQ.searchText == scope.searchText 
-                            && tooShort && previousWasntEmpty) return; 
+                        var previousWasntEmpty = ((scope.choices || []).length > 0);
+                        if(prevQ.searchText == scope.searchText
+                            && tooShort && previousWasntEmpty) return;
 
                         //execute search
                         scope.loading = true;
@@ -304,7 +324,7 @@ angular.module('umeSelect')
                             scope.refresh(scope.searchText).then(function(){
                                 loadQ.pop();
                                 scope.loading = false;
-                                scope.notFound = (scope.choices.length == 0);
+                                scope.notFound = ((scope.choices || []).length == 0);
                             });
                         }catch(ex){
                             //Ugh
@@ -316,6 +336,26 @@ angular.module('umeSelect')
                 })
 
                 scope.pickItem = function(item){
+
+                    if(scope.blockDuplicateTag){
+                        //check for dupe
+                        var found = false;
+                        if(scope.itsComplicated){
+                            //check shallow
+                            found =  _.find(scope.model, function(o) { return o == item; });
+
+                        }else{
+                            //check deep
+                            found =  _.find(scope.model, function(o) { return o[scope.displayBy] == item[scope.displayBy]; });
+                        }
+
+                        if(found){
+                            scope.E_STATE = STATE_DUPLICATE_BLOCKED;
+                            ngModel.$setDirty();
+                            ngModel.$validate();
+                            return false;
+                        }
+                    }
 
                     //Action to perform when user select a choice
                     //if in love (such as in relationship or its-complicated)
@@ -334,11 +374,38 @@ angular.module('umeSelect')
                     }
 
                     if(!item) return false;
+                    scope.E_STATE = null;
                     if(_.isArray(scope.model) && maxTagCount){
-                        if(scope.model.length >= maxTagCount){
+
+                        if(scope.model.length >= Number(maxTagCount)){
                             finishListModel();
                             scope.E_STATE = STATE_MAXTAGBLOCKED; //error state
-                            console.log('scope.E_STATE', scope.E_STATE);
+                            ngModel.$setDirty();
+                            ngModel.$validate();
+
+                            //Clear error message after 3 seconds
+                            $timeout(function(){
+                                scope.E_STATE = null;
+                                ngModel.$validate();
+                            }, 3000);
+
+                            return true;
+                        }
+
+                    }
+
+                    if(maxLengthPerTag){
+                        if(!_.isObject(item) && item.length > Number(maxLengthPerTag)){
+                            finishListModel();
+                            scope.E_STATE = STATE_MAXLENGTHBLOCK; //error state
+                            ngModel.$setDirty();
+                            ngModel.$validate();
+
+                            $timeout(function(){
+                                scope.E_STATE = null;
+                                ngModel.$validate();
+                            }, 3000);
+
                             return true;
                         }
                     }
@@ -354,7 +421,7 @@ angular.module('umeSelect')
                         scope.model = item;
                         finishSingleModel();
                     }
-                    
+
 
                     if(scope.autoClearSearch){
                         scope.searchText = "";
@@ -366,7 +433,7 @@ angular.module('umeSelect')
                 }
 
                 if(!scope.placeholder) scope.placeholder = "Select one..";
-                return false; 
+                return false;
             }
         };
     });
