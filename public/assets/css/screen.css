@@ -14209,22 +14209,26 @@ label.css-label {
 /* line 793, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column {
   margin-top: 15px;
-  padding-left: 0px;
   -webkit-padding-start: 0px;
+  -moz-padding-start: 0px;
+  -khtml-padding-start: 0px;
+  -o-padding-start: 0px;
+  padding-start: 0px;
+  padding-left: 0px;
   height: 290px;
   overflow-y: auto;
   list-style: none;
   border: 1px solid #BCC7D5;
   border-radius: 3px;
 }
-/* line 802, ../../../assets/_components.scss */
+/* line 806, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li {
   padding-left: 15px;
   padding-right: 15px;
   line-height: 30px;
   cursor: pointer;
 }
-/* line 807, ../../../assets/_components.scss */
+/* line 811, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li .column-1 {
   margin-left: 15px;
   display: inline-block;
@@ -14234,68 +14238,73 @@ label.css-label {
   text-overflow: ellipsis;
   float: left;
 }
-/* line 816, ../../../assets/_components.scss */
+/* line 820, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li .column-2 {
   margin-left: 40px;
   display: inline-block;
   float: left;
 }
-/* line 821, ../../../assets/_components.scss */
+/* line 825, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li .column-3 {
   margin-left: 90px;
   display: inline-block;
   float: left;
 }
-/* line 827, ../../../assets/_components.scss */
+/* line 831, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li.disabled {
   cursor: not-allowed !important;
   background: #EDF2F9 !important;
   color: #BCC7D5 !important;
 }
-/* line 832, ../../../assets/_components.scss */
+/* line 836, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li.active {
   background: #4899DD;
   color: #FFFFFF;
 }
 
 /*----- Newsletter Header -----*/
-/* line 843, ../../../assets/_components.scss */
+/* line 847, ../../../assets/_components.scss */
 .modal .modal-content .newsletter-modal-header {
   border-bottom: 1px solid #BCC7D5;
   padding-bottom: 15px;
   margin-bottom: 15px;
 }
-/* line 847, ../../../assets/_components.scss */
+/* line 851, ../../../assets/_components.scss */
 .modal .modal-content .newsletter-modal-header button.close > span {
   margin-top: -14px;
   color: #32343C;
 }
 
 /*---- Export List ----*/
-/* line 856, ../../../assets/_components.scss */
+/* line 860, ../../../assets/_components.scss */
 .export-list {
   margin-left: 30px;
   margin-bottom: 15px;
   list-style-type: none;
   -webkit-padding-start: 0px;
+  -moz-padding-start: 0px;
+  -khtml-padding-start: 0px;
+  -o-padding-start: 0px;
+  padding-start: 0px;
+  padding-left: 0px;
 }
-/* line 861, ../../../assets/_components.scss */
+/* line 870, ../../../assets/_components.scss */
 .export-list li {
   margin-bottom: 5px;
 }
-/* line 864, ../../../assets/_components.scss */
+/* line 873, ../../../assets/_components.scss */
 .export-list .group-label {
   font-weight: bold;
   margin: 20px 0px 5px 0px;
 }
 
-/* line 869, ../../../assets/_components.scss */
+/* line 878, ../../../assets/_components.scss */
 .export-select-all {
   margin-left: 30px;
 }
 
 /*---- Empty Section ----*/
-/* line 874, ../../../assets/_components.scss */
+/* line 883, ../../../assets/_components.scss */
 .empty-section {
   border: 1px solid;
   border-color: #BCC7D5;
@@ -14303,7 +14312,7 @@ label.css-label {
   height: 80px;
   line-height: 80px;
 }
-/* line 880, ../../../assets/_components.scss */
+/* line 889, ../../../assets/_components.scss */
 .empty-section .loading-img {
   width: 40px;
   height: 40px;
@@ -14594,52 +14603,57 @@ form h6 {
 /* line 202, ../../../assets/_form.sass */
 .ah-form .scrollable-field .scrollable-content {
   -webkit-padding-start: 0px;
+  -moz-padding-start: 0px;
+  -khtml-padding-start: 0px;
+  -o-padding-start: 0px;
+  padding-start: 0px;
+  padding-left: 0px;
   height: 230px;
   overflow-y: auto;
   list-style: none;
   border: 1px solid #BCC7D5;
   border-radius: 3px;
 }
-/* line 209, ../../../assets/_form.sass */
+/* line 214, ../../../assets/_form.sass */
 .ah-form .scrollable-field .scrollable-content li {
   padding-left: 15px;
   padding-right: 15px;
   line-height: 30px;
 }
-/* line 214, ../../../assets/_form.sass */
+/* line 219, ../../../assets/_form.sass */
 .ah-form .help-block {
   margin-bottom: 0;
   font-size: 11px;
 }
-/* line 218, ../../../assets/_form.sass */
+/* line 223, ../../../assets/_form.sass */
 .ah-form .main-form-action {
   padding-top: 15px;
   padding-bottom: 15px;
   border-top: 1px solid #BCC7D5;
 }
-/* line 224, ../../../assets/_form.sass */
+/* line 229, ../../../assets/_form.sass */
 .ah-form .radio.multiline > label, .ah-form .checkbox.multiline > label {
   padding-top: 7px;
   display: block;
 }
-/* line 227, ../../../assets/_form.sass */
+/* line 232, ../../../assets/_form.sass */
 .ah-form .radio.multiline > label:first-child, .ah-form .checkbox.multiline > label:first-child {
   padding-top: 0;
 }
-/* line 230, ../../../assets/_form.sass */
+/* line 235, ../../../assets/_form.sass */
 .ah-form .radio.multiple-radio > label {
   margin-right: 15px;
 }
-/* line 233, ../../../assets/_form.sass */
+/* line 238, ../../../assets/_form.sass */
 .ah-form .checkbox.multiple-checkbox > label {
   margin-right: 15px;
 }
-/* line 237, ../../../assets/_form.sass */
+/* line 242, ../../../assets/_form.sass */
 .ah-form a.required, .ah-form span.required, .ah-form label.required {
   position: relative;
   display: inline-block;
 }
-/* line 240, ../../../assets/_form.sass */
+/* line 245, ../../../assets/_form.sass */
 .ah-form a.required:after, .ah-form span.required:after, .ah-form label.required:after {
   display: block;
   content: "*";
@@ -14650,19 +14664,19 @@ form h6 {
   font-size: 16px;
   line-height: 1;
 }
-/* line 250, ../../../assets/_form.sass */
+/* line 255, ../../../assets/_form.sass */
 .ah-form .main-form-action .btn ~ .btn {
   margin-left: 10px;
 }
-/* line 253, ../../../assets/_form.sass */
+/* line 258, ../../../assets/_form.sass */
 .ah-form .input-with-unit {
   position: relative;
 }
-/* line 255, ../../../assets/_form.sass */
+/* line 260, ../../../assets/_form.sass */
 .ah-form .input-with-unit input.form-control {
   padding-right: 50px;
 }
-/* line 257, ../../../assets/_form.sass */
+/* line 262, ../../../assets/_form.sass */
 .ah-form .input-with-unit .input-unit {
   position: absolute;
   right: 7px;
@@ -14670,7 +14684,7 @@ form h6 {
   color: #BCC7D5;
   pointer-events: none;
 }
-/* line 265, ../../../assets/_form.sass */
+/* line 270, ../../../assets/_form.sass */
 .ah-form .multiple-input {
   margin-left: -7px;
   margin-right: -8px;
@@ -14684,7 +14698,7 @@ form h6 {
 .ah-form .multiple-input:after {
   clear: both;
 }
-/* line 269, ../../../assets/_form.sass */
+/* line 274, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column {
   position: relative;
   float: left;
@@ -14694,23 +14708,23 @@ form h6 {
   padding-right: 7.5px;
   width: 120px;
 }
-/* line 270, ../../../assets/_form.sass */
+/* line 275, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column > label {
   padding-top: 7px;
 }
-/* line 272, ../../../assets/_form.sass */
+/* line 277, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column.no-label {
   padding-top: 31px;
 }
-/* line 278, ../../../assets/_form.sass */
+/* line 283, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column.input-xl {
   width: 150px;
 }
-/* line 281, ../../../assets/_form.sass */
+/* line 286, ../../../assets/_form.sass */
 .ah-form .multiple-input .input-column.input-xxl {
   width: 200px;
 }
-/* line 287, ../../../assets/_form.sass */
+/* line 292, ../../../assets/_form.sass */
 .ah-form select.form-control {
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -14719,15 +14733,15 @@ form h6 {
   background-image: url("/assets/img/dropdown.png");
   background-size: 9px 6px;
 }
-/* line 294, ../../../assets/_form.sass */
+/* line 299, ../../../assets/_form.sass */
 .ah-form .ah-select2-dropdown {
   width: 100%;
 }
-/* line 297, ../../../assets/_form.sass */
+/* line 302, ../../../assets/_form.sass */
 .ah-form.sticky-mainform-action {
   padding-bottom: 64px;
 }
-/* line 299, ../../../assets/_form.sass */
+/* line 304, ../../../assets/_form.sass */
 .ah-form.sticky-mainform-action .main-form-action {
   z-index: 9;
   position: fixed;
@@ -14737,29 +14751,29 @@ form h6 {
   background: #fff;
 }
 
-/* line 308, ../../../assets/_form.sass */
+/* line 313, ../../../assets/_form.sass */
 .form-inline .width-field-small-input {
   width: 230px;
 }
 
 /*---- Tagsinput ---- */
-/* line 313, ../../../assets/_form.sass */
+/* line 318, ../../../assets/_form.sass */
 .ahpt .bootstrap-tagsinput {
   padding-top: 7px;
   width: 100%;
 }
-/* line 317, ../../../assets/_form.sass */
+/* line 322, ../../../assets/_form.sass */
 .ahpt .bootstrap-tagsinput.tagsinput-plain {
   border: none;
   box-shadow: none;
   padding-left: 0;
   cursor: initial;
 }
-/* line 323, ../../../assets/_form.sass */
+/* line 328, ../../../assets/_form.sass */
 .ahpt .bootstrap-tagsinput .label-info {
   background-color: #b4ddff;
 }
-/* line 325, ../../../assets/_form.sass */
+/* line 330, ../../../assets/_form.sass */
 .ahpt .bootstrap-tagsinput .label {
   font-size: 100%;
   color: #32343C;
@@ -14768,38 +14782,38 @@ form h6 {
 }
 
 /*---- Select 2 ---- */
-/* line 333, ../../../assets/_form.sass */
+/* line 338, ../../../assets/_form.sass */
 .ahpt .input-with-unit .select2-container--default .select2-selection .select2-selection__rendered {
   padding-right: 45px;
 }
-/* line 335, ../../../assets/_form.sass */
+/* line 340, ../../../assets/_form.sass */
 .ahpt .input-with-unit .select2-container--default .select2-selection .select2-selection__rendered {
   padding-right: 15px;
 }
-/* line 340, ../../../assets/_form.sass */
+/* line 345, ../../../assets/_form.sass */
 .ahpt .select2-container--default .select2-selection, .ahpt .select2-container--default.select2-container--focus .select2-selection {
   border-color: #BCC7D5;
 }
-/* line 346, ../../../assets/_form.sass */
+/* line 351, ../../../assets/_form.sass */
 .ahpt .select2-container .select2-selection {
   min-height: 34px;
 }
-/* line 349, ../../../assets/_form.sass */
+/* line 354, ../../../assets/_form.sass */
 .ahpt .select2-container .select2-search--inline .select2-search__field {
   margin-top: 7px;
 }
-/* line 352, ../../../assets/_form.sass */
+/* line 357, ../../../assets/_form.sass */
 .ahpt .select2-container--default .select2-selection .select2-selection__choice {
   line-height: 20px;
   color: #32343C;
   background-color: #b4ddff;
   border-color: #b4ddff;
 }
-/* line 358, ../../../assets/_form.sass */
+/* line 363, ../../../assets/_form.sass */
 .ahpt .select2-container--default .select2-selection--single .select2-selection__rendered {
   line-height: 32px;
 }
-/* line 361, ../../../assets/_form.sass */
+/* line 366, ../../../assets/_form.sass */
 .ahpt .select2-container--default .select2-selection .select2-selection__choice__remove {
   line-height: 20px;
   float: right;
@@ -14808,22 +14822,22 @@ form h6 {
   color: #32343C;
   font-weight: bold;
 }
-/* line 370, ../../../assets/_form.sass */
+/* line 375, ../../../assets/_form.sass */
 .ahpt .select2-container--open .select2-dropdown--below {
   border-color: #BCC7D5;
 }
-/* line 373, ../../../assets/_form.sass */
+/* line 378, ../../../assets/_form.sass */
 .ahpt .ah-select2-dropdown .select2-selection--multiple {
   cursor: pointer;
 }
-/* line 376, ../../../assets/_form.sass */
+/* line 381, ../../../assets/_form.sass */
 .ahpt .ah-select2-dropdown .select2-container .select2-selection {
   background-position: right 6px center;
   background-repeat: no-repeat;
   background-image: url("/assets/img/dropdown.png");
   background-size: 9px 6px;
 }
-/* line 382, ../../../assets/_form.sass */
+/* line 387, ../../../assets/_form.sass */
 .ahpt .select2-container--default .select2-selection .select2-selection__arrow {
   display: none;
 }
@@ -16649,29 +16663,34 @@ ng-transclude.has-error .form-control {
 /* line 49, ../../../assets/_additional_code.scss */
 .import-page ol {
   -webkit-padding-start: 15px;
+  -moz-padding-start: 15px;
+  -khtml-padding-start: 15px;
+  -o-padding-start: 15px;
+  padding-start: 15px;
+  padding-left: 15px;
 }
 
-/* line 53, ../../../assets/_additional_code.scss */
+/* line 58, ../../../assets/_additional_code.scss */
 .image-wrapper {
   border: 1px solid #BCC7D5;
   border-radius: 3px;
   background-color: #EDF2F9;
 }
 
-/* line 59, ../../../assets/_additional_code.scss */
+/* line 64, ../../../assets/_additional_code.scss */
 .signature-box {
   border-bottom: 1px solid #32343c;
   min-height: 88px;
 }
 
-/* line 63, ../../../assets/_additional_code.scss */
+/* line 68, ../../../assets/_additional_code.scss */
 .signature-provider {
   margin-top: 8px;
   font-size: 14px;
   text-align: center;
 }
 
-/* line 69, ../../../assets/_additional_code.scss */
+/* line 74, ../../../assets/_additional_code.scss */
 ul[dnd-list] .dndPlaceholder {
   display: block;
   padding-left: 15px;
@@ -16682,7 +16701,7 @@ ul[dnd-list] .dndPlaceholder {
   background: white;
 }
 
-/* line 78, ../../../assets/_additional_code.scss */
+/* line 83, ../../../assets/_additional_code.scss */
 ul[dnd-list] .dndDraggingSource {
   display: none !important;
 }
