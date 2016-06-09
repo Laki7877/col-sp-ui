@@ -253,6 +253,7 @@ describe('Automated Man', function() {
     browser.sleep(1000);
     element(by.model('variantPtr.MaxQtyPreOrder')).clear().sendKeys(99);
     browser.sleep(1000);
+    browser.executeScript('window.scrollTo(0,4400);');
     var has_expiry_date = element(by.model('variantPtr.IsHasExpiryDate'));
     selectDropdown(has_expiry_date,'2');
   });
@@ -274,10 +275,10 @@ describe('Automated Man', function() {
     element(by.model('variantPtr.Height')).sendKeys(randomX(3));
     element(by.model('variantPtr.Width')).sendKeys(randomX(3));
 
+    browser.executeScript('window.scrollTo(0,5200);');
+
     var dimension_unit = element(by.model('variantPtr.DimensionUnit'));
     selectDropdown(dimension_unit,'2');
-
-    browser.executeScript('window.scrollTo(0,5200);');
 
     element(by.model('variantPtr.Weight')).sendKeys(randomX(3));
 
@@ -288,89 +289,89 @@ describe('Automated Man', function() {
 
   });
 
-  // it('should fill out "Product Images" in "Image Tab"', function(){
-  //
-  //   browser.executeScript('window.scrollTo(0,0);');
-  //   element(by.xpath('//a[@href="#images"]')).click();
-  //
-  //   var path = require('path');
-  //   var fileToUpload = 'images/1600x1600A.jpg';
-  //   var absolutePath = path.resolve(__dirname, fileToUpload);
-  //
-  //   $('input[type="file"]').sendKeys(absolutePath);
-  //   browser.sleep(3000);
-  //
-  //   var EC = protractor.ExpectedConditions;
-  //   var video_link = element(by.model('variantPtr.VideoLinks[$index].Url'));
-  //   browser.wait(EC.visibilityOf(video_link), 5000);
-  //   video_link.sendKeys('https://www.youtube.com/watch?v=f78M4nKW1Ms');
-  //
-  //   //saveChanges('.main-form-action .btn-white');
-  //
-  //   browser.sleep(defaultSleep);
-  // });
-  //
-  // it('should fill out "Global and Local Category" in "Category Tab"', function(){
-  //
-  //   browser.executeScript('window.scrollTo(0,0);');
-  //   element(by.xpath('//a[@href="#category"]')).click();
-  //   element(by.css('.panel-select-global-category .fa-plus-circle')).click();
-  //
-  //   browser.sleep(defaultSleep);
-  //
-  //   selectGlobalCategory('Imaginary Land','Film Camera & Accessories');
-  //
-  //   element(by.css('.panel-select-local-category .fa-plus-circle')).click();
-  //
-  //   selectGlobalCategory('Dont Delete Me','Test Local Category');
-  //
-  // });
-  //
-  // it('should fill out "SEO" in "More Options Tab"', function(){
-  //
-  //   browser.executeScript('window.scrollTo(0,0);');
-  //   element(by.xpath('//a[@href="#moreoption"]')).click();
-  //
-  //   browser.sleep(defaultSleep);
-  //
-  //   element(by.model('variantPtr.SEO.SeoEn')).sendKeys('SeoEn ' + randomX(3));
-  //   element(by.model('variantPtr.SEO.SeoTh')).sendKeys('SeoTh ' + randomX(3));
-  //   element(by.model('variantPtr.SEO.MetaTitleEn')).sendKeys('MetaTitleEn ' + randomX(3));
-  //   element(by.model('variantPtr.SEO.MetaTitleTh')).sendKeys('MetaTitleTh ' + randomX(3));
-  //   element(by.model('variantPtr.SEO.MetaDescriptionEn')).sendKeys('MetaDescriptionEn ' + randomX(3));
-  //   element(by.model('variantPtr.SEO.MetaDescriptionTh')).sendKeys('MetaDescriptionTh ' + randomX(3));
-  //   element(by.model('variantPtr.SEO.MetaKeywordEn')).sendKeys('MetaKeywordEn ' + randomX(3));
-  //   element(by.model('variantPtr.SEO.MetaKeywordTh')).sendKeys('MetaKeywordTh ' + randomX(3));
-  //   element(by.model('variantPtr.SEO.ProductUrlKeyEn')).clear().sendKeys('url-key-' + randomX(10));
-  //   element(by.model('variantPtr.SEO.ProductBoostingWeight')).clear().sendKeys(randomX(4));
-  //
-  // });
-  //
-  // it('should fill out "More Detail" in "More Options Tab"', function(){
-  //   browser.executeScript('window.scrollTo(0,1300);');
-  //
-  //   element(by.css('#dropdown2')).click();
-  //   selectDate();
-  //
-  //   element(by.css('#dropdown3')).click();
-  //   element(by.css('.open .dropdown-menu .glyphicon-arrow-right')).click();
-  //   selectDate();
-  //
-  //   element(by.css('#dropdown4')).click();
-  //   selectDate();
-  //
-  //   var gift_wrap = element(by.model('formData.GiftWrap'));
-  //   selectDropdown(gift_wrap,'2');
-  //
-  //   element(by.model('formData.ControlFlags.IsNew')).click();
-  //   element(by.model('formData.ControlFlags.IsClearance')).click();
-  //   element(by.model('formData.ControlFlags.IsBestSeller')).click();
-  //   element(by.model('formData.ControlFlags.IsOnlineExclusive')).click();
-  //   element(by.model('formData.ControlFlags.IsOnlyAt')).click();
-  //   element(by.model('formData.Remark')).sendKeys('Remark ' + randomX(4));
-  //
-  // });
-  //
+  it('should fill out "Product Images" in "Image Tab"', function(){
+
+    browser.executeScript('window.scrollTo(0,0);');
+    element(by.xpath('//a[@href="#images"]')).click();
+
+    var path = require('path');
+    var fileToUpload = 'images/1600x1600A.jpg';
+    var absolutePath = path.resolve(__dirname, fileToUpload);
+
+    $('input[type="file"]').sendKeys(absolutePath);
+    browser.sleep(3000);
+
+    var EC = protractor.ExpectedConditions;
+    var video_link = element(by.model('variantPtr.VideoLinks[$index].Url'));
+    browser.wait(EC.visibilityOf(video_link), 5000);
+    video_link.sendKeys('https://www.youtube.com/watch?v=f78M4nKW1Ms');
+
+    //saveChanges('.main-form-action .btn-white');
+
+    browser.sleep(defaultSleep);
+  });
+
+  it('should fill out "Global and Local Category" in "Category Tab"', function(){
+
+    browser.executeScript('window.scrollTo(0,0);');
+    element(by.xpath('//a[@href="#category"]')).click();
+    element(by.css('.panel-select-global-category .fa-plus-circle')).click();
+
+    browser.sleep(defaultSleep);
+
+    selectGlobalCategory('Imaginary Land','Film Camera & Accessories');
+
+    element(by.css('.panel-select-local-category .fa-plus-circle')).click();
+
+    selectGlobalCategory('Dont Delete Me','Test Local Category');
+
+  });
+
+  it('should fill out "SEO" in "More Options Tab"', function(){
+
+    browser.executeScript('window.scrollTo(0,0);');
+    element(by.xpath('//a[@href="#moreoption"]')).click();
+
+    browser.sleep(defaultSleep);
+
+    element(by.model('variantPtr.SEO.SeoEn')).sendKeys('SeoEn ' + randomX(3));
+    element(by.model('variantPtr.SEO.SeoTh')).sendKeys('SeoTh ' + randomX(3));
+    element(by.model('variantPtr.SEO.MetaTitleEn')).sendKeys('MetaTitleEn ' + randomX(3));
+    element(by.model('variantPtr.SEO.MetaTitleTh')).sendKeys('MetaTitleTh ' + randomX(3));
+    element(by.model('variantPtr.SEO.MetaDescriptionEn')).sendKeys('MetaDescriptionEn ' + randomX(3));
+    element(by.model('variantPtr.SEO.MetaDescriptionTh')).sendKeys('MetaDescriptionTh ' + randomX(3));
+    element(by.model('variantPtr.SEO.MetaKeywordEn')).sendKeys('MetaKeywordEn ' + randomX(3));
+    element(by.model('variantPtr.SEO.MetaKeywordTh')).sendKeys('MetaKeywordTh ' + randomX(3));
+    element(by.model('variantPtr.SEO.ProductUrlKeyEn')).clear().sendKeys('url-key-' + randomX(10));
+    element(by.model('variantPtr.SEO.ProductBoostingWeight')).clear().sendKeys(randomX(4));
+
+  });
+
+  it('should fill out "More Detail" in "More Options Tab"', function(){
+    browser.executeScript('window.scrollTo(0,1300);');
+
+    element(by.css('#dropdown2')).click();
+    selectDate();
+
+    element(by.css('#dropdown3')).click();
+    element(by.css('.open .dropdown-menu .glyphicon-arrow-right')).click();
+    selectDate();
+
+    element(by.css('#dropdown4')).click();
+    selectDate();
+
+    var gift_wrap = element(by.model('formData.GiftWrap'));
+    selectDropdown(gift_wrap,'2');
+
+    element(by.model('formData.ControlFlags.IsNew')).click();
+    element(by.model('formData.ControlFlags.IsClearance')).click();
+    element(by.model('formData.ControlFlags.IsBestSeller')).click();
+    element(by.model('formData.ControlFlags.IsOnlineExclusive')).click();
+    element(by.model('formData.ControlFlags.IsOnlyAt')).click();
+    element(by.model('formData.Remark')).sendKeys('Remark ' + randomX(4));
+
+  });
+
   it('should add "Variant" in "Variation Tab"', function(){
 
     browser.executeScript('window.scrollTo(0,0);');
