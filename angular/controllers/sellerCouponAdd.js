@@ -1,4 +1,4 @@
-module.exports = function ($scope, $rootScope, $controller, $uibModal, $window, NcAlert, SellerCouponService, LocalCategoryService, Category, Product, config) {
+module.exports = function ($scope, $rootScope, $controller, $uibModal, $window, NcAlert, SellerCouponService, LocalCategoryService, Category, Product, util, config) {
     'ngInject';
     $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
     $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
@@ -18,10 +18,13 @@ module.exports = function ($scope, $rootScope, $controller, $uibModal, $window, 
     });
 
     // load product in shop
-    Product.list({ SearchText : '' })
-    .then(function (res) {
-        $scope.products = res.data;
-    });
+    function loadAllProductInShop() {
+        Product.getProductLive({ SearchText: '' })
+        .then(function (res) {
+            $scope.products = res.data;
+        });
+    }
+    loadAllProductInShop();
 
     // exclde product
     $scope.exclude = function (categoryId) {
@@ -97,7 +100,7 @@ module.exports = function ($scope, $rootScope, $controller, $uibModal, $window, 
                     $scope.loading  = true;
                     $scope.empty    = false;
 
-                    Product.list({ SearchText: searchText })
+                    Product.getProductLive({ SearchText: searchText, CategoryId: category.CategoryId })
                     .then(function (res) {
                         $scope.products = [];
                         angular.forEach(res.data, function (p) {
@@ -113,6 +116,7 @@ module.exports = function ($scope, $rootScope, $controller, $uibModal, $window, 
                             $scope.empty = false;
                     });
                 };
+                $scope.searchProduct('');
 
                 $scope.ok = function () {
 
@@ -146,9 +150,43 @@ module.exports = function ($scope, $rootScope, $controller, $uibModal, $window, 
                 $scope.formData.Conditions.FilterBy.LocalCategories.push(data);
             }
 
-            console.log($scope.formData)
-
         });
+    };
+
+    $scope.filterBySelected = function (item) {
+        
+        if ($scope.formData.Conditions.Include.length > 0
+            || $scope.formData.Conditions.Exclude.length > 0
+            || $scope.formData.Conditions.FilterBy.LocalCategories.length > 0) {
+
+            $scope.formData.Conditions.Include = [];
+            $scope.formData.Conditions.Exclude = [];
+            $scope.formData.Conditions.FilterBy.LocalCategories = [];
+            loadAllProductInShop();
+        }
+
+    };
+
+    $scope.includeOrExcludeSelected = function (item) {
+
+        // remove item in products after included
+        var index = $scope.products.indexOf(item);
+        if (index > -1) {
+            $scope.products.splice(index, 1);
+        }
+    };
+
+    // check product item
+    function isItemSelected(pid) {
+        var includeIndex = $scope.formData.Conditions.Include.map(function (i) {
+            return i.Pid;
+        }).indexOf(pid);
+
+        var excludeIndex = $scope.formData.Conditions.Exclude.map(function (i) {
+            return i.Pid;
+        }).indexOf(pid);
+
+        return includeIndex > -1 || excludeIndex > -1;
     };
 
     // search product
@@ -156,7 +194,7 @@ module.exports = function ($scope, $rootScope, $controller, $uibModal, $window, 
 
         $scope.products = [];
 
-        Product.list({ SearchText: searchText })
+        Product.getProductLive({ SearchText: searchText })
         .then(function (res) {
             $scope.products = [];
             angular.forEach(res.data, function (p) {

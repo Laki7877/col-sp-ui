@@ -5,6 +5,14 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		'use strict';
 		var service = common.Rest('/ProductStages');
 
+		service.getProductLive = function (params) {
+		    return common.makeRequest({
+		        method: 'GET',
+		        url: '/Products',
+		        params: params
+		    });
+		}
+
 		service.getRevision = function (revId) {
 			return common.makeRequest({
 				method: 'GET',
