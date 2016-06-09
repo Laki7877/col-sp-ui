@@ -375,7 +375,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 						/*
 						*  `ma` is a dictionary with keys
 						*  equal to Attribute Id
-						*  UI uses ma to iterate (key,value) for each row
+						*  UI uses `ma` to iterate (key,value) for each row
 						*  of Attribute-like section. 
 						*/
 
