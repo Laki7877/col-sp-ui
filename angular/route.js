@@ -100,7 +100,7 @@ var admin = {
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'
 	},
-	'Content Report|fa-file-o': {
+	'Content Report|fa-file': {
 		'Create & Approve Product' : '/admin/summary/createandapprove',
 		'Product Status': '/admin/summary/productstatus',
 		'Product Info': '/admin/summary/productinfo',

@@ -1,3 +1,6 @@
+/**
+ * Validate if value is uppercase
+ */
 module.exports = function ($parse) {
     'ngInject';
     return {

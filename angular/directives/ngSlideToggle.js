@@ -1,3 +1,6 @@
+/**
+ * Slide down element
+ */
 module.exports = function() {
     'ngInject';
     return {

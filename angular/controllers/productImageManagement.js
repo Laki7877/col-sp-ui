@@ -1,5 +1,9 @@
+/**
+ * Handle product images
+ */
 module.exports = function ($scope, $controller, Product, util, NcAlert, $window, FileUploader, ImageService, config, common) {
     'ngInject';
+    //inherit from list ctrl
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
 		options: {
@@ -20,6 +24,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
 			],
 			reload: function(newObj, oldObj){
 				$scope.loading = true;
+				//check for changes
 				if(!_.isUndefined(newObj) && !_.isUndefined(oldObj)) {
 					if(newObj.searchText !== oldObj.searchText) {
 						$scope.params._offset = 0;
@@ -30,10 +35,12 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
 						$scope.bulkContainer.length = 0;
 					}
 				}
+				//get product variants
 				Product.getAllVariants($scope.params).then(function(data){
 					$scope.loading = false;
 			        $scope.ignored = true;
 			        $scope.list = data;
+			        //add alert bar for each entry
 			        _.forEach($scope.list.data, function(e) {
 			        	_.extend(e, {alert: new NcAlert() })
 			        });
@@ -48,6 +55,8 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
 			}
 		}
 	});
+
+	//prompt leaving on change
     util.warningOnLeave(function() {
     	return $scope.dirty;
     });
@@ -101,16 +110,19 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
 		]
 	};
 	$scope.dirty = false;
+	//image uploader
     $scope.uploader = ImageService.getUploader('/ProductImages', {
     	formData: { Type: 'Image' }
     });
     $scope.productStatus = config.PRODUCT_STATUS;
 
+    //callback for dropzone event
     $scope.onEvent = function(product, eventName) {
     	if(eventName == 'edit') {
     		product.Status = $scope.productStatus[0].value;
     	}
     }
+    //image uploader error events
     $scope.onError = function(item, response) {
     	item.alert.close();
     	if(response.name == 'queueFilter' || response.name == 'queueLimit') {
@@ -131,6 +143,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     		item.alert.error('<span class="font-weight-bold">Fail to upload photos</span><br/>Unknown error', null, false);
 		}
 	};
+	//dropzone disable
     $scope.isDisabled = function(product) {
     	return product.Status == $scope.productStatus[1].value || product.Status == $scope.productStatus[2].value;
     };
@@ -141,6 +154,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     	}
     	return false;
     };
+    //get dropzone template
     $scope.getTemplate = function(product) {
     	var images = null;
     	if(product.IsVariant) {
@@ -149,6 +163,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     		images = product.MasterImg;
     	}
 
+    	//check product status in config for more info
     	if($scope.productStatus[1].value == product.Status) {
     		//Wait for approval
     		return 'product/dropzone/waitForApproval';
@@ -158,6 +173,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
     		return 'product/dropzone/approved';
     	}
 
+    	//image size limit
 		if(images.length >= 10) {
 			return 'product/dropzone/reachMax';
 		} else {
@@ -190,6 +206,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
 
     	return !result;
     }
+    //saving all contents
     $scope.save = function() {
     	$scope.alert.close();
     	if(!$scope.validate()) {
@@ -208,6 +225,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
 			});
 		$scope.dirty = false;
 	};
+	// image missing should list by created dt
 	$scope.$watch('params._filter', function(n) {
 		if(n == 'ImageMissing') {
 			$scope.params._order = 'CreatedDt';
@@ -217,6 +235,7 @@ module.exports = function ($scope, $controller, Product, util, NcAlert, $window,
 			$scope.params._direction= 'desc';
 		}
 	});
+	// set dirty when there's change to image
     $scope.$watch('watcher', function(val, val2) {
     	if(!_.isUndefined(val2) && !$scope.ignored) {
     		$scope.dirty = true;

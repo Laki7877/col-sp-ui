@@ -1,3 +1,6 @@
+/**
+ * bulk action
+ */
 angular.module('nc')
 	.directive('ncBulk', function($templateCache, $uibModal) {
 		return {
@@ -17,12 +20,14 @@ angular.module('nc')
 
 					}
 				};
+				// bulk options
 				scope.options = _.concat(defaultOption, _.defaults(scope.options, []));
 				scope.model = _.defaults(scope.model, []);
 
 				scope.id = _.defaults(scope.id, null);
 				scope.select = scope.options[0];
 
+				// if bulk item is unique
 				scope.uniq = function(e) {
 					if(scope.id != null) {
 						if(_.isUndefined(e[scope.id])) {
@@ -36,6 +41,7 @@ angular.module('nc')
 				scope.selectOption = function(option) {
 					scope.select = option;
 				}
+				// remove unique when child change
 				scope.onChildChange = function(value, obj) {
 					if(value) {
 						scope.model = _.uniq(_.concat(scope.model, obj), scope.uniq);
@@ -47,6 +53,7 @@ angular.module('nc')
 						}
 					}
 				};
+				// find bulk child in container
 				scope.findChild = function(obj) {
 					if(_.isArray(obj)) {
 						return _.differenceBy(scope.model, obj, scope.uniq).length == (scope.model.length - obj.length);
@@ -56,12 +63,14 @@ angular.module('nc')
 						}));
 					}
 				};
+				// call bulk function api
 				scope.call = function() {
 					if(scope.select != scope.options[0]) {
 						if(scope.select.fail && scope.model.length == 0) {
 							scope.select.fail(scope.model);
 							return;
 						}
+						// modal confirmation
 						if(scope.select.confirmation) {
 							var modal = $uibModal.open({
 								animation: true,
@@ -92,7 +101,7 @@ angular.module('nc')
 									}
 								}
 							});
-							//Modal 
+							//modal resolution 
 							modal.result.then(function() {
 								scope.select.fn(scope.model, function() {
 									//cb to clear all entries
@@ -100,6 +109,7 @@ angular.module('nc')
 								});
 							});
 						} else if(scope.select.modal) {
+							//custom modal
 							var modal = $uibModal.open(_.merge({}, scope.select.modal, {
 								resolve: {
 									data: function() {
@@ -107,7 +117,7 @@ angular.module('nc')
 									}
 								}
 							}));
-							//Modal
+							//modal resolution
 							modal.result.then(function(data) {
 								scope.select.fn(scope.model, function() {
 									//cb to clear all entries
@@ -125,6 +135,7 @@ angular.module('nc')
 			}
 		}
 	})
+	//bulk checkbox
 	.directive('ncBulkCheckbox', function($templateCache) {
 		return {
 			restrict: 'E',
@@ -135,6 +146,7 @@ angular.module('nc')
 			},
 			template: $templateCache.get('common/ncBulkCheckbox'),
 			link: function(scope) {
+				// tagging for unique bulk tag
 				if (_.isUndefined(scope.tag)) {
 					scope.parent = angular.element(document).find('nc-bulk').isolateScope();
 				} else {
@@ -144,7 +156,7 @@ angular.module('nc')
 				scope.prevent = false;
 				scope.checkbox = false;
 				
-
+				// update parent model
 				var updateModel = function(val, val2) {
 					var checkbox = scope.parent.findChild(scope.model);
 					if(checkbox !== scope.checkbox) {
@@ -153,14 +165,17 @@ angular.module('nc')
 					}
 				};
 
+				// watch model change
 				scope.$watch('model', updateModel, true);
 				scope.$watch('checkbox', function(val, val2) {
 					if(scope.prevent) {
 						scope.prevent = false;
 						return;
 					}
+					// watch for child change
 					scope.parent.onChildChange(val, scope.model);
 				});
+				// watch this model change
 				scope.parent.$watch('model', updateModel, true);
 			}
 		}

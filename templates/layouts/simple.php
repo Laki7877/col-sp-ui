@@ -19,6 +19,7 @@
     <script src="<?= $this->asset('/assets/js/jquery.min.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/jquery.rest.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/bundle.js') ?>"></script>
+    <script src="<?= $this->asset('/assets/js/file-saver.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/bootstrap.min.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/bootstrap-fixconflict.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/jquery-ui.js') ?>"></script>
