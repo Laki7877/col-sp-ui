@@ -1,3 +1,6 @@
+/**
+ * Tradable select
+ */
 module.exports = function($templateCache, $filter) {
 	'ngInject';
 	return {
@@ -45,6 +48,7 @@ module.exports = function($templateCache, $filter) {
 				scope.select(_.findIndex(scope.model, function(e) { return e[scope.id] == item[scope.id] }), false);
 			};
 			
+			//transfer between two list
 			scope.transfer = function(direction) {
 				if(_.isNil(scope.active(direction))) {
 					return;
@@ -68,6 +72,7 @@ module.exports = function($templateCache, $filter) {
 					});
 				}
 			};
+			// is active
 			scope.active = function(direction) {
 				if(!direction) {
 					if(scope.activeRight >= 0 && !scope.test(scope.model[scope.activeRight]))
@@ -77,6 +82,7 @@ module.exports = function($templateCache, $filter) {
 						return 'active';
 				}
 			}
+			// selecting item on list
 			scope.select = function($index, direction) {
 				if(direction) {
 					scope.activeLeft = $index;

@@ -1,3 +1,6 @@
+/**
+ * Handle seller role listing page
+ */
 module.exports = function($scope, $controller, SellerRoleService, config) {
 	'ngInject';
 	//Inherit from parent

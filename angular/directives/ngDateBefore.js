@@ -1,3 +1,6 @@
+/**
+ * Validate date before
+ */
 module.exports = function() {
 	'ngInject';
 	return {

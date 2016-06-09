@@ -1,3 +1,6 @@
+/**
+ * Advance search directive
+ */
 angular.module('nc')
 	.directive('ncAdvanceSearch', function($templateCache, $timeout, $uibModal) {
 		return {
@@ -19,6 +22,7 @@ angular.module('nc')
 			link: function(scope, elem, attrs) {
 				scope.formData = {};
 				scope.callback = scope.callback || function() { return false };
+				// list of searchable
 				scope.options = _.defaults(scope.options, {
 					Tags: [],
 					Brands: [],
@@ -31,10 +35,12 @@ angular.module('nc')
 					refreshBrands: _.noop,
 					refreshShops: _.noop
 				});
+				// on advance search
 				scope.search = function() {
 					if(scope.callback(scope.formData, true)) return;
 					scope.model = _.extend({}, scope.formData);
 				};
+				// on clear fields
 				scope.clear = function() {
 					if(scope.callback(scope.formData, false)) return;
 					scope.formData = {};
@@ -42,6 +48,7 @@ angular.module('nc')
 			}
 		};
 	})
+	//Toggle advance search btn
 	.directive('ncAdvanceSearchButton', function($templateCache) {
 		return {
 			restrict: 'E',

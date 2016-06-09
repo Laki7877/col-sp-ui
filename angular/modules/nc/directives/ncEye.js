@@ -1,3 +1,4 @@
+// template for eye toggle
 angular.module('nc')
 	.directive('ncEye', function($templateCache) {
 		return {
