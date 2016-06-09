@@ -420,6 +420,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 								} else {
 									//Legacy freetext, theoretically
 									//this will never be reached
+									debugger;
 									t.push({
 										AttributeValues: [],
 										AttributeId: Number(key),
