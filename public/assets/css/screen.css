@@ -14209,6 +14209,7 @@ label.css-label {
 /* line 793, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column {
   margin-top: 15px;
+  padding-left: 0px;
   -webkit-padding-start: 0px;
   height: 290px;
   overflow-y: auto;
@@ -14216,14 +14217,14 @@ label.css-label {
   border: 1px solid #BCC7D5;
   border-radius: 3px;
 }
-/* line 801, ../../../assets/_components.scss */
+/* line 802, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li {
   padding-left: 15px;
   padding-right: 15px;
   line-height: 30px;
   cursor: pointer;
 }
-/* line 806, ../../../assets/_components.scss */
+/* line 807, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li .column-1 {
   margin-left: 15px;
   display: inline-block;
@@ -14233,68 +14234,68 @@ label.css-label {
   text-overflow: ellipsis;
   float: left;
 }
-/* line 815, ../../../assets/_components.scss */
+/* line 816, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li .column-2 {
   margin-left: 40px;
   display: inline-block;
   float: left;
 }
-/* line 820, ../../../assets/_components.scss */
+/* line 821, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li .column-3 {
   margin-left: 90px;
   display: inline-block;
   float: left;
 }
-/* line 826, ../../../assets/_components.scss */
+/* line 827, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li.disabled {
   cursor: not-allowed !important;
   background: #EDF2F9 !important;
   color: #BCC7D5 !important;
 }
-/* line 831, ../../../assets/_components.scss */
+/* line 832, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li.active {
   background: #4899DD;
   color: #FFFFFF;
 }
 
 /*----- Newsletter Header -----*/
-/* line 842, ../../../assets/_components.scss */
+/* line 843, ../../../assets/_components.scss */
 .modal .modal-content .newsletter-modal-header {
   border-bottom: 1px solid #BCC7D5;
   padding-bottom: 15px;
   margin-bottom: 15px;
 }
-/* line 846, ../../../assets/_components.scss */
+/* line 847, ../../../assets/_components.scss */
 .modal .modal-content .newsletter-modal-header button.close > span {
   margin-top: -14px;
   color: #32343C;
 }
 
 /*---- Export List ----*/
-/* line 855, ../../../assets/_components.scss */
+/* line 856, ../../../assets/_components.scss */
 .export-list {
   margin-left: 30px;
   margin-bottom: 15px;
   list-style-type: none;
   -webkit-padding-start: 0px;
 }
-/* line 860, ../../../assets/_components.scss */
+/* line 861, ../../../assets/_components.scss */
 .export-list li {
   margin-bottom: 5px;
 }
-/* line 863, ../../../assets/_components.scss */
+/* line 864, ../../../assets/_components.scss */
 .export-list .group-label {
   font-weight: bold;
   margin: 20px 0px 5px 0px;
 }
 
-/* line 868, ../../../assets/_components.scss */
+/* line 869, ../../../assets/_components.scss */
 .export-select-all {
   margin-left: 30px;
 }
 
 /*---- Empty Section ----*/
-/* line 873, ../../../assets/_components.scss */
+/* line 874, ../../../assets/_components.scss */
 .empty-section {
   border: 1px solid;
   border-color: #BCC7D5;
@@ -14302,7 +14303,7 @@ label.css-label {
   height: 80px;
   line-height: 80px;
 }
-/* line 879, ../../../assets/_components.scss */
+/* line 880, ../../../assets/_components.scss */
 .empty-section .loading-img {
   width: 40px;
   height: 40px;
