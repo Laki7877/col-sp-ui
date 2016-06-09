@@ -10,7 +10,7 @@
   <br />
   <div class="row">
     <div class="col-md-12">
-      
+
       <div class="form-section">
         <div class="form-section-header">
           <h2>List Product in This Category</h2>
@@ -37,10 +37,10 @@
               <span ng-show="formData.CategoryProductList.length > 0">({{sumProductSelected()}})</span>
             </button>
           </div>
-          
+
           <br />
           <br />
-          
+
           <table class="table table-curved">
             <thead class="table-head bg-info">
               <tr>
@@ -64,7 +64,7 @@
                 <td>{{item.Sequence}}</td>
                 <td>
                   <div class="img-holder">
-                    <img ng-if='!item.FeatureImgUrl' width='40' src="<?= $this->asset('/assets/img/placeholder-no-image.png') ?>" />
+                    <img ng-if='!item.FeatureImgUrl' width='40' src=""<?= $this->asset('/assets/img/placeholder-no-image.png') ?>" />
                     <img ng-if='item.FeatureImgUrl'  width='40' class="logo-img" src="{{item.FeatureImgUrl}}" />
                   </div>
                 </td>
@@ -72,11 +72,11 @@
                 <td>{{item.OriginalPrice | currency: '฿': 0}}</td>
                 <td>{{item.ExpireDate | dateTh}}</td>
                 <td>
-                  <button class="btn btn-sm btn-default" ng-disabled="$index == 0 || (formData.CategoryProductList.length == 0)" 
+                  <button class="btn btn-sm btn-default" ng-disabled="$index == 0 || (formData.CategoryProductList.length == 0)"
                           ng-click="moveUp($index, $index - 1)">
                     <i class="fa fa-chevron-up"></i>
                   </button>
-                  <button class="btn btn-sm btn-default" ng-disabled="$index == (formData.CategoryProductList.length - 1) || (formData.CategoryProductList.length == 0)" 
+                  <button class="btn btn-sm btn-default" ng-disabled="$index == (formData.CategoryProductList.length - 1) || (formData.CategoryProductList.length == 0)"
                           ng-click="moveDown($index, $index + 1)">
                     <i class="fa fa-chevron-down"></i>
                   </button>
@@ -87,7 +87,7 @@
               </tr>
             </tbody>
           </table>
-        
+
         </div>
       </div>
     </div>
@@ -96,12 +96,12 @@
 
 <!-- modal temaplate -->
 <script type="text/ng-template" id="templates/admin-cms-category-manage-add-item.html">
-  
+
   <div class="modal-header">
     <h3 class="modal-title" style="margin-bottom:10px;">Add Product Item</h3>
   </div>
   <div class="modal-body" ng-init="init()">
-    
+
     <form class="form" name="form" novalidate="">
 
       <div class="row">
@@ -115,57 +115,57 @@
 
               <!-- Category -->
               <div class="form-group" id="form-category">
-                  <label>Category</label>
-                  <ui-select ng-model="category.selected" ng-disabled="disabled" style="min-width: 300px;">
-                    <ui-select-match placeholder="Select a category in the list">{{$select.selected.NameEn}}</ui-select-match>
-                    <ui-select-choices repeat="cate in categorys | propsFilter: {NameEn: $select.search, NameTh: $select.search}">
-                      <div ng-bind-html="cate.NameEn | highlight: $select.search"></div>
-                    </ui-select-choices>
-                  </ui-select>
+                <label>Category</label>
+                <ui-select ng-model="category.selected" ng-disabled="disabled" style="min-width: 300px;">
+                  <ui-select-match placeholder="Select a category in the list">{{$select.selected.NameEn}}</ui-select-match>
+                  <ui-select-choices repeat="cate in categorys | propsFilter: {NameEn: $select.search, NameTh: $select.search}">
+                    <div ng-bind-html="cate.NameEn | highlight: $select.search"></div>
+                  </ui-select-choices>
+                </ui-select>
               </div>
 
               <!-- Brand -->
               <div class="form-group">
-                  <label>Brand</label>
-                  <ui-select ng-model="brand.selected" ng-disabled="!category.selected" style="min-width: 300px;">
-                    <ui-select-match placeholder="Select a brand in the list">{{$select.selected.BrandNameEn}}</ui-select-match>
-                    <ui-select-choices repeat="b in brands | propsFilter: {BrandNameTh: $select.search, BrandNameTh: $select.search}">
-                      <div ng-bind-html="b.BrandNameEn | highlight: $select.search"></div>
-                    </ui-select-choices>
-                  </ui-select>
+                <label>Brand</label>
+                <ui-select ng-model="brand.selected" ng-disabled="!category.selected" style="min-width: 300px;">
+                  <ui-select-match placeholder="Select a brand in the list">{{$select.selected.BrandNameEn}}</ui-select-match>
+                  <ui-select-choices repeat="b in brands | propsFilter: {BrandNameTh: $select.search, BrandNameTh: $select.search}">
+                    <div ng-bind-html="b.BrandNameEn | highlight: $select.search"></div>
+                  </ui-select-choices>
+                </ui-select>
               </div>
 
               <!-- Tag -->
               <div class="form-group" ng-show="brand.selected">
                 <label>Tag</label>
-                  <ui-select multiple="" ng-model="tag.selected" style="min-width: 300px;">
-                    <ui-select-match placeholder="Select tags">{{$item.Tag}}</ui-select-match>
-                    <ui-select-choices repeat="t in tags | propsFilter: {Tag: $select.search}">
-                      <div ng-bind-html="t.Tag | highlight: $select.search"></div>
-                    </ui-select-choices>
-                  </ui-select>
+                <ui-select multiple="" ng-model="tag.selected" style="min-width: 300px;">
+                  <ui-select-match placeholder="Select tags">{{$item.Tag}}</ui-select-match>
+                  <ui-select-choices repeat="t in tags | propsFilter: {Tag: $select.search}">
+                    <div ng-bind-html="t.Tag | highlight: $select.search"></div>
+                  </ui-select-choices>
+                </ui-select>
               </div>
 
               <!-- Search By -->
               <div class="form-group" ng-show="brand.selected">
                 <label>Search By</label>
-                  <select class="form-control" ng-model="searchBy" style="min-width: 300px;">
-                    <option value="ProductName">Name</option>
-                    <option value="SKU">SKU</option>
-                    <option value="PID">PID</option>
-                  </select>
+                <select class="form-control" ng-model="searchBy" style="min-width: 300px;">
+                  <option value="ProductName">Name</option>
+                  <option value="SKU">SKU</option>
+                  <option value="PID">PID</option>
+                </select>
               </div>
 
               <div class="form-group" ng-show="brand.selected">
                 <label>Search</label>
-                  <div class="input-group search-box" style="min-width: 300px;">
-                    <input class="form-control input-search-icon" ng-model="searchText" placeholder="Search for Product" />
-                    <span class="input-group-btn">
-                      <button class="btn btn-default btn-action" ng-click="search(searchText)">Search</button>
-                    </span>
+                <div class="input-group search-box" style="min-width: 300px;">
+                  <input class="form-control input-search-icon" ng-model="searchText" placeholder="Search for Product" />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default btn-action" ng-click="search(searchText)">Search</button>
+                  </span>
                 </div>
               </div>
-            
+
             </div>
           </div>
         </div>
@@ -190,7 +190,7 @@
                       <th class="col-sm-2">Price</th>
                     </tr>
                   </thead>
-                
+
                   <tbody>
                     <tr ng-repeat="item in products">
                       <td>
@@ -203,7 +203,7 @@
                   </tbody>
                 </table>
               </div>
-              
+
               <!-- loading -->
               <div class="empty-section" ng-show="loading">
                 <span>
@@ -217,7 +217,7 @@
                   <img src="/assets/img/graphic-zero-category.png" />
                 </span>{{message}}</span>
               </div>
-              
+
             </div>
           </div>
         </div>
@@ -237,7 +237,7 @@
           </div>
         </div>
       </div>
-      
+
     </form>
   </div>
 </script>

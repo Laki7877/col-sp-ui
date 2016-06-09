@@ -48,27 +48,27 @@ module.exports = ['$q', 'common', function ($q, common) {
     service.getBrand = function (cateId) {
         return common.makeRequest({
             method: 'GET',
-            url: '/CMS/GetBrand/' + cateId
+            url: '/Promotion/GetBrand/' + cateId
         });
     };
     service.getAllCategory = function () {
         return common.makeRequest({
             method: 'GET',
-            url: '/CMS/GetAllCategory'
+            url: '/Promotion/GetAllCategory'
         });
     };
 
     service.getAllTag = function () {
         return common.makeRequest({
             method: 'GET',
-            url: '/CMS/GetAllTag'
+            url: '/Promotion/GetAllTag'
         });
     };
 
     service.searchProduct = function (parameters) {
         var req = {
             method: 'GET',
-            url: '/CMS/SearchProduct',
+            url: '/Promotion/SearchProduct',
             params: parameters
         };
 

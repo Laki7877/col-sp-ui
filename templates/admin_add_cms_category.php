@@ -44,16 +44,4 @@
         </div>
     </form>
 </div>
-<script>
-    $(document).ready(function () {
-
-    $.get('http://jsonip.com', function (res) {
-
-        $('#CreateIP').val(res.ip);
-
-    });
-
-});
-
-</script>
 <?php $this->stop() ?>

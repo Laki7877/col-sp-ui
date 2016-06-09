@@ -1,0 +1,105 @@
+/*HEAD*/
+#row_head{
+	margin-top: 10px; 
+	margin-left: 8px;
+	margin-right: 8px;
+}
+.imgLogo{
+	margin-left: 8px;
+}
+table.tbType td{
+	padding:3px;
+}
+#boxLeft_1{
+	padding: 15px;
+	border: 1px solid #000;
+	height: 255px;
+}
+#boxLeft_2{
+	font-size: 11px;
+	margin-top: 10px;
+	padding: 15px;
+	border: 1px solid #000;
+}
+#boxRight_1{
+	padding: 15px;
+	border: 1px solid #000;
+	height: 220px;
+}
+
+/*BODY*/
+table.tbContent{
+	font-size: 12px;
+	width: 100%;
+	text-align: center;
+	border: 1px solid #000;
+}
+table.tbContent td{
+	padding: 3px;
+}
+
+/*Padding System*/
+.padding-right-5{
+	padding-right: 5px;
+}
+
+/*Margin system*/
+.margin_left-10{
+	margin-left: 10px;
+}
+.margin_left-15{
+	margin-left: 15px;
+}
+.margin_left-20{
+	margin-left: 20px;
+}
+.margin_right-15{
+	margin-right: 15px;
+}
+
+/*text-align*/
+.text-align-left{
+	text-align: left;
+}
+.text-align-right{
+	text-align: right;
+}
+
+/*grid system*/
+.row::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+[class*="col-"] {
+    float: left;
+    padding: 5px;
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+.absolute{
+	position: absolute;
+}
+
+/*BUTTON*/
+.button{
+    background-color: #000;
+    color: #fff;
+    border: none;
+}
+
+/*.underLine{
+	text-decoration: underline; 
+}
+*/

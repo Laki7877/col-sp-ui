@@ -93,7 +93,7 @@
           <div class="form-group">
             <label class="col-md-2 text-right">Visibility</label>
             <div class="col-md-6">
-              <select ng-model="formData.TitleShowcase" class="form-control" required="">
+              <select ng-model="formData.TitleShowcase" class="form-control">
                 <option value="true" ng-selected="formData.TitleShowcase == true">Visible</option>
                 <option value="false"  ng-selected="formData.TitleShowcase == false">Not Visible</option>
               </select>
