@@ -14128,44 +14128,48 @@ label.css-label {
   font-size: 20px;
 }
 /* line 725, ../../../assets/_components.scss */
-.modal .modal-content button.close > span {
+.modal .modal-content button.close {
+  height: 30px;
+}
+/* line 727, ../../../assets/_components.scss */
+.modal .modal-content button.close span {
   line-height: 1;
   font-size: 36px;
   margin-top: -6px;
 }
-/* line 730, ../../../assets/_components.scss */
+/* line 733, ../../../assets/_components.scss */
 .modal .modal-content .modal_title_abosolute {
   position: absolute;
 }
-/* line 733, ../../../assets/_components.scss */
+/* line 736, ../../../assets/_components.scss */
 .modal .modal-content .title_relative {
   position: relative;
 }
 
 /*---- Search Section ----*/
-/* line 741, ../../../assets/_components.scss */
+/* line 744, ../../../assets/_components.scss */
 .search-section .border_blue {
   border-color: #4899DD;
 }
 
 /*---- Tradable List ----*/
-/* line 748, ../../../assets/_components.scss */
+/* line 751, ../../../assets/_components.scss */
 .tradable-list .left-column {
   margin-left: 30px;
   float: left;
   width: 300px;
 }
-/* line 752, ../../../assets/_components.scss */
+/* line 755, ../../../assets/_components.scss */
 .tradable-list .left-column .search-box {
   height: 33px;
 }
-/* line 756, ../../../assets/_components.scss */
+/* line 759, ../../../assets/_components.scss */
 .tradable-list .center-column {
   float: left;
   padding-top: 145px;
   margin-left: 30px;
 }
-/* line 760, ../../../assets/_components.scss */
+/* line 763, ../../../assets/_components.scss */
 .tradable-list .center-column .trade-button {
   padding: 8px 10px 5px 10px;
   margin-bottom: 15px;
@@ -14174,39 +14178,39 @@ label.css-label {
   color: #BCC7D5;
   border: 1px solid #BCC7D5;
 }
-/* line 767, ../../../assets/_components.scss */
+/* line 770, ../../../assets/_components.scss */
 .tradable-list .center-column .trade-button.active {
   cursor: pointer;
   color: #4899DD;
 }
-/* line 773, ../../../assets/_components.scss */
+/* line 776, ../../../assets/_components.scss */
 .tradable-list .right-column {
   float: left;
   width: 300px;
   margin-left: 30px;
 }
-/* line 777, ../../../assets/_components.scss */
+/* line 780, ../../../assets/_components.scss */
 .tradable-list .right-column .list-header {
   margin-top: 9px;
   margin-bottom: 5px;
 }
-/* line 780, ../../../assets/_components.scss */
+/* line 783, ../../../assets/_components.scss */
 .tradable-list .right-column .list-header .column-1 {
   margin-left: 15px;
 }
-/* line 783, ../../../assets/_components.scss */
+/* line 786, ../../../assets/_components.scss */
 .tradable-list .right-column .list-header .column-2 {
   margin-left: 120px;
 }
-/* line 786, ../../../assets/_components.scss */
+/* line 789, ../../../assets/_components.scss */
 .tradable-list .right-column .list-header .column-3 {
   margin-left: 30px;
 }
-/* line 791, ../../../assets/_components.scss */
+/* line 794, ../../../assets/_components.scss */
 .tradable-list .clickable-list {
   overflow: hidden;
 }
-/* line 793, ../../../assets/_components.scss */
+/* line 796, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column {
   margin-top: 15px;
   -webkit-padding-start: 0px;
@@ -14221,14 +14225,14 @@ label.css-label {
   border: 1px solid #BCC7D5;
   border-radius: 3px;
 }
-/* line 806, ../../../assets/_components.scss */
+/* line 809, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li {
   padding-left: 15px;
   padding-right: 15px;
   line-height: 30px;
   cursor: pointer;
 }
-/* line 811, ../../../assets/_components.scss */
+/* line 814, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li .column-1 {
   margin-left: 15px;
   display: inline-block;
@@ -14238,45 +14242,45 @@ label.css-label {
   text-overflow: ellipsis;
   float: left;
 }
-/* line 820, ../../../assets/_components.scss */
+/* line 823, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li .column-2 {
   margin-left: 40px;
   display: inline-block;
   float: left;
 }
-/* line 825, ../../../assets/_components.scss */
+/* line 828, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li .column-3 {
   margin-left: 90px;
   display: inline-block;
   float: left;
 }
-/* line 831, ../../../assets/_components.scss */
+/* line 834, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li.disabled {
   cursor: not-allowed !important;
   background: #EDF2F9 !important;
   color: #BCC7D5 !important;
 }
-/* line 836, ../../../assets/_components.scss */
+/* line 839, ../../../assets/_components.scss */
 .tradable-list .clickable-list .content-column li.active {
   background: #4899DD;
   color: #FFFFFF;
 }
 
 /*----- Newsletter Header -----*/
-/* line 847, ../../../assets/_components.scss */
+/* line 850, ../../../assets/_components.scss */
 .modal .modal-content .newsletter-modal-header {
   border-bottom: 1px solid #BCC7D5;
   padding-bottom: 15px;
   margin-bottom: 15px;
 }
-/* line 851, ../../../assets/_components.scss */
+/* line 854, ../../../assets/_components.scss */
 .modal .modal-content .newsletter-modal-header button.close > span {
   margin-top: -14px;
   color: #32343C;
 }
 
 /*---- Export List ----*/
-/* line 860, ../../../assets/_components.scss */
+/* line 863, ../../../assets/_components.scss */
 .export-list {
   margin-left: 30px;
   margin-bottom: 15px;
@@ -14288,23 +14292,23 @@ label.css-label {
   padding-start: 0px;
   padding-left: 0px;
 }
-/* line 870, ../../../assets/_components.scss */
+/* line 873, ../../../assets/_components.scss */
 .export-list li {
   margin-bottom: 5px;
 }
-/* line 873, ../../../assets/_components.scss */
+/* line 876, ../../../assets/_components.scss */
 .export-list .group-label {
   font-weight: bold;
   margin: 20px 0px 5px 0px;
 }
 
-/* line 878, ../../../assets/_components.scss */
+/* line 881, ../../../assets/_components.scss */
 .export-select-all {
   margin-left: 30px;
 }
 
 /*---- Empty Section ----*/
-/* line 883, ../../../assets/_components.scss */
+/* line 886, ../../../assets/_components.scss */
 .empty-section {
   border: 1px solid;
   border-color: #BCC7D5;
@@ -14312,7 +14316,7 @@ label.css-label {
   height: 80px;
   line-height: 80px;
 }
-/* line 889, ../../../assets/_components.scss */
+/* line 892, ../../../assets/_components.scss */
 .empty-section .loading-img {
   width: 40px;
   height: 40px;
