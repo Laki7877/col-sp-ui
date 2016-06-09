@@ -731,8 +731,15 @@ module.exports = ["$scope", "$window", "NcAlert", "util", "common", "options", f
 		if(options.freeToLeave){
 			return false;
 		}
+		var willLeave = $scope.form.$dirty;
 
-		return $scope.form.$dirty;
+		$(".sub-sidebar").hide();
+
+		setTimeout(function(){
+	        $(".sub-sidebar").show();
+	    }, 1000);
+
+		return willLeave;
 	});
 
 	$scope.init = function(params) {
@@ -22220,6 +22227,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         // only warn when form is dirty
         return null;
       }
+
+      //Dirty CSS Trick for Menu slide
+     $(".sub-sidebar").hide();
+
       console.log($scope.addProductForm);
       var message = 'Your changes will not be saved.',
         e = e || window.event
@@ -22227,6 +22238,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       if (e) {
         e.returnValue = message
       }
+
+      setTimeout(function(){
+        $(".sub-sidebar").show();
+      }, 1000);
 
       // For Safari
       return message
