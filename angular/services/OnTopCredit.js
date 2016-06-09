@@ -4,6 +4,13 @@ module.exports = ['$http', 'common', 'util', 'config', 'KnownException',
         'use strict';
         var service = common.Rest('/Promotion/Ontopcredit');
 
+        service.getAllPaymentID = function(){
+            return common.makeRequest({
+                method: 'GET',
+                url: '/Promotion/getAllPaymentID'
+            });
+        }
+
         service.getOne = function (OnTopCreditCardId) {
             var req = {
                 method: 'GET',

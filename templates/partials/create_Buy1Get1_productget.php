@@ -35,7 +35,7 @@
             </div>
             <button type="button" class="btn btn-default btn-action" ng-click="removeMultiItem()">
               Confirm
-              <span ng-show="formData.CategoryProductListGet.length > 0">({{sumProductSelected()}})</span>
+              <span ng-show="formData.ProductGetList.length > 0">({{sumProductSelected()}})</span>
             </button>
           </div>
           
@@ -52,13 +52,14 @@
                 <th class="col-sm-2">Picture</th>
                 <th class="col-sm-2">Name</th>
                 <th class="col-sm-2">Price</th>
+                <th class="col-sm-1">Qty</th>
                 <th class="col-sm-2">Expire Date</th>
                 <th class="col-sm-2">Actions</th>
               </tr>
             </thead>
 
             <tbody id="sortable">
-              <tr ng-repeat="item in formData.CategoryProductListGet | orderBy : 'Sequence'">
+              <tr ng-repeat="item in formData.ProductGetList | orderBy : 'Sequence'">
                 <!-- <td>
                   <input type="checkbox" ng-model="item.IsChecked" ng-click="checkOnce(item, item.IsChecked)" />
                 </td> -->
@@ -71,13 +72,14 @@
                 </td>
                 <td>{{item.ProductBoxBadge}}</td>
                 <td>{{item.OriginalPrice | currency: '฿': 0}}</td>
+                <td><input type="number" class="form-control" name="getQty" ng-model="getQty" min="1" ng-init="getQty=1" required disabled/></td>
                 <td>{{item.ExpireDate | dateTh}}</td>
                 <td>
-                  <button class="btn btn-sm btn-default" ng-disabled="$index == 0 || (formData.CategoryProductListGet.length == 0)" 
+                  <button class="btn btn-sm btn-default" ng-disabled="$index == 0 || (formData.ProductGetList.length == 0)" 
                           ng-click="moveUp($index, $index - 1)">
                     <i class="fa fa-chevron-up"></i>
                   </button>
-                  <button class="btn btn-sm btn-default" ng-disabled="$index == (formData.CategoryProductListGet.length - 1) || (formData.CategoryProductListGet.length == 0)" 
+                  <button class="btn btn-sm btn-default" ng-disabled="$index == (formData.ProductGetList.length - 1) || (formData.ProductGetList.length == 0)" 
                           ng-click="moveDown($index, $index + 1)">
                     <i class="fa fa-chevron-down"></i>
                   </button>

@@ -70,13 +70,19 @@
                       </div>
                     </div>
 
-                    <div nc-template="common/input/form-group-with-label" nc-label="Default Sorting">
+                    <!-- <div nc-template="common/input/form-group-with-label" nc-label="Default Sorting">
                       <div class="ah-select2-dropdown  width-field-large" style="padding: 0;">
                         <select ng-model="formData.Visibility" class="form-control" required="">
                           <option value="true" ng-selected="formData.Visibility == true">Visible</option>
                           <option value="false"  ng-selected="formData.Visibility == false">Not Visible</option>
                         </select>
                       </div>
+                    </div> -->
+                    <div nc-template="common/input/form-group-with-label" nc-template-form="form.SortBy" nc-label="Default Sort By">
+                      <ui-select ng-model="formData.SortBy" name="SortBy" search-enabled="false">
+                        <ui-select-match placeholder="- Select Default Sort -">{{$select.selected.SortByName}}</ui-select-match>
+                        <ui-select-choices repeat="item in sortBy">{{item.SortByName}}</ui-select-choices>
+                      </ui-select>
                     </div>
 
                 </div>

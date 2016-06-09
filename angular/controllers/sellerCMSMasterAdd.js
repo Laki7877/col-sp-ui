@@ -8,6 +8,11 @@ module.exports = function ($scope, $rootScope, $controller, CMSMasterService, Im
     $scope.product          = {};
     $scope.featureProducts  = [];
     $scope.CategoryList     = [];
+    $scope.sortBy           = [];
+                
+    common.getSortBy().then(function(data) {
+        $scope.sortBy = data;
+    });
 
     $scope.Schedule = {
         EffectiveDate: null,
@@ -32,7 +37,7 @@ module.exports = function ($scope, $rootScope, $controller, CMSMasterService, Im
         // else {
         //     $scope.alert.error(common.getError(response.data));
         // }
-        debugger;
+        // debugger;
         if(e == 'onmaxsize') {
             $scope.alert.error('Cannot exceed 8 images');
         }
@@ -512,6 +517,9 @@ module.exports = function ($scope, $rootScope, $controller, CMSMasterService, Im
                 if ($scope.formData.CategoryList === undefined || $scope.formData.CategoryList == null)
                     $scope.formData.CategoryList = [];
 
+                // clear old schedule
+                $scope.formData.ScheduleList = [];
+                
                 $scope.formData.FeatureProductList = $scope.featureProducts;
                 $scope.formData.ScheduleList.push($scope.Schedule);
                 $scope.formData.CategoryList = $scope.CategoryList;

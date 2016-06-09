@@ -8,6 +8,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     'use strict';
     'ngInject';
 
+    //Page states
     $scope.readOnly = options.readOnly;
     $scope.adminMode = options.adminMode;
     $scope.approveMode = options.approveMode;
@@ -323,14 +324,14 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
     };
 
-
-
+    //start watching for change in attribute option (dropdown in tab variation)
     var watchVariantFactorChanges = function() {
       $scope.$watch('dataset.attributeOptions', function() {
         $productAdd.generateVariants($scope.formData, $scope.dataset)
       }, true);
     };
 
+    //When user enable variation button on tab variation
     $scope.enableVariation = function() {
 
       if ($scope.addProductForm.$invalid) {
@@ -373,7 +374,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       value: 'INDIVIDUAL'
     }];
 
-
+    //Update breadcrumb text on top of the page
     $scope.updateBreadcrumb = function(globalCatId) {
       $scope.breadcrumb.globalCategory = Category.createCatStringById(
         globalCatId, $scope.dataset.GlobalCategories);
@@ -521,49 +522,53 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       var validateMat = manualValidate(Status);
       if (validateMat.length > 0) {
         $scope.pageState.reset();
-        $scope.alert.error(validateMat.join(', ') + ' are required.');
+        $scope.alert.error(validateMat.join(', ') + ' is required.');
         return;
       }
 
       function defaultOnEmpty(vari) {
         if(!_.isObject(vari)) return;
+
+        function isNotNumberOrEmpty(n) {
+          return isNaN(parseFloat(n)) || !isFinite(n);
+        }
         
-        if (_.isEmpty(vari.SafetyStock)) {
+        if (isNotNumberOrEmpty(vari.SafetyStock)) {
           vari.SafetyStock = 0;
         }
-        if (_.isEmpty(vari.UpdateAmount)) {
+        if (isNotNumberOrEmpty(vari.UpdateAmount)) {
           vari.UpdateAmount = 0;
         }
 
-        if (_.isEmpty(vari.PrepareMon)) {
+        if (isNotNumberOrEmpty(vari.PrepareMon)) {
           vari.PrepareMon = vari.PrepareDay;
         }
 
-        if (_.isEmpty(vari.PrepareTue)) {
+        if (isNotNumberOrEmpty(vari.PrepareTue)) {
           vari.PrepareTue = vari.PrepareDay;
         }
 
-        if (_.isEmpty(vari.PrepareWed)) {
+        if (isNotNumberOrEmpty(vari.PrepareWed)) {
           vari.PrepareWed = vari.PrepareDay;
         }
 
-        if (_.isEmpty(vari.PrepareThu)) {
+        if (isNotNumberOrEmpty(vari.PrepareThu)) {
           vari.PrepareThu = vari.PrepareDay;
         }
 
-        if (_.isEmpty(vari.PrepareFri)) {
+        if (isNotNumberOrEmpty(vari.PrepareFri)) {
           vari.PrepareFri = vari.PrepareDay;
         }
 
-        if (_.isEmpty(vari.PrepareSat)) {
+        if (isNotNumberOrEmpty(vari.PrepareSat)) {
           vari.PrepareSat = vari.PrepareDay;
         }
 
-        if (_.isEmpty(vari.PrepareSun)) {
+        if (isNotNumberOrEmpty(vari.PrepareSun)) {
           vari.PrepareSun = vari.PrepareDay;
         }
 
-        if (_.isEmpty(vari.NewArrivalDate)) {
+        if (isNotNumberOrEmpty(vari.NewArrivalDate)) {
           vari.NewArrivalDate = $scope.formData.UpdateOn;
         }
       }
@@ -966,6 +971,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         // only warn when form is dirty
         return null;
       }
+
+      //Dirty CSS Trick for Menu slide
+     $(".sub-sidebar").hide();
+
       console.log($scope.addProductForm);
       var message = 'Your changes will not be saved.',
         e = e || window.event
@@ -973,6 +982,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       if (e) {
         e.returnValue = message
       }
+
+      setTimeout(function(){
+        $(".sub-sidebar").show();
+      }, 1000);
 
       // For Safari
       return message

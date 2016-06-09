@@ -41,8 +41,9 @@
     background-image: url('icon-search.png') !important;
     background-repeat: no-repeat !important;
     background-size: 20px !important;
-    background-position-x: 5px !important;
-    background-position-y: 6px !important;
+    /*background-position-x: 5px !important;*/
+    /*background-position-y: 6px !important;*/
+    background-position: 5px 6px !important;
     padding-left: 30px !important;
 }
 

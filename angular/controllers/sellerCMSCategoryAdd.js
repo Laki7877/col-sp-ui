@@ -2,10 +2,10 @@ module.exports = function ($scope, $controller, CMSCategoryService, config, $uib
     'ngInject';
 
     $scope.CMSadd = !$rootScope.permit(62);
-    $scope.formData     = {};
+    $scope.formData = {};
 
-    $scope.loading      = false;
-    $scope.isEmpty      = true;
+    $scope.loading = false;
+    $scope.isEmpty = true;
 
     var sortableEle;
 
@@ -24,7 +24,7 @@ module.exports = function ($scope, $controller, CMSCategoryService, config, $uib
         $timeout(function () {
             updateSequence();
         }, 200);
-        
+
     }
 
     sortableEle = $('#sortable').sortable({
@@ -134,15 +134,15 @@ module.exports = function ($scope, $controller, CMSCategoryService, config, $uib
                 $scope.loading = false;
                 $scope.message = 'Empty list.';
                 $scope.categorys = [];
-                $scope.brands   = [];
-                $scope.tags     = [];
+                $scope.brands = [];
+                $scope.tags = [];
 
                 $scope.init = function () {
                     $('#form-category :input[type=text]').keyup(function () {
 
                         var val = $(this).val();
                         console.log(val)
-                        var param   = { SearchText: val };
+                        var param = { SearchText: val };
 
                         CMSCategoryService.getAllCategory(param)
                         .then(function (data) {
@@ -260,11 +260,11 @@ module.exports = function ($scope, $controller, CMSCategoryService, config, $uib
 
                     return sum;
                 };
-                
+
                 /// Test
                 $scope.category = {};
-                $scope.brand    = {};
-                $scope.tag      = {};
+                $scope.brand = {};
+                $scope.tag = {};
                 $scope.searchBy = 'ProductName';
 
                 $scope.$watch('category.selected', function (newValue, oldValue) {
@@ -283,6 +283,7 @@ module.exports = function ($scope, $controller, CMSCategoryService, config, $uib
                     if (newValue === undefined)
                         return;
 
+                    $scope.search('');
                 });
 
                 $scope.disabled = undefined;
@@ -368,10 +369,10 @@ module.exports = function ($scope, $controller, CMSCategoryService, config, $uib
 
             },
             onLoad: function (scope, load) {
-                
+
             },
             onSave: function (scope) {
-
+                scope.formData.CreateIP = storage.get('IP');
             }
         }
     });

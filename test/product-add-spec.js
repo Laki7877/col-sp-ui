@@ -1,7 +1,7 @@
 describe('Automated Man', function() {
 
   var width = 1200;
-  var height = 1000;
+  var height = 2000;
   browser.driver.manage().window().setSize(width, height);
 
   var random1000  =  Math.floor(Math.random()*10000);
@@ -147,8 +147,8 @@ describe('Automated Man', function() {
 
     element(by.model('variantPtr.ProductNameEn')).sendKeys('Product MAX ' + timeStamp());
     element(by.model('variantPtr.ProductNameTh')).sendKeys('สินค้า MAX ' + timeStamp());
-    element(by.model('variantPtr.ProdTDNameEn')).sendKeys(randomX(10));
-    element(by.model('variantPtr.ProdTDNameTh')).sendKeys(randomX(10));
+    element(by.model('variantPtr.ProdTDNameEn')).sendKeys('ProdTDNameEn ' + randomX(5));
+    element(by.model('variantPtr.ProdTDNameTh')).sendKeys('ProdTDNameTh ' + randomX(5));
     element(by.model('variantPtr.Sku')).sendKeys('SKU' + random1000);
     element(by.model('variantPtr.Upc')).sendKeys(randomX(13));
     selectBrand('NIKE');
@@ -159,14 +159,13 @@ describe('Automated Man', function() {
     var price = random1000 + 5000;
 
     browser.executeScript('window.scrollTo(0,700);');
+    browser.sleep(1000);
     element(by.model('variantPtr.SalePrice')).sendKeys(price);
     element(by.model('variantPtr.OriginalPrice')).sendKeys(price + 1);
-
     var input_installment = element(by.model('variantPtr.Installment'));
     selectDropdown(input_installment,'2');
-
-    browser.executeScript('window.scrollTo(0,1100);');
-    browser.sleep(5000);
+    //browser.executeScript('window.scrollTo(0,1100);');
+    browser.sleep(1000);
 
     element(by.model('variantPtr.PromotionPrice')).sendKeys(price - 1);
 
@@ -176,18 +175,19 @@ describe('Automated Man', function() {
     element(by.css('#dropdown_promotion_expire_date')).click();
     element(by.css('.open .dropdown-menu .glyphicon-arrow-right')).click();
     selectDate();
+    element(by.css('#dropdown_promotion_expire_date')).sendKeys("\t");
 
     element(by.model('variantPtr.UnitPrice')).sendKeys(price - 1);
     element(by.model('variantPtr.PurchasePrice')).sendKeys(price - 1);
-    element(by.model('variantPtr.SaleUnitEn')).clear().sendKeys(randomX(10));
-    element(by.model('variantPtr.SaleUnitTh')).clear().sendKeys(randomX(10));
+    element(by.model('variantPtr.SaleUnitEn')).clear().sendKeys('SaleUnitEn ' + randomX(5));
+    element(by.model('variantPtr.SaleUnitTh')).clear().sendKeys('SaleUnitTh ' + randomX(5));
 
     var input_isvat = element(by.model('variantPtr.IsVat'));
     selectDropdown(input_isvat,'2');
   });
 
   it('should add new product and fill out "Attributes" in "Information Tab"', function(){
-    browser.executeScript('window.scrollTo(0,1700);');
+    browser.executeScript('window.scrollTo(0,1200);');
 
     var attribute_set = element(by.model('formData.AttributeSet')).element(by.css('input'));
     attribute_set.click();
@@ -217,15 +217,14 @@ describe('Automated Man', function() {
   it('should add new product and fill out "Description" in "Information Tab"', function(){
     browser.executeScript('window.scrollTo(0,3000);');
 
-    element(by.model('variantPtr.DescriptionShortEn')).sendKeys(randomX(10));
-    element(by.model('variantPtr.DescriptionShortTh')).sendKeys(randomX(10));
-    element(by.model('variantPtr.KillerPoint1En')).sendKeys(randomX(10));
-    element(by.model('variantPtr.KillerPoint1Th')).sendKeys(randomX(10));
-    element(by.model('variantPtr.KillerPoint2En')).sendKeys(randomX(10));
-    element(by.model('variantPtr.KillerPoint2Th')).sendKeys(randomX(10));
-    element(by.model('variantPtr.KillerPoint3En')).sendKeys(randomX(10));
-    element(by.model('variantPtr.KillerPoint3Th')).sendKeys(randomX(10));
-
+    element(by.model('variantPtr.DescriptionShortEn')).sendKeys('DescriptionShortEn ' + randomX(5));
+    element(by.model('variantPtr.DescriptionShortTh')).sendKeys('DescriptionShortTh ' + randomX(5));
+    element(by.model('variantPtr.KillerPoint1En')).sendKeys('KillerPoint1En ' + randomX(5));
+    element(by.model('variantPtr.KillerPoint1Th')).sendKeys('KillerPoint1Th ' + randomX(5));
+    element(by.model('variantPtr.KillerPoint2En')).sendKeys('KillerPoint2En ' + randomX(5));
+    element(by.model('variantPtr.KillerPoint2Th')).sendKeys('KillerPoint2Th ' + randomX(5));
+    element(by.model('variantPtr.KillerPoint3En')).sendKeys('KillerPoint3En ' + randomX(5));
+    element(by.model('variantPtr.KillerPoint3Th')).sendKeys('KillerPoint3Th ' + randomX(5));
   });
 
   it('should add new product and fill out "Search Tag" in "Information Tab"', function(){
@@ -245,16 +244,17 @@ describe('Automated Man', function() {
   it('should fill out "Inventory" in "Information Tab"', function(){
     browser.executeScript('window.scrollTo(0,4300);');
     element(by.model('variantPtr.Quantity')).sendKeys('100');
-    element(by.model('variantPtr.SafetyStock')).sendKeys('10');
-    element(by.model('variantPtr.MinQtyAllowInCart')).sendKeys('1');
-    element(by.model('variantPtr.MaxQtyAllowInCart')).sendKeys('100');
+    element(by.model('variantPtr.SafetyStock')).clear().sendKeys('50');
+    element(by.model('variantPtr.MinQtyAllowInCart')).clear().sendKeys('1');
+    element(by.model('variantPtr.MaxQtyAllowInCart')).clear().sendKeys('100');
 
-    //var input_stock_type = element(by.model('variantPtr.StockType'));
-    //selectDropdown(input_stock_type,'3');
-    //var input_max_pre_order = element(by.model('variantPtr.MaxQtyPreOrder'));
-    //input_max_pre_order.clear().sendKeys(99);
-    // var has_expiry_date = element(by.model('variantPtr.IsHasExpiryDate'));
-    // selectDropdown(has_expiry_date,'2');
+    var input_stock_type = element(by.model('variantPtr.StockType'));
+    selectDropdown(input_stock_type,'3');
+    browser.sleep(1000);
+    element(by.model('variantPtr.MaxQtyPreOrder')).clear().sendKeys(99);
+    browser.sleep(1000);
+    var has_expiry_date = element(by.model('variantPtr.IsHasExpiryDate'));
+    selectDropdown(has_expiry_date,'2');
   });
 
   it('should add new product and fill out "Shipping Detail" in "Information Tab"', function(){
@@ -284,51 +284,121 @@ describe('Automated Man', function() {
     var weight_unit = element(by.model('variantPtr.WeightUnit'));
     selectDropdown(weight_unit,'2');
 
-
-    // saveChanges('.main-form-action .btn-white');
-
     browser.sleep(defaultSleep);
 
   });
 
-  it('should fill out "Product Images" in "Image Tab"', function(){
+  // it('should fill out "Product Images" in "Image Tab"', function(){
+  //
+  //   browser.executeScript('window.scrollTo(0,0);');
+  //   element(by.xpath('//a[@href="#images"]')).click();
+  //
+  //   var path = require('path');
+  //   var fileToUpload = 'images/1600x1600A.jpg';
+  //   var absolutePath = path.resolve(__dirname, fileToUpload);
+  //
+  //   $('input[type="file"]').sendKeys(absolutePath);
+  //   browser.sleep(3000);
+  //
+  //   var EC = protractor.ExpectedConditions;
+  //   var video_link = element(by.model('variantPtr.VideoLinks[$index].Url'));
+  //   browser.wait(EC.visibilityOf(video_link), 5000);
+  //   video_link.sendKeys('https://www.youtube.com/watch?v=f78M4nKW1Ms');
+  //
+  //   //saveChanges('.main-form-action .btn-white');
+  //
+  //   browser.sleep(defaultSleep);
+  // });
+  //
+  // it('should fill out "Global and Local Category" in "Category Tab"', function(){
+  //
+  //   browser.executeScript('window.scrollTo(0,0);');
+  //   element(by.xpath('//a[@href="#category"]')).click();
+  //   element(by.css('.panel-select-global-category .fa-plus-circle')).click();
+  //
+  //   browser.sleep(defaultSleep);
+  //
+  //   selectGlobalCategory('Imaginary Land','Film Camera & Accessories');
+  //
+  //   element(by.css('.panel-select-local-category .fa-plus-circle')).click();
+  //
+  //   selectGlobalCategory('Dont Delete Me','Test Local Category');
+  //
+  // });
+  //
+  // it('should fill out "SEO" in "More Options Tab"', function(){
+  //
+  //   browser.executeScript('window.scrollTo(0,0);');
+  //   element(by.xpath('//a[@href="#moreoption"]')).click();
+  //
+  //   browser.sleep(defaultSleep);
+  //
+  //   element(by.model('variantPtr.SEO.SeoEn')).sendKeys('SeoEn ' + randomX(3));
+  //   element(by.model('variantPtr.SEO.SeoTh')).sendKeys('SeoTh ' + randomX(3));
+  //   element(by.model('variantPtr.SEO.MetaTitleEn')).sendKeys('MetaTitleEn ' + randomX(3));
+  //   element(by.model('variantPtr.SEO.MetaTitleTh')).sendKeys('MetaTitleTh ' + randomX(3));
+  //   element(by.model('variantPtr.SEO.MetaDescriptionEn')).sendKeys('MetaDescriptionEn ' + randomX(3));
+  //   element(by.model('variantPtr.SEO.MetaDescriptionTh')).sendKeys('MetaDescriptionTh ' + randomX(3));
+  //   element(by.model('variantPtr.SEO.MetaKeywordEn')).sendKeys('MetaKeywordEn ' + randomX(3));
+  //   element(by.model('variantPtr.SEO.MetaKeywordTh')).sendKeys('MetaKeywordTh ' + randomX(3));
+  //   element(by.model('variantPtr.SEO.ProductUrlKeyEn')).clear().sendKeys('url-key-' + randomX(10));
+  //   element(by.model('variantPtr.SEO.ProductBoostingWeight')).clear().sendKeys(randomX(4));
+  //
+  // });
+  //
+  // it('should fill out "More Detail" in "More Options Tab"', function(){
+  //   browser.executeScript('window.scrollTo(0,1300);');
+  //
+  //   element(by.css('#dropdown2')).click();
+  //   selectDate();
+  //
+  //   element(by.css('#dropdown3')).click();
+  //   element(by.css('.open .dropdown-menu .glyphicon-arrow-right')).click();
+  //   selectDate();
+  //
+  //   element(by.css('#dropdown4')).click();
+  //   selectDate();
+  //
+  //   var gift_wrap = element(by.model('formData.GiftWrap'));
+  //   selectDropdown(gift_wrap,'2');
+  //
+  //   element(by.model('formData.ControlFlags.IsNew')).click();
+  //   element(by.model('formData.ControlFlags.IsClearance')).click();
+  //   element(by.model('formData.ControlFlags.IsBestSeller')).click();
+  //   element(by.model('formData.ControlFlags.IsOnlineExclusive')).click();
+  //   element(by.model('formData.ControlFlags.IsOnlyAt')).click();
+  //   element(by.model('formData.Remark')).sendKeys('Remark ' + randomX(4));
+  //
+  // });
+  //
+  it('should add "Variant" in "Variation Tab"', function(){
 
     browser.executeScript('window.scrollTo(0,0);');
-    element(by.xpath('//a[@href="#images"]')).click();
+    element(by.xpath('//a[@href="#variation"]')).click();
 
-    var path = require('path');
-    var fileToUpload = 'images/1600x1600A.jpg';
-    var absolutePath = path.resolve(__dirname, fileToUpload);
+    element(by.xpath('//a[text()="Enable Variation"]')).click();
 
-    $('input[type="file"]').sendKeys(absolutePath);
-    browser.sleep(3000);
-
-    var EC = protractor.ExpectedConditions;
-    var video_link = element(by.model('variantPtr.VideoLinks[$index].Url'));
-    browser.wait(EC.visibilityOf(video_link), 5000);
-    video_link.sendKeys('https://www.youtube.com/watch?v=f78M4nKW1Ms');
-
-    //saveChanges('.main-form-action .btn-white');
+    var variant_select_option = element(by.model('dataset.attributeOptions[jth]'));
+    selectDropdown(variant_select_option,'2');
 
     browser.sleep(defaultSleep);
+
+    var variant_variant = element(by.model('$select.search'));
+    variant_variant.sendKeys('Fire');
+    variant_variant.sendKeys(protractor.Key.ENTER);
+    variant_variant.sendKeys('Water');
+    variant_variant.sendKeys(protractor.Key.ENTER);
+
+    browser.sleep(defaultSleep);
+    element(by.css('.variation-table tbody tr:nth-child(1)')).element(by.model('pair.Sku')).sendKeys('SKUA' + random1000);
+    element(by.css('.variation-table tbody tr:nth-child(2)')).element(by.model('pair.Sku')).sendKeys('SKUB' + random1000);
   });
 
-  it('should fill out "Global and Local Category" in "Category"', function(){
 
-    browser.executeScript('window.scrollTo(0,0);');
-    element(by.xpath('//a[@href="#category"]')).click();
-    element(by.css('.panel-select-global-category .fa-plus-circle')).click();
 
+  it('should save Product Detail', function(){
     browser.sleep(defaultSleep);
-
-    selectGlobalCategory('Imaginary Land','Film Camera & Accessories');
-
-    element(by.css('.panel-select-local-category .fa-plus-circle')).click();
-
-    selectGlobalCategory('Dont Delete Me','Test Local Category');
-
     saveChanges('.main-form-action .btn-white');
-
   });
 
 
@@ -474,7 +544,7 @@ function saveChanges(buttonLocation) {
 
   var EC = protractor.ExpectedConditions;
   // Waits for the element with id 'abc' to be visible on the dom.
-  browser.wait(EC.visibilityOf($('.alert-green')), 5000);
+  browser.wait(EC.visibilityOf($('.alert-green')), 10000);
   browser.sleep(999);
 }
 
@@ -509,4 +579,5 @@ function selectBrand(BrandName) {
 function selectDropdown(elementX,optionNumber) {
   elementX.click();
   elementX.element(by.css('option:nth-child('+optionNumber+')')).click();
+  elementX.sendKeys("\t");
 }
