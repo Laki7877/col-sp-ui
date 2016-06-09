@@ -9345,7 +9345,7 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 			var a = document.getElementById("export_download_btn");
 			var blobs = [];
 			blobs.push(rx);
-			var file = new Blob(blobs, { type: 'application/csv' });
+			var file = new Blob(blobs, { type: 'application/octet-stream' });
 			var fileURL = URL.createObjectURL(file);
 			$scope.exporter.href = fileURL;
 			$scope.exporter.download = fileName;
