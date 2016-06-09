@@ -271,8 +271,8 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 				window.navigator.msSaveOrOpenBlob(file, fileName);
 			}
 			else{
-				a.href = fileURL;
-				a.click();
+				//File saver API
+				saveAs(file, fileName);
 			}
 		});
 	}

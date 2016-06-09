@@ -9356,8 +9356,8 @@ module.exports = ["$scope", "Product", "AttributeSet", "NcAlert", "$base64", "$f
 				window.navigator.msSaveOrOpenBlob(file, fileName);
 			}
 			else{
-				a.href = fileURL;
-				a.click();
+				//File saver API
+				saveAs(file, fileName);
 			}
 		});
 	}
@@ -10214,7 +10214,7 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
 				disabled: false
 			};
 			var fileName = "ImportTemplate.csv";
-			var file = new Blob([data], {type: 'application/csv'});
+			var file = new Blob([data], {type: 'application/octet-stream'});
 			var fileURL = URL.createObjectURL(file);
 			var a = document.getElementById("download_template_btn");
 			
@@ -10223,8 +10223,9 @@ module.exports = ["$scope", "$window", "NcAlert", "$uibModal", "BrandService", "
 				window.navigator.msSaveOrOpenBlob(file, fileName);
 			}
 			else{
-				a.href = fileURL;
-				a.click();
+				//File saver API
+				console.log("using save As")
+				saveAs(file, fileName);
 			}
 
 		});
