@@ -21695,18 +21695,15 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       var validateMat = manualValidate(Status);
       if (validateMat.length > 0) {
         $scope.pageState.reset();
-        $scope.alert.error(validateMat.join(', ') + ' are required.');
+        $scope.alert.error(validateMat.join(', ') + ' is required.');
         return;
       }
 
       function defaultOnEmpty(vari) {
         if(!_.isObject(vari)) return;
 
-        var isNotNumberOrEmpty = function(vv){
-          if(_.isString(vv) && vv.trim() === ""){
-            return true;
-          }
-          return !_.isNaN(Number(vv));
+        function isNotNumberOrEmpty(n) {
+          return isNaN(parseFloat(n)) || !isFinite(n);
         }
         
         if (isNotNumberOrEmpty(vari.SafetyStock)) {
