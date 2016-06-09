@@ -1,3 +1,6 @@
+/**
+ * Action gear
+ */
 angular.module('nc')
 	.directive('ncAction', function($templateCache, $uibModal) {
 		return {

@@ -1,3 +1,4 @@
+// handle date from-to
 var angular = require('angular');
 angular.module('nc')
     .directive('ncDateRange', function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException, $parse) {
@@ -42,6 +43,7 @@ angular.module('nc')
                     if(!('error' in opt)){
                         opt.error = {};
                     };
+                    // check if form is validated
                     scope.isInvalid = function(form) {
                         if(angular.isDefined(form) &&
                             angular.isDefined(form.$invalid) &&

@@ -1,3 +1,4 @@
+// template for loading bar
 angular.module('nc')
 	.directive('ncLoading', function($templateCache) {
 		return {

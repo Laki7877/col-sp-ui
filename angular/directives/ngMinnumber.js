@@ -1,3 +1,6 @@
+/**
+ * Validate if number < minnumber
+ */
 module.exports = function() {
 	'ngInject';
 	return {

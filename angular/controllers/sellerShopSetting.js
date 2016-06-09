@@ -1,18 +1,29 @@
+/**
+ * Shop profile setting
+ */
 module.exports = function($rootScope, $scope, $controller, ShopService, ShopProfileService, ImageService, Onboarding, NcAlert, common, config, util, storage) {
 	'ngInject';
+	//dropdowns
 	$scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
 	$scope.shopGroupDropdown = config.DROPDOWN.SHOP_GROUP_DROPDOWN;
+
+	//form validator
 	$scope.form = {};
 	$scope.alert = new NcAlert();
 	$scope.saving = false;
 	$scope.loading = false;
 	$scope.statusChangeable = false;
 
+	//logo uploader object
 	$scope.logoUploader = ImageService.getUploaderFn('/ShopImages', {
 		data: { Type: 'Logo' }
 	});
+
+	//on init
 	$scope.init = function() {
 		$scope.loading = true;
+
+		// get shop profile from endpoint
 		ShopProfileService.list()
 			.then(function(data) {
 				$scope.formData = ShopProfileService.deserialize(data);			
@@ -65,6 +76,8 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 
 			});
 	};
+
+	// get all list object from endpoints
 	$scope.fetchAllList = function() {
 		ShopService.get('TermPayments')
 			.then(function(data) {
@@ -96,6 +109,8 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 			});
 	};
 	$scope.fetchAllList();
+	
+	//onsave
 	$scope.save = function() {
 		if($scope.saving) return;
 		$scope.alert.close();
@@ -103,8 +118,11 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 		//Activate form submission
 		$scope.form.$setSubmitted();
 
+		//check form
 		if($scope.form.$valid) {
 			$scope.saving = true;
+
+			//save
 			ShopProfileService.updateAll(ShopProfileService.serialize($scope.formData))
 				.then(function(data) {
 					$scope.formData = ShopProfileService.deserialize(data);
@@ -123,6 +141,8 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 			$scope.alert.error(util.saveAlertError());
 		}
 	};
+
+	// on upload logo
 	$scope.uploadLogo = function(file) {
 		if(_.isNil(file)) {
 			return;
@@ -130,6 +150,7 @@ module.exports = function($rootScope, $scope, $controller, ShopService, ShopProf
 		$scope.formData.ShopImage = {
 			Url: '/assets/img/loader.gif'
 		};
+		//upload file to logo endpoint
 		$scope.logoUploader.upload(file)
 			.then(function(response) {
 				$scope.formData.ShopImage = response.data;

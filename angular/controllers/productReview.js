@@ -1,3 +1,6 @@
+/**
+ * Handle product review
+ */
 module.exports = function($scope, $controller, ProductReviewService, config, $uibModal, util, common) {
 	'ngInject';
 	//Inherit from parent
@@ -11,6 +14,7 @@ module.exports = function($scope, $controller, ProductReviewService, config, $ui
 			id: 'ProductReviewId'
 					}
 	});
+	// open review modal
 	$scope.open = function(item) {
 		$uibModal.open({
 			size: 'lg',
@@ -18,7 +22,7 @@ module.exports = function($scope, $controller, ProductReviewService, config, $ui
 			controller: function($scope, info) {
 				'ngInject';
 				$scope.formData = _.extend({}, info);
-				$scope.maxRating = config.PRODUCT_REVIEW_MAX_RATING;
+				$scope.maxRating = config.PRODUCT_REVIEW_MAX_RATING; //max rating
 			},
 			resolve: {
 				info: function() {

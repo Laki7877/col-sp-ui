@@ -1,3 +1,6 @@
+/**
+ * Root controller, this is included before every other controllers
+ */
 module.exports = function ($rootScope, $uibModal, $window, storage, Credential, route, config, util, common) {
     'ngInject';
     //Root controller of the application
@@ -130,9 +133,11 @@ module.exports = function ($rootScope, $uibModal, $window, storage, Credential, 
         return oparent ? parent : false;
     }
 
+    // check for user permission
     $rootScope.hasPermission = function (id) {
         if ($rootScope.Profile) {
             return _.findIndex($rootScope.Profile.Permission, function (item) {
+                // check for parent permission before allowing
                 if (item.PermissionId == id) {
                     return permitParent(id);
                 }
@@ -169,6 +174,7 @@ module.exports = function ($rootScope, $uibModal, $window, storage, Credential, 
         return result;
     };
 
+    // use to generate menu items
     $rootScope.permitMenuItem = function (menuItem) {
         var result = false;
         _.forEach(menuItem.submenu, function (u) {
@@ -342,6 +348,7 @@ module.exports = function ($rootScope, $uibModal, $window, storage, Credential, 
             traverseFalse(arr[i].Children);
         };
     }
+    // role checkbox recursive (use in permission pages)
     $rootScope.checkRecursive = function (permObj, value) {
         if (value) {
             var parent = permObj.ParentNode;

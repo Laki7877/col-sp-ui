@@ -1,3 +1,6 @@
+/**
+ * Handle pending page
+ */
 module.exports = function($scope, $controller, Product) {
 	'ngInject';
     

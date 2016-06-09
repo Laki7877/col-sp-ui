@@ -1,5 +1,9 @@
+/**
+ * Handle return request changes
+ */
 module.exports = function($scope, $controller, ReturnRequestService, util, config) {
 	'ngInject';
+	// inherit add ctrl
 	$controller('AbstractAddCtrl', {
 		$scope: $scope,
 		options: {
@@ -10,12 +14,15 @@ module.exports = function($scope, $controller, ReturnRequestService, util, confi
 		}
 	});
 
+	//save fn
 	$scope.save = function() {
 		if($scope.saving) return;
 		$scope.form.$setSubmitted();
-		if($scope.form.$valid) {
+		if($scope.form.$valid) { //validate with form validation
 			$scope.saving = true;
 			$scope.alert.close();
+
+			// only update
 			ReturnRequestService.update($scope.formData.ReturnId, {
 				Status: 'AP',
 				CnNumber: $scope.formData.CnNumber,
