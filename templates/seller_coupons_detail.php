@@ -263,36 +263,37 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
 					</div>
 				</div>
 
-				<div  style="min-height: 400px; height: 400px; margin-top: 50px; overflow-y: scroll;">
-					<table class="table">
-						<thead ng-show="products.length > 0">
-							<tr class="bg-info">
-								<!--th>PID</th-->
-								<th>Product Name</th>
-								<th class="text-right">Exclude</th>
-							<tr>
-						</thead>
+				<div  style="min-height: 400px; height: 400px; margin-top: 10px; overflow-y: auto;">
+					<div class="table-section">
+						<table class="table">
+							<thead ng-show="products.length > 0">
+								<tr class="bg-info">
+									<!--th>PID</th-->
+									<th>Product Name</th>
+									<th class="text-right">Exclude</th>
+								<tr>
+							</thead>
 
-						<tbody ng-show="products.length > 0">
-							<tr ng-repeat="item in products">
-								<!--td>{{item.Pid}}</td-->
-								<td>{{item.ProductNameEn}}</td>
-								<td class="text-right">
-									<button class="btn btn-sm btn-info" ng-click="moveTo('product', 'exclude', item)"> 
-										<i class="fa fa-chevron-right" aria-hidden="true"></i>
-									</button>
-								</td>
-							</tr>
-						</tbody>
-
-						<tbody ng-show="products.length == 0">
-							<tr>
-								<td class="text-center" colspan="3" ng-show="empty">Empty List.</td>
-								<td class="text-center" colspan="3" ng-show="!empty && !loading && products.length == 0">Not found.</td>
-								<td class="text-center" colspan="3" ng-show="loading"><i class="fa fa-spinner fa-spin"></i></td>
-							</tr>
-						</tbody>
-					</table>
+							<tbody ng-show="products.length > 0">
+								<tr ng-repeat="item in products">
+									<!--td>{{item.Pid}}</td-->
+									<td>{{item.ProductNameEn}}</td>
+									<td class="text-right">
+										<button class="btn btn-sm btn-info" ng-click="moveTo('product', 'exclude', item)"> 
+											<i class="fa fa-chevron-right" aria-hidden="true"></i>
+										</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div nc-empty="You do not have any cmscategory" ng-show="products.length == 0" class="ng-isolate-scope" style="">
+						<div class="local-category-page margin-bottom-20">
+							<div class="local-category-empty-section margin-top-20">
+								<span><span class="zero-category-image"></span>  </span>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 

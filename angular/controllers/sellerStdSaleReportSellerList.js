@@ -38,16 +38,16 @@ module.exports = function ($scope, $controller, StdReportSaleService, config, ut
     var params = $scope.formData;
 
     $scope.search = function () {
-
         StdReportSaleService.getSaleReport(params)
         .then(function (data) {
-            debugger;
+            // debugger;
             $scope.list = data
             //$scope.list.data.total($scope.list.data.length);
             $scope.list.reload();
         });
 
     };
+
 
     $scope.exportCsv = function () {
         //debugger;
