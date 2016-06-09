@@ -1,5 +1,9 @@
+/**
+ * Handle product images
+ */
 module.exports = function($scope, $controller, common, Product, util, $window, $rootScope, config, storage, $base64, $timeout) {
     'ngInject';
+    // inherit from advance listing
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
@@ -17,6 +21,7 @@ module.exports = function($scope, $controller, common, Product, util, $window, $
                 'Delete',
                 'Hide',
                 'Show', {
+                    //publish product
                     name: 'Publish',
                     fn: function(arr, cb) {
                         $scope.alert.close();
@@ -25,7 +30,7 @@ module.exports = function($scope, $controller, common, Product, util, $window, $
                             $scope.alert.error('Unable to Publish. Please select Product for this action.');
                             return;
                         }
-
+                        // send only pid
                         Product.bulkPublish(_.map(arr, function(e) {
                             return _.pick(e, ['ProductId']);
                         })).then(function() {
@@ -44,6 +49,7 @@ module.exports = function($scope, $controller, common, Product, util, $window, $
                         btnClass: 'btn-green'
                     }
                 }, {
+                    //Add tag to product
                     name: 'Add Tags',
                     fn: function(add, cb, r) {
                         $scope.alert.close();
@@ -56,6 +62,7 @@ module.exports = function($scope, $controller, common, Product, util, $window, $
                             $scope.reload();
                         });
                     },
+                    //Add tags
                     modal: {
                         size: 'size-warning',
                         templateUrl: 'product/modalAddTags',
@@ -99,6 +106,7 @@ module.exports = function($scope, $controller, common, Product, util, $window, $
             }]
         }
     });
+    //
     $scope.showOnOffStatus = {};
     $scope.showOnOffStatus.value = true;
     $scope.statusLookup = {};
