@@ -36,7 +36,7 @@
             </select>
           </div>
           <!--Time Of Order Date-->
-          <div nc-template="common/input/form-group-with-label-multiple" nc-template-form="form.CreatedDate" nc-label="Time Of Order Date" nc-template-options-path="searchForm/CreatedDate">
+          <div nc-template="common/input/form-group-with-label-multiple" nc-template-form="form.CreatedDate" nc-label="Return Order Date" nc-template-options-path="searchForm/CreatedDate">
             <div class="width-field-small-input">
               <div class="dropdown">
                 <a class="dropdown-toggle" id="dropdown" role="button" data-toggle="dropdown" data-target="#" href="#">
