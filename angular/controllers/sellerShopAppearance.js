@@ -98,7 +98,7 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 	// product search
 	$scope.getProducts = function(search) {
 		if(search == _search) return;
-		search = _search;
+		_search = search;
 		Product.list({
 			_limit: 16,
 			searchText: search
@@ -110,7 +110,7 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 
 	// switch cache when theme id changes
 	$scope.$watch('formData.ThemeId', function(a,b) {
-		if(_.isNil(b)) return;
+		if(b == 0) return;
 		$scope.themeArray[b] = $scope.formData.Data;
 		$scope.formData.Data = $scope.themeArray[a] || {};
 	}, true);
