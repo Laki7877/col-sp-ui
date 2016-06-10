@@ -1,3 +1,6 @@
+/**
+ * Handle admin role adding
+ */
 module.exports = function($scope, $controller, AdminRoleService, AdminPermissionService, PermissionService, util) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -45,8 +48,11 @@ module.exports = function($scope, $controller, AdminRoleService, AdminPermission
 			}
 		}
 	});
+
+	// for serializing circular json
 	var cj = require('circular-json');
 
+	// select all update for item change
 	$scope.$watch(function() {
 		return cj.stringify($scope.formData);
 	}, function() {
@@ -57,7 +63,11 @@ module.exports = function($scope, $controller, AdminRoleService, AdminPermission
 			});
 		});		
 	});
+
+	// permission group
 	$scope.group = ['Products', 'Accounts', 'Promotions', 'Others', 'CMS', 'Report'];
+
+	// check all
 	$scope.checkAll = function(val) {
 		_.forOwn($scope.formData.Permissions, function(v,k) {
 			util.traverse(v, 'Children', function(e) {

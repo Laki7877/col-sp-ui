@@ -1,3 +1,4 @@
+// Filter dropdown
 angular.module('nc')
 	.directive('ncFilter', function($templateCache) {
 		return {

@@ -39,8 +39,8 @@ var seller = {
 	},
 	'CMS|fa fa-contao': {
 	    'CMS Category': '/cms/category',
-	    'CMS Static & Collection': '/cms/master',
-	    'CMS Group': '/cms/group'
+	    'CMS Static & Collection': '/cms/master'
+	    // 'CMS Group': '/cms/group'
 	},
 	'Shop Setting|fa-sliders': {
 		'Shop Profile': '/shops/settings',
@@ -91,8 +91,8 @@ var admin = {
     // Create By Col Dev (Natee)
 	'CMS|fa fa-contao': {
 	    'CMS Category': '/admin/cms/category',
-	    'CMS Static & Collection': '/admin/cms/master',
-	    'CMS Group': '/admin/cms/group'
+	    'CMS Static & Collection': '/admin/cms/master'
+	    // 'CMS Group': '/admin/cms/group'
 	},
 	'Reports|fa-file': {
 
@@ -100,13 +100,13 @@ var admin = {
 	'Others|fa-sliders': {
 		'Newsletters': '/admin/newsletters'
 	},
-	'Content Report|fa-file-o': {
+	'Content Report|fa-file': {
 		'Create & Approve Product' : '/admin/summary/createandapprove',
 		'Product Status': '/admin/summary/productstatus',
 		'Product Info': '/admin/summary/productinfo',
 		'Product Onweb': '/admin/summary/productonweb',
 		'SKU - Effective' : '/admin/summary/skueffective',
-		'SKU - Not Effective' : '/admin/summary/skunoteffective', 
+		'SKU - Not Effective' : '/admin/summary/skunoteffective',
 	},
 };
 var permission = {

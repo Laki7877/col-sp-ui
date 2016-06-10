@@ -28,7 +28,7 @@ module.exports = function($scope, $rootScope, Dashboard, $log, $filter, storage,
 		// set $scope.data for Graph.js
 		$scope.data = [tempData];
 	};
-
+	// Get weekly graph
 	getWeekGraphData = function() {
 		$scope.labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 		var tempData = [];

@@ -1,3 +1,6 @@
+/**
+ * Handle toggle popover
+ */
 var angular = require('angular');
 module.exports = ['$document', '$window', function($document, $window) {
 	$window._globalPopoverAny = null;

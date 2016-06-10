@@ -48,6 +48,11 @@ ng-transclude.has-error .form-control{
 .import-page{
 	ol{
 		-webkit-padding-start: 15px;
+    -moz-padding-start: 15px;
+    -khtml-padding-start: 15px;
+    -o-padding-start: 15px;
+    padding-start: 15px;
+    padding-left: 15px;
 	}
 }
 .image-wrapper {

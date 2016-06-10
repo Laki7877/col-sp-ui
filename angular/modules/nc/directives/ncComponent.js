@@ -1,4 +1,8 @@
+/**
+ * Shop appearance components
+ */
 angular.module('nc')
+	//text area component
 	.directive('ncTextareas', function($templateCache) {
 		return {
 			restrict: 'E',
@@ -17,6 +21,7 @@ angular.module('nc')
 						})
 					}
 				})
+				// num of text area
 				scope.$watch('size', function(d) {
 					if(!_.isNil(d)) {
 						scope.source.Texts = [];
@@ -28,6 +33,7 @@ angular.module('nc')
 			}
 		}
 	})
+	//product layout component
 	.directive('ncProductLayout', function($templateCache, Product) {
 		return {
 			restrict: 'E',
@@ -43,6 +49,8 @@ angular.module('nc')
 			template: $templateCache.get('common/ncProductLayout'),
 			link: function(scope) {
 				scope.src = {};
+				scope.loading = false;
+				//update product list
 				scope.$watch('src.model', function(n, o) {
 					if(!scope.source) {
 						scope.source = _.defaults(scope.source, {
@@ -54,6 +62,7 @@ angular.module('nc')
 						return e.Pid;
 					});
 				}, true);
+				//changed product list naming by querying endpoint
 				scope.$watch('source', function(n, o) {
 					if(_.isNil(scope.source)) {
 						scope.source = _.defaults(scope.source, {
@@ -61,14 +70,16 @@ angular.module('nc')
 						});
 					}
 					else {
+						//query endpoint to load products by pid
 						if(scope.source.Products && scope.source.Products.length > 0) {
 							if(scope.source.Products.length > 0) {
+								scope.loading = true;
 								Product.advanceList({
 									_limit: scope.source.Products.length,
 									Pids: scope.source.Products
 								}).then(function(data) {
+									scope.loading = false;
 									scope.src.model = data.data;
-									console.log(scope.src.model, data);
 								});
 							}
 						}
@@ -77,6 +88,7 @@ angular.module('nc')
 			}
 		}
 	})
+	// text with link components
 	.directive('ncTextLink', function($templateCache) {
 		return {
 			restrict: 'E',
@@ -98,6 +110,7 @@ angular.module('nc')
 			}
 		}
 	})
+	// image with links components
 	.directive('ncImageLinks', function($templateCache) {
 		return {
 			restrict: 'E',
@@ -123,7 +136,9 @@ angular.module('nc')
 						})
 					}
 				});
+				// acceptable file ext
 				scope.accept = scope.accept || '.jpg,.jpeg';
+				// validate by width height
 				scope.validate = function(f,w,h,i) {
 					if(scope.minWidth && scope.minWidth.length > i) {
 						return w > scope.minWidth;
@@ -134,6 +149,7 @@ angular.module('nc')
 						return true;
 					}
 				}
+				// num of images
 				scope.$watch('size', function(d) {
 					if(!_.isNil(d)) {
 						scope.source.Images = [];
@@ -145,8 +161,10 @@ angular.module('nc')
 						};
 					}
 				})
+				// on upload
 				scope.upload = function($file, image, $index, $ifile) {
 					if($ifile.length > 0) {
+						// check min width
 						if(!_.isNil(scope.minWidth)) {
 							scope.fail('ondimension', null, minWidth[$index], true);
 						}
@@ -154,6 +172,7 @@ angular.module('nc')
 							scope.fail('ondimension', null, [width[$index], height[$index]]);
 						}
 					} else {
+						//upload
 						scope.uploader.upload($file).then(function(data) {
 							image = _.extend(image, data.data);
 						}, function(err) {

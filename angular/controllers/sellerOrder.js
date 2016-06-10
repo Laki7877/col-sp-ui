@@ -1,5 +1,9 @@
+/**
+ * Handle seller order page
+ */
 module.exports = function($scope, $window, $controller, OrderService, config, storage, common) {
 	'ngInject';
+	// inherit from list ctrl
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
 		options: {
@@ -12,6 +16,7 @@ module.exports = function($scope, $window, $controller, OrderService, config, st
 			bulks: [{
 				name: 'Acknowledge',
 				fn: function(arr, cb) {
+					// change status to PE
 					var result = _.compact(_.map(arr, function(e) {
 						if(e.Status == 'PC') {
 							return {
@@ -22,6 +27,7 @@ module.exports = function($scope, $window, $controller, OrderService, config, st
 							return null;
 						}
 					}));
+					// save change
 					OrderService.updateAll(result)
 						.then(function() {
 							$scope.alert.success('Successfully acknowledged');
@@ -70,6 +76,7 @@ module.exports = function($scope, $window, $controller, OrderService, config, st
 			]
 		}
 	});	
+	//
 	if(storage.has('payment_order')) {
 		$scope.params._filter = 'PaymentConfirmed';
 		storage.remove('payment_order');
@@ -119,7 +126,9 @@ module.exports = function($scope, $window, $controller, OrderService, config, st
 			disabled: true
 		};
 	};
+	// multifunctional button
 	$scope.onButtonClick = function(item) {
+		//change to delivered on ready-to-ship
 		if(item.Status == 'RS' && item.ShippingType == 'Merchant Fleet') {
 			$scope.alert.close();
 			OrderService.update(item.OrderId, {
@@ -135,6 +144,7 @@ module.exports = function($scope, $window, $controller, OrderService, config, st
 				$scope.alert.error(common.getError(err));
 			})
 		} else {
+			//simply 
 			$window.location.href = $scope.url + '/' + item.OrderId;
 		}
 	}

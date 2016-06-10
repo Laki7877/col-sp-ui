@@ -144,7 +144,7 @@ user-select: none;
   }
 
 	.modified-column {
-		width: 88px;
+		width: 96px;
 	}
 
   .submitted-column {
@@ -235,7 +235,7 @@ user-select: none;
   table > tbody > tr > td  {
     border-color: $color-light-grey;
   }
-	
+
   // End setting border color
 
 
@@ -552,11 +552,25 @@ user-select: none;
 
 .table {
   .column-text-ellipsis {
-    max-width: 0;
+    max-width: 150px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+	.column-text-ellipsis-small {
+		max-width: 100px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	@media (min-width: 1350px) {
+		.column-text-ellipsis {
+			max-width: 270px;
+		}
+		.column-text-ellipsis-small {
+			max-width: 150px;
+		}
+	}
 	.text-ellipsis {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -708,10 +722,13 @@ user-select: none;
 				font-size: 20px;
 			}
 		}
-		button.close > span {
-	    	line-height: 1;
-	    	font-size: 36px;
-	    	margin-top: -6px;
+		button.close{
+			height: 30px;
+			span {
+		    	line-height: 1;
+		    	font-size: 36px;
+		    	margin-top: -6px;
+			}
 		}
 		.modal_title_abosolute {
 			position: absolute;
@@ -779,6 +796,11 @@ user-select: none;
     .content-column{
       margin-top: 15px;
       -webkit-padding-start: 0px;
+			-moz-padding-start: 0px;
+			-khtml-padding-start: 0px;
+			-o-padding-start: 0px;
+			padding-start: 0px;
+			padding-left: 0px;
       height: 290px;
       overflow-y: auto;
       list-style: none;
@@ -843,6 +865,11 @@ user-select: none;
 	margin-bottom: 15px;
 	list-style-type:none;
 	-webkit-padding-start: 0px;
+	-moz-padding-start: 0px;
+	-khtml-padding-start: 0px;
+	-o-padding-start: 0px;
+	padding-start: 0px;
+	padding-left: 0px;
 	li{
 		margin-bottom: 5px;
 	}

@@ -1,3 +1,6 @@
+/**
+ * Render template with options
+ */
 var angular = require('angular');
 module.exports = ['$templateCache', '$compile', '$templateOptionsCache', 'KnownException', function ($templateCache, $compile, $templateOptionsCache, KnownException) {
     var originalAttr = {};

@@ -19,6 +19,7 @@
     <script src="<?= $this->asset('/assets/js/jquery.min.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/jquery.rest.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/bundle.js') ?>"></script>
+    <script src="<?= $this->asset('/assets/js/file-saver.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/bootstrap.min.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/bootstrap-fixconflict.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/jquery-ui.js') ?>"></script>
@@ -71,8 +72,8 @@
 
 <body id="body" class="ahpt" ng-cloak ng-controller="RootCtrl" ng-strict-di>
     <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
     <div ng-if="!$root.DisablePage">
         <div id="debug">
             <?= $this->section('debug') ?>

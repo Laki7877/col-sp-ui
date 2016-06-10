@@ -175,7 +175,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .directive('ngMatch', directives.ngMatch)
   .directive('ngMaxnumber', directives.ngMaxnumber)
   .directive('ngMinnumber', directives.ngMinnumber)
-  .directive('ngPermission', directives.ngPermission)
+  // .directive('ngPermission', directives.ngPermission)
   .directive('ngSlideToggle', directives.ngSlideToggle)
   .directive('ngTemplate', directives.ngTemplate)
   .directive('ngUppercase', directives.ngUppercase)

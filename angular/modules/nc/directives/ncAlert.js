@@ -1,3 +1,6 @@
+/**
+ * Alert bar
+ */
 angular.module('nc')
 	.provider('$ncAlert', function() {
 		this.defaultErrorMessage = 'Error';
@@ -6,6 +9,7 @@ angular.module('nc')
 			return this;
 		};
 	})
+	//alert directive
 	.directive('ncAlert', function($templateCache, NcAlert) {
 		return {
 			restrict: 'E',
@@ -14,6 +18,7 @@ angular.module('nc')
 			},
 			template: $templateCache.get('common/ncAlert'),
 			link: function(scope, elem) {
+				//alert
 				scope.$watch('alert', function(newObj) {
 					if(newObj instanceof NcAlert) {
 						scope.alert.element = elem;
@@ -22,6 +27,7 @@ angular.module('nc')
 			}
 		}
 	})
+	//alert class
 	.factory('NcAlert', function($document, $timeout, $ncAlert, smoothScroll) {
 		return function() {
 			var vm = this;
@@ -30,6 +36,7 @@ angular.module('nc')
 			this.close = function() {
 				this.show = false;
 			};
+			//show bar
 			this.open = function(success, msg, color) {
 				color = _.isNil(color) ? 'red' : color;
 				this.type = (success) ? 'green' : color;
@@ -42,11 +49,13 @@ angular.module('nc')
 
 				this.show = true;
 			};
+			//show red bar
 			this.error = function(obj, toElm, scroll) {
 				this.open(false, obj);
 				
 				$timeout(function() {
 					var section = vm.element || $document;
+					//should scroll to bar
 					if(!_.isNil(scroll)) {
 						if(scroll)
 							smoothScroll(toElm ? vm.element[0] : $document[0].body, {
@@ -60,6 +69,7 @@ angular.module('nc')
 					}
 				}, 10);
 			};
+			//show green bar
 			this.success = function(obj, toElm) {
 				this.open(true, obj);
 				

@@ -1,13 +1,13 @@
-module.exports = function ($scope, $rootScope, $controller, CMSCategoryService, config, $uibModal, $timeout) {
+module.exports = function ($scope, $rootScope, $controller, CMSCategoryService, config, storage, $uibModal, $timeout) {
     'ngInject';
 
     $scope.adCMSadd = !$rootScope.permit(24);
     $scope.formData = {
-        CategoryProductList:[],
-        CMSCategoryNameEN:'',
-        CMSCategoryNameTH:'',
-        Visibility:true,
-        CreateIP:''
+        CategoryProductList: [],
+        CMSCategoryNameEN: '',
+        CMSCategoryNameTH: '',
+        Visibility: true,
+        CreateIP: ''
     };
     $scope.loading = false;
     $scope.isEmpty = true;
@@ -288,6 +288,8 @@ module.exports = function ($scope, $rootScope, $controller, CMSCategoryService, 
                     if (newValue === undefined)
                         return;
 
+                    $scope.search('');
+
                 });
 
                 $scope.disabled = undefined;
@@ -361,7 +363,6 @@ module.exports = function ($scope, $rootScope, $controller, CMSCategoryService, 
         return $scope.formData.CategoryProductList === undefined ? 0 : $scope.formData.CategoryProductList.length;
     };
 
-    
     $controller('AbstractAddCtrl', {
         $scope: $scope,
         options: {
@@ -377,7 +378,7 @@ module.exports = function ($scope, $rootScope, $controller, CMSCategoryService, 
 
             },
             onSave: function (scope) {
-                debugger;
+                scope.formData.CreateIP = storage.get('IP');
             }
         }
     });

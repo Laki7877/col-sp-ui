@@ -1,3 +1,6 @@
+/**
+ * Handle seller account adding page
+ */
 module.exports = function($scope, $window, $filter, $controller, OrderService, util, config, $uibModal) {
   'ngInject';
   $scope.status = config.ORDER_STATUS;
@@ -19,6 +22,8 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
     if($scope.form.$valid) {
       $scope.alert.close();
       $scope.saving = true;
+
+      //saving
       OrderService.update($scope.formData.OrderId, form)
         .then(function(data) {
           $scope.formData = OrderService.deserialize(data);
@@ -42,13 +47,15 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
       TrackingNumber: $scope.formData.TrackingNumber
     });
   };
+  //Deliver button
   $scope.delivered = function() {
     save({Status: 'DE'});
   };
-  //Acknowledge
+  //Acknowledge btn
   $scope.acknowledge = function() {
     save({Status: 'PE'});
   };
+  //Is merchantfleet
   $scope.merchantFleet = function() {
     return $scope.formData.ShippingType == 'Merchant Fleet';
   };
@@ -56,8 +63,10 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   $scope.readyShip = function() {
     $scope.form.$setSubmitted();
     if($scope.saving) return;
+    //validate form data
     if($scope.form.$valid) {
       if($scope.formData.ShippingType == 'Merchant Fleet') {
+        //prompt warning on ready-to-ship
         $uibModal.open({
             size: 'size-warning',
             templateUrl: 'order/modalReadyToShipMerchant',
@@ -76,12 +85,15 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
               }
             }
         }).result.then(function(data) {
+          // get data from modal
           var o = {
            InvoiceNumber: $scope.formData.InvoiceNumber,
            Status: 'RS',
            Products: $scope.formData.Products,
            TrackingNumber: data.TrackingNumber
           };
+
+          // use own or merchant fleet carrier
           if(data.IsOwnCarrier) {
             o.Carrier = data.OtherCarrier;
           } else {
@@ -97,6 +109,7 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
           'Cancel',
           'btn-blue'
         ).result.then(function() {    
+          // save to ready to ship
           save({
            InvoiceNumber: $scope.formData.InvoiceNumber,
            Status: 'RS',
@@ -167,4 +180,25 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   $scope.getInvoiceState = function() {
     return !( $scope.formData.ShippingType == 'BU Dropship' || $scope.formData.ShippingType == 'COL Fulfillment' );
   };
+
+  // New Print
+  // var app = angular.module('myApp', []);
+
+  // app.controller('myCtrl', function($scope) {
+      JsBarcode("#code128", "DLN1605000001",{
+        format: "code128",
+        lineColor: "#000",
+        width:2,
+        height:50,
+        displayValue: true,
+        textAlign:"left"
+      });
+      $scope.printToCart = function(printSectionId) {
+          var innerContents = document.getElementById(printSectionId).innerHTML;
+          var popupWinindow = window.open('', '_blank', 'scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+          popupWinindow.document.open();
+          popupWinindow.document.write('<html><head><link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/assets/libs/shippingLabelPrint/shippingLabelPrint.css" /></head><body onload="window.print()">' + innerContents + '</body></html>');
+          popupWinindow.document.close();
+      }
+  // });
 };

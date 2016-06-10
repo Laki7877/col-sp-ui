@@ -19,7 +19,7 @@
 
                 <div ng-if="isHtmlInput(da.DataType)">
                     <textarea ng-required="da.Required && onPublishing" ng-class="{'has-error' : $root.isInvalid(form.DAInput{{ $index }}) }" ng-disabled="xspermit(35)"
-                        ng-model="formData.MasterAttribute[da.AttributeId]" name="DAInput{{$index}}" class="form-control"
+                        ng-model="formData.MasterAttribute[da.AttributeId].ValueEn" name="DAInput{{$index}}" class="form-control"
                         ng-ckeditor="ckOptions"></textarea>
                 </div>
 
@@ -31,8 +31,8 @@
             			<div class="checkbox" ng-repeat="vmap in da.AttributeValueMaps">
               			<label>
               				<input type="checkbox" ng-disabled="xspermit(35)" id="{{ vmap.AttributeValue.AttributeValueEn }}"
-                        ng-init="formData.MasterAttribute[da.AttributeId]._checkbox = true;formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId] = true;"
-                        ng-model="formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId]" />
+                            ng-init="initDefaultAttributes(da, vmap)"
+                            ng-model="formData.MasterAttribute[da.AttributeId][vmap.AttributeValueId]" />
               				{{ vmap.AttributeValue.AttributeValueEn }}
               			</label>
             			</div>

@@ -1,3 +1,6 @@
+/**
+ * CKeditor wrapper for angular
+ */
 module.exports = [function () {
     return {
         priority: 1010,

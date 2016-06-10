@@ -1,13 +1,19 @@
+/**
+ * Handle seller coupon adding page
+ */
 module.exports = function ($scope, $rootScope, $controller, $uibModal, $window, NcAlert, SellerCouponService, LocalCategoryService, Category, Product, config) {
     'ngInject';
+    // coupon status dropdown
     $scope.statusDropdown = config.DROPDOWN.DEFAULT_STATUS_DROPDOWN;
     $scope.criteria = config.DROPDOWN.COUPON_CRITERIA;
     $scope.filters = config.DROPDOWN.COUPON_SELLER_FILTER;
     $scope.discount = config.DROPDOWN.COUPON_DISCOUNT;
+
+    // cannot edit if there's no permission 53
     $scope.manageable = !$rootScope.permit(53);
     $scope.alert = new NcAlert();
 
-
+    // category listing
     $scope.categories   = [];
     $scope.formData     = SellerCouponService.generate();
 
@@ -169,6 +175,7 @@ module.exports = function ($scope, $rootScope, $controller, $uibModal, $window, 
         });
     };
 
+    // search for category with id
     $scope.getCategory = function (id) {
         var category = null;
         angular.forEach($scope.categories, function (item) {

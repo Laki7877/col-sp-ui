@@ -1,3 +1,4 @@
+// template for rendering page title
 var angular = require('angular');
 angular.module('nc')
     .directive('ncPageTitle', function ($rootScope, $templateCache, $compile, $templateOptionsCache, $parse, KnownException) {
@@ -20,6 +21,7 @@ angular.module('nc')
                 return templateHTML;
             },
             link: function (scope, element, attrs, ctrl, transclude) {
+                //title with separator
                 scope.breads = scope.title.split('/');
                 scope.$watch('title', function(newVal) {
                     if(!_.isNil(newVal))

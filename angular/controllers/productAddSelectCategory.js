@@ -1,10 +1,12 @@
-var angular = require('angular');
-
+/**
+ * Handle selecting global for product
+ */
 module.exports = ['$scope', 'Category', 'GlobalCategory', function($scope, Category, GlobalCategory) {
 	'use strict';
 	$scope.selected = null;
 	$scope.columns = [];
 	$scope.loading = true;
+	//validate if scope is selected
 	$scope.validate = function(e){
 		if(null === $scope.selected){
 			e.preventDefault();

@@ -1,3 +1,4 @@
+// create default value for model
 angular.module('nc')
 	.directive('ncDefaultValue', function() {
 		return {

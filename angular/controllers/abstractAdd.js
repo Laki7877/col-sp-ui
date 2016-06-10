@@ -1,4 +1,6 @@
-// abstract add controller for add/detail pages
+/**
+ * Provide template controller for add/detail page
+ */
 module.exports = function($scope, $window, NcAlert, util, common, options) {
 	'ngInject';
 	$scope.formData = {}; //form data
@@ -23,8 +25,15 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 		if(options.freeToLeave){
 			return false;
 		}
+		var willLeave = $scope.form.$dirty;
 
-		return $scope.form.$dirty;
+		$(".sub-sidebar").hide();
+
+		setTimeout(function(){
+	        $(".sub-sidebar").show();
+	    }, 1000);
+
+		return willLeave;
 	});
 
 	$scope.init = function(params) {
@@ -97,15 +106,18 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 				(options.onBeforeSave || _.noop)($scope, true);
 				options.service.update($scope.id, data)
 					.then(function(result) {
+						//call deserializer
 						$scope.formData = options.service.deserialize(result);
+						//show alert box
 						$scope.alert.success(options.success || util.saveAlertSuccess(options.successItem || options.item, options.url));
-						$scope.form.$setPristine(true);
+						$scope.form.$setPristine(true); //reset form
 						(options.onAfterSave || _.noop)($scope, true);
 					}, function(err) {
-						$scope.alert.error(common.getError(err));
+						$scope.alert.error(common.getError(err)); //some internal error
 					})
 					.finally(function() {
 						$scope.saving = false;
+						//optional date field reparse
 						if(options.dateFields){
 							options.dateFields.forEach(function(df){
 									$scope.formData[df] = restoreDf[df];
@@ -119,9 +131,9 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 					.then(function(result) {
 						//Set both id and formData[id]
 						$scope.id = result[options.id];
-						$scope.formData = options.service.deserialize(result);
+						$scope.formData = options.service.deserialize(result); //deserialize
 						$scope.alert.success(options.success || util.saveAlertSuccess(options.successItem || options.item, options.url));
-						$scope.form.$setPristine(true);
+						$scope.form.$setPristine(true); //reset form validator state
 						(options.onAfterSave || _.noop)($scope, false);
 					}, function(err) {
 						$scope.alert.error(common.getError(err));
