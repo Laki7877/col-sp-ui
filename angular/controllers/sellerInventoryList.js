@@ -1,5 +1,9 @@
+/**
+ * Handle inventory listing
+ */
 module.exports = function($scope, $rootScope, $controller, $window, InventoryService, config, common, storage) {
 	'ngInject';
+	//inherit abstract list
 	$controller('AbstractAdvanceListCtrl', {
 		$scope: $scope,
 		options: {
@@ -25,10 +29,12 @@ module.exports = function($scope, $rootScope, $controller, $window, InventorySer
 			}
 		}
 	});	
+	// redirect from dashboard
 	if(storage.has('lowstock')) {
 		$scope.params._filter = 'LowStock';
 		storage.remove('lowstock');
 	}
+	//calculate avail stock
 	$scope.getAvailableStock = function(item) {
 		return _.toInteger(item.Quantity) - (
 				_.toInteger(item.Defect) +
@@ -36,6 +42,7 @@ module.exports = function($scope, $rootScope, $controller, $window, InventorySer
 				_.toInteger(item.Reserve)
 				);
 	};
+	// get inventory status
 	$scope.getStatus = function(item) {
 		var measure = $scope.getAvailableStock(item);
 
@@ -50,6 +57,7 @@ module.exports = function($scope, $rootScope, $controller, $window, InventorySer
 		//Normal
 		return $scope.statusDropdown[0];
 	};
+	// popup for editing inventory
 	$scope.popoverStock = function(item) {
 		if(!$rootScope.permit(51)) {
 			return;
@@ -63,9 +71,11 @@ module.exports = function($scope, $rootScope, $controller, $window, InventorySer
 			$scope.popoverItem.UpdateQuantity = 0
 		}
 	};
+	// updateable by permission 51
 	$scope.isUpdate = function(item) {
 		return $rootScope.permit(51);
 	}
+	// update stock endpoint
 	$scope.updateStock = function(item) {
 		$scope.alert.close();
 		// cast to int
@@ -79,7 +89,7 @@ module.exports = function($scope, $rootScope, $controller, $window, InventorySer
 		InventoryService.update(item.Pid, i)
 			.then(function(data) {
 				$scope.lastEdit = item.Pid;
-				$scope.popoverItemOriginal.Quantity = data;
+				$scope.popoverItemOriginal.Quantity += i.UpdateQuantity;
 			}, function(err) {
 				$scope.lastEdit = null;
 				$scope.alert.error(common.getError(err));

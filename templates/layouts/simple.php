@@ -19,6 +19,7 @@
     <script src="<?= $this->asset('/assets/js/jquery.min.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/jquery.rest.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/bundle.js') ?>"></script>
+    <script src="<?= $this->asset('/assets/js/file-saver.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/bootstrap.min.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/bootstrap-fixconflict.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/jquery-ui.js') ?>"></script>
@@ -32,6 +33,41 @@
 
 
     <script src="/assets/libs/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+
+    <?
+      //Browser specific CSS Detection
+      $msie = strpos($_SERVER["HTTP_USER_AGENT"], 'MSIE') ? true : false;
+      $firefox = strpos($_SERVER["HTTP_USER_AGENT"], 'Firefox') ? true : false;
+      $safari = strpos($_SERVER["HTTP_USER_AGENT"], 'Safari') ? true : false;
+      $chrome = strpos($_SERVER["HTTP_USER_AGENT"], 'Chrome') ? true : false;
+
+      //Default = ie
+      $specificBrowser = 'ie';
+
+      //Firefox
+      if ($firefox) {
+        $specificBrowser = 'firefox';
+      }
+
+      // Safari or Chrome
+      if ($safari || $chrome) {
+        $specificBrowser = 'webkit';
+      }
+
+      // IE - Not working yet
+      if ($msie) {
+        $specificBrowser = 'ie';
+      }
+    ?>
+
+    <!-- Specific Stylesheet for each browser-->
+    <link rel="stylesheet" href="/assets/css/<? echo $specificBrowser ?>.css" />
+
+    <!--[if IE]>
+      <link rel="stylesheet" href="/assets/css/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <![endif]-->
+
 </head>
 
 <body id="body" class="ahpt" ng-cloak ng-controller="RootCtrl" ng-strict-di>
@@ -53,6 +89,10 @@
 
     <!--<script src="/assets/libs/angular-select2/select.min.js"></script>-->
     <link rel="stylesheet" type="text/css" href="/assets/libs/angular-select2/select.css">
+
+
+    <!-- <h4 style="text-align:center;">This is <? echo $specificBrowser ?> (For Test Server Only)</h4> -->
+
 </body>
 
 </html>

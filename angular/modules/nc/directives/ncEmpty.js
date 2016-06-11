@@ -1,3 +1,4 @@
+// template for empty search result
 angular.module('nc')
 	.directive('ncEmpty', function($templateCache) {
 		return {

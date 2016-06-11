@@ -1,18 +1,17 @@
 'use strict'
 
 // App Start here
-var angular = require('angular')
+var angular = require('angular');
 var bulk = require('bulk-require')(__dirname, ['controllers/*.js', 'services/*.js', 'helpers/*.js',
   'directives/*.js', 'filters/*.js', 'libs/*.js', 'template-options/*.js'
-])
-var config = require('./config')
-var route = require('./route')
-var template = require('./template')
-var skeemas = require('skeemas');
+]);
+var config = require('./config');
+var route = require('./route');
+var template = require('./template');
 
 // IE fix
-require('./iefix.js')
-require('./datefix.js')
+require('./iefix.js');
+require('./datefix.js');
 
 // External dependencies
 global._ = require('lodash')
@@ -54,11 +53,11 @@ String.prototype.startsWith = String.prototype.startsWith || function() {
 }
 
 // Internal dependencies
-var controllers = bulk.controllers
-var services = bulk.services
-var helpers = bulk.helpers
-var directives = bulk.directives
-var filters = bulk.filters
+var controllers = bulk.controllers;
+var services = bulk.services;
+var helpers = bulk.helpers;
+var directives = bulk.directives;
+var filters = bulk.filters;
 
 var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   'nc', 'ui.bootstrap.datetimepicker', 'ngDraggable',
@@ -81,7 +80,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   // App template cache load
   .run(template)
   .run([function(){
-      //  Rollbar.configure({logLevel: "warning"});
+
   }])
 
   // Configuration
@@ -92,7 +91,6 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   // Helpers
   .factory('base64', helpers.base64)
   .factory('common', helpers.common)
-  .factory('skeemas', skeemas)
   .factory('storage', helpers.storage)
   .factory('util', helpers.util)
 
@@ -158,6 +156,17 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .factory('StdReportOnHoldService', services.stdOnHoldReportService)
   .factory('StdReportReturnService', services.stdReturnReportService)
 
+  // Col Dev (Natcharin)
+  .factory('StdOiReportService', services.stdOiReportService)
+  .factory('StdNonMoveReportService', services.stdNonMoveReportService)
+  .factory('SumCreateAndApproveService', services.sumCreateAndApproveService)
+  .factory('SumProductStatusService', services.sumProductStatusService)
+  .factory('SumProductInfoService', services.sumProductInfoService)
+  .factory('SumProductOnWebService', services.sumProductOnWebService)
+  .factory('SumSKUEffectiveService', services.sumSKUEffectiveService)
+  .factory('SumSKUNotEffectiveService', services.sumSKUNotEffectiveService)
+
+
   // Directives
   .directive('ncTradableSelect', directives.ncTradableSelect)
   .directive('ngCkeditor', directives.ngCkeditor)
@@ -166,7 +175,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .directive('ngMatch', directives.ngMatch)
   .directive('ngMaxnumber', directives.ngMaxnumber)
   .directive('ngMinnumber', directives.ngMinnumber)
-  .directive('ngPermission', directives.ngPermission)
+  // .directive('ngPermission', directives.ngPermission)
   .directive('ngSlideToggle', directives.ngSlideToggle)
   .directive('ngTemplate', directives.ngTemplate)
   .directive('ngUppercase', directives.ngUppercase)
@@ -175,11 +184,14 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .directive('ngMinnumber', directives.ngMinnumber)
   .directive('ngMaxnumber', directives.ngMaxnumber)
   .directive('ngDateBefore', directives.ngDateBefore)
+  .directive('ngEnter', directives.ngEnter)
+
   // Filters
   .filter('capitalize', filters.capitalize)
   .filter('ordinal', filters.ordinal)
   .filter('html', filters.html)
   .filter('truth', filters.truth)
+  .filter('lies', filters.lies)
   .filter('exclude', filters.exclude)
   .filter('excludeCategory', filters.excludeCategory)
   .filter('truncate', filters.truncate)
@@ -189,6 +201,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .filter('importGuidelineExample', filters.importGuidelineExample)
   .filter('propsFilter', filters.propsFilter) // Col Dev (Natee)
   .filter('statusValue', filters.statusValue) // Col Dev (Natee)
+
   // Controllers
   .controller('RootCtrl', controllers.root)
   .controller('IndexCtrl', controllers.index)
@@ -226,6 +239,8 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('SellerProductGroupAddCtrl', controllers.sellerProductGroupAdd)
   // .controller('SellerReportCtrl', controllers.sellerReport)
   .controller('StdSaleReportSellerCtrl', controllers.StdSaleReportSellerList)
+  .controller('SellerBuy1Get1AddCtrl',controllers.sellerBuy1Get1Add)
+  .controller('SellerBuy1Get1ListCtrl',controllers.sellerBuy1Get1List)
 
   .controller('AdminAttributeCtrl', controllers.adminAttribute)
   .controller('AdminAttributeSetCtrl', controllers.adminAttributeSet)
@@ -280,16 +295,29 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
 
   .controller('AdminCMSMasterListCtrl', controllers.adminCMSMasterList)
   .controller('AdminCMSMasterAddCtrl', controllers.adminCMSMasterAdd)
+
+   //Report iOath
   .controller('SellerStdSaleReportSellerCtrl', controllers.sellerStdSaleReportSellerList)
   .controller('SellerStdStockReportCtrl', controllers.sellerStdStockReportList)
   .controller('SellerStdOnHoldReportCtrl', controllers.sellerStdOnHoldReportList)
   .controller('SellerStdReturnReportCtrl', controllers.sellerStdReturnReportList)
+    //Report by Natcharin
+  .controller('SellerStdOiReportCtrl', controllers.sellerStdOiReportList)
+  .controller('SellerStdNonMoveReportCtrl', controllers.sellerStdNonMoveReportList)
 
   //iOATH
   .controller('AdminBuy1Get1AddCtrl',controllers.adminBuy1Get1Add)
   .controller('AdminBuy1Get1ListCtrl',controllers.adminBuy1Get1List)
 
   .controller('TestCtrl', controllers.test)
+
+  //Summary by Natcharin
+  .controller('AdminSumCreateAndApproveCtrl', controllers.adminSumCreateAndApprove)
+  .controller('AdminSumProductStatusCtrl', controllers.adminSumProductStatus)
+  .controller('AdminSumProductInfoCtrl', controllers.adminSumProductInfo)
+  .controller('AdminSumProductOnWebCtrl',controllers.adminSumProductOnWeb)
+  .controller('AdminSumSKUEffectiveCtrl',controllers.adminSumSKUEffective)
+  .controller('AdminSumSKUNotEffectiveCtrl',controllers.adminSumSKUNotEffective)
 
   //CMS Seller
   .controller('SellerCMSMasterListCtrl', controllers.sellerCMSMasterList)
@@ -302,3 +330,5 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
 
   .controller('SellerCMSCategoryListCtrl', controllers.sellerCMSCategoryList)
   .controller('SellerCMSCategoryAddCtrl', controllers.sellerCMSCategoryAdd)
+
+  

@@ -64,7 +64,7 @@
               </tr>
           </thead>
           <tbody>
-              <tr ng-repeat="row in list.data">
+              <tr ng-repeat="row in list.data" ng-class="{'not-visible-row': !row.Visibility}">
                   <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
                   <td class="display-column">
                     <div class="img-holder">
@@ -77,7 +77,7 @@
                     <div class="color-grey" ng-if="row.VariantCount > 0">({{row.VariantCount}} variants)</div>
                     <div class="color-grey" ng-hide="row.VariantCount > 0">PID: {{row.Pid}}</div>
                   </td>
-                  <td class="column-text-ellipsis">
+                  <td class="column-text-ellipsis-small">
                     {{getTag(row.Tags)}}
                   </td>
                   <td class="price-column">
@@ -98,7 +98,7 @@
                     </span>
                   </td>
                   <td class="live-column" ng-if="showOnOffStatus.value">
-                      <i class="fa fa-circle color-green" ng-if="row.OnlineFlag"></i> 
+                      <i class="fa fa-circle color-green" ng-if="row.OnlineFlag"></i>
                       <i class="fa fa-circle color-grey" ng-if="!row.OnlineFlag"></i>
                   </td>
                   <td class="visible-column">

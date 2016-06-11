@@ -34,17 +34,17 @@ angular.module('umeSelect')
                 var templateHTML = $templateCache.get(tmpl);
                 return templateHTML;
             },
-            link: function (scope, element, attrs, ngModel, transclude) {                
-                
+            link: function (scope, element, attrs, ngModel, transclude) {
+
                 ngModel.$validators.required = function(modelValue, viewValue) {
                    // console.log(scope.required , 'scope.required');
                    //TODO: erm wtf
                    if(scope.required && (!modelValue || modelValue.BrandId == 0 || !modelValue.BrandId)){
                        return false;
                    }
-                   return true; 
+                   return true;
                 };
-                
+
                 attrs.$observe('required', function(val) {
                     ngModel.$validate();
                 });
@@ -60,11 +60,11 @@ angular.module('umeSelect')
                 }
 
                 //State variables
-                //E_STATE is error state that is used by 
+                //E_STATE is error state that is used by
                 //customValidation events such as tag limiting
                 //to notify $validator that there is an error
                 //It is not conventional because, who knows.
-                scope.E_STATE = null; 
+                scope.E_STATE = null;
                 var STATE_MAXTAGBLOCKED = 1;
                 var STATE_MAXLENGTHBLOCK = 2;
                 var STATE_DUPLICATE_BLOCKED = 3;
@@ -80,7 +80,7 @@ angular.module('umeSelect')
                 scope.$watch('model', function(value, oldValue){
 
                     //Update ng model
-                    
+
                     ngModel.$setViewValue(value);
 
                     if(!initModel || _.isEmpty(oldValue)){
@@ -95,7 +95,7 @@ angular.module('umeSelect')
                 }, true);
 
                 scope.$watch('E_STATE', function(value, oldValue){
-                    
+
                     if(!initState || _.isEmpty(oldValue)){
                         initState = true;
                         return;
@@ -113,7 +113,7 @@ angular.module('umeSelect')
                     maxTagCount = val;
                     ngModel.$validate();
                 });
- 
+
                 attrs.$observe('maxLengthPerTag', function(val) {
                     maxLengthPerTag = val;
                     ngModel.$validate();
@@ -135,7 +135,7 @@ angular.module('umeSelect')
                 };
 
                 ngModel.$validators.duplicateTagBlock = function(modelValue, viewValue){
-                    
+
                     if(scope.E_STATE == STATE_DUPLICATE_BLOCKED) return false;
                     return true;
                 }
@@ -161,7 +161,7 @@ angular.module('umeSelect')
                             return d;
                         });
                     }
-                    
+
                     // console.log('sortedData', sortedData);
                     if(scope.strictMode){
                         //strictly filter by search text
@@ -169,7 +169,7 @@ angular.module('umeSelect')
                         searchObj[scope.displayBy] = scope.searchText;
                         sortedData = $filter('filter')(sortedData, searchObj)
                     }
-                    
+
                     scope.choices = sortedData;
                 });
 
@@ -178,11 +178,9 @@ angular.module('umeSelect')
                 var _id = (new Date()).getTime()*Math.random() + "R";
                 scope._id =  _id;
 
-                //Delete item from tag list 
+                //Delete item from tag list
                 scope.breakUp = function(index){
                     if(!scope.inRelationship && !scope.itsComplicated) {
-                        //You can only break up when you re in relationship
-                        console.log('You can only break up when you re in relationship or when its complicated')
                         return;
                     }
 
@@ -196,8 +194,11 @@ angular.module('umeSelect')
                 }
 
                 //Tokenize string into tag object
-                scope.tagify = function(tagValue){
+                scope.tagify = function(tagValue, draft){
                     var X = {};
+                    if(draft){
+                      X._draft = true;
+                    }
                     if(!scope.displayBy) return tagValue;
                     _.set(X, scope.displayBy, tagValue);
                     return X;
@@ -283,17 +284,17 @@ angular.module('umeSelect')
                 scope.$watch('searchText', function () {
 
                     if(_.isEmpty(scope.searchText)) return;
-                    
+
                     if(!scope.itsComplicated) {
                         //when its complicated, you are out of options
-                        scope.choices = []; 
+                        scope.choices = [];
                     }
 
                     if(scope.itsComplicated){
                         if(!scope.choices) scope.choices = [];
-                        scope.choices[0] = scope.tagify(scope.searchText);
+                        scope.choices[0] = scope.tagify(scope.searchText, true);
                     }
-                    
+
                     scope.highlightedIndex = 0;
 
 
@@ -306,13 +307,13 @@ angular.module('umeSelect')
                         $timeout.cancel(scope.delay);
                     }
 
-                    searchTextTimeout = $timeout(function() {                        
+                    searchTextTimeout = $timeout(function() {
                         //If this is same as previous request, dont do it
                         var curDate = new Date();
                         var tooShort = ((curDate - prevQ.ts) < 3000);
                         var previousWasntEmpty = ((scope.choices || []).length > 0);
-                        if(prevQ.searchText == scope.searchText 
-                            && tooShort && previousWasntEmpty) return; 
+                        if(prevQ.searchText == scope.searchText
+                            && tooShort && previousWasntEmpty) return;
 
                         //execute search
                         scope.loading = true;
@@ -420,7 +421,7 @@ angular.module('umeSelect')
                         scope.model = item;
                         finishSingleModel();
                     }
-                    
+
 
                     if(scope.autoClearSearch){
                         scope.searchText = "";
@@ -432,7 +433,7 @@ angular.module('umeSelect')
                 }
 
                 if(!scope.placeholder) scope.placeholder = "Select one..";
-                return false; 
+                return false;
             }
         };
     });

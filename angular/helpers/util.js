@@ -5,7 +5,7 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
 
     service.variant = {};
 
-    service.variant.toString = function (a, b) {
+    service.variant.asString = function (a, b) {
         var left = null;
         var right = null;
         left = (a.ValueEn || a.AttributeValueEn || a.AttributeValues.length > 0 && a.AttributeValues[0].AttributeValueEn || '');
@@ -14,7 +14,6 @@ module.exports = function (storage, config, common, $window, $rootScope, $interp
         }else{
           right = (b.ValueEn || b.AttributeValueEn || b.AttributeValues.length > 0 && b.AttributeValues[0].AttributeValueEn || '');
         }
-
         return left + (right ? ", " + right : "");
     };
 

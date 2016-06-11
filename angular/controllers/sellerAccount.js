@@ -1,3 +1,6 @@
+/**
+ * Handle seller account listing page
+ */
 module.exports = function($scope, $controller, SellerAccountService, config) {
 	'ngInject';
 	//Inherit from parent

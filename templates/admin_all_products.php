@@ -48,7 +48,7 @@
 		            </tr>
 		        </thead>
 		        <tbody>
-	              <tr ng-repeat="row in list.data">
+	              <tr ng-repeat="row in list.data" ng-class="{'not-visible-row': !row.Visibility}">
 	                  <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td>
 	                  <td class="display-column">
 	                    <div class="img-holder">
@@ -62,7 +62,7 @@
 											<div class="color-grey" ng-hide="row.VariantCount > 0">PID: {{row.Pid}}</div>
 	                  </td>
 	                  <td>{{row.Shop.ShopNameEn}}</td>
-	                  <td class="column-text-ellipsis">{{getTag(row.Tags)}}</td>
+	                  <td class="column-text-ellipsis-small">{{getTag(row.Tags)}}</td>
 	                  <td class="price-column">
 	                    <div>{{ row.SalePrice | currency: ' ' : 2 }}</div>
 	                  </td>

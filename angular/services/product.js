@@ -1,3 +1,4 @@
+
 // Products Service
 module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config', 'KnownException',
 	function ($http, common, util, LocalCategory, Brand, config, KnownException) {
@@ -283,6 +284,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			return StatusLookup[abbreviation];
 		}
 
+
 		/**
 		 * @param  {Product Object} fd
 		 */
@@ -293,8 +295,8 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				Variants: {
 					serialize: function (data) {
 						return data.map(function (v) {
-							var ts = util.variant.toString(v.FirstAttribute, v.SecondAttribute);
-							var rs = util.variant.toString(fd.DefaultVariant.FirstAttribute, fd.DefaultVariant.SecondAttribute);
+							var ts = util.variant.asString(v.FirstAttribute, v.SecondAttribute);
+							var rs = util.variant.asString(fd.DefaultVariant.FirstAttribute, fd.DefaultVariant.SecondAttribute);
 							v.DefaultVariant = (ts == rs);
 							v.ExpireDatePromotion = moment(v.ExpireDatePromotion).toDate();
 							v.EffectiveDatePromotion = moment(v.EffectiveDatePromotion).toDate();
@@ -304,6 +306,16 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 					},
 					fallback: function (data) {
 						throw new KnownException("No serialization fallback for Variants");
+					}
+				},
+				Tags: {
+					serialize: function (data) {
+						return data.map(function (tag) {
+							return tag.TagName;
+						});
+					},
+					fallback: function (data) {
+						throw new KnownException("No serialization fallback for Tags");
 					}
 				},
 				GlobalCategories: {
@@ -359,27 +371,58 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 				},
 				MasterAttribute: {
 					serialize: function (ma) {
-						var t = [];
 
+						/*
+						*  `ma` is a dictionary with keys
+						*  equal to Attribute Id
+						*  UI uses `ma` to iterate (key,value) for each row
+						*  of Attribute-like section. 
+						*/
+
+						//let t be the result of the serialization
+						//we will convert `ma` a dictionary of attributes indexed by id
+						//to `t` which is an array of attribute object
+
+						var t = [];
 						Object.keys(ma).forEach(function (key) {
-							//key is Attribute Id
+							//`key` is Attribute id
+
+							//if ma has type checkbox 
+							// (note _checkbox is a front-end private
+							// control variable indicating that DataType == CB)
+
 							if (ma[key]._checkbox) {
 
-								var g = {
-									AttributeValues: [],
-									AttributeId: Number(key),
-									ValueEn: ""
-								};
+								//Let g be the AttributeObject that we will push into `t` array
+								//See documentation for full detail on "Attribute Object" structure
 
-								//xKey is a essentially a list of ValueIds
-								var xKey = Object.keys(ma[key]);
-								for (var x = 0; x < xKey.length; x++) {
-									if (xKey[x] == "_checkbox") continue;
-									if (_.isNaN(Number(xKey[x]))) continue;
+								var g = {};
+								//ValueEn for checkbox is don't care
+								g.ValueEn = "";
+								//AttributeId is the key of the ma
+								g.AttributeId = Number(key);
+								//AttributeValue is also not used for type CB
+								g.AttributeValues = [];
 
+								//Note: Attribute Checkbox Object is a front-end structure only
+								//For checkbox type we will need to iterate
+								//over the Attribute Checkbox Object (see doc)
+								// which looks something like:
+								//   { <attributeValueId> : true/false  }
+								//where its key are the value of the AttrbiuteValueId
 
-									var valueId = xKey[x];
+								var attributeProps = Object.keys(ma[key]);
+								for (var x = 0; x < attributeProps.length; x++) {
+									if (attributeProps[x] == "_checkbox") continue;
+									if (_.isNaN(Number(attributeProps[x]))) continue;
+
+									//key of the Attribute Checkbox object
+									var valueId = attributeProps[x];
+									//boolean value of Attribute checkbox object
 									var valueTf = ma[key][valueId];
+
+									//Data storage for CB type is done via Attribute Value array of 
+									//Attribute Object
 
 									g.AttributeValues.push({
 										AttributeValueId: Number(valueId),
@@ -388,6 +431,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 								}
 
 								t.push(g);
+
 							} else if (ma[key].AttributeValueId) {
 								//Dropdown LT (items are not freetext)
 								var g = {
@@ -409,6 +453,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 								} else {
 									//Legacy freetext, theoretically
 									//this will never be reached
+									debugger;
 									t.push({
 										AttributeValues: [],
 										AttributeId: Number(key),
@@ -429,8 +474,11 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 			//parse each key according to serializer
 			for (var key in fd) {
+				//Remove control keys (contains circular structure used by image upload)
 				if (_.has(fd[key], 'queue')) delete fd[key].queue;
 				if (_.has(fd[key], '$id')) delete fd[key].$id;
+
+				//serialize each properties
 				if (key in serializer) {
 					var f = serializer[key];
 					var v = fd[key];
@@ -450,6 +498,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			clean.MainLocalCategory = clean.LocalCategories.shift();
 			clean.GlobalCategories = _.filter(clean.GlobalCategories, _.identity);
 			clean.LocalCategories = _.filter(clean.LocalCategories, _.identity);
+			
 			return clean;
 		}
 
@@ -464,13 +513,28 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 			invFd.Brand.display =  (invFd.Brand.DisplayNameEn || invFd.Brand.BrandNameEn) + " (" + invFd.Brand.BrandId + ")";
 
+			//Convert List of attributes (Backend)
+			//to Dictionary of attributes (Frontend) indexed by attribute id
+
 			var MasterAttribute = {};
 			try {
 				invFd.MasterAttribute.forEach(function (ma) {
-					//Hacky AF
+					
 					if (ma.DataType == "CB") {
+						//For CB type attributes we need to 
+						//convert them to UI domain structure called
+						//Attribute Checkbox Object
+						//so that it can be efficiently used in UI generation
+
+						//Iterate through all the attribute values array 
+						//of the `ma` attribute object (see Attribute Object documentation)
+
 						for (var i = 0; i < ma.AttributeValues.length; i++) {
 							var item = ma.AttributeValues[i];
+
+							//Mark the attribute as checkbox
+							//Used internally to indicate that this is a 
+							//Attribute Checkbox Object type (see documentation)
 
 							if (!MasterAttribute[ma.AttributeId]) {
 								MasterAttribute[ma.AttributeId] = {
@@ -478,14 +542,25 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 								};
 							}
 
+							//Reason we convert everything to dict type datastructure
+							//is that its easier to work with
+
+							//Backend uses a field called "CheckboxValue" 
+							//Which we will just convert to the value of dictionary
+							//indexed at that AttributeValueId
 							MasterAttribute[ma.AttributeId][item.AttributeValueId] = item.CheckboxValue;
 						}
 					} else {
+						//For other data types its  straight forward conversion
+
+						//Let k be the Attribute object 
 						var k = {};
+
+						//Propagate property from AttributeValue list 
+						//up to top level
 						if (ma.AttributeValues[0]) {
 							k['AttributeValue'] = ma.AttributeValues[0];
 						}
-
 						if (ma.AttributeValues.length > 0 && ma.AttributeValues[0].AttributeValueId) {
 							k.AttributeId = ma.AttributeId;
 							k.AttributeValueId = ma.AttributeValues[0].AttributeValueId;
@@ -524,7 +599,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 
 			var invMapper = {
 				Variants: function (m) {
-					m.text = util.variant.toString(m.FirstAttribute, m.SecondAttribute);
+					m.text = util.variant.asString(m.FirstAttribute, m.SecondAttribute);
 					return m;
 				}
 			};
@@ -554,22 +629,12 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			delete invFd.MainGlobalCategory;
 			delete invFd.MainLocalCategory;
 
-			try {
-				var _split = invFd.Keywords.trim().split(',');
-				if (_split[0] == '') {
-					invFd.Keywords = [];
-				} else {
-					invFd.Keywords = util.uniqueSet(_split);
-				}
-			} catch (ex) {
-				invFd.Keywords = [];
-			}
 
-			//Find out which variant is default variant
-			// if (invFd.Variants.Length > 0) invFd.DefaultVariant = invFd.Variants[0]; // TODO: Hardcode
-
-			//Find which variant is default
-
+			invFd.Tags = invFd.Tags.map(function(tag){
+				return {
+					TagName: tag
+				};
+			})
 
 			var transformed = {
 				formData: invFd

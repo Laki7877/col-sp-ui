@@ -1,11 +1,16 @@
-module.exports = function ($scope,$rootScope, $controller, CMSCategoryService, config, $uibModal, $timeout) {
+module.exports = function ($scope, $rootScope, $controller, CMSCategoryService, config, storage, $uibModal, $timeout) {
     'ngInject';
 
     $scope.adCMSadd = !$rootScope.permit(24);
-    $scope.formData     = {};
-
-    $scope.loading      = false;
-    $scope.isEmpty      = true;
+    $scope.formData = {
+        CategoryProductList: [],
+        CMSCategoryNameEN: '',
+        CMSCategoryNameTH: '',
+        Visibility: true,
+        CreateIP: ''
+    };
+    $scope.loading = false;
+    $scope.isEmpty = true;
 
     var sortableEle;
 
@@ -24,7 +29,7 @@ module.exports = function ($scope,$rootScope, $controller, CMSCategoryService, c
         $timeout(function () {
             updateSequence();
         }, 200);
-        
+
     }
 
     sortableEle = $('#sortable').sortable({
@@ -134,15 +139,15 @@ module.exports = function ($scope,$rootScope, $controller, CMSCategoryService, c
                 $scope.loading = false;
                 $scope.message = 'Empty list.';
                 $scope.categorys = [];
-                $scope.brands   = [];
-                $scope.tags     = [];
+                $scope.brands = [];
+                $scope.tags = [];
 
                 $scope.init = function () {
                     $('#form-category :input[type=text]').keyup(function () {
 
                         var val = $(this).val();
                         console.log(val)
-                        var param   = { SearchText: val };
+                        var param = { SearchText: val };
 
                         CMSCategoryService.getAllCategory(param)
                         .then(function (data) {
@@ -260,11 +265,11 @@ module.exports = function ($scope,$rootScope, $controller, CMSCategoryService, c
 
                     return sum;
                 };
-                
+
                 /// Test
                 $scope.category = {};
-                $scope.brand    = {};
-                $scope.tag      = {};
+                $scope.brand = {};
+                $scope.tag = {};
                 $scope.searchBy = 'ProductName';
 
                 $scope.$watch('category.selected', function (newValue, oldValue) {
@@ -282,6 +287,8 @@ module.exports = function ($scope,$rootScope, $controller, CMSCategoryService, c
                 $scope.$watch('brand.selected', function (newValue, oldValue) {
                     if (newValue === undefined)
                         return;
+
+                    $scope.search('');
 
                 });
 
@@ -368,10 +375,10 @@ module.exports = function ($scope,$rootScope, $controller, CMSCategoryService, c
 
             },
             onLoad: function (scope, load) {
-                
+
             },
             onSave: function (scope) {
-
+                scope.formData.CreateIP = storage.get('IP');
             }
         }
     });

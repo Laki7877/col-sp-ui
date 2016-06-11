@@ -40,9 +40,8 @@
                     </div>
                 </div>
             </div>
-
+             
         </div>
     </form>
 </div>
-
 <?php $this->stop() ?>

@@ -1,4 +1,8 @@
+/**
+ * Shop appearance components
+ */
 angular.module('nc')
+	//text area component
 	.directive('ncTextareas', function($templateCache) {
 		return {
 			restrict: 'E',
@@ -17,6 +21,7 @@ angular.module('nc')
 						})
 					}
 				})
+				// num of text area
 				scope.$watch('size', function(d) {
 					if(!_.isNil(d)) {
 						scope.source.Texts = [];
@@ -28,6 +33,7 @@ angular.module('nc')
 			}
 		}
 	})
+	//product layout component
 	.directive('ncProductLayout', function($templateCache, Product) {
 		return {
 			restrict: 'E',
@@ -42,36 +48,47 @@ angular.module('nc')
 			},
 			template: $templateCache.get('common/ncProductLayout'),
 			link: function(scope) {
-				scope.$watch('source', function(n, o) {
-					console.log(scope.source);
+				scope.src = {};
+				scope.loading = false;
+				//update product list
+				scope.$watch('src.model', function(n, o) {
 					if(!scope.source) {
 						scope.source = _.defaults(scope.source, {
+							Enabled: true,
+						});		
+					}
+					if(_.isNil(o)) return;
+					scope.source.Products = _.map(scope.src.model, function(e) {
+						return e.Pid;
+					});
+				}, true);
+				//changed product list naming by querying endpoint
+				scope.$watch('source', function(n, o) {
+					if(_.isNil(scope.source)) {
+						scope.source = _.defaults(scope.source, {
 							Enabled: true
-						})
+						});
 					}
 					else {
+						//query endpoint to load products by pid
 						if(scope.source.Products && scope.source.Products.length > 0) {
-							_.remove(scope.source.Products, _.isEmpty);
-							if(scope.source.Products.length > 0 && scope.source.Products[0]) {
+							if(scope.source.Products.length > 0) {
+								scope.loading = true;
 								Product.advanceList({
 									_limit: scope.source.Products.length,
 									Pids: scope.source.Products
 								}).then(function(data) {
-									scope.source.Products = _.map(scope.source.Products, function(e) {
-										e = _.find(data.data, function(d) {
-											return d.Pid == e;
-										});
-										return e;
-									});
-									scope.source.Products = _.compact(scope.source.Products);
+									scope.loading = false;
+									scope.src.model = data.data;
 								});
 							}
 						}
 					}
-				})
+				});
 			}
 		}
 	})
+	// text with link components
 	.directive('ncTextLink', function($templateCache) {
 		return {
 			restrict: 'E',
@@ -93,6 +110,7 @@ angular.module('nc')
 			}
 		}
 	})
+	// image with links components
 	.directive('ncImageLinks', function($templateCache) {
 		return {
 			restrict: 'E',
@@ -118,7 +136,9 @@ angular.module('nc')
 						})
 					}
 				});
+				// acceptable file ext
 				scope.accept = scope.accept || '.jpg,.jpeg';
+				// validate by width height
 				scope.validate = function(f,w,h,i) {
 					if(scope.minWidth && scope.minWidth.length > i) {
 						return w > scope.minWidth;
@@ -129,6 +149,7 @@ angular.module('nc')
 						return true;
 					}
 				}
+				// num of images
 				scope.$watch('size', function(d) {
 					if(!_.isNil(d)) {
 						scope.source.Images = [];
@@ -140,8 +161,10 @@ angular.module('nc')
 						};
 					}
 				})
+				// on upload
 				scope.upload = function($file, image, $index, $ifile) {
 					if($ifile.length > 0) {
+						// check min width
 						if(!_.isNil(scope.minWidth)) {
 							scope.fail('ondimension', null, minWidth[$index], true);
 						}
@@ -149,6 +172,7 @@ angular.module('nc')
 							scope.fail('ondimension', null, [width[$index], height[$index]]);
 						}
 					} else {
+						//upload
 						scope.uploader.upload($file).then(function(data) {
 							image = _.extend(image, data.data);
 						}, function(err) {
@@ -158,4 +182,4 @@ angular.module('nc')
 				}
 			}
 		}
-	})
+	});

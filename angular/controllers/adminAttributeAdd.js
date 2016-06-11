@@ -1,5 +1,9 @@
+/**
+ * Handle admin attribute add page
+ */
 module.exports = function($scope, $controller, AttributeService, ImageService, config, util, common) {
 	'ngInject';
+	//Dropdown options
 	$scope.dataTypeOptions = config.DROPDOWN.DATA_TYPE_DROPDOWN;
 	$scope.variantOptions = config.DROPDOWN.VARIANT_DROPDOWN;
 	$scope.boolOptions = config.DROPDOWN.YES_NO_DROPDOWN;
@@ -28,6 +32,7 @@ module.exports = function($scope, $controller, AttributeService, ImageService, c
 		}
 	});
 
+	//Upload image
 	var uploader = ImageService.getUploaderFn('/AttributeValueImages');
  	
  	//Preview image
@@ -47,6 +52,7 @@ module.exports = function($scope, $controller, AttributeService, ImageService, c
  		})
  	};
 
+ 	//Data type dropdown
 	$scope.$watch('formData.DataType', function() {
 		if($scope.formData.DataType == 'HB' ||
 			$scope.formData.DataType == 'ST') {
@@ -59,6 +65,7 @@ module.exports = function($scope, $controller, AttributeService, ImageService, c
 		}
 	}, true);
 
+	//Auto required false when admin
 	$scope.$watch('formData.VisibleTo', function(n, o) {
 		if(n == 'AD') {
 			$scope.formData.Required = false;

@@ -1,3 +1,6 @@
+/**
+ * Image gallery
+ */
 angular.module('nc')
 	.directive('ncImageBannerIcon', function($templateCache) {
 		return {
@@ -25,6 +28,7 @@ angular.module('nc')
 						validateDimensionMax: [scope.width, scope.height]
 					};
 				}
+				// update link number on images change
 				var updateSource = function() {
 					var m = scope.source.ImageEn.length;
 					var len = scope.source.Links.length;
@@ -79,6 +83,7 @@ angular.module('nc')
 						validateDimensionMax: [scope.width, scope.height]
 					};
 				}
+				//update video links on image changes
 				var updateSource = function() {
 					var m = _.max([scope.source.ImageEn.length, scope.source.ImageTh.length]);
 					var len = scope.source.Videos.length;
@@ -137,10 +142,10 @@ angular.module('nc')
 						validateDimensionMax: [scope.width, scope.height]
 					};
 				}
+				// update links on images change
 				var updateSource = function() {
 					var m = _.max([scope.source.ImageEn.length, scope.source.ImageTh.length]);
 					var len = scope.source.Links.length;
-					console.log(len, m);
 					if(len > m) {
 						for (var i = 0; i < len - m; i++) {
 							scope.source.Links.pop();
@@ -153,9 +158,6 @@ angular.module('nc')
 				}
 
 				update();
-				scope.$watch('source.Links', function() {
-					console.log(scope.Links);
-				})
 				scope.$watch('width', update);
 				scope.$watch('height', update);
 				scope.$watch('source', function() {
@@ -195,9 +197,6 @@ angular.module('nc')
 					width: '256px',
 					validateFileSize: 5000000
 				});
-				/*scope.$watch('source', function(o) {
-					console.log(o);
-				})*/
 			}
 		}
 	})
@@ -255,6 +254,7 @@ angular.module('nc')
 			},
 			link: function(scope, element, attrs, form) {
 				var fileUploader = false;
+				// images for w/h
 				scope.$watch('options', function() {
 					if(!scope.options) {
 						return;
@@ -271,7 +271,7 @@ angular.module('nc')
 				})
 
 				scope.images = scope.images || [];
-
+				// uploader change
 				scope.$watch('uploader', function(val) {
 					if (val instanceof FileUploader) {
 						fileUploader = true;
@@ -279,6 +279,7 @@ angular.module('nc')
 						fileUploader = false;
 					}
 				});
+				// upload image
 				scope.upload = function(files) {
 					if (scope.disabled) {
 						scope.onfail('ondisable');
@@ -288,11 +289,13 @@ angular.module('nc')
 					if (!_.isNil(form) && !_.isNil(attrs.name)) {
 						form.$setDirty();
 					}
+					// old file uploader
 					if (fileUploader) {
 						_.forEach(files, function(file) {
 							var url = URL.createObjectURL(file);
 							var img = new Image;
 
+							// dimension
 							img.onload = function() {
 								var minDim = scope.options.validateDimensionMin;
 								var maxDim = scope.options.validateDimensionMax;
@@ -302,8 +305,6 @@ angular.module('nc')
 								var minH = Number(minDim[1]);
 								var maxW = Number(maxDim[0]);
 								var maxH = Number(maxDim[1]);
-
-								
 
 								if (scope.options.validateFileSize && file.size > scope.options.validateFileSize) {
 									scope.onfail('onfilesize');
@@ -345,6 +346,8 @@ angular.module('nc')
 									SlideDuration: 1
 								};
 								scope.images.push(obj);
+
+								//upload event
 								var f = new FileItem(scope.uploader, file, {
 									onSuccess: function(response) {
 										_.mergeWith(obj, response, function(o, v) {
@@ -455,7 +458,9 @@ angular.module('nc')
 						});
 					}
 				};
+				//call image action
 				scope.call = function(image, index, action) {
+					//confirmation flag
 					if (!_.isNil(action.confirmation)) {
 						var modal = $uibModal.open({
 							size: 'size-warning',
@@ -484,7 +489,7 @@ angular.module('nc')
 								}
 							}
 						});
-
+						//modal resolution
 						modal.result.then(function() {
 							if (!_.isNil(form) && !_.isNil(attrs.name)) {
 								form.$setDirty();
@@ -492,6 +497,7 @@ angular.module('nc')
 							action.fn(image, scope.images, index);
 						});
 					} else {
+						//set form to dirty
 						if (!_.isNil(form) && !_.isNil(attrs.name)) {
 							form.$setDirty();
 						}
@@ -504,6 +510,8 @@ angular.module('nc')
 				scope.getProgress = function(image) {
 					return image.progress || 0;
 				};
+
+				//basic actions
 				scope.actions = [{
 					//Zoom
 					fn: function(item, array, index) {
@@ -561,6 +569,7 @@ angular.module('nc')
 			}
 		}
 	})
+	// image gallery for image management
 	.directive('ncImageGallery', function($templateCache, $uibModal) {
 		return {
 			restrict: 'E',
@@ -599,12 +608,14 @@ angular.module('nc')
 					return image.progress || 0;
 				};
 				scope.isDisabled = function(image) {
-					return _.isNull(image) || scope.lock();
+					return _.isNull(image) || scope.lock() || image.Url == "";
 				};
+				// call image action
 				scope.call = function(action, image) {
 					if (scope.isDisabled(image)) return;
 					var index = scope.model.indexOf(image);
 
+					//confirmation flag
 					if (action.confirmation) {
 						var modal = $uibModal.open({
 							size: 'size-warning',
@@ -641,16 +652,27 @@ angular.module('nc')
 						action.fn(image, scope.model, index);
 					}
 				}
+				// on loading image list
 				var load = function() {
 					scope.images = _.clone(scope.model);
+
+					// fill with blank image
 					for (var i = 0; i < scope.options.size - scope.model.length; i++) {
 						scope.images.push(null);
 					};
+
+					// set index for each img
+					for (var i = 0; i < scope.images.length; i++) {
+						if(_.isPlainObject(scope.images[i])) {
+							scope.images[i].indx = i;
+						}
+					}
 				};
 				scope.$watch('model', load, true);
 			}
 		};
 	})
+	//dropzone
 	.directive('ncImageDropzone', function($templateCache, $compile, FileUploader) {
 		return {
 			restrict: 'E',
@@ -672,10 +694,10 @@ angular.module('nc')
 				scope.options = _.defaults(scope.options, {
 					urlKey: 'Url',
 					onEvent: _.noop,
-					onResponse: function(item) {
+					onResponse: function(item) { //called when 
 						return item;
 					},
-					onUpload: function(item) {},
+					onUpload: function(item) {}, //called when start uploading
 					ratio:1,
 					min:[1500, 1500],
 					max:[2000, 2000]
@@ -763,6 +785,7 @@ angular.module('nc')
 						item.indx = scope.model.length - 1;
 						item.onProgress = function(progress) {
 							obj.progress = progress;
+							console.log(obj);
 						};
 					};
 
@@ -780,7 +803,7 @@ angular.module('nc')
 				}
 				scope.uploader.onSuccessItem = function(item, response, status, headers) {
 					if(response) {
-						scope.model[item.indx][scope.options.urlKey] = response[scope.options.urlKey];
+						item.obj[scope.options.urlKey] = response[scope.options.urlKey];
 					}
 				};
 				scope.uploader.onErrorItem = function(item, response, status, headers) {
@@ -789,7 +812,6 @@ angular.module('nc')
 						$response: response
 					});
 				};
-
 				scope.update();
 				scope.$watch('template', scope.update);
 				scope.$watch('uploader.isUploading', function(val) {
@@ -797,4 +819,5 @@ angular.module('nc')
 				});
 			}
 		};
+
 	})

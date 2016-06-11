@@ -1,3 +1,6 @@
+/**
+ * Handle seller role adding page
+ */
 module.exports = function($scope, $controller, SellerRoleService, SellerPermissionService, PermissionService, util) {
 	'ngInject';
 	//Inherit from abstract ctrl

@@ -1,3 +1,6 @@
+/**
+ * Tag validator
+ */
 angular.module('nc')
     .directive('ncTagValidator', function () {
         return {
@@ -18,19 +21,22 @@ angular.module('nc')
                     var _pass = true;
                     $model.$error = {};
                     
+                    // check tag key string length
                     if(maxTagLengthKey && _.isPlainObject(item)) {
                         item = item[maxTagLengthKey] || "";
                     }
 
+                    // check num of tag
                     if (maxTagCount && array.length > maxTagCount) {
                         //$model.$error.maxtagcount = true;
                         _pass = false;
                     }
+                    // check tag string length
                     if (maxTagLength && item.length > maxTagLength) {
                         //$model.$error.maxtaglength = true;
                         _pass = false;
                     }
-
+                    
                     if (tagPattern && !item.ValueEn.match(tagPattern)) {
                         //$model.$error.pattern = true;
                         _pass = false;
@@ -69,3 +75,4 @@ angular.module('nc')
             }
         }
     });
+

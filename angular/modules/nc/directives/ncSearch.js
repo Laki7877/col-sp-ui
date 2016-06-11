@@ -1,3 +1,4 @@
+// search bar/button
 angular.module('nc')
 	.directive('ncSearch', function($templateCache) {
 		return {
@@ -12,6 +13,7 @@ angular.module('nc')
 			link: function(scope) {
 				scope.event = scope.event || function() { return false };
 				scope.searchText = '';
+				// run event on search clicked
 				scope.callback = function() {
 					if(scope.event(scope.searchText)) return;
 					scope.model = scope.searchText;
