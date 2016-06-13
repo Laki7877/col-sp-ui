@@ -4,7 +4,7 @@ var baseConfig = require('./baseconfig');
 var config = baseConfig;
 
 var alphaConfigOverrides = {
-    REST_SERVICE_BASE_URL: 'http://seller-service-api.alpha/api'
+    REST_SERVICE_BASE_URL: 'http://seller-service-central-1948633811.ap-southeast-1.elb.amazonaws.com/api'
 };
 
 for (var key in alphaConfigOverrides) {
