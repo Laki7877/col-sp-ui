@@ -406,6 +406,11 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         })
       }
 
+
+      if($scope.formData.Variants.length > 100){
+        mat.push('Only up to 100 variants is allowed.');
+      }
+
       if ($scope.formData.ExpireDate && $scope.formData.ExpireDate <=
         $scope.formData.EffectiveDate) {
         mat.push('Effective date/time must come before expire date/time.')
