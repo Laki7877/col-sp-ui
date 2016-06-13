@@ -27446,17 +27446,6 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 						};
 					}
 				},
-                RelatedProducts: {
-                    serialize: function(A){
-                        return A.map(function(d){
-                            d._text = d.ProductNameEn + " (" + d.Pid + ")"
-                            return d;
-                        });
-                    },
-                    fallback: function(x){
-                        return []
-                    }
-                },
 				Images: {
 					serialize: function (images) {
 						return images.map(function (image) {
@@ -27718,6 +27707,12 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 					invFd.GlobalCategories.push(null);
 				}
 			}
+
+            invFd.RelatedProducts = invFd.RelatedProducts.map(function(d){
+                    d._text = d.ProductNameEn + " (" + d.Pid + ")"
+                    return d;
+            });
+
 
 			invFd.GlobalCategories.unshift(invFd.MainGlobalCategory)
 
