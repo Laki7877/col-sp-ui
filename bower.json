@@ -23,7 +23,6 @@
     "selectize": "~0.12.1",
     "angular-ui-sortable": "^0.14.0",
     "jquery": "1.x",
-    
-    "angular": "^1.5.3"
+    "jquery-ui-sortable": "*"
   }
 }
