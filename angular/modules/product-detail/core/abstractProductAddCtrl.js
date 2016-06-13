@@ -407,7 +407,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
 
 
-      if($scope.Variants.length > 100){
+      if($scope.formData.Variants.length > 100){
         mat.push('Only up to 100 variants is allowed.');
       }
 
