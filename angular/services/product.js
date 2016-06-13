@@ -376,7 +376,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 						*  `ma` is a dictionary with keys
 						*  equal to Attribute Id
 						*  UI uses `ma` to iterate (key,value) for each row
-						*  of Attribute-like section. 
+						*  of Attribute-like section.
 						*/
 
 						//let t be the result of the serialization
@@ -387,7 +387,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 						Object.keys(ma).forEach(function (key) {
 							//`key` is Attribute id
 
-							//if ma has type checkbox 
+							//if ma has type checkbox
 							// (note _checkbox is a front-end private
 							// control variable indicating that DataType == CB)
 
@@ -421,7 +421,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 									//boolean value of Attribute checkbox object
 									var valueTf = ma[key][valueId];
 
-									//Data storage for CB type is done via Attribute Value array of 
+									//Data storage for CB type is done via Attribute Value array of
 									//Attribute Object
 
 									g.AttributeValues.push({
@@ -498,7 +498,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			clean.MainLocalCategory = clean.LocalCategories.shift();
 			clean.GlobalCategories = _.filter(clean.GlobalCategories, _.identity);
 			clean.LocalCategories = _.filter(clean.LocalCategories, _.identity);
-			
+
 			return clean;
 		}
 
@@ -519,21 +519,21 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 			var MasterAttribute = {};
 			try {
 				invFd.MasterAttribute.forEach(function (ma) {
-					
+
 					if (ma.DataType == "CB") {
-						//For CB type attributes we need to 
+						//For CB type attributes we need to
 						//convert them to UI domain structure called
 						//Attribute Checkbox Object
 						//so that it can be efficiently used in UI generation
 
-						//Iterate through all the attribute values array 
+						//Iterate through all the attribute values array
 						//of the `ma` attribute object (see Attribute Object documentation)
 
 						for (var i = 0; i < ma.AttributeValues.length; i++) {
 							var item = ma.AttributeValues[i];
 
 							//Mark the attribute as checkbox
-							//Used internally to indicate that this is a 
+							//Used internally to indicate that this is a
 							//Attribute Checkbox Object type (see documentation)
 
 							if (!MasterAttribute[ma.AttributeId]) {
@@ -545,7 +545,7 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 							//Reason we convert everything to dict type datastructure
 							//is that its easier to work with
 
-							//Backend uses a field called "CheckboxValue" 
+							//Backend uses a field called "CheckboxValue"
 							//Which we will just convert to the value of dictionary
 							//indexed at that AttributeValueId
 							MasterAttribute[ma.AttributeId][item.AttributeValueId] = item.CheckboxValue;
@@ -553,10 +553,10 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 					} else {
 						//For other data types its  straight forward conversion
 
-						//Let k be the Attribute object 
+						//Let k be the Attribute object
 						var k = {};
 
-						//Propagate property from AttributeValue list 
+						//Propagate property from AttributeValue list
 						//up to top level
 						if (ma.AttributeValues[0]) {
 							k['AttributeValue'] = ma.AttributeValues[0];
@@ -619,6 +619,12 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 					invFd.GlobalCategories.push(null);
 				}
 			}
+
+            invFd.RelatedProducts = invFd.RelatedProducts.map(function(d){
+                    d._text = d.ProductNameEn + " (" + d.Pid + ")"
+                    return d;
+            });
+
 
 			invFd.GlobalCategories.unshift(invFd.MainGlobalCategory)
 
