@@ -142,7 +142,12 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           searchText: q,
           pageSize: 8
         }).then(function(ds) {
-          $scope.dataset.RelatedProducts = ds.data;
+            var searchRes = ds.data.map(function(d) {
+            d._text = d.ProductNameEn + " (" + d.Pid + ")"
+            return d;
+          });
+
+          $scope.dataset.RelatedProducts = searchRes;
         })
       },
       Brands: function(q) {
@@ -532,7 +537,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         function isNotNumberOrEmpty(n) {
           return isNaN(parseFloat(n)) || !isFinite(n);
         }
-        
+
         if (isNotNumberOrEmpty(vari.SafetyStock)) {
           vari.SafetyStock = 0;
         }
@@ -846,7 +851,7 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
           }
 
           //if is selected and was visible now will be hidden
-          var forceRecompute = (p.Visibility && $scope.formData.DefaultVariant.text == p.text); 
+          var forceRecompute = (p.Visibility && $scope.formData.DefaultVariant.text == p.text);
           p.Visibility = !p.Visibility;
 
           //Update Default Variant
@@ -1053,12 +1058,12 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
     $scope.initDefaultAttributes = function(da, vmap){
       //if edit mode don't init
       // console.log(da, vmap, 'vv')
-      if($scope.formData.ProductId) return; 
+      if($scope.formData.ProductId) return;
 
       if(!_.has($scope.formData.MasterAttribute, da.AttributeId)){
         $scope.formData.MasterAttribute[da.AttributeId] = {};
       }
-      
+
       $scope.formData.MasterAttribute[da.AttributeId]._checkbox = true;
 
       if(!_.has($scope.formData.MasterAttribute[da.AttributeId], vmap.AttributeValueId)){
