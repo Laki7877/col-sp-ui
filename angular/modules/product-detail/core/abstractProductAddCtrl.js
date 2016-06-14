@@ -406,6 +406,15 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         })
       }
 
+      var countVisibleVariants = $scope.formData.Variants.map(function(m){
+        return m.Visibility;
+      }).reduce(function(previousValue, currentValue, currentIndex, array){
+        return previousValue + (currentValue ? 1 : 0);
+      });
+
+      if(countVisibleVariants == 0){
+        mat.push('Must have at least one visible variant.');
+      }
 
       if($scope.formData.Variants.length > 100){
         mat.push('Only up to 100 variants is allowed.');

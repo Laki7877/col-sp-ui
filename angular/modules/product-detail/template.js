@@ -98,7 +98,8 @@ angular.module("productDetail").run(function($templateCache) {  'use strict';
     "        'show': $root.isInvalid(addProductForm['pair_SalePrice' + $index]),\n" +
     "        'conditions' : addProductForm['pair_SalePrice' + $index].$error\n" +
     "        }\n" +
-    "        }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }\" ng-model=pair.SalePrice name=\"pair_SalePrice{{ $index }}\" ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-maxnumber=\"{{ pair.OriginalPrice }}\" ng-disabled=\"!pair.Visibility || xspermit(44)\" ng-required=pair.Visibility class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
+    "        }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility,\n" +
+    "        'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }\" ng-model=pair.SalePrice name=\"pair_SalePrice{{ $index }}\" ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-maxnumber=\"{{ pair.OriginalPrice }}\" ng-disabled=\"!pair.Visibility || xspermit(44)\" ng-required=pair.Visibility class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
     "        'error' : {\n" +
     "        'messages': {\n" +
     "        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\n" +

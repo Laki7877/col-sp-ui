@@ -19474,7 +19474,7 @@ angular.module('nc')
 				}
 				// num of images
 				scope.$watch('size', function(d) {
-					if(!_.isNil(d)) {
+					if(!scope.source) {
 						scope.source.Images = [];
 						for (var i = 0; i < d; i++) {
 							scope.source.Images.push({
@@ -22007,6 +22007,15 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         })
       }
 
+      var countVisibleVariants = $scope.formData.Variants.map(function(m){
+        return m.Visibility;
+      }).reduce(function(previousValue, currentValue, currentIndex, array){
+        return previousValue + (currentValue ? 1 : 0);
+      });
+
+      if(countVisibleVariants == 0){
+        mat.push('Must have at least one visible variant.');
+      }
 
       if($scope.formData.Variants.length > 100){
         mat.push('Only up to 100 variants is allowed.');
@@ -23324,7 +23333,8 @@ angular.module("productDetail").run(["$templateCache", function($templateCache) 
     "        'show': $root.isInvalid(addProductForm['pair_SalePrice' + $index]),\n" +
     "        'conditions' : addProductForm['pair_SalePrice' + $index].$error\n" +
     "        }\n" +
-    "        }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility, 'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }\" ng-model=pair.SalePrice name=\"pair_SalePrice{{ $index }}\" ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-maxnumber=\"{{ pair.OriginalPrice }}\" ng-disabled=\"!pair.Visibility || xspermit(44)\" ng-required=pair.Visibility class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
+    "        }\"><input ng-class=\"{ 'opacity-50': !pair.Visibility,\n" +
+    "        'has-error': $root.isInvalid(addProductForm.pair_SalePrice{{$index}}) }\" ng-model=pair.SalePrice name=\"pair_SalePrice{{ $index }}\" ng-pattern-restrict=^[0-9]{0,10}(\\.[0-9]{0,2})?$ maxlength=10 ng-maxnumber=\"{{ pair.OriginalPrice }}\" ng-disabled=\"!pair.Visibility || xspermit(44)\" ng-required=pair.Visibility class=\"form-control\"></td><td ng-template=common/input/text-td ng-template-options=\"{\n" +
     "        'error' : {\n" +
     "        'messages': {\n" +
     "        'pattern': 'Only numbers and decimals (up to 2 digits) allowed'\n" +

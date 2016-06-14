@@ -151,7 +151,7 @@ angular.module('nc')
 				}
 				// num of images
 				scope.$watch('size', function(d) {
-					if(!_.isNil(d)) {
+					if(!scope.source) {
 						scope.source.Images = [];
 						for (var i = 0; i < d; i++) {
 							scope.source.Images.push({
