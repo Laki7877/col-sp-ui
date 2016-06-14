@@ -88,6 +88,7 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 		ShopAppearanceService.list()
 			.then(function(data) {
 				$scope.formData = ShopAppearanceService.deserialize(data);
+				console.log($scope.formData.Data);
 			})
 			.finally(function() {
 				$scope.loading = false;
@@ -110,7 +111,7 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 
 	// switch cache when theme id changes
 	$scope.$watch('formData.ThemeId', function(a,b) {
-		if(_.isNil(b)) return;
+		if(b == 0) return;
 		$scope.themeArray[b] = $scope.formData.Data;
 		$scope.formData.Data = $scope.themeArray[a] || {};
 	}, true);

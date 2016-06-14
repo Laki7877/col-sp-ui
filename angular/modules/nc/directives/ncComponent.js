@@ -15,7 +15,7 @@ angular.module('nc')
 			template: $templateCache.get('common/ncTextareas'),
 			link: function(scope) {
 				scope.$watch('source', function() {
-					if(!scope.source) {
+					if(_.isEmpty(scope.source)) {
 						scope.source = _.defaults(scope.source, {
 							Enabled: true
 						})
@@ -23,7 +23,7 @@ angular.module('nc')
 				})
 				// num of text area
 				scope.$watch('size', function(d) {
-					if(!scope.source) {
+					if(scope.source && !scope.source.Texts) {
 						scope.source.Texts = [];
 						for (var i = 0; i < d; i++) {
 							scope.source.Texts.push({});
@@ -101,7 +101,7 @@ angular.module('nc')
 			template: $templateCache.get('common/ncTextLink'),
 			link: function(scope) {
 				scope.$watch('source', function() {
-					if(!scope.source) {
+					if(_.isEmpty(scope.source)) {
 						scope.source = _.defaults(scope.source, {
 							Enabled: true
 						})
@@ -130,7 +130,7 @@ angular.module('nc')
 			template: $templateCache.get('common/ncImageLinks'),
 			link: function(scope) {
 				scope.$watch('source', function() {
-					if(!scope.source) {
+					if(_.isEmpty(scope.source)) {
 						scope.source = _.defaults(scope.source, {
 							Enabled: true
 						})
@@ -151,7 +151,7 @@ angular.module('nc')
 				}
 				// num of images
 				scope.$watch('size', function(d) {
-					if(!scope.source) {
+					if(scope.source && !scope.source.Images) {
 						scope.source.Images = [];
 						for (var i = 0; i < d; i++) {
 							scope.source.Images.push({
