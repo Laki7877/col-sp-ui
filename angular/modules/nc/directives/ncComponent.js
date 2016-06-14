@@ -23,7 +23,7 @@ angular.module('nc')
 				})
 				// num of text area
 				scope.$watch('size', function(d) {
-					if(!_.isNil(d)) {
+					if(!scope.source) {
 						scope.source.Texts = [];
 						for (var i = 0; i < d; i++) {
 							scope.source.Texts.push({});

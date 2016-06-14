@@ -15030,7 +15030,7 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 	// product search
 	$scope.getProducts = function(search) {
 		if(search == _search) return;
-		_search = search;
+		search = _search;
 		Product.list({
 			_limit: 16,
 			searchText: search
@@ -15042,7 +15042,7 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 
 	// switch cache when theme id changes
 	$scope.$watch('formData.ThemeId', function(a,b) {
-		if(b == 0) return;
+		if(_.isNil(b)) return;
 		$scope.themeArray[b] = $scope.formData.Data;
 		$scope.formData.Data = $scope.themeArray[a] || {};
 	}, true);
@@ -19346,7 +19346,7 @@ angular.module('nc')
 				})
 				// num of text area
 				scope.$watch('size', function(d) {
-					if(!_.isNil(d)) {
+					if(!scope.source) {
 						scope.source.Texts = [];
 						for (var i = 0; i < d; i++) {
 							scope.source.Texts.push({});
