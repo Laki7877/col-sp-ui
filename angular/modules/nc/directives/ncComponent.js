@@ -141,7 +141,7 @@ angular.module('nc')
 				// validate by width height
 				scope.validate = function(f,w,h,i) {
 					if(scope.minWidth && scope.minWidth.length > i) {
-						return w > scope.minWidth;
+						return w == scope.minWidth[i];
 					}
 					else if(scope.width && scope.width.length > i) {
 						return w == scope.width[i] && h == scope.height[i];

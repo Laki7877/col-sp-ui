@@ -147,7 +147,7 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 		$scope.alert.close();
 		if(e == 'ondimension') {
 			if(arg3) {
-				$scope.alert.error('Image width must be greater than ' + arg2 + ' pixels');
+				$scope.alert.error('Image width must be ' + arg2 + ' pixels');
 			}
 			else {
 				$scope.alert.error('Image must be ' + arg2[0] + 'x' + arg2[1] + ' pixels');
