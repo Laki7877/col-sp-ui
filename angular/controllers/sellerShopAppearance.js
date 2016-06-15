@@ -88,18 +88,13 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 		ShopAppearanceService.list()
 			.then(function(data) {
 				$scope.formData = ShopAppearanceService.deserialize(data);
-				console.log($scope.formData.Data);
 			})
 			.finally(function() {
 				$scope.loading = false;
 			});
 	};
-	var _search = undefined;
-
 	// product search
 	$scope.getProducts = function(search) {
-		if(search == _search) return;
-		search = _search;
 		Product.list({
 			_limit: 16,
 			searchText: search

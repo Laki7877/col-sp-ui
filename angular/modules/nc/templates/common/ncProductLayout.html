@@ -39,10 +39,10 @@
                 <div ng-if="!loading">
                 <ui-select multiple ng-model="src.model">
                     <ui-select-match placeholder="Product Name">
-                        {{ $item.ProductNameEn }}
+                        {{ $item.ProductNameEn }} ({{$item.Pid}})
                     </ui-select-match>
                     <ui-select-choices placeholder="Search result" refresh="refresh($select.search)" refresh-delay="150" repeat="i in products">
-                        {{ i.ProductNameEn }}
+                        {{ i.ProductNameEn }} ({{i.Pid}})
                     </ui-select-choices>
                 </ui-select>
                 </div>
