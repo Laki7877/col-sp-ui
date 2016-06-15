@@ -1,7 +1,8 @@
 module.exports = [function() {
-  
+
 var search = function(catId, tmp) {
     if(angular.isArray(tmp)) {
+
         //Init
         var search = [];
         for (var t in tmp) {
@@ -43,7 +44,7 @@ return function(arr, other, include) {
     };
 
     var i = 0;
-    
+
     //Get all removing parents and grandparents etc.
     while(i < removes.length) {
         var elem = removes[i];
