@@ -16515,9 +16515,10 @@ module.exports = [function() {
 }];
 },{"angular":347}],134:[function(require,module,exports){
 module.exports = [function() {
-  
+
 var search = function(catId, tmp) {
     if(angular.isArray(tmp)) {
+
         //Init
         var search = [];
         for (var t in tmp) {
@@ -16559,7 +16560,7 @@ return function(arr, other, include) {
     };
 
     var i = 0;
-    
+
     //Get all removing parents and grandparents etc.
     while(i < removes.length) {
         var elem = removes[i];
@@ -16582,6 +16583,7 @@ return function(arr, other, include) {
     return arr;
   }
 }];
+
 },{}],135:[function(require,module,exports){
 module.exports = [function(){
    return function(data) {
@@ -22198,9 +22200,10 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
 
       }
       //default values
-      for (var vari in $scope.formData.Variants) {
+      $scope.formData.Variants.forEach(function(vari){
         defaultOnEmpty(vari);
-      }
+      });
+
       defaultOnEmpty($scope.formData.MasterVariant);
 
 
