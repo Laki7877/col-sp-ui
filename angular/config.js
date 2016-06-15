@@ -1,9 +1,9 @@
 module.exports = {
 	//For 104
-	//REST_SERVICE_BASE_URL: 'http://ahancer-colsp.azurewebsites.net/api',
+	REST_SERVICE_BASE_URL: 'http://ahancer-colsp.azurewebsites.net/api',
 
 	//For Localhost
-	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
+	//REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
 
 	//For AWS
 	//REST_SERVICE_BASE_URL: 'http://seller-service-central-1948633811.ap-southeast-1.elb.amazonaws.com/api',
