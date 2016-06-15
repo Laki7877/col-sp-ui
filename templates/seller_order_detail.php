@@ -171,93 +171,113 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
       }
     </style>
     <div id="printSectionId" ng-hide="!printSectionId">
-      <!-- <img src="img/logo.png" width="35%" class="imgLogo"> -->
-      <div class="row" id="row_head">
-          <div class="col-lg-7 col-7">
-              <div id="boxLeft_1" style="padding: 15px;border: 1px solid #000;height: 255px;">
-                  <h4>Name : คุณปวันรัตน์ เผียะผาบ</h4>
-                  <h4>Address : </h4>
-                  <p>อาคารอุ่นใจ ชั้น 7 เลขที่ 24 ซอยอ่อนนุช 66/1 ถนน
-                  สุขุมวิท 77 แขวงสวนหลวง เขตสวนหลวง กรุงเทพฯ
-                  10250<br><br></p>
-                  <h5>Order Type : Normal</h5>
+                <div>
+                    <img src="img/logo.png" width="38%" class="imgLogo" style="float:left">
+                    <p style="float:right">
+                        <strong>Central Group Online Ltd.</strong><br>
+                        919/111, 919/11 Jewwlry Trade Center 54,55 th Fl.,<br>
+                        Silom Rd., Silom, Bangrak, Bangkok 10500<br>
+                        Tel: 02-739-5555 Fax: 02-763-5555 Email: contact@central.co.th
+                    </p>
+                </div>
+                
+                <div id="row_head">
+                    <div class="col-7">
+                        <div id="boxLeft_1">
+                            <h4>Name : คุณปวันรัตน์ เผียะผาบ</h4>
+                            <h4>Address : </h4>
+                            <!-- <p>อาคารอุ่นใจ ชั้น 7 เลขที่ 24 ซอยอ่อนนุช 66/1 ถนน
+                            สุขุมวิท 77 แขวงสวนหลวง เขตสวนหลวง กรุงเทพฯ
+                            10250<br></p> -->
+                            <p>10102 : Central Chitlom Sub Dept. 888 Click & Collect</p>
+                            <h4>Payment Type : </h4>
+                            <p>เก็บเงินปลายทาง <span>จำนวนเงิน : 50,000 บาท</span></p>
 
-                  <div class="col-lg-3 col-3"><h5>สินค้าบรรจุ : </h5></div>
-                  <div class="col-lg-1 col-1">6</div>
-                  <div class="col-lg-2 col-2">กล่อง</div>
-                  <div class="col-lg-1 col-1">2</div>
-                  <div class="col-lg-2 col-2">ถุง</div>
-                  <div class="col-lg-1 col-1">5</div>
-                  <div class="col-lg-2 col-2">สินค้า*</div>
+                            <br>
+                            <h5>Order Type : Normal</h5>
 
-                  <div class="col-lg-1 col-1">6</div>
-                  <div class="col-lg-4 col-4">กล่องโซนพิเศษ</div>
-                  <div class="col-lg-1 col-1">2</div>
-                  <div class="col-lg-3 col-3">ถุงโซนพิเศษ</div>
-              </div>
-              <div  id="boxLeft_2" style="font-size: 11px;margin-top: 10px;padding: 15px;border: 1px solid #000;">
-                  <p><b>เงื่อนไขการรับประกันสินค้า :</b> โทรศัพท์มือถือ, แท็บเล็ต และเครื่องใช้ไฟฟ้ า</p>
-                  <ol>
-                      <li>กรุณาตรวจรับสินค้าทันที เมื่อได้รับสินค้าจากพนังงานส่งสินค้า</li>
-                      <li>เซ็นทรัล ออนไลน์ สงวนสิทธิ์ ในการรับคืนสินค้าในทุกกรณี หากลูกค้าไม่ตรวจรับสินค้าทันที หรือกล่องสินค้าถูกเปิ ดในภายหลัง</li>
-                      <li>กรณีสินค้าชํารุดจากการผลิต เซ็นทรัล ออนไลน์ จะดําเนินการส่งเคลมที่ศูนย์รับประกัน ภายใต้เงื่อนไขของผู้ผลิตเท่านั้น</li>
-                  </ol>
-                  <p>E-mail : contact@central.co.th Tel : 02-739-5555 Fax : 02-763-5555</p>
-              </div>
-          </div>
-          <div class="col-lg-5 col-5">
-              <div>
-                  <h4>Order ID.</h4>
-                  <h2 class="margin_left-15">{{formData.OrderId}}</h2>
-                  <h4>Delivery ID. / Sub Order ID.</h4>
-                  <svg id="code128" class="margin_left-10"></svg>
-              </div>
-              <div id="boxRight_1" style="padding: 15px;border: 1px solid #000;height: 220px;"></div> 
-          </div>
+                            <div class="col-3"><h5>สินค้าบรรจุ : </h5></div>
+                            <div class="col-1">6</div>
+                            <div class="col-2">กล่อง</div>
+                            <div class="col-1">2</div>
+                            <div class="col-2">ถุง</div>
+                            <div class="col-1">5</div>
+                            <div class="col-2">สินค้า*</div>
 
-          <hr style="border-style: dotted;border-width: 2px;border-color: black; width: 100%;margin-left: auto;margin-right: auto;">
+                            <div class="col-1">6</div>
+                            <div class="col-4">กล่องโซนพิเศษ</div>
+                            <div class="col-1">2</div>
+                            <div class="col-3">ถุงโซนพิเศษ</div>
+                        </div>
+                        <div id="boxLeft_2">
+                            <p><b>เงื่อนไขการรับประกันสินค้า :</b> โทรศัพท์มือถือ, แท็บเล็ต และเครื่องใช้ไฟฟ้ า</p>
+                            <ol>
+                                <li>กรุณาตรวจรับสินค้าทันที เมื่อได้รับสินค้าจากพนังงานส่งสินค้า</li>
+                                <li>เซ็นทรัล ออนไลน์ สงวนสิทธิ์ ในการรับคืนสินค้าในทุกกรณี หากลูกค้าไม่ตรวจรับสินค้าทันที หรือกล่องสินค้าถูกเปิ ดในภายหลัง</li>
+                                <li>กรณีสินค้าชํารุดจากการผลิต เซ็นทรัล ออนไลน์ จะดําเนินการส่งเคลมที่ศูนย์รับประกัน ภายใต้เงื่อนไขของผู้ผลิตเท่านั้น</li>
+                            </ol>
+                            <p>E-mail : contact@central.co.th Tel : 02-739-5555 Fax : 02-763-5555</p>
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <div>
+                            <h4>Order ID.</h4>
+                            <h2 class="margin_left-15">MO1604000055</h2>
+                            <h4>Delivery ID. / Sub Order ID.</h4>
+                            <svg id="CDS" class="margin_left-10"></svg>
+                            <svg id="RBS" class="margin_left-10"></svg>
+                            <svg id="SSP" class="margin_left-10"></svg>
+                            <svg id="code128" class="margin_left-10"></svg>
+                        </div>
+                        <!-- <div id="boxRight_1"></div>  -->
+                        <!-- <br> -->
+                        <h4 style="text-align:right"><strong>กล่องที่:_____/_____</strong></h4>
+                    </div>
 
-          <div class="col-lg-12">
-              <table class="tbContent" border="1">
-                  <thead>
-                      <tr>
-                          <td>ลำดับ</td>
-                          <td>รหัสสินค้า</td>
-                          <td>รายการ</td>
-                          <td>จำนวน</td>
-                          <td>หน่วย</td>
-                          <td>ราคาต่อหน่วย</td>
-                          <td>จำนวนเงินสุทธิ</td>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <td>1</td>
-                          <td>O003116</td>
-                          <td class="text-align-left">PIGEON ANTI MOSQUITO WIPES 12 แผ่น PG1172301 </td>
-                          <td class="text-align-right">2</td>
-                          <td>แพ็ค</td>
-                          <td class="text-align-right">55.00</td>
-                          <td class="text-align-right">110.00</td>
-                      </tr>
-                       <tr>
-                          <td>2</td>
-                          <td>O003117</td>
-                          <td class="text-align-left">PIGEON เบบี้ไวพส์คาโมมายล์ 82 ชิ้น แพ็ค 3 3PG1058103CT</td>
-                          <td class="text-align-right">2</td>
-                          <td>แพ็ค</td>
-                          <td class="text-align-right">329.00</td>
-                          <td class="text-align-right">658.00</td>
-                      </tr>
-                      <tr>
-                          <td colspan="3" style="border-style: solid solid hidden hidden"></td>
-                          <td colspan="3" class="text-align-right">จำนวนเงินทั้งหมด</td>
-                          <td class="text-align-right">768.00</td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-      </div>
+                    <hr style="border-style: dotted;border-width: 2px;border-color: black; width: 100%;margin-left: auto;margin-right: auto;">
+
+                    <div class="col-12">
+                        <table class="tbContent" border="1">
+                            <thead>
+                                <tr>
+                                    <td>ลำดับ</td>
+                                    <td>รหัสสินค้า</td>
+                                    <td>รายการ</td>
+                                    <td>จำนวน</td>
+                                    <td>หน่วย</td>
+                                    <td>ราคาต่อหน่วย</td>
+                                    <td>จำนวนเงินสุทธิ</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>O003116</td>
+                                    <td class="text-align-left">PIGEON ANTI MOSQUITO WIPES 12 แผ่น PG1172301 </td>
+                                    <td class="text-align-right">2</td>
+                                    <td>แพ็ค</td>
+                                    <td class="text-align-right">55.00</td>
+                                    <td class="text-align-right">110.00</td>
+                                </tr>
+                                 <tr>
+                                    <td>2</td>
+                                    <td>O003117</td>
+                                    <td class="text-align-left">PIGEON เบบี้ไวพส์คาโมมายล์ 82 ชิ้น แพ็ค 3 3PG1058103CT</td>
+                                    <td class="text-align-right">2</td>
+                                    <td>แพ็ค</td>
+                                    <td class="text-align-right">329.00</td>
+                                    <td class="text-align-right">658.00</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" style="border-style: solid solid hidden hidden"></td>
+                                    <td colspan="3" class="text-align-right">จำนวนเงินทั้งหมด</td>
+                                    <td class="text-align-right">768.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
   </div>
 
     <!-- Cancel Order -->
