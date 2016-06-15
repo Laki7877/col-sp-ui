@@ -7,7 +7,6 @@
             <!--button type="button" class="btn btn-white btn-width-xl margin-right-10">Preview</button-->
             <button class="btn btn-blue btn-width-xl" ng-if="themes.length > 0" ng-click="save()">Save</button>
         </nc-page-title>
-        <pre>{{formData.Data | json}}</pre>
 		<div ng-show="loading" nc-loading="Loading.."></div>
 		<div ng-show="saving" nc-loading="Saving.."></div>
         <form class="ah-form sticky-mainform-action" name="form" ng-submit="save()" ng-show="!loading && !saving">
