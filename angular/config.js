@@ -1,7 +1,14 @@
 module.exports = {
-	//REST_SERVICE_BASE_URL: 'http://ahancer-colsp.azurewebsites.net/api',
-	REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
+	//For 104
+	REST_SERVICE_BASE_URL: 'http://ahancer-colsp.azurewebsites.net/api',
+
+	//For Localhost
+	//REST_SERVICE_BASE_URL: 'http://colsp-dev.azurewebsites.net/api',
+
+	//For AWS
 	//REST_SERVICE_BASE_URL: 'http://seller-service-central-1948633811.ap-southeast-1.elb.amazonaws.com/api',
+
+	//For Others
 	//REST_SERVICE_BASE_URL: 'http://27.254.48.174/sellerportal/api',
 	//REST_SERVICE_BASE_URL: 'http://localhost:58127/api',
 	//REST_SERVICE_BASE_URL: 'http://devmkp-colspapi.cenergy.co.th/api',
