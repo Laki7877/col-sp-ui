@@ -48,7 +48,7 @@
                     >Choose File</button>
                   </div>
                   <div ng-if="width && width.length > $index">{{width[$index]}}x{{height[$index]}} pixels</div>
-                  <div ng-if="minWidth && minWidth.length > $index">width must be greater than {{minWidth[$index]}}</div>
+                  <div ng-if="minWidth && minWidth.length > $index">width must be equal to {{minWidth[$index]}}</div>
             </div>
             <div ng-show="image.ImageTh.Url"
                 nc-template="common/input/form-group-with-label"
