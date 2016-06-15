@@ -4,7 +4,7 @@
 	<div ng-controller="SellerShopAppearanceCtrl">
 		<nc-alert nc-model="alert"></nc-alert>
         <nc-page-title nc-title="Shop Appearance" icon="fa-sliders">
-            <button type="button" class="btn btn-white btn-width-xl margin-right-10">Preview</button>
+            <!--button type="button" class="btn btn-white btn-width-xl margin-right-10">Preview</button-->
             <button class="btn btn-blue btn-width-xl" ng-if="themes.length > 0" ng-click="save()">Save</button>
         </nc-page-title>
 		<div ng-show="loading" nc-loading="Loading.."></div>

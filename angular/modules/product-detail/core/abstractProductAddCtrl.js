@@ -406,9 +406,23 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         })
       }
 
+      var countVisibleVariants = $scope.formData.Variants.map(function(m){
+        return m.Visibility;
+      }).reduce(function(previousValue, currentValue, currentIndex, array){
+        return previousValue + (currentValue ? 1 : 0);
+      },0);
+
+      if(countVisibleVariants == 0 && $scope.formData.Variants.length > 0){
+        mat.push('One visible variant');
+      }
+
+      if($scope.formData.Variants.length > 100){
+        mat.push('Variants count of less than 100');
+      }
+
       if ($scope.formData.ExpireDate && $scope.formData.ExpireDate <=
         $scope.formData.EffectiveDate) {
-        mat.push('Effective date/time must come before expire date/time.')
+        mat.push('Effective date/time must come before expire date/time')
       }
 
       return mat
@@ -576,11 +590,17 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         if (isNotNumberOrEmpty(vari.NewArrivalDate)) {
           vari.NewArrivalDate = $scope.formData.UpdateOn;
         }
+
+        if (isNotNumberOrEmpty(vari.OriginalPrice)){
+            vari.OriginalPrice = vari.SalePrice;
+        }
+
       }
       //default values
-      for (var vari in $scope.formData.Variants) {
+      $scope.formData.Variants.forEach(function(vari){
         defaultOnEmpty(vari);
-      }
+      });
+
       defaultOnEmpty($scope.formData.MasterVariant);
 
 
@@ -631,8 +651,8 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       }
 
       //TODO: move this to default value
-      if (Number($scope.formData.MasterVariant.OriginalPrice) == 0 || _.isNaN(
-          Number($scope.formData.MasterVariant.OriginalPrice))) {
+      if (Number($scope.formData.MasterVariant.OriginalPrice) == 0 ||
+            _.isNaN(Number($scope.formData.MasterVariant.OriginalPrice))) {
         $scope.formData.MasterVariant.OriginalPrice = $scope.formData.MasterVariant.SalePrice;
       }
 

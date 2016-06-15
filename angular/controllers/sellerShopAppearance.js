@@ -93,12 +93,8 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 				$scope.loading = false;
 			});
 	};
-	var _search = undefined;
-
 	// product search
 	$scope.getProducts = function(search) {
-		if(search == _search) return;
-		_search = search;
 		Product.list({
 			_limit: 16,
 			searchText: search
@@ -151,7 +147,7 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 		$scope.alert.close();
 		if(e == 'ondimension') {
 			if(arg3) {
-				$scope.alert.error('Image width must be greater than ' + arg2 + ' pixels');
+				$scope.alert.error('Image width must be ' + arg2 + ' pixels');
 			}
 			else {
 				$scope.alert.error('Image must be ' + arg2[0] + 'x' + arg2[1] + ' pixels');
