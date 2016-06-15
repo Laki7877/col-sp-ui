@@ -22009,9 +22009,9 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
         return m.Visibility;
       }).reduce(function(previousValue, currentValue, currentIndex, array){
         return previousValue + (currentValue ? 1 : 0);
-      });
+      },0);
 
-      if(countVisibleVariants == 0){
+      if(countVisibleVariants == 0 && $scope.formData.Variants.length > 0){
         mat.push('One visible variant');
       }
 
