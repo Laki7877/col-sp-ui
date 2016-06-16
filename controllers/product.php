@@ -54,6 +54,7 @@ class ProductController extends Controller
     {
         return View::render('seller_import_products', [
                 'title' => 'Import Product',
+				'update' => false
         ]);
     }
     public static function importUpdate($params)
