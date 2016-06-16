@@ -722,10 +722,13 @@ user-select: none;
 				font-size: 20px;
 			}
 		}
-		button.close > span {
-	    	line-height: 1;
-	    	font-size: 36px;
-	    	margin-top: -6px;
+		button.close{
+			height: 30px;
+			span {
+		    	line-height: 1;
+		    	font-size: 36px;
+		    	margin-top: -6px;
+			}
 		}
 		.modal_title_abosolute {
 			position: absolute;
@@ -793,6 +796,11 @@ user-select: none;
     .content-column{
       margin-top: 15px;
       -webkit-padding-start: 0px;
+			-moz-padding-start: 0px;
+			-khtml-padding-start: 0px;
+			-o-padding-start: 0px;
+			padding-start: 0px;
+			padding-left: 0px;
       height: 290px;
       overflow-y: auto;
       list-style: none;
@@ -857,6 +865,11 @@ user-select: none;
 	margin-bottom: 15px;
 	list-style-type:none;
 	-webkit-padding-start: 0px;
+	-moz-padding-start: 0px;
+	-khtml-padding-start: 0px;
+	-o-padding-start: 0px;
+	padding-start: 0px;
+	padding-left: 0px;
 	li{
 		margin-bottom: 5px;
 	}

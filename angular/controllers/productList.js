@@ -1,5 +1,9 @@
+/**
+ * Handle product images
+ */
 module.exports = function($scope, $controller, common, Product, util, $window, $rootScope, config, storage, $base64, $timeout) {
     'ngInject';
+    // inherit from advance listing
     $controller('AbstractAdvanceListCtrl', {
         $scope: $scope,
         options: {
@@ -17,6 +21,7 @@ module.exports = function($scope, $controller, common, Product, util, $window, $
                 'Delete',
                 'Hide',
                 'Show', {
+                    //publish product
                     name: 'Publish',
                     fn: function(arr, cb) {
                         $scope.alert.close();
@@ -25,7 +30,7 @@ module.exports = function($scope, $controller, common, Product, util, $window, $
                             $scope.alert.error('Unable to Publish. Please select Product for this action.');
                             return;
                         }
-
+                        // send only pid
                         Product.bulkPublish(_.map(arr, function(e) {
                             return _.pick(e, ['ProductId']);
                         })).then(function() {
@@ -44,6 +49,7 @@ module.exports = function($scope, $controller, common, Product, util, $window, $
                         btnClass: 'btn-green'
                     }
                 }, {
+                    //Add tag to product
                     name: 'Add Tags',
                     fn: function(add, cb, r) {
                         $scope.alert.close();
@@ -56,6 +62,7 @@ module.exports = function($scope, $controller, common, Product, util, $window, $
                             $scope.reload();
                         });
                     },
+                    //Add tags
                     modal: {
                         size: 'size-warning',
                         templateUrl: 'product/modalAddTags',
@@ -99,14 +106,18 @@ module.exports = function($scope, $controller, common, Product, util, $window, $
             }]
         }
     });
+    // live status
     $scope.showOnOffStatus = {};
     $scope.showOnOffStatus.value = true;
     $scope.statusLookup = {};
-    $scope.advanceSearchOptions.Admin = false;
+    $scope.advanceSearchOptions.Admin = false; // not admin
+
+    // product status hashmap
     config.PRODUCT_STATUS.forEach(function(object) {
         $scope.statusLookup[object.value] = object;
     });
-    
+        
+    // export button
     $scope.startExportProducts = function() {
         
         $scope.exporter = {
@@ -118,9 +129,11 @@ module.exports = function($scope, $controller, common, Product, util, $window, $
     };
 
 
+    // on export
     $scope.confirmExportProducts = function() {
         $("#export-product").modal('hide');
         var arr = [];
+        // get all products from checkbox
         Object.keys($scope.checkBoxCache).forEach(function(m) {
             if (!$scope.checkBoxCache[m]) return;
             arr.push({
@@ -130,10 +143,11 @@ module.exports = function($scope, $controller, common, Product, util, $window, $
 
         if (arr.length == 0) return;
 
-
+        // create file
         var fileName = 'ProductExport-' + moment(new Date(), 'MM-DD-YYYY-HHmm') + ".csv";
         var a = document.getElementById("export_download_btn");
 
+        // error exporting
         var error = function(r) {
             $(".modal").modal('hide');
             $scope.exporter.title = 'Error';
@@ -146,6 +160,7 @@ module.exports = function($scope, $controller, common, Product, util, $window, $
 
         var chunks = _.chunk(arr, 3);
 
+        //upload by chunk (this will call endpoints many time)
         chunks.forEach(function(chunk) {
             Product.export(chunk).then(function(result) {
 
@@ -167,13 +182,16 @@ module.exports = function($scope, $controller, common, Product, util, $window, $
             }, error);
         });
     };
+    // retrieve product status by name
     $scope.asStatus = function(ab) {
         return $scope.statusLookup[ab];
     };
+    // get product tags as string
     $scope.getTag = function(tags) {
         return _.join(tags, ', ');
     }
 
+    // export selected product in checkbox
     $scope.exportSelected = function() {
         $scope.alert.close();
         if ($scope.bulkContainer.length == 0) {
@@ -183,6 +201,7 @@ module.exports = function($scope, $controller, common, Product, util, $window, $
     };
 
     $scope.searchCriteria = null;
+    // export searched products
     $scope.exportSearchResult = function() {
         if(!$scope.advanceSearchParams){
             return $scope.alert.error("Unable to Export. There are no products in your search result.");
@@ -197,7 +216,7 @@ module.exports = function($scope, $controller, common, Product, util, $window, $
             document.getElementById('exportForm').submit();
         });
     }
-
+    // if import successfully and redirected to this page, display msg
     var fromImport = storage.get('import.success');
     if (!_.isEmpty(fromImport)) {
         storage.remove('import.success');

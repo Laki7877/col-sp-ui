@@ -1,3 +1,6 @@
+/**
+ * validate if ngmodel equal ngMatch
+ */
 module.exports = function($interpolate) {
 	'ngInject';
 	return {

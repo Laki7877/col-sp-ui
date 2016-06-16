@@ -1,3 +1,6 @@
+/**
+ * Template object
+ */
 var angular = require('angular');
 angular.module('nc')
     .directive('ncTemplate', function ($rootScope, $templateCache, $compile, $templateOptionsCache, KnownException,  $parse) {
@@ -14,6 +17,7 @@ angular.module('nc')
                     label: '@ncLabel'
                 },
                 template: function (element, attrs) {
+                    // render template from html attributes
                     var templateHTML = $templateCache.get(attrs.ncTemplate);
                     if(!templateHTML){
                         throw new KnownException("Unable to load specified nc-template " + attrs.ncTemplate);
@@ -21,6 +25,7 @@ angular.module('nc')
                     return templateHTML;
                 },
                 link: function (scope, element, attrs, ctrl, transclude) {
+                    // check form validator
                     scope.isInvalid = function(form) {
                         if(angular.isDefined(form) && form.$error.required && form.$dirty) return true;
                         if(angular.isDefined(form) &&
@@ -33,6 +38,8 @@ angular.module('nc')
 
                     var pathComp
                     var opt = {};
+
+                    // get options from .json
                     if(scope.optionsPath){
                         pathComp = scope.optionsPath.split('/');
                         opt = $templateOptionsCache[pathComp[0]][pathComp[1]];

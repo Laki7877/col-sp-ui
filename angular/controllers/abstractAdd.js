@@ -25,8 +25,15 @@ module.exports = function($scope, $window, NcAlert, util, common, options) {
 		if(options.freeToLeave){
 			return false;
 		}
+		var willLeave = $scope.form.$dirty;
 
-		return $scope.form.$dirty;
+		$(".sub-sidebar").hide();
+
+		setTimeout(function(){
+	        $(".sub-sidebar").show();
+	    }, 1000);
+
+		return willLeave;
 	});
 
 	$scope.init = function(params) {

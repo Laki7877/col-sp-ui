@@ -1,3 +1,6 @@
+/**
+ * Validate if number > maxnumber
+ */
 module.exports = function() {
 	'ngInject';
 	return {

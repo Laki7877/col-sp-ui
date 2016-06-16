@@ -1,4 +1,8 @@
+/**
+ * Shop appearance components
+ */
 angular.module('nc')
+	//text area component
 	.directive('ncTextareas', function($templateCache) {
 		return {
 			restrict: 'E',
@@ -11,14 +15,15 @@ angular.module('nc')
 			template: $templateCache.get('common/ncTextareas'),
 			link: function(scope) {
 				scope.$watch('source', function() {
-					if(!scope.source) {
+					if(_.isEmpty(scope.source)) {
 						scope.source = _.defaults(scope.source, {
 							Enabled: true
 						})
 					}
 				})
+				// num of text area
 				scope.$watch('size', function(d) {
-					if(!_.isNil(d)) {
+					if(scope.source && !scope.source.Texts) {
 						scope.source.Texts = [];
 						for (var i = 0; i < d; i++) {
 							scope.source.Texts.push({});
@@ -28,6 +33,7 @@ angular.module('nc')
 			}
 		}
 	})
+	//product layout component
 	.directive('ncProductLayout', function($templateCache, Product) {
 		return {
 			restrict: 'E',
@@ -44,8 +50,10 @@ angular.module('nc')
 			link: function(scope) {
 				scope.src = {};
 				scope.loading = false;
+				//update product list
 				scope.$watch('src.model', function(n, o) {
-					if(!scope.source) {
+					console.log(n,o);
+					if(_.isEmpty(scope.source)) {
 						scope.source = _.defaults(scope.source, {
 							Enabled: true,
 						});		
@@ -54,7 +62,9 @@ angular.module('nc')
 					scope.source.Products = _.map(scope.src.model, function(e) {
 						return e.Pid;
 					});
+					console.log(scope.source);
 				}, true);
+				//changed product list naming by querying endpoint
 				scope.$watch('source', function(n, o) {
 					if(_.isNil(scope.source)) {
 						scope.source = _.defaults(scope.source, {
@@ -62,6 +72,7 @@ angular.module('nc')
 						});
 					}
 					else {
+						//query endpoint to load products by pid
 						if(scope.source.Products && scope.source.Products.length > 0) {
 							if(scope.source.Products.length > 0) {
 								scope.loading = true;
@@ -79,6 +90,7 @@ angular.module('nc')
 			}
 		}
 	})
+	// text with link components
 	.directive('ncTextLink', function($templateCache) {
 		return {
 			restrict: 'E',
@@ -91,7 +103,7 @@ angular.module('nc')
 			template: $templateCache.get('common/ncTextLink'),
 			link: function(scope) {
 				scope.$watch('source', function() {
-					if(!scope.source) {
+					if(_.isEmpty(scope.source)) {
 						scope.source = _.defaults(scope.source, {
 							Enabled: true
 						})
@@ -100,6 +112,7 @@ angular.module('nc')
 			}
 		}
 	})
+	// image with links components
 	.directive('ncImageLinks', function($templateCache) {
 		return {
 			restrict: 'E',
@@ -119,16 +132,18 @@ angular.module('nc')
 			template: $templateCache.get('common/ncImageLinks'),
 			link: function(scope) {
 				scope.$watch('source', function() {
-					if(!scope.source) {
+					if(_.isEmpty(scope.source)) {
 						scope.source = _.defaults(scope.source, {
 							Enabled: true
 						})
 					}
 				});
+				// acceptable file ext
 				scope.accept = scope.accept || '.jpg,.jpeg';
+				// validate by width height
 				scope.validate = function(f,w,h,i) {
 					if(scope.minWidth && scope.minWidth.length > i) {
-						return w > scope.minWidth;
+						return w == scope.minWidth[i];
 					}
 					else if(scope.width && scope.width.length > i) {
 						return w == scope.width[i] && h == scope.height[i];
@@ -136,8 +151,9 @@ angular.module('nc')
 						return true;
 					}
 				}
+				// num of images
 				scope.$watch('size', function(d) {
-					if(!_.isNil(d)) {
+					if(scope.source && !scope.source.Images) {
 						scope.source.Images = [];
 						for (var i = 0; i < d; i++) {
 							scope.source.Images.push({
@@ -147,8 +163,10 @@ angular.module('nc')
 						};
 					}
 				})
+				// on upload
 				scope.upload = function($file, image, $index, $ifile) {
 					if($ifile.length > 0) {
+						// check min width
 						if(!_.isNil(scope.minWidth)) {
 							scope.fail('ondimension', null, minWidth[$index], true);
 						}
@@ -156,6 +174,7 @@ angular.module('nc')
 							scope.fail('ondimension', null, [width[$index], height[$index]]);
 						}
 					} else {
+						//upload
 						scope.uploader.upload($file).then(function(data) {
 							image = _.extend(image, data.data);
 						}, function(err) {

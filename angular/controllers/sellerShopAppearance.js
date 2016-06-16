@@ -1,13 +1,17 @@
+/**
+ * Shop appearance
+ */
 module.exports = function($scope, ShopAppearanceService, Product, ImageService, NcAlert, config, util, common, $timeout, $q) {
 	'ngInject';
+	// form validation
 	$scope.form = {};
-	$scope.formData = { ThemeId: 0, Data: {} };
-	$scope.themeArray = {};
-	$scope.alert = new NcAlert();
+	$scope.formData = { ThemeId: 0, Data: {} }; //default id = 0
+	$scope.themeArray = {}; // cached themes
+	$scope.alert = new NcAlert(); // alert bar
 	$scope.saving = false;
 	$scope.loading = true;
-	$scope.products = [];
-	$scope.themes = [];
+	$scope.products = []; //searched product
+	$scope.themes = []; //loaded themes
 	$scope.X = {  //P'M's requested X
 		width: 1920,
 		height: 1080
@@ -70,8 +74,10 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 		}
 	};*/
 
+	//upload image endpoint for all components
 	$scope.uploader = ImageService.getUploaderFn('/ThemeImages');
 
+	//on init
 	$scope.init = function() {
 		$scope.loading = true;
 		//Load theme
@@ -87,10 +93,8 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 				$scope.loading = false;
 			});
 	};
-	var _search = undefined;
+	// product search
 	$scope.getProducts = function(search) {
-		if(search == _search) return;
-		search = _search;
 		Product.list({
 			_limit: 16,
 			searchText: search
@@ -99,21 +103,28 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 		});
 	}
 	$scope.init();
+
+	// switch cache when theme id changes
 	$scope.$watch('formData.ThemeId', function(a,b) {
-		if(_.isNil(b)) return;
+		if(b == 0) return;
 		$scope.themeArray[b] = $scope.formData.Data;
 		$scope.formData.Data = $scope.themeArray[a] || {};
 	}, true);
+
+	//onsave
 	$scope.save = function() {
 		if($scope.saving) return;
 
 		$scope.alert.close();
 
-		//Activate form submission
+		//Activate form submission state
 		$scope.form.$setSubmitted();
 
+		//validate form
 		if($scope.form.$valid) {
 			$scope.saving = true;
+
+			//update shop appearance
 			ShopAppearanceService.updateAll(ShopAppearanceService.serialize($scope.formData))
 				.then(function(data) {
 					$scope.formData = ShopAppearanceService.deserialize(data);
@@ -130,11 +141,13 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 			$scope.alert.error(util.saveAlertError());
 		}
 	}
+
+	//image upload fail
 	$scope.uploadFail = function(e, arg1, arg2, arg3) {
 		$scope.alert.close();
 		if(e == 'ondimension') {
 			if(arg3) {
-				$scope.alert.error('Image width must be greater than ' + arg2 + ' pixels');
+				$scope.alert.error('Image width must be ' + arg2 + ' pixels');
 			}
 			else {
 				$scope.alert.error('Image must be ' + arg2[0] + 'x' + arg2[1] + ' pixels');

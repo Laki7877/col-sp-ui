@@ -1,3 +1,6 @@
+/**
+ * Handle seller account adding pages
+ */
 module.exports = function($scope, $controller, BrandService, SellerAccountService, SellerRoleService) {
 	'ngInject';
 	//Inherit from abstract ctrl
@@ -21,7 +24,11 @@ module.exports = function($scope, $controller, BrandService, SellerAccountServic
 			}
 		}
 	});
+
+	// selectable brands
 	$scope.brands = [];
+
+	// shop owner from groups
 	$scope.getShopOwner = function(e) {
 		if(!_.isNil(e)) {
 			return e.GroupNameEn == 'Shop Owner';
@@ -29,6 +36,7 @@ module.exports = function($scope, $controller, BrandService, SellerAccountServic
 			return false;
 		}
 	};
+	// reload brands from search text
 	$scope.getBrands = function(search) {
 		BrandService.list({
 			_limit: 16,

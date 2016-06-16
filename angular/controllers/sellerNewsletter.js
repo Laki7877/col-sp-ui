@@ -1,5 +1,9 @@
+/**
+ * Handle newsletter
+ */
 module.exports = function($scope, $controller, $uibModal, NewsletterService) {
 	'ngInject';
+	//inherit list ctrl
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
 		options: {
@@ -10,6 +14,7 @@ module.exports = function($scope, $controller, $uibModal, NewsletterService) {
 			id: 'NewsletterId'
 		}
 	});
+	// newsletter modal
 	$scope.open = function(item) {
 		NewsletterService.get(item.NewsletterId)
 			.then(function(data) {

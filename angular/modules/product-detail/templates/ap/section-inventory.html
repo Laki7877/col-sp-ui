@@ -100,6 +100,33 @@
              maxlength="5" ng-model="variantPtr.MaxQtyPreOrder"/>
         </div>
 
+        <div nc-template="common/input/form-group-with-label"  ng-show="variantPtr.StockType == 'Pre-Order'"
+             nc-template-form="form.EstimateGoodsReceiveDate"
+             nc-template-options-path="addProductForm/StockType" nc-policy-indy-bu
+             nc-label="Estimate Goods Receive Date">
+
+            <div class="dropdown">
+                <a class="dropdown-toggle" id="dropdown_estimate_goods_receive_date" role="button" data-toggle="dropdown" data-target="#" href="#">
+                    <input readonly style="background-color:white" type="text"
+                           ng-disabled="xspermit(37)"
+                           ng-class="{'has-error': !variantPtr.EstimateGoodsReceiveDate }"
+                           placeholder="Select estimate goods receive date" class="input-icon-calendar form-control"
+                           value="{{ variantPtr.EstimateGoodsReceiveDate | date: 'dd/MM/yy HH:mm' }}" />
+                </a>
+
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" ng-show="!xspermit(37)">
+                    <datetimepicker data-ng-model="variantPtr.EstimateGoodsReceiveDate"
+                                    data-datetimepicker-config="{ dropdownSelector: '#dropdown_estimate_goods_receive_date',
+                        minView: 'minute', minuteStep: 30 }" />
+
+
+                </ul>
+            </div>
+            <span class="help-block color-red" ng-if="!variantPtr.EstimateGoodsReceiveDate">
+                <span>Please select estimate goods receive date</span>
+            </span>
+        </div>
+
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.IsHasExpiryDate"
         nc-template-options-path="addProductForm/StockType" nc-policy-indy-bu
         nc-label="Has Expiry Date">

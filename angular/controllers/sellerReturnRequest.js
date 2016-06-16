@@ -1,5 +1,9 @@
+/**
+ * Handle listing request return
+ */
 module.exports = function($scope, $window, $controller, $uibModal, ReturnRequestService, config) {
 	'ngInject';
+	//inherit list ctrl
 	$controller('AbstractListCtrl', {
 		$scope: $scope,
 		options: {

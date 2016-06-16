@@ -11,6 +11,7 @@ var template = require('./template');
 
 // IE fix
 require('./iefix.js');
+// TImezone fix
 require('./datefix.js');
 
 // External dependencies
@@ -21,7 +22,7 @@ require('angular-animate')
 require('angular-base64')
 require('angular-bootstrap-datetimepicker')
 require('angular-chart.js')
-require('angular-clipboard')
+// require('angular-clipboard')
 require('angular-cookies')
 require('angular-file-upload')
 require('angular-input-masks')
@@ -44,7 +45,7 @@ require('./modules/angular-scroll')
 require('./modules/angular-draggable')
 require('./modules/nc')
 require('./modules/product-detail')
-require('./modules/schematics')
+// require('./modules/schematics')
 require('./modules/ume-select')
 
 
@@ -62,9 +63,8 @@ var filters = bulk.filters;
 var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   'nc', 'ui.bootstrap.datetimepicker', 'ngDraggable',
   'duScroll', 'smoothScroll', 'ngSanitize', 'ngAnimate',
-  'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select',
-  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload',
-  'schematics', 'AngularPrint', 'ui.utils.masks', 'umeSelect',
+  'angularFileUpload', 'ui.tree', 'ui.select',
+  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload', 'AngularPrint', 'ui.utils.masks', 'umeSelect',
   'ui.sortable',
   'dndLists'
 ])
@@ -175,7 +175,7 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .directive('ngMatch', directives.ngMatch)
   .directive('ngMaxnumber', directives.ngMaxnumber)
   .directive('ngMinnumber', directives.ngMinnumber)
-  .directive('ngPermission', directives.ngPermission)
+  // .directive('ngPermission', directives.ngPermission)
   .directive('ngSlideToggle', directives.ngSlideToggle)
   .directive('ngTemplate', directives.ngTemplate)
   .directive('ngUppercase', directives.ngUppercase)
@@ -331,4 +331,4 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('SellerCMSCategoryListCtrl', controllers.sellerCMSCategoryList)
   .controller('SellerCMSCategoryAddCtrl', controllers.sellerCMSCategoryAdd)
 
-  
+

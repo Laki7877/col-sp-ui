@@ -1,11 +1,15 @@
-
+/**
+ * Handle seller onboarding page
+ */
 module.exports = function($scope, $rootScope, Onboarding, $log, storage, $window){
 	'ngInject';
 
+	// reload state
 	$scope.$on('change-password', function() {
 		$scope.load();
 	})
 
+	// load tasks
 	$scope.load = function() {
 		$scope.ShopInActiveStatus = ($rootScope.Profile.Shop.Status == 'NA');
 		$scope.onLoadingFlag = true;

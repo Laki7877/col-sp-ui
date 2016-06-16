@@ -1,3 +1,6 @@
+/**
+ * Track enter
+ */
 module.exports = function () {
     'ngInject';
     return function (scope, element, attrs) {

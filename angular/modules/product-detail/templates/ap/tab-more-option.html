@@ -9,7 +9,7 @@
                 <div class="form-section-content">
                     <div nc-template="common/input/form-group-with-label" nc-label="Related Products" nc-template-form="form.RelatedProducts"
                     nc-template-options-path="addProductForm/RelatedProducts">
-                        <you-me display-by="ProductNameEn" ng-disabled="xspermit(42)" 
+                        <you-me display-by="_text" ng-disabled="xspermit(42)"
                         placeholder="Search by Product" in-relationship="true" max-tag-count="20"
                         ng-model="formData.RelatedProducts" refresh="refresher.RelatedProducts" strict-mode="true"
                         choices="dataset.RelatedProducts | exclude: formData.RelatedProducts : 'ProductId' | exclude: [formData] : 'ProductId' "></you-me>
@@ -45,7 +45,7 @@
                                     value="{{ formData.EffectiveDate | date: 'dd/MM/yy HH:mm' }}" />
                                 </a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <datetimepicker data-ng-model="formData.EffectiveDate" 
+                                    <datetimepicker data-ng-model="formData.EffectiveDate"
                                     data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'minute', minuteStep: 30 }"
                                     />
                                 </ul>
@@ -75,7 +75,7 @@
                                     value="{{ formData.ExpireDate | date: 'dd/MM/yy HH:mm' }}">
                                 </a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <datetimepicker data-ng-model="formData.ExpireDate" 
+                                    <datetimepicker data-ng-model="formData.ExpireDate"
                                     data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'minute', minuteStep: 30 }"
                                     />
                                 </ul>
@@ -104,15 +104,15 @@
                                     value="{{ formData.NewArrivalDate | date: 'dd/MM/yy HH:mm' }}">
                                 </a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <datetimepicker data-ng-model="formData.NewArrivalDate" 
+                                    <datetimepicker data-ng-model="formData.NewArrivalDate"
                                     data-datetimepicker-config="{ dropdownSelector: '#dropdown4', minView: 'minute', minuteStep: 30 }"
                                     />
                                 </ul>
                             </div>
                         </div>
-                        <div class="width-field-tooltip no-padding-left">
+                        <!-- <div class="width-field-tooltip no-padding-left">
                             <i class="fa fa-2x fa-question-circle color-grey" tooltip-trigger="mouseenter" uib-tooltip="Date when your product will go offline"></i>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div nc-template="common/input/form-group-with-label" nc-template-options-path="addProductForm/TheOneCardEarn" nc-template-form="form.TheOneCardEarn"
