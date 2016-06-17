@@ -3,6 +3,7 @@ module.exports = function ($scope, $controller, StdReportOnHoldService, config, 
     'ngInject';
     $scope.formData = {
         PID: null,
+        SKU: null,
         ItemName: null,
         OrderDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
         OrderDateTo: new Date()
@@ -28,6 +29,7 @@ module.exports = function ($scope, $controller, StdReportOnHoldService, config, 
 
     $scope.resetSearch = function () {
         $scope.formData.PID = null;
+        $scope.formData.SKU = null;
         $scope.formData.ItemName = null;
         $scope.formData.OrderDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
         $scope.formData.OrderDateTo = new Date();

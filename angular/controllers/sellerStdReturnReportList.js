@@ -4,6 +4,7 @@ module.exports = function ($scope, $controller, StdReportReturnService, config, 
     $scope.formData = {
         OrderId: null,
         PID: null,
+        SKU: null,
         ItemName: null,
         ItemStatus: null,
         ReturnDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
@@ -33,6 +34,7 @@ module.exports = function ($scope, $controller, StdReportReturnService, config, 
 
         $scope.formData.OrderId = null;
         $scope.formData.PID = null;
+        $scope.formData.SKU = null;
         $scope.formData.ItemName = null;
         $scope.formData.ItemStatus = null;
         $scope.formData.ReturnDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));

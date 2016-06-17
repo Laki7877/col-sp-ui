@@ -17,7 +17,11 @@
           <!--id-->
           <div nc-template="common/input/form-group-with-label" nc-label="PID" nc-template-form="form.Pids">
             <input class="form-control width-field-large" name="Pids" ng-model="formData.PID">
-                    </div>
+          </div>
+          <!--SKU-->
+          <div nc-template="common/input/form-group-with-label" nc-label="SKU" nc-template-form="form.SKU">
+            <input class="form-control width-field-large" name="SKU" ng-model="formData.SKU">
+          </div>
           <!-- Category -->
           <div nc-template="common/input/form-group-with-label" nc-label="Category"  id="form-category">
 
@@ -110,6 +114,7 @@
           <th nc-sort="ItemStatus">Item Status</th>
           <th nc-sort="PID">Product ID</th>
           <th nc-sort="ItemNameEN">Product Name</th>
+          <th nc-sort="SKU">SKU</th>
           <th nc-sort="QTY">Qty</th>
 
           <!-- <th class="action-column-lg">Action</th> -->
@@ -124,6 +129,7 @@
           <td class="width_150">{{row.ItemStatus}}</td>
           <td class="width_120">{{row.PID}}</td>
           <td class="width_300">{{row.ItemNameEN}}</td>
+          <td class="width_100">{{row.SKU}}</td>
           <td class="width_100">{{row.QTY}}</td>
 
           <!-- <td class="action-column-lg"><nc-action nc-model="row" nc-action-fn="actions"></nc-action></td> -->

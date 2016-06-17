@@ -3,6 +3,7 @@ module.exports = function ($scope, $controller, StdReportStockService, config, u
     'ngInject';
     $scope.formData = {
         Pid: null,
+        SKU: null,
         ProductName: null,
         variant: null,
         LastSoldDateFrom: new Date(new Date().setDate(new Date().getDate() - 30)),
@@ -35,6 +36,7 @@ module.exports = function ($scope, $controller, StdReportStockService, config, u
         $scope.formData.variant = null;
         $scope.formData.LastSoldDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
         $scope.formData.LastSoldDateTo = new Date();
+        $scope.formData.SKU = null;
     };
 
     $controller('AbstractAdvanceListCtrl', {

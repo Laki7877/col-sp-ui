@@ -17,6 +17,10 @@
           <div nc-template="common/input/form-group-with-label" nc-label="PID" nc-template-form="form.Pids">
             <input class="form-control width-field-large" name="Pids" ng-model="formData.PID">
             </div>
+          <!--SKU-->
+          <div nc-template="common/input/form-group-with-label" nc-label="SKU" nc-template-form="form.SKU">
+            <input class="form-control width-field-large" name="SKU" ng-model="formData.SKU">
+          </div>
           <!--Product Name-->
           <div nc-template="common/input/form-group-with-label" nc-label="Product Name" nc-template-form="form.ItemName">
             <input class="form-control width-field-large" name="Brands" ng-model="formData.ItemName">
@@ -55,12 +59,13 @@
               <label class="control-label"></label>
             </div>
             <div class="button-size-normal">
-              <button class="button-size-normal btn btn-blue btn-width-xl" ng-click="search()">Search</button>
+              <button id="search"class="button-size-normal btn btn-blue btn-width-xl" ng-click="search(); isDisabled=false">Search</button>
             </div>
             <div class="button-size-normal">
-              <button class="button-size-normal btn btn-green btn-width-xl" ng-click="exportCsv()" style="margin-left:10px;">Export Search</button>
+              <button class="button-size-normal btn btn-green btn-width-xl" ng-click="exportCsv()" style="margin-left:10px;" ng-disabled="isDisabled" ng-init="isDisabled=true">Export Search</button>
             </div>
             <div class="button-size-normal">
+              <!-- <a class="button-size-normal btn btn-white btn-width-xl" ng-click="clear()" style="margin-left:20px;">Clear</a> -->
               <input type="reset" class="button-size-normal btn btn-white btn-width-xl" value="Reset" style="margin-left:20px;" ng-click="resetSearch()" />
             </div>
           </div>
@@ -78,6 +83,7 @@
           <th nc-sort="Itemname">Product Name</th>
           <th nc-sort="OnHoldDate">On Hold Date</th>
           <th nc-sort="OnHoldRemark">Remark</th>
+          <th nc-sort="SKU">SKU</th>
         </tr>
       </thead>
       <tbody>
@@ -87,6 +93,7 @@
           <td class="width_200">{{row.Itemname}}</td>
           <td class="width_120">{{row.OnHoldDate}}</td>
           <td class="width_120">{{row.OnHoldRemark}}</td>
+          <td class="width_120">{{row.SKU}}</td>
         </tr>
       </tbody>
     </table>
