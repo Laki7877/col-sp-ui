@@ -32,6 +32,13 @@ module.exports = function ($scope, $controller, $uibModal, NCConfirm) {
         });
     }
 
+    // for reject live product 
+    $scope.confirmFRJ = function () {
+        NCConfirm('Force Reject', 'Are you sure you want to force reject this product', function () {
+            $scope.forceReject($scope.formData.ProductId);
+        });
+    }
+
 
     $scope.canApprove = function(){
     	return $scope.formData.AdminApprove.Information == 'AP' && $scope.formData.AdminApprove.Image == 'AP' &&

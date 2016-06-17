@@ -1102,4 +1102,18 @@ angular.module('productDetail').controller('AbstractProductAddCtrl',
       $scope.form = $scope.addProductForm;
     });
 
+    // Reject for live product
+    $scope.forceReject = function (productId) {
+        if (productId == undefined || productId == null)
+            return;
+
+        Product.rejectProductLive(productId)
+        .then(function () {
+            $scope.pageState.reset();
+            var successText = 'Your product has been saved successfully.';
+            $scope.alert.success(successText + ' <a href="' + (options.listingUrl || '/products') + '">View Product List</a>');
+            $scope.addProductForm.$setPristine(true);
+        });
+    };
+
   });

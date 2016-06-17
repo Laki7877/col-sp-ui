@@ -13,6 +13,17 @@ module.exports = ['$http', 'common', 'util', 'LocalCategory', 'Brand', 'config',
 		    });
 		}
 
+	    // reject live product
+		service.rejectProductLive = function (productId) {
+		    return common.makeRequest({
+		        method: 'PUT',
+		        url: '/Products/ForceReject/' + productId,
+		        headers: {
+		            'Content-Type': 'application/json;charset=UTF-8'
+		        }
+		    });
+		}
+
 		service.getRevision = function (revId) {
 			return common.makeRequest({
 				method: 'GET',
