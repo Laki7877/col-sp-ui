@@ -105,6 +105,7 @@
 						            		 	size="2">
 						            		 </nc-textareas>
 						            	</div>
+
 						            	<!-- robinson -->
 						            	<div ng-switch-when="2">
 						            		<nc-text-link 
@@ -131,7 +132,7 @@
 						            		 	width="1920" 
 						            		 	height="1080" 
 						            		 	fail="uploadFail">
-						            		 </nc-image-banner-link>
+						            		</nc-image-banner-link>
 						            		<nc-image-links 
 						            			source="formData.Data.D_Image"
 						            			letter="D"
@@ -224,6 +225,7 @@
 						            		 	size="2">
 						            		 </nc-textareas>
 						            	</div>
+
 						            	<div ng-switch-when="3">
 						            		<nc-text-link 
 						            			source="formData.Data.A_Text"
@@ -363,6 +365,102 @@
 						            		 	size="2">
 						            		 </nc-textareas>
 						            	</div>
+
+						            	<div ng-switch-when="4">
+						            		<nc-text-link 
+						            			source="formData.Data.A_Text"
+						            			letter="A"
+						            			letterx="A1"
+						            			title="Top Menu 1">
+						            		</nc-text-link>
+						            		<nc-image-banner-link
+						            			source="formData.Data.B_Banner"
+						            		 	letter="B"
+						            		 	letterx="B1"
+						            		 	title="Banner 1"
+						            		 	uploader="uploader" 
+						            		 	size="8" 
+						            		 	width="1920" 
+						            		 	height="1080" 
+						            		 	fail="uploadFail">
+						            		</nc-image-banner-link>
+						            		<nc-image-links-hover
+						            			source="formData.Data.C_Image"
+						            			letter="C"
+						            			title="Sub Banner 1"
+						            			uploader="uploader"
+						            			fail="uploadFail"
+						            			width="[1500,460,460,460]"
+						            			height="[600,340,340,340]"
+						            			size="4">
+						            		</nc-image-links-hover>
+						            		<nc-title-view
+						            			source="formData.Data.D_Title"
+						            			letter="D"
+						            			letterx="D1"
+						            			refresh="getCategories"
+						            			categories="categories"
+						            			title="Title Head">
+						            		</nc-title-view>
+						            		<nc-image-links-hover
+						            			source="formData.Data.E_Image"
+						            			letter="E"
+						            			title="Sub Banner 2"
+						            			uploader="uploader"
+						            			fail="uploadFail"
+						            			width="[1500,460,460]"
+						            			height="[600,340,340]"
+						            			size="3">
+						            		</nc-image-links-hover>
+						            		<nc-image-links 
+						            			source="formData.Data.F_Image"
+						            			letter="F"
+						            			title="Side Banner 1"
+						            			uploader="uploader"
+						            			fail="uploadFail"
+						            			width="[600,600,600,600,600,600,600,600]"
+						            			height="[600,600,600,600,600,600,600,600]"
+						            			size="8">
+						            		</nc-image-links>
+						            		<nc-image-banner-link
+						            			source="formData.Data.G_Banner"
+						            		 	letter="G"
+						            		 	letterx="G1"
+						            		 	title="Sub Banner 1"
+						            		 	uploader="uploader" 
+						            		 	size="1" 
+						            		 	width="530" 
+						            		 	height="300" 
+						            		 	accept="'.jpg,.jpeg,.png'"
+						            		 	fail="uploadFail"
+						            		 	noauto="true">
+						            		 </nc-image-banner-link>
+						            		<nc-title-view
+						            			source="formData.Data.H_Title"
+						            			letter="H"
+						            			letterx="H1"
+						            			title="Title Head 2">
+						            		</nc-title-view>
+						            		<nc-image-banner-icon
+						            			source="formData.Data.I_Icon"
+						            		 	letter="I"
+						            		 	letterx="I1"
+						            		 	title="Social Network Icons"
+						            		 	uploader="uploader" 
+						            		 	size="8" 
+						            		 	width="64" 
+						            		 	height="64" 
+						            		 	fail="uploadFail"
+						            		 	subtitle="Icon Type">
+						            		 </nc-image-banner-icon>
+						            		 <nc-textareas
+						            		 	source="formData.Data.J_Textarea"
+						            		 	letter="J"
+						            		 	title="Footer Text"
+						            		 	size="2">
+						            		 </nc-textareas>
+						            	</div>
+
 						            	<div ng-switch-default>
 						            	</div>
 						            </div>

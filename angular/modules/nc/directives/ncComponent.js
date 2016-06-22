@@ -112,6 +112,63 @@ angular.module('nc')
 			}
 		}
 	})
+
+	// text with view all
+	.directive('ncTitleView', function($templateCache, LocalCategoryService) {
+		return {
+			restrict: 'E',
+			scope: {
+				source: '=',
+				title: '@',
+				letter: '@',
+				letterx: '@',
+				categories: '=',
+				refresh: '='
+			},
+			template: $templateCache.get('common/ncTitleView'),
+			link: function(scope) {
+				scope.src = {};
+				scope.loading = false;
+				//update product list
+				scope.$watch('src.model', function(n, o) {
+					console.log(n,o);
+					if(_.isEmpty(scope.source)) {
+						scope.source = _.defaults(scope.source, {
+							Enabled: true,
+						});		
+					}
+					if(_.isNil(o)) return;
+					scope.source.Categories = _.map(scope.src.model, function(e) {
+						return e.CategoryId;
+					});
+					console.log(scope.source);
+				}, true);
+
+				scope.$watch('source', function() {
+					if(_.isEmpty(scope.source)) {
+						scope.source = _.defaults(scope.source, {
+							Enabled: true
+						})
+					}
+					else {
+						//query endpoint to load products by pid
+						if(scope.source.Categories && scope.source.Categories.length > 0) {
+							if(scope.source.Categories.length > 0) {
+								scope.loading = true;
+								LocalCategoryService.list()
+								.then(function(data){
+									console.log(data);
+									scope.loading = false;
+									scope.src.model = data;
+								});
+							}
+						}
+					}
+				})
+			}
+		}
+	})
+
 	// image with links components
 	.directive('ncImageLinks', function($templateCache) {
 		return {
@@ -130,6 +187,80 @@ angular.module('nc')
 				accept: '=?'
 			},
 			template: $templateCache.get('common/ncImageLinks'),
+			link: function(scope) {
+				scope.$watch('source', function() {
+					if(_.isEmpty(scope.source)) {
+						scope.source = _.defaults(scope.source, {
+							Enabled: true
+						})
+					}
+				});
+				// acceptable file ext
+				scope.accept = scope.accept || '.jpg,.jpeg';
+				// validate by width height
+				scope.validate = function(f,w,h,i) {
+					if(scope.minWidth && scope.minWidth.length > i) {
+						return w == scope.minWidth[i];
+					}
+					else if(scope.width && scope.width.length > i) {
+						return w == scope.width[i] && h == scope.height[i];
+					} else {
+						return true;
+					}
+				}
+				// num of images
+				scope.$watch('size', function(d) {
+					if(scope.source && !scope.source.Images) {
+						scope.source.Images = [];
+						for (var i = 0; i < d; i++) {
+							scope.source.Images.push({
+								ImageEn: {},
+								ImageTh: {}
+							});
+						};
+					}
+				})
+				// on upload
+				scope.upload = function($file, image, $index, $ifile) {
+					if($ifile.length > 0) {
+						// check min width
+						if(!_.isNil(scope.minWidth)) {
+							scope.fail('ondimension', null, minWidth[$index], true);
+						}
+						else {
+							scope.fail('ondimension', null, [width[$index], height[$index]]);
+						}
+					} else {
+						//upload
+						scope.uploader.upload($file).then(function(data) {
+							image = _.extend(image, data.data);
+						}, function(err) {
+							scope.fail(err);
+						});
+					}
+				}
+			}
+		}
+	})
+
+	// image with links on mouse hover components
+	.directive('ncImageLinksHover', function($templateCache) {
+		return {
+			restrict: 'E',
+			scope: {
+				source: '=',
+				title: '@',
+				letter: '@',
+				uploader: '=', //return promise
+				fail: '=',
+				size: '@',
+				notitle: '@?',
+				width: '=?',
+				height: '=?',
+				minWidth: '=?',
+				accept: '=?'
+			},
+			template: $templateCache.get('common/ncImageLinksHover'),
 			link: function(scope) {
 				scope.$watch('source', function() {
 					if(_.isEmpty(scope.source)) {

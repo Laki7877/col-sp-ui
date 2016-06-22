@@ -1,0 +1,57 @@
+<div class="form-section">
+	<div class="form-section-header">
+		<h2><input type="checkbox" style="margin-right: 10px" ng-model="source.Enabled"/>{{letter}}.) {{title}}</h2>
+	</div>
+	<div class="form-section-content padding-left-15 padding-right-15" ng-if="source.Enabled">
+    	<div class="form-group">
+    		<div class="width-label"><label class="control-label">{{letterx}} Title (Eng)</label></div>
+    		<div class="width-field-normal">
+    			<input type="text" class="form-control" ng-model="source.TitleEn" />
+    		</div>
+    	</div>
+        <div class="form-group">
+            <div class="width-label"><label class="control-label">{{letterx}} Title (ไทย)</label></div>
+            <div class="width-field-normal">
+                <input type="text" class="form-control" ng-model="source.TitleTh" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="width-label"><label class="control-label">{{letterx}} Text (Eng)</label></div>
+            <div class="width-field-normal">
+                <input type="text" class="form-control" ng-model="source.TextEn" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="width-label"><label class="control-label">{{letterx}} Text (ไทย)</label></div>
+            <div class="width-field-normal">
+                <input type="text" class="form-control" ng-model="source.TextTh" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="width-label"><label class="control-label">{{letterx}} Link</label></div>
+            <div class="width-field-normal">
+                <input type="text" class="form-control" ng-model="image.Link" />
+                <span class="help-block color-grey">Example: https//www.thecentral.co.th</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="width-label"><label class="control-label">Select Categories</label></div>
+            <div class="width-field-normal">
+                <div ng-if="!loading">
+                <ui-select multiple ng-model="src.model">
+                    <ui-select-match placeholder="Categories ID">
+                        {{ $item.NameEn }} ({{$item.CategoryId}})
+                    </ui-select-match>
+                    <ui-select-choices placeholder="Search result" refresh="refresh($select.search)" refresh-delay="150" repeat="i in categories">
+                        {{ i.NameEn }} ({{i.CategoryId}})
+                    </ui-select-choices>
+                </ui-select>
+                </div>
+                <div ng-if="loading">
+                    <img src="/assets/img/loader.gif" width="40" style="margin-left:-10px;">
+                    </span>Loading</span>
+                </div>                    
+            </div>
+        </div>
+	</div>
+</div>

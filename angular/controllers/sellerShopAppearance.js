@@ -1,7 +1,7 @@
 /**
  * Shop appearance
  */
-module.exports = function($scope, ShopAppearanceService, Product, ImageService, NcAlert, config, util, common, $timeout, $q) {
+module.exports = function($scope, ShopAppearanceService, LocalCategoryService, Product, ImageService, NcAlert, config, util, common, $timeout, $q) {
 	'ngInject';
 	// form validation
 	$scope.form = {};
@@ -102,6 +102,14 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 			$scope.products = data.data;
 		});
 	}
+
+	$scope.getCategories = function(search) {
+		LocalCategoryService.list().then(function(data) {
+			console.log(data);
+			$scope.categories = data;
+		});
+	}
+
 	$scope.init();
 
 	// switch cache when theme id changes
