@@ -26,7 +26,7 @@
             <input class="form-control width-field-large" name="variant" ng-model="formData.variant">
             </div>
 
-          <div nc-template="common/input/form-group-with-label-multiple" nc-template-form="form.CreatedDate" nc-label="Time Of Order Date" nc-template-options-path="searchForm/CreatedDate">
+          <div nc-template="common/input/form-group-with-label-multiple" nc-template-form="form.CreatedDate" nc-label="Stock Order Date" nc-template-options-path="searchForm/CreatedDate">
             <div class="width-field-small-input">
               <div class="dropdown">
                 <a class="dropdown-toggle" id="dropdown" role="button" data-toggle="dropdown" data-target="#" href="#">

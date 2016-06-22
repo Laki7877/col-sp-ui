@@ -162,7 +162,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
                       <div nc-template="common/input/form-group-with-label" 
                         nc-template-form="form.Conditions_Criteria" 
                         nc-label="Filter by">
-							<ui-select name="Conditions_Criteria" ng-model="formData.Conditions.FilterBy.Type" ng-disabled="manageable" search-enabled="false">
+							<ui-select name="Conditions_Criteria" ng-model="formData.Conditions.FilterBy.Type" on-select="filterBySelected($item)" ng-disabled="manageable" search-enabled="false">
                             <ui-select-match placeholder="-- Select Filter --">{{ $select.selected.name }}</ui-select-match>
                             <ui-select-choices repeat="i.value as i in filters">{{ i.name }}</ui-select-choices>
                         </ui-select>
@@ -200,7 +200,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
 					  <div ng-show="formData.Conditions.FilterBy.Type == 'Product'"
                         nc-template="common/input/form-group-with-label"
                         nc-label="Include">
-							<ui-select multiple ng-model="formData.Conditions.Include" ng-disabled="manageable" close-on-select="false" search-enabled="true">
+							<ui-select multiple ng-model="formData.Conditions.Include" on-select="includeOrExcludeSelected($item)" ng-disabled="manageable" close-on-select="false" search-enabled="true">
 								<ui-select-match ng-model="includeProductSelected" placeholder="-- Select Product --">{{$item.ProductNameEn}}</ui-select-match>
 								<ui-select-choices repeat="i in products">
 								  <div ng-bind-html="i.ProductNameEn | highlight: $select.search"></div>
@@ -211,7 +211,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Coupons'
 					  <div ng-show="formData.Conditions.FilterBy.Type == 'Product'"
                         nc-template="common/input/form-group-with-label"
                         nc-label="Exclude">
-							<ui-select multiple ng-model="formData.Conditions.Exclude" ng-disabled="manageable" close-on-select="false" search-enabled="true">
+							<ui-select multiple ng-model="formData.Conditions.Exclude" on-select="includeOrExcludeSelected($item)" ng-disabled="manageable" close-on-select="false" search-enabled="true">
 								<ui-select-match ng-model="excludeProductSelected" placeholder="-- Select Product --">{{$item.ProductNameEn}}</ui-select-match>
 								<ui-select-choices repeat="i in products">
 								  <div ng-bind-html="i.ProductNameEn | highlight: $select.search"></div>

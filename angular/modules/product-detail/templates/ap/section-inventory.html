@@ -78,6 +78,16 @@
                 <option selected value="-" disabled>- Select Stock Type -</option>
                 <option value="Stock">Stock</option>
                 <option value="Pre-Order">Pre-Order</option>
+                <option value="By-Order">By-Order</option>
+                <option value="Clearance">Clearance</option>
+                <option value="Limited">Limited</option>
+                <option value="Control">Control</option>
+                <option value="New">New</option>
+                <option value="Special">Special</option>
+                <option value="Free">Free</option>
+                <option value="Vendor-Out-of-Stock">Vendor-Out-of-Stock</option>
+                <option value="Hold">Hold</option>
+                <option value="Delete">Delete</option>
             </select>
         </div>
 
@@ -99,7 +109,6 @@
                 <a class="dropdown-toggle" id="dropdown_estimate_goods_receive_date" role="button" data-toggle="dropdown" data-target="#" href="#">
                     <input readonly style="background-color:white" type="text"
                            ng-disabled="xspermit(37)"
-                           ng-class="{'has-error': !variantPtr.EstimateGoodsReceiveDate }"
                            placeholder="Select estimate goods receive date" class="input-icon-calendar form-control"
                            value="{{ variantPtr.EstimateGoodsReceiveDate | date: 'dd/MM/yy HH:mm' }}" />
                 </a>
@@ -112,9 +121,6 @@
 
                 </ul>
             </div>
-            <span class="help-block color-red" ng-if="!variantPtr.EstimateGoodsReceiveDate">
-                <span>Please select estimate goods receive date</span>
-            </span>
         </div>
 
         <div nc-template="common/input/form-group-with-label" nc-template-form="form.IsHasExpiryDate"

@@ -185,11 +185,35 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   // var app = angular.module('myApp', []);
 
   // app.controller('myCtrl', function($scope) {
+      JsBarcode("#CDS", "MO1604000055-01",{
+        format: "code128",
+        lineColor: "#000",
+        width:2,
+        height:40,
+        displayValue: true,
+        textAlign:"left"
+      });
+      JsBarcode("#RBS", "MO1604000055-02",{
+        format: "code128",
+        lineColor: "#000",
+        width:2,
+        height:40,
+        displayValue: true,
+        textAlign:"left"
+      });
+      JsBarcode("#SSP", "MO1604000055-03",{
+        format: "code128",
+        lineColor: "#000",
+        width:2,
+        height:40,
+        displayValue: true,
+        textAlign:"left"
+      });
       JsBarcode("#code128", "DLN1605000001",{
         format: "code128",
         lineColor: "#000",
         width:2,
-        height:50,
+        height:40,
         displayValue: true,
         textAlign:"left"
       });

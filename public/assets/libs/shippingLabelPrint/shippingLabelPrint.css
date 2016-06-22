@@ -10,10 +10,15 @@
 table.tbType td{
 	padding:3px;
 }
+#square {
+	width: 350px;
+	height: 75px;
+	background: red;
+}
 #boxLeft_1{
 	padding: 15px;
 	border: 1px solid #000;
-	height: 255px;
+	height: 310px;
 }
 #boxLeft_2{
 	font-size: 11px;
@@ -28,6 +33,9 @@ table.tbType td{
 }
 
 /*BODY*/
+.container1{
+	margin-top: 20px;
+}
 table.tbContent{
 	font-size: 12px;
 	width: 100%;

@@ -103,6 +103,9 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Product Ap
 																						<div class="button-size-normal margin-left-10">
 																								<a class="button-size-normal btn btn-red btn-width-xl" ng-click="confirmRJ()">Reject</a>
 																						</div>
+                                            <div class="button-size-normal margin-left-10">
+                                              <a class="button-size-normal btn btn-red btn-width-xl" ng-if="formData.Status == 'AP'" ng-click="confirmFRJ()">Force Reject</a>
+                                            </div>
 																				</div>
 																		</div>
 																</div>
