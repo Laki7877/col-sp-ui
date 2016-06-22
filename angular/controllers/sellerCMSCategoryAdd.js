@@ -1,4 +1,4 @@
-module.exports = function ($scope, $controller, CMSCategoryService, config, $uibModal, $timeout, $rootScope) {
+module.exports = function ($scope, $controller, CMSCategoryService, config, $uibModal, $timeout, $rootScope, storage) {
     'ngInject';
 
     $scope.CMSadd = !$rootScope.permit(62);
