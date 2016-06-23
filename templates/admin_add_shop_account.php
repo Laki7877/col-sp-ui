@@ -245,7 +245,7 @@ $this->layout('layouts/page-with-sidebar-admin', ['title' => 'Admin - Shop Accou
 				                    	nc-template-form="form.Payment"
 				                    	nc-label="Payment"
 				                    	nc-template-options-path="addShopAccountForm/Payment">
-				                    		<input type="radio" name="Payment" style="margin-top: 10px" ng-model="formData.Payment" value="1" required/> Check
+				                    		<input type="radio" name="Payment" style="margin-top: 10px" ng-model="formData.Payment" value="1" required/> Cheque
 											<br/>
 											<input type="radio" name="Payment" ng-model="formData.Payment" value="2" required/> EFT
 				                    </div>

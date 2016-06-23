@@ -442,7 +442,7 @@
 						                    	nc-template-form="form.Payment"
 						                    	nc-label="Payment"
 						                    	nc-template-options-path="addShopAccountForm/Payment">
-						                    		<input type="radio" name="Payment" style="margin-top: 10px" ng-model="formData.Payment" value="1" disabled required/> Check
+						                    		<input type="radio" name="Payment" style="margin-top: 10px" ng-model="formData.Payment" value="1" disabled required/> Cheque
 													<br/>
 													<input type="radio" name="Payment" ng-model="formData.Payment" value="2" disabled required/> EFT
 						                    </div>
