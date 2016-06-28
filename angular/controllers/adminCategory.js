@@ -235,7 +235,9 @@ module.exports = function($scope, $rootScope, $uibModal, $timeout, common, Categ
 				var isUploading = function(images) {
 					var i = true;
 					_.forEach(images, function(e) {
-						i = i && (e.progress >= 100.0);
+						if(e.progress) {
+							i = i && (e.progress >= 100.0);
+						}
 					});
 					return !i;
 				}

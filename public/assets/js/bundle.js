@@ -2091,7 +2091,9 @@ module.exports = ["$scope", "$controller", "Product", "BrandService", "ImageServ
 	var isUploading = function(images) {
 		var i = true;
 		_.forEach(images, function(e) {
-			i = i && (e.progress >= 100.0);
+			if(e.progress) {
+				i = i && (e.progress >= 100.0);
+			}
 		});
 		return !i;
 	}
@@ -4221,7 +4223,9 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				var isUploading = function(images) {
 					var i = true;
 					_.forEach(images, function(e) {
-						i = i && (e.progress >= 100.0);
+						if(e.progress) {
+							i = i && (e.progress >= 100.0);
+						}
 					});
 					return !i;
 				}
@@ -7488,7 +7492,9 @@ module.exports = ["$scope", "$rootScope", "$uibModal", "$timeout", "common", "Ca
 				var isUploading = function(images) {
 					var i = true;
 					_.forEach(images, function(e) {
-						i = i && (e.progress >= 100.0);
+						if(e.progress) {
+							i = i && (e.progress >= 100.0);
+						}
 					});
 					return !i;
 				}
