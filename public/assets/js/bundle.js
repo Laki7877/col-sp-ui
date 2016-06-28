@@ -14523,14 +14523,14 @@ module.exports = ["$scope", "$window", "$filter", "$controller", "OrderService",
   // var app = angular.module('myApp', []);
 
   // app.controller('myCtrl', function($scope) {
-      JsBarcode("#code128", "DLN1605000001",{
+     /* JsBarcode("#code128", "DLN1605000001",{
         format: "code128",
         lineColor: "#000",
         width:2,
         height:50,
         displayValue: true,
         textAlign:"left"
-      });
+      });*/
       $scope.printToCart = function(printSectionId) {
           var innerContents = document.getElementById(printSectionId).innerHTML;
           var popupWinindow = window.open('', '_blank', 'scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
