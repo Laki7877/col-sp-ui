@@ -19338,17 +19338,14 @@ angular.module('nc')
 				scope.loading = false;
 				//update product list
 				scope.$watch('src.model', function(n, o) {
-					console.log(n,o);
 					if(_.isEmpty(scope.source)) {
 						scope.source = _.defaults(scope.source, {
 							Enabled: true,
 						});		
 					}
-					if(_.isNil(o)) return;
 					scope.source.Products = _.map(scope.src.model, function(e) {
 						return e.Pid;
 					});
-					console.log(scope.source);
 				}, true);
 				//changed product list naming by querying endpoint
 				scope.$watch('source', function(n, o) {
