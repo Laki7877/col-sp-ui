@@ -136,8 +136,7 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 			title: 'Requesting product export...'
 		};
 
-		// $("#export-product").modal('show');
-		$scope.confirmExportProducts();
+		$("#export-product").modal('show');
 	};
 
 	$scope.alert = new NcAlert();
@@ -150,21 +149,6 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 	}
 
 
-	function startIntervalCheck() {
-		exportProgressInterval = $interval(function () {
-			Product.exportProgress().then(function (result) {
-				$scope.exportAsyncDelegate.progress = result;
-				if (result >= 100) {
-					$interval.cancel(exportProgressInterval);
-					$scope.exportAsyncDelegate.endDate = new Date();
-				}
-			}, function () {
-				$interval.cancel(exportProgressInterval);
-				$scope.alert.error("An error has occurred while exporting products.");
-				$scope.exportAsyncDelegate.active = false;
-			});
-		}, 3000);
-	}
 
 	$scope.abortExport = function () {
 
@@ -177,39 +161,8 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 			});
 	}
 
-	//Ping server once for existing queue
-	Product.exportProgress().then(function (result) {
-		//If success
-		$scope.exportAsyncDelegate = {
-			active: true,
-			progress: result,
-			requestDate: new Date(),
-			endDate: null
-		}
-
-		if (result >= 100) {
-			$interval.cancel(exportProgressInterval);
-			$scope.exportAsyncDelegate.endDate = new Date();
-		} else {
-			startIntervalCheck();
-		}
-
-	}, function () {
-		$scope.exportAsyncDelegate = {
-			active: false,
-			progress: 0,
-			requestDate: null,
-			endDate: null
-		}
-	});
 
 	$scope.confirmExportProducts = function () {
-
-		$timeout(function() {
-			smoothScroll(document.body, {
-				container: null
-			});
-		}, 10);
 
 
 		var error = function (r) {
@@ -235,46 +188,45 @@ module.exports = function ($scope, Product, AttributeSet, NcAlert, $base64, $fil
 			body.AttributeSets = $scope.dataSet.attributeSets;
 		}
 
-		Product.export(body).then(function (result) {
-
-			$scope.exportAsyncDelegate = {
-				active: true,
-				progress: 0,
-				requestDate: new Date(),
-				endDate: null
-			}
-
-			$timeout(function(){
-				startIntervalCheck();
-			}, 5000);
-
-
+		Product.export(body).then(function (rx) {
+            var fileName = "ProductExport.csv";
+            $(".modal").modal('hide');
+            //modal-download-btn
+            var blobs = [];
+            blobs.push(rx);
+            var file = new Blob(blobs, { type: 'application/octet-stream' });
+            var fileURL = URL.createObjectURL(file);
+            if(window.navigator.msSaveOrOpenBlob){
+                window.navigator.msSaveOrOpenBlob(file, fileName);
+            }else{
+                saveAs(file, fileName);
+            }
 
 		}, error);
 	}
 
 
 	$scope.downloadFile = function () {
-		Product.exportGet().then(function (rx) {
-			var fileName = "ProductExport.csv";
-			var a = document.getElementById("export_download_btn");
-			var blobs = [];
-			blobs.push(rx);
-			var file = new Blob(blobs, { type: 'application/octet-stream' });
-			var fileURL = URL.createObjectURL(file);
-			$scope.exporter.href = fileURL;
-			$scope.exporter.download = fileName;
-			$scope.exporter.progress = 100;
+		// Product.exportGet().then(function (rx) {
+		// 	var fileName = "ProductExport.csv";
+		// 	var a = document.getElementById("export_download_btn");
+		// 	var blobs = [];
+		// 	blobs.push(rx);
+		// 	var file = new Blob(blobs, { type: 'application/octet-stream' });
+		// 	var fileURL = URL.createObjectURL(file);
+		// 	$scope.exporter.href = fileURL;
+		// 	$scope.exporter.download = fileName;
+		// 	$scope.exporter.progress = 100;
 
-			if(window.navigator.msSaveOrOpenBlob){
-				//Handle IE
-				window.navigator.msSaveOrOpenBlob(file, fileName);
-			}
-			else{
-				//File saver API
-				saveAs(file, fileName);
-			}
-		});
+		// 	if(window.navigator.msSaveOrOpenBlob){
+		// 		//Handle IE
+		// 		window.navigator.msSaveOrOpenBlob(file, fileName);
+		// 	}
+		// 	else{
+		// 		//File saver API
+		// 		saveAs(file, fileName);
+		// 	}
+		// });
 	}
 
 	$scope.lockAS = function () {
