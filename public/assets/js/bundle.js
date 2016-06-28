@@ -549,49 +549,49 @@ module.exports = {
 	ORDER_STATUS: [
 	{
 		name: 'Payment Pending',
-		value: 'PP',
+		value: 'Payment pending',
 		color: 'color-grey',
 		icon: 'fa-clock-o',
 		state: 0
 	},
 	{
 		name: 'Payment Confirmed',
-		value: 'PC',
+		value: 'Payment confirm',
 		color: 'color-grey',
 		icon: 'fa-check-circle-o',
 		state: 1
 	},
 	{
 		name: 'Processing',
-		value: 'PE',
+		value: 'Processing',
 		color: 'color-yellow',
 		icon: 'fa-check-circle-o',
 		state: 2
 	},
 	{
 		name: 'Ready to Ship',
-		value: 'RS',
+		value: 'Ready to ship',
 		color: 'color-green',
 		icon: 'fa-check-circle-o',
 		state: 3
 	},
 	{
 		name: 'Shipping',
-		value: 'SH',
+		value: 'Shipping',
 		color: 'color-green',
 		icon: 'fa-clock-o',
 		state: 4
 	},
 	{
 		name: 'Delivered',
-		value: 'DE',
+		value: 'Deliver',
 		color: 'color-green',
 		icon: 'fa-check-circle-o',
 		state: 5
 	},
 	{
 		name: 'Canceled',
-		value: 'CA',
+		value: 'Cancel',
 		color: 'color-red',
 		icon: 'fa-ban',
 		state: -1
@@ -14160,10 +14160,10 @@ module.exports = ["$scope", "$window", "$controller", "OrderService", "config", 
 				fn: function(arr, cb) {
 					// change status to PE
 					var result = _.compact(_.map(arr, function(e) {
-						if(e.Status == 'PC') {
+						if(e.Status == 'Payment confirm') {
 							return {
 								OrderId: e.OrderId,
-								Status: 'PE'
+								Status: 'Processing'
 							}
 						} else {
 							return null;
@@ -14191,7 +14191,7 @@ module.exports = ["$scope", "$window", "$controller", "OrderService", "config", 
 				name: 'Create Shipping List',
 				fn: function(arr, cb) {
 					var result = _.compact(_.map(arr, function(e) {
-						if(e.Status == 'RS') {
+						if(e.Status == 'Ready to ship') {
 							return e;
 						} else {
 							return null;
@@ -14238,28 +14238,28 @@ module.exports = ["$scope", "$window", "$controller", "OrderService", "config", 
 	}
 	//Acknowledge or ready-to-ship 
 	$scope.getButtonState = function(item) {
-		if(item.Status == 'PC') {
+		if(item.Status == 'Payment confirm') {
 			return {
 				text: 'Acknowledge',
 				disabled: false
 			}
 		}
-		if(item.Status == 'PE') {
+		if(item.Status == 'Processing') {
 			return {
 				text: 'Ready to Ship',
 				disabled: false
 			};
 		}
-		if(item.Status == 'PP') {
+		if(item.Status == 'Payment pending') {
 			return {
 				text: 'Acknowledge',
 				disabled: true
 			};
 		}
-		if(item.Status == 'RS' && item.ShippingType == 'Merchant Fleet')
+		if(item.Status == 'Ready to ship' && item.ShippingType == 'Merchant Fleet')
 		{
 			return {
-				text: 'Delivered',
+				text: 'Deliver',
 				disabled: false
 			};
 		}
@@ -14271,10 +14271,10 @@ module.exports = ["$scope", "$window", "$controller", "OrderService", "config", 
 	// multifunctional button
 	$scope.onButtonClick = function(item) {
 		//change to delivered on ready-to-ship
-		if(item.Status == 'RS' && item.ShippingType == 'Merchant Fleet') {
+		if(item.Status == 'Ready to ship' && item.ShippingType == 'Merchant Fleet') {
 			$scope.alert.close();
 			OrderService.update(item.OrderId, {
-				Status: 'DE',
+				Status: 'Deliver',
 				Carrier: item.Carrier,
 				InvoiceNumber: item.InvoiceNumber,
 				TrackingNumber: item.TrackingNumber
@@ -14308,7 +14308,12 @@ module.exports = ["$scope", "$window", "$filter", "$controller", "OrderService",
       id: 'OrderId',
       url: '/orders',
       item: 'Order',
-      service: OrderService
+      service: OrderService,
+      onLoad: function() {
+        OrderService.getOrderCarrier().then(function(data) {
+          $scope.carriers = data;
+        });
+      }
     }
   });
   //Generic save fn
@@ -14366,8 +14371,9 @@ module.exports = ["$scope", "$window", "$filter", "$controller", "OrderService",
         $uibModal.open({
             size: 'size-warning',
             templateUrl: 'order/modalReadyToShipMerchant',
-            controller: ["$scope", "$uibModalInstance", "NcAlert", function($scope, $uibModalInstance, NcAlert) {
+            controller: ["$scope", "$uibModalInstance", "NcAlert", "carriers", function($scope, $uibModalInstance, NcAlert, carriers) {
               'ngInject';
+              $scope.carriers = carriers;
               $scope.alert = new NcAlert();
               $scope.form = {};
               $scope.formData = {
@@ -14379,12 +14385,17 @@ module.exports = ["$scope", "$window", "$filter", "$controller", "OrderService",
               $scope.yes = function() {
                 $uibModalInstance.close($scope.formData);
               }
-            }]
+            }],
+            resolve: {
+              carriers: function() {
+                return $scope.carriers;
+              }
+            }
         }).result.then(function(data) {
           // get data from modal
           var o = {
            InvoiceNumber: $scope.formData.InvoiceNumber,
-           Status: 'ReadyToShip',
+           Status: 'Ready to ship',
            Products: $scope.formData.Products,
            TrackingNumber: data.TrackingNumber
           };
@@ -14408,7 +14419,7 @@ module.exports = ["$scope", "$window", "$filter", "$controller", "OrderService",
           // save to ready to ship
           save({
            InvoiceNumber: $scope.formData.InvoiceNumber,
-           Status: 'RS',
+           Status: 'Ready to ship',
            Products: $scope.formData.Products
           });
         });
@@ -27055,6 +27066,12 @@ module.exports = ["common", function(common) {
 		});
 		return data;
 	};
+	service.getOrderCarrier = function() {
+		return common.makeRequest({
+			method: 'GET',
+			url: '/Orders/Carriers'
+		});
+	}
 	return service;
 }]
 },{}],243:[function(require,module,exports){
@@ -30774,7 +30791,7 @@ module.exports = ["$templateCache", function($templateCache) {  'use strict';
 
 
   $templateCache.put('order/modalReadyToShipMerchant',
-    "<nc-alert nc-model=alert></nc-alert><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-20\"><div class=\"radio multiple-radio multiline\"><label><input type=radio name=IsOwnCarrier ng-model=formData.IsOwnCarrier ng-value=\"false\"> Merchant Own Fleet</label><label class=margin-top-10><input type=radio class=float-left name=IsOwnCarrier ng-model=formData.IsOwnCarrier ng-value=\"true\"><div class=float-left>Other Carrier <input class=\"form-control margin-top-5\" name=Carrier ng-model=formData.OtherCarrier ng-disabled=\"!formData.IsOwnCarrier\"></div></label></div><p class=margin-top-20>Tracking Number</p><input class=form-control ng-model=\"formData.TrackingNumber\"></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white\" ng-click=no()>Cancel</button> <button type=button class=\"btn btn-blue\" ng-click=yes()>Confirm</button></div></div></div>"
+    "<nc-alert nc-model=alert></nc-alert><div class=\"modal-body confirmation-modal no-margin\"><div class=row><div class=\"col-xs-12 margin-bottom-20\"><div class=\"radio multiple-radio multiline\"><label ng-repeat=\"carrier in carriers\" style=display:block><input type=radio name=Carrier ng-model=formData.Carrier ng-value=\"carrier\"> {{carrier.CarrierName}}</label><label><input type=radio class=float-left name=Carrier ng-model=formData.Carrier ng-value=\"{ CarrierId: 5, CarrierName: 'Other'}\"><div class=float-left>Other Carrier <input class=\"form-control margin-top-5\" name=OtherCarrier ng-model=formData.OtherCarrier ng-disabled=\"formData.Carrier.CarrierName != 'Other'\"></div></label></div><p class=margin-top-20>Tracking Url</p><input class=form-control ng-model=\"formData.TrackingUrl\"><p class=margin-top-20>Tracking Number</p><input class=form-control ng-model=\"formData.TrackingNumber\"></div><div class=\"confirmation-action no-margin\"><button type=button class=\"btn btn-white\" ng-click=no()>Cancel</button> <button type=button class=\"btn btn-blue\" ng-click=yes()>Confirm</button></div></div></div>"
   );
 
 

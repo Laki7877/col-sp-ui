@@ -212,49 +212,49 @@ module.exports = {
 	ORDER_STATUS: [
 	{
 		name: 'Payment Pending',
-		value: 'PP',
+		value: 'Payment pending',
 		color: 'color-grey',
 		icon: 'fa-clock-o',
 		state: 0
 	},
 	{
 		name: 'Payment Confirmed',
-		value: 'PC',
+		value: 'Payment confirm',
 		color: 'color-grey',
 		icon: 'fa-check-circle-o',
 		state: 1
 	},
 	{
 		name: 'Processing',
-		value: 'PE',
+		value: 'Processing',
 		color: 'color-yellow',
 		icon: 'fa-check-circle-o',
 		state: 2
 	},
 	{
 		name: 'Ready to Ship',
-		value: 'RS',
+		value: 'Ready to ship',
 		color: 'color-green',
 		icon: 'fa-check-circle-o',
 		state: 3
 	},
 	{
 		name: 'Shipping',
-		value: 'SH',
+		value: 'Shipping',
 		color: 'color-green',
 		icon: 'fa-clock-o',
 		state: 4
 	},
 	{
 		name: 'Delivered',
-		value: 'DE',
+		value: 'Deliver',
 		color: 'color-green',
 		icon: 'fa-check-circle-o',
 		state: 5
 	},
 	{
 		name: 'Canceled',
-		value: 'CA',
+		value: 'Cancel',
 		color: 'color-red',
 		icon: 'fa-ban',
 		state: -1

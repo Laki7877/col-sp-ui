@@ -3,16 +3,20 @@
 	<div class="row">
 		<div class="col-xs-12 margin-bottom-20">
             <div class="radio multiple-radio multiline">
-				<label>
-					<input type="radio" name="IsOwnCarrier" ng-model="formData.IsOwnCarrier" ng-value="false"/> Merchant Own Fleet
+				<label ng-repeat="carrier in carriers" style="display:block;">
+					<input type="radio" name="Carrier" ng-model="formData.Carrier" ng-value="carrier" />
+					{{carrier.CarrierName}}
 				</label>
-				<label class="margin-top-10">
-					<input type="radio" class="float-left" name="IsOwnCarrier" ng-model="formData.IsOwnCarrier" ng-value="true"/> 
+				<label>
+					<input type="radio" class="float-left" name="Carrier" ng-model="formData.Carrier" ng-value="{ CarrierId: 5, CarrierName: 'Other'}"/> 
 					<div class="float-left">Other Carrier
-						<input class="form-control margin-top-5" type="text" name="Carrier" ng-model="formData.OtherCarrier" ng-disabled="!formData.IsOwnCarrier"/>
+						<input class="form-control margin-top-5" type="text" name="OtherCarrier" ng-model="formData.OtherCarrier" ng-disabled="formData.Carrier.CarrierName != 'Other'"/>
 					</div>
 				</label>
 			</div>
+			<p class="margin-top-20">Tracking Url</p>
+			<input class="form-control" ng-model="formData.TrackingUrl"/>
+
 			<p class="margin-top-20">Tracking Number</p>
 			<input class="form-control" ng-model="formData.TrackingNumber"/>
 		</div>

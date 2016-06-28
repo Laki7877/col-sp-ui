@@ -30,7 +30,8 @@
     "karma-detect-browsers": "^2.1.0",
     "karma-ie-launcher": "^1.0.0",
     "load-grunt-tasks": "3.4.0",
-    "lodash": "4.0.1"
+    "lodash": "4.0.1",
+    "stripify": "^4.0.0"
   },
   "scripts": {
     "build": "grunt scripts",
