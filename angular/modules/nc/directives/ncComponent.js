@@ -57,9 +57,12 @@ angular.module('nc')
 							Enabled: true,
 						});		
 					}
-					scope.source.Products = _.map(scope.src.model, function(e) {
-						return e.Pid;
-					});
+					if(!_.isNil(n)) {
+						scope.source.Products = _.map(scope.src.model, function(e) {
+							return e.Pid;
+						});
+					}
+					console.log('products', scope.source.Products);
 				}, true);
 				//changed product list naming by querying endpoint
 				scope.$watch('source', function(n, o) {
@@ -68,19 +71,16 @@ angular.module('nc')
 							Enabled: true
 						});
 					}
-					else {
-						//query endpoint to load products by pid
-						if(scope.source.Products && scope.source.Products.length > 0) {
-							if(scope.source.Products.length > 0) {
-								scope.loading = true;
-								Product.advanceList({
-									_limit: scope.source.Products.length,
-									Pids: scope.source.Products
-								}).then(function(data) {
-									scope.loading = false;
-									scope.src.model = data.data;
-								});
-							}
+					if(scope.source.Products && scope.source.Products.length > 0) {
+						if(scope.source.Products.length > 0) {
+							scope.loading = true;
+							Product.advanceList({
+								_limit: scope.source.Products.length,
+								Pids: scope.source.Products
+							}).then(function(data) {
+								scope.loading = false;
+								scope.src.model = data.data;
+							});
 						}
 					}
 				});

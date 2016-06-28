@@ -123,7 +123,7 @@ module.exports = function($scope, ShopAppearanceService, Product, ImageService, 
 		//validate form
 		if($scope.form.$valid) {
 			$scope.saving = true;
-
+			console.log($scope.formData);
 			//update shop appearance
 			ShopAppearanceService.updateAll(ShopAppearanceService.serialize($scope.formData))
 				.then(function(data) {

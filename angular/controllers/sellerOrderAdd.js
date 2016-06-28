@@ -49,11 +49,11 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   };
   //Deliver button
   $scope.delivered = function() {
-    save({Status: 'DE'});
+    save({Status: 'Delivered'});
   };
   //Acknowledge btn
   $scope.acknowledge = function() {
-    save({Status: 'PE'});
+    save({Status: 'Acknowledge'});
   };
   //Is merchantfleet
   $scope.merchantFleet = function() {
@@ -88,7 +88,7 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
           // get data from modal
           var o = {
            InvoiceNumber: $scope.formData.InvoiceNumber,
-           Status: 'RS',
+           Status: 'ReadyToShip',
            Products: $scope.formData.Products,
            TrackingNumber: data.TrackingNumber
           };
@@ -127,7 +127,7 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
     util.confirm('Cancel Order', 'Are you sure you want to cancel this order?', 'Confirm', 'Cancel', 'btn-red').result.then(function() {
         $scope.saving = true;
         OrderService.update($scope.formData.OrderId, {
-          Status: 'CA'
+          Status: 'Cancel'
         })
         .then(function(data) {
           $scope.formData = OrderService.deserialize(data);

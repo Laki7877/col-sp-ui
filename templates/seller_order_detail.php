@@ -27,9 +27,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
           <div class="font-size-20">
             <span>Order ID {{formData.OrderId}}</span>
             <span print-hide>
-            <span class="margin-left-10 {{formData.Status | mapDropdown:status:'color'}}">
-              [<i class="fa {{formData.Status | mapDropdown:status:'icon'}}"></i> {{formData.Status | mapDropdown:status}}]
-            </span>
+            <span class="margin-left-10">[{{formData.Status}}]</span>
             </span>
           </div>
           <div class="color-dark-grey margin-top-5">

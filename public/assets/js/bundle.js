@@ -14345,11 +14345,11 @@ module.exports = ["$scope", "$window", "$filter", "$controller", "OrderService",
   };
   //Deliver button
   $scope.delivered = function() {
-    save({Status: 'DE'});
+    save({Status: 'Delivered'});
   };
   //Acknowledge btn
   $scope.acknowledge = function() {
-    save({Status: 'PE'});
+    save({Status: 'Acknowledge'});
   };
   //Is merchantfleet
   $scope.merchantFleet = function() {
@@ -14384,7 +14384,7 @@ module.exports = ["$scope", "$window", "$filter", "$controller", "OrderService",
           // get data from modal
           var o = {
            InvoiceNumber: $scope.formData.InvoiceNumber,
-           Status: 'RS',
+           Status: 'ReadyToShip',
            Products: $scope.formData.Products,
            TrackingNumber: data.TrackingNumber
           };
@@ -14423,7 +14423,7 @@ module.exports = ["$scope", "$window", "$filter", "$controller", "OrderService",
     util.confirm('Cancel Order', 'Are you sure you want to cancel this order?', 'Confirm', 'Cancel', 'btn-red').result.then(function() {
         $scope.saving = true;
         OrderService.update($scope.formData.OrderId, {
-          Status: 'CA'
+          Status: 'Cancel'
         })
         .then(function(data) {
           $scope.formData = OrderService.deserialize(data);
@@ -15020,7 +15020,7 @@ module.exports = ["$scope", "ShopAppearanceService", "Product", "ImageService", 
 		//validate form
 		if($scope.form.$valid) {
 			$scope.saving = true;
-
+			console.log($scope.formData);
 			//update shop appearance
 			ShopAppearanceService.updateAll(ShopAppearanceService.serialize($scope.formData))
 				.then(function(data) {
@@ -19343,9 +19343,12 @@ angular.module('nc')
 							Enabled: true,
 						});		
 					}
-					scope.source.Products = _.map(scope.src.model, function(e) {
-						return e.Pid;
-					});
+					if(!_.isNil(n)) {
+						scope.source.Products = _.map(scope.src.model, function(e) {
+							return e.Pid;
+						});
+					}
+					console.log('products', scope.source.Products);
 				}, true);
 				//changed product list naming by querying endpoint
 				scope.$watch('source', function(n, o) {
@@ -19354,19 +19357,16 @@ angular.module('nc')
 							Enabled: true
 						});
 					}
-					else {
-						//query endpoint to load products by pid
-						if(scope.source.Products && scope.source.Products.length > 0) {
-							if(scope.source.Products.length > 0) {
-								scope.loading = true;
-								Product.advanceList({
-									_limit: scope.source.Products.length,
-									Pids: scope.source.Products
-								}).then(function(data) {
-									scope.loading = false;
-									scope.src.model = data.data;
-								});
-							}
+					if(scope.source.Products && scope.source.Products.length > 0) {
+						if(scope.source.Products.length > 0) {
+							scope.loading = true;
+							Product.advanceList({
+								_limit: scope.source.Products.length,
+								Pids: scope.source.Products
+							}).then(function(data) {
+								scope.loading = false;
+								scope.src.model = data.data;
+							});
 						}
 					}
 				});
