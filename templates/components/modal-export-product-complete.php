@@ -20,7 +20,7 @@ $progress = "100";
 					</div>
 					<div class="confirmation-action no-margin">
 						<button class="btn btn-white" data-dismiss="modal">Cancel</button>
-						<button type="button" class="btn btn-blue">Download</button>
+						<a href="#" id="modal-download-btn" class="btn btn-blue">Download</a>
 					</div> <!-- end .col-xs-12 -->
 				</div> <!-- end .row -->
 			</div> <!-- end .modal-body -->
