@@ -181,4 +181,152 @@ angular.module('nc')
 				}
 			}
 		}
+	})
+
+	// image with links components
+	.directive('ncSmallBanner', function($templateCache) {
+		return {
+			restrict: 'E',
+			scope: {
+				source: '=',
+				title: '@',
+				letter: '@',
+				uploader: '=', //return promise
+				fail: '=',
+				size: '@',
+				notitle: '@?',
+				width: '=?',
+				height: '=?',
+				minWidth: '=?',
+				accept: '=?'
+			},
+			template: $templateCache.get('common/ncSmallBanner'),
+			link: function(scope) {
+				scope.$watch('source', function() {
+					if(_.isEmpty(scope.source)) {
+						scope.source = _.defaults(scope.source, {
+							Enabled: true
+						})
+					}
+				});
+				// acceptable file ext
+				scope.accept = scope.accept || '.jpg,.jpeg';
+				// validate by width height
+				scope.validate = function(f,w,h,i) {
+					if(scope.minWidth && scope.minWidth.length > i) {
+						return w == scope.minWidth[i];
+					}
+					else if(scope.width && scope.width.length > i) {
+						return w == scope.width[i] && h == scope.height[i];
+					} else {
+						return true;
+					}
+				}
+				// num of images
+				scope.$watch('size', function(d) {
+					if(scope.source && !scope.source.Images) {
+						scope.source.Images = [];
+						for (var i = 0; i < d; i++) {
+							scope.source.Images.push({
+								ImageEn: {},
+								ImageTh: {}
+							});
+						};
+					}
+				})
+				// on upload
+				scope.upload = function($file, image, $index, $ifile) {
+					if($ifile.length > 0) {
+						// check min width
+						if(!_.isNil(scope.minWidth)) {
+							scope.fail('ondimension', null, minWidth[$index], true);
+						}
+						else {
+							scope.fail('ondimension', null, [width[$index], height[$index]]);
+						}
+					} else {
+						//upload
+						scope.uploader.upload($file).then(function(data) {
+							image = _.extend(image, data.data);
+						}, function(err) {
+							scope.fail(err);
+						});
+					}
+				}
+			}
+		}
+	})
+
+	// image with links on mouse hover components
+	.directive('ncImageLinksHover', function($templateCache) {
+		return {
+			restrict: 'E',
+			scope: {
+				source: '=',
+				title: '@',
+				letter: '@',
+				uploader: '=', //return promise
+				fail: '=',
+				size: '@',
+				notitle: '@?',
+				width: '=?',
+				height: '=?',
+				minWidth: '=?',
+				accept: '=?'
+			},
+			template: $templateCache.get('common/ncImageLinksHover'),
+			link: function(scope) {
+				scope.$watch('source', function() {
+					if(_.isEmpty(scope.source)) {
+						scope.source = _.defaults(scope.source, {
+							Enabled: true
+						})
+					}
+				});
+				// acceptable file ext
+				scope.accept = scope.accept || '.jpg,.jpeg';
+				// validate by width height
+				scope.validate = function(f,w,h,i) {
+					if(scope.minWidth && scope.minWidth.length > i) {
+						return w == scope.minWidth[i];
+					}
+					else if(scope.width && scope.width.length > i) {
+						return w == scope.width[i] && h == scope.height[i];
+					} else {
+						return true;
+					}
+				}
+				// num of images
+				scope.$watch('size', function(d) {
+					if(scope.source && !scope.source.Images) {
+						scope.source.Images = [];
+						for (var i = 0; i < d; i++) {
+							scope.source.Images.push({
+								ImageEn: {},
+								ImageTh: {}
+							});
+						};
+					}
+				})
+				// on upload
+				scope.upload = function($file, image, $index, $ifile) {
+					if($ifile.length > 0) {
+						// check min width
+						if(!_.isNil(scope.minWidth)) {
+							scope.fail('ondimension', null, minWidth[$index], true);
+						}
+						else {
+							scope.fail('ondimension', null, [width[$index], height[$index]]);
+						}
+					} else {
+						//upload
+						scope.uploader.upload($file).then(function(data) {
+							image = _.extend(image, data.data);
+						}, function(err) {
+							scope.fail(err);
+						});
+					}
+				}
+			}
+		}
 	});

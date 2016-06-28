@@ -15,18 +15,19 @@
                         <input class="form-control width-field-large" name="URLKey" ng-model="formData.URLKey" ng-pattern="/^[^<>]+$/" maxlength="300" required />
                     </div>
                     <div nc-template="common/input/form-group-with-label" nc-label="Promotion Code" nc-template-form="formData.PromotionCode" nc-template-options-path="addBuy1Get1Form/PromotionCode">
-                        <input class="form-control width-field-large" name="PromotionCode" ng-model="formData.PromotionCode" ng-pattern="/^[^<>]+$/" maxlength="300" />
+                        <input class="form-control width-field-large" name="PromotionCode" ng-model="formData.PromotionCode" ng-pattern="/^[^<>]+$/" maxlength="300" disabled/>
                     </div>
                     <div nc-template="common/input/form-group-with-label" nc-label="Promotion Code Ref" nc-template-form="formData.PromotionCodeRef" nc-template-options-path="addBuy1Get1Form/PromotionCodeRef">
                         <input class="form-control width-field-large" name="PromotionCodeRef" ng-model="formData.PromotionCodeRef" ng-pattern="/^[^<>]+$/" maxlength="300" />
                     </div>
-                    <div nc-template="common/input/form-group-with-label" nc-label="Campaign ID" nc-template-form="formData.CampaignID" nc-template-options-path="addBuy1Get1Form/CampaignID">
+                    
+                    <!-- <div nc-template="common/input/form-group-with-label" nc-label="Campaign ID" nc-template-form="formData.CampaignID" nc-template-options-path="addBuy1Get1Form/CampaignID">
                         <input class="form-control width-field-large" name="CampaignID" ng-model="formData.CampaignID" ng-pattern="/^[^<>]+$/" maxlength="300" required />
                     </div>
                     <div nc-template="common/input/form-group-with-label" nc-label="Campaign Name" nc-template-form="formData.CampaignName" nc-template-options-path="addBuy1Get1Form/CampaignName">
                         <input class="form-control width-field-large" name="CampaignName" ng-model="formData.CampaignName" ng-pattern="/^[^<>]+$/" maxlength="300" />
-                    </div>
-
+                    </div> -->
+                    
                     <div nc-template="common/input/form-group-with-label" nc-label="Limit" nc-template-form="formData.Limit" nc-template-options-path="addBuy1Get1Form/Limit">
                         <input class="form-control width-field-large" name="Limit" ng-model="formData.Limit" ng-pattern-restrict="^[0-9]*$" maxlength="6" />
                     </div>
@@ -86,13 +87,26 @@
                 </div>
                 <div class="form-section-content">
                     <div nc-template="common/input/form-group-with-label" nc-label="Marketing Absorb" nc-template-options-path="PromotionForm/MarketingAbsorb">
-                        <input type="text" class="form-control" ng-model="formData.MarketingAbsorb" />
+                        <input class="form-control" ng-model="formData.MarketingAbsorb" ng-pattern-restrict="^[0-9]*$" ng-keyup="add()" min="0" max="100" required/>
                     </div>
                     <div nc-template="common/input/form-group-with-label" nc-label="Merchandise Absorb" nc-template-options-path="PromotionForm/MerchandiseAbsorb">
-                        <input type="text" class="form-control" ng-model="formData.MerchandiseAbsorb" />
+                        <input class="form-control" ng-model="formData.MerchandiseAbsorb" ng-pattern-restrict="^[0-9]*$" ng-keyup="add()" min="0" max="100"  required/>
                     </div>
                     <div nc-template="common/input/form-group-with-label" nc-label="Vendor Absorb" nc-template-options-path="PromotionForm/VendorAbsorb">
-                        <input type="text" class="form-control" ng-model="formData.VendorAbsorb" />
+                        <input class="form-control" ng-model="formData.VendorAbsorb" ng-pattern-restrict="^[0-9]*$" ng-keyup="add()" min="0" max="100"  required/>
+                    </div>
+                    <!-- total = {{formData.MarketingAbsorb + formData.MerchandiseAbsorb + formData.VendorAbsorb}} -->
+                    <div nc-template="common/input/form-group-with-label" ng-hide="formData">
+                        Result : <input type="number" class="form-control" ng-model="result" max="100"/>
+                    </div>
+                    <div nc-template="common/input/form-group-with-label" ng-show="result > 100">
+                        <div class="alert alert-danger" role="alert" align="center">Your absorb are over 100%</div>
+                    </div>
+                    <div nc-template="common/input/form-group-with-label" ng-show="result < 100">
+                        <div class="alert alert-warning" role="alert" align="center">Your absorb are lower 100%</div>
+                    </div>
+                    <div nc-template="common/input/form-group-with-label" ng-show="result == 100">
+                        <div class="alert alert-success" role="alert" align="center">Your absorb are 100%</div>
                     </div>
                 </div>
             </div>

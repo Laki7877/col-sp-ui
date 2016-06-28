@@ -22,7 +22,7 @@ if (! isset($border_class)) {
     <?php if(!isset($ignored)): ?>
     <div class="page-actions float-right">
 		<a class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</a>
-		<button class="btn btn-blue btn-width-xl" ng-click="save()" ng-class="<?= $class ?>">Save</button>
+		<button class="btn btn-blue btn-width-xl" ng-click="save()"  ng-show="result == 100" ng-class="<?= $class ?>">Save</button>
 	</div>
 	<?php endif;?>
 </div>

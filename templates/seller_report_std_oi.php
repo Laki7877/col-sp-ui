@@ -18,17 +18,19 @@
           	<th nc-sort="ReturnFee">Return Fee</th>
             <th nc-sort="RentalFee">Rental Fee</th>
             <th nc-sort="ServiceFee">Service Fee</th>
+            <th nc-sort="SKU">SKU</th>
         </tr>
         </thead>
         <tbody>
           <tr ng-repeat="row in list.data">
             <!-- <td class="checkbox-column"><nc-bulk-checkbox nc-model="row"></nc-bulk-checkbox></td> -->
-            <td class="width_200">{{row.CommissionFeeBySale}}</td>
-            <td class="width_200">{{row.PaymentFeeBySale}}</td>
-            <td class="width_200">{{row.LogisticsFee}}</td>
-            <td class="width_200">{{row.ReturnFee}}</td>
-            <td class="width_200">{{row.RentalFee}}</td>
-            <td class="width_200">{{row.ServiceFee}}</td>
+            <td class="width_150">{{row.CommissionFeeBySale}}</td>
+            <td class="width_150">{{row.PaymentFeeBySale}}</td>
+            <td class="width_150">{{row.LogisticsFee}}</td>
+            <td class="width_150">{{row.ReturnFee}}</td>
+            <td class="width_150">{{row.RentalFee}}</td>
+            <td class="width_150">{{row.ServiceFee}}</td>
+            <td class="width_150">{{row.SKU}}</td>
           </tr>
         </tbody>
       </table>

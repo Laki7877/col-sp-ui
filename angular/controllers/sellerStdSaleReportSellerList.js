@@ -3,6 +3,7 @@ module.exports = function ($scope, $controller, StdReportSaleService, config, ut
     'ngInject';
     $scope.formData = {
         PID: null,
+        SKU: null,
         Brands: null,
         ItemStatus: null,
         GlobalCategoryId: null,
@@ -68,6 +69,7 @@ module.exports = function ($scope, $controller, StdReportSaleService, config, ut
         $scope.formData.ItemStatus = null;
         $scope.formData.OrderDateFrom = new Date(new Date().setDate(new Date().getDate() - 30));
         $scope.formData.OrderDateTo = new Date();
+        $scope.formData.SKU = null;
 
     };
 

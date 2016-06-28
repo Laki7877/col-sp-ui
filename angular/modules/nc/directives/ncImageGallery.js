@@ -1,3 +1,5 @@
+
+
 /**
  * Image gallery
  */
@@ -49,7 +51,7 @@ angular.module('nc')
 					scope.source = _.defaults(scope.source, { 
 						Enabled: true,
 						ImageEn: [],
-						Links:[] 
+						Links: [] 
 					});
 				});
 				scope.$watch('source.ImageEn', updateSource, true);

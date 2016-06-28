@@ -22,7 +22,7 @@ require('angular-animate')
 require('angular-base64')
 require('angular-bootstrap-datetimepicker')
 require('angular-chart.js')
-// require('angular-clipboard')
+require('angular-clipboard')
 require('angular-cookies')
 require('angular-file-upload')
 require('angular-input-masks')
@@ -45,9 +45,9 @@ require('./modules/angular-scroll')
 require('./modules/angular-draggable')
 require('./modules/nc')
 require('./modules/product-detail')
-// require('./modules/schematics')
+require('./modules/schematics')
 require('./modules/ume-select')
-
+require('./modules/widget')
 
 String.prototype.startsWith = String.prototype.startsWith || function() {
 
@@ -63,9 +63,10 @@ var filters = bulk.filters;
 var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   'nc', 'ui.bootstrap.datetimepicker', 'ngDraggable',
   'duScroll', 'smoothScroll', 'ngSanitize', 'ngAnimate',
-  'angularFileUpload', 'ui.tree', 'ui.select',
-  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload', 'AngularPrint', 'ui.utils.masks', 'umeSelect',
-  'ui.sortable',
+  'angularFileUpload', 'angular-clipboard', 'ui.tree', 'ui.select',
+  'ui.bootstrap', 'base64', 'ngCookies', 'chart.js', 'productDetail', 'ngFileUpload',
+  'schematics', 'AngularPrint', 'ui.utils.masks', 'umeSelect',
+  'ui.sortable', 'widget',
   'dndLists'
 ])
 
@@ -331,4 +332,4 @@ var app = angular.module('colspApp', ['ngPatternRestrict', 'dndLists',
   .controller('SellerCMSCategoryListCtrl', controllers.sellerCMSCategoryList)
   .controller('SellerCMSCategoryAddCtrl', controllers.sellerCMSCategoryAdd)
 
-
+  .controller('SellerBrandCtrl', controllers.sellerBrand)

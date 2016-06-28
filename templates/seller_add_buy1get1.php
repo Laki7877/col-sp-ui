@@ -39,7 +39,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Buy 1 Ge
                 <div class="container-fluid">
                     <div class="float-right">
                         <button class="btn btn-white btn-width-xl" ng-click="cancel()">Cancel</button>
-                        <button class="btn btn-blue btn-width-xl" ng-click="save()">Save</button>
+                        <button class="btn btn-blue btn-width-xl" ng-click="save()" ng-show="result == 100">Save</button>
                     </div>
                 </div>
             </div>

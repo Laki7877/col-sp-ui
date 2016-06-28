@@ -1,0 +1,43 @@
+<form>
+    <div class="form-group">
+        <label class='control-label'>Image Header</label>
+        <!-- <input type='text' ng-model="imgHeader" validator="[required]"> -->
+        <div class="col-lg-12">
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="imgHeader" placeholder="Your image URL...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" data-toggle="modal" data-target="#myImgH" data-backdrop="false"><span class="glyphicon glyphicon-open"></span></button>
+                </span>
+
+                <!-- Modal -->
+                <div id="myImgH" class="modal modal-wide fade" role="dialog">
+                    <div class="modal-dialog" style="width: 90%">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Upload Image</h4>
+                            </div>
+                            <div class="modal-body" style="margin:3px;">
+                                <div class="row">
+                                
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /Modal -->
+
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-12 -->
+    </div>
+
+    <hr/>
+    <div class='form-group'>
+        <input type='submit' ng-click="popover.save($event)" class='btn btn-primary' value='Save'/>
+        <input type='button' ng-click="popover.cancel($event)" class='btn btn-default' value='Cancel'/>
+        <input type='button' ng-click="popover.remove($event)" class='btn btn-danger' value='Delete'/>
+    </div>
+</form>

@@ -363,6 +363,102 @@
 						            		 	size="2">
 						            		 </nc-textareas>
 						            	</div>
+						            	<div ng-switch-when="4">
+						            		<nc-image-links
+						            			source="formData.Data.A_Image"
+						            			letter="A"
+						            			title="Top Menu 1"
+						            			uploader="uploader"
+						            			fail="uploadFail"
+						            			size="1">
+						            		</nc-image-links>
+						            		<nc-image-banner-link
+						            			source="formData.Data.B_Banner"
+						            		 	letter="B"
+						            		 	letterx="B1"
+						            		 	title="Banner 1"
+						            		 	uploader="uploader" 
+						            		 	size="8" 
+						            		 	width="1140" 
+						            		 	height="640" 
+						            		 	fail="uploadFail">
+						            		</nc-image-banner-link>
+						            		<nc-image-links-hover
+						            			source="formData.Data.C_Image"
+						            			letter="C"
+						            			title="Sub Banner 1"
+						            			uploader="uploader"
+						            			fail="uploadFail"
+						            			width="[750,360,360,360]"
+						            			height="[218,218,218,488]"
+						            			size="4">
+						            		</nc-image-links-hover>
+						            		<nc-title-view
+						            			source="formData.Data.D_Title"
+						            			letter="D"
+						            			letterx="D1"
+						            			refresh="getCategories"
+						            			categories="categories"
+						            			title="Title Head">
+						            		</nc-title-view>
+						            		<nc-image-links-hover
+						            			source="formData.Data.E_Image"
+						            			letter="E"
+						            			title="Sub Banner 2"
+						            			uploader="uploader"
+						            			fail="uploadFail"
+						            			width="[404,416,416]"
+						            			height="[488,218,218]"
+						            			size="3">
+						            		</nc-image-links-hover>
+						            		<nc-small-banner 
+						            			source="formData.Data.F_SmallBanner"
+						            			letter="F"
+						            			title="Side Banner 1"
+						            			uploader="uploader"
+						            			fail="uploadFail"
+						            			width="[262,262,262,262,262,262,262,262]"
+						            			height="[102,102,102,102,102,102,102,102]"
+						            			size="8">
+						            		</nc-small-banner>
+						            		<nc-image-banner-link
+						            			source="formData.Data.G_Banner"
+						            		 	letter="G"
+						            		 	letterx="G1"
+						            		 	title="Sub Banner 1"
+						            		 	uploader="uploader" 
+						            		 	size="1" 
+						            		 	width="1140" 
+						            		 	height="300" 
+						            		 	accept="'.jpg,.jpeg,.png'"
+						            		 	fail="uploadFail"
+						            		 	noauto="true">
+						            		 </nc-image-banner-link>
+						            		<nc-title-view
+						            			source="formData.Data.H_Title"
+						            			letter="H"
+						            			letterx="H1"
+						            			title="Title Head 2">
+						            		</nc-title-view>
+						            		<nc-image-banner-icon
+						            			source="formData.Data.I_Icon"
+						            		 	letter="I"
+						            		 	letterx="I1"
+						            		 	title="Social Network Icons"
+						            		 	uploader="uploader" 
+						            		 	size="8" 
+						            		 	width="64" 
+						            		 	height="64" 
+						            		 	fail="uploadFail"
+						            		 	subtitle="Icon Type">
+						            		 </nc-image-banner-icon>
+						            		 <nc-textareas
+						            		 	source="formData.Data.J_Textarea"
+						            		 	letter="J"
+						            		 	title="Footer Text"
+						            		 	size="2">
+						            		 </nc-textareas>
+						            	</div>
 						            	<div ng-switch-default>
 						            	</div>
 						            </div>

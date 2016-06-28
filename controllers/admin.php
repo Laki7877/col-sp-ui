@@ -326,4 +326,12 @@ class AdminController extends Controller
     {
         return View::render('admin_sum_skunoteffective');
     }
+
+	
+	// Local Brands
+	public static function localBrands() 
+    {
+		return View::render('seller_brands');
+    }
+
 }

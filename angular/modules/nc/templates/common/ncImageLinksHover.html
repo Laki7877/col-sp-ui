@@ -1,0 +1,92 @@
+<div class="form-section">
+	<div class="form-section-header">
+		<h2><input type="checkbox" style="margin-right: 10px" ng-model="source.Enabled"/>{{letter}}.) {{title}}</h2>
+	</div>
+	<div class="form-section-content padding-left-15 padding-right-15" ng-if="source.Enabled">
+        <div ng-repeat="image in source.Images track by $index">
+            <div class="form-group">
+                <div class="width-label"><label class="control-label">{{letter}}{{$index+1}} Caption (Eng)</label></div>
+                <div class="width-field-normal">
+                    <input type="text" class="form-control" ng-model="image.CaptionEn" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="width-label"><label class="control-label">{{letter}}{{$index+1}} Caption (ไทย)</label></div>
+                <div class="width-field-normal">
+                    <input type="text" class="form-control" ng-model="image.CaptionTh" />
+                </div>
+            </div>
+            <div nc-template="common/input/form-group-with-label"
+                nc-label="{{letter}}{{$index+1}} Image (Eng)"
+                class="margin-top-5">
+                  <div>
+                    <button
+                    type="button"
+                    class="btn btn-default"
+                    ngf-accept="accept"
+                    ngf-select="upload($file, image.ImageEn, $index, $invalidFiles)"
+                    ngf-dimensions="validate($file, $width, $height, $index)"
+                    >Choose File</button>
+                  </div>
+                  <div ng-if="width && width.length > $index">{{width[$index]}}x{{height[$index]}} pixels</div>
+                  <div ng-if="minWidth && minWidth.length > $index">width must be equal to {{minWidth[$index]}} pixels</div>
+            </div>
+            <div ng-show="image.ImageEn.Url"
+                nc-template="common/input/form-group-with-label"
+                nc-label="Preview">
+                  <img ng-src="{{image.ImageEn.Url}}" width="160" />
+            </div>
+            <div nc-template="common/input/form-group-with-label"
+                nc-label="{{letter}}{{$index+1}} Image (ไทย)">
+                  <div>
+                    <button
+                    type="button"
+                    class="btn btn-default"
+                    ngf-accept="accept"
+                    ngf-select="upload($file, image.ImageTh, $index, $invalidFiles)"
+                    ngf-dimensions="validate($file, $width, $height, $index)"
+                    >Choose File</button>
+                  </div>
+                  <div ng-if="width && width.length > $index">{{width[$index]}}x{{height[$index]}} pixels</div>
+                  <div ng-if="minWidth && minWidth.length > $index">width must be equal to {{minWidth[$index]}}</div>
+            </div>
+            <div ng-show="image.ImageTh.Url"
+                nc-template="common/input/form-group-with-label"
+                nc-label="Preview">
+                  <img ng-src="{{image.ImageTh.Url}}" width="160" />
+            </div>
+            <div class="form-group">
+                <div class="width-label"><label class="control-label">{{letter}}{{$index+1}} Link</label></div>
+                <div class="width-field-normal">
+                    <input type="text" class="form-control" ng-model="image.Link" />
+                    <span class="help-block color-grey">Example: https//www.thecentral.co.th</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="width-label"><label class="control-label">{{letter}}{{$index+1}} On Mouse Hover Text 1 (Eng)</label></div>
+                <div class="width-field-normal">
+                    <input type="text" class="form-control" ng-model="image.OnHoverEn1" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="width-label"><label class="control-label">{{letter}}{{$index+1}} On Mouse Hover Text 2 (Eng)</label></div>
+                <div class="width-field-normal">
+                    <input type="text" class="form-control" ng-model="image.OnHoverEn2" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="width-label"><label class="control-label">{{letter}}{{$index+1}} On Mouse Hover Text 1 (ไทย)</label></div>
+                <div class="width-field-normal">
+                    <input type="text" class="form-control" ng-model="image.OnHoverTh1" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="width-label"><label class="control-label">{{letter}}{{$index+1}} On Mouse Hover Text 2 (ไทย)</label></div>
+                <div class="width-field-normal">
+                    <input type="text" class="form-control" ng-model="image.OnHoverTh2" />
+                </div>
+            </div>
+            <hr>
+        </div>
+	</div>
+</div>

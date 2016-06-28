@@ -1,0 +1,13 @@
+<form>
+     <div class="form-group">
+        <label class='control-label'>URL</label>
+        <input type='text' ng-model="url" class='form-control'/>
+    </div>
+
+    <hr/>
+    <div class='form-group'>
+        <input type='submit' ng-click="popover.save($event)" class='btn btn-primary' value='Save'/>
+        <input type='button' ng-click="popover.cancel($event)" class='btn btn-default' value='Cancel'/>
+        <input type='button' ng-click="popover.remove($event)" class='btn btn-danger' value='Delete'/>
+    </div>
+</form>

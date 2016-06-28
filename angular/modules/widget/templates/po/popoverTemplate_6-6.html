@@ -1,0 +1,160 @@
+<form>
+    <div class="form-group">
+        <label class='control-label'>Label</label>
+        <input type='text' ng-model="label" validator="[required]" class='form-control'/>
+    </div>
+
+    <div class="form-group">
+        <label class='control-label'>Type</label>
+        <select class='form-control' ng-model='typeForm'>
+            <option value="">---Please select---</option>
+            <option value="img">Image</option>
+            <option value="pid">PID</option>
+        </select>
+    </div>
+
+    <div class="input-group" ng-show="typeForm=='img'">
+        <label class='control-label'>Image Left</label>
+        <div class="col-lg-12">
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="imgL" placeholder="Your image URL..." disabled>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" data-toggle="modal" data-target="#myImgL" data-backdrop="false"><span class="glyphicon glyphicon-open"></span></button>
+                </span>
+
+                <!-- Modal -->
+                <div id="myImgL" class="modal modal-wide fade" role="dialog">
+                    <div class="modal-dialog" style="width: 90%">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Upload Image</h4>
+                            </div>
+                            <div class="modal-body" style="margin:3px;">
+                                <div class="row">
+                                    
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /Modal -->
+
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-12 -->
+    </div>
+    <div class="form-group" ng-show="typeForm=='img'">
+        <label class='control-label'>Image Right</label>
+        <!-- <input type='text' ng-model="imgR" class='form-control'/> -->
+        <div class="col-lg-12">
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="imgR" placeholder="Your image URL..." disabled>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" data-toggle="modal" data-target="#myImgR" data-backdrop="false"><span class="glyphicon glyphicon-open"></span></button>
+                </span>
+
+                <!-- Modal -->
+                <div id="myImgR" class="modal modal-wide fade" role="dialog">
+                    <div class="modal-dialog" style="width: 90%">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Upload Image</h4>
+                            </div>
+                            <div class="modal-body" style="margin:3px;">
+                                <div class="row">
+                                
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /Modal -->
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-12 -->
+    </div>
+
+    <div class="form-group" ng-show="typeForm=='pid'">
+        <label class='control-label'>PID Image Left</label>
+        <!-- <input type='text' ng-model="imgPIDL" class='form-control'/> -->
+        <div class="col-lg-12">
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="imgL" placeholder="Your image URL..." disabled>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" data-toggle="modal" data-target="#myImgLI" data-backdrop="false"><span class="glyphicon glyphicon-open"></span></button>
+                </span>
+
+                <!-- Modal -->
+                <div id="myImgLI" class="modal modal-wide fade" role="dialog">
+                    <div class="modal-dialog" style="width: 90%">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Upload Image</h4>
+                            </div>
+                            <div class="modal-body" style="margin:3px;">
+                                <div class="row">
+                                
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /Modal -->
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-12 -->
+    </div>
+    <div class="form-group" ng-show="typeForm=='pid'">
+        <label class='control-label'>PID Image Right</label>
+        <!-- <input type='text' ng-model="imgPIDR" class='form-control'/> -->
+        <div class="col-lg-12">
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="imgR" placeholder="Your image URL..." disabled>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" data-toggle="modal" data-target="#myImgRI" data-backdrop="false"><span class="glyphicon glyphicon-open"></span></button>
+                </span>
+
+                <!-- Modal -->
+                <div id="myImgRI" class="modal modal-wide fade" role="dialog">
+                    <div class="modal-dialog" style="width: 90%">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Upload Image</h4>
+                            </div>
+                            <div class="modal-body" style="margin:3px;">
+                                <div class="row">
+                                
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /Modal -->
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-12 -->
+    </div>
+
+    <div class="form-group">
+        <label class='control-label'>Padding</label>
+        <input type='range' ng-model="paddingFBLR" validator="[required]" min="0" max="15">
+    </div>
+    <hr/>
+    <div class='form-group'>
+        <input type='submit' ng-click="popover.save($event)" class='btn btn-primary' value='Save'/>
+        <input type='button' ng-click="popover.cancel($event)" class='btn btn-default' value='Cancel'/>
+        <input type='button' ng-click="popover.remove($event)" class='btn btn-danger' value='Delete'/>
+    </div>
+</form>

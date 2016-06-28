@@ -189,6 +189,8 @@ Route::add('/admin/summary/productonweb', 'AdminController::sumProductOnWeb');
 Route::add('/admin/summary/skueffective', 'AdminController::sumSKUEffective');
 Route::add('/admin/summary/skunoteffective', 'AdminController::sumSKUNotEffective');
 
+// Local Brands
+Route::add('/admin/brand/local', 'AdminController::localBrands');
 
 //test route
 Route::add('/test/:name', 'TestController::any');

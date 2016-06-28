@@ -18,10 +18,10 @@ module.exports = function($scope, $window, $controller, OrderService, config, st
 				fn: function(arr, cb) {
 					// change status to PE
 					var result = _.compact(_.map(arr, function(e) {
-						if(e.Status == 'Payment confirm') {
+						if(e.Status == 'PC') {
 							return {
 								OrderId: e.OrderId,
-								Status: 'Processing'
+								Status: 'PE'
 							}
 						} else {
 							return null;
@@ -49,7 +49,7 @@ module.exports = function($scope, $window, $controller, OrderService, config, st
 				name: 'Create Shipping List',
 				fn: function(arr, cb) {
 					var result = _.compact(_.map(arr, function(e) {
-						if(e.Status == 'Ready to ship') {
+						if(e.Status == 'RS') {
 							return e;
 						} else {
 							return null;
@@ -96,28 +96,28 @@ module.exports = function($scope, $window, $controller, OrderService, config, st
 	}
 	//Acknowledge or ready-to-ship 
 	$scope.getButtonState = function(item) {
-		if(item.Status == 'Payment confirm') {
+		if(item.Status == 'PC') {
 			return {
 				text: 'Acknowledge',
 				disabled: false
 			}
 		}
-		if(item.Status == 'Processing') {
+		if(item.Status == 'PE') {
 			return {
 				text: 'Ready to Ship',
 				disabled: false
 			};
 		}
-		if(item.Status == 'Payment pending') {
+		if(item.Status == 'PP') {
 			return {
 				text: 'Acknowledge',
 				disabled: true
 			};
 		}
-		if(item.Status == 'Ready to ship' && item.ShippingType == 'Merchant Fleet')
+		if(item.Status == 'RS' && item.ShippingType == 'Merchant Fleet')
 		{
 			return {
-				text: 'Deliver',
+				text: 'Delivered',
 				disabled: false
 			};
 		}
@@ -129,10 +129,10 @@ module.exports = function($scope, $window, $controller, OrderService, config, st
 	// multifunctional button
 	$scope.onButtonClick = function(item) {
 		//change to delivered on ready-to-ship
-		if(item.Status == 'Ready to ship' && item.ShippingType == 'Merchant Fleet') {
+		if(item.Status == 'RS' && item.ShippingType == 'Merchant Fleet') {
 			$scope.alert.close();
 			OrderService.update(item.OrderId, {
-				Status: 'Deliver',
+				Status: 'DE',
 				Carrier: item.Carrier,
 				InvoiceNumber: item.InvoiceNumber,
 				TrackingNumber: item.TrackingNumber

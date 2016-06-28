@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="/assets/libs/selectize/dist/css/selectize.default.css"/>
     <link rel="stylesheet" href="<?=$this->asset('/assets/css/screen.css')?>" />
     <link rel="stylesheet" href="<?=$this->asset('/assets/libs/angular-bootstrap-datetimepicker/datetimepicker.css')?>" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/angular-widget.css">
+    
     <script src="<?= $this->asset('/assets/js/jquery.min.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/jquery.rest.js') ?>"></script>
     <script src="<?= $this->asset('/assets/js/bundle.js') ?>"></script>

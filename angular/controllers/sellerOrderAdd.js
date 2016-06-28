@@ -12,12 +12,7 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
       id: 'OrderId',
       url: '/orders',
       item: 'Order',
-      service: OrderService,
-      onLoad: function() {
-        OrderService.getOrderCarrier().then(function(data) {
-          $scope.carriers = data;
-        });
-      }
+      service: OrderService
     }
   });
   //Generic save fn
@@ -75,9 +70,8 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
         $uibModal.open({
             size: 'size-warning',
             templateUrl: 'order/modalReadyToShipMerchant',
-            controller: function($scope, $uibModalInstance, NcAlert, carriers) {
+            controller: function($scope, $uibModalInstance, NcAlert) {
               'ngInject';
-              $scope.carriers = carriers;
               $scope.alert = new NcAlert();
               $scope.form = {};
               $scope.formData = {
@@ -89,17 +83,12 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
               $scope.yes = function() {
                 $uibModalInstance.close($scope.formData);
               }
-            },
-            resolve: {
-              carriers: function() {
-                return $scope.carriers;
-              }
             }
         }).result.then(function(data) {
           // get data from modal
           var o = {
            InvoiceNumber: $scope.formData.InvoiceNumber,
-           Status: 'Ready to ship',
+           Status: 'ReadyToShip',
            Products: $scope.formData.Products,
            TrackingNumber: data.TrackingNumber
           };
@@ -123,7 +112,7 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
           // save to ready to ship
           save({
            InvoiceNumber: $scope.formData.InvoiceNumber,
-           Status: 'Ready to ship',
+           Status: 'RS',
            Products: $scope.formData.Products
           });
         });

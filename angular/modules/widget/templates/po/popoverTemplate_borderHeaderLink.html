@@ -1,0 +1,46 @@
+<form>
+    <div class="form-group">
+        <label class='control-label'>Label</label>
+        <input type='text' ng-model="label" validator="[required]" class='form-control'/>
+    </div>
+    <div class="form-group">
+        <label class='control-label'>Link</label>
+        <input type='text' ng-model="url" validator="[required]" class='form-control'/>
+    </div>
+    <div class="form-group">
+        <label class='control-label'>Font Size</label>
+        <input type='range' ng-model="size" validator="[required]" min="20" max="44">
+    </div>
+    <div class="form-group">
+        <label class='control-label'>Font Color</label>
+        <input type="color" ng-model="boxColor" validator="[required]" class='form-control'>
+    </div>
+    <!-- <div class="form-group">
+        <label class='control-label'>Backgound</label>
+        <input type="color" ng-model="boxBackground" validator="[required]" class='form-control'>
+    </div> -->
+    <div class="form-group" ng-if="validationOptions.length > 0">
+        <label class='control-label'>Text Align</label>
+        <select ng-model="$parent.validation" class='form-control' validator="[required]" ng-options="option.rule as option.label for option in validationOptions"></select>
+    </div>
+    <div class="form-group">
+        <label class='control-label'>Border Size</label>
+        <input type='range' ng-model="borderSize" validator="[required]" min="0" max="4">
+    </div>
+
+    <!-- <div class="form-group">
+        <label class='control-label'>Border color</label>
+        <input type="color" ng-model="borderColor" validator="[required]" class='form-control'>
+    </div> -->
+
+    <div class="form-group">
+        <label class='control-label'>Padding</label>
+        <input type='range' ng-model="paddingFBLR" validator="[required]" min="10" max="35">
+    </div>
+    <hr/>
+    <div class='form-group'>
+        <input type='submit' ng-click="popover.save($event)" class='btn btn-primary' value='Save'/>
+        <input type='button' ng-click="popover.cancel($event)" class='btn btn-default' value='Cancel'/>
+        <input type='button' ng-click="popover.remove($event)" class='btn btn-danger' value='Delete'/>
+    </div>
+</form>

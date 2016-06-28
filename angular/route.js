@@ -73,7 +73,9 @@ var admin = {
 		'Brands|margin-top-30': ['/admin/brands', '/admin/brands/add'],
 		'Attributes': ['/admin/attributes', '/admin/attributes/add'],
 		'Attribute Sets': ['/admin/attributesets', '/admin/attributesets/add'],
-		'Global Category': '/admin/categories'
+		'Global Category': '/admin/categories',
+
+		'Local Brands|margin-top-30': '/admin/brand/local'
 	},
 	'Accounts|fa-user': {
 		'Seller Accounts': '/admin/sellers',

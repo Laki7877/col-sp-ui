@@ -8,6 +8,7 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
 
     $scope.loading      = false;
     $scope.isEmpty      = true;
+    $scope.sumAbsorb    = 0;
     //$scope.products     = [];
     //$scope.categorys    = [];
 
@@ -701,4 +702,29 @@ module.exports = function ($scope, $controller, Buy1Get1Service, config, $uibMod
         }
     });
 
+
+    // function  sumAbsorb(){
+    //     $scope.parseInt = parseInt;
+    //     var total = 0;
+    //     $scope.sumAbsorb =    parseInt(formData.MarketingAbsorb) + parseInt(formData.MerchandiseAbsorb) + parseInt(formData.VendorAbsorb);
+    // }
+
+    $scope.add = function(){
+        $scope.parseInt = parseInt;
+        $scope.result = parseInt($scope.formData.MarketingAbsorb) + parseInt($scope.formData.MerchandiseAbsorb) + parseInt($scope.formData.VendorAbsorb);
+        if ($scope.result > 100) {
+            // alert("เกินแล้ว");
+            // $scope.formData.MarketingAbsorb = 0;
+            // $scope.formData.MerchandiseAbsorb = 0;
+            // $scope.formData.VendorAbsorb = 0;
+            return;
+        }else if($scope.result == 100){
+            return $scope.result;
+        }   
+
+        if ($scope.result < 100) {
+            return;
+        }
+        
+    };
 };

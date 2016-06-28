@@ -9,11 +9,5 @@ module.exports = function(common) {
 		});
 		return data;
 	};
-	service.getOrderCarrier = function() {
-		return common.makeRequest({
-			method: 'GET',
-			url: '/Orders/Carriers'
-		});
-	}
 	return service;
 }
