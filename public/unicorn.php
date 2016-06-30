@@ -46,7 +46,7 @@ class Route
 			{
 				$param = substr($t, 1);
 				$params[] = $param;
-				$t = '([\w]+)';
+				$t = '([\w\-]+)';
 			}
 		}
 

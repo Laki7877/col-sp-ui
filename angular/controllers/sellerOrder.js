@@ -96,33 +96,28 @@ module.exports = function($scope, $window, $controller, OrderService, config, st
 	}
 	//Acknowledge or ready-to-ship 
 	$scope.getButtonState = function(item) {
-		if(item.Status == 'PC') {
+		if(item.Status == 'New') {
 			return {
 				text: 'Acknowledge',
 				disabled: false
 			}
 		}
-		if(item.Status == 'PE') {
-			return {
-				text: 'Ready to Ship',
-				disabled: false
-			};
-		}
-		if(item.Status == 'PP') {
+		if(item.ShippingType == 'BUFullfillAndDeliveryBySup')
+		{
 			return {
 				text: 'Acknowledge',
 				disabled: true
 			};
 		}
-		if(item.Status == 'RS' && item.ShippingType == 'Merchant Fleet')
+		if(item.Status == 'Processing') 
 		{
 			return {
-				text: 'Delivered',
+				text: 'Ready to Ship',
 				disabled: false
 			};
 		}
 		return {
-			text: 'Ready to Ship',
+			text: 'Acknowledge',
 			disabled: true
 		};
 	};

@@ -8,11 +8,11 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
     <nc-page-title nc-title="{{title}}" link="{{url}}" icon="fa-inbox">
       <span class="float-right page-header-action">
         <button class="btn btn-white btn-width-xl" ng-click="cancel()">Close</a>
-        <button ng-if="getState() == 2 || getState() == 3" class="btn btn-white btn-width-xxl  margin-left-10" print-btn>Print Shipping Label</button>
+        <button ng-if="(getState() == 2 || getState() == 3) && !BUFullfillAndDeliveryBySup()" class="btn btn-white btn-width-xxl  margin-left-10" print-btn>Print Shipping Label</button>
         <button ng-if="$root.permit(31) && getState() == 1" class="btn btn-blue btn-width-xl margin-left-10" ng-click="acknowledge()">Acknowledge</button>
-        <button ng-if="$root.permit(31) && getState() == 2" class="btn btn-blue btn-width-xxl margin-left-10" ng-click="readyShip()">Ready to Ship</button>
-        <button ng-if="$root.permit(31) && getState() >= 3" class="btn btn-blue btn-width-xl margin-left-10" ng-click="save()">Save</button>
-        <button ng-if="$root.permit(31) && getState() == 3 && merchantFleet()" class="btn btn-blue btn-width-xl margin-left-10" ng-click="delivered()">Delivered</button>
+        <button ng-if="$root.permit(31) && getState() == 2 && !BUFullfillAndDeliveryBySup()" class="btn btn-blue btn-width-xxl margin-left-10" ng-click="readyShip()">Ready to Ship</button>
+        <button ng-if="$root.permit(31) && getState() >= 3 && !BUFullfillAndDeliveryBySup()" class="btn btn-blue btn-width-xl margin-left-10" ng-click="save()">Save</button>
+        <button ng-if="$root.permit(31) && getState() == 3 && merchantFleet() && !BUFullfillAndDeliveryBySup()" class="btn btn-blue btn-width-xl margin-left-10" ng-click="delivered()">Delivered</button>
       </span>
     </nc-page-title>
     <div>
@@ -44,7 +44,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
             </div>
           </div>       
         </div>
-        <div ng-if="getState() >= 2" class="col-xs-6 no-padding text-align-right ">
+        <div ng-if="getState() >= 2 && !BUFullfillAndDeliveryBySup()" class="col-xs-6 no-padding text-align-right ">
             <div class="form-group">
               <label class="font-size-20 padding-right-5" for="invoiceInput">Invoice #<span print-only>{{formData.InvoiceNumber}}</span></label>
               <span class="width-field-small-input" print-hide>
@@ -98,8 +98,9 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
             <th class="width_100 ">SKU</th>
             <th>Product Name</th>
             <th class="width_100 ">Price / Unit</th>
-            <th class="width_100 text-align-center">Order Qty</th>
-            <th class="width_100 text-align-center" ng-if="getState() >= 2 ">Shipping Qty</th>
+			<th class="width_100 text-align-center">Order Qty</th>
+            <th class="width_100 text-align-center" ng-if="getState() >= 2 && !BUFullfillAndDeliveryBySup()">Shipping Qty</th>
+            
             <th class="width_100 text-align-center">Total Price</th>
           </tr>
         </thead>
@@ -113,10 +114,10 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
             </td>
             <td ng-class="getRedText(product)" class="text-align-center">{{product.UnitPrice | currency:' ':2}}</td>
             <td ng-class="getRedText(product)" class="text-align-center">{{product.Quantity}}</td>
-            <td ng-class="getRedText(product)" class="text-align-center" ng-if="getState() >= 2">
-              <span ng-if="formData.Status != 'PE'">{{product.ShipQuantity}}</span>
-              <span ng-if="formData.Status == 'PE'">
-                <input type="number" class="form-control" ng-model="product.ShipQuantity" min="0" max="{{product.Quantity}}" ng-blur="checkQuantity(product)"/>
+            <td ng-class="getRedText(product)" class="text-align-center" ng-if="getState() >= 2 && !BUFullfillAndDeliveryBySup()">
+              <span ng-if="formData.Status != 'Processing'">{{product.ShipQuantity}}</span>
+              <span ng-if="formData.Status == 'Processing'">
+                <input type="number" class="form-control" ng-model="product.ShipQuantity" min="0" max="{{product.Quantity}}" ng-blur="checkQuantity(product)" />
               </span>
             </td>
             <td ng-class="getRedText(product)" class="text-align-right">{{getPrice(product) | currency:' ':2}}</td>
@@ -127,7 +128,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
             <td></td>
             <td></td>
             <td></td>
-            <td ng-if="getState() >= 2 "></td>
+            <td ng-if="getState() >= 2 && !BUFullfillAndDeliveryBySup()"></td>
             <td class="text-align-right">{{getSubtotal() | currency:' ':2}}</td>
           </tr>
           <tr ng-if="getDiscount() > 0" class="color-red">
@@ -136,7 +137,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
             <td></td>
             <td></td>
             <td></td>
-            <td ng-if="getState() >= 2 "></td>
+            <td ng-if="getState() >= 2 && !BUFullfillAndDeliveryBySup()"></td>
             <td class="text-align-right">- {{getDiscount() | currency:' ':2}}</td>
           </tr>
           <tr class="background_light_yellow ">
@@ -145,7 +146,7 @@ $this->layout('layouts/page-with-sidebar', ['title' => 'Seller Portal - Orders']
             <td></td>
             <td></td>
             <td></td>
-            <td  ng-if="getState() >= 2 "></td>
+            <td  ng-if="getState() >= 2 && !BUFullfillAndDeliveryBySup()"></td>
             <td class="text-align-right"><strong>{{getTotal() | currency:' ':2}}</strong></td>
           </tr>
         </tbody>

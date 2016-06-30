@@ -12,7 +12,12 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
       id: 'OrderId',
       url: '/orders',
       item: 'Order',
-      service: OrderService
+      service: OrderService,
+      onLoad: function() {
+        OrderService.getOrderCarrier().then(function(data) {
+          $scope.carriers = data;
+        });
+      }
     }
   });
   //Generic save fn
@@ -53,11 +58,15 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
   };
   //Acknowledge btn
   $scope.acknowledge = function() {
-    save({Status: 'Acknowledge'});
+    save({Status: 'Processing'});
   };
   //Is merchantfleet
   $scope.merchantFleet = function() {
-    return $scope.formData.ShippingType == 'Merchant Fleet';
+    return $scope.formData.ShippingType == 'FullfillAndDelvieryByMerchant';
+  };
+  //Is BUFullfillAndDeliveryBySup
+  $scope.BUFullfillAndDeliveryBySup = function() {
+    return $scope.formData.ShippingType == 'BUFullfillAndDeliveryBySup';
   };
   //Ready to ship
   $scope.readyShip = function() {
@@ -65,13 +74,14 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
     if($scope.saving) return;
     //validate form data
     if($scope.form.$valid) {
-      if($scope.formData.ShippingType == 'Merchant Fleet') {
+      if($scope.formData.ShippingType == 'FullfillAndDelvieryByMerchant') {
         //prompt warning on ready-to-ship
         $uibModal.open({
             size: 'size-warning',
             templateUrl: 'order/modalReadyToShipMerchant',
-            controller: function($scope, $uibModalInstance, NcAlert) {
+            controller: function($scope, $uibModalInstance, NcAlert, carriers) {
               'ngInject';
+              $scope.carriers = carriers;
               $scope.alert = new NcAlert();
               $scope.form = {};
               $scope.formData = {
@@ -83,6 +93,11 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
               $scope.yes = function() {
                 $uibModalInstance.close($scope.formData);
               }
+            },
+            resolve: {
+              carriers: function() {
+                return $scope.carriers;
+              }
             }
         }).result.then(function(data) {
           // get data from modal
@@ -90,15 +105,18 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
            InvoiceNumber: $scope.formData.InvoiceNumber,
            Status: 'ReadyToShip',
            Products: $scope.formData.Products,
-           TrackingNumber: data.TrackingNumber
+           TrackingNumber: data.TrackingNumber,
+		   OtherCarrier: data.OtherCarrier
           };
 
+		  debugger;
           // use own or merchant fleet carrier
-          if(data.IsOwnCarrier) {
-            o.Carrier = data.OtherCarrier;
+          if(!data.IsOwnCarrier) {
+            o.Carrier = data.Carrier;
           } else {
             o.Carrier = 'Merchant Own Fleet';
           }
+		  console.log(o);
           save(o);
         })
       } else {
@@ -112,7 +130,7 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
           // save to ready to ship
           save({
            InvoiceNumber: $scope.formData.InvoiceNumber,
-           Status: 'RS',
+           Status: 'ReadyToShip',
            Products: $scope.formData.Products
           });
         });
@@ -127,7 +145,7 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
     util.confirm('Cancel Order', 'Are you sure you want to cancel this order?', 'Confirm', 'Cancel', 'btn-red').result.then(function() {
         $scope.saving = true;
         OrderService.update($scope.formData.OrderId, {
-          Status: 'Cancel'
+          Status: 'Canceled'
         })
         .then(function(data) {
           $scope.formData = OrderService.deserialize(data);
@@ -150,12 +168,12 @@ module.exports = function($scope, $window, $filter, $controller, OrderService, u
     return { 'color-red' : product.Quantity != product.ShipQuantity && $scope.getState() > 2 };
   };
   $scope.getPrice = function(product) {
-    if($scope.getState() >= 2) {
+    if($scope.getState() >= 2 && $scope.formData.ShippingType != 'BUFullfillAndDeliveryBySup') {
       //Use ShipQty
       return product.UnitPrice * product.ShipQuantity;
     } else {
       //Use Qty
-      return product.UnitPrice * product.Quantity;
+      return product.TotalAmt;
     }
   };
   $scope.getSubtotal = function() {
